@@ -1,6 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'Segoe UI', 'Arial', sans-serif">
-  <!-- Q17: sequence 1, 4, 13, 40, 121, ? — the hungry ×3+1 number machine -->
+  <!-- Q17: a hungry machine on a factory line swallows numbers and drops a mystery box -->
   <rect width="800" height="500" fill="#fdf6e3"/>
+
+  <defs>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd93d" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#ffd93d" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- factory ceiling lamps -->
+  <g>
+    <line x1="130" y1="0" x2="130" y2="58" stroke="#b9ac8c" stroke-width="4"/>
+    <path d="M100 58 h60 l-12 26 h-36z" fill="#8d99ae" stroke="#6c7689" stroke-width="3"/>
+    <circle cx="130" cy="90" r="9" fill="#ffd93d"/>
+    <path d="M112 88 L94 270 L166 270 L148 88z" fill="url(#beam)"/>
+
+    <line x1="285" y1="0" x2="285" y2="40" stroke="#b9ac8c" stroke-width="4"/>
+    <path d="M258 40 h54 l-11 24 h-32z" fill="#8d99ae" stroke="#6c7689" stroke-width="3"/>
+    <circle cx="285" cy="70" r="8" fill="#ffd93d"/>
+    <path d="M269 68 L253 262 L317 262 L301 68z" fill="url(#beam)"/>
+  </g>
+
+  <!-- floor -->
+  <line x1="0" y1="432" x2="800" y2="432" stroke="#e8dcbe" stroke-width="4"/>
+  <ellipse cx="585" cy="425" rx="118" ry="16" fill="#c9bb98" opacity="0.35"/>
+  <ellipse cx="260" cy="425" rx="180" ry="11" fill="#c9bb98" opacity="0.22"/>
 
   <!-- conveyor belt -->
   <rect x="30" y="360" width="480" height="30" rx="15" fill="#8d99ae"/>
@@ -47,7 +72,7 @@
     <path d="M551 250 l8 14 l10 -14 l9 14 l10 -14 l9 14 l9 -14" fill="#fff"/>
     <!-- belly label -->
     <rect x="518" y="315" width="134" height="52" rx="12" fill="#fff" stroke="#9d2230" stroke-width="3"/>
-    <text x="585" y="352" font-size="30" font-weight="bold" text-anchor="middle" fill="#e63946">×3 + 1</text>
+    <text x="585" y="353" font-size="34" font-weight="bold" text-anchor="middle" fill="#e63946" letter-spacing="6">? ? ?</text>
     <!-- arms -->
     <path d="M490 250 q-35 20 -30 55" fill="none" stroke="#9d2230" stroke-width="9" stroke-linecap="round"/>
     <path d="M680 250 q35 20 30 55" fill="none" stroke="#9d2230" stroke-width="9" stroke-linecap="round"/>
@@ -66,12 +91,6 @@
   <g>
     <rect x="330" y="90" width="300" height="60" rx="18" fill="#fff" stroke="#457b9d" stroke-width="3"/>
     <path d="M520 150 l-6 26 l32 -26z" fill="#fff" stroke="#457b9d" stroke-width="3"/>
-    <text x="480" y="128" font-size="23" text-anchor="middle" fill="#1d3557" font-weight="bold">Ням! Yum! ×3 + 1 !</text>
+    <text x="480" y="128" font-size="24" text-anchor="middle" fill="#1d3557" font-weight="bold">Ням-ням! Yum-yum!</text>
   </g>
-
-  <text x="45" y="65" font-size="30" font-weight="bold" fill="#1d3557">№17</text>
-  <text x="45" y="102" font-size="21" fill="#457b9d">1, 4, 13, 40, 121, … ?</text>
-  <text x="45" y="150" font-size="20" fill="#8d99ae">Машина кушает число</text>
-  <text x="45" y="176" font-size="20" fill="#8d99ae">и выдаёт следующее</text>
-  <text x="400" y="470" font-size="18" text-anchor="middle" fill="#8d99ae">Mashina sonni yeb, keyingisini chiqaradi</text>
 </svg>
