@@ -91,15 +91,16 @@ body{
 /* ---------------- Masalalar to'ri ---------------- */
 .grid{ display:grid; gap:6mm 5mm; }
 .prob{
-  display:flex; align-items:center; justify-content:center; gap:6px;
-  font-size:30px; font-weight:800; padding:6px 4px;
+  display:flex; align-items:center; justify-content:center; gap:5px;
+  font-size:24px; font-weight:800; padding:6px 3px;
   border:2.5px solid #eceaf6; border-radius:16px; min-height:22mm;
+  overflow:hidden;
 }
-.prob .num{ min-width:1.1em; text-align:center; }
+.prob .num{ text-align:center; }
 .prob .op{ color:var(--p-purple); }
 .box{
-  display:inline-block; width:1.5em; height:1.5em; border:2.5px dashed var(--p-line);
-  border-radius:10px; vertical-align:middle;
+  display:inline-block; width:1.4em; height:1.4em; border:2.5px dashed var(--p-line);
+  border-radius:10px; vertical-align:middle; flex:none;
 }
 .prob .idx{
   position:relative; font-size:11px; color:var(--p-grey); align-self:flex-start; margin-right:2px;

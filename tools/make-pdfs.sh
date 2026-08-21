@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # =========================================================
-#  make-pdfs.sh — chop etishga tayyor PDF to'plamini yasaydi
-#  Foydalanish:  bash tools/make-pdfs.sh
-#  Talab: Chromium (yoki Google Chrome) o'rnatilgan bo'lishi.
+#  make-pdfs.sh — builds the ready-to-print PDF pack
+#  Usage:  bash tools/make-pdfs.sh
+#  Requires: Chromium (or Google Chrome).
 # =========================================================
 set -euo pipefail
 
@@ -18,7 +18,7 @@ if [ -z "$CHROME" ]; then
   done
 fi
 if [ -z "$CHROME" ]; then
-  echo "Chromium topilmadi. CHROME_BIN o'zgaruvchisini o'rnating." >&2
+  echo "Chromium not found. Set the CHROME_BIN variable." >&2
   exit 1
 fi
 
@@ -39,26 +39,30 @@ pdf () {           # pdf <fayl-nomi> <query>
     "file://$ROOT/print.html?$query" >/dev/null 2>&1
 }
 
-echo "PDF to'plami yasalmoqda → $OUT"
+echo "Generating the PDF pack -> $OUT"
 
-pdf "01-raqam-yozish.pdf"            "type=trace&level=1&pages=1&key=0"
-pdf "02-sanash-1-10.pdf"             "type=count&level=2&pages=2"
-pdf "03-sanash-1-20.pdf"             "type=count&level=3&pages=2"
-pdf "04-sonlar-chizigi.pdf"          "type=numline&level=2&pages=2"
-pdf "05-qoshish-5-gacha.pdf"         "type=add&level=1&pages=2"
-pdf "06-qoshish-10-gacha.pdf"        "type=add&level=2&pages=3"
-pdf "07-ayirish-5-gacha.pdf"         "type=sub&level=1&pages=2"
-pdf "08-ayirish-10-gacha.pdf"        "type=sub&level=2&pages=3"
-pdf "09-qoshish-ayirish-20-gacha.pdf" "type=addsub&level=3&pages=3"
-pdf "10-taqqoslash.pdf"              "type=compare&level=2&pages=2"
-pdf "11-ustunli-hisob.pdf"           "type=vertical&level=2&pages=2"
-pdf "12-kopaytirish-2-5.pdf"         "type=mul&level=2&pages=3"
-pdf "13-kopaytirish-2-9.pdf"         "type=mul&level=3&pages=3"
-pdf "14-bolish-2-5.pdf"              "type=div&level=2&pages=3"
-pdf "15-bolish-2-9.pdf"              "type=div&level=3&pages=3"
-pdf "16-kopaytirish-jadvali.pdf"     "type=table&level=3&pages=1&key=0"
-pdf "17-hisobla-va-rangla.pdf"       "type=color&level=1&pages=5&key=0"
-pdf "18-aralash-mashqlar.pdf"        "type=all&level=2&pages=3"
+pdf "01-number-tracing.pdf"        "lang=en&type=trace&level=1&pages=1&key=0"
+pdf "02-counting-1-10.pdf"         "lang=en&type=count&level=2&pages=2"
+pdf "03-counting-1-20.pdf"         "lang=en&type=count&level=3&pages=2"
+pdf "04-number-line.pdf"           "lang=en&type=numline&level=2&pages=2"
+pdf "05-addition-up-to-5.pdf"      "lang=en&type=add&level=1&pages=2"
+pdf "06-addition-up-to-10.pdf"     "lang=en&type=add&level=2&pages=3"
+pdf "07-subtraction-up-to-5.pdf"   "lang=en&type=sub&level=1&pages=2"
+pdf "08-subtraction-up-to-10.pdf"  "lang=en&type=sub&level=2&pages=3"
+pdf "09-add-subtract-up-to-20.pdf" "lang=en&type=addsub&level=3&pages=3"
+pdf "10-comparing.pdf"             "lang=en&type=compare&level=2&pages=2"
+pdf "11-column-arithmetic.pdf"     "lang=en&type=vertical&level=2&pages=2"
+pdf "12-multiplication-2-5.pdf"    "lang=en&type=mul&level=2&pages=3"
+pdf "13-multiplication-2-9.pdf"    "lang=en&type=mul&level=3&pages=3"
+pdf "14-division-2-5.pdf"          "lang=en&type=div&level=2&pages=3"
+pdf "15-division-2-9.pdf"          "lang=en&type=div&level=3&pages=3"
+pdf "16-times-table-poster.pdf"    "lang=en&type=table&level=3&pages=1&key=0"
+pdf "17-solve-and-color.pdf"       "lang=en&type=color&level=1&pages=5&key=0"
+pdf "18-mixed-practice.pdf"        "lang=en&type=all&level=2&pages=3"
+pdf "19-expert-add-subtract-100.pdf" "lang=en&type=addsub&level=4&pages=3"
+pdf "20-expert-multiplication.pdf"   "lang=en&type=mul&level=4&pages=3"
+pdf "21-expert-division.pdf"         "lang=en&type=div&level=4&pages=3"
+pdf "22-expert-column-3-digit.pdf"   "lang=en&type=vertical&level=4&pages=2"
 
-echo "Tayyor!"
+echo "Done!"
 ls -la "$OUT"

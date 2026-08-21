@@ -1,35 +1,32 @@
 /* =========================================================
-   worksheets.js — chop etiladigan mashq varaqlarini yasaydi
-   Hech qanday kutubxona kerak emas.
+   worksheets.js — printable worksheet generator
+   Bilingual (English default / Uzbek). No libraries needed.
    ========================================================= */
 (function () {
   'use strict';
 
-  /* ------------------ yordamchilar ------------------ */
+  var L = function (o) { return window.Lang.L(o); };
+  var en = function () { return window.Lang.current === 'en'; };
+
+  /* ------------------ helpers ------------------ */
   function rnd(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
   function pick(a) { return a[(Math.random() * a.length) | 0]; }
-  function shuffle(a) {
-    for (var i = a.length - 1; i > 0; i--) { var j = (Math.random() * (i + 1)) | 0, t = a[i]; a[i] = a[j]; a[j] = t; }
-    return a;
-  }
   function esc(s) { return String(s).replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }); }
-  function elFrom(html) { var d = document.createElement('div'); d.innerHTML = html.trim(); return d.firstChild; }
 
   var ITEMS = ['🍎','🍌','🍓','🍇','🍊','🐣','🦋','🐞','⭐','🎈','🚗','⚽','🌸','🍪','🐟','🦆','🌻','🧸'];
 
   var PALETTE = [
     null,
-    { hex: '#ff5252', uz: 'Qizil' },
-    { hex: '#ffd12e', uz: 'Sariq' },
-    { hex: '#3ec46d', uz: 'Yashil' },
-    { hex: '#3aa7e0', uz: 'Ko\'k' },
-    { hex: '#a05ad8', uz: 'Binafsha' }
+    { hex: '#ff5252', name: { en: 'Red',    uz: 'Qizil',    ru: 'Красный' } },
+    { hex: '#ffd12e', name: { en: 'Yellow', uz: 'Sariq',    ru: 'Жёлтый' } },
+    { hex: '#3ec46d', name: { en: 'Green',  uz: 'Yashil',   ru: 'Зелёный' } },
+    { hex: '#3aa7e0', name: { en: 'Blue',   uz: 'Ko\'k',    ru: 'Синий' } },
+    { hex: '#a05ad8', name: { en: 'Purple', uz: 'Binafsha', ru: 'Фиолетовый' } }
   ];
 
-  /* 8×8 rasmchalar — raqam = rang raqami (1..5), 0 = bo'yalmaydi
-     1 Qizil · 2 Sariq · 3 Yashil · 4 Ko'k · 5 Binafsha              */
+  /* 8×8 pictures — number = color number (1..5), 0 = leave blank */
   var PIX = {
-    'YURAK': [
+    HEART: [
       [4,1,1,4,4,1,1,4],
       [1,1,1,1,1,1,1,1],
       [1,1,2,1,1,1,1,1],
@@ -39,7 +36,7 @@
       [4,4,4,1,1,4,4,4],
       [4,4,4,4,4,4,4,4]
     ],
-    'YULDUZ': [
+    STAR: [
       [5,5,5,2,2,5,5,5],
       [5,5,5,2,2,5,5,5],
       [2,2,2,2,2,2,2,2],
@@ -49,7 +46,7 @@
       [5,2,2,5,5,2,2,5],
       [2,2,5,5,5,5,2,2]
     ],
-    'BALIQ': [
+    FISH: [
       [3,3,3,4,4,4,3,3],
       [3,3,4,4,4,4,4,3],
       [1,3,4,2,4,4,4,4],
@@ -59,7 +56,7 @@
       [3,3,4,4,4,4,4,3],
       [3,3,3,4,4,4,3,3]
     ],
-    'KAPALAK': [
+    BUTTERFLY: [
       [5,5,3,2,2,3,5,5],
       [5,1,5,2,2,5,1,5],
       [5,5,5,2,2,5,5,5],
@@ -69,7 +66,7 @@
       [5,1,5,2,2,5,1,5],
       [5,5,3,2,2,3,5,5]
     ],
-    'UY': [
+    HOUSE: [
       [4,4,4,1,1,4,4,4],
       [4,4,1,1,1,1,4,4],
       [4,1,1,1,1,1,1,4],
@@ -79,7 +76,7 @@
       [2,2,4,5,5,4,2,2],
       [3,3,3,3,3,3,3,3]
     ],
-    'DARAXT': [
+    TREE: [
       [4,4,3,3,3,3,4,4],
       [4,3,3,3,3,3,3,4],
       [3,3,3,1,3,3,3,3],
@@ -90,8 +87,42 @@
       [3,3,3,3,3,3,3,3]
     ]
   };
+  var PIX_NAME = {
+    HEART:     { en: 'HEART',     uz: 'YURAK',   ru: 'СЕРДЦЕ' },
+    STAR:      { en: 'STAR',      uz: 'YULDUZ',  ru: 'ЗВЕЗДА' },
+    FISH:      { en: 'FISH',      uz: 'BALIQ',   ru: 'РЫБКА' },
+    BUTTERFLY: { en: 'BUTTERFLY', uz: 'KAPALAK', ru: 'БАБОЧКА' },
+    HOUSE:     { en: 'HOUSE',     uz: 'UY',      ru: 'ДОМИК' },
+    TREE:      { en: 'TREE',      uz: 'DARAXT',  ru: 'ДЕРЕВО' }
+  };
 
-  /* ------------------ varaq karkasi ------------------ */
+  /* ------------------ shared strings ------------------ */
+  var STR = {
+    name:  { en: 'Name', uz: 'Ism', ru: 'Имя' },
+    date:  { en: 'Date', uz: 'Sana', ru: 'Дата' },
+    time:  { en: 'Time: ______ min', uz: 'Vaqt: ______ daqiqa', ru: 'Время: ______ мин' },
+    foot:  { en: 'Ali Math · grade 1 practice sheet · work together with a parent 💛',
+             uz: 'Ali Matematika · 1-sinf uchun mashq varag\'i · ota-ona bilan birga bajaring 💛',
+             ru: 'Али Математика · тренировочный лист для 1 класса · выполняйте вместе с родителями 💛' },
+    sheet: { en: 'sheet', uz: 'varaq', ru: 'лист' },
+    keyTitle: { en: 'Answer key', uz: 'Javoblar', ru: 'Ответы' },
+    keySub:   { en: ' — for parents', uz: ' — ota-onalar uchun', ru: ' — для родителей' },
+    keySheet: { en: 'Sheet ', uz: '-varaq', ru: 'Лист ' },
+    colorDone:{ en: 'When the picture is finished, say what it is! 🎉',
+                uz: 'Rasm tayyor bo\'lgach, nima chiqqanini ayt! 🎉',
+                ru: 'Когда картинка готова, скажи, что получилось! 🎉' },
+    colorKey: { en: 'Answer for parents: ', uz: 'Ota-ona uchun javob: ', ru: 'Ответ для родителей: ' },
+    zero:     { en: 'zero', uz: 'bo\'sh', ru: 'ноль' }
+  };
+
+  function tableLabel(t) {
+    var c = window.Lang.current;
+    if (c === 'uz') return t + ' jadvali';
+    if (c === 'ru') return 'Таблица ' + t;
+    return t + '× table';
+  }
+
+  /* ------------------ page skeleton ------------------ */
   function makePage(cfg) {
     var name = document.getElementById('fName').value || '';
     var p = document.createElement('section');
@@ -103,17 +134,17 @@
         '<div class="stars">☆☆☆☆☆</div>' +
       '</div>' +
       '<div class="namebar">' +
-        '<div class="l">Ism: <b>' + esc(name) + '</b></div>' +
-        '<div class="l">Sana: ______________</div>' +
-        '<div class="l">Vaqt: ______ daqiqa</div>' +
+        '<div class="l">' + L(STR.name) + ': <b>' + esc(name) + '</b></div>' +
+        '<div class="l">' + L(STR.date) + ': ______________</div>' +
+        '<div class="l">' + L(STR.time) + '</div>' +
       '</div>' +
       '<div class="p-body"></div>' +
-      '<div class="p-foot">Ali Matematika · 1-sinf uchun mashq varag\'i · ota-ona bilan birga bajaring 💛</div>';
+      '<div class="p-foot">' + L(STR.foot) + '</div>';
     p.body = p.querySelector('.p-body');
     return p;
   }
 
-  /* ------------------ masala bloklari ------------------ */
+  /* ------------------ problem blocks ------------------ */
   function probHTML(i, a, op, b) {
     return '<div class="prob"><span class="idx">' + i + ')</span>' +
       '<span class="num">' + a + '</span>' +
@@ -130,16 +161,25 @@
   }
 
   function gridWrap(cols, html) {
-    return '<div class="grid" style="grid-template-columns:repeat(' + cols + ',1fr)">' + html + '</div>';
+    return '<div class="grid" style="grid-template-columns:repeat(' + cols + ',minmax(0,1fr))">' + html + '</div>';
   }
 
-  /* ------------------ savol generatorlari ------------------ */
+  /* ------------------ generators ------------------ */
   function genAdd(level) {
-    var max = level === 1 ? 5 : level === 2 ? 10 : 20, a, b;
+    var a, b;
+    if (level >= 4) {
+      do { a = rnd(11, 89); b = rnd(11, 89); } while (a + b > 100);
+      return { a: a, op: '+', b: b, r: a + b };
+    }
+    var max = level === 1 ? 5 : level === 2 ? 10 : 20;
     do { a = rnd(1, max - 1); b = rnd(1, max - 1); } while (a + b > max);
     return { a: a, op: '+', b: b, r: a + b };
   }
   function genSub(level) {
+    if (level >= 4) {
+      var a4 = rnd(21, 100), b4 = rnd(10, a4 - 1);
+      return { a: a4, op: '−', b: b4, r: a4 - b4 };
+    }
     var max = level === 1 ? 5 : level === 2 ? 10 : 20;
     var a = rnd(2, max), b = rnd(1, a - 1);
     return { a: a, op: '−', b: b, r: a - b };
@@ -148,14 +188,16 @@
     var a, b;
     if (level === 1) { a = rnd(2, 3); b = rnd(1, 5); }
     else if (level === 2) { a = rnd(2, 5); b = rnd(1, 10); }
-    else { a = rnd(2, 9); b = rnd(2, 9); }
+    else if (level === 3) { a = rnd(2, 9); b = rnd(2, 9); }
+    else { a = rnd(6, 12); b = rnd(6, 12); }
     return { a: a, op: '×', b: b, r: a * b };
   }
   function genDiv(level) {
     var b, r;
     if (level === 1) { b = rnd(2, 3); r = rnd(1, 5); }
     else if (level === 2) { b = rnd(2, 5); r = rnd(1, 6); }
-    else { b = rnd(2, 9); r = rnd(2, 9); }
+    else if (level === 3) { b = rnd(2, 9); r = rnd(2, 9); }
+    else { b = rnd(3, 12); r = rnd(3, 12); }
     return { a: b * r, op: '÷', b: b, r: r };
   }
 
@@ -168,14 +210,15 @@
       'stroke="#b3adcf" stroke-width="1.6" stroke-dasharray="5 4" stroke-linecap="round">' + d + '</text></svg>';
   }
 
-  /* ================== MASHQ TURLARI ================== */
+  /* ================== WORKSHEET TYPES ================== */
   var TYPES = {
 
-    /* ---- ✍️ Raqam yozish ---- */
+    /* ---- ✍️ Number tracing ---- */
     trace: {
-      icon: '\u270d\ufe0f', head: 'h-purple',
-      title: 'Raqamlarni yozamiz',
-      sub: 'Nuqtalar bo\'ylab yur, so\'ng o\'zing yoz. O\'ngdagi doiralarni sana!',
+      icon: '✍️', head: 'h-purple',
+      title: { en: 'Writing numbers', uz: 'Raqamlarni yozamiz' },
+      sub: { en: 'Trace along the dots, then write your own. Count the dots on the right!',
+             uz: 'Nuqtalar bo\'ylab yur, so\'ng o\'zing yoz. O\'ngdagi doiralarni sana!' },
       pages: 2,
       build: function (page, level, pageNo) {
         var from = (pageNo || 0) * 5;
@@ -183,7 +226,7 @@
         for (var d = from; d < from + 5 && d <= 9; d++) {
           var reps = '';
           for (var r = 0; r < 5; r++) reps += digitSVG(d, r < 2 ? 'solid' : 'line');
-          var dots = d === 0 ? '<span style="font-size:15px">bo\'sh</span>' : new Array(d + 1).join('\u25cf ');
+          var dots = d === 0 ? '<span style="font-size:15px">' + L(STR.zero) + '</span>' : new Array(d + 1).join('● ');
           html += '<div class="trace-row">' +
             '<div class="digit-big">' + digitSVG(d, 'solid') + '</div>' +
             '<div class="reps">' + reps + '</div>' +
@@ -195,13 +238,14 @@
       }
     },
 
-    /* ---- 🍎 Sanash ---- */
+    /* ---- 🍎 Counting ---- */
     count: {
       icon: '🍎', head: 'h-blue',
-      title: 'Sana va yoz',
-      sub: 'Nechta rasm bor? Katakchaga raqamni yoz.',
+      title: { en: 'Count and write', uz: 'Sana va yoz' },
+      sub: { en: 'How many pictures? Write the number in the box.',
+             uz: 'Nechta rasm bor? Katakchaga raqamni yoz.' },
       build: function (page, level) {
-        var max = level === 1 ? 5 : level === 2 ? 10 : 20;
+        var max = level === 1 ? 5 : level === 2 ? 10 : 20;   /* pictures cap at 20 */
         var html = '', ans = [];
         for (var i = 1; i <= 12; i++) {
           var n = rnd(1, max), it = pick(ITEMS), pics = '';
@@ -215,14 +259,15 @@
       }
     },
 
-    /* ---- 📏 Sonlar chizig'i ---- */
+    /* ---- 📏 Number line ---- */
     numline: {
       icon: '📏', head: 'h-green',
-      title: 'Yetishmayotgan sonlar',
-      sub: 'Bo\'sh katakchalarga to\'g\'ri sonni yoz.',
+      title: { en: 'Missing numbers', uz: 'Yetishmayotgan sonlar' },
+      sub: { en: 'Write the missing numbers in the empty boxes.',
+             uz: 'Bo\'sh katakchalarga to\'g\'ri sonni yoz.' },
       build: function (page, level) {
         var span = level === 1 ? 10 : level === 2 ? 10 : 12;
-        var maxStart = level === 1 ? 1 : level === 2 ? 10 : 40;
+        var maxStart = level === 1 ? 1 : level === 2 ? 10 : level === 3 ? 40 : 88;
         var html = '', ans = [];
         for (var row = 1; row <= 8; row++) {
           var start = level === 1 ? 1 : rnd(1, maxStart);
@@ -244,24 +289,26 @@
       }
     },
 
-    /* ---- ⚖️ Taqqoslash ---- */
+    /* ---- ⚖️ Comparing ---- */
     compare: {
       icon: '⚖️', head: 'h-orange',
-      title: 'Qaysi biri katta?',
-      sub: 'To\'g\'ri belgini doira ichiga ol:  <  (kichik),  >  (katta),  =  (teng).',
+      title: { en: 'Which is bigger?', uz: 'Qaysi biri katta?' },
+      sub: { en: 'Circle the right sign:  <  (less),  >  (greater),  =  (equal).',
+             uz: 'To\'g\'ri belgini doira ichiga ol:  <  (kichik),  >  (katta),  =  (teng).' },
       build: function (page, level) {
         var html = '', ans = [];
         for (var i = 1; i <= 15; i++) {
-          var L, R, lt, rt;
-          if (level === 1) { L = rnd(1, 10); R = rnd(1, 10); lt = L; rt = R; }
+          var Lv, R, lt, rt;
+          if (level === 1) { Lv = rnd(1, 10); R = rnd(1, 10); lt = Lv; rt = R; }
           else {
-            var g1 = level === 2 ? genAdd(2) : (Math.random() < .5 ? genAdd(3) : genSub(3));
-            var g2 = level === 2 ? genAdd(2) : (Math.random() < .5 ? genAdd(3) : genSub(3));
-            L = g1.r; R = g2.r;
+            var lv = level >= 4 ? 4 : 3;
+            var g1 = level === 2 ? genAdd(2) : (Math.random() < .5 ? genAdd(lv) : genSub(lv));
+            var g2 = level === 2 ? genAdd(2) : (Math.random() < .5 ? genAdd(lv) : genSub(lv));
+            Lv = g1.r; R = g2.r;
             lt = g1.a + ' ' + g1.op + ' ' + g1.b;
             rt = g2.a + ' ' + g2.op + ' ' + g2.b;
           }
-          var sign = L < R ? '<' : (L > R ? '>' : '=');
+          var sign = Lv < R ? '<' : (Lv > R ? '>' : '=');
           html += '<div class="cmp"><div style="font-size:11px;color:#9b96b5;text-align:left">' + i + ')</div>' +
                   '<div>' + lt + ' &nbsp;&nbsp; ' + rt + '</div>' +
                   '<div class="opts"><span>&lt;</span><span>&gt;</span><span>=</span></div></div>';
@@ -272,34 +319,38 @@
       }
     },
 
-    /* ---- ➕ Qo'shish ---- */
+    /* ---- ➕ Addition ---- */
     add: {
       icon: '➕', head: 'h-green',
-      title: 'Qo\'shish',
-      sub: 'Hisobla va javobni katakchaga yoz.',
+      title: { en: 'Addition', uz: 'Qo\'shish' },
+      sub: { en: 'Work it out and write the answer in the box.',
+             uz: 'Hisobla va javobni katakchaga yoz.' },
       build: function (page, level) { return simpleOps(page, level, ['add']); }
     },
 
-    /* ---- ➖ Ayirish ---- */
+    /* ---- ➖ Subtraction ---- */
     sub: {
       icon: '➖', head: 'h-orange',
-      title: 'Ayirish',
-      sub: 'Hisobla va javobni katakchaga yoz.',
+      title: { en: 'Subtraction', uz: 'Ayirish' },
+      sub: { en: 'Work it out and write the answer in the box.',
+             uz: 'Hisobla va javobni katakchaga yoz.' },
       build: function (page, level) { return simpleOps(page, level, ['sub']); }
     },
 
     addsub: {
       icon: '➕', head: 'h-blue',
-      title: 'Qo\'shish va ayirish',
-      sub: 'Diqqat! Belgiga qara: + yoki −',
+      title: { en: 'Addition and subtraction', uz: 'Qo\'shish va ayirish' },
+      sub: { en: 'Careful! Watch the sign: + or −',
+             uz: 'Diqqat! Belgiga qara: + yoki −' },
       build: function (page, level) { return simpleOps(page, level, ['add', 'sub']); }
     },
 
-    /* ---- 🧮 Ustunli ---- */
+    /* ---- 🧮 Column arithmetic ---- */
     vertical: {
       icon: '🧮', head: 'h-purple',
-      title: 'Ustunli qo\'shish va ayirish',
-      sub: 'Birliklarni birlik bilan, o\'nliklarni o\'nlik bilan qo\'sh.',
+      title: { en: 'Column addition and subtraction', uz: 'Ustunli qo\'shish va ayirish' },
+      sub: { en: 'Add ones with ones, tens with tens.',
+             uz: 'Birliklarni birlik bilan, o\'nliklarni o\'nlik bilan qo\'sh.' },
       build: function (page, level) {
         var html = '', ans = [];
         for (var i = 1; i <= 16; i++) {
@@ -307,12 +358,14 @@
           if (Math.random() < 0.5) {
             if (level === 1) { a = rnd(11, 49); b = rnd(1, 9); }
             else if (level === 2) { a = rnd(11, 44); b = rnd(11, 44); }
-            else { a = rnd(21, 79); b = rnd(11, 20); }
+            else if (level === 3) { a = rnd(21, 79); b = rnd(11, 20); }
+            else { a = rnd(111, 499); b = rnd(101, 999 - 499); }
             sign = '+'; r = a + b;
           } else {
             if (level === 1) { a = rnd(11, 49); b = rnd(1, 9); }
             else if (level === 2) { a = rnd(25, 89); b = rnd(11, 24); }
-            else { a = rnd(41, 99); b = rnd(11, 39); }
+            else if (level === 3) { a = rnd(41, 99); b = rnd(11, 39); }
+            else { a = rnd(301, 999); b = rnd(101, 299); }
             sign = '−'; r = a - b;
           }
           html += vprobHTML(i, a, sign, b);
@@ -323,34 +376,38 @@
       }
     },
 
-    /* ---- ✖️ Ko'paytirish ---- */
+    /* ---- ✖️ Multiplication ---- */
     mul: {
       icon: '✖️', head: 'h-purple',
-      title: 'Ko\'paytirish',
-      sub: 'Ko\'paytirish — bu bir xil sonlarni qo\'shish. 3 × 4 = 4 + 4 + 4',
+      title: { en: 'Multiplication', uz: 'Ko\'paytirish' },
+      sub: { en: 'Multiplying is repeated addition: 3 × 4 = 4 + 4 + 4',
+             uz: 'Ko\'paytirish — bu bir xil sonlarni qo\'shish. 3 × 4 = 4 + 4 + 4' },
       build: function (page, level) { return simpleOps(page, level, ['mul']); }
     },
 
-    /* ---- ➗ Bo'lish ---- */
+    /* ---- ➗ Division ---- */
     div: {
       icon: '➗', head: 'h-pink',
-      title: 'Bo\'lish',
-      sub: 'Bo\'lish — teng qismlarga ajratish. 12 ÷ 3 = har biriga 4 tadan.',
+      title: { en: 'Division', uz: 'Bo\'lish' },
+      sub: { en: 'Dividing is sharing equally: 12 ÷ 3 = 4 each.',
+             uz: 'Bo\'lish — teng qismlarga ajratish. 12 ÷ 3 = har biriga 4 tadan.' },
       build: function (page, level) { return simpleOps(page, level, ['div']); }
     },
 
     all: {
       icon: '🎲', head: 'h-pink',
-      title: 'Aralash mashqlar',
-      sub: 'Barcha to\'rt amal: + − × ÷',
+      title: { en: 'Mixed practice', uz: 'Aralash mashqlar' },
+      sub: { en: 'All four operations: + − × ÷',
+             uz: 'Barcha to\'rt amal: + − × ÷' },
       build: function (page, level) { return simpleOps(page, level, ['add', 'sub', 'mul', 'div']); }
     },
 
-    /* ---- 📋 Jadval plakati ---- */
+    /* ---- 📋 Times table poster ---- */
     table: {
       icon: '📋', head: 'h-yellow',
-      title: 'Ko\'paytirish jadvali',
-      sub: 'Devorga osib qo\'ying va har kuni ovoz chiqarib o\'qing.',
+      title: { en: 'Times tables', uz: 'Ko\'paytirish jadvali' },
+      sub: { en: 'Hang it on the wall and read it out loud every day.',
+             uz: 'Devorga osib qo\'ying va har kuni ovoz chiqarib o\'qing.' },
       build: function (page, level) {
         var from = 2, to = level === 1 ? 5 : 9;
         var colors = ['#3aa7e0', '#2fb47c', '#f08a2c', '#7b5bff', '#ec4d8d', '#e0a800', '#00a5a5', '#d2456b'];
@@ -360,27 +417,28 @@
           for (var i = 1; i <= 10; i++) {
             rows += '<div class="row"><span>' + t + ' × ' + i + '</span><span>= ' + (t * i) + '</span></div>';
           }
-          html += '<div class="tcol"><h3 style="background:' + colors[(t - 2) % colors.length] + '">' + t + ' jadvali</h3>' + rows + '</div>';
+          html += '<div class="tcol"><h3 style="background:' + colors[(t - 2) % colors.length] + '">' + tableLabel(t) + '</h3>' + rows + '</div>';
         }
         page.body.innerHTML = '<div class="table-grid">' + html + '</div>';
         return null;
       }
     },
 
-    /* ---- \ud83c\udfa8 Hisobla va rangla ---- */
+    /* ---- 🎨 Solve and color ---- */
     color: {
-      icon: '\ud83c\udfa8', head: 'h-pink',
-      title: 'Hisobla va rangla',
-      sub: 'Har katakni hisobla. Javob raqamiga mos rang bilan bo\'ya. Nima chiqadi?',
+      icon: '🎨', head: 'h-pink',
+      title: { en: 'Solve and color', uz: 'Hisobla va rangla' },
+      sub: { en: 'Solve every square, then color it with the matching color. What appears?',
+             uz: 'Har katakni hisobla. Javob raqamiga mos rang bilan bo\'ya. Nima chiqadi?' },
       build: function (page, level, pageNo) {
         var names = Object.keys(PIX);
-        var name = names[(pageNo || 0) % names.length];
-        var art = PIX[name];
+        var key = names[(pageNo || 0) % names.length];
+        var art = PIX[key];
 
         var legend = '<div class="legend">';
         for (var c = 1; c <= 5; c++) {
           legend += '<div class="lg"><span class="sw" style="background:' + PALETTE[c].hex + '"></span>' +
-                    c + ' = ' + PALETTE[c].uz + '</div>';
+                    c + ' = ' + L(PALETTE[c].name) + '</div>';
         }
         legend += '</div>';
 
@@ -396,30 +454,30 @@
           legend +
           '<div class="pixgrid" style="grid-template-columns:repeat(8,1fr);width:150mm">' + cells + '</div>' +
           '<p style="text-align:center;font-size:17px;color:#5c5680;margin-top:7mm;font-weight:800">' +
-          'Rasm tayyor bo\'lgach, nima chiqqanini ayt! \ud83c\udf89</p>' +
+          L(STR.colorDone) + '</p>' +
           '<p style="text-align:center;font-size:11px;color:#b9b4cd;margin-top:14mm">' +
-          'Ota-ona uchun javob: ' + esc(name) + '</p>';
+          L(STR.colorKey) + esc(L(PIX_NAME[key])) + '</p>';
         return null;
       }
     }
   };
 
-  /* Kichik masala: javobi aynan `val` (1..5) bo'ladi */
+  /* Tiny problem whose answer is exactly `val` (1..5) */
   function tinyProblem(val, level) {
     var r = Math.random();
-    if (level === 1 || r < 0.4) {          /* qo'shish:  x + y = val */
+    if (level === 1 || r < 0.4) {          /* addition:  x + y = val */
       var x = rnd(0, val);
       return x + '+' + (val - x);
     }
-    if (level === 2 || r < 0.75) {         /* ayirish:  a − b = val */
+    if (level === 2 || r < 0.75) {         /* subtraction:  a − b = val */
       var b = rnd(1, 5);
-      return (val + b) + '\u2212' + b;
+      return (val + b) + '−' + b;
     }
-    var d = rnd(2, 5);                     /* bo'lish:  (val*d) ÷ d = val */
-    return (val * d) + '\u00f7' + d;
+    var d = rnd(2, 5);                     /* division:  (val*d) ÷ d = val */
+    return (val * d) + '÷' + d;
   }
 
-  /* Umumiy: oddiy gorizontal masalalar varag'i */
+  /* Shared: sheet of simple horizontal problems */
   function simpleOps(page, level, kinds) {
     var GEN = { add: genAdd, sub: genSub, mul: genMul, div: genDiv };
     var html = '', ans = [];
@@ -432,12 +490,13 @@
     return ans;
   }
 
-  /* ------------------ javoblar sahifasi ------------------ */
+  /* ------------------ answer key page ------------------ */
   function keyPage(allAnswers, typeTitle) {
-    var p = makePage({ icon: '🔑', head: '', title: 'Javoblar', sub: typeTitle + ' — ota-onalar uchun', key: true });
+    var p = makePage({ icon: '🔑', head: '', title: L(STR.keyTitle), sub: typeTitle + L(STR.keySub), key: true });
     var html = '';
     allAnswers.forEach(function (pageAns, pi) {
-      html += '<h3 style="margin:5mm 0 2mm;font-size:17px;color:#5c5e78">' + (pi + 1) + '-varaq</h3>';
+      var label = window.Lang.current === 'uz' ? (pi + 1) + L(STR.keySheet) : L(STR.keySheet) + (pi + 1);
+      html += '<h3 style="margin:5mm 0 2mm;font-size:17px;color:#5c5e78">' + label + '</h3>';
       html += '<div class="key-grid">';
       pageAns.forEach(function (a, i) { html += '<div>' + (i + 1) + ') <b>' + esc(a) + '</b></div>'; });
       html += '</div>';
@@ -446,7 +505,76 @@
     return p;
   }
 
-  /* ------------------ chizish ------------------ */
+  /* ------------------ toolbar language ------------------ */
+  var TB = {
+    title: { en: '🖨️ Make practice sheets', uz: '🖨️ Mashq varaqlari yasash', ru: '🖨️ Создание листов' },
+    hint:  { en: 'Pick a type → “New set” → “Print”. Every refresh makes brand-new problems. Answers go on the last page.',
+             uz: 'Turini tanlang → “Yangi to\'plam” → “Chop etish”. Har safar yangi masalalar chiqadi. Javoblar oxirgi sahifada.',
+             ru: 'Выберите тип → «Новый набор» → «Печать». Каждое обновление — новые задачи. Ответы на последней странице.' },
+    lbType:  { en: 'Exercise type', uz: 'Mashq turi', ru: 'Тип задания' },
+    lbLevel: { en: 'Difficulty', uz: 'Daraja', ru: 'Сложность' },
+    lbPages: { en: 'Sheets', uz: 'Varaqlar soni', ru: 'Листы' },
+    lbName:  { en: 'Name', uz: 'Ism', ru: 'Имя' },
+    lbLang:  { en: 'Language', uz: 'Til', ru: 'Язык' },
+    lbKey:   { en: 'Answer key page', uz: 'Javoblar sahifasi', ru: 'Страница ответов' },
+    lbBW:    { en: 'Black & white (save ink)', uz: 'Oq-qora (siyoh tejash)', ru: 'Чёрно-белый (экономия чернил)' },
+    btnMake: { en: '🎲 New set', uz: '🎲 Yangi to\'plam', ru: '🎲 Новый набор' },
+    btnPrint:{ en: '🖨️ Print', uz: '🖨️ Chop etish', ru: '🖨️ Печать' },
+    btnBack: { en: '🏠 Back to games', uz: '🏠 O\'yinlarga qaytish', ru: '🏠 К играм' },
+    ogBasics:{ en: 'Basics', uz: 'Boshlang\'ich', ru: 'Основы' },
+    ogOps:   { en: 'Operations', uz: 'Amallar', ru: 'Действия' },
+    ogFun:   { en: 'Fun', uz: 'Qiziqarli', ru: 'Интересное' },
+    docTitle:{ en: 'Ali Math — printable worksheets', uz: 'Ali Matematika — chop etiladigan mashqlar', ru: 'Али Математика — листы для печати' },
+    options: {
+      trace:   { en: '✍️ Number tracing (0–9)',   uz: '✍️ Raqam yozish (0–9)', ru: '✍️ Пишем цифры (0–9)' },
+      count:   { en: '🍎 Count and write',        uz: '🍎 Sanash va yozish', ru: '🍎 Посчитай и запиши' },
+      numline: { en: '📏 Number line',            uz: '📏 Sonlar chizig\'i', ru: '📏 Числовой ряд' },
+      compare: { en: '⚖️ Compare < > =',          uz: '⚖️ Taqqoslash < > =', ru: '⚖️ Сравнение < > =' },
+      add:     { en: '➕ Addition',               uz: '➕ Qo\'shish', ru: '➕ Сложение' },
+      sub:     { en: '➖ Subtraction',            uz: '➖ Ayirish', ru: '➖ Вычитание' },
+      addsub:  { en: '➕➖ Mixed add/subtract',   uz: '➕➖ Aralash', ru: '➕➖ Слож. и вычит.' },
+      vertical:{ en: '🧮 Column add/subtract',    uz: '🧮 Ustunli qo\'shish/ayirish', ru: '🧮 В столбик' },
+      mul:     { en: '✖️ Multiplication',         uz: '✖️ Ko\'paytirish', ru: '✖️ Умножение' },
+      div:     { en: '➗ Division',               uz: '➗ Bo\'lish', ru: '➗ Деление' },
+      all:     { en: '🎲 All mixed',              uz: '🎲 Hammasi aralash', ru: '🎲 Всё вперемешку' },
+      table:   { en: '📋 Times tables (poster)',  uz: '📋 Ko\'paytirish jadvali (plakat)', ru: '📋 Таблица умножения (плакат)' },
+      color:   { en: '🎨 Solve and color',        uz: '🎨 Hisobla va rangla', ru: '🎨 Реши и раскрась' }
+    },
+    levels: {
+      1: { en: '1 — easiest', uz: '1 — eng oson', ru: '1 — самый лёгкий' },
+      2: { en: '2 — medium',  uz: '2 — o\'rtacha', ru: '2 — средний' },
+      3: { en: '3 — hard',    uz: '3 — qiyin', ru: '3 — трудный' },
+      4: { en: '4 — expert',  uz: '4 — juda qiyin', ru: '4 — эксперт' }
+    }
+  };
+
+  function relabelToolbar() {
+    document.documentElement.lang = window.Lang.current;
+    document.title = L(TB.docTitle);
+    document.getElementById('tbTitle').textContent = L(TB.title);
+    document.getElementById('tbHint').textContent = L(TB.hint);
+    ['lbType','lbLevel','lbPages','lbName','lbLang','lbKey','lbBW','ogBasics','ogOps','ogFun'].forEach(function (id) {
+      var e = document.getElementById(id);
+      if (!e) return;
+      if (e.tagName === 'OPTGROUP') e.label = L(TB[id]);
+      else e.textContent = L(TB[id]);
+    });
+    document.getElementById('btnMake').textContent = L(TB.btnMake);
+    document.getElementById('btnPrint').textContent = L(TB.btnPrint);
+    document.getElementById('btnBack').textContent = L(TB.btnBack);
+    var sel = document.getElementById('fType');
+    for (var i = 0; i < sel.options.length; i++) {
+      var o = sel.options[i];
+      if (TB.options[o.value]) o.textContent = L(TB.options[o.value]);
+    }
+    var lv = document.getElementById('fLevel');
+    for (var j = 0; j < lv.options.length; j++) {
+      lv.options[j].textContent = L(TB.levels[lv.options[j].value]);
+    }
+    document.getElementById('fLang').value = window.Lang.current;
+  }
+
+  /* ------------------ rendering ------------------ */
   function render() {
     var type = document.getElementById('fType').value;
     var level = parseInt(document.getElementById('fLevel').value, 10);
@@ -460,27 +588,28 @@
     host.innerHTML = '';
 
     var T = TYPES[type];
-    /* Ba'zi turlarda varaqlar soni qat'iy belgilangan */
+    /* Some types have a fixed number of sheets */
     var count = T.pages || (type === 'table' ? 1 : pages);
 
     var answers = [];
     for (var i = 0; i < count; i++) {
+      var suffix = count > 1 ? '  ·  ' + L(STR.sheet) + ' ' + (i + 1) + '/' + count : '';
       var p = makePage({
-        icon: T.icon, head: T.head, title: T.title,
-        sub: T.sub + (count > 1 ? '  ·  ' + (i + 1) + '/' + count + '-varaq' : '')
+        icon: T.icon, head: T.head, title: L(T.title),
+        sub: L(T.sub) + suffix
       });
       var a = T.build(p, level, i);
       host.appendChild(p);
       if (a && a.length) answers.push(a);
     }
 
-    if (wantKey && answers.length) host.appendChild(keyPage(answers, T.title));
+    if (wantKey && answers.length) host.appendChild(keyPage(answers, L(T.title)));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  /* ------------------ URL parametrlari ------------------
-     Masalan: print.html?type=mul&level=2&pages=3&key=1&bw=1&name=Ali
-     PDF yasashda ham shu ishlatiladi.                        */
+  /* ------------------ URL parameters ------------------
+     e.g.: print.html?type=mul&level=2&pages=3&key=1&bw=1&name=Ali&lang=en
+     The PDF script uses these too.                       */
   (function applyQuery() {
     var q = new URLSearchParams(location.search);
     if (!q.toString()) return;
@@ -491,16 +620,22 @@
     if (q.get('name') != null) set('fName', q.get('name'));
     if (q.get('key') != null) document.getElementById('fKey').checked = q.get('key') !== '0';
     if (q.get('bw') != null) document.getElementById('fBW').checked = q.get('bw') === '1';
+    if (q.get('lang')) window.Lang.set(q.get('lang'));
   })();
 
   document.getElementById('btnMake').addEventListener('click', render);
   document.getElementById('btnPrint').addEventListener('click', function () { window.print(); });
+  document.getElementById('fLang').addEventListener('change', function () {
+    window.Lang.set(this.value);
+    relabelToolbar();
+    render();
+  });
   ['fType', 'fLevel', 'fPages', 'fKey', 'fBW', 'fName'].forEach(function (id) {
     document.getElementById(id).addEventListener('change', render);
   });
 
+  relabelToolbar();
   render();
 
-  /* Tashqaridan chaqirish uchun (PDF yasashda ishlatiladi) */
   window.Worksheets = { render: render, TYPES: TYPES };
 })();

@@ -72,7 +72,10 @@
     if (!global.speechSynthesis) return;
     var list = global.speechSynthesis.getVoices();
     if (!list || !list.length) return;
-    var order = ['uz', 'tr', 'az', 'ru', 'kk'];
+    var cur = global.Lang ? global.Lang.current : 'en';
+    var order = cur === 'en' ? ['en-us', 'en-gb', 'en']
+              : cur === 'ru' ? ['ru']
+              : ['uz', 'tr', 'az', 'ru', 'kk'];
     for (var i = 0; i < order.length; i++) {
       var found = list.filter(function (v) { return (v.lang || '').toLowerCase().indexOf(order[i]) === 0; });
       if (found.length) { voice = found[0]; voiceReady = true; return; }
@@ -84,6 +87,9 @@
     pickVoice();
     global.speechSynthesis.onvoiceschanged = pickVoice;
   }
+
+  /* Til almashganda ovozni qayta tanlaymiz */
+  Sound.refreshVoice = function () { voiceReady = false; voice = null; pickVoice(); };
 
   Sound.say = function (text) {
     if (!enabled || !global.speechSynthesis || !text) return;
@@ -97,18 +103,44 @@
     } catch (e) { /* jim qolamiz */ }
   };
 
-  /* O'zbekcha sonlar — 0 dan 100 gacha aytish uchun */
-  var ONES = ['nol','bir','ikki','uch','to\'rt','besh','olti','yetti','sakkiz','to\'qqiz'];
-  var TENS = ['','o\'n','yigirma','o\'ttiz','qirq','ellik','oltmish','yetmish','sakson','to\'qson'];
+  /* Numbers as words — 0..100, English and Uzbek */
+  var UZ_ONES = ['nol','bir','ikki','uch','to\'rt','besh','olti','yetti','sakkiz','to\'qqiz'];
+  var UZ_TENS = ['','o\'n','yigirma','o\'ttiz','qirq','ellik','oltmish','yetmish','sakson','to\'qson'];
+  var EN_ONES = ['zero','one','two','three','four','five','six','seven','eight','nine',
+                 'ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen',
+                 'seventeen','eighteen','nineteen'];
+  var EN_TENS = ['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+  var RU_ONES = ['\u043d\u043e\u043b\u044c','\u043e\u0434\u0438\u043d','\u0434\u0432\u0430','\u0442\u0440\u0438','\u0447\u0435\u0442\u044b\u0440\u0435','\u043f\u044f\u0442\u044c','\u0448\u0435\u0441\u0442\u044c','\u0441\u0435\u043c\u044c','\u0432\u043e\u0441\u0435\u043c\u044c','\u0434\u0435\u0432\u044f\u0442\u044c',
+                 '\u0434\u0435\u0441\u044f\u0442\u044c','\u043e\u0434\u0438\u043d\u043d\u0430\u0434\u0446\u0430\u0442\u044c','\u0434\u0432\u0435\u043d\u0430\u0434\u0446\u0430\u0442\u044c','\u0442\u0440\u0438\u043d\u0430\u0434\u0446\u0430\u0442\u044c','\u0447\u0435\u0442\u044b\u0440\u043d\u0430\u0434\u0446\u0430\u0442\u044c','\u043f\u044f\u0442\u043d\u0430\u0434\u0446\u0430\u0442\u044c','\u0448\u0435\u0441\u0442\u043d\u0430\u0434\u0446\u0430\u0442\u044c','\u0441\u0435\u043c\u043d\u0430\u0434\u0446\u0430\u0442\u044c','\u0432\u043e\u0441\u0435\u043c\u043d\u0430\u0434\u0446\u0430\u0442\u044c','\u0434\u0435\u0432\u044f\u0442\u043d\u0430\u0434\u0446\u0430\u0442\u044c'];
+  var RU_TENS = ['','','\u0434\u0432\u0430\u0434\u0446\u0430\u0442\u044c','\u0442\u0440\u0438\u0434\u0446\u0430\u0442\u044c','\u0441\u043e\u0440\u043e\u043a','\u043f\u044f\u0442\u044c\u0434\u0435\u0441\u044f\u0442','\u0448\u0435\u0441\u0442\u044c\u0434\u0435\u0441\u044f\u0442','\u0441\u0435\u043c\u044c\u0434\u0435\u0441\u044f\u0442','\u0432\u043e\u0441\u0435\u043c\u044c\u0434\u0435\u0441\u044f\u0442','\u0434\u0435\u0432\u044f\u043d\u043e\u0441\u0442\u043e'];
 
   Sound.numberWord = function (n) {
     n = Math.round(n);
     if (n < 0) return 'minus ' + Sound.numberWord(-n);
-    if (n < 10) return ONES[n];
+    var cur = global.Lang ? global.Lang.current : 'en';
+    if (cur === 'en') {
+      if (n < 20) return EN_ONES[n];
+      if (n === 100) return 'one hundred';
+      if (n < 100) {
+        var t = Math.floor(n / 10), o = n % 10;
+        return EN_TENS[t] + (o ? '-' + EN_ONES[o] : '');
+      }
+      return String(n);
+    }
+    if (cur === 'ru') {
+      if (n < 20) return RU_ONES[n];
+      if (n === 100) return '\u0441\u0442\u043e';
+      if (n < 100) {
+        var rt = Math.floor(n / 10), ro = n % 10;
+        return RU_TENS[rt] + (ro ? ' ' + RU_ONES[ro] : '');
+      }
+      return String(n);
+    }
+    if (n < 10) return UZ_ONES[n];
     if (n === 100) return 'yuz';
     if (n < 100) {
-      var t = Math.floor(n / 10), o = n % 10;
-      return TENS[t] + (o ? ' ' + ONES[o] : '');
+      var ut = Math.floor(n / 10), uo = n % 10;
+      return UZ_TENS[ut] + (uo ? ' ' + UZ_ONES[uo] : '');
     }
     return String(n);
   };

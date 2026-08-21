@@ -330,3 +330,8 @@ body{
   color:var(--bubble-deep); font-size:.9em; font-weight:900; opacity:.95; filter:none;
 }
 .group.big .it{ font-size:28px; }
+
+/* ---------- Language visibility ---------- */
+body[data-lang="en"] .only-uz, body[data-lang="en"] .only-ru{ display:none; }
+body[data-lang="uz"] .only-en, body[data-lang="uz"] .only-ru{ display:none; }
+body[data-lang="ru"] .only-en, body[data-lang="ru"] .only-uz{ display:none; }

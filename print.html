@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="uz">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ali Matematika — chop etiladigan mashqlar</title>
-<meta name="description" content="1-sinf uchun o'zbek tilida chop etiladigan matematika mashq varaqlari: raqam yozish, sanash, qo'shish, ayirish, ko'paytirish, bo'lish.">
+<title>Ali Math — printable worksheets</title>
+<meta name="description" content="Printable first-grade math worksheets: number tracing, counting, addition, subtraction, multiplication, division. English and Uzbek.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖨️</text></svg>">
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/print.css">
@@ -12,73 +12,84 @@
 <body>
 
 <div class="toolbar">
-  <h1>🖨️ Mashq varaqlari yasash</h1>
-  <p class="hint">Turini tanlang → “Yangilash” → “Chop etish”. Har safar yangi masalalar chiqadi. Javoblar oxirgi sahifada.</p>
+  <h1 id="tbTitle">🖨️ Make practice sheets</h1>
+  <p class="hint" id="tbHint">Pick a type → “New set” → “Print”. Every refresh makes brand-new problems. Answers go on the last page.</p>
   <div class="controls">
     <div class="field">
-      <label for="fType">Mashq turi</label>
+      <label for="fType" id="lbType">Exercise type</label>
       <select id="fType">
-        <optgroup label="Boshlang'ich">
-          <option value="trace">✍️ Raqam yozish (0–9)</option>
-          <option value="count">🍎 Sanash va yozish</option>
-          <option value="numline">📏 Sonlar chizig'i</option>
-          <option value="compare">⚖️ Taqqoslash &lt; &gt; =</option>
+        <optgroup label="Basics" id="ogBasics">
+          <option value="trace">✍️ Number tracing (0–9)</option>
+          <option value="count">🍎 Count and write</option>
+          <option value="numline">📏 Number line</option>
+          <option value="compare">⚖️ Compare &lt; &gt; =</option>
         </optgroup>
-        <optgroup label="Amallar">
-          <option value="add" selected>➕ Qo'shish</option>
-          <option value="sub">➖ Ayirish</option>
-          <option value="addsub">➕➖ Aralash</option>
-          <option value="vertical">🧮 Ustunli qo'shish/ayirish</option>
-          <option value="mul">✖️ Ko'paytirish</option>
-          <option value="div">➗ Bo'lish</option>
-          <option value="all">🎲 Hammasi aralash</option>
+        <optgroup label="Operations" id="ogOps">
+          <option value="add" selected>➕ Addition</option>
+          <option value="sub">➖ Subtraction</option>
+          <option value="addsub">➕➖ Mixed add/subtract</option>
+          <option value="vertical">🧮 Column add/subtract</option>
+          <option value="mul">✖️ Multiplication</option>
+          <option value="div">➗ Division</option>
+          <option value="all">🎲 All mixed</option>
         </optgroup>
-        <optgroup label="Qiziqarli">
-          <option value="table">📋 Ko'paytirish jadvali (plakat)</option>
-          <option value="color">🎨 Hisobla va rangla</option>
+        <optgroup label="Fun" id="ogFun">
+          <option value="table">📋 Times tables (poster)</option>
+          <option value="color">🎨 Solve and color</option>
         </optgroup>
       </select>
     </div>
 
     <div class="field">
-      <label for="fLevel">Daraja</label>
+      <label for="fLevel" id="lbLevel">Difficulty</label>
       <select id="fLevel">
-        <option value="1">1 — eng oson</option>
-        <option value="2" selected>2 — o'rtacha</option>
-        <option value="3">3 — qiyin</option>
+        <option value="1">1 — easiest</option>
+        <option value="2" selected>2 — medium</option>
+        <option value="3">3 — hard</option>
+        <option value="4">4 — expert</option>
       </select>
     </div>
 
     <div class="field">
-      <label for="fPages">Varaqlar soni</label>
+      <label for="fPages" id="lbPages">Sheets</label>
       <select id="fPages">
         <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option>
       </select>
     </div>
 
     <div class="field">
-      <label for="fName">Ism</label>
+      <label for="fName" id="lbName">Name</label>
       <input id="fName" type="text" value="Ali" maxlength="20">
+    </div>
+
+    <div class="field">
+      <label for="fLang" id="lbLang">Language</label>
+      <select id="fLang">
+        <option value="en">English</option>
+        <option value="uz">O'zbekcha</option>
+        <option value="ru">Русский</option>
+      </select>
     </div>
 
     <div class="field chk">
       <input id="fKey" type="checkbox" checked>
-      <label for="fKey">Javoblar sahifasi</label>
+      <label for="fKey" id="lbKey">Answer key page</label>
     </div>
 
     <div class="field chk">
       <input id="fBW" type="checkbox">
-      <label for="fBW">Oq-qora (siyoh tejash)</label>
+      <label for="fBW" id="lbBW">Black &amp; white (save ink)</label>
     </div>
 
-    <button class="tbtn alt" id="btnMake">🎲 Yangilash</button>
-    <button class="tbtn" id="btnPrint">🖨️ Chop etish</button>
-    <a class="tbtn alt" href="index.html" style="text-decoration:none; display:inline-block">🏠 O'yinlarga qaytish</a>
+    <button class="tbtn alt" id="btnMake">🎲 New set</button>
+    <button class="tbtn" id="btnPrint">🖨️ Print</button>
+    <a class="tbtn alt" href="index.html" id="btnBack" style="text-decoration:none; display:inline-block">🏠 Back to games</a>
   </div>
 </div>
 
 <div id="sheets"></div>
 
+<script src="assets/js/i18n.js"></script>
 <script src="assets/js/worksheets.js"></script>
 </body>
 </html>

@@ -1,10 +1,11 @@
 /* =========================================================
-   app.js — o'yin boshqaruvi
+   app.js — game logic (bilingual: English default / Uzbek)
    ========================================================= */
 (function (global) {
   'use strict';
 
-  var QSET_SIZE = 10;   /* bitta to'plamdagi savollar soni */
+  var QSET_SIZE = 10;   /* questions per set */
+  var L = function (o) { return global.Lang.L(o); };
 
   var S = {
     topic: null,
@@ -37,10 +38,57 @@
     doneMsg:   $('doneMsg'),
     btnNext:   $('btnNext'),
     btnSound:  $('btnSound'),
+    btnLang:   $('btnLang'),
     sheet:     $('parentSheet')
   };
 
-  /* ---------- Xotira (localStorage) ---------- */
+  /* ---------- UI strings (en / uz / ru) ---------- */
+  var UI = {
+    title:     { en: 'Ali Math — fun math games',
+                 uz: 'Ali Matematika — quvnoq matematika o\'yinlari',
+                 ru: 'Али Математика — весёлые математические игры' },
+    brand:     { en: 'Ali Math', uz: 'Ali Matematika', ru: 'Али Математика' },
+    subtitle:  { en: 'Let\'s learn counting, adding, subtracting, multiplying and dividing with fun games! 🎉',
+                 uz: 'Quvnoq o\'yinlar bilan sanashni, qo\'shishni, ayirishni, ko\'paytirishni va bo\'lishni o\'rganamiz! 🎉',
+                 ru: 'Учимся считать, складывать, вычитать, умножать и делить в весёлых играх! 🎉' },
+    printName: { en: 'Print', uz: 'Chop etish', ru: 'Печать' },
+    printDesc: { en: 'Worksheets for paper', uz: 'Daftar uchun mashqlar', ru: 'Задания на бумаге' },
+    parents:   { en: '👨‍👩‍👦 For parents', uz: '👨‍👩‍👦 Ota-onalar uchun', ru: '👨‍👩‍👦 Для родителей' },
+    soundOn:   { en: '🔊 Sound: on', uz: '🔊 Ovoz: yoniq', ru: '🔊 Звук: вкл' },
+    soundOff:  { en: '🔇 Sound: off', uz: '🔇 Ovoz: o\'chiq', ru: '🔇 Звук: выкл' },
+    /* label shows the NEXT language in the cycle en → uz → ru → en */
+    langBtn:   { en: '🇺🇿 O\'zbekcha', uz: '🇷🇺 Русский', ru: '🇬🇧 English' },
+    back:      { en: '⬅️ Back', uz: '⬅️ Orqaga', ru: '⬅️ Назад' },
+    pickLevel: { en: 'Pick a level', uz: 'Darajani tanla', ru: 'Выбери уровень' },
+    best:      { en: 'Best: ', uz: 'Eng yaxshi: ', ru: 'Лучший: ' },
+    fresh:     { en: 'New!', uz: 'Yangi!', ru: 'Новый!' },
+    repeat:    { en: '🔁 Say it again', uz: '🔁 Takrorla', ru: '🔁 Повторить' },
+    again:     { en: '🔄 Play again', uz: '🔄 Yana o\'ynash', ru: '🔄 Играть ещё' },
+    next:      { en: '➡️ Next level', uz: '➡️ Keyingi daraja', ru: '➡️ Следующий уровень' },
+    homeBtn:   { en: '🏠 Home', uz: '🏠 Bosh sahifa', ru: '🏠 Домой' },
+    close:     { en: 'Close', uz: 'Yopish', ru: 'Закрыть' },
+    hello:     { en: 'Hello, Ali! 👋', uz: 'Salom, Ali! 👋', ru: 'Привет, Али! 👋' },
+    great:     { en: 'Amazing!', uz: 'Ajoyib!', ru: 'Отлично!' },
+    goOn:      { en: 'Let\'s keep going!', uz: 'Davom etamiz!', ru: 'Продолжаем!' },
+    done3:     { en: 'Amazing work, Ali!', uz: 'Zo\'r ish, Ali!', ru: 'Потрясающе, Али!' },
+    done2:     { en: 'Well done, Ali!', uz: 'Barakalla, Ali!', ru: 'Молодец, Али!' },
+    done1:     { en: 'Good try!', uz: 'Yaxshi harakat!', ru: 'Хорошая попытка!' },
+    perfect:   { en: 'Not a single mistake! 🌟', uz: 'Bitta ham xato yo\'q! 🌟', ru: 'Ни одной ошибки! 🌟' }
+  };
+
+  var PRAISE = {
+    en: ['Great job!', 'Awesome!', 'Well done!', 'Amazing!', 'You rock!', 'Brilliant!'],
+    uz: ['Barakalla!', 'Ofarin!', 'Zo\'r!', 'Juda yaxshi!', 'Aql bovar qilmas!', 'Qoyil!'],
+    ru: ['Молодец!', 'Отлично!', 'Супер!', 'Здорово!', 'Умница!', 'Браво!']
+  };
+  var ENCOURAGE = {
+    en: ['Try again!', 'Almost there!', 'No worries, keep going!', 'Try counting!'],
+    uz: ['Yana urinib ko\'r!', 'Deyarli topding!', 'Hechqisi yo\'q, davom et!', 'Sanab ko\'r!'],
+    ru: ['Попробуй ещё!', 'Почти получилось!', 'Ничего, продолжай!', 'Посчитай!']
+  };
+  var FACES_HAPPY = ['🦊', '🐼', '🐰', '🐨', '🐸', '🦉'];
+
+  /* ---------- storage ---------- */
   var STORE = 'ali-matematika-v1';
   function loadProgress() {
     try { return JSON.parse(localStorage.getItem(STORE)) || {}; }
@@ -52,19 +100,62 @@
   var progress = loadProgress();
   if (progress.sound === false) Sound.setEnabled(false);
 
-  /* ---------- Ekranlar ---------- */
+  /* ---------- language ---------- */
+  function setBrand(text) {
+    var h1 = document.querySelector('.brand h1');
+    if (!h1) return;
+    h1.innerHTML = '';
+    for (var i = 0; i < text.length; i++) {
+      if (text[i] === ' ') { h1.appendChild(document.createTextNode(' ')); continue; }
+      var sp = document.createElement('span');
+      sp.className = 'pop';
+      sp.textContent = text[i];
+      h1.appendChild(sp);
+    }
+  }
+
+  function applyLang() {
+    var lang = global.Lang.current;
+    document.documentElement.lang = lang;
+    document.body.dataset.lang = lang;
+    document.title = L(UI.title);
+
+    setBrand(L(UI.brand));
+    document.querySelector('.brand p').textContent = L(UI.subtitle);
+
+    /* topic cards */
+    Object.keys(Questions.TOPICS).forEach(function (key) {
+      var card = document.querySelector('[data-topic="' + key + '"]');
+      if (!card) return;
+      var T = Questions.TOPICS[key];
+      card.querySelector('.name').textContent = L(T.name);
+      card.querySelector('.desc').textContent = L(T.home);
+    });
+    var pc = document.querySelector('.t-print');
+    pc.querySelector('.name').textContent = L(UI.printName);
+    pc.querySelector('.desc').textContent = L(UI.printDesc);
+
+    $('btnParents').textContent = L(UI.parents);
+    el.btnLang.textContent = L(UI.langBtn);
+    $('btnRepeat').textContent = L(UI.repeat);
+    $('btnAgain').textContent = L(UI.again);
+    el.btnNext.textContent = L(UI.next);
+    $('btnCloseParents').textContent = L(UI.close);
+    document.querySelectorAll('[data-go="home"].txt').forEach(function (b) { b.textContent = L(UI.homeBtn); });
+    document.querySelectorAll('.back-btn').forEach(function (b) { b.textContent = L(UI.back); });
+    paintSound();
+    if (Sound.refreshVoice) Sound.refreshVoice();
+  }
+
+  /* ---------- screens ---------- */
   function show(name) {
     for (var i = 0; i < el.screens.length; i++) el.screens[i].classList.remove('active');
     $('screen-' + name).classList.add('active');
     global.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  /* ---------- Yordamchi (mascot) ---------- */
-  var FACES_HAPPY = ['🦊', '🐼', '🐰', '🐨', '🐸', '🦉'];
-  var PRAISE = ['Barakalla!', 'Ofarin!', 'Zo\'r!', 'Juda yaxshi!', 'Aql bovar qilmas!', 'Qoyil!'];
-  var ENCOURAGE = ['Yana urinib ko\'r!', 'Deyarli topding!', 'Hechqisi yo\'q, davom et!', 'Sanab ko\'r!'];
+  /* ---------- buddy ---------- */
   var buddyTimer = null;
-
   function buddySay(text, face, speak) {
     el.buddyText.textContent = text;
     if (face) el.buddyFace.textContent = face;
@@ -74,12 +165,12 @@
     buddyTimer = setTimeout(function () { el.buddy.classList.remove('talk'); }, 2200);
   }
 
-  /* ---------- Daraja tanlash ekrani ---------- */
+  /* ---------- level select ---------- */
   function openLevels(topic) {
     S.topic = topic;
     var T = Questions.TOPICS[topic];
-    el.levelTitle.textContent = T.emoji + ' ' + T.name;
-    el.levelSub.textContent = 'Darajani tanla';
+    el.levelTitle.textContent = T.emoji + ' ' + L(T.name);
+    el.levelSub.textContent = L(UI.pickLevel);
     el.levelGrid.innerHTML = '';
 
     T.levels.forEach(function (lv, i) {
@@ -88,16 +179,16 @@
       b.className = 'level';
       b.innerHTML =
         '<div class="lv-stars">' + lv.stars + '</div>' +
-        '<span class="lv-name">' + lv.name + '</span>' +
-        '<span class="lv-desc">' + lv.desc + '</span>' +
-        '<span class="lv-badge">' + (best ? 'Eng yaxshi: ' + best + '/' + QSET_SIZE : 'Yangi!') + '</span>';
+        '<span class="lv-name">' + L(lv.name) + '</span>' +
+        '<span class="lv-desc">' + L(lv.desc) + '</span>' +
+        '<span class="lv-badge">' + (best ? L(UI.best) + best + '/' + QSET_SIZE : L(UI.fresh)) + '</span>';
       b.addEventListener('click', function () { Sound.tap(); startGame(topic, i + 1); });
       el.levelGrid.appendChild(b);
     });
     show('levels');
   }
 
-  /* ---------- O'yinni boshlash ---------- */
+  /* ---------- game ---------- */
   function startGame(topic, level) {
     S.topic = topic; S.level = level;
     S.list = Questions.make(topic, level, QSET_SIZE);
@@ -125,7 +216,7 @@
     }
   }
 
-  /* ---------- Savolni chizish ---------- */
+  /* ---------- render question ---------- */
   function renderVisual(blocks) {
     el.visual.innerHTML = '';
     if (!blocks || !blocks.length) { el.visual.style.display = 'none'; return; }
@@ -146,7 +237,6 @@
         el.visual.appendChild(bk);
         return;
       }
-      /* group */
       var g = document.createElement('div');
       g.className = 'group' + (b.n > 12 ? ' big' : '');
       var cols = b.n <= 3 ? b.n : (b.n <= 8 ? Math.ceil(b.n / 2) : 5);
@@ -187,7 +277,7 @@
     setTimeout(function () { Sound.say(q.say); }, 260);
   }
 
-  /* ---------- Javob ---------- */
+  /* ---------- answering ---------- */
   var locked = false;
   function answer(btn, value, q) {
     if (locked || btn.disabled) return;
@@ -197,7 +287,7 @@
       btn.disabled = true;
       Sound.wrong();
       S.mistakes++;
-      buddySay(Questions.pick(ENCOURAGE), '🤔');
+      buddySay(Questions.pick(L(ENCOURAGE)), '🤔');
       return;
     }
 
@@ -207,7 +297,7 @@
     Confetti.small();
     S.score++;
     el.score.textContent = S.score;
-    buddySay(Questions.pick(PRAISE), Questions.pick(FACES_HAPPY));
+    buddySay(Questions.pick(L(PRAISE)), Questions.pick(FACES_HAPPY));
     setTimeout(function () { Sound.sayNumber(q.answer); }, 500);
 
     var kids = el.answers.children;
@@ -221,7 +311,7 @@
     }, 1150);
   }
 
-  /* ---------- Yakun ---------- */
+  /* ---------- finish ---------- */
   function finish() {
     var stars = S.mistakes === 0 ? 3 : (S.mistakes <= 3 ? 2 : 1);
     el.doneStars.innerHTML = '';
@@ -231,27 +321,37 @@
       el.doneStars.appendChild(s);
     }
     el.doneEmoji.textContent = stars === 3 ? '🏆' : (stars === 2 ? '🎉' : '👏');
-    el.doneTitle.textContent = stars === 3 ? 'Zo\'r ish, Ali!' : (stars === 2 ? 'Barakalla, Ali!' : 'Yaxshi harakat!');
-    el.doneMsg.textContent = QSET_SIZE + ' ta savoldan ' + S.score + ' tasini to\'g\'ri yechding. ' +
-      (S.mistakes === 0 ? 'Bitta ham xato yo\'q! 🌟' : 'Xatolar: ' + S.mistakes + '. Yana bir marta urinib ko\'raylik!');
+    el.doneTitle.textContent = stars === 3 ? L(UI.done3) : (stars === 2 ? L(UI.done2) : L(UI.done1));
 
-    /* natijani saqlaymiz */
+    var cur = global.Lang.current;
+    var msg;
+    if (cur === 'uz') {
+      msg = QSET_SIZE + ' ta savoldan ' + S.score + ' tasini to\'g\'ri yechding. ' +
+        (S.mistakes === 0 ? L(UI.perfect) : 'Xatolar: ' + S.mistakes + '. Yana bir marta urinib ko\'raylik!');
+    } else if (cur === 'ru') {
+      msg = 'Ты решил ' + S.score + ' из ' + QSET_SIZE + ' задач. ' +
+        (S.mistakes === 0 ? L(UI.perfect) : 'Ошибок: ' + S.mistakes + '. Попробуем ещё раз!');
+    } else {
+      msg = 'You solved ' + S.score + ' of ' + QSET_SIZE + ' questions. ' +
+        (S.mistakes === 0 ? L(UI.perfect) : 'Mistakes: ' + S.mistakes + '. Let\'s try once more!');
+    }
+    el.doneMsg.textContent = msg;
+
     progress[S.topic] = progress[S.topic] || {};
     var prev = progress[S.topic][S.level] || 0;
     if (S.score > prev) progress[S.topic][S.level] = S.score;
     saveProgress(progress);
 
-    /* keyingi daraja bormi? */
     var hasNext = S.level < Questions.TOPICS[S.topic].levels.length;
     el.btnNext.style.display = hasNext ? '' : 'none';
 
     show('done');
     Sound.win();
     Confetti.big();
-    buddySay(stars === 3 ? 'Ajoyib!' : 'Davom etamiz!', '🥳');
+    buddySay(stars === 3 ? L(UI.great) : L(UI.goOn), '🥳');
   }
 
-  /* ---------- Hodisalar ---------- */
+  /* ---------- events ---------- */
   el.topicGrid.addEventListener('click', function (e) {
     var b = e.target.closest('.topic');
     if (!b || !b.dataset.topic) return;
@@ -277,9 +377,9 @@
     startGame(S.topic, next);
   });
 
-  /* Ovoz tugmasi */
+  /* sound toggle */
   function paintSound() {
-    el.btnSound.textContent = Sound.isEnabled() ? '🔊 Ovoz: yoniq' : '🔇 Ovoz: o\'chiq';
+    el.btnSound.textContent = Sound.isEnabled() ? L(UI.soundOn) : L(UI.soundOff);
   }
   el.btnSound.addEventListener('click', function () {
     Sound.unlock();
@@ -289,14 +389,25 @@
     paintSound();
     if (Sound.isEnabled()) Sound.pop();
   });
-  paintSound();
 
-  /* Ota-onalar paneli */
+  /* language toggle */
+  el.btnLang.addEventListener('click', function () {
+    Sound.tap();
+    var order = { en: 'uz', uz: 'ru', ru: 'en' };
+    global.Lang.set(order[global.Lang.current] || 'en');
+    applyLang();
+    /* refresh whatever screen is open */
+    if ($('screen-levels').classList.contains('active')) openLevels(S.topic);
+    if ($('screen-game').classList.contains('active')) startGame(S.topic, S.level);
+    buddySay(L(UI.hello), '🦊');
+  });
+
+  /* parents panel */
   $('btnParents').addEventListener('click', function () { Sound.tap(); el.sheet.classList.add('open'); });
   $('btnCloseParents').addEventListener('click', function () { el.sheet.classList.remove('open'); });
   el.sheet.addEventListener('click', function (e) { if (e.target === el.sheet) el.sheet.classList.remove('open'); });
 
-  /* Klaviatura: 1–4 raqamlari bilan javob berish (ota-ona uchun qulay) */
+  /* keyboard: answer with keys 1–4 */
   document.addEventListener('keydown', function (e) {
     if (!$('screen-game').classList.contains('active')) return;
     var n = parseInt(e.key, 10);
@@ -304,7 +415,7 @@
     if (e.key === 'Escape') show('home');
   });
 
-  /* Birinchi tegishda ovozni ochamiz (mobil brauzerlar talabi) */
+  /* unlock audio on first touch (mobile requirement) */
   ['pointerdown', 'touchstart', 'keydown'].forEach(function (ev) {
     document.addEventListener(ev, function once() {
       Sound.unlock();
@@ -312,7 +423,7 @@
     }, { once: true });
   });
 
-  /* Salomlashuv */
-  setTimeout(function () { buddySay('Salom, Ali! 👋', '🦊'); }, 700);
+  applyLang();
+  setTimeout(function () { buddySay(L(UI.hello), '🦊'); }, 700);
 
 })(window);
