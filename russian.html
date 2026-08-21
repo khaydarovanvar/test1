@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ali Russian — первые слова и буквы</title>
+<meta name="description" content="Russian from scratch for kids: the Cyrillic alphabet with sounds, first words with pictures, and listening games. Uzbek and English helper translations.">
+<meta name="theme-color" content="#35b6ef">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐻</text></svg>">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/english.css">
+</head>
+<body>
+
+<div class="sky-decor" aria-hidden="true">
+  <div class="sun"></div>
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+  <div class="hills">
+    <svg viewBox="0 0 1440 210" preserveAspectRatio="none">
+      <path fill="#8fe0a8" d="M0,120 C180,60 300,170 480,130 C660,90 780,180 960,140 C1140,100 1290,160 1440,120 L1440,210 L0,210 Z"/>
+      <path fill="#63cd86" d="M0,160 C200,120 340,200 540,168 C760,132 880,205 1080,172 C1250,145 1340,190 1440,168 L1440,210 L0,210 Z"/>
+    </svg>
+  </div>
+</div>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<div class="wrap">
+
+  <!-- ==================== HOME ==================== -->
+  <section id="screen-home" class="screen active">
+    <div class="brand">
+      <h1>Ali Russian</h1>
+      <p id="engSubtitle">Let's learn Russian letters and first words! 🎉</p>
+    </div>
+
+    <div class="card-grid" id="catGrid"></div>
+
+    <div class="foot-row">
+      <a class="btn ghost" href="index.html" id="btnMath">🔢 Math</a>
+      <button class="btn sunny" id="btnSound">🔊 Sound: on</button>
+      <button class="btn mint" id="btnLang">🇺🇿 O'zbekcha</button>
+    </div>
+  </section>
+
+  <!-- ==================== LEARN (letters or words) ==================== -->
+  <section id="screen-learn" class="screen">
+    <div class="topbar">
+      <button class="btn ghost small back-btn" data-go="home">⬅️ Back</button>
+      <div class="spacer"></div>
+      <button class="btn bubble" id="btnQuiz">🎯 Play!</button>
+    </div>
+    <div class="brand">
+      <h1 id="learnTitle">АБВ</h1>
+      <p id="learnHint">Tap a card and listen 👂</p>
+    </div>
+    <div id="learnGrid" class="letter-grid"></div>
+  </section>
+
+  <!-- ==================== QUIZ ==================== -->
+  <section id="screen-game" class="screen">
+    <div class="topbar">
+      <button class="btn ghost small" data-go="home">🏠</button>
+      <button class="btn ghost small" id="btnRepeat">🔊</button>
+      <div class="spacer"></div>
+      <div class="progress-dots" id="dots"></div>
+      <div class="score-chip">⭐ <span id="score">0</span></div>
+    </div>
+
+    <div class="stage">
+      <div class="q-title" id="qTitle">Find: apple</div>
+      <div class="big-word" id="bigWord">apple</div>
+      <div class="answers opt-grid" id="answers"></div>
+    </div>
+  </section>
+
+  <!-- ==================== FINISH ==================== -->
+  <section id="screen-done" class="screen">
+    <div class="stage finish">
+      <div class="big" id="doneEmoji">🏆</div>
+      <h2 id="doneTitle">Well done, Ali!</h2>
+      <div class="stars" id="doneStars"></div>
+      <p class="msg" id="doneMsg"></p>
+      <div class="foot-row">
+        <button class="btn mint" id="btnAgain">🔄 Play again</button>
+        <button class="btn ghost txt" data-go="home">🏠 Home</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="buddy" id="buddy">
+  <div class="bubble-txt" id="buddyText">Привет, Али!</div>
+  <span class="face" id="buddyFace">🐻</span>
+</div>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/audio.js"></script>
+<script src="assets/js/confetti.js"></script>
+<script src="assets/js/vocab.js"></script>
+<script src="assets/js/russian.js"></script>
+</body>
+</html>

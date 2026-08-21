@@ -307,6 +307,64 @@
       }
     },
 
+    /* ---- 🇷🇺 Russian alphabet tracing ---- */
+    rletters: {
+      icon: '🇷🇺', head: 'h-pink',
+      title: { en: 'Writing Russian letters', uz: 'Rus harflarini yozamiz', ru: 'Пишем русские буквы' },
+      sub: { en: 'Trace along the dots, then write your own. Say the word out loud!',
+             uz: 'Nuqtalar bo\'ylab yur, so\'ng o\'zing yoz. So\'zni ovoz chiqarib ayt!',
+             ru: 'Обведи по точкам, потом напиши сам. Скажи слово вслух!' },
+      pages: 5,
+      build: function (page, level, pageNo) {
+        var perPage = 7;
+        var from = (pageNo || 0) * perPage;
+        var slice = window.Vocab.RU_ALPHABET.slice(from, from + perPage);
+        var html = '';
+        slice.forEach(function (a) {
+          var lo = a.l.toLowerCase();
+          var reps = '';
+          for (var r = 0; r < 3; r++) reps += charSVG(a.l, r < 1 ? 'solid' : 'line');
+          for (var q = 0; q < 3; q++) reps += charSVG(lo, q < 1 ? 'solid' : 'line');
+          html += '<div class="trace-row">' +
+            '<div class="digit-big">' + charSVG(a.l + lo, 'solid', true) + '</div>' +
+            '<div class="reps">' + reps + '</div>' +
+            '<div class="count-hint" style="font-size:15px;letter-spacing:0">' +
+              '<span style="font-size:26px">' + a.e + '</span><br>' + esc(a.w) + '</div>' +
+          '</div>';
+        });
+        page.body.innerHTML = html;
+        return null;
+      }
+    },
+
+    /* ---- 🇷🇺 Russian picture dictionary ---- */
+    rdict: {
+      icon: '🐻', head: 'h-orange',
+      title: { en: 'Russian picture dictionary', uz: 'Ruscha rasmli lug\'at', ru: 'Русский словарь в картинках' },
+      sub: { en: 'Say each Russian word out loud, then copy it on the line.',
+             uz: 'Har ruscha so\'zni ovoz chiqarib ayt, so\'ng chiziqqa ko\'chirib yoz.',
+             ru: 'Скажи каждое слово вслух, потом спиши его на строчку.' },
+      build: function (page, level, pageNo) {
+        var cats = window.Vocab.CATEGORIES;
+        var cat = cats[(pageNo || 0) % cats.length];
+        var helper = function (w) { return window.Lang.current === 'en' ? w.en : w.uz; };
+        var html = '<h3 style="text-align:center;margin:0 0 4mm;font-size:22px;color:#5c5680">' +
+                   cat.e + ' ' + esc(L(cat.name)) + '</h3>';
+        var cells = '';
+        cat.words.slice(0, 12).forEach(function (w) {
+          cells += '<div class="dcell">' +
+            '<span class="de">' + w.e + '</span>' +
+            '<span class="den">' + esc(w.ru) + '</span>' +
+            '<span class="dtr">' + esc(helper(w)) + '</span>' +
+            '<span class="dline"></span>' +
+          '</div>';
+        });
+        html += '<div class="dict-grid">' + cells + '</div>';
+        page.body.innerHTML = html;
+        return null;
+      }
+    },
+
     /* ---- 🍎 Counting ---- */
     count: {
       icon: '🍎', head: 'h-blue',
@@ -592,6 +650,7 @@
     btnBack: { en: '🏠 Back to games', uz: '🏠 O\'yinlarga qaytish', ru: '🏠 К играм' },
     ogBasics:{ en: 'Basics', uz: 'Boshlang\'ich', ru: 'Основы' },
     ogEng:   { en: 'English', uz: 'Ingliz tili', ru: 'Английский' },
+    ogRus:   { en: 'Russian', uz: 'Rus tili', ru: 'Русский' },
     ogOps:   { en: 'Operations', uz: 'Amallar', ru: 'Действия' },
     ogFun:   { en: 'Fun', uz: 'Qiziqarli', ru: 'Интересное' },
     docTitle:{ en: 'Ali Math — printable worksheets', uz: 'Ali Matematika — chop etiladigan mashqlar', ru: 'Али Математика — листы для печати' },
@@ -602,6 +661,8 @@
       compare: { en: '⚖️ Compare < > =',          uz: '⚖️ Taqqoslash < > =', ru: '⚖️ Сравнение < > =' },
       letters: { en: '🔤 Alphabet tracing (A–Z)',  uz: '🔤 Alifbo yozish (A–Z)', ru: '🔤 Пишем алфавит (A–Z)' },
       dict:    { en: '🖼️ Picture dictionary',     uz: '🖼️ Rasmli lug\'at', ru: '🖼️ Словарь в картинках' },
+      rletters:{ en: '🔤 Russian alphabet (А–Я)',  uz: '🔤 Rus alifbosi (А–Я)', ru: '🔤 Пишем алфавит (А–Я)' },
+      rdict:   { en: '🖼️ Russian picture dictionary', uz: '🖼️ Ruscha rasmli lug\'at', ru: '🖼️ Русский словарь в картинках' },
       add:     { en: '➕ Addition',               uz: '➕ Qo\'shish', ru: '➕ Сложение' },
       sub:     { en: '➖ Subtraction',            uz: '➖ Ayirish', ru: '➖ Вычитание' },
       addsub:  { en: '➕➖ Mixed add/subtract',   uz: '➕➖ Aralash', ru: '➕➖ Слож. и вычит.' },
@@ -625,7 +686,7 @@
     document.title = L(TB.docTitle);
     document.getElementById('tbTitle').textContent = L(TB.title);
     document.getElementById('tbHint').textContent = L(TB.hint);
-    ['lbType','lbLevel','lbPages','lbName','lbLang','lbKey','lbBW','ogBasics','ogEng','ogOps','ogFun'].forEach(function (id) {
+    ['lbType','lbLevel','lbPages','lbName','lbLang','lbKey','lbBW','ogBasics','ogEng','ogRus','ogOps','ogFun'].forEach(function (id) {
       var e = document.getElementById(id);
       if (!e) return;
       if (e.tagName === 'OPTGROUP') e.label = L(TB[id]);

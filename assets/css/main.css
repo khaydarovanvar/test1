@@ -168,6 +168,7 @@ body{
 .t-mul  { background:linear-gradient(160deg,#9a83ff,#6a49ef); box-shadow:0 10px 0 #4b2fc4, var(--shadow-lift); }
 .t-div  { background:linear-gradient(160deg,#ff7fb4,#ee3f83); box-shadow:0 10px 0 #c22764, var(--shadow-lift); }
 .t-eng  { background:linear-gradient(160deg,#43d0c4,#0ea5a5); box-shadow:0 10px 0 #087f7f, var(--shadow-lift); }
+.t-rus  { background:linear-gradient(160deg,#ff8a80,#e5393d); box-shadow:0 10px 0 #b71c22, var(--shadow-lift); }
 .t-print{ background:linear-gradient(160deg,#ffd766,#f0ad1a); color:#5a3d00; box-shadow:0 10px 0 #c98c00, var(--shadow-lift); }
 .t-print .name,.t-print .desc,.t-print .sign{ text-shadow:none; }
 

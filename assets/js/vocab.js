@@ -22,6 +22,31 @@
     { l: 'Y', e: '🪀', w: 'yo-yo' },      { l: 'Z', e: '🦓', w: 'zebra' }
   ];
 
+  /* Russian alphabet — 33 letters.
+     n: spoken name when it differs from the letter itself,
+     mid: the letter is inside the word, not at the start.   */
+  var RU_ALPHABET = [
+    { l: 'А', e: '🍉', w: 'арбуз' },    { l: 'Б', e: '🍌', w: 'банан' },
+    { l: 'В', e: '🐺', w: 'волк' },     { l: 'Г', e: '🍄', w: 'гриб' },
+    { l: 'Д', e: '🏠', w: 'дом' },      { l: 'Е', e: '🦝', w: 'енот' },
+    { l: 'Ё', e: '🦔', w: 'ёжик' },     { l: 'Ж', e: '🐞', w: 'жук' },
+    { l: 'З', e: '🦓', w: 'зебра' },    { l: 'И', e: '🧸', w: 'игрушка' },
+    { l: 'Й', e: '🥣', w: 'йогурт' },   { l: 'К', e: '🐱', w: 'кот' },
+    { l: 'Л', e: '🦁', w: 'лев' },      { l: 'М', e: '🚗', w: 'машина' },
+    { l: 'Н', e: '👃', w: 'нос' },      { l: 'О', e: '☁️', w: 'облако' },
+    { l: 'П', e: '🐧', w: 'пингвин' },  { l: 'Р', e: '🐟', w: 'рыба' },
+    { l: 'С', e: '☀️', w: 'солнце' },   { l: 'Т', e: '🎂', w: 'торт' },
+    { l: 'У', e: '🦆', w: 'утка' },     { l: 'Ф', e: '🚩', w: 'флаг' },
+    { l: 'Х', e: '🍞', w: 'хлеб' },     { l: 'Ц', e: '🌸', w: 'цветок' },
+    { l: 'Ч', e: '⏰', w: 'часы' },     { l: 'Ш', e: '🎈', w: 'шарик' },
+    { l: 'Щ', e: '🐶', w: 'щенок' },
+    { l: 'Ъ', e: '🚪', w: 'подъезд', n: 'твёрдый знак', mid: true },
+    { l: 'Ы', e: '🧀', w: 'сыр', n: 'ы', mid: true },
+    { l: 'Ь', e: '🐻', w: 'медведь', n: 'мягкий знак', mid: true },
+    { l: 'Э', e: '🍦', w: 'эскимо' },   { l: 'Ю', e: '👗', w: 'юбка' },
+    { l: 'Я', e: '🍎', w: 'яблоко' }
+  ];
+
   var CATEGORIES = [
     {
       id: 'animals', e: '🐶',
@@ -193,6 +218,7 @@
 
   global.Vocab = {
     ALPHABET: ALPHABET,
+    RU_ALPHABET: RU_ALPHABET,
     CATEGORIES: CATEGORIES,
     byId: function (id) {
       for (var i = 0; i < CATEGORIES.length; i++) if (CATEGORIES[i].id === id) return CATEGORIES[i];

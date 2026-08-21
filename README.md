@@ -14,8 +14,9 @@ English mode a gentle way to learn English number words.
 |---|---|---|
 | 🎮 Math games | `index.html` | Counting, addition, subtraction, multiplication, division — up to 4 levels each, 10-question sets, stars, confetti, voice praise. Language switch: EN → UZ → RU |
 | 🇬🇧 English games | `english.html` | English from scratch: ABC with sounds, ~110 first words in 10 topics, listen-and-find quizzes. English voice + Uzbek/Russian helper translations |
+| 🇷🇺 Russian games | `russian.html` | Russian from scratch: the Cyrillic alphabet А–Я (33 letters) with sounds, the same 10 word topics with a Russian voice + Uzbek/English helpers |
 | 🖨️ Worksheet maker | `print.html` | 13 exercise types × 4 difficulty levels, endless new variants, answer-key pages, ink-saving mode |
-| 📄 Ready PDFs | `worksheets/` | 24 print-ready A4 packs, incl. 4 expert math packs and 2 English packs |
+| 📄 Ready PDFs | `worksheets/` | 26 print-ready A4 packs: math, expert math, English and Russian |
 | ⚙️ PDF script | `tools/make-pdfs.sh` | Regenerates the whole PDF pack (needs Chromium) |
 
 ## 🚀 Getting started
@@ -48,13 +49,19 @@ Works great on phones — big buttons, no reading required.
 - **First words** — 10 topics (animals, food, colors, numbers, body, clothes, home, transport, nature, family & school), each word spoken by an **English voice** with the Uzbek or Russian translation shown for the parent
 - **Listen & find** — hears an English word, taps the right picture; 10 rounds, stars and confetti like the math games
 
+## 🇷🇺 Russian module (`russian.html`)
+
+Same games as the English module, with Russian as the target language:
+all 33 Cyrillic letters (Ъ, Ы, Ь shown inside words), tap-to-hear word cards
+spoken by a **Russian voice**, and listen-and-find quizzes.
+
 ## 🖨️ Printable worksheets (`print.html`)
 
-15 types: number tracing (0–9), counting, number line, comparing (< > =),
+17 types: number tracing (0–9), counting, number line, comparing (< > =),
 addition, subtraction, mixed, column arithmetic (up to 3-digit at expert level),
 multiplication, division, all-mixed, times-table wall poster,
-solve-and-color pixel art, **English alphabet tracing (A–Z)** and an
-**English picture dictionary** with copy lines.
+solve-and-color pixel art, **alphabet tracing and picture dictionaries
+for both English (A–Z) and Russian (А–Я)** with copy lines.
 
 - Every "New set" click → brand-new problems
 - 4 difficulty levels, 1–5 sheets, answer-key page, black-and-white mode
@@ -68,7 +75,8 @@ solve-and-color pixel art, **English alphabet tracing (A–Z)** and an
 17 solve-and-color · 18 mixed practice ·
 **19 expert add/subtract to 100 · 20 expert multiplication · 21 expert division ·
 22 expert 3-digit column arithmetic** ·
-🇬🇧 **23 alphabet tracing · 24 picture dictionary**
+🇬🇧 **23 alphabet tracing · 24 picture dictionary** ·
+🇷🇺 **25 Russian alphabet tracing · 26 Russian picture dictionary**
 
 Need new variants or another language? `bash tools/make-pdfs.sh`
 (edit the `lang=` parameter inside for uz/ru).

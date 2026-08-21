@@ -53,6 +53,8 @@
                  ru: 'Учимся считать, складывать, вычитать, умножать и делить в весёлых играх! 🎉' },
     engName:   { en: 'English', uz: 'Ingliz tili', ru: 'Английский' },
     engDesc:   { en: 'Letters and first words', uz: 'Harflar va ilk so\'zlar', ru: 'Буквы и первые слова' },
+    rusName:   { en: 'Russian', uz: 'Rus tili', ru: 'Русский' },
+    rusDesc:   { en: 'Letters and first words', uz: 'Harflar va ilk so\'zlar', ru: 'Буквы и первые слова' },
     printName: { en: 'Print', uz: 'Chop etish', ru: 'Печать' },
     printDesc: { en: 'Worksheets for paper', uz: 'Daftar uchun mashqlar', ru: 'Задания на бумаге' },
     parents:   { en: '👨‍👩‍👦 For parents', uz: '👨‍👩‍👦 Ota-onalar uchun', ru: '👨‍👩‍👦 Для родителей' },
@@ -136,6 +138,9 @@
     var ec = document.querySelector('.t-eng');
     ec.querySelector('.name').textContent = L(UI.engName);
     ec.querySelector('.desc').textContent = L(UI.engDesc);
+    var rc = document.querySelector('.t-rus');
+    rc.querySelector('.name').textContent = L(UI.rusName);
+    rc.querySelector('.desc').textContent = L(UI.rusDesc);
     var pc = document.querySelector('.t-print');
     pc.querySelector('.name').textContent = L(UI.printName);
     pc.querySelector('.desc').textContent = L(UI.printDesc);

@@ -65,6 +65,8 @@ pdf "21-expert-division.pdf"         "lang=en&type=div&level=4&pages=3"
 pdf "22-expert-column-3-digit.pdf"   "lang=en&type=vertical&level=4&pages=2"
 pdf "23-english-alphabet-tracing.pdf" "lang=en&type=letters&pages=1&key=0"
 pdf "24-english-picture-dictionary.pdf" "lang=en&type=dict&pages=5&key=0"
+pdf "25-russian-alphabet-tracing.pdf"   "lang=en&type=rletters&pages=1&key=0"
+pdf "26-russian-picture-dictionary.pdf" "lang=en&type=rdict&pages=5&key=0"
 
 echo "Done!"
 ls -la "$OUT"
