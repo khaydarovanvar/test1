@@ -1,0 +1,28 @@
+/* =========================================================
+   reading.css — extras for the Uzbek reading page
+   (builds on main.css + english.css)
+   ========================================================= */
+
+/* syllable tiles — smaller and denser than letter tiles */
+.syl-grid{
+  display:grid; gap:10px; margin-top:22px;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+}
+.syl-grid .ltile{ padding:12px 4px 10px; border-radius:18px; }
+.syl-grid .ltile .lt{ font-size:32px; }
+
+/* vowel header colours inside syllable text */
+.ltile .lt .vw{ color: var(--bubble-deep); }
+
+/* sentence tiles — full-width rows */
+.sent-grid{ display:grid; gap:12px; margin-top:22px; grid-template-columns:1fr 1fr; }
+.sent-grid .wcard{ display:flex; align-items:center; gap:14px; text-align:left; padding:14px 18px; }
+.sent-grid .wcard .we{ font-size:44px; }
+.sent-grid .wcard .wen{ font-size:22px; margin-top:0; }
+@media (max-width:700px){ .sent-grid{ grid-template-columns:1fr; } }
+
+/* smaller big-word for sentences */
+.big-word.sent{ font-size:clamp(26px,5.5vw,44px); }
+
+/* syllable split hint under the big word */
+.big-word .syl{ display:block; font-size:22px; color:var(--ink-soft); letter-spacing:2px; }

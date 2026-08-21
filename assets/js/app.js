@@ -55,6 +55,8 @@
     engDesc:   { en: 'Letters and first words', uz: 'Harflar va ilk so\'zlar', ru: 'Буквы и первые слова' },
     rusName:   { en: 'Russian', uz: 'Rus tili', ru: 'Русский' },
     rusDesc:   { en: 'Letters and first words', uz: 'Harflar va ilk so\'zlar', ru: 'Буквы и первые слова' },
+    readName:  { en: 'Reading', uz: 'O\'qish', ru: 'Чтение' },
+    readDesc:  { en: 'Read English and Russian', uz: 'Inglizcha va ruscha o\'qish', ru: 'Читаем по-английски и по-русски' },
     printName: { en: 'Print', uz: 'Chop etish', ru: 'Печать' },
     printDesc: { en: 'Worksheets for paper', uz: 'Daftar uchun mashqlar', ru: 'Задания на бумаге' },
     parents:   { en: '👨‍👩‍👦 For parents', uz: '👨‍👩‍👦 Ota-onalar uchun', ru: '👨‍👩‍👦 Для родителей' },
@@ -141,6 +143,9 @@
     var rc = document.querySelector('.t-rus');
     rc.querySelector('.name').textContent = L(UI.rusName);
     rc.querySelector('.desc').textContent = L(UI.rusDesc);
+    var dc = document.querySelector('.t-read');
+    dc.querySelector('.name').textContent = L(UI.readName);
+    dc.querySelector('.desc').textContent = L(UI.readDesc);
     var pc = document.querySelector('.t-print');
     pc.querySelector('.name').textContent = L(UI.printName);
     pc.querySelector('.desc').textContent = L(UI.printDesc);

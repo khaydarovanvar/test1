@@ -221,6 +221,34 @@
       'stroke="#b3adcf" stroke-width="1.6" stroke-dasharray="5 4" stroke-linecap="round">' + txt + '</text></svg>';
   }
 
+  /* pageNo 0/1: word cards (levels 1/2); pageNo 2: sentences with copy lines */
+  function buildReading(page, data, pageNo) {
+    if (pageNo < 2) {
+      var cells = '';
+      data.words[pageNo].forEach(function (w) {
+        cells += '<div class="dcell">' +
+          '<span class="de">' + w.e + '</span>' +
+          '<span class="den">' + esc(w.w) + '</span>' +
+          '<span class="dtr">' + esc(w.s) + '</span>' +
+          '<span class="dline"></span>' +
+        '</div>';
+      });
+      page.body.innerHTML = '<div class="dict-grid">' + cells + '</div>';
+    } else {
+      var rows = '';
+      data.sentences.slice(0, 10).forEach(function (sn, i) {
+        rows += '<div class="sent-row">' +
+          '<span class="sr-no">' + (i + 1) + ')</span>' +
+          '<span class="sr-emoji">' + sn.e + '</span>' +
+          '<div class="sr-body"><div class="sr-text">' + esc(sn.t) + '</div>' +
+          '<div class="sr-line"></div></div>' +
+        '</div>';
+      });
+      page.body.innerHTML = rows;
+    }
+    return null;
+  }
+
   /* ================== WORKSHEET TYPES ================== */
   var TYPES = {
 
@@ -363,6 +391,26 @@
         page.body.innerHTML = html;
         return null;
       }
+    },
+
+    /* ---- 📖 Reading cards (English / Russian) ---- */
+    readen: {
+      icon: '📖', head: 'h-blue',
+      title: { en: 'Reading English', uz: 'Inglizcha o\'qish', ru: 'Читаем по-английски' },
+      sub: { en: 'Read each word out loud, then copy it. Last sheet: first sentences!',
+             uz: 'Har so\'zni ovoz chiqarib o\'qi, so\'ng ko\'chirib yoz. Oxirgi varaq: ilk gaplar!',
+             ru: 'Прочитай каждое слово вслух и спиши его. Последний лист: первые предложения!' },
+      pages: 3,
+      build: function (page, level, pageNo) { return buildReading(page, window.Vocab.EN_READ, pageNo); }
+    },
+    readru: {
+      icon: '📖', head: 'h-pink',
+      title: { en: 'Reading Russian', uz: 'Ruscha o\'qish', ru: 'Читаем по-русски' },
+      sub: { en: 'Read each word out loud, then copy it. Last sheet: first sentences!',
+             uz: 'Har so\'zni ovoz chiqarib o\'qi, so\'ng ko\'chirib yoz. Oxirgi varaq: ilk gaplar!',
+             ru: 'Прочитай каждое слово вслух и спиши его. Последний лист: первые предложения!' },
+      pages: 3,
+      build: function (page, level, pageNo) { return buildReading(page, window.Vocab.RU_READ, pageNo); }
     },
 
     /* ---- 🍎 Counting ---- */
@@ -660,6 +708,8 @@
       numline: { en: '📏 Number line',            uz: '📏 Sonlar chizig\'i', ru: '📏 Числовой ряд' },
       compare: { en: '⚖️ Compare < > =',          uz: '⚖️ Taqqoslash < > =', ru: '⚖️ Сравнение < > =' },
       letters: { en: '🔤 Alphabet tracing (A–Z)',  uz: '🔤 Alifbo yozish (A–Z)', ru: '🔤 Пишем алфавит (A–Z)' },
+      readen:  { en: '📖 Reading English',          uz: '📖 Inglizcha o\'qish', ru: '📖 Читаем по-английски' },
+      readru:  { en: '📖 Reading Russian',          uz: '📖 Ruscha o\'qish', ru: '📖 Читаем по-русски' },
       dict:    { en: '🖼️ Picture dictionary',     uz: '🖼️ Rasmli lug\'at', ru: '🖼️ Словарь в картинках' },
       rletters:{ en: '🔤 Russian alphabet (А–Я)',  uz: '🔤 Rus alifbosi (А–Я)', ru: '🔤 Пишем алфавит (А–Я)' },
       rdict:   { en: '🖼️ Russian picture dictionary', uz: '🖼️ Ruscha rasmli lug\'at', ru: '🖼️ Русский словарь в картинках' },

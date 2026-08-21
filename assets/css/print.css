@@ -193,6 +193,17 @@ body{
   border-bottom:2.5px dashed var(--p-line);
 }
 
+/* ---------------- Reading sentences ---------------- */
+.sent-row{
+  display:flex; align-items:center; gap:4mm; padding:2mm 2mm;
+  border-bottom:2.5px dotted var(--p-line); break-inside:avoid;
+}
+.sent-row .sr-no{ font-size:11px; color:var(--p-grey); width:7mm; flex:none; }
+.sent-row .sr-emoji{ font-size:28px; flex:none; width:12mm; text-align:center; }
+.sent-row .sr-body{ flex:1; min-width:0; }
+.sent-row .sr-text{ font-size:21px; font-weight:800; color:var(--p-ink); }
+.sent-row .sr-line{ border-bottom:2.5px dashed var(--p-line); height:7mm; }
+
 /* ---------------- Javoblar sahifasi ---------------- */
 .page.key .p-head{ background:linear-gradient(135deg,#8c8ea8,#5c5e78); }
 .key-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:3mm; font-size:15px; font-weight:700; }

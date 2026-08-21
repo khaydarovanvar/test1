@@ -47,6 +47,81 @@
     { l: 'Я', e: '🍎', w: 'яблоко' }
   ];
 
+  /* ---------- Reading data: English and Russian ----------
+     words: two levels; s = split shown as a reading hint.
+     sentences: t = text, e = the matching picture.          */
+  var EN_READ = {
+    words: [
+      [ /* level 1 — short words */
+        { e: '🐱', w: 'cat',  s: 'c-a-t' },  { e: '🐶', w: 'dog',  s: 'd-o-g' },
+        { e: '☀️', w: 'sun',  s: 's-u-n' },  { e: '🚌', w: 'bus',  s: 'b-u-s' },
+        { e: '🧢', w: 'hat',  s: 'h-a-t' },  { e: '🛏️', w: 'bed',  s: 'b-e-d' },
+        { e: '📦', w: 'box',  s: 'b-o-x' },  { e: '🥚', w: 'egg',  s: 'e-g-g' },
+        { e: '🐟', w: 'fish', s: 'f-i-sh' }, { e: '⚽', w: 'ball', s: 'b-a-ll' },
+        { e: '🥛', w: 'milk', s: 'm-i-lk' }, { e: '🐷', w: 'pig',  s: 'p-i-g' }
+      ],
+      [ /* level 2 — longer words */
+        { e: '🍎', w: 'apple',    s: 'ap-ple' },    { e: '🍌', w: 'banana',   s: 'ba-na-na' },
+        { e: '🐰', w: 'rabbit',   s: 'rab-bit' },   { e: '🌸', w: 'flower',   s: 'flow-er' },
+        { e: '🐵', w: 'monkey',   s: 'mon-key' },   { e: '🍊', w: 'orange',   s: 'or-ange' },
+        { e: '🏫', w: 'school',   s: 'school' },    { e: '🪟', w: 'window',   s: 'win-dow' },
+        { e: '🐔', w: 'chicken',  s: 'chick-en' },  { e: '🐘', w: 'elephant', s: 'el-e-phant' },
+        { e: '☂️', w: 'umbrella', s: 'um-brel-la' },{ e: '🧸', w: 'teddy',    s: 'ted-dy' }
+      ]
+    ],
+    sentences: [
+      { t: 'This is a cat.',       e: '🐱' },
+      { t: 'The dog is big.',      e: '🐶' },
+      { t: 'I see the sun.',       e: '☀️' },
+      { t: 'The fish can swim.',   e: '🐟' },
+      { t: 'The bird can fly.',    e: '🐦' },
+      { t: 'I like milk.',         e: '🥛' },
+      { t: 'This is my house.',    e: '🏠' },
+      { t: 'The ball is red.',     e: '⚽' },
+      { t: 'I read a book.',       e: '📚' },
+      { t: 'The rabbit can jump.', e: '🐰' },
+      { t: 'The star is bright.',  e: '⭐' },
+      { t: 'Mom loves me.',        e: '👩' }
+    ]
+  };
+
+  var RU_READ = {
+    sylCons: ['б', 'в', 'д', 'к', 'л', 'м', 'н', 'п', 'с', 'т'],
+    sylVowels: ['а', 'о', 'у', 'и', 'е', 'ы'],
+    words: [
+      [ /* level 1 — short words */
+        { e: '🏠', w: 'дом', s: 'д-о-м' },  { e: '🐱', w: 'кот', s: 'к-о-т' },
+        { e: '🧀', w: 'сыр', s: 'с-ы-р' },  { e: '⚽', w: 'мяч', s: 'м-я-ч' },
+        { e: '🌳', w: 'лес', s: 'л-е-с' },  { e: '👃', w: 'нос', s: 'н-о-с' },
+        { e: '🧃', w: 'сок', s: 'с-о-к' },  { e: '🍲', w: 'суп', s: 'с-у-п' },
+        { e: '🐋', w: 'кит', s: 'к-и-т' },  { e: '🧅', w: 'лук', s: 'л-у-к' },
+        { e: '👄', w: 'рот', s: 'р-о-т' },  { e: '🌍', w: 'мир', s: 'м-и-р' }
+      ],
+      [ /* level 2 — longer words */
+        { e: '👩', w: 'мама',    s: 'ма-ма' },    { e: '👨', w: 'папа',    s: 'па-па' },
+        { e: '🐟', w: 'рыба',    s: 'ры-ба' },    { e: '☁️', w: 'небо',    s: 'не-бо' },
+        { e: '🌙', w: 'луна',    s: 'лу-на' },    { e: '📚', w: 'книга',   s: 'кни-га' },
+        { e: '🍎', w: 'яблоко',  s: 'яб-ло-ко' }, { e: '🚗', w: 'машина',  s: 'ма-ши-на' },
+        { e: '🐶', w: 'собака',  s: 'со-ба-ка' }, { e: '🥛', w: 'молоко',  s: 'мо-ло-ко' },
+        { e: '🦋', w: 'бабочка', s: 'ба-боч-ка' },{ e: '⭐', w: 'звезда',  s: 'звез-да' }
+      ]
+    ],
+    sentences: [
+      { t: 'Это кот.',          e: '🐱' },
+      { t: 'Это дом.',          e: '🏠' },
+      { t: 'Мама дома.',        e: '👩' },
+      { t: 'Собака бежит.',     e: '🐶' },
+      { t: 'Рыба плывёт.',      e: '🐟' },
+      { t: 'Птица летит.',      e: '🐦' },
+      { t: 'Я люблю молоко.',   e: '🥛' },
+      { t: 'Луна светит.',      e: '🌙' },
+      { t: 'Мяч красный.',      e: '⚽' },
+      { t: 'Я читаю книгу.',    e: '📚' },
+      { t: 'Солнце светит.',    e: '☀️' },
+      { t: 'Бабочка летает.',   e: '🦋' }
+    ]
+  };
+
   var CATEGORIES = [
     {
       id: 'animals', e: '🐶',
@@ -219,6 +294,8 @@
   global.Vocab = {
     ALPHABET: ALPHABET,
     RU_ALPHABET: RU_ALPHABET,
+    EN_READ: EN_READ,
+    RU_READ: RU_READ,
     CATEGORIES: CATEGORIES,
     byId: function (id) {
       for (var i = 0; i < CATEGORIES.length; i++) if (CATEGORIES[i].id === id) return CATEGORIES[i];
