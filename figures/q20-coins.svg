@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'Segoe UI', 'Arial', sans-serif">
+  <!-- Q20: 8 coins, one is heavier — the coin police lineup and the balance scale -->
+  <rect width="800" height="500" fill="#fff7ed"/>
+
+  <!-- lineup of 8 coins, one suspiciously chubby -->
+  <g text-anchor="middle">
+    <!-- height ruler background like a police lineup -->
+    <rect x="60" y="60" width="680" height="120" fill="#ffe8cc" stroke="#e0b080" stroke-width="2" rx="8"/>
+    <line x1="60" y1="90" x2="740" y2="90" stroke="#e0b080" stroke-width="1.5" stroke-dasharray="8 6"/>
+    <line x1="60" y1="120" x2="740" y2="120" stroke="#e0b080" stroke-width="1.5" stroke-dasharray="8 6"/>
+    <line x1="60" y1="150" x2="740" y2="150" stroke="#e0b080" stroke-width="1.5" stroke-dasharray="8 6"/>
+
+    <!-- 7 normal coins -->
+    <g>
+      <circle cx="110" cy="140" r="26" fill="#ffd93d" stroke="#d9a400" stroke-width="3"/>
+      <circle cx="102" cy="134" r="3" fill="#7a5c00"/><circle cx="118" cy="134" r="3" fill="#7a5c00"/>
+      <path d="M102 148 q8 6 16 0" stroke="#7a5c00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="190" cy="140" r="26" fill="#ffd93d" stroke="#d9a400" stroke-width="3"/>
+      <circle cx="182" cy="134" r="3" fill="#7a5c00"/><circle cx="198" cy="134" r="3" fill="#7a5c00"/>
+      <path d="M182 148 q8 6 16 0" stroke="#7a5c00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="270" cy="140" r="26" fill="#ffd93d" stroke="#d9a400" stroke-width="3"/>
+      <circle cx="262" cy="134" r="3" fill="#7a5c00"/><circle cx="278" cy="134" r="3" fill="#7a5c00"/>
+      <path d="M262 148 q8 6 16 0" stroke="#7a5c00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="350" cy="140" r="26" fill="#ffd93d" stroke="#d9a400" stroke-width="3"/>
+      <circle cx="342" cy="134" r="3" fill="#7a5c00"/><circle cx="358" cy="134" r="3" fill="#7a5c00"/>
+      <path d="M342 148 q8 6 16 0" stroke="#7a5c00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+      <!-- the chubby suspect, whistling innocently, sweating -->
+      <circle cx="445" cy="134" r="36" fill="#ffca28" stroke="#d9a400" stroke-width="4"/>
+      <path d="M430 126 q5 -5 10 0 M452 126 q5 -5 10 0" stroke="#7a5c00" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <ellipse cx="446" cy="150" rx="6" ry="8" fill="#7a5c00"/>
+      <path d="M478 108 q10 14 0 22 q-10 -8 0 -22z" fill="#7ad9ff" stroke="#2a94ba" stroke-width="2"/>
+      <text x="470" y="96" font-size="18" fill="#7a5c00">♪ ♫</text>
+
+      <!-- 3 more normal coins -->
+      <circle cx="540" cy="140" r="26" fill="#ffd93d" stroke="#d9a400" stroke-width="3"/>
+      <circle cx="532" cy="134" r="3" fill="#7a5c00"/><circle cx="548" cy="134" r="3" fill="#7a5c00"/>
+      <path d="M532 148 q8 6 16 0" stroke="#7a5c00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="620" cy="140" r="26" fill="#ffd93d" stroke="#d9a400" stroke-width="3"/>
+      <circle cx="612" cy="134" r="3" fill="#7a5c00"/><circle cx="628" cy="134" r="3" fill="#7a5c00"/>
+      <path d="M612 148 q8 6 16 0" stroke="#7a5c00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="700" cy="140" r="26" fill="#ffd93d" stroke="#d9a400" stroke-width="3"/>
+      <circle cx="692" cy="134" r="3" fill="#7a5c00"/><circle cx="708" cy="134" r="3" fill="#7a5c00"/>
+      <path d="M692 148 q8 6 16 0" stroke="#7a5c00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- balance scale, tipped -->
+  <g>
+    <rect x="380" y="430" width="120" height="16" rx="8" fill="#8d6e63"/>
+    <rect x="432" y="290" width="16" height="145" fill="#8d6e63"/>
+    <!-- tilted beam: the pan holding the heavy coin sinks -->
+    <g transform="rotate(-8 440 295)">
+      <rect x="290" y="288" width="300" height="12" rx="6" fill="#6d4c41"/>
+      <!-- left pan (heavier, down) -->
+      <line x1="305" y1="298" x2="285" y2="345" stroke="#6d4c41" stroke-width="3"/>
+      <line x1="325" y1="298" x2="345" y2="345" stroke="#6d4c41" stroke-width="3"/>
+      <path d="M270 345 q45 35 90 0z" fill="#a1887f" stroke="#6d4c41" stroke-width="3"/>
+      <!-- chubby coin on the heavy pan -->
+      <circle cx="315" cy="330" r="22" fill="#ffca28" stroke="#d9a400" stroke-width="3"/>
+      <path d="M306 326 q4 -4 8 0 M318 326 q4 -4 8 0" stroke="#7a5c00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="316" cy="338" rx="4" ry="5" fill="#7a5c00"/>
+      <!-- right pan (up) -->
+      <line x1="555" y1="298" x2="535" y2="345" stroke="#6d4c41" stroke-width="3"/>
+      <line x1="575" y1="298" x2="595" y2="345" stroke="#6d4c41" stroke-width="3"/>
+      <path d="M520 345 q45 35 90 0z" fill="#a1887f" stroke="#6d4c41" stroke-width="3"/>
+      <!-- surprised light coin flying up a bit -->
+      <circle cx="565" cy="322" r="18" fill="#ffd93d" stroke="#d9a400" stroke-width="3"/>
+      <circle cx="559" cy="318" r="3" fill="#7a5c00"/><circle cx="571" cy="318" r="3" fill="#7a5c00"/>
+      <ellipse cx="565" cy="329" rx="4" ry="5" fill="#7a5c00"/>
+      <text x="590" y="308" font-size="16" fill="#7a5c00">!</text>
+    </g>
+    <circle cx="440" cy="295" r="10" fill="#5d4037"/>
+  </g>
+
+  <!-- detective magnifying glass -->
+  <g>
+    <circle cx="150" cy="330" r="55" fill="#dff3ff" fill-opacity="0.7" stroke="#37474f" stroke-width="8"/>
+    <line x1="192" y1="370" x2="240" y2="418" stroke="#37474f" stroke-width="14" stroke-linecap="round"/>
+    <!-- eye peeking through the glass -->
+    <circle cx="150" cy="330" r="20" fill="#fff" stroke="#37474f" stroke-width="3"/>
+    <circle cx="150" cy="330" r="9" fill="#37474f"/>
+    <circle cx="146" cy="326" r="3" fill="#fff"/>
+  </g>
+
+  <!-- question: how many weighings? -->
+  <g>
+    <rect x="612" y="360" width="170" height="110" rx="16" fill="#fff" stroke="#e76f51" stroke-width="3"/>
+    <text x="697" y="398" font-size="22" text-anchor="middle" fill="#37474f" font-weight="bold">Сколько раз?</text>
+    <text x="697" y="426" font-size="22" text-anchor="middle" fill="#37474f" font-weight="bold">Necha marta?</text>
+    <text x="697" y="458" font-size="28" text-anchor="middle" fill="#e76f51" font-weight="bold">⚖️ = ?</text>
+  </g>
+
+  <text x="45" y="45" font-size="30" font-weight="bold" fill="#1d3557">№20</text>
+  <text x="400" y="480" font-size="18" text-anchor="middle" fill="#b08968">Один из них тяжелее… / Ulardan biri og'irroq…</text>
+</svg>

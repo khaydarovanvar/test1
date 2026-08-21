@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'Segoe UI', 'Arial', sans-serif">
+  <!-- Q19: two pipes fill a pool — the sprinter pipe vs. the snail pipe -->
+  <rect width="800" height="500" fill="#f0fbf4"/>
+
+  <!-- pool -->
+  <path d="M150 300 L650 300 L620 440 L180 440 Z" fill="#bde0fe" stroke="#4a90d9" stroke-width="4"/>
+  <!-- water already inside -->
+  <path d="M190 370 L610 370 L620 440 L180 440 Z" fill="#5ab0f2"/>
+  <path d="M190 370 Q220 360 250 370 T310 370 T370 370 T430 370 T490 370 T550 370 T610 370" fill="none" stroke="#e8f6ff" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- happy duck on the water -->
+  <g>
+    <ellipse cx="400" cy="362" rx="26" ry="16" fill="#ffd93d" stroke="#e0a800" stroke-width="3"/>
+    <circle cx="422" cy="345" r="13" fill="#ffd93d" stroke="#e0a800" stroke-width="3"/>
+    <path d="M433 345 l16 4 l-16 5z" fill="#ff8c42" stroke="#d96a1e" stroke-width="2"/>
+    <circle cx="424" cy="341" r="3" fill="#333"/>
+    <path d="M382 356 q-8 -10 2 -14" stroke="#e0a800" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- LEFT: fast pipe (3 h) — muscular, gushing -->
+  <g>
+    <rect x="90" y="120" width="130" height="46" rx="10" fill="#2a9d8f" stroke="#1d6f65" stroke-width="4"/>
+    <rect x="200" y="112" width="36" height="62" rx="8" fill="#2a9d8f" stroke="#1d6f65" stroke-width="4"/>
+    <!-- proud face on the pipe -->
+    <circle cx="125" cy="138" r="4" fill="#fff"/><circle cx="150" cy="138" r="4" fill="#fff"/>
+    <circle cx="126" cy="139" r="2" fill="#0f4d45"/><circle cx="151" cy="139" r="2" fill="#0f4d45"/>
+    <path d="M120 152 q18 10 36 0" stroke="#0f4d45" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- sunglasses-cool sweat drop: this pipe means business -->
+    <text x="185" y="112" font-size="26" fill="#1d6f65" font-weight="bold">💨</text>
+    <!-- torrent of water -->
+    <path d="M206 174 Q225 250 250 300 L295 300 Q255 235 242 174 Z" fill="#5ab0f2" opacity="0.9"/>
+    <path d="M215 200 q6 8 3 16 M232 240 q6 8 3 16" stroke="#e8f6ff" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- splash -->
+    <path d="M255 296 q-6 -14 4 -18 M275 296 q2 -16 12 -14" stroke="#4a90d9" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- label -->
+    <rect x="95" y="185" width="100" height="40" rx="10" fill="#fff" stroke="#1d6f65" stroke-width="3"/>
+    <text x="145" y="212" font-size="22" font-weight="bold" text-anchor="middle" fill="#1d6f65">3 ч / soat</text>
+    <!-- speed lines -->
+    <path d="M70 130 h-25 M70 145 h-18 M70 160 h-25" stroke="#2a9d8f" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- RIGHT: slow pipe (6 h) — skinny, dripping, with a snail -->
+  <g>
+    <rect x="590" y="130" width="120" height="34" rx="8" fill="#f4a261" stroke="#c97b34" stroke-width="4"/>
+    <rect x="566" y="124" width="30" height="48" rx="7" fill="#f4a261" stroke="#c97b34" stroke-width="4"/>
+    <!-- sleepy face -->
+    <path d="M640 141 q6 4 12 0 M665 141 q6 4 12 0" stroke="#8a4f18" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M648 154 q10 6 20 0" stroke="#8a4f18" stroke-width="3" fill="none" stroke-linecap="round" transform="rotate(180 658 156)"/>
+    <text x="722" y="130" font-size="20" fill="#8a4f18">z</text>
+    <text x="734" y="114" font-size="26" fill="#8a4f18">Z</text>
+    <!-- drips -->
+    <path d="M578 180 q6 10 0 16 q-6 -6 0 -16z" fill="#5ab0f2"/>
+    <path d="M580 225 q6 10 0 16 q-6 -6 0 -16z" fill="#5ab0f2"/>
+    <path d="M578 270 q6 10 0 16 q-6 -6 0 -16z" fill="#5ab0f2"/>
+    <path d="M580 300 q7 11 0 18 q-7 -7 0 -18z" fill="#5ab0f2"/>
+    <path d="M566 316 q10 -8 22 0" stroke="#4a90d9" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- snail riding the pipe -->
+    <g>
+      <circle cx="640" cy="112" r="14" fill="#e9c46a" stroke="#bb9540" stroke-width="3"/>
+      <circle cx="640" cy="112" r="7" fill="none" stroke="#bb9540" stroke-width="2"/>
+      <path d="M652 120 q14 4 18 0 q4 -10 2 -14" fill="none" stroke="#bb9540" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="673" cy="103" r="2.5" fill="#5a4310"/>
+    </g>
+    <!-- label -->
+    <rect x="605" y="185" width="100" height="40" rx="10" fill="#fff" stroke="#c97b34" stroke-width="3"/>
+    <text x="655" y="212" font-size="22" font-weight="bold" text-anchor="middle" fill="#c97b34">6 ч / soat</text>
+  </g>
+
+  <!-- clock with question mark -->
+  <g>
+    <circle cx="400" cy="120" r="52" fill="#fff" stroke="#4a90d9" stroke-width="4"/>
+    <circle cx="400" cy="120" r="4" fill="#4a90d9"/>
+    <line x1="400" y1="120" x2="400" y2="85" stroke="#4a90d9" stroke-width="4" stroke-linecap="round"/>
+    <line x1="400" y1="120" x2="428" y2="132" stroke="#4a90d9" stroke-width="4" stroke-linecap="round"/>
+    <text x="400" y="205" font-size="40" font-weight="bold" text-anchor="middle" fill="#e76f51">?</text>
+  </g>
+
+  <text x="45" y="55" font-size="30" font-weight="bold" fill="#1d3557">№19</text>
+  <text x="400" y="480" font-size="18" text-anchor="middle" fill="#6c9a7d">Вместе быстрее! / Birgalikda tezroq!</text>
+</svg>

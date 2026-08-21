@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'Segoe UI', 'Arial', sans-serif">
+  <!-- Q18: 6 people, everyone shakes hands with everyone — the great arm tangle -->
+  <rect width="800" height="500" fill="#eef7ff"/>
+
+  <!-- all 15 handshake "arms" (K6 edges) drawn as wobbly tangled lines -->
+  <g stroke="#f4a261" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.85">
+    <path d="M400 105 Q330 180 260 175"/>
+    <path d="M400 105 Q470 180 540 175"/>
+    <path d="M400 105 Q380 230 260 315"/>
+    <path d="M400 105 Q420 230 540 315"/>
+    <path d="M400 105 Q400 250 400 385"/>
+    <path d="M260 175 Q400 210 540 175"/>
+    <path d="M260 175 Q240 245 260 315"/>
+    <path d="M260 175 Q400 260 540 315"/>
+    <path d="M260 175 Q340 290 400 385"/>
+    <path d="M540 175 Q400 260 260 315"/>
+    <path d="M540 175 Q560 245 540 315"/>
+    <path d="M540 175 Q460 290 400 385"/>
+    <path d="M260 315 Q400 340 540 315"/>
+    <path d="M260 315 Q330 370 400 385"/>
+    <path d="M540 315 Q470 370 400 385"/>
+  </g>
+  <!-- little hands at some crossings -->
+  <g fill="#ffcf99" stroke="#e07b39" stroke-width="2">
+    <circle cx="400" cy="212" r="10"/>
+    <circle cx="333" cy="243" r="10"/>
+    <circle cx="467" cy="243" r="10"/>
+    <circle cx="400" cy="338" r="10"/>
+    <circle cx="400" cy="270" r="10"/>
+  </g>
+
+  <!-- the six people around the tangle -->
+  <g text-anchor="middle">
+    <!-- top -->
+    <circle cx="400" cy="80" r="42" fill="#e76f51" stroke="#b3492f" stroke-width="3"/>
+    <circle cx="386" cy="72" r="5" fill="#fff"/><circle cx="414" cy="72" r="5" fill="#fff"/>
+    <circle cx="387" cy="73" r="2.5" fill="#333"/><circle cx="413" cy="73" r="2.5" fill="#333"/>
+    <path d="M385 94 q15 12 30 0" stroke="#7a2e1a" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- upper-left, dizzy from shaking -->
+    <circle cx="235" cy="160" r="42" fill="#2a9d8f" stroke="#1d6f65" stroke-width="3"/>
+    <path d="M218 152 l10 10 m0 -10 l-10 10" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    <path d="M242 152 l10 10 m0 -10 l-10 10" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="230" cy="180" rx="8" ry="5" fill="#0f4d45"/>
+    <!-- upper-right -->
+    <circle cx="565" cy="160" r="42" fill="#8e7dbe" stroke="#5f5390" stroke-width="3"/>
+    <circle cx="551" cy="152" r="5" fill="#fff"/><circle cx="579" cy="152" r="5" fill="#fff"/>
+    <circle cx="552" cy="153" r="2.5" fill="#333"/><circle cx="578" cy="153" r="2.5" fill="#333"/>
+    <path d="M550 176 q15 12 30 0" stroke="#3f3568" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- lower-left -->
+    <circle cx="235" cy="330" r="42" fill="#e9c46a" stroke="#bb9540" stroke-width="3"/>
+    <circle cx="221" cy="322" r="5" fill="#fff"/><circle cx="249" cy="322" r="5" fill="#fff"/>
+    <circle cx="222" cy="323" r="2.5" fill="#333"/><circle cx="248" cy="323" r="2.5" fill="#333"/>
+    <path d="M220 346 q15 12 30 0" stroke="#7d6222" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- lower-right, sweating -->
+    <circle cx="565" cy="330" r="42" fill="#4cc9f0" stroke="#2a94ba" stroke-width="3"/>
+    <circle cx="551" cy="322" r="5" fill="#fff"/><circle cx="579" cy="322" r="5" fill="#fff"/>
+    <circle cx="552" cy="323" r="2.5" fill="#333"/><circle cx="578" cy="323" r="2.5" fill="#333"/>
+    <ellipse cx="565" cy="350" rx="9" ry="6" fill="#14536b"/>
+    <path d="M602 305 q8 12 0 18 q-8 -6 0 -18z" fill="#7ad9ff" stroke="#2a94ba" stroke-width="2"/>
+    <!-- bottom -->
+    <circle cx="400" cy="410" r="42" fill="#f28ab2" stroke="#c25a85" stroke-width="3"/>
+    <circle cx="386" cy="402" r="5" fill="#fff"/><circle cx="414" cy="402" r="5" fill="#fff"/>
+    <circle cx="387" cy="403" r="2.5" fill="#333"/><circle cx="413" cy="403" r="2.5" fill="#333"/>
+    <path d="M385 424 q15 12 30 0" stroke="#8f3b60" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- big question mark in the tangle -->
+  <circle cx="400" cy="248" r="34" fill="#fff" stroke="#e07b39" stroke-width="3"/>
+  <text x="400" y="262" font-size="42" font-weight="bold" text-anchor="middle" fill="#e76f51">?</text>
+
+  <!-- speech bubbles -->
+  <g>
+    <rect x="590" y="60" width="180" height="52" rx="16" fill="#fff" stroke="#5f5390" stroke-width="3"/>
+    <path d="M615 112 l-5 20 l25 -18z" fill="#fff" stroke="#5f5390" stroke-width="3"/>
+    <text x="680" y="93" font-size="20" text-anchor="middle" fill="#5f5390" font-weight="bold">Приятно! Salom!</text>
+  </g>
+  <g>
+    <rect x="30" y="228" width="180" height="52" rx="16" fill="#fff" stroke="#1d6f65" stroke-width="3"/>
+    <path d="M185 280 l14 20 l2 -22z" fill="#fff" stroke="#1d6f65" stroke-width="3"/>
+    <text x="120" y="261" font-size="20" text-anchor="middle" fill="#1d6f65" font-weight="bold">Опять?! Yana?!</text>
+  </g>
+
+  <text x="45" y="55" font-size="30" font-weight="bold" fill="#1d3557">№18</text>
+  <text x="400" y="480" font-size="18" text-anchor="middle" fill="#6c8aa5">Каждый — с каждым, ровно один раз / Har biri — har biri bilan, aynan bir marta</text>
+</svg>
