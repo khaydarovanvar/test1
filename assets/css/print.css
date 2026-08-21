@@ -179,6 +179,20 @@ body{
 }
 .pixgrid .px.empty{ background:#fff; }
 
+/* ---------------- Picture dictionary ---------------- */
+.dict-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4mm; }
+.dcell{
+  border:2.5px solid #eceaf6; border-radius:16px; padding:8px 8px 10px;
+  display:flex; flex-direction:column; align-items:center; text-align:center; min-height:44mm;
+}
+.dcell .de{ font-size:38px; line-height:1.15; }
+.dcell .den{ font-size:19px; font-weight:800; color:#4232a8; margin-top:3px; }
+.dcell .dtr{ font-size:13px; font-weight:700; color:#9b96b5; margin-top:1px; }
+.dcell .dline{
+  display:block; width:90%; margin-top:auto; padding-top:8mm;
+  border-bottom:2.5px dashed var(--p-line);
+}
+
 /* ---------------- Javoblar sahifasi ---------------- */
 .page.key .p-head{ background:linear-gradient(135deg,#8c8ea8,#5c5e78); }
 .key-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:3mm; font-size:15px; font-weight:700; }

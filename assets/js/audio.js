@@ -66,41 +66,47 @@
      Brauzerda o'zbek ovozi bo'lmasligi mumkin.
      Shuning uchun tartib bilan qidiramiz: uz -> tr (talaffuzi juda yaqin)
      -> ru -> az -> birinchi topilgani.                                */
-  var voice = null, voiceReady = false;
+  var voiceCache = {};   /* lang key -> SpeechSynthesisVoice */
 
-  function pickVoice() {
-    if (!global.speechSynthesis) return;
+  function orderFor(langKey) {
+    if (langKey === 'en') return ['en-us', 'en-gb', 'en'];
+    if (langKey === 'ru') return ['ru'];
+    return ['uz', 'tr', 'az', 'ru', 'kk'];   /* uz: closest available voices */
+  }
+
+  function findVoice(langKey) {
+    if (voiceCache[langKey]) return voiceCache[langKey];
+    if (!global.speechSynthesis) return null;
     var list = global.speechSynthesis.getVoices();
-    if (!list || !list.length) return;
-    var cur = global.Lang ? global.Lang.current : 'en';
-    var order = cur === 'en' ? ['en-us', 'en-gb', 'en']
-              : cur === 'ru' ? ['ru']
-              : ['uz', 'tr', 'az', 'ru', 'kk'];
+    if (!list || !list.length) return null;
+    var order = orderFor(langKey);
     for (var i = 0; i < order.length; i++) {
       var found = list.filter(function (v) { return (v.lang || '').toLowerCase().indexOf(order[i]) === 0; });
-      if (found.length) { voice = found[0]; voiceReady = true; return; }
+      if (found.length) { voiceCache[langKey] = found[0]; return found[0]; }
     }
-    voice = list[0]; voiceReady = true;
+    voiceCache[langKey] = list[0];
+    return list[0];
   }
 
   if (global.speechSynthesis) {
-    pickVoice();
-    global.speechSynthesis.onvoiceschanged = pickVoice;
+    global.speechSynthesis.onvoiceschanged = function () { voiceCache = {}; };
   }
 
-  /* Til almashganda ovozni qayta tanlaymiz */
-  Sound.refreshVoice = function () { voiceReady = false; voice = null; pickVoice(); };
+  Sound.refreshVoice = function () { voiceCache = {}; };
 
-  Sound.say = function (text) {
+  /* say(text)            — speak in the current UI language's voice
+     say(text, 'en')      — force a specific voice, e.g. English words */
+  Sound.say = function (text, forceLang) {
     if (!enabled || !global.speechSynthesis || !text) return;
-    if (!voiceReady) pickVoice();
+    var langKey = forceLang || (global.Lang ? global.Lang.current : 'en');
     try {
       global.speechSynthesis.cancel();
       var u = new SpeechSynthesisUtterance(text);
-      if (voice) { u.voice = voice; u.lang = voice.lang; }
+      var v = findVoice(langKey);
+      if (v) { u.voice = v; u.lang = v.lang; }
       u.rate = 0.88; u.pitch = 1.15; u.volume = 1;
       global.speechSynthesis.speak(u);
-    } catch (e) { /* jim qolamiz */ }
+    } catch (e) { /* stay silent */ }
   };
 
   /* Numbers as words — 0..100, English and Uzbek */

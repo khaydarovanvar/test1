@@ -12,9 +12,10 @@ English mode a gentle way to learn English number words.
 
 | Thing | File | Description |
 |---|---|---|
-| 🎮 Game website | `index.html` | Counting, addition, subtraction, multiplication, division — up to 4 levels each, 10-question sets, stars, confetti, voice praise. Language switch: EN → UZ → RU |
+| 🎮 Math games | `index.html` | Counting, addition, subtraction, multiplication, division — up to 4 levels each, 10-question sets, stars, confetti, voice praise. Language switch: EN → UZ → RU |
+| 🇬🇧 English games | `english.html` | English from scratch: ABC with sounds, ~110 first words in 10 topics, listen-and-find quizzes. English voice + Uzbek/Russian helper translations |
 | 🖨️ Worksheet maker | `print.html` | 13 exercise types × 4 difficulty levels, endless new variants, answer-key pages, ink-saving mode |
-| 📄 Ready PDFs | `worksheets/` | 22 print-ready A4 packs (English), incl. 4 expert packs |
+| 📄 Ready PDFs | `worksheets/` | 24 print-ready A4 packs, incl. 4 expert math packs and 2 English packs |
 | ⚙️ PDF script | `tools/make-pdfs.sh` | Regenerates the whole PDF pack (needs Chromium) |
 
 ## 🚀 Getting started
@@ -41,12 +42,19 @@ Works great on phones — big buttons, no reading required.
 - Best scores saved in the browser; keyboard keys 1–4 also work
 - **For parents** button holds a 4-month teaching plan (in all 3 languages)
 
+## 🇬🇧 English module (`english.html`)
+
+- **ABC** — all 26 letters with a picture word each (A is for apple 🍎); tap to hear the letter, then play *find-the-letter*
+- **First words** — 10 topics (animals, food, colors, numbers, body, clothes, home, transport, nature, family & school), each word spoken by an **English voice** with the Uzbek or Russian translation shown for the parent
+- **Listen & find** — hears an English word, taps the right picture; 10 rounds, stars and confetti like the math games
+
 ## 🖨️ Printable worksheets (`print.html`)
 
-13 types: number tracing (0–9), counting, number line, comparing (< > =),
+15 types: number tracing (0–9), counting, number line, comparing (< > =),
 addition, subtraction, mixed, column arithmetic (up to 3-digit at expert level),
 multiplication, division, all-mixed, times-table wall poster,
-solve-and-color pixel art.
+solve-and-color pixel art, **English alphabet tracing (A–Z)** and an
+**English picture dictionary** with copy lines.
 
 - Every "New set" click → brand-new problems
 - 4 difficulty levels, 1–5 sheets, answer-key page, black-and-white mode
@@ -59,7 +67,8 @@ solve-and-color pixel art.
 12–13 multiplication · 14–15 division · 16 times-table poster ·
 17 solve-and-color · 18 mixed practice ·
 **19 expert add/subtract to 100 · 20 expert multiplication · 21 expert division ·
-22 expert 3-digit column arithmetic**
+22 expert 3-digit column arithmetic** ·
+🇬🇧 **23 alphabet tracing · 24 picture dictionary**
 
 Need new variants or another language? `bash tools/make-pdfs.sh`
 (edit the `lang=` parameter inside for uz/ru).

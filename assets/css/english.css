@@ -1,0 +1,73 @@
+/* =========================================================
+   english.css — extra styles for the English learning page
+   (builds on main.css)
+   ========================================================= */
+
+/* ---------- letter tiles ---------- */
+.letter-grid{
+  display:grid; gap:14px; margin-top:22px;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+}
+.ltile{
+  cursor:pointer; border:none; font-family:var(--font); color:var(--ink);
+  background:var(--white); border-radius:22px; padding:14px 6px 10px;
+  box-shadow:0 6px 0 #e2d8f0, var(--shadow-lift);
+  transition:transform .14s, box-shadow .14s; text-align:center;
+  animation: floatIn .4s backwards;
+}
+.ltile:hover{ transform:translateY(-5px) rotate(-1deg); }
+.ltile:active{ transform:translateY(3px); box-shadow:0 2px 0 #e2d8f0; }
+.ltile .lt{
+  display:block; font-size:44px; font-weight:800; line-height:1;
+  color:var(--grape-deep);
+}
+.ltile .le{ display:block; font-size:30px; line-height:1.2; margin-top:4px; }
+.ltile .lw{ display:block; font-size:14px; font-weight:700; color:var(--ink-soft); margin-top:2px; }
+.ltile.pop-now{ animation: rightPop .5s; background:#fff8dc; }
+
+/* ---------- word cards ---------- */
+.word-grid{
+  display:grid; gap:14px; margin-top:22px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+.wcard{
+  cursor:pointer; border:none; font-family:var(--font); color:var(--ink);
+  background:var(--white); border-radius:22px; padding:16px 8px 12px;
+  box-shadow:0 6px 0 #e2d8f0, var(--shadow-lift);
+  transition:transform .14s, box-shadow .14s; text-align:center;
+  animation: floatIn .4s backwards;
+}
+.wcard:hover{ transform:translateY(-5px); }
+.wcard:active{ transform:translateY(3px); box-shadow:0 2px 0 #e2d8f0; }
+.wcard .we{ display:block; font-size:52px; line-height:1.1; filter:drop-shadow(0 4px 6px rgba(0,0,0,.15)); }
+.wcard .wen{ display:block; font-size:21px; font-weight:800; margin-top:8px; color:var(--grape-deep); }
+.wcard .wtr{ display:block; font-size:14px; font-weight:700; color:var(--ink-soft); margin-top:2px; }
+.wcard.pop-now{ animation: rightPop .5s; background:#fff8dc; }
+
+/* ---------- quiz options: big emoji / letters ---------- */
+.opt-grid .ans{
+  font-size: clamp(48px, 10vw, 76px);
+  line-height:1.15; padding:20px 8px;
+}
+.opt-grid .ans.is-letter{ font-size: clamp(52px, 11vw, 84px); }
+
+.big-word{
+  text-align:center; font-size:clamp(40px,8vw,64px); font-weight:800;
+  color:var(--grape-deep); margin:2px 0 6px; letter-spacing:1px;
+}
+.big-word .tr{ display:block; font-size:20px; color:var(--ink-soft); letter-spacing:0; }
+
+/* category cards reuse .topic; a few fresh gradients */
+.t-abc  { background:linear-gradient(160deg,#66d6f5,#2b9bd8); box-shadow:0 10px 0 #1d78ab, var(--shadow-lift); }
+.t-c0   { background:linear-gradient(160deg,#ffb35e,#f27f21); box-shadow:0 10px 0 #c65f0d, var(--shadow-lift); }
+.t-c1   { background:linear-gradient(160deg,#57e0a2,#22b97c); box-shadow:0 10px 0 #179160, var(--shadow-lift); }
+.t-c2   { background:linear-gradient(160deg,#ff8fb8,#ee4f8b); box-shadow:0 10px 0 #c42e69, var(--shadow-lift); }
+.t-c3   { background:linear-gradient(160deg,#9a83ff,#6a49ef); box-shadow:0 10px 0 #4b2fc4, var(--shadow-lift); }
+.t-c4   { background:linear-gradient(160deg,#ffd766,#f0ad1a); color:#5a3d00; box-shadow:0 10px 0 #c98c00, var(--shadow-lift); }
+.t-c4 .name,.t-c4 .desc{ text-shadow:none; }
+
+@media (max-width:560px){
+  .letter-grid{ grid-template-columns: repeat(auto-fill, minmax(86px, 1fr)); gap:10px; }
+  .ltile .lt{ font-size:34px; }
+  .word-grid{ grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+}
