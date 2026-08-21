@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ali Matematika — chop etiladigan mashqlar</title>
+<meta name="description" content="1-sinf uchun o'zbek tilida chop etiladigan matematika mashq varaqlari: raqam yozish, sanash, qo'shish, ayirish, ko'paytirish, bo'lish.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖨️</text></svg>">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/print.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <h1>🖨️ Mashq varaqlari yasash</h1>
+  <p class="hint">Turini tanlang → “Yangilash” → “Chop etish”. Har safar yangi masalalar chiqadi. Javoblar oxirgi sahifada.</p>
+  <div class="controls">
+    <div class="field">
+      <label for="fType">Mashq turi</label>
+      <select id="fType">
+        <optgroup label="Boshlang'ich">
+          <option value="trace">✍️ Raqam yozish (0–9)</option>
+          <option value="count">🍎 Sanash va yozish</option>
+          <option value="numline">📏 Sonlar chizig'i</option>
+          <option value="compare">⚖️ Taqqoslash &lt; &gt; =</option>
+        </optgroup>
+        <optgroup label="Amallar">
+          <option value="add" selected>➕ Qo'shish</option>
+          <option value="sub">➖ Ayirish</option>
+          <option value="addsub">➕➖ Aralash</option>
+          <option value="vertical">🧮 Ustunli qo'shish/ayirish</option>
+          <option value="mul">✖️ Ko'paytirish</option>
+          <option value="div">➗ Bo'lish</option>
+          <option value="all">🎲 Hammasi aralash</option>
+        </optgroup>
+        <optgroup label="Qiziqarli">
+          <option value="table">📋 Ko'paytirish jadvali (plakat)</option>
+          <option value="color">🎨 Hisobla va rangla</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="fLevel">Daraja</label>
+      <select id="fLevel">
+        <option value="1">1 — eng oson</option>
+        <option value="2" selected>2 — o'rtacha</option>
+        <option value="3">3 — qiyin</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="fPages">Varaqlar soni</label>
+      <select id="fPages">
+        <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="fName">Ism</label>
+      <input id="fName" type="text" value="Ali" maxlength="20">
+    </div>
+
+    <div class="field chk">
+      <input id="fKey" type="checkbox" checked>
+      <label for="fKey">Javoblar sahifasi</label>
+    </div>
+
+    <div class="field chk">
+      <input id="fBW" type="checkbox">
+      <label for="fBW">Oq-qora (siyoh tejash)</label>
+    </div>
+
+    <button class="tbtn alt" id="btnMake">🎲 Yangilash</button>
+    <button class="tbtn" id="btnPrint">🖨️ Chop etish</button>
+    <a class="tbtn alt" href="index.html" style="text-decoration:none; display:inline-block">🏠 O'yinlarga qaytish</a>
+  </div>
+</div>
+
+<div id="sheets"></div>
+
+<script src="assets/js/worksheets.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ali Matematika — quvnoq matematika o'yinlari</title>
+<meta name="description" content="1-sinf uchun o'zbek tilida matematika o'yinlari: sanash, qo'shish, ayirish, ko'paytirish va bo'lish.">
+<meta name="theme-color" content="#7fd8ff">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦊</text></svg>">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+<!-- ====== Orqa fon bezaklari ====== -->
+<div class="sky-decor" aria-hidden="true">
+  <div class="sun"></div>
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+  <div class="hills">
+    <svg viewBox="0 0 1440 210" preserveAspectRatio="none">
+      <path fill="#8fe0a8" d="M0,120 C180,60 300,170 480,130 C660,90 780,180 960,140 C1140,100 1290,160 1440,120 L1440,210 L0,210 Z"/>
+      <path fill="#63cd86" d="M0,160 C200,120 340,200 540,168 C760,132 880,205 1080,172 C1250,145 1340,190 1440,168 L1440,210 L0,210 Z"/>
+    </svg>
+  </div>
+</div>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<div class="wrap">
+
+  <!-- ==================== BOSH SAHIFA ==================== -->
+  <section id="screen-home" class="screen active">
+    <div class="brand">
+      <h1><span class="pop">A</span><span class="pop">l</span><span class="pop">i</span>
+          <span class="pop">M</span><span class="pop">a</span><span class="pop">t</span><span class="pop">e</span><span class="pop">m</span><span class="pop">a</span><span class="pop">t</span><span class="pop">i</span><span class="pop">k</span><span class="pop">a</span></h1>
+      <p>Quvnoq o'yinlar bilan sanashni, qo'shishni, ayirishni, ko'paytirishni va bo'lishni o'rganamiz! 🎉</p>
+    </div>
+
+    <div class="card-grid" id="topicGrid">
+      <button class="topic t-count" data-topic="count">
+        <span class="emoji">🍎</span>
+        <span class="name">Sanash</span>
+        <span class="desc">1 dan 20 gacha sanaymiz</span>
+      </button>
+      <button class="topic t-add" data-topic="add">
+        <span class="sign">+</span>
+        <span class="name">Qo'shish</span>
+        <span class="desc">Qo'shamiz va ko'paytiramiz</span>
+      </button>
+      <button class="topic t-sub" data-topic="sub">
+        <span class="sign">−</span>
+        <span class="name">Ayirish</span>
+        <span class="desc">Olib tashlaymiz</span>
+      </button>
+      <button class="topic t-mul" data-topic="mul">
+        <span class="sign">×</span>
+        <span class="name">Ko'paytirish</span>
+        <span class="desc">Guruhlarni sanaymiz</span>
+      </button>
+      <button class="topic t-div" data-topic="div">
+        <span class="sign">÷</span>
+        <span class="name">Bo'lish</span>
+        <span class="desc">Teng bo'lib beramiz</span>
+      </button>
+      <a class="topic t-print" href="print.html">
+        <span class="emoji">🖨️</span>
+        <span class="name">Chop etish</span>
+        <span class="desc">Daftar uchun mashqlar</span>
+      </a>
+    </div>
+
+    <div class="foot-row">
+      <button class="btn ghost" id="btnParents">👨‍👩‍👦 Ota-onalar uchun</button>
+      <button class="btn sunny" id="btnSound">🔊 Ovoz: yoniq</button>
+    </div>
+  </section>
+
+  <!-- ==================== DARAJA TANLASH ==================== -->
+  <section id="screen-levels" class="screen">
+    <div class="topbar">
+      <button class="btn ghost small" data-go="home">⬅️ Orqaga</button>
+      <div class="spacer"></div>
+    </div>
+    <div class="brand">
+      <h1 id="levelTitle">Qo'shish</h1>
+      <p id="levelSub">Darajani tanla</p>
+    </div>
+    <div class="level-grid" id="levelGrid"></div>
+  </section>
+
+  <!-- ==================== O'YIN ==================== -->
+  <section id="screen-game" class="screen">
+    <div class="topbar">
+      <button class="btn ghost small" data-go="home">🏠</button>
+      <button class="btn ghost small" id="btnRepeat">🔁 Takrorla</button>
+      <div class="spacer"></div>
+      <div class="progress-dots" id="dots"></div>
+      <div class="score-chip">⭐ <span id="score">0</span></div>
+    </div>
+
+    <div class="stage">
+      <div class="q-title" id="qTitle">Nechta?</div>
+      <div class="visual" id="visual"></div>
+      <div class="expr" id="expr"></div>
+      <div class="answers" id="answers"></div>
+    </div>
+  </section>
+
+  <!-- ==================== YAKUN ==================== -->
+  <section id="screen-done" class="screen">
+    <div class="stage finish">
+      <div class="big" id="doneEmoji">🏆</div>
+      <h2 id="doneTitle">Barakalla, Ali!</h2>
+      <div class="stars" id="doneStars"></div>
+      <p class="msg" id="doneMsg"></p>
+      <div class="foot-row">
+        <button class="btn mint" id="btnAgain">🔄 Yana o'ynash</button>
+        <button class="btn bubble" id="btnNext">➡️ Keyingi daraja</button>
+        <button class="btn ghost" data-go="home">🏠 Bosh sahifa</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ==================== YORDAMCHI (MASCOT) ==================== -->
+<div class="buddy" id="buddy">
+  <div class="bubble-txt" id="buddyText">Salom, Ali!</div>
+  <span class="face" id="buddyFace">🦊</span>
+</div>
+
+<!-- ==================== OTA-ONALAR PANELI ==================== -->
+<div class="sheet" id="parentSheet">
+  <div class="panel">
+    <h3>👨‍👩‍👦 Ota-onalar uchun qo'llanma</h3>
+    <p><strong>Ali hali o'qiy olmaydi</strong> — shuning uchun bu sayt butunlay <em>rasm, raqam va ovoz</em> asosida ishlaydi.
+       Javoblarni yozish shart emas: to'g'ri raqamni bosish kifoya.</p>
+
+    <h4>Qanday tartibda o'rgatish kerak?</h4>
+    <ul>
+      <li><strong>1-hafta:</strong> faqat <em>Sanash</em> (1–10). Uyda ham sanang: qoshiq, olma, zina.</li>
+      <li><strong>2-hafta:</strong> <em>Sanash</em> (1–20) + <em>Qo'shish</em> 1-daraja (5 gacha).</li>
+      <li><strong>3–4-hafta:</strong> <em>Qo'shish</em> va <em>Ayirish</em> 10 gacha.</li>
+      <li><strong>2-oy:</strong> 20 gacha qo'shish/ayirish.</li>
+      <li><strong>3-oy:</strong> <em>Ko'paytirish</em> (2, 3, 4, 5) — guruh bo'lib sanash orqali.</li>
+      <li><strong>4-oy:</strong> <em>Bo'lish</em> — teng bo'lib berish orqali.</li>
+    </ul>
+
+    <h4>Kunlik tartib (15 daqiqa)</h4>
+    <ul>
+      <li>5 daqiqa — chop etilgan varaqda raqam yozish (<strong>Chop etish</strong> bo'limi).</li>
+      <li>7 daqiqa — saytdagi o'yin (1 ta to'plam = 10 savol).</li>
+      <li>3 daqiqa — real narsalar bilan: “Menga 3 ta uzum ber”.</li>
+    </ul>
+
+    <h4>Muhim maslahatlar</h4>
+    <ul>
+      <li>Xato javob — bu yomon emas. Sayt xato javobni o'chirib, yana urinishga imkon beradi.</li>
+      <li>Kuniga 15–20 daqiqadan oshirmang. Charchagan bola o'rganmaydi.</li>
+      <li>Har to'plamdan keyin maqtang: “Barakalla!”, “Ofarin!”.</li>
+      <li>Barmoq bilan sanashga ruxsat bering — bu bosqich normal.</li>
+    </ul>
+
+    <h4>Chop etiladigan materiallar</h4>
+    <p>“🖨️ Chop etish” tugmasi orqali mashq varaqlarini yarating: raqam yozish (chiziqcha bo'ylab),
+       sanash, qo'shish, ayirish, ko'paytirish jadvali, bo'lish va rangli mashqlar.
+       Har varaqning javoblari alohida sahifada chiqadi.</p>
+
+    <div class="foot-row" style="margin-top:22px">
+      <button class="btn" id="btnCloseParents">Yopish</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/audio.js"></script>
+<script src="assets/js/confetti.js"></script>
+<script src="assets/js/questions.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
