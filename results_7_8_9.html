@@ -59,6 +59,35 @@ h1 em{font-style:normal;color:#7FE0B0;display:block}
 .lede{margin:0 0 24px;max-width:44ch;color:#C6DED2;font-size:15px}
 
 
+/* ---------- programs / narx ---------- */
+.progs{margin:16px 0 2px}
+.progs h2{font-family:"Bricolage Grotesque",Georgia,serif;font-weight:800;
+  font-size:19px;letter-spacing:-.02em;margin:0 0 10px}
+.prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:stretch}
+.prog{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:14px 14px 14px 17px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.prog::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--green-2)}
+.prog-cam::before{background:var(--amber)}
+.prog-tag{display:inline-block;font:700 9px/1 "JetBrains Mono",monospace;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.prog h3{font-family:"Bricolage Grotesque",Georgia,serif;font-weight:700;font-size:17px;
+  margin:0 0 7px;letter-spacing:-.012em}
+.prog-price{margin:0 0 9px;font-family:"JetBrains Mono",monospace;font-weight:700;
+  font-size:21px;letter-spacing:-.035em;color:var(--green);white-space:nowrap}
+.prog-cam .prog-price{color:#A85508}
+.prog-price i{font-style:normal;font-family:"Instrument Sans",sans-serif;font-weight:500;
+  font-size:12px;color:var(--muted);margin-left:6px;letter-spacing:0}
+.prog-subj{display:flex;flex-wrap:wrap;gap:5px;margin:0;padding:0;list-style:none}
+.prog-subj li{font:600 11px/1.25 "Instrument Sans",sans-serif;background:var(--green-soft);
+  color:var(--ink-2);padding:5px 8px;border-radius:6px}
+.prog-cam .prog-subj li{background:var(--amber-soft);color:#8A4A08}
+.prog-subj li.subj-note{background:transparent;color:var(--muted);padding:5px 0 0 1px;font-weight:500;font-style:italic}
+.prog-note{margin:10px 0 0;font-size:12.5px;color:var(--muted)}
+.grant-exp{margin:12px 0 0;font-size:13.5px;line-height:1.55;color:var(--ink-2);
+  border-left:3px solid var(--green-soft);padding-left:11px}
+.grant-exp b{font-weight:600}
+@media(max-width:560px){.prog-grid{grid-template-columns:1fr}.prog-price{font-size:19px}}
+
 /* ---------- sticky controls ---------- */
 .bar{
   position:sticky; top:0; z-index:20; background:rgba(238,242,236,.94);
@@ -353,6 +382,27 @@ footer p{margin:0}
 </header>
 
 <div class="wrap">
+  <section class="progs" id="progs">
+    <h2 id="p-title"></h2>
+    <div class="prog-grid">
+      <article class="prog">
+        <span class="prog-tag" id="p1-tag"></span>
+        <h3 id="p1-name"></h3>
+        <p class="prog-price"><span id="p1-price"></span><i id="p1-unit"></i></p>
+        <ul class="prog-subj" id="p1-subj"></ul>
+      </article>
+      <article class="prog prog-cam">
+        <span class="prog-tag" id="p2-tag"></span>
+        <h3 id="p2-name"></h3>
+        <p class="prog-price"><span id="p2-price"></span><i id="p2-unit"></i></p>
+        <ul class="prog-subj" id="p2-subj"></ul>
+      </article>
+    </div>
+    <p class="prog-note" id="p-note"></p>
+  </section>
+</div>
+
+<div class="wrap">
   <a class="beacon" href="https://ellipseis.uz" id="beacon">
     <span class="aurora" aria-hidden="true"></span>
     <span class="orbs" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -417,6 +467,7 @@ footer p{margin:0}
       <span class="tier">30%</span><span class="tier">25%</span>
       <span class="tier">20%</span><span class="tier">10%</span>
     </div>
+    <p class="grant-exp" id="n-exp"></p>
     <div class="scoring" id="scoring"></div>
   </section>
 
@@ -436,6 +487,16 @@ const QN = {m:20, e:20, o:10};
 
 const T = {
   uz:{
+    nExp:"Birinchi grant \u2014 <b>Special program</b> uchun (o\u2018zbek va rus sinflari). <b>Full Cambridge</b> granti esa English imtihonida yuqori ball to\u2018plagan o\u2018quvchilarga beriladi.",
+    pTitle:"Dasturlar va yillik to\u2018lov",
+    p1Tag:"O\u2018zbek / rus sinflari", p1Name:"Special program",
+    p1Price:"7\u00a0800\u00a0000",
+    p1Subj:["Matematika","Fizika","Kimyo","Biologiya","ICT"],
+    p1SubjNote:"ingliz tilida",
+    p2Tag:"Cambridge sinflari", p2Name:"Full Cambridge",
+    p2Price:"9\u00a0800\u00a0000", p2Subj:[],
+    pUnit:"so\u2018m / yil",
+    pNote:"Quyidagi grant foizi shu yillik to\u2018lovga nisbatan chegirmani bildiradi.",
     h1a:"Qabul imtihoni", h1b:"natijalari",
     lede:"Familiyangizni qidiring. Natijangizni ko\u2018rish uchun ismingiz ustiga bosing.",
     g7:"7-sinf", g8:"8-sinf", g9:"9-sinf", ph:"Familiya yoki ism\u2026",
@@ -445,19 +506,29 @@ const T = {
     emptyS:"Familiyani boshqacha yozib ko\u2018ring yoki boshqa sinfni tanlang.",
     subj:["Matematika","English","Ona tili / Rus tili"],
     kWho:"O\u2018quvchi", kPct:"Natija", kGrant:"Grant", grantLbl:"grant",
-    lblNat:"o\u2018zb/rus", lblCam:"cambridge", noGrant:"\u2014",
+    lblNat:"special", lblCam:"cambridge", noGrant:"\u2014",
     bKick:"Rasmiy sayt", bTitle:"Maktab haqida to\u2018liq ma\u2019lumot",
     qWord:"ta savol", okWord:"to\u2018g\u2018ri", noWord:"noto\u2018g\u2018ri",
     cBand:"Qo\u2018shimcha grant", cTitle:"Sertifikatingiz bormi?", cNat:"Milliy sertifikat",
     cText:"IELTS, SAT yoki Milliy sertifikatga ega bo\u2018lgan o\u2018quvchilarga qo\u2018shimcha grant imkoniyatlari taqdim etilishi mumkin. Bunday imkoniyatlar bo\u2018yicha batafsil ma\u2019lumot olish va individual holatni ko\u2018rib chiqish uchun maktab ma\u2019muriyatiga murojaat qilishingizni so\u2018raymiz.",
     nTitle:"Grant darajalari",
-    nText:"Grant yillik o\u2018quv to\u2018lovidan chegirma miqdorini bildiradi. 7\u20138-sinflarda grant ikki xil: birinchisi \u2014 o\u2018zbek va rus sinflari uchun, \u201cCambridge\u201d granti esa Cambridge sinflari uchun amal qiladi.",
+    nText:"Grant yillik o\u2018quv to\u2018lovidan chegirma miqdorini bildiradi.",
     scoring:{"7":[["Matematika","20 ta \u00b7 2.5 ball"],["English","20 ta \u00b7 1 ball"],["Ona tili / Rus tili","10 ta \u00b7 1.5 ball"]],
              "8":[["Matematika","20 ta \u00b7 2.5 ball"],["English","20 ta \u00b7 1.5 ball"],["Ona tili / Rus tili","10 ta \u00b7 1 ball"]],
              "9":[["Matematika","20 ta \u00b7 2.5 ball"],["English","20 ta \u00b7 1.5 ball"],["Ona tili / Rus tili","10 ta \u00b7 1 ball"]]},
     foot:"Savollar bo\u2018yicha maktab qabul bo\u2018limiga murojaat qiling"
   },
   ru:{
+    nExp:"\u041f\u0435\u0440\u0432\u044b\u0439 \u0433\u0440\u0430\u043d\u0442 \u2014 \u0434\u043b\u044f \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b <b>Special program</b> (\u0443\u0437\u0431\u0435\u043a\u0441\u043a\u0438\u0435 \u0438 \u0440\u0443\u0441\u0441\u043a\u0438\u0435 \u043a\u043b\u0430\u0441\u0441\u044b). \u0413\u0440\u0430\u043d\u0442 <b>Full Cambridge</b> \u043f\u043e\u043b\u0443\u0447\u0430\u044e\u0442 \u0443\u0447\u0435\u043d\u0438\u043a\u0438 \u0441 \u0432\u044b\u0441\u043e\u043a\u0438\u043c \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u043e\u043c \u043f\u043e \u0430\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u043e\u043c\u0443 \u044f\u0437\u044b\u043a\u0443.",
+    pTitle:"\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b \u0438 \u0433\u043e\u0434\u043e\u0432\u0430\u044f \u043e\u043f\u043b\u0430\u0442\u0430",
+    p1Tag:"\u0423\u0437\u0431\u0435\u043a\u0441\u043a\u0438\u0435 / \u0440\u0443\u0441\u0441\u043a\u0438\u0435 \u043a\u043b\u0430\u0441\u0441\u044b", p1Name:"Special program",
+    p1Price:"7\u00a0800\u00a0000",
+    p1Subj:["\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0430","\u0424\u0438\u0437\u0438\u043a\u0430","\u0425\u0438\u043c\u0438\u044f","\u0411\u0438\u043e\u043b\u043e\u0433\u0438\u044f","ICT"],
+    p1SubjNote:"\u043d\u0430 \u0430\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u043e\u043c \u044f\u0437\u044b\u043a\u0435",
+    p2Tag:"\u041a\u043b\u0430\u0441\u0441\u044b Cambridge", p2Name:"Full Cambridge",
+    p2Price:"9\u00a0800\u00a0000", p2Subj:[],
+    pUnit:"\u0441\u0443\u043c / \u0433\u043e\u0434",
+    pNote:"\u0423\u043a\u0430\u0437\u0430\u043d\u043d\u044b\u0439 \u043d\u0438\u0436\u0435 \u043f\u0440\u043e\u0446\u0435\u043d\u0442 \u0433\u0440\u0430\u043d\u0442\u0430 \u2014 \u044d\u0442\u043e \u0441\u043a\u0438\u0434\u043a\u0430 \u043e\u0442 \u044d\u0442\u043e\u0439 \u0433\u043e\u0434\u043e\u0432\u043e\u0439 \u043e\u043f\u043b\u0430\u0442\u044b.",
     h1a:"\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u044b", h1b:"\u0432\u0441\u0442\u0443\u043f\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0433\u043e \u044d\u043a\u0437\u0430\u043c\u0435\u043d\u0430",
     lede:"\u041d\u0430\u0439\u0434\u0438\u0442\u0435 \u0441\u0432\u043e\u044e \u0444\u0430\u043c\u0438\u043b\u0438\u044e. \u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u043d\u0430 \u0438\u043c\u044f, \u0447\u0442\u043e\u0431\u044b \u0443\u0432\u0438\u0434\u0435\u0442\u044c \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u043f\u043e \u043f\u0440\u0435\u0434\u043c\u0435\u0442\u0430\u043c.",
     g7:"7 \u043a\u043b\u0430\u0441\u0441", g8:"8 \u043a\u043b\u0430\u0441\u0441", g9:"9 \u043a\u043b\u0430\u0441\u0441", ph:"\u0424\u0430\u043c\u0438\u043b\u0438\u044f \u0438\u043b\u0438 \u0438\u043c\u044f\u2026",
@@ -467,13 +538,13 @@ const T = {
     emptyS:"\u041f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0434\u0440\u0443\u0433\u043e\u0435 \u043d\u0430\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0444\u0430\u043c\u0438\u043b\u0438\u0438 \u0438\u043b\u0438 \u0432\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0434\u0440\u0443\u0433\u043e\u0439 \u043a\u043b\u0430\u0441\u0441.",
     subj:["\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0430","English","\u0420\u043e\u0434\u043d\u043e\u0439 / \u0440\u0443\u0441\u0441\u043a\u0438\u0439 \u044f\u0437\u044b\u043a"],
     kWho:"\u0423\u0447\u0435\u043d\u0438\u043a", kPct:"\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442", kGrant:"\u0413\u0440\u0430\u043d\u0442", grantLbl:"\u0433\u0440\u0430\u043d\u0442",
-    lblNat:"\u0443\u0437\u0431/\u0440\u0443\u0441", lblCam:"cambridge", noGrant:"\u2014",
+    lblNat:"special", lblCam:"cambridge", noGrant:"\u2014",
     bKick:"\u041e\u0444\u0438\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0439 \u0441\u0430\u0439\u0442", bTitle:"\u041f\u043e\u0434\u0440\u043e\u0431\u043d\u0435\u0435 \u043e \u0448\u043a\u043e\u043b\u0435",
     qWord:"\u0432\u043e\u043f\u0440\u043e\u0441\u043e\u0432", okWord:"\u0432\u0435\u0440\u043d\u043e", noWord:"\u043d\u0435\u0432\u0435\u0440\u043d\u043e",
     cBand:"\u0414\u043e\u043f. \u0433\u0440\u0430\u043d\u0442", cTitle:"\u0423 \u0432\u0430\u0441 \u0435\u0441\u0442\u044c \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442?", cNat:"Milliy sertifikat",
     cText:"\u0423\u0447\u0435\u043d\u0438\u043a\u0430\u043c, \u0438\u043c\u0435\u044e\u0449\u0438\u043c \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442 IELTS, SAT \u0438\u043b\u0438 Milliy sertifikat, \u043c\u043e\u0433\u0443\u0442 \u0431\u044b\u0442\u044c \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u044b \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u0433\u0440\u0430\u043d\u0442\u043e\u0432\u044b\u0435 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u0438. \u0417\u0430 \u043f\u043e\u0434\u0440\u043e\u0431\u043d\u043e\u0439 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0435\u0439 \u043e \u0442\u0430\u043a\u0438\u0445 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u044f\u0445 \u0438 \u0434\u043b\u044f \u0440\u0430\u0441\u0441\u043c\u043e\u0442\u0440\u0435\u043d\u0438\u044f \u0438\u043d\u0434\u0438\u0432\u0438\u0434\u0443\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0441\u043b\u0443\u0447\u0430\u044f \u043f\u0440\u043e\u0441\u0438\u043c \u043e\u0431\u0440\u0430\u0449\u0430\u0442\u044c\u0441\u044f \u043a \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0448\u043a\u043e\u043b\u044b.",
     nTitle:"\u0423\u0440\u043e\u0432\u043d\u0438 \u0433\u0440\u0430\u043d\u0442\u0430",
-    nText:"\u0413\u0440\u0430\u043d\u0442 \u2014 \u044d\u0442\u043e \u0440\u0430\u0437\u043c\u0435\u0440 \u0441\u043a\u0438\u0434\u043a\u0438 \u043e\u0442 \u0433\u043e\u0434\u043e\u0432\u043e\u0439 \u043e\u043f\u043b\u0430\u0442\u044b \u0437\u0430 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u0435. \u0412 7\u20138 \u043a\u043b\u0430\u0441\u0441\u0430\u0445 \u0434\u0432\u0430 \u0432\u0438\u0434\u0430 \u0433\u0440\u0430\u043d\u0442\u0430: \u043f\u0435\u0440\u0432\u044b\u0439 \u2014 \u0434\u043b\u044f \u0443\u0437\u0431\u0435\u043a\u0441\u043a\u0438\u0445 \u0438 \u0440\u0443\u0441\u0441\u043a\u0438\u0445 \u043a\u043b\u0430\u0441\u0441\u043e\u0432, \u0433\u0440\u0430\u043d\u0442 \u00abCambridge\u00bb \u2014 \u0434\u043b\u044f \u043a\u043b\u0430\u0441\u0441\u043e\u0432 Cambridge.",
+    nText:"\u0413\u0440\u0430\u043d\u0442 \u2014 \u044d\u0442\u043e \u0440\u0430\u0437\u043c\u0435\u0440 \u0441\u043a\u0438\u0434\u043a\u0438 \u043e\u0442 \u0433\u043e\u0434\u043e\u0432\u043e\u0439 \u043e\u043f\u043b\u0430\u0442\u044b \u0437\u0430 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u0435.",
     scoring:{"7":[["\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0430","20 \u0432\u043e\u043f\u0440. \u00b7 2.5 \u0431\u0430\u043b\u043b\u0430"],["English","20 \u0432\u043e\u043f\u0440. \u00b7 1 \u0431\u0430\u043b\u043b"],["\u0420\u043e\u0434\u043d\u043e\u0439 / \u0440\u0443\u0441\u0441\u043a\u0438\u0439","10 \u0432\u043e\u043f\u0440. \u00b7 1.5 \u0431\u0430\u043b\u043b\u0430"]],
              "8":[["\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0430","20 \u0432\u043e\u043f\u0440. \u00b7 2.5 \u0431\u0430\u043b\u043b\u0430"],["English","20 \u0432\u043e\u043f\u0440. \u00b7 1.5 \u0431\u0430\u043b\u043b\u0430"],["\u0420\u043e\u0434\u043d\u043e\u0439 / \u0440\u0443\u0441\u0441\u043a\u0438\u0439","10 \u0432\u043e\u043f\u0440. \u00b7 1 \u0431\u0430\u043b\u043b"]],
              "9":[["\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0430","20 \u0432\u043e\u043f\u0440. \u00b7 2.5 \u0431\u0430\u043b\u043b\u0430"],["English","20 \u0432\u043e\u043f\u0440. \u00b7 1.5 \u0431\u0430\u043b\u043b\u0430"],["\u0420\u043e\u0434\u043d\u043e\u0439 / \u0440\u0443\u0441\u0441\u043a\u0438\u0439","10 \u0432\u043e\u043f\u0440. \u00b7 1 \u0431\u0430\u043b\u043b"]]},
@@ -518,10 +589,20 @@ function chrome(){
   $('c-band').textContent = x.cBand; $('c-title').textContent = x.cTitle;
   $('c-nat').textContent = x.cNat; $('c-text').textContent = x.cText;
   $('n-title').textContent = x.nTitle; $('n-text').textContent = x.nText;
+  $('n-exp').innerHTML = x.nExp; $('n-exp').style.display = dual(grade) ? '' : 'none';
   $('scoring').innerHTML = x.scoring[grade].map(([a,b]) => `<span>${a} <b>${b}</b></span>`).join('');
   $('k-who').textContent = x.kWho; $('k-pct').textContent = x.kPct; $('k-grant').textContent = x.kGrant;
   $('b-kicker').textContent = x.bKick; $('b-title').textContent = x.bTitle;
   $('f-text').textContent = x.foot;
+  $('p-title').textContent = x.pTitle; $('p-note').textContent = x.pNote;
+  $('p1-tag').textContent = x.p1Tag; $('p1-name').textContent = x.p1Name;
+  $('p1-price').textContent = x.p1Price; $('p1-unit').textContent = x.pUnit;
+  $('p2-tag').textContent = x.p2Tag; $('p2-name').textContent = x.p2Name;
+  $('p2-price').textContent = x.p2Price; $('p2-unit').textContent = x.pUnit;
+  const subjLi = (arr, note) => arr.map(s => `<li>${s}</li>`).join('') +
+    (note ? `<li class="subj-note">\u2014 ${note}</li>` : '');
+  $('p1-subj').innerHTML = subjLi(x.p1Subj, x.p1SubjNote);
+  $('p2-subj').innerHTML = subjLi(x.p2Subj, '');
 }
 
 function render(){
