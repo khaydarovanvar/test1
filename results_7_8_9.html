@@ -68,8 +68,6 @@ h1 em{font-style:normal;color:#7FE0B0;display:block}
   padding:14px 14px 14px 17px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
 .prog::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--green-2)}
 .prog-cam::before{background:var(--amber)}
-.prog-tag{display:inline-block;font:700 9px/1 "JetBrains Mono",monospace;letter-spacing:.11em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 .prog h3{font-family:"Bricolage Grotesque",Georgia,serif;font-weight:700;font-size:17px;
   margin:0 0 7px;letter-spacing:-.012em}
 .prog-price{margin:0 0 9px;font-family:"JetBrains Mono",monospace;font-weight:700;
@@ -77,14 +75,39 @@ h1 em{font-style:normal;color:#7FE0B0;display:block}
 .prog-cam .prog-price{color:#A85508}
 .prog-price i{font-style:normal;font-family:"Instrument Sans",sans-serif;font-weight:500;
   font-size:12px;color:var(--muted);margin-left:6px;letter-spacing:0}
-.prog-subj{display:flex;flex-wrap:wrap;gap:5px;margin:0;padding:0;list-style:none}
-.prog-subj li{font:600 11px/1.25 "Instrument Sans",sans-serif;background:var(--green-soft);
-  color:var(--ink-2);padding:5px 8px;border-radius:6px}
+.prog-subj{display:flex;flex-wrap:wrap;gap:7px;margin:2px 0 0;padding:0;list-style:none}
+.prog-subj li{
+  font:700 15px/1.15 "Instrument Sans",sans-serif;letter-spacing:-.01em;
+  background:var(--green-soft);color:var(--ink-2);
+  padding:10px 14px;border-radius:10px;
+  opacity:0;transform:translateY(9px);
+  animation:subjIn .52s cubic-bezier(.2,.85,.3,1) forwards,
+            subjPulse 5.4s ease-in-out infinite;
+  animation-delay:calc(var(--i,0) * .075s), calc(1.1s + var(--i,0) * .19s);
+}
 .prog-cam .prog-subj li{background:var(--amber-soft);color:#8A4A08}
-.prog-subj li.subj-note{background:transparent;color:var(--muted);padding:5px 0 0 1px;font-weight:500;font-style:italic}
+.prog-subj li.subj-note{
+  background:transparent;color:var(--muted);padding:10px 2px 0;
+  font-weight:600;font-style:italic;font-size:13.5px;letter-spacing:0;
+  animation:subjIn .52s cubic-bezier(.2,.85,.3,1) forwards;
+  animation-delay:calc(var(--i,0) * .075s);
+}
+@keyframes subjIn{to{opacity:1;transform:none}}
+@keyframes subjPulse{
+  0%,74%,100%{background:var(--green-soft);color:var(--ink-2);
+    transform:translateY(0) scale(1);box-shadow:0 0 0 0 rgba(14,138,92,0)}
+  82%{background:var(--green-2);color:#fff;
+    transform:translateY(-4px) scale(1.045);box-shadow:0 8px 16px -7px rgba(14,138,92,.7)}
+  90%{background:var(--green-soft);color:var(--ink-2);
+    transform:translateY(0) scale(1);box-shadow:0 0 0 0 rgba(14,138,92,0)}
+}
+@media (prefers-reduced-motion: reduce){
+  .prog-subj li,.prog-subj li.subj-note{opacity:1;transform:none;animation:none}
+}
+@media(max-width:560px){.prog-subj li{font-size:14px;padding:9px 12px}}
 .prog-note{margin:10px 0 0;font-size:12.5px;color:var(--muted)}
-.grant-exp{margin:12px 0 0;font-size:13.5px;line-height:1.55;color:var(--ink-2);
-  border-left:3px solid var(--green-soft);padding-left:11px}
+.grant-exp{margin:18px 0 0;font-size:15px;line-height:1.6;color:var(--ink-2);
+  border-left:4px solid var(--green-2);padding:2px 0 2px 14px}
 .grant-exp b{font-weight:600}
 @media(max-width:560px){.prog-grid{grid-template-columns:1fr}.prog-price{font-size:19px}}
 
@@ -115,8 +138,6 @@ h1 em{font-style:normal;color:#7FE0B0;display:block}
   cursor:pointer;font-size:19px;line-height:1;color:var(--muted);padding:5px 7px;border-radius:8px;display:none;
 }
 #clear.on{display:block}
-.count{padding:8px 2px 0;font-size:12.5px;color:var(--muted)}
-.count b{color:var(--ink);font-weight:600}
 
 /* ---------- column key ---------- */
 .cols{
@@ -235,15 +256,60 @@ main{padding:4px 0 40px}
 .btn-ghost{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:#fff}
 
 /* ---------- legend / footer ---------- */
-.note{margin-top:10px;margin-bottom:6px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
-.note h2{font-family:"Bricolage Grotesque",sans-serif;font-size:17px;margin:0 0 4px;letter-spacing:-.01em}
-.note p{margin:0 0 14px;font-size:14px;color:var(--muted)}
-.tiers{display:flex;flex-wrap:wrap;gap:7px}
-.tier{font-family:"JetBrains Mono",monospace;font-size:14px;font-weight:700;padding:8px 12px;
-  border-radius:7px;background:var(--green-soft);color:var(--green)}
-.tier[data-t="full"]{background:var(--ink);color:#7FE0B0}
+.note{
+  margin-top:12px;margin-bottom:8px;background:var(--card);
+  border:1px solid var(--line);border-radius:18px;padding:24px 22px 22px;
+  position:relative;overflow:hidden;
+  box-shadow:0 1px 2px rgba(6,42,28,.05), 0 18px 44px -26px rgba(6,42,28,.42);
+}
+.note::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:4px;
+  background:linear-gradient(90deg,var(--ink) 0%,var(--green-2) 34%,var(--amber) 72%,var(--amber-2) 100%);
+  background-size:220% 100%;animation:bandSlide 7s linear infinite;
+}
+.note::after{
+  content:"";position:absolute;right:-70px;top:-70px;width:230px;height:230px;border-radius:50%;
+  background:radial-gradient(circle,rgba(14,138,92,.11) 0%,rgba(14,138,92,0) 68%);pointer-events:none;
+}
+.note h2{
+  font-family:"Bricolage Grotesque",Georgia,serif;font-weight:800;
+  font-size:clamp(23px,5.4vw,29px);line-height:1.08;letter-spacing:-.025em;margin:0 0 7px;
+}
+.note p{margin:0 0 18px;font-size:15.5px;line-height:1.55;color:var(--muted);max-width:52ch}
+.tiers{display:flex;flex-wrap:wrap;gap:9px}
+.tier{
+  font-family:"JetBrains Mono",monospace;font-size:17px;font-weight:700;letter-spacing:-.02em;
+  padding:13px 17px;border-radius:12px;background:var(--green-soft);color:var(--green);
+  opacity:0;transform:translateY(11px) scale(.94);
+  animation:tierIn .55s cubic-bezier(.2,.85,.3,1) forwards,
+            tierWave 5.6s ease-in-out infinite;
+  animation-delay:calc(var(--i,0) * .085s), calc(1.2s + var(--i,0) * .2s);
+}
+.tier[data-t="full"]{
+  background:var(--ink);color:#7FE0B0;position:relative;overflow:hidden;
+  font-size:19px;padding:13px 20px;
+  box-shadow:0 10px 24px -12px rgba(6,42,28,.85);
+}
+.tier[data-t="full"]::after{
+  content:"";position:absolute;top:0;bottom:0;left:-60%;width:45%;
+  background:linear-gradient(100deg,transparent,rgba(127,224,176,.42),transparent);
+  animation:shine 3.4s ease-in-out infinite;
+}
 .tier[data-t="high"]{background:var(--amber-soft);color:#A85508}
-.scoring{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:15px;color:var(--ink-2);line-height:1.9}
+@keyframes tierIn{to{opacity:1;transform:none}}
+@keyframes tierWave{
+  0%,76%,100%{transform:translateY(0) scale(1)}
+  84%{transform:translateY(-5px) scale(1.06)}
+  92%{transform:translateY(0) scale(1)}
+}
+@keyframes bandSlide{to{background-position:220% 0}}
+@keyframes shine{0%,62%{left:-60%}100%{left:130%}}
+@media (prefers-reduced-motion: reduce){
+  .tier{opacity:1;transform:none;animation:none}
+  .note::before{animation:none}
+  .tier[data-t="full"]::after{display:none}
+}
+.scoring{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);font-size:15px;color:var(--ink-2);line-height:1.9}
 .scoring span{display:inline-block;margin-right:18px;white-space:nowrap}
 .scoring b{color:var(--ink);font-family:"JetBrains Mono",monospace;font-size:15.5px}
 /* ---------- beacon: link home ---------- */
@@ -386,13 +452,11 @@ footer p{margin:0}
     <h2 id="p-title"></h2>
     <div class="prog-grid">
       <article class="prog">
-        <span class="prog-tag" id="p1-tag"></span>
         <h3 id="p1-name"></h3>
         <p class="prog-price"><span id="p1-price"></span><i id="p1-unit"></i></p>
         <ul class="prog-subj" id="p1-subj"></ul>
       </article>
       <article class="prog prog-cam">
-        <span class="prog-tag" id="p2-tag"></span>
         <h3 id="p2-name"></h3>
         <p class="prog-price"><span id="p2-price"></span><i id="p2-unit"></i></p>
         <ul class="prog-subj" id="p2-subj"></ul>
@@ -434,7 +498,6 @@ footer p{margin:0}
       <button id="clear" type="button" aria-label="×">&times;</button>
     </div>
   </div>
-  <div class="wrap count" id="count" aria-live="polite"></div>
 </div>
 
 <main class="wrap">
@@ -461,11 +524,11 @@ footer p{margin:0}
     <h2 id="n-title"></h2>
     <p id="n-text"></p>
     <div class="tiers" id="tiers">
-      <span class="tier" data-t="full">100%</span>
-      <span class="tier" data-t="high">75%</span>
-      <span class="tier" data-t="high">50%</span>
-      <span class="tier">30%</span><span class="tier">25%</span>
-      <span class="tier">20%</span><span class="tier">10%</span>
+      <span class="tier" data-t="full" style="--i:0">100%</span>
+      <span class="tier" data-t="high" style="--i:1">75%</span>
+      <span class="tier" data-t="high" style="--i:2">50%</span>
+      <span class="tier" style="--i:3">30%</span><span class="tier" style="--i:4">25%</span>
+      <span class="tier" style="--i:5">20%</span><span class="tier" style="--i:6">10%</span>
     </div>
     <p class="grant-exp" id="n-exp"></p>
     <div class="scoring" id="scoring"></div>
@@ -487,13 +550,13 @@ const QN = {m:20, e:20, o:10};
 
 const T = {
   uz:{
-    nExp:"Birinchi grant \u2014 <b>Special program</b> uchun (o\u2018zbek va rus sinflari). <b>Full Cambridge</b> granti esa English imtihonida yuqori ball to\u2018plagan o\u2018quvchilarga beriladi.",
+    nExp:"Birinchi grant \u2014 <b>Special IGCSE program</b> uchun (o\u2018zbek va rus sinflari). <b>Full Cambridge</b> granti esa English imtihonida yuqori ball to\u2018plagan o\u2018quvchilarga beriladi.",
     pTitle:"Dasturlar va yillik to\u2018lov",
-    p1Tag:"O\u2018zbek / rus sinflari", p1Name:"Special program",
+    p1Name:"Special IGCSE program",
     p1Price:"7\u00a0800\u00a0000",
     p1Subj:["Matematika","Fizika","Kimyo","Biologiya","ICT"],
     p1SubjNote:"ingliz tilida",
-    p2Tag:"Cambridge sinflari", p2Name:"Full Cambridge",
+    p2Name:"Full Cambridge",
     p2Price:"9\u00a0800\u00a0000", p2Subj:[],
     pUnit:"so\u2018m / yil",
     pNote:"Quyidagi grant foizi shu yillik to\u2018lovga nisbatan chegirmani bildiradi.",
@@ -519,13 +582,13 @@ const T = {
     foot:"Savollar bo\u2018yicha maktab qabul bo\u2018limiga murojaat qiling"
   },
   ru:{
-    nExp:"\u041f\u0435\u0440\u0432\u044b\u0439 \u0433\u0440\u0430\u043d\u0442 \u2014 \u0434\u043b\u044f \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b <b>Special program</b> (\u0443\u0437\u0431\u0435\u043a\u0441\u043a\u0438\u0435 \u0438 \u0440\u0443\u0441\u0441\u043a\u0438\u0435 \u043a\u043b\u0430\u0441\u0441\u044b). \u0413\u0440\u0430\u043d\u0442 <b>Full Cambridge</b> \u043f\u043e\u043b\u0443\u0447\u0430\u044e\u0442 \u0443\u0447\u0435\u043d\u0438\u043a\u0438 \u0441 \u0432\u044b\u0441\u043e\u043a\u0438\u043c \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u043e\u043c \u043f\u043e \u0430\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u043e\u043c\u0443 \u044f\u0437\u044b\u043a\u0443.",
+    nExp:"\u041f\u0435\u0440\u0432\u044b\u0439 \u0433\u0440\u0430\u043d\u0442 \u2014 \u0434\u043b\u044f \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b <b>Special IGCSE program</b> (\u0443\u0437\u0431\u0435\u043a\u0441\u043a\u0438\u0435 \u0438 \u0440\u0443\u0441\u0441\u043a\u0438\u0435 \u043a\u043b\u0430\u0441\u0441\u044b). \u0413\u0440\u0430\u043d\u0442 <b>Full Cambridge</b> \u043f\u043e\u043b\u0443\u0447\u0430\u044e\u0442 \u0443\u0447\u0435\u043d\u0438\u043a\u0438 \u0441 \u0432\u044b\u0441\u043e\u043a\u0438\u043c \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u043e\u043c \u043f\u043e \u0430\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u043e\u043c\u0443 \u044f\u0437\u044b\u043a\u0443.",
     pTitle:"\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b \u0438 \u0433\u043e\u0434\u043e\u0432\u0430\u044f \u043e\u043f\u043b\u0430\u0442\u0430",
-    p1Tag:"\u0423\u0437\u0431\u0435\u043a\u0441\u043a\u0438\u0435 / \u0440\u0443\u0441\u0441\u043a\u0438\u0435 \u043a\u043b\u0430\u0441\u0441\u044b", p1Name:"Special program",
+    p1Name:"Special IGCSE program",
     p1Price:"7\u00a0800\u00a0000",
     p1Subj:["\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0430","\u0424\u0438\u0437\u0438\u043a\u0430","\u0425\u0438\u043c\u0438\u044f","\u0411\u0438\u043e\u043b\u043e\u0433\u0438\u044f","ICT"],
     p1SubjNote:"\u043d\u0430 \u0430\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u043e\u043c \u044f\u0437\u044b\u043a\u0435",
-    p2Tag:"\u041a\u043b\u0430\u0441\u0441\u044b Cambridge", p2Name:"Full Cambridge",
+    p2Name:"Full Cambridge",
     p2Price:"9\u00a0800\u00a0000", p2Subj:[],
     pUnit:"\u0441\u0443\u043c / \u0433\u043e\u0434",
     pNote:"\u0423\u043a\u0430\u0437\u0430\u043d\u043d\u044b\u0439 \u043d\u0438\u0436\u0435 \u043f\u0440\u043e\u0446\u0435\u043d\u0442 \u0433\u0440\u0430\u043d\u0442\u0430 \u2014 \u044d\u0442\u043e \u0441\u043a\u0438\u0434\u043a\u0430 \u043e\u0442 \u044d\u0442\u043e\u0439 \u0433\u043e\u0434\u043e\u0432\u043e\u0439 \u043e\u043f\u043b\u0430\u0442\u044b.",
@@ -553,7 +616,7 @@ const T = {
 };
 
 const $ = id => document.getElementById(id);
-const list = $('list'), q = $('q'), clear = $('clear'), countEl = $('count');
+const list = $('list'), q = $('q'), clear = $('clear');
 const tabs = [...document.querySelectorAll('.tab')];
 let grade = '7', lang = 'uz';
 const t = () => T[lang];
@@ -595,12 +658,12 @@ function chrome(){
   $('b-kicker').textContent = x.bKick; $('b-title').textContent = x.bTitle;
   $('f-text').textContent = x.foot;
   $('p-title').textContent = x.pTitle; $('p-note').textContent = x.pNote;
-  $('p1-tag').textContent = x.p1Tag; $('p1-name').textContent = x.p1Name;
+  $('p1-name').textContent = x.p1Name;
   $('p1-price').textContent = x.p1Price; $('p1-unit').textContent = x.pUnit;
-  $('p2-tag').textContent = x.p2Tag; $('p2-name').textContent = x.p2Name;
+  $('p2-name').textContent = x.p2Name;
   $('p2-price').textContent = x.p2Price; $('p2-unit').textContent = x.pUnit;
-  const subjLi = (arr, note) => arr.map(s => `<li>${s}</li>`).join('') +
-    (note ? `<li class="subj-note">\u2014 ${note}</li>` : '');
+  const subjLi = (arr, note) => arr.map((s,i) => `<li style="--i:${i}">${s}</li>`).join('') +
+    (note ? `<li class="subj-note" style="--i:${arr.length}">\u2014 ${note}</li>` : '');
   $('p1-subj').innerHTML = subjLi(x.p1Subj, x.p1SubjNote);
   $('p2-subj').innerHTML = subjLi(x.p2Subj, '');
 }
@@ -610,7 +673,6 @@ function render(){
   const rows = DATA[grade].map((r,i) => ({...r, rank:i+1}))
     .filter(r => !k || norm(r.s+' '+r.n).includes(k) || norm(r.n+' '+r.s).includes(k));
 
-  countEl.innerHTML = k ? x.found(rows.length) : x.all(DATA[grade].length);
 
   if(!rows.length){
     list.innerHTML = `<div class="empty"><b>${x.emptyT}</b>${x.emptyS}</div>`;
