@@ -1,9 +1,14 @@
-# Grade 8 exam — English-only edition
+# English-only exam papers
 
-`8_grade_english_only.pdf` is an English-only rebuild of the original bilingual
-(Russian / Uzbek) Grade 8 exam booklet.
+English-only rebuilds of the bilingual (Russian / Uzbek) Ellipse International
+School exam booklets.
 
-What changed relative to the source booklet:
+| Paper | PDF | Content |
+|---|---|---|
+| Grade 7 | `7_grade_english_only.pdf` | `build_grade7.py` |
+| Grade 8 | `8_grade_english_only.pdf` | `build_grade8.py` |
+
+What changed relative to each source booklet:
 
 - **Mathematics (Q1–20)** — translated into English; the Russian and Uzbek
   wordings were removed. Numbers, answer options and their A–E order are
@@ -15,10 +20,17 @@ What changed relative to the source booklet:
   Mathematics (2.5 points) and English (1.5 points), and the question count
   reads 40 instead of 50. The 80-minute limit was carried over unchanged.
 
-Rebuilding:
+## Layout
+
+`examlib.py` holds everything shared between papers: the print CSS, the
+question-box helpers, the cover page and the page assembly. Each
+`build_grade<N>.py` holds only that paper's questions, answer options and
+reading passage, then calls `examlib.build()`.
+
+## Rebuilding
 
 ```sh
-python3 build.py            # writes exam_en.html
+python3 build_grade7.py        # writes exam_grade7_en.html
 chromium --headless --no-pdf-header-footer \
-         --print-to-pdf=exam_en.pdf exam_en.html
+         --print-to-pdf=7_grade_english_only.pdf exam_grade7_en.html
 ```
