@@ -34,7 +34,7 @@ const DEFAULT = () => ({
   },
   answerStreak: 0,
   daily: { date: null, done: [], claimed: false },
-  settings: { sound: true, speech: true, uzbek: 'auto' },
+  settings: { sound: true, speech: true, uzbek: 'auto', unlockAll: true },
   history: [],          /* [{date, subject, correct, total, seconds}] */
 });
 
@@ -111,7 +111,10 @@ export function currentWorld() {
 
 export function worldUnlocked(worldId) {
   const w = WORLDS.find(x => x.id === worldId);
-  return !!w && state.xp >= w.unlockXp;
+  if (!w) return false;
+  /* parent switch: open every world regardless of XP */
+  if (state.settings.unlockAll) return true;
+  return state.xp >= w.unlockXp;
 }
 
 /** Uzbek support fades out as Ali climbs. */

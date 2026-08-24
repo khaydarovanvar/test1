@@ -109,6 +109,7 @@ export function parentScreen() {
 
     el('section', { class: 'card' },
       el('h3', {}, 'Boshqaruv'),
+      unlockToggle(),
       el('div', { class: 'ctl-actions' },
         el('a', { class: 'btn btn--gold', href: '#/print' }, '🖨️ Mashq varaqasi chop etish'),
         el('button', { class: 'btn btn--ghost', type: 'button', onClick: exportData }, '💾 Natijalarni saqlash (JSON)'),
@@ -128,6 +129,21 @@ function strongList() {
   if (!rows.length) return el('p', { class: 'note' }, "Ko'proq mashq kerak — natijalar to'planmoqda.");
   return el('ul', { class: 'weak-list' }, ...rows.map(r => el('li', {},
     el('span', {}, `• ${r[0]}`), el('span', { class: 'weak-list__n' }, `${Math.round(r[1] * 100)}% to'g'ri`))));
+}
+
+function unlockToggle() {
+  const input = el('input', { type: 'checkbox', onChange: e => {
+    S.get().settings.unlockAll = e.target.checked;
+    S.save();
+    toast(e.target.checked ? 'Hamma bosqichlar ochildi 🔓' : 'Bosqichlar XP bilan ochiladi 🔒');
+  } });
+  input.checked = S.get().settings.unlockAll !== false;
+  return el('label', { class: 'ctl-check' }, input,
+    el('span', {},
+      el('strong', {}, "🔓 Hamma bosqichlarni ochish"),
+      el('small', {}, "O'chirilsa, dunyolar XP yig'ilgani sari ochiladi"),
+    ),
+  );
 }
 
 function kv(k, v) {

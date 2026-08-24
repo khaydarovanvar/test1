@@ -12,7 +12,7 @@ export function mapScreen() {
 
   const path = el('div', { class: 'career' });
   WORLDS.forEach((w, i) => {
-    const unlocked = xp >= w.unlockXp;
+    const unlocked = S.worldUnlocked(w.id);
     const next = WORLDS[i + 1];
     const done = LESSONS.filter(l => l.world === w.id && S.lessonState(l.id)?.done).length;
     const total = LESSONS.filter(l => l.world === w.id).length;
@@ -29,7 +29,7 @@ export function mapScreen() {
         unlocked ? null : progressBar(Math.min(1, xp / w.unlockXp)),
       ),
     ));
-    if (next) path.append(el('div', { class: `career-link${xp >= next.unlockXp ? ' is-open' : ''}` }, '⬇️'));
+    if (next) path.append(el('div', { class: `career-link${S.worldUnlocked(next.id) ? ' is-open' : ''}` }, '⬇️'));
   });
 
   node.append(path);
