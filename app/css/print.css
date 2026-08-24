@@ -1,0 +1,80 @@
+/* ============================================================
+   A4 print rules — only the worksheet sheets reach the paper.
+   ============================================================ */
+
+@page {
+  size: A4 portrait;
+  margin: 10mm;
+}
+
+@media print {
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* hide the whole app chrome */
+  .pitch-bg,
+  .page-head,
+  .no-print,
+  #toast-host,
+  .confetti,
+  .celebrate,
+  .modal-back { display: none !important; }
+
+  .app { max-width: none; padding: 0; margin: 0; }
+  .ws-preview { margin: 0; }
+  .sheets { display: block; }
+
+  .sheet {
+    width: auto;
+    min-height: auto;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: #fff !important;
+    color: #000 !important;
+    page-break-after: always;
+    break-after: page;
+    display: block;
+  }
+  .sheet:last-child { page-break-after: auto; break-after: auto; }
+  .sheet--key { background: #fff !important; }
+
+  /* keep exercises from being sliced across pages */
+  .ws-alpha__row,
+  .ws-trace__block,
+  .ws-words__row,
+  .ws-sent__block,
+  .ws-nums__row,
+  .ws-strokes__row,
+  .ws-cols__cell,
+  .ws-count__cell,
+  .ws-wp__item,
+  .key-item { page-break-inside: avoid; break-inside: avoid; }
+
+  .sheet__head, .sheet__foot { page-break-inside: avoid; break-inside: avoid; }
+
+  /* make the traceable outlines survive printers that drop background art */
+  .ghost {
+    color: transparent !important;
+    -webkit-text-stroke: 1.1px #8b8b8b !important;
+  }
+  .ws-strokes__path { stroke: #8b8b8b !important; }
+
+  a { text-decoration: none; color: #000; }
+
+  /* nudge densities so a 50-question sheet still fits sensibly */
+  .ws-cols { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .ws-inline { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .ws-count { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+}
+
+@media print {
+  .ws-cols--dense { grid-template-columns: repeat(5, 1fr); }
+  .ws-inline--dense { grid-template-columns: repeat(4, 1fr); }
+  .ws-count--dense { grid-template-columns: repeat(3, 1fr); }
+}
