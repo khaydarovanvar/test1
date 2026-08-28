@@ -418,6 +418,154 @@
       LT(140, 174, '2 × 180° = 360°', 'var(--brand)', 12.5));
   };
 
+
+  /* ---------- Quarter II: right triangles, Pythagoras, trigonometry ---------- */
+  var RT = { C: [56, 156], A: [56, 46], B: [226, 156] };
+  F.rightTriangle = function () {
+    var C = RT.C, A = RT.A, B = RT.B, c = cent([A, B, C]);
+    return svg('0 0 268 194', poly([A, B, C]) + right(C, B, A, 14) +
+      ang(A, B, C, 26, S.arc) + ang(B, A, C, 26, S.arc2) +
+      dot(A[0], A[1]) + dot(B[0], B[1]) + dot(C[0], C[1]) +
+      vlabel(A, c, 'A') + vlabel(B, c, 'B') + vlabel(C, c, 'C') +
+      LT(140, 172, 'a', 'var(--muted)', 13) +
+      LT(40, 100, 'b', 'var(--muted)', 13) +
+      LT(155, 92, 'c', 'var(--brand)', 13) +
+      LT(84, 62, 'α', 'var(--brass)', 12) + LT(206, 143, 'β', 'var(--brand)', 12) +
+      LT(134, 188, 'legs a, b · hypotenuse c', 'var(--muted)', 10.5));
+  };
+  F.trigRatios = function () {
+    var C = RT.C, A = RT.A, B = RT.B, c = cent([A, B, C]);
+    return svg('0 0 340 194',
+      poly([A, B, C]) + right(C, B, A, 14) + ang(B, A, C, 26, S.arc2) +
+      dot(A[0], A[1]) + dot(B[0], B[1]) + dot(C[0], C[1]) +
+      vlabel(A, c, 'A') + vlabel(B, c, 'B') + vlabel(C, c, 'C') +
+      LT(140, 172, 'a  opposite', 'var(--muted)', 10.5) +
+      LT(30, 100, 'b', 'var(--muted)', 12) + LT(30, 116, 'adj.', 'var(--muted)', 9) +
+      LT(158, 92, 'c  hyp.', 'var(--brand)', 10.5) +
+      LT(206, 143, 'β', 'var(--brand)', 12) + LT(84, 62, 'α', 'var(--brass)', 12) +
+      LT(300, 58, 'sin α = a/c', 'var(--brand)', 11) +
+      LT(300, 82, 'cos α = b/c', 'var(--brand)', 11) +
+      LT(300, 106, 'tan α = a/b', 'var(--brass)', 11) +
+      LT(300, 130, 'cot α = b/a', 'var(--brass)', 11));
+  };
+  F.pythagorasSquares = function () {
+    var C = [120, 180], A = [120, 120], B = [200, 180];
+    var sq = 'fill="var(--brand-tint)" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"';
+    var sqB = 'fill="var(--brass-tint)" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"';
+    return svg('44 26 246 254',
+      poly([[120, 180], [200, 180], [200, 260], [120, 260]], sq) +
+      poly([[120, 180], [120, 120], [60, 120], [60, 180]], sq) +
+      poly([[120, 120], [200, 180], [260, 100], [180, 40]], sqB) +
+      poly([A, B, C], 'fill="var(--surface)" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"') +
+      right(C, B, A, 12) +
+      dot(A[0], A[1]) + dot(B[0], B[1]) + dot(C[0], C[1]) +
+      L(112, 112, 'A') + L(206, 192, 'B') + L(110, 192, 'C') +
+      LT(160, 226, 'a²', 'var(--brand)', 13) + LT(90, 152, 'b²', 'var(--brand)', 13) +
+      LT(190, 110, 'c²', 'var(--brass)', 13) +
+      LT(167, 274, 'a² + b² = c²', 'var(--brand)', 12));
+  };
+  F.pythagorasProof = function () {
+    var O = [40, 40], S2 = 200;
+    var P = [[160, 40], [240, 160], [120, 240], [40, 120]];
+    var tri = 'fill="var(--brand-tint)" stroke="currentColor" stroke-width="1.5"';
+    return svg('20 20 250 256',
+      '<rect x="40" y="40" width="200" height="200" fill="none" stroke="currentColor" stroke-width="2"/>' +
+      poly([[40, 40], [160, 40], [40, 120]], tri) +
+      poly([[160, 40], [240, 40], [240, 160]], tri) +
+      poly([[240, 160], [240, 240], [120, 240]], tri) +
+      poly([[120, 240], [40, 240], [40, 120]], tri) +
+      poly(P, 'fill="var(--brass-tint)" stroke="currentColor" stroke-width="2" stroke-linejoin="round"') +
+      LT(100, 32, 'a', 'var(--muted)', 11) + LT(206, 32, 'b', 'var(--muted)', 11) +
+      LT(190, 148, 'c', 'var(--brass)', 12) +
+      LT(140, 266, '(a + b)² = 4 · ½ab + c²', 'var(--brand)', 11.5));
+  };
+  F.specialAngles = function () {
+    var t1 = poly([[30, 150], [140, 150], [140, 40]]) + right([140, 150], [30, 150], [140, 40], 12) +
+      ang([30, 150], [140, 150], [140, 40], 30, S.arc2) +
+      ang([140, 40], [140, 150], [30, 150], 22, S.arc2) +
+      LT(85, 167, '1', 'var(--muted)', 12) + LT(155, 96, '1', 'var(--muted)', 12) +
+      LT(72, 88, '√2', 'var(--brand)', 12) +
+      LT(64, 141, '45°', 'var(--brass)', 10) + LT(125, 70, '45°', 'var(--brass)', 10);
+    var t2 = poly([[190, 150], [300, 150], [300, 40]]) + right([300, 150], [190, 150], [300, 40], 12) +
+      ang([190, 150], [300, 150], [300, 40], 30, S.arc) +
+      ang([300, 40], [300, 150], [190, 150], 22, S.arc) +
+      LT(245, 167, '√3', 'var(--muted)', 12) + LT(315, 96, '1', 'var(--muted)', 12) +
+      LT(232, 88, '2', 'var(--brand)', 12) +
+      LT(224, 141, '30°', 'var(--brand)', 10) + LT(285, 70, '60°', 'var(--brand)', 10);
+    return svg('8 26 322 158', t1 + t2);
+  };
+  F.complementary = function () {
+    var C = [56, 156], A = [56, 46], B = [226, 156], c = cent([A, B, C]);
+    return svg('0 0 268 196', poly([A, B, C]) + right(C, B, A, 14) +
+      ang(B, A, C, 28, S.arc) + ang(A, B, C, 28, S.arc2) +
+      dot(A[0], A[1]) + dot(B[0], B[1]) + dot(C[0], C[1]) +
+      vlabel(A, c, 'A') + vlabel(B, c, 'B') + vlabel(C, c, 'C') +
+      LT(90, 64, 'α', 'var(--brass)', 12.5) + LT(200, 141, '90° − α', 'var(--brand)', 10.5) +
+      LT(134, 182, 'sin α = cos(90° − α)', 'var(--brand)', 12) +
+      LT(134, 194, 'tan α = cot(90° − α)', 'var(--brand)', 12));
+  };
+  F.bearings = function () {
+    var O = [140, 130], R = 92;
+    var ray = [O[0] + R * Math.sin(62 * Math.PI / 180), O[1] - R * Math.cos(62 * Math.PI / 180)];
+    return svg('0 0 280 250',
+      '<circle cx="140" cy="130" r="92" fill="none" stroke="var(--rule)" stroke-width="1.4"/>' +
+      line([140, 20], [140, 240], S.aux) + line([30, 130], [250, 130], S.aux) +
+      line(O, [O[0], O[1] - R], 'fill="none" stroke="currentColor" stroke-width="2"') +
+      line(O, ray, 'fill="none" stroke="var(--brand)" stroke-width="2.4"') +
+      '<path d="M140 92 A38 38 0 0 1 ' + (O[0] + 38 * Math.sin(62 * Math.PI / 180)).toFixed(1) + ' ' +
+      (O[1] - 38 * Math.cos(62 * Math.PI / 180)).toFixed(1) + '" fill="none" stroke="var(--brass)" stroke-width="1.8"/>' +
+      LT(140, 12, 'N', 'var(--ink)', 13) + LT(262, 130, 'E', 'var(--muted)', 12) +
+      LT(140, 248, 'S', 'var(--muted)', 12) + LT(18, 130, 'W', 'var(--muted)', 12) +
+      dot(O[0], O[1]) + LT(182, 112, '062°', 'var(--brass)', 11.5) +
+      LT(ray[0] + 16, ray[1] - 8, 'B', 'var(--brand)', 12));
+  };
+  F.ladder = function () {
+    var G = [46, 176], W = [46, 40], T = [46, 60], F0 = [206, 176];
+    return svg('0 0 252 208',
+      line([26, 176], [232, 176], 'fill="none" stroke="currentColor" stroke-width="2.2"') +
+      line([46, 30], [46, 176], 'fill="none" stroke="currentColor" stroke-width="2.2"') +
+      line(F0, T, 'fill="none" stroke="var(--brand)" stroke-width="3"') +
+      right(G, F0, [46, 40], 13) +
+      ang(F0, G, T, 30, S.arc2) +
+      dot(T[0], T[1], 'var(--brand)') + dot(F0[0], F0[1], 'var(--brand)') +
+      LT(174, 160, 'α', 'var(--brass)', 12) +
+      LT(30, 118, 'h', 'var(--muted)', 12.5) +
+      LT(126, 192, 'd', 'var(--muted)', 12.5) +
+      LT(136, 106, 'ladder ℓ', 'var(--brand)', 11) +
+      LT(126, 204, 'h = ℓ · sin α,  d = ℓ · cos α', 'var(--brand)', 10.5));
+  };
+  F.numberLineInterval = function () {
+    var W = 330, y = 44;
+    var out = line([16, y], [W - 16, y], 'stroke="currentColor" stroke-width="1.8"');
+    out += '<path d="M' + (W - 22) + ' ' + (y - 5) + ' L' + (W - 14) + ' ' + y + ' L' +
+      (W - 22) + ' ' + (y + 5) + '" fill="none" stroke="currentColor" stroke-width="1.8"/>';
+    out += '<line x1="96" y1="' + y + '" x2="240" y2="' + y + '" stroke="var(--brand)" stroke-width="5"/>';
+    out += '<circle cx="96" cy="' + y + '" r="6" fill="var(--paper)" stroke="var(--brand)" stroke-width="2.4"/>';
+    out += '<circle cx="240" cy="' + y + '" r="6" fill="var(--brand)"/>';
+    out += LT(96, y + 22, '−2') + LT(240, y + 22, '5');
+    out += LT(168, y - 18, '−2 < x ≤ 5', 'var(--brand)', 12.5);
+    out += LT(168, y + 42, 'open circle = strict · filled = included', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' 96', out);
+  };
+  F.rootLadder = function () {
+    var rows = [['√a', 'a^(1/2)'], ['∛a', 'a^(1/3)'], ['⁴√a', 'a^(1/4)'], ['ⁿ√aᵐ', 'a^(m/n)']];
+    var out = '';
+    rows.forEach(function (r, i) {
+      var y = 34 + i * 40;
+      out += '<rect x="18" y="' + (y - 20) + '" width="120" height="32" rx="5" fill="var(--surface-2)" ' +
+        'stroke="currentColor" stroke-width="1.4"/>' +
+        '<text x="78" y="' + (y - 1) + '" text-anchor="middle" font-family="Spectral,Georgia,serif" ' +
+        'font-size="15" fill="currentColor">' + r[0] + '</text>' +
+        '<path d="M144 ' + (y - 4) + ' H186" fill="none" stroke="var(--brass)" stroke-width="1.6"/>' +
+        '<path d="M180 ' + (y - 9) + ' l6 5 -6 5" fill="none" stroke="var(--brass)" stroke-width="1.6"/>' +
+        '<rect x="192" y="' + (y - 20) + '" width="120" height="32" rx="5" fill="var(--brand-tint)" ' +
+        'stroke="var(--brand)" stroke-width="1.4"/>' +
+        '<text x="252" y="' + (y - 1) + '" text-anchor="middle" font-family="Spectral,Georgia,serif" ' +
+        'font-size="15" fill="var(--brand)">' + r[1] + '</text>';
+    });
+    return svg('0 0 330 190', out + LT(165, 182, 'a root is a power — the same object, two notations', 'var(--muted)', 10.5));
+  };
+
   w.FIG = F;
   w.FIGH = { svg: svg, L: L, LT: LT, dot: dot, poly: poly, line: line, ticks: ticks, ang: ang, right: right, mid: mid, cent: cent, norm: norm, S: S };
 })(window);

@@ -1,10 +1,10 @@
 /* Grade 8 · Algebra · Quarter I (27 hours)
    National backbone: Alimov, "Algebra 8" (O'qituvchi 2019), Chapter I.
    Cambridge references: Lower Secondary Mathematics Stage 9. */
-var G8_ALG_Q1 = [];
+var G8_ALG = [];
 
 /* ============================== 1 ============================== */
-G8_ALG_Q1.push({
+G8_ALG.push({
   id: 'alg-01', stream: 'alg', grade: 8, quarter: 1, lessons: '1–3', hours: 3,
   title: 'Revision of the Grade 7 course',
   subtitle: 'Powers, brackets, factorising and linear equations — the four tools every fraction question in this chapter will need.',
@@ -17,6 +17,18 @@ G8_ALG_Q1.push({
     'Solve a linear equation and rearrange a simple formula.'
   ],
   timing: [[5, 'Warm-up'], [12, 'Explanation'], [6, 'Interactive'], [15, 'Practice'], [2, 'Homework']],
+  terms: [
+    ['Power', 'Daraja', 'Степень'],
+    ['Base of a power', 'Daraja asosi', 'Основание степени'],
+    ['Index (exponent)', 'Daraja ko‘rsatkichi', 'Показатель степени'],
+    ['Expand the brackets', 'Qavslarni ochish', 'Раскрыть скобки'],
+    ['Factorise', 'Ko‘paytuvchilarga ajratish', 'Разложить на множители'],
+    ['Common factor', 'Umumiy ko‘paytuvchi', 'Общий множитель'],
+    ['Difference of two squares', 'Kvadratlar ayirmasi', 'Разность квадратов'],
+    ['Perfect square', 'To‘la kvadrat', 'Полный квадрат'],
+    ['Linear equation', 'Chiziqli tenglama', 'Линейное уравнение'],
+    ['Subject of a formula', 'Formuladan izlanayotgan kattalik', 'Выражаемая величина'],
+  ],
   sections: [
     {
       h: 'Why we start here',
@@ -179,7 +191,7 @@ G8_ALG_Q1.push({
       [m('Factorise completely: x<sup>4</sup> − 16'), m('(x − 2)(x + 2)(x<sup>2</sup> + 4)')],
       [m('Expand: (a + b)(a<sup>2</sup> − ab + b<sup>2</sup>)'), m('a<sup>3</sup> + b<sup>3</sup>')],
       [m('Make x the subject: a(x − 1) = b(x + 1), where a ≠ b'), m('x = ' + f('a + b', 'a − b'))],
-      [m('Show that n<sup>2</sup> + n is even for every whole number n'), m('n<sup>2</sup> + n = n(n + 1)') + ' — two consecutive whole numbers, so one of them is even.']
+      [m('Factorise: x<sup>2</sup> − 5x + 6'), m('(x − 2)(x − 3)')]
     ]
   },
   hwTitle: 'Homework — 5 problems',
@@ -194,7 +206,7 @@ G8_ALG_Q1.push({
 });
 
 /* ============================== 2 ============================== */
-G8_ALG_Q1.push({
+G8_ALG.push({
   id: 'alg-02', stream: 'alg', grade: 8, quarter: 1, lessons: '4–5', hours: 2,
   title: 'Algebraic expressions',
   subtitle: 'Whole expressions, fractional expressions, and the values of the variable that are simply not allowed.',
@@ -205,6 +217,18 @@ G8_ALG_Q1.push({
     'Find the permissible values of the variable — the domain of an expression.',
     'Evaluate an algebraic expression for given values of its letters.',
     'Write a described quantity as an algebraic expression.'
+  ],
+  terms: [
+    ['Algebraic expression', 'Algebraik ifoda', 'Алгебраическое выражение'],
+    ['Whole (integer) expression', 'Butun ifoda', 'Целое выражение'],
+    ['Fractional expression', 'Kasr ifoda', 'Дробное выражение'],
+    ['Variable', 'O‘zgaruvchi', 'Переменная'],
+    ['Permissible values', 'Mumkin bo‘lgan qiymatlar', 'Допустимые значения'],
+    ['Numerator', 'Surat', 'Числитель'],
+    ['Denominator', 'Maxraj', 'Знаменатель'],
+    ['Value of an expression', 'Ifodaning qiymati', 'Значение выражения'],
+    ['Undefined', 'Aniqlanmagan', 'Не определено'],
+    ['Reciprocal', 'Teskari son', 'Обратное число'],
   ],
   sections: [
     {
@@ -311,7 +335,7 @@ G8_ALG_Q1.push({
       [m('Solve ' + f('x<sup>2</sup> − 9', 'x − 3') + ' = 0'), m('x = −3') + ' only — ' + m('x = 3') + ' is not permissible.'],
       [m('Simplify, then evaluate ' + f('x<sup>2</sup> − 6x + 9', 'x − 3') + ' at x = 10'), m('x − 3 = 7')],
       [m('Permissible values of ' + f('3', '|x| − 2')), m('x ≠ 2, x ≠ −2')],
-      [m('Explain why ' + f('a<sup>2</sup> + 1', 'a<sup>2</sup> + 2') + ' can never equal 1'), 'Equality would force ' + m('a<sup>2</sup> + 1 = a<sup>2</sup> + 2') + ', i.e. ' + m('1 = 2') + '.'],
+      [m('Permissible values of ' + f('5', 'x<sup>2</sup> − 7x + 10')), m('x ≠ 2, x ≠ 5')],
       [m('For which x is ' + f('x + 4', 'x<sup>2</sup> + 4') + ' undefined?'), 'For no value — ' + m('x<sup>2</sup> + 4 ≥ 4') + ' always.']
     ]
   },
@@ -327,7 +351,7 @@ G8_ALG_Q1.push({
 });
 
 /* ============================== 3 ============================== */
-G8_ALG_Q1.push({
+G8_ALG.push({
   id: 'alg-03', stream: 'alg', grade: 8, quarter: 1, lessons: '6–8', hours: 3,
   title: 'Algebraic fraction. Cancelling fractions',
   subtitle: 'The fundamental property of a fraction, and the single rule that governs every simplification in this chapter: factorise first, cancel second.',
@@ -338,6 +362,18 @@ G8_ALG_Q1.push({
     'Use the fundamental property of a fraction in both directions.',
     'Cancel a fraction by factorising the numerator and the denominator.',
     'Handle the sign rules, including the swap ' + m('b − a = −(a − b)') + '.'
+  ],
+  terms: [
+    ['Algebraic fraction', 'Algebraik kasr', 'Алгебраическая дробь'],
+    ['Fundamental property of a fraction', 'Kasrning asosiy xossasi', 'Основное свойство дроби'],
+    ['Cancel (reduce) a fraction', 'Kasrni qisqartirish', 'Сокращение дроби'],
+    ['Factor', 'Ko‘paytuvchi', 'Множитель'],
+    ['Term', 'Had', 'Слагаемое'],
+    ['Polynomial', 'Ko‘phad', 'Многочлен'],
+    ['Identical transformation', 'Ayniy almashtirish', 'Тождественное преобразование'],
+    ['Sign', 'Ishora', 'Знак'],
+    ['Bracket', 'Qavs', 'Скобка'],
+    ['Simplify', 'Soddalashtirish', 'Упростить'],
   ],
   sections: [
     {
@@ -491,7 +527,7 @@ G8_ALG_Q1.push({
       [m('Cancel: ' + f('x<sup>3</sup> − x', 'x<sup>2</sup> + x')), m('x − 1') + ', ' + m('x ≠ 0, −1')],
       [m('Cancel: ' + f('x<sup>2</sup> − 5x + 6', 'x<sup>2</sup> − 4')), m(f('x − 3', 'x + 2')) + ', ' + m('x ≠ ±2')],
       [m('Cancel: ' + f('2x<sup>2</sup> + 7x + 3', 'x<sup>2</sup> − 9')), m(f('2x + 1', 'x − 3')) + ', ' + m('x ≠ ±3')],
-      [m('Cancel: ' + f('a<sup>3</sup> − b<sup>3</sup>', 'a<sup>2</sup> − b<sup>2</sup>')), m(f('a<sup>2</sup> + ab + b<sup>2</sup>', 'a + b')) + ', ' + m('a ≠ ±b')],
+      [m('Cancel: ' + f('x<sup>2</sup> − 2x', 'x<sup>2</sup> − 4')), m(f('x', 'x + 2')) + ', ' + m('x ≠ ±2')],
       [m('Cancel: ' + f('x<sup>4</sup> − 16', 'x<sup>2</sup> + 4')), m('x<sup>2</sup> − 4')],
       [m('Cancel: ' + f('m<sup>2</sup> − mn', 'n<sup>2</sup> − mn')), m('−' + f('m', 'n')) + ', ' + m('n ≠ 0, m ≠ n')],
       [m('Cancel: ' + f('x<sup>2</sup> + x − 6', 'x<sup>2</sup> − 4x + 4')), m(f('x + 3', 'x − 2')) + ', ' + m('x ≠ 2')]
@@ -510,7 +546,7 @@ G8_ALG_Q1.push({
 });
 
 /* ============================== 4 ============================== */
-G8_ALG_Q1.push({
+G8_ALG.push({
   id: 'alg-04', stream: 'alg', grade: 8, quarter: 1, lessons: '9–11', hours: 3,
   title: 'Reducing fractions to a common denominator',
   subtitle: 'Building fractions up instead of cutting them down — the fundamental property read from left to right.',
@@ -521,6 +557,16 @@ G8_ALG_Q1.push({
     'Find the additional factor for each fraction.',
     'Rewrite two or three fractions with the same denominator.',
     'Recognise the reversed-bracket case ' + m('a − b') + ' and ' + m('b − a') + '.'
+  ],
+  terms: [
+    ['Common denominator', 'Umumiy maxraj', 'Общий знаменатель'],
+    ['Lowest common denominator', 'Eng kichik umumiy maxraj', 'Наименьший общий знаменатель'],
+    ['Additional factor', 'Qo‘shimcha ko‘paytuvchi', 'Дополнительный множитель'],
+    ['Lowest common multiple', 'EKUK', 'НОК'],
+    ['Highest power', 'Eng yuqori daraja', 'Наивысшая степень'],
+    ['Bring to a common denominator', 'Umumiy maxrajga keltirish', 'Привести к общему знаменателю'],
+    ['Factorised form', 'Ko‘paytma ko‘rinishi', 'Разложенный вид'],
+    ['Reversed bracket', 'Teskari qavs', 'Перевёрнутая скобка'],
   ],
   sections: [
     {
@@ -660,7 +706,7 @@ G8_ALG_Q1.push({
       [m('Bring ' + f('1', 'x<sup>2</sup> − 1') + ' and ' + f('1', 'x<sup>2</sup> + 2x + 1') + ' to a common denominator'), 'LCD ' + m('(x − 1)(x + 1)<sup>2</sup>') + ': ' + m(f('x + 1', '(x − 1)(x + 1)<sup>2</sup>')) + ' and ' + m(f('x − 1', '(x − 1)(x + 1)<sup>2</sup>'))],
       [m('LCD of ' + f('2', '3a<sup>2</sup>b') + ' and ' + f('5', '6ab<sup>3</sup>')), m('6a<sup>2</sup>b<sup>3</sup>')],
       [m('Bring ' + f('x', 'x − y') + ' and ' + f('y', 'y − x') + ' to a common denominator'), m(f('x', 'x − y')) + ' and ' + m(f('−y', 'x − y'))],
-      [m('LCD of ' + f('1', 'x<sup>3</sup> − x') + ' and ' + f('1', 'x<sup>2</sup> − 2x + 1')), m('x(x − 1)<sup>2</sup>(x + 1)')]
+      [m('LCD of ' + f('1', 'x<sup>2</sup> − 4x') + ' and ' + f('1', 'x − 4')), m('x(x − 4)')]
     ]
   },
   hwTitle: 'Homework — 5 problems',
@@ -675,7 +721,7 @@ G8_ALG_Q1.push({
 });
 
 /* ============================== 5 ============================== */
-G8_ALG_Q1.push({
+G8_ALG.push({
   id: 'alg-05', stream: 'alg', grade: 8, quarter: 1, lessons: '12–14', hours: 3,
   title: 'Addition and subtraction of algebraic fractions',
   subtitle: 'Same denominator — add the numerators. Different denominators — build them the same first, then add.',
@@ -686,6 +732,16 @@ G8_ALG_Q1.push({
     'Add and subtract fractions with different denominators using the LCD.',
     'Handle subtraction correctly — bracket the whole numerator being subtracted.',
     'Simplify the result and state the permissible values.'
+  ],
+  terms: [
+    ['Add', 'Qo‘shish', 'Сложение'],
+    ['Subtract', 'Ayirish', 'Вычитание'],
+    ['Like fractions', 'Bir xil maxrajli kasrlar', 'Дроби с одинаковыми знаменателями'],
+    ['Unlike fractions', 'Har xil maxrajli kasrlar', 'Дроби с разными знаменателями'],
+    ['Combine', 'Birlashtirish', 'Объединить'],
+    ['Numerator', 'Surat', 'Числитель'],
+    ['Whole expression', 'Butun ifoda', 'Целое выражение'],
+    ['Simplify the result', 'Natijani soddalashtirish', 'Упростить результат'],
   ],
   sections: [
     {
@@ -830,7 +886,7 @@ G8_ALG_Q1.push({
     ],
     hard: [
       [m(f('1', 'x<sup>2</sup> − x') + ' + ' + f('1', 'x<sup>2</sup> + x')), m(f('2', 'x<sup>2</sup> − 1'))],
-      [m(f('x', 'x − y') + ' − ' + f('y', 'x + y')), m(f('x<sup>2</sup> + y<sup>2</sup>', 'x<sup>2</sup> − y<sup>2</sup>'))],
+      [m(f('1', 'x − 3') + ' + ' + f('1', 'x + 3')), m(f('2x', 'x<sup>2</sup> − 9'))],
       [m(f('1', 'a − b') + ' + ' + f('1', 'b − a')), m('0') + ', ' + m('a ≠ b')],
       [m(f('2x', 'x<sup>2</sup> − 4') + ' − ' + f('1', 'x − 2')), m(f('1', 'x + 2'))],
       [m('1 − ' + f('1', 'x + 1')), m(f('x', 'x + 1'))],
@@ -851,7 +907,7 @@ G8_ALG_Q1.push({
 });
 
 /* ============================== 6 ============================== */
-G8_ALG_Q1.push({
+G8_ALG.push({
   id: 'alg-06', stream: 'alg', grade: 8, quarter: 1, lessons: '15–16', hours: 2,
   title: 'Control work 1 · Algebraic fractions',
   subtitle: 'The first assessment of the quarter, followed by a full lesson on the mistakes it produced.',
@@ -863,6 +919,16 @@ G8_ALG_Q1.push({
     'Re-solve every task that was lost, correctly and in full.'
   ],
   timing: [[2, 'Setting up'], [36, 'The paper'], [2, 'Collect in']],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Work on mistakes', 'Xatolar ustida ishlash', 'Работа над ошибками'],
+    ['Variant', 'Variant', 'Вариант'],
+    ['Mark', 'Ball', 'Балл'],
+    ['Check the answer', 'Javobni tekshirish', 'Проверить ответ'],
+    ['Error', 'Xato', 'Ошибка'],
+    ['Correct', 'To‘g‘ri', 'Верно'],
+    ['Counter-example', 'Qarshi misol', 'Контрпример'],
+  ],
   sections: [
     {
       h: 'Lesson 15 — the paper (40 minutes)',
@@ -1006,7 +1072,7 @@ G8_ALG_Q1.push({
 });
 
 /* ============================== 7 ============================== */
-G8_ALG_Q1.push({
+G8_ALG.push({
   id: 'alg-07', stream: 'alg', grade: 8, quarter: 1, lessons: '17–19', hours: 3,
   title: 'Multiplication and division of algebraic fractions',
   subtitle: 'No common denominator needed — but factorise before you multiply, or you will multiply out work you are about to cancel.',
@@ -1017,6 +1083,16 @@ G8_ALG_Q1.push({
     'Divide by multiplying by the reciprocal.',
     'Cancel across the multiplication sign before multiplying out.',
     'Raise an algebraic fraction to a power.'
+  ],
+  terms: [
+    ['Multiply', 'Ko‘paytirish', 'Умножение'],
+    ['Divide', 'Bo‘lish', 'Деление'],
+    ['Product', 'Ko‘paytma', 'Произведение'],
+    ['Quotient', 'Bo‘linma', 'Частное'],
+    ['Reciprocal fraction', 'Teskari kasr', 'Обратная дробь'],
+    ['Power of a fraction', 'Kasrning darajasi', 'Степень дроби'],
+    ['Cancel across', 'Krest bo‘ylab qisqartirish', 'Сократить накрест'],
+    ['Divisor', 'Bo‘luvchi', 'Делитель'],
   ],
   sections: [
     {
@@ -1183,7 +1259,7 @@ G8_ALG_Q1.push({
 });
 
 /* ============================== 8 ============================== */
-G8_ALG_Q1.push({
+G8_ALG.push({
   id: 'alg-08', stream: 'alg', grade: 8, quarter: 1, lessons: '20–22', hours: 3,
   title: 'Identical transformation of fractional-rational expressions',
   subtitle: 'Everything from §§2–5 in one question: the long chains where order of operations decides whether the work takes three lines or thirteen.',
@@ -1194,6 +1270,16 @@ G8_ALG_Q1.push({
     'Deal with a compound (“stacked”) fraction.',
     'Choose an order of work that keeps the expressions small.',
     'Prove a given identity by transforming one side into the other.'
+  ],
+  terms: [
+    ['Rational expression', 'Ratsional ifoda', 'Рациональное выражение'],
+    ['Fractional-rational expression', 'Kasr-ratsional ifoda', 'Дробно-рациональное выражение'],
+    ['Compound fraction', 'Murakkab kasr', 'Многоэтажная дробь'],
+    ['Identity', 'Ayniyat', 'Тождество'],
+    ['Identically equal', 'Ayniy teng', 'Тождественно равны'],
+    ['Prove', 'Isbotlash', 'Доказать'],
+    ['Order of operations', 'Amallar tartibi', 'Порядок действий'],
+    ['Transform', 'Almashtirish', 'Преобразовать'],
   ],
   sections: [
     {
@@ -1350,7 +1436,7 @@ G8_ALG_Q1.push({
       [m('(x + ' + f('1', 'x') + ')<sup>2</sup> − (x − ' + f('1', 'x') + ')<sup>2</sup>'), m('4')],
       [m(f('a', 'a − b') + ' + ' + f('b', 'b − a')), m('1') + ', ' + m('a ≠ b')],
       [m(f('1 − ' + fs('1', 'x'), '1 − ' + fs('1', 'x<sup>2</sup>'))), m(f('x', 'x + 1'))],
-      [m(f('x<sup>2</sup> − y<sup>2</sup>', 'xy') + ' · ' + f('xy', 'x + y') + ' − x'), m('−y')],
+      [m('(' + f('1', 'x') + ' + ' + f('1', 'y') + ') · ' + f('xy', 'x + y')), m('1')],
       [m('Prove that ' + f('1', 'n') + ' − ' + f('1', 'n + 1') + ' = ' + f('1', 'n(n + 1)')), 'LCD ' + m('n(n + 1)') + ': the numerator is ' + m('(n + 1) − n = 1') + '.'],
       [m(f('1', 'x<sup>2</sup> − x') + ' + ' + f('1', 'x<sup>2</sup> − 1')), m(f('2x + 1', 'x(x<sup>2</sup> − 1)'))]
     ]
@@ -1367,7 +1453,7 @@ G8_ALG_Q1.push({
 });
 
 /* ============================== 9 ============================== */
-G8_ALG_Q1.push({
+G8_ALG.push({
   id: 'alg-09', stream: 'alg', grade: 8, quarter: 1, lessons: '23–24', hours: 2,
   title: 'Control work 2 · Rational expressions',
   subtitle: 'Multiplication, division and long chains, then the work-on-mistakes lesson that turns the paper into teaching.',
@@ -1379,6 +1465,16 @@ G8_ALG_Q1.push({
     'Re-solve every lost task in full.'
   ],
   timing: [[2, 'Setting up'], [36, 'The paper'], [2, 'Collect in']],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Work on mistakes', 'Xatolar ustida ishlash', 'Работа над ошибками'],
+    ['Reciprocal', 'Teskari', 'Обратный'],
+    ['Coefficient', 'Koeffitsiyent', 'Коэффициент'],
+    ['Expand', 'Ochish (yoyish)', 'Раскрыть'],
+    ['Diagnose', 'Aniqlash', 'Определить (диагностировать)'],
+    ['Justify', 'Asoslash', 'Обосновать'],
+    ['Identity', 'Ayniyat', 'Тождество'],
+  ],
   sections: [
     {
       h: 'Lesson 23 — the paper (40 minutes)',
@@ -1521,7 +1617,7 @@ G8_ALG_Q1.push({
 });
 
 /* ============================== 10 ============================== */
-G8_ALG_Q1.push({
+G8_ALG.push({
   id: 'alg-10', stream: 'alg', grade: 8, quarter: 1, lessons: '25–27', hours: 3,
   title: 'The function y = k / x — properties and graph',
   subtitle: 'Inverse proportion: the first function of the course whose graph is not a straight line, and whose defining feature is a product that never changes.',
@@ -1532,6 +1628,18 @@ G8_ALG_Q1.push({
     'Draw the graph of ' + m('y = ' + f('k', 'x')) + ' by table of values.',
     'State the properties: domain, the two branches, quadrants, symmetry, asymptotes.',
     'Solve practical problems in which a product is constant.'
+  ],
+  terms: [
+    ['Function', 'Funksiya', 'Функция'],
+    ['Inverse proportion', 'Teskari proporsionallik', 'Обратная пропорциональность'],
+    ['Coefficient k', 'k koeffitsiyenti', 'Коэффициент k'],
+    ['Graph', 'Grafik', 'График'],
+    ['Hyperbola', 'Giperbola', 'Гипербола'],
+    ['Branch', 'Tarmoq', 'Ветвь'],
+    ['Domain', 'Aniqlanish sohasi', 'Область определения'],
+    ['Asymptote', 'Asimptota', 'Асимптота'],
+    ['Quadrant', 'Koordinata choragi', 'Координатная четверть'],
+    ['Symmetry', 'Simmetriya', 'Симметрия'],
   ],
   sections: [
     {
@@ -1661,5 +1769,1544 @@ G8_ALG_Q1.push({
     m('Draw the graph of y = ' + f('4', 'x') + ' for x from −4 to 4, using a table of values.'),
     'A journey of 120 km takes ' + m('t') + ' hours at speed ' + m('v') + ' km/h. Write ' + m('t') + ' in terms of ' + m('v') + ' and find ' + m('t') + ' when ' + m('v = 60') + '.',
     m('Solve ' + f('10', 'x') + ' = ' + f('x', '10'))
+  ]
+});
+
+/* ==================================================================
+   QUARTER II · 21 hours
+   Algebra 8 §§8–10 (roots and rational exponents) and Chapter II §§11–14
+   ================================================================== */
+
+/* ============================== 11 ============================== */
+G8_ALG.push({
+  id: 'alg-11', stream: 'alg', grade: 8, quarter: 2, lessons: '28–29', hours: 2,
+  title: 'The arithmetic root of degree n',
+  subtitle: 'Undoing a power: what the n-th root means, when it exists, and the four properties that let you work with it.',
+  uz: 'Algebra 8, §8', uzPage: '§8, pp. 39–41',
+  cam: 'Stage 9 · 1.1', camPage: 'Learner’s Book pp. 10–14', wb: 'Workbook 1.1',
+  objectives: [
+    'Define the arithmetic root of degree ' + m('n') + ' and say when it exists.',
+    'Use the four properties of roots to simplify.',
+    'Take a factor out of a root and put one back in.',
+    'Rationalise a simple denominator.'
+  ],
+  terms: [
+    ['Root of degree n', 'n-darajali ildiz', 'Корень n-й степени'],
+    ['Arithmetic root', 'Arifmetik ildiz', 'Арифметический корень'],
+    ['Radicand (under the root)', 'Ildiz ostidagi ifoda', 'Подкоренное выражение'],
+    ['Index of the root', 'Ildiz ko‘rsatkichi', 'Показатель корня'],
+    ['Square root', 'Kvadrat ildiz', 'Квадратный корень'],
+    ['Cube root', 'Kub ildiz', 'Кубический корень'],
+    ['Irrational number', 'Irratsional son', 'Иррациональное число'],
+    ['Rationalise the denominator', 'Maxrajni irratsionallikdan qutqarish', 'Освободиться от иррациональности в знаменателе'],
+    ['Take a factor out', 'Ko‘paytuvchini ildiz oldiga chiqarish', 'Вынести множитель из-под корня'],
+    ['Simplify', 'Soddalashtirish', 'Упростить']
+  ],
+  sections: [
+    {
+      h: 'The definition',
+      html: `<div class="keybox"><div class="klabel">Definition</div>
+      For ${m('a ≥ 0')} and a natural number ${m('n ≥ 2')}, the <b>arithmetic root of degree n</b> of
+      ${m('a')} is the <b>non-negative</b> number whose ${m('n')}-th power is ${m('a')}:
+      ${eq(m(sr('<sup>n</sup>&nbsp;a') + ' = b') + ' &nbsp;means&nbsp; ' + m('b ≥ 0') + ' and ' + m('b<sup>n</sup> = a'))}</div>
+      <p>So ${m(sr('16') + ' = 4')} — and only 4. The number ${m('−4')} also squares to 16, but the
+      <em>arithmetic</em> root is the non-negative one by definition.</p>
+      <div class="warn"><span class="wl">When does it exist?</span>
+      For <b>even</b> ${m('n')} the radicand must satisfy ${m('a ≥ 0')} — you cannot take
+      ${m(sr('−9'))}. For <b>odd</b> ${m('n')} any ${m('a')} is allowed:
+      ${m(sr('<sup>3</sup>&nbsp;−8') + ' = −2')}.</div>`
+    },
+    {
+      h: 'The four properties',
+      html: `<p>For ${m('a ≥ 0, b ≥ 0')}:</p>
+      ${eq(m(sr('<sup>n</sup>&nbsp;ab') + ' = ' + sr('<sup>n</sup>&nbsp;a') + ' · ' + sr('<sup>n</sup>&nbsp;b')) + ' &nbsp;&nbsp;&nbsp; ' +
+           m(sr('<sup>n</sup>&nbsp;' + f('a', 'b')) + ' = ' + f(sr('<sup>n</sup>&nbsp;a'), sr('<sup>n</sup>&nbsp;b')) + ',&nbsp; b > 0'), true)}
+      ${eq(m('(' + sr('<sup>n</sup>&nbsp;a') + ')<sup>k</sup> = ' + sr('<sup>n</sup>&nbsp;a<sup>k</sup>')) + ' &nbsp;&nbsp;&nbsp; ' +
+           m(sr('<sup>m</sup>&nbsp;' + sr('<sup>n</sup>&nbsp;a')) + ' = ' + sr('<sup>mn</sup>&nbsp;a')), true)}
+      <p>Read the first one right to left and you can multiply roots together; read it left to right and
+      you can <b>take a factor out</b>:</p>
+      ${eq(m(sr('50') + ' = ' + sr('25 · 2') + ' = ' + sr('25') + ' · ' + sr('2') + ' = 5' + sr('2')))}
+      <div class="warn"><span class="wl">There is no rule for a sum</span>
+      ${m(sr('a + b'))} is <b>not</b> ${m(sr('a') + ' + ' + sr('b'))}. Check it: ${m(sr('9 + 16') + ' = 5')},
+      but ${m(sr('9') + ' + ' + sr('16') + ' = 7')}.</div>`
+    },
+    {
+      h: 'Rationalising the denominator',
+      html: `<p>A root in the denominator is untidy. Multiply top and bottom by the same root:</p>
+      ${eq(m(f('1', sr('3')) + ' = ' + f('1 · ' + sr('3'), sr('3') + ' · ' + sr('3')) + ' = ' + f(sr('3'), '3')), true)}
+      <p>This is the fundamental property of a fraction again — the same tool as in Quarter I.</p>
+      {{fig:rootLadder:Every root can be written as a power, which is the bridge to the next lesson.}}`
+    }
+  ],
+  examples: [
+    {
+      q: m('Simplify ' + sr('72')),
+      steps: [
+        [m('72 = 36 · 2'), 'Look for the largest square factor.'],
+        [m(sr('72') + ' = ' + sr('36') + ' · ' + sr('2')), 'Property 1.'],
+        [m('= 6' + sr('2')), '']
+      ],
+      ans: m('6' + sr('2'))
+    },
+    {
+      q: m('Simplify ' + sr('12') + ' · ' + sr('3')),
+      steps: [
+        [m(sr('12') + ' · ' + sr('3') + ' = ' + sr('36')), 'Property 1, read right to left.'],
+        [m('= 6'), 'A whole number — worth checking for every time.']
+      ],
+      ans: m('6')
+    },
+    {
+      q: m('Write ' + f('6', sr('2')) + ' without a root in the denominator'),
+      steps: [
+        [m(f('6 · ' + sr('2'), sr('2') + ' · ' + sr('2'))), 'Multiply top and bottom by ' + m(sr('2')) + '.'],
+        [m('= ' + f('6' + sr('2'), '2')), m(sr('2') + ' · ' + sr('2') + ' = 2')],
+        [m('= 3' + sr('2')), 'Cancel the 2.']
+      ],
+      ans: m('3' + sr('2'))
+    }
+  ],
+  modelNote: 'Move the index n and watch the same number appear as a root and as a power.',
+  interactive: { type: 'rootPower' },
+  quiz: [
+    { q: m(sr('49')) + ' equals:', a: [m('7'), m('±7'), m('−7'), m('24.5')], c: 0, why: 'The arithmetic root is the non-negative one.' },
+    { q: m(sr('<sup>3</sup>&nbsp;−27')) + ' equals:', a: ['it does not exist', m('−3'), m('3'), m('−9')], c: 1, why: 'An odd-degree root accepts a negative radicand.' },
+    { q: m(sr('8') + ' · ' + sr('2')) + ' equals:', a: [m('4'), m(sr('10')), m('16'), m('2' + sr('2'))], c: 0, why: '√8 · √2 = √16 = 4.' },
+    { q: m(sr('9 + 16')) + ' equals:', a: [m('7'), m('5'), m('25'), m('3 + 4')], c: 1, why: '√25 = 5. Roots do not split over a sum.' }
+  ],
+  practice: {
+    easy: [
+      [m('Find ' + sr('36')), m('6')],
+      [m('Find ' + sr('81')), m('9')],
+      [m('Find ' + sr('<sup>3</sup>&nbsp;8')), m('2')],
+      [m('Find ' + sr('<sup>3</sup>&nbsp;27')), m('3')],
+      [m('Find ' + sr('100') + ' + ' + sr('25')), m('15')],
+      [m('Does ' + sr('−4') + ' exist?'), 'No — an even root needs ' + m('a ≥ 0') + '.'],
+      [m('Find ' + sr('<sup>3</sup>&nbsp;−8')), m('−2')]
+    ],
+    med: [
+      [m('Simplify ' + sr('72')), m('6' + sr('2'))],
+      [m('Simplify ' + sr('50')), m('5' + sr('2'))],
+      [m('Simplify ' + sr('12') + ' · ' + sr('3')), m('6')],
+      [m('Simplify ' + f(sr('18'), sr('2'))), m('3')],
+      [m('Simplify ' + sr('45')), m('3' + sr('5'))],
+      [m('Write ' + f('6', sr('2')) + ' without a root below'), m('3' + sr('2'))],
+      [m('Simplify 2' + sr('3') + ' + 5' + sr('3')), m('7' + sr('3'))]
+    ],
+    hard: [
+      [m('Simplify ' + sr('98') + ' − ' + sr('50')), m('7' + sr('2') + ' − 5' + sr('2') + ' = 2' + sr('2'))],
+      [m('Simplify ' + sr('<sup>4</sup>&nbsp;16')), m('2')],
+      [m('Simplify (' + sr('5') + ')<sup>2</sup> + ' + sr('16')), m('5 + 4 = 9')],
+      [m('Write ' + f('10', sr('5')) + ' without a root below'), m('2' + sr('5'))],
+      [m('Simplify ' + sr('2') + ' · ' + sr('8') + ' − 1'), m(sr('16') + ' − 1 = 3')],
+      [m('Show that ' + sr('9 + 16') + ' ≠ ' + sr('9') + ' + ' + sr('16')), m('5 ≠ 7')],
+      [m('Simplify ' + sr('a<sup>2</sup>') + ' for a ≥ 0, and for a < 0'), m('a') + ' when ' + m('a ≥ 0') + '; ' + m('−a') + ' when ' + m('a < 0') + '.']
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Algebra 8, §8, pp. 39–41.',
+  homework: [
+    m('Find ' + sr('144') + ', ' + sr('<sup>3</sup>&nbsp;64') + ' and ' + sr('<sup>3</sup>&nbsp;−125')),
+    m('Simplify ' + sr('32')),
+    m('Simplify ' + sr('20') + ' · ' + sr('5')),
+    m('Write ' + f('8', sr('2')) + ' without a root in the denominator'),
+    m('Simplify 3' + sr('7') + ' − ' + sr('7'))
+  ]
+});
+
+/* ============================== 12 ============================== */
+G8_ALG.push({
+  id: 'alg-12', stream: 'alg', grade: 8, quarter: 2, lessons: '30–31', hours: 2,
+  title: 'Powers with a rational exponent',
+  subtitle: 'One definition joins roots and powers into a single system — and all the old index laws keep working.',
+  uz: 'Algebra 8, §9', uzPage: '§9, pp. 42–48',
+  cam: 'Stage 9 · 1.3', camPage: 'Learner’s Book pp. 16–20', wb: 'Workbook 1.3',
+  objectives: [
+    'Define ' + m('a<sup>1/n</sup>') + ' and ' + m('a<sup>m/n</sup>') + '.',
+    'Convert freely between root notation and index notation.',
+    'Use the index laws with fractional and negative exponents.',
+    'Evaluate powers with a rational exponent without a calculator.'
+  ],
+  terms: [
+    ['Rational exponent', 'Ratsional ko‘rsatkich', 'Рациональный показатель'],
+    ['Power', 'Daraja', 'Степень'],
+    ['Base', 'Asos', 'Основание'],
+    ['Negative index', 'Manfiy ko‘rsatkich', 'Отрицательный показатель'],
+    ['Zero index', 'Nol ko‘rsatkich', 'Нулевой показатель'],
+    ['Index law', 'Daraja xossasi', 'Свойство степени'],
+    ['Reciprocal', 'Teskari son', 'Обратное число'],
+    ['Equivalent form', 'Ekvivalent ko‘rinish', 'Равносильная форма'],
+    ['Evaluate', 'Qiymatini topish', 'Вычислить']
+  ],
+  sections: [
+    {
+      h: 'The definition',
+      html: `<div class="keybox"><div class="klabel">Definition</div>
+      For ${m('a > 0')} and natural ${m('m, n')} with ${m('n ≥ 2')}:
+      ${eq(m('a<sup>1/n</sup> = ' + sr('<sup>n</sup>&nbsp;a')) + ' &nbsp;&nbsp;and&nbsp;&nbsp; ' +
+           m('a<sup>m/n</sup> = ' + sr('<sup>n</sup>&nbsp;a<sup>m</sup>') + ' = (' + sr('<sup>n</sup>&nbsp;a') + ')<sup>m</sup>'))}
+      and, as before, ${m('a<sup>0</sup> = 1')} and ${m('a<sup>−k</sup> = ' + f('1', 'a<sup>k</sup>'))}.</div>
+      <p>Why this definition and no other? Because it is the only one that keeps the index laws true.
+      If ${m('(a<sup>1/2</sup>)<sup>2</sup> = a<sup>1</sup> = a')} then ${m('a<sup>1/2</sup>')} must be
+      the number that squares to ${m('a')} — that is ${m(sr('a'))}.</p>
+      <p>The <b>denominator of the index is the root</b>, the <b>numerator is the power</b>. Say it out
+      loud once and the whole topic becomes bookkeeping.</p>`
+    },
+    {
+      h: 'The index laws, unchanged',
+      html: `${eq(m('a<sup>p</sup> · a<sup>q</sup> = a<sup>p+q</sup>') + '&nbsp;&nbsp;·&nbsp;&nbsp;' +
+        m('a<sup>p</sup> : a<sup>q</sup> = a<sup>p−q</sup>') + '&nbsp;&nbsp;·&nbsp;&nbsp;' +
+        m('(a<sup>p</sup>)<sup>q</sup> = a<sup>pq</sup>'), true)}
+      ${eq(m('(ab)<sup>p</sup> = a<sup>p</sup>b<sup>p</sup>') + '&nbsp;&nbsp;·&nbsp;&nbsp;' +
+        m('(' + f('a', 'b') + ')<sup>p</sup> = ' + f('a<sup>p</sup>', 'b<sup>p</sup>')), true)}
+      <p>The letters ${m('p')} and ${m('q')} are now any rational numbers, positive or negative. Nothing
+      else changes.</p>`
+    },
+    {
+      h: 'Evaluating without a calculator',
+      html: `<p>Take the <b>root first</b>, then the power — the numbers stay small.</p>
+      ${eq(m('8<sup>2/3</sup> = (' + sr('<sup>3</sup>&nbsp;8') + ')<sup>2</sup> = 2<sup>2</sup> = 4'), true)}
+      <p>Going the other way, ${m(sr('<sup>3</sup>&nbsp;8<sup>2</sup>') + ' = ' + sr('<sup>3</sup>&nbsp;64') + ' = 4')} —
+      same answer, bigger arithmetic.</p>
+      <div class="warn"><span class="wl">Negative index</span>
+      ${m('a<sup>−p</sup>')} means <b>one over</b> ${m('a<sup>p</sup>')}; it does not make the answer
+      negative. ${m('4<sup>−1/2</sup> = ' + f('1', '4<sup>1/2</sup>') + ' = ' + f('1', '2'))}.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: m('Evaluate 27<sup>2/3</sup>'),
+      steps: [
+        ['Denominator 3 → cube root; numerator 2 → square.', 'Root first.'],
+        [m(sr('<sup>3</sup>&nbsp;27') + ' = 3'), ''],
+        [m('3<sup>2</sup> = 9'), '']
+      ],
+      ans: m('9')
+    },
+    {
+      q: m('Evaluate 16<sup>−3/4</sup>'),
+      steps: [
+        [m('16<sup>−3/4</sup> = ' + f('1', '16<sup>3/4</sup>')), 'A negative index means a reciprocal.'],
+        [m(sr('<sup>4</sup>&nbsp;16') + ' = 2'), 'Root first.'],
+        [m('2<sup>3</sup> = 8'), ''],
+        [m('= ' + f('1', '8')), '']
+      ],
+      ans: m(f('1', '8'))
+    },
+    {
+      q: m('Simplify a<sup>1/2</sup> · a<sup>1/3</sup>'),
+      steps: [
+        [m('a<sup>1/2</sup> · a<sup>1/3</sup> = a<sup>1/2 + 1/3</sup>'), 'Add the indices.'],
+        [m(f('1', '2') + ' + ' + f('1', '3') + ' = ' + f('5', '6')), 'Common denominator 6.'],
+        [m('= a<sup>5/6</sup>'), ' or ' + m(sr('<sup>6</sup>&nbsp;a<sup>5</sup>'))]
+      ],
+      ans: m('a<sup>5/6</sup>')
+    }
+  ],
+  modelNote: 'Set n = 3, m = 2, a = 8 and read both notations giving 4.',
+  interactive: { type: 'rootPower', title: 'Root notation and index notation' },
+  quiz: [
+    { q: m('9<sup>1/2</sup>') + ' equals:', a: [m('4.5'), m('3'), m('81'), m('18')], c: 1, why: 'An index of ½ is a square root.' },
+    { q: m('8<sup>2/3</sup>') + ' equals:', a: [m('4'), m('16'), m(f('16', '3')), m('6')], c: 0, why: 'Cube root of 8 is 2; then 2² = 4.' },
+    { q: m('a<sup>−1/2</sup>') + ' equals:', a: [m('−' + sr('a')), m(f('1', sr('a'))), m(sr('−a')), m('a<sup>2</sup>')], c: 1, why: 'A negative index gives the reciprocal, not a negative value.' },
+    { q: m('a<sup>1/2</sup> · a<sup>1/2</sup>') + ' equals:', a: [m('a<sup>1/4</sup>'), m('a'), m('2a<sup>1/2</sup>'), m('a<sup>2</sup>')], c: 1, why: '½ + ½ = 1.' }
+  ],
+  practice: {
+    easy: [
+      [m('Write ' + sr('a') + ' as a power'), m('a<sup>1/2</sup>')],
+      [m('Write ' + sr('<sup>3</sup>&nbsp;a') + ' as a power'), m('a<sup>1/3</sup>')],
+      [m('Write a<sup>1/4</sup> as a root'), m(sr('<sup>4</sup>&nbsp;a'))],
+      [m('Evaluate 9<sup>1/2</sup>'), m('3')],
+      [m('Evaluate 8<sup>1/3</sup>'), m('2')],
+      [m('Evaluate 16<sup>1/2</sup>'), m('4')],
+      [m('Evaluate 5<sup>0</sup>'), m('1')]
+    ],
+    med: [
+      [m('Evaluate 27<sup>2/3</sup>'), m('9')],
+      [m('Evaluate 16<sup>3/4</sup>'), m('8')],
+      [m('Evaluate 4<sup>−1/2</sup>'), m(f('1', '2'))],
+      [m('Simplify a<sup>1/2</sup> · a<sup>1/3</sup>'), m('a<sup>5/6</sup>')],
+      [m('Simplify a<sup>3/4</sup> : a<sup>1/4</sup>'), m('a<sup>1/2</sup>')],
+      [m('Simplify (a<sup>2/3</sup>)<sup>3</sup>'), m('a<sup>2</sup>')],
+      [m('Evaluate 25<sup>3/2</sup>'), m('125')]
+    ],
+    hard: [
+      [m('Evaluate 16<sup>−3/4</sup>'), m(f('1', '8'))],
+      [m('Evaluate 32<sup>2/5</sup>'), m('4')],
+      [m('Simplify (a<sup>1/2</sup>b<sup>1/3</sup>)<sup>6</sup>'), m('a<sup>3</sup>b<sup>2</sup>')],
+      [m('Simplify ' + f('a<sup>5/6</sup>', 'a<sup>1/3</sup>')), m('a<sup>1/2</sup>')],
+      [m('Evaluate (' + f('1', '8') + ')<sup>−2/3</sup>'), m('4')],
+      [m('Write ' + sr('a') + ' · ' + sr('<sup>3</sup>&nbsp;a') + ' as one power'), m('a<sup>5/6</sup>')],
+      [m('Evaluate 81<sup>0.75</sup>'), m('81<sup>3/4</sup> = 27')]
+    ]
+  },
+  hwTitle: 'Homework — 6 problems',
+  hwNote: 'Algebra 8, §9, pp. 42–48. Take the root first, then the power.',
+  homework: [
+    m('Evaluate 64<sup>1/3</sup> and 64<sup>2/3</sup>'),
+    m('Evaluate 100<sup>1/2</sup> and 100<sup>−1/2</sup>'),
+    m('Simplify a<sup>2/5</sup> · a<sup>3/5</sup>'),
+    m('Simplify (b<sup>3/4</sup>)<sup>8</sup>'),
+    m('Evaluate 125<sup>2/3</sup>'),
+    m('Write ' + sr('<sup>4</sup>&nbsp;a<sup>3</sup>') + ' as a power with a rational index')
+  ]
+});
+
+/* ============================== 13 ============================== */
+G8_ALG.push({
+  id: 'alg-13', stream: 'alg', grade: 8, quarter: 2, lessons: '32–33', hours: 2,
+  title: 'Simplifying expressions with rational exponents',
+  subtitle: 'The index laws applied to letters — and the factorising tricks that work just as well with fractional powers.',
+  uz: 'Algebra 8, §10', uzPage: '§10, pp. 49–52',
+  cam: 'Stage 9 · 2.3', camPage: 'Learner’s Book pp. 30–33', wb: 'Workbook 2.3',
+  objectives: [
+    'Simplify products and quotients of powers with rational exponents.',
+    'Take a common power out as a factor.',
+    'Recognise a difference of squares in ' + m('a − b = (' + sr('a') + ')<sup>2</sup> − (' + sr('b') + ')<sup>2</sup>') + '.',
+    'Write an answer in root form when asked.'
+  ],
+  terms: [
+    ['Simplify', 'Soddalashtirish', 'Упростить'],
+    ['Common power', 'Umumiy daraja', 'Общая степень'],
+    ['Substitution', 'Almashtirish', 'Замена'],
+    ['Difference of squares', 'Kvadratlar ayirmasi', 'Разность квадратов'],
+    ['Factor out', 'Qavsdan chiqarish', 'Вынести за скобку'],
+    ['Root form', 'Ildiz ko‘rinishi', 'Форма с корнем'],
+    ['Index form', 'Daraja ko‘rinishi', 'Степенная форма'],
+    ['Expression', 'Ifoda', 'Выражение']
+  ],
+  sections: [
+    {
+      h: 'The routine',
+      html: `<ol>
+        <li>Turn every root into a power. Fractions of indices are easier than nested radicals.</li>
+        <li>Apply the index laws.</li>
+        <li>Collect, factorise or cancel.</li>
+        <li>Convert back to root form only if the question asks for it.</li>
+      </ol>
+      ${eq(m(f(sr('a') + ' · ' + sr('<sup>3</sup>&nbsp;a'), sr('<sup>6</sup>&nbsp;a')) + ' = ' + f('a<sup>1/2</sup> · a<sup>1/3</sup>', 'a<sup>1/6</sup>') + ' = a<sup>1/2 + 1/3 − 1/6</sup> = a<sup>2/3</sup>'), true)}`
+    },
+    {
+      h: 'Taking out a common power',
+      html: `<p>The smallest index is the one to take out — exactly as with whole-number powers:</p>
+      ${eq(m('a<sup>3/2</sup> + a<sup>1/2</sup> = a<sup>1/2</sup>(a + 1)'), true)}
+      <p>Check by multiplying back: ${m('a<sup>1/2</sup> · a = a<sup>3/2</sup>')} ✓ and
+      ${m('a<sup>1/2</sup> · 1 = a<sup>1/2</sup>')} ✓.</p>`
+    },
+    {
+      h: 'The difference-of-squares trick',
+      html: `<p>Since ${m('a = (' + sr('a') + ')<sup>2</sup>')} for ${m('a ≥ 0')}, any difference of two
+      non-negative numbers is a difference of squares:</p>
+      ${eq(m('a − b = (' + sr('a') + ' − ' + sr('b') + ')(' + sr('a') + ' + ' + sr('b') + ')'), true)}
+      <p>That is the single most useful move in this section. It cancels fractions such as</p>
+      ${eq(m(f('a − b', sr('a') + ' − ' + sr('b')) + ' = ' + sr('a') + ' + ' + sr('b')))}
+      <p>and it also rationalises a two-term denominator, by multiplying by the <b>conjugate</b>:</p>
+      ${eq(m(f('1', sr('5') + ' − ' + sr('3')) + ' = ' + f(sr('5') + ' + ' + sr('3'), '(' + sr('5') + ')<sup>2</sup> − (' + sr('3') + ')<sup>2</sup>') + ' = ' + f(sr('5') + ' + ' + sr('3'), '2')))}`
+    }
+  ],
+  examples: [
+    {
+      q: m('Simplify ' + f('a<sup>3/4</sup> · a<sup>1/2</sup>', 'a<sup>1/4</sup>')),
+      steps: [
+        [m(f('3', '4') + ' + ' + f('1', '2') + ' = ' + f('5', '4')), 'Multiply on top: add the indices.'],
+        [m(f('5', '4') + ' − ' + f('1', '4') + ' = 1'), 'Divide: subtract the index.'],
+        [m('= a'), '']
+      ],
+      ans: m('a')
+    },
+    {
+      q: m('Factorise a<sup>3/2</sup> − a<sup>1/2</sup>'),
+      steps: [
+        [m('smallest index is ' + f('1', '2')), 'That is the common factor.'],
+        [m('a<sup>1/2</sup>(a<sup>1</sup> − 1)'), 'Subtract ½ from each index.'],
+        [m('= a<sup>1/2</sup>(a − 1)'), ' or ' + m(sr('a') + '(a − 1)')]
+      ],
+      ans: m(sr('a') + '(a − 1)')
+    },
+    {
+      q: m('Simplify ' + f('x − 9', sr('x') + ' − 3') + ',&nbsp; x ≥ 0, x ≠ 9'),
+      steps: [
+        [m('x = (' + sr('x') + ')<sup>2</sup>') + ' and ' + m('9 = 3<sup>2</sup>'), 'A difference of squares in disguise.'],
+        [m('x − 9 = (' + sr('x') + ' − 3)(' + sr('x') + ' + 3)'), ''],
+        [m('= ' + sr('x') + ' + 3'), 'Cancel the bracket.']
+      ],
+      ans: m(sr('x') + ' + 3')
+    }
+  ],
+  modelNote: 'Use the model to check any answer numerically: put a value in and compare both forms.',
+  interactive: { type: 'rootPower', title: 'Check an index answer numerically' },
+  quiz: [
+    { q: m('a<sup>1/2</sup> · a<sup>1/2</sup> · a<sup>1/2</sup>') + ' equals:', a: [m('a<sup>1/8</sup>'), m('a<sup>3/2</sup>'), m('3a<sup>1/2</sup>'), m('a<sup>1/6</sup>')], c: 1, why: 'Add the indices: ½ + ½ + ½ = 3/2.' },
+    { q: m('a<sup>3/2</sup> + a<sup>1/2</sup>') + ' factorises to:', a: [m('a<sup>1/2</sup>(a + 1)'), m('a(a<sup>1/2</sup> + 1)'), m('a<sup>2</sup>(a + 1)'), 'it does not factorise'], c: 0, why: 'Take out the smallest power.' },
+    { q: m(f('x − 4', sr('x') + ' − 2')) + ' equals:', a: [m(sr('x') + ' − 2'), m(sr('x') + ' + 2'), m('x + 2'), m('2')], c: 1, why: 'x − 4 = (√x − 2)(√x + 2); cancel the first bracket.' },
+    { q: 'To rationalise ' + m(f('1', sr('5') + ' − ' + sr('3'))) + ' multiply by:', a: [m(sr('5'))
+      , m(sr('5') + ' + ' + sr('3')), m(sr('5') + ' − ' + sr('3')), m('2')], c: 1, why: 'The conjugate turns the denominator into a difference of squares.' }
+  ],
+  practice: {
+    easy: [
+      [m('Simplify a<sup>1/2</sup> · a<sup>1/2</sup>'), m('a')],
+      [m('Simplify a<sup>3/4</sup> : a<sup>1/4</sup>'), m('a<sup>1/2</sup>')],
+      [m('Simplify (a<sup>1/3</sup>)<sup>3</sup>'), m('a')],
+      [m('Simplify a<sup>1/2</sup> · a'), m('a<sup>3/2</sup>')],
+      [m('Write ' + sr('a') + ' · ' + sr('a') + ' more simply'), m('a')],
+      [m('Simplify (4a<sup>2</sup>)<sup>1/2</sup>, a ≥ 0'), m('2a')],
+      [m('Simplify a<sup>1/2</sup> + 3a<sup>1/2</sup>'), m('4a<sup>1/2</sup>')]
+    ],
+    med: [
+      [m('Simplify ' + f('a<sup>3/4</sup> · a<sup>1/2</sup>', 'a<sup>1/4</sup>')), m('a')],
+      [m('Factorise a<sup>3/2</sup> − a<sup>1/2</sup>'), m(sr('a') + '(a − 1)')],
+      [m('Simplify ' + f('x − 9', sr('x') + ' − 3')), m(sr('x') + ' + 3')],
+      [m('Simplify (a<sup>1/2</sup>b<sup>1/2</sup>)<sup>4</sup>'), m('a<sup>2</sup>b<sup>2</sup>')],
+      [m('Simplify ' + sr('a') + ' · ' + sr('<sup>3</sup>&nbsp;a')), m('a<sup>5/6</sup>')],
+      [m('Simplify ' + f('a', sr('a')) + ',&nbsp; a > 0'), m(sr('a'))],
+      [m('Factorise a + a<sup>1/2</sup>'), m('a<sup>1/2</sup>(a<sup>1/2</sup> + 1)')]
+    ],
+    hard: [
+      [m('Simplify ' + f(sr('a') + ' · ' + sr('<sup>3</sup>&nbsp;a'), sr('<sup>6</sup>&nbsp;a'))), m('a<sup>2/3</sup>')],
+      [m('Simplify ' + f('x − 1', sr('x') + ' − 1') + ',&nbsp; x ≥ 0, x ≠ 1'), m(sr('x') + ' + 1')],
+      [m('Rationalise ' + f('1', sr('5') + ' − ' + sr('3'))), m(f(sr('5') + ' + ' + sr('3'), '2'))],
+      [m('Simplify (a<sup>2/3</sup> − b<sup>2/3</sup>) : (a<sup>1/3</sup> − b<sup>1/3</sup>)'), m('a<sup>1/3</sup> + b<sup>1/3</sup>')],
+      [m('Simplify ' + f('a<sup>3/2</sup> − a<sup>1/2</sup>', 'a − 1') + ',&nbsp; a > 0, a ≠ 1'), m('a<sup>1/2</sup>')],
+      [m('Evaluate (' + sr('7') + ' + ' + sr('3') + ')(' + sr('7') + ' − ' + sr('3') + ')'), m('7 − 3 = 4')],
+      [m('Simplify (a<sup>1/2</sup> + 1)<sup>2</sup> − (a<sup>1/2</sup> − 1)<sup>2</sup>'), m('4a<sup>1/2</sup>')]
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Algebra 8, §10, pp. 49–52.',
+  homework: [
+    m('Simplify a<sup>2/3</sup> · a<sup>1/3</sup>'),
+    m('Simplify ' + f('b<sup>7/4</sup>', 'b<sup>3/4</sup>')),
+    m('Factorise x<sup>3/2</sup> + x<sup>1/2</sup>'),
+    m('Simplify ' + f('x − 16', sr('x') + ' − 4')),
+    m('Rationalise ' + f('2', sr('7') + ' − ' + sr('5')))
+  ]
+});
+
+/* ============================== 14 ============================== */
+G8_ALG.push({
+  id: 'alg-14', stream: 'alg', grade: 8, quarter: 2, lessons: '34–35', hours: 2,
+  title: 'Standard form, and fractions as decimals',
+  subtitle: 'The national plan’s “practical and interdisciplinary” lessons, carrying two Cambridge Stage 9 topics the programme does not otherwise reach.',
+  uz: 'Algebra 8, Chapter I practical', uzPage: 'pp. 62–67',
+  cam: 'Stage 9 · 1.2, 8.1  [Cambridge insert]', camPage: 'Learner’s Book pp. 14–16, 162–166', wb: 'Workbook 1.2, 8.1',
+  objectives: [
+    'Write large and small numbers in standard form ' + m('a × 10<sup>n</sup>') + ', ' + m('1 ≤ a < 10') + '.',
+    'Multiply and divide numbers written in standard form.',
+    'Convert a fraction to a terminating or recurring decimal, and back.',
+    'Tell a rational number from an irrational one by its decimal.'
+  ],
+  terms: [
+    ['Standard form', 'Standart ko‘rinish', 'Стандартный вид'],
+    ['Power of ten', 'O‘nning darajasi', 'Степень десяти'],
+    ['Significant figures', 'Ahamiyatli raqamlar', 'Значащие цифры'],
+    ['Terminating decimal', 'Chekli o‘nli kasr', 'Конечная десятичная дробь'],
+    ['Recurring decimal', 'Davriy o‘nli kasr', 'Периодическая десятичная дробь'],
+    ['Period', 'Davr', 'Период'],
+    ['Rational number', 'Ratsional son', 'Рациональное число'],
+    ['Irrational number', 'Irratsional son', 'Иррациональное число'],
+    ['Convert', 'Aylantirish', 'Преобразовать']
+  ],
+  sections: [
+    {
+      h: 'Standard form',
+      html: `<div class="keybox"><div class="klabel">Definition</div>
+      A number is in <b>standard form</b> when it is written as ${m('a × 10<sup>n</sup>')} with
+      ${m('1 ≤ a < 10')} and ${m('n')} a whole number.</div>
+      <ul>
+        <li>${m('4 500 000 = 4.5 × 10<sup>6</sup>')} — the point moves 6 places left, so ${m('n')} is positive.</li>
+        <li>${m('0.00032 = 3.2 × 10<sup>−4</sup>')} — the point moves 4 places right, so ${m('n')} is negative.</li>
+      </ul>
+      <p>To calculate, handle the numbers and the powers of ten separately:</p>
+      ${eq(m('(3 × 10<sup>5</sup>) · (2 × 10<sup>3</sup>) = 6 × 10<sup>8</sup>'))}
+      ${eq(m('(6 × 10<sup>5</sup>) : (3 × 10<sup>2</sup>) = 2 × 10<sup>3</sup>'))}
+      <div class="warn"><span class="wl">Tidy the answer</span>
+      ${m('40 × 10<sup>4</sup>')} is not in standard form. Rewrite it as ${m('4 × 10<sup>5</sup>')}.</div>`
+    },
+    {
+      h: 'Fractions as decimals',
+      html: `<p>Divide the numerator by the denominator. Exactly one of two things happens:</p>
+      <ul>
+        <li>the division <b>stops</b> — a <b>terminating</b> decimal, e.g. ${m(f('3', '8') + ' = 0.375')};</li>
+        <li>a block of digits <b>repeats for ever</b> — a <b>recurring</b> decimal, e.g.
+        ${m(f('1', '3') + ' = 0.333… = 0.(3)')} and ${m(f('5', '11') + ' = 0.454545… = 0.(45)')}.</li>
+      </ul>
+      <div class="keybox"><div class="klabel">Which one?</div>
+      Cancel the fraction first. If the denominator's only prime factors are 2 and 5, the decimal
+      terminates; otherwise it recurs. ${m(f('7', '40'))} terminates (${m('40 = 2<sup>3</sup> · 5')});
+      ${m(f('7', '30'))} recurs (${m('30 = 2 · 3 · 5')}).</div>
+      <p>Every fraction gives a terminating or recurring decimal, and every terminating or recurring
+      decimal comes from a fraction. A decimal that never stops <em>and</em> never repeats belongs to an
+      <b>irrational</b> number — ${m(sr('2') + ' = 1.41421356…')}, ${m('π = 3.14159…')}.</p>`
+    },
+    {
+      h: 'Turning a recurring decimal back into a fraction',
+      html: `<p>Multiply by a power of ten so that one whole period shifts past the point, then subtract.</p>
+      ${eq(m('x = 0.(7) ⟹ 10x = 7.(7) ⟹ 9x = 7 ⟹ x = ' + f('7', '9')), true)}
+      <p>For a two-digit period multiply by 100: ${m('x = 0.(45) ⟹ 100x − x = 45 ⟹ x = ' + f('45', '99') + ' = ' + f('5', '11'))}.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Write 0.00047 and 92 000 in standard form.',
+      steps: [
+        [m('0.00047 → 4.7'), 'The point moves 4 places right.'],
+        [m('= 4.7 × 10<sup>−4</sup>'), 'Moving right gives a negative index.'],
+        [m('92 000 → 9.2'), 'The point moves 4 places left.'],
+        [m('= 9.2 × 10<sup>4</sup>'), '']
+      ],
+      ans: m('4.7 × 10<sup>−4</sup>') + ' and ' + m('9.2 × 10<sup>4</sup>')
+    },
+    {
+      q: m('Work out (8 × 10<sup>6</sup>) : (4 × 10<sup>2</sup>)'),
+      steps: [
+        [m('8 : 4 = 2'), 'The numbers.'],
+        [m('10<sup>6</sup> : 10<sup>2</sup> = 10<sup>4</sup>'), 'Subtract the indices.'],
+        [m('= 2 × 10<sup>4</sup>'), 'Already in standard form.']
+      ],
+      ans: m('2 × 10<sup>4</sup> = 20 000')
+    },
+    {
+      q: m('Write 0.(6) as a fraction'),
+      steps: [
+        [m('x = 0.666…'), 'Name the number.'],
+        [m('10x = 6.666…'), 'One period is one digit, so multiply by 10.'],
+        [m('10x − x = 6'), 'The tails cancel exactly.'],
+        [m('9x = 6, x = ' + f('6', '9') + ' = ' + f('2', '3')), 'Cancel.']
+      ],
+      ans: m(f('2', '3'))
+    }
+  ],
+  modelNote: 'Ask for an estimate in standard form before any calculation — it catches most place-value slips.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'Standard form and recurring decimals',
+    hint: 'Pick a task and reveal the steps.',
+    items: [
+      {
+        title: '0.00058 in standard form',
+        start: m('0.00058'),
+        steps: [
+          ['Move the point until one non-zero digit is in front: ' + m('5.8') + '.', 'That is the value of a.'],
+          ['The point moved <b>4 places right</b>.', 'Right ⟹ negative index.'],
+          [m('5.8 × 10<sup>−4</sup>'), 'Check: 5.8 ÷ 10 000 = 0.00058 ✓']
+        ],
+        answer: m('5.8 × 10<sup>−4</sup>')
+      },
+      {
+        title: '(3 × 10⁵) · (4 × 10⁴)',
+        start: m('(3 × 10<sup>5</sup>) · (4 × 10<sup>4</sup>)'),
+        steps: [
+          [m('3 · 4 = 12'), 'Numbers first.'],
+          [m('10<sup>5</sup> · 10<sup>4</sup> = 10<sup>9</sup>'), 'Add the indices.'],
+          [m('12 × 10<sup>9</sup>'), 'Not standard form — 12 is too big.'],
+          [m('= 1.2 × 10<sup>10</sup>'), 'Tidy it.']
+        ],
+        answer: m('1.2 × 10<sup>10</sup>')
+      },
+      {
+        title: 'Does 7/40 terminate?',
+        start: m(f('7', '40')),
+        steps: [
+          ['The fraction is already in lowest terms.', 'Always cancel first.'],
+          [m('40 = 2<sup>3</sup> · 5'), 'Only the primes 2 and 5.'],
+          ['So the decimal terminates.', ''],
+          [m('7 : 40 = 0.175'), '']
+        ],
+        answer: m('0.175') + ' — terminating.'
+      },
+      {
+        title: '0.(45) as a fraction',
+        start: m('x = 0.454545…'),
+        steps: [
+          ['The period has two digits, so multiply by 100.', ''],
+          [m('100x = 45.4545…'), ''],
+          [m('100x − x = 45 ⟹ 99x = 45'), 'The infinite tails cancel.'],
+          [m('x = ' + f('45', '99') + ' = ' + f('5', '11')), 'Cancel by 9.']
+        ],
+        answer: m(f('5', '11'))
+      }
+    ]
+  },
+  quiz: [
+    { q: m('0.00062') + ' in standard form is:', a: [m('6.2 × 10<sup>−4</sup>'), m('6.2 × 10<sup>4</sup>'), m('62 × 10<sup>−5</sup>'), m('0.62 × 10<sup>−3</sup>')], c: 0, why: 'a must satisfy 1 ≤ a < 10, and the point moved 4 places right.' },
+    { q: m('(2 × 10<sup>3</sup>) · (5 × 10<sup>4</sup>)') + ' equals:', a: [m('10 × 10<sup>7</sup>'), m('1 × 10<sup>8</sup>'), m('7 × 10<sup>7</sup>'), m('10<sup>12</sup>')], c: 1, why: '10 × 10⁷ is not standard form; tidy it to 1 × 10⁸.' },
+    { q: 'Which fraction gives a recurring decimal?', a: [m(f('3', '8')), m(f('7', '20')), m(f('5', '6')), m(f('9', '25'))], c: 2, why: '6 = 2 · 3 has a prime factor other than 2 and 5.' },
+    { q: m('0.(3)') + ' as a fraction is:', a: [m(f('3', '10')), m(f('1', '3')), m(f('3', '99')), m(f('1', '30'))], c: 1, why: '10x − x = 3, so 9x = 3 and x = 1/3.' }
+  ],
+  practice: {
+    easy: [
+      [m('Write 5 000 in standard form'), m('5 × 10<sup>3</sup>')],
+      [m('Write 0.007 in standard form'), m('7 × 10<sup>−3</sup>')],
+      [m('Write 3.2 × 10<sup>4</sup> as an ordinary number'), m('32 000')],
+      [m('Write 6 × 10<sup>−2</sup> as an ordinary number'), m('0.06')],
+      [m('Write ' + f('1', '4') + ' as a decimal'), m('0.25')],
+      [m('Write ' + f('1', '3') + ' as a decimal'), m('0.(3)')],
+      [m('Write 0.5 as a fraction in lowest terms'), m(f('1', '2'))]
+    ],
+    med: [
+      [m('Write 0.00047 in standard form'), m('4.7 × 10<sup>−4</sup>')],
+      [m('Write 92 000 in standard form'), m('9.2 × 10<sup>4</sup>')],
+      [m('Work out (3 × 10<sup>5</sup>) · (2 × 10<sup>3</sup>)'), m('6 × 10<sup>8</sup>')],
+      [m('Work out (8 × 10<sup>6</sup>) : (4 × 10<sup>2</sup>)'), m('2 × 10<sup>4</sup>')],
+      [m('Does ' + f('7', '40') + ' terminate? Give the decimal.'), 'Yes — ' + m('0.175')],
+      [m('Write ' + f('5', '11') + ' as a decimal'), m('0.(45)')],
+      [m('Write 0.(6) as a fraction'), m(f('2', '3'))]
+    ],
+    hard: [
+      [m('Work out (4 × 10<sup>5</sup>) · (5 × 10<sup>4</sup>) in standard form'), m('2 × 10<sup>10</sup>')],
+      [m('Work out (1.2 × 10<sup>7</sup>) : (4 × 10<sup>3</sup>)'), m('3 × 10<sup>3</sup>')],
+      [m('Write 0.(45) as a fraction in lowest terms'), m(f('5', '11'))],
+      [m('Write 0.1(6) as a fraction'), m(f('1', '6')) + ' — multiply by 10 and by 100, then subtract.'],
+      [m('Without dividing, say whether ' + f('9', '48') + ' terminates'), 'Cancel to ' + m(f('3', '16')) + '; ' + m('16 = 2<sup>4</sup>') + ', so yes.'],
+      [m('The mass of a grain of sand is about 6.6 × 10<sup>−5</sup> kg. Find the mass of 2 × 10<sup>6</sup> grains.'), m('1.32 × 10<sup>2</sup> = 132 kg')],
+      [m('Is 0.101001000100001… rational? Explain.'), 'No — it never stops and never repeats, so it is irrational.']
+    ]
+  },
+  hwTitle: 'Homework — 6 problems',
+  hwNote: 'Algebra 8, pp. 62–67 (practical problems) and Cambridge Workbook 1.2.',
+  homework: [
+    m('Write 0.000091 and 340 000 in standard form'),
+    m('Work out (5 × 10<sup>4</sup>) · (6 × 10<sup>3</sup>) in standard form'),
+    m('Work out (9 × 10<sup>8</sup>) : (3 × 10<sup>5</sup>)'),
+    m('Write ' + f('7', '8') + ' and ' + f('4', '9') + ' as decimals'),
+    m('Write 0.(8) as a fraction'),
+    m('Without dividing, decide whether ' + f('11', '50') + ' terminates')
+  ]
+});
+
+/* ============================== 15 ============================== */
+G8_ALG.push({
+  id: 'alg-15', stream: 'alg', grade: 8, quarter: 2, lessons: '36–37', hours: 2,
+  title: 'Control work 3 · Roots and rational exponents',
+  subtitle: 'The Chapter I assessment, followed by a work-on-mistakes lesson sorted by error type.',
+  uz: 'Algebra 8, §§8–10', uzPage: 'Revision of §§8–10',
+  cam: 'Stage 9 · Unit 1 check', camPage: 'Learner’s Book pp. 9–20', wb: 'Workbook Unit 1',
+  objectives: [
+    'Assess roots, rational exponents, standard form and decimals.',
+    'Sort the errors by type rather than by question.',
+    'Re-solve every task that was lost.'
+  ],
+  timing: [[2, 'Setting up'], [36, 'The paper'], [2, 'Collect in']],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Work on mistakes', 'Xatolar ustida ishlash', 'Работа над ошибками'],
+    ['Root', 'Ildiz', 'Корень'],
+    ['Exponent', 'Ko‘rsatkich', 'Показатель'],
+    ['Standard form', 'Standart ko‘rinish', 'Стандартный вид'],
+    ['Evaluate', 'Hisoblash', 'Вычислить'],
+    ['Justify', 'Asoslash', 'Обосновать']
+  ],
+  sections: [
+    {
+      h: 'Lesson 36 — the paper (40 minutes)',
+      html: `<p>Two variants of seven tasks, 2 marks each, 14 in total:</p>
+      <ul>
+        <li>tasks 1–2 · simplify a root (§8)</li>
+        <li>task 3 · rationalise a denominator (§8)</li>
+        <li>tasks 4–5 · evaluate a power with a rational exponent (§9)</li>
+        <li>task 6 · simplify a letter expression (§10)</li>
+        <li>task 7 · standard form or a recurring decimal (Cambridge insert)</li>
+      </ul>`
+    },
+    {
+      h: 'Lesson 37 — work on mistakes (40 minutes)',
+      html: `<div class="keybox"><div class="klabel">The four errors this paper produces</div>
+      <ol style="margin:0">
+        <li><b>Splitting a root over a sum</b> — writing ${m(sr('a + b') + ' = ' + sr('a') + ' + ' + sr('b'))}.</li>
+        <li><b>Numerator and denominator of the index swapped</b> —
+        reading ${m('8<sup>2/3</sup>')} as ${m('(8<sup>3</sup>)<sup>2</sup>')}.</li>
+        <li><b>A negative index treated as a negative answer</b> —
+        ${m('4<sup>−1/2</sup>')} given as ${m('−2')}.</li>
+        <li><b>Standard form not tidied</b> — leaving ${m('12 × 10<sup>9</sup>')}.</li>
+      </ol></div>
+      <p>The Hard set below is seven pieces of wrong working built from these four.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the error: ' + m(sr('16 + 9') + ' = 4 + 3 = 7'),
+      steps: [
+        ['A root does not split over a sum.', 'Only over a product or a quotient.'],
+        [m('16 + 9 = 25'), 'Do the addition first.'],
+        [m(sr('25') + ' = 5'), '']
+      ],
+      ans: m('5')
+    },
+    {
+      q: 'Find the error: ' + m('4<sup>−1/2</sup> = −2'),
+      steps: [
+        ['A negative index means a reciprocal, not a negative number.', ''],
+        [m('4<sup>−1/2</sup> = ' + f('1', '4<sup>1/2</sup>')), ''],
+        [m('= ' + f('1', '2')), '']
+      ],
+      ans: m(f('1', '2'))
+    }
+  ],
+  modelNote: 'Show each piece of wrong working, take a vote on the error type, then reveal.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'Diagnose the error',
+    hint: 'Which of the four errors is this?',
+    items: [
+      {
+        title: 'Error 1 — a root split over a sum',
+        start: '<b>Claimed:</b> ' + m(sr('16 + 9') + ' = 7'),
+        steps: [
+          ['The product rule is ' + m(sr('ab') + ' = ' + sr('a') + ' · ' + sr('b')) + '. There is no sum rule.', ''],
+          [m('16 + 9 = 25') + ', so the root is ' + m(sr('25')) + '.', ''],
+          [m('= 5') + ', not 7.', 'One counter-example is enough to kill the false rule.']
+        ],
+        answer: m('5')
+      },
+      {
+        title: 'Error 2 — index upside down',
+        start: '<b>Claimed:</b> ' + m('8<sup>2/3</sup> = (8<sup>3</sup>)<sup>2</sup> = 262144'),
+        steps: [
+          ['The <b>denominator</b> of the index is the root; the numerator is the power.', ''],
+          [m('8<sup>2/3</sup> = (' + sr('<sup>3</sup>&nbsp;8') + ')<sup>2</sup>'), ''],
+          [m('= 2<sup>2</sup> = 4'), 'Root first keeps the numbers small.']
+        ],
+        answer: m('4')
+      },
+      {
+        title: 'Error 3 — negative index, negative answer',
+        start: '<b>Claimed:</b> ' + m('9<sup>−1/2</sup> = −3'),
+        steps: [
+          [m('a<sup>−p</sup> = ' + f('1', 'a<sup>p</sup>')), 'The minus lives in the exponent, not in the value.'],
+          [m('9<sup>1/2</sup> = 3'), ''],
+          [m('9<sup>−1/2</sup> = ' + f('1', '3')), 'A positive number, less than 1.']
+        ],
+        answer: m(f('1', '3'))
+      },
+      {
+        title: 'Error 4 — standard form not tidied',
+        start: '<b>Claimed:</b> ' + m('(4 × 10<sup>5</sup>)(5 × 10<sup>4</sup>) = 20 × 10<sup>9</sup>'),
+        steps: [
+          ['The arithmetic is right: ' + m('4 · 5 = 20') + ' and ' + m('10<sup>5</sup> · 10<sup>4</sup> = 10<sup>9</sup>') + '.', ''],
+          ['But standard form needs ' + m('1 ≤ a < 10') + ', and 20 is too big.', ''],
+          [m('20 × 10<sup>9</sup> = 2 × 10<sup>10</sup>'), 'Move one factor of ten across.']
+        ],
+        answer: m('2 × 10<sup>10</sup>')
+      }
+    ]
+  },
+  quiz: [
+    { q: m(sr('25 + 144')) + ' equals:', a: [m('17'), m('13'), m('169'), m('5 + 12')], c: 1, why: '√169 = 13; roots do not split over a sum.' },
+    { q: m('8<sup>2/3</sup>') + ' equals:', a: [m('4'), m('64'), m('16'), m('262144')], c: 0, why: 'Cube root first: 2, then squared.' },
+    { q: m('9<sup>−1/2</sup>') + ' equals:', a: [m('−3'), m(f('1', '3')), m('3'), m('−' + f('1', '3'))], c: 1, why: 'A negative index gives a reciprocal.' },
+    { q: m('20 × 10<sup>9</sup>') + ' in standard form is:', a: [m('20 × 10<sup>9</sup>'), m('2 × 10<sup>10</sup>'), m('2 × 10<sup>8</sup>'), m('0.2 × 10<sup>11</sup>')], c: 1, why: 'a must be at least 1 and less than 10.' }
+  ],
+  practice: {
+    easy: [
+      [m('<b>Variant 1, task 1.</b> Simplify ' + sr('48')), m('4' + sr('3'))],
+      [m('<b>Task 2.</b> Simplify ' + sr('6') + ' · ' + sr('24')), m('12')],
+      [m('<b>Task 3.</b> Rationalise ' + f('4', sr('2'))), m('2' + sr('2'))],
+      [m('<b>Task 4.</b> Evaluate 16<sup>1/2</sup>'), m('4')],
+      [m('<b>Task 5.</b> Evaluate 27<sup>2/3</sup>'), m('9')],
+      [m('<b>Task 6.</b> Simplify a<sup>1/2</sup> · a<sup>3/2</sup>'), m('a<sup>2</sup>')],
+      [m('<b>Task 7.</b> Write 0.0035 in standard form'), m('3.5 × 10<sup>−3</sup>')]
+    ],
+    med: [
+      [m('<b>Variant 2, task 1.</b> Simplify ' + sr('75')), m('5' + sr('3'))],
+      [m('<b>Task 2.</b> Simplify ' + sr('8') + ' · ' + sr('18')), m('12')],
+      [m('<b>Task 3.</b> Rationalise ' + f('9', sr('3'))), m('3' + sr('3'))],
+      [m('<b>Task 4.</b> Evaluate 64<sup>1/3</sup>'), m('4')],
+      [m('<b>Task 5.</b> Evaluate 25<sup>−1/2</sup>'), m(f('1', '5'))],
+      [m('<b>Task 6.</b> Simplify ' + f('b<sup>5/4</sup>', 'b<sup>1/4</sup>')), m('b')],
+      [m('<b>Task 7.</b> Write ' + f('2', '3') + ' as a decimal'), m('0.(6)')]
+    ],
+    hard: [
+      [m('Find the error: ' + sr('16 + 9') + ' = 7'), 'Roots do not split over a sum. Correct: ' + m('5') + '.'],
+      [m('Find the error: 8<sup>2/3</sup> = (8<sup>3</sup>)<sup>2</sup>'), 'Index upside down. Correct: ' + m('4') + '.'],
+      [m('Find the error: 4<sup>−1/2</sup> = −2'), 'A negative index gives a reciprocal. Correct: ' + m(f('1', '2')) + '.'],
+      [m('Find the error: (4 × 10<sup>5</sup>)(5 × 10<sup>4</sup>) = 20 × 10<sup>9</sup>'), 'Not tidied. Correct: ' + m('2 × 10<sup>10</sup>') + '.'],
+      [m('Find the error: ' + sr('a<sup>2</sup>') + ' = a for every a'), 'True only for ' + m('a ≥ 0') + '; for ' + m('a < 0') + ' it is ' + m('−a') + '.'],
+      [m('Find the error: ' + f('1', sr('2')) + ' = ' + sr('2')), 'Rationalising gives ' + m(f(sr('2'), '2')) + ', which is about ' + m('0.71') + ', not ' + m('1.41') + '.'],
+      [m('Find the error: 0.(3) = ' + f('3', '10')), m(f('3', '10') + ' = 0.3') + ' exactly, not recurring. Correct: ' + m(f('1', '3')) + '.']
+    ]
+  },
+  hwTitle: 'After the work-on-mistakes lesson',
+  hwNote: 'Re-solve every task you lost marks on, then these three.',
+  homework: [
+    m('Simplify ' + sr('147') + ' and rationalise ' + f('5', sr('5'))),
+    m('Evaluate 32<sup>3/5</sup> and 49<sup>−1/2</sup>'),
+    'Write out the four errors from this lesson in your own words with one example each.'
+  ]
+});
+
+/* ============================== 16 ============================== */
+G8_ALG.push({
+  id: 'alg-16', stream: 'alg', grade: 8, quarter: 2, lessons: '38–39', hours: 2,
+  title: 'Numerical inequalities',
+  subtitle: 'What “greater than” really means — one definition by subtraction that settles every comparison, however awkward the numbers.',
+  uz: 'Algebra 8, §11', uzPage: '§11, pp. 68–70',
+  cam: 'Stage 9 · 4.3', camPage: 'Learner’s Book pp. 96–102', wb: 'Workbook 4.3',
+  objectives: [
+    'State the definition of ' + m('a > b') + ' by means of the difference.',
+    'Compare two numbers or expressions using the difference method.',
+    'Read and write strict and non-strict inequalities.',
+    'Place numbers correctly on a number line.'
+  ],
+  terms: [
+    ['Inequality', 'Tengsizlik', 'Неравенство'],
+    ['Greater than', 'Katta', 'Больше'],
+    ['Less than', 'Kichik', 'Меньше'],
+    ['Strict inequality', 'Qat’iy tengsizlik', 'Строгое неравенство'],
+    ['Non-strict inequality', 'Qat’iy bo‘lmagan tengsizlik', 'Нестрогое неравенство'],
+    ['Difference', 'Ayirma', 'Разность'],
+    ['Positive', 'Musbat', 'Положительный'],
+    ['Negative', 'Manfiy', 'Отрицательный'],
+    ['Number line', 'Sonlar o‘qi', 'Числовая прямая'],
+    ['Compare', 'Taqqoslash', 'Сравнить']
+  ],
+  sections: [
+    {
+      h: 'The definition',
+      html: `<div class="keybox"><div class="klabel">Definition</div>
+      ${eq(m('a > b') + ' &nbsp;means&nbsp; ' + m('a − b > 0'))}
+      ${eq(m('a < b') + ' &nbsp;means&nbsp; ' + m('a − b < 0'))}
+      and ${m('a = b')} means ${m('a − b = 0')}.</div>
+      <p>That is the whole of this lesson. Comparing two numbers is not a matter of looking at them —
+      it is a matter of <b>subtracting and checking the sign</b>. For ordinary numbers this feels like
+      overkill; for expressions with letters it is the only method that works.</p>
+      <p>On the number line, ${m('a > b')} means ${m('a')} lies to the <b>right</b> of ${m('b')}.</p>`
+    },
+    {
+      h: 'Strict and non-strict',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Symbol</th><th>Read as</th><th>Type</th><th>On the line</th></tr></thead>
+      <tbody>
+        <tr><td>${m('a > b')}</td><td>a is greater than b</td><td>strict</td><td>open circle</td></tr>
+        <tr><td>${m('a < b')}</td><td>a is less than b</td><td>strict</td><td>open circle</td></tr>
+        <tr><td>${m('a ≥ b')}</td><td>a is greater than or equal to b</td><td>non-strict</td><td>filled circle</td></tr>
+        <tr><td>${m('a ≤ b')}</td><td>a is less than or equal to b</td><td>non-strict</td><td>filled circle</td></tr>
+      </tbody></table></div>
+      {{fig:numberLineInterval:An open circle excludes the boundary; a filled circle includes it.}}
+      <p>Note that ${m('5 ≥ 5')} is <b>true</b> — “or equal to” only has to hold on one side.</p>`
+    },
+    {
+      h: 'The difference method in action',
+      html: `<p>Compare ${m(f('3', '7'))} and ${m(f('4', '9'))} without decimals:</p>
+      ${eq(m(f('3', '7') + ' − ' + f('4', '9') + ' = ' + f('27 − 28', '63') + ' = −' + f('1', '63') + ' < 0'), true)}
+      <p>The difference is negative, so ${m(f('3', '7') + ' < ' + f('4', '9'))}. No decimals, no calculator,
+      no rounding to argue about.</p>
+      <p>With letters it is the only route. To show that ${m('a<sup>2</sup> + 1 > 2a')} for every
+      ${m('a')}, subtract:</p>
+      ${eq(m('a<sup>2</sup> + 1 − 2a = (a − 1)<sup>2</sup> ≥ 0'), true)}
+      <p>A square is never negative, so the difference is never negative — the inequality holds, with
+      equality only when ${m('a = 1')}.</p>
+      <div class="warn"><span class="wl">Two useful facts</span>
+      ${m('a<sup>2</sup> ≥ 0')} for every ${m('a')}, and ${m('a<sup>2</sup> > 0')} unless ${m('a = 0')}.
+      Almost every proof in this chapter ends by spotting a square.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: m('Compare ' + f('5', '8') + ' and ' + f('7', '11')),
+      steps: [
+        [m(f('5', '8') + ' − ' + f('7', '11')), 'Subtract.'],
+        [m('= ' + f('55 − 56', '88') + ' = −' + f('1', '88')), 'Common denominator 88.'],
+        ['The difference is negative.', ''],
+        [m(f('5', '8') + ' < ' + f('7', '11')), '']
+      ],
+      ans: m(f('5', '8') + ' < ' + f('7', '11'))
+    },
+    {
+      q: m('Prove that a<sup>2</sup> + 4 ≥ 4a for every a'),
+      steps: [
+        [m('a<sup>2</sup> + 4 − 4a'), 'Take the difference.'],
+        [m('= a<sup>2</sup> − 4a + 4'), 'Rearrange.'],
+        [m('= (a − 2)<sup>2</sup>'), 'A perfect square.'],
+        [m('(a − 2)<sup>2</sup> ≥ 0') + ' always.', 'So the difference is never negative.']
+      ],
+      ans: 'True for every ' + m('a') + ', with equality at ' + m('a = 2') + '.'
+    },
+    {
+      q: m('Which is greater: 2<sup>10</sup> or 10<sup>3</sup>?'),
+      steps: [
+        [m('2<sup>10</sup> = 1024'), ''],
+        [m('10<sup>3</sup> = 1000'), ''],
+        [m('1024 − 1000 = 24 > 0'), 'The difference is positive.'],
+        [m('2<sup>10</sup> > 10<sup>3</sup>'), '']
+      ],
+      ans: m('2<sup>10</sup> > 10<sup>3</sup>')
+    }
+  ],
+  modelNote: 'Move the boundary and flip the symbol — the open and filled circles are the whole story.',
+  interactive: { type: 'inequalityLine' },
+  quiz: [
+    { q: m('a > b') + ' means:', a: [m('a − b > 0'), m('b − a > 0'), m('a + b > 0'), m('ab > 0')], c: 0, why: 'That is the definition — the difference is positive.' },
+    { q: 'Which statement is true?', a: [m('5 > 5'), m('5 ≥ 5'), m('5 < 5'), 'none of them'], c: 1, why: '“Or equal to” is satisfied by the equal case.' },
+    { q: m('a<sup>2</sup>') + ' is:', a: ['always positive', 'never negative', 'always negative', 'sometimes negative'], c: 1, why: 'It is 0 when a = 0 and positive otherwise.' },
+    { q: 'On the number line, a filled circle means:', a: ['the value is excluded', 'the value is included', 'the inequality is strict', 'nothing in particular'], c: 1, why: 'Filled = included, so the symbol is ≤ or ≥.' }
+  ],
+  practice: {
+    easy: [
+      [m('Compare 7 and 4 using the difference'), m('7 − 4 = 3 > 0') + ', so ' + m('7 > 4')],
+      [m('Compare −3 and −5'), m('−3 − (−5) = 2 > 0') + ', so ' + m('−3 > −5')],
+      [m('Is 6 ≥ 6 true?'), 'Yes.'],
+      [m('Is 6 > 6 true?'), 'No.'],
+      [m('Write “x is at least 5” as an inequality'), m('x ≥ 5')],
+      [m('Write “x is less than −2” as an inequality'), m('x < −2')],
+      [m('Compare ' + f('1', '2') + ' and ' + f('2', '5')), m(f('1', '2') + ' > ' + f('2', '5'))]
+    ],
+    med: [
+      [m('Compare ' + f('3', '7') + ' and ' + f('4', '9')), m(f('3', '7') + ' < ' + f('4', '9'))],
+      [m('Compare ' + f('5', '8') + ' and ' + f('7', '11')), m(f('5', '8') + ' < ' + f('7', '11'))],
+      [m('Which is greater: 2<sup>10</sup> or 10<sup>3</sup>?'), m('2<sup>10</sup> = 1024 > 1000')],
+      [m('Compare 3' + sr('2') + ' and 4'), m('3' + sr('2') + ' ≈ 4.24 > 4')],
+      [m('Prove a<sup>2</sup> + 1 ≥ 2a'), 'The difference is ' + m('(a − 1)<sup>2</sup> ≥ 0') + '.'],
+      [m('Prove a<sup>2</sup> + 4 ≥ 4a'), 'The difference is ' + m('(a − 2)<sup>2</sup> ≥ 0') + '.'],
+      [m('Compare −' + f('2', '3') + ' and −' + f('3', '4')), m('−' + f('2', '3') + ' > −' + f('3', '4'))]
+    ],
+    hard: [
+      [m('Prove that a<sup>2</sup> + b<sup>2</sup> ≥ 2ab for all a, b'), 'The difference is ' + m('(a − b)<sup>2</sup> ≥ 0') + '.'],
+      [m('Prove that a + ' + f('1', 'a') + ' ≥ 2 for a > 0'), 'The difference is ' + m(f('(a − 1)<sup>2</sup>', 'a') + ' ≥ 0') + ' because ' + m('a > 0') + '.'],
+      [m('Compare ' + f('a', 'b') + ' and ' + f('a + 1', 'b + 1') + ' for a > b > 0'), 'The difference is ' + m(f('a − b', 'b(b + 1)') + ' > 0') + ', so ' + m(f('a', 'b') + ' > ' + f('a + 1', 'b + 1')) + '.'],
+      [m('Prove that (a + b)<sup>2</sup> ≥ 4ab'), 'The difference is ' + m('(a − b)<sup>2</sup> ≥ 0') + '.'],
+      [m('Which is greater: ' + sr('10') + ' or 3.2?'), m('10 < 10.24 = 3.2<sup>2</sup>') + ', so ' + m(sr('10') + ' < 3.2')],
+      [m('Show that a<sup>2</sup> + b<sup>2</sup> + 2 ≥ 2a + 2b'), 'The difference is ' + m('(a − 1)<sup>2</sup> + (b − 1)<sup>2</sup> ≥ 0') + '.'],
+      [m('For which a is a<sup>2</sup> > a?'), m('a<sup>2</sup> − a = a(a − 1) > 0') + ' when ' + m('a < 0') + ' or ' + m('a > 1') + '.']
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Algebra 8, §11, pp. 68–70. Show the difference in every comparison.',
+  homework: [
+    m('Compare ' + f('4', '9') + ' and ' + f('5', '11') + ' by the difference method'),
+    m('Compare −' + f('3', '5') + ' and −' + f('5', '8')),
+    m('Prove that a<sup>2</sup> + 9 ≥ 6a for every a'),
+    m('Which is greater: 3<sup>5</sup> or 5<sup>3</sup>?'),
+    m('Write as inequalities: “x is at most 7” and “y is greater than −1”')
+  ]
+});
+
+/* ============================== 17 ============================== */
+G8_ALG.push({
+  id: 'alg-17', stream: 'alg', grade: 8, quarter: 2, lessons: '40–41', hours: 2,
+  title: 'Basic properties of numerical inequalities',
+  subtitle: 'What you may do to both sides — and the one operation that turns the sign around.',
+  uz: 'Algebra 8, §12', uzPage: '§12, pp. 71–74',
+  cam: 'Stage 9 · 4.3', camPage: 'Learner’s Book pp. 96–102', wb: 'Workbook 4.3',
+  objectives: [
+    'State the four basic properties of inequalities.',
+    'Multiply or divide by a negative number and reverse the sign.',
+    'Use transitivity to chain comparisons.',
+    'Decide which operations preserve an inequality and which do not.'
+  ],
+  terms: [
+    ['Property of an inequality', 'Tengsizlik xossasi', 'Свойство неравенства'],
+    ['Transitivity', 'Tranzitivlik', 'Транзитивность'],
+    ['Reverse the sign', 'Ishorani almashtirish', 'Изменить знак на противоположный'],
+    ['Both sides', 'Ikkala tomon', 'Обе части'],
+    ['Multiply by', 'Ko‘paytirish', 'Умножить на'],
+    ['Divide by', 'Bo‘lish', 'Разделить на'],
+    ['Preserve', 'Saqlanadi', 'Сохраняется'],
+    ['Equivalent inequality', 'Teng kuchli tengsizlik', 'Равносильное неравенство']
+  ],
+  sections: [
+    {
+      h: 'The four properties',
+      html: `<div class="keybox"><div class="klabel">For any numbers a, b, c</div>
+      <ol style="margin:0">
+        <li><b>Transitivity.</b> If ${m('a > b')} and ${m('b > c')} then ${m('a > c')}.</li>
+        <li><b>Adding.</b> If ${m('a > b')} then ${m('a + c > b + c')} — for <b>any</b> ${m('c')},
+        positive or negative.</li>
+        <li><b>Multiplying by a positive number.</b> If ${m('a > b')} and ${m('c > 0')} then
+        ${m('ac > bc')}.</li>
+        <li><b>Multiplying by a negative number.</b> If ${m('a > b')} and ${m('c < 0')} then
+        ${m('ac < bc')} — <b>the sign reverses</b>.</li>
+      </ol></div>
+      <p>Property 2 is why you may move a term from one side to the other, changing its sign, exactly as
+      in an equation. Property 4 is the one thing an inequality does that an equation does not.</p>`
+    },
+    {
+      h: 'Why the sign reverses',
+      html: `<p>Take ${m('3 > 2')}, which is certainly true, and multiply both sides by ${m('−1')}:</p>
+      ${eq(m('−3') + ' &nbsp;and&nbsp; ' + m('−2'))}
+      <p>On the number line ${m('−3')} sits to the <b>left</b> of ${m('−2')}, so ${m('−3 < −2')}. The
+      order has turned round. Multiplying by a negative number reflects both numbers through 0, and
+      reflection swaps left and right.</p>
+      <div class="warn"><span class="wl">The rule that costs the most marks all year</span>
+      From ${m('−2x > 6')} you get ${m('x < −3')}, not ${m('x > −3')}. Dividing by ${m('−2')} reverses
+      the sign. Write the new sign <b>first</b>, then do the arithmetic.</div>`
+    },
+    {
+      h: 'Two consequences worth knowing',
+      html: `<ul>
+        <li><b>Reciprocals.</b> If ${m('a > b > 0')} then ${m(f('1', 'a') + ' < ' + f('1', 'b'))}.
+        Bigger denominator, smaller fraction.</li>
+        <li><b>Squares.</b> If ${m('a > b > 0')} then ${m('a<sup>2</sup> > b<sup>2</sup>')}. But this
+        needs both numbers positive: ${m('−5 > −7')} while ${m('25 < 49')}.</li>
+      </ul>
+      <div class="keybox"><div class="klabel">A quick test to build the habit</div>
+      Before applying any step, ask: “am I multiplying or dividing by something negative?” If yes, the
+      sign turns. If no, it stays.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: m('Given a > b, compare 3a − 5 and 3b − 5'),
+      steps: [
+        [m('a > b'), 'Given.'],
+        [m('3a > 3b'), 'Multiply by 3, which is positive — sign unchanged.'],
+        [m('3a − 5 > 3b − 5'), 'Subtract 5 from both sides — sign unchanged.']
+      ],
+      ans: m('3a − 5 > 3b − 5')
+    },
+    {
+      q: m('Given a > b, compare −2a and −2b'),
+      steps: [
+        [m('a > b'), 'Given.'],
+        ['Multiplying by ' + m('−2') + ', a negative number.', 'Property 4 applies.'],
+        [m('−2a < −2b'), 'The sign reverses.']
+      ],
+      ans: m('−2a < −2b')
+    },
+    {
+      q: m('Given 2 < x < 5, find the range of 3 − 2x'),
+      steps: [
+        [m('2 < x < 5'), 'Given.'],
+        [m('−4 > −2x > −10'), 'Multiply throughout by ' + m('−2') + ' — both signs reverse.'],
+        [m('−10 < −2x < −4'), 'Rewrite the smaller number on the left.'],
+        [m('−7 < 3 − 2x < −1'), 'Add 3 throughout — signs unchanged.']
+      ],
+      ans: m('−7 < 3 − 2x < −1')
+    }
+  ],
+  modelNote: 'Use the flip button to show that the same boundary gives two different solution sets.',
+  interactive: { type: 'inequalityLine', title: 'Which side, and is the end included?' },
+  quiz: [
+    { q: 'From ' + m('a > b') + ' it follows that:', a: [m('a + 5 > b + 5'), m('a + 5 < b + 5'), m('a − 5 < b − 5'), 'nothing'], c: 0, why: 'Adding the same number to both sides never changes the sign.' },
+    { q: 'From ' + m('a > b') + ' and ' + m('c < 0') + ' it follows that:', a: [m('ac > bc'), m('ac < bc'), m('ac = bc'), 'nothing'], c: 1, why: 'Multiplying by a negative number reverses the inequality.' },
+    { q: m('−3x > 12') + ' gives:', a: [m('x > −4'), m('x < −4'), m('x > 4'), m('x < 4')], c: 1, why: 'Divide by −3 and reverse: x < −4.' },
+    { q: 'If ' + m('a > b > 0') + ' then:', a: [m(f('1', 'a') + ' > ' + f('1', 'b')), m(f('1', 'a') + ' < ' + f('1', 'b')), m(f('1', 'a') + ' = ' + f('1', 'b')), 'it depends'], c: 1, why: 'A bigger positive denominator gives a smaller fraction.' }
+  ],
+  practice: {
+    easy: [
+      [m('a > b. Compare a + 4 and b + 4'), m('a + 4 > b + 4')],
+      [m('a > b. Compare a − 7 and b − 7'), m('a − 7 > b − 7')],
+      [m('a > b. Compare 5a and 5b'), m('5a > 5b')],
+      [m('a > b. Compare −a and −b'), m('−a < −b')],
+      [m('Solve −x > 3'), m('x < −3')],
+      [m('Solve 2x > 8'), m('x > 4')],
+      [m('Solve −2x ≥ 10'), m('x ≤ −5')]
+    ],
+    med: [
+      [m('a > b. Compare 3a − 5 and 3b − 5'), m('3a − 5 > 3b − 5')],
+      [m('a > b. Compare −2a + 1 and −2b + 1'), m('−2a + 1 < −2b + 1')],
+      [m('a > b > 0. Compare ' + f('1', 'a') + ' and ' + f('1', 'b')), m(f('1', 'a') + ' < ' + f('1', 'b'))],
+      [m('a > b > 0. Compare a<sup>2</sup> and b<sup>2</sup>'), m('a<sup>2</sup> > b<sup>2</sup>')],
+      [m('Solve −4x + 3 < 11'), m('x > −2')],
+      [m('2 < x < 5. Find the range of 2x + 1'), m('5 < 2x + 1 < 11')],
+      [m('Solve ' + f('x', '−3') + ' > 2'), m('x < −6')]
+    ],
+    hard: [
+      [m('2 < x < 5. Find the range of 3 − 2x'), m('−7 < 3 − 2x < −1')],
+      [m('−1 < x < 4. Find the range of 5 − x'), m('1 < 5 − x < 6')],
+      [m('a > b. Is it always true that a<sup>2</sup> > b<sup>2</sup>? Give a counter-example.'), 'No — ' + m('−5 > −7') + ' but ' + m('25 < 49') + '. It needs ' + m('a > b > 0') + '.'],
+      [m('a > b and c > d. Prove a + c > b + d'), m('a + c > b + c') + ' and ' + m('b + c > b + d') + ', then transitivity.'],
+      [m('3 < x < 7 and 1 < y < 2. Find the range of x − y'), m('1 < x − y < 6')],
+      [m('a > b > 0. Compare ' + f('a', 'b') + ' and 1'), m(f('a', 'b') + ' > 1') + ' — divide ' + m('a > b') + ' by the positive number ' + m('b') + '.'],
+      [m('Solve 5 − 3x ≤ 2x − 10'), m('15 ≤ 5x') + ', so ' + m('x ≥ 3')]
+    ]
+  },
+  hwTitle: 'Homework — 6 problems',
+  hwNote: 'Algebra 8, §12, pp. 71–74. Say out loud whether the sign turns before you write each line.',
+  homework: [
+    m('a > b. Compare 4a + 3 and 4b + 3'),
+    m('a > b. Compare −5a and −5b'),
+    m('Solve −3x + 2 > 14'),
+    m('1 < x < 6. Find the range of 4 − x'),
+    m('a > b > 0. Compare ' + f('2', 'a') + ' and ' + f('2', 'b')),
+    m('Give a counter-example to “a > b implies a<sup>2</sup> > b<sup>2</sup>”')
+  ]
+});
+
+/* ============================== 18 ============================== */
+G8_ALG.push({
+  id: 'alg-18', stream: 'alg', grade: 8, quarter: 2, lessons: '42–43', hours: 2,
+  title: 'Adding and multiplying inequalities',
+  subtitle: 'Two inequalities pointing the same way can be added — and, when everything is positive, multiplied.',
+  uz: 'Algebra 8, §13', uzPage: '§13, pp. 75–79',
+  cam: 'Stage 9 · beyond', camPage: 'Extension beyond Stage 9', wb: '—',
+  objectives: [
+    'Add two inequalities of the same direction.',
+    'Multiply two inequalities of the same direction when all terms are positive.',
+    'Estimate the range of a sum, difference, product or quotient.',
+    'Explain why inequalities may not be subtracted or divided term by term.'
+  ],
+  terms: [
+    ['Add inequalities', 'Tengsizliklarni qo‘shish', 'Сложение неравенств'],
+    ['Multiply inequalities', 'Tengsizliklarni ko‘paytirish', 'Умножение неравенств'],
+    ['Same direction', 'Bir xil yo‘nalish', 'Одинаковый знак'],
+    ['Estimate', 'Baholash', 'Оценить'],
+    ['Range', 'Oraliq', 'Промежуток'],
+    ['Lower bound', 'Quyi chegara', 'Нижняя граница'],
+    ['Upper bound', 'Yuqori chegara', 'Верхняя граница'],
+    ['Term by term', 'Hadma-had', 'Почленно']
+  ],
+  sections: [
+    {
+      h: 'Adding',
+      html: `<div class="keybox"><div class="klabel">Rule</div>
+      If ${m('a > b')} and ${m('c > d')} then ${m('a + c > b + d')}.</div>
+      <p>Inequalities pointing the <b>same way</b> may be added term by term. The proof is two steps of
+      the last lesson: ${m('a + c > b + c')} (add ${m('c')}) and ${m('b + c > b + d')} (add ${m('b')}),
+      then transitivity.</p>
+      <div class="warn"><span class="wl">You may not subtract them</span>
+      From ${m('5 > 3')} and ${m('10 > 1')} subtracting term by term would give ${m('−5 > 2')}, which is
+      false. To handle a difference, reverse the second inequality first and then add:
+      ${m('c > d')} becomes ${m('−c < −d')}.</div>`
+    },
+    {
+      h: 'Multiplying',
+      html: `<div class="keybox"><div class="klabel">Rule</div>
+      If ${m('a > b > 0')} and ${m('c > d > 0')} then ${m('ac > bd')}.</div>
+      <p>All four numbers must be <b>positive</b>. Drop that condition and the rule collapses:
+      ${m('2 > −5')} and ${m('3 > −4')}, but ${m('6')} is not greater than ${m('20')}.</p>
+      <p>Nor may you divide term by term — invert the second inequality and multiply instead.</p>`
+    },
+    {
+      h: 'Estimating a range',
+      html: `<p>This is what the rules are for. Given ${m('3 < a < 5')} and ${m('2 < b < 4')}:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Working</th><th>Range</th></tr></thead>
+      <tbody>
+        <tr><td>${m('a + b')}</td><td>add the two ranges</td><td>${m('5 < a + b < 9')}</td></tr>
+        <tr><td>${m('a − b')}</td><td>reverse b: ${m('−4 < −b < −2')}, then add</td><td>${m('−1 < a − b < 3')}</td></tr>
+        <tr><td>${m('ab')}</td><td>multiply (all positive)</td><td>${m('6 < ab < 20')}</td></tr>
+        <tr><td>${m(f('a', 'b'))}</td><td>reverse b: ${m(f('1', '4') + ' < ' + f('1', 'b') + ' < ' + f('1', '2'))}, then multiply</td><td>${m(f('3', '4') + ' < ' + f('a', 'b') + ' < ' + f('5', '2'))}</td></tr>
+      </tbody></table></div>
+      <p>The pattern for a difference or a quotient is always the same: <b>turn the second range round
+      first</b>, then use the rule you are allowed to use.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: m('Given 3 < a < 5 and 2 < b < 4, find the range of a + b'),
+      steps: [
+        [m('3 < a < 5'), 'First range.'],
+        [m('2 < b < 4'), 'Second range, same direction.'],
+        [m('3 + 2 < a + b < 5 + 4'), 'Add the ends.'],
+        [m('5 < a + b < 9'), '']
+      ],
+      ans: m('5 < a + b < 9')
+    },
+    {
+      q: m('Given 3 < a < 5 and 2 < b < 4, find the range of a − b'),
+      steps: [
+        [m('2 < b < 4'), 'Start from b.'],
+        [m('−4 < −b < −2'), 'Multiply by ' + m('−1') + ' — both signs reverse.'],
+        [m('3 − 4 < a − b < 5 − 2'), 'Now add.'],
+        [m('−1 < a − b < 3'), '']
+      ],
+      ans: m('−1 < a − b < 3')
+    },
+    {
+      q: m('Given 2 < x < 6 and 1 < y < 3, find the range of ' + f('x', 'y')),
+      steps: [
+        [m('1 < y < 3'), ''],
+        [m(f('1', '3') + ' < ' + f('1', 'y') + ' < 1'), 'Take reciprocals — the direction reverses.'],
+        [m('2 · ' + f('1', '3') + ' < ' + f('x', 'y') + ' < 6 · 1'), 'Multiply, all terms positive.'],
+        [m(f('2', '3') + ' < ' + f('x', 'y') + ' < 6'), '']
+      ],
+      ans: m(f('2', '3') + ' < ' + f('x', 'y') + ' < 6')
+    }
+  ],
+  modelNote: 'Set two boundaries and let the class predict the range of the sum before you show it.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'Estimating a range',
+    hint: 'Given two ranges, which rule applies — and does anything need reversing?',
+    items: [
+      {
+        title: 'a + b, given 3 < a < 5 and 2 < b < 4',
+        start: m('3 < a < 5') + ' and ' + m('2 < b < 4'),
+        steps: [
+          ['Both point the same way, so they may simply be added.', ''],
+          [m('3 + 2 = 5') + ' and ' + m('5 + 4 = 9'), 'Add matching ends.'],
+          [m('5 < a + b < 9'), '']
+        ],
+        answer: m('5 < a + b < 9')
+      },
+      {
+        title: 'a − b, same ranges',
+        start: m('3 < a < 5') + ' and ' + m('2 < b < 4'),
+        steps: [
+          ['A difference is not allowed directly — reverse b first.', ''],
+          [m('−4 < −b < −2'), 'Multiply by ' + m('−1') + '; both ends swap and change sign.'],
+          [m('3 − 4 < a − b < 5 − 2'), 'Now it is an addition.'],
+          [m('−1 < a − b < 3'), 'Note the range can now include negatives.']
+        ],
+        answer: m('−1 < a − b < 3')
+      },
+      {
+        title: 'ab, same ranges',
+        start: m('3 < a < 5') + ' and ' + m('2 < b < 4'),
+        steps: [
+          ['All four numbers are positive, so multiplication is allowed.', 'Check this first, every time.'],
+          [m('3 · 2 = 6') + ' and ' + m('5 · 4 = 20'), ''],
+          [m('6 < ab < 20'), '']
+        ],
+        answer: m('6 < ab < 20')
+      },
+      {
+        title: 'a / b, same ranges',
+        start: m('3 < a < 5') + ' and ' + m('2 < b < 4'),
+        steps: [
+          ['A quotient is not allowed directly — take reciprocals of b.', ''],
+          [m(f('1', '4') + ' < ' + f('1', 'b') + ' < ' + f('1', '2')), 'Reciprocals of positives reverse the direction.'],
+          [m('3 · ' + f('1', '4') + ' < ' + f('a', 'b') + ' < 5 · ' + f('1', '2')), 'Now multiply.'],
+          [m(f('3', '4') + ' < ' + f('a', 'b') + ' < ' + f('5', '2')), '']
+        ],
+        answer: m(f('3', '4') + ' < ' + f('a', 'b') + ' < ' + f('5', '2'))
+      }
+    ]
+  },
+  quiz: [
+    { q: 'From ' + m('a > b') + ' and ' + m('c > d') + ' it follows that:', a: [m('a + c > b + d'), m('a − c > b − d'), m('ac > bd'), 'nothing'], c: 0, why: 'Adding is always allowed for inequalities of the same direction.' },
+    { q: 'Multiplying two inequalities term by term needs:', a: ['nothing extra', 'all terms positive', 'all terms whole numbers', 'the same direction only'], c: 1, why: '2 > −5 and 3 > −4, yet 6 < 20.' },
+    { q: 'If ' + m('2 < a < 6') + ' then ' + m('−a') + ' satisfies:', a: [m('−2 < −a < −6'), m('−6 < −a < −2'), m('2 < −a < 6'), m('−6 < −a < 6')], c: 1, why: 'Both ends change sign and swap places.' },
+    { q: 'If ' + m('1 < b < 4') + ' then ' + m(f('1', 'b')) + ' satisfies:', a: [m(f('1', '4') + ' < ' + f('1', 'b') + ' < 1'), m('1 < ' + f('1', 'b') + ' < 4'), m(f('1', '4') + ' < ' + f('1', 'b') + ' < ' + f('1', '4')), 'it cannot be found'], c: 0, why: 'Reciprocals of positive numbers reverse the order.' }
+  ],
+  practice: {
+    easy: [
+      [m('1 < a < 3 and 2 < b < 5. Find the range of a + b'), m('3 < a + b < 8')],
+      [m('0 < a < 2 and 1 < b < 4. Find the range of a + b'), m('1 < a + b < 6')],
+      [m('2 < a < 4. Find the range of −a'), m('−4 < −a < −2')],
+      [m('1 < a < 5. Find the range of 2a'), m('2 < 2a < 10')],
+      [m('1 < a < 3 and 2 < b < 4. Find the range of ab'), m('2 < ab < 12')],
+      [m('3 < a < 6. Find the range of a + 10'), m('13 < a + 10 < 16')],
+      [m('May two inequalities of the same direction be added?'), 'Yes.']
+    ],
+    med: [
+      [m('3 < a < 5 and 2 < b < 4. Find the range of a + b'), m('5 < a + b < 9')],
+      [m('3 < a < 5 and 2 < b < 4. Find the range of a − b'), m('−1 < a − b < 3')],
+      [m('3 < a < 5 and 2 < b < 4. Find the range of ab'), m('6 < ab < 20')],
+      [m('1 < b < 4. Find the range of ' + f('1', 'b')), m(f('1', '4') + ' < ' + f('1', 'b') + ' < 1')],
+      [m('2 < x < 6 and 1 < y < 3. Find the range of ' + f('x', 'y')), m(f('2', '3') + ' < ' + f('x', 'y') + ' < 6')],
+      [m('Show that 5 > 3 and 10 > 1 cannot be subtracted term by term'), 'It would give ' + m('−5 > 2') + ', which is false.'],
+      [m('1 < a < 2 and 3 < b < 5. Find the range of 2a + b'), m('5 < 2a + b < 9')]
+    ],
+    hard: [
+      [m('2 < a < 4 and 1 < b < 3. Find the range of a<sup>2</sup> − b'), m('4 < a<sup>2</sup> < 16') + ' and ' + m('−3 < −b < −1') + ', so ' + m('1 < a<sup>2</sup> − b < 15')],
+      [m('The sides of a rectangle satisfy 3 < a < 5 and 4 < b < 6. Estimate the perimeter.'), m('14 < P < 22')],
+      [m('The same rectangle: estimate the area.'), m('12 < S < 30')],
+      [m('Give a counter-example to “a > b and c > d implies ac > bd”.'), m('2 > −5') + ' and ' + m('3 > −4') + ', but ' + m('6 < 20') + '.'],
+      [m('1 < x < 3. Find the range of ' + f('1', 'x + 1')), m('2 < x + 1 < 4') + ', so ' + m(f('1', '4') + ' < ' + f('1', 'x + 1') + ' < ' + f('1', '2'))],
+      [m('2 < a < 3 and 4 < b < 5. Find the range of ' + f('b', 'a')), m(f('1', '3') + ' < ' + f('1', 'a') + ' < ' + f('1', '2')) + ', so ' + m(f('4', '3') + ' < ' + f('b', 'a') + ' < ' + f('5', '2'))],
+      [m('0 < a < 1. Compare a<sup>2</sup> with a.'), m('a<sup>2</sup> < a') + ' — multiplying ' + m('a < 1') + ' by the positive number ' + m('a') + '.']
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Algebra 8, §13, pp. 75–79. Reverse the second range before any difference or quotient.',
+  homework: [
+    m('4 < a < 7 and 1 < b < 3. Find the range of a + b'),
+    m('4 < a < 7 and 1 < b < 3. Find the range of a − b'),
+    m('4 < a < 7 and 1 < b < 3. Find the range of ab'),
+    m('4 < a < 7 and 1 < b < 3. Find the range of ' + f('a', 'b')),
+    m('A rectangle has 2 < a < 4 and 5 < b < 7. Estimate its perimeter and its area.')
+  ]
+});
+
+/* ============================== 19 ============================== */
+G8_ALG.push({
+  id: 'alg-19', stream: 'alg', grade: 8, quarter: 2, lessons: '44–46', hours: 3,
+  title: 'Raising a numerical inequality to a power',
+  subtitle: 'Squaring, cubing and taking roots — safe when both sides are positive, and full of traps when they are not.',
+  uz: 'Algebra 8, §14', uzPage: '§14, pp. 80–84',
+  cam: 'Stage 9 · beyond', camPage: 'Extension beyond Stage 9', wb: '—',
+  objectives: [
+    'Raise both sides of an inequality to a natural power correctly.',
+    'Take roots of both sides of an inequality.',
+    'Use these rules to estimate the range of a square or a root.',
+    'Give counter-examples when the positivity condition is dropped.'
+  ],
+  terms: [
+    ['Raise to a power', 'Darajaga ko‘tarish', 'Возведение в степень'],
+    ['Take the root', 'Ildiz chiqarish', 'Извлечь корень'],
+    ['Even power', 'Juft daraja', 'Чётная степень'],
+    ['Odd power', 'Toq daraja', 'Нечётная степень'],
+    ['Positive numbers', 'Musbat sonlar', 'Положительные числа'],
+    ['Condition', 'Shart', 'Условие'],
+    ['Counter-example', 'Qarshi misol', 'Контрпример'],
+    ['Monotonic', 'Monoton', 'Монотонный']
+  ],
+  sections: [
+    {
+      h: 'The two rules',
+      html: `<div class="keybox"><div class="klabel">For positive numbers</div>
+      If ${m('a > b > 0')} and ${m('n')} is a natural number, then
+      ${eq(m('a<sup>n</sup> > b<sup>n</sup>') + ' &nbsp;&nbsp;and&nbsp;&nbsp; ' +
+           m(sr('<sup>n</sup>&nbsp;a') + ' > ' + sr('<sup>n</sup>&nbsp;b')))}</div>
+      <p>Both operations preserve the order — as long as both sides are positive. Squaring
+      ${m('5 > 3')} gives ${m('25 > 9')} ✓; taking square roots of ${m('16 > 9')} gives ${m('4 > 3')} ✓.</p>`
+    },
+    {
+      h: 'What goes wrong without the condition',
+      html: `<div class="warn"><span class="wl">An even power destroys the order</span>
+      ${m('−2 > −5')} is true, but ${m('(−2)<sup>2</sup> = 4')} and ${m('(−5)<sup>2</sup> = 25')}, so
+      ${m('4 < 25')}. Squaring turned the inequality round.</div>
+      <p>The reason is that an even power throws away the sign. An <b>odd</b> power keeps it, so cubing
+      is safe for all numbers: ${m('−2 > −5')} gives ${m('−8 > −125')} ✓.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Operation</th><th>Safe when</th><th>Example of failure</th></tr></thead>
+      <tbody>
+        <tr><td>square, 4th power…</td><td>both sides positive</td><td>${m('−2 > −5')} but ${m('4 < 25')}</td></tr>
+        <tr><td>cube, 5th power…</td><td>always</td><td>—</td></tr>
+        <tr><td>square root</td><td>both sides ≥ 0</td><td>root of a negative does not exist</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Using the rules to estimate',
+      html: `<p>Given ${m('3 < a < 5')}, all positive, so squaring is safe:</p>
+      ${eq(m('9 < a<sup>2</sup> < 25'), true)}
+      <p>But given ${m('−3 < a < 2')} you cannot square the ends. Think about what ${m('a<sup>2</sup>')}
+      actually does on that interval: it is 0 at ${m('a = 0')} and largest at the end furthest from 0,
+      which is ${m('−3')}. So ${m('0 ≤ a<sup>2</sup> < 9')}.</p>
+      <div class="keybox"><div class="klabel">The habit to build</div>
+      Before squaring an interval, ask whether it contains 0. If it does, the smallest value of
+      ${m('a<sup>2</sup>')} is 0 — not the square of either end.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: m('Given 2 < a < 6, find the range of a<sup>2</sup>'),
+      steps: [
+        ['Both ends are positive, so squaring keeps the order.', 'Check this first.'],
+        [m('2<sup>2</sup> = 4') + ' and ' + m('6<sup>2</sup> = 36'), ''],
+        [m('4 < a<sup>2</sup> < 36'), '']
+      ],
+      ans: m('4 < a<sup>2</sup> < 36')
+    },
+    {
+      q: m('Given −4 < a < 3, find the range of a<sup>2</sup>'),
+      steps: [
+        ['The interval contains 0, so the ends may not simply be squared.', ''],
+        [m('a<sup>2</sup> = 0') + ' at ' + m('a = 0'), 'That is the smallest value.'],
+        ['The end furthest from 0 is ' + m('−4') + ', giving ' + m('16') + '.', 'That is the largest — but not attained.'],
+        [m('0 ≤ a<sup>2</sup> < 16'), 'Note the ≤ on the left.']
+      ],
+      ans: m('0 ≤ a<sup>2</sup> < 16')
+    },
+    {
+      q: m('Given 4 < a < 9, find the range of ' + sr('a')),
+      steps: [
+        ['Both ends positive, so the root keeps the order.', ''],
+        [m(sr('4') + ' = 2') + ' and ' + m(sr('9') + ' = 3'), ''],
+        [m('2 < ' + sr('a') + ' < 3'), '']
+      ],
+      ans: m('2 < ' + sr('a') + ' < 3')
+    }
+  ],
+  modelNote: 'Set the boundary either side of zero and ask what happens to the square of the interval.',
+  interactive: { type: 'inequalityLine', title: 'Does the interval contain zero?' },
+  quiz: [
+    { q: 'From ' + m('a > b > 0') + ' it follows that:', a: [m('a<sup>2</sup> > b<sup>2</sup>'), m('a<sup>2</sup> < b<sup>2</sup>'), m('a<sup>2</sup> = b<sup>2</sup>'), 'nothing'], c: 0, why: 'Both sides positive, so an even power is safe.' },
+    { q: m('−2 > −5') + '. Squaring gives:', a: [m('4 > 25'), m('4 < 25'), m('4 = 25'), 'the same inequality'], c: 1, why: 'An even power destroys the sign and can reverse the order.' },
+    { q: 'Cubing an inequality is safe:', a: ['only for positives', 'for all numbers', 'never', 'only for whole numbers'], c: 1, why: 'An odd power keeps the sign, so the order survives.' },
+    { q: 'If ' + m('−3 < a < 2') + ' then ' + m('a<sup>2</sup>') + ' satisfies:', a: [m('9 < a<sup>2</sup> < 4'), m('0 ≤ a<sup>2</sup> < 9'), m('4 < a<sup>2</sup> < 9'), m('−9 < a<sup>2</sup> < 4')], c: 1, why: 'The interval contains 0, so the smallest square is 0.' }
+  ],
+  practice: {
+    easy: [
+      [m('5 > 3. Square both sides.'), m('25 > 9')],
+      [m('7 > 2. Cube both sides.'), m('343 > 8')],
+      [m('16 > 9. Take square roots.'), m('4 > 3')],
+      [m('1 < a < 4. Find the range of a<sup>2</sup>'), m('1 < a<sup>2</sup> < 16')],
+      [m('9 < a < 25. Find the range of ' + sr('a')), m('3 < ' + sr('a') + ' < 5')],
+      [m('Is squaring safe for a > b > 0?'), 'Yes.'],
+      [m('Is cubing safe for negative numbers?'), 'Yes — an odd power keeps the sign.']
+    ],
+    med: [
+      [m('2 < a < 6. Find the range of a<sup>2</sup>'), m('4 < a<sup>2</sup> < 36')],
+      [m('4 < a < 9. Find the range of ' + sr('a')), m('2 < ' + sr('a') + ' < 3')],
+      [m('1 < a < 2. Find the range of a<sup>3</sup>'), m('1 < a<sup>3</sup> < 8')],
+      [m('−5 < a < −2. Find the range of a<sup>2</sup>'), m('4 < a<sup>2</sup> < 25')],
+      [m('−5 < a < −2. Find the range of a<sup>3</sup>'), m('−125 < a<sup>3</sup> < −8')],
+      [m('Show that −2 > −5 but (−2)<sup>2</sup> < (−5)<sup>2</sup>'), m('4 < 25') + ' — squaring reversed it.'],
+      [m('3 < a < 4. Find the range of ' + f('1', 'a<sup>2</sup>')), m(f('1', '16') + ' < ' + f('1', 'a<sup>2</sup>') + ' < ' + f('1', '9'))]
+    ],
+    hard: [
+      [m('−4 < a < 3. Find the range of a<sup>2</sup>'), m('0 ≤ a<sup>2</sup> < 16')],
+      [m('−1 < a < 5. Find the range of a<sup>2</sup>'), m('0 ≤ a<sup>2</sup> < 25')],
+      [m('2 < a < 3. Find the range of a<sup>2</sup> + a'), m('4 < a<sup>2</sup> < 9') + ', so ' + m('6 < a<sup>2</sup> + a < 12')],
+      [m('The side of a square satisfies 4 < a < 6. Estimate its area and perimeter.'), m('16 < S < 36') + ', ' + m('16 < P < 24')],
+      [m('Compare ' + sr('5') + ' and 2.3 without a calculator.'), m('2.3<sup>2</sup> = 5.29 > 5') + ', so ' + m(sr('5') + ' < 2.3')],
+      [m('0 < a < 1. Compare a<sup>3</sup>, a<sup>2</sup> and a.'), m('a<sup>3</sup> < a<sup>2</sup> < a') + ' — each multiplication by ' + m('a < 1') + ' makes it smaller.'],
+      [m('Given 1 < a < 4, find the range of ' + sr('a') + ' + a'), m('1 < ' + sr('a') + ' < 2') + ', so ' + m('2 < ' + sr('a') + ' + a < 6')]
+    ]
+  },
+  hwTitle: 'Homework — 6 problems',
+  hwNote: 'Algebra 8, §14, pp. 80–84. Check for zero inside the interval before squaring.',
+  homework: [
+    m('3 < a < 7. Find the range of a<sup>2</sup>'),
+    m('1 < a < 8. Find the range of ' + sr('<sup>3</sup>&nbsp;a')),
+    m('−6 < a < 2. Find the range of a<sup>2</sup>'),
+    m('−3 < a < −1. Find the range of a<sup>3</sup>'),
+    m('Compare ' + sr('7') + ' and 2.6 without a calculator'),
+    m('The side of a square satisfies 5 < a < 8. Estimate its area.')
+  ]
+});
+
+/* ============================== 20 ============================== */
+G8_ALG.push({
+  id: 'alg-20', stream: 'alg', grade: 8, quarter: 2, lessons: '47–48', hours: 2,
+  title: 'Control work 4 · Numerical inequalities',
+  subtitle: 'The Chapter II assessment on properties, adding, multiplying and powers — and the mistakes lesson that follows.',
+  uz: 'Algebra 8, §§11–14', uzPage: 'Revision of §§11–14',
+  cam: 'Stage 9 · 4.3', camPage: 'Learner’s Book pp. 96–102', wb: 'Workbook 4.3',
+  objectives: [
+    'Assess the definition, the four properties, adding, multiplying and powers.',
+    'Sort every lost mark into one of four error types.',
+    'Re-solve every task that was lost.'
+  ],
+  timing: [[2, 'Setting up'], [36, 'The paper'], [2, 'Collect in']],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Work on mistakes', 'Xatolar ustida ishlash', 'Работа над ошибками'],
+    ['Estimate a range', 'Oraliqni baholash', 'Оценить промежуток'],
+    ['Reverse the sign', 'Ishorani almashtirish', 'Изменить знак неравенства'],
+    ['Counter-example', 'Qarshi misol', 'Контрпример'],
+    ['Prove', 'Isbotlash', 'Доказать'],
+    ['Condition', 'Shart', 'Условие']
+  ],
+  sections: [
+    {
+      h: 'Lesson 47 — the paper (40 minutes)',
+      html: `<p>Two variants of seven tasks, 2 marks each:</p>
+      <ul>
+        <li>task 1 · compare two numbers by the difference (§11)</li>
+        <li>task 2 · a property applied to ${m('a > b')} (§12)</li>
+        <li>task 3 · solve a one-step inequality with a negative coefficient (§12)</li>
+        <li>tasks 4–5 · estimate a sum, difference, product or quotient (§13)</li>
+        <li>task 6 · estimate a square or a root (§14)</li>
+        <li>task 7 · prove an inequality using a square (§11)</li>
+      </ul>`
+    },
+    {
+      h: 'Lesson 48 — work on mistakes (40 minutes)',
+      html: `<div class="keybox"><div class="klabel">The four errors this paper produces</div>
+      <ol style="margin:0">
+        <li><b>The sign not reversed</b> after dividing by a negative number.</li>
+        <li><b>Inequalities subtracted or divided term by term.</b></li>
+        <li><b>An interval containing zero squared end to end</b>, losing the value 0.</li>
+        <li><b>The positivity condition ignored</b> when multiplying or squaring.</li>
+      </ol></div>
+      <p>The Hard set below is seven pieces of wrong working drawn from these four.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the error: ' + m('−2x > 8, so x > −4'),
+      steps: [
+        ['Dividing by ' + m('−2') + ' — a negative number.', 'Property 4 applies.'],
+        ['The sign must reverse.', ''],
+        [m('x < −4'), 'Check: ' + m('x = −5') + ' gives ' + m('10 > 8') + ' ✓']
+      ],
+      ans: m('x < −4')
+    },
+    {
+      q: 'Find the error: ' + m('−3 < a < 2, so 9 < a² < 4'),
+      steps: [
+        ['The written range is impossible — 9 is not less than 4.', 'That alone signals an error.'],
+        ['The interval contains 0, so the ends may not be squared directly.', ''],
+        [m('a<sup>2</sup> = 0') + ' at ' + m('a = 0') + '; the largest comes from ' + m('−3') + '.', ''],
+        [m('0 ≤ a<sup>2</sup> < 9'), '']
+      ],
+      ans: m('0 ≤ a<sup>2</sup> < 9')
+    }
+  ],
+  modelNote: 'Lesson 48: show each piece of wrong working, vote on the error type, then reveal.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'Diagnose the error',
+    hint: 'Which of the four errors is this?',
+    items: [
+      {
+        title: 'Error 1 — the sign not reversed',
+        start: '<b>Claimed:</b> ' + m('−2x > 8 ⟹ x > −4'),
+        steps: [
+          ['Dividing by ' + m('−2') + ' is dividing by a negative number.', ''],
+          ['So the inequality sign turns: ' + m('x < −4') + '.', ''],
+          ['Test ' + m('x = −5') + ': ' + m('−2(−5) = 10 > 8') + ' ✓, and ' + m('−5 < −4') + ' ✓.', 'The test settles it.']
+        ],
+        answer: m('x < −4')
+      },
+      {
+        title: 'Error 2 — inequalities subtracted',
+        start: '<b>Claimed:</b> from ' + m('5 > 3') + ' and ' + m('10 > 1') + ', ' + m('5 − 10 > 3 − 1'),
+        steps: [
+          ['That would say ' + m('−5 > 2') + ', which is false.', ''],
+          ['Only <b>addition</b> works term by term.', ''],
+          ['To handle a difference, reverse the second: ' + m('10 > 1') + ' becomes ' + m('−10 < −1') + '.', ''],
+          ['Then add: ' + m('5 − 10 < 3 − 1') + ', i.e. ' + m('−5 < 2') + ' ✓.', '']
+        ],
+        answer: 'Reverse the second inequality, then add.'
+      },
+      {
+        title: 'Error 3 — squaring across zero',
+        start: '<b>Claimed:</b> ' + m('−3 < a < 2 ⟹ 9 < a<sup>2</sup> < 4'),
+        steps: [
+          ['The answer is self-contradictory — 9 is not below 4.', 'A useful alarm bell.'],
+          ['The interval contains 0, where ' + m('a<sup>2</sup> = 0') + '.', 'That is the minimum.'],
+          ['The maximum comes from the end furthest from 0, ' + m('a = −3') + '.', ''],
+          [m('0 ≤ a<sup>2</sup> < 9'), '']
+        ],
+        answer: m('0 ≤ a<sup>2</sup> < 9')
+      },
+      {
+        title: 'Error 4 — positivity ignored',
+        start: '<b>Claimed:</b> from ' + m('2 > −5') + ' and ' + m('3 > −4') + ', ' + m('2 · 3 > (−5)(−4)'),
+        steps: [
+          ['Multiplying term by term needs <b>all four numbers positive</b>.', ''],
+          ['Here two of them are negative.', ''],
+          [m('6') + ' and ' + m('20') + ': in fact ' + m('6 < 20') + '.', 'The claim is false.']
+        ],
+        answer: 'The rule does not apply — all terms must be positive.'
+      }
+    ]
+  },
+  quiz: [
+    { q: m('−5x ≥ 20') + ' gives:', a: [m('x ≥ −4'), m('x ≤ −4'), m('x ≥ 4'), m('x ≤ 4')], c: 1, why: 'Divide by −5 and reverse the sign.' },
+    { q: 'From ' + m('a > b') + ' and ' + m('c > d') + ', which is guaranteed?', a: [m('a − c > b − d'), m('a + c > b + d'), m('ac > bd'), m(f('a', 'c') + ' > ' + f('b', 'd'))], c: 1, why: 'Only addition is unconditional.' },
+    { q: 'If ' + m('−2 < a < 5') + ' then:', a: [m('4 < a<sup>2</sup> < 25'), m('0 ≤ a<sup>2</sup> < 25'), m('−4 < a<sup>2</sup> < 25'), m('0 < a<sup>2</sup> < 4')], c: 1, why: 'Zero is inside the interval, so the minimum square is 0.' },
+    { q: 'To prove ' + m('a<sup>2</sup> + 1 ≥ 2a') + ' you should:', a: ['try a = 3', 'take the difference and factorise', 'divide both sides by a', 'square both sides'], c: 1, why: 'The difference is (a − 1)², which is never negative.' }
+  ],
+  practice: {
+    easy: [
+      [m('<b>Variant 1, task 1.</b> Compare ' + f('2', '5') + ' and ' + f('3', '8') + ' by the difference'), m(f('2', '5') + ' > ' + f('3', '8'))],
+      [m('<b>Task 2.</b> a > b. Compare a + 6 and b + 6'), m('a + 6 > b + 6')],
+      [m('<b>Task 3.</b> Solve −2x > 8'), m('x < −4')],
+      [m('<b>Task 4.</b> 1 < a < 4 and 2 < b < 5. Find the range of a + b'), m('3 < a + b < 9')],
+      [m('<b>Task 5.</b> Same ranges: find the range of ab'), m('2 < ab < 20')],
+      [m('<b>Task 6.</b> 2 < a < 5. Find the range of a<sup>2</sup>'), m('4 < a<sup>2</sup> < 25')],
+      [m('<b>Task 7.</b> Prove a<sup>2</sup> + 1 ≥ 2a'), 'The difference is ' + m('(a − 1)<sup>2</sup> ≥ 0') + '.']
+    ],
+    med: [
+      [m('<b>Variant 2, task 1.</b> Compare ' + f('4', '7') + ' and ' + f('5', '9') + ' by the difference'), m(f('4', '7') + ' > ' + f('5', '9'))],
+      [m('<b>Task 2.</b> a > b. Compare −3a and −3b'), m('−3a < −3b')],
+      [m('<b>Task 3.</b> Solve −5x + 1 ≤ 11'), m('x ≥ −2')],
+      [m('<b>Task 4.</b> 2 < a < 5 and 1 < b < 3. Find the range of a − b'), m('−1 < a − b < 4')],
+      [m('<b>Task 5.</b> Same ranges: find the range of ' + f('a', 'b')), m(f('2', '3') + ' < ' + f('a', 'b') + ' < 5')],
+      [m('<b>Task 6.</b> 9 < a < 36. Find the range of ' + sr('a')), m('3 < ' + sr('a') + ' < 6')],
+      [m('<b>Task 7.</b> Prove a<sup>2</sup> + b<sup>2</sup> ≥ 2ab'), 'The difference is ' + m('(a − b)<sup>2</sup> ≥ 0') + '.']
+    ],
+    hard: [
+      [m('Find the error: −2x > 8, so x > −4'), 'The sign was not reversed. Correct: ' + m('x < −4') + '.'],
+      [m('Find the error: from 5 > 3 and 10 > 1, 5 − 10 > 3 − 1'), 'Inequalities cannot be subtracted. Reverse the second, then add.'],
+      [m('Find the error: −3 < a < 2, so 9 < a<sup>2</sup> < 4'), 'The interval contains 0. Correct: ' + m('0 ≤ a<sup>2</sup> < 9') + '.'],
+      [m('Find the error: from 2 > −5 and 3 > −4, 6 > 20'), 'Multiplication needs all terms positive; here ' + m('6 < 20') + '.'],
+      [m('Find the error: a > b, so a<sup>2</sup> > b<sup>2</sup>'), 'Needs ' + m('a > b > 0') + '. Counter-example ' + m('−2 > −5') + ' but ' + m('4 < 25') + '.'],
+      [m('Find the error: 1 < b < 4, so 1 < ' + f('1', 'b') + ' < 4'), 'Reciprocals reverse the order. Correct: ' + m(f('1', '4') + ' < ' + f('1', 'b') + ' < 1') + '.'],
+      [m('Find the error: “a<sup>2</sup> ≥ 2a is true for all a because (a − 1)<sup>2</sup> ≥ 0”'), 'The difference of ' + m('a<sup>2</sup>') + ' and ' + m('2a') + ' is ' + m('a<sup>2</sup> − 2a = a(a − 2)') + ', not a square; the claim is false for ' + m('a = 1') + '.']
+    ]
+  },
+  hwTitle: 'After the work-on-mistakes lesson',
+  hwNote: 'Re-solve every task you lost marks on. Quarter III opens with inequalities in one unknown.',
+  homework: [
+    m('Solve −4x + 5 > 21'),
+    m('3 < a < 8 and 2 < b < 4. Find the ranges of a + b, a − b, ab and ' + f('a', 'b')),
+    m('−5 < a < 1. Find the range of a<sup>2</sup>'),
+    'Write out the four errors from this lesson in your own words with an example each.'
   ]
 });

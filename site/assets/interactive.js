@@ -609,6 +609,207 @@
     draw();
   };
 
+
+  /* ============ 12. right-triangle trigonometry ============ */
+  INT.rightTriangle = function (host, opt) {
+    var body = frame(host, (opt && opt.title) || 'Solve the right triangle',
+      'Change the angle or a side; every ratio and every length follows.');
+    var row = ctrlRow(body);
+    var svg = stage(body, '0 0 380 250', 470);
+    var read = readoutBar(body, ['α', 'β', 'a (opposite)', 'b (adjacent)', 'c (hyp)',
+      'sin α', 'cos α', 'tan α', 'a² + b²', 'c²']);
+    var alpha = 36, c = 190;
+    function draw() {
+      svg.innerHTML = '';
+      var t = alpha * Math.PI / 180;
+      var a = c * Math.sin(t), bb = c * Math.cos(t);
+      var A = [40, 40], C0 = [40, 40 + a], B = [40 + bb, 40 + a];
+      var sc = Math.min(300 / Math.max(bb, 1), 180 / Math.max(a, 1), 1);
+      A = [40, 40]; C0 = [40, 40 + a * sc]; B = [40 + bb * sc, 40 + a * sc];
+      svg.appendChild(S('polygon', {
+        points: [A, B, C0].map(function (p) { return r1(p[0]) + ',' + r1(p[1]); }).join(' '),
+        fill: 'var(--brand-tint)', stroke: 'currentColor', 'stroke-width': 2.2, 'stroke-linejoin': 'round'
+      }));
+      var rr = 13;
+      svg.appendChild(S('path', {
+        d: 'M' + r1(C0[0] + rr) + ' ' + r1(C0[1]) + ' L' + r1(C0[0] + rr) + ' ' + r1(C0[1] - rr) +
+          ' L' + r1(C0[0]) + ' ' + r1(C0[1] - rr), fill: 'none', stroke: 'var(--brand)', 'stroke-width': 1.8
+      }));
+      var R = 34;
+      svg.appendChild(S('path', {
+        d: 'M' + r1(A[0]) + ' ' + r1(A[1] + R) + ' A' + R + ' ' + R + ' 0 0 0 ' +
+          r1(A[0] + R * Math.sin(t)) + ' ' + r1(A[1] + R * Math.cos(t)),
+        fill: 'none', stroke: 'var(--brass)', 'stroke-width': 2
+      }));
+      [[A, 'A', -6, -12], [B, 'B', 16, 6], [C0, 'C', -14, 16]].forEach(function (g) {
+        svg.appendChild(S('circle', { cx: r1(g[0][0]), cy: r1(g[0][1]), r: 4, fill: 'currentColor' }));
+        svg.appendChild(S('text', {
+          x: r1(g[0][0] + g[2]), y: r1(g[0][1] + g[3]), 'text-anchor': 'middle',
+          'font-family': 'Spectral, Georgia, serif', 'font-size': 15, 'font-style': 'italic',
+          fill: 'currentColor'
+        }, g[1]));
+      });
+      function lab(p, q, txt, dx, dy, col) {
+        svg.appendChild(S('text', {
+          x: r1((p[0] + q[0]) / 2 + dx), y: r1((p[1] + q[1]) / 2 + dy), 'text-anchor': 'middle',
+          'font-family': 'IBM Plex Mono, monospace', 'font-size': 11.5, fill: col || 'var(--muted)'
+        }, txt));
+      }
+      lab(A, C0, 'b = ' + r1(bb), -22, 0);
+      lab(C0, B, 'a = ' + r1(a), 0, 20);
+      lab(A, B, 'c = ' + r1(c), 22, -8, 'var(--brand)');
+      svg.appendChild(S('text', {
+        x: r1(A[0] + 44), y: r1(A[1] + 30), 'font-family': 'IBM Plex Mono, monospace',
+        'font-size': 11.5, fill: 'var(--brass)'
+      }, alpha + '°'));
+      read['α'].textContent = alpha + '°';
+      read['β'].textContent = (90 - alpha) + '°';
+      read['a (opposite)'].textContent = r1(a);
+      read['b (adjacent)'].textContent = r1(bb);
+      read['c (hyp)'].textContent = r1(c);
+      read['sin α'].textContent = r2(Math.sin(t));
+      read['cos α'].textContent = r2(Math.cos(t));
+      read['tan α'].textContent = r2(Math.tan(t));
+      read['a² + b²'].textContent = Math.round(a * a + bb * bb);
+      read['c²'].textContent = Math.round(c * c);
+    }
+    slider(row, 'angle α', 10, 80, alpha, 1, function (v) { alpha = v; draw(); });
+    slider(row, 'hypotenuse c', 100, 240, c, 5, function (v) { c = v; draw(); });
+    draw();
+  };
+
+  /* ============ 13. Pythagoras check ============ */
+  INT.pythagoras = function (host, opt) {
+    var body = frame(host, (opt && opt.title) || 'a² + b² = c²',
+      'Change the legs. The two coloured squares always fill the third exactly.');
+    var row = ctrlRow(body);
+    var svg = stage(body, '0 0 400 320', 460);
+    var read = readoutBar(body, ['a', 'b', 'c', 'a²', 'b²', 'a² + b²', 'c²']);
+    var a = 80, bb = 60;
+    function draw() {
+      svg.innerHTML = '';
+      var k = 1.0, C0 = [160, 190], B = [160 + a * k, 190], A = [160, 190 - bb * k];
+      svg.appendChild(S('rect', {
+        x: r1(C0[0]), y: r1(C0[1]), width: r1(a * k), height: r1(a * k),
+        fill: 'var(--brand-tint)', stroke: 'currentColor', 'stroke-width': 1.5
+      }));
+      svg.appendChild(S('rect', {
+        x: r1(C0[0] - bb * k), y: r1(C0[1] - bb * k), width: r1(bb * k), height: r1(bb * k),
+        fill: 'var(--easy-tint)', stroke: 'currentColor', 'stroke-width': 1.5
+      }));
+      var ux = (B[0] - A[0]), uy = (B[1] - A[1]), L = Math.hypot(ux, uy);
+      var px = uy / L, py = -ux / L;
+      var P1 = [A[0] + px * L, A[1] + py * L], P2 = [B[0] + px * L, B[1] + py * L];
+      svg.appendChild(S('polygon', {
+        points: [A, B, P2, P1].map(function (p) { return r1(p[0]) + ',' + r1(p[1]); }).join(' '),
+        fill: 'var(--brass-tint)', stroke: 'currentColor', 'stroke-width': 1.8, 'stroke-linejoin': 'round'
+      }));
+      svg.appendChild(S('polygon', {
+        points: [A, B, C0].map(function (p) { return r1(p[0]) + ',' + r1(p[1]); }).join(' '),
+        fill: 'var(--surface)', stroke: 'currentColor', 'stroke-width': 2.2, 'stroke-linejoin': 'round'
+      }));
+      svg.appendChild(S('text', {
+        x: r1(C0[0] + a * k / 2), y: r1(C0[1] + a * k / 2), 'text-anchor': 'middle',
+        'dominant-baseline': 'middle', 'font-family': 'IBM Plex Mono, monospace',
+        'font-size': 12, fill: 'var(--brand)'
+      }, 'a² = ' + a * a));
+      svg.appendChild(S('text', {
+        x: r1(C0[0] - bb * k / 2), y: r1(C0[1] - bb * k / 2), 'text-anchor': 'middle',
+        'dominant-baseline': 'middle', 'font-family': 'IBM Plex Mono, monospace',
+        'font-size': 12, fill: 'var(--easy)'
+      }, 'b² = ' + bb * bb));
+      svg.appendChild(S('text', {
+        x: r1((A[0] + P2[0]) / 2), y: r1((A[1] + P2[1]) / 2), 'text-anchor': 'middle',
+        'dominant-baseline': 'middle', 'font-family': 'IBM Plex Mono, monospace',
+        'font-size': 12, fill: 'var(--brass)'
+      }, 'c² = ' + (a * a + bb * bb)));
+      read['a'].textContent = a; read['b'].textContent = bb;
+      read['c'].textContent = r2(Math.sqrt(a * a + bb * bb));
+      read['a²'].textContent = a * a; read['b²'].textContent = bb * bb;
+      read['a² + b²'].textContent = a * a + bb * bb;
+      read['c²'].textContent = a * a + bb * bb;
+    }
+    slider(row, 'leg a', 40, 110, a, 5, function (v) { a = v; draw(); });
+    slider(row, 'leg b', 30, 90, bb, 5, function (v) { bb = v; draw(); });
+    draw();
+  };
+
+  /* ============ 14. inequality on a number line ============ */
+  INT.inequalityLine = function (host, opt) {
+    var body = frame(host, (opt && opt.title) || 'Solutions on the number line',
+      'Move the boundary and switch between strict and non-strict.');
+    var row = ctrlRow(body);
+    var svg = stage(body, '0 0 400 120', 470);
+    var read = readoutBar(body, ['inequality', 'boundary', 'x = 0 works?', 'x = 6 works?']);
+    var b = 2, strict = true, dir = 'gt';
+    function draw() {
+      svg.innerHTML = '';
+      var x0 = 30, x1 = 370, cx = function (v) { return x0 + (v + 8) / 16 * (x1 - x0); };
+      svg.appendChild(S('line', { x1: x0, y1: 62, x2: x1, y2: 62, stroke: 'currentColor', 'stroke-width': 1.8 }));
+      for (var v = -8; v <= 8; v += 2) {
+        svg.appendChild(S('line', { x1: r1(cx(v)), y1: 57, x2: r1(cx(v)), y2: 67, stroke: 'var(--faint)', 'stroke-width': 1 }));
+        svg.appendChild(S('text', {
+          x: r1(cx(v)), y: 84, 'text-anchor': 'middle', 'font-family': 'IBM Plex Mono, monospace',
+          'font-size': 10.5, fill: 'var(--muted)'
+        }, String(v)));
+      }
+      var from = dir === 'gt' ? cx(b) : x0, to = dir === 'gt' ? x1 : cx(b);
+      svg.appendChild(S('line', { x1: r1(from), y1: 62, x2: r1(to), y2: 62, stroke: 'var(--brand)', 'stroke-width': 6, 'stroke-linecap': 'butt' }));
+      svg.appendChild(S('circle', {
+        cx: r1(cx(b)), cy: 62, r: 7, fill: strict ? 'var(--paper)' : 'var(--brand)',
+        stroke: 'var(--brand)', 'stroke-width': 2.4
+      }));
+      svg.appendChild(S('text', {
+        x: 200, y: 28, 'text-anchor': 'middle', 'font-family': 'Spectral, Georgia, serif',
+        'font-size': 16, 'font-style': 'italic', fill: 'var(--brand)'
+      }, 'x ' + (dir === 'gt' ? (strict ? '>' : '≥') : (strict ? '<' : '≤')) + ' ' + b));
+      var op = dir === 'gt'
+        ? function (t) { return strict ? t > b : t >= b; }
+        : function (t) { return strict ? t < b : t <= b; };
+      read['inequality'].textContent = 'x ' + (dir === 'gt' ? (strict ? '>' : '≥') : (strict ? '<' : '≤')) + ' ' + b;
+      read['boundary'].textContent = b + (strict ? ' (open)' : ' (closed)');
+      read['x = 0 works?'].textContent = op(0) ? 'yes' : 'no';
+      read['x = 6 works?'].textContent = op(6) ? 'yes' : 'no';
+    }
+    slider(row, 'boundary', -6, 6, b, 1, function (v) { b = v; draw(); });
+    var t1 = el('button', { 'class': 'btn sm', type: 'button' }); t1.textContent = 'strict / not strict';
+    t1.addEventListener('click', function () { strict = !strict; draw(); });
+    var t2 = el('button', { 'class': 'btn sm', type: 'button' }); t2.textContent = 'flip < / >';
+    t2.addEventListener('click', function () { dir = dir === 'gt' ? 'lt' : 'gt'; draw(); });
+    row.appendChild(t1); row.appendChild(t2);
+    draw();
+  };
+
+  /* ============ 15. roots and rational exponents ============ */
+  INT.rootPower = function (host, opt) {
+    var body = frame(host, (opt && opt.title) || 'A root is a power',
+      'Pick a base and an index — the two notations always give the same number.');
+    var row = ctrlRow(body);
+    var out = el('div', {}); body.appendChild(out);
+    var a = 64, n = 3, mm = 1;
+    function render() {
+      var root = Math.pow(a, mm / n);
+      out.innerHTML =
+        '<div class="eq boxed" style="text-align:center">' +
+        '<span class="m"><sup>' + n + '</sup>√' + a + (mm > 1 ? '<sup>' + mm + '</sup>' : '') +
+        '&nbsp; = &nbsp;' + a + '<sup>' + mm + '/' + n + '</sup>&nbsp; = &nbsp;' +
+        '<b style="color:var(--brand)">' + (Math.abs(root - Math.round(root)) < 1e-9 ? Math.round(root) : r2(root)) +
+        '</b></span></div>' +
+        '<div class="readout">' +
+        '<div class="rd">base a <b>' + a + '</b></div>' +
+        '<div class="rd">index n <b>' + n + '</b></div>' +
+        '<div class="rd">power m <b>' + mm + '</b></div>' +
+        '<div class="rd">check: value<sup>' + n + '</sup> <b>' + r2(Math.pow(root, n)) + '</b></div>' +
+        '<div class="rd">a<sup>' + mm + '</sup> <b>' + r2(Math.pow(a, mm)) + '</b></div></div>' +
+        '<p class="small" style="margin:12px 0 0">Raising the answer to the power ' + n +
+        ' gives back a<sup>' + mm + '</sup> — that is exactly what “root of degree ' + n + '” means.</p>';
+    }
+    slider(row, 'base a', 1, 100, a, 1, function (v) { a = v; render(); });
+    slider(row, 'index n', 2, 6, n, 1, function (v) { n = v; render(); });
+    slider(row, 'power m', 1, 6, mm, 1, function (v) { mm = v; render(); });
+    render();
+  };
+
   /* ---------- mount ---------- */
   INT.mount = function (host, spec) {
     var fn = INT[spec.type];

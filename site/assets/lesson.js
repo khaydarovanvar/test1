@@ -25,13 +25,45 @@
       }).join('') + '</ol></div>';
   }
 
+  function termsTable(list) {
+    return '<div class="tablewrap terms"><table>' +
+      '<thead><tr><th>English</th><th>O‘zbekcha</th><th>Русский</th></tr></thead><tbody>' +
+      list.map(function (t) {
+        return '<tr><td>' + t[0] + '</td><td class="uz">' + t[1] + '</td><td class="ru">' + t[2] + '</td></tr>';
+      }).join('') + '</tbody></table></div>';
+  }
+
   w.renderTopic = function (T, INDEX) {
     d.title = T.title + ' · Grade ' + T.grade + ' · Anvarbek Khaydarov';
     var streamName = T.stream === 'alg' ? 'Algebra' : 'Geometry';
 
     /* ---- header ---- */
+    var i0 = INDEX.findIndex(function (x) { return x.id === T.id; });
+    var prev0 = INDEX[i0 - 1], next0 = INDEX[i0 + 1];
+    var opts = INDEX.map(function (x) {
+      return '<option value="' + x.id + '"' + (x.id === T.id ? ' selected' : '') + '>' +
+        (x.group ? x.group + ' · ' : '') + x.title + '</option>';
+    }).join('');
+    var arrow = function (dir) {
+      return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+        'stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="' +
+        (dir < 0 ? 'M15 6l-6 6 6 6' : 'M9 6l6 6-6 6') + '"/></svg>';
+    };
+
     var head = d.getElementById('lhead');
     head.innerHTML = '<div class="inner">' +
+      '<div class="lnav no-print">' +
+      '<a class="backbtn" href="grade.html?g=' + T.grade + '" id="backbtn">' +
+      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+      'stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">' +
+      '<path d="M19 12H5M11 5l-7 7 7 7"/></svg>Back to Grade ' + T.grade + '</a>' +
+      '<span class="jump"><select id="jumpsel" aria-label="Jump to another topic">' + opts + '</select></span>' +
+      '<span class="stepper">' +
+      '<a class="stepbtn" href="' + (prev0 ? 'lesson.html?t=' + prev0.id : '#') + '"' +
+      (prev0 ? ' title="' + prev0.title + '"' : ' aria-disabled="true"') + ' aria-label="Previous topic">' + arrow(-1) + '</a>' +
+      '<a class="stepbtn" href="' + (next0 ? 'lesson.html?t=' + next0.id : '#') + '"' +
+      (next0 ? ' title="' + next0.title + '"' : ' aria-disabled="true"') + ' aria-label="Next topic">' + arrow(1) + '</a>' +
+      '</span></div>' +
       '<p class="crumb"><a href="index.html">Home</a> / <a href="grade.html?g=' + T.grade + '">Grade ' +
       T.grade + '</a> / ' + streamName + ' / Quarter ' + T.quarter + '</p>' +
       '<h1>' + T.title + '</h1>' +
@@ -65,7 +97,8 @@
       '</div>' +
       '<div class="sbox no-print"><h5>On this page</h5><nav class="tocnav">' +
       '<a href="#explain">Explanation</a><a href="#examples">Worked examples</a>' +
-      '<a href="#model">Interactive model</a><a href="#check">Quick check</a>' +
+      '<a href="#model">Interactive model</a><a href="#terms">Terminology</a>' +
+      '<a href="#check">Quick check</a>' +
       '<a href="#practice">Practice · 21</a><a href="#homework">Homework</a></nav></div>' +
       '<div class="sbox no-print"><button class="btn sm" type="button" onclick="window.print()">Print this lesson</button></div>';
 
@@ -98,12 +131,20 @@
       '<p class="small" style="margin-bottom:4px">' + (T.modelNote || 'Show this on the board and let a learner drive it.') + '</p>' +
       '<div id="ilab"></div></section>';
 
+    if (T.terms && T.terms.length) {
+      html += '<section class="lsec" id="terms"><h2><span class="sn">04</span>Terminology</h2>' +
+        '<p class="small">Write these on the board at the start. Learners meet the national programme ' +
+        'in Uzbek or Russian and the Cambridge papers in English — the three columns are the same idea.</p>' +
+        termsTable(T.terms) +
+        '<p class="termnote">Stress the words in bold in the explanation above; ask for the ' +
+        'Uzbek and Russian back before moving on.</p></section>';
+    }
     if (T.quiz && T.quiz.length) {
-      html += '<section class="lsec" id="check"><h2><span class="sn">04</span>Quick check</h2>' +
+      html += '<section class="lsec" id="check"><h2><span class="sn">05</span>Quick check</h2>' +
         '<div id="quizlab"></div></section>';
     }
 
-    html += '<section class="lsec" id="practice"><h2><span class="sn">05</span>Practice · 21 problems</h2>' +
+    html += '<section class="lsec" id="practice"><h2><span class="sn">06</span>Practice · 21 problems</h2>' +
       '<p class="small">Seven at each level. Set the easy row for everyone, the medium row for the ' +
       'main body of the class, and the hard row for those who finish early.</p>' +
       levelBlock('Easy · warm the idea up', 'lv-easy', 'c-easy', T.practice.easy) +
@@ -111,17 +152,21 @@
       levelBlock('Hard · stretch and reason', 'lv-hard', 'c-hard', T.practice.hard) +
       '</section>';
 
-    html += '<section class="lsec" id="homework"><h2><span class="sn">06</span>Homework</h2>' +
+    html += '<section class="lsec" id="homework"><h2><span class="sn">07</span>Homework</h2>' +
       '<div class="hw"><h3>' + (T.hwTitle || 'Set for the next lesson') + '</h3>' +
       '<p class="hwt">' + (T.hwNote || '') + '</p><ol>' +
       T.homework.map(function (h) { return '<li>' + h + '</li>'; }).join('') + '</ol></div></section>';
 
     /* pager */
-    var i = INDEX.findIndex(function (x) { return x.id === T.id; });
-    var prev = INDEX[i - 1], next = INDEX[i + 1];
+    var prev = prev0, next = next0;
     html += '<div class="pager no-print">' +
       (prev ? '<a href="lesson.html?t=' + prev.id + '"><span class="pl">← Previous</span><span class="pt">' + prev.title + '</span></a>' : '<span></span>') +
       (next ? '<a class="nx" href="lesson.html?t=' + next.id + '"><span class="pl">Next →</span><span class="pt">' + next.title + '</span></a>' : '<span></span>') +
+      '</div>' +
+      '<div class="mobilepager no-print">' +
+      '<a href="' + (prev ? 'lesson.html?t=' + prev.id : '#') + '"' + (prev ? '' : ' aria-disabled="true"') + '>← Previous</a>' +
+      '<a href="grade.html?g=' + T.grade + '">All topics</a>' +
+      '<a href="' + (next ? 'lesson.html?t=' + next.id : '#') + '"' + (next ? '' : ' aria-disabled="true"') + '>Next →</a>' +
       '</div>';
 
     main.innerHTML = html;
@@ -133,6 +178,10 @@
         var on = t.classList.toggle('show');
         b.textContent = on ? 'Hide answers' : 'Show answers';
       });
+    });
+    var jump = d.getElementById('jumpsel');
+    if (jump) jump.addEventListener('change', function () {
+      w.location.href = (w.AKM_lessonHref || function (id) { return 'lesson.html?t=' + id; })(jump.value);
     });
     if (T.interactive) w.INT.mount(d.getElementById('ilab'), T.interactive);
     if (T.quiz && T.quiz.length) w.INT.mount(d.getElementById('quizlab'), { type: 'quiz', items: T.quiz });

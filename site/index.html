@@ -16,35 +16,37 @@
 <div id="site-header"></div>
 
 <section class="hero">
-  <svg class="bg" aria-hidden="true" width="100%" height="100%">
-    <defs>
-      <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
-        <path d="M34 0 H0 V34" fill="none" stroke="var(--rule)" stroke-width="1"/>
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill="url(#grid)"/>
-  </svg>
+  <div class="grid3d" aria-hidden="true"><i></i></div>
   <div class="inner">
     <div>
       <p class="eyebrow">Mathematics teacher · Uzbekistan</p>
       <h1>Every lesson, <em>built to be taught</em> in forty minutes.</h1>
       <p class="lede">Resources for grades 5 to 11 that follow the Uzbekistan national programme and
       Cambridge Lower Secondary side by side. Each topic gives you the explanation, the figures, an
-      interactive model to show on the board, twenty-one graded problems and homework that fits on
-      one page.</p>
+      interactive model to show on the board, twenty-one graded problems, three-language terminology
+      and homework that fits on one page.</p>
       <div class="cta">
         <a class="btn primary" href="grade.html?g=8">Open Grade 8 &nbsp;→</a>
         <a class="btn" href="grades.html">All grades 5–11</a>
         <a class="btn" href="about.html">How a lesson is built</a>
       </div>
       <div class="stats">
-        <div class="stat"><b>40</b><span>minutes per lesson</span></div>
-        <div class="stat"><b>21</b><span>problems · 7 / 7 / 7</span></div>
-        <div class="stat"><b>23</b><span>Grade 8 topics live</span></div>
-        <div class="stat"><b>2</b><span>curricula, one standard</span></div>
+        <div class="stat"><b>40</b><span>minute lessons</span></div>
+        <div class="stat"><b>21</b><span>graded problems</span></div>
+        <div class="stat" id="stat-topics"><b>—</b><span>Grade 8 topics</span></div>
+        <div class="stat"><b>3</b><span>term languages</span></div>
       </div>
     </div>
-    <div class="heromark" id="heromark"></div>
+    <div class="scene" id="scene">
+      <div class="stage3d">
+        <div class="orb o1"></div>
+        <div class="orb o2"></div>
+        <div class="extrude"></div>
+        <span class="chip3d c1">180°(n − 2)</span>
+        <span class="chip3d c2">y = k ⁄ x</span>
+        <span class="chip3d c3">MN = ½ · BC</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -120,9 +122,12 @@
 
 <div id="site-footer"></div>
 <script src="assets/app.js" data-root="./"></script>
+<script src="assets/mathfmt.js"></script>
+<script src="assets/figures.js"></script>
 <script src="data/grades.js"></script>
+<script src="data/g8-alg.js"></script>
+<script src="data/g8-geo.js"></script>
 <script>
-document.getElementById('heromark').innerHTML = AKM.LOGO;
 AKM.mount('index.html');
 
 var CLOCK = [[5,'Warm-up','var(--faint)'],[12,'Explanation','var(--brand)'],
@@ -132,6 +137,11 @@ document.getElementById('clock').innerHTML = CLOCK.map(function(c){
   return '<div style="flex:'+c[0]+';background:'+c[2]+'">'+c[1]+' · '+c[0]+"'</div>";
 }).join('');
 
+(function(){
+  var n = ((window.G8_ALG||[]).length + (window.G8_GEO||[]).length) || 0;
+  var el = document.querySelector('#stat-topics b');
+  if (el && n) el.textContent = n;
+})();
 document.getElementById('gradegrid').innerHTML = GRADES.map(function(g){
   var live = g.status === 'live';
   return '<a class="gtile '+(live?'live':'soon')+'" href="'+(live?'grade.html?g='+g.g:'grades.html')+'">'+

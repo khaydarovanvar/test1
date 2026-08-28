@@ -35,36 +35,41 @@
         <div class="figs">Cambridge Stage 9 Learner’s Book</div></div>
     </div>
 
-    <div class="sechead"><span class="eyebrow">Quarter I</span><h2>Algebra — 27 hours</h2>
-      <p>Chapter I of <em>Algebra 8</em>: algebraic fractions and the function y = k/x.</p></div>
+    <div class="sechead"><span class="eyebrow">Choose a quarter</span><h2>The teaching year</h2>
+      <p>Quarters I and II are written. Pick a quarter, then a topic.</p></div>
+    <div class="qtabs" id="qtabs"></div>
+
+    <div class="sechead" style="margin-top:12px"><span class="eyebrow" id="alg-eyebrow">Algebra</span>
+      <h2 id="alg-head">Algebra</h2><p id="alg-sub"></p></div>
     <div class="llist" id="alglist"></div>
 
-    <div class="sechead" style="margin-top:56px"><span class="eyebrow">Quarter I</span>
-      <h2>Geometry — 18 hours</h2>
-      <p>Chapter I of <em>Geometry 8</em>: quadrilaterals, Thales’ theorem and midlines.</p></div>
+    <div class="sechead" style="margin-top:56px"><span class="eyebrow" id="geo-eyebrow">Geometry</span>
+      <h2 id="geo-head">Geometry</h2><p id="geo-sub"></p></div>
     <div class="llist" id="geolist"></div>
-
-    <div class="sechead" style="margin-top:56px"><span class="eyebrow">Quarters II – IV</span>
-      <h2>Still being written</h2>
-      <p>Quarter II (inequalities, roots and rational exponents; Pythagoras and trigonometry) is next,
-      then Quarters III and IV. The annual plans for all four quarters are already published.</p></div>
-    <div class="qtabs">
-      <button class="qtab" aria-pressed="true" disabled>Quarter I · 45 lessons · live</button>
-      <button class="qtab" disabled>Quarter II · 35 lessons</button>
-      <button class="qtab" disabled>Quarter III · 50 lessons</button>
-      <button class="qtab" disabled>Quarter IV · 40 lessons</button>
-    </div>
   </div>
 </section>
 <div id="site-footer"></div>
 <script src="assets/app.js" data-root="./"></script>
 <script src="assets/mathfmt.js"></script>
 <script src="assets/figures.js"></script>
-<script src="data/g8-alg-q1.js"></script>
-<script src="data/g8-geo-q1.js"></script>
+<script src="data/g8-alg.js"></script>
+<script src="data/g8-geo.js"></script>
 <script>
 AKM.mount('grade.html');
+var QUARTERS = [
+  { q: 1, label: 'Quarter I',  alg: 'Chapter I of <em>Algebra 8</em> — algebraic fractions and the function y = k/x.',
+    geo: 'Chapter I of <em>Geometry 8</em> — quadrilaterals, Thales’ theorem and midlines.' },
+  { q: 2, label: 'Quarter II', alg: 'Chapter I §§8–10 and Chapter II of <em>Algebra 8</em> — roots, rational exponents and numerical inequalities.',
+    geo: 'Chapter II of <em>Geometry 8</em> — Pythagoras’ theorem and the trigonometry of the right triangle.' },
+  { q: 3, label: 'Quarter III', alg: 'Inequalities with one unknown, modulus, approximation and quadratic equations.',
+    geo: 'The coordinate method, vectors and the areas of polygons.' },
+  { q: 4, label: 'Quarter IV', alg: 'Statistics, combinatorics and the Cambridge revision block.',
+    geo: 'Circle theorems, transformations and solids.' }
+];
+var ALL_ALG = window.G8_ALG || [], ALL_GEO = window.G8_GEO || [];
+function has(q) { return ALL_ALG.some(function (t) { return t.quarter === q; }); }
 function rows(list){
+  if (!list.length) return '<p class="small" style="padding:8px 2px">Being written — the annual plan for this quarter is already published.</p>';
   return list.map(function(t){
     return '<a class="lrow" href="lesson.html?t='+t.id+'">'+
       '<span class="ln">'+t.lessons+'</span>'+
@@ -75,12 +80,38 @@ function rows(list){
       '</a>';
   }).join('');
 }
-document.getElementById('alglist').innerHTML = rows(window.G8_ALG_Q1||[]);
-document.getElementById('geolist').innerHTML = rows(window.G8_GEO_Q1||[]);
+function hours(list){ return list.reduce(function(s,t){return s+t.hours;},0); }
+function show(q){
+  var Q = QUARTERS[q-1];
+  var a = ALL_ALG.filter(function(t){return t.quarter===q;});
+  var g = ALL_GEO.filter(function(t){return t.quarter===q;});
+  document.getElementById('alg-eyebrow').textContent = Q.label;
+  document.getElementById('geo-eyebrow').textContent = Q.label;
+  document.getElementById('alg-head').textContent = 'Algebra — ' + hours(a) + ' hours';
+  document.getElementById('geo-head').textContent = 'Geometry — ' + hours(g) + ' hours';
+  document.getElementById('alg-sub').innerHTML = Q.alg;
+  document.getElementById('geo-sub').innerHTML = Q.geo;
+  document.getElementById('alglist').innerHTML = rows(a);
+  document.getElementById('geolist').innerHTML = rows(g);
+  [].forEach.call(document.querySelectorAll('.qtab'), function(b){
+    b.setAttribute('aria-pressed', +b.dataset.q === q ? 'true' : 'false');
+  });
+  try { sessionStorage.setItem('akm-q', q); } catch(e){}
+}
+document.getElementById('qtabs').innerHTML = QUARTERS.map(function(Q){
+  var live = has(Q.q);
+  return '<button class="qtab" data-q="'+Q.q+'" aria-pressed="false"'+(live?'':' disabled')+'>'+
+    Q.label+' · '+(live?'live':'soon')+'</button>';
+}).join('');
+[].forEach.call(document.querySelectorAll('.qtab'), function(b){
+  b.addEventListener('click', function(){ show(+b.dataset.q); });
+});
+var start = 1;
+try { var sv = +sessionStorage.getItem('akm-q'); if (sv && has(sv)) start = sv; } catch(e){}
+show(start);
 document.getElementById('gsub').textContent =
-  'Quarter I is complete: ' + ((window.G8_ALG_Q1||[]).length + (window.G8_GEO_Q1||[]).length) +
-  ' topic pages covering 45 lessons, each with an explanation, figures, an interactive model, ' +
-  '21 graded problems and homework.';
+  (ALL_ALG.length + ALL_GEO.length) + ' topic pages written so far, each with an explanation, ' +
+  'figures, an interactive model, three-language terminology, 21 graded problems and homework.';
 </script>
 </body>
 </html>

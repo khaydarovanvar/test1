@@ -35,13 +35,67 @@
       var on = n[0].split('?')[0] === active || n[0] === active ? ' class="on"' : '';
       return '<a href="' + ROOT + n[0] + '"' + on + '>' + n[1] + '</a>';
     }).join('');
-    return '<header class="site-head"><div class="bar">' + brandmark() +
-      '<nav class="nav">' + links +
+    return '<header class="site-head" id="sitehead"><div class="bar">' + brandmark() +
+      '<div class="navwrap"><nav class="nav" id="navlinks">' + links + '</nav>' +
       '<button class="themebtn" id="themebtn" type="button" aria-label="Switch colour theme" title="Switch colour theme">' +
       '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">' +
       '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>' +
-      '</nav></div></header>';
+      '<button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false">' +
+      '<span></span><span></span><span></span></button></div></div></header>';
   }
+
+  function navBehaviour() {
+    var mb = document.getElementById('menubtn'), head = document.getElementById('sitehead');
+    if (mb) mb.addEventListener('click', function () {
+      var open = head.classList.toggle('open');
+      mb.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    if (head) {
+      var onScroll = function () { head.classList.toggle('scrolled', w.scrollY > 8); };
+      w.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+      head.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') head.classList.remove('open');
+      });
+    }
+  }
+
+  /* ---------- 3D hero ---------- */
+  function initHero() {
+    var scene = document.getElementById('scene');
+    if (!scene) return;
+    var stage = scene.querySelector('.stage3d');
+    var ext = scene.querySelector('.extrude');
+    if (ext && !ext.childElementCount) {
+      var N = 18, i, html = '';
+      for (i = N - 1; i >= 0; i--) {
+        var t = i / (N - 1);
+        html += '<div class="layer" style="transform:translateZ(' + (-i * 2.1).toFixed(1) + 'px);' +
+          'opacity:' + (i === 0 ? 1 : 1) + ';color:' + (i === 0 ? 'var(--ink)' : 'var(--extrude)') + ';' +
+          'filter:brightness(' + (1 - t * 0.42).toFixed(2) + ')">' + LOGO + '</div>';
+      }
+      ext.innerHTML = html;
+    }
+    var reduce = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !stage) return;
+    var rx = 0, ry = 0, tx = 0, ty = 0, raf = null;
+    function loop() {
+      rx += (tx - rx) * 0.08; ry += (ty - ry) * 0.08;
+      stage.style.setProperty('--rx', rx.toFixed(2) + 'deg');
+      stage.style.setProperty('--ry', ry.toFixed(2) + 'deg');
+      raf = (Math.abs(tx - rx) > 0.01 || Math.abs(ty - ry) > 0.01) ? requestAnimationFrame(loop) : null;
+    }
+    function kick() { if (!raf) raf = requestAnimationFrame(loop); }
+    var host = scene.closest('.hero') || scene;
+    host.addEventListener('pointermove', function (e) {
+      var r = host.getBoundingClientRect();
+      ty = ((e.clientX - r.left) / r.width - 0.5) * 26;
+      tx = -((e.clientY - r.top) / r.height - 0.5) * 18;
+      kick();
+    });
+    host.addEventListener('pointerleave', function () { tx = 0; ty = 0; kick(); });
+  }
+
+  w.AKM_initHero = initHero;
 
   function footer() {
     return '<footer class="site-foot"><div class="inner">' +
@@ -49,9 +103,6 @@
       '<p class="fnote">Lesson resources for the Uzbekistan national programme and Cambridge Lower ' +
       'Secondary Mathematics. Built around 40-minute lessons: explanation, guided practice, ' +
       '21 graded problems and short homework.</p>' +
-      '<p class="fnote">Textbooks referenced — <em>Algebra 8</em>, Alimov · Xalmuxamedov · Mirzaxmedov ' +
-      '(O‘qituvchi, 2019) · <em>Geometry 8</em>, Rahimkariev · Toxtaxodjaeva (2019) · ' +
-      '<em>Cambridge Lower Secondary Mathematics 9</em>, Learner’s Book &amp; Workbook.</p>' +
       '</div></footer>';
   }
 
@@ -79,6 +130,8 @@
     var f = document.getElementById('site-footer');
     if (f) f.outerHTML = footer();
     theme();
+    navBehaviour();
+    initHero();
   }
 
   function qs(name) {

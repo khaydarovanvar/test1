@@ -25,15 +25,17 @@
 <script src="assets/interactive.js"></script>
 <script src="assets/lesson.js"></script>
 <script src="data/grades.js"></script>
-<script src="data/g8-alg-q1.js"></script>
-<script src="data/g8-geo-q1.js"></script>
+<script src="data/g8-alg.js"></script>
+<script src="data/g8-geo.js"></script>
 <script>
 AKM.mount('');
 (function(){
-  var all = [].concat(window.G8_ALG_Q1 || [], window.G8_GEO_Q1 || []);
+  var all = [].concat(window.G8_ALG || [], window.G8_GEO || []);
   var id = AKM.qs('t') || (all[0] && all[0].id);
   var T = all.filter(function(x){return x.id===id;})[0];
-  var index = all.map(function(x){return {id:x.id,title:x.title};});
+  /* the topic switcher lists the same stream and quarter, in teaching order */
+  var index = (T ? all.filter(function(x){ return x.stream===T.stream && x.quarter===T.quarter; }) : all)
+    .map(function(x){return {id:x.id,title:x.title,group:'L '+x.lessons};});
   if (!T) {
     document.getElementById('lmain').innerHTML =
       '<div style="padding:60px 0"><h2>Lesson not found</h2>' +

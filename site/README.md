@@ -22,37 +22,59 @@ python3 site/build-standalone.py
 
 ```
 site/
-  index.html         home — brand, grade tiles, lesson anatomy
+  index.html         home — 3D hero, grade tiles, lesson anatomy
   grades.html        grades 5–11 hub and roadmap
-  grade.html?g=8     grade page — streams, quarters, topic list
+  grade.html?g=8     grade page — streams, quarter tabs, topic list
   lesson.html?t=ID   one topic page, rendered from data
   about.html         how a lesson is built
-  standalone.html    generated: the whole site in one file
+  standalone.html    generated: the whole site in one file (hash routing)
+  build-standalone.py   builds standalone.html
+  build-pdf.mjs         renders every lesson to a printable PDF
   assets/
-    styles.css       design tokens, typography, components (light + dark)
-    pages.css        page and lesson layouts
-    app.js           logo, header, footer, theme toggle
+    styles.css       design tokens, typography, components, print, light + dark
+    pages.css        3D hero, page and lesson layouts, mobile rules
+    app.js           logo, header, footer, mobile nav, theme, 3D hero engine
     mathfmt.js       inline maths helpers — fractions, roots, powers
-    figures.js       24 SVG geometry figures, themed
-    interactive.js   11 interactive models (draggable geometry, sliders, quizzes)
+    figures.js       34 SVG figures, themed for light and dark
+    interactive.js   15 interactive models
     lesson.js        renders a topic page from its data object
   data/
     grades.js        the grade 5–11 index
-    g8-alg-q1.js     Grade 8 Algebra, Quarter I — 10 topics, 27 lessons
-    g8-geo-q1.js     Grade 8 Geometry, Quarter I — 13 topics, 18 lessons
+    g8-alg.js        Grade 8 Algebra — all written quarters
+    g8-geo.js        Grade 8 Geometry — all written quarters
+  pdf/               generated: one PDF per lesson + one booklet per quarter
 ```
 
 ## What is written
 
-| Stream | Topics | Lessons | Problems |
-|---|---:|---:|---:|
-| Grade 8 Algebra, Quarter I | 10 | 27 | 210 |
-| Grade 8 Geometry, Quarter I | 13 | 18 | 273 |
-| **Total** | **23** | **45** | **483** |
+| Stream | Quarter | Topics | Lessons | Problems |
+|---|---|---:|---:|---:|
+| Grade 8 Algebra | I | 10 | 27 | 210 |
+| Grade 8 Geometry | I | 13 | 18 | 273 |
+| Grade 8 Algebra | II | 10 | 21 | 210 |
+| Grade 8 Geometry | II | 10 | 14 | 210 |
+| **Total** | | **43** | **80** | **903** |
 
 Every topic page contains: a 40-minute lesson clock, learning objectives, an explanation with drawn
-figures, worked examples with reasoned steps, one interactive model, a quick check, 21 practice
-problems (7 easy / 7 medium / 7 hard) with revealable answers, and homework.
+figures, worked examples with reasoned steps, one interactive model, an English / Uzbek / Russian
+terminology table, a quick check, 21 practice problems (7 easy / 7 medium / 7 hard) with revealable
+answers, and homework.
+
+## Navigation
+
+Every lesson page carries a back button to the grade page, a dropdown listing every topic in the same
+stream and quarter, and previous / next arrows. On phones a sticky bar at the foot of the page gives
+previous, all topics and next.
+
+## PDFs
+
+`python3 -m http.server` is not needed — the builder reads the files directly:
+
+```
+node site/build-pdf.mjs      # one A4 PDF per lesson, answers shown, into site/pdf/
+```
+
+Booklets (one per stream and quarter) are merged from those with `pypdf`.
 
 ## Adding a topic
 
@@ -63,6 +85,7 @@ Push a new object onto the array in the matching data file. Required fields:
   id, stream, grade, quarter, lessons, hours, title, subtitle,
   uz, uzPage, cam, camPage, wb,     // textbook references
   objectives: [],                    // 3–4 statements
+  terms: [[english, uzbek, russian], ...],   // 7–12 rows
   timing: [[min, 'label'], ...],     // optional; defaults to 5/12/8/13/2
   sections: [{ h, html }],           // html may contain {{fig:name:caption}}
   examples: [{ q, steps: [[step, why]], ans }],

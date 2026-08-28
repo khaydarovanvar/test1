@@ -1,10 +1,10 @@
 /* Grade 8 · Geometry · Quarter I (18 hours)
    National backbone: Rahimkariev & Toxtaxodjaeva, "Geometry 8" (2019), Chapter I.
    Cambridge references: Lower Secondary Mathematics Stage 9. */
-var G8_GEO_Q1 = [];
+var G8_GEO = [];
 
 /* ============================== 1 ============================== */
-G8_GEO_Q1.push({
+G8_GEO.push({
   id: 'geo-01', stream: 'geo', grade: 8, quarter: 1, lessons: '1–2', hours: 2,
   title: 'Revision of the Grade 7 course',
   subtitle: 'Angles on parallel lines, the angle sum of a triangle, isosceles triangles and the congruence tests — the facts every proof this quarter will quote.',
@@ -17,6 +17,20 @@ G8_GEO_Q1.push({
     'Quote the four congruence tests correctly (SSS, SAS, ASA, RHS).'
   ],
   timing: [[5, 'Warm-up'], [14, 'Explanation'], [7, 'Interactive'], [12, 'Practice'], [2, 'Homework']],
+  terms: [
+    ['Angle', 'Burchak', 'Угол'],
+    ['Vertex', 'Uchi', 'Вершина'],
+    ['Parallel lines', 'Parallel to‘g‘ri chiziqlar', 'Параллельные прямые'],
+    ['Transversal', 'Kesuvchi', 'Секущая'],
+    ['Corresponding angles', 'Mos burchaklar', 'Соответственные углы'],
+    ['Alternate angles', 'Almashinuvchi burchaklar', 'Накрест лежащие углы'],
+    ['Co-interior angles', 'Ichki bir tomonli burchaklar', 'Односторонние углы'],
+    ['Isosceles triangle', 'Teng yonli uchburchak', 'Равнобедренный треугольник'],
+    ['Congruent', 'Teng (mos)', 'Равные'],
+    ['Median', 'Mediana', 'Медиана'],
+    ['Bisector', 'Bissektrisa', 'Биссектриса'],
+    ['Altitude (height)', 'Balandlik', 'Высота'],
+  ],
   sections: [
     {
       h: 'Why these four facts',
@@ -144,7 +158,7 @@ G8_GEO_Q1.push({
 });
 
 /* ============================== 2 ============================== */
-G8_GEO_Q1.push({
+G8_GEO.push({
   id: 'geo-02', stream: 'geo', grade: 8, quarter: 1, lessons: '3–4', hours: 2,
   title: 'Polygons. Interior and exterior angles',
   subtitle: 'Splitting a polygon into triangles gives 180°(n − 2) — and the exterior angles always add to 360°, however many sides there are.',
@@ -155,6 +169,18 @@ G8_GEO_Q1.push({
     'Distinguish convex from non-convex polygons.',
     'Derive and use ' + m('180°(n − 2)') + ' for the sum of the interior angles.',
     'Use the fact that the exterior angles of any convex polygon add to ' + m('360°') + '.'
+  ],
+  terms: [
+    ['Polygon', 'Ko‘pburchak', 'Многоугольник'],
+    ['Convex', 'Qavariq', 'Выпуклый'],
+    ['Side', 'Tomon', 'Сторона'],
+    ['Diagonal', 'Diagonal', 'Диагональ'],
+    ['Interior angle', 'Ichki burchak', 'Внутренний угол'],
+    ['Exterior angle', 'Tashqi burchak', 'Внешний угол'],
+    ['Regular polygon', 'Muntazam ko‘pburchak', 'Правильный многоугольник'],
+    ['Sum of the angles', 'Burchaklar yig‘indisi', 'Сумма углов'],
+    ['Pentagon', 'Beshburchak', 'Пятиугольник'],
+    ['Hexagon', 'Oltiburchak', 'Шестиугольник'],
   ],
   sections: [
     {
@@ -289,7 +315,7 @@ G8_GEO_Q1.push({
 });
 
 /* ============================== 3 ============================== */
-G8_GEO_Q1.push({
+G8_GEO.push({
   id: 'geo-03', stream: 'geo', grade: 8, quarter: 1, lessons: '5', hours: 1,
   title: 'Parallelogram and its properties',
   subtitle: 'One definition — both pairs of opposite sides parallel — and three properties that follow from a single pair of congruent triangles.',
@@ -302,6 +328,16 @@ G8_GEO_Q1.push({
     'Solve numerical problems on sides, angles and perimeter.'
   ],
   timing: [[4, 'Warm-up'], [13, 'Explanation'], [8, 'Interactive'], [13, 'Practice'], [2, 'Homework']],
+  terms: [
+    ['Parallelogram', 'Parallelogramm', 'Параллелограмм'],
+    ['Opposite sides', 'Qarama-qarshi tomonlar', 'Противоположные стороны'],
+    ['Opposite angles', 'Qarama-qarshi burchaklar', 'Противоположные углы'],
+    ['Adjacent angles', 'Qo‘shni burchaklar', 'Прилежащие углы'],
+    ['The diagonals bisect each other', 'Diagonallar bir-birini teng ikkiga bo‘ladi', 'Диагонали делятся пополам'],
+    ['Perimeter', 'Perimetr', 'Периметр'],
+    ['Property', 'Xossa', 'Свойство'],
+    ['Proof', 'Isbot', 'Доказательство'],
+  ],
   sections: [
     {
       h: 'The definition',
@@ -416,7 +452,7 @@ G8_GEO_Q1.push({
       [m('The diagonals of a parallelogram are 16 cm and 12 cm and one side is 10 cm. Find the perimeter, given the diagonals are perpendicular.'), 'Perpendicular diagonals make it a rhombus, so all sides are ' + m('10 cm') + ' and ' + m('P = 40 cm') + '.'],
       [m('In parallelogram ABCD the perpendicular from B to AD has length 6 and AD = 9. Find the area.'), m('S = 9 · 6 = 54') + ' square units.'],
       [m('Prove that if the diagonals of a quadrilateral bisect each other, the opposite sides are equal.'), m('△AOB ≅ △COD') + ' by SAS (vertically opposite angles), so ' + m('AB = CD') + '; similarly ' + m('BC = AD') + '.'],
-      [m('The sum of two angles of a parallelogram is 180°. What can you say about them?'), 'They are neighbouring angles — opposite angles are equal, so their sum is ' + m('180°') + ' only when both are ' + m('90°') + '.']
+      [m('In parallelogram ABCD, ∠A is three times ∠B. Find all four angles.'), m('∠A = ∠C = 135°, ∠B = ∠D = 45°')]
     ]
   },
   hwTitle: 'Homework — 5 problems',
@@ -431,7 +467,7 @@ G8_GEO_Q1.push({
 });
 
 /* ============================== 4 ============================== */
-G8_GEO_Q1.push({
+G8_GEO.push({
   id: 'geo-04', stream: 'geo', grade: 8, quarter: 1, lessons: '6', hours: 1,
   title: 'Tests for a parallelogram',
   subtitle: 'The properties run backwards: three conditions, any one of which is enough to guarantee that a quadrilateral is a parallelogram.',
@@ -444,6 +480,16 @@ G8_GEO_Q1.push({
     'Recognise a condition that is <em>not</em> sufficient.'
   ],
   timing: [[4, 'Warm-up'], [14, 'Explanation'], [7, 'Interactive'], [13, 'Practice'], [2, 'Homework']],
+  terms: [
+    ['Test (criterion)', 'Alomat', 'Признак'],
+    ['Sufficient condition', 'Yetarli shart', 'Достаточное условие'],
+    ['Necessary condition', 'Zarur shart', 'Необходимое условие'],
+    ['Converse statement', 'Teskari tasdiq', 'Обратное утверждение'],
+    ['Counter-example', 'Qarshi misol', 'Контрпример'],
+    ['Quadrilateral', 'To‘rtburchak', 'Четырёхугольник'],
+    ['Trapezium', 'Trapetsiya', 'Трапеция'],
+    ['Kite', 'Deltoid', 'Дельтоид'],
+  ],
   sections: [
     {
       h: 'Property or test?',
@@ -609,7 +655,7 @@ G8_GEO_Q1.push({
       [m('The diagonals of ABCD meet at O and △AOB ≅ △COD. Must ABCD be a parallelogram?'), 'Yes if the congruence pairs ' + m('AO') + ' with ' + m('CO') + ' and ' + m('BO') + ' with ' + m('DO') + ' — then the diagonals bisect each other.'],
       [m('Prove that if the opposite angles of a quadrilateral are equal, it is a parallelogram.'), m('2∠A + 2∠B = 360°') + ', so ' + m('∠A + ∠B = 180°') + ' — co-interior angles make the sides parallel.'],
       [m('Give a quadrilateral with AB = CD, AD = BC that is not a parallelogram, or explain why none exists.'), 'None exists — Test 2 proves every such quadrilateral is a parallelogram (for a simple, non-crossed quadrilateral).'],
-      [m('P, Q, R, S are the midpoints of the sides of any quadrilateral. Prove PQRS is a parallelogram.'), 'Draw a diagonal: ' + m('PQ') + ' and ' + m('SR') + ' are both midlines parallel to it and half its length — Test 1.'],
+      [m('E is the midpoint of AB and F of DC in parallelogram ABCD. Prove AEFD is a parallelogram.'), m('AE = ' + f('1', '2') + 'AB = ' + f('1', '2') + 'DC = DF') + ' and ' + m('AE ∥ DF') + ' — Test 1.'],
       [m('In parallelogram ABCD, points E and F lie on the diagonal AC with AE = FC. Prove BEDF is a parallelogram.'), 'The diagonals ' + m('BD') + ' and ' + m('EF') + ' share the midpoint ' + m('O') + ' of ' + m('AC') + ', so they bisect each other — Test 3.']
     ]
   },
@@ -625,7 +671,7 @@ G8_GEO_Q1.push({
 });
 
 /* ============================== 5 ============================== */
-G8_GEO_Q1.push({
+G8_GEO.push({
   id: 'geo-05', stream: 'geo', grade: 8, quarter: 1, lessons: '7', hours: 1,
   title: 'Rectangle and its properties',
   subtitle: 'A parallelogram with one right angle — which turns out to force all four, and makes the diagonals equal.',
@@ -638,6 +684,15 @@ G8_GEO_Q1.push({
     'Apply Pythagoras to find a diagonal from the sides.'
   ],
   timing: [[4, 'Warm-up'], [12, 'Explanation'], [8, 'Interactive'], [14, 'Practice'], [2, 'Homework']],
+  terms: [
+    ['Rectangle', 'To‘g‘ri to‘rtburchak', 'Прямоугольник'],
+    ['Right angle', 'To‘g‘ri burchak', 'Прямой угол'],
+    ['Equal diagonals', 'Teng diagonallar', 'Равные диагонали'],
+    ['Area', 'Yuza', 'Площадь'],
+    ['Pythagoras’ theorem', 'Pifagor teoremasi', 'Теорема Пифагора'],
+    ['Hypotenuse', 'Gipotenuza', 'Гипотенуза'],
+    ['Circumscribed circle', 'Tashqi chizilgan aylana', 'Описанная окружность'],
+  ],
   sections: [
     {
       h: 'Definition',
@@ -765,7 +820,7 @@ G8_GEO_Q1.push({
 });
 
 /* ============================== 6 ============================== */
-G8_GEO_Q1.push({
+G8_GEO.push({
   id: 'geo-06', stream: 'geo', grade: 8, quarter: 1, lessons: '8–9', hours: 2,
   title: 'Rhombus and square',
   subtitle: 'A parallelogram with equal sides, and the shape that is a rectangle and a rhombus at the same time.',
@@ -778,6 +833,15 @@ G8_GEO_Q1.push({
     'Place every quadrilateral of Chapter I correctly in the family tree.'
   ],
   timing: [[5, 'Warm-up'], [13, 'Explanation'], [8, 'Interactive'], [12, 'Practice'], [2, 'Homework']],
+  terms: [
+    ['Rhombus', 'Romb', 'Ромб'],
+    ['Square', 'Kvadrat', 'Квадрат'],
+    ['Perpendicular', 'Perpendikulyar', 'Перпендикулярный'],
+    ['Bisects the angle', 'Burchakni teng ikkiga bo‘ladi', 'Делит угол пополам'],
+    ['Half-diagonal', 'Diagonalning yarmi', 'Половина диагонали'],
+    ['Equal sides', 'Teng tomonlar', 'Равные стороны'],
+    ['Classification', 'Tasnif', 'Классификация'],
+  ],
   sections: [
     {
       h: 'The rhombus',
@@ -893,7 +957,7 @@ G8_GEO_Q1.push({
       [m('The diagonals of a square are 14 cm. Find its side, perimeter and area.'), m('a = 7' + sr('2')) + ', ' + m('P = 28' + sr('2') + ' cm') + ', ' + m('S = 98 cm²')],
       [m('A rhombus has one angle of 120° and side 6 cm. Find both diagonals.'), 'Shorter ' + m('= 6 cm') + ' (equilateral half), longer ' + m('= 6' + sr('3') + ' cm')],
       [m('Prove that the midpoints of the sides of a rectangle form a rhombus.'), 'Each side of the new quadrilateral is a midline equal to half a diagonal, and the diagonals of a rectangle are equal — so all four sides are equal.'],
-      [m('Show that a rhombus and a square with the same side have the same perimeter but different areas.'), 'Both perimeters are ' + m('4a') + '; the area ' + m('a<sup>2</sup>sin θ') + ' is largest when ' + m('θ = 90°') + ', i.e. for the square.']
+      [m('A square and a rhombus both have side 8 cm. Compare their perimeters, and explain why their areas can differ.'), 'Both perimeters are ' + m('32 cm') + '. The rhombus can be flattened, which reduces its height and so its area; the square is the tallest case.']
     ]
   },
   hwTitle: 'Homework — 6 problems',
@@ -909,7 +973,7 @@ G8_GEO_Q1.push({
 });
 
 /* ============================== 7 ============================== */
-G8_GEO_Q1.push({
+G8_GEO.push({
   id: 'geo-07', stream: 'geo', grade: 8, quarter: 1, lessons: '10–11', hours: 2,
   title: 'Trapezium and the isosceles trapezium',
   subtitle: 'Exactly one pair of parallel sides — and what happens when the two legs are made equal.',
@@ -922,6 +986,16 @@ G8_GEO_Q1.push({
     'Recognise a right-angled trapezium and solve problems using its height.'
   ],
   timing: [[5, 'Warm-up'], [13, 'Explanation'], [8, 'Interactive'], [12, 'Practice'], [2, 'Homework']],
+  terms: [
+    ['Trapezium', 'Trapetsiya', 'Трапеция'],
+    ['Base of a trapezium', 'Trapetsiya asosi', 'Основание трапеции'],
+    ['Leg (lateral side)', 'Yon tomon', 'Боковая сторона'],
+    ['Height', 'Balandlik', 'Высота'],
+    ['Isosceles trapezium', 'Teng yonli trapetsiya', 'Равнобедренная трапеция'],
+    ['Right-angled trapezium', 'To‘g‘ri burchakli trapetsiya', 'Прямоугольная трапеция'],
+    ['Midline', 'O‘rta chiziq', 'Средняя линия'],
+    ['Half-sum', 'Yarim yig‘indi', 'Полусумма'],
+  ],
   sections: [
     {
       h: 'Definition and parts',
@@ -1039,9 +1113,9 @@ G8_GEO_Q1.push({
       [m('Prove that a trapezium with equal base angles is isosceles.'), 'Drop the two heights: the right triangles are congruent by ASA, so the legs are equal.'],
       [m('An isosceles trapezium has diagonals that are perpendicular, bases 6 cm and 10 cm. Find its height and area.'), 'Perpendicular diagonals give ' + m('h = ' + f('a + b', '2') + ' = 8 cm') + ' and ' + m('S = 8 · 8 = 64 cm²') + '.'],
       [m('In trapezium ABCD, AD ∥ BC, BC = 6 cm, and the diagonal AC bisects ∠A. Prove that AB = BC and find AB.'), m('∠CAD = ∠ACB') + ' (alternate angles) and ' + m('∠CAD = ∠CAB') + ' (bisector), so ' + m('∠CAB = ∠ACB') + ' and ' + m('△ABC') + ' is isosceles: ' + m('AB = BC = 6 cm') + '.'],
-      [m('The bases of a trapezium are 7 cm and 15 cm and the legs are 5 cm and 5√5 cm. Find the height.'), 'Let the feet cut off ' + m('x') + ' and ' + m('8 − x') + ': ' + m('25 − x<sup>2</sup> = 125 − (8 − x)<sup>2</sup>') + ' gives ' + m('x = 3') + ' and ' + m('h = 4 cm') + '.'],
+      [m('An isosceles trapezium has bases 9 cm and 21 cm and legs 10 cm. Find its height and area.'), m(f('21 − 9', '2') + ' = 6') + ', so ' + m('h = 8 cm') + ' and ' + m('S = 120 cm²') + '.'],
       [m('Prove that the diagonals of an isosceles trapezium are equal.'), m('△ABD ≅ △DCA') + ' by SAS: ' + m('AD') + ' common, ' + m('AB = DC') + ', ' + m('∠A = ∠D') + '.'],
-      [m('An isosceles trapezium is circumscribed about a circle with bases 4 cm and 16 cm. Find its legs and perimeter.'), 'Tangency gives ' + m('a + b = 2 × leg') + ', so each leg is ' + m('10 cm') + ' and ' + m('P = 40 cm') + '.'],
+      [m('An isosceles trapezium has perimeter 48 cm, bases 10 cm and 18 cm. Find each leg and the height.'), 'legs ' + m('10 cm') + '; ' + m(f('18 − 10', '2') + ' = 4') + ', so ' + m('h = ' + sr('100 − 16') + ' = 2' + sr('21') + ' ≈ 9.2 cm') + '.'],
       [m('Show that the height of an isosceles trapezium with bases a, b and leg c is ' + sr('c<sup>2</sup> − (' + fs('a − b', '2') + ')<sup>2</sup>')), 'Each right triangle has hypotenuse ' + m('c') + ' and horizontal leg ' + m(f('a − b', '2')) + '; Pythagoras gives the height.']
     ]
   },
@@ -1058,7 +1132,7 @@ G8_GEO_Q1.push({
 });
 
 /* ============================== 8 ============================== */
-G8_GEO_Q1.push({
+G8_GEO.push({
   id: 'geo-08', stream: 'geo', grade: 8, quarter: 1, lessons: '12', hours: 1,
   title: 'Thales’ theorem',
   subtitle: 'Parallel lines cutting equal pieces from one transversal cut equal pieces from every other transversal.',
@@ -1071,6 +1145,16 @@ G8_GEO_Q1.push({
     'Recognise when the theorem does <em>not</em> apply.'
   ],
   timing: [[4, 'Warm-up'], [13, 'Explanation'], [8, 'Interactive'], [13, 'Practice'], [2, 'Homework']],
+  terms: [
+    ['Thales’ theorem', 'Fales teoremasi', 'Теорема Фалеса'],
+    ['Transversal', 'Kesuvchi', 'Секущая'],
+    ['Equal segments', 'Teng kesmalar', 'Равные отрезки'],
+    ['Proportional', 'Proporsional', 'Пропорциональный'],
+    ['Ratio', 'Nisbat', 'Отношение'],
+    ['Divide a segment', 'Kesmani bo‘lish', 'Разделить отрезок'],
+    ['Construction', 'Yasash', 'Построение'],
+    ['Ray', 'Nur', 'Луч'],
+  ],
   sections: [
     {
       h: 'The theorem',
@@ -1198,7 +1282,7 @@ G8_GEO_Q1.push({
 });
 
 /* ============================== 9 ============================== */
-G8_GEO_Q1.push({
+G8_GEO.push({
   id: 'geo-09', stream: 'geo', grade: 8, quarter: 1, lessons: '13–14', hours: 2,
   title: 'Applications of Thales’ theorem',
   subtitle: 'The theorem inside a triangle: proportional segments, the line through a midpoint, and the measurements you cannot reach with a tape.',
@@ -1211,6 +1295,16 @@ G8_GEO_Q1.push({
     'Solve practical measuring problems using proportional segments.'
   ],
   timing: [[5, 'Warm-up'], [12, 'Explanation'], [8, 'Interactive'], [13, 'Practice'], [2, 'Homework']],
+  terms: [
+    ['Proportion', 'Proporsiya', 'Пропорция'],
+    ['Cross-multiply', 'Krest-nakrest ko‘paytirish', 'Умножить крест-накрест'],
+    ['Midpoint', 'O‘rta nuqta', 'Середина'],
+    ['Scale', 'Masshtab', 'Масштаб'],
+    ['Shadow', 'Soya', 'Тень'],
+    ['Similar triangles', 'O‘xshash uchburchaklar', 'Подобные треугольники'],
+    ['Part to whole', 'Qism-butunga nisbat', 'Отношение части к целому'],
+    ['Part to part', 'Qism-qismga nisbat', 'Отношение части к части'],
+  ],
   sections: [
     {
       h: 'Thales inside a triangle',
@@ -1383,7 +1477,7 @@ G8_GEO_Q1.push({
 });
 
 /* ============================== 10 ============================== */
-G8_GEO_Q1.push({
+G8_GEO.push({
   id: 'geo-10', stream: 'geo', grade: 8, quarter: 1, lessons: '15', hours: 1,
   title: 'The midline of a triangle and of a trapezium',
   subtitle: 'Two theorems with one idea: join the midpoints and you get a segment parallel to the base, of exactly the average length.',
@@ -1396,6 +1490,15 @@ G8_GEO_Q1.push({
     'Use midlines to solve length problems and to prove other results.'
   ],
   timing: [[4, 'Warm-up'], [13, 'Explanation'], [8, 'Interactive'], [13, 'Practice'], [2, 'Homework']],
+  terms: [
+    ['Midline of a triangle', 'Uchburchakning o‘rta chizig‘i', 'Средняя линия треугольника'],
+    ['Midline of a trapezium', 'Trapetsiyaning o‘rta chizig‘i', 'Средняя линия трапеции'],
+    ['Midpoint', 'O‘rta nuqta', 'Середина'],
+    ['Half-sum', 'Yarim yig‘indi', 'Полусумма'],
+    ['Corollary', 'Natija', 'Следствие'],
+    ['Congruent triangles', 'Teng uchburchaklar', 'Равные треугольники'],
+    ['Parallel', 'Parallel', 'Параллельный'],
+  ],
   sections: [
     {
       h: 'The midline of a triangle',
@@ -1506,7 +1609,7 @@ G8_GEO_Q1.push({
       [m('Prove the midline theorem for a triangle.'), 'Extend ' + m('MN') + ' to ' + m('P') + ' with ' + m('NP = MN') + '; ' + m('△ANM ≅ △CNP') + ' by SAS makes ' + m('MBCP') + ' a parallelogram, so ' + m('MP = BC') + ' and ' + m('MN') + ' is half of it.'],
       [m('Prove that the midline of a trapezium equals the half-sum of the bases.'), 'The diagonal ' + m('BD') + ' splits ' + m('MN') + ' into two triangle midlines of lengths ' + m(f('a', '2')) + ' and ' + m(f('b', '2')) + '.'],
       [m('The midlines of a triangle cut it into four triangles. Compare their areas with the original.'), 'Each is ' + m(f('1', '4')) + ' of the original area, and all four are congruent.'],
-      [m('In trapezium ABCD the midline is 14 and the segment joining the midpoints of the diagonals is 3. Find the bases.'), 'Midline ' + m('= ' + f('a + b', '2') + ' = 14') + ' and the diagonal midpoint segment ' + m('= ' + f('a − b', '2') + ' = 3') + ', so ' + m('a = 17, b = 11') + '.'],
+      [m('The midline of a trapezium is 14 cm and the bases are in the ratio 3 : 4. Find both bases.'), m('a + b = 28') + ' in the ratio ' + m('3 : 4') + ': ' + m('12 cm') + ' and ' + m('16 cm') + '.'],
       [m('P, Q, R, S are the midpoints of the sides of any quadrilateral. Prove PQRS is a parallelogram.'), m('PQ') + ' and ' + m('SR') + ' are both midlines parallel to the diagonal ' + m('AC') + ' and equal to half of it.'],
       [m('The midline of a triangle divides it into a triangle and a trapezium. Compare their areas.'), 'The small triangle is ' + m(f('1', '4')) + ' of the whole, so the trapezium is ' + m(f('3', '4')) + ' — a ratio of ' + m('1 : 3') + '.'],
       [m('A trapezium has midline 8 and the two bases differ by 4. Find the area if the height is 7.'), 'Bases ' + m('6') + ' and ' + m('10') + '; ' + m('S = 8 · 7 = 56') + '.']
@@ -1524,7 +1627,7 @@ G8_GEO_Q1.push({
 });
 
 /* ============================== 11 ============================== */
-G8_GEO_Q1.push({
+G8_GEO.push({
   id: 'geo-11', stream: 'geo', grade: 8, quarter: 1, lessons: '16', hours: 1,
   title: 'Practical tasks — ruler-and-compass constructions',
   subtitle: 'The national “practical tasks” lesson, carrying the Cambridge Stage 9 constructions the national programme does not cover.',
@@ -1537,6 +1640,18 @@ G8_GEO_Q1.push({
     'Use a construction to solve a practical placement problem.'
   ],
   timing: [[4, 'Warm-up'], [10, 'Explanation'], [10, 'Construct'], [14, 'Practice'], [2, 'Homework']],
+  terms: [
+    ['Compasses', 'Sirkul', 'Циркуль'],
+    ['Straight edge', 'Chizg‘ich', 'Линейка'],
+    ['Arc', 'Yoy', 'Дуга'],
+    ['Radius', 'Radius', 'Радиус'],
+    ['Perpendicular bisector', 'O‘rta perpendikulyar', 'Серединный перпендикуляр'],
+    ['Angle bisector', 'Burchak bissektrisasi', 'Биссектриса угла'],
+    ['Locus', 'Geometrik o‘rin', 'Геометрическое место точек'],
+    ['Equidistant', 'Teng uzoqlikda', 'Равноудалённый'],
+    ['Circumcentre', 'Tashqi aylana markazi', 'Центр описанной окружности'],
+    ['Incentre', 'Ichki aylana markazi', 'Центр вписанной окружности'],
+  ],
   sections: [
     {
       h: 'The rules of the game',
@@ -1700,7 +1815,7 @@ G8_GEO_Q1.push({
       [m('A treasure is 4 cm from point A and equidistant from B and C. Describe the construction.'), 'Circle of radius 4 cm about ' + m('A') + ', intersected with the perpendicular bisector of ' + m('BC') + ' — up to two positions.'],
       [m('Prove that the perpendicular bisectors of the three sides of a triangle are concurrent.'), 'The intersection of two of them is equidistant from all three vertices, so it lies on the third as well.'],
       [m('Construct the tangent-length point: divide a 9 cm segment into 3 equal parts by construction.'), 'Thales’ construction: three equal steps on a ray, join the last to ' + m('B') + ', draw parallels.'],
-      [m('Why can a 20° angle not be constructed with ruler and compasses?'), 'It would trisect ' + m('60°') + ', and angle trisection is impossible with these tools.'],
+      [m('Construct an angle of 105° and explain your steps.'), m('90° + 15°') + ': build a perpendicular, then bisect ' + m('60°') + ' twice to get ' + m('15°') + ' and add it.'],
       [m('A path must be equidistant from two roads and 5 cm from a crossroads. Find the possible positions.'), 'Intersect the two angle bisectors with the circle of radius 5 cm — up to four points.']
     ]
   },
@@ -1716,7 +1831,7 @@ G8_GEO_Q1.push({
 });
 
 /* ============================== 12 ============================== */
-G8_GEO_Q1.push({
+G8_GEO.push({
   id: 'geo-12', stream: 'geo', grade: 8, quarter: 1, lessons: '17', hours: 1,
   title: 'Chapter revision — angles in polygons',
   subtitle: 'The whole of Chapter I pulled together, in the shape of Cambridge Project 2, “Angle tangle”.',
@@ -1729,6 +1844,15 @@ G8_GEO_Q1.push({
     'Identify personal gaps before the control work.'
   ],
   timing: [[4, 'Recall round'], [10, 'Project 2'], [8, 'Interactive'], [16, 'Mixed practice'], [2, 'Homework']],
+  terms: [
+    ['Revision', 'Takrorlash', 'Повторение'],
+    ['Investigation', 'Tadqiqot', 'Исследование'],
+    ['Predict', 'Bashorat qilish', 'Предсказать'],
+    ['Reflex angle', 'Yoyiq burchakdan katta burchak', 'Рефлексный угол'],
+    ['Justify', 'Asoslash', 'Обосновать'],
+    ['Regular polygon', 'Muntazam ko‘pburchak', 'Правильный многоугольник'],
+    ['Family tree', 'Tasnif sxemasi', 'Схема классификации'],
+  ],
   sections: [
     {
       h: 'The recall round — four minutes, no notes',
@@ -1846,7 +1970,7 @@ G8_GEO_Q1.push({
 });
 
 /* ============================== 13 ============================== */
-G8_GEO_Q1.push({
+G8_GEO.push({
   id: 'geo-13', stream: 'geo', grade: 8, quarter: 1, lessons: '18', hours: 1,
   title: 'Control work 1 · Quadrilaterals',
   subtitle: 'The Chapter I assessment: polygons, the four special quadrilaterals, Thales’ theorem and midlines.',
@@ -1858,6 +1982,15 @@ G8_GEO_Q1.push({
     'Draw and label a figure for every question.'
   ],
   timing: [[2, 'Setting up'], [36, 'The paper'], [2, 'Collect in']],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Figure (diagram)', 'Chizma', 'Чертёж'],
+    ['Reason (justification)', 'Asos', 'Обоснование'],
+    ['Error', 'Xato', 'Ошибка'],
+    ['Prove', 'Isbotlash', 'Доказать'],
+    ['Property', 'Xossa', 'Свойство'],
+    ['Test (criterion)', 'Alomat', 'Признак'],
+  ],
   sections: [
     {
       h: 'The paper — 40 minutes, 7 tasks, 14 marks',
@@ -1997,5 +2130,1496 @@ G8_GEO_Q1.push({
     m('Re-solve every task you lost marks on, with a labelled figure and a stated reason.'),
     m('Write out the four errors from the Hard set in your own words.'),
     m('Revise the properties of a right-angled triangle from Grade 7 — the next chapter opens with Pythagoras.')
+  ]
+});
+
+/* ==================================================================
+   QUARTER II · 14 hours
+   Geometry 8, Chapter II — relations between the sides and angles
+   of a right-angled triangle (Темы 15–30)
+   ================================================================== */
+
+/* ============================== 14 ============================== */
+G8_GEO.push({
+  id: 'geo-14', stream: 'geo', grade: 8, quarter: 2, lessons: '19', hours: 1,
+  title: 'Sine, cosine, tangent and cotangent of an acute angle',
+  subtitle: 'Four ratios of sides that depend only on the angle — the whole of trigonometry starts here.',
+  uz: 'Geometry 8, Тема 15', uzPage: 'Тема 15, pp. 35–37',
+  cam: 'Stage 9 · beyond', camPage: 'Extension beyond Stage 9', wb: '—',
+  objectives: [
+    'Name the hypotenuse and the sides opposite and adjacent to a given acute angle.',
+    'Define ' + m('sin, cos, tan, cot') + ' as ratios of sides.',
+    'Explain why the ratios depend on the angle and not on the size of the triangle.',
+    'Calculate the four ratios from given side lengths.'
+  ],
+  terms: [
+    ['Right-angled triangle', 'To‘g‘ri burchakli uchburchak', 'Прямоугольный треугольник'],
+    ['Hypotenuse', 'Gipotenuza', 'Гипотенуза'],
+    ['Leg (cathetus)', 'Katet', 'Катет'],
+    ['Opposite side', 'Qarshi yotgan katet', 'Противолежащий катет'],
+    ['Adjacent side', 'Yondosh katet', 'Прилежащий катет'],
+    ['Sine', 'Sinus', 'Синус'],
+    ['Cosine', 'Kosinus', 'Косинус'],
+    ['Tangent', 'Tangens', 'Тангенс'],
+    ['Cotangent', 'Kotangens', 'Котангенс'],
+    ['Ratio', 'Nisbat', 'Отношение'],
+    ['Acute angle', 'O‘tkir burchak', 'Острый угол']
+  ],
+  sections: [
+    {
+      h: 'Naming the sides',
+      html: `<p>In a right-angled triangle the side opposite the right angle is the <b>hypotenuse</b> —
+      always the longest. The other two are the <b>legs</b>.</p>
+      {{fig:rightTriangle:Right angle at C. The legs are a and b; the hypotenuse is c. Which leg is “opposite” depends on which acute angle you are looking at.}}
+      <p>Fix your attention on the acute angle ${m('α')} at ${m('A')}. Then:</p>
+      <ul>
+        <li>${m('a = BC')} is the side <b>opposite</b> ${m('α')} — it does not touch ${m('A')};</li>
+        <li>${m('b = AC')} is the side <b>adjacent</b> to ${m('α')} — it does touch ${m('A')}, and it is not the hypotenuse;</li>
+        <li>${m('c = AB')} is the <b>hypotenuse</b>.</li>
+      </ul>
+      <div class="warn"><span class="wl">“Opposite” moves</span>
+      Look at the other acute angle ${m('β')} and the roles swap: ${m('b')} becomes opposite and
+      ${m('a')} becomes adjacent. The hypotenuse never changes.</div>`
+    },
+    {
+      h: 'The four definitions',
+      html: `{{fig:trigRatios:The four ratios, all measured for the angle α at A.}}
+      ${eq(m('sin α = ' + f('opposite', 'hypotenuse') + ' = ' + f('a', 'c')) + ' &nbsp;&nbsp;&nbsp; ' +
+           m('cos α = ' + f('adjacent', 'hypotenuse') + ' = ' + f('b', 'c')), true)}
+      ${eq(m('tan α = ' + f('opposite', 'adjacent') + ' = ' + f('a', 'b')) + ' &nbsp;&nbsp;&nbsp; ' +
+           m('cot α = ' + f('adjacent', 'opposite') + ' = ' + f('b', 'a')), true)}
+      <p>Two immediate consequences, both worth saying aloud:</p>
+      <ul>
+        <li>${m('tan α · cot α = 1')} — the two are reciprocals.</li>
+        <li>${m('0 < sin α < 1')} and ${m('0 < cos α < 1')}, because a leg is always shorter than the
+        hypotenuse. A sine of 1.2 is always an arithmetic error.</li>
+      </ul>`
+    },
+    {
+      h: 'Why the ratios depend only on the angle',
+      html: `<p>Draw two right-angled triangles with the same acute angle ${m('α')}. Their third angles
+      are equal too (both ${m('90° − α')}), so the triangles are <b>similar</b> — one is an enlargement
+      of the other. Enlargement multiplies every side by the same scale factor, and in a ratio of two
+      sides that factor cancels.</p>
+      ${eq(m(f('a', 'c') + ' = ' + f('k · a', 'k · c')), true)}
+      <p>So ${m('sin α')} is a property of the <b>angle</b>, not of the triangle. That is exactly why a
+      single table of values can serve every right-angled triangle in the world.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: m('In a right triangle a = 3, b = 4, c = 5. Find sin α, cos α, tan α and cot α.'),
+      steps: [
+        [m('sin α = ' + f('a', 'c') + ' = ' + f('3', '5') + ' = 0.6'), 'Opposite over hypotenuse.'],
+        [m('cos α = ' + f('b', 'c') + ' = ' + f('4', '5') + ' = 0.8'), 'Adjacent over hypotenuse.'],
+        [m('tan α = ' + f('a', 'b') + ' = ' + f('3', '4') + ' = 0.75'), 'Opposite over adjacent.'],
+        [m('cot α = ' + f('b', 'a') + ' = ' + f('4', '3')), 'The reciprocal of the tangent.']
+      ],
+      ans: m('0.6, 0.8, 0.75, ' + f('4', '3'))
+    },
+    {
+      q: m('In a right triangle sin α = ' + f('5', '13') + '. Find cos α and tan α.'),
+      steps: [
+        [m('opposite = 5, hypotenuse = 13'), 'Read the ratio as two side lengths.'],
+        [m('b = ' + sr('13<sup>2</sup> − 5<sup>2</sup>') + ' = ' + sr('144') + ' = 12'), 'Pythagoras gives the third side.'],
+        [m('cos α = ' + f('12', '13')), ''],
+        [m('tan α = ' + f('5', '12')), '']
+      ],
+      ans: m('cos α = ' + f('12', '13') + ', tan α = ' + f('5', '12'))
+    }
+  ],
+  modelNote: 'Move the angle slider and watch the ratios change while the shape stays a right triangle.',
+  interactive: { type: 'rightTriangle' },
+  quiz: [
+    { q: m('sin α') + ' is:', a: [m(f('adjacent', 'hypotenuse')), m(f('opposite', 'hypotenuse')), m(f('opposite', 'adjacent')), m(f('hypotenuse', 'opposite'))], c: 1, why: 'Sine is opposite over hypotenuse.' },
+    { q: 'For an acute angle, ' + m('sin α') + ' is always:', a: ['greater than 1', 'between 0 and 1', 'equal to 1', 'negative'], c: 1, why: 'A leg is shorter than the hypotenuse.' },
+    { q: m('tan α · cot α') + ' equals:', a: [m('0'), m('1'), m('2'), m('sin α')], c: 1, why: 'They are reciprocals: (a/b)(b/a) = 1.' },
+    { q: 'Two right triangles have the same acute angle. Their sines are:', a: ['different', 'equal', 'reciprocal', 'not comparable'], c: 1, why: 'The triangles are similar, so the ratio is the same.' }
+  ],
+  practice: {
+    easy: [
+      [m('a = 3, c = 5. Find sin α.'), m('0.6')],
+      [m('b = 4, c = 5. Find cos α.'), m('0.8')],
+      [m('a = 3, b = 4. Find tan α.'), m('0.75')],
+      [m('a = 3, b = 4. Find cot α.'), m(f('4', '3'))],
+      [m('Which side is opposite the right angle?'), 'The hypotenuse.'],
+      [m('Can sin α = 1.2 for an acute angle?'), 'No — the sine of an acute angle is less than 1.'],
+      [m('a = 6, c = 10. Find sin α.'), m('0.6')]
+    ],
+    med: [
+      [m('a = 5, b = 12, c = 13. Find all four ratios for α.'), m('sin = ' + f('5', '13') + ', cos = ' + f('12', '13') + ', tan = ' + f('5', '12') + ', cot = ' + f('12', '5'))],
+      [m('sin α = ' + f('5', '13') + '. Find cos α.'), m(f('12', '13'))],
+      [m('cos α = ' + f('8', '17') + '. Find sin α.'), m(f('15', '17'))],
+      [m('tan α = ' + f('3', '4') + '. Find cot α.'), m(f('4', '3'))],
+      [m('a = 8, c = 17. Find b and cos α.'), m('b = 15') + ', ' + m('cos α = ' + f('15', '17'))],
+      [m('In the same triangle, write sin β in terms of the sides.'), m('sin β = ' + f('b', 'c'))],
+      [m('a = 9, b = 12. Find c and sin α.'), m('c = 15') + ', ' + m('sin α = 0.6')]
+    ],
+    hard: [
+      [m('sin α = ' + f('7', '25') + '. Find cos α, tan α and cot α.'), m('cos = ' + f('24', '25') + ', tan = ' + f('7', '24') + ', cot = ' + f('24', '7'))],
+      [m('tan α = 1. What is α, and what are sin α and cos α?'), m('α = 45°') + ', both ratios ' + m(f(sr('2'), '2'))],
+      [m('Show that sin α = cos β in a right triangle with acute angles α and β.'), 'Both equal ' + m(f('a', 'c')) + ' for the same leg, since the two angles are complementary.'],
+      [m('A right triangle has legs in the ratio 1 : 2. Find tan α for the smaller angle.'), m('tan α = ' + f('1', '2') + ' = 0.5')],
+      [m('c = 20 and sin α = 0.6. Find both legs.'), m('a = 12, b = 16')],
+      [m('Prove that tan α = ' + f('sin α', 'cos α')), m(f('a/c', 'b/c') + ' = ' + f('a', 'b') + ' = tan α'), ],
+      [m('A right triangle has cot α = 2.4. Find tan α and the ratio of the legs.'), m('tan α = ' + f('5', '12')) + '; legs in the ratio ' + m('5 : 12')]
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Тема 15, pp. 35–37. Draw and label a triangle for every question.',
+  homework: [
+    m('a = 7, b = 24, c = 25. Find the four ratios for α.'),
+    m('sin α = 0.8. Find cos α and tan α.'),
+    m('cos α = ' + f('20', '29') + '. Find sin α.'),
+    m('a = 15, c = 17. Find b, then tan α.'),
+    m('Explain in two sentences why sin α does not depend on the size of the triangle.')
+  ]
+});
+
+/* ============================== 15 ============================== */
+G8_GEO.push({
+  id: 'geo-15', stream: 'geo', grade: 8, quarter: 2, lessons: '20–21', hours: 2,
+  title: 'Pythagoras’ theorem, and different proofs of it',
+  subtitle: 'The most famous relation in mathematics, and three ways of seeing why it must be true.',
+  uz: 'Geometry 8, Тема 17', uzPage: 'Тема 17, pp. 41–43',
+  cam: 'Stage 9 · 5.5', camPage: 'Learner’s Book pp. 124–126', wb: 'Workbook 5.5',
+  objectives: [
+    'State Pythagoras’ theorem precisely.',
+    'Prove it by the square-rearrangement method.',
+    'Find the hypotenuse or a leg from the other two sides.',
+    'Recognise the common Pythagorean triples.'
+  ],
+  terms: [
+    ['Pythagoras’ theorem', 'Pifagor teoremasi', 'Теорема Пифагора'],
+    ['Hypotenuse', 'Gipotenuza', 'Гипотенуза'],
+    ['Leg (cathetus)', 'Katet', 'Катет'],
+    ['Square of a number', 'Sonning kvadrati', 'Квадрат числа'],
+    ['Area', 'Yuza', 'Площадь'],
+    ['Proof', 'Isbot', 'Доказательство'],
+    ['Rearrangement', 'Qayta joylashtirish', 'Перекладывание'],
+    ['Pythagorean triple', 'Pifagor uchligi', 'Пифагорова тройка'],
+    ['Right angle', 'To‘g‘ri burchak', 'Прямой угол']
+  ],
+  sections: [
+    {
+      h: 'The theorem',
+      html: `<div class="keybox"><div class="klabel">Theorem</div>
+      In a right-angled triangle the square of the hypotenuse equals the sum of the squares of the legs:
+      ${eq(m('a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>'))}</div>
+      {{fig:pythagorasSquares:The two smaller squares together have exactly the area of the large one.}}
+      <p>The picture is the statement: build a square on each side, and the two small ones together fill
+      the big one exactly.</p>`
+    },
+    {
+      h: 'Proof 1 — the rearrangement',
+      html: `{{fig:pythagorasProof:Four copies of the triangle inside a square of side a + b. What is left in the middle is a square of side c.}}
+      <p>Take a square of side ${m('a + b')} and place four copies of the right triangle inside it, one
+      in each corner. The area can be counted two ways:</p>
+      ${eq(m('(a + b)<sup>2</sup> = 4 · ' + f('1', '2') + 'ab + c<sup>2</sup>'), true)}
+      ${eq(m('a<sup>2</sup> + 2ab + b<sup>2</sup> = 2ab + c<sup>2</sup>'))}
+      ${eq(m('a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>') + ' &nbsp;∎')}
+      <p>The middle really is a square: each of its angles is ${m('180° − α − β = 180° − 90° = 90°')}, and
+      all four sides are hypotenuses of congruent triangles.</p>`
+    },
+    {
+      h: 'Proof 2 — by similar triangles',
+      html: `<p>Drop the height ${m('CH')} from the right angle onto the hypotenuse. It cuts the triangle
+      into two smaller triangles, each similar to the original (they share an acute angle and have a
+      right angle). Comparing sides gives ${m('a<sup>2</sup> = c · BH')} and
+      ${m('b<sup>2</sup> = c · AH')}. Adding:</p>
+      ${eq(m('a<sup>2</sup> + b<sup>2</sup> = c(BH + AH) = c · c = c<sup>2</sup>') + ' &nbsp;∎', true)}
+      <p>This proof is shorter, and it produces two useful formulas on the way.</p>`
+    },
+    {
+      h: 'Using the theorem',
+      html: `<p>To find the <b>hypotenuse</b>, add and take the root. To find a <b>leg</b>, subtract first:</p>
+      ${eq(m('c = ' + sr('a<sup>2</sup> + b<sup>2</sup>')) + ' &nbsp;&nbsp;&nbsp; ' +
+           m('a = ' + sr('c<sup>2</sup> − b<sup>2</sup>')), true)}
+      <div class="keybox"><div class="klabel">Triples worth recognising on sight</div>
+      ${m('3, 4, 5')} · ${m('5, 12, 13')} · ${m('8, 15, 17')} · ${m('7, 24, 25')} · ${m('20, 21, 29')}
+      — and every multiple of them, such as ${m('6, 8, 10')} and ${m('9, 12, 15')}.</div>
+      <div class="warn"><span class="wl">The hypotenuse is the longest side</span>
+      If your answer for ${m('c')} comes out smaller than a leg, you have added where you should have
+      subtracted.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'The legs of a right triangle are 9 cm and 12 cm. Find the hypotenuse.',
+      steps: [
+        [m('c<sup>2</sup> = 9<sup>2</sup> + 12<sup>2</sup>'), 'Pythagoras.'],
+        [m('= 81 + 144 = 225'), ''],
+        [m('c = ' + sr('225') + ' = 15 cm'), 'Recognise 9, 12, 15 — three times 3, 4, 5.']
+      ],
+      ans: m('15 cm')
+    },
+    {
+      q: 'The hypotenuse is 26 cm and one leg is 10 cm. Find the other leg.',
+      steps: [
+        [m('b<sup>2</sup> = 26<sup>2</sup> − 10<sup>2</sup>'), 'Looking for a leg, so subtract.'],
+        [m('= 676 − 100 = 576'), ''],
+        [m('b = 24 cm'), 'The triple 10, 24, 26 is twice 5, 12, 13.']
+      ],
+      ans: m('24 cm')
+    },
+    {
+      q: 'A ladder 5 m long leans against a wall with its foot 3 m from the wall. How high does it reach?',
+      steps: [
+        ['The wall, the ground and the ladder form a right triangle.', 'The ladder is the hypotenuse.'],
+        [m('h<sup>2</sup> = 5<sup>2</sup> − 3<sup>2</sup> = 25 − 9 = 16'), ''],
+        [m('h = 4 m'), '']
+      ],
+      ans: m('4 m')
+    }
+  ],
+  modelNote: 'Change both legs and watch a² + b² and c² stay equal to the last digit.',
+  interactive: { type: 'pythagoras' },
+  quiz: [
+    { q: 'Pythagoras’ theorem says:', a: [m('a + b = c'), m('a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>'), m('a<sup>2</sup> − b<sup>2</sup> = c<sup>2</sup>'), m('ab = c<sup>2</sup>')], c: 1, why: 'The squares of the legs add to the square of the hypotenuse.' },
+    { q: 'Legs 6 and 8. The hypotenuse is:', a: [m('10'), m('14'), m('48'), m('7')], c: 0, why: '36 + 64 = 100, so c = 10.' },
+    { q: 'Hypotenuse 13, one leg 5. The other leg is:', a: [m('8'), m('12'), m('18'), m('14')], c: 1, why: '169 − 25 = 144, so the leg is 12.' },
+    { q: 'Which is a Pythagorean triple?', a: [m('2, 3, 4'), m('5, 12, 13'), m('4, 5, 6'), m('6, 7, 8')], c: 1, why: '25 + 144 = 169 ✓' }
+  ],
+  practice: {
+    easy: [
+      [m('Legs 3 and 4. Find the hypotenuse.'), m('5')],
+      [m('Legs 6 and 8. Find the hypotenuse.'), m('10')],
+      [m('Legs 5 and 12. Find the hypotenuse.'), m('13')],
+      [m('Hypotenuse 5, one leg 3. Find the other leg.'), m('4')],
+      [m('Hypotenuse 13, one leg 12. Find the other leg.'), m('5')],
+      [m('Legs 9 and 12. Find the hypotenuse.'), m('15')],
+      [m('Is 3, 4, 5 a Pythagorean triple?'), 'Yes — ' + m('9 + 16 = 25') + '.']
+    ],
+    med: [
+      [m('Legs 8 and 15. Find the hypotenuse.'), m('17')],
+      [m('Legs 7 and 24. Find the hypotenuse.'), m('25')],
+      [m('Hypotenuse 26, one leg 10. Find the other leg.'), m('24')],
+      [m('Hypotenuse 17, one leg 8. Find the other leg.'), m('15')],
+      [m('A ladder 5 m long has its foot 3 m from a wall. How high does it reach?'), m('4 m')],
+      [m('A rectangle is 9 cm by 12 cm. Find its diagonal.'), m('15 cm')],
+      [m('Legs 1 and 1. Find the hypotenuse.'), m(sr('2'))]
+    ],
+    hard: [
+      [m('An isosceles triangle has equal sides 13 and base 10. Find its height.'), m('h = ' + sr('169 − 25') + ' = 12')],
+      [m('An equilateral triangle has side 6. Find its height.'), m('h = ' + sr('36 − 9') + ' = 3' + sr('3'))],
+      [m('A rhombus has diagonals 16 and 30. Find its side.'), m(sr('64 + 225') + ' = 17')],
+      [m('A right triangle has hypotenuse 20 and one leg 12. Find its area.'), 'other leg ' + m('16') + ', area ' + m('96')],
+      [m('A ladder 13 m long reaches 12 m up a wall. How far is its foot from the wall?'), m('5 m')],
+      [m('A trapezium has bases 6 and 16 and equal legs 13. Find its height.'), m(f('16 − 6', '2') + ' = 5') + ', so ' + m('h = 12')],
+      [m('Complete the proof: the middle shape in the rearrangement is a square. Why are its angles 90°?'), 'Each is ' + m('180° − α − β') + ', and ' + m('α + β = 90°') + ' in the right triangle.']
+    ]
+  },
+  hwTitle: 'Homework — 6 problems',
+  hwNote: 'Geometry 8, Тема 17, pp. 41–43. Draw a labelled figure for questions 4–6.',
+  homework: [
+    m('Legs 20 and 21. Find the hypotenuse.'),
+    m('Hypotenuse 25, one leg 7. Find the other leg.'),
+    m('A rectangle is 8 cm by 15 cm. Find its diagonal.'),
+    m('An isosceles triangle has equal sides 10 and base 12. Find its height.'),
+    m('A ladder 10 m long has its foot 6 m from a wall. How high does it reach?'),
+    m('Write out the rearrangement proof of Pythagoras’ theorem with a labelled figure.')
+  ]
+});
+
+/* ============================== 16 ============================== */
+G8_GEO.push({
+  id: 'geo-16', stream: 'geo', grade: 8, quarter: 2, lessons: '22–23', hours: 2,
+  title: 'The converse of Pythagoras’ theorem, and applications',
+  subtitle: 'Running the theorem backwards to test for a right angle — and using it on real shapes.',
+  uz: 'Geometry 8, Темы 18–19', uzPage: 'Темы 18–19, pp. 44–48',
+  cam: 'Stage 9 · 5.5', camPage: 'Learner’s Book pp. 124–126', wb: 'Workbook 5.5',
+  objectives: [
+    'State the converse of Pythagoras’ theorem and use it to test a triangle.',
+    'Classify a triangle as acute, right or obtuse from its three sides.',
+    'Apply Pythagoras to rectangles, rhombuses, trapeziums and isosceles triangles.',
+    'Solve practical distance problems.'
+  ],
+  terms: [
+    ['Converse theorem', 'Teskari teorema', 'Обратная теорема'],
+    ['Test for a right angle', 'To‘g‘ri burchak alomati', 'Признак прямого угла'],
+    ['Acute triangle', 'O‘tkir burchakli uchburchak', 'Остроугольный треугольник'],
+    ['Obtuse triangle', 'O‘tmas burchakli uchburchak', 'Тупоугольный треугольник'],
+    ['Longest side', 'Eng uzun tomon', 'Наибольшая сторона'],
+    ['Diagonal', 'Diagonal', 'Диагональ'],
+    ['Height', 'Balandlik', 'Высота'],
+    ['Distance', 'Masofa', 'Расстояние'],
+    ['Apply', 'Qo‘llash', 'Применить']
+  ],
+  sections: [
+    {
+      h: 'The converse',
+      html: `<div class="keybox"><div class="klabel">Converse theorem</div>
+      If the sides of a triangle satisfy ${m('a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>')}, where
+      ${m('c')} is the longest side, then the triangle is <b>right-angled</b>, with the right angle
+      opposite ${m('c')}.</div>
+      <p>The original theorem says “right angle ⟹ the relation”. The converse says “the relation ⟹ a
+      right angle”. Both are true here, but that is a piece of luck, not a rule — most theorems have a
+      false converse, which is exactly why the two directions get separate names.</p>
+      <p><b>How to use it.</b> Square all three sides. If the two smaller squares add to the largest, the
+      triangle is right-angled.</p>`
+    },
+    {
+      h: 'Classifying any triangle',
+      html: `<p>Comparing ${m('a<sup>2</sup> + b<sup>2</sup>')} with ${m('c<sup>2</sup>')} tells you more
+      than just “right or not”:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Comparison</th><th>The triangle is</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>${m('a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>')}</td><td>right-angled</td><td>${m('3, 4, 5')}</td></tr>
+        <tr><td>${m('a<sup>2</sup> + b<sup>2</sup> > c<sup>2</sup>')}</td><td>acute-angled</td><td>${m('4, 5, 6')}</td></tr>
+        <tr><td>${m('a<sup>2</sup> + b<sup>2</sup> < c<sup>2</sup>')}</td><td>obtuse-angled</td><td>${m('2, 3, 4')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Always test with the longest side as c</span>
+      For ${m('5, 12, 13')} the test is ${m('25 + 144 = 169')} ✓. Testing ${m('25 + 169')} against
+      ${m('144')} proves nothing.</div>`
+    },
+    {
+      h: 'The four standard applications',
+      html: `<ul>
+        <li><b>Diagonal of a rectangle.</b> ${m('d = ' + sr('a<sup>2</sup> + b<sup>2</sup>'))}.</li>
+        <li><b>Height of an isosceles triangle.</b> Drop the height to the base; it bisects the base,
+        so ${m('h = ' + sr('side<sup>2</sup> − (base/2)<sup>2</sup>'))}.</li>
+        <li><b>Side of a rhombus.</b> The half-diagonals are perpendicular legs:
+        ${m('a = ' + sr('(d₁/2)<sup>2</sup> + (d₂/2)<sup>2</sup>'))}.</li>
+        <li><b>Height of an isosceles trapezium.</b> Each end triangle has horizontal leg
+        ${m(f('a − b', '2'))}.</li>
+      </ul>
+      {{fig:ladder:The ladder problem: the wall, the ground and the ladder always form a right triangle.}}
+      <p>The practical version is always the same picture — a vertical, a horizontal and a slant.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Is the triangle with sides 8, 15, 17 right-angled?',
+      steps: [
+        [m('longest side c = 17'), 'Identify it first.'],
+        [m('8<sup>2</sup> + 15<sup>2</sup> = 64 + 225 = 289'), ''],
+        [m('17<sup>2</sup> = 289'), ''],
+        ['They are equal, so by the converse the triangle is right-angled.', 'The right angle is opposite the side 17.']
+      ],
+      ans: 'Yes — right-angled.'
+    },
+    {
+      q: 'Classify the triangle with sides 4, 5, 6.',
+      steps: [
+        [m('c = 6'), 'The longest side.'],
+        [m('4<sup>2</sup> + 5<sup>2</sup> = 16 + 25 = 41'), ''],
+        [m('6<sup>2</sup> = 36'), ''],
+        [m('41 > 36'), 'The sum of the smaller squares is larger.']
+      ],
+      ans: 'Acute-angled.'
+    },
+    {
+      q: 'A rhombus has diagonals 10 cm and 24 cm. Find its side and perimeter.',
+      steps: [
+        [m('half-diagonals 5 and 12'), 'The diagonals bisect each other.'],
+        ['They are perpendicular, so they are the legs of a right triangle.', 'The side of the rhombus is the hypotenuse.'],
+        [m('a = ' + sr('25 + 144') + ' = 13 cm'), ''],
+        [m('P = 4 · 13 = 52 cm'), '']
+      ],
+      ans: m('a = 13 cm, P = 52 cm')
+    }
+  ],
+  modelNote: 'Set the legs to 8 and 15 and read c — then ask the class to name the triple.',
+  interactive: { type: 'pythagoras', title: 'Test a triangle for a right angle' },
+  quiz: [
+    { q: 'Sides 9, 40, 41. The triangle is:', a: ['right-angled', 'acute', 'obtuse', 'impossible'], c: 0, why: '81 + 1600 = 1681 = 41².' },
+    { q: 'Sides 2, 3, 4. The triangle is:', a: ['right-angled', 'acute', 'obtuse', 'impossible'], c: 2, why: '4 + 9 = 13 < 16, so the largest angle is obtuse.' },
+    { q: 'To test sides 7, 24, 25 you compare:', a: [m('7<sup>2</sup> + 25<sup>2</sup>') + ' with ' + m('24<sup>2</sup>'), m('7<sup>2</sup> + 24<sup>2</sup>') + ' with ' + m('25<sup>2</sup>'), m('24<sup>2</sup> + 25<sup>2</sup>') + ' with ' + m('7<sup>2</sup>'), 'any of these'], c: 1, why: 'The longest side must be the one squared alone.' },
+    { q: 'A rhombus with diagonals 6 and 8 has side:', a: [m('5'), m('7'), m('10'), m('14')], c: 0, why: 'Half-diagonals 3 and 4 give hypotenuse 5.' }
+  ],
+  practice: {
+    easy: [
+      [m('Is 3, 4, 5 right-angled?'), 'Yes.'],
+      [m('Is 5, 12, 13 right-angled?'), 'Yes.'],
+      [m('Is 4, 5, 6 right-angled?'), 'No — it is acute.'],
+      [m('Is 2, 3, 4 right-angled?'), 'No — it is obtuse.'],
+      [m('A rectangle is 6 by 8. Find its diagonal.'), m('10')],
+      [m('A rhombus has diagonals 6 and 8. Find its side.'), m('5')],
+      [m('Which side must be squared alone in the test?'), 'The longest one.']
+    ],
+    med: [
+      [m('Is 8, 15, 17 right-angled?'), 'Yes.'],
+      [m('Classify the triangle with sides 4, 5, 6.'), 'Acute.'],
+      [m('Classify the triangle with sides 5, 6, 10.'), m('25 + 36 = 61 < 100') + ' — obtuse.'],
+      [m('A rhombus has diagonals 10 and 24. Find its side and perimeter.'), m('13') + ', ' + m('52')],
+      [m('An isosceles triangle has equal sides 10 and base 16. Find its height.'), m('6')],
+      [m('A rectangle has diagonal 25 and one side 7. Find the other side.'), m('24')],
+      [m('A ladder 17 m long has its foot 8 m from a wall. How high does it reach?'), m('15 m')]
+    ],
+    hard: [
+      [m('An isosceles trapezium has bases 8 and 20 and legs 10. Find its height and area.'), m(f('20 − 8', '2') + ' = 6') + ', ' + m('h = 8') + ', ' + m('S = 112')],
+      [m('An equilateral triangle has side 10. Find its height and area.'), m('h = 5' + sr('3')) + ', ' + m('S = 25' + sr('3'))],
+      [m('A right triangle has perimeter 30 and hypotenuse 13. Find its legs.'), m('a + b = 17') + ' and ' + m('a<sup>2</sup> + b<sup>2</sup> = 169') + ' give ' + m('ab = 60') + ': legs ' + m('5') + ' and ' + m('12') + '.'],
+      [m('Two points are 3 km east and 4 km north of a village. How far apart are they?'), m('5 km')],
+      [m('Show that 20, 21, 29 is a Pythagorean triple.'), m('400 + 441 = 841 = 29<sup>2</sup>')],
+      [m('A rhombus has side 25 and one diagonal 14. Find the other diagonal.'), 'half-diagonal ' + m(sr('625 − 49') + ' = 24') + ', so the diagonal is ' + m('48') + '.'],
+      [m('For which x is the triangle with sides 6, 8, x right-angled?'), m('x = 10') + ' (hypotenuse) or ' + m('x = 2' + sr('7')) + ' (leg).']
+    ]
+  },
+  hwTitle: 'Homework — 6 problems',
+  hwNote: 'Geometry 8, Темы 18–19, pp. 44–48.',
+  homework: [
+    m('Is 9, 12, 15 right-angled? Show the test.'),
+    m('Classify the triangle with sides 7, 8, 12.'),
+    m('A rhombus has diagonals 16 and 30. Find its side and perimeter.'),
+    m('An isosceles triangle has equal sides 17 and base 16. Find its height.'),
+    m('A rectangle has diagonal 41 and one side 9. Find the other side and the area.'),
+    m('A ladder 25 m long reaches 24 m up a wall. How far is its foot from the wall?')
+  ]
+});
+
+/* ============================== 17 ============================== */
+G8_GEO.push({
+  id: 'geo-17', stream: 'geo', grade: 8, quarter: 2, lessons: '24', hours: 1,
+  title: 'The basic trigonometric identity',
+  subtitle: 'Pythagoras’ theorem, divided through by c² — and suddenly it is a statement about angles.',
+  uz: 'Geometry 8, Темы 20–21', uzPage: 'Темы 20–21, pp. 49–51',
+  cam: 'Stage 9 · beyond', camPage: 'Extension beyond Stage 9', wb: '—',
+  objectives: [
+    'Derive ' + m('sin²α + cos²α = 1') + ' from Pythagoras’ theorem.',
+    'Find one ratio from another using the identity.',
+    'Use the corollaries ' + m('tan α = sin α / cos α') + ' and ' + m('tan α · cot α = 1') + '.',
+    'Choose the right sign — for an acute angle every ratio is positive.'
+  ],
+  terms: [
+    ['Identity', 'Ayniyat', 'Тождество'],
+    ['Basic trigonometric identity', 'Asosiy trigonometrik ayniyat', 'Основное тригонометрическое тождество'],
+    ['Corollary', 'Natija', 'Следствие'],
+    ['Square of the sine', 'Sinusning kvadrati', 'Квадрат синуса'],
+    ['Derive', 'Keltirib chiqarish', 'Вывести'],
+    ['Divide through', 'Hadma-had bo‘lish', 'Разделить почленно'],
+    ['Positive', 'Musbat', 'Положительный'],
+    ['Substitute', 'O‘rniga qo‘yish', 'Подставить']
+  ],
+  sections: [
+    {
+      h: 'The derivation',
+      html: `<p>Start from Pythagoras in the triangle of the last lesson and divide every term by
+      ${m('c<sup>2</sup>')}:</p>
+      ${eq(m('a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>'))}
+      ${eq(m(f('a<sup>2</sup>', 'c<sup>2</sup>') + ' + ' + f('b<sup>2</sup>', 'c<sup>2</sup>') + ' = 1'))}
+      ${eq(m('(' + f('a', 'c') + ')<sup>2</sup> + (' + f('b', 'c') + ')<sup>2</sup> = 1'))}
+      <div class="keybox"><div class="klabel">The basic trigonometric identity</div>
+      ${eq(m('sin<sup>2</sup>α + cos<sup>2</sup>α = 1'))}
+      true for <b>every</b> acute angle ${m('α')}.</div>
+      <p>Notation: ${m('sin<sup>2</sup>α')} means ${m('(sin α)<sup>2</sup>')}, never ${m('sin(α<sup>2</sup>)')}.</p>`
+    },
+    {
+      h: 'Three corollaries',
+      html: `${eq(m('sin α = ' + sr('1 − cos<sup>2</sup>α')) + ' &nbsp;&nbsp;·&nbsp;&nbsp; ' +
+           m('cos α = ' + sr('1 − sin<sup>2</sup>α')), true)}
+      <p>The positive root is the right one every time, because for an acute angle all four ratios are
+      positive.</p>
+      ${eq(m('tan α = ' + f('sin α', 'cos α')) + ' &nbsp;&nbsp;·&nbsp;&nbsp; ' +
+           m('cot α = ' + f('cos α', 'sin α')) + ' &nbsp;&nbsp;·&nbsp;&nbsp; ' +
+           m('tan α · cot α = 1'), true)}
+      <p>Proof of the first: ${m(f('sin α', 'cos α') + ' = ' + f('a/c', 'b/c') + ' = ' + f('a', 'b') + ' = tan α')}.
+      The ${m('c')} cancels.</p>`
+    },
+    {
+      h: 'Using it',
+      html: `<p>Given one ratio, the identity produces all the others without ever drawing a triangle:</p>
+      ${eq(m('sin α = 0.6 ⟹ cos<sup>2</sup>α = 1 − 0.36 = 0.64 ⟹ cos α = 0.8'), true)}
+      <p>and then ${m('tan α = ' + f('0.6', '0.8') + ' = 0.75')}.</p>
+      <div class="warn"><span class="wl">A quick sanity check</span>
+      Both ${m('sin α')} and ${m('cos α')} must lie strictly between 0 and 1, and
+      ${m('sin<sup>2</sup>α + cos<sup>2</sup>α')} must come to exactly 1. If it does not, go back.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: m('Given sin α = ' + f('3', '5') + ', find cos α and tan α.'),
+      steps: [
+        [m('cos<sup>2</sup>α = 1 − (' + f('3', '5') + ')<sup>2</sup> = 1 − ' + f('9', '25') + ' = ' + f('16', '25')), 'The identity.'],
+        [m('cos α = ' + f('4', '5')), 'Positive root — the angle is acute.'],
+        [m('tan α = ' + f('sin α', 'cos α') + ' = ' + f('3/5', '4/5') + ' = ' + f('3', '4')), '']
+      ],
+      ans: m('cos α = 0.8, tan α = 0.75')
+    },
+    {
+      q: m('Given cos α = ' + f('5', '13') + ', find sin α and cot α.'),
+      steps: [
+        [m('sin<sup>2</sup>α = 1 − ' + f('25', '169') + ' = ' + f('144', '169')), ''],
+        [m('sin α = ' + f('12', '13')), ''],
+        [m('cot α = ' + f('cos α', 'sin α') + ' = ' + f('5', '12')), '']
+      ],
+      ans: m('sin α = ' + f('12', '13') + ', cot α = ' + f('5', '12'))
+    },
+    {
+      q: m('Simplify (1 − sin α)(1 + sin α)'),
+      steps: [
+        [m('= 1 − sin<sup>2</sup>α'), 'Difference of two squares.'],
+        [m('sin<sup>2</sup>α + cos<sup>2</sup>α = 1'), 'so ' + m('1 − sin<sup>2</sup>α = cos<sup>2</sup>α')],
+        [m('= cos<sup>2</sup>α'), '']
+      ],
+      ans: m('cos<sup>2</sup>α')
+    }
+  ],
+  modelNote: 'Move the angle and watch sin² + cos² stay at 1.00 for every position.',
+  interactive: { type: 'rightTriangle', title: 'sin, cos and the identity' },
+  quiz: [
+    { q: m('sin<sup>2</sup>α + cos<sup>2</sup>α') + ' equals:', a: [m('0'), m('1'), m('2'), m('tan α')], c: 1, why: 'Pythagoras divided by c².' },
+    { q: 'If ' + m('sin α = 0.6') + ' then ' + m('cos α') + ' is:', a: [m('0.4'), m('0.8'), m('0.36'), m('1.4')], c: 1, why: 'cos²α = 1 − 0.36 = 0.64.' },
+    { q: m('tan α') + ' equals:', a: [m(f('cos α', 'sin α')), m(f('sin α', 'cos α')), m('sin α · cos α'), m('1 − cos α')], c: 1, why: 'The c cancels in (a/c) ÷ (b/c).' },
+    { q: m('1 − sin<sup>2</sup>α') + ' equals:', a: [m('cos<sup>2</sup>α'), m('tan<sup>2</sup>α'), m('sin α'), m('0')], c: 0, why: 'Rearrange the basic identity.' }
+  ],
+  practice: {
+    easy: [
+      [m('sin α = 0.6. Find cos α.'), m('0.8')],
+      [m('cos α = 0.8. Find sin α.'), m('0.6')],
+      [m('sin α = ' + f('3', '5') + '. Find cos α.'), m(f('4', '5'))],
+      [m('cos α = ' + f('12', '13') + '. Find sin α.'), m(f('5', '13'))],
+      [m('Simplify 1 − cos<sup>2</sup>α'), m('sin<sup>2</sup>α')],
+      [m('Simplify 1 − sin<sup>2</sup>α'), m('cos<sup>2</sup>α')],
+      [m('tan α · cot α = ?'), m('1')]
+    ],
+    med: [
+      [m('sin α = ' + f('3', '5') + '. Find cos α and tan α.'), m(f('4', '5')) + ', ' + m(f('3', '4'))],
+      [m('cos α = ' + f('5', '13') + '. Find sin α and cot α.'), m(f('12', '13')) + ', ' + m(f('5', '12'))],
+      [m('sin α = ' + f('8', '17') + '. Find cos α.'), m(f('15', '17'))],
+      [m('Simplify (1 − sin α)(1 + sin α)'), m('cos<sup>2</sup>α')],
+      [m('Simplify sin<sup>2</sup>α − 1'), m('−cos<sup>2</sup>α')],
+      [m('tan α = ' + f('3', '4') + '. Find cot α.'), m(f('4', '3'))],
+      [m('Simplify ' + f('sin α', 'cos α') + ' · cot α'), m('1')]
+    ],
+    hard: [
+      [m('sin α = ' + f('7', '25') + '. Find cos α, tan α and cot α.'), m(f('24', '25') + ', ' + f('7', '24') + ', ' + f('24', '7'))],
+      [m('Simplify sin<sup>2</sup>α + cos<sup>2</sup>α + tan α · cot α'), m('1 + 1 = 2')],
+      [m('Simplify (sin α + cos α)<sup>2</sup>'), m('1 + 2 sin α cos α')],
+      [m('Simplify (sin α + cos α)<sup>2</sup> + (sin α − cos α)<sup>2</sup>'), m('2')],
+      [m('Prove that ' + f('1', 'cos<sup>2</sup>α') + ' = 1 + tan<sup>2</sup>α'), 'Divide the basic identity by ' + m('cos<sup>2</sup>α') + '.'],
+      [m('tan α = 2. Find sin α and cos α.'), m('cos<sup>2</sup>α = ' + f('1', '5')) + ', so ' + m('cos α = ' + f('1', sr('5'))) + ' and ' + m('sin α = ' + f('2', sr('5')))],
+      [m('Simplify cos<sup>2</sup>α − sin<sup>2</sup>α + 2 sin<sup>2</sup>α'), m('1')]
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Темы 20–21, pp. 49–51.',
+  homework: [
+    m('sin α = ' + f('15', '17') + '. Find cos α and tan α.'),
+    m('cos α = 0.28. Find sin α.'),
+    m('Simplify (1 − cos α)(1 + cos α)'),
+    m('Simplify sin<sup>2</sup>α · cot α · tan α'),
+    m('Derive sin<sup>2</sup>α + cos<sup>2</sup>α = 1 from Pythagoras’ theorem, with a labelled figure.')
+  ]
+});
+
+/* ============================== 18 ============================== */
+G8_GEO.push({
+  id: 'geo-18', stream: 'geo', grade: 8, quarter: 2, lessons: '25', hours: 1,
+  title: 'Trigonometric functions of complementary angles',
+  subtitle: 'The two acute angles of a right triangle add to 90° — and that single fact swaps sine with cosine.',
+  uz: 'Geometry 8, Тема 22', uzPage: 'Тема 22, pp. 52–53',
+  cam: 'Stage 9 · beyond', camPage: 'Extension beyond Stage 9', wb: '—',
+  objectives: [
+    'Explain why the two acute angles of a right triangle are complementary.',
+    'Use ' + m('sin α = cos(90° − α)') + ' and ' + m('tan α = cot(90° − α)') + '.',
+    'Convert a ratio of a large acute angle into one of a small angle.',
+    'Simplify expressions that mix an angle with its complement.'
+  ],
+  terms: [
+    ['Complementary angles', 'To‘ldiruvchi burchaklar', 'Дополнительные углы'],
+    ['Sum of angles', 'Burchaklar yig‘indisi', 'Сумма углов'],
+    ['Co-function', 'Ko-funksiya', 'Кофункция'],
+    ['Convert', 'Aylantirish', 'Преобразовать'],
+    ['Acute angle', 'O‘tkir burchak', 'Острый угол'],
+    ['Equal ratios', 'Teng nisbatlar', 'Равные отношения'],
+    ['Simplify', 'Soddalashtirish', 'Упростить']
+  ],
+  sections: [
+    {
+      h: 'Why the angles are complementary',
+      html: `<p>In a right-angled triangle the three angles add to ${m('180°')} and one of them is
+      ${m('90°')}. So the two acute angles add to ${m('90°')}:</p>
+      ${eq(m('α + β = 90°') + ', that is ' + m('β = 90° − α'), true)}
+      <p>Two angles adding to ${m('90°')} are called <b>complementary</b>.</p>
+      {{fig:complementary:The same two legs serve both angles — but their roles as “opposite” and “adjacent” are exchanged.}}`
+    },
+    {
+      h: 'The exchange',
+      html: `<p>Look at the figure. For the angle ${m('α')}, the leg ${m('a')} is opposite and ${m('b')}
+      is adjacent. For the angle ${m('β = 90° − α')}, it is the other way round. So</p>
+      ${eq(m('sin α = ' + f('a', 'c') + ' = cos β = cos(90° − α)'), true)}
+      <div class="keybox"><div class="klabel">The four relations</div>
+      ${eq(m('sin α = cos(90° − α)') + ' &nbsp;&nbsp;·&nbsp;&nbsp; ' + m('cos α = sin(90° − α)'))}
+      ${eq(m('tan α = cot(90° − α)') + ' &nbsp;&nbsp;·&nbsp;&nbsp; ' + m('cot α = tan(90° − α)'))}
+      Each function turns into its <b>co</b>-function.</div>
+      <p>That is where the names come from: “cosine” is short for <em>complementi sinus</em> — the sine
+      of the complement.</p>`
+    },
+    {
+      h: 'What it is for',
+      html: `<p>Old tables only listed angles up to ${m('45°')}. Everything above that was read off the
+      same page using these relations:</p>
+      ${eq(m('sin 70° = cos 20°') + ' &nbsp;&nbsp;·&nbsp;&nbsp; ' + m('tan 80° = cot 10°'), true)}
+      <p>Even with a calculator the relations are worth knowing, because they simplify expressions
+      instantly:</p>
+      ${eq(m('sin<sup>2</sup>40° + sin<sup>2</sup>50° = sin<sup>2</sup>40° + cos<sup>2</sup>40° = 1'), true)}
+      <div class="warn"><span class="wl">Check the angles really are complementary</span>
+      ${m('40° + 50° = 90°')} ✓, so the swap is legal. For ${m('40°')} and ${m('60°')} it is not.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: m('Write sin 63° as a function of an angle below 45°.'),
+      steps: [
+        [m('90° − 63° = 27°'), 'Find the complement.'],
+        [m('sin 63° = cos 27°'), 'Sine becomes cosine.']
+      ],
+      ans: m('cos 27°')
+    },
+    {
+      q: m('Simplify sin<sup>2</sup>25° + sin<sup>2</sup>65°'),
+      steps: [
+        [m('25° + 65° = 90°'), 'The angles are complementary.'],
+        [m('sin 65° = cos 25°'), ''],
+        [m('= sin<sup>2</sup>25° + cos<sup>2</sup>25°'), ''],
+        [m('= 1'), 'The basic identity.']
+      ],
+      ans: m('1')
+    },
+    {
+      q: m('Simplify tan 35° · tan 55°'),
+      steps: [
+        [m('35° + 55° = 90°'), 'Complementary.'],
+        [m('tan 55° = cot 35°'), ''],
+        [m('tan 35° · cot 35° = 1'), 'They are reciprocals.']
+      ],
+      ans: m('1')
+    }
+  ],
+  modelNote: 'Set α to 30° and read both angles: the ratios at 30° and 60° are the same two numbers swapped.',
+  interactive: { type: 'rightTriangle', title: 'α and 90° − α in one triangle' },
+  quiz: [
+    { q: m('sin 70°') + ' equals:', a: [m('cos 70°'), m('cos 20°'), m('sin 20°'), m('tan 70°')], c: 1, why: '90° − 70° = 20°, and sine becomes cosine.' },
+    { q: 'Two acute angles of a right triangle:', a: ['are equal', 'add to 90°', 'add to 180°', 'are unrelated'], c: 1, why: 'The third angle takes 90° of the 180° total.' },
+    { q: m('tan 35° · tan 55°') + ' equals:', a: [m('0'), m('1'), m('2'), m('tan 90°')], c: 1, why: 'tan 55° = cot 35°, and tan · cot = 1.' },
+    { q: m('sin<sup>2</sup>40° + sin<sup>2</sup>50°') + ' equals:', a: [m('1'), m('2'), m('0'), m('sin<sup>2</sup>90°')], c: 0, why: 'sin 50° = cos 40°, then the basic identity.' }
+  ],
+  practice: {
+    easy: [
+      [m('Write sin 60° as a cosine.'), m('cos 30°')],
+      [m('Write cos 80° as a sine.'), m('sin 10°')],
+      [m('Write tan 70° as a cotangent.'), m('cot 20°')],
+      [m('Write cot 55° as a tangent.'), m('tan 35°')],
+      [m('Find the complement of 37°.'), m('53°')],
+      [m('α = 28°. Find β in a right triangle.'), m('62°')],
+      [m('sin 45° and cos 45° — are they equal?'), 'Yes, since ' + m('45°') + ' is its own complement.']
+    ],
+    med: [
+      [m('Write sin 63° as a function of an angle below 45°.'), m('cos 27°')],
+      [m('Write cos 18° as a sine.'), m('sin 72°')],
+      [m('Simplify sin<sup>2</sup>25° + sin<sup>2</sup>65°'), m('1')],
+      [m('Simplify tan 35° · tan 55°'), m('1')],
+      [m('Simplify ' + f('sin 40°', 'cos 50°')), m('1')],
+      [m('Simplify cos<sup>2</sup>15° + cos<sup>2</sup>75°'), m('1')],
+      [m('In a right triangle, sin α = 0.6. Find cos β.'), m('0.6') + ' — since ' + m('β = 90° − α')]
+    ],
+    hard: [
+      [m('Simplify sin<sup>2</sup>10° + sin<sup>2</sup>20° + sin<sup>2</sup>70° + sin<sup>2</sup>80°'), 'Pair 10° with 80° and 20° with 70°: ' + m('1 + 1 = 2')],
+      [m('Simplify tan 10° · tan 20° · tan 70° · tan 80°'), 'Pair 10° with 80° and 20° with 70°: ' + m('1 · 1 = 1')],
+      [m('Simplify ' + f('sin 32°', 'cos 58°') + ' + ' + f('cos 32°', 'sin 58°')), m('1 + 1 = 2')],
+      [m('Prove that sin α · cos(90° − α) + cos α · sin(90° − α) = 1'), 'Both terms become ' + m('sin<sup>2</sup>α') + ' and ' + m('cos<sup>2</sup>α') + '.'],
+      [m('If sin(2x) = cos(3x) and both angles are acute, find x.'), m('2x + 3x = 90°') + ', so ' + m('x = 18°') + '.'],
+      [m('Arrange sin 20°, sin 50°, cos 20°, cos 50° in increasing order.'), m('sin 20° < sin 50° = cos 40° < cos 20°') + '; and ' + m('cos 50° = sin 40°') + ', so the order is ' + m('sin 20° < cos 50° < sin 50° < cos 20°') + '.'],
+      [m('Simplify (sin 25° + cos 65°)<sup>2</sup>'), m('cos 65° = sin 25°') + ', so ' + m('(2 sin 25°)<sup>2</sup> = 4 sin<sup>2</sup>25°')]
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Тема 22, pp. 52–53.',
+  homework: [
+    m('Write sin 74°, cos 12° and tan 66° as functions of angles below 45°.'),
+    m('Simplify sin<sup>2</sup>31° + sin<sup>2</sup>59°'),
+    m('Simplify tan 22° · tan 68°'),
+    m('Simplify ' + f('cos 41°', 'sin 49°')),
+    m('If sin(3x) = cos(x + 10°) with both angles acute, find x.')
+  ]
+});
+
+/* ============================== 19 ============================== */
+G8_GEO.push({
+  id: 'geo-19', stream: 'geo', grade: 8, quarter: 2, lessons: '26', hours: 1,
+  title: 'The ratios for 30°, 45° and 60°',
+  subtitle: 'Three angles whose exact values come from half a square and half an equilateral triangle — and must be known by heart.',
+  uz: 'Geometry 8, Тема 23', uzPage: 'Тема 23, pp. 54–55',
+  cam: 'Stage 9 · beyond', camPage: 'Extension beyond Stage 9', wb: '—',
+  objectives: [
+    'Derive the exact ratios for ' + m('45°') + ' from half a square.',
+    'Derive the exact ratios for ' + m('30°') + ' and ' + m('60°') + ' from half an equilateral triangle.',
+    'Recall the table of exact values.',
+    'Use the exact values in calculations without a calculator.'
+  ],
+  terms: [
+    ['Exact value', 'Aniq qiymat', 'Точное значение'],
+    ['Half of a square', 'Kvadratning yarmi', 'Половина квадрата'],
+    ['Equilateral triangle', 'Teng tomonli uchburchak', 'Равносторонний треугольник'],
+    ['Table of values', 'Qiymatlar jadvali', 'Таблица значений'],
+    ['Special angle', 'Xos burchak', 'Специальный угол'],
+    ['Surd', 'Irratsional ildiz', 'Иррациональный корень'],
+    ['Derive', 'Keltirib chiqarish', 'Вывести'],
+    ['By heart', 'Yoddan', 'Наизусть']
+  ],
+  sections: [
+    {
+      h: 'The two triangles that give everything',
+      html: `{{fig:specialAngles:Half a unit square gives 45°; half an equilateral triangle of side 2 gives 30° and 60°.}}
+      <p><b>For 45°.</b> Cut a square of side 1 along a diagonal. The two legs are 1 and 1, and the
+      hypotenuse is ${m(sr('1 + 1') + ' = ' + sr('2'))}. So</p>
+      ${eq(m('sin 45° = cos 45° = ' + f('1', sr('2')) + ' = ' + f(sr('2'), '2')) + ' &nbsp;&nbsp;·&nbsp;&nbsp; ' +
+           m('tan 45° = cot 45° = 1'), true)}
+      <p><b>For 30° and 60°.</b> Cut an equilateral triangle of side 2 down its height. The base is
+      halved to 1, the hypotenuse stays 2, and the height is ${m(sr('4 − 1') + ' = ' + sr('3'))}. The
+      angles are ${m('30°')} and ${m('60°')}.</p>
+      ${eq(m('sin 30° = ' + f('1', '2')) + ' &nbsp;·&nbsp; ' + m('cos 30° = ' + f(sr('3'), '2')) +
+           ' &nbsp;·&nbsp; ' + m('sin 60° = ' + f(sr('3'), '2')) + ' &nbsp;·&nbsp; ' + m('cos 60° = ' + f('1', '2')), true)}`
+    },
+    {
+      h: 'The table',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>α</th><th>sin α</th><th>cos α</th><th>tan α</th><th>cot α</th></tr></thead>
+      <tbody>
+        <tr><td>${m('30°')}</td><td>${m(f('1', '2'))}</td><td>${m(f(sr('3'), '2'))}</td><td>${m(f(sr('3'), '3'))}</td><td>${m(sr('3'))}</td></tr>
+        <tr><td>${m('45°')}</td><td>${m(f(sr('2'), '2'))}</td><td>${m(f(sr('2'), '2'))}</td><td>${m('1')}</td><td>${m('1')}</td></tr>
+        <tr><td>${m('60°')}</td><td>${m(f(sr('3'), '2'))}</td><td>${m(f('1', '2'))}</td><td>${m(sr('3'))}</td><td>${m(f(sr('3'), '3'))}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">How to remember it</div>
+      Write ${m('1, 2, 3')} under ${m('30°, 45°, 60°')}, take the square root of each and divide by 2:
+      ${m(f(sr('1'), '2') + ' = ' + f('1', '2'))}, ${m(f(sr('2'), '2'))}, ${m(f(sr('3'), '2'))}. That is
+      the sine row. The cosine row is the same three numbers backwards.</div>
+      <p>Approximate values, for checking: ${m('sin 30° = 0.5')}, ${m('sin 45° ≈ 0.71')},
+      ${m('sin 60° ≈ 0.87')}.</p>`
+    },
+    {
+      h: 'Where they appear',
+      html: `<p>These three angles run through the whole of school geometry: the height of an
+      equilateral triangle (${m('h = a · sin 60° = ' + f('a' + sr('3'), '2'))}), the diagonal of a square
+      (${m('d = a' + sr('2'))}), the ${m('30°')} slope of a ramp, the shorter diagonal of a rhombus with a
+      ${m('60°')} angle.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: m('Find sin 30° + cos 60°'),
+      steps: [
+        [m('sin 30° = ' + f('1', '2')), 'From the table.'],
+        [m('cos 60° = ' + f('1', '2')), 'They are equal — 30° and 60° are complementary.'],
+        [m(f('1', '2') + ' + ' + f('1', '2') + ' = 1'), '']
+      ],
+      ans: m('1')
+    },
+    {
+      q: 'A right triangle has hypotenuse 10 and one angle 30°. Find both legs.',
+      steps: [
+        [m('a = c · sin 30° = 10 · ' + f('1', '2') + ' = 5'), 'The side opposite the 30°.'],
+        [m('b = c · cos 30° = 10 · ' + f(sr('3'), '2') + ' = 5' + sr('3')), ''],
+        [m('5' + sr('3') + ' ≈ 8.66'), 'Check: the shorter leg faces the smaller angle ✓']
+      ],
+      ans: m('5') + ' and ' + m('5' + sr('3') + ' ≈ 8.66')
+    },
+    {
+      q: m('Simplify 2 sin 30° · cos 60° + tan<sup>2</sup>45°'),
+      steps: [
+        [m('sin 30° = cos 60° = ' + f('1', '2')), ''],
+        [m('2 · ' + f('1', '2') + ' · ' + f('1', '2') + ' = ' + f('1', '2')), ''],
+        [m('tan 45° = 1, so tan<sup>2</sup>45° = 1'), ''],
+        [m(f('1', '2') + ' + 1 = 1.5'), '']
+      ],
+      ans: m('1.5')
+    }
+  ],
+  modelNote: 'Set the angle to 30°, 45° and 60° in turn and compare the readouts with the table.',
+  interactive: { type: 'rightTriangle', title: 'Check the table against the model' },
+  quiz: [
+    { q: m('sin 30°') + ' equals:', a: [m(f('1', '2')), m(f(sr('3'), '2')), m(f(sr('2'), '2')), m('1')], c: 0, why: 'Half an equilateral triangle: opposite 1, hypotenuse 2.' },
+    { q: m('cos 45°') + ' equals:', a: [m(f('1', '2')), m(f(sr('2'), '2')), m('1'), m(sr('2'))], c: 1, why: 'Legs 1 and 1, hypotenuse √2.' },
+    { q: m('tan 60°') + ' equals:', a: [m('1'), m(sr('3')), m(f(sr('3'), '3')), m(f('1', '2'))], c: 1, why: 'Opposite √3, adjacent 1.' },
+    { q: m('sin 60°') + ' equals:', a: [m('cos 30°'), m('cos 60°'), m('sin 30°'), m('tan 60°')], c: 0, why: '60° and 30° are complementary.' }
+  ],
+  practice: {
+    easy: [
+      [m('sin 30° = ?'), m(f('1', '2'))],
+      [m('cos 60° = ?'), m(f('1', '2'))],
+      [m('tan 45° = ?'), m('1')],
+      [m('sin 45° = ?'), m(f(sr('2'), '2'))],
+      [m('cos 30° = ?'), m(f(sr('3'), '2'))],
+      [m('tan 60° = ?'), m(sr('3'))],
+      [m('cot 45° = ?'), m('1')]
+    ],
+    med: [
+      [m('sin 30° + cos 60°'), m('1')],
+      [m('sin<sup>2</sup>45° + cos<sup>2</sup>45°'), m('1')],
+      [m('tan 30° · tan 60°'), m('1')],
+      [m('A right triangle has hypotenuse 10 and an angle of 30°. Find both legs.'), m('5') + ' and ' + m('5' + sr('3'))],
+      [m('A right triangle has hypotenuse 8 and an angle of 45°. Find both legs.'), m('4' + sr('2')) + ' each'],
+      [m('2 sin 60° = ?'), m(sr('3'))],
+      [m('An equilateral triangle has side 6. Find its height.'), m('3' + sr('3'))]
+    ],
+    hard: [
+      [m('Simplify 2 sin 30° · cos 60° + tan<sup>2</sup>45°'), m('1.5')],
+      [m('Simplify sin 60° · cos 30° + sin 30° · cos 60°'), m(f('3', '4') + ' + ' + f('1', '4') + ' = 1')],
+      [m('A ramp rises at 30° over a horizontal distance of 12 m. Find its height and length.'), m('h = 12 tan 30° = 4' + sr('3') + ' ≈ 6.93') + ', ' + m('ℓ = 8' + sr('3') + ' ≈ 13.86')],
+      [m('A rhombus has side 8 and an angle of 60°. Find its shorter diagonal.'), m('8') + ' — the triangle cut off is equilateral.'],
+      [m('Find the exact area of an equilateral triangle of side a.'), m('S = ' + f('a<sup>2</sup>' + sr('3'), '4'))],
+      [m('Simplify ' + f('sin 60°', 'cos 60°') + ' − tan 60°'), m('0')],
+      [m('A square has diagonal 10. Find its side exactly.'), m('5' + sr('2'))]
+    ]
+  },
+  hwTitle: 'Homework — 6 problems',
+  hwNote: 'Geometry 8, Тема 23, pp. 54–55. Learn the table before the next lesson.',
+  homework: [
+    m('Write out the table of values for 30°, 45° and 60° from memory.'),
+    m('Simplify sin 45° · cos 45°'),
+    m('A right triangle has hypotenuse 14 and an angle of 60°. Find both legs.'),
+    m('An equilateral triangle has side 12. Find its height and area exactly.'),
+    m('Simplify tan 45° + 2 cos 60°'),
+    m('A square has side 7. Find its diagonal exactly and to 2 decimal places.')
+  ]
+});
+
+/* ============================== 20 ============================== */
+G8_GEO.push({
+  id: 'geo-20', stream: 'geo', grade: 8, quarter: 2, lessons: '27–28', hours: 2,
+  title: 'The table of trigonometric values',
+  subtitle: 'Reading a ratio from an angle, and an angle from a ratio — on paper and on a calculator.',
+  uz: 'Geometry 8, Тема 24', uzPage: 'Тема 24, pp. 56–57',
+  cam: 'Stage 9 · beyond', camPage: 'Extension beyond Stage 9', wb: '—',
+  objectives: [
+    'Read a value from a four-figure table or a calculator.',
+    'Find the angle when the ratio is given (the inverse operation).',
+    'Know how each ratio behaves as the angle grows from 0° to 90°.',
+    'Estimate before calculating, and check the answer is sensible.'
+  ],
+  terms: [
+    ['Table of values', 'Qiymatlar jadvali', 'Таблица значений'],
+    ['Calculator', 'Kalkulyator', 'Калькулятор'],
+    ['Degree', 'Gradus', 'Градус'],
+    ['Minute (of arc)', 'Daqiqa', 'Минута'],
+    ['Inverse function', 'Teskari funksiya', 'Обратная функция'],
+    ['Increasing', 'O‘suvchi', 'Возрастающая'],
+    ['Decreasing', 'Kamayuvchi', 'Убывающая'],
+    ['Round', 'Yaxlitlash', 'Округлить'],
+    ['Approximate value', 'Taqribiy qiymat', 'Приближённое значение']
+  ],
+  sections: [
+    {
+      h: 'Reading the table',
+      html: `<p>A four-figure table gives ${m('sin')}, ${m('cos')}, ${m('tan')} and ${m('cot')} for every
+      angle from ${m('0°')} to ${m('90°')}, usually in steps of ${m('6′')} (six minutes of arc, one tenth
+      of a degree). Find the row for the whole degrees and the column for the minutes.</p>
+      <p>On a calculator, make sure it is in <b>degree mode</b> (the display shows DEG). Then
+      ${m('sin 37° = 0.6018…')}, ${m('cos 37° = 0.7986…')}, ${m('tan 37° = 0.7536…')}.</p>
+      <div class="warn"><span class="wl">Check the mode first, every time</span>
+      In radian mode ${m('sin 37')} gives ${m('−0.6435')} — a negative number, which is impossible for an
+      acute angle. A negative sine is always a mode error.</div>`
+    },
+    {
+      h: 'The inverse direction',
+      html: `<p>Given the ratio, find the angle. On the calculator this is the second function of the
+      same key, written ${m('sin<sup>−1</sup>')} or ${m('arcsin')}:</p>
+      ${eq(m('sin α = 0.5 ⟹ α = 30°') + ' &nbsp;·&nbsp; ' + m('tan α = 1 ⟹ α = 45°'), true)}
+      <p>In a table you read backwards: find the value in the body and go out to the edge for the angle.
+      If the exact value is not there, take the nearest — the answer is approximate anyway.</p>
+      <div class="warn"><span class="wl">Not a power</span>
+      ${m('sin<sup>−1</sup>x')} means “the angle whose sine is ${m('x')}”. It is <b>not</b>
+      ${m(f('1', 'sin x'))}.</div>`
+    },
+    {
+      h: 'How the ratios behave',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>α</th><th>0°</th><th>30°</th><th>45°</th><th>60°</th><th>90°</th><th>Behaviour</th></tr></thead>
+      <tbody>
+        <tr><td><b>sin α</b></td><td>0</td><td>0.500</td><td>0.707</td><td>0.866</td><td>1</td><td>increases</td></tr>
+        <tr><td><b>cos α</b></td><td>1</td><td>0.866</td><td>0.707</td><td>0.500</td><td>0</td><td>decreases</td></tr>
+        <tr><td><b>tan α</b></td><td>0</td><td>0.577</td><td>1</td><td>1.732</td><td>—</td><td>increases without limit</td></tr>
+        <tr><td><b>cot α</b></td><td>—</td><td>1.732</td><td>1</td><td>0.577</td><td>0</td><td>decreases</td></tr>
+      </tbody></table></div>
+      <p>Three facts to use as checks:</p>
+      <ul>
+        <li>${m('sin')} and ${m('cos')} are always between 0 and 1;</li>
+        <li>${m('tan')} passes through 1 at ${m('45°')} — below that it is less than 1, above it more;</li>
+        <li>as ${m('α')} grows, ${m('sin')} and ${m('tan')} grow while ${m('cos')} and ${m('cot')} shrink.</li>
+      </ul>`
+    }
+  ],
+  examples: [
+    {
+      q: m('Find sin 52° and use it to find the leg opposite 52° in a triangle with hypotenuse 20.'),
+      steps: [
+        [m('sin 52° ≈ 0.788'), 'From the table or calculator.'],
+        [m('a = c · sin α = 20 · 0.788'), ''],
+        [m('a ≈ 15.8'), 'Check: it is less than 20 ✓ and more than half of 20, as ' + m('52° > 30°') + ' ✓']
+      ],
+      ans: m('≈ 15.8')
+    },
+    {
+      q: m('Find the angle α if cos α = 0.4226.'),
+      steps: [
+        [m('cos α = 0.4226'), 'Given.'],
+        ['Read the table backwards, or press ' + m('cos<sup>−1</sup>') + '.', ''],
+        [m('α ≈ 65°'), 'Sensible: the cosine is under 0.5, so the angle is above ' + m('60°') + '.']
+      ],
+      ans: m('α ≈ 65°')
+    },
+    {
+      q: m('Without a table, decide whether sin 40° is bigger or smaller than cos 40°.'),
+      steps: [
+        [m('40° < 45°'), ''],
+        ['Below ' + m('45°') + ' the sine is the smaller of the two.', 'They are equal exactly at ' + m('45°') + '.'],
+        [m('sin 40° < cos 40°'), 'Check: ' + m('0.643 < 0.766') + ' ✓']
+      ],
+      ans: m('sin 40° < cos 40°')
+    }
+  ],
+  modelNote: 'Sweep the angle from 10° to 80° and read the three ratios changing — sine up, cosine down.',
+  interactive: { type: 'rightTriangle', title: 'How the ratios move with the angle' },
+  quiz: [
+    { q: 'As α grows from 0° to 90°, ' + m('cos α') + ':', a: ['increases', 'decreases', 'stays the same', 'increases then decreases'], c: 1, why: 'The adjacent side shrinks while the hypotenuse stays put.' },
+    { q: m('tan 50°') + ' is:', a: ['less than 1', 'equal to 1', 'greater than 1', 'negative'], c: 2, why: 'tan 45° = 1, and the tangent increases.' },
+    { q: m('sin<sup>−1</sup>(0.5)') + ' equals:', a: [m('2'), m('30°'), m('60°'), m('0.5')], c: 1, why: 'The angle whose sine is 0.5 is 30°.' },
+    { q: 'A calculator gives ' + m('sin 37 = −0.6435') + '. This means:', a: ['the angle is obtuse', 'the calculator is in radian mode', 'the sine can be negative', 'the answer is right'], c: 1, why: 'An acute angle always has a positive sine — check DEG mode.' }
+  ],
+  practice: {
+    easy: [
+      [m('Find sin 30° from the table.'), m('0.5')],
+      [m('Find cos 60°.'), m('0.5')],
+      [m('Find tan 45°.'), m('1')],
+      [m('Find sin 50° to 3 d.p.'), m('0.766')],
+      [m('Find cos 25° to 3 d.p.'), m('0.906')],
+      [m('Find α if sin α = 0.5.'), m('30°')],
+      [m('Find α if tan α = 1.'), m('45°')]
+    ],
+    med: [
+      [m('Find sin 52° to 3 d.p.'), m('0.788')],
+      [m('Find tan 68° to 3 d.p.'), m('2.475')],
+      [m('Find α if cos α = 0.4226.'), m('65°')],
+      [m('Find α if tan α = 0.5774.'), m('30°')],
+      [m('A triangle has hypotenuse 20 and an angle of 52°. Find the opposite leg.'), m('≈ 15.8')],
+      [m('A triangle has hypotenuse 15 and an angle of 40°. Find the adjacent leg.'), m('≈ 11.5')],
+      [m('Which is bigger, sin 40° or cos 40°?'), m('cos 40°')]
+    ],
+    hard: [
+      [m('Arrange in increasing order: sin 20°, sin 70°, cos 20°, cos 70°.'), m('cos 70° = sin 20° < sin 70° = cos 20°') + ', so ' + m('sin 20° = cos 70° < sin 70° = cos 20°')],
+      [m('For which acute angles is tan α > 1?'), m('45° < α < 90°')],
+      [m('A calculator shows sin x = 1.2. What has gone wrong?'), 'Impossible — the sine of an acute angle is under 1. A side has been divided the wrong way round.'],
+      [m('A ramp has length 20 m and rises 7 m. Find its angle of slope.'), m('sin α = 0.35') + ', so ' + m('α ≈ 20.5°')],
+      [m('A tower is 45 m tall and its shadow is 30 m. Find the angle of elevation of the sun.'), m('tan α = 1.5') + ', so ' + m('α ≈ 56.3°')],
+      [m('Explain why tan α has no value at 90°.'), 'The adjacent side would be 0, and division by 0 has no meaning.'],
+      [m('Estimate sin 33° without a table, using sin 30° and sin 45°.'), 'Between ' + m('0.5') + ' and ' + m('0.707') + ', nearer the first — about ' + m('0.54') + '. (True value ' + m('0.545') + '.)']
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Тема 24, pp. 56–57. Bring the table or a calculator in degree mode.',
+  homework: [
+    m('Find sin 28°, cos 28° and tan 28° to 3 decimal places.'),
+    m('Find α if sin α = 0.8660.'),
+    m('Find α if cos α = 0.7071.'),
+    m('A triangle has hypotenuse 25 and an angle of 36°. Find both legs.'),
+    m('Without a table, say which is bigger: tan 30° or cot 30°. Explain.')
+  ]
+});
+
+/* ============================== 21 ============================== */
+G8_GEO.push({
+  id: 'geo-21', stream: 'geo', grade: 8, quarter: 2, lessons: '29–30', hours: 2,
+  title: 'Solving right-angled triangles',
+  subtitle: 'Given any two parts, find the other three — the skill the whole chapter has been building towards.',
+  uz: 'Geometry 8, Темы 25–26', uzPage: 'Темы 25–26, pp. 58–61',
+  cam: 'Stage 9 · beyond', camPage: 'Extension beyond Stage 9', wb: '—',
+  objectives: [
+    'Solve a right triangle given two sides.',
+    'Solve a right triangle given one side and one acute angle.',
+    'Choose the ratio that uses the two parts you know.',
+    'Solve practical problems of height, distance and slope.'
+  ],
+  terms: [
+    ['Solve a triangle', 'Uchburchakni yechish', 'Решить треугольник'],
+    ['Given', 'Berilgan', 'Дано'],
+    ['Find', 'Topish kerak', 'Найти'],
+    ['Angle of elevation', 'Ko‘tarilish burchagi', 'Угол возвышения'],
+    ['Angle of depression', 'Pasayish burchagi', 'Угол понижения'],
+    ['Slope', 'Qiyalik', 'Уклон'],
+    ['Height', 'Balandlik', 'Высота'],
+    ['Horizontal distance', 'Gorizontal masofa', 'Горизонтальное расстояние'],
+    ['Accuracy', 'Aniqlik', 'Точность']
+  ],
+  sections: [
+    {
+      h: 'What “solving” means',
+      html: `<p>A right triangle has six parts: three sides and three angles. One angle is already known
+      (${m('90°')}). Given any <b>two more</b> — as long as at least one is a side — the other three
+      follow.</p>
+      {{fig:rightTriangle:Six parts, one of them always 90°. Two more are enough to fix everything.}}
+      <div class="keybox"><div class="klabel">Choosing the ratio</div>
+      Write down what you <b>know</b> and what you <b>want</b>, then pick the ratio containing exactly
+      those two sides:
+      <ul style="margin:.5em 0 0">
+        <li>opposite and hypotenuse → ${m('sin')}</li>
+        <li>adjacent and hypotenuse → ${m('cos')}</li>
+        <li>opposite and adjacent → ${m('tan')} (or ${m('cot')})</li>
+      </ul>
+      Two sides and no angle? Use Pythagoras first, or a ratio to get the angle.</div>`
+    },
+    {
+      h: 'The two standard cases',
+      html: `<p><b>Case 1 — two sides given.</b> Find the third by Pythagoras, then an angle from a ratio,
+      then the last angle by subtracting from ${m('90°')}.</p>
+      <p><b>Case 2 — one side and one acute angle given.</b> The other acute angle is
+      ${m('90° − α')} immediately. Then use the ratios to build the two missing sides:</p>
+      ${eq(m('a = c · sin α') + ' &nbsp;·&nbsp; ' + m('b = c · cos α') + ' &nbsp;·&nbsp; ' + m('a = b · tan α'), true)}
+      <div class="warn"><span class="wl">Multiply or divide?</span>
+      Going from the hypotenuse to a leg you <b>multiply</b> by a ratio (the answer gets smaller).
+      Going from a leg to the hypotenuse you <b>divide</b> (the answer gets bigger). If your hypotenuse
+      comes out shorter than a leg, you divided the wrong way.</div>`
+    },
+    {
+      h: 'Practical problems',
+      html: `{{fig:ladder:Every height-and-distance problem is this picture with different labels.}}
+      <ul>
+        <li><b>Angle of elevation</b> — measured <em>up</em> from the horizontal to the line of sight.</li>
+        <li><b>Angle of depression</b> — measured <em>down</em> from the horizontal.</li>
+      </ul>
+      <p>They are alternate angles between two horizontals, so the angle of depression from the top of a
+      tower equals the angle of elevation from the ground point. Draw the horizontal line at the
+      observer's eye before anything else — most mistakes in these problems are mistakes in the diagram,
+      not the trigonometry.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: m('Solve the right triangle with c = 20 and α = 35°.'),
+      steps: [
+        [m('β = 90° − 35° = 55°'), 'The other acute angle.'],
+        [m('a = c · sin α = 20 · 0.5736 ≈ 11.5'), 'Opposite and hypotenuse → sine.'],
+        [m('b = c · cos α = 20 · 0.8192 ≈ 16.4'), 'Adjacent and hypotenuse → cosine.'],
+        [m('check: 11.5<sup>2</sup> + 16.4<sup>2</sup> ≈ 400 ✓'), 'Pythagoras confirms it.']
+      ],
+      ans: m('β = 55°, a ≈ 11.5, b ≈ 16.4')
+    },
+    {
+      q: m('Solve the right triangle with legs a = 5 and b = 12.'),
+      steps: [
+        [m('c = ' + sr('25 + 144') + ' = 13'), 'Pythagoras.'],
+        [m('tan α = ' + f('5', '12') + ' ≈ 0.4167'), 'Two legs → tangent.'],
+        [m('α ≈ 22.6°'), 'Inverse tangent.'],
+        [m('β ≈ 67.4°'), m('90° − 22.6°')]
+      ],
+      ans: m('c = 13, α ≈ 22.6°, β ≈ 67.4°')
+    },
+    {
+      q: 'From a point 40 m from the foot of a tower the angle of elevation of its top is 38°. Find the height.',
+      steps: [
+        ['Draw the tower, the ground and the line of sight.', 'The tower is opposite the 38° angle.'],
+        [m('tan 38° = ' + f('h', '40')), 'Opposite and adjacent → tangent.'],
+        [m('h = 40 · tan 38° = 40 · 0.7813'), ''],
+        [m('h ≈ 31.3 m'), 'Sensible: less than the 40 m distance, since ' + m('38° < 45°') + ' ✓']
+      ],
+      ans: m('≈ 31.3 m')
+    }
+  ],
+  modelNote: 'Give the class two parts, let them predict the other three, then check with the model.',
+  interactive: { type: 'rightTriangle' },
+  quiz: [
+    { q: 'Given the hypotenuse and the angle, the opposite leg is:', a: [m('c · cos α'), m('c · sin α'), m(f('c', 'sin α')), m('c · tan α')], c: 1, why: 'sin α = opposite / hypotenuse.' },
+    { q: 'Given both legs, to find an angle use:', a: [m('sin'), m('cos'), m('tan'), 'Pythagoras'], c: 2, why: 'The tangent is the ratio of the two legs.' },
+    { q: 'A leg is 6 and the angle opposite it is 30°. The hypotenuse is:', a: [m('3'), m('12'), m('6' + sr('3')), m('2')], c: 1, why: 'c = a / sin 30° = 6 ÷ 0.5 = 12.' },
+    { q: 'The angle of depression from a tower top equals:', a: ['the angle of elevation from the ground point', 'half of it', 'its complement', 'nothing in particular'], c: 0, why: 'They are alternate angles between two horizontal lines.' }
+  ],
+  practice: {
+    easy: [
+      [m('c = 10, α = 30°. Find a.'), m('5')],
+      [m('c = 10, α = 30°. Find β.'), m('60°')],
+      [m('c = 8, α = 45°. Find a.'), m('4' + sr('2') + ' ≈ 5.66')],
+      [m('a = 3, b = 4. Find c.'), m('5')],
+      [m('a = 6, b = 6. Find α.'), m('45°')],
+      [m('c = 20, α = 60°. Find b.'), m('10')],
+      [m('α = 25°. Find β.'), m('65°')]
+    ],
+    med: [
+      [m('c = 20, α = 35°. Solve the triangle.'), m('β = 55°, a ≈ 11.5, b ≈ 16.4')],
+      [m('a = 5, b = 12. Solve the triangle.'), m('c = 13, α ≈ 22.6°, β ≈ 67.4°')],
+      [m('a = 7, c = 25. Find b and α.'), m('b = 24') + ', ' + m('α ≈ 16.3°')],
+      [m('b = 15, α = 40°. Find a.'), m('a = 15 tan 40° ≈ 12.6')],
+      [m('a = 9, α = 30°. Find c.'), m('18')],
+      [m('From 40 m away the angle of elevation of a tower top is 38°. Find its height.'), m('≈ 31.3 m')],
+      [m('A ladder 6 m long makes 65° with the ground. How high does it reach?'), m('≈ 5.4 m')]
+    ],
+    hard: [
+      [m('A ramp 15 m long rises 4 m. Find its angle of slope and its horizontal run.'), m('sin α = 0.267, α ≈ 15.5°') + ', run ' + m('≈ 14.5 m')],
+      [m('From the top of a 50 m cliff the angle of depression of a boat is 22°. How far is the boat from the foot?'), m(f('50', 'tan 22°') + ' ≈ 123.8 m')],
+      [m('An isosceles triangle has equal sides 10 and apex angle 40°. Find its base.'), 'Half-base ' + m('10 sin 20° ≈ 3.42') + ', so the base is ' + m('≈ 6.84') + '.'],
+      [m('A rhombus has side 12 and an angle of 70°. Find both diagonals.'), m('d₁ = 24 sin 35° ≈ 13.8') + ', ' + m('d₂ = 24 cos 35° ≈ 19.7')],
+      [m('Two people stand 100 m apart on opposite sides of a tower and see its top at 30° and 45°. Find the height.'), m('h cot 30° + h cot 45° = 100') + ', so ' + m('h ≈ 36.6 m')],
+      [m('A right triangle has area 24 and one leg 6. Find its angles.'), 'other leg ' + m('8') + ', ' + m('tan α = ' + f('8', '6')) + ', ' + m('α ≈ 53.1°, β ≈ 36.9°')],
+      [m('A regular hexagon has side 6. Find the distance between two opposite sides.'), m('2 · 6 sin 60° = 6' + sr('3') + ' ≈ 10.39')]
+    ]
+  },
+  hwTitle: 'Homework — 6 problems',
+  hwNote: 'Geometry 8, Темы 25–26, pp. 58–61. Draw and label a figure for every question.',
+  homework: [
+    m('c = 30, α = 25°. Solve the triangle.'),
+    m('a = 8, b = 15. Solve the triangle.'),
+    m('a = 12, α = 60°. Find c and b.'),
+    m('A ladder 8 m long makes 70° with the ground. How high does it reach?'),
+    m('From 60 m away the angle of elevation of a mast top is 42°. Find its height.'),
+    m('A ramp 20 m long rises 5 m. Find its angle of slope.')
+  ]
+});
+
+/* ============================== 22 ============================== */
+G8_GEO.push({
+  id: 'geo-22', stream: 'geo', grade: 8, quarter: 2, lessons: '31', hours: 1,
+  title: 'Practical tasks — bearings and scale drawings',
+  subtitle: 'The national “practical tasks” lesson, carrying the Cambridge Stage 9 topic of bearings.',
+  uz: 'Geometry 8, Тема 28', uzPage: 'Тема 28, pp. 64–66',
+  cam: 'Stage 9 · 13.1  [Cambridge insert]', camPage: 'Learner’s Book pp. 271–277', wb: 'Workbook 13.1',
+  objectives: [
+    'Measure and write a bearing as three figures from north, clockwise.',
+    'Find a back bearing.',
+    'Make and read a scale drawing.',
+    'Combine bearings with right-angle trigonometry to find a distance.'
+  ],
+  terms: [
+    ['Bearing', 'Azimut', 'Азимут'],
+    ['North', 'Shimol', 'Север'],
+    ['Clockwise', 'Soat yo‘nalishi bo‘yicha', 'По часовой стрелке'],
+    ['Back bearing', 'Teskari azimut', 'Обратный азимут'],
+    ['Scale', 'Masshtab', 'Масштаб'],
+    ['Scale drawing', 'Masshtabli chizma', 'Чертёж в масштабе'],
+    ['Compass', 'Kompas', 'Компас'],
+    ['Due east', 'Aniq sharq', 'Точно на восток'],
+    ['Protractor', 'Transportir', 'Транспортир']
+  ],
+  sections: [
+    {
+      h: 'What a bearing is',
+      html: `<div class="keybox"><div class="klabel">Definition</div>
+      A <b>bearing</b> is an angle measured <b>from north</b>, <b>clockwise</b>, and written with
+      <b>three figures</b>.</div>
+      {{fig:bearings:The bearing of B from A is 062° — measured from north, turning clockwise.}}
+      <p>All three parts matter. ${m('62°')} must be written ${m('062°')}; a bearing measured
+      anticlockwise or from another direction is simply wrong. The four cardinal directions are
+      ${m('000°')} (N), ${m('090°')} (E), ${m('180°')} (S) and ${m('270°')} (W).</p>
+      <div class="warn"><span class="wl">“The bearing of B from A”</span>
+      Stand at ${m('A')}, face north, and turn clockwise until you are looking at ${m('B')}. The point
+      you stand at is the one after the word “from”.</div>`
+    },
+    {
+      h: 'Back bearings',
+      html: `<p>The bearing of ${m('A')} from ${m('B')} is the <b>back bearing</b>. Because the two north
+      lines are parallel, the two bearings differ by exactly ${m('180°')}:</p>
+      ${eq(m('back bearing = bearing + 180°') + '&nbsp;&nbsp; (or ' + m('− 180°') + ' if that exceeds ' + m('360°') + ')', true)}
+      <p>Bearing ${m('062°')} → back bearing ${m('242°')}. Bearing ${m('310°')} → back bearing
+      ${m('130°')}.</p>`
+    },
+    {
+      h: 'Scale drawings',
+      html: `<p>A scale of ${m('1 : 50 000')} means 1 cm on the paper is 50 000 cm — that is 500 m — on
+      the ground. To make a scale drawing:</p>
+      <ol>
+        <li>Draw a north line at the starting point.</li>
+        <li>Measure the bearing with a protractor, clockwise from north.</li>
+        <li>Convert the real distance to a paper distance and mark it off.</li>
+        <li>Repeat from the new point, with a fresh north line.</li>
+      </ol>
+      <p>Then measure the answer off the drawing and convert back. A scale drawing gives a good enough
+      answer for most practical work — and it is a check on the trigonometry.</p>`
+    },
+    {
+      h: 'Bearings with trigonometry',
+      html: `<p>When the bearings are ${m('090°')} apart, the path makes a right angle and the whole of
+      this chapter applies.</p>
+      <p><b>Example.</b> A ship sails 8 km on a bearing of ${m('000°')} then 6 km on ${m('090°')}. The two
+      legs are perpendicular, so the distance from the start is ${m(sr('64 + 36') + ' = 10')} km, and its
+      bearing from the start is ${m('tan<sup>−1</sup>' + f('6', '8') + ' ≈ 037°')}.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'The bearing of B from A is 145°. Find the bearing of A from B.',
+      steps: [
+        [m('145° + 180° = 325°'), 'Add 180° for the back bearing.'],
+        [m('325° < 360°'), 'so no adjustment is needed.'],
+        [m('325°'), '']
+      ],
+      ans: m('325°')
+    },
+    {
+      q: 'A ship sails 12 km due north, then 5 km due east. Find its distance and bearing from the start.',
+      steps: [
+        ['North then east — the two legs are perpendicular.', ''],
+        [m('d = ' + sr('144 + 25') + ' = 13 km'), 'Pythagoras.'],
+        [m('tan α = ' + f('5', '12') + ' ≈ 0.4167'), 'East over north.'],
+        [m('α ≈ 22.6°, so the bearing is 023°'), 'Measured clockwise from north.']
+      ],
+      ans: m('13 km on a bearing of 023°')
+    },
+    {
+      q: 'On a map of scale 1 : 25 000 two towns are 7.2 cm apart. Find the real distance.',
+      steps: [
+        [m('1 cm → 25 000 cm'), 'The scale.'],
+        [m('25 000 cm = 250 m'), 'Convert to metres.'],
+        [m('7.2 · 250 = 1800 m'), ''],
+        [m('= 1.8 km'), '']
+      ],
+      ans: m('1.8 km')
+    }
+  ],
+  modelNote: 'Have a learner walk a bearing across the classroom while the class calls out the angle.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'Bearings, step by step',
+    hint: 'Pick a task and reveal the steps.',
+    items: [
+      {
+        title: 'The bearing of B from A is 062°. Find the back bearing.',
+        start: 'Bearing ' + m('062°') + '.',
+        steps: [
+          ['The two north lines are parallel, so the bearings differ by ' + m('180°') + '.', ''],
+          [m('062° + 180° = 242°'), ''],
+          ['Under ' + m('360°') + ', so no adjustment.', '']
+        ],
+        answer: m('242°')
+      },
+      {
+        title: 'The bearing of B from A is 310°. Find the back bearing.',
+        start: 'Bearing ' + m('310°') + '.',
+        steps: [
+          [m('310° + 180° = 490°'), 'Too big for a bearing.'],
+          [m('490° − 360° = 130°'), 'Subtract a full turn.'],
+          ['A bearing always lies between ' + m('000°') + ' and ' + m('360°') + '.', '']
+        ],
+        answer: m('130°')
+      },
+      {
+        title: 'North 8 km, then east 6 km — where are you?',
+        start: 'Two perpendicular legs.',
+        steps: [
+          [m('d = ' + sr('64 + 36') + ' = 10 km'), 'Pythagoras.'],
+          [m('tan α = ' + f('6', '8') + ' = 0.75'), 'East over north.'],
+          [m('α ≈ 36.9°'), ''],
+          ['Bearing ' + m('037°'), 'Three figures, clockwise from north.']
+        ],
+        answer: m('10 km on a bearing of 037°')
+      },
+      {
+        title: 'Scale 1 : 50 000, distance on the map 6.4 cm',
+        start: 'Convert to a real distance.',
+        steps: [
+          [m('1 cm → 50 000 cm'), ''],
+          [m('50 000 cm = 500 m = 0.5 km'), 'Convert once, carefully.'],
+          [m('6.4 · 0.5 = 3.2 km'), '']
+        ],
+        answer: m('3.2 km')
+      }
+    ]
+  },
+  quiz: [
+    { q: 'A bearing is measured:', a: ['from east, anticlockwise', 'from north, clockwise', 'from north, anticlockwise', 'from the horizontal'], c: 1, why: 'Always from north, clockwise, in three figures.' },
+    { q: 'Due west as a bearing is:', a: [m('090°'), m('180°'), m('270°'), m('360°')], c: 2, why: 'Three quarters of a turn clockwise from north.' },
+    { q: 'The bearing of B from A is 100°. The bearing of A from B is:', a: [m('080°'), m('200°'), m('260°'), m('280°')], c: 3, why: '100° + 180° = 280°.' },
+    { q: 'On a 1 : 50 000 map, 1 cm represents:', a: [m('50 m'), m('500 m'), m('5 km'), m('50 km')], c: 1, why: '50 000 cm = 500 m.' }
+  ],
+  practice: {
+    easy: [
+      [m('Write due north as a bearing.'), m('000°')],
+      [m('Write due east as a bearing.'), m('090°')],
+      [m('Write due south as a bearing.'), m('180°')],
+      [m('Write due west as a bearing.'), m('270°')],
+      [m('Write 45° north-east as a three-figure bearing.'), m('045°')],
+      [m('The bearing of B from A is 070°. Find the back bearing.'), m('250°')],
+      [m('On a 1 : 100 000 map, 1 cm represents how far?'), m('1 km')]
+    ],
+    med: [
+      [m('The bearing of B from A is 145°. Find the bearing of A from B.'), m('325°')],
+      [m('The bearing of B from A is 310°. Find the back bearing.'), m('130°')],
+      [m('On a 1 : 25 000 map two towns are 7.2 cm apart. Find the real distance.'), m('1.8 km')],
+      [m('A ship sails 12 km north then 5 km east. Find its distance from the start.'), m('13 km')],
+      [m('The same ship: find its bearing from the start.'), m('023°')],
+      [m('A real distance of 4 km on a 1 : 50 000 map is how many cm?'), m('8 cm')],
+      [m('The bearing of B from A is 205°. Find the back bearing.'), m('025°')]
+    ],
+    hard: [
+      [m('A ship sails 9 km on 000°, then 12 km on 090°. Find its distance and bearing from the start.'), m('15 km') + ' on ' + m('053°')],
+      [m('A walker goes 5 km on 090° then 5 km on 180°. Find the distance and bearing from the start.'), m('5' + sr('2') + ' ≈ 7.07 km') + ' on ' + m('135°')],
+      [m('The bearing of B from A is 062° and AB = 20 km. How far north and how far east is B?'), m('20 cos 62° ≈ 9.4 km') + ' north, ' + m('20 sin 62° ≈ 17.7 km') + ' east'],
+      [m('A plane flies 100 km on a bearing of 030°. Find its change in latitude (north) and longitude (east) in km.'), m('86.6 km') + ' north, ' + m('50 km') + ' east'],
+      [m('Two ports are 40 km apart, one due east of the other. A ship is 30 km north of the western port. Find its bearing from the eastern port.'), m('tan α = ' + f('40', '30')) + ', so the bearing is ' + m('360° − 53.1° = 307°') + '.'],
+      [m('Explain why a back bearing is exactly 180° from the original.'), 'The two north lines are parallel, so the bearings are co-interior angles adding to a straight-line turn.'],
+      [m('A map has scale 1 : 20 000. A lake measures 3 cm by 4 cm on it. Find its real area in km².'), m('600 m × 800 m = 0.48 km²')]
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Тема 28, pp. 64–66, and Cambridge Learner’s Book 13.1. Bring a protractor.',
+  homework: [
+    m('Write these as three-figure bearings: north-east, south-west, due south.'),
+    m('The bearing of B from A is 118°. Find the bearing of A from B.'),
+    m('On a 1 : 50 000 map two villages are 5.6 cm apart. Find the real distance.'),
+    m('A ship sails 8 km north then 15 km east. Find its distance and bearing from the start.'),
+    m('Make a scale drawing (1 cm : 1 km) of a journey 6 km on 070° followed by 4 km on 160°, and measure the direct distance home.')
+  ]
+});
+
+/* ============================== 23 ============================== */
+G8_GEO.push({
+  id: 'geo-23', stream: 'geo', grade: 8, quarter: 2, lessons: '32', hours: 1,
+  title: 'Control work 2 · Pythagoras and trigonometry',
+  subtitle: 'The Chapter II assessment, and the four errors it produces every year.',
+  uz: 'Geometry 8, Темы 29–30', uzPage: 'pp. 67–68',
+  cam: 'Stage 9 · Unit 5 check', camPage: 'Learner’s Book pp. 124–126', wb: 'Workbook 5.5',
+  objectives: [
+    'Assess Pythagoras, the four ratios, the identity, special angles and solving triangles.',
+    'Produce a labelled figure and a stated reason for every answer.',
+    'Diagnose each lost mark by error type.'
+  ],
+  timing: [[2, 'Setting up'], [36, 'The paper'], [2, 'Collect in']],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Solve a triangle', 'Uchburchakni yechish', 'Решить треугольник'],
+    ['Figure', 'Chizma', 'Чертёж'],
+    ['Reason', 'Asos', 'Обоснование'],
+    ['Round to', 'Yaxlitlash', 'Округлить до'],
+    ['Error', 'Xato', 'Ошибка'],
+    ['Exact value', 'Aniq qiymat', 'Точное значение']
+  ],
+  sections: [
+    {
+      h: 'The paper — 40 minutes, 7 tasks, 14 marks',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>Topic</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Find a side by Pythagoras</td><td>Тема 17</td></tr>
+        <tr><td>2</td><td>Test a triangle for a right angle</td><td>Тема 18</td></tr>
+        <tr><td>3</td><td>Find the four ratios from the sides</td><td>Тема 15</td></tr>
+        <tr><td>4</td><td>Use the basic identity</td><td>Темы 20–21</td></tr>
+        <tr><td>5</td><td>Exact value for 30°, 45° or 60°</td><td>Тема 23</td></tr>
+        <tr><td>6</td><td>Solve a right triangle</td><td>Темы 25–26</td></tr>
+        <tr><td>7</td><td>A practical height or distance problem</td><td>Тема 28</td></tr>
+      </tbody></table></div>
+      <p><b>Say before the paper starts:</b> a numerical answer with no figure and no reason earns one
+      mark out of two. Round to one decimal place unless an exact value is asked for.</p>`
+    },
+    {
+      h: 'Work on mistakes — the four errors',
+      html: `<div class="keybox"><div class="klabel">What goes wrong</div>
+      <ol style="margin:0">
+        <li><b>Added where a subtraction was needed</b> — using ${m('c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup>')}
+        when looking for a leg.</li>
+        <li><b>Opposite and adjacent swapped</b> — sine used where cosine was needed.</li>
+        <li><b>The calculator in radian mode</b>, giving a negative or absurd ratio.</li>
+        <li><b>Multiplied instead of divided</b> when going from a leg to the hypotenuse.</li>
+      </ol></div>
+      <p>Each has a one-second check: the hypotenuse must be the longest side; a sine must be under 1;
+      the answer must be sensible on the figure. The Hard set below is built from these four.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the error: hypotenuse 13, one leg 5, so the other leg is ' + m(sr('169 + 25') + ' ≈ 13.9'),
+      steps: [
+        ['The answer is longer than the hypotenuse — impossible.', 'That check alone catches it.'],
+        ['Looking for a <b>leg</b>, so subtract.', ''],
+        [m('b = ' + sr('169 − 25') + ' = ' + sr('144') + ' = 12'), '']
+      ],
+      ans: m('12')
+    },
+    {
+      q: 'Find the error: a leg is 6 and the angle opposite it is 30°, so the hypotenuse is ' + m('6 · sin 30° = 3'),
+      steps: [
+        ['The hypotenuse came out shorter than the leg — impossible.', ''],
+        [m('sin 30° = ' + f('a', 'c')) + ', so ' + m('c = ' + f('a', 'sin 30°')), 'Going leg → hypotenuse means dividing.'],
+        [m('c = ' + f('6', '0.5') + ' = 12'), '']
+      ],
+      ans: m('12')
+    }
+  ],
+  modelNote: 'In the mistakes lesson: show the wrong working, take a vote on the error type, then reveal.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'Diagnose the error',
+    hint: 'Which of the four errors is this? Decide, then reveal.',
+    items: [
+      {
+        title: 'Error 1 — added instead of subtracted',
+        start: '<b>Claimed:</b> hypotenuse 13, leg 5, other leg ' + m(sr('169 + 25') + ' ≈ 13.9'),
+        steps: [
+          ['A leg cannot be longer than the hypotenuse.', 'The instant check.'],
+          ['To find a leg, subtract: ' + m('b<sup>2</sup> = c<sup>2</sup> − a<sup>2</sup>') + '.', ''],
+          [m('b = ' + sr('144') + ' = 12'), 'And 5, 12, 13 is a familiar triple.']
+        ],
+        answer: m('12')
+      },
+      {
+        title: 'Error 2 — opposite and adjacent swapped',
+        start: '<b>Claimed:</b> ' + m('c = 20, α = 35°') + ', adjacent leg ' + m('= 20 sin 35° ≈ 11.5'),
+        steps: [
+          ['Sine uses the <b>opposite</b> leg, not the adjacent one.', ''],
+          ['Adjacent and hypotenuse → cosine.', ''],
+          [m('b = 20 cos 35° ≈ 16.4'), 'Sensible: the adjacent leg faces the larger angle here.']
+        ],
+        answer: m('≈ 16.4')
+      },
+      {
+        title: 'Error 3 — radian mode',
+        start: '<b>Claimed:</b> ' + m('sin 37° = −0.6435'),
+        steps: [
+          ['A negative sine is impossible for an acute angle.', ''],
+          ['The calculator is in radian mode — it computed ' + m('sin(37 rad)') + '.', ''],
+          ['Switch to DEG: ' + m('sin 37° ≈ 0.602') + '.', '']
+        ],
+        answer: m('≈ 0.602')
+      },
+      {
+        title: 'Error 4 — multiplied instead of divided',
+        start: '<b>Claimed:</b> leg 6 opposite ' + m('30°') + ', so ' + m('c = 6 sin 30° = 3'),
+        steps: [
+          ['The hypotenuse came out shorter than the leg.', 'Impossible.'],
+          [m('sin 30° = ' + f('6', 'c')) + ', so ' + m('c = ' + f('6', 'sin 30°')) + '.', 'Leg → hypotenuse means dividing.'],
+          [m('c = 12'), '']
+        ],
+        answer: m('12')
+      }
+    ]
+  },
+  quiz: [
+    { q: 'Hypotenuse 25, one leg 7. The other leg is:', a: [m('24'), m('26'), m('32'), m('18')], c: 0, why: '625 − 49 = 576, so the leg is 24.' },
+    { q: 'Given the hypotenuse and the angle, the adjacent leg is:', a: [m('c sin α'), m('c cos α'), m(f('c', 'cos α')), m('c tan α')], c: 1, why: 'cos α = adjacent / hypotenuse.' },
+    { q: 'A calculator returns ' + m('sin 40 = 0.745') + '. This is:', a: ['correct', 'radian mode', 'impossible', 'a rounding error'], c: 1, why: 'sin 40° ≈ 0.643; 0.745 is sin(40 rad) — check DEG mode.' },
+    { q: 'A leg is 9 and the angle opposite is 30°. The hypotenuse is:', a: [m('4.5'), m('18'), m('9' + sr('3')), m('15')], c: 1, why: 'c = 9 ÷ sin 30° = 18.' }
+  ],
+  practice: {
+    easy: [
+      [m('<b>Variant 1, task 1.</b> Legs 12 and 16. Find the hypotenuse.'), m('20')],
+      [m('<b>Task 2.</b> Is 7, 24, 25 right-angled?'), 'Yes — ' + m('49 + 576 = 625') + '.'],
+      [m('<b>Task 3.</b> a = 6, b = 8, c = 10. Find sin α and cos α.'), m('0.6') + ' and ' + m('0.8')],
+      [m('<b>Task 4.</b> sin α = 0.6. Find cos α.'), m('0.8')],
+      [m('<b>Task 5.</b> Find sin 60° exactly.'), m(f(sr('3'), '2'))],
+      [m('<b>Task 6.</b> c = 10, α = 30°. Find both legs.'), m('5') + ' and ' + m('5' + sr('3'))],
+      [m('<b>Task 7.</b> A ladder 10 m long has its foot 6 m from a wall. How high does it reach?'), m('8 m')]
+    ],
+    med: [
+      [m('<b>Variant 2, task 1.</b> Hypotenuse 26, one leg 24. Find the other leg.'), m('10')],
+      [m('<b>Task 2.</b> Classify the triangle with sides 6, 7, 10.'), m('36 + 49 = 85 < 100') + ' — obtuse.'],
+      [m('<b>Task 3.</b> a = 9, b = 12, c = 15. Find tan α and cot α.'), m('0.75') + ' and ' + m(f('4', '3'))],
+      [m('<b>Task 4.</b> cos α = ' + f('7', '25') + '. Find sin α.'), m(f('24', '25'))],
+      [m('<b>Task 5.</b> Find tan 30° exactly.'), m(f(sr('3'), '3'))],
+      [m('<b>Task 6.</b> a = 5, b = 12. Solve the triangle.'), m('c = 13, α ≈ 22.6°, β ≈ 67.4°')],
+      [m('<b>Task 7.</b> From 50 m away the angle of elevation of a tower top is 40°. Find its height.'), m('≈ 42.0 m')]
+    ],
+    hard: [
+      [m('Find the error: hypotenuse 13, leg 5, other leg ' + sr('169 + 25')), 'Added instead of subtracted. Correct: ' + m('12') + '.'],
+      [m('Find the error: c = 20, α = 35°, adjacent leg = 20 sin 35°'), 'Sine uses the opposite leg. Correct: ' + m('20 cos 35° ≈ 16.4') + '.'],
+      [m('Find the error: sin 37° = −0.6435'), 'The calculator is in radian mode. Correct: ' + m('≈ 0.602') + '.'],
+      [m('Find the error: leg 6 opposite 30°, so c = 6 sin 30° = 3'), 'Leg → hypotenuse means dividing. Correct: ' + m('12') + '.'],
+      [m('Find the error: sin α = 1.25 for an acute angle'), 'Impossible — a sine is under 1. A side has been divided the wrong way round.'],
+      [m('Find the error: “sides 5, 12, 13 give sin α = ' + f('13', '5') + '”'), 'The hypotenuse belongs below. Correct: ' + m('sin α = ' + f('5', '13')) + '.'],
+      [m('Find the error: “tan 45° = 0, since the legs are equal”'), 'Equal legs give ' + m(f('a', 'a') + ' = 1') + ', not 0.']
+    ]
+  },
+  hwTitle: 'After the control work',
+  hwNote: 'Re-solve every task you lost marks on. Quarter III opens with the coordinate method.',
+  homework: [
+    m('Re-solve every task you lost marks on, with a labelled figure and a stated reason.'),
+    m('Write out the four errors from the Hard set in your own words.'),
+    m('Learn the table of exact values for 30°, 45° and 60° — Quarter III assumes it.')
   ]
 });
