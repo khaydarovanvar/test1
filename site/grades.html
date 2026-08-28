@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/pages.css">
+<title>Grades 5 – 11 · Anvarbek Khaydarov</title>
+<meta name="description" content="Mathematics resources for grades 5 to 11 — Uzbekistan national programme and Cambridge Lower Secondary.">
+</head>
+<body>
+<div id="site-header"></div>
+<section class="section">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow">The whole school</span>
+      <h2>Grades 5 – 11</h2>
+      <p>Each grade follows the same shape: the national calendar-thematic plan as the backbone, the
+      matching Cambridge stage alongside it, and one page per topic containing everything the lesson
+      needs. Grade 8 is written; the rest follow.</p>
+    </div>
+    <div class="gradegrid" id="gradegrid"></div>
+    <hr class="rule">
+    <div class="sechead"><span class="eyebrow">Roadmap</span><h2>What is written and what is next</h2></div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Grade</th><th>Course</th><th>Status</th><th>Contents</th></tr></thead>
+      <tbody id="roadmap"></tbody>
+    </table></div>
+  </div>
+</section>
+<div id="site-footer"></div>
+<script src="assets/app.js" data-root="./"></script>
+<script src="data/grades.js"></script>
+<script>
+AKM.mount('grades.html');
+document.getElementById('gradegrid').innerHTML = GRADES.map(function(g){
+  var live = g.status==='live';
+  return '<a class="gtile '+(live?'live':'soon')+'" href="'+(live?'grade.html?g='+g.g:'#')+'">'+
+    '<span class="gtag chip '+(live?'solid':'')+'">'+(live?'Open':'Soon')+'</span>'+
+    '<div class="gnum">'+g.g+'</div><div class="gname">'+g.name+'</div>'+
+    '<div class="gmeta">'+g.meta+'</div></a>';
+}).join('');
+document.getElementById('roadmap').innerHTML = GRADES.map(function(g){
+  var live = g.status==='live';
+  return '<tr><td><b>Grade '+g.g+'</b></td><td>'+g.name+'</td>'+
+    '<td><span class="chip '+(live?'c-easy':'')+'">'+(live?'Quarter I live':'In preparation')+'</span></td>'+
+    '<td>'+g.meta+'</td></tr>';
+}).join('');
+</script>
+</body>
+</html>

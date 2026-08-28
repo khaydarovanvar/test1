@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/pages.css">
+<title>Lesson · Anvarbek Khaydarov</title>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="lhead" id="lhead"></div>
+<div class="lbody">
+  <main class="lmain" id="lmain"></main>
+  <aside class="lside" id="lside"></aside>
+</div>
+<div id="site-footer"></div>
+<script src="assets/app.js" data-root="./"></script>
+<script src="assets/mathfmt.js"></script>
+<script src="assets/figures.js"></script>
+<script src="assets/interactive.js"></script>
+<script src="assets/lesson.js"></script>
+<script src="data/grades.js"></script>
+<script src="data/g8-alg-q1.js"></script>
+<script src="data/g8-geo-q1.js"></script>
+<script>
+AKM.mount('');
+(function(){
+  var all = [].concat(window.G8_ALG_Q1 || [], window.G8_GEO_Q1 || []);
+  var id = AKM.qs('t') || (all[0] && all[0].id);
+  var T = all.filter(function(x){return x.id===id;})[0];
+  var index = all.map(function(x){return {id:x.id,title:x.title};});
+  if (!T) {
+    document.getElementById('lmain').innerHTML =
+      '<div style="padding:60px 0"><h2>Lesson not found</h2>' +
+      '<p class="small">Pick a topic from the <a href="grade.html?g=8">Grade 8 page</a>.</p></div>';
+    return;
+  }
+  renderTopic(T, index);
+})();
+</script>
+</body>
+</html>

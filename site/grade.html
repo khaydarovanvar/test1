@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/pages.css">
+<title>Grade 8 Mathematics · Anvarbek Khaydarov</title>
+<meta name="description" content="Grade 8 mathematics — Quarter I topics for the special class (Algebra 3 h, Geometry 2 h) and the Cambridge class.">
+</head>
+<body>
+<div id="site-header"></div>
+<div class="lhead">
+  <div class="inner">
+    <p class="crumb"><a href="index.html">Home</a> / <a href="grades.html">Grades</a> / Grade 8</p>
+    <h1 id="gtitle">Grade 8 · Algebra and Geometry</h1>
+    <p class="lede" style="margin-top:12px" id="gsub"></p>
+  </div>
+</div>
+<section class="section tight">
+  <div class="wrap">
+    <div class="streamgrid" style="margin-bottom:44px">
+      <div class="scard" style="--sc:var(--uz)"><div class="lbl">Special class</div>
+        <h3>Algebra · 3 h a week</h3><p>102 hours. Quarters 27 · 21 · 30 · 24.</p>
+        <div class="figs">Alimov, <em>Algebra 8</em></div></div>
+      <div class="scard" style="--sc:var(--uz)"><div class="lbl">Special class</div>
+        <h3>Geometry · 2 h a week</h3><p>68 hours. Quarters 18 · 14 · 20 · 16.</p>
+        <div class="figs">Rahimkariev, <em>Geometry 8</em></div></div>
+      <div class="scard" style="--sc:var(--cam)"><div class="lbl">Cambridge class</div>
+        <h3>Mathematics · 6 h a week</h3><p>204 hours. Stage 9 with national depth topics.</p>
+        <div class="figs">Cambridge Stage 9 Learner’s Book</div></div>
+    </div>
+
+    <div class="sechead"><span class="eyebrow">Quarter I</span><h2>Algebra — 27 hours</h2>
+      <p>Chapter I of <em>Algebra 8</em>: algebraic fractions and the function y = k/x.</p></div>
+    <div class="llist" id="alglist"></div>
+
+    <div class="sechead" style="margin-top:56px"><span class="eyebrow">Quarter I</span>
+      <h2>Geometry — 18 hours</h2>
+      <p>Chapter I of <em>Geometry 8</em>: quadrilaterals, Thales’ theorem and midlines.</p></div>
+    <div class="llist" id="geolist"></div>
+
+    <div class="sechead" style="margin-top:56px"><span class="eyebrow">Quarters II – IV</span>
+      <h2>Still being written</h2>
+      <p>Quarter II (inequalities, roots and rational exponents; Pythagoras and trigonometry) is next,
+      then Quarters III and IV. The annual plans for all four quarters are already published.</p></div>
+    <div class="qtabs">
+      <button class="qtab" aria-pressed="true" disabled>Quarter I · 45 lessons · live</button>
+      <button class="qtab" disabled>Quarter II · 35 lessons</button>
+      <button class="qtab" disabled>Quarter III · 50 lessons</button>
+      <button class="qtab" disabled>Quarter IV · 40 lessons</button>
+    </div>
+  </div>
+</section>
+<div id="site-footer"></div>
+<script src="assets/app.js" data-root="./"></script>
+<script src="assets/mathfmt.js"></script>
+<script src="assets/figures.js"></script>
+<script src="data/g8-alg-q1.js"></script>
+<script src="data/g8-geo-q1.js"></script>
+<script>
+AKM.mount('grade.html');
+function rows(list){
+  return list.map(function(t){
+    return '<a class="lrow" href="lesson.html?t='+t.id+'">'+
+      '<span class="ln">'+t.lessons+'</span>'+
+      '<span><span class="lt">'+t.title+'</span>'+
+      '<span class="lm">'+t.hours+' × 40 min · '+(t.uz||'')+(t.cam?' · '+t.cam:'')+'</span></span>'+
+      '<svg class="lgo" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" '+
+      'stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'+
+      '</a>';
+  }).join('');
+}
+document.getElementById('alglist').innerHTML = rows(window.G8_ALG_Q1||[]);
+document.getElementById('geolist').innerHTML = rows(window.G8_GEO_Q1||[]);
+document.getElementById('gsub').textContent =
+  'Quarter I is complete: ' + ((window.G8_ALG_Q1||[]).length + (window.G8_GEO_Q1||[]).length) +
+  ' topic pages covering 45 lessons, each with an explanation, figures, an interactive model, ' +
+  '21 graded problems and homework.';
+</script>
+</body>
+</html>
