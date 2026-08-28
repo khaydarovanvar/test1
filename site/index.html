@@ -40,7 +40,7 @@
       <div class="stats">
         <div class="stat"><b>40</b><span>minutes per lesson</span></div>
         <div class="stat"><b>21</b><span>problems · 7 / 7 / 7</span></div>
-        <div class="stat"><b>24</b><span>Grade 8 topics live</span></div>
+        <div class="stat"><b>23</b><span>Grade 8 topics live</span></div>
         <div class="stat"><b>2</b><span>curricula, one standard</span></div>
       </div>
     </div>
@@ -127,7 +127,7 @@ AKM.mount('index.html');
 
 var CLOCK = [[5,'Warm-up','var(--faint)'],[12,'Explanation','var(--brand)'],
              [8,'Interactive','var(--brass)'],[13,'Practice','var(--easy)'],
-             [2,'Homework','var(--hard)']];
+             [2,'HW','var(--hard)']];
 document.getElementById('clock').innerHTML = CLOCK.map(function(c){
   return '<div style="flex:'+c[0]+';background:'+c[2]+'">'+c[1]+' · '+c[0]+"'</div>";
 }).join('');

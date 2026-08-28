@@ -157,7 +157,7 @@
     var body = frame(host, opt.title || 'Drag the vertices',
       'Grab A, B or D and drag. C follows so the shape stays a ' + mode + '.');
     var svg = stage(body, '0 0 360 250', 460);
-    var read = readoutBar(body, ['AB', 'DC', 'AD', 'BC', '∠A', '∠C', 'AO', 'OC']);
+    var read = readoutBar(body, (opt.read || ['AB', 'DC', 'AD', 'BC', '∠A', '∠C', 'AC', 'BD', 'AO', 'OC']));
     var P = { A: [60, 200], B: [230, 200], D: [110, 70] };
     function C() { return [P.B[0] + P.D[0] - P.A[0], P.B[1] + P.D[1] - P.A[1]]; }
     function draw() {
@@ -202,14 +202,13 @@
         }
         draw();
       });
-      read['AB'].textContent = r1(dist(A, B));
-      read['DC'].textContent = r1(dist(Dp, Cp));
-      read['AD'].textContent = r1(dist(A, Dp));
-      read['BC'].textContent = r1(dist(B, Cp));
-      read['∠A'].textContent = r1(angleDeg(A, B, Dp)) + '°';
-      read['∠C'].textContent = r1(angleDeg(Cp, B, Dp)) + '°';
-      read['AO'].textContent = r1(dist(A, O));
-      read['OC'].textContent = r1(dist(O, Cp));
+      var vals = { 'AB': r1(dist(A, B)), 'DC': r1(dist(Dp, Cp)), 'AD': r1(dist(A, Dp)),
+        'BC': r1(dist(B, Cp)), '∠A': r1(angleDeg(A, B, Dp)) + '°', '∠C': r1(angleDeg(Cp, B, Dp)) + '°',
+        '∠B': r1(angleDeg(B, A, Cp)) + '°', '∠D': r1(angleDeg(Dp, A, Cp)) + '°',
+        'AC': r1(dist(A, Cp)), 'BD': r1(dist(B, Dp)),
+        'AO': r1(dist(A, O)), 'OC': r1(dist(O, Cp)),
+        'perimeter': r1(2 * (dist(A, B) + dist(A, Dp))) };
+      Object.keys(read).forEach(function (k) { if (vals[k] != null) read[k].textContent = vals[k]; });
     }
     draw();
   };
@@ -547,6 +546,67 @@
       wrapEl.appendChild(item);
     });
     body.appendChild(wrapEl); body.appendChild(score);
+  };
+
+
+  /* ============ 11. triangle angles — drag and watch the sum ============ */
+  INT.triangleAngles = function (host, opt) {
+    var body = frame(host, (opt && opt.title) || 'The angles of a triangle',
+      'Drag any vertex. The three angles change — their sum never does.');
+    var svg = stage(body, '0 0 360 250', 460);
+    var read = readoutBar(body, ['∠A', '∠B', '∠C', 'sum', 'longest side', 'largest angle']);
+    var P = { A: [180, 38], B: [56, 208], C: [304, 208] };
+    function draw() {
+      svg.innerHTML = '';
+      svg.appendChild(S('polygon', {
+        points: [P.A, P.B, P.C].map(function (p) { return r1(p[0]) + ',' + r1(p[1]); }).join(' '),
+        fill: 'var(--brand-tint)', stroke: 'currentColor', 'stroke-width': 2.2, 'stroke-linejoin': 'round'
+      }));
+      var cols = { A: 'var(--brand)', B: 'var(--brass)', C: 'var(--hard)' };
+      var order = { A: ['B', 'C'], B: ['A', 'C'], C: ['A', 'B'] };
+      var handles = [];
+      ['A', 'B', 'C'].forEach(function (k) {
+        var v = P[k], o = order[k];
+        var a1 = Math.atan2(P[o[0]][1] - v[1], P[o[0]][0] - v[0]);
+        var a2 = Math.atan2(P[o[1]][1] - v[1], P[o[1]][0] - v[0]);
+        var dd = a2 - a1; while (dd > Math.PI) dd -= 2 * Math.PI; while (dd < -Math.PI) dd += 2 * Math.PI;
+        var R = 26;
+        var s1 = [v[0] + R * Math.cos(a1), v[1] + R * Math.sin(a1)];
+        var e1 = [v[0] + R * Math.cos(a1 + dd), v[1] + R * Math.sin(a1 + dd)];
+        svg.appendChild(S('path', {
+          d: 'M' + r1(s1[0]) + ' ' + r1(s1[1]) + ' A' + R + ' ' + R + ' 0 0 ' + (dd > 0 ? 1 : 0) +
+            ' ' + r1(e1[0]) + ' ' + r1(e1[1]),
+          fill: 'none', stroke: cols[k], 'stroke-width': 2
+        }));
+        var mA = a1 + dd / 2;
+        svg.appendChild(S('text', {
+          x: r1(v[0] + 42 * Math.cos(mA)), y: r1(v[1] + 42 * Math.sin(mA)), 'text-anchor': 'middle',
+          'dominant-baseline': 'middle', 'font-family': 'IBM Plex Mono, monospace',
+          'font-size': 11.5, fill: cols[k]
+        }, r1(angleDeg(v, P[o[0]], P[o[1]])) + '°'));
+        var c = S('circle', { cx: r1(v[0]), cy: r1(v[1]), r: 8, fill: cols[k], 'fill-opacity': .9 });
+        svg.appendChild(c);
+        svg.appendChild(S('text', {
+          x: r1(v[0]), y: r1(v[1] + (k === 'A' ? -18 : 24)), 'text-anchor': 'middle',
+          'font-family': 'Spectral, Georgia, serif', 'font-size': 15, 'font-style': 'italic',
+          fill: 'currentColor'
+        }, k));
+        handles.push({ id: k, node: c, get: function () { return P[k]; } });
+      });
+      draggable(svg, handles, function (id, x, y) {
+        P[id] = [clamp(x, 24, 336), clamp(y, 24, 226)]; draw();
+      });
+      var a = angleDeg(P.A, P.B, P.C), b = angleDeg(P.B, P.A, P.C), c2 = angleDeg(P.C, P.A, P.B);
+      read['∠A'].textContent = r1(a) + '°';
+      read['∠B'].textContent = r1(b) + '°';
+      read['∠C'].textContent = r1(c2) + '°';
+      read['sum'].textContent = Math.round(a + b + c2) + '°';
+      var sides = [['BC', dist(P.B, P.C), 'A'], ['AC', dist(P.A, P.C), 'B'], ['AB', dist(P.A, P.B), 'C']];
+      sides.sort(function (x, y2) { return y2[1] - x[1]; });
+      read['longest side'].textContent = sides[0][0];
+      read['largest angle'].textContent = '∠' + sides[0][2];
+    }
+    draw();
   };
 
   /* ---------- mount ---------- */
