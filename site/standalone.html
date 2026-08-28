@@ -626,6 +626,18 @@ footer .fnote{font-size:13px;color:var(--muted);max-width:44ch}
     color:var(--faint);margin-right:8px}
 }
 
+/* print overrides — must come after the responsive rules above */
+@media print{
+  .lbody{display:flex!important;flex-direction:column;padding:0}
+  .lmain{order:2;padding:0}
+  .lside{order:1;position:static!important;display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px;padding:0 0 14px}
+  .lside .sbox{margin:0}
+  .lhead .inner{padding:0 0 10px}
+  .lsec{margin-bottom:16pt}
+  .fig{margin:16px auto}
+}
+
 </style>
 
 <div id="chrome-head"></div>
