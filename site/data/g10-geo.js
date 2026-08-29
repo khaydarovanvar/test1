@@ -4897,3 +4897,734 @@ G10_GEO.push({
     'A triangle of area ' + m('9') + ' is enlarged by factor ' + m('' + f('2', '3')) + ' about the origin. Find the area of the image.'
   ]
 });
+
+/* ============================== 31 ============================== */
+G10_GEO.push({
+  id: 'g10-31', stream: 'geo', grade: 10, quarter: 4, lessons: '61–62', hours: 2,
+  title: 'Control work 4, and work on the mistakes',
+  subtitle: 'Coordinate geometry in one paper, then the plane methods drawn as a single map.',
+  uz: 'Geometry 10, Nazorat ishi 4', uzPage: 'pp. 253–256',
+  cam: 'P1 3 review', camPage: 'Pure Mathematics 1, pp. 73–76', wb: 'Control paper G4',
+  objectives: [
+    'Apply the line, circle and vector methods of Lessons 53–60 under time.',
+    'Choose between the algebraic and the geometric route to a tangent.',
+    'Classify each lost mark and rewrite the solution in full.',
+    'Draw the coordinate block as one map.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Coordinate method', 'Koordinatalar usuli', 'Координатный метод'],
+    ['Perpendicular bisector', 'O‘rta perpendikulyar', 'Серединный перпендикуляр'],
+    ['Discriminant', 'Diskriminant', 'Дискриминант'],
+    ['Tangent', 'Urinma', 'Касательная'],
+    ['Position vector', 'Radius-vektor', 'Радиус-вектор'],
+    ['Concept map', 'Tushunchalar xaritasi', 'Карта понятий'],
+    ['Target', 'Maqsad', 'Цель']
+  ],
+  timing: [[3, 'Instructions'], [42, 'The paper'], [12, 'Answers'], [23, 'Diagnosis and rewrite'], [10, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 35 marks, 42 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>${m('A(−1, 2)')}, ${m('B(7, 8)')}: find ${m('|AB|')}, the midpoint and the gradient</td><td class="m">5</td><td>L53–54</td></tr>
+        <tr><td>2</td><td>The same points: find the perpendicular bisector of ${m('AB')}</td><td class="m">5</td><td>L53–54</td></tr>
+        <tr><td>3</td><td>Find the centre and radius of ${m('x² + y² − 8x + 2y − 8 = 0')}</td><td class="m">5</td><td>L55–56</td></tr>
+        <tr><td>4</td><td>Find where ${m('y = x − 1')} meets that circle, and the length of the chord</td><td class="m">7</td><td>L57–58</td></tr>
+        <tr><td>5</td><td>Find the values of ${m('c')} for which ${m('y = 2x + c')} is a tangent to ${m('x² + y² = 45')}</td><td class="m">6</td><td>L57–58</td></tr>
+        <tr><td>6</td><td>Show that ${m('P(1, 2)')}, ${m('Q(4, 8)')} and ${m('R(7, 14)')} are collinear, using vectors</td><td class="m">7</td><td>L59–60</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q2 carries one mark for the negative reciprocal and one for using the midpoint; Q3 one for the
+      sign of the centre; Q4 one for giving both coordinates of each point; Q6 one for the concluding
+      sentence. Five of the thirty-five marks are for a habit, not a calculation.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>gradient inverted</td><td class="m">${f('x₂ − x₁', 'y₂ − y₁')}</td><td>rise over run, in that order</td></tr>
+        <tr><td>centre sign</td><td class="m">(x − 3)² ⇒ centre −3</td><td>reverse the bracket sign</td></tr>
+        <tr><td>half a point</td><td class="m">x = 3, x = −4</td><td>substitute back for ${m('y')}</td></tr>
+        <tr><td>bisector not through ${m('M')}</td><td>right gradient, wrong line</td><td>two conditions, both needed</td></tr>
+        <tr><td>tangent by guessing</td><td>no ${m('D')} and no distance</td><td>either route, but write one</td></tr>
+        <tr><td>vector proof unfinished</td><td class="m">QR = 2·PQ</td><td>add “and ${m('Q')} is common”</td></tr>
+        <tr><td>${m('AB')} reversed</td><td class="m">OA − OB</td><td>“to minus from”</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole question. A rewritten line is forgotten by
+      Friday; a rewritten solution is not.</p>`
+    },
+    {
+      h: 'The coordinate block as one map',
+      html: `<p>Six boxes, links written as sentences:</p>
+      <ul>
+        <li><b>two points</b> → <b>length, midpoint, gradient</b> — “three formulas, one subtraction each”</li>
+        <li><b>gradient</b> → <b>parallel and perpendicular</b> — “equal, or negative reciprocal”</li>
+        <li><b>midpoint + perpendicular</b> → <b>perpendicular bisector</b> — “equidistant from both”</li>
+        <li><b>centre and radius</b> → <b>circle equation</b> — “the distance formula, squared”</li>
+        <li><b>substitute</b> → <b>quadratic</b> → <b>discriminant</b> — “two, one or no points”</li>
+        <li><b>vector</b> → <b>parallel + common point</b> — “collinear”</li>
+      </ul>
+      {{fig:circleEquation:The centre-and-radius picture that half the paper rests on.}}
+      <div class="keybox"><div class="klabel">Two routes to a tangent, and when to use each</div>
+      The <b>discriminant</b> route always works but is longer. The <b>distance</b> route,
+      ${m(f('|ax₀ + by₀ + c|', sr('a² + b²')) + ' = r')}, is one line — use it whenever the circle's
+      centre is easy to write down.</div>`
+    },
+    {
+      h: 'Looking forward',
+      html: `<p>Lessons 63–68 leave the plane and return to space: parallelism and perpendicularity,
+      sections of polyhedra and orthogonal projection, then the annual paper. Nothing new is introduced —
+      it is Quarters I to III, revisited with a year's practice behind them.</p>
+      <div class="keybox"><div class="klabel">One habit to carry forward</div>
+      Coordinate geometry rewarded drawing the points before calculating. Solid geometry rewards drawing
+      the solid before naming the angle. In both, the sketch is where the marks are decided.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q2: the perpendicular bisector of ' + m('A(−1, 2)') + ' and ' + m('B(7, 8)') + '.',
+      steps: [
+        [m('M = (3, 5)'), ''],
+        [m('m_{AB} = ' + f('6', '8') + ' = ' + f('3', '4')), ''],
+        [m('m = −' + f('4', '3')), 'Negative reciprocal.'],
+        [m('y − 5 = −' + f('4', '3') + '(x − 3) ⇒ 4x + 3y = 27'), '']
+      ],
+      ans: m('4x + 3y = 27')
+    },
+    {
+      q: 'Model answer, Q4: where ' + m('y = x − 1') + ' meets ' + m('x² + y² − 8x + 2y − 8 = 0') + ', and the chord length.',
+      steps: [
+        ['Centre ' + m('(4, −1)') + ', ' + m('r = 5') + '.', 'From Q3.'],
+        [m('x² + (x − 1)² − 8x + 2(x − 1) − 8 = 0 ⇒ 2x² − 10x − 9 = 0'), ''],
+        [m('x = ' + f('10 ± ' + sr('172'), '4')) + ', so ' + m('x ≈ 5.78') + ' and ' + m('x ≈ −0.78') + '.', ''],
+        ['Distance from the centre to the line ' + m(f('|4 − (−1) − 1|', sr('2')) + ' = ' + f('4', sr('2'))) + '; chord ' + m('2' + sr('25 − 8') + ' = 2' + sr('17') + ' ≈ 8.25') + '.', 'The faster route.']
+      ],
+      ans: 'Chord ' + m('2' + sr('17')) + ' ≈ ' + m('8.25')
+    },
+    {
+      q: 'Model answer, Q5: for which ' + m('c') + ' is ' + m('y = 2x + c') + ' a tangent to ' + m('x² + y² = 45') + '?',
+      steps: [
+        [m('r = ' + sr('45') + ' = 3' + sr('5')), ''],
+        ['Distance from ' + m('(0, 0)') + ' to ' + m('2x − y + c = 0') + ' is ' + m(f('|c|', sr('5'))) + '.', ''],
+        [m(f('|c|', sr('5')) + ' = 3' + sr('5') + ' ⇒ |c| = 15'), ''],
+        [m('c = ±15'), '']
+      ],
+      ans: m('c = 15') + ' or ' + m('c = −15')
+    }
+  ],
+  modelNote: 'Work Q5 both ways on the board — discriminant and distance — and time each; the class will not use the long one again.',
+  interactive: {
+    type: 'quiz',
+    title: 'Ten questions on the coordinate block',
+    hint: 'One from each idea of Lessons 53–60.',
+    items: [
+      { q: 'Gradient through ' + m('(1, 2)') + ' and ' + m('(5, 10)') + ':', a: [m('2'), m(f('1', '2')), m('8'), m('4')], c: 0, why: m(f('8', '4')) + '.' },
+      { q: 'Perpendicular to gradient ' + m(f('3', '4')) + ':', a: [m(f('4', '3')), m('−' + f('4', '3')), m('−' + f('3', '4')), m(f('3', '4'))], c: 1, why: 'Negative reciprocal.' },
+      { q: 'Centre of ' + m('(x + 2)² + (y − 5)² = 9') + ':', a: [m('(2, −5)'), m('(−2, 5)'), m('(2, 5)'), m('(−2, −5)')], c: 1, why: 'Reverse the signs.' },
+      { q: 'Its radius:', a: [m('9'), m('3'), m('81'), m(sr('3'))], c: 1, why: m('r² = 9') + '.' },
+      { q: 'A line meets a circle in at most:', a: [m('1'), m('2'), m('3'), m('4')], c: 1, why: 'A quadratic.' },
+      { q: m('D = 0') + ' means:', a: ['a secant', 'a tangent', 'no meeting', 'a diameter'], c: 1, why: 'One repeated root.' },
+      { q: 'The chord at distance ' + m('d') + ':', a: [m(sr('r² − d²')), m('2' + sr('r² − d²')), m('2d'), m('r + d')], c: 1, why: 'Twice the half-chord.' },
+      { q: m('AB') + ' equals:', a: [m('OA − OB'), m('OB − OA'), m('OA + OB'), m('|AB|')], c: 1, why: '“To minus from”.' },
+      { q: 'Collinear needs, beyond parallel:', a: ['equal length', 'a common point', 'the origin', 'nothing'], c: 1, why: 'Or two parallel lines.' },
+      { q: 'An enlargement of factor ' + m('k') + ' multiplies areas by:', a: [m('k'), m('k²'), m('k³'), m('2k')], c: 1, why: 'Two dimensions.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q2 needs two things:', a: ['two points', 'the midpoint and the perpendicular gradient', 'the length', 'the radius'], c: 1, why: 'Both conditions.' },
+    { q: 'The faster route in Q5 is:', a: ['the discriminant', 'the distance from the centre', 'guessing', 'a sketch'], c: 1, why: 'One line.' },
+    { q: 'A vector proof of collinearity ends with:', a: ['the ratio', 'a sentence naming the common point', 'the magnitude', 'nothing'], c: 1, why: 'Otherwise only parallel.' },
+    { q: 'Lessons 63–68 return to:', a: ['circles', 'solid geometry', 'probability', 'vectors in the plane'], c: 1, why: 'Space, and the annual paper.' }
+  ],
+  practice: {
+    easy: [
+      [m('|AB|') + ' for ' + m('A(−1, 2), B(7, 8)'), m('10')],
+      ['Midpoint of the same', m('(3, 5)')],
+      ['Gradient of the same', m(f('3', '4'))],
+      ['Centre of ' + m('x² + y² − 8x + 2y − 8 = 0'), m('(4, −1)')],
+      ['Radius of the same', m('5')],
+      ['Gradient perpendicular to ' + m(f('3', '4')), m('−' + f('4', '3'))],
+      [m('PQ') + ' for ' + m('P(1, 2), Q(4, 8)'), m(col('3', '6'))]
+    ],
+    med: [
+      ['Perpendicular bisector of ' + m('A(−1, 2)') + ' and ' + m('B(7, 8)'), m('4x + 3y = 27')],
+      ['Chord of ' + m('x² + y² − 8x + 2y − 8 = 0') + ' on ' + m('y = x − 1'), m('2' + sr('17')) + ' ≈ ' + m('8.25')],
+      ['Tangency values of ' + m('c') + ' for ' + m('y = 2x + c') + ' and ' + m('x² + y² = 45'), m('c = ±15')],
+      ['Are ' + m('P(1,2), Q(4,8), R(7,14)') + ' collinear?', 'Yes — ' + m('QR = PQ') + ', ' + m('Q') + ' common'],
+      ['Line through ' + m('(2, 3)') + ' parallel to ' + m('4x + 3y = 1'), m('4x + 3y = 17')],
+      ['Distance from ' + m('(4, −1)') + ' to ' + m('y = x − 1'), m(f('4', sr('2'))) + ' = ' + m('2' + sr('2'))],
+      ['Circle centre ' + m('(4, −1)') + ' radius ' + m('5') + ', in expanded form', m('x² + y² − 8x + 2y − 8 = 0')]
+    ],
+    hard: [
+      ['Tangent to ' + m('x² + y² = 45') + ' at ' + m('(6, 3)'), m('6x + 3y = 45') + ', i.e. ' + m('2x + y = 15')],
+      ['Circumcentre of ' + m('(−1, 2), (7, 8), (7, 2)'), m('(3, 5)')],
+      ['The line ' + m('4x + 3y = 27') + ' and the circle ' + m('x² + y² = 25') + ': how many points?', 'None — ' + m('d = 5.4 > 5')],
+      ['Area of the triangle ' + m('(0, 0), (8, 0), (3, 6)'), m('24')],
+      ['Find ' + m('k') + ' so that ' + m(col('k', '9')) + ' is parallel to ' + m(col('2', '6')), m('k = 3')],
+      ['Shortest distance from ' + m('(10, 5)') + ' to the circle ' + m('(x − 4)² + (y + 1)² = 25'), m(sr('72') + ' − 5') + ' ≈ ' + m('3.49')],
+      ['Show that the perpendicular bisectors of the sides of ' + m('(0,0), (6,0), (0,8)') + ' meet at ' + m('(3, 4)'), 'All three pass through it']
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Bring the concept map to Lesson 63; the solid-geometry revision assumes the plane work is secure.',
+  homework: [
+    'Rewrite in full every control-work question that lost a mark, naming the slip in the margin.',
+    'Complete the concept map with all six links written as sentences.',
+    'Find the values of ' + m('c') + ' for which ' + m('y = x + c') + ' is a tangent to ' + m('x² + y² = 18') + ', by both routes.',
+    'Write your target for the revision block in one checkable sentence, and date it.'
+  ]
+});
+
+/* ============================== 32 ============================== */
+G10_GEO.push({
+  id: 'g10-32', stream: 'geo', grade: 10, quarter: 4, lessons: '63–64', hours: 2,
+  title: 'Revision — parallelism and perpendicularity in space',
+  subtitle: 'The whole year of solid geometry, reduced to eight statements and one picture each.',
+  uz: 'Geometry 10, Chapters II–IV review', uzPage: 'pp. 257–266',
+  cam: 'P1 spatial review', camPage: 'Pure Mathematics 1, pp. 77–80', wb: 'Revision set G1',
+  objectives: [
+    'State the positions of two lines, a line and a plane, and two planes.',
+    'Use the criteria for a line parallel to a plane and for two parallel planes.',
+    'Use the criterion for a line perpendicular to a plane, and the three-perpendiculars theorem.',
+    'Compute the angle between a line and a plane and between two planes.'
+  ],
+  terms: [
+    ['Skew lines', 'Ayqash to‘g‘ri chiziqlar', 'Скрещивающиеся прямые'],
+    ['Parallel to a plane', 'Tekislikka parallel', 'Параллельная плоскости'],
+    ['Parallel planes', 'Parallel tekisliklar', 'Параллельные плоскости'],
+    ['Perpendicular to a plane', 'Tekislikka perpendikulyar', 'Перпендикулярная плоскости'],
+    ['Three perpendiculars theorem', 'Uch perpendikulyar teoremasi', 'Теорема о трёх перпендикулярах'],
+    ['Angle between a line and a plane', 'To‘g‘ri chiziq va tekislik orasidagi burchak', 'Угол между прямой и плоскостью'],
+    ['Dihedral angle', 'Ikki yoqli burchak', 'Двугранный угол'],
+    ['Orthogonal projection', 'Ortogonal proyeksiya', 'Ортогональная проекция'],
+    ['Oblique', 'Og‘ma', 'Наклонная'],
+    ['Foot of the perpendicular', 'Perpendikulyar asosi', 'Основание перпендикуляра']
+  ],
+  timing: [[15, 'Positions'], [25, 'Parallelism'], [25, 'Perpendicularity'], [20, 'Angles'], [15, 'Homework']],
+  sections: [
+    {
+      h: 'Positions',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Pair</th><th>Possible positions</th></tr></thead>
+      <tbody>
+        <tr><td>two lines</td><td>intersecting · parallel · <b>skew</b></td></tr>
+        <tr><td>a line and a plane</td><td>the line lies in it · parallel · meets it in one point</td></tr>
+        <tr><td>two planes</td><td>coincident · parallel · meeting in a line</td></tr>
+      </tbody></table></div>
+      {{fig:skewLines:Skew lines — not parallel, and never meeting. The case that has no analogue in the plane.}}
+      <div class="warn"><span class="wl">Skew is the case that only space has</span>
+      Two lines that do not meet need not be parallel — they may simply lie in different planes. In a
+      cube the twelve edges give ${m('18')} parallel pairs, ${m('24')} intersecting pairs and ${m('24')}
+      skew pairs, and ${m('18 + 24 + 24 = 66 = C(12, 2)')}.</div>`
+    },
+    {
+      h: 'Parallelism',
+      html: `<div class="keybox"><div class="klabel">The two criteria</div>
+      <ul>
+        <li>A line is <b>parallel to a plane</b> if it is parallel to some line lying in that plane.</li>
+        <li>Two planes are <b>parallel</b> if two intersecting lines of one are parallel to two
+        intersecting lines of the other.</li>
+      </ul>
+      In both, the word <b>intersecting</b> is essential: two parallel lines of one plane parallel to two
+      of the other prove nothing.</div>
+      {{fig:lineParallelPlane:A line parallel to a plane — it is parallel to a line drawn in the plane.}}
+      {{fig:parallelPlanes:Two intersecting lines of each, in parallel pairs — that is the criterion.}}
+      <p>Two consequences used constantly:</p>
+      <ul>
+        <li>If ${m('α ∥ β')} and a third plane cuts both, the two lines of intersection are parallel.</li>
+        <li>Segments of parallel lines between parallel planes are equal.</li>
+      </ul>`
+    },
+    {
+      h: 'Perpendicularity',
+      html: `<div class="keybox"><div class="klabel">The criterion, and the theorem</div>
+      A line is <b>perpendicular to a plane</b> if it is perpendicular to two <b>intersecting</b> lines
+      of that plane. It is then perpendicular to <b>every</b> line of the plane.
+      ${eq('<b>Three perpendiculars.</b> A line in a plane is perpendicular to an oblique if and only if it is perpendicular to the oblique’s projection.', true)}</div>
+      {{fig:perpLinePlane:Perpendicular to two intersecting lines — and therefore to all of them.}}
+      {{fig:threePerp:The oblique, its projection, and the line in the plane — perpendicular to one iff to the other.}}
+      <p>The three-perpendiculars theorem is what turns a space problem into a plane one: it lets you
+      drop from a slanted segment to its shadow and work entirely in the base.</p>`
+    },
+    {
+      h: 'Angles',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Angle</th><th>How to construct it</th></tr></thead>
+      <tbody>
+        <tr><td>line and plane</td><td>between the line and its <b>orthogonal projection</b></td></tr>
+        <tr><td>two planes (dihedral)</td><td>between two rays perpendicular to the edge, one in each face</td></tr>
+        <tr><td>two skew lines</td><td>translate one until they meet; the angle between the translates</td></tr>
+      </tbody></table></div>
+      {{fig:dihedralAngle:The linear angle of a dihedral — both rays perpendicular to the edge.}}
+      {{fig:orthoProjection:The projection is the shadow cast straight down; the angle is measured to it.}}
+      <div class="keybox"><div class="klabel">Every angle question becomes one right triangle</div>
+      Find the foot of the perpendicular, name the projection, and a right triangle appears with the
+      slant as hypotenuse. Then ${m('cos θ = ' + f('projection', 'slant'))} or
+      ${m('tan θ = ' + f('height', 'projection'))} — plane trigonometry from that point on.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'In a cube ' + m('ABCDA₁B₁C₁D₁') + ' of edge ' + m('a') + ', find the angle between ' + m('AC₁') + ' and the base.',
+      steps: [
+        ['The projection of ' + m('AC₁') + ' on the base is ' + m('AC') + '.', ''],
+        [m('AC = a' + sr('2')) + ', ' + m('CC₁ = a'), ''],
+        [m('tan θ = ' + f('a', 'a' + sr('2')) + ' = ' + f('1', sr('2'))), ''],
+        [m('θ ≈ 35.3°'), '']
+      ],
+      ans: m('≈ 35.3°')
+    },
+    {
+      q: 'In the same cube, find the angle between the planes ' + m('ABC₁D₁') + ' and the base.',
+      steps: [
+        ['The edge of the dihedral is ' + m('AB') + '.', ''],
+        [m('BC ⟂ AB') + ' in the base; ' + m('BC₁ ⟂ AB') + ' in the upper face.', 'Both perpendicular to the edge.'],
+        [m('tan θ = ' + f('CC₁', 'BC') + ' = 1'), ''],
+        [m('θ = 45°'), '']
+      ],
+      ans: m('45°')
+    },
+    {
+      q: 'Prove that a line perpendicular to two intersecting lines of a plane is perpendicular to a third line of that plane.',
+      steps: [
+        ['Let ' + m('l ⟂ a') + ' and ' + m('l ⟂ b') + ', with ' + m('a ∩ b = O') + '.', ''],
+        ['Any line ' + m('c') + ' of the plane through ' + m('O') + ' is a combination of directions of ' + m('a') + ' and ' + m('b') + '.', ''],
+        ['So ' + m('l ⟂ c') + ' as well.', 'This is the criterion, and its point.']
+      ],
+      ans: 'Perpendicular to two intersecting lines means perpendicular to all'
+    },
+    {
+      q: 'A point is ' + m('12') + ' cm from a plane. Two obliques of lengths ' + m('13') + ' and ' + m('15') + ' cm are drawn. Find their projections.',
+      steps: [
+        [m(sr('169 − 144') + ' = 5'), ''],
+        [m(sr('225 − 144') + ' = 9'), ''],
+        ['Projections ' + m('5') + ' cm and ' + m('9') + ' cm.', 'The longer oblique has the longer projection.']
+      ],
+      ans: m('5') + ' cm and ' + m('9') + ' cm'
+    }
+  ],
+  modelNote: 'Use a wire cube and a torch: the shadow on the desk is the orthogonal projection, and every angle question becomes visible.',
+  interactive: {
+    type: 'space3d',
+    title: 'Lines and planes in a box',
+    hint: 'Turn the box and find the projection of each diagonal.'
+  },
+  quiz: [
+    { q: 'Two lines that never meet are:', a: ['always parallel', 'parallel or skew', 'always skew', 'intersecting'], c: 1, why: 'Space has both.' },
+    { q: 'A line is perpendicular to a plane if it is perpendicular to:', a: ['one line of it', 'two intersecting lines of it', 'two parallel lines of it', 'the edge'], c: 1, why: 'Intersecting is essential.' },
+    { q: 'The angle between a line and a plane is measured to:', a: ['any line of the plane', 'its orthogonal projection', 'the normal', 'the edge'], c: 1, why: 'It is the smallest such angle.' },
+    { q: 'A dihedral angle is measured by:', a: ['any two rays', 'two rays perpendicular to the edge', 'the edge itself', 'the projection'], c: 1, why: 'The linear angle.' },
+    { q: 'The three-perpendiculars theorem connects:', a: ['two planes', 'an oblique and its projection', 'two skew lines', 'two obliques'], c: 1, why: 'Perpendicular to one iff to the other.' },
+    { q: 'In a cube, the number of skew edge pairs is:', a: [m('18'), m('24'), m('12'), m('66')], c: 1, why: m('66 − 18 − 24') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Three positions of two lines in space', 'Intersecting, parallel, skew'],
+      ['Three positions of a line and a plane', 'In it, parallel, meeting in a point'],
+      ['A line ⟂ to two intersecting lines of a plane is:', 'Perpendicular to the plane'],
+      ['The angle between a line and a plane is measured to:', 'Its projection'],
+      ['Space diagonal of a cube of edge ' + m('a'), m('a' + sr('3'))],
+      ['Face diagonal of a cube of edge ' + m('a'), m('a' + sr('2'))],
+      ['Projection of an oblique ' + m('13') + ' from a point ' + m('12') + ' from the plane', m('5')]
+    ],
+    med: [
+      ['Angle between ' + m('AC₁') + ' and the base in a cube', m('≈ 35.3°')],
+      ['Angle between ' + m('ABC₁D₁') + ' and the base in a cube', m('45°')],
+      ['Angle between two space diagonals of a cube', m('≈ 70.5°') + ' or ' + m('≈ 109.5°')],
+      ['Number of parallel edge pairs in a cube', m('18')],
+      ['Number of intersecting edge pairs in a cube', m('24')],
+      ['Number of skew edge pairs in a cube', m('24')],
+      ['Two obliques of ' + m('15') + ' and ' + m('20') + ' from a point ' + m('12') + ' from a plane: projections', m('9') + ' and ' + m('16')]
+    ],
+    hard: [
+      ['Distance from a vertex of a cube of edge ' + m('a') + ' to the diagonal of the opposite face', m(f('a' + sr('6'), '3'))],
+      ['Angle between ' + m('AB₁') + ' and ' + m('BC₁') + ' in a cube', m('60°')],
+      ['Distance between two skew edges of a cube of edge ' + m('a'), m('a')],
+      ['A rectangular box ' + m('3 × 4 × 12') + ': the angle of the space diagonal with the base', m('≈ 67.4°')],
+      ['Prove that if ' + m('α ∥ β') + ' and ' + m('γ') + ' cuts both, the lines of intersection are parallel', 'They lie in ' + m('γ') + ' and cannot meet'],
+      ['A point ' + m('6') + ' from a plane: the locus of feet of obliques of length ' + m('10'), 'A circle of radius ' + m('8')],
+      ['A regular tetrahedron of edge ' + m('a') + ': the angle between a lateral edge and the base', m('≈ 54.7°')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw the cube for every question; the marks live in the picture.',
+  homework: [
+    'List the three positions of two lines, of a line and a plane, and of two planes, with one sketch each.',
+    'In a cube of edge ' + m('6') + ' cm, find the angle between the space diagonal and the base.',
+    'In the same cube, find the dihedral angle between the plane through ' + m('A') + ', ' + m('B') + ', ' + m('C₁') + ' and the base.',
+    'A point is ' + m('8') + ' cm from a plane; an oblique from it is ' + m('17') + ' cm long. Find the projection.',
+    'State the three-perpendiculars theorem and draw the picture that goes with it.'
+  ]
+});
+
+/* ============================== 33 ============================== */
+G10_GEO.push({
+  id: 'g10-33', stream: 'geo', grade: 10, quarter: 4, lessons: '65–66', hours: 2,
+  title: 'Revision — sections of polyhedra and orthogonal projection',
+  subtitle: 'Three rules build any section; one shadow measures any angle.',
+  uz: 'Geometry 10, Chapter IV review', uzPage: 'pp. 267–276',
+  cam: 'P1 spatial review', camPage: 'Pure Mathematics 1, pp. 81–84', wb: 'Revision set G2',
+  objectives: [
+    'Construct the section of a cube or prism by a plane through three points.',
+    'Use the trace of a cutting plane on a face of the solid.',
+    'Compute the area of a section by projecting it onto the base.',
+    'Use orthogonal projection to find lengths and angles.'
+  ],
+  terms: [
+    ['Section (cross-section)', 'Kesim', 'Сечение'],
+    ['Cutting plane', 'Kesuvchi tekislik', 'Секущая плоскость'],
+    ['Trace', 'Iz', 'След'],
+    ['Polyhedron', 'Ko‘pyoq', 'Многогранник'],
+    ['Face', 'Yoq', 'Грань'],
+    ['Edge', 'Qirra', 'Ребро'],
+    ['Orthogonal projection', 'Ortogonal proyeksiya', 'Ортогональная проекция'],
+    ['Projection of an area', 'Yuza proyeksiyasi', 'Проекция площади'],
+    ['Diagonal section', 'Diagonal kesim', 'Диагональное сечение'],
+    ['Midpoint section', 'O‘rta kesim', 'Среднее сечение']
+  ],
+  timing: [[15, 'Three rules'], [30, 'Building a section'], [20, 'Naming the shape'], [20, 'Areas by projection'], [15, 'Homework']],
+  sections: [
+    {
+      h: 'Three rules',
+      html: `<div class="keybox"><div class="klabel">Everything a section needs</div>
+      <ol>
+        <li>Two points of the cutting plane on the <b>same face</b> join up — the segment between them
+        is part of the section.</li>
+        <li>The cutting plane meets two <b>parallel faces</b> in <b>parallel</b> lines.</li>
+        <li>Where the cutting plane meets the plane of a face outside the solid, that point is on the
+        <b>trace</b>, and can be used to reach a further face.</li>
+      </ol></div>
+      {{fig:cubeSection:A plane through three points of a cube — each segment lies in one face.}}
+      <div class="warn"><span class="wl">A section is a polygon, and its sides lie in faces</span>
+      Every side of a section is the intersection of the cutting plane with <b>one face</b>. A drawn line
+      that crosses from one face to another is not a side of anything — it is a mistake.</div>`
+    },
+    {
+      h: 'Building a section',
+      html: `<p>The method, for a plane through three given points of a cube:</p>
+      <ol>
+        <li>join any two points that lie on the same face — rule 1;</li>
+        <li>extend that line to meet the plane of an adjacent face outside the solid — rule 3;</li>
+        <li>join the new point to the third given point, and take the part inside the solid;</li>
+        <li>use rule 2 on parallel faces to finish, and check every side lies in exactly one face.</li>
+      </ol>
+      {{fig:prismSection:The same three rules on a prism — a plane cut across the lateral faces.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Cut of a cube</th><th>Shape</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>parallel to a face</td><td>square</td><td>congruent to the face</td></tr>
+        <tr><td>through two opposite edges</td><td>rectangle</td><td>a diagonal section</td></tr>
+        <tr><td>through three face-diagonals</td><td>equilateral triangle</td><td>side ${m('a' + sr('2'))}</td></tr>
+        <tr><td>through six edge-midpoints</td><td>regular hexagon</td><td>side ${m(f('a' + sr('2'), '2'))}</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Naming the shape',
+      html: `<p>The shape of the section is decided by how many faces the plane crosses — one side per face
+      crossed.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Faces crossed</th><th>Section</th><th>Example in a cube</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3</td><td>triangle</td><td>a corner cut off</td></tr>
+        <tr><td class="m">4</td><td>quadrilateral</td><td>a plane parallel to an edge</td></tr>
+        <tr><td class="m">5</td><td>pentagon</td><td>an oblique cut</td></tr>
+        <tr><td class="m">6</td><td>hexagon</td><td>through six edge-midpoints</td></tr>
+      </tbody></table></div>
+      <p>A cube has six faces, so its sections have at most six sides. A tetrahedron has four, so its
+      sections are triangles or quadrilaterals — never more.</p>
+      <div class="keybox"><div class="klabel">Parallel faces force parallel sides</div>
+      In a cube the faces come in three parallel pairs, so a hexagonal section has its opposite sides
+      parallel — and the regular one, through the six edge-midpoints, has all six sides equal as
+      well.</div>`
+    },
+    {
+      h: 'Areas by projection',
+      html: `<p>When a section is awkward to measure directly, project it onto the base.</p>
+      ${eq(m('S_projection = S_section · cos θ'), true)}
+      <p>where ${m('θ')} is the dihedral angle between the two planes. Read backwards, this finds the
+      section from a shape that is easy to measure:</p>
+      ${eq(m('S_section = ' + f('S_projection', 'cos θ')), true)}
+      {{fig:orthoProjection:The shadow is shorter than the object by exactly the factor cos θ.}}
+      <p><b>Example.</b> A plane cuts a cube of edge ${m('6')} through ${m('A')}, ${m('B')} and
+      ${m('C₁')}. Its projection on the base is the triangle ${m('ABC')}, of area ${m('18')}; the
+      dihedral angle is ${m('45°')}; so the section has area
+      ${m(f('18', 'cos 45°') + ' = 18' + sr('2') + ' ≈ 25.5')}.</p>
+      <div class="warn"><span class="wl">The projection is always the smaller</span>
+      Since ${m('cos θ ≤ 1')}, a shadow is never larger than what casts it. If your section comes out
+      <i>smaller</i> than its projection, the formula has been used upside down.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A plane passes through the midpoints of six edges of a cube of edge ' + m('a') + '. Name the section and find its perimeter.',
+      steps: [
+        ['Six faces crossed, so a hexagon.', ''],
+        ['Each side joins two midpoints of one face: ' + m(f('a' + sr('2'), '2')) + '.', ''],
+        ['All six equal — a regular hexagon.', ''],
+        ['Perimeter ' + m('3a' + sr('2')), '']
+      ],
+      ans: 'A regular hexagon of perimeter ' + m('3a' + sr('2'))
+    },
+    {
+      q: 'Find the area of the diagonal section of a cube of edge ' + m('6') + '.',
+      steps: [
+        ['It is the rectangle through two opposite edges.', ''],
+        ['Sides ' + m('6') + ' and ' + m('6' + sr('2')) + '.', ''],
+        [m('S = 36' + sr('2') + ' ≈ 50.9'), '']
+      ],
+      ans: m('36' + sr('2')) + ' ≈ ' + m('50.9')
+    },
+    {
+      q: 'A section of area ' + m('S') + ' makes ' + m('60°') + ' with the base. Find its projection.',
+      steps: [
+        [m('S_proj = S cos 60°'), ''],
+        [m('= 0.5 S'), ''],
+        ['Half the section.', '']
+      ],
+      ans: m('0.5 S')
+    },
+    {
+      q: 'A plane through ' + m('A') + ', ' + m('B') + ' and ' + m('C₁') + ' cuts a cube of edge ' + m('6') + '. Find the area of the section.',
+      steps: [
+        ['Projection on the base: triangle ' + m('ABC') + ', area ' + m('18') + '.', ''],
+        ['Dihedral angle along ' + m('AB') + ' is ' + m('45°') + '.', ''],
+        [m('S = ' + f('18', 'cos 45°')), ''],
+        [m('= 18' + sr('2') + ' ≈ 25.5'), '']
+      ],
+      ans: m('18' + sr('2')) + ' ≈ ' + m('25.5')
+    }
+  ],
+  modelNote: 'Cut a potato or a block of foam along a plane through three marked points; the class predicts the polygon before the cut.',
+  interactive: {
+    type: 'space3d',
+    title: 'Cutting the box',
+    hint: 'Turn the solid and count the faces the plane crosses.'
+  },
+  quiz: [
+    { q: 'Each side of a section lies in:', a: ['two faces', 'exactly one face', 'the base', 'no face'], c: 1, why: 'It is one intersection.' },
+    { q: 'A cutting plane meets two parallel faces in:', a: ['perpendicular lines', 'parallel lines', 'one point', 'nothing'], c: 1, why: 'Rule 2.' },
+    { q: 'A cube’s section has at most:', a: [m('4') + ' sides', m('5') + ' sides', m('6') + ' sides', m('8') + ' sides'], c: 2, why: 'Six faces.' },
+    { q: 'A tetrahedron’s section has at most:', a: [m('3'), m('4'), m('5'), m('6')], c: 1, why: 'Four faces.' },
+    { q: m('S_projection') + ' equals:', a: [m('S cos θ'), m(f('S', 'cos θ')), m('S sin θ'), m('S')], c: 0, why: 'The shadow is smaller.' },
+    { q: 'A section through six edge-midpoints of a cube is:', a: ['a square', 'a regular hexagon', 'a triangle', 'a pentagon'], c: 1, why: 'All six sides equal.' }
+  ],
+  practice: {
+    easy: [
+      ['A plane parallel to a face of a cube cuts:', 'A square'],
+      ['A corner cut off a cube gives:', 'A triangle'],
+      ['Maximum number of sides of a cube section', m('6')],
+      ['Maximum number of sides of a tetrahedron section', m('4')],
+      ['Side of the equilateral section through three face-diagonals of a cube of edge ' + m('a'), m('a' + sr('2'))],
+      ['Diagonal section of a cube of edge ' + m('6'), m('36' + sr('2'))],
+      [m('S_projection') + ' when ' + m('S = 20, θ = 60°'), m('10')]
+    ],
+    med: [
+      ['Perimeter of the regular hexagonal section of a cube of edge ' + m('a'), m('3a' + sr('2'))],
+      ['Area of that hexagon for ' + m('a = 4'), m('12' + sr('3')) + ' ≈ ' + m('20.8')],
+      ['Area of the equilateral section through three face-diagonals, ' + m('a = 6'), m('18' + sr('3')) + ' ≈ ' + m('31.2')],
+      ['Section through ' + m('A, B, C₁') + ' of a cube of edge ' + m('6'), m('18' + sr('2')) + ' ≈ ' + m('25.5')],
+      [m('S_section') + ' when ' + m('S_proj = 12, θ = 45°'), m('12' + sr('2')) + ' ≈ ' + m('17.0')],
+      ['How many faces does a pentagonal section cross?', m('5')],
+      ['A plane parallel to two opposite edges of a cube cuts:', 'A rectangle']
+    ],
+    hard: [
+      ['Prove that the hexagonal section through the six edge-midpoints of a cube is regular', 'Each side is ' + m(f('a' + sr('2'), '2')) + ', angles ' + m('120°')],
+      ['Area of the section of a cube of edge ' + m('a') + ' through one edge and the midpoint of the opposite edge', m(f('a²' + sr('5'), '2'))],
+      ['A plane cuts a cube of edge ' + m('4') + ' through three vertices of one face and one of the opposite: name the section', 'A quadrilateral (a trapezium)'],
+      ['A section of a cube has area ' + m('12' + sr('2')) + ' and projects to ' + m('12') + ': find ' + m('θ'), m('45°')],
+      ['A regular tetrahedron of edge ' + m('a') + ': the area of the section through one edge and the midpoint of the opposite', m(f('a²' + sr('2'), '4'))],
+      ['A plane parallel to the base cuts a pyramid halfway up: the ratio of the areas', m('1 : 4')],
+      ['Show that the section of a cube through three face-diagonals meeting at a vertex is equilateral', 'All three sides are ' + m('a' + sr('2'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw each cube large, and mark the three given points before drawing any line.',
+  homework: [
+    'State the three rules for constructing a section, with a sketch for each.',
+    'Construct the section of a cube by the plane through the midpoints of six edges, and name it.',
+    'Find the area of the diagonal section of a cube of edge ' + m('8') + ' cm.',
+    'A section makes ' + m('30°') + ' with the base and its projection has area ' + m('9') + ' cm². Find the area of the section.',
+    'Explain in two sentences why the section of a tetrahedron can never be a pentagon.'
+  ]
+});
+
+/* ============================== 34 ============================== */
+G10_GEO.push({
+  id: 'g10-34', stream: 'geo', grade: 10, quarter: 4, lessons: '67–68', hours: 2,
+  title: 'Annual control work, and the Grade 11 preview',
+  subtitle: 'The whole year in one paper, then a look at the road that leads out of it.',
+  uz: 'Geometry 10, Yillik nazorat ishi', uzPage: 'pp. 277–280',
+  cam: 'Annual review', camPage: 'Pure Mathematics 1, pp. 85–88', wb: 'Annual paper G',
+  objectives: [
+    'Apply the axiomatic, parallel, perpendicular and coordinate methods of the whole year.',
+    'Choose the shortest route to each answer under time pressure.',
+    'Classify each lost mark and rewrite the solution.',
+    'See how Grade 11 continues each strand of Grade 10.'
+  ],
+  terms: [
+    ['Annual control work', 'Yillik nazorat ishi', 'Годовая контрольная работа'],
+    ['Axiom', 'Aksioma', 'Аксиома'],
+    ['Parallelism', 'Parallellik', 'Параллельность'],
+    ['Perpendicularity', 'Perpendikulyarlik', 'Перпендикулярность'],
+    ['Section', 'Kesim', 'Сечение'],
+    ['Coordinate method', 'Koordinatalar usuli', 'Координатный метод'],
+    ['Solid of revolution', 'Aylanish jismi', 'Тело вращения'],
+    ['Volume', 'Hajm', 'Объём']
+  ],
+  timing: [[3, 'Instructions'], [45, 'The paper'], [12, 'Answers'], [12, 'Diagnosis'], [8, 'The Grade 11 preview']],
+  sections: [
+    {
+      h: 'The paper — 40 marks, 45 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>State the three positions of two lines in space, with a sketch of each</td><td class="m">4</td><td>Q I</td></tr>
+        <tr><td>2</td><td>Prove that a line parallel to a line of a plane is parallel to the plane, or lies in it</td><td class="m">6</td><td>Q II</td></tr>
+        <tr><td>3</td><td>A cube of edge ${m('8')}: the angle between the space diagonal and the base, and between the plane ${m('ABC₁')} and the base</td><td class="m">7</td><td>Q III</td></tr>
+        <tr><td>4</td><td>Construct and name the section of a cube through three given vertices; find its area</td><td class="m">7</td><td>Q III–IV</td></tr>
+        <tr><td>5</td><td>${m('A(2, −1)')}, ${m('B(8, 7)')}: the length, the midpoint and the perpendicular bisector</td><td class="m">6</td><td>Q IV</td></tr>
+        <tr><td>6</td><td>Find where ${m('y = 2x − 4')} meets ${m('x² + y² = 16')}, and the chord length</td><td class="m">6</td><td>Q IV</td></tr>
+        <tr><td>7</td><td>A point ${m('9')} cm from a plane; obliques of ${m('15')} and ${m('41')} cm: the projections</td><td class="m">4</td><td>Q III</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">How to spend 45 minutes</div>
+      Questions 1, 5 and 7 are quick — about ${m('12')} minutes for ${m('14')} marks. Do them first, then
+      3 and 6, and leave 2 and 4 last: a proof and a construction reward the time that is left, and
+      punish the time that is not.</div>`
+    },
+    {
+      h: 'The year in one page',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Quarter</th><th>The one idea</th><th>The picture</th></tr></thead>
+      <tbody>
+        <tr><td>I — axioms and entry to space</td><td>three points determine a plane</td><td>the plane through three dots</td></tr>
+        <tr><td>II — parallelism</td><td>parallel to a line <b>in</b> the plane</td><td>a line and its parallel below</td></tr>
+        <tr><td>III — perpendicularity</td><td>perpendicular to two <b>intersecting</b> lines</td><td>the vertical mast</td></tr>
+        <tr><td>IV — coordinates</td><td>geometry becomes algebra</td><td>the circle and its chord</td></tr>
+      </tbody></table></div>
+      {{fig:trig3dBox:One box, and every angle of the year measured inside it.}}
+      <div class="keybox"><div class="klabel">The four habits worth keeping</div>
+      <ul>
+        <li>draw the solid before naming anything;</li>
+        <li>find the projection, and a right triangle appears;</li>
+        <li>in coordinates, plot before you calculate;</li>
+        <li>finish a proof with the sentence that states the conclusion.</li>
+      </ul></div>`
+    },
+    {
+      h: 'The Grade 11 preview',
+      html: `<p>Grade 11 geometry continues each of the four strands, and adds measurement.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Grade 10</th><th>becomes, in Grade 11</th></tr></thead>
+      <tbody>
+        <tr><td>points and lines in space</td><td>coordinates ${m('(x, y, z)')} and vectors in space</td></tr>
+        <tr><td>angles by projection</td><td>the scalar product, and angles without a picture</td></tr>
+        <tr><td>polyhedra and their sections</td><td>prisms and pyramids — surface area and volume</td></tr>
+        <tr><td>the circle in the plane</td><td>the cylinder, the cone and the sphere</td></tr>
+      </tbody></table></div>
+      {{fig:point3d:The next step — a third coordinate, and every plane method carries over.}}
+      <p><b>What to do over the summer.</b> Nothing large. Keep the seven plane-geometry formulas and the
+      four positions-in-space pictures somewhere you will see them, and in September the first lesson —
+      the coordinate system in space — will read as an easy extension rather than a new subject.</p>
+      <div class="keybox"><div class="klabel">One sentence to carry into Grade 11</div>
+      Every three-dimensional problem is solved by finding the one right triangle it contains. That was
+      true in every lesson this year, and it stays true in every lesson of the next.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q3: a cube of edge ' + m('8') + ' — the angle between the space diagonal and the base.',
+      steps: [
+        ['Projection of ' + m('AC₁') + ' is ' + m('AC = 8' + sr('2')) + '.', ''],
+        [m('CC₁ = 8'), ''],
+        [m('tan θ = ' + f('8', '8' + sr('2')) + ' = ' + f('1', sr('2'))), ''],
+        [m('θ ≈ 35.3°'), '']
+      ],
+      ans: m('≈ 35.3°')
+    },
+    {
+      q: 'Model answer, Q6: where ' + m('y = 2x − 4') + ' meets ' + m('x² + y² = 16') + '.',
+      steps: [
+        [m('x² + (2x − 4)² = 16'), ''],
+        [m('5x² − 16x = 0 ⇒ x(5x − 16) = 0'), ''],
+        [m('x = 0') + ' or ' + m('x = 3.2'), ''],
+        [m('(0, −4)') + ' and ' + m('(3.2, 2.4)') + '; chord ' + m(sr('10.24 + 40.96') + ' ≈ 7.16') + '.', '']
+      ],
+      ans: m('(0, −4)') + ', ' + m('(3.2, 2.4)') + '; chord ' + m('≈ 7.16')
+    },
+    {
+      q: 'Model answer, Q7: a point ' + m('9') + ' cm from a plane, obliques ' + m('15') + ' and ' + m('41') + ' cm.',
+      steps: [
+        [m(sr('225 − 81') + ' = 12'), ''],
+        [m(sr('1681 − 81') + ' = 40'), ''],
+        ['Projections ' + m('12') + ' cm and ' + m('40') + ' cm.', 'Both are Pythagorean triples.']
+      ],
+      ans: m('12') + ' cm and ' + m('40') + ' cm'
+    }
+  ],
+  modelNote: 'Give the class the paper’s mark allocation before they start; ten seconds of planning is worth five marks.',
+  interactive: {
+    type: 'quiz',
+    title: 'The year in twelve questions',
+    hint: 'Three from each quarter.',
+    items: [
+      { q: 'A plane is determined by:', a: ['two points', 'three non-collinear points', 'one line', 'four points'], c: 1, why: 'The first axiom.' },
+      { q: 'Two lines that never meet are:', a: ['parallel', 'parallel or skew', 'skew', 'intersecting'], c: 1, why: 'Space has both.' },
+      { q: 'A line ∥ to a plane is ∥ to:', a: ['every line of it', 'some line of it', 'the normal', 'nothing'], c: 1, why: 'The criterion.' },
+      { q: 'Two planes are parallel if:', a: ['one line of each is parallel', 'two intersecting lines of each are parallel', 'they do not meet at one point', 'they look parallel'], c: 1, why: 'Intersecting is essential.' },
+      { q: '⟂ to a plane means ⟂ to:', a: ['one line', 'two intersecting lines', 'two parallel lines', 'the edge'], c: 1, why: 'And then to all.' },
+      { q: 'The angle to a plane is measured to:', a: ['the normal', 'the projection', 'any line', 'the edge'], c: 1, why: 'The smallest angle.' },
+      { q: 'A dihedral angle is measured:', a: ['anywhere', 'by rays ⟂ to the edge', 'along the edge', 'by projection'], c: 1, why: 'The linear angle.' },
+      { q: 'Each side of a section lies in:', a: ['one face', 'two faces', 'the base', 'none'], c: 0, why: 'One intersection.' },
+      { q: m('S_proj') + ' equals:', a: [m('S cos θ'), m(f('S', 'cos θ')), m('S sin θ'), m('S')], c: 0, why: 'The shadow is smaller.' },
+      { q: 'Perpendicular gradients satisfy:', a: [m('m₁ = m₂'), m('m₁m₂ = −1'), m('m₁ + m₂ = 0'), m('m₁m₂ = 1')], c: 1, why: 'Negative reciprocal.' },
+      { q: 'Centre of ' + m('(x − 4)² + (y + 1)² = 25') + ':', a: [m('(4, 1)'), m('(4, −1)'), m('(−4, 1)'), m('(−4, −1)')], c: 1, why: 'Reverse the signs.' },
+      { q: 'A tangent line meets the radius at:', a: [m('45°'), m('90°'), m('60°'), 'any angle'], c: 1, why: 'The tangent property.' }
+    ]
+  },
+  quiz: [
+    { q: 'Which questions should be attempted first?', a: ['the proof', 'the quick ones — 1, 5 and 7', 'the construction', 'in order'], c: 1, why: m('14') + ' marks in ' + m('12') + ' minutes.' },
+    { q: 'Grade 11 begins geometry with:', a: ['the sphere', 'coordinates and vectors in space', 'sections', 'the circle'], c: 1, why: 'A third coordinate.' },
+    { q: 'The one habit worth keeping is:', a: ['memorising formulas', 'finding the right triangle', 'working fast', 'skipping proofs'], c: 1, why: 'Every solid problem contains one.' },
+    { q: 'The scalar product will replace:', a: ['the section method', 'angles found by projection', 'the axioms', 'coordinates'], c: 1, why: 'Angles without a picture.' }
+  ],
+  practice: {
+    easy: [
+      ['Three positions of two lines in space', 'Intersecting, parallel, skew'],
+      ['A plane is determined by', 'Three non-collinear points'],
+      ['Space diagonal of a cube of edge ' + m('8'), m('8' + sr('3'))],
+      ['Face diagonal of the same cube', m('8' + sr('2'))],
+      ['Projection of a ' + m('15') + ' oblique from a point ' + m('9') + ' from the plane', m('12')],
+      ['Midpoint of ' + m('(2, −1)') + ' and ' + m('(8, 7)'), m('(5, 3)')],
+      ['Length of that segment', m('10')]
+    ],
+    med: [
+      ['Angle of the space diagonal of a cube with the base', m('≈ 35.3°')],
+      ['Dihedral angle of the plane ' + m('ABC₁') + ' with the base of a cube', m('45°')],
+      ['Perpendicular bisector of ' + m('(2, −1)') + ' and ' + m('(8, 7)'), m('3x + 4y = 27')],
+      ['Where ' + m('y = 2x − 4') + ' meets ' + m('x² + y² = 16'), m('(0, −4)') + ', ' + m('(3.2, 2.4)')],
+      ['Chord length there', m('≈ 7.16')],
+      ['Projection of a ' + m('41') + ' oblique from a point ' + m('9') + ' from a plane', m('40')],
+      ['Diagonal section of a cube of edge ' + m('8'), m('64' + sr('2'))]
+    ],
+    hard: [
+      ['Area of the section of a cube of edge ' + m('8') + ' through ' + m('A, B, C₁'), m('32' + sr('2')) + ' ≈ ' + m('45.3')],
+      ['Angle between two space diagonals of a cube', m('≈ 70.5°')],
+      ['Distance from a vertex of a cube of edge ' + m('8') + ' to the opposite space diagonal', m(f('8' + sr('6'), '3')) + ' ≈ ' + m('6.53')],
+      ['A tangent to ' + m('x² + y² = 16') + ' parallel to ' + m('y = 2x'), m('y = 2x ± 4' + sr('5'))],
+      ['The regular hexagonal section of a cube of edge ' + m('8') + ': its area', m('48' + sr('3')) + ' ≈ ' + m('83.1')],
+      ['A rectangular box ' + m('9 × 12 × 20') + ': the angle of the space diagonal with the base', m('≈ 53.1°')],
+      ['Prove that the four space diagonals of a cube meet at one point and bisect each other', 'All pass through the centre']
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'This is the last geometry lesson of Grade 10. Keep the year-in-one-page sheet for September.',
+  homework: [
+    'Rewrite in full every annual-paper question that lost a mark, naming the slip in the margin.',
+    'Write the year in one page: the four quarter ideas with one sketch each.',
+    'In a cube of edge ' + m('10') + ' cm, find the angle between the space diagonal and the base, and the area of the diagonal section.',
+    'Write one sentence saying what you will keep from this year’s geometry, and one saying what you will practise before September.'
+  ]
+});
