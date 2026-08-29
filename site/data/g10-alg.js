@@ -3454,3 +3454,635 @@ G10_ALG.push({
     'Write your target for Quarter III in one checkable sentence, and date it.'
   ]
 });
+
+/* ===================== QUARTER III (30 hours) ===================== */
+
+/* ============================== 23 ============================== */
+G10_ALG.push({
+  id: 'a10-23', stream: 'alg', grade: 10, quarter: 3, lessons: '49–50', hours: 2,
+  title: 'The exponential function, its properties and graph',
+  subtitle: 'The variable moves into the index — and everything about the shape follows from whether the base is bigger or smaller than 1.',
+  uz: 'Algebra 10, §3.1', uzPage: 'pp. 185–196',
+  cam: 'P2 · 2.1', camPage: 'Pure Mathematics 2 & 3, pp. 26–32', wb: 'P2 Exercise 2A',
+  objectives: [
+    'State the definition and conditions on the base of an exponential function.',
+    'Sketch y = aˣ for a > 1 and for 0 < a < 1.',
+    'State the domain, range, monotonicity and asymptote.',
+    'Model exponential growth and decay.'
+  ],
+  terms: [
+    ['Exponential function', 'Ko‘rsatkichli funksiya', 'Показательная функция'],
+    ['Base', 'Asos', 'Основание'],
+    ['Index (exponent)', 'Ko‘rsatkich', 'Показатель'],
+    ['Growth', 'O‘sish', 'Рост'],
+    ['Decay', 'Kamayish', 'Убывание'],
+    ['Horizontal asymptote', 'Gorizontal asimptota', 'Горизонтальная асимптота'],
+    ['Monotonic', 'Monoton', 'Монотонная'],
+    ['Doubling time', 'Ikkilanish vaqti', 'Время удвоения'],
+    ['Half-life', 'Yarim yemirilish davri', 'Период полураспада']
+  ],
+  timing: [[10, 'The definition'], [22, 'Two shapes'], [20, 'The properties'], [22, 'Growth and decay'], [16, 'Practice'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'The definition',
+      html: `${eq(m('y = aˣ ,   a > 0 ,  a ≠ 1'), true)}
+      <div class="keybox"><div class="klabel">Why the base is restricted</div>
+      ${m('a > 0')}: otherwise ${m('(−4)^(1/2)')} has no real value, and the function has holes.
+      ${m('a ≠ 1')}: ${m('1ˣ = 1')} for every ${m('x')} — a constant, not an exponential.</div>
+      <p>The variable is in the <b>index</b>. That is the whole difference from a power function
+      ${m('y = xⁿ')}, and it changes everything: ${m('2ˣ')} eventually overtakes ${m('x¹⁰⁰')}.</p>`
+    },
+    {
+      h: 'Two shapes',
+      html: `{{fig:expGraph:Growth when the base exceeds 1, decay when it is between 0 and 1. Both pass through (0, 1).}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Property</th><th class="m">a > 1</th><th class="m">0 < a < 1</th></tr></thead>
+      <tbody>
+        <tr><td>domain</td><td class="m">ℝ</td><td class="m">ℝ</td></tr>
+        <tr><td>range</td><td class="m">y > 0</td><td class="m">y > 0</td></tr>
+        <tr><td>behaviour</td><td>increasing</td><td>decreasing</td></tr>
+        <tr><td>passes through</td><td class="m">(0, 1)</td><td class="m">(0, 1)</td></tr>
+        <tr><td>asymptote</td><td class="m">y = 0</td><td class="m">y = 0</td></tr>
+        <tr><td>as ${m('x → +∞')}</td><td class="m">y → ∞</td><td class="m">y → 0</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The graph never touches the ${m('x')}-axis</span>
+      ${m('aˣ')} is positive for every real ${m('x')}. The range is ${m('y > 0')}, not ${m('y ≥ 0')} —
+      and that is why every exponential equation can be divided by ${m('aˣ')} safely.</div>`
+    },
+    {
+      h: 'The properties, and why they matter',
+      html: `<p>Every one of these is used in the next four lessons:</p>
+      <ol>
+        <li><b>Monotonic</b>, so <b>one-to-one</b> — hence ${m('aᵐ = aⁿ ⇒ m = n')}, the whole method of
+        solving exponential equations.</li>
+        <li><b>Positive</b>, so ${m('aˣ = −3')} has no solution and ${m('aˣ > 0')} is always true.</li>
+        <li><b>Increasing for ${m('a > 1')}</b>, so ${m('aᵐ > aⁿ ⇔ m > n')}; but for ${m('0 < a < 1')}
+        the inequality <b>reverses</b>.</li>
+        <li><b>Invertible</b>, and its inverse is the logarithm of Lesson 57–58.</li>
+      </ol>
+      ${eq(m('a^(m+n) = aᵐaⁿ') + '  ·  ' + m('a^(m−n) = ' + f('aᵐ', 'aⁿ')) + '  ·  ' + m('(aᵐ)ⁿ = a^(mn)') + '  ·  ' + m('a⁰ = 1'), true)}`
+    },
+    {
+      h: 'Growth and decay',
+      html: `${eq(m('N(t) = N₀ · aᵗ') + '     ' + m('a > 1') + ' growth, ' + m('0 < a < 1') + ' decay', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Situation</th><th>Model</th><th>Meaning of the base</th></tr></thead>
+      <tbody>
+        <tr><td>bacteria doubling hourly</td><td class="m">N = N₀·2ᵗ</td><td>doubling time 1 hour</td></tr>
+        <tr><td>a 12% annual rise</td><td class="m">N = N₀·1.12ᵗ</td><td>${m('1 + ' + f('12', '100'))}</td></tr>
+        <tr><td>a 7% annual fall</td><td class="m">N = N₀·0.93ᵗ</td><td>${m('1 − ' + f('7', '100'))}</td></tr>
+        <tr><td>half-life ${m('h')}</td><td class="m">N = N₀·(½)^(t/h)</td><td>halving every ${m('h')}</td></tr>
+      </tbody></table></div>
+      <p><b>Example.</b> Uzbekistan's population grows about ${m('1.7%')} a year. From ${m('36')}
+      million, after 10 years: ${m('36 × 1.017¹⁰ ≈ 42.6')} million.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Sketch ' + m('y = 3ˣ') + ' and state its domain, range and asymptote.',
+      steps: [
+        [m('a = 3 > 1') + ', so increasing.', ''],
+        ['Through ' + m('(0, 1)') + ' and ' + m('(1, 3)') + '.', ''],
+        ['Domain ' + m('ℝ') + ', range ' + m('y > 0') + '.', ''],
+        ['Asymptote ' + m('y = 0') + '.', '']
+      ],
+      ans: 'Increasing; domain ' + m('ℝ') + ', range ' + m('y > 0') + ', asymptote ' + m('y = 0')
+    },
+    {
+      q: 'A colony of 500 bacteria doubles every 3 hours. Find the number after 12 hours.',
+      steps: [
+        [m('N = 500 × 2^(t/3)'), ''],
+        [m('t = 12 ⇒ 2⁴ = 16'), ''],
+        [m('500 × 16 = 8000'), '']
+      ],
+      ans: m('8000')
+    },
+    {
+      q: 'A radioactive sample has half-life 5 days. What fraction remains after 20 days?',
+      steps: [
+        [m('20 ÷ 5 = 4') + ' half-lives.', ''],
+        [m('(½)⁴'), ''],
+        [m('= ' + f('1', '16')), '']
+      ],
+      ans: m(f('1', '16')) + ' — about 6.25%'
+    }
+  ],
+  modelNote: 'Change the base through 1 and watch the graph flip from growth to decay.',
+  interactive: {
+    type: 'graphTransform',
+    title: 'The exponential curve',
+    hint: 'Shift and stretch it, and watch the asymptote move with it.'
+  },
+  quiz: [
+    { q: 'The range of ' + m('y = aˣ') + ' is:', a: [m('ℝ'), m('y > 0'), m('y ≥ 0'), m('y ≠ 0')], c: 1, why: 'It never reaches zero.' },
+    { q: m('y = aˣ') + ' always passes through:', a: [m('(0, 0)'), m('(0, 1)'), m('(1, 0)'), m('(1, 1)')], c: 1, why: m('a⁰ = 1') + '.' },
+    { q: m('y = 0.4ˣ') + ' is:', a: ['increasing', 'decreasing', 'constant', 'undefined'], c: 1, why: 'The base is below 1.' },
+    { q: 'The base of an exponential must satisfy:', a: [m('a > 0'), m('a ≠ 1'), 'both', 'neither'], c: 2, why: 'Both conditions.' },
+    { q: 'A 5% annual fall gives base:', a: [m('0.5'), m('0.95'), m('1.05'), m('5')], c: 1, why: m('1 − 0.05') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Domain of ' + m('y = 2ˣ'), m('ℝ')],
+      ['Range of ' + m('y = 2ˣ'), m('y > 0')],
+      ['Is ' + m('y = 5ˣ') + ' increasing?', 'yes'],
+      ['Is ' + m('y = 0.3ˣ') + ' increasing?', 'no'],
+      [m('3⁰'), m('1')],
+      [m('2⁵'), m('32')],
+      [m('(½)³'), m(f('1', '8'))]
+    ],
+    med: [
+      ['Base for a 12% annual rise', m('1.12')],
+      ['Base for a 7% annual fall', m('0.93')],
+      ['500 bacteria doubling every 3 h: number after 12 h', m('8000')],
+      ['Half-life 5 days: fraction left after 20 days', m(f('1', '16'))],
+      [m('36') + ' million growing 1.7% a year: after 10 years', m('≈ 42.6') + ' million'],
+      ['Asymptote of ' + m('y = 2ˣ + 3'), m('y = 3')],
+      ['Range of ' + m('y = 2ˣ + 3'), m('y > 3')]
+    ],
+    hard: [
+      ['Sketch ' + m('y = 2^(x−1) − 4') + ': asymptote and intercepts', 'asymptote ' + m('y = −4') + ', ' + m('x') + '-intercept ' + m('3')],
+      ['A car worth 200 million so‘m falls 15% a year. Value after 4 years', m('≈ 104.4') + ' million'],
+      ['When does ' + m('N = 1000 × 1.05ᵗ') + ' first exceed ' + m('2000') + '?', m('t ≈ 14.2') + ' years'],
+      ['A half-life of 8 days: what percentage remains after 12 days?', m('≈ 35.4%')],
+      ['Show ' + m('2ˣ') + ' eventually exceeds ' + m('x¹⁰'), 'Exponential growth beats any power'],
+      ['Solve ' + m('2ˣ = 8') + ' by inspection', m('x = 3')],
+      ['Explain why ' + m('aˣ = −2') + ' has no solution', 'The range is ' + m('y > 0')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every sketch must show the asymptote as a dashed line.',
+  homework: [
+    'Sketch ' + m('y = 4ˣ') + ' and ' + m('y = (¼)ˣ') + ' on one set of axes, with domain, range and asymptote.',
+    'Sketch ' + m('y = 3ˣ − 9') + ' and give its asymptote and both intercepts.',
+    'A town of ' + m('40 000') + ' grows 2.5% a year. Find its population after 8 years.',
+    'A sample has half-life 6 hours. What fraction remains after 24 hours?',
+    'Explain in three sentences why the base of an exponential function may not be ' + m('1') + '.'
+  ]
+});
+
+/* ============================== 24 ============================== */
+G10_ALG.push({
+  id: 'a10-24', stream: 'alg', grade: 10, quarter: 3, lessons: '51–52', hours: 2,
+  title: 'Exponential equations',
+  subtitle: 'Get the same base on both sides, then equate the indices — and know the three tricks for when you cannot.',
+  uz: 'Algebra 10, §3.2', uzPage: 'pp. 197–208',
+  cam: 'P2 · 2.3', camPage: 'Pure Mathematics 2 & 3, pp. 33–38', wb: 'P2 Exercise 2B',
+  objectives: [
+    'Solve aᶠ⁽ˣ⁾ = aᵍ⁽ˣ⁾ by equating indices.',
+    'Rewrite both sides to a common base.',
+    'Solve equations that become quadratic after a substitution.',
+    'Solve homogeneous equations by dividing through.'
+  ],
+  terms: [
+    ['Exponential equation', 'Ko‘rsatkichli tenglama', 'Показательное уравнение'],
+    ['Common base', 'Umumiy asos', 'Общее основание'],
+    ['Equating indices', 'Ko‘rsatkichlarni tenglashtirish', 'Приравнивание показателей'],
+    ['Substitution', 'Almashtirish', 'Замена'],
+    ['Homogeneous equation', 'Bir jinsli tenglama', 'Однородное уравнение'],
+    ['Auxiliary variable', 'Yordamchi o‘zgaruvchi', 'Вспомогательная переменная'],
+    ['Positivity condition', 'Musbatlik sharti', 'Условие положительности'],
+    ['Rejected root', 'Rad etilgan ildiz', 'Отброшенный корень']
+  ],
+  timing: [[10, 'The one-to-one property'], [22, 'A common base'], [24, 'Substitution'], [22, 'Homogeneous equations'], [20, 'Practice'], [12, 'Homework']],
+  sections: [
+    {
+      h: 'The method rests on one property',
+      html: `<div class="keybox"><div class="klabel">${m('aˣ')} is one-to-one</div>
+      Because ${m('y = aˣ')} is strictly monotonic, ${m('a^m = a^n')} forces ${m('m = n')}
+      (for ${m('a > 0')}, ${m('a ≠ 1')}). That single fact solves most exponential equations.</div>
+      ${eq(m('2^(3x−1) = 2^(x+5)  ⇒  3x − 1 = x + 5  ⇒  x = 3'), true)}
+      <p>So the whole task is: <b>make the bases the same</b>.</p>`
+    },
+    {
+      h: 'Getting a common base',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Equation</th><th>Rewrite as</th><th>Solution</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2ˣ = 32</td><td class="m">2ˣ = 2⁵</td><td class="m">x = 5</td></tr>
+        <tr><td class="m">3^(2x) = 81</td><td class="m">3^(2x) = 3⁴</td><td class="m">x = 2</td></tr>
+        <tr><td class="m">4ˣ = 8</td><td class="m">2^(2x) = 2³</td><td class="m">x = 1.5</td></tr>
+        <tr><td class="m">(⅓)ˣ = 9</td><td class="m">3^(−x) = 3²</td><td class="m">x = −2</td></tr>
+        <tr><td class="m">5^(x²−3x) = 1</td><td class="m">5^(x²−3x) = 5⁰</td><td class="m">x = 0, 3</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Every number is a power of something</span>
+      ${m('32 = 2⁵')}, ${m('81 = 3⁴')}, ${m('8 = 2³')}, ${m('0.25 = 2⁻²')}, ${m('1 = a⁰')}.
+      Learning the powers of 2, 3, 5 up to a few hundred removes most of the difficulty in this topic.</div>`
+    },
+    {
+      h: 'Substitution',
+      html: `<p>When ${m('a^(2x)')} and ${m('aˣ')} both appear, set ${m('t = aˣ')} — and remember
+      ${m('t > 0')}:</p>
+      ${eq(m('4ˣ − 5·2ˣ + 4 = 0 ,  t = 2ˣ > 0  ⇒  t² − 5t + 4 = 0'), true)}
+      <p>${m('t = 1')} or ${m('t = 4')}; both positive, so ${m('2ˣ = 1')} gives ${m('x = 0')} and
+      ${m('2ˣ = 4')} gives ${m('x = 2')}.</p>
+      <div class="warn"><span class="wl">Write ${m('t > 0')} with the substitution</span>
+      A negative ${m('t')} is rejected immediately, because ${m('aˣ')} is never negative. That single
+      line saves the whole check at the end — and it is the mark the examiner is looking for.</div>
+      <p>Note ${m('4ˣ = (2²)ˣ = (2ˣ)² = t²')}: recognising that is the step, not the algebra after it.</p>`
+    },
+    {
+      h: 'Homogeneous equations',
+      html: `<p>When every term has the same total degree in two bases, divide through by one of them:</p>
+      ${eq(m('9ˣ − 4·6ˣ + 3·4ˣ = 0'), true)}
+      <p>Divide by ${m('4ˣ')} (never zero) to get, with ${m('t = (' + f('3', '2') + ')ˣ > 0')}:</p>
+      ${eq(m('t² − 4t + 3 = 0  ⇒  t = 1, 3  ⇒  x = 0,  x = log_(1.5) 3'), false)}
+      <p>The pattern to spot: ${m('9ˣ = (3²)ˣ')}, ${m('6ˣ = (2·3)ˣ')}, ${m('4ˣ = (2²)ˣ')} — the bases
+      ${m('9, 6, 4')} are ${m('3², 3·2, 2²')}, a perfect quadratic pattern.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('2^(x+3) = 32') + '.',
+      steps: [
+        [m('32 = 2⁵'), ''],
+        [m('x + 3 = 5'), ''],
+        [m('x = 2'), '']
+      ],
+      ans: m('x = 2')
+    },
+    {
+      q: 'Solve ' + m('9ˣ − 10·3ˣ + 9 = 0') + '.',
+      steps: [
+        ['Let ' + m('t = 3ˣ > 0') + '; ' + m('9ˣ = t²') + '.', ''],
+        [m('t² − 10t + 9 = 0'), ''],
+        [m('t = 1') + ' or ' + m('t = 9') + ', both positive.', ''],
+        [m('3ˣ = 1 ⇒ x = 0') + '; ' + m('3ˣ = 9 ⇒ x = 2') + '.', '']
+      ],
+      ans: m('x = 0') + ' and ' + m('x = 2')
+    },
+    {
+      q: 'Solve ' + m('2^(x+1) + 2^(x−1) = 20') + '.',
+      steps: [
+        [m('2·2ˣ + ' + f('2ˣ', '2') + ' = 20'), 'Factor out ' + m('2ˣ') + '.'],
+        [m('2ˣ(2 + 0.5) = 20'), ''],
+        [m('2ˣ = 8'), ''],
+        [m('x = 3'), '']
+      ],
+      ans: m('x = 3')
+    }
+  ],
+  modelNote: 'Write the powers of 2 and 3 on the board and leave them there for the whole lesson.',
+  interactive: {
+    type: 'rootPower',
+    title: 'Powers and their bases',
+    hint: 'Rewrite each number as a power before solving.'
+  },
+  quiz: [
+    { q: m('2ˣ = 64') + ' gives:', a: [m('x = 5'), m('x = 6'), m('x = 32'), m('x = 8')], c: 1, why: m('64 = 2⁶') + '.' },
+    { q: m('a^m = a^n') + ' implies ' + m('m = n') + ' because ' + m('aˣ') + ' is:', a: ['positive', 'one-to-one', 'continuous', 'even'], c: 1, why: 'It never repeats a value.' },
+    { q: 'For ' + m('4ˣ − 5·2ˣ + 4 = 0') + ' substitute:', a: [m('t = 4ˣ'), m('t = 2ˣ'), m('t = x²'), m('t = 2x')], c: 1, why: m('4ˣ = (2ˣ)²') + '.' },
+    { q: 'The condition on that ' + m('t') + ' is:', a: [m('t ≥ 0'), m('t > 0'), m('t ≠ 0'), 'none'], c: 1, why: m('2ˣ') + ' is strictly positive.' },
+    { q: m('5^(x²−4) = 1') + ' gives:', a: [m('x = 4'), m('x = ±2'), m('x = 0'), 'no solution'], c: 1, why: m('5⁰ = 1') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m('2ˣ = 16'), m('x = 4')],
+      ['Solve ' + m('3ˣ = 27'), m('x = 3')],
+      ['Solve ' + m('5ˣ = 1'), m('x = 0')],
+      ['Solve ' + m('2^(x+1) = 8'), m('x = 2')],
+      ['Solve ' + m('10ˣ = 0.01'), m('x = −2')],
+      ['Solve ' + m('4ˣ = 2'), m('x = 0.5')],
+      ['Solve ' + m('(½)ˣ = 8'), m('x = −3')]
+    ],
+    med: [
+      ['Solve ' + m('2^(3x−1) = 2^(x+5)'), m('x = 3')],
+      ['Solve ' + m('9ˣ = 27'), m('x = 1.5')],
+      ['Solve ' + m('5^(x²−3x) = 1'), m('x = 0, 3')],
+      ['Solve ' + m('4ˣ − 5·2ˣ + 4 = 0'), m('x = 0, 2')],
+      ['Solve ' + m('9ˣ − 10·3ˣ + 9 = 0'), m('x = 0, 2')],
+      ['Solve ' + m('2^(x+1) + 2^(x−1) = 20'), m('x = 3')],
+      ['Solve ' + m('3^(x+2) = 9^(x−1)'), m('x = 4')]
+    ],
+    hard: [
+      ['Solve ' + m('4ˣ − 3·2ˣ − 4 = 0'), m('x = 2')],
+      ['Solve ' + m('9ˣ − 4·6ˣ + 3·4ˣ = 0'), m('x = 0') + ' and ' + m('x = log_1.5 3')],
+      ['Solve ' + m('2^(2x) − 6·2ˣ + 8 = 0'), m('x = 1, 2')],
+      ['Solve ' + m('3^(x+1) + 3^(x−1) = 30'), m('x = 2')],
+      ['Solve ' + m('25ˣ − 6·5ˣ + 5 = 0'), m('x = 0, 1')],
+      ['Solve ' + m('2^(x²) = 4^x'), m('x = 0, 2')],
+      ['Explain why ' + m('4ˣ + 2ˣ + 1 = 0') + ' has no solution', 'Every term is positive']
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Write ' + m('t > 0') + ' with every substitution.',
+  homework: [
+    'Solve ' + m('3^(2x−1) = 81') + ' and ' + m('8ˣ = 32') + '.',
+    'Solve ' + m('2^(x²−5x) = 1') + '.',
+    'Solve ' + m('9ˣ − 4·3ˣ + 3 = 0') + '.',
+    'Solve ' + m('5^(x+1) + 5^(x−1) = 130') + '.',
+    'Solve ' + m('4ˣ − 6·2ˣ + 8 = 0') + '.',
+    'Explain in three sentences why the substitution ' + m('t = aˣ') + ' must carry the condition ' + m('t > 0') + '.'
+  ]
+});
+
+/* ============================== 25 ============================== */
+G10_ALG.push({
+  id: 'a10-25', stream: 'alg', grade: 10, quarter: 3, lessons: '53–54', hours: 2,
+  title: 'Exponential inequalities',
+  subtitle: 'The same method as the equations, with one extra question that decides the direction of the answer.',
+  uz: 'Algebra 10, §3.3', uzPage: 'pp. 209–220',
+  cam: 'P2 · 2.4', camPage: 'Pure Mathematics 2 & 3, pp. 39–44', wb: 'P2 Exercise 2C',
+  objectives: [
+    'Use monotonicity to convert an exponential inequality into one about the indices.',
+    'Reverse the inequality when the base is less than 1.',
+    'Solve inequalities that become quadratic after a substitution.',
+    'Write the solution in interval notation.'
+  ],
+  terms: [
+    ['Exponential inequality', 'Ko‘rsatkichli tengsizlik', 'Показательное неравенство'],
+    ['Monotonicity', 'Monotonlik', 'Монотонность'],
+    ['Reversing the sign', 'Ishorani almashtirish', 'Смена знака неравенства'],
+    ['Base greater than 1', 'Birdan katta asos', 'Основание больше единицы'],
+    ['Base between 0 and 1', 'Birdan kichik asos', 'Основание меньше единицы'],
+    ['Interval notation', 'Oraliq belgilanishi', 'Интервальная запись'],
+    ['Substitution', 'Almashtirish', 'Замена'],
+    ['Solution set', 'Yechimlar to‘plami', 'Множество решений']
+  ],
+  timing: [[10, 'The one extra question'], [22, 'Base greater than 1'], [22, 'Base less than 1'], [24, 'Substitution'], [20, 'Practice'], [12, 'Homework']],
+  sections: [
+    {
+      h: 'The one extra question',
+      html: `<div class="keybox"><div class="klabel">Ask it before anything else</div>
+      <b>Is the base bigger or smaller than 1?</b> For ${m('a > 1')} the function increases, so the
+      inequality between the indices points the <b>same</b> way. For ${m('0 < a < 1')} it decreases, so
+      the inequality <b>reverses</b>.</div>
+      ${eq(m('a > 1:   a^m > a^n  ⇔  m > n') + '     ' + m('0 < a < 1:   a^m > a^n  ⇔  m < n'), true)}
+      {{fig:expGraph:Read it off the picture: the rising curve preserves order, the falling curve reverses it.}}`
+    },
+    {
+      h: 'Base greater than 1',
+      html: `${eq(m('2^(x+1) > 8  ⇒  2^(x+1) > 2³  ⇒  x + 1 > 3  ⇒  x > 2'), true)}
+      <p>The sign is untouched. Every step is the technique of the last lesson, with ${m('>')} in place
+      of ${m('=')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Inequality</th><th>Same base</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3ˣ &gt; 27</td><td class="m">3ˣ &gt; 3³</td><td class="m">x &gt; 3</td></tr>
+        <tr><td class="m">2ˣ ≤ 16</td><td class="m">2ˣ ≤ 2⁴</td><td class="m">x ≤ 4</td></tr>
+        <tr><td class="m">5^(2x) &lt; 125</td><td class="m">5^(2x) &lt; 5³</td><td class="m">x &lt; 1.5</td></tr>
+        <tr><td class="m">4ˣ ≥ 1</td><td class="m">4ˣ ≥ 4⁰</td><td class="m">x ≥ 0</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Base less than 1',
+      html: `${eq(m('(½)ˣ > 8  ⇒  (½)ˣ > (½)^(−3)  ⇒  x < −3'), true)}
+      <div class="warn"><span class="wl">This is the mark everyone loses</span>
+      The sign flipped, and nothing on the page says so except the base. Circle the base first; write
+      “base ${m('< 1')}, so reverse” on its own line; then flip.</div>
+      <p>An alternative that avoids the trap: rewrite ${m('(½)ˣ')} as ${m('2^(−x)')} so the base is
+      greater than 1, and let the minus sign do the reversing where you can see it.</p>`
+    },
+    {
+      h: 'Substitution',
+      html: `<p>With ${m('t = aˣ > 0')} the inequality becomes an ordinary one in ${m('t')}, solved by
+      the sign chart of Quarter II — but the answer must be translated back:</p>
+      ${eq(m('4ˣ − 5·2ˣ + 4 < 0 ,  t = 2ˣ > 0  ⇒  t² − 5t + 4 < 0  ⇒  1 < t < 4'), true)}
+      ${eq(m('1 < 2ˣ < 4  ⇒  0 < x < 2'), false)}
+      <div class="keybox"><div class="klabel">Translate carefully</div>
+      ${m('1 < t < 4')} becomes ${m('2⁰ < 2ˣ < 2²')}. Because the base exceeds 1, the order survives and
+      the answer is ${m('0 < x < 2')}. With a base under 1 the whole double inequality would reverse.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('3^(2x−1) ≥ 27') + '.',
+      steps: [
+        [m('27 = 3³') + '; base ' + m('3 > 1') + '.', 'Sign unchanged.'],
+        [m('2x − 1 ≥ 3'), ''],
+        [m('x ≥ 2'), '']
+      ],
+      ans: m('x ≥ 2')
+    },
+    {
+      q: 'Solve ' + m('(⅓)^(x+2) > 9') + '.',
+      steps: [
+        [m('9 = (⅓)^(−2)') + '; base ' + m('< 1') + '.', 'Reverse.'],
+        [m('x + 2 < −2'), ''],
+        [m('x < −4'), '']
+      ],
+      ans: m('x < −4')
+    },
+    {
+      q: 'Solve ' + m('9ˣ − 4·3ˣ + 3 ≤ 0') + '.',
+      steps: [
+        ['Let ' + m('t = 3ˣ > 0') + '.', m('t² − 4t + 3 ≤ 0')],
+        [m('(t − 1)(t − 3) ≤ 0 ⇒ 1 ≤ t ≤ 3'), ''],
+        [m('3⁰ ≤ 3ˣ ≤ 3¹'), 'Base ' + m('> 1') + '.'],
+        [m('0 ≤ x ≤ 1'), '']
+      ],
+      ans: m('0 ≤ x ≤ 1')
+    }
+  ],
+  modelNote: 'Draw the rising and falling curves side by side before solving anything.',
+  interactive: {
+    type: 'inequalityLine',
+    title: 'Reading the solution set',
+    hint: 'Translate the interval in ' + m('t') + ' back into one in ' + m('x') + '.'
+  },
+  quiz: [
+    { q: m('2ˣ > 8') + ' gives:', a: [m('x > 3'), m('x < 3'), m('x > 8'), m('x < 8')], c: 0, why: 'Base ' + m('> 1') + '.' },
+    { q: m('(½)ˣ > 8') + ' gives:', a: [m('x > 3'), m('x < −3'), m('x > −3'), m('x < 3')], c: 1, why: 'Base ' + m('< 1') + ' — reverse.' },
+    { q: 'The sign reverses when:', a: ['always', 'the base exceeds 1', 'the base is between 0 and 1', 'never'], c: 2, why: 'The function decreases.' },
+    { q: m('1 < 2ˣ < 4') + ' gives:', a: [m('0 < x < 2'), m('1 < x < 4'), m('x > 2'), m('0 < x < 4')], c: 0, why: m('2⁰') + ' and ' + m('2²') + '.' },
+    { q: m('4ˣ ≥ 1') + ' gives:', a: [m('x ≥ 1'), m('x ≥ 0'), m('x > 0'), m('x ≤ 0')], c: 1, why: m('4⁰ = 1') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m('2ˣ > 16'), m('x > 4')],
+      ['Solve ' + m('3ˣ ≤ 9'), m('x ≤ 2')],
+      ['Solve ' + m('5ˣ > 1'), m('x > 0')],
+      ['Solve ' + m('(½)ˣ > 4'), m('x < −2')],
+      ['Solve ' + m('(⅓)ˣ < 27'), m('x > −3')],
+      ['Solve ' + m('10ˣ ≥ 100'), m('x ≥ 2')],
+      ['Solve ' + m('2ˣ < 1'), m('x < 0')]
+    ],
+    med: [
+      ['Solve ' + m('3^(2x−1) ≥ 27'), m('x ≥ 2')],
+      ['Solve ' + m('(⅓)^(x+2) > 9'), m('x < −4')],
+      ['Solve ' + m('2^(x+1) ≤ 32'), m('x ≤ 4')],
+      ['Solve ' + m('4ˣ > 8'), m('x > 1.5')],
+      ['Solve ' + m('9ˣ ≤ 3^(x+2)'), m('x ≤ 2')],
+      ['Solve ' + m('(0.2)ˣ ≥ 25'), m('x ≤ −2')],
+      ['Solve ' + m('2^(x²−4) < 1'), m('−2 < x < 2')]
+    ],
+    hard: [
+      ['Solve ' + m('9ˣ − 4·3ˣ + 3 ≤ 0'), m('0 ≤ x ≤ 1')],
+      ['Solve ' + m('4ˣ − 5·2ˣ + 4 < 0'), m('0 < x < 2')],
+      ['Solve ' + m('25ˣ − 6·5ˣ + 5 > 0'), m('x < 0') + ' or ' + m('x > 1')],
+      ['Solve ' + m('2^(x+1) + 2^(x−1) > 20'), m('x > 3')],
+      ['Solve ' + m('(½)^(x²) ≥ ' + f('1', '16')), m('−2 ≤ x ≤ 2')],
+      ['Solve ' + m('3^(x+1) < 9^(x−1)'), m('x > 3')],
+      ['Explain why ' + m('2ˣ > −1') + ' has solution ' + m('ℝ'), 'Every power of 2 is positive']
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Write “base ' + m('> 1') + '” or “base ' + m('< 1') + '” on its own line before flipping anything.',
+  homework: [
+    'Solve ' + m('2^(3x−2) ≥ 64') + '.',
+    'Solve ' + m('(¼)^(x−1) > 16') + '.',
+    'Solve ' + m('9ˣ ≤ 3^(x+6)') + '.',
+    'Solve ' + m('4ˣ − 10·2ˣ + 16 ≤ 0') + '.',
+    'Solve ' + m('3^(x²−9) < 1') + '.',
+    'Explain in three sentences why the base decides the direction of the answer.'
+  ]
+});
+
+/* ============================== 26 ============================== */
+G10_ALG.push({
+  id: 'a10-26', stream: 'alg', grade: 10, quarter: 3, lessons: '55–56', hours: 2,
+  title: 'Control work 5, and work on the mistakes',
+  subtitle: 'The exponential block in one paper — and the drill that fixes the base-under-one trap for good.',
+  uz: 'Algebra 10, Nazorat ishi 5', uzPage: 'pp. 221–224',
+  cam: 'P2 · Chapter 2 review', camPage: 'Pure Mathematics 2 & 3, pp. 45–46', wb: 'Control paper E',
+  objectives: [
+    'Apply the exponential methods under time.',
+    'Decide the direction of an inequality from the base without prompting.',
+    'Classify each lost mark as careless, method or knowledge.',
+    'Rewrite every wrong solution correctly.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Common base', 'Umumiy asos', 'Общее основание'],
+    ['Reversing the sign', 'Ishorani almashtirish', 'Смена знака'],
+    ['Substitution', 'Almashtirish', 'Замена'],
+    ['Careless error', 'E’tiborsizlik xatosi', 'Ошибка по невнимательности'],
+    ['Method error', 'Usul xatosi', 'Ошибка в методе'],
+    ['Knowledge gap', 'Bilim bo‘shlig‘i', 'Пробел в знаниях'],
+    ['Correction', 'Tuzatish', 'Исправление']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [10, 'Self-mark'], [25, 'Rewrite'], [12, 'The base drill']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Sketch ${m('y = 2ˣ − 4')}, with asymptote, range and both intercepts</td><td class="m">4</td><td>L49–50</td></tr>
+        <tr><td>2</td><td>Solve ${m('3^(2x+1) = 27')} and ${m('8ˣ = 4')}</td><td class="m">4</td><td>L51–52</td></tr>
+        <tr><td>3</td><td>Solve ${m('4ˣ − 6·2ˣ + 8 = 0')}</td><td class="m">4</td><td>L51–52</td></tr>
+        <tr><td>4</td><td>Solve ${m('2^(x−1) > 32')} and ${m('(⅕)ˣ ≥ 25')}</td><td class="m">5</td><td>L53–54</td></tr>
+        <tr><td>5</td><td>Solve ${m('9ˣ − 10·3ˣ + 9 < 0')}</td><td class="m">4</td><td>L53–54</td></tr>
+        <tr><td>6</td><td>A sample of 80 g has half-life 4 days. Find the mass after 12 days, and when 5 g remain</td><td class="m">4</td><td>L49–50</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Q4 carries the whole topic in five marks</div>
+      Two for the first part, three for the second — of which one is for stating that the base is less
+      than 1 and the sign must reverse.</div>`
+    },
+    {
+      h: 'The three errors',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Error</th><th>Looks like</th><th>Kind</th></tr></thead>
+      <tbody>
+        <tr><td>sign not reversed</td><td>${m('(½)ˣ > 8 ⇒ x > −3')}</td><td>knowledge</td></tr>
+        <tr><td>${m('t > 0')} omitted</td><td>a negative ${m('t')} kept and turned into a false root</td><td>method</td></tr>
+        <tr><td>bases not matched</td><td>${m('8ˣ = 4')} attacked without writing ${m('2^(3x) = 2²')}</td><td>method</td></tr>
+        <tr><td>power miscopied</td><td>${m('27 = 3³')} written as ${m('3⁴')}</td><td>careless</td></tr>
+      </tbody></table></div>
+      {{fig:expGraph:The picture that settles every direction question in this paper.}}`
+    },
+    {
+      h: 'The base drill',
+      html: `<p>Twelve inequalities on the board. For each, the class calls out only <b>“same”</b> or
+      <b>“reverse”</b>, in two seconds:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Inequality</th><th>Call</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3ˣ &gt; 9</td><td>same</td></tr>
+        <tr><td class="m">(⅓)ˣ &gt; 9</td><td>reverse</td></tr>
+        <tr><td class="m">0.7ˣ &lt; 0.49</td><td>reverse</td></tr>
+        <tr><td class="m">1.5ˣ ≥ 2.25</td><td>same</td></tr>
+        <tr><td class="m">(0.2)ˣ ≤ 5</td><td>reverse</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Row 5 is the one they miss</span>
+      ${m('5 = (0.2)^(−1)')}. Writing the right-hand side as a power of the <b>same</b> base is what
+      makes the comparison possible at all.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q4b: solve ' + m('(⅕)ˣ ≥ 25') + '.',
+      steps: [
+        ['Base ' + m('⅕ < 1') + ' — the sign will reverse.', 'One mark for this line.'],
+        [m('25 = (⅕)^(−2)'), ''],
+        [m('x ≤ −2'), '']
+      ],
+      ans: m('x ≤ −2')
+    },
+    {
+      q: 'Model answer, Q5: solve ' + m('9ˣ − 10·3ˣ + 9 < 0') + '.',
+      steps: [
+        ['Let ' + m('t = 3ˣ > 0') + '.', m('t² − 10t + 9 < 0')],
+        [m('(t − 1)(t − 9) < 0 ⇒ 1 < t < 9'), ''],
+        [m('3⁰ < 3ˣ < 3²'), 'Base ' + m('> 1') + ', order preserved.'],
+        [m('0 < x < 2'), '']
+      ],
+      ans: m('0 < x < 2')
+    },
+    {
+      q: 'A learner wrote ' + m('(½)ˣ > 8 ⇒ x > −3') + '. Name the mistake.',
+      steps: [
+        ['The base is under 1.', ''],
+        ['The function decreases, so the inequality reverses.', 'A knowledge gap.'],
+        ['Correct: ' + m('x < −3') + '.', '']
+      ],
+      ans: 'Knowledge gap — the reversal rule'
+    }
+  ],
+  modelNote: 'Run the base drill before the rewrite, and again at the end of the lesson.',
+  interactive: {
+    type: 'quiz',
+    title: 'Same or reverse?',
+    hint: 'Only the base decides.',
+    items: [
+      { q: m('3ˣ > 9') + ':', a: [m('x > 2'), m('x < 2'), m('x > 9'), m('x < 9')], c: 0, why: 'Base ' + m('> 1') + '.' },
+      { q: m('(⅓)ˣ > 9') + ':', a: [m('x > 2'), m('x < −2'), m('x > −2'), m('x < 2')], c: 1, why: 'Base ' + m('< 1') + ', and ' + m('9 = (⅓)^(−2)') + '.' },
+      { q: m('8ˣ = 4') + ':', a: [m('x = 2'), m('x = ' + f('2', '3')), m('x = 0.5'), m('x = ' + f('3', '2'))], c: 1, why: m('2^(3x) = 2²') + '.' },
+      { q: m('4ˣ − 6·2ˣ + 8 = 0') + ':', a: [m('x = 1, 2'), m('x = 2, 4'), m('x = 0, 3'), m('x = 2')], c: 0, why: m('t = 2, 4') + '.' },
+      { q: m('2^(x−1) > 32') + ':', a: [m('x > 5'), m('x > 6'), m('x < 6'), m('x > 4')], c: 1, why: m('x − 1 > 5') + '.' },
+      { q: '80 g, half-life 4 days, after 12 days:', a: [m('20') + ' g', m('10') + ' g', m('40') + ' g', m('5') + ' g'], c: 1, why: 'Three half-lives.' }
+    ]
+  },
+  quiz: [
+    { q: 'The direction of an exponential inequality is decided by:', a: ['the index', 'the base', 'the constant', 'the sign of ' + m('x')], c: 1, why: 'Increasing or decreasing.' },
+    { q: 'A substitution must always carry:', a: [m('t ≥ 0'), m('t > 0'), m('t ≠ 0'), 'nothing'], c: 1, why: m('aˣ') + ' is strictly positive.' },
+    { q: m('8ˣ = 4') + ' is best done by:', a: ['guessing', 'writing both as powers of 2', 'dividing', 'squaring'], c: 1, why: 'A common base.' },
+    { q: 'Three half-lives leave:', a: [m(f('1', '2')), m(f('1', '4')), m(f('1', '8')), m(f('1', '3'))], c: 2, why: m('(½)³') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m('3^(2x+1) = 27'), m('x = 1')],
+      ['Solve ' + m('8ˣ = 4'), m('x = ' + f('2', '3'))],
+      ['Solve ' + m('2^(x−1) > 32'), m('x > 6')],
+      ['Solve ' + m('(⅕)ˣ ≥ 25'), m('x ≤ −2')],
+      ['Asymptote of ' + m('y = 2ˣ − 4'), m('y = −4')],
+      [m('x') + '-intercept of ' + m('y = 2ˣ − 4'), m('x = 2')],
+      ['80 g, half-life 4 days, after 12 days', m('10') + ' g']
+    ],
+    med: [
+      ['Solve ' + m('4ˣ − 6·2ˣ + 8 = 0'), m('x = 1, 2')],
+      ['Solve ' + m('9ˣ − 10·3ˣ + 9 < 0'), m('0 < x < 2')],
+      ['Range of ' + m('y = 2ˣ − 4'), m('y > −4')],
+      ['When do 5 g remain of 80 g with half-life 4 days?', m('16') + ' days'],
+      ['Solve ' + m('25ˣ = 5^(x+3)'), m('x = 3')],
+      ['Solve ' + m('(0.2)ˣ ≤ 5'), m('x ≥ −1')],
+      ['Solve ' + m('2^(x²−1) = 8'), m('x = ±2')]
+    ],
+    hard: [
+      ['Solve ' + m('4ˣ − 2^(x+3) + 12 = 0'), m('x = 1') + ' and ' + m('x = log₂6')],
+      ['Solve ' + m('9ˣ − 3^(x+2) + 8 ≥ 0'), m('x ≤ 0') + ' or ' + m('x ≥ log₃8')],
+      ['Solve ' + m('2^(2x+1) − 5·2ˣ + 2 = 0'), m('x = −1, 1')],
+      ['Sketch ' + m('y = 3^(x−2) + 1') + ': asymptote and ' + m('y') + '-intercept', m('y = 1') + '; ' + m(f('10', '9'))],
+      ['A population trebles every 5 years. From 2000, when does it pass 50 000?', m('≈ 14.6') + ' years'],
+      ['Solve ' + m('(√2)ˣ = 8'), m('x = 6')],
+      ['Solve ' + m('3^(2x) − 12·3ˣ + 27 < 0'), m('1 < x < log₃9') + ' — i.e. ' + m('1 < x < 2')]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Task 1 is the rewrite. State the base rule on every inequality.',
+  homework: [
+    'Rewrite in full every question that lost a mark, with the base rule stated.',
+    'Five problems from the section your knowledge column was heaviest in.',
+    'Solve ' + m('16ˣ − 10·4ˣ + 16 = 0') + ' and ' + m('(⅐)^(x+1) > 49') + '.',
+    'A sample of ' + m('120') + ' g has half-life 3 hours. Find the mass after 15 hours and the time until ' + m('7.5') + ' g remain.'
+  ]
+});

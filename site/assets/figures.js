@@ -2069,6 +2069,164 @@
     return svg('0 0 ' + W + ' ' + H, g);
   };
 
+  /* ---------- Grade 10 Quarter III: exponentials, logarithms, trigonometry ---------- */
+
+  /* y = aˣ for a > 1 and 0 < a < 1, through the common point (0, 1) */
+  F.expGraph = function () {
+    var W = 340, H = 216, cx = 170, cy = 168, u = 30;
+    var g = '';
+    for (var i = -5; i <= 5; i++) {
+      g += line([cx + i * u, 12], [cx + i * u, H - 26], 'stroke="var(--rule-soft)" stroke-width="1"');
+    }
+    for (var j = 0; j <= 4; j++) {
+      g += line([14, cy - j * u], [W - 12, cy - j * u], 'stroke="var(--rule-soft)" stroke-width="1"');
+    }
+    g += line([14, cy], [W - 12, cy], 'stroke="var(--faint)" stroke-width="1.5"');
+    g += line([cx, 12], [cx, H - 26], 'stroke="var(--faint)" stroke-width="1.5"');
+    g += '<path d="' + curve(function (x) { return Math.pow(2, x); }, -4.6, 2.3, cx, cy, u, 0.06) +
+      '" fill="none" stroke="currentColor" stroke-width="2.6"/>';
+    g += '<path d="' + curve(function (x) { return Math.pow(0.5, x); }, -2.3, 4.6, cx, cy, u, 0.06) +
+      '" fill="none" stroke="var(--brass)" stroke-width="2.4"/>';
+    g += dot(cx, cy - u, 'var(--brand)');
+    g += LT(cx + 40, cy - u + 20, '(0, 1)', 'var(--brand)', 10);
+    g += LT(cx + 100, 30, 'y = 2ˣ', 'currentColor', 11);
+    g += LT(cx - 100, 30, 'y = (½)ˣ', 'var(--brass)', 11);
+    g += LT(W / 2, H - 8, 'both pass through (0, 1); the x-axis is an asymptote', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* y = aˣ and y = log_a x as reflections in y = x */
+  F.logGraph = function () {
+    var W = 340, H = 224, cx = 118, cy = 168, u = 26;
+    var g = '';
+    g += line([14, cy], [W - 12, cy], 'stroke="var(--faint)" stroke-width="1.5"');
+    g += line([cx, 14], [cx, H - 26], 'stroke="var(--faint)" stroke-width="1.5"');
+    /* y = x */
+    g += line([cx - 3.6 * u, cy + 3.6 * u], [cx + 5.2 * u, cy - 5.2 * u],
+      'stroke="var(--faint)" stroke-width="1.4" stroke-dasharray="5 4"');
+    g += '<path d="' + curve(function (x) { return Math.pow(2, x); }, -3.8, 2.55, cx, cy, u, 0.05) +
+      '" fill="none" stroke="currentColor" stroke-width="2.6"/>';
+    g += '<path d="' + curve(function (x) { return Math.log(x) / Math.LN2; }, 0.07, 8.2, cx, cy, u, 0.03) +
+      '" fill="none" stroke="var(--brass)" stroke-width="2.4"/>';
+    g += dot(cx, cy - u, 'var(--brand)') + dot(cx + u, cy, 'var(--brass)');
+    g += LT(cx - 46, 30, 'y = 2ˣ', 'currentColor', 11);
+    g += LT(W - 60, cy - 84, 'y = log₂x', 'var(--brass)', 11);
+    g += LT(cx + 126, cy - 128, 'y = x', 'var(--faint)', 10);
+    g += LT(W / 2, H - 8, 'each is the mirror image of the other in y = x', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* sine and cosine over one full turn, in degrees */
+  F.sinCosGraph = function () {
+    var W = 340, H = 200, ox = 30, cy = 106, u = 46;   /* u = height of 1 */
+    var sx = (W - 52) / 360;                            /* pixels per degree */
+    var g = '';
+    g += line([ox, cy], [W - 14, cy], 'stroke="var(--faint)" stroke-width="1.5"');
+    g += line([ox, 18], [ox, H - 30], 'stroke="var(--faint)" stroke-width="1.5"');
+    [-1, 1].forEach(function (v) {
+      g += line([ox, cy - v * u], [W - 14, cy - v * u],
+        'stroke="var(--rule-soft)" stroke-width="1" stroke-dasharray="4 3"');
+      g += LT(ox - 12, cy - v * u, String(v), 'var(--muted)', 10);
+    });
+    function wave(fn, col, wd) {
+      var d = '';
+      for (var a = 0; a <= 360; a += 2) {
+        d += (a === 0 ? 'M' : 'L') + (ox + a * sx).toFixed(1) + ' ' + (cy - fn(a * Math.PI / 180) * u).toFixed(1) + ' ';
+      }
+      return '<path d="' + d + '" fill="none" stroke="' + col + '" stroke-width="' + wd + '"/>';
+    }
+    g += wave(Math.sin, 'currentColor', 2.6);
+    g += wave(Math.cos, 'var(--brass)', 2.2);
+    [90, 180, 270, 360].forEach(function (a) {
+      g += LT(ox + a * sx, cy + 16, String(a) + '°', 'var(--muted)', 9.5);
+    });
+    g += LT(W - 46, 30, 'sin x', 'currentColor', 11);
+    g += LT(W - 46, 46, 'cos x', 'var(--brass)', 11);
+    g += LT(W / 2, H - 8, 'period 360°, range −1 to 1', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* the unit circle with an angle, showing cos and sin as coordinates */
+  F.unitCircle = function () {
+    var W = 340, H = 224, cx = 170, cy = 116, R = 78;
+    var g = '';
+    g += line([cx - R - 26, cy], [cx + R + 26, cy], 'stroke="var(--faint)" stroke-width="1.5"');
+    g += line([cx, cy - R - 22], [cx, cy + R + 22], 'stroke="var(--faint)" stroke-width="1.5"');
+    g += '<circle cx="' + cx + '" cy="' + cy + '" r="' + R +
+      '" fill="none" stroke="currentColor" stroke-width="2.2"/>';
+    var t = 52 * Math.PI / 180;
+    var P = [cx + R * Math.cos(t), cy - R * Math.sin(t)];
+    g += line([cx, cy], P, 'stroke="var(--brand)" stroke-width="2.2"');
+    g += line([P[0], P[1]], [P[0], cy], 'stroke="var(--brass)" stroke-width="2"');
+    g += line([cx, cy], [P[0], cy], 'stroke="var(--easy)" stroke-width="2"');
+    g += dot(P[0], P[1], 'var(--brand)');
+    g += '<path d="M' + (cx + 26) + ' ' + cy + ' A26 26 0 0 0 ' +
+      (cx + 26 * Math.cos(t)).toFixed(1) + ' ' + (cy - 26 * Math.sin(t)).toFixed(1) +
+      '" fill="none" stroke="var(--muted)" stroke-width="1.4"/>';
+    g += LT(cx + 40, cy - 14, 'θ', 'var(--muted)', 12);
+    g += LT(P[0] + 34, P[1] - 8, '(cos θ, sin θ)', 'var(--brand)', 10);
+    g += LT((cx + P[0]) / 2, cy + 15, 'cos θ', 'var(--easy)', 10);
+    g += LT(P[0] + 24, (P[1] + cy) / 2, 'sin θ', 'var(--brass)', 10);
+    g += LT(W / 2, H - 8, 'on the unit circle the coordinates are cos θ and sin θ', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* y = arcsin x and y = arccos x on their restricted domains */
+  F.arcFunctions = function () {
+    var W = 340, H = 226, cx = 170, cy = 138, u = 52;   /* u = one unit of x */
+    var dg = 0.62;                                       /* pixels per degree of y */
+    var g = '';
+    g += line([cx - 1.9 * u, cy], [cx + 1.9 * u, cy], 'stroke="var(--faint)" stroke-width="1.5"');
+    g += line([cx, 16], [cx, H - 30], 'stroke="var(--faint)" stroke-width="1.5"');
+    [-90, 90, 180].forEach(function (v) {
+      g += line([cx - 1.9 * u, cy - v * dg], [cx + 1.9 * u, cy - v * dg],
+        'stroke="var(--rule-soft)" stroke-width="1" stroke-dasharray="4 3"');
+      g += LT(cx - 1.9 * u - 16, cy - v * dg, String(v) + '°', 'var(--muted)', 9);
+    });
+    function arcPath(fn, col, wd) {
+      var d = '', first = true;
+      for (var x = -1; x <= 1.0001; x += 0.02) {
+        var xx = Math.max(-1, Math.min(1, x));
+        var deg = fn(xx) * 180 / Math.PI;
+        d += (first ? 'M' : 'L') + (cx + xx * u).toFixed(1) + ' ' + (cy - deg * dg).toFixed(1) + ' ';
+        first = false;
+      }
+      return '<path d="' + d + '" fill="none" stroke="' + col + '" stroke-width="' + wd + '"/>';
+    }
+    g += arcPath(Math.asin, 'currentColor', 2.6);
+    g += arcPath(Math.acos, 'var(--brass)', 2.4);
+    g += LT(cx - u, cy + 14, '−1', 'var(--muted)', 10) + LT(cx + u, cy + 14, '1', 'var(--muted)', 10);
+    g += LT(cx + 76, cy - 40, 'arcsin x', 'currentColor', 11);
+    g += LT(cx - 66, cy - 128, 'arccos x', 'var(--brass)', 11);
+    g += LT(W / 2, H - 8, 'domain −1 ≤ x ≤ 1; arcsin −90° to 90°, arccos 0° to 180°', 'var(--muted)', 9.5);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* a sector, with the arc length and area formulas in radians */
+  F.radianSector = function () {
+    var W = 340, H = 210, cx = 132, cy = 118, R = 82;
+    var g = '';
+    var t = 1.1;   /* radians */
+    var A = [cx + R, cy], B = [cx + R * Math.cos(t), cy - R * Math.sin(t)];
+    g += '<path d="M' + cx + ' ' + cy + ' L' + A[0] + ' ' + A[1] + ' A' + R + ' ' + R +
+      ' 0 0 0 ' + B[0].toFixed(1) + ' ' + B[1].toFixed(1) + ' Z" ' +
+      'fill="var(--brand-tint)" fill-opacity=".8" stroke="var(--brand)" stroke-width="2"/>';
+    g += '<circle cx="' + cx + '" cy="' + cy + '" r="' + R +
+      '" fill="none" stroke="var(--faint)" stroke-width="1.4" stroke-dasharray="5 4"/>';
+    g += '<path d="M' + (cx + 30) + ' ' + cy + ' A30 30 0 0 0 ' +
+      (cx + 30 * Math.cos(t)).toFixed(1) + ' ' + (cy - 30 * Math.sin(t)).toFixed(1) +
+      '" fill="none" stroke="var(--brass)" stroke-width="1.6"/>';
+    g += LT(cx + 46, cy - 18, 'θ', 'var(--brass)', 12);
+    g += LT((cx + A[0]) / 2, cy + 15, 'r', 'var(--muted)', 11);
+    var mid = (t / 2);
+    g += LT(cx + (R + 20) * Math.cos(mid), cy - (R + 20) * Math.sin(mid), 's', 'var(--brand)', 11);
+    g += LT(258, 78, 's = rθ', 'currentColor', 13);
+    g += LT(258, 104, 'A = ½r²θ', 'currentColor', 13);
+    g += LT(258, 130, 'θ in radians', 'var(--muted)', 10);
+    g += LT(W / 2, H - 8, 'one radian is the angle whose arc equals the radius', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
   w.FIG = F;
   w.FIGH = { svg: svg, L: L, LT: LT, dot: dot, poly: poly, line: line, ticks: ticks, ang: ang, right: right, mid: mid, cent: cent, norm: norm, S: S };
 })(window);
