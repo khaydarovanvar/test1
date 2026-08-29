@@ -3623,3 +3623,1950 @@ G8_GEO.push({
     m('Learn the table of exact values for 30°, 45° and 60° — Quarter III assumes it.')
   ]
 });
+
+G8_GEO.push({
+  id: 'geo-24', stream: 'geo', grade: 8, quarter: 3, lessons: '33–34', hours: 2,
+  title: 'Coordinates on the plane; the midpoint of a segment',
+  subtitle: 'Two numbers fix a point — and from there geometry can be done with arithmetic.',
+  uz: 'Geometry 8, Тема 31', uzPage: 'Тема 31, pp. 69–71',
+  cam: 'Stage 9 · 3.1', camPage: 'Learner’s Book pp. 56–60', wb: 'Workbook 3.1',
+  objectives: [
+    'Plot and read points in all four quadrants.',
+    'Find the midpoint of a segment from the coordinates of its ends.',
+    'Find an endpoint when the midpoint and the other end are known.',
+    'Use coordinates to show that a quadrilateral is a parallelogram.'
+  ],
+  terms: [
+    ['Coordinate plane', 'Koordinatalar tekisligi', 'Координатная плоскость'],
+    ['Origin', 'Koordinata boshi', 'Начало координат'],
+    ['Abscissa (x-coordinate)', 'Abssissa', 'Абсцисса'],
+    ['Ordinate (y-coordinate)', 'Ordinata', 'Ордината'],
+    ['Quadrant', 'Chorak', 'Координатная четверть'],
+    ['Ordered pair', 'Tartiblangan juftlik', 'Упорядоченная пара'],
+    ['Midpoint', 'O‘rta nuqta', 'Середина отрезка'],
+    ['Segment', 'Kesma', 'Отрезок'],
+    ['Axis', 'O‘q', 'Ось'],
+    ['Coordinate method', 'Koordinatalar usuli', 'Метод координат']
+  ],
+  timing: [[6, 'Plot five points from dictation'], [10, 'Reading the plane'], [12, 'The midpoint formula'], [8, 'Problems both ways'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'A point is a pair of numbers',
+      html: `<p>Two perpendicular axes meet at the <b>origin</b> ${m('O(0; 0)')}. Any point of the plane
+      is then fixed by an <b>ordered pair</b> ${m('A(x; y)')}: first go ${m('x')} along, then ${m('y')}
+      up.</p>
+      {{fig:coordPoint:A point is fixed by two numbers — how far across, then how far up. The order matters.}}
+      <p>The order matters absolutely: ${m('(3; 5)')} and ${m('(5; 3)')} are different points. The axes
+      cut the plane into four <b>quadrants</b>:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quadrant</th><th class="m">I</th><th class="m">II</th><th class="m">III</th><th class="m">IV</th></tr></thead>
+      <tbody>
+        <tr><td><b>x</b></td><td class="m">+</td><td class="m">−</td><td class="m">−</td><td class="m">+</td></tr>
+        <tr><td><b>y</b></td><td class="m">+</td><td class="m">+</td><td class="m">−</td><td class="m">−</td></tr>
+      </tbody></table></div>
+      <p>A point on the ${m('x')}-axis has ${m('y = 0')}; a point on the ${m('y')}-axis has
+      ${m('x = 0')}. The origin is the only point on both.</p>`
+    },
+    {
+      h: 'The midpoint',
+      html: `<div class="keybox"><div class="klabel">Midpoint of a segment</div>
+      If ${m('A(x₁; y₁)')} and ${m('B(x₂; y₂)')}, the midpoint ${m('M')} of ${m('AB')} is
+      ${eq(m('M ( ' + f('x₁ + x₂', '2') + ' ;&nbsp; ' + f('y₁ + y₂', '2') + ' )'), true)}
+      — the average of the two ${m('x')}’s and the average of the two ${m('y')}’s.</div>
+      <p>Why the average? Going from ${m('A')} to ${m('B')} the ${m('x')}-coordinate changes by
+      ${m('x₂ − x₁')}; halfway there it has changed by half of that:</p>
+      ${eq(m('x₁ + ' + f('x₂ − x₁', '2') + ' = ' + f('2x₁ + x₂ − x₁', '2') + ' = ' + f('x₁ + x₂', '2')))}
+      <p>The same argument works for ${m('y')}. So the formula is not something to memorise blindly —
+      it says “stand halfway”.</p>
+      <div class="warn"><span class="wl">Read the question</span>
+      “Find the midpoint” means average. “Find the other end, given the midpoint” means the reverse:
+      ${m('x₂ = 2x_M − x₁')}. Doubling and subtracting, not averaging.</div>`
+    },
+    {
+      h: 'Why coordinates help',
+      html: `<p>Once points are numbers, statements about shapes become statements about arithmetic. Take
+      ${m('A(1; 2)')}, ${m('B(5; 3)')}, ${m('C(6; 6)')}, ${m('D(2; 5)')}. Is ${m('ABCD')} a
+      parallelogram?</p>
+      ${eq('midpoint of ' + m('AC') + ': ' + m('(3.5; 4)') + '&nbsp;&nbsp;|&nbsp;&nbsp;midpoint of ' + m('BD') + ': ' + m('(3.5; 4)'))}
+      <p>The diagonals share a midpoint, so they bisect each other — and by the test proved in Quarter I,
+      ${m('ABCD')} is a parallelogram. No drawing, no measuring, no doubt.</p>
+      <p>This is the <b>coordinate method</b>: translate the geometry into coordinates, do the algebra,
+      translate the answer back. The rest of this chapter is built on it.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the midpoint of ' + m('A(−3; 4)') + ' and ' + m('B(7; −2)') + '.',
+      steps: [
+        [m('x_M = ' + f('−3 + 7', '2') + ' = 2'), 'Average the ' + m('x') + '-coordinates.'],
+        [m('y_M = ' + f('4 + (−2)', '2') + ' = 1'), 'Average the ' + m('y') + '-coordinates.'],
+        [m('M(2; 1)'), 'Check: it lies between the two, as it must.']
+      ],
+      ans: m('M(2; 1)')
+    },
+    {
+      q: m('M(4; −1)') + ' is the midpoint of ' + m('AB') + ' and ' + m('A(1; 3)') + '. Find ' + m('B') + '.',
+      steps: [
+        [m(f('1 + x', '2') + ' = 4'), 'Write the midpoint formula and solve for ' + m('x') + '.'],
+        [m('1 + x = 8, x = 7'), 'Double, then subtract.'],
+        [m(f('3 + y', '2') + ' = −1'), ''],
+        [m('3 + y = −2, y = −5'), ''],
+        [m('B(7; −5)'), 'Check the midpoint of ' + m('(1;3)') + ' and ' + m('(7;−5)') + ' is ' + m('(4;−1)') + ' ✓']
+      ],
+      ans: m('B(7; −5)')
+    },
+    {
+      q: 'Show that ' + m('A(0; 0)') + ', ' + m('B(4; 1)') + ', ' + m('C(5; 5)') + ', ' + m('D(1; 4)') + ' form a parallelogram.',
+      steps: [
+        ['Find the midpoint of each diagonal.', 'The bisection test.'],
+        [m('AC: (2.5; 2.5)'), ''],
+        [m('BD: (2.5; 2.5)'), 'The same point.'],
+        ['The diagonals bisect each other, so ' + m('ABCD') + ' is a parallelogram.', 'Test proved in Quarter I.']
+      ],
+      ans: 'Yes — the diagonals share the midpoint ' + m('(2.5; 2.5)')
+    }
+  ],
+  modelNote: 'Drag A and B; the golden dot is always the midpoint, and its coordinates are the two averages.',
+  interactive: { type: 'coordPlane', title: 'Two points and their midpoint' },
+  quiz: [
+    { q: 'The midpoint of ' + m('(2; 6)') + ' and ' + m('(8; 2)') + ' is:', a: [m('(5; 4)'), m('(10; 8)'), m('(6; 4)'), m('(3; 2)')], c: 0, why: 'Average each coordinate.' },
+    { q: m('(−4; 3)') + ' lies in quadrant:', a: [m('I'), m('II'), m('III'), m('IV')], c: 1, why: m('x < 0, y > 0') + '.' },
+    { q: 'If ' + m('M(3; 5)') + ' is the midpoint of ' + m('A(1; 2)B') + ', then ' + m('B') + ' is:', a: [m('(2; 3.5)'), m('(5; 8)'), m('(4; 7)'), m('(6; 10)')], c: 1, why: m('2 · 3 − 1 = 5') + ', ' + m('2 · 5 − 2 = 8') + '.' },
+    { q: 'A point on the ' + m('y') + '-axis has:', a: [m('y = 0'), m('x = 0'), m('x = y'), m('x = 1')], c: 1, why: 'It is directly above or below the origin.' },
+    { q: 'The midpoint of a segment from ' + m('(−5; −3)') + ' to ' + m('(5; 3)') + ' is:', a: [m('(0; 0)'), m('(5; 3)'), m('(0; 3)'), m('(10; 6)')], c: 0, why: 'The two points are symmetric about the origin.' }
+  ],
+  practice: {
+    easy: [
+      [m('Find the midpoint of (0; 0) and (6; 8).'), m('(3; 4)')],
+      [m('Find the midpoint of (2; 5) and (8; 11).'), m('(5; 8)')],
+      [m('In which quadrant is (3; −7)?'), m('IV')],
+      [m('Find the midpoint of (−2; 4) and (6; 4).'), m('(2; 4)')],
+      [m('Write the coordinates of the origin.'), m('(0; 0)')],
+      [m('Find the midpoint of (−1; −1) and (5; 7).'), m('(2; 3)')],
+      [m('A point has x = 0 and y = −4. Where does it lie?'), 'On the ' + m('y') + '-axis, below the origin.']
+    ],
+    med: [
+      [m('Find the midpoint of (−7; 2) and (3; −8).'), m('(−2; −3)')],
+      [m('M(2; 3) is the midpoint of A(−1; 5)B. Find B.'), m('B(5; 1)')],
+      [m('M(0; 0) is the midpoint of A(−4; 6)B. Find B.'), m('B(4; −6)')],
+      [m('Find the midpoint of (1.5; 2.5) and (4.5; 7.5).'), m('(3; 5)')],
+      [m('The midpoints of the diagonals of ABCD are (2; 3) and (2; 3). What can you conclude?'), 'The diagonals bisect each other, so ' + m('ABCD') + ' is a parallelogram.'],
+      [m('A(1; 1), B(7; 3). Find the point one quarter of the way from A to B.'), m('(2.5; 1.5)') + ' — the midpoint of ' + m('A') + ' and the midpoint of ' + m('AB')],
+      [m('Find the midpoint of the segment joining (a; b) and (3a; 5b).'), m('(2a; 3b)')]
+    ],
+    hard: [
+      [m('A(1; 2), B(5; 4), C(7; 8). Find D so that ABCD is a parallelogram.'), m('D(3; 6)') + ' — the diagonals must share the midpoint ' + m('(4; 5)')],
+      [m('Show that (0; 0), (6; 2), (8; 8), (2; 6) form a parallelogram.'), 'Both diagonals have midpoint ' + m('(4; 4)') + '.'],
+      [m('The vertices of a triangle are (0; 0), (6; 0), (2; 8). Find the midpoints of all three sides.'), m('(3; 0), (4; 4), (1; 4)')],
+      [m('M is the midpoint of AB, with A(−3; 7) and M(1; 1). Find B and the midpoint of AM.'), m('B(5; −5)') + ', midpoint of ' + m('AM') + ' is ' + m('(−1; 4)')],
+      [m('P(2; 3) and Q(10; 7). Find the two points that divide PQ into three equal parts.'), m('(4' + f('2', '3') + '; 4' + f('1', '3') + ')') + ' and ' + m('(7' + f('1', '3') + '; 5' + f('2', '3') + ')')],
+      [m('Prove that the diagonals of the quadrilateral (0;0), (a;0), (a+b;c), (b;c) bisect each other.'), 'Both diagonals have midpoint ' + m('(' + f('a + b', '2') + '; ' + f('c', '2') + ')') + ', so the figure is a parallelogram for all ' + m('a, b, c') + '.'],
+      [m('A(1; 1) and B(9; 5). A point C on AB has AC = 3·CB. Find C.'), m('(7; 4)')]
+    ]
+  },
+  hwTitle: 'Homework — 6 problems',
+  hwNote: 'Geometry 8, Тема 31, pp. 69–71. Sketch the axes for every problem, even the easy ones.',
+  homework: [
+    m('Find the midpoint of (3; 7) and (11; 1).'),
+    m('Find the midpoint of (−6; 2) and (4; −8).'),
+    m('M(3; −2) is the midpoint of A(7; 4)B. Find B.'),
+    m('Plot A(−2; 3), B(4; 3), C(4; −1), D(−2; −1) and name the shape.'),
+    m('Show that (1; 1), (5; 2), (6; 6), (2; 5) form a parallelogram.'),
+    m('Find the midpoints of all three sides of the triangle (0; 0), (8; 0), (4; 6).')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-25', stream: 'geo', grade: 8, quarter: 3, lessons: '35–36', hours: 2,
+  title: 'The distance between two points; the equation of a circle',
+  subtitle: 'Pythagoras, written in coordinates — and the equation that a circle turns out to be.',
+  uz: 'Geometry 8, Темы 32–33', uzPage: 'Темы 32–33, pp. 72–74',
+  cam: 'Stage 9 · 3.1, 7.1', camPage: 'Learner’s Book pp. 56–60, 142–148', wb: 'Workbook 3.1',
+  objectives: [
+    'Find the distance between two points from their coordinates.',
+    'Recognise ' + m('(x − a)² + (y − b)² = r²') + ' as the equation of a circle.',
+    'Write the equation of a circle from its centre and radius, and read them back.',
+    'Decide whether a given point lies inside, on or outside a circle.'
+  ],
+  terms: [
+    ['Distance', 'Masofa', 'Расстояние'],
+    ['Distance formula', 'Masofa formulasi', 'Формула расстояния'],
+    ['Right-angled triangle', 'To‘g‘ri burchakli uchburchak', 'Прямоугольный треугольник'],
+    ['Circle', 'Aylana', 'Окружность'],
+    ['Centre', 'Markaz', 'Центр'],
+    ['Radius', 'Radius', 'Радиус'],
+    ['Equation of a circle', 'Aylana tenglamasi', 'Уравнение окружности'],
+    ['Locus', 'Geometrik o‘rin', 'Геометрическое место точек'],
+    ['Inside / outside', 'Ichida / tashqarisida', 'Внутри / снаружи'],
+    ['Unit circle', 'Birlik aylana', 'Единичная окружность']
+  ],
+  timing: [[6, 'Recall Pythagoras'], [12, 'The distance formula'], [12, 'The equation of a circle'], [6, 'Inside, on or outside'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'Distance is Pythagoras in disguise',
+      html: `<p>Join ${m('A(x₁; y₁)')} to ${m('B(x₂; y₂)')} and complete a right-angled triangle with
+      legs parallel to the axes. The horizontal leg is ${m('x₂ − x₁')}, the vertical leg is
+      ${m('y₂ − y₁')}, and the segment ${m('AB')} is the hypotenuse.</p>
+      {{fig:distanceFormula:The distance between two points is the hypotenuse of a right triangle whose legs are the differences of the coordinates.}}
+      <div class="keybox"><div class="klabel">Distance formula</div>
+      ${eq(m('AB = ' + sr('(x₂ − x₁)² + (y₂ − y₁)²')), true)}</div>
+      <p>The squares make the order of subtraction irrelevant: ${m('(3 − 7)² = (7 − 3)² = 16')}. That is
+      the one place where this formula forgives you — everywhere else, be careful.</p>
+      <p>Leave the answer in surd form unless a decimal is asked for. ${m(sr('20') + ' = 2' + sr('5'))} is
+      exact; ${m('4.47')} is not.</p>`
+    },
+    {
+      h: 'What a circle is, as an equation',
+      html: `<p>A circle of radius ${m('r')} centred at ${m('C(a; b)')} is the set of all points at
+      distance exactly ${m('r')} from ${m('C')}. Write that with the distance formula:</p>
+      ${eq(m(sr('(x − a)² + (y − b)²') + ' = r'))}
+      <p>Square both sides — both are positive, so nothing is lost:</p>
+      <div class="keybox"><div class="klabel">Equation of a circle</div>
+      ${eq(m('(x − a)² + (y − b)² = r²'), true)}
+      Centred at the origin this becomes simply ${m('x² + y² = r²')}.</div>
+      {{fig:circleEquation:Every point of the circle is at the same distance r from the centre — that single condition is the equation.}}
+      <div class="warn"><span class="wl">Read the signs backwards</span>
+      ${m('(x − 3)² + (y + 2)² = 25')} has centre ${m('(3; −2)')}, not ${m('(3; 2)')}, and radius
+      ${m('5')}, not ${m('25')}. The formula subtracts the centre, so the sign you see is the opposite
+      of the sign you want.</div>`
+    },
+    {
+      h: 'Inside, on, or outside',
+      html: `<p>Compare the distance from the centre with the radius:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Condition</th><th>Position of the point</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(x − a)² + (y − b)² &lt; r²</td><td>inside the circle</td></tr>
+        <tr><td class="m">(x − a)² + (y − b)² = r²</td><td>on the circle</td></tr>
+        <tr><td class="m">(x − a)² + (y − b)² &gt; r²</td><td>outside the circle</td></tr>
+      </tbody></table></div>
+      <p>There is no need to take a square root — just substitute the point into the left-hand side and
+      compare with ${m('r²')}. Is ${m('(6; 1)')} inside ${m('x² + y² = 36')}? Substituting gives
+      ${m('36 + 1 = 37 > 36')}, so it is just outside.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the distance between ' + m('A(1; 2)') + ' and ' + m('B(5; 5)') + '.',
+      steps: [
+        [m('x₂ − x₁ = 4'), 'The horizontal leg.'],
+        [m('y₂ − y₁ = 3'), 'The vertical leg.'],
+        [m('AB = ' + sr('16 + 9') + ' = ' + sr('25')), ''],
+        [m('AB = 5'), 'A 3–4–5 triangle.']
+      ],
+      ans: m('5')
+    },
+    {
+      q: 'Write the equation of the circle with centre ' + m('(−2; 3)') + ' and radius ' + m('4') + '.',
+      steps: [
+        [m('a = −2, b = 3, r = 4'), ''],
+        [m('(x − (−2))² + (y − 3)² = 4²'), 'Substitute into the standard form.'],
+        [m('(x + 2)² + (y − 3)² = 16'), 'Two minus signs make a plus.']
+      ],
+      ans: m('(x + 2)² + (y − 3)² = 16')
+    },
+    {
+      q: 'A circle has equation ' + m('(x − 1)² + (y + 4)² = 25') + '. State its centre and radius, and say whether ' + m('(4; 0)') + ' lies on it.',
+      steps: [
+        [m('centre (1; −4)'), 'Change the sign of what is subtracted.'],
+        [m('r = 5'), m('25 = 5²') + '.'],
+        [m('(4 − 1)² + (0 + 4)² = 9 + 16 = 25'), 'Substitute the point.'],
+        [m('25 = r²'), 'So the point lies exactly on the circle.']
+      ],
+      ans: 'Centre ' + m('(1; −4)') + ', radius ' + m('5') + '; the point is on the circle'
+    }
+  ],
+  modelNote: 'Drag A and B and watch the distance readout follow the two coordinate differences.',
+  interactive: { type: 'coordPlane', title: 'Distance between two points' },
+  quiz: [
+    { q: 'The distance between ' + m('(0; 0)') + ' and ' + m('(6; 8)') + ' is:', a: [m('10'), m('14'), m('48'), m('7')], c: 0, why: m(sr('36 + 64') + ' = 10') + '.' },
+    { q: 'The centre of ' + m('(x − 2)² + (y + 5)² = 9') + ' is:', a: [m('(−2; 5)'), m('(2; −5)'), m('(2; 5)'), m('(−2; −5)')], c: 1, why: 'Change the sign of what is subtracted.' },
+    { q: 'The radius of ' + m('x² + y² = 49') + ' is:', a: [m('49'), m('7'), m('24.5'), m(sr('7'))], c: 1, why: m('49 = 7²') + '.' },
+    { q: 'The distance between ' + m('(1; 1)') + ' and ' + m('(4; 5)') + ' is:', a: [m('5'), m('7'), m(sr('7')), m('25')], c: 0, why: m(sr('9 + 16') + ' = 5') + '.' },
+    { q: 'Is ' + m('(3; 3)') + ' inside ' + m('x² + y² = 25') + '?', a: ['Yes', 'No, it is on it', 'No, it is outside', 'Cannot tell'], c: 0, why: m('9 + 9 = 18 < 25') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('Find the distance between (0; 0) and (3; 4).'), m('5')],
+      [m('Find the distance between (1; 0) and (1; 7).'), m('7')],
+      [m('Find the distance between (2; 3) and (6; 6).'), m('5')],
+      [m('Write the equation of the circle, centre (0; 0), radius 6.'), m('x² + y² = 36')],
+      [m('State the centre and radius of (x − 4)² + (y − 1)² = 16.'), m('(4; 1), r = 4')],
+      [m('State the radius of x² + y² = 100.'), m('10')],
+      [m('Is (0; 0) inside x² + y² = 9?'), 'Yes — ' + m('0 < 9')]
+    ],
+    med: [
+      [m('Find the distance between (−3; 2) and (1; −1).'), m('5')],
+      [m('Find the distance between (−2; −5) and (4; 3).'), m('10')],
+      [m('Write the equation of the circle, centre (3; −2), radius 7.'), m('(x − 3)² + (y + 2)² = 49')],
+      [m('State the centre and radius of (x + 5)² + (y − 3)² = 36.'), m('(−5; 3), r = 6')],
+      [m('Find the exact distance between (0; 0) and (2; 3).'), m(sr('13'))],
+      [m('Does (5; 12) lie on x² + y² = 169?'), 'Yes — ' + m('25 + 144 = 169')],
+      [m('The centre of a circle is (2; 2) and it passes through (2; 7). Find its equation.'), m('(x − 2)² + (y − 2)² = 25')]
+    ],
+    hard: [
+      [m('Show that (1; 2), (4; 6), (8; 3) form an isosceles triangle.'), m('AB = 5, BC = 5, AC = ' + sr('50')) + ' — two sides equal'],
+      [m('Show that (0; 0), (4; 0), (4; 3) is right-angled.'), m('16 + 9 = 25') + ' — Pythagoras holds, so the angle at ' + m('(4; 0)') + ' is ' + m('90°')],
+      [m('A circle has centre (1; −1) and passes through (4; 3). Find its equation.'), m('(x − 1)² + (y + 1)² = 25')],
+      [m('Find the equation of the circle whose diameter joins (1; 2) and (7; 10).'), 'centre ' + m('(4; 6)') + ', ' + m('r = 5') + ': ' + m('(x − 4)² + (y − 6)² = 25')],
+      [m('Where does x² + y² = 25 cut the axes?'), m('(±5; 0)') + ' and ' + m('(0; ±5)')],
+      [m('Is (−3; 4) inside, on or outside (x + 1)² + (y − 1)² = 16?'), m('4 + 9 = 13 < 16') + ' — inside'],
+      [m('Find the perimeter of the triangle (0; 0), (6; 0), (6; 8).'), m('6 + 8 + 10 = 24')]
+    ]
+  },
+  hwTitle: 'Homework — 6 problems',
+  hwNote: 'Geometry 8, Темы 32–33, pp. 72–74. Leave surds exact unless a decimal is asked for.',
+  homework: [
+    m('Find the distance between (2; 1) and (10; 7).'),
+    m('Find the distance between (−4; 3) and (2; −5).'),
+    m('Write the equation of the circle, centre (−1; 4), radius 3.'),
+    m('State the centre and radius of (x − 6)² + (y + 2)² = 81.'),
+    m('Show that (0; 0), (5; 0), (0; 12) is right-angled and find its perimeter.'),
+    m('Is (2; 6) inside, on or outside x² + y² = 40?')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-26', stream: 'geo', grade: 8, quarter: 3, lessons: '37', hours: 1,
+  title: 'The equation of a straight line',
+  subtitle: 'Every straight line is one linear equation — and every linear equation is one straight line.',
+  uz: 'Geometry 8, Тема 34', uzPage: 'Тема 34, pp. 75–77',
+  cam: 'Stage 9 · 10.1–10.2', camPage: 'Learner’s Book pp. 214–224', wb: 'Workbook 10.1',
+  objectives: [
+    'Write the equation of a line from its gradient and a point.',
+    'Find the equation of a line through two given points.',
+    'Recognise the equations of horizontal and vertical lines.',
+    'Decide whether a point lies on a line.'
+  ],
+  terms: [
+    ['Straight line', 'To‘g‘ri chiziq', 'Прямая'],
+    ['Equation of a line', 'To‘g‘ri chiziq tenglamasi', 'Уравнение прямой'],
+    ['Gradient', 'Burchak koeffitsienti', 'Угловой коэффициент'],
+    ['Intercept', 'Kesma (o‘qdagi)', 'Отрезок на оси'],
+    ['General form', 'Umumiy ko‘rinish', 'Общий вид'],
+    ['Horizontal line', 'Gorizontal chiziq', 'Горизонтальная прямая'],
+    ['Vertical line', 'Vertikal chiziq', 'Вертикальная прямая'],
+    ['Satisfies the equation', 'Tenglamani qanoatlantiradi', 'Удовлетворяет уравнению'],
+    ['Intersection point', 'Kesishish nuqtasi', 'Точка пересечения']
+  ],
+  timing: [[5, 'Plot three points and join them'], [12, 'Gradient and intercept'], [12, 'Through two points'], [7, 'Special lines'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'The two standard forms',
+      html: `<div class="keybox"><div class="klabel">Equation of a straight line</div>
+      ${eq(m('y = kx + b') + '&nbsp;&nbsp;(gradient–intercept)&nbsp;&nbsp;or&nbsp;&nbsp;' + m('Ax + By + C = 0') + '&nbsp;&nbsp;(general)', true)}
+      In ${m('y = kx + b')}, ${m('k')} is the gradient and ${m('b')} the height at which the line crosses
+      the ${m('y')}-axis.</div>
+      {{fig:gradientIntercept:The gradient is rise ÷ run; b is where the line meets the y-axis.}}
+      <p>A point lies on a line exactly when its coordinates <b>satisfy</b> the equation. Does
+      ${m('(3; 7)')} lie on ${m('y = 2x + 1')}? ${m('2 · 3 + 1 = 7')} ✓ — yes.</p>`
+    },
+    {
+      h: 'Through two points',
+      html: `<p>Two points fix a line completely. Find the gradient first, then the intercept:</p>
+      ${eq(m('k = ' + f('y₂ − y₁', 'x₂ − x₁')), true)}
+      <p>Through ${m('(2; 3)')} and ${m('(6; 11)')}: ${m('k = ' + f('8', '4') + ' = 2')}, so
+      ${m('y = 2x + b')}. Substituting ${m('(2; 3)')} gives ${m('3 = 4 + b')}, so ${m('b = −1')} and the
+      line is ${m('y = 2x − 1')}. Check with the second point: ${m('12 − 1 = 11')} ✓.</p>
+      <div class="warn"><span class="wl">Two special cases</span>
+      A <b>horizontal</b> line is ${m('y = c')} — gradient ${m('0')}. A <b>vertical</b> line is
+      ${m('x = c')} — it has no gradient at all, and it cannot be written as ${m('y = kx + b')}, because
+      the run is zero.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the equation of the line through ' + m('A(1; 4)') + ' and ' + m('B(5; 12)') + '.',
+      steps: [
+        [m('k = ' + f('12 − 4', '5 − 1') + ' = 2'), 'Same order top and bottom.'],
+        [m('y = 2x + b'), ''],
+        [m('4 = 2 · 1 + b'), 'Substitute ' + m('A') + '.'],
+        [m('b = 2'), ''],
+        [m('y = 2x + 2'), 'Check ' + m('B') + ': ' + m('10 + 2 = 12') + ' ✓']
+      ],
+      ans: m('y = 2x + 2')
+    },
+    {
+      q: 'Where do ' + m('y = 3x − 2') + ' and ' + m('y = x + 6') + ' meet?',
+      steps: [
+        [m('3x − 2 = x + 6'), 'At the meeting point both give the same ' + m('y') + '.'],
+        [m('2x = 8, x = 4'), ''],
+        [m('y = 4 + 6 = 10'), 'Substitute into either equation.'],
+        [m('(4; 10)'), 'Check in the other: ' + m('12 − 2 = 10') + ' ✓']
+      ],
+      ans: m('(4; 10)')
+    }
+  ],
+  modelNote: 'Drag the two points and read the gradient from the change in x and the change in y.',
+  interactive: { type: 'coordPlane', title: 'A line through two points' },
+  quiz: [
+    { q: 'The gradient of ' + m('y = 4 − 2x') + ' is:', a: [m('4'), m('2'), m('−2'), m('−4')], c: 2, why: 'Rewrite as ' + m('y = −2x + 4') + '.' },
+    { q: 'The line through ' + m('(0; 1)') + ' and ' + m('(3; 7)') + ' is:', a: [m('y = 2x + 1'), m('y = 3x + 1'), m('y = 2x'), m('y = x + 1')], c: 0, why: m('k = ' + f('6', '3') + ' = 2') + ', ' + m('b = 1') + '.' },
+    { q: 'A horizontal line has equation:', a: [m('x = c'), m('y = c'), m('y = x'), m('x + y = 0')], c: 1, why: 'The height never changes.' },
+    { q: 'Does ' + m('(2; 5)') + ' lie on ' + m('y = 3x − 1') + '?', a: ['Yes', 'No', 'Only if x > 0', 'Cannot tell'], c: 0, why: m('6 − 1 = 5') + ' ✓' }
+  ],
+  practice: {
+    easy: [
+      [m('State the gradient and intercept of y = 3x + 5.'), m('k = 3, b = 5')],
+      [m('Does (1; 4) lie on y = 4x?'), 'Yes.'],
+      [m('Write the equation of the horizontal line through (2; 7).'), m('y = 7')],
+      [m('Write the equation of the vertical line through (2; 7).'), m('x = 2')],
+      [m('Find the gradient through (0; 0) and (3; 9).'), m('3')],
+      [m('Where does y = 2x − 6 cut the y-axis?'), m('(0; −6)')],
+      [m('Where does y = 2x − 6 cut the x-axis?'), m('(3; 0)')]
+    ],
+    med: [
+      [m('Find the equation through (0; 3) with gradient −2.'), m('y = −2x + 3')],
+      [m('Find the equation through (1; 5) and (3; 11).'), m('y = 3x + 2')],
+      [m('Find the equation through (−2; 1) and (2; 9).'), m('y = 2x + 5')],
+      [m('Rearrange 2x + y − 8 = 0 into y = kx + b.'), m('y = −2x + 8')],
+      [m('Where do y = x + 1 and y = 5 − x meet?'), m('(2; 3)')],
+      [m('Find the equation through (4; 0) and (0; 8).'), m('y = −2x + 8')],
+      [m('Does (−1; −5) lie on y = 4x − 1?'), 'Yes — ' + m('−4 − 1 = −5')]
+    ],
+    hard: [
+      [m('Find the equation through (2; −3) and (−4; 9).'), m('y = −2x + 1')],
+      [m('Where do 2x + y = 7 and x − y = 2 meet?'), m('(3; 1)')],
+      [m('Show that (1; 3), (4; 9) and (6; 13) are collinear.'), 'All satisfy ' + m('y = 2x + 1') + '.'],
+      [m('A line has gradient 3 and passes through (2; 1). Find where it cuts each axis.'), m('y = 3x − 5') + ': ' + m('(0; −5)') + ' and ' + m('(' + f('5', '3') + '; 0)')],
+      [m('Find the equation of the line through (0; 0) and the midpoint of (2; 4) and (6; 8).'), 'midpoint ' + m('(4; 6)') + ', so ' + m('y = ' + f('3', '2') + 'x')],
+      [m('The line y = kx + 2 passes through (4; −6). Find k.'), m('k = −2')],
+      [m('Find the equation of the perpendicular bisector of the segment from (0; 0) to (4; 2).'), 'midpoint ' + m('(2; 1)') + ', gradient ' + m('−2') + ': ' + m('y = −2x + 5')]
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Тема 34, pp. 75–77. Always check your equation with the second point.',
+  homework: [
+    m('Find the equation through (0; −2) with gradient 5.'),
+    m('Find the equation through (1; 2) and (4; 11).'),
+    m('Where do y = 3x − 4 and y = x + 2 meet?'),
+    m('Write the horizontal and the vertical line through (−3; 6).'),
+    m('Show that (2; 5), (4; 9) and (7; 15) are collinear.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-27', stream: 'geo', grade: 8, quarter: 3, lessons: '38', hours: 1,
+  title: 'The coordinate method in practice',
+  subtitle: 'Choose your axes well and a hard proof becomes two lines of arithmetic.',
+  uz: 'Geometry 8, Тема 34', uzPage: 'Тема 34, pp. 75–77',
+  cam: 'Stage 9 · 3.1', camPage: 'Learner’s Book pp. 56–60', wb: 'Workbook 3.1',
+  objectives: [
+    'Place a figure on axes so that its coordinates are as simple as possible.',
+    'Prove that a quadrilateral is a parallelogram, rectangle or rhombus using coordinates.',
+    'Classify a triangle from the lengths of its sides.',
+    'Find an unknown vertex from a condition.'
+  ],
+  terms: [
+    ['Coordinate method', 'Koordinatalar usuli', 'Метод координат'],
+    ['To place on axes', 'O‘qlarga joylashtirish', 'Расположить на осях'],
+    ['Prove', 'Isbotlash', 'Доказать'],
+    ['Isosceles', 'Teng yonli', 'Равнобедренный'],
+    ['Scalene', 'Turli tomonli', 'Разносторонний'],
+    ['Collinear', 'Bir to‘g‘ri chiziqda yotuvchi', 'Лежащие на одной прямой'],
+    ['Vertex', 'Uchi', 'Вершина'],
+    ['Diagonal', 'Diagonal', 'Диагональ'],
+    ['Converse', 'Teskari teorema', 'Обратная теорема']
+  ],
+  timing: [[5, 'Place a rectangle on axes three ways'], [12, 'Proving with coordinates'], [12, 'Classifying triangles'], [7, 'Finding a missing vertex'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'Choose the axes yourself',
+      html: `<p>When a problem gives you a shape but no coordinates, <b>you</b> choose where to put it. A
+      good choice puts one vertex at the origin and one side along an axis, so that as many coordinates
+      as possible are zero.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Shape</th><th>A good placing</th></tr></thead>
+      <tbody>
+        <tr><td>Rectangle</td><td class="m">(0;0), (a;0), (a;b), (0;b)</td></tr>
+        <tr><td>Right triangle</td><td class="m">(0;0), (a;0), (0;b)</td></tr>
+        <tr><td>Isosceles triangle</td><td class="m">(−a;0), (a;0), (0;h)</td></tr>
+        <tr><td>Parallelogram</td><td class="m">(0;0), (a;0), (a+b;c), (b;c)</td></tr>
+      </tbody></table></div>
+      <p>The letters keep the proof general — it then holds for <b>every</b> rectangle, not just the one
+      you drew.</p>`
+    },
+    {
+      h: 'The three tools',
+      html: `<div class="keybox"><div class="klabel">Everything comes from these</div>
+      <ol style="margin:0">
+        <li><b>Distance</b> ${m(sr('(x₂ − x₁)² + (y₂ − y₁)²'))} — for equal sides, and for Pythagoras.</li>
+        <li><b>Midpoint</b> ${m('(' + f('x₁ + x₂', '2') + '; ' + f('y₁ + y₂', '2') + ')')} — for bisection and for medians.</li>
+        <li><b>Gradient</b> ${m(f('y₂ − y₁', 'x₂ − x₁'))} — for parallel (equal) and perpendicular (product ${m('−1')}).</li>
+      </ol></div>
+      <p>Which shape you are proving decides which tool you reach for:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>To prove</th><th>Show that</th></tr></thead>
+      <tbody>
+        <tr><td>parallelogram</td><td>the diagonals share a midpoint</td></tr>
+        <tr><td>rectangle</td><td>a parallelogram whose diagonals are also equal</td></tr>
+        <tr><td>rhombus</td><td>all four sides equal</td></tr>
+        <tr><td>right-angled triangle</td><td>Pythagoras holds, or two gradients multiply to ${m('−1')}</td></tr>
+        <tr><td>isosceles triangle</td><td>two side lengths are equal</td></tr>
+      </tbody></table></div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Prove that ' + m('A(0; 0)') + ', ' + m('B(4; 0)') + ', ' + m('C(4; 3)') + ', ' + m('D(0; 3)') + ' is a rectangle.',
+      steps: [
+        ['Midpoint of ' + m('AC') + ': ' + m('(2; 1.5)'), ''],
+        ['Midpoint of ' + m('BD') + ': ' + m('(2; 1.5)'), 'Diagonals bisect each other ⟹ parallelogram.'],
+        [m('AC = ' + sr('16 + 9') + ' = 5'), ''],
+        [m('BD = ' + sr('16 + 9') + ' = 5'), 'The diagonals are also equal.'],
+        ['A parallelogram with equal diagonals is a rectangle.', 'Theorem from Quarter I.']
+      ],
+      ans: 'A rectangle'
+    },
+    {
+      q: 'Classify the triangle ' + m('A(0; 0)') + ', ' + m('B(6; 0)') + ', ' + m('C(3; 4)') + '.',
+      steps: [
+        [m('AB = 6'), 'Along the axis.'],
+        [m('AC = ' + sr('9 + 16') + ' = 5'), ''],
+        [m('BC = ' + sr('9 + 16') + ' = 5'), 'Two sides equal.'],
+        [m('5² + 5² = 50 ≠ 36'), 'Not right-angled.']
+      ],
+      ans: 'Isosceles, but not right-angled'
+    }
+  ],
+  modelNote: 'Place the vertices with the model, then read off the distances the proof needs.',
+  interactive: { type: 'coordPlane', title: 'Measure a side of your figure' },
+  quiz: [
+    { q: 'To prove a quadrilateral is a parallelogram with coordinates, show:', a: ['all sides equal', 'the diagonals share a midpoint', 'one angle is 90°', 'the diagonals are equal'], c: 1, why: 'That is the bisection test.' },
+    { q: m('(0; 0), (5; 0), (5; 5), (0; 5)') + ' is a:', a: ['rectangle only', 'rhombus only', 'square', 'trapezium'], c: 2, why: 'All sides 5 and all angles right.' },
+    { q: 'A triangle with sides ' + m('5, 5, 6') + ' is:', a: ['equilateral', 'isosceles', 'scalene', 'right-angled'], c: 1, why: 'Exactly two sides equal.' },
+    { q: 'Two lines are perpendicular when their gradients:', a: ['are equal', 'multiply to ' + m('−1'), 'add to 0', 'are both positive'], c: 1, why: m('k₁k₂ = −1') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('Find the length of the side from (0; 0) to (0; 7).'), m('7')],
+      [m('Is (0;0), (4;0), (4;4), (0;4) a square?'), 'Yes.'],
+      [m('Find the midpoint of the diagonal from (0; 0) to (6; 8).'), m('(3; 4)')],
+      [m('Classify the triangle (0;0), (3;0), (0;4).'), 'Right-angled, scalene.'],
+      [m('Find the gradient from (0; 0) to (2; 6).'), m('3')],
+      [m('Are the segments from (0;0) to (2;1) and (0;0) to (−1;2) perpendicular?'), 'Yes — ' + m(f('1', '2') + ' · (−2) = −1')],
+      [m('Find the perimeter of (0;0), (3;0), (3;4).'), m('12')]
+    ],
+    med: [
+      [m('Prove that (1;1), (5;1), (5;4), (1;4) is a rectangle.'), 'Diagonals both have midpoint ' + m('(3; 2.5)') + ' and both equal ' + m('5') + '.'],
+      [m('Classify the triangle (0;0), (4;0), (2;5).'), 'Isosceles — ' + m('AC = BC = ' + sr('29'))],
+      [m('Show that (0;0), (4;3), (8;0), (4;−3) is a rhombus.'), 'All four sides equal ' + m('5') + '.'],
+      [m('Find the fourth vertex of a parallelogram with (0;0), (5;1), (7;5).'), m('(2; 4)')],
+      [m('Show that the triangle (0;0), (6;0), (0;8) is right-angled and find its area.'), m('36 + 64 = 100') + ' ✓; area ' + m('24')],
+      [m('Find the length of the median from (0;0) to the side joining (6;0) and (2;4).'), 'midpoint ' + m('(4; 2)') + ', length ' + m(sr('20') + ' = 2' + sr('5'))],
+      [m('Are (1;2), (3;6) and (6;12) collinear?'), 'Yes — both gradients equal ' + m('2') + ', and all three satisfy ' + m('y = 2x') + '.']
+    ],
+    hard: [
+      [m('Prove that the diagonals of the rectangle (0;0), (a;0), (a;b), (0;b) are equal, for all a and b.'), 'Both diagonals equal ' + m(sr('a² + b²')) + '.'],
+      [m('Prove that the midpoints of the sides of any quadrilateral form a parallelogram.'), 'With vertices ' + m('(x₁;y₁)…(x₄;y₄)') + ', both diagonals of the midpoint figure have midpoint ' + m('(' + f('x₁+x₂+x₃+x₄', '4') + '; ' + f('y₁+y₂+y₃+y₄', '4') + ')') + '.'],
+      [m('Show that the triangle (1;1), (4;5), (8;2) is right-angled.'), m('25 + 25 = 50') + ' ✓ — the right angle is at ' + m('(4; 5)')],
+      [m('Find the point on the x-axis equidistant from (1; 2) and (5; 4).'), m('(4.5; 0)')],
+      [m('Prove that the medians of the triangle (0;0), (6;0), (0;6) meet at (2; 2).'), 'Each median passes through ' + m('(2; 2)') + ' — the centroid is the average of the vertices.'],
+      [m('The vertices of a square are (0;0), (4;2) and (2;6). Find the fourth.'), m('(−2; 4)')],
+      [m('Show that (0;0), (6;0), (8;3), (2;3) is a parallelogram but not a rhombus.'), 'Both diagonals have midpoint ' + m('(4; 1.5)') + ', so it is a parallelogram; but the sides are ' + m('6') + ' and ' + m(sr('13')) + ', which are unequal.']
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Тема 34. State which of the three tools you used at each step.',
+  homework: [
+    m('Prove that (0;0), (6;0), (6;4), (0;4) is a rectangle.'),
+    m('Classify the triangle (0;0), (8;0), (4;3).'),
+    m('Show that (0;0), (3;4), (8;4), (5;0) is a rhombus.'),
+    m('Find the fourth vertex of a parallelogram with (1;1), (6;2), (8;7).'),
+    m('Show that (2;1), (5;7) and (8;13) are collinear.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-28', stream: 'geo', grade: 8, quarter: 3, lessons: '39', hours: 1,
+  title: 'The concept of a vector',
+  subtitle: 'A quantity that needs a direction as well as a size — and the notation that carries both.',
+  uz: 'Geometry 8, Тема 35', uzPage: 'Тема 35, pp. 78–80',
+  cam: 'Stage 9 · 13.1', camPage: 'Learner’s Book pp. 284–290', wb: 'Workbook 13.1',
+  objectives: [
+    'Distinguish a vector from a scalar.',
+    'Use the notations ' + m('AB') + ' with an arrow, and ' + m('a') + ' in bold.',
+    'Find the length (modulus) of a vector.',
+    'Recognise equal, opposite and collinear vectors.'
+  ],
+  terms: [
+    ['Vector', 'Vektor', 'Вектор'],
+    ['Scalar', 'Skalyar', 'Скаляр'],
+    ['Directed segment', 'Yo‘naltirilgan kesma', 'Направленный отрезок'],
+    ['Initial point', 'Boshi', 'Начало вектора'],
+    ['Terminal point', 'Oxiri', 'Конец вектора'],
+    ['Modulus (length)', 'Vektor uzunligi (moduli)', 'Модуль (длина) вектора'],
+    ['Equal vectors', 'Teng vektorlar', 'Равные векторы'],
+    ['Opposite vector', 'Qarama-qarshi vektor', 'Противоположный вектор'],
+    ['Zero vector', 'Nol vektor', 'Нулевой вектор'],
+    ['Collinear vectors', 'Kollinear vektorlar', 'Коллинеарные векторы']
+  ],
+  timing: [[5, 'Which of these need a direction?'], [12, 'Vectors and scalars'], [12, 'Length and notation'], [7, 'Equal and opposite'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'Size is not always enough',
+      html: `<p>“The bus travelled 40 km” is a <b>scalar</b> — one number. “The bus travelled 40 km north”
+      is a <b>vector</b>: a size <i>and</i> a direction. Force, velocity and displacement are vectors;
+      mass, time, temperature and area are scalars.</p>
+      {{fig:vectorBasic:A vector is a directed segment: it has a length and a direction, but no fixed position.}}
+      <p>A vector is drawn as an arrow from its <b>initial point</b> to its <b>terminal point</b> and
+      written ${m('AB')} with an arrow over it, or as a single bold letter ${m('<b>a</b>')}.</p>
+      <div class="keybox"><div class="klabel">Length of a vector</div>
+      If ${m('<b>a</b> = (a₁; a₂)')} then
+      ${eq(m('| <b>a</b> | = ' + sr('a₁² + a₂²')), true)}
+      — the distance formula again. A length is a scalar, and it is never negative.</div>`
+    },
+    {
+      h: 'Equal, opposite, collinear',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Relationship</th><th>Means</th><th>In coordinates</th></tr></thead>
+      <tbody>
+        <tr><td>equal</td><td>same length, same direction</td><td class="m">a₁ = b₁ and a₂ = b₂</td></tr>
+        <tr><td>opposite</td><td>same length, reversed direction</td><td class="m">(−a₁; −a₂)</td></tr>
+        <tr><td>collinear</td><td>parallel — same or opposite direction</td><td>one is a multiple of the other</td></tr>
+        <tr><td>zero vector</td><td>no length, no direction</td><td class="m">(0; 0)</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A vector has no address</span>
+      Two arrows of the same length pointing the same way are the <b>same vector</b>, even in different
+      corners of the page. That freedom is exactly what makes vectors useful — you may slide one
+      anywhere to add it to another.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the vector ' + m('AB') + ' and its length, for ' + m('A(1; 2)') + ' and ' + m('B(5; 5)') + '.',
+      steps: [
+        [m('AB = (5 − 1; 5 − 2)'), 'End minus start — always in that order.'],
+        [m('AB = (4; 3)'), ''],
+        [m('| AB | = ' + sr('16 + 9') + ' = 5'), '']
+      ],
+      ans: m('(4; 3)') + ', length ' + m('5')
+    },
+    {
+      q: 'Are ' + m('<b>a</b> = (2; −3)') + ' and ' + m('<b>b</b> = (−6; 9)') + ' collinear?',
+      steps: [
+        [m('−6 = −3 · 2'), 'Compare the first coordinates.'],
+        [m('9 = −3 · (−3)'), 'The same multiplier works for the second.'],
+        [m('<b>b</b> = −3<b>a</b>'), 'One is a multiple of the other.'],
+        ['They are collinear, pointing in opposite directions.', 'The multiplier is negative.']
+      ],
+      ans: 'Yes — ' + m('<b>b</b> = −3<b>a</b>')
+    }
+  ],
+  modelNote: 'Drag the tip of the arrow and watch the coordinates and the length change together.',
+  interactive: { type: 'vectors', title: 'A vector and its length' },
+  quiz: [
+    { q: 'Which of these is a vector?', a: ['mass', 'temperature', 'velocity', 'area'], c: 2, why: 'Velocity has a direction; speed alone does not.' },
+    { q: 'For ' + m('A(2; 1)') + ' and ' + m('B(6; 4)') + ', ' + m('AB') + ' is:', a: [m('(4; 3)'), m('(−4; −3)'), m('(8; 5)'), m('(3; 4)')], c: 0, why: 'End minus start.' },
+    { q: 'The length of ' + m('(−3; 4)') + ' is:', a: [m('1'), m('5'), m('7'), m('−5')], c: 1, why: m(sr('9 + 16') + ' = 5') + '.' },
+    { q: 'The vector opposite to ' + m('(5; −2)') + ' is:', a: [m('(−5; 2)'), m('(2; −5)'), m('(5; 2)'), m('(−5; −2)')], c: 0, why: 'Reverse both signs.' },
+    { q: m('(1; 2)') + ' and ' + m('(3; 6)') + ' are:', a: ['equal', 'opposite', 'collinear', 'perpendicular'], c: 2, why: m('(3; 6) = 3(1; 2)') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('Find AB for A(0; 0), B(3; 4).'), m('(3; 4)')],
+      [m('Find the length of (6; 8).'), m('10')],
+      [m('Find the length of (0; −7).'), m('7')],
+      [m('Write the vector opposite to (2; 5).'), m('(−2; −5)')],
+      [m('Is force a vector or a scalar?'), 'A vector.'],
+      [m('Find AB for A(1; 1), B(1; 6).'), m('(0; 5)')],
+      [m('Find the length of (−1; 0).'), m('1')]
+    ],
+    med: [
+      [m('Find AB and |AB| for A(−2; 3), B(4; −5).'), m('(6; −8)') + ', length ' + m('10')],
+      [m('Are (4; 6) and (6; 9) collinear?'), 'Yes — ' + m('(6; 9) = 1.5(4; 6)')],
+      [m('Are (2; 3) and (3; 2) collinear?'), 'No — no single multiplier works.'],
+      [m('Find the length of (−5; 12).'), m('13')],
+      [m('B(4; 7) and AB = (1; 3). Find A.'), m('A(3; 4)')],
+      [m('Find the exact length of (2; 3).'), m(sr('13'))],
+      [m('Write a vector equal to AB where A(0; 0), B(2; −1), starting at (5; 5).'), 'From ' + m('(5; 5)') + ' to ' + m('(7; 4)')]
+    ],
+    hard: [
+      [m('|a| = 5 and a = (3; k). Find all k.'), m('k = ±4')],
+      [m('Find a vector of length 10 collinear with (3; 4).'), m('(6; 8)') + ' or ' + m('(−6; −8)')],
+      [m('Show that A(1;1), B(4;5), C(7;9) are collinear using vectors.'), m('AB = (3; 4)') + ', ' + m('BC = (3; 4)') + ' — equal vectors, so the three points lie on one line.'],
+      [m('|a| = 13 and a = (k; 12). Find all k.'), m('k = ±5')],
+      [m('Find a unit vector (length 1) in the direction of (6; 8).'), m('(0.6; 0.8)')],
+      [m('A(2; 1), B(6; 4), C(9; 8). Is ABC a straight line?'), 'No — ' + m('AB = (4; 3)') + ' and ' + m('BC = (3; 4)') + ' are not multiples of each other.'],
+      [m('Explain why a vector has no fixed position but a directed segment does.'), 'A vector records only length and direction; any two arrows agreeing on both represent the same vector, while a directed segment also carries its start point.']
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Тема 35, pp. 78–80. Draw every vector as an arrow on squared paper.',
+  homework: [
+    m('Find AB and |AB| for A(1; 2), B(7; 10).'),
+    m('Find the length of (−8; 15).'),
+    m('Write the vector opposite to (−4; 9).'),
+    m('Are (2; −6) and (−1; 3) collinear? Justify.'),
+    'Name three vector quantities and three scalar quantities from physics.'
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-29', stream: 'geo', grade: 8, quarter: 3, lessons: '40–41', hours: 2,
+  title: 'Adding and subtracting vectors',
+  subtitle: 'Nose to tail, or by the parallelogram — two pictures of one operation.',
+  uz: 'Geometry 8, Темы 36–37', uzPage: 'Темы 36–37, pp. 81–84',
+  cam: 'Stage 9 · 13.1–13.2', camPage: 'Learner’s Book pp. 284–296', wb: 'Workbook 13.1–13.2',
+  objectives: [
+    'Add two vectors by the triangle rule and by the parallelogram rule.',
+    'Subtract a vector by adding its opposite.',
+    'Use the relation ' + m('AB + BC = AC') + '.',
+    'Add and subtract in coordinates.'
+  ],
+  terms: [
+    ['Sum of vectors', 'Vektorlar yig‘indisi', 'Сумма векторов'],
+    ['Difference of vectors', 'Vektorlar ayirmasi', 'Разность векторов'],
+    ['Triangle rule', 'Uchburchak qoidasi', 'Правило треугольника'],
+    ['Parallelogram rule', 'Parallelogramm qoidasi', 'Правило параллелограмма'],
+    ['Resultant', 'Natijaviy vektor', 'Равнодействующий вектор'],
+    ['Nose to tail', 'Uchi-boshiga', 'Конец к началу'],
+    ['Commutative', 'O‘rin almashinuvchi', 'Коммутативный'],
+    ['Associative', 'Guruhlanuvchi', 'Ассоциативный'],
+    ['Closed polygon', 'Yopiq ko‘pburchak', 'Замкнутый многоугольник']
+  ],
+  timing: [[6, 'Two walks, one displacement'], [14, 'The triangle and parallelogram rules'], [12, 'Subtraction'], [4, 'In coordinates'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'Adding: nose to tail',
+      html: `<p>Walk 3 km east, then 4 km north. Your displacement is not 7 km — it is 5 km north-east.
+      That is vector addition, and the picture is the whole rule:</p>
+      {{fig:vectorAdd:The triangle rule: place the second vector at the tip of the first, and the sum runs from the first tail to the last tip.}}
+      <div class="keybox"><div class="klabel">Triangle rule</div>
+      ${eq(m('AB') + ' + ' + m('BC') + ' = ' + m('AC'), true)}
+      Whatever route you take, only the start and the end matter.</div>
+      <p>The <b>parallelogram rule</b> gives the same answer with both vectors drawn from a common point:
+      complete the parallelogram, and the sum is the diagonal from that point.</p>
+      <p>In coordinates, add componentwise:</p>
+      ${eq(m('(a₁; a₂) + (b₁; b₂) = (a₁ + b₁; a₂ + b₂)'))}
+      <p>Addition is <b>commutative</b> — ${m('<b>a</b> + <b>b</b> = <b>b</b> + <b>a</b>')} — which is
+      exactly why the parallelogram closes.</p>`
+    },
+    {
+      h: 'Subtracting',
+      html: `<p>To subtract, add the opposite:</p>
+      ${eq(m('<b>a</b> − <b>b</b> = <b>a</b> + (−<b>b</b>)'), true)}
+      <p>In coordinates that is simply ${m('(a₁ − b₁; a₂ − b₂)')}. In a picture, ${m('<b>a</b> − <b>b</b>')}
+      is the vector <b>from the tip of ${m('<b>b</b>')} to the tip of ${m('<b>a</b>')}</b> when both are
+      drawn from the same point — the other diagonal of the parallelogram.</p>
+      <div class="keybox"><div class="klabel">The relation worth memorising</div>
+      ${eq(m('AB = OB − OA'), true)}
+      Any vector is the position of its end minus the position of its start. That single line turns most
+      vector problems into subtraction.</div>
+      <div class="warn"><span class="wl">Lengths do not add</span>
+      ${m('| <b>a</b> + <b>b</b> |')} is <b>not</b> ${m('| <b>a</b> | + | <b>b</b> |')} unless the two
+      point the same way. For ${m('(3; 0)')} and ${m('(0; 4)')} the lengths are 3 and 4, but the sum has
+      length 5.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: m('<b>a</b> = (3; −1)') + ', ' + m('<b>b</b> = (−5; 4)') + '. Find ' + m('<b>a</b> + <b>b</b>') + ', ' + m('<b>a</b> − <b>b</b>') + ' and ' + m('| <b>a</b> + <b>b</b> |') + '.',
+      steps: [
+        [m('<b>a</b> + <b>b</b> = (3 − 5; −1 + 4) = (−2; 3)'), 'Add componentwise.'],
+        [m('<b>a</b> − <b>b</b> = (3 + 5; −1 − 4) = (8; −5)'), 'Subtract componentwise.'],
+        [m('| (−2; 3) | = ' + sr('4 + 9') + ' = ' + sr('13')), 'Leave it exact.']
+      ],
+      ans: m('(−2; 3)') + ', ' + m('(8; −5)') + ', ' + m(sr('13'))
+    },
+    {
+      q: 'In a parallelogram ' + m('ABCD') + ', express ' + m('AC') + ' and ' + m('BD') + ' in terms of ' + m('AB = <b>a</b>') + ' and ' + m('AD = <b>b</b>') + '.',
+      steps: [
+        [m('AC = AB + BC'), 'Triangle rule, going round through ' + m('B') + '.'],
+        [m('BC = AD = <b>b</b>'), 'Opposite sides of a parallelogram are equal vectors.'],
+        [m('AC = <b>a</b> + <b>b</b>'), 'One diagonal is the sum.'],
+        [m('BD = BA + AD = −<b>a</b> + <b>b</b>'), 'The other diagonal is the difference.']
+      ],
+      ans: m('AC = <b>a</b> + <b>b</b>') + ', ' + m('BD = <b>b</b> − <b>a</b>')
+    },
+    {
+      q: 'A boat heads north at ' + m('8 km/h') + ' across a river flowing east at ' + m('6 km/h') + '. Find its actual speed.',
+      steps: [
+        [m('(0; 8) + (6; 0) = (6; 8)'), 'The two velocities add as vectors.'],
+        [m('| (6; 8) | = ' + sr('36 + 64')), ''],
+        [m('= 10 km/h'), 'Not ' + m('14') + ' — the directions differ.']
+      ],
+      ans: m('10 km/h')
+    }
+  ],
+  modelNote: 'Drag the tips of a and b; the green arrow is always their sum, and it closes the triangle.',
+  interactive: { type: 'vectors', title: 'The triangle rule in action' },
+  quiz: [
+    { q: m('(2; 5) + (3; −1)') + ' is:', a: [m('(5; 4)'), m('(5; 6)'), m('(−1; 6)'), m('(6; −5)')], c: 0, why: 'Add componentwise.' },
+    { q: m('(4; 1) − (6; 5)') + ' is:', a: [m('(10; 6)'), m('(−2; −4)'), m('(2; 4)'), m('(−2; 4)')], c: 1, why: 'Subtract componentwise.' },
+    { q: m('AB + BC') + ' equals:', a: [m('AC'), m('CA'), m('BA'), m('0')], c: 0, why: 'Triangle rule — only the ends matter.' },
+    { q: 'If ' + m('| <b>a</b> | = 3') + ' and ' + m('| <b>b</b> | = 4') + ' and they are perpendicular, ' + m('| <b>a</b> + <b>b</b> |') + ' is:', a: [m('7'), m('5'), m('1'), m('12')], c: 1, why: 'Pythagoras: ' + m(sr('9 + 16') + ' = 5') + '.' },
+    { q: m('AB') + ' in terms of position vectors is:', a: [m('OA + OB'), m('OB − OA'), m('OA − OB'), m('OA · OB')], c: 1, why: 'End minus start.' }
+  ],
+  practice: {
+    easy: [
+      [m('Find (1; 2) + (3; 4).'), m('(4; 6)')],
+      [m('Find (5; 7) − (2; 3).'), m('(3; 4)')],
+      [m('Find (0; 0) + (−2; 6).'), m('(−2; 6)')],
+      [m('Find (4; −1) + (−4; 1).'), m('(0; 0)')],
+      [m('Simplify AB + BC.'), m('AC')],
+      [m('Find |(3; 4) + (0; 0)|.'), m('5')],
+      [m('Find (7; 2) − (7; 2).'), m('(0; 0)')]
+    ],
+    med: [
+      [m('a = (2; −3), b = (−1; 5). Find a + b and a − b.'), m('(1; 2)') + ' and ' + m('(3; −8)')],
+      [m('Find |(3; 4) + (4; −3)|.'), m('| (7; 1) | = ' + sr('50') + ' = 5' + sr('2'))],
+      [m('Simplify AB + BC + CD.'), m('AD')],
+      [m('Simplify AB + BA.'), m('0') + ' — the zero vector'],
+      [m('OA = (1; 2), OB = (5; 9). Find AB.'), m('(4; 7)')],
+      [m('A plane flies north at 200 km/h in a wind blowing east at 150 km/h. Find its actual speed.'), m('250 km/h')],
+      [m('a = (6; 8). Find a vector b with a + b = (0; 0).'), m('(−6; −8)')]
+    ],
+    hard: [
+      [m('In parallelogram ABCD, AB = a and AD = b. Express DB and CA.'), m('DB = <b>a</b> − <b>b</b>') + ', ' + m('CA = −<b>a</b> − <b>b</b>')],
+      [m('Simplify AB + BC + CD + DA.'), m('0') + ' — the walk returns to its start'],
+      [m('|a| = 5, |b| = 12, and a ⟂ b. Find |a + b| and |a − b|.'), 'Both ' + m('13') + ' — the diagonals of a rectangle are equal.'],
+      [m('a = (3; 1), b = (−1; 4). Find |a + b| and |a| + |b|, and compare.'), m('| (2; 5) | = ' + sr('29') + ' ≈ 5.39') + ' against ' + m(sr('10') + ' + ' + sr('17') + ' ≈ 7.28') + ' — the sum is shorter'],
+      [m('M is the midpoint of AB. Show that OM = ½(OA + OB).'), m('OM = OA + ' + f('1', '2') + 'AB = OA + ' + f('1', '2') + '(OB − OA) = ' + f('1', '2') + '(OA + OB)')],
+      [m('Two forces of 10 N and 10 N act at 90°. Find the resultant.'), m('10' + sr('2') + ' ≈ 14.1 N') + ' at ' + m('45°') + ' to each'],
+      [m('Explain why |a + b| ≤ |a| + |b| always.'), 'The sum closes a triangle, and in any triangle one side is never longer than the other two together; equality only when the vectors point the same way.']
+    ]
+  },
+  hwTitle: 'Homework — 6 problems',
+  hwNote: 'Geometry 8, Темы 36–37, pp. 81–84. Draw the triangle for every addition.',
+  homework: [
+    m('Find (4; −2) + (−7; 5) and (4; −2) − (−7; 5).'),
+    m('Find |(5; 12) + (0; 1)|.'),
+    m('Simplify AB + BC + CA.'),
+    m('OA = (2; −1), OB = (6; 7). Find AB and |AB|.'),
+    m('A swimmer heads north at 3 km/h in a current flowing east at 4 km/h. Find the actual speed.'),
+    m('In parallelogram ABCD with AB = a and AD = b, express AC and BD.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-30', stream: 'geo', grade: 8, quarter: 3, lessons: '42–43', hours: 2,
+  title: 'Multiplying a vector by a number; the coordinates of a vector',
+  subtitle: 'Stretching, shrinking and reversing — and the test for parallel that comes free with it.',
+  uz: 'Geometry 8, Темы 38–39', uzPage: 'Темы 38–39, pp. 85–89',
+  cam: 'Stage 9 · 13.2', camPage: 'Learner’s Book pp. 291–296', wb: 'Workbook 13.2',
+  objectives: [
+    'Multiply a vector by a scalar, and describe the effect on length and direction.',
+    'Write a vector in coordinates from the coordinates of its ends.',
+    'Test two vectors for collinearity.',
+    'Use vectors to prove that a line is parallel to another.'
+  ],
+  terms: [
+    ['Scalar multiple', 'Skalyarga ko‘paytma', 'Умножение на число'],
+    ['Stretch', 'Cho‘zish', 'Растяжение'],
+    ['Compression', 'Siqish', 'Сжатие'],
+    ['Direction reversed', 'Yo‘nalish teskari', 'Направление противоположное'],
+    ['Coordinates of a vector', 'Vektor koordinatalari', 'Координаты вектора'],
+    ['Collinear', 'Kollinear', 'Коллинеарные'],
+    ['Unit vector', 'Birlik vektor', 'Единичный вектор'],
+    ['Position vector', 'Radius-vektor', 'Радиус-вектор'],
+    ['Parallel', 'Parallel', 'Параллельный']
+  ],
+  timing: [[6, 'Double a vector on squared paper'], [12, 'Multiplying by a number'], [12, 'Coordinates of a vector'], [6, 'The collinearity test'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'Multiplying by a number',
+      html: `<div class="keybox"><div class="klabel">Scalar multiple</div>
+      ${eq(m('k · (a₁; a₂) = (ka₁; ka₂)') + '&nbsp;&nbsp;and&nbsp;&nbsp;' + m('| k<b>a</b> | = | k | · | <b>a</b> |'), true)}</div>
+      {{fig:vectorScalar:Multiplying by a number stretches or shrinks the arrow; a negative number also turns it round.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">k</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="m">k &gt; 1</td><td>longer, same direction</td></tr>
+        <tr><td class="m">0 &lt; k &lt; 1</td><td>shorter, same direction</td></tr>
+        <tr><td class="m">k = 0</td><td>the zero vector</td></tr>
+        <tr><td class="m">k &lt; 0</td><td>direction reversed, length ${m('| k |')} times</td></tr>
+      </tbody></table></div>
+      <p>Note the modulus signs: ${m('| −3<b>a</b> | = 3 | <b>a</b> |')}. A length is never negative,
+      however negative the multiplier.</p>`
+    },
+    {
+      h: 'Coordinates, and the test for parallel',
+      html: `<p>The coordinates of a vector are found once and used everywhere:</p>
+      ${eq(m('AB = (x_B − x_A; &nbsp;y_B − y_A)'), true)}
+      <p>“End minus start” — and if you swap them you get the opposite vector, which is the commonest
+      slip in this chapter.</p>
+      <div class="keybox"><div class="klabel">Test for collinear vectors</div>
+      ${m('<b>a</b>')} and ${m('<b>b</b>')} are collinear exactly when ${m('<b>b</b> = k<b>a</b>')} for
+      some number ${m('k')} — that is, when
+      ${eq(m('a₁b₂ − a₂b₁ = 0'), true)}
+      </div>
+      <p>Check ${m('(2; 3)')} and ${m('(6; 9)')}: ${m('2 · 9 − 3 · 6 = 0')} ✓, and indeed
+      ${m('(6; 9) = 3(2; 3)')}. Check ${m('(2; 3)')} and ${m('(6; 8)')}:
+      ${m('2 · 8 − 3 · 6 = −2 ≠ 0')} — not collinear.</p>
+      <div class="warn"><span class="wl">Parallel lines from parallel vectors</span>
+      If ${m('AB')} and ${m('CD')} are collinear vectors and the four points are not all on one line,
+      then the lines ${m('AB')} and ${m('CD')} are parallel. That is how vectors prove parallelism —
+      no angles, no measuring.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: m('<b>a</b> = (−2; 5)') + '. Find ' + m('3<b>a</b>') + ', ' + m('−<b>a</b>') + ' and ' + m('| 3<b>a</b> |') + '.',
+      steps: [
+        [m('3<b>a</b> = (−6; 15)'), 'Multiply each coordinate.'],
+        [m('−<b>a</b> = (2; −5)'), 'Reverse both signs.'],
+        [m('| <b>a</b> | = ' + sr('4 + 25') + ' = ' + sr('29')), ''],
+        [m('| 3<b>a</b> | = 3' + sr('29')), 'Three times as long.']
+      ],
+      ans: m('(−6; 15)') + ', ' + m('(2; −5)') + ', ' + m('3' + sr('29'))
+    },
+    {
+      q: m('A(1; 2)') + ', ' + m('B(4; 6)') + ', ' + m('C(0; 1)') + ', ' + m('D(6; 9)') + '. Is ' + m('AB ∥ CD') + '?',
+      steps: [
+        [m('AB = (3; 4)'), 'End minus start.'],
+        [m('CD = (6; 8)'), ''],
+        [m('3 · 8 − 4 · 6 = 0'), 'The collinearity test.'],
+        [m('CD = 2 · AB'), 'So the vectors are parallel — and ' + m('C') + ' is not on line ' + m('AB') + '.']
+      ],
+      ans: 'Yes, ' + m('AB ∥ CD') + ' and ' + m('CD') + ' is twice as long'
+    },
+    {
+      q: 'Find a unit vector in the direction of ' + m('(9; 12)') + '.',
+      steps: [
+        [m('| (9; 12) | = ' + sr('81 + 144') + ' = 15'), ''],
+        [m(f('1', '15') + ' · (9; 12)'), 'Divide by the length.'],
+        [m('(0.6; 0.8)'), ''],
+        [m(sr('0.36 + 0.64') + ' = 1'), 'Check: the length really is 1.']
+      ],
+      ans: m('(0.6; 0.8)')
+    }
+  ],
+  modelNote: 'Drag a tip and watch how each coordinate scales when the vector is stretched.',
+  interactive: { type: 'vectors', title: 'Scaling and adding vectors' },
+  quiz: [
+    { q: m('4 · (2; −3)') + ' is:', a: [m('(8; −12)'), m('(6; 1)'), m('(8; 12)'), m('(2; −12)')], c: 0, why: 'Multiply each coordinate by 4.' },
+    { q: 'If ' + m('| <b>a</b> | = 6') + ' then ' + m('| −2<b>a</b> |') + ' is:', a: [m('−12'), m('12'), m('4'), m('3')], c: 1, why: 'A length is never negative.' },
+    { q: m('(3; 5)') + ' and ' + m('(9; 15)') + ' are:', a: ['perpendicular', 'collinear', 'equal', 'opposite'], c: 1, why: m('3 · 15 − 5 · 9 = 0') + '.' },
+    { q: 'For ' + m('A(2; 3)') + ' and ' + m('B(5; 1)') + ', ' + m('AB') + ' is:', a: [m('(3; −2)'), m('(−3; 2)'), m('(7; 4)'), m('(3; 2)')], c: 0, why: 'End minus start.' },
+    { q: 'A unit vector has length:', a: [m('0'), m('1'), m('any'), m('10')], c: 1, why: 'That is what “unit” means.' }
+  ],
+  practice: {
+    easy: [
+      [m('Find 2 · (3; 4).'), m('(6; 8)')],
+      [m('Find −1 · (5; −2).'), m('(−5; 2)')],
+      [m('Find 0.5 · (8; 6).'), m('(4; 3)')],
+      [m('If |a| = 4, find |3a|.'), m('12')],
+      [m('Find AB for A(0; 0), B(−3; 7).'), m('(−3; 7)')],
+      [m('Are (1; 2) and (2; 4) collinear?'), 'Yes.'],
+      [m('Find |2 · (3; 4)|.'), m('10')]
+    ],
+    med: [
+      [m('Find 3 · (−2; 5) − 2 · (1; 4).'), m('(−8; 7)')],
+      [m('If |a| = 5, find |−4a|.'), m('20')],
+      [m('Are (4; −6) and (−6; 9) collinear?'), 'Yes — ' + m('4 · 9 − (−6)(−6) = 0')],
+      [m('Are (2; 5) and (4; 9) collinear?'), 'No — ' + m('2 · 9 − 5 · 4 = −2 ≠ 0')],
+      [m('A(1; 1), B(3; 5), C(2; 0), D(6; 8). Is AB ∥ CD?'), 'Yes — ' + m('CD = 2 · AB')],
+      [m('Find a unit vector in the direction of (3; 4).'), m('(0.6; 0.8)')],
+      [m('Find k so that (6; k) is collinear with (2; 5).'), m('k = 15')]
+    ],
+    hard: [
+      [m('a = (2; −1), b = (−3; 4). Find 2a − 3b and its length.'), m('(13; −14)') + ', length ' + m(sr('365'))],
+      [m('Find all k for which (k; 6) and (3; k) are collinear.'), m('k² = 18, k = ±3' + sr('2'))],
+      [m('Find a vector of length 20 in the direction of (−3; 4).'), m('(−12; 16)')],
+      [m('A(0;0), B(6;4). Find the point P on AB with AP = ⅔ · AB.'), m('P(4; ' + f('8', '3') + ')')],
+      [m('M and N are midpoints of AB and AC. Show that MN ∥ BC and MN = ½BC, using vectors.'), m('MN = AN − AM = ' + f('1', '2') + 'AC − ' + f('1', '2') + 'AB = ' + f('1', '2') + 'BC') + ' — a multiple of ' + m('BC') + ', so parallel and half as long'],
+      [m('a = (1; 2) and b = (3; k). Find k so that a and b are collinear, and then find b in terms of a.'), m('k = 6') + ', ' + m('<b>b</b> = 3<b>a</b>')],
+      [m('Explain why the collinearity test a₁b₂ − a₂b₁ = 0 works.'), 'If ' + m('<b>b</b> = k<b>a</b>') + ' then ' + m('a₁(ka₂) − a₂(ka₁) = 0') + '; conversely, when the expression is zero the ratios ' + m(f('b₁', 'a₁')) + ' and ' + m(f('b₂', 'a₂')) + ' agree, giving a common multiplier ' + m('k') + '.']
+    ]
+  },
+  hwTitle: 'Homework — 6 problems',
+  hwNote: 'Geometry 8, Темы 38–39, pp. 85–89. Show the collinearity test in full.',
+  homework: [
+    m('Find 5 · (−1; 3) and its length.'),
+    m('If |a| = 7, find |−3a|.'),
+    m('Are (6; −4) and (−9; 6) collinear? Justify.'),
+    m('Find k so that (4; k) is collinear with (3; 12).'),
+    m('Find a unit vector in the direction of (5; 12).'),
+    m('A(1;0), B(4;6), C(0;2), D(2;6). Is AB ∥ CD?')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-31', stream: 'geo', grade: 8, quarter: 3, lessons: '44–45', hours: 2,
+  title: 'Operations with vectors in coordinates; applications',
+  subtitle: 'Everything from the last four lessons, applied to real proofs and real journeys.',
+  uz: 'Geometry 8, Темы 40–41', uzPage: 'Темы 40–41, pp. 90–95',
+  cam: 'Stage 9 · 13.1–13.2', camPage: 'Learner’s Book pp. 284–296', wb: 'Workbook 13.2',
+  objectives: [
+    'Combine addition, subtraction and scalar multiplication in coordinates.',
+    'Use position vectors to find midpoints and points dividing a segment.',
+    'Prove geometric statements with vectors.',
+    'Solve displacement and velocity problems.'
+  ],
+  terms: [
+    ['Position vector', 'Radius-vektor', 'Радиус-вектор'],
+    ['Resultant displacement', 'Natijaviy siljish', 'Результирующее перемещение'],
+    ['Velocity', 'Tezlik (vektor)', 'Скорость (вектор)'],
+    ['Component', 'Tashkil etuvchi', 'Составляющая'],
+    ['Midpoint (vector form)', 'O‘rta nuqta (vektor shakli)', 'Середина (в векторах)'],
+    ['Divides in the ratio', 'Nisbatda bo‘ladi', 'Делит в отношении'],
+    ['Vector proof', 'Vektorli isbot', 'Векторное доказательство'],
+    ['Centroid', 'Medianalar kesishish nuqtasi', 'Центроид (точка пересечения медиан)'],
+    ['Bearing', 'Azimut', 'Азимут']
+  ],
+  timing: [[6, 'Recall the four operations'], [12, 'Position vectors'], [12, 'Vector proofs'], [6, 'Journeys and velocities'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'Position vectors',
+      html: `<p>The <b>position vector</b> of ${m('A')} is ${m('OA')}, drawn from the origin. If
+      ${m('A(x; y)')} then ${m('OA = (x; y)')} — a point and its position vector carry the same two
+      numbers. From that one identification everything follows:</p>
+      ${eq(m('AB = OB − OA') + '&nbsp;&nbsp;|&nbsp;&nbsp;' + m('OM = ' + f('1', '2') + '(OA + OB)') + ' for the midpoint ' + m('M') + ' of ' + m('AB'), true)}
+      <p>To reach a point ${m('P')} that divides ${m('AB')} in a given proportion, start at ${m('A')} and
+      travel part of the way:</p>
+      ${eq(m('OP = OA + t · AB') + ',&nbsp; where ' + m('t = 0') + ' is ' + m('A') + ' and ' + m('t = 1') + ' is ' + m('B'))}
+      <p>${m('t = ' + f('1', '2'))} gives the midpoint, ${m('t = ' + f('1', '3'))} gives the point one
+      third of the way, and so on.</p>`
+    },
+    {
+      h: 'Proving with vectors',
+      html: `<p>A vector proof has three moves, and only three:</p>
+      <ol>
+        <li>Name two vectors as ${m('<b>a</b>')} and ${m('<b>b</b>')} — usually two sides from one vertex.</li>
+        <li>Write every other vector in the figure in terms of them.</li>
+        <li>Read the conclusion: a multiple means <b>parallel</b>; equal vectors mean <b>equal and
+        parallel</b>; ${m('<b>0</b>')} means the path closes.</li>
+      </ol>
+      <div class="keybox"><div class="klabel">The midline theorem, in three lines</div>
+      Let ${m('AB = <b>c</b>')} and ${m('AC = <b>b</b>')}, with ${m('M')} and ${m('N')} the midpoints of
+      ${m('AB')} and ${m('AC')}.
+      ${eq(m('MN = AN − AM = ' + f('1', '2') + '<b>b</b> − ' + f('1', '2') + '<b>c</b> = ' + f('1', '2') + '(<b>b</b> − <b>c</b>) = ' + f('1', '2') + 'BC'))}
+      A multiple of ${m('BC')}, so ${m('MN ∥ BC')}; the multiplier is ${m(f('1', '2'))}, so
+      ${m('MN = ' + f('1', '2') + 'BC')}. The whole of Quarter I’s midline theorem, in one line of
+      algebra.</div>`
+    },
+    {
+      h: 'Journeys and velocities',
+      html: `<p>Displacements add as vectors, so a journey with several stages is one sum:</p>
+      ${eq('walk ' + m('(3; 0)') + ', then ' + m('(0; 4)') + ', then ' + m('(−1; 2)') + '&nbsp;⟹&nbsp;total ' + m('(2; 6)'))}
+      <p>The total <b>displacement</b> is ${m('(2; 6)')}, of length ${m(sr('40') + ' ≈ 6.3')}, while the
+      <b>distance walked</b> is ${m('3 + 4 + ' + sr('5') + ' ≈ 9.2')}. They are different quantities and
+      questions ask for both.</p>
+      <p>Velocities add in the same way. A boat’s velocity through the water plus the current’s velocity
+      gives the velocity over the ground — which is why a boat aiming straight across a river never
+      arrives straight across.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: m('OA = (1; 4)') + ', ' + m('OB = (7; 2)') + '. Find ' + m('AB') + ', the midpoint of ' + m('AB') + ', and the point one third of the way from ' + m('A') + ' to ' + m('B') + '.',
+      steps: [
+        [m('AB = OB − OA = (6; −2)'), 'End minus start.'],
+        [m('OM = ' + f('1', '2') + '((1; 4) + (7; 2)) = (4; 3)'), 'Average the position vectors.'],
+        [m('OP = OA + ' + f('1', '3') + 'AB'), ''],
+        [m('= (1; 4) + (2; −' + f('2', '3') + ') = (3; 3' + f('1', '3') + ')'), '']
+      ],
+      ans: m('AB = (6; −2)') + ', ' + m('M(4; 3)') + ', ' + m('P(3; 3' + f('1', '3') + ')')
+    },
+    {
+      q: 'A cyclist rides 6 km east, then 8 km north. Find the total distance and the displacement.',
+      steps: [
+        [m('(6; 0) + (0; 8) = (6; 8)'), 'Add the two displacements.'],
+        [m('| (6; 8) | = 10 km'), 'The displacement.'],
+        [m('6 + 8 = 14 km'), 'The distance actually ridden.'],
+        ['The two differ because the route bends.', '']
+      ],
+      ans: 'Distance ' + m('14 km') + ', displacement ' + m('10 km') + ' north-east'
+    },
+    {
+      q: 'Use vectors to prove that the diagonals of a parallelogram bisect each other.',
+      steps: [
+        [m('AB = <b>a</b>, AD = <b>b</b>'), 'Name two sides from one vertex.'],
+        [m('AC = <b>a</b> + <b>b</b>'), 'The diagonal from ' + m('A') + '.'],
+        ['Midpoint of ' + m('AC') + ': ' + m(f('1', '2') + '(<b>a</b> + <b>b</b>)') + ' from ' + m('A') + '.', ''],
+        ['Midpoint of ' + m('BD') + ': ' + m('<b>a</b> + ' + f('1', '2') + '(<b>b</b> − <b>a</b>) = ' + f('1', '2') + '(<b>a</b> + <b>b</b>)') + '.', 'The same point.'],
+        ['The diagonals cross at their common midpoint.', '']
+      ],
+      ans: 'Proved'
+    }
+  ],
+  modelNote: 'Build a journey out of two vectors and read the resultant off the green arrow.',
+  interactive: { type: 'vectors', title: 'Two stages of a journey' },
+  quiz: [
+    { q: 'If ' + m('OA = (2; 1)') + ' and ' + m('OB = (8; 5)') + ' then ' + m('AB') + ' is:', a: [m('(10; 6)'), m('(6; 4)'), m('(−6; −4)'), m('(4; 6)')], c: 1, why: m('OB − OA') + '.' },
+    { q: 'The midpoint of ' + m('A(1; 3)') + ' and ' + m('B(7; 9)') + ' has position vector:', a: [m('(8; 12)'), m('(4; 6)'), m('(6; 6)'), m('(3; 4)')], c: 1, why: 'Average the position vectors.' },
+    { q: 'Walk ' + m('(4; 0)') + ' then ' + m('(0; 3)') + '. The displacement is:', a: [m('7'), m('5'), m('12'), m('1')], c: 1, why: m('| (4; 3) | = 5') + '.' },
+    { q: 'If ' + m('MN = ' + f('1', '2') + 'BC') + ' then ' + m('MN') + ' is:', a: ['perpendicular to ' + m('BC'), 'parallel to ' + m('BC') + ' and half its length', 'equal to ' + m('BC'), 'unrelated'], c: 1, why: 'A positive multiple means parallel; the multiplier gives the ratio.' },
+    { q: 'The distance walked and the displacement are equal only when:', a: ['always', 'the route is a straight line in one direction', 'the route is closed', 'never'], c: 1, why: 'Any bend makes the path longer than the straight line between the ends.' }
+  ],
+  practice: {
+    easy: [
+      [m('OA = (1; 1), OB = (4; 5). Find AB.'), m('(3; 4)')],
+      [m('Find the midpoint of A(0; 0) and B(6; 10).'), m('(3; 5)')],
+      [m('Walk (3; 0) then (0; 4). Find the displacement.'), m('5')],
+      [m('Find 2 · (1; 3) + (4; −2).'), m('(6; 4)')],
+      [m('OA = (5; 2). Write the coordinates of A.'), m('A(5; 2)')],
+      [m('Walk (2; 0) then (−2; 0). Find the displacement.'), m('0')],
+      [m('Find |(9; 12)|.'), m('15')]
+    ],
+    med: [
+      [m('OA = (−1; 3), OB = (5; −1). Find AB and its length.'), m('(6; −4)') + ', ' + m(sr('52') + ' = 2' + sr('13'))],
+      [m('Find the midpoint of A(−3; 4) and B(9; −2).'), m('(3; 1)')],
+      [m('A cyclist rides 5 km north then 12 km east. Find distance and displacement.'), m('17 km') + ' and ' + m('13 km')],
+      [m('Find 3 · (2; −1) − 2 · (4; 1).'), m('(−2; −5)')],
+      [m('OA = (2; 2), AB = (6; 4). Find OB.'), m('(8; 6)')],
+      [m('Find the point one quarter of the way from A(0; 0) to B(8; 12).'), m('(2; 3)')],
+      [m('A plane flies at (0; 300) in a wind of (40; 0). Find its ground speed.'), m(sr('91600') + ' ≈ 303 km/h')]
+    ],
+    hard: [
+      [m('OA = (1; 2), OB = (7; 5), OC = (4; 11). Find the centroid of triangle ABC.'), m('(4; 6)') + ' — the average of the three position vectors'],
+      [m('A(1; 1), B(9; 5). Find P on AB with AP : PB = 3 : 1.'), m('P(7; 4)')],
+      [m('Prove with vectors that the midpoints of the sides of a quadrilateral form a parallelogram.'), 'With position vectors ' + m('<b>a</b>, <b>b</b>, <b>c</b>, <b>d</b>') + ', the midpoint figure has opposite sides ' + m(f('1', '2') + '(<b>c</b> − <b>a</b>)') + ' twice over — equal vectors, so a parallelogram.'],
+      [m('A boat can do 5 km/h. It heads north across a river flowing east at 3 km/h. Find its speed and how far downstream it lands after crossing 400 m.'), m(sr('34') + ' ≈ 5.83 km/h') + '; it drifts ' + m('240 m') + ' downstream'],
+      [m('Walk (4; 3), then (−1; 5), then (−3; −8). Find the total displacement.'), m('(0; 0)') + ' — the walk returns to its start'],
+      [m('OA = (2; 3) and M(5; 7) is the midpoint of AB. Find OB.'), m('(8; 11)')],
+      [m('Prove with vectors that a quadrilateral with one pair of opposite sides equal and parallel is a parallelogram.'), 'If ' + m('AB = DC') + ' as vectors then ' + m('AD = AB + BD = DC + BD = BC') + ', so the other pair is equal and parallel too.']
+    ]
+  },
+  hwTitle: 'Homework — 6 problems',
+  hwNote: 'Geometry 8, Темы 40–41, pp. 90–95. Name your two base vectors before starting any proof.',
+  homework: [
+    m('OA = (3; −2), OB = (9; 6). Find AB, |AB| and the midpoint of AB.'),
+    m('Find 4 · (1; −2) − 3 · (2; 1).'),
+    m('A walker goes 8 km east then 6 km north. Find distance and displacement.'),
+    m('A(2; 1), B(10; 9). Find P on AB with AP : PB = 1 : 3.'),
+    m('OA = (1; 5) and M(4; 2) is the midpoint of AB. Find OB.'),
+    m('Use vectors to show that the midline of a triangle is parallel to the third side.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-32', stream: 'geo', grade: 8, quarter: 3, lessons: '46', hours: 1,
+  title: 'The concept of area; the area of a rectangle',
+  subtitle: 'Four properties that every area must have — and the one formula everything else is built on.',
+  uz: 'Geometry 8, Темы 45–46', uzPage: 'Темы 45–46, pp. 100–105',
+  cam: 'Stage 9 · 7.1', camPage: 'Learner’s Book pp. 142–148', wb: 'Workbook 7.1',
+  objectives: [
+    'State the four properties of area.',
+    'Use the formula for the area of a rectangle and of a square.',
+    'Convert between units of area.',
+    'Find a missing side from a given area.'
+  ],
+  terms: [
+    ['Area', 'Yuza', 'Площадь'],
+    ['Unit square', 'Birlik kvadrat', 'Единичный квадрат'],
+    ['Congruent figures', 'Teng figuralar', 'Равные фигуры'],
+    ['Additivity of area', 'Yuzaning additivligi', 'Аддитивность площади'],
+    ['Rectangle', 'To‘g‘ri to‘rtburchak', 'Прямоугольник'],
+    ['Square', 'Kvadrat', 'Квадрат'],
+    ['Square metre', 'Kvadrat metr', 'Квадратный метр'],
+    ['Hectare', 'Gektar', 'Гектар'],
+    ['Dimensions', 'O‘lchamlar', 'Размеры']
+  ],
+  timing: [[5, 'Count squares to find an area'], [12, 'The four properties'], [12, 'Rectangle and square'], [7, 'Units and conversions'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'What area is',
+      html: `<p>Area measures how much of the plane a figure covers, in <b>unit squares</b>. Whatever
+      definition is used, it must obey four rules:</p>
+      <div class="keybox"><div class="klabel">Properties of area</div>
+      <ol style="margin:0">
+        <li>Area is a <b>positive</b> number.</li>
+        <li><b>Congruent</b> figures have <b>equal</b> areas.</li>
+        <li>If a figure is cut into parts, the areas of the parts <b>add up</b> to the whole.</li>
+        <li>The area of a square of side ${m('1')} is ${m('1')}.</li>
+      </ol></div>
+      <p>Property 3 — <b>additivity</b> — is the workhorse. It is why a trapezium can be split into a
+      rectangle and two triangles, and why an L-shaped room can be measured as two rectangles.</p>
+      <div class="warn"><span class="wl">Equal areas ≠ congruent</span>
+      A ${m('2 × 8')} rectangle and a ${m('4 × 4')} square both have area ${m('16')}, but you cannot
+      lay one on the other. Rule 2 works in one direction only.</div>`
+    },
+    {
+      h: 'Rectangle, square, and units',
+      html: `${eq(m('S<sub>rectangle</sub> = a · b') + '&nbsp;&nbsp;|&nbsp;&nbsp;' + m('S<sub>square</sub> = a²'), true)}
+      <p>The formula is really just counting: a ${m('5 × 3')} rectangle holds three rows of five unit
+      squares.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Unit</th><th>In m²</th><th>Used for</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1 cm²</td><td class="m">0.0001</td><td>a page, a tile</td></tr>
+        <tr><td class="m">1 m²</td><td class="m">1</td><td>a room, a carpet</td></tr>
+        <tr><td class="m">1 a (are)</td><td class="m">100</td><td>a garden plot</td></tr>
+        <tr><td class="m">1 ha</td><td class="m">10 000</td><td>a field</td></tr>
+        <tr><td class="m">1 km²</td><td class="m">1 000 000</td><td>a district</td></tr>
+      </tbody></table></div>
+      <p>Lengths scale by ${m('k')}; areas scale by ${m('k²')}. ${m('1 m = 100 cm')}, so
+      ${m('1 m² = 10 000 cm²')} — a fact that catches out more pupils than any other in this chapter.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A rectangular room is ' + m('4.5 m') + ' by ' + m('3.2 m') + '. Find its area, and the cost of carpet at ' + m('85 000') + ' so‘m per m².',
+      steps: [
+        [m('S = 4.5 · 3.2 = 14.4 m²'), ''],
+        [m('14.4 · 85 000'), ''],
+        [m('= 1 224 000') + ' so‘m', '']
+      ],
+      ans: m('14.4 m²') + ', ' + m('1 224 000') + ' so‘m'
+    },
+    {
+      q: 'A rectangle has area ' + m('84 cm²') + ' and one side ' + m('7 cm') + '. Find its perimeter.',
+      steps: [
+        [m('84 ÷ 7 = 12'), 'The other side.'],
+        [m('P = 2(7 + 12)'), ''],
+        [m('= 38 cm'), '']
+      ],
+      ans: m('38 cm')
+    },
+    {
+      q: 'An L-shaped floor is a ' + m('6 × 4') + ' rectangle with a ' + m('2 × 2') + ' square cut from one corner. Find its area.',
+      steps: [
+        [m('6 · 4 = 24'), 'The whole rectangle.'],
+        [m('2 · 2 = 4'), 'The corner removed.'],
+        [m('24 − 4 = 20'), 'Additivity, used backwards.']
+      ],
+      ans: m('20 m²')
+    }
+  ],
+  modelNote: 'Change the base and height and watch the area follow the product.',
+  interactive: { type: 'areaModel', title: 'Base times height' },
+  quiz: [
+    { q: 'The area of a ' + m('7 × 9') + ' rectangle is:', a: [m('16'), m('32'), m('63'), m('72')], c: 2, why: m('7 · 9') + '.' },
+    { q: m('1 m²') + ' equals:', a: [m('100 cm²'), m('1 000 cm²'), m('10 000 cm²'), m('1 000 000 cm²')], c: 2, why: m('100 · 100') + '.' },
+    { q: 'A square of area ' + m('49 cm²') + ' has perimeter:', a: [m('14 cm'), m('28 cm'), m('49 cm'), m('196 cm')], c: 1, why: 'Side 7, so ' + m('4 · 7') + '.' },
+    { q: 'Congruent figures:', a: ['may have different areas', 'always have equal areas', 'always are rectangles', 'have equal perimeters but not areas'], c: 1, why: 'Property 2 of area.' },
+    { q: m('1 ha') + ' equals:', a: [m('100 m²'), m('1 000 m²'), m('10 000 m²'), m('100 000 m²')], c: 2, why: 'A square of side 100 m.' }
+  ],
+  practice: {
+    easy: [
+      [m('Find the area of a 5 cm by 8 cm rectangle.'), m('40 cm²')],
+      [m('Find the area of a square of side 9 cm.'), m('81 cm²')],
+      [m('Convert 3 m² to cm².'), m('30 000 cm²')],
+      [m('A rectangle has area 36 and one side 4. Find the other.'), m('9')],
+      [m('Find the area of a 2.5 m by 4 m rectangle.'), m('10 m²')],
+      [m('Convert 2 ha to m².'), m('20 000 m²')],
+      [m('Find the side of a square of area 144 cm².'), m('12 cm')]
+    ],
+    med: [
+      [m('A room 5.5 m by 4 m is carpeted at 90 000 so‘m/m². Find the cost.'), m('1 980 000 so‘m')],
+      [m('A rectangle has area 150 cm² and perimeter 50 cm. Find its sides.'), m('10 cm') + ' and ' + m('15 cm')],
+      [m('An L-shape is a 8 × 5 rectangle less a 3 × 2 corner. Find its area.'), m('34')],
+      [m('Convert 45 000 cm² to m².'), m('4.5 m²')],
+      [m('A square field has area 1 ha. Find its side.'), m('100 m')],
+      [m('A rectangle 12 cm by 5 cm is cut into two equal squares plus a rectangle. Is that possible? Explain.'), 'Two ' + m('5 × 5') + ' squares use ' + m('10 cm') + ' of the length, leaving a ' + m('2 × 5') + ' rectangle — yes.'],
+      [m('The sides of a rectangle are doubled. What happens to the area?'), 'It becomes four times as large.']
+    ],
+    hard: [
+      [m('A rectangle has perimeter 40 cm. Find the dimensions giving the greatest area.'), m('10 × 10') + ' — the square, area ' + m('100 cm²')],
+      [m('A path 1 m wide runs round the outside of a 10 m by 6 m garden. Find the area of the path.'), m('12 · 8 − 10 · 6 = 36 m²')],
+      [m('A rectangle has area 60 cm² and its length is 4 cm more than its width. Find its sides.'), m('6 cm') + ' by ' + m('10 cm')],
+      [m('A field of 2.4 ha is rectangular with one side 120 m. Find the other side and the perimeter.'), m('200 m') + ', perimeter ' + m('640 m')],
+      [m('A floor 4.2 m by 3.6 m is tiled with 30 cm squares. How many tiles are needed?'), m('14 · 12 = 168')],
+      [m('The area of a square is numerically equal to its perimeter. Find its side.'), m('a² = 4a') + ', so ' + m('a = 4')],
+      [m('Explain why two figures with equal areas need not be congruent.'), 'Area is a single number and loses all information about shape; a ' + m('1 × 12') + ' rectangle and a ' + m('3 × 4') + ' rectangle share an area but no dimension.']
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Темы 45–46, pp. 100–105. Always write the unit.',
+  homework: [
+    m('Find the area of a 7.5 m by 6 m room.'),
+    m('Convert 5 m² to cm² and 30 000 cm² to m².'),
+    m('A rectangle has area 96 cm² and one side 8 cm. Find its perimeter.'),
+    m('An L-shape is a 10 × 7 rectangle less a 4 × 3 corner. Find its area.'),
+    m('A square has area 225 m². Find its side and perimeter.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-33', stream: 'geo', grade: 8, quarter: 3, lessons: '47–48', hours: 2,
+  title: 'The area of a parallelogram and of a triangle',
+  subtitle: 'Cut a corner off and slide it across — and the parallelogram becomes a rectangle.',
+  uz: 'Geometry 8, Темы 47–48', uzPage: 'Темы 47–48, pp. 106–113',
+  cam: 'Stage 9 · 7.1–7.2', camPage: 'Learner’s Book pp. 142–155', wb: 'Workbook 7.1–7.2',
+  objectives: [
+    'Derive and use ' + m('S = a · h') + ' for a parallelogram.',
+    'Derive and use ' + m('S = ½ a · h') + ' for a triangle.',
+    'Use ' + m('S = ½ ab sin C') + ' when two sides and the included angle are known.',
+    'Recognise that triangles on the same base between the same parallels have equal areas.'
+  ],
+  terms: [
+    ['Parallelogram', 'Parallelogramm', 'Параллелограмм'],
+    ['Base', 'Asos', 'Основание'],
+    ['Height (altitude)', 'Balandlik', 'Высота'],
+    ['Corresponding height', 'Mos balandlik', 'Соответствующая высота'],
+    ['Triangle', 'Uchburchak', 'Треугольник'],
+    ['Included angle', 'Orasidagi burchak', 'Угол между сторонами'],
+    ['Equal areas', 'Teng yuzalar', 'Равновеликие'],
+    ['Median', 'Mediana', 'Медиана'],
+    ['Between the same parallels', 'Bir xil parallellar orasida', 'Между теми же параллельными']
+  ],
+  timing: [[6, 'Cut and slide a paper parallelogram'], [14, 'The parallelogram formula'], [12, 'The triangle formula'], [4, 'Two sides and an angle'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'The parallelogram',
+      html: `<p>Drop a perpendicular from one vertex, cut off the right triangle it makes and slide it to
+      the other end. Nothing is lost and nothing is added — the parallelogram has become a rectangle with
+      the same base and the same height.</p>
+      {{fig:areaParallelogram:Cut the triangle off one end and slide it to the other: the parallelogram becomes a rectangle of the same base and height.}}
+      <div class="keybox"><div class="klabel">Area of a parallelogram</div>
+      ${eq(m('S = a · h<sub>a</sub>'), true)}
+      where ${m('h<sub>a</sub>')} is the height <b>to the side ${m('a')}</b>.</div>
+      <div class="warn"><span class="wl">Height, not slant side</span>
+      In a parallelogram with sides ${m('8')} and ${m('5')} the area is <b>not</b> ${m('40')} unless the
+      angle is right. The height is the perpendicular distance between the two parallel sides, and it is
+      always shorter than the slant side.</div>
+      <p>Since ${m('S = a · h_a = b · h_b')}, a longer side always has a shorter height. That single
+      equation solves a whole family of problems.</p>`
+    },
+    {
+      h: 'The triangle',
+      html: `<p>Any triangle is exactly half of a parallelogram: copy it, turn the copy through
+      ${m('180°')} and join the two along a side.</p>
+      {{fig:areaTriangle:Two copies of a triangle make a parallelogram, so a triangle is half of base times height.}}
+      ${eq(m('S = ' + f('1', '2') + ' a · h<sub>a</sub>'), true)}
+      <p>For a right-angled triangle the two legs serve as base and height, so ${m('S = ' + f('1', '2') + 'ab')}
+      immediately.</p>
+      <div class="keybox"><div class="klabel">Two sides and the angle between them</div>
+      ${eq(m('S = ' + f('1', '2') + ' ab · sin C'), true)}
+      because the height to ${m('a')} is ${m('b sin C')}. With ${m('C = 90°')} this is the right-angle
+      formula again, since ${m('sin 90° = 1')}.</div>`
+    },
+    {
+      h: 'Same base, same parallels',
+      html: `<p>The height of a triangle does not depend on where the apex sits along a line parallel to
+      the base. So:</p>
+      <div class="keybox"><div class="klabel">Equal areas</div>
+      Triangles with the <b>same base</b> and apexes on the <b>same line parallel</b> to it have
+      <b>equal areas</b> — however different they look.</div>
+      <p>Two consequences worth remembering:</p>
+      <ul>
+        <li>A <b>median</b> divides a triangle into two of equal area — the two halves share a height
+        and have equal bases.</li>
+        <li>The diagonals of a parallelogram cut it into four triangles of equal area.</li>
+      </ul>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A parallelogram has sides ' + m('10 cm') + ' and ' + m('6 cm') + ', and the height to the ' + m('10 cm') + ' side is ' + m('4 cm') + '. Find its area and the other height.',
+      steps: [
+        [m('S = 10 · 4 = 40 cm²'), 'Base times its own height.'],
+        [m('40 = 6 · h_b'), 'The same area, measured from the other side.'],
+        [m('h_b = ' + f('40', '6') + ' ≈ 6.67 cm'), 'Shorter side, taller height.']
+      ],
+      ans: m('40 cm²') + ', ' + m('h_b ≈ 6.67 cm')
+    },
+    {
+      q: 'Find the area of a triangle with sides ' + m('7 cm') + ' and ' + m('8 cm') + ' and an included angle of ' + m('30°') + '.',
+      steps: [
+        [m('S = ' + f('1', '2') + ' · 7 · 8 · sin 30°'), ''],
+        [m('sin 30° = 0.5'), ''],
+        [m('S = ' + f('1', '2') + ' · 56 · 0.5'), ''],
+        [m('= 14 cm²'), '']
+      ],
+      ans: m('14 cm²')
+    },
+    {
+      q: 'A triangle has area ' + m('54 cm²') + ' and base ' + m('12 cm') + '. Find its height, and the area of each half made by the median to that base.',
+      steps: [
+        [m('54 = ' + f('1', '2') + ' · 12 · h'), ''],
+        [m('54 = 6h, h = 9 cm'), ''],
+        [m('54 ÷ 2 = 27 cm²'), 'A median always halves the area.']
+      ],
+      ans: m('h = 9 cm') + '; each half ' + m('27 cm²')
+    }
+  ],
+  modelNote: 'Slide the apex along the top line: the shape changes completely, the area does not.',
+  interactive: { type: 'areaModel', title: 'Same base, same height, same area' },
+  quiz: [
+    { q: 'A parallelogram with base ' + m('9') + ' and height ' + m('4') + ' has area:', a: [m('13'), m('18'), m('36'), m('72')], c: 2, why: m('9 · 4') + '.' },
+    { q: 'A triangle with base ' + m('10') + ' and height ' + m('6') + ' has area:', a: [m('60'), m('30'), m('16'), m('15')], c: 1, why: m(f('1', '2') + ' · 10 · 6') + '.' },
+    { q: 'A parallelogram has sides ' + m('8') + ' and ' + m('5') + '. Its area is:', a: [m('40'), m('26'), 'less than 40', m('20')], c: 2, why: 'The height is shorter than the slant side, unless the angle is right.' },
+    { q: 'A median divides a triangle into two parts of:', a: ['unequal area', 'equal area', 'equal perimeter', 'equal angles'], c: 1, why: 'Same height, equal bases.' },
+    { q: 'For sides ' + m('6') + ' and ' + m('10') + ' with an included angle of ' + m('30°') + ', the area is:', a: [m('30'), m('15'), m('60'), m('7.5')], c: 1, why: m(f('1', '2') + ' · 60 · 0.5 = 15') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('Find the area of a parallelogram with base 7 and height 5.'), m('35')],
+      [m('Find the area of a triangle with base 8 and height 3.'), m('12')],
+      [m('Find the area of a right triangle with legs 6 and 9.'), m('27')],
+      [m('A triangle has area 20 and base 10. Find its height.'), m('4')],
+      [m('A parallelogram has area 48 and base 12. Find its height.'), m('4')],
+      [m('Find the area of a triangle with base 5 and height 5.'), m('12.5')],
+      [m('A median divides a triangle of area 36. Find each part.'), m('18')]
+    ],
+    med: [
+      [m('A parallelogram has sides 12 and 9, and the height to the 12-side is 6. Find the other height.'), m('8')],
+      [m('Find the area of a triangle with sides 10 and 12 and included angle 30°.'), m('30')],
+      [m('A triangle has area 42 cm² and height 7 cm. Find its base.'), m('12 cm')],
+      [m('The diagonals of a parallelogram of area 60 cut it into four triangles. Find each area.'), m('15')],
+      [m('Find the area of a triangle with vertices (0;0), (6;0), (0;8).'), m('24')],
+      [m('A parallelogram has base 15 cm and area 90 cm². Find its height.'), m('6 cm')],
+      [m('Find the area of a triangle with sides 8 and 8 and included angle 90°.'), m('32')]
+    ],
+    hard: [
+      [m('A parallelogram has sides 10 and 8 with an angle of 30°. Find its area.'), m('10 · 8 · sin 30° = 40')],
+      [m('A triangle has sides 13, 14, 15. Find its area.'), m('84') + ' — the height to the 14-side is 12'],
+      [m('The area of a triangle is 24 cm² and two of its sides are 8 cm and 12 cm. Find the angle between them.'), m('sin C = 0.5') + ', so ' + m('C = 30°') + ' (or ' + m('150°') + ')'],
+      [m('ABCD is a parallelogram and P is any point on AB. Show that the area of triangle PCD is half the area of ABCD.'), 'The triangle has base ' + m('CD') + ' and its apex lies on the parallel line ' + m('AB') + ', so its height is the height of the parallelogram; its area is ' + m(f('1', '2') + ' · CD · h') + '.'],
+      [m('Find the area of a triangle with vertices (1;1), (5;2), (3;7).'), m('11') + ' — box ' + m('4 · 6 = 24') + ' less three corner triangles'],
+      [m('A parallelogram has diagonals of 10 and 6 crossing at 90°. Find its area.'), m('30') + ' — it is a rhombus, area ' + m(f('1', '2') + 'd₁d₂')],
+      [m('Two triangles have the same base and equal areas. Must their apexes lie on a line parallel to that base?'), 'Yes — equal area with equal base forces equal height, so both apexes are the same distance from the base line, on one of the two parallels.']
+    ]
+  },
+  hwTitle: 'Homework — 6 problems',
+  hwNote: 'Geometry 8, Темы 47–48, pp. 106–113. Mark the height on every diagram.',
+  homework: [
+    m('Find the area of a parallelogram with base 14 and height 9.'),
+    m('Find the area of a triangle with base 16 and height 7.5.'),
+    m('A parallelogram has sides 15 and 10; the height to the 15-side is 8. Find the other height.'),
+    m('Find the area of a triangle with sides 9 and 14 and included angle 30°.'),
+    m('A triangle has area 63 cm² and base 18 cm. Find its height.'),
+    m('Find the area of the triangle with vertices (0;0), (10;0), (4;6).')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-34', stream: 'geo', grade: 8, quarter: 3, lessons: '49', hours: 1,
+  title: 'The area of a rhombus and of a trapezium',
+  subtitle: 'Two formulas, both of them the parallelogram formula in disguise.',
+  uz: 'Geometry 8, Темы 49–50', uzPage: 'Темы 49–50, pp. 114–118',
+  cam: 'Stage 9 · 7.2', camPage: 'Learner’s Book pp. 149–155', wb: 'Workbook 7.2',
+  objectives: [
+    'Use ' + m('S = ½ d₁d₂') + ' for a rhombus.',
+    'Use ' + m('S = ½ (a + b) h') + ' for a trapezium.',
+    'Explain why each formula works.',
+    'Find a missing length from a given area.'
+  ],
+  terms: [
+    ['Rhombus', 'Romb', 'Ромб'],
+    ['Diagonal', 'Diagonal', 'Диагональ'],
+    ['Trapezium', 'Trapetsiya', 'Трапеция'],
+    ['Parallel sides', 'Parallel tomonlar', 'Основания трапеции'],
+    ['Midline', 'O‘rta chiziq', 'Средняя линия'],
+    ['Height of a trapezium', 'Trapetsiya balandligi', 'Высота трапеции'],
+    ['Kite', 'Deltoid', 'Дельтоид'],
+    ['Perpendicular diagonals', 'Perpendikulyar diagonallar', 'Перпендикулярные диагонали']
+  ],
+  timing: [[5, 'Recall the rhombus properties'], [12, 'Area of a rhombus'], [14, 'Area of a trapezium'], [5, 'Working backwards'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'The rhombus',
+      html: `<p>A rhombus is a parallelogram, so ${m('S = a · h')} still works. But its diagonals are
+      perpendicular and bisect each other, and that gives a second formula which is usually more
+      convenient:</p>
+      {{fig:areaRhombus:The perpendicular diagonals cut the rhombus into four congruent right triangles.}}
+      <div class="keybox"><div class="klabel">Area of a rhombus</div>
+      ${eq(m('S = ' + f('1', '2') + ' d₁ · d₂'), true)}</div>
+      <p>Why: the four right triangles each have legs ${m(f('d₁', '2'))} and ${m(f('d₂', '2'))}, so each
+      has area ${m(f('d₁d₂', '8'))}, and four of them make ${m(f('d₁d₂', '2'))}.</p>
+      <p>The same formula holds for any quadrilateral whose diagonals are perpendicular — a kite, for
+      instance — and for a square, where ${m('d₁ = d₂')}.</p>`
+    },
+    {
+      h: 'The trapezium',
+      html: `<p>Copy the trapezium, turn the copy through ${m('180°')} and join the two along a leg. The
+      result is a parallelogram of base ${m('a + b')} and height ${m('h')}. The trapezium is half of
+      it:</p>
+      <div class="keybox"><div class="klabel">Area of a trapezium</div>
+      ${eq(m('S = ' + f('a + b', '2') + ' · h'), true)}
+      — the average of the two parallel sides, times the height.</div>
+      {{fig:midlineTrapezium:The midline of a trapezium is the average of the two parallel sides, so the area is midline × height.}}
+      <p>Since the midline ${m('m = ' + f('a + b', '2'))}, the formula reads simply ${m('S = m · h')}:
+      area is midline times height, exactly as for a rectangle.</p>
+      <div class="warn"><span class="wl">Average, then multiply</span>
+      The commonest error is ${m('(a + b) · h')} without the halving — an answer exactly twice too big.
+      Sanity-check against the enclosing rectangle: a trapezium must be smaller than
+      ${m('b · h')} when ${m('b')} is the longer parallel side.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A rhombus has diagonals ' + m('12 cm') + ' and ' + m('16 cm') + '. Find its area, its side and its height.',
+      steps: [
+        [m('S = ' + f('1', '2') + ' · 12 · 16 = 96 cm²'), ''],
+        [m('half-diagonals 6 and 8'), ''],
+        [m('a = ' + sr('36 + 64') + ' = 10 cm'), 'Pythagoras in one of the four right triangles.'],
+        [m('96 = 10 · h, h = 9.6 cm'), 'Using the parallelogram formula.']
+      ],
+      ans: m('96 cm²') + ', side ' + m('10 cm') + ', height ' + m('9.6 cm')
+    },
+    {
+      q: 'A trapezium has parallel sides ' + m('8 cm') + ' and ' + m('14 cm') + ' and height ' + m('5 cm') + '. Find its area and its midline.',
+      steps: [
+        [m('m = ' + f('8 + 14', '2') + ' = 11 cm'), 'The midline.'],
+        [m('S = 11 · 5'), ''],
+        [m('= 55 cm²'), 'Less than ' + m('14 · 5 = 70') + ' ✓']
+      ],
+      ans: m('55 cm²') + ', midline ' + m('11 cm')
+    },
+    {
+      q: 'A trapezium has area ' + m('84 cm²') + ', height ' + m('7 cm') + ' and one parallel side ' + m('9 cm') + '. Find the other.',
+      steps: [
+        [m('84 = ' + f('9 + b', '2') + ' · 7'), 'Substitute what you know.'],
+        [m('12 = ' + f('9 + b', '2')), 'Divide by 7.'],
+        [m('24 = 9 + b'), 'Multiply by 2.'],
+        [m('b = 15 cm'), '']
+      ],
+      ans: m('15 cm')
+    }
+  ],
+  modelNote: 'Change the base and height and check each formula against the readout.',
+  interactive: { type: 'areaModel', title: 'Base, height and area' },
+  quiz: [
+    { q: 'A rhombus with diagonals ' + m('10') + ' and ' + m('8') + ' has area:', a: [m('80'), m('40'), m('18'), m('20')], c: 1, why: m(f('1', '2') + ' · 10 · 8') + '.' },
+    { q: 'A trapezium with parallel sides ' + m('6') + ' and ' + m('10') + ' and height ' + m('4') + ' has area:', a: [m('64'), m('32'), m('40'), m('16')], c: 1, why: m(f('16', '2') + ' · 4') + '.' },
+    { q: 'The midline of a trapezium with parallel sides ' + m('7') + ' and ' + m('13') + ' is:', a: [m('20'), m('10'), m('6'), m('91')], c: 1, why: 'The average of the two.' },
+    { q: 'A square of diagonal ' + m('6') + ' has area:', a: [m('36'), m('18'), m('12'), m('9')], c: 1, why: m(f('1', '2') + ' · 6 · 6 = 18') + '.' },
+    { q: 'A rhombus of area ' + m('60') + ' has one diagonal ' + m('10') + '. The other is:', a: [m('6'), m('12'), m('120'), m('30')], c: 1, why: m('60 = ' + f('1', '2') + ' · 10 · d') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('A rhombus has diagonals 6 and 8. Find its area.'), m('24')],
+      [m('A trapezium has parallel sides 5 and 9 and height 4. Find its area.'), m('28')],
+      [m('Find the midline of a trapezium with parallel sides 4 and 10.'), m('7')],
+      [m('A square has diagonal 10. Find its area.'), m('50')],
+      [m('A rhombus has diagonals 14 and 10. Find its area.'), m('70')],
+      [m('A trapezium has midline 8 and height 5. Find its area.'), m('40')],
+      [m('A rhombus has area 48 and one diagonal 12. Find the other.'), m('8')]
+    ],
+    med: [
+      [m('A rhombus has diagonals 16 and 30. Find its area and its side.'), m('240') + ', side ' + m('17')],
+      [m('A trapezium has area 96, height 8 and one parallel side 10. Find the other.'), m('14')],
+      [m('A rhombus of side 13 has one diagonal 24. Find its area.'), 'other diagonal ' + m('10') + ', area ' + m('120')],
+      [m('A trapezium has parallel sides 12 and 18 and area 105. Find its height.'), m('7')],
+      [m('A kite has perpendicular diagonals 9 and 14. Find its area.'), m('63')],
+      [m('A rhombus has side 10 and height 8. Find its area.'), m('80')],
+      [m('A trapezium has midline 11 and area 77. Find its height.'), m('7')]
+    ],
+    hard: [
+      [m('A rhombus has perimeter 40 and one diagonal 12. Find its area.'), 'side ' + m('10') + ', other diagonal ' + m('16') + ', area ' + m('96')],
+      [m('An isosceles trapezium has parallel sides 10 and 22 and legs 10. Find its area.'), m('h = 8') + ', area ' + m('128')],
+      [m('A trapezium has parallel sides in the ratio 2 : 5, height 6 and area 63. Find both sides.'), m('6') + ' and ' + m('15')],
+      [m('A rhombus of area 120 has side 13. Find both diagonals.'), m('10') + ' and ' + m('24')],
+      [m('Show that the formula for a trapezium gives the parallelogram formula when a = b.'), m('S = ' + f('a + a', '2') + ' · h = a · h') + ' — the trapezium becomes a parallelogram.'],
+      [m('A trapezium is divided by a diagonal into two triangles. Find the ratio of their areas if the parallel sides are 6 and 10.'), m('3 : 5') + ' — the two triangles share the height'],
+      [m('The diagonals of a quadrilateral are perpendicular, of lengths 12 and 9. Must its area be 54?'), 'Yes — cutting along the diagonals gives four right triangles whose areas sum to ' + m(f('1', '2') + 'd₁d₂') + ', whatever the quadrilateral’s shape, provided the diagonals meet inside it.']
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Темы 49–50, pp. 114–118. Check every trapezium answer against ' + m('b · h') + '.',
+  homework: [
+    m('A rhombus has diagonals 18 and 24. Find its area and its side.'),
+    m('A trapezium has parallel sides 7 and 15 and height 6. Find its area.'),
+    m('A trapezium has area 120, height 10 and one parallel side 9. Find the other.'),
+    m('A square has diagonal 14. Find its area.'),
+    m('A rhombus has perimeter 52 and one diagonal 24. Find its area.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-35', stream: 'geo', grade: 8, quarter: 3, lessons: '50', hours: 1,
+  title: 'The area of a polygon',
+  subtitle: 'Any polygon at all: cut it into triangles, add the pieces, done.',
+  uz: 'Geometry 8, Тема 51', uzPage: 'Тема 51, pp. 119–121',
+  cam: 'Stage 9 · 7.2', camPage: 'Learner’s Book pp. 149–155', wb: 'Workbook 7.2',
+  objectives: [
+    'Decompose a polygon into triangles and rectangles.',
+    'Find the area of a compound shape by adding or subtracting.',
+    'Find the area of a regular polygon from its apothem and perimeter.',
+    'Find areas from coordinates on squared paper.'
+  ],
+  terms: [
+    ['Polygon', 'Ko‘pburchak', 'Многоугольник'],
+    ['Decomposition', 'Bo‘laklarga ajratish', 'Разбиение'],
+    ['Compound shape', 'Murakkab figura', 'Составная фигура'],
+    ['Regular polygon', 'Muntazam ko‘pburchak', 'Правильный многоугольник'],
+    ['Apothem', 'Apofema', 'Апофема'],
+    ['Enclosing rectangle', 'O‘rab turgan to‘rtburchak', 'Описанный прямоугольник'],
+    ['Subtraction method', 'Ayirish usuli', 'Метод вычитания'],
+    ['Cross-section', 'Kesim', 'Сечение']
+  ],
+  timing: [[5, 'Cut a pentagon into triangles'], [12, 'Decomposition'], [12, 'Compound shapes'], [7, 'Regular polygons'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'Cut it into pieces you know',
+      html: `<p>Any polygon can be cut into triangles by drawing diagonals from one vertex. By the
+      additivity of area, the whole is the sum of the parts:</p>
+      {{fig:polygonDecompose:Diagonals from one vertex cut a polygon into triangles; add their areas to get the whole.}}
+      <p>An ${m('n')}-gon splits into ${m('n − 2')} triangles this way — the same count that gave the
+      angle sum ${m('180°(n − 2)')} in Quarter I. The two facts have the same source.</p>
+      <div class="keybox"><div class="klabel">Two strategies</div>
+      <b>Adding:</b> cut the shape into rectangles and triangles and total them.<br>
+      <b>Subtracting:</b> draw the smallest rectangle that contains the shape, then take away the corner
+      pieces. On squared paper the second is usually faster.</div>`
+    },
+    {
+      h: 'Regular polygons',
+      html: `<p>A regular ${m('n')}-gon splits into ${m('n')} congruent triangles meeting at the centre.
+      Each has base ${m('a')} (a side) and height ${m('r')} (the <b>apothem</b> — the distance from the
+      centre to a side):</p>
+      ${eq(m('S = n · ' + f('1', '2') + ' a r = ' + f('1', '2') + ' P r'), true)}
+      <p>where ${m('P = na')} is the perimeter. A regular hexagon of side 6 has apothem
+      ${m('3' + sr('3') + ' ≈ 5.2')}, so ${m('S = ' + f('1', '2') + ' · 36 · 5.2 ≈ 93.5')}.</p>
+      <div class="warn"><span class="wl">Apothem, not radius</span>
+      The apothem reaches the <b>middle of a side</b>; the radius reaches a <b>vertex</b>. They are
+      different lengths, and only the apothem belongs in this formula.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'An L-shape is a ' + m('10 × 6') + ' rectangle with a ' + m('4 × 3') + ' rectangle removed from one corner. Find its area and perimeter.',
+      steps: [
+        [m('10 · 6 = 60'), 'The whole rectangle.'],
+        [m('4 · 3 = 12'), 'The piece removed.'],
+        [m('60 − 12 = 48'), 'The area.'],
+        [m('P = 2(10 + 6) = 32'), 'The perimeter is unchanged — the cut adds two edges and removes two of the same total length.']
+      ],
+      ans: 'Area ' + m('48') + ', perimeter ' + m('32')
+    },
+    {
+      q: 'Find the area of the polygon with vertices ' + m('(0;0)') + ', ' + m('(6;0)') + ', ' + m('(6;4)') + ', ' + m('(3;7)') + ', ' + m('(0;4)') + '.',
+      steps: [
+        ['Split into a rectangle and a triangle.', 'The horizontal line ' + m('y = 4') + ' does it.'],
+        [m('rectangle 6 × 4 = 24'), ''],
+        [m('triangle: base 6, height 3'), 'From ' + m('y = 4') + ' up to ' + m('y = 7') + '.'],
+        [m(f('1', '2') + ' · 6 · 3 = 9'), ''],
+        [m('24 + 9 = 33'), '']
+      ],
+      ans: m('33')
+    }
+  ],
+  modelNote: 'Change the base and height of one piece and watch how the total responds.',
+  interactive: { type: 'areaModel', title: 'One piece of a decomposition' },
+  quiz: [
+    { q: 'A pentagon splits into how many triangles from one vertex?', a: [m('3'), m('4'), m('5'), m('2')], c: 0, why: m('n − 2 = 3') + '.' },
+    { q: 'An L-shape is a ' + m('8 × 5') + ' rectangle less a ' + m('3 × 2') + ' corner. Its area is:', a: [m('40'), m('34'), m('46'), m('6')], c: 1, why: m('40 − 6') + '.' },
+    { q: 'For a regular polygon, ' + m('S') + ' equals:', a: [m('P · r'), m(f('1', '2') + ' P r'), m('P + r'), m('n · r')], c: 1, why: 'Half the perimeter times the apothem.' },
+    { q: 'The apothem of a regular polygon reaches:', a: ['a vertex', 'the middle of a side', 'the opposite vertex', 'the circumcircle'], c: 1, why: 'It is perpendicular to a side.' }
+  ],
+  practice: {
+    easy: [
+      [m('An L-shape is a 6 × 4 rectangle less a 2 × 2 corner. Find its area.'), m('20')],
+      [m('A hexagon splits into how many triangles from one vertex?'), m('4')],
+      [m('Find the area of a shape made of a 5 × 3 rectangle and a triangle of base 5, height 2.'), m('20')],
+      [m('A regular polygon has perimeter 24 and apothem 4. Find its area.'), m('48')],
+      [m('An L-shape is a 9 × 5 rectangle less a 4 × 2 corner. Find its area.'), m('37')],
+      [m('Find the area of a triangle with vertices (0;0), (4;0), (0;3).'), m('6')],
+      [m('A regular hexagon has perimeter 36 and apothem 5.2. Find its area.'), m('≈ 93.6')]
+    ],
+    med: [
+      [m('Find the area of the polygon (0;0), (8;0), (8;3), (4;6), (0;3).'), m('36')],
+      [m('A rectangle 12 × 8 has a 4 × 4 square cut from two opposite corners. Find the area left.'), m('64')],
+      [m('A T-shape is a 10 × 2 bar on top of a 4 × 6 column. Find its area.'), m('44')],
+      [m('A regular octagon has perimeter 40 and apothem 6. Find its area.'), m('120')],
+      [m('Find the area of the quadrilateral (0;0), (5;0), (7;4), (2;4).'), m('20')],
+      [m('A cross is made of five 3 × 3 squares. Find its area and perimeter.'), 'Area ' + m('45') + ', perimeter ' + m('36')],
+      [m('A trapezium sits on a rectangle: rectangle 8 × 3, trapezium with parallel sides 8 and 4, height 3. Find the total area.'), m('24 + 18 = 42')]
+    ],
+    hard: [
+      [m('Find the area of the pentagon (0;0), (6;0), (8;4), (4;8), (0;4).'), m('44')],
+      [m('A regular hexagon has side 8. Find its apothem and area.'), m('4' + sr('3') + ' ≈ 6.93') + ', area ' + m('≈ 166.3')],
+      [m('A room 6 m by 5 m has a 2 m by 1.5 m alcove added. Find the floor area and the cost of tiling at 120 000 so‘m/m².'), m('33 m²') + ', ' + m('3 960 000 so‘m')],
+      [m('A rectangle 10 × 6 has a triangle of base 10 and height 6 removed. Find the area left, and explain the answer.'), m('60 − 30 = 30') + ' — the triangle is exactly half the rectangle'],
+      [m('Find the area of the quadrilateral (1;1), (7;2), (6;6), (2;5).'), m('20')],
+      [m('A regular polygon has 12 sides of length 5 and apothem 9.3. Find its area.'), m('≈ 279')],
+      [m('Explain why cutting a polygon into triangles always gives the same total area, whichever cuts you use.'), 'Additivity says the parts of any one decomposition sum to the whole, and the whole does not depend on how it was cut — so every valid decomposition gives the same total.']
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Тема 51, pp. 119–121. Draw the cutting lines before calculating.',
+  homework: [
+    m('An L-shape is a 12 × 7 rectangle less a 5 × 3 corner. Find its area.'),
+    m('Find the area of the polygon (0;0), (7;0), (7;4), (3;7), (0;4).'),
+    m('A regular polygon has perimeter 30 and apothem 5. Find its area.'),
+    m('A T-shape is a 12 × 3 bar on a 4 × 5 column. Find its area.'),
+    m('A regular hexagon has side 10. Find its apothem and area.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-36', stream: 'geo', grade: 8, quarter: 3, lessons: '51', hours: 1,
+  title: 'Practical · The circumference and area of a circle',
+  subtitle: 'Cambridge insert: the one shape with no straight sides, and the number π that measures it.',
+  uz: 'Geometry 8, Тема 52', uzPage: 'Тема 52, pp. 122–125',
+  cam: 'Stage 9 · 7.1', camPage: 'Learner’s Book pp. 142–148', wb: 'Workbook 7.1',
+  objectives: [
+    'Use ' + m('C = 2πr') + ' and ' + m('S = πr²') + '.',
+    'Find the radius from a given circumference or area.',
+    'Find the area of a sector and the length of an arc.',
+    'Solve practical problems involving circles.'
+  ],
+  terms: [
+    ['Circle', 'Aylana', 'Окружность'],
+    ['Circumference', 'Aylana uzunligi', 'Длина окружности'],
+    ['Radius', 'Radius', 'Радиус'],
+    ['Diameter', 'Diametr', 'Диаметр'],
+    ['Pi (π)', 'Pi soni', 'Число π'],
+    ['Arc', 'Yoy', 'Дуга'],
+    ['Sector', 'Sektor', 'Сектор'],
+    ['Semicircle', 'Yarim aylana', 'Полуокружность'],
+    ['Annulus (ring)', 'Halqa', 'Кольцо']
+  ],
+  timing: [[6, 'Measure a round lid: C ÷ d'], [12, 'Circumference'], [12, 'Area'], [6, 'Arcs and sectors'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'π, and the two formulas',
+      html: `<p>Measure the circumference of any round object and divide by its diameter. Every time, for
+      every circle, you get the same number:</p>
+      ${eq(m('π = ' + f('C', 'd') + ' ≈ 3.14159…'), true)}
+      <div class="keybox"><div class="klabel">Circumference and area</div>
+      ${eq(m('C = 2πr = πd') + '&nbsp;&nbsp;|&nbsp;&nbsp;' + m('S = πr²'), true)}</div>
+      {{fig:circleArea:Cut the circle into thin sectors and interleave them: the result approaches a rectangle of base πr and height r.}}
+      <p>Why ${m('πr²')}? Cut the circle into many thin sectors and lay them alternately up and down.
+      The result is nearly a rectangle of height ${m('r')} and base half the circumference, ${m('πr')} —
+      giving ${m('πr · r = πr²')}. The thinner the sectors, the better the fit.</p>
+      <div class="warn"><span class="wl">Radius or diameter?</span>
+      ${m('S = πr²')} needs the <b>radius</b>. Given a diameter of ${m('10')}, the area is
+      ${m('π · 5² = 25π')}, not ${m('100π')} — a factor of four out.</div>`
+    },
+    {
+      h: 'Arcs, sectors and rings',
+      html: `<p>A sector of angle ${m('α')} is the fraction ${m(f('α', '360°'))} of the whole circle, so
+      both its arc and its area are that same fraction:</p>
+      ${eq(m('ℓ = ' + f('α', '360°') + ' · 2πr') + '&nbsp;&nbsp;|&nbsp;&nbsp;' + m('S<sub>sector</sub> = ' + f('α', '360°') + ' · πr²'), true)}
+      <p>A quarter circle of radius 8: arc ${m(f('1', '4') + ' · 16π = 4π ≈ 12.6')}, area
+      ${m(f('1', '4') + ' · 64π = 16π ≈ 50.3')}.</p>
+      <p>A <b>ring</b> (annulus) between radii ${m('R')} and ${m('r')} has area
+      ${m('π(R² − r²)')} — the big disc less the small one, by additivity.</p>
+      <p>Give answers exactly in terms of ${m('π')} when possible, and only round at the very end.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A circle has radius ' + m('7 cm') + '. Find its circumference and area, taking ' + m('π ≈ 3.14') + '.',
+      steps: [
+        [m('C = 2π · 7 = 14π'), ''],
+        [m('≈ 43.96 cm'), ''],
+        [m('S = π · 49 = 49π'), ''],
+        [m('≈ 153.86 cm²'), '']
+      ],
+      ans: m('C ≈ 44 cm') + ', ' + m('S ≈ 153.9 cm²')
+    },
+    {
+      q: 'A circular pond has area ' + m('78.5 m²') + '. Find its radius and the length of fence needed round it.',
+      steps: [
+        [m('78.5 = 3.14 · r²'), ''],
+        [m('r² = 25, r = 5 m'), ''],
+        [m('C = 2 · 3.14 · 5'), ''],
+        [m('= 31.4 m'), '']
+      ],
+      ans: m('r = 5 m') + ', fence ' + m('31.4 m')
+    },
+    {
+      q: 'A circular running track has an inner radius of ' + m('30 m') + ' and is ' + m('4 m') + ' wide. Find the area of the track surface.',
+      steps: [
+        [m('R = 34, r = 30'), ''],
+        [m('S = π(34² − 30²)'), 'The ring formula.'],
+        [m('= π(1156 − 900) = 256π'), ''],
+        [m('≈ 804 m²'), '']
+      ],
+      ans: m('256π ≈ 804 m²')
+    }
+  ],
+  modelNote: 'Explore the circle by dragging the radius; compare the circumference and area readouts.',
+  interactive: { type: 'circleAngles', title: 'Around the circle' },
+  quiz: [
+    { q: 'A circle of radius ' + m('5') + ' has circumference:', a: [m('5π'), m('10π'), m('25π'), m('20π')], c: 1, why: m('2πr') + '.' },
+    { q: 'A circle of radius ' + m('5') + ' has area:', a: [m('10π'), m('25π'), m('5π'), m('50π')], c: 1, why: m('πr²') + '.' },
+    { q: 'A circle of diameter ' + m('12') + ' has area:', a: [m('144π'), m('36π'), m('12π'), m('24π')], c: 1, why: m('r = 6') + ', so ' + m('36π') + '.' },
+    { q: 'A quarter circle of radius ' + m('4') + ' has area:', a: [m('16π'), m('4π'), m('8π'), m('2π')], c: 1, why: m(f('1', '4') + ' · 16π') + '.' },
+    { q: 'If the radius doubles, the area:', a: ['doubles', 'triples', 'quadruples', 'stays the same'], c: 2, why: 'Area depends on ' + m('r²') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('Find the circumference of a circle of radius 3 (in terms of π).'), m('6π')],
+      [m('Find the area of a circle of radius 3 (in terms of π).'), m('9π')],
+      [m('Find the area of a circle of radius 10.'), m('100π ≈ 314')],
+      [m('Find the circumference of a circle of diameter 14.'), m('14π ≈ 44')],
+      [m('Find the area of a semicircle of radius 6.'), m('18π')],
+      [m('A circle has circumference 20π. Find its radius.'), m('10')],
+      [m('Find the area of a quarter circle of radius 2.'), m('π')]
+    ],
+    med: [
+      [m('A circle has area 49π. Find its radius and circumference.'), m('r = 7') + ', ' + m('C = 14π')],
+      [m('Find the area of a sector of radius 6 and angle 60°.'), m('6π')],
+      [m('Find the arc length of a sector of radius 9 and angle 40°.'), m('2π')],
+      [m('A circular table of diameter 1.2 m is covered. Find the area of cloth needed.'), m('0.36π ≈ 1.13 m²')],
+      [m('Find the area of the ring between radii 10 and 6.'), m('64π')],
+      [m('A wheel of radius 35 cm makes one turn. How far does it travel?'), m('70π ≈ 220 cm')],
+      [m('A circle has circumference 31.4 m. Find its area (π ≈ 3.14).'), m('r = 5') + ', area ' + m('78.5 m²')]
+    ],
+    hard: [
+      [m('A square of side 10 has a circle inscribed in it. Find the area between them.'), m('100 − 25π ≈ 21.5')],
+      [m('A circle is inscribed in a square of side 10, and a square is inscribed in that circle. Find the smaller square’s area.'), m('50') + ' — its diagonal is the circle’s diameter, 10'],
+      [m('A running track is 400 m round with two straights of 100 m and two semicircular ends. Find the radius of the ends.'), m('2πr = 200') + ', so ' + m('r ≈ 31.8 m')],
+      [m('A wheel of diameter 70 cm turns 500 times. How far does it travel, in metres?'), m('500 · 0.7π ≈ 1100 m')],
+      [m('A sector has area 12π and radius 6. Find its angle.'), m('120°')],
+      [m('A circular pizza of diameter 40 cm is cut into 8 equal slices. Find the area of one slice.'), m('50π ≈ 157 cm²')],
+      [m('Two circles have radii in the ratio 2 : 3. Find the ratio of their areas, and explain.'), m('4 : 9') + ' — area depends on the square of the radius, so lengths in ratio ' + m('k') + ' give areas in ratio ' + m('k²')]
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Тема 52, pp. 122–125. Leave answers in terms of ' + m('π') + ' unless told otherwise.',
+  homework: [
+    m('Find the circumference and area of a circle of radius 8.'),
+    m('A circle has area 144π. Find its radius and circumference.'),
+    m('Find the area of a sector of radius 10 and angle 72°.'),
+    m('Find the area of the ring between radii 12 and 9.'),
+    m('A bicycle wheel has diameter 66 cm. How far does it travel in 200 turns?')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-37', stream: 'geo', grade: 8, quarter: 3, lessons: '52', hours: 1,
+  title: 'Control work 3 · Coordinates, vectors and area',
+  subtitle: 'The Quarter III assessment, and the four errors it produces every year.',
+  uz: 'Geometry 8, Темы 53–54', uzPage: 'Темы 53–54, pp. 126–127',
+  cam: 'Stage 9 · 7.1–7.2, 13.1–13.2', camPage: 'Learner’s Book pp. 142–155, 284–296', wb: 'Workbook 7.1–7.2',
+  objectives: [
+    'Assess coordinates, distance, vectors and all the area formulas.',
+    'Diagnose each lost mark by error type.',
+    'Re-solve every task that was lost.'
+  ],
+  timing: [[2, 'Setting up'], [36, 'The paper'], [2, 'Collect in']],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Work on mistakes', 'Xatolar ustida ishlash', 'Работа над ошибками'],
+    ['Midpoint', 'O‘rta nuqta', 'Середина'],
+    ['Distance', 'Masofa', 'Расстояние'],
+    ['Vector', 'Vektor', 'Вектор'],
+    ['Height', 'Balandlik', 'Высота'],
+    ['Trapezium', 'Trapetsiya', 'Трапеция'],
+    ['Units of area', 'Yuza birliklari', 'Единицы площади']
+  ],
+  sections: [
+    {
+      h: 'The paper (40 minutes)',
+      html: `<p>Two variants of eight tasks. Tasks 1–5 are worth 1 mark, tasks 6–8 are worth 2:</p>
+      <ul>
+        <li>task 1 · the midpoint of a segment</li>
+        <li>task 2 · the distance between two points</li>
+        <li>task 3 · the equation of a circle from centre and radius</li>
+        <li>task 4 · ${m('AB')} and ${m('| AB |')} from two points</li>
+        <li>task 5 · the area of a parallelogram or a triangle</li>
+        <li>task 6 · the area of a trapezium or a rhombus</li>
+        <li>task 7 · a compound shape</li>
+        <li>task 8 · a coordinate proof</li>
+      </ul>
+      <p><b>Marking note:</b> the four errors below account for almost every lost mark in this paper.</p>`
+    },
+    {
+      h: 'The four errors',
+      html: `<div class="keybox"><div class="klabel">Work on mistakes</div>
+      <ol style="margin:0">
+        <li><b>Start minus end</b> in a vector — the answer comes out with both signs reversed.</li>
+        <li><b>The slant side used as the height</b> of a parallelogram or trapezium.</li>
+        <li><b>The trapezium formula without the halving</b> — an answer exactly twice too big.</li>
+        <li><b>Radius and diameter swapped</b>, or ${m('r²')} read off as ${m('r')} in the circle
+        equation.</li>
+      </ol></div>
+      <p>Each pupil writes the error number beside every lost mark and re-solves that task in full.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the error: for ' + m('A(1; 2)') + ' and ' + m('B(5; 7)') + ', ' + m('AB = (−4; −5)'),
+      steps: [
+        ['The subtraction went the wrong way round.', m('AB') + ' means “from ' + m('A') + ' to ' + m('B') + '”.'],
+        [m('AB = (5 − 1; 7 − 2)'), 'End minus start.'],
+        [m('AB = (4; 5)'), 'The answer given is ' + m('BA') + '.']
+      ],
+      ans: m('(4; 5)')
+    },
+    {
+      q: 'Find the error: a trapezium with parallel sides ' + m('6') + ' and ' + m('10') + ' and height ' + m('4') + ' has area ' + m('64'),
+      steps: [
+        ['The halving was left out.', m('(6 + 10) · 4 = 64') + ' is the parallelogram, not the trapezium.'],
+        [m('S = ' + f('6 + 10', '2') + ' · 4'), ''],
+        [m('= 8 · 4 = 32'), 'Check: less than ' + m('10 · 4 = 40') + ' ✓']
+      ],
+      ans: m('32')
+    }
+  ],
+  modelNote: 'Show the wrong working, take a vote on the error type, then reveal.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'Diagnose the error',
+    hint: 'Which of the four errors is this? Decide, then reveal.',
+    items: [
+      {
+        title: 'Error 1 — vector the wrong way round',
+        start: '<b>Claimed:</b> for <span class="m">A(3; 1)</span>, <span class="m">B(8; 4)</span>, <span class="m">AB = (−5; −3)</span>',
+        steps: [
+          ['<span class="m">AB</span> runs <b>from A to B</b>.', 'The subtraction is end minus start.'],
+          ['<span class="m">(8 − 3; 4 − 1)</span>', ''],
+          ['<span class="m">= (5; 3)</span>', 'What was written is <span class="m">BA</span>.']
+        ],
+        answer: '<span class="m">AB = (5; 3)</span>, and <span class="m">| AB | = ' + sr('34') + '</span>'
+      },
+      {
+        title: 'Error 2 — slant side used as height',
+        start: '<b>Claimed:</b> a parallelogram with sides <span class="m">9</span> and <span class="m">5</span> has area <span class="m">45</span>',
+        steps: [
+          ['That would need the angle to be <span class="m">90°</span>.', 'Then it would be a rectangle.'],
+          ['The height is the <b>perpendicular</b> distance between the parallel sides.', 'It is always shorter than the slant side.'],
+          ['With an angle of <span class="m">30°</span>, <span class="m">h = 5 sin 30° = 2.5</span>', ''],
+          ['<span class="m">S = 9 · 2.5 = 22.5</span>', 'Half of what was claimed.']
+        ],
+        answer: 'The area is <span class="m">a · h</span>, never <span class="m">a · b</span> unless the angle is right.'
+      },
+      {
+        title: 'Error 3 — trapezium not halved',
+        start: '<b>Claimed:</b> parallel sides <span class="m">7</span> and <span class="m">13</span>, height <span class="m">5</span>, area <span class="m">100</span>',
+        steps: [
+          ['<span class="m">(7 + 13) · 5 = 100</span> is the doubled trapezium.', 'It is the parallelogram made from two copies.'],
+          ['<span class="m">S = ' + f('7 + 13', '2') + ' · 5</span>', 'Average the parallel sides first.'],
+          ['<span class="m">= 10 · 5 = 50</span>', 'Check: less than <span class="m">13 · 5 = 65</span> ✓']
+        ],
+        answer: '<span class="m">50</span>'
+      },
+      {
+        title: 'Error 4 — radius and diameter swapped',
+        start: '<b>Claimed:</b> <span class="m">(x − 2)² + (y + 1)² = 16</span> has centre <span class="m">(−2; 1)</span> and radius <span class="m">16</span>',
+        steps: [
+          ['The centre is what is <b>subtracted</b>, with the sign reversed.', '<span class="m">(2; −1)</span>, not <span class="m">(−2; 1)</span>.'],
+          ['The right-hand side is <span class="m">r²</span>, not <span class="m">r</span>.', ''],
+          ['<span class="m">r = ' + sr('16') + ' = 4</span>', '']
+        ],
+        answer: 'Centre <span class="m">(2; −1)</span>, radius <span class="m">4</span>.'
+      }
+    ]
+  },
+  quiz: [
+    { q: 'For ' + m('A(2; 5)') + ' and ' + m('B(7; 9)') + ', ' + m('AB') + ' is:', a: [m('(−5; −4)'), m('(5; 4)'), m('(9; 14)'), m('(4; 5)')], c: 1, why: 'End minus start.' },
+    { q: 'A trapezium with parallel sides ' + m('5') + ' and ' + m('9') + ' and height ' + m('6') + ' has area:', a: [m('84'), m('42'), m('27'), m('70')], c: 1, why: m(f('14', '2') + ' · 6') + '.' },
+    { q: 'The radius of ' + m('(x − 1)² + (y − 2)² = 36') + ' is:', a: [m('36'), m('6'), m('18'), m('12')], c: 1, why: m('36 = 6²') + '.' },
+    { q: 'A parallelogram with sides ' + m('7') + ' and ' + m('4') + ' and an angle of ' + m('30°') + ' has area:', a: [m('28'), m('14'), m('11'), m('7')], c: 1, why: m('7 · 4 · sin 30° = 14') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('<b>Variant 1, task 1.</b> Find the midpoint of (1; 3) and (7; 9).'), m('(4; 6)')],
+      [m('<b>Task 2.</b> Find the distance between (0; 0) and (5; 12).'), m('13')],
+      [m('<b>Task 3.</b> Write the equation of the circle, centre (2; −3), radius 5.'), m('(x − 2)² + (y + 3)² = 25')],
+      [m('<b>Task 4.</b> Find AB and |AB| for A(1; 1), B(4; 5).'), m('(3; 4)') + ', ' + m('5')],
+      [m('<b>Task 5.</b> Find the area of a triangle with base 12 and height 5.'), m('30')],
+      [m('<b>Task 6.</b> Find the area of a trapezium with parallel sides 6 and 10 and height 5.'), m('40')],
+      [m('<b>Task 7.</b> An L-shape is a 9 × 6 rectangle less a 3 × 2 corner. Find its area.'), m('48')]
+    ],
+    med: [
+      [m('<b>Variant 2, task 1.</b> Find the midpoint of (−4; 6) and (2; −2).'), m('(−1; 2)')],
+      [m('<b>Task 2.</b> Find the distance between (−1; 2) and (3; 5).'), m('5')],
+      [m('<b>Task 3.</b> State the centre and radius of (x + 4)² + (y − 1)² = 49.'), m('(−4; 1), r = 7')],
+      [m('<b>Task 4.</b> Find AB and |AB| for A(−2; 3), B(4; 11).'), m('(6; 8)') + ', ' + m('10')],
+      [m('<b>Task 5.</b> Find the area of a parallelogram with base 11 and height 6.'), m('66')],
+      [m('<b>Task 6.</b> Find the area of a rhombus with diagonals 10 and 12.'), m('60')],
+      [m('<b>Task 8.</b> Show that (0;0), (5;0), (5;4), (0;4) is a rectangle.'), 'Both diagonals have midpoint ' + m('(2.5; 2)') + ' and both equal ' + m(sr('41')) + '.']
+    ],
+    hard: [
+      [m('Find the fourth vertex of a parallelogram with (1;2), (6;3), (8;8).'), m('(3; 7)')],
+      [m('A rhombus has perimeter 40 and one diagonal 16. Find its area.'), 'side ' + m('10') + ', other diagonal ' + m('12') + ', area ' + m('96')],
+      [m('A trapezium has area 90, height 9 and one parallel side 8. Find the other.'), m('12')],
+      [m('Find the area of the polygon (0;0), (8;0), (8;5), (4;8), (0;5).'), m('52')],
+      [m('a = (3; −2) and b = (−1; 5). Find 2a − b and its length.'), m('(7; −9)') + ', ' + m(sr('130'))],
+      [m('A circle has centre (2; 3) and passes through (6; 6). Find its equation and its area.'), m('(x − 2)² + (y − 3)² = 25') + ', area ' + m('25π')],
+      [m('Show that (1;1), (5;3), (7;7), (3;5) is a parallelogram, and find its area.'), 'Diagonals share the midpoint ' + m('(4; 4)') + '; area ' + m('12')]
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Re-solve every task you lost marks on, with the error number written beside it.',
+  homework: [
+    'Re-solve, in full, each task you lost a mark on.',
+    'Beside each, write the error number (1–4) that caused it.',
+    m('Find AB and |AB| for A(3; −1), B(9; 7).'),
+    m('Find the area of a trapezium with parallel sides 9 and 15 and height 8.'),
+    m('State the centre and radius of (x − 5)² + (y + 2)² = 64.')
+  ]
+});
