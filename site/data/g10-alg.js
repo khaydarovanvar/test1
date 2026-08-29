@@ -4086,3 +4086,1798 @@ G10_ALG.push({
     'A sample of ' + m('120') + ' g has half-life 3 hours. Find the mass after 15 hours and the time until ' + m('7.5') + ' g remain.'
   ]
 });
+
+/* ============================== 27 ============================== */
+G10_ALG.push({
+  id: 'a10-27', stream: 'alg', grade: 10, quarter: 3, lessons: '57–58', hours: 2,
+  title: 'The logarithm and the logarithmic function',
+  subtitle: 'The inverse of the exponential — a new name for an index, and the graph you get by reflecting.',
+  uz: 'Algebra 10, §3.4', uzPage: 'pp. 225–236',
+  cam: 'P2 · 2.2', camPage: 'Pure Mathematics 2 & 3, pp. 15–25', wb: 'P2 Exercise 2D',
+  objectives: [
+    'State the definition of a logarithm and move between the two forms.',
+    'Evaluate simple logarithms without a calculator.',
+    'Sketch y = log_a x and state its domain, range and asymptote.',
+    'Recognise the logarithm as the inverse of the exponential.'
+  ],
+  terms: [
+    ['Logarithm', 'Logarifm', 'Логарифм'],
+    ['Base of a logarithm', 'Logarifm asosi', 'Основание логарифма'],
+    ['Argument of a logarithm', 'Logarifm argumenti', 'Аргумент логарифма'],
+    ['Common logarithm (lg)', 'O‘nli logarifm', 'Десятичный логарифм'],
+    ['Natural logarithm (ln)', 'Natural logarifm', 'Натуральный логарифм'],
+    ['Vertical asymptote', 'Vertikal asimptota', 'Вертикальная асимптота'],
+    ['Inverse function', 'Teskari funksiya', 'Обратная функция'],
+    ['Logarithmic identity', 'Logarifmik ayniyat', 'Основное логарифмическое тождество'],
+    ['Reflection in y = x', 'y = x ga nisbatan akslantirish', 'Симметрия относительно y = x']
+  ],
+  timing: [[12, 'The definition'], [20, 'Evaluating'], [24, 'The graph'], [20, 'Inverse of the exponential'], [18, 'Practice'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The definition',
+      html: `<div class="keybox"><div class="klabel">A logarithm <i>is</i> an index</div>
+      ${eq(m('log_a b = c   ⇔   a^c = b') + '   (' + m('a > 0, a ≠ 1, b > 0') + ')', true)}
+      In words: <b>${m('log_a b')} is the power to which ${m('a')} must be raised to give ${m('b')}.</b></div>
+      <p>So ${m('log₂ 8 = 3')} because ${m('2³ = 8')}; ${m('log₅ 25 = 2')} because ${m('5² = 25')};
+      and ${m('log₃ ' + f('1', '9') + ' = −2')} because ${m('3^(−2) = ' + f('1', '9'))}.</p>
+      <div class="warn"><span class="wl">The argument must be positive</span>
+      ${m('log_a(−4)')} does not exist: no power of a positive base is negative. That single condition
+      is the first line of every logarithmic equation in the next four lessons.</div>`
+    },
+    {
+      h: 'Evaluating without a calculator',
+      html: `<p>Ask “${m('a')} to what power gives ${m('b')}?” and answer it.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Question</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="m">log₂ 32</td><td class="m">2^? = 32</td><td class="m">5</td></tr>
+        <tr><td class="m">log₃ 1</td><td class="m">3^? = 1</td><td class="m">0</td></tr>
+        <tr><td class="m">log₇ 7</td><td class="m">7^? = 7</td><td class="m">1</td></tr>
+        <tr><td class="m">log₄ 2</td><td class="m">4^? = 2</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td class="m">log₂ ${f('1', '8')}</td><td class="m">2^? = ${f('1', '8')}</td><td class="m">−3</td></tr>
+        <tr><td class="m">lg 1000</td><td class="m">10^? = 1000</td><td class="m">3</td></tr>
+      </tbody></table></div>
+      <p>Two notations are standard: <b>${m('lg x')}</b> means ${m('log₁₀ x')}, and <b>${m('ln x')}</b>
+      means ${m('log_e x')}, where ${m('e ≈ 2.718')} is the base that makes calculus simplest.</p>
+      ${eq(m('log_a 1 = 0') + '  ·  ' + m('log_a a = 1') + '  ·  ' + m('a^(log_a b) = b'), true)}
+      <p>The last is the <b>fundamental logarithmic identity</b>: raising ${m('a')} to the power that
+      gives ${m('b')} gives ${m('b')}. It is the statement that the two operations undo each other.</p>`
+    },
+    {
+      h: 'The graph',
+      html: `{{fig:logGraph:Reflect y = aˣ in the line y = x and the logarithm appears, with the axes' roles swapped.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Property</th><th class="m">y = aˣ</th><th class="m">y = log_a x</th></tr></thead>
+      <tbody>
+        <tr><td>domain</td><td class="m">ℝ</td><td class="m">x > 0</td></tr>
+        <tr><td>range</td><td class="m">y > 0</td><td class="m">ℝ</td></tr>
+        <tr><td>passes through</td><td class="m">(0, 1)</td><td class="m">(1, 0)</td></tr>
+        <tr><td>asymptote</td><td class="m">y = 0</td><td class="m">x = 0</td></tr>
+        <tr><td>${m('a > 1')}</td><td>increasing</td><td>increasing</td></tr>
+        <tr><td>${m('0 < a < 1')}</td><td>decreasing</td><td>decreasing</td></tr>
+      </tbody></table></div>
+      <p>Every row is the previous table with the two columns swapped — because reflecting in
+      ${m('y = x')} exchanges the axes.</p>`
+    },
+    {
+      h: 'Inverse, and why it matters',
+      html: `${eq(m('log_a(aˣ) = x') + '     ' + m('a^(log_a x) = x'), true)}
+      <p>These are the two halves of “${m('f⁻¹f = ff⁻¹ = ')} identity” from Grade 10 Quarter I.</p>
+      <div class="keybox"><div class="klabel">What logarithms are for</div>
+      They take an unknown <b>out of an index</b>. ${m('2ˣ = 10')} cannot be solved by matching bases —
+      but taking ${m('log₂')} of both sides gives ${m('x = log₂ 10 ≈ 3.32')} immediately. That is the
+      whole reason the function exists.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Evaluate ' + m('log₃ 81') + ', ' + m('log₅ ' + f('1', '125')) + ' and ' + m('log₈ 2') + '.',
+      steps: [
+        [m('3⁴ = 81'), m('4')],
+        [m('5^(−3) = ' + f('1', '125')), m('−3')],
+        [m('8^(1/3) = 2'), m(f('1', '3'))]
+      ],
+      ans: m('4') + ', ' + m('−3') + ', ' + m(f('1', '3'))
+    },
+    {
+      q: 'Solve ' + m('log₂ x = 5') + ' and ' + m('log_x 49 = 2') + '.',
+      steps: [
+        [m('x = 2⁵ = 32'), ''],
+        [m('x² = 49'), ''],
+        [m('x = 7') + '; the base must be positive and not 1.', m('x = −7') + ' rejected.']
+      ],
+      ans: m('x = 32') + '; ' + m('x = 7')
+    },
+    {
+      q: 'Find the domain of ' + m('y = log₃(x − 4)') + '.',
+      steps: [
+        ['The argument must be positive.', ''],
+        [m('x − 4 > 0'), ''],
+        [m('x > 4'), '']
+      ],
+      ans: m('x > 4')
+    }
+  ],
+  modelNote: 'Say each logarithm aloud as a question — “two to what power gives eight?”',
+  interactive: {
+    type: 'graphTransform',
+    title: 'The logarithmic curve',
+    hint: 'Shift it and watch the vertical asymptote move.'
+  },
+  quiz: [
+    { q: m('log₂ 16') + ' is:', a: [m('2'), m('4'), m('8'), m('32')], c: 1, why: m('2⁴ = 16') + '.' },
+    { q: m('log_a 1') + ' is:', a: [m('0'), m('1'), m('a'), 'undefined'], c: 0, why: m('a⁰ = 1') + '.' },
+    { q: 'The domain of ' + m('y = log_a x') + ' is:', a: [m('ℝ'), m('x > 0'), m('x ≥ 0'), m('x ≠ 0')], c: 1, why: 'No power is negative or zero.' },
+    { q: m('y = log_a x') + ' passes through:', a: [m('(0, 1)'), m('(1, 0)'), m('(0, 0)'), m('(1, 1)')], c: 1, why: m('log_a 1 = 0') + '.' },
+    { q: m('a^(log_a 7)') + ' equals:', a: [m('a'), m('7'), m('log_a 7'), m('1')], c: 1, why: 'The fundamental identity.' }
+  ],
+  practice: {
+    easy: [
+      [m('log₂ 8'), m('3')],
+      [m('log₃ 9'), m('2')],
+      [m('log₅ 1'), m('0')],
+      [m('log₇ 7'), m('1')],
+      [m('lg 100'), m('2')],
+      [m('log₂ ' + f('1', '4')), m('−2')],
+      [m('log₉ 3'), m(f('1', '2'))]
+    ],
+    med: [
+      [m('log₃ 81'), m('4')],
+      [m('log₅ ' + f('1', '125')), m('−3')],
+      [m('log₈ 2'), m(f('1', '3'))],
+      ['Solve ' + m('log₂ x = 6'), m('x = 64')],
+      ['Solve ' + m('log_x 49 = 2'), m('x = 7')],
+      ['Domain of ' + m('log₃(x − 4)'), m('x > 4')],
+      [m('2^(log₂ 9)'), m('9')]
+    ],
+    hard: [
+      [m('log₄ ' + f('1', '32')), m('−2.5')],
+      [m('log_(0.5) 8'), m('−3')],
+      ['Solve ' + m('log_x 8 = ' + f('3', '2')), m('x = 4')],
+      ['Domain of ' + m('log₂(x² − 9)'), m('x < −3') + ' or ' + m('x > 3')],
+      ['Domain of ' + m('log₅(6 − x) + log₅(x − 1)'), m('1 < x < 6')],
+      ['Solve ' + m('3^(log₃ 5 + 1)'), m('15')],
+      ['Explain why ' + m('log₂(−4)') + ' does not exist', 'No power of 2 is negative']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Read every logarithm aloud as a question before answering it.',
+  homework: [
+    'Evaluate ' + m('log₂ 64') + ', ' + m('log₃ ' + f('1', '27')) + ', ' + m('log₁₆ 4') + ' and ' + m('lg 0.001') + '.',
+    'Solve ' + m('log₅ x = 3') + ' and ' + m('log_x 64 = 3') + '.',
+    'Find the domain of ' + m('y = log₄(2x − 6)') + ' and of ' + m('y = log₂(x² − 4)') + '.',
+    'Sketch ' + m('y = log₂ x') + ' and ' + m('y = 2ˣ') + ' on one set of axes with the line ' + m('y = x') + '.',
+    'Explain in three sentences why the argument of a logarithm must be positive.'
+  ]
+});
+
+/* ============================== 28 ============================== */
+G10_ALG.push({
+  id: 'a10-28', stream: 'alg', grade: 10, quarter: 3, lessons: '59–60', hours: 2,
+  title: 'Transforming logarithmic expressions',
+  subtitle: 'Three laws that turn products into sums, and the change of base that lets a calculator finish the job.',
+  uz: 'Algebra 10, §3.5', uzPage: 'pp. 237–248',
+  cam: 'P2 · 2.2', camPage: 'Pure Mathematics 2 & 3, pp. 18–25', wb: 'P2 Exercise 2E',
+  objectives: [
+    'State and apply the three laws of logarithms.',
+    'Expand and condense logarithmic expressions.',
+    'Use the change-of-base formula.',
+    'Recognise and avoid the three standard misapplications.'
+  ],
+  terms: [
+    ['Law of logarithms', 'Logarifm qoidasi', 'Свойство логарифма'],
+    ['Product law', 'Ko‘paytma qoidasi', 'Логарифм произведения'],
+    ['Quotient law', 'Bo‘linma qoidasi', 'Логарифм частного'],
+    ['Power law', 'Daraja qoidasi', 'Логарифм степени'],
+    ['Change of base', 'Asosni almashtirish', 'Переход к новому основанию'],
+    ['Expand', 'Yoyish', 'Разложить'],
+    ['Condense', 'Bir logarifmga keltirish', 'Свернуть'],
+    ['Common logarithm', 'O‘nli logarifm', 'Десятичный логарифм'],
+    ['Misapplication', 'Noto‘g‘ri qo‘llash', 'Неверное применение']
+  ],
+  timing: [[12, 'The three laws'], [22, 'Expanding and condensing'], [22, 'Change of base'], [22, 'The three traps'], [20, 'Practice'], [12, 'Homework']],
+  sections: [
+    {
+      h: 'The three laws',
+      html: `${eq(m('log_a(xy) = log_a x + log_a y'), true)}
+      ${eq(m('log_a(' + f('x', 'y') + ') = log_a x − log_a y'), false)}
+      ${eq(m('log_a(xⁿ) = n · log_a x'), false)}
+      <div class="keybox"><div class="klabel">Where they come from</div>
+      A logarithm is an index, and ${m('a^m · a^n = a^(m+n)')}. Multiplying the numbers <b>adds</b> the
+      indices — so multiplying the arguments adds the logarithms. All three laws are index laws in
+      disguise.</div>
+      <p>Before calculators, this is exactly how multiplication was done: look up two logarithms, add
+      them, look the answer back up. The slide rule is a physical version of the first law.</p>`
+    },
+    {
+      h: 'Expanding and condensing',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Expanded</th></tr></thead>
+      <tbody>
+        <tr><td class="m">log(x²y³)</td><td class="m">2 log x + 3 log y</td></tr>
+        <tr><td class="m">log(${f('x', 'y²')})</td><td class="m">log x − 2 log y</td></tr>
+        <tr><td class="m">log(x${sr('y')})</td><td class="m">log x + ${f('1', '2')} log y</td></tr>
+        <tr><td class="m">log(${f('x³', sr('y'))})</td><td class="m">3 log x − ${f('1', '2')} log y</td></tr>
+      </tbody></table></div>
+      <p>Going the other way — <b>condensing</b> — is what solves equations. Coefficients become powers,
+      sums become products, differences become quotients:</p>
+      ${eq(m('2 log x + log 3 − log y = log ' + f('3x²', 'y')), true)}`
+    },
+    {
+      h: 'Change of base',
+      html: `${eq(m('log_a b = ' + f('log_c b', 'log_c a')), true)}
+      <p>Any convenient base ${m('c')} may be used — usually ${m('10')} or ${m('e')}, because those are
+      the two on a calculator:</p>
+      ${eq(m('log₂ 10 = ' + f('lg 10', 'lg 2') + ' = ' + f('1', '0.30103') + ' ≈ 3.32'), false)}
+      <p>Two useful special cases follow at once:</p>
+      ${eq(m('log_a b = ' + f('1', 'log_b a')) + '     ' + m('log_(aⁿ) b = ' + f('1', 'n') + ' log_a b'), true)}`
+    },
+    {
+      h: 'The three traps',
+      html: `<div class="warn"><span class="wl">Trap 1</span>
+      ${m('log(x + y)')} is <b>not</b> ${m('log x + log y')}. There is no law for the logarithm of a sum.
+      Test it: ${m('lg(10 + 10) = lg 20 ≈ 1.3')}, but ${m('lg 10 + lg 10 = 2')}.</div>
+      <div class="warn"><span class="wl">Trap 2</span>
+      ${m(f('log x', 'log y'))} is <b>not</b> ${m('log(' + f('x', 'y') + ')')}. The quotient law applies to
+      the logarithm <b>of</b> a quotient, not to a quotient <b>of</b> logarithms.</div>
+      <div class="warn"><span class="wl">Trap 3</span>
+      ${m('(log x)²')} is not ${m('log(x²)')}. The first is a logarithm squared; the second is
+      ${m('2 log x')}. Watch where the bracket is.</div>
+      <p>These three account for almost every wrong answer in the topic. Read the expression, decide
+      which law <b>could</b> apply, and if none does, leave it alone.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Expand ' + m('log₂ ' + f('8x³', sr('y'))) + '.',
+      steps: [
+        [m('log₂ 8 + log₂ x³ − log₂ ' + sr('y')), ''],
+        [m('= 3 + 3 log₂ x − ' + f('1', '2') + ' log₂ y'), '']
+      ],
+      ans: m('3 + 3 log₂ x − ' + f('1', '2') + ' log₂ y')
+    },
+    {
+      q: 'Condense ' + m('3 log x − 2 log y + ' + f('1', '2') + ' log z') + '.',
+      steps: [
+        [m('log x³ − log y² + log ' + sr('z')), ''],
+        [m('= log ' + f('x³' + sr('z'), 'y²')), '']
+      ],
+      ans: m('log ' + f('x³' + sr('z'), 'y²'))
+    },
+    {
+      q: 'Given ' + m('lg 2 ≈ 0.301') + ', find ' + m('log₂ 5') + '.',
+      steps: [
+        [m('lg 5 = lg ' + f('10', '2') + ' = 1 − 0.301 = 0.699'), ''],
+        [m('log₂ 5 = ' + f('lg 5', 'lg 2') + ' = ' + f('0.699', '0.301')), ''],
+        [m('≈ 2.32'), '']
+      ],
+      ans: m('≈ 2.32')
+    }
+  ],
+  modelNote: 'Test every "law" a learner invents on numbers before accepting it.',
+  interactive: {
+    type: 'quiz',
+    title: 'Is that a law?',
+    hint: 'If in doubt, test it with numbers.',
+    items: [
+      { q: m('log(xy)') + ' equals:', a: [m('log x · log y'), m('log x + log y'), m('log x − log y'), m('(log x)(log y)')], c: 1, why: 'The product law.' },
+      { q: m('log(x + y)') + ' equals:', a: [m('log x + log y'), m('log x · log y'), 'none of these', m('log x − log y')], c: 2, why: 'There is no such law.' },
+      { q: m('log(x⁵)') + ' equals:', a: [m('5 log x'), m('(log x)⁵'), m('log 5 + log x'), m(f('log x', '5'))], c: 0, why: 'The power law.' },
+      { q: m(f('log x', 'log y')) + ' equals:', a: [m('log(' + f('x', 'y') + ')'), m('log x − log y'), m('log_y x'), m('log x · log y')], c: 2, why: 'Change of base — not the quotient law.' },
+      { q: m('log_a b') + ' in base 10:', a: [m(f('lg a', 'lg b')), m(f('lg b', 'lg a')), m('lg b − lg a'), m('lg(ab)')], c: 1, why: 'New over old.' },
+      { q: m('(log x)²') + ' equals:', a: [m('2 log x'), m('log(x²)'), 'neither', m('log x + log x')], c: 2, why: 'It is the square of a logarithm.' }
+    ]
+  },
+  quiz: [
+    { q: m('log_a x + log_a y') + ' equals:', a: [m('log_a(x + y)'), m('log_a(xy)'), m('log_a(' + f('x', 'y') + ')'), m('2log_a x')], c: 1, why: 'The product law.' },
+    { q: m('3 log x') + ' equals:', a: [m('log 3x'), m('log x³'), m('(log x)³'), m('log 3 + log x')], c: 1, why: 'The power law backwards.' },
+    { q: m('log₅ 25 − log₅ 5') + ' equals:', a: [m('1'), m('5'), m('20'), m('log₅ 20')], c: 0, why: m('2 − 1') + '.' },
+    { q: 'Change of base ' + m('log_a b') + ' is:', a: [m(f('log_c a', 'log_c b')), m(f('log_c b', 'log_c a')), m('log_c b · log_c a'), m('log_c(ab)')], c: 1, why: 'Argument over base.' }
+  ],
+  practice: {
+    easy: [
+      [m('log₂ 4 + log₂ 8'), m('5')],
+      [m('log₃ 27 − log₃ 3'), m('2')],
+      [m('log₂ 2⁵'), m('5')],
+      ['Expand ' + m('log(xy)'), m('log x + log y')],
+      ['Expand ' + m('log(x³)'), m('3 log x')],
+      ['Condense ' + m('log 2 + log 5'), m('log 10 = 1')],
+      ['Condense ' + m('2 log x'), m('log x²')]
+    ],
+    med: [
+      ['Expand ' + m('log₂ ' + f('8x³', sr('y'))), m('3 + 3log₂x − ' + f('1', '2') + 'log₂y')],
+      ['Condense ' + m('3 log x − 2 log y'), m('log ' + f('x³', 'y²'))],
+      [m('lg 4 + lg 25'), m('2')],
+      [m('log₆ 4 + log₆ 9'), m('2')],
+      [m('log₂ 10') + ' given ' + m('lg 2 = 0.301'), m('≈ 3.32')],
+      [m('log₂ 5') + ' given ' + m('lg 2 = 0.301'), m('≈ 2.32')],
+      [m('log₉ 27'), m('1.5')]
+    ],
+    hard: [
+      ['Simplify ' + m('log₂ 3 · log₃ 8'), m('3')],
+      ['Simplify ' + m(f('1', 'log₂ 6') + ' + ' + f('1', 'log₃ 6')), m('1')],
+      ['Given ' + m('lg 2 = a') + ' and ' + m('lg 3 = b') + ', express ' + m('lg 12'), m('2a + b')],
+      ['Same: express ' + m('lg 1.5'), m('b − a')],
+      ['Simplify ' + m('log₅ 2 · log₄ 25'), m('1')],
+      ['Solve ' + m('log₂ x + log₂(x − 2) = 3'), m('x = 4')],
+      ['Show ' + m('log_a b · log_b a = 1'), 'Change of base twice']
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Test any rule you are unsure of on actual numbers first.',
+  homework: [
+    'Expand ' + m('log₃ ' + f('9x⁴', 'y²')) + ' and ' + m('lg(x' + sr('y') + ')') + '.',
+    'Condense ' + m('4 log x + ' + f('1', '2') + ' log y − 3 log z') + '.',
+    'Evaluate ' + m('log₂ 6 + log₂ ' + f('8', '3')) + ' and ' + m('lg 50 + lg 2') + '.',
+    'Given ' + m('lg 2 = 0.301') + ' and ' + m('lg 3 = 0.477') + ', find ' + m('lg 6') + ', ' + m('lg 1.5') + ' and ' + m('log₃ 2') + '.',
+    'Show that ' + m('log_a b · log_b c · log_c a = 1') + '.',
+    'Give a numerical counterexample to each of the three traps.'
+  ]
+});
+
+/* ============================== 29 ============================== */
+G10_ALG.push({
+  id: 'a10-29', stream: 'alg', grade: 10, quarter: 3, lessons: '61–62', hours: 2,
+  title: 'Logarithmic equations',
+  subtitle: 'The domain first, the laws second, the check last — and no step in a different order.',
+  uz: 'Algebra 10, §3.6', uzPage: 'pp. 249–260',
+  cam: 'P2 · 2.4', camPage: 'Pure Mathematics 2 & 3, pp. 39–44', wb: 'P2 Exercise 2F',
+  objectives: [
+    'State the domain of a logarithmic equation before solving it.',
+    'Solve log_a f(x) = log_a g(x) by equating arguments.',
+    'Solve equations by converting to exponential form.',
+    'Reject roots that fall outside the domain.'
+  ],
+  terms: [
+    ['Logarithmic equation', 'Logarifmik tenglama', 'Логарифмическое уравнение'],
+    ['Domain of definition', 'Aniqlanish sohasi', 'Область допустимых значений'],
+    ['Equating arguments', 'Argumentlarni tenglashtirish', 'Приравнивание аргументов'],
+    ['Exponential form', 'Ko‘rsatkichli shakl', 'Показательная форма'],
+    ['Extraneous root', 'Chet ildiz', 'Посторонний корень'],
+    ['Condensing', 'Bir logarifmga keltirish', 'Свёртывание'],
+    ['Substitution', 'Almashtirish', 'Замена'],
+    ['Verification', 'Tekshirish', 'Проверка']
+  ],
+  timing: [[12, 'The domain first'], [22, 'Equating arguments'], [22, 'Exponential form'], [22, 'Substitution'], [20, 'Practice'], [12, 'Homework']],
+  sections: [
+    {
+      h: 'The domain first',
+      html: `<div class="keybox"><div class="klabel">Every argument must be positive</div>
+      Before any algebra, write the conditions. For ${m('log₂(x − 1) + log₂(x + 2) = 2')}:
+      ${m('x − 1 > 0')} and ${m('x + 2 > 0')}, so ${m('x > 1')}.</div>
+      <p>Condensing the two logarithms into ${m('log₂[(x−1)(x+2)]')} <b>widens</b> the domain — the
+      product is also positive when both factors are negative. That is exactly where extraneous roots
+      come from, and the domain line written first is what removes them.</p>
+      <div class="warn"><span class="wl">The condensing step is not reversible</span>
+      ${m('log A + log B = log(AB)')} is true only where both ${m('A')} and ${m('B')} are positive.
+      Used left to right in an equation, it is a one-way street.</div>`
+    },
+    {
+      h: 'Equating arguments',
+      html: `${eq(m('log_a f(x) = log_a g(x)   ⇒   f(x) = g(x)'), true)}
+      <p>Valid because the logarithm is one-to-one — the same property that solved exponential
+      equations, used in the other direction.</p>
+      ${eq(m('log₃(2x − 1) = log₃(x + 4)  ⇒  2x − 1 = x + 4  ⇒  x = 5'), false)}
+      <p>Check: ${m('2(5) − 1 = 9 > 0')} and ${m('5 + 4 = 9 > 0')} ✓.</p>`
+    },
+    {
+      h: 'Converting to exponential form',
+      html: `<p>When one side is a number rather than a logarithm, use the definition:</p>
+      ${eq(m('log_a f(x) = c   ⇒   f(x) = a^c'), true)}
+      ${eq(m('log₂(x − 1) + log₂(x + 2) = 2  ⇒  log₂[(x−1)(x+2)] = 2  ⇒  (x−1)(x+2) = 4'), false)}
+      <p>So ${m('x² + x − 6 = 0')}, giving ${m('x = 2')} or ${m('x = −3')}. The domain was ${m('x > 1')},
+      so ${m('x = −3')} is rejected and only ${m('x = 2')} survives.</p>
+      <div class="keybox"><div class="klabel">The shape of a full solution</div>
+      <b>1</b> Domain. <b>2</b> Condense to a single logarithm. <b>3</b> Convert or equate.
+      <b>4</b> Solve. <b>5</b> Reject anything outside the domain, and say why.</div>`
+    },
+    {
+      h: 'Substitution',
+      html: `<p>When the same logarithm appears twice, name it:</p>
+      ${eq(m('(lg x)² − 3 lg x + 2 = 0 ,   t = lg x'), true)}
+      <p>Then ${m('t² − 3t + 2 = 0')} gives ${m('t = 1')} or ${m('t = 2')}, so ${m('x = 10')} or
+      ${m('x = 100')}. Both are positive, so both stand.</p>
+      <p>Note that ${m('t')} here has <b>no</b> sign restriction — a logarithm may be any real number.
+      That is the opposite of the exponential substitution, and confusing the two is a common error.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('log₅(3x − 2) = 2') + '.',
+      steps: [
+        ['Domain: ' + m('3x − 2 > 0 ⇒ x > ' + f('2', '3')) + '.', ''],
+        [m('3x − 2 = 25'), ''],
+        [m('x = 9') + '. In the domain ✓', '']
+      ],
+      ans: m('x = 9')
+    },
+    {
+      q: 'Solve ' + m('log₂(x − 1) + log₂(x + 2) = 2') + '.',
+      steps: [
+        ['Domain: ' + m('x > 1') + '.', 'Both arguments positive.'],
+        [m('(x − 1)(x + 2) = 4'), ''],
+        [m('x² + x − 6 = 0 ⇒ x = 2, −3'), ''],
+        [m('x = −3') + ' fails the domain.', '']
+      ],
+      ans: m('x = 2')
+    },
+    {
+      q: 'Solve ' + m('(lg x)² − 3 lg x + 2 = 0') + '.',
+      steps: [
+        ['Domain ' + m('x > 0') + '. Let ' + m('t = lg x') + '.', 'No sign condition on ' + m('t') + '.'],
+        [m('t² − 3t + 2 = 0'), ''],
+        [m('t = 1, 2'), ''],
+        [m('x = 10') + ' or ' + m('x = 100') + '.', '']
+      ],
+      ans: m('x = 10') + ' and ' + m('x = 100')
+    }
+  ],
+  modelNote: 'Write the domain in a box at the top of the board and leave it there.',
+  interactive: {
+    type: 'quiz',
+    title: 'Domain first',
+    hint: 'Every argument must be strictly positive.',
+    items: [
+      { q: 'Domain of ' + m('log₂(x − 3) = 1') + ':', a: [m('x > 0'), m('x > 3'), m('x ≥ 3'), m('ℝ')], c: 1, why: 'Strictly positive.' },
+      { q: m('log₅(3x − 2) = 2') + ' gives:', a: [m('x = 9'), m('x = 4'), m('x = 27'), m('x = 3')], c: 0, why: m('3x − 2 = 25') + '.' },
+      { q: m('log₂(x−1) + log₂(x+2) = 2') + ' gives:', a: [m('x = 2, −3'), m('x = 2'), m('x = −3'), 'no solution'], c: 1, why: m('−3') + ' is outside the domain.' },
+      { q: 'In ' + m('t = lg x') + ' the condition on ' + m('t') + ' is:', a: [m('t > 0'), m('t ≥ 0'), 'none', m('t ≠ 0')], c: 2, why: 'A logarithm may be any real number.' },
+      { q: m('log₃(2x−1) = log₃(x+4)') + ' gives:', a: [m('x = 5'), m('x = 3'), m('x = 1'), 'no solution'], c: 0, why: 'Equate the arguments.' }
+    ]
+  },
+  quiz: [
+    { q: 'The first line of a logarithmic equation is:', a: ['the law used', 'the domain', 'the answer', 'the check'], c: 1, why: 'It decides which roots survive.' },
+    { q: m('log_a f = log_a g') + ' gives ' + m('f = g') + ' because the logarithm is:', a: ['positive', 'one-to-one', 'continuous', 'even'], c: 1, why: 'It never repeats a value.' },
+    { q: 'Condensing two logarithms:', a: ['never changes the domain', 'can widen the domain', 'narrows the domain', 'is illegal'], c: 1, why: 'A product of two negatives is positive.' },
+    { q: m('log₂ x = 5') + ' gives:', a: [m('x = 10'), m('x = 25'), m('x = 32'), m('x = 2.5')], c: 2, why: m('2⁵') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m('log₂ x = 4'), m('x = 16')],
+      ['Solve ' + m('log₃ x = 2'), m('x = 9')],
+      ['Solve ' + m('lg x = 3'), m('x = 1000')],
+      ['Solve ' + m('log₅(x + 1) = 1'), m('x = 4')],
+      ['Domain of ' + m('log₂(x − 5)'), m('x > 5')],
+      ['Solve ' + m('log₂ x = 0'), m('x = 1')],
+      ['Solve ' + m('log₄ x = ' + f('1', '2')), m('x = 2')]
+    ],
+    med: [
+      ['Solve ' + m('log₅(3x − 2) = 2'), m('x = 9')],
+      ['Solve ' + m('log₃(2x − 1) = log₃(x + 4)'), m('x = 5')],
+      ['Solve ' + m('log₂(x − 1) + log₂(x + 2) = 2'), m('x = 2')],
+      ['Solve ' + m('lg x + lg(x − 3) = 1'), m('x = 5')],
+      ['Solve ' + m('(lg x)² − 3 lg x + 2 = 0'), m('x = 10, 100')],
+      ['Solve ' + m('log₂(x + 3) − log₂(x − 1) = 2'), m('x = ' + f('7', '3'))],
+      ['Solve ' + m('log₃(x²) = 4'), m('x = ±9')]
+    ],
+    hard: [
+      ['Solve ' + m('log₂(x − 2) + log₂(x − 3) = 1'), m('x = 4')],
+      ['Solve ' + m('(log₂ x)² − log₂ x − 6 = 0'), m('x = 8') + ' or ' + m('x = ' + f('1', '4'))],
+      ['Solve ' + m('lg(x + 6) − ' + f('1', '2') + ' lg(2x − 3) = 2 − lg 25'), m('x = 6')],
+      ['Solve ' + m('log_x 4 + log_x 16 = 3'), m('x = 4')],
+      ['Solve ' + m('log₃ x + log_x 3 = 2.5'), m('x = 9') + ' or ' + m('x = ' + sr('3'))],
+      ['Solve ' + m('lg² x − lg x³ + 2 = 0'), m('x = 10, 100')],
+      ['Explain why ' + m('lg x + lg(x − 3) = 1') + ' has only one root', m('x = −2') + ' fails the domain']
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Open every solution with the domain, and close it with the rejection.',
+  homework: [
+    'Solve ' + m('log₄(2x + 3) = 2') + '.',
+    'Solve ' + m('log₂(x + 5) = log₂(3x − 1)') + '.',
+    'Solve ' + m('lg x + lg(x − 15) = 2') + '.',
+    'Solve ' + m('(log₃ x)² − 4 log₃ x + 3 = 0') + '.',
+    'Solve ' + m('log₅(x + 4) − log₅(x − 2) = 1') + '.',
+    'Explain in three sentences why condensing two logarithms can create a root the original never had.'
+  ]
+});
+
+/* ============================== 30 ============================== */
+G10_ALG.push({
+  id: 'a10-30', stream: 'alg', grade: 10, quarter: 3, lessons: '63–64', hours: 2,
+  title: 'Systems of exponential and logarithmic equations',
+  subtitle: 'Two equations, one substitution — and the domain that has to survive both.',
+  uz: 'Algebra 10, §3.7', uzPage: 'pp. 261–272',
+  cam: 'Extension', camPage: 'Pure Mathematics 2 & 3, pp. 39–44', wb: 'P2 Exercise 2F',
+  objectives: [
+    'Solve a system by substituting u = aˣ and v = aʸ.',
+    'Solve a system by substituting u = log x and v = log y.',
+    'Track the domain conditions of both equations.',
+    'Check every candidate pair in the original system.'
+  ],
+  terms: [
+    ['System of equations', 'Tenglamalar sistemasi', 'Система уравнений'],
+    ['Auxiliary variables', 'Yordamchi o‘zgaruvchilar', 'Вспомогательные переменные'],
+    ['Combined domain', 'Umumiy aniqlanish sohasi', 'Общая область определения'],
+    ['Back-substitution', 'Teskari almashtirish', 'Обратная подстановка'],
+    ['Symmetric system', 'Simmetrik sistema', 'Симметричная система'],
+    ['Elimination', 'Yo‘qotish', 'Исключение'],
+    ['Rejected pair', 'Rad etilgan juftlik', 'Отброшенная пара'],
+    ['Verification', 'Tekshirish', 'Проверка']
+  ],
+  timing: [[10, 'What is new'], [24, 'Exponential systems'], [24, 'Logarithmic systems'], [22, 'Mixed systems'], [20, 'Practice'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'What is new, and what is not',
+      html: `<p>Nothing about the algebra is new: the systems are solved by substitution and elimination
+      exactly as in Quarter II. What is new is the bookkeeping — two domains, two substitutions and two
+      sign conditions to keep straight.</p>
+      <div class="keybox"><div class="klabel">Two substitutions, two different conditions</div>
+      ${m('u = aˣ')} carries ${m('u > 0')}. ${m('u = log x')} carries <b>no</b> condition on ${m('u')},
+      but the original ${m('x')} must satisfy ${m('x > 0')}. Write the right one down.</div>`
+    },
+    {
+      h: 'Exponential systems',
+      html: `${eq(m('2ˣ + 3ʸ = 17') + '     ' + m('2^(x+2) − 3^(y+1) = 5'), true)}
+      <p>Put ${m('u = 2ˣ > 0')} and ${m('v = 3ʸ > 0')}. The second equation is
+      ${m('4u − 3v = 5')}, so with ${m('u + v = 17')}:</p>
+      ${eq(m('4u − 3(17 − u) = 5  ⇒  7u = 56  ⇒  u = 8, v = 9'), false)}
+      <p>Both positive, so ${m('2ˣ = 8')} gives ${m('x = 3')} and ${m('3ʸ = 9')} gives ${m('y = 2')}.</p>
+      <div class="warn"><span class="wl">Expand the indices first</span>
+      ${m('2^(x+2) = 4 · 2ˣ')}, not ${m('2ˣ + 4')}. Every index law is applied before the substitution,
+      not after.</div>`
+    },
+    {
+      h: 'Logarithmic systems',
+      html: `${eq(m('lg x + lg y = 3') + '     ' + m('lg x − lg y = 1'), true)}
+      <p>Domain ${m('x > 0')}, ${m('y > 0')}. Adding gives ${m('2 lg x = 4')}, so ${m('lg x = 2')} and
+      ${m('x = 100')}; then ${m('lg y = 1')} and ${m('y = 10')}. Both positive ✓.</p>
+      <p>An equivalent route condenses first: ${m('lg(xy) = 3')} gives ${m('xy = 1000')}, and
+      ${m('lg' + f('x', 'y') + ' = 1')} gives ${m(f('x', 'y') + ' = 10')} — the sum-and-quotient system
+      of Quarter II.</p>`
+    },
+    {
+      h: 'Mixed systems',
+      html: `<p>When one equation is exponential and the other logarithmic, solve the simpler one for a
+      variable and substitute:</p>
+      ${eq(m('log₂ x + y = 5') + '     ' + m('2ʸ = x'), true)}
+      <p>The second gives ${m('y = log₂ x')}, so the first is ${m('2 log₂ x = 5')} and
+      ${m('log₂ x = 2.5')}, giving ${m('x = 2^2.5 = 4' + sr('2') + ' ≈ 5.66')} and ${m('y = 2.5')}.</p>
+      <div class="keybox"><div class="klabel">Look for the link</div>
+      The two equations almost always share a structure — the same base, or one is the other rearranged.
+      Finding that link is the step; everything after it is Grade 9 algebra.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('2ˣ + 3ʸ = 17') + ', ' + m('2^(x+2) − 3^(y+1) = 5') + '.',
+      steps: [
+        [m('u = 2ˣ > 0, v = 3ʸ > 0'), m('u + v = 17, 4u − 3v = 5')],
+        [m('4u − 51 + 3u = 5 ⇒ u = 8'), ''],
+        [m('v = 9'), ''],
+        [m('x = 3, y = 2'), '']
+      ],
+      ans: m('(3, 2)')
+    },
+    {
+      q: 'Solve ' + m('lg x + lg y = 3') + ', ' + m('lg x − lg y = 1') + '.',
+      steps: [
+        ['Domain ' + m('x, y > 0') + '.', ''],
+        ['Add: ' + m('2 lg x = 4 ⇒ lg x = 2') + '.', ''],
+        [m('x = 100'), ''],
+        [m('lg y = 1 ⇒ y = 10'), '']
+      ],
+      ans: m('(100, 10)')
+    },
+    {
+      q: 'Solve ' + m('x + y = 10') + ', ' + m('lg x + lg y = 1') + '.',
+      steps: [
+        ['Domain ' + m('x, y > 0') + '.', ''],
+        [m('lg(xy) = 1 ⇒ xy = 10'), ''],
+        [m('t² − 10t + 10 = 0'), ''],
+        [m('t = 5 ± ' + sr('15')), 'Both positive ✓']
+      ],
+      ans: m('(5 + ' + sr('15') + ', 5 − ' + sr('15') + ')') + ' and the reverse'
+    }
+  ],
+  modelNote: 'Write both domains on the board before either substitution.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which substitution?',
+    hint: 'Exponentials need ' + m('u > 0') + '; logarithms need ' + m('x > 0') + '.',
+    items: [
+      { q: 'For ' + m('2ˣ + 3ʸ = 17') + ' put:', a: [m('u = x, v = y'), m('u = 2ˣ, v = 3ʸ'), m('u = lg x'), 'nothing'], c: 1, why: 'It linearises the system.' },
+      { q: 'The condition on that ' + m('u') + ' is:', a: [m('u ≥ 0'), m('u > 0'), 'none', m('u ≠ 1')], c: 1, why: 'An exponential is strictly positive.' },
+      { q: m('2^(x+2)') + ' equals:', a: [m('2ˣ + 4'), m('4 · 2ˣ'), m('2ˣ · 2'), m('(2ˣ)²')], c: 1, why: m('2ˣ · 2² ') + '.' },
+      { q: 'For ' + m('lg x + lg y = 3') + ' the condition is:', a: [m('x, y > 0'), m('x, y ≥ 0'), m('x + y > 0'), 'none'], c: 0, why: 'Both arguments positive.' },
+      { q: m('lg x + lg y = 3') + ' means:', a: [m('x + y = 1000'), m('xy = 1000'), m('xy = 3'), m('x + y = 3')], c: 1, why: 'The product law.' }
+    ]
+  },
+  quiz: [
+    { q: m('u = aˣ') + ' carries:', a: [m('u > 0'), m('u ≥ 0'), 'no condition', m('u ≠ 0')], c: 0, why: 'Strictly positive.' },
+    { q: m('u = lg x') + ' carries:', a: [m('u > 0'), 'no condition on ' + m('u'), m('u ≥ 0'), m('u ≠ 1')], c: 1, why: 'A logarithm is any real number.' },
+    { q: m('3^(y+1)') + ' equals:', a: [m('3ʸ + 3'), m('3 · 3ʸ'), m('(3ʸ)³'), m('3ʸ + 1')], c: 1, why: 'Index law.' },
+    { q: m('lg x − lg y = 1') + ' means:', a: [m('x − y = 10'), m(f('x', 'y') + ' = 10'), m(f('x', 'y') + ' = 1'), m('x − y = 1')], c: 1, why: 'The quotient law.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m('2ˣ = 8, y = x + 1'), m('(3, 4)')],
+      ['Solve ' + m('lg x = 2, y = 2x'), m('(100, 200)')],
+      ['Write ' + m('2^(x+3)') + ' in terms of ' + m('2ˣ'), m('8 · 2ˣ')],
+      ['Write ' + m('3^(y−1)') + ' in terms of ' + m('3ʸ'), m(f('3ʸ', '3'))],
+      [m('lg x + lg y') + ' condensed', m('lg(xy)')],
+      [m('lg x − lg y') + ' condensed', m('lg' + f('x', 'y'))],
+      ['Condition for ' + m('u = 5ˣ'), m('u > 0')]
+    ],
+    med: [
+      ['Solve ' + m('2ˣ + 3ʸ = 17, 2^(x+2) − 3^(y+1) = 5'), m('(3, 2)')],
+      ['Solve ' + m('lg x + lg y = 3, lg x − lg y = 1'), m('(100, 10)')],
+      ['Solve ' + m('x + y = 10, lg x + lg y = 1'), m('(5 ± ' + sr('15') + ')') + ' pairs'],
+      ['Solve ' + m('2ˣ · 3ʸ = 12, 2ˣ + 3ʸ = 7'), m('(2, 1)') + ' or ' + m('(log₂3, log₃4)')],
+      ['Solve ' + m('log₂ x + y = 5, 2ʸ = x'), m('x = 4' + sr('2') + ', y = 2.5')],
+      ['Solve ' + m('3ˣ = 9ʸ, x + y = 3'), m('(2, 1)')],
+      ['Solve ' + m('lg x = 2 lg y, x + y = 12'), m('(9, 3)')]
+    ],
+    hard: [
+      ['Solve ' + m('4ˣ + 4ʸ = 20, x + y = 3'), m('(1, 2)') + ' and ' + m('(2, 1)')],
+      ['Solve ' + m('lg(x + y) = 1, lg x − lg y = lg 4'), m('(8, 2)')],
+      ['Solve ' + m('2ˣ + 2ʸ = 6, 2^(x+y) = 8'), m('(1, 2)') + ' and ' + m('(2, 1)')],
+      ['Solve ' + m('log₂ x + log₂ y = 5, x − y = 6'), m('(8, 4)')],
+      ['Solve ' + m('xʸ = 8, log₂ x · y = 3'), 'Any ' + m('x, y') + ' with ' + m('y log₂ x = 3')],
+      ['Solve ' + m('9ˣ + 9ʸ = 90, x + y = 2'), m('(0, 2)') + ' and ' + m('(2, 0)')],
+      ['Explain why a pair with ' + m('u = −2') + ' is rejected', m('aˣ') + ' is never negative']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Both domains on the first line; both ordered pairs at the end where the system is symmetric.',
+  homework: [
+    'Solve ' + m('3ˣ + 2ʸ = 17') + ', ' + m('3^(x+1) − 2^(y+2) = 7') + '.',
+    'Solve ' + m('lg x + lg y = 4') + ', ' + m('lg x − lg y = 2') + '.',
+    'Solve ' + m('x + y = 20') + ', ' + m('lg x + lg y = 2') + '.',
+    'Solve ' + m('2ˣ = 4ʸ') + ', ' + m('x + y = 6') + '.',
+    'Explain in three sentences why ' + m('u = aˣ') + ' needs a sign condition but ' + m('u = lg x') + ' does not.'
+  ]
+});
+
+/* ============================== 31 ============================== */
+G10_ALG.push({
+  id: 'a10-31', stream: 'alg', grade: 10, quarter: 3, lessons: '65–66', hours: 2,
+  title: 'Logarithmic inequalities',
+  subtitle: 'Domain, then direction, then solve — and the intersection at the end that catches everything.',
+  uz: 'Algebra 10, §3.8', uzPage: 'pp. 273–284',
+  cam: 'P2 · 2.4', camPage: 'Pure Mathematics 2 & 3, pp. 39–44', wb: 'P2 Exercise 2G',
+  objectives: [
+    'State the domain of a logarithmic inequality before solving.',
+    'Use monotonicity to compare arguments, reversing when the base is below 1.',
+    'Intersect the solution with the domain.',
+    'Solve inequalities that become quadratic after a substitution.'
+  ],
+  terms: [
+    ['Logarithmic inequality', 'Logarifmik tengsizlik', 'Логарифмическое неравенство'],
+    ['Domain of definition', 'Aniqlanish sohasi', 'Область допустимых значений'],
+    ['Monotonicity', 'Monotonlik', 'Монотонность'],
+    ['Reversing the sign', 'Ishorani almashtirish', 'Смена знака'],
+    ['Intersection with the domain', 'Soha bilan kesishma', 'Пересечение с ОДЗ'],
+    ['Substitution', 'Almashtirish', 'Замена'],
+    ['Solution set', 'Yechimlar to‘plami', 'Множество решений'],
+    ['Interval notation', 'Oraliq belgilanishi', 'Интервальная запись']
+  ],
+  timing: [[12, 'Three steps, in order'], [22, 'Base above 1'], [22, 'Base below 1'], [22, 'Substitution'], [20, 'Practice'], [12, 'Homework']],
+  sections: [
+    {
+      h: 'Three steps, in order',
+      html: `<div class="keybox"><div class="klabel">Never change the order</div>
+      <b>1</b> Write the domain — every argument strictly positive.
+      <b>2</b> Compare the arguments, reversing the sign if the base is under 1.
+      <b>3</b> <b>Intersect</b> the result with the domain.</div>
+      <p>Step 3 is not optional and is not a check: it is where a large part of the answer is decided.
+      An inequality solved correctly and not intersected is usually wrong.</p>`
+    },
+    {
+      h: 'Base above 1',
+      html: `${eq(m('a > 1:   log_a f > log_a g   ⇔   f > g > 0'), true)}
+      <p><b>Example.</b> ${m('log₂(x − 1) < 3')}.</p>
+      <ol>
+        <li>Domain: ${m('x > 1')}.</li>
+        <li>${m('log₂(x − 1) < log₂ 8')}, base ${m('> 1')}, so ${m('x − 1 < 8')} and ${m('x < 9')}.</li>
+        <li>Intersect: ${m('1 < x < 9')}.</li>
+      </ol>
+      <p>Without step 3 the answer would be ${m('x < 9')}, which includes ${m('x = 0')} — where the
+      expression does not exist.</p>`
+    },
+    {
+      h: 'Base below 1',
+      html: `${eq(m('0 < a < 1:   log_a f > log_a g   ⇔   0 < f < g'), true)}
+      <p><b>Example.</b> ${m('log_(1/3)(x + 2) > −1')}.</p>
+      <ol>
+        <li>Domain: ${m('x > −2')}.</li>
+        <li>${m('−1 = log_(1/3) 3')}. Base ${m('< 1')}, so reverse: ${m('x + 2 < 3')} and ${m('x < 1')}.</li>
+        <li>Intersect: ${m('−2 < x < 1')}.</li>
+      </ol>
+      <div class="warn"><span class="wl">Two things reverse, not one</span>
+      A base under 1 reverses the comparison of the arguments — and if the inequality is later
+      multiplied by a negative or divided, that reverses again. Do one reversal at a time, and say
+      out loud which one you are doing.</div>`
+    },
+    {
+      h: 'Substitution',
+      html: `<p>With ${m('t = log_a x')} (no sign condition) the inequality becomes an ordinary quadratic
+      one:</p>
+      ${eq(m('(lg x)² − 3 lg x + 2 < 0 ,  t = lg x  ⇒  1 < t < 2'), true)}
+      ${eq(m('1 < lg x < 2  ⇒  10 < x < 100'), false)}
+      <p>The base ${m('10')} exceeds 1, so the order is preserved. With a base under 1 the whole double
+      inequality would flip.</p>
+      <div class="keybox"><div class="klabel">The three sources of error, in order of frequency</div>
+      forgetting the intersection · forgetting the reversal · forgetting that ${m('t')} has no sign
+      condition. Address them in that order.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('log₂(x − 1) < 3') + '.',
+      steps: [
+        ['Domain ' + m('x > 1') + '.', ''],
+        [m('x − 1 < 8'), 'Base ' + m('> 1') + '.'],
+        [m('x < 9'), ''],
+        ['Intersect.', '']
+      ],
+      ans: m('1 < x < 9')
+    },
+    {
+      q: 'Solve ' + m('log_(1/3)(x + 2) > −1') + '.',
+      steps: [
+        ['Domain ' + m('x > −2') + '.', ''],
+        [m('−1 = log_(1/3) 3'), ''],
+        ['Base ' + m('< 1') + ': reverse. ' + m('x + 2 < 3') + '.', ''],
+        [m('x < 1') + '; intersect.', '']
+      ],
+      ans: m('−2 < x < 1')
+    },
+    {
+      q: 'Solve ' + m('lg x + lg(x − 3) < 1') + '.',
+      steps: [
+        ['Domain ' + m('x > 3') + '.', 'Both arguments.'],
+        [m('lg[x(x − 3)] < lg 10'), ''],
+        [m('x² − 3x − 10 < 0 ⇒ −2 < x < 5'), ''],
+        ['Intersect with ' + m('x > 3') + '.', '']
+      ],
+      ans: m('3 < x < 5')
+    }
+  ],
+  modelNote: 'Draw two number lines — the domain and the solution — and shade the overlap.',
+  interactive: {
+    type: 'inequalityLine',
+    title: 'Domain and solution',
+    hint: 'The answer is the overlap of the two shaded regions.'
+  },
+  quiz: [
+    { q: 'The first step is:', a: ['compare arguments', 'write the domain', 'substitute', 'reverse'], c: 1, why: 'It bounds the answer.' },
+    { q: m('log₂(x − 1) < 3') + ' gives:', a: [m('x < 9'), m('1 < x < 9'), m('x > 1'), m('x < 8')], c: 1, why: 'Intersect with the domain.' },
+    { q: 'A base under 1:', a: ['keeps the sign', 'reverses the sign', 'makes it undefined', 'doubles it'], c: 1, why: 'The function decreases.' },
+    { q: 'In ' + m('t = lg x') + ' the condition on ' + m('t') + ' is:', a: [m('t > 0'), 'none', m('t ≥ 0'), m('t ≠ 0')], c: 1, why: 'A logarithm takes any real value.' },
+    { q: m('lg x < 2') + ' gives:', a: [m('x < 100'), m('0 < x < 100'), m('x > 100'), m('x < 2')], c: 1, why: 'With the domain ' + m('x > 0') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m('lg x > 1'), m('x > 10')],
+      ['Solve ' + m('lg x < 2'), m('0 < x < 100')],
+      ['Solve ' + m('log₂ x > 3'), m('x > 8')],
+      ['Solve ' + m('log₂ x < 0'), m('0 < x < 1')],
+      ['Domain of ' + m('log₃(x − 5)'), m('x > 5')],
+      ['Solve ' + m('log₅ x ≥ 1'), m('x ≥ 5')],
+      ['Solve ' + m('log_(1/2) x > 0'), m('0 < x < 1')]
+    ],
+    med: [
+      ['Solve ' + m('log₂(x − 1) < 3'), m('1 < x < 9')],
+      ['Solve ' + m('log₃(2x + 1) > 2'), m('x > 4')],
+      ['Solve ' + m('log_(1/3)(x + 2) > −1'), m('−2 < x < 1')],
+      ['Solve ' + m('lg x + lg(x − 3) < 1'), m('3 < x < 5')],
+      ['Solve ' + m('log₂(x + 3) ≤ 4'), m('−3 < x ≤ 13')],
+      ['Solve ' + m('log_(0.5)(x − 1) ≥ −2'), m('1 < x ≤ 5')],
+      ['Solve ' + m('log₄(x²) < 1'), m('−2 < x < 2') + ', ' + m('x ≠ 0')]
+    ],
+    hard: [
+      ['Solve ' + m('(lg x)² − 3 lg x + 2 < 0'), m('10 < x < 100')],
+      ['Solve ' + m('(log₂ x)² − log₂ x − 6 ≥ 0'), m('0 < x ≤ ' + f('1', '4')) + ' or ' + m('x ≥ 8')],
+      ['Solve ' + m('log₂(x − 1) + log₂(x + 1) < 3'), m('1 < x < 3')],
+      ['Solve ' + m('log_(1/2)(x² − 3x) ≥ −2'), m('−1 ≤ x < 0') + ' or ' + m('3 < x ≤ 4')],
+      ['Solve ' + m('log₃(x + 1) > log₃(2x − 3)'), m('1.5 < x < 4')],
+      ['Solve ' + m('lg(x − 2) < lg(4 − x)'), m('2 < x < 3')],
+      ['Explain why ' + m('log₂ x < 3') + ' is not simply ' + m('x < 8'), 'The domain ' + m('x > 0') + ' must be intersected']
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Draw the domain and the solution on the same number line every time.',
+  homework: [
+    'Solve ' + m('log₃(x − 2) < 2') + '.',
+    'Solve ' + m('log_(1/4)(x + 1) > −1') + '.',
+    'Solve ' + m('lg x + lg(x − 21) < 2') + '.',
+    'Solve ' + m('(log₃ x)² − 4 log₃ x + 3 ≤ 0') + '.',
+    'Solve ' + m('log₂(3x − 1) ≥ log₂(x + 5)') + '.',
+    'Explain in three sentences why the intersection with the domain is part of the method and not a check.'
+  ]
+});
+
+/* ============================== 32 ============================== */
+G10_ALG.push({
+  id: 'a10-32', stream: 'alg', grade: 10, quarter: 3, lessons: '67–68', hours: 2,
+  title: 'Applications of exponential and logarithmic functions',
+  subtitle: 'Compound interest, half-lives, earthquakes and sound — the places where these two functions are not optional.',
+  uz: 'Algebra 10, §3.9', uzPage: 'pp. 285–296',
+  cam: 'P2 · 2.1, 2.5', camPage: 'Pure Mathematics 2 & 3, pp. 26–32, 47–52', wb: 'P2 Exercise 2H',
+  objectives: [
+    'Model compound growth and decay, and solve for the time.',
+    'Use a logarithm to bring an unknown out of an index.',
+    'Interpret a logarithmic scale (pH, decibels, Richter).',
+    'Linearise an exponential model by taking logarithms.'
+  ],
+  terms: [
+    ['Compound interest', 'Murakkab foiz', 'Сложные проценты'],
+    ['Growth factor', 'O‘sish koeffitsienti', 'Коэффициент роста'],
+    ['Half-life', 'Yarim yemirilish davri', 'Период полураспада'],
+    ['Doubling time', 'Ikkilanish vaqti', 'Время удвоения'],
+    ['Logarithmic scale', 'Logarifmik shkala', 'Логарифмическая шкала'],
+    ['Richter scale', 'Rixter shkalasi', 'Шкала Рихтера'],
+    ['Decibel', 'Detsibel', 'Децибел'],
+    ['Linearisation', 'Chiziqlashtirish', 'Линеаризация'],
+    ['Model parameter', 'Model parametri', 'Параметр модели']
+  ],
+  timing: [[16, 'Growth, and solving for the time'], [22, 'Decay and half-life'], [22, 'Logarithmic scales'], [20, 'Linearising'], [18, 'Practice'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'Growth, and solving for the time',
+      html: `${eq(m('A = P(1 + r)ⁿ'), true)}
+      <p>${m('P')} the starting amount, ${m('r')} the rate per period as a decimal, ${m('n')} the number
+      of periods. Finding ${m('A')} is arithmetic; finding ${m('n')} needs a logarithm:</p>
+      ${eq(m('n = ' + f('lg(A/P)', 'lg(1 + r)')), true)}
+      <p><b>Example.</b> ${m('5')} million so‘m at ${m('14%')} a year. When does it double?</p>
+      ${eq(m('1.14ⁿ = 2  ⇒  n = ' + f('lg 2', 'lg 1.14') + ' = ' + f('0.3010', '0.0569') + ' ≈ 5.29') + ' years', false)}
+      <div class="keybox"><div class="klabel">Why the logarithm is needed</div>
+      The unknown is in the index. No amount of rearranging brings it down — only taking a logarithm of
+      both sides does. That is the practical reason this whole chapter exists.</div>`
+    },
+    {
+      h: 'Decay and half-life',
+      html: `${eq(m('N = N₀ · (½)^(t/h)') + '   where ' + m('h') + ' is the half-life', true)}
+      <p>Solving for ${m('t')} again needs a logarithm:</p>
+      ${eq(m('t = h · ' + f('lg(N/N₀)', 'lg 0.5')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Substance</th><th>Half-life</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td>carbon-14</td><td>${m('5730')} years</td><td>dating organic remains</td></tr>
+        <tr><td>iodine-131</td><td>${m('8')} days</td><td>medical imaging</td></tr>
+        <tr><td>caffeine in the body</td><td>about ${m('5')} hours</td><td>why coffee keeps you awake</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Logarithmic scales',
+      html: `<p>When a quantity ranges over many powers of ten, its logarithm is the readable number:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Scale</th><th>Definition</th><th>One unit means</th></tr></thead>
+      <tbody>
+        <tr><td>Richter</td><td class="m">M = lg(${f('A', 'A₀')})</td><td>${m('10')} times the amplitude</td></tr>
+        <tr><td>decibel</td><td class="m">L = 10 lg(${f('I', 'I₀')})</td><td>${m('10')} dB is ${m('10')} times the intensity</td></tr>
+        <tr><td>pH</td><td class="m">pH = −lg[H⁺]</td><td>${m('10')} times the concentration</td></tr>
+      </tbody></table></div>
+      <p>An earthquake of magnitude ${m('7')} is not slightly worse than one of ${m('6')} — it is
+      ${m('10')} times the amplitude and about ${m('32')} times the energy.</p>`
+    },
+    {
+      h: 'Linearising',
+      html: `<p>Given data believed to follow ${m('y = k · aˣ')}, take logarithms of both sides:</p>
+      ${eq(m('lg y = lg k + x · lg a'), true)}
+      <p>Plotting ${m('lg y')} against ${m('x')} gives a <b>straight line</b> of gradient ${m('lg a')}
+      and intercept ${m('lg k')}. So a ruler on the transformed plot finds both parameters — and a
+      straight plot is itself the evidence that the model is exponential.</p>
+      <p>For a power law ${m('y = k · xⁿ')}, plot ${m('lg y')} against ${m('lg x')} instead: the
+      gradient is then ${m('n')}.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: m('5') + ' million so‘m is invested at ' + m('14%') + ' a year. How long until it doubles?',
+      steps: [
+        [m('1.14ⁿ = 2'), ''],
+        [m('n lg 1.14 = lg 2'), ''],
+        [m('n = ' + f('0.3010', '0.0569')), ''],
+        [m('≈ 5.3') + ' years.', '']
+      ],
+      ans: m('≈ 5.3') + ' years'
+    },
+    {
+      q: 'A sample has half-life ' + m('8') + ' days. What percentage remains after ' + m('20') + ' days?',
+      steps: [
+        [m('(½)^(20/8) = (½)^2.5'), ''],
+        [m('= ' + f('1', '4' + sr('2')) + ' ≈ 0.1768'), ''],
+        [m('≈ 17.7%'), '']
+      ],
+      ans: m('≈ 17.7%')
+    },
+    {
+      q: 'One earthquake has magnitude ' + m('6.4') + ', another ' + m('7.9') + '. Compare their amplitudes.',
+      steps: [
+        [m('M = lg' + f('A', 'A₀')), ''],
+        [m('7.9 − 6.4 = 1.5'), ''],
+        [m('10^1.5 ≈ 31.6'), '']
+      ],
+      ans: 'About ' + m('32') + ' times greater'
+    }
+  ],
+  modelNote: 'Ask for the doubling time of any growth rate mentioned in the news.',
+  interactive: {
+    type: 'quiz',
+    title: 'Bringing the unknown down',
+    hint: 'If the unknown is in the index, take logarithms.',
+    items: [
+      { q: 'To solve ' + m('1.14ⁿ = 2') + ' you should:', a: ['divide by 1.14', 'take logarithms', 'square it', 'guess'], c: 1, why: 'The unknown is an index.' },
+      { q: m('5') + ' million at 14%: doubling time is about:', a: [m('3') + ' y', m('5.3') + ' y', m('7') + ' y', m('14') + ' y'], c: 1, why: m(f('lg 2', 'lg 1.14')) + '.' },
+      { q: 'Half-life 8 days: after 24 days there remains:', a: [m(f('1', '3')), m(f('1', '8')), m(f('1', '16')), m(f('1', '24'))], c: 1, why: 'Three half-lives.' },
+      { q: 'One Richter unit is a factor of:', a: [m('2'), m('10'), m('100'), m('32')], c: 1, why: 'It is a base-10 logarithm.' },
+      { q: 'To find ' + m('a') + ' in ' + m('y = k aˣ') + ' from data, plot:', a: [m('y') + ' vs ' + m('x'), m('lg y') + ' vs ' + m('x'), m('lg y') + ' vs ' + m('lg x'), m('y') + ' vs ' + m('lg x')], c: 1, why: 'The gradient is ' + m('lg a') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'Compound interest is modelled by:', a: [m('P + rn'), m('P(1 + r)ⁿ'), m('P · rn'), m('P + rⁿ')], c: 1, why: 'Each period multiplies.' },
+    { q: 'To bring an unknown out of an index:', a: ['divide', 'take a logarithm', 'square', 'differentiate'], c: 1, why: 'The power law of logarithms.' },
+    { q: 'Two half-lives leave:', a: [m(f('1', '2')), m(f('1', '4')), m(f('1', '3')), 'nothing'], c: 1, why: m('(½)²') + '.' },
+    { q: 'For a power law plot:', a: [m('lg y') + ' vs ' + m('x'), m('lg y') + ' vs ' + m('lg x'), m('y') + ' vs ' + m('x'), m('y') + ' vs ' + m('lg x')], c: 1, why: 'The gradient is then ' + m('n') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('1000') + ' at 10% for 3 years', m('1331')],
+      [m('2000') + ' at 5% for 2 years', m('2205')],
+      ['Half-life 4 days; fraction after 8 days', m(f('1', '4'))],
+      ['Half-life 4 days; fraction after 12 days', m(f('1', '8'))],
+      ['One Richter unit is a factor of', m('10')],
+      [m('10') + ' dB is a factor of', m('10') + ' in intensity'],
+      ['pH 4 versus pH 6: how many times more acidic?', m('100')]
+    ],
+    med: [
+      [m('5') + ' million at 14%: doubling time', m('≈ 5.3') + ' years'],
+      [m('20 000') + ' at 8%: when does it reach ' + m('50 000') + '?', m('≈ 11.9') + ' years'],
+      ['Half-life 8 days: percentage after 20 days', m('≈ 17.7%')],
+      ['Magnitudes 6.4 and 7.9: amplitude ratio', m('≈ 32')],
+      ['A population trebles in 12 years. Annual rate?', m('≈ 9.6%')],
+      ['A car falls 18% a year. When is it worth half?', m('≈ 3.5') + ' years'],
+      ['Sound at 85 dB versus 65 dB: intensity ratio', m('100')]
+    ],
+    hard: [
+      ['Carbon-14 half-life 5730 y; 30% remains. Age?', m('≈ 9950') + ' years'],
+      [m('P') + ' at ' + m('r') + ' compounded monthly: the annual growth factor', m('(1 + ' + f('r', '12') + ')¹²')],
+      [m('10%') + ' compounded monthly versus annually on ' + m('1000') + ' for 1 year', m('1104.71') + ' versus ' + m('1100')],
+      ['Data fits ' + m('y = k aˣ') + ' with ' + m('lg y') + ' line of gradient 0.3 and intercept 1. Find ' + m('k, a'), m('k = 10, a ≈ 2')],
+      ['Data fits ' + m('y = k xⁿ') + ' with ' + m('lg y') + ' vs ' + m('lg x') + ' gradient 1.5, intercept 0.6. Find ' + m('k, n'), m('n = 1.5, k ≈ 3.98')],
+      ['Show the doubling time at rate ' + m('r') + ' is about ' + m(f('70', '100r')), 'The "rule of 70" from ' + m(f('ln 2', 'r'))],
+      ['A drug halves every 5 h. What fraction remains after 24 h?', m('≈ 3.6%')]
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Every answer needs its units and a sentence in the words of the question.',
+  homework: [
+    m('8') + ' million so‘m at ' + m('12%') + ' a year. Find the value after 6 years and the doubling time.',
+    'A sample has half-life ' + m('6') + ' hours. Find the percentage remaining after ' + m('20') + ' hours.',
+    'Two earthquakes measure ' + m('5.8') + ' and ' + m('7.3') + '. Compare their amplitudes.',
+    'A population of ' + m('12 000') + ' grows ' + m('3%') + ' a year. When does it pass ' + m('20 000') + '?',
+    'Data believed to follow ' + m('y = k aˣ') + ' gives a ' + m('lg y') + ' line of gradient ' + m('0.48') + ' and intercept ' + m('0.7') + '. Find ' + m('k') + ' and ' + m('a') + '.',
+    'Explain in three sentences why a logarithmic scale is used for earthquakes.'
+  ]
+});
+
+/* ============================== 33 ============================== */
+G10_ALG.push({
+  id: 'a10-33', stream: 'alg', grade: 10, quarter: 3, lessons: '69–70', hours: 2,
+  title: 'Control work 6, and work on the mistakes',
+  subtitle: 'The logarithmic block in one paper — where the domain line is worth more than the arithmetic.',
+  uz: 'Algebra 10, Nazorat ishi 6', uzPage: 'pp. 297–300',
+  cam: 'P2 · Chapter 2 review', camPage: 'Pure Mathematics 2 & 3, pp. 53–54', wb: 'Control paper F',
+  objectives: [
+    'Apply the logarithmic methods under time.',
+    'State a domain and intersect with it without prompting.',
+    'Classify each lost mark as careless, method or knowledge.',
+    'Rewrite every wrong solution correctly.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Domain of definition', 'Aniqlanish sohasi', 'ОДЗ'],
+    ['Law of logarithms', 'Logarifm qoidasi', 'Свойство логарифма'],
+    ['Intersection', 'Kesishma', 'Пересечение'],
+    ['Careless error', 'E’tiborsizlik xatosi', 'Ошибка по невнимательности'],
+    ['Method error', 'Usul xatosi', 'Ошибка в методе'],
+    ['Knowledge gap', 'Bilim bo‘shlig‘i', 'Пробел в знаниях'],
+    ['Correction', 'Tuzatish', 'Исправление']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [10, 'Self-mark'], [25, 'Rewrite'], [12, 'The domain drill']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Evaluate ${m('log₂ 32')}, ${m('log₉ 3')}, ${m('log₅ ' + f('1', '25'))} and ${m('lg 0.01')}</td><td class="m">4</td><td>L57–58</td></tr>
+        <tr><td>2</td><td>Expand ${m('log₂ ' + f('4x³', sr('y')))} and condense ${m('3 lg x − 2 lg y')}</td><td class="m">4</td><td>L59–60</td></tr>
+        <tr><td>3</td><td>Solve ${m('lg x + lg(x − 3) = 1')}</td><td class="m">4</td><td>L61–62</td></tr>
+        <tr><td>4</td><td>Solve ${m('(log₂ x)² − 5 log₂ x + 6 = 0')}</td><td class="m">4</td><td>L61–62</td></tr>
+        <tr><td>5</td><td>Solve ${m('log₃(x − 1) < 2')} and ${m('log_(1/2)(x + 3) ≥ −2')}</td><td class="m">5</td><td>L65–66</td></tr>
+        <tr><td>6</td><td>${m('6')} million at ${m('11%')} a year: find the doubling time</td><td class="m">4</td><td>L67–68</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Four marks are for the domain</div>
+      Q3 and Q5 each give one mark for the domain line and one for the intersection or rejection.
+      A correct final interval with no domain shown scores half.</div>`
+    },
+    {
+      h: 'The four errors',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Error</th><th>Looks like</th><th>Kind</th></tr></thead>
+      <tbody>
+        <tr><td>no intersection</td><td>${m('log₃(x−1) < 2 ⇒ x < 10')}, keeping ${m('x = 0')}</td><td>method</td></tr>
+        <tr><td>invented law</td><td>${m('log(x + y) = log x + log y')}</td><td>knowledge</td></tr>
+        <tr><td>sign not reversed</td><td>${m('log_(1/2)')} treated as base ${m('> 1')}</td><td>knowledge</td></tr>
+        <tr><td>root not rejected</td><td>${m('x = −2')} kept in ${m('lg x + lg(x−3) = 1')}</td><td>method</td></tr>
+      </tbody></table></div>
+      {{fig:logGraph:The picture that settles the direction and the domain at once.}}`
+    },
+    {
+      h: 'The domain drill',
+      html: `<p>Twelve expressions on the board. For each, the class calls out only <b>the domain</b>, in
+      three seconds:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Domain</th></tr></thead>
+      <tbody>
+        <tr><td class="m">log₂(x − 4)</td><td class="m">x &gt; 4</td></tr>
+        <tr><td class="m">lg(5 − x)</td><td class="m">x &lt; 5</td></tr>
+        <tr><td class="m">log₃(x²)</td><td class="m">x ≠ 0</td></tr>
+        <tr><td class="m">log₅(x² − 4)</td><td class="m">x &lt; −2 or x &gt; 2</td></tr>
+        <tr><td class="m">log_x 9</td><td class="m">x &gt; 0, x ≠ 1</td></tr>
+        <tr><td class="m">lg x + lg(x − 3)</td><td class="m">x &gt; 3</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Rows 5 and 6 are the ones they miss</span>
+      A variable <b>base</b> has its own conditions. And two logarithms added give the
+      <b>intersection</b> of the two domains, not the domain of the product.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q3: solve ' + m('lg x + lg(x − 3) = 1') + '.',
+      steps: [
+        ['Domain: ' + m('x > 0') + ' and ' + m('x > 3') + ', so ' + m('x > 3') + '.', 'One mark.'],
+        [m('lg[x(x − 3)] = lg 10'), ''],
+        [m('x² − 3x − 10 = 0 ⇒ x = 5, −2'), ''],
+        [m('x = −2') + ' fails the domain.', 'One mark.']
+      ],
+      ans: m('x = 5')
+    },
+    {
+      q: 'Model answer, Q5b: solve ' + m('log_(1/2)(x + 3) ≥ −2') + '.',
+      steps: [
+        ['Domain ' + m('x > −3') + '.', ''],
+        [m('−2 = log_(1/2) 4'), ''],
+        ['Base ' + m('< 1') + ': reverse. ' + m('x + 3 ≤ 4') + '.', ''],
+        [m('x ≤ 1') + '; intersect.', '']
+      ],
+      ans: m('−3 < x ≤ 1')
+    },
+    {
+      q: 'Model answer, Q6: ' + m('6') + ' million at ' + m('11%') + ' a year.',
+      steps: [
+        [m('1.11ⁿ = 2'), ''],
+        [m('n = ' + f('lg 2', 'lg 1.11')), ''],
+        [m('= ' + f('0.3010', '0.0453')), ''],
+        [m('≈ 6.64') + ' years.', '']
+      ],
+      ans: m('≈ 6.6') + ' years'
+    }
+  ],
+  modelNote: 'Run the domain drill before the rewrite, and again at the end.',
+  interactive: {
+    type: 'quiz',
+    title: 'Domain, law, direction',
+    hint: 'Ask the three questions in order.',
+    items: [
+      { q: m('log₂ 32') + ':', a: [m('4'), m('5'), m('6'), m('16')], c: 1, why: m('2⁵') + '.' },
+      { q: m('log₉ 3') + ':', a: [m('0.5'), m('2'), m('3'), m('1.5')], c: 0, why: m('9^0.5 = 3') + '.' },
+      { q: 'Domain of ' + m('lg x + lg(x − 3)') + ':', a: [m('x > 0'), m('x > 3'), m('x ≠ 3'), m('ℝ')], c: 1, why: 'Both arguments.' },
+      { q: m('lg x + lg(x − 3) = 1') + ':', a: [m('x = 5, −2'), m('x = 5'), m('x = −2'), 'none'], c: 1, why: m('−2') + ' is outside.' },
+      { q: m('(log₂ x)² − 5log₂x + 6 = 0') + ':', a: [m('x = 2, 3'), m('x = 4, 8'), m('x = 6'), m('x = 8')], c: 1, why: m('t = 2, 3') + '.' },
+      { q: m('log₃(x − 1) < 2') + ':', a: [m('x < 10'), m('1 < x < 10'), m('x > 1'), m('x < 9')], c: 1, why: 'Intersect.' }
+    ]
+  },
+  quiz: [
+    { q: 'The domain line is worth:', a: ['nothing', 'a mark on its own', 'the question', 'half'], c: 1, why: 'It is explicitly credited.' },
+    { q: m('log(x + y)') + ' equals:', a: [m('log x + log y'), m('log x · log y'), 'none of these', m('log x − log y')], c: 2, why: 'There is no such law.' },
+    { q: 'A base under 1 in an inequality:', a: ['changes nothing', 'reverses the sign', 'makes it undefined', 'doubles it'], c: 1, why: 'The function decreases.' },
+    { q: 'Adding two logarithms gives a domain that is:', a: ['the union', 'the intersection', 'the product', 'wider'], c: 1, why: 'Both must be defined.' }
+  ],
+  practice: {
+    easy: [
+      [m('log₂ 32'), m('5')],
+      [m('log₉ 3'), m('0.5')],
+      [m('log₅ ' + f('1', '25')), m('−2')],
+      [m('lg 0.01'), m('−2')],
+      ['Domain of ' + m('lg(5 − x)'), m('x < 5')],
+      ['Condense ' + m('3 lg x − 2 lg y'), m('lg ' + f('x³', 'y²'))],
+      ['Solve ' + m('lg x = 2'), m('x = 100')]
+    ],
+    med: [
+      ['Expand ' + m('log₂ ' + f('4x³', sr('y'))), m('2 + 3log₂x − ' + f('1', '2') + 'log₂y')],
+      ['Solve ' + m('lg x + lg(x − 3) = 1'), m('x = 5')],
+      ['Solve ' + m('(log₂ x)² − 5log₂x + 6 = 0'), m('x = 4, 8')],
+      ['Solve ' + m('log₃(x − 1) < 2'), m('1 < x < 10')],
+      ['Solve ' + m('log_(1/2)(x + 3) ≥ −2'), m('−3 < x ≤ 1')],
+      [m('6') + ' million at 11%: doubling time', m('≈ 6.6') + ' years'],
+      ['Domain of ' + m('log₅(x² − 4)'), m('x < −2') + ' or ' + m('x > 2')]
+    ],
+    hard: [
+      ['Solve ' + m('log₂(x − 1) + log₂(x + 1) = 3'), m('x = 3')],
+      ['Solve ' + m('lg² x − lg x⁴ + 3 = 0'), m('x = 10, 1000')],
+      ['Solve ' + m('log_(1/3)(x² − 3x) ≥ −2'), m('−1 ≤ x < 0') + ' or ' + m('3 < x ≤ 4')],
+      ['Solve ' + m('log_x 16 = 4'), m('x = 2')],
+      ['Solve ' + m('log₂ x + log_x 2 = 2.5'), m('x = 4') + ' or ' + m('x = ' + sr('2'))],
+      ['A town of 30 000 grows 4% a year: when does it double?', m('≈ 17.7') + ' years'],
+      ['Explain why ' + m('log₃(x−1) < 2') + ' is not ' + m('x < 10'), 'The domain ' + m('x > 1') + ' must be intersected']
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Task 1 is the rewrite. Domain first on every question.',
+  homework: [
+    'Rewrite in full every question that lost a mark, with the domain first.',
+    'Five problems from the section your knowledge column was heaviest in.',
+    'Solve ' + m('lg x + lg(x − 15) = 2') + ' and ' + m('log₂(x + 1) ≤ 3') + '.',
+    m('9') + ' million so‘m at ' + m('9%') + ' a year. Find the value after 5 years and the doubling time.'
+  ]
+});
+
+/* ============================== 34 ============================== */
+G10_ALG.push({
+  id: 'a10-34', stream: 'alg', grade: 10, quarter: 3, lessons: '71–72', hours: 2,
+  title: 'Trigonometric functions, their properties and graphs',
+  subtitle: 'The functions that repeat — and the periodic processes they describe.',
+  uz: 'Algebra 10, §4.1', uzPage: 'pp. 301–312',
+  cam: 'P1 · 5.2', camPage: 'Pure Mathematics 1, pp. 96–104', wb: 'P1 Exercise 5B',
+  objectives: [
+    'Define sine, cosine and tangent on the unit circle for any angle.',
+    'Sketch y = sin x, y = cos x and y = tan x.',
+    'State the period, range, zeros and symmetry of each.',
+    'Model a periodic process with a trigonometric function.'
+  ],
+  terms: [
+    ['Trigonometric function', 'Trigonometrik funksiya', 'Тригонометрическая функция'],
+    ['Unit circle', 'Birlik aylana', 'Единичная окружность'],
+    ['Period', 'Davr', 'Период'],
+    ['Amplitude', 'Amplituda', 'Амплитуда'],
+    ['Zero of a function', 'Funksiya nuli', 'Нуль функции'],
+    ['Even function', 'Juft funksiya', 'Чётная функция'],
+    ['Odd function', 'Toq funksiya', 'Нечётная функция'],
+    ['Asymptote', 'Asimptota', 'Асимптота'],
+    ['Periodic process', 'Davriy jarayon', 'Периодический процесс']
+  ],
+  timing: [[14, 'The unit-circle definition'], [24, 'The three graphs'], [22, 'Properties'], [20, 'Periodic processes'], [16, 'Practice'], [8, 'Homework']],
+  sections: [
+    {
+      h: 'The unit-circle definition',
+      html: `<p>Take the point ${m('P')} on the unit circle at angle ${m('θ')} from the positive
+      ${m('x')}-axis, measured anticlockwise. Then by definition</p>
+      ${eq(m('cos θ = x-coordinate of P') + '     ' + m('sin θ = y-coordinate of P'), true)}
+      {{fig:unitCircle:The coordinates of the point are the cosine and the sine. Nothing else is needed.}}
+      <div class="keybox"><div class="klabel">Why this replaces the right triangle</div>
+      The triangle definition works only for ${m('0° < θ < 90°')}. The circle definition works for
+      every angle — negative, obtuse, reflex, or beyond a full turn — and it makes the signs in each
+      quadrant obvious from the coordinates.</div>
+      <p>Because ${m('P')} returns to the same place after a full turn, both functions repeat with
+      period ${m('360°')}. The tangent is ${m('tan θ = ' + f('sin θ', 'cos θ'))}, undefined where
+      ${m('cos θ = 0')}.</p>`
+    },
+    {
+      h: 'The three graphs',
+      html: `{{fig:sinCosGraph:One period of each. The cosine is the sine shifted left by 90°.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th></th><th class="m">sin x</th><th class="m">cos x</th><th class="m">tan x</th></tr></thead>
+      <tbody>
+        <tr><td>period</td><td class="m">360°</td><td class="m">360°</td><td class="m">180°</td></tr>
+        <tr><td>domain</td><td class="m">ℝ</td><td class="m">ℝ</td><td class="m">x ≠ 90° + 180°k</td></tr>
+        <tr><td>range</td><td class="m">[−1, 1]</td><td class="m">[−1, 1]</td><td class="m">ℝ</td></tr>
+        <tr><td>zeros</td><td class="m">180°k</td><td class="m">90° + 180°k</td><td class="m">180°k</td></tr>
+        <tr><td>parity</td><td>odd</td><td>even</td><td>odd</td></tr>
+        <tr><td>maximum</td><td class="m">1 at 90°</td><td class="m">1 at 0°</td><td>none</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The tangent has asymptotes</span>
+      At ${m('90°, 270°, …')} the cosine is zero and the tangent is undefined. Its graph is a chain of
+      identical branches, each rising from ${m('−∞')} to ${m('+∞')} over an interval of ${m('180°')}.</div>`
+    },
+    {
+      h: 'Properties, and what they are for',
+      html: `${eq(m('sin(−x) = −sin x') + '  ·  ' + m('cos(−x) = cos x') + '  ·  ' + m('tan(−x) = −tan x'), true)}
+      ${eq(m('sin²x + cos²x = 1'), true)}
+      <p>The last is Pythagoras on the unit circle: the point ${m('(cos θ, sin θ)')} is at distance 1
+      from the origin. Every trigonometric identity of Quarter IV is built from it.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quadrant</th><th class="m">sin</th><th class="m">cos</th><th class="m">tan</th></tr></thead>
+      <tbody>
+        <tr><td>I (${m('0–90°')})</td><td class="m">+</td><td class="m">+</td><td class="m">+</td></tr>
+        <tr><td>II (${m('90–180°')})</td><td class="m">+</td><td class="m">−</td><td class="m">−</td></tr>
+        <tr><td>III (${m('180–270°')})</td><td class="m">−</td><td class="m">−</td><td class="m">+</td></tr>
+        <tr><td>IV (${m('270–360°')})</td><td class="m">−</td><td class="m">+</td><td class="m">−</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Periodic processes',
+      html: `${eq(m('y = A sin(Bx) + C'), true)}
+      <p>${m('A')} is the <b>amplitude</b> — half the distance from lowest to highest.
+      ${m('C')} is the middle value. The period is ${m(f('360°', 'B'))}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Process</th><th>Period</th><th>Model</th></tr></thead>
+      <tbody>
+        <tr><td>daylight hours in Tashkent</td><td>365 days</td><td class="m">12 + 3 sin(...)</td></tr>
+        <tr><td>tides</td><td>≈ 12.4 hours</td><td class="m">mean + amplitude·sin(...)</td></tr>
+        <tr><td>mains alternating current</td><td>${m('0.02')} s</td><td class="m">220${sr('2')} sin(100πt)</td></tr>
+        <tr><td>a Ferris wheel</td><td>one revolution</td><td class="m">centre height + radius·sin(...)</td></tr>
+      </tbody></table></div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'State the period, amplitude and range of ' + m('y = 3 sin(2x) + 1') + '.',
+      steps: [
+        ['Amplitude ' + m('|A| = 3') + '.', ''],
+        ['Period ' + m(f('360°', '2') + ' = 180°') + '.', ''],
+        ['Middle value ' + m('1') + '.', ''],
+        ['Range ' + m('1 ± 3') + '.', '']
+      ],
+      ans: 'Period ' + m('180°') + ', amplitude ' + m('3') + ', range ' + m('[−2, 4]')
+    },
+    {
+      q: 'Without a calculator, give the sign of ' + m('sin 200°') + ', ' + m('cos 200°') + ' and ' + m('tan 200°') + '.',
+      steps: [
+        [m('200°') + ' is in quadrant III.', ''],
+        ['There sine and cosine are both negative.', ''],
+        ['Their quotient is positive.', '']
+      ],
+      ans: m('−, −, +')
+    },
+    {
+      q: 'Daylight in Tashkent varies from ' + m('9.3') + ' h to ' + m('15.1') + ' h. Find ' + m('A') + ' and ' + m('C') + '.',
+      steps: [
+        [m('C = ' + f('15.1 + 9.3', '2') + ' = 12.2'), 'The middle.'],
+        [m('A = ' + f('15.1 − 9.3', '2') + ' = 2.9'), 'Half the swing.'],
+        ['Period 365 days.', '']
+      ],
+      ans: m('A = 2.9') + ', ' + m('C = 12.2') + ' hours'
+    }
+  ],
+  modelNote: 'Trace a point round the unit circle and plot its height against the angle.',
+  interactive: {
+    type: 'graphTransform',
+    title: 'A sine wave',
+    hint: 'Change the amplitude and the shift, and read the period.'
+  },
+  quiz: [
+    { q: 'The period of ' + m('sin x') + ' is:', a: [m('90°'), m('180°'), m('360°'), m('720°')], c: 2, why: 'One full turn.' },
+    { q: 'The period of ' + m('tan x') + ' is:', a: [m('90°'), m('180°'), m('360°'), m('720°')], c: 1, why: 'Its branches repeat every half turn.' },
+    { q: m('cos(−x)') + ' equals:', a: [m('cos x'), m('−cos x'), m('sin x'), m('−sin x')], c: 0, why: 'Cosine is even.' },
+    { q: 'The range of ' + m('cos x') + ' is:', a: [m('ℝ'), m('[−1, 1]'), m('[0, 1]'), m('x ≠ 0')], c: 1, why: 'A coordinate on the unit circle.' },
+    { q: 'The amplitude of ' + m('y = 3 sin 2x') + ' is:', a: [m('2'), m('3'), m('6'), m('1.5')], c: 1, why: 'The coefficient outside.' },
+    { q: 'The period of ' + m('y = 3 sin 2x') + ' is:', a: [m('180°'), m('360°'), m('720°'), m('120°')], c: 0, why: m(f('360°', '2')) + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Period of ' + m('sin x'), m('360°')],
+      ['Period of ' + m('tan x'), m('180°')],
+      ['Range of ' + m('sin x'), m('[−1, 1]')],
+      ['Zeros of ' + m('sin x'), m('180°k')],
+      ['Is ' + m('cos x') + ' even or odd?', 'even'],
+      ['Is ' + m('sin x') + ' even or odd?', 'odd'],
+      [m('sin 0°'), m('0')]
+    ],
+    med: [
+      ['Period and amplitude of ' + m('y = 3 sin 2x'), m('180°') + ', ' + m('3')],
+      ['Range of ' + m('y = 3 sin 2x + 1'), m('[−2, 4]')],
+      ['Signs of ' + m('sin, cos, tan') + ' at ' + m('200°'), m('−, −, +')],
+      ['Signs at ' + m('130°'), m('+, −, −')],
+      ['Period of ' + m('y = cos(3x)'), m('120°')],
+      ['Amplitude of ' + m('y = −5 cos x'), m('5')],
+      ['Where is ' + m('tan x') + ' undefined?', m('x = 90° + 180°k')]
+    ],
+    hard: [
+      ['Daylight ' + m('9.3') + ' to ' + m('15.1') + ' h: find ' + m('A, C'), m('2.9') + ', ' + m('12.2')],
+      ['A Ferris wheel of radius 20 m, centre 22 m up, one turn in 4 min: model the height', m('22 + 20 sin(90t°)')],
+      ['Range of ' + m('y = 2 − 4 cos x'), m('[−2, 6]')],
+      ['Period of ' + m('y = sin(' + f('x', '2') + ')'), m('720°')],
+      ['Solve ' + m('sin x = 0') + ' on ' + m('[0°, 720°]'), m('0, 180, 360, 540, 720')],
+      ['Show ' + m('sin²x + cos²x = 1') + ' from the unit circle', 'It is Pythagoras on the radius'],
+      ['Sketch ' + m('y = tan x') + ' on ' + m('[−180°, 180°]') + ' with its asymptotes', 'Asymptotes at ' + m('±90°')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every sketch must be labelled with the period and, for the tangent, the asymptotes.',
+  homework: [
+    'Sketch ' + m('y = sin x') + ' and ' + m('y = cos x') + ' on ' + m('[0°, 720°]') + ' on one set of axes.',
+    'State the period, amplitude and range of ' + m('y = 4 sin(3x) − 2') + '.',
+    'Give the signs of the three functions at ' + m('110°') + ', ' + m('250°') + ' and ' + m('320°') + '.',
+    'A tide varies from ' + m('1.2') + ' m to ' + m('4.8') + ' m with period ' + m('12.4') + ' hours. Find the amplitude and the mean level.',
+    'Sketch ' + m('y = tan x') + ' on ' + m('[−180°, 180°]') + ', marking the asymptotes and the zeros.'
+  ]
+});
+
+/* ============================== 35 ============================== */
+G10_ALG.push({
+  id: 'a10-35', stream: 'alg', grade: 10, quarter: 3, lessons: '73–74', hours: 2,
+  title: 'The values of arcsin a, arccos a, arctan a and arccot a',
+  subtitle: 'Undoing a trigonometric function — which needs a restricted domain, and therefore a convention.',
+  uz: 'Algebra 10, §4.2', uzPage: 'pp. 313–324',
+  cam: 'P1 · 5.3', camPage: 'Pure Mathematics 1, pp. 105–110', wb: 'P1 Exercise 5C',
+  objectives: [
+    'Explain why the trigonometric functions must be restricted to be invertible.',
+    'State the principal-value ranges of the four inverse functions.',
+    'Evaluate the inverse functions at the standard values.',
+    'Distinguish “the” inverse value from all the solutions of an equation.'
+  ],
+  terms: [
+    ['Inverse trigonometric function', 'Teskari trigonometrik funksiya', 'Обратная тригонометрическая функция'],
+    ['Arcsine', 'Arksinus', 'Арксинус'],
+    ['Arccosine', 'Arkkosinus', 'Арккосинус'],
+    ['Arctangent', 'Arktangens', 'Арктангенс'],
+    ['Arccotangent', 'Arkkotangens', 'Арккотангенс'],
+    ['Principal value', 'Bosh qiymat', 'Главное значение'],
+    ['Restricted domain', 'Cheklangan soha', 'Ограниченная область'],
+    ['One-to-one', 'Biror-birga', 'Взаимно однозначное'],
+    ['Standard angle', 'Standart burchak', 'Табличный угол']
+  ],
+  timing: [[14, 'Why a restriction is needed'], [22, 'The four ranges'], [24, 'Standard values'], [20, 'One value or many?'], [16, 'Practice'], [8, 'Homework']],
+  sections: [
+    {
+      h: 'Why a restriction is needed',
+      html: `<p>${m('sin x = 0.5')} has infinitely many solutions: ${m('30°, 150°, 390°, …')}. So the sine
+      is many-to-one, and by the rule of Grade 10 Quarter I it has <b>no</b> inverse — until its domain
+      is cut down to a piece on which it is one-to-one.</p>
+      <div class="keybox"><div class="klabel">The convention</div>
+      Restrict the sine to ${m('[−90°, 90°]')}, where it increases from ${m('−1')} to ${m('1')} exactly
+      once. On that piece it is one-to-one, and its inverse is called <b>arcsin</b>.</div>
+      <p>The choice is a convention, but a universal one: every calculator and every textbook uses it,
+      so an answer outside the range is simply wrong.</p>`
+    },
+    {
+      h: 'The four ranges',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Function</th><th>Domain</th><th>Range (principal values)</th></tr></thead>
+      <tbody>
+        <tr><td class="m">arcsin a</td><td class="m">−1 ≤ a ≤ 1</td><td class="m">−90° ≤ y ≤ 90°</td></tr>
+        <tr><td class="m">arccos a</td><td class="m">−1 ≤ a ≤ 1</td><td class="m">0° ≤ y ≤ 180°</td></tr>
+        <tr><td class="m">arctan a</td><td class="m">ℝ</td><td class="m">−90° &lt; y &lt; 90°</td></tr>
+        <tr><td class="m">arccot a</td><td class="m">ℝ</td><td class="m">0° &lt; y &lt; 180°</td></tr>
+      </tbody></table></div>
+      {{fig:arcFunctions:Arcsin rises from −90° to 90°; arccos falls from 180° to 0°. Both live only on −1 ≤ x ≤ 1.}}
+      <div class="warn"><span class="wl">Arccos is never negative</span>
+      ${m('arccos(−0.5) = 120°')}, not ${m('−60°')}. The arcsine's range straddles zero; the arccosine's
+      does not. Confusing the two is the standard error.</div>`
+    },
+    {
+      h: 'Standard values',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th class="m">a</th><th class="m">arcsin a</th><th class="m">arccos a</th><th class="m">arctan a</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0</td><td class="m">0°</td><td class="m">90°</td><td class="m">0°</td></tr>
+        <tr><td class="m">${f('1', '2')}</td><td class="m">30°</td><td class="m">60°</td><td>—</td></tr>
+        <tr><td class="m">${f(sr('2'), '2')}</td><td class="m">45°</td><td class="m">45°</td><td>—</td></tr>
+        <tr><td class="m">${f(sr('3'), '2')}</td><td class="m">60°</td><td class="m">30°</td><td>—</td></tr>
+        <tr><td class="m">1</td><td class="m">90°</td><td class="m">0°</td><td class="m">45°</td></tr>
+        <tr><td class="m">${sr('3')}</td><td>—</td><td>—</td><td class="m">60°</td></tr>
+        <tr><td class="m">−${f('1', '2')}</td><td class="m">−30°</td><td class="m">120°</td><td>—</td></tr>
+      </tbody></table></div>
+      <p>Two identities are worth knowing, and both follow from the ranges:</p>
+      ${eq(m('arcsin(−a) = −arcsin a') + '     ' + m('arccos(−a) = 180° − arccos a'), true)}
+      ${eq(m('arcsin a + arccos a = 90°'), true)}`
+    },
+    {
+      h: 'One value or many?',
+      html: `<div class="keybox"><div class="klabel">Two different questions</div>
+      “<b>Evaluate</b> ${m('arcsin 0.5')}” has one answer: ${m('30°')}.
+      “<b>Solve</b> ${m('sin x = 0.5')}” has infinitely many: ${m('30° + 360°k')} and
+      ${m('150° + 360°k')}. The first is a function value; the second is an equation.</div>
+      <p>Lesson 79–81 of Quarter IV is entirely about turning the first into the second. For now the
+      distinction is the whole point: ${m('arcsin')} gives you <b>one</b> angle, chosen by convention,
+      and the other solutions must be produced separately.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Evaluate ' + m('arcsin(−' + f(sr('2'), '2') + ')') + ', ' + m('arccos(−' + f('1', '2') + ')') + ' and ' + m('arctan(−1)') + '.',
+      steps: [
+        [m('arcsin' + f(sr('2'), '2') + ' = 45°') + ', and arcsine is odd.', m('−45°')],
+        [m('arccos' + f('1', '2') + ' = 60°') + '; use ' + m('180° − 60°') + '.', m('120°')],
+        [m('arctan 1 = 45°') + ', and arctangent is odd.', m('−45°')]
+      ],
+      ans: m('−45°') + ', ' + m('120°') + ', ' + m('−45°')
+    },
+    {
+      q: 'Evaluate ' + m('sin(arccos 0.6)') + '.',
+      steps: [
+        ['Let ' + m('θ = arccos 0.6') + ', so ' + m('cos θ = 0.6') + ' and ' + m('0 ≤ θ ≤ 180°') + '.', ''],
+        [m('sin²θ = 1 − 0.36 = 0.64'), ''],
+        [m('sin θ = 0.8'), 'Positive, since ' + m('θ') + ' is in the first two quadrants.']
+      ],
+      ans: m('0.8')
+    },
+    {
+      q: 'Why is ' + m('arccos(−0.7)') + ' not ' + m('−45.6°') + '?',
+      steps: [
+        ['The range of arccos is ' + m('[0°, 180°]') + '.', ''],
+        ['A negative value is impossible.', ''],
+        [m('arccos(−0.7) = 180° − arccos 0.7 ≈ 134.4°'), '']
+      ],
+      ans: 'It lies outside the range; the answer is ' + m('≈ 134.4°')
+    }
+  ],
+  modelNote: 'Draw the restricted piece of each curve before evaluating anything.',
+  interactive: {
+    type: 'quiz',
+    title: 'Principal values',
+    hint: 'Check the answer lies in the right range.',
+    items: [
+      { q: m('arcsin 1') + ':', a: [m('0°'), m('45°'), m('90°'), m('180°')], c: 2, why: m('sin 90° = 1') + '.' },
+      { q: m('arccos 0') + ':', a: [m('0°'), m('90°'), m('180°'), m('−90°')], c: 1, why: m('cos 90° = 0') + '.' },
+      { q: m('arccos(−0.5)') + ':', a: [m('−60°'), m('60°'), m('120°'), m('240°')], c: 2, why: 'The range excludes negatives.' },
+      { q: m('arcsin(−0.5)') + ':', a: [m('−30°'), m('30°'), m('210°'), m('330°')], c: 0, why: 'Arcsine is odd.' },
+      { q: 'The range of arctan is:', a: [m('[0°, 180°]'), m('(−90°, 90°)'), m('[−90°, 90°]'), m('ℝ')], c: 1, why: 'Open, because of the asymptotes.' },
+      { q: m('arcsin a + arccos a') + ' equals:', a: [m('0°'), m('90°'), m('180°'), 'it depends'], c: 1, why: 'They are complementary.' }
+    ]
+  },
+  quiz: [
+    { q: 'A function needs a restricted domain to be inverted because it must be:', a: ['even', 'one-to-one', 'positive', 'periodic'], c: 1, why: 'Otherwise the inverse is ambiguous.' },
+    { q: 'The range of arcsin is:', a: [m('[0°, 180°]'), m('[−90°, 90°]'), m('[0°, 90°]'), m('ℝ')], c: 1, why: 'The convention.' },
+    { q: m('arccos(−a)') + ' equals:', a: [m('−arccos a'), m('180° − arccos a'), m('arccos a'), m('90° − arccos a')], c: 1, why: 'The range is ' + m('[0°, 180°]') + '.' },
+    { q: '“Evaluate ' + m('arcsin 0.5') + '” has:', a: ['no answer', 'one answer', 'two answers', 'infinitely many'], c: 1, why: 'It is a function value.' }
+  ],
+  practice: {
+    easy: [
+      [m('arcsin 0'), m('0°')],
+      [m('arcsin 1'), m('90°')],
+      [m('arccos 1'), m('0°')],
+      [m('arccos 0'), m('90°')],
+      [m('arctan 0'), m('0°')],
+      [m('arctan 1'), m('45°')],
+      [m('arcsin ' + f('1', '2')), m('30°')]
+    ],
+    med: [
+      [m('arccos ' + f('1', '2')), m('60°')],
+      [m('arcsin(−' + f(sr('2'), '2') + ')'), m('−45°')],
+      [m('arccos(−' + f('1', '2') + ')'), m('120°')],
+      [m('arctan(−1)'), m('−45°')],
+      [m('arctan ' + sr('3')), m('60°')],
+      [m('arcsin 0.6 + arccos 0.6'), m('90°')],
+      [m('arccos(−1)'), m('180°')]
+    ],
+    hard: [
+      [m('sin(arccos 0.6)'), m('0.8')],
+      [m('cos(arcsin ' + f('3', '5') + ')'), m(f('4', '5'))],
+      [m('tan(arcsin ' + f('5', '13') + ')'), m(f('5', '12'))],
+      [m('arccos(cos 300°)'), m('60°')],
+      [m('arcsin(sin 200°)'), m('−20°')],
+      ['Prove ' + m('arcsin a + arccos a = 90°'), 'Complementary angles in a right triangle'],
+      ['Why is ' + m('arcsin(sin 200°) ≠ 200°') + '?', m('200°') + ' is outside the range of arcsin']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Check every answer lies inside the correct range before writing it.',
+  homework: [
+    'Evaluate ' + m('arcsin ' + f(sr('3'), '2')) + ', ' + m('arccos(−' + f(sr('2'), '2') + ')') + ', ' + m('arctan(−' + sr('3') + ')') + '.',
+    'Evaluate ' + m('sin(arccos 0.8)') + ' and ' + m('cos(arcsin ' + f('5', '13') + ')') + '.',
+    'Evaluate ' + m('arccos(cos 250°)') + ' and ' + m('arcsin(sin 160°)') + '.',
+    'Explain in three sentences why the sine must be restricted before it can be inverted.',
+    'State the four principal-value ranges from memory and sketch the arcsine and arccosine curves.'
+  ]
+});
+
+/* ============================== 36 ============================== */
+G10_ALG.push({
+  id: 'a10-36', stream: 'alg', grade: 10, quarter: 3, lessons: '75–76', hours: 2,
+  title: 'The functions y = arcsin x, y = arccos x, y = arctan x, y = arccot x',
+  subtitle: 'The four inverse curves — their shapes, symmetries and asymptotes, obtained by one reflection.',
+  uz: 'Algebra 10, §4.3', uzPage: 'pp. 325–336',
+  cam: 'P1 · 5.3', camPage: 'Pure Mathematics 1, pp. 105–110', wb: 'P1 Exercise 5C',
+  objectives: [
+    'Sketch each inverse trigonometric function from the restricted original.',
+    'State the domain, range, monotonicity and symmetry of each.',
+    'Identify the asymptotes of arctan and arccot.',
+    'Apply transformations to the inverse curves.'
+  ],
+  terms: [
+    ['Inverse function', 'Teskari funksiya', 'Обратная функция'],
+    ['Reflection in y = x', 'y = x ga nisbatan akslantirish', 'Симметрия относительно y = x'],
+    ['Restricted branch', 'Cheklangan tarmoq', 'Ограниченная ветвь'],
+    ['Horizontal asymptote', 'Gorizontal asimptota', 'Горизонтальная асимптота'],
+    ['Increasing function', 'O‘suvchi funksiya', 'Возрастающая функция'],
+    ['Decreasing function', 'Kamayuvchi funksiya', 'Убывающая функция'],
+    ['Odd function', 'Toq funksiya', 'Нечётная функция'],
+    ['Centre of symmetry', 'Simmetriya markazi', 'Центр симметрии'],
+    ['Point of inflection', 'Egilish nuqtasi', 'Точка перегиба']
+  ],
+  timing: [[12, 'One reflection, four curves'], [24, 'Arcsin and arccos'], [22, 'Arctan and arccot'], [22, 'Transformations'], [16, 'Practice'], [8, 'Homework']],
+  sections: [
+    {
+      h: 'One reflection, four curves',
+      html: `<p>Take the restricted branch of each trigonometric function and reflect it in ${m('y = x')}.
+      The domain and range swap; increasing stays increasing; the ${m('x')}- and ${m('y')}-intercepts
+      exchange.</p>
+      {{fig:arcFunctions:Both curves live on −1 ≤ x ≤ 1. Arcsin rises through the origin; arccos falls from 180°.}}
+      <div class="keybox"><div class="klabel">Everything follows from the original</div>
+      A vertical asymptote of the original becomes a <b>horizontal</b> asymptote of the inverse. A
+      maximum becomes a right-hand endpoint. There is nothing new to learn — only to reflect.</div>`
+    },
+    {
+      h: 'Arcsin and arccos',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th></th><th class="m">y = arcsin x</th><th class="m">y = arccos x</th></tr></thead>
+      <tbody>
+        <tr><td>domain</td><td class="m">[−1, 1]</td><td class="m">[−1, 1]</td></tr>
+        <tr><td>range</td><td class="m">[−90°, 90°]</td><td class="m">[0°, 180°]</td></tr>
+        <tr><td>behaviour</td><td>increasing</td><td>decreasing</td></tr>
+        <tr><td>through</td><td class="m">(0, 0)</td><td class="m">(0, 90°)</td></tr>
+        <tr><td>endpoints</td><td class="m">(−1, −90°), (1, 90°)</td><td class="m">(−1, 180°), (1, 0°)</td></tr>
+        <tr><td>symmetry</td><td>odd — half-turn about ${m('O')}</td><td>half-turn about ${m('(0, 90°)')}</td></tr>
+      </tbody></table></div>
+      <p>The relation ${m('arcsin x + arccos x = 90°')} says the two curves are reflections of each other
+      in the horizontal line ${m('y = 45°')} — a fact visible at a glance in the figure.</p>`
+    },
+    {
+      h: 'Arctan and arccot',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th></th><th class="m">y = arctan x</th><th class="m">y = arccot x</th></tr></thead>
+      <tbody>
+        <tr><td>domain</td><td class="m">ℝ</td><td class="m">ℝ</td></tr>
+        <tr><td>range</td><td class="m">(−90°, 90°)</td><td class="m">(0°, 180°)</td></tr>
+        <tr><td>behaviour</td><td>increasing</td><td>decreasing</td></tr>
+        <tr><td>through</td><td class="m">(0, 0)</td><td class="m">(0, 90°)</td></tr>
+        <tr><td>asymptotes</td><td class="m">y = ±90°</td><td class="m">y = 0°, y = 180°</td></tr>
+        <tr><td>symmetry</td><td>odd</td><td>half-turn about ${m('(0, 90°)')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The asymptotes are horizontal, and never reached</span>
+      ${m('arctan x')} climbs towards ${m('90°')} for large ${m('x')} but never attains it — because
+      ${m('tan 90°')} does not exist. The range is an <b>open</b> interval, which is why the endpoints
+      are written with round brackets.</div>`
+    },
+    {
+      h: 'Transformations',
+      html: `<p>The rules of Quarter I apply unchanged:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Curve</th><th>Domain</th><th>Range</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = arcsin x</td><td class="m">[−1, 1]</td><td class="m">[−90°, 90°]</td></tr>
+        <tr><td class="m">y = arcsin(2x)</td><td class="m">[−0.5, 0.5]</td><td class="m">[−90°, 90°]</td></tr>
+        <tr><td class="m">y = 2 arcsin x</td><td class="m">[−1, 1]</td><td class="m">[−180°, 180°]</td></tr>
+        <tr><td class="m">y = arcsin(x − 1)</td><td class="m">[0, 2]</td><td class="m">[−90°, 90°]</td></tr>
+        <tr><td class="m">y = arctan x + 90°</td><td class="m">ℝ</td><td class="m">(0°, 180°)</td></tr>
+      </tbody></table></div>
+      <p>The last row is worth noticing: ${m('arctan x + 90°')} has exactly the range of
+      ${m('arccot x')}, and in fact ${m('arccot x = 90° − arctan x')} — the two are reflections in a
+      horizontal line, as the arcsine and arccosine were.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'State the domain and range of ' + m('y = arccos(x − 2)') + '.',
+      steps: [
+        ['Need ' + m('−1 ≤ x − 2 ≤ 1') + '.', ''],
+        [m('1 ≤ x ≤ 3'), ''],
+        ['The range is unchanged by a horizontal shift.', '']
+      ],
+      ans: 'Domain ' + m('[1, 3]') + ', range ' + m('[0°, 180°]')
+    },
+    {
+      q: 'State the domain and range of ' + m('y = 3 arcsin(2x)') + '.',
+      steps: [
+        [m('−1 ≤ 2x ≤ 1 ⇒ −0.5 ≤ x ≤ 0.5'), ''],
+        ['The outer ' + m('3') + ' stretches the range.', ''],
+        [m('3 × [−90°, 90°]'), '']
+      ],
+      ans: 'Domain ' + m('[−0.5, 0.5]') + ', range ' + m('[−270°, 270°]')
+    },
+    {
+      q: 'What are the asymptotes of ' + m('y = arctan(x) − 30°') + '?',
+      steps: [
+        [m('arctan x') + ' has asymptotes ' + m('y = ±90°') + '.', ''],
+        ['A vertical shift moves them by ' + m('−30°') + '.', '']
+      ],
+      ans: m('y = 60°') + ' and ' + m('y = −120°')
+    }
+  ],
+  modelNote: 'Reflect the sine curve in y = x with tracing paper — the arcsine appears exactly.',
+  interactive: {
+    type: 'graphTransform',
+    title: 'Reflecting a curve',
+    hint: 'Watch the domain and the range swap.'
+  },
+  quiz: [
+    { q: 'The domain of ' + m('arcsin x') + ' is:', a: [m('ℝ'), m('[−1, 1]'), m('[0, 1]'), m('[−90°, 90°]')], c: 1, why: 'The range of the sine.' },
+    { q: m('arccos x') + ' is:', a: ['increasing', 'decreasing', 'constant', 'periodic'], c: 1, why: 'It falls from ' + m('180°') + ' to ' + m('0°') + '.' },
+    { q: 'The asymptotes of ' + m('arctan x') + ' are:', a: [m('x = ±90°'), m('y = ±90°'), m('y = 0'), 'none'], c: 1, why: 'Horizontal, from the vertical ones of the tangent.' },
+    { q: 'The domain of ' + m('arcsin(2x)') + ' is:', a: [m('[−1, 1]'), m('[−0.5, 0.5]'), m('[−2, 2]'), m('ℝ')], c: 1, why: m('−1 ≤ 2x ≤ 1') + '.' },
+    { q: 'The range of ' + m('2 arccos x') + ' is:', a: [m('[0°, 180°]'), m('[0°, 360°]'), m('[−180°, 180°]'), m('[0°, 90°]')], c: 1, why: 'Stretched by 2.' }
+  ],
+  practice: {
+    easy: [
+      ['Domain of ' + m('arcsin x'), m('[−1, 1]')],
+      ['Range of ' + m('arcsin x'), m('[−90°, 90°]')],
+      ['Range of ' + m('arccos x'), m('[0°, 180°]')],
+      ['Range of ' + m('arctan x'), m('(−90°, 90°)')],
+      ['Is ' + m('arcsin x') + ' increasing?', 'yes'],
+      ['Is ' + m('arccos x') + ' increasing?', 'no'],
+      [m('arccos x') + ' passes through', m('(0, 90°)')]
+    ],
+    med: [
+      ['Domain of ' + m('arccos(x − 2)'), m('[1, 3]')],
+      ['Domain of ' + m('arcsin(2x)'), m('[−0.5, 0.5]')],
+      ['Range of ' + m('3 arcsin x'), m('[−270°, 270°]')],
+      ['Range of ' + m('arctan x + 90°'), m('(0°, 180°)')],
+      ['Asymptotes of ' + m('arctan x − 30°'), m('y = 60°') + ' and ' + m('y = −120°')],
+      ['Domain of ' + m('arcsin(x + 1)'), m('[−2, 0]')],
+      ['Range of ' + m('−arccos x'), m('[−180°, 0°]')]
+    ],
+    hard: [
+      ['Domain and range of ' + m('y = arcsin(3x − 1)'), m('[0, ' + f('2', '3') + ']') + ', ' + m('[−90°, 90°]')],
+      ['Domain and range of ' + m('y = 2 arccos(' + f('x', '2') + ') − 90°'), m('[−2, 2]') + ', ' + m('[−90°, 270°]')],
+      ['Show ' + m('arccot x = 90° − arctan x'), 'Complementary, with matching ranges'],
+      ['Sketch ' + m('y = arcsin x') + ' and ' + m('y = arccos x') + ' and mark the line of symmetry', m('y = 45°')],
+      ['Where do ' + m('arcsin x') + ' and ' + m('arccos x') + ' meet?', m('x = ' + f(sr('2'), '2')) + ', at ' + m('45°')],
+      ['Domain of ' + m('arcsin(x²)'), m('[−1, 1]')],
+      ['Explain why the range of arctan is open at both ends', m('tan(±90°)') + ' does not exist']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every sketch needs the endpoints or the asymptotes marked.',
+  homework: [
+    'Sketch ' + m('y = arcsin x') + ' and ' + m('y = arccos x') + ' on one set of axes, with endpoints.',
+    'Sketch ' + m('y = arctan x') + ' with its asymptotes.',
+    'State the domain and range of ' + m('y = arccos(2x + 1)') + ' and ' + m('y = 2 arcsin(x − 1)') + '.',
+    'Find where ' + m('y = arcsin x') + ' and ' + m('y = arccos x') + ' intersect.',
+    'Show that ' + m('arccot x = 90° − arctan x') + ' and check both ranges agree.'
+  ]
+});
+
+/* ============================== 37 ============================== */
+G10_ALG.push({
+  id: 'a10-37', stream: 'alg', grade: 10, quarter: 3, lessons: '77–78', hours: 2,
+  title: 'Project work — radians, arc length and sector area',
+  subtitle: 'Cambridge insert: the angle measure that makes every formula in calculus simpler, built and used in two lessons.',
+  uz: 'Algebra 10, §4.3 (extension)', uzPage: 'pp. 337–342',
+  cam: 'P1 · 4.1–4.3', camPage: 'Pure Mathematics 1, pp. 82–95', wb: 'P1 Exercise 4A–4C',
+  objectives: [
+    'Define the radian and convert between radians and degrees.',
+    'Use s = rθ for arc length and A = ½r²θ for sector area.',
+    'Find the area of a segment.',
+    'Present a measured real object using radian formulas.'
+  ],
+  terms: [
+    ['Radian', 'Radian', 'Радиан'],
+    ['Arc length', 'Yoy uzunligi', 'Длина дуги'],
+    ['Sector', 'Sektor', 'Сектор'],
+    ['Segment', 'Segment', 'Сегмент'],
+    ['Central angle', 'Markaziy burchak', 'Центральный угол'],
+    ['Conversion', 'O‘tkazish', 'Перевод'],
+    ['Chord', 'Vatar', 'Хорда'],
+    ['Subtend', 'Qarshi turmoq', 'Стягивать'],
+    ['Angular measure', 'Burchak o‘lchovi', 'Угловая мера']
+  ],
+  timing: [[14, 'What a radian is'], [18, 'Converting'], [24, 'Arc and sector'], [20, 'The segment'], [24, 'The project'], [8, 'Homework']],
+  sections: [
+    {
+      h: 'What a radian is',
+      html: `<div class="keybox"><div class="klabel">Definition</div>
+      One <b>radian</b> is the angle at the centre of a circle subtended by an arc equal in length to the
+      radius. It is a pure ratio ${m(f('arc', 'radius'))}, so it has no units.</div>
+      {{fig:radianSector:The angle whose arc equals the radius. Everything else follows by proportion.}}
+      <p>The whole circle has circumference ${m('2πr')}, so a full turn is ${m('2π')} radians:</p>
+      ${eq(m('2π radians = 360°') + '     ' + m('π radians = 180°') + '     ' + m('1 rad ≈ 57.3°'), true)}
+      <p><b>Why bother.</b> Degrees are an arbitrary Babylonian choice. Radians make the formulas below
+      as simple as possible — and in Grade 11 they make ${m("(sin x)′ = cos x")} true, which it is not in
+      degrees.</p>`
+    },
+    {
+      h: 'Converting',
+      html: `${eq('degrees → radians: multiply by ' + m(f('π', '180')) + '     radians → degrees: multiply by ' + m(f('180', 'π')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Degrees</th><th class="m">30°</th><th class="m">45°</th><th class="m">60°</th><th class="m">90°</th><th class="m">180°</th><th class="m">270°</th></tr></thead>
+      <tbody>
+        <tr><td>Radians</td><td class="m">${f('π', '6')}</td><td class="m">${f('π', '4')}</td><td class="m">${f('π', '3')}</td><td class="m">${f('π', '2')}</td><td class="m">π</td><td class="m">${f('3π', '2')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Set the calculator</span>
+      Every wrong answer in this topic starts with the calculator in the wrong mode. ${m('sin 1')} is
+      ${m('0.0175')} in degrees and ${m('0.8415')} in radians. Check the mode before every calculation.</div>`
+    },
+    {
+      h: 'Arc length and sector area',
+      html: `${eq(m('s = rθ') + '     ' + m('A = ' + f('1', '2') + 'r²θ') + '   (' + m('θ') + ' in radians)', true)}
+      <p>Both come from proportion: the sector is the fraction ${m(f('θ', '2π'))} of the whole circle, so
+      its arc is that fraction of ${m('2πr')} and its area that fraction of ${m('πr²')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>In degrees</th><th>In radians</th></tr></thead>
+      <tbody>
+        <tr><td class="m">s = ${f('θ', '360')} · 2πr</td><td class="m">s = rθ</td></tr>
+        <tr><td class="m">A = ${f('θ', '360')} · πr²</td><td class="m">A = ${f('1', '2')}r²θ</td></tr>
+      </tbody></table></div>
+      <p>The radian versions have no ${m('π')} and no ${m('360')} in them. That is the whole practical
+      argument for radians.</p>`
+    },
+    {
+      h: 'The segment, and the project',
+      html: `<p>A <b>segment</b> is the region between a chord and its arc — the sector minus the
+      triangle:</p>
+      ${eq(m('A_segment = ' + f('1', '2') + 'r²θ − ' + f('1', '2') + 'r² sin θ = ' + f('1', '2') + 'r²(θ − sin θ)'), true)}
+      <div class="keybox"><div class="klabel">The project — two lessons, in pairs</div>
+      Find a real circular object or arc: a plate, a clock face, a fan, an arch of a madrasa, a wheel.
+      Measure its radius and one angle. Then compute and present: the arc length, the sector area, the
+      segment area, and one quantity of your own choosing.<br>
+      One A3 sheet: a photograph or sketch with the measurements marked, the four calculations in
+      radians, and one sentence on the accuracy of your measurement (Grade 11 will call these bounds).</div>
+      <p>Two pairs present in the last twenty minutes. The class asks one question each: <i>“How much
+      would your answer change if your radius were 2 mm out?”</i></p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Convert ' + m('150°') + ' to radians and ' + m(f('5π', '6')) + ' to degrees.',
+      steps: [
+        [m('150 × ' + f('π', '180') + ' = ' + f('5π', '6')), ''],
+        [m(f('5π', '6') + ' × ' + f('180', 'π') + ' = 150°'), '']
+      ],
+      ans: m(f('5π', '6')) + ' and ' + m('150°')
+    },
+    {
+      q: 'A sector has radius ' + m('9') + ' cm and angle ' + m('1.2') + ' radians. Find its arc length and area.',
+      steps: [
+        [m('s = 9 × 1.2 = 10.8') + ' cm.', ''],
+        [m('A = ' + f('1', '2') + ' × 81 × 1.2'), ''],
+        [m('= 48.6') + ' cm².', '']
+      ],
+      ans: m('10.8') + ' cm; ' + m('48.6') + ' cm²'
+    },
+    {
+      q: 'Find the area of the segment cut off by a chord subtending ' + m(f('π', '3')) + ' at the centre of a circle of radius ' + m('6') + '.',
+      steps: [
+        ['Sector ' + m(f('1', '2') + ' × 36 × ' + f('π', '3') + ' = 6π ≈ 18.85') + '.', ''],
+        ['Triangle ' + m(f('1', '2') + ' × 36 × sin ' + f('π', '3') + ' = 18 × 0.866 ≈ 15.59') + '.', ''],
+        ['Difference.', '']
+      ],
+      ans: m('≈ 3.26') + ' square units'
+    }
+  ],
+  modelNote: 'Wrap a string of length r round the rim and mark the angle it subtends — that is one radian.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'Arc, sector and segment',
+    hint: 'Change the angle and watch all three quantities.'
+  },
+  quiz: [
+    { q: m('π') + ' radians equals:', a: [m('90°'), m('180°'), m('270°'), m('360°')], c: 1, why: 'Half a turn.' },
+    { q: m('60°') + ' in radians is:', a: [m(f('π', '6')), m(f('π', '4')), m(f('π', '3')), m(f('π', '2'))], c: 2, why: m('60 × ' + f('π', '180')) + '.' },
+    { q: 'Arc length in radians is:', a: [m('2πr'), m('rθ'), m(f('1', '2') + 'r²θ'), m(f('θ', '360') + '2πr')], c: 1, why: 'Radius times angle.' },
+    { q: 'Sector area in radians is:', a: [m('πr²'), m('rθ'), m(f('1', '2') + 'r²θ'), m('r²θ')], c: 2, why: 'Half radius squared times angle.' },
+    { q: 'A segment’s area is:', a: ['sector plus triangle', 'sector minus triangle', 'half the sector', 'the whole circle'], c: 1, why: 'Cut off by the chord.' }
+  ],
+  practice: {
+    easy: [
+      ['Convert ' + m('90°') + ' to radians', m(f('π', '2'))],
+      ['Convert ' + m('45°') + ' to radians', m(f('π', '4'))],
+      ['Convert ' + m('π') + ' to degrees', m('180°')],
+      ['Convert ' + m(f('π', '6')) + ' to degrees', m('30°')],
+      ['Arc length, ' + m('r = 5, θ = 2'), m('10')],
+      ['Sector area, ' + m('r = 4, θ = 1'), m('8')],
+      ['A full turn in radians', m('2π')]
+    ],
+    med: [
+      ['Convert ' + m('150°') + ' to radians', m(f('5π', '6'))],
+      ['Convert ' + m(f('3π', '4')) + ' to degrees', m('135°')],
+      ['Arc length, ' + m('r = 9, θ = 1.2'), m('10.8')],
+      ['Sector area, ' + m('r = 9, θ = 1.2'), m('48.6')],
+      ['A sector of arc 15 and radius 6: its angle', m('2.5') + ' rad'],
+      ['A sector of area 24 and radius 4: its angle', m('3') + ' rad'],
+      ['Perimeter of a sector, ' + m('r = 5, θ = 1.4'), m('17')]
+    ],
+    hard: [
+      ['Segment area, ' + m('r = 6, θ = ' + f('π', '3')), m('≈ 3.26')],
+      ['Segment area, ' + m('r = 10, θ = 2'), m('≈ 54.5')],
+      ['A sector of perimeter 20 and radius 6: its area', m('24')],
+      ['A sector of area 50 and arc 20: find ' + m('r') + ' and ' + m('θ'), m('r = 5, θ = 4')],
+      ['A chord of length 8 in a circle of radius 5: the segment area', m('≈ 7.9')],
+      ['A clock’s minute hand is 12 cm. Distance the tip travels in 20 minutes', m('8π') + ' ≈ ' + m('25.1') + ' cm'],
+      ['Two circles radius 5 with centres 6 apart: area of overlap', m('≈ 30.4')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Bring the finished project sheet to the first lesson of Quarter IV.',
+  homework: [
+    'Convert ' + m('120°') + ', ' + m('225°') + ' and ' + m('40°') + ' to radians; convert ' + m(f('7π', '6')) + ' and ' + m('2.5') + ' rad to degrees.',
+    'A sector has radius ' + m('12') + ' cm and angle ' + m('1.5') + ' rad. Find its arc length, area and perimeter.',
+    'Find the area of the segment cut off by a chord subtending ' + m(f('2π', '3')) + ' in a circle of radius ' + m('8') + '.',
+    'A sector of area ' + m('60') + ' cm² has radius ' + m('10') + ' cm. Find its angle in radians and in degrees.',
+    'Complete the project sheet: the object, the measurements, the four calculations and the accuracy sentence.'
+  ]
+});
