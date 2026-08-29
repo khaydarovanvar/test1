@@ -4919,3 +4919,1656 @@ G11_GEO.push({
     'Write your target for Quarter IV in one checkable sentence, and date it.'
   ]
 });
+
+/* ===================== QUARTER IV (16 hours) ===================== */
+
+/* ============================== 32 ============================== */
+G11_GEO.push({
+  id: 'g11-32', stream: 'geo', grade: 11, quarter: 4, lessons: '53–54', hours: 2,
+  title: 'Practical problems — surface area and volume in context',
+  subtitle: 'The formulas are known; the whole skill is reading which one the situation wants.',
+  uz: 'Geometry 11, amaliy masalalar', uzPage: 'pp. 281–290',
+  cam: 'IGX 13.x in context', camPage: 'Core & Extended, pp. 379–388', wb: 'Exercise 13.6',
+  objectives: [
+    'Choose between capacity, volume, curved area and total area from the wording.',
+    'Convert between cm³, litres and m³ correctly in a single calculation.',
+    'Use density and rate to turn a volume into a mass or a time.',
+    'Report an answer to an accuracy the data supports.'
+  ],
+  terms: [
+    ['Capacity', 'Sig‘im', 'Вместимость'],
+    ['Volume', 'Hajm', 'Объём'],
+    ['Density', 'Zichlik', 'Плотность'],
+    ['Flow rate', 'Oqim tezligi', 'Скорость потока'],
+    ['Wetted surface', 'Ho‘llanadigan sirt', 'Смачиваемая поверхность'],
+    ['Coverage', 'Sarf', 'Расход'],
+    ['Open solid', 'Ochiq jism', 'Открытое тело'],
+    ['Litre', 'Litr', 'Литр'],
+    ['Unit conversion', 'Birliklarni almashtirish', 'Перевод единиц'],
+    ['Degree of accuracy', 'Aniqlik darajasi', 'Степень точности']
+  ],
+  timing: [[15, 'Reading the question'], [25, 'Units'], [25, 'Density and rate'], [25, 'Which faces'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'Reading the question',
+      html: `<p>Nothing in Quarter IV is new. The whole difficulty is that the question no longer says
+      which formula it wants — it describes a situation, and you must decide.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>The question says</th><th>It wants</th><th>Watch for</th></tr></thead>
+      <tbody>
+        <tr><td>“how much will it hold”</td><td>capacity — volume from <b>inner</b> dimensions</td><td>litres, not cm³</td></tr>
+        <tr><td>“how much metal”</td><td>volume of material — a difference</td><td>outer minus inner</td></tr>
+        <tr><td>“how much paint”</td><td>surface area</td><td>which faces are painted</td></tr>
+        <tr><td>“how much label”</td><td>curved surface only</td><td>no circles</td></tr>
+        <tr><td>“how heavy”</td><td>volume × density</td><td>units of density</td></tr>
+        <tr><td>“how long to fill”</td><td>volume ÷ rate</td><td>rate units</td></tr>
+      </tbody></table></div>
+      {{fig:cylinderNet:A cylinder unrolled — the label is the rectangle, the lid and base the two circles.}}
+      <div class="keybox"><div class="klabel">Three questions before any arithmetic</div>
+      <ul>
+        <li>Am I asked for a <b>volume</b> or an <b>area</b>?</li>
+        <li>Is the object <b>open or closed</b>, <b>solid or hollow</b>?</li>
+        <li>What <b>units</b> does the answer want?</li>
+      </ul>
+      Answer all three in writing and the calculation itself is Grade 11 Quarter II work.</div>`
+    },
+    {
+      h: 'Units',
+      html: `${eq(m('1 litre = 1000 cm³') + '     ' + m('1 m³ = 1000 litres = 1 000 000 cm³'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given in</th><th>Answer wanted in</th><th>Multiply by</th></tr></thead>
+      <tbody>
+        <tr><td class="m">cm³</td><td class="m">litres</td><td class="m">÷ 1000</td></tr>
+        <tr><td class="m">m³</td><td class="m">litres</td><td class="m">× 1000</td></tr>
+        <tr><td class="m">m³</td><td class="m">cm³</td><td class="m">× 10⁶</td></tr>
+        <tr><td class="m">m²</td><td class="m">cm²</td><td class="m">× 10⁴</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Convert the lengths first, not the answer</span>
+      A trough ${m('2.5')} m long with a cross-section in cm has two different units in one formula.
+      Convert ${m('2.5')} m to ${m('250')} cm <b>before</b> multiplying; converting the volume afterwards
+      needs ${m('10⁶')}, and that is where the factor-of-a-thousand errors come from.</div>
+      <p>The squared and cubed conversion factors are the ones that catch people:
+      ${m('1 m² = 10 000 cm²')} and ${m('1 m³ = 1 000 000 cm³')}, not ${m('100')} and ${m('100')}.</p>`
+    },
+    {
+      h: 'Density and rate',
+      html: `${eq(m('mass = volume × density') + '     ' + m('time = ' + f('volume', 'rate')) + '     ' + m('paint = ' + f('area', 'coverage')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quantity</th><th>Typical units</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>density</td><td class="m">g/cm³</td><td>steel ${m('7.8')}, water ${m('1.0')}, aluminium ${m('2.7')}</td></tr>
+        <tr><td>flow rate</td><td class="m">litres/min</td><td>a tap ${m('12')} l/min</td></tr>
+        <tr><td>coverage</td><td class="m">m²/litre</td><td>paint ${m('10')} m²/l</td></tr>
+      </tbody></table></div>
+      <p><b>Worked chain.</b> A steel pipe, outer radius ${m('9')} cm, inner ${m('7')} cm, length
+      ${m('2')} m:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>length in cm</td><td class="m">2 m = 200 cm</td><td class="m">200</td></tr>
+        <tr><td>cross-section</td><td class="m">π(81 − 49)</td><td class="m">32π cm²</td></tr>
+        <tr><td>volume</td><td class="m">32π × 200</td><td class="m">6400π ≈ 20 106 cm³</td></tr>
+        <tr><td>mass</td><td class="m">× 7.8 g/cm³</td><td class="m">≈ 157 kg</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Keep ${m('π')} until the last line</div>
+      ${m('6400π')} is exact; ${m('20 106')} is not. Rounding at the volume stage and again at the mass
+      stage compounds the error. One rounding, at the end.</div>`
+    },
+    {
+      h: 'Which faces',
+      html: `<p>Surface-area questions turn on which faces exist and which are wanted.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Object</th><th>Area wanted</th><th>Formula</th></tr></thead>
+      <tbody>
+        <tr><td>a label round a tin</td><td>curved only</td><td class="m">2πrh</td></tr>
+        <tr><td>a closed tin</td><td>total</td><td class="m">2πr² + 2πrh</td></tr>
+        <tr><td>an open cylindrical tank</td><td>base + curved</td><td class="m">πr² + 2πrh</td></tr>
+        <tr><td>a silo painted above ground</td><td>curved + dome</td><td class="m">2πrh + 2πr²</td></tr>
+        <tr><td>a bowl, inside and out</td><td>both curved surfaces</td><td class="m">2π(R² + r²) + rim</td></tr>
+        <tr><td>a conical tent with a floor</td><td>curved + base</td><td class="m">πrl + πr²</td></tr>
+      </tbody></table></div>
+      {{fig:coneNet:A cone unrolled — the sector is the curved surface, the circle the base.}}
+      <div class="warn"><span class="wl">The commonest single error in the whole quarter</span>
+      Using ${m('2πr² + 2πrh')} for an open tank. If the question says <b>open</b>, <b>tank</b>,
+      <b>trough</b>, <b>bowl</b> or <b>tent without a floor</b>, at least one circle is missing. Read the
+      noun, not just the numbers.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A cylindrical tank of radius ' + m('1.5') + ' m and height ' + m('4') + ' m is open at the top. Find its capacity in litres and the area to be painted inside and out (not the base).',
+      steps: [
+        [m('V = π(2.25)(4) = 9π ≈ 28.27') + ' m³.', ''],
+        [m('= 28 270') + ' litres.', m('× 1000') + '.'],
+        ['Curved area ' + m('2π(1.5)(4) = 12π ≈ 37.7') + ' m², twice for inside and out.', ''],
+        [m('≈ 75.4') + ' m².', '']
+      ],
+      ans: m('≈ 28 300') + ' litres; ' + m('≈ 75.4') + ' m²'
+    },
+    {
+      q: 'A steel pipe has outer radius ' + m('9') + ' cm, inner ' + m('7') + ' cm and length ' + m('2') + ' m. Find its mass at ' + m('7.8') + ' g/cm³.',
+      steps: [
+        ['Length ' + m('200') + ' cm.', 'Convert first.'],
+        [m('V = π(81 − 49)(200) = 6400π'), ''],
+        [m('≈ 20 106') + ' cm³.', ''],
+        [m('m ≈ 156 800') + ' g ' + m('≈ 157') + ' kg.', '']
+      ],
+      ans: m('≈ 157') + ' kg'
+    },
+    {
+      q: 'A tap delivering ' + m('12') + ' litres a minute fills a cuboid tank ' + m('1.2 × 0.8 × 0.9') + ' m. How long does it take?',
+      steps: [
+        [m('V = 0.864') + ' m³.', ''],
+        [m('= 864') + ' litres.', ''],
+        [m('t = ' + f('864', '12') + ' = 72') + ' minutes.', ''],
+        ['That is ' + m('1') + ' h ' + m('12') + ' min.', '']
+      ],
+      ans: m('72') + ' minutes'
+    },
+    {
+      q: 'A conical tent has base radius ' + m('3') + ' m and slant height ' + m('5') + ' m, with a groundsheet. Find the canvas needed and the air space inside.',
+      steps: [
+        ['Curved ' + m('πrl = 15π ≈ 47.1') + ' m².', ''],
+        ['Groundsheet ' + m('πr² = 9π ≈ 28.3') + ' m².', ''],
+        ['Total ' + m('24π ≈ 75.4') + ' m².', ''],
+        ['Height ' + m(sr('25 − 9') + ' = 4') + '; ' + m('V = ' + f('1', '3') + 'π(9)(4) = 12π ≈ 37.7') + ' m³.', '']
+      ],
+      ans: m('≈ 75.4') + ' m² of material; ' + m('≈ 37.7') + ' m³'
+    }
+  ],
+  modelNote: 'Bring a tin, a bottle and a funnel; the class decides for each which formula the label, the contents and the metal need.',
+  interactive: {
+    type: 'solidVolume',
+    title: 'A cylinder, and what it holds',
+    hint: 'Change r and h and watch the volume and the areas separately.',
+    kind: 'cylinder'
+  },
+  quiz: [
+    { q: '“How much will it hold” asks for:', a: ['surface area', 'capacity', 'mass', 'the curved area'], c: 1, why: 'Inner volume.' },
+    { q: m('1') + ' m³ in litres:', a: [m('100'), m('1000'), m('10 000'), m('1 000 000')], c: 1, why: 'By definition.' },
+    { q: m('1') + ' m² in cm²:', a: [m('100'), m('1000'), m('10 000'), m('1 000 000')], c: 2, why: 'Squared factor.' },
+    { q: 'An open cylindrical tank has area:', a: [m('2πr² + 2πrh'), m('πr² + 2πrh'), m('2πrh'), m('πr²')], c: 1, why: 'One circle only.' },
+    { q: 'A label on a tin needs:', a: [m('2πrh'), m('2πr² + 2πrh'), m('πr²'), m('πrl')], c: 0, why: 'Curved only.' },
+    { q: 'Mass equals:', a: ['volume ÷ density', 'volume × density', 'area × density', 'density ÷ volume'], c: 1, why: 'The definition.' },
+    { q: 'Rounding should happen:', a: ['at each step', 'once, at the end', 'never', 'twice'], c: 1, why: 'Errors compound.' }
+  ],
+  practice: {
+    easy: [
+      ['Capacity of a cylinder ' + m('r = 2, h = 5') + ' cm, in cm³', m('20π') + ' ≈ ' + m('62.8')],
+      ['Same, in litres', m('≈ 0.0628')],
+      [m('1') + ' m³ in litres', m('1000')],
+      [m('2.5') + ' m in cm', m('250')],
+      ['Label area for ' + m('r = 3, h = 10'), m('60π') + ' ≈ ' + m('188')],
+      ['Closed tin total area, ' + m('r = 3, h = 10'), m('78π') + ' ≈ ' + m('245')],
+      ['Mass of ' + m('1000') + ' cm³ of steel at ' + m('7.8') + ' g/cm³', m('7.8') + ' kg']
+    ],
+    med: [
+      ['Open tank ' + m('r = 1.5, h = 4') + ' m: capacity in litres', m('≈ 28 300')],
+      ['Same tank: area painted inside and out, base excluded', m('≈ 75.4') + ' m²'],
+      ['Pipe ' + m('R = 9, r = 7') + ' cm, ' + m('L = 2') + ' m: volume of metal', m('6400π') + ' ≈ ' + m('20 100') + ' cm³'],
+      ['Same pipe: mass at ' + m('7.8') + ' g/cm³', m('≈ 157') + ' kg'],
+      ['Tank ' + m('1.2 × 0.8 × 0.9') + ' m at ' + m('12') + ' l/min: filling time', m('72') + ' min'],
+      ['Conical tent ' + m('r = 3, l = 5') + ' with floor: material', m('24π') + ' ≈ ' + m('75.4') + ' m²'],
+      ['Same tent: air space', m('12π') + ' ≈ ' + m('37.7') + ' m³']
+    ],
+    hard: [
+      ['A silo, cylinder ' + m('r = 4, h = 10') + ' m with a hemispherical top: volume and painted area above ground', m(f('608π', '3')) + ' ≈ ' + m('637') + ' m³; ' + m('112π') + ' ≈ ' + m('352') + ' m²'],
+      ['Paint at ' + m('10') + ' m²/litre for that silo: litres needed', m('≈ 36') + ' litres'],
+      ['A hemispherical bowl of inner radius ' + m('12') + ' cm: capacity in litres', m('≈ 3.62') + ' litres'],
+      ['A trough with trapezium section ' + m('40/60') + ' cm, depth ' + m('30') + ' cm, length ' + m('3') + ' m: capacity in litres', m('450') + ' litres'],
+      ['A gutter is half a cylinder of radius ' + m('8') + ' cm and length ' + m('6') + ' m: material area', m('480π') + ' ≈ ' + m('1508') + ' cm² × … = ' + m('≈ 1.51') + ' m²'],
+      ['A tank of ' + m('2000') + ' litres is a cylinder with ' + m('h = 2r') + ': find ' + m('r'), m('≈ 0.585') + ' m'],
+      ['A ball of radius ' + m('20') + ' cm is painted at ' + m('2') + ' so‘m per cm²: the cost', m('3200π') + ' ≈ ' + m('10 050') + ' so‘m']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Answer the three reading questions in writing before every calculation.',
+  homework: [
+    'A cylindrical water tank is open at the top, radius ' + m('1.2') + ' m, height ' + m('3') + ' m. Find its capacity in litres and the area of metal used.',
+    'A copper pipe has outer radius ' + m('5') + ' cm, inner ' + m('4') + ' cm and length ' + m('3') + ' m. Find the mass of copper at ' + m('8.9') + ' g/cm³.',
+    'A tap delivers ' + m('15') + ' litres a minute into a tank ' + m('1.5 × 1.0 × 1.2') + ' m. Find the time to fill it.',
+    'A conical tent of base radius ' + m('2.5') + ' m and height ' + m('6') + ' m has no groundsheet. Find the canvas needed and the volume inside.',
+    'For each of a tin label, an open trough and a solid steel ball, say which formula is needed and why, in one sentence each.'
+  ]
+});
+
+/* ============================== 33 ============================== */
+G11_GEO.push({
+  id: 'g11-33', stream: 'geo', grade: 11, quarter: 4, lessons: '55–56', hours: 2,
+  title: 'Optimisation of a container [Cambridge insert]',
+  subtitle: 'One constraint, one variable, one derivative — and the cheapest tin in the shop.',
+  uz: 'Geometry 11, amaliy masalalar', uzPage: 'pp. 291–300',
+  cam: 'P1 9.3', camPage: 'Pure Mathematics 1, pp. 196–204', wb: 'Exercise 9C',
+  objectives: [
+    'Form an expression for the quantity to be optimised.',
+    'Use the constraint to reduce it to one variable.',
+    'Differentiate, solve f′ = 0 and verify the nature of the stationary point.',
+    'Interpret the answer, including any practical restriction.'
+  ],
+  terms: [
+    ['Optimisation', 'Optimallashtirish', 'Оптимизация'],
+    ['Constraint', 'Cheklov', 'Ограничение'],
+    ['Objective function', 'Maqsad funksiyasi', 'Целевая функция'],
+    ['Stationary point', 'Statsionar nuqta', 'Стационарная точка'],
+    ['Minimum', 'Minimum', 'Минимум'],
+    ['Maximum', 'Maksimum', 'Максимум'],
+    ['Second derivative', 'Ikkinchi hosila', 'Вторая производная'],
+    ['Feasible range', 'Mumkin bo‘lgan oraliq', 'Допустимый интервал'],
+    ['Cost function', 'Narx funksiyasi', 'Функция стоимости'],
+    ['Aspect ratio', 'Nisbat', 'Отношение']
+  ],
+  timing: [[15, 'The four steps'], [30, 'The closed cylinder'], [25, 'Open containers'], [25, 'Cost, not area'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'The four steps',
+      html: `<div class="keybox"><div class="klabel">Every optimisation question, in four steps</div>
+      <ol>
+        <li>Write the quantity to be optimised (the <b>objective</b>) in terms of the dimensions.</li>
+        <li>Write the <b>constraint</b>, and use it to eliminate one variable.</li>
+        <li>Differentiate, set ${m('= 0')}, solve.</li>
+        <li>Verify it is a minimum (or maximum) and answer the question asked.</li>
+      </ol></div>
+      {{fig:optimBox:The classic box — one constraint, one variable, one derivative.}}
+      <div class="warn"><span class="wl">Step 4 is a real mark</span>
+      Finding ${m('r')} is not the answer if the question asked for the <b>area</b>, or for ${m('h')}, or
+      for the ratio ${m(f('h', 'r'))}. And a stationary point must be shown to be a minimum, by
+      ${m('f″ > 0')} or a sign change of ${m('f′')}.</div>`
+    },
+    {
+      h: 'The closed cylinder',
+      html: `<p>The standard question: a closed cylindrical tin of fixed volume ${m('V')} — what shape uses
+      least metal?</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>objective</td><td class="m">S = 2πr² + 2πrh</td></tr>
+        <tr><td>constraint</td><td class="m">V = πr²h ⇒ h = ${f('V', 'πr²')}</td></tr>
+        <tr><td>eliminate</td><td class="m">S = 2πr² + ${f('2V', 'r')}</td></tr>
+        <tr><td>differentiate</td><td class="m">${f('dS', 'dr')} = 4πr − ${f('2V', 'r²')}</td></tr>
+        <tr><td>solve</td><td class="m">4πr³ = 2V ⇒ r = ∛${f('V', '2π')}</td></tr>
+        <tr><td>verify</td><td class="m">${f('d²S', 'dr²')} = 4π + ${f('4V', 'r³')} > 0 — a minimum</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The answer in one sentence</div>
+      Substituting back gives ${m('h = 2r')}: <b>the least-metal closed tin is as tall as it is wide</b>.
+      Its height equals its diameter, and it fits exactly inside a cube. The result does not depend on
+      ${m('V')} at all.</div>
+      <p><b>Example.</b> ${m('V = 2000')} cm³ gives ${m('r = ∛' + f('2000', '2π') + ' ≈ 6.83')} cm and
+      ${m('h ≈ 13.66')} cm, with ${m('S ≈ 879')} cm². A tin of the same volume with ${m('r = 4')} needs
+      ${m('S ≈ 1101')} cm² — a quarter more metal for the same contents.</p>`
+    },
+    {
+      h: 'Open containers',
+      html: `<p>Remove a face and the objective changes, so the answer does too.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Container</th><th>Objective</th><th>Optimal shape</th></tr></thead>
+      <tbody>
+        <tr><td>closed cylinder</td><td class="m">2πr² + 2πrh</td><td class="m">h = 2r</td></tr>
+        <tr><td>open cylinder (no lid)</td><td class="m">πr² + 2πrh</td><td class="m">h = r</td></tr>
+        <tr><td>closed cuboid, square base</td><td class="m">2x² + 4xh</td><td class="m">h = x</td></tr>
+        <tr><td>open cuboid, square base</td><td class="m">x² + 4xh</td><td class="m">h = ${f('x', '2')}</td></tr>
+      </tbody></table></div>
+      <p>Every one is the same four steps. Note the pattern: removing the lid makes the optimal container
+      <b>shallower</b>, because height is now relatively more expensive than base.</p>
+      <div class="warn"><span class="wl">A cube is optimal only when the box is closed</span>
+      The closed cuboid of least area for a given volume is a cube. The open one is <b>not</b> — it is
+      half as tall as it is wide. Assuming a cube without checking is a common and costly shortcut.</div>`
+    },
+    {
+      h: 'Cost, not area',
+      html: `<p>When materials differ in price, minimise the <b>cost</b>, not the area — the four steps are
+      unchanged, but the objective carries the prices.</p>
+      <p><b>Example.</b> An open tank with a square base of side ${m('x')} and height ${m('h')} holds
+      ${m('32')} m³. The base costs ${m('10')} units per m², the sides ${m('5')}:</p>
+      ${eq(m('C = 10x² + 5(4xh) = 10x² + 20xh') + ',   ' + m('h = ' + f('32', 'x²')), true)}
+      ${eq(m('C = 10x² + ' + f('640', 'x')) + ',   ' + m(f('dC', 'dx') + ' = 20x − ' + f('640', 'x²') + ' = 0'), true)}
+      <p>So ${m('x³ = 32')}, ${m('x ≈ 3.17')} m, ${m('h ≈ 3.17')} m — and here ${m('h = x')}, not
+      ${m(f('x', '2'))}, because the base is twice as expensive and the design compensates by making it
+      smaller.</p>
+      <div class="keybox"><div class="klabel">Check the feasible range</div>
+      A dimension must be positive, and often has an upper bound from the physical situation (a sheet of
+      given size, a shelf of given height). If the stationary point lies outside that range, the optimum
+      is at an <b>endpoint</b> — and the derivative never finds it. State the range before
+      differentiating.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A closed cylindrical tin holds ' + m('2000') + ' cm³. Find the radius and height that use least metal.',
+      steps: [
+        [m('S = 2πr² + ' + f('4000', 'r')), 'After eliminating ' + m('h') + '.'],
+        [m(f('dS', 'dr') + ' = 4πr − ' + f('4000', 'r²') + ' = 0'), ''],
+        [m('r³ = ' + f('1000', 'π') + ' ⇒ r ≈ 6.83'), ''],
+        [m('h = ' + f('2000', 'π(46.6)') + ' ≈ 13.66 = 2r'), m('S″ > 0') + ', so a minimum.']
+      ],
+      ans: m('r ≈ 6.83') + ' cm, ' + m('h ≈ 13.66') + ' cm'
+    },
+    {
+      q: 'An open cylindrical tank holds ' + m('54π') + ' cm³. Find the radius that uses least metal.',
+      steps: [
+        [m('S = πr² + 2πrh') + ', ' + m('h = ' + f('54', 'r²')), ''],
+        [m('S = πr² + ' + f('108π', 'r')), ''],
+        [m(f('dS', 'dr') + ' = 2πr − ' + f('108π', 'r²') + ' = 0 ⇒ r³ = 54'), ''],
+        [m('r ≈ 3.78') + ', ' + m('h ≈ 3.78 = r') + '.', '']
+      ],
+      ans: m('r = ∛54 ≈ 3.78') + ' cm, with ' + m('h = r')
+    },
+    {
+      q: 'An open tank with a square base holds ' + m('32') + ' m³. The base costs ' + m('10') + ' and the sides ' + m('5') + ' units per m². Find the cheapest dimensions.',
+      steps: [
+        [m('C = 10x² + 20xh') + ', ' + m('h = ' + f('32', 'x²')), ''],
+        [m('C = 10x² + ' + f('640', 'x')), ''],
+        [m(f('dC', 'dx') + ' = 20x − ' + f('640', 'x²') + ' = 0 ⇒ x³ = 32'), ''],
+        [m('x ≈ 3.17') + ' m, ' + m('h ≈ 3.17') + ' m; ' + m('C ≈ 302') + ' units.', '']
+      ],
+      ans: m('x = h ≈ 3.17') + ' m'
+    },
+    {
+      q: 'A rectangular sheet ' + m('40 × 40') + ' cm has equal squares of side ' + m('x') + ' cut from the corners; the flaps fold up. Find ' + m('x') + ' for the greatest volume.',
+      steps: [
+        [m('V = x(40 − 2x)²') + ', with ' + m('0 < x < 20') + '.', 'State the range.'],
+        [m(f('dV', 'dx') + ' = (40 − 2x)² − 4x(40 − 2x)'), ''],
+        [m('(40 − 2x)(40 − 6x) = 0 ⇒ x = 20') + ' (rejected) or ' + m('x = ' + f('20', '3')), ''],
+        [m('x ≈ 6.67') + ' cm, ' + m('V ≈ 4741') + ' cm³.', '']
+      ],
+      ans: m('x = ' + f('20', '3')) + ' ≈ ' + m('6.67') + ' cm'
+    }
+  ],
+  modelNote: 'Bring three tins of the same volume but different shapes; the class predicts which uses least metal, then measures.',
+  interactive: {
+    type: 'optimise',
+    title: 'The cheapest container',
+    hint: 'Move the dimension and watch the objective bottom out.'
+  },
+  quiz: [
+    { q: 'The constraint is used to:', a: ['check the answer', 'eliminate a variable', 'differentiate', 'nothing'], c: 1, why: 'One variable is needed.' },
+    { q: 'A minimum is confirmed by:', a: [m('f′ = 0'), m('f″ > 0'), m('f″ < 0'), m('f = 0')], c: 1, why: 'The curve bends up.' },
+    { q: 'A closed cylinder of least area has:', a: [m('h = r'), m('h = 2r'), m('h = ' + f('r', '2')), m('h = 4r')], c: 1, why: 'Height equals diameter.' },
+    { q: 'An open cylinder of least area has:', a: [m('h = r'), m('h = 2r'), m('h = ' + f('r', '2')), m('h = 3r')], c: 0, why: 'No lid.' },
+    { q: 'A closed cuboid of least area is:', a: ['a cube', 'twice as tall as wide', 'half as tall as wide', 'any shape'], c: 0, why: m('h = x') + '.' },
+    { q: 'An open cuboid of least area has:', a: [m('h = x'), m('h = ' + f('x', '2')), m('h = 2x'), m('h = 4x')], c: 1, why: 'Shallower without a lid.' },
+    { q: 'If the stationary point is outside the feasible range:', a: ['there is no answer', 'the optimum is at an endpoint', 'differentiate again', 'ignore the range'], c: 1, why: 'State the range first.' }
+  ],
+  practice: {
+    easy: [
+      ['Objective for a closed cylinder', m('2πr² + 2πrh')],
+      ['Objective for an open cylinder', m('πr² + 2πrh')],
+      ['Constraint for a cylinder of volume ' + m('V'), m('h = ' + f('V', 'πr²'))],
+      ['Optimal shape of a closed cylinder', m('h = 2r')],
+      ['Optimal shape of an open cylinder', m('h = r')],
+      ['Optimal closed cuboid with square base', m('h = x') + ' — a cube'],
+      ['Test for a minimum', m('f″ > 0')]
+    ],
+    med: [
+      ['Closed tin of ' + m('2000') + ' cm³: the radius', m('≈ 6.83') + ' cm'],
+      ['Same tin: the height', m('≈ 13.66') + ' cm'],
+      ['Same tin: the least area', m('≈ 879') + ' cm²'],
+      ['Open tank of ' + m('54π') + ' cm³: the radius', m('∛54') + ' ≈ ' + m('3.78')],
+      ['Open cuboid, square base, volume ' + m('108') + ': the base edge', m('x = 6')],
+      ['Box from a ' + m('40 × 40') + ' sheet: the cut ' + m('x'), m(f('20', '3')) + ' ≈ ' + m('6.67')],
+      ['Same box: the greatest volume', m('≈ 4741') + ' cm³']
+    ],
+    hard: [
+      ['Open tank, ' + m('32') + ' m³, base ' + m('10') + ' and sides ' + m('5') + ' per m²: the base edge', m('≈ 3.17') + ' m'],
+      ['Same: the least cost', m('≈ 302') + ' units'],
+      ['A cylinder inscribed in a sphere of radius ' + m('R') + ': the greatest volume', m(f('4πR³', '3' + sr('3')))],
+      ['A cone of slant ' + m('l') + ': the greatest volume', m('h = ' + f('l', sr('3')))],
+      ['A closed cylinder where the ends cost twice the side: the optimal ' + m(f('h', 'r')), m('4')],
+      ['A box from a ' + m('30 × 50') + ' sheet: the cut ' + m('x') + ' for greatest volume', m('≈ 6.07') + ' cm'],
+      ['A cylinder of volume ' + m('V') + ' inscribed in a cone of radius ' + m('R') + ' and height ' + m('H') + ': the greatest ' + m('V'), m(f('4πR²H', '27'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the four steps as headings and fill them in; the structure carries the method marks.',
+  homework: [
+    'A closed cylindrical tin holds ' + m('1000') + ' cm³. Find the radius and height that use least metal, and verify the minimum.',
+    'An open cylindrical tank holds ' + m('16π') + ' m³. Find the radius that uses least material.',
+    'An open box with a square base holds ' + m('500') + ' cm³. Find the dimensions of least surface area.',
+    'Squares of side ' + m('x') + ' are cut from the corners of a ' + m('24 × 36') + ' cm sheet and the flaps folded up. Find ' + m('x') + ' for the greatest volume, stating the feasible range.',
+    'An open tank of ' + m('18') + ' m³ has a square base costing ' + m('8') + ' and sides costing ' + m('4') + ' units per m². Find the cheapest dimensions.'
+  ]
+});
+
+/* ============================== 34 ============================== */
+G11_GEO.push({
+  id: 'g11-34', stream: 'geo', grade: 11, quarter: 4, lessons: '57–58', hours: 2,
+  title: 'Test practice — the state final attestation format',
+  subtitle: 'Thirty questions, forty minutes, no working shown — a different skill from the one practised all year.',
+  uz: 'Geometry 11, DTM formati', uzPage: 'pp. 301–310',
+  cam: 'Examination technique', camPage: 'Core & Extended, pp. 389–392', wb: 'Test paper G1',
+  objectives: [
+    'Work a multiple-choice geometry question in under 80 seconds.',
+    'Use elimination, estimation and special cases when a full solution is too slow.',
+    'Recognise the distractors that mark schemes deliberately include.',
+    'Manage the whole paper: order, timing and the last five minutes.'
+  ],
+  terms: [
+    ['Attestation (final test)', 'Yakuniy attestatsiya', 'Итоговая аттестация'],
+    ['Multiple choice', 'Test savoli', 'Тестовый вопрос'],
+    ['Distractor', 'Chalg‘ituvchi javob', 'Отвлекающий ответ'],
+    ['Elimination', 'Chiqarib tashlash', 'Исключение'],
+    ['Estimation', 'Baholash', 'Оценка'],
+    ['Special case', 'Xususiy hol', 'Частный случай'],
+    ['Time per question', 'Savolga vaqt', 'Время на вопрос'],
+    ['Answer sheet', 'Javoblar varaqasi', 'Бланк ответов']
+  ],
+  timing: [[10, 'The format'], [40, 'A practice block of 20'], [20, 'Marking and analysis'], [20, 'The four fast techniques'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'The format',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Feature</th><th>What it means for you</th></tr></thead>
+      <tbody>
+        <tr><td>30 questions, 40 minutes</td><td>${m('80')} seconds each, on average</td></tr>
+        <tr><td>four options, one correct</td><td>elimination is a legitimate method</td></tr>
+        <tr><td>no working marked</td><td>a correct guess scores the same as a proof</td></tr>
+        <tr><td>no negative marking</td><td><b>never</b> leave a question blank</td></tr>
+        <tr><td>calculator usually not allowed</td><td>answers are designed to be exact</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The order to work in</div>
+      <ol>
+        <li><b>First pass</b> (20 min): every question you can do in under a minute. Mark the rest.</li>
+        <li><b>Second pass</b> (15 min): the marked ones, hardest last.</li>
+        <li><b>Last 5 minutes</b>: transfer everything to the answer sheet, and fill every blank with
+        your best elimination.</li>
+      </ol>
+      A question you cannot do in ${m('80')} seconds costs you two you could have done. Leaving it is not
+      giving up; it is arithmetic.</div>`
+    },
+    {
+      h: 'The four fast techniques',
+      html: `<p><b>1. Elimination by size.</b> A volume must be positive, a probability at most ${m('1')},
+      an angle in a triangle under ${m('180°')}, a surface area larger than any one face. Two of four
+      options usually fail one of these tests.</p>
+      <p><b>2. Estimation.</b> ${m('π ≈ 3')}, ${m(sr('2') + ' ≈ 1.4')}, ${m(sr('3') + ' ≈ 1.7')}. A cone
+      of radius ${m('5')} and height ${m('12')} has volume about ${m(f('1', '3') + '(3)(25)(12) = 300')} —
+      enough to pick between ${m('100π')} and ${m('300π')}.</p>
+      <p><b>3. Special cases.</b> If the answer must hold for every triangle, test the equilateral one.
+      If for every ${m('n')}, test ${m('n = 1')} and ${m('n = 2')}. An option that fails a special case is
+      out.</p>
+      <p><b>4. Work backwards from the options.</b> Substituting four given answers is often faster than
+      solving. If the options for a radius are ${m('2, 3, 4, 6')}, computing ${m('V')} for each takes
+      less time than solving a cubic.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Fast route</th><th>Time</th></tr></thead>
+      <tbody>
+        <tr><td>volume of a cone, ${m('r = 5, h = 12')}</td><td>estimate ${m('≈ 314')}</td><td class="m">10 s</td></tr>
+        <tr><td>surface area of a sphere of radius ${m('3')}</td><td class="m">4π(9) = 36π</td><td class="m">5 s</td></tr>
+        <tr><td>a ratio of similar solids ${m('8 : 27')}</td><td>cube roots ${m('2 : 3')}</td><td class="m">10 s</td></tr>
+        <tr><td>which solid has ${m('V = ' + f('1', '3') + 'Bh')}</td><td>recall</td><td class="m">3 s</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'The distractors',
+      html: `<p>Wrong options are not random. Each one is the answer to a specific mistake, which means you
+      can recognise your own error in the list.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>The distractor is</th><th>The mistake it catches</th></tr></thead>
+      <tbody>
+        <tr><td>three times the right answer</td><td>the missing ${m(f('1', '3'))} in a cone or pyramid</td></tr>
+        <tr><td>half or double</td><td>radius used for diameter</td></tr>
+        <tr><td>the curved area when total was asked</td><td>reading</td></tr>
+        <tr><td>${m('k')} instead of ${m('k²')} or ${m('k³')}</td><td>similar-solids ratios</td></tr>
+        <tr><td>the slant instead of the height</td><td>a cone volume</td></tr>
+        <tr><td>an answer in cm³ when litres were asked</td><td>units</td></tr>
+      </tbody></table></div>
+      {{fig:similarSolids:k, k², k³ — three of the four options in every similarity question.}}
+      <div class="warn"><span class="wl">If your answer is exactly one of the options, check anyway</span>
+      Finding your answer in the list is <b>not</b> confirmation — the distractors were built from the
+      likely errors, so a wrong answer is more likely to appear than a random number would be. Spend the
+      last five seconds on the reading check: total or curved? radius or diameter? cm³ or litres?</div>`
+    },
+    {
+      h: 'A practice block',
+      html: `<p>Twenty questions, twenty-five minutes. Work them in the order given, marking anything that
+      takes longer than a minute.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>№</th><th>Question</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1</td><td>Volume of a cube of edge ${m('5')}</td><td class="m">125</td></tr>
+        <tr><td class="m">2</td><td>Space diagonal of that cube</td><td class="m">5${sr('3')}</td></tr>
+        <tr><td class="m">3</td><td>Surface area of a sphere of radius ${m('3')}</td><td class="m">36π</td></tr>
+        <tr><td class="m">4</td><td>Volume of a cone, ${m('r = 3, h = 4')}</td><td class="m">12π</td></tr>
+        <tr><td class="m">5</td><td>Slant height of that cone</td><td class="m">5</td></tr>
+        <tr><td class="m">6</td><td>Curved area of that cone</td><td class="m">15π</td></tr>
+        <tr><td class="m">7</td><td>Volume of a sphere of radius ${m('6')}</td><td class="m">288π</td></tr>
+        <tr><td class="m">8</td><td>Volume of a pyramid, ${m('B = 36, h = 5')}</td><td class="m">60</td></tr>
+        <tr><td class="m">9</td><td>Two similar solids, volumes ${m('8 : 27')}: length ratio</td><td class="m">2 : 3</td></tr>
+        <tr><td class="m">10</td><td>Same pair: area ratio</td><td class="m">4 : 9</td></tr>
+        <tr><td class="m">11</td><td>Volume of a cylinder, ${m('r = 2, h = 7')}</td><td class="m">28π</td></tr>
+        <tr><td class="m">12</td><td>Total area of that cylinder</td><td class="m">36π</td></tr>
+        <tr><td class="m">13</td><td>Angle of a cube’s space diagonal with the base</td><td class="m">≈ 35.3°</td></tr>
+        <tr><td class="m">14</td><td>Frustum volume, ${m('R = 4, r = 2, h = 3')}</td><td class="m">28π</td></tr>
+        <tr><td class="m">15</td><td>Sector angle of the net of a cone, ${m('r = 3, l = 9')}</td><td class="m">120°</td></tr>
+        <tr><td class="m">16</td><td>Capacity in litres of ${m('2000')} cm³</td><td class="m">2</td></tr>
+        <tr><td class="m">17</td><td>Curved area of a hemisphere of radius ${m('5')}</td><td class="m">50π</td></tr>
+        <tr><td class="m">18</td><td>Volume of a prism, ${m('B = 15, h = 8')}</td><td class="m">120</td></tr>
+        <tr><td class="m">19</td><td>A cap of height ${m('2')} on a sphere of radius ${m('5')}: its curved area</td><td class="m">20π</td></tr>
+        <tr><td class="m">20</td><td>Closed cylinder of least area for a given ${m('V')}: ${m(f('h', 'r'))}</td><td class="m">2</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Mark it, then count the types</div>
+      Do not count the score. Count how many were lost to <b>reading</b>, how many to <b>a formula</b>,
+      and how many to <b>arithmetic</b>. Those three numbers say what to practise; the score says
+      nothing.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A cone has ' + m('r = 5') + ' and ' + m('h = 12') + '. Which is its volume: ' + m('100π') + ', ' + m('300π') + ', ' + m('60π') + ' or ' + m('900π') + '?',
+      steps: [
+        [m('V = ' + f('1', '3') + 'π(25)(12)'), ''],
+        [m('= 100π'), ''],
+        ['Note the distractor ' + m('300π') + ' — the missing ' + m(f('1', '3')) + '.', '']
+      ],
+      ans: m('100π')
+    },
+    {
+      q: 'Two similar cones have volumes in the ratio ' + m('8 : 27') + '. What is the ratio of their curved areas?',
+      steps: [
+        [m('k³ = ' + f('27', '8') + ' ⇒ k = ' + f('3', '2')), 'Cube root.'],
+        [m('k² = ' + f('9', '4')), ''],
+        [m('4 : 9'), 'The distractors would be ' + m('2 : 3') + ' and ' + m('8 : 27') + '.']
+      ],
+      ans: m('4 : 9')
+    },
+    {
+      q: 'A sphere has surface area ' + m('100π') + '. Its volume is: ' + m(f('500π', '3')) + ', ' + m('500π') + ', ' + m(f('250π', '3')) + ' or ' + m('100π') + '?',
+      steps: [
+        [m('4πR² = 100π ⇒ R = 5'), ''],
+        [m('V = ' + f('4', '3') + 'π(125) = ' + f('500π', '3')), ''],
+        [m('500π') + ' is the missing ' + m(f('4', '3')) + ' distractor.', '']
+      ],
+      ans: m(f('500π', '3'))
+    },
+    {
+      q: 'Without computing exactly, decide whether a cylinder with ' + m('r = 7') + ' and ' + m('h = 10') + ' holds more or less than ' + m('1.5') + ' m³.',
+      steps: [
+        ['Units: ' + m('r') + ' and ' + m('h') + ' in cm — read again.', ''],
+        ['If in cm: ' + m('V ≈ 3(49)(10) ≈ 1470') + ' cm³.', ''],
+        ['That is ' + m('1.47') + ' litres, not m³.', 'The unit trap, caught by estimation.']
+      ],
+      ans: 'About ' + m('1.5') + ' litres — the units matter more than the arithmetic'
+    }
+  ],
+  modelNote: 'Time the class strictly on the twenty questions; the discussion afterwards is about pace, not about geometry.',
+  interactive: {
+    type: 'quiz',
+    title: 'Twenty questions against the clock',
+    hint: 'Eighty seconds each — move on if it takes longer.',
+    items: [
+      { q: 'Volume of a cube of edge ' + m('5') + ':', a: [m('25'), m('125'), m('150'), m('75')], c: 1, why: m('5³') + '.' },
+      { q: 'Space diagonal of that cube:', a: [m('5' + sr('2')), m('5' + sr('3')), m('5'), m('15')], c: 1, why: m('a' + sr('3')) + '.' },
+      { q: 'Surface area of a sphere, ' + m('R = 3') + ':', a: [m('9π'), m('36π'), m('12π'), m('27π')], c: 1, why: m('4πR²') + '.' },
+      { q: 'Volume of a cone, ' + m('r = 3, h = 4') + ':', a: [m('12π'), m('36π'), m('4π'), m('16π')], c: 0, why: 'The ' + m(f('1', '3')) + ' matters.' },
+      { q: 'Curved area of that cone:', a: [m('12π'), m('15π'), m('9π'), m('24π')], c: 1, why: m('πrl') + ' with ' + m('l = 5') + '.' },
+      { q: 'Volume of a sphere, ' + m('R = 6') + ':', a: [m('144π'), m('288π'), m('216π'), m('72π')], c: 1, why: m(f('4', '3') + 'πR³') + '.' },
+      { q: 'Similar solids, volumes ' + m('8 : 27') + ': length ratio', a: [m('8 : 27'), m('2 : 3'), m('4 : 9'), m('1 : 3')], c: 1, why: 'Cube root.' },
+      { q: 'Same pair: area ratio', a: [m('2 : 3'), m('4 : 9'), m('8 : 27'), m('16 : 81')], c: 1, why: m('k²') + '.' },
+      { q: 'Total area of a cylinder, ' + m('r = 2, h = 7') + ':', a: [m('28π'), m('36π'), m('32π'), m('44π')], c: 1, why: m('2πr² + 2πrh') + '.' },
+      { q: m('2000') + ' cm³ in litres:', a: [m('0.2'), m('2'), m('20'), m('200')], c: 1, why: m('÷ 1000') + '.' },
+      { q: 'Sector angle of a cone’s net, ' + m('r = 3, l = 9') + ':', a: [m('90°'), m('120°'), m('180°'), m('60°')], c: 1, why: m('360° × ' + f('3', '9')) + '.' },
+      { q: 'Least-area closed cylinder has ' + m(f('h', 'r')) + ':', a: [m('1'), m('2'), m('3'), m(f('1', '2'))], c: 1, why: 'Height equals diameter.' }
+    ]
+  },
+  quiz: [
+    { q: 'With no negative marking you should:', a: ['leave hard questions blank', 'answer every question', 'guess only at the end', 'skip the last five'], c: 1, why: 'A blank scores zero for certain.' },
+    { q: 'A question taking over 80 seconds should be:', a: ['finished anyway', 'marked and left for the second pass', 'guessed at once', 'skipped for ever'], c: 1, why: 'It costs two easier ones.' },
+    { q: 'A distractor three times the right answer catches:', a: ['a unit error', 'the missing ' + m(f('1', '3')), 'a reading error', 'nothing'], c: 1, why: 'Cones and pyramids.' },
+    { q: 'Finding your answer among the options means:', a: ['it is right', 'nothing on its own', 'check nothing', 'move on'], c: 1, why: 'Distractors are built from errors.' },
+    { q: 'After marking a practice block, count:', a: ['the score', 'reading, formula and arithmetic errors', 'the time', 'the blanks'], c: 1, why: 'That is what says what to practise.' }
+  ],
+  practice: {
+    easy: [
+      ['Volume of a cube of edge ' + m('5'), m('125')],
+      ['Space diagonal of that cube', m('5' + sr('3'))],
+      ['Surface area of a sphere, ' + m('R = 3'), m('36π')],
+      ['Volume of a cone, ' + m('r = 3, h = 4'), m('12π')],
+      ['Slant height of that cone', m('5')],
+      ['Volume of a prism, ' + m('B = 15, h = 8'), m('120')],
+      [m('2000') + ' cm³ in litres', m('2')]
+    ],
+    med: [
+      ['Curved area of a cone, ' + m('r = 3, h = 4'), m('15π')],
+      ['Volume of a sphere, ' + m('R = 6'), m('288π')],
+      ['Total area of a cylinder, ' + m('r = 2, h = 7'), m('36π')],
+      ['Frustum volume, ' + m('R = 4, r = 2, h = 3'), m('28π')],
+      ['Sector angle of a cone net, ' + m('r = 3, l = 9'), m('120°')],
+      ['Curved area of a hemisphere, ' + m('R = 5'), m('50π')],
+      ['Cap of height ' + m('2') + ' on a sphere of radius ' + m('5') + ': curved area', m('20π')]
+    ],
+    hard: [
+      ['Angle of a cube’s space diagonal with the base', m('≈ 35.3°')],
+      ['Sphere of area ' + m('100π') + ': its volume', m(f('500π', '3'))],
+      ['Similar solids of volumes ' + m('8 : 27') + ': the area ratio', m('4 : 9')],
+      ['Least-area closed cylinder: ' + m(f('h', 'r')), m('2')],
+      ['A cone of radius ' + m('5') + ' and height ' + m('12') + ': total surface area', m('90π')],
+      ['A hemisphere and a cone on the same base of radius ' + m('r') + ' have equal volumes: find ' + m('h'), m('h = 2r')],
+      ['A cube and a sphere have equal surface areas: the ratio of their volumes', m(sr('6') + ' : ' + sr('π')) + ' ≈ ' + m('1 : 1.38')]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Time yourself honestly; the timing is the point of the exercise, not the answers.',
+  homework: [
+    'Work the twenty-question block again under timed conditions and record how many took more than 80 seconds.',
+    'For each question you got wrong, say whether the error was in reading, in the formula, or in the arithmetic.',
+    'Write out the six distractor types with one example of each from the block.',
+    'Write your plan for the 40 minutes of the real paper in three sentences: first pass, second pass, last five minutes.'
+  ]
+});
+
+/* ============================== 35 ============================== */
+G11_GEO.push({
+  id: 'g11-35', stream: 'geo', grade: 11, quarter: 4, lessons: '59–60', hours: 2,
+  title: 'Control work 4, and work on the mistakes',
+  subtitle: 'Every solid of the year in one paper, then a named diagnosis of each slip.',
+  uz: 'Geometry 11, Nazorat ishi 4', uzPage: 'pp. 311–314',
+  cam: 'IGX 13 review', camPage: 'Core & Extended, pp. 393–396', wb: 'Control paper G4',
+  objectives: [
+    'Apply the surface-area and volume formulas of the whole year in one assessment.',
+    'Handle compound solids, bounds and context correctly.',
+    'Classify each lost mark and rewrite the solution in full.',
+    'Draw the year’s mensuration as a single map.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Prism', 'Prizma', 'Призма'],
+    ['Pyramid', 'Piramida', 'Пирамида'],
+    ['Cylinder', 'Silindr', 'Цилиндр'],
+    ['Cone', 'Konus', 'Конус'],
+    ['Sphere', 'Sfera', 'Сфера'],
+    ['Compound solid', 'Murakkab jism', 'Составное тело'],
+    ['Optimisation', 'Optimallashtirish', 'Оптимизация']
+  ],
+  timing: [[3, 'Instructions'], [45, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 40 marks, 45 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>A regular hexagonal prism, edge ${m('4')}, height ${m('9')}: total area and volume</td><td class="m">6</td><td>Q II</td></tr>
+        <tr><td>2</td><td>A square pyramid, base edge ${m('12')}, height ${m('8')}: apothem, lateral area, volume</td><td class="m">7</td><td>Q III</td></tr>
+        <tr><td>3</td><td>A cone of radius ${m('6')} and height ${m('8')}: slant, curved area, volume, sector angle of the net</td><td class="m">7</td><td>Q III</td></tr>
+        <tr><td>4</td><td>A ball of volume ${m('972π')}: radius and surface area; then a cap of height ${m('3')}</td><td class="m">6</td><td>Q III</td></tr>
+        <tr><td>5</td><td>A silo — cylinder ${m('r = 3, h = 8')} m plus a hemisphere: volume and painted area, base excluded</td><td class="m">7</td><td>Q III–IV</td></tr>
+        <tr><td>6</td><td>A closed cylindrical tin of ${m('500')} cm³: the radius of least metal, verified</td><td class="m">7</td><td>Q IV</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q2 carries one mark for using the apothem in the area and the height in the volume; Q3 one for the
+      sector angle; Q5 one for excluding the covered circles; Q6 one for verifying the minimum. Four of
+      the forty marks are for one decision each.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>slant for height</td><td class="m">V = ${f('1', '3')}Bl</td><td>volume uses the perpendicular</td></tr>
+        <tr><td>height for slant</td><td class="m">S = ${f('1', '2')}Ph</td><td>area uses the apothem</td></tr>
+        <tr><td>missing ${m(f('1', '3'))}</td><td class="m">V = Bh</td><td>pyramids and cones are a third</td></tr>
+        <tr><td>sphere formulas swapped</td><td class="m">S = ${f('4', '3')}πR³</td><td class="m">S has R², V has R³</td></tr>
+        <tr><td>joined faces counted</td><td>adding two whole surface areas</td><td>subtract twice the shared face</td></tr>
+        <tr><td>ratios not cubed</td><td class="m">V₁ : V₂ = k</td><td class="m">k, k², k³</td></tr>
+        <tr><td>minimum not verified</td><td class="m">f′ = 0</td><td>add ${m('f″ > 0')}</td></tr>
+      </tbody></table></div>
+      <p>Write the slip's name in the margin of every question that lost a mark, then rewrite the whole
+      solution — not the wrong line.</p>`
+    },
+    {
+      h: 'The year as one map',
+      html: `<p>Eight boxes, links written as sentences:</p>
+      <ul>
+        <li><b>coordinates in space</b> → <b>vectors</b> — “a point becomes three numbers”</li>
+        <li><b>vectors</b> → <b>the scalar product</b> — “angles without a picture”</li>
+        <li><b>prism</b> → <b>${m('V = Bh')}</b> — “uniform cross-section”</li>
+        <li><b>cylinder</b> → <b>the same, with ${m('B = πr²')}</b></li>
+        <li><b>pyramid and cone</b> → <b>a third of it</b> — “the same base, the same height”</li>
+        <li><b>sphere</b> → <b>${m('2 : 3')} with its cylinder</b> — “Archimedes, for both”</li>
+        <li><b>compound</b> → <b>add or subtract, and drop the joined faces</b></li>
+        <li><b>scale ${m('k')}</b> → <b>${m('k, k², k³')}</b> — “length, area, volume”</li>
+      </ul>
+      {{fig:cavalieri:Equal slices, equal volumes — the principle under half the boxes above.}}
+      <div class="keybox"><div class="klabel">Nine formulas, one page</div>
+      ${eq(m('V_prism = Bh') + '  ' + m('V_cyl = πr²h') + '  ' + m('V_pyr = ' + f('1', '3') + 'Bh') + '  ' + m('V_cone = ' + f('1', '3') + 'πr²h') + '  ' + m('V_sph = ' + f('4', '3') + 'πR³'), true)}
+      ${eq(m('S_cyl = 2πr(r + h)') + '  ' + m('S_cone = πr(r + l)') + '  ' + m('S_sph = 4πR²') + '  ' + m('V_frus = ' + f('πh', '3') + '(R² + Rr + r²)'), true)}
+      If these nine sit on one page in your own handwriting, the annual review needs nothing new.</div>`
+    },
+    {
+      h: 'Looking forward',
+      html: `<p>Lessons 61–68 are pure revision: coordinates and vectors, parallelism and perpendicularity,
+      all the surfaces and volumes, then the entrance paper and the annual review. Nothing is added; the
+      work is to make what exists fast and certain.</p>
+      <div class="keybox"><div class="klabel">One habit to carry forward</div>
+      The whole year rewarded writing ${m('B')}, ${m('h')} and the shape's name before any arithmetic.
+      Keep that habit into the entrance paper, where the question rarely says which solid it is describing
+      and the first line of the answer has to.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q2: a square pyramid, base edge ' + m('12') + ', height ' + m('8') + '.',
+      steps: [
+        ['Base apothem ' + m('6') + '; ' + m('m = ' + sr('64 + 36') + ' = 10') + '.', 'The first right triangle.'],
+        [m('S_lat = ' + f('1', '2') + '(48)(10) = 240'), 'Apothem, not height.'],
+        [m('B = 144') + ', so ' + m('S_total = 384') + '.', ''],
+        [m('V = ' + f('1', '3') + '(144)(8) = 384'), 'Height, not apothem.']
+      ],
+      ans: m('m = 10') + ', ' + m('S_lat = 240') + ', ' + m('V = 384')
+    },
+    {
+      q: 'Model answer, Q3: a cone of radius ' + m('6') + ' and height ' + m('8') + '.',
+      steps: [
+        [m('l = ' + sr('36 + 64') + ' = 10'), ''],
+        [m('S_curved = π(6)(10) = 60π'), ''],
+        [m('V = ' + f('1', '3') + 'π(36)(8) = 96π'), ''],
+        [m('θ = 360° × ' + f('6', '10') + ' = 216°'), '']
+      ],
+      ans: m('l = 10') + ', ' + m('60π') + ', ' + m('96π') + ', ' + m('216°')
+    },
+    {
+      q: 'Model answer, Q5: a silo, cylinder ' + m('r = 3, h = 8') + ' m with a hemisphere, painted above ground.',
+      steps: [
+        [m('V = π(9)(8) + ' + f('2', '3') + 'π(27) = 72π + 18π = 90π'), m('≈ 283') + ' m³.'],
+        ['Curved cylinder ' + m('2π(3)(8) = 48π') + '.', ''],
+        ['Hemisphere ' + m('2π(9) = 18π') + '.', 'The two joined circles do not count.'],
+        [m('S = 66π ≈ 207') + ' m².', 'Base excluded.']
+      ],
+      ans: m('90π') + ' ≈ ' + m('283') + ' m³; ' + m('66π') + ' ≈ ' + m('207') + ' m²'
+    },
+    {
+      q: 'Model answer, Q6: a closed tin of ' + m('500') + ' cm³ using least metal.',
+      steps: [
+        [m('S = 2πr² + ' + f('1000', 'r')), ''],
+        [m(f('dS', 'dr') + ' = 4πr − ' + f('1000', 'r²') + ' = 0'), ''],
+        [m('r³ = ' + f('250', 'π') + ' ⇒ r ≈ 4.30'), ''],
+        [m('S″ > 0') + ', so a minimum; ' + m('h ≈ 8.60 = 2r') + '.', '']
+      ],
+      ans: m('r ≈ 4.30') + ' cm, ' + m('h ≈ 8.60') + ' cm'
+    }
+  ],
+  modelNote: 'Work Q5 twice — once counting all the faces, once dropping the joined ones — and let the class name the difference.',
+  interactive: {
+    type: 'quiz',
+    title: 'The year in twelve questions',
+    hint: 'Three from each quarter.',
+    items: [
+      { q: 'Volume of a prism:', a: [m('Ph'), m('Bh'), m(f('1', '3') + 'Bh'), m('2Bh')], c: 1, why: 'Uniform cross-section.' },
+      { q: 'Volume of a cylinder:', a: [m('2πrh'), m('πr²h'), m('πrh'), m(f('1', '3') + 'πr²h')], c: 1, why: m('B = πr²') + '.' },
+      { q: 'Volume of a pyramid:', a: [m('Bh'), m(f('1', '3') + 'Bh'), m(f('1', '2') + 'Bh'), m('3Bh')], c: 1, why: 'A third of the prism.' },
+      { q: 'Volume of a cone:', a: [m('πr²h'), m(f('1', '3') + 'πr²h'), m('πrl'), m(f('1', '3') + 'πr²l')], c: 1, why: 'Height, not slant.' },
+      { q: 'Lateral area of a regular pyramid:', a: [m(f('1', '2') + 'Ph'), m(f('1', '2') + 'Pm'), m('Pm'), m('Bm')], c: 1, why: 'The apothem.' },
+      { q: 'Curved area of a cone:', a: [m('πr²'), m('πrl'), m('πrh'), m('2πrl')], c: 1, why: 'The unrolled sector.' },
+      { q: 'Volume of a sphere:', a: [m('4πR²'), m(f('4', '3') + 'πR³'), m(f('2', '3') + 'πR³'), m('πR³')], c: 1, why: 'Cubed.' },
+      { q: 'Surface area of a sphere:', a: [m('4πR²'), m(f('4', '3') + 'πR³'), m('2πR²'), m('πR²')], c: 0, why: 'Four great circles.' },
+      { q: 'Volume of a frustum of a cone:', a: [m(f('πh', '3') + '(R² + r²)'), m(f('πh', '3') + '(R² + Rr + r²)'), m('πh(R² − r²)'), m(f('πh', '2') + '(R + r)')], c: 1, why: 'Three terms.' },
+      { q: 'Joined faces of a compound solid:', a: ['count twice', 'count once', 'do not count', 'are halved'], c: 2, why: 'They are interior.' },
+      { q: 'Scale factor ' + m('k') + ' multiplies area by:', a: [m('k'), m('k²'), m('k³'), m('2k')], c: 1, why: 'Two dimensions.' },
+      { q: 'Least-metal closed cylinder:', a: [m('h = r'), m('h = 2r'), m('h = ' + f('r', '2')), m('h = 3r')], c: 1, why: 'Height equals diameter.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q2 needs the apothem for:', a: ['the volume', 'the lateral area', 'the base', 'nothing'], c: 1, why: m('S_lat = ' + f('1', '2') + 'Pm') + '.' },
+    { q: 'Q5 excludes:', a: ['the curved surfaces', 'the two joined circles and the base', 'nothing', 'the hemisphere'], c: 1, why: 'They are covered or on the ground.' },
+    { q: 'Q6 needs, beyond ' + m('f′ = 0') + ':', a: ['nothing', 'a check that it is a minimum', 'a second constraint', 'a sketch'], c: 1, why: m('f″ > 0') + '.' },
+    { q: 'Lessons 61–68 are:', a: ['new material', 'revision and the entrance paper', 'a project', 'a test only'], c: 1, why: 'Making what exists fast.' }
+  ],
+  practice: {
+    easy: [
+      ['Volume of a prism, ' + m('B = 15, h = 8'), m('120')],
+      ['Volume of a cylinder, ' + m('r = 2, h = 7'), m('28π')],
+      ['Volume of a pyramid, ' + m('B = 144, h = 8'), m('384')],
+      ['Volume of a cone, ' + m('r = 6, h = 8'), m('96π')],
+      ['Slant of that cone', m('10')],
+      ['Radius of a ball of volume ' + m('972π'), m('9')],
+      ['Surface area of that ball', m('324π')]
+    ],
+    med: [
+      ['Hexagonal prism, edge ' + m('4') + ', height ' + m('9') + ': volume', m('216' + sr('3')) + ' ≈ ' + m('374')],
+      ['Same prism: total area', m('48' + sr('3') + ' + 216') + ' ≈ ' + m('299')],
+      ['Square pyramid, base ' + m('12') + ', height ' + m('8') + ': apothem and lateral area', m('10') + ', ' + m('240')],
+      ['Same pyramid: volume', m('384')],
+      ['Cone ' + m('r = 6, h = 8') + ': curved area and sector angle', m('60π') + ', ' + m('216°')],
+      ['Cap of height ' + m('3') + ' on a ball of radius ' + m('9') + ': curved area', m('54π')],
+      ['Silo, cylinder ' + m('r = 3, h = 8') + ' plus hemisphere: volume', m('90π') + ' ≈ ' + m('283')]
+    ],
+    hard: [
+      ['Same silo: painted area, base excluded', m('66π') + ' ≈ ' + m('207') + ' m²'],
+      ['Closed tin of ' + m('500') + ' cm³: the radius of least metal', m('≈ 4.30') + ' cm'],
+      ['Same tin: the least area', m('≈ 349') + ' cm²'],
+      ['Cap of height ' + m('3') + ' on a ball of radius ' + m('9') + ': its volume', m(f('π', '3') + '(9)(27 − 3)') + ' = ' + m('72π')],
+      ['Two similar cones of volumes ' + m('27') + ' and ' + m('64') + ': the area ratio', m('9 : 16')],
+      ['A cone and a hemisphere on the same base of radius ' + m('r') + ' have equal volumes: find ' + m('h'), m('h = 2r')],
+      ['A frustum of radii ' + m('R') + ' and ' + m(f('R', '2')) + ': the fraction of the full cone', m(f('7', '8'))]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Bring the nine-formula page and the concept map to Lesson 61.',
+  homework: [
+    'Rewrite in full every control-work question that lost a mark, naming the slip in the margin.',
+    'Write the nine formulas of the year on one page in your own hand, each with a small sketch.',
+    'A grain silo is a cylinder of radius ' + m('2.5') + ' m and height ' + m('9') + ' m with a hemispherical top. Find its volume and the area painted above ground.',
+    'A closed cylindrical tin holds ' + m('750') + ' cm³. Find the radius that uses least metal, and verify that it is a minimum.'
+  ]
+});
+
+/* ============================== 36 ============================== */
+G11_GEO.push({
+  id: 'g11-36', stream: 'geo', grade: 11, quarter: 4, lessons: '61–62', hours: 2,
+  title: 'Revision — coordinates and vectors in space [Cambridge revision]',
+  subtitle: 'Three numbers for a point, one product for every angle.',
+  uz: 'Geometry 11, Chapter I review', uzPage: 'pp. 315–324',
+  cam: 'P2/P3 9.1–9.7', camPage: 'Pure Mathematics 2 & 3, pp. 190–223', wb: 'Exercise 9A–9G',
+  objectives: [
+    'Compute distances, midpoints and vectors in three dimensions.',
+    'Use the scalar product to find an angle and to test perpendicularity.',
+    'Write the vector equation of a line and decide whether two lines meet.',
+    'Find the angle between a line and a plane using the normal.'
+  ],
+  terms: [
+    ['Coordinates in space', 'Fazoviy koordinatalar', 'Координаты в пространстве'],
+    ['Position vector', 'Radius-vektor', 'Радиус-вектор'],
+    ['Unit vector', 'Birlik vektor', 'Единичный вектор'],
+    ['Scalar (dot) product', 'Skalyar ko‘paytma', 'Скалярное произведение'],
+    ['Perpendicular vectors', 'Perpendikulyar vektorlar', 'Перпендикулярные векторы'],
+    ['Vector equation of a line', 'To‘g‘ri chiziqning vektor tenglamasi', 'Векторное уравнение прямой'],
+    ['Direction vector', 'Yo‘naltiruvchi vektor', 'Направляющий вектор'],
+    ['Normal vector', 'Normal vektor', 'Вектор нормали'],
+    ['Skew lines', 'Ayqash chiziqlar', 'Скрещивающиеся прямые'],
+    ['Parameter', 'Parametr', 'Параметр']
+  ],
+  timing: [[15, 'Points and distances'], [25, 'The scalar product'], [25, 'Lines in space'], [20, 'Planes and normals'], [15, 'Homework']],
+  sections: [
+    {
+      h: 'Points and distances',
+      html: `<p>Every plane formula gains a third term, and nothing else changes.</p>
+      ${eq(m('AB = ' + sr('(x₂−x₁)² + (y₂−y₁)² + (z₂−z₁)²')) + '     ' + m('M = (' + f('x₁+x₂', '2') + ', ' + f('y₁+y₂', '2') + ', ' + f('z₁+z₂', '2') + ')'), true)}
+      {{fig:dist3d:The space diagonal of a box — two applications of Pythagoras, one after the other.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">A</th><th class="m">B</th><th class="m">AB</th><th class="m">M</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(0,0,0)</td><td class="m">(2,3,6)</td><td class="m">7</td><td class="m">(1, 1.5, 3)</td></tr>
+        <tr><td class="m">(1,2,3)</td><td class="m">(4,6,15)</td><td class="m">13</td><td class="m">(2.5, 4, 9)</td></tr>
+        <tr><td class="m">(2,−1,4)</td><td class="m">(6,2,8)</td><td class="m">${sr('41')}</td><td class="m">(4, 0.5, 6)</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A box of edges ${m('a, b, c')}</div>
+      Its space diagonal is ${m(sr('a² + b² + c²'))} — the distance formula with the origin at one
+      corner. Every three-dimensional distance question is this box, drawn somewhere.</div>`
+    },
+    {
+      h: 'The scalar product',
+      html: `${eq(m('u·v = x₁x₂ + y₁y₂ + z₁z₂ = |u||v| cos θ'), true)}
+      {{fig:scalarAngle:Two vectors and the angle between them — one product answers it.}}
+      ${eq(m('cos θ = ' + f('u·v', '|u||v|')) + '     ' + m('u ⟂ v ⇔ u·v = 0'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">u</th><th class="m">v</th><th class="m">u·v</th><th class="m">θ</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(1,2,2)</td><td class="m">(2,−1,2)</td><td class="m">4</td><td class="m">≈ 63.6°</td></tr>
+        <tr><td class="m">(1,0,0)</td><td class="m">(0,1,0)</td><td class="m">0</td><td class="m">90°</td></tr>
+        <tr><td class="m">(3,4,0)</td><td class="m">(6,8,0)</td><td class="m">50</td><td class="m">0°</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Why this replaces the whole of Grade 10’s angle work</div>
+      In Grade 10, an angle in space needed a projection, a right triangle and a careful drawing. Here it
+      needs one dot product and one division. The picture is still worth drawing — but it is no longer
+      the method.</div>
+      <div class="warn"><span class="wl">${m('u·v')} is a number, not a vector</span>
+      Writing ${m('u·v = (2, 4, 4)')} confuses the scalar product with a scaling. The result of a dot
+      product is always a single number, and its <b>sign</b> alone tells you whether the angle is acute
+      (${m('> 0')}), right (${m('= 0')}) or obtuse (${m('< 0')}).</div>`
+    },
+    {
+      h: 'Lines in space',
+      html: `${eq(m('r = a + t d') + '   — through the point ' + m('a') + ', in the direction ' + m('d'), true)}
+      {{fig:lineVectorEq:A point and a direction — every other point of the line is a + t d.}}
+      <p>Two lines in space may be parallel, may meet, or may be <b>skew</b>. The test is a system:</p>
+      <ol>
+        <li>if ${m('d₁')} is a multiple of ${m('d₂')}, the lines are <b>parallel</b>;</li>
+        <li>otherwise set ${m('a₁ + t d₁ = a₂ + s d₂')} — three equations in ${m('t')} and ${m('s')};</li>
+        <li>solve two of them; if the third is satisfied the lines <b>meet</b>, and if not they are
+        <b>skew</b>.</li>
+      </ol>
+      <div class="keybox"><div class="klabel">The third equation is the whole test</div>
+      Two equations in two unknowns almost always have a solution. It is the <b>third</b> that decides,
+      and forgetting to check it is why skew lines get reported as intersecting. Always substitute
+      back.</div>
+      <p>The angle between two lines is the angle between their direction vectors — taken as the acute
+      one, so use ${m('|d₁·d₂|')}.</p>`
+    },
+    {
+      h: 'Planes and normals',
+      html: `${eq(m('n·r = n·a') + ',  that is  ' + m('ax + by + cz = d') + '  with normal ' + m('n = (a, b, c)'), true)}
+      {{fig:perpLinePlane:The normal — perpendicular to every line of the plane.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quantity</th><th>Formula</th></tr></thead>
+      <tbody>
+        <tr><td>angle between two planes</td><td class="m">cos θ = ${f('|n₁·n₂|', '|n₁||n₂|')}</td></tr>
+        <tr><td>angle between a line and a plane</td><td class="m">sin θ = ${f('|d·n|', '|d||n|')}</td></tr>
+        <tr><td>distance from a point to a plane</td><td class="m">${f('|n·p − d|', '|n|')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Line and plane uses <b>sine</b>, not cosine</span>
+      The dot product gives the angle to the <b>normal</b>; the angle to the plane is its complement. So
+      the formula carries ${m('sin')}, not ${m('cos')}. Using cosine gives the complement of the right
+      answer — and ${m('90° − θ')} is rarely one of the options.</div>
+      <p><b>Example.</b> The angle between ${m('d = (1, 2, 2)')} and the plane ${m('2x − y + 2z = 5')}:
+      ${m('n = (2, −1, 2)')}, ${m('d·n = 2 − 2 + 4 = 4')}, ${m('|d| = |n| = 3')}, so
+      ${m('sin θ = ' + f('4', '9'))} and ${m('θ ≈ 26.4°')}.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find ' + m('|AB|') + ' and the midpoint for ' + m('A(1, 2, 3)') + ' and ' + m('B(4, 6, 15)') + '.',
+      steps: [
+        [m('AB = (3, 4, 12)'), ''],
+        [m('|AB| = ' + sr('9 + 16 + 144') + ' = 13'), ''],
+        [m('M = (2.5, 4, 9)'), '']
+      ],
+      ans: m('13') + ' and ' + m('(2.5, 4, 9)')
+    },
+    {
+      q: 'Find the angle between ' + m('u = (1, 2, 2)') + ' and ' + m('v = (2, −1, 2)') + '.',
+      steps: [
+        [m('u·v = 2 − 2 + 4 = 4'), ''],
+        [m('|u| = |v| = 3'), ''],
+        [m('cos θ = ' + f('4', '9')), ''],
+        [m('θ ≈ 63.6°'), '']
+      ],
+      ans: m('≈ 63.6°')
+    },
+    {
+      q: 'Do the lines ' + m('r = (1,0,1) + t(2,1,1)') + ' and ' + m('r = (0,1,2) + s(1,−1,0)') + ' meet?',
+      steps: [
+        [m('1 + 2t = s') + ', ' + m('t = 1 − s') + ', ' + m('1 + t = 2'), ''],
+        ['From the third, ' + m('t = 1') + '; from the second, ' + m('s = 0') + '.', ''],
+        ['Check the first: ' + m('1 + 2 = 3 ≠ 0') + '.', 'It fails.'],
+        ['The lines are skew.', '']
+      ],
+      ans: 'Skew — the third equation is not satisfied'
+    },
+    {
+      q: 'Find the angle between the line ' + m('r = a + t(1, 2, 2)') + ' and the plane ' + m('2x − y + 2z = 5') + '.',
+      steps: [
+        [m('n = (2, −1, 2)'), ''],
+        [m('d·n = 2 − 2 + 4 = 4'), ''],
+        [m('sin θ = ' + f('4', '3 × 3') + ' = ' + f('4', '9')), 'Sine, because ' + m('n') + ' is the normal.'],
+        [m('θ ≈ 26.4°'), '']
+      ],
+      ans: m('≈ 26.4°')
+    }
+  ],
+  modelNote: 'Use three metre rules taped at a corner of the room as the axes; every coordinate becomes a physical position.',
+  interactive: {
+    type: 'vectors',
+    title: 'Vectors and the angle between them',
+    hint: 'Drag either vector and watch the dot product change sign.'
+  },
+  quiz: [
+    { q: m('|AB|') + ' in space is:', a: [m(sr('Δx² + Δy²')), m(sr('Δx² + Δy² + Δz²')), m('Δx + Δy + Δz'), m('ΔxΔyΔz')], c: 1, why: 'Pythagoras twice.' },
+    { q: m('u·v') + ' is:', a: ['a vector', 'a number', 'an angle', 'a length'], c: 1, why: 'A scalar.' },
+    { q: m('u ⟂ v') + ' when:', a: [m('u·v = 1'), m('u·v = 0'), m('u = v'), m('|u| = |v|')], c: 1, why: m('cos 90° = 0') + '.' },
+    { q: 'A negative dot product means the angle is:', a: ['acute', 'right', 'obtuse', 'zero'], c: 2, why: m('cos θ < 0') + '.' },
+    { q: 'A line in space is written:', a: [m('y = mx + c'), m('r = a + t d'), m('ax + by = c'), m('n·r = d')], c: 1, why: 'Point plus direction.' },
+    { q: 'Two lines are skew when:', a: ['they are parallel', 'two of three equations hold but not the third', 'they meet', 'they coincide'], c: 1, why: 'No common point.' },
+    { q: 'The angle between a line and a plane uses:', a: [m('cos'), m('sin'), m('tan'), m('cot')], c: 1, why: 'The normal is perpendicular to the plane.' }
+  ],
+  practice: {
+    easy: [
+      [m('|AB|') + ' for ' + m('A(0,0,0), B(2,3,6)'), m('7')],
+      ['Midpoint of ' + m('(1,2,3)') + ' and ' + m('(4,6,15)'), m('(2.5, 4, 9)')],
+      [m('(1,2,2)·(2,−1,2)'), m('4')],
+      [m('|(3,4,12)|'), m('13')],
+      ['Are ' + m('(1,0,0)') + ' and ' + m('(0,1,0)') + ' perpendicular?', 'Yes — dot product ' + m('0')],
+      ['Space diagonal of a ' + m('3 × 4 × 12') + ' box', m('13')],
+      ['Direction vector of ' + m('r = (1,0,1) + t(2,1,1)'), m('(2, 1, 1)')]
+    ],
+    med: [
+      ['Angle between ' + m('(1,2,2)') + ' and ' + m('(2,−1,2)'), m('≈ 63.6°')],
+      [m('|AB|') + ' for ' + m('A(2,−1,4), B(6,2,8)'), m(sr('41')) + ' ≈ ' + m('6.40')],
+      ['Unit vector along ' + m('(2,3,6)'), m(f('1', '7') + '(2,3,6)')],
+      ['Do ' + m('r = (1,0,1) + t(2,1,1)') + ' and ' + m('r = (0,1,2) + s(1,−1,0)') + ' meet?', 'No — skew'],
+      ['Angle between the line ' + m('d = (1,2,2)') + ' and the plane ' + m('2x − y + 2z = 5'), m('≈ 26.4°')],
+      ['Normal of the plane ' + m('3x + 4y − 12z = 7'), m('(3, 4, −12)')],
+      ['Distance from ' + m('(1, 1, 1)') + ' to ' + m('2x − y + 2z = 5'), m(f('2', '3')) + ' ≈ ' + m('0.667')]
+    ],
+    hard: [
+      ['Angle between the planes ' + m('x + y = 1') + ' and ' + m('y + z = 1'), m('60°')],
+      ['Shortest distance between the two skew lines above', m(f('3', sr('6'))) + ' ≈ ' + m('1.22')],
+      ['A cube of edge ' + m('a') + ' with a vertex at the origin: the angle between two space diagonals', m('≈ 70.5°')],
+      ['Find ' + m('k') + ' so that ' + m('(1, k, 2)') + ' is perpendicular to ' + m('(3, −1, 1)'), m('k = 5')],
+      ['The plane through ' + m('(1,0,0), (0,1,0), (0,0,1)'), m('x + y + z = 1')],
+      ['Angle between the line ' + m('r = t(1,1,1)') + ' and that plane', m('90°')],
+      ['Show that ' + m('(1,2,2)') + ', ' + m('(2,−1,2)') + ' and ' + m('(2,2,−1)') + ' are mutually perpendicular', 'All three dot products vanish']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Sketch the box for every distance question; the third coordinate is easy to lose.',
+  homework: [
+    'Find ' + m('|AB|') + ' and the midpoint for ' + m('A(−1, 3, 2)') + ' and ' + m('B(5, −1, 10)') + '.',
+    'Find the angle between ' + m('(2, 1, 2)') + ' and ' + m('(1, −2, 2)') + ', and say whether it is acute or obtuse.',
+    'Decide whether the lines ' + m('r = (1,1,0) + t(1,2,1)') + ' and ' + m('r = (2,0,1) + s(2,1,−1)') + ' meet, are parallel or are skew.',
+    'Find the angle between the line with direction ' + m('(2, 2, 1)') + ' and the plane ' + m('x + 2y + 2z = 9') + '.',
+    'Find ' + m('k') + ' so that ' + m('(3, k, −2)') + ' is perpendicular to ' + m('(1, 4, 5)') + ', and check with the dot product.'
+  ]
+});
+
+/* ============================== 37 ============================== */
+G11_GEO.push({
+  id: 'g11-37', stream: 'geo', grade: 11, quarter: 4, lessons: '63–64', hours: 2,
+  title: 'Revision — parallelism and perpendicularity in space',
+  subtitle: 'The Grade 10 statements, revisited with a year of solids behind them.',
+  uz: 'Geometry 10–11 review', uzPage: 'pp. 325–334',
+  cam: 'Spatial review', camPage: 'Pure Mathematics 2 & 3, pp. 281–284', wb: 'Revision set G3',
+  objectives: [
+    'State the positions of lines and planes, and the criteria for parallelism and perpendicularity.',
+    'Use the three-perpendiculars theorem to reduce a space problem to a plane one.',
+    'Compute angles between lines, between a line and a plane, and between planes.',
+    'Choose between the synthetic and the vector method for each question.'
+  ],
+  terms: [
+    ['Skew lines', 'Ayqash to‘g‘ri chiziqlar', 'Скрещивающиеся прямые'],
+    ['Parallel planes', 'Parallel tekisliklar', 'Параллельные плоскости'],
+    ['Perpendicular to a plane', 'Tekislikka perpendikulyar', 'Перпендикулярная плоскости'],
+    ['Three perpendiculars theorem', 'Uch perpendikulyar teoremasi', 'Теорема о трёх перпендикулярах'],
+    ['Dihedral angle', 'Ikki yoqli burchak', 'Двугранный угол'],
+    ['Linear angle', 'Chiziqli burchak', 'Линейный угол'],
+    ['Orthogonal projection', 'Ortogonal proyeksiya', 'Ортогональная проекция'],
+    ['Synthetic method', 'Sintetik usul', 'Синтетический метод'],
+    ['Vector method', 'Vektor usuli', 'Векторный метод'],
+    ['Common perpendicular', 'Umumiy perpendikulyar', 'Общий перпендикуляр']
+  ],
+  timing: [[15, 'The statements'], [25, 'Angles, both ways'], [25, 'Distances'], [20, 'Choosing a method'], [15, 'Homework']],
+  sections: [
+    {
+      h: 'The statements',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Condition</th></tr></thead>
+      <tbody>
+        <tr><td>a line is parallel to a plane</td><td>it is parallel to some line <b>in</b> the plane</td></tr>
+        <tr><td>two planes are parallel</td><td>two <b>intersecting</b> lines of one are parallel to two of the other</td></tr>
+        <tr><td>a line is perpendicular to a plane</td><td>it is perpendicular to two <b>intersecting</b> lines of it</td></tr>
+        <tr><td>two planes are perpendicular</td><td>one contains a line perpendicular to the other</td></tr>
+        <tr><td>three perpendiculars</td><td>a line in a plane ⟂ an oblique ⇔ ⟂ its projection</td></tr>
+      </tbody></table></div>
+      {{fig:threePerp:The theorem that turns a space problem into a plane one.}}
+      <div class="warn"><span class="wl">“Intersecting” appears twice, and is essential both times</span>
+      Two <i>parallel</i> lines of one plane parallel to two of another prove nothing — a line and a plane
+      through it satisfy that with no parallelism at all. The same word carries the same weight in the
+      perpendicularity criterion.</div>`
+    },
+    {
+      h: 'Angles, both ways',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Angle</th><th>Synthetic method</th><th>Vector method</th></tr></thead>
+      <tbody>
+        <tr><td>two lines</td><td>translate one to meet the other</td><td class="m">cos θ = ${f('|d₁·d₂|', '|d₁||d₂|')}</td></tr>
+        <tr><td>line and plane</td><td>angle with the projection</td><td class="m">sin θ = ${f('|d·n|', '|d||n|')}</td></tr>
+        <tr><td>two planes</td><td>the linear angle at the edge</td><td class="m">cos θ = ${f('|n₁·n₂|', '|n₁||n₂|')}</td></tr>
+      </tbody></table></div>
+      {{fig:dihedralAngle:The linear angle — both rays perpendicular to the edge.}}
+      <p><b>The same question, both ways.</b> In a cube ${m('ABCDA₁B₁C₁D₁')} of edge ${m('1')}, the angle
+      between ${m('AC₁')} and the base:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Synthetic</th><th>Vector</th></tr></thead>
+      <tbody>
+        <tr><td>projection ${m('AC = ' + sr('2'))}, height ${m('1')}, ${m('tan θ = ' + f('1', sr('2')))}</td><td>${m('d = (1,1,1)')}, ${m('n = (0,0,1)')}, ${m('sin θ = ' + f('1', sr('3')))}</td></tr>
+        <tr><td class="m">θ ≈ 35.3°</td><td class="m">θ ≈ 35.3°</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Both give the same number, and both are worth full marks</div>
+      The synthetic method needs a good drawing; the vector method needs good coordinates. Choose by which
+      you can set up faster — but check the vector answer against a rough sketch, because a sign error in
+      ${m('n')} is invisible in the algebra and obvious in the picture.</div>`
+    },
+    {
+      h: 'Distances',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Distance</th><th>How</th></tr></thead>
+      <tbody>
+        <tr><td>point to plane</td><td>the perpendicular; or ${m(f('|n·p − d|', '|n|'))}</td></tr>
+        <tr><td>point to line</td><td>the perpendicular in the plane containing both</td></tr>
+        <tr><td>parallel planes</td><td>any point of one to the other</td></tr>
+        <tr><td>skew lines</td><td>the common perpendicular</td></tr>
+      </tbody></table></div>
+      {{fig:orthoProjection:Every distance in space is the length of one perpendicular.}}
+      <p><b>Standard results in a cube of edge ${m('a')}.</b></p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Distance</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>between two opposite faces</td><td class="m">a</td></tr>
+        <tr><td>between two skew edges</td><td class="m">a</td></tr>
+        <tr><td>from a vertex to the far space diagonal</td><td class="m">${f('a' + sr('6'), '3')}</td></tr>
+        <tr><td>from the centre to a face</td><td class="m">${f('a', '2')}</td></tr>
+        <tr><td>from a vertex to the plane ${m('A₁BD')}</td><td class="m">${f('a' + sr('3'), '3')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The volume trick for a point-to-plane distance</div>
+      For a tetrahedron, ${m('V = ' + f('1', '3') + 'Bh')} gives ${m('h = ' + f('3V', 'B'))}. Computing the
+      volume two ways — once with an easy base, once with the awkward one — finds the distance without any
+      construction at all. It is the fastest route in almost every cube question.</div>`
+    },
+    {
+      h: 'Choosing a method',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>The question gives</th><th>Prefer</th><th>Because</th></tr></thead>
+      <tbody>
+        <tr><td>a cube or a box</td><td>vectors</td><td>the coordinates write themselves</td></tr>
+        <tr><td>a proof, no numbers</td><td>synthetic</td><td>the criteria are the argument</td></tr>
+        <tr><td>a regular pyramid</td><td>synthetic</td><td>one right triangle answers it</td></tr>
+        <tr><td>a plane by an equation</td><td>vectors</td><td>the normal is already there</td></tr>
+        <tr><td>skew lines</td><td>vectors</td><td>the common perpendicular is hard to draw</td></tr>
+        <tr><td>a distance in a cube</td><td>the volume trick</td><td>no construction needed</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One sentence to remember the whole revision by</div>
+      Every three-dimensional problem is solved by finding the one right triangle it contains — or, in
+      vector form, the one dot product it depends on. Two methods, one idea: reduce the space question
+      to something two-dimensional.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'In a cube of edge ' + m('1') + ', find the angle between ' + m('AC₁') + ' and the base, both ways.',
+      steps: [
+        ['Synthetic: projection ' + m('AC = ' + sr('2')) + ', height ' + m('1') + '.', m('tan θ = ' + f('1', sr('2')))],
+        ['Vector: ' + m('d = (1,1,1)') + ', ' + m('n = (0,0,1)') + '.', ''],
+        [m('sin θ = ' + f('1', sr('3'))), ''],
+        [m('θ ≈ 35.3°'), 'Both agree.']
+      ],
+      ans: m('≈ 35.3°')
+    },
+    {
+      q: 'In a cube of edge ' + m('a') + ', find the distance from ' + m('A') + ' to the plane ' + m('A₁BD') + '.',
+      steps: [
+        ['Tetrahedron ' + m('AA₁BD') + ': ' + m('V = ' + f('1', '6') + 'a³') + '.', 'Three mutually perpendicular edges.'],
+        ['Face ' + m('A₁BD') + ' is equilateral of side ' + m('a' + sr('2')) + '.', ''],
+        [m('B = ' + f(sr('3'), '4') + '(2a²) = ' + f('a²' + sr('3'), '2')), ''],
+        [m('h = ' + f('3V', 'B') + ' = ' + f('a', sr('3')) + ' = ' + f('a' + sr('3'), '3')), 'The volume trick.']
+      ],
+      ans: m(f('a' + sr('3'), '3')) + ' ≈ ' + m('0.577a')
+    },
+    {
+      q: 'Find the angle between the planes ' + m('x + y = 1') + ' and ' + m('y + z = 1') + '.',
+      steps: [
+        [m('n₁ = (1,1,0)') + ', ' + m('n₂ = (0,1,1)'), ''],
+        [m('n₁·n₂ = 1'), ''],
+        [m('cos θ = ' + f('1', '2')), ''],
+        [m('θ = 60°'), '']
+      ],
+      ans: m('60°')
+    },
+    {
+      q: 'A point is ' + m('12') + ' cm from a plane. Two obliques of ' + m('13') + ' and ' + m('20') + ' cm are drawn. Compare their projections and the angles they make with the plane.',
+      steps: [
+        ['Projections ' + m('5') + ' and ' + m('16') + '.', m(sr('169 − 144')) + ' and ' + m(sr('400 − 144')) + '.'],
+        [m('sin θ₁ = ' + f('12', '13') + ' ⇒ θ₁ ≈ 67.4°'), ''],
+        [m('sin θ₂ = ' + f('12', '20') + ' ⇒ θ₂ ≈ 36.9°'), ''],
+        ['The longer oblique makes the smaller angle.', '']
+      ],
+      ans: m('5') + ' and ' + m('16') + ' cm; ' + m('≈ 67.4°') + ' and ' + m('≈ 36.9°')
+    }
+  ],
+  modelNote: 'Set up the cube with coordinates on the board and solve one question twice; the class times both methods.',
+  interactive: {
+    type: 'space3d',
+    title: 'The cube, its diagonals and its planes',
+    hint: 'Turn it and read each angle off the projection.'
+  },
+  quiz: [
+    { q: 'A line ⟂ to a plane is ⟂ to:', a: ['one line of it', 'two intersecting lines of it, and then all', 'two parallel lines', 'the normal'], c: 1, why: 'The criterion.' },
+    { q: 'The angle to a plane uses the vector formula with:', a: [m('cos'), m('sin'), m('tan'), m('cot')], c: 1, why: 'The normal is perpendicular to the plane.' },
+    { q: 'The distance from a vertex of a cube of edge ' + m('a') + ' to the plane ' + m('A₁BD') + ':', a: [m(f('a', '2')), m(f('a' + sr('3'), '3')), m(f('a' + sr('2'), '2')), m('a')], c: 1, why: 'The volume trick.' },
+    { q: 'For a cube question, the faster method is usually:', a: ['synthetic', 'vectors', 'trial', 'neither'], c: 1, why: 'The coordinates write themselves.' },
+    { q: 'For a proof with no numbers, prefer:', a: ['vectors', 'the synthetic criteria', 'coordinates', 'estimation'], c: 1, why: 'The criteria are the argument.' },
+    { q: 'The longer oblique from a point makes:', a: ['the larger angle', 'the smaller angle', 'the same angle', 'a right angle'], c: 1, why: 'Its projection is longer.' }
+  ],
+  practice: {
+    easy: [
+      ['Three positions of two lines in space', 'Intersecting, parallel, skew'],
+      ['A line ⟂ to two intersecting lines of a plane is:', 'Perpendicular to the plane'],
+      ['Space diagonal of a cube of edge ' + m('a'), m('a' + sr('3'))],
+      ['Face diagonal of the same', m('a' + sr('2'))],
+      ['Projection of a ' + m('13') + ' oblique from a point ' + m('12') + ' away', m('5')],
+      ['Distance between two opposite faces of a cube of edge ' + m('a'), m('a')],
+      ['Normal of ' + m('x + y = 1'), m('(1, 1, 0)')]
+    ],
+    med: [
+      ['Angle between ' + m('AC₁') + ' and the base of a cube', m('≈ 35.3°')],
+      ['Angle between the planes ' + m('x + y = 1') + ' and ' + m('y + z = 1'), m('60°')],
+      ['Distance from a vertex of a cube of edge ' + m('a') + ' to the plane ' + m('A₁BD'), m(f('a' + sr('3'), '3'))],
+      ['Angles of obliques ' + m('13') + ' and ' + m('20') + ' from a point ' + m('12') + ' from a plane', m('≈ 67.4°') + ', ' + m('≈ 36.9°')],
+      ['Angle between two space diagonals of a cube', m('≈ 70.5°')],
+      ['Distance between two skew edges of a cube of edge ' + m('a'), m('a')],
+      ['Dihedral angle ' + m('ABC₁') + ' with the base of a cube', m('45°')]
+    ],
+    hard: [
+      ['Distance from a vertex of a cube of edge ' + m('a') + ' to the far space diagonal', m(f('a' + sr('6'), '3'))],
+      ['A regular tetrahedron of edge ' + m('a') + ': the angle between a face and the base', m('≈ 70.5°')],
+      ['Same tetrahedron: the distance from a vertex to the opposite face', m(f('a' + sr('6'), '3'))],
+      ['A regular square pyramid, base ' + m('12') + ', height ' + m('8') + ': the dihedral angle along a base edge', m('≈ 53.1°')],
+      ['Same pyramid: the angle of a lateral edge with the base', m('≈ 43.3°')],
+      ['Shortest distance between ' + m('r = t(1,0,0)') + ' and ' + m('r = (0,1,1) + s(0,1,0)'), m('1')],
+      ['Prove that the three space diagonals from one vertex of a box are not coplanar', 'Their scalar triple product is non-zero']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Solve at least two questions by both methods and record which was faster.',
+  homework: [
+    'State the five criteria of the first table, each with a sketch.',
+    'In a cube of edge ' + m('6') + ' cm, find the angle between the space diagonal and the base by both methods.',
+    'Find the angle between the planes ' + m('2x − y + z = 3') + ' and ' + m('x + y + 2z = 1') + '.',
+    'A point is ' + m('9') + ' cm from a plane; obliques of ' + m('15') + ' and ' + m('41') + ' cm are drawn. Find both projections and both angles.',
+    'Find the distance from a vertex of a cube of edge ' + m('4') + ' cm to the plane through the three adjacent vertices, using the volume trick.'
+  ]
+});
+
+/* ============================== 38 ============================== */
+G11_GEO.push({
+  id: 'g11-38', stream: 'geo', grade: 11, quarter: 4, lessons: '65–66', hours: 2,
+  title: 'Revision — surface areas and volumes of all the solids',
+  subtitle: 'Nine formulas, one page, and the three questions that decide which of them a problem wants.',
+  uz: 'Geometry 11, full mensuration review', uzPage: 'pp. 335–344',
+  cam: 'IGX 13.x full review', camPage: 'Core & Extended, pp. 397–404', wb: 'Revision set G4',
+  objectives: [
+    'Recall and apply every surface-area and volume formula of the two-year course.',
+    'Decide from the wording which measure a problem wants.',
+    'Handle compound and hollow solids, and scale factors.',
+    'Work a mixed set at examination pace.'
+  ],
+  terms: [
+    ['Prism', 'Prizma', 'Призма'],
+    ['Cylinder', 'Silindr', 'Цилиндр'],
+    ['Pyramid', 'Piramida', 'Пирамида'],
+    ['Cone', 'Konus', 'Конус'],
+    ['Frustum', 'Kesik jism', 'Усечённое тело'],
+    ['Sphere', 'Sfera', 'Сфера'],
+    ['Lateral surface', 'Yon sirt', 'Боковая поверхность'],
+    ['Total surface', 'To‘la sirt', 'Полная поверхность'],
+    ['Scale factor', 'O‘xshashlik koeffitsiyenti', 'Коэффициент подобия'],
+    ['Compound solid', 'Murakkab jism', 'Составное тело']
+  ],
+  timing: [[15, 'The nine formulas'], [20, 'The three questions'], [25, 'Compound and hollow'], [25, 'Scale factors'], [15, 'A mixed set']],
+  sections: [
+    {
+      h: 'The nine formulas',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Volume</th><th>Lateral / curved</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>prism</td><td class="m">Bh</td><td class="m">Ph</td><td class="m">2B + Ph</td></tr>
+        <tr><td>cylinder</td><td class="m">πr²h</td><td class="m">2πrh</td><td class="m">2πr(r + h)</td></tr>
+        <tr><td>pyramid (regular)</td><td class="m">${f('1', '3')}Bh</td><td class="m">${f('1', '2')}Pm</td><td class="m">B + ${f('1', '2')}Pm</td></tr>
+        <tr><td>cone</td><td class="m">${f('1', '3')}πr²h</td><td class="m">πrl</td><td class="m">πr(r + l)</td></tr>
+        <tr><td>frustum of a cone</td><td class="m">${f('πh', '3')}(R² + Rr + r²)</td><td class="m">πl(R + r)</td><td>+ two circles</td></tr>
+        <tr><td>sphere</td><td class="m">${f('4', '3')}πR³</td><td class="m">4πR²</td><td class="m">4πR²</td></tr>
+        <tr><td>hemisphere</td><td class="m">${f('2', '3')}πR³</td><td class="m">2πR²</td><td class="m">3πR²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Three patterns worth more than the nine lines</div>
+      <ul>
+        <li>Every <b>pointed</b> solid is a third of the matching flat-topped one: ${m(f('1', '3'))} for
+        pyramid and cone.</li>
+        <li>Every <b>lateral</b> area is “perimeter times a length, halved if pointed”:
+        ${m('Ph')} and ${m(f('1', '2') + 'Pm')}; ${m('2πrh')} and ${m('πrl')}.</li>
+        <li>Every <b>curved</b> area of a cone or pyramid uses the <b>slant</b>; every volume uses the
+        <b>height</b>.</li>
+      </ul>
+      Learn the three patterns and the nine formulas rebuild themselves.</div>`
+    },
+    {
+      h: 'The three questions',
+      html: `<div class="keybox"><div class="klabel">Before choosing a formula</div>
+      <ol>
+        <li><b>Volume or area?</b> The words are “hold”, “fill”, “weigh” against “paint”, “cover”,
+        “label”.</li>
+        <li><b>Which faces?</b> Open or closed, solid or hollow, standing on the ground or not.</li>
+        <li><b>Which length?</b> Height for volume, slant for curved area, radius not diameter.</li>
+      </ol></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Wording</th><th>Formula</th></tr></thead>
+      <tbody>
+        <tr><td>“a label around a tin”</td><td class="m">2πrh</td></tr>
+        <tr><td>“a lid for a tin”</td><td class="m">πr²</td></tr>
+        <tr><td>“the canvas of a conical tent, no floor”</td><td class="m">πrl</td></tr>
+        <tr><td>“the concrete in a solid pyramid”</td><td class="m">${f('1', '3')}Bh</td></tr>
+        <tr><td>“the water in a hemispherical bowl”</td><td class="m">${f('2', '3')}πR³</td></tr>
+        <tr><td>“the glass in a hollow sphere”</td><td class="m">${f('4', '3')}π(R³ − r³)</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Compound and hollow',
+      html: `${eq(m('V_compound = V₁ + V₂') + '     ' + m('S_compound = S₁ + S₂ − 2 × (shared face)'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Object</th><th>Volume</th><th>Outside area</th></tr></thead>
+      <tbody>
+        <tr><td>silo: cylinder + hemisphere</td><td class="m">πr²h + ${f('2', '3')}πr³</td><td class="m">2πrh + 2πr² (+ base?)</td></tr>
+        <tr><td>ice-cream: cone + hemisphere</td><td class="m">${f('1', '3')}πr²h + ${f('2', '3')}πr³</td><td class="m">πrl + 2πr²</td></tr>
+        <tr><td>pipe: cylinder − cylinder</td><td class="m">π(R² − r²)L</td><td class="m">2π(R + r)L + 2 rings</td></tr>
+        <tr><td>hollow sphere</td><td class="m">${f('4', '3')}π(R³ − r³)</td><td class="m">4π(R² + r²)</td></tr>
+      </tbody></table></div>
+      {{fig:sphereSection:A plane cut through a solid of revolution — the shared face is always a circle.}}
+      <div class="warn"><span class="wl">The two shared circles vanish, not one</span>
+      When a hemisphere sits on a cylinder, the cylinder's top circle and the hemisphere's flat face are
+      both internal. Subtracting only one of them leaves ${m('πr²')} too much every time.</div>`
+    },
+    {
+      h: 'Scale factors, and a mixed set',
+      html: `${eq(m('length × k') + '     ' + m('area × k²') + '     ' + m('volume × k³'), true)}
+      {{fig:similarSolids:One scale factor, three different powers.}}
+      <p>Read backwards this is just as useful: from a volume ratio take the cube root to get ${m('k')},
+      then square it for areas.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>№</th><th>Question</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1</td><td>Volume of a cone, ${m('r = 6, h = 8')}</td><td class="m">96π</td></tr>
+        <tr><td class="m">2</td><td>Total area of that cone</td><td class="m">96π</td></tr>
+        <tr><td class="m">3</td><td>Volume of a sphere of radius ${m('9')}</td><td class="m">972π</td></tr>
+        <tr><td class="m">4</td><td>Surface area of that sphere</td><td class="m">324π</td></tr>
+        <tr><td class="m">5</td><td>Volume of a square pyramid, base ${m('10')}, height ${m('12')}</td><td class="m">400</td></tr>
+        <tr><td class="m">6</td><td>Its lateral area</td><td class="m">260</td></tr>
+        <tr><td class="m">7</td><td>Frustum, ${m('R = 5, r = 3, h = 6')}</td><td class="m">98π</td></tr>
+        <tr><td class="m">8</td><td>Two similar solids, areas ${m('9 : 25')}: volume ratio</td><td class="m">27 : 125</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Question 2 is the trap</div>
+      A cone with ${m('r = 6')} and ${m('h = 8')} has ${m('l = 10')}, so its total area is
+      ${m('πr(r + l) = 96π')} — numerically equal to its volume, purely by coincidence of these numbers.
+      Recognising that the two answers <b>should</b> differ in units is the check that catches a formula
+      used in the wrong place.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A cone has ' + m('r = 6') + ' and ' + m('h = 8') + '. Find its volume and total surface area.',
+      steps: [
+        [m('l = ' + sr('36 + 64') + ' = 10'), ''],
+        [m('V = ' + f('1', '3') + 'π(36)(8) = 96π'), 'Height.'],
+        [m('S = π(6)(6 + 10) = 96π'), 'Slant.'],
+        ['Equal numbers, different units — cm³ against cm².', '']
+      ],
+      ans: m('96π') + ' cm³ and ' + m('96π') + ' cm²'
+    },
+    {
+      q: 'A hollow glass sphere has outer radius ' + m('10') + ' cm and inner ' + m('9') + ' cm. Find the volume of glass.',
+      steps: [
+        [m('V = ' + f('4', '3') + 'π(1000 − 729)'), ''],
+        [m('= ' + f('4', '3') + 'π(271)'), ''],
+        [m('≈ 1135') + ' cm³.', '']
+      ],
+      ans: m(f('1084π', '3')) + ' ≈ ' + m('1135') + ' cm³'
+    },
+    {
+      q: 'Two similar cones have surface areas in the ratio ' + m('9 : 25') + '. Find the ratio of their volumes.',
+      steps: [
+        [m('k² = ' + f('25', '9') + ' ⇒ k = ' + f('5', '3')), 'Square root first.'],
+        [m('k³ = ' + f('125', '27')), ''],
+        [m('27 : 125'), '']
+      ],
+      ans: m('27 : 125')
+    },
+    {
+      q: 'An ice-cream is a cone of radius ' + m('3') + ' and height ' + m('4') + ' with a hemisphere on top. Find its volume and outside surface area.',
+      steps: [
+        [m('V = ' + f('1', '3') + 'π(9)(4) + ' + f('2', '3') + 'π(27) = 12π + 18π = 30π'), ''],
+        [m('l = 5') + ', so cone curved ' + m('π(3)(5) = 15π') + '.', 'No base circle — it is joined.'],
+        ['Hemisphere curved ' + m('2π(9) = 18π') + '.', 'Its flat face is joined too.'],
+        [m('S = 33π ≈ 104') + ' cm².', '']
+      ],
+      ans: m('30π') + ' ≈ ' + m('94.2') + ' cm³; ' + m('33π') + ' ≈ ' + m('104') + ' cm²'
+    }
+  ],
+  modelNote: 'Put the nine formulas on the board, then rub out three at random and have the class rebuild them from the three patterns.',
+  interactive: {
+    type: 'scaleSolid',
+    title: 'One factor, three powers',
+    hint: 'Move k and watch the three bars separate.'
+  },
+  quiz: [
+    { q: 'Volume of a pyramid:', a: [m('Bh'), m(f('1', '3') + 'Bh'), m(f('1', '2') + 'Bh'), m('3Bh')], c: 1, why: 'A third of the prism.' },
+    { q: 'Curved area of a cone:', a: [m('πr²'), m('πrl'), m('πrh'), m('2πrl')], c: 1, why: 'The slant.' },
+    { q: 'Volume of a cone:', a: [m('πr²h'), m(f('1', '3') + 'πr²h'), m(f('1', '3') + 'πr²l'), m('πrl')], c: 1, why: 'The height.' },
+    { q: 'Total area of a hemisphere (solid):', a: [m('2πR²'), m('3πR²'), m('4πR²'), m('πR²')], c: 1, why: 'Curved plus the flat face.' },
+    { q: 'Volume of a frustum of a cone:', a: [m(f('πh', '3') + '(R² + r²)'), m(f('πh', '3') + '(R² + Rr + r²)'), m('πh(R² − r²)'), m(f('πh', '2') + '(R + r)')], c: 1, why: 'Three terms.' },
+    { q: 'Areas in the ratio ' + m('9 : 25') + ' give volumes in:', a: [m('9 : 25'), m('27 : 125'), m('3 : 5'), m('81 : 625')], c: 1, why: m('k = ' + f('5', '3')) + '.' },
+    { q: 'Two joined faces of a compound solid:', a: ['both count', 'one counts', 'neither counts', 'they are halved'], c: 2, why: 'Both are interior.' }
+  ],
+  practice: {
+    easy: [
+      ['Volume of a prism, ' + m('B = 20, h = 7'), m('140')],
+      ['Volume of a cylinder, ' + m('r = 3, h = 5'), m('45π')],
+      ['Volume of a cone, ' + m('r = 6, h = 8'), m('96π')],
+      ['Slant of that cone', m('10')],
+      ['Volume of a sphere, ' + m('R = 9'), m('972π')],
+      ['Surface area of that sphere', m('324π')],
+      ['Volume of a pyramid, ' + m('B = 100, h = 12'), m('400')]
+    ],
+    med: [
+      ['Total area of a cone, ' + m('r = 6, h = 8'), m('96π')],
+      ['Lateral area of a square pyramid, base ' + m('10') + ', height ' + m('12'), m('260')],
+      ['Frustum volume, ' + m('R = 5, r = 3, h = 6'), m('98π')],
+      ['Total area of a cylinder, ' + m('r = 3, h = 5'), m('48π')],
+      ['Total area of a solid hemisphere, ' + m('R = 4'), m('48π')],
+      ['Areas ' + m('9 : 25') + ': the volume ratio', m('27 : 125')],
+      ['Volumes ' + m('8 : 27') + ': the area ratio', m('4 : 9')]
+    ],
+    hard: [
+      ['Hollow glass sphere, ' + m('R = 10, r = 9') + ': volume of glass', m('≈ 1135') + ' cm³'],
+      ['Ice-cream, cone ' + m('r = 3, h = 4') + ' plus hemisphere: volume and outside area', m('30π') + '; ' + m('33π')],
+      ['Silo, cylinder ' + m('r = 4, h = 12') + ' plus hemisphere: volume', m(f('704π', '3')) + ' ≈ ' + m('737')],
+      ['Pipe ' + m('R = 6, r = 4, L = 150') + ': volume of metal', m('3000π') + ' ≈ ' + m('9425')],
+      ['A cone of radius ' + m('9') + ' cut halfway up: volume of the frustum as a fraction', m(f('7', '8'))],
+      ['A sphere inscribed in a cylinder: the ratio of total areas', m('2 : 3')],
+      ['A cube and a sphere of equal volume: the ratio of surface areas (cube : sphere)', m('6 : ' + rt('3', '36π')) + ' ≈ ' + m('1 : 0.806')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Answer the three questions in writing before each calculation; that is the whole revision.',
+  homework: [
+    'Write the nine formulas from memory, then check them and mark any you got wrong.',
+    'A cone has radius ' + m('5') + ' cm and height ' + m('12') + ' cm. Find its volume, curved area and total area.',
+    'A hollow metal sphere has outer radius ' + m('8') + ' cm and inner ' + m('7') + ' cm. Find the volume of metal and its mass at ' + m('7.8') + ' g/cm³.',
+    'Two similar solids have volumes ' + m('64') + ' and ' + m('125') + ' cm³. Find the ratio of their heights and of their surface areas.',
+    'A grain hopper is a cylinder of radius ' + m('2') + ' m and height ' + m('5') + ' m with a cone of height ' + m('3') + ' m below it. Find its capacity in litres.'
+  ]
+});
+
+/* ============================== 39 ============================== */
+G11_GEO.push({
+  id: 'g11-39', stream: 'geo', grade: 11, quarter: 4, lessons: '67–68', hours: 2,
+  title: 'Geometry in the entrance paper, and the annual review',
+  subtitle: 'What the examination actually asks, and what two years of geometry come to.',
+  uz: 'Geometry 11, yakuniy takrorlash', uzPage: 'pp. 345–352',
+  cam: 'Examination technique', camPage: 'Core & Extended, pp. 405–408', wb: 'Revision set G5',
+  objectives: [
+    'Recognise the geometry question types of the entrance paper.',
+    'Choose the fastest of the synthetic, coordinate and vector methods.',
+    'Work a mixed timed set and diagnose the errors by type.',
+    'Leave the course with a usable summary and a plan.'
+  ],
+  terms: [
+    ['Entrance examination', 'Kirish imtihoni', 'Вступительный экзамен'],
+    ['Question type', 'Savol turi', 'Тип задачи'],
+    ['Synthetic method', 'Sintetik usul', 'Синтетический метод'],
+    ['Coordinate method', 'Koordinatalar usuli', 'Координатный метод'],
+    ['Vector method', 'Vektor usuli', 'Векторный метод'],
+    ['Time management', 'Vaqtni taqsimlash', 'Распределение времени'],
+    ['Error type', 'Xato turi', 'Тип ошибки'],
+    ['Summary sheet', 'Xulosa varaqasi', 'Итоговый лист']
+  ],
+  timing: [[15, 'The seven types'], [30, 'A timed mixed set'], [20, 'Diagnosis by type'], [20, 'The two years in one page'], [15, 'The plan']],
+  sections: [
+    {
+      h: 'The seven types',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Type</th><th>Typical question</th><th>Fastest method</th></tr></thead>
+      <tbody>
+        <tr><td>plane figure</td><td>a triangle’s area or an angle</td><td>synthetic, with a sketch</td></tr>
+        <tr><td>circle</td><td>a tangent, a chord, an inscribed angle</td><td>coordinates if an equation is given</td></tr>
+        <tr><td>coordinate</td><td>a line, a circle, an intersection</td><td>algebra straight through</td></tr>
+        <tr><td>solid: measurement</td><td>a volume or an area</td><td>the nine formulas</td></tr>
+        <tr><td>solid: angle</td><td>a line and a plane, or a dihedral</td><td>vectors in a box, synthetic elsewhere</td></tr>
+        <tr><td>solid: section</td><td>name and measure a cut</td><td>synthetic, three rules</td></tr>
+        <tr><td>similarity</td><td>a ratio of lengths, areas or volumes</td><td class="m">k, k², k³</td></tr>
+      </tbody></table></div>
+      {{fig:trig3dBox:One box, and five of the seven types measured inside it.}}
+      <div class="keybox"><div class="klabel">The first line of every answer</div>
+      Name the solid or the figure, and write down what you know: ${m('B')}, ${m('h')}, ${m('r')}, the
+      coordinates, the vectors. The question rarely names them for you, and the mark scheme rarely gives
+      anything before that line.</div>`
+    },
+    {
+      h: 'A timed mixed set',
+      html: `<p>Twelve questions, twenty minutes. Mark anything that takes over ninety seconds and come
+      back to it.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>№</th><th>Question</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1</td><td>Area of a triangle with sides ${m('13, 14, 15')}</td><td class="m">84</td></tr>
+        <tr><td class="m">2</td><td>Tangent to ${m('x² + y² = 25')} at ${m('(3, 4)')}</td><td class="m">3x + 4y = 25</td></tr>
+        <tr><td class="m">3</td><td>Distance from ${m('(1, 8)')} to ${m('y = 2x')}</td><td class="m">${f('6', sr('5'))} ≈ 2.68</td></tr>
+        <tr><td class="m">4</td><td>Volume of a cone, ${m('r = 5, h = 12')}</td><td class="m">100π</td></tr>
+        <tr><td class="m">5</td><td>Curved area of that cone</td><td class="m">65π</td></tr>
+        <tr><td class="m">6</td><td>Space diagonal of a ${m('3 × 4 × 12')} box</td><td class="m">13</td></tr>
+        <tr><td class="m">7</td><td>Angle of that diagonal with the base</td><td class="m">≈ 67.4°</td></tr>
+        <tr><td class="m">8</td><td>Section of a cube through six edge-midpoints</td><td>regular hexagon</td></tr>
+        <tr><td class="m">9</td><td>Volume of a sphere of surface area ${m('144π')}</td><td class="m">288π</td></tr>
+        <tr><td class="m">10</td><td>Two similar solids, volumes ${m('27 : 64')}: area ratio</td><td class="m">9 : 16</td></tr>
+        <tr><td class="m">11</td><td>Angle between ${m('(1,2,2)')} and ${m('(2,2,1)')}</td><td class="m">≈ 27.3°</td></tr>
+        <tr><td class="m">12</td><td>Least-metal closed cylinder: ${m(f('h', 'r'))}</td><td class="m">2</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Diagnosis by type',
+      html: `<p>Do not count the score. Sort the errors.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Error type</th><th>Looks like</th><th>What to practise</th></tr></thead>
+      <tbody>
+        <tr><td><b>reading</b></td><td>curved when total was asked</td><td>the three questions, written out</td></tr>
+        <tr><td><b>formula</b></td><td>a missing ${m(f('1', '3'))} or ${m(f('4', '3'))}</td><td>the nine-formula page, daily</td></tr>
+        <tr><td><b>method</b></td><td>the long route to a short answer</td><td>the method table above</td></tr>
+        <tr><td><b>arithmetic</b></td><td>a right method, a wrong number</td><td>slow down on the last line</td></tr>
+        <tr><td><b>units</b></td><td>cm³ where litres were wanted</td><td>convert lengths first</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The number that predicts the exam score</div>
+      Not the practice score — the number of errors of the <b>same type</b> repeated across two papers.
+      One repeated type is worth four or five marks in the real examination, and each one takes about
+      twenty minutes of targeted practice to remove.</div>`
+    },
+    {
+      h: 'The two years in one page, and the plan',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Grade 10</th><th>Grade 11</th></tr></thead>
+      <tbody>
+        <tr><td>axioms; three points determine a plane</td><td>coordinates; a point is three numbers</td></tr>
+        <tr><td>parallelism: parallel to a line <b>in</b> it</td><td>vectors; parallel means a scalar multiple</td></tr>
+        <tr><td>perpendicularity: two <b>intersecting</b> lines</td><td>the scalar product; ${m('u·v = 0')}</td></tr>
+        <tr><td>angles by projection</td><td>angles by dot product</td></tr>
+        <tr><td>sections of polyhedra</td><td>prisms, pyramids, cones, spheres</td></tr>
+        <tr><td>the plane coordinate method</td><td>mensuration in context, and optimisation</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One sentence for the whole of school geometry</div>
+      Every problem is solved by finding the one right triangle it contains — or, with vectors, the one
+      dot product it depends on. Two years, one idea: reduce what is in front of you to something you can
+      already measure.</div>
+      <p><b>The plan.</b> Between now and the examination: the nine formulas rewritten from memory once a
+      week; one timed mixed set a week, sorted by error type; and the list of repeated types kept on a
+      single sheet. Not more mathematics — the same mathematics, faster and with fewer repeated
+      slips.</p>
+      <p>That is the end of the geometry course. The formulas will fade; the habit of drawing the figure
+      before writing anything will not, and it is the more useful of the two.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, №1: the area of a triangle with sides ' + m('13, 14, 15') + '.',
+      steps: [
+        [m('s = 21'), 'Heron.'],
+        [m('S = ' + sr('21 × 8 × 7 × 6')), ''],
+        [m('= ' + sr('7056') + ' = 84'), 'A standard triangle worth remembering.']
+      ],
+      ans: m('84')
+    },
+    {
+      q: 'Model answer, №7: the angle of the space diagonal of a ' + m('3 × 4 × 12') + ' box with the base.',
+      steps: [
+        ['Base diagonal ' + m(sr('9 + 16') + ' = 5') + '.', ''],
+        ['Space diagonal ' + m(sr('25 + 144') + ' = 13') + '.', ''],
+        [m('tan θ = ' + f('12', '5')), ''],
+        [m('θ ≈ 67.4°'), '']
+      ],
+      ans: m('≈ 67.4°')
+    },
+    {
+      q: 'Model answer, №11: the angle between ' + m('(1,2,2)') + ' and ' + m('(2,2,1)') + '.',
+      steps: [
+        [m('u·v = 2 + 4 + 2 = 8'), ''],
+        [m('|u| = |v| = 3'), ''],
+        [m('cos θ = ' + f('8', '9')), ''],
+        [m('θ ≈ 27.3°'), '']
+      ],
+      ans: m('≈ 27.3°')
+    },
+    {
+      q: 'Model answer, №9: the volume of a sphere of surface area ' + m('144π') + '.',
+      steps: [
+        [m('4πR² = 144π ⇒ R = 6'), ''],
+        [m('V = ' + f('4', '3') + 'π(216)'), ''],
+        [m('= 288π ≈ 905'), 'Not ' + m('144π') + ' — area and volume are different powers.']
+      ],
+      ans: m('288π')
+    }
+  ],
+  modelNote: 'Run the twelve questions strictly to time, then spend the rest of the lesson only on the error-type table.',
+  interactive: {
+    type: 'quiz',
+    title: 'The two years in twelve questions',
+    hint: 'One from each type, both grades.',
+    items: [
+      { q: 'A plane is determined by:', a: ['two points', 'three non-collinear points', 'one line', 'four points'], c: 1, why: 'The first axiom.' },
+      { q: 'Two lines that never meet are:', a: ['parallel', 'parallel or skew', 'skew', 'intersecting'], c: 1, why: 'Space has both.' },
+      { q: 'A line ⟂ to a plane is ⟂ to:', a: ['one line', 'two intersecting lines, then all', 'two parallel lines', 'the normal'], c: 1, why: 'The criterion.' },
+      { q: 'The angle to a plane is measured to:', a: ['the normal', 'the projection', 'any line', 'the edge'], c: 1, why: 'The smallest angle.' },
+      { q: 'Volume of a prism:', a: [m('Ph'), m('Bh'), m(f('1', '3') + 'Bh'), m('2Bh')], c: 1, why: 'Uniform cross-section.' },
+      { q: 'Volume of a cone:', a: [m('πr²h'), m(f('1', '3') + 'πr²h'), m('πrl'), m(f('1', '3') + 'πr²l')], c: 1, why: 'Height, not slant.' },
+      { q: 'Curved area of a cone:', a: [m('πr²'), m('πrl'), m('πrh'), m('2πrl')], c: 1, why: 'The slant.' },
+      { q: 'Surface area of a sphere:', a: [m('4πR²'), m(f('4', '3') + 'πR³'), m('2πR²'), m('πR²')], c: 0, why: 'Four great circles.' },
+      { q: 'Volumes ' + m('27 : 64') + ' give areas in:', a: [m('27 : 64'), m('9 : 16'), m('3 : 4'), m('81 : 256')], c: 1, why: m('k = ' + f('4', '3')) + '.' },
+      { q: 'A section of a cube has at most:', a: [m('4'), m('5'), m('6'), m('8')], c: 2, why: 'Six faces.' },
+      { q: m('u ⟂ v') + ' when:', a: [m('u·v = 1'), m('u·v = 0'), m('u = v'), m('|u| = |v|')], c: 1, why: m('cos 90° = 0') + '.' },
+      { q: 'Least-metal closed cylinder:', a: [m('h = r'), m('h = 2r'), m('h = ' + f('r', '2')), m('h = 3r')], c: 1, why: 'Height equals diameter.' }
+    ]
+  },
+  quiz: [
+    { q: 'The first line of an entrance answer should be:', a: ['the formula', 'the named figure and what is known', 'the answer', 'a guess'], c: 1, why: 'The mark scheme starts there.' },
+    { q: 'For an angle inside a box, prefer:', a: ['synthetic', 'vectors', 'estimation', 'trial'], c: 1, why: 'The coordinates write themselves.' },
+    { q: 'After a practice paper, count:', a: ['the score', 'the repeated error types', 'the time', 'the blanks'], c: 1, why: 'That is what predicts the real score.' },
+    { q: 'The one idea of two years of geometry:', a: ['memorise formulas', 'reduce to a right triangle or a dot product', 'draw neatly', 'work fast'], c: 1, why: 'Everything else follows.' }
+  ],
+  practice: {
+    easy: [
+      ['Area of a triangle with sides ' + m('13, 14, 15'), m('84')],
+      ['Tangent to ' + m('x² + y² = 25') + ' at ' + m('(3, 4)'), m('3x + 4y = 25')],
+      ['Volume of a cone, ' + m('r = 5, h = 12'), m('100π')],
+      ['Curved area of that cone', m('65π')],
+      ['Space diagonal of a ' + m('3 × 4 × 12') + ' box', m('13')],
+      ['Radius of a sphere of area ' + m('144π'), m('6')],
+      ['Volumes ' + m('27 : 64') + ': area ratio', m('9 : 16')]
+    ],
+    med: [
+      ['Angle of the ' + m('3 × 4 × 12') + ' space diagonal with the base', m('≈ 67.4°')],
+      ['Distance from ' + m('(1, 8)') + ' to ' + m('y = 2x'), m(f('6', sr('5'))) + ' ≈ ' + m('2.68')],
+      ['Section of a cube through six edge-midpoints', 'A regular hexagon'],
+      ['Volume of a sphere of area ' + m('144π'), m('288π')],
+      ['Angle between ' + m('(1,2,2)') + ' and ' + m('(2,2,1)'), m('≈ 27.3°')],
+      ['Least-metal closed cylinder: ' + m(f('h', 'r')), m('2')],
+      ['Total area of a cone, ' + m('r = 5, h = 12'), m('90π')]
+    ],
+    hard: [
+      ['A cube of edge ' + m('a') + ': the distance from a vertex to the plane of the three adjacent vertices', m(f('a' + sr('3'), '3'))],
+      ['A regular tetrahedron of edge ' + m('a') + ': its volume', m(f('a³' + sr('2'), '12'))],
+      ['A sphere inscribed in a cone of radius ' + m('6') + ' and height ' + m('8'), m('r = 3')],
+      ['A cone of radius ' + m('9') + ' cut halfway up: the frustum as a fraction of the cone', m(f('7', '8'))],
+      ['The regular hexagonal section of a cube of edge ' + m('a') + ': its area', m(f('3a²' + sr('3'), '4'))],
+      ['Two spheres of radii ' + m('3') + ' and ' + m('5') + ' touch externally: the distance between the centres', m('8')],
+      ['A closed cylinder of volume ' + m('V') + ' with least area: express that area in terms of ' + m('V'), m('3' + rt('3', '2πV²'))]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'This is the last geometry lesson of the school course. The summary page is the thing to keep.',
+  homework: [
+    'Work the twelve-question set again under timed conditions and sort every error by type.',
+    'Write the two years in one page: six lines for Grade 10, six for Grade 11, with a sketch for each.',
+    'Write the nine formulas from memory, check them, and note which you got wrong.',
+    'Write your revision plan for the weeks before the examination in three sentences, and date it.'
+  ]
+});
