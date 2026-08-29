@@ -1596,3 +1596,1097 @@ G10_GEO.push({
     'Write your target for Quarter II in one checkable sentence.'
   ]
 });
+
+/* ===================== QUARTER II (14 hours) ===================== */
+
+/* ============================== 11 ============================== */
+G10_GEO.push({
+  id: 'g10-11', stream: 'geo', grade: 10, quarter: 2, lessons: '19–20', hours: 2,
+  title: 'The relative position of lines in space',
+  subtitle: 'Parallelism revisited where a third case exists — and the two theorems that make it usable.',
+  uz: 'Geometry 10, §9', uzPage: 'pp. 83–92',
+  cam: 'Extension', camPage: 'Core & Extended, pp. 277–281', wb: 'Exercise 9.1',
+  objectives: [
+    'State the definition of parallel lines in space.',
+    'Prove that through a point not on a line there is exactly one parallel to it.',
+    'Apply the transitivity of parallelism in space.',
+    'Prove the theorem on the angle between lines with respectively parallel sides.'
+  ],
+  terms: [
+    ['Parallel lines in space', 'Fazoda parallel chiziqlar', 'Параллельные прямые в пространстве'],
+    ['Coplanar lines', 'Bir tekislikdagi chiziqlar', 'Компланарные прямые'],
+    ['Transitivity', 'Tranzitivlik', 'Транзитивность'],
+    ['Respectively parallel sides', 'Mos parallel tomonlar', 'Соответственно параллельные стороны'],
+    ['Unique parallel', 'Yagona parallel', 'Единственная параллельная'],
+    ['Direction of a line', 'Chiziq yo‘nalishi', 'Направление прямой'],
+    ['Angle between lines', 'Chiziqlar orasidagi burchak', 'Угол между прямыми'],
+    ['Auxiliary plane', 'Yordamchi tekislik', 'Вспомогательная плоскость']
+  ],
+  timing: [[10, 'The definition, restated'], [20, 'One parallel through a point'], [22, 'Transitivity'], [20, 'Respectively parallel sides'], [16, 'Practice'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'The definition needs one more word',
+      html: `<div class="keybox"><div class="klabel">Parallel in space</div>
+      Two lines are <b>parallel</b> when they lie in <b>one plane</b> and do not meet. Without the first
+      condition the definition would also admit skew lines, which never meet either.</div>
+      {{fig:skewLines:Skew lines never meet — and no plane holds both. That is exactly what parallelism excludes.}}
+      <p>Everything else about parallel lines carries over from the plane unchanged. What must be
+      re-proved is that they still <b>exist and are unique</b> once the extra dimension is available.</p>`
+    },
+    {
+      h: 'One parallel through a point',
+      html: `<p><b>Theorem.</b> Through a point ${m('M')} not on a line ${m('a')} there passes exactly one
+      line parallel to ${m('a')}.</p>
+      <p><i>Proof.</i> The line ${m('a')} and the point ${m('M')} determine a unique plane ${m('α')}
+      (Theorem 1 of Lesson 4–5). Inside ${m('α')} the plane axiom gives exactly one parallel through
+      ${m('M')}. Any parallel to ${m('a')} through ${m('M')} must be coplanar with ${m('a')} by the
+      definition, and that plane contains ${m('a')} and ${m('M')}, so it is ${m('α')}. Hence there is no
+      other. ∎</p>
+      <div class="keybox"><div class="klabel">The pattern of every proof in this chapter</div>
+      Reduce the space problem to a plane problem by naming the right plane, then use plane geometry.
+      Naming the plane is the whole of the work.</div>`
+    },
+    {
+      h: 'Transitivity',
+      html: `<p><b>Theorem.</b> If ${m('a ∥ b')} and ${m('b ∥ c')} then ${m('a ∥ c')}.</p>
+      <p>In the plane this is obvious. In space it is not, because ${m('a')} and ${m('c')} need not
+      obviously share a plane — and until that is proved, they might be skew. The proof constructs the
+      plane and shows they cannot meet.</p>
+      <div class="warn"><span class="wl">Perpendicularity is not transitive</span>
+      In space, ${m('a ⊥ b')} and ${m('b ⊥ c')} does <b>not</b> give ${m('a ⊥ c')}. Take three edges of
+      a cube meeting at one vertex: any two are perpendicular, so the conclusion would be false.
+      Parallelism is transitive; perpendicularity is not.</div>`
+    },
+    {
+      h: 'Respectively parallel sides',
+      html: `<p><b>Theorem.</b> If two angles in space have respectively parallel sides, they are either
+      equal or supplementary.</p>
+      <p>This is what allows the angle between skew lines to be well defined: translating a line does
+      not change the angle it makes with anything, because the translated line is parallel to the
+      original and its sides are respectively parallel.</p>
+      ${eq('translate ' + m('b') + ' to meet ' + m('a') + '  ⟹  the angle is unchanged', true)}
+      <p>Which of “equal” or “supplementary” occurs depends on the directions chosen; the convention is
+      to take the acute one.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'In cube ' + m('ABCDA₁B₁C₁D₁') + ', prove ' + m('AB ∥ D₁C₁') + '.',
+      steps: [
+        [m('AB ∥ DC'), 'Opposite sides of a square face.'],
+        [m('DC ∥ D₁C₁'), 'Opposite sides of face ' + m('DCC₁D₁') + '.'],
+        ['By transitivity.', '']
+      ],
+      ans: m('AB ∥ D₁C₁')
+    },
+    {
+      q: 'Give three lines in a cube with ' + m('a ⊥ b') + ' and ' + m('b ⊥ c') + ' but ' + m('a') + ' not perpendicular to ' + m('c') + '.',
+      steps: [
+        ['Take ' + m('a = AB') + ', ' + m('b = AA₁') + ', ' + m('c = D₁C₁') + '.', ''],
+        [m('AB ⊥ AA₁'), 'Adjacent edges of a face.'],
+        [m('AA₁ ⊥ D₁C₁'), 'A vertical edge against a horizontal one.'],
+        ['But ' + m('AB ∥ D₁C₁') + ', so the angle between them is ' + m('0°') + '.', 'Not perpendicular.']
+      ],
+      ans: m('AB, AA₁, D₁C₁') + ' — the first and last are parallel'
+    },
+    {
+      q: m('M') + ' is a point not on line ' + m('a') + '. How many lines through ' + m('M') + ' are skew to ' + m('a') + '?',
+      steps: [
+        ['Only one is parallel.', ''],
+        ['Those in the plane ' + m('α') + ' meet ' + m('a') + ' or are that parallel.', ''],
+        ['Every other line through ' + m('M') + ' leaves ' + m('α') + '.', '']
+      ],
+      ans: 'Infinitely many'
+    }
+  ],
+  modelNote: 'Hold two pencils parallel, then move one out of the plane to show what the definition excludes.',
+  interactive: {
+    type: 'space3d',
+    title: 'Lines through a point',
+    hint: 'Move the point and see which lines stay coplanar with the given one.'
+  },
+  quiz: [
+    { q: 'Parallel lines in space must:', a: ['not meet', 'lie in one plane and not meet', 'be equal', 'be perpendicular to a third'], c: 1, why: 'Otherwise skew lines would qualify.' },
+    { q: 'Through a point off a line the number of parallels is:', a: [m('0'), m('1'), m('2'), 'infinitely many'], c: 1, why: 'The plane is unique.' },
+    { q: 'Parallelism in space is:', a: ['not transitive', 'transitive', 'symmetric only', 'undefined'], c: 1, why: m('a ∥ b, b ∥ c ⇒ a ∥ c') + '.' },
+    { q: 'Perpendicularity in space is:', a: ['transitive', 'not transitive', 'the same as parallelism', 'undefined'], c: 1, why: 'Cube edges give the counterexample.' },
+    { q: 'Angles with respectively parallel sides are:', a: ['always equal', 'equal or supplementary', 'always supplementary', 'unrelated'], c: 1, why: 'It depends on the directions.' }
+  ],
+  practice: {
+    easy: [
+      ['Define parallel lines in space', 'coplanar and never meeting'],
+      ['How many parallels through a point off a line?', m('1')],
+      ['Is ' + m('AB ∥ D₁C₁') + ' in a cube?', 'yes'],
+      ['Is parallelism transitive in space?', 'yes'],
+      ['Is perpendicularity transitive in space?', 'no'],
+      ['Name a line skew to ' + m('AB') + ' in a cube', m('CC₁') + ' (or ' + m('DD₁') + ')'],
+      ['Two lines that never meet are parallel?', 'not necessarily — they may be skew']
+    ],
+    med: [
+      ['Prove ' + m('AB ∥ D₁C₁') + ' in a cube', 'Transitivity through ' + m('DC')],
+      ['How many lines through a point are skew to a given line?', 'infinitely many'],
+      ['If ' + m('a ∥ b') + ' and ' + m('b') + ' meets ' + m('c') + ', what can ' + m('a') + ' and ' + m('c') + ' be?', 'meeting or skew'],
+      ['Angle between ' + m('AB') + ' and ' + m('C₁D₁') + ' in a cube', m('0°') + ' — they are parallel'],
+      ['Angle between ' + m('AB') + ' and ' + m('B₁C₁'), m('90°')],
+      ['Give two lines perpendicular to the same line but not parallel', 'Two edges of a cube meeting a third at one vertex'],
+      ['Why is the angle between skew lines well defined?', 'Respectively parallel sides give the same angle']
+    ],
+    hard: [
+      ['Prove transitivity of parallelism in space', 'Construct the plane through ' + m('a') + ' and a point of ' + m('c') + ', then argue in it'],
+      ['Prove: if ' + m('a ∥ b') + ' and a plane meets ' + m('a') + ', it meets ' + m('b') + ' or contains it', 'Otherwise ' + m('b ∥ α') + ' forces ' + m('a ∥ α')],
+      ['In a cube, count the pairs of parallel edges', m('18') + ' — three directions, ' + m('C(4,2) = 6') + ' each'],
+      ['In a cube, count the pairs of intersecting edges', m('24') + ' — ' + m('C(3,2) = 3') + ' at each of 8 vertices'],
+      ['In a cube, count the pairs of skew edges', m('24')],
+      ['Check the three counts against ' + m('C(12,2)'), m('18 + 24 + 24 = 66') + ' ✓'],
+      ['Prove the theorem on respectively parallel sides', 'Translate one angle onto the other; the triangles are congruent']
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Every proof must name the plane it works in.',
+  homework: [
+    'Prove that through a point not on a line there is exactly one parallel to it.',
+    'In cube ' + m('ABCDA₁B₁C₁D₁') + ', prove ' + m('AD ∥ B₁C₁') + '.',
+    'Give a counterexample showing perpendicularity in space is not transitive.',
+    'Explain in three sentences why the definition of parallel lines needs the words “in one plane”.'
+  ]
+});
+
+/* ============================== 12 ============================== */
+G10_GEO.push({
+  id: 'g10-12', stream: 'geo', grade: 10, quarter: 2, lessons: '21–22', hours: 2,
+  title: 'Skew lines',
+  subtitle: 'The case the plane does not have — its test, its angle, and the common perpendicular that measures the distance between two lines that never meet.',
+  uz: 'Geometry 10, §10', uzPage: 'pp. 93–102',
+  cam: 'Extension', camPage: 'Core & Extended, pp. 277–281', wb: 'Exercise 10.1',
+  objectives: [
+    'State and apply the test for skew lines.',
+    'Find the angle between two skew lines by translation.',
+    'Describe the common perpendicular of two skew lines.',
+    'Compute the distance between skew edges of a cuboid.'
+  ],
+  terms: [
+    ['Skew lines', 'Ayqash to‘g‘ri chiziqlar', 'Скрещивающиеся прямые'],
+    ['Test for skew lines', 'Ayqashlik alomati', 'Признак скрещивающихся прямых'],
+    ['Common perpendicular', 'Umumiy perpendikulyar', 'Общий перпендикуляр'],
+    ['Distance between skew lines', 'Ayqash chiziqlar orasidagi masofa', 'Расстояние между скрещивающимися прямыми'],
+    ['Angle between skew lines', 'Ayqash chiziqlar burchagi', 'Угол между скрещивающимися прямыми'],
+    ['Translation of a line', 'Chiziqni ko‘chirish', 'Перенос прямой'],
+    ['Shortest segment', 'Eng qisqa kesma', 'Кратчайший отрезок'],
+    ['Non-coplanar', 'Bir tekislikda yotmaydigan', 'Не лежащие в одной плоскости']
+  ],
+  timing: [[10, 'The test'], [22, 'The angle, by translation'], [24, 'The common perpendicular'], [20, 'Distances in a cuboid'], [20, 'Practice'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'The test',
+      html: `<div class="keybox"><div class="klabel">Test for skew lines</div>
+      If one line lies in a plane and the other meets that plane at a point <b>not on</b> the first
+      line, then the two lines are skew.</div>
+      <p>This is the practical test. Checking the definition directly — “no plane contains both” —
+      requires ruling out infinitely many planes; the test requires exhibiting one.</p>
+      {{fig:skewLines:AB lies in the base; CC₁ meets the base at C, which is not on AB. Skew.}}
+      <p>In cube ${m('ABCDA₁B₁C₁D₁')}: ${m('AB')} lies in the plane ${m('ABCD')}, and ${m('CC₁')} meets
+      that plane at ${m('C')}, which is not on ${m('AB')}. So ${m('AB')} and ${m('CC₁')} are skew.</p>`
+    },
+    {
+      h: 'The angle',
+      html: `<p>Translate either line until it meets the other, and measure the angle between the
+      resulting intersecting lines. By the theorem on respectively parallel sides, the answer does not
+      depend on which line is moved or where it is moved to.</p>
+      ${eq(m('angle(a, b) = angle(a′, b)  whenever  a′ ∥ a'), true)}
+      <p>In a cube, ${m('AB')} and ${m('B₁C₁')}: translate ${m('B₁C₁')} down to ${m('BC')}. Since
+      ${m('AB ⊥ BC')}, the angle is ${m('90°')}. Two lines can be perpendicular without ever meeting.</p>
+      <div class="warn"><span class="wl">Translate, do not rotate</span>
+      Only a translation preserves direction. Sliding a line along itself, or turning it, changes the
+      answer.</div>`
+    },
+    {
+      h: 'The common perpendicular',
+      html: `<div class="keybox"><div class="klabel">Theorem</div>
+      Two skew lines have exactly one <b>common perpendicular</b> — a segment meeting both and
+      perpendicular to both. Its length is the <b>distance</b> between the lines, and it is the shortest
+      segment joining a point of one to a point of the other.</div>
+      <p>In a cube of side ${m('a')}, the common perpendicular of ${m('AB')} and ${m('CC₁')} is
+      ${m('BC')}, of length ${m('a')}. It meets ${m('AB')} at ${m('B')} and ${m('CC₁')} at ${m('C')},
+      and is perpendicular to both.</p>
+      <p><b>A second method.</b> Take the plane through one line parallel to the other. The distance
+      between the skew lines equals the distance from the second line to that plane — a construction
+      that generalises to cases where the common perpendicular is hard to see.</p>`
+    },
+    {
+      h: 'Distances in a cuboid',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Pair in cuboid ${m('a × b × c')}</th><th>Common perpendicular</th><th>Distance</th></tr></thead>
+      <tbody>
+        <tr><td class="m">AB and CC₁</td><td class="m">BC</td><td class="m">b</td></tr>
+        <tr><td class="m">AB and DD₁</td><td class="m">AD</td><td class="m">b</td></tr>
+        <tr><td class="m">AA₁ and BC</td><td class="m">AB</td><td class="m">a</td></tr>
+        <tr><td class="m">AB and D₁C₁</td><td>they are parallel</td><td>—</td></tr>
+      </tbody></table></div>
+      <p>In a cube every edge has four skew partners, and in each case the common perpendicular is
+      another edge. The picture is easier than the algebra, which is why the diagram is drawn first.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'In cube ' + m('ABCDA₁B₁C₁D₁') + ' of side 6, find the distance between ' + m('AB') + ' and ' + m('CC₁') + '.',
+      steps: [
+        [m('BC') + ' meets ' + m('AB') + ' at ' + m('B') + ' and ' + m('CC₁') + ' at ' + m('C') + '.', ''],
+        [m('BC ⊥ AB') + ' and ' + m('BC ⊥ CC₁') + '.', 'It is the common perpendicular.'],
+        [m('|BC| = 6'), '']
+      ],
+      ans: m('6')
+    },
+    {
+      q: 'Are ' + m('AD') + ' and ' + m('B₁C₁') + ' skew in a cube?',
+      steps: [
+        [m('B₁C₁ ∥ BC'), 'Opposite sides of face ' + m('BCC₁B₁') + '.'],
+        [m('BC ∥ AD'), 'Opposite sides of the base.'],
+        ['By transitivity ' + m('B₁C₁ ∥ AD') + '.', ''],
+        ['Parallel lines are coplanar, so they are not skew.', 'Always test for parallelism first.']
+      ],
+      ans: 'No — they are parallel'
+    },
+    {
+      q: 'Cuboid ' + m('4 × 6 × 8') + '. Find the angle between ' + m('AB') + ' and ' + m('DB₁') + '.',
+      steps: [
+        [m('AB = 4') + ' along ' + m('x') + '; ' + m('DB₁') + ' from ' + m('D(0,6,0)') + ' to ' + m('B₁(4,0,8)') + '.', ''],
+        ['Translate ' + m('AB') + ' to ' + m('DC') + ', which meets ' + m('DB₁') + ' at ' + m('D') + '.', ''],
+        [m('DC = 4') + ', ' + m('DB₁ = ' + sr('16 + 36 + 64') + ' = ' + sr('116')), ''],
+        [m('cos θ = ' + f('4', sr('116')) + ' ≈ 0.3714'), '']
+      ],
+      ans: m('≈ 68.2°')
+    }
+  ],
+  modelNote: 'Hold two pencils skew, then slide one parallel until they cross — the angle is unchanged.',
+  interactive: {
+    type: 'space3d',
+    title: 'Skew edges of a box',
+    hint: 'Move the point and see which edges are skew to the highlighted one.'
+  },
+  quiz: [
+    { q: 'The test for skew lines needs:', a: ['two planes', 'one line in a plane and the other meeting it off that line', 'a common point', 'equal lengths'], c: 1, why: 'It exhibits the obstruction.' },
+    { q: 'Two skew lines have how many common perpendiculars?', a: [m('0'), m('1'), m('2'), 'infinitely many'], c: 1, why: 'Exactly one.' },
+    { q: 'The distance between skew lines is:', a: ['zero', 'the common perpendicular’s length', 'infinite', 'undefined'], c: 1, why: 'It is the shortest joining segment.' },
+    { q: 'To find the angle between skew lines you:', a: ['rotate one', 'translate one', 'project both', 'measure directly'], c: 1, why: 'Translation preserves direction.' },
+    { q: 'Skew lines can be perpendicular:', a: ['never', 'always', 'sometimes', 'only in a cube'], c: 2, why: m('AB') + ' and ' + m('B₁C₁') + ' in a cube are.' }
+  ],
+  practice: {
+    easy: [
+      ['State the test for skew lines', 'One line in a plane, the other meeting it off that line'],
+      ['Are ' + m('AB') + ' and ' + m('CC₁') + ' skew in a cube?', 'yes'],
+      ['Are ' + m('AB') + ' and ' + m('D₁C₁') + ' skew?', 'no — parallel'],
+      ['Common perpendicular of ' + m('AB') + ' and ' + m('CC₁'), m('BC')],
+      ['Distance between them in a cube of side 5', m('5')],
+      ['Angle between ' + m('AB') + ' and ' + m('B₁C₁'), m('90°')],
+      ['How many edges are skew to a given edge of a cube?', m('4')]
+    ],
+    med: [
+      ['Cube of side 6: distance between ' + m('AB') + ' and ' + m('CC₁'), m('6')],
+      ['Cube of side 6: distance between ' + m('AA₁') + ' and ' + m('BC'), m('6')],
+      ['Angle between ' + m('AB') + ' and ' + m('DC₁') + ' in a cube', m('45°')],
+      ['Angle between ' + m('AB₁') + ' and ' + m('BC₁') + ' in a cube', m('60°')],
+      ['Cuboid ' + m('4 × 6 × 8') + ': angle between ' + m('AB') + ' and ' + m('DB₁'), m('≈ 68.2°')],
+      ['Common perpendicular of ' + m('AA₁') + ' and ' + m('CD') + ' in a cube', m('AD')],
+      ['List the four edges skew to ' + m('AD'), m('BB₁, CC₁, A₁B₁, D₁C₁')]
+    ],
+    hard: [
+      ['Cube of side ' + m('a') + ': distance between ' + m('AB') + ' and ' + m('B₁D₁'), m(f('a', sr('2'))) + ' ≈ ' + m('0.707a')],
+      ['Cube of side ' + m('a') + ': distance between the diagonals ' + m('AC') + ' and ' + m('B₁D₁'), m('a')],
+      ['Cube of side ' + m('a') + ': distance between ' + m('AB') + ' and ' + m('A₁C₁'), m('a')],
+      ['Prove the common perpendicular is unique', 'Two would force the lines to be coplanar'],
+      ['Prove the common perpendicular is the shortest joining segment', 'Any other joins via a right triangle with it as a leg'],
+      ['Cuboid ' + m('3 × 4 × 12') + ': distance between ' + m('AB') + ' and ' + m('CC₁'), m('4')],
+      ['Explain the plane method for the distance between skew lines', 'Take the plane through one parallel to the other; the distance is from the second to it']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw the cube once, large, and answer tasks 1–3 from it.',
+  homework: [
+    'In cube ' + m('ABCDA₁B₁C₁D₁') + ', list every edge skew to ' + m('CD') + '.',
+    'Find the common perpendicular and the distance between ' + m('AD') + ' and ' + m('CC₁') + ' for side 8.',
+    'Find the angle between ' + m('AD') + ' and ' + m('BC₁') + '.',
+    'Cuboid ' + m('5 × 12 × 9') + ': find the angle between ' + m('AB') + ' and ' + m('DB₁') + '.',
+    'Explain in three sentences why the common perpendicular is the shortest segment joining the two lines.'
+  ]
+});
+
+/* ============================== 13 ============================== */
+G10_GEO.push({
+  id: 'g10-13', stream: 'geo', grade: 10, quarter: 2, lessons: '23–24', hours: 2,
+  title: 'The relative position of a line and a plane',
+  subtitle: 'Three cases, one test — and the theorem that turns a hard space question into an easy plane one.',
+  uz: 'Geometry 10, §11', uzPage: 'pp. 103–112',
+  cam: 'Extension', camPage: 'Core & Extended, pp. 277–281', wb: 'Exercise 11.1',
+  objectives: [
+    'List the three positions of a line and a plane.',
+    'State and apply the test for a line parallel to a plane.',
+    'Prove that a plane through a line parallel to another meets it in a parallel line.',
+    'Use the results in a cube or prism.'
+  ],
+  terms: [
+    ['Line parallel to a plane', 'Tekislikka parallel chiziq', 'Прямая, параллельная плоскости'],
+    ['Test for parallelism', 'Parallellik alomati', 'Признак параллельности'],
+    ['Line lying in a plane', 'Tekislikda yotuvchi chiziq', 'Прямая, лежащая в плоскости'],
+    ['Point of intersection', 'Kesishish nuqtasi', 'Точка пересечения'],
+    ['Auxiliary plane', 'Yordamchi tekislik', 'Вспомогательная плоскость'],
+    ['Trace', 'Iz', 'След'],
+    ['Distance from a line to a plane', 'Chiziqdan tekislikkacha masofa', 'Расстояние от прямой до плоскости'],
+    ['Section', 'Kesim', 'Сечение']
+  ],
+  timing: [[8, 'The three cases'], [22, 'The test'], [24, 'The converse theorem'], [22, 'Applications in a cube'], [18, 'Practice'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The three cases',
+      html: `{{fig:linePlanePos:In the plane, meeting it at a point, parallel to it. There is no fourth case.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Case</th><th>Common points</th><th>Notation</th></tr></thead>
+      <tbody>
+        <tr><td>the line lies in the plane</td><td>infinitely many</td><td class="m">a ⊂ α</td></tr>
+        <tr><td>the line meets the plane</td><td class="m">1</td><td class="m">a ∩ α = M</td></tr>
+        <tr><td>the line is parallel to the plane</td><td class="m">0</td><td class="m">a ∥ α</td></tr>
+      </tbody></table></div>
+      <p>Two common points would put the whole line in the plane, by axiom S2 — which is why there is no
+      case with exactly two.</p>`
+    },
+    {
+      h: 'The test',
+      html: `<div class="keybox"><div class="klabel">Test for a line parallel to a plane</div>
+      If a line ${m('ℓ')} not lying in a plane ${m('α')} is parallel to <b>some</b> line ${m('m')} lying
+      in ${m('α')}, then ${m('ℓ ∥ α')}.</div>
+      {{fig:lineParallelPlane:ℓ is parallel to m, and m lies in α. That is enough.}}
+      <p><i>Proof.</i> ${m('ℓ')} and ${m('m')} are parallel, so they lie in one plane ${m('β')}. If
+      ${m('ℓ')} met ${m('α')}, the meeting point would lie in ${m('β ∩ α = m')} — so it would be on
+      ${m('m')}, contradicting ${m('ℓ ∥ m')}. ∎</p>
+      <div class="warn"><span class="wl">“Some”, not “every”</span>
+      You need to exhibit <b>one</b> line of the plane parallel to ${m('ℓ')}. Finding it is the whole
+      exercise; in a cube it is almost always the opposite edge of a face.</div>`
+    },
+    {
+      h: 'The converse',
+      html: `<p><b>Theorem.</b> If ${m('ℓ ∥ α')} and a plane ${m('β')} contains ${m('ℓ')} and meets
+      ${m('α')} in a line ${m('m')}, then ${m('ℓ ∥ m')}.</p>
+      <p><i>Proof.</i> ${m('ℓ')} and ${m('m')} both lie in ${m('β')}, so they are coplanar. If they met,
+      the meeting point would be on ${m('ℓ')} and in ${m('α')} — impossible, since ${m('ℓ ∥ α')}. ∎</p>
+      <div class="keybox"><div class="klabel">This is the section rule R2, proved</div>
+      It is why a cutting plane meets two parallel faces in parallel lines: each face is parallel to
+      the other, and the cutting plane contains a line of each.</div>`
+    },
+    {
+      h: 'In a cube',
+      html: `<p>In ${m('ABCDA₁B₁C₁D₁')}, is ${m('A₁B₁')} parallel to the plane ${m('ABCD')}?</p>
+      <ol>
+        <li>${m('A₁B₁')} does not lie in ${m('ABCD')}.</li>
+        <li>${m('A₁B₁ ∥ AB')}, opposite sides of the square face ${m('ABB₁A₁')}.</li>
+        <li>${m('AB ⊂ ABCD')}.</li>
+        <li>By the test, ${m('A₁B₁ ∥ ABCD')}. ∎</li>
+      </ol>
+      <p>The <b>distance</b> from a line parallel to a plane to that plane is the same at every point —
+      here it is the height of the cube. That constancy is what makes the distance well defined.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Prove that ' + m('B₁C₁') + ' is parallel to the plane ' + m('ABCD') + ' in a cube.',
+      steps: [
+        [m('B₁C₁ ⊄ ABCD'), 'It is on the top face.'],
+        [m('B₁C₁ ∥ BC'), 'Opposite sides of face ' + m('BCC₁B₁') + '.'],
+        [m('BC ⊂ ABCD'), ''],
+        ['Test applies.', '']
+      ],
+      ans: m('B₁C₁ ∥ ABCD')
+    },
+    {
+      q: 'A plane through ' + m('A₁B₁') + ' meets the base ' + m('ABCD') + ' in a line ' + m('m') + '. What can be said about ' + m('m') + '?',
+      steps: [
+        [m('A₁B₁ ∥ ABCD'), 'By the previous example.'],
+        ['The cutting plane contains ' + m('A₁B₁') + ' and meets the base in ' + m('m') + '.', ''],
+        ['By the converse theorem, ' + m('m ∥ A₁B₁') + '.', '']
+      ],
+      ans: m('m ∥ A₁B₁') + ', so also ' + m('m ∥ AB')
+    },
+    {
+      q: 'Is the diagonal ' + m('AC₁') + ' of a cube parallel to any face?',
+      steps: [
+        ['It meets the base at ' + m('A') + ' and the top at ' + m('C₁') + '.', ''],
+        ['So it is not parallel to those two.', ''],
+        ['It meets each of the other four faces too.', 'It is a space diagonal.']
+      ],
+      ans: 'No — a space diagonal meets every face'
+    }
+  ],
+  modelNote: 'Hold a pencil parallel to the table and ask which line on the table it is parallel to.',
+  interactive: {
+    type: 'space3d',
+    title: 'Line and plane',
+    hint: 'Move the line and watch which of the three cases holds.'
+  },
+  quiz: [
+    { q: 'A line and a plane can share:', a: ['0, 1 or infinitely many points', 'exactly 2', 'only 0', 'only 1'], c: 0, why: 'Two would force the whole line in.' },
+    { q: 'The test for ' + m('ℓ ∥ α') + ' needs:', a: ['every line of ' + m('α'), 'one line of ' + m('α') + ' parallel to ' + m('ℓ'), 'a perpendicular', 'a point'], c: 1, why: 'One is enough.' },
+    { q: 'If ' + m('ℓ ∥ α') + ' and ' + m('β ⊃ ℓ') + ' cuts ' + m('α') + ' in ' + m('m') + ', then:', a: [m('ℓ ⊥ m'), m('ℓ ∥ m'), m('ℓ = m'), 'nothing'], c: 1, why: 'The converse theorem.' },
+    { q: m('A₁B₁') + ' and the plane ' + m('ABCD') + ' in a cube are:', a: ['meeting', 'parallel', 'coincident', 'perpendicular'], c: 1, why: m('A₁B₁ ∥ AB ⊂ ABCD') + '.' },
+    { q: 'A space diagonal of a cube is parallel to:', a: ['the base', 'a side face', 'no face', 'every face'], c: 2, why: 'It meets them all.' }
+  ],
+  practice: {
+    easy: [
+      ['Name the three positions of a line and a plane', 'in it, meeting it, parallel'],
+      ['Can a line and a plane share exactly 2 points?', 'no'],
+      ['State the test for ' + m('ℓ ∥ α'), m('ℓ ∥ m') + ' for some ' + m('m ⊂ α')],
+      ['Is ' + m('A₁B₁ ∥ ABCD') + ' in a cube?', 'yes'],
+      ['Is ' + m('AA₁ ∥ ABCD') + '?', 'no — it meets it at ' + m('A')],
+      ['Is ' + m('AC₁') + ' parallel to any face?', 'no'],
+      ['Distance from a parallel line to a plane is:', 'constant']
+    ],
+    med: [
+      ['Prove ' + m('B₁C₁ ∥ ABCD'), 'It is parallel to ' + m('BC') + ', which lies in the base'],
+      ['Prove ' + m('A₁C₁ ∥ ABCD'), m('A₁C₁ ∥ AC ⊂ ABCD')],
+      ['Which faces is ' + m('AB') + ' parallel to?', m('A₁B₁C₁D₁') + ' and ' + m('DCC₁D₁')],
+      ['Which faces does ' + m('AB') + ' lie in?', m('ABCD') + ' and ' + m('ABB₁A₁')],
+      ['Which faces does ' + m('AB') + ' meet at a point?', m('ADD₁A₁') + ' and ' + m('BCC₁B₁')],
+      ['A plane through ' + m('AB') + ' meets the top face in ' + m('m') + '. Then ' + m('m'), m('∥ AB')],
+      ['Distance from ' + m('A₁B₁') + ' to the base in a cube of side 7', m('7')]
+    ],
+    hard: [
+      ['Prove the test for a line parallel to a plane', 'A meeting point would lie on the line of intersection'],
+      ['Prove the converse theorem', m('ℓ') + ' and ' + m('m') + ' are coplanar in ' + m('β') + ' and cannot meet'],
+      ['Through a point off a plane, how many lines are parallel to the plane?', 'infinitely many — a whole plane of them'],
+      ['Prove: if ' + m('ℓ ∥ α') + ' and ' + m('ℓ ∥ β') + ' with ' + m('α ∩ β = m') + ', then ' + m('ℓ ∥ m'), 'Apply the converse in each plane'],
+      ['In a cube, find a plane parallel to ' + m('AC') + ' but not containing it', m('A₁B₁C₁D₁')],
+      ['Give a line parallel to two intersecting planes', 'One parallel to their line of intersection'],
+      ['Why can a line parallel to a plane never meet a line of that plane?', 'The meeting point would be common to line and plane']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Each proof must name the line of the plane it uses.',
+  homework: [
+    'Prove that ' + m('D₁C₁') + ' is parallel to the plane ' + m('ABCD') + '.',
+    'List every face of a cube that ' + m('AD') + ' is parallel to.',
+    'A plane through ' + m('B₁C₁') + ' meets the base in a line ' + m('m') + '. What is ' + m('m') + ' parallel to, and why?',
+    'Prove that a line parallel to two intersecting planes is parallel to their line of intersection.',
+    'Explain in three sentences why a line and a plane can never share exactly two points.'
+  ]
+});
+
+/* ============================== 14 ============================== */
+G10_GEO.push({
+  id: 'g10-14', stream: 'geo', grade: 10, quarter: 2, lessons: '25–26', hours: 2,
+  title: 'The relative position of planes in space',
+  subtitle: 'Parallel planes, the test that establishes them, and the four properties that follow immediately.',
+  uz: 'Geometry 10, §12', uzPage: 'pp. 113–124',
+  cam: 'Extension', camPage: 'Core & Extended, pp. 277–281', wb: 'Exercise 12.1',
+  objectives: [
+    'List the three positions of two planes.',
+    'State and apply the test for parallel planes.',
+    'Prove that a third plane cuts two parallel planes in parallel lines.',
+    'Use parallel planes to prove segments equal.'
+  ],
+  terms: [
+    ['Parallel planes', 'Parallel tekisliklar', 'Параллельные плоскости'],
+    ['Coincident planes', 'Ustma-ust tushuvchi tekisliklar', 'Совпадающие плоскости'],
+    ['Test for parallel planes', 'Tekisliklar parallelligi alomati', 'Признак параллельности плоскостей'],
+    ['Intersecting planes', 'Kesishuvchi tekisliklar', 'Пересекающиеся плоскости'],
+    ['Line of intersection', 'Kesishish chizig‘i', 'Линия пересечения'],
+    ['Distance between planes', 'Tekisliklar orasidagi masofa', 'Расстояние между плоскостями'],
+    ['Equal segments', 'Teng kesmalar', 'Равные отрезки'],
+    ['Transversal plane', 'Kesuvchi tekislik', 'Секущая плоскость']
+  ],
+  timing: [[8, 'The three cases'], [22, 'The test'], [26, 'Four properties'], [20, 'Applications'], [18, 'Practice'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The three cases',
+      html: `{{fig:planePlanePos:Parallel, meeting in a line, or coincident. There is no case with a single common point.}}
+      <p>Two planes with a common point share a whole line, by axiom S3. So either they have no common
+      point (parallel), a common line (intersecting), or they are the same plane.</p>`
+    },
+    {
+      h: 'The test',
+      html: `<div class="keybox"><div class="klabel">Test for parallel planes</div>
+      If <b>two intersecting</b> lines of one plane are respectively parallel to two lines of another
+      plane, the planes are parallel.</div>
+      <div class="warn"><span class="wl">Two <i>intersecting</i> lines</span>
+      One is not enough, and two parallel ones are not enough. A plane containing a single line parallel
+      to ${m('β')} can still cut ${m('β')} — think of a page turning about that line. The two directions
+      must be genuinely different to pin the plane down.</div>
+      <p><i>Proof sketch.</i> If the planes met in a line ${m('c')}, then ${m('c')} would lie in
+      ${m('α')} and be parallel to both of the given lines of ${m('α')} — impossible, since they
+      intersect and a line cannot be parallel to two different directions in the same plane. ∎</p>`
+    },
+    {
+      h: 'Four properties',
+      html: `{{fig:parallelPlanes:A third plane cuts two parallel planes. The two lines of intersection are parallel.}}
+      <ol>
+        <li>A third plane cutting two parallel planes cuts them in <b>parallel lines</b>.</li>
+        <li>Segments of parallel lines cut off between two parallel planes are <b>equal</b>.</li>
+        <li>Through a point off a plane there is <b>exactly one</b> plane parallel to it.</li>
+        <li>If ${m('α ∥ β')} and ${m('β ∥ γ')} then ${m('α ∥ γ')} — parallelism of planes is transitive.</li>
+      </ol>
+      <p>Property 2 is the workhorse: it is why the lateral edges of a prism are all equal, and why the
+      cross-sections of a prism parallel to the base are all congruent.</p>`
+    },
+    {
+      h: 'Applications',
+      html: `<p><b>The prism.</b> Its two bases lie in parallel planes. Property 1 makes corresponding
+      base edges parallel; property 2 makes the lateral edges equal. Both facts are usually assumed —
+      they are theorems, and this is their proof.</p>
+      <p><b>The midline of a tetrahedron.</b> A plane through the midpoints of three edges is parallel
+      to a face, because two of its intersecting lines are midlines, each parallel to an edge of that
+      face.</p>
+      <p><b>Distance.</b> Between two parallel planes the distance is the same everywhere — the length
+      of any common perpendicular segment.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Prove that in a cube the planes ' + m('ABCD') + ' and ' + m('A₁B₁C₁D₁') + ' are parallel.',
+      steps: [
+        [m('AB ∥ A₁B₁') + ' and ' + m('AD ∥ A₁D₁') + '.', 'Opposite sides of square faces.'],
+        [m('AB') + ' and ' + m('AD') + ' intersect at ' + m('A') + '.', 'Two different directions.'],
+        ['Test applies.', '']
+      ],
+      ans: m('ABCD ∥ A₁B₁C₁D₁')
+    },
+    {
+      q: 'Two parallel planes are cut by a third in lines ' + m('a') + ' and ' + m('b') + '. If ' + m('a') + ' makes ' + m('35°') + ' with the line of intersection of the cutting plane and a fourth plane, what does ' + m('b') + ' make?',
+      steps: [
+        [m('a ∥ b'), 'Property 1.'],
+        ['Angles with respectively parallel sides.', ''],
+        ['Equal or supplementary; here equal.', '']
+      ],
+      ans: m('35°')
+    },
+    {
+      q: 'A tetrahedron ' + m('ABCD') + '. ' + m('M, N, P') + ' are the midpoints of ' + m('AB, AC, AD') + '. Prove ' + m('MNP ∥ BCD') + '.',
+      steps: [
+        [m('MN') + ' is a midline of ' + m('△ABC') + ', so ' + m('MN ∥ BC') + '.', ''],
+        [m('MP') + ' is a midline of ' + m('△ABD') + ', so ' + m('MP ∥ BD') + '.', ''],
+        [m('MN') + ' and ' + m('MP') + ' intersect at ' + m('M') + '.', ''],
+        [m('BC') + ' and ' + m('BD') + ' lie in ' + m('BCD') + '.', 'Test applies.']
+      ],
+      ans: m('MNP ∥ BCD')
+    }
+  ],
+  modelNote: 'Two sheets of card held parallel, cut by a third — the two cut lines are visibly parallel.',
+  interactive: {
+    type: 'space3d',
+    title: 'Two planes',
+    hint: 'Move the second plane and watch the three cases appear.'
+  },
+  quiz: [
+    { q: 'Two distinct planes can share:', a: ['a point only', 'a line', 'two points only', 'nothing but a point'], c: 1, why: 'Axiom S3.' },
+    { q: 'The test for parallel planes needs:', a: ['one parallel line', 'two intersecting parallel lines', 'three points', 'a perpendicular'], c: 1, why: 'Two directions pin the plane down.' },
+    { q: 'A third plane cuts two parallel planes in:', a: ['perpendicular lines', 'parallel lines', 'one line', 'points'], c: 1, why: 'Property 1.' },
+    { q: 'Segments of parallel lines between parallel planes are:', a: ['equal', 'proportional', 'perpendicular', 'unrelated'], c: 0, why: 'They bound a parallelogram.' },
+    { q: 'Through a point off a plane the number of parallel planes is:', a: [m('0'), m('1'), m('2'), 'infinitely many'], c: 1, why: 'Exactly one.' }
+  ],
+  practice: {
+    easy: [
+      ['Name the three positions of two planes', 'parallel, intersecting, coincident'],
+      ['Can two planes meet in exactly one point?', 'no'],
+      ['State the test for parallel planes', 'Two intersecting lines of one parallel to two of the other'],
+      ['Are ' + m('ABCD') + ' and ' + m('A₁B₁C₁D₁') + ' parallel in a cube?', 'yes'],
+      ['Are ' + m('ABCD') + ' and ' + m('ABB₁A₁') + ' parallel?', 'no — they meet in ' + m('AB')],
+      ['How many planes through a point are parallel to a given plane?', m('1')],
+      ['Is parallelism of planes transitive?', 'yes']
+    ],
+    med: [
+      ['Prove ' + m('ABCD ∥ A₁B₁C₁D₁') + ' in a cube', m('AB ∥ A₁B₁') + ' and ' + m('AD ∥ A₁D₁') + ', intersecting'],
+      ['Name a pair of parallel faces of a hexagonal prism', 'the two hexagonal bases'],
+      ['Why is one parallel line not enough for the test?', 'The plane can still turn about it'],
+      ['Distance between the base and the top of a cube of side 9', m('9')],
+      ['Tetrahedron: prove the midpoint plane ' + m('MNP ∥ BCD'), 'Two midlines parallel to two edges of ' + m('BCD')],
+      ['Two parallel planes cut by a third: the lines are', 'parallel'],
+      ['Why are the lateral edges of a prism equal?', 'Parallel segments between parallel planes']
+    ],
+    hard: [
+      ['Prove the test for parallel planes', 'A common line would be parallel to two intersecting directions'],
+      ['Prove property 2 — segments between parallel planes are equal', 'They form a parallelogram'],
+      ['Prove that if ' + m('α ∥ β') + ' and a line meets ' + m('α') + ', it meets ' + m('β'), 'Otherwise it would be parallel to both'],
+      ['A plane cuts a cube parallel to a face. Describe the section', 'A square congruent to the face'],
+      ['A plane cuts a tetrahedron parallel to a face. Describe the section', 'A triangle similar to that face'],
+      ['Prove: three parallel planes cut two transversals in proportional segments', 'Reduce to the plane through the two transversals'],
+      ['Give two planes each parallel to the same line that are not parallel to each other', 'Two walls of a room and a vertical line']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'The test needs two <i>intersecting</i> lines. Say so in every proof that uses it.',
+  homework: [
+    'Prove that in a cube the planes ' + m('ABB₁A₁') + ' and ' + m('DCC₁D₁') + ' are parallel.',
+    'Tetrahedron ' + m('ABCD') + ': prove the plane through the midpoints of ' + m('AB, AC, AD') + ' is parallel to ' + m('BCD') + '.',
+    'Explain in three sentences why one parallel line is not enough for the test.',
+    'Prove that segments of parallel lines cut off between two parallel planes are equal.',
+    'Give an example of two planes parallel to the same line that intersect each other.'
+  ]
+});
+
+/* ============================== 15 ============================== */
+G10_GEO.push({
+  id: 'g10-15', stream: 'geo', grade: 10, quarter: 2, lessons: '27–28', hours: 2,
+  title: 'Parallel projection in space',
+  subtitle: 'How a three-dimensional figure is drawn on a flat page — what survives the projection and what does not.',
+  uz: 'Geometry 10, §13', uzPage: 'pp. 125–136',
+  cam: 'IGCSE E14.x', camPage: 'Core & Extended, pp. 210–216', wb: 'Exercise 13.1',
+  objectives: [
+    'Construct the parallel projection of a point, segment and figure onto a plane.',
+    'State the properties preserved by parallel projection.',
+    'Explain why a circle projects to an ellipse and a square to a parallelogram.',
+    'Draw a correct picture of a cube, prism and pyramid.'
+  ],
+  terms: [
+    ['Parallel projection', 'Parallel proyeksiya', 'Параллельное проектирование'],
+    ['Direction of projection', 'Proyeksiyalash yo‘nalishi', 'Направление проектирования'],
+    ['Projecting line', 'Proyeksiyalovchi chiziq', 'Проектирующая прямая'],
+    ['Image (projection)', 'Proyeksiya', 'Проекция'],
+    ['Plane of projection', 'Proyeksiya tekisligi', 'Плоскость проекции'],
+    ['Preserved property', 'Saqlanuvchi xossa', 'Сохраняющееся свойство'],
+    ['Ratio of division', 'Bo‘linish nisbati', 'Отношение деления'],
+    ['Visible and hidden edges', 'Ko‘rinadigan va ko‘rinmaydigan qirralar', 'Видимые и невидимые рёбра'],
+    ['Correct picture', 'To‘g‘ri tasvir', 'Правильное изображение']
+  ],
+  timing: [[10, 'The construction'], [22, 'What is preserved'], [22, 'What is not'], [24, 'Drawing solids correctly'], [16, 'Practice'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The construction',
+      html: `<p>Fix a plane ${m('α')} and a direction ${m('ℓ')} not parallel to it. Through each point
+      ${m('A')} of the figure draw the line through ${m('A')} parallel to ${m('ℓ')}; where it meets
+      ${m('α')} is the <b>projection</b> ${m("A′")}.</p>
+      {{fig:parallelProjection:Every point drops along the same direction. The midpoint lands on the midpoint.}}
+      <div class="keybox"><div class="klabel">Why it matters</div>
+      Every picture of a solid on paper — every diagram in this book — is a parallel projection.
+      Knowing what it preserves is knowing what you may legitimately read off a drawing.</div>`
+    },
+    {
+      h: 'What is preserved',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Property</th><th>Preserved?</th></tr></thead>
+      <tbody>
+        <tr><td>a straight line projects to a straight line (or a point)</td><td>yes</td></tr>
+        <tr><td>parallel lines project to parallel lines</td><td>yes</td></tr>
+        <tr><td>the ratio in which a point divides a segment</td><td>yes</td></tr>
+        <tr><td>the midpoint of a segment</td><td>yes</td></tr>
+        <tr><td>the ratio of lengths on <b>parallel</b> lines</td><td>yes</td></tr>
+        <tr><td>lengths</td><td><b>no</b></td></tr>
+        <tr><td>angles</td><td><b>no</b></td></tr>
+        <tr><td>the ratio of lengths on non-parallel lines</td><td><b>no</b></td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Never measure a drawing</span>
+      A right angle in the solid may appear as ${m('60°')} on the page, and two equal edges may appear
+      to differ. A drawing is a guide to structure, never to size.</div>`
+    },
+    {
+      h: 'What the images look like',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Figure</th><th>Its parallel projection</th></tr></thead>
+      <tbody>
+        <tr><td>square, rectangle, rhombus</td><td>a parallelogram (any one)</td></tr>
+        <tr><td>parallelogram</td><td>a parallelogram</td></tr>
+        <tr><td>triangle</td><td>a triangle (any one)</td></tr>
+        <tr><td>circle</td><td>an ellipse</td></tr>
+        <tr><td>trapezium</td><td>a trapezium — the parallel pair stays parallel</td></tr>
+      </tbody></table></div>
+      <p>Because <b>any</b> triangle can be the image of <b>any</b> triangle, and any parallelogram the
+      image of any square, a picture of a cube may be drawn with the base as any convenient
+      parallelogram. That freedom is what makes cabinet projection — the drawing convention of this
+      book — legitimate.</p>`
+    },
+    {
+      h: 'Drawing solids correctly',
+      html: `<div class="keybox"><div class="klabel">The rules of a correct picture</div>
+      <b>1</b> Parallel edges are drawn parallel. <b>2</b> Midpoints are drawn at midpoints.
+      <b>3</b> Hidden edges are dashed. <b>4</b> The base is drawn as a parallelogram, not as a
+      rectangle. <b>5</b> Vertical edges stay vertical.</div>
+      <p>The standard convention here is <b>cabinet projection</b>: the depth axis is drawn at ${m('45°')}
+      and at half scale, so a unit cube appears with a receding edge of length ${m('0.5')}. It is not
+      what the eye sees, but it makes every parallel edge parallel on the page, which is what a
+      geometry diagram needs.</p>
+      {{fig:cubeLabelled:A correct cube: parallel edges parallel, hidden edges dashed, base a parallelogram.}}`
+    }
+  ],
+  examples: [
+    {
+      q: m('M') + ' is the midpoint of ' + m('AB') + '. Where is ' + m("M′") + ' on ' + m("A′B′") + '?',
+      steps: [
+        ['Parallel projection preserves the ratio of division.', ''],
+        [m('AM : MB = 1 : 1'), ''],
+        ['So ' + m("A′M′ : M′B′ = 1 : 1") + '.', '']
+      ],
+      ans: 'At the midpoint of ' + m("A′B′")
+    },
+    {
+      q: 'A square is projected. Can its image be a rhombus that is not a square?',
+      steps: [
+        ['A square is a parallelogram.', ''],
+        ['Any parallelogram can be the image of a square.', ''],
+        ['A rhombus is a parallelogram.', '']
+      ],
+      ans: 'Yes'
+    },
+    {
+      q: 'Can the projection of a triangle be a segment?',
+      steps: [
+        ['If the plane of the triangle is parallel to the direction of projection…', ''],
+        ['…every point drops onto one line.', '']
+      ],
+      ans: 'Yes — when the triangle’s plane contains the direction of projection'
+    }
+  ],
+  modelNote: 'Hold a wire square in sunlight and turn it — the shadow runs through every parallelogram.',
+  interactive: {
+    type: 'transform',
+    title: 'What a projection preserves',
+    hint: 'Watch which features survive and which do not.'
+  },
+  quiz: [
+    { q: 'Parallel projection preserves:', a: ['lengths', 'angles', 'the midpoint', 'areas'], c: 2, why: 'Ratios along a line survive.' },
+    { q: 'The image of a circle is:', a: ['a circle', 'an ellipse', 'a parabola', 'a line'], c: 1, why: 'Or a circle as a special case.' },
+    { q: 'The image of a square can be:', a: ['only a square', 'any parallelogram', 'any quadrilateral', 'only a rhombus'], c: 1, why: 'Parallelism is preserved, lengths are not.' },
+    { q: 'Angles under parallel projection are:', a: ['preserved', 'doubled', 'not preserved', 'halved'], c: 2, why: 'A right angle may appear oblique.' },
+    { q: 'Hidden edges in a correct picture are:', a: ['omitted', 'dashed', 'thickened', 'coloured'], c: 1, why: 'The convention of technical drawing.' }
+  ],
+  practice: {
+    easy: [
+      ['Image of a straight line', 'a line (or a point)'],
+      ['Image of parallel lines', 'parallel lines'],
+      ['Image of a midpoint', 'the midpoint'],
+      ['Image of a circle', 'an ellipse'],
+      ['Image of a square', 'a parallelogram'],
+      ['Are lengths preserved?', 'no'],
+      ['Are angles preserved?', 'no']
+    ],
+    med: [
+      ['Can a square project to a rhombus?', 'yes'],
+      ['Can a rectangle project to a trapezium?', 'no — parallel stays parallel'],
+      ['Can a triangle project to a segment?', 'yes'],
+      ['Is the ratio ' + m('AM : MB') + ' preserved?', 'yes'],
+      ['Is the ratio of two perpendicular edges preserved?', 'no'],
+      ['In cabinet projection the depth axis is drawn at', m('45°') + ' and half scale'],
+      ['Why is the base of a cube drawn as a parallelogram?', 'A square projects to a parallelogram']
+    ],
+    hard: [
+      ['Prove that parallel projection preserves the midpoint', 'The projecting lines cut two parallels proportionally'],
+      ['Prove that parallel lines project to parallel lines', 'Their projecting planes are parallel'],
+      ['Can two perpendicular lines project to parallel lines?', 'Yes — if their common plane contains the direction'],
+      ['A cube of side 1 in cabinet projection: length of the receding edge on paper', m('0.5')],
+      ['Why can any triangle be the image of any triangle?', 'An affine map takes any triangle to any other'],
+      ['Which is preserved: the ratio of areas, or the ratio of lengths on non-parallel lines?', 'the ratio of areas'],
+      ['Explain why a drawing must never be measured', 'Lengths and angles are not preserved']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Task 5 must be drawn, with hidden edges dashed.',
+  homework: [
+    'List four properties preserved by parallel projection and three that are not.',
+    'Explain why a square can project to any parallelogram.',
+    'Can the projection of a rectangle be a trapezium? Justify your answer.',
+    'A point divides a segment in the ratio ' + m('2 : 3') + '. What is the ratio on the image?',
+    'Draw a correct picture of a cube and of a hexagonal prism, with hidden edges dashed.'
+  ]
+});
+
+/* ============================== 16 ============================== */
+G10_GEO.push({
+  id: 'g10-16', stream: 'geo', grade: 10, quarter: 2, lessons: '29–30', hours: 2,
+  title: 'The area of a triangle, and trigonometry in three dimensions',
+  subtitle: 'Cambridge insert: one area formula for every triangle, applied inside solids.',
+  uz: 'Geometry 10, §13 (extension)', uzPage: 'pp. 137–142',
+  cam: 'IGCSE E6.5 · E6.6', camPage: 'Core & Extended, pp. 300–312', wb: 'IGCSE Exercise 6.5',
+  objectives: [
+    'Use S = ½ab sin C for any triangle.',
+    'Use Heron’s formula when three sides are known.',
+    'Find the area of a triangular section of a solid.',
+    'Combine the area formula with the sine and cosine rules in a 3-D problem.'
+  ],
+  terms: [
+    ['Area of a triangle', 'Uchburchak yuzasi', 'Площадь треугольника'],
+    ['Included angle', 'Ichki burchak', 'Угол между сторонами'],
+    ['Heron’s formula', 'Geron formulasi', 'Формула Герона'],
+    ['Semi-perimeter', 'Yarim perimetr', 'Полупериметр'],
+    ['Triangular section', 'Uchburchakli kesim', 'Треугольное сечение'],
+    ['Sine rule', 'Sinuslar teoremasi', 'Теорема синусов'],
+    ['Cosine rule', 'Kosinuslar teoremasi', 'Теорема косинусов'],
+    ['Three-dimensional problem', 'Fazoviy masala', 'Пространственная задача'],
+    ['Extracted triangle', 'Ajratilgan uchburchak', 'Выделенный треугольник']
+  ],
+  timing: [[10, 'The area formula'], [16, 'Heron'], [26, 'Sections of solids'], [24, 'Mixed 3-D problems'], [20, 'Practice'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'One formula for every triangle',
+      html: `${eq(m('S = ' + f('1', '2') + 'ab · sin C'), true)}
+      <p>Two sides and the angle <b>between them</b>. It reduces to ${m(f('1', '2') + 'bh')} when
+      ${m('C = 90°')}, because ${m('sin 90° = 1')} — the familiar formula is the special case.</p>
+      {{fig:sineCosRule:The labelling convention: side a opposite angle A. The area uses the angle between the two named sides.}}
+      <div class="warn"><span class="wl">The angle must be the included one</span>
+      ${m(f('1', '2') + 'ab · sin A')} is wrong: ${m('A')} is not between ${m('a')} and ${m('b')}.
+      Name the two sides first, then take the angle they enclose.</div>`
+    },
+    {
+      h: 'Heron’s formula',
+      html: `<p>When all three sides are known and no angle is:</p>
+      ${eq(m('S = ' + sr('s(s − a)(s − b)(s − c)') + ' ,  where  s = ' + f('a + b + c', '2')), true)}
+      <p>For ${m('5, 6, 7')}: ${m('s = 9')} and ${m('S = ' + sr('9 · 4 · 3 · 2') + ' = ' + sr('216') + ' ≈ 14.7')}.</p>
+      <div class="keybox"><div class="klabel">Which to use</div>
+      Two sides and the included angle → the sine formula. Three sides → Heron, or find an angle by the
+      cosine rule and then use the sine formula. Both give the same number.</div>`
+    },
+    {
+      h: 'Areas of sections',
+      html: `<p>The sections of Lesson 12–13 are polygons in space; their areas are computed by splitting
+      into triangles and applying the formula to each.</p>
+      <p><b>Example.</b> Cube of side ${m('6')}. The section through ${m('A, C, B₁')} is an equilateral
+      triangle of side ${m('6' + sr('2'))}. Using the formula with ${m('C = 60°')}:</p>
+      ${eq(m('S = ' + f('1', '2') + ' · 72 · sin 60° = 36 · ' + f(sr('3'), '2') + ' = 18' + sr('3') + ' ≈ 31.2'), true)}
+      {{fig:cubeSection:The triangular section, and the triangle drawn flat beside it.}}`
+    },
+    {
+      h: 'Mixed problems',
+      html: `<p>A full 3-D problem chains the three tools:</p>
+      <ol>
+        <li>Find the lengths of the section's sides by Pythagoras in the solid.</li>
+        <li>Find an angle by the cosine rule in the extracted triangle.</li>
+        <li>Find the area by ${m(f('1', '2') + 'ab sin C')}.</li>
+      </ol>
+      <p><b>Example.</b> Cuboid ${m('4 × 6 × 12')}. Section through ${m('A(0,0,0)')}, ${m('B(4,0,0)')}
+      and ${m('C₁(4,6,12)')}: ${m('AB = 4')}, ${m('BC₁ = ' + sr('36 + 144') + ' ≈ 13.42')}, and
+      ${m('AB ⊥ BC₁')} because ${m('AB')} is perpendicular to the whole face ${m('BCC₁B₁')}. So the area
+      is ${m(f('1', '2') + ' · 4 · 13.42 ≈ 26.8')}.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the area of a triangle with ' + m('a = 7') + ', ' + m('b = 9') + ', ' + m('C = 40°') + '.',
+      steps: [
+        [m('S = ' + f('1', '2') + ' · 7 · 9 · sin 40°'), ''],
+        [m('= 31.5 × 0.6428'), ''],
+        [m('≈ 20.2'), '']
+      ],
+      ans: m('≈ 20.2') + ' square units'
+    },
+    {
+      q: 'Find the area of a triangle with sides 8, 11 and 13.',
+      steps: [
+        [m('s = 16'), ''],
+        [m('S = ' + sr('16 · 8 · 5 · 3')), ''],
+        [m('= ' + sr('1920') + ' ≈ 43.8'), '']
+      ],
+      ans: m('≈ 43.8')
+    },
+    {
+      q: 'Cube of side 6. Find the area of the section through ' + m('A, C, B₁') + '.',
+      steps: [
+        ['All three sides are face diagonals, ' + m('6' + sr('2')) + '.', 'Equilateral.'],
+        [m('S = ' + f('1', '2') + ' · 72 · sin 60°'), ''],
+        [m('= 18' + sr('3') + ' ≈ 31.2'), '']
+      ],
+      ans: m('18' + sr('3')) + ' ≈ ' + m('31.2')
+    }
+  ],
+  modelNote: 'Extract the triangle from the solid and draw it flat before any calculation.',
+  interactive: {
+    type: 'solveTriangle',
+    title: 'Two sides and the included angle',
+    hint: 'Change the sides and the angle, and watch the area.'
+  },
+  quiz: [
+    { q: 'The area formula ' + m(f('1', '2') + 'ab sin C') + ' needs:', a: ['any angle', 'the angle between ' + m('a') + ' and ' + m('b'), 'the largest angle', 'a right angle'], c: 1, why: 'The included angle.' },
+    { q: 'Heron’s formula needs:', a: ['two sides and an angle', 'three sides', 'two angles', 'the height'], c: 1, why: 'Sides only.' },
+    { q: m('s') + ' in Heron’s formula is:', a: ['the perimeter', 'half the perimeter', 'the longest side', 'the area'], c: 1, why: m(f('a + b + c', '2')) + '.' },
+    { q: 'Area of a triangle with ' + m('a = 6, b = 8, C = 30°') + ':', a: [m('12'), m('24'), m('48'), m('6')], c: 0, why: m(f('1', '2') + ' · 48 · 0.5') + '.' },
+    { q: 'The section of a cube through ' + m('A, C, B₁') + ' is:', a: ['right-angled', 'equilateral', 'isosceles only', 'scalene'], c: 1, why: 'Three equal face diagonals.' }
+  ],
+  practice: {
+    easy: [
+      ['Area with ' + m('a = 4, b = 5, C = 90°'), m('10')],
+      ['Area with ' + m('a = 6, b = 8, C = 30°'), m('12')],
+      ['Area with ' + m('a = 10, b = 10, C = 60°'), m('25' + sr('3'))],
+      ['Heron: sides 3, 4, 5', m('6')],
+      ['Heron: sides 5, 6, 7', m(sr('216')) + ' ≈ ' + m('14.7')],
+      [m('s') + ' for sides 8, 11, 13', m('16')],
+      ['Area with ' + m('a = 12, b = 5, C = 90°'), m('30')]
+    ],
+    med: [
+      ['Area with ' + m('a = 7, b = 9, C = 40°'), m('≈ 20.2')],
+      ['Heron: sides 8, 11, 13', m('≈ 43.8')],
+      ['Cube side 6: area of section ' + m('ACB₁'), m('18' + sr('3'))],
+      ['Cube side 4: area of the diagonal section ' + m('ABC₁D₁'), m('16' + sr('2'))],
+      ['Triangle 9, 12, 15: area', m('54')],
+      ['Two sides 10 and 14 enclose ' + m('120°') + '. Area', m('35' + sr('3')) + ' ≈ ' + m('60.6')],
+      ['Cuboid ' + m('4 × 6 × 12') + ': area of section ' + m('ABC₁'), m('≈ 26.8')]
+    ],
+    hard: [
+      ['Cube side ' + m('a') + ': area of the regular hexagonal section', m(f('3' + sr('3'), '4') + 'a²')],
+      ['Square pyramid, base 10, height 12: area of one lateral face', m('65')],
+      ['Same pyramid: total lateral surface area', m('260')],
+      ['Triangle with sides 13, 14, 15: area and the height on the 14-side', m('84') + ', height ' + m('12')],
+      ['Find the angle when ' + m('a = 8, b = 10') + ' and the area is ' + m('20'), m('30°') + ' or ' + m('150°')],
+      ['Regular tetrahedron edge 6: total surface area', m('36' + sr('3'))],
+      ['Prove ' + m('S = ' + f('1', '2') + 'ab sin C') + ' from ' + m(f('1', '2') + 'bh'), m('h = a sin C')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw the extracted triangle for every 3-D question.',
+  homework: [
+    'Find the area of a triangle with ' + m('a = 11') + ', ' + m('b = 6') + ', ' + m('C = 55°') + '.',
+    'Find the area of a triangle with sides 7, 9 and 12 by Heron’s formula.',
+    'Cube of side 8: find the area of the section through ' + m('A, C, B₁') + '.',
+    'Square pyramid, base 12, height 8: find the area of one lateral face and the total lateral area.',
+    'Two sides 9 and 12 enclose an angle whose sine is ' + m('0.6') + '. Find the area and both possible angles.'
+  ]
+});
+
+/* ============================== 17 ============================== */
+G10_GEO.push({
+  id: 'g10-17', stream: 'geo', grade: 10, quarter: 2, lessons: '31–32', hours: 2,
+  title: 'Control work 2, and the quarter review',
+  subtitle: 'Parallelism in space — lines, planes, projection and area — in one paper, then the map.',
+  uz: 'Geometry 10, Nazorat ishi 2', uzPage: 'pp. 143–146',
+  cam: 'IGCSE E4 review', camPage: 'Core & Extended, pp. 313–316', wb: 'Control paper G2',
+  objectives: [
+    'Apply the whole quarter in one assessment.',
+    'Quote a test or a theorem by name in every proof.',
+    'Classify each lost mark and rewrite the solution.',
+    'Build a concept map of parallelism in space.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Test (criterion)', 'Alomat', 'Признак'],
+    ['Justification', 'Asoslash', 'Обоснование'],
+    ['Concept map', 'Tushunchalar xaritasi', 'Карта понятий'],
+    ['Revision', 'Takrorlash', 'Повторение'],
+    ['Self-assessment', 'O‘z-o‘zini baholash', 'Самооценка'],
+    ['Target', 'Maqsad', 'Цель'],
+    ['Counterexample', 'Qarshi misol', 'Контрпример']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [22, 'Rewrite'], [10, 'Concept map'], [3, 'Targets']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>List every edge of a cube skew to ${m('CD')}, and name one common perpendicular</td><td class="m">4</td><td>L21–22</td></tr>
+        <tr><td>2</td><td>Prove ${m('B₁C₁ ∥ ABCD')}, quoting the test</td><td class="m">4</td><td>L23–24</td></tr>
+        <tr><td>3</td><td>Prove ${m('ABB₁A₁ ∥ DCC₁D₁')}, quoting the test</td><td class="m">4</td><td>L25–26</td></tr>
+        <tr><td>4</td><td>Give a counterexample showing perpendicularity in space is not transitive</td><td class="m">3</td><td>L19–20</td></tr>
+        <tr><td>5</td><td>List four properties preserved by parallel projection and two that are not</td><td class="m">4</td><td>L27–28</td></tr>
+        <tr><td>6</td><td>Cube of side 6: find the area of the section through ${m('A, C, B₁')}</td><td class="m">6</td><td>L29–30</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Proofs are marked on the reason</div>
+      Q2 and Q3 each give 3 of their 4 marks for naming the test and verifying its conditions.
+      A correct conclusion with no reason scores one.</div>`
+    },
+    {
+      h: 'The concept map',
+      html: `<p>Six boxes, links as sentences:</p>
+      <ul>
+        <li><b>two lines</b> → <b>three cases</b> — “parallel, meeting, or skew”</li>
+        <li><b>skew</b> → <b>common perpendicular</b> — “exactly one, and it is the distance”</li>
+        <li><b>line and plane</b> → <b>the test</b> — “parallel to <i>some</i> line of the plane”</li>
+        <li><b>two planes</b> → <b>the test</b> — “two <i>intersecting</i> lines, respectively parallel”</li>
+        <li><b>parallel planes</b> → <b>equal segments</b> — “why a prism’s lateral edges are equal”</li>
+        <li><b>projection</b> → <b>what a drawing may be trusted for</b> — “structure, never size”</li>
+      </ul>
+      {{fig:parallelPlanes:The picture behind two of the six boxes.}}`
+    },
+    {
+      h: 'Looking forward',
+      html: `<p>Quarter III is perpendicularity — the theorem of the three perpendiculars, the distance
+      from a point to a plane, and the dihedral angle. Every proof will use a parallelism result from
+      this quarter, and every construction the projection rules of Lesson 27–28.</p>
+      <div class="keybox"><div class="klabel">One habit to carry forward</div>
+      Name the test, then verify each of its conditions in turn. Two of the four marks in every proof
+      question this quarter were for exactly that.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q2: prove ' + m('B₁C₁ ∥ ABCD') + '.',
+      steps: [
+        [m('B₁C₁ ⊄ ABCD'), 'Condition 1 of the test.'],
+        [m('B₁C₁ ∥ BC'), 'Opposite sides of square ' + m('BCC₁B₁') + '.'],
+        [m('BC ⊂ ABCD'), 'Condition 2.'],
+        ['By the test for a line parallel to a plane.', '']
+      ],
+      ans: m('B₁C₁ ∥ ABCD')
+    },
+    {
+      q: 'Model answer, Q3: prove ' + m('ABB₁A₁ ∥ DCC₁D₁') + '.',
+      steps: [
+        [m('AB ∥ DC') + ' and ' + m('AA₁ ∥ DD₁') + '.', ''],
+        [m('AB') + ' and ' + m('AA₁') + ' meet at ' + m('A') + '.', 'Two intersecting lines.'],
+        [m('DC') + ' and ' + m('DD₁') + ' lie in ' + m('DCC₁D₁') + '.', ''],
+        ['By the test for parallel planes.', '']
+      ],
+      ans: m('ABB₁A₁ ∥ DCC₁D₁')
+    },
+    {
+      q: 'Model answer, Q6: cube of side 6, section through ' + m('A, C, B₁') + '.',
+      steps: [
+        ['Each side is a face diagonal, ' + m('6' + sr('2')) + '.', 'By rule R1 three times.'],
+        ['Equilateral, so every angle is ' + m('60°') + '.', ''],
+        [m('S = ' + f('1', '2') + ' · 72 · sin 60°'), ''],
+        [m('= 18' + sr('3') + ' ≈ 31.2'), '']
+      ],
+      ans: m('18' + sr('3')) + ' ≈ ' + m('31.2')
+    }
+  ],
+  modelNote: 'Work Q2 and Q3 on the board, writing the test out in full before applying it.',
+  interactive: {
+    type: 'quiz',
+    title: 'The quarter in ten questions',
+    hint: 'One from each block.',
+    items: [
+      { q: 'Parallel lines in space must be:', a: ['non-meeting', 'coplanar and non-meeting', 'perpendicular', 'equal'], c: 1, why: 'Otherwise skew lines qualify.' },
+      { q: 'Perpendicularity in space is:', a: ['transitive', 'not transitive', 'symmetric only', 'undefined'], c: 1, why: 'Cube edges give a counterexample.' },
+      { q: 'How many edges of a cube are skew to a given edge?', a: [m('2'), m('3'), m('4'), m('6')], c: 2, why: '4 meet, 3 parallel, 4 skew.' },
+      { q: 'Two skew lines have how many common perpendiculars?', a: [m('0'), m('1'), m('2'), '∞'], c: 1, why: 'Exactly one.' },
+      { q: 'The test for ' + m('ℓ ∥ α') + ' needs:', a: ['every line of ' + m('α'), 'one line of ' + m('α'), 'a perpendicular', 'two planes'], c: 1, why: 'One parallel line inside is enough.' },
+      { q: 'The test for parallel planes needs:', a: ['one parallel line', 'two intersecting parallel lines', 'three points', 'a common point'], c: 1, why: 'Two directions.' },
+      { q: 'A third plane cuts two parallel planes in:', a: ['parallel lines', 'perpendicular lines', 'a point', 'nothing'], c: 0, why: 'Property 1.' },
+      { q: 'Parallel projection preserves:', a: ['lengths', 'angles', 'midpoints', 'areas'], c: 2, why: 'Ratios along a line survive.' },
+      { q: 'The image of a circle is:', a: ['a circle', 'an ellipse', 'a line', 'a parabola'], c: 1, why: 'Or a circle as a special case.' },
+      { q: 'Cube side 6: area of the section ' + m('ACB₁') + ':', a: [m('18'), m('18' + sr('3')), m('36'), m('36' + sr('2'))], c: 1, why: 'Equilateral of side ' + m('6' + sr('2')) + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'A proof scores most of its marks for:', a: ['the conclusion', 'naming and checking the test', 'neatness', 'speed'], c: 1, why: 'The reasoning is the mathematics.' },
+    { q: 'The test for parallel planes fails with:', a: ['two intersecting lines', 'one line only', 'three lines', 'a perpendicular'], c: 1, why: 'The plane can still turn about it.' },
+    { q: 'A drawing may be trusted for:', a: ['lengths', 'angles', 'structure', 'areas'], c: 2, why: 'Only what projection preserves.' },
+    { q: 'Quarter III begins with:', a: ['volume', 'perpendicularity in space', 'vectors', 'probability'], c: 1, why: 'Then the three perpendiculars.' }
+  ],
+  practice: {
+    easy: [
+      ['Edges skew to ' + m('CD') + ' in a cube', m('AA₁, BB₁, A₁D₁, B₁C₁')],
+      ['Is ' + m('B₁C₁ ∥ ABCD') + '?', 'yes'],
+      ['Is ' + m('ABB₁A₁ ∥ DCC₁D₁') + '?', 'yes'],
+      ['Is perpendicularity transitive in space?', 'no'],
+      ['Does projection preserve midpoints?', 'yes'],
+      ['Does projection preserve angles?', 'no'],
+      ['Area with ' + m('a = 6, b = 8, C = 30°'), m('12')]
+    ],
+    med: [
+      ['Prove ' + m('B₁C₁ ∥ ABCD'), 'Test: ' + m('B₁C₁ ∥ BC ⊂ ABCD')],
+      ['Prove ' + m('ABB₁A₁ ∥ DCC₁D₁'), 'Two intersecting parallel pairs'],
+      ['Common perpendicular of ' + m('CD') + ' and ' + m('AA₁'), m('AD')],
+      ['Cube side 6: area of section ' + m('ACB₁'), m('18' + sr('3'))],
+      ['Cube side 6: distance between ' + m('AB') + ' and ' + m('CC₁'), m('6')],
+      ['Image of a square under projection', 'a parallelogram'],
+      ['Angle between ' + m('AB') + ' and ' + m('DC₁') + ' in a cube', m('45°')]
+    ],
+    hard: [
+      ['Cube side ' + m('a') + ': distance between ' + m('AB') + ' and ' + m('B₁D₁'), m(f('a', sr('2')))],
+      ['Prove segments of parallel lines between parallel planes are equal', 'They bound a parallelogram'],
+      ['Cube side 6: area of the midpoint hexagonal section', m('27' + sr('3')) + ' ≈ ' + m('46.8')],
+      ['Prove: if ' + m('ℓ ∥ α') + ' and ' + m('ℓ ∥ β') + ' with ' + m('α ∩ β = m') + ' then ' + m('ℓ ∥ m'), 'Converse theorem in each plane'],
+      ['Tetrahedron: prove the midpoint plane is parallel to a face', 'Two midlines, two directions'],
+      ['Give two planes parallel to the same line that intersect', 'Two walls and a vertical line'],
+      ['Heron: sides 8, 11, 13', m('≈ 43.8')]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Bring the concept map to the first lesson of Quarter III.',
+  homework: [
+    'Rewrite in full every control-work question that lost a mark, naming the test used.',
+    'Finish the concept map with all six links written as sentences.',
+    'Cube of side 10: find the area of the section through ' + m('A, C, B₁') + ' and the distance between ' + m('AB') + ' and ' + m('CC₁') + '.',
+    'Write your target for Quarter III in one checkable sentence, and date it.'
+  ]
+});

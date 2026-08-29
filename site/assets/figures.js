@@ -1762,6 +1762,88 @@
     return svg('0 0 340 196', g);
   };
 
+  /* ---------- Grade 10 Quarter II: parallelism and projection ---------- */
+
+  /* two parallel planes, and a third plane cutting both in parallel lines */
+  F.parallelPlanes = function () {
+    var g = '', p = P3({ s: 17, ox: 40, oy: 130 });
+    var lo = planeQuad(p, 0, 7, 0, 4);
+    var hiStyle = 'fill="var(--brass-tint)" fill-opacity=".75" stroke="var(--brass)" stroke-width="1.6"';
+    var hi = poly([p(0, 4.4, 0), p(7, 4.4, 0), p(7, 4.4, 4), p(0, 4.4, 4)], hiStyle);
+    g += lo + hi;
+    /* the cutting plane meets each in a line, and the two lines are parallel */
+    g += line(p(1, 0, 0.6), p(5.6, 0, 3.4), 'stroke="currentColor" stroke-width="2.2"');
+    g += line(p(1, 4.4, 0.6), p(5.6, 4.4, 3.4), 'stroke="currentColor" stroke-width="2.2"');
+    g += line(p(1, 0, 0.6), p(1, 4.4, 0.6), HID);
+    g += line(p(5.6, 0, 3.4), p(5.6, 4.4, 3.4), HID);
+    g += L(p(0, 0, 0)[0] - 16, p(0, 0, 0)[1] + 4, 'α');
+    g += L(p(0, 4.4, 0)[0] - 16, p(0, 4.4, 0)[1] + 4, 'β');
+    g += LT(170, 176, 'α ∥ β — a third plane cuts them in parallel lines', 'var(--muted)', 10);
+    return svg('0 0 340 190', g);
+  };
+
+  /* parallel projection of a segment onto a plane, with the ratio preserved */
+  F.parallelProjection = function () {
+    var g = '', p = P3({ s: 18, ox: 44, oy: 150 });
+    g += planeQuad(p, 0, 7, 0, 4);
+    var A = p(1.2, 3.4, 0.6), B = p(5.4, 2.0, 3.0);
+    var A1 = p(1.2, 0, 0.6), B1 = p(5.4, 0, 3.0);
+    var M = [(A[0] + B[0]) / 2, (A[1] + B[1]) / 2];
+    var M1 = [(A1[0] + B1[0]) / 2, (A1[1] + B1[1]) / 2];
+    g += line(A, B, 'stroke="currentColor" stroke-width="2.4"');
+    g += line(A1, B1, 'stroke="var(--brass)" stroke-width="2.4"');
+    g += line(A, A1, HID) + line(B, B1, HID) + line(M, M1, HID);
+    g += dot(A[0], A[1]) + dot(B[0], B[1]) + dot(M[0], M[1], 'var(--brand)');
+    g += dot(A1[0], A1[1], 'var(--brass)') + dot(B1[0], B1[1], 'var(--brass)') +
+         dot(M1[0], M1[1], 'var(--brass)');
+    g += L(A[0] - 11, A[1] - 4, 'A') + L(B[0] + 11, B[1] - 4, 'B') + L(M[0], M[1] - 13, 'M');
+    g += L(A1[0] - 15, A1[1] - 5, 'A′') + L(B1[0] + 14, B1[1] - 3, 'B′') + L(M1[0], M1[1] + 15, 'M′');
+    g += LT(170, 186, 'the midpoint projects to the midpoint', 'var(--muted)', 10);
+    return svg('0 0 340 198', g);
+  };
+
+  /* the three positions of two planes, side by side */
+  F.planePlanePos = function () {
+    var g = '', W = 340;
+    var pa = P3({ s: 12, ox: 46, oy: 96 });
+    g += planeQuad(pa, 0, 5, 0, 4);
+    g += poly([pa(0, 3, 0), pa(5, 3, 0), pa(5, 3, 4), pa(0, 3, 4)],
+      'fill="var(--brass-tint)" fill-opacity=".8" stroke="var(--brass)" stroke-width="1.5"');
+    g += LT(60, 124, 'parallel', 'var(--muted)', 10);
+
+    var pb = P3({ s: 12, ox: 168, oy: 96 });
+    g += planeQuad(pb, 0, 5, 0, 4);
+    g += poly([pb(0.4, -1.6, 3.4), pb(4.6, -1.6, 0.6), pb(4.6, 2.6, 0.6), pb(0.4, 2.6, 3.4)],
+      'fill="var(--brass-tint)" fill-opacity=".7" stroke="var(--brass)" stroke-width="1.5"');
+    g += line(pb(0.4, 0, 3.4), pb(4.6, 0, 0.6), 'stroke="currentColor" stroke-width="2.2"');
+    g += LT(182, 124, 'meeting in a line', 'var(--muted)', 10);
+
+    var pc = P3({ s: 12, ox: 282, oy: 96 });
+    g += planeQuad(pc, 0, 5, 0, 4);
+    g += planeQuad(pc, 0, 5, 0, 4,
+      'fill="var(--brass-tint)" fill-opacity=".55" stroke="var(--brass)" stroke-width="1.5" stroke-dasharray="4 3"');
+    g += LT(296, 124, 'coincident', 'var(--muted)', 10);
+
+    g += LT(W / 2, 18, 'two planes in space', 'currentColor', 12);
+    return svg('0 0 ' + W + ' 138', g);
+  };
+
+  /* a line parallel to a plane because it is parallel to a line inside it */
+  F.lineParallelPlane = function () {
+    var g = '', p = P3({ s: 19, ox: 44, oy: 142 });
+    g += planeQuad(p, 0, 7, 0, 4);
+    var a0 = p(0.8, 0, 0.8), a1 = p(5.8, 0, 3.2);
+    g += line(a0, a1, 'stroke="var(--brand)" stroke-width="2.4"');
+    var b0 = p(0.8, 2.6, 0.8), b1 = p(5.8, 2.6, 3.2);
+    g += line(b0, b1, 'stroke="currentColor" stroke-width="2.4"');
+    g += line(a0, b0, HID) + line(a1, b1, HID);
+    g += L(b1[0] + 13, b1[1] - 6, 'ℓ');
+    g += L(a0[0] - 14, a0[1] - 2, 'm');
+    g += L(p(7, 0, 0)[0] + 12, p(7, 0, 0)[1] + 6, 'α');
+    g += LT(170, 176, 'ℓ ∥ m and m lies in α, so ℓ ∥ α', 'var(--muted)', 10);
+    return svg('0 0 340 190', g);
+  };
+
   w.FIG = F;
   w.FIGH = { svg: svg, L: L, LT: LT, dot: dot, poly: poly, line: line, ticks: ticks, ang: ang, right: right, mid: mid, cent: cent, norm: norm, S: S };
 })(window);
