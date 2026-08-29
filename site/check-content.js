@@ -10,7 +10,9 @@ const ctx = {};
 ctx.window = ctx; ctx.self = ctx; ctx.document = {};
 vm.createContext(ctx);
 for (const f of ['assets/mathfmt.js', 'assets/figures.js', 'assets/interactive.js',
-                 'data/g8-alg.js', 'data/g8-geo.js']) {
+                 'data/g8-alg.js', 'data/g8-geo.js',
+                 'data/g10-alg.js', 'data/g10-geo.js',
+                 'data/g11-alg.js', 'data/g11-geo.js']) {
   vm.runInContext(fs.readFileSync(path.join(here, f), 'utf8'), ctx, { filename: f });
 }
 
@@ -23,14 +25,27 @@ if (!LESSON.includes(FIGPAT.source)) {
   console.log('WARNING: the figure pattern here no longer matches the one in lesson.js');
 }
 
+/* The quarter totals the annual plans commit to. Every grade runs algebra
+   3 h/week and geometry 2 h/week, so the shape is the same each year. */
 const HOURS = { alg: { 1: 27, 2: 21, 3: 30, 4: 24 }, geo: { 1: 18, 2: 14, 3: 20, 4: 16 } };
+const STREAMS = [
+  ['G8_ALG', 8, 'alg'], ['G8_GEO', 8, 'geo'],
+  ['G10_ALG', 10, 'alg'], ['G10_GEO', 10, 'geo'],
+  ['G11_ALG', 11, 'alg'], ['G11_GEO', 11, 'geo']
+];
 const issues = [];
-const all = [].concat(ctx.G8_ALG || [], ctx.G8_GEO || []);
+const progress = [];
+let all = [];
+for (const [key] of STREAMS) all = all.concat(ctx[key] || []);
 
-for (const [stream, arr] of [['alg', ctx.G8_ALG], ['geo', ctx.G8_GEO]]) {
+for (const [key, grade, stream] of STREAMS) {
+  const arr = ctx[key] || [];
+  if (!arr.length) continue;
   const byQ = {};
   let next = 1;
   for (const t of arr) {
+    if (t.grade !== grade) issues.push(`${t.id}: grade ${t.grade} in ${key}`);
+    if (t.stream !== stream) issues.push(`${t.id}: stream ${t.stream} in ${key}`);
     byQ[t.quarter] = (byQ[t.quarter] || 0) + t.hours;
     const [a, b] = String(t.lessons).replace(/[–—]/g, '-').split('-').map(Number);
     const end = isNaN(b) ? a : b;
@@ -38,10 +53,13 @@ for (const [stream, arr] of [['alg', ctx.G8_ALG], ['geo', ctx.G8_GEO]]) {
     if (end - a + 1 !== t.hours) issues.push(`${t.id}: lessons ${t.lessons} span ${end - a + 1}, hours say ${t.hours}`);
     next = end + 1;
   }
+  /* A quarter still being written is reported as progress; one that has
+     overrun its hours is an error, because the annual plan is fixed. */
   for (const q of [1, 2, 3, 4]) {
-    if (byQ[q] !== HOURS[stream][q]) {
-      issues.push(`${stream} quarter ${q}: ${byQ[q]} hours, the annual plan says ${HOURS[stream][q]}`);
-    }
+    if (byQ[q] === undefined) continue;
+    const want = HOURS[stream][q];
+    if (byQ[q] > want) issues.push(`${key} quarter ${q}: ${byQ[q]} hours, over the plan's ${want}`);
+    else if (byQ[q] < want) progress.push(`${key} Q${q}  ${byQ[q]}/${want} h`);
   }
 }
 
@@ -104,6 +122,12 @@ for (const name of Object.keys(ctx.FIG)) {
   } catch (e) { issues.push(`figure ${name} threw: ${e.message}`); }
 }
 
-console.log(`${all.length} topics · ${Object.keys(ctx.FIG).length} figures · ${all.length * 21} practice problems`);
+const byGrade = {};
+for (const t of all) byGrade[t.grade] = (byGrade[t.grade] || 0) + 1;
+console.log(`${all.length} topics · ${Object.keys(ctx.FIG).length} figures · ` +
+  `${all.length * 21} practice problems`);
+console.log('  by grade: ' + Object.keys(byGrade).sort((a, b) => a - b)
+  .map(g => `grade ${g} ${byGrade[g]}`).join(' · '));
+if (progress.length) console.log('  in progress: ' + progress.join(' · '));
 console.log(issues.length ? `ISSUES (${issues.length}):\n  ${issues.join('\n  ')}` : 'all checks pass');
 process.exit(issues.length ? 1 : 0);
