@@ -72,6 +72,26 @@ Every lesson page carries a back button to the grade page, a dropdown listing ev
 stream and quarter, and previous / next arrows. On phones a sticky bar at the foot of the page gives
 previous, all topics and next.
 
+## The header
+
+- **Grades** opens a drop-down, so any year is one click from any page.
+- **Search** (the magnifier, or press `/`) matches all 95 topics on title,
+  subtitle, textbook reference and the terminology in all three languages — so
+  `chord`, `vatar` and `хорда` all find the same lesson. Arrow keys move,
+  Enter opens, Esc closes. Title matches rank above passing mentions.
+- **Language**, **theme** and, on phones, the menu button sit to the right.
+
+## The preloader
+
+The mark draws itself: the A first, then the compass sweeps its arc around it —
+the same construction the geometry lessons ask a class to make.
+
+It is deliberately kept out of the way. It clears as soon as the page has
+loaded, is shown for at least 1.15 s so it does not blink and at most 2.4 s no
+matter what, is skipped on every later page in the same visit, and is skipped
+entirely for anyone who has asked for reduced motion. The CSS carries its own
+failsafe, so the overlay clears even if JavaScript never runs at all.
+
 ## Languages
 
 The lessons are written in English, and every topic carries a terminology table

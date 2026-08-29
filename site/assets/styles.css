@@ -179,6 +179,102 @@ footer.site-foot{margin-top:96px;border-top:1px solid var(--rule);background:var
 footer.site-foot .inner{max-width:var(--maxw);margin:0 auto;padding:40px 28px;
   display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start}
 footer .fnote{font-size:13px;color:var(--muted);max-width:44ch}
+/* ---------- grades drop-down + topic search ---------- */
+.hasmenu{position:relative;display:inline-flex}
+.hasmenu>a{display:inline-flex;align-items:center;gap:4px}
+.caret{opacity:.55;transition:transform .18s}
+.hasmenu:hover .caret,.hasmenu:focus-within .caret{transform:rotate(180deg);opacity:1}
+.submenu{position:absolute;top:100%;left:-10px;min-width:212px;padding:6px;
+  background:var(--surface);border:1px solid var(--rule);border-radius:var(--r-l);
+  box-shadow:var(--shadow-l);opacity:0;visibility:hidden;transform:translateY(-5px);
+  transition:.17s;z-index:60}
+.hasmenu:hover .submenu,.hasmenu:focus-within .submenu{opacity:1;visibility:visible;transform:none}
+.submenu a{display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+  padding:7px 11px;border-radius:var(--r);font-size:14px;text-decoration:none;color:var(--ink-soft)}
+.submenu a:hover{background:var(--surface-2);color:var(--brand)}
+.submenu em{font-family:var(--mono);font-style:normal;font-size:9.5px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--faint)}
+.findwrap{display:flex}
+.findbtn{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--rule);
+  border-radius:var(--r);background:var(--surface);color:var(--muted);cursor:pointer;
+  transition:.18s}
+.findbtn:hover{color:var(--brand);border-color:var(--brand)}
+.findlayer{position:fixed;inset:0;z-index:200;background:rgba(10,22,26,.42);
+  backdrop-filter:blur(2px);display:flex;justify-content:center;align-items:flex-start;
+  padding:12vh 18px 18px;animation:findIn .16s ease}
+@keyframes findIn{from{opacity:0}to{opacity:1}}
+.findbox{width:100%;max-width:560px;max-height:70vh;display:flex;flex-direction:column;
+  background:var(--surface);border:1px solid var(--rule);border-radius:var(--r-l);
+  box-shadow:var(--shadow-l);overflow:hidden}
+.findtop{display:flex;align-items:center;gap:10px;padding:13px 15px;
+  border-bottom:1px solid var(--rule);color:var(--muted);flex:none}
+.findtop input{flex:1;min-width:0;border:0;outline:none;background:transparent;
+  font-family:var(--sans);font-size:15px;color:var(--ink)}
+.findtop input::placeholder{color:var(--faint)}
+/* the browser's own clear cross does not match anything else here */
+.findtop input::-webkit-search-cancel-button,
+.findtop input::-webkit-search-decoration{-webkit-appearance:none;appearance:none}
+.findtop kbd{font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:3px;
+  border:1px solid var(--rule);color:var(--faint)}
+.findlist{overflow-y:auto;padding:6px}
+.findrow{display:block;padding:9px 12px;border-radius:var(--r);text-decoration:none}
+.findrow .ft{display:block;font-family:var(--serif);font-size:15px;color:var(--ink)}
+.findrow .fm{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+  color:var(--muted);margin-top:2px}
+.findrow:hover,.findrow.on{background:var(--brand-tint)}
+.findrow:hover .ft,.findrow.on .ft{color:var(--brand)}
+.findnone{padding:20px 14px;text-align:center;color:var(--muted);font-size:14px;margin:0}
+@media (max-width:860px){
+  .findlayer{padding:8vh 12px 12px}
+  .submenu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;
+    border:0;padding:2px 0 6px 12px;min-width:0;background:transparent;display:none}
+  .hasmenu{display:block;width:100%}
+  .site-head.open .submenu{display:block}
+  .caret{display:none}
+}
+
+/* ---------- preloader ----------
+   The compass draws its own arc, then the A appears: the mark constructing
+   itself, which is the same thing the geometry lessons ask a class to do.
+
+   It must never get in the way. app.js removes it as soon as the page has
+   loaded; the CSS animation below is a failsafe that clears it after 2.6s
+   even if the script never runs at all, so nobody is ever left staring at
+   an overlay. It is skipped entirely on repeat visits and for anyone who
+   asks for reduced motion.                                                 */
+.preload{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;
+  background:var(--paper);
+  animation:plFailsafe 0s linear 2.6s forwards}
+.preload.done{opacity:0;visibility:hidden;transition:opacity .42s ease,visibility 0s .42s}
+@keyframes plFailsafe{to{opacity:0;visibility:hidden}}
+.pl-in{text-align:center;transform:translateY(-6px)}
+.pl-mark{width:84px;height:84px;color:var(--ink);display:block;margin:0 auto 20px}
+/* The A is drawn first, then the compass sweeps its arc around it. Doing it the
+   other way round leaves an unfortunate half-second where an open arc and two
+   stroke caps read as a face. The whole sequence finishes inside PRELOAD_MIN,
+   so it is never cut off part way. */
+.pl-a{stroke-dasharray:84;stroke-dashoffset:84;
+  animation:plDraw .5s cubic-bezier(.6,0,.35,1) .05s forwards}
+.pl-arc{stroke-dasharray:143.4;stroke-dashoffset:143.4;
+  animation:plDraw .72s cubic-bezier(.55,0,.35,1) .3s forwards}
+.pl-nib{opacity:0;animation:plNib .25s ease .95s forwards}
+@keyframes plDraw{to{stroke-dashoffset:0}}
+@keyframes plNib{to{opacity:1}}
+.pl-name{font-family:var(--serif);font-weight:600;font-size:17px;letter-spacing:-.01em;
+  margin:0;color:var(--ink);opacity:0;animation:plUp .42s ease .5s forwards}
+.pl-sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin:4px 0 0;opacity:0;animation:plUp .42s ease .6s forwards}
+@keyframes plUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.pl-bar{width:112px;height:2px;margin:18px auto 0;background:var(--rule-soft);
+  border-radius:2px;overflow:hidden}
+.pl-bar i{display:block;height:100%;width:100%;background:var(--brand);
+  transform:scaleX(0);transform-origin:left;
+  animation:plBar 1s cubic-bezier(.3,.7,.4,1) .05s forwards}
+@keyframes plBar{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){
+  .preload{display:none}
+}
+
 /* ---------- language picker (Google Translate) ----------
    The widget ships its own styling and a fixed banner across the top of the
    page. Both are suppressed; only the select survives, restyled to match the
@@ -242,8 +338,8 @@ body{top:0!important}                       /* the banner pushes body down */
 @media print{
   :root{--paper:#fff;--surface:#fff;--surface-2:#fff}
   .site-head,.themebtn,.menubtn,.no-print,.site-foot,.pager,.mobilepager,
-  .lnav,.ctrls,.ilab>.ih .ihint,.tocnav,.pc-btn,.langpick,
-  .goog-te-banner-frame,.skiptranslate{display:none!important}
+  .lnav,.ctrls,.ilab>.ih .ihint,.tocnav,.pc-btn,.langpick,.findwrap,.findlayer,
+  .preload,.submenu,.goog-te-banner-frame,.skiptranslate{display:none!important}
   html,body{background:#fff!important;font-size:10.5pt}
   .card,.sbox,.ilab,.example,.probs,.terms,.tablewrap{box-shadow:none!important;
     break-inside:avoid;page-break-inside:avoid}
