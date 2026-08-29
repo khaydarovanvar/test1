@@ -1549,3 +1549,1394 @@ G11_GEO.push({
     'Write your target for Quarter II in one checkable sentence, and date it.'
   ]
 });
+
+/* ===================== QUARTER II (14 hours) ===================== */
+
+/* ============================== 11 ============================== */
+G11_GEO.push({
+  id: 'g11-11', stream: 'geo', grade: 11, quarter: 2, lessons: '19–20', hours: 2,
+  title: 'Polyhedral angles and polyhedra',
+  subtitle: 'What happens at a vertex of a solid — the angle condition every corner must satisfy.',
+  uz: 'Geometry 11, §9', uzPage: 'pp. 89–100',
+  cam: 'IGCSE E13.x', camPage: 'Core & Extended, pp. 282–288', wb: 'Exercise 9.1',
+  objectives: [
+    'Define a polyhedral angle and name its plane and dihedral angles.',
+    'Apply the inequality on the plane angles at a vertex.',
+    'Classify polyhedra as convex or non-convex.',
+    'Use Euler’s formula on a given solid.'
+  ],
+  terms: [
+    ['Polyhedral angle', 'Ko‘pyoqli burchak', 'Многогранный угол'],
+    ['Trihedral angle', 'Uch yoqli burchak', 'Трёхгранный угол'],
+    ['Plane angle (of a corner)', 'Yassi burchak', 'Плоский угол'],
+    ['Dihedral angle', 'Ikki yoqli burchak', 'Двугранный угол'],
+    ['Apex (vertex)', 'Uchi', 'Вершина'],
+    ['Convex polyhedron', 'Qavariq ko‘pyoq', 'Выпуклый многогранник'],
+    ['Non-convex', 'Qavariq bo‘lmagan', 'Невыпуклый'],
+    ['Euler’s formula', 'Eyler formulasi', 'Формула Эйлера'],
+    ['Lateral face', 'Yon yoq', 'Боковая грань']
+  ],
+  timing: [[12, 'What a polyhedral angle is'], [22, 'The angle inequality'], [22, 'Convexity'], [20, 'Euler again'], [18, 'Practice'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The corner of a solid',
+      html: `<p>Take a point ${m('S')} and several rays from it, no three coplanar, joined in order by
+      plane faces. The figure is a <b>polyhedral angle</b>: three rays give a <b>trihedral</b> angle,
+      four a tetrahedral one, and so on.</p>
+      {{fig:polyhedralAngle:Five faces meeting at S. Each face contributes a plane angle; each edge a dihedral angle.}}
+      <div class="keybox"><div class="klabel">Two kinds of angle at a corner</div>
+      A <b>plane angle</b> lies inside one face, between two adjacent edges. A <b>dihedral angle</b> is
+      between two adjacent faces, measured along their common edge. A corner with ${m('n')} edges has
+      ${m('n')} of each.</div>`
+    },
+    {
+      h: 'The angle inequality',
+      html: `<div class="keybox"><div class="klabel">Two theorems about the plane angles</div>
+      <b>1</b> Each plane angle is less than the sum of the others.
+      <b>2</b> The sum of all the plane angles at a vertex is less than ${m('360°')}.</div>
+      <p>Theorem 2 is the reason there are only five regular polyhedra: with equilateral triangles
+      (${m('60°')}) at most five fit; with squares (${m('90°')}) at most three; with regular pentagons
+      (${m('108°')}) at most three; six hexagons give exactly ${m('360°')} and lie flat, forming no
+      corner at all.</p>
+      <div class="warn"><span class="wl">Exactly ${m('360°')} is not a corner</span>
+      It is a flat piece of plane. To fold up into a solid, a corner must have angles totalling
+      <b>strictly less</b> than a full turn — the deficit is what makes it pop out.</div>`
+    },
+    {
+      h: 'Convexity',
+      html: `<p>A polyhedron is <b>convex</b> when it lies entirely on one side of the plane of each of
+      its faces — equivalently, when the segment joining any two of its points stays inside.</p>
+      {{fig:convex:Convex on the left. On the right, a segment between two interior points leaves the solid.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Property</th><th>Convex</th><th>Non-convex</th></tr></thead>
+      <tbody>
+        <tr><td>Euler’s formula ${m('F + V − E = 2')}</td><td>always</td><td>usually, but not for a solid with a hole</td></tr>
+        <tr><td>every section is a single polygon</td><td>yes</td><td>no</td></tr>
+        <tr><td>every plane angle sum ${m('< 360°')}</td><td>yes</td><td>can exceed it at a reflex corner</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Euler again, as a tool',
+      html: `${eq(m('F + V − E = 2'), true)}
+      <p>Two counting facts make it usable when the faces are known:</p>
+      ${eq(m('2E = Σ (edges per face) = Σ (edges per vertex)'), true)}
+      <p>A solid with 12 pentagons and 20 hexagons, three faces at each vertex:
+      ${m('2E = 12 × 5 + 20 × 6 = 180')}, so ${m('E = 90')}; and ${m('3V = 2E = 180')} gives
+      ${m('V = 60')}. Check: ${m('32 + 60 − 90 = 2')} ✓. That solid is the football.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Can a corner have three plane angles of ' + m('120°') + ' each?',
+      steps: [
+        [m('3 × 120° = 360°'), ''],
+        ['The sum must be strictly less.', ''],
+        ['They lie flat.', '']
+      ],
+      ans: 'No — it is a flat plane, not a corner'
+    },
+    {
+      q: 'A corner has plane angles ' + m('70°') + ', ' + m('80°') + ' and ' + m('x') + '. Find the possible values of ' + m('x') + '.',
+      steps: [
+        ['Sum ' + m('< 360°') + ': ' + m('x < 210°') + '.', ''],
+        ['Each less than the sum of the others: ' + m('x < 150°') + '.', ''],
+        ['And ' + m('80 < 70 + x') + ', so ' + m('x > 10°') + '.', '']
+      ],
+      ans: m('10° < x < 150°')
+    },
+    {
+      q: 'A polyhedron has 12 pentagonal and 20 hexagonal faces, 3 at each vertex. Find ' + m('V') + ' and ' + m('E') + '.',
+      steps: [
+        [m('2E = 12 × 5 + 20 × 6 = 180'), m('E = 90')],
+        [m('3V = 2E = 180'), m('V = 60')],
+        ['Check: ' + m('32 + 60 − 90 = 2') + ' ✓', '']
+      ],
+      ans: m('V = 60') + ', ' + m('E = 90')
+    }
+  ],
+  modelNote: 'Fold three squares at a corner and try to add a fourth — the angles refuse.',
+  interactive: {
+    type: 'polygonAngles',
+    title: 'Angles at a corner',
+    hint: 'Add faces until the total reaches ' + m('360°') + '.'
+  },
+  quiz: [
+    { q: 'The plane angles at a vertex sum to:', a: [m('360°'), 'less than ' + m('360°'), 'more than ' + m('360°'), m('180°')], c: 1, why: 'Strictly less, or it lies flat.' },
+    { q: 'A trihedral angle has how many faces?', a: [m('2'), m('3'), m('4'), m('6')], c: 1, why: 'Three, by the name.' },
+    { q: 'Three regular hexagons at a corner:', a: ['make a solid', 'lie flat', 'are impossible', 'make a cube'], c: 1, why: m('3 × 120° = 360°') + '.' },
+    { q: 'Euler’s formula holds for:', a: ['every solid', 'every convex polyhedron', 'only prisms', 'only regular solids'], c: 1, why: 'A solid with a hole fails it.' },
+    { q: m('2E') + ' equals:', a: ['the number of faces', 'the sum of edges per face', m('F + V'), m('3V') + ' always'], c: 1, why: 'Each edge is shared by two faces.' }
+  ],
+  practice: {
+    easy: [
+      ['How many faces has a trihedral angle?', m('3')],
+      ['Sum of plane angles at a vertex is', 'less than ' + m('360°')],
+      ['Can three ' + m('120°') + ' angles form a corner?', 'no'],
+      ['Can three ' + m('90°') + ' angles?', 'yes — a cube corner'],
+      ['Can five ' + m('60°') + ' angles?', 'yes — an icosahedron corner'],
+      ['Can six ' + m('60°') + ' angles?', 'no — exactly ' + m('360°')],
+      ['State Euler’s formula', m('F + V − E = 2')]
+    ],
+    med: [
+      ['Plane angles ' + m('70°, 80°, x') + '. Find the range of ' + m('x'), m('10° < x < 150°')],
+      [m('F = 8, V = 6') + '; find ' + m('E'), m('12')],
+      [m('F = 20, E = 30') + '; find ' + m('V'), m('12')],
+      ['12 pentagons + 20 hexagons, 3 per vertex: ' + m('V, E'), m('60, 90')],
+      ['A solid with only triangular faces and ' + m('V = 6') + ', 4 per vertex: ' + m('E, F'), m('12, 8')],
+      ['Why are there only five regular polyhedra?', 'The angle sum at a corner must be under ' + m('360°')],
+      ['Is a picture-frame solid convex?', 'no']
+    ],
+    hard: [
+      ['Prove each plane angle is less than the sum of the others', 'Unfold the corner into the plane and use the triangle inequality'],
+      ['Prove the plane angles sum to less than ' + m('360°'), 'Project the corner onto a plane and compare'],
+      ['A convex solid has 7 faces. What is the least possible ' + m('E') + '?', m('12') + ' — a hexagonal pyramid'],
+      ['Show ' + m('2E ≥ 3F') + ' and ' + m('2E ≥ 3V') + ' for any polyhedron', 'At least 3 edges per face and per vertex'],
+      ['Deduce ' + m('F ≤ 2V − 4') + ' and ' + m('V ≤ 2F − 4'), 'Substitute both into Euler'],
+      ['Can a convex polyhedron have exactly 7 edges?', 'no'],
+      ['A solid has faces that are all squares and triangles, 12 vertices, 4 edges at each. Find ' + m('E, F'), m('E = 24, F = 14')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every Euler answer must be checked against ' + m('F + V − E = 2') + '.',
+  homework: [
+    'A corner has plane angles ' + m('60°') + ', ' + m('100°') + ' and ' + m('x') + '. Find the range of ' + m('x') + '.',
+    'Explain, with the angle sums, why there are exactly five regular polyhedra.',
+    'A solid has 12 faces and 30 edges. Find ' + m('V') + ' and name it if it is regular.',
+    'A solid has only triangular faces and 20 of them. Find ' + m('E') + ' and ' + m('V') + '.',
+    'Give an example of a solid for which Euler’s formula fails, and say why.'
+  ]
+});
+
+/* ============================== 12 ============================== */
+G11_GEO.push({
+  id: 'g11-12', stream: 'geo', grade: 11, quarter: 2, lessons: '21–22', hours: 2,
+  title: 'The prism, the parallelepiped and the cube',
+  subtitle: 'The family, its sections, and the diagonal formula that every cuboid problem reduces to.',
+  uz: 'Geometry 11, §10', uzPage: 'pp. 101–112',
+  cam: 'IGCSE E13.x', camPage: 'Core & Extended, pp. 289–296', wb: 'Exercise 10.1',
+  objectives: [
+    'Name the elements of a prism and classify it as right, oblique or regular.',
+    'Describe the sections of a prism parallel to the base and through a lateral edge.',
+    'Prove the properties of a parallelepiped.',
+    'Use the space-diagonal formula for a cuboid.'
+  ],
+  terms: [
+    ['Prism', 'Prizma', 'Призма'],
+    ['Right prism', 'To‘g‘ri prizma', 'Прямая призма'],
+    ['Oblique prism', 'Og‘ma prizma', 'Наклонная призма'],
+    ['Regular prism', 'Muntazam prizma', 'Правильная призма'],
+    ['Parallelepiped', 'Parallelepiped', 'Параллелепипед'],
+    ['Cuboid', 'To‘g‘ri burchakli parallelepiped', 'Прямоугольный параллелепипед'],
+    ['Lateral edge', 'Yon qirra', 'Боковое ребро'],
+    ['Diagonal section', 'Diagonal kesim', 'Диагональное сечение'],
+    ['Space diagonal', 'Fazoviy diagonal', 'Пространственная диагональ'],
+    ['Perpendicular section', 'Perpendikulyar kesim', 'Перпендикулярное сечение']
+  ],
+  timing: [[12, 'The family'], [22, 'Sections'], [24, 'The parallelepiped'], [22, 'The diagonal formula'], [16, 'Practice'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'The family',
+      html: `<div class="keybox"><div class="klabel">Definition</div>
+      A <b>prism</b> has two congruent parallel bases joined by parallelograms. It is <b>right</b> when
+      the lateral edges are perpendicular to the bases, and <b>regular</b> when it is right and its base
+      is a regular polygon.</div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Base</th><th>Lateral faces</th></tr></thead>
+      <tbody>
+        <tr><td>oblique prism</td><td>any polygon</td><td>parallelograms</td></tr>
+        <tr><td>right prism</td><td>any polygon</td><td>rectangles</td></tr>
+        <tr><td>regular prism</td><td>regular polygon</td><td>congruent rectangles</td></tr>
+        <tr><td>parallelepiped</td><td>parallelogram</td><td>parallelograms</td></tr>
+        <tr><td>cuboid</td><td>rectangle</td><td>rectangles</td></tr>
+        <tr><td>cube</td><td>square</td><td>squares</td></tr>
+      </tbody></table></div>
+      <p>Each row is a special case of the one above it. Every theorem proved for a prism therefore
+      holds for a cube.</p>`
+    },
+    {
+      h: 'Sections',
+      html: `{{fig:prismSection:A plane parallel to the base cuts a triangle congruent to it — at every height.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Cutting plane</th><th>Section</th></tr></thead>
+      <tbody>
+        <tr><td>parallel to the base</td><td>congruent to the base</td></tr>
+        <tr><td>through two lateral edges</td><td>a parallelogram (a <b>diagonal section</b>)</td></tr>
+        <tr><td>perpendicular to the lateral edges</td><td>the <b>perpendicular section</b></td></tr>
+      </tbody></table></div>
+      <p>The perpendicular section matters because the lateral surface area of <b>any</b> prism, right or
+      oblique, is the perimeter of the perpendicular section times the lateral edge.</p>`
+    },
+    {
+      h: 'The parallelepiped',
+      html: `<p>Four properties, each proved from the parallel-plane theorems of Grade 10:</p>
+      <ol>
+        <li>Opposite faces are congruent parallelograms lying in parallel planes.</li>
+        <li>All four space diagonals meet at one point and bisect each other.</li>
+        <li>That point is the centre of symmetry of the solid.</li>
+        <li>In a <b>cuboid</b> all four space diagonals are equal.</li>
+      </ol>
+      <p>Property 2 says the parallelepiped is the space analogue of the parallelogram, whose diagonals
+      also bisect each other. The proof is the same: the two diagonals of any diagonal section are the
+      diagonals of a parallelogram.</p>`
+    },
+    {
+      h: 'The diagonal formula',
+      html: `${eq(m('d² = a² + b² + c²'), true)}
+      <p>Pythagoras twice — once in the base to get ${m(sr('a² + b²'))}, once vertically. For a cube of
+      edge ${m('a')} it gives ${m('d = a' + sr('3'))}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Cuboid</th><th>Base diagonal</th><th>Space diagonal</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3 × 4 × 12</td><td class="m">5</td><td class="m">13</td></tr>
+        <tr><td class="m">1 × 2 × 2</td><td class="m">${sr('5')}</td><td class="m">3</td></tr>
+        <tr><td class="m">2 × 3 × 6</td><td class="m">${sr('13')}</td><td class="m">7</td></tr>
+        <tr><td class="m">a × a × a</td><td class="m">a${sr('2')}</td><td class="m">a${sr('3')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Three squares, not two</span>
+      Every edge contributes. Learners who use only the two base edges get the <b>face</b> diagonal and
+      answer a different question.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A cuboid measures ' + m('6 × 8 × 10') + '. Find its space diagonal and its four diagonal sections.',
+      steps: [
+        [m('d = ' + sr('36 + 64 + 100') + ' = ' + sr('200')), ''],
+        [m('= 10' + sr('2') + ' ≈ 14.1'), ''],
+        ['Diagonal sections are rectangles ' + m('10 × ' + sr('100')) + ' and ' + m('10 × ' + sr('136')) + '.', 'Two different sizes.']
+      ],
+      ans: m('10' + sr('2')) + ' ≈ ' + m('14.1')
+    },
+    {
+      q: 'A regular hexagonal prism has base edge 4 and height 9. Find the longest diagonal.',
+      steps: [
+        ['The longest base diagonal of a regular hexagon is ' + m('2 × 4 = 8') + '.', ''],
+        [m('d = ' + sr('64 + 81')), ''],
+        [m('= ' + sr('145') + ' ≈ 12.04'), '']
+      ],
+      ans: m(sr('145')) + ' ≈ ' + m('12.0')
+    },
+    {
+      q: 'A cube has space diagonal ' + m('9' + sr('3')) + '. Find its edge and its face diagonal.',
+      steps: [
+        [m('a' + sr('3') + ' = 9' + sr('3')), m('a = 9')],
+        ['Face diagonal ' + m('a' + sr('2') + ' = 9' + sr('2')), ''],
+        [m('≈ 12.7'), '']
+      ],
+      ans: 'Edge ' + m('9') + ', face diagonal ' + m('9' + sr('2'))
+    }
+  ],
+  modelNote: 'Hold a box and trace the base diagonal, then the space diagonal, saying the two Pythagoras steps.',
+  interactive: {
+    type: 'space3d',
+    title: 'The diagonal of a box',
+    hint: 'Change the three edges and watch the diagonal.'
+  },
+  quiz: [
+    { q: 'A right prism has lateral faces that are:', a: ['parallelograms', 'rectangles', 'triangles', 'trapezia'], c: 1, why: 'The edges are perpendicular to the bases.' },
+    { q: 'A section parallel to the base is:', a: ['smaller', 'congruent to the base', 'a triangle', 'a point'], c: 1, why: 'A prism has constant cross-section.' },
+    { q: 'The space diagonal of an ' + m('a × b × c') + ' cuboid is:', a: [m('a + b + c'), m(sr('a² + b²')), m(sr('a² + b² + c²')), m('abc')], c: 2, why: 'Pythagoras twice.' },
+    { q: 'The diagonals of a parallelepiped:', a: ['are equal', 'bisect each other', 'are perpendicular', 'do not meet'], c: 1, why: 'At the centre of symmetry.' },
+    { q: 'A cube of edge 5 has space diagonal:', a: [m('5' + sr('2')), m('5' + sr('3')), m('15'), m('25')], c: 1, why: m('a' + sr('3')) + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Space diagonal of a ' + m('3 × 4 × 12') + ' cuboid', m('13')],
+      ['Space diagonal of a cube of edge 5', m('5' + sr('3'))],
+      ['Face diagonal of a cube of edge 5', m('5' + sr('2'))],
+      ['Lateral faces of a right prism are', 'rectangles'],
+      ['Section parallel to the base is', 'congruent to the base'],
+      ['How many space diagonals has a cuboid?', m('4')],
+      ['Space diagonal of a ' + m('1 × 2 × 2') + ' cuboid', m('3')]
+    ],
+    med: [
+      ['Space diagonal of a ' + m('6 × 8 × 10') + ' cuboid', m('10' + sr('2'))],
+      ['Cube with space diagonal ' + m('9' + sr('3')) + '; find the edge', m('9')],
+      ['Regular hexagonal prism, base edge 4, height 9: longest diagonal', m(sr('145'))],
+      ['Cuboid ' + m('2 × 3 × 6') + '; space diagonal', m('7')],
+      ['A cuboid has square base 5 and diagonal 13. Find the height', m(sr('119')) + ' ≈ ' + m('10.9')],
+      ['Diagonal section of a cube of edge 6: its area', m('36' + sr('2'))],
+      ['Perpendicular section of a right prism is', 'congruent to the base']
+    ],
+    hard: [
+      ['A cuboid has edges in ratio ' + m('1:2:3') + ' and diagonal ' + m(sr('56')) + '. Find them', m('2, 4, 6')],
+      ['Prove the four space diagonals of a parallelepiped meet at one point', 'Each diagonal section is a parallelogram'],
+      ['Oblique prism, lateral edge 10, perpendicular-section perimeter 18. Lateral area', m('180')],
+      ['A cube of edge ' + m('a') + ': angle between the space diagonal and a face diagonal', m('≈ 35.26°')],
+      ['A cuboid with all four space diagonals equal must be', 'any cuboid — they always are'],
+      ['A parallelepiped whose diagonals are all equal is', 'a cuboid'],
+      ['A regular triangular prism, base edge 6, height 8: longest diagonal', m('10')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every diagonal answer must show both Pythagoras steps.',
+  homework: [
+    'Find the space diagonal of a ' + m('5 × 12 × 84') + ' cuboid.',
+    'A cube has space diagonal ' + m('12') + '. Find its edge and its face diagonal.',
+    'A regular hexagonal prism has base edge 5 and height 12. Find its longest diagonal.',
+    'Prove that the four space diagonals of a cuboid are equal.',
+    'A cuboid has edges in the ratio ' + m('2 : 3 : 6') + ' and space diagonal ' + m('14') + '. Find the edges.'
+  ]
+});
+
+/* ============================== 13 ============================== */
+G11_GEO.push({
+  id: 'g11-13', stream: 'geo', grade: 11, quarter: 2, lessons: '23', hours: 1,
+  title: 'The surface area of a prism',
+  subtitle: 'Two bases and one rectangle — the net says the formula better than the formula does.',
+  uz: 'Geometry 11, §11', uzPage: 'pp. 113–118',
+  cam: 'IGCSE E13.x', camPage: 'Core & Extended, pp. 297–300', wb: 'Exercise 11.1',
+  objectives: [
+    'Derive the lateral surface area of a right prism from its net.',
+    'Compute the total surface area of a prism.',
+    'Use the perpendicular section for an oblique prism.',
+    'Solve for a missing dimension from a given surface area.'
+  ],
+  terms: [
+    ['Lateral surface area', 'Yon sirt yuzasi', 'Площадь боковой поверхности'],
+    ['Total surface area', 'To‘la sirt yuzasi', 'Площадь полной поверхности'],
+    ['Net', 'Yoyma', 'Развёртка'],
+    ['Base perimeter', 'Asos perimetri', 'Периметр основания'],
+    ['Base area', 'Asos yuzasi', 'Площадь основания'],
+    ['Perpendicular section', 'Perpendikulyar kesim', 'Перпендикулярное сечение'],
+    ['Lateral edge', 'Yon qirra', 'Боковое ребро'],
+    ['Apothem of a polygon', 'Ko‘pburchak apofemasi', 'Апофема многоугольника']
+  ],
+  timing: [[8, 'The net'], [12, 'The formula'], [10, 'Oblique prisms'], [10, 'Working backwards'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The net',
+      html: `<p>Cut a right prism along one lateral edge and roll the sides flat. The lateral surface is
+      a single rectangle: its height is the prism's height, and its width is the base perimeter.</p>
+      {{fig:surfaceNet:The lateral surface unrolls into one rectangle, P wide and h tall.}}
+      ${eq(m('S_lat = P · h') + '     ' + m('S_total = 2B + P h'), true)}
+      <p>where ${m('B')} is the base area and ${m('P')} the base perimeter.</p>`
+    },
+    {
+      h: 'Worked shapes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Prism</th><th class="m">B</th><th class="m">P</th><th class="m">S_total</th></tr></thead>
+      <tbody>
+        <tr><td>cuboid ${m('a × b × h')}</td><td class="m">ab</td><td class="m">2(a + b)</td><td class="m">2ab + 2(a+b)h</td></tr>
+        <tr><td>cube, edge ${m('a')}</td><td class="m">a²</td><td class="m">4a</td><td class="m">6a²</td></tr>
+        <tr><td>regular triangular, edge ${m('a')}, height ${m('h')}</td><td class="m">${f(sr('3'), '4')}a²</td><td class="m">3a</td><td class="m">${f(sr('3'), '2')}a² + 3ah</td></tr>
+        <tr><td>regular hexagonal, edge ${m('a')}, height ${m('h')}</td><td class="m">${f('3' + sr('3'), '2')}a²</td><td class="m">6a</td><td class="m">3${sr('3')}a² + 6ah</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Two bases, not one</span>
+      A closed prism has a lid. ${m('S_total = 2B + Ph')}: the ${m('2')} is the mark most often lost.
+      An open container — a trough, a box without a lid — needs the formula adjusted, and the question
+      will say so.</div>`
+    },
+    {
+      h: 'Oblique prisms',
+      html: `<p>For an oblique prism the lateral faces are parallelograms of different shapes, and the
+      net is not one rectangle. The formula generalises by using the <b>perpendicular section</b> — the
+      cut at right angles to the lateral edges:</p>
+      ${eq(m('S_lat = P_⊥ · ℓ') + '   where ' + m('ℓ') + ' is the lateral edge', true)}
+      <p>For a right prism the perpendicular section is the base and ${m('ℓ = h')}, so the general
+      formula reduces to the one above.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A regular hexagonal prism has base edge 4 cm and height 10 cm. Find its total surface area.',
+      steps: [
+        [m('B = ' + f('3' + sr('3'), '2') + ' × 16 = 24' + sr('3') + ' ≈ 41.57'), ''],
+        [m('P = 24'), ''],
+        [m('S_lat = 240'), ''],
+        [m('S = 2(41.57) + 240 ≈ 323.1'), '']
+      ],
+      ans: m('48' + sr('3') + ' + 240') + ' ≈ ' + m('323') + ' cm²'
+    },
+    {
+      q: 'A cuboid has surface area ' + m('136') + ' cm² and base ' + m('4 × 5') + '. Find its height.',
+      steps: [
+        [m('2(20) + 2(9)h = 136'), ''],
+        [m('18h = 96'), ''],
+        [m('h = ' + f('16', '3') + ' ≈ 5.33'), '']
+      ],
+      ans: m(f('16', '3')) + ' ≈ ' + m('5.33') + ' cm'
+    },
+    {
+      q: 'An oblique prism has lateral edge 12 and perpendicular section a triangle with sides 3, 4, 5. Find the lateral area.',
+      steps: [
+        [m('P_⊥ = 12'), ''],
+        [m('S_lat = 12 × 12'), ''],
+        [m('= 144'), '']
+      ],
+      ans: m('144') + ' square units'
+    }
+  ],
+  modelNote: 'Unroll a cardboard tube or box and measure the rectangle directly.',
+  interactive: {
+    type: 'areaModel',
+    title: 'Area from a net',
+    hint: 'Change the base and the height and watch the rectangle.'
+  },
+  quiz: [
+    { q: m('S_lat') + ' of a right prism is:', a: [m('Bh'), m('Ph'), m('2B'), m('2B + Ph')], c: 1, why: 'Perimeter times height.' },
+    { q: m('S_total') + ' of a right prism is:', a: [m('Ph'), m('B + Ph'), m('2B + Ph'), m('2Ph')], c: 2, why: 'Two bases plus the sides.' },
+    { q: 'A cube of edge 4 has surface area:', a: [m('16'), m('64'), m('96'), m('24')], c: 2, why: m('6 × 16') + '.' },
+    { q: 'For an oblique prism ' + m('S_lat') + ' uses:', a: ['the base perimeter', 'the perpendicular section perimeter', 'the height', 'the diagonal'], c: 1, why: 'The faces are parallelograms.' },
+    { q: 'An open box needs:', a: [m('2B + Ph'), m('B + Ph'), m('Ph'), m('2B')], c: 1, why: 'One base only.' }
+  ],
+  practice: {
+    easy: [
+      ['Surface area of a cube of edge 3', m('54')],
+      ['Surface area of a cube of edge 7', m('294')],
+      ['Cuboid ' + m('2 × 3 × 4'), m('52')],
+      ['Cuboid ' + m('5 × 5 × 10'), m('250')],
+      [m('S_lat') + ' of a prism with ' + m('P = 20, h = 6'), m('120')],
+      [m('S_total') + ' with ' + m('B = 15, P = 16, h = 5'), m('110')],
+      ['A cube has surface area 150. Find its edge', m('5')]
+    ],
+    med: [
+      ['Regular triangular prism, edge 6, height 10: total area', m('18' + sr('3') + ' + 180') + ' ≈ ' + m('211')],
+      ['Regular hexagonal prism, edge 4, height 10: total area', m('48' + sr('3') + ' + 240') + ' ≈ ' + m('323')],
+      ['Cuboid with base ' + m('4 × 5') + ' and area 136: the height', m(f('16', '3'))],
+      ['Right prism, base a 3-4-5 triangle, height 9: total area', m('12 + 108 = 120')],
+      ['Oblique prism, edge 12, perpendicular perimeter 12: lateral area', m('144')],
+      ['Open cuboid ' + m('3 × 4 × 5') + ' (no lid): area', m('82')],
+      ['A cube of surface area 384: its space diagonal', m('8' + sr('3'))]
+    ],
+    hard: [
+      ['A cuboid has square base and total area 294 with height equal to the base edge. Find the edge', m('7')],
+      ['Regular hexagonal prism of base edge ' + m('a') + ' and height ' + m('a') + ': total area', m('3' + sr('3') + 'a² + 6a²')],
+      ['A prism has a rhombus base with diagonals 6 and 8, height 10. Total area', m('48 + 200 = 248')],
+      ['A cuboid of volume 240 and square base 4: total area', m('272')],
+      ['Two similar prisms with areas ' + m('75') + ' and ' + m('300') + ': the length ratio', m('1 : 2')],
+      ['A prism’s lateral area equals its total area minus what?', 'twice the base area'],
+      ['Prove ' + m('S_lat = P_⊥ ℓ') + ' for an oblique prism', 'Each parallelogram has base a side of the perpendicular section']
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Say whether the solid is closed or open before choosing the formula.',
+  homework: [
+    'A regular hexagonal prism has base edge 6 cm and height 15 cm. Find its total surface area.',
+    'A cuboid with base ' + m('6 × 8') + ' has total surface area ' + m('376') + ' cm². Find its height.',
+    'A right prism has a 5-12-13 triangular base and height 20. Find its total surface area.',
+    'An open trough is a cuboid ' + m('2 × 3 × 8') + ' with no lid. Find the area of material needed.'
+  ]
+});
+
+/* ============================== 14 ============================== */
+G11_GEO.push({
+  id: 'g11-14', stream: 'geo', grade: 11, quarter: 2, lessons: '24', hours: 1,
+  title: 'Upper and lower bounds in measurement',
+  subtitle: 'Cambridge insert: every measurement is an interval, and every calculation from it is an interval too.',
+  uz: 'Geometry 11, §11 (extension)', uzPage: 'pp. 119–122',
+  cam: 'IGCSE E13.3', camPage: 'Core & Extended, pp. 44–48', wb: 'IGCSE Exercise 13.3',
+  objectives: [
+    'Write the upper and lower bound of a rounded measurement.',
+    'Find the bounds of a sum, difference, product and quotient.',
+    'Apply bounds to the area and volume of a solid.',
+    'Decide how many figures an answer can honestly carry.'
+  ],
+  terms: [
+    ['Upper bound', 'Yuqori chegara', 'Верхняя граница'],
+    ['Lower bound', 'Quyi chegara', 'Нижняя граница'],
+    ['Rounded to the nearest', 'Yaxlitlangan', 'Округлено до'],
+    ['Degree of accuracy', 'Aniqlik darajasi', 'Степень точности'],
+    ['Interval of values', 'Qiymatlar oralig‘i', 'Промежуток значений'],
+    ['Maximum value', 'Eng katta qiymat', 'Максимальное значение'],
+    ['Minimum value', 'Eng kichik qiymat', 'Минимальное значение'],
+    ['Significant figures', 'Muhim raqamlar', 'Значащие цифры']
+  ],
+  timing: [[8, 'A measurement is an interval'], [12, 'The four operations'], [14, 'Areas and volumes'], [8, 'How many figures'], [3, 'Homework']],
+  sections: [
+    {
+      h: 'A measurement is an interval',
+      html: `<div class="keybox"><div class="klabel">Half the rounding unit, each way</div>
+      A length given as ${m('8')} cm to the nearest cm lies in ${m('7.5 ≤ ℓ < 8.5')}.
+      To the nearest ${m('0.1')} cm, ${m('8.0')} means ${m('7.95 ≤ ℓ < 8.05')}.</div>
+      <p>The lower bound is included and the upper is not — but at this level both are written as
+      ${m('≤')}, and the distinction is only mentioned.</p>
+      {{fig:errorBounds:The interval a rounded value stands for. Half a unit each side.}}`
+    },
+    {
+      h: 'The four operations',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Quantity</th><th>Greatest when</th><th>Least when</th></tr></thead>
+      <tbody>
+        <tr><td class="m">a + b</td><td>both are greatest</td><td>both are least</td></tr>
+        <tr><td class="m">a − b</td><td>${m('a')} greatest, ${m('b')} least</td><td>${m('a')} least, ${m('b')} greatest</td></tr>
+        <tr><td class="m">a × b</td><td>both greatest</td><td>both least</td></tr>
+        <tr><td class="m">${f('a', 'b')}</td><td>${m('a')} greatest, ${m('b')} least</td><td>${m('a')} least, ${m('b')} greatest</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Subtraction and division swap the bounds</span>
+      To make a difference as large as possible, take the largest top and the <b>smallest</b> bottom.
+      Using the upper bound of both is the standard error.</div>`
+    },
+    {
+      h: 'Areas and volumes',
+      html: `<p>A cuboid measured as ${m('6 × 8 × 10')} cm, each to the nearest cm, has</p>
+      ${eq(m('V_max = 6.5 × 8.5 × 10.5 = 580.125') + '     ' + m('V_min = 5.5 × 7.5 × 9.5 = 391.875'), true)}
+      <p>The stated volume is ${m('480')} cm³, but the true value lies anywhere in a range of nearly
+      ${m('190')} cm³. Small uncertainties in three lengths compound sharply in the product.</p>
+      <div class="keybox"><div class="klabel">Why this insert sits here</div>
+      Every surface-area and volume formula of this quarter multiplies two or three measured lengths.
+      Bounds are how a real answer is stated, and the reason a measured result is never quoted to eight
+      figures.</div>`
+    },
+    {
+      h: 'How many figures',
+      html: `<p>Quote the answer only to the digits that agree between the upper and lower bounds. For
+      the cuboid: ${m('V_min = 391.9')}, ${m('V_max = 580.1')} — not even the first digit agrees, so
+      the honest statement is “between about ${m('390')} and ${m('580')} cm³”.</p>
+      <p>Measure the same box to the nearest millimetre and the bounds become ${m('478.5')} and
+      ${m('481.5')}: now “${m('480')} cm³” is justified.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A length is ' + m('12.4') + ' cm to 1 d.p. Give its bounds.',
+      steps: [
+        ['Rounding unit ' + m('0.1') + '; half is ' + m('0.05') + '.', ''],
+        [m('12.35 ≤ ℓ ≤ 12.45'), '']
+      ],
+      ans: m('12.35') + ' and ' + m('12.45') + ' cm'
+    },
+    {
+      q: 'A rectangle is ' + m('7') + ' cm by ' + m('4') + ' cm, each to the nearest cm. Find the bounds of its area.',
+      steps: [
+        [m('6.5 ≤ a ≤ 7.5') + ', ' + m('3.5 ≤ b ≤ 4.5') + '.', ''],
+        [m('A_min = 6.5 × 3.5 = 22.75'), ''],
+        [m('A_max = 7.5 × 4.5 = 33.75'), '']
+      ],
+      ans: m('22.75') + ' to ' + m('33.75') + ' cm²'
+    },
+    {
+      q: 'A journey of ' + m('150') + ' km (to the nearest 10 km) takes ' + m('2.5') + ' h (to the nearest 0.1 h). Find the greatest possible speed.',
+      steps: [
+        ['Distance greatest: ' + m('155') + '.', ''],
+        ['Time least: ' + m('2.45') + '.', ''],
+        [m(f('155', '2.45') + ' ≈ 63.3'), '']
+      ],
+      ans: m('≈ 63.3') + ' km/h'
+    }
+  ],
+  modelNote: 'Measure the same object with a ruler and with a tape and compare the intervals.',
+  interactive: {
+    type: 'quiz',
+    title: 'Bounds',
+    hint: 'Half the rounding unit each way; then think about which extreme makes the answer largest.',
+    items: [
+      { q: m('8') + ' cm to the nearest cm has lower bound:', a: [m('7'), m('7.5'), m('7.9'), m('8')], c: 1, why: 'Half a unit below.' },
+      { q: m('4.60') + ' to 2 d.p. has upper bound:', a: [m('4.61'), m('4.605'), m('4.65'), m('4.7')], c: 1, why: 'Half of ' + m('0.01') + '.' },
+      { q: 'To maximise ' + m('a − b') + ' take:', a: ['both maxima', 'both minima', m('a') + ' max, ' + m('b') + ' min', m('a') + ' min, ' + m('b') + ' max'], c: 2, why: 'Subtract as little as possible.' },
+      { q: 'To maximise ' + m(f('a', 'b')) + ' take:', a: ['both maxima', m('a') + ' max, ' + m('b') + ' min', 'both minima', m('a') + ' min, ' + m('b') + ' max'], c: 1, why: 'Divide by as little as possible.' },
+      { q: 'A ' + m('7 × 4') + ' rectangle (nearest cm) has greatest area:', a: [m('28'), m('30'), m('33.75'), m('35')], c: 2, why: m('7.5 × 4.5') + '.' }
+    ]
+  },
+  quiz: [
+    { q: m('20') + ' m to the nearest 10 m lies in:', a: [m('19–21'), m('15–25'), m('19.5–20.5'), m('10–30')], c: 1, why: 'Half of 10.' },
+    { q: 'A measurement is best described as:', a: ['an exact number', 'an interval', 'a guess', 'a fraction'], c: 1, why: 'Rounding hides a range.' },
+    { q: 'Bounds of a volume from three measured lengths:', a: ['add', 'multiply the corresponding bounds', 'stay the same', 'halve'], c: 1, why: 'All three extremes together.' },
+    { q: 'An answer should be quoted to:', a: ['as many figures as the calculator gives', 'the figures the bounds agree on', 'two figures always', 'one figure'], c: 1, why: 'Beyond that it is not known.' }
+  ],
+  practice: {
+    easy: [
+      ['Bounds of ' + m('9') + ' cm to the nearest cm', m('8.5') + ' and ' + m('9.5')],
+      ['Bounds of ' + m('4.2') + ' to 1 d.p.', m('4.15') + ' and ' + m('4.25')],
+      ['Bounds of ' + m('300') + ' to the nearest 100', m('250') + ' and ' + m('350')],
+      ['Bounds of ' + m('12.40') + ' to 2 d.p.', m('12.395') + ' and ' + m('12.405')],
+      ['Greatest ' + m('a + b') + ' for ' + m('a = 5, b = 3') + ' (nearest 1)', m('9')],
+      ['Least ' + m('a + b') + ' for the same', m('7')],
+      ['Greatest ' + m('a − b') + ' for the same', m('3')]
+    ],
+    med: [
+      ['Rectangle ' + m('7 × 4') + ' (nearest cm): area bounds', m('22.75') + ' to ' + m('33.75')],
+      ['Cuboid ' + m('6 × 8 × 10') + ' (nearest cm): volume bounds', m('391.875') + ' to ' + m('580.125')],
+      ['Speed: ' + m('150') + ' km (nearest 10), ' + m('2.5') + ' h (nearest 0.1). Greatest speed', m('≈ 63.3') + ' km/h'],
+      ['Same: least speed', m('≈ 56.9') + ' km/h'],
+      ['A square of side ' + m('5.0') + ' cm (1 d.p.): area bounds', m('24.5025') + ' to ' + m('25.5025')],
+      ['A cube of edge ' + m('4') + ' cm (nearest cm): volume bounds', m('42.875') + ' to ' + m('91.125')],
+      ['To how many figures can that volume be quoted?', 'none — not even the first digit agrees']
+    ],
+    hard: [
+      ['A circle of radius ' + m('6.0') + ' cm (1 d.p.): area bounds', m('≈ 111.2') + ' to ' + m('≈ 115.0')],
+      ['A cylinder ' + m('r = 3, h = 10') + ' (nearest 1): volume bounds', m('≈ 205.6') + ' to ' + m('≈ 405.7')],
+      ['A density is ' + m(f('m', 'V')) + ' with ' + m('m = 250') + ' g (nearest 10) and ' + m('V = 50') + ' cm³ (nearest 5). Greatest density', m('≈ 5.42') + ' g/cm³'],
+      ['Same: least density', m('≈ 4.62') + ' g/cm³'],
+      ['A rectangle has area ' + m('40') + ' cm² and length ' + m('8') + ' cm, both to the nearest unit. Greatest width', m('≈ 5.4') + ' cm'],
+      ['Explain why bounds widen faster for a volume than for a length', 'Three uncertainties multiply'],
+      ['A pipe is ' + m('2.0') + ' m long to 1 d.p.; how many fit in ' + m('50') + ' m to the nearest metre?', 'at least ' + m('24') + ', at most ' + m('25')]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Always state both bounds, and say which extreme you used and why.',
+  homework: [
+    'Write the bounds of ' + m('15') + ' cm (nearest cm), ' + m('3.7') + ' m (1 d.p.) and ' + m('600') + ' g (nearest 100 g).',
+    'A cuboid measures ' + m('4 × 6 × 9') + ' cm, each to the nearest cm. Find the bounds of its volume.',
+    'A car travels ' + m('80') + ' km (nearest 10 km) in ' + m('1.5') + ' h (nearest 0.1 h). Find the greatest and least possible speeds.',
+    'Explain, with the cuboid of task 2, why the answer cannot honestly be quoted to three figures.'
+  ]
+});
+
+/* ============================== 15 ============================== */
+G11_GEO.push({
+  id: 'g11-15', stream: 'geo', grade: 11, quarter: 2, lessons: '25', hours: 1,
+  title: 'The concept of volume, and the volume of a parallelepiped',
+  subtitle: 'What a volume is before any formula — three properties, and the cuboid they force.',
+  uz: 'Geometry 11, §12', uzPage: 'pp. 123–128',
+  cam: 'IGCSE E13.1', camPage: 'Core & Extended, pp. 301–304', wb: 'Exercise 12.1',
+  objectives: [
+    'State the three defining properties of volume.',
+    'Derive V = abc for a cuboid from those properties.',
+    'Compute the volume of a parallelepiped.',
+    'Convert between units of volume.'
+  ],
+  terms: [
+    ['Volume', 'Hajm', 'Объём'],
+    ['Unit cube', 'Birlik kub', 'Единичный куб'],
+    ['Additivity', 'Additivlik', 'Аддитивность'],
+    ['Congruent solids', 'Teng jismlar', 'Равные тела'],
+    ['Cubic unit', 'Kub birlik', 'Кубическая единица'],
+    ['Parallelepiped', 'Parallelepiped', 'Параллелепипед'],
+    ['Base area', 'Asos yuzasi', 'Площадь основания'],
+    ['Height of a solid', 'Jism balandligi', 'Высота тела'],
+    ['Capacity', 'Sig‘im', 'Вместимость']
+  ],
+  timing: [[10, 'What volume is'], [12, 'The cuboid'], [12, 'The parallelepiped'], [8, 'Units'], [3, 'Homework']],
+  sections: [
+    {
+      h: 'The three properties',
+      html: `<div class="keybox"><div class="klabel">Volume is defined by what it does</div>
+      <b>1</b> Congruent solids have equal volumes.
+      <b>2</b> If a solid is cut into pieces, the volumes add.
+      <b>3</b> The unit cube has volume ${m('1')}.</div>
+      <p>Nothing else is assumed. Every formula in this chapter is a consequence of these three
+      statements, and the first formula follows almost immediately.</p>`
+    },
+    {
+      h: 'The cuboid',
+      html: `<p>A cuboid ${m('a × b × c')} with whole-number edges can be filled with exactly
+      ${m('abc')} unit cubes: ${m('ab')} in the bottom layer, and ${m('c')} layers. By properties 2 and 3
+      its volume is ${m('abc')}.</p>
+      ${eq(m('V = abc = B · h'), true)}
+      <p>For fractional and then irrational edges the same result follows by squeezing between cuboids
+      with rational edges. The formula, once proved for whole numbers, holds for all.</p>
+      {{fig:prismVolume:The bottom layer holds ab cubes; there are c layers.}}`
+    },
+    {
+      h: 'The parallelepiped',
+      html: `<p>An oblique parallelepiped has the same volume as the right one on the same base with the
+      same height. The proof is Cavalieri's principle: every horizontal slice of the two solids has the
+      same area, so the volumes agree.</p>
+      {{fig:cavalieri:Slide the layers sideways. Nothing is added or removed, so the volume is unchanged.}}
+      ${eq(m('V = B · h') + '   for every parallelepiped, right or oblique', true)}
+      <div class="warn"><span class="wl">${m('h')} is the perpendicular height</span>
+      Not the lateral edge. In an oblique solid the lateral edge is longer than the height, and using it
+      inflates the answer.</div>`
+    },
+    {
+      h: 'Units',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Length</th><th>Volume</th><th>Factor</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1 cm = 10 mm</td><td class="m">1 cm³ = 1000 mm³</td><td class="m">10³</td></tr>
+        <tr><td class="m">1 m = 100 cm</td><td class="m">1 m³ = 1 000 000 cm³</td><td class="m">100³</td></tr>
+        <tr><td class="m">—</td><td class="m">1 litre = 1000 cm³</td><td>—</td></tr>
+        <tr><td class="m">—</td><td class="m">1 m³ = 1000 litres</td><td>—</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Cube the length factor</span>
+      ${m('1 m³')} is not ${m('100')} cm³ but ${m('1 000 000')}. This is the ${m('k³')} rule of Grade 11
+      similarity, applied to a change of unit.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A cuboid is ' + m('12 × 8 × 5') + ' cm. Find its volume in cm³ and in litres.',
+      steps: [
+        [m('V = 480') + ' cm³.', ''],
+        [m('1') + ' litre ' + m('= 1000') + ' cm³.', ''],
+        [m('0.48') + ' litres.', '']
+      ],
+      ans: m('480') + ' cm³ = ' + m('0.48') + ' litres'
+    },
+    {
+      q: 'An oblique parallelepiped has base area ' + m('30') + ' cm² and lateral edge ' + m('10') + ' cm inclined at ' + m('60°') + ' to the base. Find its volume.',
+      steps: [
+        ['Height ' + m('h = 10 sin 60° = 5' + sr('3') + ' ≈ 8.66') + '.', 'Not ' + m('10') + '.'],
+        [m('V = 30 × 8.66'), ''],
+        [m('≈ 259.8'), '']
+      ],
+      ans: m('150' + sr('3')) + ' ≈ ' + m('260') + ' cm³'
+    },
+    {
+      q: 'A tank holds ' + m('2.4') + ' m³. How many litres is that?',
+      steps: [
+        [m('1') + ' m³ ' + m('= 1000') + ' litres.', ''],
+        [m('2.4 × 1000'), '']
+      ],
+      ans: m('2400') + ' litres'
+    }
+  ],
+  modelNote: 'Fill a box with unit cubes, one layer at a time, and count aloud.',
+  interactive: {
+    type: 'solidVolume',
+    title: 'Base area times height',
+    hint: 'Change the base and the height, and watch B, S and V respond.'
+  },
+  quiz: [
+    { q: 'The volume of a unit cube is:', a: [m('0'), m('1'), m('6'), m('3')], c: 1, why: 'By definition.' },
+    { q: 'Volume of a cuboid ' + m('a × b × c') + ':', a: [m('2(ab + bc + ca)'), m('abc'), m('a + b + c'), m('3abc')], c: 1, why: 'Layers of unit cubes.' },
+    { q: m('1') + ' m³ in cm³:', a: [m('100'), m('10 000'), m('1 000 000'), m('1000')], c: 2, why: m('100³') + '.' },
+    { q: m('1') + ' litre in cm³:', a: [m('100'), m('1000'), m('10 000'), m('1')], c: 1, why: 'By definition.' },
+    { q: 'For an oblique solid ' + m('V = Bh') + ' where ' + m('h') + ' is:', a: ['the lateral edge', 'the perpendicular height', 'the diagonal', 'the base edge'], c: 1, why: 'Cavalieri’s principle.' }
+  ],
+  practice: {
+    easy: [
+      ['Volume of a ' + m('3 × 4 × 5') + ' cuboid', m('60')],
+      ['Volume of a cube of edge 6', m('216')],
+      [m('1') + ' m³ in litres', m('1000')],
+      [m('2500') + ' cm³ in litres', m('2.5')],
+      [m('1') + ' cm³ in mm³', m('1000')],
+      ['A cube of volume 125: its edge', m('5')],
+      ['Volume with ' + m('B = 20, h = 7'), m('140')]
+    ],
+    med: [
+      ['Cuboid ' + m('12 × 8 × 5') + ' in litres', m('0.48')],
+      ['Oblique parallelepiped, ' + m('B = 30') + ', edge 10 at ' + m('60°'), m('150' + sr('3')) + ' ≈ ' + m('260')],
+      ['A tank of ' + m('2.4') + ' m³ in litres', m('2400')],
+      ['A cuboid of volume 720 with base ' + m('12 × 10') + ': its height', m('6')],
+      ['A cube of surface area 216: its volume', m('216')],
+      ['Convert ' + m('0.75') + ' m³ to cm³', m('750 000')],
+      ['A regular hexagonal prism, base edge 4, height 10: volume', m('240' + sr('3')) + ' ≈ ' + m('416')]
+    ],
+    hard: [
+      ['A parallelepiped has edges 6, 8, 10 with the 10-edge at ' + m('45°') + ' to the base. Volume', m('240' + sr('2')) + ' ≈ ' + m('339')],
+      ['A cuboid of volume ' + m('V') + ' is scaled by ' + m('k') + '. New volume', m('k³V')],
+      ['A cube of volume 64 cm³: its surface area', m('96') + ' cm²'],
+      ['A tank ' + m('2 m × 1.5 m × 0.8 m') + ' holds how many litres?', m('2400')],
+      ['A brick is ' + m('24 × 12 × 6') + ' cm. How many in a ' + m('1') + ' m³ wall?', m('578') + ' (allowing no mortar)'],
+      ['Prove ' + m('V = abc') + ' for whole-number edges from the three properties', 'Fill with ' + m('abc') + ' unit cubes and add'],
+      ['Why does the same formula hold for irrational edges?', 'Squeeze between rational cuboids']
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Always state the unit, and convert with the cube of the length factor.',
+  homework: [
+    'Find the volume of a ' + m('15 × 9 × 4') + ' cm cuboid in cm³ and in litres.',
+    'An oblique parallelepiped has base area ' + m('48') + ' cm² and lateral edge ' + m('12') + ' cm inclined at ' + m('30°') + '. Find its volume.',
+    'Convert ' + m('3.6') + ' m³ to litres and to cm³.',
+    'Explain in three sentences why ' + m('1') + ' m³ is a million cm³ and not a hundred.'
+  ]
+});
+
+/* ============================== 16 ============================== */
+G11_GEO.push({
+  id: 'g11-16', stream: 'geo', grade: 11, quarter: 2, lessons: '26–27', hours: 2,
+  title: 'The volume of a prism',
+  subtitle: 'Base area times height, for every prism — and the dissection that proves it.',
+  uz: 'Geometry 11, §13', uzPage: 'pp. 129–140',
+  cam: 'IGCSE E13.x', camPage: 'Core & Extended, pp. 305–310', wb: 'Exercise 13.1',
+  objectives: [
+    'Derive V = Bh for a triangular prism from the parallelepiped.',
+    'Compute the volume of any prism.',
+    'Solve for a missing dimension from a given volume.',
+    'Handle compound solids made of prisms.'
+  ],
+  terms: [
+    ['Volume of a prism', 'Prizma hajmi', 'Объём призмы'],
+    ['Base area', 'Asos yuzasi', 'Площадь основания'],
+    ['Height', 'Balandlik', 'Высота'],
+    ['Dissection', 'Bo‘lish', 'Разбиение'],
+    ['Cavalieri’s principle', 'Kavaleri prinsipi', 'Принцип Кавальери'],
+    ['Compound solid', 'Murakkab jism', 'Составное тело'],
+    ['Cross-section', 'Ko‘ndalang kesim', 'Поперечное сечение'],
+    ['Uniform cross-section', 'O‘zgarmas kesim', 'Постоянное сечение'],
+    ['Capacity', 'Sig‘im', 'Вместимость']
+  ],
+  timing: [[14, 'From the cuboid to any prism'], [20, 'Applying the formula'], [20, 'Working backwards'], [22, 'Compound solids'], [16, 'Practice'], [8, 'Homework']],
+  sections: [
+    {
+      h: 'From the cuboid to any prism',
+      html: `<p><b>Step 1.</b> A parallelepiped is a cuboid with the layers slid sideways, so
+      ${m('V = Bh')} by Cavalieri.</p>
+      <p><b>Step 2.</b> A triangular prism is half a parallelepiped, cut along a diagonal plane. Both
+      halves are congruent, so each has volume ${m(f('1', '2') + 'B_p h = B h')}, where ${m('B')} is now
+      the triangle's area.</p>
+      <p><b>Step 3.</b> Any polygonal base splits into triangles; the prism splits into triangular
+      prisms of the same height, and the volumes add.</p>
+      ${eq(m('V = B · h') + '   for every prism', true)}
+      {{fig:cavalieri:Cavalieri’s principle: equal slices at every height mean equal volumes.}}
+      <div class="keybox"><div class="klabel">The idea behind every volume formula</div>
+      <b>A solid of uniform cross-section has volume = area of cross-section × length.</b> The cylinder
+      of the next lesson is the same statement with a circle instead of a polygon.</div>`
+    },
+    {
+      h: 'Applying it',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Prism</th><th class="m">B</th><th class="m">V</th></tr></thead>
+      <tbody>
+        <tr><td>cuboid ${m('a × b')}, height ${m('h')}</td><td class="m">ab</td><td class="m">abh</td></tr>
+        <tr><td>right triangular, legs ${m('p, q')}</td><td class="m">${f('1', '2')}pq</td><td class="m">${f('1', '2')}pqh</td></tr>
+        <tr><td>regular triangular, edge ${m('a')}</td><td class="m">${f(sr('3'), '4')}a²</td><td class="m">${f(sr('3'), '4')}a²h</td></tr>
+        <tr><td>regular hexagonal, edge ${m('a')}</td><td class="m">${f('3' + sr('3'), '2')}a²</td><td class="m">${f('3' + sr('3'), '2')}a²h</td></tr>
+        <tr><td>trapezium base ${m('p, q')}, depth ${m('d')}</td><td class="m">${f('p + q', '2')}d</td><td class="m">${f('p + q', '2')}dh</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Compound solids',
+      html: `<p>Real objects — an L-shaped room, a channel, a house with a roof — are prisms with a
+      compound cross-section. Find the area of the whole cross-section first, then multiply once.</p>
+      <p><b>Example.</b> A shed is a cuboid ${m('6 × 4')} m and ${m('2.5')} m to the eaves, with a
+      triangular roof ${m('1.5')} m high. Cross-section: rectangle ${m('4 × 2.5 = 10')} plus triangle
+      ${m(f('1', '2') + ' × 4 × 1.5 = 3')}, total ${m('13')} m². Volume ${m('13 × 6 = 78')} m³.</p>
+      <div class="warn"><span class="wl">Multiply once, at the end</span>
+      Computing each part's volume separately works too, but doubles the arithmetic and the chances of
+      error. Add the areas first.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A regular hexagonal prism has base edge 5 cm and height 12 cm. Find its volume.',
+      steps: [
+        [m('B = ' + f('3' + sr('3'), '2') + ' × 25 ≈ 64.95'), ''],
+        [m('V = 64.95 × 12'), ''],
+        [m('≈ 779.4'), '']
+      ],
+      ans: m('150' + sr('3') + ' × ' + f('12', '2')) + ' — i.e. ' + m('≈ 779') + ' cm³'
+    },
+    {
+      q: 'A trough has a trapezium cross-section with parallel sides 40 cm and 60 cm, depth 30 cm, and is 2 m long. Find its capacity in litres.',
+      steps: [
+        [m('B = ' + f('40 + 60', '2') + ' × 30 = 1500') + ' cm².', ''],
+        [m('V = 1500 × 200 = 300 000') + ' cm³.', ''],
+        [m('= 300') + ' litres.', '']
+      ],
+      ans: m('300') + ' litres'
+    },
+    {
+      q: 'A prism has volume ' + m('540') + ' cm³ and a triangular base with legs 6 and 9. Find its height.',
+      steps: [
+        [m('B = ' + f('1', '2') + ' × 6 × 9 = 27'), ''],
+        [m('27h = 540'), ''],
+        [m('h = 20'), '']
+      ],
+      ans: m('20') + ' cm'
+    }
+  ],
+  modelNote: 'Cut a parallelepiped of plasticine along a diagonal plane and compare the two halves.',
+  interactive: {
+    type: 'solidVolume',
+    title: 'The volume of a prism',
+    hint: 'Change the base edge, the number of sides and the height.'
+  },
+  quiz: [
+    { q: 'The volume of any prism is:', a: [m('Ph'), m('Bh'), m('2B + Ph'), m(f('1', '3') + 'Bh')], c: 1, why: 'Uniform cross-section.' },
+    { q: 'A triangular prism is:', a: ['a third of a cuboid', 'half a parallelepiped', 'a quarter of a cube', 'unrelated'], c: 1, why: 'Cut along a diagonal plane.' },
+    { q: 'Cavalieri’s principle says:', a: ['equal bases give equal volumes', 'equal slice areas at every height give equal volumes', 'volumes always add', 'nothing about volume'], c: 1, why: 'That is its statement.' },
+    { q: 'A prism of ' + m('B = 27') + ' and ' + m('V = 540') + ' has height:', a: [m('15'), m('20'), m('27'), m('30')], c: 1, why: m(f('540', '27')) + '.' },
+    { q: 'For a compound cross-section you should:', a: ['multiply each part', 'add the areas then multiply once', 'take the largest', 'average them'], c: 1, why: 'Fewer steps, fewer errors.' }
+  ],
+  practice: {
+    easy: [
+      ['Volume with ' + m('B = 12, h = 5'), m('60')],
+      ['Cuboid ' + m('4 × 5 × 6'), m('120')],
+      ['Right triangular prism, legs 3 and 4, height 10', m('60')],
+      ['Cube of edge 8', m('512')],
+      ['Prism ' + m('B = 25, h = 4'), m('100')],
+      ['A prism of ' + m('V = 100, B = 20') + ': the height', m('5')],
+      ['Regular triangular prism, edge 4, height 6', m('24' + sr('3'))]
+    ],
+    med: [
+      ['Regular hexagonal prism, edge 5, height 12', m('≈ 779') + ' cm³'],
+      ['Trough, trapezium 40/60 by 30 cm, 2 m long: litres', m('300')],
+      ['Prism ' + m('V = 540') + ', triangular base legs 6 and 9: height', m('20')],
+      ['Regular hexagonal prism, edge 4, height 10', m('240' + sr('3')) + ' ≈ ' + m('416')],
+      ['Shed: rectangle ' + m('4 × 2.5') + ' plus roof triangle height 1.5, length 6 m', m('78') + ' m³'],
+      ['An L-shaped cross-section of area 34 cm², length 15 cm', m('510') + ' cm³'],
+      ['A cuboid of volume 600 with base ' + m('10 × 12') + ': height', m('5')]
+    ],
+    hard: [
+      ['A prism has a rhombus base with diagonals 10 and 24, height 15. Volume', m('1800')],
+      ['A regular hexagonal prism of volume ' + m('648' + sr('3')) + ' and edge 6: its height', m('12')],
+      ['A channel of trapezium section 1.2 m and 2 m wide, 0.8 m deep, 30 m long: capacity in m³', m('38.4')],
+      ['Two similar prisms of volumes ' + m('54') + ' and ' + m('128') + ': the surface-area ratio', m('9 : 16')],
+      ['A cube is cut by a plane through ' + m('A, C, B₁') + '. Find the volume of the smaller piece for edge 6', m('36')],
+      ['A prism’s height doubles and its base edges halve. What happens to the volume?', 'It halves'],
+      ['Prove ' + m('V = Bh') + ' for a triangular prism', 'It is half a parallelepiped on twice the base']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Add the cross-sectional areas before multiplying by the length.',
+  homework: [
+    'A regular hexagonal prism has base edge 6 cm and height 14 cm. Find its volume.',
+    'A trough has a trapezium section with parallel sides 30 cm and 50 cm and depth 25 cm, and is 3 m long. Find its capacity in litres.',
+    'A prism has volume ' + m('420') + ' cm³ and a triangular base with legs 7 and 8. Find its height.',
+    'A shed has a rectangular cross-section ' + m('5 × 3') + ' m with a triangular roof ' + m('2') + ' m high, and is ' + m('8') + ' m long. Find its volume.',
+    'Prove that a triangular prism has volume ' + m('Bh') + ', starting from the parallelepiped.'
+  ]
+});
+
+/* ============================== 17 ============================== */
+G11_GEO.push({
+  id: 'g11-17', stream: 'geo', grade: 11, quarter: 2, lessons: '28–29', hours: 2,
+  title: 'The cylinder — surface area and volume',
+  subtitle: 'A prism whose base is a circle: the same two formulas, with π in them.',
+  uz: 'Geometry 11, §14', uzPage: 'pp. 141–152',
+  cam: 'IGCSE E13.x', camPage: 'Core & Extended, pp. 311–318', wb: 'Exercise 14.1',
+  objectives: [
+    'Derive the surface area of a cylinder from its net.',
+    'Compute the volume of a cylinder.',
+    'Solve for a missing radius or height.',
+    'Handle hollow cylinders and compound solids.'
+  ],
+  terms: [
+    ['Cylinder', 'Silindr', 'Цилиндр'],
+    ['Axis of a cylinder', 'Silindr o‘qi', 'Ось цилиндра'],
+    ['Base circle', 'Asos aylanasi', 'Основание'],
+    ['Curved surface', 'Yon sirt', 'Боковая поверхность'],
+    ['Net of a cylinder', 'Silindr yoymasi', 'Развёртка цилиндра'],
+    ['Axial section', 'O‘qli kesim', 'Осевое сечение'],
+    ['Hollow cylinder (pipe)', 'Bo‘sh silindr', 'Полый цилиндр'],
+    ['Capacity', 'Sig‘im', 'Вместимость'],
+    ['Solid of revolution', 'Aylanish jismi', 'Тело вращения']
+  ],
+  timing: [[12, 'A prism with a circular base'], [22, 'The net and the area'], [22, 'The volume'], [22, 'Working backwards'], [20, 'Compound solids'], [8, 'Homework']],
+  sections: [
+    {
+      h: 'A prism with a circular base',
+      html: `<p>A <b>cylinder</b> is the solid swept out when a rectangle turns about one of its sides.
+      Its two bases are congruent circles in parallel planes, and every cross-section parallel to the
+      base is the same circle.</p>
+      <p>So the principle of the last lesson applies unchanged: <b>uniform cross-section means
+      ${m('V = Bh')}</b>, with ${m('B = πr²')}.</p>
+      ${eq(m('V = πr²h'), true)}`
+    },
+    {
+      h: 'The net and the surface area',
+      html: `{{fig:cylinderNet:Cut down one side and unroll: two circles and a rectangle 2πr wide.}}
+      <p>The curved surface unrolls into a rectangle whose width is the circumference of the base and
+      whose height is the cylinder's height:</p>
+      ${eq(m('S_curved = 2πrh') + '     ' + m('S_total = 2πr² + 2πrh = 2πr(r + h)'), true)}
+      <div class="warn"><span class="wl">Curved, or total?</span>
+      A tin has two ends. A pipe has none. A cup has one. Read the object before choosing the formula —
+      the question always describes it precisely enough to decide.</div>`
+    },
+    {
+      h: 'Working backwards',
+      html: `<p>Given a volume and one dimension, the other follows:</p>
+      ${eq(m('r = ' + sr(f('V', 'πh'))) + '     ' + m('h = ' + f('V', 'πr²')), true)}
+      <p><b>Example.</b> A cylindrical tin holds ${m('500')} ml and is ${m('12')} cm tall. Its radius is
+      ${m(sr(f('500', '12π')) + ' ≈ 3.64')} cm.</p>
+      <p>Given a <b>surface area</b> and one dimension, the equation is quadratic in ${m('r')} — solve it
+      with the formula and reject the negative root.</p>`
+    },
+    {
+      h: 'Hollow and compound solids',
+      html: `<p>A pipe of outer radius ${m('R')} and inner radius ${m('r')} is the difference of two
+      cylinders:</p>
+      ${eq(m('V = π(R² − r²)h'), true)}
+      <p>Do <b>not</b> compute ${m('π(R − r)²h')} — the cross-section is an annulus, whose area is a
+      difference of two circles, not the circle on the difference of the radii.</p>
+      <p><b>Compound solids.</b> A silo is a cylinder with a hemisphere on top; a pencil is a hexagonal
+      prism with a cone. Split, compute each, add — and remember that the joining faces are internal and
+      contribute nothing to the surface area.</p>
+      <div class="keybox"><div class="klabel">The axial section</div>
+      Cutting a cylinder through its axis gives a rectangle ${m('2r')} by ${m('h')}. A cylinder whose
+      axial section is a square has ${m('h = 2r')} — the shape that minimises the surface area for a
+      fixed volume, as Lesson 23–25 of Quarter I showed.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A cylinder has radius 5 cm and height 12 cm. Find its volume and total surface area.',
+      steps: [
+        [m('V = π × 25 × 12 = 300π'), m('≈ 942.5') + ' cm³'],
+        [m('S = 2π(25) + 2π(5)(12)'), ''],
+        [m('= 50π + 120π = 170π'), m('≈ 534.1') + ' cm²']
+      ],
+      ans: m('300π') + ' ≈ ' + m('942') + ' cm³; ' + m('170π') + ' ≈ ' + m('534') + ' cm²'
+    },
+    {
+      q: 'A cylindrical tin holds ' + m('500') + ' ml and is ' + m('12') + ' cm tall. Find its radius.',
+      steps: [
+        [m('500 = πr² × 12'), '1 ml = 1 cm³.'],
+        [m('r² = ' + f('500', '12π') + ' ≈ 13.26'), ''],
+        [m('r ≈ 3.64'), '']
+      ],
+      ans: m('≈ 3.64') + ' cm'
+    },
+    {
+      q: 'A pipe is 2 m long with outer radius 8 cm and inner radius 6 cm. Find the volume of metal.',
+      steps: [
+        [m('V = π(64 − 36) × 200'), 'Length in cm.'],
+        [m('= π × 28 × 200'), ''],
+        [m('= 5600π ≈ 17 593'), '']
+      ],
+      ans: m('5600π') + ' ≈ ' + m('17 600') + ' cm³'
+    }
+  ],
+  modelNote: 'Unroll a tin label and measure the rectangle — its width is the circumference.',
+  interactive: {
+    type: 'solidVolume',
+    title: 'The cylinder',
+    hint: 'Change the radius and the height and compare S with V.',
+    kind: 'cylinder'
+  },
+  quiz: [
+    { q: 'The volume of a cylinder is:', a: [m('2πrh'), m('πr²h'), m('πrh'), m(f('1', '3') + 'πr²h')], c: 1, why: 'Base area times height.' },
+    { q: 'The curved surface area is:', a: [m('πr²'), m('2πrh'), m('2πr²'), m('πr²h')], c: 1, why: 'Circumference times height.' },
+    { q: 'The total surface area is:', a: [m('2πrh'), m('2πr(r + h)'), m('πr(r + h)'), m('πr²h')], c: 1, why: 'Two circles plus the rectangle.' },
+    { q: 'A pipe’s cross-section area is:', a: [m('π(R − r)²'), m('π(R² − r²)'), m('πR²'), m('2πR')], c: 1, why: 'A difference of circles.' },
+    { q: 'A cylinder with a square axial section has:', a: [m('h = r'), m('h = 2r'), m('h = 4r'), m('r = 2h')], c: 1, why: 'The section is ' + m('2r') + ' by ' + m('h') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Volume, ' + m('r = 3, h = 10'), m('90π') + ' ≈ ' + m('283')],
+      ['Volume, ' + m('r = 2, h = 7'), m('28π') + ' ≈ ' + m('88')],
+      ['Curved area, ' + m('r = 5, h = 4'), m('40π')],
+      ['Total area, ' + m('r = 1, h = 3'), m('8π')],
+      ['A tin of ' + m('r = 4, h = 10') + ': volume in litres', m('≈ 0.503')],
+      ['Volume, ' + m('r = 10, h = 10'), m('1000π')],
+      ['Curved area, ' + m('r = 7, h = 2'), m('28π')]
+    ],
+    med: [
+      [m('r = 5, h = 12') + ': volume and total area', m('300π') + '; ' + m('170π')],
+      ['A tin holds 500 ml and is 12 cm tall: its radius', m('≈ 3.64') + ' cm'],
+      ['A cylinder of volume ' + m('1000π') + ' and radius 10: its height', m('10')],
+      ['Pipe, 2 m long, ' + m('R = 8, r = 6') + ': metal volume', m('5600π') + ' ≈ ' + m('17 600') + ' cm³'],
+      ['A cylinder with a square axial section and ' + m('r = 6') + ': its volume', m('432π')],
+      ['A cup (no lid), ' + m('r = 4, h = 9') + ': surface area', m('88π')],
+      ['A cylinder of total area ' + m('100π') + ' and ' + m('r = 5') + ': its height', m('5')]
+    ],
+    hard: [
+      ['A closed cylinder of volume ' + m('1000') + ' cm³ with least surface area: find ' + m('r'), m('≈ 5.42') + ' cm'],
+      ['A silo: cylinder ' + m('r = 3, h = 10') + ' with a hemisphere on top. Volume', m('108π') + ' ≈ ' + m('339')],
+      ['Same silo: external surface area (no base)', m('78π')],
+      ['A cylinder is inscribed in a cube of edge 10. Its volume', m('250π')],
+      ['A cylinder of height 15 has curved area ' + m('120π') + '. Find ' + m('r') + ' and ' + m('V'), m('r = 4') + ', ' + m('V = 240π')],
+      ['A pipe of length ' + m('L') + ', outer ' + m('R') + ', wall thickness ' + m('t') + ': metal volume', m('πL(2Rt − t²)')],
+      ['Two similar cylinders of volumes ' + m('27') + ' and ' + m('64') + ': the area ratio', m('9 : 16')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Say whether the solid is closed, open or hollow before choosing the formula.',
+  homework: [
+    'A cylinder has radius 6 cm and height 15 cm. Find its volume and total surface area.',
+    'A cylindrical can holds ' + m('750') + ' ml and has radius ' + m('5') + ' cm. Find its height.',
+    'A pipe is 3 m long with outer radius 10 cm and inner radius 8 cm. Find the volume of metal in cm³.',
+    'A cylinder has a square axial section and radius 7 cm. Find its volume and total surface area.',
+    'A silo is a cylinder of radius 4 m and height 12 m with a hemispherical top. Find its capacity in m³.'
+  ]
+});
+
+/* ============================== 18 ============================== */
+G11_GEO.push({
+  id: 'g11-18', stream: 'geo', grade: 11, quarter: 2, lessons: '30', hours: 1,
+  title: 'Units of volume and capacity, and converting between them',
+  subtitle: 'Cambridge insert: the cube of the length factor, and the litre that sits between the two systems.',
+  uz: 'Geometry 11, §14 (extension)', uzPage: 'pp. 153–156',
+  cam: 'IGCSE E13.1–13.4', camPage: 'Core & Extended, pp. 40–44', wb: 'IGCSE Exercise 13.1',
+  objectives: [
+    'Convert between mm³, cm³ and m³.',
+    'Convert between millilitres, litres and cubic units.',
+    'Choose an appropriate unit for a given object.',
+    'Use density to link volume and mass.'
+  ],
+  terms: [
+    ['Cubic centimetre', 'Kub santimetr', 'Кубический сантиметр'],
+    ['Cubic metre', 'Kub metr', 'Кубический метр'],
+    ['Millilitre', 'Millilitr', 'Миллилитр'],
+    ['Litre', 'Litr', 'Литр'],
+    ['Capacity', 'Sig‘im', 'Вместимость'],
+    ['Conversion factor', 'O‘tkazish koeffitsienti', 'Коэффициент перевода'],
+    ['Density', 'Zichlik', 'Плотность'],
+    ['Mass', 'Massa', 'Масса'],
+    ['Appropriate unit', 'Mos birlik', 'Подходящая единица']
+  ],
+  timing: [[10, 'Cubing the factor'], [12, 'Litres'], [12, 'Choosing a unit'], [8, 'Density'], [3, 'Homework']],
+  sections: [
+    {
+      h: 'Cube the length factor',
+      html: `<div class="keybox"><div class="klabel">The one rule</div>
+      If lengths convert by ${m('k')}, volumes convert by ${m('k³')}. ${m('1')} m ${m('= 100')} cm, so
+      ${m('1')} m³ ${m('= 100³ = 1 000 000')} cm³.</div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Conversion</th><th>Length factor</th><th>Volume factor</th></tr></thead>
+      <tbody>
+        <tr><td>cm → mm</td><td class="m">10</td><td class="m">1000</td></tr>
+        <tr><td>m → cm</td><td class="m">100</td><td class="m">1 000 000</td></tr>
+        <tr><td>km → m</td><td class="m">1000</td><td class="m">10⁹</td></tr>
+        <tr><td>m → mm</td><td class="m">1000</td><td class="m">10⁹</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The commonest conversion error in the syllabus</span>
+      Writing ${m('1')} m³ ${m('= 100')} cm³. Areas need ${m('k²')} and volumes ${m('k³')}; only lengths
+      use ${m('k')} itself.</div>`
+    },
+    {
+      h: 'Litres',
+      html: `${eq(m('1 ml = 1 cm³') + '     ' + m('1 litre = 1000 cm³') + '     ' + m('1 m³ = 1000 litres'), true)}
+      <p>The litre is defined as a cubic decimetre — a cube of side ${m('10')} cm. That single fact
+      generates every line above, and it is why a ${m('1')} m³ tank holds exactly a tonne of water.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Object</th><th>Typical capacity</th></tr></thead>
+      <tbody>
+        <tr><td>a teaspoon</td><td class="m">5 ml</td></tr>
+        <tr><td>a can of drink</td><td class="m">330 ml</td></tr>
+        <tr><td>a bucket</td><td class="m">10 litres</td></tr>
+        <tr><td>a bath</td><td class="m">150 litres</td></tr>
+        <tr><td>a small water tank</td><td class="m">1 m³ = 1000 litres</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Choosing a unit, and density',
+      html: `<p>An answer of ${m('0.0000034')} m³ or ${m('34 000 000')} mm³ is correct and useless.
+      Choose the unit that makes the number sit between about ${m('0.1')} and ${m('1000')}.</p>
+      ${eq('density ' + m('ρ = ' + f('m', 'V')) + '     so     ' + m('m = ρV'), true)}
+      <p>Water has ${m('ρ = 1')} g/cm³, which is why ${m('1')} litre of water weighs ${m('1')} kg and
+      ${m('1')} m³ weighs ${m('1')} tonne. Steel is about ${m('7.8')} g/cm³, pine about
+      ${m('0.5')}.</p>
+      <p><b>Example.</b> A steel bar is a cylinder ${m('r = 2')} cm, ${m('h = 50')} cm. Its volume is
+      ${m('200π ≈ 628')} cm³, so its mass is about ${m('628 × 7.8 ≈ 4900')} g ${m('≈ 4.9')} kg.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Convert ' + m('2.5') + ' m³ to cm³ and to litres.',
+      steps: [
+        [m('1') + ' m³ ' + m('= 1 000 000') + ' cm³.', ''],
+        [m('2 500 000') + ' cm³.', ''],
+        [m('÷ 1000') + ' gives ' + m('2500') + ' litres.', '']
+      ],
+      ans: m('2 500 000') + ' cm³ = ' + m('2500') + ' litres'
+    },
+    {
+      q: 'A tank is ' + m('1.2 × 0.8 × 0.5') + ' m. How many litres does it hold?',
+      steps: [
+        [m('V = 0.48') + ' m³.', ''],
+        [m('× 1000'), ''],
+        [m('= 480') + ' litres.', '']
+      ],
+      ans: m('480') + ' litres'
+    },
+    {
+      q: 'A steel cylinder has ' + m('r = 2') + ' cm and ' + m('h = 50') + ' cm. Find its mass at ' + m('7.8') + ' g/cm³.',
+      steps: [
+        [m('V = π × 4 × 50 = 200π ≈ 628.3'), ''],
+        [m('m = 628.3 × 7.8'), ''],
+        [m('≈ 4901') + ' g.', '']
+      ],
+      ans: m('≈ 4.9') + ' kg'
+    }
+  ],
+  modelNote: 'Show a litre bottle beside a 10 cm cube — they hold the same.',
+  interactive: {
+    type: 'quiz',
+    title: 'Converting volume',
+    hint: 'Cube the length factor.',
+    items: [
+      { q: m('1') + ' m³ in cm³:', a: [m('100'), m('10 000'), m('1 000 000'), m('1000')], c: 2, why: m('100³') + '.' },
+      { q: m('1') + ' cm³ in mm³:', a: [m('10'), m('100'), m('1000'), m('10 000')], c: 2, why: m('10³') + '.' },
+      { q: m('1') + ' litre in cm³:', a: [m('100'), m('1000'), m('10 000'), m('1')], c: 1, why: 'A 10 cm cube.' },
+      { q: m('1') + ' m³ in litres:', a: [m('100'), m('1000'), m('10 000'), m('1 000 000')], c: 1, why: m(f('1 000 000', '1000')) + '.' },
+      { q: m('0.5') + ' m³ in litres:', a: [m('50'), m('500'), m('5000'), m('5')], c: 1, why: m('0.5 × 1000') + '.' },
+      { q: '1 litre of water weighs:', a: [m('100') + ' g', m('1') + ' kg', m('10') + ' kg', m('1') + ' g'], c: 1, why: m('ρ = 1') + ' g/cm³.' }
+    ]
+  },
+  quiz: [
+    { q: 'Volumes convert by:', a: [m('k'), m('k²'), m('k³'), m('3k')], c: 2, why: 'Three dimensions.' },
+    { q: m('1') + ' ml equals:', a: [m('1') + ' mm³', m('1') + ' cm³', m('10') + ' cm³', m('1') + ' litre'], c: 1, why: 'By definition.' },
+    { q: m('3') + ' m³ in litres:', a: [m('300'), m('3000'), m('30 000'), m('3')], c: 1, why: m('× 1000') + '.' },
+    { q: 'Density is:', a: [m('mV'), m(f('m', 'V')), m(f('V', 'm')), m('m + V')], c: 1, why: 'Mass per unit volume.' }
+  ],
+  practice: {
+    easy: [
+      [m('1') + ' m³ in cm³', m('1 000 000')],
+      [m('1') + ' cm³ in mm³', m('1000')],
+      [m('2') + ' litres in cm³', m('2000')],
+      [m('5000') + ' cm³ in litres', m('5')],
+      [m('0.25') + ' m³ in litres', m('250')],
+      [m('750') + ' ml in cm³', m('750')],
+      [m('1') + ' litre of water in kg', m('1')]
+    ],
+    med: [
+      [m('2.5') + ' m³ in cm³ and litres', m('2 500 000') + ' cm³, ' + m('2500') + ' L'],
+      ['Tank ' + m('1.2 × 0.8 × 0.5') + ' m in litres', m('480')],
+      ['A cylinder ' + m('r = 5, h = 20') + ' cm in litres', m('≈ 1.57')],
+      ['A steel cylinder ' + m('r = 2, h = 50') + ' cm at ' + m('7.8') + ' g/cm³: mass', m('≈ 4.9') + ' kg'],
+      [m('3 500 000') + ' mm³ in litres', m('3.5')],
+      ['A bath of ' + m('150') + ' litres in m³', m('0.15')],
+      ['A block of pine ' + m('20 × 10 × 5') + ' cm at ' + m('0.5') + ' g/cm³: mass', m('500') + ' g']
+    ],
+    hard: [
+      ['A pool ' + m('25 × 10 × 1.8') + ' m: capacity in litres', m('450 000')],
+      ['A pipe of length 5 m, ' + m('R = 6, r = 5') + ' cm: metal mass at ' + m('7.8') + ' g/cm³', m('≈ 135') + ' kg'],
+      ['A raindrop of radius ' + m('2') + ' mm: volume in ml', m('≈ 0.0335')],
+      ['A tonne of water occupies how many m³?', m('1')],
+      ['A gold bar ' + m('10 × 5 × 3') + ' cm at ' + m('19.3') + ' g/cm³: mass', m('≈ 2.9') + ' kg'],
+      ['Explain why ' + m('1') + ' m³ is not ' + m('100') + ' cm³', 'Volumes need the cube of the length factor'],
+      ['A tank holds ' + m('2400') + ' litres and is ' + m('2 × 1.5') + ' m in base. Find its depth', m('0.8') + ' m']
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Choose the unit that keeps the number readable, and say why.',
+  homework: [
+    'Convert ' + m('4.2') + ' m³ to cm³ and to litres, and ' + m('6500') + ' mm³ to cm³.',
+    'A tank measures ' + m('2 × 1.5 × 0.9') + ' m. Find its capacity in litres.',
+    'A steel pipe 4 m long has outer radius 7 cm and inner radius 6 cm. Find the mass of metal at ' + m('7.8') + ' g/cm³.',
+    'Explain in three sentences why volumes convert with the cube of the length factor, with one worked example.'
+  ]
+});
+
+/* ============================== 19 ============================== */
+G11_GEO.push({
+  id: 'g11-19', stream: 'geo', grade: 11, quarter: 2, lessons: '31–32', hours: 2,
+  title: 'Control work 2, and the quarter review',
+  subtitle: 'Prisms and cylinders — area, volume and bounds — in one paper, then the map.',
+  uz: 'Geometry 11, Nazorat ishi 2', uzPage: 'pp. 157–160',
+  cam: 'IGCSE E13 review', camPage: 'Core & Extended, pp. 319–322', wb: 'Control paper G2',
+  objectives: [
+    'Apply every formula of Quarter II in one assessment.',
+    'Choose between curved, total and open-solid surface areas.',
+    'Classify each lost mark and rewrite the solution.',
+    'Build a concept map of mensuration so far.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Concept map', 'Tushunchalar xaritasi', 'Карта понятий'],
+    ['Surface area', 'Sirt yuzasi', 'Площадь поверхности'],
+    ['Volume', 'Hajm', 'Объём'],
+    ['Bounds', 'Chegaralar', 'Границы'],
+    ['Compound solid', 'Murakkab jism', 'Составное тело'],
+    ['Self-assessment', 'O‘z-o‘zini baholash', 'Самооценка'],
+    ['Target', 'Maqsad', 'Цель']
+  ],
+  timing: [[3, 'Instructions'], [42, 'The paper'], [12, 'Answers'], [20, 'Rewrite'], [10, 'Concept map'], [3, 'Targets']],
+  sections: [
+    {
+      h: 'The paper — 30 marks, 42 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Space diagonal of a ${m('4 × 6 × 12')} cuboid, and the angle it makes with the base</td><td class="m">5</td><td>L21–22</td></tr>
+        <tr><td>2</td><td>Total surface area of a regular hexagonal prism, edge 5, height 11</td><td class="m">5</td><td>L23</td></tr>
+        <tr><td>3</td><td>Volume of a trough with trapezium section 30/50 cm, depth 20 cm, 2.5 m long, in litres</td><td class="m">5</td><td>L26–27</td></tr>
+        <tr><td>4</td><td>A cylinder holds 800 ml and is 10 cm tall: find ${m('r')} and the curved surface area</td><td class="m">5</td><td>L28–29</td></tr>
+        <tr><td>5</td><td>A pipe 2 m long, ${m('R = 9')}, ${m('r = 7')} cm: metal volume, then mass at ${m('7.8')} g/cm³</td><td class="m">5</td><td>L28–30</td></tr>
+        <tr><td>6</td><td>A cuboid measures ${m('5 × 7 × 9')} cm to the nearest cm. Find the bounds of its volume</td><td class="m">5</td><td>L24</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Units and formula choice</div>
+      Q3 and Q5 each carry a mark for the conversion alone; Q4 carries one for choosing <b>curved</b>
+      rather than total. Five of the thirty marks are for reading the question.</div>`
+    },
+    {
+      h: 'The concept map',
+      html: `<p>Six boxes, links as sentences:</p>
+      <ul>
+        <li><b>polyhedral angle</b> → <b>only five regular solids</b> — “the angles must total under ${m('360°')}”</li>
+        <li><b>prism</b> → <b>uniform cross-section</b> — “${m('V = Bh')}, always”</li>
+        <li><b>net</b> → <b>surface area</b> — “${m('S = 2B + Ph')}”</li>
+        <li><b>cylinder</b> → <b>the same two formulas</b> — “with ${m('B = πr²')} and ${m('P = 2πr')}”</li>
+        <li><b>Cavalieri</b> → <b>oblique = right</b> — “equal slices, equal volume”</li>
+        <li><b>measurement</b> → <b>bounds</b> — “three lengths, three uncertainties, one wide answer”</li>
+      </ul>
+      {{fig:cylinderNet:The picture behind two of the six boxes.}}`
+    },
+    {
+      h: 'Looking forward',
+      html: `<p>Quarter III is the pyramid, the cone and the sphere — the solids whose volume formulas
+      carry a ${m(f('1', '3'))} or a ${m(f('4', '3'))}. Every one is proved by comparison with the prism
+      and cylinder of this quarter, so those two formulas must be secure.</p>
+      <div class="keybox"><div class="klabel">One habit to carry forward</div>
+      Write the base area on its own line before anything else. Every volume in the next quarter starts
+      from ${m('B')}, and every error starts from having computed it wrong.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q3: trough, trapezium 30/50 cm, depth 20 cm, 2.5 m long.',
+      steps: [
+        [m('B = ' + f('30 + 50', '2') + ' × 20 = 800') + ' cm².', ''],
+        ['Length ' + m('250') + ' cm.', 'Convert first.'],
+        [m('V = 800 × 250 = 200 000') + ' cm³.', ''],
+        [m('= 200') + ' litres.', '']
+      ],
+      ans: m('200') + ' litres'
+    },
+    {
+      q: 'Model answer, Q4: a cylinder holds 800 ml and is 10 cm tall.',
+      steps: [
+        [m('800 = πr² × 10'), ''],
+        [m('r² = ' + f('80', 'π') + ' ≈ 25.46'), ''],
+        [m('r ≈ 5.05') + ' cm.', ''],
+        [m('S_curved = 2πrh ≈ 317') + ' cm².', 'Curved, not total.']
+      ],
+      ans: m('r ≈ 5.05') + ' cm; ' + m('≈ 317') + ' cm²'
+    },
+    {
+      q: 'Model answer, Q6: bounds for a ' + m('5 × 7 × 9') + ' cuboid to the nearest cm.',
+      steps: [
+        [m('4.5–5.5') + ', ' + m('6.5–7.5') + ', ' + m('8.5–9.5') + '.', ''],
+        [m('V_min = 4.5 × 6.5 × 8.5 = 248.625'), ''],
+        [m('V_max = 5.5 × 7.5 × 9.5 = 391.875'), ''],
+        ['Stated volume ' + m('315') + '.', 'The range is nearly ' + m('150') + '.']
+      ],
+      ans: m('248.6') + ' to ' + m('391.9') + ' cm³'
+    }
+  ],
+  modelNote: 'Work Q3 and Q4 on the board, converting units before any arithmetic.',
+  interactive: {
+    type: 'quiz',
+    title: 'The quarter in ten questions',
+    hint: 'One from each block.',
+    items: [
+      { q: 'Plane angles at a vertex sum to:', a: [m('360°'), 'less than ' + m('360°'), 'more', m('180°')], c: 1, why: 'Or it lies flat.' },
+      { q: 'Space diagonal of a ' + m('4 × 6 × 12') + ' cuboid:', a: [m('12'), m('14'), m('22'), m('' + sr('196'))], c: 1, why: m(sr('16 + 36 + 144')) + '.' },
+      { q: m('S_total') + ' of a right prism:', a: [m('Ph'), m('2B + Ph'), m('Bh'), m('2Ph')], c: 1, why: 'Two bases plus the sides.' },
+      { q: 'Volume of any prism:', a: [m('Ph'), m('Bh'), m(f('1', '3') + 'Bh'), m('2Bh')], c: 1, why: 'Uniform cross-section.' },
+      { q: 'Volume of a cylinder:', a: [m('2πrh'), m('πr²h'), m('πrh'), m('2πr(r+h)')], c: 1, why: m('B = πr²') + '.' },
+      { q: 'Curved area of a cylinder:', a: [m('πr²'), m('2πrh'), m('2πr²'), m('2πr(r+h)')], c: 1, why: 'Circumference times height.' },
+      { q: m('1') + ' m³ in litres:', a: [m('100'), m('1000'), m('10 000'), m('1 000 000')], c: 1, why: 'By definition.' },
+      { q: 'A pipe’s cross-section area:', a: [m('π(R−r)²'), m('π(R²−r²)'), m('πR²'), m('2πR')], c: 1, why: 'A difference of circles.' },
+      { q: m('5') + ' cm to the nearest cm has bounds:', a: [m('4–6'), m('4.5–5.5'), m('4.9–5.1'), m('4.95–5.05')], c: 1, why: 'Half a unit.' },
+      { q: 'Cavalieri’s principle compares:', a: ['bases', 'slice areas at every height', 'perimeters', 'diagonals'], c: 1, why: 'Equal slices, equal volumes.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q4 asks for the curved area because:', a: ['it is easier', 'the question describes an open shape', 'it is always curved', 'no reason'], c: 1, why: 'Read the object first.' },
+    { q: 'A conversion mark is lost by:', a: ['using cm', 'mixing m and cm in one formula', 'using π', 'rounding'], c: 1, why: 'Convert before computing.' },
+    { q: 'The volume bounds of a cuboid come from:', a: ['the stated values', 'all three extremes together', 'the largest edge', 'the average'], c: 1, why: 'Each length has its own bound.' },
+    { q: 'Quarter III begins with:', a: ['vectors', 'the pyramid', 'probability', 'the cylinder'], c: 1, why: 'Then the cone and the sphere.' }
+  ],
+  practice: {
+    easy: [
+      ['Space diagonal of a ' + m('4 × 6 × 12') + ' cuboid', m('14')],
+      ['Surface area of a cube of edge 5', m('150')],
+      ['Volume of a prism, ' + m('B = 20, h = 9'), m('180')],
+      ['Volume of a cylinder, ' + m('r = 3, h = 8'), m('72π')],
+      [m('1') + ' m³ in litres', m('1000')],
+      ['Bounds of ' + m('7') + ' cm to the nearest cm', m('6.5') + ' and ' + m('7.5')],
+      ['Curved area, ' + m('r = 4, h = 10'), m('80π')]
+    ],
+    med: [
+      ['Angle of the ' + m('4 × 6 × 12') + ' space diagonal with the base', m('≈ 59.0°')],
+      ['Regular hexagonal prism, edge 5, height 11: total area', m('75' + sr('3') + ' + 330') + ' ≈ ' + m('460')],
+      ['Trough 30/50 by 20 cm, 2.5 m long: litres', m('200')],
+      ['Cylinder holding 800 ml, height 10: radius', m('≈ 5.05') + ' cm'],
+      ['Same: curved surface area', m('≈ 317') + ' cm²'],
+      ['Pipe 2 m, ' + m('R = 9, r = 7') + ': metal volume', m('6400π') + ' ≈ ' + m('20 100') + ' cm³'],
+      ['Cuboid ' + m('5 × 7 × 9') + ' (nearest cm): volume bounds', m('248.6') + ' to ' + m('391.9')]
+    ],
+    hard: [
+      ['Same pipe: mass at ' + m('7.8') + ' g/cm³', m('≈ 157') + ' kg'],
+      ['A silo, cylinder ' + m('r = 4, h = 12') + ' m with a hemisphere: volume', m('192π + ' + f('128π', '3')) + ' ≈ ' + m('737') + ' m³'],
+      ['A cylinder inscribed in a cube of edge 12: the ratio of volumes', m('π : 4')],
+      ['A regular hexagonal prism of volume ' + m('540' + sr('3')) + ' and edge 6: its height', m('10')],
+      ['A cuboid ' + m('3 × 4 × 5') + ' m to the nearest 0.1 m: volume bounds', m('≈ 58.4') + ' to ' + m('≈ 61.7') + ' m³'],
+      ['Two similar prisms with volumes ' + m('8') + ' and ' + m('125') + ': the area ratio', m('4 : 25')],
+      ['A closed cylinder of volume ' + m('2000') + ' cm³ with least surface area: find ' + m('r') + ' and ' + m('h'), m('r ≈ 6.83') + ', ' + m('h ≈ 13.66')]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Bring the concept map to the first lesson of Quarter III.',
+  homework: [
+    'Rewrite in full every control-work question that lost a mark.',
+    'Finish the concept map with all six links written as sentences.',
+    'A cylindrical tank of radius 1.5 m and height 4 m: find its capacity in litres and its curved surface area.',
+    'Write your target for Quarter III in one checkable sentence, and date it.'
+  ]
+});

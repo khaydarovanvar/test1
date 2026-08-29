@@ -1977,6 +1977,98 @@
     return svg('0 0 ' + W + ' ' + H, g);
   };
 
+  /* ---------- Grade 11 Quarter II: prisms and cylinders ---------- */
+
+  /* a polyhedral angle: several faces meeting at one vertex */
+  F.polyhedralAngle = function () {
+    var g = '', W = 340, H = 200;
+    var S = [W / 2, 42];
+    var base = [], n = 5, cx = W / 2, cy = 140, rx = 74, ry = 26;
+    for (var i = 0; i < n; i++) {
+      var t = -Math.PI / 2 + i * 2 * Math.PI / n;
+      base.push([+(cx + rx * Math.cos(t)).toFixed(2), +(cy + ry * Math.sin(t)).toFixed(2)]);
+    }
+    g += poly(base, 'fill="var(--brand-tint)" fill-opacity=".6" stroke="var(--brand)" stroke-width="1.6"');
+    for (var k = 0; k < n; k++) {
+      var A = base[k], B = base[(k + 1) % n];
+      g += poly([S, A, B], 'fill="var(--brass-tint)" fill-opacity=".45" stroke="var(--brass)" stroke-width="1.3"');
+    }
+    for (var j = 0; j < n; j++) g += line(S, base[j], 'stroke="currentColor" stroke-width="1.8"');
+    g += dot(S[0], S[1]);
+    g += L(S[0], S[1] - 13, 'S');
+    g += LT(W / 2, H - 22, 'five plane angles at S, five dihedral angles along the edges', 'var(--muted)', 9.5);
+    g += LT(W / 2, H - 6, 'the sum of the plane angles is less than 360°', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* a prism cut by a plane parallel to the base */
+  F.prismSection = function () {
+    var g = '', W = 340, H = 210;
+    var p = P3({ s: 20, ox: 44, oy: 176 });
+    var A = p(0, 0, 0), B = p(4.2, 0, 0), C = p(1.6, 0, 3.2);
+    var A1 = p(0, 5, 0), B1 = p(4.2, 5, 0), C1 = p(1.6, 5, 3.2);
+    g += poly([A1, B1, C1], 'fill="var(--brand-tint)" fill-opacity=".55" stroke="var(--brand)" stroke-width="1.8"');
+    g += line(A, B, SOL) + line(B, C, HID) + line(C, A, HID);
+    g += line(A, A1, SOL) + line(B, B1, SOL) + line(C, C1, HID);
+    var A2 = p(0, 2.4, 0), B2 = p(4.2, 2.4, 0), C2 = p(1.6, 2.4, 3.2);
+    g += poly([A2, B2, C2], 'fill="var(--brass-tint)" fill-opacity=".75" stroke="var(--brass)" stroke-width="1.8"');
+    g += L(A[0] - 11, A[1] + 6, 'A') + L(B[0] + 11, B[1] + 4, 'B') + L(C[0] + 14, C[1] - 6, 'C');
+    g += L(A1[0] - 12, A1[1] - 2, 'A₁') + L(B1[0] + 12, B1[1] - 2, 'B₁');
+    g += LT(W - 78, 96, 'a section parallel', 'var(--brass)', 10);
+    g += LT(W - 78, 110, 'to the base is', 'var(--brass)', 10);
+    g += LT(W - 78, 124, 'congruent to it', 'var(--brass)', 10);
+    g += LT(W / 2, H - 6, 'every cross-section of a prism repeats the base', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* the net of a cylinder: two circles and one rectangle */
+  F.cylinderNet = function () {
+    var g = '', W = 340, H = 206;
+    var cx = 70, top = 52, bot = 148, rx = 30, ry = 11;
+    g += '<ellipse cx="' + cx + '" cy="' + bot + '" rx="' + rx + '" ry="' + ry +
+      '" fill="var(--brand-tint)" fill-opacity=".5" stroke="var(--brand)" stroke-width="1.6"/>';
+    g += '<path d="M' + (cx - rx) + ' ' + top + ' L' + (cx - rx) + ' ' + bot +
+      ' M' + (cx + rx) + ' ' + top + ' L' + (cx + rx) + ' ' + bot +
+      '" fill="none" stroke="currentColor" stroke-width="2"/>';
+    g += '<ellipse cx="' + cx + '" cy="' + top + '" rx="' + rx + '" ry="' + ry +
+      '" fill="var(--brand-tint)" fill-opacity=".8" stroke="var(--brand)" stroke-width="1.8"/>';
+    g += line([cx, top], [cx + rx, top], 'stroke="var(--brass)" stroke-width="1.8"');
+    g += LT(cx + 16, top - 10, 'r', 'var(--brass)');
+    g += line([cx - rx - 14, top], [cx - rx - 14, bot], 'stroke="var(--brass)" stroke-width="1.6"');
+    g += LT(cx - rx - 25, (top + bot) / 2, 'h', 'var(--brass)');
+    var nx = 176, ny = 72, nw = 126, nh = 58;
+    g += '<rect x="' + nx + '" y="' + ny + '" width="' + nw + '" height="' + nh +
+      '" fill="var(--surface-2)" stroke="currentColor" stroke-width="1.8"/>';
+    g += '<circle cx="' + (nx + nw / 2) + '" cy="' + (ny - 24) + '" r="21" ' +
+      'fill="var(--brand-tint)" fill-opacity=".8" stroke="var(--brand)" stroke-width="1.6"/>';
+    g += '<circle cx="' + (nx + nw / 2) + '" cy="' + (ny + nh + 24) + '" r="21" ' +
+      'fill="var(--brand-tint)" fill-opacity=".8" stroke="var(--brand)" stroke-width="1.6"/>';
+    g += LT(nx + nw / 2, ny + nh / 2 - 8, '2πr', 'var(--muted)', 11);
+    g += LT(nx + nw / 2, ny + nh / 2 + 10, 'by h', 'var(--muted)', 11);
+    g += LT(W / 2, H - 5, 'S = 2πr² + 2πrh — two circles and one rectangle', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* Cavalieri: an oblique prism has the same volume as the right one */
+  F.cavalieri = function () {
+    var g = '', W = 340, H = 194;
+    function stack(ox, skew, label) {
+      var o = '';
+      for (var i = 0; i < 7; i++) {
+        var y = 152 - i * 16, dx = skew * i;
+        o += '<rect x="' + (ox + dx) + '" y="' + (y - 14) + '" width="62" height="14" ' +
+          'fill="var(--brand-tint)" fill-opacity=".75" stroke="var(--brand)" stroke-width="1.2"/>';
+      }
+      o += LT(ox + 31 + skew * 3, 174, label, 'var(--muted)', 10);
+      return o;
+    }
+    g += stack(40, 0, 'right prism');
+    g += stack(186, 5, 'oblique prism');
+    g += LT(W / 2, 22, 'same base, same height, same volume', 'currentColor', 12);
+    g += LT(W / 2, H - 4, 'every horizontal slice has the same area', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
   w.FIG = F;
   w.FIGH = { svg: svg, L: L, LT: LT, dot: dot, poly: poly, line: line, ticks: ticks, ang: ang, right: right, mid: mid, cent: cent, norm: norm, S: S };
 })(window);

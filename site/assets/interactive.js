@@ -1146,6 +1146,107 @@
   };
 
   /* ---------- mount ---------- */
+  /* A prism or cylinder of adjustable base and height, reporting the base area,
+     the lateral area, the total surface area and the volume together. The point
+     is that changing the height moves S and V by different factors. */
+  INT.solidVolume = function (host, opt) {
+    var body = frame(host, (opt && opt.title) || 'Base area times height',
+      'Change the base and the height. Watch how the volume and the surface area respond differently.');
+    var row = ctrlRow(body);
+    var svg = stage(body, '0 0 360 240', 460);
+    var read = readoutBar(body, ['base area B', 'perimeter P', 'total S', 'volume V']);
+    var kind = (opt && opt.kind) || 'prism';   /* 'prism' | 'cylinder' */
+    var a = 4, h = 6, n = 6;
+
+    function baseArea() {
+      if (kind === 'cylinder') return Math.PI * a * a;
+      return n * a * a / (4 * Math.tan(Math.PI / n));
+    }
+    function basePerim() {
+      return kind === 'cylinder' ? 2 * Math.PI * a : n * a;
+    }
+    function draw() {
+      svg.innerHTML = '';
+      var B = baseArea(), P = basePerim();
+      var cx = 118, ybot = 196, u = 9.5;
+      var rx = a * u, ry = rx * 0.34, ht = h * u * 1.6;
+      var ytop = ybot - ht;
+      if (kind === 'cylinder') {
+        svg.appendChild(S('ellipse', {
+          cx: cx, cy: ybot, rx: r1(rx), ry: r1(ry),
+          fill: 'var(--brand-tint)', 'fill-opacity': 0.5, stroke: 'var(--brand)', 'stroke-width': 1.6
+        }));
+        svg.appendChild(S('path', {
+          d: 'M' + r1(cx - rx) + ' ' + r1(ytop) + ' L' + r1(cx - rx) + ' ' + r1(ybot) +
+             ' M' + r1(cx + rx) + ' ' + r1(ytop) + ' L' + r1(cx + rx) + ' ' + r1(ybot),
+          fill: 'none', stroke: 'currentColor', 'stroke-width': 2
+        }));
+        svg.appendChild(S('ellipse', {
+          cx: cx, cy: ytop, rx: r1(rx), ry: r1(ry),
+          fill: 'var(--brand-tint)', 'fill-opacity': 0.85, stroke: 'var(--brand)', 'stroke-width': 1.8
+        }));
+      } else {
+        var pts = [], i, t;
+        for (i = 0; i < n; i++) {
+          t = -Math.PI / 2 + i * 2 * Math.PI / n;
+          pts.push([cx + rx * Math.cos(t), ybot + ry * Math.sin(t)]);
+        }
+        var strBot = pts.map(function (q) { return r1(q[0]) + ',' + r1(q[1]); }).join(' ');
+        var strTop = pts.map(function (q) { return r1(q[0]) + ',' + r1(q[1] - ht); }).join(' ');
+        svg.appendChild(S('polygon', {
+          points: strBot, fill: 'var(--brand-tint)', 'fill-opacity': 0.5,
+          stroke: 'var(--brand)', 'stroke-width': 1.5
+        }));
+        for (i = 0; i < n; i++) {
+          svg.appendChild(S('line', {
+            x1: r1(pts[i][0]), y1: r1(pts[i][1]), x2: r1(pts[i][0]), y2: r1(pts[i][1] - ht),
+            stroke: 'currentColor', 'stroke-width': 1.6
+          }));
+        }
+        svg.appendChild(S('polygon', {
+          points: strTop, fill: 'var(--brand-tint)', 'fill-opacity': 0.85,
+          stroke: 'var(--brand)', 'stroke-width': 1.8
+        }));
+      }
+      /* the height marker */
+      svg.appendChild(S('line', {
+        x1: cx + rx + 18, y1: ytop, x2: cx + rx + 18, y2: ybot,
+        stroke: 'var(--brass)', 'stroke-width': 1.6
+      }));
+      svg.appendChild(S('text', {
+        x: cx + rx + 28, y: (ytop + ybot) / 2, 'font-family': 'Spectral,Georgia,serif',
+        'font-size': 14, 'font-style': 'italic', fill: 'var(--brass)'
+      }, 'h'));
+
+      /* the two bars, so the different growth is visible */
+      var bx = 250, base = 196, bw = 34, top = 40;
+      var S_tot = 2 * B + P * h, V = B * h;
+      var mx = Math.max(S_tot, V, 1);
+      [['S', S_tot, 'var(--brass)'], ['V', V, 'var(--brand)']].forEach(function (c, k) {
+        var hh = (base - top) * c[1] / mx;
+        svg.appendChild(S('rect', {
+          x: bx + k * (bw + 22), y: r1(base - hh), width: bw, height: r1(hh),
+          fill: c[2], 'fill-opacity': 0.75
+        }));
+        svg.appendChild(S('text', {
+          x: bx + k * (bw + 22) + bw / 2, y: base + 16, 'font-family': 'IBM Plex Mono,monospace',
+          'font-size': 11, fill: 'var(--muted)', 'text-anchor': 'middle'
+        }, c[0]));
+      });
+
+      read['base area B'].textContent = r1(B);
+      read['perimeter P'].textContent = r1(P);
+      read['total S'].textContent = r1(S_tot);
+      read['volume V'].textContent = r1(V);
+    }
+    slider(row, kind === 'cylinder' ? 'radius r' : 'base edge a', 1, 8, a, 0.1, function (v) { a = v; draw(); });
+    slider(row, 'height h', 1, 10, h, 0.1, function (v) { h = v; draw(); });
+    if (kind !== 'cylinder') {
+      slider(row, 'sides n', 3, 10, n, 1, function (v) { n = Math.round(v); draw(); });
+    }
+    draw();
+  };
+
   INT.mount = function (host, spec) {
     var fn = INT[spec.type];
     if (!fn) { host.innerHTML = '<p class="small">Unknown model: ' + spec.type + '</p>'; return; }
