@@ -6047,3 +6047,424 @@ G11_ALG.push({
     'Explain in two sentences why ' + m('arg(z − a) = θ') + ' gives a half-line and not a whole line.'
   ]
 });
+
+/* ============================== 36 ============================== */
+G11_ALG.push({
+  id: 'a11-36', stream: 'alg', grade: 11, quarter: 4, lessons: '97–100', hours: 4,
+  title: 'Forming and solving differential equations [Cambridge revision]',
+  subtitle: 'An equation about a rate — and the whole of the derivative and the integral put to work.',
+  uz: 'Algebra 11, qo‘shimcha bo‘lim', uzPage: 'pp. 441–460',
+  cam: 'P2/P3 10.1–10.4', camPage: 'Pure Mathematics 2 & 3, pp. 224–245', wb: 'Exercise 10A–10D',
+  objectives: [
+    'Form a differential equation from a statement about a rate of change.',
+    'Solve a separable equation, and find the general solution.',
+    'Use an initial condition to find the particular solution.',
+    'Interpret the solution, including its long-term behaviour.'
+  ],
+  terms: [
+    ['Differential equation', 'Differensial tenglama', 'Дифференциальное уравнение'],
+    ['Rate of change', 'O‘zgarish tezligi', 'Скорость изменения'],
+    ['Proportional', 'Proporsional', 'Пропорциональный'],
+    ['Separable equation', 'Ajraladigan tenglama', 'Уравнение с разделяющимися переменными'],
+    ['General solution', 'Umumiy yechim', 'Общее решение'],
+    ['Particular solution', 'Xususiy yechim', 'Частное решение'],
+    ['Initial condition', 'Boshlang‘ich shart', 'Начальное условие'],
+    ['Arbitrary constant', 'Ixtiyoriy o‘zgarmas', 'Произвольная постоянная'],
+    ['Exponential growth', 'Eksponensial o‘sish', 'Экспоненциальный рост'],
+    ['Exponential decay', 'Eksponensial kamayish', 'Экспоненциальное убывание'],
+    ['Direction field', 'Yo‘nalishlar maydoni', 'Поле направлений'],
+    ['Equilibrium value', 'Muvozanat qiymati', 'Равновесное значение']
+  ],
+  timing: [[25, 'What a differential equation says'], [30, 'Forming one'], [40, 'Separating the variables'], [35, 'Particular solutions'], [25, 'Interpreting'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'What a differential equation says',
+      html: `<p>An ordinary equation is a statement about a <b>number</b>. A differential equation is a
+      statement about a <b>rate</b>, and its solution is a <b>function</b>.</p>
+      ${eq(m(f('dy', 'dx') + ' = 2x') + '   has solution   ' + m('y = x² + c'), true)}
+      <p>Note the ${m('c')}: there is a whole family of solutions, one curve through each point of the
+      plane. A single extra condition — a point the curve passes through — picks one out.</p>
+      {{fig:slopeField:Every dash is the gradient the equation demands there; a solution is a curve that follows them.}}
+      <div class="keybox"><div class="klabel">The direction field</div>
+      At each point, ${m(f('dy', 'dx'))} says what the gradient must be. Draw a short dash of that
+      gradient at many points and the solution curves appear as the paths that follow the dashes. Two
+      solution curves never cross — through each point runs exactly one.</div>`
+    },
+    {
+      h: 'Forming one',
+      html: `<p>Most marks in this topic are for translating a sentence into symbols. The vocabulary is
+      small and fixed.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>English</th><th>Symbols</th></tr></thead>
+      <tbody>
+        <tr><td>the rate of change of ${m('N')} with time</td><td class="m">${f('dN', 'dt')}</td></tr>
+        <tr><td>… is proportional to ${m('N')}</td><td class="m">${f('dN', 'dt')} = kN</td></tr>
+        <tr><td>… is inversely proportional to ${m('N')}</td><td class="m">${f('dN', 'dt')} = ${f('k', 'N')}</td></tr>
+        <tr><td>… decreases at a rate proportional to ${m('N')}</td><td class="m">${f('dN', 'dt')} = −kN</td></tr>
+        <tr><td>… proportional to the amount still to go</td><td class="m">${f('dN', 'dt')} = k(A − N)</td></tr>
+        <tr><td>… proportional to the product of ${m('N')} and ${m('A − N')}</td><td class="m">${f('dN', 'dt')} = kN(A − N)</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Put the minus sign in, and then keep ${m('k')} positive</span>
+      “Decreases at a rate proportional to ${m('N')}” is ${m(f('dN', 'dt') + ' = −kN')} with
+      ${m('k > 0')}. Writing ${m('= kN')} and expecting ${m('k')} to come out negative works, but every
+      later line then carries a sign you must remember. Declare it once.</div>
+      <p><b>Real cases.</b> Radioactive decay ${m(f('dN', 'dt') + ' = −kN')}; Newton's law of cooling
+      ${m(f('dθ', 'dt') + ' = −k(θ − θ₀)')}; a population limited by resources
+      ${m(f('dP', 'dt') + ' = kP(M − P)')}; a tank draining ${m(f('dV', 'dt') + ' = −k' + sr('h'))}.</p>`
+    },
+    {
+      h: 'Separating the variables',
+      html: `<p>An equation is <b>separable</b> if it can be written as a function of ${m('y')} times a
+      function of ${m('x')}:</p>
+      ${eq(m(f('dy', 'dx') + ' = f(x) g(y)') + '   ⇒   ' + m('∫' + f('dy', 'g(y)') + ' = ∫f(x) dx'), true)}
+      <p>Every equation in this course is separable. The method is three lines:</p>
+      <ol>
+        <li>get all the ${m('y')}s with ${m('dy')} and all the ${m('x')}s with ${m('dx')};</li>
+        <li>integrate both sides, with <b>one</b> constant;</li>
+        <li>rearrange for ${m('y')} if the question asks for it.</li>
+      </ol>
+      <p><b>The standard case.</b> ${m(f('dy', 'dx') + ' = ky')}:</p>
+      ${eq(m('∫' + f('dy', 'y') + ' = ∫k dx ⇒ ln|y| = kx + c ⇒ y = Ae^{kx}'), true)}
+      <div class="keybox"><div class="klabel">${m('e^c')} becomes a new constant ${m('A')}</div>
+      From ${m('ln y = kx + c')}, exponentiating gives ${m('y = e^{kx + c} = e^c e^{kx}')}. Since
+      ${m('e^c')} is just some positive constant, write it as ${m('A')} once and never carry ${m('c')}
+      again. Allowing ${m('A')} to be negative covers ${m('y < 0')} too.</div>
+      <div class="warn"><span class="wl">One constant, and add it at the integration</span>
+      Adding ${m('c')} to both sides gives two constants where one will do. And adding it after
+      rearranging — ${m('y = Ae^{kx} + c')} — is simply a different, wrong, equation.</div>`
+    },
+    {
+      h: 'Particular solutions',
+      html: `<p>An <b>initial condition</b> such as ${m('y = 5')} when ${m('x = 0')} fixes the constant.
+      Substitute as soon as the general solution is written — before any further rearranging.</p>
+      <p><b>Worked case — decay.</b> A radioactive sample obeys ${m(f('dN', 'dt') + ' = −kN')}, with
+      ${m('N = 200')} at ${m('t = 0')} and a half-life of ${m('5')} days.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>separate</td><td class="m">∫${f('dN', 'N')} = −∫k dt</td></tr>
+        <tr><td>integrate</td><td class="m">ln N = −kt + c</td></tr>
+        <tr><td>general</td><td class="m">N = Ae^{−kt}</td></tr>
+        <tr><td class="m">t = 0</td><td class="m">A = 200</td></tr>
+        <tr><td>half-life</td><td class="m">100 = 200e^{−5k} ⇒ k = ${f('ln 2', '5')} ≈ 0.1386</td></tr>
+        <tr><td>particular</td><td class="m">N = 200e^{−0.1386t}</td></tr>
+      </tbody></table></div>
+      {{fig:expGraph:Exponential decay — the shape of every dN/dt = −kN.}}
+      <p>Now any question is a substitution: after ${m('12')} days,
+      ${m('N = 200e^{−1.663} ≈ 37.9')}.</p>`
+    },
+    {
+      h: 'Interpreting',
+      html: `<p>The last mark is usually for saying what the answer <b>means</b>.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Model</th><th>Solution</th><th>Long term</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('dN', 'dt')} = kN</td><td class="m">N = Ae^{kt}</td><td>grows without limit — unrealistic eventually</td></tr>
+        <tr><td class="m">${f('dN', 'dt')} = −kN</td><td class="m">N = Ae^{−kt}</td><td class="m">N → 0</td></tr>
+        <tr><td class="m">${f('dθ', 'dt')} = −k(θ − θ₀)</td><td class="m">θ = θ₀ + Ae^{−kt}</td><td class="m">θ → θ₀</td></tr>
+        <tr><td class="m">${f('dP', 'dt')} = kP(M − P)</td><td>logistic</td><td class="m">P → M</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Equilibrium: set the rate to zero</div>
+      Whatever makes ${m(f('dy', 'dx') + ' = 0')} is an <b>equilibrium</b> value — the solution stays
+      there for ever if it starts there, and usually approaches it otherwise. For cooling that is
+      ${m('θ = θ₀')}, room temperature; for the logistic model it is ${m('P = M')}, the carrying
+      capacity. You can read the long-term answer off the equation without solving it.</div>
+      <p><b>A caution about models.</b> Unlimited exponential growth is never a description of reality for
+      long; it is a description of the early stage, before whatever limits growth begins to act. Saying
+      so is often worth a mark, and is always worth saying.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m(f('dy', 'dx') + ' = ' + f('x', 'y')) + ' given that ' + m('y = 3') + ' when ' + m('x = 0') + '.',
+      steps: [
+        [m('∫y dy = ∫x dx'), 'Separate.'],
+        [m(f('y²', '2') + ' = ' + f('x²', '2') + ' + c'), ''],
+        [m('9 = 0 + 2c ⇒ c = 4.5'), 'Substitute at once.'],
+        [m('y² = x² + 9'), '']
+      ],
+      ans: m('y = ' + sr('x² + 9')) + ' (taking the positive root)'
+    },
+    {
+      q: 'A sample decays with ' + m(f('dN', 'dt') + ' = −kN') + '. It starts at ' + m('200') + ' and has a half-life of ' + m('5') + ' days. Find ' + m('N') + ' after ' + m('12') + ' days.',
+      steps: [
+        [m('N = Ae^{−kt}') + ', ' + m('A = 200'), ''],
+        [m('100 = 200e^{−5k} ⇒ e^{−5k} = 0.5'), ''],
+        [m('k = ' + f('ln 2', '5') + ' ≈ 0.1386'), ''],
+        [m('N = 200e^{−0.1386(12)} ≈ 37.9'), '']
+      ],
+      ans: m('≈ 38') + ' units'
+    },
+    {
+      q: 'A body at ' + m('90°') + ' cools in a room at ' + m('20°') + '. After 10 minutes it is ' + m('60°') + '. Find its temperature after 25 minutes.',
+      steps: [
+        [m(f('dθ', 'dt') + ' = −k(θ − 20) ⇒ θ = 20 + Ae^{−kt}'), ''],
+        [m('90 = 20 + A ⇒ A = 70'), ''],
+        [m('60 = 20 + 70e^{−10k} ⇒ e^{−10k} = ' + f('4', '7') + ' ⇒ k ≈ 0.05596'), ''],
+        [m('θ = 20 + 70e^{−1.399} ≈ 37.3°'), '']
+      ],
+      ans: m('≈ 37.3°')
+    },
+    {
+      q: 'A population satisfies ' + m(f('dP', 'dt') + ' = 0.02P(500 − P)') + '. State the equilibrium values and the long-term population.',
+      steps: [
+        ['Set ' + m(f('dP', 'dt') + ' = 0') + '.', ''],
+        [m('P = 0') + ' or ' + m('P = 500') + '.', 'Two equilibria.'],
+        ['For ' + m('0 < P < 500') + ' the rate is positive, so ' + m('P') + ' rises.', ''],
+        [m('P → 500'), 'The carrying capacity.']
+      ],
+      ans: 'Equilibria ' + m('0') + ' and ' + m('500') + '; long term ' + m('P → 500')
+    }
+  ],
+  modelNote: 'Cool a cup of hot water in front of the class, reading the thermometer every two minutes; the plotted points fall on the predicted curve.',
+  interactive: {
+    type: 'derivative',
+    title: 'A curve and its gradient',
+    hint: 'The gradient at each point is what the equation prescribes.'
+  },
+  quiz: [
+    { q: 'The solution of a differential equation is:', a: ['a number', 'a function', 'a gradient', 'a constant'], c: 1, why: 'A whole family, in fact.' },
+    { q: '“Proportional to ' + m('N') + '” is:', a: [m(f('dN', 'dt') + ' = kN'), m(f('dN', 'dt') + ' = ' + f('k', 'N')), m('N = kt'), m(f('dN', 'dt') + ' = k')], c: 0, why: 'Direct proportion.' },
+    { q: 'A separable equation is solved by:', a: ['differentiating', 'separating and integrating', 'squaring', 'substituting'], c: 1, why: m('y') + 's one side, ' + m('x') + 's the other.' },
+    { q: 'The general solution of ' + m(f('dy', 'dx') + ' = ky') + ':', a: [m('y = kx + c'), m('y = Ae^{kx}'), m('y = ln kx'), m('y = kx²')], c: 1, why: m('ln y = kx + c') + '.' },
+    { q: 'How many arbitrary constants does a first-order equation give?', a: [m('0'), m('1'), m('2'), 'as many as you like'], c: 1, why: 'One integration.' },
+    { q: 'An equilibrium value is where:', a: [m('y = 0'), m(f('dy', 'dx') + ' = 0'), m('x = 0'), m('k = 0')], c: 1, why: 'The rate vanishes.' },
+    { q: 'For ' + m(f('dθ', 'dt') + ' = −k(θ − θ₀)') + ', the long-term temperature is:', a: [m('0'), m('θ₀'), m('∞'), m('A')], c: 1, why: 'Room temperature.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m(f('dy', 'dx') + ' = 2x'), m('y = x² + c')],
+      ['Solve ' + m(f('dy', 'dx') + ' = 3y'), m('y = Ae^{3x}')],
+      ['Solve ' + m(f('dy', 'dx') + ' = −2y'), m('y = Ae^{−2x}')],
+      ['Write “decreases at a rate proportional to ' + m('N') + '”', m(f('dN', 'dt') + ' = −kN')],
+      ['Write “rate proportional to the amount left, ' + m('A − N') + '”', m(f('dN', 'dt') + ' = k(A − N)')],
+      ['Equilibrium of ' + m(f('dy', 'dt') + ' = 3 − y'), m('y = 3')],
+      ['Number of constants in the general solution', m('1')]
+    ],
+    med: [
+      ['Solve ' + m(f('dy', 'dx') + ' = ' + f('x', 'y')) + ' with ' + m('y(0) = 3'), m('y = ' + sr('x² + 9'))],
+      ['Solve ' + m(f('dy', 'dx') + ' = xy') + ' with ' + m('y(0) = 2'), m('y = 2e^{x²/2}')],
+      ['Solve ' + m(f('dy', 'dx') + ' = ' + f('y', 'x')) + ' with ' + m('y(1) = 4'), m('y = 4x')],
+      ['Half-life 5 days, ' + m('N₀ = 200') + ': find ' + m('k'), m('≈ 0.1386')],
+      ['Same: ' + m('N') + ' after 12 days', m('≈ 38')],
+      ['Cooling from ' + m('90°') + ' in a ' + m('20°') + ' room, ' + m('60°') + ' after 10 min: ' + m('θ') + ' after 25 min', m('≈ 37.3°')],
+      ['Equilibria of ' + m(f('dP', 'dt') + ' = 0.02P(500 − P)'), m('0') + ' and ' + m('500')]
+    ],
+    hard: [
+      ['Solve ' + m(f('dy', 'dx') + ' = y(1 − y)') + ' with ' + m('y(0) = ' + f('1', '2')), m('y = ' + f('1', '1 + e^{−x}'))],
+      ['A tank drains with ' + m(f('dh', 'dt') + ' = −0.2' + sr('h')) + ' from ' + m('h = 25') + ': time to empty', m('50') + ' s'],
+      ['A population doubles in 8 years under ' + m(f('dP', 'dt') + ' = kP') + ': find ' + m('k') + ' and the time to triple', m('k ≈ 0.0866') + '; ' + m('≈ 12.7') + ' years'],
+      ['Solve ' + m(f('dy', 'dx') + ' = ' + f('1 + y²', '1 + x²')) + ' with ' + m('y(0) = 1'), m('y = tan(arctan x + ' + f('π', '4') + ')')],
+      ['A drug leaves the body with ' + m(f('dm', 'dt') + ' = −0.15m') + ' from ' + m('80') + ' mg: time to fall below ' + m('10') + ' mg', m('≈ 13.9') + ' h'],
+      ['Show that ' + m('y = θ₀ + Ae^{−kt}') + ' solves Newton’s law of cooling', m(f('dθ', 'dt') + ' = −kAe^{−kt} = −k(θ − θ₀)')],
+      ['A savings account grows at ' + m('5\\%') + ' continuously: time to double', m(f('ln 2', '0.05')) + ' ≈ ' + m('13.9') + ' years']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every answer ends with one sentence saying what the solution means in the situation described.',
+  homework: [
+    'Solve ' + m(f('dy', 'dx') + ' = ' + f('2x', 'y')) + ' given that ' + m('y = 4') + ' when ' + m('x = 0') + '.',
+    'A radioactive substance has a half-life of ' + m('8') + ' days and starts at ' + m('500') + ' units. Form and solve the differential equation, then find the amount after ' + m('20') + ' days.',
+    'A cup of tea at ' + m('95°') + ' cools in a room at ' + m('22°') + ' and reaches ' + m('70°') + ' after ' + m('8') + ' minutes. Find its temperature after ' + m('20') + ' minutes.',
+    'A bacterial population satisfies ' + m(f('dP', 'dt') + ' = 0.4P') + ' with ' + m('P(0) = 1000') + '. Find the time to reach ' + m('10 000') + ', and say in one sentence why the model cannot hold for ever.',
+    'For ' + m(f('dy', 'dt') + ' = 6 − 2y') + ', state the equilibrium value and describe the behaviour of solutions starting above and below it.'
+  ]
+});
+
+/* ============================== 37 ============================== */
+G11_ALG.push({
+  id: 'a11-37', stream: 'alg', grade: 11, quarter: 4, lessons: '101–102', hours: 2,
+  title: 'Annual control work, and preparation for the entrance paper',
+  subtitle: 'Two years of calculus in one paper, then what the university examination actually asks.',
+  uz: 'Algebra 11, Yillik nazorat ishi', uzPage: 'pp. 461–464',
+  cam: 'Annual review', camPage: 'Pure Mathematics 2 & 3, pp. 277–280', wb: 'Annual paper A',
+  objectives: [
+    'Apply differentiation, integration, probability and complex numbers in one paper.',
+    'Choose the shortest route to each answer under time pressure.',
+    'Name each lost mark and rewrite the solution in full.',
+    'Recognise the standard question types of the entrance examination.'
+  ],
+  terms: [
+    ['Annual control work', 'Yillik nazorat ishi', 'Годовая контрольная работа'],
+    ['Derivative', 'Hosila', 'Производная'],
+    ['Integral', 'Integral', 'Интеграл'],
+    ['Stationary point', 'Statsionar nuqta', 'Стационарная точка'],
+    ['Definite integral', 'Aniq integral', 'Определённый интеграл'],
+    ['Probability', 'Ehtimollik', 'Вероятность'],
+    ['Complex number', 'Kompleks son', 'Комплексное число'],
+    ['Entrance examination', 'Kirish imtihoni', 'Вступительный экзамен'],
+    ['Time management', 'Vaqtni taqsimlash', 'Распределение времени'],
+    ['Target', 'Maqsad', 'Цель']
+  ],
+  timing: [[3, 'Instructions'], [50, 'The paper'], [12, 'Answers'], [10, 'Diagnosis'], [5, 'The entrance paper']],
+  sections: [
+    {
+      h: 'The paper — 50 marks, 50 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Differentiate ${m('y = x³ln x')} and ${m('y = ' + f('sin x', 'x²'))}</td><td class="m">6</td><td>Q I</td></tr>
+        <tr><td>2</td><td>Find the stationary points of ${m('y = x³ − 6x² + 9x + 2')} and classify them</td><td class="m">7</td><td>Q I</td></tr>
+        <tr><td>3</td><td>Evaluate ${m('∫₁⁴(2x + ' + f('1', sr('x')) + ') dx')} and find the area between ${m('y = x²')} and ${m('y = 2x')}</td><td class="m">8</td><td>Q II–III</td></tr>
+        <tr><td>4</td><td>A box of 4 red and 6 blue: two drawn without replacement — the tree and three probabilities</td><td class="m">7</td><td>Q IV</td></tr>
+        <tr><td>5</td><td>${m('X ~ B(10, 0.3)')}: ${m('μ')}, ${m('σ')}, ${m('P(X = 2)')}, ${m('P(X ≥ 1)')}</td><td class="m">7</td><td>Q IV</td></tr>
+        <tr><td>6</td><td>Simplify ${m(f('2 + 3i', '1 − i'))}, solve ${m('z² + 2z + 5 = 0')} and describe ${m('|z − 2i| = 3')}</td><td class="m">8</td><td>Q IV</td></tr>
+        <tr><td>7</td><td>A sample decays with half-life ${m('6')} days from ${m('400')} units: form and solve the equation, then find ${m('N(15)')}</td><td class="m">7</td><td>Q IV</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">How to spend 50 minutes</div>
+      Questions 1, 5 and 6 are mechanical — about ${m('18')} minutes for ${m('21')} marks. Do them first.
+      Questions 2, 3 and 7 reward care rather than speed. Leave whichever of them you find hardest to
+      last, and write the setting-up even if you cannot finish: method marks are real marks.</div>`
+    },
+    {
+      h: 'The two years in one page',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Block</th><th>The one idea</th><th>The one formula</th></tr></thead>
+      <tbody>
+        <tr><td>the derivative</td><td>the gradient of the tangent</td><td class="m">${f('dy', 'dx')} = lim ${f('Δy', 'Δx')}</td></tr>
+        <tr><td>applications</td><td>${m('f′ = 0')} locates the turning points</td><td class="m">f″ decides the kind</td></tr>
+        <tr><td>the integral</td><td>the reverse of the derivative</td><td class="m">∫f′ = f + c</td></tr>
+        <tr><td>the definite integral</td><td>signed area</td><td class="m">∫ₐᵇ f = F(b) − F(a)</td></tr>
+        <tr><td>probability</td><td>count, or measure, then divide</td><td class="m">P = ${f('m', 'n')}</td></tr>
+        <tr><td>distributions</td><td>the shape of many repetitions</td><td class="m">μ = np</td></tr>
+        <tr><td>complex numbers</td><td class="m">i² = −1</td><td class="m">z z̄ = |z|²</td></tr>
+        <tr><td>differential equations</td><td>a statement about a rate</td><td class="m">separate and integrate</td></tr>
+      </tbody></table></div>
+      {{fig:areaUnderCurve:The picture that connects the two halves of the course — the integral as area.}}`
+    },
+    {
+      h: 'The entrance paper',
+      html: `<p>The university entrance examination in mathematics rewards accuracy and speed on standard
+      types rather than ingenuity. The types repeat.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Type</th><th>What it asks</th><th>Where it came from</th></tr></thead>
+      <tbody>
+        <tr><td>algebraic</td><td>simplify, solve, factorise</td><td>Grades 8–10</td></tr>
+        <tr><td>function</td><td>domain, range, graph, inverse</td><td>Grade 10 Q I</td></tr>
+        <tr><td>trigonometric</td><td>equations and identities</td><td>Grade 10 Q IV</td></tr>
+        <tr><td>exponential and log</td><td>equations and inequalities</td><td>Grade 10 Q III</td></tr>
+        <tr><td>calculus</td><td>tangent, extremum, area</td><td>Grade 11 Q I–III</td></tr>
+        <tr><td>combinatorial</td><td>counting and probability</td><td>Grade 11 Q III–IV</td></tr>
+        <tr><td>geometric</td><td>a solid, or a coordinate figure</td><td>Grade 10–11 geometry</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Four rules that raise a score without new mathematics</div>
+      <ul>
+        <li><b>Read to the end</b> before starting; the last clause often changes the method.</li>
+        <li><b>Write the setting-up</b> even when stuck — ${m('a')}, ${m('d')}, ${m('n')}, ${m('p')}, the
+        sketch, the formula. Method marks do not require an answer.</li>
+        <li><b>Check the domain</b>: a root, a logarithm, a denominator, ${m('|t| ≤ 1')} — every rejected
+        root is a mark.</li>
+        <li><b>Leave nothing blank</b>. A named formula and one substituted line is worth more than white
+        space, and costs twenty seconds.</li>
+      </ul></div>
+      <p><b>What to practise over the summer.</b> Twenty past papers, timed, one a day, marked the same
+      evening against the scheme — and a written list of every type that cost a mark twice. That list,
+      not the papers, is what improves the score.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q2: the stationary points of ' + m('y = x³ − 6x² + 9x + 2') + '.',
+      steps: [
+        [m('y′ = 3x² − 12x + 9 = 3(x − 1)(x − 3)'), ''],
+        [m('x = 1') + ' and ' + m('x = 3') + '.', ''],
+        [m('y″ = 6x − 12') + ': ' + m('y″(1) = −6 < 0') + ', ' + m('y″(3) = 6 > 0') + '.', ''],
+        ['Maximum ' + m('(1, 6)') + ', minimum ' + m('(3, 2)') + '.', '']
+      ],
+      ans: 'Maximum ' + m('(1, 6)') + ', minimum ' + m('(3, 2)')
+    },
+    {
+      q: 'Model answer, Q3: the area between ' + m('y = x²') + ' and ' + m('y = 2x') + '.',
+      steps: [
+        [m('x² = 2x ⇒ x = 0, 2'), ''],
+        [m('∫₀²(2x − x²) dx'), 'Upper minus lower.'],
+        [m('= [x² − ' + f('x³', '3') + ']₀²'), ''],
+        [m('= 4 − ' + f('8', '3') + ' = ' + f('4', '3')), '']
+      ],
+      ans: m(f('4', '3'))
+    },
+    {
+      q: 'Model answer, Q6: simplify ' + m(f('2 + 3i', '1 − i')) + ' and solve ' + m('z² + 2z + 5 = 0') + '.',
+      steps: [
+        [m(f('(2 + 3i)(1 + i)', '2') + ' = ' + f('2 + 2i + 3i − 3', '2')), ''],
+        [m('= ' + f('−1 + 5i', '2')), ''],
+        [m('D = 4 − 20 = −16 ⇒ ' + sr('D') + ' = 4i'), ''],
+        [m('z = −1 ± 2i'), '']
+      ],
+      ans: m(f('−1 + 5i', '2')) + ' and ' + m('z = −1 ± 2i')
+    },
+    {
+      q: 'Model answer, Q7: half-life ' + m('6') + ' days from ' + m('400') + ' units — find ' + m('N(15)') + '.',
+      steps: [
+        [m(f('dN', 'dt') + ' = −kN ⇒ N = 400e^{−kt}'), ''],
+        [m('200 = 400e^{−6k} ⇒ k = ' + f('ln 2', '6') + ' ≈ 0.1155'), ''],
+        [m('N(15) = 400e^{−1.733}'), ''],
+        [m('≈ 70.7'), '']
+      ],
+      ans: m('≈ 71') + ' units'
+    }
+  ],
+  modelNote: 'Hand out the mark allocation before the paper starts; ten seconds of planning is worth five marks, every time.',
+  interactive: {
+    type: 'quiz',
+    title: 'The two years in twelve questions',
+    hint: 'Three from each quarter of Grade 11.',
+    items: [
+      { q: m(f('d', 'dx') + '(x³ln x)') + ' is:', a: [m('3x²ln x'), m('3x²ln x + x²'), m('x²'), m('3x² + ' + f('1', 'x'))], c: 1, why: 'Product rule.' },
+      { q: 'A maximum has:', a: [m('f″ > 0'), m('f″ < 0'), m('f′ > 0'), m('f″ = 0')], c: 1, why: 'The curve bends down.' },
+      { q: m('∫x² dx') + ' is:', a: [m('2x + c'), m(f('x³', '3') + ' + c'), m('x³ + c'), m(f('x³', '2') + ' + c')], c: 1, why: 'Raise and divide.' },
+      { q: m('∫₀²2x dx') + ' is:', a: [m('2'), m('4'), m('8'), m('0')], c: 1, why: m('[x²]₀²') + '.' },
+      { q: 'Area between curves is:', a: ['upper minus lower', 'lower minus upper', 'their sum', 'their product'], c: 0, why: 'Then integrate.' },
+      { q: m('P(A ∩ B)') + ' in general:', a: [m('P(A)P(B)'), m('P(A)P(B | A)'), m('P(A) + P(B)'), m('0')], c: 1, why: 'Always true.' },
+      { q: 'The mean of ' + m('B(10, 0.3)') + ':', a: [m('3'), m('7'), m('2.1'), m('10')], c: 0, why: m('np') + '.' },
+      { q: 'Within two ' + m('σ') + ' lies:', a: [m('68\\%'), m('95\\%'), m('99.7\\%'), m('50\\%')], c: 1, why: 'The middle rule.' },
+      { q: m('i²') + ' is:', a: [m('1'), m('−1'), m('i'), m('0')], c: 1, why: 'The definition.' },
+      { q: m('|z − a| = r') + ' is:', a: ['a line', 'a circle', 'a half-line', 'a point'], c: 1, why: 'Constant distance.' },
+      { q: 'The solution of ' + m(f('dy', 'dx') + ' = ky') + ':', a: [m('y = kx + c'), m('y = Ae^{kx}'), m('y = ln kx'), m('y = kx²')], c: 1, why: 'Exponential.' },
+      { q: 'Equilibrium is where:', a: [m('y = 0'), m(f('dy', 'dx') + ' = 0'), m('x = 0'), m('k = 0')], c: 1, why: 'The rate vanishes.' }
+    ]
+  },
+  quiz: [
+    { q: 'Which questions should be done first?', a: ['in order', 'the mechanical ones — 1, 5 and 6', 'the hardest', 'the longest'], c: 1, why: m('21') + ' marks in ' + m('18') + ' minutes.' },
+    { q: 'A blank answer earns:', a: ['nothing', 'a method mark for the formula', 'half marks', 'a warning'], c: 0, why: 'So write the formula.' },
+    { q: 'The entrance paper rewards:', a: ['ingenuity', 'accuracy and speed on standard types', 'long proofs', 'guessing'], c: 1, why: 'The types repeat.' },
+    { q: 'The best summer practice is:', a: ['reading', 'timed past papers, marked the same evening', 'new topics', 'nothing'], c: 1, why: 'And a list of repeated slips.' }
+  ],
+  practice: {
+    easy: [
+      [m(f('d', 'dx') + '(x³ln x)'), m('3x²ln x + x²')],
+      [m(f('d', 'dx') + '(' + f('sin x', 'x²') + ')'), m(f('x cos x − 2 sin x', 'x³'))],
+      [m('∫₀²2x dx'), m('4')],
+      [m('μ') + ' of ' + m('B(10, 0.3)'), m('3')],
+      [m('σ') + ' of ' + m('B(10, 0.3)'), m('≈ 1.45')],
+      ['Solve ' + m('z² + 2z + 5 = 0'), m('−1 ± 2i')],
+      ['Describe ' + m('|z − 2i| = 3'), 'Circle, centre ' + m('2i') + ', radius ' + m('3')]
+    ],
+    med: [
+      ['Stationary points of ' + m('y = x³ − 6x² + 9x + 2'), m('(1, 6)') + ' max, ' + m('(3, 2)') + ' min'],
+      [m('∫₁⁴(2x + ' + f('1', sr('x')) + ') dx'), m('15 + 2') + ' = ' + m('17')],
+      ['Area between ' + m('y = x²') + ' and ' + m('y = 2x'), m(f('4', '3'))],
+      ['Box of 4 red, 6 blue, two drawn without replacement: ' + m('P(RR)'), m(f('2', '15'))],
+      ['Same: ' + m('P') + '(one of each)', m(f('8', '15'))],
+      [m('P(X = 2)') + ' for ' + m('B(10, 0.3)'), m('≈ 0.233')],
+      ['Simplify ' + m(f('2 + 3i', '1 − i')), m(f('−1 + 5i', '2'))]
+    ],
+    hard: [
+      [m('P(X ≥ 1)') + ' for ' + m('B(10, 0.3)'), m('≈ 0.972')],
+      ['Half-life ' + m('6') + ' days from ' + m('400') + ': ' + m('N(15)'), m('≈ 71')],
+      ['Greatest and least ' + m('|z|') + ' on ' + m('|z − 2i| = 3'), m('5') + ' and ' + m('1')],
+      ['Volume when ' + m('y = x²') + ' from ' + m('0') + ' to ' + m('2') + ' rotates about ' + m('Ox'), m(f('32π', '5'))],
+      ['A box of 4 red and 6 blue: ' + m('P') + '(second red)', m(f('2', '5'))],
+      ['Show that ' + m('y = x³ − 6x² + 9x + 2') + ' has an inflection at ' + m('x = 2'), m('y″ = 6x − 12 = 0')],
+      ['Solve ' + m(f('dy', 'dx') + ' = ' + f('y', 'x²')) + ' with ' + m('y(1) = e'), m('y = e²e^{−1/x}')]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'This is the last algebra lesson of the school course. The summer list is the part that matters.',
+  homework: [
+    'Rewrite in full every annual-paper question that lost a mark, naming the slip in the margin.',
+    'Write the two years in one page: the eight blocks with one formula and one sketch each.',
+    'Work one complete past entrance paper under timed conditions and mark it against the scheme the same evening.',
+    'Write the list of question types that cost you a mark more than once, and one sentence saying how you will practise each.'
+  ]
+});
