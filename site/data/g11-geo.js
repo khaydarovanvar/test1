@@ -3548,3 +3548,1374 @@ G11_GEO.push({
     'Measure what your cone actually holds and explain in two sentences why it differs from ' + m('200') + ' ml.'
   ]
 });
+
+/* ============================== 24 ============================== */
+G11_GEO.push({
+  id: 'g11-24', stream: 'geo', grade: 11, quarter: 3, lessons: '39', hours: 1,
+  title: 'The frustum of a cone',
+  subtitle: 'The bucket, the lampshade and the flowerpot — and the two formulas that measure them.',
+  uz: 'Geometry 11, §18', uzPage: 'pp. 195–200',
+  cam: 'Extension', camPage: 'Core & Extended, pp. 343–346', wb: 'Exercise 18.1',
+  objectives: [
+    'Describe the elements of a frustum of a cone.',
+    'Compute its curved and total surface area.',
+    'Compute its volume.',
+    'Solve a practical problem about a bucket or a lampshade.'
+  ],
+  terms: [
+    ['Frustum of a cone', 'Kesik konus', 'Усечённый конус'],
+    ['Upper radius', 'Yuqori radius', 'Верхний радиус'],
+    ['Lower radius', 'Quyi radius', 'Нижний радиус'],
+    ['Slant height', 'Yasovchi', 'Образующая'],
+    ['Curved surface', 'Yon sirt', 'Боковая поверхность'],
+    ['Capacity', 'Sig‘im', 'Вместимость'],
+    ['Complementary cone', 'To‘ldiruvchi konus', 'Дополняющий конус'],
+    ['Axial section', 'O‘qli kesim', 'Осевое сечение']
+  ],
+  timing: [[8, 'The solid'], [14, 'Surface area'], [14, 'Volume'], [6, 'Practical problems'], [3, 'Homework']],
+  sections: [
+    {
+      h: 'The solid',
+      html: `<p>Cut a cone with a plane parallel to the base and remove the small cone. What remains is a
+      <b>frustum of a cone</b> — the shape of every bucket, lampshade and flowerpot.</p>
+      {{fig:frustum:The removed cone shown dashed. R and r are the two radii; l is the slant height of the frustum.}}
+      ${eq(m('l² = h² + (R − r)²'), true)}
+      <p>The axial section is a trapezium with parallel sides ${m('2R')} and ${m('2r')}, height ${m('h')}
+      and slanting sides ${m('l')}. The ${m('R − r')} in the formula is the horizontal step from one
+      radius to the other.</p>`
+    },
+    {
+      h: 'Surface area',
+      html: `${eq(m('S_curved = πl(R + r)') + '     ' + m('S_total = πl(R + r) + πR² + πr²'), true)}
+      <p>It is the big cone's curved area minus the small one's, simplified — the same construction as
+      the pyramid frustum, with ${m(f('1', '2') + '(P₁ + P₂)l')} becoming ${m('π(R + r)l')}.</p>
+      <div class="warn"><span class="wl">A bucket has one end, not two</span>
+      A bucket needs ${m('πl(R + r) + πr²')} — the curved surface and the <b>base</b> only. Read the
+      object before choosing which circles to include.</div>`
+    },
+    {
+      h: 'Volume',
+      html: `${eq(m('V = ' + f('πh', '3') + '(R² + Rr + r²)'), true)}
+      <p>The same shape of formula as the pyramid frustum, with ${m(sr('B₁B₂'))} becoming
+      ${m('πRr')}. With ${m('r = R')} it gives the cylinder ${m('πR²h')}; with ${m('r = 0')} it gives
+      the cone ${m(f('1', '3') + 'πR²h')}. Both checks are worth doing once.</p>
+      <p><b>Example.</b> A bucket of radii ${m('12')} and ${m('9')} cm and depth ${m('20')} cm:</p>
+      ${eq(m('V = ' + f('20π', '3') + '(144 + 108 + 81) = ' + f('20π', '3') + '(333) = 2220π ≈ 6975') + ' cm³', true)}
+      <p>That is about ${m('7')} litres — a realistic bucket.</p>`
+    },
+    {
+      h: 'Practical problems',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Object</th><th>What is wanted</th><th>Which formula</th></tr></thead>
+      <tbody>
+        <tr><td>a bucket</td><td>capacity</td><td class="m">${f('πh', '3')}(R² + Rr + r²)</td></tr>
+        <tr><td>a lampshade</td><td>material</td><td class="m">πl(R + r)</td></tr>
+        <tr><td>a flowerpot</td><td>capacity and the material for the sides and base</td><td>both</td></tr>
+        <tr><td>a paper cup</td><td>the flat sector-ring to cut</td><td>the net</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The check that catches errors</div>
+      Put ${m('r = R')} into any frustum formula: it must give the cylinder. Put ${m('r = 0')}: it must
+      give the cone. A formula that fails either check has been mis-copied.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A bucket has radii ' + m('12') + ' and ' + m('9') + ' cm and depth ' + m('20') + ' cm. Find its capacity in litres.',
+      steps: [
+        [m('V = ' + f('20π', '3') + '(144 + 108 + 81)'), ''],
+        [m('= ' + f('20π', '3') + ' × 333 = 2220π'), ''],
+        [m('≈ 6975') + ' cm³', ''],
+        [m('≈ 7.0') + ' litres.', '']
+      ],
+      ans: m('≈ 7.0') + ' litres'
+    },
+    {
+      q: 'The same bucket: find the area of metal needed (curved surface and base).',
+      steps: [
+        [m('l = ' + sr('400 + 9') + ' = ' + sr('409') + ' ≈ 20.2'), ''],
+        [m('S_curved = π(20.2)(21) ≈ 1333'), ''],
+        [m('base = π(81) ≈ 254'), ''],
+        [m('≈ 1587') + ' cm².', '']
+      ],
+      ans: m('≈ 1590') + ' cm²'
+    },
+    {
+      q: 'A frustum has radii ' + m('6') + ' and ' + m('3') + ' and slant height ' + m('5') + '. Find its height and volume.',
+      steps: [
+        [m('h = ' + sr('25 − 9') + ' = 4'), ''],
+        [m('V = ' + f('4π', '3') + '(36 + 18 + 9)'), ''],
+        [m('= ' + f('4π', '3') + ' × 63 = 84π'), '']
+      ],
+      ans: m('h = 4') + ', ' + m('V = 84π') + ' ≈ ' + m('264')
+    }
+  ],
+  modelNote: 'Bring a real bucket and measure its two radii and depth.',
+  interactive: {
+    type: 'scaleSolid',
+    title: 'Cutting a cone',
+    hint: 'The removed cone is similar to the whole.'
+  },
+  quiz: [
+    { q: m('l²') + ' for a frustum equals:', a: [m('h² + R²'), m('h² + (R − r)²'), m('h² + (R + r)²'), m('R² − r²')], c: 1, why: 'The horizontal step is ' + m('R − r') + '.' },
+    { q: m('S_curved') + ' of a frustum:', a: [m('πrl'), m('πl(R + r)'), m('πl(R − r)'), m('2πrl')], c: 1, why: 'Big cone minus small.' },
+    { q: m('V') + ' of a frustum:', a: [m(f('πh', '2') + '(R² + r²)'), m(f('πh', '3') + '(R² + Rr + r²)'), m(f('1', '3') + 'πR²h'), m('πR²h')], c: 1, why: 'The ' + m('Rr') + ' term is essential.' },
+    { q: 'Setting ' + m('r = R') + ' gives:', a: ['a cone', 'a cylinder', 'a sphere', 'nothing'], c: 1, why: m('πR²h') + '.' },
+    { q: 'Setting ' + m('r = 0') + ' gives:', a: ['a cone', 'a cylinder', 'a sphere', 'nothing'], c: 0, why: m(f('1', '3') + 'πR²h') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('l') + ' with ' + m('h = 4, R = 6, r = 3'), m('5')],
+      [m('l') + ' with ' + m('h = 12, R = 10, r = 5'), m('13')],
+      [m('S_curved') + ' with ' + m('l = 5, R = 6, r = 3'), m('45π')],
+      [m('V') + ' with ' + m('h = 4, R = 6, r = 3'), m('84π')],
+      ['Setting ' + m('r = R') + ' gives', 'a cylinder'],
+      ['Setting ' + m('r = 0') + ' gives', 'a cone'],
+      ['Axial section of a frustum', 'a trapezium']
+    ],
+    med: [
+      ['Bucket ' + m('R = 12, r = 9, h = 20') + ': capacity in litres', m('≈ 7.0')],
+      ['Same: metal for the sides and base', m('≈ 1590') + ' cm²'],
+      [m('R = 10, r = 4, h = 8') + ': the volume', m(f('8π', '3') + ' × 156') + ' = ' + m('416π')],
+      ['Same: the slant height', m('10')],
+      ['Same: the curved area', m('140π')],
+      ['A lampshade ' + m('R = 20, r = 12, h = 15') + ': material', m('l = 17') + ', curved area ' + m('544π')],
+      ['A flowerpot ' + m('R = 15, r = 10, h = 18') + ': capacity in litres', m('≈ 8.9')]
+    ],
+    hard: [
+      ['A frustum of volume ' + m('84π') + ' with ' + m('R = 6, r = 3') + ': its height', m('4')],
+      ['A bucket holds 10 litres with ' + m('R = 14, r = 11') + ': its depth', m('≈ 20.6') + ' cm'],
+      ['Show ' + m('V') + ' reduces to the cone when ' + m('r = 0'), 'The other two terms vanish'],
+      ['A frustum cut halfway up a cone: the volume ratio frustum : whole', m('7 : 8')],
+      ['A frustum with ' + m('R = 2r') + ' and height ' + m('h') + ': its volume in terms of ' + m('r, h'), m(f('7πr²h', '3'))],
+      ['A paper cup ' + m('R = 4, r = 2.5, h = 9') + ': capacity in ml', m('≈ 313')],
+      ['Two similar frustums with heights ' + m('3') + ' and ' + m('5') + ': the volume ratio', m('27 : 125')]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Check every formula by setting ' + m('r = R') + ' and ' + m('r = 0') + '.',
+  homework: [
+    'A bucket has radii ' + m('14') + ' and ' + m('10') + ' cm and depth ' + m('24') + ' cm. Find its capacity in litres.',
+    'The same bucket: find the area of metal for the curved surface and the base.',
+    'A frustum has radii ' + m('8') + ' and ' + m('5') + ' and slant height ' + m('5') + '. Find its height, curved area and volume.',
+    'Show that the frustum volume formula gives the cylinder when ' + m('r = R') + ' and the cone when ' + m('r = 0') + '.'
+  ]
+});
+
+/* ============================== 25 ============================== */
+G11_GEO.push({
+  id: 'g11-25', stream: 'geo', grade: 11, quarter: 3, lessons: '40', hours: 1,
+  title: 'Similar solids and the volume scale factor',
+  subtitle: 'Cambridge insert: one length ratio, three consequences — used on real models and real costs.',
+  uz: 'Geometry 11, §18 (extension)', uzPage: 'pp. 201–204',
+  cam: 'IGCSE E21.1–21.2', camPage: 'Core & Extended, pp. 226–234', wb: 'IGCSE Exercise 21.2',
+  objectives: [
+    'Apply the k, k² and k³ rules to similar solids.',
+    'Recover the scale factor from an area or a volume ratio.',
+    'Solve problems on models, packaging and costs.',
+    'Explain why large animals are proportionally thicker.'
+  ],
+  terms: [
+    ['Similar solids', 'O‘xshash jismlar', 'Подобные тела'],
+    ['Scale factor', 'O‘xshashlik koeffitsienti', 'Коэффициент подобия'],
+    ['Area factor', 'Yuza koeffitsienti', 'Коэффициент площади'],
+    ['Volume factor', 'Hajm koeffitsienti', 'Коэффициент объёма'],
+    ['Model', 'Model', 'Модель'],
+    ['Corresponding lengths', 'Mos uzunliklar', 'Соответственные длины'],
+    ['Cube root', 'Kub ildiz', 'Кубический корень'],
+    ['Surface-area-to-volume ratio', 'Sirt va hajm nisbati', 'Отношение поверхности к объёму']
+  ],
+  timing: [[8, 'The three rules'], [14, 'Working backwards'], [12, 'Applications'], [8, 'Why size matters'], [3, 'Homework']],
+  sections: [
+    {
+      h: 'The three rules',
+      html: `${eq(m(f('L₂', 'L₁') + ' = k') + '   ·   ' + m(f('S₂', 'S₁') + ' = k²') + '   ·   ' + m(f('V₂', 'V₁') + ' = k³'), true)}
+      {{fig:similarSolids:Double every length: four times the surface, eight times the volume.}}
+      <p>Two solids are similar when one is an enlargement of the other. All cubes are similar; all
+      spheres are similar; two cones are similar exactly when ${m(f('r', 'h'))} is the same for both.</p>`
+    },
+    {
+      h: 'Working backwards',
+      html: `${eq(m('k = ' + sr(f('S₂', 'S₁'))) + '     ' + m('k = ∛' + f('V₂', 'V₁')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th class="m">k</th><th>Other factors</th></tr></thead>
+      <tbody>
+        <tr><td>volumes ${m('8 : 27')}</td><td class="m">${f('2', '3')}</td><td>areas ${m('4 : 9')}</td></tr>
+        <tr><td>areas ${m('16 : 25')}</td><td class="m">${f('4', '5')}</td><td>volumes ${m('64 : 125')}</td></tr>
+        <tr><td>lengths ${m('1 : 50')}</td><td class="m">${f('1', '50')}</td><td>areas ${m('1 : 2500')}, volumes ${m('1 : 125 000')}</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Applications',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Which factor</th></tr></thead>
+      <tbody>
+        <tr><td>how much paint?</td><td class="m">k²</td></tr>
+        <tr><td>how much liquid?</td><td class="m">k³</td></tr>
+        <tr><td>how much wire round the edge?</td><td class="m">k</td></tr>
+        <tr><td>how much does it weigh?</td><td class="m">k³</td></tr>
+        <tr><td>how much fabric to cover it?</td><td class="m">k²</td></tr>
+      </tbody></table></div>
+      <p><b>Example.</b> A model at ${m('1 : 20')} needs ${m('0.15')} litres of paint. The real object
+      needs ${m('0.15 × 400 = 60')} litres — not ${m('3')}.</p>
+      <div class="warn"><span class="wl">Paint is an area, not a volume</span>
+      A coat of paint is a thin layer over a surface, so it scales with ${m('k²')}. Filling a tank
+      scales with ${m('k³')}. Reading which is asked is the whole question.</div>`
+    },
+    {
+      h: 'Why size matters',
+      html: `<p>As a solid grows, its volume outruns its surface:</p>
+      ${eq(m(f('S', 'V') + ' scales as ' + f('k²', 'k³') + ' = ' + f('1', 'k')), true)}
+      <div class="keybox"><div class="klabel">Three consequences</div>
+      A large animal has proportionally <b>less</b> skin per kilogram, so it loses heat more slowly —
+      which is why elephants have big ears and mice do not.<br>
+      Its mass grows as ${m('k³')} but its bone cross-section only as ${m('k²')}, so it needs
+      proportionally thicker legs.<br>
+      Small objects cool, dry and dissolve faster — the reason for chopping food and grinding ore.</div>
+      <p>Doubling an animal's height multiplies its weight by ${m('8')} and its bone strength by only
+      ${m('4')}. The scaled-up animal would break its own legs — a real constraint, first noticed by
+      Galileo.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Two similar cones have volumes ' + m('54') + ' and ' + m('128') + ' cm³. Find the ratio of their surface areas.',
+      steps: [
+        [m('k³ = ' + f('128', '54') + ' = ' + f('64', '27')), ''],
+        [m('k = ' + f('4', '3')), ''],
+        [m('k² = ' + f('16', '9')), '']
+      ],
+      ans: m('9 : 16')
+    },
+    {
+      q: 'A model car is ' + m('1 : 24') + '. It needs ' + m('12') + ' cm² of paint. The real car needs?',
+      steps: [
+        [m('k = 24') + ', so ' + m('k² = 576') + '.', ''],
+        [m('12 × 576 = 6912') + ' cm².', ''],
+        [m('= 0.69') + ' m².', '']
+      ],
+      ans: m('≈ 0.69') + ' m²'
+    },
+    {
+      q: 'Two similar jugs hold ' + m('0.5') + ' and ' + m('1.5') + ' litres. Their heights are in what ratio?',
+      steps: [
+        [m('k³ = 3'), ''],
+        [m('k = ∛3 ≈ 1.442'), '']
+      ],
+      ans: m('1 : 1.44')
+    }
+  ],
+  modelNote: 'Compare two similar containers and predict, then measure, the capacity ratio.',
+  interactive: {
+    type: 'scaleSolid',
+    title: 'Scaling a solid',
+    hint: 'Watch how differently the three bars grow.'
+  },
+  quiz: [
+    { q: 'Doubling all lengths multiplies the volume by:', a: [m('2'), m('4'), m('6'), m('8')], c: 3, why: m('k³') + '.' },
+    { q: 'And the surface area by:', a: [m('2'), m('4'), m('8'), m('16')], c: 1, why: m('k²') + '.' },
+    { q: 'Volumes ' + m('8 : 27') + ' gives lengths:', a: [m('8 : 27'), m('2 : 3'), m('4 : 9'), m('1 : 3')], c: 1, why: 'Cube roots.' },
+    { q: 'Paint scales with:', a: [m('k'), m('k²'), m('k³'), 'nothing'], c: 1, why: 'It covers an area.' },
+    { q: m(f('S', 'V')) + ' scales as:', a: [m('k'), m(f('1', 'k')), m('k²'), m('k³')], c: 1, why: m(f('k²', 'k³')) + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('k = 3') + ': area factor', m('9')],
+      [m('k = 3') + ': volume factor', m('27')],
+      [m('k = 0.5') + ': volume factor', m('0.125')],
+      ['Volumes ' + m('27 : 64') + ': lengths', m('3 : 4')],
+      ['Areas ' + m('9 : 25') + ': lengths', m('3 : 5')],
+      ['Paint scales with', m('k²')],
+      ['Liquid scales with', m('k³')]
+    ],
+    med: [
+      ['Volumes ' + m('54') + ' and ' + m('128') + ': the area ratio', m('9 : 16')],
+      ['Model ' + m('1 : 24') + ' needing ' + m('12') + ' cm² of paint: the real area', m('≈ 0.69') + ' m²'],
+      ['Jugs of ' + m('0.5') + ' and ' + m('1.5') + ' litres: the height ratio', m('1 : 1.44')],
+      ['Model ' + m('1 : 50') + ': the volume ratio', m('1 : 125 000')],
+      ['A statue ' + m('1 : 6') + ' needs ' + m('0.5') + ' litres of paint. The real one', m('18') + ' litres'],
+      ['Two similar tins, heights ' + m('8') + ' and ' + m('12') + '; smaller holds ' + m('320') + ' ml', m('1080') + ' ml'],
+      ['Areas ' + m('49 : 81') + ': the volume ratio', m('343 : 729')]
+    ],
+    hard: [
+      ['Two similar solids differ in volume by ' + m('111') + ' with ' + m('k = ' + f('4', '3')), m('81') + ' and ' + m('192')],
+      ['A cone cut halfway up: the volume ratio of the parts', m('1 : 7')],
+      ['A ' + m('1 : 200') + ' model bridge with deck area ' + m('80') + ' cm²: the real area', m('320') + ' m²'],
+      ['Why can a mouse survive a fall an elephant cannot?', 'Its surface-to-mass ratio is far larger'],
+      ['A doubled animal: weight and bone strength factors', m('8') + ' and ' + m('4')],
+      ['Two similar containers hold 2 and 6.75 litres. The height ratio', m('2 : 3')],
+      ['A sugar cube dissolves faster when crushed. Why?', 'Crushing multiplies the surface area at the same volume']
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'State ' + m('k') + ' explicitly before using ' + m('k²') + ' or ' + m('k³') + '.',
+  homework: [
+    'Two similar cones have volumes ' + m('40') + ' and ' + m('135') + ' cm³. Find the ratio of their heights and of their surface areas.',
+    'A model aeroplane is ' + m('1 : 72') + '. Its wing area is ' + m('60') + ' cm². Find the real wing area in m².',
+    'Two similar bottles hold ' + m('330') + ' and ' + m('1000') + ' ml. Find the ratio of their heights.',
+    'Explain, using ' + m('k²') + ' and ' + m('k³') + ', why a doubled animal could not stand.'
+  ]
+});
+
+/* ============================== 26 ============================== */
+G11_GEO.push({
+  id: 'g11-26', stream: 'geo', grade: 11, quarter: 3, lessons: '41–42', hours: 2,
+  title: 'The sphere and its sections; inscribed and circumscribed solids',
+  subtitle: 'Every plane section is a circle — and that single fact settles every sphere problem.',
+  uz: 'Geometry 11, §19', uzPage: 'pp. 205–216',
+  cam: 'IGCSE E13.x', camPage: 'Core & Extended, pp. 347–354', wb: 'Exercise 19.1',
+  objectives: [
+    'Define a sphere and a ball, and name their elements.',
+    'Compute the radius of a plane section from its distance to the centre.',
+    'Recognise great and small circles.',
+    'Solve problems on solids inscribed in or circumscribed about a sphere.'
+  ],
+  terms: [
+    ['Sphere', 'Sfera', 'Сфера'],
+    ['Ball', 'Shar', 'Шар'],
+    ['Great circle', 'Katta aylana', 'Большая окружность'],
+    ['Small circle', 'Kichik aylana', 'Малая окружность'],
+    ['Section of a sphere', 'Sfera kesimi', 'Сечение сферы'],
+    ['Tangent plane', 'Urinma tekislik', 'Касательная плоскость'],
+    ['Inscribed sphere', 'Ichki chizilgan sfera', 'Вписанная сфера'],
+    ['Circumscribed sphere', 'Tashqi chizilgan sfera', 'Описанная сфера'],
+    ['Diameter', 'Diametr', 'Диаметр']
+  ],
+  timing: [[12, 'Sphere and ball'], [24, 'Plane sections'], [24, 'Tangent planes'], [24, 'Inscribed and circumscribed'], [20, 'Practice'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'Sphere and ball',
+      html: `<div class="keybox"><div class="klabel">Two different objects</div>
+      A <b>sphere</b> is the <b>surface</b> — all points at distance ${m('R')} from the centre. A
+      <b>ball</b> is the solid — all points at distance ${m('≤ R')}. Surface area belongs to the sphere;
+      volume belongs to the ball.</div>
+      <p>In coordinates (Quarter I) the sphere of centre ${m('(a, b, c)')} and radius ${m('R')} is</p>
+      ${eq(m('(x − a)² + (y − b)² + (z − c)² = R²'), true)}
+      <p>The sphere has infinitely many planes and axes of symmetry, and one centre — the most symmetric
+      solid there is.</p>`
+    },
+    {
+      h: 'Plane sections',
+      html: `{{fig:sphereSection:A plane at distance d from the centre cuts a circle of radius ρ, with ρ² = R² − d².}}
+      ${eq(m('ρ² = R² − d²'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">d</th><th>Section</th><th>Name</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0</td><td>a circle of radius ${m('R')}</td><td>a <b>great</b> circle</td></tr>
+        <tr><td class="m">0 &lt; d &lt; R</td><td>a circle of radius ${m(sr('R² − d²'))}</td><td>a <b>small</b> circle</td></tr>
+        <tr><td class="m">d = R</td><td>a single point</td><td>a tangent plane</td></tr>
+        <tr><td class="m">d &gt; R</td><td>nothing</td><td>the plane misses the sphere</td></tr>
+      </tbody></table></div>
+      <p>The great circles are the largest sections, and the shortest path between two points on a
+      sphere runs along one — which is why aircraft routes look curved on a flat map.</p>`
+    },
+    {
+      h: 'Tangent planes',
+      html: `<div class="keybox"><div class="klabel">Tangent plane</div>
+      A plane at distance exactly ${m('R')} from the centre touches the sphere at one point, and is
+      <b>perpendicular</b> to the radius drawn to that point.</div>
+      <p>That perpendicularity is the space version of the circle theorem of Grade 8, and it is proved
+      the same way: any other point of the plane is further from the centre than the foot of the
+      perpendicular, so it lies outside the sphere.</p>`
+    },
+    {
+      h: 'Inscribed and circumscribed',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Situation</th><th>Relation</th></tr></thead>
+      <tbody>
+        <tr><td>sphere inscribed in a cube of edge ${m('a')}</td><td class="m">R = ${f('a', '2')}</td></tr>
+        <tr><td>sphere circumscribed about a cube of edge ${m('a')}</td><td class="m">R = ${f('a' + sr('3'), '2')}</td></tr>
+        <tr><td>sphere inscribed in a cylinder of radius ${m('r')}, height ${m('2r')}</td><td class="m">R = r</td></tr>
+        <tr><td>sphere circumscribed about a cuboid ${m('a × b × c')}</td><td class="m">R = ${f(sr('a² + b² + c²'), '2')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The two questions to ask</div>
+      <b>Inscribed:</b> the sphere touches the faces, so its diameter is the smallest dimension.
+      <b>Circumscribed:</b> the sphere passes through the vertices, so its diameter is the space
+      diagonal.</div>
+      <p><b>Archimedes’ result.</b> A sphere inscribed in a cylinder of the same radius and height
+      ${m('2r')} has exactly ${m(f('2', '3'))} of the cylinder's volume — and exactly ${m(f('2', '3'))}
+      of its total surface area. Archimedes had it carved on his tomb.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A plane is ' + m('8') + ' cm from the centre of a sphere of radius ' + m('17') + ' cm. Find the radius of the section.',
+      steps: [
+        [m('ρ² = 289 − 64 = 225'), ''],
+        [m('ρ = 15'), '']
+      ],
+      ans: m('15') + ' cm'
+    },
+    {
+      q: 'A sphere is inscribed in a cube of edge ' + m('12') + '. Find its radius. Then find the radius of the sphere through the cube’s vertices.',
+      steps: [
+        ['Inscribed: touches the faces, ' + m('2R = 12') + '.', m('R = 6')],
+        ['Circumscribed: passes through the vertices.', m('2R = 12' + sr('3'))],
+        [m('R = 6' + sr('3') + ' ≈ 10.4'), '']
+      ],
+      ans: m('6') + ' and ' + m('6' + sr('3'))
+    },
+    {
+      q: 'A section of a sphere has radius ' + m('12') + ' and is ' + m('9') + ' from the centre. Find the sphere’s radius and its surface area.',
+      steps: [
+        [m('R² = 144 + 81 = 225'), ''],
+        [m('R = 15'), ''],
+        [m('S = 4π(225) = 900π ≈ 2827'), '']
+      ],
+      ans: m('R = 15') + '; ' + m('900π') + ' ≈ ' + m('2830')
+    }
+  ],
+  modelNote: 'Cut an orange at different heights and compare the circles.',
+  interactive: {
+    type: 'space3d',
+    title: 'Cutting a sphere',
+    hint: 'Move the plane and watch the section shrink to a point.'
+  },
+  quiz: [
+    { q: 'Every plane section of a sphere is:', a: ['an ellipse', 'a circle', 'a parabola', 'a point'], c: 1, why: 'Whatever the angle.' },
+    { q: m('ρ²') + ' equals:', a: [m('R² + d²'), m('R² − d²'), m('d² − R²'), m('Rd')], c: 1, why: 'Pythagoras from the centre.' },
+    { q: 'A great circle has ' + m('d') + ' equal to:', a: [m('R'), m('0'), m(f('R', '2')), m('2R')], c: 1, why: 'Through the centre.' },
+    { q: 'A sphere inscribed in a cube of edge ' + m('a') + ' has radius:', a: [m('a'), m(f('a', '2')), m(f('a' + sr('3'), '2')), m('a' + sr('2'))], c: 1, why: 'It touches the faces.' },
+    { q: 'A sphere through a cube’s vertices has radius:', a: [m(f('a', '2')), m(f('a' + sr('2'), '2')), m(f('a' + sr('3'), '2')), m('a')], c: 2, why: 'Half the space diagonal.' }
+  ],
+  practice: {
+    easy: [
+      [m('ρ') + ' with ' + m('R = 5, d = 3'), m('4')],
+      [m('ρ') + ' with ' + m('R = 13, d = 5'), m('12')],
+      [m('ρ') + ' with ' + m('R = 17, d = 8'), m('15')],
+      ['Section at ' + m('d = 0') + ' is called', 'a great circle'],
+      ['Section at ' + m('d = R') + ' is', 'a single point'],
+      ['Sphere inscribed in a cube of edge 10: ' + m('R'), m('5')],
+      ['Sphere round a cube of edge 10: ' + m('R'), m('5' + sr('3'))]
+    ],
+    med: [
+      ['Section radius 12 at ' + m('d = 9') + ': the sphere’s radius', m('15')],
+      ['Same: the surface area', m('900π')],
+      ['Sphere round a cuboid ' + m('3 × 4 × 12') + ': its radius', m('6.5')],
+      ['Sphere inscribed in a cylinder ' + m('r = 6, h = 12') + ': ' + m('R'), m('6')],
+      ['A plane 10 from the centre of a sphere of radius 26: the section radius', m('24')],
+      ['A section of radius 8 in a sphere of radius 10: its distance', m('6')],
+      ['A plane 15 from a sphere of radius 12 cuts', 'nothing']
+    ],
+    hard: [
+      ['A sphere of radius 25; two parallel planes on the same side at ' + m('7') + ' and ' + m('20') + '. The section radii', m('24') + ' and ' + m('15')],
+      ['A cone of base radius 6 and height 8 inscribed in a sphere: the sphere’s radius', m('6.25')],
+      ['Archimedes: the sphere’s volume as a fraction of its cylinder', m(f('2', '3'))],
+      ['And the surface areas', m(f('2', '3')) + ' as well'],
+      ['A sphere touches all 12 edges of a cube of edge ' + m('a') + ': its radius', m(f('a' + sr('2'), '2'))],
+      ['Two spheres of radii 5 and 3 with centres 6 apart: the radius of the common circle', m('≈ 2.99')],
+      ['Prove a tangent plane is perpendicular to the radius at the point of contact', 'Any other point is further from the centre']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw the right triangle with legs ' + m('d') + ' and ' + m('ρ') + ' and hypotenuse ' + m('R') + ' every time.',
+  homework: [
+    'A plane is ' + m('9') + ' cm from the centre of a sphere of radius ' + m('41') + ' cm. Find the section radius.',
+    'A section of radius ' + m('20') + ' lies ' + m('21') + ' from the centre. Find the sphere’s radius and surface area.',
+    'Find the radius of the sphere inscribed in, and of the sphere circumscribed about, a cube of edge ' + m('8') + '.',
+    'Find the radius of the sphere through the vertices of a ' + m('6 × 8 × 24') + ' cuboid.',
+    'Explain in three sentences the difference between a sphere and a ball.'
+  ]
+});
+
+/* ============================== 27 ============================== */
+G11_GEO.push({
+  id: 'g11-27', stream: 'geo', grade: 11, quarter: 3, lessons: '43–44', hours: 2,
+  title: 'Trigonometry applied to solids of revolution',
+  subtitle: 'Cambridge insert: the axial section is a plane triangle, and every cone problem lives inside it.',
+  uz: 'Geometry 11, §19 (extension)', uzPage: 'pp. 217–222',
+  cam: 'IGCSE E6.6', camPage: 'Core & Extended, pp. 300–312', wb: 'IGCSE Exercise 6.6',
+  objectives: [
+    'Extract the axial section of a cone or a frustum and solve it.',
+    'Find the semi-vertical angle of a cone.',
+    'Use the sine and cosine rules inside a solid of revolution.',
+    'Combine a trigonometric result with a volume formula.'
+  ],
+  terms: [
+    ['Axial section', 'O‘qli kesim', 'Осевое сечение'],
+    ['Semi-vertical angle', 'Yarim uch burchagi', 'Половина угла при вершине'],
+    ['Slant height', 'Yasovchi', 'Образующая'],
+    ['Solid of revolution', 'Aylanish jismi', 'Тело вращения'],
+    ['Angle of the slant with the base', 'Yasovchi va asos burchagi', 'Угол образующей с основанием'],
+    ['Inscribed cone', 'Ichki chizilgan konus', 'Вписанный конус'],
+    ['Extracted triangle', 'Ajratilgan uchburchak', 'Выделенный треугольник'],
+    ['Sine rule', 'Sinuslar teoremasi', 'Теорема синусов'],
+    ['Cosine rule', 'Kosinuslar teoremasi', 'Теорема косинусов']
+  ],
+  timing: [[14, 'The axial section'], [24, 'The semi-vertical angle'], [24, 'Frustums and inscribed solids'], [22, 'Combined problems'], [20, 'Practice'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The axial section',
+      html: `<div class="keybox"><div class="klabel">The one move</div>
+      Cut the solid through its axis. A cone gives an isosceles triangle of base ${m('2r')} and height
+      ${m('h')}; a cylinder gives a rectangle ${m('2r')} by ${m('h')}; a frustum gives a trapezium.
+      Draw that flat figure separately and solve it as a plane problem.</div>
+      {{fig:coneNet:The right triangle inside the cone: r, h and l.}}
+      <p>Every 3-D question about a solid of revolution reduces to this figure, exactly as every cuboid
+      question in Grade 10 reduced to one extracted triangle.</p>`
+    },
+    {
+      h: 'The semi-vertical angle',
+      html: `<p>The angle ${m('α')} between the axis and a slant line is the <b>semi-vertical angle</b>;
+      the full angle at the apex is ${m('2α')}.</p>
+      ${eq(m('tan α = ' + f('r', 'h')) + '     ' + m('sin α = ' + f('r', 'l')) + '     ' + m('cos α = ' + f('h', 'l')), true)}
+      <p>The angle ${m('β')} the slant makes with the <b>base</b> is the complement: ${m('β = 90° − α')},
+      with ${m('tan β = ' + f('h', 'r'))}.</p>
+      <div class="warn"><span class="wl">Two different angles</span>
+      A question asking for “the angle at the vertex” wants ${m('2α')}; one asking for “the angle of the
+      slant with the base” wants ${m('β')}. Read which, and mark it on the extracted triangle.</div>`
+    },
+    {
+      h: 'Frustums and inscribed solids',
+      html: `<p>The axial section of a frustum is a trapezium; drop a perpendicular from the top corner
+      to make a right triangle with legs ${m('h')} and ${m('R − r')} and hypotenuse ${m('l')}. Then</p>
+      ${eq(m('tan β = ' + f('h', 'R − r')), true)}
+      <p><b>Inscribed cone in a sphere.</b> The axial section is an isosceles triangle inscribed in a
+      circle. With base radius ${m('r')} and height ${m('h')} in a sphere of radius ${m('R')}:</p>
+      ${eq(m('r² = h(2R − h)') + '   (the intersecting-chord theorem)', true)}
+      <p><b>Cylinder in a cone.</b> Similar triangles in the axial section relate the cylinder's radius
+      to its height, and the optimisation of Grade 11 Quarter I then finds the largest one.</p>`
+    },
+    {
+      h: 'Combined problems',
+      html: `<p>A full problem chains three steps:</p>
+      <ol>
+        <li>Extract and label the axial section.</li>
+        <li>Solve it with right-angle trigonometry, or the sine or cosine rule.</li>
+        <li>Feed the length found into the volume or surface-area formula.</li>
+      </ol>
+      <p><b>Example.</b> A cone has slant height ${m('20')} and semi-vertical angle ${m('35°')}. Then
+      ${m('r = 20 sin 35° ≈ 11.47')} and ${m('h = 20 cos 35° ≈ 16.38')}, so
+      ${m('V = ' + f('1', '3') + 'π(131.6)(16.38) ≈ 2258')} and
+      ${m('S = πr(r + l) ≈ 1134')}.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A cone has radius ' + m('9') + ' and height ' + m('12') + '. Find the semi-vertical angle and the angle of the slant with the base.',
+      steps: [
+        [m('tan α = ' + f('9', '12') + ' = 0.75'), ''],
+        [m('α ≈ 36.9°'), 'Semi-vertical.'],
+        [m('β = 90 − 36.9 = 53.1°'), 'With the base.']
+      ],
+      ans: m('α ≈ 36.9°') + ', ' + m('β ≈ 53.1°')
+    },
+    {
+      q: 'A cone has slant height ' + m('20') + ' and semi-vertical angle ' + m('35°') + '. Find its volume.',
+      steps: [
+        [m('r = 20 sin 35° ≈ 11.47'), ''],
+        [m('h = 20 cos 35° ≈ 16.38'), ''],
+        [m('V = ' + f('1', '3') + 'π(131.6)(16.38)'), ''],
+        [m('≈ 2258'), '']
+      ],
+      ans: m('≈ 2260') + ' cubic units'
+    },
+    {
+      q: 'A frustum has radii ' + m('10') + ' and ' + m('4') + ' and height ' + m('8') + '. Find the angle the slant makes with the base.',
+      steps: [
+        [m('R − r = 6'), ''],
+        [m('tan β = ' + f('8', '6')), ''],
+        [m('β ≈ 53.1°'), '']
+      ],
+      ans: m('≈ 53.1°')
+    }
+  ],
+  modelNote: 'Cut a cone of plasticine through its axis and hold up the triangle.',
+  interactive: {
+    type: 'solveTriangle',
+    title: 'The axial triangle',
+    hint: 'Change the sides and watch the angles.'
+  },
+  quiz: [
+    { q: 'The axial section of a cone is:', a: ['a circle', 'an isosceles triangle', 'a rectangle', 'a trapezium'], c: 1, why: 'Base ' + m('2r') + ', sides ' + m('l') + '.' },
+    { q: 'The axial section of a frustum is:', a: ['a triangle', 'a trapezium', 'a rectangle', 'a circle'], c: 1, why: 'Two parallel sides.' },
+    { q: m('tan α') + ' for the semi-vertical angle:', a: [m(f('h', 'r')), m(f('r', 'h')), m(f('r', 'l')), m(f('h', 'l'))], c: 1, why: 'Opposite over adjacent from the axis.' },
+    { q: 'The angle at the apex is:', a: [m('α'), m('2α'), m('90 − α'), m('180 − α')], c: 1, why: 'Two semi-vertical angles.' },
+    { q: 'A cone inscribed in a sphere satisfies:', a: [m('r² = h(2R − h)'), m('r = R'), m('h = R'), m('r² = R² + h²')], c: 0, why: 'The intersecting-chord theorem.' }
+  ],
+  practice: {
+    easy: [
+      ['Semi-vertical angle with ' + m('r = 3, h = 4'), m('≈ 36.9°')],
+      ['Semi-vertical angle with ' + m('r = 5, h = 12'), m('≈ 22.6°')],
+      ['Angle with the base for ' + m('r = 3, h = 4'), m('≈ 53.1°')],
+      [m('r') + ' from ' + m('l = 10, α = 30°'), m('5')],
+      [m('h') + ' from ' + m('l = 10, α = 30°'), m('5' + sr('3'))],
+      ['Axial section of a cylinder', 'a rectangle'],
+      ['Axial section of a frustum', 'a trapezium']
+    ],
+    med: [
+      [m('r = 9, h = 12') + ': both angles', m('36.9°') + ' and ' + m('53.1°')],
+      [m('l = 20, α = 35°') + ': the volume', m('≈ 2260')],
+      ['Same: the total surface area', m('≈ 1130')],
+      ['Frustum ' + m('R = 10, r = 4, h = 8') + ': the slant angle with the base', m('≈ 53.1°')],
+      ['Same: the slant height', m('10')],
+      ['A cone with apex angle ' + m('60°') + ' and ' + m('h = 12') + ': its radius', m('4' + sr('3')) + ' ≈ ' + m('6.93')],
+      ['A cone of ' + m('r = 6, h = 8') + ' inscribed in a sphere: the sphere’s radius', m('6.25')]
+    ],
+    hard: [
+      ['A cone with semi-vertical angle ' + m('30°') + ' and volume ' + m('1000') + ': its height', m('≈ 13.1')],
+      ['A cylinder of greatest volume inscribed in a cone of ' + m('r = 6, h = 12') + ': its dimensions', m('r = 4, h = 4')],
+      ['A cone inscribed in a sphere of radius 10 with height 16: its base radius', m('8')],
+      ['A frustum of slant height 13 and radii 12 and 7: its height and volume', m('12') + ', ' + m('≈ 3630')],
+      ['A cone of maximum volume in a sphere of radius ' + m('R') + ': its height', m(f('4R', '3'))],
+      ['Two cones with the same slant height 15 and angles ' + m('20°, 40°') + ': the volume ratio', m('≈ 1 : 3.5')],
+      ['Prove ' + m('r² = h(2R − h)') + ' for a cone in a sphere', 'Intersecting chords through the axis']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw the axial section separately, and mark the angle asked for.',
+  homework: [
+    'A cone has radius ' + m('7') + ' and height ' + m('24') + '. Find the semi-vertical angle, the apex angle and the angle of the slant with the base.',
+    'A cone has slant height ' + m('26') + ' and semi-vertical angle ' + m('40°') + '. Find its radius, height and volume.',
+    'A frustum has radii ' + m('15') + ' and ' + m('9') + ' and height ' + m('8') + '. Find its slant height and the angle with the base.',
+    'A cone of base radius ' + m('9') + ' and height ' + m('12') + ' is inscribed in a sphere. Find the sphere’s radius.',
+    'Explain in three sentences why the axial section reduces a 3-D problem to a 2-D one.'
+  ]
+});
+
+/* ============================== 28 ============================== */
+G11_GEO.push({
+  id: 'g11-28', stream: 'geo', grade: 11, quarter: 3, lessons: '45–46', hours: 2,
+  title: 'The volume of a sphere and of its parts',
+  subtitle: 'Four thirds pi r cubed — where it comes from, and how to measure a cap, a segment and a sector.',
+  uz: 'Geometry 11, §20', uzPage: 'pp. 223–234',
+  cam: 'IGCSE E13.x', camPage: 'Core & Extended, pp. 355–360', wb: 'Exercise 20.1',
+  objectives: [
+    'State and use the volume of a ball.',
+    'Derive the formula by Cavalieri or by integration.',
+    'Compute the volume of a spherical cap and of a hemisphere.',
+    'Solve problems on floating, displacement and compound solids.'
+  ],
+  terms: [
+    ['Ball', 'Shar', 'Шар'],
+    ['Hemisphere', 'Yarim shar', 'Полушар'],
+    ['Spherical cap', 'Sharsimon segment', 'Шаровой сегмент'],
+    ['Spherical sector', 'Sharsimon sektor', 'Шаровой сектор'],
+    ['Spherical layer', 'Sharsimon qatlam', 'Шаровой слой'],
+    ['Displacement', 'Siqib chiqarish', 'Вытеснение'],
+    ['Cavalieri’s principle', 'Kavaleri prinsipi', 'Принцип Кавальери'],
+    ['Height of a cap', 'Segment balandligi', 'Высота сегмента'],
+    ['Archimedes’ theorem', 'Arximed teoremasi', 'Теорема Архимеда']
+  ],
+  timing: [[14, 'The formula'], [24, 'Where it comes from'], [24, 'Caps and hemispheres'], [22, 'Displacement'], [20, 'Practice'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The formula',
+      html: `${eq(m('V = ' + f('4', '3') + 'πR³'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">R</th><th class="m">V</th><th>Approximately</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1</td><td class="m">${f('4π', '3')}</td><td class="m">4.19</td></tr>
+        <tr><td class="m">3</td><td class="m">36π</td><td class="m">113</td></tr>
+        <tr><td class="m">6</td><td class="m">288π</td><td class="m">905</td></tr>
+        <tr><td class="m">10</td><td class="m">${f('4000π', '3')}</td><td class="m">4189</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Cube the radius, not the diameter</span>
+      A ball of <b>diameter</b> ${m('6')} has ${m('R = 3')} and volume ${m('36π')}, not ${m('288π')}.
+      Halving first is the commonest error, and it is a factor of eight.</div>`
+    },
+    {
+      h: 'Where the formula comes from',
+      html: `<p><b>By Cavalieri.</b> Compare a hemisphere of radius ${m('R')} with a cylinder of radius
+      and height ${m('R')} from which a cone has been removed. At height ${m('y')}:</p>
+      ${eq('hemisphere slice ' + m('= π(R² − y²)') + ' ;  cylinder-minus-cone slice ' + m('= πR² − πy²'), true)}
+      <p>The slices are equal at every height, so the volumes are equal:</p>
+      ${eq(m('V_hemi = πR³ − ' + f('1', '3') + 'πR³ = ' + f('2', '3') + 'πR³') + '  ⇒  ' + m('V_ball = ' + f('4', '3') + 'πR³'), true)}
+      <p><b>By integration.</b> Rotating ${m('y = ' + sr('R² − x²'))} about ${m('Ox')} on
+      ${m('[−R, R]')} gives ${m('π∫(R² − x²)dx = ' + f('4', '3') + 'πR³')} — the same answer, from
+      Quarter III algebra.</p>`
+    },
+    {
+      h: 'Caps, hemispheres and sectors',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Part</th><th>Volume</th></tr></thead>
+      <tbody>
+        <tr><td>hemisphere</td><td class="m">${f('2', '3')}πR³</td></tr>
+        <tr><td>cap of height ${m('h')}</td><td class="m">${f('πh²', '3')}(3R − h)</td></tr>
+        <tr><td>spherical sector (cap + cone to the centre)</td><td class="m">${f('2', '3')}πR²h</td></tr>
+        <tr><td>layer between two parallel planes</td><td>difference of two caps</td></tr>
+      </tbody></table></div>
+      {{fig:sphereSection:The cap sits above the cutting plane; its height h is measured from the plane to the top.}}
+      <p><b>Check the cap formula.</b> Put ${m('h = R')}: ${m(f('πR²', '3') + '(3R − R) = ' + f('2', '3') + 'πR³')} — the
+      hemisphere ✓. Put ${m('h = 2R')}: ${m(f('4πR²', '3') + '(R) = ' + f('4', '3') + 'πR³')} — the whole ball ✓.</p>`
+    },
+    {
+      h: 'Displacement',
+      html: `<div class="keybox"><div class="klabel">Archimedes</div>
+      A solid fully submerged displaces its own volume of liquid. A floating solid displaces its own
+      <b>weight</b> of liquid.</div>
+      <p><b>Example.</b> A ball of radius ${m('3')} cm is dropped into a cylinder of radius ${m('5')} cm
+      containing water. By how much does the level rise?</p>
+      ${eq(m('36π = π(25)Δh   ⇒   Δh = ' + f('36', '25') + ' = 1.44') + ' cm', true)}
+      <p>This is how an irregular solid's volume is measured, and it is the practical purpose of the
+      formula.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the volume of a ball of diameter ' + m('12') + ' cm.',
+      steps: [
+        [m('R = 6'), 'Halve the diameter first.'],
+        [m('V = ' + f('4', '3') + 'π(216)'), ''],
+        [m('= 288π ≈ 905') + ' cm³.', '']
+      ],
+      ans: m('288π') + ' ≈ ' + m('905') + ' cm³'
+    },
+    {
+      q: 'A cap of height ' + m('4') + ' is cut from a sphere of radius ' + m('10') + '. Find its volume.',
+      steps: [
+        [m('V = ' + f('π(16)', '3') + '(30 − 4)'), ''],
+        [m('= ' + f('16π', '3') + ' × 26'), ''],
+        [m('= ' + f('416π', '3') + ' ≈ 436'), '']
+      ],
+      ans: m(f('416π', '3')) + ' ≈ ' + m('436')
+    },
+    {
+      q: 'A ball of radius ' + m('3') + ' is dropped into a cylinder of radius ' + m('5') + '. Find the rise in the water level.',
+      steps: [
+        ['Ball volume ' + m('36π') + '.', ''],
+        [m('π(25)Δh = 36π'), ''],
+        [m('Δh = 1.44') + ' cm.', '']
+      ],
+      ans: m('1.44') + ' cm'
+    }
+  ],
+  modelNote: 'Drop a ball into a measuring cylinder and read the rise before computing it.',
+  interactive: {
+    type: 'solidVolume',
+    title: 'The sphere against its cylinder',
+    hint: 'A sphere is two thirds of the cylinder that just contains it.',
+    kind: 'cylinder'
+  },
+  quiz: [
+    { q: 'The volume of a ball is:', a: [m('4πR²'), m(f('4', '3') + 'πR³'), m(f('2', '3') + 'πR³'), m('πR³')], c: 1, why: 'Four thirds pi r cubed.' },
+    { q: 'A ball of diameter 6 has volume:', a: [m('36π'), m('288π'), m('72π'), m('108π')], c: 0, why: m('R = 3') + '.' },
+    { q: 'A hemisphere of radius ' + m('R') + ':', a: [m(f('4', '3') + 'πR³'), m(f('2', '3') + 'πR³'), m(f('1', '3') + 'πR³'), m('2πR³')], c: 1, why: 'Half the ball.' },
+    { q: 'A sphere is what fraction of its enclosing cylinder?', a: [m(f('1', '2')), m(f('2', '3')), m(f('3', '4')), m(f('1', '3'))], c: 1, why: 'Archimedes’ result.' },
+    { q: 'A submerged solid displaces:', a: ['its weight', 'its volume', 'half its volume', 'nothing'], c: 1, why: 'When fully submerged.' }
+  ],
+  practice: {
+    easy: [
+      ['Volume, ' + m('R = 3'), m('36π')],
+      ['Volume, ' + m('R = 6'), m('288π')],
+      ['Volume, ' + m('R = 1'), m(f('4π', '3'))],
+      ['Volume of a ball of diameter 10', m(f('500π', '3'))],
+      ['Hemisphere, ' + m('R = 3'), m('18π')],
+      ['A ball is what fraction of its cylinder?', m(f('2', '3'))],
+      ['Volume, ' + m('R = 10'), m(f('4000π', '3'))]
+    ],
+    med: [
+      ['Ball of diameter 12: its volume', m('288π')],
+      ['Cap of height 4 in a sphere of radius 10', m(f('416π', '3'))],
+      ['Ball ' + m('R = 3') + ' in a cylinder ' + m('r = 5') + ': the rise', m('1.44') + ' cm'],
+      ['A ball of volume ' + m('972π') + ': its radius', m('9')],
+      ['A hemisphere of radius 6: volume and curved area', m('144π') + ', ' + m('72π')],
+      ['A cap of height 2 in a sphere of radius 5', m(f('52π', '3'))],
+      ['Two balls of radii 3 and 6: the volume ratio', m('1 : 8')]
+    ],
+    hard: [
+      ['A sphere of radius 10 cut by planes at ' + m('4') + ' and ' + m('7') + ' from the centre: the layer volume', m('≈ 314')],
+      ['A ball just fits in a cube of edge 12: the unused volume', m('1728 − 288π ≈ 823')],
+      ['Derive ' + m('V = ' + f('4', '3') + 'πR³') + ' by integration', m('π∫(R² − x²)dx') + ' over ' + m('[−R, R]')],
+      ['A spherical cap of volume ' + m(f('16π', '3')) + ' in a sphere of radius 4: its height', m('2')],
+      ['A ball of radius ' + m('r') + ' floats with half submerged. Its density relative to water', m('0.5')],
+      ['A hemisphere of radius 6 filled with water is poured into a cone ' + m('r = 6') + '. The depth', m('12')],
+      ['Three balls of radius 2 in a cylinder ' + m('r = 2, h = 12') + ': the empty fraction', m(f('1', '3'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Halve the diameter before cubing, every time.',
+  homework: [
+    'Find the volume of a ball of radius ' + m('7') + ' cm and of one of diameter ' + m('9') + ' cm.',
+    'A cap of height ' + m('3') + ' is cut from a sphere of radius ' + m('12') + '. Find its volume.',
+    'A ball of radius ' + m('4') + ' is dropped into a cylinder of radius ' + m('6') + '. Find the rise in the level.',
+    'A ball has volume ' + m(f('2048π', '3')) + '. Find its radius and its surface area.',
+    'Explain in three sentences why a sphere is exactly two thirds of its enclosing cylinder.'
+  ]
+});
+
+/* ============================== 29 ============================== */
+G11_GEO.push({
+  id: 'g11-29', stream: 'geo', grade: 11, quarter: 3, lessons: '47', hours: 1,
+  title: 'The surface area of a sphere',
+  subtitle: 'Four times the area of a great circle — the second half of Archimedes’ result.',
+  uz: 'Geometry 11, §21', uzPage: 'pp. 235–240',
+  cam: 'IGCSE E13.x', camPage: 'Core & Extended, pp. 361–364', wb: 'Exercise 21.1',
+  objectives: [
+    'State and use S = 4πR².',
+    'Relate the sphere’s area to that of its enclosing cylinder.',
+    'Compute the curved area of a hemisphere and of a cap.',
+    'Solve problems combining area and volume.'
+  ],
+  terms: [
+    ['Surface area of a sphere', 'Sfera sirti', 'Площадь сферы'],
+    ['Great circle', 'Katta aylana', 'Большая окружность'],
+    ['Hemisphere', 'Yarim shar', 'Полушар'],
+    ['Curved surface', 'Yon sirt', 'Боковая поверхность'],
+    ['Zone (spherical belt)', 'Sharsimon belbog‘', 'Шаровой пояс'],
+    ['Archimedes’ theorem', 'Arximed teoremasi', 'Теорема Архимеда'],
+    ['Enclosing cylinder', 'Tashqi silindr', 'Описанный цилиндр'],
+    ['Cap', 'Segment', 'Сегмент']
+  ],
+  timing: [[10, 'The formula'], [12, 'Archimedes’ theorem'], [12, 'Hemispheres and caps'], [8, 'Combined problems'], [3, 'Homework']],
+  sections: [
+    {
+      h: 'The formula',
+      html: `${eq(m('S = 4πR²'), true)}
+      <p>Four times the area of a great circle. A useful mental check: unroll a sphere and it covers
+      exactly four of its own silhouettes.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">R</th><th class="m">S</th><th class="m">V</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1</td><td class="m">4π</td><td class="m">${f('4π', '3')}</td></tr>
+        <tr><td class="m">3</td><td class="m">36π</td><td class="m">36π</td></tr>
+        <tr><td class="m">6</td><td class="m">144π</td><td class="m">288π</td></tr>
+      </tbody></table></div>
+      <p>At ${m('R = 3')} the two numbers coincide — a coincidence of units, not a theorem. It happens
+      because ${m('4πR² = ' + f('4', '3') + 'πR³')} exactly when ${m('R = 3')}.</p>`
+    },
+    {
+      h: 'Archimedes’ theorem',
+      html: `<div class="keybox"><div class="klabel">The sphere and its cylinder</div>
+      For a sphere inscribed in a cylinder of radius ${m('R')} and height ${m('2R')}:
+      ${eq('sphere : cylinder ' + m('= 2 : 3') + '   for <b>both</b> volume and total surface area', true)}</div>
+      <p>Volumes: ${m(f('4', '3') + 'πR³')} against ${m('2πR³')}. Areas: ${m('4πR²')} against
+      ${m('2πR² + 4πR² = 6πR²')}. Both give ${m(f('2', '3'))}.</p>
+      <p>More sharply still: the sphere's surface area equals the cylinder's <b>curved</b> area exactly.
+      Any horizontal band of the sphere has the same area as the corresponding band of the cylinder —
+      the projection stretches horizontally exactly as much as it squashes vertically. That is the
+      theorem Archimedes asked to have carved on his tomb.</p>`
+    },
+    {
+      h: 'Hemispheres and caps',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Part</th><th>Curved area</th><th>Total area</th></tr></thead>
+      <tbody>
+        <tr><td>sphere</td><td class="m">4πR²</td><td class="m">4πR²</td></tr>
+        <tr><td>hemisphere</td><td class="m">2πR²</td><td class="m">3πR²</td></tr>
+        <tr><td>cap of height ${m('h')}</td><td class="m">2πRh</td><td class="m">2πRh + πρ²</td></tr>
+        <tr><td>zone between two planes ${m('h')} apart</td><td class="m">2πRh</td><td>—</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A solid hemisphere has a flat face</span>
+      Its <b>curved</b> area is ${m('2πR²')}, but a solid hemisphere also has the flat circle
+      ${m('πR²')}, giving ${m('3πR²')}. Read whether the object is a bowl or a solid dome.</div>
+      <p><b>The zone result is remarkable.</b> The area of a band depends only on its height ${m('h')},
+      not on where it sits. A band near the equator and one near the pole, of equal height, have equal
+      area.</p>`
+    },
+    {
+      h: 'Combined problems',
+      html: `<p>Given one of ${m('S')} or ${m('V')}, the other follows through ${m('R')}:</p>
+      ${eq(m('R = ' + sr(f('S', '4π'))) + '     ' + m('R = ∛' + f('3V', '4π')), true)}
+      <p><b>Example.</b> A ball has surface area ${m('100π')}. Then ${m('R = 5')} and
+      ${m('V = ' + f('500π', '3') + ' ≈ 524')}.</p>
+      <p><b>Useful relation.</b> ${m(f('V', 'S') + ' = ' + f('R', '3'))} for every sphere — so a bigger
+      ball has proportionally less surface per unit volume, which is the ${m(f('1', 'k'))} rule of
+      Lesson 40 again.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the surface area of a ball of radius ' + m('7') + ' cm.',
+      steps: [
+        [m('S = 4π(49)'), ''],
+        [m('= 196π'), ''],
+        [m('≈ 616') + ' cm².', '']
+      ],
+      ans: m('196π') + ' ≈ ' + m('616') + ' cm²'
+    },
+    {
+      q: 'A ball has surface area ' + m('144π') + '. Find its radius and volume.',
+      steps: [
+        [m('4πR² = 144π ⇒ R² = 36'), ''],
+        [m('R = 6'), ''],
+        [m('V = ' + f('4', '3') + 'π(216) = 288π ≈ 905'), '']
+      ],
+      ans: m('R = 6') + ', ' + m('V = 288π')
+    },
+    {
+      q: 'A solid hemisphere has radius ' + m('5') + '. Find its total surface area.',
+      steps: [
+        ['Curved ' + m('2π(25) = 50π') + '.', ''],
+        ['Flat face ' + m('π(25) = 25π') + '.', ''],
+        [m('75π ≈ 236') + '.', '']
+      ],
+      ans: m('75π') + ' ≈ ' + m('236')
+    }
+  ],
+  modelNote: 'Wrap string round a ball and compare with four traced great circles.',
+  interactive: {
+    type: 'solidVolume',
+    title: 'Area against volume',
+    hint: 'Watch the two grow at different rates.',
+    kind: 'cylinder'
+  },
+  quiz: [
+    { q: 'The surface area of a sphere is:', a: [m('πR²'), m('2πR²'), m('4πR²'), m(f('4', '3') + 'πR³')], c: 2, why: 'Four great circles.' },
+    { q: 'A hemisphere’s curved area:', a: [m('πR²'), m('2πR²'), m('3πR²'), m('4πR²')], c: 1, why: 'Half the sphere.' },
+    { q: 'A solid hemisphere’s total area:', a: [m('2πR²'), m('3πR²'), m('4πR²'), m('πR²')], c: 1, why: 'Plus the flat face.' },
+    { q: 'A cap of height ' + m('h') + ' has curved area:', a: [m('πRh'), m('2πRh'), m('4πRh'), m('πh²')], c: 1, why: 'It depends only on ' + m('h') + '.' },
+    { q: 'Sphere : cylinder for area is:', a: [m('1 : 2'), m('2 : 3'), m('1 : 3'), m('3 : 4')], c: 1, why: 'Archimedes.' }
+  ],
+  practice: {
+    easy: [
+      ['Area, ' + m('R = 3'), m('36π')],
+      ['Area, ' + m('R = 5'), m('100π')],
+      ['Area, ' + m('R = 7'), m('196π')],
+      ['Area of a ball of diameter 10', m('100π')],
+      ['Hemisphere curved area, ' + m('R = 4'), m('32π')],
+      ['Solid hemisphere total area, ' + m('R = 4'), m('48π')],
+      ['Cap curved area, ' + m('R = 10, h = 3'), m('60π')]
+    ],
+    med: [
+      ['Area ' + m('144π') + ': the radius and volume', m('6') + ', ' + m('288π')],
+      ['Solid hemisphere ' + m('R = 5') + ': total area', m('75π')],
+      ['A ball of volume ' + m('972π') + ': its surface area', m('324π')],
+      ['A zone of height 4 on a sphere of radius 9', m('72π')],
+      ['Sphere : cylinder area ratio', m('2 : 3')],
+      [m(f('V', 'S')) + ' for a sphere of radius 12', m('4')],
+      ['Two balls of radii 2 and 6: the area ratio', m('1 : 9')]
+    ],
+    hard: [
+      ['A ball of area ' + m('S') + ': its volume in terms of ' + m('S'), m(f('S', '3') + sr(f('S', '4π')))],
+      ['A hemispherical bowl of inner radius 9 and outer 10: the material volume', m(f('2π', '3') + '(1000 − 729)') + ' ≈ ' + m('568')],
+      ['A sphere and a cube have equal surface areas. Which has the greater volume?', 'The sphere'],
+      ['A cap of curved area ' + m('60π') + ' on a sphere of radius 10: its height', m('3')],
+      ['Prove the zone area depends only on ' + m('h'), 'Archimedes’ projection is area-preserving'],
+      ['A ball is painted at 2 so‘m per cm². Cost for ' + m('R = 20'), m('3200π') + ' ≈ ' + m('10 050') + ' so‘m'],
+      ['A sphere of radius ' + m('R') + ' inside a cube of edge ' + m('2R') + ': the area ratio', m('π : 6')]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Say whether the object is hollow or solid before choosing the formula.',
+  homework: [
+    'Find the surface area of a ball of radius ' + m('11') + ' cm and of one of diameter ' + m('14') + ' cm.',
+    'A ball has surface area ' + m('324π') + ' cm². Find its radius and volume.',
+    'Find the total surface area of a solid hemisphere of radius ' + m('8') + ' cm.',
+    'State Archimedes’ theorem and verify both ratios for ' + m('R = 5') + '.'
+  ]
+});
+
+/* ============================== 30 ============================== */
+G11_GEO.push({
+  id: 'g11-30', stream: 'geo', grade: 11, quarter: 3, lessons: '48–50', hours: 3,
+  title: 'Compound solids and real measurement [Cambridge insert]',
+  subtitle: 'Cut a real object into named solids, add or subtract, and carry the bounds through.',
+  uz: 'Geometry 11, amaliy mashg‘ulot', uzPage: 'pp. 241–248',
+  cam: 'IGCSE E13.x compound solids · E13.3 bounds', camPage: 'Core & Extended, pp. 365–374', wb: 'Exercise 13.5',
+  objectives: [
+    'Decompose a real object into prisms, cylinders, cones, pyramids and spheres.',
+    'Add and subtract volumes, and decide which faces survive into the surface area.',
+    'Carry upper and lower bounds through a compound calculation.',
+    'Report a measured answer to a sensible degree of accuracy.'
+  ],
+  terms: [
+    ['Compound solid', 'Murakkab jism', 'Составное тело'],
+    ['Decomposition', 'Qismlarga ajratish', 'Разбиение'],
+    ['Hollowed solid', 'Bo‘shliqli jism', 'Полое тело'],
+    ['Capacity', 'Sig‘im', 'Вместимость'],
+    ['Density', 'Zichlik', 'Плотность'],
+    ['Upper bound', 'Yuqori chegara', 'Верхняя граница'],
+    ['Lower bound', 'Quyi chegara', 'Нижняя граница'],
+    ['Degree of accuracy', 'Aniqlik darajasi', 'Степень точности'],
+    ['Wetted surface', 'Ho‘llanadigan sirt', 'Смачиваемая поверхность'],
+    ['Silo', 'Silos minorasi', 'Силосная башня']
+  ],
+  timing: [[12, 'Reading an object as solids'], [25, 'Adding and subtracting volume'], [25, 'Which faces survive'], [30, 'Bounds through a compound'], [30, 'Measuring the classroom'], [13, 'Homework']],
+  sections: [
+    {
+      h: 'Reading an object as solids',
+      html: `<p>Nothing new is needed for the next three lessons — only the seven formulas already proved.
+      The whole skill is <b>reading</b>: seeing a grain silo as a cylinder with a hemisphere on top, a
+      pencil as a cylinder with a cone, a water tower as a sphere on a thin cylinder.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Object</th><th>Read as</th><th>Volume</th></tr></thead>
+      <tbody>
+        <tr><td>grain silo</td><td>cylinder + hemisphere</td><td class="m">πr²h + ${f('2', '3')}πr³</td></tr>
+        <tr><td>pencil</td><td>cylinder + cone</td><td class="m">πr²h + ${f('1', '3')}πr²k</td></tr>
+        <tr><td>ice-cream</td><td>cone + hemisphere</td><td class="m">${f('1', '3')}πr²h + ${f('2', '3')}πr³</td></tr>
+        <tr><td>a bead</td><td>sphere − cylinder</td><td class="m">${f('4', '3')}πR³ − πr²·2R</td></tr>
+        <tr><td>a pipe</td><td>cylinder − cylinder</td><td class="m">π(R² − r²)L</td></tr>
+        <tr><td>a mosque dome</td><td>hemisphere − hemisphere</td><td class="m">${f('2', '3')}π(R³ − r³)</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The one rule for the cut</div>
+      Cut along a plane where two named solids meet, and the cut face is always a <b>circle</b> or a
+      <b>polygon</b> shared by both. If your cut leaves a face that is neither, you have cut in the
+      wrong place.</div>
+      {{fig:sphereSection:A plane cut through a solid of revolution leaves a circle — the shared face of the two parts.}}`
+    },
+    {
+      h: 'Adding and subtracting volume',
+      html: `<p>Volume is easy: add the parts, or subtract the hollow. Nothing is shared, nothing is
+      double-counted, because two solids that meet along a plane have no common interior.</p>
+      ${eq(m('V_compound = V₁ + V₂ + … ')  + '   or   ' + m('V_solid − V_hole'), true)}
+      <p><b>Worked case — the silo.</b> Cylinder ${m('r = 4')} m, ${m('h = 12')} m, with a hemispherical
+      cap of the same radius:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Part</th><th>Formula</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>cylinder</td><td class="m">πr²h</td><td class="m">192π</td></tr>
+        <tr><td>hemisphere</td><td class="m">${f('2', '3')}πr³</td><td class="m">${f('128π', '3')}</td></tr>
+        <tr><td><b>total</b></td><td>—</td><td class="m">${f('704π', '3')} ≈ 737 m³</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Keep π to the last line</span>
+      ${m('192π + ' + f('128π', '3'))} is exact; ${m('603.2 + 134.0')} is not. Round once, at the end, and
+      never feed a rounded number into the next part.</div>`
+    },
+    {
+      h: 'Which faces survive',
+      html: `<p>Surface area is where the marks go. When two solids are joined, the two faces that meet
+      <b>disappear</b> — they are now inside. The surface area of the compound is <i>not</i> the sum of
+      the two surface areas.</p>
+      ${eq(m('S_compound = S₁ + S₂ − 2 × (shared face)'), true)}
+      <p><b>The silo again.</b> The cylinder's top circle and the hemisphere's flat face are the same
+      circle, and both are now internal:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Face</th><th>Area</th><th>Counts?</th></tr></thead>
+      <tbody>
+        <tr><td>cylinder base</td><td class="m">π(16) = 16π</td><td>yes — it stands on the ground</td></tr>
+        <tr><td>cylinder curved</td><td class="m">2π(4)(12) = 96π</td><td>yes</td></tr>
+        <tr><td>cylinder top</td><td class="m">16π</td><td><b>no</b> — covered</td></tr>
+        <tr><td>hemisphere flat</td><td class="m">16π</td><td><b>no</b> — covered</td></tr>
+        <tr><td>hemisphere curved</td><td class="m">2π(16) = 32π</td><td>yes</td></tr>
+      </tbody></table></div>
+      <p>So ${m('S = 16π + 96π + 32π = 144π ≈ 452')} m². If the silo is painted only on the outside above
+      the ground, drop the base too: ${m('128π ≈ 402')} m².</p>
+      <div class="keybox"><div class="klabel">Three questions before writing a number</div>
+      <ul>
+        <li>Is the object <b>solid or hollow</b>? A bowl has an inside surface as well.</li>
+        <li>Does it <b>stand on</b> something? Then its base may not be painted, wetted or covered.</li>
+        <li>Which faces are <b>joined</b>? Those never count.</li>
+      </ul></div>`
+    },
+    {
+      h: 'Bounds through a compound',
+      html: `<p>Every measurement is a range. A silo measured as ${m('r = 4')} m and ${m('h = 12')} m
+      <i>to the nearest metre</i> means ${m('3.5 ≤ r < 4.5')} and ${m('11.5 ≤ h < 12.5')}.</p>
+      <p>Volume grows with both, so the extremes pair up directly:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th></th><th class="m">r</th><th class="m">h</th><th class="m">V</th></tr></thead>
+      <tbody>
+        <tr><td>lower</td><td class="m">3.5</td><td class="m">11.5</td><td class="m">≈ 532 m³</td></tr>
+        <tr><td>stated</td><td class="m">4</td><td class="m">12</td><td class="m">≈ 737 m³</td></tr>
+        <tr><td>upper</td><td class="m">4.5</td><td class="m">12.5</td><td class="m">≈ 986 m³</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A subtraction reverses one bound</span>
+      For a pipe, ${m('V = π(R² − r²)L')}. The <b>largest</b> metal volume needs the largest ${m('R')}
+      and the <b>smallest</b> ${m('r')}. Whenever a quantity is subtracted, swap its two bounds.</div>
+      <p><b>Reporting.</b> The silo's volume lies between ${m('532')} and ${m('986')} m³ — the two bounds
+      do not agree even to one significant figure, so ${m('700')} m³ is the honest answer, not
+      ${m('737.4')}. Report to the accuracy the bounds support.</p>
+      {{fig:errorBounds:One measurement, one interval — and every compound inherits all of them.}}`
+    },
+    {
+      h: 'Measuring the classroom',
+      html: `<p>Lesson 50 is practical. In pairs, choose one object in the school, measure it, and produce
+      a single A4 sheet:</p>
+      <ol>
+        <li>a sketch, decomposed into named solids, with every measurement marked;</li>
+        <li>the instrument used and its precision (“tape, nearest 0.5 cm”);</li>
+        <li>the volume, exact then rounded;</li>
+        <li>the surface area, saying which faces you excluded and why;</li>
+        <li>upper and lower bounds, and the accuracy you can honestly claim.</li>
+      </ol>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Object</th><th>Decomposition</th><th>Watch for</th></tr></thead>
+      <tbody>
+        <tr><td>a waste bin</td><td>frustum of a cone</td><td>open top — no lid area</td></tr>
+        <tr><td>a football</td><td>sphere</td><td>measure the circumference, not the radius</td></tr>
+        <tr><td>a chalk stick</td><td>cylinder, or a frustum</td><td>the taper is real</td></tr>
+        <tr><td>the door frame</td><td>three cuboids</td><td>the corners are shared</td></tr>
+        <tr><td>a water bottle</td><td>cylinder + frustum + cylinder</td><td>capacity ≠ outer volume</td></tr>
+        <tr><td>a lamp shade</td><td>frustum, curved surface only</td><td>two circles missing</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Capacity is not volume</div>
+      A bottle's <b>capacity</b> uses inner dimensions; its <b>volume</b> as a solid object uses outer
+      ones. The difference is the glass, and in an exam the word chosen tells you which one is wanted.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'An ice-cream is a cone of radius ' + m('3') + ' cm and height ' + m('10') + ' cm topped by a hemisphere of the same radius. Find its volume.',
+      steps: [
+        ['Cone ' + m(f('1', '3') + 'π(9)(10) = 30π') + '.', ''],
+        ['Hemisphere ' + m(f('2', '3') + 'π(27) = 18π') + '.', ''],
+        [m('V = 48π'), 'Add — nothing overlaps.'],
+        [m('≈ 151') + ' cm³.', '']
+      ],
+      ans: m('48π') + ' ≈ ' + m('151') + ' cm³'
+    },
+    {
+      q: 'Find the surface area of the same ice-cream (the cone is open at the top, under the hemisphere).',
+      steps: [
+        ['Slant ' + m('l = ' + sr('9 + 100') + ' = ' + sr('109') + ' ≈ 10.44') + '.', ''],
+        ['Cone curved ' + m('πrl = 3π' + sr('109') + ' ≈ 98.4') + '.', 'No base circle — it is joined.'],
+        ['Hemisphere curved ' + m('2π(9) = 18π ≈ 56.5') + '.', 'Its flat face is joined too.'],
+        [m('S ≈ 155') + ' cm².', '']
+      ],
+      ans: m('≈ 155') + ' cm²'
+    },
+    {
+      q: 'A wooden bead is a sphere of radius ' + m('5') + ' mm drilled through the centre by a hole of radius ' + m('2') + ' mm. Find the volume of wood.',
+      steps: [
+        ['Sphere ' + m(f('4', '3') + 'π(125) = ' + f('500π', '3')) + '.', ''],
+        ['The hole is a cylinder of length ' + m('10') + ' mm: ' + m('π(4)(10) = 40π') + '.', 'An approximation — the true hole has spherical ends.'],
+        [m('V ≈ ' + f('500π', '3') + ' − 40π = ' + f('380π', '3')), ''],
+        [m('≈ 398') + ' mm³.', '']
+      ],
+      ans: m(f('380π', '3')) + ' ≈ ' + m('398') + ' mm³'
+    },
+    {
+      q: 'A cylindrical tank has radius ' + m('2.0') + ' m and height ' + m('5.0') + ' m, both to the nearest ' + m('0.1') + ' m. Find the bounds of its capacity in litres.',
+      steps: [
+        [m('1.95 ≤ r < 2.05') + ', ' + m('4.95 ≤ h < 5.05') + '.', ''],
+        [m('V_min = π(1.95²)(4.95) ≈ 59.13') + ' m³.', ''],
+        [m('V_max = π(2.05²)(5.05) ≈ 66.68') + ' m³.', ''],
+        ['Between ' + m('59 100') + ' and ' + m('66 700') + ' litres.', 'So “about ' + m('60 000') + ' litres”.']
+      ],
+      ans: m('≈ 59 100') + ' to ' + m('66 700') + ' litres'
+    }
+  ],
+  modelNote: 'Bring a real bottle, a real ball and a tape measure. Measure in front of the class, then argue about the last digit.',
+  interactive: {
+    type: 'solidVolume',
+    title: 'A cylinder, and what a cap adds',
+    hint: 'Change the height and watch how much of the total the curved surface carries.',
+    kind: 'cylinder'
+  },
+  quiz: [
+    { q: 'When two solids are joined, the shared face:', a: ['counts twice', 'counts once', 'does not count at all', 'is halved'], c: 2, why: 'It is now interior.' },
+    { q: 'Volumes of joined solids are:', a: ['added', 'multiplied', 'averaged', 'subtracted'], c: 0, why: 'They share no interior.' },
+    { q: 'For the largest metal volume in a pipe take:', a: ['both bounds large', 'largest ' + m('R') + ', smallest ' + m('r'), 'both small', 'the stated values'], c: 1, why: 'A subtracted quantity flips.' },
+    { q: 'A silo is a cylinder plus:', a: ['a cone', 'a hemisphere', 'a prism', 'a frustum'], c: 1, why: 'The usual reading.' },
+    { q: 'Capacity uses:', a: ['outer dimensions', 'inner dimensions', 'either', 'the mean'], c: 1, why: 'It is what fits inside.' },
+    { q: 'Rounding should happen:', a: ['at each step', 'only at the end', 'never', 'twice'], c: 1, why: 'Errors compound.' }
+  ],
+  practice: {
+    easy: [
+      ['Cylinder ' + m('r = 2, h = 5') + ' plus hemisphere ' + m('r = 2') + ': volume', m('20π + ' + f('16π', '3')) + ' ≈ ' + m('79.6')],
+      ['Cone ' + m('r = 3, h = 4') + ' plus hemisphere ' + m('r = 3') + ': volume', m('12π + 18π = 30π')],
+      ['Pipe ' + m('R = 5, r = 3, L = 20') + ': metal volume', m('320π')],
+      ['Cube edge 6 with a cylindrical hole ' + m('r = 1') + ' through it: volume', m('216 − 6π') + ' ≈ ' + m('197')],
+      ['Cylinder ' + m('r = 3, h = 10') + ' with a cone cap ' + m('h = 4') + ': volume', m('90π + 12π = 102π')],
+      ['Bounds of ' + m('8.0') + ' cm to the nearest ' + m('0.1') + ' cm', m('7.95') + ' and ' + m('8.05')],
+      ['Surface area of a solid hemisphere on a cylinder base ' + m('r = 2, h = 3') + ' (closed bottom)', m('4π + 12π + 8π = 24π')]
+    ],
+    med: [
+      ['Silo: cylinder ' + m('r = 4, h = 12') + ' plus hemisphere. Volume', m(f('704π', '3')) + ' ≈ ' + m('737') + ' m³'],
+      ['Same silo: painted outside, base excluded', m('128π') + ' ≈ ' + m('402') + ' m²'],
+      ['Ice-cream: cone ' + m('r = 3, h = 10') + ' plus hemisphere. Surface area', m('≈ 155') + ' cm²'],
+      ['A bead: sphere ' + m('R = 5') + ' drilled by ' + m('r = 2') + ' (straight hole). Wood volume', m(f('380π', '3')) + ' ≈ ' + m('398')],
+      ['Tank ' + m('r = 2.0, h = 5.0') + ' m to ' + m('0.1') + ' m: capacity bounds in litres', m('≈ 59 100') + ' to ' + m('66 700')],
+      ['A dome: hemisphere ' + m('R = 6') + ' hollowed to ' + m('r = 5') + '. Material volume', m(f('2π', '3') + '(216 − 125)') + ' ≈ ' + m('191')],
+      ['A pencil: cylinder ' + m('r = 0.4, h = 15') + ' plus cone ' + m('h = 2') + ' cm. Volume', m('2.4π + 0.107π') + ' ≈ ' + m('7.87') + ' cm³']
+    ],
+    hard: [
+      ['A silo of the same shape must hold ' + m('1000') + ' m³ with ' + m('r = 4') + '. Find ' + m('h'), m('h ≈ 17.2') + ' m'],
+      ['Pipe ' + m('R = 9, r = 7') + ' cm, ' + m('L = 200') + ' cm, all to the nearest cm: bounds of the metal volume', m('≈ 18 200') + ' to ' + m('≈ 22 200') + ' cm³'],
+      ['A cone of radius ' + m('r') + ' is capped by a hemisphere of radius ' + m('r') + '. For what ' + m('h') + ' are the two volumes equal?', m('h = 2r')],
+      ['An open lamp shade is a frustum, radii ' + m('10') + ' and ' + m('20') + ', slant ' + m('26') + '. Find the material area', m('780π') + ' ≈ ' + m('2450') + ' cm²'],
+      ['A bottle: cylinder ' + m('r = 3, h = 12') + ', frustum ' + m('3 → 1.5, h = 4') + ', neck ' + m('r = 1.5, h = 3') + '. Capacity in ml', m('≈ 421') + ' ml'],
+      ['A hemispherical bowl of inner radius ' + m('9') + ' cm is filled to a depth of ' + m('4') + ' cm. Find the volume of water', m(f('π', '3') + '(4²)(27 − 4)') + ' ≈ ' + m('385') + ' cm³'],
+      ['A solid is a cube of edge ' + m('2R') + ' with the inscribed sphere removed. Find the fraction of the cube remaining', m('1 − ' + f('π', '6')) + ' ≈ ' + m('0.476')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Task 5 is the measured object; bring the A4 sheet and the object itself if you can.',
+  homework: [
+    'A grain silo is a cylinder of radius ' + m('3') + ' m and height ' + m('10') + ' m with a hemispherical top. Find its volume and its outside surface area, excluding the base.',
+    'A pipe has outer radius ' + m('8') + ' cm, inner radius ' + m('6') + ' cm and length ' + m('1.5') + ' m. Find the volume of metal and its mass at ' + m('7.8') + ' g/cm³.',
+    'A tank measures ' + m('r = 1.5') + ' m and ' + m('h = 4.0') + ' m, each to the nearest ' + m('0.1') + ' m. Find the bounds of its capacity in litres, and state the answer to a sensible accuracy.',
+    'An ice-cream cone of radius ' + m('3.5') + ' cm and height ' + m('12') + ' cm carries a hemisphere of the same radius. Find the total volume, and explain which two faces you did not include in the surface area.',
+    'Measure one object in your home. Produce the A4 sheet: sketch, decomposition, instrument and precision, volume, surface area, bounds.'
+  ]
+});
+
+/* ============================== 31 ============================== */
+G11_GEO.push({
+  id: 'g11-31', stream: 'geo', grade: 11, quarter: 3, lessons: '51–52', hours: 2,
+  title: 'Control work 3, and work on the mistakes',
+  subtitle: 'Pyramids, cones and spheres in one paper, then the quarter drawn as a single map.',
+  uz: 'Geometry 11, Nazorat ishi 3', uzPage: 'pp. 249–252',
+  cam: 'IGCSE E13 review', camPage: 'Core & Extended, pp. 375–378', wb: 'Control paper G3',
+  objectives: [
+    'Apply the formulas of Quarter III in one assessment.',
+    'Choose correctly between slant height, height and lateral edge.',
+    'Classify each lost mark and rewrite the solution in full.',
+    'Draw the quarter as one map, from the pyramid to the sphere.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Slant height', 'Apofema', 'Апофема'],
+    ['Lateral edge', 'Yon qirra', 'Боковое ребро'],
+    ['Frustum', 'Kesik jism', 'Усечённое тело'],
+    ['Sphere', 'Sfera', 'Сфера'],
+    ['Similar solids', 'O‘xshash jismlar', 'Подобные тела'],
+    ['Concept map', 'Tushunchalar xaritasi', 'Карта понятий'],
+    ['Target', 'Maqsad', 'Цель']
+  ],
+  timing: [[3, 'Instructions'], [42, 'The paper'], [12, 'Answers'], [20, 'Rewrite'], [10, 'The map'], [3, 'Targets']],
+  sections: [
+    {
+      h: 'The paper — 35 marks, 42 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Regular square pyramid, base edge ${m('10')}, height ${m('12')}: apothem, lateral area, total area</td><td class="m">6</td><td>L33–34</td></tr>
+        <tr><td>2</td><td>The same pyramid: its volume, and the angle its lateral edge makes with the base</td><td class="m">6</td><td>L33–34, L43–44</td></tr>
+        <tr><td>3</td><td>A cone of radius ${m('5')} and slant ${m('13')}: height, curved area, volume, and the sector angle of its net</td><td class="m">7</td><td>L36–38</td></tr>
+        <tr><td>4</td><td>A frustum of a cone, radii ${m('6')} and ${m('3')}, height ${m('4')}: volume and curved area</td><td class="m">6</td><td>L39</td></tr>
+        <tr><td>5</td><td>A ball of surface area ${m('144π')}: its radius and volume; then the volume of a cap of height ${m('2')}</td><td class="m">5</td><td>L41–42, L45–47</td></tr>
+        <tr><td>6</td><td>Two similar cones have volumes ${m('27')} and ${m('125')}: the ratios of heights and of surface areas</td><td class="m">5</td><td>L40</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks are actually lost</div>
+      Q1 and Q3 each carry a mark for using the <b>slant height</b> in an area and the <b>vertical
+      height</b> in a volume. Q4 carries one for not treating the frustum as a prism. Q5 carries one for
+      reading “surface area” rather than “volume”. Four of the thirty-five marks are for reading.</div>`
+    },
+    {
+      h: 'Mark by mark',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>slant for height</td><td class="m">V = ${f('1', '3')}Bl</td><td>volume always uses ${m('h')}, the perpendicular</td></tr>
+        <tr><td>height for slant</td><td class="m">S = ${f('1', '2')}Ph</td><td>area always uses ${m('m')}, the apothem</td></tr>
+        <tr><td>frustum by subtraction only</td><td>finding the whole cone first, then failing</td><td>use ${m(f('πh', '3') + '(R² + Rr + r²)')} directly</td></tr>
+        <tr><td>the missing ${m(f('1', '3'))}</td><td class="m">V = Bh</td><td>pyramids and cones are a third of the prism</td></tr>
+        <tr><td>sphere formulas swapped</td><td class="m">S = ${f('4', '3')}πR³</td><td>area has ${m('R²')}, volume has ${m('R³')}</td></tr>
+        <tr><td>ratios not cubed</td><td class="m">V₁ : V₂ = k</td><td class="m">k, k², k³</td></tr>
+      </tbody></table></div>
+      <p>For every mark lost, write the slip's name in the margin and then rewrite the whole question —
+      not the line that went wrong. A rewritten line is forgotten by Friday; a rewritten solution is not.</p>`
+    },
+    {
+      h: 'The quarter as one map',
+      html: `<p>Six boxes and the links as sentences:</p>
+      <ul>
+        <li><b>prism</b> → <b>pyramid</b> — “a third of it, on the same base and height”</li>
+        <li><b>cylinder</b> → <b>cone</b> — “the same third, with ${m('B = πr²')}”</li>
+        <li><b>cone</b> → <b>frustum</b> — “cut off the top, or use ${m('R² + Rr + r²')}”</li>
+        <li><b>net</b> → <b>curved area</b> — “the cone unrolls into a sector, ${m('S = πrl')}”</li>
+        <li><b>sphere</b> → <b>its cylinder</b> — “${m('2 : 3')} for both volume and area”</li>
+        <li><b>scale ${m('k')}</b> → <b>${m('k, k², k³')}</b> — “length, area, volume”</li>
+      </ul>
+      {{fig:pyramidParts:The three lengths of the first lesson — still the whole of Q1 and Q2.}}
+      <div class="keybox"><div class="klabel">Seven formulas, one page</div>
+      ${eq(m('V_pyr = ' + f('1', '3') + 'Bh') + '   ' + m('S_lat = ' + f('1', '2') + 'Pm') + '   ' + m('V_cone = ' + f('1', '3') + 'πr²h') + '   ' + m('S_cone = πrl'), true)}
+      ${eq(m('V_frus = ' + f('πh', '3') + '(R² + Rr + r²)') + '   ' + m('V_sph = ' + f('4', '3') + 'πR³') + '   ' + m('S_sph = 4πR²'), true)}
+      If these seven sit on one page in your own handwriting, Quarter IV needs nothing new.</div>`
+    },
+    {
+      h: 'Looking forward',
+      html: `<p>Quarter IV adds no new solid. It is application: containers, costs, optimisation and the
+      entrance paper, where a question rarely says which formula it wants. The reading skill of Lesson
+      48–50 becomes the whole of the work.</p>
+      <div class="keybox"><div class="klabel">One habit to carry forward</div>
+      Before any arithmetic, write down the object, its decomposition and the letter of every length you
+      know. Almost every mark lost this quarter was lost before the first calculation.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q1: a regular square pyramid, base edge ' + m('10') + ', height ' + m('12') + '.',
+      steps: [
+        ['Apothem of the base ' + m('5') + '; so ' + m('m = ' + sr('144 + 25') + ' = 13') + '.', 'The first right triangle.'],
+        [m('S_lat = ' + f('1', '2') + '(40)(13) = 260') + '.', 'Perimeter times apothem, halved.'],
+        [m('B = 100') + '.', ''],
+        [m('S_total = 360') + '.', '']
+      ],
+      ans: m('m = 13') + ', ' + m('S_lat = 260') + ', ' + m('S_total = 360')
+    },
+    {
+      q: 'Model answer, Q3: a cone of radius ' + m('5') + ' and slant ' + m('13') + '.',
+      steps: [
+        [m('h = ' + sr('169 − 25') + ' = 12') + '.', ''],
+        [m('S_curved = π(5)(13) = 65π') + '.', 'Slant, not height.'],
+        [m('V = ' + f('1', '3') + 'π(25)(12) = 100π') + '.', 'Height, not slant.'],
+        ['Sector angle ' + m('θ = 360° × ' + f('5', '13') + ' ≈ 138.5°') + '.', m('θ = 360°' + f('r', 'l')) + '.']
+      ],
+      ans: m('h = 12') + ', ' + m('65π') + ', ' + m('100π') + ', ' + m('≈ 138.5°')
+    },
+    {
+      q: 'Model answer, Q4: a frustum, radii ' + m('6') + ' and ' + m('3') + ', height ' + m('4') + '.',
+      steps: [
+        [m('V = ' + f('π(4)', '3') + '(36 + 18 + 9) = 84π') + '.', 'Use the formula directly.'],
+        ['Slant ' + m('l = ' + sr('16 + 9') + ' = 5') + '.', 'From the difference of radii.'],
+        [m('S_curved = π(6 + 3)(5) = 45π') + '.', ''],
+        [m('V ≈ 264') + ', ' + m('S ≈ 141') + '.', '']
+      ],
+      ans: m('84π') + ' and ' + m('45π')
+    },
+    {
+      q: 'Model answer, Q6: two similar cones of volumes ' + m('27') + ' and ' + m('125') + '.',
+      steps: [
+        [m('k³ = ' + f('125', '27')), ''],
+        [m('k = ' + f('5', '3')), 'Heights are in ' + m('3 : 5') + '.'],
+        [m('k² = ' + f('25', '9')), ''],
+        ['Surface areas are in ' + m('9 : 25') + '.', '']
+      ],
+      ans: m('3 : 5') + ' and ' + m('9 : 25')
+    }
+  ],
+  modelNote: 'Work Q3 on the board twice — once correctly, once with slant and height swapped — and let the class find the difference.',
+  interactive: {
+    type: 'quiz',
+    title: 'The quarter in ten questions',
+    hint: 'One from each block of Quarter III.',
+    items: [
+      { q: 'Volume of a pyramid:', a: [m('Bh'), m(f('1', '3') + 'Bh'), m(f('1', '2') + 'Bh'), m('3Bh')], c: 1, why: 'A third of the prism.' },
+      { q: 'Lateral area of a regular pyramid:', a: [m(f('1', '2') + 'Ph'), m(f('1', '2') + 'Pm'), m('Pm'), m('Bm')], c: 1, why: 'The apothem, not the height.' },
+      { q: 'Curved area of a cone:', a: [m('πr²'), m('πrl'), m('πrh'), m('2πrl')], c: 1, why: 'The unrolled sector.' },
+      { q: 'Volume of a cone:', a: [m('πr²h'), m(f('1', '3') + 'πr²h'), m(f('1', '3') + 'πr²l'), m('πrl')], c: 1, why: 'Height, not slant.' },
+      { q: 'The sector angle of a cone’s net:', a: [m('360°' + f('r', 'l')), m('360°' + f('l', 'r')), m('180°' + f('r', 'l')), m('90°')], c: 0, why: 'Arc equals circumference.' },
+      { q: 'Volume of a frustum of a cone:', a: [m(f('πh', '3') + '(R² + r²)'), m(f('πh', '3') + '(R² + Rr + r²)'), m('πh(R² − r²)'), m(f('πh', '2') + '(R + r)')], c: 1, why: 'Three terms.' },
+      { q: 'Volume of a sphere:', a: [m('4πR²'), m(f('4', '3') + 'πR³'), m(f('2', '3') + 'πR³'), m('πR³')], c: 1, why: 'Cubed.' },
+      { q: 'Surface area of a sphere:', a: [m('4πR²'), m(f('4', '3') + 'πR³'), m('2πR²'), m('πR²')], c: 0, why: 'Four great circles.' },
+      { q: 'A plane section of a sphere is:', a: ['an ellipse', 'a circle', 'a parabola', 'a point'], c: 1, why: 'Always a circle.' },
+      { q: 'Scale factor ' + m('k') + ' multiplies volume by:', a: [m('k'), m('k²'), m('k³'), m('3k')], c: 2, why: 'Three dimensions.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 needs the apothem because:', a: ['it is easier', 'lateral area uses the slant height', 'volume uses it', 'no reason'], c: 1, why: m('S_lat = ' + f('1', '2') + 'Pm') + '.' },
+    { q: 'Q3’s volume uses:', a: ['the slant ' + m('13'), 'the height ' + m('12'), 'the radius only', 'the sector angle'], c: 1, why: 'Perpendicular height.' },
+    { q: 'The frustum formula has:', a: ['two terms', 'three terms', 'one term', 'four terms'], c: 1, why: m('R² + Rr + r²') + '.' },
+    { q: 'Volumes ' + m('27 : 125') + ' give heights in:', a: [m('27 : 125'), m('3 : 5'), m('9 : 25'), m('1 : 5')], c: 1, why: 'Cube root.' },
+    { q: 'Quarter IV begins with:', a: ['new solids', 'applying these formulas in context', 'vectors', 'probability'], c: 1, why: 'Nothing new is added.' }
+  ],
+  practice: {
+    easy: [
+      ['Square pyramid, base 10, height 12: the apothem', m('13')],
+      ['Same: lateral area', m('260')],
+      ['Same: total area', m('360')],
+      ['Same: volume', m('400')],
+      ['Cone ' + m('r = 5, l = 13') + ': height', m('12')],
+      ['Same cone: curved area', m('65π')],
+      ['Ball of area ' + m('144π') + ': radius', m('6')]
+    ],
+    med: [
+      ['Cone ' + m('r = 5, l = 13') + ': volume', m('100π')],
+      ['Same cone: the sector angle of its net', m('≈ 138.5°')],
+      ['Frustum ' + m('R = 6, r = 3, h = 4') + ': volume', m('84π')],
+      ['Same frustum: curved area', m('45π')],
+      ['Ball of area ' + m('144π') + ': volume', m('288π')],
+      ['Two similar cones, volumes ' + m('27') + ' and ' + m('125') + ': the height ratio', m('3 : 5')],
+      ['Same pair: the surface area ratio', m('9 : 25')]
+    ],
+    hard: [
+      ['Square pyramid, base 10, height 12: the angle of a lateral edge with the base', m('≈ 59.5°')],
+      ['Same pyramid: the dihedral angle along a base edge', m('≈ 67.4°')],
+      ['A cap of height ' + m('2') + ' on a ball of radius ' + m('6') + ': its volume', m(f('π', '3') + '(4)(18 − 2)') + ' = ' + m(f('64π', '3')) + ' ≈ ' + m('67.0')],
+      ['A cone and a hemisphere on the same circle have equal volumes. Find ' + m(f('h', 'r')), m('2')],
+      ['A frustum has radii ' + m('R') + ' and ' + m(f('R', '2')) + ' and height ' + m('h') + '. Find the fraction of the full cone it holds', m(f('7', '8'))],
+      ['A sphere is inscribed in a cone of radius ' + m('6') + ' and height ' + m('8') + '. Find its radius', m('r = ' + f('48', '16') + ' = 3')],
+      ['A ball is cut by two parallel planes ' + m('3') + ' apart on a sphere of radius ' + m('10') + ': the zone area', m('60π')]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Bring the seven-formula page and the concept map to the first lesson of Quarter IV.',
+  homework: [
+    'Rewrite in full every control-work question that lost a mark, naming the slip in the margin.',
+    'Write the seven formulas of Quarter III on one page in your own hand, each with a small sketch.',
+    'A cone of radius ' + m('9') + ' cm and height ' + m('12') + ' cm is cut halfway up by a plane parallel to the base. Find the volume and the curved area of the frustum that remains.',
+    'Write your target for Quarter IV in one checkable sentence, and date it.'
+  ]
+});
