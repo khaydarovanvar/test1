@@ -566,6 +566,507 @@
     return svg('0 0 330 190', out + LT(165, 182, 'a root is a power — the same object, two notations', 'var(--muted)', 10.5));
   };
 
+
+  /* ---------- Quarter III: algebra ---------- */
+  function axes(W, H, cx, cy, u, half) {
+    var g = '', i;
+    for (i = -half; i <= half; i++) {
+      g += line([cx + i * u, 6], [cx + i * u, H - 6], 'stroke="var(--rule-soft)" stroke-width="1"');
+      g += line([8, cy + i * u], [W - 8, cy + i * u], 'stroke="var(--rule-soft)" stroke-width="1"');
+    }
+    g += line([8, cy], [W - 8, cy], 'stroke="var(--faint)" stroke-width="1.5"');
+    g += line([cx, 6], [cx, H - 6], 'stroke="var(--faint)" stroke-width="1.5"');
+    g += LT(W - 14, cy - 11, 'x') + LT(cx + 13, 15, 'y');
+    return g;
+  }
+  F.systemIntervals = function () {
+    var W = 340, out = '';
+    function nl(y, from, to, openL, openR, label, col) {
+      var x0 = 26, x1 = W - 26, cx = function (v) { return x0 + (v + 6) / 12 * (x1 - x0); };
+      var o = line([x0, y], [x1, y], 'stroke="currentColor" stroke-width="1.6"');
+      o += '<path d="M' + (x1 - 8) + ' ' + (y - 4) + ' L' + x1 + ' ' + y + ' L' + (x1 - 8) + ' ' + (y + 4) +
+        '" fill="none" stroke="currentColor" stroke-width="1.6"/>';
+      o += line([cx(from), y], [cx(to), y], 'stroke="' + col + '" stroke-width="5"');
+      o += '<circle cx="' + cx(from).toFixed(1) + '" cy="' + y + '" r="5.5" fill="' +
+        (openL ? 'var(--paper)' : col) + '" stroke="' + col + '" stroke-width="2.2"/>';
+      o += '<circle cx="' + cx(to).toFixed(1) + '" cy="' + y + '" r="5.5" fill="' +
+        (openR ? 'var(--paper)' : col) + '" stroke="' + col + '" stroke-width="2.2"/>';
+      o += LT(cx(from), y + 16, String(from)) + LT(cx(to), y + 16, String(to));
+      o += LT(x0 + 26, y - 16, label, col, 11.5);
+      return o;
+    }
+    out += nl(44, -2, 6, true, false, 'x > −2', 'var(--brand)');
+    out += nl(110, -6, 4, false, true, 'x < 4', 'var(--brass)');
+    out += nl(176, -2, 4, true, true, '−2 < x < 4', 'var(--easy)');
+    return svg('0 0 ' + W + ' 216', out +
+      LT(W / 2, 208, 'the solution is where the two overlap', 'var(--easy)', 10.5));
+  };
+  F.modulusLine = function () {
+    var W = 330, y = 46;
+    var out = line([18, y], [W - 18, y], 'stroke="currentColor" stroke-width="1.8"');
+    var cx = function (v) { return 18 + (v + 6) / 12 * (W - 36); };
+    out += line([cx(-3), y], [cx(3), y], 'stroke="var(--brand)" stroke-width="5"');
+    [[-3, '−3'], [0, '0'], [3, '3']].forEach(function (p) {
+      out += '<circle cx="' + cx(p[0]).toFixed(1) + '" cy="' + y + '" r="5.5" fill="' +
+        (p[0] === 0 ? 'var(--faint)' : 'var(--brand)') + '"/>' + LT(cx(p[0]), y + 19, p[1]);
+    });
+    out += '<path d="M' + cx(-3) + ' ' + (y - 16) + ' Q' + cx(-1.5) + ' ' + (y - 30) + ' ' + cx(0) + ' ' + (y - 16) +
+      '" fill="none" stroke="var(--brass)" stroke-width="1.5"/>';
+    out += '<path d="M' + cx(0) + ' ' + (y - 16) + ' Q' + cx(1.5) + ' ' + (y - 30) + ' ' + cx(3) + ' ' + (y - 16) +
+      '" fill="none" stroke="var(--brass)" stroke-width="1.5"/>';
+    out += LT(cx(-1.5), y - 34, '3', 'var(--brass)') + LT(cx(1.5), y - 34, '3', 'var(--brass)');
+    return svg('0 0 ' + W + ' 100', out + LT(W / 2, 92, '| x | ≤ 3  means  −3 ≤ x ≤ 3', 'var(--brand)', 12));
+  };
+  F.parabola = function () {
+    var W = 300, H = 250, cx = 150, cy = 132, u = 20;
+    var g = axes(W, H, cx, cy, u, 5);
+    var d = '', on = false;
+    for (var x = -2.6; x <= 4.6; x += 0.04) {
+      var yv = x * x - 2 * x - 3;
+      if (yv < -4.6 || yv > 5.4) { on = false; continue; }
+      d += (on ? 'L' : 'M') + (cx + x * u).toFixed(1) + ' ' + (cy - yv * u).toFixed(1) + ' ';
+      on = true;
+    }
+    var out = g + '<path d="' + d + '" fill="none" stroke="var(--brand)" stroke-width="2.6" stroke-linecap="round"/>';
+    [[-1, '−1'], [3, '3']].forEach(function (r) {
+      out += '<circle cx="' + (cx + r[0] * u) + '" cy="' + cy + '" r="5" fill="var(--brass)"/>' +
+        LT(cx + r[0] * u, cy + 18, r[1], 'var(--brass)');
+    });
+    out += '<circle cx="' + (cx + 1 * u) + '" cy="' + (cy + 4 * u) + '" r="4.5" fill="var(--brand)"/>';
+    out += LT(cx + 1 * u + 34, cy + 4 * u, 'vertex', 'var(--brand)', 10);
+    return svg('0 0 ' + W + ' ' + H, out +
+      '<text x="' + (W - 12) + '" y="30" text-anchor="end" font-family="Spectral,Georgia,serif" ' +
+      'font-size="13" font-style="italic" fill="var(--brand)">y = x² − 2x − 3</text>');
+  };
+  F.discriminantCases = function () {
+    var out = '', cases = [[-1.4, 'D > 0', 'two roots', 'var(--easy)'],
+                           [0, 'D = 0', 'one root', 'var(--brass)'],
+                           [1.4, 'D < 0', 'no roots', 'var(--hard)']];
+    cases.forEach(function (c, i) {
+      var ox = 18 + i * 112, cy = 96, u = 11;
+      out += line([ox, cy], [ox + 88, cy], 'stroke="var(--faint)" stroke-width="1.3"');
+      var d = '', on = false;
+      for (var x = -3.2; x <= 3.2; x += 0.05) {
+        var yv = (x * x - 2) + c[0] * 2;
+        if (yv > 4.6 || yv < -4.6) { on = false; continue; }
+        d += (on ? 'L' : 'M') + (ox + 44 + x * u).toFixed(1) + ' ' + (cy - yv * u).toFixed(1) + ' ';
+        on = true;
+      }
+      out += '<path d="' + d + '" fill="none" stroke="' + c[3] + '" stroke-width="2.3"/>';
+      out += LT(ox + 44, 24, c[1], c[3], 12) + LT(ox + 44, 40, c[2], 'var(--muted)', 10.5);
+    });
+    return svg('0 0 356 156', out);
+  };
+  F.errorBounds = function () {
+    var W = 340, y = 56, x0 = 60, x1 = W - 60;
+    var cx = function (t) { return x0 + t * (x1 - x0); };   // t = 0 .. 1
+    var out = line([22, y], [W - 22, y], 'stroke="currentColor" stroke-width="1.6"');
+    out += line([cx(0), y], [cx(1), y], 'stroke="var(--brand)" stroke-width="5"');
+    out += '<circle cx="' + cx(0) + '" cy="' + y + '" r="5" fill="var(--brand)"/>';
+    out += '<circle cx="' + cx(1) + '" cy="' + y + '" r="5" fill="var(--paper)" stroke="var(--brand)" stroke-width="2.4"/>';
+    out += '<circle cx="' + cx(0.5) + '" cy="' + y + '" r="6" fill="var(--brass)"/>';
+    out += LT(cx(0), y + 20, '4.75', 'var(--brand)', 11) + LT(cx(1), y + 20, '4.85', 'var(--brand)', 11);
+    out += LT(cx(0), y + 34, 'lower', 'var(--muted)', 9.5) + LT(cx(1), y + 34, 'upper', 'var(--muted)', 9.5);
+    out += LT(cx(0.5), y - 22, 'measured 4.8', 'var(--brass)', 11.5);
+    return svg('0 0 ' + W + ' 104', out +
+      LT(W / 2, 96, 'the true value lies anywhere in the bar', 'var(--brand)', 10.5));
+  };
+
+  /* ---------- Quarter IV: statistics and probability ---------- */
+  F.frequencyPolygon = function () {
+    var W = 320, H = 210, x0 = 40, y0 = 168, xs = 46, ys = 26;
+    var data = [2, 5, 8, 6, 3];
+    var out = '';
+    for (var i = 0; i <= 8; i += 2) out += line([x0 - 4, y0 - i * ys / 2], [W - 14, y0 - i * ys / 2],
+      'stroke="var(--rule-soft)" stroke-width="1"') + LT(x0 - 16, y0 - i * ys / 2, String(i), 'var(--muted)', 10);
+    out += line([x0, y0], [W - 14, y0], 'stroke="currentColor" stroke-width="1.6"');
+    out += line([x0, 18], [x0, y0], 'stroke="currentColor" stroke-width="1.6"');
+    var pts = data.map(function (v, i2) { return [x0 + (i2 + 0.5) * xs, y0 - v * ys / 2]; });
+    out += '<polyline points="' + pts.map(function (p) { return r1(p[0]) + ',' + r1(p[1]); }).join(' ') +
+      '" fill="none" stroke="var(--brand)" stroke-width="2.4"/>';
+    pts.forEach(function (p, i2) {
+      out += '<circle cx="' + r1(p[0]) + '" cy="' + r1(p[1]) + '" r="4" fill="var(--brand)"/>' +
+        LT(p[0], y0 + 15, ['0–10', '10–20', '20–30', '30–40', '40–50'][i2], 'var(--muted)', 8.5);
+    });
+    return svg('0 0 ' + W + ' ' + H, out + LT(W / 2, 196, 'points at the midpoint of each class', 'var(--muted)', 10.5));
+  };
+  function r1(v) { return Math.round(v * 10) / 10; }
+  F.scatterGraph = function () {
+    var W = 300, H = 210, x0 = 38, y0 = 168;
+    var pts = [[1, 2], [2, 3], [3, 3.6], [4, 5], [5, 5.4], [6, 6.6], [7, 7], [8, 8.4]];
+    var out = line([x0, y0], [W - 14, y0], 'stroke="currentColor" stroke-width="1.6"') +
+      line([x0, 18], [x0, y0], 'stroke="currentColor" stroke-width="1.6"');
+    var sx = (W - x0 - 28) / 9, sy = (y0 - 26) / 9;
+    out += line([x0 + 0.6 * sx, y0 - 1.6 * sy], [x0 + 8.6 * sx, y0 - 8.6 * sy],
+      'stroke="var(--brass)" stroke-width="1.8" stroke-dasharray="5 4"');
+    pts.forEach(function (p) {
+      out += '<circle cx="' + (x0 + p[0] * sx).toFixed(1) + '" cy="' + (y0 - p[1] * sy).toFixed(1) +
+        '" r="4" fill="var(--brand)"/>';
+    });
+    return svg('0 0 ' + W + ' ' + H, out +
+      LT(W / 2, 194, 'positive correlation', 'var(--brand)', 11.5));
+  };
+  F.treeDiagram = function () {
+    var out = '';
+    function branch(x1, y1, x2, y2, lab, col) {
+      return line([x1, y1], [x2, y2], 'stroke="' + (col || 'currentColor') + '" stroke-width="1.7"') +
+        LT((x1 + x2) / 2 - 2, (y1 + y2) / 2 - 9, lab, 'var(--brass)', 10);
+    }
+    out += branch(40, 106, 130, 54, '0.6') + branch(40, 106, 130, 158, '0.4');
+    out += branch(140, 50, 232, 24, '0.6') + branch(140, 58, 232, 84, '0.4');
+    out += branch(140, 154, 232, 128, '0.6') + branch(140, 162, 232, 188, '0.4');
+    out += '<circle cx="40" cy="106" r="4" fill="currentColor"/>';
+    [[135, 54, 'A'], [135, 158, 'B'], [238, 24, 'AA'], [238, 84, 'AB'], [238, 128, 'BA'], [238, 188, 'BB']]
+      .forEach(function (p) {
+        out += '<text x="' + p[0] + '" y="' + (p[1] + 4) + '" font-family="Spectral,Georgia,serif" ' +
+          'font-size="13" font-style="italic" fill="currentColor">' + p[2] + '</text>';
+      });
+    [[268, 24, '0.36'], [268, 84, '0.24'], [268, 128, '0.24'], [268, 188, '0.16']].forEach(function (p) {
+      out += LT(p[0] + 12, p[1], p[2], 'var(--brand)', 10.5);
+    });
+    return svg('0 0 320 212', out + LT(160, 206, 'multiply along a branch · add down the ends', 'var(--muted)', 10.5));
+  };
+  F.linearSequence = function () {
+    var out = '', n = 4;
+    for (var k = 0; k < n; k++) {
+      var count = 2 * k + 3, ox = 20 + k * 84;
+      for (var i = 0; i < count; i++) {
+        var col = i % 3, row = Math.floor(i / 3);
+        out += '<rect x="' + (ox + col * 15) + '" y="' + (110 - row * 15) + '" width="12" height="12" rx="2" ' +
+          'fill="var(--brand-tint)" stroke="var(--brand)" stroke-width="1.2"/>';
+      }
+      out += LT(ox + 22, 138, 'n = ' + (k + 1), 'var(--muted)', 10.5);
+      out += LT(ox + 22, 154, String(count), 'var(--brand)', 12);
+    }
+    return svg('0 0 356 176', out + LT(178, 172, 'nth term = 2n + 1', 'var(--brand)', 12.5));
+  };
+  F.gradientIntercept = function () {
+    var W = 300, H = 240, cx = 140, cy = 170, u = 26;
+    var out = axes(W, H, cx, cy, u, 5);
+    var f = function (x) { return 0.5 * x + 2; };
+    out += line([cx - 4.4 * u, cy - f(-4.4) * u], [cx + 4.4 * u, cy - f(4.4) * u],
+      'stroke="var(--brand)" stroke-width="2.6"');
+    out += '<circle cx="' + cx + '" cy="' + (cy - 2 * u) + '" r="5" fill="var(--brass)"/>';
+    out += LT(cx - 26, cy - 2 * u, 'c = 2', 'var(--brass)', 11);
+    out += line([cx + 1 * u, cy - f(1) * u], [cx + 3 * u, cy - f(1) * u], 'stroke="var(--faint)" stroke-width="1.4" stroke-dasharray="4 3"');
+    out += line([cx + 3 * u, cy - f(1) * u], [cx + 3 * u, cy - f(3) * u], 'stroke="var(--faint)" stroke-width="1.4" stroke-dasharray="4 3"');
+    out += LT(cx + 2 * u, cy - f(1) * u + 13, '2', 'var(--muted)', 10) +
+      LT(cx + 3 * u + 12, cy - f(2) * u, '1', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, out +
+      '<text x="' + (W - 12) + '" y="26" text-anchor="end" font-family="Spectral,Georgia,serif" ' +
+      'font-size="13" font-style="italic" fill="var(--brand)">y = ½x + 2</text>' +
+      LT(W / 2, 232, 'gradient = rise ÷ run = 1 ÷ 2', 'var(--muted)', 10.5));
+  };
+
+
+  /* ---------- Quarter III: coordinates, vectors, area ---------- */
+  F.coordPoint = function () {
+    var W = 300, H = 250, cx = 130, cy = 168, u = 28;
+    var out = axes(W, H, cx, cy, u, 5);
+    var A = [cx + 3 * u, cy - 2 * u];
+    out += line([A[0], A[1]], [A[0], cy], S.aux) + line([A[0], A[1]], [cx, A[1]], S.aux);
+    out += dot(A[0], A[1], 'var(--brand)');
+    out += L(A[0] + 22, A[1] - 12, 'A', 'var(--brand)');
+    out += LT(A[0] + 30, A[1] + 6, '(3, 2)', 'var(--brand)', 11);
+    out += LT(cx + 3 * u, cy + 15, '3', 'var(--muted)') + LT(cx - 14, cy - 2 * u, '2', 'var(--muted)');
+    return svg('0 0 ' + W + ' ' + H, out +
+      LT(W / 2, 238, 'first across, then up', 'var(--muted)', 10.5));
+  };
+  F.distanceFormula = function () {
+    var W = 300, H = 250, cx = 90, cy = 190, u = 30;
+    var out = axes(W, H, cx, cy, u, 5);
+    var A = [cx + 1 * u, cy - 1 * u], B = [cx + 5 * u, cy - 4 * u], C = [B[0], A[1]];
+    out += poly([A, B, C], 'fill="var(--brand-tint)" stroke="currentColor" stroke-width="2"');
+    out += right(C, A, B, 12);
+    out += dot(A[0], A[1]) + dot(B[0], B[1]) + dot(C[0], C[1], 'var(--faint)');
+    out += L(A[0] - 16, A[1] + 8, 'A') + L(B[0] + 16, B[1] - 6, 'B');
+    out += LT((A[0] + C[0]) / 2, A[1] + 15, 'x₂ − x₁', 'var(--muted)', 10);
+    out += LT(C[0] + 26, (B[1] + C[1]) / 2, 'y₂ − y₁', 'var(--muted)', 10);
+    out += LT((A[0] + B[0]) / 2 - 22, (A[1] + B[1]) / 2 - 10, 'd', 'var(--brand)', 12);
+    return svg('0 0 ' + W + ' ' + H, out +
+      LT(W / 2, 240, 'd = √((x₂−x₁)² + (y₂−y₁)²)', 'var(--brand)', 11));
+  };
+  F.circleEquation = function () {
+    var W = 290, H = 250, cx = 145, cy = 130, u = 26;
+    var out = axes(W, H, cx, cy, u, 4);
+    var Ox = cx + 1 * u, Oy = cy - 1 * u, R = 2.5 * u;
+    out += '<circle cx="' + Ox + '" cy="' + Oy + '" r="' + R + '" fill="var(--brand-tint)" ' +
+      'stroke="currentColor" stroke-width="2.2"/>';
+    out += line([Ox, Oy], [Ox + R * 0.7, Oy - R * 0.714], 'stroke="var(--brass)" stroke-width="1.8"');
+    out += dot(Ox, Oy, 'var(--brand)');
+    out += L(Ox - 16, Oy + 14, 'O', 'var(--brand)');
+    out += LT(Ox + 28, Oy - 30, 'R', 'var(--brass)', 12);
+    return svg('0 0 ' + W + ' ' + H, out +
+      LT(W / 2, 240, '(x − a)² + (y − b)² = R²', 'var(--brand)', 11.5));
+  };
+  F.vectorBasic = function () {
+    var A = [40, 150], B = [230, 62];
+    var out = line(A, B, 'stroke="var(--brand)" stroke-width="3"');
+    var ux = (B[0] - A[0]) / 210, uy = (B[1] - A[1]) / 210;
+    out += '<path d="M' + (B[0] - 14 * ux + 6 * uy) + ' ' + (B[1] - 14 * uy - 6 * ux) + ' L' + B[0] + ' ' + B[1] +
+      ' L' + (B[0] - 14 * ux - 6 * uy) + ' ' + (B[1] - 14 * uy + 6 * ux) +
+      '" fill="none" stroke="var(--brand)" stroke-width="3" stroke-linejoin="round"/>';
+    out += dot(A[0], A[1]) + L(A[0] - 12, A[1] + 10, 'A') + L(B[0] + 12, B[1] - 8, 'B');
+    return svg('0 0 268 186', out +
+      LT(130, 96, 'AB', 'var(--brand)', 13) +
+      LT(134, 172, 'a vector has a length and a direction', 'var(--muted)', 10.5));
+  };
+  function arrow(A, B, col, w) {
+    var L2 = Math.hypot(B[0] - A[0], B[1] - A[1]) || 1;
+    var ux = (B[0] - A[0]) / L2, uy = (B[1] - A[1]) / L2;
+    return line(A, B, 'stroke="' + col + '" stroke-width="' + (w || 2.6) + '"') +
+      '<path d="M' + (B[0] - 12 * ux + 5.5 * uy).toFixed(1) + ' ' + (B[1] - 12 * uy - 5.5 * ux).toFixed(1) +
+      ' L' + B[0] + ' ' + B[1] + ' L' + (B[0] - 12 * ux - 5.5 * uy).toFixed(1) + ' ' +
+      (B[1] - 12 * uy + 5.5 * ux).toFixed(1) + '" fill="none" stroke="' + col + '" stroke-width="' +
+      (w || 2.6) + '" stroke-linejoin="round"/>';
+  }
+  F.vectorAdd = function () {
+    var O = [40, 158], A = [150, 100], B = [230, 158];
+    var out = arrow(O, A, 'var(--brand)') + arrow(A, B, 'var(--brass)') + arrow(O, B, 'var(--easy)', 3);
+    out += line(O, [O[0] + (B[0] - A[0]), O[1] + (B[1] - A[1])], S.aux);
+    out += LT(88, 118, 'a', 'var(--brand)', 13) + LT(196, 118, 'b', 'var(--brass)', 13) +
+      LT(134, 176, 'a + b', 'var(--easy)', 13);
+    return svg('0 0 276 200', out +
+      LT(138, 194, 'triangle rule: nose to tail', 'var(--muted)', 10.5));
+  };
+  F.vectorScalar = function () {
+    var O = [34, 132];
+    var out = arrow(O, [110, 90], 'var(--brand)', 3) +
+      arrow([150, 132], [264, 69], 'var(--brass)', 3) +
+      arrow([34, 176], [72, 197], 'var(--hard)', 3);
+    return svg('0 0 286 232', out +
+      LT(64, 96, 'a', 'var(--brand)', 13) + LT(190, 88, '1.5 a', 'var(--brass)', 12) +
+      LT(96, 190, '−0.5 a', 'var(--hard)', 11) +
+      LT(143, 224, 'a number stretches or reverses a vector', 'var(--muted)', 10.5));
+  };
+  F.areaParallelogram = function () {
+    var A = [40, 156], B = [166, 156], C = [216, 62], D = [90, 62];
+    var out = poly([A, B, C, D]) + line(D, [90, 156], S.aux) + right([90, 156], B, D, 11);
+    out += dot(A[0], A[1]) + dot(B[0], B[1]) + dot(C[0], C[1]) + dot(D[0], D[1]);
+    out += LT(103, 172, 'a', 'var(--muted)', 12) + LT(78, 110, 'h', 'var(--faint)', 12);
+    return svg('0 0 250 196', out + LT(125, 190, 'S = a · h', 'var(--brand)', 13));
+  };
+  F.areaTriangle = function () {
+    var A = [128, 40], B = [34, 156], C = [214, 156];
+    var out = poly([A, B, C]) + line(A, [128, 156], S.aux) + right([128, 156], C, A, 11);
+    out += dot(A[0], A[1]) + dot(B[0], B[1]) + dot(C[0], C[1]);
+    out += LT(90, 172, 'a', 'var(--muted)', 12) + LT(116, 100, 'h', 'var(--faint)', 12);
+    return svg('0 0 250 196', out + LT(124, 190, 'S = ½ · a · h', 'var(--brand)', 13));
+  };
+  F.areaRhombus = function () {
+    var A = [34, 100], B = [124, 162], C = [214, 100], D = [124, 38], c = [124, 100];
+    var out = poly([A, B, C, D]) +
+      line(A, C, 'stroke="var(--brand)" stroke-width="1.7"') +
+      line(B, D, 'stroke="var(--brass)" stroke-width="1.7"') + right(c, C, D, 11);
+    out += LT(70, 92, 'd₁', 'var(--brand)', 12) + LT(136, 66, 'd₂', 'var(--brass)', 12);
+    return svg('0 0 250 196', out + LT(124, 188, 'S = ½ · d₁ · d₂', 'var(--brand)', 13));
+  };
+  F.polygonDecompose = function () {
+    var P = [[30, 150], [70, 60], [150, 34], [220, 90], [190, 158]];
+    var out = poly(P);
+    out += line(P[0], P[2], S.aux) + line(P[0], P[3], S.aux);
+    out += LT(84, 108, '1', 'var(--brass)') + LT(140, 92, '2', 'var(--brass)') + LT(150, 136, '3', 'var(--brass)');
+    P.forEach(function (p) { out += dot(p[0], p[1]); });
+    return svg('0 0 252 192', out +
+      LT(126, 184, 'split into triangles, then add the areas', 'var(--muted)', 10.5));
+  };
+  F.circleArea = function () {
+    var O = [88, 96], R = 62;
+    var out = '<circle cx="88" cy="96" r="62" fill="var(--brand-tint)" stroke="currentColor" stroke-width="2.2"/>';
+    out += line(O, [O[0] + R, O[1]], 'stroke="var(--brass)" stroke-width="2"');
+    out += dot(O[0], O[1]) + LT(120, 86, 'r', 'var(--brass)', 12);
+    var i, seg = '';
+    for (i = 0; i < 10; i++) {
+      var x = 190 + i * 13, up = i % 2 === 0;
+      seg += '<path d="M' + x + ' ' + (up ? 140 : 60) + ' L' + (x + 13) + ' ' + (up ? 140 : 60) +
+        ' L' + (x + 6.5) + ' ' + (up ? 60 : 140) + ' Z" fill="var(--brand-tint)" ' +
+        'stroke="currentColor" stroke-width="1.1"/>';
+    }
+    return svg('0 0 340 190', out + seg +
+      LT(88, 178, 'C = 2πr', 'var(--brand)', 12) +
+      LT(255, 178, 'S = πr²', 'var(--brand)', 12) +
+      LT(255, 46, 'cut into sectors → a rectangle', 'var(--muted)', 9.5));
+  };
+
+  /* ---------- Quarter IV: the circle ---------- */
+  F.linePositions = function () {
+    var out = '', cfg = [[54, 22, 'secant', 'var(--brand)'], [164, 44, 'tangent', 'var(--brass)'],
+                         [274, 64, 'no meeting', 'var(--hard)']];
+    cfg.forEach(function (c) {
+      var ox = c[0], d = c[1];
+      out += '<circle cx="' + ox + '" cy="86" r="44" fill="var(--brand-tint)" stroke="currentColor" stroke-width="2"/>';
+      out += line([ox - 62, 86 + d], [ox + 62, 86 + d], 'stroke="' + c[3] + '" stroke-width="2.2"');
+      out += dot(ox, 86, 'var(--faint)');
+      if (d < 44) {
+        var dx = Math.sqrt(44 * 44 - d * d);
+        out += dot(ox - dx, 86 + d, c[3]) + dot(ox + dx, 86 + d, c[3]);
+      } else if (d === 44) { out += dot(ox, 86 + d, c[3]); }
+      out += LT(ox, 158, c[2], c[3], 11);
+      out += LT(ox, 174, d < 44 ? 'd < R' : (d === 44 ? 'd = R' : 'd > R'), 'var(--muted)', 10);
+    });
+    return svg('0 0 340 188', out);
+  };
+  F.tangentProperty = function () {
+    var O = [104, 96], R = 56, T = [104, 40];
+    var out = '<circle cx="104" cy="96" r="56" fill="var(--brand-tint)" stroke="currentColor" stroke-width="2"/>';
+    out += line(O, T, 'stroke="var(--brass)" stroke-width="1.9"');
+    out += line([34, 40], [174, 40], 'stroke="var(--brand)" stroke-width="2.4"');
+    out += right(T, [174, 40], O, 12);
+    out += dot(O[0], O[1]) + dot(T[0], T[1], 'var(--brand)');
+    out += L(O[0] - 14, O[1] + 6, 'O') + L(T[0] - 14, T[1] - 10, 'T');
+    out += LT(122, 68, 'R', 'var(--brass)', 12);
+
+    var Oc = [250, 96], Rc = 46, P = [336, 96];
+    var dP = Math.hypot(P[0] - Oc[0], P[1] - Oc[1]);
+    var aT = Math.acos(Rc / dP), base = Math.atan2(P[1] - Oc[1], P[0] - Oc[0]);
+    var A = [Oc[0] + Rc * Math.cos(base + aT), Oc[1] + Rc * Math.sin(base + aT)];
+    var B = [Oc[0] + Rc * Math.cos(base - aT), Oc[1] + Rc * Math.sin(base - aT)];
+    out += '<circle cx="250" cy="96" r="46" fill="var(--brand-tint)" stroke="currentColor" stroke-width="1.8"/>';
+    out += line(P, A, 'stroke="var(--easy)" stroke-width="2"') +
+           line(P, B, 'stroke="var(--easy)" stroke-width="2"');
+    out += ticks(P, A, 1) + ticks(P, B, 1);
+    out += dot(Oc[0], Oc[1], 'var(--faint)') + dot(A[0], A[1], 'var(--easy)') +
+           dot(B[0], B[1], 'var(--easy)') + dot(P[0], P[1], 'var(--easy)');
+    out += L(P[0] + 12, P[1] + 4, 'P', 'var(--easy)') +
+           L(A[0] - 4, A[1] - 12, 'A', 'var(--easy)') + L(B[0] - 4, B[1] + 16, 'B', 'var(--easy)');
+    return svg('0 0 366 190', out +
+      LT(104, 176, 'tangent ⊥ radius at T', 'var(--brand)', 10.5) +
+      LT(266, 176, 'two tangents from P are equal', 'var(--easy)', 10));
+  };
+  F.centralAngle = function () {
+    var O = [128, 108], R = 74;
+    var a1 = -140 * Math.PI / 180, a2 = -40 * Math.PI / 180;
+    var A = [O[0] + R * Math.cos(a1), O[1] + R * Math.sin(a1)];
+    var B = [O[0] + R * Math.cos(a2), O[1] + R * Math.sin(a2)];
+    var out = '<circle cx="128" cy="108" r="74" fill="none" stroke="currentColor" stroke-width="2"/>';
+    out += '<path d="M' + A[0].toFixed(1) + ' ' + A[1].toFixed(1) + ' A' + R + ' ' + R + ' 0 0 1 ' +
+      B[0].toFixed(1) + ' ' + B[1].toFixed(1) + '" fill="none" stroke="var(--brass)" stroke-width="4"/>';
+    out += line(O, A, 'stroke="var(--brand)" stroke-width="1.9"') + line(O, B, 'stroke="var(--brand)" stroke-width="1.9"');
+    out += ang(O, A, B, 26, S.arc);
+    out += dot(O[0], O[1]) + dot(A[0], A[1]) + dot(B[0], B[1]);
+    out += L(O[0] - 14, O[1] + 12, 'O') + L(A[0] - 14, A[1] - 6, 'A') + L(B[0] + 14, B[1] - 6, 'B');
+    out += LT(128, 76, '∠AOB', 'var(--brand)', 11);
+    return svg('0 0 256 210', out +
+      LT(128, 200, 'a central angle equals the arc it cuts', 'var(--muted)', 10.5));
+  };
+  F.inscribedAngle = function () {
+    var O = [130, 118], R = 78;
+    var a1 = 200 * Math.PI / 180, a2 = 340 * Math.PI / 180, ac = 80 * Math.PI / 180;
+    var A = [O[0] + R * Math.cos(a1), O[1] + R * Math.sin(a1)];
+    var B = [O[0] + R * Math.cos(a2), O[1] + R * Math.sin(a2)];
+    var C = [O[0] + R * Math.cos(ac), O[1] + R * Math.sin(ac)];
+    var out = '<circle cx="130" cy="118" r="78" fill="none" stroke="currentColor" stroke-width="2"/>';
+    out += '<path d="M' + A[0].toFixed(1) + ' ' + A[1].toFixed(1) + ' A' + R + ' ' + R + ' 0 0 1 ' +
+      B[0].toFixed(1) + ' ' + B[1].toFixed(1) + '" fill="none" stroke="var(--brass)" stroke-width="4"/>';
+    out += line(C, A, 'stroke="var(--brand)" stroke-width="2"') + line(C, B, 'stroke="var(--brand)" stroke-width="2"');
+    out += line(O, A, S.aux) + line(O, B, S.aux);
+    out += ang(C, A, B, 26, S.arc) + ang(O, A, B, 20, S.arc2);
+    out += dot(O[0], O[1], 'var(--faint)') + dot(A[0], A[1]) + dot(B[0], B[1]) + dot(C[0], C[1], 'var(--brand)');
+    out += L(A[0] - 14, A[1] + 4, 'A') + L(B[0] + 14, B[1] + 4, 'B') + L(C[0], C[1] + 20, 'C', 'var(--brand)');
+    return svg('0 0 260 226', out +
+      LT(130, 214, '∠ACB = ½ ∠AOB', 'var(--brand)', 12));
+  };
+  F.semicircleAngle = function () {
+    var O = [130, 116], R = 76;
+    var A = [O[0] - R, O[1]], B = [O[0] + R, O[1]];
+    var C = [O[0] + R * Math.cos(-125 * Math.PI / 180), O[1] + R * Math.sin(-125 * Math.PI / 180)];
+    var out = '<circle cx="130" cy="116" r="76" fill="none" stroke="currentColor" stroke-width="2"/>';
+    out += line(A, B, 'stroke="var(--brass)" stroke-width="2.2"');
+    out += poly([A, B, C], 'fill="var(--brand-tint)" stroke="var(--brand)" stroke-width="2"');
+    out += right(C, A, B, 13);
+    out += dot(O[0], O[1], 'var(--faint)') + dot(A[0], A[1]) + dot(B[0], B[1]) + dot(C[0], C[1]);
+    out += L(A[0] - 14, A[1] + 4, 'A') + L(B[0] + 14, B[1] + 4, 'B') + L(C[0] - 6, C[1] - 14, 'C');
+    return svg('0 0 260 216', out +
+      LT(130, 206, 'an angle on a diameter is always 90°', 'var(--brand)', 11));
+  };
+  F.chordProperty = function () {
+    var O = [130, 100], R = 76;
+    var y = 138, half = Math.sqrt(R * R - 38 * 38);
+    var A = [O[0] - half, y], B = [O[0] + half, y], M = [O[0], y];
+    var out = '<circle cx="130" cy="100" r="76" fill="none" stroke="currentColor" stroke-width="2"/>';
+    out += line(A, B, 'stroke="var(--brand)" stroke-width="2.2"');
+    out += line(O, M, 'stroke="var(--brass)" stroke-width="1.9"');
+    out += right(M, B, O, 12) + ticks(A, M, 1) + ticks(M, B, 1);
+    out += dot(O[0], O[1]) + dot(A[0], A[1]) + dot(B[0], B[1]) + dot(M[0], M[1], 'var(--brass)');
+    out += L(O[0] - 14, O[1] - 6, 'O') + L(A[0] - 14, A[1] + 4, 'A') + L(B[0] + 14, B[1] + 4, 'B') +
+      L(M[0] + 14, M[1] + 14, 'M', 'var(--brass)');
+    return svg('0 0 260 206', out +
+      LT(130, 196, 'OM ⊥ AB  ⟹  AM = MB', 'var(--brand)', 11.5));
+  };
+  F.transformations = function () {
+    var T = [[24, 118], [64, 118], [44, 78]];
+    function tri(pts, col, fill) {
+      return poly(pts, 'fill="' + (fill || 'var(--brand-tint)') + '" stroke="' + col +
+        '" stroke-width="1.8" stroke-linejoin="round"');
+    }
+    var out = tri(T, 'currentColor');
+    out += line([94, 40], [94, 150], 'stroke="var(--faint)" stroke-width="1.3" stroke-dasharray="4 4"');
+    out += tri([[164, 118], [124, 118], [144, 78]], 'var(--brand)');
+    out += LT(94, 164, 'reflection', 'var(--brand)', 10.5);
+    out += tri([[214, 118], [254, 118], [234, 78]], 'currentColor');
+    out += tri([[254, 78], [254, 118], [214, 98]], 'var(--brass)');
+    out += LT(240, 164, 'rotation', 'var(--brass)', 10.5);
+    out += tri([[296, 130], [336, 130], [316, 90]], 'currentColor');
+    out += tri([[316, 108], [356, 108], [336, 68]], 'var(--easy)');
+    out += arrow([306, 126], [326, 104], 'var(--easy)', 1.6);
+    out += LT(326, 164, 'translation', 'var(--easy)', 10.5);
+    return svg('0 0 376 178', out);
+  };
+  F.enlargement = function () {
+    var C = [34, 156];
+    var T = [[80, 130], [120, 130], [100, 96]];
+    var T2 = T.map(function (p) { return [C[0] + (p[0] - C[0]) * 1.9, C[1] + (p[1] - C[1]) * 1.9]; });
+    var out = poly(T2, 'fill="var(--brand-tint)" stroke="var(--brand)" stroke-width="2"');
+    out += poly(T, 'fill="var(--surface)" stroke="currentColor" stroke-width="2"');
+    T.forEach(function (p, i) { out += line(C, T2[i], S.aux); });
+    out += dot(C[0], C[1], 'var(--brass)') + L(C[0] - 4, C[1] + 16, 'O', 'var(--brass)');
+    return svg('0 0 280 190', out +
+      LT(150, 180, 'scale factor 1.9 from the centre O', 'var(--brand)', 10.5));
+  };
+  F.prismVolume = function () {
+    var out = '';
+    var A = [40, 150], B = [140, 150], C = [90, 108];
+    var d = [56, -34];
+    var A2 = [A[0] + d[0], A[1] + d[1]], B2 = [B[0] + d[0], B[1] + d[1]], C2 = [C[0] + d[0], C[1] + d[1]];
+    out += poly([A, B, B2, A2], 'fill="var(--brand-tint)" stroke="currentColor" stroke-width="1.8"');
+    out += poly([B, C, C2, B2], 'fill="var(--surface-2)" stroke="currentColor" stroke-width="1.8"');
+    out += poly([A, B, C], 'fill="var(--brass-tint)" stroke="currentColor" stroke-width="2"');
+    out += poly([A2, B2, C2], 'fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 3"');
+    out += line(A, A2, S.aux);
+    out += LT(90, 166, 'base area S', 'var(--brass)', 10.5) + LT(214, 140, 'length ℓ', 'var(--muted)', 10.5);
+    return svg('0 0 280 200', out + LT(132, 192, 'V = S · ℓ', 'var(--brand)', 13));
+  };
+  F.surfaceNet = function () {
+    var out = '';
+    function rect(x, y, w, h, fill, lab) {
+      return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="2" fill="' +
+        fill + '" stroke="currentColor" stroke-width="1.6"/>' +
+        LT(x + w / 2, y + h / 2, lab, 'var(--muted)', 10);
+    }
+    out += rect(84, 24, 70, 46, 'var(--brass-tint)', 'top');
+    out += rect(84, 74, 70, 62, 'var(--brand-tint)', 'front');
+    out += rect(24, 74, 56, 62, 'var(--surface-2)', 'side');
+    out += rect(158, 74, 56, 62, 'var(--surface-2)', 'side');
+    out += rect(218, 74, 70, 62, 'var(--brand-tint)', 'back');
+    out += rect(84, 140, 70, 46, 'var(--brass-tint)', 'base');
+    return svg('0 0 306 204', out +
+      LT(153, 198, 'surface area = the area of the whole net', 'var(--brand)', 10.5));
+  };
+  F.symmetry3D = function () {
+    var out = '';
+    var A = [46, 148], B = [150, 148], C = [98, 60];
+    var d = [46, -28];
+    var A2 = [A[0] + d[0], A[1] + d[1]], B2 = [B[0] + d[0], B[1] + d[1]], C2 = [C[0] + d[0], C[1] + d[1]];
+    out += poly([A, B, B2, A2], 'fill="var(--brand-tint)" stroke="currentColor" stroke-width="1.7"');
+    out += poly([A, B, C], 'fill="var(--surface-2)" stroke="currentColor" stroke-width="1.8"');
+    out += poly([A2, B2, C2], 'fill="none" stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 3"');
+    out += line(C, [C[0] + d[0], C[1] + d[1]], S.aux);
+    out += line([98, 34], [98, 176], 'stroke="var(--brass)" stroke-width="1.8" stroke-dasharray="6 4"');
+    out += LT(98, 24, 'axis', 'var(--brass)', 10.5) +
+      LT(150, 196, 'a plane of symmetry cuts it into mirror halves', 'var(--muted)', 9.5);
+    return svg('0 0 300 208', out);
+  };
+
   w.FIG = F;
   w.FIGH = { svg: svg, L: L, LT: LT, dot: dot, poly: poly, line: line, ticks: ticks, ang: ang, right: right, mid: mid, cent: cent, norm: norm, S: S };
 })(window);

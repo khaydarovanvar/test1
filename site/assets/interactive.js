@@ -810,6 +810,341 @@
     render();
   };
 
+
+  /* ============ 16. quadratic — roots and the discriminant ============ */
+  INT.quadratic = function (host, opt) {
+    var body = frame(host, (opt && opt.title) || 'Roots and the discriminant',
+      'Move a, b and c. Watch D decide how many times the curve meets the x-axis.');
+    var row = ctrlRow(body);
+    var svg = stage(body, '0 0 360 280', 460);
+    var read = readoutBar(body, ['a', 'b', 'c', 'D = b² − 4ac', 'roots', 'x₁', 'x₂', 'x₁ + x₂', 'x₁ · x₂']);
+    var A = 1, B = -2, C = -3;
+    function draw() {
+      svg.innerHTML = '';
+      var cx = 180, cy = 150, u = 20, i;
+      for (i = -7; i <= 7; i++) {
+        svg.appendChild(S('line', { x1: cx + i * u, y1: 8, x2: cx + i * u, y2: 272, stroke: 'var(--rule-soft)', 'stroke-width': 1 }));
+        svg.appendChild(S('line', { x1: 8, y1: cy + i * u, x2: 352, y2: cy + i * u, stroke: 'var(--rule-soft)', 'stroke-width': 1 }));
+      }
+      svg.appendChild(S('line', { x1: 8, y1: cy, x2: 352, y2: cy, stroke: 'var(--faint)', 'stroke-width': 1.6 }));
+      svg.appendChild(S('line', { x1: cx, y1: 8, x2: cx, y2: 272, stroke: 'var(--faint)', 'stroke-width': 1.6 }));
+      var d = '', on = false;
+      for (var x = -8.6; x <= 8.6; x += 0.04) {
+        var y = A * x * x + B * x + C;
+        if (y < -6.6 || y > 6.6) { on = false; continue; }
+        var X = cx + x * u, Y = cy - y * u;
+        if (X < 6 || X > 354) { on = false; continue; }
+        d += (on ? 'L' : 'M') + r1(X) + ' ' + r1(Y) + ' '; on = true;
+      }
+      svg.appendChild(S('path', { d: d, fill: 'none', stroke: 'var(--brand)', 'stroke-width': 2.6, 'stroke-linecap': 'round' }));
+      var D = B * B - 4 * A * C, r1v = null, r2v = null, n = 0;
+      if (D > 0) { n = 2; r1v = (-B - Math.sqrt(D)) / (2 * A); r2v = (-B + Math.sqrt(D)) / (2 * A); }
+      else if (D === 0) { n = 1; r1v = r2v = -B / (2 * A); }
+      [r1v, r2v].forEach(function (r, k) {
+        if (r == null || (k === 1 && n === 1)) return;
+        svg.appendChild(S('circle', { cx: r1(cx + r * u), cy: cy, r: 5.5, fill: 'var(--brass)' }));
+      });
+      var vx = -B / (2 * A), vy = A * vx * vx + B * vx + C;
+      if (Math.abs(vy) <= 6.6) svg.appendChild(S('circle', { cx: r1(cx + vx * u), cy: r1(cy - vy * u), r: 4, fill: 'var(--brand)' }));
+      read['a'].textContent = A; read['b'].textContent = B; read['c'].textContent = C;
+      read['D = b² − 4ac'].textContent = D;
+      read['roots'].textContent = n === 2 ? 'two' : n === 1 ? 'one' : 'none';
+      read['x₁'].textContent = r1v == null ? '—' : r2(r1v);
+      read['x₂'].textContent = r2v == null ? '—' : r2(r2v);
+      read['x₁ + x₂'].textContent = n ? r2(-B / A) : '—';
+      read['x₁ · x₂'].textContent = n ? r2(C / A) : '—';
+    }
+    slider(row, 'a', -3, 3, A, 1, function (v) { if (v === 0) v = 1; A = v; draw(); });
+    slider(row, 'b', -6, 6, B, 1, function (v) { B = v; draw(); });
+    slider(row, 'c', -6, 6, C, 1, function (v) { C = v; draw(); });
+    draw();
+  };
+
+  /* ============ 17. a point on the coordinate plane ============ */
+  INT.coordPlane = function (host, opt) {
+    opt = opt || {};
+    var body = frame(host, opt.title || 'Two points on the plane',
+      'Drag A or B. The distance and the midpoint follow.');
+    var svg = stage(body, '0 0 360 300', 460);
+    var read = readoutBar(body, ['A', 'B', 'x₂ − x₁', 'y₂ − y₁', 'distance AB', 'midpoint M']);
+    var u = 26, cx = 180, cy = 150;
+    var P = { A: [-3, -2], B: [3, 2] };
+    function sx(v) { return cx + v * u; }
+    function sy(v) { return cy - v * u; }
+    function draw() {
+      svg.innerHTML = '';
+      var i;
+      for (i = -6; i <= 6; i++) {
+        svg.appendChild(S('line', { x1: sx(i), y1: 8, x2: sx(i), y2: 292, stroke: 'var(--rule-soft)', 'stroke-width': 1 }));
+        svg.appendChild(S('line', { x1: 8, y1: sy(i), x2: 352, y2: sy(i), stroke: 'var(--rule-soft)', 'stroke-width': 1 }));
+      }
+      svg.appendChild(S('line', { x1: 8, y1: cy, x2: 352, y2: cy, stroke: 'var(--faint)', 'stroke-width': 1.6 }));
+      svg.appendChild(S('line', { x1: cx, y1: 8, x2: cx, y2: 292, stroke: 'var(--faint)', 'stroke-width': 1.6 }));
+      var A = P.A, B = P.B;
+      svg.appendChild(S('path', {
+        d: 'M' + sx(A[0]) + ' ' + sy(A[1]) + ' L' + sx(B[0]) + ' ' + sy(A[1]) + ' L' + sx(B[0]) + ' ' + sy(B[1]),
+        fill: 'none', stroke: 'var(--faint)', 'stroke-width': 1.4, 'stroke-dasharray': '5 4'
+      }));
+      svg.appendChild(S('line', { x1: sx(A[0]), y1: sy(A[1]), x2: sx(B[0]), y2: sy(B[1]), stroke: 'var(--brand)', 'stroke-width': 2.6 }));
+      var M = [(A[0] + B[0]) / 2, (A[1] + B[1]) / 2];
+      svg.appendChild(S('circle', { cx: sx(M[0]), cy: sy(M[1]), r: 4.5, fill: 'var(--brass)' }));
+      var handles = [];
+      ['A', 'B'].forEach(function (k) {
+        var p = P[k];
+        var c = S('circle', { cx: sx(p[0]), cy: sy(p[1]), r: 8, fill: 'var(--brand)', 'fill-opacity': .9 });
+        svg.appendChild(c);
+        svg.appendChild(S('text', {
+          x: sx(p[0]) + 15, y: sy(p[1]) - 12, 'font-family': 'Spectral, Georgia, serif',
+          'font-size': 14, 'font-style': 'italic', fill: 'currentColor'
+        }, k));
+        handles.push({ id: k, node: c, get: function () { return [sx(P[k][0]), sy(P[k][1])]; } });
+      });
+      draggable(svg, handles, function (id, x, y) {
+        var gx = Math.max(-6, Math.min(6, Math.round((x - cx) / u)));
+        var gy = Math.max(-5, Math.min(5, Math.round((cy - y) / u)));
+        P[id] = [gx, gy]; draw();
+      });
+      var dx = B[0] - A[0], dy = B[1] - A[1];
+      read['A'].textContent = '(' + A[0] + ', ' + A[1] + ')';
+      read['B'].textContent = '(' + B[0] + ', ' + B[1] + ')';
+      read['x₂ − x₁'].textContent = dx;
+      read['y₂ − y₁'].textContent = dy;
+      read['distance AB'].textContent = r2(Math.hypot(dx, dy));
+      read['midpoint M'].textContent = '(' + M[0] + ', ' + M[1] + ')';
+    }
+    draw();
+  };
+
+  /* ============ 18. vectors ============ */
+  INT.vectors = function (host, opt) {
+    var body = frame(host, (opt && opt.title) || 'Adding vectors',
+      'Drag the tips. The green vector is always a + b.');
+    var svg = stage(body, '0 0 360 300', 460);
+    var read = readoutBar(body, ['a', 'b', 'a + b', '| a |', '| b |', '| a + b |']);
+    var u = 26, cx = 150, cy = 190;
+    var V = { a: [3, 2], b: [2, -3] };
+    function sx(v) { return cx + v * u; }
+    function sy(v) { return cy - v * u; }
+    function arrow(x1, y1, x2, y2, col, w) {
+      var L = Math.hypot(x2 - x1, y2 - y1) || 1, ux = (x2 - x1) / L, uy = (y2 - y1) / L;
+      svg.appendChild(S('line', { x1: r1(x1), y1: r1(y1), x2: r1(x2), y2: r1(y2), stroke: col, 'stroke-width': w || 2.6 }));
+      svg.appendChild(S('path', {
+        d: 'M' + r1(x2 - 12 * ux + 5.5 * uy) + ' ' + r1(y2 - 12 * uy - 5.5 * ux) + ' L' + r1(x2) + ' ' + r1(y2) +
+          ' L' + r1(x2 - 12 * ux - 5.5 * uy) + ' ' + r1(y2 - 12 * uy + 5.5 * ux),
+        fill: 'none', stroke: col, 'stroke-width': w || 2.6, 'stroke-linejoin': 'round'
+      }));
+    }
+    function draw() {
+      svg.innerHTML = '';
+      var i;
+      for (i = -5; i <= 7; i++) svg.appendChild(S('line', { x1: sx(i), y1: 8, x2: sx(i), y2: 292, stroke: 'var(--rule-soft)', 'stroke-width': 1 }));
+      for (i = -4; i <= 6; i++) svg.appendChild(S('line', { x1: 8, y1: sy(i), x2: 352, y2: sy(i), stroke: 'var(--rule-soft)', 'stroke-width': 1 }));
+      svg.appendChild(S('line', { x1: 8, y1: cy, x2: 352, y2: cy, stroke: 'var(--faint)', 'stroke-width': 1.5 }));
+      svg.appendChild(S('line', { x1: cx, y1: 8, x2: cx, y2: 292, stroke: 'var(--faint)', 'stroke-width': 1.5 }));
+      var a = V.a, b = V.b, sum = [a[0] + b[0], a[1] + b[1]];
+      arrow(cx, cy, sx(a[0]), sy(a[1]), 'var(--brand)');
+      arrow(sx(a[0]), sy(a[1]), sx(sum[0]), sy(sum[1]), 'var(--brass)');
+      arrow(cx, cy, sx(sum[0]), sy(sum[1]), 'var(--easy)', 3);
+      var handles = [];
+      [['a', a], ['b', sum]].forEach(function (g) {
+        var c = S('circle', { cx: sx(g[1][0]), cy: sy(g[1][1]), r: 8, fill: g[0] === 'a' ? 'var(--brand)' : 'var(--brass)', 'fill-opacity': .85 });
+        svg.appendChild(c);
+        handles.push({ id: g[0], node: c, get: function () { return [sx(g[1][0]), sy(g[1][1])]; } });
+      });
+      draggable(svg, handles, function (id, x, y) {
+        var gx = Math.max(-5, Math.min(7, Math.round((x - cx) / u)));
+        var gy = Math.max(-4, Math.min(6, Math.round((cy - y) / u)));
+        if (id === 'a') V.a = [gx, gy];
+        else V.b = [gx - V.a[0], gy - V.a[1]];
+        draw();
+      });
+      read['a'].textContent = '(' + a[0] + '; ' + a[1] + ')';
+      read['b'].textContent = '(' + b[0] + '; ' + b[1] + ')';
+      read['a + b'].textContent = '(' + sum[0] + '; ' + sum[1] + ')';
+      read['| a |'].textContent = r2(Math.hypot(a[0], a[1]));
+      read['| b |'].textContent = r2(Math.hypot(b[0], b[1]));
+      read['| a + b |'].textContent = r2(Math.hypot(sum[0], sum[1]));
+    }
+    draw();
+  };
+
+  /* ============ 19. area of a triangle — same base, same height ============ */
+  INT.areaModel = function (host, opt) {
+    var body = frame(host, (opt && opt.title) || 'Base and height decide the area',
+      'Slide the apex along the top line. The area never changes.');
+    var row = ctrlRow(body);
+    var svg = stage(body, '0 0 380 250', 460);
+    var read = readoutBar(body, ['base a', 'height h', 'area ½ah', 'perimeter']);
+    var base = 220, h = 120, apex = 0.5;
+    function draw() {
+      svg.innerHTML = '';
+      var y0 = 200, x0 = 60;
+      var B1 = [x0, y0], B2 = [x0 + base, y0], Ap = [x0 + apex * base, y0 - h];
+      svg.appendChild(S('line', { x1: 20, y1: y0 - h, x2: 360, y2: y0 - h, stroke: 'var(--faint)', 'stroke-width': 1.3, 'stroke-dasharray': '5 4' }));
+      svg.appendChild(S('polygon', {
+        points: [B1, B2, Ap].map(function (p) { return r1(p[0]) + ',' + r1(p[1]); }).join(' '),
+        fill: 'var(--brand-tint)', stroke: 'currentColor', 'stroke-width': 2.2, 'stroke-linejoin': 'round'
+      }));
+      svg.appendChild(S('line', { x1: r1(Ap[0]), y1: r1(Ap[1]), x2: r1(Ap[0]), y2: y0, stroke: 'var(--brass)', 'stroke-width': 1.6, 'stroke-dasharray': '4 3' }));
+      svg.appendChild(S('text', { x: r1(Ap[0]) - 14, y: y0 - h / 2, 'font-family': 'IBM Plex Mono, monospace', 'font-size': 11, fill: 'var(--brass)' }, 'h'));
+      svg.appendChild(S('text', { x: x0 + base / 2, y: y0 + 18, 'text-anchor': 'middle', 'font-family': 'IBM Plex Mono, monospace', 'font-size': 11, fill: 'var(--muted)' }, 'a'));
+      var c = S('circle', { cx: r1(Ap[0]), cy: r1(Ap[1]), r: 8, fill: 'var(--brand)', 'fill-opacity': .9 });
+      svg.appendChild(c);
+      draggable(svg, [{ id: 'ap', node: c, get: function () { return Ap; } }], function (id, x) {
+        apex = Math.max(-0.35, Math.min(1.35, (x - x0) / base)); draw();
+      });
+      var s1 = Math.hypot(Ap[0] - B1[0], h), s2 = Math.hypot(B2[0] - Ap[0], h);
+      read['base a'].textContent = base;
+      read['height h'].textContent = h;
+      read['area ½ah'].textContent = base * h / 2;
+      read['perimeter'].textContent = r1(base + s1 + s2);
+    }
+    slider(row, 'base', 120, 280, base, 10, function (v) { base = v; draw(); });
+    slider(row, 'height', 50, 150, h, 5, function (v) { h = v; draw(); });
+    draw();
+  };
+
+  /* ============ 20. circle angles ============ */
+  INT.circleAngles = function (host, opt) {
+    var body = frame(host, (opt && opt.title) || 'The inscribed angle',
+      'Drag C round the circle. The inscribed angle stays half the central angle.');
+    var svg = stage(body, '0 0 340 300', 440);
+    var read = readoutBar(body, ['central ∠AOB', 'inscribed ∠ACB', 'ratio', 'arc AB']);
+    var O = [170, 150], R = 112;
+    var aA = 200, aB = 340, aC = 70;
+    function pt(deg) { return [O[0] + R * Math.cos(deg * Math.PI / 180), O[1] + R * Math.sin(deg * Math.PI / 180)]; }
+    function draw() {
+      svg.innerHTML = '';
+      var A = pt(aA), B = pt(aB), C = pt(aC);
+      svg.appendChild(S('circle', { cx: O[0], cy: O[1], r: R, fill: 'none', stroke: 'currentColor', 'stroke-width': 2 }));
+      svg.appendChild(S('path', {
+        d: 'M' + r1(A[0]) + ' ' + r1(A[1]) + ' A' + R + ' ' + R + ' 0 0 1 ' + r1(B[0]) + ' ' + r1(B[1]),
+        fill: 'none', stroke: 'var(--brass)', 'stroke-width': 5
+      }));
+      [[O, A], [O, B]].forEach(function (g) {
+        svg.appendChild(S('line', { x1: g[0][0], y1: g[0][1], x2: r1(g[1][0]), y2: r1(g[1][1]), stroke: 'var(--faint)', 'stroke-width': 1.6 }));
+      });
+      [[C, A], [C, B]].forEach(function (g) {
+        svg.appendChild(S('line', { x1: r1(g[0][0]), y1: r1(g[0][1]), x2: r1(g[1][0]), y2: r1(g[1][1]), stroke: 'var(--brand)', 'stroke-width': 2.2 }));
+      });
+      [[O, 'O', 'var(--faint)'], [A, 'A', 'currentColor'], [B, 'B', 'currentColor'], [C, 'C', 'var(--brand)']].forEach(function (g) {
+        svg.appendChild(S('circle', { cx: r1(g[0][0]), cy: r1(g[0][1]), r: g[1] === 'C' ? 8 : 4.5, fill: g[2] }));
+        svg.appendChild(S('text', {
+          x: r1(g[0][0] + (g[0][0] > O[0] ? 15 : -15)), y: r1(g[0][1] + (g[0][1] > O[1] ? 16 : -10)),
+          'text-anchor': 'middle', 'font-family': 'Spectral, Georgia, serif', 'font-size': 14,
+          'font-style': 'italic', fill: g[2]
+        }, g[1]));
+      });
+      var Cnode = svg.querySelectorAll('circle')[svg.querySelectorAll('circle').length - 1];
+      var handles = [{ id: 'C', node: svg.querySelectorAll('circle')[4], get: function () { return C; } }];
+      draggable(svg, handles, function (id, x, y) {
+        aC = Math.atan2(y - O[1], x - O[0]) * 180 / Math.PI;
+        var lo = aA, hi = aB;
+        var norm = (aC % 360 + 360) % 360;
+        if (norm > 195 && norm < 345) aC = norm < 270 ? 195 : 345;   // keep C off the arc AB
+        draw();
+      });
+      var central = 140;
+      var ang2 = angleDeg(C, A, B);
+      read['central ∠AOB'].textContent = central + '°';
+      read['inscribed ∠ACB'].textContent = r1(ang2) + '°';
+      read['ratio'].textContent = r2(central / Math.max(ang2, 0.001));
+      read['arc AB'].textContent = central + '°';
+    }
+    draw();
+  };
+
+  /* ============ 21. transformations ============ */
+  INT.transform = function (host, opt) {
+    var body = frame(host, (opt && opt.title) || 'Move the shape',
+      'Choose a transformation and change its amount.');
+    var row = ctrlRow(body);
+    var svg = stage(body, '0 0 360 300', 440);
+    var read = readoutBar(body, ['transformation', 'lengths', 'angles', 'orientation']);
+    var mode = 'translate', amount = 2;
+    var u = 26, cx = 180, cy = 150;
+    var SHAPE = [[1, 1], [4, 1], [2, 3]];
+    function sx(v) { return cx + v * u; } function sy(v) { return cy - v * u; }
+    function draw() {
+      svg.innerHTML = '';
+      var i;
+      for (i = -6; i <= 6; i++) {
+        svg.appendChild(S('line', { x1: sx(i), y1: 8, x2: sx(i), y2: 292, stroke: 'var(--rule-soft)', 'stroke-width': 1 }));
+        svg.appendChild(S('line', { x1: 8, y1: sy(i), x2: 352, y2: sy(i), stroke: 'var(--rule-soft)', 'stroke-width': 1 }));
+      }
+      svg.appendChild(S('line', { x1: 8, y1: cy, x2: 352, y2: cy, stroke: 'var(--faint)', 'stroke-width': 1.6 }));
+      svg.appendChild(S('line', { x1: cx, y1: 8, x2: cx, y2: 292, stroke: 'var(--faint)', 'stroke-width': 1.6 }));
+      var img = SHAPE.map(function (p) {
+        if (mode === 'translate') return [p[0] - amount, p[1] - amount];
+        if (mode === 'reflect') return [-p[0], p[1]];
+        if (mode === 'rotate') return [-p[1], p[0]];
+        return [p[0] * (amount / 2), p[1] * (amount / 2)];
+      });
+      svg.appendChild(S('polygon', {
+        points: SHAPE.map(function (p) { return sx(p[0]) + ',' + sy(p[1]); }).join(' '),
+        fill: 'var(--surface-2)', stroke: 'currentColor', 'stroke-width': 2, 'stroke-linejoin': 'round'
+      }));
+      svg.appendChild(S('polygon', {
+        points: img.map(function (p) { return r1(sx(p[0])) + ',' + r1(sy(p[1])); }).join(' '),
+        fill: 'var(--brand-tint)', stroke: 'var(--brand)', 'stroke-width': 2.2, 'stroke-linejoin': 'round'
+      }));
+      var names = { translate: 'translation', reflect: 'reflection in the y-axis', rotate: 'rotation 90° about O', enlarge: 'enlargement' };
+      read['transformation'].textContent = names[mode];
+      read['lengths'].textContent = mode === 'enlarge' ? '× ' + r2(amount / 2) : 'unchanged';
+      read['angles'].textContent = 'unchanged';
+      read['orientation'].textContent = mode === 'reflect' ? 'reversed' : 'kept';
+    }
+    ['translate', 'reflect', 'rotate', 'enlarge'].forEach(function (mname) {
+      var b = el('button', { 'class': 'btn sm', type: 'button' });
+      b.textContent = mname;
+      b.addEventListener('click', function () { mode = mname; draw(); });
+      row.appendChild(b);
+    });
+    slider(row, 'amount', 1, 4, amount, 1, function (v) { amount = v; draw(); });
+    draw();
+  };
+
+  /* ============ 22. averages of a small data set ============ */
+  INT.averages = function (host, opt) {
+    var body = frame(host, (opt && opt.title) || 'Mean, median and mode',
+      'Change a value and watch which average moves.');
+    var row = ctrlRow(body);
+    var svg = stage(body, '0 0 380 220', 460);
+    var read = readoutBar(body, ['values', 'mean', 'median', 'mode', 'range']);
+    var data = [3, 5, 5, 6, 8, 9, 12];
+    var idx = 6;
+    function draw() {
+      svg.innerHTML = '';
+      var x0 = 34, y0 = 170, w = 40, u = 11;
+      data.forEach(function (v, i) {
+        svg.appendChild(S('rect', {
+          x: x0 + i * w, y: y0 - v * u, width: w - 8, height: v * u, rx: 2,
+          fill: i === idx ? 'var(--brass)' : 'var(--brand-tint)', stroke: 'currentColor', 'stroke-width': 1.4
+        }));
+        svg.appendChild(S('text', {
+          x: x0 + i * w + (w - 8) / 2, y: y0 + 16, 'text-anchor': 'middle',
+          'font-family': 'IBM Plex Mono, monospace', 'font-size': 11, fill: 'var(--muted)'
+        }, String(v)));
+      });
+      svg.appendChild(S('line', { x1: 20, y1: y0, x2: 360, y2: y0, stroke: 'currentColor', 'stroke-width': 1.6 }));
+      var sorted = data.slice().sort(function (a, b) { return a - b; });
+      var mean = data.reduce(function (s2, v) { return s2 + v; }, 0) / data.length;
+      var median = sorted[(sorted.length - 1) / 2];
+      var counts = {}, mode = sorted[0], best = 0;
+      sorted.forEach(function (v) { counts[v] = (counts[v] || 0) + 1; if (counts[v] > best) { best = counts[v]; mode = v; } });
+      svg.appendChild(S('line', { x1: 20, y1: r1(y0 - mean * u), x2: 360, y2: r1(y0 - mean * u), stroke: 'var(--easy)', 'stroke-width': 1.8, 'stroke-dasharray': '6 4' }));
+      svg.appendChild(S('text', { x: 356, y: r1(y0 - mean * u) - 6, 'text-anchor': 'end', 'font-family': 'IBM Plex Mono, monospace', 'font-size': 10.5, fill: 'var(--easy)' }, 'mean'));
+      read['values'].textContent = sorted.join(', ');
+      read['mean'].textContent = r2(mean);
+      read['median'].textContent = median;
+      read['mode'].textContent = best > 1 ? mode : 'none';
+      read['range'].textContent = sorted[sorted.length - 1] - sorted[0];
+    }
+    slider(row, 'which value', 1, 7, idx + 1, 1, function (v) { idx = v - 1; draw(); });
+    slider(row, 'set it to', 1, 14, data[idx], 1, function (v) { data[idx] = v; draw(); });
+    draw();
+  };
+
   /* ---------- mount ---------- */
   INT.mount = function (host, spec) {
     var fn = INT[spec.type];
