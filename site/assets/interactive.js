@@ -1153,5 +1153,235 @@
     catch (e) { host.innerHTML = '<p class="small">This model could not start: ' + e.message + '</p>'; }
   };
 
+
+  /* ============ 23. graph transformations ============
+     y = a·f(x − b) + c on top of y = f(x), so the class can see which knob
+     moves the curve and which reshapes it. */
+  INT.graphTransform = function (host, opt) {
+    opt = opt || {};
+    var body = frame(host, opt.title || 'Transforming a graph',
+      'Move a, b and c. The grey curve is y = f(x); the coloured one is the transform.');
+    var row = ctrlRow(body);
+    var svg = stage(body, '0 0 360 280', 460);
+    var read = readoutBar(body, ['a', 'b', 'c', 'equation']);
+    var a = 1, b = 0, c = 0, u = 26, cx = 180, cy = 168;
+    var base = opt.f || function (x) { return x * x; };
+    function draw() {
+      svg.innerHTML = '';
+      var i;
+      for (i = -6; i <= 6; i++) {
+        svg.appendChild(S('line', { x1: cx + i * u, y1: 8, x2: cx + i * u, y2: 272, stroke: 'var(--rule-soft)', 'stroke-width': 1 }));
+        svg.appendChild(S('line', { x1: 8, y1: cy + i * u, x2: 352, y2: cy + i * u, stroke: 'var(--rule-soft)', 'stroke-width': 1 }));
+      }
+      svg.appendChild(S('line', { x1: 8, y1: cy, x2: 352, y2: cy, stroke: 'var(--faint)', 'stroke-width': 1.6 }));
+      svg.appendChild(S('line', { x1: cx, y1: 8, x2: cx, y2: 272, stroke: 'var(--faint)', 'stroke-width': 1.6 }));
+      function path(f, col, wid) {
+        var d = '', started = false;
+        for (var x = -6.6; x <= 6.6; x += 0.05) {
+          var y = f(x);
+          if (!isFinite(y) || Math.abs(y) > 9) { started = false; continue; }
+          d += (started ? 'L' : 'M') + (cx + x * u).toFixed(1) + ' ' + (cy - y * u).toFixed(1) + ' ';
+          started = true;
+        }
+        svg.appendChild(S('path', { d: d, fill: 'none', stroke: col, 'stroke-width': wid }));
+      }
+      path(base, 'var(--faint)', 2);
+      path(function (x) { return a * base(x - b) + c; }, 'var(--brand)', 2.8);
+      read['a'].textContent = a;
+      read['b'].textContent = b;
+      read['c'].textContent = c;
+      read['equation'].textContent = 'y = ' + (a === 1 ? '' : a + '·') + 'f(x' +
+        (b === 0 ? '' : (b > 0 ? ' − ' + b : ' + ' + (-b))) + ')' +
+        (c === 0 ? '' : (c > 0 ? ' + ' + c : ' − ' + (-c)));
+    }
+    slider(row, 'a  stretch', -2, 3, 1, 0.5, function (v) { a = v; draw(); });
+    slider(row, 'b  across', -4, 4, 0, 0.5, function (v) { b = v; draw(); });
+    slider(row, 'c  up', -4, 4, 0, 0.5, function (v) { c = v; draw(); });
+    draw();
+  };
+
+  /* ============ 24. the derivative as a limit ============ */
+  INT.derivative = function (host, opt) {
+    opt = opt || {};
+    var body = frame(host, opt.title || 'The secant becomes the tangent',
+      'Slide h towards 0 and watch the gradient of PQ settle on the derivative.');
+    var row = ctrlRow(body);
+    var svg = stage(body, '0 0 360 280', 460);
+    var read = readoutBar(body, ['x', 'h', 'Δy / Δx', "f ′(x) exactly"]);
+    var f = opt.f || function (x) { return 0.4 * x * x; };
+    var df = opt.df || function (x) { return 0.8 * x; };
+    var x0 = 2, h = 2, u = 34, cx = 46, cy = 244;
+    function draw() {
+      svg.innerHTML = '';
+      var i;
+      for (i = 0; i <= 9; i++) svg.appendChild(S('line', { x1: cx + i * u, y1: 8, x2: cx + i * u, y2: 268, stroke: 'var(--rule-soft)', 'stroke-width': 1 }));
+      for (i = 0; i <= 7; i++) svg.appendChild(S('line', { x1: 8, y1: cy - i * u, x2: 352, y2: cy - i * u, stroke: 'var(--rule-soft)', 'stroke-width': 1 }));
+      svg.appendChild(S('line', { x1: 8, y1: cy, x2: 352, y2: cy, stroke: 'var(--faint)', 'stroke-width': 1.6 }));
+      svg.appendChild(S('line', { x1: cx, y1: 8, x2: cx, y2: 268, stroke: 'var(--faint)', 'stroke-width': 1.6 }));
+      var d = '', started = false;
+      for (var x = -0.3; x <= 8.8; x += 0.04) {
+        var y = f(x);
+        if (y * u > cy - 6) { started = false; continue; }
+        d += (started ? 'L' : 'M') + (cx + x * u).toFixed(1) + ' ' + (cy - y * u).toFixed(1) + ' ';
+        started = true;
+      }
+      svg.appendChild(S('path', { d: d, fill: 'none', stroke: 'var(--brand)', 'stroke-width': 2.6 }));
+      var P = [cx + x0 * u, cy - f(x0) * u], x1 = x0 + h, Q = [cx + x1 * u, cy - f(x1) * u];
+      var m = h === 0 ? df(x0) : (f(x1) - f(x0)) / h;
+      /* the secant, extended right across the frame */
+      var xa = -0.3, xb = 8.8;
+      svg.appendChild(S('line', {
+        x1: cx + xa * u, y1: cy - (f(x0) + m * (xa - x0)) * u,
+        x2: cx + xb * u, y2: cy - (f(x0) + m * (xb - x0)) * u,
+        stroke: 'var(--brass)', 'stroke-width': 2.4
+      }));
+      if (h !== 0) {
+        svg.appendChild(S('line', { x1: P[0], y1: P[1], x2: Q[0], y2: P[1], stroke: 'var(--faint)', 'stroke-width': 1.8, 'stroke-dasharray': '5 4' }));
+        svg.appendChild(S('line', { x1: Q[0], y1: P[1], x2: Q[0], y2: Q[1], stroke: 'var(--faint)', 'stroke-width': 1.8, 'stroke-dasharray': '5 4' }));
+        svg.appendChild(S('circle', { cx: Q[0], cy: Q[1], r: 5, fill: 'var(--brass)' }));
+      }
+      svg.appendChild(S('circle', { cx: P[0], cy: P[1], r: 5.5, fill: 'var(--brand)' }));
+      read['x'].textContent = r2(x0);
+      read['h'].textContent = r2(h);
+      read['Δy / Δx'].textContent = r2(m);
+      read["f ′(x) exactly"].textContent = r2(df(x0));
+    }
+    slider(row, 'x', 0.5, 5, x0, 0.5, function (v) { x0 = v; draw(); });
+    slider(row, 'h', 0, 3, h, 0.05, function (v) { h = v; draw(); });
+    draw();
+  };
+
+  /* ============ 25. solving a triangle with the sine and cosine rules ==== */
+  INT.solveTriangle = function (host, opt) {
+    var body = frame(host, (opt && opt.title) || 'The sine and cosine rules',
+      'Change two sides and the angle between them; every other part follows.');
+    var row = ctrlRow(body);
+    var svg = stage(body, '0 0 360 250', 460);
+    var read = readoutBar(body, ['b', 'c', 'A', 'a', 'B', 'C', 'area']);
+    var b = 7, c = 9, A = 55;
+    function draw() {
+      svg.innerHTML = '';
+      var rad = A * Math.PI / 180;
+      var a = Math.sqrt(b * b + c * c - 2 * b * c * Math.cos(rad));
+      var Bang = Math.asin(Math.min(1, b * Math.sin(rad) / a)) * 180 / Math.PI;
+      var Cang = 180 - A - Bang;
+      var k = 200 / Math.max(a, b, c);
+      var Ap = [70, 200], Bp = [70 + c * k, 200];
+      var Cp = [70 + b * k * Math.cos(rad), 200 - b * k * Math.sin(rad)];
+      svg.appendChild(S('polygon', {
+        points: [Ap, Bp, Cp].map(function (p) { return r1(p[0]) + ',' + r1(p[1]); }).join(' '),
+        fill: 'var(--brand-tint)', stroke: 'currentColor', 'stroke-width': 2.2, 'stroke-linejoin': 'round'
+      }));
+      function lab(p, t, dx, dy, col) {
+        svg.appendChild(S('text', {
+          x: p[0] + dx, y: p[1] + dy, 'font-family': 'Spectral,Georgia,serif', 'font-size': 14,
+          'font-style': 'italic', fill: col || 'currentColor', 'text-anchor': 'middle'
+        }, t));
+      }
+      lab(Ap, 'A', -14, 6); lab(Bp, 'B', 14, 6); lab(Cp, 'C', 0, -12);
+      lab([(Ap[0] + Bp[0]) / 2, Ap[1]], 'c', 0, 18, 'var(--muted)');
+      lab([(Ap[0] + Cp[0]) / 2, (Ap[1] + Cp[1]) / 2], 'b', -14, 0, 'var(--muted)');
+      lab([(Bp[0] + Cp[0]) / 2, (Bp[1] + Cp[1]) / 2], 'a', 14, 0, 'var(--brass)');
+      read['b'].textContent = b; read['c'].textContent = c; read['A'].textContent = A + '°';
+      read['a'].textContent = r2(a);
+      read['B'].textContent = r1(Bang) + '°';
+      read['C'].textContent = r1(Cang) + '°';
+      read['area'].textContent = r2(0.5 * b * c * Math.sin(rad));
+    }
+    slider(row, 'b', 3, 12, b, 0.5, function (v) { b = v; draw(); });
+    slider(row, 'c', 3, 12, c, 0.5, function (v) { c = v; draw(); });
+    slider(row, 'A°', 15, 150, A, 5, function (v) { A = v; draw(); });
+    draw();
+  };
+
+  /* ============ 26. a point and a vector in space ============ */
+  INT.space3d = function (host, opt) {
+    var body = frame(host, (opt && opt.title) || 'A point in space',
+      'Move x, y and z. The box shows why the distance formula is Pythagoras twice.');
+    var row = ctrlRow(body);
+    var svg = stage(body, '0 0 360 260', 460);
+    var read = readoutBar(body, ['x', 'y', 'z', 'OM', 'base diagonal']);
+    var X = 3, Y = 2, Z = 2, s = 30, ox = 92, oy = 214, kx = 0.5, ky = 0.36;
+    function P(x, y, z) { return [ox + (x + kx * z) * s, oy - (y + ky * z) * s]; }
+    function ln(a, b, col, w, dash) {
+      var o = { x1: r1(a[0]), y1: r1(a[1]), x2: r1(b[0]), y2: r1(b[1]), stroke: col, 'stroke-width': w };
+      if (dash) o['stroke-dasharray'] = dash;
+      svg.appendChild(S('line', o));
+    }
+    function draw() {
+      svg.innerHTML = '';
+      var O = P(0, 0, 0);
+      ln(O, P(4.4, 0, 0), 'var(--faint)', 1.6);
+      ln(O, P(0, 3.4, 0), 'var(--faint)', 1.6);
+      ln(O, P(0, 0, 3.6), 'var(--faint)', 1.6);
+      var F = P(X, 0, Z), M = P(X, Y, Z);
+      ln(O, P(X, 0, 0), 'var(--brass)', 2);
+      ln(P(X, 0, 0), F, 'var(--brass)', 2);
+      ln(F, M, 'var(--brass)', 2);
+      ln(O, F, 'var(--faint)', 1.8, '5 4');
+      ln(O, M, 'var(--brand)', 3);
+      svg.appendChild(S('circle', { cx: r1(M[0]), cy: r1(M[1]), r: 5.5, fill: 'var(--brand)' }));
+      svg.appendChild(S('circle', { cx: r1(F[0]), cy: r1(F[1]), r: 3.4, fill: 'var(--faint)' }));
+      [[P(4.4, 0, 0), 'x'], [P(0, 3.4, 0), 'z'], [P(0, 0, 3.6), 'y']].forEach(function (t) {
+        svg.appendChild(S('text', {
+          x: t[0][0] + 10, y: t[0][1] + 4, 'font-family': 'IBM Plex Mono,monospace',
+          'font-size': 11, fill: 'var(--muted)'
+        }, t[1]));
+      });
+      read['x'].textContent = X; read['y'].textContent = Z; read['z'].textContent = Y;
+      read['OM'].textContent = r2(Math.sqrt(X * X + Y * Y + Z * Z));
+      read['base diagonal'].textContent = r2(Math.sqrt(X * X + Z * Z));
+    }
+    slider(row, 'x', 0, 4, X, 0.5, function (v) { X = v; draw(); });
+    slider(row, 'y', 0, 3.5, Z, 0.5, function (v) { Z = v; draw(); });
+    slider(row, 'z', 0, 3, Y, 0.5, function (v) { Y = v; draw(); });
+    draw();
+  };
+
+  /* ============ 27. optimisation: the open box ============ */
+  INT.optimise = function (host, opt) {
+    var body = frame(host, (opt && opt.title) || 'Where is the volume greatest?',
+      'Slide the corner square x. The graph plots V against x; the peak is the answer.');
+    var row = ctrlRow(body);
+    var svg = stage(body, '0 0 360 250', 460);
+    var read = readoutBar(body, ['x', 'V(x)', 'greatest V', 'at x =']);
+    var A = 20, B = 16, x = 2;
+    function V(t) { return t * (A - 2 * t) * (B - 2 * t); }
+    function draw() {
+      svg.innerHTML = '';
+      var xmax = Math.min(A, B) / 2, best = 0, bx = 0, t;
+      for (t = 0.01; t < xmax; t += 0.005) if (V(t) > best) { best = V(t); bx = t; }
+      var ox = 44, oy = 214, w = 292, h = 178;
+      svg.appendChild(S('line', { x1: ox, y1: oy, x2: ox + w, y2: oy, stroke: 'var(--faint)', 'stroke-width': 1.6 }));
+      svg.appendChild(S('line', { x1: ox, y1: oy, x2: ox, y2: oy - h - 10, stroke: 'var(--faint)', 'stroke-width': 1.6 }));
+      var sx = w / xmax, sy = h / best;
+      var d = '';
+      for (t = 0; t <= xmax; t += 0.02) {
+        d += (t === 0 ? 'M' : 'L') + (ox + t * sx).toFixed(1) + ' ' + (oy - V(t) * sy).toFixed(1) + ' ';
+      }
+      svg.appendChild(S('path', { d: d, fill: 'none', stroke: 'var(--brand)', 'stroke-width': 2.6 }));
+      svg.appendChild(S('line', {
+        x1: ox + bx * sx, y1: oy, x2: ox + bx * sx, y2: oy - best * sy,
+        stroke: 'var(--brass)', 'stroke-width': 1.6, 'stroke-dasharray': '5 4'
+      }));
+      svg.appendChild(S('circle', { cx: r1(ox + bx * sx), cy: r1(oy - best * sy), r: 4.5, fill: 'var(--brass)' }));
+      svg.appendChild(S('circle', { cx: r1(ox + x * sx), cy: r1(oy - V(x) * sy), r: 5.5, fill: 'var(--brand)' }));
+      svg.appendChild(S('text', {
+        x: ox + w - 4, y: oy + 18, 'font-family': 'IBM Plex Mono,monospace', 'font-size': 11,
+        fill: 'var(--muted)', 'text-anchor': 'end'
+      }, 'x'));
+      svg.appendChild(S('text', {
+        x: ox - 8, y: oy - h - 2, 'font-family': 'IBM Plex Mono,monospace', 'font-size': 11,
+        fill: 'var(--muted)', 'text-anchor': 'end'
+      }, 'V'));
+      read['x'].textContent = r2(x);
+      read['V(x)'].textContent = r1(V(x));
+      read['greatest V'].textContent = r1(best);
+      read['at x ='].textContent = r2(bx);
+    }
+    slider(row, 'x', 0.5, 7.5, x, 0.1, function (v) { x = v; draw(); });
+    draw();
+  };
+
   w.INT = INT;
 })(window, document);
