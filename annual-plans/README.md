@@ -1,22 +1,52 @@
-# Grade 8 Mathematics — Annual Plans 2026–2027
+# Mathematics Annual Plans 2026–2027 — Grades 8, 10 and 11
 
-Two parallel Grade 8 streams, both running on the Uzbek school calendar
+Plans for grades 8, 10 and 11, all running on the Uzbek school calendar
 (quarters of 9 / 7 / 10 / 8 weeks, 34 teaching weeks).
 
-| Stream | Load | Hours/year | Backbone | Depth layer |
-|---|---|---:|---|---|
-| **Special class — Algebra** | 3 h/week | 102 | Uzbekistan national KTP | Cambridge Stage 9 inserts |
-| **Special class — Geometry** | 2 h/week | 68 | Uzbekistan national KTP | Cambridge Stage 9 inserts |
-| **Cambridge class — Mathematics** | 6 h/week | 204 | Cambridge Stage 9 (Learner's Book 9) | Uzbekistan Grade 8 programme |
+| Grade | Stream | Load | Hours/year | Backbone | Depth layer |
+|---:|---|---|---:|---|---|
+| 8 | **Special class — Algebra** | 3 h/week | 102 | Uzbekistan national KTP | Cambridge Stage 9 inserts |
+| 8 | **Special class — Geometry** | 2 h/week | 68 | Uzbekistan national KTP | Cambridge Stage 9 inserts |
+| 8 | **Cambridge class — Mathematics** | 6 h/week | 204 | Cambridge Stage 9 (Learner's Book 9) | Uzbekistan Grade 8 programme |
+| 10 | **Special class — Algebra** | 3 h/week | 102 | Uzbekistan national KTP | IGCSE Extended + AS Pure Maths 1 |
+| 10 | **Special class — Geometry** | 2 h/week | 68 | Uzbekistan national KTP | IGCSE Extended + AS Pure Maths 1 |
+| 11 | **Special class — Algebra and Calculus** | 3 h/week | 102 | Uzbekistan national KTP | AS & A Level Pure Maths 1 and 2 |
+| 11 | **Special class — Geometry** | 2 h/week | 68 | Uzbekistan national KTP | IGCSE Extended + A Level Pure Maths 2 |
 
 ## Files
 
 | File | Contents |
 |---|---|
-| `01-special-class-algebra-grade8.md` | 102 lessons, quarters 27 / 21 / 30 / 24 |
-| `02-special-class-geometry-grade8.md` | 68 lessons, quarters 18 / 14 / 20 / 16 |
-| `03-cambridge-class-grade8-mathematics.md` | 204 lessons, quarters 54 / 42 / 60 / 48 |
-| `Grade8_Annual_Plans_2026-2027.xlsx` | All three plans + the red-day / reserve-lesson sheet, colour-coded |
+| `01-special-class-algebra-grade8.md` | Grade 8 algebra — 102 lessons, quarters 27 / 21 / 30 / 24 |
+| `02-special-class-geometry-grade8.md` | Grade 8 geometry — 68 lessons, quarters 18 / 14 / 20 / 16 |
+| `03-cambridge-class-grade8-mathematics.md` | Grade 8 Cambridge class — 204 lessons, quarters 54 / 42 / 60 / 48 |
+| `04-special-class-algebra-grade10.md` | Grade 10 algebra — 102 lessons, quarters 27 / 21 / 30 / 24 |
+| `05-special-class-geometry-grade10.md` | Grade 10 geometry — 68 lessons, quarters 18 / 14 / 20 / 16 |
+| `06-special-class-algebra-grade11.md` | Grade 11 algebra and calculus — 102 lessons |
+| `07-special-class-geometry-grade11.md` | Grade 11 geometry — 68 lessons |
+| `Grade8_Annual_Plans_2026-2027.xlsx` | The three Grade 8 plans + the red-day sheet, colour-coded |
+| `Grades10-11_Annual_Plans_2026-2027.xlsx` | The four Grade 10–11 plans + the red-day sheet, colour-coded |
+| `build-plans-10-11.py` | Generates the four Grade 10–11 plans; asserts the hour totals |
+| `build-xlsx-10-11.py` | Builds the Grade 10–11 workbook from those plans |
+
+## Grades 10 and 11
+
+The national plans for these years are already close to Cambridge AS and A Level in content —
+Grade 10 covers functions, exponentials, logarithms and trigonometric equations; Grade 11 is a
+full first course in differential and integral calculus, then combinatorics, statistics and
+probability. So there is no need to add hours: the mapping shows a teacher exactly which
+Cambridge sub-unit each national lesson answers to.
+
+What Cambridge has and the national plan does **not** is inserted into the flexible lessons:
+
+| Grade 10 Algebra | 13 inserts | quadratics and the discriminant, composite and inverse functions, radians and circular measure, arithmetic and geometric progressions, the binomial expansion |
+| Grade 10 Geometry | 16 inserts | symmetry in three dimensions, the sine and cosine rules, 3-D trigonometry, bearings, coordinate geometry of the line and the circle, vectors and transformations |
+| Grade 11 Algebra | 17 inserts | the modulus function, the trapezium rule, integration by parts and by partial fractions, complex numbers and the Argand diagram, differential equations |
+| Grade 11 Geometry | 16 inserts | the vector equation of a line in space, upper and lower bounds, units of volume and capacity, arc and sector applied to cones, area and volume scale factors, optimisation of a container |
+
+The generator asserts that every national topic keeps its exact hour count and that each quarter
+still totals 27 / 21 / 30 / 24 (algebra) and 18 / 14 / 20 / 16 (geometry), so a plan cannot drift
+out of compliance by accident.
 
 ## Design decision
 
