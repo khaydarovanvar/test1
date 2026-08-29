@@ -3272,3 +3272,1344 @@ G11_ALG.push({
     'Explain in three sentences why doubling the number of strips divides the error by about four.'
   ]
 });
+
+/* ============================== 21 ============================== */
+G11_ALG.push({
+  id: 'a11-21', stream: 'alg', grade: 11, quarter: 3, lessons: '58–59', hours: 2,
+  title: 'Control work 5, and work on the mistakes',
+  subtitle: 'The definite integral in one paper — where the limits and the sketch carry the marks.',
+  uz: 'Algebra 11, Nazorat ishi 5', uzPage: 'pp. 269–272',
+  cam: 'P1 · Chapter 10 review', camPage: 'Pure Mathematics 1, pp. 241–244', wb: 'Control paper E',
+  objectives: [
+    'Apply the definite-integral methods under time.',
+    'Find the limits of integration from the geometry, unprompted.',
+    'Classify each lost mark as careless, method or knowledge.',
+    'Rewrite every wrong solution correctly.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Limits of integration', 'Integrallash chegaralari', 'Пределы интегрирования'],
+    ['Area between curves', 'Egri chiziqlar orasidagi yuza', 'Площадь между кривыми'],
+    ['Volume of revolution', 'Aylanish jismi hajmi', 'Объём тела вращения'],
+    ['Trapezium rule', 'Trapetsiya usuli', 'Метод трапеций'],
+    ['Careless error', 'E’tiborsizlik xatosi', 'Ошибка по невнимательности'],
+    ['Method error', 'Usul xatosi', 'Ошибка в методе'],
+    ['Sketch', 'Chizma', 'Эскиз']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [10, 'Answers'], [25, 'Rewrite'], [12, 'The limits drill']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Evaluate ${m('∫')}<sub class="m">1</sub><sup class="m">4</sup>${m(' (x² − 2x) dx')} and ${m('∫')}<sub class="m">1</sub><sup class="m">9</sup>${m(' ' + f('1', sr('x')) + ' dx')}</td><td class="m">5</td><td>L49–51</td></tr>
+        <tr><td>2</td><td>Find the area between ${m('y = 4x')} and ${m('y = x²')}</td><td class="m">5</td><td>L52–54</td></tr>
+        <tr><td>3</td><td>Find the area between ${m('y = x² − 4')} and the axis on ${m('[0, 3]')}</td><td class="m">5</td><td>L52–54</td></tr>
+        <tr><td>4</td><td>Volume when ${m('y = ' + sr('x'))} on ${m('[0, 9]')} is rotated about ${m('Ox')}</td><td class="m">4</td><td>L52–54</td></tr>
+        <tr><td>5</td><td>Estimate ${m('∫')}<sub class="m">0</sub><sup class="m">2</sup>${m(' ' + sr('1 + x³') + ' dx')} with 4 strips, and say over or under</td><td class="m">6</td><td>L55–57</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks hide</div>
+      Q2 gives one mark for solving ${m('4x = x²')} to get the limits. Q3 gives two for splitting at
+      ${m('x = 2')}. Q5 gives two for the over/under statement <b>with its reason</b>. Five of
+      twenty-five are for the setting up, not the arithmetic.</div>`
+    },
+    {
+      h: 'The four errors',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Error</th><th>Looks like</th><th>Kind</th></tr></thead>
+      <tbody>
+        <tr><td>no split at a zero</td><td>Q3 answered as one integral, giving ${m('−3')}</td><td>method</td></tr>
+        <tr><td>limits guessed</td><td>Q2 done on ${m('[0, 1]')}</td><td>method</td></tr>
+        <tr><td>${m('+ C')} in a definite answer</td><td>“${m('= 10 + C')}”</td><td>knowledge</td></tr>
+        <tr><td>ordinates miscounted</td><td>4 strips with 4 values of ${m('y')}</td><td>careless</td></tr>
+      </tbody></table></div>
+      {{fig:areaBetween:Question 2 in one picture — and the two limits it hands you.}}`
+    },
+    {
+      h: 'The limits drill',
+      html: `<p>Eight pairs of curves on the board. For each, the class calls out only <b>the limits</b>,
+      in five seconds:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Curves</th><th>Limits</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = x, y = x²</td><td class="m">0, 1</td></tr>
+        <tr><td class="m">y = 4x, y = x²</td><td class="m">0, 4</td></tr>
+        <tr><td class="m">y = 9 − x², y = 0</td><td class="m">−3, 3</td></tr>
+        <tr><td class="m">y = x² − 4, y = 0</td><td class="m">−2, 2</td></tr>
+        <tr><td class="m">y = x³, y = x</td><td class="m">−1, 0, 1</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The last row has three</span>
+      ${m('x³ = x')} at ${m('−1, 0, 1')}, and the curves swap over at ${m('0')}. Two integrals are
+      needed, or the parts will cancel.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q3: area between ' + m('y = x² − 4') + ' and the axis on ' + m('[0, 3]') + '.',
+      steps: [
+        ['Zero at ' + m('x = 2') + ' inside the interval.', 'Split. Two marks.'],
+        [m('∫') + '<sub class="m">0</sub><sup class="m">2</sup>' + m(' = ' + f('8', '3') + ' − 8 = −' + f('16', '3')), ''],
+        [m('∫') + '<sub class="m">2</sub><sup class="m">3</sup>' + m(' = (9 − 12) − (−' + f('16', '3') + ') = ' + f('7', '3')), ''],
+        [m(f('16', '3') + ' + ' + f('7', '3') + ' = ' + f('23', '3')), '']
+      ],
+      ans: m(f('23', '3')) + ' ≈ ' + m('7.67')
+    },
+    {
+      q: 'Model answer, Q2: area between ' + m('y = 4x') + ' and ' + m('y = x²') + '.',
+      steps: [
+        [m('4x = x² ⇒ x = 0, 4'), 'One mark.'],
+        ['The line is above between them.', ''],
+        [m('∫') + '<sub class="m">0</sub><sup class="m">4</sup>' + m(' (4x − x²) dx = [2x² − ' + f('x³', '3') + ']'), ''],
+        [m('= 32 − ' + f('64', '3') + ' = ' + f('32', '3')), '']
+      ],
+      ans: m(f('32', '3')) + ' ≈ ' + m('10.67')
+    },
+    {
+      q: 'A learner answered Q3 as ' + m('−3') + '. Name the mistake.',
+      steps: [
+        ['They integrated straight through the zero.', ''],
+        ['The parts below and above the axis cancelled.', 'A method error.'],
+        ['Correct: split at ' + m('x = 2') + '.', '']
+      ],
+      ans: 'Method error — no split at the zero'
+    }
+  ],
+  modelNote: 'Run the limits drill before the rewrite; it is the mark most often lost.',
+  interactive: {
+    type: 'quiz',
+    title: 'Limits, splits and signs',
+    hint: 'Where do the curves meet, and where do they cross the axis?',
+    items: [
+      { q: 'Limits for ' + m('y = 4x') + ' and ' + m('y = x²') + ':', a: [m('0, 1'), m('0, 4'), m('1, 4'), m('−4, 4')], c: 1, why: m('4x = x²') + '.' },
+      { q: 'The area between them:', a: [m(f('4', '3')), m(f('16', '3')), m(f('32', '3')), m('16')], c: 2, why: m('32 − ' + f('64', '3')) + '.' },
+      { q: m('y = x² − 4') + ' on ' + m('[0, 3]') + ' must be split at:', a: [m('0'), m('2'), m('3'), 'nowhere'], c: 1, why: 'It crosses the axis there.' },
+      { q: 'That area is:', a: [m('−3'), m(f('23', '3')), m('3'), m(f('16', '3'))], c: 1, why: 'Absolute values added.' },
+      { q: 'Volume from ' + m('y = ' + sr('x')) + ' on ' + m('[0, 9]') + ':', a: [m('9π'), m(f('81π', '2')), m('81π'), m('18π')], c: 1, why: m('π∫x dx') + '.' },
+      { q: '4 strips need how many ordinates?', a: [m('3'), m('4'), m('5'), m('8')], c: 2, why: 'Both ends included.' }
+    ]
+  },
+  quiz: [
+    { q: 'The limits of an area question come from:', a: ['the question always', 'solving for the intersections', 'the axis', 'guessing'], c: 1, why: 'Unless stated.' },
+    { q: 'A curve crossing the axis inside the interval needs:', a: ['nothing', 'a split at the zero', 'squaring', 'doubling'], c: 1, why: 'Or the parts cancel.' },
+    { q: 'A definite integral’s answer includes:', a: [m('+ C'), 'just a number', 'a function', 'a family'], c: 1, why: 'The constant cancels.' },
+    { q: 'The trapezium estimate for a concave-up curve is:', a: ['exact', 'too large', 'too small', 'unpredictable'], c: 1, why: 'The chord lies above.' }
+  ],
+  practice: {
+    easy: [
+      [m('∫') + '<sub class="m">1</sub><sup class="m">4</sup>' + m(' 2x dx'), m('15')],
+      [m('∫') + '<sub class="m">0</sub><sup class="m">2</sup>' + m(' 3x² dx'), m('8')],
+      [m('∫') + '<sub class="m">1</sub><sup class="m">9</sup>' + m(' ' + f('1', sr('x')) + ' dx'), m('4')],
+      ['Limits for ' + m('y = 4x, y = x²'), m('0, 4')],
+      ['Split point for ' + m('y = x² − 4') + ' on ' + m('[0, 3]'), m('x = 2')],
+      ['Volume from ' + m('y = ' + sr('x')) + ' on ' + m('[0, 9]'), m(f('81π', '2'))],
+      ['4 strips need how many ordinates?', m('5')]
+    ],
+    med: [
+      [m('∫') + '<sub class="m">1</sub><sup class="m">4</sup>' + m(' (x² − 2x) dx'), m('6')],
+      ['Area between ' + m('y = 4x') + ' and ' + m('y = x²'), m(f('32', '3'))],
+      ['Area between ' + m('y = x² − 4') + ' and the axis on ' + m('[0, 3]'), m(f('23', '3'))],
+      ['Estimate ' + m('∫') + '<sub class="m">0</sub><sup class="m">2</sup>' + m(' ' + sr('1 + x³') + ' dx') + ' with 4 strips', m('≈ 3.28')],
+      ['Over or under, and why?', 'over — concave up'],
+      ['Area between ' + m('y = x') + ' and ' + m('y = x³') + ' on ' + m('[0, 1]'), m(f('1', '4'))],
+      ['Volume from ' + m('y = 2x') + ' on ' + m('[0, 3]'), m('12π')]
+    ],
+    hard: [
+      ['Area enclosed by ' + m('y = x³') + ' and ' + m('y = x'), m(f('1', '2'))],
+      ['Area between ' + m('y = x²') + ' and ' + m('y = 2 − x²'), m(f('8', '3'))],
+      ['Volume from ' + m('y = ' + f('1', 'x')) + ' on ' + m('[1, 4]') + ' about ' + m('Ox'), m(f('3π', '4'))],
+      ['Find ' + m('k') + ' with area between ' + m('y = kx') + ' and ' + m('y = x²') + ' equal to ' + m(f('9', '2')), m('k = 3')],
+      ['Estimate ' + m('∫') + '<sub class="m">1</sub><sup class="m">3</sup>' + m(' ' + f('1', 'x') + ' dx') + ' with 8 strips', m('≈ 1.1032')],
+      ['Show the exact value is ' + m('ln 3'), 'The antiderivative of ' + m(f('1', 'x'))],
+      ['Explain why splitting matters in Q3', 'Otherwise the two signed parts cancel']
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Task 1 is the rewrite. Find the limits before writing any integral.',
+  homework: [
+    'Rewrite in full every question that lost a mark, showing how the limits were found.',
+    'Five problems from the section your knowledge column was heaviest in.',
+    'Find the area between ' + m('y = 6x') + ' and ' + m('y = x²') + ', and between ' + m('y = x² − 9') + ' and the axis on ' + m('[0, 4]') + '.',
+    'Estimate ' + m('∫') + '<sub class="m">0</sub><sup class="m">1</sup>' + m(' ' + sr('1 + x⁴') + ' dx') + ' with 4 strips and state whether it is an over- or an under-estimate.'
+  ]
+});
+
+/* ============================== 22 ============================== */
+G11_ALG.push({
+  id: 'a11-22', stream: 'alg', grade: 11, quarter: 3, lessons: '60–62', hours: 3,
+  title: 'Problems in combinatorics',
+  subtitle: 'Counting without listing — the two rules, and the three formulas that come from them.',
+  uz: 'Algebra 11, §4.1', uzPage: 'pp. 273–290',
+  cam: 'Extension (P&S 1)', camPage: 'Probability & Statistics 1, pp. 82–96', wb: 'Combinatorics sheet C1',
+  objectives: [
+    'Apply the addition and multiplication rules of counting.',
+    'Compute permutations, with and without repetition.',
+    'Compute combinations and use the symmetry property.',
+    'Decide whether order matters in a given problem.'
+  ],
+  terms: [
+    ['Combinatorics', 'Kombinatorika', 'Комбинаторика'],
+    ['Multiplication rule', 'Ko‘paytirish qoidasi', 'Правило умножения'],
+    ['Addition rule', 'Qo‘shish qoidasi', 'Правило сложения'],
+    ['Factorial', 'Faktorial', 'Факториал'],
+    ['Permutation', 'O‘rin almashtirish', 'Перестановка'],
+    ['Arrangement', 'Joylashtirish', 'Размещение'],
+    ['Combination', 'Kombinatsiya', 'Сочетание'],
+    ['With repetition', 'Takrorlanish bilan', 'С повторениями'],
+    ['Order matters', 'Tartib muhim', 'Порядок важен']
+  ],
+  timing: [[18, 'The two rules'], [26, 'Permutations'], [30, 'Combinations'], [28, 'Does order matter?'], [30, 'Practice'], [8, 'Homework']],
+  sections: [
+    {
+      h: 'The two rules',
+      html: `<div class="keybox"><div class="klabel">Multiplication (“and”)</div>
+      If one choice can be made in ${m('m')} ways and, independently, another in ${m('n')} ways, the pair
+      can be made in ${m('m · n')} ways.</div>
+      <div class="keybox"><div class="klabel">Addition (“or”)</div>
+      If a choice can be made in ${m('m')} ways <b>or</b>, in a mutually exclusive way, in ${m('n')} ways,
+      there are ${m('m + n')} ways in total.</div>
+      <p>Every formula below is these two rules applied repeatedly. Reading the word “and” or “or” in
+      the problem is most of the work.</p>
+      <p><b>Example.</b> A menu has 4 starters, 6 mains and 3 desserts. A full meal: ${m('4 × 6 × 3 = 72')}.
+      Just one course: ${m('4 + 6 + 3 = 13')}.</p>`
+    },
+    {
+      h: 'Permutations',
+      html: `${eq(m('n! = n(n − 1)(n − 2)…2 · 1') + '     ' + m('0! = 1'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Formula</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>arrange all ${m('n')} in a row</td><td class="m">n!</td><td>5 books: ${m('120')}</td></tr>
+        <tr><td>arrange ${m('k')} out of ${m('n')}, order matters</td><td class="m">A(n,k) = ${f('n!', '(n−k)!')}</td><td>3 of 8 runners: ${m('336')}</td></tr>
+        <tr><td>${m('k')} choices from ${m('n')}, repetition allowed</td><td class="m">n^k</td><td>4-digit PIN: ${m('10⁴')}</td></tr>
+        <tr><td>arrange ${m('n')} with repeats ${m('n₁, n₂, …')}</td><td class="m">${f('n!', 'n₁! n₂! …')}</td><td>MATEMATIKA</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('0! = 1')} is a definition, and a necessary one</span>
+      It makes ${m('A(n, n) = ' + f('n!', '0!') + ' = n!')} come out right. There is exactly one way to
+      arrange nothing.</div>`
+    },
+    {
+      h: 'Combinations',
+      html: `${eq(m('C(n, k) = ' + f('n!', 'k!(n − k)!')), true)}
+      <p>Choosing ${m('k')} from ${m('n')} when <b>order does not matter</b>. It is ${m('A(n,k)')}
+      divided by ${m('k!')}, because each unordered choice was counted once for every ordering.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Property</th><th>Statement</th></tr></thead>
+      <tbody>
+        <tr><td>symmetry</td><td class="m">C(n, k) = C(n, n − k)</td></tr>
+        <tr><td>ends</td><td class="m">C(n, 0) = C(n, n) = 1</td></tr>
+        <tr><td>Pascal</td><td class="m">C(n, k) = C(n−1, k−1) + C(n−1, k)</td></tr>
+        <tr><td>total</td><td class="m">ΣC(n, k) = 2ⁿ</td></tr>
+      </tbody></table></div>
+      <p>Symmetry is a labour-saving device: ${m('C(20, 18) = C(20, 2) = 190')}, computed in one line
+      instead of ten.</p>`
+    },
+    {
+      h: 'Does order matter?',
+      html: `<div class="keybox"><div class="klabel">The one question to ask</div>
+      Would swapping two of the chosen things give a <b>different</b> outcome? If yes, order matters —
+      use ${m('A(n,k)')}. If no, use ${m('C(n,k)')}.</div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Situation</th><th>Order?</th><th>Formula</th></tr></thead>
+      <tbody>
+        <tr><td>gold, silver, bronze from 8</td><td>yes</td><td class="m">A(8,3) = 336</td></tr>
+        <tr><td>a team of 3 from 8</td><td>no</td><td class="m">C(8,3) = 56</td></tr>
+        <tr><td>a 4-digit code</td><td>yes, repeats allowed</td><td class="m">10⁴</td></tr>
+        <tr><td>a hand of 5 cards from 36</td><td>no</td><td class="m">C(36,5)</td></tr>
+        <tr><td>seating 6 people in a row</td><td>yes</td><td class="m">6! = 720</td></tr>
+      </tbody></table></div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'From 8 runners, in how many ways can the first three places be filled?',
+      steps: [
+        ['Order matters — gold is not silver.', ''],
+        [m('8 × 7 × 6'), ''],
+        [m('= 336'), '']
+      ],
+      ans: m('336')
+    },
+    {
+      q: 'How many teams of 3 can be chosen from 8 people?',
+      steps: [
+        ['Order does not matter.', ''],
+        [m('C(8,3) = ' + f('8 × 7 × 6', '3 × 2 × 1')), ''],
+        [m('= 56'), '']
+      ],
+      ans: m('56')
+    },
+    {
+      q: 'How many arrangements has the word MATEMATIKA?',
+      steps: [
+        ['10 letters: A×3, M×2, T×2, E, I, K.', ''],
+        [m(f('10!', '3! · 2! · 2!')), ''],
+        [m('= ' + f('3 628 800', '24') + ' = 151 200'), '']
+      ],
+      ans: m('151 200')
+    }
+  ],
+  modelNote: 'Ask “does swapping two of them change the answer?” before every formula.',
+  interactive: {
+    type: 'quiz',
+    title: 'Order or not?',
+    hint: 'Would swapping two chosen items change the outcome?',
+    items: [
+      { q: 'Gold, silver and bronze from 8:', a: [m('C(8,3)'), m('A(8,3)'), m('8³'), m('3!')], c: 1, why: 'Order matters.' },
+      { q: 'A team of 3 from 8:', a: [m('C(8,3)'), m('A(8,3)'), m('8³'), m('3!')], c: 0, why: 'Order does not matter.' },
+      { q: m('C(8,3)') + ' equals:', a: [m('24'), m('56'), m('336'), m('112')], c: 1, why: m(f('336', '6')) + '.' },
+      { q: m('C(20,18)') + ' equals:', a: [m('190'), m('380'), m('20'), m('18')], c: 0, why: 'Symmetry: ' + m('C(20,2)') + '.' },
+      { q: 'A 4-digit PIN with repeats:', a: [m('10⁴'), m('A(10,4)'), m('C(10,4)'), m('4!')], c: 0, why: 'Ten choices, four times.' },
+      { q: m('0!') + ' equals:', a: [m('0'), m('1'), 'undefined', m('∞')], c: 1, why: 'By definition, and necessarily.' }
+    ]
+  },
+  quiz: [
+    { q: 'The multiplication rule is used with:', a: ['“or”', '“and”', '“not”', 'neither'], c: 1, why: 'Independent successive choices.' },
+    { q: m('C(n, k)') + ' equals:', a: [m(f('n!', '(n−k)!')), m(f('n!', 'k!(n−k)!')), m('n^k'), m('n!')], c: 1, why: 'Divide out the orderings.' },
+    { q: m('C(n, k) = C(n, n−k)') + ' because:', a: ['it is a coincidence', 'choosing what to leave out is the same choice', 'of Pascal', 'of factorials'], c: 1, why: 'The complement.' },
+    { q: 'Seating 6 in a row:', a: [m('6'), m('36'), m('720'), m('64')], c: 2, why: m('6!') + '.' },
+    { q: m('ΣC(n,k)') + ' over all ' + m('k') + ' is:', a: [m('n'), m('n!'), m('2ⁿ'), m('n²')], c: 2, why: 'Every subset, in or out.' }
+  ],
+  practice: {
+    easy: [
+      [m('5!'), m('120')],
+      [m('0!'), m('1')],
+      [m('C(5,2)'), m('10')],
+      [m('C(6,3)'), m('20')],
+      [m('A(5,2)'), m('20')],
+      ['Arrangements of 4 books', m('24')],
+      ['3-digit codes from 10 digits, repeats allowed', m('1000')]
+    ],
+    med: [
+      ['First three of 8 runners', m('336')],
+      ['Teams of 3 from 8', m('56')],
+      [m('C(20,18)'), m('190')],
+      ['Arrangements of MATEMATIKA', m('151 200')],
+      ['A menu: 4 starters, 6 mains, 3 desserts — full meals', m('72')],
+      ['Committees of 4 from 10', m('210')],
+      ['Arrangements of 6 people with 2 fixed together', m('240')]
+    ],
+    hard: [
+      ['Hands of 5 from 36 cards', m('C(36,5) = 376 992')],
+      ['Arrangements of the 8 letters of ASSALOMU with the two S apart', m('' + f('8!', '2!') + ' − 7! = 15 120')],
+      ['From 6 men and 4 women, committees of 4 with at least 1 woman', m('195')],
+      ['How many 4-digit numbers have all digits different?', m('4536')],
+      ['How many diagonals has a convex ' + m('n') + '-gon?', m(f('n(n−3)', '2'))],
+      ['Prove ' + m('C(n,k) = C(n−1,k−1) + C(n−1,k)'), 'Split on whether a fixed element is chosen'],
+      ['Prove ' + m('ΣC(n,k) = 2ⁿ'), 'Each element is in or out']
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Write “order matters” or “order does not matter” before every formula.',
+  homework: [
+    'Evaluate ' + m('7!') + ', ' + m('C(9,4)') + ', ' + m('A(9,4)') + ' and ' + m('C(15,13)') + '.',
+    'From 10 players, how many ways to pick a team of 5? And to pick a captain, vice-captain and three others?',
+    'How many arrangements has the word TASHKENT? And PARALLEL?',
+    'How many 5-digit numbers have all digits different and do not start with 0?',
+    'From 7 men and 5 women, how many committees of 4 contain at least 2 women?',
+    'Explain in three sentences how to decide whether order matters.'
+  ]
+});
+
+/* ============================== 23 ============================== */
+G11_ALG.push({
+  id: 'a11-23', stream: 'alg', grade: 11, quarter: 3, lessons: '63–64', hours: 2,
+  title: 'The binomial theorem',
+  subtitle: 'Pascal’s triangle, the general term, and expanding a bracket to any power without multiplying it out.',
+  uz: 'Algebra 11, §4.2', uzPage: 'pp. 291–302',
+  cam: 'P1 · 6.1–6.4', camPage: 'Pure Mathematics 1, pp. 111–121', wb: 'P1 Exercise 6A–6C',
+  objectives: [
+    'Generate Pascal’s triangle and relate it to combinations.',
+    'Expand (a + b)ⁿ for a positive integer n.',
+    'Find a specified term of an expansion without expanding it all.',
+    'Use the expansion to approximate a power.'
+  ],
+  terms: [
+    ['Binomial', 'Ikkihad', 'Двучлен'],
+    ['Binomial theorem', 'Nyuton binomi', 'Бином Ньютона'],
+    ['Pascal’s triangle', 'Paskal uchburchagi', 'Треугольник Паскаля'],
+    ['Binomial coefficient', 'Binomial koeffitsient', 'Биномиальный коэффициент'],
+    ['General term', 'Umumiy had', 'Общий член'],
+    ['Expansion', 'Yoyilma', 'Разложение'],
+    ['Term independent of x', 'x ga bog‘liq bo‘lmagan had', 'Член, не содержащий x'],
+    ['Ascending powers', 'Darajalar o‘sishi bo‘yicha', 'По возрастающим степеням'],
+    ['Approximation', 'Taqribiy hisoblash', 'Приближение']
+  ],
+  timing: [[14, 'Pascal’s triangle'], [22, 'The theorem'], [24, 'The general term'], [20, 'Approximation'], [20, 'Practice'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'Pascal’s triangle',
+      html: `<p>Multiply out ${m('(a + b)ⁿ')} for small ${m('n')} and the coefficients form a pattern:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">n</th><th>Coefficients</th><th>Expansion</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0</td><td class="m">1</td><td class="m">1</td></tr>
+        <tr><td class="m">1</td><td class="m">1 1</td><td class="m">a + b</td></tr>
+        <tr><td class="m">2</td><td class="m">1 2 1</td><td class="m">a² + 2ab + b²</td></tr>
+        <tr><td class="m">3</td><td class="m">1 3 3 1</td><td class="m">a³ + 3a²b + 3ab² + b³</td></tr>
+        <tr><td class="m">4</td><td class="m">1 4 6 4 1</td><td class="m">a⁴ + 4a³b + 6a²b² + 4ab³ + b⁴</td></tr>
+        <tr><td class="m">5</td><td class="m">1 5 10 10 5 1</td><td>…</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Each entry is the sum of the two above it</div>
+      Which is exactly ${m('C(n,k) = C(n−1,k−1) + C(n−1,k)')} from the last lesson. The triangle
+      <b>is</b> the table of combinations, and the coefficients are ${m('C(n, k)')}.</div>`
+    },
+    {
+      h: 'The theorem',
+      html: `${eq(m('(a + b)ⁿ = ΣC(n,k) a^(n−k) b^k'), true)}
+      <p>Reading it term by term: the powers of ${m('a')} descend from ${m('n')} to ${m('0')}, the powers
+      of ${m('b')} ascend from ${m('0')} to ${m('n')}, every term has total degree ${m('n')}, and there
+      are ${m('n + 1')} terms.</p>
+      ${eq(m('(2x + 3)³ = 8x³ + 3(4x²)(3) + 3(2x)(9) + 27 = 8x³ + 36x² + 54x + 27'), false)}
+      <div class="warn"><span class="wl">The whole term is raised to the power</span>
+      In ${m('(2x + 3)³')} the first term is ${m('(2x)³ = 8x³')}, not ${m('2x³')}. Bracket the whole
+      of ${m('a')} and the whole of ${m('b')} before applying the coefficients.</div>`
+    },
+    {
+      h: 'The general term',
+      html: `${eq('the term in ' + m('b^k') + ' is ' + m('C(n,k) a^(n−k) b^k'), true)}
+      <p>This is what makes the theorem useful: a single term can be found without expanding the rest.</p>
+      <p><b>Example.</b> Find the term in ${m('x⁵')} in ${m('(2x − 3)⁸')}.</p>
+      <p>Here ${m('a = 2x')}, ${m('b = −3')}, ${m('n = 8')}. The power of ${m('x')} is ${m('8 − k')}, so
+      ${m('k = 3')}:</p>
+      ${eq(m('C(8,3)(2x)⁵(−3)³ = 56 × 32x⁵ × (−27) = −48 384 x⁵'), true)}
+      <p><b>The term independent of ${m('x')}</b> is found the same way: write the general term, collect
+      the powers of ${m('x')}, and set the total power to zero.</p>
+      <div class="keybox"><div class="klabel">Watch the signs</div>
+      With ${m('(a − b)ⁿ')} take ${m('b')} to be the whole of ${m('−b')}. Odd values of ${m('k')} then
+      give negative terms, and the expansion alternates.</div>`
+    },
+    {
+      h: 'Approximation',
+      html: `<p>When ${m('x')} is small, the first few terms of ${m('(1 + x)ⁿ')} approximate it well:</p>
+      ${eq(m('(1 + x)ⁿ ≈ 1 + nx + ' + f('n(n−1)', '2') + 'x²'), true)}
+      <p><b>Example.</b> ${m('1.02⁸ = (1 + 0.02)⁸ ≈ 1 + 8(0.02) + 28(0.0004) = 1 + 0.16 + 0.0112 = 1.1712')}.
+      The true value is ${m('1.17166')}.</p>
+      <p>This is the linear approximation of Quarter II with one more term — and each further term
+      improves the accuracy by roughly a factor of ${m('x')}.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Expand ' + m('(x + 2)⁴') + '.',
+      steps: [
+        ['Coefficients ' + m('1, 4, 6, 4, 1') + '.', ''],
+        [m('x⁴ + 4x³(2) + 6x²(4) + 4x(8) + 16'), ''],
+        [m('= x⁴ + 8x³ + 24x² + 32x + 16'), '']
+      ],
+      ans: m('x⁴ + 8x³ + 24x² + 32x + 16')
+    },
+    {
+      q: 'Find the term in ' + m('x⁵') + ' in ' + m('(2x − 3)⁸') + '.',
+      steps: [
+        [m('k = 3') + ' gives ' + m('x^(8−3) = x⁵') + '.', ''],
+        [m('C(8,3) = 56'), ''],
+        [m('56 (2x)⁵ (−3)³'), ''],
+        [m('= 56 × 32 × (−27) x⁵ = −48 384x⁵'), '']
+      ],
+      ans: m('−48 384x⁵')
+    },
+    {
+      q: 'Find the term independent of ' + m('x') + ' in ' + m('(x² + ' + f('1', 'x') + ')⁶') + '.',
+      steps: [
+        ['General term ' + m('C(6,k)(x²)^(6−k)(x⁻¹)^k') + '.', ''],
+        ['Power of ' + m('x') + ': ' + m('12 − 2k − k = 12 − 3k') + '.', ''],
+        [m('12 − 3k = 0 ⇒ k = 4'), ''],
+        [m('C(6,4) = 15'), '']
+      ],
+      ans: m('15')
+    }
+  ],
+  modelNote: 'Build Pascal’s triangle to row 6 on the board and leave it there.',
+  interactive: {
+    type: 'quiz',
+    title: 'Finding one term',
+    hint: 'Write the general term, then match the power.',
+    items: [
+      { q: 'The coefficients for ' + m('n = 4') + ' are:', a: [m('1 4 4 1'), m('1 4 6 4 1'), m('1 3 3 1'), m('1 5 10 10 5 1')], c: 1, why: 'Row 4 of Pascal.' },
+      { q: m('(x + 2)⁴') + ' has constant term:', a: [m('2'), m('8'), m('16'), m('4')], c: 2, why: m('2⁴') + '.' },
+      { q: 'How many terms has ' + m('(a + b)⁷') + '?', a: [m('7'), m('8'), m('14'), m('128')], c: 1, why: m('n + 1') + '.' },
+      { q: 'In ' + m('(2x + 3)³') + ' the first term is:', a: [m('2x³'), m('8x³'), m('6x³'), m('x³')], c: 1, why: m('(2x)³') + '.' },
+      { q: 'The term in ' + m('x⁵') + ' of ' + m('(2x − 3)⁸') + ' uses:', a: [m('k = 5'), m('k = 3'), m('k = 8'), m('k = 0')], c: 1, why: m('8 − k = 5') + '.' },
+      { q: m('1.02⁸') + ' to three terms:', a: [m('1.16'), m('1.1712'), m('1.18'), m('1.02')], c: 1, why: m('1 + 0.16 + 0.0112') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'The binomial coefficients are:', a: [m('n!'), m('C(n,k)'), m('A(n,k)'), m('n^k')], c: 1, why: 'Pascal’s triangle.' },
+    { q: m('(a + b)ⁿ') + ' has how many terms?', a: [m('n'), m('n + 1'), m('2n'), m('2ⁿ')], c: 1, why: m('k = 0') + ' to ' + m('n') + '.' },
+    { q: 'Every term has total degree:', a: [m('k'), m('n − k'), m('n'), m('2n')], c: 2, why: 'Powers of ' + m('a') + ' and ' + m('b') + ' sum to ' + m('n') + '.' },
+    { q: 'The sum of the coefficients in ' + m('(a+b)ⁿ') + ' is:', a: [m('n'), m('n!'), m('2ⁿ'), m('n²')], c: 2, why: 'Put ' + m('a = b = 1') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Row 4 of Pascal’s triangle', m('1 4 6 4 1')],
+      ['Row 5', m('1 5 10 10 5 1')],
+      ['Expand ' + m('(x + 1)³'), m('x³ + 3x² + 3x + 1')],
+      ['Expand ' + m('(x − 1)³'), m('x³ − 3x² + 3x − 1')],
+      ['Terms in ' + m('(a + b)⁶'), m('7')],
+      ['Constant term of ' + m('(x + 2)⁴'), m('16')],
+      ['Sum of the coefficients of ' + m('(a+b)⁵'), m('32')]
+    ],
+    med: [
+      ['Expand ' + m('(x + 2)⁴'), m('x⁴ + 8x³ + 24x² + 32x + 16')],
+      ['Expand ' + m('(2x − 1)³'), m('8x³ − 12x² + 6x − 1')],
+      ['Term in ' + m('x³') + ' of ' + m('(x + 3)⁵'), m('270x³')],
+      ['Term in ' + m('x²') + ' of ' + m('(2x − 1)⁶'), m('60x²')],
+      ['Coefficient of ' + m('x⁴') + ' in ' + m('(1 + x)⁹'), m('126')],
+      [m('1.02⁸') + ' to three terms', m('1.1712')],
+      [m('0.98⁶') + ' to three terms', m('≈ 0.8858')]
+    ],
+    hard: [
+      ['Term in ' + m('x⁵') + ' of ' + m('(2x − 3)⁸'), m('−48 384x⁵')],
+      ['Term independent of ' + m('x') + ' in ' + m('(x² + ' + f('1', 'x') + ')⁶'), m('15')],
+      ['Term independent of ' + m('x') + ' in ' + m('(2x − ' + f('1', 'x²') + ')⁹'), m('−672')],
+      ['Coefficient of ' + m('x²') + ' in ' + m('(1 + 2x)⁵(1 − x)³'), m('7')],
+      ['Find ' + m('n') + ' if the coefficient of ' + m('x²') + ' in ' + m('(1 + x)ⁿ') + ' is 45', m('n = 10')],
+      ['Show the sum of the coefficients of ' + m('(2a − b)ⁿ') + ' is ' + m('1'), 'Put ' + m('a = b = 1')],
+      ['Estimate ' + m('1.005¹⁰') + ' to four decimal places', m('≈ 1.0511')]
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Write the general term before hunting for a specific one.',
+  homework: [
+    'Write rows 0 to 6 of Pascal’s triangle.',
+    'Expand ' + m('(x + 3)⁴') + ' and ' + m('(2x − 1)⁵') + '.',
+    'Find the term in ' + m('x⁴') + ' in ' + m('(3x + 2)⁷') + '.',
+    'Find the term independent of ' + m('x') + ' in ' + m('(x³ + ' + f('2', 'x') + ')⁸') + '.',
+    'Use the first three terms to estimate ' + m('1.03⁷') + ' and compare with a calculator.',
+    'Explain in three sentences why the coefficients of ' + m('(a+b)ⁿ') + ' are the combinations ' + m('C(n,k)') + '.'
+  ]
+});
+
+/* ============================== 24 ============================== */
+G11_ALG.push({
+  id: 'a11-24', stream: 'alg', grade: 11, quarter: 3, lessons: '65–67', hours: 3,
+  title: 'Statistical data and its types',
+  subtitle: 'Where data comes from, how it is grouped, and the four pictures that make it readable.',
+  uz: 'Algebra 11, §4.3', uzPage: 'pp. 303–320',
+  cam: 'IGCSE E20.1–20.2', camPage: 'Core & Extended, pp. 380–396', wb: 'IGCSE Exercise 20.1',
+  objectives: [
+    'Classify data as qualitative or quantitative, discrete or continuous.',
+    'Build a grouped frequency table with sensible classes.',
+    'Draw a histogram with equal and with unequal class widths.',
+    'Draw and read a cumulative frequency curve.'
+  ],
+  terms: [
+    ['Population', 'Bosh to‘plam', 'Генеральная совокупность'],
+    ['Sample', 'Tanlanma', 'Выборка'],
+    ['Qualitative data', 'Sifat ma’lumot', 'Качественные данные'],
+    ['Quantitative data', 'Miqdoriy ma’lumot', 'Количественные данные'],
+    ['Discrete', 'Diskret', 'Дискретные'],
+    ['Continuous', 'Uzluksiz', 'Непрерывные'],
+    ['Class interval', 'Sinf oralig‘i', 'Классовый интервал'],
+    ['Frequency density', 'Chastota zichligi', 'Плотность частоты'],
+    ['Cumulative frequency', 'To‘plangan chastota', 'Накопленная частота'],
+    ['Bias in a sample', 'Tanlanma xatosi', 'Смещение выборки']
+  ],
+  timing: [[18, 'Kinds of data'], [26, 'Grouping'], [30, 'Histograms'], [28, 'Cumulative frequency'], [30, 'Practice'], [3, 'Homework']],
+  sections: [
+    {
+      h: 'Kinds of data',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Kind</th><th>Meaning</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>qualitative</td><td>a category, not a number</td><td>favourite subject</td></tr>
+        <tr><td>quantitative discrete</td><td>counted; only certain values</td><td>number of children</td></tr>
+        <tr><td>quantitative continuous</td><td>measured; any value in a range</td><td>height, time</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Population and sample</div>
+      The <b>population</b> is everyone you want to know about; the <b>sample</b> is who you actually
+      measure. A sample is useful only if it is <b>representative</b> — asking the football team about
+      sport is biased, however many you ask.</div>
+      <p>Sample size reduces random error; it does nothing at all about bias. That distinction is the
+      single most useful idea in the whole of statistics.</p>`
+    },
+    {
+      h: 'Grouping',
+      html: `<p>Continuous data must be grouped into <b>classes</b>. Three rules make a table readable:</p>
+      <ol>
+        <li>Between 5 and 12 classes — fewer hides the shape, more shows only noise.</li>
+        <li>Classes must not overlap and must leave no gaps: ${m('10 ≤ x < 20')}, ${m('20 ≤ x < 30')}.</li>
+        <li>Equal widths where possible; unequal only when the data demands it.</li>
+      </ol>
+      <div class="warn"><span class="wl">Grouping loses information</span>
+      Once heights are recorded as “${m('160–170')} cm”, the exact values are gone. Every statistic
+      computed from a grouped table is therefore an <b>estimate</b>, and should be described as one.</div>`
+    },
+    {
+      h: 'Histograms',
+      html: `{{fig:histogram:With unequal widths the vertical axis is frequency density, and the AREA of each bar is the frequency.}}
+      ${eq(m('frequency density = ' + f('frequency', 'class width')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Class</th><th>Frequency</th><th>Width</th><th>Density</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0 ≤ x &lt; 2</td><td class="m">6</td><td class="m">2</td><td class="m">3</td></tr>
+        <tr><td class="m">2 ≤ x &lt; 4</td><td class="m">14</td><td class="m">2</td><td class="m">7</td></tr>
+        <tr><td class="m">4 ≤ x &lt; 5</td><td class="m">10</td><td class="m">1</td><td class="m">10</td></tr>
+        <tr><td class="m">5 ≤ x &lt; 6</td><td class="m">8</td><td class="m">1</td><td class="m">8</td></tr>
+        <tr><td class="m">6 ≤ x &lt; 9</td><td class="m">9</td><td class="m">3</td><td class="m">3</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A histogram is not a bar chart</span>
+      Bars touch, because the scale is continuous. And with unequal widths the <b>height</b> is not the
+      frequency — the <b>area</b> is. Plotting frequency against unequal widths misrepresents the data,
+      which is exactly what the density is for.</div>`
+    },
+    {
+      h: 'Cumulative frequency',
+      html: `<p>Add the frequencies as you go, and plot each running total against the <b>upper</b> end of
+      its class. Join the points with a smooth curve.</p>
+      {{fig:cumFrequency:Read across at 50% for the median, at 25% and 75% for the quartiles.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Read across at</th><th>Read down for</th></tr></thead>
+      <tbody>
+        <tr><td class="m">25%</td><td>the lower quartile ${m('Q₁')}</td></tr>
+        <tr><td class="m">50%</td><td>the median</td></tr>
+        <tr><td class="m">75%</td><td>the upper quartile ${m('Q₃')}</td></tr>
+        <tr><td>a given value</td><td>how many are below it</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Upper class boundaries, always</span>
+      A running total of “fewer than 20” is plotted at ${m('20')}, not at the midpoint. Plotting at
+      midpoints shifts the whole curve and every quartile with it.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A class has ' + m('30') + ' in ' + m('0 ≤ x < 10') + ' and ' + m('30') + ' in ' + m('10 ≤ x < 40') + '. Compare the bar heights on a histogram.',
+      steps: [
+        ['Densities ' + m(f('30', '10') + ' = 3') + ' and ' + m(f('30', '30') + ' = 1') + '.', ''],
+        ['The first bar is three times as tall.', ''],
+        ['But the areas are equal.', 'Equal frequencies.']
+      ],
+      ans: 'Heights ' + m('3') + ' and ' + m('1') + '; equal areas'
+    },
+    {
+      q: 'Cumulative frequencies ' + m('0, 6, 20, 46, 74, 92, 100') + ' at ' + m('0, 2, 4, 6, 8, 10, 11') + '. Estimate the median.',
+      steps: [
+        ['Total ' + m('100') + '; read at ' + m('50') + '.', ''],
+        ['Between ' + m('46') + ' at 6 and ' + m('74') + ' at 8.', ''],
+        ['Interpolate: ' + m('6 + ' + f('4', '28') + ' × 2 ≈ 6.29') + '.', '']
+      ],
+      ans: m('≈ 6.3')
+    },
+    {
+      q: 'Why is a survey of a school’s football team about sport biased?',
+      steps: [
+        ['They were chosen for an interest in sport.', ''],
+        ['They do not represent the school.', ''],
+        ['A bigger football team would not help.', '']
+      ],
+      ans: 'The sample is not representative; size does not fix bias'
+    }
+  ],
+  modelNote: 'Collect one real set of data from the class and group it live on the board.',
+  interactive: {
+    type: 'averages',
+    title: 'Grouping and reading data',
+    hint: 'Change the values and watch the summary statistics.'
+  },
+  quiz: [
+    { q: 'Height is:', a: ['qualitative', 'discrete', 'continuous', 'a category'], c: 2, why: 'It is measured.' },
+    { q: 'Number of children is:', a: ['qualitative', 'discrete', 'continuous', 'a category'], c: 1, why: 'It is counted.' },
+    { q: 'In a histogram with unequal widths the height is:', a: ['frequency', 'frequency density', 'cumulative frequency', 'the class width'], c: 1, why: 'So the area is the frequency.' },
+    { q: 'Cumulative frequency is plotted at:', a: ['midpoints', 'upper class boundaries', 'lower boundaries', 'anywhere'], c: 1, why: 'It counts everything up to there.' },
+    { q: 'A bigger sample fixes:', a: ['bias', 'random error', 'both', 'neither'], c: 1, why: 'Bias is a fault in the choosing.' }
+  ],
+  practice: {
+    easy: [
+      ['Is shoe size discrete or continuous?', 'discrete'],
+      ['Is time continuous?', 'yes'],
+      ['Is eye colour quantitative?', 'no — qualitative'],
+      ['Frequency 20, width 4: the density', m('5')],
+      ['Frequency 15, width 5: the density', m('3')],
+      ['Density 6, width 3: the frequency', m('18')],
+      ['Cumulative frequency is plotted at', 'upper class boundaries']
+    ],
+    med: [
+      [m('30') + ' in a width-10 class and ' + m('30') + ' in a width-30 class: the heights', m('3') + ' and ' + m('1')],
+      ['Total 100; the median is read at', m('50')],
+      ['Cumulative ' + m('0,6,20,46,74,92,100') + ': the median', m('≈ 6.3')],
+      ['Same data: ' + m('Q₁'), m('≈ 4.4')],
+      ['Same data: ' + m('Q₃'), m('≈ 8.1')],
+      ['Same data: the interquartile range', m('≈ 3.7')],
+      ['Why is a football team a biased sample about sport?', 'Chosen for that very interest']
+    ],
+    hard: [
+      ['A histogram bar has height 4 over ' + m('10 ≤ x < 25') + '. Its frequency', m('60')],
+      ['Frequencies ' + m('8, 22, 30, 25, 15') + ' over widths ' + m('5, 5, 10, 10, 20') + ': the densities', m('1.6, 4.4, 3, 2.5, 0.75')],
+      ['From a cumulative curve, estimate how many are above ' + m('7') + ' if the reading there is ' + m('60') + ' of ' + m('100'), m('40')],
+      ['Explain why a grouped mean is an estimate', 'The exact values were lost in grouping'],
+      ['Design a sampling method for the heights of a school of 800', 'Stratified by year group, then random within each'],
+      ['Why must histogram bars touch?', 'The scale is continuous — no gaps in the data'],
+      ['A class of width 1 has density 12. Add a class of width 4 and frequency 12: the new density', m('3')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every histogram must have frequency density on the vertical axis when widths differ.',
+  homework: [
+    'Classify five kinds of data you could collect in your school as qualitative, discrete or continuous.',
+    'Group these times (seconds) into five classes and draw the histogram: ' + m('12, 15, 18, 19, 22, 23, 24, 25, 27, 28, 30, 31, 33, 36, 40') + '.',
+    'Frequencies ' + m('10, 24, 30, 20, 16') + ' over widths ' + m('5, 5, 10, 10, 20') + '. Find the frequency densities and draw the histogram.',
+    'Draw the cumulative frequency curve for the data of task 3 and estimate the median and the quartiles.',
+    'Explain in three sentences why a larger sample does not correct bias.'
+  ]
+});
+
+/* ============================== 25 ============================== */
+G11_ALG.push({
+  id: 'a11-25', stream: 'alg', grade: 11, quarter: 3, lessons: '68–70', hours: 3,
+  title: 'Mean, median and mode; deviation and standard deviation',
+  subtitle: 'One number for the centre, one for the spread — and knowing which pair to use.',
+  uz: 'Algebra 11, §4.4', uzPage: 'pp. 321–338',
+  cam: 'IGCSE E20.x', camPage: 'Core & Extended, pp. 397–412', wb: 'IGCSE Exercise 20.2',
+  objectives: [
+    'Compute the mean, median and mode of raw and of grouped data.',
+    'Choose the appropriate average for a given distribution.',
+    'Compute the range, the interquartile range and the standard deviation.',
+    'Interpret the standard deviation as a typical distance from the mean.'
+  ],
+  terms: [
+    ['Mean', 'O‘rta arifmetik', 'Среднее арифметическое'],
+    ['Median', 'Mediana', 'Медиана'],
+    ['Mode', 'Moda', 'Мода'],
+    ['Modal class', 'Modal sinf', 'Модальный класс'],
+    ['Range', 'Kenglik', 'Размах'],
+    ['Interquartile range', 'Kvartillararo kenglik', 'Межквартильный размах'],
+    ['Deviation', 'Chetlanish', 'Отклонение'],
+    ['Variance', 'Dispersiya', 'Дисперсия'],
+    ['Standard deviation', 'Standart chetlanish', 'Стандартное отклонение'],
+    ['Outlier', 'Chetlashgan qiymat', 'Выброс']
+  ],
+  timing: [[20, 'Three averages'], [26, 'Grouped data'], [28, 'Measures of spread'], [28, 'Standard deviation'], [30, 'Practice'], [8, 'Homework']],
+  sections: [
+    {
+      h: 'Three averages, three uses',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Average</th><th>Definition</th><th>Best when</th><th>Weakness</th></tr></thead>
+      <tbody>
+        <tr><td>mean</td><td class="m">${f('Σx', 'n')}</td><td>data is roughly symmetric</td><td>dragged by outliers</td></tr>
+        <tr><td>median</td><td>the middle value</td><td>data is skewed or has outliers</td><td>ignores most of the data</td></tr>
+        <tr><td>mode</td><td>the commonest value</td><td>data is categorical</td><td>may not exist or be unique</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The standard illustration</div>
+      Nine workers earn ${m('4')} million so‘m and the director earns ${m('60')}. The mean is
+      ${m('9.6')} million — a figure nobody earns. The median is ${m('4')}. For a question about a
+      typical wage, the median is the honest answer.</div>`
+    },
+    {
+      h: 'Grouped data',
+      html: `<p>The exact values are gone, so each class is represented by its <b>midpoint</b>:</p>
+      ${eq('estimated mean ' + m('= ' + f('Σfx', 'Σf')) + '   with ' + m('x') + ' the class midpoint', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Class</th><th class="m">f</th><th>Midpoint ${m('x')}</th><th class="m">fx</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0–10</td><td class="m">4</td><td class="m">5</td><td class="m">20</td></tr>
+        <tr><td class="m">10–20</td><td class="m">9</td><td class="m">15</td><td class="m">135</td></tr>
+        <tr><td class="m">20–30</td><td class="m">12</td><td class="m">25</td><td class="m">300</td></tr>
+        <tr><td class="m">30–40</td><td class="m">5</td><td class="m">35</td><td class="m">175</td></tr>
+        <tr><td><b>total</b></td><td class="m">30</td><td></td><td class="m">630</td></tr>
+      </tbody></table></div>
+      <p>Estimated mean ${m(f('630', '30') + ' = 21')}. The <b>modal class</b> is ${m('20–30')}; the
+      median lies in the class containing the ${m('15')}th value, also ${m('20–30')}.</p>`
+    },
+    {
+      h: 'Measures of spread',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Measure</th><th>Definition</th><th>Resistant to outliers?</th></tr></thead>
+      <tbody>
+        <tr><td>range</td><td class="m">max − min</td><td>no — it is defined by them</td></tr>
+        <tr><td>interquartile range</td><td class="m">Q₃ − Q₁</td><td>yes</td></tr>
+        <tr><td>standard deviation</td><td>see below</td><td>no</td></tr>
+      </tbody></table></div>
+      {{fig:boxPlot:The five-figure summary. The box holds the middle half; its width is the interquartile range.}}
+      <p>A <b>box plot</b> shows all five numbers at once, and makes two distributions comparable at a
+      glance. A value more than ${m('1.5 × IQR')} beyond a quartile is conventionally called an
+      <b>outlier</b> and marked separately.</p>`
+    },
+    {
+      h: 'Standard deviation',
+      html: `${eq(m('σ² = ' + f('Σ(x − x̄)²', 'n') + ' = ' + f('Σx²', 'n') + ' − x̄²') + '     ' + m('σ = ' + sr('σ²')), true)}
+      <p>The <b>variance</b> ${m('σ²')} is the mean of the squared deviations; the <b>standard
+      deviation</b> ${m('σ')} is its square root, back in the original units.</p>
+      <div class="keybox"><div class="klabel">Why square, and why then take the root</div>
+      The plain deviations always sum to zero, so they are useless. Squaring removes the signs;
+      the square root brings the answer back to the units of the data, so that “${m('σ = 4')} cm” is
+      meaningful.</div>
+      <p><b>Example.</b> ${m('2, 4, 4, 4, 5, 5, 7, 9')}: ${m('x̄ = 5')}, ${m('Σx² = 232')},
+      ${m('σ² = ' + f('232', '8') + ' − 25 = 4')}, so ${m('σ = 2')}.</p>
+      <p>For grouped data the same formula uses ${m('f')} and midpoints:
+      ${m('σ² = ' + f('Σfx²', 'Σf') + ' − x̄²')}.</p>
+      <div class="warn"><span class="wl">The second form is the one to use</span>
+      ${m(f('Σx²', 'n') + ' − x̄²')} needs one pass through the data; the definition needs two, because the
+      mean must be known first. Both give the same number.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the mean, median, mode and standard deviation of ' + m('2, 4, 4, 4, 5, 5, 7, 9') + '.',
+      steps: [
+        [m('x̄ = ' + f('40', '8') + ' = 5'), ''],
+        ['Median ' + m(f('4 + 5', '2') + ' = 4.5') + '; mode ' + m('4') + '.', ''],
+        [m('Σx² = 4+16+16+16+25+25+49+81 = 232'), ''],
+        [m('σ² = 29 − 25 = 4 ⇒ σ = 2'), '']
+      ],
+      ans: m('x̄ = 5') + ', median ' + m('4.5') + ', mode ' + m('4') + ', ' + m('σ = 2')
+    },
+    {
+      q: 'Estimate the mean of the grouped table with midpoints ' + m('5, 15, 25, 35') + ' and frequencies ' + m('4, 9, 12, 5') + '.',
+      steps: [
+        [m('Σf = 30'), ''],
+        [m('Σfx = 20 + 135 + 300 + 175 = 630'), ''],
+        [m('x̄ = 21'), '']
+      ],
+      ans: m('21') + ' — an estimate'
+    },
+    {
+      q: 'Nine workers earn ' + m('4') + ' million and the director ' + m('60') + '. Which average should a union quote?',
+      steps: [
+        ['Mean ' + m(f('96', '10') + ' = 9.6') + '.', 'Nobody earns that.'],
+        ['Median ' + m('4') + '.', 'Nine of ten earn exactly that.'],
+        ['The distribution has an extreme outlier.', '']
+      ],
+      ans: 'The median — the mean is distorted by one value'
+    }
+  ],
+  modelNote: 'Compute the mean of the class’s heights, then add one impossible value and recompute.',
+  interactive: {
+    type: 'averages',
+    title: 'Centre and spread',
+    hint: 'Move one value far out and watch the mean move but the median stay.'
+  },
+  quiz: [
+    { q: 'Which average is dragged by an outlier?', a: ['the mean', 'the median', 'the mode', 'none'], c: 0, why: 'It uses every value.' },
+    { q: 'For skewed data the best average is:', a: ['the mean', 'the median', 'the mode', 'the range'], c: 1, why: 'It resists extremes.' },
+    { q: m('σ²') + ' equals:', a: [m(f('Σx', 'n')), m(f('Σx²', 'n') + ' − x̄²'), m(f('Σ(x − x̄)', 'n')), m(sr('Σx²'))], c: 1, why: 'The computing form.' },
+    { q: 'Why are deviations squared?', a: ['tradition', 'they otherwise sum to zero', 'to make them bigger', 'no reason'], c: 1, why: 'Signs must be removed.' },
+    { q: 'The interquartile range is:', a: [m('max − min'), m('Q₃ − Q₁'), m('2σ'), 'the median'], c: 1, why: 'The width of the middle half.' }
+  ],
+  practice: {
+    easy: [
+      ['Mean of ' + m('3, 5, 7'), m('5')],
+      ['Median of ' + m('3, 5, 7, 9'), m('6')],
+      ['Mode of ' + m('2, 3, 3, 5'), m('3')],
+      ['Range of ' + m('4, 9, 12'), m('8')],
+      ['Mean of ' + m('2, 4, 4, 4, 5, 5, 7, 9'), m('5')],
+      ['Median of that list', m('4.5')],
+      ['Mode of that list', m('4')]
+    ],
+    med: [
+      [m('σ') + ' of ' + m('2, 4, 4, 4, 5, 5, 7, 9'), m('2')],
+      ['Estimated mean from midpoints ' + m('5,15,25,35') + ', frequencies ' + m('4,9,12,5'), m('21')],
+      ['The modal class there', m('20–30')],
+      [m('σ') + ' of ' + m('1, 2, 3, 4, 5'), m(sr('2')) + ' ≈ ' + m('1.41')],
+      ['Nine at 4 and one at 60: the mean', m('9.6')],
+      ['Same: the median', m('4')],
+      [m('Q₃ − Q₁') + ' for ' + m('2,4,5,7,9,11,15'), m('7')]
+    ],
+    hard: [
+      ['Grouped: midpoints ' + m('5,15,25,35') + ', ' + m('f = 4,9,12,5') + '. Find ' + m('σ'), m('≈ 8.6')],
+      ['A set of 10 has mean 12 and ' + m('Σx² = 1560') + '. Find ' + m('σ'), m(sr('12')) + ' ≈ ' + m('3.46')],
+      ['Adding 5 to every value changes the mean and ' + m('σ') + ' how?', 'Mean +5, ' + m('σ') + ' unchanged'],
+      ['Multiplying every value by 3 changes them how?', 'Both are tripled'],
+      ['A set has ' + m('x̄ = 20, σ = 4') + '. What are they after ' + m('y = 2x − 3') + '?', m('37') + ' and ' + m('8')],
+      ['Is ' + m('25') + ' an outlier for ' + m('Q₁ = 8, Q₃ = 14') + '?', 'yes — beyond ' + m('14 + 9 = 23')],
+      ['Explain why the median ignores most of the data but is still useful', 'Its resistance is exactly that indifference']
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Say which average you would quote, and why, on every real-context question.',
+  homework: [
+    'Find the mean, median, mode, range and standard deviation of ' + m('3, 5, 5, 6, 8, 8, 8, 9, 12, 16') + '.',
+    'Estimate the mean and standard deviation of grouped data with midpoints ' + m('2, 6, 10, 14') + ' and frequencies ' + m('5, 12, 9, 4') + '.',
+    'Draw a box plot for ' + m('4, 7, 9, 11, 12, 15, 18, 22, 30') + ' and identify any outlier.',
+    'A firm has nine staff on ' + m('5') + ' million and a director on ' + m('80') + '. Compute both averages and say which is honest.',
+    'A set has ' + m('x̄ = 30') + ' and ' + m('σ = 6') + '. Find both after the transformation ' + m('y = 3x + 10') + '.',
+    'Explain in three sentences why the deviations are squared before averaging.'
+  ]
+});
+
+/* ============================== 26 ============================== */
+G11_ALG.push({
+  id: 'a11-26', stream: 'alg', grade: 11, quarter: 3, lessons: '71–73', hours: 3,
+  title: 'Studying the relationship between two sets of data',
+  subtitle: 'Scatter diagrams, correlation, the line of best fit — and the one warning that must accompany all of it.',
+  uz: 'Algebra 11, §4.5', uzPage: 'pp. 339–356',
+  cam: 'IGCSE E16.1', camPage: 'Core & Extended, pp. 413–424', wb: 'IGCSE Exercise 16.1',
+  objectives: [
+    'Plot and read a scatter diagram.',
+    'Describe correlation by type and strength.',
+    'Draw a line of best fit through the mean point and use it to predict.',
+    'Distinguish correlation from causation, and interpolation from extrapolation.'
+  ],
+  terms: [
+    ['Bivariate data', 'Ikki o‘zgaruvchili ma’lumot', 'Двумерные данные'],
+    ['Scatter diagram', 'Korrelatsion diagramma', 'Диаграмма рассеяния'],
+    ['Correlation', 'Korrelyatsiya', 'Корреляция'],
+    ['Positive correlation', 'Musbat korrelyatsiya', 'Положительная корреляция'],
+    ['Negative correlation', 'Manfiy korrelyatsiya', 'Отрицательная корреляция'],
+    ['Line of best fit', 'Eng mos chiziq', 'Линия наилучшего соответствия'],
+    ['Mean point', 'O‘rta nuqta', 'Средняя точка'],
+    ['Interpolation', 'Interpolyatsiya', 'Интерполяция'],
+    ['Extrapolation', 'Ekstrapolyatsiya', 'Экстраполяция'],
+    ['Causation', 'Sababiy bog‘lanish', 'Причинная связь']
+  ],
+  timing: [[18, 'Scatter diagrams'], [26, 'Describing correlation'], [30, 'The line of best fit'], [28, 'Correlation is not causation'], [30, 'Practice'], [3, 'Homework']],
+  sections: [
+    {
+      h: 'Scatter diagrams',
+      html: `<p>Each individual contributes <b>one point</b> ${m('(x, y)')} — the two measurements made on
+      the same person or object. The picture then shows whether the two vary together.</p>
+      {{fig:scatterGraph:Each point is one individual, measured twice. The pattern, not the points, is the message.}}
+      <div class="keybox"><div class="klabel">Choose the axes deliberately</div>
+      If one variable might explain the other, put the explanatory variable on the horizontal axis.
+      “Hours revised” goes on ${m('x')}; “mark” goes on ${m('y')}. It changes nothing mathematically and
+      everything about readability.</div>`
+    },
+    {
+      h: 'Describing correlation',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Pattern</th><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>rising, tight</td><td>strong positive</td><td>height and arm span</td></tr>
+        <tr><td>rising, loose</td><td>weak positive</td><td>revision hours and mark</td></tr>
+        <tr><td>falling, tight</td><td>strong negative</td><td>age of a car and its price</td></tr>
+        <tr><td>no pattern</td><td>no correlation</td><td>shoe size and mathematics mark</td></tr>
+        <tr><td>a curve</td><td>a relationship, but not linear</td><td>height of a thrown ball against time</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Always give both words</span>
+      “Correlation” alone is not an answer. State the <b>type</b> — positive or negative — and the
+      <b>strength</b> — strong, moderate or weak. Two words, two marks.</div>`
+    },
+    {
+      h: 'The line of best fit',
+      html: `<div class="keybox"><div class="klabel">Two rules for drawing it by eye</div>
+      <b>1</b> It must pass through the <b>mean point</b> ${m('(x̄, ȳ)')}.
+      <b>2</b> It should have roughly as many points above it as below, and follow the trend.</div>
+      <p>Once drawn, it predicts: read up from an ${m('x')} to the line and across to a ${m('y')}. Its
+      gradient is the rate of change — “each extra hour of revision is worth about 4 marks”.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Prediction</th><th>Name</th><th>Reliable?</th></tr></thead>
+      <tbody>
+        <tr><td>inside the range of the data</td><td>interpolation</td><td>yes, if the correlation is strong</td></tr>
+        <tr><td>outside the range</td><td>extrapolation</td><td>no — the pattern may not continue</td></tr>
+      </tbody></table></div>
+      <p>Predicting a mark for ${m('3')} hours from data covering ${m('1')} to ${m('8')} hours is
+      interpolation. Predicting for ${m('40')} hours is extrapolation, and the line would eventually
+      promise a mark above ${m('100')}.</p>`
+    },
+    {
+      h: 'Correlation is not causation',
+      html: `<div class="warn"><span class="wl">The one warning that must always accompany a correlation</span>
+      Two variables can move together for three different reasons: one causes the other; both are caused
+      by a third; or it is coincidence. A scatter diagram cannot tell which.</div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Correlated</th><th>Real explanation</th></tr></thead>
+      <tbody>
+        <tr><td>ice-cream sales and drownings</td><td>both rise with hot weather</td></tr>
+        <tr><td>shoe size and reading age in children</td><td>both rise with age</td></tr>
+        <tr><td>number of firefighters and damage</td><td>both rise with the size of the fire</td></tr>
+      </tbody></table></div>
+      <p>Establishing causation needs an <b>experiment</b> — changing one variable deliberately and
+      holding others fixed — not a larger data set.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Describe the correlation between the age of a car and its price.',
+      steps: [
+        ['As age rises, price falls.', 'Negative.'],
+        ['The points lie fairly close to a line.', 'Strong.']
+      ],
+      ans: 'Strong negative correlation'
+    },
+    {
+      q: 'Data on revision hours ' + m('1–8') + ' gives a best-fit line ' + m('y = 42 + 4.5x') + '. Predict the mark for ' + m('5') + ' hours, and for ' + m('30') + '.',
+      steps: [
+        [m('42 + 22.5 = 64.5'), 'Interpolation — inside the range.'],
+        [m('42 + 135 = 177'), 'Impossible.'],
+        ['The second is extrapolation far outside the data.', '']
+      ],
+      ans: m('≈ 65') + '; the second prediction is invalid'
+    },
+    {
+      q: 'Ice-cream sales and drownings are strongly correlated. Does ice cream cause drowning?',
+      steps: [
+        ['Both rise in hot weather.', ''],
+        ['A third variable explains both.', ''],
+        ['Correlation is not causation.', '']
+      ],
+      ans: 'No — temperature is the common cause'
+    }
+  ],
+  modelNote: 'Plot the class’s height against arm span and draw the line through the mean point.',
+  interactive: {
+    type: 'averages',
+    title: 'A scatter and its line',
+    hint: 'The line must pass through the mean point.'
+  },
+  quiz: [
+    { q: 'Age of a car against price shows:', a: ['strong positive', 'strong negative', 'no correlation', 'a curve'], c: 1, why: 'Older means cheaper.' },
+    { q: 'The line of best fit must pass through:', a: ['the origin', 'the mean point', 'the first point', 'the highest point'], c: 1, why: m('(x̄, ȳ)') + '.' },
+    { q: 'Predicting outside the data range is:', a: ['interpolation', 'extrapolation', 'correlation', 'causation'], c: 1, why: 'And unreliable.' },
+    { q: 'Correlation implies causation:', a: ['always', 'never', 'sometimes, but it cannot be told from the data', 'only if strong'], c: 2, why: 'An experiment is needed.' },
+    { q: 'Describing a correlation needs:', a: ['one word', 'type and strength', 'a number only', 'nothing'], c: 1, why: 'Both are credited.' }
+  ],
+  practice: {
+    easy: [
+      ['Height and arm span', 'strong positive'],
+      ['Age of a car and its price', 'strong negative'],
+      ['Shoe size and mathematics mark', 'no correlation'],
+      ['Temperature and ice-cream sales', 'positive'],
+      ['The line of best fit passes through', 'the mean point'],
+      ['Predicting inside the range is called', 'interpolation'],
+      ['Predicting outside is called', 'extrapolation']
+    ],
+    med: [
+      [m('y = 42 + 4.5x') + '; predict for ' + m('x = 5'), m('64.5')],
+      ['Why is the prediction for ' + m('x = 30') + ' invalid?', 'Far outside the data; it exceeds 100'],
+      ['Interpret the gradient ' + m('4.5'), 'about 4.5 marks per extra hour'],
+      ['Interpret the intercept ' + m('42'), 'the predicted mark with no revision'],
+      ['Mean point of ' + m('(1,3),(2,5),(3,7)'), m('(2, 5)')],
+      ['Does a strong correlation prove causation?', 'no'],
+      ['Firefighters and damage: the real cause', 'the size of the fire']
+    ],
+    hard: [
+      ['Points ' + m('(1,4),(2,7),(3,9),(4,12),(5,14)') + ': the mean point', m('(3, 9.2)')],
+      ['Estimate the gradient of the best-fit line for those points', m('≈ 2.5')],
+      ['Hence estimate ' + m('y') + ' at ' + m('x = 3.5'), m('≈ 10.5')],
+      ['Why must the line pass through the mean point?', 'The least-squares line always does'],
+      ['Give a pair of variables with a strong correlation and no causal link', 'e.g. stork numbers and birth rates'],
+      ['A curve, not a line, fits the data. What does that show?', 'A relationship, but not a linear one'],
+      ['Design an experiment to test whether revision causes better marks', 'Assign revision time at random and compare groups']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every correlation described with two words; every prediction labelled interpolation or extrapolation.',
+  homework: [
+    'Plot the eight points ' + m('(1,5),(2,6),(3,9),(4,10),(5,12),(6,14),(7,15),(8,18)') + ' and describe the correlation.',
+    'Find the mean point and draw the line of best fit through it.',
+    'Use your line to predict ' + m('y') + ' at ' + m('x = 4.5') + ' and at ' + m('x = 20') + ', saying which prediction is reliable.',
+    'Give two pairs of variables that are correlated without one causing the other, with the real explanation.',
+    'Explain in three sentences the difference between interpolation and extrapolation.'
+  ]
+});
+
+/* ============================== 27 ============================== */
+G11_ALG.push({
+  id: 'a11-27', stream: 'alg', grade: 11, quarter: 3, lessons: '74–76', hours: 3,
+  title: 'Integration by partial fractions and by parts',
+  subtitle: 'Cambridge insert: two techniques that turn an impossible integral into two easy ones.',
+  uz: 'Algebra 11, §3.2 (extension)', uzPage: 'pp. 357–364',
+  cam: 'P2 · 8.1–8.3', camPage: 'Pure Mathematics 2 & 3, pp. 160–178', wb: 'P2 Exercise 8A–8C',
+  objectives: [
+    'Split a proper rational function into partial fractions.',
+    'Integrate using partial fractions.',
+    'State and apply the integration-by-parts formula.',
+    'Choose which factor to differentiate and which to integrate.'
+  ],
+  terms: [
+    ['Partial fractions', 'Elementar kasrlar', 'Простейшие дроби'],
+    ['Proper fraction', 'To‘g‘ri kasr', 'Правильная дробь'],
+    ['Improper fraction', 'Noto‘g‘ri kasr', 'Неправильная дробь'],
+    ['Linear factor', 'Chiziqli ko‘paytuvchi', 'Линейный множитель'],
+    ['Repeated factor', 'Takrorlanuvchi ko‘paytuvchi', 'Кратный множитель'],
+    ['Integration by parts', 'Bo‘laklab integrallash', 'Интегрирование по частям'],
+    ['Cover-up method', 'Yopish usuli', 'Метод вычёркивания'],
+    ['Reduction', 'Kamaytirish', 'Понижение'],
+    ['Natural logarithm', 'Natural logarifm', 'Натуральный логарифм']
+  ],
+  timing: [[20, 'Why split a fraction'], [30, 'Partial fractions'], [30, 'Integrating them'], [30, 'By parts'], [26, 'Practice'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'Why split a fraction',
+      html: `<p>${m('∫ ' + f('5x − 1', 'x² − 1') + ' dx')} has no obvious antiderivative. But the
+      integrand can be written as a sum of two much simpler ones:</p>
+      ${eq(m(f('5x − 1', 'x² − 1') + ' = ' + f('2', 'x − 1') + ' + ' + f('3', 'x + 1')), true)}
+      <p>and each of those integrates to a logarithm at sight.</p>
+      <div class="keybox"><div class="klabel">The one standard integral you need</div>
+      ${eq(m('∫ ' + f('1', 'ax + b') + ' dx = ' + f('1', 'a') + ' ln|ax + b| + C'), true)}
+      Every partial-fraction integral reduces to copies of this.</div>`
+    },
+    {
+      h: 'Splitting the fraction',
+      html: `<p>The fraction must be <b>proper</b> — numerator of lower degree than the denominator. If it
+      is not, divide first.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Denominator</th><th>Form of the split</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(x − a)(x − b)</td><td class="m">${f('A', 'x − a')} + ${f('B', 'x − b')}</td></tr>
+        <tr><td class="m">(x − a)²</td><td class="m">${f('A', 'x − a')} + ${f('B', '(x − a)²')}</td></tr>
+        <tr><td class="m">(x − a)(x² + c)</td><td class="m">${f('A', 'x − a')} + ${f('Bx + C', 'x² + c')}</td></tr>
+      </tbody></table></div>
+      <p><b>The cover-up method.</b> To find ${m('A')} in ${m(f('5x − 1', '(x−1)(x+1)'))}, cover the
+      factor ${m('(x − 1)')} and put ${m('x = 1')} into what remains:
+      ${m(f('5(1) − 1', '1 + 1') + ' = 2')}. Similarly ${m('B = ' + f('5(−1) − 1', '−1 − 1') + ' = 3')}.
+      Two substitutions, no simultaneous equations.</p>`
+    },
+    {
+      h: 'Integrating them',
+      html: `${eq(m('∫ ' + f('5x − 1', 'x² − 1') + ' dx = ∫(' + f('2', 'x−1') + ' + ' + f('3', 'x+1') + ') dx'), true)}
+      ${eq(m('= 2 ln|x − 1| + 3 ln|x + 1| + C'), false)}
+      <div class="warn"><span class="wl">The modulus signs matter</span>
+      ${m('ln')} is defined only for positive arguments; ${m('ln|x − 1|')} covers both sides of
+      ${m('x = 1')}. Dropping the bars loses a mark and, in a definite integral, can lose the answer.</div>
+      <p>A repeated factor gives a term that is <b>not</b> a logarithm:
+      ${m('∫ ' + f('1', '(x−2)²') + ' dx = −' + f('1', 'x − 2') + ' + C')} — the power rule, not the
+      logarithm.</p>`
+    },
+    {
+      h: 'Integration by parts',
+      html: `${eq(m('∫ u ' + f('dv', 'dx') + ' dx = uv − ∫ v ' + f('du', 'dx') + ' dx'), true)}
+      <p>It is the product rule integrated. Its purpose is to <b>replace one integral by an easier
+      one</b> — so the choice of ${m('u')} decides whether it helps.</p>
+      <div class="keybox"><div class="klabel">Choosing ${m('u')}</div>
+      Take ${m('u')} to be the factor that gets <b>simpler when differentiated</b>: a power of ${m('x')}
+      before an exponential; a logarithm before anything.</div>
+      <p><b>Example.</b> ${m('∫ x e^x dx')}: take ${m('u = x')}, ${m(f('dv', 'dx') + ' = e^x')}.
+      Then ${m('∫ x e^x dx = x e^x − ∫ e^x dx = e^x(x − 1) + C')}.</p>
+      <p><b>Example.</b> ${m('∫ ln x dx')}: take ${m('u = ln x')}, ${m(f('dv', 'dx') + ' = 1')}.
+      Then ${m('= x ln x − ∫ 1 dx = x ln x − x + C')} — an integral with only one factor, done by parts.</p>
+      <div class="warn"><span class="wl">A bad choice makes it worse</span>
+      With ${m('u = e^x')} in the first example, the new integral has ${m('x²')} in it. If the second
+      integral is harder than the first, swap the choice and start again.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Split ' + m(f('5x − 1', 'x² − 1')) + ' into partial fractions.',
+      steps: [
+        [m('x² − 1 = (x−1)(x+1)'), ''],
+        ['Cover ' + m('(x−1)') + ', put ' + m('x = 1') + ': ' + m(f('4', '2') + ' = 2') + '.', ''],
+        ['Cover ' + m('(x+1)') + ', put ' + m('x = −1') + ': ' + m(f('−6', '−2') + ' = 3') + '.', '']
+      ],
+      ans: m(f('2', 'x − 1') + ' + ' + f('3', 'x + 1'))
+    },
+    {
+      q: 'Find ' + m('∫ ' + f('5x − 1', 'x² − 1') + ' dx') + '.',
+      steps: [
+        ['Use the split above.', ''],
+        [m('∫' + f('2', 'x−1') + ' dx = 2 ln|x − 1|'), ''],
+        [m('∫' + f('3', 'x+1') + ' dx = 3 ln|x + 1|'), '']
+      ],
+      ans: m('2 ln|x − 1| + 3 ln|x + 1| + C')
+    },
+    {
+      q: 'Find ' + m('∫ x cos x dx') + '.',
+      steps: [
+        [m('u = x') + ', ' + m(f('dv', 'dx') + ' = cos x') + '.', m('x') + ' simplifies when differentiated.'],
+        [m('v = sin x') + ', ' + m(f('du', 'dx') + ' = 1') + '.', ''],
+        [m('x sin x − ∫ sin x dx'), ''],
+        [m('= x sin x + cos x + C'), '']
+      ],
+      ans: m('x sin x + cos x + C')
+    }
+  ],
+  modelNote: 'Do the cover-up method on the board twice — it is faster than any alternative.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'Splitting a fraction',
+    hint: 'Cover a factor and substitute its root.'
+  },
+  quiz: [
+    { q: m('∫ ' + f('1', 'x − 3') + ' dx') + ' is:', a: [m('ln(x − 3) + C'), m('ln|x − 3| + C'), m('−' + f('1', '(x−3)²') + ' + C'), m(f('1', '2') + '(x−3)² + C')], c: 1, why: 'The modulus is needed.' },
+    { q: m(f('1', '(x−1)(x+2)')) + ' splits into:', a: [m(f('A', 'x−1') + ' + ' + f('B', 'x+2')), m(f('Ax+B', '(x−1)(x+2)')), m(f('A', '(x−1)(x+2)')), 'it does not split'], c: 0, why: 'Two distinct linear factors.' },
+    { q: 'Integration by parts is:', a: ['the chain rule reversed', 'the product rule reversed', 'the quotient rule reversed', 'a new rule'], c: 1, why: 'Integrate ' + m("(uv)′") + '.' },
+    { q: 'For ' + m('∫ x e^x dx') + ' take ' + m('u') + ' to be:', a: [m('e^x'), m('x'), m('x e^x'), 'either'], c: 1, why: 'It simplifies when differentiated.' },
+    { q: m('∫ ln x dx') + ' equals:', a: [m(f('1', 'x') + ' + C'), m('x ln x − x + C'), m('ln x + C'), m(f('(ln x)²', '2') + ' + C')], c: 1, why: 'By parts with ' + m('u = ln x') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('∫ ' + f('1', 'x − 2') + ' dx'), m('ln|x − 2| + C')],
+      [m('∫ ' + f('1', '2x + 1') + ' dx'), m(f('1', '2') + ' ln|2x + 1| + C')],
+      [m('∫ ' + f('3', 'x') + ' dx'), m('3 ln|x| + C')],
+      [m('∫ ' + f('1', '(x−1)²') + ' dx'), m('−' + f('1', 'x − 1') + ' + C')],
+      ['Split ' + m(f('1', 'x(x+1)')), m(f('1', 'x') + ' − ' + f('1', 'x+1'))],
+      [m('∫ x e^x dx'), m('e^x(x − 1) + C')],
+      [m('∫ ln x dx'), m('x ln x − x + C')]
+    ],
+    med: [
+      ['Split ' + m(f('5x − 1', 'x² − 1')), m(f('2', 'x−1') + ' + ' + f('3', 'x+1'))],
+      [m('∫ ' + f('5x − 1', 'x² − 1') + ' dx'), m('2 ln|x−1| + 3 ln|x+1| + C')],
+      ['Split ' + m(f('3x + 5', '(x+1)(x+3)')), m(f('1', 'x+1') + ' + ' + f('2', 'x+3'))],
+      [m('∫ x cos x dx'), m('x sin x + cos x + C')],
+      [m('∫ x sin x dx'), m('−x cos x + sin x + C')],
+      [m('∫ x² e^x dx'), m('e^x(x² − 2x + 2) + C')],
+      ['Split ' + m(f('4', 'x² − 4')), m(f('1', 'x−2') + ' − ' + f('1', 'x+2'))]
+    ],
+    hard: [
+      ['Split ' + m(f('x + 7', '(x−1)(x+2)²')), m(f('' + f('8', '9'), 'x−1') + ' − ' + f('' + f('8', '9'), 'x+2') + ' − ' + f('' + f('5', '3'), '(x+2)²'))],
+      [m('∫ ' + f('x² + 1', 'x² − 1') + ' dx'), m('x + ln|x−1| − ln|x+1| + C')],
+      [m('∫ x ln x dx'), m(f('x²', '2') + ' ln x − ' + f('x²', '4') + ' + C')],
+      [m('∫ x²  ln x dx'), m(f('x³', '3') + ' ln x − ' + f('x³', '9') + ' + C')],
+      [m('∫') + '<sub class="m">2</sub><sup class="m">3</sup>' + m(' ' + f('1', 'x(x−1)') + ' dx'), m('ln ' + f('4', '3'))],
+      [m('∫ e^x sin x dx'), m(f('e^x', '2') + '(sin x − cos x) + C')],
+      ['Explain why the cover-up method works', 'Multiplying by the factor and substituting its root kills the other terms']
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Modulus signs inside every logarithm; state which factor you chose as ' + m('u') + ' and why.',
+  homework: [
+    'Split ' + m(f('7x − 1', 'x² − 1')) + ' and ' + m(f('2x + 5', '(x+1)(x+4)')) + ' into partial fractions.',
+    'Find ' + m('∫ ' + f('7x − 1', 'x² − 1') + ' dx') + '.',
+    'Find ' + m('∫ ' + f('1', '(x−3)²') + ' dx') + ' and explain why it is not a logarithm.',
+    'Find ' + m('∫ x e^(2x) dx') + '.',
+    'Find ' + m('∫ x² ln x dx') + '.',
+    'Explain in three sentences how you decide which factor to call ' + m('u') + '.'
+  ]
+});
+
+/* ============================== 28 ============================== */
+G11_ALG.push({
+  id: 'a11-28', stream: 'alg', grade: 11, quarter: 3, lessons: '77–78', hours: 2,
+  title: 'Control work 6, and the quarter review',
+  subtitle: 'Combinatorics, the binomial theorem and statistics in one paper, then the map of the whole quarter.',
+  uz: 'Algebra 11, Nazorat ishi 6', uzPage: 'pp. 365–368',
+  cam: 'IGCSE E20 review', camPage: 'Core & Extended, pp. 425–428', wb: 'Control paper F',
+  objectives: [
+    'Apply the combinatorial and statistical methods under time.',
+    'Decide whether order matters, unprompted.',
+    'Build a concept map of the quarter.',
+    'Set a personal target for Quarter IV.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Concept map', 'Tushunchalar xaritasi', 'Карта понятий'],
+    ['Permutation', 'O‘rin almashtirish', 'Перестановка'],
+    ['Combination', 'Kombinatsiya', 'Сочетание'],
+    ['Standard deviation', 'Standart chetlanish', 'Стандартное отклонение'],
+    ['Correlation', 'Korrelyatsiya', 'Корреляция'],
+    ['Self-assessment', 'O‘z-o‘zini baholash', 'Самооценка'],
+    ['Target', 'Maqsad', 'Цель']
+  ],
+  timing: [[3, 'Instructions'], [42, 'The paper'], [10, 'Answers'], [20, 'Rewrite'], [10, 'Concept map'], [5, 'Targets']],
+  sections: [
+    {
+      h: 'The paper — 30 marks, 42 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>From 9 people: a team of 4; then a captain, a vice-captain and two others</td><td class="m">5</td><td>L60–62</td></tr>
+        <tr><td>2</td><td>How many arrangements has SAMARQAND? And with the two A’s together?</td><td class="m">5</td><td>L60–62</td></tr>
+        <tr><td>3</td><td>Find the term in ${m('x⁴')} in ${m('(2x − 1)⁷')}</td><td class="m">4</td><td>L63–64</td></tr>
+        <tr><td>4</td><td>Estimate the mean and standard deviation of a grouped table</td><td class="m">6</td><td>L68–70</td></tr>
+        <tr><td>5</td><td>Draw a cumulative frequency curve and read off the median and quartiles</td><td class="m">6</td><td>L65–67</td></tr>
+        <tr><td>6</td><td>Describe a given correlation and say why a prediction at ${m('x = 40')} is invalid</td><td class="m">4</td><td>L71–73</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks hide</div>
+      Q1 gives one mark for saying whether order matters in each part. Q6 gives two words — type and
+      strength — and two for the extrapolation reason. Five of thirty are for words, not numbers.</div>`
+    },
+    {
+      h: 'The concept map',
+      html: `<p>Six boxes, links as sentences:</p>
+      <ul>
+        <li><b>antiderivative</b> → <b>definite integral</b> — “Newton–Leibniz: ${m('F(b) − F(a)')}”</li>
+        <li><b>definite integral</b> → <b>area and volume</b> — “upper minus lower; ${m('π∫y² dx')}”</li>
+        <li><b>no antiderivative</b> → <b>trapezium rule</b> — “straight chords, error ${m('∝ h²')}”</li>
+        <li><b>counting rules</b> → <b>${m('C(n,k)')}</b> — “order matters, or it does not”</li>
+        <li><b>${m('C(n,k)')}</b> → <b>binomial theorem</b> — “Pascal’s triangle is the coefficients”</li>
+        <li><b>data</b> → <b>centre and spread</b> — “mean and ${m('σ')}, or median and IQR”</li>
+      </ul>
+      {{fig:boxPlot:The picture behind the last box.}}`
+    },
+    {
+      h: 'Looking forward',
+      html: `<p>Quarter IV is probability and distributions, then the Cambridge revision blocks on complex
+      numbers and differential equations. The combinatorics of this quarter is what makes probability
+      computable, and the integration is what solves the differential equations.</p>
+      <div class="keybox"><div class="klabel">One habit to carry forward</div>
+      Ask “does order matter?” before every counting question, and “is this the mean or the median’s
+      job?” before every statistic. Both are one-sentence decisions that determine the whole answer.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q1: from 9 people, a team of 4; then a captain, vice-captain and two others.',
+      steps: [
+        ['A team: order does not matter.', m('C(9,4) = 126')],
+        ['With roles: choose the captain, then the vice, then two others.', m('9 × 8 × C(7,2)')],
+        [m('= 9 × 8 × 21 = 1512'), '']
+      ],
+      ans: m('126') + '; ' + m('1512')
+    },
+    {
+      q: 'Model answer, Q2: arrangements of SAMARQAND.',
+      steps: [
+        ['9 letters with A×3.', m(f('9!', '3!') + ' = 60 480')],
+        ['With the three A’s together: treat them as one block.', m('7! = 5040')],
+        ['(With only two A’s together the count differs.)', '']
+      ],
+      ans: m('60 480') + '; ' + m('5040') + ' with all three A’s together'
+    },
+    {
+      q: 'Model answer, Q3: the term in ' + m('x⁴') + ' in ' + m('(2x − 1)⁷') + '.',
+      steps: [
+        [m('7 − k = 4 ⇒ k = 3'), ''],
+        [m('C(7,3) = 35'), ''],
+        [m('35 (2x)⁴ (−1)³'), ''],
+        [m('= 35 × 16 × (−1) x⁴ = −560x⁴'), '']
+      ],
+      ans: m('−560x⁴')
+    }
+  ],
+  modelNote: 'Work Q1 and Q3 on the board, stating the order question aloud each time.',
+  interactive: {
+    type: 'quiz',
+    title: 'The quarter in ten questions',
+    hint: 'One from each block.',
+    items: [
+      { q: m('∫') + '<sub class="m">0</sub><sup class="m">3</sup>' + m(' x² dx') + ':', a: [m('9'), m('27'), m('3'), m('6')], c: 0, why: m(f('27', '3')) + '.' },
+      { q: 'Area between ' + m('y = 4x') + ' and ' + m('y = x²') + ':', a: [m(f('16', '3')), m(f('32', '3')), m('16'), m('8')], c: 1, why: 'Limits ' + m('0, 4') + '.' },
+      { q: 'Volume from ' + m('y = ' + sr('x')) + ' on ' + m('[0, 4]') + ':', a: [m('4π'), m('8π'), m('16π'), m('2π')], c: 1, why: m('π∫x dx') + '.' },
+      { q: '4 strips need how many ordinates?', a: [m('3'), m('4'), m('5'), m('8')], c: 2, why: 'Both ends.' },
+      { q: 'A team of 4 from 9:', a: [m('126'), m('3024'), m('36'), m('24')], c: 0, why: m('C(9,4)') + '.' },
+      { q: 'Arrangements of SAMARQAND:', a: [m('9!'), m(f('9!', '3!')), m(f('9!', '2!')), m('7!')], c: 1, why: 'Three A’s.' },
+      { q: 'Term in ' + m('x⁴') + ' of ' + m('(2x − 1)⁷') + ':', a: [m('560x⁴'), m('−560x⁴'), m('35x⁴'), m('−35x⁴')], c: 1, why: m('(−1)³') + '.' },
+      { q: 'Which average resists outliers?', a: ['the mean', 'the median', 'the mode', 'none'], c: 1, why: 'It ignores the extremes.' },
+      { q: m('σ²') + ' equals:', a: [m(f('Σx', 'n')), m(f('Σx²', 'n') + ' − x̄²'), m(sr('Σx²')), m(f('Σ(x − x̄)', 'n'))], c: 1, why: 'The computing form.' },
+      { q: 'Predicting outside the data range is:', a: ['interpolation', 'extrapolation', 'correlation', 'valid'], c: 1, why: 'And unreliable.' }
+    ]
+  },
+  quiz: [
+    { q: 'The first question in any counting problem is:', a: ['how many?', 'does order matter?', 'is it a factorial?', 'is it large?'], c: 1, why: 'It picks the formula.' },
+    { q: 'A grouped mean is:', a: ['exact', 'an estimate', 'wrong', 'the median'], c: 1, why: 'Midpoints replace the data.' },
+    { q: 'A definite integral’s answer is:', a: ['a family', 'a number', 'a function', 'a constant of integration'], c: 1, why: 'The limits fix it.' },
+    { q: 'Quarter IV begins with:', a: ['integration', 'probability', 'vectors', 'logarithms'], c: 1, why: 'Then distributions.' }
+  ],
+  practice: {
+    easy: [
+      [m('C(9,4)'), m('126')],
+      [m('A(9,2)'), m('72')],
+      ['Arrangements of SAMARQAND', m('60 480')],
+      ['Term in ' + m('x⁴') + ' of ' + m('(2x − 1)⁷'), m('−560x⁴')],
+      [m('∫') + '<sub class="m">0</sub><sup class="m">3</sup>' + m(' x² dx'), m('9')],
+      ['Mean of ' + m('4, 6, 8, 10'), m('7')],
+      ['Median of ' + m('4, 6, 8, 10, 30'), m('8')]
+    ],
+    med: [
+      ['A captain, a vice and two others from 9', m('1512')],
+      ['Arrangements of SAMARQAND with the three A’s together', m('5040')],
+      ['Area between ' + m('y = 4x') + ' and ' + m('y = x²'), m(f('32', '3'))],
+      ['Volume from ' + m('y = ' + sr('x')) + ' on ' + m('[0, 4]'), m('8π')],
+      [m('σ') + ' of ' + m('2, 4, 4, 4, 5, 5, 7, 9'), m('2')],
+      ['Grouped mean, midpoints ' + m('5,15,25,35') + ', ' + m('f = 4,9,12,5'), m('21')],
+      ['Estimate ' + m('∫') + '<sub class="m">0</sub><sup class="m">4</sup>' + m(' x² dx') + ' with 4 strips', m('22')]
+    ],
+    hard: [
+      ['From 7 men and 5 women, committees of 5 with at least 3 women', m('246')],
+      ['Term independent of ' + m('x') + ' in ' + m('(2x − ' + f('1', 'x²') + ')⁹'), m('−672')],
+      ['Grouped ' + m('σ') + ' with midpoints ' + m('5,15,25,35') + ', ' + m('f = 4,9,12,5'), m('≈ 8.6')],
+      ['Area enclosed by ' + m('y = x³') + ' and ' + m('y = x'), m(f('1', '2'))],
+      [m('∫ ' + f('5x − 1', 'x² − 1') + ' dx'), m('2ln|x−1| + 3ln|x+1| + C')],
+      [m('∫ x cos x dx'), m('x sin x + cos x + C')],
+      ['Why is a prediction at ' + m('x = 40') + ' invalid for data on ' + m('[1, 8]') + '?', 'Extrapolation far outside the range']
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Bring the concept map to the first lesson of Quarter IV.',
+  homework: [
+    'Rewrite in full every control-work question that lost a mark.',
+    'Finish the concept map with all six links written as sentences.',
+    'From 8 men and 6 women, how many committees of 5 contain at least 2 women? And find the term in ' + m('x³') + ' of ' + m('(3x − 2)⁶') + '.',
+    'Write your target for Quarter IV in one checkable sentence, and date it.'
+  ]
+});
