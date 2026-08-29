@@ -295,6 +295,12 @@
 .sbox .frac>span,.lrow .frac>span,.chip .frac>span,.gmeta .frac>span{border-bottom:0!important;padding:0}
 .sbox .frac>span:first-child::after,.lrow .frac>span:first-child::after,
 .chip .frac>span:first-child::after,.gmeta .frac>span:first-child::after{content:"\2044"}
+.sbox .colv,.lrow .colv,.chip .colv,.gmeta .colv,.qq .colv{display:inline;vertical-align:baseline;margin:0;padding:0}
+.sbox .colv::before,.lrow .colv::before,.chip .colv::before,.gmeta .colv::before,.qq .colv::before,
+.sbox .colv::after,.lrow .colv::after,.chip .colv::after,.gmeta .colv::after,.qq .colv::after{position:static;transform:none}
+.sbox .colv>span:first-child::after,.lrow .colv>span:first-child::after,
+.chip .colv>span:first-child::after,.gmeta .colv>span:first-child::after,
+.qq .colv>span:first-child::after{content:", "}
 
 /* ---------- terminology (EN / UZ / RU) ---------- */
 .terms{border:1px solid var(--rule);border-radius:var(--r-l);overflow:hidden;background:var(--surface)}

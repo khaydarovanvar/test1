@@ -4142,3 +4142,758 @@ G10_GEO.push({
     'Answer the three whole-class review questions in your own words.'
   ]
 });
+
+/* ===================== QUARTER IV (16 hours) ===================== */
+
+/* ============================== 27 ============================== */
+G10_GEO.push({
+  id: 'g10-27', stream: 'geo', grade: 10, quarter: 4, lessons: '53–54', hours: 2,
+  title: 'The equation of a straight line [Cambridge revision]',
+  subtitle: 'Gradient, midpoint and length — three formulas that answer almost every coordinate question.',
+  uz: 'Revision of Grade 8–9 coordinates', uzPage: 'Geometry 9, pp. 96–118',
+  cam: 'P1 3.1–3.3', camPage: 'Pure Mathematics 1, pp. 44–56', wb: 'Exercise 3A–3C',
+  objectives: [
+    'Find the length, midpoint and gradient of a line segment.',
+    'Write the equation of a line through a point with a given gradient.',
+    'Use the conditions for parallel and perpendicular lines.',
+    'Find the perpendicular bisector of a segment and the foot of a perpendicular.'
+  ],
+  terms: [
+    ['Coordinate plane', 'Koordinata tekisligi', 'Координатная плоскость'],
+    ['Gradient (slope)', 'Burchak koeffitsiyenti', 'Угловой коэффициент'],
+    ['Midpoint', 'O‘rta nuqta', 'Середина'],
+    ['Distance formula', 'Masofa formulasi', 'Формула расстояния'],
+    ['Parallel lines', 'Parallel to‘g‘ri chiziqlar', 'Параллельные прямые'],
+    ['Perpendicular lines', 'Perpendikulyar to‘g‘ri chiziqlar', 'Перпендикулярные прямые'],
+    ['Perpendicular bisector', 'O‘rta perpendikulyar', 'Серединный перпендикуляр'],
+    ['Intercept', 'Kesma', 'Отрезок на оси'],
+    ['Collinear', 'Bir to‘g‘ri chiziqda', 'Коллинеарные'],
+    ['Foot of the perpendicular', 'Perpendikulyar asosi', 'Основание перпендикуляра']
+  ],
+  timing: [[15, 'The three formulas'], [25, 'Forms of the equation'], [25, 'Parallel and perpendicular'], [20, 'The perpendicular bisector'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'The three formulas',
+      html: `<p>For ${m('A(x₁, y₁)')} and ${m('B(x₂, y₂)')}:</p>
+      ${eq(m('AB = ' + sr('(x₂ − x₁)² + (y₂ − y₁)²')) + '   ' + m('M = (' + f('x₁ + x₂', '2') + ', ' + f('y₁ + y₂', '2') + ')') + '   ' + m('m = ' + f('y₂ − y₁', 'x₂ − x₁')), true)}
+      {{fig:distanceFormula:The distance is the hypotenuse of a right triangle with legs Δx and Δy.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">A</th><th class="m">B</th><th class="m">AB</th><th class="m">M</th><th class="m">m</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(1, 2)</td><td class="m">(4, 6)</td><td class="m">5</td><td class="m">(2.5, 4)</td><td class="m">${f('4', '3')}</td></tr>
+        <tr><td class="m">(−2, 3)</td><td class="m">(4, −5)</td><td class="m">10</td><td class="m">(1, −1)</td><td class="m">−${f('4', '3')}</td></tr>
+        <tr><td class="m">(0, 0)</td><td class="m">(6, 8)</td><td class="m">10</td><td class="m">(3, 4)</td><td class="m">${f('4', '3')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Subtract in the same order, twice</span>
+      Gradient is ${m(f('y₂ − y₁', 'x₂ − x₁'))}, not ${m(f('y₂ − y₁', 'x₁ − x₂'))}. Reversing one
+      subtraction and not the other flips the sign — and a positive gradient reported as negative loses
+      every mark that follows.</div>`
+    },
+    {
+      h: 'Forms of the equation',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Form</th><th>Equation</th><th>Use it when</th></tr></thead>
+      <tbody>
+        <tr><td>gradient–intercept</td><td class="m">y = mx + c</td><td>the intercept is known or wanted</td></tr>
+        <tr><td>point–gradient</td><td class="m">y − y₁ = m(x − x₁)</td><td>a point and a gradient are given</td></tr>
+        <tr><td>two points</td><td class="m">${f('y − y₁', 'y₂ − y₁')} = ${f('x − x₁', 'x₂ − x₁')}</td><td>two points are given</td></tr>
+        <tr><td>general</td><td class="m">ax + by + c = 0</td><td>an answer must be tidy, or the line is vertical</td></tr>
+      </tbody></table></div>
+      {{fig:gradientIntercept:m is the rise over the run; c is where the line crosses Oy.}}
+      <div class="keybox"><div class="klabel">The vertical line has no gradient</div>
+      ${m('x = 3')} cannot be written as ${m('y = mx + c')} — its gradient is undefined, not infinite and
+      not zero. A horizontal line, by contrast, has gradient ${m('0')} and the perfectly ordinary
+      equation ${m('y = 4')}.</div>`
+    },
+    {
+      h: 'Parallel and perpendicular',
+      html: `${eq('parallel: ' + m('m₁ = m₂') + '     perpendicular: ' + m('m₁ m₂ = −1'), true)}
+      <p>The second condition says the gradients are <b>negative reciprocals</b>: ${m(f('2', '3'))} pairs
+      with ${m('−' + f('3', '2'))}, and ${m('4')} with ${m('−' + f('1', '4'))}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Line</th><th>Parallel through ${m('(1, 5)')}</th><th>Perpendicular through ${m('(1, 5)')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = 2x + 1</td><td class="m">y = 2x + 3</td><td class="m">y = −${f('1', '2')}x + ${f('11', '2')}</td></tr>
+        <tr><td class="m">y = −${f('3', '4')}x</td><td class="m">y = −${f('3', '4')}x + ${f('23', '4')}</td><td class="m">y = ${f('4', '3')}x + ${f('11', '3')}</td></tr>
+        <tr><td class="m">3x + 2y = 7</td><td class="m">3x + 2y = 13</td><td class="m">2x − 3y + 13 = 0</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The shortcut for the general form</div>
+      A line parallel to ${m('ax + by = c')} is ${m('ax + by = k')}; one perpendicular to it is
+      ${m('bx − ay = k')}. Swap the coefficients and change one sign — no gradient needed at all.</div>`
+    },
+    {
+      h: 'The perpendicular bisector',
+      html: `<p>The perpendicular bisector of ${m('AB')} is the set of points equidistant from ${m('A')}
+      and ${m('B')}. Two steps build it:</p>
+      <ol>
+        <li>the midpoint ${m('M')} of ${m('AB')} — it passes through this;</li>
+        <li>the negative reciprocal of the gradient of ${m('AB')} — this is its gradient.</li>
+      </ol>
+      {{fig:perpBisector:Every point of the bisector is the same distance from A as from B.}}
+      <p><b>Example.</b> ${m('A(1, 2)')}, ${m('B(5, 8)')}. Then ${m('M(3, 5)')} and
+      ${m('m_{AB} = ' + f('3', '2'))}, so the bisector has gradient ${m('−' + f('2', '3'))}:</p>
+      ${eq(m('y − 5 = −' + f('2', '3') + '(x − 3)') + ',  that is  ' + m('2x + 3y = 21'), true)}
+      <div class="warn"><span class="wl">Two conditions, both needed</span>
+      A line through ${m('M')} that is not perpendicular is not the bisector; a perpendicular line that
+      misses ${m('M')} is not either. Check both before writing the answer.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the length, midpoint and gradient of ' + m('AB') + ' for ' + m('A(−2, 3)') + ' and ' + m('B(4, −5)') + '.',
+      steps: [
+        [m('Δx = 6') + ', ' + m('Δy = −8'), ''],
+        [m('AB = ' + sr('36 + 64') + ' = 10'), ''],
+        [m('M = (1, −1)'), ''],
+        [m('m = ' + f('−8', '6') + ' = −' + f('4', '3')), '']
+      ],
+      ans: m('10') + ', ' + m('(1, −1)') + ', ' + m('−' + f('4', '3'))
+    },
+    {
+      q: 'Find the equation of the line through ' + m('(2, −1)') + ' perpendicular to ' + m('y = ' + f('3', '4') + 'x + 2') + '.',
+      steps: [
+        [m('m₁ = ' + f('3', '4') + ' ⇒ m₂ = −' + f('4', '3')), 'Negative reciprocal.'],
+        [m('y + 1 = −' + f('4', '3') + '(x − 2)'), ''],
+        [m('3y + 3 = −4x + 8'), ''],
+        [m('4x + 3y − 5 = 0'), '']
+      ],
+      ans: m('4x + 3y − 5 = 0')
+    },
+    {
+      q: 'Find the perpendicular bisector of ' + m('A(1, 2)') + ' and ' + m('B(5, 8)') + '.',
+      steps: [
+        [m('M = (3, 5)'), ''],
+        [m('m_{AB} = ' + f('6', '4') + ' = ' + f('3', '2')), ''],
+        [m('m = −' + f('2', '3')), ''],
+        [m('2x + 3y = 21'), '']
+      ],
+      ans: m('2x + 3y = 21')
+    },
+    {
+      q: 'Show that ' + m('A(1, 1)') + ', ' + m('B(3, 5)') + ' and ' + m('C(6, 11)') + ' are collinear.',
+      steps: [
+        [m('m_{AB} = ' + f('4', '2') + ' = 2'), ''],
+        [m('m_{BC} = ' + f('6', '3') + ' = 2'), ''],
+        ['Equal gradients and a common point ' + m('B') + '.', 'So one line.']
+      ],
+      ans: 'Collinear — both gradients are ' + m('2')
+    }
+  ],
+  modelNote: 'Plot the three points of the collinearity example on squared paper before computing anything.',
+  interactive: {
+    type: 'coordPlane',
+    title: 'Gradient, midpoint and length',
+    hint: 'Drag a point and watch all three change.'
+  },
+  quiz: [
+    { q: 'The gradient of the line through ' + m('(1, 2)') + ' and ' + m('(4, 8)') + ' is:', a: [m('2'), m(f('1', '2')), m('6'), m('3')], c: 0, why: m(f('6', '3')) + '.' },
+    { q: 'Perpendicular gradients satisfy:', a: [m('m₁ = m₂'), m('m₁m₂ = −1'), m('m₁ + m₂ = 0'), m('m₁m₂ = 1')], c: 1, why: 'Negative reciprocals.' },
+    { q: 'The line ' + m('x = 3') + ' has gradient:', a: [m('0'), m('3'), 'undefined', m('∞')], c: 2, why: 'No run.' },
+    { q: 'The midpoint of ' + m('(−2, 3)') + ' and ' + m('(4, −5)') + ' is:', a: [m('(1, −1)'), m('(3, −4)'), m('(2, −2)'), m('(1, 4)')], c: 0, why: 'Average each coordinate.' },
+    { q: 'A line parallel to ' + m('3x + 2y = 7') + ' is:', a: [m('2x − 3y = 1'), m('3x + 2y = 13'), m('3x − 2y = 7'), m('2x + 3y = 7')], c: 1, why: 'Same coefficients.' },
+    { q: 'The perpendicular bisector passes through:', a: [m('A'), m('B'), 'the midpoint', 'the origin'], c: 2, why: 'And is perpendicular.' }
+  ],
+  practice: {
+    easy: [
+      ['Length from ' + m('(0, 0)') + ' to ' + m('(3, 4)'), m('5')],
+      ['Midpoint of ' + m('(1, 2)') + ' and ' + m('(5, 8)'), m('(3, 5)')],
+      ['Gradient through ' + m('(1, 2)') + ' and ' + m('(4, 8)'), m('2')],
+      ['Gradient of ' + m('y = −3x + 1'), m('−3')],
+      ['Gradient perpendicular to ' + m('2'), m('−' + f('1', '2'))],
+      ['Equation through ' + m('(0, 4)') + ' with gradient ' + m('3'), m('y = 3x + 4')],
+      ['Gradient of ' + m('y = 5'), m('0')]
+    ],
+    med: [
+      ['Length from ' + m('(−2, 3)') + ' to ' + m('(4, −5)'), m('10')],
+      ['Equation through ' + m('(2, −1)') + ' with gradient ' + m(f('3', '4')), m('3x − 4y − 10 = 0')],
+      ['Equation through ' + m('(2, −1)') + ' perpendicular to ' + m('y = ' + f('3', '4') + 'x'), m('4x + 3y − 5 = 0')],
+      ['Line through ' + m('(1, 3)') + ' and ' + m('(5, 11)'), m('y = 2x + 1')],
+      ['Perpendicular bisector of ' + m('(1, 2)') + ' and ' + m('(5, 8)'), m('2x + 3y = 21')],
+      ['Are ' + m('(1,1), (3,5), (6,11)') + ' collinear?', 'Yes, gradient ' + m('2')],
+      ['Line parallel to ' + m('3x + 2y = 7') + ' through ' + m('(1, 5)'), m('3x + 2y = 13')]
+    ],
+    hard: [
+      ['Foot of the perpendicular from ' + m('(1, 8)') + ' to ' + m('y = 2x'), m('(3.4, 6.8)')],
+      ['Distance from ' + m('(1, 8)') + ' to the line ' + m('y = 2x'), m(f('6', sr('5'))) + ' ≈ ' + m('2.68')],
+      ['Area of the triangle with vertices ' + m('(0,0), (4,0), (2,6)'), m('12')],
+      ['Find ' + m('k') + ' so that ' + m('(1, 2), (3, k), (7, 14)') + ' are collinear', m('k = 6')],
+      ['The vertices ' + m('A(0,0), B(4,2), C(2,6)') + ': show the triangle is right-angled', m('m_{AB} m_{BC} = ' + f('1', '2') + ' × (−2) = −1')],
+      ['Circumcentre of ' + m('(0,0), (6,0), (0,8)'), m('(3, 4)')],
+      ['The line ' + m('y = mx') + ' is equidistant from ' + m('(0, 4)') + ' and ' + m('(6, 0)') + ': find ' + m('m'), m('m = ' + f('2', '3'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Sketch the points before every calculation; a wrong sign shows up in the picture at once.',
+  homework: [
+    'Find the length, midpoint and gradient of ' + m('AB') + ' for ' + m('A(−3, 1)') + ' and ' + m('B(5, 7)') + '.',
+    'Find the equation of the line through ' + m('(3, −2)') + ' parallel to ' + m('2x − 5y = 4') + '.',
+    'Find the equation of the perpendicular bisector of ' + m('(−1, 4)') + ' and ' + m('(5, −2)') + '.',
+    'Show that ' + m('A(1, 0)') + ', ' + m('B(4, 6)') + ' and ' + m('C(6, 10)') + ' are collinear.',
+    'Find the foot of the perpendicular from ' + m('(2, 9)') + ' to the line ' + m('y = 3x + 1') + '.'
+  ]
+});
+
+/* ============================== 28 ============================== */
+G10_GEO.push({
+  id: 'g10-28', stream: 'geo', grade: 10, quarter: 4, lessons: '55–56', hours: 2,
+  title: 'The equation of a circle [Cambridge revision]',
+  subtitle: 'Centre and radius from the equation, and the equation from the centre and radius.',
+  uz: 'Revision of Grade 9', uzPage: 'Geometry 9, pp. 119–132',
+  cam: 'P1 3.4', camPage: 'Pure Mathematics 1, pp. 57–64', wb: 'Exercise 3D',
+  objectives: [
+    'Write the equation of a circle from its centre and radius.',
+    'Complete the square to read the centre and radius from a general equation.',
+    'Decide whether a point lies inside, on or outside a circle.',
+    'Use the property that the tangent is perpendicular to the radius.'
+  ],
+  terms: [
+    ['Circle', 'Aylana', 'Окружность'],
+    ['Centre', 'Markaz', 'Центр'],
+    ['Radius', 'Radius', 'Радиус'],
+    ['Standard form', 'Kanonik ko‘rinish', 'Каноническое уравнение'],
+    ['General form', 'Umumiy ko‘rinish', 'Общее уравнение'],
+    ['Completing the square', 'To‘la kvadratga keltirish', 'Выделение полного квадрата'],
+    ['Tangent', 'Urinma', 'Касательная'],
+    ['Chord', 'Vatar', 'Хорда'],
+    ['Diameter', 'Diametr', 'Диаметр'],
+    ['Concentric', 'Konsentrik', 'Концентрические']
+  ],
+  timing: [[15, 'The standard form'], [25, 'Completing the square'], [20, 'Inside, on or outside'], [25, 'Tangents'], [15, 'Homework']],
+  sections: [
+    {
+      h: 'The standard form',
+      html: `<p>A circle is the set of points at a fixed distance from a fixed point. Apply the distance
+      formula and square:</p>
+      ${eq(m('(x − a)² + (y − b)² = r²'), true)}
+      {{fig:circleEquation:Centre (a, b), radius r — the distance formula with the square roots removed.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Centre</th><th class="m">r</th><th>Equation</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(0, 0)</td><td class="m">5</td><td class="m">x² + y² = 25</td></tr>
+        <tr><td class="m">(3, −2)</td><td class="m">4</td><td class="m">(x − 3)² + (y + 2)² = 16</td></tr>
+        <tr><td class="m">(−1, 0)</td><td class="m">${sr('7')}</td><td class="m">(x + 1)² + y² = 7</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The signs inside the brackets are reversed</span>
+      A centre at ${m('(3, −2)')} gives ${m('(x − 3)²')} and ${m('(y + 2)²')}. Reading the centre
+      straight off the brackets without changing the sign is the standard error in this topic.</div>`
+    },
+    {
+      h: 'Completing the square',
+      html: `<p>Expanded, the equation looks unlike a circle:</p>
+      ${eq(m('x² + y² + 2gx + 2fy + c = 0'), true)}
+      <p>Complete the square in ${m('x')} and in ${m('y')} separately to recover the standard form.</p>
+      <p><b>Example.</b> ${m('x² + y² − 6x + 4y − 12 = 0')}:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>group</td><td class="m">(x² − 6x) + (y² + 4y) = 12</td></tr>
+        <tr><td>complete</td><td class="m">(x − 3)² − 9 + (y + 2)² − 4 = 12</td></tr>
+        <tr><td>tidy</td><td class="m">(x − 3)² + (y + 2)² = 25</td></tr>
+        <tr><td>read</td><td>centre ${m('(3, −2)')}, radius ${m('5')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">When it is not a circle</div>
+      If the right-hand side comes out <b>negative</b>, no point satisfies the equation; if it is
+      <b>zero</b>, the “circle” is the single point at the centre. Both appear in examinations, and both
+      want a sentence, not a radius.</div>`
+    },
+    {
+      h: 'Inside, on or outside',
+      html: `<p>Compute the distance from the point to the centre and compare with ${m('r')}.</p>
+      ${eq(m('d < r') + ' inside,   ' + m('d = r') + ' on,   ' + m('d > r') + ' outside', true)}
+      <p>Faster still: substitute the point into ${m('(x − a)² + (y − b)² − r²')} and read the sign —
+      negative inside, zero on, positive outside. No square root is needed.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Point</th><th>Substituted into ${m('(x−3)² + (y+2)² − 25')}</th><th>Where</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(3, 3)</td><td class="m">0 + 25 − 25 = 0</td><td>on</td></tr>
+        <tr><td class="m">(5, 0)</td><td class="m">4 + 4 − 25 = −17</td><td>inside</td></tr>
+        <tr><td class="m">(10, 2)</td><td class="m">49 + 16 − 25 = 40</td><td>outside</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Tangents',
+      html: `<div class="keybox"><div class="klabel">The one circle property this topic needs</div>
+      The tangent at a point is <b>perpendicular to the radius</b> drawn to that point.</div>
+      {{fig:tangentProperty:Radius and tangent meet at a right angle — the whole of the tangent method.}}
+      <p>So the tangent at ${m('P')} on a circle with centre ${m('C')} is found in two steps: compute
+      ${m('m_{CP})')}, then use ${m('−' + f('1', 'm_{CP}'))} through ${m('P')}.</p>
+      <p><b>Example.</b> The tangent to ${m('x² + y² = 25')} at ${m('(3, 4)')}. Here
+      ${m('m_{CP} = ' + f('4', '3'))}, so the tangent has gradient ${m('−' + f('3', '4'))}:</p>
+      ${eq(m('y − 4 = −' + f('3', '4') + '(x − 3)') + ',  that is  ' + m('3x + 4y = 25'), true)}
+      <div class="keybox"><div class="klabel">A pattern worth remembering</div>
+      For the circle ${m('x² + y² = r²')} the tangent at ${m('(x₀, y₀)')} is simply
+      ${m('x₀x + y₀y = r²')}. Check: at ${m('(3, 4)')} on ${m('x² + y² = 25')} it gives
+      ${m('3x + 4y = 25')} at once.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the centre and radius of ' + m('x² + y² − 6x + 4y − 12 = 0') + '.',
+      steps: [
+        [m('(x² − 6x) + (y² + 4y) = 12'), ''],
+        [m('(x − 3)² − 9 + (y + 2)² − 4 = 12'), ''],
+        [m('(x − 3)² + (y + 2)² = 25'), ''],
+        ['Centre ' + m('(3, −2)') + ', radius ' + m('5') + '.', '']
+      ],
+      ans: 'Centre ' + m('(3, −2)') + ', radius ' + m('5')
+    },
+    {
+      q: 'Find the equation of the circle with ' + m('A(1, 2)') + ' and ' + m('B(7, 10)') + ' as ends of a diameter.',
+      steps: [
+        ['Centre = midpoint = ' + m('(4, 6)') + '.', ''],
+        [m('AB = ' + sr('36 + 64') + ' = 10 ⇒ r = 5'), ''],
+        [m('(x − 4)² + (y − 6)² = 25'), '']
+      ],
+      ans: m('(x − 4)² + (y − 6)² = 25')
+    },
+    {
+      q: 'Where does ' + m('(6, 1)') + ' lie relative to ' + m('(x − 3)² + (y + 2)² = 25') + '?',
+      steps: [
+        [m('(6 − 3)² + (1 + 2)² = 9 + 9 = 18'), ''],
+        [m('18 < 25'), ''],
+        ['Inside.', 'No square root needed.']
+      ],
+      ans: 'Inside the circle'
+    },
+    {
+      q: 'Find the tangent to ' + m('x² + y² = 25') + ' at ' + m('(−4, 3)') + '.',
+      steps: [
+        [m('m_{CP} = −' + f('3', '4')), ''],
+        [m('m_{tangent} = ' + f('4', '3')), ''],
+        [m('y − 3 = ' + f('4', '3') + '(x + 4)'), ''],
+        [m('4x − 3y + 25 = 0'), 'Or use ' + m('x₀x + y₀y = 25') + ' directly.']
+      ],
+      ans: m('4x − 3y + 25 = 0')
+    }
+  ],
+  modelNote: 'Complete the square on the board twice — once with a positive and once with a negative constant — and let the class say what the second one is.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'The circle and its lines',
+    hint: 'Move the points and watch the right angle at the tangent.'
+  },
+  quiz: [
+    { q: 'The circle ' + m('(x − 3)² + (y + 2)² = 16') + ' has centre:', a: [m('(3, 2)'), m('(3, −2)'), m('(−3, 2)'), m('(−3, −2)')], c: 1, why: 'Reverse the signs.' },
+    { q: 'Its radius is:', a: [m('16'), m('4'), m('8'), m(sr('16') + '²')], c: 1, why: m('r² = 16') + '.' },
+    { q: 'To find the centre from the general form you:', a: ['factorise', 'complete the square', 'differentiate', 'substitute'], c: 1, why: 'Twice — in ' + m('x') + ' and ' + m('y') + '.' },
+    { q: 'If the right side comes out negative, the equation gives:', a: ['a small circle', 'no points at all', 'a point', 'a line'], c: 1, why: 'A sum of squares cannot be negative.' },
+    { q: 'A tangent meets the radius at:', a: [m('45°'), m('90°'), m('60°'), 'any angle'], c: 1, why: 'The tangent property.' },
+    { q: 'The tangent to ' + m('x² + y² = 25') + ' at ' + m('(3, 4)') + ' is:', a: [m('3x + 4y = 25'), m('4x + 3y = 25'), m('3x − 4y = 25'), m('x + y = 7')], c: 0, why: m('x₀x + y₀y = r²') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Equation of the circle, centre ' + m('(0, 0)') + ', radius ' + m('5'), m('x² + y² = 25')],
+      ['Equation, centre ' + m('(3, −2)') + ', radius ' + m('4'), m('(x − 3)² + (y + 2)² = 16')],
+      ['Centre of ' + m('(x + 1)² + (y − 5)² = 9'), m('(−1, 5)')],
+      ['Radius of ' + m('(x + 1)² + (y − 5)² = 9'), m('3')],
+      ['Radius of ' + m('x² + y² = 20'), m('2' + sr('5'))],
+      ['Does ' + m('(3, 4)') + ' lie on ' + m('x² + y² = 25') + '?', 'Yes'],
+      ['Centre of ' + m('x² + y² = 49'), m('(0, 0)')]
+    ],
+    med: [
+      ['Centre and radius of ' + m('x² + y² − 6x + 4y − 12 = 0'), m('(3, −2)') + ', ' + m('5')],
+      ['Centre and radius of ' + m('x² + y² + 8x − 2y + 8 = 0'), m('(−4, 1)') + ', ' + m('3')],
+      ['Circle on the diameter ' + m('(1, 2)') + ' to ' + m('(7, 10)'), m('(x − 4)² + (y − 6)² = 25')],
+      ['Is ' + m('(6, 1)') + ' inside ' + m('(x − 3)² + (y + 2)² = 25') + '?', 'Yes — ' + m('18 < 25')],
+      ['Tangent to ' + m('x² + y² = 25') + ' at ' + m('(3, 4)'), m('3x + 4y = 25')],
+      ['Tangent to ' + m('x² + y² = 25') + ' at ' + m('(−4, 3)'), m('4x − 3y + 25 = 0')],
+      ['Circle with centre ' + m('(2, 3)') + ' passing through ' + m('(5, 7)'), m('(x − 2)² + (y − 3)² = 25')]
+    ],
+    hard: [
+      ['Show that ' + m('x² + y² − 4x + 6y + 20 = 0') + ' has no points', m('r² = −7')],
+      ['Circle through ' + m('(0,0), (6,0), (0,8)'), m('(x − 3)² + (y − 4)² = 25')],
+      ['Length of the tangent from ' + m('(10, 2)') + ' to ' + m('(x − 3)² + (y + 2)² = 25'), m(sr('40')) + ' ≈ ' + m('6.32')],
+      ['The circles ' + m('x² + y² = 4') + ' and ' + m('(x − 5)² + y² = 9') + ': do they touch?', 'Yes, externally — ' + m('5 = 2 + 3')],
+      ['Shortest distance from ' + m('(10, 2)') + ' to that circle', m(sr('65') + ' − 5') + ' ≈ ' + m('3.06')],
+      ['Circle with centre on ' + m('y = x') + ', radius ' + m('5') + ', through ' + m('(1, 1)'), m('(x − a)² + (y − a)² = 25') + ' with ' + m('a = 1 ± ' + f('5', sr('2')))],
+      ['Equation of the circle inscribed in the square with vertices ' + m('(0,0), (6,0), (6,6), (0,6)'), m('(x − 3)² + (y − 3)² = 9')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Show the completing-the-square step in full; the answer alone earns half the marks.',
+  homework: [
+    'Find the centre and radius of ' + m('x² + y² − 10x + 6y + 9 = 0') + '.',
+    'Find the equation of the circle with ' + m('(−2, 1)') + ' and ' + m('(6, 7)') + ' as ends of a diameter.',
+    'Decide whether ' + m('(1, 1)') + ', ' + m('(5, −3)') + ' and ' + m('(9, 4)') + ' lie inside, on or outside ' + m('(x − 5)² + (y + 3)² = 16') + '.',
+    'Find the tangent to ' + m('x² + y² = 100') + ' at ' + m('(6, 8)') + ', and check it with ' + m('x₀x + y₀y = r²') + '.',
+    'Explain in two sentences why ' + m('x² + y² + 2x + 2y + 5 = 0') + ' has no solutions.'
+  ]
+});
+
+/* ============================== 29 ============================== */
+G10_GEO.push({
+  id: 'g10-29', stream: 'geo', grade: 10, quarter: 4, lessons: '57–58', hours: 2,
+  title: 'Points of intersection of lines and circles [Cambridge revision]',
+  subtitle: 'Substitute, solve the quadratic, and let the discriminant say how many points there are.',
+  uz: 'Revision of Grade 9', uzPage: 'Geometry 9, pp. 133–146',
+  cam: 'P1 3.5', camPage: 'Pure Mathematics 1, pp. 65–72', wb: 'Exercise 3E'
+  ,
+  objectives: [
+    'Find where two lines meet by solving their equations simultaneously.',
+    'Find where a line meets a circle by substitution.',
+    'Use the discriminant to count intersections without solving.',
+    'Find the condition for a line to be a tangent to a circle.'
+  ],
+  terms: [
+    ['Point of intersection', 'Kesishish nuqtasi', 'Точка пересечения'],
+    ['Simultaneous equations', 'Tenglamalar sistemasi', 'Система уравнений'],
+    ['Substitution', 'O‘rniga qo‘yish', 'Подстановка'],
+    ['Discriminant', 'Diskriminant', 'Дискриминант'],
+    ['Tangent condition', 'Urinma sharti', 'Условие касания'],
+    ['Secant', 'Kesuvchi', 'Секущая'],
+    ['Chord length', 'Vatar uzunligi', 'Длина хорды'],
+    ['Distance from a point to a line', 'Nuqtadan chiziqqa masofa', 'Расстояние от точки до прямой']
+  ],
+  timing: [[15, 'Two lines'], [25, 'A line and a circle'], [25, 'The discriminant decides'], [20, 'The tangent condition'], [15, 'Homework']],
+  sections: [
+    {
+      h: 'Two lines',
+      html: `<p>Two lines meet where both equations hold. Solve simultaneously — by substitution when one
+      equation is already ${m('y = …')}, by elimination otherwise.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Pair</th><th>Relation</th><th>Meeting points</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = 2x + 1, y = −x + 7</td><td>different gradients</td><td class="m">(2, 5)</td></tr>
+        <tr><td class="m">y = 2x + 1, y = 2x + 5</td><td>parallel</td><td>none</td></tr>
+        <tr><td class="m">y = 2x + 1, 4x − 2y + 2 = 0</td><td>the same line</td><td>infinitely many</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Three outcomes, and what each looks like algebraically</div>
+      A unique solution, no solution (a contradiction such as ${m('0 = 4')}), or infinitely many (an
+      identity such as ${m('0 = 0')}). The algebra always tells you which before the picture does.</div>`
+    },
+    {
+      h: 'A line and a circle',
+      html: `<p>Make ${m('y')} the subject of the line, substitute into the circle, and a quadratic in
+      ${m('x')} appears. Its roots are the ${m('x')}-coordinates of the meeting points.</p>
+      <p><b>Example.</b> ${m('y = x + 1')} and ${m('x² + y² = 25')}:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>substitute</td><td class="m">x² + (x + 1)² = 25</td></tr>
+        <tr><td>expand</td><td class="m">2x² + 2x − 24 = 0</td></tr>
+        <tr><td>simplify</td><td class="m">x² + x − 12 = 0</td></tr>
+        <tr><td>solve</td><td class="m">x = 3, x = −4</td></tr>
+        <tr><td>back-substitute</td><td class="m">(3, 4) and (−4, −3)</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Finish the job — find ${m('y')} too</span>
+      A point has two coordinates. Stopping at ${m('x = 3, x = −4')} answers half the question and
+      earns half the marks. Substitute back into the <b>line</b>, which is easier than the circle.</div>`
+    },
+    {
+      h: 'The discriminant decides',
+      html: `<p>The number of meeting points is the number of roots of that quadratic — so it is decided by
+      ${m('D = b² − 4ac')} alone.</p>
+      ${eq(m('D > 0') + ' two points   ' + m('D = 0') + ' tangent   ' + m('D < 0') + ' no points', true)}
+      {{fig:lineCircleCases:Three positions, three signs of the discriminant.}}
+      <p>This lets you answer “how many times does the line meet the circle?” without solving anything —
+      form the quadratic, compute ${m('D')}, stop.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Line with ${m('x² + y² = 25')}</th><th>Quadratic</th><th class="m">D</th><th>Points</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = x + 1</td><td class="m">x² + x − 12 = 0</td><td class="m">49</td><td class="m">2</td></tr>
+        <tr><td class="m">y = x + 5${sr('2')}</td><td class="m">2x² + 10${sr('2')}x + 25 = 0</td><td class="m">0</td><td class="m">1</td></tr>
+        <tr><td class="m">y = x + 10</td><td class="m">2x² + 20x + 75 = 0</td><td class="m">−200</td><td class="m">0</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'The tangent condition',
+      html: `<p>A line is a tangent exactly when ${m('D = 0')}. Setting ${m('D = 0')} and solving for the
+      unknown in the line gives every tangent of that family.</p>
+      <p><b>Example.</b> For which ${m('c')} is ${m('y = x + c')} a tangent to ${m('x² + y² = 25')}?</p>
+      ${eq(m('2x² + 2cx + c² − 25 = 0') + ',   ' + m('D = 4c² − 8(c² − 25) = 200 − 4c²'), true)}
+      <p>So ${m('D = 0')} when ${m('c² = 50')}, that is ${m('c = ±5' + sr('2'))} — the two tangents
+      parallel to ${m('y = x')}, one on each side.</p>
+      <div class="keybox"><div class="klabel">The geometric route, often faster</div>
+      A line is a tangent when the distance from the centre to the line equals ${m('r')}:
+      ${eq(m('d = ' + f('|ax₀ + by₀ + c|', sr('a² + b²'))) + ' = r', true)}
+      For ${m('y = x + c')} and the centre ${m('(0, 0)')}: ${m(f('|c|', sr('2')) + ' = 5')}, giving
+      ${m('c = ±5' + sr('2'))} in one line.</div>
+      <p><b>Chord length.</b> If ${m('d < r')}, the half-chord, ${m('d')} and ${m('r')} form a right
+      triangle, so the chord is ${m('2' + sr('r² − d²'))} — no quadratic needed.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find where ' + m('y = x + 1') + ' meets ' + m('x² + y² = 25') + '.',
+      steps: [
+        [m('x² + (x + 1)² = 25'), ''],
+        [m('2x² + 2x − 24 = 0 ⇒ x² + x − 12 = 0'), ''],
+        [m('x = 3') + ' or ' + m('x = −4'), ''],
+        [m('(3, 4)') + ' and ' + m('(−4, −3)'), 'Back into the line.']
+      ],
+      ans: m('(3, 4)') + ' and ' + m('(−4, −3)')
+    },
+    {
+      q: 'How many times does ' + m('y = 2x + 8') + ' meet ' + m('x² + y² = 9') + '?',
+      steps: [
+        [m('x² + (2x + 8)² = 9'), ''],
+        [m('5x² + 32x + 55 = 0'), ''],
+        [m('D = 1024 − 1100 = −76'), ''],
+        ['Negative — the line misses the circle.', '']
+      ],
+      ans: 'No points of intersection'
+    },
+    {
+      q: 'For which ' + m('c') + ' is ' + m('y = 2x + c') + ' a tangent to ' + m('x² + y² = 20') + '?',
+      steps: [
+        ['Distance from ' + m('(0,0)') + ': ' + m(f('|c|', sr('5'))), ''],
+        [m(f('|c|', sr('5')) + ' = ' + sr('20') + ' = 2' + sr('5')), ''],
+        [m('|c| = 10'), ''],
+        [m('c = ±10'), '']
+      ],
+      ans: m('c = 10') + ' or ' + m('c = −10')
+    },
+    {
+      q: 'Find the length of the chord cut on ' + m('x² + y² = 25') + ' by ' + m('y = 3') + '.',
+      steps: [
+        [m('d = 3') + ' from the centre.', ''],
+        ['Half-chord ' + m(sr('25 − 9') + ' = 4'), 'Right triangle.'],
+        ['Chord ' + m('= 8'), '']
+      ],
+      ans: m('8')
+    }
+  ],
+  modelNote: 'Draw one circle and slide a ruler across it, stopping at each of the three positions; name the sign of D each time.',
+  interactive: {
+    type: 'quadratic',
+    title: 'The discriminant, and how many points',
+    hint: 'Two roots, one root, none — the same three cases.'
+  },
+  quiz: [
+    { q: 'A line meets a circle in at most:', a: ['one point', 'two points', 'three', 'four'], c: 1, why: 'A quadratic has at most two roots.' },
+    { q: m('D = 0') + ' means the line is:', a: ['a secant', 'a tangent', 'missing the circle', 'a diameter'], c: 1, why: 'One repeated root.' },
+    { q: 'After finding ' + m('x') + ' you must:', a: ['stop', 'find ' + m('y') + ' from the line', 'find ' + m('y') + ' from the circle', 'square it'], c: 1, why: 'The line is easier.' },
+    { q: 'Two parallel lines give:', a: ['one point', 'no solution', 'infinitely many', 'two points'], c: 1, why: 'A contradiction such as ' + m('0 = 4') + '.' },
+    { q: 'A line is a tangent when its distance from the centre is:', a: ['zero', 'equal to ' + m('r'), 'less than ' + m('r'), 'greater than ' + m('r')], c: 1, why: 'Exactly touching.' },
+    { q: 'The chord at distance ' + m('d') + ' from the centre has length:', a: [m(sr('r² − d²')), m('2' + sr('r² − d²')), m('2d'), m('r − d')], c: 1, why: 'Twice the half-chord.' }
+  ],
+  practice: {
+    easy: [
+      ['Where do ' + m('y = 2x + 1') + ' and ' + m('y = −x + 7') + ' meet?', m('(2, 5)')],
+      ['Where do ' + m('y = 3x') + ' and ' + m('y = 3x + 2') + ' meet?', 'Nowhere — parallel'],
+      ['Does ' + m('(3, 4)') + ' lie on ' + m('x² + y² = 25') + '?', 'Yes'],
+      [m('D') + ' of ' + m('x² + x − 12 = 0'), m('49')],
+      ['Chord of ' + m('x² + y² = 25') + ' along ' + m('y = 3'), m('8')],
+      ['Chord of ' + m('x² + y² = 25') + ' along ' + m('y = 0'), m('10')],
+      ['Distance from ' + m('(0,0)') + ' to ' + m('y = x + 4'), m(f('4', sr('2'))) + ' = ' + m('2' + sr('2'))]
+    ],
+    med: [
+      ['Where does ' + m('y = x + 1') + ' meet ' + m('x² + y² = 25') + '?', m('(3, 4)') + ', ' + m('(−4, −3)')],
+      ['How many points has ' + m('y = 2x + 8') + ' with ' + m('x² + y² = 9') + '?', 'None — ' + m('D = −76')],
+      ['For which ' + m('c') + ' is ' + m('y = 2x + c') + ' a tangent to ' + m('x² + y² = 20') + '?', m('c = ±10')],
+      ['For which ' + m('c') + ' is ' + m('y = x + c') + ' a tangent to ' + m('x² + y² = 25') + '?', m('c = ±5' + sr('2'))],
+      ['Where does ' + m('x = 4') + ' meet ' + m('x² + y² = 25') + '?', m('(4, 3)') + ', ' + m('(4, −3)')],
+      ['Chord of ' + m('x² + y² = 100') + ' along ' + m('y = 6'), m('16')],
+      ['Where does ' + m('y = 2x') + ' meet ' + m('(x − 5)² + y² = 5') + '?', m('(1, 2)') + ', ' + m('(4, 8)')]
+    ],
+    hard: [
+      ['Length of the chord of ' + m('x² + y² = 25') + ' on ' + m('y = x + 1'), m('7' + sr('2')) + ' ≈ ' + m('9.90')],
+      ['The tangents from ' + m('(0, 10)') + ' to ' + m('x² + y² = 25'), m('y = ±' + sr('3') + 'x + 10')],
+      ['For which ' + m('k') + ' does ' + m('y = kx') + ' touch ' + m('(x − 5)² + y² = 9') + '?', m('k = ±' + f('3', '4'))],
+      ['Where do ' + m('x² + y² = 25') + ' and ' + m('(x − 8)² + y² = 25') + ' meet?', m('(4, 3)') + ', ' + m('(4, −3)')],
+      ['Shortest distance from ' + m('(8, 6)') + ' to ' + m('x² + y² = 25'), m('5')],
+      ['The line ' + m('3x + 4y = 25') + ' and the circle ' + m('x² + y² = 25') + ': how many points?', 'One — it is the tangent at ' + m('(3, 4)')],
+      ['For which ' + m('r') + ' does ' + m('y = x + 6') + ' touch ' + m('x² + y² = r²') + '?', m('r = 3' + sr('2'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Always give both coordinates of every point you find.',
+  homework: [
+    'Find where ' + m('y = 2x − 5') + ' meets ' + m('x² + y² = 25') + '.',
+    'Show that ' + m('y = x + 8') + ' does not meet ' + m('x² + y² = 25') + ', using the discriminant.',
+    'Find the values of ' + m('c') + ' for which ' + m('y = 3x + c') + ' is a tangent to ' + m('x² + y² = 40') + '.',
+    'Find the length of the chord cut on ' + m('x² + y² = 169') + ' by the line ' + m('y = 5') + '.',
+    'Find where the circles ' + m('x² + y² = 25') + ' and ' + m('(x − 6)² + y² = 25') + ' intersect.'
+  ]
+});
+
+/* ============================== 30 ============================== */
+G10_GEO.push({
+  id: 'g10-30', stream: 'geo', grade: 10, quarter: 4, lessons: '59–60', hours: 2,
+  title: 'Vectors in the plane and transformations [Cambridge revision]',
+  subtitle: 'A vector is a journey, not a place — and every transformation is one rule applied to all of them.',
+  uz: 'Revision of Grade 8–9 vectors', uzPage: 'Geometry 9, pp. 147–170',
+  cam: 'IGX 23.1–23.3', camPage: 'Core & Extended, pp. 590–612', wb: 'Exercise 23.1–23.3',
+  objectives: [
+    'Add, subtract and scale vectors in column form and geometrically.',
+    'Compute the magnitude of a vector and the position vector of a point.',
+    'Use vectors to prove that lines are parallel or that points are collinear.',
+    'Describe fully a translation, reflection, rotation and enlargement.'
+  ],
+  terms: [
+    ['Vector', 'Vektor', 'Вектор'],
+    ['Column vector', 'Ustun vektor', 'Вектор-столбец'],
+    ['Magnitude', 'Modul', 'Модуль'],
+    ['Position vector', 'Radius-vektor', 'Радиус-вектор'],
+    ['Resultant', 'Teng ta’sir etuvchi', 'Равнодействующая'],
+    ['Scalar multiple', 'Skalyarga ko‘paytma', 'Умножение на число'],
+    ['Translation', 'Parallel ko‘chirish', 'Параллельный перенос'],
+    ['Reflection', 'Simmetriya', 'Отражение'],
+    ['Rotation', 'Burish', 'Поворот'],
+    ['Enlargement', 'Gomotetiya', 'Гомотетия'],
+    ['Scale factor', 'O‘xshashlik koeffitsiyenti', 'Коэффициент подобия'],
+    ['Invariant point', 'O‘zgarmas nuqta', 'Неподвижная точка']
+  ],
+  timing: [[20, 'Vectors as journeys'], [25, 'Arithmetic of vectors'], [20, 'Proving with vectors'], [25, 'The four transformations'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'Vectors as journeys',
+      html: `<p>A vector has <b>magnitude</b> and <b>direction</b> but no position. The arrow from
+      ${m('(1, 1)')} to ${m('(4, 5)')} and the arrow from ${m('(0, 0)')} to ${m('(3, 4)')} are the
+      <b>same vector</b> ${m(col('3', '4'))}.</p>
+      {{fig:vectorBasic:One vector, drawn twice — same length, same direction, different place.}}
+      ${eq(m('|' + col('a', 'b') + '| = ' + sr('a² + b²')), true)}
+      <div class="keybox"><div class="klabel">The position vector fixes it in place</div>
+      The position vector of ${m('A')} is ${m('OA')}, drawn from the origin. Then for any two points
+      ${eq(m('AB = OB − OA') + '   (“to minus from”)', true)}
+      Getting this the wrong way round reverses every vector in the question, so learn it as a
+      sentence.</div>`
+    },
+    {
+      h: 'Arithmetic of vectors',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Operation</th><th>In columns</th><th>Geometrically</th></tr></thead>
+      <tbody>
+        <tr><td>add</td><td class="m">${col('a', 'b')} + ${col('c', 'd')} = ${col('a+c', 'b+d')}</td><td>nose to tail</td></tr>
+        <tr><td>subtract</td><td class="m">${col('a', 'b')} − ${col('c', 'd')} = ${col('a−c', 'b−d')}</td><td>add the reverse</td></tr>
+        <tr><td>scale</td><td class="m">k${col('a', 'b')} = ${col('ka', 'kb')}</td><td>same line, ${m('k')} times as long</td></tr>
+      </tbody></table></div>
+      {{fig:vectorAdd:Nose to tail — the resultant closes the triangle.}}
+      <div class="keybox"><div class="klabel">Parallel means a scalar multiple</div>
+      ${m('u')} and ${m('v')} are parallel exactly when ${m('v = ku')} for some number ${m('k')}. So
+      ${m(col('3', '4'))} and ${m(col('9', '12'))} are parallel (${m('k = 3')});
+      ${m(col('3', '4'))} and ${m(col('4', '3'))} are not.</div>
+      <p><b>Unit vector.</b> Divide by the magnitude: the unit vector along
+      ${m(col('3', '4'))} is ${m(f('1', '5') + col('3', '4'))}.</p>`
+    },
+    {
+      h: 'Proving with vectors',
+      html: `<p>Two standard proofs cover most questions.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>To prove</th><th>Show</th></tr></thead>
+      <tbody>
+        <tr><td>${m('AB')} is parallel to ${m('CD')}</td><td class="m">AB = k·CD</td></tr>
+        <tr><td>${m('A')}, ${m('B')}, ${m('C')} are collinear</td><td class="m">AB = k·BC</td>
+        </tr>
+        <tr><td>${m('ABCD')} is a parallelogram</td><td class="m">AB = DC</td></tr>
+        <tr><td>${m('M')} is the midpoint of ${m('AB')}</td><td class="m">OM = ${f('1', '2')}(OA + OB)</td></tr>
+      </tbody></table></div>
+      <p>The collinearity test differs from the parallel test only in that the two vectors share a
+      <b>point</b>. Parallel plus a common point means one line — that is the whole argument, and it
+      should be written in the answer.</p>
+      <div class="warn"><span class="wl">A vector proof needs a concluding sentence</span>
+      “${m('AB = 2·BC')}, and ${m('B')} is common to both, so ${m('A')}, ${m('B')} and ${m('C')} are
+      collinear.” Without the second half the algebra proves only parallelism.</div>`
+    },
+    {
+      h: 'The four transformations',
+      html: `{{fig:transformations:Reflection, rotation and translation — each carries the shape to a congruent copy.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Transformation</th><th>Fully described by</th><th>Preserves</th></tr></thead>
+      <tbody>
+        <tr><td>translation</td><td>a column vector</td><td>size, shape, direction</td></tr>
+        <tr><td>reflection</td><td>the mirror line</td><td>size and shape; reverses sense</td></tr>
+        <tr><td>rotation</td><td>centre, angle and sense</td><td>size and shape</td></tr>
+        <tr><td>enlargement</td><td>centre and scale factor ${m('k')}</td><td>shape only</td></tr>
+      </tbody></table></div>
+      {{fig:enlargement:An enlargement from a centre — lengths scale by k, areas by k².}}
+      <div class="keybox"><div class="klabel">“Fully describe” is a mark scheme instruction</div>
+      A rotation needs <b>three</b> pieces of information; giving two earns part marks. An enlargement
+      needs the centre as well as ${m('k')}. And a negative ${m('k')} puts the image on the other side of
+      the centre, inverted.</div>
+      <p>Under an enlargement of factor ${m('k')}: lengths ${m('× k')}, areas ${m('× k²')}. Under the
+      other three, lengths and areas are unchanged — they are <b>congruences</b>.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'With ' + m('A(1, 2)') + ' and ' + m('B(5, 9)') + ', find ' + m('AB') + ' and ' + m('|AB|') + '.',
+      steps: [
+        [m('AB = OB − OA'), '“to minus from”.'],
+        [m('= ' + col('5', '9') + ' − ' + col('1', '2') + ' = ' + col('4', '7') + ''), ''],
+        [m('|AB| = ' + sr('16 + 49') + ' = ' + sr('65') + ' ≈ 8.06'), '']
+      ],
+      ans: m(col('4', '7')) + ', ' + m(sr('65'))
+    },
+    {
+      q: 'Show that ' + m('A(1, 1)') + ', ' + m('B(3, 4)') + ' and ' + m('C(7, 10)') + ' are collinear.',
+      steps: [
+        [m('AB = ' + col('2', '3') + ''), ''],
+        [m('BC = ' + col('4', '6') + ''), ''],
+        [m('BC = 2·AB'), 'Parallel.'],
+        [m('B') + ' lies on both, so the three are collinear.', 'The concluding sentence.']
+      ],
+      ans: 'Collinear, since ' + m('BC = 2·AB') + ' and ' + m('B') + ' is common'
+    },
+    {
+      q: 'Find the unit vector in the direction of ' + m(col('−6', '8')) + '.',
+      steps: [
+        [m('|v| = ' + sr('36 + 64') + ' = 10'), ''],
+        [m(f('1', '10') + col('−6', '8')), ''],
+        [m('= ' + col('−0.6', '0.8') + ''), 'Check: ' + m('0.36 + 0.64 = 1') + '.']
+      ],
+      ans: m(col('−0.6', '0.8'))
+    },
+    {
+      q: 'A triangle of area ' + m('12') + ' is enlarged by factor ' + m('−2') + ' about ' + m('(1, 1)') + '. Describe the image.',
+      steps: [
+        ['Lengths double.', ''],
+        ['Area ' + m('× k² = 4') + ', so ' + m('48') + '.', m('k²') + ' is positive either way.'],
+        ['The image is on the opposite side of ' + m('(1, 1)') + ', inverted.', '']
+      ],
+      ans: 'Area ' + m('48') + ', inverted, on the far side of the centre'
+    }
+  ],
+  modelNote: 'Cut a triangle from card and physically translate, reflect, rotate and enlarge it on squared paper.',
+  interactive: {
+    type: 'vectors',
+    title: 'Adding vectors nose to tail',
+    hint: 'Drag either arrow and watch the resultant.'
+  },
+  quiz: [
+    { q: m('AB') + ' equals:', a: [m('OA − OB'), m('OB − OA'), m('OA + OB'), m('|OB|')], c: 1, why: '“To minus from”.' },
+    { q: m('|' + col('3', '4') + '|') + ' is:', a: [m('7'), m('5'), m('12'), m('25')], c: 1, why: m(sr('9 + 16')) + '.' },
+    { q: 'Two vectors are parallel when:', a: ['they are equal', 'one is a scalar multiple of the other', 'they have equal magnitude', 'they meet'], c: 1, why: m('v = ku') + '.' },
+    { q: 'Collinearity needs, beyond parallel vectors:', a: ['equal length', 'a common point', 'the origin', 'nothing'], c: 1, why: 'Otherwise two parallel lines.' },
+    { q: 'A rotation is fully described by:', a: ['the angle', 'the centre and angle', 'centre, angle and sense', 'the centre'], c: 2, why: 'Three pieces.' },
+    { q: 'Under an enlargement of factor ' + m('3') + ', areas multiply by:', a: [m('3'), m('6'), m('9'), m('27')], c: 2, why: m('k²') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m(col('2', '3')) + ' + ' + m(col('4', '1')), m(col('6', '4'))],
+      [m(col('5', '2')) + ' − ' + m(col('1', '6')), m(col('4', '−4'))],
+      [m('3' + col('2', '−1') + ''), m(col('6', '−3'))],
+      [m('|' + col('3', '4') + '|'), m('5')],
+      [m('|' + col('5', '12') + '|'), m('13')],
+      [m('AB') + ' for ' + m('A(1, 2), B(5, 9)'), m(col('4', '7'))],
+      ['Area factor of an enlargement with ' + m('k = 4'), m('16')]
+    ],
+    med: [
+      [m('|AB|') + ' for ' + m('A(1, 2), B(5, 9)'), m(sr('65')) + ' ≈ ' + m('8.06')],
+      ['Unit vector along ' + m(col('−6', '8')), m(col('−0.6', '0.8'))],
+      ['Are ' + m(col('3', '4')) + ' and ' + m(col('9', '12')) + ' parallel?', 'Yes, ' + m('k = 3')],
+      ['Are ' + m('A(1,1), B(3,4), C(7,10)') + ' collinear?', 'Yes — ' + m('BC = 2·AB')],
+      ['Midpoint of ' + m('A(2, 3)') + ' and ' + m('B(8, 11)') + ' as a position vector', m(col('5', '7'))],
+      ['Describe fully: ' + m('(1,1) → (4,3)') + ' for every point', 'Translation by ' + m(col('3', '2'))],
+      ['A shape of area ' + m('12') + ' enlarged by ' + m('k = −2') + ': new area', m('48')]
+    ],
+    hard: [
+      ['Find ' + m('k') + ' so that ' + m(col('k', '6')) + ' is parallel to ' + m(col('2', '3')), m('k = 4')],
+      [m('OP = ' + col('1', '2') + '') + ', ' + m('OQ = ' + col('7', '5') + '') + ': find the point dividing ' + m('PQ') + ' in ' + m('1 : 2'), m('(3, 3)')],
+      ['Prove that the diagonals of a parallelogram bisect each other, using vectors', 'Both midpoints are ' + m(f('1', '2') + '(OA + OC))')],
+      ['A rotation of ' + m('90°') + ' anticlockwise about ' + m('O') + ' sends ' + m('(3, 1)') + ' to:', m('(−1, 3)')],
+      ['A reflection in ' + m('y = x') + ' sends ' + m('(4, −2)') + ' to:', m('(−2, 4)')],
+      ['An enlargement centre ' + m('(1, 1)') + ', factor ' + m('3') + ' sends ' + m('(3, 2)') + ' to:', m('(7, 4)')],
+      ['Show that ' + m('ABCD') + ' with ' + m('A(0,0), B(4,1), C(6,5), D(2,4)') + ' is a parallelogram', m('AB = DC = ' + col('4', '1') + '')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every transformation answer must be a full description, not a name.',
+  homework: [
+    'With ' + m('A(−1, 3)') + ' and ' + m('B(5, −5)') + ', find ' + m('AB') + ', ' + m('|AB|') + ' and the unit vector along ' + m('AB') + '.',
+    'Show that ' + m('P(2, 1)') + ', ' + m('Q(5, 7)') + ' and ' + m('R(9, 15)') + ' are collinear, and write the concluding sentence in full.',
+    'Find ' + m('k') + ' so that ' + m(col('6', 'k')) + ' is parallel to ' + m(col('4', '10')) + '.',
+    'Describe fully the transformation that sends ' + m('(1, 2)') + ' to ' + m('(−2, 1)') + ' and ' + m('(3, 2)') + ' to ' + m('(−2, 3)') + '.',
+    'A triangle of area ' + m('9') + ' is enlarged by factor ' + m('' + f('2', '3')) + ' about the origin. Find the area of the image.'
+  ]
+});
