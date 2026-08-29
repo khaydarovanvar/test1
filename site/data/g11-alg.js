@@ -4613,3 +4613,1437 @@ G11_ALG.push({
     'Write your target for Quarter IV in one checkable sentence, and date it.'
   ]
 });
+
+/* ===================== QUARTER IV (24 hours) ===================== */
+
+/* ============================== 29 ============================== */
+G11_ALG.push({
+  id: 'a11-29', stream: 'alg', grade: 11, quarter: 4, lessons: '79–80', hours: 2,
+  title: 'Random events and their probabilities',
+  subtitle: 'Count the outcomes, count the favourable ones, and divide — but only when they are equally likely.',
+  uz: 'Algebra 11, §29', uzPage: 'pp. 342–352',
+  cam: 'IGX 24.2', camPage: 'Core & Extended, pp. 629–634', wb: 'Exercise 24.2',
+  objectives: [
+    'Describe a trial by its sample space.',
+    'Compute a probability from equally likely outcomes.',
+    'Estimate a probability from relative frequency, and say when that is required.',
+    'Use combinatorics to count outcomes that cannot be listed.'
+  ],
+  terms: [
+    ['Random event', 'Tasodifiy hodisa', 'Случайное событие'],
+    ['Sample space', 'Elementar hodisalar fazosi', 'Пространство исходов'],
+    ['Equally likely', 'Teng imkoniyatli', 'Равновозможные'],
+    ['Favourable outcome', 'Qulay natija', 'Благоприятный исход'],
+    ['Relative frequency', 'Nisbiy chastota', 'Относительная частота'],
+    ['Combination', 'Kombinatsiya', 'Сочетание'],
+    ['Permutation', 'O‘rin almashtirish', 'Перестановка'],
+    ['Expected number', 'Kutilayotgan son', 'Ожидаемое число'],
+    ['Certain event', 'Muqarrar hodisa', 'Достоверное событие'],
+    ['Impossible event', 'Mumkin bo‘lmagan hodisa', 'Невозможное событие']
+  ],
+  timing: [[15, 'The sample space'], [20, 'The classical definition'], [20, 'Counting with combinations'], [20, 'Relative frequency'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The sample space',
+      html: `<p>Grade 11 begins where Grade 10 left off, but the counting is harder: the sample spaces are
+      now too big to list, and the combinatorics of Quarter III does the listing instead.</p>
+      ${eq(m('P(A) = ' + f('m', 'n')) + ',   ' + m('n = |U|') + ',   ' + m('m') + ' the favourable count', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Trial</th><th class="m">|U|</th><th>Counted by</th></tr></thead>
+      <tbody>
+        <tr><td>two dice</td><td class="m">36</td><td class="m">6²</td></tr>
+        <tr><td>a five-card hand from 52</td><td class="m">2 598 960</td><td class="m">C(52, 5)</td></tr>
+        <tr><td>an arrangement of 5 books</td><td class="m">120</td><td class="m">5!</td></tr>
+        <tr><td>a three-digit code, digits repeatable</td><td class="m">1000</td><td class="m">10³</td></tr>
+        <tr><td>a committee of 3 from 10</td><td class="m">120</td><td class="m">C(10, 3)</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Order, or no order?</div>
+      A <b>hand</b> of cards, a <b>committee</b>, a <b>selection</b> — order does not matter, use
+      ${m('C(n, k)')}. A <b>code</b>, an <b>arrangement</b>, a <b>podium</b> — order matters, use
+      ${m('P(n, k)')} or a power. Choosing the wrong one changes ${m('n')} by a factor of
+      ${m('k!')}.</div>`
+    },
+    {
+      h: 'The classical definition in use',
+      html: `<p>The pattern is always the same: count ${m('n')}, count ${m('m')}, divide — and use the
+      <b>same counting method</b> for both.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Event</th><th class="m">m</th><th class="m">n</th><th class="m">P</th></tr></thead>
+      <tbody>
+        <tr><td>two dice total 7</td><td class="m">6</td><td class="m">36</td><td class="m">${f('1', '6')}</td></tr>
+        <tr><td>a committee of 3 from 6 men and 4 women is all women</td><td class="m">C(4,3) = 4</td><td class="m">C(10,3) = 120</td><td class="m">${f('1', '30')}</td></tr>
+        <tr><td>two aces in a five-card hand</td><td class="m">C(4,2)·C(48,3)</td><td class="m">C(52,5)</td><td class="m">≈ 0.0399</td></tr>
+        <tr><td>a random arrangement of ${m('ABCDE')} starts with ${m('A')}</td><td class="m">4! = 24</td><td class="m">5! = 120</td><td class="m">${f('1', '5')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Count both with the same method</span>
+      If ${m('n')} is a number of <b>unordered</b> selections, ${m('m')} must be too. Mixing
+      ${m('C(52, 5)')} below with an ordered count above gives an answer wrong by ${m('5!')} —
+      a factor of ${m('120')}.</div>`
+    },
+    {
+      h: 'Counting with combinations',
+      html: `${eq(m('C(n, k) = ' + f('n!', 'k!(n − k)!')) + ',   ' + m('P(n, k) = ' + f('n!', '(n − k)!')), true)}
+      <p>The standard shape of a selection problem: choose some from one group and the rest from another,
+      then <b>multiply</b>.</p>
+      <p><b>Example.</b> A committee of 4 from 7 men and 5 women, with exactly 2 women:</p>
+      ${eq(m('' + f('C(5, 2) · C(7, 2)', 'C(12, 4)') + ' = ' + f('10 × 21', '495') + ' = ' + f('210', '495') + ' = ' + f('14', '33')), true)}
+      <div class="keybox"><div class="klabel">“At least” means add the cases — or use the complement</div>
+      “At least one woman” on that committee: either add the cases with ${m('1, 2, 3, 4')} women, or
+      compute ${m('1 − ' + f('C(7, 4)', 'C(12, 4)') + ' = 1 − ' + f('35', '495') + ' = ' + f('92', '99'))}.
+      The complement is one line instead of four.</div>`
+    },
+    {
+      h: 'Relative frequency',
+      html: `<p>When outcomes are not equally likely, probability must be measured:</p>
+      ${eq(m('P(A) ≈ ' + f('times A occurred', 'number of trials')), true)}
+      {{fig:histogram:Frequencies from an experiment — the estimate that stands in for a count.}}
+      <p>The estimate steadies as the number of trials grows. That is the <b>law of large numbers</b>,
+      and it is the reason a table of experimental data can stand in for a theoretical probability at
+      all.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Situation</th><th>Which definition</th></tr></thead>
+      <tbody>
+        <tr><td>a fair die</td><td>classical — symmetry guarantees equal outcomes</td></tr>
+        <tr><td>a drawing pin</td><td>statistical — no symmetry to appeal to</td></tr>
+        <tr><td>a component failing in a year</td><td>statistical — from records</td></tr>
+        <tr><td>a point in a region</td><td>geometric — a ratio of measures</td></tr>
+      </tbody></table></div>
+      <p><b>Expected number.</b> In ${m('N')} trials with probability ${m('p')}, expect ${m('Np')}
+      successes. In ${m('500')} throws of a fair die, expect ${m('≈ 83')} sixes — the number the binomial
+      distribution of Lessons 86–89 will make precise.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A committee of 3 is chosen from 6 men and 4 women. Find the probability that it is all women.',
+      steps: [
+        [m('n = C(10, 3) = 120'), ''],
+        [m('m = C(4, 3) = 4'), ''],
+        [m('P = ' + f('4', '120') + ' = ' + f('1', '30')), '']
+      ],
+      ans: m(f('1', '30')) + ' ≈ ' + m('0.033')
+    },
+    {
+      q: 'A committee of 4 is chosen from 7 men and 5 women. Find the probability of exactly 2 women.',
+      steps: [
+        [m('n = C(12, 4) = 495'), ''],
+        [m('m = C(5, 2)·C(7, 2) = 10 × 21 = 210'), 'Choose from each group, then multiply.'],
+        [m('P = ' + f('210', '495') + ' = ' + f('14', '33')), '']
+      ],
+      ans: m(f('14', '33')) + ' ≈ ' + m('0.424')
+    },
+    {
+      q: 'The letters of ' + m('MATHS') + ' are arranged at random. Find the probability that the arrangement begins with a vowel.',
+      steps: [
+        [m('n = 5! = 120'), ''],
+        ['Only ' + m('A') + ' is a vowel; the rest arrange in ' + m('4! = 24') + ' ways.', ''],
+        [m('P = ' + f('24', '120') + ' = ' + f('1', '5')), '']
+      ],
+      ans: m(f('1', '5'))
+    },
+    {
+      q: 'A die is thrown 600 times and shows a six 118 times. Compare with the theoretical value.',
+      steps: [
+        ['Relative frequency ' + m(f('118', '600') + ' ≈ 0.1967'), ''],
+        ['Theoretical ' + m(f('1', '6') + ' ≈ 0.1667'), ''],
+        ['Expected number ' + m('600 × ' + f('1', '6') + ' = 100'), 'The excess of 18 is within ordinary variation.']
+      ],
+      ans: m('0.197') + ' against ' + m('0.167') + '; expected ' + m('100')
+    }
+  ],
+  modelNote: 'Bring a pack of cards and deal ten hands of five; count the aces and compare with the computed probability.',
+  interactive: {
+    type: 'quiz',
+    title: 'Counting the sample space',
+    hint: 'Order or no order — decide before computing.',
+    items: [
+      { q: 'A hand of 5 cards from 52 is counted by:', a: [m('52⁵'), m('C(52, 5)'), m('P(52, 5)'), m('5!')], c: 1, why: 'Order does not matter.' },
+      { q: 'A 3-digit code with repeats:', a: [m('C(10, 3)'), m('10³'), m('P(10, 3)'), m('3!')], c: 1, why: 'Order matters, repeats allowed.' },
+      { q: 'Arrangements of 5 books:', a: [m('5'), m('25'), m('120'), m('32')], c: 2, why: m('5!') + '.' },
+      { q: 'A committee of 3 from 10:', a: [m('120'), m('720'), m('1000'), m('30')], c: 0, why: m('C(10, 3)') + '.' },
+      { q: 'Two dice give:', a: [m('12'), m('21'), m('36'), m('6')], c: 2, why: 'Ordered pairs.' },
+      { q: 'For a bent drawing pin use:', a: ['the classical definition', 'relative frequency', 'geometry', 'nothing'], c: 1, why: 'No symmetry.' },
+      { q: 'Expected sixes in 600 throws:', a: [m('60'), m('100'), m('120'), m('600')], c: 1, why: m('Np') + '.' },
+      { q: '“At least one” is quickest by:', a: ['listing', 'the complement', 'a tree', 'a table'], c: 1, why: 'One subtraction.' }
+    ]
+  },
+  quiz: [
+    { q: 'The classical definition needs outcomes that are:', a: ['few', 'equally likely', 'independent', 'exclusive'], c: 1, why: 'Otherwise counting misleads.' },
+    { q: 'A selection where order matters is counted by:', a: [m('C(n, k)'), m('P(n, k)'), m('n'), m('k!')], c: 1, why: 'Permutations.' },
+    { q: m('m') + ' and ' + m('n') + ' must be counted:', a: ['any way', 'by the same method', 'by different methods', 'approximately'], c: 1, why: 'Or the answer is out by ' + m('k!') + '.' },
+    { q: 'The law of large numbers says the relative frequency:', a: ['grows', 'settles towards a fixed value', 'oscillates for ever', 'reaches 1'], c: 1, why: 'Which is the probability.' },
+    { q: 'Choosing 2 from one group and 2 from another needs:', a: ['addition', 'multiplication', 'subtraction', 'division'], c: 1, why: 'Independent choices.' }
+  ],
+  practice: {
+    easy: [
+      [m('C(10, 3)'), m('120')],
+      [m('C(52, 2)'), m('1326')],
+      [m('5!'), m('120')],
+      [m('P(6, 2)'), m('30')],
+      ['Outcomes for two dice', m('36')],
+      [m('P') + ' a die shows 4', m(f('1', '6'))],
+      ['Expected sixes in 600 throws', m('100')]
+    ],
+    med: [
+      [m('P') + ' a committee of 3 from 6 men and 4 women is all women', m(f('1', '30'))],
+      [m('P') + ' exactly 2 women on a committee of 4 from 7 men and 5 women', m(f('14', '33'))],
+      [m('P') + ' the arrangement of ' + m('MATHS') + ' begins with ' + m('A'), m(f('1', '5'))],
+      [m('P') + ' two dice total 9', m(f('1', '9'))],
+      [m('P') + ' a five-card hand is all hearts', m(f('C(13,5)', 'C(52,5)')) + ' ≈ ' + m('0.000495')],
+      [m('P') + ' at least one woman on a committee of 4 from 7 men and 5 women', m(f('92', '99'))],
+      ['Relative frequency of 118 sixes in 600 throws', m('≈ 0.197')]
+    ],
+    hard: [
+      [m('P') + ' a five-card hand contains exactly two aces', m('≈ 0.0399')],
+      [m('P') + ' a five-card hand is a full house', m('≈ 0.00144')],
+      [m('P') + ' the letters of ' + m('LEVEL') + ' arrange to give ' + m('LEVEL'), m(f('1', '30'))],
+      ['From 10 people, ' + m('P') + ' two named people sit together in a row', m(f('1', '5'))],
+      ['From 10 people in a circle, ' + m('P') + ' two named people sit together', m(f('2', '9'))],
+      [m('P') + ' a random 4-digit PIN has all different digits', m(f('P(10,4)', '10⁴')) + ' = ' + m('0.504')],
+      ['A committee of 5 from 12 must contain a given person: ' + m('P'), m(f('5', '12'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write ' + m('n') + ' and ' + m('m') + ' on separate lines, each with the counting method named.',
+  homework: [
+    'A committee of 3 is chosen from 5 men and 7 women. Find the probability that it contains exactly one man.',
+    'The letters of ' + m('NUMBER') + ' are arranged at random. Find the probability that the arrangement begins and ends with a consonant.',
+    'Two cards are drawn from 52 without replacement. Find the probability that both are hearts.',
+    'A die is thrown 300 times and shows an even number 168 times. Find the relative frequency and compare it with the theoretical value.',
+    'Explain in two sentences why ' + m('m') + ' and ' + m('n') + ' must be counted by the same method.'
+  ]
+});
+
+/* ============================== 30 ============================== */
+G11_ALG.push({
+  id: 'a11-30', stream: 'alg', grade: 11, quarter: 4, lessons: '81–82', hours: 2,
+  title: 'Complementary events, operations on events and Euler–Venn diagrams',
+  subtitle: 'Events are sets; the diagram does the bookkeeping the algebra would otherwise have to.',
+  uz: 'Algebra 11, §30', uzPage: 'pp. 353–364',
+  cam: 'IGX 24.3', camPage: 'Core & Extended, pp. 635–638', wb: 'Exercise 24.3',
+  objectives: [
+    'Form the union, intersection and complement of events.',
+    'Read and fill an Euler–Venn diagram from given totals.',
+    'Use the addition rule, and recognise mutually exclusive events.',
+    'Use De Morgan’s laws to rewrite a compound event.'
+  ],
+  terms: [
+    ['Union', 'Birlashma', 'Объединение'],
+    ['Intersection', 'Kesishma', 'Пересечение'],
+    ['Complement', 'To‘ldiruvchi', 'Дополнение'],
+    ['Euler–Venn diagram', 'Eyler–Venn diagrammasi', 'Диаграмма Эйлера–Венна'],
+    ['Mutually exclusive', 'Birgalikda bo‘lmagan', 'Несовместные'],
+    ['Exhaustive', 'To‘liq guruh', 'Полная группа'],
+    ['De Morgan’s laws', 'De Morgan qonunlari', 'Законы де Моргана'],
+    ['Universal set', 'Universal to‘plam', 'Универсальное множество'],
+    ['Difference of events', 'Hodisalar ayirmasi', 'Разность событий'],
+    ['Partition', 'Bo‘linish', 'Разбиение']
+  ],
+  timing: [[15, 'Events as sets'], [25, 'The addition rule'], [25, 'Filling a Venn diagram'], [20, 'De Morgan and three sets'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Events as sets',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>In words</th><th>Notation</th><th>Probability</th></tr></thead>
+      <tbody>
+        <tr><td>${m('A')} or ${m('B')}</td><td class="m">A ∪ B</td><td class="m">P(A) + P(B) − P(A ∩ B)</td></tr>
+        <tr><td>${m('A')} and ${m('B')}</td><td class="m">A ∩ B</td><td>from the data, or ${m('P(A)P(B)')} if independent</td></tr>
+        <tr><td>not ${m('A')}</td><td class="m">A′</td><td class="m">1 − P(A)</td></tr>
+        <tr><td>${m('A')} but not ${m('B')}</td><td class="m">A ∩ B′</td><td class="m">P(A) − P(A ∩ B)</td></tr>
+        <tr><td>neither</td><td class="m">(A ∪ B)′</td><td class="m">1 − P(A ∪ B)</td></tr>
+      </tbody></table></div>
+      {{fig:vennTwo:Four regions, and every event in the table is one or two of them.}}
+      <div class="keybox"><div class="klabel">Complementary, exclusive, exhaustive</div>
+      Two events are <b>complementary</b> when they are both exclusive (${m('A ∩ B = ∅')}) and exhaustive
+      (${m('A ∪ B = U')}). Then and only then ${m('P(B) = 1 − P(A)')}. Exclusive alone is not
+      enough.</div>`
+    },
+    {
+      h: 'The addition rule',
+      html: `${eq(m('P(A ∪ B) = P(A) + P(B) − P(A ∩ B)'), true)}
+      <p>The subtraction removes the double count. For mutually exclusive events the overlap is empty and
+      the rule shortens.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th class="m">P(A ∪ B)</th><th class="m">P(A ∩ B)</th></tr></thead>
+      <tbody>
+        <tr><td class="m">P(A) = 0.6, P(B) = 0.3</td><td>—</td><td>—</td></tr>
+        <tr><td>… exclusive</td><td class="m">0.9</td><td class="m">0</td></tr>
+        <tr><td>… independent</td><td class="m">0.72</td><td class="m">0.18</td></tr>
+        <tr><td>… with ${m('P(A ∪ B) = 0.8')}</td><td class="m">0.8</td><td class="m">0.1</td></tr>
+      </tbody></table></div>
+      <p>The last row is the standard examination move: the rule is used <b>backwards</b> to find the
+      overlap from the union.</p>
+      <div class="warn"><span class="wl">Exclusive and independent are different, and incompatible</span>
+      Exclusive: ${m('P(A ∩ B) = 0')}. Independent: ${m('P(A ∩ B) = P(A)P(B)')}. If both probabilities
+      are positive, the two cannot hold together — a question that says an event is “exclusive and
+      independent” contains an error, or one of the probabilities is zero.</div>`
+    },
+    {
+      h: 'Filling a Venn diagram',
+      html: `<p>Given totals, always fill the <b>overlap first</b>, then work outwards. Every region must be
+      a count of things counted once.</p>
+      <p><b>Example.</b> Of 40 pupils, 25 study physics, 18 chemistry, 10 both.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Region</th><th>Count</th><th>Order to fill</th></tr></thead>
+      <tbody>
+        <tr><td>${m('P ∩ C')}</td><td class="m">10</td><td>first</td></tr>
+        <tr><td>${m('P')} only</td><td class="m">25 − 10 = 15</td><td>second</td></tr>
+        <tr><td>${m('C')} only</td><td class="m">18 − 10 = 8</td><td>third</td></tr>
+        <tr><td>neither</td><td class="m">40 − 33 = 7</td><td>last</td></tr>
+      </tbody></table></div>
+      <p>Now every probability is one division: ${m('P(neither) = ' + f('7', '40'))},
+      ${m('P(physics only) = ' + f('15', '40') + ' = ' + f('3', '8'))},
+      ${m('P(P | C) = ' + f('10', '18') + ' = ' + f('5', '9'))}.</p>
+      <div class="keybox"><div class="klabel">The four regions must total ${m('|U|')}</div>
+      ${m('15 + 10 + 8 + 7 = 40')}. Do this check every time; it catches the commonest error, which is
+      writing ${m('25')} in the “physics only” region instead of ${m('15')}.</div>`
+    },
+    {
+      h: 'De Morgan and three sets',
+      html: `${eq(m('(A ∪ B)′ = A′ ∩ B′') + '     ' + m('(A ∩ B)′ = A′ ∪ B′'), true)}
+      <p>In words: “not (${m('A')} or ${m('B')})” is “not ${m('A')} <b>and</b> not ${m('B')}”. The
+      connective flips when the bar is distributed.</p>
+      {{fig:vennThree:Three events, seven regions inside and one outside — the same filling method.}}
+      <p>With three events the addition rule grows:</p>
+      ${eq(m('P(A ∪ B ∪ C) = ΣP(A) − ΣP(A ∩ B) + P(A ∩ B ∩ C)'), true)}
+      <p>— add the singles, subtract the pairs, add the triple back. This is inclusion–exclusion, and the
+      alternating signs continue for any number of events.</p>
+      <div class="keybox"><div class="klabel">Fill three sets from the middle out</div>
+      Start with ${m('A ∩ B ∩ C')}, then the three pairwise regions (each pair total <b>minus</b> the
+      middle), then the three singles, then the outside. Any other order double-counts.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Given ' + m('P(A) = 0.6') + ', ' + m('P(B) = 0.3') + ' and ' + m('P(A ∪ B) = 0.8') + ', find ' + m('P(A ∩ B)') + ' and ' + m('P(A ∩ B′)') + '.',
+      steps: [
+        [m('0.8 = 0.6 + 0.3 − P(A ∩ B)'), ''],
+        [m('P(A ∩ B) = 0.1'), ''],
+        [m('P(A ∩ B′) = 0.6 − 0.1 = 0.5'), '']
+      ],
+      ans: m('0.1') + ' and ' + m('0.5')
+    },
+    {
+      q: 'Of 40 pupils, 25 study physics, 18 chemistry and 10 both. Find ' + m('P') + '(neither) and ' + m('P') + '(exactly one).',
+      steps: [
+        ['Overlap ' + m('10') + '; physics only ' + m('15') + '; chemistry only ' + m('8') + '.', ''],
+        ['Neither ' + m('40 − 33 = 7') + '.', ''],
+        [m('P(neither) = ' + f('7', '40') + ' = 0.175'), ''],
+        [m('P(exactly one) = ' + f('23', '40') + ' = 0.575'), '']
+      ],
+      ans: m('0.175') + ' and ' + m('0.575')
+    },
+    {
+      q: 'Show that ' + m('(A ∪ B)′ = A′ ∩ B′') + ' on a Venn diagram, and use it to find ' + m('P') + '(neither) when ' + m('P(A ∪ B) = 0.8') + '.',
+      steps: [
+        ['Shade outside both circles.', 'That region is outside ' + m('A') + ' and outside ' + m('B') + '.'],
+        [m('P((A ∪ B)′) = 1 − 0.8'), ''],
+        [m('= 0.2'), '']
+      ],
+      ans: m('0.2')
+    },
+    {
+      q: 'Of 60 students, 30 play football, 25 chess, 20 tennis; 12 football and chess, 8 chess and tennis, 10 football and tennis, 5 all three. How many play none?',
+      steps: [
+        [m('30 + 25 + 20 = 75'), 'Singles.'],
+        [m('− (12 + 8 + 10) = −30'), 'Pairs.'],
+        [m('+ 5 = 50'), 'Triple back.'],
+        [m('60 − 50 = 10'), '']
+      ],
+      ans: m('10') + ' students'
+    }
+  ],
+  modelNote: 'Draw the two circles on the board and let the class place the four numbers before any probability is computed.',
+  interactive: {
+    type: 'quiz',
+    title: 'Reading a Venn diagram',
+    hint: 'Overlap first, always.',
+    items: [
+      { q: m('P(A ∪ B)') + ' equals:', a: [m('P(A) + P(B)'), m('P(A) + P(B) − P(A ∩ B)'), m('P(A)P(B)'), m('1 − P(A)')], c: 1, why: 'Remove the double count.' },
+      { q: m('P(A′)') + ' equals:', a: [m('1 − P(A)'), m('P(A)'), m('0'), m('1 + P(A)')], c: 0, why: 'The complement.' },
+      { q: m('(A ∪ B)′') + ' equals:', a: [m('A′ ∪ B′'), m('A′ ∩ B′'), m('A ∩ B'), m('A ∪ B')], c: 1, why: 'De Morgan.' },
+      { q: 'Fill a Venn diagram starting from:', a: ['the outside', 'the overlap', 'the largest region', 'anywhere'], c: 1, why: 'Or you double-count.' },
+      { q: 'Exclusive means:', a: [m('P(A ∩ B) = 0'), m('P(A ∩ B) = P(A)P(B)'), m('P(A) = P(B)'), m('A = B')], c: 0, why: 'No overlap.' },
+      { q: 'For three events, the triple intersection is:', a: ['subtracted', 'added back', 'ignored', 'doubled'], c: 1, why: 'Inclusion–exclusion.' },
+      { q: 'Complementary events are exclusive and:', a: ['independent', 'exhaustive', 'equal', 'disjointly independent'], c: 1, why: 'Their union is ' + m('U') + '.' },
+      { q: 'The four regions of a two-set diagram total:', a: [m('|A| + |B|'), m('|U|'), m('1'), m('|A ∩ B|')], c: 1, why: 'Everything is counted once.' }
+    ]
+  },
+  quiz: [
+    { q: 'The addition rule subtracts the overlap because:', a: ['it is small', 'it would be counted twice', 'of De Morgan', 'no reason'], c: 1, why: 'It is in both circles.' },
+    { q: m('(A ∩ B)′') + ' equals:', a: [m('A′ ∩ B′'), m('A′ ∪ B′'), m('A ∪ B'), m('A ∩ B')], c: 1, why: 'The connective flips.' },
+    { q: 'Exclusive events with positive probability are:', a: ['independent', 'never independent', 'complementary', 'exhaustive'], c: 1, why: m('0 ≠ P(A)P(B)') + '.' },
+    { q: 'A Venn diagram is filled:', a: ['left to right', 'from the overlap outwards', 'from the outside in', 'randomly'], c: 1, why: 'Middle first.' },
+    { q: 'For three events, pairs are:', a: ['added', 'subtracted', 'ignored', 'squared'], c: 1, why: 'Then the triple is added back.' }
+  ],
+  practice: {
+    easy: [
+      [m('P(A′)') + ' when ' + m('P(A) = 0.35'), m('0.65')],
+      [m('P(A ∪ B)') + ' when exclusive, ' + m('P(A) = 0.4, P(B) = 0.3'), m('0.7')],
+      [m('P(A ∩ B)') + ' when independent, ' + m('P(A) = 0.5, P(B) = 0.4'), m('0.2')],
+      ['Write ' + m('(A ∪ B)′') + ' another way', m('A′ ∩ B′')],
+      ['Write ' + m('(A ∩ B)′') + ' another way', m('A′ ∪ B′')],
+      ['Of 40, 25 physics, 18 chemistry, 10 both: physics only', m('15')],
+      ['Same data: neither', m('7')]
+    ],
+    med: [
+      [m('P(A ∩ B)') + ' when ' + m('P(A) = 0.6, P(B) = 0.3, P(A ∪ B) = 0.8'), m('0.1')],
+      ['Same: ' + m('P(A ∩ B′)'), m('0.5')],
+      ['Same: ' + m('P') + '(neither)', m('0.2')],
+      ['Of 40 pupils as above: ' + m('P') + '(exactly one subject)', m('0.575')],
+      ['Same: ' + m('P(P | C)'), m(f('5', '9'))],
+      ['Are ' + m('P(A) = 0.5, P(B) = 0.4, P(A ∩ B) = 0.2') + ' independent?', 'Yes'],
+      ['Of 60 with 30 F, 25 C, 20 T, 12 FC, 8 CT, 10 FT, 5 all: how many play none?', m('10')]
+    ],
+    hard: [
+      ['Of 60 as above: ' + m('P') + '(exactly two sports)', m(f('20', '60') + ' = ' + f('1', '3'))],
+      ['Of 60 as above: ' + m('P') + '(football only)', m(f('13', '60'))],
+      ['If ' + m('P(A) = 0.7, P(B) = 0.5') + ', find the range of ' + m('P(A ∩ B)'), m('0.2 ≤ P(A ∩ B) ≤ 0.5')],
+      ['If ' + m('A') + ' and ' + m('B') + ' are independent, show ' + m('A') + ' and ' + m('B′') + ' are too', m('P(A ∩ B′) = P(A)(1 − P(B))')],
+      ['Three events each of probability ' + m('0.5') + ', pairwise independent, all three independent: ' + m('P(A ∪ B ∪ C)'), m('0.875')],
+      ['Of 100 people, 60 read A, 50 read B, 40 read C, 25 A and B, 20 B and C, 15 A and C, 5 all: how many read none?', m('5')],
+      ['Prove ' + m('P(A ∪ B) ≤ P(A) + P(B)') + ' for any two events', m('P(A ∩ B) ≥ 0')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw the diagram and fill all four (or eight) regions before answering anything.',
+  homework: [
+    'Given ' + m('P(A) = 0.55') + ', ' + m('P(B) = 0.4') + ' and ' + m('P(A ∪ B) = 0.75') + ', find ' + m('P(A ∩ B)') + ', ' + m('P(A ∩ B′)') + ' and ' + m('P') + '(neither).',
+    'Of 50 students, 32 study Russian, 28 English and 15 both. Draw the Venn diagram and find the probability that a student studies exactly one language.',
+    'State both De Morgan laws and illustrate each with a shaded Venn diagram.',
+    'Of 80 people, 40 own a car, 35 a bicycle, 30 a motorbike; 15 car and bicycle, 12 bicycle and motorbike, 10 car and motorbike, 5 all three. How many own none?',
+    'Explain in two sentences why mutually exclusive events with positive probabilities cannot be independent.'
+  ]
+});
+
+/* ============================== 31 ============================== */
+G11_ALG.push({
+  id: 'a11-31', stream: 'alg', grade: 11, quarter: 4, lessons: '83–85', hours: 3,
+  title: 'Addition and multiplication of probabilities',
+  subtitle: 'Two rules, one tree, and one question to ask first: does the second event depend on the first?',
+  uz: 'Algebra 11, §31', uzPage: 'pp. 365–382',
+  cam: 'IGX 24.1, 24.4', camPage: 'Core & Extended, pp. 620–628, 639–642', wb: 'Exercise 24.4',
+  objectives: [
+    'Use the multiplication rule for independent and for dependent events.',
+    'Compute a conditional probability from data, a table or a tree.',
+    'Build and use a tree diagram, including without replacement.',
+    'Use the total probability formula, and reverse a conditional probability.'
+  ],
+  terms: [
+    ['Multiplication rule', 'Ko‘paytirish qoidasi', 'Правило умножения'],
+    ['Conditional probability', 'Shartli ehtimollik', 'Условная вероятность'],
+    ['Independent events', 'Bog‘liqsiz hodisalar', 'Независимые события'],
+    ['Dependent events', 'Bog‘liq hodisalar', 'Зависимые события'],
+    ['Tree diagram', 'Daraxt diagrammasi', 'Дерево исходов'],
+    ['With replacement', 'Qaytarib', 'С возвращением'],
+    ['Without replacement', 'Qaytarmasdan', 'Без возвращения'],
+    ['Total probability', 'To‘la ehtimollik', 'Полная вероятность'],
+    ['Bayes’ rule', 'Bayes formulasi', 'Формула Байеса'],
+    ['Partition', 'To‘liq guruh', 'Полная группа']
+  ],
+  timing: [[15, 'One question first'], [30, 'The multiplication rule'], [35, 'Trees'], [35, 'Total probability'], [25, 'Reversing the condition'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'One question first',
+      html: `<div class="keybox"><div class="klabel">Before any formula</div>
+      <b>Does the second event depend on the first?</b> If not, multiply the plain probabilities. If so,
+      the second factor is a conditional probability.
+      ${eq(m('P(A ∩ B) = P(A) · P(B | A)'), true)}
+      When ${m('A')} and ${m('B')} are independent, ${m('P(B | A) = P(B)')} and the rule collapses to
+      ${m('P(A)P(B)')}. So the general rule always works; the independent one is a shortcut.</div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Situation</th><th>Dependent?</th><th>Second factor</th></tr></thead>
+      <tbody>
+        <tr><td>two throws of a die</td><td>no</td><td class="m">${f('1', '6')}</td></tr>
+        <tr><td>two cards, with replacement</td><td>no</td><td class="m">${f('13', '52')}</td></tr>
+        <tr><td>two cards, without replacement</td><td>yes</td><td class="m">${f('12', '51')}</td></tr>
+        <tr><td>two components from one batch</td><td>yes</td><td>from the reduced batch</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'The multiplication rule in use',
+      html: `${eq(m('P(A ∩ B) = P(A) P(B | A) = P(B) P(A | B)'), true)}
+      <p>The rule can be entered from either end — a fact that will matter in the last section.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>two sixes in two throws</td><td class="m">${f('1', '6')} × ${f('1', '6')}</td><td class="m">${f('1', '36')}</td></tr>
+        <tr><td>two hearts, with replacement</td><td class="m">${f('1', '4')} × ${f('1', '4')}</td><td class="m">${f('1', '16')}</td></tr>
+        <tr><td>two hearts, without replacement</td><td class="m">${f('13', '52')} × ${f('12', '51')}</td><td class="m">${f('1', '17')}</td></tr>
+        <tr><td>two aces from 52</td><td class="m">${f('4', '52')} × ${f('3', '51')}</td><td class="m">${f('1', '221')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The denominator drops as well as the numerator</span>
+      Without replacement, ${m(f('13', '52'))} is followed by ${m(f('12', '51'))} — <b>both</b> numbers
+      change. Changing only the top is the standard error, and gives an answer about ${m('2\\%')} too
+      large.</div>`
+    },
+    {
+      h: 'Trees',
+      html: `{{fig:treeDiagram:Multiply along a branch, add down the ends — the two rules in one picture.}}
+      <div class="keybox"><div class="klabel">The two tree rules</div>
+      <ul>
+        <li><b>Along</b> a branch: multiply (that is the multiplication rule).</li>
+        <li><b>Down</b> the ends: add (that is the addition rule, on exclusive paths).</li>
+      </ul>
+      Every fork's probabilities total ${m('1')}; every set of end-probabilities totals ${m('1')}. Two
+      free checks.</div>
+      <p><b>Worked case.</b> A bag holds 5 red and 3 blue balls; two are drawn without replacement.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Path</th><th>Product</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="m">RR</td><td class="m">${f('5', '8')} × ${f('4', '7')}</td><td class="m">${f('20', '56')}</td></tr>
+        <tr><td class="m">RB</td><td class="m">${f('5', '8')} × ${f('3', '7')}</td><td class="m">${f('15', '56')}</td></tr>
+        <tr><td class="m">BR</td><td class="m">${f('3', '8')} × ${f('5', '7')}</td><td class="m">${f('15', '56')}</td></tr>
+        <tr><td class="m">BB</td><td class="m">${f('3', '8')} × ${f('2', '7')}</td><td class="m">${f('6', '56')}</td></tr>
+      </tbody></table></div>
+      <p>They total ${m(f('56', '56') + ' = 1')}. So ${m('P(same) = ' + f('26', '56') + ' = ' + f('13', '28'))}
+      and ${m('P(different) = ' + f('30', '56') + ' = ' + f('15', '28'))}.</p>`
+    },
+    {
+      h: 'Total probability',
+      html: `<p>When the first stage splits the sample space into exclusive, exhaustive cases
+      ${m('H₁, H₂, …')}, the probability of a later event is the sum over the branches:</p>
+      ${eq(m('P(A) = P(H₁)P(A | H₁) + P(H₂)P(A | H₂) + …'), true)}
+      <p>This is exactly “add down the ends”, written as a formula.</p>
+      <p><b>Example.</b> Two factories supply lamps: ${m('60\\%')} from ${m('F₁')} with ${m('2\\%')}
+      defective, ${m('40\\%')} from ${m('F₂')} with ${m('5\\%')} defective. The probability that a random
+      lamp is defective:</p>
+      ${eq(m('P(D) = 0.6(0.02) + 0.4(0.05) = 0.012 + 0.020 = 0.032'), true)}
+      <div class="keybox"><div class="klabel">The branches must partition</div>
+      The cases must be mutually exclusive and cover everything: ${m('P(H₁) + P(H₂) + … = 1')}. If they
+      do not, the formula gives a number that is not a probability — often greater than ${m('1')}, which
+      is the check.</div>`
+    },
+    {
+      h: 'Reversing the condition',
+      html: `<p>Total probability answers “how likely is the effect?”. The reverse question — “given the
+      effect, how likely is each cause?” — uses the same numbers the other way round:</p>
+      ${eq(m('P(H₁ | A) = ' + f('P(H₁) P(A | H₁)', 'P(A)')), true)}
+      <p><b>The lamp again.</b> A lamp is found defective; the probability it came from ${m('F₁')}:</p>
+      ${eq(m('' + f('0.012', '0.032') + ' = 0.375'), true)}
+      <p>So although ${m('F₁')} makes ${m('60\\%')} of the lamps, it accounts for only ${m('37.5\\%')} of
+      the defective ones — because its defect rate is lower.</p>
+      <div class="warn"><span class="wl">${m('P(A | B)')} and ${m('P(B | A)')} are different numbers</span>
+      Here ${m('P(D | F₁) = 0.02')} but ${m('P(F₁ | D) = 0.375')} — a factor of nearly ${m('19')}.
+      Swapping the two is the commonest and most consequential error in probability, in examinations and
+      outside them.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Two cards are drawn from 52 without replacement. Find ' + m('P') + '(both hearts).',
+      steps: [
+        [m('P(first) = ' + f('13', '52') + ' = ' + f('1', '4')), ''],
+        [m('P(second | first) = ' + f('12', '51')), 'Both numbers change.'],
+        [m('P = ' + f('1', '4') + ' × ' + f('12', '51') + ' = ' + f('1', '17')), '']
+      ],
+      ans: m(f('1', '17')) + ' ≈ ' + m('0.059')
+    },
+    {
+      q: 'A bag holds 5 red and 3 blue balls; two are drawn without replacement. Find ' + m('P') + '(same colour).',
+      steps: [
+        [m('P(RR) = ' + f('5', '8') + ' × ' + f('4', '7') + ' = ' + f('20', '56')), ''],
+        [m('P(BB) = ' + f('3', '8') + ' × ' + f('2', '7') + ' = ' + f('6', '56')), ''],
+        [m('P = ' + f('26', '56') + ' = ' + f('13', '28')), 'Add down the ends.']
+      ],
+      ans: m(f('13', '28')) + ' ≈ ' + m('0.464')
+    },
+    {
+      q: 'Factory ' + m('F₁') + ' makes ' + m('60\\%') + ' of lamps with ' + m('2\\%') + ' defective; ' + m('F₂') + ' makes ' + m('40\\%') + ' with ' + m('5\\%') + '. Find the probability that a lamp is defective.',
+      steps: [
+        [m('P(D | F₁) = 0.02') + ', ' + m('P(D | F₂) = 0.05'), ''],
+        [m('P(D) = 0.6(0.02) + 0.4(0.05)'), ''],
+        [m('= 0.012 + 0.020 = 0.032'), '']
+      ],
+      ans: m('0.032')
+    },
+    {
+      q: 'A lamp is defective. Find the probability that it came from ' + m('F₁') + '.',
+      steps: [
+        [m('P(F₁ ∩ D) = 0.012'), ''],
+        [m('P(D) = 0.032'), 'From the previous example.'],
+        [m('P(F₁ | D) = ' + f('0.012', '0.032') + ' = 0.375'), '']
+      ],
+      ans: m('0.375')
+    }
+  ],
+  modelNote: 'Draw the lamp tree on the board and label all four end-probabilities; the reversal is then a single fraction the class can see.',
+  interactive: {
+    type: 'quiz',
+    title: 'Along the branch, down the ends',
+    hint: 'Multiply, then add.',
+    items: [
+      { q: 'Along a branch you:', a: ['add', 'multiply', 'subtract', 'divide'], c: 1, why: 'The multiplication rule.' },
+      { q: 'Down the ends you:', a: ['add', 'multiply', 'subtract', 'divide'], c: 0, why: 'Exclusive paths.' },
+      { q: 'Without replacement, the second denominator:', a: ['stays', 'drops by one', 'doubles', 'is 1'], c: 1, why: 'One fewer object.' },
+      { q: m('P(A ∩ B)') + ' in general:', a: [m('P(A)P(B)'), m('P(A)P(B | A)'), m('P(A) + P(B)'), m('P(B | A)')], c: 1, why: 'Always true.' },
+      { q: 'The branches of total probability must:', a: ['be equal', 'partition the space', 'be independent', 'be few'], c: 1, why: 'Exclusive and exhaustive.' },
+      { q: 'All end-probabilities of a tree total:', a: [m('0'), m('1'), m('2'), 'anything'], c: 1, why: 'Something happens.' },
+      { q: m('P(D | F₁) = 0.02') + ' and ' + m('P(F₁ | D) = 0.375') + ' shows:', a: ['an error', 'the two are different', 'they are equal', 'nothing'], c: 1, why: 'Never swap them.' },
+      { q: 'For independent events, ' + m('P(B | A)') + ' equals:', a: [m('P(A)'), m('P(B)'), m('0'), m('1')], c: 1, why: 'No influence.' }
+    ]
+  },
+  quiz: [
+    { q: 'The general multiplication rule is:', a: [m('P(A)P(B)'), m('P(A)P(B | A)'), m('P(A) + P(B)'), m('P(A) − P(B)')], c: 1, why: 'It covers both cases.' },
+    { q: 'Without replacement makes the events:', a: ['independent', 'dependent', 'exclusive', 'certain'], c: 1, why: 'The second fork changes.' },
+    { q: 'Total probability is the formula for:', a: ['along a branch', 'down the ends', 'the complement', 'the union'], c: 1, why: 'Summed over the partition.' },
+    { q: 'Reversing a conditional probability uses:', a: ['the addition rule', 'the same joint probability, divided differently', 'independence', 'a new experiment'], c: 1, why: m('P(A ∩ B)') + ' both ways.' },
+    { q: 'A tree fork’s probabilities total:', a: [m('0'), m('1'), m('|U|'), 'anything'], c: 1, why: 'A free check.' }
+  ],
+  practice: {
+    easy: [
+      [m('P') + ' two sixes in two throws', m(f('1', '36'))],
+      [m('P') + ' two hearts, with replacement', m(f('1', '16'))],
+      [m('P') + ' two hearts, without replacement', m(f('1', '17'))],
+      [m('P') + ' two aces from 52 without replacement', m(f('1', '221'))],
+      ['Bag of 5 red, 3 blue: ' + m('P(RR)') + ' without replacement', m(f('5', '14'))],
+      ['Same bag: ' + m('P(BB)'), m(f('3', '28'))],
+      ['Second factor after drawing one heart from 52', m(f('12', '51'))]
+    ],
+    med: [
+      ['Bag of 5 red, 3 blue: ' + m('P') + '(same colour)', m(f('13', '28'))],
+      ['Same bag: ' + m('P') + '(different colours)', m(f('15', '28'))],
+      ['Lamps: ' + m('P(D)') + ' with ' + m('0.6/0.02') + ' and ' + m('0.4/0.05'), m('0.032')],
+      ['Same: ' + m('P(F₁ | D)'), m('0.375')],
+      ['Same: ' + m('P(F₂ | D)'), m('0.625')],
+      ['Three cards from 52 without replacement: ' + m('P') + ' all hearts', m(f('11', '850')) + ' ≈ ' + m('0.0129')],
+      [m('P(B | A)') + ' when ' + m('P(A) = 0.4, P(A ∩ B) = 0.1'), m('0.25')]
+    ],
+    hard: [
+      ['A bag of 4 white, 6 black: ' + m('P') + ' the second drawn is white', m(f('2', '5'))],
+      ['Two bags: I has 3R 2B, II has 1R 4B. A bag is chosen at random, then a ball: ' + m('P(R)'), m('0.4')],
+      ['Same: ' + m('P') + '(bag I | red drawn)', m('0.75')],
+      ['A test is ' + m('95\\%') + ' accurate; ' + m('1\\%') + ' of people have the disease. ' + m('P') + '(disease | positive)', m('≈ 0.161')],
+      ['A die is thrown until a six appears: ' + m('P') + ' it takes exactly three throws', m(f('25', '216'))],
+      ['Three components each fail with probability ' + m('0.1') + ', independently: ' + m('P') + ' at least one fails', m('0.271')],
+      ['Two cards from 52 without replacement: ' + m('P') + ' at least one is an ace', m(f('33', '221')) + ' ≈ ' + m('0.149')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw the tree for every multi-stage question; label every branch before multiplying.',
+  homework: [
+    'A bag holds 6 green and 4 yellow counters; two are drawn without replacement. Find the probabilities of two greens, of two yellows and of one of each.',
+    'Two cards are drawn from 52 without replacement. Find the probability that at least one is a king.',
+    'Machine ' + m('A') + ' makes ' + m('70\\%') + ' of the output with ' + m('3\\%') + ' faulty; machine ' + m('B') + ' makes ' + m('30\\%') + ' with ' + m('6\\%') + '. Find the probability that an item is faulty, and the probability it came from ' + m('B') + ' given that it is.',
+    'A die is thrown three times. Find the probability of at least one six.',
+    'Explain in two sentences, with the lamp numbers, why ' + m('P(A | B)') + ' and ' + m('P(B | A)') + ' are different.'
+  ]
+});
+
+/* ============================== 32 ============================== */
+G11_ALG.push({
+  id: 'a11-32', stream: 'alg', grade: 11, quarter: 4, lessons: '86–89', hours: 4,
+  title: 'The binomial and normal distributions',
+  subtitle: 'Counting successes in n trials, and the bell curve that takes over when n is large.',
+  uz: 'Algebra 11, §32', uzPage: 'pp. 383–406',
+  cam: 'Probability & Statistics 1', camPage: 'P&S 1, pp. 108–150', wb: 'Exercise S1–S3',
+  objectives: [
+    'Recognise a binomial situation and state its two parameters.',
+    'Compute P(X = k), the mean and the variance of a binomial distribution.',
+    'Use the normal curve and the 68–95–99.7 rule.',
+    'Standardise a value with z = (x − μ)/σ and read a probability from it.'
+  ],
+  terms: [
+    ['Random variable', 'Tasodifiy miqdor', 'Случайная величина'],
+    ['Distribution', 'Taqsimot', 'Распределение'],
+    ['Binomial distribution', 'Binomial taqsimot', 'Биномиальное распределение'],
+    ['Trial', 'Sinov', 'Испытание'],
+    ['Success', 'Muvaffaqiyat', 'Успех'],
+    ['Mean (expectation)', 'Matematik kutilma', 'Математическое ожидание'],
+    ['Variance', 'Dispersiya', 'Дисперсия'],
+    ['Standard deviation', 'Standart chetlanish', 'Стандартное отклонение'],
+    ['Normal distribution', 'Normal taqsimot', 'Нормальное распределение'],
+    ['Standardisation', 'Standartlashtirish', 'Стандартизация'],
+    ['z-score', 'z-baho', 'z-оценка'],
+    ['Symmetry of the curve', 'Egri chiziq simmetriyasi', 'Симметрия кривой']
+  ],
+  timing: [[20, 'When a situation is binomial'], [35, 'The formula'], [30, 'Mean and variance'], [35, 'The normal curve'], [35, 'Standardising'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'When a situation is binomial',
+      html: `<div class="keybox"><div class="klabel">Four conditions, all needed</div>
+      <ol>
+        <li>a <b>fixed</b> number ${m('n')} of trials;</li>
+        <li>each trial has exactly <b>two</b> outcomes, success or failure;</li>
+        <li>the probability ${m('p')} of success is the <b>same</b> every time;</li>
+        <li>the trials are <b>independent</b>.</li>
+      </ol>
+      Then ${m('X')}, the number of successes, is <b>binomial</b>: ${m('X ~ B(n, p)')}.</div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Situation</th><th>Binomial?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>10 throws of a die, counting sixes</td><td>yes</td><td class="m">B(10, ${f('1', '6')})</td></tr>
+        <tr><td>20 components tested, ${m('3\\%')} faulty</td><td>yes</td><td class="m">B(20, 0.03)</td></tr>
+        <tr><td>cards drawn <b>without</b> replacement</td><td>no</td><td>${m('p')} changes</td></tr>
+        <tr><td>throwing until the first six</td><td>no</td><td>${m('n')} is not fixed</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">“Without replacement” breaks condition 3</span>
+      Drawing without replacement changes ${m('p')} at every step, so the count is <b>not</b> binomial.
+      Sampling from a very large population is close enough to be treated as binomial — but say so.</div>`
+    },
+    {
+      h: 'The formula',
+      html: `${eq(m('P(X = k) = C(n, k) p^k (1 − p)^(n−k)') + ',   ' + m('k = 0, 1, …, n'), true)}
+      <p>Read it as three factors: <b>how many ways</b> ${m('k')} successes can be arranged, times the
+      probability of ${m('k')} successes, times the probability of ${m('n − k')} failures.</p>
+      {{fig:binomialBars:B(8, 0.4) — the whole distribution, with the mean marked.}}
+      <p><b>Example.</b> ${m('X ~ B(5, 0.2)')}:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">k</th><th class="m">C(5, k)</th><th class="m">P(X = k)</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0</td><td class="m">1</td><td class="m">0.328</td></tr>
+        <tr><td class="m">1</td><td class="m">5</td><td class="m">0.410</td></tr>
+        <tr><td class="m">2</td><td class="m">10</td><td class="m">0.205</td></tr>
+        <tr><td class="m">3</td><td class="m">10</td><td class="m">0.051</td></tr>
+        <tr><td class="m">4</td><td class="m">5</td><td class="m">0.006</td></tr>
+        <tr><td class="m">5</td><td class="m">1</td><td class="m">0.0003</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The probabilities total ${m('1')}</div>
+      They are the terms of ${m('(p + (1 − p))ⁿ')} expanded by the binomial theorem of Lesson 101 — which
+      is where the distribution takes its name. So the column always sums to ${m('1')}, and that is the
+      check.</div>`
+    },
+    {
+      h: 'Mean and variance',
+      html: `${eq(m('μ = E(X) = np') + '     ' + m('σ² = Var(X) = np(1 − p)') + '     ' + m('σ = ' + sr('np(1 − p)')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Distribution</th><th class="m">μ</th><th class="m">σ²</th><th class="m">σ</th></tr></thead>
+      <tbody>
+        <tr><td class="m">B(10, ${f('1', '2')})</td><td class="m">5</td><td class="m">2.5</td><td class="m">1.58</td></tr>
+        <tr><td class="m">B(60, ${f('1', '6')})</td><td class="m">10</td><td class="m">8.33</td><td class="m">2.89</td></tr>
+        <tr><td class="m">B(100, 0.03)</td><td class="m">3</td><td class="m">2.91</td><td class="m">1.71</td></tr>
+      </tbody></table></div>
+      <p>The mean is exactly the “expected number” of Lesson 79. The variance is largest at
+      ${m('p = 0.5')} and shrinks towards ${m('0')} as ${m('p')} approaches ${m('0')} or ${m('1')} — a
+      near-certain outcome varies little.</p>
+      <div class="warn"><span class="wl">${m('μ')} need not be a possible value</span>
+      ${m('B(5, 0.2)')} has ${m('μ = 1')}, but ${m('B(7, 0.5)')} has ${m('μ = 3.5')} — and ${m('X')} is
+      always a whole number. The mean is an average over many repetitions, not a prediction of one.</div>`
+    },
+    {
+      h: 'The normal curve',
+      html: `<p>Many measured quantities — heights, errors, yields — cluster symmetrically about a mean.
+      Their distribution is the <b>normal</b> one, ${m('N(μ, σ²)')}, drawn as the bell curve.</p>
+      {{fig:normalCurve:Symmetric about μ, with almost all the area within three standard deviations.}}
+      <div class="keybox"><div class="klabel">The 68–95–99.7 rule</div>
+      ${eq(m('P(μ − σ < X < μ + σ) ≈ 0.68') + '   ' + m('P(μ − 2σ < X < μ + 2σ) ≈ 0.95') + '   ' + m('P(μ − 3σ < X < μ + 3σ) ≈ 0.997'), true)}
+      Three numbers that answer most questions without a table.</div>
+      <p><b>Example.</b> Heights are ${m('N(170, 8²)')} cm. Then about ${m('68\\%')} of people are between
+      ${m('162')} and ${m('178')} cm, about ${m('95\\%')} between ${m('154')} and ${m('186')}, and a
+      height above ${m('194')} — three standard deviations up — occurs in about ${m('0.15\\%')} of
+      people.</p>
+      <p><b>Why it matters here.</b> When ${m('n')} is large, the binomial bars themselves take the shape
+      of the normal curve, with ${m('μ = np')} and ${m('σ = ' + sr('np(1 − p)'))}. That is why the two
+      distributions belong in one lesson.</p>`
+    },
+    {
+      h: 'Standardising',
+      html: `<p>Every normal distribution is the same curve, re-scaled. Convert a value to its
+      <b>z-score</b> — how many standard deviations it lies from the mean:</p>
+      ${eq(m('z = ' + f('x − μ', 'σ')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Data</th><th class="m">z</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>${m('x = 178')} in ${m('N(170, 8²)')}</td><td class="m">1</td><td>one ${m('σ')} above the mean</td></tr>
+        <tr><td>${m('x = 154')} in ${m('N(170, 8²)')}</td><td class="m">−2</td><td>two ${m('σ')} below</td></tr>
+        <tr><td>${m('x = 62')} in ${m('N(50, 6²)')}</td><td class="m">2</td><td>top ${m('2.5\\%')} roughly</td></tr>
+      </tbody></table></div>
+      <p>Once standardised, values from different distributions can be compared: a mark of ${m('62')} in a
+      test with ${m('N(50, 6²)')} (${m('z = 2')}) beats a mark of ${m('78')} in one with
+      ${m('N(70, 10²)')} (${m('z = 0.8')}), even though the raw score is lower.</p>
+      <div class="keybox"><div class="klabel">Symmetry halves the work</div>
+      ${m('P(Z < −z) = P(Z > z) = 1 − P(Z < z)')}. A table of positive ${m('z')} is therefore enough for
+      every question, and ${m('P(Z < 0) = 0.5')} exactly.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A die is thrown 5 times. Find the probability of exactly two sixes.',
+      steps: [
+        [m('X ~ B(5, ' + f('1', '6') + ')'), ''],
+        [m('P(X = 2) = C(5, 2)(' + f('1', '6') + ')²(' + f('5', '6') + ')³'), ''],
+        [m('= 10 × ' + f('1', '36') + ' × ' + f('125', '216')), ''],
+        [m('= ' + f('1250', '7776') + ' ≈ 0.161'), '']
+      ],
+      ans: m('≈ 0.161')
+    },
+    {
+      q: 'For ' + m('X ~ B(20, 0.3)') + ', find ' + m('μ') + ', ' + m('σ') + ' and ' + m('P(X ≥ 1)') + '.',
+      steps: [
+        [m('μ = 20(0.3) = 6'), ''],
+        [m('σ² = 20(0.3)(0.7) = 4.2 ⇒ σ ≈ 2.05'), ''],
+        [m('P(X = 0) = 0.7²⁰ ≈ 0.000798'), ''],
+        [m('P(X ≥ 1) ≈ 0.9992'), 'Complement.']
+      ],
+      ans: m('μ = 6') + ', ' + m('σ ≈ 2.05') + ', ' + m('P(X ≥ 1) ≈ 0.999')
+    },
+    {
+      q: 'Heights are ' + m('N(170, 8²)') + ' cm. Find the proportion between ' + m('162') + ' and ' + m('186') + ' cm.',
+      steps: [
+        [m('z₁ = ' + f('162 − 170', '8') + ' = −1'), ''],
+        [m('z₂ = ' + f('186 − 170', '8') + ' = 2'), ''],
+        [m('P(−1 < Z < 2) = 0.9772 − 0.1587'), ''],
+        [m('≈ 0.819'), 'About ' + m('82\\%') + '.']
+      ],
+      ans: m('≈ 81.9\\%')
+    },
+    {
+      q: 'A mark of ' + m('62') + ' in a test with ' + m('N(50, 6²)') + ' and one of ' + m('78') + ' in a test with ' + m('N(70, 10²)') + ' — which is better?',
+      steps: [
+        [m('z₁ = ' + f('12', '6') + ' = 2'), ''],
+        [m('z₂ = ' + f('8', '10') + ' = 0.8'), ''],
+        ['The first is two standard deviations above; the second only ' + m('0.8') + '.', '']
+      ],
+      ans: 'The mark of ' + m('62') + ' — a higher z-score'
+    }
+  ],
+  modelNote: 'Toss ten coins thirty times and tally the number of heads; the class builds B(10, 0.5) with its own hands, and the bell shape appears.',
+  interactive: {
+    type: 'averages',
+    title: 'Mean, spread and the shape of the data',
+    hint: 'Move a value and watch the mean and the range.'
+  },
+  quiz: [
+    { q: 'A binomial distribution needs:', a: ['a fixed ' + m('n') + ' and constant ' + m('p'), 'a large ' + m('n'), 'a small ' + m('p'), 'nothing'], c: 0, why: 'Four conditions.' },
+    { q: 'Drawing without replacement is:', a: ['binomial', 'not binomial', 'normal', 'geometric'], c: 1, why: m('p') + ' changes.' },
+    { q: m('P(X = k)') + ' equals:', a: [m('p^k'), m('C(n, k)p^k(1 − p)^(n−k)'), m('np'), m('C(n, k)')], c: 1, why: 'Three factors.' },
+    { q: 'The mean of ' + m('B(n, p)') + ':', a: [m('np'), m('np(1 − p)'), m('p'), m('n')], c: 0, why: 'The expected number.' },
+    { q: 'The variance of ' + m('B(n, p)') + ':', a: [m('np'), m('np(1 − p)'), m(sr('np')), m('n')], c: 1, why: 'Largest at ' + m('p = 0.5') + '.' },
+    { q: 'Within two standard deviations lies about:', a: [m('68\\%'), m('95\\%'), m('99.7\\%'), m('50\\%')], c: 1, why: 'The middle rule.' },
+    { q: m('z') + ' equals:', a: [m(f('x − μ', 'σ')), m(f('μ − x', 'σ')), m('xσ + μ'), m(f('x', 'σ'))], c: 0, why: 'Distance in standard deviations.' }
+  ],
+  practice: {
+    easy: [
+      [m('μ') + ' of ' + m('B(10, 0.5)'), m('5')],
+      [m('μ') + ' of ' + m('B(60, ' + f('1', '6') + ')'), m('10')],
+      [m('σ²') + ' of ' + m('B(10, 0.5)'), m('2.5')],
+      [m('σ') + ' of ' + m('B(100, 0.03)'), m('≈ 1.71')],
+      [m('P(X = 0)') + ' for ' + m('B(5, 0.2)'), m('0.328')],
+      ['Is drawing without replacement binomial?', 'No'],
+      [m('z') + ' for ' + m('x = 178') + ' in ' + m('N(170, 8²)'), m('1')]
+    ],
+    med: [
+      [m('P') + ' exactly two sixes in five throws', m('≈ 0.161')],
+      [m('P(X = 2)') + ' for ' + m('B(5, 0.2)'), m('0.205')],
+      [m('P(X ≥ 1)') + ' for ' + m('B(20, 0.3)'), m('≈ 0.9992')],
+      [m('μ') + ' and ' + m('σ') + ' for ' + m('B(20, 0.3)'), m('6') + ', ' + m('≈ 2.05')],
+      ['Proportion within one ' + m('σ') + ' of the mean', m('≈ 68\\%')],
+      ['Proportion of ' + m('N(170, 8²)') + ' between ' + m('154') + ' and ' + m('186'), m('≈ 95\\%')],
+      [m('z') + ' for ' + m('x = 62') + ' in ' + m('N(50, 6²)'), m('2')]
+    ],
+    hard: [
+      [m('P') + ' at least three sixes in ten throws of a die', m('≈ 0.225')],
+      ['For ' + m('B(n, 0.5)') + ' with ' + m('σ = 2') + ', find ' + m('n'), m('n = 16')],
+      ['Proportion of ' + m('N(170, 8²)') + ' between ' + m('162') + ' and ' + m('186'), m('≈ 81.9\\%')],
+      ['The most likely value of ' + m('B(20, 0.3)'), m('k = 6')],
+      ['A test is passed by ' + m('80\\%') + '; ' + m('P') + ' exactly 8 of 10 pass', m('≈ 0.302')],
+      ['Compare ' + m('62') + ' in ' + m('N(50, 6²)') + ' with ' + m('78') + ' in ' + m('N(70, 10²)'), 'The first — ' + m('z = 2') + ' against ' + m('0.8')],
+      ['For ' + m('B(n, p)') + ' with ' + m('μ = 12') + ' and ' + m('σ² = 4.8') + ', find ' + m('n') + ' and ' + m('p'), m('n = 20, p = 0.6')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'State ' + m('n') + ' and ' + m('p') + ' — or ' + m('μ') + ' and ' + m('σ') + ' — before any calculation.',
+  homework: [
+    'A coin is thrown 8 times. Find the probability of exactly 5 heads, and the mean and standard deviation of the number of heads.',
+    'A component is faulty with probability ' + m('0.04') + '. In a batch of 25, find the probability of no faulty components and of at least two.',
+    'Test marks are ' + m('N(60, 12²)') + '. Find the proportion of marks above ' + m('84') + ' and between ' + m('48') + ' and ' + m('72') + '.',
+    'For ' + m('X ~ B(n, 0.25)') + ' with mean ' + m('5') + ', find ' + m('n') + ', ' + m('σ') + ' and ' + m('P(X = 5)') + '.',
+    'Explain in two sentences why sampling without replacement from a very large population may still be treated as binomial.'
+  ]
+});
+
+/* ============================== 33 ============================== */
+G11_ALG.push({
+  id: 'a11-33', stream: 'alg', grade: 11, quarter: 4, lessons: '90–91', hours: 2,
+  title: 'Control work 7, and work on the mistakes',
+  subtitle: 'Probability and distributions in one paper, then the block drawn as a decision tree.',
+  uz: 'Algebra 11, Nazorat ishi 7', uzPage: 'pp. 407–410',
+  cam: 'P&S 1 review', camPage: 'P&S 1, pp. 151–154', wb: 'Control paper A7',
+  objectives: [
+    'Apply the counting, addition and multiplication rules under time.',
+    'Compute a conditional probability with the right denominator.',
+    'Use the binomial formula and the normal 68–95–99.7 rule.',
+    'Name each lost mark and rewrite the solution in full.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Combination', 'Kombinatsiya', 'Сочетание'],
+    ['Conditional probability', 'Shartli ehtimollik', 'Условная вероятность'],
+    ['Total probability', 'To‘la ehtimollik', 'Полная вероятность'],
+    ['Binomial distribution', 'Binomial taqsimot', 'Биномиальное распределение'],
+    ['Standard deviation', 'Standart chetlanish', 'Стандартное отклонение'],
+    ['z-score', 'z-baho', 'z-оценка'],
+    ['Target', 'Maqsad', 'Цель']
+  ],
+  timing: [[3, 'Instructions'], [45, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The decision tree']],
+  sections: [
+    {
+      h: 'The paper — 40 marks, 45 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>A committee of 4 from 6 men and 5 women: ${m('P')}(exactly 2 women) and ${m('P')}(at least 1 woman)</td><td class="m">7</td><td>L79–80</td></tr>
+        <tr><td>2</td><td>Given ${m('P(A) = 0.5')}, ${m('P(B) = 0.4')}, ${m('P(A ∪ B) = 0.7')}: find ${m('P(A ∩ B)')}, ${m('P(A ∩ B′)')} and say whether the events are independent</td><td class="m">6</td><td>L81–82</td></tr>
+        <tr><td>3</td><td>A bag of 7 red and 5 blue, two drawn without replacement: the tree, ${m('P')}(same colour), ${m('P')}(second red)</td><td class="m">7</td><td>L83–85</td></tr>
+        <tr><td>4</td><td>Two machines, ${m('65/35\\%')} of output with ${m('2/6\\%')} faulty: ${m('P')}(faulty) and ${m('P')}(machine B | faulty)</td><td class="m">7</td><td>L83–85</td></tr>
+        <tr><td>5</td><td>${m('X ~ B(12, 0.25)')}: find ${m('μ')}, ${m('σ')}, ${m('P(X = 3)')} and ${m('P(X ≥ 1)')}</td><td class="m">7</td><td>L86–89</td></tr>
+        <tr><td>6</td><td>Masses are ${m('N(500, 15²)')} g: the proportion above ${m('530')} g, and between ${m('485')} and ${m('515')} g</td><td class="m">6</td><td>L86–89</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries one mark for the complement rather than four cases; Q3 one for changing the second fork;
+      Q4 one for the denominator ${m('P(faulty)')} rather than ${m('1')}; Q5 one for the complement in
+      ${m('P(X ≥ 1)')}. Four of the forty marks are for one decision each.</div>`
+    },
+    {
+      h: 'The decision tree for the whole block',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>The question says</th><th>Use</th><th>Formula</th></tr></thead>
+      <tbody>
+        <tr><td>“committee”, “hand”, “selection”</td><td>combinations</td><td class="m">${f('C(a, j)·C(b, k)', 'C(a+b, j+k)')}</td></tr>
+        <tr><td>“or”, “either”</td><td>the addition rule</td><td class="m">P(A) + P(B) − P(A ∩ B)</td></tr>
+        <tr><td>“and”, “then”</td><td>the multiplication rule</td><td class="m">P(A)P(B | A)</td></tr>
+        <tr><td>“at least one”</td><td>the complement</td><td class="m">1 − P(none)</td></tr>
+        <tr><td>“given that”</td><td>conditional</td><td class="m">${f('P(A ∩ B)', 'P(B)')}</td></tr>
+        <tr><td>“exactly ${m('k')} out of ${m('n')}”</td><td>binomial</td><td class="m">C(n, k)p^k(1−p)^(n−k)</td></tr>
+        <tr><td>“a measured quantity”, “heights”, “masses”</td><td>normal</td><td class="m">z = ${f('x − μ', 'σ')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The five slips that account for most lost marks</span>
+      <ul>
+        <li>counting ${m('m')} and ${m('n')} by different methods;</li>
+        <li>adding without subtracting the overlap;</li>
+        <li>keeping the denominator fixed in a without-replacement tree;</li>
+        <li>swapping ${m('P(A | B)')} and ${m('P(B | A)')};</li>
+        <li>treating a without-replacement count as binomial.</li>
+      </ul></div>`
+    },
+    {
+      h: 'Looking forward',
+      html: `<p>Lessons 92–100 are the Cambridge revision block: complex numbers and the Argand diagram,
+      loci in the complex plane, and differential equations. It is the last new mathematics of the school
+      course, and the first mathematics of the university one.</p>
+      {{fig:binomialBars:The last picture of the probability block — and the shape the normal curve takes over.}}
+      <div class="keybox"><div class="klabel">One habit to carry forward</div>
+      Probability rewarded naming the situation before choosing a formula. Complex numbers and
+      differential equations reward naming the <b>form</b> before choosing a method — Cartesian or polar,
+      separable or not. The habit is the same; only the vocabulary changes.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q1: a committee of 4 from 6 men and 5 women — ' + m('P') + '(at least 1 woman).',
+      steps: [
+        [m('n = C(11, 4) = 330'), ''],
+        [m('P(no woman) = ' + f('C(6, 4)', '330') + ' = ' + f('15', '330')), 'The complement.'],
+        [m('P = 1 − ' + f('15', '330') + ' = ' + f('315', '330') + ' = ' + f('21', '22')), '']
+      ],
+      ans: m(f('21', '22')) + ' ≈ ' + m('0.955')
+    },
+    {
+      q: 'Model answer, Q4: machines ' + m('65\\%/2\\%') + ' and ' + m('35\\%/6\\%') + '.',
+      steps: [
+        [m('P(F) = 0.65(0.02) + 0.35(0.06)'), ''],
+        [m('= 0.013 + 0.021 = 0.034'), ''],
+        [m('P(B | F) = ' + f('0.021', '0.034')), ''],
+        [m('≈ 0.618'), 'Machine B makes a third of the output but most of the faults.']
+      ],
+      ans: m('0.034') + ' and ' + m('≈ 0.618')
+    },
+    {
+      q: 'Model answer, Q5: ' + m('X ~ B(12, 0.25)') + '.',
+      steps: [
+        [m('μ = 3'), ''],
+        [m('σ² = 12(0.25)(0.75) = 2.25 ⇒ σ = 1.5'), ''],
+        [m('P(X = 3) = C(12, 3)(0.25)³(0.75)⁹ ≈ 0.258'), ''],
+        [m('P(X ≥ 1) = 1 − 0.75¹² ≈ 0.968'), 'Complement.']
+      ],
+      ans: m('μ = 3, σ = 1.5') + ', ' + m('0.258') + ', ' + m('0.968')
+    }
+  ],
+  modelNote: 'Work Q4 twice — once dividing by 0.034, once by 1 — and let the class say which question each answers.',
+  interactive: {
+    type: 'quiz',
+    title: 'Twelve questions on the probability block',
+    hint: 'Two from each pair of lessons.',
+    items: [
+      { q: 'A committee of 3 from 10:', a: [m('30'), m('120'), m('720'), m('1000')], c: 1, why: m('C(10, 3)') + '.' },
+      { q: 'Order matters means:', a: [m('C(n, k)'), m('P(n, k)'), m('n!'), m('k!')], c: 1, why: 'Permutations.' },
+      { q: m('P(A ∪ B)') + ':', a: [m('P(A) + P(B)'), m('P(A) + P(B) − P(A ∩ B)'), m('P(A)P(B)'), m('1 − P(A)')], c: 1, why: 'Remove the overlap.' },
+      { q: m('(A ∪ B)′') + ':', a: [m('A′ ∪ B′'), m('A′ ∩ B′'), m('A ∩ B'), m('U')], c: 1, why: 'De Morgan.' },
+      { q: m('P(A ∩ B)') + ' in general:', a: [m('P(A)P(B)'), m('P(A)P(B | A)'), m('P(A) + P(B)'), m('0')], c: 1, why: 'Always true.' },
+      { q: 'Without replacement, the denominator:', a: ['stays', 'drops by one', 'doubles', 'is 1'], c: 1, why: 'One object fewer.' },
+      { q: 'Total probability sums over:', a: ['any events', 'a partition', 'independent events', 'nothing'], c: 1, why: 'Exclusive and exhaustive.' },
+      { q: m('P(B | A)') + ' divides by:', a: [m('P(B)'), m('P(A)'), m('1'), m('P(A ∪ B)')], c: 1, why: 'The shrunken space.' },
+      { q: m('B(n, p)') + ' needs ' + m('p') + ':', a: ['small', 'constant', 'large', 'variable'], c: 1, why: 'Condition 3.' },
+      { q: 'Its mean:', a: [m('np'), m('np(1 − p)'), m('p'), m(sr('np'))], c: 0, why: 'The expected number.' },
+      { q: 'Within two ' + m('σ') + ' lies:', a: [m('68\\%'), m('95\\%'), m('99.7\\%'), m('50\\%')], c: 1, why: 'The middle rule.' },
+      { q: m('z = 2') + ' means:', a: ['twice the mean', 'two ' + m('σ') + ' above the mean', 'a probability of 2', 'nothing'], c: 1, why: 'Standardised distance.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 is quickest by:', a: ['four cases', 'the complement', 'a tree', 'a table'], c: 1, why: 'One subtraction.' },
+    { q: 'Q3 needs the second fork to:', a: ['stay the same', 'change', 'be doubled', 'be ignored'], c: 1, why: 'Without replacement.' },
+    { q: 'Q4’s denominator is:', a: [m('1'), m('P(faulty)'), m('0.35'), m('0.06')], c: 1, why: 'Given faulty.' },
+    { q: 'Lessons 92–100 revise:', a: ['probability', 'complex numbers and differential equations', 'trigonometry', 'integration'], c: 1, why: 'The Cambridge block.' }
+  ],
+  practice: {
+    easy: [
+      [m('C(11, 4)'), m('330')],
+      [m('C(6, 4)'), m('15')],
+      [m('P(A ∩ B)') + ' when ' + m('P(A) = 0.5, P(B) = 0.4, P(A ∪ B) = 0.7'), m('0.2')],
+      ['Are those events independent?', 'Yes — ' + m('0.5 × 0.4 = 0.2')],
+      [m('μ') + ' of ' + m('B(12, 0.25)'), m('3')],
+      [m('σ') + ' of ' + m('B(12, 0.25)'), m('1.5')],
+      [m('z') + ' for ' + m('530') + ' in ' + m('N(500, 15²)'), m('2')]
+    ],
+    med: [
+      [m('P') + '(exactly 2 women) on a committee of 4 from 6 men and 5 women', m(f('150', '330') + ' = ' + f('5', '11'))],
+      [m('P') + '(at least 1 woman) on the same committee', m(f('21', '22'))],
+      ['Bag of 7 red, 5 blue: ' + m('P') + '(same colour) without replacement', m(f('31', '66'))],
+      ['Same bag: ' + m('P') + '(second red)', m(f('7', '12'))],
+      ['Machines ' + m('65/2\\%') + ' and ' + m('35/6\\%') + ': ' + m('P') + '(faulty)', m('0.034')],
+      ['Same: ' + m('P') + '(B | faulty)', m('≈ 0.618')],
+      [m('P(X = 3)') + ' for ' + m('B(12, 0.25)'), m('≈ 0.258')]
+    ],
+    hard: [
+      [m('P(X ≥ 1)') + ' for ' + m('B(12, 0.25)'), m('≈ 0.968')],
+      ['Proportion of ' + m('N(500, 15²)') + ' above ' + m('530'), m('≈ 2.3\\%')],
+      ['Proportion of ' + m('N(500, 15²)') + ' between ' + m('485') + ' and ' + m('515'), m('≈ 68\\%')],
+      ['A committee of 5 from 6 men and 5 women with more women than men: ' + m('P'), m(f('141', '462')) + ' ≈ ' + m('0.305')],
+      ['Three components fail with probability ' + m('0.05') + ' each: ' + m('P') + ' at least one fails', m('≈ 0.143')],
+      ['For ' + m('B(n, 0.25)') + ' with ' + m('σ = 3') + ', find ' + m('n'), m('n = 48')],
+      ['A test is ' + m('98\\%') + ' accurate; ' + m('0.5\\%') + ' have the disease: ' + m('P') + '(disease | positive)', m('≈ 0.198')]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Bring the decision tree to Lesson 92; complex numbers start from a blank page.',
+  homework: [
+    'Rewrite in full every control-work question that lost a mark, naming the slip in the margin.',
+    'Copy the decision-tree table and add one worked example of your own to each row.',
+    'A bag holds 8 white and 4 black balls; three are drawn without replacement. Find the probability that all three are white and the probability that at least one is black.',
+    'Write your target for the revision block in one checkable sentence, and date it.'
+  ]
+});
+
+/* ============================== 34 ============================== */
+G11_ALG.push({
+  id: 'a11-34', stream: 'alg', grade: 11, quarter: 4, lessons: '92–94', hours: 3,
+  title: 'Complex numbers — arithmetic, conjugates and the Argand diagram [Cambridge revision]',
+  subtitle: 'One new symbol, i² = −1, and every quadratic finally has two roots.',
+  uz: 'Algebra 11, qo‘shimcha bo‘lim', uzPage: 'pp. 411–428',
+  cam: 'P2/P3 11.1–11.4', camPage: 'Pure Mathematics 2 & 3, pp. 246–262', wb: 'Exercise 11A–11D',
+  objectives: [
+    'Add, subtract, multiply and divide complex numbers in the form a + bi.',
+    'Use the conjugate to divide, and to state the roots of a real quadratic.',
+    'Plot a complex number on the Argand diagram.',
+    'Find the modulus and argument, and convert to polar form.'
+  ],
+  terms: [
+    ['Complex number', 'Kompleks son', 'Комплексное число'],
+    ['Imaginary unit', 'Mavhum birlik', 'Мнимая единица'],
+    ['Real part', 'Haqiqiy qism', 'Действительная часть'],
+    ['Imaginary part', 'Mavhum qism', 'Мнимая часть'],
+    ['Conjugate', 'Qo‘shma son', 'Сопряжённое число'],
+    ['Argand diagram', 'Argan diagrammasi', 'Диаграмма Аргана'],
+    ['Modulus', 'Modul', 'Модуль'],
+    ['Argument', 'Argument', 'Аргумент'],
+    ['Polar form', 'Trigonometrik shakl', 'Тригонометрическая форма'],
+    ['Complex plane', 'Kompleks tekislik', 'Комплексная плоскость'],
+    ['Purely imaginary', 'Sof mavhum', 'Чисто мнимое'],
+    ['Equating parts', 'Qismlarni tenglashtirish', 'Приравнивание частей']
+  ],
+  timing: [[20, 'The new number'], [30, 'Arithmetic'], [30, 'The conjugate and division'], [30, 'The Argand diagram'], [25, 'Modulus and argument'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The new number',
+      html: `<p>The equation ${m('x² + 1 = 0')} has no real solution. Define one:</p>
+      ${eq(m('i² = −1'), true)}
+      <p>Then every number of the form ${m('z = a + bi')}, with ${m('a')} and ${m('b')} real, is a
+      <b>complex number</b>: ${m('a = Re(z)')} is the real part, ${m('b = Im(z)')} the imaginary part.
+      Note that ${m('Im(z)')} is the real number ${m('b')}, not ${m('bi')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">z</th><th class="m">Re(z)</th><th class="m">Im(z)</th><th>Kind</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3 + 4i</td><td class="m">3</td><td class="m">4</td><td>complex</td></tr>
+        <tr><td class="m">−2i</td><td class="m">0</td><td class="m">−2</td><td>purely imaginary</td></tr>
+        <tr><td class="m">7</td><td class="m">7</td><td class="m">0</td><td>real</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Powers of ${m('i')} cycle with period four</div>
+      ${eq(m('i¹ = i,  i² = −1,  i³ = −i,  i⁴ = 1'), true)}
+      So ${m('i^n')} depends only on ${m('n')} modulo ${m('4')}: ${m('i²⁰²⁶ = i² = −1')}, because
+      ${m('2026 = 4 × 506 + 2')}.</div>
+      <div class="warn"><span class="wl">Two complex numbers are equal only if both parts match</span>
+      ${m('a + bi = c + di')} means ${m('a = c')} <b>and</b> ${m('b = d')}. This turns one complex
+      equation into two real ones — the standard technique for finding an unknown complex number.</div>`
+    },
+    {
+      h: 'Arithmetic',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Operation</th><th>Rule</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>add</td><td>parts separately</td><td class="m">(3+4i) + (1−2i) = 4 + 2i</td></tr>
+        <tr><td>subtract</td><td>parts separately</td><td class="m">(3+4i) − (1−2i) = 2 + 6i</td></tr>
+        <tr><td>multiply</td><td>expand, then ${m('i² = −1')}</td><td class="m">(3+4i)(1−2i) = 11 − 2i</td></tr>
+        <tr><td>square</td><td>as a binomial</td><td class="m">(3+4i)² = −7 + 24i</td></tr>
+      </tbody></table></div>
+      <p>The multiplication in full: ${m('(3+4i)(1−2i) = 3 − 6i + 4i − 8i² = 3 − 2i + 8 = 11 − 2i')}.
+      Nothing is new except the last step, where ${m('−8i²')} becomes ${m('+8')}.</p>
+      <div class="keybox"><div class="klabel">Every quadratic now has two roots</div>
+      When ${m('D < 0')} the formula still works: ${m(sr('−16') + ' = 4i')}, so
+      ${m('x² − 2x + 5 = 0')} gives ${m('x = ' + f('2 ± 4i', '2') + ' = 1 ± 2i')}. Real quadratics with
+      ${m('D < 0')} have <b>conjugate</b> roots — always a pair.</div>`
+    },
+    {
+      h: 'The conjugate and division',
+      html: `${eq(m('z = a + bi ⇒ z̄ = a − bi') + ',   ' + m('z z̄ = a² + b²') + ' — always real and non-negative', true)}
+      <p>That last identity is the whole reason division works. To divide, multiply top and bottom by the
+      conjugate of the bottom:</p>
+      ${eq(m('' + f('3 + 4i', '1 − 2i') + ' = ' + f('(3 + 4i)(1 + 2i)', '(1 − 2i)(1 + 2i)') + ' = ' + f('−5 + 10i', '5') + ' = −1 + 2i'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Property</th><th>Statement</th></tr></thead>
+      <tbody>
+        <tr><td>sum</td><td class="m">z + z̄ = 2Re(z)</td></tr>
+        <tr><td>difference</td><td class="m">z − z̄ = 2i·Im(z)</td></tr>
+        <tr><td>product</td><td class="m">z z̄ = |z|²</td></tr>
+        <tr><td>of a sum</td><td class="m">(z + w)‾ = z̄ + w̄</td></tr>
+        <tr><td>of a product</td><td class="m">(zw)‾ = z̄ w̄</td></tr>
+      </tbody></table></div>
+      <p>The last two say that conjugation respects arithmetic — which is why the non-real roots of a
+      <b>real</b> polynomial always come in conjugate pairs.</p>`
+    },
+    {
+      h: 'The Argand diagram',
+      html: `<p>Plot ${m('a + bi')} at the point ${m('(a, b)')}: the horizontal axis is the real one, the
+      vertical the imaginary. The plane of complex numbers is the <b>Argand diagram</b>.</p>
+      {{fig:argand:z as a point, its modulus as a distance, its argument as an angle — and z̄ as the reflection in the real axis.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Operation</th><th>On the diagram</th></tr></thead>
+      <tbody>
+        <tr><td>addition</td><td>vector addition — the parallelogram rule</td></tr>
+        <tr><td>conjugation</td><td>reflection in the real axis</td></tr>
+        <tr><td>multiplying by ${m('−1')}</td><td>rotation by ${m('180°')}</td></tr>
+        <tr><td>multiplying by ${m('i')}</td><td>rotation by ${m('90°')} anticlockwise</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Multiplying by ${m('i')} is a quarter turn</div>
+      ${m('i(a + bi) = ai + bi² = −b + ai')}: the point ${m('(a, b)')} moves to ${m('(−b, a)')}, which is
+      exactly a ${m('90°')} rotation about the origin. This single fact makes complex numbers a tool for
+      geometry.</div>`
+    },
+    {
+      h: 'Modulus and argument',
+      html: `${eq(m('|z| = ' + sr('a² + b²')) + ',   ' + m('arg z = θ') + ' with ' + m('tan θ = ' + f('b', 'a')), true)}
+      <p>The modulus is the distance from the origin; the argument is the angle from the positive real
+      axis, measured anticlockwise and normally taken in ${m('(−π, π]')}.</p>
+      <div class="warn"><span class="wl">The quadrant decides the argument, not the calculator</span>
+      For ${m('z = −1 + i')}, ${m('tan θ = −1')} and a calculator returns ${m('−45°')}. But the point is
+      in the <b>second</b> quadrant, so ${m('arg z = 135° = ' + f('3π', '4'))}. Always plot first.</div>
+      ${eq(m('z = r(cos θ + i sin θ)') + '   — the polar form', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">z</th><th class="m">|z|</th><th class="m">arg z</th><th>Polar</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1 + i</td><td class="m">${sr('2')}</td><td class="m">${f('π', '4')}</td><td class="m">${sr('2')}(cos ${f('π', '4')} + i sin ${f('π', '4')})</td></tr>
+        <tr><td class="m">−1 + i</td><td class="m">${sr('2')}</td><td class="m">${f('3π', '4')}</td><td class="m">${sr('2')}(cos ${f('3π', '4')} + …)</td></tr>
+        <tr><td class="m">−2i</td><td class="m">2</td><td class="m">−${f('π', '2')}</td><td class="m">2(cos(−${f('π', '2')}) + …)</td></tr>
+        <tr><td class="m">3</td><td class="m">3</td><td class="m">0</td><td class="m">3(cos 0 + i sin 0)</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Why polar form is worth the trouble</div>
+      ${eq(m('|zw| = |z||w|') + '     ' + m('arg(zw) = arg z + arg w'), true)}
+      Multiplication <b>multiplies</b> the moduli and <b>adds</b> the arguments. A product that takes four
+      lines in Cartesian form takes one in polar form — and powers become trivial.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Simplify ' + m('(3 + 4i)(1 − 2i)') + ' and ' + m(f('3 + 4i', '1 − 2i')) + '.',
+      steps: [
+        [m('(3+4i)(1−2i) = 3 − 6i + 4i − 8i²'), ''],
+        [m('= 3 − 2i + 8 = 11 − 2i'), ''],
+        [m(f('(3+4i)(1+2i)', '(1−2i)(1+2i)') + ' = ' + f('3 + 6i + 4i − 8', '5')), 'Multiply by the conjugate.'],
+        [m('= ' + f('−5 + 10i', '5') + ' = −1 + 2i'), '']
+      ],
+      ans: m('11 − 2i') + ' and ' + m('−1 + 2i')
+    },
+    {
+      q: 'Solve ' + m('x² − 2x + 5 = 0') + '.',
+      steps: [
+        [m('D = 4 − 20 = −16'), ''],
+        [m(sr('−16') + ' = 4i'), ''],
+        [m('x = ' + f('2 ± 4i', '2')), ''],
+        [m('x = 1 ± 2i'), 'A conjugate pair.']
+      ],
+      ans: m('x = 1 + 2i') + ' and ' + m('x = 1 − 2i')
+    },
+    {
+      q: 'Find ' + m('|z|') + ' and ' + m('arg z') + ' for ' + m('z = −1 + i') + '.',
+      steps: [
+        [m('|z| = ' + sr('1 + 1') + ' = ' + sr('2')), ''],
+        [m('tan θ = −1'), 'The calculator says ' + m('−45°') + '.'],
+        ['The point is in the second quadrant.', ''],
+        [m('arg z = ' + f('3π', '4')), '']
+      ],
+      ans: m('|z| = ' + sr('2')) + ', ' + m('arg z = ' + f('3π', '4'))
+    },
+    {
+      q: 'Find real ' + m('x') + ' and ' + m('y') + ' with ' + m('(x + yi)(2 − i) = 5 + 5i') + '.',
+      steps: [
+        [m('2x − xi + 2yi − yi² = (2x + y) + (2y − x)i'), ''],
+        [m('2x + y = 5') + ' and ' + m('2y − x = 5'), 'Equate parts.'],
+        [m('x = 1, y = 3'), ''],
+        ['Check: ' + m('(1 + 3i)(2 − i) = 2 − i + 6i + 3 = 5 + 5i') + '.', '']
+      ],
+      ans: m('x = 1, y = 3')
+    }
+  ],
+  modelNote: 'Draw the Argand diagram once and do every example on it — the geometry makes the algebra memorable.',
+  interactive: {
+    type: 'coordPlane',
+    title: 'The complex plane',
+    hint: 'Move the point and read the modulus and the argument.'
+  },
+  quiz: [
+    { q: m('i²') + ' equals:', a: [m('1'), m('−1'), m('i'), m('0')], c: 1, why: 'The definition.' },
+    { q: m('i²⁰²⁶') + ' equals:', a: [m('1'), m('i'), m('−1'), m('−i')], c: 2, why: m('2026 ≡ 2') + ' mod 4.' },
+    { q: m('Im(3 + 4i)') + ' is:', a: [m('4i'), m('4'), m('3'), m('7')], c: 1, why: 'A real number.' },
+    { q: 'To divide, multiply by:', a: ['the reciprocal', 'the conjugate of the denominator', m('i'), 'the modulus'], c: 1, why: 'It makes the bottom real.' },
+    { q: m('z z̄') + ' equals:', a: [m('|z|'), m('|z|²'), m('2Re(z)'), m('0')], c: 1, why: 'Always real.' },
+    { q: 'Conjugation on the Argand diagram is:', a: ['a rotation', 'reflection in the real axis', 'an enlargement', 'a translation'], c: 1, why: m('b → −b') + '.' },
+    { q: 'Multiplying by ' + m('i') + ' is:', a: [m('90°') + ' anticlockwise', m('180°'), 'a reflection', 'a doubling'], c: 0, why: m('(a, b) → (−b, a)') + '.' },
+    { q: m('arg(−1 + i)') + ' is:', a: [m('−' + f('π', '4')), m(f('3π', '4')), m(f('π', '4')), m('−' + f('3π', '4'))], c: 1, why: 'Second quadrant.' }
+  ],
+  practice: {
+    easy: [
+      [m('(3 + 4i) + (1 − 2i)'), m('4 + 2i')],
+      [m('(3 + 4i) − (1 − 2i)'), m('2 + 6i')],
+      [m('i³'), m('−i')],
+      [m('i⁴'), m('1')],
+      [m('|3 + 4i|'), m('5')],
+      ['Conjugate of ' + m('2 − 5i'), m('2 + 5i')],
+      [m('Re(7)') + ' and ' + m('Im(7)'), m('7') + ', ' + m('0')]
+    ],
+    med: [
+      [m('(3 + 4i)(1 − 2i)'), m('11 − 2i')],
+      [m('(3 + 4i)²'), m('−7 + 24i')],
+      [m(f('3 + 4i', '1 − 2i')), m('−1 + 2i')],
+      [m(f('1', 'i')), m('−i')],
+      ['Solve ' + m('x² − 2x + 5 = 0'), m('1 ± 2i')],
+      [m('|−1 + i|') + ' and ' + m('arg(−1 + i)'), m(sr('2')) + ', ' + m(f('3π', '4'))],
+      [m('i²⁰²⁶'), m('−1')]
+    ],
+    hard: [
+      ['Find real ' + m('x, y') + ' with ' + m('(x + yi)(2 − i) = 5 + 5i'), m('x = 1, y = 3')],
+      ['Solve ' + m('z² = 3 + 4i'), m('z = ±(2 + i)')],
+      ['Write ' + m('1 + ' + sr('3') + 'i') + ' in polar form', m('2(cos ' + f('π', '3') + ' + i sin ' + f('π', '3') + ')')],
+      ['Show that ' + m('(1 + i)⁸ = 16'), m('|z| = ' + sr('2')) + ', ' + m('arg = ' + f('π', '4')) + ', so ' + m('16(cos 2π + i sin 2π)')],
+      ['One root of ' + m('x³ − 5x² + 17x − 13 = 0') + ' is ' + m('1') + ': find the others', m('2 ± 3i')],
+      ['Prove that ' + m('z + z̄') + ' is always real and ' + m('z − z̄') + ' always purely imaginary', m('2a') + ' and ' + m('2bi')],
+      ['Simplify ' + m(f('(1 + i)³', '1 − i')), m('−1 + i')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Plot every answer on an Argand diagram; the picture catches quadrant errors at once.',
+  homework: [
+    'Simplify ' + m('(2 − 3i)(4 + i)') + ' and ' + m(f('2 − 3i', '4 + i')) + '.',
+    'Solve ' + m('x² + 4x + 13 = 0') + ' and plot both roots on an Argand diagram.',
+    'Find ' + m('|z|') + ' and ' + m('arg z') + ' for ' + m('z = −3 − 3i') + ', and write ' + m('z') + ' in polar form.',
+    'Find real ' + m('x') + ' and ' + m('y') + ' such that ' + m('(x + yi)(1 + 2i) = 4 − 3i') + '.',
+    'Show that ' + m('i^n') + ' takes only four values, and evaluate ' + m('i¹⁰⁰') + ' and ' + m('i²⁰²⁷') + '.'
+  ]
+});
+
+/* ============================== 35 ============================== */
+G11_ALG.push({
+  id: 'a11-35', stream: 'alg', grade: 11, quarter: 4, lessons: '95–96', hours: 2,
+  title: 'Complex numbers geometrically, and loci in the complex plane [Cambridge revision]',
+  subtitle: 'Modulus is distance, argument is direction — and every locus becomes a picture.',
+  uz: 'Algebra 11, qo‘shimcha bo‘lim', uzPage: 'pp. 429–440',
+  cam: 'P2/P3 11.5–11.6', camPage: 'Pure Mathematics 2 & 3, pp. 263–276', wb: 'Exercise 11E–11F',
+  objectives: [
+    'Interpret |z − a| as the distance from z to a.',
+    'Recognise the circle, the perpendicular bisector and the half-line as loci.',
+    'Sketch a region defined by inequalities in the complex plane.',
+    'Find the greatest and least value of |z| on a given locus.'
+  ],
+  terms: [
+    ['Locus', 'Geometrik o‘rin', 'Геометрическое место'],
+    ['Distance', 'Masofa', 'Расстояние'],
+    ['Circle', 'Aylana', 'Окружность'],
+    ['Perpendicular bisector', 'O‘rta perpendikulyar', 'Серединный перпендикуляр'],
+    ['Half-line (ray)', 'Nur', 'Луч'],
+    ['Region', 'Soha', 'Область'],
+    ['Inequality', 'Tengsizlik', 'Неравенство'],
+    ['Greatest value', 'Eng katta qiymat', 'Наибольшее значение'],
+    ['Least value', 'Eng kichik qiymat', 'Наименьшее значение'],
+    ['Triangle inequality', 'Uchburchak tengsizligi', 'Неравенство треугольника']
+  ],
+  timing: [[15, 'Distance and direction'], [25, 'The three standard loci'], [25, 'Regions'], [25, 'Greatest and least'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'Distance and direction',
+      html: `<div class="keybox"><div class="klabel">Two readings that unlock everything</div>
+      ${eq(m('|z − a|') + ' is the <b>distance</b> from the point ' + m('z') + ' to the point ' + m('a'), true)}
+      ${eq(m('arg(z − a)') + ' is the <b>direction</b> of ' + m('z') + ' as seen from ' + m('a'), true)}
+      With ${m('a = 0')} these become the modulus and argument of ${m('z')} itself.</div>
+      <p>So a condition on ${m('|z − a|')} is a condition on distance, and a condition on
+      ${m('arg(z − a)')} is a condition on direction. Every locus question in this lesson is one of the
+      two.</p>
+      <div class="warn"><span class="wl">${m('|z − a|')}, not ${m('|z + a|')}</span>
+      ${m('|z + 3|')} is the distance to ${m('−3')}, not to ${m('3')} — write it as ${m('|z − (−3)|')}
+      before reading off the centre. This single sign is where most locus marks are lost.</div>`
+    },
+    {
+      h: 'The three standard loci',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Condition</th><th>Locus</th><th>Described by</th></tr></thead>
+      <tbody>
+        <tr><td class="m">|z − a| = r</td><td>a <b>circle</b></td><td>centre ${m('a')}, radius ${m('r')}</td></tr>
+        <tr><td class="m">|z − a| = |z − b|</td><td>a <b>straight line</b></td><td>the perpendicular bisector of ${m('ab')}</td></tr>
+        <tr><td class="m">arg(z − a) = θ</td><td>a <b>half-line</b></td><td>from ${m('a')} (excluded) at angle ${m('θ')}</td></tr>
+      </tbody></table></div>
+      {{fig:argandLoci:A circle and a perpendicular bisector — the two commonest loci, on one diagram.}}
+      <p><b>Worked readings.</b></p>
+      <ul>
+        <li>${m('|z − 2 − i| = 3')}: circle, centre ${m('2 + i')}, radius ${m('3')}.</li>
+        <li>${m('|z| = |z − 4|')}: the perpendicular bisector of ${m('0')} and ${m('4')}, that is the
+        vertical line ${m('Re(z) = 2')}.</li>
+        <li>${m('arg(z − 1) = ' + f('π', '4'))}: the half-line from ${m('1')} going up and to the right at
+        ${m('45°')}, with ${m('1')} itself excluded (the argument of ${m('0')} is undefined).</li>
+      </ul>
+      <div class="keybox"><div class="klabel">The half-line is half a line</div>
+      ${m('arg(z − a) = ' + f('π', '4'))} gives only the ray in that direction. The opposite ray has
+      argument ${m('−' + f('3π', '4'))}, and belongs to a different locus. Drawing the whole line is the
+      standard error.</div>`
+    },
+    {
+      h: 'Regions',
+      html: `<p>Replace ${m('=')} by an inequality and the curve becomes a region — shaded, with the
+      boundary solid or dashed exactly as on a number line.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Condition</th><th>Region</th></tr></thead>
+      <tbody>
+        <tr><td class="m">|z − a| < r</td><td>inside the circle, boundary excluded</td></tr>
+        <tr><td class="m">|z − a| ≥ r</td><td>outside, boundary included</td></tr>
+        <tr><td class="m">|z − a| ≤ |z − b|</td><td>the half-plane nearer ${m('a')}</td></tr>
+        <tr><td class="m">0 ≤ arg(z − a) ≤ ${f('π', '2')}</td><td>a quarter-plane wedge at ${m('a')}</td></tr>
+      </tbody></table></div>
+      <p>Two or three conditions together give the intersection — a lens, a segment of a disc, a wedge cut
+      by a circle. Sketch each boundary first, then shade only where all conditions hold.</p>
+      <div class="keybox"><div class="klabel">Test one point</div>
+      After shading, pick an easy point — often ${m('0')} — and check it satisfies every condition. If it
+      does and it is inside your shading, the region is right; if it does and it is outside, you have
+      shaded the complement.</div>`
+    },
+    {
+      h: 'Greatest and least',
+      html: `<p>“Find the greatest value of ${m('|z|')} on this locus” asks for the point of the locus
+      furthest from the origin. On a circle this needs no calculus at all.</p>
+      ${eq(m('|a| − r ≤ |z| ≤ |a| + r') + '   for ' + m('z') + ' on the circle ' + m('|z − a| = r'), true)}
+      <p>Both extremes are on the line through ${m('O')} and the centre: the nearest point on the near
+      side, the furthest diametrically opposite.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Locus</th><th class="m">|a|</th><th>Least ${m('|z|')}</th><th>Greatest ${m('|z|')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">|z − 3 − 4i| = 2</td><td class="m">5</td><td class="m">3</td><td class="m">7</td></tr>
+        <tr><td class="m">|z − 6i| = 2</td><td class="m">6</td><td class="m">4</td><td class="m">8</td></tr>
+        <tr><td class="m">|z − 1| = 3</td><td class="m">1</td><td class="m">0</td><td class="m">4</td></tr>
+      </tbody></table></div>
+      <p>The last row: the circle passes through the origin, so the least modulus is ${m('0')} — and
+      ${m('|a| − r')} would have given ${m('−2')}, which is impossible. When the origin is inside or on
+      the circle, the least value is ${m('0')}.</p>
+      <div class="keybox"><div class="klabel">The triangle inequality behind it</div>
+      ${eq(m('| |z| − |a| | ≤ |z − a| ≤ |z| + |a|'), true)}
+      Both bounds above are this inequality with ${m('|z − a| = r')}, and both are attained — which is
+      what makes the answers exact rather than merely bounds.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Describe the locus ' + m('|z − 2 − i| = 3') + ' and sketch it.',
+      steps: [
+        ['Write it as ' + m('|z − (2 + i)| = 3') + '.', ''],
+        ['Distance from ' + m('z') + ' to ' + m('2 + i') + ' is ' + m('3') + '.', ''],
+        ['A circle, centre ' + m('(2, 1)') + ', radius ' + m('3') + '.', '']
+      ],
+      ans: 'A circle of centre ' + m('2 + i') + ' and radius ' + m('3')
+    },
+    {
+      q: 'Describe the locus ' + m('|z − 1| = |z + 3|') + '.',
+      steps: [
+        [m('|z − 1| = |z − (−3)|'), 'Both as distances.'],
+        ['Equidistant from ' + m('1') + ' and ' + m('−3') + '.', ''],
+        ['The perpendicular bisector: the vertical line ' + m('Re(z) = −1') + '.', '']
+      ],
+      ans: 'The line ' + m('Re(z) = −1')
+    },
+    {
+      q: 'Find the greatest and least values of ' + m('|z|') + ' for ' + m('|z − 3 − 4i| = 2') + '.',
+      steps: [
+        [m('|a| = |3 + 4i| = 5'), ''],
+        ['Least ' + m('5 − 2 = 3') + '.', ''],
+        ['Greatest ' + m('5 + 2 = 7') + '.', 'Both on the line through the origin and the centre.']
+      ],
+      ans: m('3') + ' and ' + m('7')
+    },
+    {
+      q: 'Sketch the region ' + m('|z − 2i| ≤ 2') + ' and ' + m('0 ≤ arg z ≤ ' + f('π', '2')) + '.',
+      steps: [
+        ['Disc of centre ' + m('2i') + ', radius ' + m('2') + ', boundary included.', ''],
+        ['Wedge from the origin between the positive real and positive imaginary axes.', ''],
+        ['The intersection is the right half of the disc.', ''],
+        ['Check ' + m('z = 1 + 2i') + ': in the disc, and ' + m('arg ≈ 63°') + ' — inside.', '']
+      ],
+      ans: 'The right half of the disc, boundaries included'
+    }
+  ],
+  modelNote: 'Give each pair squared paper and four loci to draw before any algebra; the descriptions then write themselves.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'Circles, chords and directions',
+    hint: 'The same geometry the loci rest on.'
+  },
+  quiz: [
+    { q: m('|z − a|') + ' means:', a: ['the argument', 'the distance from ' + m('z') + ' to ' + m('a'), 'the sum', 'the product'], c: 1, why: 'Distance in the plane.' },
+    { q: m('|z − a| = r') + ' is:', a: ['a line', 'a circle', 'a half-line', 'a point'], c: 1, why: 'Constant distance.' },
+    { q: m('|z − a| = |z − b|') + ' is:', a: ['a circle', 'the perpendicular bisector of ' + m('ab'), 'a half-line', 'a point'], c: 1, why: 'Equidistant.' },
+    { q: m('arg(z − a) = θ') + ' is:', a: ['a whole line', 'a half-line from ' + m('a'), 'a circle', 'a wedge'], c: 1, why: 'One direction only.' },
+    { q: m('|z + 3|') + ' is the distance to:', a: [m('3'), m('−3'), m('3i'), m('0')], c: 1, why: m('|z − (−3)|') + '.' },
+    { q: 'On ' + m('|z − 3 − 4i| = 2') + ', the greatest ' + m('|z|') + ' is:', a: [m('3'), m('5'), m('7'), m('9')], c: 2, why: m('|a| + r') + '.' },
+    { q: 'If the origin is inside the circle, the least ' + m('|z|') + ' is:', a: [m('|a| − r'), m('0'), m('r'), m('|a|')], c: 1, why: 'The circle surrounds it.' }
+  ],
+  practice: {
+    easy: [
+      ['Describe ' + m('|z| = 4'), 'Circle, centre ' + m('0') + ', radius ' + m('4')],
+      ['Describe ' + m('|z − 2| = 3'), 'Circle, centre ' + m('2') + ', radius ' + m('3')],
+      ['Describe ' + m('|z + 3| = 1'), 'Circle, centre ' + m('−3') + ', radius ' + m('1')],
+      ['Describe ' + m('|z| = |z − 4|'), 'The line ' + m('Re(z) = 2')],
+      ['Describe ' + m('arg z = ' + f('π', '4')), 'Half-line from ' + m('0') + ' at ' + m('45°')],
+      ['Describe ' + m('|z − i| < 2'), 'Inside the circle, boundary excluded'],
+      ['Centre of ' + m('|z − 2 − i| = 3'), m('2 + i')]
+    ],
+    med: [
+      ['Describe ' + m('|z − 1| = |z + 3|'), 'The line ' + m('Re(z) = −1')],
+      ['Describe ' + m('|z − 2i| = |z − 4|'), 'The perpendicular bisector of ' + m('2i') + ' and ' + m('4')],
+      ['Describe ' + m('arg(z − 1) = ' + f('π', '4')), 'Half-line from ' + m('1') + ', excluded'],
+      ['Greatest ' + m('|z|') + ' on ' + m('|z − 3 − 4i| = 2'), m('7')],
+      ['Least ' + m('|z|') + ' on the same', m('3')],
+      ['Least ' + m('|z|') + ' on ' + m('|z − 1| = 3'), m('0')],
+      ['Describe ' + m('|z − 2| ≤ |z|'), 'The half-plane ' + m('Re(z) ≥ 1')]
+    ],
+    hard: [
+      ['Greatest and least ' + m('|z − 1|') + ' on ' + m('|z − 4 − 3i| = 2'), m('7') + ' and ' + m('3')],
+      ['Sketch ' + m('|z − 2i| ≤ 2') + ' and ' + m('0 ≤ arg z ≤ ' + f('π', '2')), 'The right half of the disc'],
+      ['Describe ' + m('|z − 1| = 2|z + 1|'), 'A circle — centre ' + m('−' + f('5', '3')) + ', radius ' + m(f('4', '3'))],
+      ['Greatest ' + m('arg z') + ' on ' + m('|z − 4i| = 2'), m('π') + ' — the tangent from ' + m('O')],
+      ['The region ' + m('|z| ≤ 3') + ' and ' + m('|z − 3| ≤ 3') + ': describe it', 'A lens between the two circles'],
+      ['Show that ' + m('|z₁ + z₂| ≤ |z₁| + |z₂|') + ' with equality when the arguments are equal', 'The triangle inequality'],
+      ['Find the points on ' + m('|z − 3 − 4i| = 2') + ' of greatest and least modulus', m('' + f('21 + 28i', '5')) + ' and ' + m(f('9 + 12i', '5'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw every locus before describing it; a sketch earns marks that words alone do not.',
+  homework: [
+    'Describe and sketch ' + m('|z − 3 + 2i| = 4') + ', giving the centre and the radius.',
+    'Describe and sketch ' + m('|z − 2| = |z + 4i|') + '.',
+    'Sketch the region satisfying both ' + m('|z − 2| ≤ 3') + ' and ' + m('Im(z) ≥ 0') + '.',
+    'Find the greatest and least values of ' + m('|z|') + ' for ' + m('|z − 5 − 12i| = 4') + '.',
+    'Explain in two sentences why ' + m('arg(z − a) = θ') + ' gives a half-line and not a whole line.'
+  ]
+});
