@@ -2940,3 +2940,611 @@ G11_GEO.push({
     'Write your target for Quarter III in one checkable sentence, and date it.'
   ]
 });
+
+/* ===================== QUARTER III (20 hours) ===================== */
+
+/* ============================== 20 ============================== */
+G11_GEO.push({
+  id: 'g11-20', stream: 'geo', grade: 11, quarter: 3, lessons: '33–34', hours: 2,
+  title: 'The pyramid — height, apothem and surface area',
+  subtitle: 'Three lengths, one right triangle, and every pyramid question follows.',
+  uz: 'Geometry 11, §15', uzPage: 'pp. 161–172',
+  cam: 'IGCSE E13.x', camPage: 'Core & Extended, pp. 323–330', wb: 'Exercise 15.1',
+  objectives: [
+    'Name the elements of a pyramid and of a regular pyramid.',
+    'Relate the height, apothem, slant height and lateral edge.',
+    'Compute the lateral and total surface area.',
+    'Solve for a missing element from a given area.'
+  ],
+  terms: [
+    ['Pyramid', 'Piramida', 'Пирамида'],
+    ['Apex', 'Uchi', 'Вершина'],
+    ['Regular pyramid', 'Muntazam piramida', 'Правильная пирамида'],
+    ['Height of a pyramid', 'Piramida balandligi', 'Высота пирамиды'],
+    ['Apothem of the base', 'Asos apofemasi', 'Апофема основания'],
+    ['Slant height', 'Yon apofema', 'Апофема'],
+    ['Lateral edge', 'Yon qirra', 'Боковое ребро'],
+    ['Lateral surface area', 'Yon sirt yuzasi', 'Площадь боковой поверхности'],
+    ['Base perimeter', 'Asos perimetri', 'Периметр основания']
+  ],
+  timing: [[14, 'The elements'], [24, 'The two right triangles'], [24, 'Surface area'], [20, 'Working backwards'], [16, 'Practice'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'The elements',
+      html: `<div class="keybox"><div class="klabel">Regular pyramid</div>
+      Its base is a <b>regular polygon</b> and its apex lies directly above the base <b>centre</b>. Then
+      all the lateral edges are equal, and all the lateral faces are congruent isosceles triangles.</div>
+      {{fig:pyramidParts:The height to the centre, the apothem across the base, the slant height up the face.}}
+      <p>Why the lateral edges are equal: their projections are all radii of the circumcircle of the
+      base, hence equal — and equal projections give equal obliques, by Grade 10 Quarter III.</p>`
+    },
+    {
+      h: 'The two right triangles',
+      html: `<p>Every pyramid calculation lives in one of two right triangles, both with the height
+      ${m('h')} as a leg:</p>
+      ${eq(m('l² = h² + a²') + '   (slant height, apothem)     ' + m('e² = h² + R²') + '   (lateral edge, circumradius)', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Square base, side ${m('s')}</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>apothem ${m('a')}</td><td class="m">${f('s', '2')}</td></tr>
+        <tr><td>circumradius ${m('R')}</td><td class="m">${f('s' + sr('2'), '2')}</td></tr>
+        <tr><td>slant height ${m('l')}</td><td class="m">${sr('h² + (s/2)²')}</td></tr>
+        <tr><td>lateral edge ${m('e')}</td><td class="m">${sr('h² + s²/2')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The apothem is not the circumradius</span>
+      For a square of side ${m('10')}: apothem ${m('5')}, circumradius ${m('5' + sr('2') + ' ≈ 7.07')}.
+      Using the wrong one is the standard error, and it makes the slant height and the lateral edge
+      swap places.</div>`
+    },
+    {
+      h: 'Surface area',
+      html: `${eq(m('S_lat = ' + f('1', '2') + 'P · l') + '     ' + m('S_total = B + ' + f('1', '2') + 'Pl'), true)}
+      <p>Each lateral face is a triangle of base one side and height ${m('l')}; there are as many as the
+      base has sides, so the total is ${m(f('1', '2'))} of the perimeter times ${m('l')}.</p>
+      <p><b>Example.</b> Square base ${m('10')}, height ${m('12')}: ${m('a = 5')}, ${m('l = 13')},
+      ${m('P = 40')}, ${m('B = 100')}. So ${m('S_lat = 260')} and ${m('S = 360')}.</p>
+      <div class="keybox"><div class="klabel">Only for a regular pyramid</div>
+      ${m(f('1', '2') + 'Pl')} assumes every lateral face has the same slant height. For an irregular
+      pyramid the faces must be computed one at a time.</div>`
+    },
+    {
+      h: 'Working backwards',
+      html: `<p>Given the area, recover a length by reversing the formula:</p>
+      ${eq(m('l = ' + f('2S_lat', 'P')) + '     ' + m('h = ' + sr('l² − a²')), true)}
+      <p><b>Example.</b> A square pyramid with base ${m('12')} has lateral area ${m('240')}. Then
+      ${m('l = ' + f('480', '48') + ' = 10')}, ${m('a = 6')}, so ${m('h = ' + sr('100 − 36') + ' = 8')}.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A regular square pyramid has base edge ' + m('10') + ' and height ' + m('12') + '. Find the slant height, the lateral edge and the total surface area.',
+      steps: [
+        [m('a = 5') + ', so ' + m('l = ' + sr('144 + 25') + ' = 13') + '.', ''],
+        [m('R = 5' + sr('2')) + ', so ' + m('e = ' + sr('144 + 50') + ' = ' + sr('194') + ' ≈ 13.9') + '.', ''],
+        [m('S_lat = ' + f('1', '2') + ' × 40 × 13 = 260'), ''],
+        [m('S = 100 + 260 = 360'), '']
+      ],
+      ans: m('l = 13') + ', ' + m('e ≈ 13.9') + ', ' + m('S = 360')
+    },
+    {
+      q: 'A regular hexagonal pyramid has base edge ' + m('6') + ' and slant height ' + m('10') + '. Find the lateral surface area and the height.',
+      steps: [
+        [m('P = 36') + ', so ' + m('S_lat = ' + f('1', '2') + ' × 36 × 10 = 180') + '.', ''],
+        ['Apothem of a regular hexagon of side 6: ' + m('3' + sr('3') + ' ≈ 5.196') + '.', ''],
+        [m('h = ' + sr('100 − 27') + ' = ' + sr('73') + ' ≈ 8.54'), '']
+      ],
+      ans: m('S_lat = 180') + '; ' + m('h ≈ 8.54')
+    },
+    {
+      q: 'A square pyramid with base ' + m('12') + ' has lateral surface area ' + m('240') + '. Find its height.',
+      steps: [
+        [m('l = ' + f('2 × 240', '48') + ' = 10'), ''],
+        [m('a = 6'), ''],
+        [m('h = ' + sr('100 − 36') + ' = 8'), '']
+      ],
+      ans: m('8')
+    }
+  ],
+  modelNote: 'Build the pyramid net from Quarter I and measure the slant height directly.',
+  interactive: {
+    type: 'space3d',
+    title: 'Inside a pyramid',
+    hint: 'Move the apex and watch the slant height and the lateral edge change.'
+  },
+  quiz: [
+    { q: 'In a regular pyramid the apex is above:', a: ['a vertex', 'the base centre', 'the midpoint of an edge', 'anywhere'], c: 1, why: 'That is the definition.' },
+    { q: m('l² ') + ' equals:', a: [m('h² + R²'), m('h² + a²'), m('h² − a²'), m('a² + R²')], c: 1, why: 'Slant height, height, apothem.' },
+    { q: m('S_lat') + ' of a regular pyramid:', a: [m('Pl'), m(f('1', '2') + 'Pl'), m('Bh'), m(f('1', '3') + 'Bh')], c: 1, why: 'Triangular faces.' },
+    { q: 'For a square base of side 10 the apothem is:', a: [m('5'), m('10'), m('5' + sr('2')), m('20')], c: 0, why: 'Half the side.' },
+    { q: 'And the circumradius is:', a: [m('5'), m('10'), m('5' + sr('2')), m('' + sr('5'))], c: 2, why: 'Half the diagonal.' }
+  ],
+  practice: {
+    easy: [
+      ['Square base 10, height 12: the slant height', m('13')],
+      ['Square base 8, height 3: the slant height', m('5')],
+      ['Square base 6, apothem', m('3')],
+      ['Square base 6, circumradius', m('3' + sr('2'))],
+      [m('S_lat') + ' with ' + m('P = 24, l = 10'), m('120')],
+      [m('S_total') + ' with ' + m('B = 36, P = 24, l = 10'), m('156')],
+      ['Square base 10, height 12: the lateral area', m('260')]
+    ],
+    med: [
+      ['Square base 10, height 12: total area', m('360')],
+      ['Square base 10, height 12: the lateral edge', m(sr('194')) + ' ≈ ' + m('13.9')],
+      ['Hexagonal base 6, slant height 10: lateral area', m('180')],
+      ['Same: the height', m(sr('73')) + ' ≈ ' + m('8.54')],
+      ['Square base 12, lateral area 240: the height', m('8')],
+      ['Square base 16, height 6: total area', m('576')],
+      ['Square base 14, lateral edge 25: the height', m('24')]
+    ],
+    hard: [
+      ['A regular triangular pyramid, base edge 6, height 4: the total area', m('9' + sr('3') + ' + 3' + sr('57')) + ' ≈ ' + m('38.2')],
+      ['Square base ' + m('s') + ', height ' + m('h') + ': prove ' + m('e² = h² + ' + f('s²', '2')), m('R = ' + f('s' + sr('2'), '2'))],
+      ['A square pyramid of total area 384 with base 12: the height', m('8')],
+      ['A regular hexagonal pyramid, edge 4, height 6: the volume', m('48' + sr('3')) + ' ≈ ' + m('83.1')],
+      ['A pyramid’s lateral faces make ' + m('60°') + ' with the base, base edge 10: the height', m('5' + sr('3'))],
+      ['Show that ' + m('e > l > h') + ' in every regular pyramid', 'Each is the hypotenuse of the previous'],
+      ['A square pyramid with all edges equal to ' + m('a') + ': its height', m(f('a', sr('2'))) + ' ≈ ' + m('0.707a')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Say which triangle you are using — apothem or circumradius — on every line.',
+  homework: [
+    'A regular square pyramid has base edge ' + m('16') + ' and height ' + m('15') + '. Find the slant height, the lateral edge and the total surface area.',
+    'A regular hexagonal pyramid has base edge ' + m('5') + ' and slant height ' + m('12') + '. Find the lateral area and the height.',
+    'A square pyramid with base ' + m('20') + ' has lateral area ' + m('520') + '. Find the slant height and the height.',
+    'A regular triangular pyramid has base edge ' + m('8') + ' and height ' + m('6') + '. Find the slant height and the total surface area.',
+    'Prove that in a regular pyramid the lateral edges are equal.'
+  ]
+});
+
+/* ============================== 21 ============================== */
+G11_GEO.push({
+  id: 'g11-21', stream: 'geo', grade: 11, quarter: 3, lessons: '35', hours: 1,
+  title: 'The frustum of a pyramid',
+  subtitle: 'A pyramid with its top cut off — and the trapezium faces that result.',
+  uz: 'Geometry 11, §16', uzPage: 'pp. 173–178',
+  cam: 'Extension', camPage: 'Core & Extended, pp. 331–334', wb: 'Exercise 16.1',
+  objectives: [
+    'Describe the elements of a frustum of a pyramid.',
+    'Compute its lateral and total surface area.',
+    'Compute its volume.',
+    'Recover the original pyramid from the frustum.'
+  ],
+  terms: [
+    ['Frustum', 'Kesik piramida', 'Усечённая пирамида'],
+    ['Upper base', 'Yuqori asos', 'Верхнее основание'],
+    ['Lower base', 'Quyi asos', 'Нижнее основание'],
+    ['Slant height of a frustum', 'Kesik piramida apofemasi', 'Апофема усечённой пирамиды'],
+    ['Lateral face', 'Yon yoq', 'Боковая грань'],
+    ['Similar bases', 'O‘xshash asoslar', 'Подобные основания'],
+    ['Scale factor', 'O‘xshashlik koeffitsienti', 'Коэффициент подобия'],
+    ['Complementary cone', 'To‘ldiruvchi piramida', 'Дополняющая пирамида']
+  ],
+  timing: [[8, 'What a frustum is'], [14, 'Surface area'], [14, 'Volume'], [6, 'Recovering the pyramid'], [3, 'Homework']],
+  sections: [
+    {
+      h: 'What a frustum is',
+      html: `<p>Cut a pyramid with a plane parallel to its base and remove the small pyramid on top. What
+      is left is a <b>frustum</b>. Its two bases are <b>similar</b> polygons in parallel planes, and its
+      lateral faces are trapezia.</p>
+      <div class="keybox"><div class="klabel">The key ratio</div>
+      If the cut is at height ${m('k')} of the way up, the small pyramid is similar to the whole with
+      scale factor ${m('k')} — so its base edges are ${m('k')} times, its area ${m('k²')} times, and its
+      volume ${m('k³')} times.</div>`
+    },
+    {
+      h: 'Surface area',
+      html: `${eq(m('S_lat = ' + f('1', '2') + '(P₁ + P₂) · l'), true)}
+      <p>where ${m('P₁, P₂')} are the two base perimeters and ${m('l')} is the slant height of the
+      frustum — the height of one trapezium face. This is the trapezium area formula, once per face,
+      collected.</p>
+      ${eq(m('S_total = B₁ + B₂ + ' + f('1', '2') + '(P₁ + P₂)l'), false)}
+      <p><b>Example.</b> A frustum of a square pyramid with bases ${m('10')} and ${m('4')}, slant height
+      ${m('5')}: ${m('S_lat = ' + f('1', '2') + '(40 + 16)(5) = 140')}; ${m('S = 100 + 16 + 140 = 256')}.</p>`
+    },
+    {
+      h: 'Volume',
+      html: `${eq(m('V = ' + f('h', '3') + '(B₁ + B₂ + ' + sr('B₁B₂') + ')'), true)}
+      <p>It is the big pyramid minus the small one, simplified. The middle term ${m(sr('B₁B₂'))} is the
+      geometric mean of the two bases, and it is what makes the formula more than an average.</p>
+      <p><b>Example.</b> Bases ${m('10')} and ${m('4')} (so ${m('B₁ = 100')}, ${m('B₂ = 16')}), height
+      ${m('4')}:</p>
+      ${eq(m('V = ' + f('4', '3') + '(100 + 16 + 40) = ' + f('4', '3') + '(156) = 208'), true)}
+      <div class="warn"><span class="wl">Not the average of the two bases</span>
+      ${m(f('h', '2') + '(B₁ + B₂)')} would give ${m('232')} — too big. The frustum tapers, and the
+      geometric mean is what accounts for it.</div>`
+    },
+    {
+      h: 'Recovering the pyramid',
+      html: `<p>If the bases are ${m('a')} and ${m('b')} with ${m('b < a')}, the scale factor is
+      ${m('k = ' + f('b', 'a'))}. The full pyramid's height ${m('H')} satisfies</p>
+      ${eq(m('H − h = kH   ⇒   H = ' + f('h', '1 − k')), true)}
+      <p>For bases ${m('10')} and ${m('4')} with ${m('h = 4')}: ${m('k = 0.4')}, so
+      ${m('H = ' + f('4', '0.6') + ' ≈ 6.67')}. Check the volume:
+      ${m(f('1', '3') + '(100)(6.67) − ' + f('1', '3') + '(16)(2.67) = 222 − 14.2 ≈ 208')} ✓.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A frustum of a square pyramid has bases ' + m('10') + ' and ' + m('4') + ' and slant height ' + m('5') + '. Find its total surface area.',
+      steps: [
+        [m('P₁ = 40, P₂ = 16'), ''],
+        [m('S_lat = ' + f('1', '2') + '(56)(5) = 140'), ''],
+        [m('B₁ = 100, B₂ = 16'), ''],
+        [m('S = 256'), '']
+      ],
+      ans: m('256')
+    },
+    {
+      q: 'The same frustum has height ' + m('4') + '. Find its volume.',
+      steps: [
+        [m(sr('B₁B₂') + ' = ' + sr('1600') + ' = 40'), ''],
+        [m('V = ' + f('4', '3') + '(100 + 16 + 40)'), ''],
+        [m('= ' + f('4', '3') + ' × 156 = 208'), '']
+      ],
+      ans: m('208')
+    },
+    {
+      q: 'Find the height of the original pyramid.',
+      steps: [
+        [m('k = ' + f('4', '10') + ' = 0.4'), ''],
+        [m('H = ' + f('h', '1 − k') + ' = ' + f('4', '0.6')), ''],
+        [m('≈ 6.67'), '']
+      ],
+      ans: m('≈ 6.67')
+    }
+  ],
+  modelNote: 'Cut a card pyramid parallel to its base and hold up both pieces.',
+  interactive: {
+    type: 'scaleSolid',
+    title: 'Cutting a pyramid',
+    hint: 'The small pyramid is similar to the whole — lengths ' + m('k') + ', volume ' + m('k³') + '.'
+  },
+  quiz: [
+    { q: 'The lateral faces of a frustum are:', a: ['triangles', 'trapezia', 'rectangles', 'parallelograms'], c: 1, why: 'One side of each is cut off.' },
+    { q: 'The two bases of a frustum are:', a: ['congruent', 'similar', 'unrelated', 'perpendicular'], c: 1, why: 'The cut is parallel to the base.' },
+    { q: m('S_lat') + ' of a frustum:', a: [m(f('1', '2') + 'Pl'), m(f('1', '2') + '(P₁ + P₂)l'), m('(P₁ + P₂)l'), m('Pl')], c: 1, why: 'Trapezium faces.' },
+    { q: m('V') + ' of a frustum:', a: [m(f('h', '2') + '(B₁ + B₂)'), m(f('h', '3') + '(B₁ + B₂ + ' + sr('B₁B₂') + ')'), m(f('1', '3') + 'Bh'), m('Bh')], c: 1, why: 'The geometric mean is needed.' },
+    { q: 'The average-of-bases formula gives an answer that is:', a: ['correct', 'too big', 'too small', 'zero'], c: 1, why: 'It ignores the taper.' }
+  ],
+  practice: {
+    easy: [
+      [m('S_lat') + ' with ' + m('P₁ = 40, P₂ = 16, l = 5'), m('140')],
+      [m('S_lat') + ' with ' + m('P₁ = 24, P₂ = 12, l = 4'), m('72')],
+      [m(sr('B₁B₂')) + ' for ' + m('B₁ = 100, B₂ = 16'), m('40')],
+      [m(sr('B₁B₂')) + ' for ' + m('B₁ = 36, B₂ = 9'), m('18')],
+      ['The lateral faces of a frustum are', 'trapezia'],
+      ['The bases of a frustum are', 'similar'],
+      ['Scale factor for bases 4 and 10', m('0.4')]
+    ],
+    med: [
+      ['Bases 10 and 4, slant height 5: total area', m('256')],
+      ['Bases 10 and 4, height 4: the volume', m('208')],
+      ['Height of the original pyramid there', m('≈ 6.67')],
+      ['Bases 6 and 3, height 4: the volume', m('84')],
+      ['Bases 12 and 6, slant height 8: lateral area', m('288')],
+      ['Bases 8 and 4, height 6: the volume', m('224')],
+      ['A frustum cut halfway up: the volume ratio to the whole', m('7 : 8')]
+    ],
+    hard: [
+      ['Bases 9 and 6, slant height 5: total area and volume with ' + m('h = 4'), m('S = 267') + '; ' + m('V ≈ 254')],
+      ['A frustum of volume 208 with bases 100 and 16: its height', m('4')],
+      ['Prove ' + m('V = ' + f('h', '3') + '(B₁ + B₂ + ' + sr('B₁B₂') + ')'), 'Subtract the small pyramid from the whole'],
+      ['A frustum has bases in ratio ' + m('1 : 2') + '. The volume ratio of the frustum to the whole pyramid', m('7 : 8')],
+      ['A bucket: bases 24 and 18 cm, depth 20 cm. Capacity in litres', m('≈ 6.9') + ' litres'],
+      ['A frustum with equal bases is what solid?', 'a prism'],
+      ['Show the average formula overestimates', m(f('B₁+B₂', '2') + ' > ' + f('B₁+B₂+' + sr('B₁B₂'), '3')) + ' by AM–GM']
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Never average the two bases — use the geometric-mean formula.',
+  homework: [
+    'A frustum of a square pyramid has bases ' + m('12') + ' and ' + m('6') + ' and slant height ' + m('7') + '. Find its total surface area.',
+    'The same frustum has height ' + m('6') + '. Find its volume.',
+    'Find the height of the pyramid it was cut from.',
+    'Explain in three sentences why the volume is not ' + m(f('h', '2') + '(B₁ + B₂)') + '.'
+  ]
+});
+
+/* ============================== 22 ============================== */
+G11_GEO.push({
+  id: 'g11-22', stream: 'geo', grade: 11, quarter: 3, lessons: '36–37', hours: 2,
+  title: 'The cone — surface area and volume',
+  subtitle: 'A pyramid whose base is a circle: the same two formulas, with π and a slant height.',
+  uz: 'Geometry 11, §17', uzPage: 'pp. 179–190',
+  cam: 'IGCSE E13.x', camPage: 'Core & Extended, pp. 335–342', wb: 'Exercise 17.1',
+  objectives: [
+    'Name the base, axis, height and slant height of a cone.',
+    'Derive the curved surface area from the net.',
+    'Compute the volume of a cone.',
+    'Solve for a missing dimension.'
+  ],
+  terms: [
+    ['Cone', 'Konus', 'Конус'],
+    ['Apex', 'Uchi', 'Вершина'],
+    ['Axis of a cone', 'Konus o‘qi', 'Ось конуса'],
+    ['Slant height', 'Yasovchi', 'Образующая'],
+    ['Curved surface area', 'Yon sirt yuzasi', 'Площадь боковой поверхности'],
+    ['Net of a cone', 'Konus yoymasi', 'Развёртка конуса'],
+    ['Axial section', 'O‘qli kesim', 'Осевое сечение'],
+    ['Right circular cone', 'To‘g‘ri doiraviy konus', 'Прямой круговой конус'],
+    ['Solid of revolution', 'Aylanish jismi', 'Тело вращения']
+  ],
+  timing: [[14, 'The elements'], [24, 'The net and the curved area'], [24, 'The volume'], [22, 'Working backwards'], [20, 'Practice'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The elements',
+      html: `<p>A <b>right circular cone</b> is swept out when a right triangle turns about one of its
+      legs. Its <b>axis</b> joins the apex to the centre of the base circle and is perpendicular to it.</p>
+      {{fig:coneNet:The height, the radius and the slant height form a right triangle. Cut down the slant and it unrolls into a sector.}}
+      ${eq(m('l² = h² + r²'), true)}
+      <p>The <b>axial section</b> — the cut through the axis — is an isosceles triangle of base ${m('2r')}
+      and height ${m('h')}, with equal sides ${m('l')}. Every cone question can be reduced to that
+      triangle.</p>`
+    },
+    {
+      h: 'The net and the curved area',
+      html: `<p>Cut the cone down one slant line and unroll it. The curved surface becomes a
+      <b>sector</b> of radius ${m('l')} whose arc is the base circumference ${m('2πr')}. The sector is
+      the fraction ${m(f('2πr', '2πl') + ' = ' + f('r', 'l'))} of the full circle of radius ${m('l')}:</p>
+      ${eq(m('S_curved = ' + f('r', 'l') + ' × πl² = πrl'), true)}
+      ${eq(m('S_total = πr² + πrl = πr(r + l)'), true)}
+      <div class="warn"><span class="wl">${m('l')}, not ${m('h')}</span>
+      The curved surface uses the <b>slant</b> height. Using ${m('h')} understates it, and the two are
+      equal only for a flat disc. Compute ${m('l = ' + sr('h² + r²'))} first, every time.</div>`
+    },
+    {
+      h: 'The volume',
+      html: `${eq(m('V = ' + f('1', '3') + 'πr²h'), true)}
+      <p>A cone is exactly one third of the cylinder on the same base with the same height — the same
+      ${m(f('1', '3'))} as a pyramid against its prism. Both come from the same integral,
+      ${m('∫x² dx')}, as Quarter III algebra showed.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Volume</th><th>Curved / lateral area</th></tr></thead>
+      <tbody>
+        <tr><td>cylinder</td><td class="m">πr²h</td><td class="m">2πrh</td></tr>
+        <tr><td>cone</td><td class="m">${f('1', '3')}πr²h</td><td class="m">πrl</td></tr>
+        <tr><td>prism</td><td class="m">Bh</td><td class="m">Ph</td></tr>
+        <tr><td>pyramid</td><td class="m">${f('1', '3')}Bh</td><td class="m">${f('1', '2')}Pl</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Working backwards',
+      html: `${eq(m('h = ' + f('3V', 'πr²')) + '     ' + m('r = ' + sr(f('3V', 'πh'))) + '     ' + m('l = ' + f('S_curved', 'πr')), true)}
+      <p><b>Example.</b> A cone of volume ${m('100π')} cm³ and radius ${m('5')} cm has
+      ${m('h = ' + f('300π', '25π') + ' = 12')} cm, and then ${m('l = 13')} and
+      ${m('S_curved = 65π ≈ 204')} cm².</p>
+      <p>Given the <b>total</b> area, the equation is quadratic in ${m('r')} — expand
+      ${m('πr(r + l)')} and solve, rejecting the negative root.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A cone has radius ' + m('6') + ' cm and height ' + m('8') + ' cm. Find its slant height, total surface area and volume.',
+      steps: [
+        [m('l = ' + sr('64 + 36') + ' = 10'), ''],
+        [m('S = π(6)(6 + 10) = 96π ≈ 301.6'), ''],
+        [m('V = ' + f('1', '3') + 'π(36)(8) = 96π ≈ 301.6'), 'A coincidence of these numbers.']
+      ],
+      ans: m('l = 10') + '; ' + m('S = 96π') + '; ' + m('V = 96π')
+    },
+    {
+      q: 'A cone has volume ' + m('100π') + ' cm³ and radius ' + m('5') + ' cm. Find its height and curved surface area.',
+      steps: [
+        [m('100π = ' + f('1', '3') + 'π(25)h'), ''],
+        [m('h = 12'), ''],
+        [m('l = 13'), ''],
+        [m('S_curved = π(5)(13) = 65π ≈ 204'), '']
+      ],
+      ans: m('h = 12') + '; ' + m('65π') + ' ≈ ' + m('204') + ' cm²'
+    },
+    {
+      q: 'A sector of radius ' + m('12') + ' and angle ' + m('120°') + ' is rolled into a cone. Find its radius and height.',
+      steps: [
+        [m('l = 12') + '; arc ' + m('= ' + f('120', '360') + ' × 24π = 8π') + '.', ''],
+        [m('2πr = 8π ⇒ r = 4'), ''],
+        [m('h = ' + sr('144 − 16') + ' = ' + sr('128') + ' ≈ 11.3'), '']
+      ],
+      ans: m('r = 4') + ', ' + m('h ≈ 11.3')
+    }
+  ],
+  modelNote: 'Roll a paper sector into a cone and measure the base radius against the arc length.',
+  interactive: {
+    type: 'solidVolume',
+    title: 'The cone against the cylinder',
+    hint: 'A cone is one third of the cylinder on the same base.',
+    kind: 'cylinder'
+  },
+  quiz: [
+    { q: 'The curved surface area of a cone is:', a: [m('πr²'), m('πrl'), m('πrh'), m('2πrl')], c: 1, why: 'The sector of radius ' + m('l') + '.' },
+    { q: 'The volume of a cone is:', a: [m('πr²h'), m(f('1', '3') + 'πr²h'), m(f('1', '2') + 'πr²h'), m('πrl')], c: 1, why: 'One third of the cylinder.' },
+    { q: m('l') + ' equals:', a: [m('h + r'), m(sr('h² + r²')), m(sr('h² − r²')), m('hr')], c: 1, why: 'The axial right triangle.' },
+    { q: 'The net of a cone is:', a: ['a rectangle and two circles', 'a sector and a circle', 'two sectors', 'a triangle'], c: 1, why: 'The curved surface unrolls to a sector.' },
+    { q: 'The axial section of a cone is:', a: ['a circle', 'an isosceles triangle', 'a rectangle', 'a trapezium'], c: 1, why: 'Base ' + m('2r') + ', sides ' + m('l') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('l') + ' with ' + m('r = 3, h = 4'), m('5')],
+      [m('l') + ' with ' + m('r = 5, h = 12'), m('13')],
+      ['Volume with ' + m('r = 3, h = 4'), m('12π')],
+      ['Curved area with ' + m('r = 3, l = 5'), m('15π')],
+      ['Total area with ' + m('r = 3, l = 5'), m('24π')],
+      ['Volume with ' + m('r = 6, h = 10'), m('120π')],
+      ['A cone is what fraction of its cylinder?', m(f('1', '3'))]
+    ],
+    med: [
+      [m('r = 6, h = 8') + ': total area and volume', m('96π') + ' each'],
+      ['Volume ' + m('100π') + ', radius 5: the height', m('12')],
+      ['Same: the curved area', m('65π')],
+      ['Sector radius 12, angle ' + m('120°') + ' rolled up: ' + m('r'), m('4')],
+      ['Same: the height', m(sr('128')) + ' ≈ ' + m('11.3')],
+      ['A cone of ' + m('r = 7, l = 25') + ': the height', m('24')],
+      ['A cone of curved area ' + m('60π') + ' and ' + m('r = 5') + ': ' + m('l'), m('12')]
+    ],
+    hard: [
+      ['A cone of total area ' + m('90π') + ' and slant height ' + m('12') + ': the radius', m('r = 5')],
+      ['A cone of volume ' + m('96π') + ' and slant height ' + m('10') + ': ' + m('r') + ' and ' + m('h'), m('r = 6, h = 8')],
+      ['The sector angle for a cone with ' + m('r = 4, l = 12'), m('120°')],
+      ['A cone whose axial section is equilateral, ' + m('r = 5') + ': its volume', m(f('125π' + sr('3'), '3')) + ' ≈ ' + m('226.7')],
+      ['A cone of maximum volume from a sector of radius 12: the angle', m('≈ 294°')],
+      ['Two similar cones with volumes ' + m('8') + ' and ' + m('27') + ': the area ratio', m('4 : 9')],
+      ['A cone is inscribed in a cube of edge 12: its volume', m('144π')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Compute ' + m('l') + ' before any surface-area formula.',
+  homework: [
+    'A cone has radius ' + m('9') + ' cm and height ' + m('12') + ' cm. Find its slant height, total surface area and volume.',
+    'A cone has volume ' + m('147π') + ' cm³ and radius ' + m('7') + ' cm. Find its height and curved surface area.',
+    'A sector of radius ' + m('15') + ' and angle ' + m('144°') + ' is rolled into a cone. Find its radius, height and volume.',
+    'A cone has total surface area ' + m('144π') + ' and slant height ' + m('15') + '. Find its radius.',
+    'Explain in three sentences why the curved surface area uses ' + m('l') + ' and not ' + m('h') + '.'
+  ]
+});
+
+/* ============================== 23 ============================== */
+G11_GEO.push({
+  id: 'g11-23', stream: 'geo', grade: 11, quarter: 3, lessons: '38', hours: 1,
+  title: 'Arc, sector and the net of a cone',
+  subtitle: 'Cambridge insert: the radian formulas of Grade 10, used to build a cone from a flat sheet.',
+  uz: 'Geometry 11, §17 (extension)', uzPage: 'pp. 191–194',
+  cam: 'P1 · 4.2–4.3', camPage: 'Pure Mathematics 1, pp. 86–95', wb: 'P1 Exercise 4B',
+  objectives: [
+    'Use s = rθ and A = ½r²θ in a practical construction.',
+    'Find the sector angle needed to build a cone of given dimensions.',
+    'Compute the wasted material when a sector is cut from a sheet.',
+    'Design a cone to a specification.'
+  ],
+  terms: [
+    ['Sector', 'Sektor', 'Сектор'],
+    ['Arc length', 'Yoy uzunligi', 'Длина дуги'],
+    ['Sector angle', 'Sektor burchagi', 'Угол сектора'],
+    ['Radian', 'Radian', 'Радиан'],
+    ['Net', 'Yoyma', 'Развёртка'],
+    ['Waste material', 'Chiqindi material', 'Отходы материала'],
+    ['Circumference', 'Aylana uzunligi', 'Длина окружности'],
+    ['Design specification', 'Loyiha talabi', 'Техническое задание']
+  ],
+  timing: [[10, 'The link between the two circles'], [14, 'Finding the angle'], [12, 'Waste'], [6, 'A design task'], [3, 'Homework']],
+  sections: [
+    {
+      h: 'The link between the two circles',
+      html: `<div class="keybox"><div class="klabel">The one equation</div>
+      The arc of the sector becomes the circumference of the base:
+      ${eq(m('lθ = 2πr'), true)}
+      with ${m('θ')} in radians, ${m('l')} the sector radius (the cone’s slant height) and ${m('r')} the
+      cone’s base radius.</div>
+      {{fig:radianSector:s = rθ. Here the arc s becomes the base circle of the cone.}}
+      <p>Everything else follows: ${m('θ = ' + f('2πr', 'l'))} in radians, or
+      ${m(f('360r', 'l'))} degrees.</p>`
+    },
+    {
+      h: 'Finding the angle',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th class="m">l</th><th class="m">r</th><th class="m">θ</th><th>In degrees</th></tr></thead>
+      <tbody>
+        <tr><td class="m">12</td><td class="m">4</td><td class="m">${f('2π', '3')}</td><td class="m">120°</td></tr>
+        <tr><td class="m">10</td><td class="m">5</td><td class="m">π</td><td class="m">180°</td></tr>
+        <tr><td class="m">15</td><td class="m">6</td><td class="m">${f('4π', '5')}</td><td class="m">144°</td></tr>
+        <tr><td class="m">l</td><td class="m">l</td><td class="m">2π</td><td class="m">360°</td></tr>
+      </tbody></table></div>
+      <p>The last row is the flat disc: when ${m('r = l')} the cone has no height at all.</p>
+      <p>Check the areas agree: the sector area ${m(f('1', '2') + 'l²θ = ' + f('1', '2') + 'l² · ' + f('2πr', 'l') + ' = πrl')} —
+      the curved surface area of the last lesson, derived a second way.</p>`
+    },
+    {
+      h: 'Waste, and a design task',
+      html: `<p>A sector is cut from a square or a circular sheet; the rest is waste. The proportion
+      wasted is a real design consideration:</p>
+      ${eq('waste fraction from a full disc ' + m('= 1 − ' + f('θ', '2π') + ' = 1 − ' + f('r', 'l')), true)}
+      <p><b>Example.</b> A cone with ${m('r = 4')}, ${m('l = 12')} uses ${m(f('1', '3'))} of the disc of
+      radius ${m('12')}, so two thirds of the material is wasted. A shallower cone — ${m('r')} closer to
+      ${m('l')} — wastes far less.</p>
+      <div class="keybox"><div class="klabel">The design task, in pairs</div>
+      Design a paper cone to hold exactly ${m('200')} ml (${m('200')} cm³). Choose ${m('r')} and
+      ${m('h')}, compute ${m('l')} and ${m('θ')}, draw the sector, cut and build it. Then measure what
+      it actually holds and explain the difference.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A cone has ' + m('r = 5') + ' and ' + m('l = 15') + '. Find the sector angle in degrees.',
+      steps: [
+        [m('θ = ' + f('2πr', 'l') + ' = ' + f('10π', '15') + ' = ' + f('2π', '3')), ''],
+        ['In degrees: ' + m(f('360 × 5', '15')), ''],
+        [m('= 120°'), '']
+      ],
+      ans: m('120°')
+    },
+    {
+      q: 'A sector of radius ' + m('20') + ' and angle ' + m('216°') + ' is rolled up. Find the cone’s radius and volume.',
+      steps: [
+        [m('r = ' + f('216', '360') + ' × 20 = 12'), ''],
+        [m('h = ' + sr('400 − 144') + ' = 16'), ''],
+        [m('V = ' + f('1', '3') + 'π(144)(16)'), ''],
+        [m('= 768π ≈ 2413'), '']
+      ],
+      ans: m('r = 12') + ', ' + m('V = 768π') + ' ≈ ' + m('2413')
+    },
+    {
+      q: 'Design a cone of volume ' + m('200') + ' cm³ with ' + m('r = 5') + '. Find ' + m('h') + ', ' + m('l') + ' and ' + m('θ') + '.',
+      steps: [
+        [m('200 = ' + f('1', '3') + 'π(25)h ⇒ h = ' + f('24', 'π') + ' ≈ 7.64'), ''],
+        [m('l = ' + sr('25 + 58.3') + ' ≈ 9.13'), ''],
+        [m('θ = ' + f('360 × 5', '9.13') + ' ≈ 197°'), '']
+      ],
+      ans: m('h ≈ 7.6') + ', ' + m('l ≈ 9.1') + ', ' + m('θ ≈ 197°')
+    }
+  ],
+  modelNote: 'Cut two sectors of the same radius but different angles and compare the cones.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'Sector to cone',
+    hint: 'The arc becomes the base circle.'
+  },
+  quiz: [
+    { q: 'The arc of the sector becomes:', a: ['the slant height', 'the base circumference', 'the height', 'the axis'], c: 1, why: 'It wraps round the base.' },
+    { q: m('θ') + ' in radians is:', a: [m(f('r', 'l')), m(f('2πr', 'l')), m(f('l', 'r')), m('2πl')], c: 1, why: m('lθ = 2πr') + '.' },
+    { q: m('l = 12, r = 4') + ' gives ' + m('θ') + ':', a: [m('60°'), m('120°'), m('180°'), m('240°')], c: 1, why: m(f('360 × 4', '12')) + '.' },
+    { q: 'When ' + m('r = l') + ' the cone is:', a: ['very tall', 'a flat disc', 'a sphere', 'impossible'], c: 1, why: 'The height is zero.' },
+    { q: 'The sector area equals:', a: [m('πr²'), m('πrl'), m('2πrl'), m('πl²')], c: 1, why: 'The curved surface area.' }
+  ],
+  practice: {
+    easy: [
+      [m('θ') + ' for ' + m('l = 10, r = 5'), m('180°')],
+      [m('θ') + ' for ' + m('l = 12, r = 4'), m('120°')],
+      [m('θ') + ' for ' + m('l = 15, r = 6'), m('144°')],
+      [m('r') + ' from ' + m('l = 20, θ = 90°'), m('5')],
+      [m('r') + ' from ' + m('l = 18, θ = 180°'), m('9')],
+      ['The arc becomes', 'the base circumference'],
+      ['Sector area equals', m('πrl')]
+    ],
+    med: [
+      ['Sector radius 20, angle ' + m('216°') + ': the cone’s radius', m('12')],
+      ['Same: the height and volume', m('16') + ', ' + m('768π')],
+      ['Cone of ' + m('r = 5, l = 15') + ': the angle', m('120°')],
+      ['Waste fraction for ' + m('r = 4, l = 12'), m(f('2', '3'))],
+      ['Waste fraction for ' + m('r = 9, l = 10'), m('0.1')],
+      ['Cone of volume 200 with ' + m('r = 5') + ': ' + m('h'), m('≈ 7.64')],
+      ['Same: the sector angle', m('≈ 197°')]
+    ],
+    hard: [
+      ['A cone of maximum volume from a disc of radius ' + m('R') + ': the sector angle', m('≈ 294°')],
+      ['That maximum volume for ' + m('R = 12'), m('≈ 836')],
+      ['A cone with ' + m('θ = 90°') + ' and volume ' + m('200') + ': find ' + m('l'), m('≈ 11.7')],
+      ['Two cones from one disc of radius 10, no waste: their radii', m('5') + ' each if the disc is halved'],
+      ['A cone of ' + m('r = 6, h = 8') + ': the sector angle and the waste from a disc of radius ' + m('l'), m('216°') + ', ' + m('40%')],
+      ['Design a cone of volume 500 and ' + m('θ = 180°'), m('r ≈ 6.2, l ≈ 12.4')],
+      ['Why does a shallower cone waste less material?', m('r') + ' is nearer ' + m('l') + ', so the sector is nearer the full disc']
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Bring the built paper cone and its measured capacity.',
+  homework: [
+    'A cone has ' + m('r = 8') + ' and ' + m('l = 20') + '. Find the sector angle in degrees and in radians.',
+    'A sector of radius ' + m('24') + ' and angle ' + m('150°') + ' is rolled up. Find the cone’s radius, height and volume.',
+    'Design and build a paper cone of volume ' + m('200') + ' cm³, giving ' + m('r') + ', ' + m('h') + ', ' + m('l') + ' and ' + m('θ') + '.',
+    'Measure what your cone actually holds and explain in two sentences why it differs from ' + m('200') + ' ml.'
+  ]
+});

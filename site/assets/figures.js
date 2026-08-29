@@ -2435,6 +2435,110 @@
     return svg('0 0 ' + W + ' ' + H, g);
   };
 
+  /* ---------- Grade 11 Quarter III: pyramids, cones, spheres ---------- */
+
+  /* a regular square pyramid with height, apothem and slant height marked */
+  F.pyramidParts = function () {
+    var g = '', W = 340, H = 224;
+    var p = P3({ s: 20, ox: 60, oy: 178 });
+    var A = p(0, 0, 0), B = p(5, 0, 0), C = p(5, 0, 4), D = p(0, 0, 4);
+    var O = p(2.5, 0, 2), S = p(2.5, 5.6, 2), M = p(2.5, 0, 0);
+    g += poly([A, B, C, D], 'fill="var(--brand-tint)" fill-opacity=".55" stroke="var(--brand)" stroke-width="1.6"');
+    g += line(A, S, SOL) + line(B, S, SOL) + line(C, S, HID) + line(D, S, SOL);
+    g += line(S, O, 'stroke="var(--brass)" stroke-width="2.2" stroke-dasharray="5 4"');
+    g += line(O, M, 'stroke="var(--easy)" stroke-width="2"');
+    g += line(S, M, 'stroke="var(--hard)" stroke-width="2.2"');
+    g += right(O, S, M, 8);
+    g += dot(O[0], O[1], 'var(--brass)') + dot(M[0], M[1], 'var(--easy)');
+    g += L(A[0] - 11, A[1] + 8, 'A') + L(B[0] + 11, B[1] + 6, 'B') + L(S[0], S[1] - 12, 'S');
+    g += L(O[0] + 12, O[1] + 8, 'O') + L(M[0] - 4, M[1] + 14, 'M');
+    g += LT(250, 60, 'SO = h, the height', 'var(--brass)', 9.5);
+    g += LT(250, 76, 'OM = a, the apothem', 'var(--easy)', 9.5);
+    g += LT(250, 92, 'SM = l, the slant height', 'var(--hard)', 9.5);
+    g += LT(W / 2, H - 6, 'l² = h² + a²  ·  S_lat = ½Pl', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* a cone and its net: a circle and a sector */
+  F.coneNet = function () {
+    var g = '', W = 340, H = 216;
+    var cx = 76, base = 158, rx = 40, ry = 14, apex = 44;
+    g += '<path d="M' + (cx - rx) + ' ' + base + ' L' + cx + ' ' + apex + ' L' + (cx + rx) + ' ' + base +
+      '" fill="var(--brand-tint)" fill-opacity=".55" stroke="currentColor" stroke-width="2"/>';
+    g += '<ellipse cx="' + cx + '" cy="' + base + '" rx="' + rx + '" ry="' + ry +
+      '" fill="var(--brand-tint)" fill-opacity=".7" stroke="var(--brand)" stroke-width="1.7"/>';
+    g += line([cx, base], [cx, apex], 'stroke="var(--brass)" stroke-width="1.8" stroke-dasharray="5 4"');
+    g += line([cx, base], [cx + rx, base], 'stroke="var(--easy)" stroke-width="1.8"');
+    g += line([cx + rx, base], [cx, apex], 'stroke="var(--hard)" stroke-width="2"');
+    g += LT(cx - 9, (base + apex) / 2, 'h', 'var(--brass)', 12);
+    g += LT(cx + 20, base - 12, 'r', 'var(--easy)', 12);
+    g += LT(cx + 32, (base + apex) / 2 - 4, 'l', 'var(--hard)', 12);
+
+    /* the net: a sector of radius l, arc 2πr */
+    var sx = 236, sy = 116, R = 62, ang = 1.9;
+    g += '<path d="M' + sx + ' ' + sy + ' L' + (sx + R).toFixed(1) + ' ' + sy +
+      ' A' + R + ' ' + R + ' 0 0 0 ' + (sx + R * Math.cos(ang)).toFixed(1) + ' ' +
+      (sy - R * Math.sin(ang)).toFixed(1) + ' Z" ' +
+      'fill="var(--brass-tint)" fill-opacity=".9" stroke="var(--brass)" stroke-width="1.7"/>';
+    g += '<circle cx="' + (sx + 6) + '" cy="' + (sy + 62) + '" r="20" ' +
+      'fill="var(--brand-tint)" fill-opacity=".8" stroke="var(--brand)" stroke-width="1.6"/>';
+    g += LT(sx + 40, sy - 8, 'l', 'var(--muted)', 11);
+    g += LT(sx + 26, sy - 74, 'arc = 2πr', 'var(--muted)', 9.5);
+    g += LT(W / 2, H - 6, 'S = πr² + πrl — a circle and a sector', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* a sphere cut by a plane: the section is a circle */
+  F.sphereSection = function () {
+    var g = '', W = 340, H = 206, cx = 148, cy = 106, R = 72;
+    g += '<circle cx="' + cx + '" cy="' + cy + '" r="' + R +
+      '" fill="var(--brand-tint)" fill-opacity=".4" stroke="currentColor" stroke-width="2.2"/>';
+    /* the equator, for solidity */
+    g += '<ellipse cx="' + cx + '" cy="' + cy + '" rx="' + R + '" ry="' + (R * 0.3) +
+      '" fill="none" stroke="var(--faint)" stroke-width="1.3" stroke-dasharray="4 3"/>';
+    /* the cutting plane at height d above the centre */
+    var d = 34, rr = Math.sqrt(R * R - d * d);
+    g += '<ellipse cx="' + cx + '" cy="' + (cy - d) + '" rx="' + rr.toFixed(1) + '" ry="' + (rr * 0.3).toFixed(1) +
+      '" fill="var(--brass-tint)" fill-opacity=".85" stroke="var(--brass)" stroke-width="1.8"/>';
+    g += line([cx, cy], [cx, cy - d], 'stroke="var(--easy)" stroke-width="2"');
+    g += line([cx, cy - d], [cx + rr, cy - d], 'stroke="var(--brass)" stroke-width="2"');
+    g += line([cx, cy], [cx + rr, cy - d], 'stroke="currentColor" stroke-width="1.8"');
+    g += right([cx, cy - d], [cx, cy], [cx + rr, cy - d], 8);
+    g += dot(cx, cy);
+    g += LT(cx - 10, cy - d / 2, 'd', 'var(--easy)', 12);
+    g += LT(cx + rr / 2, cy - d - 12, 'ρ', 'var(--brass)', 12);
+    g += LT(cx + rr / 2 + 12, cy - d / 2 + 6, 'R', 'currentColor', 12);
+    g += LT(W / 2, H - 22, 'the section is a circle of radius ρ', 'var(--muted)', 10);
+    g += LT(W / 2, H - 6, 'ρ² = R² − d²', 'var(--muted)', 11);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* a frustum: the cone with its top cut off */
+  F.frustum = function () {
+    var g = '', W = 340, H = 210;
+    var cx = 150, base = 158, R = 66, r = 30, top = 68, ry = 18, ryTop = 9;
+    /* the removed cone, dashed */
+    g += '<path d="M' + (cx - r) + ' ' + top + ' L' + cx + ' ' + (top - 46) + ' L' + (cx + r) + ' ' + top +
+      '" fill="none" stroke="var(--faint)" stroke-width="1.5" stroke-dasharray="5 4"/>';
+    g += '<path d="M' + (cx - R) + ' ' + base + ' L' + (cx - r) + ' ' + top +
+      ' L' + (cx + r) + ' ' + top + ' L' + (cx + R) + ' ' + base + ' Z" ' +
+      'fill="var(--brand-tint)" fill-opacity=".55" stroke="currentColor" stroke-width="2"/>';
+    g += '<ellipse cx="' + cx + '" cy="' + base + '" rx="' + R + '" ry="' + ry +
+      '" fill="var(--brand-tint)" fill-opacity=".7" stroke="var(--brand)" stroke-width="1.7"/>';
+    g += '<ellipse cx="' + cx + '" cy="' + top + '" rx="' + r + '" ry="' + ryTop +
+      '" fill="var(--brass-tint)" fill-opacity=".9" stroke="var(--brass)" stroke-width="1.7"/>';
+    g += line([cx, base], [cx, top], 'stroke="var(--easy)" stroke-width="1.8" stroke-dasharray="5 4"');
+    g += line([cx, base], [cx + R, base], 'stroke="var(--brand)" stroke-width="1.8"');
+    g += line([cx, top], [cx + r, top], 'stroke="var(--brass)" stroke-width="1.8"');
+    g += line([cx + r, top], [cx + R, base], 'stroke="var(--hard)" stroke-width="2"');
+    g += LT(cx - 10, (base + top) / 2, 'h', 'var(--easy)', 12);
+    g += LT(cx + 34, base - 12, 'R', 'var(--brand)', 12);
+    g += LT(cx + 15, top - 16, 'r', 'var(--brass)', 12);
+    g += LT(cx + 58, (base + top) / 2 + 4, 'l', 'var(--hard)', 12);
+    g += LT(W / 2, H - 6, 'V = ⅓πh(R² + Rr + r²)  ·  S_lat = πl(R + r)', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
   w.FIG = F;
   w.FIGH = { svg: svg, L: L, LT: LT, dot: dot, poly: poly, line: line, ticks: ticks, ang: ang, right: right, mid: mid, cent: cent, norm: norm, S: S };
 })(window);

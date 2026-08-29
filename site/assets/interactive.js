@@ -1247,6 +1247,82 @@
     draw();
   };
 
+  /* Two similar solids side by side, with the k, k² and k³ factors shown as
+     bars. The point learners miss is that the three bars grow at very
+     different rates, and the model makes that impossible to miss. */
+  INT.scaleSolid = function (host, opt) {
+    var body = frame(host, (opt && opt.title) || 'Lengths, areas and volumes',
+      'Change the scale factor k and watch the three quantities grow at different rates.');
+    var row = ctrlRow(body);
+    var svg = stage(body, '0 0 360 230', 460);
+    var read = readoutBar(body, ['k', 'length ×', 'area ×k²', 'volume ×k³']);
+    var k = 1.5;
+
+    function box(ox, oy, w, h, d, fill, stroke) {
+      var o = '';
+      var pts = function (a, b) { return a.toFixed(1) + ',' + b.toFixed(1); };
+      /* front face */
+      o += '<polygon points="' + pts(ox, oy) + ' ' + pts(ox + w, oy) + ' ' +
+        pts(ox + w, oy - h) + ' ' + pts(ox, oy - h) + '" fill="' + fill +
+        '" fill-opacity="0.75" stroke="' + stroke + '" stroke-width="1.6"/>';
+      /* top face */
+      o += '<polygon points="' + pts(ox, oy - h) + ' ' + pts(ox + w, oy - h) + ' ' +
+        pts(ox + w + d, oy - h - d * 0.6) + ' ' + pts(ox + d, oy - h - d * 0.6) +
+        '" fill="' + fill + '" fill-opacity="0.5" stroke="' + stroke + '" stroke-width="1.4"/>';
+      /* side face */
+      o += '<polygon points="' + pts(ox + w, oy) + ' ' + pts(ox + w + d, oy - d * 0.6) + ' ' +
+        pts(ox + w + d, oy - h - d * 0.6) + ' ' + pts(ox + w, oy - h) +
+        '" fill="' + fill + '" fill-opacity="0.35" stroke="' + stroke + '" stroke-width="1.4"/>';
+      return o;
+    }
+
+    function draw() {
+      svg.innerHTML = '';
+      var base = 34;                       /* the small solid's front width */
+      var g = box(24, 168, base, base * 0.8, base * 0.5,
+        'var(--faint)', 'var(--muted)');
+      var b2 = base * k;
+      g += box(96, 168, b2, b2 * 0.8, b2 * 0.5, 'var(--brand-tint)', 'var(--brand)');
+      svg.insertAdjacentHTML('beforeend', g);
+      svg.appendChild(S('text', {
+        x: 24 + base / 2, y: 190, 'font-family': 'IBM Plex Mono,monospace', 'font-size': 10,
+        fill: 'var(--muted)', 'text-anchor': 'middle'
+      }, 'original'));
+      svg.appendChild(S('text', {
+        x: 96 + b2 / 2, y: 190, 'font-family': 'IBM Plex Mono,monospace', 'font-size': 10,
+        fill: 'var(--muted)', 'text-anchor': 'middle'
+      }, 'scaled by k'));
+
+      /* three bars, on a shared logarithmic-free scale capped at the largest */
+      var vals = [k, k * k, k * k * k];
+      var names = ['k', 'k²', 'k³'];
+      var cols = ['var(--easy)', 'var(--brass)', 'var(--brand)'];
+      var bx = 236, bot = 176, top = 30, mx = Math.max(vals[2], 1);
+      vals.forEach(function (v, i) {
+        var hh = (bot - top) * v / mx;
+        svg.appendChild(S('rect', {
+          x: bx + i * 34, y: r1(bot - hh), width: 24, height: r1(hh),
+          fill: cols[i], 'fill-opacity': 0.8
+        }));
+        svg.appendChild(S('text', {
+          x: bx + i * 34 + 12, y: bot + 14, 'font-family': 'IBM Plex Mono,monospace',
+          'font-size': 11, fill: 'var(--muted)', 'text-anchor': 'middle'
+        }, names[i]));
+        svg.appendChild(S('text', {
+          x: bx + i * 34 + 12, y: r1(bot - hh) - 6, 'font-family': 'IBM Plex Mono,monospace',
+          'font-size': 10, fill: cols[i], 'text-anchor': 'middle'
+        }, String(r2(v))));
+      });
+
+      read['k'].textContent = r2(k);
+      read['length ×'].textContent = r2(k);
+      read['area ×k²'].textContent = r2(k * k);
+      read['volume ×k³'].textContent = r2(k * k * k);
+    }
+    slider(row, 'scale factor k', 0.5, 3, k, 0.05, function (v) { k = v; draw(); });
+    draw();
+  };
+
   INT.mount = function (host, spec) {
     var fn = INT[spec.type];
     if (!fn) { host.innerHTML = '<p class="small">Unknown model: ' + spec.type + '</p>'; return; }
