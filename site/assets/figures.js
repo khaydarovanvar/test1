@@ -548,7 +548,11 @@
     return svg('0 0 ' + W + ' 96', out);
   };
   F.rootLadder = function () {
-    var rows = [['√a', 'a^(1/2)'], ['∛a', 'a^(1/3)'], ['⁴√a', 'a^(1/4)'], ['ⁿ√aᵐ', 'a^(m/n)']];
+    /* the power side is drawn with a raised, smaller tspan — a real superscript */
+    function pw(e) {
+      return 'a<tspan font-size="10.5" dy="-6">' + e + '</tspan>';
+    }
+    var rows = [['√a', pw('1/2')], ['∛a', pw('1/3')], ['⁴√a', pw('1/4')], ['ⁿ√aᵐ', pw('m/n')]];
     var out = '';
     rows.forEach(function (r, i) {
       var y = 34 + i * 40;

@@ -5,7 +5,7 @@
 
   // {{fig:name}} -> inline SVG figure
   function figs(html) {
-    return String(html).replace(/\{\{fig:([a-zA-Z]+)(?::([^}]*))?\}\}/g, function (_, name, cap) {
+    return String(html).replace(/\{\{fig:([a-zA-Z0-9_]+)(?::([^}]*))?\}\}/g, function (_, name, cap) {
       var fn = w.FIG && w.FIG[name];
       if (!fn) return '<p class="small">[missing figure: ' + name + ']</p>';
       return '<figure class="fig">' + fn() +
