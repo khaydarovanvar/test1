@@ -5570,3 +5570,1914 @@ G8_GEO.push({
     m('State the centre and radius of (x − 5)² + (y + 2)² = 64.')
   ]
 });
+
+G8_GEO.push({
+  id: 'geo-38', stream: 'geo', grade: 8, quarter: 4, lessons: '53–54', hours: 2,
+  title: 'A line and a circle; the tangent',
+  subtitle: 'Three possible relationships, decided by one comparison — and the property that makes tangents useful.',
+  uz: 'Geometry 8, Тема 55', uzPage: 'Тема 55, pp. 128–131',
+  cam: 'Stage 9 · 7.1', camPage: 'Learner’s Book pp. 142–148', wb: 'Workbook 7.1',
+  objectives: [
+    'Compare the distance from the centre with the radius to classify a line.',
+    'State and use the tangent–radius property.',
+    'Use the fact that two tangents from one point are equal.',
+    'Construct a tangent to a circle at a given point.'
+  ],
+  terms: [
+    ['Tangent', 'Urinma', 'Касательная'],
+    ['Secant', 'Kesuvchi', 'Секущая'],
+    ['Point of tangency', 'Urinish nuqtasi', 'Точка касания'],
+    ['Distance to a line', 'Chiziqqacha masofa', 'Расстояние до прямой'],
+    ['Perpendicular', 'Perpendikulyar', 'Перпендикуляр'],
+    ['Chord', 'Vatar', 'Хорда'],
+    ['Radius', 'Radius', 'Радиус'],
+    ['External point', 'Tashqi nuqta', 'Внешняя точка'],
+    ['Equal tangents', 'Teng urinmalar', 'Равные касательные']
+  ],
+  timing: [[6, 'Slide a ruler towards a drawn circle'], [12, 'Three positions'], [12, 'The tangent property'], [6, 'Two tangents from a point'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'Three positions of a line',
+      html: `<p>Let ${m('d')} be the distance from the centre ${m('O')} to the line, and ${m('r')} the
+      radius. Everything is decided by comparing them:</p>
+      {{fig:linePositions:A line either misses the circle, touches it once, or cuts it twice — decided by d against r.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Comparison</th><th>Name</th><th>Common points</th></tr></thead>
+      <tbody>
+        <tr><td class="m">d &gt; r</td><td>no name — the line misses</td><td class="m">0</td></tr>
+        <tr><td class="m">d = r</td><td>tangent</td><td class="m">1</td></tr>
+        <tr><td class="m">d &lt; r</td><td>secant</td><td class="m">2</td></tr>
+      </tbody></table></div>
+      <p>Remember that “distance from a point to a line” always means the <b>perpendicular</b> distance —
+      the shortest one.</p>`
+    },
+    {
+      h: 'The tangent property',
+      html: `<div class="keybox"><div class="klabel">Tangent and radius</div>
+      A tangent is <b>perpendicular</b> to the radius drawn to the point of tangency.
+      ${eq(m('OT ⟂ t'), true)}
+      And conversely: a line through the end of a radius, perpendicular to it, is a tangent.</div>
+      {{fig:tangentProperty:The radius to the point of tangency is perpendicular to the tangent — so a right-angled triangle appears in every tangent problem.}}
+      <p>Why: of all the points on a tangent, the point of tangency ${m('T')} is the only one on the
+      circle; every other point is outside, hence further from ${m('O')}. So ${m('OT')} is the shortest
+      distance from ${m('O')} to the line — and the shortest distance is the perpendicular.</p>
+      <p>The consequence is practical: <b>every tangent problem contains a right-angled triangle</b>, so
+      Pythagoras and the trigonometry of Quarter II apply immediately.</p>`
+    },
+    {
+      h: 'Two tangents from one point',
+      html: `<div class="keybox"><div class="klabel">Equal tangents</div>
+      From a point ${m('P')} outside a circle, the two tangent segments are <b>equal</b>:
+      ${eq(m('PA = PB'), true)}
+      and ${m('OP')} bisects both the angle ${m('APB')} and the angle ${m('AOB')}.</div>
+      <p>Proof: the triangles ${m('OAP')} and ${m('OBP')} are right-angled at ${m('A')} and ${m('B')},
+      share the hypotenuse ${m('OP')}, and have equal legs ${m('OA = OB = r')}. They are congruent, so
+      ${m('PA = PB')}.</p>
+      <p>To find ${m('PA')}: ${m('PA = ' + sr('OP² − r²'))} — Pythagoras in that right triangle.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A circle has radius ' + m('5 cm') + '. A line lies ' + m('5 cm') + ' from the centre. What is it, and how many points does it share with the circle?',
+      steps: [
+        [m('d = 5, r = 5'), ''],
+        [m('d = r'), 'The middle case.'],
+        ['It is a tangent, meeting the circle at exactly one point.', '']
+      ],
+      ans: 'A tangent; one common point'
+    },
+    {
+      q: 'From a point ' + m('P') + ', ' + m('13 cm') + ' from the centre of a circle of radius ' + m('5 cm') + ', a tangent is drawn. Find its length.',
+      steps: [
+        [m('OT ⟂ PT'), 'The tangent property gives a right angle at ' + m('T') + '.'],
+        [m('PT² = OP² − OT²'), 'Pythagoras.'],
+        [m('= 169 − 25 = 144'), ''],
+        [m('PT = 12 cm'), '']
+      ],
+      ans: m('12 cm')
+    },
+    {
+      q: 'Two tangents from ' + m('P') + ' touch a circle of radius ' + m('6') + ' at ' + m('A') + ' and ' + m('B') + ', and ' + m('∠APB = 60°') + '. Find ' + m('OP') + ' and ' + m('PA') + '.',
+      steps: [
+        [m('OP') + ' bisects ' + m('∠APB') + ', so ' + m('∠APO = 30°'), ''],
+        [m('sin 30° = ' + f('6', 'OP')), 'In the right triangle ' + m('OAP') + '.'],
+        [m('OP = ' + f('6', '0.5') + ' = 12'), ''],
+        [m('PA = ' + sr('144 − 36') + ' = ' + sr('108') + ' = 6' + sr('3') + ' ≈ 10.4'), '']
+      ],
+      ans: m('OP = 12') + ', ' + m('PA = 6' + sr('3'))
+    }
+  ],
+  modelNote: 'Drag the point round the circle and watch the right angle at the point of tangency.',
+  interactive: { type: 'circleAngles', title: 'Radius, chord and tangent' },
+  quiz: [
+    { q: 'If ' + m('d < r') + ', the line is:', a: ['a tangent', 'a secant', 'outside the circle', 'a radius'], c: 1, why: 'It cuts the circle twice.' },
+    { q: 'A tangent meets the radius at the point of tangency at:', a: [m('45°'), m('60°'), m('90°'), 'any angle'], c: 2, why: 'The tangent property.' },
+    { q: 'A circle of radius ' + m('8') + ' and a line ' + m('8') + ' from the centre share:', a: ['0 points', '1 point', '2 points', 'infinitely many'], c: 1, why: m('d = r') + ' — a tangent.' },
+    { q: 'From ' + m('P') + ' with ' + m('OP = 10') + ' and ' + m('r = 6') + ', the tangent length is:', a: [m('4'), m('8'), m('16'), m('2')], c: 1, why: m(sr('100 − 36') + ' = 8') + '.' },
+    { q: 'Two tangents from one external point are:', a: ['equal', 'perpendicular', 'parallel', 'unrelated'], c: 0, why: 'The two right triangles are congruent.' }
+  ],
+  practice: {
+    easy: [
+      [m('r = 7, d = 9. Classify the line.'), 'It misses the circle.'],
+      [m('r = 7, d = 7. Classify the line.'), 'A tangent.'],
+      [m('r = 7, d = 3. Classify the line.'), 'A secant.'],
+      [m('OP = 5, r = 3. Find the tangent length.'), m('4')],
+      [m('OP = 13, r = 12. Find the tangent length.'), m('5')],
+      [m('What angle does a tangent make with the radius at the point of tangency?'), m('90°')],
+      [m('PA and PB are tangents with PA = 9. Find PB.'), m('9')]
+    ],
+    med: [
+      [m('OP = 17, r = 8. Find the tangent length.'), m('15')],
+      [m('The tangent from P is 24 and r = 7. Find OP.'), m('25')],
+      [m('The tangent from P is 12 and OP = 15. Find r.'), m('9')],
+      [m('A circle of radius 10 has a chord 5 from the centre. Is the chord’s line a secant?'), 'Yes — ' + m('5 < 10')],
+      [m('Two tangents from P touch a circle of radius 5 with ∠APB = 90°. Find OP.'), m('5' + sr('2') + ' ≈ 7.07')],
+      [m('A circle has radius 6 and centre (0; 0). Is the line y = 6 a tangent?'), 'Yes — its distance from the origin is exactly ' + m('6') + '.'],
+      [m('OP = 20, r = 16. Find the tangent length.'), m('12')]
+    ],
+    hard: [
+      [m('Two tangents from P touch a circle of radius 9 at A and B, with ∠APB = 60°. Find PA and the area of OAPB.'), m('OP = 18') + ', ' + m('PA = 9' + sr('3')) + ', area ' + m('81' + sr('3') + ' ≈ 140')],
+      [m('A circle of radius 5 is inscribed in a right triangle with legs 12 and 16. Verify that r = 4 instead, using area.'), 'Hypotenuse ' + m('20') + '; ' + m('r = ' + f('12 + 16 − 20', '2') + ' = 4') + ', so the radius is 4, not 5.'],
+      [m('A tangent from P is 15 and r = 8. Find OP and sin ∠OPA.'), m('OP = 17') + ', ' + m('sin ∠OPA = ' + f('8', '17'))],
+      [m('The line x = 5 and the circle x² + y² = 25. How many common points?'), 'One — ' + m('d = 5 = r') + ', a tangent at ' + m('(5; 0)') + '.'],
+      [m('A circle of radius r sits in a corner, touching both arms of a right angle. Its centre is 10 from the corner. Find r.'), m('r' + sr('2') + ' = 10') + ', so ' + m('r = 5' + sr('2') + ' ≈ 7.07')],
+      [m('Two circles of radii 3 and 5 have their centres 10 apart. Find the length of a common external tangent.'), m(sr('100 − 4') + ' = ' + sr('96') + ' ≈ 9.8')],
+      [m('Explain why the perpendicular from the centre is the shortest distance to a tangent.'), 'Every point of a tangent except the point of tangency lies outside the circle, so it is more than ' + m('r') + ' from the centre; the point of tangency is exactly ' + m('r') + ' away, so it is the nearest — and the nearest point on a line is the foot of the perpendicular.']
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Тема 55, pp. 128–131. Mark the right angle in every diagram.',
+  homework: [
+    m('r = 9, d = 4. Classify the line and say how many common points there are.'),
+    m('OP = 25, r = 7. Find the tangent length.'),
+    m('The tangent from P is 8 and r = 6. Find OP.'),
+    m('Two tangents from P touch a circle of radius 4 with ∠APB = 90°. Find OP and PA.'),
+    m('Is the line y = 7 a tangent to x² + y² = 49? Justify.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-39', stream: 'geo', grade: 8, quarter: 4, lessons: '55', hours: 1,
+  title: 'Two circles; the central angle and its arc',
+  subtitle: 'How two circles can meet, and the angle that measures an arc exactly.',
+  uz: 'Geometry 8, Тема 56', uzPage: 'Тема 56, pp. 132–134',
+  cam: 'Stage 9 · 7.1', camPage: 'Learner’s Book pp. 142–148', wb: 'Workbook 7.1',
+  objectives: [
+    'Classify the position of two circles from the distance between their centres.',
+    'Define the central angle and the degree measure of an arc.',
+    'Find the arc length and the sector area from the central angle.',
+    'Use the fact that equal arcs subtend equal central angles.'
+  ],
+  terms: [
+    ['Central angle', 'Markaziy burchak', 'Центральный угол'],
+    ['Arc', 'Yoy', 'Дуга'],
+    ['Degree measure of an arc', 'Yoyning gradus o‘lchovi', 'Градусная мера дуги'],
+    ['Concentric circles', 'Konsentrik aylanalar', 'Концентрические окружности'],
+    ['Internally tangent', 'Ichdan urinuvchi', 'Касающиеся внутренним образом'],
+    ['Externally tangent', 'Tashqaridan urinuvchi', 'Касающиеся внешним образом'],
+    ['Intersecting circles', 'Kesishuvchi aylanalar', 'Пересекающиеся окружности'],
+    ['Line of centres', 'Markazlar chizig‘i', 'Линия центров'],
+    ['Major / minor arc', 'Katta / kichik yoy', 'Большая / меньшая дуга']
+  ],
+  timing: [[6, 'Move two paper circles together'], [12, 'Positions of two circles'], [14, 'Central angle and arc'], [4, 'Arc length again'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'Two circles',
+      html: `<p>Let ${m('d')} be the distance between the centres and ${m('R')}, ${m('r')} the radii,
+      with ${m('R ≥ r')}:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Condition</th><th>Position</th><th>Common points</th></tr></thead>
+      <tbody>
+        <tr><td class="m">d &gt; R + r</td><td>outside each other</td><td class="m">0</td></tr>
+        <tr><td class="m">d = R + r</td><td>externally tangent</td><td class="m">1</td></tr>
+        <tr><td class="m">R − r &lt; d &lt; R + r</td><td>intersecting</td><td class="m">2</td></tr>
+        <tr><td class="m">d = R − r</td><td>internally tangent</td><td class="m">1</td></tr>
+        <tr><td class="m">d &lt; R − r</td><td>one inside the other</td><td class="m">0</td></tr>
+        <tr><td class="m">d = 0</td><td>concentric</td><td class="m">0</td></tr>
+      </tbody></table></div>
+      <p>Note the pattern: the sum ${m('R + r')} controls the outside cases, the difference
+      ${m('R − r')} the inside ones. Two circles touch exactly when ${m('d')} hits one of those two
+      values.</p>`
+    },
+    {
+      h: 'The central angle measures the arc',
+      html: `<p>An angle with its vertex <b>at the centre</b> is a <b>central angle</b>. It cuts off two
+      arcs; the smaller is the <b>minor</b> arc, the larger the <b>major</b> arc.</p>
+      {{fig:centralAngle:A central angle and the arc it cuts off have the same degree measure.}}
+      <div class="keybox"><div class="klabel">Degree measure of an arc</div>
+      The degree measure of an arc equals the central angle that subtends it.
+      ${eq('arc ' + m('AB') + ' = ' + m('∠AOB'), true)}
+      A whole circle is ${m('360°')}, a semicircle ${m('180°')}, a quarter ${m('90°')}.</div>
+      <p>Degrees and length are different things. A ${m('60°')} arc is always one sixth of its circle,
+      but its <b>length</b> depends on the radius:</p>
+      ${eq(m('ℓ = ' + f('α', '360°') + ' · 2πr') + '&nbsp;&nbsp;|&nbsp;&nbsp;' + m('S<sub>sector</sub> = ' + f('α', '360°') + ' · πr²'))}
+      <div class="warn"><span class="wl">Equal arcs, one circle</span>
+      Equal central angles give equal arcs <b>in the same circle</b> (or in circles of equal radius).
+      A ${m('60°')} arc of a large circle is far longer than a ${m('60°')} arc of a small one.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Two circles have radii ' + m('8') + ' and ' + m('3') + ', and their centres are ' + m('11') + ' apart. Describe their position.',
+      steps: [
+        [m('R + r = 11'), ''],
+        [m('d = 11 = R + r'), 'Exactly the sum.'],
+        ['They touch externally at one point.', 'The point of contact lies on the line of centres.']
+      ],
+      ans: 'Externally tangent'
+    },
+    {
+      q: 'A central angle of ' + m('72°') + ' is drawn in a circle of radius ' + m('10') + '. Find the arc it cuts off and the sector area.',
+      steps: [
+        [m(f('72', '360') + ' = ' + f('1', '5')), 'One fifth of the circle.'],
+        [m('ℓ = ' + f('1', '5') + ' · 20π = 4π ≈ 12.6'), ''],
+        [m('S = ' + f('1', '5') + ' · 100π = 20π ≈ 62.8'), '']
+      ],
+      ans: m('ℓ = 4π') + ', ' + m('S = 20π')
+    }
+  ],
+  modelNote: 'Drag the points and compare the central angle with the arc it cuts off.',
+  interactive: { type: 'circleAngles', title: 'The central angle' },
+  quiz: [
+    { q: 'Circles of radii ' + m('5') + ' and ' + m('3') + ' with ' + m('d = 8') + ' are:', a: ['separate', 'externally tangent', 'intersecting', 'internally tangent'], c: 1, why: m('d = R + r') + '.' },
+    { q: 'Circles of radii ' + m('9') + ' and ' + m('4') + ' with ' + m('d = 5') + ' are:', a: ['separate', 'externally tangent', 'intersecting', 'internally tangent'], c: 3, why: m('d = R − r') + '.' },
+    { q: 'A central angle of ' + m('90°') + ' cuts off an arc of:', a: [m('45°'), m('90°'), m('180°'), m('360°')], c: 1, why: 'The arc has the same degree measure.' },
+    { q: 'A ' + m('60°') + ' arc of a circle of radius ' + m('6') + ' has length:', a: [m('π'), m('2π'), m('6π'), m('12π')], c: 1, why: m(f('1', '6') + ' · 12π') + '.' },
+    { q: 'Concentric circles have:', a: ['the same radius', 'the same centre', 'one common point', 'two common points'], c: 1, why: m('d = 0') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('R = 6, r = 2, d = 10. Describe the position.'), 'Separate.'],
+      [m('R = 6, r = 2, d = 8. Describe the position.'), 'Externally tangent.'],
+      [m('R = 6, r = 2, d = 4. Describe the position.'), 'Internally tangent.'],
+      [m('R = 6, r = 2, d = 5. Describe the position.'), 'Intersecting.'],
+      [m('Find the arc measure of a 45° central angle.'), m('45°')],
+      [m('Find the length of a 90° arc in a circle of radius 8.'), m('4π')],
+      [m('Find the sector area of a 180° sector of radius 4.'), m('8π')]
+    ],
+    med: [
+      [m('R = 10, r = 4, d = 14. Describe the position and the number of common points.'), 'Externally tangent, 1 point.'],
+      [m('R = 10, r = 4, d = 3. Describe the position.'), 'One inside the other, no common points.'],
+      [m('Find the length of a 120° arc in a circle of radius 9.'), m('6π')],
+      [m('Find the sector area of a 120° sector of radius 9.'), m('27π')],
+      [m('An arc of 40° has length 4π. Find the radius.'), m('r = 18')],
+      [m('A sector of 60° has area 6π. Find the radius.'), m('r = 6')],
+      [m('Two circles of radius 5 have centres 6 apart. How many common points?'), m('2') + ' — intersecting']
+    ],
+    hard: [
+      [m('Two circles of radii 7 and 3 touch internally. Find the distance between the centres, and again if they touch externally.'), m('4') + ' internally, ' + m('10') + ' externally'],
+      [m('A circle of radius 12 has an arc of length 8π. Find its central angle.'), m('120°')],
+      [m('A sector of radius 10 has area 15π. Find its angle and arc length.'), m('54°') + ', arc ' + m('3π')],
+      [m('Two circles of radius 6 intersect, and their centres are 6 apart. Find the angle subtended at each centre by the common chord.'), m('120°') + ' — the triangle of two radii and the line of centres is equilateral, twice over'],
+      [m('For what values of d do circles of radii 8 and 5 intersect at two points?'), m('3 < d < 13')],
+      [m('A running track is a circle of radius 50 m. How long is the arc of a 30° turn?'), m(f('1', '12') + ' · 100π ≈ 26.2 m')],
+      [m('Explain why two arcs of the same degree measure can have different lengths.'), 'Degree measure records what fraction of its own circle an arc is; length also depends on how big that circle is, through the factor ' + m('2πr') + '.']
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Тема 56, pp. 132–134. Compare ' + m('d') + ' with ' + m('R + r') + ' and ' + m('R − r') + ' every time.',
+  homework: [
+    m('R = 9, r = 4, d = 13. Describe the position.'),
+    m('R = 9, r = 4, d = 5. Describe the position.'),
+    m('Find the length of a 150° arc in a circle of radius 12.'),
+    m('Find the sector area of a 45° sector of radius 8.'),
+    m('An arc of 60° has length 5π. Find the radius.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-40', stream: 'geo', grade: 8, quarter: 4, lessons: '56', hours: 1,
+  title: 'The inscribed angle',
+  subtitle: 'Move the vertex anywhere along the arc and the angle never changes — the most useful theorem in the chapter.',
+  uz: 'Geometry 8, Тема 57', uzPage: 'Тема 57, pp. 135–137',
+  cam: 'Stage 9 · 7.1', camPage: 'Learner’s Book pp. 142–148', wb: 'Workbook 7.1',
+  objectives: [
+    'State and use the inscribed angle theorem.',
+    'Use the corollary that an angle in a semicircle is a right angle.',
+    'Use the corollary that angles on the same arc are equal.',
+    'Find angles in a cyclic quadrilateral.'
+  ],
+  terms: [
+    ['Inscribed angle', 'Ichki chizilgan burchak', 'Вписанный угол'],
+    ['Subtended by an arc', 'Yoyga tiralgan', 'Опирающийся на дугу'],
+    ['Angle in a semicircle', 'Yarim aylanaga tiralgan burchak', 'Угол, опирающийся на диаметр'],
+    ['Same arc', 'Bir xil yoy', 'Одна и та же дуга'],
+    ['Cyclic quadrilateral', 'Aylanaga ichki chizilgan to‘rtburchak', 'Вписанный четырёхугольник'],
+    ['Opposite angles', 'Qarama-qarshi burchaklar', 'Противоположные углы'],
+    ['Corollary', 'Natija', 'Следствие'],
+    ['Diameter', 'Diametr', 'Диаметр']
+  ],
+  timing: [[5, 'Guess before measuring'], [14, 'The theorem'], [12, 'The three corollaries'], [5, 'Cyclic quadrilaterals'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'The theorem',
+      html: `<p>An angle with its vertex <b>on</b> the circle, whose arms are two chords, is an
+      <b>inscribed angle</b>.</p>
+      {{fig:inscribedAngle:An inscribed angle is exactly half the central angle standing on the same arc.}}
+      <div class="keybox"><div class="klabel">Inscribed angle theorem</div>
+      ${eq(m('∠ACB = ' + f('1', '2') + ' ∠AOB'), true)}
+      An inscribed angle is <b>half</b> the central angle on the same arc — equivalently, half the degree
+      measure of that arc.</div>
+      <p>The proof, in the case where ${m('C')}, ${m('O')} and one chord line up: triangle ${m('OCB')} is
+      isosceles (${m('OC = OB = r')}), so its base angles are equal, say ${m('β')} each. The exterior
+      angle at ${m('O')} is then ${m('2β')} — and that exterior angle is the central angle. The general
+      case follows by splitting the angle into two such pieces.</p>`
+    },
+    {
+      h: 'Three corollaries you will use constantly',
+      html: `<div class="keybox"><div class="klabel">1 · Angles on the same arc</div>
+      All inscribed angles standing on the <b>same arc</b> are equal — they are all half of the one
+      central angle. Move the vertex anywhere along the far arc; the angle does not move.</div>
+      {{fig:semicircleAngle:An angle inscribed in a semicircle is always a right angle, because the central angle is the straight angle 180°.}}
+      <div class="keybox"><div class="klabel">2 · Angle in a semicircle</div>
+      An angle subtended by a <b>diameter</b> is ${m('90°')} — the central angle is the straight angle
+      ${m('180°')}, and half of that is ${m('90°')}.</div>
+      <div class="keybox"><div class="klabel">3 · Cyclic quadrilateral</div>
+      In a quadrilateral whose four vertices lie on one circle, opposite angles add to ${m('180°')}:
+      ${eq(m('∠A + ∠C = ∠B + ∠D = 180°'), true)}
+      because the two arcs they stand on make up the whole ${m('360°')}.</div>
+      <div class="warn"><span class="wl">Same arc, not just same chord</span>
+      Two angles standing on the same chord but on <b>opposite sides</b> of it are not equal — they are
+      supplementary. That is corollary 3 in disguise.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A central angle is ' + m('80°') + '. Find the inscribed angle on the same arc.',
+      steps: [
+        [m('∠inscribed = ' + f('1', '2') + ' · 80°'), ''],
+        [m('= 40°'), 'And every inscribed angle on that arc is ' + m('40°') + '.']
+      ],
+      ans: m('40°')
+    },
+    {
+      q: m('AB') + ' is a diameter and ' + m('C') + ' is on the circle, with ' + m('∠CAB = 35°') + '. Find the other two angles of triangle ' + m('ABC') + '.',
+      steps: [
+        [m('∠ACB = 90°'), 'Angle in a semicircle.'],
+        [m('∠ABC = 180° − 90° − 35°'), 'Angle sum of a triangle.'],
+        [m('= 55°'), '']
+      ],
+      ans: m('∠ACB = 90°') + ', ' + m('∠ABC = 55°')
+    },
+    {
+      q: 'In a cyclic quadrilateral ' + m('ABCD') + ', ' + m('∠A = 78°') + ' and ' + m('∠B = 95°') + '. Find ' + m('∠C') + ' and ' + m('∠D') + '.',
+      steps: [
+        [m('∠C = 180° − 78° = 102°'), 'Opposite to ' + m('∠A') + '.'],
+        [m('∠D = 180° − 95° = 85°'), 'Opposite to ' + m('∠B') + '.'],
+        [m('78 + 95 + 102 + 85 = 360'), 'Check ✓']
+      ],
+      ans: m('∠C = 102°') + ', ' + m('∠D = 85°')
+    }
+  ],
+  modelNote: 'Drag C round the circle: the inscribed angle stays exactly half the central angle.',
+  interactive: { type: 'circleAngles', title: 'Inscribed and central angles' },
+  quiz: [
+    { q: 'A central angle of ' + m('120°') + ' gives an inscribed angle of:', a: [m('60°'), m('120°'), m('240°'), m('30°')], c: 0, why: 'Half.' },
+    { q: 'An angle inscribed in a semicircle is:', a: [m('45°'), m('60°'), m('90°'), m('180°')], c: 2, why: 'Half of the straight angle.' },
+    { q: 'In a cyclic quadrilateral, ' + m('∠A = 110°') + '. Then ' + m('∠C') + ' is:', a: [m('110°'), m('70°'), m('90°'), m('250°')], c: 1, why: 'Opposite angles add to ' + m('180°') + '.' },
+    { q: 'Two inscribed angles on the same arc are:', a: ['equal', 'supplementary', 'complementary', 'unrelated'], c: 0, why: 'Both are half the same central angle.' },
+    { q: 'An inscribed angle of ' + m('25°') + ' stands on an arc of:', a: [m('12.5°'), m('25°'), m('50°'), m('75°')], c: 2, why: 'The arc is twice the inscribed angle.' }
+  ],
+  practice: {
+    easy: [
+      [m('A central angle is 60°. Find the inscribed angle on the same arc.'), m('30°')],
+      [m('An inscribed angle is 40°. Find the central angle.'), m('80°')],
+      [m('AB is a diameter and C is on the circle. Find ∠ACB.'), m('90°')],
+      [m('In a cyclic quadrilateral, ∠B = 85°. Find ∠D.'), m('95°')],
+      [m('An inscribed angle stands on a 100° arc. Find it.'), m('50°')],
+      [m('An inscribed angle is 30°. Find its arc.'), m('60°')],
+      [m('Two inscribed angles stand on the same arc and one is 47°. Find the other.'), m('47°')]
+    ],
+    med: [
+      [m('AB is a diameter and ∠CAB = 28°. Find ∠ABC.'), m('62°')],
+      [m('In a cyclic quadrilateral, ∠A = 3∠C. Find both.'), m('∠A = 135°, ∠C = 45°')],
+      [m('A central angle is 140°. Find the inscribed angle on the major arc.'), m('70°')],
+      [m('An inscribed angle of 65° stands on arc AB. Find the central angle AOB.'), m('130°')],
+      [m('In a cyclic quadrilateral ABCD, ∠A = 92° and ∠D = 71°. Find ∠B and ∠C.'), m('∠C = 88°, ∠B = 109°')],
+      [m('AB is a diameter, ∠ABC = 40°. Find the arc AC.'), m('80°')],
+      [m('An inscribed angle stands on a semicircle. What is its arc?'), m('180°')]
+    ],
+    hard: [
+      [m('AB is a diameter of a circle of radius 10 and ∠CAB = 30°. Find BC and AC.'), m('BC = 10') + ', ' + m('AC = 10' + sr('3') + ' ≈ 17.3')],
+      [m('In a cyclic quadrilateral the angles, taken in order, are in the ratio 2 : 3 : 4 : 3. Find them.'), m('60°, 90°, 120°, 90°') + ' — opposites: ' + m('60 + 120 = 180') + ' and ' + m('90 + 90 = 180') + ' ✓'],
+      [m('Two chords AB and CD meet at P inside a circle. Show that triangles APC and DPB are similar.'), m('∠A = ∠D') + ' (same arc ' + m('BC') + ') and ' + m('∠C = ∠B') + ' (same arc ' + m('AD') + '), so the triangles have two equal angles each.'],
+      [m('A triangle inscribed in a circle has one side as a diameter of length 26 and another side 10. Find the third side.'), m('24') + ' — the angle opposite the diameter is ' + m('90°')],
+      [m('An inscribed angle of 35° and a central angle on the same arc are drawn. Find the reflex central angle.'), m('360° − 70° = 290°')],
+      [m('Prove that opposite angles of a cyclic quadrilateral add to 180°.'), m('∠A') + ' and ' + m('∠C') + ' are inscribed on the two arcs that together make the whole circle, so their sum is ' + m(f('1', '2') + ' · 360° = 180°') + '.'],
+      [m('A chord of a circle of radius 8 subtends a central angle of 90°. Find its length and the inscribed angle on the major arc.'), m('8' + sr('2') + ' ≈ 11.3') + ', inscribed angle ' + m('45°')]
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Тема 57, pp. 135–137. Name the arc every angle stands on.',
+  homework: [
+    m('A central angle is 110°. Find the inscribed angle on the same arc.'),
+    m('AB is a diameter and ∠CAB = 42°. Find the other two angles of triangle ABC.'),
+    m('In a cyclic quadrilateral, ∠A = 105° and ∠B = 68°. Find ∠C and ∠D.'),
+    m('An inscribed angle of 55° stands on arc AB. Find the arc and the central angle.'),
+    m('A triangle inscribed in a circle has a diameter of 20 as one side and another side 12. Find the third side.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-41', stream: 'geo', grade: 8, quarter: 4, lessons: '57', hours: 1,
+  title: 'Angles formed by chords, secants and tangents',
+  subtitle: 'Vertex inside, on, or outside the circle — three positions, three rules, one pattern.',
+  uz: 'Geometry 8, Тема 58', uzPage: 'Тема 58, pp. 138–141',
+  cam: 'Stage 9 · 7.1', camPage: 'Learner’s Book pp. 142–148', wb: 'Workbook 7.1',
+  objectives: [
+    'Find the angle between two chords meeting inside a circle.',
+    'Find the angle between two secants meeting outside a circle.',
+    'Use the tangent–chord angle.',
+    'Choose the right rule from the position of the vertex.'
+  ],
+  terms: [
+    ['Chord', 'Vatar', 'Хорда'],
+    ['Secant', 'Kesuvchi', 'Секущая'],
+    ['Tangent–chord angle', 'Urinma va vatar burchagi', 'Угол между касательной и хордой'],
+    ['Intercepted arc', 'Kesilgan yoy', 'Высекаемая дуга'],
+    ['Vertex inside', 'Uchi ichkarida', 'Вершина внутри'],
+    ['Vertex outside', 'Uchi tashqarida', 'Вершина снаружи'],
+    ['Half the sum', 'Yarim yig‘indi', 'Полусумма'],
+    ['Half the difference', 'Yarim ayirma', 'Полуразность']
+  ],
+  timing: [[5, 'Where is the vertex?'], [12, 'Vertex inside'], [12, 'Vertex outside'], [7, 'Tangent and chord'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'One pattern, three rules',
+      html: `<p>Every rule in this lesson measures an angle by the arcs it cuts off. Which rule you use
+      depends only on <b>where the vertex is</b>:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Vertex</th><th>Angle</th><th>Name</th></tr></thead>
+      <tbody>
+        <tr><td>at the centre</td><td class="m">= arc</td><td>central angle</td></tr>
+        <tr><td>on the circle</td><td class="m">= ½ · arc</td><td>inscribed angle</td></tr>
+        <tr><td>inside the circle</td><td class="m">= ½ (arc₁ + arc₂)</td><td>two chords</td></tr>
+        <tr><td>outside the circle</td><td class="m">= ½ (arc<sub>far</sub> − arc<sub>near</sub>)</td><td>two secants</td></tr>
+      </tbody></table></div>
+      <p>Reading down the table, the vertex moves outward and the angle shrinks: from the whole arc, to
+      half of it, to half a sum, to half a difference.</p>
+      <div class="keybox"><div class="klabel">Tangent and chord</div>
+      The angle between a tangent and a chord drawn from the point of tangency is <b>half</b> the arc
+      the chord cuts off — the inscribed-angle rule, with the tangent standing in for a second chord
+      that has shrunk to nothing.</div>`
+    },
+    {
+      h: 'Using them',
+      html: `<p>Two chords meet inside a circle, cutting arcs of ${m('70°')} and ${m('30°')}:</p>
+      ${eq(m('∠ = ' + f('70° + 30°', '2') + ' = 50°'), true)}
+      <p>Two secants meet outside, cutting arcs of ${m('100°')} (far) and ${m('40°')} (near):</p>
+      ${eq(m('∠ = ' + f('100° − 40°', '2') + ' = 30°'), true)}
+      <div class="warn"><span class="wl">Which arcs?</span>
+      For the <b>inside</b> rule use the two arcs that the vertical angles stand on — the arc “in front”
+      and the arc “behind”. For the <b>outside</b> rule always subtract the nearer arc from the further
+      one; the answer must be positive, which is a useful check.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Two chords meet inside a circle, intercepting arcs of ' + m('86°') + ' and ' + m('54°') + '. Find the angle between them.',
+      steps: [
+        ['The vertex is inside — half the sum.', ''],
+        [m('∠ = ' + f('86° + 54°', '2')), ''],
+        [m('= 70°'), 'And the other pair of vertical angles is ' + m('110°') + '.']
+      ],
+      ans: m('70°')
+    },
+    {
+      q: 'Two secants from an external point intercept arcs of ' + m('130°') + ' and ' + m('50°') + '. Find the angle at the point.',
+      steps: [
+        ['The vertex is outside — half the difference.', ''],
+        [m('∠ = ' + f('130° − 50°', '2')), 'Far arc minus near arc.'],
+        [m('= 40°'), 'Positive ✓']
+      ],
+      ans: m('40°')
+    },
+    {
+      q: 'A tangent touches a circle at ' + m('T') + ', and a chord ' + m('TA') + ' cuts off an arc of ' + m('120°') + '. Find the tangent–chord angle.',
+      steps: [
+        [m('∠ = ' + f('1', '2') + ' · 120°'), 'Half the intercepted arc.'],
+        [m('= 60°'), ''],
+        ['On the other side the angle is ' + m('120°') + '.', 'The two make ' + m('180°') + ' along the tangent line.']
+      ],
+      ans: m('60°')
+    }
+  ],
+  modelNote: 'Move the points and check each angle against the arcs it intercepts.',
+  interactive: { type: 'circleAngles', title: 'Angles and their arcs' },
+  quiz: [
+    { q: 'Two chords meet inside, cutting arcs of ' + m('80°') + ' and ' + m('40°') + '. The angle is:', a: [m('60°'), m('120°'), m('20°'), m('40°')], c: 0, why: 'Half the sum.' },
+    { q: 'Two secants meet outside, cutting arcs of ' + m('110°') + ' and ' + m('30°') + '. The angle is:', a: [m('70°'), m('40°'), m('80°'), m('140°')], c: 1, why: 'Half the difference.' },
+    { q: 'A tangent–chord angle cuts off an arc of ' + m('100°') + '. The angle is:', a: [m('100°'), m('50°'), m('200°'), m('80°')], c: 1, why: 'Half the arc.' },
+    { q: 'The vertex is on the circle. The angle is:', a: ['the arc', 'half the arc', 'half the sum', 'half the difference'], c: 1, why: 'Inscribed angle.' },
+    { q: 'For an external vertex you subtract:', a: ['the far arc from the near', 'the near arc from the far', 'nothing', 'both from 360°'], c: 1, why: 'The answer must be positive.' }
+  ],
+  practice: {
+    easy: [
+      [m('Two chords meet inside, arcs 60° and 40°. Find the angle.'), m('50°')],
+      [m('Two secants meet outside, arcs 100° and 20°. Find the angle.'), m('40°')],
+      [m('A tangent–chord angle cuts off an arc of 80°. Find it.'), m('40°')],
+      [m('An inscribed angle stands on a 70° arc. Find it.'), m('35°')],
+      [m('A central angle stands on a 70° arc. Find it.'), m('70°')],
+      [m('Two chords meet inside, arcs 90° and 90°. Find the angle.'), m('90°')],
+      [m('Two secants meet outside, arcs 140° and 60°. Find the angle.'), m('40°')]
+    ],
+    med: [
+      [m('Two chords meet inside, arcs 118° and 46°. Find both pairs of vertical angles.'), m('82°') + ' and ' + m('98°')],
+      [m('Two secants meet outside at 25°, and the near arc is 40°. Find the far arc.'), m('90°')],
+      [m('A tangent–chord angle is 35°. Find the arc and the arc on the other side.'), m('70°') + ' and ' + m('290°')],
+      [m('Two chords meet inside at 65°. One arc is 50°. Find the other.'), m('80°')],
+      [m('Two secants meet outside, far arc 150°, angle 45°. Find the near arc.'), m('60°')],
+      [m('A tangent and a chord cut off arcs of 140° and 220°. Find both angles at the point of tangency.'), m('70°') + ' and ' + m('110°')],
+      [m('Two chords meet inside at 90°. Find the sum of the two intercepted arcs.'), m('180°')]
+    ],
+    hard: [
+      [m('Two secants from P cut a circle so that the arcs, in order, are 100°, 60°, 140° and 60°. Find ∠P.'), m(f('140° − 60°', '2') + ' = 40°')],
+      [m('A tangent at T and a secant from the same external point cut off arcs of 160° and 60°. Find the angle at that point.'), m('50°')],
+      [m('Two chords AB and CD meet at P inside a circle, with arc AC = 74° and arc BD = 36°. Find ∠APC.'), m('55°')],
+      [m('An angle at an external point is 30° and the two arcs differ by how much?'), m('60°')],
+      [m('A quadrilateral is inscribed in a circle and one exterior angle is 85°. Find the interior angle opposite to it.'), m('85°') + ' — the exterior angle equals the opposite interior angle'],
+      [m('A tangent–chord angle equals the inscribed angle on the other side of the chord. Explain why.'), 'Both equal half the same intercepted arc — the tangent behaves like a chord that has shrunk to a point.'],
+      [m('Two secants meet outside at 20°. The near arc is 3 times smaller than the far arc. Find both arcs.'), m('60°') + ' and ' + m('20°')]
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Тема 58, pp. 138–141. Write down where the vertex is before choosing the rule.',
+  homework: [
+    m('Two chords meet inside, arcs 96° and 44°. Find the angle.'),
+    m('Two secants meet outside, arcs 150° and 50°. Find the angle.'),
+    m('A tangent–chord angle cuts off an arc of 130°. Find both angles at the point of tangency.'),
+    m('Two chords meet inside at 72°. One arc is 60°. Find the other.'),
+    m('Two secants meet outside at 35°, near arc 45°. Find the far arc.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-42', stream: 'geo', grade: 8, quarter: 4, lessons: '58', hours: 1,
+  title: 'Chords and diameters',
+  subtitle: 'The perpendicular from the centre bisects the chord — and that one fact solves them all.',
+  uz: 'Geometry 8, Тема 59', uzPage: 'Тема 59, pp. 142–143',
+  cam: 'Stage 9 · 7.1', camPage: 'Learner’s Book pp. 142–148', wb: 'Workbook 7.1',
+  objectives: [
+    'Use the fact that the perpendicular from the centre bisects a chord.',
+    'Find a chord length from the radius and the distance from the centre.',
+    'Compare chords by their distance from the centre.',
+    'Find the radius from a chord and its distance.'
+  ],
+  terms: [
+    ['Chord', 'Vatar', 'Хорда'],
+    ['Diameter', 'Diametr', 'Диаметр'],
+    ['Perpendicular from the centre', 'Markazdan perpendikulyar', 'Перпендикуляр из центра'],
+    ['Bisects', 'Teng ikkiga bo‘ladi', 'Делит пополам'],
+    ['Distance from the centre', 'Markazdan masofa', 'Расстояние от центра'],
+    ['Equal chords', 'Teng vatarlar', 'Равные хорды'],
+    ['Half-chord', 'Yarim vatar', 'Половина хорды'],
+    ['Longest chord', 'Eng uzun vatar', 'Наибольшая хорда']
+  ],
+  timing: [[5, 'Fold a paper circle along a chord'], [14, 'The perpendicular property'], [12, 'Calculations'], [5, 'Comparing chords'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'The perpendicular from the centre',
+      html: `<div class="keybox"><div class="klabel">Chord property</div>
+      The perpendicular drawn from the centre to a chord <b>bisects</b> it — and conversely, the line
+      from the centre to the midpoint of a chord is perpendicular to it.</div>
+      {{fig:chordProperty:The perpendicular from the centre bisects the chord, creating a right triangle with the radius as hypotenuse.}}
+      <p>Proof: join ${m('O')} to both ends of the chord. The triangle ${m('OAB')} is isosceles, because
+      ${m('OA = OB = r')}. In an isosceles triangle the height from the apex is also the median — so it
+      bisects ${m('AB')}.</p>
+      <div class="keybox"><div class="klabel">The right triangle it creates</div>
+      ${eq(m('r² = d² + (' + f('a', '2') + ')²'), true)}
+      where ${m('a')} is the chord and ${m('d')} its distance from the centre. Any two of the three give
+      the third.</div>`
+    },
+    {
+      h: 'Comparing chords',
+      html: `<p>Rearranging that relation as ${m(f('a', '2') + ' = ' + sr('r² − d²'))} shows the whole
+      story: as ${m('d')} grows, the chord shrinks.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">d</th><th>Chord</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0</td><td>the diameter ${m('2r')} — the longest chord</td></tr>
+        <tr><td>small</td><td>a long chord</td></tr>
+        <tr><td class="m">d = r</td><td>the chord shrinks to a point — the line is a tangent</td></tr>
+      </tbody></table></div>
+      <p>Two consequences: <b>equal chords are equidistant from the centre</b>, and of two unequal
+      chords the longer is the nearer. Both follow directly from the formula, with no new proof.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A chord of length ' + m('16 cm') + ' is drawn in a circle of radius ' + m('10 cm') + '. Find its distance from the centre.',
+      steps: [
+        [m(f('a', '2') + ' = 8'), 'The perpendicular bisects the chord.'],
+        [m('10² = d² + 8²'), 'Pythagoras.'],
+        [m('d² = 100 − 64 = 36'), ''],
+        [m('d = 6 cm'), '']
+      ],
+      ans: m('6 cm')
+    },
+    {
+      q: 'A chord is ' + m('5 cm') + ' from the centre of a circle of radius ' + m('13 cm') + '. Find its length.',
+      steps: [
+        [m('(' + f('a', '2') + ')² = 169 − 25 = 144'), ''],
+        [m(f('a', '2') + ' = 12'), ''],
+        [m('a = 24 cm'), 'Do not forget to double.']
+      ],
+      ans: m('24 cm')
+    },
+    {
+      q: 'A chord of ' + m('24 cm') + ' lies ' + m('9 cm') + ' from the centre. Find the radius and the diameter.',
+      steps: [
+        [m(f('a', '2') + ' = 12'), ''],
+        [m('r² = 81 + 144 = 225'), ''],
+        [m('r = 15 cm'), ''],
+        [m('d = 30 cm'), '']
+      ],
+      ans: m('r = 15 cm') + ', ' + m('d = 30 cm')
+    }
+  ],
+  modelNote: 'Move the chord and watch the right triangle formed by the radius, the distance and the half-chord.',
+  interactive: { type: 'circleAngles', title: 'Chords in a circle' },
+  quiz: [
+    { q: 'The perpendicular from the centre to a chord:', a: ['is equal to it', 'bisects it', 'is a tangent', 'is a diameter'], c: 1, why: 'The triangle is isosceles.' },
+    { q: m('r = 5') + ', chord ' + m('8') + '. Its distance from the centre is:', a: [m('3'), m('4'), m('6'), m('2')], c: 0, why: m(sr('25 − 16') + ' = 3') + '.' },
+    { q: m('r = 13') + ', ' + m('d = 12') + '. The chord is:', a: [m('5'), m('10'), m('25'), m('24')], c: 1, why: 'Half-chord ' + m('5') + ', so chord ' + m('10') + '.' },
+    { q: 'The longest chord of a circle is:', a: ['a tangent', 'a radius', 'the diameter', 'any chord'], c: 2, why: m('d = 0') + ' gives the maximum.' },
+    { q: 'Of two chords, the longer is:', a: ['further from the centre', 'nearer the centre', 'the same distance', 'always a diameter'], c: 1, why: m(f('a', '2') + ' = ' + sr('r² − d²')) + ' decreases as ' + m('d') + ' grows.' }
+  ],
+  practice: {
+    easy: [
+      [m('r = 5, chord 6. Find d.'), m('4')],
+      [m('r = 10, d = 8. Find the chord.'), m('12')],
+      [m('r = 13, chord 24. Find d.'), m('5')],
+      [m('Chord 10, d = 12. Find r.'), m('13')],
+      [m('What is the longest chord of a circle of radius 9?'), m('18')],
+      [m('r = 17, d = 15. Find the chord.'), m('16')],
+      [m('r = 25, chord 14. Find d.'), m('24')]
+    ],
+    med: [
+      [m('r = 15, chord 18. Find d.'), m('12')],
+      [m('r = 20, d = 16. Find the chord.'), m('24')],
+      [m('Chord 30, d = 8. Find r and the diameter.'), m('r = 17') + ', ' + m('d = 34')],
+      [m('Two chords of a circle of radius 10 are 6 and 8 from the centre. Find both lengths.'), m('16') + ' and ' + m('12')],
+      [m('r = 26, chord 48. Find d.'), m('10')],
+      [m('A chord of 12 is 8 from the centre. Find the radius.'), m('10')],
+      [m('Two equal chords are 7 from the centre of a circle of radius 25. Find their length.'), m('48')]
+    ],
+    hard: [
+      [m('Two parallel chords of a circle of radius 13 are 10 and 24 long. Find the distance between them, in both possible cases.'), m('12 + 5 = 17') + ' (opposite sides) or ' + m('12 − 5 = 7') + ' (same side)'],
+      [m('A chord subtends a central angle of 60° in a circle of radius 12. Find its length and its distance from the centre.'), 'chord ' + m('12') + ' (equilateral triangle), ' + m('d = 6' + sr('3') + ' ≈ 10.4')],
+      [m('A chord of 16 is 6 from the centre. Find the radius and the central angle it subtends.'), m('r = 10') + '; ' + m('sin(α/2) = 0.8') + ', so ' + m('α ≈ 106°')],
+      [m('A circle of radius 10 has two perpendicular chords through a point 6 from the centre, of lengths 16 and 12. Verify with the chord formula.'), 'Distances ' + m('6') + ' and ' + m('8') + '; ' + m('6² + 8² = 100 = r²') + ' ✓ — the two distances and the radius form a right triangle'],
+      [m('Show that equal chords are equidistant from the centre.'), 'From ' + m(f('a', '2') + ' = ' + sr('r² − d²')) + ', equal ' + m('a') + ' forces equal ' + m('d') + ' in the same circle.'],
+      [m('A chord is 5 from the centre of a circle of area 169π. Find its length.'), m('r = 13') + ', chord ' + m('24')],
+      [m('A tunnel is a circular arc 8 m wide at the base and 2 m high in the middle. Find the radius of the circle.'), m('r = 5 m') + ' — ' + m('r² = (r − 2)² + 4²')]
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Тема 59, pp. 142–143. Draw the right triangle every time.',
+  homework: [
+    m('r = 17, chord 30. Find d.'),
+    m('r = 25, d = 20. Find the chord.'),
+    m('A chord of 40 is 9 from the centre. Find the radius.'),
+    m('Two chords of a circle of radius 15 are 9 and 12 from the centre. Find both lengths.'),
+    m('A tunnel arch is 12 m wide and 4 m high in the middle. Find the radius of its circle.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-43', stream: 'geo', grade: 8, quarter: 4, lessons: '59', hours: 1,
+  title: 'Practical · Large and small units of length and area',
+  subtitle: 'Cambridge insert: the conversions that decide whether an answer is right or a hundred times wrong.',
+  uz: 'Geometry 8, Тема 60', uzPage: 'Тема 60, pp. 144–146',
+  cam: 'Stage 9 · 7.3', camPage: 'Learner’s Book pp. 156–162', wb: 'Workbook 7.3',
+  objectives: [
+    'Convert between units of length and of area.',
+    'Explain why area conversions use the square of the length factor.',
+    'Choose a sensible unit for a given measurement.',
+    'Estimate and check answers for plausibility.'
+  ],
+  terms: [
+    ['Unit of length', 'Uzunlik birligi', 'Единица длины'],
+    ['Unit of area', 'Yuza birligi', 'Единица площади'],
+    ['Conversion factor', 'Almashtirish koeffitsienti', 'Коэффициент перевода'],
+    ['Millimetre', 'Millimetr', 'Миллиметр'],
+    ['Hectare', 'Gektar', 'Гектар'],
+    ['Square kilometre', 'Kvadrat kilometr', 'Квадратный километр'],
+    ['Scale', 'Masshtab', 'Масштаб'],
+    ['Estimate', 'Taxminlash', 'Оценка'],
+    ['Order of magnitude', 'Kattalik tartibi', 'Порядок величины']
+  ],
+  timing: [[5, 'Guess the area of the classroom'], [12, 'Length conversions'], [14, 'Area conversions'], [5, 'Scale and estimation'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'Why area factors are squared',
+      html: `<p>A square of side ${m('1 m')} is also a square of side ${m('100 cm')}. Its area is
+      ${m('1 m²')} — and also ${m('100 · 100 = 10 000 cm²')}. The length factor is ${m('100')}; the area
+      factor is ${m('100² = 10 000')}.</p>
+      <div class="keybox"><div class="klabel">The rule</div>
+      If lengths are multiplied by ${m('k')}, areas are multiplied by ${m('k²')} (and volumes by
+      ${m('k³')}).</div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Length</th><th>Factor</th><th>Area</th><th>Factor</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1 cm = 10 mm</td><td class="m">10</td><td class="m">1 cm² = 100 mm²</td><td class="m">100</td></tr>
+        <tr><td class="m">1 m = 100 cm</td><td class="m">100</td><td class="m">1 m² = 10 000 cm²</td><td class="m">10 000</td></tr>
+        <tr><td class="m">1 km = 1000 m</td><td class="m">1000</td><td class="m">1 km² = 1 000 000 m²</td><td class="m">10<sup>6</sup></td></tr>
+        <tr><td class="m">1 ha = 100 m × 100 m</td><td>—</td><td class="m">1 ha = 10 000 m²</td><td>—</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The commonest error in the whole year</span>
+      Writing ${m('1 m² = 100 cm²')}. It is ${m('10 000')}. When in doubt, draw the square and count.</div>`
+    },
+    {
+      h: 'Scale and estimation',
+      html: `<p>A map at scale ${m('1 : 50 000')} shrinks every length by ${m('50 000')}, so it shrinks
+      every area by ${m('50 000² = 2.5 × 10⁹')}. One square centimetre on that map represents
+      ${m('0.25 km²')}.</p>
+      <p>Before calculating anything, decide what a sensible answer looks like:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Thing</th><th>Roughly</th></tr></thead>
+      <tbody>
+        <tr><td>a page of a book</td><td class="m">≈ 600 cm²</td></tr>
+        <tr><td>a classroom floor</td><td class="m">≈ 50 m²</td></tr>
+        <tr><td>a football pitch</td><td class="m">≈ 0.7 ha</td></tr>
+        <tr><td>a small district</td><td class="m">≈ 100 km²</td></tr>
+      </tbody></table></div>
+      <p>If a calculation gives a classroom of ${m('5000 m²')}, the arithmetic is not wrong by a
+      little — a unit was converted the wrong way.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Convert ' + m('4.5 m²') + ' to cm², and ' + m('250 000 cm²') + ' to m².',
+      steps: [
+        [m('1 m² = 10 000 cm²'), ''],
+        [m('4.5 · 10 000 = 45 000 cm²'), ''],
+        [m('250 000 ÷ 10 000'), 'Divide going the other way.'],
+        [m('= 25 m²'), '']
+      ],
+      ans: m('45 000 cm²') + ' and ' + m('25 m²')
+    },
+    {
+      q: 'A field is ' + m('0.8 km') + ' by ' + m('0.5 km') + '. Find its area in km², m² and hectares.',
+      steps: [
+        [m('0.8 · 0.5 = 0.4 km²'), ''],
+        [m('0.4 · 1 000 000 = 400 000 m²'), ''],
+        [m('400 000 ÷ 10 000 = 40 ha'), '']
+      ],
+      ans: m('0.4 km² = 400 000 m² = 40 ha')
+    },
+    {
+      q: 'On a map of scale ' + m('1 : 25 000') + ', a lake covers ' + m('8 cm²') + '. Find its real area in hectares.',
+      steps: [
+        [m('length factor 25 000'), ''],
+        [m('area factor 25 000² = 625 000 000'), ''],
+        [m('8 cm² · 625 000 000 = 5 × 10⁹ cm²'), ''],
+        [m('= 500 000 m² = 50 ha'), m('10 000 cm² = 1 m²') + '.']
+      ],
+      ans: m('50 ha')
+    }
+  ],
+  modelNote: 'Change the dimensions and watch the area — then convert the readout to another unit by hand.',
+  interactive: { type: 'areaModel', title: 'Dimensions and area' },
+  quiz: [
+    { q: m('1 m²') + ' equals:', a: [m('100 cm²'), m('1000 cm²'), m('10 000 cm²'), m('100 000 cm²')], c: 2, why: m('100 · 100') + '.' },
+    { q: m('1 ha') + ' equals:', a: [m('100 m²'), m('1000 m²'), m('10 000 m²'), m('1 km²')], c: 2, why: 'A square of side ' + m('100 m') + '.' },
+    { q: m('3 cm²') + ' equals:', a: [m('30 mm²'), m('300 mm²'), m('3000 mm²'), m('0.3 mm²')], c: 1, why: m('1 cm² = 100 mm²') + '.' },
+    { q: 'If all lengths are tripled, areas are multiplied by:', a: [m('3'), m('6'), m('9'), m('27')], c: 2, why: m('3²') + '.' },
+    { q: m('2.5 km²') + ' in hectares is:', a: [m('25'), m('250'), m('2500'), m('25 000')], c: 1, why: m('1 km² = 100 ha') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('Convert 2 m² to cm².'), m('20 000 cm²')],
+      [m('Convert 50 000 cm² to m².'), m('5 m²')],
+      [m('Convert 4 cm² to mm².'), m('400 mm²')],
+      [m('Convert 3 ha to m².'), m('30 000 m²')],
+      [m('Convert 2 km² to m².'), m('2 000 000 m²')],
+      [m('Convert 6000 mm² to cm².'), m('60 cm²')],
+      [m('Convert 70 000 m² to hectares.'), m('7 ha')]
+    ],
+    med: [
+      [m('Convert 0.75 m² to cm².'), m('7500 cm²')],
+      [m('Convert 1.2 km² to hectares.'), m('120 ha')],
+      [m('A room is 450 cm by 320 cm. Find its area in m².'), m('14.4 m²')],
+      [m('A field is 250 m by 400 m. Find its area in hectares.'), m('10 ha')],
+      [m('If lengths are halved, what happens to areas?'), 'They become a quarter.'],
+      [m('Convert 85 000 cm² to m².'), m('8.5 m²')],
+      [m('A rectangle is 1.5 km by 800 m. Find its area in km².'), m('1.2 km²')]
+    ],
+    hard: [
+      [m('On a 1 : 10 000 map a park covers 12 cm². Find its real area in hectares.'), m('12 · 10 000² = 1.2 × 10⁹ cm² = 120 000 m² = 12 ha')],
+      [m('A photograph is enlarged so that lengths are 4 times bigger. Its original area was 60 cm². Find the new area.'), m('960 cm²')],
+      [m('A district of 45 km² is shown on a 1 : 50 000 map. Find its area on the map, in cm².'), m('45 × 10¹⁰ cm² ÷ 2.5 × 10⁹ = 180 cm²')],
+      [m('A farm of 3.6 ha is a rectangle 240 m long. Find its width.'), m('150 m')],
+      [m('A tile is 25 cm square. How many are needed for a floor of 18 m²?'), m('288')],
+      [m('Two similar rectangles have sides in the ratio 2 : 5. The smaller has area 12 cm². Find the larger.'), m('75 cm²')],
+      [m('Explain why the area conversion factor is the square of the length factor.'), 'Area is a product of two lengths; multiplying each of them by ' + m('k') + ' multiplies the product by ' + m('k²') + '.']
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Geometry 8, Тема 60, pp. 144–146. Write the conversion factor before converting.',
+  homework: [
+    m('Convert 6.5 m² to cm² and 120 000 cm² to m².'),
+    m('Convert 4.8 km² to hectares.'),
+    m('A room is 520 cm by 380 cm. Find its area in m².'),
+    m('A field 300 m by 500 m — find its area in hectares and in km².'),
+    m('On a 1 : 20 000 map a lake covers 5 cm². Find its real area in hectares.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-44', stream: 'geo', grade: 8, quarter: 4, lessons: '60', hours: 1,
+  title: 'Chapter revision · The circle',
+  subtitle: 'Every rule of the chapter on one page, and the strategy for choosing between them.',
+  uz: 'Geometry 8, Chapter revision', uzPage: 'Темы 55–60, pp. 128–148',
+  cam: 'Stage 9 · 7.1–7.3', camPage: 'Learner’s Book pp. 142–162', wb: 'Workbook 7.1–7.3',
+  objectives: [
+    'Recall every circle rule from Quarter IV.',
+    'Choose the right rule from the position of the vertex.',
+    'Combine the chord property with Pythagoras.',
+    'Work multi-step circle problems.'
+  ],
+  terms: [
+    ['Tangent', 'Urinma', 'Касательная'],
+    ['Secant', 'Kesuvchi', 'Секущая'],
+    ['Chord', 'Vatar', 'Хорда'],
+    ['Central angle', 'Markaziy burchak', 'Центральный угол'],
+    ['Inscribed angle', 'Ichki chizilgan burchak', 'Вписанный угол'],
+    ['Cyclic quadrilateral', 'Ichki chizilgan to‘rtburchak', 'Вписанный четырёхугольник'],
+    ['Arc', 'Yoy', 'Дуга'],
+    ['Sector', 'Sektor', 'Сектор'],
+    ['Revision', 'Takrorlash', 'Повторение']
+  ],
+  timing: [[5, 'Name every rule from memory'], [15, 'The summary table'], [15, 'Mixed problems'], [5, 'What to check tomorrow']],
+  sections: [
+    {
+      h: 'Everything on one page',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Comparison</th><th>The line is</th><th>Common points</th></tr></thead>
+      <tbody>
+        <tr><td class="m">d &gt; r</td><td>outside — it misses</td><td class="m">0</td></tr>
+        <tr><td class="m">d = r</td><td>a tangent</td><td class="m">1</td></tr>
+        <tr><td class="m">d &lt; r</td><td>a secant</td><td class="m">2</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The rules, in order of use</div>
+      <ol style="margin:0">
+        <li><b>Tangent ⟂ radius</b> at the point of tangency — every tangent problem has a right triangle.</li>
+        <li><b>Two tangents from a point are equal</b>, and the line to the centre bisects the angle.</li>
+        <li><b>The perpendicular from the centre bisects a chord</b>: ${m('r² = d² + (a/2)²')}.</li>
+        <li><b>Central angle = arc</b>; <b>inscribed angle = ½ arc</b>.</li>
+        <li><b>Angle in a semicircle = ${m('90°')}</b>; angles on the same arc are equal.</li>
+        <li><b>Cyclic quadrilateral</b>: opposite angles add to ${m('180°')}.</li>
+        <li>Vertex <b>inside</b>: half the sum of the arcs. Vertex <b>outside</b>: half the difference.</li>
+        <li><b>Tangent–chord angle</b> = half the intercepted arc.</li>
+        <li>${m('C = 2πr')}, ${m('S = πr²')}, arc ${m('= ' + f('α', '360°') + ' · 2πr')}, sector ${m('= ' + f('α', '360°') + ' · πr²')}.</li>
+      </ol></div>`
+    },
+    {
+      h: 'How to choose',
+      html: `<p>Every angle question in this chapter is answered by asking one thing first:</p>
+      ${eq('<b>Where is the vertex?</b>', true)}
+      <p>At the centre → the arc. On the circle → half the arc. Inside → half the sum. Outside → half the
+      difference. That question alone chooses the rule in four cases out of five.</p>
+      <p>Every length question is answered by a different single question: <b>where is the right
+      triangle?</b> It is at the point of tangency, or under the perpendicular from the centre to a
+      chord. Draw it in, and Pythagoras finishes the job.</p>
+      <div class="warn"><span class="wl">Two checks before you write the answer</span>
+      An angle in a circle problem is almost never more than ${m('180°')}, and a chord is never longer
+      than the diameter. Both catch a great many slips.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A chord of ' + m('12 cm') + ' is drawn in a circle of radius ' + m('10 cm') + '. Find its distance from the centre and the central angle it subtends.',
+      steps: [
+        [m('r² = d² + 6²'), 'The perpendicular bisects the chord.'],
+        [m('d = ' + sr('100 − 36') + ' = 8 cm'), ''],
+        [m('sin(α/2) = ' + f('6', '10') + ' = 0.6'), 'In the right triangle.'],
+        [m('α/2 ≈ 36.9°, α ≈ 73.7°'), '']
+      ],
+      ans: m('d = 8 cm') + ', ' + m('α ≈ 74°')
+    },
+    {
+      q: 'From an external point ' + m('P') + ', a tangent of length ' + m('8') + ' touches a circle of radius ' + m('6') + '. Find ' + m('OP') + ' and ' + m('∠OPT') + '.',
+      steps: [
+        [m('OP² = 64 + 36 = 100'), 'Tangent ⟂ radius.'],
+        [m('OP = 10'), ''],
+        [m('sin ∠OPT = ' + f('6', '10') + ' = 0.6'), ''],
+        [m('∠OPT ≈ 36.9°'), '']
+      ],
+      ans: m('OP = 10') + ', ' + m('∠OPT ≈ 37°')
+    }
+  ],
+  modelNote: 'Use the model to re-check each rule of the chapter before tomorrow’s paper.',
+  interactive: { type: 'circleAngles', title: 'All the circle angles' },
+  quiz: [
+    { q: 'A tangent meets the radius at:', a: [m('45°'), m('90°'), m('60°'), 'any angle'], c: 1, why: 'Rule 1.' },
+    { q: 'An inscribed angle on a ' + m('140°') + ' arc is:', a: [m('140°'), m('70°'), m('280°'), m('40°')], c: 1, why: 'Half the arc.' },
+    { q: m('r = 13') + ', chord ' + m('10') + '. Its distance from the centre is:', a: [m('5'), m('12'), m('8'), m('6')], c: 1, why: m(sr('169 − 25') + ' = 12') + '.' },
+    { q: 'Vertex outside the circle means:', a: ['half the sum', 'half the difference', 'the arc itself', 'half the arc'], c: 1, why: 'Rule 7.' },
+    { q: 'In a cyclic quadrilateral ' + m('∠A + ∠C') + ' equals:', a: [m('90°'), m('180°'), m('360°'), 'it varies'], c: 1, why: 'Rule 6.' }
+  ],
+  practice: {
+    easy: [
+      [m('r = 10, d = 6. Find the chord.'), m('16')],
+      [m('OP = 13, r = 5. Find the tangent length.'), m('12')],
+      [m('A central angle is 100°. Find the inscribed angle on the same arc.'), m('50°')],
+      [m('AB is a diameter, C on the circle. Find ∠ACB.'), m('90°')],
+      [m('In a cyclic quadrilateral ∠B = 72°. Find ∠D.'), m('108°')],
+      [m('Find the area of a circle of radius 7 (in terms of π).'), m('49π')],
+      [m('Two chords meet inside, arcs 50° and 70°. Find the angle.'), m('60°')]
+    ],
+    med: [
+      [m('r = 17, chord 16. Find d.'), m('15')],
+      [m('A tangent from P is 20 and r = 15. Find OP.'), m('25')],
+      [m('Two secants meet outside, arcs 120° and 40°. Find the angle.'), m('40°')],
+      [m('A tangent–chord angle cuts off a 96° arc. Find it.'), m('48°')],
+      [m('Find the arc length of a 135° arc in a circle of radius 8.'), m('6π')],
+      [m('AB is a diameter and ∠ABC = 25°. Find ∠BAC and arc AC.'), m('65°') + ', arc ' + m('50°')],
+      [m('r = 25, chord 30. Find d and the sector area of the corresponding minor sector.'), m('d = 20') + '; ' + m('sin(α/2) = 0.6, α ≈ 73.7°') + ', sector ' + m('≈ 402')]
+    ],
+    hard: [
+      [m('Two parallel chords of a circle of radius 25 are 14 and 40 long. Find the two possible distances between them.'), m('24 + 15 = 39') + ' or ' + m('24 − 15 = 9')],
+      [m('Two tangents from P touch a circle of radius 7 with ∠APB = 60°. Find OP, PA and the area of the kite OAPB.'), m('OP = 14') + ', ' + m('PA = 7' + sr('3')) + ', area ' + m('49' + sr('3') + ' ≈ 84.9')],
+      [m('A chord subtends a central angle of 120° in a circle of radius 10. Find its length, its distance from the centre, and the area of the minor segment.'), 'chord ' + m('10' + sr('3')) + ', ' + m('d = 5') + ', segment ' + m(f('100π', '3') + ' − 25' + sr('3') + ' ≈ 61.4')],
+      [m('AB is a diameter of a circle of radius 13, and C is on the circle with AC = 10. Find BC and the area of triangle ABC.'), m('BC = 24') + ', area ' + m('120')],
+      [m('A circle passes through (0;0), (6;0) and (0;8). Find its centre and radius.'), 'centre ' + m('(3; 4)') + ', ' + m('r = 5') + ' — the angle at the origin is right, so the hypotenuse is a diameter'],
+      [m('Two circles of radius 10 intersect, with their centres 16 apart. Find the length of the common chord.'), m('12') + ' — ' + m(sr('100 − 64') + ' = 6') + ', doubled'],
+      [m('Explain in one sentence why every tangent problem contains a right-angled triangle.'), 'The radius to the point of tangency is perpendicular to the tangent, so that radius, the tangent segment and the line to the centre always form a right triangle.']
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Revise for tomorrow’s control work. Learn the nine rules; work the mixed problems.',
+  homework: [
+    'Write out the nine rules of the chapter from memory, then check them against the list.',
+    m('r = 20, chord 24. Find d.'),
+    m('A tangent from P is 24 and r = 10. Find OP.'),
+    m('Two chords meet inside, arcs 88° and 52°. Find the angle.'),
+    m('AB is a diameter of a circle of radius 15 and AC = 18. Find BC.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-45', stream: 'geo', grade: 8, quarter: 4, lessons: '61', hours: 1,
+  title: 'Control work 4 · The circle',
+  subtitle: 'The Quarter IV assessment, and the four errors it produces every year.',
+  uz: 'Geometry 8, Темы 61–62', uzPage: 'Темы 61–62, pp. 149–151',
+  cam: 'Stage 9 · 7.1–7.3', camPage: 'Learner’s Book pp. 142–162', wb: 'Workbook 7.1–7.3',
+  objectives: [
+    'Assess the circle chapter: tangents, chords, arcs and angles.',
+    'Diagnose each lost mark by error type.',
+    'Re-solve every task that was lost.'
+  ],
+  timing: [[2, 'Setting up'], [36, 'The paper'], [2, 'Collect in']],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Work on mistakes', 'Xatolar ustida ishlash', 'Работа над ошибками'],
+    ['Tangent', 'Urinma', 'Касательная'],
+    ['Chord', 'Vatar', 'Хорда'],
+    ['Inscribed angle', 'Ichki chizilgan burchak', 'Вписанный угол'],
+    ['Arc', 'Yoy', 'Дуга'],
+    ['Half-chord', 'Yarim vatar', 'Половина хорды'],
+    ['Sector', 'Sektor', 'Сектор']
+  ],
+  sections: [
+    {
+      h: 'The paper (40 minutes)',
+      html: `<p>Two variants of eight tasks. Tasks 1–5 are worth 1 mark, tasks 6–8 are worth 2:</p>
+      <ul>
+        <li>task 1 · classify a line from ${m('d')} and ${m('r')}</li>
+        <li>task 2 · the tangent length from an external point</li>
+        <li>task 3 · a chord from ${m('r')} and ${m('d')}</li>
+        <li>task 4 · a central or inscribed angle</li>
+        <li>task 5 · a cyclic quadrilateral</li>
+        <li>task 6 · an angle from an internal or external vertex</li>
+        <li>task 7 · an arc length or a sector area</li>
+        <li>task 8 · a multi-step problem combining two rules</li>
+      </ul>
+      <p><b>Marking note:</b> in task 3 the half-chord must be doubled; a mark is lost if it is not.</p>`
+    },
+    {
+      h: 'The four errors',
+      html: `<div class="keybox"><div class="klabel">Work on mistakes</div>
+      <ol style="margin:0">
+        <li><b>The half-chord given as the chord</b> — an answer exactly half the right one.</li>
+        <li><b>Inscribed and central angles confused</b> — a factor of two, in one direction or the other.</li>
+        <li><b>Half the sum used where half the difference belongs</b> — the vertex was not located first.</li>
+        <li><b>Arc length and sector area mixed up</b>, or the fraction ${m(f('α', '360°'))} forgotten
+        entirely.</li>
+      </ol></div>
+      <p>Each pupil writes the error number beside every lost mark and re-solves that task in full.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the error: in a circle of radius ' + m('10') + ', a chord ' + m('6') + ' from the centre has length ' + m('8'),
+      steps: [
+        [m(sr('100 − 36') + ' = 8'), 'That is the <b>half</b>-chord.'],
+        ['The perpendicular from the centre bisects the chord.', 'So the full chord is twice as long.'],
+        [m('a = 16'), '']
+      ],
+      ans: m('16')
+    },
+    {
+      q: 'Find the error: an inscribed angle on a ' + m('80°') + ' arc is ' + m('160°'),
+      steps: [
+        ['The rule was applied upside down.', 'The <b>central</b> angle is twice the inscribed one.'],
+        [m('inscribed = ' + f('1', '2') + ' · 80°'), ''],
+        [m('= 40°'), 'And it can never exceed ' + m('180°') + ' anyway.']
+      ],
+      ans: m('40°')
+    }
+  ],
+  modelNote: 'Show the wrong working, take a vote on the error type, then reveal.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'Diagnose the error',
+    hint: 'Which of the four errors is this? Decide, then reveal.',
+    items: [
+      {
+        title: 'Error 1 — half-chord not doubled',
+        start: '<b>Claimed:</b> <span class="m">r = 13</span>, <span class="m">d = 5</span>, so the chord is <span class="m">12</span>',
+        steps: [
+          ['<span class="m">' + sr('169 − 25') + ' = 12</span>', 'Correct — but this is only half of the chord.'],
+          ['The perpendicular from the centre <b>bisects</b> the chord.', ''],
+          ['<span class="m">a = 2 · 12</span>', '']
+        ],
+        answer: 'The chord is <span class="m">24</span>.'
+      },
+      {
+        title: 'Error 2 — inscribed and central swapped',
+        start: '<b>Claimed:</b> a central angle of <span class="m">50°</span> gives an inscribed angle of <span class="m">100°</span>',
+        steps: [
+          ['The inscribed angle is <b>half</b> the central one.', 'Never twice.'],
+          ['<span class="m">' + f('1', '2') + ' · 50°</span>', ''],
+          ['<span class="m">= 25°</span>', 'Check: it must be smaller than the central angle.']
+        ],
+        answer: '<span class="m">25°</span>'
+      },
+      {
+        title: 'Error 3 — wrong rule for the vertex',
+        start: '<b>Claimed:</b> two secants meet <b>outside</b>, cutting arcs of <span class="m">120°</span> and <span class="m">40°</span>, so the angle is <span class="m">80°</span>',
+        steps: [
+          ['<span class="m">' + f('120 + 40', '2') + ' = 80</span> is the <b>inside</b> rule.', 'Half the sum belongs to two chords.'],
+          ['The vertex is outside — half the <b>difference</b>.', ''],
+          ['<span class="m">' + f('120° − 40°', '2') + '</span>', '']
+        ],
+        answer: '<span class="m">40°</span>'
+      },
+      {
+        title: 'Error 4 — arc and sector confused',
+        start: '<b>Claimed:</b> a <span class="m">90°</span> sector of radius <span class="m">8</span> has area <span class="m">4π</span>',
+        steps: [
+          ['<span class="m">' + f('1', '4') + ' · 2π · 8 = 4π</span> is the <b>arc length</b>.', 'A length, not an area.'],
+          ['Sector area is <span class="m">' + f('α', '360°') + ' · πr²</span>.', ''],
+          ['<span class="m">' + f('1', '4') + ' · 64π</span>', '']
+        ],
+        answer: '<span class="m">16π</span>'
+      }
+    ]
+  },
+  quiz: [
+    { q: m('r = 13') + ', ' + m('d = 5') + '. The chord is:', a: [m('12'), m('24'), m('8'), m('26')], c: 1, why: 'Double the half-chord.' },
+    { q: 'A central angle of ' + m('50°') + ' gives an inscribed angle of:', a: [m('100°'), m('25°'), m('50°'), m('75°')], c: 1, why: 'Half.' },
+    { q: 'Vertex outside, arcs ' + m('120°') + ' and ' + m('40°') + '. The angle is:', a: [m('80°'), m('40°'), m('160°'), m('60°')], c: 1, why: 'Half the difference.' },
+    { q: 'A ' + m('90°') + ' sector of radius ' + m('8') + ' has area:', a: [m('4π'), m('16π'), m('64π'), m('8π')], c: 1, why: m(f('1', '4') + ' · 64π') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('<b>Variant 1, task 1.</b> r = 8, d = 11. Classify the line.'), 'It misses the circle.'],
+      [m('<b>Task 2.</b> OP = 10, r = 8. Find the tangent length.'), m('6')],
+      [m('<b>Task 3.</b> r = 10, d = 8. Find the chord.'), m('12')],
+      [m('<b>Task 4.</b> A central angle is 120°. Find the inscribed angle.'), m('60°')],
+      [m('<b>Task 5.</b> In a cyclic quadrilateral ∠A = 96°. Find ∠C.'), m('84°')],
+      [m('<b>Task 6.</b> Two chords meet inside, arcs 70° and 50°. Find the angle.'), m('60°')],
+      [m('<b>Task 7.</b> Find the arc length of a 90° arc, radius 6.'), m('3π')]
+    ],
+    med: [
+      [m('<b>Variant 2, task 1.</b> r = 12, d = 12. Classify the line.'), 'A tangent.'],
+      [m('<b>Task 2.</b> OP = 17, r = 15. Find the tangent length.'), m('8')],
+      [m('<b>Task 3.</b> r = 25, d = 7. Find the chord.'), m('48')],
+      [m('<b>Task 4.</b> An inscribed angle is 38°. Find the arc and the central angle.'), m('76°') + ' both'],
+      [m('<b>Task 6.</b> Two secants meet outside, arcs 130° and 50°. Find the angle.'), m('40°')],
+      [m('<b>Task 7.</b> Find the sector area of a 120° sector, radius 9.'), m('27π')],
+      [m('<b>Task 8.</b> AB is a diameter of a circle of radius 10 and AC = 12. Find BC.'), m('16')]
+    ],
+    hard: [
+      [m('A chord of 24 lies in a circle of radius 13. Find its distance from the centre and the central angle it subtends.'), m('d = 5') + '; ' + m('sin(α/2) = ' + f('12', '13')) + ', so ' + m('α ≈ 134.8°')],
+      [m('Two tangents from P touch a circle of radius 8 with ∠APB = 90°. Find OP, PA and the area of OAPB.'), m('OP = 8' + sr('2')) + ', ' + m('PA = 8') + ', area ' + m('64')],
+      [m('A 60° sector of radius 12 is cut out. Find its arc, its area, and the perimeter of the sector.'), 'arc ' + m('4π') + ', area ' + m('24π') + ', perimeter ' + m('4π + 24 ≈ 36.6')],
+      [m('AB is a diameter of a circle of radius 17 and BC = 16. Find AC and the area of triangle ABC.'), m('AC = 30') + ', area ' + m('240')],
+      [m('Two parallel chords of a circle of radius 10 are 12 and 16. Find both possible distances between them.'), m('8 + 6 = 14') + ' or ' + m('8 − 6 = 2')],
+      [m('A tangent–chord angle is 40°. Find the two arcs the chord cuts off.'), m('80°') + ' and ' + m('280°')],
+      [m('A circle of radius 10 has a chord subtending a 90° central angle. Find the area of the minor segment.'), m('25π − 50 ≈ 28.5')]
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Re-solve every task you lost marks on, with the error number written beside it.',
+  homework: [
+    'Re-solve, in full, each task you lost a mark on.',
+    'Beside each, write the error number (1–4) that caused it.',
+    m('r = 15, d = 9. Find the chord.'),
+    m('Two secants meet outside, arcs 145° and 55°. Find the angle.'),
+    m('Find the arc length and the sector area of a 60° sector of radius 12.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-46', stream: 'geo', grade: 8, quarter: 4, lessons: '62–63', hours: 2,
+  title: 'Revision · Transformations',
+  subtitle: 'Cambridge insert: reflection, rotation and translation — three ways to move a shape without changing it.',
+  uz: 'Geometry 8 — revision', uzPage: 'Annual revision',
+  cam: 'Stage 9 · 13.3', camPage: 'Learner’s Book pp. 297–306', wb: 'Workbook 13.3',
+  objectives: [
+    'Reflect a shape in a given mirror line.',
+    'Rotate a shape about a given centre through a given angle.',
+    'Translate a shape by a given vector.',
+    'Describe a transformation fully, and combine two of them.'
+  ],
+  terms: [
+    ['Transformation', 'Almashtirish', 'Преобразование'],
+    ['Reflection', 'Simmetriya (aks ettirish)', 'Отражение (симметрия)'],
+    ['Mirror line', 'Simmetriya o‘qi', 'Ось симметрии'],
+    ['Rotation', 'Burish', 'Поворот'],
+    ['Centre of rotation', 'Burilish markazi', 'Центр поворота'],
+    ['Translation', 'Parallel ko‘chirish', 'Параллельный перенос'],
+    ['Image', 'Tasvir', 'Образ'],
+    ['Object', 'Asl figura', 'Прообраз'],
+    ['Congruent', 'Teng (mos)', 'Равные (конгруэнтные)'],
+    ['Invariant point', 'O‘zgarmas nuqta', 'Неподвижная точка']
+  ],
+  timing: [[6, 'Fold, turn and slide a paper triangle'], [12, 'Reflection'], [12, 'Rotation'], [6, 'Translation and combinations'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'The three isometries',
+      html: `<p>All three of these move a shape without changing its size or its shape. The image is
+      always <b>congruent</b> to the object — so they are called <b>isometries</b>.</p>
+      {{fig:transformations:Reflection flips, rotation turns, translation slides — in every case the image is congruent to the object.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Transformation</th><th>Described fully by</th><th>Points that do not move</th></tr></thead>
+      <tbody>
+        <tr><td>Reflection</td><td>the mirror line</td><td>every point on the mirror line</td></tr>
+        <tr><td>Rotation</td><td>centre, angle and direction</td><td>the centre only</td></tr>
+        <tr><td>Translation</td><td>a vector</td><td>none</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">“Describe fully” is a mark scheme</span>
+      “A rotation” earns nothing. “A rotation of ${m('90°')} clockwise about ${m('(0; 0)')}” earns full
+      marks. Name the transformation and every piece of data it needs.</div>`
+    },
+    {
+      h: 'Doing each one',
+      html: `<p><b>Reflection.</b> Each point moves perpendicular to the mirror, to the same distance on
+      the other side. In coordinates:</p>
+      ${eq('in the ' + m('x') + '-axis: ' + m('(x; y) → (x; −y)') + '&nbsp;&nbsp;|&nbsp;&nbsp;in the ' + m('y') + '-axis: ' + m('(x; y) → (−x; y)'))}
+      ${eq('in the line ' + m('y = x') + ': ' + m('(x; y) → (y; x)'))}
+      <p><b>Rotation.</b> Every point turns through the same angle about the centre, staying the same
+      distance from it. About the origin:</p>
+      ${eq(m('90°') + ' anticlockwise: ' + m('(x; y) → (−y; x)') + '&nbsp;&nbsp;|&nbsp;&nbsp;' + m('180°') + ': ' + m('(x; y) → (−x; −y)'))}
+      <p><b>Translation.</b> Every point moves by the same vector:</p>
+      ${eq(m('(x; y) → (x + a; y + b)') + ' for the vector ' + m('(a; b)'), true)}
+      <p>Two translations combine into one — just add the vectors. Two reflections in <b>parallel</b>
+      mirrors give a translation; two reflections in <b>intersecting</b> mirrors give a rotation about
+      the crossing point.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Reflect ' + m('A(3; 2)') + ' in the ' + m('x') + '-axis, then in the ' + m('y') + '-axis. Describe the single transformation that has the same effect.',
+      steps: [
+        [m('(3; 2) → (3; −2)'), 'Reflection in the ' + m('x') + '-axis.'],
+        [m('(3; −2) → (−3; −2)'), 'Reflection in the ' + m('y') + '-axis.'],
+        [m('(3; 2) → (−3; −2)'), 'Both coordinates have changed sign.'],
+        ['A rotation of ' + m('180°') + ' about the origin.', 'Two perpendicular mirrors give a half-turn about their crossing point.']
+      ],
+      ans: 'A rotation of ' + m('180°') + ' about ' + m('(0; 0)')
+    },
+    {
+      q: 'Rotate ' + m('B(4; 1)') + ' through ' + m('90°') + ' anticlockwise about the origin, then translate by ' + m('(−2; 3)') + '.',
+      steps: [
+        [m('(4; 1) → (−1; 4)'), 'The rule ' + m('(x; y) → (−y; x)') + '.'],
+        [m('(−1; 4) → (−3; 7)'), 'Add the translation vector.']
+      ],
+      ans: m('(−3; 7)')
+    },
+    {
+      q: 'Describe fully the transformation taking ' + m('(2; 5)') + ' to ' + m('(5; 2)') + ' and ' + m('(1; 7)') + ' to ' + m('(7; 1)') + '.',
+      steps: [
+        ['In both cases the coordinates swap.', ''],
+        [m('(x; y) → (y; x)'), 'That is the rule for one particular mirror.'],
+        ['A reflection in the line ' + m('y = x') + '.', 'Check: the midpoint of each pair lies on ' + m('y = x') + ' ✓']
+      ],
+      ans: 'A reflection in ' + m('y = x')
+    }
+  ],
+  modelNote: 'Choose a transformation and watch the shape move; compare object and image.',
+  interactive: { type: 'transform', title: 'Reflect, rotate, translate' },
+  quiz: [
+    { q: 'Reflecting ' + m('(4; −3)') + ' in the ' + m('x') + '-axis gives:', a: [m('(−4; −3)'), m('(4; 3)'), m('(−4; 3)'), m('(−3; 4)')], c: 1, why: 'The ' + m('y') + '-coordinate changes sign.' },
+    { q: 'A rotation of ' + m('180°') + ' about the origin takes ' + m('(2; 5)') + ' to:', a: [m('(−2; −5)'), m('(5; 2)'), m('(−5; 2)'), m('(2; −5)')], c: 0, why: 'Both signs change.' },
+    { q: 'Translating ' + m('(1; 1)') + ' by ' + m('(3; −4)') + ' gives:', a: [m('(4; −3)'), m('(3; −4)'), m('(−2; 5)'), m('(4; 5)')], c: 0, why: 'Add the vector.' },
+    { q: 'Which transformation has no invariant point?', a: ['reflection', 'rotation', 'translation', 'all have one'], c: 2, why: 'Everything moves by the same non-zero vector.' },
+    { q: 'To describe a rotation fully you need:', a: ['the angle only', 'the centre only', 'centre, angle and direction', 'a vector'], c: 2, why: 'All three, or the image is not determined.' }
+  ],
+  practice: {
+    easy: [
+      [m('Reflect (5; 2) in the x-axis.'), m('(5; −2)')],
+      [m('Reflect (5; 2) in the y-axis.'), m('(−5; 2)')],
+      [m('Reflect (5; 2) in the line y = x.'), m('(2; 5)')],
+      [m('Rotate (3; 0) through 180° about the origin.'), m('(−3; 0)')],
+      [m('Translate (2; 3) by (4; 1).'), m('(6; 4)')],
+      [m('Rotate (1; 0) through 90° anticlockwise about the origin.'), m('(0; 1)')],
+      [m('Translate (−1; 5) by (2; −5).'), m('(1; 0)')]
+    ],
+    med: [
+      [m('Rotate (4; 2) through 90° anticlockwise about the origin.'), m('(−2; 4)')],
+      [m('Rotate (4; 2) through 90° clockwise about the origin.'), m('(2; −4)')],
+      [m('Reflect (−3; 6) in the line y = x.'), m('(6; −3)')],
+      [m('Describe fully the transformation taking (1; 2) to (1; −2).'), 'A reflection in the ' + m('x') + '-axis.'],
+      [m('Describe fully the transformation taking (2; 3) to (7; 8).'), 'A translation by ' + m('(5; 5)') + '.'],
+      [m('Reflect (2; 5) in the x-axis, then in the y-axis.'), m('(−2; −5)')],
+      [m('Translate (0; 0) by (3; 4), then by (−1; 2).'), m('(2; 6)')]
+    ],
+    hard: [
+      [m('Describe fully the single transformation equal to a reflection in the x-axis followed by a reflection in the y-axis.'), 'A rotation of ' + m('180°') + ' about the origin.'],
+      [m('Rotate the triangle (0;0), (3;0), (0;2) through 90° anticlockwise about the origin.'), m('(0;0), (0;3), (−2;0)')],
+      [m('Describe fully the transformation taking (1; 3) to (3; 1) and (4; 6) to (6; 4).'), 'A reflection in the line ' + m('y = x') + '.'],
+      [m('A shape is translated by (3; 1) and then by (−3; −1). Describe the result.'), 'The identity — every point returns to where it started.'],
+      [m('Rotate (5; 2) through 180° about the point (1; 1).'), m('(−3; 0)') + ' — the centre is the midpoint of object and image'],
+      [m('Two parallel mirrors are 4 units apart. Describe the result of reflecting in one, then the other.'), 'A translation of ' + m('8') + ' units, perpendicular to the mirrors — twice the distance between them.'],
+      [m('Explain why a reflection reverses orientation but a rotation does not.'), 'A rotation can be carried out by sliding the shape within the plane, so its sense (clockwise round the vertices) is preserved; a reflection requires flipping it over, which reverses that sense.']
+    ]
+  },
+  hwTitle: 'Homework — 6 problems',
+  hwNote: 'Cambridge Stage 9, Unit 13.3. Describe every transformation fully.',
+  homework: [
+    m('Reflect (6; −2) in the x-axis, the y-axis and the line y = x.'),
+    m('Rotate (3; 5) through 90° anticlockwise about the origin.'),
+    m('Translate (−2; 4) by (5; −6).'),
+    m('Describe fully the transformation taking (2; 7) to (−2; 7).'),
+    m('Rotate the triangle (0;0), (4;0), (0;3) through 180° about the origin.'),
+    'In one sentence, say what all three isometries have in common.'
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-47', stream: 'geo', grade: 8, quarter: 4, lessons: '64', hours: 1,
+  title: 'Revision · Enlargement',
+  subtitle: 'Cambridge insert: the transformation that does change size — and the scale factor that measures it.',
+  uz: 'Geometry 8 — revision', uzPage: 'Annual revision',
+  cam: 'Stage 9 · 13.4', camPage: 'Learner’s Book pp. 307–314', wb: 'Workbook 13.4',
+  objectives: [
+    'Enlarge a shape from a given centre by a given scale factor.',
+    'Find the centre and the scale factor of a given enlargement.',
+    'Use the fact that lengths scale by ' + m('k') + ' and areas by ' + m('k²') + '.',
+    'Work with fractional and negative scale factors.'
+  ],
+  terms: [
+    ['Enlargement', 'O‘xshash almashtirish', 'Гомотетия (подобие)'],
+    ['Scale factor', 'O‘xshashlik koeffitsienti', 'Коэффициент подобия'],
+    ['Centre of enlargement', 'O‘xshashlik markazi', 'Центр гомотетии'],
+    ['Similar figures', 'O‘xshash figuralar', 'Подобные фигуры'],
+    ['Corresponding sides', 'Mos tomonlar', 'Соответственные стороны'],
+    ['Ray from the centre', 'Markazdan nur', 'Луч из центра'],
+    ['Fractional scale factor', 'Kasr koeffitsient', 'Дробный коэффициент'],
+    ['Negative scale factor', 'Manfiy koeffitsient', 'Отрицательный коэффициент']
+  ],
+  timing: [[5, 'Enlarge a triangle from a point'], [14, 'Scale factor'], [12, 'Finding the centre'], [5, 'Areas'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'How an enlargement works',
+      html: `<p>Choose a <b>centre</b> ${m('O')} and a <b>scale factor</b> ${m('k')}. Each point
+      ${m('A')} moves along the ray ${m('OA')} to the point ${m('A′')} with ${m('OA′ = k · OA')}.</p>
+      {{fig:enlargement:Rays from the centre through each vertex; the image sits k times as far along each ray.}}
+      <p>The image is <b>similar</b> to the object: the same shape, all angles unchanged, every length
+      multiplied by ${m('k')}. Only the centre stays where it is.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">k</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="m">k &gt; 1</td><td>larger, same way up</td></tr>
+        <tr><td class="m">0 &lt; k &lt; 1</td><td>smaller, same way up</td></tr>
+        <tr><td class="m">k = 1</td><td>unchanged</td></tr>
+        <tr><td class="m">k &lt; 0</td><td>on the other side of the centre, turned through ${m('180°')}</td></tr>
+      </tbody></table></div>
+      <p>From the origin the rule is simply ${m('(x; y) → (kx; ky)')}. From another centre
+      ${m('(a; b)')}, measure from there: ${m('(x; y) → (a + k(x − a); b + k(y − b))')}.</p>`
+    },
+    {
+      h: 'Finding it, and what happens to area',
+      html: `<p>To find the <b>scale factor</b>: divide any image length by the matching object length.
+      To find the <b>centre</b>: join each point to its image and extend — all the lines meet at the
+      centre.</p>
+      <div class="keybox"><div class="klabel">Length, area and volume</div>
+      ${eq('lengths ×' + m('k') + ',&nbsp;&nbsp;areas ×' + m('k²') + ',&nbsp;&nbsp;volumes ×' + m('k³'), true)}</div>
+      <p>An enlargement with ${m('k = 3')} makes a shape 3 times as wide and 3 times as tall, so
+      <b>9 times</b> the area — the same squaring rule as the unit conversions of the last lesson.</p>
+      <div class="warn"><span class="wl">Enlargement is not an isometry</span>
+      Unless ${m('k = ±1')}, lengths change, so the image is <b>similar</b> to the object but not
+      congruent. Angles, however, never change.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Enlarge the triangle ' + m('(1; 1)') + ', ' + m('(3; 1)') + ', ' + m('(1; 4)') + ' by scale factor ' + m('2') + ' about the origin. Find the new area.',
+      steps: [
+        [m('(1; 1) → (2; 2)'), 'Double each coordinate.'],
+        [m('(3; 1) → (6; 2)'), ''],
+        [m('(1; 4) → (2; 8)'), ''],
+        ['Original area: ' + m(f('1', '2') + ' · 2 · 3 = 3'), ''],
+        ['New area: ' + m('3 · 2² = 12'), 'Areas scale by ' + m('k²') + '.']
+      ],
+      ans: m('(2;2), (6;2), (2;8)') + '; area ' + m('12')
+    },
+    {
+      q: 'A shape is enlarged from ' + m('(1; 1)') + ' with ' + m('k = 3') + '. Find the image of ' + m('(4; 2)') + '.',
+      steps: [
+        [m('(4 − 1; 2 − 1) = (3; 1)'), 'The vector from the centre.'],
+        [m('3 · (3; 1) = (9; 3)'), 'Multiply by the scale factor.'],
+        [m('(1; 1) + (9; 3) = (10; 4)'), 'Measure back from the centre.']
+      ],
+      ans: m('(10; 4)')
+    },
+    {
+      q: 'Two similar rectangles have corresponding sides ' + m('4 cm') + ' and ' + m('10 cm') + '. The smaller has area ' + m('20 cm²') + '. Find the larger.',
+      steps: [
+        [m('k = ' + f('10', '4') + ' = 2.5'), 'The scale factor.'],
+        [m('k² = 6.25'), 'The area factor.'],
+        [m('20 · 6.25 = 125 cm²'), '']
+      ],
+      ans: m('125 cm²')
+    }
+  ],
+  modelNote: 'Change the scale factor and watch how far along each ray the image travels.',
+  interactive: { type: 'transform', title: 'Enlargement from a centre' },
+  quiz: [
+    { q: 'Enlarging ' + m('(3; 4)') + ' from the origin by ' + m('k = 2') + ' gives:', a: [m('(5; 6)'), m('(6; 8)'), m('(1.5; 2)'), m('(6; 4)')], c: 1, why: 'Double both coordinates.' },
+    { q: 'If ' + m('k = 4') + ', areas are multiplied by:', a: [m('4'), m('8'), m('16'), m('64')], c: 2, why: m('k²') + '.' },
+    { q: 'An enlargement with ' + m('k = ' + f('1', '2')) + ' makes the image:', a: ['larger', 'smaller', 'the same size', 'upside down'], c: 1, why: m('0 < k < 1') + '.' },
+    { q: 'Under an enlargement, angles:', a: ['double', 'halve', 'stay the same', 'depend on ' + m('k')], c: 2, why: 'The image is similar to the object.' },
+    { q: 'To find the centre of an enlargement:', a: ['take the midpoint', 'join each point to its image and extend', 'use the origin', 'measure an angle'], c: 1, why: 'All such lines meet at the centre.' }
+  ],
+  practice: {
+    easy: [
+      [m('Enlarge (2; 3) from the origin by k = 3.'), m('(6; 9)')],
+      [m('Enlarge (4; 8) from the origin by k = 0.5.'), m('(2; 4)')],
+      [m('If k = 3, by what factor does area grow?'), m('9')],
+      [m('If k = 5, by what factor does volume grow?'), m('125')],
+      [m('Enlarge (1; −2) from the origin by k = 4.'), m('(4; −8)')],
+      [m('Two similar shapes have sides 3 and 12. Find k.'), m('4')],
+      [m('A shape of area 5 is enlarged by k = 2. Find the new area.'), m('20')]
+    ],
+    med: [
+      [m('Enlarge (5; 3) from (1; 1) by k = 2.'), m('(9; 5)')],
+      [m('Enlarge (7; 4) from (1; 2) by k = ' + f('1', '3') + '.'), m('(3; ' + f('8', '3') + ')')],
+      [m('Two similar triangles have areas 9 and 25. Find the ratio of their sides.'), m('3 : 5')],
+      [m('A rectangle 4 by 6 is enlarged by k = 2.5. Find its new area.'), m('24 · 6.25 = 150')],
+      [m('Enlarge (2; 6) from the origin by k = −1.'), m('(−2; −6)')],
+      [m('A photo of area 40 cm² is enlarged so its area is 250 cm². Find k.'), m('k = 2.5')],
+      [m('Enlarge the triangle (0;0), (2;0), (0;2) by k = 3 from the origin, and find both areas.'), m('(0;0), (6;0), (0;6)') + '; ' + m('2') + ' and ' + m('18')]
+    ],
+    hard: [
+      [m('A shape is enlarged from (2; 3) by k = 2, and (5; 7) maps to which point?'), m('(8; 11)')],
+      [m('(1; 2) maps to (7; 14) under an enlargement centred at the origin. Find k.'), m('k = 7')],
+      [m('(2; 3) maps to (8; 9) under an enlargement with k = 3. Find the centre.'), m('(−1; 0)')],
+      [m('Two similar solids have volumes 27 and 216. Find the ratio of their surface areas.'), m('k = 2') + ', so surface areas are in the ratio ' + m('1 : 4')],
+      [m('A map is redrawn at half the scale. What happens to the areas shown on it?'), 'They become a quarter of what they were.'],
+      [m('A triangle of area 12 is enlarged so that its area is 108. Find k, and the new perimeter if the original was 18.'), m('k = 3') + ', new perimeter ' + m('54')],
+      [m('Explain why an enlargement with a negative scale factor turns the shape through 180°.'), 'A negative ' + m('k') + ' sends each point to the opposite side of the centre along the same line, which is exactly a half-turn about the centre combined with an enlargement by ' + m('| k |') + '.']
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Cambridge Stage 9, Unit 13.4. State the centre and the scale factor every time.',
+  homework: [
+    m('Enlarge (3; 5) from the origin by k = 4.'),
+    m('Enlarge (6; 2) from (2; 0) by k = 2.'),
+    m('A shape of area 8 cm² is enlarged by k = 3. Find its new area.'),
+    m('Two similar triangles have areas 16 and 81. Find the ratio of their sides.'),
+    m('(3; 4) maps to (9; 12) under an enlargement centred at the origin. Find k.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-48', stream: 'geo', grade: 8, quarter: 4, lessons: '65', hours: 1,
+  title: 'Revision · The volume of prisms and cylinders',
+  subtitle: 'Cambridge insert: one formula for every prism — cross-section times length.',
+  uz: 'Geometry 8 — revision', uzPage: 'Annual revision',
+  cam: 'Stage 9 · 14.1', camPage: 'Learner’s Book pp. 318–326', wb: 'Workbook 14.1',
+  objectives: [
+    'Use ' + m('V = S<sub>base</sub> · h') + ' for any prism.',
+    'Find the volume of a cylinder.',
+    'Find a missing dimension from a given volume.',
+    'Convert between units of volume and of capacity.'
+  ],
+  terms: [
+    ['Prism', 'Prizma', 'Призма'],
+    ['Cross-section', 'Ko‘ndalang kesim', 'Поперечное сечение'],
+    ['Cuboid', 'To‘g‘ri burchakli parallelepiped', 'Прямоугольный параллелепипед'],
+    ['Cylinder', 'Silindr', 'Цилиндр'],
+    ['Volume', 'Hajm', 'Объём'],
+    ['Capacity', 'Sig‘im', 'Вместимость'],
+    ['Cubic metre', 'Kub metr', 'Кубический метр'],
+    ['Litre', 'Litr', 'Литр'],
+    ['Uniform cross-section', 'Bir xil kesim', 'Постоянное сечение']
+  ],
+  timing: [[5, 'What is a prism?'], [14, 'The prism formula'], [12, 'Cylinders'], [5, 'Units of volume'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'One formula for all prisms',
+      html: `<p>A <b>prism</b> is a solid with the same cross-section all the way along its length. Slice
+      it anywhere across, and you get the same shape.</p>
+      {{fig:prismVolume:A prism is a cross-section repeated along a length: the volume is the area of that cross-section times the length.}}
+      <div class="keybox"><div class="klabel">Volume of a prism</div>
+      ${eq(m('V = S<sub>cross-section</sub> · h'), true)}
+      A cylinder is a prism with a circular cross-section, so ${m('V = πr²h')}.</div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Cross-section</th><th class="m">V</th></tr></thead>
+      <tbody>
+        <tr><td>cuboid</td><td>rectangle</td><td class="m">abc</td></tr>
+        <tr><td>cube</td><td>square</td><td class="m">a³</td></tr>
+        <tr><td>triangular prism</td><td>triangle</td><td class="m">½ a h<sub>Δ</sub> · L</td></tr>
+        <tr><td>cylinder</td><td>circle</td><td class="m">πr²h</td></tr>
+      </tbody></table></div>
+      <p>Learning one formula instead of four is the point of this lesson: find the area of the face that
+      repeats, then multiply by how far it repeats.</p>`
+    },
+    {
+      h: 'Units and capacity',
+      html: `<p>Volumes scale by the <b>cube</b> of the length factor:</p>
+      ${eq(m('1 m³ = 1 000 000 cm³') + '&nbsp;&nbsp;|&nbsp;&nbsp;' + m('1 cm³ = 1000 mm³'), true)}
+      <p>Capacity uses litres, and the bridge between the two systems is worth memorising:</p>
+      ${eq(m('1 litre = 1000 cm³') + '&nbsp;&nbsp;|&nbsp;&nbsp;' + m('1 m³ = 1000 litres'))}
+      <div class="warn"><span class="wl">Mixed units</span>
+      A tank ${m('80 cm')} by ${m('1.2 m')} by ${m('50 cm')} must be converted before multiplying.
+      In metres: ${m('0.8 · 1.2 · 0.5 = 0.48 m³ = 480 litres')}.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A triangular prism has a cross-section with base ' + m('6 cm') + ' and height ' + m('4 cm') + ', and is ' + m('15 cm') + ' long. Find its volume.',
+      steps: [
+        [m('S = ' + f('1', '2') + ' · 6 · 4 = 12 cm²'), 'The cross-section.'],
+        [m('V = 12 · 15'), ''],
+        [m('= 180 cm³'), '']
+      ],
+      ans: m('180 cm³')
+    },
+    {
+      q: 'A cylindrical tank has radius ' + m('50 cm') + ' and height ' + m('1.2 m') + '. Find its capacity in litres.',
+      steps: [
+        [m('r = 0.5 m, h = 1.2 m'), 'Convert first.'],
+        [m('V = π · 0.25 · 1.2'), ''],
+        [m('= 0.3π ≈ 0.942 m³'), ''],
+        [m('≈ 942 litres'), m('1 m³ = 1000 l') + '.']
+      ],
+      ans: m('≈ 942 litres')
+    },
+    {
+      q: 'A cylinder has volume ' + m('500π cm³') + ' and height ' + m('20 cm') + '. Find its radius.',
+      steps: [
+        [m('500π = πr² · 20'), ''],
+        [m('r² = 25'), 'Divide by ' + m('20π') + '.'],
+        [m('r = 5 cm'), '']
+      ],
+      ans: m('5 cm')
+    }
+  ],
+  modelNote: 'Change the cross-section and see how the volume follows it directly.',
+  interactive: { type: 'areaModel', title: 'The cross-section of a prism' },
+  quiz: [
+    { q: 'A cuboid ' + m('3 × 4 × 5') + ' has volume:', a: [m('12'), m('60'), m('47'), m('20')], c: 1, why: m('3 · 4 · 5') + '.' },
+    { q: 'A cylinder of radius ' + m('3') + ' and height ' + m('10') + ' has volume:', a: [m('30π'), m('90π'), m('60π'), m('300π')], c: 1, why: m('π · 9 · 10') + '.' },
+    { q: m('1 m³') + ' equals:', a: [m('1000 cm³'), m('10 000 cm³'), m('100 000 cm³'), m('1 000 000 cm³')], c: 3, why: m('100³') + '.' },
+    { q: m('1 litre') + ' equals:', a: [m('100 cm³'), m('1000 cm³'), m('10 cm³'), m('1 m³')], c: 1, why: 'A cube of side ' + m('10 cm') + '.' },
+    { q: 'A prism has cross-section ' + m('15 cm²') + ' and length ' + m('8 cm') + '. Its volume is:', a: [m('23'), m('120'), m('60'), m('7.5')], c: 1, why: m('15 · 8') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('Find the volume of a cuboid 2 × 5 × 6.'), m('60')],
+      [m('Find the volume of a cube of side 4.'), m('64')],
+      [m('Find the volume of a cylinder with r = 2, h = 5 (in terms of π).'), m('20π')],
+      [m('A prism has cross-section 12 cm² and length 9 cm. Find its volume.'), m('108 cm³')],
+      [m('Convert 3 m³ to cm³.'), m('3 000 000 cm³')],
+      [m('Convert 5000 cm³ to litres.'), m('5 l')],
+      [m('Find the volume of a triangular prism: cross-section 10 cm², length 7 cm.'), m('70 cm³')]
+    ],
+    med: [
+      [m('Find the volume of a triangular prism with base 8, triangle height 5, length 12.'), m('240')],
+      [m('Find the volume of a cylinder with r = 7, h = 10 (π ≈ 3.14).'), m('≈ 1538.6')],
+      [m('A cuboid has volume 240 and base 8 × 5. Find its height.'), m('6')],
+      [m('A cylinder has volume 100π and radius 5. Find its height.'), m('4')],
+      [m('A tank is 60 cm by 40 cm by 50 cm. Find its capacity in litres.'), m('120 l')],
+      [m('Convert 0.75 m³ to litres.'), m('750 l')],
+      [m('A cube has volume 125 cm³. Find its side and its surface area.'), m('5 cm') + ', ' + m('150 cm²')]
+    ],
+    hard: [
+      [m('A cylinder has volume 1000π cm³ and height 40 cm. Find its radius and diameter.'), m('r = 5 cm') + ', ' + m('d = 10 cm')],
+      [m('A swimming pool is 25 m by 10 m, 1.2 m deep at one end and 2 m at the other, sloping evenly. Find its volume.'), 'trapezium cross-section ' + m(f('1.2 + 2', '2') + ' · 25 = 40 m²') + ', so ' + m('V = 400 m³')],
+      [m('A pipe has outer radius 5 cm, inner radius 4 cm and length 2 m. Find the volume of metal in it.'), m('π(25 − 16) · 200 = 1800π ≈ 5655 cm³')],
+      [m('If all lengths of a prism are doubled, what happens to its volume?'), 'It becomes ' + m('8') + ' times as large.'],
+      [m('A cylindrical tank of radius 40 cm is filled at 20 litres per minute. How long to fill 1 m of its height?'), m('V = π · 0.16 · 1 ≈ 0.503 m³ = 503 l') + ', so ' + m('≈ 25 minutes')],
+      [m('Two similar cylinders have heights 6 and 9. The smaller has volume 48π. Find the larger.'), m('k = 1.5, k³ = 3.375') + ', so ' + m('162π')],
+      [m('Explain why V = S · h works for every prism but not for a cone or a pyramid.'), 'A prism has the same cross-section at every height, so the volume is that one area repeated; a cone or pyramid tapers, its cross-section shrinking towards the apex, and its volume is only a third of the matching prism.']
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Cambridge Stage 9, Unit 14.1. Convert to one unit before multiplying.',
+  homework: [
+    m('Find the volume of a cuboid 4 × 7 × 9.'),
+    m('Find the volume of a cylinder with r = 6 and h = 12 (in terms of π).'),
+    m('A triangular prism has base 10, triangle height 6, length 15. Find its volume.'),
+    m('A tank is 80 cm by 50 cm by 60 cm. Find its capacity in litres.'),
+    m('A cylinder has volume 288π and radius 6. Find its height.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-49', stream: 'geo', grade: 8, quarter: 4, lessons: '66', hours: 1,
+  title: 'Revision · Surface area',
+  subtitle: 'Cambridge insert: unfold the solid into a net, and the surface area is just an area sum.',
+  uz: 'Geometry 8 — revision', uzPage: 'Annual revision',
+  cam: 'Stage 9 · 14.2', camPage: 'Learner’s Book pp. 327–334', wb: 'Workbook 14.2',
+  objectives: [
+    'Draw the net of a prism or a cylinder.',
+    'Find the surface area of a cuboid, a prism and a cylinder.',
+    'Distinguish curved surface area from total surface area.',
+    'Solve practical problems of painting, wrapping and covering.'
+  ],
+  terms: [
+    ['Surface area', 'Sirt yuzasi', 'Площадь поверхности'],
+    ['Net', 'Yoyilma', 'Развёртка'],
+    ['Face', 'Yoq', 'Грань'],
+    ['Edge', 'Qirra', 'Ребро'],
+    ['Curved surface', 'Yon sirt', 'Боковая поверхность'],
+    ['Total surface area', 'To‘liq sirt yuzasi', 'Полная поверхность'],
+    ['Base area', 'Asos yuzasi', 'Площадь основания'],
+    ['Open-topped', 'Ustki qopqoqsiz', 'Без крышки']
+  ],
+  timing: [[5, 'Unfold a cardboard box'], [14, 'Nets and cuboids'], [12, 'Cylinders'], [5, 'Practical problems'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'Unfold it',
+      html: `<p>Cut a solid open along its edges and lay it flat. The result is its <b>net</b>, and the
+      surface area is simply the total area of the net — no new formula, just the areas you already
+      know.</p>
+      {{fig:surfaceNet:The net of a cylinder: two circles and one rectangle whose width is the circumference.}}
+      <div class="keybox"><div class="klabel">The standard results</div>
+      ${eq('cuboid: ' + m('S = 2(ab + bc + ac)') + '&nbsp;&nbsp;|&nbsp;&nbsp;cube: ' + m('S = 6a²'), true)}
+      ${eq('cylinder: ' + m('S = 2πr² + 2πrh') + '&nbsp;&nbsp;(two circles plus the curved surface)', true)}
+      </div>
+      <p>The curved surface of a cylinder unrolls into a <b>rectangle</b>: its height is ${m('h')}, and
+      its width is the circumference ${m('2πr')}. That is where ${m('2πrh')} comes from — worth deriving
+      once rather than memorising.</p>
+      <p>For any prism: ${m('S = 2 · S<sub>base</sub> + P<sub>base</sub> · h')} — two ends plus the band
+      round the side.</p>`
+    },
+    {
+      h: 'Reading the question',
+      html: `<div class="warn"><span class="wl">Which faces are actually there?</span>
+      An <b>open-topped</b> box has five faces, not six. A pipe has no ends at all — only the curved
+      surface. A tin needs both ends; a label needs only the curved part. Count the faces the question
+      really describes before writing any formula.</div>
+      <p>Surface area is measured in square units even though the object is three-dimensional — it is,
+      after all, the area of a flat net. Volume takes cubic units. Mixing the two is the commonest error
+      in this topic.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the surface area of a cuboid ' + m('4 cm') + ' by ' + m('5 cm') + ' by ' + m('6 cm') + '.',
+      steps: [
+        [m('4 · 5 = 20') + ', twice', 'The top and bottom.'],
+        [m('5 · 6 = 30') + ', twice', 'Two sides.'],
+        [m('4 · 6 = 24') + ', twice', 'The other two.'],
+        [m('2(20 + 30 + 24) = 148 cm²'), '']
+      ],
+      ans: m('148 cm²')
+    },
+    {
+      q: 'A cylinder has radius ' + m('5 cm') + ' and height ' + m('12 cm') + '. Find its curved surface area and its total surface area.',
+      steps: [
+        [m('curved = 2π · 5 · 12 = 120π'), 'The unrolled rectangle.'],
+        [m('two circles = 2π · 25 = 50π'), ''],
+        [m('total = 170π ≈ 534 cm²'), '']
+      ],
+      ans: 'Curved ' + m('120π') + ', total ' + m('170π ≈ 534 cm²')
+    },
+    {
+      q: 'An open-topped box is ' + m('30 cm') + ' by ' + m('20 cm') + ' by ' + m('15 cm') + ' high. Find the area of card needed.',
+      steps: [
+        [m('base = 30 · 20 = 600'), 'One base only — no lid.'],
+        [m('two sides = 2 · 30 · 15 = 900'), ''],
+        [m('two ends = 2 · 20 · 15 = 600'), ''],
+        [m('600 + 900 + 600 = 2100 cm²'), '']
+      ],
+      ans: m('2100 cm²')
+    }
+  ],
+  modelNote: 'Change the dimensions and total the faces of the net as you go.',
+  interactive: { type: 'areaModel', title: 'One face of the net' },
+  quiz: [
+    { q: 'A cube of side ' + m('5') + ' has surface area:', a: [m('25'), m('125'), m('150'), m('30')], c: 2, why: m('6 · 25') + '.' },
+    { q: 'A cuboid ' + m('2 × 3 × 4') + ' has surface area:', a: [m('24'), m('52'), m('26'), m('48')], c: 1, why: m('2(6 + 12 + 8)') + '.' },
+    { q: 'The curved surface of a cylinder is:', a: [m('πr²'), m('2πr'), m('2πrh'), m('πr²h')], c: 2, why: 'The unrolled rectangle: ' + m('2πr') + ' wide, ' + m('h') + ' tall.' },
+    { q: 'An open-topped box has how many faces?', a: [m('4'), m('5'), m('6'), m('8')], c: 1, why: 'Six less the missing lid.' },
+    { q: 'Surface area is measured in:', a: ['cubic units', 'square units', 'linear units', 'litres'], c: 1, why: 'It is the area of a flat net.' }
+  ],
+  practice: {
+    easy: [
+      [m('Find the surface area of a cube of side 3.'), m('54')],
+      [m('Find the surface area of a cuboid 2 × 4 × 5.'), m('76')],
+      [m('Find the curved surface area of a cylinder with r = 2, h = 6 (in terms of π).'), m('24π')],
+      [m('Find the total surface area of that cylinder.'), m('32π')],
+      [m('A cube has surface area 96. Find its side.'), m('4')],
+      [m('How many faces has a triangular prism?'), m('5')],
+      [m('Find the surface area of a cuboid 1 × 1 × 10.'), m('42')]
+    ],
+    med: [
+      [m('Find the surface area of a cuboid 6 × 8 × 10.'), m('376')],
+      [m('Find the total surface area of a cylinder with r = 4, h = 9.'), m('104π ≈ 327')],
+      [m('An open-topped box is 40 by 25 by 20. Find the card needed.'), m('3600 cm²')],
+      [m('A triangular prism has a 3–4–5 triangle cross-section and is 10 long. Find its surface area.'), m('2 · 6 + 12 · 10 = 132')],
+      [m('A cylinder has curved surface area 60π and radius 5. Find its height.'), m('6')],
+      [m('A cube has volume 216. Find its surface area.'), m('216')],
+      [m('A label wraps the curved surface of a tin of radius 3.5 cm and height 10 cm. Find its area.'), m('70π ≈ 220 cm²')]
+    ],
+    hard: [
+      [m('A cylinder has total surface area 100π and radius 5. Find its height.'), m('50π + 10πh = 100π') + ', so ' + m('h = 5')],
+      [m('A room 5 m by 4 m by 3 m high is painted — walls and ceiling only. Find the area painted.'), m('54 + 20 = 74 m²')],
+      [m('A cube is cut into eight identical smaller cubes. Compare the total surface area before and after.'), 'It doubles — each small cube has ' + m(f('1', '4')) + ' of the original face area but there are eight of them, so ' + m('8 · 6 · ' + f('a²', '4') + ' = 12a²') + ' against ' + m('6a²') + '.'],
+      [m('A pipe of radius 6 cm and length 2 m is open at both ends. Find its outer curved surface area.'), m('2π · 6 · 200 = 2400π ≈ 7540 cm²')],
+      [m('Two similar cylinders have radii 3 and 5. The smaller has surface area 90π. Find the larger.'), m('k = ' + f('5', '3') + ', k² = ' + f('25', '9')) + ', so ' + m('250π')],
+      [m('A cuboid has volume 120 cm³ and a square base of side 4 cm. Find its surface area.'), m('h = 7.5') + ', ' + m('S = 32 + 120 = 152 cm²')],
+      [m('Explain why doubling every length multiplies surface area by 4 but volume by 8.'), 'Surface area is a sum of products of two lengths, so it scales by ' + m('k²') + '; volume is a product of three, so it scales by ' + m('k³') + '.']
+    ]
+  },
+  hwTitle: 'Homework — 5 problems',
+  hwNote: 'Cambridge Stage 9, Unit 14.2. Sketch the net before totalling.',
+  homework: [
+    m('Find the surface area of a cuboid 5 × 7 × 9.'),
+    m('Find the total surface area of a cylinder with r = 3 and h = 8.'),
+    m('An open-topped box is 50 by 30 by 25. Find the card needed.'),
+    m('A cube has surface area 150 cm². Find its side and its volume.'),
+    m('A label wraps a tin of radius 4 cm and height 12 cm. Find its area.')
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-50', stream: 'geo', grade: 8, quarter: 4, lessons: '67', hours: 1,
+  title: 'Revision · Symmetry in three dimensions',
+  subtitle: 'Cambridge insert: planes of symmetry, axes of rotation, and the shapes that have them.',
+  uz: 'Geometry 8 — revision', uzPage: 'Annual revision',
+  cam: 'Stage 9 · 14.3 + Project 5', camPage: 'Learner’s Book pp. 335–342', wb: 'Workbook 14.3',
+  objectives: [
+    'Identify planes of symmetry in a solid.',
+    'Identify axes of rotational symmetry and their order.',
+    'Compare the symmetry of familiar solids.',
+    'Use symmetry to solve a design problem (Project 5).'
+  ],
+  terms: [
+    ['Plane of symmetry', 'Simmetriya tekisligi', 'Плоскость симметрии'],
+    ['Axis of symmetry', 'Simmetriya o‘qi', 'Ось симметрии'],
+    ['Rotational symmetry', 'Burilish simmetriyasi', 'Поворотная симметрия'],
+    ['Order of symmetry', 'Simmetriya tartibi', 'Порядок симметрии'],
+    ['Solid (3-D shape)', 'Jism', 'Тело (пространственная фигура)'],
+    ['Cross-section', 'Kesim', 'Сечение'],
+    ['Sphere', 'Sfera', 'Сфера'],
+    ['Regular solid', 'Muntazam jism', 'Правильное тело']
+  ],
+  timing: [[5, 'Find the mirror planes of the classroom'], [14, 'Planes of symmetry'], [12, 'Axes of rotation'], [5, 'Project 5'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'Two kinds of symmetry in space',
+      html: `<p>In the plane a shape has <b>lines</b> of symmetry. In space it has <b>planes</b> of
+      symmetry: a flat cut that leaves each half a mirror image of the other.</p>
+      {{fig:symmetry3D:A cuboid has three planes of symmetry, each cutting it exactly in half.}}
+      <p>It may also have <b>axes of rotational symmetry</b>: a line about which the solid can be turned
+      and still look the same. The <b>order</b> counts how many positions look identical in one full
+      turn.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Planes of symmetry</th><th>Rotation axes</th></tr></thead>
+      <tbody>
+        <tr><td>cuboid (all edges different)</td><td class="m">3</td><td>3, each of order 2</td></tr>
+        <tr><td>square-based prism</td><td class="m">5</td><td>1 of order 4, 4 of order 2</td></tr>
+        <tr><td>cube</td><td class="m">9</td><td>3 of order 4, 4 of order 3, 6 of order 2</td></tr>
+        <tr><td>cylinder</td><td>infinitely many</td><td>1 of infinite order</td></tr>
+        <tr><td>sphere</td><td>infinitely many</td><td>infinitely many</td></tr>
+      </tbody></table></div>
+      <p>The pattern is clear: the more regular a solid, the more symmetry it has. The sphere, the most
+      regular of all, is symmetric about every plane through its centre.</p>`
+    },
+    {
+      h: 'Project 5 · Designing with symmetry',
+      html: `<p><b>Task.</b> Design a container of capacity ${m('1 litre')} that has at least two planes
+      of symmetry, and calculate the area of material it needs.</p>
+      <ol>
+        <li>Choose a shape — a cuboid, a square prism, a cylinder, a hexagonal prism.</li>
+        <li>Fix the dimensions so that the volume is ${m('1000 cm³')}.</li>
+        <li>Calculate the surface area.</li>
+        <li>Count and describe every plane of symmetry.</li>
+        <li>Compare with a neighbour: whose design uses least material?</li>
+      </ol>
+      <div class="keybox"><div class="klabel">The result worth discovering</div>
+      Among all cuboids of a given volume, the <b>cube</b> uses least material; among all cylinders,
+      the one with ${m('h = 2r')}. And of all shapes whatever, the sphere is the most economical — which
+      is why bubbles are round.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'How many planes of symmetry has a cuboid with all three edges different?',
+      steps: [
+        ['One parallel to each pair of opposite faces.', 'Each cuts the solid exactly in half.'],
+        ['Three pairs of faces.', ''],
+        [m('3') + ' planes.', 'A diagonal cut does <b>not</b> work unless two edges are equal.']
+      ],
+      ans: m('3')
+    },
+    {
+      q: 'A cylinder of capacity ' + m('1 litre') + ' has ' + m('h = 2r') + '. Find ' + m('r') + ' and its surface area.',
+      steps: [
+        [m('πr² · 2r = 1000'), m('1 l = 1000 cm³') + '.'],
+        [m('2πr³ = 1000, r³ ≈ 159.2'), ''],
+        [m('r ≈ 5.42 cm, h ≈ 10.84 cm'), ''],
+        [m('S = 2πr² + 2πrh ≈ 184.5 + 369.1'), ''],
+        [m('≈ 554 cm²'), '']
+      ],
+      ans: m('r ≈ 5.4 cm') + ', ' + m('S ≈ 554 cm²')
+    }
+  ],
+  modelNote: 'Use the transformation model to check which reflections leave a shape looking unchanged.',
+  interactive: { type: 'transform', title: 'Reflections that leave a shape unchanged' },
+  quiz: [
+    { q: 'A cuboid with all edges different has how many planes of symmetry?', a: [m('1'), m('3'), m('5'), m('9')], c: 1, why: 'One for each pair of opposite faces.' },
+    { q: 'A cube has how many planes of symmetry?', a: [m('3'), m('6'), m('9'), m('12')], c: 2, why: '3 through opposite faces and 6 through opposite edges.' },
+    { q: 'A sphere has:', a: ['one plane of symmetry', 'three', 'nine', 'infinitely many'], c: 3, why: 'Every plane through its centre.' },
+    { q: 'A cylinder has an axis of rotational symmetry of order:', a: [m('2'), m('4'), 'infinite', 'none'], c: 2, why: 'Any angle of turn about its axis looks the same.' },
+    { q: 'Of all cuboids of a given volume, least material is used by:', a: ['a long thin one', 'a flat one', 'the cube', 'they are all equal'], c: 2, why: 'The most symmetrical shape is the most economical.' }
+  ],
+  practice: {
+    easy: [
+      [m('How many planes of symmetry has a cube?'), m('9')],
+      [m('How many planes of symmetry has a sphere?'), 'Infinitely many.'],
+      [m('How many planes of symmetry has a cylinder?'), 'Infinitely many — every plane through its axis, plus the one across the middle.'],
+      [m('Name a solid with exactly 3 planes of symmetry.'), 'A cuboid with all edges different.'],
+      [m('What is the order of rotational symmetry of a square-based prism about its long axis?'), m('4')],
+      [m('Has a cuboid an axis of rotational symmetry?'), 'Yes — three, each of order 2.'],
+      [m('Find the volume of a cube of side 10 cm in litres.'), m('1 litre')]
+    ],
+    med: [
+      [m('A square-based prism has how many planes of symmetry?'), m('5')],
+      [m('A cuboid 4 × 4 × 6 — how many planes of symmetry?'), m('5')],
+      [m('Design a cuboid of volume 1000 cm³ with 5 planes of symmetry, and find its surface area.'), m('10 × 10 × 10') + ' has 9 planes; ' + m('5 × 5 × 40') + ' has 5, with ' + m('S = 850 cm²')],
+      [m('A cube of side 10 cm — find its surface area.'), m('600 cm²')],
+      [m('A cylinder of radius 5 and height 12.7 has volume ≈ 1000 cm³. Find its surface area.'), m('≈ 157 + 399 = 556 cm²')],
+      [m('Which uses less material for 1 litre: a 10 cm cube or a 5 × 5 × 40 cuboid?'), 'The cube — ' + m('600 cm²') + ' against ' + m('850 cm²') + '.'],
+      [m('What is the order of rotational symmetry of a regular hexagonal prism about its axis?'), m('6')]
+    ],
+    hard: [
+      [m('A cuboid has volume 1000 cm³ and a square base. Find the dimensions using least material.'), 'The cube ' + m('10 × 10 × 10') + ', ' + m('S = 600 cm²')],
+      [m('Show that a cylinder of volume V uses least material when h = 2r.'), 'Testing ' + m('r = 4, 5.42, 7') + ' for ' + m('V = 1000') + ' gives ' + m('S ≈ 601, 554, 594') + ' — the minimum is at ' + m('h = 2r') + '.'],
+      [m('A cube of side 6 is cut in half by a plane through two opposite edges. Is the cut a plane of symmetry?'), 'Yes — it is one of the six diagonal planes of the cube.'],
+      [m('Compare the surface area of a sphere of radius 6.2 cm (≈ 1000 cm³) with the best cylinder and the best cube.'), 'Sphere ' + m('≈ 483 cm²') + ', cylinder ' + m('≈ 554') + ', cube ' + m('600') + ' — the sphere wins.'],
+      [m('How many axes of rotational symmetry has a cube, and of what orders?'), m('13') + ' — 3 of order 4 (face to face), 4 of order 3 (corner to corner), 6 of order 2 (edge to edge).'],
+      [m('A regular hexagonal prism — how many planes of symmetry?'), m('7') + ' — six through the axis, one across the middle.'],
+      [m('Explain why bubbles are spherical.'), 'Surface tension pulls the film to the smallest possible surface area for the air enclosed, and of all shapes of a given volume the sphere has the least surface area.']
+    ]
+  },
+  hwTitle: 'Homework — Project 5',
+  hwNote: 'Cambridge Stage 9, Unit 14.3 and Project 5. Bring your design to the next lesson.',
+  homework: [
+    m('Design a container of capacity exactly 1 litre with at least two planes of symmetry.'),
+    m('Calculate its surface area, showing your working.'),
+    m('Describe and count every plane of symmetry it has.'),
+    m('Calculate the surface area of a 10 cm cube and compare it with your design.'),
+    'Write two sentences on which shape uses least material, and why.'
+  ]
+});
+
+G8_GEO.push({
+  id: 'geo-51', stream: 'geo', grade: 8, quarter: 4, lessons: '68', hours: 1,
+  title: 'Annual review · Grade 8 geometry',
+  subtitle: 'The whole year on one page — and what to carry into Grade 9.',
+  uz: 'Geometry 8 — annual review', uzPage: 'Темы 1–62, whole course',
+  cam: 'Stage 9 · units 3, 7, 13, 14', camPage: 'Learner’s Book, whole course', wb: 'Workbook, whole course',
+  objectives: [
+    'Recall the four chapters of the year and their key theorems.',
+    'Choose the right tool for an unfamiliar problem.',
+    'Identify personal weak topics from the year’s control works.',
+    'Set the summer work that follows.'
+  ],
+  terms: [
+    ['Annual review', 'Yillik takrorlash', 'Годовое повторение'],
+    ['Quadrilateral', 'To‘rtburchak', 'Четырёхугольник'],
+    ['Midline', 'O‘rta chiziq', 'Средняя линия'],
+    ['Pythagoras’ theorem', 'Pifagor teoremasi', 'Теорема Пифагора'],
+    ['Trigonometric ratio', 'Trigonometrik nisbat', 'Тригонометрическое отношение'],
+    ['Vector', 'Vektor', 'Вектор'],
+    ['Area', 'Yuza', 'Площадь'],
+    ['Circle', 'Aylana', 'Окружность'],
+    ['Similar figures', 'O‘xshash figuralar', 'Подобные фигуры']
+  ],
+  timing: [[5, 'What do you remember?'], [14, 'The four chapters'], [14, 'Mixed problems'], [7, 'The summer plan']],
+  sections: [
+    {
+      h: 'The year in four chapters',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Quarter</th><th>Chapter</th><th>The key results</th></tr></thead>
+      <tbody>
+        <tr><td>I</td><td>Quadrilaterals</td><td>angle sum ${m('360°')}; the parallelogram tests; the midline theorem; Thales</td></tr>
+        <tr><td>II</td><td>Right triangles</td><td>Pythagoras; ${m('sin, cos, tan')}; ${m('sin²α + cos²α = 1')}; solving a triangle</td></tr>
+        <tr><td>III</td><td>Coordinates, vectors, area</td><td>distance and midpoint; ${m('AB = OB − OA')}; ${m('S = ah')}, ${m('S = ½ah')}, ${m('S = ½(a + b)h')}</td></tr>
+        <tr><td>IV</td><td>The circle</td><td>tangent ⟂ radius; the chord property; inscribed angle ${m('= ½')} central</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The three questions that solve most problems</div>
+      <ol style="margin:0">
+        <li><b>Where is the right triangle?</b> — Pythagoras and trigonometry follow.</li>
+        <li><b>Where is the vertex?</b> — in a circle question, that chooses the angle rule.</li>
+        <li><b>What do I know, and what do I want?</b> — write both down before choosing a formula.</li>
+      </ol></div>`
+    },
+    {
+      h: 'The summer plan',
+      html: `<p>Look back at your four control works. Two topics will appear more than once in your lost
+      marks — those are your summer topics, and nothing else is.</p>
+      <div class="warn"><span class="wl">What Grade 9 will assume you know cold</span>
+      <ul style="margin:.4em 0 0">
+        <li>Pythagoras, in both directions.</li>
+        <li>The three trigonometric ratios, and which to choose.</li>
+        <li>All the area formulas, without looking them up.</li>
+        <li>The inscribed angle theorem and its corollaries.</li>
+      </ul></div>
+      <p>Twenty minutes a week on those four is enough. Nothing else about the summer matters
+      mathematically.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A rhombus has diagonals ' + m('16') + ' and ' + m('12') + '. Find its side, its area, its height and the angle between a side and the longer diagonal.',
+      steps: [
+        [m('half-diagonals 8 and 6'), 'The diagonals bisect each other at right angles.'],
+        [m('a = ' + sr('64 + 36') + ' = 10'), 'Pythagoras — Quarter II.'],
+        [m('S = ' + f('1', '2') + ' · 16 · 12 = 96'), 'Quarter III.'],
+        [m('96 = 10h, h = 9.6'), ''],
+        [m('tan α = ' + f('6', '8') + ' = 0.75, α ≈ 36.9°'), 'Trigonometry again.']
+      ],
+      ans: m('a = 10, S = 96, h = 9.6, α ≈ 37°')
+    },
+    {
+      q: 'A chord of ' + m('24 cm') + ' lies in a circle of radius ' + m('13 cm') + '. Find its distance from the centre and the area of the triangle it makes with the centre.',
+      steps: [
+        [m('half-chord 12'), 'The perpendicular from the centre bisects it — Quarter IV.'],
+        [m('d = ' + sr('169 − 144') + ' = 5 cm'), 'Pythagoras — Quarter II.'],
+        [m('S = ' + f('1', '2') + ' · 24 · 5'), 'Area — Quarter III.'],
+        [m('= 60 cm²'), 'Three chapters in one problem.']
+      ],
+      ans: m('d = 5 cm') + ', ' + m('S = 60 cm²')
+    }
+  ],
+  modelNote: 'Revisit any model from the year — every one is still one click away from the lesson list.',
+  interactive: { type: 'circleAngles', title: 'A last look at the circle' },
+  quiz: [
+    { q: 'The angle sum of a quadrilateral is:', a: [m('180°'), m('360°'), m('540°'), m('720°')], c: 1, why: 'Two triangles.' },
+    { q: m('sin²α + cos²α') + ' equals:', a: [m('0'), m('1'), m('2'), m('α')], c: 1, why: 'Pythagoras, divided by the hypotenuse squared.' },
+    { q: 'The area of a trapezium is:', a: [m('(a + b)h'), m(f('a + b', '2') + ' · h'), m('abh'), m(f('1', '2') + 'ah')], c: 1, why: 'The average of the parallel sides, times the height.' },
+    { q: 'An inscribed angle on a ' + m('120°') + ' arc is:', a: [m('120°'), m('60°'), m('240°'), m('30°')], c: 1, why: 'Half the arc.' },
+    { q: m('AB') + ' in position vectors is:', a: [m('OA + OB'), m('OB − OA'), m('OA − OB'), m('2OB')], c: 1, why: 'End minus start.' }
+  ],
+  practice: {
+    easy: [
+      [m('Find the angle sum of a hexagon.'), m('720°')],
+      [m('A right triangle has legs 9 and 12. Find its hypotenuse.'), m('15')],
+      [m('Find the area of a triangle with base 14 and height 6.'), m('42')],
+      [m('r = 10, d = 6. Find the chord.'), m('16')],
+      [m('Find the midpoint of (2; 4) and (10; 8).'), m('(6; 6)')],
+      [m('A central angle is 80°. Find the inscribed angle.'), m('40°')],
+      [m('Find the area of a circle of radius 5 (in terms of π).'), m('25π')]
+    ],
+    med: [
+      [m('A parallelogram has sides 12 and 8 with an angle of 30°. Find its area.'), m('48')],
+      [m('A trapezium has parallel sides 8 and 14 and height 9. Find its area.'), m('99')],
+      [m('OA = (1; 4), OB = (7; 12). Find AB and |AB|.'), m('(6; 8)') + ', ' + m('10')],
+      [m('A ladder 5 m long leans with its foot 3 m from the wall. How high does it reach?'), m('4 m')],
+      [m('In a cyclic quadrilateral ∠A = 88°. Find ∠C.'), m('92°')],
+      [m('A rhombus has diagonals 10 and 24. Find its side and its area.'), m('13') + ', ' + m('120')],
+      [m('A tangent from P is 15 and r = 8. Find OP.'), m('17')]
+    ],
+    hard: [
+      [m('An isosceles trapezium has parallel sides 12 and 20 and legs 5. Find its height, its area and its base angles.'), m('h = 3') + ', area ' + m('48') + ', base angle ' + m('≈ 36.9°')],
+      [m('A chord of a circle of radius 15 subtends a central angle of 90°. Find its length and the area of the minor segment.'), 'chord ' + m('15' + sr('2') + ' ≈ 21.2') + ', segment ' + m(f('225π', '4') + ' − 112.5 ≈ 64.2')],
+      [m('Show that (0;0), (6;0), (8;4), (2;4) is a parallelogram and find its area and its height.'), 'Diagonals share the midpoint ' + m('(4; 2)') + '; area ' + m('24') + ', height ' + m('4')],
+      [m('A right triangle has hypotenuse 26 and one leg 10. Find the other leg, the area and the smaller acute angle.'), m('24') + ', area ' + m('120') + ', angle ' + m('≈ 22.6°')],
+      [m('Two tangents from P touch a circle of radius 12 with ∠APB = 60°. Find OP and PA.'), m('OP = 24') + ', ' + m('PA = 12' + sr('3') + ' ≈ 20.8')],
+      [m('A cylinder holds 1 litre with h = 2r. Find r, h and its surface area.'), m('r ≈ 5.4 cm, h ≈ 10.8 cm, S ≈ 554 cm²')],
+      [m('Name, for each quarter of the year, the single theorem you would keep if you could keep only one, and say why.'), 'A personal answer — but strong candidates are the parallelogram bisection test, Pythagoras, the area formula ' + m('S = ' + f('1', '2') + 'ah') + ', and the inscribed angle theorem, because every other result in its chapter can be rebuilt from it.']
+    ]
+  },
+  hwTitle: 'Summer work — 5 tasks',
+  hwNote: 'Twenty minutes a week keeps Grade 9 easy.',
+  homework: [
+    'List the two topics that cost you most marks across the year’s four control works.',
+    'Five problems a week from each of those two topics. No more.',
+    m('Practise Pythagoras in both directions until it needs no thought.'),
+    m('Learn every area formula of Quarter III by heart.'),
+    m('Learn the inscribed angle theorem and its three corollaries.')
+  ]
+});

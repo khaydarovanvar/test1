@@ -47,13 +47,19 @@ site/
 
 ## What is written
 
+All four quarters of Grade 8 are complete — the full 102 hours of algebra and 68 hours of geometry.
+
 | Stream | Quarter | Topics | Lessons | Problems |
 |---|---|---:|---:|---:|
 | Grade 8 Algebra | I | 10 | 27 | 210 |
 | Grade 8 Geometry | I | 13 | 18 | 273 |
 | Grade 8 Algebra | II | 10 | 21 | 210 |
 | Grade 8 Geometry | II | 10 | 14 | 210 |
-| **Total** | | **43** | **80** | **903** |
+| Grade 8 Algebra | III | 14 | 30 | 294 |
+| Grade 8 Geometry | III | 14 | 20 | 294 |
+| Grade 8 Algebra | IV | 10 | 24 | 210 |
+| Grade 8 Geometry | IV | 14 | 16 | 294 |
+| **Total** | | **95** | **170** | **1995** |
 
 Every topic page contains: a 40-minute lesson clock, learning objectives, an explanation with drawn
 figures, worked examples with reasoned steps, one interactive model, an English / Uzbek / Russian

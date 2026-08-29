@@ -1808,21 +1808,21 @@ G8_ALG.push({
       html: `<div class="keybox"><div class="klabel">Definition</div>
       For ${m('a ≥ 0')} and a natural number ${m('n ≥ 2')}, the <b>arithmetic root of degree n</b> of
       ${m('a')} is the <b>non-negative</b> number whose ${m('n')}-th power is ${m('a')}:
-      ${eq(m(sr('<sup>n</sup>&nbsp;a') + ' = b') + ' &nbsp;means&nbsp; ' + m('b ≥ 0') + ' and ' + m('b<sup>n</sup> = a'))}</div>
+      ${eq(m(rt('n', 'a') + ' = b') + ' &nbsp;means&nbsp; ' + m('b ≥ 0') + ' and ' + m('b<sup>n</sup> = a'))}</div>
       <p>So ${m(sr('16') + ' = 4')} — and only 4. The number ${m('−4')} also squares to 16, but the
       <em>arithmetic</em> root is the non-negative one by definition.</p>
       <div class="warn"><span class="wl">When does it exist?</span>
       For <b>even</b> ${m('n')} the radicand must satisfy ${m('a ≥ 0')} — you cannot take
       ${m(sr('−9'))}. For <b>odd</b> ${m('n')} any ${m('a')} is allowed:
-      ${m(sr('<sup>3</sup>&nbsp;−8') + ' = −2')}.</div>`
+      ${m(rt('3', '−8') + ' = −2')}.</div>`
     },
     {
       h: 'The four properties',
       html: `<p>For ${m('a ≥ 0, b ≥ 0')}:</p>
-      ${eq(m(sr('<sup>n</sup>&nbsp;ab') + ' = ' + sr('<sup>n</sup>&nbsp;a') + ' · ' + sr('<sup>n</sup>&nbsp;b')) + ' &nbsp;&nbsp;&nbsp; ' +
-           m(sr('<sup>n</sup>&nbsp;' + f('a', 'b')) + ' = ' + f(sr('<sup>n</sup>&nbsp;a'), sr('<sup>n</sup>&nbsp;b')) + ',&nbsp; b > 0'), true)}
-      ${eq(m('(' + sr('<sup>n</sup>&nbsp;a') + ')<sup>k</sup> = ' + sr('<sup>n</sup>&nbsp;a<sup>k</sup>')) + ' &nbsp;&nbsp;&nbsp; ' +
-           m(sr('<sup>m</sup>&nbsp;' + sr('<sup>n</sup>&nbsp;a')) + ' = ' + sr('<sup>mn</sup>&nbsp;a')), true)}
+      ${eq(m(rt('n', 'ab') + ' = ' + rt('n', 'a') + ' · ' + rt('n', 'b')) + ' &nbsp;&nbsp;&nbsp; ' +
+           m(rt('n', f('a', 'b')) + ' = ' + f(rt('n', 'a'), rt('n', 'b')) + ',&nbsp; b > 0'), true)}
+      ${eq(m('(' + rt('n', 'a') + ')<sup>k</sup> = ' + rt('n', 'a<sup>k</sup>')) + ' &nbsp;&nbsp;&nbsp; ' +
+           m(rt('m', rt('n', 'a')) + ' = ' + rt('mn', 'a')), true)}
       <p>Read the first one right to left and you can multiply roots together; read it left to right and
       you can <b>take a factor out</b>:</p>
       ${eq(m(sr('50') + ' = ' + sr('25 · 2') + ' = ' + sr('25') + ' · ' + sr('2') + ' = 5' + sr('2')))}
@@ -1870,7 +1870,7 @@ G8_ALG.push({
   interactive: { type: 'rootPower' },
   quiz: [
     { q: m(sr('49')) + ' equals:', a: [m('7'), m('±7'), m('−7'), m('24.5')], c: 0, why: 'The arithmetic root is the non-negative one.' },
-    { q: m(sr('<sup>3</sup>&nbsp;−27')) + ' equals:', a: ['it does not exist', m('−3'), m('3'), m('−9')], c: 1, why: 'An odd-degree root accepts a negative radicand.' },
+    { q: m(rt('3', '−27')) + ' equals:', a: ['it does not exist', m('−3'), m('3'), m('−9')], c: 1, why: 'An odd-degree root accepts a negative radicand.' },
     { q: m(sr('8') + ' · ' + sr('2')) + ' equals:', a: [m('4'), m(sr('10')), m('16'), m('2' + sr('2'))], c: 0, why: '√8 · √2 = √16 = 4.' },
     { q: m(sr('9 + 16')) + ' equals:', a: [m('7'), m('5'), m('25'), m('3 + 4')], c: 1, why: '√25 = 5. Roots do not split over a sum.' }
   ],
@@ -1878,11 +1878,11 @@ G8_ALG.push({
     easy: [
       [m('Find ' + sr('36')), m('6')],
       [m('Find ' + sr('81')), m('9')],
-      [m('Find ' + sr('<sup>3</sup>&nbsp;8')), m('2')],
-      [m('Find ' + sr('<sup>3</sup>&nbsp;27')), m('3')],
+      [m('Find ' + rt('3', '8')), m('2')],
+      [m('Find ' + rt('3', '27')), m('3')],
       [m('Find ' + sr('100') + ' + ' + sr('25')), m('15')],
       [m('Does ' + sr('−4') + ' exist?'), 'No — an even root needs ' + m('a ≥ 0') + '.'],
-      [m('Find ' + sr('<sup>3</sup>&nbsp;−8')), m('−2')]
+      [m('Find ' + rt('3', '−8')), m('−2')]
     ],
     med: [
       [m('Simplify ' + sr('72')), m('6' + sr('2'))],
@@ -1895,7 +1895,7 @@ G8_ALG.push({
     ],
     hard: [
       [m('Simplify ' + sr('98') + ' − ' + sr('50')), m('7' + sr('2') + ' − 5' + sr('2') + ' = 2' + sr('2'))],
-      [m('Simplify ' + sr('<sup>4</sup>&nbsp;16')), m('2')],
+      [m('Simplify ' + rt('4', '16')), m('2')],
       [m('Simplify (' + sr('5') + ')<sup>2</sup> + ' + sr('16')), m('5 + 4 = 9')],
       [m('Write ' + f('10', sr('5')) + ' without a root below'), m('2' + sr('5'))],
       [m('Simplify ' + sr('2') + ' · ' + sr('8') + ' − 1'), m(sr('16') + ' − 1 = 3')],
@@ -1906,7 +1906,7 @@ G8_ALG.push({
   hwTitle: 'Homework — 5 problems',
   hwNote: 'Algebra 8, §8, pp. 39–41.',
   homework: [
-    m('Find ' + sr('144') + ', ' + sr('<sup>3</sup>&nbsp;64') + ' and ' + sr('<sup>3</sup>&nbsp;−125')),
+    m('Find ' + sr('144') + ', ' + rt('3', '64') + ' and ' + rt('3', '−125')),
     m('Simplify ' + sr('32')),
     m('Simplify ' + sr('20') + ' · ' + sr('5')),
     m('Write ' + f('8', sr('2')) + ' without a root in the denominator'),
@@ -1943,8 +1943,8 @@ G8_ALG.push({
       h: 'The definition',
       html: `<div class="keybox"><div class="klabel">Definition</div>
       For ${m('a > 0')} and natural ${m('m, n')} with ${m('n ≥ 2')}:
-      ${eq(m('a<sup>1/n</sup> = ' + sr('<sup>n</sup>&nbsp;a')) + ' &nbsp;&nbsp;and&nbsp;&nbsp; ' +
-           m('a<sup>m/n</sup> = ' + sr('<sup>n</sup>&nbsp;a<sup>m</sup>') + ' = (' + sr('<sup>n</sup>&nbsp;a') + ')<sup>m</sup>'))}
+      ${eq(m('a<sup>1/n</sup> = ' + rt('n', 'a')) + ' &nbsp;&nbsp;and&nbsp;&nbsp; ' +
+           m('a<sup>m/n</sup> = ' + rt('n', 'a<sup>m</sup>') + ' = (' + rt('n', 'a') + ')<sup>m</sup>'))}
       and, as before, ${m('a<sup>0</sup> = 1')} and ${m('a<sup>−k</sup> = ' + f('1', 'a<sup>k</sup>'))}.</div>
       <p>Why this definition and no other? Because it is the only one that keeps the index laws true.
       If ${m('(a<sup>1/2</sup>)<sup>2</sup> = a<sup>1</sup> = a')} then ${m('a<sup>1/2</sup>')} must be
@@ -1965,8 +1965,8 @@ G8_ALG.push({
     {
       h: 'Evaluating without a calculator',
       html: `<p>Take the <b>root first</b>, then the power — the numbers stay small.</p>
-      ${eq(m('8<sup>2/3</sup> = (' + sr('<sup>3</sup>&nbsp;8') + ')<sup>2</sup> = 2<sup>2</sup> = 4'), true)}
-      <p>Going the other way, ${m(sr('<sup>3</sup>&nbsp;8<sup>2</sup>') + ' = ' + sr('<sup>3</sup>&nbsp;64') + ' = 4')} —
+      ${eq(m('8<sup>2/3</sup> = (' + rt('3', '8') + ')<sup>2</sup> = 2<sup>2</sup> = 4'), true)}
+      <p>Going the other way, ${m(rt('3', '8<sup>2</sup>') + ' = ' + rt('3', '64') + ' = 4')} —
       same answer, bigger arithmetic.</p>
       <div class="warn"><span class="wl">Negative index</span>
       ${m('a<sup>−p</sup>')} means <b>one over</b> ${m('a<sup>p</sup>')}; it does not make the answer
@@ -1978,7 +1978,7 @@ G8_ALG.push({
       q: m('Evaluate 27<sup>2/3</sup>'),
       steps: [
         ['Denominator 3 → cube root; numerator 2 → square.', 'Root first.'],
-        [m(sr('<sup>3</sup>&nbsp;27') + ' = 3'), ''],
+        [m(rt('3', '27') + ' = 3'), ''],
         [m('3<sup>2</sup> = 9'), '']
       ],
       ans: m('9')
@@ -1987,7 +1987,7 @@ G8_ALG.push({
       q: m('Evaluate 16<sup>−3/4</sup>'),
       steps: [
         [m('16<sup>−3/4</sup> = ' + f('1', '16<sup>3/4</sup>')), 'A negative index means a reciprocal.'],
-        [m(sr('<sup>4</sup>&nbsp;16') + ' = 2'), 'Root first.'],
+        [m(rt('4', '16') + ' = 2'), 'Root first.'],
         [m('2<sup>3</sup> = 8'), ''],
         [m('= ' + f('1', '8')), '']
       ],
@@ -1998,7 +1998,7 @@ G8_ALG.push({
       steps: [
         [m('a<sup>1/2</sup> · a<sup>1/3</sup> = a<sup>1/2 + 1/3</sup>'), 'Add the indices.'],
         [m(f('1', '2') + ' + ' + f('1', '3') + ' = ' + f('5', '6')), 'Common denominator 6.'],
-        [m('= a<sup>5/6</sup>'), ' or ' + m(sr('<sup>6</sup>&nbsp;a<sup>5</sup>'))]
+        [m('= a<sup>5/6</sup>'), ' or ' + m(rt('6', 'a<sup>5</sup>'))]
       ],
       ans: m('a<sup>5/6</sup>')
     }
@@ -2014,8 +2014,8 @@ G8_ALG.push({
   practice: {
     easy: [
       [m('Write ' + sr('a') + ' as a power'), m('a<sup>1/2</sup>')],
-      [m('Write ' + sr('<sup>3</sup>&nbsp;a') + ' as a power'), m('a<sup>1/3</sup>')],
-      [m('Write a<sup>1/4</sup> as a root'), m(sr('<sup>4</sup>&nbsp;a'))],
+      [m('Write ' + rt('3', 'a') + ' as a power'), m('a<sup>1/3</sup>')],
+      [m('Write a<sup>1/4</sup> as a root'), m(rt('4', 'a'))],
       [m('Evaluate 9<sup>1/2</sup>'), m('3')],
       [m('Evaluate 8<sup>1/3</sup>'), m('2')],
       [m('Evaluate 16<sup>1/2</sup>'), m('4')],
@@ -2036,7 +2036,7 @@ G8_ALG.push({
       [m('Simplify (a<sup>1/2</sup>b<sup>1/3</sup>)<sup>6</sup>'), m('a<sup>3</sup>b<sup>2</sup>')],
       [m('Simplify ' + f('a<sup>5/6</sup>', 'a<sup>1/3</sup>')), m('a<sup>1/2</sup>')],
       [m('Evaluate (' + f('1', '8') + ')<sup>−2/3</sup>'), m('4')],
-      [m('Write ' + sr('a') + ' · ' + sr('<sup>3</sup>&nbsp;a') + ' as one power'), m('a<sup>5/6</sup>')],
+      [m('Write ' + sr('a') + ' · ' + rt('3', 'a') + ' as one power'), m('a<sup>5/6</sup>')],
       [m('Evaluate 81<sup>0.75</sup>'), m('81<sup>3/4</sup> = 27')]
     ]
   },
@@ -2048,7 +2048,7 @@ G8_ALG.push({
     m('Simplify a<sup>2/5</sup> · a<sup>3/5</sup>'),
     m('Simplify (b<sup>3/4</sup>)<sup>8</sup>'),
     m('Evaluate 125<sup>2/3</sup>'),
-    m('Write ' + sr('<sup>4</sup>&nbsp;a<sup>3</sup>') + ' as a power with a rational index')
+    m('Write ' + rt('4', 'a<sup>3</sup>') + ' as a power with a rational index')
   ]
 });
 
@@ -2084,7 +2084,7 @@ G8_ALG.push({
         <li>Collect, factorise or cancel.</li>
         <li>Convert back to root form only if the question asks for it.</li>
       </ol>
-      ${eq(m(f(sr('a') + ' · ' + sr('<sup>3</sup>&nbsp;a'), sr('<sup>6</sup>&nbsp;a')) + ' = ' + f('a<sup>1/2</sup> · a<sup>1/3</sup>', 'a<sup>1/6</sup>') + ' = a<sup>1/2 + 1/3 − 1/6</sup> = a<sup>2/3</sup>'), true)}`
+      ${eq(m(f(sr('a') + ' · ' + rt('3', 'a'), rt('6', 'a')) + ' = ' + f('a<sup>1/2</sup> · a<sup>1/3</sup>', 'a<sup>1/6</sup>') + ' = a<sup>1/2 + 1/3 − 1/6</sup> = a<sup>2/3</sup>'), true)}`
     },
     {
       h: 'Taking out a common power',
@@ -2157,12 +2157,12 @@ G8_ALG.push({
       [m('Factorise a<sup>3/2</sup> − a<sup>1/2</sup>'), m(sr('a') + '(a − 1)')],
       [m('Simplify ' + f('x − 9', sr('x') + ' − 3')), m(sr('x') + ' + 3')],
       [m('Simplify (a<sup>1/2</sup>b<sup>1/2</sup>)<sup>4</sup>'), m('a<sup>2</sup>b<sup>2</sup>')],
-      [m('Simplify ' + sr('a') + ' · ' + sr('<sup>3</sup>&nbsp;a')), m('a<sup>5/6</sup>')],
+      [m('Simplify ' + sr('a') + ' · ' + rt('3', 'a')), m('a<sup>5/6</sup>')],
       [m('Simplify ' + f('a', sr('a')) + ',&nbsp; a > 0'), m(sr('a'))],
       [m('Factorise a + a<sup>1/2</sup>'), m('a<sup>1/2</sup>(a<sup>1/2</sup> + 1)')]
     ],
     hard: [
-      [m('Simplify ' + f(sr('a') + ' · ' + sr('<sup>3</sup>&nbsp;a'), sr('<sup>6</sup>&nbsp;a'))), m('a<sup>2/3</sup>')],
+      [m('Simplify ' + f(sr('a') + ' · ' + rt('3', 'a'), rt('6', 'a'))), m('a<sup>2/3</sup>')],
       [m('Simplify ' + f('x − 1', sr('x') + ' − 1') + ',&nbsp; x ≥ 0, x ≠ 1'), m(sr('x') + ' + 1')],
       [m('Rationalise ' + f('1', sr('5') + ' − ' + sr('3'))), m(f(sr('5') + ' + ' + sr('3'), '2'))],
       [m('Simplify (a<sup>2/3</sup> − b<sup>2/3</sup>) : (a<sup>1/3</sup> − b<sup>1/3</sup>)'), m('a<sup>1/3</sup> + b<sup>1/3</sup>')],
@@ -2463,7 +2463,7 @@ G8_ALG.push({
         start: '<b>Claimed:</b> ' + m('8<sup>2/3</sup> = (8<sup>3</sup>)<sup>2</sup> = 262144'),
         steps: [
           ['The <b>denominator</b> of the index is the root; the numerator is the power.', ''],
-          [m('8<sup>2/3</sup> = (' + sr('<sup>3</sup>&nbsp;8') + ')<sup>2</sup>'), ''],
+          [m('8<sup>2/3</sup> = (' + rt('3', '8') + ')<sup>2</sup>'), ''],
           [m('= 2<sup>2</sup> = 4'), 'Root first keeps the numbers small.']
         ],
         answer: m('4')
@@ -3038,7 +3038,7 @@ G8_ALG.push({
       html: `<div class="keybox"><div class="klabel">For positive numbers</div>
       If ${m('a > b > 0')} and ${m('n')} is a natural number, then
       ${eq(m('a<sup>n</sup> > b<sup>n</sup>') + ' &nbsp;&nbsp;and&nbsp;&nbsp; ' +
-           m(sr('<sup>n</sup>&nbsp;a') + ' > ' + sr('<sup>n</sup>&nbsp;b')))}</div>
+           m(rt('n', 'a') + ' > ' + rt('n', 'b')))}</div>
       <p>Both operations preserve the order — as long as both sides are positive. Squaring
       ${m('5 > 3')} gives ${m('25 > 9')} ✓; taking square roots of ${m('16 > 9')} gives ${m('4 > 3')} ✓.</p>`
     },
@@ -3140,7 +3140,7 @@ G8_ALG.push({
   hwNote: 'Algebra 8, §14, pp. 80–84. Check for zero inside the interval before squaring.',
   homework: [
     m('3 < a < 7. Find the range of a<sup>2</sup>'),
-    m('1 < a < 8. Find the range of ' + sr('<sup>3</sup>&nbsp;a')),
+    m('1 < a < 8. Find the range of ' + rt('3', 'a')),
     m('−6 < a < 2. Find the range of a<sup>2</sup>'),
     m('−3 < a < −1. Find the range of a<sup>3</sup>'),
     m('Compare ' + sr('7') + ' and 2.6 without a calculator'),
