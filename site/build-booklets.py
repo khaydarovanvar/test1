@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Merge the per-lesson PDFs into one booklet per stream and quarter.
+"""Merge the per-lesson PDFs into one booklet per grade, stream and quarter.
 
-Run after build-pdf.mjs, which writes pdf/g8-<stream>-q<n>-<id>.pdf.
+Run after build-pdf.mjs, which writes pdf/g<grade>-<stream>-q<n>-<id>.pdf.
 """
 import re
 import sys
@@ -14,6 +14,7 @@ except ImportError:
 
 PDF = Path(__file__).resolve().parent / "pdf"
 STREAMS = {"alg": "algebra", "geo": "geometry"}
+GRADES = (8, 10, 11)
 
 
 def sort_key(path):
@@ -24,15 +25,16 @@ def sort_key(path):
 
 def main():
     made = 0
-    for stream, name in STREAMS.items():
+    for grade in GRADES:
+      for stream, name in STREAMS.items():
         for quarter in (1, 2, 3, 4):
-            parts = sorted(PDF.glob(f"g8-{stream}-q{quarter}-*.pdf"), key=sort_key)
+            parts = sorted(PDF.glob(f"g{grade}-{stream}-q{quarter}-*.pdf"), key=sort_key)
             if not parts:
                 continue
             writer = PdfWriter()
             for part in parts:
                 writer.append(str(part))
-            out = PDF / f"BOOKLET-grade8-{name}-quarter-{quarter}.pdf"
+            out = PDF / f"BOOKLET-grade{grade}-{name}-quarter-{quarter}.pdf"
             with open(out, "wb") as fh:
                 writer.write(fh)
             writer.close()

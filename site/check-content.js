@@ -124,6 +124,12 @@ for (const name of Object.keys(ctx.FIG)) {
 
 const byGrade = {};
 for (const t of all) byGrade[t.grade] = (byGrade[t.grade] || 0) + 1;
+
+/* data/grades.js carries the counts the homepage prints, so they must match. */
+vm.runInContext(fs.readFileSync(path.join(here, 'data/grades.js'), 'utf8'), ctx, { filename: 'data/grades.js' });
+for (const [g, n] of Object.entries(ctx.TOPIC_COUNTS || {})) {
+  if (byGrade[g] !== n) issues.push(`TOPIC_COUNTS says grade ${g} has ${n} topics, the data has ${byGrade[g] || 0}`);
+}
 console.log(`${all.length} topics · ${Object.keys(ctx.FIG).length} figures · ` +
   `${all.length * 21} practice problems`);
 console.log('  by grade: ' + Object.keys(byGrade).sort((a, b) => a - b)

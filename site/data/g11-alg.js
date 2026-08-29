@@ -4996,7 +4996,7 @@ G11_ALG.push({
       ['Of 60 with 30 F, 25 C, 20 T, 12 FC, 8 CT, 10 FT, 5 all: how many play none?', m('10')]
     ],
     hard: [
-      ['Of 60 as above: ' + m('P') + '(exactly two sports)', m(f('20', '60') + ' = ' + f('1', '3'))],
+      ['Of 60 as above: ' + m('P') + '(exactly two sports)', m(f('15', '60') + ' = ' + f('1', '4'))],
       ['Of 60 as above: ' + m('P') + '(football only)', m(f('13', '60'))],
       ['If ' + m('P(A) = 0.7, P(B) = 0.5') + ', find the range of ' + m('P(A ∩ B)'), m('0.2 ≤ P(A ∩ B) ≤ 0.5')],
       ['If ' + m('A') + ' and ' + m('B') + ' are independent, show ' + m('A') + ' and ' + m('B′') + ' are too', m('P(A ∩ B′) = P(A)(1 − P(B))')],
@@ -5608,7 +5608,7 @@ G11_ALG.push({
       [m('P(X ≥ 1)') + ' for ' + m('B(12, 0.25)'), m('≈ 0.968')],
       ['Proportion of ' + m('N(500, 15²)') + ' above ' + m('530'), m('≈ 2.3\\%')],
       ['Proportion of ' + m('N(500, 15²)') + ' between ' + m('485') + ' and ' + m('515'), m('≈ 68\\%')],
-      ['A committee of 5 from 6 men and 5 women with more women than men: ' + m('P'), m(f('141', '462')) + ' ≈ ' + m('0.305')],
+      ['A committee of 5 from 6 men and 5 women with more women than men: ' + m('P'), m(f('181', '462')) + ' ≈ ' + m('0.392')],
       ['Three components fail with probability ' + m('0.05') + ' each: ' + m('P') + ' at least one fails', m('≈ 0.143')],
       ['For ' + m('B(n, 0.25)') + ' with ' + m('σ = 3') + ', find ' + m('n'), m('n = 48')],
       ['A test is ' + m('98\\%') + ' accurate; ' + m('0.5\\%') + ' have the disease: ' + m('P') + '(disease | positive)', m('≈ 0.198')]
@@ -5835,7 +5835,7 @@ G11_ALG.push({
       ['Show that ' + m('(1 + i)⁸ = 16'), m('|z| = ' + sr('2')) + ', ' + m('arg = ' + f('π', '4')) + ', so ' + m('16(cos 2π + i sin 2π)')],
       ['One root of ' + m('x³ − 5x² + 17x − 13 = 0') + ' is ' + m('1') + ': find the others', m('2 ± 3i')],
       ['Prove that ' + m('z + z̄') + ' is always real and ' + m('z − z̄') + ' always purely imaginary', m('2a') + ' and ' + m('2bi')],
-      ['Simplify ' + m(f('(1 + i)³', '1 − i')), m('−1 + i')]
+      ['Simplify ' + m(f('(1 + i)³', '1 − i')), m('−2')]
     ]
   },
   hwTitle: 'Homework — 5 tasks',
@@ -6028,10 +6028,10 @@ G11_ALG.push({
       ['Describe ' + m('|z − 2| ≤ |z|'), 'The half-plane ' + m('Re(z) ≥ 1')]
     ],
     hard: [
-      ['Greatest and least ' + m('|z − 1|') + ' on ' + m('|z − 4 − 3i| = 2'), m('7') + ' and ' + m('3')],
+      ['Greatest and least ' + m('|z − 1|') + ' on ' + m('|z − 5 − 3i| = 2'), m('7') + ' and ' + m('3')],
       ['Sketch ' + m('|z − 2i| ≤ 2') + ' and ' + m('0 ≤ arg z ≤ ' + f('π', '2')), 'The right half of the disc'],
       ['Describe ' + m('|z − 1| = 2|z + 1|'), 'A circle — centre ' + m('−' + f('5', '3')) + ', radius ' + m(f('4', '3'))],
-      ['Greatest ' + m('arg z') + ' on ' + m('|z − 4i| = 2'), m('π') + ' — the tangent from ' + m('O')],
+      ['Greatest ' + m('arg z') + ' on ' + m('|z − 4i| = 2'), m(f('2π', '3')) + ' — at the tangent from ' + m('O')],
       ['The region ' + m('|z| ≤ 3') + ' and ' + m('|z − 3| ≤ 3') + ': describe it', 'A lens between the two circles'],
       ['Show that ' + m('|z₁ + z₂| ≤ |z₁| + |z₂|') + ' with equality when the arguments are equal', 'The triangle inequality'],
       ['Find the points on ' + m('|z − 3 − 4i| = 2') + ' of greatest and least modulus', m('' + f('21 + 28i', '5')) + ' and ' + m(f('9 + 12i', '5'))]
@@ -6442,7 +6442,7 @@ G11_ALG.push({
     ],
     med: [
       ['Stationary points of ' + m('y = x³ − 6x² + 9x + 2'), m('(1, 6)') + ' max, ' + m('(3, 2)') + ' min'],
-      [m('∫₁⁴(2x + ' + f('1', sr('x')) + ') dx'), m('15 + 2') + ' = ' + m('17')],
+      [m('∫₁⁴(2x + ' + f('1', sr('x')) + ') dx'), m('[x² + 2' + sr('x') + ']₁⁴ = 20 − 3 = 17')],
       ['Area between ' + m('y = x²') + ' and ' + m('y = 2x'), m(f('4', '3'))],
       ['Box of 4 red, 6 blue, two drawn without replacement: ' + m('P(RR)'), m(f('2', '15'))],
       ['Same: ' + m('P') + '(one of each)', m(f('8', '15'))],
@@ -6452,7 +6452,7 @@ G11_ALG.push({
     hard: [
       [m('P(X ≥ 1)') + ' for ' + m('B(10, 0.3)'), m('≈ 0.972')],
       ['Half-life ' + m('6') + ' days from ' + m('400') + ': ' + m('N(15)'), m('≈ 71')],
-      ['Greatest and least ' + m('|z|') + ' on ' + m('|z − 2i| = 3'), m('5') + ' and ' + m('1')],
+      ['Greatest and least ' + m('|z|') + ' on ' + m('|z − 2i| = 3'), m('5') + ' and ' + m('0') + ' — the origin is inside'],
       ['Volume when ' + m('y = x²') + ' from ' + m('0') + ' to ' + m('2') + ' rotates about ' + m('Ox'), m(f('32π', '5'))],
       ['A box of 4 red and 6 blue: ' + m('P') + '(second red)', m(f('2', '5'))],
       ['Show that ' + m('y = x³ − 6x² + 9x + 2') + ' has an inflection at ' + m('x = 2'), m('y″ = 6x − 12 = 0')],

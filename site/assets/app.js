@@ -38,7 +38,7 @@
 
   /* What the grades drop-down says under each year. Keyed by grade; anything
      not listed is still to be written. */
-  var MENU_NOTE = { 8: 'all 95 lessons', 10: 'Quarter I', 11: 'Quarter I' };
+  var MENU_NOTE = { 8: 'all 95 lessons', 10: 'all 80 lessons', 11: 'all 76 lessons' };
 
   function header(active) {
     var links = NAV.map(function (n) {

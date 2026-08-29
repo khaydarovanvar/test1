@@ -5116,8 +5116,8 @@ G11_GEO.push({
       ['Paint at ' + m('10') + ' m²/litre for that silo: litres needed', m('≈ 36') + ' litres'],
       ['A hemispherical bowl of inner radius ' + m('12') + ' cm: capacity in litres', m('≈ 3.62') + ' litres'],
       ['A trough with trapezium section ' + m('40/60') + ' cm, depth ' + m('30') + ' cm, length ' + m('3') + ' m: capacity in litres', m('450') + ' litres'],
-      ['A gutter is half a cylinder of radius ' + m('8') + ' cm and length ' + m('6') + ' m: material area', m('480π') + ' ≈ ' + m('1508') + ' cm² × … = ' + m('≈ 1.51') + ' m²'],
-      ['A tank of ' + m('2000') + ' litres is a cylinder with ' + m('h = 2r') + ': find ' + m('r'), m('≈ 0.585') + ' m'],
+      ['A gutter is half a cylinder of radius ' + m('8') + ' cm and length ' + m('6') + ' m: material area', m('4800π') + ' cm² ≈ ' + m('1.51') + ' m²'],
+      ['A tank of ' + m('2000') + ' litres is a cylinder with ' + m('h = 2r') + ': find ' + m('r'), m('r = ' + rt('3', f('1', 'π'))) + ' ≈ ' + m('0.683') + ' m'],
       ['A ball of radius ' + m('20') + ' cm is painted at ' + m('2') + ' so‘m per cm²: the cost', m('3200π') + ' ≈ ' + m('10 050') + ' so‘m']
     ]
   },
@@ -5542,7 +5542,7 @@ G11_GEO.push({
       ['Least-area closed cylinder: ' + m(f('h', 'r')), m('2')],
       ['A cone of radius ' + m('5') + ' and height ' + m('12') + ': total surface area', m('90π')],
       ['A hemisphere and a cone on the same base of radius ' + m('r') + ' have equal volumes: find ' + m('h'), m('h = 2r')],
-      ['A cube and a sphere have equal surface areas: the ratio of their volumes', m(sr('6') + ' : ' + sr('π')) + ' ≈ ' + m('1 : 1.38')]
+      ['A cube and a sphere have equal surface areas: the ratio of their volumes (cube : sphere)', m('1 : ' + sr(f('6', 'π'))) + ' ≈ ' + m('1 : 1.38')]
     ]
   },
   hwTitle: 'Homework — 4 tasks',
@@ -5929,12 +5929,12 @@ G11_GEO.push({
     ],
     hard: [
       ['Angle between the planes ' + m('x + y = 1') + ' and ' + m('y + z = 1'), m('60°')],
-      ['Shortest distance between the two skew lines above', m(f('3', sr('6'))) + ' ≈ ' + m('1.22')],
+      ['Shortest distance between the two skew lines above', m(f('3', sr('11'))) + ' ≈ ' + m('0.905')],
       ['A cube of edge ' + m('a') + ' with a vertex at the origin: the angle between two space diagonals', m('≈ 70.5°')],
       ['Find ' + m('k') + ' so that ' + m('(1, k, 2)') + ' is perpendicular to ' + m('(3, −1, 1)'), m('k = 5')],
       ['The plane through ' + m('(1,0,0), (0,1,0), (0,0,1)'), m('x + y + z = 1')],
       ['Angle between the line ' + m('r = t(1,1,1)') + ' and that plane', m('90°')],
-      ['Show that ' + m('(1,2,2)') + ', ' + m('(2,−1,2)') + ' and ' + m('(2,2,−1)') + ' are mutually perpendicular', 'All three dot products vanish']
+      ['Show that ' + m('(1,2,2)') + ', ' + m('(2,1,−2)') + ' and ' + m('(2,−2,1)') + ' are mutually perpendicular', 'All three dot products vanish']
     ]
   },
   hwTitle: 'Homework — 5 tasks',
@@ -6141,7 +6141,7 @@ G11_GEO.push({
       ['A regular square pyramid, base ' + m('12') + ', height ' + m('8') + ': the dihedral angle along a base edge', m('≈ 53.1°')],
       ['Same pyramid: the angle of a lateral edge with the base', m('≈ 43.3°')],
       ['Shortest distance between ' + m('r = t(1,0,0)') + ' and ' + m('r = (0,1,1) + s(0,1,0)'), m('1')],
-      ['Prove that the three space diagonals from one vertex of a box are not coplanar', 'Their scalar triple product is non-zero']
+      ['Prove that the three face diagonals from one vertex of a cube are not coplanar', 'Their scalar triple product is ' + m('−2a³ ≠ 0')]
     ]
   },
   hwTitle: 'Homework — 5 tasks',

@@ -47,7 +47,7 @@
       <div class="stats">
         <div class="stat"><b>40</b><span>minute lessons</span></div>
         <div class="stat"><b>21</b><span>graded problems</span></div>
-        <div class="stat" id="stat-topics"><b>—</b><span>Grade 8 topics</span></div>
+        <div class="stat" id="stat-topics"><b>—</b><span>written topics</span></div>
         <div class="stat"><b>3</b><span>term languages</span></div>
       </div>
     </div>
@@ -69,8 +69,8 @@
     <div class="sechead">
       <span class="eyebrow">Choose a grade</span>
       <h2>Grades 5 – 11</h2>
-      <p>Grade 8 is open now with the whole of Quarter I. The remaining grades follow the same
-      structure and are being written in order.</p>
+      <p>Grades 8, 10 and 11 are open with all four quarters written. The remaining grades follow the
+      same structure and are being written in order.</p>
     </div>
     <div class="gradegrid" id="gradegrid"></div>
   </div>
@@ -152,7 +152,8 @@ document.getElementById('clock').innerHTML = CLOCK.map(function(c){
 }).join('');
 
 (function(){
-  var n = ((window.G8_ALG||[]).length + (window.G8_GEO||[]).length) || 0;
+  var counts = window.TOPIC_COUNTS || {}, n = 0, k;
+  for (k in counts) if (Object.prototype.hasOwnProperty.call(counts, k)) n += counts[k];
   var el = document.querySelector('#stat-topics b');
   if (el && n) el.textContent = n;
 })();

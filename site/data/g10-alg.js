@@ -6287,7 +6287,7 @@ G10_ALG.push({
       ['Solve ' + m('' + sr('3') + ' sin x + cos x = 1') + ' on ' + m('[0, 2π]'), m('0') + ', ' + m(f('2π', '3')) + ', ' + m('2π')],
       ['Solve ' + m('sin x + cos x = 1') + ' on ' + m('[0, 2π]'), m('0') + ', ' + m(f('π', '2')) + ', ' + m('2π')],
       ['Solve ' + m('cos 2x = 3 cos x − 2') + ' on ' + m('[0, 2π]'), m('0') + ', ' + m(f('π', '3')) + ', ' + m(f('5π', '3')) + ', ' + m('2π')],
-      ['Solve ' + m('sin 2x + cos 2x = 1') + ' on ' + m('[0, 2π]'), m('0') + ', ' + m(f('π', '4')) + ', ' + m('π') + ', ' + m(f('5π', '4'))],
+      ['Solve ' + m('sin 2x + cos 2x = 1') + ' on ' + m('[0, 2π]'), m('0') + ', ' + m(f('π', '4')) + ', ' + m('π') + ', ' + m(f('5π', '4')) + ', ' + m('2π')],
       ['Find the maximum and minimum of ' + m('5 sin x − 12 cos x'), m('13') + ' and ' + m('−13')],
       ['For which ' + m('c') + ' has ' + m('sin x + ' + sr('3') + ' cos x = c') + ' a solution?', m('|c| ≤ 2')]
     ]
@@ -6651,11 +6651,11 @@ G10_ALG.push({
     hard: [
       ['Solve ' + m('cos 2x + 3 sin x = 2') + ' on ' + m('[0, 2π]'), m(f('π', '6')) + ', ' + m(f('5π', '6'))],
       ['Solve ' + m('3sin²x − 4 sin x cos x + cos²x = 0'), m(f('π', '4') + ' + πn') + '; ' + m('arctan ' + f('1', '3') + ' + πn')],
-      ['Solve ' + m('sin 3x = sin x') + ' on ' + m('[0, π]'), m('0') + ', ' + m(f('π', '4')) + ', ' + m(f('π', '2')) + ', ' + m(f('3π', '4')) + ', ' + m('π')],
+      ['Solve ' + m('sin 3x = sin x') + ' on ' + m('[0, π]'), m('0') + ', ' + m(f('π', '4')) + ', ' + m(f('3π', '4')) + ', ' + m('π')],
       ['Solve ' + m('|sin x| > ' + f('1', '2')) + ' on ' + m('[0, 2π]'), m('(' + f('π', '6') + ', ' + f('5π', '6') + ') ∪ (' + f('7π', '6') + ', ' + f('11π', '6') + ')')],
       ['For which ' + m('a') + ' has ' + m('2sin²x − sin x + a = 0') + ' a solution?', m('−3 ≤ a ≤ ' + f('1', '8'))],
       ['Solve ' + m('sin x + cos x = ' + sr('2')) + ' on ' + m('[0, 2π]'), m(f('π', '4'))],
-      ['Solve ' + m('cos²x − sin²x > ' + f('1', '2')) + ' on ' + m('[0, 2π]'), m('(0, ' + f('π', '6') + ') ∪ (' + f('11π', '6') + ', 2π)')]
+      ['Solve ' + m('cos²x − sin²x > ' + f('1', '2')) + ' on ' + m('[0, 2π]'), m('(0, ' + f('π', '6') + ') ∪ (' + f('5π', '6') + ', ' + f('7π', '6') + ') ∪ (' + f('11π', '6') + ', 2π)')]
     ]
   },
   hwTitle: 'Homework — 4 tasks',
@@ -7246,7 +7246,7 @@ G10_ALG.push({
       ['Two dice: ' + m('P') + '(total 8 | first is even)', m(f('1', '6'))],
       ['A bag of 6 white and 4 black: ' + m('P') + ' the second is white', m(f('3', '5'))],
       ['A point in a circle of radius 5: ' + m('P') + ' it lies within 3 of the centre', m('0.36')],
-      ['If ' + m('P(A) = 0.7, P(B) = 0.4, P(A ∪ B) = 0.85') + ', are they independent?', 'Yes — ' + m('P(A ∩ B) = 0.28')],
+      ['If ' + m('P(A) = 0.7, P(B) = 0.4, P(A ∪ B) = 0.82') + ', are they independent?', 'Yes — ' + m('P(A ∩ B) = 0.28 = 0.7 × 0.4')],
       ['A die is thrown until a six appears: ' + m('P') + ' it takes at most three throws', m(f('91', '216')) + ' ≈ ' + m('0.421')]
     ]
   },

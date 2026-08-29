@@ -61,7 +61,7 @@ document.getElementById('gradegrid').innerHTML = GRADES.map(function(g){
 document.getElementById('roadmap').innerHTML = GRADES.map(function(g){
   var live = g.status==='live';
   return '<tr><td><b>Grade '+g.g+'</b></td><td>'+g.name+'</td>'+
-    '<td><span class="chip '+(live?'c-easy':'')+'">'+(live?'Quarter I live':'In preparation')+'</span></td>'+
+    '<td><span class="chip '+(live?'c-easy':'')+'">'+(live?'All four quarters':'In preparation')+'</span></td>'+
     '<td>'+g.meta+'</td></tr>';
 }).join('');
 </script>
