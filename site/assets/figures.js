@@ -1071,6 +1071,697 @@
     return svg('0 0 300 208', out);
   };
 
+
+  /* ================= Grade 10 · functions and quadratics ================= */
+
+  /* plot y = f(x) over [x0,x1] on an axes grid; returns the path data */
+  function curve(f, x0, x1, cx, cy, u, step) {
+    var d = '', first = true;
+    for (var x = x0; x <= x1 + 1e-9; x += (step || 0.1)) {
+      var y = f(x);
+      if (!isFinite(y)) { first = true; continue; }
+      d += (first ? 'M' : 'L') + (cx + x * u).toFixed(2) + ' ' + (cy - y * u).toFixed(2) + ' ';
+      first = false;
+    }
+    return d.trim();
+  }
+
+  F.quadGraph = function () {
+    var W = 340, H = 250, cx = 150, cy = 148, u = 20;
+    var f = function (x) { return x * x - 2 * x - 3; };   /* roots −1, 3; vertex (1, −4) */
+    var g = axes(W, H, cx, cy, u, 6);
+    g += '<path d="' + curve(f, -2.2, 4.2, cx, cy, u, 0.06) + '" ' + S.arc + ' stroke-width="2.4"/>';
+    g += line([cx + u, 8], [cx + u, H - 8], S.aux);
+    g += dot(cx - u, cy, 'var(--brass)') + dot(cx + 3 * u, cy, 'var(--brass)');
+    g += dot(cx + u, cy + 4 * u, 'var(--brand)') + dot(cx, cy + 3 * u, 'var(--brand)');
+    g += LT(cx - u - 11, cy + 14, '−1') + LT(cx + 3 * u + 11, cy + 14, '3');
+    g += LT(cx + u, cy + 4 * u + 17, 'vertex (1, −4)', 'var(--brand)', 10.5);
+    g += LT(cx - 42, cy + 3 * u, 'y-int −3', 'var(--brand)', 10.5);
+    g += LT(cx + u + 22, 18, 'x = 1', 'var(--faint)');
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  F.completeSquare = function () {
+    var g = '', x0 = 34, y0 = 30, a = 86, b = 28;
+    g += '<rect x="' + x0 + '" y="' + y0 + '" width="' + a + '" height="' + a + '" ' + S.fill + '/>';
+    g += L(x0 + a / 2, y0 + a / 2, 'x²');
+    g += '<rect x="' + (x0 + a) + '" y="' + y0 + '" width="' + b + '" height="' + a + '" ' +
+      'fill="var(--brass-tint)" stroke="currentColor" stroke-width="2"/>';
+    g += L(x0 + a + b / 2, y0 + a / 2, '3x');
+    g += '<rect x="' + x0 + '" y="' + (y0 + a) + '" width="' + a + '" height="' + b + '" ' +
+      'fill="var(--brass-tint)" stroke="currentColor" stroke-width="2"/>';
+    g += L(x0 + a / 2, y0 + a + b / 2, '3x');
+    g += '<rect x="' + (x0 + a) + '" y="' + (y0 + a) + '" width="' + b + '" height="' + b + '" ' +
+      'fill="var(--hard-tint)" stroke="var(--hard)" stroke-width="2" stroke-dasharray="5 4"/>';
+    g += LT(x0 + a + b / 2, y0 + a + b / 2, '9', 'var(--hard)');
+    g += LT(x0 + a / 2, y0 - 13, 'x') + LT(x0 + a + b / 2, y0 - 13, '3');
+    g += LT(x0 - 13, y0 + a / 2, 'x') + LT(x0 - 13, y0 + a + b / 2, '3');
+    g += LT(248, y0 + 34, 'x² + 6x + 9 = (x + 3)²', 'currentColor', 11);
+    g += LT(248, y0 + 62, 'so x² + 6x', 'var(--muted)', 11);
+    g += LT(248, y0 + 80, '= (x + 3)² − 9', 'var(--brand)', 12);
+    return svg('0 0 340 176', g);
+  };
+
+  F.quadSignChart = function () {
+    var W = 340, y = 74, x0 = 34, x1 = W - 34;
+    var pos = function (v) { return x0 + (v + 3) / 8 * (x1 - x0); };
+    var g = line([x0, y], [x1, y], 'stroke="currentColor" stroke-width="1.6"');
+    g += '<path d="M' + (x1 - 8) + ' ' + (y - 4) + ' L' + x1 + ' ' + y + ' L' + (x1 - 8) + ' ' +
+      (y + 4) + '" fill="none" stroke="currentColor" stroke-width="1.6"/>';
+    [[-1, '−1'], [3, '3']].forEach(function (r) {
+      g += '<circle cx="' + pos(r[0]).toFixed(1) + '" cy="' + y + '" r="5.5" fill="var(--paper)" ' +
+        'stroke="var(--brand)" stroke-width="2.2"/>';
+      g += LT(pos(r[0]), y + 20, r[1]);
+    });
+    g += LT((x0 + pos(-1)) / 2, y - 20, '+', 'var(--easy)', 17);
+    g += LT((pos(-1) + pos(3)) / 2, y - 20, '−', 'var(--hard)', 17);
+    g += LT((pos(3) + x1) / 2, y - 20, '+', 'var(--easy)', 17);
+    g += line([x0 + 4, y - 36], [pos(-1), y - 36], 'stroke="var(--easy)" stroke-width="4" stroke-linecap="round"');
+    g += line([pos(-1), y - 36], [pos(3), y - 36], 'stroke="var(--hard)" stroke-width="4" stroke-linecap="round"');
+    g += line([pos(3), y - 36], [x1 - 6, y - 36], 'stroke="var(--easy)" stroke-width="4" stroke-linecap="round"');
+    g += LT(W / 2, 20, '(x + 1)(x − 3)', 'currentColor', 13);
+    g += LT(W / 2, y + 42, 'negative between the roots, positive outside', 'var(--muted)', 10.5);
+    return svg('0 0 ' + W + ' 128', g);
+  };
+
+  F.mapping = function () {
+    var g = '', lx = 76, rx = 248, ty = 26, h = 124;
+    g += '<ellipse cx="' + lx + '" cy="' + (ty + h / 2) + '" rx="44" ry="64" fill="var(--brand-tint)" ' +
+      'stroke="var(--brand)" stroke-width="1.8"/>';
+    g += '<ellipse cx="' + rx + '" cy="' + (ty + h / 2) + '" rx="44" ry="64" fill="var(--brass-tint)" ' +
+      'stroke="var(--brass)" stroke-width="1.8"/>';
+    var A = [[-38, '1'], [0, '2'], [38, '3']], B = [[-38, '1'], [0, '4'], [38, '9']];
+    A.forEach(function (a, i) {
+      var ay = ty + h / 2 + a[0], by = ty + h / 2 + B[i][0];
+      g += dot(lx, ay) + dot(rx, by);
+      g += LT(lx - 17, ay, a[1], 'currentColor', 12.5);
+      g += LT(rx + 17, by, B[i][1], 'currentColor', 12.5);
+      g += line([lx + 8, ay], [rx - 12, by], 'stroke="var(--faint)" stroke-width="1.5"');
+      g += '<path d="M' + (rx - 18) + ' ' + (by - 4) + ' L' + (rx - 10) + ' ' + by + ' L' +
+        (rx - 18) + ' ' + (by + 4) + '" fill="none" stroke="var(--faint)" stroke-width="1.5"/>';
+    });
+    g += LT(lx, ty - 12, 'domain', 'var(--brand)', 11);
+    g += LT(rx, ty - 12, 'range', 'var(--brass)', 11);
+    g += LT(162, ty + h + 34, 'x ↦ x²', 'currentColor', 13);
+    return svg('0 0 340 190', g);
+  };
+
+  F.funcMachine = function () {
+    var g = '', bx = 110, by = 40, bw = 120, bh = 62;
+    g += '<rect x="' + bx + '" y="' + by + '" width="' + bw + '" height="' + bh + '" rx="8" ' +
+      'fill="var(--brand-tint)" stroke="var(--brand)" stroke-width="2"/>';
+    g += LT(bx + bw / 2, by + bh / 2 - 9, 'multiply by 3', 'var(--brand)', 11.5);
+    g += LT(bx + bw / 2, by + bh / 2 + 9, 'then add 2', 'var(--brand)', 11.5);
+    g += arrow([40, by + bh / 2], [bx - 6, by + bh / 2], 'var(--brass)');
+    g += arrow([bx + bw + 6, by + bh / 2], [286, by + bh / 2], 'var(--brass)');
+    g += LT(26, by + bh / 2 - 17, 'input', 'var(--muted)', 10.5);
+    g += L(26, by + bh / 2 + 5, 'x');
+    g += LT(310, by + bh / 2 - 17, 'output', 'var(--muted)', 10.5);
+    g += LT(310, by + bh / 2 + 6, '3x + 2', 'currentColor', 11);
+    g += LT(170, 22, 'f', 'var(--brand)', 15);
+    return svg('0 0 340 126', g);
+  };
+
+  F.composite = function () {
+    var g = '', y = 50, bw = 80, bh = 50;
+    [[74, 'g', '× 2', 'var(--brand)', 'var(--brand-tint)'],
+     [186, 'f', '+ 5', 'var(--brass)', 'var(--brass-tint)']].forEach(function (b) {
+      g += '<rect x="' + b[0] + '" y="' + y + '" width="' + bw + '" height="' + bh + '" rx="8" fill="' +
+        b[4] + '" stroke="' + b[3] + '" stroke-width="2"/>';
+      g += LT(b[0] + bw / 2, y + bh / 2, b[2], b[3], 13);
+      g += LT(b[0] + bw / 2, y - 11, b[1], b[3], 13.5);
+    });
+    g += arrow([26, y + bh / 2], [68, y + bh / 2], 'var(--faint)', 2.2);
+    g += arrow([160, y + bh / 2], [180, y + bh / 2], 'var(--faint)', 2.2);
+    g += arrow([272, y + bh / 2], [310, y + bh / 2], 'var(--faint)', 2.2);
+    g += L(20, y + bh / 2 - 15, 'x');
+    g += LT(170, y + bh / 2 - 15, '2x', 'var(--muted)', 11.5);
+    g += LT(318, y + bh / 2 - 15, '2x + 5', 'currentColor', 11);
+    g += LT(170, 22, 'f(g(x)) — g acts first', 'var(--muted)', 11);
+    return svg('0 0 340 126', g);
+  };
+
+  F.inverseGraph = function () {
+    var W = 320, H = 250, cx = 130, cy = 158, u = 25;
+    var g = axes(W, H, cx, cy, u, 5);
+    g += '<path d="' + curve(function (x) { return 2 * x - 2; }, -1.2, 3.4, cx, cy, u) + '" ' +
+      S.arc + ' stroke-width="2.4"/>';
+    g += '<path d="' + curve(function (x) { return (x + 2) / 2; }, -4.6, 5.6, cx, cy, u) + '" ' +
+      S.arc2 + ' stroke-width="2.4"/>';
+    g += '<path d="' + curve(function (x) { return x; }, -4.4, 3.4, cx, cy, u) + '" ' + S.aux + '/>';
+    g += LT(66, 20, 'y = 2x − 2', 'var(--brand)', 10.5);
+    g += LT(W - 54, 20, 'the inverse', 'var(--brass)', 10.5);
+    g += LT(60, 40, 'y = x', 'var(--faint)', 10.5);
+    g += dot(cx + 2 * u, cy - 2 * u, 'var(--faint)');
+    g += LT(W / 2, H - 6, 'each is the mirror image of the other in y = x', 'var(--muted)', 9.5);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  F.evenOdd = function () {
+    var W = 340, H = 200, u = 18;
+    function panel(ox, f, x0, x1, title, sym) {
+      var cx = ox + 78, cy = 106, g = '', i;
+      for (i = -3; i <= 3; i++) {
+        g += line([cx + i * u, 30], [cx + i * u, H - 30], 'stroke="var(--rule-soft)" stroke-width="1"');
+        g += line([ox + 6, cy + i * u], [ox + 150, cy + i * u], 'stroke="var(--rule-soft)" stroke-width="1"');
+      }
+      g += line([ox + 6, cy], [ox + 150, cy], 'stroke="var(--faint)" stroke-width="1.4"');
+      g += line([cx, 30], [cx, H - 30], 'stroke="var(--faint)" stroke-width="1.4"');
+      g += '<path d="' + curve(f, x0, x1, cx, cy, u, 0.06) + '" ' + S.arc + ' stroke-width="2.3"/>';
+      g += LT(ox + 78, 15, title, 'currentColor', 11.5);
+      g += LT(ox + 78, H - 12, sym, 'var(--muted)', 10);
+      return g;
+    }
+    var g = panel(4, function (x) { return 0.5 * x * x - 1.8; }, -2.8, 2.8,
+      'even · f(−x) = f(x)', 'mirror in the y-axis');
+    g += panel(182, function (x) { return 0.3 * x * x * x - 0.2 * x; }, -2.6, 2.6,
+      'odd · f(−x) = −f(x)', 'half-turn about O');
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  F.monotonic = function () {
+    var W = 340, H = 224, cx = 54, cy = 132, u = 32;
+    var f = function (x) { return x * x * x / 6 - 1.2 * x + 0.6; };
+    var g = axes(W, H, cx, cy, u, 8);
+    g += '<path d="' + curve(f, -0.5, 8.0, cx, cy, u, 0.04) + '" ' + S.arc + ' stroke-width="2.4"/>';
+    var xs = Math.sqrt(2.4);                       /* f'(x) = x²/2 − 1.2 = 0 */
+    g += line([cx + xs * u, 12], [cx + xs * u, H - 30], S.aux);
+    g += dot(cx + xs * u, cy - f(xs) * u, 'var(--brass)');
+    g += line([cx + 2, H - 22], [cx + xs * u, H - 22], 'stroke="var(--hard)" stroke-width="4" stroke-linecap="round"');
+    g += line([cx + xs * u, H - 22], [cx + 7.6 * u, H - 22], 'stroke="var(--easy)" stroke-width="4" stroke-linecap="round"');
+    g += LT(cx + xs * u / 2, H - 34, 'decreasing', 'var(--hard)', 10.5);
+    g += LT(cx + (xs + 7.6) * u / 2, H - 34, 'increasing', 'var(--easy)', 10.5);
+    g += LT(cx + xs * u + 32, 20, 'minimum', 'var(--brass)', 10.5);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  F.transformShift = function () {
+    var W = 340, H = 226, cx = 148, cy = 152, u = 24;
+    var base = function (x) { return x * x; };
+    var g = axes(W, H, cx, cy, u, 6);
+    g += '<path d="' + curve(base, -2.3, 2.3, cx, cy, u, 0.06) + '" ' +
+      'fill="none" stroke="var(--faint)" stroke-width="2"/>';
+    g += '<path d="' + curve(function (x) { return base(x) + 2; }, -2.2, 2.2, cx, cy, u, 0.06) + '" ' +
+      S.arc + ' stroke-width="2.3"/>';
+    g += '<path d="' + curve(function (x) { return base(x - 2); }, -0.2, 4.2, cx, cy, u, 0.06) + '" ' +
+      S.arc2 + ' stroke-width="2.3"/>';
+    g += LT(58, 20, 'y = f(x) + 2', 'var(--brand)', 10.5);
+    g += LT(W - 56, 20, 'y = f(x − 2)', 'var(--brass)', 10.5);
+    g += LT(52, 40, 'y = f(x)', 'var(--faint)', 10.5);
+    g += arrow([cx + 6, cy - 6], [cx + 6, cy - 2 * u + 4], 'var(--brand)', 2);
+    g += arrow([cx + 4, cy + 18], [cx + 2 * u - 4, cy + 18], 'var(--brass)', 2);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  F.transformStretch = function () {
+    var W = 340, H = 226, cx = 168, cy = 154, u = 24;
+    var base = function (x) { return x * x; };
+    var g = axes(W, H, cx, cy, u, 6);
+    g += '<path d="' + curve(base, -2.4, 2.4, cx, cy, u, 0.06) + '" ' +
+      'fill="none" stroke="var(--faint)" stroke-width="2"/>';
+    g += '<path d="' + curve(function (x) { return 2 * base(x); }, -1.7, 1.7, cx, cy, u, 0.04) + '" ' +
+      S.arc + ' stroke-width="2.3"/>';
+    g += '<path d="' + curve(function (x) { return base(2 * x); }, -1.2, 1.2, cx, cy, u, 0.03) + '" ' +
+      S.arc2 + ' stroke-width="2.3"/>';
+    g += LT(52, 20, 'y = 2f(x)', 'var(--brand)', 10.5);
+    g += LT(W - 50, 20, 'y = f(2x)', 'var(--brass)', 10.5);
+    g += LT(W - 50, 40, 'y = f(x)', 'var(--faint)', 10.5);
+    g += LT(W / 2, H - 8, 'stretched away from an axis, or squeezed towards it', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  F.periodicGraph = function () {
+    var W = 340, H = 172, cx = 26, cy = 84, u = 21;
+    var g = line([8, cy], [W - 8, cy], 'stroke="var(--faint)" stroke-width="1.4"');
+    g += line([cx, 14], [cx, H - 20], 'stroke="var(--faint)" stroke-width="1.4"');
+    g += '<path d="' + curve(function (x) { return 2 * Math.sin(x); }, 0, 13.6, cx, cy, u, 0.05) + '" ' +
+      S.arc + ' stroke-width="2.4"/>';
+    var T = 2 * Math.PI * u;
+    g += line([cx, cy + 2.5 * u], [cx + T, cy + 2.5 * u], 'stroke="var(--brass)" stroke-width="2"');
+    g += line([cx, cy + 2.2 * u], [cx, cy + 2.8 * u], 'stroke="var(--brass)" stroke-width="2"');
+    g += line([cx + T, cy + 2.2 * u], [cx + T, cy + 2.8 * u], 'stroke="var(--brass)" stroke-width="2"');
+    g += LT(cx + T / 2, cy + 2.5 * u + 14, 'period T', 'var(--brass)', 11);
+    g += LT(W - 52, cy - 2.5 * u, 'f(x + T) = f(x)', 'var(--muted)', 10.5);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+
+  /* ================= Grade 10 · solid geometry ==================
+     Cabinet projection: x runs right, y runs up, z recedes up-and-right at
+     half scale. One helper builds the projector so every solid on the site
+     is drawn from the same viewpoint. */
+  function P3(o) {
+    var s = o.s, ox = o.ox, oy = o.oy;
+    var kx = o.kx === undefined ? 0.5 : o.kx, ky = o.ky === undefined ? 0.32 : o.ky;
+    return function (x, y, z) {
+      return [+(ox + (x + kx * z) * s).toFixed(2), +(oy - (y + ky * z) * s).toFixed(2)];
+    };
+  }
+  var HID = 'fill="none" stroke="var(--faint)" stroke-width="1.5" stroke-dasharray="5 4"';
+  var SOL = 'fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"';
+
+  /* a plane drawn as a parallelogram lying flat */
+  function planeQuad(p, x0, x1, z0, z1, style) {
+    return poly([p(x0, 0, z0), p(x1, 0, z0), p(x1, 0, z1), p(x0, 0, z1)],
+      style || 'fill="var(--brand-tint)" fill-opacity=".7" stroke="var(--brand)" stroke-width="1.6"');
+  }
+
+  F.planeAxioms = function () {
+    var p = P3({ s: 30, ox: 60, oy: 150 });
+    var g = planeQuad(p, 0, 7, 0, 5);
+    var A = p(1.4, 0, 1.2), B = p(5.2, 0, 1.6), C = p(3.2, 0, 3.6);
+    g += line(A, B, 'stroke="currentColor" stroke-width="2"');
+    g += dot(A[0], A[1]) + dot(B[0], B[1]) + dot(C[0], C[1]);
+    g += L(A[0] - 12, A[1] + 4, 'A') + L(B[0] + 12, B[1] + 4, 'B') + L(C[0], C[1] - 14, 'C');
+    g += LT(250, 40, 'three points not on', 'var(--muted)', 11);
+    g += LT(250, 56, 'one line fix a plane', 'var(--muted)', 11);
+    g += L(p(6.4, 0, 4.4)[0], p(6.4, 0, 4.4)[1], 'α', 'var(--brand)');
+    return svg('0 0 340 180', g);
+  };
+
+  F.linePlanePos = function () {
+    var g = '', W = 340;
+    [[0, 'in the plane'], [1, 'meets it at a point'], [2, 'parallel to it']].forEach(function (c) {
+      var ox = 14 + c[0] * 108;
+      var p = P3({ s: 15, ox: ox + 12, oy: 104 });
+      g += planeQuad(p, 0, 5, 0, 4);
+      if (c[0] === 0) {
+        g += line(p(0.4, 0, 1), p(4.6, 0, 3), 'stroke="currentColor" stroke-width="2.2"');
+      } else if (c[0] === 1) {
+        g += line(p(1.2, -2.2, 1.4), p(3.4, 2.6, 2.6), 'stroke="currentColor" stroke-width="2.2"');
+        var M = p(2.3, 0.2, 2);
+        g += dot(M[0], M[1], 'var(--brass)');
+      } else {
+        g += line(p(0.6, 2.2, 1), p(4.4, 2.2, 3), 'stroke="currentColor" stroke-width="2.2"');
+      }
+      g += LT(ox + 48, 130, c[1], 'var(--muted)', 10);
+    });
+    g += LT(W / 2, 20, 'a line and a plane', 'currentColor', 12);
+    return svg('0 0 ' + W + ' 146', g);
+  };
+
+  /* the standard labelled cube ABCD A1B1C1D1 */
+  function cubeParts(p, a) {
+    var A = p(0, 0, 0), B = p(a, 0, 0), C = p(a, 0, a), D = p(0, 0, a);
+    var A1 = p(0, a, 0), B1 = p(a, a, 0), C1 = p(a, a, a), D1 = p(0, a, a);
+    return { A: A, B: B, C: C, D: D, A1: A1, B1: B1, C1: C1, D1: D1 };
+  }
+  function cubeEdges(v) {
+    var g = '';
+    /* hidden: the three edges meeting at D */
+    g += line(v.D, v.A, HID) + line(v.D, v.C, HID) + line(v.D, v.D1, HID);
+    g += line(v.A, v.B, SOL) + line(v.B, v.C, SOL);
+    g += line(v.A1, v.B1, SOL) + line(v.B1, v.C1, SOL) + line(v.C1, v.D1, SOL) + line(v.D1, v.A1, SOL);
+    g += line(v.A, v.A1, SOL) + line(v.B, v.B1, SOL) + line(v.C, v.C1, SOL);
+    return g;
+  }
+  function cubeLabels(v) {
+    return L(v.A[0] - 11, v.A[1] + 9, 'A') + L(v.B[0] + 6, v.B[1] + 12, 'B') +
+      L(v.C[0] + 13, v.C[1] + 4, 'C') + L(v.D[0] - 12, v.D[1] + 2, 'D') +
+      L(v.A1[0] - 12, v.A1[1] - 2, 'A₁') + L(v.B1[0] + 4, v.B1[1] + 12, 'B₁') +
+      L(v.C1[0] + 14, v.C1[1] - 2, 'C₁') + L(v.D1[0] - 12, v.D1[1] - 8, 'D₁');
+  }
+
+  F.cubeLabelled = function () {
+    var p = P3({ s: 26, ox: 62, oy: 176 }), v = cubeParts(p, 3.2);
+    var g = cubeEdges(v) + cubeLabels(v);
+    g += LT(272, 84, 'eight vertices', 'var(--muted)', 11);
+    g += LT(272, 104, 'twelve edges', 'var(--muted)', 11);
+    g += LT(272, 124, 'six faces', 'var(--muted)', 11);
+    return svg('0 0 340 200', g);
+  };
+
+  F.prismPyramid = function () {
+    var g = '';
+    var p = P3({ s: 26, ox: 40, oy: 158, ky: 0.46 });
+    /* triangular prism */
+    var a = p(0, 0, 0), b = p(3, 0, 0), c = p(1.5, 0, 2.6);
+    var a1 = p(0, 2.8, 0), b1 = p(3, 2.8, 0), c1 = p(1.5, 2.8, 2.6);
+    g += line(c, a, HID) + line(c, b, HID) + line(c, c1, HID);
+    g += line(a, b, SOL) + line(a, a1, SOL) + line(b, b1, SOL);
+    g += poly([a1, b1, c1], 'fill="var(--brand-tint)" stroke="currentColor" stroke-width="2" stroke-linejoin="round"');
+    g += LT(52, 190, 'prism', 'var(--muted)', 11.5);
+    /* square pyramid */
+    var q = P3({ s: 26, ox: 196, oy: 158, ky: 0.46 });
+    var A = q(0, 0, 0), B = q(3, 0, 0), C = q(3, 0, 2.6), D = q(0, 0, 2.6), S1 = q(1.5, 3.2, 1.3);
+    g += line(D, A, HID) + line(D, C, HID) + line(D, S1, HID);
+    g += line(A, B, SOL) + line(B, C, SOL);
+    g += poly([A, B, S1], 'fill="var(--brass-tint)" stroke="currentColor" stroke-width="2" stroke-linejoin="round"');
+    g += line(B, S1, SOL) + line(C, S1, SOL) + line(A, S1, SOL) + line(B, C, SOL);
+    g += dot(S1[0], S1[1], 'var(--brass)');
+    g += LT(216, 190, 'pyramid', 'var(--muted)', 11.5);
+    return svg('0 0 340 206', g);
+  };
+
+  F.cubeSection = function () {
+    var p = P3({ s: 26, ox: 62, oy: 178 }), v = cubeParts(p, 3.2);
+    var g = cubeEdges(v);
+    /* the plane through A, B1 and D1 */
+    g += poly([v.A, v.B1, v.D1],
+      'fill="var(--brass-tint)" fill-opacity=".85" stroke="var(--brass)" stroke-width="2.2" stroke-linejoin="round"');
+    g += cubeLabels(v);
+    g += LT(274, 84, 'the section', 'var(--brass)', 11);
+    g += LT(274, 104, 'A B₁ D₁ is', 'var(--brass)', 11);
+    g += LT(274, 124, 'an equilateral', 'var(--brass)', 11);
+    g += LT(274, 144, 'triangle', 'var(--brass)', 11);
+    return svg('0 0 340 206', g);
+  };
+
+  F.skewLines = function () {
+    var p = P3({ s: 26, ox: 62, oy: 178 }), v = cubeParts(p, 3.2);
+    var g = cubeEdges(v);
+    g += line(v.A, v.B, 'stroke="var(--brand)" stroke-width="3.4" stroke-linecap="round"');
+    g += line(v.C1, v.D1, 'stroke="var(--brass)" stroke-width="3.4" stroke-linecap="round"');
+    g += cubeLabels(v);
+    g += LT(272, 84, 'AB and C₁D₁', 'currentColor', 11);
+    g += LT(272, 104, 'never meet and', 'var(--muted)', 10.5);
+    g += LT(272, 122, 'are not parallel:', 'var(--muted)', 10.5);
+    g += LT(272, 142, 'they are skew', 'var(--brand)', 11);
+    return svg('0 0 340 206', g);
+  };
+
+  F.trig3dBox = function () {
+    var p = P3({ s: 24, ox: 46, oy: 172 });
+    var a = 3.4, b = 2.4, c = 2.2;
+    var A = p(0, 0, 0), B = p(a, 0, 0), C = p(a, 0, c), D = p(0, 0, c);
+    var A1 = p(0, b, 0), B1 = p(a, b, 0), C1 = p(a, b, c), D1 = p(0, b, c);
+    var g = line(D, A, HID) + line(D, C, HID) + line(D, D1, HID);
+    g += line(A, B, SOL) + line(B, C, SOL);
+    g += line(A1, B1, SOL) + line(B1, C1, SOL) + line(C1, D1, SOL) + line(D1, A1, SOL);
+    g += line(A, A1, SOL) + line(B, B1, SOL) + line(C, C1, SOL);
+    g += line(A, C, 'stroke="var(--brass)" stroke-width="2.2" stroke-dasharray="5 4"');
+    g += line(A, C1, 'stroke="var(--brand)" stroke-width="2.8"');
+    g += ang(A, C, C1, 20, S.arc);
+    g += L(A[0] - 11, A[1] + 8, 'A') + L(C[0] + 12, C[1] + 4, 'C') + L(C1[0] + 13, C1[1] - 4, 'C₁');
+    g += LT(96, 196, 'space diagonal AC₁', 'var(--brand)', 10);
+    g += LT(A[0] + 34, A[1] - 12, 'θ', 'var(--brand)', 12);
+    g += LT(258, 66, 'the angle a space', 'var(--muted)', 10.5);
+    g += LT(258, 84, 'diagonal makes with', 'var(--muted)', 10.5);
+    g += LT(258, 102, 'the base is the angle', 'var(--muted)', 10.5);
+    g += LT(258, 120, 'θ in triangle ACC₁', 'currentColor', 10.5);
+    return svg('0 0 340 210', g);
+  };
+
+  F.sineCosRule = function () {
+    var A = [56, 168], B = [268, 168], C = [176, 44];
+    var g = poly([A, B, C], S.fill);
+    g += L((A[0] + B[0]) / 2, A[1] + 18, 'c') + L((B[0] + C[0]) / 2 + 14, (B[1] + C[1]) / 2, 'a');
+    g += L((A[0] + C[0]) / 2 - 14, (A[1] + C[1]) / 2, 'b');
+    g += ang(A, B, C, 24, S.arc) + ang(B, C, A, 24, S.arc) + ang(C, A, B, 24, S.arc);
+    g += L(A[0] + 30, A[1] - 12, 'A') + L(B[0] - 30, B[1] - 12, 'B') + L(C[0], C[1] + 30, 'C');
+    g += LT(170, 200, 'a / sin A  =  b / sin B  =  c / sin C', 'var(--brand)', 11);
+    g += LT(170, 220, 'a² = b² + c² − 2bc·cos A', 'var(--brass)', 11);
+    return svg('0 0 340 236', g);
+  };
+
+
+  /* ================= Grade 11 · the derivative ================= */
+
+  F.secantToTangent = function () {
+    var W = 340, H = 240, cx = 40, cy = 200, u = 30;
+    var f = function (x) { return 0.42 * x * x + 0.3; };
+    var g = axes(W, H, cx, cy, u, 9);
+    g += '<path d="' + curve(f, -0.4, 5.6, cx, cy, u, 0.04) + '" ' + S.arc + ' stroke-width="2.4"/>';
+    var x0 = 1.6, P = [cx + x0 * u, cy - f(x0) * u];
+    /* three secants closing on the tangent */
+    [[3.4, .30], [2.6, .48], [2.0, .70]].forEach(function (q) {
+      var x1 = q[0], Q = [cx + x1 * u, cy - f(x1) * u];
+      var m = (f(x1) - f(x0)) / (x1 - x0);
+      var xa = -0.3, xb = 5.4;
+      g += line([cx + xa * u, cy - (f(x0) + m * (xa - x0)) * u],
+                [cx + xb * u, cy - (f(x0) + m * (xb - x0)) * u],
+                'stroke="var(--faint)" stroke-width="1.4" opacity="' + q[1] + '"');
+      g += dot(Q[0], Q[1], 'var(--faint)');
+    });
+    var mt = 2 * 0.42 * x0;
+    g += line([cx + (-0.3) * u, cy - (f(x0) + mt * (-0.3 - x0)) * u],
+              [cx + 5.4 * u, cy - (f(x0) + mt * (5.4 - x0)) * u],
+              'stroke="var(--brass)" stroke-width="2.6"');
+    g += dot(P[0], P[1], 'var(--brand)');
+    g += L(P[0] - 14, P[1] + 6, 'P');
+    g += LT(W - 66, 22, 'secants', 'var(--faint)', 11);
+    g += LT(W - 66, 40, 'the tangent', 'var(--brass)', 11);
+    g += LT(W / 2, H - 6, 'as Q slides towards P the secant becomes the tangent', 'var(--muted)', 9);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  F.incrementXY = function () {
+    var W = 340, H = 230, cx = 46, cy = 190, u = 34;
+    var f = function (x) { return 0.4 * x * x + 0.5; };
+    var g = axes(W, H, cx, cy, u, 8);
+    g += '<path d="' + curve(f, -0.3, 5.2, cx, cy, u, 0.04) + '" ' + S.arc + ' stroke-width="2.4"/>';
+    var x0 = 1.5, x1 = 3.4;
+    var P = [cx + x0 * u, cy - f(x0) * u], Q = [cx + x1 * u, cy - f(x1) * u];
+    g += line(P, [Q[0], P[1]], 'stroke="var(--brass)" stroke-width="2.2"');
+    g += line([Q[0], P[1]], Q, 'stroke="var(--brand)" stroke-width="2.2"');
+    g += line(P, Q, 'stroke="var(--faint)" stroke-width="1.6"');
+    g += dot(P[0], P[1]) + dot(Q[0], Q[1]);
+    g += L(P[0] - 13, P[1] - 6, 'P') + L(Q[0] + 13, Q[1] - 6, 'Q');
+    g += LT((P[0] + Q[0]) / 2, P[1] + 16, 'Δx', 'var(--brass)', 12);
+    g += LT(Q[0] + 20, (P[1] + Q[1]) / 2, 'Δy', 'var(--brand)', 12);
+    g += line([cx + x0 * u, cy], [cx + x0 * u, P[1]], S.aux);
+    g += line([cx + x1 * u, cy], [cx + x1 * u, Q[1]], S.aux);
+    g += LT(cx + x0 * u, cy + 14, 'x', 'var(--muted)', 11);
+    g += LT(cx + x1 * u, cy + 14, 'x + Δx', 'var(--muted)', 10);
+    g += LT(W - 58, 26, 'gradient of PQ', 'var(--muted)', 10);
+    g += LT(W - 58, 44, '= Δy / Δx', 'currentColor', 11);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  F.derivativeSign = function () {
+    var W = 340, H = 250, cx = 46, cy = 118, u = 30;
+    var f = function (x) { return (x * x * x) / 9 - x + 1.2; };
+    var g = '';
+    var i;
+    for (i = 0; i <= 8; i++) g += line([cx + i * u, 16], [cx + i * u, 176], 'stroke="var(--rule-soft)" stroke-width="1"');
+    g += line([cx - 10, cy], [W - 14, cy], 'stroke="var(--faint)" stroke-width="1.4"');
+    g += line([cx, 16], [cx, 176], 'stroke="var(--faint)" stroke-width="1.4"');
+    g += '<path d="' + curve(f, -0.3, 8.0, cx, cy, u, 0.04) + '" ' + S.arc + ' stroke-width="2.4"/>';
+    var r = Math.sqrt(3);            /* f'(x) = x²/3 − 1 = 0 at x = ±√3 */
+    g += dot(cx + r * u, cy - f(r) * u, 'var(--brass)');
+    g += line([cx + r * u, 16], [cx + r * u, 200], S.aux);
+    /* the sign line for f' */
+    var y = 212;
+    g += line([cx, y], [W - 18, y], 'stroke="currentColor" stroke-width="1.5"');
+    g += line([cx, y], [cx + r * u, y], 'stroke="var(--hard)" stroke-width="4" stroke-linecap="round"');
+    g += line([cx + r * u, y], [W - 22, y], 'stroke="var(--easy)" stroke-width="4" stroke-linecap="round"');
+    g += LT(cx + r * u, y + 18, '√3', 'var(--brass)', 11);
+    g += LT(cx + r * u / 2, y - 14, "f ′ < 0", 'var(--hard)', 11);
+    g += LT(cx + (r * u + W - 22) / 2, y - 14, "f ′ > 0", 'var(--easy)', 11);
+    g += LT(cx - 24, y, "f ′", 'currentColor', 11);
+    g += LT(W - 60, 30, 'minimum where', 'var(--muted)', 10);
+    g += LT(W - 60, 46, "f ′ changes sign", 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  F.tangentNormalFig = function () {
+    var W = 340, H = 236, cx = 60, cy = 190, u = 34;
+    var f = function (x) { return 0.36 * x * x + 0.4; };
+    var g = axes(W, H, cx, cy, u, 8);
+    g += '<path d="' + curve(f, -0.4, 4.4, cx, cy, u, 0.04) + '" ' + S.arc + ' stroke-width="2.4"/>';
+    var x0 = 2, m = 2 * 0.36 * x0, P = [cx + x0 * u, cy - f(x0) * u];
+    function ln(mm, col, wdt, xa, xb) {
+      return line([cx + xa * u, cy - (f(x0) + mm * (xa - x0)) * u],
+                  [cx + xb * u, cy - (f(x0) + mm * (xb - x0)) * u],
+                  'stroke="' + col + '" stroke-width="' + wdt + '"');
+    }
+    g += ln(m, 'var(--brass)', 2.6, 0.2, 4.2);
+    g += ln(-1 / m, 'var(--hard)', 2.4, 0.4, 3.9);
+    g += right(P, [P[0] + 14, P[1] - 14 * m], [P[0] - 14, P[1] + 14 / m], 11);
+    g += dot(P[0], P[1], 'var(--brand)');
+    g += L(P[0] + 4, P[1] + 18, 'P');
+    g += LT(W - 52, 24, 'tangent', 'var(--brass)', 11);
+    g += LT(W - 52, 42, 'normal', 'var(--hard)', 11);
+    g += LT(W / 2, H - 6, 'the normal is perpendicular: its gradient is −1/m', 'var(--muted)', 9.5);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  F.stationaryTypes = function () {
+    var W = 340, H = 176, u = 17;
+    function panel(ox, f, x0, x1, title) {
+      var cx = ox + 52, cy = 96, g = '';
+      g += line([ox + 6, cy], [ox + 100, cy], 'stroke="var(--faint)" stroke-width="1.3"');
+      g += '<path d="' + curve(f, x0, x1, cx, cy, u, 0.05) + '" ' + S.arc + ' stroke-width="2.3"/>';
+      g += dot(cx, cy - f(0) * u, 'var(--brass)');
+      g += line([ox + 18, cy - f(0) * u], [ox + 86, cy - f(0) * u], S.aux);
+      g += LT(ox + 52, 24, title, 'currentColor', 11);
+      return g;
+    }
+    var g = panel(4, function (x) { return -x * x + 1.6; }, -2.1, 2.1, 'maximum');
+    g += panel(116, function (x) { return x * x - 1.6; }, -2.1, 2.1, 'minimum');
+    g += panel(230, function (x) { return x * x * x / 3; }, -2.3, 2.3, 'inflection');
+    g += LT(W / 2, H - 12, 'at each one the derivative is zero', 'var(--muted)', 10.5);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  F.optimBox = function () {
+    var g = '', x0 = 24, y0 = 40, w = 132, h = 96, c = 26;
+    g += '<rect x="' + x0 + '" y="' + y0 + '" width="' + w + '" height="' + h + '" ' +
+      'fill="var(--surface-2)" stroke="currentColor" stroke-width="2"/>';
+    [[x0, y0], [x0 + w - c, y0], [x0, y0 + h - c], [x0 + w - c, y0 + h - c]].forEach(function (q) {
+      g += '<rect x="' + q[0] + '" y="' + q[1] + '" width="' + c + '" height="' + c + '" ' +
+        'fill="var(--hard-tint)" stroke="var(--hard)" stroke-width="1.8" stroke-dasharray="4 3"/>';
+    });
+    g += LT(x0 + c / 2, y0 + c / 2, 'x', 'var(--hard)', 11);
+    g += LT(x0 + w / 2, y0 - 12, 'a', 'var(--muted)', 11);
+    g += LT(x0 - 12, y0 + h / 2, 'b', 'var(--muted)', 11);
+    /* the folded box */
+    var p = P3({ s: 22, ox: 210, oy: 132, ky: 0.42 });
+    var bw = 3.2, bd = 2.2, bh = 1.1;
+    var A = p(0, 0, 0), B = p(bw, 0, 0), C = p(bw, 0, bd), D = p(0, 0, bd);
+    var A1 = p(0, bh, 0), B1 = p(bw, bh, 0), C1 = p(bw, bh, bd), D1 = p(0, bh, bd);
+    g += line(D, A, HID) + line(D, C, HID) + line(D, D1, HID);
+    g += line(A, B, SOL) + line(B, C, SOL);
+    g += line(A1, B1, SOL) + line(B1, C1, SOL) + line(C1, D1, SOL) + line(D1, A1, SOL);
+    g += line(A, A1, SOL) + line(B, B1, SOL) + line(C, C1, SOL);
+    g += LT(252, 152, 'V = x(a − 2x)(b − 2x)', 'var(--brand)', 10);
+    g += LT(96, 176, 'cut a square x from each corner', 'var(--muted)', 9.5);
+    return svg('0 0 340 190', g);
+  };
+
+  F.modulusGraphV = function () {
+    var W = 320, H = 210, cx = 120, cy = 168, u = 26;
+    var g = axes(W, H, cx, cy, u, 5);
+    g += '<path d="' + curve(function (x) { return Math.abs(2 * x - 4); }, -1.2, 5.2, cx, cy, u, 0.02) + '" ' +
+      S.arc + ' stroke-width="2.5"/>';
+    g += '<path d="' + curve(function (x) { return 2 * x - 4; }, -1.2, 2, cx, cy, u, 0.1) + '" ' + S.aux + '/>';
+    g += dot(cx + 2 * u, cy, 'var(--brass)');
+    g += LT(cx + 2 * u + 12, cy + 15, '2', 'var(--brass)');
+    g += LT(W - 62, 24, 'y = | 2x − 4 |', 'var(--brand)', 11);
+    g += LT(W / 2, H - 6, 'below the axis the graph is reflected upwards', 'var(--muted)', 9.5);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* ================= Grade 11 · coordinates and vectors in space ========= */
+
+  function axes3d(p, n) {
+    var O = p(0, 0, 0);
+    var g = line(O, p(n, 0, 0), 'stroke="var(--faint)" stroke-width="1.6"');
+    g += line(O, p(0, n, 0), 'stroke="var(--faint)" stroke-width="1.6"');
+    g += line(O, p(0, 0, n), 'stroke="var(--faint)" stroke-width="1.6"');
+    g += LT(p(n, 0, 0)[0] + 10, p(n, 0, 0)[1] + 4, 'x', 'var(--muted)');
+    g += LT(p(0, n, 0)[0] - 4, p(0, n, 0)[1] - 11, 'z', 'var(--muted)');
+    g += LT(p(0, 0, n)[0] + 9, p(0, 0, n)[1] - 6, 'y', 'var(--muted)');
+    g += LT(O[0] - 11, O[1] + 10, 'O', 'var(--muted)');
+    return g;
+  }
+
+  F.point3d = function () {
+    var p = P3({ s: 26, ox: 74, oy: 178, ky: 0.4 });
+    var g = axes3d(p, 4.4);
+    var X = 3, Y = 2.4, Z = 2.6;                    /* screen y is the vertical axis */
+    var M = p(X, 0, Z), Q = p(X, Y, Z);
+    g += line(p(X, 0, 0), M, HID) + line(p(0, 0, Z), M, HID) + line(M, Q, HID);
+    g += line(p(0, 0, 0), Q, 'stroke="var(--brand)" stroke-width="2.4"');
+    g += dot(Q[0], Q[1], 'var(--brand)') + dot(M[0], M[1], 'var(--faint)');
+    g += L(Q[0] + 16, Q[1] - 6, 'M');
+    g += LT(Q[0] + 26, Q[1] + 16, '(x, y, z)', 'var(--muted)', 10);
+    g += LT(272, 154, 'three coordinates', 'var(--muted)', 10);
+    g += LT(272, 172, 'fix a point in space', 'var(--muted)', 10);
+    return svg('0 0 340 200', g);
+  };
+
+  F.dist3d = function () {
+    var p = P3({ s: 26, ox: 62, oy: 178, ky: 0.4 });
+    var a = 3.2, b = 2.2, c = 2.4;
+    var A = p(0, 0, 0), B = p(a, 0, 0), C = p(a, 0, c), D = p(0, 0, c);
+    var A1 = p(0, b, 0), B1 = p(a, b, 0), C1 = p(a, b, c), D1 = p(0, b, c);
+    var g = line(D, A, HID) + line(D, C, HID) + line(D, D1, HID);
+    g += line(A, B, SOL) + line(B, C, SOL);
+    g += line(A1, B1, SOL) + line(B1, C1, SOL) + line(C1, D1, SOL) + line(D1, A1, SOL);
+    g += line(A, A1, SOL) + line(B, B1, SOL) + line(C, C1, SOL);
+    g += line(A, C, 'stroke="var(--brass)" stroke-width="2" stroke-dasharray="5 4"');
+    g += line(A, C1, 'stroke="var(--brand)" stroke-width="2.8"');
+    g += dot(A[0], A[1]) + dot(C1[0], C1[1]);
+    g += L(A[0] - 11, A[1] + 8, 'A') + L(C1[0] + 13, C1[1] - 4, 'B');
+    g += LT(170, 202, 'AB = √(Δx² + Δy² + Δz²)', 'var(--brand)', 11);
+    g += LT(268, 56, 'Pythagoras', 'var(--muted)', 10.5);
+    g += LT(268, 74, 'used twice', 'var(--muted)', 10.5);
+    return svg('0 0 340 208', g);
+  };
+
+  F.vec3d = function () {
+    var p = P3({ s: 26, ox: 76, oy: 172, ky: 0.4 });
+    var g = axes3d(p, 4.2);
+    var X = 2.8, Y = 2.2, Z = 2.4;
+    var O = p(0, 0, 0), Q = p(X, Y, Z);
+    g += line(O, p(X, 0, 0), 'stroke="var(--brass)" stroke-width="2"');
+    g += line(p(X, 0, 0), p(X, 0, Z), 'stroke="var(--brass)" stroke-width="2"');
+    g += line(p(X, 0, Z), Q, 'stroke="var(--brass)" stroke-width="2"');
+    g += arrow(O, Q, 'var(--brand)', 2.8);
+    g += dot(Q[0], Q[1], 'var(--brand)');
+    g += LT(p(X / 2, 0, 0)[0], p(X / 2, 0, 0)[1] + 14, 'a₁', 'var(--brass)', 11);
+    g += LT(p(X, 0, Z / 2)[0] + 14, p(X, 0, Z / 2)[1] + 6, 'a₂', 'var(--brass)', 11);
+    g += LT(p(X, Y / 2, Z)[0] + 14, p(X, Y / 2, Z)[1], 'a₃', 'var(--brass)', 11);
+    g += LT(250, 34, 'a = (a₁, a₂, a₃)', 'currentColor', 11);
+    g += LT(250, 54, '| a | = √(a₁² + a₂² + a₃²)', 'var(--brand)', 9);
+    return svg('0 0 340 196', g);
+  };
+
+  F.scalarAngle = function () {
+    var O = [96, 176], A = [258, 132], B = [166, 44];
+    var g = arrow(O, A, 'var(--brand)', 2.8) + arrow(O, B, 'var(--brass)', 2.8);
+    g += ang(O, A, B, 34, S.arc);
+    g += L(A[0] + 12, A[1] + 4, 'a') + L(B[0] - 2, B[1] - 12, 'b');
+    g += LT(O[0] + 46, O[1] - 26, 'θ', 'var(--brand)', 13);
+    g += LT(170, 208, 'a · b = |a| |b| cos θ = a₁b₁ + a₂b₂ + a₃b₃', 'var(--brand)', 10.5);
+    g += LT(170, 228, 'perpendicular exactly when a · b = 0', 'var(--muted)', 10);
+    return svg('0 0 340 242', g);
+  };
+
+  F.reflectInPlane = function () {
+    var p = P3({ s: 28, ox: 54, oy: 128, ky: 0.34 });
+    var g = planeQuad(p, 0, 6.4, 0, 4.2);
+    var M = p(2.6, 2.0, 2.0), F = p(2.6, 0, 2.0), M1 = p(2.6, -2.0, 2.0);
+    g += line(M, M1, 'stroke="var(--brass)" stroke-width="1.8" stroke-dasharray="5 4"');
+    g += dot(M[0], M[1], 'var(--brand)') + dot(M1[0], M1[1], 'var(--brand)') + dot(F[0], F[1], 'var(--brass)');
+    g += ticks(M, F, 1) + ticks(F, M1, 1);
+    g += L(M[0] + 14, M[1], 'M') + L(M1[0] + 16, M1[1], 'M′') + L(F[0] - 14, F[1] + 2, 'F');
+    g += LT(266, 52, 'the plane bisects', 'var(--muted)', 10.5);
+    g += LT(266, 70, 'MM′ at right angles', 'var(--muted)', 10.5);
+    g += L(p(5.8, 0, 3.6)[0], p(5.8, 0, 3.6)[1], 'α', 'var(--brand)');
+    return svg('0 0 340 210', g);
+  };
+
+  F.similarSolids = function () {
+    var g = '';
+    var p = P3({ s: 20, ox: 40, oy: 150, ky: 0.42 });
+    var q = P3({ s: 20, ox: 178, oy: 150, ky: 0.42 });
+    function box(pr, a, b, c, fillCol) {
+      var A = pr(0, 0, 0), B = pr(a, 0, 0), C = pr(a, 0, c), D = pr(0, 0, c);
+      var A1 = pr(0, b, 0), B1 = pr(a, b, 0), C1 = pr(a, b, c), D1 = pr(0, b, c);
+      var o = line(D, A, HID) + line(D, C, HID) + line(D, D1, HID);
+      o += poly([A1, B1, C1, D1], 'fill="' + fillCol + '" stroke="currentColor" stroke-width="2" stroke-linejoin="round"');
+      o += line(A, B, SOL) + line(B, C, SOL);
+      o += line(A, A1, SOL) + line(B, B1, SOL) + line(C, C1, SOL);
+      return o;
+    }
+    g += box(p, 2, 1.4, 1.4, 'var(--brand-tint)');
+    g += box(q, 4, 2.8, 2.8, 'var(--brass-tint)');
+    g += LT(64, 176, 'k = 1', 'var(--muted)', 11);
+    g += LT(232, 176, 'k = 2', 'var(--muted)', 11);
+    g += LT(170, 200, 'lengths ×k · areas ×k² · volumes ×k³', 'var(--brand)', 11);
+    return svg('0 0 340 216', g);
+  };
+
+  F.lineVectorEq = function () {
+    var p = P3({ s: 26, ox: 66, oy: 168, ky: 0.4 });
+    var g = axes3d(p, 4.2);
+    var A = p(1.2, 0.6, 1.0), B = p(3.4, 2.4, 2.6);
+    var far = p(4.3, 3.15, 3.25), near = p(0.32, -0.32, 0.2);
+    g += line(near, far, 'stroke="var(--faint)" stroke-width="1.6" stroke-dasharray="6 4"');
+    g += arrow(p(0, 0, 0), A, 'var(--brand)', 2.6);
+    g += arrow(A, B, 'var(--brass)', 2.6);
+    g += dot(A[0], A[1], 'var(--brand)') + dot(B[0], B[1], 'var(--brass)');
+    g += L(A[0] - 13, A[1] - 6, 'A') + L(B[0] + 13, B[1] - 4, 'B');
+    g += LT(p(0.6, 0.3, 0.5)[0] - 12, p(0.6, 0.3, 0.5)[1] + 10, 'a', 'var(--brand)', 12);
+    g += LT((A[0] + B[0]) / 2 - 12, (A[1] + B[1]) / 2 - 10, 'b', 'var(--brass)', 12);
+    g += LT(264, 150, 'r = a + t b', 'currentColor', 12);
+    g += LT(264, 170, 'one t for every', 'var(--muted)', 10);
+    g += LT(264, 186, 'point of the line', 'var(--muted)', 10);
+    return svg('0 0 340 196', g);
+  };
+
   w.FIG = F;
   w.FIGH = { svg: svg, L: L, LT: LT, dot: dot, poly: poly, line: line, ticks: ticks, ang: ang, right: right, mid: mid, cent: cent, norm: norm, S: S };
 })(window);
