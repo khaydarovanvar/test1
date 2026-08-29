@@ -2337,6 +2337,104 @@
     return svg('0 0 ' + W + ' ' + H, g);
   };
 
+  /* ---------- Grade 11 Quarter III: statistics ---------- */
+
+  /* a histogram with unequal class widths — frequency density on the vertical */
+  F.histogram = function () {
+    var g = '', W = 340, H = 210, ox = 40, oy = 166, sx = 26, sy = 13;
+    /* [left, width, density] */
+    var bars = [[0, 2, 3], [2, 2, 7], [4, 1, 10], [5, 1, 8], [6, 3, 3], [9, 2, 1]];
+    bars.forEach(function (b) {
+      g += '<rect x="' + (ox + b[0] * sx) + '" y="' + (oy - b[2] * sy) +
+        '" width="' + (b[1] * sx) + '" height="' + (b[2] * sy) +
+        '" fill="var(--brand-tint)" fill-opacity=".85" stroke="var(--brand)" stroke-width="1.5"/>';
+    });
+    g += line([ox - 6, oy], [W - 12, oy], 'stroke="var(--faint)" stroke-width="1.6"');
+    g += line([ox, oy + 6], [ox, 24], 'stroke="var(--faint)" stroke-width="1.6"');
+    [0, 2, 4, 5, 6, 9, 11].forEach(function (v) {
+      g += LT(ox + v * sx, oy + 13, String(v), 'var(--muted)', 9.5);
+    });
+    g += LT(ox + 26, 32, 'frequency density', 'var(--muted)', 9.5);
+    g += LT(W / 2, H - 6, 'with unequal widths the AREA is the frequency', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* a cumulative frequency curve, with the median and quartiles read off */
+  F.cumFrequency = function () {
+    var g = '', W = 340, H = 216, ox = 44, oy = 168, sx = 25, sy = 1.28;
+    var pts = [[0, 0], [2, 6], [4, 20], [6, 46], [8, 74], [10, 92], [11, 100]];
+    var d = '';
+    pts.forEach(function (p, i) {
+      d += (i === 0 ? 'M' : 'L') + (ox + p[0] * sx).toFixed(1) + ' ' + (oy - p[1] * sy).toFixed(1) + ' ';
+    });
+    g += line([ox - 6, oy], [W - 12, oy], 'stroke="var(--faint)" stroke-width="1.6"');
+    g += line([ox, oy + 6], [ox, 22], 'stroke="var(--faint)" stroke-width="1.6"');
+    [25, 50, 75, 100].forEach(function (v) {
+      g += line([ox, oy - v * sy], [W - 16, oy - v * sy],
+        'stroke="var(--rule-soft)" stroke-width="1" stroke-dasharray="4 3"');
+      g += LT(ox - 16, oy - v * sy, String(v) + '%', 'var(--muted)', 9);
+    });
+    g += '<path d="' + d + '" fill="none" stroke="currentColor" stroke-width="2.6"/>';
+    /* the median read-off */
+    var mx = ox + 6.3 * sx;
+    g += line([ox, oy - 50 * sy], [mx, oy - 50 * sy], 'stroke="var(--brass)" stroke-width="2"');
+    g += line([mx, oy - 50 * sy], [mx, oy], 'stroke="var(--brass)" stroke-width="2"');
+    g += LT(mx, oy + 14, 'median', 'var(--brass)', 9.5);
+    g += LT(W / 2, H - 6, 'read across at 50% and down for the median', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* a box-and-whisker plot with the five-figure summary */
+  F.boxPlot = function () {
+    var g = '', W = 340, H = 160, ox = 34, cy = 76, sx = 27;
+    /* min, Q1, median, Q3, max in data units */
+    var v = [1, 3.5, 5, 7.5, 10.5];
+    function X(t) { return ox + t * sx; }
+    g += line([X(v[0]), cy], [X(v[1]), cy], 'stroke="currentColor" stroke-width="1.8"');
+    g += line([X(v[3]), cy], [X(v[4]), cy], 'stroke="currentColor" stroke-width="1.8"');
+    g += '<rect x="' + X(v[1]) + '" y="' + (cy - 22) + '" width="' + (X(v[3]) - X(v[1])) +
+      '" height="44" fill="var(--brand-tint)" fill-opacity=".85" stroke="var(--brand)" stroke-width="1.8"/>';
+    g += line([X(v[2]), cy - 22], [X(v[2]), cy + 22], 'stroke="var(--brass)" stroke-width="2.6"');
+    [0, 4].forEach(function (i) {
+      g += line([X(v[i]), cy - 12], [X(v[i]), cy + 12], 'stroke="currentColor" stroke-width="1.8"');
+    });
+    g += line([ox - 8, cy + 44], [W - 14, cy + 44], 'stroke="var(--faint)" stroke-width="1.5"');
+    ['min', 'Q₁', 'median', 'Q₃', 'max'].forEach(function (lab, i) {
+      g += LT(X(v[i]), cy - 32, lab, i === 2 ? 'var(--brass)' : 'var(--muted)', 9.5);
+      g += LT(X(v[i]), cy + 57, String(v[i]), 'var(--muted)', 9);
+    });
+    g += LT(W / 2, H - 6, 'the box holds the middle half of the data', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* the normal curve with the 68–95–99.7 rule */
+  F.normalCurve = function () {
+    var g = '', W = 340, H = 196, cx = 170, cy = 152, u = 34, A = 96;
+    function f(x) { return A * Math.exp(-x * x / 2); }
+    var d = '';
+    for (var x = -3.4; x <= 3.4; x += 0.05) {
+      d += (x <= -3.4 + 1e-9 ? 'M' : 'L') + (cx + x * u).toFixed(1) + ' ' + (cy - f(x)).toFixed(1) + ' ';
+    }
+    /* shade one standard deviation each side */
+    var sh = 'M' + (cx - u).toFixed(1) + ' ' + cy + ' ';
+    for (var t = -1; t <= 1.0001; t += 0.05) {
+      sh += 'L' + (cx + t * u).toFixed(1) + ' ' + (cy - f(t)).toFixed(1) + ' ';
+    }
+    sh += 'L' + (cx + u).toFixed(1) + ' ' + cy + ' Z';
+    g += '<path d="' + sh + '" fill="var(--brand-tint)" fill-opacity=".9" stroke="none"/>';
+    g += line([cx - 3.6 * u, cy], [cx + 3.6 * u, cy], 'stroke="var(--faint)" stroke-width="1.5"');
+    g += '<path d="' + d + '" fill="none" stroke="currentColor" stroke-width="2.6"/>';
+    [-3, -2, -1, 0, 1, 2, 3].forEach(function (k) {
+      g += line([cx + k * u, cy], [cx + k * u, cy + 5], 'stroke="var(--faint)" stroke-width="1.4"');
+      g += LT(cx + k * u, cy + 15, (k === 0 ? 'μ' : 'μ' + (k > 0 ? '+' : '−') + Math.abs(k) + 'σ'),
+        'var(--muted)', 8.5);
+    });
+    g += LT(cx, cy - 60, '68%', 'var(--brand)', 12);
+    g += LT(cx, 30, '95% within 2σ · 99.7% within 3σ', 'var(--muted)', 10);
+    g += LT(W / 2, H - 6, 'symmetric about the mean, area 1', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
   w.FIG = F;
   w.FIGH = { svg: svg, L: L, LT: LT, dot: dot, poly: poly, line: line, ticks: ticks, ang: ang, right: right, mid: mid, cent: cent, norm: norm, S: S };
 })(window);

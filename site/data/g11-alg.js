@@ -2775,3 +2775,500 @@ G11_ALG.push({
     'Write your target for Quarter III in one checkable sentence, and date it.'
   ]
 });
+
+/* ===================== QUARTER III (30 hours) ===================== */
+
+/* ============================== 18 ============================== */
+G11_ALG.push({
+  id: 'a11-18', stream: 'alg', grade: 11, quarter: 3, lessons: '49–51', hours: 3,
+  title: 'The definite integral and the Newton–Leibniz formula',
+  subtitle: 'Two limits on the integral sign, one subtraction — and the theorem that makes area computable.',
+  uz: 'Algebra 11, §3.1', uzPage: 'pp. 225–242',
+  cam: 'P1 · 10.4', camPage: 'Pure Mathematics 1, pp. 217–226', wb: 'P1 Exercise 10D',
+  objectives: [
+    'Interpret the definite integral as a limit of a sum of rectangles.',
+    'State and apply the Newton–Leibniz formula.',
+    'Use the properties of the definite integral.',
+    'Explain why the constant of integration cancels.'
+  ],
+  terms: [
+    ['Definite integral', 'Aniq integral', 'Определённый интеграл'],
+    ['Limits of integration', 'Integrallash chegaralari', 'Пределы интегрирования'],
+    ['Lower limit', 'Quyi chegara', 'Нижний предел'],
+    ['Upper limit', 'Yuqori chegara', 'Верхний предел'],
+    ['Newton–Leibniz formula', 'Nyuton–Leybnits formulasi', 'Формула Ньютона–Лейбница'],
+    ['Integral sum', 'Integral yig‘indi', 'Интегральная сумма'],
+    ['Area under a curve', 'Egri chiziq ostidagi yuza', 'Площадь под кривой'],
+    ['Additivity', 'Additivlik', 'Аддитивность'],
+    ['Sign of the integral', 'Integral ishorasi', 'Знак интеграла']
+  ],
+  timing: [[18, 'Area as a limit of rectangles'], [26, 'The Newton–Leibniz formula'], [26, 'Properties'], [26, 'Signed area'], [30, 'Practice'], [9, 'Homework']],
+  sections: [
+    {
+      h: 'Area as a limit of rectangles',
+      html: `<p>To find the area under ${m('y = f(x)')} between ${m('a')} and ${m('b')}, cut the interval
+      into ${m('n')} strips, replace each strip by a rectangle, and add:</p>
+      ${eq(m('S_n = Σ f(x_i) · Δx'), true)}
+      {{fig:areaUnderCurve:Seven rectangles already approximate the area. Take more and thinner, and the error vanishes.}}
+      <p>As ${m('n → ∞')} and every ${m('Δx → 0')}, the sum tends to a definite number — the
+      <b>definite integral</b>:</p>
+      ${eq(m('∫') + '<sub class="m">a</sub><sup class="m">b</sup> ' + m('f(x) dx = lim') + '<sub class="m">n→∞</sub> ' + m('Σ f(x_i)Δx'), true)}
+      <div class="keybox"><div class="klabel">Two different objects, one symbol</div>
+      The <b>indefinite</b> integral is a family of functions. The <b>definite</b> integral is a
+      <b>number</b>. They are joined by the theorem below, and that link is the central result of the
+      whole subject.</div>`
+    },
+    {
+      h: 'The Newton–Leibniz formula',
+      html: `<div class="keybox"><div class="klabel">The fundamental theorem</div>
+      If ${m('F')} is any antiderivative of ${m('f')} on ${m('[a, b]')} then
+      ${eq(m('∫') + '<sub class="m">a</sub><sup class="m">b</sup> ' + m('f(x) dx = F(b) − F(a)'), true)}
+      written ${m('[F(x)]')}<sub class="m">a</sub><sup class="m">b</sup>.</div>
+      <p>Nothing about limits of sums survives in the calculation: find an antiderivative, put in the
+      two numbers, subtract.</p>
+      ${eq(m('∫') + '<sub class="m">0</sub><sup class="m">2</sup> ' + m('x² dx = [' + f('x³', '3') + ']') + '<sub class="m">0</sub><sup class="m">2</sup> ' + m('= ' + f('8', '3') + ' − 0 = ' + f('8', '3')), false)}
+      <div class="warn"><span class="wl">No ${m('+ C')} in a definite integral</span>
+      The constant cancels: ${m('(F(b) + C) − (F(a) + C) = F(b) − F(a)')}. Writing it is not wrong, but
+      carrying it through is wasted work — and writing it in the <b>answer</b> is a mistake, because the
+      answer is a number.</div>`
+    },
+    {
+      h: 'Properties',
+      html: `${eq(m('∫') + '<sub class="m">a</sub><sup class="m">a</sup> ' + m('f = 0') + '     ' + m('∫') + '<sub class="m">a</sub><sup class="m">b</sup> ' + m('f = −∫') + '<sub class="m">b</sub><sup class="m">a</sup> ' + m('f'), true)}
+      ${eq(m('∫') + '<sub class="m">a</sub><sup class="m">b</sup> ' + m('(f ± g) = ∫') + '<sub class="m">a</sub><sup class="m">b</sup> ' + m('f ± ∫') + '<sub class="m">a</sub><sup class="m">b</sup> ' + m('g'), false)}
+      ${eq(m('∫') + '<sub class="m">a</sub><sup class="m">b</sup> ' + m('f = ∫') + '<sub class="m">a</sub><sup class="m">c</sup> ' + m('f + ∫') + '<sub class="m">c</sub><sup class="m">b</sup> ' + m('f'), true)}
+      <p>The last is <b>additivity</b>: an interval may be split at any interior point, and the parts
+      add. It is what allows a curve crossing the axis to be handled piece by piece.</p>`
+    },
+    {
+      h: 'Signed area',
+      html: `<div class="warn"><span class="wl">The integral is a signed area</span>
+      Where the curve is <b>below</b> the axis, ${m('f(x) < 0')} and the contribution is negative.
+      ${m('∫')}<sub class="m">0</sub><sup class="m">2π</sup> ${m('sin x dx = 0')} — not because there is
+      no area, but because the two halves cancel.</div>
+      <p>So “find the integral” and “find the area” are different questions:</p>
+      <ol>
+        <li><b>Integral:</b> compute it directly, signs and all.</li>
+        <li><b>Area:</b> find the zeros of ${m('f')} in ${m('[a, b]')}, integrate over each piece
+        separately, and add the <b>absolute values</b>.</li>
+      </ol>
+      <p>For ${m('y = x³')} on ${m('[−1, 1]')}: the integral is ${m('0')}, but the area is
+      ${m(f('1', '4') + ' + ' + f('1', '4') + ' = ' + f('1', '2'))}.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Evaluate ' + m('∫') + '<sub class="m">1</sub><sup class="m">3</sup> ' + m('(2x + 1) dx') + '.',
+      steps: [
+        [m('F(x) = x² + x'), ''],
+        [m('F(3) = 12') + ', ' + m('F(1) = 2') + '.', ''],
+        [m('12 − 2 = 10'), '']
+      ],
+      ans: m('10')
+    },
+    {
+      q: 'Evaluate ' + m('∫') + '<sub class="m">1</sub><sup class="m">4</sup> ' + m(f('1', sr('x')) + ' dx') + '.',
+      steps: [
+        ['Rewrite as ' + m('x^(−1/2)') + '.', ''],
+        [m('F(x) = 2' + sr('x')), ''],
+        [m('2(2) − 2(1) = 2'), '']
+      ],
+      ans: m('2')
+    },
+    {
+      q: 'Find the area between ' + m('y = x³') + ' and the ' + m('x') + '-axis on ' + m('[−1, 1]') + '.',
+      steps: [
+        ['The curve crosses at ' + m('x = 0') + '.', 'Split there.'],
+        [m('∫') + '<sub class="m">−1</sub><sup class="m">0</sup>' + m(' = −' + f('1', '4')), ''],
+        [m('∫') + '<sub class="m">0</sub><sup class="m">1</sup>' + m(' = ' + f('1', '4')), ''],
+        ['Add the absolute values.', '']
+      ],
+      ans: m(f('1', '2'))
+    }
+  ],
+  modelNote: 'Increase the number of rectangles and watch the estimate settle on the exact value.',
+  interactive: {
+    type: 'optimise',
+    title: 'Rectangles filling an area',
+    hint: 'More, thinner rectangles approach the exact value.'
+  },
+  quiz: [
+    { q: 'A definite integral is:', a: ['a family of functions', 'a number', 'a derivative', 'an equation'], c: 1, why: 'The limits make it definite.' },
+    { q: 'The Newton–Leibniz formula gives:', a: [m('F(a) − F(b)'), m('F(b) − F(a)'), m('F(b) + F(a)'), m("F′(b)")], c: 1, why: 'Upper minus lower.' },
+    { q: 'The constant of integration in a definite integral:', a: ['must be included', 'cancels', 'doubles', 'is the answer'], c: 1, why: 'It appears twice with opposite signs.' },
+    { q: m('∫') + '<sub class="m">a</sub><sup class="m">a</sup>' + m('f') + ' equals:', a: [m('f(a)'), m('0'), m('F(a)'), 'undefined'], c: 1, why: 'No interval.' },
+    { q: 'Below the axis the integral contributes:', a: ['positively', 'negatively', 'nothing', 'twice'], c: 1, why: 'It is a signed area.' }
+  ],
+  practice: {
+    easy: [
+      [m('∫') + '<sub class="m">0</sub><sup class="m">2</sup>' + m(' x dx'), m('2')],
+      [m('∫') + '<sub class="m">0</sub><sup class="m">3</sup>' + m(' 2 dx'), m('6')],
+      [m('∫') + '<sub class="m">0</sub><sup class="m">1</sup>' + m(' x² dx'), m(f('1', '3'))],
+      [m('∫') + '<sub class="m">1</sub><sup class="m">2</sup>' + m(' 3x² dx'), m('7')],
+      [m('∫') + '<sub class="m">2</sub><sup class="m">2</sup>' + m(' x⁵ dx'), m('0')],
+      [m('∫') + '<sub class="m">0</sub><sup class="m">4</sup>' + m(' ' + sr('x') + ' dx'), m(f('16', '3'))],
+      ['Does a definite integral need ' + m('+ C') + '?', 'no']
+    ],
+    med: [
+      [m('∫') + '<sub class="m">1</sub><sup class="m">3</sup>' + m(' (2x + 1) dx'), m('10')],
+      [m('∫') + '<sub class="m">1</sub><sup class="m">4</sup>' + m(' ' + f('1', sr('x')) + ' dx'), m('2')],
+      [m('∫') + '<sub class="m">0</sub><sup class="m">2</sup>' + m(' (x² − 3x) dx'), m('−' + f('10', '3'))],
+      [m('∫') + '<sub class="m">1</sub><sup class="m">2</sup>' + m(' ' + f('1', 'x²') + ' dx'), m(f('1', '2'))],
+      [m('∫') + '<sub class="m">−1</sub><sup class="m">1</sup>' + m(' x³ dx'), m('0')],
+      ['Area between ' + m('y = x³') + ' and the axis on ' + m('[−1, 1]'), m(f('1', '2'))],
+      [m('∫') + '<sub class="m">0</sub><sup class="m">1</sup>' + m(' (3x² + 2x) dx'), m('2')]
+    ],
+    hard: [
+      [m('∫') + '<sub class="m">1</sub><sup class="m">2</sup>' + m(' ' + f('x² + 1', 'x²') + ' dx'), m(f('3', '2'))],
+      [m('∫') + '<sub class="m">0</sub><sup class="m">1</sup>' + m(' (2x + 1)³ dx'), m('10')],
+      ['Area between ' + m('y = x² − 4') + ' and the axis on ' + m('[0, 3]'), m(f('23', '3'))],
+      ['Find ' + m('k') + ' with ' + m('∫') + '<sub class="m">0</sub><sup class="m">k</sup>' + m(' x dx = 8'), m('k = 4')],
+      ['Find ' + m('k') + ' with ' + m('∫') + '<sub class="m">1</sub><sup class="m">k</sup>' + m(' ' + f('1', 'x²') + ' dx = ' + f('1', '2')), m('k = 2')],
+      ['Explain why ' + m('∫') + '<sub class="m">0</sub><sup class="m">2π</sup>' + m(' sin x dx = 0'), 'The halves cancel'],
+      ['Show ' + m('∫') + '<sub class="m">a</sub><sup class="m">b</sup>' + m(' f = ∫') + '<sub class="m">a</sub><sup class="m">c</sup>' + m(' f + ∫') + '<sub class="m">c</sub><sup class="m">b</sup>' + m(' f'), 'Both equal ' + m('F(b) − F(a)')]
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Write the square brackets with the limits on every answer.',
+  homework: [
+    'Evaluate ' + m('∫') + '<sub class="m">0</sub><sup class="m">3</sup>' + m(' (x² + 2x) dx') + '.',
+    'Evaluate ' + m('∫') + '<sub class="m">1</sub><sup class="m">9</sup>' + m(' ' + f('1', sr('x')) + ' dx') + '.',
+    'Evaluate ' + m('∫') + '<sub class="m">1</sub><sup class="m">3</sup>' + m(' ' + f('1', 'x²') + ' dx') + '.',
+    'Find the area between ' + m('y = x² − 1') + ' and the axis on ' + m('[0, 2]') + '.',
+    'Find ' + m('k') + ' with ' + m('∫') + '<sub class="m">0</sub><sup class="m">k</sup>' + m(' 3x² dx = 27') + '.',
+    'Explain in three sentences why the constant of integration cancels in a definite integral.'
+  ]
+});
+
+/* ============================== 19 ============================== */
+G11_ALG.push({
+  id: 'a11-19', stream: 'alg', grade: 11, quarter: 3, lessons: '52–54', hours: 3,
+  title: 'Applications of the definite integral',
+  subtitle: 'Areas between curves, volumes of revolution, distance from velocity — one integral, four questions.',
+  uz: 'Algebra 11, §3.2', uzPage: 'pp. 243–260',
+  cam: 'P1 · 10.5–10.7', camPage: 'Pure Mathematics 1, pp. 227–240', wb: 'P1 Exercise 10E, 10F',
+  objectives: [
+    'Find the area between a curve and the x-axis, taking sign into account.',
+    'Find the area between two curves.',
+    'Find a volume of revolution about the x-axis.',
+    'Recover distance from velocity and velocity from acceleration.'
+  ],
+  terms: [
+    ['Area between curves', 'Egri chiziqlar orasidagi yuza', 'Площадь между кривыми'],
+    ['Upper and lower curve', 'Yuqori va quyi egri chiziq', 'Верхняя и нижняя кривая'],
+    ['Point of intersection', 'Kesishish nuqtasi', 'Точка пересечения'],
+    ['Volume of revolution', 'Aylanish jismi hajmi', 'Объём тела вращения'],
+    ['Axis of revolution', 'Aylanish o‘qi', 'Ось вращения'],
+    ['Distance travelled', 'Bosib o‘tilgan yo‘l', 'Пройденный путь'],
+    ['Displacement', 'Ko‘chish', 'Перемещение'],
+    ['Signed area', 'Ishorali yuza', 'Площадь со знаком'],
+    ['Integrand', 'Integral ostidagi funksiya', 'Подынтегральная функция']
+  ],
+  timing: [[20, 'Area with the axis'], [30, 'Area between two curves'], [30, 'Volumes of revolution'], [26, 'Motion'], [30, 'Practice'], [9, 'Homework']],
+  sections: [
+    {
+      h: 'Area with the axis',
+      html: `<div class="keybox"><div class="klabel">The routine</div>
+      <b>1</b> Find where the curve meets the axis inside the interval. <b>2</b> Integrate over each
+      piece. <b>3</b> Add the <b>absolute values</b>.</div>
+      <p>Skipping step 1 is the standard error: a curve that dips below the axis returns a partial
+      cancellation instead of an area.</p>
+      ${eq('area ' + m('= |∫') + '<sub class="m">a</sub><sup class="m">c</sup>' + m(' f| + |∫') + '<sub class="m">c</sub><sup class="m">b</sup>' + m(' f|') + '   where ' + m('f(c) = 0'), true)}`
+    },
+    {
+      h: 'Area between two curves',
+      html: `${eq('area ' + m('= ∫') + '<sub class="m">a</sub><sup class="m">b</sup>' + m(' (upper − lower) dx'), true)}
+      {{fig:areaBetween:Upper minus lower, integrated between the two crossing points.}}
+      <p>The limits ${m('a')} and ${m('b')} are the ${m('x')}-coordinates where the curves cross, found
+      by solving ${m('f(x) = g(x)')} first.</p>
+      <p><b>Example.</b> ${m('y = 2x')} and ${m('y = x²')} meet at ${m('x = 0')} and ${m('x = 2')}.
+      Between them the line is above:</p>
+      ${eq(m('∫') + '<sub class="m">0</sub><sup class="m">2</sup>' + m(' (2x − x²) dx = [x² − ' + f('x³', '3') + ']') + '<sub class="m">0</sub><sup class="m">2</sup>' + m(' = 4 − ' + f('8', '3') + ' = ' + f('4', '3')), false)}
+      <div class="keybox"><div class="klabel">Why the sign takes care of itself</div>
+      Because ${m('upper − lower')} is positive throughout, the integral is the area directly — even if
+      both curves are below the axis. That is why this method is safer than integrating each separately.</div>`
+    },
+    {
+      h: 'Volumes of revolution',
+      html: `<p>Rotate the region under ${m('y = f(x)')} between ${m('a')} and ${m('b')} about the
+      ${m('x')}-axis. Each thin strip becomes a disc of radius ${m('y')} and thickness ${m('dx')}:</p>
+      ${eq(m('V = π ∫') + '<sub class="m">a</sub><sup class="m">b</sup>' + m(' y² dx'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Curve</th><th>Interval</th><th>Solid</th><th>Volume</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = r</td><td class="m">[0, h]</td><td>cylinder</td><td class="m">πr²h</td></tr>
+        <tr><td class="m">y = ${f('r', 'h')}x</td><td class="m">[0, h]</td><td>cone</td><td class="m">${f('1', '3')}πr²h</td></tr>
+        <tr><td class="m">y = ${sr('r² − x²')}</td><td class="m">[−r, r]</td><td>sphere</td><td class="m">${f('4', '3')}πr³</td></tr>
+      </tbody></table></div>
+      <p>Every volume formula of Grade 11 geometry is one of these integrals. The ${m(f('1', '3'))} in
+      the cone is ${m('∫x² dx')}; the ${m(f('4', '3'))} in the sphere is
+      ${m('∫(r² − x²) dx')} over ${m('[−r, r]')}.</p>
+      <div class="warn"><span class="wl">Square the ${m('y')}, do not square the integral</span>
+      ${m('π∫y² dx')}, not ${m('π(∫y dx)²')}. The two differ completely.</div>`
+    },
+    {
+      h: 'Motion',
+      html: `${eq(m('s = ∫ v dt') + '     ' + m('v = ∫ a dt'), true)}
+      <p>Integration undoes the differentiation of Quarter I. With limits it gives a definite answer:</p>
+      ${eq('displacement ' + m('= ∫') + '<sub class="m">t₁</sub><sup class="m">t₂</sup>' + m(' v dt') + '     distance ' + m('= ∫') + '<sub class="m">t₁</sub><sup class="m">t₂</sup>' + m(' |v| dt'), true)}
+      <div class="warn"><span class="wl">Displacement is not distance, again</span>
+      If ${m('v')} changes sign in the interval, split at that instant and add the absolute values —
+      exactly as for area. It is the same theorem wearing different words.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the area between ' + m('y = 2x') + ' and ' + m('y = x²') + '.',
+      steps: [
+        [m('2x = x² ⇒ x = 0, 2'), 'The limits.'],
+        ['The line is above between them.', ''],
+        [m('∫') + '<sub class="m">0</sub><sup class="m">2</sup>' + m('(2x − x²) dx'), ''],
+        [m('= 4 − ' + f('8', '3') + ' = ' + f('4', '3')), '']
+      ],
+      ans: m(f('4', '3'))
+    },
+    {
+      q: 'The region under ' + m('y = ' + sr('x')) + ' from ' + m('0') + ' to ' + m('4') + ' is rotated about the ' + m('x') + '-axis. Find the volume.',
+      steps: [
+        [m('y² = x'), ''],
+        [m('V = π∫') + '<sub class="m">0</sub><sup class="m">4</sup>' + m(' x dx'), ''],
+        [m('= π[' + f('x²', '2') + ']') + '<sub class="m">0</sub><sup class="m">4</sup>', ''],
+        [m('= 8π'), '']
+      ],
+      ans: m('8π') + ' ≈ ' + m('25.1')
+    },
+    {
+      q: 'A body has ' + m('v = 3t² − 12t') + ' m/s. Find the distance travelled in the first 5 s.',
+      steps: [
+        [m('v = 3t(t − 4)') + ', zero at ' + m('t = 0, 4') + '.', 'Split at 4.'],
+        [m('∫') + '<sub class="m">0</sub><sup class="m">4</sup>' + m(' v dt = [t³ − 6t²] = −32'), ''],
+        [m('∫') + '<sub class="m">4</sub><sup class="m">5</sup>' + m(' v dt = (125 − 150) − (−32) = 7'), ''],
+        [m('32 + 7'), '']
+      ],
+      ans: m('39') + ' m'
+    }
+  ],
+  modelNote: 'Sketch the two curves and shade the region before writing any integral.',
+  interactive: {
+    type: 'optimise',
+    title: 'Area under a curve',
+    hint: 'Change the limits and watch the area.'
+  },
+  quiz: [
+    { q: 'The area between two curves is:', a: [m('∫f + ∫g'), m('∫(upper − lower)'), m('∫|f|'), m('∫f · g')], c: 1, why: 'The vertical gap, integrated.' },
+    { q: 'The limits come from:', a: ['the question always', 'solving ' + m('f = g'), 'the axis', 'guessing'], c: 1, why: 'The crossing points.' },
+    { q: 'A volume of revolution about ' + m('Ox') + ' is:', a: [m('π∫y dx'), m('π∫y² dx'), m('(π∫y dx)²'), m('∫y² dx')], c: 1, why: 'Discs of radius ' + m('y') + '.' },
+    { q: 'Distance from velocity is:', a: [m('∫v dt'), m('∫|v| dt'), m("v′"), m('∫v² dt')], c: 1, why: 'Direction changes must be counted positively.' },
+    { q: 'A curve dipping below the axis needs:', a: ['nothing special', 'splitting at the zeros', 'squaring', 'doubling'], c: 1, why: 'Otherwise the parts cancel.' }
+  ],
+  practice: {
+    easy: [
+      ['Area under ' + m('y = x') + ' from 0 to 4', m('8')],
+      ['Area under ' + m('y = x²') + ' from 0 to 3', m('9')],
+      ['Area under ' + m('y = 2') + ' from 1 to 5', m('8')],
+      ['Volume from ' + m('y = 2') + ' on ' + m('[0, 3]') + ' about ' + m('Ox'), m('12π')],
+      ['Volume from ' + m('y = x') + ' on ' + m('[0, 3]'), m('9π')],
+      [m('v = 4') + '; distance in 6 s', m('24') + ' m'],
+      [m('v = 2t') + '; distance in 3 s', m('9') + ' m']
+    ],
+    med: [
+      ['Area between ' + m('y = 2x') + ' and ' + m('y = x²'), m(f('4', '3'))],
+      ['Area between ' + m('y = x') + ' and ' + m('y = x²'), m(f('1', '6'))],
+      ['Area between ' + m('y = 4 − x²') + ' and the axis', m(f('32', '3'))],
+      ['Volume from ' + m('y = ' + sr('x')) + ' on ' + m('[0, 4]'), m('8π')],
+      ['Volume from ' + m('y = x²') + ' on ' + m('[0, 2]'), m(f('32π', '5'))],
+      [m('v = 3t² − 12t') + '; distance in the first 5 s', m('39') + ' m'],
+      ['Same; the displacement', m('−25') + ' m']
+    ],
+    hard: [
+      ['Area between ' + m('y = x²') + ' and ' + m('y = x³'), m(f('1', '12'))],
+      ['Area between ' + m('y = x² − 4') + ' and ' + m('y = 5'), m('36')],
+      ['Volume from ' + m('y = ' + f('r', 'h') + 'x') + ' on ' + m('[0, h]'), m(f('1', '3') + 'πr²h')],
+      ['Volume from ' + m('y = ' + sr('r² − x²')) + ' on ' + m('[−r, r]'), m(f('4', '3') + 'πr³')],
+      ['Area enclosed by ' + m('y = x³ − x'), m(f('1', '2'))],
+      [m('a = 6t') + ', ' + m('v(0) = 0') + ', ' + m('s(0) = 2') + '. Find ' + m('s(3)'), m('29')],
+      ['Volume from ' + m('y = ' + f('1', 'x')) + ' on ' + m('[1, 3]') + ' about ' + m('Ox'), m(f('2π', '3'))]
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Sketch and shade before every integral; find the limits before writing them.',
+  homework: [
+    'Find the area between ' + m('y = 3x') + ' and ' + m('y = x²') + '.',
+    'Find the area between ' + m('y = 9 − x²') + ' and the ' + m('x') + '-axis.',
+    'Find the volume when the region under ' + m('y = x') + ' on ' + m('[0, 4]') + ' is rotated about ' + m('Ox') + '.',
+    'Find the volume when the region under ' + m('y = ' + sr('4 − x²')) + ' on ' + m('[−2, 2]') + ' is rotated about ' + m('Ox') + ', and name the solid.',
+    'A body has ' + m('v = t² − 4t') + ' m/s. Find the displacement and the distance in the first 6 s.',
+    'Explain in three sentences why “upper minus lower” needs no absolute value.'
+  ]
+});
+
+/* ============================== 20 ============================== */
+G11_ALG.push({
+  id: 'a11-20', stream: 'alg', grade: 11, quarter: 3, lessons: '55–57', hours: 3,
+  title: 'The trapezium rule',
+  subtitle: 'Cambridge insert: what to do when the antiderivative does not exist — and how to judge the error.',
+  uz: 'Algebra 11, §3.2 (extension)', uzPage: 'pp. 261–268',
+  cam: 'P2 · 5.7', camPage: 'Pure Mathematics 2 & 3, pp. 108–116', wb: 'P2 Exercise 5E',
+  objectives: [
+    'State and apply the trapezium rule with n strips.',
+    'Decide whether the estimate is an over- or an under-estimate.',
+    'Improve an estimate by doubling the number of strips.',
+    'Use the rule on data given only as a table.'
+  ],
+  terms: [
+    ['Trapezium rule', 'Trapetsiya usuli', 'Метод трапеций'],
+    ['Strip', 'Bo‘lak', 'Полоса'],
+    ['Ordinate', 'Ordinata', 'Ордината'],
+    ['Strip width h', 'Bo‘lak kengligi', 'Шаг'],
+    ['Over-estimate', 'Ortiqcha baho', 'Оценка с избытком'],
+    ['Under-estimate', 'Kam baho', 'Оценка с недостатком'],
+    ['Concave up', 'Yuqoriga qavariq', 'Выпуклая вниз'],
+    ['Numerical integration', 'Sonli integrallash', 'Численное интегрирование'],
+    ['Accuracy', 'Aniqlik', 'Точность']
+  ],
+  timing: [[18, 'Why a numerical method'], [28, 'The rule'], [28, 'Over or under?'], [26, 'Improving the estimate'], [30, 'Practice'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Why a numerical method',
+      html: `<p>Not every function has an antiderivative that can be written down. ${m('∫ ' + sr('1 + x³') + ' dx')}
+      and ${m('∫ 2^(x²) dx')} exist as areas but have no elementary formula. And data collected by
+      measurement has no formula at all.</p>
+      <div class="keybox"><div class="klabel">The idea</div>
+      Replace the curve on each strip by the <b>straight line</b> joining its ends. Each strip becomes a
+      trapezium, whose area is elementary.</div>
+      {{fig:trapeziumRule:Straight tops, not flat ones. Four strips already fit closely.}}`
+    },
+    {
+      h: 'The rule',
+      html: `${eq(m('∫') + '<sub class="m">a</sub><sup class="m">b</sup>' + m(' y dx ≈ ' + f('h', '2') + '[y₀ + y_n + 2(y₁ + y₂ + … + y_(n−1))]'), true)}
+      <p>with ${m('h = ' + f('b − a', 'n'))}. The <b>end</b> ordinates count once; every <b>interior</b>
+      ordinate counts twice, because it is the right edge of one trapezium and the left edge of the
+      next.</p>
+      <div class="warn"><span class="wl">${m('n')} strips means ${m('n + 1')} ordinates</span>
+      Four strips need five values of ${m('y')}. Counting the strips as ordinates is the commonest
+      arithmetic error, and it makes ${m('h')} wrong as well.</div>
+      <p><b>Example.</b> ${m('∫')}<sub class="m">0</sub><sup class="m">4</sup>${m(' x² dx')} with
+      ${m('4')} strips: ${m('h = 1')}, ordinates ${m('0, 1, 4, 9, 16')}.</p>
+      ${eq(m(f('1', '2') + '[0 + 16 + 2(1 + 4 + 9)] = ' + f('1', '2') + '(16 + 28) = 22'), false)}
+      <p>The exact value is ${m(f('64', '3') + ' ≈ 21.33')}. The estimate is high, and the next section
+      says why that was predictable.</p>`
+    },
+    {
+      h: 'Over or under?',
+      html: `<div class="keybox"><div class="klabel">The rule of thumb</div>
+      Where the curve is <b>concave up</b> (bending upwards, ${m("f″ > 0")}), the chord lies <b>above</b>
+      the curve, so the trapezium rule <b>over-estimates</b>. Where it is concave down, it
+      under-estimates.</div>
+      <p>${m('y = x²')} is concave up everywhere, so ${m('22 > 21.33')} — exactly as predicted. This is
+      a real mark in the examination: “state, with a reason, whether your estimate is an over- or an
+      under-estimate.”</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Curve on ${m('[a, b]')}</th><th>Shape</th><th>Estimate</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = x²</td><td>concave up</td><td>over</td></tr>
+        <tr><td class="m">y = ${sr('x')}</td><td>concave down</td><td>under</td></tr>
+        <tr><td class="m">y = ${f('1', 'x')}, x > 0</td><td>concave up</td><td>over</td></tr>
+        <tr><td class="m">y = x³, x > 0</td><td>concave up</td><td>over</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Improving the estimate',
+      html: `<p>Halving ${m('h')} — doubling the number of strips — divides the error by about
+      <b>four</b>. The error is proportional to ${m('h²')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Strips</th><th class="m">h</th><th>Estimate of ${m('∫')}<sub class="m">0</sub><sup class="m">4</sup>${m('x² dx')}</th><th>Error</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2</td><td class="m">2</td><td class="m">24</td><td class="m">2.67</td></tr>
+        <tr><td class="m">4</td><td class="m">1</td><td class="m">22</td><td class="m">0.67</td></tr>
+        <tr><td class="m">8</td><td class="m">0.5</td><td class="m">21.5</td><td class="m">0.17</td></tr>
+      </tbody></table></div>
+      <p>Each doubling quarters the error — visible in the last column. The pattern is what tells a
+      computer when to stop.</p>
+      <p><b>From a table.</b> When the data is measured rather than given by a formula, the rule applies
+      unchanged: it needs only equally spaced ordinates, and never the formula itself.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Estimate ' + m('∫') + '<sub class="m">0</sub><sup class="m">4</sup>' + m(' x² dx') + ' with 4 strips.',
+      steps: [
+        [m('h = 1') + '; ordinates ' + m('0, 1, 4, 9, 16') + '.', 'Five of them.'],
+        [m(f('1', '2') + '[0 + 16 + 2(1 + 4 + 9)]'), ''],
+        [m('= ' + f('1', '2') + '(44) = 22'), ''],
+        ['Concave up, so an over-estimate.', 'Exact ' + m('21.33') + '.']
+      ],
+      ans: m('22') + ', an over-estimate'
+    },
+    {
+      q: 'Estimate ' + m('∫') + '<sub class="m">1</sub><sup class="m">3</sup>' + m(' ' + f('1', 'x') + ' dx') + ' with 4 strips.',
+      steps: [
+        [m('h = 0.5') + '; ordinates ' + m('1, ' + f('2', '3') + ', 0.5, 0.4, ' + f('1', '3')) + '.', ''],
+        [m(f('0.5', '2') + '[1 + 0.3333 + 2(0.6667 + 0.5 + 0.4)]'), ''],
+        [m('= 0.25 × 4.4667'), ''],
+        [m('≈ 1.117'), 'Exact ' + m('ln 3 ≈ 1.0986') + '.']
+      ],
+      ans: m('≈ 1.117') + ', an over-estimate'
+    },
+    {
+      q: 'A car’s speed is measured every 10 s: ' + m('0, 8, 14, 18, 20') + ' m/s. Estimate the distance.',
+      steps: [
+        [m('h = 10') + ', 4 strips, 5 ordinates.', ''],
+        [m('5[0 + 20 + 2(8 + 14 + 18)]'), ''],
+        [m('= 5(20 + 80)'), ''],
+        [m('= 500') + ' m.', '']
+      ],
+      ans: m('500') + ' m'
+    }
+  ],
+  modelNote: 'Compute the same integral with 2, 4 and 8 strips and put the errors side by side.',
+  interactive: {
+    type: 'optimise',
+    title: 'Strips under a curve',
+    hint: 'More strips, smaller error — about four times smaller each doubling.'
+  },
+  quiz: [
+    { q: 'The trapezium rule replaces the curve by:', a: ['flat tops', 'straight chords', 'parabolas', 'circles'], c: 1, why: 'Each strip is a trapezium.' },
+    { q: m('n') + ' strips need how many ordinates?', a: [m('n'), m('n − 1'), m('n + 1'), m('2n')], c: 2, why: 'Both ends plus the interior ones.' },
+    { q: 'Interior ordinates are counted:', a: ['once', 'twice', 'three times', 'not at all'], c: 1, why: 'Each is an edge of two trapezia.' },
+    { q: 'For a concave-up curve the estimate is:', a: ['exact', 'too large', 'too small', 'unpredictable'], c: 1, why: 'The chord lies above.' },
+    { q: 'Doubling the strips divides the error by about:', a: [m('2'), m('4'), m('8'), m('10')], c: 1, why: 'The error goes as ' + m('h²') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['4 strips need how many ordinates?', m('5')],
+      ['6 strips on ' + m('[0, 3]') + ': find ' + m('h'), m('0.5')],
+      ['5 strips on ' + m('[1, 6]') + ': find ' + m('h'), m('1')],
+      ['Interior ordinates are counted', 'twice'],
+      ['End ordinates are counted', 'once'],
+      [m('y = x²') + ' is concave', 'up'],
+      ['So the estimate is', 'too large']
+    ],
+    med: [
+      [m('∫') + '<sub class="m">0</sub><sup class="m">4</sup>' + m(' x² dx') + ' with 4 strips', m('22')],
+      ['Its exact value', m(f('64', '3')) + ' ≈ ' + m('21.33')],
+      [m('∫') + '<sub class="m">0</sub><sup class="m">4</sup>' + m(' x² dx') + ' with 2 strips', m('24')],
+      [m('∫') + '<sub class="m">1</sub><sup class="m">3</sup>' + m(' ' + f('1', 'x') + ' dx') + ' with 4 strips', m('≈ 1.117')],
+      ['Speeds ' + m('0, 8, 14, 18, 20') + ' every 10 s: the distance', m('500') + ' m'],
+      [m('∫') + '<sub class="m">0</sub><sup class="m">1</sup>' + m(' ' + sr('1 + x³') + ' dx') + ' with 4 strips', m('≈ 1.111')],
+      ['Is that an over- or under-estimate?', 'over — the curve is concave up']
+    ],
+    hard: [
+      [m('∫') + '<sub class="m">0</sub><sup class="m">2</sup>' + m(' ' + f('1', '1 + x²') + ' dx') + ' with 4 strips', m('≈ 1.1032')],
+      ['Its exact value', m('arctan 2 ≈ 1.1071')],
+      ['Why is that one an under-estimate?', 'The curve is concave down over most of the range'],
+      [m('∫') + '<sub class="m">0</sub><sup class="m">4</sup>' + m(' x² dx') + ' with 8 strips, and the error', m('21.5') + ', error ' + m('0.17')],
+      ['Show the error is about ' + m('h²') + ' times a constant', 'Each doubling quarters it'],
+      ['Widths ' + m('0, 2.4, 3.1, 3.6, 3.9, 4.0') + ' m every 5 m: the area', m('≈ 65.5') + ' m²'],
+      ['A curve is concave up then down. What can be said about the estimate?', 'Nothing in general — split the interval']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Always state the number of strips, the value of ' + m('h') + ', and whether the estimate is over or under.',
+  homework: [
+    'Estimate ' + m('∫') + '<sub class="m">0</sub><sup class="m">3</sup>' + m(' x³ dx') + ' with 3 strips and compare with the exact value.',
+    'Estimate ' + m('∫') + '<sub class="m">1</sub><sup class="m">5</sup>' + m(' ' + f('1', 'x') + ' dx') + ' with 4 strips, and say whether it is an over- or an under-estimate.',
+    'Estimate ' + m('∫') + '<sub class="m">0</sub><sup class="m">2</sup>' + m(' ' + sr('1 + x³') + ' dx') + ' with 4 strips.',
+    'A river’s depth every 4 m across is ' + m('0, 1.8, 2.6, 3.0, 2.4, 0') + ' m. Estimate the cross-sectional area.',
+    'Explain in three sentences why doubling the number of strips divides the error by about four.'
+  ]
+});
