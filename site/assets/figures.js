@@ -2227,6 +2227,116 @@
     return svg('0 0 ' + W + ' ' + H, g);
   };
 
+  /* ---------- Grade 10 Quarter III: perpendicularity in space ---------- */
+
+  /* a line perpendicular to a plane because it is perpendicular to two lines in it */
+  F.perpLinePlane = function () {
+    var g = '', W = 340, H = 210;
+    var p = P3({ s: 19, ox: 52, oy: 156 });
+    g += planeQuad(p, 0, 7, 0, 4);
+    var O = p(3.2, 0, 2);
+    var T = p(3.2, 4.2, 2);
+    g += line(O, T, 'stroke="currentColor" stroke-width="2.6"');
+    var A = p(0.6, 0, 1.2), B = p(5.8, 0, 2.8);
+    var C = p(1.4, 0, 3.6), D = p(5.0, 0, 0.4);
+    g += line(A, B, 'stroke="var(--brass)" stroke-width="2"');
+    g += line(C, D, 'stroke="var(--brass)" stroke-width="2"');
+    g += dot(O[0], O[1], 'var(--brand)');
+    g += right(O, T, B, 8);
+    g += L(T[0] + 12, T[1] - 2, 'ℓ');
+    g += L(O[0] - 12, O[1] + 12, 'O');
+    g += L(B[0] + 12, B[1] + 4, 'a') + L(D[0] + 12, D[1] + 6, 'b');
+    g += LT(W / 2, H - 22, 'ℓ ⊥ a and ℓ ⊥ b, with a and b intersecting at O', 'var(--muted)', 10);
+    g += LT(W / 2, H - 6, 'therefore ℓ is perpendicular to the whole plane', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* the theorem of the three perpendiculars */
+  F.threePerp = function () {
+    var g = '', W = 340, H = 216;
+    var p = P3({ s: 20, ox: 44, oy: 162 });
+    g += planeQuad(p, 0, 7, 0, 4);
+    var O = p(2.4, 0, 1.4);          /* foot of the perpendicular */
+    var A = p(2.4, 3.6, 1.4);        /* the point above */
+    var B = p(6.2, 0, 3.2);          /* the far end of the oblique's projection */
+    g += line(A, O, 'stroke="currentColor" stroke-width="2.4"');
+    g += line(O, B, 'stroke="var(--brass)" stroke-width="2.2"');
+    g += line(A, B, 'stroke="var(--brand)" stroke-width="2.4"');
+    /* the line in the plane, through B, perpendicular to OB */
+    var C = p(7.6, 0, -0.6), D = p(4.6, 0, 7.0);
+    g += line(C, D, 'stroke="var(--easy)" stroke-width="2"');
+    g += right(B, O, D, 9);
+    g += dot(O[0], O[1]) + dot(B[0], B[1], 'var(--brass)') + dot(A[0], A[1], 'var(--brand)');
+    g += L(A[0] - 11, A[1] - 6, 'A') + L(O[0] - 12, O[1] + 10, 'O') + L(B[0] + 4, B[1] + 14, 'B');
+    g += LT(94, 60, 'AO ⊥ plane', 'currentColor', 10);
+    g += LT(250, 44, 'AB oblique', 'var(--brand)', 10);
+    g += LT(250, 60, 'OB its projection', 'var(--brass)', 10);
+    g += LT(W / 2, H - 22, 'a line of the plane through B is ⊥ AB', 'var(--muted)', 10);
+    g += LT(W / 2, H - 6, 'exactly when it is ⊥ OB', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* the dihedral angle: two half-planes and its linear angle */
+  F.dihedralAngle = function () {
+    var g = '', W = 340, H = 232;
+    /* the edge is drawn horizontally across the middle */
+    var ex0 = 50, ex1 = 288, ey = 122;
+    /* lower half-plane, going down-left; upper half-plane, going up-right */
+    g += poly([[ex0, ey], [ex1, ey], [ex1 - 26, ey + 54], [ex0 - 26, ey + 54]],
+      'fill="var(--brand-tint)" fill-opacity=".8" stroke="var(--brand)" stroke-width="1.7"');
+    g += poly([[ex0, ey], [ex1, ey], [ex1 + 34, ey - 66], [ex0 + 34, ey - 66]],
+      'fill="var(--brass-tint)" fill-opacity=".85" stroke="var(--brass)" stroke-width="1.7"');
+    g += line([ex0, ey], [ex1, ey], 'stroke="currentColor" stroke-width="2.8"');
+    /* the linear angle at M, both arms perpendicular to the edge */
+    var M = [170, ey];
+    var P1 = [170 - 20, ey + 42];          /* in the lower plane */
+    var P2 = [170 + 26, ey - 50];          /* in the upper plane */
+    g += line(M, P1, 'stroke="var(--brand)" stroke-width="2.4"');
+    g += line(M, P2, 'stroke="var(--brass)" stroke-width="2.4"');
+    g += '<path d="M' + (M[0] + 22) + ' ' + (ey - 42) + ' A50 50 0 0 0 ' +
+      (M[0] - 17) + ' ' + (ey + 35) + '" fill="none" stroke="var(--muted)" stroke-width="1.5"/>';
+    g += dot(M[0], M[1]);
+    g += LT(M[0] + 30, ey + 4, 'φ', 'var(--muted)', 14);
+    g += L(ex1 + 12, ey - 4, 'c');
+    g += LT(ex0 - 14, ey + 40, 'α', 'var(--brand)', 12);
+    g += LT(ex1 + 4, ey - 52, 'β', 'var(--brass)', 12);
+    g += LT(W / 2, H - 22, 'both arms are perpendicular to the edge c', 'var(--muted)', 10);
+    g += LT(W / 2, H - 6, 'the angle φ between them is the dihedral angle', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* orthogonal projection: the three views of a solid */
+  F.orthoProjection = function () {
+    var g = '', W = 340, H = 200;
+    /* the solid: an L-shaped block, drawn small */
+    var p = P3({ s: 13, ox: 34, oy: 92 });
+    var pts = [[0,0,0],[3,0,0],[3,1.6,0],[1.4,1.6,0],[1.4,3,0],[0,3,0]];
+    function face(y) {
+      return poly(pts.map(function (q) { return p(q[0], q[1] + y, 0); }),
+        'fill="var(--brand-tint)" fill-opacity=".75" stroke="var(--brand)" stroke-width="1.5"');
+    }
+    g += face(0);
+    g += LT(58, 118, 'the object', 'var(--muted)', 10);
+
+    /* three orthographic views */
+    function box(x, y, w, h, label) {
+      var o = '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h +
+        '" fill="var(--surface-2)" stroke="currentColor" stroke-width="1.6"/>';
+      o += LT(x + w / 2, y + h + 14, label, 'var(--muted)', 10);
+      return o;
+    }
+    g += box(126, 36, 54, 42, 'front');
+    g += '<path d="M126 60 L162 60 L162 78" fill="none" stroke="var(--brass)" stroke-width="1.8"/>';
+    g += box(198, 36, 40, 42, 'side');
+    g += box(126, 108, 54, 36, 'plan');
+    g += '<path d="M126 130 L162 130 L162 144" fill="none" stroke="var(--brass)" stroke-width="1.8"/>';
+    g += LT(288, 118, 'each view is a', 'var(--muted)', 9.5);
+    g += LT(288, 132, 'shadow cast at', 'var(--muted)', 9.5);
+    g += LT(288, 146, 'right angles', 'var(--muted)', 9.5);
+    g += LT(W / 2, H - 6, 'three orthogonal projections determine the solid', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
   w.FIG = F;
   w.FIGH = { svg: svg, L: L, LT: LT, dot: dot, poly: poly, line: line, ticks: ticks, ang: ang, right: right, mid: mid, cent: cent, norm: norm, S: S };
 })(window);

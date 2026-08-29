@@ -2690,3 +2690,1455 @@ G10_GEO.push({
     'Write your target for Quarter III in one checkable sentence, and date it.'
   ]
 });
+
+/* ===================== QUARTER III (20 hours) ===================== */
+
+/* ============================== 18 ============================== */
+G10_GEO.push({
+  id: 'g10-18', stream: 'geo', grade: 10, quarter: 3, lessons: '33–34', hours: 2,
+  title: 'Perpendicular lines and planes in space',
+  subtitle: 'Two lines is enough — the test that turns an infinite condition into a finite check.',
+  uz: 'Geometry 10, §14', uzPage: 'pp. 147–158',
+  cam: 'Extension', camPage: 'Core & Extended, pp. 323–328', wb: 'Exercise 14.1',
+  objectives: [
+    'Define a line perpendicular to a plane.',
+    'State and apply the test for perpendicularity of a line and a plane.',
+    'Prove the two lemmas on parallel lines and perpendicular planes.',
+    'Construct the perpendicular from a point to a plane.'
+  ],
+  terms: [
+    ['Perpendicular to a plane', 'Tekislikka perpendikulyar', 'Перпендикуляр к плоскости'],
+    ['Test for perpendicularity', 'Perpendikulyarlik alomati', 'Признак перпендикулярности'],
+    ['Two intersecting lines', 'Kesishuvchi ikki chiziq', 'Две пересекающиеся прямые'],
+    ['Foot of the perpendicular', 'Perpendikulyar asosi', 'Основание перпендикуляра'],
+    ['Normal to a plane', 'Tekislik normali', 'Нормаль к плоскости'],
+    ['Unique perpendicular', 'Yagona perpendikulyar', 'Единственный перпендикуляр'],
+    ['Lemma', 'Lemma', 'Лемма'],
+    ['Construction', 'Yasash', 'Построение']
+  ],
+  timing: [[12, 'The definition'], [24, 'The test'], [22, 'Two lemmas'], [20, 'Construction and uniqueness'], [16, 'Practice'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The definition',
+      html: `<div class="keybox"><div class="klabel">Definition</div>
+      A line is <b>perpendicular to a plane</b> when it is perpendicular to <b>every</b> line lying in
+      that plane.</div>
+      <p>As a definition that is unusable — there are infinitely many lines to check. The value of the
+      next theorem is that it reduces “every” to “two”.</p>
+      <p>The line is also called a <b>normal</b> to the plane, and the point where it meets the plane is
+      the <b>foot</b> of the perpendicular.</p>`
+    },
+    {
+      h: 'The test',
+      html: `<div class="keybox"><div class="klabel">Test for a line perpendicular to a plane</div>
+      If a line is perpendicular to <b>two intersecting</b> lines of a plane, it is perpendicular to the
+      whole plane.</div>
+      {{fig:perpLinePlane:Two intersecting lines are enough. A third would be redundant; one would not be enough.}}
+      <div class="warn"><span class="wl">Intersecting, not parallel</span>
+      A line perpendicular to two <b>parallel</b> lines of a plane need not be perpendicular to the
+      plane: a pencil laid across two rails of a railway is perpendicular to both, and lies flat in the
+      plane. The two directions must be genuinely different.</div>
+      <p>In a cube, ${m('AA₁ ⊥ AB')} and ${m('AA₁ ⊥ AD')}, and ${m('AB')} and ${m('AD')} intersect at
+      ${m('A')}. So ${m('AA₁ ⊥ ABCD')}, and therefore ${m('AA₁ ⊥ AC')} and ${m('AA₁ ⊥ BD')} as well —
+      results that would otherwise each need their own proof.</p>`
+    },
+    {
+      h: 'Two lemmas',
+      html: `<p><b>Lemma 1.</b> If one of two parallel lines is perpendicular to a plane, so is the
+      other.</p>
+      <p><b>Lemma 2.</b> If two lines are perpendicular to the same plane, they are parallel.</p>
+      <p>Together these say: <b>all the normals of a plane are parallel to one another</b>, and any line
+      parallel to a normal is itself a normal. The direction perpendicular to a plane is unique.</p>
+      ${eq(m('a ⊥ α  and  b ⊥ α   ⇒   a ∥ b'), true)}
+      <div class="keybox"><div class="klabel">Compare with the plane case</div>
+      In the plane, two lines perpendicular to the same line are parallel — the same statement, one
+      dimension down. Lemma 2 is its space version, and it is proved the same way.</div>`
+    },
+    {
+      h: 'Construction and uniqueness',
+      html: `<p><b>Theorem.</b> Through any point there passes exactly one line perpendicular to a given
+      plane, and exactly one plane perpendicular to a given line.</p>
+      <p>The distance from a point to a plane is the length of that perpendicular segment — and by the
+      argument of the next lesson, it is the shortest of all segments from the point to the plane.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>In a cube ${m('ABCDA₁B₁C₁D₁')}</th><th>Perpendicular to</th></tr></thead>
+      <tbody>
+        <tr><td class="m">AA₁</td><td>${m('ABCD')} and ${m('A₁B₁C₁D₁')}</td></tr>
+        <tr><td class="m">AB</td><td>${m('ADD₁A₁')} and ${m('BCC₁B₁')}</td></tr>
+        <tr><td class="m">AD</td><td>${m('ABB₁A₁')} and ${m('DCC₁D₁')}</td></tr>
+      </tbody></table></div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'In a cube, prove ' + m('AA₁ ⊥ AC') + '.',
+      steps: [
+        [m('AA₁ ⊥ AB') + ' and ' + m('AA₁ ⊥ AD') + '.', 'Adjacent edges of square faces.'],
+        [m('AB') + ' and ' + m('AD') + ' intersect at ' + m('A') + ' and lie in ' + m('ABCD') + '.', ''],
+        ['By the test, ' + m('AA₁ ⊥ ABCD') + '.', ''],
+        [m('AC ⊂ ABCD') + '.', 'By the definition.']
+      ],
+      ans: m('AA₁ ⊥ AC')
+    },
+    {
+      q: 'A line is perpendicular to two parallel lines of a plane. Must it be perpendicular to the plane?',
+      steps: [
+        ['The test demands two <b>intersecting</b> lines.', ''],
+        ['A line inside the plane, crossing both, is perpendicular to both.', ''],
+        ['It is not perpendicular to the plane.', '']
+      ],
+      ans: 'No'
+    },
+    {
+      q: 'Two lines ' + m('a') + ' and ' + m('b') + ' are perpendicular to the plane ' + m('α') + '. What can be said?',
+      steps: [
+        ['Lemma 2 applies.', ''],
+        [m('a ∥ b'), ''],
+        ['They determine a plane, perpendicular to ' + m('α') + '.', '']
+      ],
+      ans: m('a ∥ b')
+    }
+  ],
+  modelNote: 'Stand a pencil on the desk and check it against two rulers laid across it.',
+  interactive: {
+    type: 'space3d',
+    title: 'A normal to a plane',
+    hint: 'Move the line and see when it becomes perpendicular.'
+  },
+  quiz: [
+    { q: 'A line ⊥ to a plane is ⊥ to:', a: ['one line of it', 'two lines of it', 'every line of it', 'no line of it'], c: 2, why: 'That is the definition.' },
+    { q: 'The test needs:', a: ['one line', 'two intersecting lines', 'two parallel lines', 'three lines'], c: 1, why: 'Two directions fix the plane.' },
+    { q: 'Two lines ⊥ to the same plane are:', a: ['perpendicular', 'parallel', 'skew', 'equal'], c: 1, why: 'Lemma 2.' },
+    { q: 'If ' + m('a ∥ b') + ' and ' + m('a ⊥ α') + ' then:', a: [m('b ∥ α'), m('b ⊥ α'), m('b ⊂ α'), 'nothing'], c: 1, why: 'Lemma 1.' },
+    { q: 'In a cube ' + m('AA₁') + ' is perpendicular to:', a: [m('ABB₁A₁'), m('ABCD'), m('ADD₁A₁'), 'all of them'], c: 1, why: 'It is a vertical edge.' }
+  ],
+  practice: {
+    easy: [
+      ['Define a line perpendicular to a plane', '⊥ to every line of the plane'],
+      ['State the test', '⊥ to two intersecting lines of the plane'],
+      ['Is ' + m('AA₁ ⊥ ABCD') + ' in a cube?', 'yes'],
+      ['Is ' + m('AA₁ ⊥ AC') + '?', 'yes'],
+      ['Two lines ⊥ to the same plane are', 'parallel'],
+      ['Is one line enough for the test?', 'no'],
+      ['Are two parallel lines enough?', 'no']
+    ],
+    med: [
+      ['Prove ' + m('AA₁ ⊥ BD') + ' in a cube', m('AA₁ ⊥ ABCD') + ' and ' + m('BD ⊂ ABCD')],
+      ['Which faces is ' + m('AB') + ' perpendicular to?', m('ADD₁A₁') + ' and ' + m('BCC₁B₁')],
+      ['If ' + m('a ⊥ α') + ' and ' + m('b ⊥ α') + ', what is the angle between ' + m('a') + ' and ' + m('b') + '?', m('0°') + ' — parallel'],
+      ['How many perpendiculars to a plane through a point?', m('1')],
+      ['How many planes ⊥ to a line through a point?', m('1')],
+      ['Give a counterexample to "two parallel lines suffice"', 'A line inside the plane crossing two rails'],
+      ['In a cube, is ' + m('AC ⊥ BD') + '?', 'yes — diagonals of a square']
+    ],
+    hard: [
+      ['Prove Lemma 1', 'Translate the perpendicularity along the parallel'],
+      ['Prove Lemma 2', 'Otherwise two planes through one point would be perpendicular to one line'],
+      ['In a cube, prove ' + m('BD ⊥ AA₁C₁C'), m('BD ⊥ AC') + ' and ' + m('BD ⊥ AA₁')],
+      ['In a cube, prove ' + m('AC₁ ⊥ BD'), m('BD ⊥ AA₁C₁C') + ' contains ' + m('AC₁')],
+      ['A regular pyramid: prove the axis is ⊥ to the base', 'It is ⊥ to two base diagonals'],
+      ['If ' + m('a ⊥ α') + ' and ' + m('α ∥ β') + ', is ' + m('a ⊥ β') + '?', 'yes'],
+      ['Can a line be perpendicular to two intersecting planes?', 'no — the normals would be parallel']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every proof must name the two intersecting lines used in the test.',
+  homework: [
+    'In cube ' + m('ABCDA₁B₁C₁D₁') + ', prove ' + m('DD₁ ⊥ AC') + '.',
+    'List every face of a cube that ' + m('BC') + ' is perpendicular to.',
+    'Prove that if two lines are perpendicular to the same plane they are parallel.',
+    'Give a counterexample showing that two parallel lines are not enough for the test.',
+    'In a cube, prove ' + m('BD ⊥ AA₁C₁C') + ' and deduce ' + m('BD ⊥ AC₁') + '.'
+  ]
+});
+
+/* ============================== 19 ============================== */
+G10_GEO.push({
+  id: 'g10-19', stream: 'geo', grade: 10, quarter: 3, lessons: '35–37', hours: 3,
+  title: 'The perpendicular, the oblique line and distance in space',
+  subtitle: 'Three lessons on the shortest segment — and the three theorems that compare obliques with it.',
+  uz: 'Geometry 10, §15', uzPage: 'pp. 159–176',
+  cam: 'Extension', camPage: 'Core & Extended, pp. 329–334', wb: 'Exercise 15.1',
+  objectives: [
+    'Distinguish the perpendicular, an oblique line and its projection.',
+    'Prove that the perpendicular is the shortest segment to a plane.',
+    'Compare obliques by their projections.',
+    'Compute distances from a point to a plane and between parallel planes.'
+  ],
+  terms: [
+    ['Perpendicular', 'Perpendikulyar', 'Перпендикуляр'],
+    ['Oblique line', 'Og‘ma', 'Наклонная'],
+    ['Projection of an oblique', 'Og‘ma proyeksiyasi', 'Проекция наклонной'],
+    ['Foot of the perpendicular', 'Perpendikulyar asosi', 'Основание перпендикуляра'],
+    ['Distance from a point to a plane', 'Nuqtadan tekislikkacha masofa', 'Расстояние от точки до плоскости'],
+    ['Distance between parallel planes', 'Parallel tekisliklar orasidagi masofa', 'Расстояние между плоскостями'],
+    ['Shortest segment', 'Eng qisqa kesma', 'Кратчайший отрезок'],
+    ['Equal obliques', 'Teng og‘malar', 'Равные наклонные'],
+    ['Angle with the plane', 'Tekislik bilan burchak', 'Угол с плоскостью']
+  ],
+  timing: [[16, 'Three objects, one picture'], [26, 'The shortest segment'], [26, 'Comparing obliques'], [30, 'Distances'], [30, 'Practice'], [12, 'Homework']],
+  sections: [
+    {
+      h: 'Three objects, one picture',
+      html: `<p>From a point ${m('A')} not in a plane ${m('α')}, drop the <b>perpendicular</b> ${m('AO')}.
+      Any other segment ${m('AB')} from ${m('A')} to the plane is an <b>oblique</b>, and ${m('OB')} is
+      its <b>projection</b>.</p>
+      {{fig:threePerp:The perpendicular, the oblique and the projection form a right triangle in a vertical plane.}}
+      <div class="keybox"><div class="klabel">The right triangle</div>
+      ${m('△AOB')} always has its right angle at ${m('O')}, because ${m('AO ⊥ α')} and ${m('OB ⊂ α')}.
+      So ${m('AB² = AO² + OB²')} — Pythagoras — and every theorem below is a consequence.</div>`
+    },
+    {
+      h: 'The shortest segment',
+      html: `<p><b>Theorem 1.</b> The perpendicular is shorter than any oblique from the same point.</p>
+      <p><i>Proof.</i> ${m('AB² = AO² + OB² > AO²')} whenever ${m('OB > 0')}. ∎</p>
+      <div class="keybox"><div class="klabel">Definition of distance</div>
+      The <b>distance from a point to a plane</b> is the length of the perpendicular. Theorem 1 is what
+      makes that definition sensible: it is genuinely the shortest.</div>
+      <p>The same argument, one dimension down, is why the distance from a point to a line in the plane
+      is measured along the perpendicular. Nothing new is being asserted — only extended.</p>`
+    },
+    {
+      h: 'Comparing obliques',
+      html: `<p><b>Theorem 2.</b> Equal obliques have equal projections, and equal projections give equal
+      obliques.</p>
+      <p><b>Theorem 3.</b> Of two obliques, the one with the longer projection is longer.</p>
+      ${eq(m('OB₁ > OB₂  ⇔  AB₁ > AB₂'), true)}
+      <p>Both follow immediately from ${m('AB² = AO² + OB²')}: with ${m('AO')} fixed, ${m('AB')} grows
+      exactly as ${m('OB')} does.</p>
+      <div class="keybox"><div class="klabel">A useful corollary</div>
+      All the obliques of a given length from ${m('A')} land on a <b>circle</b> centred at ${m('O')} —
+      because they all have the same projection length. That circle is how a cone meets a plane, and it
+      is the reason a regular pyramid's lateral edges are equal.</div>
+      <p>The <b>angle between the oblique and the plane</b> is ${m('∠ABO')}, the angle with its own
+      projection — and it is the smallest angle ${m('AB')} makes with any line of the plane.</p>`
+    },
+    {
+      h: 'Distances',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Distance</th><th>How it is measured</th></tr></thead>
+      <tbody>
+        <tr><td>point to plane</td><td>the perpendicular from the point</td></tr>
+        <tr><td>line parallel to a plane, to that plane</td><td>from any point of the line — it is constant</td></tr>
+        <tr><td>between parallel planes</td><td>from any point of one to the other</td></tr>
+        <tr><td>between skew lines</td><td>the common perpendicular (Quarter II)</td></tr>
+      </tbody></table></div>
+      <p><b>Example.</b> In a cube of edge ${m('a')}, the distance from ${m('A')} to the plane
+      ${m('A₁B₁C₁D₁')} is ${m('a')}; from ${m('A')} to the plane ${m('BDD₁B₁')} is half the diagonal
+      ${m('AC')}, that is ${m(f('a' + sr('2'), '2'))}.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'From a point ' + m('10') + ' cm above a plane, two obliques have projections ' + m('6') + ' and ' + m('8') + ' cm. Find their lengths.',
+      steps: [
+        [m('AB₁ = ' + sr('100 + 36') + ' = ' + sr('136') + ' ≈ 11.66'), ''],
+        [m('AB₂ = ' + sr('100 + 64') + ' = ' + sr('164') + ' ≈ 12.81'), ''],
+        ['The longer projection gives the longer oblique ✓', '']
+      ],
+      ans: m('≈ 11.7') + ' and ' + m('≈ 12.8') + ' cm'
+    },
+    {
+      q: 'An oblique of length ' + m('13') + ' makes ' + m('30°') + ' with the plane. Find the perpendicular and the projection.',
+      steps: [
+        ['The angle is ' + m('∠ABO') + '.', ''],
+        [m('AO = 13 sin 30° = 6.5'), ''],
+        [m('OB = 13 cos 30° ≈ 11.26'), '']
+      ],
+      ans: m('AO = 6.5') + ', ' + m('OB ≈ 11.3')
+    },
+    {
+      q: 'Cube of edge ' + m('6') + '. Find the distance from ' + m('A') + ' to the plane ' + m('BDD₁B₁') + '.',
+      steps: [
+        [m('AC ⊥ BD') + ' and ' + m('AC ⊥ BB₁') + '.', 'So ' + m('AC ⊥ BDD₁B₁') + '.'],
+        ['The foot is the centre of the base.', ''],
+        [m('AC = 6' + sr('2')) + ', half is ' + m('3' + sr('2')) + '.', '']
+      ],
+      ans: m('3' + sr('2')) + ' ≈ ' + m('4.24')
+    }
+  ],
+  modelNote: 'Hold a stick to the table and rotate it — the shadow lengthens exactly as the stick does.',
+  interactive: {
+    type: 'space3d',
+    title: 'Perpendicular and oblique',
+    hint: 'Move the foot and watch the oblique lengthen with its projection.'
+  },
+  quiz: [
+    { q: 'The distance from a point to a plane is measured along:', a: ['any segment', 'the perpendicular', 'the oblique', 'the projection'], c: 1, why: 'It is the shortest.' },
+    { q: m('AB² ') + ' equals:', a: [m('AO² − OB²'), m('AO² + OB²'), m('AO · OB'), m('AO + OB')], c: 1, why: 'The right angle is at ' + m('O') + '.' },
+    { q: 'Equal obliques have:', a: ['equal projections', 'unequal projections', 'no projection', 'equal angles only'], c: 0, why: 'Theorem 2.' },
+    { q: 'The longer projection belongs to:', a: ['the shorter oblique', 'the longer oblique', 'the perpendicular', 'neither'], c: 1, why: 'Theorem 3.' },
+    { q: 'The angle between an oblique and a plane is measured to:', a: ['any line of the plane', 'its projection', 'the normal', 'the edge'], c: 1, why: 'That is the smallest such angle.' }
+  ],
+  practice: {
+    easy: [
+      ['Perpendicular 3, projection 4: the oblique', m('5')],
+      ['Perpendicular 5, projection 12: the oblique', m('13')],
+      ['Oblique 10, perpendicular 6: the projection', m('8')],
+      ['Oblique 25, projection 24: the perpendicular', m('7')],
+      ['Distance from a point to a plane is measured along', 'the perpendicular'],
+      ['Equal projections give', 'equal obliques'],
+      ['Distance from ' + m('A') + ' to ' + m('A₁B₁C₁D₁') + ' in a cube of edge 6', m('6')]
+    ],
+    med: [
+      ['Point 10 above; projections 6 and 8: the obliques', m(sr('136')) + ' and ' + m(sr('164'))],
+      ['Oblique 13 at ' + m('30°') + ': perpendicular and projection', m('6.5') + ', ' + m('≈ 11.3')],
+      ['Oblique 20 at ' + m('60°') + ': perpendicular', m('10' + sr('3')) + ' ≈ ' + m('17.3')],
+      ['Cube edge 6: distance from ' + m('A') + ' to ' + m('BDD₁B₁'), m('3' + sr('2'))],
+      ['Perpendicular 8, oblique 17: the projection', m('15')],
+      ['Two obliques 15 and 17 with perpendicular 9: the projections', m('12') + ' and ' + m(sr('208'))],
+      ['Angle of an oblique with perpendicular 6 and projection 8', m('≈ 36.9°')]
+    ],
+    hard: [
+      ['Cube edge ' + m('a') + ': distance from ' + m('A') + ' to the plane ' + m('A₁BD'), m(f('a' + sr('3'), '3'))],
+      ['Cube edge 6: distance from ' + m('B') + ' to the plane ' + m('ACC₁A₁'), m('3' + sr('2'))],
+      ['A point is 12 from a plane; an oblique makes ' + m('40°') + '. Find it', m('≈ 18.7')],
+      ['Three equal obliques from ' + m('A') + ': what is the foot of the perpendicular?', 'The circumcentre of the three feet'],
+      ['A regular pyramid: prove the lateral edges are equal', 'Equal projections — the base circumradius'],
+      ['Distance between the parallel planes ' + m('ABCD') + ' and ' + m('A₁B₁C₁D₁') + ' in a cube of edge 9', m('9')],
+      ['Prove that the angle with the projection is the smallest angle with any line of the plane', 'Compare cosines in the right triangles']
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Draw the right triangle ' + m('AOB') + ' separately for every question.',
+  homework: [
+    'From a point ' + m('8') + ' cm above a plane, two obliques have projections ' + m('6') + ' and ' + m('15') + ' cm. Find both lengths.',
+    'An oblique of ' + m('26') + ' cm makes ' + m('30°') + ' with a plane. Find the perpendicular and the projection.',
+    'Cube of edge ' + m('8') + ': find the distance from ' + m('A') + ' to the plane ' + m('BDD₁B₁') + '.',
+    'A perpendicular is ' + m('9') + ' and an oblique is ' + m('41') + '. Find the projection and the angle with the plane.',
+    'Prove that the perpendicular is shorter than every oblique from the same point.',
+    'Explain why the lateral edges of a regular pyramid are equal.'
+  ]
+});
+
+/* ============================== 20 ============================== */
+G10_GEO.push({
+  id: 'g10-20', stream: 'geo', grade: 10, quarter: 3, lessons: '38–39', hours: 2,
+  title: 'The theorem of the three perpendiculars',
+  subtitle: 'One theorem that turns every “is this angle right?” question in space into a question about a shadow.',
+  uz: 'Geometry 10, §16', uzPage: 'pp. 177–188',
+  cam: 'Extension', camPage: 'Core & Extended, pp. 335–338', wb: 'Exercise 16.1',
+  objectives: [
+    'State the theorem of the three perpendiculars and its converse.',
+    'Apply it to prove perpendicularity in a solid.',
+    'Use it to find the distance from a point to a line in space.',
+    'Recognise the three perpendiculars in a given figure.'
+  ],
+  terms: [
+    ['Theorem of the three perpendiculars', 'Uch perpendikulyar haqidagi teorema', 'Теорема о трёх перпендикулярах'],
+    ['Oblique line', 'Og‘ma', 'Наклонная'],
+    ['Projection', 'Proyeksiya', 'Проекция'],
+    ['Converse theorem', 'Teskari teorema', 'Обратная теорема'],
+    ['Line in the plane', 'Tekislikdagi chiziq', 'Прямая в плоскости'],
+    ['Foot of the perpendicular', 'Perpendikulyar asosi', 'Основание перпендикуляра'],
+    ['Distance to a line', 'Chiziqqacha masofa', 'Расстояние до прямой'],
+    ['Necessary and sufficient', 'Zarur va yetarli', 'Необходимо и достаточно']
+  ],
+  timing: [[14, 'The statement'], [22, 'The proof'], [24, 'Applications'], [22, 'Distance to a line'], [16, 'Practice'], [8, 'Homework']],
+  sections: [
+    {
+      h: 'The statement',
+      html: `<div class="keybox"><div class="klabel">Theorem of the three perpendiculars</div>
+      Let ${m('AO ⊥ α')} with foot ${m('O')}, let ${m('AB')} be an oblique with projection ${m('OB')},
+      and let ${m('c')} be a line in ${m('α')} passing through ${m('B')}. Then
+      ${eq(m('c ⊥ AB   ⇔   c ⊥ OB'), true)}</div>
+      {{fig:threePerp:AO is the perpendicular, AB the oblique, OB its projection. A line of the plane is ⊥ to one exactly when it is ⊥ to the other.}}
+      <p>The three perpendiculars of the name are ${m('AO ⊥ α')}, ${m('c ⊥ OB')} and ${m('c ⊥ AB')} —
+      any two give the third.</p>`
+    },
+    {
+      h: 'The proof',
+      html: `<p><i>Forward direction.</i> Suppose ${m('c ⊥ OB')}. Since ${m('AO ⊥ α')} and
+      ${m('c ⊂ α')}, also ${m('c ⊥ AO')}. So ${m('c')} is perpendicular to two intersecting lines
+      ${m('OB')} and ${m('AO')} of the plane ${m('AOB')}. By the test of Lesson 33–34,
+      ${m('c ⊥ AOB')}, and therefore ${m('c ⊥ AB')}, since ${m('AB ⊂ AOB')}. ∎</p>
+      <p><i>Converse.</i> The same argument with ${m('AB')} and ${m('AO')} in place of ${m('OB')} and
+      ${m('AO')}. ∎</p>
+      <div class="keybox"><div class="klabel">The pattern to remember</div>
+      Prove perpendicularity to a <b>plane</b>, then read off perpendicularity to any line in it. Almost
+      every space perpendicularity proof in this course has that shape.</div>`
+    },
+    {
+      h: 'Applications',
+      html: `<p><b>In a cube.</b> Is ${m('AC₁ ⊥ BD')}? Project ${m('AC₁')} onto the base: its projection
+      is ${m('AC')}. Since ${m('BD ⊥ AC')} (diagonals of a square) and ${m('BD ⊂ ABCD')}, the theorem
+      gives ${m('BD ⊥ AC₁')} at once — no coordinates, no vectors, two lines of work.</p>
+      <p><b>In a pyramid.</b> A regular square pyramid ${m('SABCD')} with centre ${m('O')}. Is
+      ${m('SM ⊥ AB')}, where ${m('M')} is the midpoint of ${m('AB')}? The projection of ${m('SM')} is
+      ${m('OM')}, which is perpendicular to ${m('AB')} by symmetry. So yes — and ${m('SM')} is the slant
+      height.</p>
+      <div class="warn"><span class="wl">The line must lie in the plane and pass through the foot</span>
+      ${m('c')} must be in ${m('α')} and meet ${m('OB')} at ${m('B')}. A line of the plane not through
+      ${m('B')} is not covered by the theorem — translate it first.</div>`
+    },
+    {
+      h: 'The distance from a point to a line in space',
+      html: `<p>To find the distance from ${m('A')} to a line ${m('c')} lying in a plane ${m('α')},
+      when ${m('AO ⊥ α')}:</p>
+      <ol>
+        <li>Drop ${m('OB ⊥ c')} inside the plane — an ordinary plane construction.</li>
+        <li>By the theorem, ${m('AB ⊥ c')} too.</li>
+        <li>So ${m('AB')} is the required distance, and ${m('AB = ' + sr('AO² + OB²'))}.</li>
+      </ol>
+      <p><b>Example.</b> ${m('A')} is ${m('12')} above the plane; the foot ${m('O')} is ${m('5')} from the
+      line ${m('c')}. Then the distance from ${m('A')} to ${m('c')} is ${m(sr('144 + 25') + ' = 13')}.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'In a cube, prove ' + m('AC₁ ⊥ BD') + '.',
+      steps: [
+        [m('CC₁ ⊥ ABCD') + ', so ' + m('AC') + ' is the projection of ' + m('AC₁') + '.', ''],
+        [m('BD ⊥ AC'), 'Diagonals of a square.'],
+        [m('BD ⊂ ABCD') + ' and passes through the foot.', ''],
+        ['By the theorem of the three perpendiculars.', '']
+      ],
+      ans: m('AC₁ ⊥ BD')
+    },
+    {
+      q: m('A') + ' is ' + m('12') + ' cm above a plane, and its foot ' + m('O') + ' is ' + m('5') + ' cm from a line ' + m('c') + ' in the plane. Find the distance from ' + m('A') + ' to ' + m('c') + '.',
+      steps: [
+        ['Drop ' + m('OB ⊥ c') + ' in the plane; ' + m('OB = 5') + '.', ''],
+        ['By the theorem, ' + m('AB ⊥ c') + '.', ''],
+        [m('AB = ' + sr('144 + 25') + ' = 13'), '']
+      ],
+      ans: m('13') + ' cm'
+    },
+    {
+      q: 'A regular square pyramid has base edge ' + m('10') + ' and height ' + m('12') + '. Find the slant height.',
+      steps: [
+        [m('OM = 5') + ', the apothem of the base.', ''],
+        [m('SO ⊥ ABCD') + ', so ' + m('OM') + ' is the projection of ' + m('SM') + '.', ''],
+        [m('OM ⊥ AB') + ', so ' + m('SM ⊥ AB') + '.', 'It is the slant height.'],
+        [m('SM = ' + sr('144 + 25') + ' = 13'), '']
+      ],
+      ans: m('13')
+    }
+  ],
+  modelNote: 'Point at the three perpendiculars on a real box before any calculation.',
+  interactive: {
+    type: 'space3d',
+    title: 'The three perpendiculars',
+    hint: 'Move the foot and watch which perpendicularities survive.'
+  },
+  quiz: [
+    { q: 'The theorem relates:', a: ['two obliques', 'an oblique and its projection', 'two planes', 'two normals'], c: 1, why: 'Through a line of the plane.' },
+    { q: 'The line ' + m('c') + ' must:', a: ['be anywhere', 'lie in the plane through the foot of the oblique', 'be perpendicular to the plane', 'be parallel to ' + m('AO')], c: 1, why: 'Both conditions matter.' },
+    { q: 'In a cube ' + m('AC₁ ⊥ BD') + ' because:', a: [m('AC ⊥ BD'), m('AA₁ ⊥ BD'), 'both', 'neither'], c: 2, why: 'The projection is ' + m('AC') + '.' },
+    { q: 'If ' + m('AO = 12') + ' and ' + m('OB = 5') + ' then ' + m('AB') + ':', a: [m('7'), m('13'), m('17'), m('60')], c: 1, why: 'Pythagoras.' },
+    { q: 'The theorem lets you replace a 3-D question with:', a: ['a 2-D question in the plane', 'a calculation', 'a guess', 'nothing'], c: 0, why: 'Perpendicularity to the projection.' }
+  ],
+  practice: {
+    easy: [
+      ['State the theorem of the three perpendiculars', m('c ⊥ AB ⇔ c ⊥ OB')],
+      [m('AO = 3, OB = 4') + '; find ' + m('AB'), m('5')],
+      [m('AO = 12, OB = 5') + '; find ' + m('AB'), m('13')],
+      [m('AB = 25, OB = 24') + '; find ' + m('AO'), m('7')],
+      ['Is ' + m('AC₁ ⊥ BD') + ' in a cube?', 'yes'],
+      ['The projection of ' + m('AC₁') + ' on the base', m('AC')],
+      ['Where must ' + m('c') + ' lie?', 'in the plane, through ' + m('B')]
+    ],
+    med: [
+      ['Prove ' + m('AC₁ ⊥ BD') + ' in a cube', 'Three perpendiculars, with projection ' + m('AC')],
+      [m('A') + ' is 12 above; ' + m('O') + ' is 5 from ' + m('c') + '. Distance to ' + m('c'), m('13')],
+      ['Regular pyramid, base 10, height 12: slant height', m('13')],
+      ['Regular pyramid, base 16, height 6: slant height', m('10')],
+      [m('A') + ' is 8 above; distance to a line 15 from ' + m('O'), m('17')],
+      ['In a cube, is ' + m('BD₁ ⊥ AC') + '?', 'yes'],
+      ['Prove ' + m('SM ⊥ AB') + ' in a regular pyramid', m('OM ⊥ AB') + ' and the theorem']
+    ],
+    hard: [
+      ['Cube edge ' + m('a') + ': prove ' + m('AC₁ ⊥ BDA₁'), 'Three perpendiculars twice'],
+      ['Regular pyramid, base 12, lateral edge 10: the slant height', m('8')],
+      ['Same pyramid: the height', m(sr('82')) + ' ≈ ' + m('9.06')],
+      ['A point 15 above a plane; two lines in the plane at distances 8 and 20 from ' + m('O') + '. Distances from ' + m('A'), m('17') + ' and ' + m('25')],
+      ['Prove the converse of the theorem', 'Same argument with ' + m('AB') + ' in place of ' + m('OB')],
+      ['In a cube, find the distance from ' + m('A') + ' to the line ' + m('B₁C₁') + ' for edge 6', m('6' + sr('2'))],
+      ['Why must ' + m('c') + ' pass through ' + m('B') + '?', 'Otherwise it is not in the plane ' + m('AOB')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Name the perpendicular, the oblique and the projection in every solution.',
+  homework: [
+    'State the theorem of the three perpendiculars and prove the forward direction.',
+    'In a cube, prove ' + m('BD₁ ⊥ AC') + '.',
+    m('A') + ' is ' + m('9') + ' cm above a plane and its foot is ' + m('12') + ' cm from a line ' + m('c') + '. Find the distance from ' + m('A') + ' to ' + m('c') + '.',
+    'A regular square pyramid has base edge ' + m('14') + ' and height ' + m('24') + '. Find the slant height and the lateral edge.',
+    'Explain in three sentences why the theorem reduces a space question to a plane one.'
+  ]
+});
+
+/* ============================== 21 ============================== */
+G10_GEO.push({
+  id: 'g10-21', stream: 'geo', grade: 10, quarter: 3, lessons: '40–42', hours: 3,
+  title: 'Perpendicularity of planes',
+  subtitle: 'The dihedral angle, its linear angle, and the test that makes two planes perpendicular.',
+  uz: 'Geometry 10, §17', uzPage: 'pp. 189–206',
+  cam: 'Extension', camPage: 'Core & Extended, pp. 339–344', wb: 'Exercise 17.1',
+  objectives: [
+    'Define a dihedral angle and construct its linear angle.',
+    'State and apply the test for perpendicularity of two planes.',
+    'Compute a dihedral angle in a cube and in a pyramid.',
+    'Use the properties of perpendicular planes in proofs.'
+  ],
+  terms: [
+    ['Dihedral angle', 'Ikki yoqli burchak', 'Двугранный угол'],
+    ['Edge of a dihedral angle', 'Ikki yoqli burchak qirrasi', 'Ребро двугранного угла'],
+    ['Face (half-plane)', 'Yoq', 'Грань'],
+    ['Linear angle', 'Chiziqli burchak', 'Линейный угол'],
+    ['Perpendicular planes', 'Perpendikulyar tekisliklar', 'Перпендикулярные плоскости'],
+    ['Test for perpendicular planes', 'Tekisliklar perpendikulyarligi alomati', 'Признак перпендикулярности плоскостей'],
+    ['Right dihedral angle', 'To‘g‘ri ikki yoqli burchak', 'Прямой двугранный угол'],
+    ['Bisector plane', 'Bissektor tekislik', 'Биссекторная плоскость']
+  ],
+  timing: [[16, 'The dihedral angle'], [26, 'The linear angle'], [26, 'The test'], [30, 'Computing dihedral angles'], [30, 'Practice'], [12, 'Homework']],
+  sections: [
+    {
+      h: 'The dihedral angle',
+      html: `<p>Two half-planes with a common edge divide space; the figure they form is a <b>dihedral
+      angle</b>. Its <b>edge</b> is the common line; its <b>faces</b> are the two half-planes.</p>
+      {{fig:dihedralAngle:The edge, the two faces, and the linear angle measured between arms perpendicular to the edge.}}
+      <div class="keybox"><div class="klabel">The linear angle</div>
+      Take any point of the edge and draw, in each face, the ray perpendicular to the edge. The angle
+      between those two rays is the <b>linear angle</b>, and it is what the size of the dihedral angle
+      means.</div>
+      <div class="warn"><span class="wl">Both arms perpendicular to the edge</span>
+      Any other pair of rays gives a different, wrong angle. The linear angle does not depend on which
+      point of the edge is chosen — but it does depend on both arms being perpendicular to the edge.</div>`
+    },
+    {
+      h: 'The test for perpendicular planes',
+      html: `<div class="keybox"><div class="klabel">Definition and test</div>
+      Two planes are <b>perpendicular</b> when their dihedral angle is right.
+      <b>Test:</b> if a plane contains a line perpendicular to another plane, the two planes are
+      perpendicular.</div>
+      ${eq(m('ℓ ⊂ β  and  ℓ ⊥ α   ⇒   β ⊥ α'), true)}
+      <p>In a cube, ${m('AA₁ ⊥ ABCD')} and ${m('AA₁ ⊂ ABB₁A₁')}, so ${m('ABB₁A₁ ⊥ ABCD')}. Every vertical
+      face of a cube is perpendicular to the base, and one line proves it.</p>
+      <p>Two useful properties follow:</p>
+      <ul>
+        <li>If ${m('α ⊥ β')} and a line of ${m('α')} is perpendicular to their common edge, it is
+        perpendicular to ${m('β')}.</li>
+        <li>If two intersecting planes are each perpendicular to a third, their line of intersection is
+        perpendicular to that third plane.</li>
+      </ul>`
+    },
+    {
+      h: 'Computing dihedral angles',
+      html: `<p>The whole difficulty is the construction of the linear angle. Three reliable routes:</p>
+      <ol>
+        <li><b>Drop a perpendicular</b> from a point of one face to the other plane, and join its foot to
+        a point on the edge.</li>
+        <li><b>Use the three perpendiculars theorem</b> to prove the arm you draw really is
+        perpendicular to the edge.</li>
+        <li><b>Choose the point on the edge conveniently</b> — usually a midpoint, so symmetry gives the
+        arms for free.</li>
+      </ol>
+      <p><b>Example.</b> Cube of edge ${m('a')}: the dihedral angle along ${m('AB')} between the base
+      ${m('ABCD')} and the diagonal plane ${m('ABC₁D₁')}. The arms are ${m('AD')} in the base and
+      ${m('AD₁')} in the other face, both perpendicular to ${m('AB')}. The angle is
+      ${m('∠DAD₁ = 45°')}, since ${m('ADD₁')} is an isosceles right triangle.</p>`
+    },
+    {
+      h: 'In a pyramid',
+      html: `<p>For a regular square pyramid with base edge ${m('2b')} and height ${m('h')}, two dihedral
+      angles are usually wanted:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Angle</th><th>Arms</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>lateral face to base</td><td>${m('OM')} and ${m('SM')}</td><td class="m">tan θ = ${f('h', 'b')}</td></tr>
+        <tr><td>lateral edge to base</td><td>${m('OA')} and ${m('SA')}</td><td class="m">tan θ = ${f('h', 'b' + sr('2'))}</td></tr>
+      </tbody></table></div>
+      <p>Base ${m('10')}, height ${m('12')}: the face angle has ${m('tan θ = ' + f('12', '5'))}, so
+      ${m('θ ≈ 67.4°')}; the edge angle has ${m('tan θ = ' + f('12', '5' + sr('2')))}, so
+      ${m('θ ≈ 59.5°')}. The face is steeper than the edge — as the picture shows.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Cube of edge ' + m('a') + '. Find the dihedral angle along ' + m('AB') + ' between ' + m('ABCD') + ' and ' + m('ABC₁D₁') + '.',
+      steps: [
+        [m('AD ⊥ AB') + ' in the base.', ''],
+        [m('AD₁ ⊥ AB') + ' in the other face.', m('AB ⊥ ADD₁A₁') + '.'],
+        ['The linear angle is ' + m('∠DAD₁') + '.', ''],
+        [m('AD = DD₁ = a') + ', so it is ' + m('45°') + '.', '']
+      ],
+      ans: m('45°')
+    },
+    {
+      q: 'A regular square pyramid has base ' + m('10') + ' and height ' + m('12') + '. Find the dihedral angle between a lateral face and the base.',
+      steps: [
+        [m('OM = 5') + ', the base apothem.', ''],
+        [m('SO = 12') + '.', ''],
+        [m('tan θ = ' + f('12', '5') + ' = 2.4'), ''],
+        [m('θ ≈ 67.4°'), '']
+      ],
+      ans: m('≈ 67.4°')
+    },
+    {
+      q: 'Prove that ' + m('ABB₁A₁ ⊥ ABCD') + ' in a cube.',
+      steps: [
+        [m('AA₁ ⊥ ABCD'), 'By the test of Lesson 33–34.'],
+        [m('AA₁ ⊂ ABB₁A₁'), ''],
+        ['By the test for perpendicular planes.', '']
+      ],
+      ans: m('ABB₁A₁ ⊥ ABCD')
+    }
+  ],
+  modelNote: 'Open a book on the desk: the spine is the edge, the pages the faces, and two pencils give the linear angle.',
+  interactive: {
+    type: 'space3d',
+    title: 'A dihedral angle',
+    hint: 'Move the point along the edge — the linear angle does not change.'
+  },
+  quiz: [
+    { q: 'A dihedral angle is measured by:', a: ['any angle between the faces', 'its linear angle', 'the edge', 'the normal'], c: 1, why: 'Both arms perpendicular to the edge.' },
+    { q: 'The test for perpendicular planes: one contains:', a: ['a parallel line', 'a line perpendicular to the other', 'two points', 'the edge'], c: 1, why: 'One line is enough.' },
+    { q: 'In a cube, ' + m('ABB₁A₁') + ' and ' + m('ABCD') + ' are:', a: ['parallel', 'perpendicular', 'at ' + m('45°'), 'skew'], c: 1, why: m('AA₁ ⊥ ABCD') + '.' },
+    { q: 'The dihedral angle along ' + m('AB') + ' between ' + m('ABCD') + ' and ' + m('ABC₁D₁') + ' is:', a: [m('30°'), m('45°'), m('60°'), m('90°')], c: 1, why: 'An isosceles right triangle.' },
+    { q: 'Pyramid base 10, height 12: face-to-base angle:', a: [m('50.2°'), m('59.5°'), m('67.4°'), m('45°')], c: 2, why: m('tan θ = 2.4') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['What is the edge of a dihedral angle?', 'the common line of the two faces'],
+      ['How is a dihedral angle measured?', 'by its linear angle'],
+      ['Both arms must be ⊥ to', 'the edge'],
+      ['State the test for perpendicular planes', 'one contains a line ⊥ to the other'],
+      ['Is ' + m('ABB₁A₁ ⊥ ABCD') + ' in a cube?', 'yes'],
+      ['Is ' + m('ABCD ⊥ A₁B₁C₁D₁') + '?', 'no — they are parallel'],
+      ['Dihedral angle along ' + m('AB') + ' to ' + m('ABC₁D₁'), m('45°')]
+    ],
+    med: [
+      ['Pyramid base 10, height 12: face-to-base angle', m('≈ 67.4°')],
+      ['Same: edge-to-base angle', m('≈ 59.5°')],
+      ['Pyramid base 8, height 3: face-to-base angle', m('≈ 36.9°')],
+      ['Cube: dihedral angle along ' + m('AB') + ' between ' + m('ABCD') + ' and ' + m('ABB₁A₁'), m('90°')],
+      ['Cube: dihedral angle between ' + m('ABCD') + ' and ' + m('ACC₁A₁'), m('90°')],
+      ['Prove ' + m('BCC₁B₁ ⊥ ABCD'), m('BB₁ ⊥ ABCD') + ' and lies in it'],
+      ['Regular tetrahedron: angle between a face and the base', m('≈ 70.5°')]
+    ],
+    hard: [
+      ['Cube edge ' + m('a') + ': dihedral angle along ' + m('AC') + ' between ' + m('ABCD') + ' and ' + m('ACD₁'), m('≈ 54.7°')],
+      ['Pyramid base 12, lateral edge 10: dihedral angle of a face with the base', m('≈ 43.3°')],
+      ['Prove: if two planes are each ⊥ to a third, their line of intersection is ⊥ to it', 'It is ⊥ to both edges'],
+      ['A regular tetrahedron of edge ' + m('a') + ': the dihedral angle between two faces', m('arccos ' + f('1', '3')) + ' ≈ ' + m('70.5°')],
+      ['Cube: the angle between the planes ' + m('ABC₁D₁') + ' and ' + m('A₁B₁CD'), m('90°')],
+      ['A prism whose base is a rhombus with a ' + m('60°') + ' angle: the dihedral angles along the base edges', m('90°') + ' for a right prism'],
+      ['Prove that a plane ⊥ to the edge of a dihedral angle cuts it in its linear angle', 'Both cuts are ⊥ to the edge']
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Every dihedral answer must name the two arms and say why each is perpendicular to the edge.',
+  homework: [
+    'Define a dihedral angle and explain how its linear angle is constructed.',
+    'Prove that ' + m('DCC₁D₁ ⊥ ABCD') + ' in a cube.',
+    'Cube of edge ' + m('a') + ': find the dihedral angle along ' + m('AB') + ' between ' + m('ABCD') + ' and ' + m('ABC₁D₁') + '.',
+    'A regular square pyramid has base edge ' + m('16') + ' and height ' + m('6') + '. Find the dihedral angle between a lateral face and the base.',
+    'The same pyramid: find the angle between a lateral edge and the base.',
+    'Prove that if two intersecting planes are each perpendicular to a third, their line of intersection is perpendicular to it.'
+  ]
+});
+
+/* ============================== 22 ============================== */
+G10_GEO.push({
+  id: 'g10-22', stream: 'geo', grade: 10, quarter: 3, lessons: '43–44', hours: 2,
+  title: 'Control work 3, and work on the mistakes',
+  subtitle: 'Perpendicularity in space in one paper — where naming the two intersecting lines is worth as much as the answer.',
+  uz: 'Geometry 10, Nazorat ishi 3', uzPage: 'pp. 207–210',
+  cam: 'IGCSE review', camPage: 'Core & Extended, pp. 345–346', wb: 'Control paper G3',
+  objectives: [
+    'Apply the perpendicularity theorems under time.',
+    'Quote a test by name and verify its conditions.',
+    'Classify each lost mark and rewrite the solution.',
+    'Consolidate the three perpendiculars theorem.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Test (criterion)', 'Alomat', 'Признак'],
+    ['Three perpendiculars', 'Uch perpendikulyar', 'Три перпендикуляра'],
+    ['Dihedral angle', 'Ikki yoqli burchak', 'Двугранный угол'],
+    ['Linear angle', 'Chiziqli burchak', 'Линейный угол'],
+    ['Justification', 'Asoslash', 'Обоснование'],
+    ['Careless error', 'E’tiborsizlik xatosi', 'Ошибка по невнимательности'],
+    ['Correction', 'Tuzatish', 'Исправление']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [23, 'Rewrite'], [12, 'The test drill']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Prove ${m('DD₁ ⊥ AC')} in a cube, quoting the test</td><td class="m">4</td><td>L33–34</td></tr>
+        <tr><td>2</td><td>A point is ${m('9')} above a plane; two obliques have projections ${m('12')} and ${m('40')}. Find both</td><td class="m">4</td><td>L35–37</td></tr>
+        <tr><td>3</td><td>An oblique of ${m('20')} makes ${m('30°')} with the plane. Find the perpendicular and the projection</td><td class="m">4</td><td>L35–37</td></tr>
+        <tr><td>4</td><td>Prove ${m('AC₁ ⊥ BD')} in a cube by the three perpendiculars</td><td class="m">5</td><td>L38–39</td></tr>
+        <tr><td>5</td><td>A regular pyramid, base ${m('10')}, height ${m('12')}: find the slant height and the face-to-base dihedral angle</td><td class="m">5</td><td>L38–42</td></tr>
+        <tr><td>6</td><td>Cube of edge ${m('6')}: find the distance from ${m('A')} to the plane ${m('BDD₁B₁')}</td><td class="m">3</td><td>L35–37</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Three marks for naming</div>
+      Q1 gives one mark for naming the two intersecting lines, Q4 one for identifying the projection,
+      Q5 one for saying why the arm is perpendicular to the edge. Three of twenty-five.</div>`
+    },
+    {
+      h: 'The three errors',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Error</th><th>Looks like</th><th>Kind</th></tr></thead>
+      <tbody>
+        <tr><td>parallel lines used in the test</td><td>“${m('AA₁ ⊥ AB')} and ${m('AA₁ ⊥ D₁C₁')}, so ${m('AA₁ ⊥ ABCD')}”</td><td>knowledge</td></tr>
+        <tr><td>wrong projection</td><td>the projection of ${m('AC₁')} given as ${m('AB')}</td><td>method</td></tr>
+        <tr><td>arm not ⊥ to the edge</td><td>a dihedral angle measured between any two rays</td><td>method</td></tr>
+        <tr><td>slant height and lateral edge confused</td><td>${m('OM')} used where ${m('OA')} was needed</td><td>careless</td></tr>
+      </tbody></table></div>
+      {{fig:threePerp:Questions 4 and 5 in one picture.}}`
+    },
+    {
+      h: 'The test drill',
+      html: `<p>Eight statements on the board. For each, the class names the <b>test or theorem</b> that
+      settles it, in three seconds:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Tool</th></tr></thead>
+      <tbody>
+        <tr><td class="m">AA₁ ⊥ ABCD</td><td>test for line ⊥ plane</td></tr>
+        <tr><td class="m">AC₁ ⊥ BD</td><td>three perpendiculars</td></tr>
+        <tr><td class="m">ABB₁A₁ ⊥ ABCD</td><td>test for perpendicular planes</td></tr>
+        <tr><td>${m('SM ⊥ AB')} in a pyramid</td><td>three perpendiculars</td></tr>
+        <tr><td>the shortest segment to a plane</td><td>the perpendicular</td></tr>
+      </tbody></table></div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q4: prove ' + m('AC₁ ⊥ BD') + ' in a cube.',
+      steps: [
+        [m('CC₁ ⊥ ABCD'), 'So ' + m('AC') + ' is the projection of ' + m('AC₁') + '.'],
+        [m('BD ⊥ AC'), 'Diagonals of a square.'],
+        [m('BD ⊂ ABCD') + ' through the foot ' + m('C') + '.', ''],
+        ['Three perpendiculars.', '']
+      ],
+      ans: m('AC₁ ⊥ BD')
+    },
+    {
+      q: 'Model answer, Q5: pyramid base ' + m('10') + ', height ' + m('12') + '.',
+      steps: [
+        [m('OM = 5'), 'Half the base edge.'],
+        [m('SM = ' + sr('144 + 25') + ' = 13'), 'The slant height.'],
+        [m('OM ⊥ AB') + ', and ' + m('SM ⊥ AB') + ' by the theorem.', 'The linear angle is ' + m('∠SMO') + '.'],
+        [m('tan θ = ' + f('12', '5') + ' ⇒ θ ≈ 67.4°'), '']
+      ],
+      ans: m('SM = 13') + '; ' + m('θ ≈ 67.4°')
+    },
+    {
+      q: 'A learner used ' + m('AA₁ ⊥ AB') + ' and ' + m('AA₁ ⊥ D₁C₁') + ' to conclude ' + m('AA₁ ⊥ ABCD') + '. Name the mistake.',
+      steps: [
+        [m('D₁C₁') + ' does not lie in ' + m('ABCD') + '.', ''],
+        ['And it is parallel to ' + m('AB') + ', not intersecting.', 'Two failures at once.'],
+        ['Correct: use ' + m('AB') + ' and ' + m('AD') + '.', '']
+      ],
+      ans: 'The two lines must lie in the plane and intersect'
+    }
+  ],
+  modelNote: 'Run the test drill before the rewrite, holding a real box.',
+  interactive: {
+    type: 'quiz',
+    title: 'Name the tool',
+    hint: 'Test, theorem, or definition?',
+    items: [
+      { q: 'To prove ' + m('AA₁ ⊥ ABCD') + ' use:', a: ['three perpendiculars', 'the test for line ⊥ plane', 'the definition', 'Pythagoras'], c: 1, why: 'Two intersecting lines.' },
+      { q: 'To prove ' + m('AC₁ ⊥ BD') + ' use:', a: ['three perpendiculars', 'the test for planes', 'the definition', 'measurement'], c: 0, why: 'The projection is ' + m('AC') + '.' },
+      { q: 'Perpendicular 9, projection 12: the oblique is:', a: [m('15'), m('21'), m('3'), m('108')], c: 0, why: 'Pythagoras.' },
+      { q: 'Oblique 20 at ' + m('30°') + ': the perpendicular is:', a: [m('10'), m('10' + sr('3')), m('20'), m('40')], c: 0, why: m('20 sin 30°') + '.' },
+      { q: 'Pyramid base 10, height 12: the slant height is:', a: [m('12'), m('13'), m('15'), m('5')], c: 1, why: m(sr('144 + 25')) + '.' },
+      { q: 'Cube edge 6: distance from ' + m('A') + ' to ' + m('BDD₁B₁') + ':', a: [m('6'), m('3' + sr('2')), m('6' + sr('2')), m('3')], c: 1, why: 'Half the base diagonal.' }
+    ]
+  },
+  quiz: [
+    { q: 'The test for a line ⊥ a plane needs:', a: ['one line', 'two intersecting lines of the plane', 'two parallel lines', 'three points'], c: 1, why: 'Two directions.' },
+    { q: 'The three perpendiculars theorem relates:', a: ['two planes', 'an oblique and its projection', 'two obliques', 'two normals'], c: 1, why: 'Through a line of the plane.' },
+    { q: 'A dihedral angle’s arms must be ⊥ to:', a: ['each other', 'the edge', 'the base', 'the normal'], c: 1, why: 'That defines the linear angle.' },
+    { q: 'The shortest segment from a point to a plane is:', a: ['any oblique', 'the perpendicular', 'the projection', 'the diagonal'], c: 1, why: 'By Pythagoras.' }
+  ],
+  practice: {
+    easy: [
+      ['Prove ' + m('DD₁ ⊥ AC'), m('DD₁ ⊥ ABCD') + ' and ' + m('AC ⊂ ABCD')],
+      ['Perpendicular 9, projection 12: the oblique', m('15')],
+      ['Perpendicular 9, projection 40: the oblique', m('41')],
+      ['Oblique 20 at ' + m('30°') + ': the perpendicular', m('10')],
+      ['Same: the projection', m('10' + sr('3'))],
+      ['Pyramid base 10, height 12: slant height', m('13')],
+      ['Cube edge 6: distance from ' + m('A') + ' to ' + m('BDD₁B₁'), m('3' + sr('2'))]
+    ],
+    med: [
+      ['Prove ' + m('AC₁ ⊥ BD') + ' by the three perpendiculars', 'Projection ' + m('AC') + ', and ' + m('BD ⊥ AC')],
+      ['Pyramid base 10, height 12: face-to-base angle', m('≈ 67.4°')],
+      ['Pyramid base 10, height 12: lateral edge', m(sr('194')) + ' ≈ ' + m('13.9')],
+      ['Cube edge 6: distance from ' + m('A') + ' to ' + m('A₁BD'), m('2' + sr('3'))],
+      ['Oblique 25, projection 24: the perpendicular', m('7')],
+      ['Prove ' + m('BCC₁B₁ ⊥ ABCD'), m('BB₁ ⊥ ABCD') + ' lies in it'],
+      ['Cube: angle of ' + m('AC₁') + ' with the base', m('≈ 35.26°')]
+    ],
+    hard: [
+      ['Cube edge ' + m('a') + ': distance from ' + m('A') + ' to the plane ' + m('A₁BD'), m(f('a' + sr('3'), '3'))],
+      ['Pyramid base 12, lateral edge 10: height and both dihedral angles', m(sr('82'))+', ' + m('≈ 56.4°') + ' and ' + m('≈ 46.9°')],
+      ['Regular tetrahedron edge ' + m('a') + ': the dihedral angle between faces', m('≈ 70.5°')],
+      ['Cube edge 8: distance from ' + m('B') + ' to the line ' + m('A₁D₁'), m('8' + sr('2'))],
+      ['A point 15 above a plane, two obliques at ' + m('30°') + ' and ' + m('45°') + ': their lengths', m('30') + ' and ' + m('15' + sr('2'))],
+      ['Prove the linear angle is independent of the point chosen on the edge', 'Respectively parallel arms'],
+      ['Cube: prove ' + m('AC₁ ⊥ A₁BD'), 'Two of its lines are ⊥ to ' + m('AC₁')]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Task 1 is the rewrite. Name the test on every proof.',
+  homework: [
+    'Rewrite in full every question that lost a mark, naming the test used.',
+    'Five problems from the section your knowledge column was heaviest in.',
+    'A regular square pyramid has base edge ' + m('16') + ' and height ' + m('15') + '. Find the slant height, the lateral edge and both dihedral angles.',
+    'Cube of edge ' + m('10') + ': find the distance from ' + m('A') + ' to the plane ' + m('A₁BD') + '.'
+  ]
+});
+
+/* ============================== 23 ============================== */
+G10_GEO.push({
+  id: 'g10-23', stream: 'geo', grade: 10, quarter: 3, lessons: '45–47', hours: 3,
+  title: 'Orthogonal projection and its technical applications',
+  subtitle: 'The drawing convention every engineer in the world uses — three views, and the object they determine.',
+  uz: 'Geometry 10, §18', uzPage: 'pp. 211–228',
+  cam: 'IGCSE E14.1', camPage: 'Core & Extended, pp. 210–216', wb: 'Exercise 18.1',
+  objectives: [
+    'Distinguish orthogonal from general parallel projection.',
+    'Draw the plan, front and side elevations of a solid.',
+    'Reconstruct a solid from its three views.',
+    'Use the area formula for the orthogonal projection of a plane figure.'
+  ],
+  terms: [
+    ['Orthogonal projection', 'Ortogonal proyeksiya', 'Ортогональная проекция'],
+    ['Plan (top view)', 'Yuqoridan ko‘rinish', 'Вид сверху'],
+    ['Front elevation', 'Old ko‘rinish', 'Вид спереди'],
+    ['Side elevation', 'Yon ko‘rinish', 'Вид сбоку'],
+    ['Technical drawing', 'Chizmachilik', 'Черчение'],
+    ['Hidden line', 'Ko‘rinmas chiziq', 'Невидимая линия'],
+    ['Projection of an area', 'Yuza proyeksiyasi', 'Проекция площади'],
+    ['Scale', 'Masshtab', 'Масштаб'],
+    ['Isometric drawing', 'Izometrik chizma', 'Изометрия']
+  ],
+  timing: [[14, 'Orthogonal versus general'], [26, 'The three views'], [30, 'Reconstructing a solid'], [26, 'The area formula'], [30, 'Practice'], [14, 'Homework']],
+  sections: [
+    {
+      h: 'Orthogonal versus general',
+      html: `<div class="keybox"><div class="klabel">Definition</div>
+      <b>Orthogonal projection</b> is parallel projection in which the direction of projection is
+      <b>perpendicular</b> to the plane of projection. Every point drops straight down onto the plane.</div>
+      <p>It is the special case that engineers use, because it preserves one thing a general parallel
+      projection does not: <b>lengths parallel to the plane of projection are unchanged</b>. A drawing in
+      orthogonal projection can therefore be measured — in that direction.</p>
+      <p>The projection of a point is the foot of the perpendicular; the projection of a segment is the
+      segment between the feet; the projection of an oblique is what Lesson 35–37 called its
+      projection.</p>`
+    },
+    {
+      h: 'The three views',
+      html: `{{fig:orthoProjection:The plan from above, the front elevation from the front, the side elevation from the side.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>View</th><th>Looking</th><th>Shows</th></tr></thead>
+      <tbody>
+        <tr><td>plan</td><td>from above</td><td>length and width</td></tr>
+        <tr><td>front elevation</td><td>from the front</td><td>length and height</td></tr>
+        <tr><td>side elevation</td><td>from the side</td><td>width and height</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The conventions</div>
+      Views are aligned: the plan sits directly below the front elevation, and the side elevation
+      directly beside it, so that matching dimensions line up. Hidden edges are drawn dashed. Every
+      view is drawn to the same scale.</div>`
+    },
+    {
+      h: 'Reconstructing a solid',
+      html: `<p>Three views normally determine the solid — but not always. Two different solids can share
+      all three views if the ambiguity is hidden inside.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Plan</th><th>Front</th><th>Side</th><th>Solid</th></tr></thead>
+      <tbody>
+        <tr><td>circle</td><td>rectangle</td><td>rectangle</td><td>cylinder, upright</td></tr>
+        <tr><td>circle</td><td>triangle</td><td>triangle</td><td>cone</td></tr>
+        <tr><td>circle</td><td>circle</td><td>circle</td><td>sphere</td></tr>
+        <tr><td>square</td><td>square</td><td>square</td><td>cube</td></tr>
+        <tr><td>square</td><td>triangle</td><td>triangle</td><td>square-based pyramid</td></tr>
+      </tbody></table></div>
+      <p>Reading a set of views is the everyday skill of a workshop; drawing them is the everyday skill
+      of a design office. Both are the same theorem applied twice.</p>`
+    },
+    {
+      h: 'The area of a projection',
+      html: `<div class="keybox"><div class="klabel">Theorem</div>
+      If a plane figure of area ${m('S')} lies in a plane making a dihedral angle ${m('φ')} with the
+      plane of projection, its orthogonal projection has area
+      ${eq(m("S′ = S · cos φ"), true)}</div>
+      <p>Because lengths along the edge are unchanged and lengths perpendicular to it are multiplied by
+      ${m('cos φ')}, the area is scaled once.</p>
+      <p><b>Example.</b> A square of side ${m('10')} lies in a plane at ${m('60°')} to the horizontal.
+      Its shadow on the horizontal has area ${m('100 cos 60° = 50')}.</p>
+      <div class="warn"><span class="wl">The angle is the dihedral angle</span>
+      Not the angle of a line, and not the angle to the normal. If the figure's plane is at ${m('φ')} to
+      the projection plane, the factor is ${m('cos φ')} — and ${m('φ = 90°')} collapses the figure to a
+      segment, as it should.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A solid has a circular plan and rectangular front and side elevations. Name it.',
+      steps: [
+        ['Circular from above.', ''],
+        ['Rectangular from the front and side.', ''],
+        ['Constant circular cross-section.', '']
+      ],
+      ans: 'An upright cylinder'
+    },
+    {
+      q: 'A triangle of area ' + m('48') + ' cm² lies in a plane at ' + m('30°') + ' to the horizontal. Find the area of its plan.',
+      steps: [
+        [m("S′ = S cos φ"), ''],
+        [m('= 48 cos 30°'), ''],
+        [m('= 48 × 0.866 ≈ 41.6'), '']
+      ],
+      ans: m('24' + sr('3')) + ' ≈ ' + m('41.6') + ' cm²'
+    },
+    {
+      q: 'Cube of edge ' + m('6') + '. Find the area of the orthogonal projection of the section ' + m('ABC₁D₁') + ' onto the base.',
+      steps: [
+        ['The section is a rectangle ' + m('6 × 6' + sr('2')) + ', area ' + m('36' + sr('2')) + '.', ''],
+        ['It makes ' + m('45°') + ' with the base.', 'From Lesson 40–42.'],
+        [m('36' + sr('2') + ' × cos 45° = 36'), 'The base square itself.']
+      ],
+      ans: m('36') + ' — the whole base'
+    }
+  ],
+  modelNote: 'Shine a torch straight down on a tilted card and measure the shadow.',
+  interactive: {
+    type: 'transform',
+    title: 'A projection',
+    hint: 'Tilt the figure and watch its shadow shrink by ' + m('cos φ') + '.'
+  },
+  quiz: [
+    { q: 'Orthogonal projection has the direction:', a: ['at any angle', 'perpendicular to the plane', 'along the plane', 'at ' + m('45°')], c: 1, why: 'That is the definition.' },
+    { q: 'The plan of a solid is the view from:', a: ['the front', 'the side', 'above', 'below'], c: 2, why: 'Looking down.' },
+    { q: 'Circle, rectangle, rectangle is:', a: ['a cone', 'a cylinder', 'a sphere', 'a cube'], c: 1, why: 'Constant circular section.' },
+    { q: 'A figure of area ' + m('S') + ' at ' + m('φ') + ' projects to:', a: [m('S sin φ'), m('S cos φ'), m('S tan φ'), m('S')], c: 1, why: 'One direction is scaled.' },
+    { q: 'A square of side 10 at ' + m('60°') + ' projects to area:', a: [m('50'), m('86.6'), m('100'), m('25')], c: 0, why: m('100 cos 60°') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['The plan is the view from', 'above'],
+      ['The front elevation shows', 'length and height'],
+      ['Hidden edges are drawn', 'dashed'],
+      ['Circle, circle, circle is', 'a sphere'],
+      ['Square, square, square is', 'a cube'],
+      ['Circle, triangle, triangle is', 'a cone'],
+      [m("S′") + ' for ' + m('S = 20, φ = 60°'), m('10')]
+    ],
+    med: [
+      ['Circle, rectangle, rectangle is', 'an upright cylinder'],
+      ['Square, triangle, triangle is', 'a square pyramid'],
+      ['Triangle of area 48 at ' + m('30°') + ': its plan', m('24' + sr('3'))],
+      ['Square of side 10 at ' + m('45°') + ': its plan area', m('50' + sr('2')) + ' ≈ ' + m('70.7')],
+      ['A figure projects to half its area: the angle', m('60°')],
+      ['A figure projects to nothing: the angle', m('90°')],
+      ['Draw the three views of a cuboid ' + m('4 × 3 × 2'), 'three rectangles: ' + m('4×3, 4×2, 3×2')]
+    ],
+    hard: [
+      ['Cube edge 6: projection of the section ' + m('ABC₁D₁') + ' on the base', m('36')],
+      ['Cube edge ' + m('a') + ': projection of the hexagonal midpoint section on the base', m(f('3', '4') + 'a²')],
+      ['A circle of radius 5 at ' + m('60°') + ': its plan', 'an ellipse of area ' + m('12.5π')],
+      ['A regular hexagon of side 4 at ' + m('45°') + ': its plan area', m('12' + sr('3') + ' × ' + f(sr('2'), '2')) + ' ≈ ' + m('29.4')],
+      ['Two different solids with the same three views: give an example', 'A cube, and a cube with an internal cavity'],
+      ['Prove ' + m("S′ = S cos φ") + ' for a triangle with a side on the edge', 'The height is scaled by ' + m('cos φ')],
+      ['A roof face of ' + m('60') + ' m² at ' + m('35°') + ': its plan area', m('≈ 49.1') + ' m²']
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Draw the three views aligned, to one scale, with hidden edges dashed.',
+  homework: [
+    'Draw the plan, front and side elevations of a cuboid ' + m('5 × 3 × 2') + '.',
+    'Draw the three views of a square-based pyramid and of an upright cylinder.',
+    'Name the solid with plan a circle, front a triangle and side a triangle.',
+    'A rectangle of area ' + m('72') + ' cm² lies at ' + m('40°') + ' to the horizontal. Find the area of its plan.',
+    'Cube of edge ' + m('8') + ': find the area of the projection of the section ' + m('ABC₁D₁') + ' on the base.',
+    'Explain in three sentences why an orthogonal projection can be measured but a general parallel projection cannot.'
+  ]
+});
+
+/* ============================== 24 ============================== */
+G10_GEO.push({
+  id: 'g10-24', stream: 'geo', grade: 10, quarter: 3, lessons: '48–49', hours: 2,
+  title: 'Bearings and angles of elevation in three dimensions',
+  subtitle: 'Cambridge insert: navigation and surveying, where the plan view and the vertical triangle are solved separately.',
+  uz: 'Geometry 10, §18 (extension)', uzPage: 'pp. 229–234',
+  cam: 'IGCSE E14.2 · E6.6', camPage: 'Core & Extended, pp. 217–222, 305–312', wb: 'IGCSE Exercise 14.2',
+  objectives: [
+    'Measure and use a three-figure bearing.',
+    'Find the angle of elevation and depression in a 3-D setting.',
+    'Solve a navigation problem by working in the plan first.',
+    'Combine the plan triangle with the vertical triangle.'
+  ],
+  terms: [
+    ['Bearing', 'Azimut', 'Азимут'],
+    ['Three-figure bearing', 'Uch xonali azimut', 'Трёхзначный азимут'],
+    ['Angle of elevation', 'Ko‘tarilish burchagi', 'Угол возвышения'],
+    ['Angle of depression', 'Pasayish burchagi', 'Угол понижения'],
+    ['Plan view', 'Yuqoridan ko‘rinish', 'Вид сверху'],
+    ['Due north', 'Shimolga', 'На север'],
+    ['Back bearing', 'Teskari azimut', 'Обратный азимут'],
+    ['Line of sight', 'Ko‘rish chizig‘i', 'Линия визирования'],
+    ['Surveying', 'Geodeziya', 'Геодезия']
+  ],
+  timing: [[12, 'Bearings'], [22, 'Elevation and depression'], [26, 'Working in the plan first'], [22, 'Combined problems'], [20, 'Practice'], [8, 'Homework']],
+  sections: [
+    {
+      h: 'Bearings',
+      html: `<div class="keybox"><div class="klabel">The convention</div>
+      A <b>bearing</b> is measured <b>from north</b>, <b>clockwise</b>, and written with <b>three
+      figures</b>: ${m('045°')}, ${m('120°')}, ${m('300°')}. Due east is ${m('090°')}, south
+      ${m('180°')}, west ${m('270°')}.</div>
+      {{fig:bearings:North at the top, clockwise, always three figures.}}
+      <p>The <b>back bearing</b> — the bearing of ${m('A')} from ${m('B')} when the bearing of ${m('B')}
+      from ${m('A')} is ${m('θ')} — is ${m('θ + 180°')}, reduced by ${m('360°')} if it exceeds it.</p>
+      <div class="warn"><span class="wl">Three figures, always</span>
+      ${m('45°')} is written ${m('045°')}. It is not decoration: on a chart a missing leading zero has
+      caused real navigational error.</div>`
+    },
+    {
+      h: 'Elevation and depression',
+      html: `<p>The <b>angle of elevation</b> of a point is the angle its line of sight makes with the
+      horizontal, measured upwards; the <b>angle of depression</b> is the same measured downwards.</p>
+      ${eq('angle of depression from ' + m('A') + ' to ' + m('B') + ' = angle of elevation from ' + m('B') + ' to ' + m('A'), true)}
+      <p>They are alternate angles between two horizontals — which is why a question may give either
+      and expect the other.</p>`
+    },
+    {
+      h: 'Working in the plan first',
+      html: `<div class="keybox"><div class="klabel">The method for every 3-D navigation problem</div>
+      <b>1</b> Draw the <b>plan</b> — a flat map — and solve it with the sine or cosine rule to find the
+      horizontal distance. <b>2</b> Draw the <b>vertical triangle</b> containing that horizontal distance
+      and the height. <b>3</b> Solve it with ordinary right-angle trigonometry.</div>
+      <p><b>Example.</b> From ${m('A')}, a tower is on a bearing of ${m('070°')} at ${m('300')} m; from
+      ${m('B')}, ${m('400')} m due east of ${m('A')}, its bearing is ${m('340°')}. The angle of elevation
+      of the top from ${m('A')} is ${m('9°')}. Find its height.</p>
+      <p>The plan gives the horizontal distance ${m('AT = 300')} m directly, so the vertical triangle
+      gives ${m('h = 300 tan 9° ≈ 47.5')} m. The second bearing is a check.</p>`
+    },
+    {
+      h: 'Combined problems',
+      html: `<p>A full surveying problem chains three steps:</p>
+      <ol>
+        <li>bearings → a plan triangle → the cosine or sine rule → the horizontal distance;</li>
+        <li>horizontal distance + angle of elevation → the height;</li>
+        <li>height + a second horizontal distance → a second angle.</li>
+      </ol>
+      <p><b>Example.</b> A mast stands at ${m('C')}. From ${m('A')} its elevation is ${m('12°')}; from
+      ${m('B')}, ${m('200')} m from ${m('A')} on a bearing making ${m('50°')} at ${m('C')} with
+      ${m('AC')}, its elevation is ${m('18°')}. With ${m('h')} the height,
+      ${m('AC = h cot 12°')} and ${m('BC = h cot 18°')}; the cosine rule in the plan then gives one
+      equation in ${m('h')} alone.</p>
+      <div class="warn"><span class="wl">Never mix the plan and the vertical triangle</span>
+      Bearings live in the plan; elevations live in the vertical. Solve one, carry the single number
+      across, and solve the other. Trying to do both at once is where every mark is lost.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'The bearing of ' + m('B') + ' from ' + m('A') + ' is ' + m('062°') + '. Find the bearing of ' + m('A') + ' from ' + m('B') + '.',
+      steps: [
+        [m('62 + 180 = 242'), ''],
+        ['Less than ' + m('360°') + ', so no reduction.', '']
+      ],
+      ans: m('242°')
+    },
+    {
+      q: 'A tower is ' + m('300') + ' m away horizontally; its top has elevation ' + m('9°') + '. Find its height.',
+      steps: [
+        [m('tan 9° = ' + f('h', '300')), ''],
+        [m('h = 300 × 0.1584'), ''],
+        [m('≈ 47.5') + ' m.', '']
+      ],
+      ans: m('≈ 47.5') + ' m'
+    },
+    {
+      q: 'From a cliff ' + m('80') + ' m high, a boat has an angle of depression of ' + m('23°') + '. Find its distance from the foot.',
+      steps: [
+        ['The angle of elevation from the boat is also ' + m('23°') + '.', ''],
+        [m('tan 23° = ' + f('80', 'd')), ''],
+        [m('d = ' + f('80', '0.4245') + ' ≈ 188.4') + ' m.', '']
+      ],
+      ans: m('≈ 188') + ' m'
+    }
+  ],
+  modelNote: 'Draw the plan on one half of the board and the vertical triangle on the other.',
+  interactive: {
+    type: 'solveTriangle',
+    title: 'The plan triangle',
+    hint: 'Solve the plan for the horizontal distance first.'
+  },
+  quiz: [
+    { q: 'A bearing is measured from:', a: ['east, anticlockwise', 'north, clockwise', 'north, anticlockwise', 'south, clockwise'], c: 1, why: 'The universal convention.' },
+    { q: 'Due west is:', a: [m('090°'), m('180°'), m('270°'), m('360°')], c: 2, why: 'Three quarters clockwise.' },
+    { q: 'The back bearing of ' + m('062°') + ' is:', a: [m('118°'), m('242°'), m('298°'), m('062°')], c: 1, why: 'Add ' + m('180°') + '.' },
+    { q: 'The angle of depression from ' + m('A') + ' to ' + m('B') + ' equals:', a: ['the elevation from ' + m('B') + ' to ' + m('A'), 'its complement', 'nothing', 'twice it'], c: 0, why: 'Alternate angles.' },
+    { q: 'In a 3-D navigation problem, solve first:', a: ['the vertical triangle', 'the plan', 'both at once', 'neither'], c: 1, why: 'It gives the horizontal distance.' }
+  ],
+  practice: {
+    easy: [
+      ['Bearing of due east', m('090°')],
+      ['Bearing of due south', m('180°')],
+      ['Bearing of due west', m('270°')],
+      ['Back bearing of ' + m('045°'), m('225°')],
+      ['Back bearing of ' + m('300°'), m('120°')],
+      ['Height with distance 100, elevation ' + m('30°'), m('≈ 57.7')],
+      ['Distance with height 50, depression ' + m('45°'), m('50')]
+    ],
+    med: [
+      ['Back bearing of ' + m('062°'), m('242°')],
+      ['Tower 300 m away, elevation ' + m('9°') + ': its height', m('≈ 47.5') + ' m'],
+      ['Cliff 80 m, depression ' + m('23°') + ': the distance', m('≈ 188') + ' m'],
+      ['A mast of 40 m at 120 m: the angle of elevation', m('≈ 18.4°')],
+      ['A plane at 3000 m, depression to the airport ' + m('12°') + ': the ground distance', m('≈ 14 100') + ' m'],
+      ['Bearing ' + m('130°') + ' for 5 km: how far east and how far south?', m('3.83') + ' km east, ' + m('3.21') + ' km south'],
+      ['From ' + m('A') + ', ' + m('B') + ' is at ' + m('070°') + ' 4 km; ' + m('C') + ' at ' + m('160°') + ' 3 km. Find ' + m('BC'), m('5') + ' km']
+    ],
+    hard: [
+      ['A tower: elevations ' + m('12°') + ' and ' + m('18°') + ' from two points 200 m apart in line with it. Find its height', m('≈ 79.9') + ' m'],
+      ['Same, with the two points and the tower forming a plan angle of ' + m('50°'), 'Cosine rule in ' + m('h cot 12°') + ' and ' + m('h cot 18°')],
+      ['A ship sails ' + m('070°') + ' for 8 km then ' + m('160°') + ' for 6 km. Find its distance and bearing from the start', m('10') + ' km on ' + m('≈ 107°')],
+      ['From a hill 120 m high, two boats have depressions ' + m('15°') + ' and ' + m('25°') + ' on the same bearing. Distance apart', m('≈ 190') + ' m'],
+      ['A mountain has elevation ' + m('8°') + ' from 20 km and ' + m('11°') + ' from a nearer point. Find the height and the second distance', m('≈ 2.81') + ' km; ' + m('≈ 14.5') + ' km'],
+      ['A pylon is at ' + m('040°') + ', 500 m from ' + m('A') + ' and at ' + m('310°') + ' from ' + m('B') + ' due east of ' + m('A') + '. Find ' + m('AB'), m('≈ 780') + ' m'],
+      ['Explain why the plan is solved first', 'It supplies the single horizontal distance the vertical triangle needs']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw the plan and the vertical triangle as two separate diagrams.',
+  homework: [
+    'Give the back bearings of ' + m('035°') + ', ' + m('145°') + ' and ' + m('290°') + '.',
+    'A tower is ' + m('450') + ' m away and its top has elevation ' + m('11°') + '. Find its height.',
+    'From a cliff ' + m('95') + ' m high a boat has depression ' + m('19°') + '. Find its distance from the foot.',
+    'A ship sails ' + m('060°') + ' for ' + m('12') + ' km, then ' + m('150°') + ' for ' + m('9') + ' km. Find its distance and bearing from the start.',
+    'A mast: from two points ' + m('150') + ' m apart in line with it the elevations are ' + m('14°') + ' and ' + m('22°') + '. Find its height.'
+  ]
+});
+
+/* ============================== 25 ============================== */
+G10_GEO.push({
+  id: 'g10-25', stream: 'geo', grade: 10, quarter: 3, lessons: '50', hours: 1,
+  title: 'Revision of the chapter',
+  subtitle: 'One hour to draw the whole of perpendicularity into a single map before the projects.',
+  uz: 'Geometry 10, Takrorlash', uzPage: 'pp. 235–238',
+  cam: 'IGCSE review', camPage: 'Core & Extended, pp. 345–346', wb: 'Revision sheet R3',
+  objectives: [
+    'Recall every test and theorem of the chapter without notes.',
+    'Choose the right tool for a given statement.',
+    'Build a concept map of perpendicularity in space.',
+    'Identify the two weakest areas for the project week.'
+  ],
+  terms: [
+    ['Revision', 'Takrorlash', 'Повторение'],
+    ['Concept map', 'Tushunchalar xaritasi', 'Карта понятий'],
+    ['Test (criterion)', 'Alomat', 'Признак'],
+    ['Theorem', 'Teorema', 'Теорема'],
+    ['Dihedral angle', 'Ikki yoqli burchak', 'Двугранный угол'],
+    ['Projection', 'Proyeksiya', 'Проекция'],
+    ['Distance', 'Masofa', 'Расстояние'],
+    ['Self-assessment', 'O‘z-o‘zini baholash', 'Самооценка']
+  ],
+  timing: [[12, 'The tools, listed'], [14, 'Choosing a tool'], [12, 'The concept map'], [7, 'Setting the project']],
+  sections: [
+    {
+      h: 'The tools, listed',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Tool</th><th>Statement</th><th>Lesson</th></tr></thead>
+      <tbody>
+        <tr><td>test for ${m('ℓ ⊥ α')}</td><td>⊥ to two intersecting lines of ${m('α')}</td><td>33–34</td></tr>
+        <tr><td>Lemma 1</td><td>${m('a ∥ b')}, ${m('a ⊥ α')} ⟹ ${m('b ⊥ α')}</td><td>33–34</td></tr>
+        <tr><td>Lemma 2</td><td>${m('a ⊥ α')}, ${m('b ⊥ α')} ⟹ ${m('a ∥ b')}</td><td>33–34</td></tr>
+        <tr><td>shortest segment</td><td>the perpendicular beats every oblique</td><td>35–37</td></tr>
+        <tr><td>comparing obliques</td><td>longer projection ⟺ longer oblique</td><td>35–37</td></tr>
+        <tr><td>three perpendiculars</td><td>${m('c ⊥ AB ⟺ c ⊥ OB')}</td><td>38–39</td></tr>
+        <tr><td>test for ${m('β ⊥ α')}</td><td>${m('β')} contains a line ⊥ to ${m('α')}</td><td>40–42</td></tr>
+        <tr><td>area of a projection</td><td>${m("S′ = S cos φ")}</td><td>45–47</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Choosing a tool',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>You are asked to…</th><th>Reach for…</th></tr></thead>
+      <tbody>
+        <tr><td>prove a line ⊥ a plane</td><td>the test — two intersecting lines</td></tr>
+        <tr><td>prove two lines ⊥ in space</td><td>three perpendiculars, or ⊥ to a plane</td></tr>
+        <tr><td>prove two planes ⊥</td><td>the test — one line ⊥ to the other plane</td></tr>
+        <tr><td>find a distance to a plane</td><td>the perpendicular, then Pythagoras</td></tr>
+        <tr><td>find a distance to a line in space</td><td>three perpendiculars, then Pythagoras</td></tr>
+        <tr><td>find a dihedral angle</td><td>construct the linear angle</td></tr>
+        <tr><td>find a shadow’s area</td><td>${m("S′ = S cos φ")}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The one habit</div>
+      Almost every proof goes: <b>establish perpendicularity to a plane</b>, then read off
+      perpendicularity to any line in it. If you are stuck, ask which plane you should be proving
+      something about.</div>`
+    },
+    {
+      h: 'The concept map, and the project',
+      html: `<p>Six boxes, links as sentences:</p>
+      <ul>
+        <li><b>test</b> → <b>${m('ℓ ⊥ α')}</b> — “two intersecting lines are enough”</li>
+        <li><b>${m('ℓ ⊥ α')}</b> → <b>every line of ${m('α')}</b> — “that is the definition”</li>
+        <li><b>perpendicular</b> → <b>distance</b> — “the shortest segment”</li>
+        <li><b>oblique + projection</b> → <b>three perpendiculars</b> — “one right angle gives the other”</li>
+        <li><b>line ⊥ plane</b> → <b>plane ⊥ plane</b> — “contain the normal”</li>
+        <li><b>orthogonal projection</b> → <b>${m("S′ = S cos φ")}</b> — “one direction is scaled”</li>
+      </ul>
+      {{fig:dihedralAngle:The picture behind two of the six boxes.}}
+      <div class="keybox"><div class="klabel">Setting the project</div>
+      Each pair chooses one of: a scale model of a building with its three orthogonal views; a surveying
+      exercise measuring a real height by two elevations; or a physical demonstration of the three
+      perpendiculars theorem. Two lessons to prepare, presented next lesson.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Which tool proves ' + m('AC₁ ⊥ BD') + ' in a cube?',
+      steps: [
+        ['Two lines in space, one oblique to the base.', ''],
+        ['Its projection is ' + m('AC') + '.', ''],
+        [m('BD ⊥ AC') + ' in the base.', '']
+      ],
+      ans: 'The theorem of the three perpendiculars'
+    },
+    {
+      q: 'Which tool finds the distance from ' + m('A') + ' to the plane ' + m('BDD₁B₁') + '?',
+      steps: [
+        ['A distance to a plane is a perpendicular.', ''],
+        [m('AC ⊥ BDD₁B₁') + ' by the test.', ''],
+        ['Half of ' + m('AC') + '.', '']
+      ],
+      ans: 'The test for a line ⊥ a plane, then Pythagoras'
+    },
+    {
+      q: 'Which tool finds the shadow of a tilted square?',
+      steps: [
+        ['An area under orthogonal projection.', ''],
+        [m("S′ = S cos φ") + '.', '']
+      ],
+      ans: 'The projection-area formula'
+    }
+  ],
+  modelNote: 'Ask for the tool, not the answer, on ten statements in ten minutes.',
+  interactive: {
+    type: 'quiz',
+    title: 'The chapter in ten questions',
+    hint: 'One from each lesson block.',
+    items: [
+      { q: 'The test for ' + m('ℓ ⊥ α') + ' needs:', a: ['one line', 'two intersecting lines', 'two parallel lines', 'three'], c: 1, why: 'Two directions.' },
+      { q: 'Two lines ⊥ to one plane are:', a: ['perpendicular', 'parallel', 'skew', 'equal'], c: 1, why: 'Lemma 2.' },
+      { q: 'The shortest segment to a plane is:', a: ['an oblique', 'the perpendicular', 'the projection', 'the diagonal'], c: 1, why: 'Pythagoras.' },
+      { q: 'Longer projection means:', a: ['shorter oblique', 'longer oblique', 'the same', 'nothing'], c: 1, why: m('AB² = AO² + OB²') + '.' },
+      { q: 'Three perpendiculars relates:', a: ['two planes', 'an oblique and its projection', 'two obliques', 'two normals'], c: 1, why: 'Through a line of the plane.' },
+      { q: 'To prove ' + m('β ⊥ α') + ':', a: ['find a parallel line', 'find in ' + m('β') + ' a line ⊥ ' + m('α'), 'measure', 'use the definition'], c: 1, why: 'The test.' },
+      { q: 'A dihedral angle’s arms must be ⊥ to:', a: ['each other', 'the edge', 'the base', 'the normal'], c: 1, why: 'The linear angle.' },
+      { q: 'Area under orthogonal projection:', a: [m('S sin φ'), m('S cos φ'), m('S tan φ'), m('S')], c: 1, why: 'One direction scaled.' },
+      { q: 'Perpendicular 9, projection 12: the oblique:', a: [m('15'), m('21'), m('3'), m('108')], c: 0, why: 'Pythagoras.' },
+      { q: 'Pyramid base 10, height 12: slant height:', a: [m('12'), m('13'), m('15'), m('5')], c: 1, why: m(sr('144 + 25')) + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'The commonest proof shape in this chapter is:', a: ['measure and compare', 'prove ⊥ to a plane, then read off', 'use coordinates', 'guess'], c: 1, why: 'Almost every proof.' },
+    { q: 'A distance in space is always:', a: ['any segment', 'a perpendicular', 'the longest segment', 'a projection'], c: 1, why: 'By definition.' },
+    { q: 'The linear angle of a dihedral angle is:', a: ['unique', 'independent of the point on the edge', 'both', 'neither'], c: 2, why: 'Respectively parallel arms.' },
+    { q: 'The project options are:', a: ['one', 'two', 'three', 'four'], c: 2, why: 'Model, survey, or demonstration.' }
+  ],
+  practice: {
+    easy: [
+      ['Tool for “prove ' + m('AA₁ ⊥ ABCD') + '”', 'the test for line ⊥ plane'],
+      ['Tool for “prove ' + m('AC₁ ⊥ BD') + '”', 'three perpendiculars'],
+      ['Tool for “prove ' + m('ABB₁A₁ ⊥ ABCD') + '”', 'the test for perpendicular planes'],
+      ['Tool for a shadow’s area', m("S′ = S cos φ")],
+      ['Perpendicular 3, projection 4: the oblique', m('5')],
+      ['Two lines ⊥ to one plane are', 'parallel'],
+      ['The arms of a linear angle are ⊥ to', 'the edge']
+    ],
+    med: [
+      ['Perpendicular 9, projection 40: the oblique', m('41')],
+      ['Pyramid base 10, height 12: the slant height', m('13')],
+      ['Same: the face-to-base dihedral angle', m('≈ 67.4°')],
+      ['Cube edge 6: distance from ' + m('A') + ' to ' + m('BDD₁B₁'), m('3' + sr('2'))],
+      ['Cube: the dihedral angle along ' + m('AB') + ' to ' + m('ABC₁D₁'), m('45°')],
+      ['A square of side 8 at ' + m('60°') + ': its shadow area', m('32')],
+      ['Oblique 26 at ' + m('30°') + ': the perpendicular', m('13')]
+    ],
+    hard: [
+      ['Cube edge ' + m('a') + ': distance from ' + m('A') + ' to ' + m('A₁BD'), m(f('a' + sr('3'), '3'))],
+      ['Regular tetrahedron edge ' + m('a') + ': the dihedral angle between faces', m('≈ 70.5°')],
+      ['Cube edge 6: shadow of the hexagonal midpoint section on the base', m('27')],
+      ['A mast: elevations ' + m('14°') + ' and ' + m('22°') + ' from points 150 m apart in line. Its height', m('≈ 88.4') + ' m'],
+      ['Pyramid base 12, lateral edge 10: both dihedral angles', m('≈ 56.4°') + ' and ' + m('≈ 46.9°')],
+      ['Prove ' + m('AC₁ ⊥ A₁BD') + ' in a cube', 'Two of its lines are ⊥ to ' + m('AC₁')],
+      ['Explain why the linear angle does not depend on the point chosen', 'Respectively parallel arms give equal angles']
+    ]
+  },
+  hwTitle: 'Homework — 3 tasks',
+  hwNote: 'The project sheet is due at the presentation lesson.',
+  homework: [
+    'Write the eight tools of the chapter from memory, with their statements.',
+    'Finish the concept map with all six links written as sentences.',
+    'Prepare the project: a scale model with three views, a surveying measurement, or a demonstration of the three perpendiculars.'
+  ]
+});
+
+/* ============================== 26 ============================== */
+G10_GEO.push({
+  id: 'g10-26', stream: 'geo', grade: 10, quarter: 3, lessons: '51–52', hours: 2,
+  title: 'Presentation of project work',
+  subtitle: 'Two lessons in which the class does the teaching — and every mathematical claim is defended.',
+  uz: 'Geometry 10, Loyiha ishi', uzPage: 'pp. 239–242',
+  cam: 'IGCSE E14.x', camPage: 'Core & Extended, pp. 210–222', wb: 'Project sheet P3',
+  objectives: [
+    'Present a piece of mathematical work clearly to an audience.',
+    'Defend each measurement and each calculation under questioning.',
+    'Assess another pair’s work against stated criteria.',
+    'Identify one thing to do differently next time.'
+  ],
+  terms: [
+    ['Project work', 'Loyiha ishi', 'Проектная работа'],
+    ['Presentation', 'Taqdimot', 'Презентация'],
+    ['Criteria', 'Mezonlar', 'Критерии'],
+    ['Peer assessment', 'O‘zaro baholash', 'Взаимооценка'],
+    ['Justification', 'Asoslash', 'Обоснование'],
+    ['Measurement', 'O‘lchash', 'Измерение'],
+    ['Scale model', 'Masshtabli model', 'Масштабная модель'],
+    ['Survey', 'O‘lchov ishi', 'Съёмка'],
+    ['Conclusion', 'Xulosa', 'Заключение']
+  ],
+  timing: [[6, 'The criteria'], [50, 'Presentations, five minutes each'], [16, 'Peer assessment'], [12, 'Whole-class review'], [6, 'The single lesson learned']],
+  sections: [
+    {
+      h: 'The criteria',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Criterion</th><th>Marks</th><th>What earns them</th></tr></thead>
+      <tbody>
+        <tr><td>the mathematics</td><td class="m">6</td><td>correct theorems, correctly applied and named</td></tr>
+        <tr><td>the measurement or construction</td><td class="m">4</td><td>done carefully, with the method described</td></tr>
+        <tr><td>the presentation</td><td class="m">4</td><td>clear, audible, in five minutes, with a diagram</td></tr>
+        <tr><td>answering questions</td><td class="m">4</td><td>defending a claim rather than repeating it</td></tr>
+        <tr><td>accuracy discussed</td><td class="m">2</td><td>one honest sentence about the error</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The rule for questions</div>
+      Every pair is asked at least two questions: one from the class and one from the teacher. At least
+      one must be “<i>why is that angle a right angle?</i>” or “<i>how do you know that is the
+      projection?</i>”</div>`
+    },
+    {
+      h: 'The three project types',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Type</th><th>What is produced</th><th>The mathematics to defend</th></tr></thead>
+      <tbody>
+        <tr><td>scale model</td><td>a card building and its three orthogonal views</td><td>which lengths are preserved, and why</td></tr>
+        <tr><td>survey</td><td>a measured height from two angles of elevation</td><td>the plan triangle and the vertical triangle</td></tr>
+        <tr><td>demonstration</td><td>a physical model of the three perpendiculars</td><td>the statement, both directions</td></tr>
+      </tbody></table></div>
+      {{fig:orthoProjection:What a scale-model project has to produce, and get right.}}`
+    },
+    {
+      h: 'Peer assessment, and the review',
+      html: `<p>Each learner scores two other pairs on the five criteria and writes <b>one sentence</b> of
+      specific praise and <b>one</b> specific suggestion. “Good work” scores nothing; “your plan view was
+      aligned correctly under the elevation, which made it easy to read” scores full marks for the
+      assessor.</p>
+      <div class="keybox"><div class="klabel">The whole-class review</div>
+      Three questions, answered by the class together:<br>
+      Which theorem was used most often across all the projects?<br>
+      Which measurement was hardest to make accurately, and why?<br>
+      Which presentation made its mathematics clearest, and what did it do?</div>
+      <p>Every learner then writes one line in the exercise book: <i>“Next time I will …”</i>. Dated.
+      It is read again at the end of Quarter IV.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A pair measured a tower as ' + m('47.5') + ' m from ' + m('300') + ' m and ' + m('9°') + '. What should the accuracy sentence say?',
+      steps: [
+        ['The angle was measured to about ' + m('±0.5°') + '.', ''],
+        [m('300 tan 8.5° ≈ 44.8') + ', ' + m('300 tan 9.5° ≈ 50.2') + '.', ''],
+        ['So the height is between about 45 and 50 m.', '']
+      ],
+      ans: '“The height is 45–50 m; the angle dominates the error”'
+    },
+    {
+      q: 'A pair claims their front elevation shows the true length of a sloping edge. Is that right?',
+      steps: [
+        ['Orthogonal projection preserves lengths <b>parallel</b> to the plane.', ''],
+        ['A sloping edge is not parallel to the front plane.', ''],
+        ['It appears foreshortened.', '']
+      ],
+      ans: 'No — only lengths parallel to the plane of projection are preserved'
+    },
+    {
+      q: 'A demonstration shows ' + m('c ⊥ OB') + ' and claims ' + m('c ⊥ AB') + '. What must be checked first?',
+      steps: [
+        ['That ' + m('AO') + ' really is perpendicular to the plane.', ''],
+        ['That ' + m('c') + ' lies in the plane and passes through ' + m('B') + '.', ''],
+        ['Only then does the theorem apply.', '']
+      ],
+      ans: 'The two hypotheses of the theorem'
+    }
+  ],
+  modelNote: 'Time each presentation strictly at five minutes; the discipline is part of the mark.',
+  interactive: {
+    type: 'quiz',
+    title: 'Assessing a project',
+    hint: 'Ask what a claim rests on.',
+    items: [
+      { q: 'Most marks are given for:', a: ['the model’s appearance', 'the mathematics', 'the length of the talk', 'neatness'], c: 1, why: 'Six of twenty.' },
+      { q: 'Orthogonal projection preserves lengths:', a: ['always', 'parallel to the plane', 'perpendicular to the plane', 'never'], c: 1, why: 'Others are foreshortened.' },
+      { q: 'A survey needs:', a: ['one angle', 'two angles or one angle and a distance', 'three angles', 'no measurement'], c: 1, why: 'One triangle must be determined.' },
+      { q: 'A useful peer comment is:', a: ['“good work”', 'specific about one thing', '“I agree”', 'a mark only'], c: 1, why: 'Specificity is what is credited.' },
+      { q: 'An accuracy sentence should mention:', a: ['the answer', 'which measurement dominates the error', 'the weather', 'nothing'], c: 1, why: 'That is the honest statement.' }
+    ]
+  },
+  quiz: [
+    { q: 'How many questions must each pair answer?', a: ['none', 'at least two', 'exactly one', 'ten'], c: 1, why: 'One from the class, one from the teacher.' },
+    { q: 'The accuracy criterion is worth:', a: [m('0'), m('2'), m('6'), m('10')], c: 1, why: 'Two of twenty.' },
+    { q: 'Peer assessment requires:', a: ['a mark only', 'one praise and one suggestion', 'nothing written', 'a full essay'], c: 1, why: 'Both specific.' },
+    { q: 'The lesson ends with:', a: ['a test', 'one dated sentence in the exercise book', 'homework', 'nothing'], c: 1, why: 'Read again at the end of Quarter IV.' }
+  ],
+  practice: {
+    easy: [
+      ['How long is each presentation?', 'five minutes'],
+      ['How many criteria are there?', m('5')],
+      ['Total marks', m('20')],
+      ['Marks for the mathematics', m('6')],
+      ['Marks for accuracy discussed', m('2')],
+      ['Are questions part of the mark?', 'yes, ' + m('4')],
+      ['What is written at the end?', 'one dated “next time I will …” sentence']
+    ],
+    med: [
+      ['A tower from 300 m at ' + m('9° ± 0.5°') + ': the range of heights', m('≈ 45') + ' to ' + m('50') + ' m'],
+      ['Does the front elevation show a sloping edge’s true length?', 'no'],
+      ['Which lengths does orthogonal projection preserve?', 'those parallel to the plane'],
+      ['What must be checked before the three perpendiculars theorem?', m('AO ⊥ α') + ', and ' + m('c ⊂ α') + ' through ' + m('B')],
+      ['A scale model at ' + m('1:50') + ': a 12 m wall is how long?', m('24') + ' cm'],
+      ['Same model: a 60 m² wall has what model area?', m('240') + ' cm²'],
+      ['Which theorem is used most across the projects?', 'the three perpendiculars']
+    ],
+    hard: [
+      ['A survey gives ' + m('h = d tan θ') + '. Which of ' + m('d') + ' or ' + m('θ') + ' usually dominates the error?', m('θ') + ' — the tangent is sensitive near steep angles'],
+      ['A model at ' + m('1:50') + ' uses ' + m('0.2') + ' litres of paint. The real building needs?', m('500') + ' litres'],
+      ['Show that a ' + m('0.5°') + ' error at ' + m('9°') + ' changes the height by about 6%', m(f('Δh', 'h') + ' ≈ ' + f('Δθ', 'sin θ cos θ'))],
+      ['Why is a demonstration of the converse harder to build than the forward direction?', 'It must start from a right angle you cannot see'],
+      ['Design a check that a measured height is right', 'Measure from a second point and compare'],
+      ['A projection of a ' + m('60') + ' m² roof at ' + m('35°') + ': the plan area', m('≈ 49') + ' m²'],
+      ['Give one specific peer comment on a set of three views', 'e.g. “your plan is aligned under the elevation, so the widths match”']
+    ]
+  },
+  hwTitle: 'Homework — 3 tasks',
+  hwNote: 'The dated sentence is read again at the end of Quarter IV.',
+  homework: [
+    'Write your peer assessment of two projects: the five scores, one specific praise and one specific suggestion each.',
+    'Write your own “next time I will …” sentence, dated.',
+    'Answer the three whole-class review questions in your own words.'
+  ]
+});
