@@ -9,8 +9,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="stylesheet" href="assets/pages.css">
-<title>Grade 8 Mathematics · Anvarbek Khaydarov</title>
-<meta name="description" content="Grade 8 mathematics — Quarter I topics for the special class (Algebra 3 h, Geometry 2 h) and the Cambridge class.">
+<title>Mathematics · Anvarbek Khaydarov</title>
+<meta name="description" content="Lesson resources by grade — the Uzbekistan national programme mapped to Cambridge, with an explanation, figures, an interactive model, three-language terminology, 21 graded problems and homework for every topic.">
 </head>
 <body>
 <div class="preload" id="preload" role="status" aria-live="polite">
@@ -30,27 +30,17 @@
 <div id="site-header"></div>
 <div class="lhead">
   <div class="inner">
-    <p class="crumb"><a href="index.html">Home</a> / <a href="grades.html">Grades</a> / Grade 8</p>
-    <h1 id="gtitle">Grade 8 · Algebra and Geometry</h1>
+    <p class="crumb"><a href="index.html">Home</a> / <a href="grades.html">Grades</a> / <span id="gcrumb">Grade</span></p>
+    <h1 id="gtitle">Mathematics</h1>
     <p class="lede" style="margin-top:12px" id="gsub"></p>
   </div>
 </div>
 <section class="section tight">
   <div class="wrap">
-    <div class="streamgrid" style="margin-bottom:44px">
-      <div class="scard" style="--sc:var(--uz)"><div class="lbl">Special class</div>
-        <h3>Algebra · 3 h a week</h3><p>102 hours. Quarters 27 · 21 · 30 · 24.</p>
-        <div class="figs">Alimov, <em>Algebra 8</em></div></div>
-      <div class="scard" style="--sc:var(--uz)"><div class="lbl">Special class</div>
-        <h3>Geometry · 2 h a week</h3><p>68 hours. Quarters 18 · 14 · 20 · 16.</p>
-        <div class="figs">Rahimkariev, <em>Geometry 8</em></div></div>
-      <div class="scard" style="--sc:var(--cam)"><div class="lbl">Cambridge class</div>
-        <h3>Mathematics · 6 h a week</h3><p>204 hours. Stage 9 with national depth topics.</p>
-        <div class="figs">Cambridge Stage 9 Learner’s Book</div></div>
-    </div>
+    <div class="streamgrid" id="streamgrid" style="margin-bottom:44px"></div>
 
     <div class="sechead"><span class="eyebrow">Choose a quarter</span><h2>The teaching year</h2>
-      <p>All four quarters are written — 95 lessons across algebra and geometry. Pick a quarter, then a topic.</p></div>
+      <p id="qlede"></p></div>
     <div class="qtabs" id="qtabs"></div>
 
     <div class="sechead" style="margin-top:12px"><span class="eyebrow" id="alg-eyebrow">Algebra</span>
@@ -66,22 +56,37 @@
 <script src="assets/app.js" data-root="./"></script>
 <script src="assets/mathfmt.js"></script>
 <script src="assets/figures.js"></script>
+<script src="data/grades.js"></script>
 <script src="data/g8-alg.js"></script>
 <script src="data/g8-geo.js"></script>
+<script src="data/g10-alg.js"></script>
+<script src="data/g10-geo.js"></script>
+<script src="data/g11-alg.js"></script>
+<script src="data/g11-geo.js"></script>
 <script>
 AKM.mount('grade.html');
-var QUARTERS = [
-  { q: 1, label: 'Quarter I',  alg: 'Chapter I of <em>Algebra 8</em> — algebraic fractions and the function y = k/x.',
-    geo: 'Chapter I of <em>Geometry 8</em> — quadrilaterals, Thales’ theorem and midlines.' },
-  { q: 2, label: 'Quarter II', alg: 'Chapter I §§8–10 and Chapter II of <em>Algebra 8</em> — roots, rational exponents and numerical inequalities.',
-    geo: 'Chapter II of <em>Geometry 8</em> — Pythagoras’ theorem and the trigonometry of the right triangle.' },
-  { q: 3, label: 'Quarter III', alg: 'Inequalities with one unknown, modulus, approximation and quadratic equations.',
-    geo: 'The coordinate method, vectors and the areas of polygons.' },
-  { q: 4, label: 'Quarter IV', alg: 'Statistics, combinatorics and the Cambridge revision block.',
-    geo: 'Circle theorems, transformations and solids.' }
-];
-var ALL_ALG = window.G8_ALG || [], ALL_GEO = window.G8_GEO || [];
-function has(q) { return ALL_ALG.some(function (t) { return t.quarter === q; }); }
+
+var G = +(AKM.qs('g') || 8);
+var INFO = (window.GRADE_INFO || {})[G];
+if (!INFO) { window.location.replace('grades.html'); }
+
+var QUARTERS = INFO.quarters;
+var ALL_ALG = (window['G' + G + '_ALG'] || []);
+var ALL_GEO = (window['G' + G + '_GEO'] || []);
+
+document.title = 'Grade ' + G + ' Mathematics · Anvarbek Khaydarov';
+document.getElementById('gcrumb').textContent = 'Grade ' + G;
+document.getElementById('gtitle').textContent = INFO.title;
+document.getElementById('qlede').innerHTML = INFO.lede;
+document.getElementById('streamgrid').innerHTML = INFO.streams.map(function (s) {
+  return '<div class="scard" style="--sc:var(--' + s[0] + ')"><div class="lbl">' + s[1] + '</div>' +
+    '<h3>' + s[2] + '</h3><p>' + s[3] + '</p><div class="figs">' + s[4] + '</div></div>';
+}).join('');
+
+function has(q) {
+  return ALL_ALG.some(function (t) { return t.quarter === q; }) ||
+         ALL_GEO.some(function (t) { return t.quarter === q; });
+}
 function rows(list){
   if (!list.length) return '<p class="small" style="padding:8px 2px">Being written — the annual plan for this quarter is already published.</p>';
   return list.map(function(t){
@@ -110,7 +115,7 @@ function show(q){
   [].forEach.call(document.querySelectorAll('.qtab'), function(b){
     b.setAttribute('aria-pressed', +b.dataset.q === q ? 'true' : 'false');
   });
-  try { sessionStorage.setItem('akm-q', q); } catch(e){}
+  try { sessionStorage.setItem('akm-q-' + G, q); } catch(e){}
 }
 document.getElementById('qtabs').innerHTML = QUARTERS.map(function(Q){
   var live = has(Q.q);
@@ -120,9 +125,10 @@ document.getElementById('qtabs').innerHTML = QUARTERS.map(function(Q){
 [].forEach.call(document.querySelectorAll('.qtab'), function(b){
   b.addEventListener('click', function(){ show(+b.dataset.q); });
 });
-var start = 1;
-try { var sv = +sessionStorage.getItem('akm-q'); if (sv && has(sv)) start = sv; } catch(e){}
-show(start);
+var start = 0;
+for (var qi = 1; qi <= 4; qi++) { if (has(qi)) { start = qi; break; } }
+try { var sv = +sessionStorage.getItem('akm-q-' + G); if (sv && has(sv)) start = sv; } catch(e){}
+show(start || 1);
 document.getElementById('gsub').textContent =
   (ALL_ALG.length + ALL_GEO.length) + ' topic pages written so far, each with an explanation, ' +
   'figures, an interactive model, three-language terminology, 21 graded problems and homework.';

@@ -3270,15 +3270,90 @@ body{top:0!important}                       /* the banner pushes body down */
   };
 })(window, document);
 
+/* The grade index, and the per-grade copy the grade page renders itself from.
+   `streams` drives the cards at the top; `quarters` the tab strip. A grade is
+   'live' when at least one topic exists for it in the data files. */
 var GRADES = [
-  { g: 5,  name: 'Mathematics',            meta: 'Natural numbers · fractions · geometry of the plane', status: 'soon' },
-  { g: 6,  name: 'Mathematics',            meta: 'Rational numbers · ratio · percentage · coordinates', status: 'soon' },
-  { g: 7,  name: 'Algebra + Geometry',     meta: 'Linear equations · polynomials · triangles',          status: 'soon' },
-  { g: 8,  name: 'Algebra + Geometry',     meta: 'Full year — 95 topics, 1995 practice problems',      status: 'live' },
-  { g: 9,  name: 'Algebra + Geometry',     meta: 'Quadratic functions · progressions · circles',        status: 'soon' },
-  { g: 10, name: 'Algebra + Geometry',     meta: 'Trigonometry · powers and roots · solid geometry',    status: 'soon' },
-  { g: 11, name: 'Algebra + Geometry',     meta: 'Derivatives · integrals · combinatorics',             status: 'soon' }
+  { g: 5,  name: 'Mathematics',        meta: 'Natural numbers · fractions · geometry of the plane', status: 'soon' },
+  { g: 6,  name: 'Mathematics',        meta: 'Rational numbers · ratio · percentage · coordinates', status: 'soon' },
+  { g: 7,  name: 'Algebra + Geometry', meta: 'Linear equations · polynomials · triangles',          status: 'soon' },
+  { g: 8,  name: 'Algebra + Geometry', meta: 'Full year — 95 topics, 1995 practice problems',       status: 'live' },
+  { g: 9,  name: 'Algebra + Geometry', meta: 'Quadratic functions · progressions · circles',        status: 'soon' },
+  { g: 10, name: 'Algebra + Geometry', meta: 'Quarter I — functions, and an introduction to solid geometry', status: 'live' },
+  { g: 11, name: 'Algebra + Geometry', meta: 'Quarter I — the derivative, and vectors in space',    status: 'live' }
 ];
+
+var GRADE_INFO = {
+  8: {
+    title: 'Grade 8 · Algebra and Geometry',
+    lede: 'All four quarters are written — 95 lessons across algebra and geometry. Pick a quarter, then a topic.',
+    streams: [
+      ['uz',  'Special class', 'Algebra · 3 h a week',     '102 hours. Quarters 27 · 21 · 30 · 24.', 'Alimov, <em>Algebra 8</em>'],
+      ['uz',  'Special class', 'Geometry · 2 h a week',    '68 hours. Quarters 18 · 14 · 20 · 16.',  'Rahimkariev, <em>Geometry 8</em>'],
+      ['cam', 'Cambridge class', 'Mathematics · 6 h a week', '204 hours. Stage 9 with national depth topics.', 'Cambridge Stage 9 Learner’s Book']
+    ],
+    quarters: [
+      { q: 1, label: 'Quarter I',
+        alg: 'Chapter I of <em>Algebra 8</em> — algebraic fractions and the function y = k/x.',
+        geo: 'Chapter I of <em>Geometry 8</em> — quadrilaterals, Thales’ theorem and midlines.' },
+      { q: 2, label: 'Quarter II',
+        alg: 'Chapter I §§8–10 and Chapter II of <em>Algebra 8</em> — roots, rational exponents and numerical inequalities.',
+        geo: 'Chapter II of <em>Geometry 8</em> — Pythagoras’ theorem and the trigonometry of the right triangle.' },
+      { q: 3, label: 'Quarter III',
+        alg: 'Inequalities with one unknown, modulus, approximation and quadratic equations.',
+        geo: 'The coordinate method, vectors and the areas of polygons.' },
+      { q: 4, label: 'Quarter IV',
+        alg: 'Statistics, combinatorics and the Cambridge revision block.',
+        geo: 'Circle theorems, transformations and solids.' }
+    ]
+  },
+  10: {
+    title: 'Grade 10 · Algebra and Geometry',
+    lede: 'Quarter I is written — functions and the graphs of functions in algebra, the entry into solid geometry in geometry.',
+    streams: [
+      ['uz',  'Special class', 'Algebra · 3 h a week',  '102 hours. Quarters 27 · 21 · 30 · 24.', 'Zaitov, <em>Algebra and Calculus 10</em>'],
+      ['uz',  'Special class', 'Geometry · 2 h a week', '68 hours. Quarters 18 · 14 · 20 · 16.',  'Xaydarov, <em>Geometry 10</em>'],
+      ['cam', 'Cambridge layer', 'IGCSE Extended · AS Pure 1', 'Mapped lesson by lesson, with 13 + 16 inserts.', 'IGCSE Core &amp; Extended · Pure Mathematics 1']
+    ],
+    quarters: [
+      { q: 1, label: 'Quarter I',
+        alg: 'The Grade 9 quadratics toolkit, then Chapter 1 of <em>Algebra 10</em> — functions, their properties and their graphs.',
+        geo: 'Chapters I–II of <em>Geometry 10</em> — the axiomatic method, then the entry into solid geometry.' },
+      { q: 2, label: 'Quarter II',
+        alg: 'Rational and irrational equations, inequalities and their systems.',
+        geo: 'Parallelism of lines and planes in space.' },
+      { q: 3, label: 'Quarter III',
+        alg: 'Exponential and logarithmic functions, equations and inequalities.',
+        geo: 'Perpendicularity in space and orthogonal projection.' },
+      { q: 4, label: 'Quarter IV',
+        alg: 'Trigonometric equations and inequalities, then probability.',
+        geo: 'Coordinate geometry and the revision block.' }
+    ]
+  },
+  11: {
+    title: 'Grade 11 · Algebra and Geometry',
+    lede: 'Quarter I is written — the derivative and its applications in algebra, coordinates and vectors in space in geometry.',
+    streams: [
+      ['uz',  'Special class', 'Algebra · 3 h a week',  '102 hours. Quarters 27 · 21 · 30 · 24.', '<em>Algebra and Calculus 11</em>'],
+      ['uz',  'Special class', 'Geometry · 2 h a week', '68 hours. Quarters 18 · 14 · 20 · 16.',  '<em>Geometry 11</em>'],
+      ['cam', 'Cambridge layer', 'AS &amp; A Level Pure 1–2', 'Mapped lesson by lesson, with 17 + 16 inserts.', 'Pure Mathematics 1 · Pure Mathematics 2 &amp; 3']
+    ],
+    quarters: [
+      { q: 1, label: 'Quarter I',
+        alg: 'Chapter 1 — the limit, the derivative, the rules of differentiation and the applications of the derivative.',
+        geo: 'Chapter 1 — the coordinate system in space, vectors, the scalar product and transformations.' },
+      { q: 2, label: 'Quarter II',
+        alg: 'Approximation, modelling with the derivative, and the indefinite integral.',
+        geo: 'Polyhedra, prisms and cylinders — surface area and volume.' },
+      { q: 3, label: 'Quarter III',
+        alg: 'The definite integral, combinatorics and statistics.',
+        geo: 'Pyramids, cones and the sphere.' },
+      { q: 4, label: 'Quarter IV',
+        alg: 'Probability, distributions and the annual revision.',
+        geo: 'Practical work and the final revision.' }
+    ]
+  }
+};
 
 /* Grade 8 · Algebra · Quarter I (27 hours)
    National backbone: Alimov, "Algebra 8" (O'qituvchi 2019), Chapter I.
@@ -17976,6 +18051,18 @@ G8_GEO.push({
   ]
 });
 
+/* G10_ALG — Quarter I. Topic objects, one per lesson page. */
+var G10_ALG = [];
+
+/* G10_GEO — Quarter I. Topic objects, one per lesson page. */
+var G10_GEO = [];
+
+/* G11_ALG — Quarter I. Topic objects, one per lesson page. */
+var G11_ALG = [];
+
+/* G11_GEO — Quarter I. Topic objects, one per lesson page. */
+var G11_GEO = [];
+
 </script>
 
 <script>
@@ -18108,27 +18195,17 @@ G8_GEO.push({
 </section>`,
     grade:  `<div class="lhead">
   <div class="inner">
-    <p class="crumb"><a href="index.html">Home</a> / <a href="grades.html">Grades</a> / Grade 8</p>
-    <h1 id="gtitle">Grade 8 · Algebra and Geometry</h1>
+    <p class="crumb"><a href="index.html">Home</a> / <a href="grades.html">Grades</a> / <span id="gcrumb">Grade</span></p>
+    <h1 id="gtitle">Mathematics</h1>
     <p class="lede" style="margin-top:12px" id="gsub"></p>
   </div>
 </div>
 <section class="section tight">
   <div class="wrap">
-    <div class="streamgrid" style="margin-bottom:44px">
-      <div class="scard" style="--sc:var(--uz)"><div class="lbl">Special class</div>
-        <h3>Algebra · 3 h a week</h3><p>102 hours. Quarters 27 · 21 · 30 · 24.</p>
-        <div class="figs">Alimov, <em>Algebra 8</em></div></div>
-      <div class="scard" style="--sc:var(--uz)"><div class="lbl">Special class</div>
-        <h3>Geometry · 2 h a week</h3><p>68 hours. Quarters 18 · 14 · 20 · 16.</p>
-        <div class="figs">Rahimkariev, <em>Geometry 8</em></div></div>
-      <div class="scard" style="--sc:var(--cam)"><div class="lbl">Cambridge class</div>
-        <h3>Mathematics · 6 h a week</h3><p>204 hours. Stage 9 with national depth topics.</p>
-        <div class="figs">Cambridge Stage 9 Learner’s Book</div></div>
-    </div>
+    <div class="streamgrid" id="streamgrid" style="margin-bottom:44px"></div>
 
     <div class="sechead"><span class="eyebrow">Choose a quarter</span><h2>The teaching year</h2>
-      <p>All four quarters are written — 95 lessons across algebra and geometry. Pick a quarter, then a topic.</p></div>
+      <p id="qlede"></p></div>
     <div class="qtabs" id="qtabs"></div>
 
     <div class="sechead" style="margin-top:12px"><span class="eyebrow" id="alg-eyebrow">Algebra</span>
@@ -18257,7 +18334,7 @@ G8_GEO.push({
   function standaloneSearch() {
     var btn = document.getElementById('findbtn');
     if (!btn) return;
-    var idx = [].concat(window.G8_ALG || [], window.G8_GEO || []).map(function (t) {
+    var idx = ALL_TOPICS().map(function (t) {
       var terms = (t.terms || []).map(function (r) { return r.join(' '); }).join(' ');
       return {
         id: t.id, title: t.title,
@@ -18398,23 +18475,17 @@ G8_GEO.push({
     });
   }
 
-  var ALG = window.G8_ALG || [], GEO = window.G8_GEO || [];
-  var ALL = [].concat(ALG, GEO);
+  var GRADE_KEYS = [8, 10, 11];
+  function ALL_TOPICS() {
+    var out = [];
+    for (var gi = 0; gi < GRADE_KEYS.length; gi++) {
+      out = out.concat(window['G' + GRADE_KEYS[gi] + '_ALG'] || [],
+                       window['G' + GRADE_KEYS[gi] + '_GEO'] || []);
+    }
+    return out;
+  }
+  var ALL = ALL_TOPICS();
   var view = document.getElementById('view');
-  var QUARTERS = [
-    { q: 1, label: 'Quarter I',
-       alg: 'Chapter I of <em>Algebra 8</em> — algebraic fractions and the function y = k/x.',
-       geo: 'Chapter I of <em>Geometry 8</em> — quadrilaterals, Thales’ theorem and midlines.' },
-    { q: 2, label: 'Quarter II',
-       alg: 'Chapter I §§8–10 and Chapter II of <em>Algebra 8</em> — roots, rational exponents and numerical inequalities.',
-       geo: 'Chapter II of <em>Geometry 8</em> — Pythagoras’ theorem and the trigonometry of the right triangle.' },
-    { q: 3, label: 'Quarter III',
-       alg: 'Inequalities with one unknown, modulus, approximation and quadratic equations.',
-       geo: 'The coordinate method, vectors and the areas of polygons.' },
-    { q: 4, label: 'Quarter IV',
-       alg: 'Statistics, combinatorics and the Cambridge revision block.',
-       geo: 'Circle theorems, transformations and solids.' }
-  ];
 
   function tile(g) {
     var live = g.status === 'live';
@@ -18444,13 +18515,29 @@ G8_GEO.push({
       view.innerHTML = VIEWS.lesson;
       if (!T) { q('#lmain').innerHTML = '<div style="padding:60px 0"><h2>Lesson not found</h2></div>'; }
       else {
-        var IDX = ALL.filter(function (x) { return x.stream === T.stream && x.quarter === T.quarter; })
+        var IDX = ALL.filter(function (x) { return x.grade === T.grade && x.stream === T.stream && x.quarter === T.quarter; })
           .map(function (x) { return { id: x.id, title: x.title, group: 'L ' + x.lessons }; });
         window.renderTopic(T, IDX);
       }
     } else if (page === 'grade') {
       view.innerHTML = VIEWS.grade;
-      var has = function (n) { return ALG.some(function (t) { return t.quarter === n; }); };
+      var GN = +(parts[1] || 8);
+      var INFO = (window.GRADE_INFO || {})[GN];
+      if (!INFO) { location.hash = '#/grades'; return; }
+      var QUARTERS = INFO.quarters;
+      var ALG = window['G' + GN + '_ALG'] || [], GEO = window['G' + GN + '_GEO'] || [];
+      var gc = q('#gcrumb'); if (gc) gc.textContent = 'Grade ' + GN;
+      var gt = q('#gtitle'); if (gt) gt.textContent = INFO.title;
+      var ql = q('#qlede'); if (ql) ql.innerHTML = INFO.lede;
+      var sg = q('#streamgrid');
+      if (sg) sg.innerHTML = INFO.streams.map(function (sd) {
+        return '<div class="scard" style="--sc:var(--' + sd[0] + ')"><div class="lbl">' + sd[1] +
+          '</div><h3>' + sd[2] + '</h3><p>' + sd[3] + '</p><div class="figs">' + sd[4] + '</div></div>';
+      }).join('');
+      var has = function (n) {
+        return ALG.some(function (t) { return t.quarter === n; }) ||
+               GEO.some(function (t) { return t.quarter === n; });
+      };
       var hours = function (l) { return l.reduce(function (s2, t) { return s2 + t.hours; }, 0); };
       q('#qtabs').innerHTML = QUARTERS.map(function (Q) {
         var live = has(Q.q);
@@ -18470,14 +18557,16 @@ G8_GEO.push({
           b2.setAttribute('aria-pressed', +b2.dataset.q === n ? 'true' : 'false');
         });
         fixLinks(view);
-        try { sessionStorage.setItem('akm-q', n); } catch (e) { }
+        try { sessionStorage.setItem('akm-q-' + GN, n); } catch (e) { }
       };
       [].forEach.call(view.querySelectorAll('.qtab'), function (b2) {
         b2.addEventListener('click', function () { showQ(+b2.dataset.q); });
       });
-      var st = 1; try { var sv = +sessionStorage.getItem('akm-q'); if (sv && has(sv)) st = sv; } catch (e) { }
-      showQ(st);
-      q('#gsub').textContent = ALL.length + ' topic pages written so far, each with an explanation, ' +
+      var st = 0;
+      for (var qq = 1; qq <= 4; qq++) { if (has(qq)) { st = qq; break; } }
+      try { var sv = +sessionStorage.getItem('akm-q-' + GN); if (sv && has(sv)) st = sv; } catch (e) { }
+      showQ(st || 1);
+      q('#gsub').textContent = (ALG.length + GEO.length) + ' topic pages written so far, each with an explanation, ' +
         'figures, an interactive model, three-language terminology, 21 graded problems and homework.';
     } else if (page === 'grades') {
       view.innerHTML = VIEWS.grades;

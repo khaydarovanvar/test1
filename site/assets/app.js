@@ -91,7 +91,7 @@
      "vatar", "хорда" and "chord" all find the same lesson. */
 
   function searchIndex() {
-    var all = [].concat(w.G8_ALG || [], w.G8_GEO || []);
+    var all = allTopics();
     return all.map(function (t) {
       var terms = (t.terms || []).map(function (r) { return r.join(' '); }).join(' ');
       return {
@@ -376,6 +376,19 @@
     initTranslate();
   }
 
+  /* Every topic the page has loaded, whatever grade. Data files register
+     themselves as G8_ALG, G10_GEO and so on, so adding a grade is one more
+     <script> tag and one more entry here. */
+  var GRADE_KEYS = [8, 10, 11];
+  function allTopics() {
+    var out = [];
+    for (var i = 0; i < GRADE_KEYS.length; i++) {
+      out = out.concat(w['G' + GRADE_KEYS[i] + '_ALG'] || [],
+                       w['G' + GRADE_KEYS[i] + '_GEO'] || []);
+    }
+    return out;
+  }
+
   function qs(name) {
     var m = new RegExp('[?&]' + name + '=([^&#]*)').exec(w.location.search);
     return m ? decodeURIComponent(m[1].replace(/\+/g, ' ')) : null;
@@ -385,6 +398,7 @@
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
+  w.AKM_allTopics = allTopics;
   w.AKM_initTranslate = initTranslate;
   w.AKM_protectMath = protectMath;
   w.AKM = { LOGO: LOGO, ROOT: ROOT, mount: mount, qs: qs, esc: esc, brandmark: brandmark };

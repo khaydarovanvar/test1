@@ -41,14 +41,18 @@
 <script src="data/grades.js"></script>
 <script src="data/g8-alg.js"></script>
 <script src="data/g8-geo.js"></script>
+<script src="data/g10-alg.js"></script>
+<script src="data/g10-geo.js"></script>
+<script src="data/g11-alg.js"></script>
+<script src="data/g11-geo.js"></script>
 <script>
 AKM.mount('');
 (function(){
-  var all = [].concat(window.G8_ALG || [], window.G8_GEO || []);
+  var all = window.AKM_allTopics();
   var id = AKM.qs('t') || (all[0] && all[0].id);
   var T = all.filter(function(x){return x.id===id;})[0];
   /* the topic switcher lists the same stream and quarter, in teaching order */
-  var index = (T ? all.filter(function(x){ return x.stream===T.stream && x.quarter===T.quarter; }) : all)
+  var index = (T ? all.filter(function(x){ return x.grade===T.grade && x.stream===T.stream && x.quarter===T.quarter; }) : all)
     .map(function(x){return {id:x.id,title:x.title,group:'L '+x.lessons};});
   if (!T) {
     document.getElementById('lmain').innerHTML =

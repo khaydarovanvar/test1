@@ -7,7 +7,10 @@ R = lambda p: (root / p).read_text()
 CSS = R('assets/styles.css') + "\n" + R('assets/pages.css')
 JS_LIBS = "\n".join(R(f) for f in [
     'assets/mathfmt.js', 'assets/figures.js', 'assets/interactive.js',
-    'assets/lesson.js', 'data/grades.js', 'data/g8-alg.js', 'data/g8-geo.js'])
+    'assets/lesson.js', 'data/grades.js',
+    'data/g8-alg.js', 'data/g8-geo.js',
+    'data/g10-alg.js', 'data/g10-geo.js',
+    'data/g11-alg.js', 'data/g11-geo.js'])
 
 # the home hero + sections, lifted from index.html
 idx = R('index.html')
@@ -143,7 +146,7 @@ OUT = f"""<meta charset="utf-8">
   function standaloneSearch() {{
     var btn = document.getElementById('findbtn');
     if (!btn) return;
-    var idx = [].concat(window.G8_ALG || [], window.G8_GEO || []).map(function (t) {{
+    var idx = ALL_TOPICS().map(function (t) {{
       var terms = (t.terms || []).map(function (r) {{ return r.join(' '); }}).join(' ');
       return {{
         id: t.id, title: t.title,
@@ -284,23 +287,17 @@ OUT = f"""<meta charset="utf-8">
     }});
   }}
 
-  var ALG = window.G8_ALG || [], GEO = window.G8_GEO || [];
-  var ALL = [].concat(ALG, GEO);
+  var GRADE_KEYS = [8, 10, 11];
+  function ALL_TOPICS() {{
+    var out = [];
+    for (var gi = 0; gi < GRADE_KEYS.length; gi++) {{
+      out = out.concat(window['G' + GRADE_KEYS[gi] + '_ALG'] || [],
+                       window['G' + GRADE_KEYS[gi] + '_GEO'] || []);
+    }}
+    return out;
+  }}
+  var ALL = ALL_TOPICS();
   var view = document.getElementById('view');
-  var QUARTERS = [
-    {{ q: 1, label: 'Quarter I',
-       alg: 'Chapter I of <em>Algebra 8</em> — algebraic fractions and the function y = k/x.',
-       geo: 'Chapter I of <em>Geometry 8</em> — quadrilaterals, Thales’ theorem and midlines.' }},
-    {{ q: 2, label: 'Quarter II',
-       alg: 'Chapter I §§8–10 and Chapter II of <em>Algebra 8</em> — roots, rational exponents and numerical inequalities.',
-       geo: 'Chapter II of <em>Geometry 8</em> — Pythagoras’ theorem and the trigonometry of the right triangle.' }},
-    {{ q: 3, label: 'Quarter III',
-       alg: 'Inequalities with one unknown, modulus, approximation and quadratic equations.',
-       geo: 'The coordinate method, vectors and the areas of polygons.' }},
-    {{ q: 4, label: 'Quarter IV',
-       alg: 'Statistics, combinatorics and the Cambridge revision block.',
-       geo: 'Circle theorems, transformations and solids.' }}
-  ];
 
   function tile(g) {{
     var live = g.status === 'live';
@@ -330,13 +327,29 @@ OUT = f"""<meta charset="utf-8">
       view.innerHTML = VIEWS.lesson;
       if (!T) {{ q('#lmain').innerHTML = '<div style="padding:60px 0"><h2>Lesson not found</h2></div>'; }}
       else {{
-        var IDX = ALL.filter(function (x) {{ return x.stream === T.stream && x.quarter === T.quarter; }})
+        var IDX = ALL.filter(function (x) {{ return x.grade === T.grade && x.stream === T.stream && x.quarter === T.quarter; }})
           .map(function (x) {{ return {{ id: x.id, title: x.title, group: 'L ' + x.lessons }}; }});
         window.renderTopic(T, IDX);
       }}
     }} else if (page === 'grade') {{
       view.innerHTML = VIEWS.grade;
-      var has = function (n) {{ return ALG.some(function (t) {{ return t.quarter === n; }}); }};
+      var GN = +(parts[1] || 8);
+      var INFO = (window.GRADE_INFO || {{}})[GN];
+      if (!INFO) {{ location.hash = '#/grades'; return; }}
+      var QUARTERS = INFO.quarters;
+      var ALG = window['G' + GN + '_ALG'] || [], GEO = window['G' + GN + '_GEO'] || [];
+      var gc = q('#gcrumb'); if (gc) gc.textContent = 'Grade ' + GN;
+      var gt = q('#gtitle'); if (gt) gt.textContent = INFO.title;
+      var ql = q('#qlede'); if (ql) ql.innerHTML = INFO.lede;
+      var sg = q('#streamgrid');
+      if (sg) sg.innerHTML = INFO.streams.map(function (sd) {{
+        return '<div class="scard" style="--sc:var(--' + sd[0] + ')"><div class="lbl">' + sd[1] +
+          '</div><h3>' + sd[2] + '</h3><p>' + sd[3] + '</p><div class="figs">' + sd[4] + '</div></div>';
+      }}).join('');
+      var has = function (n) {{
+        return ALG.some(function (t) {{ return t.quarter === n; }}) ||
+               GEO.some(function (t) {{ return t.quarter === n; }});
+      }};
       var hours = function (l) {{ return l.reduce(function (s2, t) {{ return s2 + t.hours; }}, 0); }};
       q('#qtabs').innerHTML = QUARTERS.map(function (Q) {{
         var live = has(Q.q);
@@ -356,14 +369,16 @@ OUT = f"""<meta charset="utf-8">
           b2.setAttribute('aria-pressed', +b2.dataset.q === n ? 'true' : 'false');
         }});
         fixLinks(view);
-        try {{ sessionStorage.setItem('akm-q', n); }} catch (e) {{ }}
+        try {{ sessionStorage.setItem('akm-q-' + GN, n); }} catch (e) {{ }}
       }};
       [].forEach.call(view.querySelectorAll('.qtab'), function (b2) {{
         b2.addEventListener('click', function () {{ showQ(+b2.dataset.q); }});
       }});
-      var st = 1; try {{ var sv = +sessionStorage.getItem('akm-q'); if (sv && has(sv)) st = sv; }} catch (e) {{ }}
-      showQ(st);
-      q('#gsub').textContent = ALL.length + ' topic pages written so far, each with an explanation, ' +
+      var st = 0;
+      for (var qq = 1; qq <= 4; qq++) {{ if (has(qq)) {{ st = qq; break; }} }}
+      try {{ var sv = +sessionStorage.getItem('akm-q-' + GN); if (sv && has(sv)) st = sv; }} catch (e) {{ }}
+      showQ(st || 1);
+      q('#gsub').textContent = (ALG.length + GEO.length) + ' topic pages written so far, each with an explanation, ' +
         'figures, an interactive model, three-language terminology, 21 graded problems and homework.';
     }} else if (page === 'grades') {{
       view.innerHTML = VIEWS.grades;
