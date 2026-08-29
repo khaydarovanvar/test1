@@ -37,6 +37,11 @@
     }).join('');
     return '<header class="site-head" id="sitehead"><div class="bar">' + brandmark() +
       '<div class="navwrap"><nav class="nav" id="navlinks">' + links + '</nav>' +
+      '<div class="langpick notranslate" id="langpick" translate="no" hidden>' +
+      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" ' +
+      'stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/>' +
+      '<path d="M3 12h18M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"/></svg>' +
+      '<div id="google_translate_element"></div></div>' +
       '<button class="themebtn" id="themebtn" type="button" aria-label="Switch colour theme" title="Switch colour theme">' +
       '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">' +
       '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>' +
@@ -57,6 +62,74 @@
         if (e.target.tagName === 'A') head.classList.remove('open');
       });
     }
+  }
+
+  /* ---------- Google Translate ----------
+     Free, no API key, about 130 languages. Two things matter here:
+
+     1. Mathematics must NOT be translated. Every .m span, equation, figure
+        and — above all — the English/Uzbek/Russian terminology table is
+        marked translate="no", or the machine would "translate" the very
+        words the table exists to teach.
+     2. The script may not load at all: no internet, a school firewall, or a
+        page served somewhere with a strict content policy. In that case the
+        picker stays hidden rather than sitting there broken.                */
+
+  var TRANSLATE_SRC = 'https://translate.google.com/translate_a/element.js' +
+    '?cb=__akmTranslateReady';
+
+  function protectMath(root) {
+    var sel = '.m,.eq,.frac,.sqrt,.terms,.fig,.stage,.brandmark,.clock,' +
+      '.ln,.chip,code,svg';
+    var nodes = (root || document).querySelectorAll(sel);
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute('translate', 'no');
+      nodes[i].classList.add('notranslate');
+    }
+    return nodes.length;
+  }
+
+  function initTranslate() {
+    var host = document.getElementById('langpick');
+    if (!host || !document.getElementById('google_translate_element')) return;
+
+    protectMath();
+    /* Anything drawn after the header — a lesson body, a rebuilt list —
+       needs the same protection, so watch for it. */
+    if (w.MutationObserver) {
+      new w.MutationObserver(function (muts) {
+        for (var i = 0; i < muts.length; i++) {
+          for (var j = 0; j < muts[i].addedNodes.length; j++) {
+            var n = muts[i].addedNodes[j];
+            if (n.nodeType === 1) protectMath(n);
+          }
+        }
+      }).observe(document.body, { childList: true, subtree: true });
+    }
+
+    w.__akmTranslateReady = function () {
+      if (!(w.google && w.google.translate && w.google.translate.TranslateElement)) return;
+      new w.google.translate.TranslateElement({
+        pageLanguage: 'en',
+        autoDisplay: false
+      }, 'google_translate_element');
+      /* The select is built a moment after the constructor returns. */
+      var tries = 0;
+      (function reveal() {
+        if (document.querySelector('#google_translate_element select')) {
+          host.hidden = false;
+          document.documentElement.classList.add('has-translate');
+        } else if (tries++ < 40) {
+          setTimeout(reveal, 100);
+        }
+      })();
+    };
+
+    var sc = document.createElement('script');
+    sc.src = TRANSLATE_SRC;
+    sc.async = true;
+    sc.onerror = function () { host.hidden = true; };   /* offline, or blocked */
+    document.head.appendChild(sc);
   }
 
   /* ---------- 3D hero ---------- */
@@ -132,6 +205,7 @@
     theme();
     navBehaviour();
     initHero();
+    initTranslate();
   }
 
   function qs(name) {
@@ -143,5 +217,7 @@
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
+  w.AKM_initTranslate = initTranslate;
+  w.AKM_protectMath = protectMath;
   w.AKM = { LOGO: LOGO, ROOT: ROOT, mount: mount, qs: qs, esc: esc, brandmark: brandmark };
 })(window);

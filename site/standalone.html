@@ -186,6 +186,39 @@ footer.site-foot{margin-top:96px;border-top:1px solid var(--rule);background:var
 footer.site-foot .inner{max-width:var(--maxw);margin:0 auto;padding:40px 28px;
   display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start}
 footer .fnote{font-size:13px;color:var(--muted);max-width:44ch}
+/* ---------- language picker (Google Translate) ----------
+   The widget ships its own styling and a fixed banner across the top of the
+   page. Both are suppressed; only the select survives, restyled to match the
+   header. The picker starts hidden and is revealed by app.js once the widget
+   has actually loaded, so a blocked or offline page shows nothing at all. */
+.langpick{display:flex;align-items:center;gap:6px;padding:0 8px 0 10px;height:34px;
+  border:1px solid var(--rule);border-radius:var(--r);background:var(--surface);
+  color:var(--muted);transition:.18s}
+.langpick[hidden]{display:none!important}   /* display:flex would beat [hidden] */
+.langpick:hover{color:var(--brand);border-color:var(--brand)}
+.langpick svg{flex:0 0 auto}
+.langpick select,.goog-te-combo{appearance:none;-webkit-appearance:none;border:0;
+  background:transparent;font-family:var(--sans);font-size:12.5px;
+  font-weight:500;padding:0 2px;margin:0!important;max-width:130px;cursor:pointer;
+  outline:none}
+.langpick select option{color:#141413;background:#fff}
+/* Google's own chrome: the top banner, the logo, the hover balloon. */
+.goog-te-banner-frame,.goog-te-gadget-icon,.goog-logo-link,
+#goog-gt-tt,.goog-te-balloon-frame,.skiptranslate iframe{display:none!important}
+/* The gadget wrapper carries "Powered by Google" as bare text; zero it out.
+   The select must then be given its colour back explicitly — inheriting would
+   pick up the transparent set here and render an invisible menu. */
+.goog-te-gadget{font-size:0!important;color:transparent!important;line-height:1!important}
+.langpick select,.goog-te-gadget .goog-te-combo{
+  font-size:12.5px!important;color:var(--ink-soft)!important}
+.langpick:hover select,.langpick:hover .goog-te-combo{color:var(--brand)!important}
+body{top:0!important}                       /* the banner pushes body down */
+.goog-text-highlight{background:none!important;box-shadow:none!important}
+@media (max-width:860px){
+  .langpick{order:3;margin-left:auto}
+  .langpick select,.goog-te-combo{max-width:104px}
+}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;
   scroll-behavior:auto!important}}
 @media (max-width:860px){
@@ -216,7 +249,8 @@ footer .fnote{font-size:13px;color:var(--muted);max-width:44ch}
 @media print{
   :root{--paper:#fff;--surface:#fff;--surface-2:#fff}
   .site-head,.themebtn,.menubtn,.no-print,.site-foot,.pager,.mobilepager,
-  .lnav,.ctrls,.ilab>.ih .ihint,.tocnav,.pc-btn{display:none!important}
+  .lnav,.ctrls,.ilab>.ih .ihint,.tocnav,.pc-btn,.langpick,
+  .goog-te-banner-frame,.skiptranslate{display:none!important}
   html,body{background:#fff!important;font-size:10.5pt}
   .card,.sbox,.ilab,.example,.probs,.terms,.tablewrap{box-shadow:none!important;
     break-inside:avoid;page-break-inside:avoid}
@@ -2943,11 +2977,15 @@ footer .fnote{font-size:13px;color:var(--muted);max-width:44ch}
       }).join('') + '</ol></div>';
   }
 
+  /* translate="no" throughout: these three columns ARE the lesson content.
+     Letting a machine translator rewrite the Uzbek and Russian terms would
+     destroy the one thing the table is for. */
   function termsTable(list) {
-    return '<div class="tablewrap terms"><table>' +
+    return '<div class="tablewrap terms notranslate" translate="no"><table>' +
       '<thead><tr><th>English</th><th>O‘zbekcha</th><th>Русский</th></tr></thead><tbody>' +
       list.map(function (t) {
-        return '<tr><td>' + t[0] + '</td><td class="uz">' + t[1] + '</td><td class="ru">' + t[2] + '</td></tr>';
+        return '<tr><td>' + t[0] + '</td><td class="uz" lang="uz">' + t[1] +
+          '</td><td class="ru" lang="ru">' + t[2] + '</td></tr>';
       }).join('') + '</tbody></table></div>';
   }
 

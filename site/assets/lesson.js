@@ -25,11 +25,15 @@
       }).join('') + '</ol></div>';
   }
 
+  /* translate="no" throughout: these three columns ARE the lesson content.
+     Letting a machine translator rewrite the Uzbek and Russian terms would
+     destroy the one thing the table is for. */
   function termsTable(list) {
-    return '<div class="tablewrap terms"><table>' +
+    return '<div class="tablewrap terms notranslate" translate="no"><table>' +
       '<thead><tr><th>English</th><th>O‘zbekcha</th><th>Русский</th></tr></thead><tbody>' +
       list.map(function (t) {
-        return '<tr><td>' + t[0] + '</td><td class="uz">' + t[1] + '</td><td class="ru">' + t[2] + '</td></tr>';
+        return '<tr><td>' + t[0] + '</td><td class="uz" lang="uz">' + t[1] +
+          '</td><td class="ru" lang="ru">' + t[2] + '</td></tr>';
       }).join('') + '</tbody></table></div>';
   }
 

@@ -72,6 +72,27 @@ Every lesson page carries a back button to the grade page, a dropdown listing ev
 stream and quarter, and previous / next arrows. On phones a sticky bar at the foot of the page gives
 previous, all topics and next.
 
+## Languages
+
+The lessons are written in English, and every topic carries a terminology table
+in English, Uzbek and Russian.
+
+The header also has a language picker driven by the free Google Website
+Translator widget, which offers roughly 130 further languages. Two notes:
+
+- **It needs an internet connection.** The widget is loaded from
+  `translate.google.com`. Where that is unreachable — offline, behind a school
+  firewall, or on a page with a strict content-security policy — the picker
+  hides itself and nothing else on the page is affected.
+- **Mathematics is never translated.** Equations, figures, the lesson clock and
+  the three-language terminology table are all marked `translate="no"`, so a
+  machine translator cannot rewrite the notation or the very terms the table
+  exists to teach. Anything rendered after page load is protected the same way
+  by a `MutationObserver`.
+
+Machine translation is a convenience for a parent or a new arrival reading
+along, not a substitute for the written Uzbek and Russian terminology.
+
 ## PDFs
 
 `python3 -m http.server` is not needed — the builder reads the files directly:
