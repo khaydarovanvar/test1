@@ -1781,3 +1781,997 @@ G11_ALG.push({
     'Write your target for Quarter II in one checkable sentence, and date it.'
   ]
 });
+
+/* ===================== QUARTER II (21 hours) ===================== */
+
+/* ============================== 12 ============================== */
+G11_ALG.push({
+  id: 'a11-12', stream: 'alg', grade: 11, quarter: 2, lessons: '28–30', hours: 3,
+  title: 'Approximate calculations with the derivative',
+  subtitle: 'Near one point a curve is a straight line — which is enough to compute √4.02 in your head.',
+  uz: 'Algebra 11, §2.1', uzPage: 'pp. 131–146',
+  cam: 'P1 · 9.4 · P2 · numerical methods', camPage: 'Pure Mathematics 1, pp. 186–190', wb: 'P1 Exercise 9C',
+  objectives: [
+    'Derive and use the linear approximation f(a + h) ≈ f(a) + h·f′(a).',
+    'Estimate a root or a power without a calculator.',
+    'Estimate the change in a quantity from a small change in another.',
+    'Estimate the relative and percentage error in a computed quantity.'
+  ],
+  terms: [
+    ['Approximation', 'Taqribiy hisoblash', 'Приближённое вычисление'],
+    ['Linear approximation', 'Chiziqli yaqinlashish', 'Линейное приближение'],
+    ['Small increment', 'Kichik orttirma', 'Малое приращение'],
+    ['Differential', 'Differensial', 'Дифференциал'],
+    ['Absolute error', 'Absolyut xatolik', 'Абсолютная погрешность'],
+    ['Relative error', 'Nisbiy xatolik', 'Относительная погрешность'],
+    ['Percentage error', 'Foizli xatolik', 'Процентная погрешность'],
+    ['Convenient point', 'Qulay nuqta', 'Удобная точка'],
+    ['Order of accuracy', 'Aniqlik tartibi', 'Порядок точности']
+  ],
+  timing: [[16, 'Where the formula comes from'], [24, 'Roots and powers'], [24, 'Changes in a quantity'], [24, 'Error estimates'], [36, 'Practice'], [11, 'Homework']],
+  sections: [
+    {
+      h: 'Where the formula comes from',
+      html: `<p>Return to the definition. For small ${m('h')},</p>
+      ${eq(m(f('f(a + h) − f(a)', 'h') + ' ≈ f′(a)   ⇒   f(a + h) ≈ f(a) + h · f′(a)'), true)}
+      <p>Geometrically: near the point of tangency the curve and its tangent are almost the same line,
+      so the tangent's height is a good estimate of the curve's.</p>
+      {{fig:linearApprox:Close to a the two agree; the error grows with the square of the distance.}}
+      <div class="keybox"><div class="klabel">Choosing ${m('a')}</div>
+      Pick the nearest point at which ${m('f')} and ${m("f′")} are <b>easy</b>. For ${m(sr('4.02'))}
+      take ${m('a = 4')}; for ${m('sin 31°')} take ${m('a = 30°')}. The whole art is that choice.</div>`
+    },
+    {
+      h: 'Roots and powers',
+      html: `<p><b>Estimate ${m(sr('4.02'))}.</b> Take ${m('f(x) = ' + sr('x'))}, ${m('a = 4')},
+      ${m('h = 0.02')}:</p>
+      ${eq(m("f(4) = 2,   f′(x) = " + f('1', '2' + sr('x')) + ",   f′(4) = 0.25"), false)}
+      ${eq(m(sr('4.02') + ' ≈ 2 + 0.02 × 0.25 = 2.005'), true)}
+      <p>The true value is ${m('2.004994…')} — the estimate is right to five decimal places, from two
+      multiplications.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Estimate</th><th class="m">a</th><th class="m">h</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${sr('9.06')}</td><td class="m">9</td><td class="m">0.06</td><td class="m">3.01</td></tr>
+        <tr><td class="m">${sr('101')}</td><td class="m">100</td><td class="m">1</td><td class="m">10.05</td></tr>
+        <tr><td class="m">2.01³</td><td class="m">2</td><td class="m">0.01</td><td class="m">8.12</td></tr>
+        <tr><td class="m">${f('1', '4.98')}</td><td class="m">5</td><td class="m">−0.02</td><td class="m">0.2008</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Changes in a quantity',
+      html: `<p>The same formula, read as a statement about changes:</p>
+      ${eq(m('Δy ≈ f′(x) · Δx'), true)}
+      <p><b>Example.</b> A cube's side is measured as ${m('10')} cm, with a possible error of
+      ${m('0.05')} cm. By how much can the volume be out?</p>
+      ${eq(m('V = a³,   ' + f('dV', 'da') + ' = 3a² = 300,   ΔV ≈ 300 × 0.05 = 15 cm³'), false)}
+      <p>So ${m('V = 1000 ± 15')} cm³. The absolute error in the side is small, but it is multiplied by
+      ${m('3a²')} on its way to the volume.</p>`
+    },
+    {
+      h: 'Relative and percentage error',
+      html: `${eq('relative error  ' + m(f('Δy', 'y') + ' ≈ ' + f("f′(x) · Δx", 'f(x)')), true)}
+      <p>For the cube: ${m(f('15', '1000') + ' = 1.5%')}, from a side error of only
+      ${m(f('0.05', '10') + ' = 0.5%')}. The relative error is tripled, because the volume is the
+      <b>third</b> power of the length.</p>
+      <div class="keybox"><div class="klabel">A rule worth remembering</div>
+      For ${m('y = xⁿ')} the relative errors satisfy ${m(f('Δy', 'y') + ' ≈ n · ' + f('Δx', 'x'))}.
+      Squaring doubles the percentage error; cubing triples it; taking a square root halves it.</div>
+      <div class="warn"><span class="wl">The approximation is one-sided in accuracy</span>
+      It is good for <b>small</b> ${m('h')} only. Estimating ${m(sr('4.9'))} from ${m('a = 4')} gives
+      ${m('2.1125')} against a true ${m('2.2136')} — an error of 5%. Choose the nearer convenient point.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Estimate ' + m(sr('26')) + ' without a calculator.',
+      steps: [
+        [m('a = 25, h = 1'), m('f(25) = 5')],
+        [m("f′(x) = " + f('1', '2' + sr('x')) + ", f′(25) = 0.1"), ''],
+        [m(sr('26') + ' ≈ 5 + 1 × 0.1 = 5.1'), 'True: ' + m('5.0990') + '.']
+      ],
+      ans: m('≈ 5.1')
+    },
+    {
+      q: 'Estimate ' + m('3.02⁴') + '.',
+      steps: [
+        [m('f(x) = x⁴, a = 3, h = 0.02'), m('f(3) = 81')],
+        [m("f′(x) = 4x³, f′(3) = 108"), ''],
+        [m('81 + 0.02 × 108 = 83.16'), 'True: ' + m('83.17') + '.']
+      ],
+      ans: m('≈ 83.16')
+    },
+    {
+      q: 'A sphere’s radius is ' + m('6 ± 0.1') + ' cm. Estimate the error in its volume.',
+      steps: [
+        [m('V = ' + f('4', '3') + 'πr³'), m(f('dV', 'dr') + ' = 4πr² = 144π')],
+        [m('ΔV ≈ 144π × 0.1 ≈ 45.2'), ''],
+        [m('V = 288π ≈ 904.8'), ''],
+        ['Relative error ' + m(f('45.2', '904.8') + ' = 5%'), 'Three times the ' + m(f('0.1', '6') + ' ≈ 1.67%') + ' in ' + m('r') + '.']
+      ],
+      ans: m('ΔV ≈ 45') + ' cm³, about 5%'
+    }
+  ],
+  modelNote: 'Shrink h and watch the tangent’s prediction converge on the curve’s value.',
+  interactive: {
+    type: 'derivative',
+    title: 'The tangent as a predictor',
+    hint: 'Read the tangent height against the curve height at ' + m('a + h') + '.'
+  },
+  quiz: [
+    { q: 'The linear approximation is:', a: [m('f(a) · h'), m('f(a) + h f′(a)'), m("f′(a) + h"), m('f(a + h)')], c: 1, why: 'Value plus gradient times step.' },
+    { q: 'For ' + m(sr('4.02')) + ' the best ' + m('a') + ' is:', a: [m('0'), m('1'), m('4'), m('5')], c: 2, why: 'Nearest convenient square.' },
+    { q: m('Δy ≈') + ':', a: [m("f′(x) Δx"), m('f(x) Δx'), m('Δx'), m("f′(x)")], c: 0, why: 'The gradient scales the change.' },
+    { q: 'For ' + m('y = x³') + ' a 1% error in ' + m('x') + ' gives about:', a: ['1%', '2%', '3%', '9%'], c: 2, why: m('n = 3') + '.' },
+    { q: 'For ' + m('y = ' + sr('x')) + ' a 4% error in ' + m('x') + ' gives about:', a: ['1%', '2%', '4%', '8%'], c: 1, why: m('n = 0.5') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Estimate ' + m(sr('4.04')), m('≈ 2.01')],
+      ['Estimate ' + m(sr('9.06')), m('≈ 3.01')],
+      ['Estimate ' + m(sr('16.08')), m('≈ 4.01')],
+      ['Estimate ' + m('2.01²'), m('≈ 4.04')],
+      ['Estimate ' + m('3.02²'), m('≈ 9.12')],
+      ['Estimate ' + m('1.02³'), m('≈ 1.06')],
+      [m('Δy') + ' for ' + m('y = 5x') + ' when ' + m('Δx = 0.2'), m('1')]
+    ],
+    med: [
+      ['Estimate ' + m(sr('26')), m('≈ 5.1')],
+      ['Estimate ' + m(sr('101')), m('≈ 10.05')],
+      ['Estimate ' + m('3.02⁴'), m('≈ 83.16')],
+      ['Estimate ' + m(f('1', '4.98')), m('≈ 0.2008')],
+      ['Cube side ' + m('10 ± 0.05') + '; error in the volume', m('≈ 15') + ' cm³'],
+      ['Sphere radius ' + m('6 ± 0.1') + '; error in the volume', m('≈ 45') + ' cm³'],
+      ['A 2% error in the radius gives what error in the area of a circle?', m('≈ 4%')]
+    ],
+    hard: [
+      ['Estimate ' + m('∛8.12'), m('≈ 2.01')],
+      ['Estimate ' + m(sr('48')) + ' from ' + m('a = 49'), m('≈ 6.929') + ' (true ' + m('6.928') + ')'],
+      ['A circle’s radius grows 1%. By what percentage does the area grow?', m('≈ 2%')],
+      ['A cube’s surface area is measured to 2%. To what accuracy is the volume known?', m('≈ 3%')],
+      ['Estimate the error in ' + m('T = 2π' + sr(f('L', 'g'))) + ' from a 1% error in ' + m('L'), m('≈ 0.5%')],
+      ['Show the error in the linear approximation is of order ' + m('h²'), 'From the next term of the expansion'],
+      ['Why does estimating ' + m(sr('4.9')) + ' from ' + m('a = 4') + ' fail badly?', m('h = 0.9') + ' is not small — the ' + m('h²') + ' term dominates']
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'State ' + m('a') + ', ' + m('h') + ' and ' + m("f′(a)") + ' before every estimate.',
+  homework: [
+    'Estimate ' + m(sr('36.6')) + ' and ' + m(sr('99')) + '.',
+    'Estimate ' + m('2.03⁵') + '.',
+    'Estimate ' + m(f('1', '2.98')) + '.',
+    'A cube’s side is ' + m('8 ± 0.02') + ' cm. Find the volume and its absolute and percentage error.',
+    'A sphere’s radius is measured to within 1%. To what accuracy is its volume known?',
+    'Explain in three sentences why the approximation is only good for small ' + m('h') + '.'
+  ]
+});
+
+/* ============================== 13 ============================== */
+G11_ALG.push({
+  id: 'a11-13', stream: 'alg', grade: 11, quarter: 2, lessons: '31–34', hours: 4,
+  title: 'Modelling with the derivative',
+  subtitle: 'Four lessons of real situations — motion, growth, cost, flow — in which the derivative is the quantity the question is really about.',
+  uz: 'Algebra 11, §2.2', uzPage: 'pp. 147–168',
+  cam: 'P1 · 9.4', camPage: 'Pure Mathematics 1, pp. 186–190', wb: 'P1 Exercise 9C',
+  objectives: [
+    'Interpret a derivative as a rate of change in a stated context, with units.',
+    'Model motion with displacement, velocity and acceleration.',
+    'Use connected rates of change.',
+    'Interpret marginal cost and marginal revenue.'
+  ],
+  terms: [
+    ['Mathematical model', 'Matematik model', 'Математическая модель'],
+    ['Rate of change', 'O‘zgarish tezligi', 'Скорость изменения'],
+    ['Displacement', 'Ko‘chish', 'Перемещение'],
+    ['Velocity', 'Tezlik', 'Скорость'],
+    ['Acceleration', 'Tezlanish', 'Ускорение'],
+    ['Connected rates', 'Bog‘liq tezliklar', 'Связанные скорости'],
+    ['Marginal cost', 'Marjinal xarajat', 'Предельные издержки'],
+    ['Marginal revenue', 'Marjinal daromad', 'Предельный доход'],
+    ['Units of a rate', 'Tezlik birligi', 'Единицы скорости'],
+    ['Instant of rest', 'To‘xtash payti', 'Момент остановки']
+  ],
+  timing: [[16, 'The derivative has units'], [30, 'Motion'], [30, 'Connected rates'], [30, 'Cost and revenue'], [50, 'Practice'], [24, 'Homework and consolidation']],
+  sections: [
+    {
+      h: 'The derivative has units',
+      html: `<div class="keybox"><div class="klabel">Read the units off the fraction</div>
+      ${m(f('dy', 'dx'))} carries the units of ${m('y')} divided by those of ${m('x')}. A distance in
+      metres over a time in seconds gives m/s; a cost in so‘m over a number of items gives so‘m per
+      item. Stating the units is half the interpretation.</div>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">y</th><th class="m">x</th><th class="m">${f('dy', 'dx')}</th><th>Units</th></tr></thead>
+      <tbody>
+        <tr><td>distance</td><td>time</td><td>velocity</td><td class="m">m/s</td></tr>
+        <tr><td>velocity</td><td>time</td><td>acceleration</td><td class="m">m/s²</td></tr>
+        <tr><td>volume</td><td>time</td><td>flow rate</td><td class="m">cm³/s</td></tr>
+        <tr><td>total cost</td><td>quantity</td><td>marginal cost</td><td>so‘m per item</td></tr>
+        <tr><td>population</td><td>time</td><td>growth rate</td><td>people per year</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Motion',
+      html: `${eq(m('v(t) = s′(t)') + '     ' + m("a(t) = v′(t) = s″(t)"), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question in words</th><th>What to solve</th></tr></thead>
+      <tbody>
+        <tr><td>when is the body at rest?</td><td class="m">v(t) = 0</td></tr>
+        <tr><td>when does it change direction?</td><td>${m('v')} changes sign</td></tr>
+        <tr><td>when is the speed greatest?</td><td class="m">a(t) = 0</td></tr>
+        <tr><td>how far has it travelled?</td><td>total distance — count each direction separately</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Displacement is not distance</span>
+      A body that goes out 5 m and comes back has displacement ${m('0')} and distance ${m('10')} m.
+      If ${m('v')} changes sign inside the interval, the journey must be split at that instant.</div>`
+    },
+    {
+      h: 'Connected rates',
+      html: `<p>When two quantities are linked by a formula, their rates are linked by the chain rule:</p>
+      ${eq(m(f('dA', 'dt') + ' = ' + f('dA', 'dr') + ' · ' + f('dr', 'dt')), true)}
+      <p><b>Example.</b> Water is poured into a cone at ${m('20')} cm³/s. The cone has height ${m('30')}
+      and top radius ${m('15')} cm. How fast is the depth rising when ${m('h = 10')}?</p>
+      ${eq(m('r = ' + f('h', '2') + '  ⇒  V = ' + f('1', '3') + 'π(' + f('h', '2') + ')²h = ' + f('πh³', '12')), false)}
+      ${eq(m(f('dV', 'dh') + ' = ' + f('πh²', '4') + ' = 25π  ⇒  ' + f('dh', 'dt') + ' = ' + f('20', '25π') + ' ≈ 0.255 cm/s'), true)}
+      <div class="keybox"><div class="klabel">Always reduce to one variable first</div>
+      The relation ${m('r = ' + f('h', '2'))} comes from similar triangles and must be used <b>before</b>
+      differentiating. Differentiating a two-variable formula is the standard error here.</div>`
+    },
+    {
+      h: 'Cost and revenue',
+      html: `<p>In economics the derivative of a total is called a <b>marginal</b> quantity: the
+      approximate cost of producing <b>one more</b> item.</p>
+      ${eq(m('MC(q) = C′(q)') + '     ' + m("MR(q) = R′(q)") + '     profit is greatest when ' + m('MC = MR'), true)}
+      <p>The last statement is the optimisation of Lesson 23–25 in economic dress: profit
+      ${m('P = R − C')} is stationary when ${m("P′ = R′ − C′ = 0")}.</p>
+      <p><b>Example.</b> ${m('C(q) = 0.02q² + 8q + 500')} so‘m. The marginal cost at ${m('q = 100')} is
+      ${m("C′(100) = 0.04 × 100 + 8 = 12")} so‘m — the 101st item costs about 12 so‘m to make, while the
+      average cost of the first hundred is ${m(f('1500', '100') + ' = 15')} so‘m.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: m('s = t³ − 6t² + 9t') + ' metres. Find when the body is at rest and the total distance in the first 4 s.',
+      steps: [
+        [m('v = 3t² − 12t + 9 = 3(t − 1)(t − 3)'), 'Rest at ' + m('t = 1, 3') + '.'],
+        [m('s(0) = 0, s(1) = 4, s(3) = 0, s(4) = 4'), ''],
+        ['Distances: ' + m('4 + 4 + 4') + '.', 'Direction changes twice.']
+      ],
+      ans: 'Rest at ' + m('t = 1') + ' and ' + m('t = 3') + '; distance ' + m('12') + ' m'
+    },
+    {
+      q: 'A ladder 5 m long slides down a wall. Its foot moves out at ' + m('0.4') + ' m/s. How fast is the top falling when the foot is 3 m out?',
+      steps: [
+        [m('x² + y² = 25'), 'Differentiate with respect to ' + m('t') + '.'],
+        [m('2x' + f('dx', 'dt') + ' + 2y' + f('dy', 'dt') + ' = 0'), ''],
+        [m('x = 3 ⇒ y = 4'), ''],
+        [m('3(0.4) + 4' + f('dy', 'dt') + ' = 0 ⇒ ' + f('dy', 'dt') + ' = −0.3'), '']
+      ],
+      ans: m('0.3') + ' m/s downwards'
+    },
+    {
+      q: m('C(q) = 0.05q² + 12q + 800') + '. Find the marginal cost at ' + m('q = 60') + ' and the average cost.',
+      steps: [
+        [m("C′(q) = 0.1q + 12"), ''],
+        [m("C′(60) = 18") + ' so‘m per item.', ''],
+        [m('C(60) = 180 + 720 + 800 = 1700'), ''],
+        ['Average ' + m(f('1700', '60') + ' ≈ 28.3') + ' so‘m.', '']
+      ],
+      ans: 'Marginal ' + m('18') + ', average ' + m('≈ 28.3') + ' so‘m'
+    }
+  ],
+  modelNote: 'Give every answer with its units, out loud, before writing it down.',
+  interactive: {
+    type: 'derivative',
+    title: 'A rate of change',
+    hint: 'Read the gradient as a rate, and say its units.'
+  },
+  quiz: [
+    { q: 'If ' + m('s') + ' is in metres and ' + m('t') + ' in seconds, ' + m("s′") + ' is in:', a: [m('m'), m('m/s'), m('m/s²'), m('s/m')], c: 1, why: 'Units divide.' },
+    { q: 'A body is at rest when:', a: [m('s = 0'), m('v = 0'), m('a = 0'), m("s′′ = 0")], c: 1, why: 'Zero velocity.' },
+    { q: 'Marginal cost is:', a: [m('C(q)'), m('C′(q)'), m(f('C(q)', 'q')), m("C″(q)")], c: 1, why: 'The cost of one more item.' },
+    { q: 'Connected rates use:', a: ['the product rule', 'the chain rule', 'the quotient rule', 'first principles'], c: 1, why: m(f('dA', 'dt') + ' = ' + f('dA', 'dr') + f('dr', 'dt')) + '.' },
+    { q: 'Profit is greatest when:', a: [m('MC = 0'), m('MR = 0'), m('MC = MR'), m('C = R')], c: 2, why: m("P′ = R′ − C′ = 0") + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('s = 5t²') + '; find ' + m('v(3)'), m('30') + ' m/s'],
+      [m('s = t³') + '; find ' + m('a(2)'), m('12') + ' m/s²'],
+      [m('s = 4t − t²') + '; when is the body at rest?', m('t = 2')],
+      ['Units of ' + m(f('dV', 'dt')) + ' for volume in cm³', m('cm³/s')],
+      [m('C(q) = 3q + 50') + '; marginal cost', m('3')],
+      [m('V = ' + f('4', '3') + 'πr³') + '; find ' + m(f('dV', 'dr')), m('4πr²')],
+      [m('A = πr²') + '; find ' + m(f('dA', 'dr')) + ' at ' + m('r = 3'), m('6π')]
+    ],
+    med: [
+      [m('s = t³ − 6t² + 9t') + '; when at rest?', m('t = 1, 3')],
+      ['Same; total distance in the first 4 s', m('12') + ' m'],
+      ['Balloon: ' + m(f('dr', 'dt') + ' = 2') + ' cm/s; find ' + m(f('dV', 'dt')) + ' at ' + m('r = 5'), m('200π') + ' cm³/s'],
+      ['Circle: ' + m(f('dr', 'dt') + ' = 0.5') + '; find ' + m(f('dA', 'dt')) + ' at ' + m('r = 8'), m('8π')],
+      ['Ladder 5 m, foot at ' + m('0.4') + ' m/s; top’s speed when foot is 3 m out', m('0.3') + ' m/s'],
+      [m('C(q) = 0.05q² + 12q + 800') + '; marginal cost at ' + m('q = 60'), m('18')],
+      [m('s = 20t − 5t²') + '; greatest height and when', m('20') + ' m at ' + m('t = 2')]
+    ],
+    hard: [
+      ['Cone, height 30, radius 15, filled at 20 cm³/s. ' + m(f('dh', 'dt')) + ' at ' + m('h = 10'), m('≈ 0.255') + ' cm/s'],
+      ['Same cone at ' + m('h = 20'), m('≈ 0.064') + ' cm/s'],
+      [m('s = t⁴ − 8t²') + '; find all instants of rest', m('t = 0, ±2')],
+      ['A cube’s volume grows at 12 cm³/s. Find ' + m(f('da', 'dt')) + ' when ' + m('a = 4'), m('0.25') + ' cm/s'],
+      ['Same cube: find ' + m(f('dS', 'dt')) + ' at that moment', m('12') + ' cm²/s'],
+      [m('R(q) = 60q − 0.5q²') + ', ' + m('C(q) = 10q + 200') + '. Maximise the profit', m('q = 50') + ', profit ' + m('1050')],
+      ['A trough 10 m long, cross-section an isosceles triangle 2 m wide and 1 m deep, fills at 0.5 m³/min. Find ' + m(f('dh', 'dt')) + ' at ' + m('h = 0.5'), m('0.05') + ' m/min']
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Every answer needs its units and a sentence in the words of the question.',
+  homework: [
+    m('s = 2t³ − 15t² + 24t') + '. Find when the body is at rest, and the total distance in the first 5 s.',
+    'A spherical balloon is inflated at ' + m('30') + ' cm³/s. Find how fast the radius grows when ' + m('r = 5') + ' cm.',
+    'A ladder 13 m long slides; the foot moves at ' + m('0.5') + ' m/s. Find the top’s speed when the foot is 5 m out.',
+    m('C(q) = 0.1q² + 20q + 1000') + '. Find the marginal cost at ' + m('q = 40') + ' and the average cost.',
+    m('R(q) = 100q − q²') + ' and ' + m('C(q) = 20q + 300') + '. Find the profit-maximising ' + m('q') + '.',
+    'A conical tank of height 12 m and top radius 6 m is filled at ' + m('3') + ' m³/min. Find ' + m(f('dh', 'dt')) + ' when ' + m('h = 4') + ' m.'
+  ]
+});
+
+/* ============================== 14 ============================== */
+G11_ALG.push({
+  id: 'a11-14', stream: 'alg', grade: 11, quarter: 2, lessons: '35–36', hours: 2,
+  title: 'Control work 3, and work on the mistakes',
+  subtitle: 'Approximation and modelling in one paper — the two topics where a missing unit costs a mark.',
+  uz: 'Algebra 11, Nazorat ishi 3', uzPage: 'pp. 169–172',
+  cam: 'P1 · Chapter 9 review', camPage: 'Pure Mathematics 1, pp. 191–194', wb: 'Control paper C',
+  objectives: [
+    'Apply linear approximation and connected rates under time.',
+    'Give every answer with its units and in context.',
+    'Classify each lost mark as careless, method or knowledge.',
+    'Rewrite every wrong solution correctly.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Linear approximation', 'Chiziqli yaqinlashish', 'Линейное приближение'],
+    ['Connected rates', 'Bog‘liq tezliklar', 'Связанные скорости'],
+    ['Units', 'O‘lchov birliklari', 'Единицы измерения'],
+    ['Interpretation', 'Talqin', 'Интерпретация'],
+    ['Careless error', 'E’tiborsizlik xatosi', 'Ошибка по невнимательности'],
+    ['Method error', 'Usul xatosi', 'Ошибка в методе'],
+    ['Knowledge gap', 'Bilim bo‘shlig‘i', 'Пробел в знаниях']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [10, 'Self-mark'], [25, 'Rewrite'], [12, 'Units drill']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Estimate ${m(sr('37'))} and ${m('2.02⁴')} by linear approximation</td><td class="m">5</td><td>L28–30</td></tr>
+        <tr><td>2</td><td>A cube’s side is ${m('12 ± 0.03')} cm. Find the volume and its percentage error</td><td class="m">4</td><td>L28–30</td></tr>
+        <tr><td>3</td><td>${m('s = t³ − 9t² + 24t')}: find when the body is at rest and the distance in the first 5 s</td><td class="m">6</td><td>L31–34</td></tr>
+        <tr><td>4</td><td>A balloon inflates at ${m('40')} cm³/s. Find ${m(f('dr', 'dt'))} when ${m('r = 4')}</td><td class="m">5</td><td>L31–34</td></tr>
+        <tr><td>5</td><td>${m('C(q) = 0.04q² + 15q + 600')}: marginal and average cost at ${m('q = 50')}</td><td class="m">5</td><td>L31–34</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Units are marked</div>
+      Q3, Q4 and Q5 each carry one mark for the units alone. A numerically perfect answer with no units
+      loses three of the twenty-five.</div>`
+    },
+    {
+      h: 'The three errors this topic produces',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Error</th><th>Looks like</th><th>Kind</th></tr></thead>
+      <tbody>
+        <tr><td>units omitted</td><td>“the answer is 0.4”</td><td>careless</td></tr>
+        <tr><td>two variables kept</td><td>differentiating ${m('V = ' + f('1', '3') + 'πr²h')} in ${m('t')} without eliminating ${m('r')}</td><td>method</td></tr>
+        <tr><td>distance read as displacement</td><td>ignoring the change of direction</td><td>method</td></tr>
+        <tr><td>wrong ${m('a')} chosen</td><td>estimating ${m(sr('37'))} from ${m('a = 25')}</td><td>knowledge</td></tr>
+      </tbody></table></div>
+      {{fig:linearApprox:Question 1 in one picture — and the reason the choice of a matters.}}`
+    },
+    {
+      h: 'The units drill',
+      html: `<p>Ten rates on the board. For each, the class calls out only the <b>units</b>, in three
+      seconds:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Rate</th><th>Units</th></tr></thead>
+      <tbody>
+        <tr><td>${m(f('ds', 'dt'))}, ${m('s')} in km, ${m('t')} in hours</td><td class="m">km/h</td></tr>
+        <tr><td>${m(f('dV', 'dt'))}, ${m('V')} in litres</td><td class="m">litres per second</td></tr>
+        <tr><td>${m(f('dC', 'dq'))}, cost in so‘m</td><td>so‘m per item</td></tr>
+        <tr><td>${m(f('dA', 'dr'))}, ${m('A')} in cm²</td><td class="m">cm</td></tr>
+        <tr><td>${m(f('dP', 'dt'))}, ${m('P')} a population</td><td>people per year</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Row 4 is the interesting one</span>
+      ${m(f('dA', 'dr') + ' = 2πr')} has units cm²/cm = cm. A rate need not be “per second”: it is
+      whatever the two quantities make it.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q1: estimate ' + m(sr('37')) + '.',
+      steps: [
+        [m('a = 36, h = 1'), 'Nearest convenient square.'],
+        [m('f(36) = 6') + ', ' + m("f′(36) = " + f('1', '12')), ''],
+        [m('6 + 1 × ' + f('1', '12') + ' ≈ 6.083'), 'True ' + m('6.0828') + '.']
+      ],
+      ans: m('≈ 6.083')
+    },
+    {
+      q: 'Model answer, Q4: balloon at ' + m('40') + ' cm³/s, find ' + m(f('dr', 'dt')) + ' at ' + m('r = 4') + '.',
+      steps: [
+        [m('V = ' + f('4', '3') + 'πr³'), m(f('dV', 'dr') + ' = 4πr² = 64π')],
+        [m(f('dV', 'dt') + ' = ' + f('dV', 'dr') + ' · ' + f('dr', 'dt')), ''],
+        [m('40 = 64π · ' + f('dr', 'dt')), ''],
+        [m(f('dr', 'dt') + ' = ' + f('40', '64π') + ' ≈ 0.199'), '']
+      ],
+      ans: m('≈ 0.20') + ' cm/s'
+    },
+    {
+      q: 'A learner wrote “the top of the ladder falls at 0.3”. What is missing?',
+      steps: [
+        ['The number is right.', ''],
+        ['No units, and no direction.', 'A careless error.'],
+        ['Correct: ' + m('0.3') + ' m/s downwards.', '']
+      ],
+      ans: 'The units and the direction'
+    }
+  ],
+  modelNote: 'Run the units drill before the rewrite, not after.',
+  interactive: {
+    type: 'quiz',
+    title: 'Units and estimates',
+    hint: 'Ask what the two quantities are measured in.',
+    items: [
+      { q: 'Best ' + m('a') + ' for estimating ' + m(sr('37')) + ':', a: [m('25'), m('36'), m('40'), m('49')], c: 1, why: 'Nearest convenient square.' },
+      { q: m(sr('37')) + ' ≈', a: [m('6.05'), m('6.083'), m('6.2'), m('6.5')], c: 1, why: m('6 + ' + f('1', '12')) + '.' },
+      { q: 'Units of ' + m(f('dA', 'dr')) + ' for ' + m('A') + ' in cm²:', a: [m('cm²'), m('cm'), m('cm³'), m('cm²/s')], c: 1, why: 'cm² ÷ cm.' },
+      { q: 'Balloon at 40 cm³/s, ' + m('r = 4') + ': ' + m(f('dr', 'dt')) + ' ≈', a: [m('0.20'), m('0.40'), m('2.0'), m('6.4')], c: 0, why: m(f('40', '64π')) + '.' },
+      { q: m('s = t³ − 9t² + 24t') + ': rest at', a: [m('t = 2, 4'), m('t = 1, 3'), m('t = 3, 8'), m('t = 0, 6')], c: 0, why: m('3(t−2)(t−4) = 0') + '.' },
+      { q: 'A 0.25% error in a cube’s side gives what error in the volume?', a: ['0.25%', '0.5%', '0.75%', '3%'], c: 2, why: 'Three times.' }
+    ]
+  },
+  quiz: [
+    { q: 'A rate’s units come from:', a: ['the numerator only', 'both quantities', 'the context', 'nothing'], c: 1, why: 'They divide.' },
+    { q: 'Before differentiating a connected-rate formula you must:', a: ['square it', 'reduce it to one variable', 'integrate', 'nothing'], c: 1, why: 'Otherwise the derivative is meaningless.' },
+    { q: 'Distance differs from displacement when:', a: ['never', 'the velocity changes sign', 'the acceleration is zero', 'always'], c: 1, why: 'The journey must be split.' },
+    { q: 'Choosing a poor ' + m('a') + ' in an estimate is:', a: ['careless', 'a method error', 'a knowledge gap', 'fine'], c: 2, why: 'The principle was not understood.' }
+  ],
+  practice: {
+    easy: [
+      ['Estimate ' + m(sr('37')), m('≈ 6.083')],
+      ['Estimate ' + m('2.02⁴'), m('≈ 16.64')],
+      ['Units of ' + m(f('ds', 'dt')) + ' for km and hours', m('km/h')],
+      [m('s = t² − 4t') + '; when at rest?', m('t = 2')],
+      [m('C(q) = 5q + 90') + '; marginal cost', m('5')],
+      [m('V = ' + f('4', '3') + 'πr³') + '; ' + m(f('dV', 'dr')) + ' at ' + m('r = 4'), m('64π')],
+      ['A 1% error in the side gives what error in the area?', m('≈ 2%')]
+    ],
+    med: [
+      ['Cube side ' + m('12 ± 0.03') + '; percentage error in the volume', m('0.75%')],
+      [m('s = t³ − 9t² + 24t') + '; rest at', m('t = 2, 4')],
+      ['Same; distance in the first 5 s', m('28') + ' m'],
+      ['Balloon at 40 cm³/s; ' + m(f('dr', 'dt')) + ' at ' + m('r = 4'), m('≈ 0.20') + ' cm/s'],
+      [m('C(q) = 0.04q² + 15q + 600') + '; marginal cost at ' + m('q = 50'), m('19')],
+      ['Same; average cost at ' + m('q = 50'), m('≈ 32') + ' so‘m'],
+      ['Estimate ' + m(f('1', '5.02')), m('≈ 0.1992')]
+    ],
+    hard: [
+      ['Estimate ' + m('∛27.5'), m('≈ 3.0185')],
+      ['A cone of height 12, radius 6, fills at 4 m³/min. ' + m(f('dh', 'dt')) + ' at ' + m('h = 6'), m(f('4', '9π')) + ' ≈ ' + m('0.141') + ' m/min'],
+      [m('s = t⁴ − 4t³') + '; find every instant of rest', m('t = 0, 3')],
+      ['A square’s area grows at 8 cm²/s. Find ' + m(f('da', 'dt')) + ' at ' + m('a = 4'), m('1') + ' cm/s'],
+      ['A ladder 10 m long; the top falls at 0.6 m/s. Find the foot’s speed when the top is 6 m up', m('0.45') + ' m/s'],
+      [m('R(q) = 80q − 0.4q²') + ', ' + m('C(q) = 20q + 500') + '. Maximise the profit', m('q = 75') + ', profit ' + m('1750')],
+      ['Show that for ' + m('y = xⁿ') + ' the percentage error multiplies by ' + m('n'), m(f('Δy', 'y') + ' = n' + f('Δx', 'x'))]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Task 1 is the rewrite. Units on every line.',
+  homework: [
+    'Rewrite in full every question that lost a mark, with units on every answer.',
+    'Five problems from the section your knowledge column was heaviest in.',
+    'Estimate ' + m(sr('50')) + ' and ' + m('3.01⁵') + '.',
+    'A cone of height 20 and top radius 10 fills at ' + m('5') + ' cm³/s. Find ' + m(f('dh', 'dt')) + ' when ' + m('h = 8') + '.'
+  ]
+});
+
+/* ============================== 15 ============================== */
+G11_ALG.push({
+  id: 'a11-15', stream: 'alg', grade: 11, quarter: 2, lessons: '37–40', hours: 4,
+  title: 'The antiderivative and the indefinite integral',
+  subtitle: 'Differentiation run backwards — and the constant that makes the answer a whole family of curves.',
+  uz: 'Algebra 11, §2.3', uzPage: 'pp. 173–192',
+  cam: 'P1 · 10.1', camPage: 'Pure Mathematics 1, pp. 196–202', wb: 'P1 Exercise 10A',
+  objectives: [
+    'State the definition of an antiderivative and verify one by differentiating.',
+    'Explain why the antiderivative is determined only up to a constant.',
+    'Write the indefinite integral with its constant of integration.',
+    'Find the particular antiderivative through a given point.'
+  ],
+  terms: [
+    ['Antiderivative', 'Boshlang‘ich funksiya', 'Первообразная'],
+    ['Indefinite integral', 'Aniqmas integral', 'Неопределённый интеграл'],
+    ['Constant of integration', 'Integrallash doimiysi', 'Постоянная интегрирования'],
+    ['Integrand', 'Integral ostidagi funksiya', 'Подынтегральная функция'],
+    ['Family of curves', 'Egri chiziqlar oilasi', 'Семейство кривых'],
+    ['Initial condition', 'Boshlang‘ich shart', 'Начальное условие'],
+    ['Particular solution', 'Xususiy yechim', 'Частное решение'],
+    ['Integration', 'Integrallash', 'Интегрирование'],
+    ['Inverse operation', 'Teskari amal', 'Обратная операция']
+  ],
+  timing: [[16, 'The definition'], [24, 'Why the constant'], [26, 'Notation'], [30, 'Particular antiderivatives'], [46, 'Practice'], [38, 'Homework and consolidation']],
+  sections: [
+    {
+      h: 'The definition',
+      html: `<div class="keybox"><div class="klabel">Antiderivative</div>
+      ${m('F')} is an <b>antiderivative</b> of ${m('f')} on an interval when ${m("F′(x) = f(x)")} for every
+      ${m('x')} in it.</div>
+      <p>So the question “what is the antiderivative of ${m('2x')}?” asks: what did I differentiate to
+      get ${m('2x')}? The answer ${m('x²')} is checked by differentiating it back.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">f(x)</th><th>An antiderivative</th><th>Check</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2x</td><td class="m">x²</td><td class="m">(x²)′ = 2x ✓</td></tr>
+        <tr><td class="m">3x²</td><td class="m">x³</td><td class="m">(x³)′ = 3x² ✓</td></tr>
+        <tr><td class="m">1</td><td class="m">x</td><td class="m">(x)′ = 1 ✓</td></tr>
+        <tr><td class="m">0</td><td class="m">7</td><td class="m">(7)′ = 0 ✓</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Always check by differentiating</span>
+      Integration has no algorithm that always works, but its answer can always be verified in one line.
+      That check costs five seconds and catches almost every error.</div>`
+    },
+    {
+      h: 'Why there is a constant',
+      html: `<p>The last row is the clue: ${m('7')} is an antiderivative of ${m('0')}, and so is
+      ${m('−3')}, and so is any constant. So if ${m('F')} works, so does ${m('F + C')} — differentiating
+      kills the constant.</p>
+      ${eq(m("(F + C)′ = F′ + 0 = f"), true)}
+      <p><b>Theorem.</b> If ${m('F')} and ${m('G')} are both antiderivatives of ${m('f')} on an interval,
+      then ${m('F − G')} is constant. So the family ${m('F + C')} is <b>all</b> of them.</p>
+      {{fig:antiderivFamily:One shape, shifted. At any x the tangents are parallel — that is what equal derivatives means.}}
+      <div class="keybox"><div class="klabel">Read the picture</div>
+      Every member of the family has the same gradient at each ${m('x')}. Knowing the derivative fixes
+      the <b>shape</b> of the curve but not its <b>height</b>. One extra fact — a point on the curve —
+      fixes the height.</div>`
+    },
+    {
+      h: 'The notation',
+      html: `${eq(m('∫ f(x) dx = F(x) + C   where  F′(x) = f(x)'), true)}
+      <p>Read “the integral of ${m('f')} of ${m('x')}, dee ${m('x')}”. The ${m('∫')} sign is an
+      elongated S, for <i>summa</i>; the ${m('dx')} says which letter is the variable. The ${m('+ C')}
+      is part of the answer, not decoration.</p>
+      <div class="warn"><span class="wl">${m('+ C')} is worth a mark, every time</span>
+      An indefinite integral without its constant is an incomplete answer. It is the single most
+      frequently lost mark in the whole of integration.</div>`
+    },
+    {
+      h: 'The particular antiderivative',
+      html: `<p>An initial condition picks one member of the family:</p>
+      <p><b>Example.</b> Find ${m('F')} with ${m("F′(x) = 3x²")} and ${m('F(2) = 11')}.</p>
+      ${eq(m('F(x) = x³ + C   ⇒   8 + C = 11   ⇒   C = 3   ⇒   F(x) = x³ + 3'), true)}
+      <p>In physics this is how a motion is reconstructed: the acceleration gives the velocity up to a
+      constant, which the initial velocity supplies; the velocity gives the displacement up to another
+      constant, which the initial position supplies.</p>
+      ${eq(m('a(t) = −10  ⇒  v(t) = −10t + v₀  ⇒  s(t) = −5t² + v₀t + s₀'), true)}
+      <p>Every formula of Grade-9 kinematics is an antiderivative, taken twice.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find ' + m('∫ 4x³ dx') + '.',
+      steps: [
+        ['What differentiates to ' + m('4x³') + '?', ''],
+        [m('(x⁴)′ = 4x³'), ''],
+        ['Add the constant.', '']
+      ],
+      ans: m('x⁴ + C')
+    },
+    {
+      q: 'Find the antiderivative of ' + m("f(x) = 6x² − 4x") + ' passing through ' + m('(1, 5)') + '.',
+      steps: [
+        [m('F(x) = 2x³ − 2x² + C'), 'Check: ' + m("F′ = 6x² − 4x") + ' ✓'],
+        [m('F(1) = 2 − 2 + C = C'), ''],
+        [m('C = 5'), '']
+      ],
+      ans: m('F(x) = 2x³ − 2x² + 5')
+    },
+    {
+      q: 'A stone is dropped from 45 m. With ' + m('a = −10') + ' m/s², when does it land?',
+      steps: [
+        [m('v = −10t + 0'), 'Dropped, so ' + m('v₀ = 0') + '.'],
+        [m('s = −5t² + 45'), m('s₀ = 45') + '.'],
+        [m('−5t² + 45 = 0 ⇒ t² = 9'), ''],
+        [m('t = 3') + ' s.', '']
+      ],
+      ans: m('t = 3') + ' s'
+    }
+  ],
+  modelNote: 'Differentiate every answer on the board before moving on.',
+  interactive: {
+    type: 'derivative',
+    title: 'Forwards and backwards',
+    hint: 'Differentiate the answer and confirm you get the integrand.'
+  },
+  quiz: [
+    { q: m('F') + ' is an antiderivative of ' + m('f') + ' when:', a: [m('F = f'), m("F′ = f"), m("f′ = F"), m('F + f = 0')], c: 1, why: 'Differentiating ' + m('F') + ' gives ' + m('f') + '.' },
+    { q: m('∫ 2x dx') + ' is:', a: [m('x²'), m('x² + C'), m('2'), m('2x² + C')], c: 1, why: 'The constant is part of the answer.' },
+    { q: 'Two antiderivatives of the same function differ by:', a: ['nothing', 'a constant', 'a linear term', 'anything'], c: 1, why: 'Their difference has zero derivative.' },
+    { q: m('∫ 0 dx') + ' is:', a: [m('0'), m('C'), m('x'), 'undefined'], c: 1, why: 'Every constant works.' },
+    { q: 'To fix ' + m('C') + ' you need:', a: ['nothing', 'one point on the curve', 'the derivative', 'two derivatives'], c: 1, why: 'It gives one equation for ' + m('C') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('∫ 2x dx'), m('x² + C')],
+      [m('∫ 3x² dx'), m('x³ + C')],
+      [m('∫ 1 dx'), m('x + C')],
+      [m('∫ 5 dx'), m('5x + C')],
+      [m('∫ 4x³ dx'), m('x⁴ + C')],
+      [m('∫ 0 dx'), m('C')],
+      ['Is ' + m('x² + 7') + ' an antiderivative of ' + m('2x') + '?', 'yes']
+    ],
+    med: [
+      [m('∫ (6x² − 4x) dx'), m('2x³ − 2x² + C')],
+      [m('∫ (x + 3) dx'), m(f('x²', '2') + ' + 3x + C')],
+      [m('∫ (2x³ − x) dx'), m(f('x⁴', '2') + ' − ' + f('x²', '2') + ' + C')],
+      ['Antiderivative of ' + m('6x² − 4x') + ' through ' + m('(1, 5)'), m('2x³ − 2x² + 5')],
+      ['Antiderivative of ' + m('4x') + ' through ' + m('(2, 10)'), m('2x² + 2')],
+      [m('a = −10') + ', ' + m('v₀ = 0') + ', ' + m('s₀ = 45') + '. Find ' + m('s(t)'), m('45 − 5t²')],
+      ['When does that stone land?', m('t = 3') + ' s']
+    ],
+    hard: [
+      ['Find ' + m('F') + ' with ' + m("F″(x) = 6x") + ', ' + m("F′(0) = 2") + ' and ' + m('F(0) = 1'), m('F(x) = x³ + 2x + 1')],
+      ['Antiderivative of ' + m('(2x + 1)²') + ' — expand first', m(f('4x³', '3') + ' + 2x² + x + C')],
+      ['A car decelerates at ' + m('4') + ' m/s² from ' + m('20') + ' m/s. How far before it stops?', m('50') + ' m'],
+      ['Prove that two antiderivatives differ by a constant', m("(F − G)′ = 0") + ' on an interval'],
+      ['Show no ' + m('f') + ' has ' + m("f′(x) = 3x²") + ' and ' + m('f(1) = f(−1)'), m('f = x³ + C') + ' gives ' + m('1 + C = −1 + C') + ', which is false'],
+      ['Why must the interval be stated in the theorem?', 'On a disconnected domain the difference can jump'],
+      [m('∫ (x + ' + f('1', 'x') + ')² dx') + ' — expand and integrate the powers', m(f('x³', '3') + ' + 2x − ' + f('1', 'x') + ' + C')]
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Differentiate every answer to check it, and never omit ' + m('+ C') + '.',
+  homework: [
+    'Find ' + m('∫ 5x⁴ dx') + ', ' + m('∫ (3x² + 2x) dx') + ' and ' + m('∫ (x − 4) dx') + '.',
+    'Find the antiderivative of ' + m('8x³ − 6x') + ' passing through ' + m('(1, 0)') + '.',
+    'Find ' + m('F') + ' with ' + m("F′(x) = 12x²") + ' and ' + m('F(2) = 40') + '.',
+    'A ball is thrown up at ' + m('25') + ' m/s from ground level, with ' + m('a = −10') + '. Find ' + m('s(t)') + ' and the greatest height.',
+    'Explain in three sentences why the answer to an indefinite integral is a family of curves.',
+    'Show that ' + m('x² + 3') + ' and ' + m('x² − 8') + ' are both antiderivatives of ' + m('2x') + ', and state their difference.'
+  ]
+});
+
+/* ============================== 16 ============================== */
+G11_ALG.push({
+  id: 'a11-16', stream: 'alg', grade: 11, quarter: 2, lessons: '41–46', hours: 6,
+  title: 'The table of integrals and the rules of integration',
+  subtitle: 'Six lessons on the standard integrals, the two linearity rules, and the one substitution that handles every bracket you will meet this year.',
+  uz: 'Algebra 11, §2.4', uzPage: 'pp. 193–220',
+  cam: 'P1 · 10.2–10.3', camPage: 'Pure Mathematics 1, pp. 203–212', wb: 'P1 Exercise 10B, 10C',
+  objectives: [
+    'Use the power rule for integration, including negative and fractional indices.',
+    'Apply the constant-multiple and sum rules.',
+    'Integrate (ax + b)ⁿ.',
+    'Rewrite a quotient or a product into integrable form before integrating.'
+  ],
+  terms: [
+    ['Table of integrals', 'Integrallar jadvali', 'Таблица интегралов'],
+    ['Power rule for integration', 'Daraja integrallash qoidasi', 'Правило интегрирования степени'],
+    ['Constant multiple rule', 'O‘zgarmas ko‘paytuvchi qoidasi', 'Правило постоянного множителя'],
+    ['Sum rule', 'Yig‘indi qoidasi', 'Правило суммы'],
+    ['Linear substitution', 'Chiziqli almashtirish', 'Линейная замена'],
+    ['Integrable form', 'Integrallanuvchi shakl', 'Интегрируемый вид'],
+    ['Reciprocal function', 'Teskari funksiya (1/x)', 'Обратная величина'],
+    ['Exceptional case', 'Istisno hol', 'Особый случай'],
+    ['Term by term', 'Hadma-had', 'Почленно']
+  ],
+  timing: [[20, 'The power rule'], [20, 'The exceptional case'], [30, 'Linearity'], [40, 'Rewriting first'], [40, 'The linear bracket'], [66, 'Practice and homework'], [54, 'Consolidation']],
+  sections: [
+    {
+      h: 'The power rule',
+      html: `${eq(m('∫ xⁿ dx = ' + f('x^(n+1)', 'n + 1') + ' + C ,   n ≠ −1'), true)}
+      <p>Raise the index by one, divide by the new index. It is the power rule for differentiation
+      read backwards, and the check is immediate: differentiating
+      ${m(f('x^(n+1)', 'n + 1'))} gives ${m(f('(n+1)x^n', 'n + 1') + ' = xⁿ')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">f(x)</th><th class="m">∫ f(x) dx</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x⁵</td><td class="m">${f('x⁶', '6')} + C</td></tr>
+        <tr><td class="m">x</td><td class="m">${f('x²', '2')} + C</td></tr>
+        <tr><td class="m">1</td><td class="m">x + C</td></tr>
+        <tr><td class="m">${sr('x')} = x<sup>1/2</sup></td><td class="m">${f('2', '3')}x<sup>3/2</sup> + C</td></tr>
+        <tr><td class="m">${f('1', 'x²')} = x⁻²</td><td class="m">−${f('1', 'x')} + C</td></tr>
+        <tr><td class="m">${f('1', sr('x'))} = x<sup>−1/2</sup></td><td class="m">2${sr('x')} + C</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'The one exception',
+      html: `<div class="warn"><span class="wl">${m('n = −1')} breaks the rule</span>
+      ${m('∫ ' + f('1', 'x') + ' dx')} cannot be ${m(f('x⁰', '0'))} — the division is by zero. The answer
+      is ${m('ln|x| + C')}, which comes from the logarithm, not from the power rule. At this stage,
+      recognise the case and quote the result.</div>
+      <p>Every other index, positive, negative or fractional, obeys the rule. The exception is a single
+      value, and it is the one every examiner tests.</p>`
+    },
+    {
+      h: 'Linearity',
+      html: `${eq(m('∫ k f(x) dx = k ∫ f(x) dx') + '     ' + m('∫ [f(x) ± g(x)] dx = ∫ f dx ± ∫ g dx'), true)}
+      <p>So a polynomial is integrated term by term, and one constant covers the whole answer:</p>
+      ${eq(m('∫ (6x² − 4x + 5) dx = 2x³ − 2x² + 5x + C'), false)}
+      <div class="warn"><span class="wl">There is no product or quotient rule for integration</span>
+      ${m('∫ f · g dx')} is <b>not</b> ${m('∫f · ∫g')}. Test it on ${m('∫ x · x dx')}: the truth is
+      ${m(f('x³', '3'))}, but ${m(f('x²', '2') + ' · ' + f('x²', '2') + ' = ' + f('x⁴', '4'))}.
+      Products and quotients must first be <b>rewritten</b>.</div>`
+    },
+    {
+      h: 'Rewriting first',
+      html: `<p>Almost every integral at this level is done by turning the integrand into a sum of
+      powers, then applying the rule:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Rewrite as</th><th>Integral</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('x³ + 2x', 'x')}</td><td class="m">x² + 2</td><td class="m">${f('x³', '3')} + 2x + C</td></tr>
+        <tr><td class="m">x(x + 3)</td><td class="m">x² + 3x</td><td class="m">${f('x³', '3')} + ${f('3x²', '2')} + C</td></tr>
+        <tr><td class="m">(2x − 1)²</td><td class="m">4x² − 4x + 1</td><td class="m">${f('4x³', '3')} − 2x² + x + C</td></tr>
+        <tr><td class="m">${f('1', 'x³')}</td><td class="m">x⁻³</td><td class="m">−${f('1', '2x²')} + C</td></tr>
+        <tr><td class="m">x${sr('x')}</td><td class="m">x<sup>3/2</sup></td><td class="m">${f('2', '5')}x<sup>5/2</sup> + C</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'The linear bracket',
+      html: `<p>The chain rule run backwards gives one more standard result — enough for every bracket
+      whose inside is <b>linear</b>:</p>
+      ${eq(m('∫ (ax + b)ⁿ dx = ' + f('(ax + b)^(n+1)', 'a(n + 1)') + ' + C ,   n ≠ −1'), true)}
+      <p>The extra ${m('a')} in the denominator undoes the ${m('a')} the chain rule would produce.
+      Check ${m('∫ (3x + 1)⁴ dx = ' + f('(3x + 1)⁵', '15') + ' + C')} by differentiating:
+      ${m(f('5(3x+1)⁴ · 3', '15') + ' = (3x + 1)⁴')} ✓.</p>
+      <div class="warn"><span class="wl">Only when the inside is linear</span>
+      ${m('∫ (x² + 1)⁴ dx')} cannot be done this way — the correction factor would have to be
+      ${m('2x')}, which is not a constant. Expand it, or leave it for the next course.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find ' + m('∫ (4x³ − ' + f('6', 'x²') + ' + ' + sr('x') + ') dx') + '.',
+      steps: [
+        ['Rewrite: ' + m('4x³ − 6x⁻² + x^(1/2)') + '.', ''],
+        [m('x⁴'), ''],
+        [m('+ ' + f('6', 'x')), m('−6 · ' + f('x⁻¹', '−1')) + '.'],
+        [m('+ ' + f('2', '3') + 'x^(3/2) + C'), '']
+      ],
+      ans: m('x⁴ + ' + f('6', 'x') + ' + ' + f('2', '3') + 'x' + sr('x') + ' + C')
+    },
+    {
+      q: 'Find ' + m('∫ ' + f('x² − 3x', 'x') + ' dx') + '.',
+      steps: [
+        ['Divide first: ' + m('x − 3') + '.', 'No quotient rule exists.'],
+        [m(f('x²', '2') + ' − 3x + C'), '']
+      ],
+      ans: m(f('x²', '2') + ' − 3x + C')
+    },
+    {
+      q: 'Find ' + m('∫ (2x + 5)³ dx') + '.',
+      steps: [
+        ['Linear inside, so use the bracket rule.', m('a = 2, n = 3')],
+        [m(f('(2x + 5)⁴', '2 × 4')), ''],
+        [m('= ' + f('(2x + 5)⁴', '8') + ' + C'), 'Check by differentiating.']
+      ],
+      ans: m(f('(2x + 5)⁴', '8') + ' + C')
+    }
+  ],
+  modelNote: 'Differentiate every answer aloud before writing the next question.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which rule, and what is the answer?',
+    hint: 'Rewrite into powers, then apply the rule.',
+    items: [
+      { q: m('∫ x⁴ dx') + ':', a: [m('4x³ + C'), m(f('x⁵', '5') + ' + C'), m('x⁵ + C'), m(f('x³', '3') + ' + C')], c: 1, why: 'Index up, divide.' },
+      { q: m('∫ ' + f('1', 'x²') + ' dx') + ':', a: [m('ln|x| + C'), m('−' + f('1', 'x') + ' + C'), m(f('1', 'x') + ' + C'), m('−2x⁻³ + C')], c: 1, why: m('x⁻² → ' + f('x⁻¹', '−1')) + '.' },
+      { q: m('∫ ' + f('1', 'x') + ' dx') + ':', a: [m(f('x⁰', '0')), m('ln|x| + C'), m('0'), 'undefined'], c: 1, why: 'The exceptional case.' },
+      { q: m('∫ (3x + 1)⁴ dx') + ':', a: [m(f('(3x+1)⁵', '5') + ' + C'), m(f('(3x+1)⁵', '15') + ' + C'), m('3(3x+1)⁵ + C'), m('(3x+1)⁵ + C')], c: 1, why: 'Divide by ' + m('a(n+1) = 15') + '.' },
+      { q: m('∫ x · x dx') + ':', a: [m(f('x⁴', '4') + ' + C'), m(f('x³', '3') + ' + C'), m('x² + C'), m(f('x²', '2') + ' + C')], c: 1, why: 'Multiply first; there is no product rule.' },
+      { q: m('∫ ' + sr('x') + ' dx') + ':', a: [m(f('2', '3') + 'x^(3/2) + C'), m(f('1', '2' + sr('x')) + ' + C'), m(f('3', '2') + 'x^(1/2) + C'), m('x^(3/2) + C')], c: 0, why: m('x^(1/2) → ' + f('x^(3/2)', '3/2')) + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'The power rule for integration fails when:', a: [m('n = 0'), m('n = −1'), m('n = 1'), 'never'], c: 1, why: 'Division by zero.' },
+    { q: m('∫ ' + f('1', 'x') + ' dx') + ' is:', a: [m('ln|x| + C'), m('−x⁻² + C'), m('0'), m('x + C')], c: 0, why: 'The logarithm.' },
+    { q: 'Is there a product rule for integration?', a: ['yes', 'no', 'only for polynomials', 'only for powers'], c: 1, why: 'Rewrite instead.' },
+    { q: m('∫ (ax + b)ⁿ dx') + ' divides by:', a: [m('n + 1'), m('a'), m('a(n + 1)'), m('an')], c: 2, why: 'Both corrections.' },
+    { q: 'Before integrating ' + m(f('x³ + x', 'x')) + ' you should:', a: ['use a quotient rule', 'divide through', 'square it', 'nothing'], c: 1, why: 'It becomes ' + m('x² + 1') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('∫ x³ dx'), m(f('x⁴', '4') + ' + C')],
+      [m('∫ x⁶ dx'), m(f('x⁷', '7') + ' + C')],
+      [m('∫ 5 dx'), m('5x + C')],
+      [m('∫ 2x dx'), m('x² + C')],
+      [m('∫ (x + 1) dx'), m(f('x²', '2') + ' + x + C')],
+      [m('∫ x⁻² dx'), m('−' + f('1', 'x') + ' + C')],
+      [m('∫ ' + sr('x') + ' dx'), m(f('2', '3') + 'x^(3/2) + C')]
+    ],
+    med: [
+      [m('∫ (3x² − 4x + 1) dx'), m('x³ − 2x² + x + C')],
+      [m('∫ ' + f('1', 'x³') + ' dx'), m('−' + f('1', '2x²') + ' + C')],
+      [m('∫ ' + f('1', sr('x')) + ' dx'), m('2' + sr('x') + ' + C')],
+      [m('∫ x(x + 2) dx'), m(f('x³', '3') + ' + x² + C')],
+      [m('∫ ' + f('x³ + 2x', 'x') + ' dx'), m(f('x³', '3') + ' + 2x + C')],
+      [m('∫ (2x + 5)³ dx'), m(f('(2x+5)⁴', '8') + ' + C')],
+      [m('∫ (1 − x)⁵ dx'), m('−' + f('(1−x)⁶', '6') + ' + C')]
+    ],
+    hard: [
+      [m('∫ (2x − 1)² dx'), m(f('4x³', '3') + ' − 2x² + x + C')],
+      [m('∫ x' + sr('x') + ' dx'), m(f('2', '5') + 'x^(5/2) + C')],
+      [m('∫ (x + ' + f('1', 'x') + ')² dx'), m(f('x³', '3') + ' + 2x − ' + f('1', 'x') + ' + C')],
+      [m('∫ ' + f('(x + 1)²', 'x²') + ' dx'), m('x + 2ln|x| − ' + f('1', 'x') + ' + C')],
+      [m('∫ ' + f('1', '(3x − 2)²') + ' dx'), m('−' + f('1', '3(3x − 2)') + ' + C')],
+      [m('∫ ' + sr('4x + 1') + ' dx'), m(f('(4x+1)^(3/2)', '6') + ' + C')],
+      ['Why can ' + m('∫ (x² + 1)⁴ dx') + ' not use the bracket rule?', 'The inside is not linear']
+    ]
+  },
+  hwTitle: 'Homework — 7 tasks',
+  hwNote: 'Every answer differentiated back, and ' + m('+ C') + ' on every line.',
+  homework: [
+    'Find ' + m('∫ (5x⁴ − 3x² + 2) dx') + '.',
+    'Find ' + m('∫ (' + sr('x') + ' + ' + f('1', 'x²') + ') dx') + '.',
+    'Find ' + m('∫ ' + f('x⁴ − x', 'x²') + ' dx') + '.',
+    'Find ' + m('∫ (3x − 4)⁵ dx') + '.',
+    'Find ' + m('∫ (x + 2)(x − 3) dx') + '.',
+    'Find ' + m('∫ ' + f('1', sr('2x + 1')) + ' dx') + '.',
+    'Explain in three sentences why there is no product rule for integration, with an example.'
+  ]
+});
+
+/* ============================== 17 ============================== */
+G11_ALG.push({
+  id: 'a11-17', stream: 'alg', grade: 11, quarter: 2, lessons: '47–48', hours: 2,
+  title: 'Control work 4, and the quarter review',
+  subtitle: 'The indefinite integral in one paper, and the map that joins approximation, modelling and integration.',
+  uz: 'Algebra 11, Nazorat ishi 4', uzPage: 'pp. 221–224',
+  cam: 'P1 · Chapter 10 review', camPage: 'Pure Mathematics 1, pp. 213–216', wb: 'Control paper D',
+  objectives: [
+    'Apply every technique of Quarter II in one assessment.',
+    'Rewrite an integrand into integrable form without prompting.',
+    'Build a concept map of the quarter.',
+    'Set a personal target for Quarter III.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Concept map', 'Tushunchalar xaritasi', 'Карта понятий'],
+    ['Integrable form', 'Integrallanuvchi shakl', 'Интегрируемый вид'],
+    ['Constant of integration', 'Integrallash doimiysi', 'Постоянная интегрирования'],
+    ['Initial condition', 'Boshlang‘ich shart', 'Начальное условие'],
+    ['Self-assessment', 'O‘z-o‘zini baholash', 'Самооценка'],
+    ['Target', 'Maqsad', 'Цель'],
+    ['Revision', 'Takrorlash', 'Повторение']
+  ],
+  timing: [[3, 'Instructions'], [42, 'The paper'], [10, 'Answers'], [20, 'Rewrite'], [10, 'Concept map'], [5, 'Targets']],
+  sections: [
+    {
+      h: 'The paper — 30 marks, 42 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Find ${m('∫ (6x² − ' + f('4', 'x²') + ' + 3' + sr('x') + ') dx')}</td><td class="m">5</td><td>L41–46</td></tr>
+        <tr><td>2</td><td>Find ${m('∫ ' + f('x³ − 2x', 'x') + ' dx')} and ${m('∫ (4x − 3)⁵ dx')}</td><td class="m">5</td><td>L41–46</td></tr>
+        <tr><td>3</td><td>Find ${m('F')} with ${m("F′(x) = 3x² − 2x")} and ${m('F(2) = 10')}</td><td class="m">4</td><td>L37–40</td></tr>
+        <tr><td>4</td><td>Estimate ${m(sr('63'))} and give the percentage error in a cube’s volume from a 0.5% error in its side</td><td class="m">5</td><td>L28–30</td></tr>
+        <tr><td>5</td><td>${m('s = t³ − 12t')}: find when the body is at rest and its acceleration then</td><td class="m">5</td><td>L31–34</td></tr>
+        <tr><td>6</td><td>A cone of height 24 and top radius 8 fills at ${m('6')} cm³/s. Find ${m(f('dh', 'dt'))} at ${m('h = 12')}</td><td class="m">6</td><td>L31–34</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Three marks are for ${m('+ C')} and units</div>
+      Q1, Q2 and Q3 each lose a mark without the constant; Q5 and Q6 each lose one without units.
+      Four of the thirty marks are notation.</div>`
+    },
+    {
+      h: 'The concept map',
+      html: `<p>Six boxes, links as sentences:</p>
+      <ul>
+        <li><b>derivative</b> → <b>linear approximation</b> — “near ${m('a')} the tangent is the curve”</li>
+        <li><b>derivative</b> → <b>rate of change</b> — “with units, in context”</li>
+        <li><b>rate</b> → <b>connected rates</b> — “the chain rule links two rates”</li>
+        <li><b>derivative</b> → <b>antiderivative</b> — “run the arrow backwards”</li>
+        <li><b>antiderivative</b> → <b>${m('+ C')}</b> — “the derivative forgets the height”</li>
+        <li><b>rules of differentiation</b> → <b>rules of integration</b> — “power up, divide; linearity survives; product does not”</li>
+      </ul>
+      {{fig:antiderivFamily:The picture behind two of the six boxes.}}`
+    },
+    {
+      h: 'Looking forward',
+      html: `<p>Quarter III opens with the definite integral and the Newton–Leibniz formula, which turns
+      every antiderivative of this quarter into an area. Nothing new about integration itself is added
+      first — what is added is a pair of limits and a subtraction.</p>
+      <div class="keybox"><div class="klabel">One habit to carry forward</div>
+      Rewrite before integrating. Roots into fractional indices, fractions into negative indices,
+      products expanded, quotients divided through. The integral is then one line.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q1: ' + m('∫ (6x² − ' + f('4', 'x²') + ' + 3' + sr('x') + ') dx') + '.',
+      steps: [
+        ['Rewrite: ' + m('6x² − 4x⁻² + 3x^(1/2)') + '.', ''],
+        [m('2x³'), ''],
+        [m('+ ' + f('4', 'x')), m('−4 · ' + f('x⁻¹', '−1')) + '.'],
+        [m('+ 2x^(3/2) + C'), m('3 · ' + f('2', '3')) + '.']
+      ],
+      ans: m('2x³ + ' + f('4', 'x') + ' + 2x' + sr('x') + ' + C')
+    },
+    {
+      q: 'Model answer, Q6: cone, height 24, top radius 8, filling at ' + m('6') + ' cm³/s.',
+      steps: [
+        [m('r = ' + f('h', '3')), 'Similar triangles.'],
+        [m('V = ' + f('1', '3') + 'π' + f('h²', '9') + 'h = ' + f('πh³', '27')), ''],
+        [m(f('dV', 'dh') + ' = ' + f('πh²', '9') + ' = 16π') + ' at ' + m('h = 12') + '.', ''],
+        [m(f('dh', 'dt') + ' = ' + f('6', '16π') + ' ≈ 0.119'), '']
+      ],
+      ans: m('≈ 0.12') + ' cm/s'
+    },
+    {
+      q: 'Model answer, Q5: ' + m('s = t³ − 12t') + '.',
+      steps: [
+        [m('v = 3t² − 12 = 3(t − 2)(t + 2)'), ''],
+        [m('t = 2') + ' (taking ' + m('t ≥ 0') + ').', ''],
+        [m('a = 6t = 12'), '']
+      ],
+      ans: 'Rest at ' + m('t = 2') + ' s; ' + m('a = 12') + ' m/s²'
+    }
+  ],
+  modelNote: 'Work Q1 and Q6 on the board, rewriting the integrand before touching it.',
+  interactive: {
+    type: 'quiz',
+    title: 'The quarter in ten questions',
+    hint: 'One from each block.',
+    items: [
+      { q: 'Estimate ' + m(sr('63')) + ':', a: [m('7.94'), m('7.9375'), m('7.8'), m('8.06')], c: 1, why: m('8 − ' + f('1', '16')) + '.' },
+      { q: 'A 0.5% error in a side gives what error in the volume?', a: ['0.5%', '1%', '1.5%', '3%'], c: 2, why: 'Three times.' },
+      { q: m('s = t³ − 12t') + ': rest at', a: [m('t = 2'), m('t = 4'), m('t = 12'), m('t = 0')], c: 0, why: m('3t² = 12') + '.' },
+      { q: 'The acceleration there:', a: [m('6'), m('12'), m('24'), m('0')], c: 1, why: m('a = 6t') + '.' },
+      { q: m('∫ 6x² dx') + ':', a: [m('12x + C'), m('2x³ + C'), m('6x³ + C'), m('3x³ + C')], c: 1, why: m(f('6x³', '3')) + '.' },
+      { q: m('∫ ' + f('4', 'x²') + ' dx') + ':', a: [m('−' + f('4', 'x') + ' + C'), m(f('4', 'x') + ' + C'), m('4ln|x| + C'), m('−' + f('8', 'x³') + ' + C')], c: 0, why: m('4x⁻² → −4x⁻¹') + '.' },
+      { q: m('∫ (4x − 3)⁵ dx') + ':', a: [m(f('(4x−3)⁶', '6') + ' + C'), m(f('(4x−3)⁶', '24') + ' + C'), m('4(4x−3)⁶ + C'), m('(4x−3)⁶ + C')], c: 1, why: 'Divide by ' + m('a(n+1) = 24') + '.' },
+      { q: m("F′ = 3x² − 2x") + ', ' + m('F(2) = 10') + ' gives ' + m('C') + ':', a: [m('0'), m('6'), m('10'), m('−4')], c: 1, why: m('8 − 4 + C = 10') + '.' },
+      { q: m('∫ ' + f('1', 'x') + ' dx') + ':', a: [m(f('x⁰', '0')), m('ln|x| + C'), m('0'), m('x + C')], c: 1, why: 'The exceptional case.' },
+      { q: 'Cone height 24, radius 8, at ' + m('6') + ' cm³/s: ' + m(f('dh', 'dt')) + ' at ' + m('h = 12'), a: [m('0.12'), m('0.24'), m('1.2'), m('0.02')], c: 0, why: m(f('6', '16π')) + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'The commonest lost mark in integration is:', a: ['a sign', m('+ C'), 'the index', 'the units'], c: 1, why: 'It is part of the answer.' },
+    { q: 'Before integrating a quotient you should:', a: ['use a quotient rule', 'divide through', 'square it', 'differentiate'], c: 1, why: 'There is no quotient rule.' },
+    { q: 'Quarter III begins with:', a: ['probability', 'the definite integral', 'complex numbers', 'vectors'], c: 1, why: 'And the Newton–Leibniz formula.' },
+    { q: 'A connected-rate problem must first be reduced to:', a: ['two variables', 'one variable', 'three variables', 'a constant'], c: 1, why: 'Otherwise it cannot be differentiated.' }
+  ],
+  practice: {
+    easy: [
+      [m('∫ 6x² dx'), m('2x³ + C')],
+      [m('∫ ' + f('4', 'x²') + ' dx'), m('−' + f('4', 'x') + ' + C')],
+      [m('∫ 3' + sr('x') + ' dx'), m('2x^(3/2) + C')],
+      ['Estimate ' + m(sr('63')), m('≈ 7.9375')],
+      [m('s = t³ − 12t') + '; rest at', m('t = 2')],
+      ['Acceleration there', m('12')],
+      [m('∫ (4x − 3)⁵ dx'), m(f('(4x−3)⁶', '24') + ' + C')]
+    ],
+    med: [
+      [m('∫ (6x² − ' + f('4', 'x²') + ' + 3' + sr('x') + ') dx'), m('2x³ + ' + f('4', 'x') + ' + 2x^(3/2) + C')],
+      [m('∫ ' + f('x³ − 2x', 'x') + ' dx'), m(f('x³', '3') + ' − 2x + C')],
+      [m('F') + ' with ' + m("F′ = 3x² − 2x") + ', ' + m('F(2) = 10'), m('x³ − x² + 6')],
+      ['0.5% error in a side; error in the volume', m('1.5%')],
+      ['Cone 24/8 at 6 cm³/s; ' + m(f('dh', 'dt')) + ' at ' + m('h = 12'), m('≈ 0.12') + ' cm/s'],
+      [m('∫ (x + 3)(x − 1) dx'), m(f('x³', '3') + ' + x² − 3x + C')],
+      ['Estimate ' + m('4.02³'), m('≈ 64.96')]
+    ],
+    hard: [
+      [m('∫ ' + f('(x + 2)²', 'x²') + ' dx'), m('x + 4ln|x| − ' + f('4', 'x') + ' + C')],
+      [m('∫ ' + sr('3x + 2') + ' dx'), m(f('2(3x+2)^(3/2)', '9') + ' + C')],
+      [m('∫ ' + f('1', '(2x − 5)³') + ' dx'), m('−' + f('1', '4(2x−5)²') + ' + C')],
+      ['Find ' + m('F') + ' with ' + m("F″ = 12x") + ', ' + m("F′(1) = 4") + ', ' + m('F(1) = 5'), m('2x³ − 2x + 5')],
+      ['A trough fills at 0.6 m³/min; find ' + m(f('dh', 'dt')) + ' when the surface is 3 m² in area', m('0.2') + ' m/min'],
+      ['A car decelerating at ' + m('5') + ' m/s² from ' + m('30') + ' m/s: stopping distance', m('90') + ' m'],
+      ['Explain why ' + m('∫ (x² + 1)³ dx') + ' must be expanded', 'The bracket rule needs a linear inside']
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Bring the concept map to the first lesson of Quarter III.',
+  homework: [
+    'Rewrite in full every control-work question that lost a mark.',
+    'Finish the concept map with all six links written as sentences.',
+    'Find ' + m('∫ (8x³ − ' + f('3', 'x²') + ' + 4' + sr('x') + ') dx') + ' and ' + m('∫ (5x + 2)⁴ dx') + '.',
+    'Write your target for Quarter III in one checkable sentence, and date it.'
+  ]
+});

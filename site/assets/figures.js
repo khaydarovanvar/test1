@@ -1844,6 +1844,139 @@
     return svg('0 0 340 190', g);
   };
 
+  /* ---------- Grade 11 Quarter II: approximation and the integral ---------- */
+
+  /* the tangent as a local linear approximation to y = x² near x = 2 */
+  F.linearApprox = function () {
+    var W = 340, H = 224, cx = 40, cy = 172, u = 30;
+    var g = '';
+    for (var i = 0; i <= 9; i++) {
+      g += line([cx + i * u * 0.5, 8], [cx + i * u * 0.5, H - 26],
+        'stroke="var(--rule-soft)" stroke-width="1"');
+    }
+    for (var j = 0; j <= 5; j++) {
+      g += line([12, cy - j * u], [W - 10, cy - j * u], 'stroke="var(--rule-soft)" stroke-width="1"');
+    }
+    /* vertical grid stops above the caption */
+    g += line([12, cy], [W - 10, cy], 'stroke="var(--faint)" stroke-width="1.5"');
+    g += line([cx, 8], [cx, H - 26], 'stroke="var(--faint)" stroke-width="1.5"');
+    var f = function (x) { return 0.55 * x * x; };
+    g += '<path d="' + curve(f, 0, 3.05, cx, cy, u, 0.05) +
+      '" fill="none" stroke="currentColor" stroke-width="2.4"/>';
+    /* tangent at x = 2:  y = f(2) + f'(2)(x − 2) */
+    var a = 2, fa = f(a), d = 1.1 * a;
+    var t = function (x) { return fa + d * (x - a); };
+    g += '<path d="' + curve(t, 1.0, 3.0, cx, cy, u, 0.1) +
+      '" fill="none" stroke="var(--brass)" stroke-width="2.2" stroke-dasharray="6 4"/>';
+    var P = [cx + a * u, cy - fa * u];
+    g += dot(P[0], P[1], 'var(--brass)');
+    /* the error between curve and tangent at x = 2.8 */
+    var b = 2.8;
+    var Q = [cx + b * u, cy - f(b) * u], R = [cx + b * u, cy - t(b) * u];
+    g += line(Q, R, 'stroke="var(--hard)" stroke-width="2.6"');
+    g += dot(Q[0], Q[1]) + dot(R[0], R[1], 'var(--brass)');
+    g += LT(P[0] - 13, P[1] + 12, 'a', 'var(--brass)');
+    g += LT(Q[0] + 22, (Q[1] + R[1]) / 2, 'error', 'var(--hard)', 10);
+    g += LT(W - 60, 26, 'y = f(x)', 'currentColor', 11);
+    g += LT(W - 60, 42, 'tangent', 'var(--brass)', 11);
+    g += LT(W / 2, H - 8, 'near a the tangent and the curve agree', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* the family of antiderivatives: same shape, shifted vertically by C */
+  F.antiderivFamily = function () {
+    var W = 340, H = 228, cx = 170, cy = 116, u = 24;
+    var g = axes(W, H - 26, cx, cy, u, 5);
+    var base = function (x) { return x * x * x / 3 - x; };
+    [-2, -1, 0, 1, 2].forEach(function (C, k) {
+      var col = C === 0 ? 'currentColor' : 'var(--faint)';
+      var wd = C === 0 ? 2.6 : 1.6;
+      g += '<path d="' + curve(function (x) { return base(x) + C; }, -2.1, 2.1, cx, cy, u, 0.06) +
+        '" fill="none" stroke="' + col + '" stroke-width="' + wd + '"/>';
+    });
+    /* parallel tangents at x = 1.6 on each member */
+    var x0 = 1.6, slope = x0 * x0 - 1;
+    [-2, 0, 2].forEach(function (C) {
+      var y0 = base(x0) + C;
+      var A = [cx + (x0 - 0.55) * u, cy - (y0 - 0.55 * slope) * u];
+      var B = [cx + (x0 + 0.55) * u, cy - (y0 + 0.55 * slope) * u];
+      g += line(A, B, 'stroke="var(--brass)" stroke-width="1.8"');
+    });
+    g += LT(W / 2, H - 7, 'every member has the same derivative — only C differs', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* the area under a curve, approximated by rectangles then exactly */
+  F.areaUnderCurve = function () {
+    var W = 340, H = 212, cx = 34, cy = 160, u = 34;
+    var g = '';
+    g += line([12, cy], [W - 10, cy], 'stroke="var(--faint)" stroke-width="1.5"');
+    g += line([cx, 10], [cx, cy + 12], 'stroke="var(--faint)" stroke-width="1.5"');
+    var f = function (x) { return 0.35 * x * x + 0.5; };
+    var a = 0.6, b = 3.4, n = 7, h = (b - a) / n;
+    for (var i = 0; i < n; i++) {
+      var xl = a + i * h, ht = f(xl + h / 2);
+      g += '<rect x="' + (cx + xl * u).toFixed(1) + '" y="' + (cy - ht * u).toFixed(1) +
+        '" width="' + (h * u).toFixed(1) + '" height="' + (ht * u).toFixed(1) +
+        '" fill="var(--brand-tint)" stroke="var(--brand)" stroke-width="1"/>';
+    }
+    g += '<path d="' + curve(f, 0.2, 3.8, cx, cy, u, 0.05) +
+      '" fill="none" stroke="currentColor" stroke-width="2.4"/>';
+    g += line([cx + a * u, cy], [cx + a * u, cy - f(a) * u], 'stroke="var(--brass)" stroke-width="2"');
+    g += line([cx + b * u, cy], [cx + b * u, cy - f(b) * u], 'stroke="var(--brass)" stroke-width="2"');
+    g += LT(cx + a * u, cy + 14, 'a', 'var(--brass)');
+    g += LT(cx + b * u, cy + 14, 'b', 'var(--brass)');
+    g += LT(W / 2, H - 7, 'more, thinner rectangles → the definite integral', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* the trapezium rule on four strips */
+  F.trapeziumRule = function () {
+    var W = 340, H = 212, cx = 34, cy = 160, u = 34;
+    var g = '';
+    g += line([12, cy], [W - 10, cy], 'stroke="var(--faint)" stroke-width="1.5"');
+    g += line([cx, 10], [cx, cy + 12], 'stroke="var(--faint)" stroke-width="1.5"');
+    var f = function (x) { return 1.6 + 1.2 * Math.sin(x * 0.9); };
+    var a = 0.4, b = 3.6, n = 4, h = (b - a) / n;
+    for (var i = 0; i < n; i++) {
+      var xl = a + i * h, xr = xl + h;
+      g += poly([[cx + xl * u, cy], [cx + xl * u, cy - f(xl) * u],
+                 [cx + xr * u, cy - f(xr) * u], [cx + xr * u, cy]],
+        'fill="var(--brass-tint)" fill-opacity=".8" stroke="var(--brass)" stroke-width="1.3"');
+    }
+    g += '<path d="' + curve(f, 0.1, 3.9, cx, cy, u, 0.05) +
+      '" fill="none" stroke="currentColor" stroke-width="2.4"/>';
+    for (var k = 0; k <= n; k++) {
+      var xx = a + k * h;
+      g += LT(cx + xx * u, cy + 14, 'y' + k, 'var(--muted)', 10);
+    }
+    g += LT(W / 2, H - 7, 'straight tops, not flat ones — the trapezium rule', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* the region between two curves */
+  F.areaBetween = function () {
+    var W = 340, H = 208, cx = 60, cy = 146, u = 36;
+    var g = '';
+    g += line([12, cy], [W - 10, cy], 'stroke="var(--faint)" stroke-width="1.5"');
+    g += line([cx, 10], [cx, cy + 26], 'stroke="var(--faint)" stroke-width="1.5"');
+    var up = function (x) { return 2.4 * x - 0.6 * x * x; };      /* parabola */
+    var lo = function (x) { return 0.5 * x; };                     /* line */
+    var a = 0, b = (2.4 - 0.5) / 0.6;
+    var d = 'M' + (cx + a * u) + ' ' + (cy - up(a) * u) + ' ';
+    for (var x = a; x <= b + 1e-9; x += 0.05) d += 'L' + (cx + x * u).toFixed(1) + ' ' + (cy - up(x) * u).toFixed(1) + ' ';
+    for (var y = b; y >= a - 1e-9; y -= 0.05) d += 'L' + (cx + y * u).toFixed(1) + ' ' + (cy - lo(y) * u).toFixed(1) + ' ';
+    g += '<path d="' + d + 'Z" fill="var(--brand-tint)" fill-opacity=".85" stroke="none"/>';
+    g += '<path d="' + curve(up, -0.4, 4.4, cx, cy, u, 0.05) +
+      '" fill="none" stroke="currentColor" stroke-width="2.4"/>';
+    g += '<path d="' + curve(lo, -0.6, 4.4, cx, cy, u, 0.1) +
+      '" fill="none" stroke="var(--brass)" stroke-width="2.2"/>';
+    g += LT(W - 46, 30, 'upper', 'currentColor', 11);
+    g += LT(W - 46, 46, 'lower', 'var(--brass)', 11);
+    g += LT(W / 2, H - 7, 'area = ∫ (upper − lower) dx', 'var(--muted)', 10);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
   w.FIG = F;
   w.FIGH = { svg: svg, L: L, LT: LT, dot: dot, poly: poly, line: line, ticks: ticks, ang: ang, right: right, mid: mid, cent: cent, norm: norm, S: S };
 })(window);
