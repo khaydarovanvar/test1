@@ -32,9 +32,13 @@
   var NAV = [
     ['index.html', 'Home'],
     ['grades.html', 'Grades 5–11', 'grades'],
-    ['grade.html?g=8', 'Grade 8'],
+    ['terminology.html', 'Terminology'],
     ['about.html', 'About the course']
   ];
+
+  /* What the grades drop-down says under each year. Keyed by grade; anything
+     not listed is still to be written. */
+  var MENU_NOTE = { 8: 'all 95 lessons', 10: 'Quarter I', 11: 'Quarter I' };
 
   function header(active) {
     var links = NAV.map(function (n) {
@@ -47,7 +51,7 @@
         '<path d="M6 9l6 6 6-6"/></svg></a>' +
         '<span class="submenu">' + GRADES_MENU.map(function (g) {
           return '<a href="' + ROOT + 'grade.html?g=' + g + '">Grade ' + g +
-            (g === 8 ? '<em>all 95 lessons</em>' : '<em>coming</em>') + '</a>';
+            '<em>' + (MENU_NOTE[g] || 'coming') + '</em></a>';
         }).join('') + '</span></span>';
     }).join('');
     return '<header class="site-head" id="sitehead"><div class="bar">' + brandmark() +

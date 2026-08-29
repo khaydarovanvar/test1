@@ -405,3 +405,100 @@
   .lsec{margin-bottom:16pt}
   .fig{margin:16px auto}
 }
+
+/* ============================================================
+   Terminology page
+   ============================================================ */
+.tstats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+  border-radius: 10px; overflow: hidden; margin: 0 0 26px;
+}
+.tstat { background: var(--paper); padding: 16px 18px; }
+.tstat b { display: block; font-family: var(--serif); font-size: 1.55rem; line-height: 1.1; }
+.tstat span { display: block; margin-top: 3px; font-size: .78rem; color: var(--ink-soft); letter-spacing: .02em; }
+
+.tbar {
+  display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+  justify-content: space-between; margin: 0 0 14px;
+}
+.tsearchwrap { position: relative; flex: 1 1 280px; min-width: 240px; }
+.tsicon {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--ink-soft); pointer-events: none;
+}
+.tsearch {
+  width: 100%; padding: 10px 14px 10px 34px; font: inherit; font-size: .92rem;
+  color: var(--ink); background: var(--paper); border: 1px solid var(--rule);
+  border-radius: 8px; appearance: none;
+}
+.tsearch:focus { outline: 2px solid var(--brass); outline-offset: 1px; border-color: transparent; }
+.tsearch::-webkit-search-cancel-button { display: none; }
+
+.tviews { display: flex; gap: 0; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.tview {
+  font: inherit; font-size: .82rem; padding: 9px 14px; border: 0; cursor: pointer;
+  background: var(--paper); color: var(--ink-soft); border-right: 1px solid var(--rule);
+}
+.tview:last-child { border-right: 0; }
+.tview:hover { color: var(--ink); }
+.tview.on { background: var(--ink); color: var(--paper); }
+
+.tfilters { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 12px; }
+.tfilters:empty { margin: 0; }
+.tchip {
+  font: inherit; font-size: .8rem; padding: 5px 12px; cursor: pointer;
+  background: transparent; color: var(--ink-soft);
+  border: 1px solid var(--rule); border-radius: 999px;
+}
+.tchip:hover { color: var(--ink); border-color: var(--ink-soft); }
+.tchip.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+.tcount { font-size: .8rem; color: var(--ink-soft); margin: 0 0 20px; letter-spacing: .02em; }
+
+.tgrade { margin: 0 0 42px; }
+.tgh {
+  font-family: var(--serif); font-size: 1.5rem; margin: 0 0 6px;
+  padding-bottom: 8px; border-bottom: 2px solid var(--ink);
+}
+.tnote { font-size: .88rem; color: var(--ink-soft); margin: 8px 0 16px; }
+.tgroup { margin: 24px 0 0; }
+.tgroup > h3 {
+  font-size: .78rem; text-transform: uppercase; letter-spacing: .12em;
+  color: var(--brass); margin: 0 0 12px; font-weight: 600;
+}
+.tblock { margin: 0 0 22px; }
+.tblock h4 {
+  font-size: .96rem; font-weight: 600; margin: 0 0 8px;
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline;
+}
+.tblock h4 a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.tblock h4 a:hover { border-bottom-color: var(--brass); }
+.tles { font-size: .74rem; color: var(--ink-soft); font-weight: 400; letter-spacing: .03em; }
+
+.tjump { display: flex; flex-wrap: wrap; gap: 5px; margin: 0 0 26px; }
+.tjump a {
+  display: inline-grid; place-items: center; min-width: 30px; height: 30px;
+  font-size: .82rem; font-weight: 600; text-decoration: none; color: var(--ink-soft);
+  border: 1px solid var(--rule); border-radius: 6px;
+}
+.tjump a:hover { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+.tletter { margin: 0 0 34px; scroll-margin-top: 90px; }
+
+.twhere { white-space: nowrap; }
+.twhere a {
+  font-family: var(--mono); font-size: .74rem;
+  color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--rule);
+}
+.twhere a:hover { color: var(--ink); border-bottom-color: var(--brass); }
+.twhere em { font-size: .74rem; color: var(--ink-soft); font-style: normal; }
+
+.terms mark { background: color-mix(in srgb, var(--brass) 30%, transparent); color: inherit; }
+.tnone { padding: 40px 0; color: var(--ink-soft); }
+
+@media (max-width: 700px) {
+  .tbar { flex-direction: column; align-items: stretch; }
+  .tviews { width: 100%; }
+  .tview { flex: 1; text-align: center; padding: 9px 6px; }
+  .twhere { white-space: normal; }
+}

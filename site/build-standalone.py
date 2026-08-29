@@ -10,7 +10,7 @@ JS_LIBS = "\n".join(R(f) for f in [
     'assets/lesson.js', 'data/grades.js',
     'data/g8-alg.js', 'data/g8-geo.js',
     'data/g10-alg.js', 'data/g10-geo.js',
-    'data/g11-alg.js', 'data/g11-geo.js'])
+    'data/g11-alg.js', 'data/g11-geo.js', 'data/glossary.js'])
 
 # the home hero + sections, lifted from index.html
 idx = R('index.html')
@@ -21,6 +21,11 @@ abt = R('about.html')
 ABOUT = abt.split('<div id="site-header"></div>', 1)[1].split('<div id="site-footer"></div>', 1)[0].strip()
 grs = R('grades.html')
 GRADES = grs.split('<div id="site-header"></div>', 1)[1].split('<div id="site-footer"></div>', 1)[0].strip()
+trm = R('terminology.html')
+TERMS = trm.split('<div id="site-header"></div>', 1)[1].split('<div id="site-footer"></div>', 1)[0].strip()
+# the page script runs itself on DOMContentLoaded, which has already fired inside
+# the single file — so it is appended after the router and re-run on each visit.
+TERMS_JS = R('assets/terminology.js')
 LESSON = ('<div class="lhead" id="lhead"></div><div class="lbody">'
           '<main class="lmain" id="lmain"></main><aside class="lside" id="lside"></aside></div>')
 
@@ -77,9 +82,10 @@ OUT = f"""<meta charset="utf-8">
     grades: `{js(GRADES)}`,
     grade:  `{js(GRADE)}`,
     about:  `{js(ABOUT)}`,
+    terms:  `{js(TERMS)}`,
     lesson: `{js(LESSON)}`
   }};
-  var NAV = [['#/', 'Home'], ['#/grades', 'Grades 5–11'], ['#/grade/8', 'Grade 8'], ['#/about', 'About the course']];
+  var NAV = [['#/', 'Home'], ['#/grades', 'Grades 5–11'], ['#/terminology', 'Terminology'], ['#/about', 'About the course']];
 
   function brandmark(sub) {{
     return '<a class="brandmark" href="#/">' + LOGO + '<span><span class="bn">Anvarbek Khaydarov</span>' +
@@ -276,6 +282,7 @@ OUT = f"""<meta charset="utf-8">
   }}
 
   /* rewrite the multi-page links the shared renderers emit into hash routes */
+  window.AKM_fixLinks = fixLinks;
   function fixLinks(scope) {{
     [].forEach.call(scope.querySelectorAll('a[href]'), function (a) {{
       var h = a.getAttribute('href');
@@ -284,6 +291,7 @@ OUT = f"""<meta charset="utf-8">
       else if (h === 'index.html') a.setAttribute('href', '#/');
       else if (h === 'grades.html') a.setAttribute('href', '#/grades');
       else if (h === 'about.html') a.setAttribute('href', '#/about');
+      else if (h === 'terminology.html') a.setAttribute('href', '#/terminology');
     }});
   }}
 
@@ -389,6 +397,9 @@ OUT = f"""<meta charset="utf-8">
           (live ? 'c-easy' : '') + '">' + (live ? 'Quarter I live' : 'In preparation') + '</span></td><td>' +
           g.meta + '</td></tr>';
       }}).join('');
+    }} else if (page === 'terminology') {{
+      view.innerHTML = VIEWS.terms;
+      if (window.AKM_terminology) window.AKM_terminology();
     }} else if (page === 'about') {{
       view.innerHTML = VIEWS.about;
     }} else {{
@@ -415,6 +426,7 @@ OUT = f"""<meta charset="utf-8">
   window.addEventListener('hashchange', render);
   render();
 }})();
+{TERMS_JS}
 </script>
 """
 (root / 'standalone.html').write_text(OUT)

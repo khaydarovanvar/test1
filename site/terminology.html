@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/pages.css">
+<title>Terminology · Anvarbek Khaydarov</title>
+<meta name="description" content="Every mathematical term used in the course, in English, Uzbek and Russian — grade by grade and topic by topic, with an A–Z index and a themed vocabulary.">
+</head>
+<body>
+<div class="preload" id="preload" role="status" aria-live="polite">
+  <div class="pl-in">
+    <svg class="pl-mark" viewBox="0 0 64 64" aria-hidden="true">
+      <path class="pl-arc" d="M40.03 56.73 A26 26 0 1 1 54.96 44.21" fill="none"
+            stroke="var(--brass)" stroke-width="2.6" stroke-linecap="round"/>
+      <circle class="pl-nib" cx="54.96" cy="44.21" r="2.9" fill="var(--brass)"/>
+      <path class="pl-a" d="M32 15 L20 47 M32 15 L44 47 M24.2 36 H39.8" fill="none"
+            stroke="currentColor" stroke-width="3.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <p class="pl-name">Anvarbek Khaydarov</p>
+    <p class="pl-sub">Mathematics · Grades 5&#8211;11</p>
+    <div class="pl-bar"><i></i></div>
+  </div>
+</div>
+<div id="site-header"></div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow">Three languages</span>
+      <h2>Terminology</h2>
+      <p>Every term the course uses, in English, O&#8216;zbekcha and Русский. Browse it grade by grade
+      and topic by topic, look a word up in the A&#8211;Z index, or work through the themed vocabulary
+      below. Nothing here is machine-translated &mdash; the three columns are the content.</p>
+    </div>
+
+    <div class="tstats" id="tstats"></div>
+
+    <div class="tbar notranslate" translate="no">
+      <div class="tsearchwrap">
+        <svg class="tsicon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg>
+        <input type="search" id="tsearch" class="tsearch" placeholder="Search in any of the three languages…"
+               autocomplete="off" spellcheck="false" aria-label="Search the terminology">
+      </div>
+      <div class="tviews" role="tablist" aria-label="View">
+        <button class="tview on" data-view="topic" role="tab" aria-selected="true">By grade and topic</button>
+        <button class="tview" data-view="az" role="tab" aria-selected="false">A&#8211;Z index</button>
+        <button class="tview" data-view="theme" role="tab" aria-selected="false">By theme</button>
+      </div>
+    </div>
+
+    <div class="tfilters notranslate" translate="no" id="tfilters"></div>
+
+    <p class="tcount" id="tcount" aria-live="polite"></p>
+    <div id="tbody"></div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/app.js" data-root="./"></script>
+<script src="assets/mathfmt.js"></script>
+<script src="data/grades.js"></script>
+<script src="data/g8-alg.js"></script>
+<script src="data/g8-geo.js"></script>
+<script src="data/g10-alg.js"></script>
+<script src="data/g10-geo.js"></script>
+<script src="data/g11-alg.js"></script>
+<script src="data/g11-geo.js"></script>
+<script src="data/glossary.js"></script>
+<script src="assets/terminology.js"></script>
+<script>AKM.mount('terminology.html');</script>
+</body>
+</html>
