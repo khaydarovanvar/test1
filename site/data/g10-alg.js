@@ -5881,3 +5881,1809 @@ G10_ALG.push({
     'Complete the project sheet: the object, the measurements, the four calculations and the accuracy sentence.'
   ]
 });
+
+/* ===================== QUARTER IV (24 hours) ===================== */
+
+/* ============================== 38 ============================== */
+G10_ALG.push({
+  id: 'a10-38', stream: 'alg', grade: 10, quarter: 4, lessons: '79–81', hours: 3,
+  title: 'The equations sin x = a, cos x = a, tan x = a, cot x = a',
+  subtitle: 'One arc function gives one solution; the symmetry of the circle gives all the rest.',
+  uz: 'Algebra 10, §26', uzPage: 'pp. 258–270',
+  cam: 'P1 5.1, 5.4', camPage: 'Pure Mathematics 1, pp. 96–104', wb: 'Exercise 5D',
+  objectives: [
+    'Decide when sin x = a and cos x = a have solutions.',
+    'Write the general solution of each of the four basic equations.',
+    'Read every solution off the unit circle rather than memorising formulas.',
+    'Select the solutions that lie in a given interval.'
+  ],
+  terms: [
+    ['Trigonometric equation', 'Trigonometrik tenglama', 'Тригонометрическое уравнение'],
+    ['General solution', 'Umumiy yechim', 'Общее решение'],
+    ['Principal value', 'Bosh qiymat', 'Главное значение'],
+    ['Arcsine', 'Arksinus', 'Арксинус'],
+    ['Period', 'Davr', 'Период'],
+    ['Unit circle', 'Birlik aylana', 'Единичная окружность'],
+    ['Solution set', 'Yechimlar to‘plami', 'Множество решений'],
+    ['Interval', 'Oraliq', 'Промежуток'],
+    ['Reference angle', 'Tayanch burchak', 'Опорный угол'],
+    ['Integer parameter', 'Butun parametr', 'Целый параметр']
+  ],
+  timing: [[12, 'When there is a solution at all'], [30, 'The four formulas'], [30, 'Reading them off the circle'], [35, 'Special values'], [22, 'Solutions in an interval'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'When there is a solution at all',
+      html: `<p>Before any formula, one question: can the equation hold?</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Equation</th><th>Range of the left side</th><th>Solvable when</th></tr></thead>
+      <tbody>
+        <tr><td class="m">sin x = a</td><td class="m">[−1, 1]</td><td class="m">|a| ≤ 1</td></tr>
+        <tr><td class="m">cos x = a</td><td class="m">[−1, 1]</td><td class="m">|a| ≤ 1</td></tr>
+        <tr><td class="m">tan x = a</td><td class="m">ℝ</td><td>always</td></tr>
+        <tr><td class="m">cot x = a</td><td class="m">ℝ</td><td>always</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Write “no solution”, and say why</span>
+      ${m('sin x = 1.4')} has no solution because the sine never leaves ${m('[−1, 1]')}. A blank page
+      earns nothing; one sentence earns the mark.</div>
+      {{fig:trigCircle:Two points on the circle at the same height — the two families of solutions of sin x = a.}}`
+    },
+    {
+      h: 'The four formulas',
+      html: `${eq(m('sin x = a ⇒ x = (−1)ⁿ arcsin a + πn, n ∈ ℤ'), true)}
+      ${eq(m('cos x = a ⇒ x = ± arccos a + 2πn, n ∈ ℤ'), true)}
+      ${eq(m('tan x = a ⇒ x = arctan a + πn, n ∈ ℤ'), true)}
+      ${eq(m('cot x = a ⇒ x = arccot a + πn, n ∈ ℤ'), true)}
+      <p>Three things are worth noticing at once.</p>
+      <ul>
+        <li>The sine and cosine formulas step by ${m('2π')} but pick up a second family; the compact
+        ${m('(−1)ⁿ')} form packs both into one line, alternating between ${m('α')} and ${m('π − α')}.</li>
+        <li>The tangent and cotangent step by ${m('π')}, because their period is ${m('π')}, not
+        ${m('2π')}. One family only.</li>
+        <li>Every formula begins with an arc function, so its <b>principal value</b> is the seed and the
+        period does the rest.</li>
+      </ul>
+      <div class="keybox"><div class="klabel">The two special-case shortcuts</div>
+      For ${m('a = 0, ±1')} the general formula still works, but the direct answer is shorter:
+      ${m('sin x = 0 ⇒ x = πn')}; ${m('sin x = 1 ⇒ x = ' + f('π', '2') + ' + 2πn')};
+      ${m('cos x = 0 ⇒ x = ' + f('π', '2') + ' + πn')}; ${m('cos x = 1 ⇒ x = 2πn')}.</div>`
+    },
+    {
+      h: 'Reading them off the circle',
+      html: `<p>Do not memorise the four lines. Draw the circle, mark the horizontal or vertical line at
+      height ${m('a')}, and read the two points.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Equation</th><th>Draw</th><th>The two points</th></tr></thead>
+      <tbody>
+        <tr><td class="m">sin x = a</td><td>the <b>horizontal</b> line ${m('y = a')}</td><td class="m">α and π − α</td></tr>
+        <tr><td class="m">cos x = a</td><td>the <b>vertical</b> line ${m('x = a')}</td><td class="m">α and −α</td></tr>
+        <tr><td class="m">tan x = a</td><td>the line through ${m('O')} of gradient ${m('a')}</td><td class="m">α and α + π</td></tr>
+      </tbody></table></div>
+      <p>The tangent's two points are <b>opposite</b> ends of one diameter, which is exactly why the step
+      is ${m('π')}. The sine's are mirror images in the vertical axis, the cosine's in the horizontal
+      axis. Three pictures, four formulas, nothing to memorise.</p>
+      {{fig:trigSolutions:The same equation on the graph: y = a cuts the sine curve twice in every period.}}`
+    },
+    {
+      h: 'Special values',
+      html: `<p>Almost every examination equation uses one of these.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">a</th><th class="m">arcsin a</th><th class="m">arccos a</th><th class="m">arctan a</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0</td><td class="m">0</td><td class="m">${f('π', '2')}</td><td class="m">0</td></tr>
+        <tr><td class="m">${f('1', '2')}</td><td class="m">${f('π', '6')}</td><td class="m">${f('π', '3')}</td><td>—</td></tr>
+        <tr><td class="m">${f(sr('2'), '2')}</td><td class="m">${f('π', '4')}</td><td class="m">${f('π', '4')}</td><td>—</td></tr>
+        <tr><td class="m">${f(sr('3'), '2')}</td><td class="m">${f('π', '3')}</td><td class="m">${f('π', '6')}</td><td>—</td></tr>
+        <tr><td class="m">1</td><td class="m">${f('π', '2')}</td><td class="m">0</td><td class="m">${f('π', '4')}</td></tr>
+        <tr><td class="m">${sr('3')}</td><td>—</td><td>—</td><td class="m">${f('π', '3')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A negative ${m('a')} is not symmetric for the cosine</span>
+      ${m('arcsin(−a) = −arcsin a')} and ${m('arctan(−a) = −arctan a')}, but
+      ${m('arccos(−a) = π − arccos a')}. So ${m('arccos(−' + f('1', '2') + ') = ' + f('2π', '3'))},
+      not ${m('−' + f('π', '3'))}.</div>`
+    },
+    {
+      h: 'Solutions in an interval',
+      html: `<p>An examination rarely wants the general solution. It wants the solutions in, say,
+      ${m('[0, 2π]')} or ${m('[−180°, 180°]')}. Method:</p>
+      <ol>
+        <li>write the general solution;</li>
+        <li>substitute ${m('n = …, −1, 0, 1, 2, …')} one at a time;</li>
+        <li>keep each value that falls in the interval, and stop when they leave it.</li>
+      </ol>
+      <p><b>Example.</b> ${m('cos x = ' + f('1', '2'))} on ${m('[0, 2π]')}. General:
+      ${m('x = ± ' + f('π', '3') + ' + 2πn')}. Then:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">n</th><th class="m">+ branch</th><th class="m">− branch</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0</td><td class="m">${f('π', '3')} ✓</td><td class="m">−${f('π', '3')} ✗</td></tr>
+        <tr><td class="m">1</td><td class="m">${f('7π', '3')} ✗</td><td class="m">${f('5π', '3')} ✓</td></tr>
+      </tbody></table></div>
+      <p>So ${m('x = ' + f('π', '3'))} and ${m('x = ' + f('5π', '3'))}. Two solutions, as the picture
+      predicted: a horizontal chord meets the circle twice.</p>
+      <div class="keybox"><div class="klabel">A count you can check against</div>
+      On an interval of length ${m('2π')}, ${m('sin x = a')} and ${m('cos x = a')} have <b>two</b>
+      solutions when ${m('|a| < 1')}, one when ${m('|a| = 1')}; ${m('tan x = a')} has <b>two</b>, one in
+      each half-turn. If your count differs, you have lost a family.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('sin x = ' + f('1', '2')) + ' in general, then on ' + m('[0, 2π]') + '.',
+      steps: [
+        [m('arcsin ' + f('1', '2') + ' = ' + f('π', '6')), 'The seed.'],
+        [m('x = (−1)ⁿ ' + f('π', '6') + ' + πn'), 'General.'],
+        [m('n = 0: ' + f('π', '6')) + '; ' + m('n = 1: π − ' + f('π', '6') + ' = ' + f('5π', '6')), ''],
+        [m('n = 2: 2π + ' + f('π', '6')) + ' — outside.', '']
+      ],
+      ans: m('x = ' + f('π', '6')) + ' and ' + m('x = ' + f('5π', '6'))
+    },
+    {
+      q: 'Solve ' + m('cos x = −' + f(sr('3'), '2')) + '.',
+      steps: [
+        [m('arccos(−' + f(sr('3'), '2') + ') = π − ' + f('π', '6') + ' = ' + f('5π', '6')), 'Not ' + m('−' + f('π', '6')) + '.'],
+        [m('x = ± ' + f('5π', '6') + ' + 2πn'), ''],
+        ['On ' + m('[0, 2π]') + ': ' + m(f('5π', '6')) + ' and ' + m(f('7π', '6')) + '.', '']
+      ],
+      ans: m('x = ± ' + f('5π', '6') + ' + 2πn')
+    },
+    {
+      q: 'Solve ' + m('tan x = −1') + ' on ' + m('[0°, 360°]') + '.',
+      steps: [
+        [m('arctan(−1) = −45°'), ''],
+        [m('x = −45° + 180°n'), 'Step ' + m('180°') + ', one family.'],
+        [m('n = 1: 135°') + '; ' + m('n = 2: 315°'), '']
+      ],
+      ans: m('135°') + ' and ' + m('315°')
+    },
+    {
+      q: 'Solve ' + m('sin 2x = ' + f(sr('2'), '2')) + ' on ' + m('[0, π]') + '.',
+      steps: [
+        ['Let ' + m('t = 2x') + ', so ' + m('t ∈ [0, 2π]') + '.', 'Substitute, then widen the interval.'],
+        [m('t = ' + f('π', '4')) + ', ' + m(f('3π', '4')) + ', ' + m(f('9π', '4') + ' ✗'), ''],
+        [m('x = ' + f('π', '8')) + ', ' + m(f('3π', '8')), 'Halve each.']
+      ],
+      ans: m('x = ' + f('π', '8')) + ' and ' + m('x = ' + f('3π', '8'))
+    }
+  ],
+  modelNote: 'Draw one circle on the board and solve all four equations on it, rubbing out only the chord.',
+  interactive: {
+    type: 'graphTransform',
+    title: 'y = a against the sine curve',
+    hint: 'Move c and count the crossings in one period.',
+    f: function (x) { return Math.sin(x); }
+  },
+  quiz: [
+    { q: m('sin x = 1.2') + ' has:', a: ['two solutions', 'one solution', 'no solution', 'infinitely many'], c: 2, why: 'Outside ' + m('[−1, 1]') + '.' },
+    { q: 'The period in the tangent formula is:', a: [m('2π'), m('π'), m(f('π', '2')), m('4π')], c: 1, why: 'The tangent repeats every half-turn.' },
+    { q: m('arccos(−' + f('1', '2') + ')') + ' equals:', a: [m('−' + f('π', '3')), m(f('2π', '3')), m(f('π', '3')), m(f('5π', '6'))], c: 1, why: m('π − ' + f('π', '3')) + '.' },
+    { q: m('cos x = a') + ' with ' + m('|a| < 1') + ' has, on ' + m('[0, 2π]') + ':', a: ['one solution', 'two solutions', 'three', 'four'], c: 1, why: 'A vertical chord meets the circle twice.' },
+    { q: 'The seed of every general solution is:', a: ['zero', 'the arc function', 'the period', m('π')], c: 1, why: 'Then add the period.' },
+    { q: m('sin x = −1') + ' gives:', a: [m('x = −' + f('π', '2') + ' + 2πn'), m('x = ± ' + f('π', '2')), m('x = πn'), 'no solution'], c: 0, why: 'One point on the circle.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m('sin x = 0'), m('x = πn')],
+      ['Solve ' + m('cos x = 1'), m('x = 2πn')],
+      ['Solve ' + m('cos x = 0'), m('x = ' + f('π', '2') + ' + πn')],
+      ['Solve ' + m('tan x = 0'), m('x = πn')],
+      ['Solve ' + m('sin x = 1'), m('x = ' + f('π', '2') + ' + 2πn')],
+      ['Does ' + m('cos x = −1.5') + ' have a solution?', 'No — ' + m('|a| > 1')],
+      ['Solve ' + m('tan x = 1'), m('x = ' + f('π', '4') + ' + πn')]
+    ],
+    med: [
+      ['Solve ' + m('sin x = ' + f(sr('2'), '2')), m('x = (−1)ⁿ ' + f('π', '4') + ' + πn')],
+      ['Solve ' + m('cos x = ' + f('1', '2')), m('x = ± ' + f('π', '3') + ' + 2πn')],
+      ['Solve ' + m('tan x = ' + sr('3')), m('x = ' + f('π', '3') + ' + πn')],
+      ['Solve ' + m('cos x = −1'), m('x = π + 2πn')],
+      ['Solve ' + m('sin x = ' + f('1', '2')) + ' on ' + m('[0, 2π]'), m(f('π', '6')) + ', ' + m(f('5π', '6'))],
+      ['Solve ' + m('cos x = ' + f(sr('3'), '2')) + ' on ' + m('[0°, 360°]'), m('30°') + ', ' + m('330°')],
+      ['Solve ' + m('tan x = −' + f(sr('3'), '3')) + ' on ' + m('[0°, 360°]'), m('150°') + ', ' + m('330°')]
+    ],
+    hard: [
+      ['Solve ' + m('sin 2x = ' + f(sr('3'), '2')) + ' on ' + m('[0, π]'), m(f('π', '6')) + ', ' + m(f('π', '3'))],
+      ['Solve ' + m('cos(x − ' + f('π', '4') + ') = ' + f('1', '2')), m('x = ' + f('π', '4') + ' ± ' + f('π', '3') + ' + 2πn')],
+      ['Solve ' + m('tan 3x = 1') + ' on ' + m('[0, π]'), m(f('π', '12')) + ', ' + m(f('5π', '12')) + ', ' + m(f('3π', '4'))],
+      ['Solve ' + m('sin(2x + ' + f('π', '3') + ') = 0'), m('x = −' + f('π', '6') + ' + ' + f('πn', '2'))],
+      ['How many solutions has ' + m('cos 3x = ' + f('1', '2')) + ' on ' + m('[0, 2π]') + '?', m('6')],
+      ['Solve ' + m('2 sin x − 1 = 0') + ' on ' + m('[−π, π]'), m(f('π', '6')) + ', ' + m(f('5π', '6'))],
+      ['For which ' + m('a') + ' has ' + m('sin x = a') + ' exactly one solution on ' + m('[0, 2π)') + '?', m('a = ±1')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw the circle for every question before writing a formula.',
+  homework: [
+    'Solve ' + m('sin x = −' + f(sr('2'), '2')) + ' in general and on ' + m('[0, 2π]') + '.',
+    'Solve ' + m('cos x = −' + f('1', '2')) + ' in general and on ' + m('[0°, 360°]') + '.',
+    'Solve ' + m('tan x = ' + sr('3')) + ' on ' + m('[−180°, 180°]') + '.',
+    'Solve ' + m('sin 3x = ' + f('1', '2')) + ' on ' + m('[0, π]') + ', showing the substitution ' + m('t = 3x') + '.',
+    'Explain in two sentences why ' + m('tan x = a') + ' always has a solution but ' + m('sin x = a') + ' may not.'
+  ]
+});
+
+/* ============================== 39 ============================== */
+G10_ALG.push({
+  id: 'a10-39', stream: 'alg', grade: 10, quarter: 4, lessons: '82–85', hours: 4,
+  title: 'Methods for solving trigonometric equations',
+  subtitle: 'Factorise, substitute, or reduce to one function — three moves cover almost everything.',
+  uz: 'Algebra 10, §27', uzPage: 'pp. 271–288',
+  cam: 'P1 5.6–5.7', camPage: 'Pure Mathematics 1, pp. 105–116', wb: 'Exercise 5E–5F',
+  objectives: [
+    'Reduce an equation to a single trigonometric function.',
+    'Solve quadratic equations in sin x or cos x by substitution.',
+    'Solve homogeneous equations by dividing by cos x.',
+    'Use the identities for sin 2x, cos 2x and a sin x + b cos x.'
+  ],
+  terms: [
+    ['Substitution', 'O‘rniga qo‘yish', 'Подстановка'],
+    ['Homogeneous equation', 'Bir jinsli tenglama', 'Однородное уравнение'],
+    ['Factorisation', 'Ko‘paytuvchilarga ajratish', 'Разложение на множители'],
+    ['Double angle', 'Ikkilangan burchak', 'Двойной угол'],
+    ['Identity', 'Ayniyat', 'Тождество'],
+    ['Auxiliary angle', 'Yordamchi burchak', 'Вспомогательный угол'],
+    ['Extraneous root', 'Chet ildiz', 'Посторонний корень'],
+    ['Domain restriction', 'Aniqlanish sohasi cheklovi', 'Ограничение области'],
+    ['Quadratic in sin x', 'sin x ga nisbatan kvadrat', 'Квадратное относительно sin x'],
+    ['Reduction', 'Keltirish', 'Приведение']
+  ],
+  timing: [[20, 'The three moves'], [40, 'Quadratic by substitution'], [40, 'Factorising'], [40, 'Homogeneous equations'], [35, 'Double angle and auxiliary angle'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The three moves',
+      html: `<p>Every equation in this section is turned into ${m('sin x = a')} or one of its three
+      relatives. There are only three ways to get there.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Move</th><th>Recognise it by</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><b>substitute</b></td><td>one function, two powers</td><td class="m">2sin²x − 3sin x + 1 = 0</td></tr>
+        <tr><td><b>factorise</b></td><td>a common factor, or a product = 0</td><td class="m">sin x cos x − sin x = 0</td></tr>
+        <tr><td><b>reduce</b></td><td>two functions of the same angle</td><td class="m">2cos²x + sin x = 2</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The identity that does most of the work</div>
+      ${eq(m('sin²x + cos²x = 1'), true)}
+      Read left to right it removes a ${m('cos²')}; read right to left it creates one. Almost every
+      “reduce” step is this identity used in one direction or the other.</div>`
+    },
+    {
+      h: 'Quadratic by substitution',
+      html: `<p><b>Example.</b> ${m('2sin²x − 3sin x + 1 = 0')}. Put ${m('t = sin x')}:</p>
+      ${eq(m('2t² − 3t + 1 = 0 ⇒ t = 1') + ' or ' + m('t = ' + f('1', '2')), true)}
+      <p>Now solve each: ${m('sin x = 1 ⇒ x = ' + f('π', '2') + ' + 2πn')}, and
+      ${m('sin x = ' + f('1', '2') + ' ⇒ x = (−1)ⁿ ' + f('π', '6') + ' + πn')}.</p>
+      <div class="warn"><span class="wl">Check every root against ${m('|t| ≤ 1')}</span>
+      ${m('2sin²x − sin x − 6 = 0')} gives ${m('t = 2')} or ${m('t = −' + f('3', '2'))}. Both are
+      outside ${m('[−1, 1]')}, so the equation has <b>no</b> solutions. Do the check before solving.</div>
+      <p>When the equation contains ${m('sin²x')} and ${m('cos x')}, replace first:
+      ${m('2cos²x + sin x = 2')} becomes ${m('2(1 − sin²x) + sin x = 2')}, that is
+      ${m('2sin²x − sin x = 0')} — now a quadratic in ${m('sin x')} that also factorises.</p>`
+    },
+    {
+      h: 'Factorising',
+      html: `<p>When every term shares a factor, take it out — <b>never</b> divide by it.</p>
+      ${eq(m('sin x cos x = sin x ⇒ sin x (cos x − 1) = 0'), true)}
+      <p>So ${m('sin x = 0')} or ${m('cos x = 1')}, giving ${m('x = πn')} together with
+      ${m('x = 2πn')} — and the second family is inside the first, so the answer is just
+      ${m('x = πn')}.</p>
+      <div class="warn"><span class="wl">Dividing by ${m('sin x')} loses solutions</span>
+      Divide ${m('sin x cos x = sin x')} by ${m('sin x')} and you get ${m('cos x = 1')} alone — every
+      solution with ${m('sin x = 0')} has vanished. Factor, set each factor to zero, keep both.</div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Equation</th><th>Factored</th><th>Solutions</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2sin x cos x = cos x</td><td class="m">cos x(2sin x − 1) = 0</td><td class="m">${f('π', '2')} + πn; (−1)ⁿ${f('π', '6')} + πn</td></tr>
+        <tr><td class="m">tan x · sin x = tan x</td><td class="m">tan x(sin x − 1) = 0</td><td class="m">πn; ${f('π', '2')} + 2πn</td></tr>
+        <tr><td class="m">sin 2x = sin x</td><td class="m">sin x(2cos x − 1) = 0</td><td class="m">πn; ±${f('π', '3')} + 2πn</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Homogeneous equations',
+      html: `<p>An equation is <b>homogeneous of degree one</b> when every term has exactly one factor of
+      ${m('sin x')} or ${m('cos x')}:</p>
+      ${eq(m('a sin x + b cos x = 0'), true)}
+      <p>Here dividing <i>is</i> safe — by ${m('cos x')}, because ${m('cos x = 0')} would force
+      ${m('sin x = 0')} too, and the two are never zero together. The result:</p>
+      ${eq(m('a tan x + b = 0 ⇒ tan x = −' + f('b', 'a')), true)}
+      <p><b>Degree two</b> works the same way. ${m('3sin²x − 4sin x cos x + cos²x = 0')}: divide through
+      by ${m('cos²x')} to get ${m('3tan²x − 4tan x + 1 = 0')}, a quadratic in ${m('tan x')} with roots
+      ${m('1')} and ${m(f('1', '3'))}.</p>
+      <div class="keybox"><div class="klabel">Homogeneous, or not?</div>
+      Count the trigonometric factors in each term. ${m('3sin²x − 4sin x cos x + cos²x')} — two, two,
+      two: homogeneous. ${m('3sin²x − 4sin x cos x + 1')} — two, two, <b>zero</b>: not homogeneous, until
+      you write ${m('1 = sin²x + cos²x')} and it becomes so.</div>`
+    },
+    {
+      h: 'Double angle and the auxiliary angle',
+      html: `${eq(m('sin 2x = 2 sin x cos x') + '     ' + m('cos 2x = cos²x − sin²x = 1 − 2sin²x = 2cos²x − 1'), true)}
+      <p>Three forms of ${m('cos 2x')}, and the right one is the one that leaves a single function.
+      ${m('cos 2x + sin x = 0')} becomes ${m('1 − 2sin²x + sin x = 0')}, a quadratic in ${m('sin x')}.</p>
+      <p><b>The auxiliary angle.</b> An equation of the form ${m('a sin x + b cos x = c')} is not
+      homogeneous, because of the constant. Write the left side as a single sine:</p>
+      ${eq(m('a sin x + b cos x = R sin(x + α)') + ',   ' + m('R = ' + sr('a² + b²')) + ',   ' + m('tan α = ' + f('b', 'a')), true)}
+      <p><b>Example.</b> ${m('' + sr('3') + ' sin x + cos x = 1')}. Here ${m('R = 2')} and
+      ${m('α = ' + f('π', '6'))}, so ${m('2 sin(x + ' + f('π', '6') + ') = 1')}, that is
+      ${m('sin(x + ' + f('π', '6') + ') = ' + f('1', '2'))}.</p>
+      <div class="keybox"><div class="klabel">What ${m('R')} tells you immediately</div>
+      Since ${m('|sin| ≤ 1')}, the expression ${m('a sin x + b cos x')} never leaves ${m('[−R, R]')}. So
+      ${m('' + sr('3') + ' sin x + cos x = 3')} has no solution — ${m('R = 2 < 3')} — and the maximum of
+      ${m('3sin x + 4cos x')} is ${m('5')}. One number answers a whole family of questions.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('2cos²x + 3 sin x = 0') + '.',
+      steps: [
+        [m('2(1 − sin²x) + 3 sin x = 0'), 'Reduce to one function.'],
+        [m('2sin²x − 3 sin x − 2 = 0'), ''],
+        [m('t = 2') + ' (rejected) or ' + m('t = −' + f('1', '2')), m('|t| ≤ 1') + ' kills the first.'],
+        [m('x = (−1)ⁿ⁺¹ ' + f('π', '6') + ' + πn'), '']
+      ],
+      ans: m('x = (−1)ⁿ⁺¹ ' + f('π', '6') + ' + πn')
+    },
+    {
+      q: 'Solve ' + m('sin 2x = cos x') + '.',
+      steps: [
+        [m('2 sin x cos x − cos x = 0'), 'Double angle first.'],
+        [m('cos x (2 sin x − 1) = 0'), 'Factor — do not divide.'],
+        [m('cos x = 0 ⇒ x = ' + f('π', '2') + ' + πn'), ''],
+        [m('sin x = ' + f('1', '2') + ' ⇒ x = (−1)ⁿ ' + f('π', '6') + ' + πn'), '']
+      ],
+      ans: m('x = ' + f('π', '2') + ' + πn') + ' or ' + m('x = (−1)ⁿ ' + f('π', '6') + ' + πn')
+    },
+    {
+      q: 'Solve ' + m('sin²x − 3 sin x cos x + 2cos²x = 0') + '.',
+      steps: [
+        ['Homogeneous of degree 2; divide by ' + m('cos²x') + '.', ''],
+        [m('tan²x − 3 tan x + 2 = 0'), ''],
+        [m('tan x = 1') + ' or ' + m('tan x = 2'), ''],
+        [m('x = ' + f('π', '4') + ' + πn') + ' or ' + m('x = arctan 2 + πn'), '']
+      ],
+      ans: m('x = ' + f('π', '4') + ' + πn') + ', ' + m('x = arctan 2 + πn')
+    },
+    {
+      q: 'Solve ' + m(sr('3') + ' sin x + cos x = 1') + ' on ' + m('[0, 2π]') + '.',
+      steps: [
+        [m('R = ' + sr('3 + 1') + ' = 2') + ', ' + m('tan α = ' + f('1', sr('3')) + ' ⇒ α = ' + f('π', '6')), ''],
+        [m('2 sin(x + ' + f('π', '6') + ') = 1'), ''],
+        [m('x + ' + f('π', '6') + ' = ' + f('π', '6')) + ' or ' + m(f('5π', '6')) + ' (mod ' + m('2π') + ')', ''],
+        [m('x = 0') + ' or ' + m('x = ' + f('2π', '3')) + '; also ' + m('x = 2π') + '.', '']
+      ],
+      ans: m('x = 0') + ', ' + m(f('2π', '3')) + ', ' + m('2π')
+    }
+  ],
+  modelNote: 'Put the three moves on the board as a checklist and refuse to start any question until the class has named the move.',
+  interactive: {
+    type: 'quadratic',
+    title: 'The quadratic behind the substitution',
+    hint: 'Only roots inside [−1, 1] survive when t = sin x.'
+  },
+  quiz: [
+    { q: m('2sin²x − sin x − 6 = 0') + ' has:', a: ['two families', 'one family', 'no solution', 'four families'], c: 2, why: 'Both roots leave ' + m('[−1, 1]') + '.' },
+    { q: 'To solve ' + m('sin x cos x = sin x') + ' you should:', a: ['divide by ' + m('sin x'), 'factorise', 'square both sides', 'substitute ' + m('t = cos x')], c: 1, why: 'Dividing loses solutions.' },
+    { q: 'A homogeneous equation is solved by dividing by:', a: [m('sin x'), 'the highest power of ' + m('cos x'), m('2'), 'nothing'], c: 1, why: m('cos x = 0') + ' is never a solution there.' },
+    { q: 'The maximum of ' + m('3 sin x + 4 cos x') + ' is:', a: [m('3'), m('4'), m('5'), m('7')], c: 2, why: m('R = ' + sr('9 + 16')) + '.' },
+    { q: 'Which form of ' + m('cos 2x') + ' suits ' + m('cos 2x + sin x = 0') + '?', a: [m('cos²x − sin²x'), m('1 − 2sin²x'), m('2cos²x − 1'), 'any'], c: 1, why: 'It leaves only ' + m('sin x') + '.' },
+    { q: m('a sin x + b cos x = c') + ' has no solution when:', a: [m('c = 0'), m('|c| > ' + sr('a² + b²')), m('a = b'), 'never'], c: 1, why: 'The range is ' + m('[−R, R]') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m('sin x (cos x − 1) = 0'), m('x = πn')],
+      ['Solve ' + m('cos x (2 sin x − 1) = 0'), m(f('π', '2') + ' + πn') + '; ' + m('(−1)ⁿ' + f('π', '6') + ' + πn')],
+      ['Substitute ' + m('t = sin x') + ' in ' + m('2sin²x − 3 sin x + 1 = 0'), m('2t² − 3t + 1 = 0')],
+      ['Roots of ' + m('2t² − 3t + 1 = 0'), m('t = 1') + ', ' + m('t = ' + f('1', '2'))],
+      ['Replace ' + m('cos²x') + ' in ' + m('2cos²x + sin x = 2'), m('2sin²x − sin x = 0')],
+      [m('R') + ' for ' + m('3 sin x + 4 cos x'), m('5')],
+      [m('R') + ' for ' + m('sin x + cos x'), m(sr('2'))]
+    ],
+    med: [
+      ['Solve ' + m('2sin²x − 3 sin x + 1 = 0'), m(f('π', '2') + ' + 2πn') + '; ' + m('(−1)ⁿ' + f('π', '6') + ' + πn')],
+      ['Solve ' + m('2cos²x + sin x = 2'), m('πn') + '; ' + m('(−1)ⁿ' + f('π', '6') + ' + πn')],
+      ['Solve ' + m('sin 2x = sin x'), m('πn') + '; ' + m('± ' + f('π', '3') + ' + 2πn')],
+      ['Solve ' + m('sin x + cos x = 0'), m('x = −' + f('π', '4') + ' + πn')],
+      ['Solve ' + m('' + sr('3') + ' sin x − cos x = 0'), m('x = ' + f('π', '6') + ' + πn')],
+      ['Solve ' + m('cos 2x + cos x = 0') + ' on ' + m('[0, 2π]'), m(f('π', '3')) + ', ' + m('π') + ', ' + m(f('5π', '3'))],
+      ['Solve ' + m('tan²x − 1 = 0'), m('x = ± ' + f('π', '4') + ' + πn')]
+    ],
+    hard: [
+      ['Solve ' + m('sin²x − 3 sin x cos x + 2cos²x = 0'), m(f('π', '4') + ' + πn') + '; ' + m('arctan 2 + πn')],
+      ['Solve ' + m('' + sr('3') + ' sin x + cos x = 1') + ' on ' + m('[0, 2π]'), m('0') + ', ' + m(f('2π', '3')) + ', ' + m('2π')],
+      ['Solve ' + m('sin x + cos x = 1') + ' on ' + m('[0, 2π]'), m('0') + ', ' + m(f('π', '2')) + ', ' + m('2π')],
+      ['Solve ' + m('cos 2x = 3 cos x − 2') + ' on ' + m('[0, 2π]'), m('0') + ', ' + m(f('π', '3')) + ', ' + m(f('5π', '3')) + ', ' + m('2π')],
+      ['Solve ' + m('sin 2x + cos 2x = 1') + ' on ' + m('[0, 2π]'), m('0') + ', ' + m(f('π', '4')) + ', ' + m('π') + ', ' + m(f('5π', '4'))],
+      ['Find the maximum and minimum of ' + m('5 sin x − 12 cos x'), m('13') + ' and ' + m('−13')],
+      ['For which ' + m('c') + ' has ' + m('sin x + ' + sr('3') + ' cos x = c') + ' a solution?', m('|c| ≤ 2')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Name the move — substitute, factorise or reduce — before each solution.',
+  homework: [
+    'Solve ' + m('2sin²x + sin x − 1 = 0') + ' in general and on ' + m('[0, 2π]') + '.',
+    'Solve ' + m('sin 2x = cos x') + ' and explain in one sentence why dividing by ' + m('cos x') + ' would be wrong.',
+    'Solve ' + m('3sin²x − 4 sin x cos x + cos²x = 0') + '.',
+    'Write ' + m('5 sin x + 12 cos x') + ' in the form ' + m('R sin(x + α)') + ' and state its greatest value.',
+    'Solve ' + m('cos 2x + 3 sin x = 2') + ' on ' + m('[0°, 360°]') + '.'
+  ]
+});
+
+/* ============================== 40 ============================== */
+G10_ALG.push({
+  id: 'a10-40', stream: 'alg', grade: 10, quarter: 4, lessons: '86–88', hours: 3,
+  title: 'Trigonometric inequalities',
+  subtitle: 'Solve the equation first, then read the arc between the two points.',
+  uz: 'Algebra 10, §28', uzPage: 'pp. 289–300',
+  cam: 'Extension beyond P1', camPage: 'Pure Mathematics 1, pp. 117–120', wb: 'Exercise 5G',
+  objectives: [
+    'Solve sin x > a and its three relatives on the unit circle.',
+    'Write the answer as a family of intervals, not of points.',
+    'Choose the arc correctly for a negative right-hand side.',
+    'Solve simple compound and quadratic trigonometric inequalities.'
+  ],
+  terms: [
+    ['Inequality', 'Tengsizlik', 'Неравенство'],
+    ['Arc', 'Yoy', 'Дуга'],
+    ['Interval of solutions', 'Yechimlar oralig‘i', 'Интервал решений'],
+    ['Strict inequality', 'Qat’iy tengsizlik', 'Строгое неравенство'],
+    ['Union of intervals', 'Oraliqlar birlashmasi', 'Объединение промежутков'],
+    ['Endpoint', 'Chetki nuqta', 'Концевая точка'],
+    ['Period', 'Davr', 'Период'],
+    ['Sign chart', 'Ishoralar jadvali', 'Таблица знаков']
+  ],
+  timing: [[15, 'From points to arcs'], [30, 'sin x > a'], [30, 'cos x > a'], [25, 'tangent inequalities'], [30, 'Quadratic and compound'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'From points to arcs',
+      html: `<p>The equation ${m('sin x = a')} marks two points on the circle. The inequality
+      ${m('sin x > a')} asks for the <b>arc</b> between them — the part of the circle lying above the
+      chord.</p>
+      <div class="keybox"><div class="klabel">The method, in three lines</div>
+      <ol>
+        <li>Solve the equation to find the two boundary points.</li>
+        <li>Shade the arc on which the inequality is true.</li>
+        <li>Read the arc from its start to its end, going <b>anticlockwise</b>, and add the period.</li>
+      </ol></div>
+      {{fig:trigInequality:sin x &gt; ½ — the band above the line, and the intervals it cuts.}}
+      <div class="warn"><span class="wl">Always go anticlockwise</span>
+      Read the arc in the direction of increasing angle. Written the other way,
+      ${m(f('5π', '6') + ' < x < ' + f('π', '6'))} is an empty interval, and the whole answer collapses.</div>`
+    },
+    {
+      h: 'sin x > a and sin x < a',
+      html: `<p>For ${m('sin x > a')}, the arc runs from ${m('arcsin a')} anticlockwise to
+      ${m('π − arcsin a')} — the upper arc.</p>
+      ${eq(m('sin x > a ⇔ arcsin a + 2πn < x < π − arcsin a + 2πn'), true)}
+      ${eq(m('sin x < a ⇔ π − arcsin a + 2πn < x < 2π + arcsin a + 2πn'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Inequality</th><th>Boundary points</th><th>Answer on one period</th></tr></thead>
+      <tbody>
+        <tr><td class="m">sin x > ${f('1', '2')}</td><td class="m">${f('π', '6')}, ${f('5π', '6')}</td><td class="m">(${f('π', '6')}, ${f('5π', '6')})</td></tr>
+        <tr><td class="m">sin x ≥ ${f(sr('2'), '2')}</td><td class="m">${f('π', '4')}, ${f('3π', '4')}</td><td class="m">[${f('π', '4')}, ${f('3π', '4')}]</td></tr>
+        <tr><td class="m">sin x &lt; ${f('1', '2')}</td><td class="m">${f('π', '6')}, ${f('5π', '6')}</td><td class="m">(${f('5π', '6')}, ${f('13π', '6')})</td></tr>
+        <tr><td class="m">sin x > −${f('1', '2')}</td><td class="m">−${f('π', '6')}, ${f('7π', '6')}</td><td class="m">(−${f('π', '6')}, ${f('7π', '6')})</td></tr>
+      </tbody></table></div>
+      <p>Notice that the last line has the <b>longer</b> arc: a negative bound leaves most of the circle
+      above the chord. If your interval for ${m('sin x > −' + f('1', '2'))} is shorter than half the
+      circle, you have shaded the wrong arc.</p>`
+    },
+    {
+      h: 'cos x > a and cos x < a',
+      html: `<p>Here the chord is <b>vertical</b>, and the boundary points are ${m('± arccos a')}. The
+      arc where the cosine is large lies on the right.</p>
+      ${eq(m('cos x > a ⇔ −arccos a + 2πn < x < arccos a + 2πn'), true)}
+      ${eq(m('cos x < a ⇔ arccos a + 2πn < x < 2π − arccos a + 2πn'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Inequality</th><th>Answer on one period</th><th>Length of the arc</th></tr></thead>
+      <tbody>
+        <tr><td class="m">cos x > ${f('1', '2')}</td><td class="m">(−${f('π', '3')}, ${f('π', '3')})</td><td class="m">${f('2π', '3')}</td></tr>
+        <tr><td class="m">cos x &lt; ${f('1', '2')}</td><td class="m">(${f('π', '3')}, ${f('5π', '3')})</td><td class="m">${f('4π', '3')}</td></tr>
+        <tr><td class="m">cos x ≥ −${f(sr('2'), '2')}</td><td class="m">[−${f('3π', '4')}, ${f('3π', '4')}]</td><td class="m">${f('3π', '2')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A check that costs nothing</div>
+      The two arcs must add to ${m('2π')}. If ${m('cos x > ' + f('1', '2'))} gives ${m(f('2π', '3'))}
+      and ${m('cos x < ' + f('1', '2'))} gives ${m(f('4π', '3'))}, the pair is consistent.</div>`
+    },
+    {
+      h: 'Tangent inequalities',
+      html: `<p>The tangent has period ${m('π')} and a vertical asymptote in the middle of each period, so
+      its solution intervals are <b>half</b> as long and never cross the asymptote.</p>
+      ${eq(m('tan x > a ⇔ arctan a + πn < x < ' + f('π', '2') + ' + πn'), true)}
+      ${eq(m('tan x < a ⇔ −' + f('π', '2') + ' + πn < x < arctan a + πn'), true)}
+      <p>The interval is always <b>open</b> at ${m(f('π', '2') + ' + πn')}, because the tangent is not
+      defined there. Writing ${m('≤ ' + f('π', '2'))} is a real error, not a small one.</p>
+      <div class="warn"><span class="wl">The period is ${m('π')}, not ${m('2π')}</span>
+      Adding ${m('2πn')} to a tangent inequality halves the solution set. Every tangent answer steps by
+      ${m('π')}.</div>`
+    },
+    {
+      h: 'Quadratic and compound inequalities',
+      html: `<p>Substitute exactly as for equations, solve the quadratic in ${m('t')}, then intersect with
+      ${m('−1 ≤ t ≤ 1')} and translate back.</p>
+      <p><b>Example.</b> ${m('2sin²x − sin x − 1 > 0')}. With ${m('t = sin x')}:
+      ${m('(2t + 1)(t − 1) > 0')}, so ${m('t < −' + f('1', '2'))} or ${m('t > 1')}. The second is
+      impossible, so the answer comes from ${m('sin x < −' + f('1', '2'))} alone.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Inequality</th><th>In ${m('t')}</th><th>Surviving condition</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2sin²x − sin x − 1 > 0</td><td class="m">t &lt; −${f('1', '2')} or t > 1</td><td class="m">sin x &lt; −${f('1', '2')}</td></tr>
+        <tr><td class="m">cos²x ≤ ${f('1', '4')}</td><td class="m">−${f('1', '2')} ≤ t ≤ ${f('1', '2')}</td><td class="m">both branches</td></tr>
+        <tr><td class="m">4sin²x > 3</td><td class="m">|t| > ${f(sr('3'), '2')}</td><td class="m">two pairs of arcs</td></tr>
+      </tbody></table></div>
+      <p><b>A compound inequality.</b> ${m('−' + f('1', '2') + ' < cos x < ' + f(sr('2'), '2'))} is an
+      intersection of two arcs. Shade both on one circle and read the overlap — two intervals, symmetric
+      about the horizontal axis.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('sin x > ' + f(sr('2'), '2')) + '.',
+      steps: [
+        [m('sin x = ' + f(sr('2'), '2') + ' ⇒ x = ' + f('π', '4') + ', ' + f('3π', '4')), 'The boundary points.'],
+        ['Shade the arc above the chord.', 'It runs anticlockwise from ' + m(f('π', '4')) + '.'],
+        [m(f('π', '4') + ' + 2πn < x < ' + f('3π', '4') + ' + 2πn'), '']
+      ],
+      ans: m(f('π', '4') + ' + 2πn < x < ' + f('3π', '4') + ' + 2πn')
+    },
+    {
+      q: 'Solve ' + m('cos x ≤ −' + f('1', '2')) + '.',
+      steps: [
+        [m('arccos(−' + f('1', '2') + ') = ' + f('2π', '3')), ''],
+        ['The cosine is small on the <b>left</b> arc.', ''],
+        [m(f('2π', '3') + ' + 2πn ≤ x ≤ ' + f('4π', '3') + ' + 2πn'), 'Closed — the inequality is not strict.']
+      ],
+      ans: m(f('2π', '3') + ' + 2πn ≤ x ≤ ' + f('4π', '3') + ' + 2πn')
+    },
+    {
+      q: 'Solve ' + m('tan x ≥ 1') + '.',
+      steps: [
+        [m('arctan 1 = ' + f('π', '4')), ''],
+        ['The tangent increases to ' + m('+∞') + ' at ' + m(f('π', '2')) + '.', ''],
+        [m(f('π', '4') + ' + πn ≤ x < ' + f('π', '2') + ' + πn'), 'Open at the asymptote.']
+      ],
+      ans: m(f('π', '4') + ' + πn ≤ x < ' + f('π', '2') + ' + πn')
+    },
+    {
+      q: 'Solve ' + m('2sin²x − sin x − 1 > 0') + ' on ' + m('[0, 2π]') + '.',
+      steps: [
+        [m('(2t + 1)(t − 1) > 0'), 'With ' + m('t = sin x') + '.'],
+        [m('t < −' + f('1', '2')) + ' or ' + m('t > 1') + '; the second is empty.', ''],
+        [m('sin x < −' + f('1', '2')), ''],
+        [m(f('7π', '6') + ' < x < ' + f('11π', '6')), '']
+      ],
+      ans: m(f('7π', '6') + ' < x < ' + f('11π', '6'))
+    }
+  ],
+  modelNote: 'Give each pair a paper circle and a ruler for the chord; they shade, then read the interval aloud.',
+  interactive: {
+    type: 'inequalityLine',
+    title: 'From the sign of an expression to an interval',
+    hint: 'The same reading, on a line instead of a circle.'
+  },
+  quiz: [
+    { q: m('sin x > a') + ' is solved by reading:', a: ['two points', 'the arc between them', 'the whole circle', 'nothing'], c: 1, why: 'An inequality gives intervals.' },
+    { q: 'The arc must be read:', a: ['clockwise', 'anticlockwise', 'either way', 'from the larger point'], c: 1, why: 'In the direction of increasing angle.' },
+    { q: m('cos x > ' + f('1', '2')) + ' on one period is:', a: [m('(0, ' + f('π', '3') + ')'), m('(−' + f('π', '3') + ', ' + f('π', '3') + ')'), m('(' + f('π', '3') + ', ' + f('5π', '3') + ')'), m('(0, 2π)')], c: 1, why: 'The right-hand arc.' },
+    { q: 'A tangent inequality steps by:', a: [m('2π'), m('π'), m(f('π', '2')), m('π') + ' or ' + m('2π')], c: 1, why: 'Its period is ' + m('π') + '.' },
+    { q: 'The interval for ' + m('tan x ≥ 1') + ' is:', a: ['closed at both ends', 'open at ' + m(f('π', '2')), 'open at both ends', 'a single point'], c: 1, why: 'The tangent is undefined there.' },
+    { q: m('sin x > 2') + ' has:', a: ['one interval', 'two intervals', 'no solution', 'all of ' + m('ℝ')], c: 2, why: 'The sine never exceeds ' + m('1') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m('sin x > 0'), m('2πn < x < π + 2πn')],
+      ['Solve ' + m('cos x > 0'), m('−' + f('π', '2') + ' + 2πn < x < ' + f('π', '2') + ' + 2πn')],
+      ['Solve ' + m('sin x < 0'), m('π + 2πn < x < 2π + 2πn')],
+      ['Solve ' + m('tan x > 0'), m('πn < x < ' + f('π', '2') + ' + πn')],
+      ['Solve ' + m('cos x ≥ 1'), m('x = 2πn')],
+      ['Has ' + m('sin x ≥ 1.2') + ' a solution?', 'No'],
+      ['Solve ' + m('sin x ≤ 1'), 'All ' + m('x')]
+    ],
+    med: [
+      ['Solve ' + m('sin x > ' + f('1', '2')), m(f('π', '6') + ' + 2πn < x < ' + f('5π', '6') + ' + 2πn')],
+      ['Solve ' + m('cos x < ' + f('1', '2')), m(f('π', '3') + ' + 2πn < x < ' + f('5π', '3') + ' + 2πn')],
+      ['Solve ' + m('sin x ≥ ' + f(sr('3'), '2')), m(f('π', '3') + ' + 2πn ≤ x ≤ ' + f('2π', '3') + ' + 2πn')],
+      ['Solve ' + m('cos x ≤ −' + f(sr('2'), '2')), m(f('3π', '4') + ' + 2πn ≤ x ≤ ' + f('5π', '4') + ' + 2πn')],
+      ['Solve ' + m('tan x < ' + sr('3')), m('−' + f('π', '2') + ' + πn < x < ' + f('π', '3') + ' + πn')],
+      ['Solve ' + m('sin x > −' + f('1', '2')), m('−' + f('π', '6') + ' + 2πn < x < ' + f('7π', '6') + ' + 2πn')],
+      ['Length of the arc for ' + m('cos x > −' + f('1', '2')), m(f('4π', '3'))]
+    ],
+    hard: [
+      ['Solve ' + m('2sin²x − sin x − 1 > 0') + ' on ' + m('[0, 2π]'), m(f('7π', '6') + ' < x < ' + f('11π', '6'))],
+      ['Solve ' + m('4cos²x ≤ 3') + ' on ' + m('[0, π]'), m(f('π', '6') + ' ≤ x ≤ ' + f('5π', '6'))],
+      ['Solve ' + m('sin 2x > ' + f('1', '2')) + ' on ' + m('[0, π]'), m(f('π', '12') + ' < x < ' + f('5π', '12'))],
+      ['Solve ' + m('−' + f('1', '2') + ' < cos x < ' + f(sr('2'), '2')) + ' on ' + m('[0, 2π]'), m('(' + f('π', '4') + ', ' + f('2π', '3') + ') ∪ (' + f('4π', '3') + ', ' + f('7π', '4') + ')')],
+      ['Solve ' + m('sin x cos x > 0') + ' on ' + m('[0, 2π]'), m('(0, ' + f('π', '2') + ') ∪ (π, ' + f('3π', '2') + ')')],
+      ['Solve ' + m('tan²x > 1') + ' on ' + m('(−' + f('π', '2') + ', ' + f('π', '2') + ')'), m('(−' + f('π', '2') + ', −' + f('π', '4') + ') ∪ (' + f('π', '4') + ', ' + f('π', '2') + ')')],
+      ['Solve ' + m('sin x + cos x > 1') + ' on ' + m('[0, 2π]'), m('(0, ' + f('π', '2') + ')')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw and shade a circle for every question; the picture is half the mark.',
+  homework: [
+    'Solve ' + m('sin x ≥ ' + f('1', '2')) + ' and give the answer on ' + m('[0, 2π]') + '.',
+    'Solve ' + m('cos x > −' + f(sr('3'), '2')) + ', and state the length of the arc.',
+    'Solve ' + m('tan x ≤ −1') + ', taking care over the asymptote.',
+    'Solve ' + m('2cos²x − cos x − 1 < 0') + ' on ' + m('[0, 2π]') + '.',
+    'Explain, with one circle, why ' + m('sin x > −0.9') + ' has a much longer solution arc than ' + m('sin x > 0.9') + '.'
+  ]
+});
+
+/* ============================== 41 ============================== */
+G10_ALG.push({
+  id: 'a10-41', stream: 'alg', grade: 10, quarter: 4, lessons: '89–90', hours: 2,
+  title: 'Control work 7, and work on the mistakes',
+  subtitle: 'Trigonometric equations and inequalities in one paper, then a named diagnosis of each slip.',
+  uz: 'Algebra 10, Nazorat ishi 7', uzPage: 'pp. 301–304',
+  cam: 'P1 5 review', camPage: 'Pure Mathematics 1, pp. 121–124', wb: 'Control paper A7',
+  objectives: [
+    'Solve the four basic equations and their standard extensions under time.',
+    'Select solutions in a given interval without losing a family.',
+    'Solve an inequality and write the answer as intervals.',
+    'Name each lost mark and rewrite the solution in full.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['General solution', 'Umumiy yechim', 'Общее решение'],
+    ['Family of solutions', 'Yechimlar oilasi', 'Семейство решений'],
+    ['Homogeneous', 'Bir jinsli', 'Однородное'],
+    ['Auxiliary angle', 'Yordamchi burchak', 'Вспомогательный угол'],
+    ['Extraneous root', 'Chet ildiz', 'Посторонний корень'],
+    ['Diagnosis', 'Tashxis', 'Диагностика'],
+    ['Target', 'Maqsad', 'Цель']
+  ],
+  timing: [[3, 'Instructions'], [42, 'The paper'], [12, 'Answers'], [25, 'Diagnosis and rewrite'], [8, 'Targets']],
+  sections: [
+    {
+      h: 'The paper — 35 marks, 42 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Solve ${m('sin x = −' + f(sr('3'), '2'))} in general and on ${m('[0, 2π]')}</td><td class="m">5</td><td>L79–81</td></tr>
+        <tr><td>2</td><td>Solve ${m('cos 2x = ' + f('1', '2'))} on ${m('[0°, 360°]')}</td><td class="m">5</td><td>L79–81</td></tr>
+        <tr><td>3</td><td>Solve ${m('2sin²x + 3 sin x − 2 = 0')}, rejecting the impossible root</td><td class="m">6</td><td>L82–85</td></tr>
+        <tr><td>4</td><td>Solve ${m('sin 2x = ' + sr('3') + ' cos x')} by factorising</td><td class="m">6</td><td>L82–85</td></tr>
+        <tr><td>5</td><td>Write ${m('sin x + ' + sr('3') + ' cos x')} as ${m('R sin(x + α)')}, then solve ${m('= 1')}</td><td class="m">7</td><td>L82–85</td></tr>
+        <tr><td>6</td><td>Solve ${m('cos x < ' + f('1', '2'))} and give the answer on ${m('[0, 2π]')}</td><td class="m">6</td><td>L86–88</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 and Q2 each carry one mark for the <b>second</b> family, Q3 one for rejecting ${m('t = −2')},
+      Q4 one for factorising rather than dividing, Q6 one for reading the arc anticlockwise. Five of the
+      thirty-five marks are for not losing something.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>lost family</td><td>one answer where two were wanted</td><td>draw the chord and count the points</td></tr>
+        <tr><td>divided by ${m('cos x')}</td><td class="m">sin 2x = ${sr('3')} cos x ⇒ 2 sin x = ${sr('3')}</td><td>factor; keep ${m('cos x = 0')}</td></tr>
+        <tr><td>root not rejected</td><td class="m">sin x = −2</td><td>check ${m('|t| ≤ 1')} before solving</td></tr>
+        <tr><td>wrong period</td><td class="m">tan x = a ⇒ … + 2πn</td><td>tangent steps by ${m('π')}</td></tr>
+        <tr><td>arc read backwards</td><td>an empty interval</td><td>anticlockwise, always</td></tr>
+        <tr><td>substitution not undone</td><td>answer given in ${m('t')} or in ${m('2x')}</td><td>divide by the coefficient at the end</td></tr>
+        <tr><td>${m('arccos(−a)')} mishandled</td><td class="m">−arccos a</td><td class="m">π − arccos a</td></tr>
+      </tbody></table></div>
+      <p>Write the slip's name in the margin of every question you lost a mark on, then rewrite the whole
+      solution — not the wrong line.</p>`
+    },
+    {
+      h: 'The quarter so far, in one page',
+      html: `<div class="keybox"><div class="klabel">Everything of Lessons 79–88</div>
+      ${eq(m('sin x = a ⇒ x = (−1)ⁿ arcsin a + πn') + '     ' + m('cos x = a ⇒ x = ± arccos a + 2πn'), true)}
+      ${eq(m('tan x = a ⇒ x = arctan a + πn') + '     ' + m('a sin x + b cos x = R sin(x + α)') + ', ' + m('R = ' + sr('a² + b²')), true)}
+      Three moves for the rest: <b>substitute</b>, <b>factorise</b>, <b>reduce</b>. Inequalities:
+      solve the equation, shade the arc, read it anticlockwise.</div>
+      {{fig:trigCircle:One picture that generates every formula above.}}
+      <p>Lessons 91–98 leave trigonometry entirely for probability. Nothing of this block is needed
+      there — but all of it returns in Grade 11, where the derivative of ${m('sin x')} makes these
+      equations the last step of an optimisation rather than the whole question.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q2: solve ' + m('cos 2x = ' + f('1', '2')) + ' on ' + m('[0°, 360°]') + '.',
+      steps: [
+        ['Let ' + m('t = 2x') + ', so ' + m('t ∈ [0°, 720°]') + '.', 'Widen the interval first.'],
+        [m('t = ±60° + 360°n ⇒ t = 60°, 300°, 420°, 660°'), 'Four values in range.'],
+        [m('x = 30°, 150°, 210°, 330°'), 'Halve each.']
+      ],
+      ans: m('30°, 150°, 210°, 330°')
+    },
+    {
+      q: 'Model answer, Q4: solve ' + m('sin 2x = ' + sr('3') + ' cos x') + '.',
+      steps: [
+        [m('2 sin x cos x − ' + sr('3') + ' cos x = 0'), ''],
+        [m('cos x (2 sin x − ' + sr('3') + ') = 0'), 'Factor, do not divide.'],
+        [m('x = ' + f('π', '2') + ' + πn'), ''],
+        [m('sin x = ' + f(sr('3'), '2') + ' ⇒ x = (−1)ⁿ ' + f('π', '3') + ' + πn'), '']
+      ],
+      ans: m(f('π', '2') + ' + πn') + ' and ' + m('(−1)ⁿ ' + f('π', '3') + ' + πn')
+    },
+    {
+      q: 'Model answer, Q5: write ' + m('sin x + ' + sr('3') + ' cos x') + ' as ' + m('R sin(x + α)') + ' and solve ' + m('= 1') + '.',
+      steps: [
+        [m('R = ' + sr('1 + 3') + ' = 2') + ', ' + m('tan α = ' + sr('3') + ' ⇒ α = ' + f('π', '3')), ''],
+        [m('2 sin(x + ' + f('π', '3') + ') = 1'), ''],
+        [m('x + ' + f('π', '3') + ' = ' + f('π', '6') + ' + 2πn') + ' or ' + m(f('5π', '6') + ' + 2πn'), ''],
+        [m('x = −' + f('π', '6') + ' + 2πn') + ' or ' + m('x = ' + f('π', '2') + ' + 2πn'), '']
+      ],
+      ans: m('x = −' + f('π', '6') + ' + 2πn') + ', ' + m('x = ' + f('π', '2') + ' + 2πn')
+    }
+  ],
+  modelNote: 'Work Q4 twice on the board — once by factorising, once by dividing — and let the class name the lost family.',
+  interactive: {
+    type: 'quiz',
+    title: 'Ten questions on the trigonometry block',
+    hint: 'One from each idea of Lessons 79–88.',
+    items: [
+      { q: m('sin x = 1.5') + ' has:', a: ['two solutions', 'one', 'none', 'infinitely many'], c: 2, why: 'Outside the range.' },
+      { q: m('cos x = a') + ' steps by:', a: [m('π'), m('2π'), m(f('π', '2')), m('4π')], c: 1, why: 'Its period.' },
+      { q: m('tan x = a') + ' steps by:', a: [m('π'), m('2π'), m(f('π', '2')), m('3π')], c: 0, why: 'Half-turn symmetry.' },
+      { q: m('arccos(−' + f(sr('2'), '2') + ')') + ' is:', a: [m('−' + f('π', '4')), m(f('3π', '4')), m(f('π', '4')), m(f('5π', '4'))], c: 1, why: m('π − ' + f('π', '4')) + '.' },
+      { q: 'To solve ' + m('2cos²x + sin x = 2') + ' you first:', a: ['divide by ' + m('cos x'), 'replace ' + m('cos²x') + ' by ' + m('1 − sin²x'), 'square', 'substitute ' + m('t = 2x')], c: 1, why: 'One function only.' },
+      { q: m('sin x cos x = sin x') + ' should be:', a: ['divided', 'factorised', 'squared', 'left alone'], c: 1, why: 'Or a family is lost.' },
+      { q: 'A homogeneous equation is divided by:', a: [m('sin x'), 'a power of ' + m('cos x'), m('2'), 'nothing'], c: 1, why: m('cos x = 0') + ' is never a root.' },
+      { q: 'The greatest value of ' + m('5 sin x + 12 cos x') + ' is:', a: [m('12'), m('13'), m('17'), m('5')], c: 1, why: m('R = ' + sr('169')) + '.' },
+      { q: m('sin x > a') + ' gives:', a: ['points', 'arcs', 'one number', 'nothing'], c: 1, why: 'Inequalities give intervals.' },
+      { q: m('tan x ≥ 1') + ' is open at:', a: [m(f('π', '4')), m(f('π', '2')), 'both ends', 'neither end'], c: 1, why: 'The asymptote.' }
+    ]
+  },
+  quiz: [
+    { q: 'The most common slip in Q1 is:', a: ['arithmetic', 'losing the second family', 'the period', 'the sign of ' + m('π')], c: 1, why: 'Two points, two families.' },
+    { q: 'Q3 requires you to:', a: ['reject a root outside ' + m('[−1, 1]'), 'square both sides', 'divide by ' + m('sin x'), 'use ' + m('R')], c: 0, why: m('t = −2') + ' is impossible.' },
+    { q: 'After substituting ' + m('t = 2x') + ' you must:', a: ['stop', 'halve the answers', 'double them', 'add ' + m('π')], c: 1, why: 'Undo the substitution.' },
+    { q: 'Lessons 91–98 turn to:', a: ['logarithms', 'probability', 'vectors', 'integration'], c: 1, why: 'Random events, then the definitions.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m('sin x = −' + f(sr('3'), '2')), m('x = (−1)ⁿ⁺¹ ' + f('π', '3') + ' + πn')],
+      ['Solve ' + m('cos x = ' + f('1', '2')), m('x = ± ' + f('π', '3') + ' + 2πn')],
+      ['Solve ' + m('tan x = −1'), m('x = −' + f('π', '4') + ' + πn')],
+      [m('R') + ' for ' + m('sin x + ' + sr('3') + ' cos x'), m('2')],
+      ['Reject or keep ' + m('t = −2') + ' in ' + m('sin x = t'), 'Reject'],
+      ['Solve ' + m('cos x < ' + f('1', '2')) + ' on ' + m('[0, 2π]'), m('(' + f('π', '3') + ', ' + f('5π', '3') + ')')],
+      ['Period of the tangent', m('π')]
+    ],
+    med: [
+      ['Solve ' + m('cos 2x = ' + f('1', '2')) + ' on ' + m('[0°, 360°]'), m('30°, 150°, 210°, 330°')],
+      ['Solve ' + m('2sin²x + 3 sin x − 2 = 0'), m('x = (−1)ⁿ ' + f('π', '6') + ' + πn')],
+      ['Solve ' + m('sin 2x = ' + sr('3') + ' cos x'), m(f('π', '2') + ' + πn') + '; ' + m('(−1)ⁿ' + f('π', '3') + ' + πn')],
+      ['Solve ' + m('sin x + ' + sr('3') + ' cos x = 1'), m('−' + f('π', '6') + ' + 2πn') + '; ' + m(f('π', '2') + ' + 2πn')],
+      ['Solve ' + m('sin x ≥ ' + f('1', '2')) + ' on ' + m('[0, 2π]'), m('[' + f('π', '6') + ', ' + f('5π', '6') + ']')],
+      ['Solve ' + m('tan 2x = 1') + ' on ' + m('[0, π]'), m(f('π', '8')) + ', ' + m(f('5π', '8'))],
+      ['Greatest value of ' + m('sin x + ' + sr('3') + ' cos x'), m('2')]
+    ],
+    hard: [
+      ['Solve ' + m('cos 2x + 3 sin x = 2') + ' on ' + m('[0, 2π]'), m(f('π', '6')) + ', ' + m(f('5π', '6'))],
+      ['Solve ' + m('3sin²x − 4 sin x cos x + cos²x = 0'), m(f('π', '4') + ' + πn') + '; ' + m('arctan ' + f('1', '3') + ' + πn')],
+      ['Solve ' + m('sin 3x = sin x') + ' on ' + m('[0, π]'), m('0') + ', ' + m(f('π', '4')) + ', ' + m(f('π', '2')) + ', ' + m(f('3π', '4')) + ', ' + m('π')],
+      ['Solve ' + m('|sin x| > ' + f('1', '2')) + ' on ' + m('[0, 2π]'), m('(' + f('π', '6') + ', ' + f('5π', '6') + ') ∪ (' + f('7π', '6') + ', ' + f('11π', '6') + ')')],
+      ['For which ' + m('a') + ' has ' + m('2sin²x − sin x + a = 0') + ' a solution?', m('−3 ≤ a ≤ ' + f('1', '8'))],
+      ['Solve ' + m('sin x + cos x = ' + sr('2')) + ' on ' + m('[0, 2π]'), m(f('π', '4'))],
+      ['Solve ' + m('cos²x − sin²x > ' + f('1', '2')) + ' on ' + m('[0, 2π]'), m('(0, ' + f('π', '6') + ') ∪ (' + f('11π', '6') + ', 2π)')]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Bring the one-page summary to Lesson 91; probability begins from a blank page.',
+  homework: [
+    'Rewrite in full every control-work question that lost a mark, naming the slip in the margin.',
+    'Write the four general solutions and the three moves on one page, with a circle drawn for each.',
+    'Solve ' + m('2cos²x − 5 cos x + 2 = 0') + ' on ' + m('[0, 2π]') + '.',
+    'Write your target for the probability block in one checkable sentence, and date it.'
+  ]
+});
+
+/* ============================== 42 ============================== */
+G10_ALG.push({
+  id: 'a10-42', stream: 'alg', grade: 10, quarter: 4, lessons: '91–93', hours: 3,
+  title: 'Random events',
+  subtitle: 'The sample space first, the event second, the probability only third.',
+  uz: 'Algebra 10, §29', uzPage: 'pp. 305–318',
+  cam: 'IGX 24.1', camPage: 'Core & Extended, pp. 620–628', wb: 'Exercise 24.1',
+  objectives: [
+    'Distinguish certain, impossible and random events.',
+    'List a sample space systematically, by table or by tree.',
+    'Describe the union, intersection and complement of events.',
+    'Recognise when two events are mutually exclusive or independent.'
+  ],
+  terms: [
+    ['Random event', 'Tasodifiy hodisa', 'Случайное событие'],
+    ['Trial (experiment)', 'Sinov', 'Испытание'],
+    ['Outcome', 'Natija', 'Исход'],
+    ['Sample space', 'Elementar hodisalar fazosi', 'Пространство элементарных исходов'],
+    ['Certain event', 'Muqarrar hodisa', 'Достоверное событие'],
+    ['Impossible event', 'Mumkin bo‘lmagan hodisa', 'Невозможное событие'],
+    ['Complementary event', 'Qarama-qarshi hodisa', 'Противоположное событие'],
+    ['Mutually exclusive', 'Birgalikda bo‘lmagan', 'Несовместные'],
+    ['Independent events', 'Bog‘liqsiz hodisalar', 'Независимые события'],
+    ['Tree diagram', 'Daraxt diagrammasi', 'Дерево исходов'],
+    ['Equally likely', 'Teng imkoniyatli', 'Равновозможные'],
+    ['Favourable outcome', 'Qulay natija', 'Благоприятный исход']
+  ],
+  timing: [[15, 'Three kinds of event'], [30, 'The sample space'], [30, 'Tables and trees'], [30, 'Combining events'], [25, 'Exclusive and independent'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Three kinds of event',
+      html: `<p>A <b>trial</b> is anything with an uncertain result: a die thrown, a card drawn, a bulb
+      tested. Its possible results are <b>outcomes</b>; a set of outcomes is an <b>event</b>.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Kind</th><th>Happens</th><th>Example (one die)</th></tr></thead>
+      <tbody>
+        <tr><td><b>certain</b></td><td>always</td><td>“the score is under 7”</td></tr>
+        <tr><td><b>impossible</b></td><td>never</td><td>“the score is 8”</td></tr>
+        <tr><td><b>random</b></td><td>sometimes</td><td>“the score is even”</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Notation used throughout</div>
+      Events are ${m('A, B, C, …')}; the certain event is ${m('U')} (or ${m('Ω')}); the impossible event
+      is ${m('∅')}. The complement of ${m('A')} — “not ${m('A')}” — is written ${m('A′')} or
+      ${m('Ā')}.</div>`
+    },
+    {
+      h: 'The sample space',
+      html: `<p>Every probability question begins the same way: <b>list what can happen</b>. The list is the
+      sample space, written ${m('U')}, and everything else is counted inside it.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Trial</th><th>Sample space</th><th class="m">|U|</th></tr></thead>
+      <tbody>
+        <tr><td>one coin</td><td class="m">{H, T}</td><td class="m">2</td></tr>
+        <tr><td>one die</td><td class="m">{1, 2, 3, 4, 5, 6}</td><td class="m">6</td></tr>
+        <tr><td>two coins</td><td class="m">{HH, HT, TH, TT}</td><td class="m">4</td></tr>
+        <tr><td>two dice</td><td>ordered pairs ${m('(a, b)')}</td><td class="m">36</td></tr>
+        <tr><td>a card from 52</td><td>the 52 cards</td><td class="m">52</td></tr>
+        <tr><td>three coins</td><td class="m">{HHH, …, TTT}</td><td class="m">8</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('HT')} and ${m('TH')} are different outcomes</span>
+      With two coins there are four equally likely outcomes, not three. “One head and one tail” happens
+      in <b>two</b> of them, which is why its probability is ${m(f('2', '4'))} and not ${m(f('1', '3'))}.
+      Order the outcomes and the trap disappears.</div>`
+    },
+    {
+      h: 'Tables and trees',
+      html: `<p>Two devices make the list systematic.</p>
+      <p><b>A table</b> suits two trials with few outcomes each — two dice, for instance, give a
+      ${m('6 × 6')} grid whose 36 cells are the sample space. Reading “the total is 7” off the leading
+      anti-diagonal gives 6 cells at once.</p>
+      <p><b>A tree</b> suits a sequence of stages, especially when the stages differ or when something is
+      removed between them.</p>
+      {{fig:treeDiagram:Each path through the tree is one outcome; the paths together are the sample space.}}
+      <div class="keybox"><div class="klabel">Two rules for trees</div>
+      <ul>
+        <li><b>Along</b> a branch, multiply. The probabilities of one path multiply together.</li>
+        <li><b>Down</b> the ends, add. Several paths that all count as the event are added.</li>
+      </ul>
+      The probabilities on any one fork must total ${m('1')} — a check worth doing every time.</div>`
+    },
+    {
+      h: 'Combining events',
+      html: `<p>Events are sets, so the set operations describe them.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>In words</th><th>Notation</th><th>Means</th></tr></thead>
+      <tbody>
+        <tr><td>${m('A')} or ${m('B')} (or both)</td><td class="m">A ∪ B</td><td>the union</td></tr>
+        <tr><td>${m('A')} and ${m('B')}</td><td class="m">A ∩ B</td><td>the intersection</td></tr>
+        <tr><td>not ${m('A')}</td><td class="m">A′</td><td>the complement</td></tr>
+        <tr><td>${m('A')} but not ${m('B')}</td><td class="m">A ∩ B′</td><td>the difference</td></tr>
+      </tbody></table></div>
+      {{fig:vennTwo:Two events, four regions — and every question in this block names one of them.}}
+      <p><b>One die.</b> Let ${m('A')} = “even” = ${m('{2, 4, 6}')} and ${m('B')} = “greater than 3” =
+      ${m('{4, 5, 6}')}. Then ${m('A ∪ B = {2, 4, 5, 6}')}, ${m('A ∩ B = {4, 6}')},
+      ${m('A′ = {1, 3, 5}')} and ${m('A ∩ B′ = {2}')}.</p>`
+    },
+    {
+      h: 'Exclusive and independent',
+      html: `<p>Two words are constantly confused; they describe entirely different things.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th></th><th>Mutually exclusive</th><th>Independent</th></tr></thead>
+      <tbody>
+        <tr><td>meaning</td><td>cannot both happen</td><td>one does not affect the other</td></tr>
+        <tr><td>test</td><td class="m">A ∩ B = ∅</td><td class="m">P(A ∩ B) = P(A)·P(B)</td></tr>
+        <tr><td>Venn picture</td><td>circles apart</td><td>circles overlap, in proportion</td></tr>
+        <tr><td>example</td><td>“even” and “odd”</td><td>two throws of one die</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Exclusive events are never independent</span>
+      If ${m('A')} and ${m('B')} cannot both happen, then knowing ${m('A')} occurred tells you
+      ${m('B')} did <b>not</b> — that is the strongest possible dependence. The two words are almost
+      opposites, not synonyms.</div>
+      <p><b>Replacement decides independence.</b> Drawing two balls <i>with</i> replacement leaves the
+      second draw untouched; drawing <i>without</i> replacement changes it. The phrase “without
+      replacement” in a question is an instruction to change the second row of the tree.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Two dice are thrown. List the sample space and find how many outcomes give a total of 7.',
+      steps: [
+        ['Ordered pairs ' + m('(a, b)') + ' with ' + m('a, b ∈ {1, …, 6}') + '.', m('6 × 6 = 36') + ' outcomes.'],
+        [m('(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)'), ''],
+        ['Six favourable outcomes.', '']
+      ],
+      ans: m('|U| = 36') + '; six outcomes give 7'
+    },
+    {
+      q: 'A die is thrown. With ' + m('A') + ' = “even” and ' + m('B') + ' = “prime”, list ' + m('A ∩ B') + ' and ' + m('A ∪ B') + '.',
+      steps: [
+        [m('A = {2, 4, 6}'), ''],
+        [m('B = {2, 3, 5}'), m('1') + ' is not prime.'],
+        [m('A ∩ B = {2}'), ''],
+        [m('A ∪ B = {2, 3, 4, 5, 6}'), '']
+      ],
+      ans: m('A ∩ B = {2}') + ', ' + m('A ∪ B = {2, 3, 4, 5, 6}')
+    },
+    {
+      q: 'A bag holds 3 red and 2 blue balls. Two are drawn without replacement. Draw the tree and list the outcomes.',
+      steps: [
+        ['First fork: ' + m('R') + ' with ' + m(f('3', '5')) + ', ' + m('B') + ' with ' + m(f('2', '5')) + '.', ''],
+        ['After ' + m('R') + ': ' + m(f('2', '4')) + ' and ' + m(f('2', '4')) + '.', 'Four balls left.'],
+        ['After ' + m('B') + ': ' + m(f('3', '4')) + ' and ' + m(f('1', '4')) + '.', ''],
+        ['Outcomes ' + m('RR, RB, BR, BB') + '.', '']
+      ],
+      ans: 'Four outcomes, with the second fork depending on the first'
+    },
+    {
+      q: 'Are “the first throw is a 6” and “the second throw is a 6” exclusive, independent, or neither?',
+      steps: [
+        ['They can both happen — the throw ' + m('(6, 6)') + '.', 'Not exclusive.'],
+        ['The first throw does not change the die.', ''],
+        [m('P(A ∩ B) = ' + f('1', '36') + ' = ' + f('1', '6') + ' × ' + f('1', '6')), 'Independent.']
+      ],
+      ans: 'Independent, and not mutually exclusive'
+    }
+  ],
+  modelNote: 'Throw two dice thirty times and tally the totals on the board; the shape of the answer appears before any formula.',
+  interactive: {
+    type: 'quiz',
+    title: 'Naming events correctly',
+    hint: 'Sample space first, event second.',
+    items: [
+      { q: 'The sample space for two coins has:', a: [m('2'), m('3'), m('4'), m('8')], c: 2, why: m('HH, HT, TH, TT') + '.' },
+      { q: '“The score on a die is 8” is:', a: ['certain', 'impossible', 'random', 'complementary'], c: 1, why: 'It never happens.' },
+      { q: m('A′') + ' means:', a: [m('A') + ' and ' + m('B'), 'not ' + m('A'), m('A') + ' or ' + m('B'), 'the sample space'], c: 1, why: 'The complement.' },
+      { q: 'Two dice give how many outcomes?', a: [m('12'), m('21'), m('36'), m('6')], c: 2, why: 'Ordered pairs.' },
+      { q: 'Exclusive events satisfy:', a: [m('A ∩ B = ∅'), m('A ∪ B = U'), m('P(A) = P(B)'), m('A = B')], c: 0, why: 'They never overlap.' },
+      { q: 'Along a branch of a tree you:', a: ['add', 'multiply', 'subtract', 'divide'], c: 1, why: 'And add down the ends.' },
+      { q: 'Drawing without replacement makes the draws:', a: ['independent', 'dependent', 'exclusive', 'certain'], c: 1, why: 'The second fork changes.' },
+      { q: 'The probabilities on one fork total:', a: [m('0'), m('1'), m('2'), 'anything'], c: 1, why: 'Something must happen.' }
+    ]
+  },
+  quiz: [
+    { q: 'A sample space lists:', a: ['the favourable outcomes', 'every possible outcome', 'the events', 'the probabilities'], c: 1, why: 'Everything that can happen.' },
+    { q: 'With two coins, “one head” has:', a: ['one outcome', 'two outcomes', 'three', 'four'], c: 1, why: m('HT') + ' and ' + m('TH') + '.' },
+    { q: 'Mutually exclusive events are:', a: ['always independent', 'never independent (unless one is impossible)', 'the same thing', 'complementary'], c: 1, why: 'One rules the other out.' },
+    { q: 'A tree diagram suits:', a: ['a single throw', 'a sequence of stages', 'a Venn question', 'a certain event'], c: 1, why: 'Stage by stage.' },
+    { q: m('A ∩ B′') + ' means:', a: [m('A') + ' or ' + m('B'), m('A') + ' but not ' + m('B'), 'neither', 'both'], c: 1, why: 'The difference.' }
+  ],
+  practice: {
+    easy: [
+      ['Sample space for one coin', m('{H, T}')],
+      ['Number of outcomes for two coins', m('4')],
+      ['Number of outcomes for two dice', m('36')],
+      ['Is “a die shows 7” certain, impossible or random?', 'Impossible'],
+      ['Is “a die shows less than 7” certain, impossible or random?', 'Certain'],
+      [m('A') + ' = even on a die: list ' + m('A′'), m('{1, 3, 5}')],
+      ['Number of outcomes for three coins', m('8')]
+    ],
+    med: [
+      [m('A') + ' = even, ' + m('B') + ' = prime on a die: ' + m('A ∩ B'), m('{2}')],
+      ['Same: ' + m('A ∪ B'), m('{2, 3, 4, 5, 6}')],
+      ['Two dice: how many outcomes give a total of 8?', m('5')],
+      ['Two dice: how many give a double?', m('6')],
+      ['Two coins: outcomes with exactly one head', m('2')],
+      ['A bag of 3 red, 2 blue: the second fork after a red, without replacement', m(f('2', '4')) + ' red, ' + m(f('2', '4')) + ' blue'],
+      ['Are “even” and “odd” on one die exclusive?', 'Yes']
+    ],
+    hard: [
+      ['Two dice: how many outcomes have a total that is prime?', m('15')],
+      ['Three coins: how many outcomes have at least two heads?', m('4')],
+      ['A card from 52: are “red” and “king” exclusive? independent?', 'Not exclusive; independent'],
+      ['Two dice: describe ' + m('A ∩ B') + ' where ' + m('A') + ' = “first is even”, ' + m('B') + ' = “total is 5”', m('{(2,3), (4,1)}')],
+      ['A bag of 4 white and 6 black: all outcomes of two draws without replacement', m('WW, WB, BW, BB') + ' with changing forks'],
+      ['Explain why exclusive events with ' + m('P(A), P(B) > 0') + ' cannot be independent', m('P(A ∩ B) = 0 ≠ P(A)P(B)')],
+      ['Two dice: how many outcomes give a total of at least 10?', m('6')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every answer starts with the sample space written out or counted explicitly.',
+  homework: [
+    'List the sample space for throwing a coin and a die together, and say how many outcomes it has.',
+    'For one die, let ' + m('A') + ' = “multiple of 3” and ' + m('B') + ' = “greater than 2”. List ' + m('A ∪ B') + ', ' + m('A ∩ B') + ', ' + m('A′') + ' and ' + m('A ∩ B′') + '.',
+    'Draw the tree for two draws from a bag of 5 green and 3 yellow counters, without replacement.',
+    'Give one pair of events that is exclusive but not independent, and one pair that is independent but not exclusive.',
+    'Make a ' + m('6 × 6') + ' table for two dice and shade the cells where the total is 9.'
+  ]
+});
+
+/* ============================== 43 ============================== */
+G10_ALG.push({
+  id: 'a10-43', stream: 'alg', grade: 10, quarter: 4, lessons: '94–96', hours: 3,
+  title: 'Definitions of probability',
+  subtitle: 'Classical, statistical and geometric — three definitions, one number between 0 and 1.',
+  uz: 'Algebra 10, §30', uzPage: 'pp. 319–334',
+  cam: 'IGX 24.2–24.4', camPage: 'Core & Extended, pp. 629–642', wb: 'Exercise 24.2–24.4'
+  ,
+  objectives: [
+    'Use the classical definition P(A) = m/n for equally likely outcomes.',
+    'Estimate a probability from relative frequency, and say when that is necessary.',
+    'Use the addition and multiplication rules, and the complement.',
+    'Compute a simple conditional probability from a table or a tree.'
+  ],
+  terms: [
+    ['Probability', 'Ehtimollik', 'Вероятность'],
+    ['Classical definition', 'Klassik ta’rif', 'Классическое определение'],
+    ['Relative frequency', 'Nisbiy chastota', 'Относительная частота'],
+    ['Statistical probability', 'Statistik ehtimollik', 'Статистическая вероятность'],
+    ['Geometric probability', 'Geometrik ehtimollik', 'Геометрическая вероятность'],
+    ['Addition rule', 'Qo‘shish qoidasi', 'Правило сложения'],
+    ['Multiplication rule', 'Ko‘paytirish qoidasi', 'Правило умножения'],
+    ['Conditional probability', 'Shartli ehtimollik', 'Условная вероятность'],
+    ['Complement', 'To‘ldiruvchi', 'Дополнение'],
+    ['Expected number', 'Kutilayotgan son', 'Ожидаемое число']
+  ],
+  timing: [[25, 'The classical definition'], [25, 'Relative frequency'], [25, 'Geometric probability'], [35, 'The two rules'], [20, 'Conditional probability'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The classical definition',
+      html: `<p>When every outcome of a trial is equally likely, probability is a count divided by a
+      count:</p>
+      ${eq(m('P(A) = ' + f('m', 'n') + ' = ' + f('favourable outcomes', 'all outcomes')), true)}
+      <p>Every probability lies between ${m('0')} and ${m('1')}, with ${m('P(∅) = 0')} and
+      ${m('P(U) = 1')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Event</th><th class="m">m</th><th class="m">n</th><th class="m">P</th></tr></thead>
+      <tbody>
+        <tr><td>a die shows 3</td><td class="m">1</td><td class="m">6</td><td class="m">${f('1', '6')}</td></tr>
+        <tr><td>a die shows an even number</td><td class="m">3</td><td class="m">6</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td>two dice total 7</td><td class="m">6</td><td class="m">36</td><td class="m">${f('1', '6')}</td></tr>
+        <tr><td>a card is a heart</td><td class="m">13</td><td class="m">52</td><td class="m">${f('1', '4')}</td></tr>
+        <tr><td>two coins give two heads</td><td class="m">1</td><td class="m">4</td><td class="m">${f('1', '4')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">“Equally likely” is a condition, not a decoration</span>
+      A drawing pin lands point-up or point-down, but not with probability ${m(f('1', '2'))}. The
+      classical definition applies only when symmetry guarantees equal outcomes; otherwise you must
+      measure.</div>`
+    },
+    {
+      h: 'Relative frequency',
+      html: `<p>When outcomes are not equally likely — a bent coin, a bus arriving late, a component
+      failing — probability is <b>estimated</b> from experiment:</p>
+      ${eq(m('P(A) ≈ ' + f('number of times A happened', 'number of trials')), true)}
+      <p>This is the <b>statistical</b> definition. The estimate improves as the number of trials grows,
+      and settles down towards a fixed number — the law of large numbers, seen but not proved here.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Throws</th><th>Heads</th><th>Relative frequency</th></tr></thead>
+      <tbody>
+        <tr><td class="m">10</td><td class="m">7</td><td class="m">0.700</td></tr>
+        <tr><td class="m">100</td><td class="m">54</td><td class="m">0.540</td></tr>
+        <tr><td class="m">1000</td><td class="m">509</td><td class="m">0.509</td></tr>
+        <tr><td class="m">10 000</td><td class="m">5023</td><td class="m">0.5023</td></tr>
+      </tbody></table></div>
+      <p><b>Expected number.</b> If ${m('P(A) = p')} and the trial is repeated ${m('N')} times, the
+      expected number of successes is ${m('Np')}. Rolling a die ${m('300')} times, expect
+      ${m('300 × ' + f('1', '6') + ' = 50')} sixes — expect, not guarantee.</p>`
+    },
+    {
+      h: 'Geometric probability',
+      html: `<p>When the outcomes form a continuous region, counting is replaced by measuring:</p>
+      ${eq(m('P(A) = ' + f('measure of the favourable region', 'measure of the whole region')), true)}
+      <p>The measure is a length, an area or a volume, whichever the problem lives in.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Measure</th><th class="m">P</th></tr></thead>
+      <tbody>
+        <tr><td>a point on ${m('[0, 10]')} falls in ${m('[3, 5]')}</td><td>length</td><td class="m">0.2</td></tr>
+        <tr><td>a dart in a square of side 4 hits the inscribed circle</td><td>area</td><td class="m">${f('π', '4')} ≈ 0.785</td></tr>
+        <tr><td>a bus is due any time in a 20-minute window; you wait 5</td><td>length</td><td class="m">0.25</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A single point has probability zero</div>
+      Landing at exactly ${m('x = 3')} has probability ${m('0')} — yet it is not impossible. On a
+      continuous space, probability zero and impossible are different things.</div>`
+    },
+    {
+      h: 'The two rules',
+      html: `${eq(m('P(A ∪ B) = P(A) + P(B) − P(A ∩ B)'), true)}
+      <p>Subtract the overlap, or it is counted twice. When ${m('A')} and ${m('B')} are mutually
+      exclusive the overlap is empty and the rule shortens to ${m('P(A) + P(B)')}.</p>
+      ${eq(m('P(A ∩ B) = P(A) · P(B)') + '   for <b>independent</b> events', true)}
+      ${eq(m('P(A′) = 1 − P(A)'), true)}
+      <div class="keybox"><div class="klabel">The complement is the shortest route</div>
+      “At least one six in four throws” has many favourable cases; “no six in four throws” has one
+      description. So ${m('P = 1 − (' + f('5', '6') + ')⁴ ≈ 0.518')}. Whenever a question says
+      <b>at least</b>, try the complement first.</div>
+      {{fig:vennTwo:The overlap subtracted once — the whole of the addition rule in one picture.}}`
+    },
+    {
+      h: 'Conditional probability',
+      html: `<p>${m('P(B | A)')} is the probability of ${m('B')} <b>given that</b> ${m('A')} has
+      happened. Conditioning shrinks the sample space to ${m('A')}:</p>
+      ${eq(m('P(B | A) = ' + f('P(A ∩ B)', 'P(A)')), true)}
+      <p><b>From a table.</b> Of 30 students, 18 study French, 12 of whom also study German. Then
+      ${m('P(German | French) = ' + f('12', '18') + ' = ' + f('2', '3'))} — the denominator is 18, not
+      30. That single change of denominator is the whole idea.</p>
+      <p><b>From a tree.</b> The numbers on the second row of forks are already conditional
+      probabilities. A bag of 3 red and 2 blue, drawn without replacement:
+      ${m('P(second red | first red) = ' + f('2', '4'))}.</p>
+      <div class="warn"><span class="wl">${m('P(B | A)')} and ${m('P(A | B)')} are different numbers</span>
+      Most people who are ill have a temperature; most people with a temperature are not seriously ill.
+      Swapping the two is the commonest error in the whole of probability.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Two dice are thrown. Find the probability that the total is 7 or 11.',
+      steps: [
+        ['Total 7: ' + m('6') + ' outcomes; total 11: ' + m('2') + '.', 'Exclusive events.'],
+        [m('P = ' + f('6', '36') + ' + ' + f('2', '36')), ''],
+        [m('= ' + f('8', '36') + ' = ' + f('2', '9') + ' ≈ 0.222'), '']
+      ],
+      ans: m(f('2', '9'))
+    },
+    {
+      q: 'A coin is thrown four times. Find the probability of at least one head.',
+      steps: [
+        ['Complement: no head at all.', ''],
+        [m('P(no head) = (' + f('1', '2') + ')⁴ = ' + f('1', '16')), ''],
+        [m('P(at least one) = 1 − ' + f('1', '16') + ' = ' + f('15', '16')), '']
+      ],
+      ans: m(f('15', '16')) + ' = ' + m('0.9375')
+    },
+    {
+      q: 'A bag holds 3 red and 2 blue balls. Two are drawn without replacement. Find ' + m('P(both red)') + ' and ' + m('P(one of each)') + '.',
+      steps: [
+        [m('P(RR) = ' + f('3', '5') + ' × ' + f('2', '4') + ' = ' + f('3', '10')), 'Multiply along the branch.'],
+        [m('P(RB) = ' + f('3', '5') + ' × ' + f('2', '4') + ' = ' + f('3', '10')), ''],
+        [m('P(BR) = ' + f('2', '5') + ' × ' + f('3', '4') + ' = ' + f('3', '10')), ''],
+        [m('P(one of each) = ' + f('3', '5')), 'Add down the ends.']
+      ],
+      ans: m(f('3', '10')) + ' and ' + m(f('3', '5'))
+    },
+    {
+      q: 'Of 40 pupils, 25 play football, 18 play chess and 10 play both. Find ' + m('P(football | chess)') + '.',
+      steps: [
+        [m('P(F ∩ C) = ' + f('10', '40')), ''],
+        [m('P(C) = ' + f('18', '40')), ''],
+        [m('P(F | C) = ' + f('10', '18') + ' = ' + f('5', '9')), 'The denominator shrinks to 18.']
+      ],
+      ans: m(f('5', '9')) + ' ≈ ' + m('0.556')
+    }
+  ],
+  modelNote: 'Throw one coin 100 times as a class and plot the running relative frequency — the curve settling on 0.5 is the lesson.',
+  interactive: {
+    type: 'averages',
+    title: 'Frequency, and what it settles on',
+    hint: 'Change one value and watch the summary move.'
+  },
+  quiz: [
+    { q: 'The classical definition needs the outcomes to be:', a: ['few', 'equally likely', 'independent', 'exclusive'], c: 1, why: 'Otherwise counting misleads.' },
+    { q: m('P(A′)') + ' equals:', a: [m('1 − P(A)'), m('P(A)'), m('1 + P(A)'), m('0')], c: 0, why: 'Something must happen.' },
+    { q: 'For exclusive events, ' + m('P(A ∪ B)') + ' is:', a: [m('P(A)P(B)'), m('P(A) + P(B)'), m('P(A) − P(B)'), m('1')], c: 1, why: 'No overlap to subtract.' },
+    { q: 'For independent events, ' + m('P(A ∩ B)') + ' is:', a: [m('P(A) + P(B)'), m('P(A)P(B)'), m('0'), m('1')], c: 1, why: 'The multiplication rule.' },
+    { q: '“At least one” is usually done by:', a: ['listing every case', 'the complement', 'a tree with ten rows', 'geometry'], c: 1, why: 'One subtraction instead of many additions.' },
+    { q: m('P(B | A)') + ' has denominator:', a: [m('P(B)'), m('P(A)'), m('1'), m('P(A ∪ B)')], c: 1, why: 'The space shrinks to ' + m('A') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('P') + ' a die shows 5', m(f('1', '6'))],
+      [m('P') + ' a die shows an odd number', m(f('1', '2'))],
+      [m('P') + ' a card is a heart', m(f('1', '4'))],
+      [m('P') + ' two coins give two tails', m(f('1', '4'))],
+      [m('P(A′)') + ' when ' + m('P(A) = 0.3'), m('0.7')],
+      ['Expected sixes in 300 throws of a die', m('50')],
+      [m('P') + ' a point of ' + m('[0, 10]') + ' lies in ' + m('[3, 5]'), m('0.2')]
+    ],
+    med: [
+      [m('P') + ' two dice total 7', m(f('1', '6'))],
+      [m('P') + ' two dice total 7 or 11', m(f('2', '9'))],
+      [m('P') + ' at least one head in three throws', m(f('7', '8'))],
+      [m('P(A ∪ B)') + ' when ' + m('P(A) = 0.5, P(B) = 0.4, P(A ∩ B) = 0.2'), m('0.7')],
+      ['Bag of 3 red, 2 blue, two drawn without replacement: ' + m('P(RR)'), m(f('3', '10'))],
+      ['Same bag: ' + m('P') + ' one of each colour', m(f('3', '5'))],
+      ['A dart in a square of side 4 hits the inscribed circle', m(f('π', '4')) + ' ≈ ' + m('0.785')]
+    ],
+    hard: [
+      [m('P') + ' at least one six in four throws of a die', m('1 − (' + f('5', '6') + ')⁴') + ' ≈ ' + m('0.518')],
+      ['Of 40 pupils, 25 play football, 18 chess, 10 both: ' + m('P(F | C)'), m(f('5', '9'))],
+      ['Same data: ' + m('P') + ' a pupil plays neither', m(f('7', '40'))],
+      ['Two cards from 52 without replacement: ' + m('P') + ' both aces', m(f('1', '221'))],
+      ['Three coins: ' + m('P') + ' exactly two heads', m(f('3', '8'))],
+      ['A bus is equally likely at any time in 20 minutes; you arrive and wait at most 5: ' + m('P'), m('0.25')],
+      ['If ' + m('P(A) = 0.6') + ', ' + m('P(B) = 0.5') + ' and they are independent, find ' + m('P(A ∪ B)'), m('0.8')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'State which definition you are using — classical, statistical or geometric — in every answer.',
+  homework: [
+    'Two dice are thrown. Find the probability that the total is 9, and that the total is at least 10.',
+    'A coin is thrown five times. Find the probability of at least one tail.',
+    'A bag holds 4 white and 6 black balls; two are drawn without replacement. Find the probability that they are the same colour.',
+    'In a class of 30, 20 study English, 14 study Russian and 8 study both. Find ' + m('P(English | Russian)') + ' and ' + m('P(Russian | English)') + ', and comment on the difference.',
+    'A point is chosen at random inside a square of side 6. Find the probability that it is within 1 unit of an edge.'
+  ]
+});
+
+/* ============================== 44 ============================== */
+G10_ALG.push({
+  id: 'a10-44', stream: 'alg', grade: 10, quarter: 4, lessons: '97–98', hours: 2,
+  title: 'Control work 8, and work on the mistakes',
+  subtitle: 'The probability block in one paper, then the two rules drawn as a single decision tree.',
+  uz: 'Algebra 10, Nazorat ishi 8', uzPage: 'pp. 335–338',
+  cam: 'IGX 24 review', camPage: 'Core & Extended, pp. 643–646', wb: 'Control paper A8',
+  objectives: [
+    'Compute probabilities from a sample space, a table and a tree under time.',
+    'Choose between the addition rule, the multiplication rule and the complement.',
+    'Compute a conditional probability with the right denominator.',
+    'Name each lost mark and rewrite the solution in full.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Sample space', 'Elementar hodisalar fazosi', 'Пространство исходов'],
+    ['Addition rule', 'Qo‘shish qoidasi', 'Правило сложения'],
+    ['Multiplication rule', 'Ko‘paytirish qoidasi', 'Правило умножения'],
+    ['Complement', 'To‘ldiruvchi', 'Дополнение'],
+    ['Conditional probability', 'Shartli ehtimollik', 'Условная вероятность'],
+    ['Without replacement', 'Qaytarmasdan', 'Без возвращения'],
+    ['Target', 'Maqsad', 'Цель']
+  ],
+  timing: [[3, 'Instructions'], [42, 'The paper'], [12, 'Answers'], [25, 'Diagnosis and rewrite'], [8, 'The decision tree']],
+  sections: [
+    {
+      h: 'The paper — 30 marks, 42 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Two dice: find ${m('P')}(total 8), ${m('P')}(a double), ${m('P')}(total 8 or a double)</td><td class="m">6</td><td>L91–96</td></tr>
+        <tr><td>2</td><td>A coin thrown 5 times: find ${m('P')}(at least one head) and ${m('P')}(exactly one head)</td><td class="m">5</td><td>L94–96</td></tr>
+        <tr><td>3</td><td>A bag of 5 red and 4 green, two drawn without replacement: the tree, then ${m('P')}(same colour)</td><td class="m">6</td><td>L91–96</td></tr>
+        <tr><td>4</td><td>Of 50 pupils, 32 study physics, 21 chemistry, 15 both. Find ${m('P')}(neither) and ${m('P')}(physics | chemistry)</td><td class="m">7</td><td>L94–96</td></tr>
+        <tr><td>5</td><td>A point in a square of side 8 lands inside the inscribed circle: find ${m('P')}</td><td class="m">3</td><td>L94–96</td></tr>
+        <tr><td>6</td><td>State whether two given events are exclusive, independent, or neither, with a reason</td><td class="m">3</td><td>L91–93</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries one mark for subtracting the overlap, Q2 one for using the complement, Q3 one for
+      changing the second fork, Q4 one for the denominator ${m('21')} rather than ${m('50')}. Four of the
+      thirty marks are for a single decision each.</div>`
+    },
+    {
+      h: 'The decision tree for the whole block',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>The question says</th><th>Use</th><th>Formula</th></tr></thead>
+      <tbody>
+        <tr><td>“or”, “either”</td><td>the addition rule</td><td class="m">P(A) + P(B) − P(A ∩ B)</td></tr>
+        <tr><td>“and”, “both”, “then”</td><td>the multiplication rule</td><td class="m">P(A)·P(B | A)</td></tr>
+        <tr><td>“at least one”</td><td>the complement</td><td class="m">1 − P(none)</td></tr>
+        <tr><td>“given that”, “of those who”</td><td>conditional</td><td class="m">${f('P(A ∩ B)', 'P(B)')}</td></tr>
+        <tr><td>“without replacement”</td><td>a tree with changing forks</td><td>second row differs</td></tr>
+        <tr><td>“at random inside”</td><td>geometric probability</td><td class="m">${f('area', 'area')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The four slips that account for most lost marks</span>
+      <ul>
+        <li>adding without subtracting the overlap;</li>
+        <li>multiplying dependent events as though they were independent;</li>
+        <li>using ${m('|U|')} as the denominator of a conditional probability;</li>
+        <li>forgetting that “without replacement” changes the second fork.</li>
+      </ul></div>`
+    },
+    {
+      h: 'Looking forward',
+      html: `<p>Lessons 99–102 are the Cambridge revision block: sequences, arithmetic and geometric
+      progressions, infinite geometric series and the binomial expansion. None of it is new to the
+      national syllabus of Grade 9, but the notation is Cambridge's and the questions are harder.</p>
+      <div class="keybox"><div class="klabel">One habit to carry forward</div>
+      Probability rewarded writing the sample space before anything else. Series reward writing
+      ${m('a')} and ${m('d')} (or ${m('r')}) before anything else. In both, one line of setting-up
+      prevents three lines of error.</div>
+      {{fig:vennTwo:The picture behind Q1 and Q4 alike.}}`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q1: two dice, ' + m('P') + '(total 8 or a double).',
+      steps: [
+        ['Total 8: ' + m('(2,6),(3,5),(4,4),(5,3),(6,2)') + ' — ' + m('5') + '.', ''],
+        ['Doubles: ' + m('6') + '.', ''],
+        ['Both: ' + m('(4,4)') + ' — ' + m('1') + '.', 'The overlap.'],
+        [m('P = ' + f('5', '36') + ' + ' + f('6', '36') + ' − ' + f('1', '36') + ' = ' + f('10', '36') + ' = ' + f('5', '18')), '']
+      ],
+      ans: m(f('5', '18')) + ' ≈ ' + m('0.278')
+    },
+    {
+      q: 'Model answer, Q3: 5 red and 4 green, two drawn without replacement, ' + m('P') + '(same colour).',
+      steps: [
+        [m('P(RR) = ' + f('5', '9') + ' × ' + f('4', '8') + ' = ' + f('5', '18')), ''],
+        [m('P(GG) = ' + f('4', '9') + ' × ' + f('3', '8') + ' = ' + f('1', '6')), ''],
+        [m('P = ' + f('5', '18') + ' + ' + f('3', '18') + ' = ' + f('8', '18') + ' = ' + f('4', '9')), 'Add down the ends.']
+      ],
+      ans: m(f('4', '9')) + ' ≈ ' + m('0.444')
+    },
+    {
+      q: 'Model answer, Q4: 50 pupils, 32 physics, 21 chemistry, 15 both.',
+      steps: [
+        [m('|P ∪ C| = 32 + 21 − 15 = 38'), ''],
+        [m('P(neither) = ' + f('12', '50') + ' = 0.24'), ''],
+        [m('P(physics | chemistry) = ' + f('15', '21') + ' = ' + f('5', '7')), 'Denominator 21.']
+      ],
+      ans: m('0.24') + ' and ' + m(f('5', '7'))
+    }
+  ],
+  modelNote: 'Work Q4 twice — once with denominator 50, once with 21 — and let the class say which question each answers.',
+  interactive: {
+    type: 'quiz',
+    title: 'Ten questions on the probability block',
+    hint: 'One from each idea of Lessons 91–96.',
+    items: [
+      { q: 'Two dice give how many outcomes?', a: [m('12'), m('36'), m('21'), m('6')], c: 1, why: 'Ordered pairs.' },
+      { q: m('P(A′)') + ' is:', a: [m('1 − P(A)'), m('P(A)'), m('0'), m('1 + P(A)')], c: 0, why: 'The complement.' },
+      { q: 'The addition rule subtracts:', a: ['nothing', 'the overlap', 'the smaller probability', m('1')], c: 1, why: 'Or it is counted twice.' },
+      { q: 'Independent events multiply because:', a: ['they overlap', 'one does not affect the other', 'they are exclusive', 'of the tree'], c: 1, why: 'That is the definition.' },
+      { q: '“At least one” suggests:', a: ['a long list', 'the complement', 'geometry', 'conditioning'], c: 1, why: 'One subtraction.' },
+      { q: m('P(B | A)') + ' divides by:', a: [m('P(B)'), m('P(A)'), m('1'), m('|U|')], c: 1, why: 'The shrunken space.' },
+      { q: '“Without replacement” changes:', a: ['nothing', 'the second fork', 'the sample space size only', 'the first fork'], c: 1, why: 'One ball fewer.' },
+      { q: 'Geometric probability divides:', a: ['counts', 'measures', 'frequencies', 'nothing'], c: 1, why: 'Length, area or volume.' },
+      { q: 'Expected sixes in 600 throws:', a: [m('60'), m('100'), m('120'), m('600')], c: 1, why: m('Np') + '.' },
+      { q: 'Exclusive events with positive probability are:', a: ['independent', 'not independent', 'certain', 'complementary'], c: 1, why: m('P(A ∩ B) = 0') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'The overlap in Q1 is:', a: [m('(4,4)'), m('(2,6)'), 'none', 'all doubles'], c: 0, why: 'The only double totalling 8.' },
+    { q: 'Q3 needs a tree because:', a: ['there are two colours', 'the second draw depends on the first', 'it is longer', 'no reason'], c: 1, why: 'Without replacement.' },
+    { q: 'The denominator in Q4’s conditional part is:', a: [m('50'), m('32'), m('21'), m('15')], c: 2, why: 'Given chemistry.' },
+    { q: 'Lessons 99–102 revise:', a: ['trigonometry', 'progressions and the binomial expansion', 'geometry', 'logarithms'], c: 1, why: 'The Cambridge block.' }
+  ],
+  practice: {
+    easy: [
+      [m('P') + ' two dice total 8', m(f('5', '36'))],
+      [m('P') + ' two dice show a double', m(f('1', '6'))],
+      [m('P') + ' at least one head in five throws', m(f('31', '32'))],
+      [m('P') + ' exactly one head in five throws', m(f('5', '32'))],
+      ['A point in a square of side 8 hits the inscribed circle', m(f('π', '4')) + ' ≈ ' + m('0.785')],
+      [m('P(A ∪ B)') + ' when ' + m('P(A) = 0.4, P(B) = 0.3') + ' and exclusive', m('0.7')],
+      ['Are “even” and “multiple of 3” on a die exclusive?', 'No — ' + m('6') + ' is both']
+    ],
+    med: [
+      [m('P') + ' two dice: total 8 or a double', m(f('5', '18'))],
+      ['5 red, 4 green, two drawn without replacement: ' + m('P(RR)'), m(f('5', '18'))],
+      ['Same: ' + m('P') + ' same colour', m(f('4', '9'))],
+      ['Same: ' + m('P') + ' different colours', m(f('5', '9'))],
+      ['50 pupils, 32 physics, 21 chemistry, 15 both: ' + m('P') + ' neither', m('0.24')],
+      ['Same: ' + m('P') + '(physics | chemistry)', m(f('5', '7'))],
+      ['Same: ' + m('P') + '(chemistry | physics)', m(f('15', '32'))]
+    ],
+    hard: [
+      [m('P') + ' at least two heads in four throws', m(f('11', '16'))],
+      ['Three cards from 52 without replacement: ' + m('P') + ' all hearts', m(f('11', '850'))],
+      ['Two dice: ' + m('P') + '(total 8 | first is even)', m(f('1', '6'))],
+      ['A bag of 6 white and 4 black: ' + m('P') + ' the second is white', m(f('3', '5'))],
+      ['A point in a circle of radius 5: ' + m('P') + ' it lies within 3 of the centre', m('0.36')],
+      ['If ' + m('P(A) = 0.7, P(B) = 0.4, P(A ∪ B) = 0.85') + ', are they independent?', 'Yes — ' + m('P(A ∩ B) = 0.28')],
+      ['A die is thrown until a six appears: ' + m('P') + ' it takes at most three throws', m(f('91', '216')) + ' ≈ ' + m('0.421')]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Bring the decision tree to Lesson 99; the revision block assumes it is done.',
+  homework: [
+    'Rewrite in full every control-work question that lost a mark, naming the slip in the margin.',
+    'Copy the decision-tree table and add one worked example of your own to each row.',
+    'A bag holds 7 blue and 3 yellow counters; three are drawn without replacement. Find the probability that all three are blue.',
+    'Write your target for the revision block in one checkable sentence, and date it.'
+  ]
+});
+
+/* ============================== 45 ============================== */
+G10_ALG.push({
+  id: 'a10-45', stream: 'alg', grade: 10, quarter: 4, lessons: '99–100', hours: 2,
+  title: 'Sequences and progressions [Cambridge revision]',
+  subtitle: 'Two formulas for the term, two for the sum — and one question that decides which pair.',
+  uz: 'Revision of Grade 9, §§18–21', uzPage: 'Algebra 9, pp. 190–214',
+  cam: 'P1 7.1–7.3', camPage: 'Pure Mathematics 1, pp. 148–162', wb: 'Exercise 7A–7C',
+  objectives: [
+    'Define a sequence by a formula for the nth term and by a recurrence.',
+    'Identify an arithmetic or a geometric progression from its terms.',
+    'Use the nth-term and sum formulas for both progressions.',
+    'Solve problems where the number of terms is the unknown.'
+  ],
+  terms: [
+    ['Sequence', 'Ketma-ketlik', 'Последовательность'],
+    ['Term', 'Had', 'Член'],
+    ['Recurrence relation', 'Rekurrent munosabat', 'Рекуррентное соотношение'],
+    ['Arithmetic progression', 'Arifmetik progressiya', 'Арифметическая прогрессия'],
+    ['Geometric progression', 'Geometrik progressiya', 'Геометрическая прогрессия'],
+    ['Common difference', 'Ayirma', 'Разность'],
+    ['Common ratio', 'Maxraj', 'Знаменатель'],
+    ['Sum of n terms', 'n ta hadning yig‘indisi', 'Сумма n членов'],
+    ['Sigma notation', 'Sigma belgisi', 'Знак суммы'],
+    ['Convergent', 'Yaqinlashuvchi', 'Сходящаяся']
+  ],
+  timing: [[15, 'Sequences and recurrences'], [25, 'Arithmetic progressions'], [25, 'Geometric progressions'], [25, 'Sums'], [15, 'Choosing the right pair'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Sequences and recurrences',
+      html: `<p>A sequence can be given in two ways: by a <b>formula for the nth term</b>, which lets you
+      jump straight to ${m('u₁₀₀')}, or by a <b>recurrence</b>, which tells you how to get from one term
+      to the next.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sequence</th><th>nth term</th><th>Recurrence</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3, 7, 11, 15, …</td><td class="m">uₙ = 4n − 1</td><td class="m">uₙ₊₁ = uₙ + 4, u₁ = 3</td></tr>
+        <tr><td class="m">2, 6, 18, 54, …</td><td class="m">uₙ = 2·3ⁿ⁻¹</td><td class="m">uₙ₊₁ = 3uₙ, u₁ = 2</td></tr>
+        <tr><td class="m">1, 4, 9, 16, …</td><td class="m">uₙ = n²</td><td class="m">uₙ₊₁ = uₙ + 2n + 1</td></tr>
+        <tr><td class="m">1, 1, 2, 3, 5, …</td><td>no simple formula</td><td class="m">uₙ₊₂ = uₙ₊₁ + uₙ</td></tr>
+      </tbody></table></div>
+      {{fig:linearSequence:An arithmetic sequence plotted — the points lie on a straight line, and d is its gradient.}}
+      <div class="keybox"><div class="klabel">Sigma notation</div>
+      ${eq(m('Σ') + '<sub class="m">k=1</sub><sup class="m">n</sup> ' + m('u_k = u₁ + u₂ + … + uₙ'), true)}
+      The letter under the sigma is a dummy: ${m('Σ k²')} and ${m('Σ j²')} are the same number.</div>`
+    },
+    {
+      h: 'Arithmetic progressions',
+      html: `<p>Each term exceeds the one before by a fixed ${m('d')}.</p>
+      ${eq(m('uₙ = a + (n − 1)d'), true)}
+      <p>The ${m('n − 1')} matters: you take ${m('d')} one fewer times than the number of terms, because
+      the first term is already there.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Progression</th><th class="m">a</th><th class="m">d</th><th class="m">u₁₀</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3, 7, 11, …</td><td class="m">3</td><td class="m">4</td><td class="m">39</td></tr>
+        <tr><td class="m">20, 17, 14, …</td><td class="m">20</td><td class="m">−3</td><td class="m">−7</td></tr>
+        <tr><td class="m">${f('1', '2')}, 1, ${f('3', '2')}, …</td><td class="m">${f('1', '2')}</td><td class="m">${f('1', '2')}</td><td class="m">5</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two terms give ${m('a')} and ${m('d')}</div>
+      From ${m('u₄ = 11')} and ${m('u₉ = 26')}: subtracting gives ${m('5d = 15')}, so ${m('d = 3')} and
+      ${m('a = 11 − 3(3) = 2')}. Always subtract the two equations — never solve them one at a
+      time.</div>`
+    },
+    {
+      h: 'Geometric progressions',
+      html: `<p>Each term is a fixed multiple ${m('r')} of the one before.</p>
+      ${eq(m('uₙ = a r^(n−1)'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Progression</th><th class="m">a</th><th class="m">r</th><th class="m">u₆</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2, 6, 18, …</td><td class="m">2</td><td class="m">3</td><td class="m">486</td></tr>
+        <tr><td class="m">16, 8, 4, …</td><td class="m">16</td><td class="m">${f('1', '2')}</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td class="m">1, −2, 4, −8, …</td><td class="m">1</td><td class="m">−2</td><td class="m">−32</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A negative ratio alternates in sign</span>
+      With ${m('r = −2')} the terms swing above and below zero. Any question mentioning “alternating” or
+      giving terms of opposite signs is telling you ${m('r < 0')}.</div>
+      <p><b>Two terms give ${m('a')} and ${m('r')}</b> by <i>dividing</i>, not subtracting: from
+      ${m('u₃ = 12')} and ${m('u₆ = 96')}, ${m('r³ = 8')} so ${m('r = 2')} and ${m('a = 3')}.</p>`
+    },
+    {
+      h: 'Sums',
+      html: `${eq(m('Sₙ = ' + f('n', '2') + '(2a + (n − 1)d) = ' + f('n', '2') + '(a + l)'), true)}
+      ${eq(m('Sₙ = ' + f('a(1 − rⁿ)', '1 − r') + ' = ' + f('a(rⁿ − 1)', 'r − 1')) + ',   ' + m('r ≠ 1'), true)}
+      <p>The second form of the arithmetic sum — <i>half the number of terms times the sum of the first
+      and last</i> — is the fastest when the last term is known. The two geometric forms are identical;
+      use whichever avoids negative signs.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Use</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3 + 7 + 11 + … (20 terms)</td><td class="m">${f('n', '2')}(2a + (n−1)d)</td><td class="m">820</td></tr>
+        <tr><td class="m">1 + 2 + 3 + … + 100</td><td class="m">${f('n', '2')}(a + l)</td><td class="m">5050</td></tr>
+        <tr><td class="m">2 + 6 + 18 + … (8 terms)</td><td class="m">${f('a(rⁿ − 1)', 'r − 1')}</td><td class="m">6560</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Choosing the right pair',
+      html: `<div class="keybox"><div class="klabel">One test settles it</div>
+      Take three consecutive terms. If the <b>differences</b> are equal it is arithmetic; if the
+      <b>ratios</b> are equal it is geometric. If neither, it is neither — and the question wants
+      something else.</div>
+      <p>When the unknown is ${m('n')}, the formula becomes an equation to solve — linear or quadratic
+      for an AP, exponential for a GP.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Equation</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>how many terms of ${m('3, 7, 11, …')} sum to ${m('820')}?</td><td class="m">${f('n', '2')}(6 + 4(n−1)) = 820</td><td class="m">n = 20</td></tr>
+        <tr><td>which term of ${m('5, 8, 11, …')} equals ${m('98')}?</td><td class="m">5 + 3(n−1) = 98</td><td class="m">n = 32</td></tr>
+        <tr><td>which term of ${m('3, 6, 12, …')} first exceeds ${m('1000')}?</td><td class="m">3·2ⁿ⁻¹ > 1000</td><td class="m">n = 10</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('n')} must be a positive whole number</span>
+      A quadratic in ${m('n')} usually has one root that is negative or fractional. Reject it with a
+      sentence, do not leave it in the answer.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'An AP has ' + m('u₄ = 11') + ' and ' + m('u₉ = 26') + '. Find ' + m('a') + ', ' + m('d') + ' and ' + m('S₂₀') + '.',
+      steps: [
+        [m('a + 3d = 11') + ', ' + m('a + 8d = 26'), ''],
+        [m('5d = 15 ⇒ d = 3'), 'Subtract.'],
+        [m('a = 2'), ''],
+        [m('S₂₀ = 10(4 + 57) = 610'), '']
+      ],
+      ans: m('a = 2, d = 3, S₂₀ = 610')
+    },
+    {
+      q: 'A GP has ' + m('u₃ = 12') + ' and ' + m('u₆ = 96') + '. Find ' + m('a') + ', ' + m('r') + ' and ' + m('S₈') + '.',
+      steps: [
+        [m('' + f('ar⁵', 'ar²') + ' = ' + f('96', '12') + ' = 8'), 'Divide.'],
+        [m('r³ = 8 ⇒ r = 2'), ''],
+        [m('ar² = 12 ⇒ a = 3'), ''],
+        [m('S₈ = ' + f('3(2⁸ − 1)', '1') + ' = 765'), '']
+      ],
+      ans: m('a = 3, r = 2, S₈ = 765')
+    },
+    {
+      q: 'How many terms of ' + m('3 + 7 + 11 + …') + ' are needed to reach a sum of ' + m('820') + '?',
+      steps: [
+        [m(f('n', '2') + '(6 + 4(n − 1)) = 820'), ''],
+        [m('n(4n + 2) = 1640'), ''],
+        [m('2n² + n − 820 = 0'), ''],
+        [m('n = 20') + ' (the root ' + m('−20.5') + ' is rejected).', '']
+      ],
+      ans: m('n = 20')
+    },
+    {
+      q: 'The first three terms of a GP are ' + m('x, x + 4, 3x') + '. Find ' + m('x') + '.',
+      steps: [
+        [m(f('x + 4', 'x') + ' = ' + f('3x', 'x + 4')), 'Equal ratios.'],
+        [m('(x + 4)² = 3x²'), ''],
+        [m('2x² − 8x − 16 = 0 ⇒ x² − 4x − 8 = 0'), ''],
+        [m('x = 2 ± 2' + sr('3')), '']
+      ],
+      ans: m('x = 2 + 2' + sr('3')) + ' or ' + m('x = 2 − 2' + sr('3'))
+    }
+  ],
+  modelNote: 'Write two mystery sequences on the board and have the class decide AP, GP or neither by differences and ratios alone.',
+  interactive: {
+    type: 'quiz',
+    title: 'Arithmetic, geometric, or neither?',
+    hint: 'Differences equal, or ratios equal.',
+    items: [
+      { q: m('3, 7, 11, 15') + ' is:', a: ['AP', 'GP', 'neither', 'both'], c: 0, why: m('d = 4') + '.' },
+      { q: m('2, 6, 18, 54') + ' is:', a: ['AP', 'GP', 'neither', 'both'], c: 1, why: m('r = 3') + '.' },
+      { q: m('1, 4, 9, 16') + ' is:', a: ['AP', 'GP', 'neither', 'both'], c: 2, why: 'Squares.' },
+      { q: m('u₁₀') + ' of ' + m('3, 7, 11, …') + ':', a: [m('39'), m('43'), m('40'), m('36')], c: 0, why: m('3 + 9(4)') + '.' },
+      { q: m('u₆') + ' of ' + m('16, 8, 4, …') + ':', a: [m('1'), m(f('1', '2')), m('2'), m(f('1', '4'))], c: 1, why: m('16(' + f('1', '2') + ')⁵') + '.' },
+      { q: m('1 + 2 + … + 100') + ' is:', a: [m('5000'), m('5050'), m('10100'), m('4950')], c: 1, why: m('50 × 101') + '.' },
+      { q: 'To find ' + m('r') + ' from two terms you:', a: ['subtract', 'divide', 'add', 'square'], c: 1, why: 'Ratios, not differences.' },
+      { q: 'A negative ' + m('r') + ' makes the terms:', a: ['grow', 'shrink', 'alternate in sign', 'constant'], c: 2, why: 'Sign flips each step.' }
+    ]
+  },
+  quiz: [
+    { q: m('uₙ') + ' of an AP is:', a: [m('a + nd'), m('a + (n − 1)d'), m('arⁿ'), m('a + (n + 1)d')], c: 1, why: 'One fewer step than terms.' },
+    { q: m('Sₙ') + ' of an AP is:', a: [m(f('n', '2') + '(a + l)'), m('n(a + l)'), m('na'), m(f('a', '1 − r'))], c: 0, why: 'Half the terms times the ends.' },
+    { q: m('uₙ') + ' of a GP is:', a: [m('arⁿ'), m('ar^(n−1)'), m('a + rⁿ'), m('anr')], c: 1, why: 'One fewer multiplication.' },
+    { q: 'The GP sum formula fails when:', a: [m('r = 0'), m('r = 1'), m('r < 0'), m('a = 0')], c: 1, why: 'Division by zero.' },
+    { q: 'Three terms are geometric when:', a: ['the differences are equal', 'the ratios are equal', 'they are positive', 'the middle is the mean'], c: 1, why: 'Equal ratios.' }
+  ],
+  practice: {
+    easy: [
+      [m('u₁₀') + ' of ' + m('3, 7, 11, …'), m('39')],
+      [m('u₁₅') + ' of ' + m('20, 17, 14, …'), m('−22')],
+      [m('u₅') + ' of ' + m('2, 6, 18, …'), m('162')],
+      [m('u₆') + ' of ' + m('16, 8, 4, …'), m(f('1', '2'))],
+      [m('S₁₀') + ' of ' + m('1, 2, 3, …'), m('55')],
+      [m('S₅') + ' of ' + m('3, 6, 12, …'), m('93')],
+      ['Is ' + m('5, 10, 20, 40') + ' an AP or a GP?', 'GP, ' + m('r = 2')]
+    ],
+    med: [
+      ['AP with ' + m('u₄ = 11, u₉ = 26') + ': find ' + m('a') + ' and ' + m('d'), m('a = 2, d = 3')],
+      ['Same AP: ' + m('S₂₀'), m('610')],
+      ['GP with ' + m('u₃ = 12, u₆ = 96') + ': find ' + m('a') + ' and ' + m('r'), m('a = 3, r = 2')],
+      ['Same GP: ' + m('S₈'), m('765')],
+      ['Which term of ' + m('5, 8, 11, …') + ' equals ' + m('98') + '?', m('n = 32')],
+      [m('1 + 2 + 3 + … + 100'), m('5050')],
+      ['Sum of the first 20 terms of ' + m('3, 7, 11, …'), m('820')]
+    ],
+    hard: [
+      ['How many terms of ' + m('3 + 7 + 11 + …') + ' give ' + m('820') + '?', m('n = 20')],
+      ['First three terms of a GP are ' + m('x, x + 4, 3x') + ': find ' + m('x'), m('2 ± 2' + sr('3'))],
+      ['Which term of ' + m('3, 6, 12, …') + ' first exceeds ' + m('1000') + '?', m('n = 10')],
+      ['An AP has ' + m('S₁₀ = 155') + ' and ' + m('S₂₀ = 610') + ': find ' + m('a') + ' and ' + m('d'), m('a = 2, d = 3')],
+      ['The sum of the first ' + m('n') + ' odd numbers', m('n²')],
+      ['A GP has ' + m('u₂ = 6') + ' and ' + m('u₅ = −48') + ': find ' + m('r'), m('r = −2')],
+      ['Three numbers in AP have sum ' + m('15') + ' and product ' + m('80') + ': find them', m('2, 5, 8') + ' (or reversed)']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write ' + m('a') + ' and ' + m('d') + ' (or ' + m('r') + ') on their own line before every calculation.',
+  homework: [
+    'An AP has ' + m('u₅ = 17') + ' and ' + m('u₁₂ = 45') + '. Find ' + m('a') + ', ' + m('d') + ' and ' + m('S₂₅') + '.',
+    'A GP has ' + m('u₂ = 10') + ' and ' + m('u₅ = 80') + '. Find ' + m('a') + ', ' + m('r') + ' and ' + m('S₇') + '.',
+    'How many terms of ' + m('2 + 5 + 8 + …') + ' are needed for a sum over ' + m('1000') + '?',
+    'The numbers ' + m('x − 2, x, x + 6') + ' form a GP. Find ' + m('x') + '.',
+    'Show that the sum of the first ' + m('n') + ' even numbers is ' + m('n(n + 1)') + ', and check it for ' + m('n = 6') + '.'
+  ]
+});
+
+/* ============================== 46 ============================== */
+G10_ALG.push({
+  id: 'a10-46', stream: 'alg', grade: 10, quarter: 4, lessons: '101–102', hours: 2,
+  title: 'Infinite geometric progressions and the binomial expansion [Cambridge revision]',
+  subtitle: 'A sum that never ends but still has a value, and a triangle that expands any bracket.',
+  uz: 'Revision of Grade 9, §22', uzPage: 'Algebra 9, pp. 215–228',
+  cam: 'P1 7.4, 6.1–6.3', camPage: 'Pure Mathematics 1, pp. 128–147, 163–168', wb: 'Exercise 6A–6C, 7D',
+  objectives: [
+    'State when an infinite geometric series converges, and find its sum.',
+    'Convert a recurring decimal to a fraction with the sum to infinity.',
+    'Expand (a + b)ⁿ using Pascal’s triangle and the binomial coefficients.',
+    'Find one named term of an expansion without writing the others.'
+  ],
+  terms: [
+    ['Infinite series', 'Cheksiz qator', 'Бесконечный ряд'],
+    ['Sum to infinity', 'Cheksiz yig‘indi', 'Сумма бесконечной прогрессии'],
+    ['Convergent', 'Yaqinlashuvchi', 'Сходящийся'],
+    ['Divergent', 'Uzoqlashuvchi', 'Расходящийся'],
+    ['Recurring decimal', 'Davriy o‘nli kasr', 'Периодическая дробь'],
+    ['Binomial expansion', 'Binomial yoyilma', 'Разложение бинома'],
+    ['Binomial coefficient', 'Binomial koeffitsiyent', 'Биномиальный коэффициент'],
+    ['Pascal’s triangle', 'Paskal uchburchagi', 'Треугольник Паскаля'],
+    ['Factorial', 'Faktorial', 'Факториал'],
+    ['General term', 'Umumiy had', 'Общий член']
+  ],
+  timing: [[20, 'When an infinite sum exists'], [20, 'Recurring decimals'], [25, 'Pascal’s triangle'], [25, 'The binomial formula'], [15, 'One term without the rest'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'When an infinite sum exists',
+      html: `<p>Add ${m('1 + ' + f('1', '2') + ' + ' + f('1', '4') + ' + ' + f('1', '8') + ' + …')} and the
+      total never passes ${m('2')}. Add ${m('1 + 2 + 4 + 8 + …')} and it passes everything. The
+      difference is the ratio.</p>
+      ${eq(m('S_∞ = ' + f('a', '1 − r')) + ',   valid exactly when ' + m('|r| < 1'), true)}
+      <p>Why: in ${m('Sₙ = ' + f('a(1 − rⁿ)', '1 − r'))}, the term ${m('rⁿ')} shrinks to zero when
+      ${m('|r| < 1')} and grows without limit otherwise.</p>
+      {{fig:gpConverge:Each piece is half the last — the pieces approach the wall and never reach it.}}
+      <div class="warn"><span class="wl">${m('|r| < 1')} is the whole condition</span>
+      ${m('r = 1')} gives ${m('a + a + a + …')}, which diverges; ${m('r = −1')} gives
+      ${m('a − a + a − …')}, which oscillates and has no sum. Both are excluded, and a question that
+      asks “for what ${m('x')} does the series converge” is asking you to solve ${m('|r| < 1')}.</div>`
+    },
+    {
+      h: 'Recurring decimals',
+      html: `<p>Every recurring decimal is a geometric series in disguise, so every one is a fraction.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Decimal</th><th>As a series</th><th class="m">a</th><th class="m">r</th><th>Fraction</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0.333…</td><td class="m">0.3 + 0.03 + …</td><td class="m">0.3</td><td class="m">0.1</td><td class="m">${f('1', '3')}</td></tr>
+        <tr><td class="m">0.272727…</td><td class="m">0.27 + 0.0027 + …</td><td class="m">0.27</td><td class="m">0.01</td><td class="m">${f('3', '11')}</td></tr>
+        <tr><td class="m">0.999…</td><td class="m">0.9 + 0.09 + …</td><td class="m">0.9</td><td class="m">0.1</td><td class="m">1</td></tr>
+      </tbody></table></div>
+      <p>The last line is not a trick: ${m(f('0.9', '1 − 0.1') + ' = ' + f('0.9', '0.9') + ' = 1')}. The
+      decimal ${m('0.999…')} <b>is</b> ${m('1')}, written differently.</p>`
+    },
+    {
+      h: 'Pascal’s triangle',
+      html: `<p>Expand ${m('(a + b)ⁿ')} for small ${m('n')} and the coefficients form a triangle in which
+      every entry is the sum of the two above it.</p>
+      {{fig:pascalTriangle:Row n gives the coefficients of (a + b)ⁿ; the row highlighted is n = 4.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">n</th><th>Coefficients</th><th>Expansion</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2</td><td class="m">1 2 1</td><td class="m">a² + 2ab + b²</td></tr>
+        <tr><td class="m">3</td><td class="m">1 3 3 1</td><td class="m">a³ + 3a²b + 3ab² + b³</td></tr>
+        <tr><td class="m">4</td><td class="m">1 4 6 4 1</td><td class="m">a⁴ + 4a³b + 6a²b² + 4ab³ + b⁴</td></tr>
+        <tr><td class="m">5</td><td class="m">1 5 10 10 5 1</td><td class="m">a⁵ + 5a⁴b + … + b⁵</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two patterns to check every expansion against</div>
+      The powers of ${m('a')} fall from ${m('n')} to ${m('0')} while those of ${m('b')} rise from
+      ${m('0')} to ${m('n')}, so <b>every term's powers add to ${m('n')}</b>. And there are always
+      ${m('n + 1')} terms.</div>`
+    },
+    {
+      h: 'The binomial formula',
+      html: `${eq(m('(a + b)ⁿ = Σ') + '<sub class="m">k=0</sub><sup class="m">n</sup> ' + m('C(n, k) a^(n−k) b^k'), true)}
+      ${eq(m('C(n, k) = ' + f('n!', 'k!(n − k)!')), true)}
+      <p>The coefficient ${m('C(n, k)')} — written ${m('ⁿC_k')} or ${m('(ⁿ_k)')} — is exactly the entry
+      in row ${m('n')}, position ${m('k')}, of Pascal's triangle. For ${m('n')} up to about ${m('6')} the
+      triangle is faster; beyond that, the factorial formula is.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">C(n, k)</th><th>Value</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">C(5, 0)</td><td class="m">1</td><td>one way to choose nothing</td></tr>
+        <tr><td class="m">C(5, 1)</td><td class="m">5</td><td class="m">= n</td></tr>
+        <tr><td class="m">C(5, 2)</td><td class="m">10</td><td class="m">${f('5 × 4', '2')}</td></tr>
+        <tr><td class="m">C(5, 3)</td><td class="m">10</td><td class="m">= C(5, 2)</td></tr>
+        <tr><td class="m">C(8, 3)</td><td class="m">56</td><td class="m">${f('8 × 7 × 6', '3 × 2 × 1')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The symmetry that halves the work</div>
+      ${eq(m('C(n, k) = C(n, n − k)'), true)}
+      Choosing ${m('k')} to include is the same as choosing ${m('n − k')} to leave out. So
+      ${m('C(20, 18) = C(20, 2) = 190')} — three multiplications instead of eighteen.</div>`
+    },
+    {
+      h: 'One term without the rest',
+      html: `<p>Examinations rarely want the whole expansion. They want one coefficient.</p>
+      ${eq('the term in ' + m('b^k') + ' is ' + m('C(n, k) a^(n−k) b^k'), true)}
+      <p><b>Example.</b> The coefficient of ${m('x³')} in ${m('(2 + x)⁵')}: here ${m('k = 3')},
+      ${m('a = 2')}, so the term is ${m('C(5, 3)·2²·x³ = 10 × 4 x³ = 40x³')}.</p>
+      <p><b>With a coefficient on ${m('x')}</b>, raise it too. In ${m('(1 + 3x)⁴')}, the term in
+      ${m('x²')} is ${m('C(4, 2)(3x)² = 6 × 9x² = 54x²')} — the ${m('3')} is squared as well.</p>
+      <div class="warn"><span class="wl">A minus sign belongs to the whole bracket</span>
+      In ${m('(1 − 2x)⁵')} write ${m('b = −2x')}, so the term in ${m('x³')} is
+      ${m('C(5, 3)(−2x)³ = 10(−8x³) = −80x³')}. Forgetting to cube the minus is the single commonest
+      error in this topic.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the sum to infinity of ' + m('12 + 4 + ' + f('4', '3') + ' + …') + '.',
+      steps: [
+        [m('r = ' + f('4', '12') + ' = ' + f('1', '3')), m('|r| < 1') + ' — it converges.'],
+        [m('S_∞ = ' + f('12', '1 − ' + f('1', '3'))), ''],
+        [m('= ' + f('12', f('2', '3')) + ' = 18'), '']
+      ],
+      ans: m('18')
+    },
+    {
+      q: 'Write ' + m('0.272727…') + ' as a fraction.',
+      steps: [
+        [m('a = 0.27') + ', ' + m('r = 0.01'), ''],
+        [m('S = ' + f('0.27', '0.99')), ''],
+        [m('= ' + f('27', '99') + ' = ' + f('3', '11')), '']
+      ],
+      ans: m(f('3', '11'))
+    },
+    {
+      q: 'Expand ' + m('(2 + x)⁴') + ' fully.',
+      steps: [
+        ['Row 4: ' + m('1, 4, 6, 4, 1') + '.', ''],
+        [m('2⁴ + 4(2³)x + 6(2²)x² + 4(2)x³ + x⁴'), ''],
+        [m('16 + 32x + 24x² + 8x³ + x⁴'), 'Five terms, powers adding to 4.']
+      ],
+      ans: m('16 + 32x + 24x² + 8x³ + x⁴')
+    },
+    {
+      q: 'Find the coefficient of ' + m('x³') + ' in ' + m('(1 − 2x)⁶') + '.',
+      steps: [
+        [m('C(6, 3) = 20'), ''],
+        [m('(−2x)³ = −8x³'), 'Cube the whole bracket.'],
+        [m('20 × (−8) = −160'), '']
+      ],
+      ans: m('−160')
+    }
+  ],
+  modelNote: 'Cut a strip of paper in half repeatedly and lay the pieces end to end — the sum to infinity appears as a finite length.',
+  interactive: {
+    type: 'quiz',
+    title: 'Convergence, and coefficients',
+    hint: 'One from each half of the lesson.',
+    items: [
+      { q: m('S_∞') + ' exists when:', a: [m('r > 0'), m('|r| < 1'), m('r < 1'), 'always'], c: 1, why: m('rⁿ → 0') + '.' },
+      { q: m('S_∞') + ' of ' + m('1 + ' + f('1', '2') + ' + ' + f('1', '4') + ' + …') + ':', a: [m('1'), m('2'), m('∞'), m(f('3', '2'))], c: 1, why: m(f('1', '1 − ' + f('1', '2'))) + '.' },
+      { q: m('0.999…') + ' equals:', a: [m('0.99'), m('1'), 'just under ' + m('1'), m(f('9', '10'))], c: 1, why: m(f('0.9', '0.9')) + '.' },
+      { q: 'Row 4 of Pascal’s triangle:', a: [m('1 3 3 1'), m('1 4 6 4 1'), m('1 5 10 10 5 1'), m('1 4 4 1')], c: 1, why: 'Five entries.' },
+      { q: m('(a + b)⁵') + ' has how many terms?', a: [m('5'), m('6'), m('7'), m('10')], c: 1, why: m('n + 1') + '.' },
+      { q: m('C(8, 3)') + ' is:', a: [m('24'), m('56'), m('336'), m('112')], c: 1, why: m(f('8 × 7 × 6', '6')) + '.' },
+      { q: m('C(20, 18)') + ' equals:', a: [m('C(20, 2)'), m('C(20, 18)') + ' only', m('20'), m('180')], c: 0, why: 'Symmetry.' },
+      { q: 'The term in ' + m('x³') + ' of ' + m('(1 − 2x)⁶') + ':', a: [m('160x³'), m('−160x³'), m('−20x³'), m('−8x³')], c: 1, why: 'Cube the minus.' }
+    ]
+  },
+  quiz: [
+    { q: 'An infinite GP converges when:', a: [m('|r| < 1'), m('r > 1'), m('a > 0'), 'always'], c: 0, why: 'Otherwise the terms do not shrink.' },
+    { q: m('S_∞') + ' equals:', a: [m(f('a', '1 + r')), m(f('a', '1 − r')), m(f('a', 'r')), m('ar')], c: 1, why: 'From ' + m('rⁿ → 0') + '.' },
+    { q: 'Every entry of Pascal’s triangle is:', a: ['a prime', 'the sum of the two above', 'a square', 'random'], c: 1, why: 'The construction rule.' },
+    { q: 'In every term of ' + m('(a + b)ⁿ') + ' the powers:', a: ['add to ' + m('n'), 'are equal', 'add to ' + m('2n'), 'add to ' + m('k')], c: 0, why: 'A useful check.' },
+    { q: m('C(n, k) = C(n, n − k)') + ' because:', a: ['of the formula only', 'choosing ' + m('k') + ' in is choosing ' + m('n − k') + ' out', 'it is a coincidence', 'of Pascal'], c: 1, why: 'Two descriptions of one choice.' }
+  ],
+  practice: {
+    easy: [
+      [m('S_∞') + ' of ' + m('1 + ' + f('1', '2') + ' + ' + f('1', '4') + ' + …'), m('2')],
+      [m('S_∞') + ' of ' + m('9 + 3 + 1 + …'), m('13.5')],
+      ['Does ' + m('1 + 2 + 4 + …') + ' converge?', 'No — ' + m('r = 2')],
+      [m('0.333…') + ' as a fraction', m(f('1', '3'))],
+      ['Row 3 of Pascal’s triangle', m('1 3 3 1')],
+      ['Number of terms in ' + m('(a + b)⁷'), m('8')],
+      [m('C(6, 2)'), m('15')]
+    ],
+    med: [
+      [m('S_∞') + ' of ' + m('12 + 4 + ' + f('4', '3') + ' + …'), m('18')],
+      [m('S_∞') + ' of ' + m('8 − 4 + 2 − …'), m(f('16', '3'))],
+      [m('0.272727…') + ' as a fraction', m(f('3', '11'))],
+      ['Expand ' + m('(1 + x)⁴'), m('1 + 4x + 6x² + 4x³ + x⁴')],
+      ['Expand ' + m('(2 + x)⁴'), m('16 + 32x + 24x² + 8x³ + x⁴')],
+      ['Coefficient of ' + m('x²') + ' in ' + m('(1 + 3x)⁴'), m('54')],
+      [m('C(8, 3)'), m('56')]
+    ],
+    hard: [
+      ['Coefficient of ' + m('x³') + ' in ' + m('(1 − 2x)⁶'), m('−160')],
+      ['Coefficient of ' + m('x⁴') + ' in ' + m('(2 − x)⁷'), m('280')],
+      ['Constant term in ' + m('(x + ' + f('2', 'x') + ')⁶'), m('160')],
+      ['For which ' + m('x') + ' does ' + m('1 + 2x + 4x² + …') + ' converge, and to what?', m('|x| < ' + f('1', '2')) + '; ' + m(f('1', '1 − 2x'))],
+      ['A GP has ' + m('S_∞ = 27') + ' and ' + m('a = 18') + ': find ' + m('r'), m('r = ' + f('1', '3'))],
+      ['A ball dropped from ' + m('10') + ' m rebounds ' + m('0.6') + ' of its height each time: total distance travelled', m('40') + ' m'],
+      ['Show that ' + m('C(n, k) + C(n, k + 1) = C(n + 1, k + 1)'), 'Pascal’s rule, from the factorial form']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'This is the last algebra lesson of Grade 10; keep the summary page for Grade 11.',
+  homework: [
+    'Find the sum to infinity of ' + m('20 + 5 + 1.25 + …') + ', and state the value of ' + m('r') + '.',
+    'Write ' + m('0.4545…') + ' and ' + m('0.1666…') + ' as fractions using the sum to infinity.',
+    'Expand ' + m('(3 − x)⁴') + ' fully, and check that the powers in each term add to 4.',
+    'Find the coefficient of ' + m('x³') + ' in ' + m('(2 + 3x)⁵') + ' without writing the other terms.',
+    'A GP has sum to infinity ' + m('12') + ' and first term ' + m('8') + '. Find ' + m('r') + ' and the fourth term.'
+  ]
+});
