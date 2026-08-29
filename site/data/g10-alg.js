@@ -2186,3 +2186,1271 @@ G10_ALG.push({
     'Domain and range of ' + m('f(x) = ' + sr('9 − x²')) + ', with a sketch.'
   ]
 });
+
+/* ===================== QUARTER II (21 hours) ===================== */
+
+/* ============================== 15 ============================== */
+G10_ALG.push({
+  id: 'a10-15', stream: 'alg', grade: 10, quarter: 2, lessons: '28–29', hours: 2,
+  title: 'Rational equations',
+  subtitle: 'Clear the denominators, solve, then throw away the roots the original equation never allowed.',
+  uz: 'Algebra 10, §2.1', uzPage: 'pp. 94–103',
+  cam: 'P1 · 1.7 (extension)', camPage: 'Pure Mathematics 1, pp. 18–23', wb: 'P1 Exercise 1F',
+  objectives: [
+    'State the domain of a rational equation before solving it.',
+    'Solve an equation by finding the lowest common denominator.',
+    'Identify and reject extraneous roots.',
+    'Solve equations that become quadratic after a substitution.'
+  ],
+  terms: [
+    ['Rational equation', 'Ratsional tenglama', 'Рациональное уравнение'],
+    ['Denominator', 'Maxraj', 'Знаменатель'],
+    ['Lowest common denominator', 'Eng kichik umumiy maxraj', 'Наименьший общий знаменатель'],
+    ['Extraneous root', 'Chet ildiz', 'Посторонний корень'],
+    ['Domain restriction', 'Aniqlanish sohasi cheklovi', 'Ограничение области определения'],
+    ['Clearing fractions', 'Kasrlardan qutulish', 'Освобождение от дробей'],
+    ['Equivalent equations', 'Teng kuchli tenglamalar', 'Равносильные уравнения'],
+    ['Check (substitution)', 'Tekshirish', 'Проверка'],
+    ['Substitution variable', 'Yordamchi o‘zgaruvchi', 'Вспомогательная переменная']
+  ],
+  timing: [[8, 'Why a check is compulsory here'], [16, 'The method'], [16, 'Extraneous roots'], [18, 'Disguised quadratics'], [22, 'Practice'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'The domain comes first',
+      html: `<div class="keybox"><div class="klabel">Write it before you solve</div>
+      Every denominator gives a forbidden value. Write ${m('x ≠ …')} on the first line, before any
+      algebra. It is not a formality: it is the only thing that will tell you which of your final
+      answers is real.</div>
+      <p>For ${m(f('3', 'x − 2') + ' + ' + f('1', 'x') + ' = 2')} the domain is ${m('x ≠ 0')} and
+      ${m('x ≠ 2')}.</p>
+      {{fig:numberLineExcluded:The two excluded points, marked as open circles before any solving begins.}}`
+    },
+    {
+      h: 'The method',
+      html: `<ol>
+        <li>State the domain.</li>
+        <li>Factorise every denominator, and find the lowest common denominator.</li>
+        <li>Multiply every term by the LCD, and cancel.</li>
+        <li>Solve the polynomial equation that results.</li>
+        <li>Reject any root that is outside the domain.</li>
+      </ol>
+      ${eq(m(f('3', 'x − 2') + ' + ' + f('1', 'x') + ' = 2  ⇒  3x + (x − 2) = 2x(x − 2)'), true)}
+      ${eq(m('4x − 2 = 2x² − 4x  ⇒  2x² − 8x + 2 = 0  ⇒  x² − 4x + 1 = 0  ⇒  x = 2 ± ' + sr('3')), false)}
+      <p>Both roots are allowed, so both are answers.</p>
+      <div class="warn"><span class="wl">Multiply <b>every</b> term</span>
+      A term with no fraction is multiplied by the LCD too. Forgetting the right-hand side is the
+      commonest arithmetic error in the topic.</div>`
+    },
+    {
+      h: 'Extraneous roots — where they come from',
+      html: `<p>Multiplying by ${m('x − 3')} is only reversible when ${m('x ≠ 3')}. If it happens to be
+      zero, you have multiplied both sides by zero, and the new equation is <b>not equivalent</b> to the
+      old one — it has extra solutions the original never had.</p>
+      ${eq(m(f('x²', 'x − 3') + ' = ' + f('9', 'x − 3') + '  ⇒  x² = 9  ⇒  x = ±3'), true)}
+      <p>But ${m('x = 3')} is outside the domain. The only solution is ${m('x = −3')}.</p>
+      <div class="keybox"><div class="klabel">The check is part of the answer</div>
+      Never write a final answer without testing it against the domain line you wrote at the start.
+      Examiners award a mark for the rejection, and take one for its absence.</div>`
+    },
+    {
+      h: 'Disguised quadratics',
+      html: `<p>When the same expression appears twice, name it and the equation becomes quadratic:</p>
+      ${eq(m('x² + ' + f('1', 'x²') + ' = 2.5  ,  let  t = x + ' + f('1', 'x')), true)}
+      <p>Then ${m('t² = x² + 2 + ' + f('1', 'x²'))}, so the equation reads ${m('t² − 2 = 2.5')},
+      giving ${m('t = ±1.5')} — two much easier equations to finish.</p>
+      <p>The other standard shape is ${m('' + f('x', 'x + 1') + ' + ' + f('x + 1', 'x') + ' = 2.5')}:
+      set ${m('t = ' + f('x', 'x + 1'))} and it becomes ${m('t + ' + f('1', 't') + ' = 2.5')}.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m(f('2', 'x') + ' + ' + f('3', 'x + 1') + ' = 2') + '.',
+      steps: [
+        ['Domain ' + m('x ≠ 0, −1') + '.', ''],
+        ['LCD ' + m('x(x + 1)') + '.', m('2(x + 1) + 3x = 2x(x + 1)')],
+        [m('5x + 2 = 2x² + 2x'), ''],
+        [m('2x² − 3x − 2 = 0 ⇒ (2x + 1)(x − 2) = 0'), 'Both allowed.']
+      ],
+      ans: m('x = 2') + ' or ' + m('x = −0.5')
+    },
+    {
+      q: 'Solve ' + m(f('x', 'x − 1') + ' − ' + f('1', 'x − 1') + ' = 3') + '.',
+      steps: [
+        ['Domain ' + m('x ≠ 1') + '.', ''],
+        ['Same denominator: ' + m(f('x − 1', 'x − 1') + ' = 1') + '.', 'For every allowed ' + m('x') + '.'],
+        [m('1 = 3'), 'A contradiction.']
+      ],
+      ans: 'No solution'
+    },
+    {
+      q: 'Solve ' + m(f('x²', 'x − 2') + ' = ' + f('4', 'x − 2')) + '.',
+      steps: [
+        ['Domain ' + m('x ≠ 2') + '.', ''],
+        [m('x² = 4 ⇒ x = ±2'), ''],
+        [m('x = 2') + ' is excluded.', '']
+      ],
+      ans: m('x = −2') + ' only'
+    }
+  ],
+  modelNote: 'Show the graph of each side and let the class see where the removed point sits.',
+  interactive: {
+    type: 'quiz',
+    title: 'Domain first',
+    hint: 'Look at the denominators before anything else.',
+    items: [
+      { q: 'Domain of ' + m(f('1', 'x − 5') + ' = 2') + ':', a: [m('x ≠ 0'), m('x ≠ 5'), m('x > 5'), m('ℝ')], c: 1, why: 'The denominator vanishes at 5.' },
+      { q: 'Solving ' + m(f('x²', 'x − 3') + ' = ' + f('9', 'x − 3')) + ' gives:', a: [m('x = ±3'), m('x = 3'), m('x = −3'), 'no solution'], c: 2, why: m('x = 3') + ' is excluded.' },
+      { q: 'An extraneous root appears because:', a: ['of arithmetic error', 'we multiplied by something that can be zero', 'the equation is wrong', 'it never does'], c: 1, why: 'That step is not reversible.' },
+      { q: 'Solve ' + m(f('2', 'x') + ' = 1') + ':', a: [m('x = 2'), m('x = 0.5'), m('x = 0'), 'no solution'], c: 0, why: m('2 = x') + '.' },
+      { q: 'For ' + m(f('1', 'x') + ' + ' + f('1', 'x − 1') + ' = 5') + ' the LCD is:', a: [m('x'), m('x − 1'), m('x(x − 1)'), m('x²')], c: 2, why: 'The product of the distinct factors.' }
+    ]
+  },
+  quiz: [
+    { q: 'The first line of a rational equation should be:', a: ['the LCD', 'the domain', 'the answer', 'a graph'], c: 1, why: 'It decides which roots survive.' },
+    { q: 'Multiplying by the LCD may introduce:', a: ['lost roots', 'extraneous roots', 'nothing', 'fractions'], c: 1, why: 'The step is not always reversible.' },
+    { q: m(f('x − 1', 'x − 1')) + ' equals ' + m('1') + ':', a: ['always', 'for ' + m('x ≠ 1'), 'never', 'only at ' + m('x = 1')], c: 1, why: 'It is undefined at 1.' },
+    { q: 'For ' + m('x² + ' + f('1', 'x²') + ' = 2.5') + ' a good substitution is:', a: [m('t = x²'), m('t = x + ' + f('1', 'x')), m('t = x − 1'), 'none'], c: 1, why: m('t² = x² + 2 + ' + f('1', 'x²')) + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Domain of ' + m(f('1', 'x − 4') + ' = 3'), m('x ≠ 4')],
+      ['Solve ' + m(f('6', 'x') + ' = 2'), m('x = 3')],
+      ['Solve ' + m(f('1', 'x + 1') + ' = 1'), m('x = 0')],
+      ['Solve ' + m(f('x', '2') + ' = ' + f('3', 'x')), m('x = ±' + sr('6'))],
+      ['Domain of ' + m(f('1', 'x') + ' + ' + f('1', 'x − 2')), m('x ≠ 0, 2')],
+      ['LCD of ' + m(f('1', 'x') + ' and ' + f('1', 'x + 3')), m('x(x + 3)')],
+      ['Solve ' + m(f('4', 'x − 1') + ' = 2'), m('x = 3')]
+    ],
+    med: [
+      ['Solve ' + m(f('2', 'x') + ' + ' + f('3', 'x + 1') + ' = 2'), m('x = 2, −0.5')],
+      ['Solve ' + m(f('x', 'x + 2') + ' = ' + f('3', 'x')), m('x = 6') + ' or ' + m('x = −1')],
+      ['Solve ' + m(f('1', 'x − 1') + ' + ' + f('1', 'x + 1') + ' = 1'), m('x = 1 ± ' + sr('3'))],
+      ['Solve ' + m(f('x²', 'x − 2') + ' = ' + f('4', 'x − 2')), m('x = −2')],
+      ['Solve ' + m(f('3', 'x') + ' − ' + f('2', 'x²') + ' = 1'), m('x = 1, 2')],
+      ['Solve ' + m(f('x + 1', 'x − 1') + ' = ' + f('x − 1', 'x + 1')), m('x = 0')],
+      ['Solve ' + m(f('x', 'x − 3') + ' − ' + f('3', 'x − 3') + ' = 2'), 'no solution']
+    ],
+    hard: [
+      ['Solve ' + m('x² + ' + f('1', 'x²') + ' = 2.5'), m('x = ±2, ±0.5')],
+      ['Solve ' + m(f('x', 'x + 1') + ' + ' + f('x + 1', 'x') + ' = 2.5'), m('x = 1, −2')],
+      ['Solve ' + m(f('1', 'x² − 1') + ' + ' + f('1', 'x − 1') + ' = 1'), m('x = 2') + ' or ' + m('x = −1') + ' rejected'],
+      ['Solve ' + m(f('2x', 'x² − 4') + ' + ' + f('1', 'x − 2') + ' = ' + f('3', 'x + 2')), m('x = −8')],
+      ['Find ' + m('k') + ' so ' + m(f('x', 'x − 2') + ' = k') + ' has no solution', m('k = 1')],
+      ['Solve ' + m(f('x² − 4', 'x² − 2x') + ' = 1'), 'no solution'],
+      ['Solve ' + m('(x + ' + f('1', 'x') + ')² − 4(x + ' + f('1', 'x') + ') + 3 = 0'), m('x = 1') + ' (from ' + m('t = 3') + ': ' + m(f('3 ± ' + sr('5'), '2')) + ')']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every solution must open with the domain and close with the check.',
+  homework: [
+    'Solve ' + m(f('3', 'x') + ' + ' + f('2', 'x − 1') + ' = 3') + '.',
+    'Solve ' + m(f('x', 'x − 4') + ' = ' + f('2', 'x + 1')) + '.',
+    'Solve ' + m(f('x²', 'x + 3') + ' = ' + f('9', 'x + 3')) + ' and say which root is rejected and why.',
+    'Solve ' + m(f('1', 'x') + ' + ' + f('1', 'x + 2') + ' = ' + f('3', '4')) + '.',
+    'Solve ' + m('x² + ' + f('4', 'x²') + ' = 5') + ' using a substitution.'
+  ]
+});
+
+/* ============================== 16 ============================== */
+G10_ALG.push({
+  id: 'a10-16', stream: 'alg', grade: 10, quarter: 2, lessons: '30–31', hours: 2,
+  title: 'Systems of rational equations',
+  subtitle: 'Two rational equations at once — substitution, symmetric sums, and the domain that must survive both.',
+  uz: 'Algebra 10, §2.2', uzPage: 'pp. 104–113',
+  cam: 'P1 · 1.7', camPage: 'Pure Mathematics 1, pp. 18–23', wb: 'P1 Exercise 1F',
+  objectives: [
+    'Solve a system containing rational equations by substitution.',
+    'Use the sum-and-product substitution for symmetric systems.',
+    'State the combined domain of a system.',
+    'Interpret the solutions as points of intersection.'
+  ],
+  terms: [
+    ['System of equations', 'Tenglamalar sistemasi', 'Система уравнений'],
+    ['Substitution method', 'O‘rniga qo‘yish usuli', 'Метод подстановки'],
+    ['Symmetric system', 'Simmetrik sistema', 'Симметричная система'],
+    ['Sum and product', 'Yig‘indi va ko‘paytma', 'Сумма и произведение'],
+    ['Combined domain', 'Umumiy aniqlanish sohasi', 'Общая область определения'],
+    ['Point of intersection', 'Kesishish nuqtasi', 'Точка пересечения'],
+    ['Consistent system', 'Birgalikdagi sistema', 'Совместная система'],
+    ['Inconsistent system', 'Birgalikda bo‘lmagan sistema', 'Несовместная система']
+  ],
+  timing: [[8, 'What is new'], [20, 'Substitution'], [22, 'Symmetric systems'], [16, 'Graphical meaning'], [20, 'Practice'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'The combined domain',
+      html: `<div class="keybox"><div class="klabel">Both equations must accept the answer</div>
+      A pair ${m('(x, y)')} solves the system only if it lies in the domain of <b>both</b> equations.
+      So the excluded values of each are excluded from the whole system.</div>
+      <p>Everything else is the ordinary technique of Grade 9 — eliminate a variable, solve, substitute
+      back — with the extra step of clearing denominators first.</p>`
+    },
+    {
+      h: 'Substitution',
+      html: `<p>When one equation gives a variable cheaply, use it:</p>
+      ${eq(m('x + y = 5   and   ' + f('1', 'x') + ' + ' + f('1', 'y') + ' = ' + f('5', '6')), true)}
+      <p>The second equation is ${m(f('x + y', 'xy') + ' = ' + f('5', '6'))}, so ${m(f('5', 'xy') + ' = ' + f('5', '6'))}
+      and ${m('xy = 6')}. With ${m('x + y = 5')} the numbers are the roots of ${m('t² − 5t + 6 = 0')}.</p>
+      ${eq(m('(x, y) = (2, 3)  or  (3, 2)'), false)}
+      <div class="warn"><span class="wl">Two ordered pairs, not one</span>
+      A symmetric system almost always gives both orders. Writing only one loses half the answer.</div>`
+    },
+    {
+      h: 'Symmetric systems',
+      html: `<p>A system is <b>symmetric</b> when swapping ${m('x')} and ${m('y')} leaves it unchanged.
+      Every such system can be rewritten in ${m('s = x + y')} and ${m('p = xy')}:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>In ${m('s')} and ${m('p')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x² + y²</td><td class="m">s² − 2p</td></tr>
+        <tr><td class="m">${f('1', 'x')} + ${f('1', 'y')}</td><td class="m">${f('s', 'p')}</td></tr>
+        <tr><td class="m">x³ + y³</td><td class="m">s³ − 3ps</td></tr>
+        <tr><td class="m">(x − y)²</td><td class="m">s² − 4p</td></tr>
+      </tbody></table></div>
+      <p>Solve for ${m('s')} and ${m('p')}, then recover ${m('x')} and ${m('y')} as the roots of
+      ${m('t² − st + p = 0')}.</p>`
+    },
+    {
+      h: 'What the solutions mean',
+      html: `<p>Each equation is a curve. The solutions of the system are the points where the curves
+      cross — so the number of solutions is the number of intersections.</p>
+      {{fig:hyperbola:xy = 6 is a hyperbola; x + y = 5 is a line. Two crossings, two solutions.}}
+      <p>A system with no solution is a line missing its curve entirely; a system with one solution is
+      a tangency.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('x + y = 7') + ', ' + m(f('1', 'x') + ' + ' + f('1', 'y') + ' = ' + f('7', '12')) + '.',
+      steps: [
+        [m(f('x + y', 'xy') + ' = ' + f('7', '12')), ''],
+        [m(f('7', 'xy') + ' = ' + f('7', '12') + ' ⇒ xy = 12'), ''],
+        [m('t² − 7t + 12 = 0'), ''],
+        [m('t = 3, 4'), '']
+      ],
+      ans: m('(3, 4)') + ' and ' + m('(4, 3)')
+    },
+    {
+      q: 'Solve ' + m('xy = 12') + ', ' + m('x² + y² = 25') + '.',
+      steps: [
+        [m('s² − 2p = 25') + ' with ' + m('p = 12') + '.', m('s² = 49')],
+        [m('s = ±7'), ''],
+        [m('s = 7') + ': ' + m('t² − 7t + 12 = 0 ⇒ 3, 4') + '.', ''],
+        [m('s = −7') + ': ' + m('t² + 7t + 12 = 0 ⇒ −3, −4') + '.', '']
+      ],
+      ans: m('(3,4), (4,3), (−3,−4), (−4,−3)')
+    },
+    {
+      q: 'Solve ' + m(f('2', 'x') + ' − ' + f('1', 'y') + ' = 1') + ', ' + m(f('1', 'x') + ' + ' + f('2', 'y') + ' = 3') + '.',
+      steps: [
+        ['Let ' + m('u = ' + f('1', 'x')) + ', ' + m('v = ' + f('1', 'y')) + '.', m('2u − v = 1, u + 2v = 3')],
+        ['Solve: ' + m('u = 1, v = 1') + '.', ''],
+        [m('x = 1, y = 1'), '']
+      ],
+      ans: m('(1, 1)')
+    }
+  ],
+  modelNote: 'Plot both curves and count the crossings before solving.',
+  interactive: {
+    type: 'hyperbola',
+    title: 'A line meeting a hyperbola',
+    hint: 'Move the line and count the intersections.'
+  },
+  quiz: [
+    { q: 'A symmetric system usually gives:', a: ['one pair', 'two ordered pairs', 'no pairs', 'infinitely many'], c: 1, why: 'Swapping ' + m('x') + ' and ' + m('y') + ' gives another solution.' },
+    { q: m('x² + y²') + ' in terms of ' + m('s, p') + ' is:', a: [m('s² + 2p'), m('s² − 2p'), m('s² − p'), m('2s − p')], c: 1, why: 'Expand ' + m('(x + y)²') + '.' },
+    { q: 'For ' + m(f('1', 'x') + ' + ' + f('1', 'y')) + ' a good substitution is:', a: [m('u = x, v = y'), m('u = ' + f('1', 'x') + ', v = ' + f('1', 'y')), m('u = xy'), 'none'], c: 1, why: 'It linearises the system.' },
+    { q: 'The solutions of a system are:', a: ['the roots of one equation', 'the points where the curves meet', 'the domains', 'the asymptotes'], c: 1, why: 'Both equations hold there.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m('x + y = 5, xy = 6'), m('(2,3), (3,2)')],
+      ['Solve ' + m('x + y = 8, xy = 15'), m('(3,5), (5,3)')],
+      ['Solve ' + m('x − y = 1, xy = 6'), m('(3,2), (−2,−3)')],
+      ['Write ' + m('x² + y²') + ' with ' + m('s, p'), m('s² − 2p')],
+      ['Write ' + m(f('1', 'x') + ' + ' + f('1', 'y')) + ' with ' + m('s, p'), m(f('s', 'p'))],
+      ['Domain of ' + m(f('1', 'x') + ' + ' + f('1', 'y') + ' = 1'), m('x ≠ 0, y ≠ 0')],
+      ['Solve ' + m('xy = 4, x = y'), m('(2,2), (−2,−2)')]
+    ],
+    med: [
+      ['Solve ' + m('x + y = 7, ' + f('1', 'x') + ' + ' + f('1', 'y') + ' = ' + f('7', '12')), m('(3,4), (4,3)')],
+      ['Solve ' + m('xy = 12, x² + y² = 25'), m('(±3,±4)') + ' matching signs'],
+      ['Solve ' + m(f('2', 'x') + ' − ' + f('1', 'y') + ' = 1, ' + f('1', 'x') + ' + ' + f('2', 'y') + ' = 3'), m('(1, 1)')],
+      ['Solve ' + m('x + y = 6, x² + y² = 20'), m('(2,4), (4,2)')],
+      ['Solve ' + m('x − y = 2, ' + f('1', 'x') + ' − ' + f('1', 'y') + ' = −' + f('1', '4')), m('(4,2)') + ' or ' + m('(−2,−4)')],
+      ['Solve ' + m('xy = 6, x + y = −5'), m('(−2,−3), (−3,−2)')],
+      ['How many solutions has ' + m('x + y = 1, xy = 1') + '?', 'none — ' + m('D < 0')]
+    ],
+    hard: [
+      ['Solve ' + m('x + y = 4, x³ + y³ = 28'), m('(1,3), (3,1)')],
+      ['Solve ' + m('x² + y² = 13, ' + f('1', 'x') + ' + ' + f('1', 'y') + ' = ' + f('5', '6')), m('(2,3), (3,2)')],
+      ['Solve ' + m(f('x', 'y') + ' + ' + f('y', 'x') + ' = ' + f('5', '2') + ', x + y = 6'), m('(2,4), (4,2)')],
+      ['Solve ' + m('x + y + xy = 11, x² y + x y² = 30'), m('(2,3), (3,2)') + ' or ' + m('s = 6, p = 5')],
+      ['Find ' + m('k') + ' so ' + m('x + y = 4, xy = k') + ' has exactly one solution', m('k = 4')],
+      ['Solve ' + m(f('1', 'x') + ' + ' + f('1', 'y') + ' = ' + f('1', '2') + ', ' + f('1', 'x²') + ' + ' + f('1', 'y²') + ' = ' + f('5', '36')), m('(6,3), (3,6)')],
+      ['Interpret ' + m('x + y = 5, xy = 6') + ' graphically', 'A line meeting a hyperbola in two points']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write both ordered pairs whenever the system is symmetric.',
+  homework: [
+    'Solve ' + m('x + y = 9') + ', ' + m('xy = 20') + '.',
+    'Solve ' + m('x + y = 5') + ', ' + m(f('1', 'x') + ' + ' + f('1', 'y') + ' = ' + f('5', '6')) + '.',
+    'Solve ' + m('x² + y² = 41') + ', ' + m('xy = 20') + '.',
+    'Solve ' + m(f('3', 'x') + ' + ' + f('2', 'y') + ' = 4') + ', ' + m(f('1', 'x') + ' − ' + f('1', 'y') + ' = 1') + '.',
+    'Explain, with a sketch, why ' + m('x + y = 1') + ' and ' + m('xy = 1') + ' have no common solution.'
+  ]
+});
+
+/* ============================== 17 ============================== */
+G10_ALG.push({
+  id: 'a10-17', stream: 'alg', grade: 10, quarter: 2, lessons: '32–34', hours: 3,
+  title: 'Rational inequalities',
+  subtitle: 'Never cross-multiply. Move everything to one side, combine into one fraction, and let the sign chart do the work.',
+  uz: 'Algebra 10, §2.3', uzPage: 'pp. 114–128',
+  cam: 'P1 · 1.2 (extension)', camPage: 'Pure Mathematics 1, pp. 6–11', wb: 'P1 Exercise 1C',
+  objectives: [
+    'Explain why multiplying an inequality by a variable expression is forbidden.',
+    'Reduce a rational inequality to a single fraction compared with zero.',
+    'Build and read a sign chart, including the excluded points.',
+    'Write the answer in interval notation.'
+  ],
+  terms: [
+    ['Rational inequality', 'Ratsional tengsizlik', 'Рациональное неравенство'],
+    ['Sign chart (interval method)', 'Oraliqlar usuli', 'Метод интервалов'],
+    ['Critical value', 'Kritik qiymat', 'Критическое значение'],
+    ['Excluded point', 'Chetlatilgan nuqta', 'Выколотая точка'],
+    ['Closed circle', 'To‘ldirilgan nuqta', 'Закрашенная точка'],
+    ['Open circle', 'Bo‘sh nuqta', 'Выколотая точка'],
+    ['Interval notation', 'Oraliq belgilanishi', 'Интервальная запись'],
+    ['Union of intervals', 'Oraliqlar birlashmasi', 'Объединение промежутков'],
+    ['Sign of a factor', 'Ko‘paytuvchi ishorasi', 'Знак множителя'],
+    ['Multiplicity', 'Karralilik', 'Кратность']
+  ],
+  timing: [[14, 'The forbidden step'], [22, 'One fraction, compared with zero'], [26, 'The sign chart'], [22, 'Repeated factors'], [40, 'Practice'], [11, 'Homework']],
+  sections: [
+    {
+      h: 'The one thing you may not do',
+      html: `<div class="warn"><span class="wl">Never multiply an inequality by ${m('x − 3')}</span>
+      You do not know its sign. If it is negative the inequality reverses; if it is zero it collapses.
+      ${m(f('1', 'x') + ' > 1')} does <b>not</b> give ${m('1 > x')} — try ${m('x = −1')}:
+      ${m('−1 > 1')} is false, but ${m('1 > −1')} is true.</div>
+      <p>Multiplying by a <b>positive number</b> is safe. Multiplying by an expression whose sign you do
+      not know is not, and there is no way to repair it afterwards.</p>`
+    },
+    {
+      h: 'The method',
+      html: `<div class="keybox"><div class="klabel">Four steps, always</div>
+      <b>1</b> Move everything to one side, so the other side is ${m('0')}.
+      <b>2</b> Combine into a single fraction and factorise top and bottom.
+      <b>3</b> Mark every zero of the numerator and of the denominator on a number line.
+      <b>4</b> Test the sign in each interval and read the answer off.</div>
+      ${eq(m(f('1', 'x') + ' > 1  ⇒  ' + f('1', 'x') + ' − 1 > 0  ⇒  ' + f('1 − x', 'x') + ' > 0'), true)}
+      <p>Critical values ${m('0')} and ${m('1')}. Testing ${m('−1, 0.5, 2')} gives ${m('−, +, −')},
+      so the answer is ${m('0 < x < 1')}.</p>
+      {{fig:quadSignChart:The critical values cut the line into intervals. One test point settles each.}}`
+    },
+    {
+      h: 'Open or closed?',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Critical value from</th><th>Inequality</th><th>Endpoint</th></tr></thead>
+      <tbody>
+        <tr><td>numerator</td><td class="m">≤ or ≥</td><td>included — closed circle</td></tr>
+        <tr><td>numerator</td><td class="m">&lt; or &gt;</td><td>excluded — open circle</td></tr>
+        <tr><td>denominator</td><td>any</td><td><b>always</b> excluded</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A denominator zero is never included</span>
+      Even with ${m('≥')}. The expression has no value there at all, so it cannot satisfy anything.</div>`
+    },
+    {
+      h: 'Repeated factors',
+      html: `<p>The sign alternates as you cross a simple zero. It does <b>not</b> alternate at a
+      repeated factor of even order — the graph touches the axis and turns back.</p>
+      ${eq(m(f('(x − 1)²(x + 2)', 'x − 3') + ' ≥ 0'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">x</th><th class="m">&lt; −2</th><th class="m">−2</th><th class="m">(−2,1)</th><th class="m">1</th><th class="m">(1,3)</th><th class="m">3</th><th class="m">&gt; 3</th></tr></thead>
+      <tbody>
+        <tr><td>sign</td><td class="m">+</td><td class="m">0</td><td class="m">−</td><td class="m">0</td><td class="m">−</td><td>×</td><td class="m">+</td></tr>
+      </tbody></table></div>
+      <p>Answer: ${m('x ≤ −2')}, or ${m('x = 1')}, or ${m('x > 3')}. The isolated point ${m('1')} is part
+      of the solution because the numerator is zero there and ${m('≥')} allows it.</p>
+      <div class="keybox"><div class="klabel">A quick rule</div>
+      Start at the far right, where every factor is positive, and count the sign changes leftwards.
+      A factor of odd power changes the sign; a factor of even power does not.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m(f('x − 2', 'x + 3') + ' < 0') + '.',
+      steps: [
+        ['Already one fraction against zero.', ''],
+        ['Critical values ' + m('2') + ' and ' + m('−3') + '.', ''],
+        ['Test ' + m('−4, 0, 3') + ': ' + m('+, −, +') + '.', ''],
+        ['Both ends open.', '']
+      ],
+      ans: m('−3 < x < 2')
+    },
+    {
+      q: 'Solve ' + m(f('2', 'x − 1') + ' ≤ 3') + '.',
+      steps: [
+        [m(f('2', 'x − 1') + ' − 3 ≤ 0'), ''],
+        [m(f('2 − 3(x − 1)', 'x − 1') + ' = ' + f('5 − 3x', 'x − 1') + ' ≤ 0'), ''],
+        ['Critical ' + m('x = ' + f('5', '3')) + ' (closed), ' + m('x = 1') + ' (open).', ''],
+        ['Test ' + m('0, 1.2, 2') + ': ' + m('−, +, −') + '.', '']
+      ],
+      ans: m('x < 1') + ' or ' + m('x ≥ ' + f('5', '3'))
+    },
+    {
+      q: 'Solve ' + m(f('(x + 1)(x − 4)', 'x²') + ' > 0') + '.',
+      steps: [
+        ['Critical ' + m('−1, 0, 4') + '.', m('x = 0') + ' is a double root of the denominator.'],
+        ['Signs: ' + m('+, −, −, +') + ' across the four intervals.', m('x²') + ' never changes sign.'],
+        ['Ends all open.', '']
+      ],
+      ans: m('x < −1') + ' or ' + m('x > 4')
+    }
+  ],
+  modelNote: 'Draw the number line first, then fill in the signs interval by interval.',
+  interactive: {
+    type: 'inequalityLine',
+    title: 'Reading a sign chart',
+    hint: 'Move the critical values and watch the solution set change.'
+  },
+  quiz: [
+    { q: m(f('1', 'x') + ' > 1') + ' gives:', a: [m('x < 1'), m('0 < x < 1'), m('x > 1'), m('x > 0')], c: 1, why: 'Cross-multiplying is forbidden.' },
+    { q: 'A zero of the denominator is:', a: ['always included', 'always excluded', 'included if ' + m('≥'), 'sometimes'], c: 1, why: 'The expression is undefined there.' },
+    { q: 'Crossing a factor of even power the sign:', a: ['changes', 'does not change', 'becomes zero', 'is undefined'], c: 1, why: 'The graph touches and turns.' },
+    { q: m(f('x − 2', 'x + 3') + ' < 0') + ' gives:', a: [m('x < −3'), m('−3 < x < 2'), m('x > 2'), m('x < 2')], c: 1, why: 'Between the critical values.' },
+    { q: 'The first step of a rational inequality is:', a: ['cross-multiply', 'get zero on one side', 'square it', 'take reciprocals'], c: 1, why: 'Then a single fraction can be signed.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m(f('1', 'x') + ' > 0'), m('x > 0')],
+      ['Solve ' + m(f('1', 'x') + ' < 0'), m('x < 0')],
+      ['Solve ' + m(f('x', 'x − 1') + ' > 0'), m('x < 0') + ' or ' + m('x > 1')],
+      ['Solve ' + m(f('x − 3', 'x + 1') + ' < 0'), m('−1 < x < 3')],
+      ['Solve ' + m('(x − 1)(x + 2) > 0'), m('x < −2') + ' or ' + m('x > 1')],
+      ['Is ' + m('x = 2') + ' allowed in ' + m(f('1', 'x − 2') + ' ≥ 0') + '?', 'no'],
+      ['Solve ' + m(f('2', 'x') + ' ≥ 0'), m('x > 0')]
+    ],
+    med: [
+      ['Solve ' + m(f('1', 'x') + ' > 1'), m('0 < x < 1')],
+      ['Solve ' + m(f('2', 'x − 1') + ' ≤ 3'), m('x < 1') + ' or ' + m('x ≥ ' + f('5', '3'))],
+      ['Solve ' + m(f('x + 2', 'x − 3') + ' ≥ 0'), m('x ≤ −2') + ' or ' + m('x > 3')],
+      ['Solve ' + m(f('x', 'x² − 4') + ' > 0'), m('−2 < x < 0') + ' or ' + m('x > 2')],
+      ['Solve ' + m(f('(x + 1)(x − 4)', 'x²') + ' > 0'), m('x < −1') + ' or ' + m('x > 4')],
+      ['Solve ' + m(f('3', 'x + 2') + ' < 1'), m('x < −2') + ' or ' + m('x > 1')],
+      ['Solve ' + m(f('x − 1', 'x + 1') + ' ≤ 2'), m('x < −1') + ' or ' + m('x ≥ −3') + ' → ' + m('x ≤ −3') + ' or ' + m('x > −1')]
+    ],
+    hard: [
+      ['Solve ' + m(f('(x − 1)²(x + 2)', 'x − 3') + ' ≥ 0'), m('x ≤ −2') + ', ' + m('x = 1') + ', or ' + m('x > 3')],
+      ['Solve ' + m(f('x² − 5x + 6', 'x² − 4') + ' ≤ 0'), m('−2 < x ≤ 2') + ' excluding 2 → ' + m('−2 < x < 2') + ' or ' + m('x = 3')],
+      ['Solve ' + m(f('1', 'x − 1') + ' > ' + f('1', 'x + 1')), m('x > 1') + ' or ' + m('−1 < x') + ' → ' + m('−1 < x < 1') + ' fails; ' + m('x > 1') + ' or ' + m('x < −1')],
+      ['Solve ' + m(f('x', 'x − 2') + ' ≥ ' + f('3', 'x − 2')), m('x > 2')],
+      ['Solve ' + m(f('x³ − x', 'x + 3') + ' < 0'), m('x < −3') + ' or ' + m('−1 < x < 0') + ' or ' + m('x > 1') + ' — check signs'],
+      ['Find all ' + m('k') + ' with ' + m(f('x² + k', 'x') + ' > 0') + ' for every ' + m('x > 0'), m('k ≥ 0')],
+      ['Explain why ' + m(f('(x − 2)²', 'x − 2')) + ' and ' + m('x − 2') + ' give different solution sets', 'The first excludes ' + m('x = 2')]
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Every answer needs the number line drawn, with open and closed circles marked.',
+  homework: [
+    'Solve ' + m(f('x − 5', 'x + 2') + ' < 0') + '.',
+    'Solve ' + m(f('3', 'x − 2') + ' ≥ 1') + '.',
+    'Solve ' + m(f('x', 'x² − 9') + ' ≤ 0') + '.',
+    'Solve ' + m(f('(x − 2)²(x + 1)', 'x − 5') + ' ≥ 0') + '.',
+    'Explain in three sentences why ' + m(f('1', 'x') + ' > 1') + ' is not ' + m('1 > x') + '.',
+    'Solve ' + m(f('2', 'x + 1') + ' < ' + f('1', 'x')) + '.'
+  ]
+});
+
+/* ============================== 18 ============================== */
+G10_ALG.push({
+  id: 'a10-18', stream: 'alg', grade: 10, quarter: 2, lessons: '35–37', hours: 3,
+  title: 'Systems of rational inequalities',
+  subtitle: 'Solve each one alone, draw them on the same line, and keep only the overlap.',
+  uz: 'Algebra 10, §2.4', uzPage: 'pp. 129–142',
+  cam: 'P1 · 1.2 (extension)', camPage: 'Pure Mathematics 1, pp. 6–11', wb: 'P1 Exercise 1C',
+  objectives: [
+    'Solve each inequality of a system separately.',
+    'Represent the solution sets on one number line and read the intersection.',
+    'Distinguish a system (“and”) from a collection (“or”).',
+    'Handle systems whose solution set is empty.'
+  ],
+  terms: [
+    ['System of inequalities', 'Tengsizliklar sistemasi', 'Система неравенств'],
+    ['Collection of inequalities', 'Tengsizliklar majmuasi', 'Совокупность неравенств'],
+    ['Intersection of sets', 'To‘plamlar kesishmasi', 'Пересечение множеств'],
+    ['Union of sets', 'To‘plamlar birlashmasi', 'Объединение множеств'],
+    ['Empty solution set', 'Bo‘sh yechimlar to‘plami', 'Пустое множество решений'],
+    ['Number line', 'Sonlar o‘qi', 'Числовая прямая'],
+    ['Common part', 'Umumiy qism', 'Общая часть'],
+    ['Double inequality', 'Qo‘sh tengsizlik', 'Двойное неравенство'],
+    ['Bounded interval', 'Chegaralangan oraliq', 'Ограниченный промежуток']
+  ],
+  timing: [[10, 'And versus or'], [22, 'The method'], [26, 'Worked systems'], [24, 'Empty and unbounded answers'], [38, 'Practice'], [15, 'Homework']],
+  sections: [
+    {
+      h: '“And” or “or”',
+      html: `<div class="keybox"><div class="klabel">Two different questions</div>
+      A <b>system</b> — written with a brace — asks for the values satisfying <b>every</b> inequality:
+      the <b>intersection</b>. A <b>collection</b> asks for those satisfying <b>at least one</b>:
+      the <b>union</b>.</div>
+      <p>${m('x > 1')} and ${m('x < 4')} gives ${m('1 < x < 4')}. The same two as a collection give
+      all of ${m('ℝ')}. The brace matters.</p>`
+    },
+    {
+      h: 'The method',
+      html: `<ol>
+        <li>Solve each inequality on its own, by the sign-chart method of the last lesson.</li>
+        <li>Draw all the solution sets on <b>one</b> number line, one above another.</li>
+        <li>Shade the part covered by every line.</li>
+        <li>Read the answer as an interval or a union of intervals.</li>
+      </ol>
+      {{fig:systemIntervals:Three solution sets drawn above one another. The answer is the strip covered by all three.}}
+      <div class="warn"><span class="wl">Do not try to solve them simultaneously</span>
+      Inequalities are not equations: adding or subtracting them loses information. Solve each
+      separately, then intersect on the picture.</div>`
+    },
+    {
+      h: 'Worked systems',
+      html: `<p><b>Example.</b> ${m(f('1', 'x') + ' > 0')} and ${m(f('x − 2', 'x + 1') + ' ≤ 0')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Inequality</th><th>Solution</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('1', 'x')} &gt; 0</td><td class="m">x &gt; 0</td></tr>
+        <tr><td class="m">${f('x − 2', 'x + 1')} ≤ 0</td><td class="m">−1 &lt; x ≤ 2</td></tr>
+        <tr><td><b>intersection</b></td><td class="m">0 &lt; x ≤ 2</td></tr>
+      </tbody></table></div>
+      <p>A double inequality such as ${m('−3 < ' + f('2', 'x') + ' < 1')} is a system in disguise:
+      break it into ${m(f('2', 'x') + ' > −3')} and ${m(f('2', 'x') + ' < 1')}, solve both, intersect.
+      It cannot be solved “all at once” because the middle contains ${m('x')}.</p>`
+    },
+    {
+      h: 'When the answer is empty',
+      html: `<p>${m('x > 5')} and ${m('x < 2')} have no common value. That is a legitimate answer, written
+      ${m('∅')} or “no solution”, and it must be justified by the picture — not left blank.</p>
+      <div class="keybox"><div class="klabel">Three shapes of answer</div>
+      a single interval · a union of intervals · the empty set. Anything else means an error in one of
+      the individual solutions.</div>
+      <p>Systems are the natural home of the <b>domain</b> conditions from Quarter I. “Find the domain
+      of ${m(f(sr('x − 1'), 'x − 4'))}” is exactly the system ${m('x − 1 ≥ 0')} and ${m('x ≠ 4')}.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve the system ' + m('2x − 1 > 3') + ' and ' + m(f('1', 'x − 5') + ' < 0') + '.',
+      steps: [
+        ['First: ' + m('x > 2') + '.', ''],
+        ['Second: ' + m('x < 5') + '.', 'The numerator is positive.'],
+        ['Intersect.', '']
+      ],
+      ans: m('2 < x < 5')
+    },
+    {
+      q: 'Solve ' + m(f('x', 'x − 3') + ' ≥ 0') + ' and ' + m('x² − 16 < 0') + '.',
+      steps: [
+        ['First: ' + m('x ≤ 0') + ' or ' + m('x > 3') + '.', ''],
+        ['Second: ' + m('−4 < x < 4') + '.', ''],
+        ['Intersect both pieces.', '']
+      ],
+      ans: m('−4 < x ≤ 0') + ' or ' + m('3 < x < 4')
+    },
+    {
+      q: 'Find the domain of ' + m('f(x) = ' + f(sr('x + 2'), 'x² − 9')) + '.',
+      steps: [
+        ['Radicand ' + m('≥ 0') + ': ' + m('x ≥ −2') + '.', ''],
+        ['Denominator ' + m('≠ 0') + ': ' + m('x ≠ ±3') + '.', ''],
+        [m('x = −3') + ' is already excluded by the first.', '']
+      ],
+      ans: m('x ≥ −2') + ', ' + m('x ≠ 3')
+    }
+  ],
+  modelNote: 'Draw both sets on the board one above the other; the answer is visible before it is written.',
+  interactive: {
+    type: 'inequalityLine',
+    title: 'Intersecting two solution sets',
+    hint: 'Move each interval and watch the overlap.'
+  },
+  quiz: [
+    { q: 'A system of inequalities asks for:', a: ['the union', 'the intersection', 'either one', 'the difference'], c: 1, why: 'Every inequality must hold.' },
+    { q: m('x > 1') + ' and ' + m('x < 4') + ' gives:', a: [m('1 < x < 4'), m('ℝ'), m('x > 4'), '∅'], c: 0, why: 'The overlap.' },
+    { q: m('x > 5') + ' and ' + m('x < 2') + ' gives:', a: [m('2 < x < 5'), 'all reals', '∅', m('x > 5')], c: 2, why: 'No overlap.' },
+    { q: m('−3 < ' + f('2', 'x') + ' < 1') + ' should be:', a: ['solved at once', 'split into two inequalities', 'cross-multiplied', 'squared'], c: 1, why: 'The middle contains ' + m('x') + '.' },
+    { q: 'The domain of ' + m(f(sr('x'), 'x − 1')) + ' is:', a: [m('x ≥ 0'), m('x ≥ 0, x ≠ 1'), m('x > 1'), m('ℝ')], c: 1, why: 'Two conditions at once.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m('x > 2') + ' and ' + m('x < 7'), m('2 < x < 7')],
+      ['Solve ' + m('x ≥ 0') + ' and ' + m('x ≤ 5'), m('0 ≤ x ≤ 5')],
+      ['Solve ' + m('x > 4') + ' and ' + m('x < 1'), '∅'],
+      ['Solve ' + m('2x > 6') + ' and ' + m('x − 1 < 4'), m('3 < x < 5')],
+      ['Domain of ' + m(f(sr('x'), 'x − 2')), m('x ≥ 0, x ≠ 2')],
+      ['Solve ' + m('x² < 9'), m('−3 < x < 3')],
+      ['Solve ' + m('x > 0') + ' and ' + m('x² < 4'), m('0 < x < 2')]
+    ],
+    med: [
+      ['Solve ' + m('2x − 1 > 3') + ' and ' + m(f('1', 'x − 5') + ' < 0'), m('2 < x < 5')],
+      ['Solve ' + m(f('x', 'x − 3') + ' ≥ 0') + ' and ' + m('x² − 16 < 0'), m('−4 < x ≤ 0') + ' or ' + m('3 < x < 4')],
+      ['Solve ' + m('−3 < ' + f('2', 'x') + ' < 1'), m('x < −' + f('2', '3')) + ' or ' + m('x > 2')],
+      ['Domain of ' + m(f(sr('x + 2'), 'x² − 9')), m('x ≥ −2, x ≠ 3')],
+      ['Solve ' + m(f('1', 'x') + ' > 1') + ' and ' + m('x > 0.5'), m('0.5 < x < 1')],
+      ['Solve ' + m('x² − 5x + 6 ≤ 0') + ' and ' + m('x ≠ 2'), m('2 < x ≤ 3')],
+      ['Solve ' + m(f('x − 1', 'x + 2') + ' > 0') + ' and ' + m('x < 3'), m('x < −2') + ' or ' + m('1 < x < 3')]
+    ],
+    hard: [
+      ['Solve ' + m(f('1', 'x − 1') + ' > 2') + ' and ' + m(f('1', 'x') + ' < 3'), m(f('1', '3') + ' < x < 1.5') + ' — check ends'],
+      ['Solve ' + m('x² − 4x < 0') + ' and ' + m(f('x − 3', 'x') + ' ≥ 0'), m('3 ≤ x < 4')],
+      ['Domain of ' + m(f(sr('4 − x²'), 'x − 1')), m('−2 ≤ x ≤ 2, x ≠ 1')],
+      ['Domain of ' + m(sr(f('x − 1', 'x + 2'))), m('x < −2') + ' or ' + m('x ≥ 1')],
+      ['Find all ' + m('k') + ' for which ' + m('x > k') + ' and ' + m('x < 2k') + ' is non-empty', m('k > 0')],
+      ['Solve ' + m('|x − 2| < 3') + ' and ' + m(f('1', 'x') + ' > 0'), m('0 < x < 5')],
+      ['Solve ' + m(f('x²  − 1', 'x') + ' ≥ 0') + ' and ' + m('x ≤ 2'), m('−1 ≤ x < 0') + ' or ' + m('1 ≤ x ≤ 2')]
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Draw one number line per system, with every solution set on it.',
+  homework: [
+    'Solve ' + m('3x + 1 > 7') + ' and ' + m(f('1', 'x − 6') + ' < 0') + '.',
+    'Solve ' + m(f('x + 1', 'x − 2') + ' ≤ 0') + ' and ' + m('x > −3') + '.',
+    'Solve ' + m('−2 < ' + f('3', 'x') + ' < 1') + '.',
+    'Find the domain of ' + m(f(sr('x − 1'), 'x² − 16')) + '.',
+    'Find the domain of ' + m(sr(f('x + 3', 'x − 1'))) + '.',
+    'Give a system of two inequalities whose solution set is empty, and prove it with a number line.'
+  ]
+});
+
+/* ============================== 19 ============================== */
+G10_ALG.push({
+  id: 'a10-19', stream: 'alg', grade: 10, quarter: 2, lessons: '38–39', hours: 2,
+  title: 'Control work 3, and work on the mistakes',
+  subtitle: 'Rational equations, systems and inequalities in one paper — then the hour that turns the marks into a plan.',
+  uz: 'Algebra 10, Nazorat ishi 3', uzPage: 'pp. 143–146',
+  cam: 'P1 · Chapter 1 review', camPage: 'Pure Mathematics 1, pp. 24–25', wb: 'Control paper C',
+  objectives: [
+    'Apply the rational-equation and rational-inequality methods under time.',
+    'State a domain and reject an extraneous root without being prompted.',
+    'Classify each lost mark as careless, method or knowledge.',
+    'Rewrite every wrong solution correctly.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Extraneous root', 'Chet ildiz', 'Посторонний корень'],
+    ['Sign chart', 'Ishoralar jadvali', 'Таблица знаков'],
+    ['Careless error', 'E’tiborsizlik xatosi', 'Ошибка по невнимательности'],
+    ['Method error', 'Usul xatosi', 'Ошибка в методе'],
+    ['Knowledge gap', 'Bilim bo‘shlig‘i', 'Пробел в знаниях'],
+    ['Mark scheme', 'Baholash sxemasi', 'Схема оценивания'],
+    ['Correction', 'Tuzatish', 'Исправление']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [10, 'Self-mark'], [25, 'Rewrite'], [12, 'Common-error drill']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Solve ${m(f('3', 'x') + ' + ' + f('2', 'x + 1') + ' = 3')}, stating the domain</td><td class="m">4</td><td>L28–29</td></tr>
+        <tr><td>2</td><td>Solve ${m(f('x²', 'x − 5') + ' = ' + f('25', 'x − 5'))} and justify the rejection</td><td class="m">3</td><td>L28–29</td></tr>
+        <tr><td>3</td><td>Solve the system ${m('x + y = 8')}, ${m(f('1', 'x') + ' + ' + f('1', 'y') + ' = ' + f('8', '15'))}</td><td class="m">4</td><td>L30–31</td></tr>
+        <tr><td>4</td><td>Solve ${m(f('x − 4', 'x + 2') + ' ≤ 0')} with a sign chart</td><td class="m">4</td><td>L32–34</td></tr>
+        <tr><td>5</td><td>Solve ${m(f('2', 'x − 3') + ' > 1')}</td><td class="m">4</td><td>L32–34</td></tr>
+        <tr><td>6</td><td>Solve the system ${m(f('x', 'x − 1') + ' ≥ 0')} and ${m('x² < 9')}</td><td class="m">4</td><td>L35–37</td></tr>
+        <tr><td>7</td><td>Find the domain of ${m(f(sr('x + 1'), 'x² − 4'))}</td><td class="m">2</td><td>L35–37</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the method marks are</div>
+      Q1 and Q2 each give one mark for the domain line alone. Q4 and Q5 give two marks for the sign
+      chart, whatever the final interval says. Working, not answers.</div>`
+    },
+    {
+      h: 'The four errors this topic produces',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Error</th><th>Looks like</th><th>Kind</th></tr></thead>
+      <tbody>
+        <tr><td>no domain stated</td><td>an extraneous root kept</td><td>method</td></tr>
+        <tr><td>cross-multiplying an inequality</td><td>${m(f('1', 'x') + ' > 1 ⇒ 1 > x')}</td><td>knowledge</td></tr>
+        <tr><td>denominator zero included</td><td>${m('x ≤ 3')} where ${m('3')} kills the fraction</td><td>method</td></tr>
+        <tr><td>only one ordered pair</td><td>${m('(3, 5)')} without ${m('(5, 3)')}</td><td>careless</td></tr>
+      </tbody></table></div>
+      {{fig:quadSignChart:Questions 4, 5 and 6 in one picture. Two of the marks are for drawing it.}}`
+    },
+    {
+      h: 'The rewrite',
+      html: `<p>Every question that lost a mark is rewritten in full, with the domain on the first line
+      and the check on the last. Under each rewrite, one sentence beginning
+      <i>“I lost this because …”</i>.</p>
+      <div class="keybox"><div class="klabel">The drill before the rewrite</div>
+      Ten expressions on the board. For each, the class calls out only <b>the domain</b>, in three
+      seconds. Nothing improves this topic faster.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q2: solve ' + m(f('x²', 'x − 5') + ' = ' + f('25', 'x − 5')) + '.',
+      steps: [
+        ['Domain ' + m('x ≠ 5') + '.', 'One mark for this line.'],
+        [m('x² = 25 ⇒ x = ±5'), ''],
+        [m('x = 5') + ' is excluded by the domain.', ''],
+        ['Only ' + m('x = −5') + ' survives.', '']
+      ],
+      ans: m('x = −5')
+    },
+    {
+      q: 'Model answer, Q5: solve ' + m(f('2', 'x − 3') + ' > 1') + '.',
+      steps: [
+        [m(f('2', 'x − 3') + ' − 1 > 0'), 'Never cross-multiply.'],
+        [m(f('2 − (x − 3)', 'x − 3') + ' = ' + f('5 − x', 'x − 3') + ' > 0'), ''],
+        ['Critical ' + m('3') + ' and ' + m('5') + ', both open.', ''],
+        ['Test ' + m('0, 4, 6') + ': ' + m('−, +, −') + '.', '']
+      ],
+      ans: m('3 < x < 5')
+    },
+    {
+      q: 'A learner wrote ' + m(f('x − 4', 'x + 2') + ' ≤ 0 ⇒ −2 ≤ x ≤ 4') + '. Name the mistake.',
+      steps: [
+        [m('x = −2') + ' makes the denominator zero.', ''],
+        ['A denominator zero is never included.', 'Method error.'],
+        ['Correct: ' + m('−2 < x ≤ 4') + '.', '']
+      ],
+      ans: 'Method error — the excluded endpoint was closed'
+    }
+  ],
+  modelNote: 'Run the domain drill before the rewrite, not after.',
+  interactive: {
+    type: 'quiz',
+    title: 'Mark these six answers',
+    hint: 'Look for the domain and the endpoints.',
+    items: [
+      { q: 'Domain of ' + m(f('3', 'x') + ' + ' + f('2', 'x + 1')) + ':', a: [m('x ≠ 0'), m('x ≠ −1'), m('x ≠ 0, −1'), m('ℝ')], c: 2, why: 'Both denominators.' },
+      { q: m(f('x²', 'x − 5') + ' = ' + f('25', 'x − 5')) + ' gives:', a: [m('x = ±5'), m('x = 5'), m('x = −5'), 'no solution'], c: 2, why: m('x = 5') + ' is excluded.' },
+      { q: m(f('x − 4', 'x + 2') + ' ≤ 0') + ' gives:', a: [m('−2 ≤ x ≤ 4'), m('−2 < x ≤ 4'), m('−2 < x < 4'), m('x ≤ 4')], c: 1, why: 'The denominator zero stays open.' },
+      { q: m(f('2', 'x − 3') + ' > 1') + ' gives:', a: [m('x > 3'), m('x < 5'), m('3 < x < 5'), m('x > 5')], c: 2, why: 'Sign chart on ' + m(f('5 − x', 'x − 3')) + '.' },
+      { q: 'The system ' + m('x + y = 8, ' + f('1', 'x') + ' + ' + f('1', 'y') + ' = ' + f('8', '15')) + ' gives:', a: [m('(3,5)'), m('(3,5), (5,3)'), m('(2,6)'), 'none'], c: 1, why: m('xy = 15') + '.' },
+      { q: 'Domain of ' + m(f(sr('x + 1'), 'x² − 4')) + ':', a: [m('x ≥ −1'), m('x ≥ −1, x ≠ 2'), m('x ≠ ±2'), m('x > −1')], c: 1, why: m('x = −2') + ' is already excluded.' }
+    ]
+  },
+  quiz: [
+    { q: 'The domain line is worth:', a: ['nothing', 'a mark on its own', 'the whole question', 'half'], c: 1, why: 'It is explicitly credited.' },
+    { q: 'Cross-multiplying an inequality is:', a: ['fine', 'fine if positive', 'never allowed with an unknown sign', 'always wrong'], c: 2, why: 'The sign decides the direction.' },
+    { q: 'A denominator zero in a ' + m('≤') + ' answer is:', a: ['included', 'excluded', 'sometimes included', 'the answer'], c: 1, why: 'The expression has no value there.' },
+    { q: 'A symmetric system is finished when you have:', a: ['one pair', 'both ordered pairs', 'the sum', 'the product'], c: 1, why: 'Both orders solve it.' }
+  ],
+  practice: {
+    easy: [
+      ['Domain of ' + m(f('3', 'x') + ' + ' + f('2', 'x + 1')), m('x ≠ 0, −1')],
+      ['Solve ' + m(f('4', 'x') + ' = 2'), m('x = 2')],
+      ['Solve ' + m(f('x − 4', 'x + 2') + ' ≤ 0'), m('−2 < x ≤ 4')],
+      ['Solve ' + m('x² < 9'), m('−3 < x < 3')],
+      ['Solve ' + m('x + y = 8, xy = 15'), m('(3,5), (5,3)')],
+      ['Domain of ' + m(sr('x + 1')), m('x ≥ −1')],
+      ['Solve ' + m(f('1', 'x − 3') + ' > 0'), m('x > 3')]
+    ],
+    med: [
+      ['Solve ' + m(f('3', 'x') + ' + ' + f('2', 'x + 1') + ' = 3'), m('x = ' + f('3 ± ' + sr('45'), '6')) + ' — i.e. ' + m('x ≈ 1.62, −0.62')],
+      ['Solve ' + m(f('x²', 'x − 5') + ' = ' + f('25', 'x − 5')), m('x = −5')],
+      ['Solve ' + m(f('2', 'x − 3') + ' > 1'), m('3 < x < 5')],
+      ['Solve ' + m(f('x', 'x − 1') + ' ≥ 0') + ' and ' + m('x² < 9'), m('−3 < x ≤ 0') + ' or ' + m('1 < x < 3')],
+      ['Domain of ' + m(f(sr('x + 1'), 'x² − 4')), m('x ≥ −1, x ≠ 2')],
+      ['Solve ' + m('x + y = 8, ' + f('1', 'x') + ' + ' + f('1', 'y') + ' = ' + f('8', '15')), m('(3,5), (5,3)')],
+      ['Solve ' + m(f('x + 3', 'x − 1') + ' < 2'), m('x < 1') + ' or ' + m('x > 5')]
+    ],
+    hard: [
+      ['Solve ' + m(f('1', 'x − 2') + ' + ' + f('1', 'x + 2') + ' = ' + f('4', 'x² − 4')), 'no solution — ' + m('x = 2') + ' rejected'],
+      ['Solve ' + m(f('x² − 9', 'x² − 4x + 3') + ' ≥ 0'), m('x < 1') + ' or ' + m('x ≥ 3') + ', excluding ' + m('x = 3') + ' → ' + m('x < 1') + ' or ' + m('x > 3')],
+      ['Solve ' + m('x + y = 10, x² + y² = 58'), m('(3,7), (7,3)')],
+      ['Domain of ' + m(sr(f('x − 2', 'x + 1'))), m('x < −1') + ' or ' + m('x ≥ 2')],
+      ['Find ' + m('k') + ' so ' + m(f('x', 'x − k') + ' = 2') + ' has no solution', m('k = 0')],
+      ['Solve ' + m(f('1', 'x') + ' > ' + f('1', 'x − 1')), m('0 < x < 1') + ' fails; ' + m('x < 0') + ' or ' + m('x > 1')],
+      ['Explain why the answer to Q4 is ' + m('−2 < x ≤ 4') + ' and not ' + m('−2 ≤ x ≤ 4'), 'The fraction is undefined at ' + m('−2')]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Task 1 is the rewrite. It is not optional.',
+  homework: [
+    'Rewrite in full every question that lost a mark, with the domain first and the check last.',
+    'Five problems from the section your knowledge column was heaviest in.',
+    'Solve ' + m(f('5', 'x + 2') + ' ≥ 1') + ' with a sign chart.',
+    'Solve ' + m('x + y = 12') + ', ' + m('xy = 32') + ', giving both ordered pairs.'
+  ]
+});
+
+/* ============================== 20 ============================== */
+G10_ALG.push({
+  id: 'a10-20', stream: 'alg', grade: 10, quarter: 2, lessons: '40–42', hours: 3,
+  title: 'Irrational equations',
+  subtitle: 'Squaring is the only way forward and the only source of false roots — so the check is not optional, it is the method.',
+  uz: 'Algebra 10, §2.5', uzPage: 'pp. 147–162',
+  cam: 'P1 · 1.5 (extension)', camPage: 'Pure Mathematics 1, pp. 12–17', wb: 'P1 Exercise 1E',
+  objectives: [
+    'State the two conditions an irrational equation imposes before squaring.',
+    'Solve an equation with one radical by isolating and squaring.',
+    'Solve an equation with two radicals by squaring twice.',
+    'Check every candidate root in the original equation.'
+  ],
+  terms: [
+    ['Irrational equation', 'Irratsional tenglama', 'Иррациональное уравнение'],
+    ['Radical', 'Radikal', 'Радикал'],
+    ['Radicand', 'Ildiz ostidagi ifoda', 'Подкоренное выражение'],
+    ['Isolate the radical', 'Radikalni ajratish', 'Уединить радикал'],
+    ['Squaring both sides', 'Kvadratga ko‘tarish', 'Возведение в квадрат'],
+    ['False (extraneous) root', 'Chet ildiz', 'Посторонний корень'],
+    ['Necessary condition', 'Zaruriy shart', 'Необходимое условие'],
+    ['Equivalent transformation', 'Teng kuchli almashtirish', 'Равносильное преобразование'],
+    ['Verification', 'Tekshirish', 'Проверка']
+  ],
+  timing: [[14, 'Two conditions, not one'], [24, 'One radical'], [30, 'Two radicals'], [24, 'Substitutions'], [36, 'Practice'], [7, 'Homework']],
+  sections: [
+    {
+      h: 'Two conditions before you start',
+      html: `<div class="keybox"><div class="klabel">${m(sr('A') + ' = B')} requires both</div>
+      <b>1</b> ${m('A ≥ 0')} — the radicand cannot be negative.
+      <b>2</b> ${m('B ≥ 0')} — a square root is never negative, so the other side cannot be either.
+      Condition 2 is the one that is forgotten, and it is the one that creates false roots.</div>
+      <p>${m(sr('x + 3') + ' = −2')} has no solution at all — the left side is never negative — but
+      squaring gives ${m('x + 3 = 4')} and the plausible-looking ${m('x = 1')}. Squaring destroys sign
+      information, permanently.</p>
+      {{fig:rootLadder:The graph of a square root lives entirely above the axis. Nothing below it can be an answer.}}`
+    },
+    {
+      h: 'One radical',
+      html: `<ol>
+        <li><b>Isolate</b> the radical on one side, alone.</li>
+        <li>Square both sides.</li>
+        <li>Solve the polynomial equation.</li>
+        <li><b>Check every root</b> in the <i>original</i> equation.</li>
+      </ol>
+      ${eq(m(sr('2x + 3') + ' = x  ⇒  2x + 3 = x²  ⇒  x² − 2x − 3 = 0  ⇒  x = 3, −1'), true)}
+      <p>Check: ${m('x = 3')} gives ${m(sr('9') + ' = 3')} ✓. ${m('x = −1')} gives ${m(sr('1') + ' = −1')} ✗.
+      Only ${m('x = 3')}.</p>
+      <div class="warn"><span class="wl">Isolate first, square second</span>
+      Squaring ${m(sr('x') + ' + 1 = 4')} directly gives ${m('x + 2' + sr('x') + ' + 1 = 16')} — a
+      new radical, and more work. Move the ${m('1')} across first.</div>`
+    },
+    {
+      h: 'Two radicals',
+      html: `<p>Arrange one radical on each side, square, then isolate whatever radical survives and
+      square again:</p>
+      ${eq(m(sr('x + 5') + ' − ' + sr('x') + ' = 1  ⇒  ' + sr('x + 5') + ' = 1 + ' + sr('x')), false)}
+      ${eq(m('x + 5 = 1 + 2' + sr('x') + ' + x  ⇒  4 = 2' + sr('x') + '  ⇒  ' + sr('x') + ' = 2  ⇒  x = 4'), true)}
+      <p>Check: ${m(sr('9') + ' − ' + sr('4') + ' = 3 − 2 = 1')} ✓.</p>
+      <div class="keybox"><div class="klabel">Why one on each side</div>
+      ${m('(a − b)²')} still contains a cross term with both radicals; ${m('(1 + ' + sr('x') + ')²')}
+      contains only one. Arranging the equation before squaring halves the work.</div>`
+    },
+    {
+      h: 'Substitutions',
+      html: `<p>When the same radical appears more than once, name it:</p>
+      ${eq(m('x + ' + sr('x') + ' − 6 = 0 ,  let  t = ' + sr('x') + ' ≥ 0'), true)}
+      <p>Then ${m('t² + t − 6 = 0')}, so ${m('t = 2')} or ${m('t = −3')}. The second is impossible
+      because ${m('t ≥ 0')}, so ${m(sr('x') + ' = 2')} and ${m('x = 4')}.</p>
+      <p>The condition ${m('t ≥ 0')} is written down with the substitution, not remembered later.
+      It is what removes the false root before any checking is needed.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m(sr('3x + 1') + ' = x − 1') + '.',
+      steps: [
+        ['Conditions: ' + m('3x + 1 ≥ 0') + ' and ' + m('x − 1 ≥ 0') + ', so ' + m('x ≥ 1') + '.', ''],
+        [m('3x + 1 = x² − 2x + 1'), ''],
+        [m('x² − 5x = 0 ⇒ x = 0, 5'), ''],
+        [m('x = 0') + ' fails ' + m('x ≥ 1') + '.', '']
+      ],
+      ans: m('x = 5')
+    },
+    {
+      q: 'Solve ' + m(sr('x + 7') + ' − ' + sr('x') + ' = 1') + '.',
+      steps: [
+        [m(sr('x + 7') + ' = 1 + ' + sr('x')), 'One on each side.'],
+        [m('x + 7 = 1 + 2' + sr('x') + ' + x'), ''],
+        [m('6 = 2' + sr('x') + ' ⇒ ' + sr('x') + ' = 3'), ''],
+        [m('x = 9') + '. Check: ' + m('4 − 3 = 1') + ' ✓', '']
+      ],
+      ans: m('x = 9')
+    },
+    {
+      q: 'Solve ' + m('x − 5' + sr('x') + ' + 6 = 0') + '.',
+      steps: [
+        ['Let ' + m('t = ' + sr('x') + ' ≥ 0') + '.', m('t² − 5t + 6 = 0')],
+        [m('t = 2') + ' or ' + m('t = 3') + ', both allowed.', ''],
+        [m(sr('x') + ' = 2 ⇒ x = 4'), ''],
+        [m(sr('x') + ' = 3 ⇒ x = 9'), '']
+      ],
+      ans: m('x = 4') + ' and ' + m('x = 9')
+    }
+  ],
+  modelNote: 'Sketch both sides as graphs — the intersections are the true roots, and false roots are visibly absent.',
+  interactive: {
+    type: 'rootPower',
+    title: 'Roots and powers',
+    hint: 'See where squaring gains solutions the original never had.'
+  },
+  quiz: [
+    { q: m(sr('A') + ' = B') + ' requires:', a: [m('A ≥ 0'), m('B ≥ 0'), 'both', 'neither'], c: 2, why: 'A root is non-negative, and so must its equal be.' },
+    { q: m(sr('x + 3') + ' = −2') + ' has:', a: [m('x = 1'), m('x = −7'), 'no solution', 'two solutions'], c: 2, why: 'The left side is never negative.' },
+    { q: 'The first step with ' + m(sr('x') + ' + 1 = 4') + ' is:', a: ['square', 'isolate the radical', 'substitute', 'cube'], c: 1, why: 'Squaring now creates a cross term.' },
+    { q: 'For ' + m('x + ' + sr('x') + ' − 6 = 0') + ' set:', a: [m('t = x'), m('t = ' + sr('x')), m('t = x²'), 'nothing'], c: 1, why: 'It becomes quadratic in ' + m('t') + '.' },
+    { q: 'After squaring you must:', a: ['stop', 'check each root in the original', 'square again', 'factorise'], c: 1, why: 'Squaring can add roots.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m(sr('x') + ' = 3'), m('x = 9')],
+      ['Solve ' + m(sr('x + 1') + ' = 2'), m('x = 3')],
+      ['Solve ' + m(sr('2x') + ' = 4'), m('x = 8')],
+      ['Solve ' + m(sr('x') + ' = −1'), 'no solution'],
+      ['Solve ' + m(sr('x − 3') + ' = 0'), m('x = 3')],
+      ['Solve ' + m(sr('5 − x') + ' = 1'), m('x = 4')],
+      ['Condition on ' + m('x') + ' in ' + m(sr('x − 2')), m('x ≥ 2')]
+    ],
+    med: [
+      ['Solve ' + m(sr('2x + 3') + ' = x'), m('x = 3')],
+      ['Solve ' + m(sr('3x + 1') + ' = x − 1'), m('x = 5')],
+      ['Solve ' + m(sr('x + 7') + ' − ' + sr('x') + ' = 1'), m('x = 9')],
+      ['Solve ' + m('x − 5' + sr('x') + ' + 6 = 0'), m('x = 4, 9')],
+      ['Solve ' + m(sr('x + 4') + ' = x − 2'), m('x = 5')],
+      ['Solve ' + m(sr('x² − 3') + ' = 1'), m('x = ±2')],
+      ['Solve ' + m(sr('x') + ' + 1 = 4'), m('x = 9')]
+    ],
+    hard: [
+      ['Solve ' + m(sr('x + 5') + ' + ' + sr('x') + ' = 5'), m('x = 4')],
+      ['Solve ' + m(sr('2x + 5') + ' − ' + sr('x − 1') + ' = 2'), m('x = 10') + ' or ' + m('x = 2')],
+      ['Solve ' + m('x + ' + sr('x + 5') + ' = 7'), m('x = 4')],
+      ['Solve ' + m(sr('x² + 3x') + ' = x + 1'), m('x = 1')],
+      ['Solve ' + m('2x − 7' + sr('x') + ' + 3 = 0'), m('x = 9') + ' or ' + m('x = 0.25')],
+      ['Solve ' + m(sr(sr('x')) + ' = 2'), m('x = 16')],
+      ['Find all ' + m('k') + ' for which ' + m(sr('x') + ' = x + k') + ' has exactly one solution', m('k = 0.25') + ' or ' + m('k ≤ 0')]
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Every answer must show the check written out in full.',
+  homework: [
+    'Solve ' + m(sr('4x + 1') + ' = x − 1') + '.',
+    'Solve ' + m(sr('x + 9') + ' − ' + sr('x') + ' = 1') + '.',
+    'Solve ' + m('x − 7' + sr('x') + ' + 12 = 0') + '.',
+    'Solve ' + m(sr('2x − 1') + ' = x − 2') + '.',
+    'Explain, in three sentences, why squaring can create a root the original equation never had.',
+    'Show that ' + m(sr('x + 2') + ' = −3') + ' has no solution without squaring.'
+  ]
+});
+
+/* ============================== 21 ============================== */
+G10_ALG.push({
+  id: 'a10-21', stream: 'alg', grade: 10, quarter: 2, lessons: '43–46', hours: 4,
+  title: 'Systems of irrational equations',
+  subtitle: 'Four lessons on the systems that hide a quadratic — sum and difference of roots, substitution, and the conditions that must survive to the end.',
+  uz: 'Algebra 10, §2.6', uzPage: 'pp. 163–180',
+  cam: 'P1 · 1.5–1.7 (extension)', camPage: 'Pure Mathematics 1, pp. 12–23', wb: 'P1 Exercise 1E, 1F',
+  objectives: [
+    'Solve a system of irrational equations by substitution.',
+    'Use u = √x, v = √y to turn a system into a polynomial one.',
+    'Track the non-negativity conditions through every step.',
+    'Check every candidate pair in the original system.'
+  ],
+  terms: [
+    ['System of irrational equations', 'Irratsional tenglamalar sistemasi', 'Система иррациональных уравнений'],
+    ['Non-negativity condition', 'Manfiy emaslik sharti', 'Условие неотрицательности'],
+    ['Auxiliary variable', 'Yordamchi o‘zgaruvchi', 'Вспомогательная переменная'],
+    ['Sum of roots', 'Ildizlar yig‘indisi', 'Сумма корней'],
+    ['Product of roots', 'Ildizlar ko‘paytmasi', 'Произведение корней'],
+    ['Back-substitution', 'Teskari almashtirish', 'Обратная подстановка'],
+    ['Rejected pair', 'Rad etilgan juftlik', 'Отброшенная пара'],
+    ['Symmetric system', 'Simmetrik sistema', 'Симметричная система'],
+    ['Verification', 'Tekshirish', 'Проверка']
+  ],
+  timing: [[16, 'Where the difficulty is'], [30, 'u = √x, v = √y'], [30, 'Sum and product of roots'], [30, 'Mixed systems'], [50, 'Practice'], [24, 'Homework and consolidation']],
+  sections: [
+    {
+      h: 'Where the difficulty is',
+      html: `<p>Nothing new is being asked. A system of irrational equations combines two techniques you
+      already have — the substitution of the last lesson and the elimination of Lesson 30–31. What is
+      new is the <b>bookkeeping</b>: two non-negativity conditions instead of one, and they must survive
+      every step.</p>
+      <div class="keybox"><div class="klabel">Write the conditions once, at the top</div>
+      ${m('x ≥ 0')}, ${m('y ≥ 0')}, and any others the radicands impose. Then substitute
+      ${m('u = ' + sr('x') + ' ≥ 0')} and ${m('v = ' + sr('y') + ' ≥ 0')} — and every rejection later
+      is decided by those two inequalities alone.</div>`
+    },
+    {
+      h: 'The standard substitution',
+      html: `${eq(m(sr('x') + ' + ' + sr('y') + ' = 5   and   x + y = 13'), true)}
+      <p>Put ${m('u = ' + sr('x'))}, ${m('v = ' + sr('y'))}, both ${m('≥ 0')}. Then ${m('x = u²')} and
+      ${m('y = v²')}, and the system becomes polynomial:</p>
+      ${eq(m('u + v = 5   and   u² + v² = 13'), false)}
+      <p>So ${m('uv = ' + f('25 − 13', '2') + ' = 6')}, and ${m('u, v')} are the roots of
+      ${m('t² − 5t + 6 = 0')}: ${m('2')} and ${m('3')}. Both are non-negative, so both are kept.</p>
+      ${eq(m('(x, y) = (4, 9)  or  (9, 4)'), true)}
+      <div class="warn"><span class="wl">Square the substitution back carefully</span>
+      ${m('u = 2')} gives ${m('x = 4')}, not ${m('x = 2')}. Half the errors in this lesson are made in
+      the last line.</div>`
+    },
+    {
+      h: 'Sum and product of the roots',
+      html: `<p>Many systems are stated directly in ${m(sr('x') + ' + ' + sr('y'))} and
+      ${m(sr('xy'))}. Since ${m(sr('xy') + ' = ' + sr('x') + ' · ' + sr('y'))} for non-negative
+      ${m('x, y')}, these are exactly ${m('u + v')} and ${m('uv')}:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>In ${m('u, v')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${sr('x')} + ${sr('y')}</td><td class="m">u + v = s</td></tr>
+        <tr><td class="m">${sr('xy')}</td><td class="m">uv = p</td></tr>
+        <tr><td class="m">x + y</td><td class="m">s² − 2p</td></tr>
+        <tr><td class="m">x − y</td><td class="m">(u − v)(u + v)</td></tr>
+      </tbody></table></div>
+      <p>Then ${m('u')} and ${m('v')} are the roots of ${m('t² − st + p = 0')}, and both must come out
+      non-negative or the pair is rejected.</p>`
+    },
+    {
+      h: 'Mixed systems',
+      html: `<p>When only one equation carries a radical, isolate and substitute in the ordinary way:</p>
+      ${eq(m(sr('x + y') + ' = 3   and   x − y = 1'), true)}
+      <p>The first gives ${m('x + y = 9')} (and requires ${m('x + y ≥ 0')}, which it now is), so the
+      system is linear: ${m('x = 5')}, ${m('y = 4')}. Check: ${m(sr('9') + ' = 3')} ✓.</p>
+      <div class="keybox"><div class="klabel">The final check is on the original system</div>
+      Not on the substituted one. A pair that satisfies ${m('u + v = 5')} may still fail
+      ${m(sr('x') + ' + ' + sr('y') + ' = 5')} if a sign was lost. Substitute the numbers back into the
+      equations as first written.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m(sr('x') + ' + ' + sr('y') + ' = 7') + ', ' + m('x + y = 25') + '.',
+      steps: [
+        [m('u + v = 7') + ', ' + m('u² + v² = 25') + ', both ' + m('≥ 0') + '.', ''],
+        [m('uv = ' + f('49 − 25', '2') + ' = 12'), ''],
+        [m('t² − 7t + 12 = 0 ⇒ t = 3, 4'), ''],
+        [m('x = 9, y = 16') + ' or the reverse.', '']
+      ],
+      ans: m('(9, 16)') + ' and ' + m('(16, 9)')
+    },
+    {
+      q: 'Solve ' + m(sr('x') + ' − ' + sr('y') + ' = 1') + ', ' + m('x + y = 25') + '.',
+      steps: [
+        [m('u − v = 1') + ', ' + m('u² + v² = 25') + '.', ''],
+        [m('u = v + 1 ⇒ (v+1)² + v² = 25'), ''],
+        [m('2v² + 2v − 24 = 0 ⇒ v² + v − 12 = 0'), m('v = 3') + ' or ' + m('v = −4') + ' (rejected)'],
+        [m('v = 3, u = 4'), '']
+      ],
+      ans: m('(16, 9)')
+    },
+    {
+      q: 'Solve ' + m(sr('x + y') + ' = 4') + ', ' + m('x − y = 2') + '.',
+      steps: [
+        [m('x + y = 16'), 'Condition satisfied.'],
+        [m('x − y = 2'), ''],
+        ['Add: ' + m('2x = 18 ⇒ x = 9') + '.', ''],
+        [m('y = 7') + '. Check ' + m(sr('16') + ' = 4') + ' ✓', '']
+      ],
+      ans: m('(9, 7)')
+    }
+  ],
+  modelNote: 'Write the two conditions on the board and keep them visible for the whole solution.',
+  interactive: {
+    type: 'rootPower',
+    title: 'Substituting a root',
+    hint: 'Watch how ' + m('u = ' + sr('x')) + ' turns an irrational system into a polynomial one.'
+  },
+  quiz: [
+    { q: 'In ' + m('u = ' + sr('x')) + ' the condition is:', a: [m('u > 0'), m('u ≥ 0'), m('u ≤ 0'), 'none'], c: 1, why: 'A square root is non-negative.' },
+    { q: 'If ' + m('u = 3') + ' then ' + m('x') + ' is:', a: [m('3'), m('9'), m(sr('3')), m('1.5')], c: 1, why: m('x = u²') + '.' },
+    { q: m(sr('x') + ' + ' + sr('y') + ' = 5') + ', ' + m('x + y = 13') + ' gives ' + m('uv') + ':', a: [m('6'), m('12'), m('13'), m('25')], c: 0, why: m(f('25 − 13', '2')) + '.' },
+    { q: 'A negative value of ' + m('v') + ' means:', a: ['a second answer', 'the pair is rejected', 'square it', 'nothing'], c: 1, why: m('v = ' + sr('y') + ' ≥ 0') + '.' },
+    { q: 'The final check is done on:', a: ['the substituted system', 'the original system', 'neither', 'the quadratic'], c: 1, why: 'That is what must be satisfied.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m(sr('x') + ' = 2') + ', ' + m('y = x + 1'), m('(4, 5)')],
+      ['Solve ' + m(sr('x + y') + ' = 3') + ', ' + m('x = y'), m('(4.5, 4.5)')],
+      ['If ' + m('u = ' + sr('x') + ' = 5') + ', find ' + m('x'), m('25')],
+      ['Condition on ' + m('u = ' + sr('x')), m('u ≥ 0')],
+      ['Solve ' + m(sr('x') + ' + ' + sr('y') + ' = 0'), m('(0, 0)')],
+      ['Solve ' + m(sr('x') + ' = 3') + ', ' + m(sr('y') + ' = 4'), m('(9, 16)')],
+      ['Write ' + m('x + y') + ' in terms of ' + m('u, v'), m('u² + v²')]
+    ],
+    med: [
+      ['Solve ' + m(sr('x') + ' + ' + sr('y') + ' = 5') + ', ' + m('x + y = 13'), m('(4,9), (9,4)')],
+      ['Solve ' + m(sr('x') + ' + ' + sr('y') + ' = 7') + ', ' + m('x + y = 25'), m('(9,16), (16,9)')],
+      ['Solve ' + m(sr('x') + ' − ' + sr('y') + ' = 1') + ', ' + m('x + y = 25'), m('(16, 9)')],
+      ['Solve ' + m(sr('x + y') + ' = 4') + ', ' + m('x − y = 2'), m('(9, 7)')],
+      ['Solve ' + m(sr('x') + ' + ' + sr('y') + ' = 6') + ', ' + m(sr('xy') + ' = 8'), m('(4,16), (16,4)')],
+      ['Solve ' + m(sr('x') + '·' + sr('y') + ' = 6') + ', ' + m('x + y = 13'), m('(4,9), (9,4)')],
+      ['Solve ' + m(sr('x − 1') + ' = 2') + ', ' + m('x + y = 10'), m('(5, 5)')]
+    ],
+    hard: [
+      ['Solve ' + m(sr('x') + ' + ' + sr('y') + ' = 4') + ', ' + m('x + y = 10'), m('(3 ± 2' + sr('2') + ')²') + ' — i.e. ' + m('u, v = 2 ± ' + sr('2'))],
+      ['Solve ' + m('x + y = 20') + ', ' + m(sr('x') + ' − ' + sr('y') + ' = 2'), m('(16, 4)')],
+      ['Solve ' + m(sr('x + y') + ' + ' + sr('x − y') + ' = 4') + ', ' + m('x² − y² = 9'), m('(5, 4)')],
+      ['Solve ' + m(f('1', sr('x')) + ' + ' + f('1', sr('y')) + ' = ' + f('5', '6')) + ', ' + m('xy = 36'), m('(4,9), (9,4)')],
+      ['Solve ' + m(sr('x') + ' + ' + sr('y') + ' = ' + sr('x + y')), m('x = 0') + ' or ' + m('y = 0')],
+      ['Explain why ' + m(sr('x') + ' + ' + sr('y') + ' = 3') + ', ' + m('x + y = 10') + ' has no solution', m('uv = −0.5 < 0') + ' is impossible for ' + m('u, v ≥ 0')],
+      ['Solve ' + m(sr('x') + ' + ' + sr('y') + ' = 5') + ', ' + m('x − y = 5'), m('(9, 4)')]
+    ]
+  },
+  hwTitle: 'Homework — 6 tasks',
+  hwNote: 'Write ' + m('u ≥ 0') + ' and ' + m('v ≥ 0') + ' on the first line of every solution.',
+  homework: [
+    'Solve ' + m(sr('x') + ' + ' + sr('y') + ' = 9') + ', ' + m('x + y = 45') + '.',
+    'Solve ' + m(sr('x') + ' − ' + sr('y') + ' = 2') + ', ' + m('x + y = 20') + '.',
+    'Solve ' + m(sr('x + y') + ' = 5') + ', ' + m('x − y = 3') + '.',
+    'Solve ' + m(sr('x') + ' + ' + sr('y') + ' = 8') + ', ' + m(sr('xy') + ' = 15') + '.',
+    'Explain why ' + m(sr('x') + ' + ' + sr('y') + ' = 2') + ', ' + m('x + y = 10') + ' has no solution.',
+    'Check both answers of task 1 by substituting into the original system.'
+  ]
+});
+
+/* ============================== 22 ============================== */
+G10_ALG.push({
+  id: 'a10-22', stream: 'alg', grade: 10, quarter: 2, lessons: '47–48', hours: 2,
+  title: 'Control work 4, and the quarter review',
+  subtitle: 'Irrational equations and systems in one paper, then the map that links a domain to a check to an answer.',
+  uz: 'Algebra 10, Nazorat ishi 4', uzPage: 'pp. 181–184',
+  cam: 'P1 · Chapter 1 review', camPage: 'Pure Mathematics 1, pp. 24–25', wb: 'Control paper D',
+  objectives: [
+    'Apply every method of Quarter II in one assessment.',
+    'Decide which technique a question wants without being told.',
+    'Build a concept map linking domain, transformation and check.',
+    'Set a personal target for Quarter III.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Concept map', 'Tushunchalar xaritasi', 'Карта понятий'],
+    ['Equivalent transformation', 'Teng kuchli almashtirish', 'Равносильное преобразование'],
+    ['Non-equivalent step', 'Teng kuchli bo‘lmagan qadam', 'Неравносильный переход'],
+    ['Extraneous root', 'Chet ildiz', 'Посторонний корень'],
+    ['Sign chart', 'Ishoralar jadvali', 'Таблица знаков'],
+    ['Target', 'Maqsad', 'Цель'],
+    ['Self-assessment', 'O‘z-o‘zini baholash', 'Самооценка']
+  ],
+  timing: [[3, 'Instructions'], [42, 'The paper'], [10, 'Answers'], [20, 'Rewrite'], [10, 'Concept map'], [5, 'Targets']],
+  sections: [
+    {
+      h: 'The paper — 30 marks, 42 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Solve ${m(sr('2x + 7') + ' = x + 2')}, with the conditions stated</td><td class="m">5</td><td>L40–42</td></tr>
+        <tr><td>2</td><td>Solve ${m(sr('x + 5') + ' − ' + sr('x') + ' = 1')}</td><td class="m">5</td><td>L40–42</td></tr>
+        <tr><td>3</td><td>Solve ${m('x − 6' + sr('x') + ' + 8 = 0')} by substitution</td><td class="m">4</td><td>L40–42</td></tr>
+        <tr><td>4</td><td>Solve ${m(sr('x') + ' + ' + sr('y') + ' = 6')}, ${m('x + y = 20')}</td><td class="m">6</td><td>L43–46</td></tr>
+        <tr><td>5</td><td>Solve ${m(f('2', 'x − 1') + ' ≥ 1')} with a sign chart</td><td class="m">5</td><td>L32–34</td></tr>
+        <tr><td>6</td><td>Find the domain of ${m(f(sr('x − 2'), 'x² − 25'))}</td><td class="m">5</td><td>L35–37</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two marks are for conditions</div>
+      Q1 gives one for ${m('x + 2 ≥ 0')} and one for the rejection that follows from it. A correct
+      answer with neither scores three of five.</div>`
+    },
+    {
+      h: 'The concept map',
+      html: `<p>Six boxes, links as sentences:</p>
+      <ul>
+        <li><b>rational equation</b> → <b>domain</b> — “each denominator forbids one value”</li>
+        <li><b>domain</b> → <b>extraneous root</b> — “multiplying by zero is not reversible”</li>
+        <li><b>rational inequality</b> → <b>sign chart</b> — “never cross-multiply”</li>
+        <li><b>system</b> → <b>intersection</b> — “draw them on one line”</li>
+        <li><b>irrational equation</b> → <b>two conditions</b> — “radicand ${m('≥ 0')} and the other side ${m('≥ 0')}”</li>
+        <li><b>squaring</b> → <b>check</b> — “sign information is destroyed, so it must be restored”</li>
+      </ul>
+      {{fig:rootLadder:The single picture behind the whole quarter: a root never goes below the axis.}}`
+    },
+    {
+      h: 'Looking forward',
+      html: `<p>Quarter III opens with the exponential and logarithmic functions. Their equations are
+      solved by exactly the technique of this quarter: state the domain, transform, check. A logarithm
+      demands ${m('argument > 0')} before anything else — the same first line as
+      ${m(sr('A'))} demands ${m('A ≥ 0')}.</p>
+      <div class="keybox"><div class="klabel">One habit to carry forward</div>
+      The first line of every solution states what the unknown is allowed to be. Learners who built
+      that habit this quarter will find Quarter III half-solved before they start.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q1: solve ' + m(sr('2x + 7') + ' = x + 2') + '.',
+      steps: [
+        ['Conditions ' + m('2x + 7 ≥ 0') + ' and ' + m('x + 2 ≥ 0') + ', so ' + m('x ≥ −2') + '.', ''],
+        [m('2x + 7 = x² + 4x + 4'), ''],
+        [m('x² + 2x − 3 = 0 ⇒ x = 1, −3'), ''],
+        [m('x = −3') + ' fails ' + m('x ≥ −2') + '.', '']
+      ],
+      ans: m('x = 1')
+    },
+    {
+      q: 'Model answer, Q4: ' + m(sr('x') + ' + ' + sr('y') + ' = 6') + ', ' + m('x + y = 20') + '.',
+      steps: [
+        [m('u + v = 6') + ', ' + m('u² + v² = 20') + ', both ' + m('≥ 0') + '.', ''],
+        [m('uv = ' + f('36 − 20', '2') + ' = 8'), ''],
+        [m('t² − 6t + 8 = 0 ⇒ t = 2, 4'), ''],
+        [m('x = 4, y = 16') + ' or the reverse.', '']
+      ],
+      ans: m('(4, 16)') + ' and ' + m('(16, 4)')
+    },
+    {
+      q: 'Model answer, Q6: domain of ' + m(f(sr('x − 2'), 'x² − 25')) + '.',
+      steps: [
+        [m('x − 2 ≥ 0 ⇒ x ≥ 2'), ''],
+        [m('x² − 25 ≠ 0 ⇒ x ≠ ±5'), ''],
+        [m('x = −5') + ' is already excluded.', '']
+      ],
+      ans: m('x ≥ 2') + ', ' + m('x ≠ 5')
+    }
+  ],
+  modelNote: 'Work Q1 and Q4 on the board with the conditions written in a box at the top.',
+  interactive: {
+    type: 'quiz',
+    title: 'The quarter in ten questions',
+    hint: 'One from each block.',
+    items: [
+      { q: 'Domain of ' + m(f('1', 'x − 4') + ' + ' + f('1', 'x')) + ':', a: [m('x ≠ 4'), m('x ≠ 0'), m('x ≠ 0, 4'), m('ℝ')], c: 2, why: 'Both denominators.' },
+      { q: m(f('x²', 'x − 3') + ' = ' + f('9', 'x − 3')) + ' gives:', a: [m('±3'), m('3'), m('−3'), 'none'], c: 2, why: m('x = 3') + ' is excluded.' },
+      { q: m(f('1', 'x') + ' > 2') + ' gives:', a: [m('x < 0.5'), m('0 < x < 0.5'), m('x > 0.5'), m('x > 2')], c: 1, why: 'Sign chart on ' + m(f('1 − 2x', 'x')) + '.' },
+      { q: m(f('x − 4', 'x + 2') + ' ≤ 0') + ' gives:', a: [m('−2 ≤ x ≤ 4'), m('−2 < x ≤ 4'), m('−2 < x < 4'), m('x ≤ 4')], c: 1, why: 'Denominator zero excluded.' },
+      { q: m(sr('2x + 7') + ' = x + 2') + ' gives:', a: [m('x = 1'), m('x = 1, −3'), m('x = −3'), 'none'], c: 0, why: m('x ≥ −2') + ' rejects ' + m('−3') + '.' },
+      { q: m(sr('x + 5') + ' − ' + sr('x') + ' = 1') + ' gives:', a: [m('x = 4'), m('x = 5'), m('x = 9'), m('x = 1')], c: 0, why: m(sr('9') + ' − ' + sr('4') + ' = 1') + '.' },
+      { q: m('x − 6' + sr('x') + ' + 8 = 0') + ' gives:', a: [m('x = 2, 4'), m('x = 4, 16'), m('x = 16'), m('x = 8')], c: 1, why: m('t = 2, 4') + ' then square.' },
+      { q: m(sr('x') + ' + ' + sr('y') + ' = 6, x + y = 20') + ' gives:', a: [m('(4,16)') + ' only', m('(4,16), (16,4)'), m('(2,4)'), 'none'], c: 1, why: 'Symmetric — both orders.' },
+      { q: m(f('2', 'x − 1') + ' ≥ 1') + ' gives:', a: [m('x ≥ 3'), m('1 < x ≤ 3'), m('x ≤ 3'), m('x > 1')], c: 1, why: 'Sign chart on ' + m(f('3 − x', 'x − 1')) + '.' },
+      { q: 'Domain of ' + m(f(sr('x − 2'), 'x² − 25')) + ':', a: [m('x ≥ 2'), m('x ≥ 2, x ≠ 5'), m('x ≠ ±5'), m('x > 2')], c: 1, why: m('−5') + ' is already out.' }
+    ]
+  },
+  quiz: [
+    { q: 'The first line of any solution this quarter states:', a: ['the answer', 'what the unknown may be', 'the method', 'the check'], c: 1, why: 'Domain or conditions.' },
+    { q: 'Squaring is:', a: ['always equivalent', 'equivalent only when both sides are ' + m('≥ 0'), 'never allowed', 'reversible'], c: 1, why: 'Otherwise it adds roots.' },
+    { q: 'Quarter III begins with:', a: ['trigonometry', 'the exponential function', 'probability', 'vectors'], c: 1, why: 'Then logarithms.' },
+    { q: 'A logarithm will demand:', a: ['argument ' + m('≥ 0'), 'argument ' + m('> 0'), 'base ' + m('= 10'), 'nothing'], c: 1, why: 'Strictly positive.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m(sr('x') + ' = 6'), m('x = 36')],
+      ['Domain of ' + m(f('1', 'x − 4')), m('x ≠ 4')],
+      ['Solve ' + m(f('3', 'x') + ' = 1'), m('x = 3')],
+      ['Solve ' + m(f('x − 4', 'x + 2') + ' ≤ 0'), m('−2 < x ≤ 4')],
+      ['Solve ' + m('x + y = 6, xy = 8'), m('(2,4), (4,2)')],
+      ['Domain of ' + m(sr('x − 2')), m('x ≥ 2')],
+      ['Solve ' + m(sr('x + 1') + ' = 3'), m('x = 8')]
+    ],
+    med: [
+      ['Solve ' + m(sr('2x + 7') + ' = x + 2'), m('x = 1')],
+      ['Solve ' + m(sr('x + 5') + ' − ' + sr('x') + ' = 1'), m('x = 4')],
+      ['Solve ' + m('x − 6' + sr('x') + ' + 8 = 0'), m('x = 4, 16')],
+      ['Solve ' + m(sr('x') + ' + ' + sr('y') + ' = 6, x + y = 20'), m('(4,16), (16,4)')],
+      ['Solve ' + m(f('2', 'x − 1') + ' ≥ 1'), m('1 < x ≤ 3')],
+      ['Domain of ' + m(f(sr('x − 2'), 'x² − 25')), m('x ≥ 2, x ≠ 5')],
+      ['Solve ' + m(f('x', 'x + 3') + ' = ' + f('2', 'x')), m('x = 6, −1')]
+    ],
+    hard: [
+      ['Solve ' + m(sr('3x + 4') + ' − ' + sr('x + 1') + ' = 1'), m('x = 0') + ' or ' + m('x = 8')],
+      ['Solve ' + m(f('x² − 1', 'x² − 4') + ' ≤ 0'), m('−2 < x ≤ −1') + ' or ' + m('1 ≤ x < 2')],
+      ['Solve ' + m(sr('x') + ' + ' + sr('y') + ' = 5, xy = 36'), m('(4,9), (9,4)')],
+      ['Domain of ' + m(sr(f('x − 3', 'x + 2'))), m('x < −2') + ' or ' + m('x ≥ 3')],
+      ['Solve ' + m('2x + ' + sr('x') + ' − 1 = 0'), m('x = 0.25')],
+      ['Find ' + m('k') + ' so ' + m(sr('x') + ' = x − k') + ' has exactly two solutions', m('0 < k < 0.25')],
+      ['Solve ' + m(f('1', sr('x')) + ' + ' + sr('x') + ' = 2.5'), m('x = 4') + ' or ' + m('x = 0.25')]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Bring the concept map to the first lesson of Quarter III.',
+  homework: [
+    'Rewrite in full every control-work question that lost a mark.',
+    'Finish the concept map with all six links written as sentences.',
+    'Solve ' + m(sr('4x + 5') + ' = x + 2') + ' and ' + m(sr('x + 3') + ' + ' + sr('x') + ' = 3') + '.',
+    'Write your target for Quarter III in one checkable sentence, and date it.'
+  ]
+});
