@@ -7436,3 +7436,169 @@ G6_MAT.push({
     'A parallelogram has one angle of ' + m('115°') + '. Find all four.'
   ]
 });
+
+/* ============================== 42 ============================== */
+G6_MAT.push({
+  id: 'g6-42', stream: 'mat', grade: 6, quarter: 2, lessons: '87', hours: 1,
+  title: 'Control work 5 — angles',
+  subtitle: 'Angles on a line, at a point, in triangles and in quadrilaterals.',
+  uz: 'Matematika 6, Nazorat ishi 5', uzPage: 'pp. 223–246',
+  cam: 'S7 5 review', camPage: 'Stage 7, pp. 55–62', wb: 'Control paper 5',
+  objectives: [
+    'Classify and measure angles accurately.',
+    'Use the four angle facts with a reason each time.',
+    'Find angles in triangles and quadrilaterals.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Acute angle', 'O‘tkir burchak', 'Острый угол'],
+    ['Obtuse angle', 'O‘tmas burchak', 'Тупой угол'],
+    ['Vertically opposite', 'Vertikal burchaklar', 'Вертикальные углы'],
+    ['Angle sum', 'Burchaklar yig‘indisi', 'Сумма углов'],
+    ['Isosceles', 'Teng yonli', 'Равнобедренный'],
+    ['Reason', 'Asos', 'Обоснование'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[2, 'Instructions'], [28, 'The paper'], [8, 'Answers and diagnosis'], [2, 'What comes next']],
+  sections: [
+    {
+      h: 'The paper — 20 marks, 28 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Classify ${m('37°, 90°, 128°')} and ${m('245°')}</td><td class="m">2</td><td>L80</td></tr>
+        <tr><td>2</td><td>${m('x')} and ${m('118°')} on a straight line: find ${m('x')} with a reason</td><td class="m">3</td><td>L81–83</td></tr>
+        <tr><td>3</td><td>${m('x, 3x')} and ${m('140°')} at a point: find ${m('x')}</td><td class="m">3</td><td>L81–83</td></tr>
+        <tr><td>4</td><td>${m('5x')} and ${m('2x + 60')} vertically opposite: find the angle</td><td class="m">3</td><td>L81–83</td></tr>
+        <tr><td>5</td><td>A triangle with ${m('72°')} and ${m('43°')}: find the third</td><td class="m">3</td><td>L84–86</td></tr>
+        <tr><td>6</td><td>An isosceles triangle with apex ${m('34°')}: find the base angles</td><td class="m">3</td><td>L84–86</td></tr>
+        <tr><td>7</td><td>A quadrilateral with ${m('85°, 95°')} and ${m('110°')}: find the fourth</td><td class="m">3</td><td>L84–86</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The answers</div>
+      acute, right, obtuse, reflex; ${m('62°')}; ${m('55°')}; ${m('100°')}; ${m('65°')}; ${m('73°')} each;
+      ${m('70°')}.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>reflex called obtuse</td><td class="m">245°</td><td>over ${m('180°')} is reflex</td></tr>
+        <tr><td>no reason given</td><td class="m">x = 62°</td><td>“angles on a straight line”</td></tr>
+        <tr><td>angles at a point summed to ${m('180°')}</td><td class="m">x + 3x + 140 = 180</td><td class="m">x + 3x + 140 = 360</td></tr>
+        <tr><td>vertically opposite set equal to ${m('180°')}</td><td class="m">5x + 2x + 60 = 180</td><td class="m">5x = 2x + 60</td></tr>
+        <tr><td>angle sum taken as ${m('360°')} for a triangle</td><td class="m">360 − 115</td><td class="m">180 − 115</td></tr>
+        <tr><td>apex used as a base angle</td><td class="m">34°, 34°, 112°</td><td class="m">34°, 73°, 73°</td></tr>
+        <tr><td>quadrilateral summed to ${m('180°')}</td><td>a negative answer</td><td class="m">360°</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'What comes next',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>If you lost marks on</th><th>It returns in</th></tr></thead>
+      <tbody>
+        <tr><td>Q1</td><td>every diagram for the rest of the year</td></tr>
+        <tr><td>Q2–Q4</td><td>the circle, where angles at the centre fill ${m('360°')}</td></tr>
+        <tr><td>Q5–Q6</td><td>Grade 7, where these facts are proved</td></tr>
+        <tr><td>Q7</td><td>the pie chart in Quarter IV</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      The rest of Quarter II is the circle: its parts, and the length of the curve round it. The
+      ${m('360°')} of this paper is what makes a pie chart possible.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q3: ' + m('x, 3x') + ' and ' + m('140°') + ' at a point.',
+      steps: [
+        [m('x + 3x + 140 = 360'), 'Angles at a point.'],
+        [m('4x = 220'), ''],
+        [m('x = 55°'), 'Check: ' + m('55 + 165 + 140 = 360') + ' ✓']
+      ],
+      ans: m('55°')
+    },
+    {
+      q: 'Model answer, Q4: ' + m('5x') + ' and ' + m('2x + 60') + ' vertically opposite.',
+      steps: [
+        ['Vertically opposite angles are equal.', ''],
+        [m('5x = 2x + 60'), ''],
+        [m('3x = 60') + ', so ' + m('x = 20') + '.', ''],
+        ['Each angle is ' + m('100°') + '.', '']
+      ],
+      ans: m('100°')
+    },
+    {
+      q: 'Model answer, Q6: isosceles with apex ' + m('34°') + '.',
+      steps: [
+        [m('180 − 34 = 146') + ' for the two base angles.', ''],
+        [m('146 ÷ 2 = 73') + '.', ''],
+        [m('73°') + ' each.', 'Check: ' + m('34 + 73 + 73 = 180') + ' ✓']
+      ],
+      ans: m('73°') + ' each'
+    }
+  ],
+  modelNote: 'Mark Q2 for the reason alone; the class discovers that the number without a reason is worth less than half the marks.',
+  interactive: {
+    type: 'quiz',
+    title: 'The chapter in eight questions',
+    hint: 'Name the fact before the number.',
+    items: [
+      { q: m('245°') + ' is:', a: ['acute', 'obtuse', 'straight', 'reflex'], c: 3, why: 'Over ' + m('180°') + '.' },
+      { q: m('x') + ' with ' + m('118°') + ' on a line:', a: [m('62°'), m('72°'), m('242°'), m('118°')], c: 0, why: m('180 − 118') + '.' },
+      { q: 'Its reason:', a: ['angles at a point', 'angles on a straight line', 'vertically opposite', 'triangle sum'], c: 1, why: 'The mark is here.' },
+      { q: m('x + 3x + 140 = ') + '…', a: [m('180'), m('360'), m('90'), m('270')], c: 1, why: 'Angles at a point.' },
+      { q: 'So ' + m('x') + ' is:', a: [m('10°'), m('55°'), m('40°'), m('80°')], c: 1, why: m('4x = 220') + '.' },
+      { q: m('5x') + ' and ' + m('2x + 60') + ' vertically opposite give the angle:', a: [m('20°'), m('60°'), m('100°'), m('180°')], c: 2, why: m('5 · 20') + '.' },
+      { q: 'A triangle with ' + m('72°') + ' and ' + m('43°') + ':', a: [m('65°'), m('75°'), m('115°'), m('245°')], c: 0, why: m('180 − 115') + '.' },
+      { q: 'A quadrilateral with ' + m('85°, 95°, 110°') + ':', a: [m('60°'), m('70°'), m('80°'), m('90°')], c: 1, why: m('360 − 290') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 tests:', a: ['calculating', 'classifying', 'measuring', 'drawing'], c: 1, why: 'By size.' },
+    { q: 'Q2 needs, besides the number:', a: ['a diagram', 'a reason', 'a measurement', 'nothing'], c: 1, why: 'One of the marks.' },
+    { q: 'Q3 sums to:', a: [m('90°'), m('180°'), m('360°'), m('540°')], c: 2, why: 'Angles at a point.' },
+    { q: 'Q4 sets the two expressions:', a: ['equal', 'to ' + m('180°'), 'to ' + m('360°'), 'to ' + m('90°')], c: 0, why: 'Vertically opposite.' },
+    { q: 'Q6 divides by:', a: [m('2'), m('3'), m('4'), 'nothing'], c: 0, why: 'Two equal base angles.' },
+    { q: 'Q7 sums to:', a: [m('180°'), m('270°'), m('360°'), m('540°')], c: 2, why: 'A quadrilateral.' }
+  ],
+  practice: {
+    easy: [
+      ['Classify ' + m('37°'), 'Acute'],
+      ['Classify ' + m('128°'), 'Obtuse'],
+      ['Classify ' + m('245°'), 'Reflex'],
+      [m('x') + ' with ' + m('118°') + ' on a line', m('62°')],
+      [m('x, 3x, 140°') + ' at a point', m('x = 55°')],
+      ['A triangle with ' + m('72°') + ' and ' + m('43°'), m('65°')],
+      ['A quadrilateral with ' + m('85°, 95°, 110°'), m('70°')]
+    ],
+    med: [
+      [m('5x') + ' and ' + m('2x + 60') + ' vertically opposite', m('100°')],
+      ['Isosceles with apex ' + m('34°'), m('73°') + ' each'],
+      ['Isosceles with base angle ' + m('34°'), 'Apex ' + m('112°')],
+      ['Two supplementary angles in the ratio ' + m('3 : 7'), m('54°') + ' and ' + m('126°')],
+      ['An angle twice its complement', m('60°')],
+      ['A parallelogram with one angle ' + m('115°'), m('115°, 65°, 115°, 65°')],
+      ['The reflex angle beside ' + m('118°'), m('242°')]
+    ],
+    hard: [
+      ['A triangle with angles ' + m('x, x + 20, x + 40'), m('40°, 60°, 80°')],
+      ['A quadrilateral with angles ' + m('x, 2x, 3x, 4x'), m('36°, 72°, 108°, 144°')],
+      ['Four angles at a point, three equal and one ' + m('120°'), m('80°') + ' each'],
+      ['An isosceles triangle with one angle of ' + m('90°'), m('90°, 45°, 45°')],
+      ['A triangle cannot have two obtuse angles: why?', 'They already exceed ' + m('180°')],
+      ['An exterior angle of a triangle beside ' + m('65°'), m('115°')],
+      ['Why is a reason needed for every angle answer?', 'The diagram is not evidence; the fact is']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every question you lost a mark on, with its reason.',
+  homework: [
+    'Rewrite in full every question on which you lost a mark.',
+    'Find ' + m('x') + ' if ' + m('x') + ' and ' + m('143°') + ' lie on a straight line, giving a reason.',
+    'Find ' + m('x') + ' if ' + m('2x, 4x') + ' and ' + m('120°') + ' meet at a point.',
+    'An isosceles triangle has an apex of ' + m('50°') + '. Find the base angles.',
+    'A quadrilateral has angles ' + m('100°, 75°') + ' and ' + m('95°') + '. Find the fourth.'
+  ]
+});
