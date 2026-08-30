@@ -7602,3 +7602,343 @@ G6_MAT.push({
     'A quadrilateral has angles ' + m('100°, 75°') + ' and ' + m('95°') + '. Find the fourth.'
   ]
 });
+
+/* ============================== 43 ============================== */
+G6_MAT.push({
+  id: 'g6-43', stream: 'mat', grade: 6, quarter: 2, lessons: '88', hours: 1,
+  title: 'Think — angles in design',
+  subtitle: 'Tiles, patterns and the ' + m('360°') + ' that has to be filled at every meeting point.',
+  uz: 'Matematika 6, o‘ylab ko‘r', uzPage: 'pp. 247–249',
+  cam: 'S7 5.3', camPage: 'Stage 7, pp. 62–65', wb: 'Exercise 5.4',
+  objectives: [
+    'Find the angles of a regular polygon.',
+    'Decide which regular polygons tile the plane.',
+    'Explain a tiling by the angles at a meeting point.',
+    'Recognise the geometry in Uzbek ornament.'
+  ],
+  terms: [
+    ['Regular polygon', 'Muntazam ko‘pburchak', 'Правильный многоугольник'],
+    ['Tiling', 'Qoplama', 'Замощение'],
+    ['Meeting point', 'Uchrashuv nuqtasi', 'Точка стыка'],
+    ['Interior angle', 'Ichki burchak', 'Внутренний угол'],
+    ['Hexagon', 'Olti burchak', 'Шестиугольник'],
+    ['Pentagon', 'Besh burchak', 'Пятиугольник'],
+    ['Ornament', 'Naqsh', 'Орнамент'],
+    ['Symmetry', 'Simmetriya', 'Симметрия']
+  ],
+  timing: [[10, 'The angles of a regular polygon'], [12, 'Which shapes tile'], [12, 'Why pentagons fail'], [6, 'Ornament']],
+  sections: [
+    {
+      h: 'The angles of a regular polygon',
+      html: `${eq('interior angle ' + m('= ' + f('180°(n − 2)', 'n')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Polygon</th><th class="m">n</th><th>Angle sum</th><th>Each angle</th></tr></thead>
+      <tbody>
+        <tr><td>triangle</td><td class="m">3</td><td class="m">180°</td><td class="m">60°</td></tr>
+        <tr><td>square</td><td class="m">4</td><td class="m">360°</td><td class="m">90°</td></tr>
+        <tr><td>pentagon</td><td class="m">5</td><td class="m">540°</td><td class="m">108°</td></tr>
+        <tr><td>hexagon</td><td class="m">6</td><td class="m">720°</td><td class="m">120°</td></tr>
+        <tr><td>octagon</td><td class="m">8</td><td class="m">1080°</td><td class="m">135°</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The angle sum comes from triangles</div>
+      An ${m('n')}-sided polygon splits into ${m('n − 2')} triangles from one vertex, so its angles add to
+      ${m('180°(n − 2)')}. A regular one shares that equally.</div>`
+    },
+    {
+      h: 'Which shapes tile',
+      html: `<p>Tiles meet without gaps only if the angles at each meeting point add to exactly
+      ${m('360°')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Shape</th><th>Angle</th><th class="m">360 ÷ angle</th><th>Tiles?</th></tr></thead>
+      <tbody>
+        <tr><td>triangle</td><td class="m">60°</td><td class="m">6</td><td>yes</td></tr>
+        <tr><td>square</td><td class="m">90°</td><td class="m">4</td><td>yes</td></tr>
+        <tr><td>pentagon</td><td class="m">108°</td><td class="m">3.33…</td><td>no</td></tr>
+        <tr><td>hexagon</td><td class="m">120°</td><td class="m">3</td><td>yes</td></tr>
+        <tr><td>octagon</td><td class="m">135°</td><td class="m">2.67…</td><td>no, alone</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The test is a whole-number division</div>
+      Only three regular polygons tile the plane by themselves: the triangle, the square and the hexagon.
+      Bees use the third of them.</div>`
+    },
+    {
+      h: 'Why pentagons fail',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Pentagons at a point</th><th>Total</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3</td><td class="m">324°</td><td>a gap of ${m('36°')}</td></tr>
+        <tr><td class="m">4</td><td class="m">432°</td><td>an overlap of ${m('72°')}</td></tr>
+      </tbody></table></div>
+      <p>Octagons alone fail too — but octagons and squares together work: ${m('135 + 135 + 90 = 360')},
+      which is the pattern on countless tiled floors.</p>
+      <div class="keybox"><div class="klabel">Mixed tilings open the question up again</div>
+      Squares and triangles: ${m('90 + 90 + 60 + 60 + 60 = 360')}. Hexagons and triangles:
+      ${m('120 + 120 + 60 + 60 = 360')}. Each combination is a small piece of arithmetic with a floor
+      pattern as its answer.</div>`
+    },
+    {
+      h: 'Ornament',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Where</th><th>Shapes used</th><th>Angle fact behind it</th></tr></thead>
+      <tbody>
+        <tr><td>a girih tile panel</td><td>stars and hexagons</td><td>angles meeting at ${m('360°')}</td></tr>
+        <tr><td>a brick floor</td><td>rectangles</td><td class="m">90° · 4</td></tr>
+        <tr><td>a honeycomb</td><td>hexagons</td><td class="m">120° · 3</td></tr>
+        <tr><td>a tiled dome</td><td>triangles and squares</td><td>mixed tilings</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The ornament of Samarkand is angle arithmetic</div>
+      The star patterns on the madrasahs are built from polygons whose angles fit exactly round a point.
+      The craftsmen worked it out with compasses and a straightedge, five centuries before the formula was
+      written the way it is above.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find each interior angle of a regular hexagon.',
+      steps: [
+        ['Angle sum: ' + m('180 · (6 − 2) = 720°') + '.', ''],
+        ['Shared equally between six angles.', ''],
+        [m('720 ÷ 6 = 120°'), '']
+      ],
+      ans: m('120°')
+    },
+    {
+      q: 'Do regular pentagons tile the plane?',
+      steps: [
+        ['Each angle is ' + m('108°') + '.', ''],
+        [m('360 ÷ 108 = 3.33…') + ' — not a whole number.', ''],
+        ['Three leave a gap of ' + m('36°') + '; four overlap.', ''],
+        ['So no.', '']
+      ],
+      ans: 'No'
+    },
+    {
+      q: 'Show that octagons and squares tile together.',
+      steps: [
+        ['An octagon angle is ' + m('135°') + ', a square angle ' + m('90°') + '.', ''],
+        [m('135 + 135 + 90 = 360'), ''],
+        ['Two octagons and a square meet exactly at each point.', '']
+      ],
+      ans: 'They tile'
+    }
+  ],
+  modelNote: 'Cut out card pentagons and let the class try to tile a desk; the stubborn gap is a better memory than the arithmetic that predicts it.',
+  interactive: {
+    type: 'polygonAngles',
+    title: 'The angles of a regular polygon',
+    hint: 'Change the number of sides and watch the interior angle.'
+  },
+  quiz: [
+    { q: 'The angle sum of a pentagon is:', a: [m('360°'), m('540°'), m('720°'), m('900°')], c: 1, why: 'Three triangles.' },
+    { q: 'Each angle of a regular hexagon is:', a: [m('108°'), m('120°'), m('135°'), m('144°')], c: 1, why: m('720 ÷ 6') + '.' },
+    { q: 'Tiles meet without gaps when the angles add to:', a: [m('180°'), m('270°'), m('360°'), m('540°')], c: 2, why: 'A full turn.' },
+    { q: 'Regular pentagons:', a: ['tile', 'do not tile', 'tile with triangles only', 'tile in threes'], c: 1, why: m('360 ÷ 108') + ' is not whole.' },
+    { q: 'How many regular polygons tile alone?', a: [m('1'), m('2'), m('3'), m('4')], c: 2, why: 'Triangle, square, hexagon.' },
+    { q: 'Two octagons and a square meet at:', a: [m('300°'), m('330°'), m('360°'), m('390°')], c: 2, why: m('135 + 135 + 90') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['The angle sum of a quadrilateral', m('360°')],
+      ['The angle sum of a pentagon', m('540°')],
+      ['The angle sum of a hexagon', m('720°')],
+      ['Each angle of an equilateral triangle', m('60°')],
+      ['Each angle of a regular pentagon', m('108°')],
+      ['Each angle of a regular hexagon', m('120°')],
+      ['Each angle of a regular octagon', m('135°')]
+    ],
+    med: [
+      ['Do triangles tile?', 'Yes — six at a point'],
+      ['Do squares tile?', 'Yes — four at a point'],
+      ['Do pentagons tile?', 'No'],
+      ['Do hexagons tile?', 'Yes — three at a point'],
+      ['Do octagons tile alone?', 'No'],
+      ['Octagons and squares together?', 'Yes — ' + m('135 + 135 + 90')],
+      ['The angle sum of a decagon', m('1440°')]
+    ],
+    hard: [
+      ['Each angle of a regular decagon', m('144°')],
+      ['Do decagons tile alone?', 'No — ' + m('360 ÷ 144 = 2.5')],
+      ['Squares and triangles at a point: one arrangement', m('90 + 90 + 60 + 60 + 60 = 360')],
+      ['Hexagons and triangles at a point', m('120 + 120 + 60 + 60 = 360')],
+      ['A regular polygon with interior angle ' + m('150°') + ': how many sides?', m('12')],
+      ['Why does the interior angle grow with ' + m('n') + '?', 'The angle sum grows faster than the number of angles'],
+      ['The exterior angles of any polygon add to', m('360°')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Test every tiling claim by adding the angles at one meeting point.',
+  homework: [
+    'Find each interior angle of a regular pentagon, hexagon and octagon.',
+    'Show by arithmetic which of them tile the plane alone.',
+    'Find a combination of two different regular polygons that meet at ' + m('360°') + '.',
+    'Find the number of sides of a regular polygon whose interior angle is ' + m('156°') + '.',
+    'Photograph or draw one piece of Uzbek ornament and name the polygons in it.'
+  ]
+});
+
+/* ============================== 44 ============================== */
+G6_MAT.push({
+  id: 'g6-44', stream: 'mat', grade: 6, quarter: 2, lessons: '89', hours: 1,
+  title: 'Recall — the circle and the disc',
+  subtitle: 'The curve and the region it encloses are two different things, with two different names.',
+  uz: 'Matematika 6, takrorlash', uzPage: 'pp. 250–253',
+  cam: 'S7 8.2 entry', camPage: 'Stage 7, pp. 80–84', wb: 'Exercise 8.1',
+  objectives: [
+    'Distinguish a circle from a disc.',
+    'Name the centre, radius, diameter, chord and arc.',
+    'Draw a circle of a given radius with compasses.',
+    'State the relation between radius and diameter.'
+  ],
+  terms: [
+    ['Circle', 'Aylana', 'Окружность'],
+    ['Disc', 'Doira', 'Круг'],
+    ['Centre', 'Markaz', 'Центр'],
+    ['Radius', 'Radius', 'Радиус'],
+    ['Diameter', 'Diametr', 'Диаметр'],
+    ['Chord', 'Vatar', 'Хорда'],
+    ['Arc', 'Yoy', 'Дуга'],
+    ['Compasses', 'Sirkul', 'Циркуль']
+  ],
+  timing: [[10, 'Circle and disc'], [12, 'The parts'], [12, 'Radius and diameter'], [6, 'Drawing one']],
+  sections: [
+    {
+      h: 'Circle and disc',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Word</th><th>Means</th><th>Measured by</th></tr></thead>
+      <tbody>
+        <tr><td>circle</td><td>the curve itself</td><td>a length — the circumference</td></tr>
+        <tr><td>disc</td><td>the curve and everything inside</td><td>an area</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A circle is a set of points at one distance from the centre</div>
+      Every point of the curve is exactly ${m('r')} from the centre — no nearer, no further. That single
+      sentence is the definition, and the compasses are its machine.</div>`
+    },
+    {
+      h: 'The parts',
+      html: `{{fig:circleArea:The centre, radius, diameter and chord}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Part</th><th>What it is</th></tr></thead>
+      <tbody>
+        <tr><td>centre</td><td>the fixed point</td></tr>
+        <tr><td>radius</td><td>from the centre to the curve</td></tr>
+        <tr><td>diameter</td><td>right across, through the centre</td></tr>
+        <tr><td>chord</td><td>joining two points of the curve</td></tr>
+        <tr><td>arc</td><td>part of the curve</td></tr>
+        <tr><td>sector</td><td>a slice, between two radii</td></tr>
+        <tr><td>segment</td><td>the piece cut off by a chord</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A diameter is a chord; a chord is usually not a diameter</span>
+      The diameter is the longest chord — the only one passing through the centre. Every other chord is
+      shorter.</div>`
+    },
+    {
+      h: 'Radius and diameter',
+      html: `${eq(m('d = 2r') + '     ' + m('r = ' + f('d', '2')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">r</th><th class="m">d</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3 cm</td><td class="m">6 cm</td></tr>
+        <tr><td class="m">7 cm</td><td class="m">14 cm</td></tr>
+        <tr><td class="m">4.5 cm</td><td class="m">9 cm</td></tr>
+        <tr><td class="m">12 cm</td><td class="m">24 cm</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Read which one the question gives</span>
+      A circle “of diameter ${m('14')}” has radius ${m('7')}. Half the errors in the next three lessons
+      come from using the wrong one of the two in a formula.</div>`
+    },
+    {
+      h: 'Drawing one',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>What to do</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>open the compasses to the radius against a ruler</td></tr>
+        <tr><td>2</td><td>put the point on the centre and mark it</td></tr>
+        <tr><td>3</td><td>turn the compasses in one smooth movement</td></tr>
+        <tr><td>4</td><td>label the centre, and mark a radius and a diameter</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Set the compasses to the radius, never the diameter</div>
+      For a circle of diameter ${m('10')} cm the compasses open to ${m('5')} cm. The commonest practical
+      error in this topic is drawing a circle twice the size wanted.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A circle has diameter ' + m('14 cm') + '. Find its radius.',
+      steps: [
+        [m('r = ' + f('d', '2')), ''],
+        [m('= 7 cm'), '']
+      ],
+      ans: m('7 cm')
+    },
+    {
+      q: 'What is the difference between a circle and a disc?',
+      steps: [
+        ['A circle is the curve alone.', ''],
+        ['A disc is the curve together with the region inside it.', ''],
+        ['One is measured by a length, the other by an area.', '']
+      ],
+      ans: 'Curve against region'
+    },
+    {
+      q: 'Is every chord a diameter? Is every diameter a chord?',
+      steps: [
+        ['A chord joins two points of the curve.', ''],
+        ['A diameter does that and passes through the centre.', ''],
+        ['So every diameter is a chord; most chords are not diameters.', '']
+      ],
+      ans: 'No; yes'
+    }
+  ],
+  modelNote: 'Ask the class to draw a circle of diameter 8 cm; the ones that come out 16 cm across make the radius-diameter point better than any warning.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'The parts of a circle',
+    hint: 'Move the points and watch the radius, chord and arc.'
+  },
+  quiz: [
+    { q: 'A circle is:', a: ['the curve', 'the region inside', 'both', 'neither'], c: 0, why: 'The curve alone.' },
+    { q: 'A disc is measured by:', a: ['a length', 'an area', 'an angle', 'a radius only'], c: 1, why: 'It is a region.' },
+    { q: 'The diameter is:', a: [m('r'), m('2r'), m(f('r', '2')), m('πr')], c: 1, why: 'Right across.' },
+    { q: 'A circle of diameter ' + m('14') + ' has radius:', a: [m('28'), m('7'), m('14'), m('3.5')], c: 1, why: 'Half.' },
+    { q: 'The longest chord is:', a: ['a radius', 'the diameter', 'an arc', 'a sector'], c: 1, why: 'Through the centre.' },
+    { q: 'Compasses are set to:', a: ['the diameter', 'the radius', 'the circumference', 'any length'], c: 1, why: 'The distance from the centre.' }
+  ],
+  practice: {
+    easy: [
+      ['The curve itself is called', 'a circle'],
+      ['The region inside is called', 'a disc'],
+      [m('r = 3') + ': the diameter', m('6 cm')],
+      [m('d = 14') + ': the radius', m('7 cm')],
+      [m('r = 4.5') + ': the diameter', m('9 cm')],
+      ['A line from the centre to the curve', 'a radius'],
+      ['A line joining two points of the curve', 'a chord']
+    ],
+    med: [
+      ['The longest chord in a circle', 'the diameter'],
+      ['Part of the curve', 'an arc'],
+      ['A slice between two radii', 'a sector'],
+      ['The piece cut off by a chord', 'a segment'],
+      ['Is every diameter a chord?', 'Yes'],
+      ['Is every chord a diameter?', 'No'],
+      ['Compasses for a circle of diameter ' + m('10') + ' cm open to', m('5') + ' cm']
+    ],
+    hard: [
+      ['A circle of radius ' + m('r') + ': the longest chord', m('2r')],
+      ['Two circles of radius ' + m('5') + ' with centres ' + m('8') + ' cm apart: do they cross?', 'Yes — ' + m('8 < 10')],
+      ['Two circles of radius ' + m('5') + ' with centres ' + m('12') + ' cm apart', 'No — they are apart'],
+      ['A chord ' + m('6') + ' cm from the centre of a circle of radius ' + m('5') + ' cm', 'Impossible — no such chord'],
+      ['How many diameters has a circle?', 'Infinitely many'],
+      ['Where do all the diameters meet?', 'At the centre'],
+      ['Why is a circle drawn with compasses?', 'They keep the distance from the centre fixed']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Set the compasses to the radius; halve the diameter first if that is what you are given.',
+  homework: [
+    'Draw circles of radius ' + m('3 cm') + ' and of diameter ' + m('9 cm') + '.',
+    'Mark and label a radius, a diameter, a chord and an arc on one of them.',
+    'Find the radius of circles with diameters ' + m('18 cm') + ' and ' + m('7 cm') + '.',
+    'Find the diameter of circles with radii ' + m('6.5 cm') + ' and ' + m('11 cm') + '.',
+    'Write one sentence explaining the difference between a circle and a disc.'
+  ]
+});
