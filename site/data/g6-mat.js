@@ -12229,3 +12229,203 @@ G6_MAT.push({
     'A room is ' + m('6') + ' m by ' + m('5') + ' m by ' + m('3') + ' m. Find the area of its four walls.'
   ]
 });
+
+/* ============================== 69 ============================== */
+G6_MAT.push({
+  id: 'g6-69', stream: 'mat', grade: 6, quarter: 3, lessons: '146–149', hours: 4,
+  title: 'Word problems on volume',
+  subtitle: 'Tanks that fill, crates that pack, water that rises, and concrete that has to be paid for.',
+  uz: 'Matematika 6, §31', uzPage: 'pp. 424–435',
+  cam: 'S7 15 distance, area and volume', camPage: 'Stage 7, pp. 162–170', wb: 'Exercise 15.4–15.5',
+  objectives: [
+    'Find a filling or emptying time from a capacity and a rate.',
+    'Decide how many small solids pack into a larger one.',
+    'Use the rise in a water level to find a volume, and the reverse.',
+    'Turn a volume into a mass or a cost with a rate per unit volume.'
+  ],
+  terms: [
+    ['Capacity', 'Sig‘im', 'Вместимость'],
+    ['To fill', 'To‘ldirmoq', 'Наполнять'],
+    ['To empty, to drain', 'Bo‘shatmoq', 'Опорожнять'],
+    ['Rate of flow', 'Oqim tezligi', 'Скорость потока'],
+    ['Water level', 'Suv sathi', 'Уровень воды'],
+    ['Displacement', 'Siqib chiqarish', 'Вытеснение'],
+    ['Mass', 'Massa', 'Масса'],
+    ['Per cubic metre', 'Bir kub metr uchun', 'За кубический метр']
+  ],
+  timing: [[30, 'Filling and emptying'], [35, 'How many fit'], [40, 'Rising water and displacement'], [45, 'Volume, mass and cost'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'Filling and emptying',
+      html: `<p>Every one of these problems has the same two steps: find the volume in litres, then divide by
+      the rate. The work is in the units, not the arithmetic.</p>
+      {{fig:prismVolume:Base area times height — the volume every tank problem starts from}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Tank</th><th>Capacity</th><th>Rate</th><th>Time</th></tr></thead>
+      <tbody>
+        <tr><td class="m">60 × 40 × 50 cm</td><td class="m">120 litres</td><td class="m">8 l/min</td><td class="m">15 min</td></tr>
+        <tr><td class="m">1 m × 80 × 50 cm</td><td class="m">400 litres</td><td class="m">10 l/min</td><td class="m">40 min</td></tr>
+        <tr><td>a ${m('200')}-litre drum</td><td class="m">200 litres</td><td class="m">5 l/min</td><td class="m">40 min</td></tr>
+        <tr><td>a ${m('90')}-litre tank draining</td><td class="m">90 litres</td><td class="m">3 l/min</td><td class="m">30 min</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The metre in the second row is the trap</span>
+      ${m('1')} m is ${m('100')} cm, so the volume is ${m('100 · 80 · 50 = 400 000')} cm³. Leaving the
+      ${m('1')} in place gives ${m('4000')} cm³ — four litres, for a tank a person could sit in.</div>`
+    },
+    {
+      h: 'How many fit',
+      html: `<p>When the small solid divides the large one exactly along each edge, count along each edge and
+      multiply the three counts.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Container</th><th>Item</th><th>Along each edge</th><th>How many</th></tr></thead>
+      <tbody>
+        <tr><td class="m">40 × 32 × 30 cm</td><td class="m">10 × 8 × 5 cm</td><td class="m">4, 4, 6</td><td class="m">96</td></tr>
+        <tr><td>cube of edge ${m('12')} cm</td><td>cube of edge ${m('3')} cm</td><td class="m">4, 4, 4</td><td class="m">64</td></tr>
+        <tr><td class="m">10 × 8 × 6 cm</td><td>cube of edge ${m('2')} cm</td><td class="m">5, 4, 3</td><td class="m">60</td></tr>
+        <tr><td class="m">1 m × 40 × 24 cm</td><td class="m">20 × 10 × 8 cm</td><td class="m">5, 4, 3</td><td class="m">60</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Dividing the volumes is only an upper limit</div>
+      ${m('38 400 ÷ 400 = 96')} happens to be right in the first row because the boxes fit along every
+      edge. If they did not, the volume division would still give ${m('96')} and the true answer would be
+      smaller — so count along the edges, and use the division only as a check.</div>`
+    },
+    {
+      h: 'Rising water and displacement',
+      html: `<p>Water in a tank is a cuboid whose base is the tank's base and whose height is the depth. Two
+      questions follow at once.</p>
+      ${eq(m('volume of water = base area × depth') + '     so     ' + m('depth = ' + f('volume', 'base area')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>water ${m('6')} cm deep on a ${m('40 × 25')} cm base</td><td class="m">1000 · 6</td><td class="m">6 litres</td></tr>
+        <tr><td>${m('3')} litres poured onto a ${m('30 × 20')} cm base</td><td class="m">3000 ÷ 600</td><td class="m">5 cm deep</td></tr>
+        <tr><td>a stone raises ${m('6')} cm to ${m('7.5')} cm on a ${m('40 × 25')} base</td><td class="m">1000 · 1.5</td><td class="m">1500 cm³ of stone</td></tr>
+        <tr><td>a cube of edge ${m('5')} cm sunk in a ${m('25 × 20')} tank</td><td class="m">125 ÷ 500</td><td class="m">a rise of 0.25 cm</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A sunken object takes exactly its own volume of room</div>
+      That is why the rise in level, multiplied by the base area, gives the volume of an object of any
+      shape at all — the oldest measuring trick in mathematics.</div>`
+    },
+    {
+      h: 'Volume, mass and cost',
+      html: `<p>A rate per unit volume turns the volume into whatever the question is really about.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Object</th><th>Volume</th><th>Rate</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>an iron block ${m('10 × 5 × 2')} cm</td><td class="m">100 cm³</td><td class="m">7.8 g per cm³</td><td class="m">780 g</td></tr>
+        <tr><td>a full ${m('120')}-litre tank of water</td><td class="m">120 litres</td><td class="m">1 kg per litre</td><td class="m">120 kg</td></tr>
+        <tr><td>a concrete slab ${m('4 × 3 × 0.1')} m</td><td class="m">1.2 m³</td><td class="m">2.4 t per m³</td><td class="m">2.88 t</td></tr>
+        <tr><td>sand for a pit ${m('2 × 1.5 × 0.4')} m</td><td class="m">1.2 m³</td><td class="m">90 000 so‘m per m³</td><td class="m">108 000 so‘m</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Match the unit of the rate to the unit of the volume</span>
+      A rate in ${m('g')} per ${m('cm³')} needs the volume in ${m('cm³')}; a rate per ${m('m³')} needs
+      ${m('m³')}. Converting the volume first is always safer than trying to convert the rate.</div>`
+    },
+    {
+      h: 'Mixed problems',
+      html: `<p>Longer questions simply chain these steps together.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Steps</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a ${m('50 × 40 × 30')} cm tank filled to two-thirds</td><td class="m">60 · ${f('2', '3')}</td><td class="m">40 litres</td></tr>
+        <tr><td>two taps, ${m('6')} and ${m('4')} l/min, on a ${m('120')}-litre tank</td><td class="m">120 ÷ 10</td><td class="m">12 min</td></tr>
+        <tr><td>a ${m('300')}-litre tank filling at ${m('12')} and leaking at ${m('2')}</td><td class="m">300 ÷ 10</td><td class="m">30 min</td></tr>
+        <tr><td>a ${m('120')}-litre tank half full, topped up at ${m('4')} l/min</td><td class="m">60 ÷ 4</td><td class="m">15 min</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two taps together add their rates</div>
+      Exactly as two people working together add their rates of work. A leak subtracts, which is the same
+      idea with a sign.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A tank measures ' + m('60') + ' cm by ' + m('40') + ' cm by ' + m('50') + ' cm. A tap delivers ' + m('8') + ' litres a minute. How long does it take to fill?',
+      steps: [
+        [m('60 · 40 · 50 = 120 000') + ' cm³.', ''],
+        ['That is ' + m('120') + ' litres.', ''],
+        [m('120 ÷ 8 = 15') + ' minutes.', 'Check: ' + m('8 · 15 = 120') + ' ✓']
+      ],
+      ans: m('15') + ' minutes'
+    },
+    {
+      q: 'How many boxes ' + m('10') + ' cm by ' + m('8') + ' cm by ' + m('5') + ' cm fit into a crate ' + m('40') + ' cm by ' + m('32') + ' cm by ' + m('30') + ' cm?',
+      steps: [
+        ['Along the edges: ' + m('40 ÷ 10 = 4') + ', ' + m('32 ÷ 8 = 4') + ', ' + m('30 ÷ 5 = 6') + '.', ''],
+        [m('4 · 4 · 6') + '.', ''],
+        [m('= 96') + ' boxes.', 'Volume check: ' + m('38 400 ÷ 400 = 96') + ' ✓']
+      ],
+      ans: m('96') + ' boxes'
+    },
+    {
+      q: 'A tank with base ' + m('40') + ' cm by ' + m('25') + ' cm holds water ' + m('6') + ' cm deep. A stone is lowered in and the level rises to ' + m('7.5') + ' cm. Find the volume of the stone.',
+      steps: [
+        ['Base area ' + m('40 · 25 = 1000') + ' cm².', ''],
+        ['The rise is ' + m('1.5') + ' cm.', ''],
+        [m('1000 · 1.5 = 1500') + ' cm³.', 'The stone takes exactly its own volume of room.']
+      ],
+      ans: m('1500') + ' cm³'
+    }
+  ],
+  modelNote: 'Do the displacement question with a real jar and a stone; the number on the board becomes a measurement the class has just watched being made.',
+  interactive: {
+    type: 'quiz',
+    title: 'Tanks, crates and stones',
+    hint: 'Get everything into one unit before dividing.',
+    items: [
+      { q: 'A ' + m('60 × 40 × 50') + ' cm tank holds:', a: [m('12') + ' litres', m('120') + ' litres', m('1200') + ' litres', m('120 000') + ' litres'], c: 1, why: m('120 000') + ' cm³.' },
+      { q: 'Filling it at ' + m('8') + ' l/min takes:', a: [m('12'), m('15'), m('20'), m('960')], c: 1, why: m('120 ÷ 8') + '.' },
+      { q: 'A ' + m('1') + ' m by ' + m('80') + ' cm by ' + m('50') + ' cm tank holds:', a: [m('4') + ' litres', m('40') + ' litres', m('400') + ' litres', m('4000') + ' litres'], c: 2, why: 'The metre becomes ' + m('100') + ' cm.' },
+      { q: 'Cubes of edge ' + m('3') + ' cm in a cube of edge ' + m('12') + ' cm:', a: [m('4'), m('16'), m('64'), m('48')], c: 2, why: m('4 · 4 · 4') + '.' },
+      { q: m('3') + ' litres on a ' + m('30 × 20') + ' cm base is deep:', a: [m('5') + ' cm', m('50') + ' cm', m('0.5') + ' cm', m('6') + ' cm'], c: 0, why: m('3000 ÷ 600') + '.' },
+      { q: 'A rise of ' + m('1.5') + ' cm on a ' + m('1000') + ' cm² base means an object of:', a: [m('150') + ' cm³', m('1500') + ' cm³', m('15') + ' cm³', m('666') + ' cm³'], c: 1, why: 'Base area times rise.' },
+      { q: 'Concrete at ' + m('2.4') + ' t per m³ in a ' + m('1.2') + ' m³ slab weighs:', a: [m('2') + ' t', m('2.88') + ' t', m('3.6') + ' t', m('0.5') + ' t'], c: 1, why: m('2.4 · 1.2') + '.' },
+      { q: 'Taps of ' + m('6') + ' and ' + m('4') + ' l/min fill ' + m('120') + ' litres in:', a: [m('10'), m('12'), m('20'), m('24')], c: 1, why: 'The rates add to ' + m('10') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'A capacity in litres comes from a volume in:', a: ['cm², divided by 1000', 'cm³, divided by 1000', 'cm, times 1000', 'm³, times 100'], c: 1, why: m('1000') + ' cm³ is a litre.' },
+    { q: 'To find a filling time you:', a: ['multiply capacity by rate', 'divide capacity by rate', 'add them', 'divide rate by capacity'], c: 1, why: 'Litres ÷ litres per minute.' },
+    { q: 'The number of small boxes that fit is found by:', a: ['dividing the volumes only', 'counting along each edge', 'adding the edges', 'guessing'], c: 1, why: 'The volume division is only an upper limit.' },
+    { q: 'A sunken object raises the water by:', a: ['its surface area', 'its own volume ÷ the base area', 'its mass', 'its height'], c: 1, why: 'It displaces its own volume.' },
+    { q: 'A rate of ' + m('7.8') + ' g per cm³ needs the volume in:', a: [m('m³'), 'litres', m('cm³'), m('cm²')], c: 2, why: 'Match the units of the rate.' },
+    { q: 'A tank filling at ' + m('12') + ' and leaking at ' + m('2') + ' l/min gains:', a: [m('14'), m('10'), m('6'), m('24')], c: 1, why: 'A leak subtracts.' }
+  ],
+  practice: {
+    easy: [
+      ['The capacity of a ' + m('60 × 40 × 50') + ' cm tank', m('120') + ' litres'],
+      ['A ' + m('120') + '-litre tank filled at ' + m('8') + ' l/min', m('15') + ' min'],
+      ['A ' + m('200') + '-litre drum filled at ' + m('5') + ' l/min', m('40') + ' min'],
+      ['A ' + m('90') + '-litre tank draining at ' + m('3') + ' l/min', m('30') + ' min'],
+      ['Cubes of edge ' + m('3') + ' cm in a cube of edge ' + m('12') + ' cm', m('64')],
+      ['Water ' + m('6') + ' cm deep on a ' + m('40 × 25') + ' cm base', m('6') + ' litres'],
+      ['The mass of ' + m('1') + ' litre of water', m('1') + ' kg']
+    ],
+    med: [
+      ['The capacity of a ' + m('1') + ' m by ' + m('80') + ' cm by ' + m('50') + ' cm tank', m('400') + ' litres'],
+      ['…filled at ' + m('10') + ' l/min', m('40') + ' min'],
+      ['Boxes ' + m('10 × 8 × 5') + ' cm in a crate ' + m('40 × 32 × 30') + ' cm', m('96')],
+      ['Cubes of edge ' + m('2') + ' cm in a ' + m('10 × 8 × 6') + ' cm box', m('60')],
+      [m('3') + ' litres poured onto a ' + m('30 × 20') + ' cm base: the depth', m('5') + ' cm'],
+      ['An iron block ' + m('10 × 5 × 2') + ' cm at ' + m('7.8') + ' g per cm³', m('780') + ' g'],
+      ['The water in a full ' + m('120') + '-litre tank', m('120') + ' kg']
+    ],
+    hard: [
+      ['A stone raises ' + m('6') + ' cm to ' + m('7.5') + ' cm on a ' + m('40 × 25') + ' base: its volume', m('1500') + ' cm³'],
+      ['A cube of edge ' + m('5') + ' cm sunk in a ' + m('25 × 20') + ' cm tank: the rise', m('0.25') + ' cm'],
+      ['A concrete slab ' + m('4') + ' m by ' + m('3') + ' m by ' + m('0.1') + ' m at ' + m('2.4') + ' t per m³', m('2.88') + ' tonnes'],
+      ['Sand at ' + m('90 000') + ' so‘m per m³ for a pit ' + m('2 × 1.5 × 0.4') + ' m', m('108 000') + ' so‘m'],
+      ['A ' + m('50 × 40 × 30') + ' cm tank filled to two-thirds', m('40') + ' litres'],
+      ['Taps of ' + m('6') + ' and ' + m('4') + ' l/min on a ' + m('120') + '-litre tank', m('12') + ' min'],
+      ['A ' + m('300') + '-litre tank filling at ' + m('12') + ' and leaking at ' + m('2') + ' l/min', m('30') + ' min']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Convert every length to one unit before the first multiplication, and write the unit on every line.',
+  homework: [
+    'A tank is ' + m('70') + ' cm by ' + m('50') + ' cm by ' + m('40') + ' cm. Find its capacity in litres.',
+    'That tank is filled by a tap delivering ' + m('7') + ' litres a minute. How long does it take?',
+    'How many cubes of edge ' + m('4') + ' cm fit into a box ' + m('20') + ' cm by ' + m('16') + ' cm by ' + m('12') + ' cm?',
+    m('4.5') + ' litres of water is poured into a tank with base ' + m('45') + ' cm by ' + m('20') + ' cm. How deep is the water?',
+    'Concrete weighs ' + m('2.4') + ' tonnes per m³. Find the mass of a slab ' + m('5') + ' m by ' + m('2') + ' m by ' + m('0.2') + ' m.'
+  ]
+});
