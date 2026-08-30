@@ -3339,7 +3339,17 @@ G9_ALG.push({
   interactive: {
     type: 'quiz',
     title: 'Set notation at speed',
-    hint: 'Symbols to words, and back.'
+    hint: 'Symbols to words, and back.',
+    items: [
+      { q: m('3 ∈ A') + ' means:', a: [m('3') + ' is an element of ' + m('A'), m('A') + ' is a subset of ' + m('3'), m('3') + ' equals ' + m('A'), m('3') + ' is not in ' + m('A')], c: 0, why: 'Membership.' },
+      { q: m('A ⊂ B') + ' means:', a: ['every element of ' + m('A') + ' is in ' + m('B'), 'they share one element', 'they are equal', m('B') + ' is inside ' + m('A')], c: 0, why: 'A subset.' },
+      { q: m('A ∩ B') + ' is:', a: ['everything in both', 'everything in either', 'what is only in ' + m('A'), 'the empty set'], c: 0, why: 'The intersection.' },
+      { q: m('A ∪ B') + ' is:', a: ['everything in both', 'everything in either or both', 'what is in neither', 'the difference'], c: 1, why: 'The union.' },
+      { q: 'If ' + m('A = {1, 2, 3}') + ' and ' + m('B = {3, 4}') + ' then ' + m('A ∩ B') + ' is:', a: [m('{3}'), m('{1, 2, 3, 4}'), m('∅'), m('{1, 2}')], c: 0, why: 'Only ' + m('3') + ' is in both.' },
+      { q: 'With the same sets, ' + m('n(A ∪ B)') + ' is:', a: [m('4'), m('5'), m('6'), m('7')], c: 0, why: m('3 + 2 − 1') + '.' },
+      { q: 'The empty set is written:', a: [m('{0}'), m('∅'), m('0'), m('{∅}')], c: 1, why: 'It has no elements at all.' },
+      { q: m('A′') + ' means:', a: ['the subsets of ' + m('A'), 'everything in the universal set not in ' + m('A'), m('A') + ' doubled', 'the empty set'], c: 1, why: 'The complement.' }
+    ]
   },
   quiz: [
     { q: m('∩') + ' means:', a: ['or', 'and', 'not', 'all'], c: 1, why: 'Intersection.' },
@@ -7616,7 +7626,17 @@ G9_ALG.push({
   interactive: {
     type: 'quiz',
     title: 'Which type, and what is the nth term?',
-    hint: 'Differences, then second differences, then ratios.'
+    hint: 'Differences, then second differences, then ratios.',
+    items: [
+      { q: m('3, 7, 11, 15, …') + ' is:', a: ['arithmetic', 'geometric', 'quadratic', 'none of these'], c: 0, why: 'A constant difference of ' + m('4') + '.' },
+      { q: 'Its ' + m('n') + 'th term is:', a: [m('4n'), m('4n − 1'), m('4n + 3'), m('3n + 4')], c: 1, why: m('4 · 1 − 1 = 3') + '.' },
+      { q: m('2, 6, 18, 54, …') + ' is:', a: ['arithmetic', 'geometric', 'quadratic', 'none'], c: 1, why: 'A constant ratio of ' + m('3') + '.' },
+      { q: 'Its ' + m('n') + 'th term is:', a: [m('2 · 3ⁿ'), m('2 · 3ⁿ⁻¹'), m('3 · 2ⁿ'), m('6ⁿ')], c: 1, why: m('a₁ = 2') + ', ' + m('q = 3') + '.' },
+      { q: m('1, 4, 9, 16, …') + ' has second differences:', a: [m('0'), m('1'), m('2'), m('3')], c: 2, why: 'Constant ' + m('2') + ' — quadratic.' },
+      { q: 'Its ' + m('n') + 'th term is:', a: [m('n²'), m('2n'), m('n² + 1'), m('2n − 1')], c: 0, why: 'The squares.' },
+      { q: 'A constant first difference means:', a: ['geometric', 'arithmetic', 'quadratic', 'random'], c: 1, why: 'By definition.' },
+      { q: 'A constant second difference means the ' + m('n') + 'th term is:', a: ['linear', 'quadratic', 'geometric', 'constant'], c: 1, why: 'One degree higher.' }
+    ]
   },
   quiz: [
     { q: 'Constant first differences mean:', a: ['linear', 'quadratic', 'geometric', 'none'], c: 0, why: 'An AP.' },
@@ -7974,7 +7994,17 @@ G9_ALG.push({
   interactive: {
     type: 'quiz',
     title: 'Certain, impossible, or random?',
-    hint: 'Write the event as a set first.'
+    hint: 'Write the event as a set first.',
+    items: [
+      { q: 'Throwing a die and getting a number under ' + m('7') + ' is:', a: ['certain', 'impossible', 'random', 'equally likely'], c: 0, why: 'Every face qualifies.' },
+      { q: 'Getting a ' + m('7') + ' on one die is:', a: ['certain', 'impossible', 'random', 'likely'], c: 1, why: 'No such face.' },
+      { q: 'Getting an even number is:', a: ['certain', 'impossible', 'random', 'never'], c: 2, why: 'It may or may not happen.' },
+      { q: 'The probability of a certain event is:', a: [m('0'), m('0.5'), m('1'), 'undefined'], c: 2, why: 'Always.' },
+      { q: 'The probability of an impossible event is:', a: [m('0'), m('0.5'), m('1'), m('−1')], c: 0, why: 'No favourable outcomes.' },
+      { q: 'Two events that cannot both happen are:', a: ['independent', 'mutually exclusive', 'complementary always', 'certain'], c: 1, why: 'Disjoint sets.' },
+      { q: 'An event and its complement have probabilities that:', a: ['are equal', 'add to ' + m('1'), 'multiply to ' + m('1'), 'add to ' + m('0')], c: 1, why: 'One of them must happen.' },
+      { q: 'Every probability lies:', a: ['between ' + m('0') + ' and ' + m('1'), 'above ' + m('1'), 'below ' + m('0'), 'anywhere'], c: 0, why: 'A part of the whole.' }
+    ]
   },
   quiz: [
     { q: 'An event is:', a: ['one outcome', 'a set of outcomes', 'the whole trial', 'a number'], c: 1, why: 'A subset of the sample space.' },
@@ -8154,7 +8184,17 @@ G9_ALG.push({
   interactive: {
     type: 'quiz',
     title: 'Count, count, divide',
-    hint: 'Find n first, then m.'
+    hint: 'Find n first, then m.',
+    items: [
+      { q: 'One die: ' + m('P') + '(an even number) is:', a: [m(f('1', '6')), m(f('1', '3')), m(f('1', '2')), m(f('2', '3'))], c: 2, why: m('3') + ' of ' + m('6') + '.' },
+      { q: 'One die: ' + m('P') + '(a number over ' + m('4') + ') is:', a: [m(f('1', '6')), m(f('1', '3')), m(f('1', '2')), m(f('2', '3'))], c: 1, why: m('5') + ' and ' + m('6') + '.' },
+      { q: 'A pack of ' + m('52') + ' cards: ' + m('P') + '(a heart) is:', a: [m(f('1', '13')), m(f('1', '4')), m(f('1', '2')), m(f('1', '52'))], c: 1, why: m('13') + ' of ' + m('52') + '.' },
+      { q: 'Two coins: ' + m('P') + '(two heads) is:', a: [m(f('1', '2')), m(f('1', '3')), m(f('1', '4')), m(f('3', '4'))], c: 2, why: 'One of four outcomes.' },
+      { q: 'Two dice: how many outcomes in total?', a: [m('12'), m('24'), m('36'), m('6')], c: 2, why: m('6 · 6') + '.' },
+      { q: 'Two dice: ' + m('P') + '(a total of ' + m('7') + ') is:', a: [m(f('1', '6')), m(f('1', '9')), m(f('1', '12')), m(f('5', '36'))], c: 0, why: m('6') + ' of ' + m('36') + '.' },
+      { q: 'A bag of ' + m('4') + ' red and ' + m('6') + ' blue: ' + m('P') + '(red) is:', a: [m(f('2', '5')), m(f('3', '5')), m(f('4', '6')), m(f('1', '4'))], c: 0, why: m(f('4', '10')) + '.' },
+      { q: 'If ' + m('P(A) = 0.3') + ' then ' + m('P') + '(not ' + m('A') + ') is:', a: [m('0.3'), m('0.7'), m('1.3'), m('0')], c: 1, why: 'They add to ' + m('1') + '.' }
+    ]
   },
   quiz: [
     { q: m('P(A)') + ' equals:', a: [m(f('n', 'm')), m(f('m', 'n')), m('m n'), m('m − n')], c: 1, why: 'Favourable over all.' },
@@ -8523,7 +8563,17 @@ G9_ALG.push({
   interactive: {
     type: 'quiz',
     title: 'And, or, and does order matter?',
-    hint: 'Two questions settle every counting problem.'
+    hint: 'Two questions settle every counting problem.',
+    items: [
+      { q: 'A choice of ' + m('3') + ' shirts <b>and</b> ' + m('4') + ' ties gives:', a: [m('7'), m('12'), m('34'), m('43')], c: 1, why: 'Multiply for “and”.' },
+      { q: 'A choice of ' + m('3') + ' shirts <b>or</b> ' + m('4') + ' ties gives:', a: [m('7'), m('12'), m('1'), m('34')], c: 0, why: 'Add for “or”.' },
+      { q: 'Arrangements of ' + m('4') + ' different books on a shelf:', a: [m('4'), m('12'), m('16'), m('24')], c: 3, why: m('4! = 24') + '.' },
+      { q: m('5!') + ' equals:', a: [m('25'), m('60'), m('120'), m('720')], c: 2, why: m('5 · 4 · 3 · 2 · 1') + '.' },
+      { q: 'Three-digit codes from ' + m('10') + ' digits, repeats allowed:', a: [m('30'), m('720'), m('1000'), m('120')], c: 2, why: m('10³') + '.' },
+      { q: 'Three-digit codes with no repeats:', a: [m('720'), m('1000'), m('120'), m('30')], c: 0, why: m('10 · 9 · 8') + '.' },
+      { q: 'When order does not matter you are counting:', a: ['arrangements', 'selections', 'outcomes', 'events'], c: 1, why: 'Combinations.' },
+      { q: 'Choosing ' + m('2') + ' pupils from ' + m('5') + ', order not counted:', a: [m('10'), m('20'), m('25'), m('5')], c: 0, why: m(f('5 · 4', '2')) + '.' }
+    ]
   },
   quiz: [
     { q: '“And” means:', a: ['add', 'multiply', 'divide', 'subtract'], c: 1, why: 'Successive choices.' },
@@ -8706,7 +8756,17 @@ G9_ALG.push({
   interactive: {
     type: 'quiz',
     title: 'Trees, tables and Venn diagrams',
-    hint: 'Multiply along, add between.'
+    hint: 'Multiply along, add between.',
+    items: [
+      { q: 'Along a branch of a tree you:', a: ['add', 'multiply', 'subtract', 'divide'], c: 1, why: 'Both things happen.' },
+      { q: 'Between separate branches you:', a: ['add', 'multiply', 'subtract', 'divide'], c: 0, why: 'Either one or the other.' },
+      { q: 'The probabilities on the branches from one point add to:', a: [m('0'), m('0.5'), m('1'), 'anything'], c: 2, why: 'Something must happen.' },
+      { q: 'Two coins: ' + m('P') + '(exactly one head) is:', a: [m(f('1', '4')), m(f('1', '2')), m(f('3', '4')), m('1')], c: 1, why: 'Two of four outcomes.' },
+      { q: m('P') + '(red then red) from a bag of ' + m('3') + ' red and ' + m('2') + ' blue, with replacement:', a: [m(f('9', '25')), m(f('3', '10')), m(f('6', '25')), m(f('3', '5'))], c: 0, why: m(f('3', '5') + ' · ' + f('3', '5')) + '.' },
+      { q: 'Without replacement it becomes:', a: [m(f('9', '25')), m(f('3', '10')), m(f('6', '20')), m(f('1', '2'))], c: 1, why: m(f('3', '5') + ' · ' + f('2', '4')) + '.' },
+      { q: 'Independent events are those where:', a: ['one changes the other', 'neither changes the other', 'both are certain', 'both are impossible'], c: 1, why: 'Replacement keeps them independent.' },
+      { q: m('P') + '(at least one head) in two throws is easiest as:', a: [m('1 − P') + '(no heads)', m('P') + '(one head)', m('2 · P') + '(head)', m('P') + '(two heads)'], c: 0, why: 'The complement.' }
+    ]
   },
   quiz: [
     { q: 'Along a path you:', a: ['add', 'multiply', 'divide', 'subtract'], c: 1, why: 'Successive stages.' },
@@ -9071,7 +9131,17 @@ G9_ALG.push({
   interactive: {
     type: 'quiz',
     title: 'Which chapter, and which method?',
-    hint: 'Name the chapter before naming the method.'
+    hint: 'Name the chapter before naming the method.',
+    items: [
+      { q: m('x² − 5x + 6 = 0') + ' belongs to:', a: ['quadratics', 'sequences', 'probability', 'trigonometry'], c: 0, why: 'Factorise or use the formula.' },
+      { q: 'Its roots are:', a: [m('2') + ' and ' + m('3'), m('−2') + ' and ' + m('−3'), m('1') + ' and ' + m('6'), m('−1') + ' and ' + m('−6')], c: 0, why: 'Product ' + m('6') + ', sum ' + m('5') + '.' },
+      { q: 'The discriminant of ' + m('x² + 2x + 5') + ' is:', a: [m('−16'), m('16'), m('24'), m('4')], c: 0, why: m('4 − 20') + ' — no real roots.' },
+      { q: m('3, 7, 11, …') + ' has ' + m('a₁₀') + ' equal to:', a: [m('39'), m('40'), m('43'), m('37')], c: 0, why: m('3 + 9 · 4') + '.' },
+      { q: 'A GP with ' + m('a₁ = 2') + ' and ' + m('q = ' + f('1', '2')) + ' has infinite sum:', a: [m('2'), m('4'), m('1'), 'no sum'], c: 1, why: m(f('2', '1 − 0.5')) + '.' },
+      { q: m('sin²α + cos²α') + ' equals:', a: [m('0'), m('1'), m('2'), m('α')], c: 1, why: 'The identity.' },
+      { q: m('sin 150°') + ' equals:', a: [m('−0.5'), m('0.5'), m(f('√3', '2')), m('1')], c: 1, why: 'The reduction formula.' },
+      { q: 'One die: ' + m('P') + '(a prime) is:', a: [m(f('1', '6')), m(f('1', '3')), m(f('1', '2')), m(f('2', '3'))], c: 2, why: m('2, 3, 5') + '.' }
+    ]
   },
   quiz: [
     { q: '“Find the domain of ' + m(sr('x² − 4')) + '” belongs to:', a: ['Chapter I', 'Chapter II', 'Chapter III', 'Chapter V'], c: 0, why: 'The sign of a quadratic.' },

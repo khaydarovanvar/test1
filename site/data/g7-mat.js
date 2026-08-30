@@ -1571,7 +1571,17 @@ G7_MAT.push({
   interactive: {
     type: 'quiz',
     title: 'Which set does it belong to?',
-    hint: 'Look at the value, not the notation.'
+    hint: 'Look at the value, not the notation.',
+    items: [
+      { q: m('7') + ' is:', a: ['a natural number and an integer', 'an integer only', 'neither', 'negative'], c: 0, why: 'Every natural number is an integer.' },
+      { q: m('−7') + ' is:', a: ['a natural number', 'an integer but not natural', 'neither', 'a fraction'], c: 1, why: 'The naturals start at ' + m('1') + '.' },
+      { q: m('0') + ' is:', a: ['an integer', 'not a number', 'negative', 'natural in every convention'], c: 0, why: 'It sits between the positives and the negatives.' },
+      { q: m('−3.5') + ' is:', a: ['an integer', 'not an integer', 'natural', 'positive'], c: 1, why: 'Integers are whole.' },
+      { q: m('+5') + ' and ' + m('5') + ' are:', a: ['different numbers', 'the same number', 'opposites', 'both negative'], c: 1, why: 'The plus sign is optional.' },
+      { q: 'The opposite of ' + m('−12') + ' is:', a: [m('12'), m('−12'), m('0'), m(f('1', '12'))], c: 0, why: 'Same distance, other side.' },
+      { q: 'How many integers lie between ' + m('−2') + ' and ' + m('2') + '?', a: [m('2'), m('3'), m('4'), 'infinitely many'], c: 1, why: m('−1, 0, 1') + '.' },
+      { q: 'A temperature of ' + m('−8°') + ' is written with a minus because:', a: ['it is small', 'it is below zero', 'it is an error', 'it is a fraction'], c: 1, why: 'The sign gives the direction.' }
+    ]
   },
   quiz: [
     { q: m('ℤ') + ' denotes:', a: ['the naturals', 'the integers', 'the rationals', 'the reals'], c: 1, why: 'From German <i>Zahlen</i>.' },
@@ -3342,7 +3352,39 @@ G7_MAT.push({
   interactive: {
     type: 'fractionCancel',
     title: 'Fractions and their simplest form',
-    hint: 'Cancel the common factors.'
+    hint: 'Cancel the common factors.',
+    items: [
+      {
+        title: '18 / 24',
+        start: m(f('18', '24')),
+        steps: [
+          [m('18 = 2 · 3²') + ' and ' + m('24 = 2³ · 3'), 'Factorise both.'],
+          ['The common factor is ' + m('6') + '.', 'The highest one — anything less leaves work to do.'],
+          [m(f('18 ÷ 6', '24 ÷ 6') + ' = ' + f('3', '4')), 'Divide both parts by it.']
+        ],
+        answer: m(f('3', '4'))
+      },
+      {
+        title: '45 / 60',
+        start: m(f('45', '60')),
+        steps: [
+          [m('45 = 3² · 5') + ' and ' + m('60 = 2² · 3 · 5'), ''],
+          ['The common factor is ' + m('15') + '.', ''],
+          [m(f('45 ÷ 15', '60 ÷ 15') + ' = ' + f('3', '4')), 'The same value as the first task.']
+        ],
+        answer: m(f('3', '4'))
+      },
+      {
+        title: '−14 / 21',
+        start: m(f('−14', '21')),
+        steps: [
+          [m('14 = 2 · 7') + ' and ' + m('21 = 3 · 7'), ''],
+          ['The common factor is ' + m('7') + '.', 'The sign is untouched by cancelling.'],
+          [m(f('−14 ÷ 7', '21 ÷ 7') + ' = ' + f('−2', '3')), 'Usually written ' + m('−' + f('2', '3')) + '.']
+        ],
+        answer: m('−' + f('2', '3'))
+      }
+    ]
   },
   quiz: [
     { q: 'A rational number is:', a: ['any decimal', m(f('p', 'q')) + ' with integers, ' + m('q ≠ 0'), 'an integer', 'a fraction below ' + m('1')], c: 1, why: 'The definition.' },
@@ -3516,7 +3558,27 @@ G7_MAT.push({
   interactive: {
     type: 'lcdBuilder',
     title: 'Finding the common denominator',
-    hint: 'The LCM gives the least work.'
+    hint: 'The LCM gives the least work.',
+    items: [
+      {
+        label: m(f('5', '6') + ' + ' + f('3', '8')),
+        rows: [['6', '2 · 3', '4'], ['8', '2³', '3']],
+        lcd: m('24'),
+        note: m(f('20', '24') + ' + ' + f('9', '24') + ' = ' + f('29', '24')) + '.'
+      },
+      {
+        label: m(f('2', '3') + ' + ' + f('1', '4')),
+        rows: [['3', '3', '4'], ['4', '2²', '3']],
+        lcd: m('12'),
+        note: m(f('8', '12') + ' + ' + f('3', '12') + ' = ' + f('11', '12')) + '.'
+      },
+      {
+        label: m('−' + f('3', '10') + ' + ' + f('7', '15')),
+        rows: [['10', '2 · 5', '3'], ['15', '3 · 5', '2']],
+        lcd: m('30'),
+        note: m('−' + f('9', '30') + ' + ' + f('14', '30') + ' = ' + f('5', '30') + ' = ' + f('1', '6')) + '.'
+      }
+    ]
   },
   quiz: [
     { q: m(f('2', '7') + ' + ' + f('3', '7')) + ' equals:', a: [m(f('5', '14')), m(f('5', '7')), m(f('6', '7')), m(f('6', '49'))], c: 1, why: 'Keep the denominator.' },
@@ -3690,7 +3752,27 @@ G7_MAT.push({
   interactive: {
     type: 'lcdBuilder',
     title: 'Subtracting fractions',
-    hint: 'The same denominator, then the numerators.'
+    hint: 'The same denominator, then the numerators.',
+    items: [
+      {
+        label: m(f('7', '10') + ' − ' + f('3', '4')),
+        rows: [['10', '2 · 5', '2'], ['4', '2²', '5']],
+        lcd: m('20'),
+        note: m(f('14', '20') + ' − ' + f('15', '20') + ' = −' + f('1', '20')) + ' — the answer is negative.'
+      },
+      {
+        label: m(f('5', '6') + ' − ' + f('7', '9')),
+        rows: [['6', '2 · 3', '3'], ['9', '3²', '2']],
+        lcd: m('18'),
+        note: m(f('15', '18') + ' − ' + f('14', '18') + ' = ' + f('1', '18')) + '.'
+      },
+      {
+        label: m('−' + f('1', '2') + ' − ' + f('2', '5')),
+        rows: [['2', '2', '5'], ['5', '5', '2']],
+        lcd: m('10'),
+        note: m('−' + f('5', '10') + ' − ' + f('4', '10') + ' = −' + f('9', '10')) + '.'
+      }
+    ]
   },
   quiz: [
     { q: m(f('2', '7') + ' − ' + f('5', '7')) + ' equals:', a: [m(f('3', '7')), m('−' + f('3', '7')), m(f('7', '7')), m('−' + f('7', '7'))], c: 1, why: 'The second is larger.' },
@@ -3848,7 +3930,27 @@ G7_MAT.push({
   interactive: {
     type: 'lcdBuilder',
     title: 'One denominator for the whole chain',
-    hint: 'Take the LCM of all of them at once.'
+    hint: 'Take the LCM of all of them at once.',
+    items: [
+      {
+        label: m(f('1', '2') + ' + ' + f('2', '3') + ' − ' + f('3', '4')),
+        rows: [['2', '2', '6'], ['3', '3', '4'], ['4', '2²', '3']],
+        lcd: m('12'),
+        note: m(f('6', '12') + ' + ' + f('8', '12') + ' − ' + f('9', '12') + ' = ' + f('5', '12')) + '.'
+      },
+      {
+        label: m(f('3', '4') + ' − ' + f('5', '6') + ' + ' + f('1', '3')),
+        rows: [['4', '2²', '3'], ['6', '2 · 3', '2'], ['3', '3', '4']],
+        lcd: m('12'),
+        note: m(f('9', '12') + ' − ' + f('10', '12') + ' + ' + f('4', '12') + ' = ' + f('3', '12') + ' = ' + f('1', '4')) + '.'
+      },
+      {
+        label: m('−' + f('1', '5') + ' + ' + f('3', '10') + ' − ' + f('1', '2')),
+        rows: [['5', '5', '2'], ['10', '2 · 5', '1'], ['2', '2', '5']],
+        lcd: m('10'),
+        note: m('−' + f('2', '10') + ' + ' + f('3', '10') + ' − ' + f('5', '10') + ' = −' + f('4', '10') + ' = −' + f('2', '5')) + '.'
+      }
+    ]
   },
   quiz: [
     { q: 'For a chain, use the LCM of:', a: ['the first two', 'all the denominators', 'the largest', 'the smallest'], c: 1, why: 'One conversion only.' },
@@ -7241,7 +7343,39 @@ G7_MAT.push({
   interactive: {
     type: 'fractionCancel',
     title: 'Cancelling common factors',
-    hint: 'Every term of the numerator is divided.'
+    hint: 'Every term of the numerator is divided.',
+    items: [
+      {
+        title: '(6x² + 9x) ÷ 3x',
+        start: m(f('6x² + 9x', '3x')),
+        steps: [
+          [m(f('6x²', '3x') + ' = 2x'), 'The first term.'],
+          [m(f('9x', '3x') + ' = 3'), 'The second — it does not vanish.'],
+          [m('2x + 3'), 'Check: ' + m('3x(2x + 3) = 6x² + 9x') + ' ✓']
+        ],
+        answer: m('2x + 3')
+      },
+      {
+        title: '(12a²b + 8ab²) ÷ 4ab',
+        start: m(f('12a²b + 8ab²', '4ab')),
+        steps: [
+          [m(f('12a²b', '4ab') + ' = 3a'), ''],
+          [m(f('8ab²', '4ab') + ' = 2b'), ''],
+          [m('3a + 2b'), 'Check: ' + m('4ab(3a + 2b) = 12a²b + 8ab²') + ' ✓']
+        ],
+        answer: m('3a + 2b')
+      },
+      {
+        title: '5ab / 10a²',
+        start: m(f('5ab', '10a²')),
+        steps: [
+          ['The common factor is ' + m('5a') + '.', 'Numbers and letters together.'],
+          [m(f('5ab ÷ 5a', '10a² ÷ 5a') + ' = ' + f('b', '2a')), ''],
+          [m(f('b', '2a')), 'A fraction, not a polynomial — the divisor was not a common factor of the whole numerator.']
+        ],
+        answer: m(f('b', '2a'))
+      }
+    ]
   },
   quiz: [
     { q: 'To divide a polynomial by a monomial:', a: ['divide the first term', 'divide every term', 'multiply', 'cancel one letter'], c: 1, why: 'Term by term.' },
@@ -9568,7 +9702,39 @@ G7_MAT.push({
   interactive: {
     type: 'fractionCancel',
     title: 'Factorise, then cancel',
-    hint: 'Only factors cancel — that is what the formula provides.'
+    hint: 'Only factors cancel — that is what the formula provides.',
+    items: [
+      {
+        title: '(x² − 9) / (x + 3)',
+        start: m(f('x² − 9', 'x + 3')),
+        steps: [
+          [m('x² − 9 = (x − 3)(x + 3)'), 'A difference of two squares.'],
+          [m(f('(x − 3)(x + 3)', 'x + 3')), 'Now there is a common factor.'],
+          [m('x − 3'), 'Cancel ' + m('x + 3') + ' — and note ' + m('x ≠ −3') + '.']
+        ],
+        answer: m('x − 3') + ', &nbsp;' + m('x ≠ −3')
+      },
+      {
+        title: '(4x² − 25) / (2x + 5)',
+        start: m(f('4x² − 25', '2x + 5')),
+        steps: [
+          [m('4x² − 25 = (2x − 5)(2x + 5)'), m('a = 2x') + ', ' + m('b = 5') + '.'],
+          [m(f('(2x − 5)(2x + 5)', '2x + 5')), ''],
+          [m('2x − 5'), m('x ≠ −2.5') + '.']
+        ],
+        answer: m('2x − 5')
+      },
+      {
+        title: '(2x² − 18) / (x − 3)',
+        start: m(f('2x² − 18', 'x − 3')),
+        steps: [
+          [m('2x² − 18 = 2(x² − 9)'), 'The common factor first, always.'],
+          [m('= 2(x − 3)(x + 3)'), 'Then the formula.'],
+          [m('2(x + 3)'), 'Cancel ' + m('x − 3') + '.']
+        ],
+        answer: m('2(x + 3)') + ', &nbsp;' + m('x ≠ 3')
+      }
+    ]
   },
   quiz: [
     { q: m('(a − b)(a + b)') + ' equals:', a: [m('a² + b²'), m('a² − b²'), m('a² − 2ab + b²'), m('a² + 2ab + b²')], c: 1, why: 'The middle terms cancel.' },
@@ -9921,7 +10087,39 @@ G7_MAT.push({
   interactive: {
     type: 'fractionCancel',
     title: 'A cube factorised, then cancelled',
-    hint: 'The short bracket is what cancels.'
+    hint: 'The short bracket is what cancels.',
+    items: [
+      {
+        title: '(x³ − 8) / (x − 2)',
+        start: m(f('x³ − 8', 'x − 2')),
+        steps: [
+          [m('a = x') + ' and ' + m('b = 2'), 'The cube roots of the two terms.'],
+          [m('x³ − 8 = (x − 2)(x² + 2x + 4)'), 'Minus outside, plus inside.'],
+          [m('x² + 2x + 4'), 'Cancel ' + m('x − 2') + '; note ' + m('x ≠ 2') + '.']
+        ],
+        answer: m('x² + 2x + 4')
+      },
+      {
+        title: '(x³ + 27) / (x + 3)',
+        start: m(f('x³ + 27', 'x + 3')),
+        steps: [
+          [m('a = x') + ' and ' + m('b = 3'), ''],
+          [m('x³ + 27 = (x + 3)(x² − 3x + 9)'), 'Plus outside, minus inside.'],
+          [m('x² − 3x + 9'), m('x ≠ −3') + '.']
+        ],
+        answer: m('x² − 3x + 9')
+      },
+      {
+        title: '(8a³ − 1) / (2a − 1)',
+        start: m(f('8a³ − 1', '2a − 1')),
+        steps: [
+          [m('a = 2a') + ' and ' + m('b = 1'), m('8a³ = (2a)³') + '.'],
+          [m('8a³ − 1 = (2a − 1)(4a² + 2a + 1)'), ''],
+          [m('4a² + 2a + 1'), 'The incomplete square does not factorise further.']
+        ],
+        answer: m('4a² + 2a + 1')
+      }
+    ]
   },
   quiz: [
     { q: m('a³ − b³') + ' equals:', a: [m('(a − b)(a² + ab + b²)'), m('(a − b)³'), m('(a − b)(a² − ab + b²)'), m('(a − b)(a + b)²')], c: 0, why: 'Opposite signs.' },

@@ -143,6 +143,34 @@ for (const t of all) {
   if (t.interactive && typeof ctx.INT[t.interactive.type] !== 'function') {
     issues.push(`${t.id}: no interactive model named "${t.interactive.type}"`);
   }
+  /* Three of the models read their whole content from spec.items; without it
+     they throw on mount and the lesson shows "this model could not start". */
+  if (t.interactive && ['quiz', 'fractionCancel', 'lcdBuilder'].indexOf(t.interactive.type) > -1) {
+    const items = t.interactive.items;
+    if (!items || !items.length) {
+      issues.push(`${t.id}: interactive "${t.interactive.type}" needs items`);
+    } else if (t.interactive.type === 'fractionCancel') {
+      items.forEach((it, i) => {
+        if (!it.title || !it.start || !it.steps || !it.steps.length || !it.answer) {
+          issues.push(`${t.id}: fractionCancel item ${i} needs title, start, steps and answer`);
+        }
+      });
+    } else if (t.interactive.type === 'lcdBuilder') {
+      items.forEach((it, i) => {
+        if (!it.label || !it.rows || !it.rows.length || !it.lcd) {
+          issues.push(`${t.id}: lcdBuilder item ${i} needs label, rows and lcd`);
+        } else it.rows.forEach((r, j) => {
+          if (!Array.isArray(r) || r.length !== 3) issues.push(`${t.id}: lcdBuilder item ${i} row ${j} needs three cells`);
+        });
+      });
+    } else {
+      items.forEach((q, i) => {
+        if (!q.a || q.c == null || q.c < 0 || q.c >= q.a.length) {
+          issues.push(`${t.id}: interactive quiz item ${i} has a bad correct index`);
+        }
+      });
+    }
+  }
 }
 
 for (const name of Object.keys(ctx.FIG)) {

@@ -7294,7 +7294,17 @@ G9_GEO.push({
   interactive: {
     type: 'quiz',
     title: 'Which relation?',
-    hint: 'Name the configuration before the formula.'
+    hint: 'Name the configuration before the formula.',
+    items: [
+      { q: 'Parallel lines cut two transversals: the segments are:', a: ['equal', 'proportional', 'perpendicular', 'unrelated'], c: 1, why: "Thales' theorem." },
+      { q: 'A line parallel to one side of a triangle divides the other two:', a: ['equally', 'in the same ratio', 'perpendicularly', 'in the ratio ' + m('2 : 1')], c: 1, why: 'The basic proportionality theorem.' },
+      { q: 'The bisector of an angle of a triangle divides the opposite side in the ratio of:', a: ['the other two sides', 'the other two angles', m('1 : 1'), 'the altitudes'], c: 0, why: 'The bisector theorem.' },
+      { q: 'The altitude to the hypotenuse is the mean proportional between:', a: ['the two legs', 'the two segments of the hypotenuse', 'the hypotenuse and a leg', 'nothing'], c: 1, why: m('h² = pq') + '.' },
+      { q: 'Each leg is the mean proportional between the hypotenuse and:', a: ['the other leg', 'its own projection on it', 'the altitude', 'the median'], c: 1, why: m('a² = c · p') + '.' },
+      { q: 'For a point outside a circle, the two secants satisfy:', a: [m('PA · PB = PC · PD'), m('PA + PB = PC + PD'), m('PA = PC'), 'nothing'], c: 0, why: 'The power of the point.' },
+      { q: 'For a tangent and a secant from the same point:', a: [m('PT = PA'), m('PT² = PA · PB'), m('PT² = PA + PB'), m('PT = PA · PB')], c: 1, why: 'The tangent is the mean proportional.' },
+      { q: 'Two chords meeting inside a circle give:', a: [m('AE · EB = CE · ED'), m('AE + EB = CE + ED'), m('AE = CE'), 'nothing'], c: 0, why: 'The same power relation.' }
+    ]
   },
   quiz: [
     { q: 'Q1 uses:', a: [m(f('AD', 'AB') + ' = ' + f('AE', 'AC')), m(f('AD', 'DB') + ' = ' + f('AE', 'EC')), m('AD = AE'), 'the bisector theorem'], c: 1, why: 'Part to part.' },
@@ -7473,7 +7483,17 @@ G9_GEO.push({
   interactive: {
     type: 'quiz',
     title: 'Which chapter, and which relation?',
-    hint: 'Name the chapter before the formula.'
+    hint: 'Name the chapter before the formula.',
+    items: [
+      { q: 'Similar triangles have:', a: ['equal sides', 'equal angles and proportional sides', 'equal areas', 'equal perimeters'], c: 1, why: 'Same shape, any size.' },
+      { q: 'Their areas are in the ratio:', a: [m('k'), m('k²'), m('k³'), m('1')], c: 1, why: 'The square of the scale factor.' },
+      { q: 'The sine rule is:', a: [m(f('a', 'sin A') + ' = ' + f('b', 'sin B')), m('a² = b² + c² − 2bc cos A'), m('S = ' + f('1', '2') + 'ab sin C'), m('a + b > c')], c: 0, why: 'Sides over the sines of the opposite angles.' },
+      { q: 'The cosine rule finds a third side from:', a: ['two angles', 'two sides and the angle between them', 'three angles', 'one side'], c: 1, why: 'SAS.' },
+      { q: 'The area of a triangle from two sides and the included angle is:', a: [m(f('1', '2') + 'ab sin C'), m('ab sin C'), m(f('1', '2') + 'ab cos C'), m('ab')], c: 0, why: 'The formula of Q2.' },
+      { q: 'The circumference of a circle of radius ' + m('r') + ' is:', a: [m('πr²'), m('2πr'), m('πr'), m('4πr')], c: 1, why: 'Length, not area.' },
+      { q: 'The area of a sector of angle ' + m('α') + ' radians is:', a: [m(f('1', '2') + 'r²α'), m('r²α'), m('rα'), m('πr²α')], c: 0, why: 'A fraction of the disc.' },
+      { q: 'An inscribed angle is:', a: ['equal to the central angle', 'half the central angle', 'twice it', 'a right angle always'], c: 1, why: 'On the same arc.' }
+    ]
   },
   quiz: [
     { q: '“Areas ' + m('27') + ' and ' + m('48') + '” belongs to:', a: ['Chapter I', 'Chapter II', 'Chapter III', 'Chapter IV'], c: 0, why: m('k²') + '.' },

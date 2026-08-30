@@ -4407,7 +4407,31 @@ G11_ALG.push({
   interactive: {
     type: 'fractionCancel',
     title: 'Splitting a fraction',
-    hint: 'Cover a factor and substitute its root.'
+    hint: 'Cover a factor and substitute its root.',
+    items: [
+      {
+        title: '1 / ((x − 1)(x + 2))',
+        start: m(f('1', '(x − 1)(x + 2)')),
+        steps: [
+          [m(f('1', '(x − 1)(x + 2)') + ' = ' + f('A', 'x − 1') + ' + ' + f('B', 'x + 2')), 'One fraction for each linear factor.'],
+          ['Cover ' + m('x − 1') + ' and put ' + m('x = 1') + ': ' + m('A = ' + f('1', '3')), 'The cover-up rule.'],
+          ['Cover ' + m('x + 2') + ' and put ' + m('x = −2') + ': ' + m('B = −' + f('1', '3')), ''],
+          [m(f('1', '3') + '(' + f('1', 'x − 1') + ' − ' + f('1', 'x + 2') + ')'), 'Each piece now integrates to a logarithm.']
+        ],
+        answer: m(f('1', '3') + ' ln|' + f('x − 1', 'x + 2') + '| + C')
+      },
+      {
+        title: '(5x − 4) / ((x − 2)(x + 1))',
+        start: m(f('5x − 4', '(x − 2)(x + 1)')),
+        steps: [
+          [m('= ' + f('A', 'x − 2') + ' + ' + f('B', 'x + 1')), ''],
+          [m('x = 2') + ': ' + m('A = ' + f('6', '3') + ' = 2'), 'Cover ' + m('x − 2') + '.'],
+          [m('x = −1') + ': ' + m('B = ' + f('−9', '−3') + ' = 3'), ''],
+          [m(f('2', 'x − 2') + ' + ' + f('3', 'x + 1')), 'Check by adding them back.']
+        ],
+        answer: m('2 ln|x − 2| + 3 ln|x + 1| + C')
+      }
+    ]
   },
   quiz: [
     { q: m('∫ ' + f('1', 'x − 3') + ' dx') + ' is:', a: [m('ln(x − 3) + C'), m('ln|x − 3| + C'), m('−' + f('1', '(x−3)²') + ' + C'), m(f('1', '2') + '(x−3)² + C')], c: 1, why: 'The modulus is needed.' },
