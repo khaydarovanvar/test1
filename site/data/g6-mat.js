@@ -11672,3 +11672,175 @@ G6_MAT.push({
     'A pattern of squares uses ' + m('4, 7, 10, …') + ' tiles. Find the nth term and the ' + m('50') + 'th figure.'
   ]
 });
+
+/* ============================== 66 ============================== */
+G6_MAT.push({
+  id: 'g6-66', stream: 'mat', grade: 6, quarter: 3, lessons: '139', hours: 1,
+  title: 'Recall — the cube and the cuboid',
+  subtitle: 'Faces, edges and vertices; volume as a product of three lengths; the litre.',
+  uz: 'Matematika 6, takrorlash', uzPage: 'pp. 400–403',
+  cam: 'S7 15 distance, area and volume', camPage: 'Stage 7, pp. 156–160', wb: 'Exercise 15.1',
+  objectives: [
+    'Name the faces, edges and vertices of a cuboid.',
+    'Find the volume of a cuboid and of a cube.',
+    'Find the total surface area from the three pairs of faces.',
+    'Convert between ' + m('cm³') + ', ' + m('m³') + ' and litres.'
+  ],
+  terms: [
+    ['Cuboid', 'Parallelepiped', 'Прямоугольный параллелепипед'],
+    ['Cube', 'Kub', 'Куб'],
+    ['Face', 'Yoq', 'Грань'],
+    ['Edge', 'Qirra', 'Ребро'],
+    ['Vertex', 'Uchi', 'Вершина'],
+    ['Volume', 'Hajm', 'Объём'],
+    ['Surface area', 'Sirt yuzasi', 'Площадь поверхности'],
+    ['Litre', 'Litr', 'Литр']
+  ],
+  timing: [[10, 'The two solids'], [12, 'Volume'], [12, 'Surface area'], [6, 'Units and capacity']],
+  sections: [
+    {
+      h: 'The two solids',
+      html: `<p>A cuboid has six rectangular faces, meeting in twelve edges at eight vertices. A cube is the
+      cuboid whose twelve edges are all the same length.</p>
+      {{fig:cubeLabelled:A cube — six faces, twelve edges, eight vertices}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Faces</th><th>Edges</th><th>Vertices</th><th>Faces are</th></tr></thead>
+      <tbody>
+        <tr><td>cuboid</td><td class="m">6</td><td class="m">12</td><td class="m">8</td><td>rectangles, equal in opposite pairs</td></tr>
+        <tr><td>cube</td><td class="m">6</td><td class="m">12</td><td class="m">8</td><td>six equal squares</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Three lengths describe a cuboid completely</div>
+      Length, width and height — usually written ${m('a')}, ${m('b')}, ${m('c')}. For a cube all three are
+      the same, so one number is enough.</div>`
+    },
+    {
+      h: 'Volume',
+      html: `${eq(m('V = abc') + '     and for a cube     ' + m('V = a³'), true)}
+      <p>The bottom layer holds ${m('ab')} unit cubes, and there are ${m('c')} such layers.</p>
+      {{fig:prismVolume:Area of the base multiplied by the height — the rule behind every prism}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Dimensions</th><th>Working</th><th>Volume</th></tr></thead>
+      <tbody>
+        <tr><td>cuboid</td><td class="m">5 × 4 × 3 cm</td><td class="m">5 · 4 · 3</td><td class="m">60 cm³</td></tr>
+        <tr><td>cuboid</td><td class="m">8 × 5 × 2 cm</td><td class="m">8 · 5 · 2</td><td class="m">80 cm³</td></tr>
+        <tr><td>cuboid</td><td class="m">10 × 6 × 4 cm</td><td class="m">10 · 6 · 4</td><td class="m">240 cm³</td></tr>
+        <tr><td>cube</td><td class="m">4 cm edge</td><td class="m">4³</td><td class="m">64 cm³</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">All three lengths in the same unit</span>
+      A box ${m('1')} m by ${m('50')} cm by ${m('40')} cm is ${m('100 × 50 × 40 = 200 000')} cm³, not
+      ${m('1 × 50 × 40')}. Convert first, multiply second.</div>`
+    },
+    {
+      h: 'Surface area',
+      html: `<p>The six faces come in three equal pairs, so the total is twice the sum of three
+      rectangles.</p>
+      ${eq(m('S = 2(ab + bc + ac)') + '     and for a cube     ' + m('S = 6a²'), true)}
+      {{fig:surfaceNet:The net — the six faces laid flat, which is what the formula adds up}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>The three rectangles</th><th>Sum</th><th>Surface area</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5 × 4 × 3</td><td class="m">20, 12, 15</td><td class="m">47</td><td class="m">94 cm²</td></tr>
+        <tr><td class="m">8 × 5 × 2</td><td class="m">40, 10, 16</td><td class="m">66</td><td class="m">132 cm²</td></tr>
+        <tr><td class="m">10 × 6 × 4</td><td class="m">60, 24, 40</td><td class="m">124</td><td class="m">248 cm²</td></tr>
+        <tr><td>cube, edge ${m('4')}</td><td class="m">16, 16, 16</td><td class="m">48</td><td class="m">96 cm²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Area is squared, volume is cubed</div>
+      Two lengths multiplied give ${m('cm²')}; three give ${m('cm³')}. An answer in the wrong unit is
+      almost always the wrong quantity.</div>`
+    },
+    {
+      h: 'Units and capacity',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Unit</th><th>Equals</th><th>Everyday size</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1 cm³</td><td class="m">1 ml</td><td>a small sugar cube</td></tr>
+        <tr><td class="m">1000 cm³</td><td class="m">1 litre</td><td>a cube of edge ${m('10')} cm</td></tr>
+        <tr><td class="m">1 m³</td><td class="m">1 000 000 cm³ = 1000 litres</td><td>a cube of edge ${m('1')} m</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('1')} m³ is a million cm³, not a hundred</span>
+      Each of the three lengths is multiplied by ${m('100')}, so the volume is multiplied by
+      ${m('100³ = 1 000 000')}. The same trap turns ${m('1')} m² into ${m('10 000')} cm², not ${m('100')}.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the volume and the surface area of a cuboid ' + m('5') + ' cm by ' + m('4') + ' cm by ' + m('3') + ' cm.',
+      steps: [
+        [m('V = 5 · 4 · 3 = 60') + ' cm³.', ''],
+        ['The three rectangles: ' + m('20, 12, 15') + '.', ''],
+        [m('S = 2 · 47 = 94') + ' cm².', 'Volume in ' + m('cm³') + ', area in ' + m('cm²') + ' ✓']
+      ],
+      ans: m('60') + ' cm³ and ' + m('94') + ' cm²'
+    },
+    {
+      q: 'A cube has edge ' + m('6') + ' cm. Find its volume and surface area.',
+      steps: [
+        [m('V = 6³ = 216') + ' cm³.', ''],
+        [m('S = 6 · 6² = 6 · 36') + '.', ''],
+        [m('S = 216') + ' cm².', 'The numbers agree only for edge ' + m('6') + ' — a coincidence, not a rule.']
+      ],
+      ans: m('216') + ' cm³ and ' + m('216') + ' cm²'
+    },
+    {
+      q: 'A tank measures ' + m('50') + ' cm by ' + m('40') + ' cm by ' + m('30') + ' cm. How many litres does it hold?',
+      steps: [
+        [m('V = 50 · 40 · 30 = 60 000') + ' cm³.', ''],
+        [m('1000') + ' cm³ is ' + m('1') + ' litre.', ''],
+        [m('60 000 ÷ 1000 = 60') + ' litres.', '']
+      ],
+      ans: m('60') + ' litres'
+    }
+  ],
+  modelNote: 'Hold up a chalk box and ask for the volume and the surface area of the same object; separating “how much fits in” from “how much wraps round” is the whole lesson.',
+  interactive: {
+    type: 'solidVolume',
+    title: 'Base area times height',
+    hint: 'Set the base to four sides for a box. Change the base and the height, and watch the volume and the surface area respond differently.'
+  },
+  quiz: [
+    { q: 'A cuboid has:', a: [m('4') + ' faces', m('6') + ' faces', m('8') + ' faces', m('12') + ' faces'], c: 1, why: 'Three pairs.' },
+    { q: 'The volume of a ' + m('5 × 4 × 3') + ' cuboid is:', a: [m('12'), m('60'), m('94'), m('47')], c: 1, why: 'Multiply all three.' },
+    { q: 'The surface area of that cuboid is:', a: [m('47'), m('60'), m('94'), m('188')], c: 2, why: m('2(20 + 12 + 15)') + '.' },
+    { q: 'A cube of edge ' + m('4') + ' cm has volume:', a: [m('12'), m('16'), m('64'), m('96')], c: 2, why: m('4³') + '.' },
+    { q: m('1') + ' litre is:', a: [m('100') + ' cm³', m('1000') + ' cm³', m('1') + ' m³', m('10') + ' cm³'], c: 1, why: 'A cube of edge ' + m('10') + ' cm.' },
+    { q: m('1') + ' m³ in cm³ is:', a: [m('100'), m('10 000'), m('1 000 000'), m('1000')], c: 2, why: m('100³') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['The number of faces of a cuboid', m('6')],
+      ['The number of edges of a cuboid', m('12')],
+      ['The number of vertices of a cuboid', m('8')],
+      ['The volume of a cube of edge ' + m('4') + ' cm', m('64') + ' cm³'],
+      ['The volume of a ' + m('5 × 4 × 3') + ' cm cuboid', m('60') + ' cm³'],
+      ['The surface area of a cube of edge ' + m('4') + ' cm', m('96') + ' cm²'],
+      [m('1') + ' litre in cm³', m('1000') + ' cm³']
+    ],
+    med: [
+      ['The volume of an ' + m('8 × 5 × 2') + ' cm cuboid', m('80') + ' cm³'],
+      ['The surface area of a ' + m('5 × 4 × 3') + ' cm cuboid', m('94') + ' cm²'],
+      ['The surface area of an ' + m('8 × 5 × 2') + ' cm cuboid', m('132') + ' cm²'],
+      ['The volume of a cube of edge ' + m('10') + ' cm, in litres', m('1') + ' litre'],
+      ['The volume of a ' + m('10 × 6 × 4') + ' cm cuboid', m('240') + ' cm³'],
+      ['The surface area of a cube of edge ' + m('5') + ' cm', m('150') + ' cm²'],
+      [m('1') + ' m³ in litres', m('1000') + ' litres']
+    ],
+    hard: [
+      ['A cube has volume ' + m('216') + ' cm³: its edge', m('6') + ' cm'],
+      ['…and its surface area', m('216') + ' cm²'],
+      ['A ' + m('12 × 5 × h') + ' cm cuboid has volume ' + m('300') + ' cm³: find ' + m('h'), m('5') + ' cm'],
+      [m('2') + ' m³ in cm³', m('2 000 000') + ' cm³'],
+      ['A tank ' + m('50 × 40 × 30') + ' cm, in litres', m('60') + ' litres'],
+      ['How many cubes of edge ' + m('3') + ' cm fill a cube of edge ' + m('6') + ' cm?', m('8')],
+      ['Which cube has surface area equal in number to its volume?', 'Edge ' + m('6') + ', both ' + m('216')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the unit on every answer; it is the quickest check that the right quantity was found.',
+  homework: [
+    'Find the volume and the surface area of a cuboid ' + m('7') + ' cm by ' + m('4') + ' cm by ' + m('2') + ' cm.',
+    'Find the volume and the surface area of a cube of edge ' + m('5') + ' cm.',
+    'A box is ' + m('1') + ' m by ' + m('60') + ' cm by ' + m('50') + ' cm. Find its volume in cm³.',
+    'How many litres does a tank ' + m('80') + ' cm by ' + m('50') + ' cm by ' + m('25') + ' cm hold?',
+    'Explain in one sentence why ' + m('1') + ' m³ is ' + m('1 000 000') + ' cm³ and not ' + m('100') + ' cm³.'
+  ]
+});
