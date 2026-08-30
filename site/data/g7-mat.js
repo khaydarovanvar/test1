@@ -9617,3 +9617,356 @@ G7_MAT.push({
     'Explain in one sentence why ' + m('x² + 16') + ' does not factorise.'
   ]
 });
+
+/* ============================== 56 ============================== */
+G7_MAT.push({
+  id: 'g7-56', stream: 'mat', grade: 7, quarter: 3, lessons: '102–103', hours: 2,
+  title: 'The cube of a sum. The cube of a difference',
+  subtitle: 'Four terms, coefficients ' + m('1, 3, 3, 1') + ', and the signs that alternate in the second formula.',
+  uz: 'Matematika 7, §46', uzPage: 'pp. 297–303',
+  cam: 'Beyond Stage 8', camPage: 'Stage 8 extension', wb: 'Extension sheet 2A',
+  objectives: [
+    'Derive ' + m('(a + b)³') + ' from ' + m('(a + b)²') + ' by one more multiplication.',
+    'Write both cube formulae from memory, with the right signs.',
+    'Expand cubes of binomials with coefficients and two letters.',
+    'Recognise a perfect cube and cube numbers mentally.'
+  ],
+  terms: [
+    ['Cube of a sum', 'Yig‘indining kubi', 'Куб суммы'],
+    ['Cube of a difference', 'Ayirmaning kubi', 'Куб разности'],
+    ['Cube', 'Kub', 'Куб'],
+    ['Coefficient', 'Koeffitsiyent', 'Коэффициент'],
+    ['Alternating signs', 'Almashinuvchi ishoralar', 'Чередующиеся знаки'],
+    ['Perfect cube', 'To‘la kub', 'Полный куб'],
+    ['Expansion', 'Yoyilma', 'Разложение'],
+    ['Pattern', 'Qonuniyat', 'Закономерность']
+  ],
+  timing: [[15, 'From the square to the cube'], [20, 'The two formulae'], [25, 'Expanding with coefficients'], [20, 'Reading a cube backwards'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'From the square to the cube',
+      html: `<p>${m('(a + b)³')} is ${m('(a + b)²')} multiplied by one more bracket — nothing more
+      mysterious than that.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>the square</td><td class="m">a² + 2ab + b²</td></tr>
+        <tr><td>times ${m('a')}</td><td class="m">a³ + 2a²b + ab²</td></tr>
+        <tr><td>times ${m('b')}</td><td class="m">a²b + 2ab² + b³</td></tr>
+        <tr><td>collect</td><td class="m">a³ + 3a²b + 3ab² + b³</td></tr>
+      </tbody></table></div>
+      ${eq(m('(a + b)³ = a³ + 3a²b + 3ab² + b³'), true)}
+      <div class="keybox"><div class="klabel">The coefficients are ${m('1, 3, 3, 1')}</div>
+      The square had ${m('1, 2, 1')} and the cube has ${m('1, 3, 3, 1')}. Each row of this triangle of
+      numbers is built from the one above it — a pattern you will meet again in Grade 11 under the name
+      of the binomial theorem.</div>`
+    },
+    {
+      h: 'The two formulae',
+      html: `${eq(m('(a + b)³ = a³ + 3a²b + 3ab² + b³'), true)}
+      ${eq(m('(a − b)³ = a³ − 3a²b + 3ab² − b³'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Term</th><th>In ${m('(a + b)³')}</th><th>In ${m('(a − b)³')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">a³</td><td class="m">+</td><td class="m">+</td></tr>
+        <tr><td class="m">3a²b</td><td class="m">+</td><td class="m">−</td></tr>
+        <tr><td class="m">3ab²</td><td class="m">+</td><td class="m">+</td></tr>
+        <tr><td class="m">b³</td><td class="m">+</td><td class="m">−</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">In the difference the signs alternate, and the last one is minus</span>
+      Unlike ${m('(a − b)²')}, which ends in ${m('+ b²')}, the cube ends in ${m('− b³')} — because an odd
+      power of a negative number stays negative. Ending a cube with a plus is the standard slip.</div>`
+    },
+    {
+      h: 'Expanding with coefficients',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th class="m">a</th><th class="m">b</th><th>Expansion</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(x + 2)³</td><td class="m">x</td><td class="m">2</td><td class="m">x³ + 6x² + 12x + 8</td></tr>
+        <tr><td class="m">(x − 1)³</td><td class="m">x</td><td class="m">1</td><td class="m">x³ − 3x² + 3x − 1</td></tr>
+        <tr><td class="m">(2x + 1)³</td><td class="m">2x</td><td class="m">1</td><td class="m">8x³ + 12x² + 6x + 1</td></tr>
+        <tr><td class="m">(a − 2b)³</td><td class="m">a</td><td class="m">2b</td><td class="m">a³ − 6a²b + 12ab² − 8b³</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The whole term is cubed, coefficient included</span>
+      In ${m('(2x + 1)³')} the first term is ${m('(2x)³ = 8x³')}, not ${m('2x³')}. Every power in the
+      expansion applies to the bracketed term as a whole.</div>`
+    },
+    {
+      h: 'Reading a cube backwards',
+      html: `<p>Four terms with coefficients in the ratio ${m('1 : 3 : 3 : 1')} and matching cube roots
+      make a perfect cube.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>As a cube</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x³ + 6x² + 12x + 8</td><td class="m">(x + 2)³</td></tr>
+        <tr><td class="m">x³ − 3x² + 3x − 1</td><td class="m">(x − 1)³</td></tr>
+        <tr><td class="m">8x³ + 12x² + 6x + 1</td><td class="m">(2x + 1)³</td></tr>
+        <tr><td class="m">x³ + 3x² + 3x + 2</td><td>not a cube — the last term should be ${m('1')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Cubing numbers in the head</div>
+      ${m('21³ = (20 + 1)³ = 8000 + 1200 + 60 + 1 = 9261')}, and ${m('19³ = (20 − 1)³ = 8000 − 1200 + 60 − 1 = 6859')}.
+      The alternating signs are easiest to see in exactly these calculations.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Expand ' + m('(2x + 1)³') + '.',
+      steps: [
+        [m('a = 2x') + ', ' + m('b = 1') + '.', ''],
+        [m('a³ = 8x³'), 'The coefficient is cubed too.'],
+        [m('3a²b = 3 · 4x² · 1 = 12x²'), ''],
+        [m('3ab² = 3 · 2x · 1 = 6x') + ', and ' + m('b³ = 1') + '.', '']
+      ],
+      ans: m('8x³ + 12x² + 6x + 1')
+    },
+    {
+      q: 'Expand ' + m('(a − 2b)³') + '.',
+      steps: [
+        [m('a³'), ''],
+        [m('−3a²(2b) = −6a²b'), ''],
+        [m('+3a(2b)² = 12ab²'), ''],
+        [m('−(2b)³ = −8b³'), '']
+      ],
+      ans: m('a³ − 6a²b + 12ab² − 8b³')
+    },
+    {
+      q: 'Find ' + m('19³') + ' mentally.',
+      steps: [
+        [m('19 = 20 − 1'), ''],
+        [m('20³ = 8000'), ''],
+        [m('−3 · 400 · 1 = −1200') + ' and ' + m('+3 · 20 · 1 = +60') + '.', ''],
+        [m('8000 − 1200 + 60 − 1 = 6859'), '']
+      ],
+      ans: m('6859')
+    }
+  ],
+  modelNote: 'Build the row 1, 3, 3, 1 from 1, 2, 1 on the board by adding neighbours; the class then predicts 1, 4, 6, 4, 1 without being told, and the pattern is theirs.',
+  interactive: {
+    type: 'quiz',
+    title: 'Signs and coefficients of a cube',
+    hint: 'Four terms every time.',
+    items: [
+      { q: 'The coefficients of ' + m('(a + b)³') + ' are:', a: [m('1, 2, 1'), m('1, 3, 3, 1'), m('1, 1, 1, 1'), m('1, 4, 6, 4, 1')], c: 1, why: 'One row below the square.' },
+      { q: 'How many terms does a cube of a binomial have?', a: [m('2'), m('3'), m('4'), m('6')], c: 2, why: m('a³, 3a²b, 3ab², b³') + '.' },
+      { q: 'The last term of ' + m('(a − b)³') + ' is:', a: [m('+ b³'), m('− b³'), m('+ b²'), m('− b²')], c: 1, why: 'An odd power of a negative.' },
+      { q: 'The last term of ' + m('(a − b)²') + ' is:', a: [m('+ b²'), m('− b²'), m('+ b³'), m('− 2b')], c: 0, why: 'A square is never negative.' },
+      { q: 'The first term of ' + m('(2x + 1)³') + ' is:', a: [m('2x³'), m('4x³'), m('6x³'), m('8x³')], c: 3, why: m('(2x)³') + '.' },
+      { q: m('(x − 1)³') + ' equals:', a: [m('x³ − 1'), m('x³ − 3x² + 3x − 1'), m('x³ + 3x² + 3x + 1'), m('x³ − 3x + 1')], c: 1, why: 'Alternating signs.' },
+      { q: m('19³') + ' equals:', a: [m('6859'), m('6959'), m('5832'), m('6561')], c: 0, why: m('8000 − 1200 + 60 − 1') + '.' },
+      { q: 'The row after ' + m('1, 3, 3, 1') + ' is:', a: [m('1, 4, 4, 1'), m('1, 4, 6, 4, 1'), m('1, 3, 4, 3, 1'), m('1, 5, 10, 5, 1')], c: 1, why: 'Add neighbouring pairs.' }
+    ]
+  },
+  quiz: [
+    { q: 'The coefficients in ' + m('(a + b)³') + ' are:', a: [m('1, 2, 1'), m('1, 3, 3, 1'), m('1, 1, 1, 1'), m('1, 4, 6, 4, 1')], c: 1, why: 'One row down from the square.' },
+    { q: m('(a − b)³') + ' ends in:', a: [m('+ b³'), m('− b³'), m('+ b²'), m('− b²')], c: 1, why: 'An odd power of a negative.' },
+    { q: m('(x − 1)³') + ' equals:', a: [m('x³ − 1'), m('x³ − 3x² + 3x − 1'), m('x³ + 3x² + 3x + 1'), m('x³ − 3x + 1')], c: 1, why: 'Alternating signs.' },
+    { q: 'The first term of ' + m('(2x + 1)³') + ' is:', a: [m('2x³'), m('6x³'), m('8x³'), m('4x³')], c: 2, why: m('(2x)³') + '.' },
+    { q: 'The middle terms of ' + m('(x + 2)³') + ' are:', a: [m('6x²') + ' and ' + m('12x'), m('4x²') + ' and ' + m('4x'), m('2x²') + ' and ' + m('8x'), m('3x²') + ' and ' + m('3x')], c: 0, why: m('3 · 2') + ' and ' + m('3 · 4') + '.' },
+    { q: m('21³') + ' equals:', a: [m('9261'), m('8000'), m('9241'), m('9361')], c: 0, why: m('8000 + 1200 + 60 + 1') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('(x + 1)³'), m('x³ + 3x² + 3x + 1')],
+      [m('(x − 1)³'), m('x³ − 3x² + 3x − 1')],
+      [m('(x + 2)³'), m('x³ + 6x² + 12x + 8')],
+      [m('(x − 2)³'), m('x³ − 6x² + 12x − 8')],
+      [m('(a + 3)³'), m('a³ + 9a² + 27a + 27')],
+      ['The coefficients of a cube', m('1, 3, 3, 1')],
+      [m('11³'), m('1331')]
+    ],
+    med: [
+      [m('(2x + 1)³'), m('8x³ + 12x² + 6x + 1')],
+      [m('(3a − 1)³'), m('27a³ − 27a² + 9a − 1')],
+      [m('(a − 2b)³'), m('a³ − 6a²b + 12ab² − 8b³')],
+      [m('x³ + 6x² + 12x + 8') + ' as a cube', m('(x + 2)³')],
+      [m('8x³ + 12x² + 6x + 1') + ' as a cube', m('(2x + 1)³')],
+      [m('21³'), m('9261')],
+      [m('19³'), m('6859')]
+    ],
+    hard: [
+      [m('(x + ' + f('1', 'x') + ')³'), m('x³ + 3x + ' + f('3', 'x') + ' + ' + f('1', 'x³'))],
+      [m('(a + b)³ − (a − b)³'), m('6a²b + 2b³')],
+      [m('(a + b)³ + (a − b)³'), m('2a³ + 6ab²')],
+      ['If ' + m('a + b = 5') + ' and ' + m('ab = 6') + ', find ' + m('a³ + b³'), m('35')],
+      [m('(2a − 3b)³'), m('8a³ − 36a²b + 54ab² − 27b³')],
+      ['Is ' + m('x³ + 3x² + 3x + 2') + ' a perfect cube?', 'No — the last term should be ' + m('1')],
+      ['The next row after ' + m('1, 3, 3, 1'), m('1, 4, 6, 4, 1')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the four signs before you write any numbers.',
+  homework: [
+    'Expand ' + m('(x + 4)³') + ' and ' + m('(x − 3)³') + '.',
+    'Expand ' + m('(3x + 2)³') + '.',
+    'Expand ' + m('(2a − b)³') + '.',
+    'Write ' + m('x³ − 9x² + 27x − 27') + ' as a cube.',
+    'Find ' + m('31³') + ' and ' + m('29³') + ' by the formulae.'
+  ]
+});
+
+/* ============================== 57 ============================== */
+G7_MAT.push({
+  id: 'g7-57', stream: 'mat', grade: 7, quarter: 3, lessons: '104–105', hours: 2,
+  title: 'The difference and the sum of two cubes',
+  subtitle: 'Two factorisations that a sum of squares never had — and the trinomial that will not factorise further.',
+  uz: 'Matematika 7, §47', uzPage: 'pp. 304–310',
+  cam: 'Beyond Stage 8', camPage: 'Stage 8 extension', wb: 'Extension sheet 2B',
+  objectives: [
+    'Verify ' + m('a³ − b³ = (a − b)(a² + ab + b²)') + ' by expanding.',
+    'Factorise sums and differences of cubes.',
+    'Distinguish the incomplete square ' + m('a² + ab + b²') + ' from ' + m('(a + b)²') + '.',
+    'Use the formulae in numerical work and in cancelling fractions.'
+  ],
+  terms: [
+    ['Difference of two cubes', 'Kublar ayirmasi', 'Разность кубов'],
+    ['Sum of two cubes', 'Kublar yig‘indisi', 'Сумма кубов'],
+    ['Incomplete square', 'To‘liqsiz kvadrat', 'Неполный квадрат'],
+    ['Cube root', 'Kub ildiz', 'Кубический корень'],
+    ['Trinomial', 'Uch had', 'Трёхчлен'],
+    ['Opposite signs', 'Qarama-qarshi ishoralar', 'Противоположные знаки'],
+    ['To verify', 'Tekshirmoq', 'Проверить'],
+    ['Factorisation', 'Ko‘paytuvchilarga ajratish', 'Разложение на множители']
+  ],
+  timing: [[15, 'The two formulae'], [20, 'Why the middle terms vanish'], [25, 'Factorising'], [20, 'Where they are used'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The two formulae',
+      html: `${eq(m('a³ − b³ = (a − b)(a² + ab + b²)'), true)}
+      ${eq(m('a³ + b³ = (a + b)(a² − ab + b²)'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Formula</th><th>Sign in the bracket of two</th><th>Sign of the middle term</th></tr></thead>
+      <tbody>
+        <tr><td class="m">a³ − b³</td><td class="m">−</td><td class="m">+ab</td></tr>
+        <tr><td class="m">a³ + b³</td><td class="m">+</td><td class="m">−ab</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The signs are always opposite</div>
+      Whatever sign stands between ${m('a')} and ${m('b')} in the short bracket, the middle term of the
+      long bracket takes the other one. Getting these two the same way round is the only real difficulty
+      in the topic.</div>`
+    },
+    {
+      h: 'Why the middle terms vanish',
+      html: `<p>Expand ${m('(a − b)(a² + ab + b²)')} in full and watch four of the six terms cancel.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Product</th><th>Terms</th></tr></thead>
+      <tbody>
+        <tr><td class="m">a · (a² + ab + b²)</td><td class="m">a³ + a²b + ab²</td></tr>
+        <tr><td class="m">−b · (a² + ab + b²)</td><td class="m">−a²b − ab² − b³</td></tr>
+        <tr><td>sum</td><td class="m">a³ − b³</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('a² + ab + b²')} is not ${m('(a + b)²')}</span>
+      The square has ${m('2ab')} in the middle; this trinomial has just ${m('ab')}. It is called the
+      <b>incomplete square</b> for exactly that reason, and it does not factorise any further.</div>`
+    },
+    {
+      h: 'Factorising',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th class="m">a</th><th class="m">b</th><th>Factorised</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x³ − 8</td><td class="m">x</td><td class="m">2</td><td class="m">(x − 2)(x² + 2x + 4)</td></tr>
+        <tr><td class="m">x³ + 27</td><td class="m">x</td><td class="m">3</td><td class="m">(x + 3)(x² − 3x + 9)</td></tr>
+        <tr><td class="m">8a³ − 1</td><td class="m">2a</td><td class="m">1</td><td class="m">(2a − 1)(4a² + 2a + 1)</td></tr>
+        <tr><td class="m">27x³ + 64y³</td><td class="m">3x</td><td class="m">4y</td><td class="m">(3x + 4y)(9x² − 12xy + 16y²)</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A sum of cubes does factorise</div>
+      ${m('a² + b²')} was a dead end, but ${m('a³ + b³')} is not — the odd power makes all the difference.
+      That is worth saying out loud, because the two look alike on the page.</div>`
+    },
+    {
+      h: 'Where they are used',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('x³ − 8', 'x − 2')}</td><td class="m">${f('(x − 2)(x² + 2x + 4)', 'x − 2')}</td><td class="m">x² + 2x + 4</td></tr>
+        <tr><td class="m">${f('x³ + 27', 'x + 3')}</td><td>cancel ${m('x + 3')}</td><td class="m">x² − 3x + 9</td></tr>
+        <tr><td class="m">10³ − 1</td><td class="m">9 · (100 + 10 + 1)</td><td class="m">999</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Why ${m('n³ − 1')} is always divisible by ${m('n − 1')}</div>
+      The factorisation shows it directly: one factor is ${m('n − 1')}. The same argument explains why
+      ${m('999')}, ${m('9999')} and every repunit-like number of that shape has an obvious divisor.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Factorise ' + m('8a³ − 1') + '.',
+      steps: [
+        [m('a = 2a') + ' and ' + m('b = 1') + ' — the cube roots.', ''],
+        ['Short bracket: ' + m('(2a − 1)') + '.', ''],
+        ['Long bracket: ' + m('(2a)² + 2a · 1 + 1² = 4a² + 2a + 1') + '.', 'Middle sign is the opposite.'],
+        [m('= (2a − 1)(4a² + 2a + 1)'), '']
+      ],
+      ans: m('(2a − 1)(4a² + 2a + 1)')
+    },
+    {
+      q: 'Factorise ' + m('27x³ + 64y³') + '.',
+      steps: [
+        [m('a = 3x') + ', ' + m('b = 4y') + '.', ''],
+        ['Short bracket: ' + m('(3x + 4y)') + '.', ''],
+        ['Long bracket: ' + m('9x² − 12xy + 16y²') + '.', 'Plus outside, minus inside.'],
+        [m('= (3x + 4y)(9x² − 12xy + 16y²)'), '']
+      ],
+      ans: m('(3x + 4y)(9x² − 12xy + 16y²)')
+    },
+    {
+      q: 'Simplify ' + m(f('x³ − 8', 'x − 2')) + '.',
+      steps: [
+        [m('x³ − 8 = (x − 2)(x² + 2x + 4)'), ''],
+        ['The factor ' + m('x − 2') + ' cancels.', ''],
+        [m('= x² + 2x + 4'), 'For ' + m('x ≠ 2') + '.']
+      ],
+      ans: m('x² + 2x + 4')
+    }
+  ],
+  modelNote: 'Ask the class to expand (a − b)(a² + ab + b²) themselves before the formula is given; the six terms collapsing to two is more convincing than any statement of the rule.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'A cube factorised, then cancelled',
+    hint: 'The short bracket is what cancels.'
+  },
+  quiz: [
+    { q: m('a³ − b³') + ' equals:', a: [m('(a − b)(a² + ab + b²)'), m('(a − b)³'), m('(a − b)(a² − ab + b²)'), m('(a − b)(a + b)²')], c: 0, why: 'Opposite signs.' },
+    { q: m('a³ + b³') + ' equals:', a: [m('(a + b)³'), m('(a + b)(a² − ab + b²)'), m('(a + b)(a² + ab + b²)'), 'it does not factorise'], c: 1, why: 'Opposite signs.' },
+    { q: m('x³ − 8') + ' factorises to:', a: [m('(x − 2)(x² + 2x + 4)'), m('(x − 2)³'), m('(x − 2)(x² − 2x + 4)'), m('(x − 8)(x² + 1)')], c: 0, why: m('b = 2') + '.' },
+    { q: m('a² + ab + b²') + ' is:', a: [m('(a + b)²'), 'the incomplete square', m('(a − b)²'), 'a difference of squares'], c: 1, why: 'It has ' + m('ab') + ', not ' + m('2ab') + '.' },
+    { q: m('x³ + 27') + ' factorises to:', a: [m('(x + 3)(x² − 3x + 9)'), m('(x + 3)³'), m('(x + 3)(x² + 3x + 9)'), 'it does not'], c: 0, why: 'Plus outside, minus inside.' },
+    { q: 'Compared with ' + m('a² + b²') + ', a sum of cubes:', a: ['also fails to factorise', 'does factorise', 'is a square', 'is negative'], c: 1, why: 'The odd power.' }
+  ],
+  practice: {
+    easy: [
+      [m('x³ − 8'), m('(x − 2)(x² + 2x + 4)')],
+      [m('x³ + 8'), m('(x + 2)(x² − 2x + 4)')],
+      [m('x³ − 1'), m('(x − 1)(x² + x + 1)')],
+      [m('x³ + 1'), m('(x + 1)(x² − x + 1)')],
+      [m('x³ + 27'), m('(x + 3)(x² − 3x + 9)')],
+      [m('x³ − 64'), m('(x − 4)(x² + 4x + 16)')],
+      ['The name of ' + m('a² + ab + b²'), 'the incomplete square']
+    ],
+    med: [
+      [m('8a³ − 1'), m('(2a − 1)(4a² + 2a + 1)')],
+      [m('27x³ + 64y³'), m('(3x + 4y)(9x² − 12xy + 16y²)')],
+      [m('125 − a³'), m('(5 − a)(25 + 5a + a²)')],
+      [m(f('x³ − 8', 'x − 2')), m('x² + 2x + 4')],
+      [m(f('x³ + 27', 'x + 3')), m('x² − 3x + 9')],
+      [m('10³ − 1') + ' factorised', m('9 · 111 = 999')],
+      ['Does ' + m('a³ + b³') + ' factorise?', 'Yes']
+    ],
+    hard: [
+      [m('64x³ − 27y³'), m('(4x − 3y)(16x² + 12xy + 9y²)')],
+      [m('2x³ + 16'), m('2(x + 2)(x² − 2x + 4)')],
+      [m('a⁶ − b⁶') + ' as a product of four factors', m('(a − b)(a + b)(a² + ab + b²)(a² − ab + b²)')],
+      ['Why is ' + m('n³ − 1') + ' always divisible by ' + m('n − 1') + '?', 'It is one of the factors'],
+      [m('x³ − ' + f('1', '8')), m('(x − ' + f('1', '2') + ')(x² + ' + f('x', '2') + ' + ' + f('1', '4') + ')')],
+      ['If ' + m('a + b = 5') + ' and ' + m('ab = 6') + ', find ' + m('a³ + b³') + ' using the formula', m('35')],
+      ['Factorise ' + m('x⁶ − 64') + ' as a difference of squares first', m('(x³ − 8)(x³ + 8)')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the short bracket first; its sign decides the middle sign of the long one.',
+  homework: [
+    'Factorise ' + m('x³ − 125') + ' and ' + m('x³ + 64') + '.',
+    'Factorise ' + m('27a³ − 8b³') + '.',
+    'Simplify ' + m(f('x³ + 1', 'x + 1')) + '.',
+    'Factorise ' + m('5x³ − 40') + ' completely.',
+    'Explain in one sentence the difference between ' + m('a² + ab + b²') + ' and ' + m('(a + b)²') + '.'
+  ]
+});
