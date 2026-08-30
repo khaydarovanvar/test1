@@ -15539,3 +15539,170 @@ G6_MAT.push({
     'Draw a ' + m('3 × 2 × 1') + ' stack of cubes and give its plan and two elevations.'
   ]
 });
+
+/* ============================== 87 ============================== */
+G6_MAT.push({
+  id: 'g6-87', stream: 'mat', grade: 6, quarter: 4, lessons: '189', hours: 1,
+  title: 'Control work 10 — three-dimensional shapes',
+  subtitle: 'Counts, nets, surface areas, volumes and views, in twenty marks.',
+  uz: 'Matematika 6, Nazorat ishi 10', uzPage: 'pp. 498–541',
+  cam: 'S7 8 review', camPage: 'Stage 7, pp. 84–96', wb: 'Control paper 10',
+  objectives: [
+    'Give the faces, edges and vertices of a named solid.',
+    'Find a surface area and a volume for a cuboid, a prism and a cylinder.',
+    'Describe the net of a cylinder with its measurements.',
+    'Name each lost mark by its type and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Prism', 'Prizma', 'Призма'],
+    ['Pyramid', 'Piramida', 'Пирамида'],
+    ['Cylinder', 'Silindr', 'Цилиндр'],
+    ['Net', 'Yoyilma', 'Развёртка'],
+    ['Surface area', 'Sirt yuzasi', 'Площадь поверхности'],
+    ['Volume', 'Hajm', 'Объём'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[2, 'Instructions'], [28, 'The paper'], [8, 'Answers and diagnosis'], [2, 'What comes next']],
+  sections: [
+    {
+      h: 'The paper — 20 marks, 28 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>The faces, edges and vertices of a hexagonal prism</td><td class="m">3</td><td>L175</td></tr>
+        <tr><td>2</td><td>The faces, edges and vertices of a square pyramid</td><td class="m">2</td><td>L175</td></tr>
+        <tr><td>3</td><td>The surface area of a ${m('6 × 5 × 4')} cm cuboid</td><td class="m">3</td><td>L182–184</td></tr>
+        <tr><td>4</td><td>The volume of that cuboid</td><td class="m">2</td><td>L176–178</td></tr>
+        <tr><td>5</td><td>A prism of cross-section ${m('15')} cm² and length ${m('8')} cm: its volume</td><td class="m">2</td><td>L176–178</td></tr>
+        <tr><td>6</td><td>A cylinder of radius ${m('4')} cm and height ${m('10')} cm: its volume, ${m('π = 3.14')}</td><td class="m">3</td><td>L176–178</td></tr>
+        <tr><td>7</td><td>Name the parts of a cylinder’s net and give the rectangle’s width for ${m('r = 4')}</td><td class="m">3</td><td>L182–184</td></tr>
+        <tr><td>8</td><td>The number of cubes and the surface of a ${m('2 × 2 × 2')} stack</td><td class="m">2</td><td>L179–181</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The answers</div>
+      ${m('8, 18, 12')}; ${m('5, 8, 5')}; ${m('148')} cm²; ${m('120')} cm³; ${m('120')} cm³;
+      ${m('502.4')} cm³; two circles and a rectangle of width ${m('25.12')} cm; ${m('8')} cubes and
+      ${m('24')} unit squares.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>hidden edges not counted</td><td class="m">16 edges</td><td class="m">18</td></tr>
+        <tr><td>the base of a pyramid forgotten</td><td class="m">4 faces</td><td class="m">5</td></tr>
+        <tr><td>surface area written in ${m('cm³')}</td><td class="m">148 cm³</td><td class="m">148 cm²</td></tr>
+        <tr><td>a prism’s parts added, not multiplied</td><td class="m">15 + 8</td><td class="m">15 · 8</td></tr>
+        <tr><td>${m('π')} left out of the cylinder</td><td class="m">16 · 10 = 160</td><td class="m">3.14 · 16 · 10</td></tr>
+        <tr><td>the net’s rectangle given width ${m('r')}</td><td class="m">4 cm</td><td class="m">2πr = 25.12 cm</td></tr>
+        <tr><td>every cube counted with six faces</td><td class="m">48</td><td class="m">24</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'What comes next',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>If you lost marks on</th><th>Revise</th></tr></thead>
+      <tbody>
+        <tr><td>Q1–Q2</td><td>counting faces, edges and vertices, L175</td></tr>
+        <tr><td>Q3 and Q7</td><td>nets and surface areas, L182–184</td></tr>
+        <tr><td>Q4–Q6</td><td>volumes of prisms and cylinders, L176–178</td></tr>
+        <tr><td>Q8</td><td>stacks of cubes and their views, L179–181</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      One more Think task on nets, then the general revision of the whole Grade 6 course, and finally the
+      presentation of the survey project.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q3: the surface area of a ' + m('6 × 5 × 4') + ' cm cuboid.',
+      steps: [
+        ['The three faces: ' + m('30, 20') + ' and ' + m('24') + ' cm².', ''],
+        [m('2(30 + 20 + 24)') + '.', ''],
+        [m('= 148') + ' cm².', 'Area, so ' + m('cm²') + ' ✓']
+      ],
+      ans: m('148') + ' cm²'
+    },
+    {
+      q: 'Model answer, Q6: a cylinder of radius ' + m('4') + ' cm and height ' + m('10') + ' cm.',
+      steps: [
+        ['Base area ' + m('3.14 · 16 = 50.24') + ' cm².', 'Taking ' + m('π = 3.14') + '.'],
+        [m('50.24 · 10') + '.', ''],
+        [m('= 502.4') + ' cm³.', '']
+      ],
+      ans: m('502.4') + ' cm³'
+    },
+    {
+      q: 'Model answer, Q7: the net of a cylinder of radius ' + m('4') + ' cm.',
+      steps: [
+        ['Two circles of radius ' + m('4') + ' cm and one rectangle.', ''],
+        ['The rectangle is as wide as the circumference, ' + m('2πr') + '.', ''],
+        [m('2 · 3.14 · 4 = 25.12') + ' cm.', 'Not ' + m('4') + ' cm.']
+      ],
+      ans: 'Two circles and a rectangle ' + m('25.12') + ' cm wide'
+    }
+  ],
+  modelNote: 'Return Q7 first and ask who wrote 4 cm; naming it as “the width is the circumference” settles it for the year.',
+  interactive: {
+    type: 'quiz',
+    title: 'The paper in eight questions',
+    hint: 'Name the family, then apply the rule; check the unit at the end.',
+    items: [
+      { q: 'A hexagonal prism has edges:', a: [m('12'), m('16'), m('18'), m('24')], c: 2, why: m('3n') + ' with ' + m('n = 6') + '.' },
+      { q: 'A square pyramid has faces:', a: [m('4'), m('5'), m('6'), m('8')], c: 1, why: 'The base and four triangles.' },
+      { q: 'The surface area of a ' + m('6 × 5 × 4') + ' cuboid is:', a: [m('74'), m('120'), m('148'), m('296')], c: 2, why: m('2(30 + 20 + 24)') + '.' },
+      { q: 'Its volume is:', a: [m('74'), m('120'), m('148'), m('15')], c: 1, why: m('6 · 5 · 4') + '.' },
+      { q: 'A prism of cross-section ' + m('15') + ' cm² and length ' + m('8') + ' cm holds:', a: [m('23'), m('30'), m('120'), m('60')], c: 2, why: 'Multiply, not add.' },
+      { q: 'A cylinder ' + m('r = 4') + ', ' + m('h = 10') + ' holds:', a: [m('160'), m('502.4'), m('251.2'), m('125.6')], c: 1, why: m('3.14 · 16 · 10') + '.' },
+      { q: 'The rectangle in its net is wide:', a: [m('4') + ' cm', m('12.56') + ' cm', m('25.12') + ' cm', m('50.24') + ' cm'], c: 2, why: m('2πr') + '.' },
+      { q: 'A ' + m('2 × 2 × 2') + ' stack of unit cubes has surface:', a: [m('8'), m('16'), m('24'), m('48')], c: 2, why: 'Six faces of four squares.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 is easiest to get wrong on:', a: ['the faces', 'the edges', 'the vertices', 'the name'], c: 1, why: 'Some edges are hidden.' },
+    { q: 'Q3 wants an answer in:', a: [m('cm'), m('cm²'), m('cm³'), 'litres'], c: 1, why: 'Surface area.' },
+    { q: 'Q5 multiplies the cross-section by:', a: ['three', 'the length', 'the surface', 'six'], c: 1, why: 'Base area times height.' },
+    { q: 'Q6 needs:', a: ['no ' + m('π'), m('π') + ' once', m('π') + ' twice', 'a square root'], c: 1, why: 'In the base area only.' },
+    { q: 'Q7 asks for the rectangle’s width, which is:', a: ['the radius', 'the diameter', 'the circumference', 'the height'], c: 2, why: 'The tube unrolls to that length.' },
+    { q: 'Q8 counts each glued pair of faces as:', a: ['visible', 'hidden', 'double', 'nothing'], c: 1, why: 'Two faces disappear per join.' }
+  ],
+  practice: {
+    easy: [
+      ['Faces, edges and vertices of a hexagonal prism', m('8, 18, 12')],
+      ['Faces, edges and vertices of a square pyramid', m('5, 8, 5')],
+      ['The volume of a ' + m('6 × 5 × 4') + ' cm cuboid', m('120') + ' cm³'],
+      ['Its surface area', m('148') + ' cm²'],
+      ['A prism of cross-section ' + m('15') + ' cm², length ' + m('8') + ' cm', m('120') + ' cm³'],
+      ['The parts of a cylinder’s net', 'Two circles and a rectangle'],
+      ['Cubes in a ' + m('2 × 2 × 2') + ' stack', m('8')]
+    ],
+    med: [
+      ['A cylinder ' + m('r = 4') + ' cm, ' + m('h = 10') + ' cm, ' + m('π = 3.14'), m('502.4') + ' cm³'],
+      ['The width of the rectangle in that net', m('25.12') + ' cm'],
+      ['The surface of a ' + m('2 × 2 × 2') + ' stack of unit cubes', m('24')],
+      ['The base area of that cylinder', m('50.24') + ' cm²'],
+      ['The curved surface of that cylinder', m('251.2') + ' cm²'],
+      ['Its total surface area', m('351.68') + ' cm²'],
+      [m('F + V − E') + ' for the hexagonal prism', m('2')]
+    ],
+    hard: [
+      ['Why is ' + m('16') + ' the wrong number of edges for a hexagonal prism?', 'Two upright edges were hidden'],
+      ['Why is ' + m('160') + ' cm³ wrong for the cylinder?', m('π') + ' was left out of the base area'],
+      ['Why is ' + m('48') + ' wrong for the ' + m('2 × 2 × 2') + ' stack?', 'The glued faces were counted'],
+      ['A prism of volume ' + m('120') + ' cm³ and length ' + m('8') + ' cm: its cross-section', m('15') + ' cm²'],
+      ['A cuboid of surface ' + m('148') + ' cm², ' + m('6') + ' by ' + m('5') + ': the third edge', m('4') + ' cm'],
+      ['A cylinder of volume ' + m('502.4') + ' cm³ and radius ' + m('4') + ' cm: its height', m('10') + ' cm'],
+      ['The commonest lost mark in this paper', 'The width of the cylinder’s rectangle']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every question you lost a mark on in full, with the units on every line.',
+  homework: [
+    'Rewrite in full every question on which you lost a mark, naming the slip in the margin.',
+    'Give the faces, edges and vertices of an octagonal prism and check them.',
+    'Find the volume and the surface area of a cuboid ' + m('8') + ' cm by ' + m('4') + ' cm by ' + m('3') + ' cm.',
+    'A cylinder has radius ' + m('5') + ' cm and height ' + m('6') + ' cm. Find its volume and its total surface area.',
+    'Draw a ' + m('3 × 2 × 1') + ' stack of unit cubes and give its surface area in unit squares.'
+  ]
+});
