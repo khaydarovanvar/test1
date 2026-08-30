@@ -6103,3 +6103,360 @@ G9_GEO.push({
     'Find the area of the segment cut off by a ' + m('60°') + ' chord in a circle of radius ' + m('12') + '.'
   ]
 });
+
+/* ============================== 37 ============================== */
+G9_GEO.push({
+  id: 'g9-37', stream: 'geo', grade: 9, quarter: 4, lessons: '53–54', hours: 2,
+  title: 'The projection of segments, and proportionality',
+  subtitle: 'Parallel lines cut any two transversals in the same ratios — the theorem of Thales, in full.',
+  uz: 'Geometriya 9, §30', uzPage: 'pp. 183–189',
+  cam: 'IGX 11.2', camPage: 'Core & Extended, pp. 226–231', wb: 'Exercise 11.2',
+  objectives: [
+    'Define the projection of a segment onto a line.',
+    'State and use Thales’ theorem for a family of parallel lines.',
+    'Divide a segment in a given ratio by construction.',
+    'Use the theorem to prove that a line is parallel to a side.'
+  ],
+  terms: [
+    ['Projection', 'Proyeksiya', 'Проекция'],
+    ['Transversal', 'Kesuvchi', 'Секущая'],
+    ['Parallel lines', 'Parallel to‘g‘ri chiziqlar', 'Параллельные прямые'],
+    ['Thales’ theorem', 'Fales teoremasi', 'Теорема Фалеса'],
+    ['Proportional segments', 'Proporsional kesmalar', 'Пропорциональные отрезки'],
+    ['To divide in a ratio', 'Nisbatda bo‘lish', 'Разделить в отношении'],
+    ['Equal segments', 'Teng kesmalar', 'Равные отрезки'],
+    ['Converse', 'Teskari teorema', 'Обратная теорема']
+  ],
+  timing: [[15, 'Projection'], [25, 'Thales’ theorem'], [25, 'Dividing a segment'], [20, 'The converse'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Projection',
+      html: `<p>The <b>projection</b> of a point onto a line is the foot of the perpendicular from it. The
+      projection of a segment ${m('AB')} is the segment ${m('A′B′')} joining the projections of its
+      ends.</p>
+      {{fig:orthoProjection:Dropping perpendiculars from both ends gives the projection of a segment.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Segment</th><th>Its projection</th></tr></thead>
+      <tbody>
+        <tr><td>parallel to the line</td><td>equal in length</td></tr>
+        <tr><td>at ${m('α')} to the line</td><td class="m">AB cos α</td></tr>
+        <tr><td>perpendicular to the line</td><td>a single point</td></tr>
+      </tbody></table></div>
+      <p>In a right triangle, the projections of the two legs onto the hypotenuse are the two parts into
+      which the altitude divides it — the figure of Quarter I, met again.</p>
+      <div class="keybox"><div class="klabel">A projection is never longer than the segment</div>
+      Because ${m('cos α ≤ 1')}. That gives an immediate check on any answer, and it is the reason a
+      shadow is shorter than the object except when the light is level.</div>`
+    },
+    {
+      h: 'Thales’ theorem',
+      html: `${eq('Parallel lines cutting two transversals cut off proportional segments on them', true)}
+      {{fig:thales:Three parallels across two transversals — the ratios on one match the ratios on the other.}}
+      <p>If three parallels cut one transversal in ${m('A, B, C')} and the other in ${m('A₁, B₁, C₁')},
+      then</p>
+      ${eq(m(f('AB', 'BC') + ' = ' + f('A₁B₁', 'B₁C₁')), true)}
+      <p>In particular, if the parallels cut equal segments on one transversal they cut equal segments on
+      every transversal — which is the classical form of the theorem, and the basis of the construction
+      in the next section.</p>
+      <div class="warn"><span class="wl">The transversals need not be parallel to each other</span>
+      They may meet, cross, or be at any angle. Only the <b>cutting</b> lines must be parallel. Applying
+      the theorem to a figure with non-parallel cutting lines is the error to watch for.</div>`
+    },
+    {
+      h: 'Dividing a segment',
+      html: `<p><b>Problem.</b> Divide a given segment ${m('AB')} in the ratio ${m('3 : 5')} using only
+      compasses and a straight edge.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>What to do</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>draw any ray ${m('AX')} from ${m('A')}</td></tr>
+        <tr><td>2</td><td>mark ${m('8')} equal steps along it: ${m('P₁, …, P₈')}</td></tr>
+        <tr><td>3</td><td>join ${m('P₈')} to ${m('B')}</td></tr>
+        <tr><td>4</td><td>draw the parallel to ${m('P₈B')} through ${m('P₃')}</td></tr>
+        <tr><td>5</td><td>it meets ${m('AB')} at the required point</td></tr>
+      </tbody></table></div>
+      <p>The equal steps are made with one compass opening, and the parallels do the rest. No measuring
+      is required, and the construction works for any ratio of whole numbers.</p>
+      <div class="keybox"><div class="klabel">${m('3 : 5')} needs ${m('8')} steps, not ${m('5')}</div>
+      The total of the two parts of the ratio is the number of equal steps to mark. Marking ${m('5')} and
+      counting ${m('3')} gives ${m('3 : 2')} instead.</div>`
+    },
+    {
+      h: 'The converse',
+      html: `${eq('If a line divides two sides of a triangle proportionally, it is parallel to the third side', true)}
+      <p>This is the form used in proofs. From ${m(f('AD', 'DB') + ' = ' + f('AE', 'EC'))} it follows that
+      ${m('DE ∥ BC')} — and the second criterion of similarity is what proves it.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Conclude</th></tr></thead>
+      <tbody>
+        <tr><td class="m">DE ∥ BC</td><td class="m">${f('AD', 'DB')} = ${f('AE', 'EC')}</td></tr>
+        <tr><td class="m">${f('AD', 'DB')} = ${f('AE', 'EC')}</td><td class="m">DE ∥ BC</td></tr>
+        <tr><td class="m">DE ∥ BC</td><td class="m">${f('AD', 'AB')} = ${f('DE', 'BC')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Two different ratios, both correct</span>
+      ${m(f('AD', 'DB'))} uses the two <b>parts</b>; ${m(f('AD', 'AB'))} uses the part and the
+      <b>whole</b>. Both are valid, but only the second gives ${m(f('DE', 'BC'))}. Mixing them is the
+      commonest error in this topic.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'In ' + m('△ABC') + ', ' + m('DE ∥ BC') + ', ' + m('AD = 4') + ', ' + m('DB = 6') + ', ' + m('AE = 5') + '. Find ' + m('EC') + '.',
+      steps: [
+        [m(f('AD', 'DB') + ' = ' + f('AE', 'EC')), 'Parts to parts.'],
+        [m(f('4', '6') + ' = ' + f('5', 'EC')), ''],
+        [m('4 · EC = 30'), ''],
+        [m('EC = 7.5'), '']
+      ],
+      ans: m('EC = 7.5')
+    },
+    {
+      q: 'Three parallels cut one transversal into ' + m('3') + ' and ' + m('7') + '. They cut the other into ' + m('4.5') + ' and ' + m('x') + '. Find ' + m('x') + '.',
+      steps: [
+        [m(f('3', '7') + ' = ' + f('4.5', 'x')), ''],
+        [m('3x = 31.5'), ''],
+        [m('x = 10.5'), ''],
+        ['Check: ' + m(f('4.5', '10.5') + ' = ' + f('3', '7')) + ' ✓', '']
+      ],
+      ans: m('x = 10.5')
+    },
+    {
+      q: 'A segment ' + m('AB = 24') + ' is divided in the ratio ' + m('3 : 5') + '. Find the two parts.',
+      steps: [
+        ['Total parts: ' + m('3 + 5 = 8') + '.', ''],
+        ['One part ' + m('= ' + f('24', '8') + ' = 3') + '.', ''],
+        [m('3 × 3 = 9') + ' and ' + m('5 × 3 = 15') + '.', ''],
+        ['Check: ' + m('9 + 15 = 24') + ' ✓', '']
+      ],
+      ans: m('9') + ' and ' + m('15')
+    }
+  ],
+  modelNote: 'Divide a strip of paper into five equal parts using only a ruled exercise book: the printed parallel lines do the work, and Thales’ theorem becomes a practical trick.',
+  interactive: {
+    type: 'thales',
+    title: 'Parallels and ratios',
+    hint: 'Slide a parallel and watch both ratios move together.'
+  },
+  quiz: [
+    { q: 'The projection of a segment at ' + m('α') + ' to a line:', a: [m('AB'), m('AB cos α'), m('AB sin α'), m('AB tan α')], c: 1, why: 'Never longer than the segment.' },
+    { q: 'Thales’ theorem needs:', a: ['parallel transversals', 'parallel cutting lines', 'a right angle', 'equal segments'], c: 1, why: 'Only the cutting lines.' },
+    { q: m('DE ∥ BC') + ' gives:', a: [m(f('AD', 'DB') + ' = ' + f('AE', 'EC')), m('AD = AE'), m('DE = BC'), 'nothing'], c: 0, why: 'Proportional parts.' },
+    { q: m(f('AD', 'AB')) + ' equals:', a: [m(f('DE', 'BC')), m(f('AD', 'DB')), m(f('BC', 'DE')), m('1')], c: 0, why: 'Part to whole.' },
+    { q: 'To divide in ' + m('3 : 5') + ', mark:', a: [m('3'), m('5'), m('8'), m('15')], c: 2, why: 'The sum of the parts.' },
+    { q: 'The converse of Thales gives:', a: ['equal lengths', 'parallelism', 'a right angle', 'similarity of areas'], c: 1, why: 'Proportional division ⇒ parallel.' }
+  ],
+  practice: {
+    easy: [
+      [m('DE ∥ BC') + ', ' + m('AD = 4, DB = 6, AE = 5') + ': ' + m('EC'), m('7.5')],
+      [m('AD = 3, DB = 6, AE = 4') + ': ' + m('EC'), m('8')],
+      ['Divide ' + m('24') + ' in ' + m('3 : 5'), m('9') + ' and ' + m('15')],
+      ['Divide ' + m('35') + ' in ' + m('2 : 5'), m('10') + ' and ' + m('25')],
+      ['Projection of a segment parallel to the line', 'The segment itself'],
+      ['Projection of a perpendicular segment', 'A point'],
+      ['To divide in ' + m('2 : 7') + ', how many steps?', m('9')]
+    ],
+    med: [
+      ['Parallels cutting ' + m('3, 7') + ' and ' + m('4.5, x'), m('x = 10.5')],
+      ['Parallels cutting ' + m('5, 8') + ' and ' + m('x, 12'), m('x = 7.5')],
+      [m('DE ∥ BC') + ', ' + m('AD : AB = 2 : 5') + ': ' + m('DE : BC'), m('2 : 5')],
+      ['Same: ' + m('AD : DB'), m('2 : 3')],
+      ['Projection of a segment ' + m('10') + ' at ' + m('60°'), m('5')],
+      ['Projection of a segment ' + m('10') + ' at ' + m('30°'), m('5' + sr('3'))],
+      ['Is ' + m('DE ∥ BC') + ' if ' + m('AD = 4, DB = 6, AE = 6, EC = 9') + '?', 'Yes']
+    ],
+    hard: [
+      ['A segment ' + m('AB = 30') + ' with ' + m('AP : PB = 2 : 3') + ': ' + m('AP'), m('12')],
+      ['A triangle with a midline: the ratio it cuts each side in', m('1 : 1')],
+      ['Three parallels cut ' + m('AB') + ' into ' + m('x, 2x, 3x') + ' and ' + m('CD = 24') + ': its parts', m('4, 8, 12')],
+      ['A trapezium: a line parallel to the bases through the diagonal intersection', 'Divides each leg equally by ratio'],
+      ['In ' + m('△ABC') + ', ' + m('D') + ' on ' + m('AB') + ' with ' + m('AD : DB = 1 : 2') + ' and ' + m('DE ∥ BC') + ': ' + m('[△ADE] : [ABC]'), m('1 : 9')],
+      ['Same figure: ' + m('[△ADE] : [DBCE]'), m('1 : 8')],
+      ['A ladder against a wall makes ' + m('65°') + ': the projection of its ' + m('6 m') + ' length on the ground', m('≈ 2.54 m')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Say each time whether your ratio is part-to-part or part-to-whole.',
+  homework: [
+    'In ' + m('△ABC') + ', ' + m('DE ∥ BC') + ', ' + m('AD = 6') + ', ' + m('DB = 4') + ', ' + m('AE = 9') + '. Find ' + m('EC') + '.',
+    'Divide a segment of length ' + m('42') + ' in the ratio ' + m('3 : 4') + '.',
+    'Three parallels cut one transversal into ' + m('4') + ' and ' + m('9') + ', and the other into ' + m('6') + ' and ' + m('x') + '. Find ' + m('x') + '.',
+    'Describe the construction that divides a segment in the ratio ' + m('2 : 5') + '.',
+    'Find the projection of a segment of length ' + m('12') + ' making ' + m('45°') + ' with a line.'
+  ]
+});
+
+/* ============================== 38 ============================== */
+G9_GEO.push({
+  id: 'g9-38', stream: 'geo', grade: 9, quarter: 4, lessons: '55–56', hours: 2,
+  title: 'Properties of proportional segments',
+  subtitle: 'The bisector theorems, internal and external — and the ratios they create.',
+  uz: 'Geometriya 9, §31', uzPage: 'pp. 190–196',
+  cam: 'IGX 11.2', camPage: 'Core & Extended, pp. 226–231', wb: 'Exercise 11.2',
+  objectives: [
+    'State and prove the internal bisector theorem.',
+    'Use it to find lengths and to find a side from a given division.',
+    'Use the midline theorem and the median-intersection ratio.',
+    'Combine several proportional relations in one problem.'
+  ],
+  terms: [
+    ['Bisector theorem', 'Bissektrisa teoremasi', 'Теорема о биссектрисе'],
+    ['Internal bisector', 'Ichki bissektrisa', 'Внутренняя биссектриса'],
+    ['Midline', 'O‘rta chiziq', 'Средняя линия'],
+    ['Median', 'Mediana', 'Медиана'],
+    ['Centroid', 'Og‘irlik markazi', 'Центр тяжести'],
+    ['Ratio', 'Nisbat', 'Отношение'],
+    ['Proportional', 'Proporsional', 'Пропорциональный'],
+    ['Auxiliary parallel', 'Yordamchi parallel', 'Вспомогательная параллель']
+  ],
+  timing: [[15, 'The bisector theorem'], [25, 'Using it'], [25, 'Midlines and medians'], [20, 'Combining relations'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The bisector theorem',
+      html: `${eq('The bisector of an angle of a triangle divides the opposite side in the ratio of the two adjacent sides', true)}
+      ${eq(m(f('BD', 'DC') + ' = ' + f('AB', 'AC')), true)}
+      {{fig:bisectorConstruction:The bisector from A meets BC at D, dividing it as AB : AC.}}
+      <p><b>Proof.</b> Through ${m('C')} draw the parallel to ${m('AD')}, meeting ${m('BA')} extended at
+      ${m('E')}. Then ${m('∠ACE = ∠CAD')} (alternate) and ${m('∠AEC = ∠BAD')} (corresponding), and since
+      ${m('AD')} bisects, ${m('∠ACE = ∠AEC')}, so ${m('△ACE')} is isosceles with ${m('AE = AC')}.
+      Thales in ${m('△BEC')} then gives ${m(f('BD', 'DC') + ' = ' + f('BA', 'AE') + ' = ' + f('AB', 'AC'))}.</p>
+      <div class="keybox"><div class="klabel">The bisector is the only cevian with this property</div>
+      A median divides the opposite side in ${m('1 : 1')} regardless of the sides; an altitude divides it
+      in the ratio of the squares. Only the bisector reproduces the ratio of the sides themselves.</div>`
+    },
+    {
+      h: 'Using it',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Find</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td class="m">AB = 8, AC = 12, BC = 15</td><td class="m">BD</td><td class="m">${f('2', '5')} × 15 = 6</td></tr>
+        <tr><td class="m">AB = 10, BD = 4, DC = 6</td><td class="m">AC</td><td class="m">15</td></tr>
+        <tr><td class="m">AB = 6, AC = 9, BD = 4</td><td class="m">DC</td><td class="m">6</td></tr>
+        <tr><td class="m">AB = AC</td><td class="m">BD : DC</td><td class="m">1 : 1</td></tr>
+      </tbody></table></div>
+      <p>The last row says that in an isosceles triangle the bisector from the apex is also the median —
+      and, by symmetry, the altitude.</p>
+      <div class="warn"><span class="wl">Set up the proportion before substituting</span>
+      Write ${m(f('BD', 'DC') + ' = ' + f('AB', 'AC'))} first, then put the numbers in. Half the errors
+      in this topic come from pairing ${m('BD')} with ${m('AC')}.</div>`
+    },
+    {
+      h: 'Midlines and medians',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Ratio</th></tr></thead>
+      <tbody>
+        <tr><td>the midline of a triangle</td><td>parallel to the third side and half of it</td></tr>
+        <tr><td>the midline of a trapezium</td><td class="m">${f('a + b', '2')}</td></tr>
+        <tr><td>the three medians</td><td>meet at one point</td></tr>
+        <tr><td>the centroid divides each median</td><td class="m">2 : 1</td></tr>
+      </tbody></table></div>
+      {{fig:midlineTriangle:The midline joins two midpoints; it is parallel to the third side and half its length.}}
+      <p>The ${m('2 : 1')} ratio is measured <b>from the vertex</b>: the longer piece touches the vertex,
+      the shorter the midpoint of the opposite side.</p>
+      <div class="keybox"><div class="klabel">The midline is Thales with the ratio ${m('1 : 1')}</div>
+      Everything in this section is one theorem seen at different ratios. Recognising that keeps four
+      separate facts down to one.</div>`
+    },
+    {
+      h: 'Combining relations',
+      html: `<p>A typical Quarter IV problem chains two or three of these together.</p>
+      <p><b>Example.</b> In ${m('△ABC')}, ${m('AB = 12')}, ${m('AC = 18')}, ${m('BC = 20')}. The bisector
+      from ${m('A')} meets ${m('BC')} at ${m('D')}, and ${m('M')} is the midpoint of ${m('BC')}. Find
+      ${m('DM')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td class="m">BD : DC</td><td class="m">12 : 18 = 2 : 3</td></tr>
+        <tr><td class="m">BD</td><td class="m">${f('2', '5')} × 20 = 8</td></tr>
+        <tr><td class="m">BM</td><td class="m">10</td></tr>
+        <tr><td class="m">DM</td><td class="m">10 − 8 = 2</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Put every computed length on the diagram</div>
+      A figure with ${m('BD = 8')} and ${m('BM = 10')} marked answers the question at a glance. Keeping
+      the numbers in the working instead of on the picture is what makes these problems feel hard.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'In ' + m('△ABC') + ', ' + m('AB = 8') + ', ' + m('AC = 12') + ', ' + m('BC = 15') + '. The bisector from ' + m('A') + ' meets ' + m('BC') + ' at ' + m('D') + '. Find ' + m('BD') + ' and ' + m('DC') + '.',
+      steps: [
+        [m(f('BD', 'DC') + ' = ' + f('8', '12') + ' = ' + f('2', '3')), ''],
+        ['Total parts ' + m('5') + '.', ''],
+        [m('BD = ' + f('2', '5') + ' × 15 = 6'), ''],
+        [m('DC = 9'), '']
+      ],
+      ans: m('BD = 6, DC = 9')
+    },
+    {
+      q: 'In ' + m('△ABC') + ', ' + m('AB = 10') + ' and the bisector from ' + m('A') + ' divides ' + m('BC') + ' into ' + m('4') + ' and ' + m('6') + '. Find ' + m('AC') + '.',
+      steps: [
+        [m(f('4', '6') + ' = ' + f('10', 'AC')), ''],
+        [m('4 · AC = 60'), ''],
+        [m('AC = 15'), ''],
+        ['Check: ' + m(f('10', '15') + ' = ' + f('2', '3') + ' = ' + f('4', '6')) + ' ✓', '']
+      ],
+      ans: m('AC = 15')
+    },
+    {
+      q: 'In ' + m('△ABC') + ', ' + m('AB = 12') + ', ' + m('AC = 18') + ', ' + m('BC = 20') + '. Find the distance from the foot of the bisector from ' + m('A') + ' to the midpoint of ' + m('BC') + '.',
+      steps: [
+        [m('BD : DC = 12 : 18 = 2 : 3'), ''],
+        [m('BD = ' + f('2', '5') + ' × 20 = 8'), ''],
+        [m('BM = 10'), 'The midpoint.'],
+        [m('DM = 2'), '']
+      ],
+      ans: m('DM = 2')
+    }
+  ],
+  modelNote: 'Draw a triangle with sides 3 cm and 6 cm and bisect the angle between them; measuring the two parts of the opposite side confirms 1 : 2 before any proof.',
+  interactive: {
+    type: 'triangleMidline',
+    title: 'Midlines and medians',
+    hint: 'Drag a vertex and watch the 2 : 1 ratio hold.'
+  },
+  quiz: [
+    { q: 'The bisector from ' + m('A') + ' divides ' + m('BC') + ' in the ratio:', a: [m('AB : BC'), m('AB : AC'), m('AC : BC'), m('1 : 1')], c: 1, why: 'The two adjacent sides.' },
+    { q: m('AB = 8, AC = 12, BC = 15') + ': ' + m('BD') + ' =', a: [m('5'), m('6'), m('7.5'), m('9')], c: 1, why: m(f('2', '5') + ' × 15') + '.' },
+    { q: 'In an isosceles triangle the bisector from the apex is also:', a: ['an altitude only', 'a median only', 'both', 'neither'], c: 2, why: 'By symmetry.' },
+    { q: 'A midline is:', a: ['equal to the third side', 'half the third side', 'twice it', 'unrelated'], c: 1, why: 'And parallel to it.' },
+    { q: 'The centroid divides each median in:', a: [m('1 : 1'), m('2 : 1'), m('3 : 1'), m('1 : 2') + ' from the vertex'], c: 1, why: 'Measured from the vertex.' },
+    { q: 'The midline of a trapezium is:', a: [m('a + b'), m(f('a + b', '2')), m(f('ab', '2')), m('a − b')], c: 1, why: 'The mean of the bases.' }
+  ],
+  practice: {
+    easy: [
+      [m('AB = 8, AC = 12') + ': ' + m('BD : DC'), m('2 : 3')],
+      [m('AB = 8, AC = 12, BC = 15') + ': ' + m('BD'), m('6')],
+      ['Same: ' + m('DC'), m('9')],
+      [m('AB = 6, AC = 9, BD = 4') + ': ' + m('DC'), m('6')],
+      [m('AB = AC') + ': ' + m('BD : DC'), m('1 : 1')],
+      ['Midline of a triangle with third side ' + m('14'), m('7')],
+      ['The centroid ratio', m('2 : 1')]
+    ],
+    med: [
+      [m('AB = 10, BD = 4, DC = 6') + ': ' + m('AC'), m('15')],
+      [m('AB = 12, AC = 18, BC = 20') + ': ' + m('BD'), m('8')],
+      ['Same: ' + m('DM') + ' where ' + m('M') + ' is the midpoint', m('2')],
+      ['Midline of a trapezium with bases ' + m('8') + ' and ' + m('14'), m('11')],
+      ['A median of length ' + m('12') + ': the distance from the vertex to the centroid', m('8')],
+      [m('AB = 15, AC = 20, BC = 21') + ': ' + m('BD'), m('9')],
+      ['A triangle with ' + m('BD : DC = 3 : 4') + ' and ' + m('AB = 9') + ': ' + m('AC'), m('12')]
+    ],
+    hard: [
+      ['A triangle ' + m('13, 14, 15') + ': the bisector from the vertex between ' + m('13') + ' and ' + m('14') + ' divides ' + m('15'), m('7.22') + ' and ' + m('7.78')],
+      ['A trapezium with bases ' + m('10') + ' and ' + m('16') + ': the segment of the midline between the diagonals', m('3')],
+      ['A triangle whose medians are ' + m('9, 12, 15') + ': its area', m('72')],
+      ['A bisector divides ' + m('BC = 28') + ' as ' + m('3 : 4') + ' with ' + m('AB = 12') + ': ' + m('AC'), m('16')],
+      ['The centroid of a triangle with vertices ' + m('(0,0), (6,0), (0,9)'), m('(2, 3)')],
+      ['A median divides a triangle into two parts of area ratio', m('1 : 1')],
+      ['Three medians divide a triangle into', m('6') + ' triangles of equal area']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the proportion in full before substituting any number.',
+  homework: [
+    'In ' + m('△ABC') + ', ' + m('AB = 9') + ', ' + m('AC = 15') + ', ' + m('BC = 16') + '. Find the parts into which the bisector from ' + m('A') + ' divides ' + m('BC') + '.',
+    'A bisector divides ' + m('BC') + ' into ' + m('5') + ' and ' + m('7') + ', and ' + m('AB = 20') + '. Find ' + m('AC') + '.',
+    'Find the midline of a trapezium with bases ' + m('12') + ' and ' + m('20') + '.',
+    'A median has length ' + m('15') + '. Find the two parts into which the centroid divides it.',
+    'Prove the bisector theorem using an auxiliary parallel.'
+  ]
+});
