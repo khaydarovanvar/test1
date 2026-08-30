@@ -14594,3 +14594,188 @@ G6_MAT.push({
     'State which of your four images have the reversed orientation, and explain why.'
   ]
 });
+
+/* ============================== 82 ============================== */
+G6_MAT.push({
+  id: 'g6-82', stream: 'mat', grade: 6, quarter: 4, lessons: '175', hours: 1,
+  title: 'Recall — three-dimensional shapes',
+  subtitle: 'Naming the solids, counting their faces, edges and vertices, and a pattern that links the three.',
+  uz: 'Matematika 6, takrorlash', uzPage: 'pp. 498–501',
+  cam: 'S7 8.4 3-D shapes', camPage: 'Stage 7, pp. 84–88', wb: 'Exercise 8.4',
+  objectives: [
+    'Name the common solids and say which have curved surfaces.',
+    'Count the faces, edges and vertices of a prism and a pyramid.',
+    'Use the pattern ' + m('F + V − E = 2') + ' as a check.',
+    'Give the counts for a prism or pyramid on an ' + m('n') + '-sided base.'
+  ],
+  terms: [
+    ['Solid', 'Jism', 'Тело'],
+    ['Prism', 'Prizma', 'Призма'],
+    ['Pyramid', 'Piramida', 'Пирамида'],
+    ['Cylinder', 'Silindr', 'Цилиндр'],
+    ['Cone', 'Konus', 'Конус'],
+    ['Sphere', 'Shar', 'Шар'],
+    ['Apex', 'Uchi (cho‘qqi)', 'Вершина (апекс)'],
+    ['Curved surface', 'Egri sirt', 'Криволинейная поверхность']
+  ],
+  timing: [[10, 'Naming the solids'], [12, 'Faces, edges and vertices'], [12, 'The pattern F + V − E'], [6, 'Prisms and pyramids in general']],
+  sections: [
+    {
+      h: 'Naming the solids',
+      html: `{{fig:prismPyramid:A prism and a pyramid — the two families that most solids belong to}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Flat faces</th><th>Curved surfaces</th><th>Recognise it by</th></tr></thead>
+      <tbody>
+        <tr><td>cube and cuboid</td><td class="m">6</td><td class="m">0</td><td>six rectangles</td></tr>
+        <tr><td>prism</td><td class="m">n + 2</td><td class="m">0</td><td>two identical ends, joined by rectangles</td></tr>
+        <tr><td>pyramid</td><td class="m">n + 1</td><td class="m">0</td><td>a base and triangles meeting at an apex</td></tr>
+        <tr><td>cylinder</td><td class="m">2</td><td class="m">1</td><td>two circles and a tube</td></tr>
+        <tr><td>cone</td><td class="m">1</td><td class="m">1</td><td>a circle and an apex</td></tr>
+        <tr><td>sphere</td><td class="m">0</td><td class="m">1</td><td>every point the same distance from the centre</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A prism is named by its cross-section</div>
+      Cut a prism anywhere across and the face is the same shape every time — triangular, pentagonal,
+      hexagonal. A cuboid is simply a rectangular prism.</div>`
+    },
+    {
+      h: 'Faces, edges and vertices',
+      html: `{{fig:cubeLabelled:Six faces, twelve edges, eight vertices}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Faces ${m('F')}</th><th>Edges ${m('E')}</th><th>Vertices ${m('V')}</th></tr></thead>
+      <tbody>
+        <tr><td>cube or cuboid</td><td class="m">6</td><td class="m">12</td><td class="m">8</td></tr>
+        <tr><td>triangular prism</td><td class="m">5</td><td class="m">9</td><td class="m">6</td></tr>
+        <tr><td>pentagonal prism</td><td class="m">7</td><td class="m">15</td><td class="m">10</td></tr>
+        <tr><td>square pyramid</td><td class="m">5</td><td class="m">8</td><td class="m">5</td></tr>
+        <tr><td>triangular pyramid</td><td class="m">4</td><td class="m">6</td><td class="m">4</td></tr>
+        <tr><td>hexagonal pyramid</td><td class="m">7</td><td class="m">12</td><td class="m">7</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Count the hidden ones too</span>
+      A drawing shows at most three faces of a cube, but there are six. Turning the solid — or the drawing
+      — in the mind is the skill this recall is really about.</div>`
+    },
+    {
+      h: 'The pattern F + V − E',
+      html: `<p>Add the faces and the vertices, subtract the edges, and every solid with flat faces gives the
+      same answer.</p>
+      ${eq(m('F + V − E = 2'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th class="m">F + V</th><th class="m">E</th><th class="m">F + V − E</th></tr></thead>
+      <tbody>
+        <tr><td>cube</td><td class="m">14</td><td class="m">12</td><td class="m">2</td></tr>
+        <tr><td>triangular prism</td><td class="m">11</td><td class="m">9</td><td class="m">2</td></tr>
+        <tr><td>square pyramid</td><td class="m">10</td><td class="m">8</td><td class="m">2</td></tr>
+        <tr><td>hexagonal prism</td><td class="m">20</td><td class="m">18</td><td class="m">2</td></tr>
+        <tr><td>triangular pyramid</td><td class="m">8</td><td class="m">6</td><td class="m">2</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Use it to check a count, not to make one</div>
+      If your three numbers do not give ${m('2')}, one of them is wrong — and it is almost always the
+      edges, because some of them are hidden. The rule does not apply to a cylinder, a cone or a sphere:
+      their surfaces are not made of flat polygons.</div>`
+    },
+    {
+      h: 'Prisms and pyramids in general',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Solid on an ${m('n')}-sided base</th><th>Faces</th><th>Edges</th><th>Vertices</th></tr></thead>
+      <tbody>
+        <tr><td>prism</td><td class="m">n + 2</td><td class="m">3n</td><td class="m">2n</td></tr>
+        <tr><td>pyramid</td><td class="m">n + 1</td><td class="m">2n</td><td class="m">n + 1</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Both formulas pass the check</div>
+      For the prism, ${m('(n + 2) + 2n − 3n = 2')}. For the pyramid, ${m('(n + 1) + (n + 1) − 2n = 2')}.
+      With ${m('n = 6')} they give ${m('8, 18, 12')} and ${m('7, 12, 7')} — the last two rows of the
+      previous table.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Count the faces, edges and vertices of a triangular prism, and check the pattern.',
+      steps: [
+        ['Two triangular ends and three rectangles: ' + m('F = 5') + '.', ''],
+        ['Three edges at each end and three joining them: ' + m('E = 9') + '.', ''],
+        ['Three vertices at each end: ' + m('V = 6') + '; ' + m('5 + 6 − 9 = 2') + ' ✓', '']
+      ],
+      ans: m('5') + ' faces, ' + m('9') + ' edges, ' + m('6') + ' vertices'
+    },
+    {
+      q: 'A pyramid has a hexagonal base. Find its faces, edges and vertices.',
+      steps: [
+        ['The base and six triangles: ' + m('F = 7') + '.', ''],
+        ['Six base edges and six sloping ones: ' + m('E = 12') + '.', ''],
+        ['Six base vertices and the apex: ' + m('V = 7') + '; ' + m('7 + 7 − 12 = 2') + ' ✓', '']
+      ],
+      ans: m('7') + ' faces, ' + m('12') + ' edges, ' + m('7') + ' vertices'
+    },
+    {
+      q: 'A pupil counts ' + m('8') + ' faces, ' + m('12') + ' vertices and ' + m('16') + ' edges for a hexagonal prism. Find the mistake.',
+      steps: [
+        [m('8 + 12 − 16 = 4') + ', not ' + m('2') + '.', 'So a count is wrong.'],
+        ['A hexagonal prism has ' + m('3n = 18') + ' edges.', 'Six top, six bottom, six upright.'],
+        ['The two missing edges are the hidden uprights.', m('8 + 12 − 18 = 2') + ' ✓']
+      ],
+      ans: 'The edges: there are ' + m('18') + ', not ' + m('16')
+    }
+  ],
+  modelNote: 'Pass round a real prism and a real pyramid while the counting is done; the hidden edges stop being hidden the moment the solid can be turned over.',
+  interactive: {
+    type: 'quiz',
+    title: 'Counting on a solid',
+    hint: 'Count faces first, then vertices, then edges — and check with F + V − E.',
+    items: [
+      { q: 'A cube has how many edges?', a: [m('6'), m('8'), m('12'), m('18')], c: 2, why: 'Four at the top, four at the bottom, four upright.' },
+      { q: 'A triangular prism has how many faces?', a: [m('3'), m('5'), m('6'), m('9')], c: 1, why: 'Two ends and three rectangles.' },
+      { q: 'A square pyramid has how many vertices?', a: [m('4'), m('5'), m('6'), m('8')], c: 1, why: 'Four in the base and the apex.' },
+      { q: m('F + V − E') + ' for any solid with flat faces is:', a: [m('0'), m('1'), m('2'), 'it varies'], c: 2, why: 'Euler’s pattern.' },
+      { q: 'A cylinder has how many curved surfaces?', a: [m('0'), m('1'), m('2'), m('3')], c: 1, why: 'The tube between the two circles.' },
+      { q: 'A cone has how many flat faces?', a: [m('0'), m('1'), m('2'), m('3')], c: 1, why: 'The circular base.' },
+      { q: 'A prism on an ' + m('n') + '-sided base has how many edges?', a: [m('2n'), m('3n'), m('n + 2'), m('n + 1')], c: 1, why: 'Two rings and the uprights.' },
+      { q: 'A pyramid on an ' + m('n') + '-sided base has how many faces?', a: [m('n'), m('n + 1'), m('n + 2'), m('2n')], c: 1, why: 'The base and ' + m('n') + ' triangles.' }
+    ]
+  },
+  quiz: [
+    { q: 'A prism is named by:', a: ['its height', 'its cross-section', 'its colour', 'its volume'], c: 1, why: 'The shape of the identical ends.' },
+    { q: 'A sphere has how many flat faces?', a: [m('0'), m('1'), m('2'), m('6')], c: 0, why: 'One curved surface only.' },
+    { q: 'A triangular pyramid has how many faces?', a: [m('3'), m('4'), m('5'), m('6')], c: 1, why: 'The base and three triangles.' },
+    { q: 'If your counts give ' + m('F + V − E = 4') + ' then:', a: ['the solid is unusual', 'a count is wrong', 'the rule fails', 'nothing'], c: 1, why: 'Usually a hidden edge.' },
+    { q: 'Euler’s pattern does not apply to:', a: ['a prism', 'a pyramid', 'a cylinder', 'a cube'], c: 2, why: 'Its surface is not flat polygons.' },
+    { q: 'A cuboid is:', a: ['a pyramid', 'a rectangular prism', 'a cylinder', 'a cone'], c: 1, why: 'Its cross-section is a rectangle.' }
+  ],
+  practice: {
+    easy: [
+      ['The faces of a cube', m('6')],
+      ['The edges of a cube', m('12')],
+      ['The vertices of a cube', m('8')],
+      ['The faces of a triangular prism', m('5')],
+      ['The edges of a triangular prism', m('9')],
+      ['The vertices of a triangular prism', m('6')],
+      ['The flat faces of a sphere', m('0')]
+    ],
+    med: [
+      ['Faces, edges and vertices of a square pyramid', m('5, 8, 5')],
+      ['Faces, edges and vertices of a triangular pyramid', m('4, 6, 4')],
+      ['Faces, edges and vertices of a pentagonal prism', m('7, 15, 10')],
+      [m('F + V − E') + ' for a cube', m('2')],
+      [m('F + V − E') + ' for a square pyramid', m('2')],
+      ['The curved surfaces of a cylinder', m('1')],
+      ['The apexes of a cone', m('1')]
+    ],
+    hard: [
+      ['Faces, edges and vertices of a hexagonal prism', m('8, 18, 12')],
+      ['Faces, edges and vertices of a hexagonal pyramid', m('7, 12, 7')],
+      ['The faces of a prism on an ' + m('n') + '-sided base', m('n + 2')],
+      ['Its edges', m('3n')],
+      ['Its vertices', m('2n')],
+      ['The edges of a pyramid on an ' + m('n') + '-sided base', m('2n')],
+      ['Why does the pattern fail for a cylinder?', 'Its surface is not made of flat polygons']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Check every set of three counts with ' + m('F + V − E = 2') + ' before writing it down.',
+  homework: [
+    'Count the faces, edges and vertices of a pentagonal pyramid and check the pattern.',
+    'Do the same for an octagonal prism.',
+    'Name three solids with a curved surface and say how many flat faces each has.',
+    'A solid has ' + m('9') + ' faces and ' + m('9') + ' vertices. How many edges must it have?',
+    'Explain in one sentence why a cuboid is a kind of prism.'
+  ]
+});
