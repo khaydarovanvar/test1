@@ -15964,3 +15964,384 @@ G7_MAT.push({
     'A map at ' + m('1 : 50 000') + ' shows two towns ' + m('9 cm') + ' apart. Find the real distance.'
   ]
 });
+
+/* ============================== 89 ============================== */
+G7_MAT.push({
+  id: 'g7-89', stream: 'mat', grade: 7, quarter: 4, lessons: '168', hours: 1,
+  title: 'Practical exercises — surface area and volume of prisms',
+  subtitle: 'A Cambridge insert: base area times height for the volume, and the net for the surface.',
+  uz: 'Matematika 7, amaliy mashqlar', uzPage: 'pp. 511–514',
+  cam: 'S8 15', camPage: 'Stage 8, pp. 148–157', wb: 'Exercise 15.3',
+  objectives: [
+    'Use ' + m('V = Bh') + ' for any prism.',
+    'Find the surface area from the net, as ' + m('2B + Ph') + '.',
+    'Work with the units of volume and capacity.',
+    'Solve practical problems about boxes, tanks and channels.'
+  ],
+  terms: [
+    ['Prism', 'Prizma', 'Призма'],
+    ['Base area', 'Asos yuzasi', 'Площадь основания'],
+    ['Height', 'Balandlik', 'Высота'],
+    ['Volume', 'Hajm', 'Объём'],
+    ['Surface area', 'To‘la sirt', 'Площадь поверхности'],
+    ['Net', 'Yoyilma', 'Развёртка'],
+    ['Capacity', 'Sig‘im', 'Вместимость'],
+    ['Litre', 'Litr', 'Литр']
+  ],
+  timing: [[8, 'What a prism is'], [12, 'Volume'], [12, 'Surface area from the net'], [6, 'Units and capacity'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'What a prism is',
+      html: `<p>A <b>prism</b> has two identical parallel faces — the bases — joined by rectangles. Its
+      cross-section is the same all the way along.</p>
+      {{fig:prismVolume:A prism: the base swept along its height}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>A prism?</th><th>Base</th></tr></thead>
+      <tbody>
+        <tr><td>cuboid</td><td>yes</td><td>a rectangle</td></tr>
+        <tr><td>cube</td><td>yes</td><td>a square</td></tr>
+        <tr><td>triangular prism</td><td>yes</td><td>a triangle</td></tr>
+        <tr><td>cylinder</td><td>yes, in effect</td><td>a circle</td></tr>
+        <tr><td>pyramid</td><td>no</td><td>it narrows to a point</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One formula for all of them</div>
+      Because the cross-section never changes, the volume is the base area repeated all the way up. That
+      is ${m('V = Bh')}, whatever shape the base has.</div>`
+    },
+    {
+      h: 'Volume',
+      html: `${eq(m('V = Bh'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Prism</th><th>Base area ${m('B')}</th><th>Height ${m('h')}</th><th>Volume</th></tr></thead>
+      <tbody>
+        <tr><td>cuboid ${m('5 × 4 × 3')}</td><td class="m">20</td><td class="m">3</td><td class="m">60 cm³</td></tr>
+        <tr><td>cube of edge ${m('4')}</td><td class="m">16</td><td class="m">4</td><td class="m">64 cm³</td></tr>
+        <tr><td>triangular, base ${m('6')}, height ${m('4')}, length ${m('10')}</td><td class="m">12</td><td class="m">10</td><td class="m">120 cm³</td></tr>
+        <tr><td>cylinder ${m('r = 7')}, ${m('h = 10')}</td><td class="m">154</td><td class="m">10</td><td class="m">1540 cm³</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The height is measured perpendicular to the base</span>
+      For a triangular prism lying on its side, the “height” of the prism is its length, and the triangle's
+      own height belongs to the base area. Two different heights appear, and confusing them is the usual
+      error.</div>`
+    },
+    {
+      h: 'Surface area from the net',
+      html: `{{fig:surfaceNet:The net of a prism: two bases and one long rectangle}}
+      ${eq(m('S = 2B + Ph'), true)}
+      <p>where ${m('P')} is the perimeter of the base: the two bases, plus one rectangle whose width is the
+      base's perimeter and whose height is the prism's.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Prism</th><th class="m">2B</th><th class="m">Ph</th><th class="m">S</th></tr></thead>
+      <tbody>
+        <tr><td>cuboid ${m('5 × 4 × 3')}</td><td class="m">40</td><td class="m">18 · 3 = 54</td><td class="m">94 cm²</td></tr>
+        <tr><td>cube of edge ${m('4')}</td><td class="m">32</td><td class="m">16 · 4 = 64</td><td class="m">96 cm²</td></tr>
+        <tr><td>triangular ${m('3, 4, 5')} base, length ${m('10')}</td><td class="m">12</td><td class="m">12 · 10 = 120</td><td class="m">132 cm²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A cube's surface is ${m('6a²')}</div>
+      Six identical faces — and ${m('2B + Ph')} agrees: ${m('2a² + 4a · a = 6a²')}. A formula that survives
+      a special case is a formula worth trusting.</div>`
+    },
+    {
+      h: 'Units and capacity',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Conversion</th><th>Factor</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1 cm³ = 1000 mm³</td><td class="m">10³</td><td>three directions</td></tr>
+        <tr><td class="m">1 litre = 1000 cm³</td><td class="m">10³</td><td>a ${m('10 cm')} cube</td></tr>
+        <tr><td class="m">1 m³ = 1000 litres</td><td class="m">100³ ÷ 1000</td><td class="m">1 000 000 cm³</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a tank ${m('50 × 40 × 30 cm')}: its capacity</td><td class="m">60 000 cm³</td><td class="m">60 litres</td></tr>
+        <tr><td>a box ${m('20 × 20 × 20')}: its volume</td><td class="m">8000 cm³</td><td class="m">8 litres</td></tr>
+        <tr><td>a pool ${m('25 × 10 × 2 m')}</td><td class="m">500 m³</td><td class="m">500 000 litres</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Lengths scale by ${m('k')}, areas by ${m('k²')}, volumes by ${m('k³')}</span>
+      Doubling every edge of a box multiplies its surface by ${m('4')} and its volume by ${m('8')}. This is
+      why a large tank holds far more water per square metre of metal than a small one.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the volume and surface area of a cuboid ' + m('5 × 4 × 3 cm') + '.',
+      steps: [
+        [m('B = 5 · 4 = 20 cm²') + ', ' + m('h = 3') + '.', ''],
+        [m('V = 60 cm³'), ''],
+        [m('P = 2(5 + 4) = 18 cm') + ', so ' + m('Ph = 54') + '.', ''],
+        [m('S = 2 · 20 + 54 = 94 cm²'), '']
+      ],
+      ans: m('60 cm³') + ' and ' + m('94 cm²')
+    },
+    {
+      q: 'A triangular prism has a base triangle with sides ' + m('3, 4, 5 cm') + ' and length ' + m('10 cm') + '. Find its volume and surface area.',
+      steps: [
+        ['The triangle is right-angled: ' + m('B = ' + f('1', '2') + ' · 3 · 4 = 6 cm²') + '.', ''],
+        [m('V = 6 · 10 = 60 cm³'), ''],
+        [m('P = 3 + 4 + 5 = 12') + ', so ' + m('Ph = 120') + '.', ''],
+        [m('S = 12 + 120 = 132 cm²'), '']
+      ],
+      ans: m('60 cm³') + ' and ' + m('132 cm²')
+    },
+    {
+      q: 'A tank measures ' + m('50 × 40 × 30 cm') + '. How many litres does it hold?',
+      steps: [
+        [m('V = 50 · 40 · 30'), ''],
+        [m('= 60 000 cm³'), ''],
+        [m('60 000 ÷ 1000'), ''],
+        [m('= 60') + ' litres.', '']
+      ],
+      ans: m('60') + ' litres'
+    }
+  ],
+  modelNote: 'Cut open a cardboard box along its edges and lay it flat; the surface-area formula is then read straight off the net rather than memorised.',
+  interactive: {
+    type: 'solidVolume',
+    title: 'Base area and height decide the volume',
+    hint: 'Watch how the volume and the surface area respond differently.'
+  },
+  quiz: [
+    { q: 'The volume of any prism is:', a: [m('Bh'), m(f('1', '3') + 'Bh'), m('2B + Ph'), m('Ph')], c: 0, why: 'A constant cross-section.' },
+    { q: 'Its surface area is:', a: [m('Bh'), m('2B + Ph'), m('6a²'), m('2Ph')], c: 1, why: 'Two bases plus the side rectangle.' },
+    { q: 'A cuboid ' + m('5 × 4 × 3') + ' has volume:', a: [m('12'), m('20'), m('60'), m('94')], c: 2, why: m('20 · 3') + '.' },
+    { q: 'And surface area:', a: [m('60'), m('94'), m('96'), m('120')], c: 1, why: m('40 + 54') + '.' },
+    { q: m('1') + ' litre equals:', a: [m('100 cm³'), m('1000 cm³'), m('10 000 cm³'), m('1 000 000 cm³')], c: 1, why: 'A ' + m('10 cm') + ' cube.' },
+    { q: 'Doubling every edge multiplies the volume by:', a: [m('2'), m('4'), m('6'), m('8')], c: 3, why: 'Three directions.' }
+  ],
+  practice: {
+    easy: [
+      ['A cuboid ' + m('5 × 4 × 3') + ': its volume', m('60 cm³')],
+      ['Its surface area', m('94 cm²')],
+      ['A cube of edge ' + m('4') + ': its volume', m('64 cm³')],
+      ['Its surface area', m('96 cm²')],
+      ['A cube of edge ' + m('a') + ': its surface area', m('6a²')],
+      [m('1') + ' litre in ' + m('cm³'), m('1000')],
+      [m('1 m³') + ' in litres', m('1000')]
+    ],
+    med: [
+      ['A triangular prism, base ' + m('6') + ', height ' + m('4') + ', length ' + m('10'), m('120 cm³')],
+      ['A ' + m('3, 4, 5') + ' prism of length ' + m('10') + ': its surface area', m('132 cm²')],
+      ['A cylinder ' + m('r = 7') + ', ' + m('h = 10') + ' (' + m('π = ' + f('22', '7')) + ')', m('1540 cm³')],
+      ['A tank ' + m('50 × 40 × 30 cm') + ': its capacity', m('60') + ' litres'],
+      ['A box ' + m('20 × 20 × 20') + ': its capacity', m('8') + ' litres'],
+      ['A pool ' + m('25 × 10 × 2 m'), m('500 m³')],
+      ['That pool in litres', m('500 000')]
+    ],
+    hard: [
+      ['Doubling every edge multiplies the surface by', m('4')],
+      ['And the volume by', m('8')],
+      ['A cuboid of volume ' + m('120') + ' and base ' + m('5 × 4') + ': its height', m('6')],
+      ['A cube of volume ' + m('125 cm³') + ': its surface area', m('150 cm²')],
+      ['A cube of surface ' + m('54 cm²') + ': its volume', m('27 cm³')],
+      ['A channel with trapezium cross-section ' + m('B = 15 cm²') + ' and length ' + m('4 m'), m('6000 cm³')],
+      ['Why does a big tank need less metal per litre?', 'Surface grows as ' + m('k²') + ' but volume as ' + m('k³')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: m('cm³') + ' for a volume, ' + m('cm²') + ' for a surface — write the units every time.',
+  homework: [
+    'Find the volume and surface area of a cuboid ' + m('8 × 5 × 4 cm') + '.',
+    'Find the volume and surface area of a cube of edge ' + m('6 cm') + '.',
+    'A triangular prism has base ' + m('8 cm') + ', triangle height ' + m('5 cm') + ' and length ' + m('12 cm') + '. Find its volume.',
+    'A tank measures ' + m('80 × 50 × 40 cm') + '. How many litres does it hold?',
+    'A cube has volume ' + m('216 cm³') + '. Find its edge and its surface area.'
+  ]
+});
+
+/* ============================== 90 ============================== */
+G7_MAT.push({
+  id: 'g7-90', stream: 'mat', grade: 7, quarter: 4, lessons: '169–170', hours: 2,
+  title: 'Annual control work, and the Grade 8 preview',
+  subtitle: 'The whole year in one paper — and what waits in Grade 8.',
+  uz: 'Matematika 7, Yillik nazorat ishi', uzPage: 'the whole textbook',
+  cam: 'S8 review', camPage: 'Stage 8, whole book', wb: 'Annual paper',
+  objectives: [
+    'Work accurately across the whole year under time.',
+    'Choose the right method without being told which chapter a question comes from.',
+    'Diagnose the year\'s remaining weaknesses.',
+    'See how each block of Grade 7 continues in Grade 8.'
+  ],
+  terms: [
+    ['Annual control work', 'Yillik nazorat ishi', 'Годовая контрольная работа'],
+    ['Revision', 'Takrorlash', 'Повторение'],
+    ['Method', 'Usul', 'Метод'],
+    ['Accuracy', 'Aniqlik', 'Точность'],
+    ['Diagnosis', 'Tashxis', 'Диагностика'],
+    ['Preview', 'Oldindan tanishtirish', 'Предварительный обзор'],
+    ['Progress', 'Rivojlanish', 'Прогресс'],
+    ['Grade 8', '8-sinf', '8 класс']
+  ],
+  timing: [[3, 'Instructions'], [45, 'The paper'], [12, 'Answers'], [15, 'Diagnosis'], [5, 'Grade 8']],
+  sections: [
+    {
+      h: 'The paper — 40 marks, 45 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>Quarter</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Compute ${m('−7 + 12 − (−5)')} and ${m(f('2', '3') + ' − ' + f('1', '4'))}</td><td class="m">4</td><td>I</td></tr>
+        <tr><td>2</td><td>Expand ${m('(3x − 2)²')} and factorise ${m('x² − 49')}</td><td class="m">5</td><td>II–III</td></tr>
+        <tr><td>3</td><td>Simplify ${m(f('x² − 9', 'x + 3'))} and state the excluded value</td><td class="m">4</td><td>III</td></tr>
+        <tr><td>4</td><td>Solve ${m('3(x − 2) = 2x + 5')}</td><td class="m">4</td><td>III</td></tr>
+        <tr><td>5</td><td>Two parallel lines are cut by a transversal; one angle is ${m('115°')}: find the other seven</td><td class="m">5</td><td>III</td></tr>
+        <tr><td>6</td><td>The angles of a triangle are in the ratio ${m('2 : 3 : 4')}: find them</td><td class="m">4</td><td>III</td></tr>
+        <tr><td>7</td><td>Draw ${m('y = 2x − 4')} and give both intercepts</td><td class="m">5</td><td>IV</td></tr>
+        <tr><td>8</td><td>Solve ${m('{ x + y = 9 ; x − y = 3 }')}</td><td class="m">5</td><td>IV</td></tr>
+        <tr><td>9</td><td>How many ${m('3')}-figure codes from ${m('10')} digits have all digits different?</td><td class="m">4</td><td>IV</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Nine questions, four quarters</div>
+      Nothing is asked that has not been taught, and nothing is labelled with its chapter. Recognising
+      which method a question wants is itself the skill being tested.</div>`
+    },
+    {
+      h: 'The answers',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Answer</th><th>The mark most often lost</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td class="m">10</td><td>the double minus, and the common denominator</td></tr>
+        <tr><td>2</td><td class="m">9x² − 12x + 4</td><td>the middle term, and squaring the ${m('3')}</td></tr>
+        <tr><td>3</td><td class="m">x − 3</td><td class="m">x ≠ −3</td></tr>
+        <tr><td>4</td><td class="m">x = 11</td><td>expanding the bracket</td></tr>
+        <tr><td>5</td><td class="m">115°</td><td>naming which pair is which</td></tr>
+        <tr><td>6</td><td class="m">40°, 60°, 80°</td><td class="m">9x = 180</td></tr>
+        <tr><td>7</td><td class="m">(0; −4)</td><td>using a ruler</td></tr>
+        <tr><td>8</td><td class="m">(6; 3)</td><td>reporting both numbers</td></tr>
+        <tr><td>9</td><td class="m">720</td><td class="m">10 · 9 · 8</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Diagnosis',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>If you lost marks on</th><th>Revise</th></tr></thead>
+      <tbody>
+        <tr><td>Q1</td><td>integers and rational numbers — Quarter I</td></tr>
+        <tr><td>Q2</td><td>the abridged multiplication formulae — L98–109</td></tr>
+        <tr><td>Q3</td><td>algebraic fractions — L112–119</td></tr>
+        <tr><td>Q4</td><td>linear equations — L123–126</td></tr>
+        <tr><td>Q5</td><td>angles on parallel lines — L82–85</td></tr>
+        <tr><td>Q6</td><td>the angle sum of a triangle — L86–87</td></tr>
+        <tr><td>Q7</td><td>the linear function — L141–142</td></tr>
+        <tr><td>Q8</td><td>systems — L147–149</td></tr>
+        <tr><td>Q9</td><td>combinatorics — L155–163</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Revise the block, not the question</div>
+      A lost mark is a symptom. Reworking one question fixes that question; rereading the block fixes the
+      next twenty.</div>`
+    },
+    {
+      h: 'What Grade 8 expects',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Grade 7 block</th><th>Grade 8 continues with</th></tr></thead>
+      <tbody>
+        <tr><td>rational numbers</td><td>irrational numbers and square roots</td></tr>
+        <tr><td>abridged formulae</td><td>quadratic equations and completing the square</td></tr>
+        <tr><td>algebraic fractions</td><td>rational expressions and fractional equations</td></tr>
+        <tr><td>linear equations</td><td>inequalities and their intervals</td></tr>
+        <tr><td>parallel lines and triangles</td><td>quadrilaterals, Pythagoras and trigonometry</td></tr>
+        <tr><td>the linear function</td><td class="m">y = x²</td></tr>
+        <tr><td>systems</td><td>systems with a quadratic equation in them</td></tr>
+        <tr><td>combinatorics</td><td>probability from counted outcomes</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Nothing is dropped</div>
+      Every block above continues; none of it is replaced. The year's work is the ground Grade 8 stands
+      on, which is why the diagnosis above is worth acting on over the summer.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q4: solve ' + m('3(x − 2) = 2x + 5') + '.',
+      steps: [
+        [m('3x − 6 = 2x + 5'), 'Expand first.'],
+        [m('3x − 2x = 5 + 6'), 'Both terms change sign.'],
+        [m('x = 11'), ''],
+        ['Check: ' + m('3 · 9 = 27') + ' and ' + m('22 + 5 = 27') + ' ✓', '']
+      ],
+      ans: m('x = 11')
+    },
+    {
+      q: 'Model answer, Q5: ' + m('a ∥ b') + ' and one angle is ' + m('115°') + '.',
+      steps: [
+        ['Vertical to it: ' + m('115°') + '.', ''],
+        ['Supplementary to it: ' + m('65°') + '.', ''],
+        ['Corresponding and alternate: ' + m('115°') + '.', ''],
+        ['Four angles are ' + m('115°') + ' and four are ' + m('65°') + '.', '']
+      ],
+      ans: 'Four of ' + m('115°') + ', four of ' + m('65°')
+    },
+    {
+      q: 'Model answer, Q8: ' + m('{ x + y = 9 ; x − y = 3 }') + '.',
+      steps: [
+        ['Add the equations: ' + m('2x = 12') + '.', 'Opposite coefficients of ' + m('y') + '.'],
+        [m('x = 6'), ''],
+        [m('6 + y = 9') + ', so ' + m('y = 3') + '.', ''],
+        ['Check both ✓ — the answer is the pair ' + m('(6; 3)') + '.', '']
+      ],
+      ans: m('(6; 3)')
+    }
+  ],
+  modelNote: 'Give back the diagnosis table with each script and ask every pupil to name their own two weakest blocks; they arrive in Grade 8 knowing where to look.',
+  interactive: {
+    type: 'quiz',
+    title: 'The year in twelve questions',
+    hint: 'Three from each quarter.',
+    items: [
+      { q: m('−7 + 12 − (−5)') + ' equals:', a: [m('0'), m('10'), m('−10'), m('24')], c: 1, why: 'Two minuses make a plus.' },
+      { q: m(f('2', '3') + ' − ' + f('1', '4')) + ' equals:', a: [m(f('1', '12')), m(f('5', '12')), m(f('1', '7')), m(f('3', '4'))], c: 1, why: 'LCD ' + m('12') + '.' },
+      { q: m('(3x − 2)²') + ' equals:', a: [m('9x² + 4'), m('9x² − 12x + 4'), m('3x² − 12x + 4'), m('9x² − 6x + 4')], c: 1, why: 'The middle term.' },
+      { q: m('x² − 49') + ' factorises to:', a: [m('(x − 7)²'), m('(x − 7)(x + 7)'), m('(x − 49)(x + 1)'), 'it does not'], c: 1, why: 'Difference of squares.' },
+      { q: m(f('x² − 9', 'x + 3')) + ' equals:', a: [m('x² − 3'), m('x − 3'), m('x + 3'), m('x')], c: 1, why: 'Cancel a factor.' },
+      { q: m('3(x − 2) = 2x + 5') + ' gives:', a: [m('x = 1'), m('x = 11'), m('x = 7'), m('x = −11')], c: 1, why: 'Expand, then transpose.' },
+      { q: 'On parallel lines, an angle of ' + m('115°') + ' has co-interior angle:', a: [m('115°'), m('65°'), m('90°'), m('245°')], c: 1, why: 'They add to ' + m('180°') + '.' },
+      { q: 'Angles in the ratio ' + m('2 : 3 : 4') + ' are:', a: [m('40°, 60°, 80°'), m('30°, 60°, 90°'), m('20°, 30°, 40°'), m('45°, 60°, 75°')], c: 0, why: m('9x = 180') + '.' },
+      { q: m('y = 2x − 4') + ' cuts ' + m('Ox') + ' at:', a: [m('(0; −4)'), m('(2; 0)'), m('(4; 0)'), m('(−2; 0)')], c: 1, why: 'Set ' + m('y = 0') + '.' },
+      { q: m('{ x + y = 9 ; x − y = 3 }') + ' gives:', a: [m('(6; 3)'), m('(3; 6)'), m('(9; 3)'), m('(4; 5)')], c: 0, why: 'Add the equations.' },
+      { q: m('3') + '-figure codes from ' + m('10') + ' digits, all different:', a: [m('1000'), m('720'), m('120'), m('30')], c: 1, why: m('10 · 9 · 8') + '.' },
+      { q: 'Handshakes among ' + m('10') + ' people:', a: [m('45'), m('90'), m('100'), m('20')], c: 0, why: 'Unordered pairs.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 tests:', a: ['integers and fractions', 'equations', 'geometry', 'counting'], c: 0, why: 'Quarter I.' },
+    { q: 'Q2 tests:', a: ['fractions', 'the abridged formulae', 'systems', 'probability'], c: 1, why: 'Quarter III algebra.' },
+    { q: 'Q3 requires:', a: ['a graph', 'an excluded value', 'a construction', 'a ratio'], c: 1, why: m('x ≠ −3') + '.' },
+    { q: 'Q5 tests:', a: ['triangles', 'angles on parallel lines', 'constructions', 'coordinates'], c: 1, why: 'The properties.' },
+    { q: 'Q8 must be answered with:', a: ['one number', 'an ordered pair', 'a graph', 'an equation'], c: 1, why: 'Two unknowns.' },
+    { q: 'Q9 uses:', a: ['the addition rule', 'the multiplication rule without repetition', 'a ratio', 'a proportion'], c: 1, why: m('10 · 9 · 8') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('−7 + 12 − (−5)'), m('10')],
+      [m(f('2', '3') + ' − ' + f('1', '4')), m(f('5', '12'))],
+      [m('(3x − 2)²'), m('9x² − 12x + 4')],
+      [m('x² − 49'), m('(x − 7)(x + 7)')],
+      [m(f('x² − 9', 'x + 3')), m('x − 3')],
+      [m('3(x − 2) = 2x + 5'), m('x = 11')],
+      ['Angles in the ratio ' + m('2 : 3 : 4'), m('40°, 60°, 80°')]
+    ],
+    med: [
+      ['On parallel lines, the co-interior angle of ' + m('115°'), m('65°')],
+      [m('y = 2x − 4') + ': both intercepts', m('(0; −4)') + ' and ' + m('(2; 0)')],
+      [m('{ x + y = 9 ; x − y = 3 }'), m('(6; 3)')],
+      [m('3') + '-figure codes, all digits different', m('720')],
+      ['Handshakes among ' + m('10') + ' people', m('45')],
+      ['A cuboid ' + m('5 × 4 × 3') + ': its volume', m('60 cm³')],
+      ['Share ' + m('120') + ' in ' + m('2 : 3'), m('48') + ' and ' + m('72')]
+    ],
+    hard: [
+      ['Factorise ' + m('2x² − 18') + ' completely', m('2(x − 3)(x + 3)')],
+      ['Simplify ' + m(f('1', 'x − 1') + ' − ' + f('1', 'x + 1')), m(f('2', 'x² − 1'))],
+      ['Solve ' + m('{ 2x + 3y = 12 ; x − y = 1 }'), m('(3; 2)')],
+      ['An exterior angle of ' + m('125°') + ', one remote angle ' + m('47°'), m('78°')],
+      ['A right triangle with hypotenuse ' + m('16') + ' and an angle of ' + m('30°'), 'The opposite leg is ' + m('8')],
+      ['How many ' + m('3') + '-figure codes contain at least one ' + m('7') + '?', m('271')],
+      ['Two numbers add to ' + m('26') + ' and differ by ' + m('8'), m('17') + ' and ' + m('9')]
+    ]
+  },
+  hwTitle: 'Over the summer — 5 tasks',
+  hwNote: 'Two blocks, chosen from your own diagnosis, are worth more than all eight done lightly.',
+  homework: [
+    'Name your two weakest blocks from the diagnosis table.',
+    'Rework every question of the annual paper you lost a mark on.',
+    'Write out the five abridged multiplication formulae from memory and check them.',
+    'Solve ten linear equations and ten systems from the textbook exercises.',
+    'Read ahead: find out what an irrational number is, and bring one example to the first Grade 8 lesson.'
+  ]
+});

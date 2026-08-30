@@ -3,7 +3,7 @@
    'live' when at least one topic exists for it in the data files. */
 /* Written topics per grade. The homepage and the grade page read these instead of
    loading every data file; check-content.js verifies them against the data. */
-var TOPIC_COUNTS = { 8: 95, 9: 95, 10: 80, 11: 76 };
+var TOPIC_COUNTS = { 7: 90, 8: 95, 9: 95, 10: 80, 11: 76 };
 
 var GRADES = [
   { g: 5,  name: 'Mathematics',        meta: 'Natural numbers · fractions · geometry of the plane', status: 'soon' },
