@@ -2859,3 +2859,352 @@ G7_MAT.push({
     'List all integers ' + m('n') + ' for which ' + m(f('18', 'n')) + ' is an integer.'
   ]
 });
+
+/* ============================== 17 ============================== */
+G7_MAT.push({
+  id: 'g7-17', stream: 'mat', grade: 7, quarter: 1, lessons: '33–34', hours: 2,
+  title: 'Problems on the four operations with integers',
+  subtitle: 'Mixed calculations and word problems — where the sign rules meet the real world.',
+  uz: 'Matematika 7, §14', uzPage: 'pp. 89–94',
+  cam: 'S8 1', camPage: 'Stage 8, pp. 2–10', wb: 'Exercise 1 review',
+  objectives: [
+    'Evaluate expressions containing all four operations and brackets.',
+    'Translate a worded situation into an expression with signs.',
+    'Use the distributive law with negative numbers.',
+    'Check an answer for plausibility as well as for arithmetic.'
+  ],
+  terms: [
+    ['Expression', 'Ifoda', 'Выражение'],
+    ['Brackets', 'Qavslar', 'Скобки'],
+    ['Distributive law', 'Taqsimot qonuni', 'Распределительный закон'],
+    ['To evaluate', 'Qiymatini topmoq', 'Вычислить'],
+    ['Word problem', 'Matnli masala', 'Текстовая задача'],
+    ['Average', 'O‘rta qiymat', 'Среднее'],
+    ['Net change', 'Sof o‘zgarish', 'Чистое изменение'],
+    ['Plausible', 'Ishonarli', 'Правдоподобный']
+  ],
+  timing: [[15, 'Mixed expressions'], [25, 'The distributive law'], [25, 'Word problems'], [20, 'Averages'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Mixed expressions',
+      html: `<p>Work brackets first, then powers, then × and ÷, then + and −.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Working</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="m">−5 + 3 × (−4)</td><td class="m">−5 + (−12)</td><td class="m">−17</td></tr>
+        <tr><td class="m">(−5 + 3) × (−4)</td><td class="m">(−2)(−4)</td><td class="m">8</td></tr>
+        <tr><td class="m">−20 ÷ (−4) − 6</td><td class="m">5 − 6</td><td class="m">−1</td></tr>
+        <tr><td class="m">(−3)² − 4 × (−2)</td><td class="m">9 + 8</td><td class="m">17</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The brackets change everything</span>
+      The first two rows use the same three numbers and give ${m('−17')} and ${m('8')}. Copying an
+      expression without its brackets is the most expensive mistake in this topic.</div>`
+    },
+    {
+      h: 'The distributive law',
+      html: `${eq(m('a(b + c) = ab + ac'), true)}
+      <p>It holds for negative numbers exactly as for positive ones, and it is how brackets are removed.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Expanded</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="m">−3(4 + 5)</td><td class="m">−12 − 15</td><td class="m">−27</td></tr>
+        <tr><td class="m">−3(4 − 5)</td><td class="m">−12 + 15</td><td class="m">3</td></tr>
+        <tr><td class="m">−(x − 7)</td><td class="m">−x + 7</td><td>—</td></tr>
+        <tr><td class="m">5 − (3 − 8)</td><td class="m">5 − 3 + 8</td><td class="m">10</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A minus in front of a bracket changes <b>every</b> sign inside</span>
+      ${m('−(x − 7) = −x + 7')}, not ${m('−x − 7')}. Missing the second sign is the classic slip, and it
+      will recur in every algebra lesson this year.</div>`
+    },
+    {
+      h: 'Word problems',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Situation</th><th>Expression</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('−7°')}, rising ${m('3°')} an hour for ${m('4')} hours</td><td class="m">−7 + 3 × 4</td><td class="m">5°</td></tr>
+        <tr><td>a debt of ${m('20 000')}, paid off at ${m('6000')} a month for ${m('3')} months</td><td class="m">−20 000 + 3 × 6000</td><td class="m">−2000</td></tr>
+        <tr><td>a diver at ${m('−18 m')} descending ${m('4 m')} a minute for ${m('5')} minutes</td><td class="m">−18 − 4 × 5</td><td class="m">−38 m</td></tr>
+        <tr><td>a lift on floor ${m('12')} going down ${m('3')} floors ${m('4')} times</td><td class="m">12 − 3 × 4</td><td class="m">0</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Write the expression before computing anything</div>
+      The mathematics of these problems is easy; the translation is not. Getting the expression on paper
+      first separates the two difficulties.</div>`
+    },
+    {
+      h: 'Averages',
+      html: `<p>The <b>average</b> (arithmetic mean) of a list is the sum divided by how many there are.
+      With negatives it works exactly the same way.</p>
+      ${eq(m('mean = ' + f('sum of the values', 'how many values')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>List</th><th>Sum</th><th>Count</th><th>Mean</th></tr></thead>
+      <tbody>
+        <tr><td class="m">−3, 0, 2, −5, 1</td><td class="m">−5</td><td class="m">5</td><td class="m">−1</td></tr>
+        <tr><td class="m">−8, −4, 0, 4</td><td class="m">−8</td><td class="m">4</td><td class="m">−2</td></tr>
+        <tr><td class="m">−6, 6</td><td class="m">0</td><td class="m">2</td><td class="m">0</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The mean always lies between the least and the greatest</div>
+      A mean of ${m('−1')} for a list running from ${m('−5')} to ${m('2')} is plausible; a mean of
+      ${m('3')} would not be. That single check catches most arithmetic slips.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Evaluate ' + m('−5 + 3 × (−4)') + ' and ' + m('(−5 + 3) × (−4)') + '.',
+      steps: [
+        ['First: multiply before adding.', ''],
+        [m('−5 + (−12) = −17'), ''],
+        ['Second: bracket first.', ''],
+        [m('(−2)(−4) = 8'), 'Same numbers, different answers.']
+      ],
+      ans: m('−17') + ' and ' + m('8')
+    },
+    {
+      q: 'The temperature is ' + m('−7°C') + ' and rises by ' + m('3') + ' degrees each hour for ' + m('4') + ' hours. Find it then.',
+      steps: [
+        ['Expression: ' + m('−7 + 3 × 4') + '.', ''],
+        [m('3 × 4 = 12'), ''],
+        [m('−7 + 12'), ''],
+        [m('= 5°C'), 'Now above zero.']
+      ],
+      ans: m('5°C')
+    },
+    {
+      q: 'Find the mean of ' + m('−3, 0, 2, −5, 1') + '.',
+      steps: [
+        ['Sum: ' + m('−3 + 0 + 2 − 5 + 1') + '.', ''],
+        [m('= −5'), ''],
+        ['Five values: ' + m('−5 ÷ 5') + '.', ''],
+        [m('= −1') + ' — between ' + m('−5') + ' and ' + m('2') + ' ✓', '']
+      ],
+      ans: m('−1')
+    }
+  ],
+  modelNote: 'Give the same three numbers with and without brackets and let the class compute both; the difference makes the order of operations matter rather than merely exist.',
+  interactive: {
+    type: 'substitute',
+    title: 'Order of operations with signs',
+    hint: 'Brackets, powers, × ÷, then + −.'
+  },
+  quiz: [
+    { q: m('−5 + 3 × (−4)') + ' equals:', a: [m('8'), m('−17'), m('−32'), m('32')], c: 1, why: 'Multiply first.' },
+    { q: m('(−5 + 3) × (−4)') + ' equals:', a: [m('8'), m('−17'), m('−8'), m('2')], c: 0, why: 'Bracket first.' },
+    { q: m('−(x − 7)') + ' equals:', a: [m('−x − 7'), m('−x + 7'), m('x − 7'), m('x + 7')], c: 1, why: 'Every sign changes.' },
+    { q: m('5 − (3 − 8)') + ' equals:', a: [m('0'), m('10'), m('−6'), m('16')], c: 1, why: m('5 − 3 + 8') + '.' },
+    { q: 'The mean of ' + m('−8, −4, 0, 4') + ':', a: [m('−2'), m('−8'), m('0'), m('2')], c: 0, why: m('−8 ÷ 4') + '.' },
+    { q: 'A mean always lies:', a: ['above the greatest', 'below the least', 'between them', 'at zero'], c: 2, why: 'A useful check.' }
+  ],
+  practice: {
+    easy: [
+      [m('−5 + 3 × (−4)'), m('−17')],
+      [m('(−5 + 3) × (−4)'), m('8')],
+      [m('−20 ÷ (−4) − 6'), m('−1')],
+      [m('(−3)² − 4 × (−2)'), m('17')],
+      [m('−3(4 + 5)'), m('−27')],
+      [m('−3(4 − 5)'), m('3')],
+      [m('5 − (3 − 8)'), m('10')]
+    ],
+    med: [
+      ['Mean of ' + m('−3, 0, 2, −5, 1'), m('−1')],
+      ['Mean of ' + m('−8, −4, 0, 4'), m('−2')],
+      [m('−7 + 3 × 4'), m('5')],
+      [m('−18 − 4 × 5'), m('−38')],
+      [m('−20 000 + 3 × 6000'), m('−2000')],
+      ['Simplify ' + m('−(a − b + c)'), m('−a + b − c')],
+      [m('(−2)(−3) − (−4)(5)'), m('26')]
+    ],
+    hard: [
+      [m('(−4)² − (−4)² ÷ (−2)³'), m('18')],
+      [m('−2[3 − (−5 + 1)]'), m('−14')],
+      ['Mean of ' + m('−12, −5, 0, 3, 9'), m('−1')],
+      ['A diver at ' + m('−12 m') + ' rises ' + m('2 m') + ' a minute for ' + m('8') + ' minutes', m('+4 m')],
+      ['Five days at ' + m('−4, −1, 2, −7, 5') + ': the mean temperature', m('−1°')],
+      ['Find ' + m('x') + ': ' + m('3x − (−6) = 0'), m('−2')],
+      ['Evaluate ' + m('a² − 2ab') + ' at ' + m('a = −3, b = 4'), m('33')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the expression before the arithmetic, and check the answer for plausibility.',
+  homework: [
+    'Evaluate ' + m('−6 + 4 × (−3)') + ' and ' + m('(−6 + 4) × (−3)') + '.',
+    'Evaluate ' + m('(−2)³ + 5 × (−4) ÷ 2') + '.',
+    'Simplify ' + m('−(2x − 5 + y)') + '.',
+    'The temperature is ' + m('−9°C') + ' and rises ' + m('4') + ' degrees each hour for ' + m('3') + ' hours. Find it then.',
+    'Find the mean of ' + m('−10, −2, 0, 4, 8') + '.'
+  ]
+});
+
+/* ============================== 18 ============================== */
+G7_MAT.push({
+  id: 'g7-18', stream: 'mat', grade: 7, quarter: 1, lessons: '35–36', hours: 2,
+  title: 'Control work 2, and work on the mistakes',
+  subtitle: 'The integers in one paper — the four operations, the signs and the order.',
+  uz: 'Matematika 7, Nazorat ishi 2', uzPage: 'pp. 36–94',
+  cam: 'S8 1 review', camPage: 'Stage 8, pp. 2–10', wb: 'Control paper M2',
+  objectives: [
+    'Use the sign rules for all four operations under time.',
+    'Apply the order of operations to a mixed expression.',
+    'Compare and order integers, and use the modulus.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Integer', 'Butun son', 'Целое число'],
+    ['Modulus', 'Modul', 'Модуль'],
+    ['Sign rule', 'Ishoralar qoidasi', 'Правило знаков'],
+    ['Order of operations', 'Amallar tartibi', 'Порядок действий'],
+    ['Ascending order', 'O‘sish tartibi', 'По возрастанию'],
+    ['Opposite number', 'Qarama-qarshi son', 'Противоположное число'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 30 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Put in ascending order: ${m('−7, 3, 0, −12, 5')}</td><td class="m">4</td><td>L23–24</td></tr>
+        <tr><td>2</td><td>Find ${m('|−9|')}, ${m('−(−6)')} and the opposite of ${m('11')}</td><td class="m">4</td><td>L21–22</td></tr>
+        <tr><td>3</td><td>Compute ${m('(−8) + (−5)')}, ${m('12 + (−17)')}, ${m('−4 − (−9)')}</td><td class="m">6</td><td>L25–28</td></tr>
+        <tr><td>4</td><td>Compute ${m('(−6)(−7)')}, ${m('(−45) ÷ 9')}, ${m('(−2)⁴')}</td><td class="m">6</td><td>L29–32</td></tr>
+        <tr><td>5</td><td>Evaluate ${m('−15 ÷ 3 + (−2) × 4')}</td><td class="m">5</td><td>L33–34</td></tr>
+        <tr><td>6</td><td>Solve ${m('|x| = 7')} and find the mean of ${m('−5, 1, −2, 6')}</td><td class="m">5</td><td>L21–22, 33–34</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries one mark for putting the negatives in the right order among themselves; Q4 two for the
+      even power; Q5 two for doing ÷ and × before + ; Q6 two for giving <b>both</b> solutions.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>negatives ordered forwards</td><td class="m">−7, −12</td><td class="m">−12, −7</td></tr>
+        <tr><td>modulus left negative</td><td class="m">|−9| = −9</td><td class="m">9</td></tr>
+        <tr><td>same signs subtracted</td><td class="m">(−8) + (−5) = −3</td><td class="m">−13</td></tr>
+        <tr><td>sign taken from the first number</td><td class="m">12 + (−17) = 5</td><td class="m">−5</td></tr>
+        <tr><td>double minus missed</td><td class="m">−4 − (−9) = −13</td><td class="m">5</td></tr>
+        <tr><td>even power made negative</td><td class="m">(−2)⁴ = −16</td><td class="m">16</td></tr>
+        <tr><td>left to right regardless</td><td class="m">−15 ÷ 3 + (−2) × 4 = −28</td><td class="m">−13</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'Chapter II as one map',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Block</th><th>The sentence</th></tr></thead>
+      <tbody>
+        <tr><td>why negatives exist</td><td>so that every subtraction has an answer</td></tr>
+        <tr><td>the coordinate line</td><td>further right means greater</td></tr>
+        <tr><td>the modulus</td><td>the distance from zero — never negative</td></tr>
+        <tr><td>addition</td><td>same signs add and keep; different signs subtract and take the larger sign</td></tr>
+        <tr><td>subtraction</td><td class="m">a − b = a + (−b)</td></tr>
+        <tr><td>multiplication and division</td><td>alike gives ${m('+')}, unlike gives ${m('−')}</td></tr>
+        <tr><td>powers</td><td>even exponent positive, odd exponent keeps the sign</td></tr>
+        <tr><td>order</td><td>brackets, powers, ×÷, +−</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      The next chapter fills the last gap in the number system for this year: the <b>rational</b>
+      numbers, where division always works too. The sign rules carry over unchanged — only the
+      arithmetic of fractions is added.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q3: ' + m('(−8) + (−5)') + ', ' + m('12 + (−17)') + ', ' + m('−4 − (−9)') + '.',
+      steps: [
+        ['Same signs: ' + m('8 + 5 = 13') + ', keep the minus — ' + m('−13') + '.', ''],
+        ['Different signs: ' + m('17 − 12 = 5') + ', sign of ' + m('−17') + ' — ' + m('−5') + '.', ''],
+        ['Rewrite: ' + m('−4 + 9') + '.', 'Two minuses.'],
+        [m('= 5'), '']
+      ],
+      ans: m('−13, −5, 5')
+    },
+    {
+      q: 'Model answer, Q5: ' + m('−15 ÷ 3 + (−2) × 4') + '.',
+      steps: [
+        ['Division and multiplication first.', ''],
+        [m('−15 ÷ 3 = −5'), ''],
+        [m('(−2) × 4 = −8'), ''],
+        [m('−5 + (−8) = −13'), '']
+      ],
+      ans: m('−13')
+    },
+    {
+      q: 'Model answer, Q6: solve ' + m('|x| = 7') + ' and find the mean of ' + m('−5, 1, −2, 6') + '.',
+      steps: [
+        ['Two points are ' + m('7') + ' from zero.', ''],
+        [m('x = 7') + ' or ' + m('x = −7') + '.', 'Both needed.'],
+        ['Sum: ' + m('−5 + 1 − 2 + 6 = 0') + '.', ''],
+        ['Mean ' + m('= 0 ÷ 4 = 0') + '.', '']
+      ],
+      ans: m('x = ±7') + '; mean ' + m('0')
+    }
+  ],
+  modelNote: 'Mark Q3 aloud, reading each sum as a sentence about money; every wrong sign becomes obviously wrong before any rule is quoted.',
+  interactive: {
+    type: 'quiz',
+    title: 'Chapter II in twelve questions',
+    hint: 'Two from each block.',
+    items: [
+      { q: 'Negatives exist so that:', a: ['addition works', 'subtraction always works', 'division works', 'nothing'], c: 1, why: m('3 − 5') + '.' },
+      { q: 'Zero is:', a: ['positive', 'negative', 'neither', 'both'], c: 2, why: 'The boundary.' },
+      { q: 'Greater: ' + m('−8') + ' or ' + m('−3') + '?', a: [m('−8'), m('−3'), 'equal', 'cannot tell'], c: 1, why: 'Further right.' },
+      { q: m('|−9|') + ' equals:', a: [m('−9'), m('9'), m('0'), m('81')], c: 1, why: 'A distance.' },
+      { q: m('(−8) + (−5)') + ' equals:', a: [m('−3'), m('−13'), m('3'), m('13')], c: 1, why: 'Same signs: add and keep.' },
+      { q: m('12 + (−17)') + ' equals:', a: [m('5'), m('−5'), m('29'), m('−29')], c: 1, why: 'Sign of the larger modulus.' },
+      { q: m('a − b') + ' equals:', a: [m('a + b'), m('a + (−b)'), m('b − a'), m('−a − b')], c: 1, why: 'Add the opposite.' },
+      { q: m('−4 − (−9)') + ' equals:', a: [m('−13'), m('5'), m('−5'), m('13')], c: 1, why: 'Two minuses give a plus.' },
+      { q: m('(−6)(−7)') + ' equals:', a: [m('42'), m('−42'), m('13'), m('−13')], c: 0, why: 'Alike signs.' },
+      { q: m('(−45) ÷ 9') + ' equals:', a: [m('5'), m('−5'), m('−405'), m('405')], c: 1, why: 'Unlike signs.' },
+      { q: m('(−2)⁴') + ' equals:', a: [m('16'), m('−16'), m('8'), m('−8')], c: 0, why: 'An even exponent.' },
+      { q: 'Order of operations:', a: ['left to right always', 'brackets, powers, ×÷, +−', '+− first', 'no rule'], c: 1, why: 'Four levels.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 tests mainly:', a: ['arithmetic', 'ordering negatives', 'speed', 'the modulus'], c: 1, why: 'The reversal among negatives.' },
+    { q: 'In Q3 the third part needs:', a: ['the addition rule', 'the double-minus rule', 'a power', 'a modulus'], c: 1, why: m('−4 + 9') + '.' },
+    { q: m('(−2)⁴') + ' is positive because:', a: ['the base is even', 'the exponent is even', 'the base is negative', 'no reason'], c: 1, why: 'Four negative factors.' },
+    { q: 'Q5 requires:', a: ['left to right', '× and ÷ first', '+ and − first', 'brackets'], c: 1, why: 'They rank higher.' },
+    { q: 'Q6’s equation has:', a: ['one answer', 'two answers', 'no answer', 'many'], c: 1, why: m('±7') + '.' },
+    { q: 'Work on the mistakes means:', a: ['fix the wrong line', 'rewrite the solution', 'copy the answer', 'skip it'], c: 1, why: 'The whole solution, again.' }
+  ],
+  practice: {
+    easy: [
+      ['Ascending: ' + m('−7, 3, 0, −12, 5'), m('−12, −7, 0, 3, 5')],
+      [m('|−9|'), m('9')],
+      [m('−(−6)'), m('6')],
+      ['Opposite of ' + m('11'), m('−11')],
+      [m('(−8) + (−5)'), m('−13')],
+      [m('12 + (−17)'), m('−5')],
+      [m('−4 − (−9)'), m('5')]
+    ],
+    med: [
+      [m('(−6)(−7)'), m('42')],
+      [m('(−45) ÷ 9'), m('−5')],
+      [m('(−2)⁴'), m('16')],
+      [m('−15 ÷ 3 + (−2) × 4'), m('−13')],
+      ['Solve ' + m('|x| = 7'), m('±7')],
+      ['Mean of ' + m('−5, 1, −2, 6'), m('0')],
+      [m('(−3)³'), m('−27')]
+    ],
+    hard: [
+      [m('(−2)³ + (−3)² − (−4)'), m('5')],
+      [m('−24 ÷ (−6) × (−2)'), m('−8')],
+      [m('(−5)(3) − (−2)(−6)'), m('−27')],
+      ['Mean of ' + m('−9, −3, 0, 6, 11'), m('1')],
+      ['Solve ' + m('|x| ≤ 2') + ' in integers', m('−2, −1, 0, 1, 2')],
+      ['Find ' + m('x') + ': ' + m('−4x + 3 = 19'), m('−4')],
+      ['Evaluate ' + m('2a − b²') + ' at ' + m('a = −5, b = −3'), m('−19')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite in full every question that lost a mark before the next chapter begins.',
+  homework: [
+    'Put in ascending order: ' + m('−4, 8, 0, −15, 2') + '.',
+    'Compute ' + m('(−9) + (−6)') + ', ' + m('14 + (−21)') + ' and ' + m('−7 − (−12)') + '.',
+    'Compute ' + m('(−8)(−4)') + ', ' + m('(−56) ÷ 7') + ' and ' + m('(−3)⁴') + '.',
+    'Evaluate ' + m('−18 ÷ 6 + (−3) × 5') + '.',
+    'Solve ' + m('|x| = 12') + ' and find the mean of ' + m('−7, 2, −4, 9') + '.'
+  ]
+});
