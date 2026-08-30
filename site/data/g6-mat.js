@@ -4778,3 +4778,185 @@ G6_MAT.push({
     m('6') + ' workers take ' + m('15') + ' days. How long would ' + m('9') + ' take?'
   ]
 });
+
+/* ============================== 27 ============================== */
+G6_MAT.push({
+  id: 'g6-27', stream: 'mat', grade: 6, quarter: 1, lessons: '54', hours: 1,
+  title: 'Think — ratio in context',
+  subtitle: 'Scales on maps and plans, best value in a shop, and ratios that describe the world.',
+  uz: 'Matematika 6, o‘ylab ko‘r', uzPage: 'pp. 151–153',
+  cam: 'S7 12 application', camPage: 'Stage 7, pp. 118–125', wb: 'Exercise 12.6',
+  objectives: [
+    'Read and use the scale of a map or plan.',
+    'Compare prices by unit cost to find the better value.',
+    'Interpret a ratio given in a real context.',
+    'Judge whether a proportional model is reasonable.'
+  ],
+  terms: [
+    ['Scale', 'Masshtab', 'Масштаб'],
+    ['Map', 'Xarita', 'Карта'],
+    ['Plan', 'Reja', 'План'],
+    ['Unit cost', 'Birlik narxi', 'Цена за единицу'],
+    ['Best value', 'Eng foydali', 'Наиболее выгодно'],
+    ['Real distance', 'Haqiqiy masofa', 'Реальное расстояние'],
+    ['Model', 'Model', 'Модель'],
+    ['Reasonable', 'Maqbul', 'Разумный']
+  ],
+  timing: [[12, 'Scales'], [12, 'Best value'], [10, 'Ratios in the world'], [6, 'Is the model reasonable?']],
+  sections: [
+    {
+      h: 'Scales',
+      html: `<p>A scale is a ratio: ${m('1 : 100 000')} means one centimetre on the map is ${m('100 000')}
+      centimetres — one kilometre — on the ground.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Scale</th><th>${m('1 cm')} represents</th><th>${m('5 cm')} represents</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1 : 100 000</td><td class="m">1 km</td><td class="m">5 km</td></tr>
+        <tr><td class="m">1 : 25 000</td><td class="m">250 m</td><td class="m">1.25 km</td></tr>
+        <tr><td class="m">1 : 50</td><td class="m">50 cm</td><td class="m">2.5 m</td></tr>
+        <tr><td class="m">1 : 200</td><td class="m">2 m</td><td class="m">10 m</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Convert the units at the end, not in the middle</span>
+      A scale of ${m('1 : 25 000')} turns ${m('3 cm')} into ${m('75 000 cm')}; only then divide by
+      ${m('100 000')} to get ${m('0.75 km')}. Converting halfway through is where the factors of ten go
+      missing.</div>`
+    },
+    {
+      h: 'Best value',
+      html: `<p>Compare the cost of one unit — or the amount for one sum — and the better buy is
+      obvious.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Offer</th><th>Cost</th><th>Per unit</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td>${m('3')} pens</td><td class="m">12 000</td><td class="m">4000</td><td>—</td></tr>
+        <tr><td>${m('5')} pens</td><td class="m">18 000</td><td class="m">3600</td><td>better</td></tr>
+        <tr><td>${m('500')} g of rice</td><td class="m">9 000</td><td class="m">18 a gram</td><td>—</td></tr>
+        <tr><td>${m('2')} kg of rice</td><td class="m">32 000</td><td class="m">16 a gram</td><td>better</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The bigger pack usually wins — but not always</div>
+      Working out the unit cost takes ten seconds and settles it. Shops rely on customers assuming rather
+      than dividing.</div>`
+    },
+    {
+      h: 'Ratios in the world',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Context</th><th>Ratio</th><th>What it tells you</th></tr></thead>
+      <tbody>
+        <tr><td>a map</td><td class="m">1 : 50 000</td><td>how much the ground is shrunk</td></tr>
+        <tr><td>concrete</td><td class="m">1 : 2 : 4</td><td>the recipe for a strong mix</td></tr>
+        <tr><td>a school</td><td>${m('1 : 20')} teachers to pupils</td><td>the size of a class</td></tr>
+        <tr><td>a photograph enlarged</td><td class="m">1 : 3</td><td>every length trebled</td></tr>
+        <tr><td>gears on a bicycle</td><td class="m">2 : 5</td><td>turns of the wheel per pedal turn</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A ratio compresses a whole sentence</div>
+      “For every teacher there are twenty pupils” is one line of English; ${m('1 : 20')} is four
+      characters, and it can be calculated with.</div>`
+    },
+    {
+      h: 'Is the model reasonable?',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Claim</th><th>Proportional?</th><th>Comment</th></tr></thead>
+      <tbody>
+        <tr><td>${m('3')} pens cost three times one pen</td><td>yes</td><td>if the price is fixed</td></tr>
+        <tr><td>${m('100')} pens cost a hundred times one</td><td>usually not</td><td>bulk discounts</td></tr>
+        <tr><td>${m('2')} painters take half the time</td><td>roughly</td><td>up to a point</td></tr>
+        <tr><td>${m('50')} painters take a fiftieth of the time</td><td>no</td><td>they cannot all reach the wall</td></tr>
+        <tr><td>a child twice as old is twice as tall</td><td>no</td><td>growth is not proportional</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Every model has a range where it works</span>
+      Proportion is an excellent description of prices and speeds, and a poor one of growth and crowded
+      workplaces. Saying where a model stops working is part of using it well.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A map has scale ' + m('1 : 25 000') + '. Two towns are ' + m('8 cm') + ' apart on it. How far apart are they really?',
+      steps: [
+        [m('8 · 25 000 = 200 000') + ' cm.', 'Multiply by the scale.'],
+        [m('200 000 ÷ 100 000 = 2') + '.', 'Convert at the end.'],
+        [m('2') + ' km.', '']
+      ],
+      ans: m('2') + ' km'
+    },
+    {
+      q: 'Which is better value: ' + m('3') + ' pens for ' + m('12 000') + ' or ' + m('5') + ' for ' + m('18 000') + '?',
+      steps: [
+        [m('12 000 ÷ 3 = 4000') + ' each.', ''],
+        [m('18 000 ÷ 5 = 3600') + ' each.', ''],
+        ['The pack of five is better value.', '']
+      ],
+      ans: m('5') + ' for ' + m('18 000')
+    },
+    {
+      q: 'A plan of a room has scale ' + m('1 : 50') + '. The room is ' + m('4 m') + ' long. How long is it on the plan?',
+      steps: [
+        [m('4 m = 400 cm') + '.', ''],
+        [m('400 ÷ 50 = 8') + '.', 'Divide, because the plan is smaller.'],
+        [m('8') + ' cm.', '']
+      ],
+      ans: m('8') + ' cm'
+    }
+  ],
+  modelNote: 'Bring a real map and a supermarket receipt; both are ratio problems, and neither looks like a textbook exercise.',
+  interactive: {
+    type: 'quiz',
+    title: 'Scales and best value',
+    hint: 'Multiply to go from map to ground, divide to go back.',
+    items: [
+      { q: 'At ' + m('1 : 100 000') + ', ' + m('1 cm') + ' is:', a: [m('100 m'), m('1 km'), m('10 km'), m('100 km')], c: 1, why: m('100 000') + ' cm.' },
+      { q: 'At ' + m('1 : 25 000') + ', ' + m('8 cm') + ' is:', a: [m('2') + ' km', m('20') + ' km', m('200') + ' m', m('25') + ' km'], c: 0, why: m('200 000') + ' cm.' },
+      { q: 'At ' + m('1 : 50') + ', a ' + m('4 m') + ' room is drawn:', a: [m('8') + ' cm', m('80') + ' cm', m('2') + ' cm', m('20') + ' cm'], c: 0, why: m('400 ÷ 50') + '.' },
+      { q: m('3') + ' pens for ' + m('12 000') + ' cost each:', a: [m('3000'), m('4000'), m('6000'), m('36 000')], c: 1, why: 'Divide.' },
+      { q: m('5') + ' for ' + m('18 000') + ' cost each:', a: [m('3600'), m('4000'), m('3000'), m('9000')], c: 0, why: 'Divide.' },
+      { q: 'So the better value is:', a: [m('3') + ' for ' + m('12 000'), m('5') + ' for ' + m('18 000'), 'the same', 'cannot say'], c: 1, why: 'Lower unit cost.' },
+      { q: m('50') + ' painters taking a fiftieth of the time is:', a: ['reasonable', 'unreasonable', 'certain', 'proportional'], c: 1, why: 'They cannot all work at once.' },
+      { q: 'A scale of ' + m('1 : 200') + ' means ' + m('1 cm') + ' is:', a: [m('200') + ' cm', m('2') + ' m', 'both of these', m('200') + ' m'], c: 2, why: 'The same length, two units.' }
+    ]
+  },
+  quiz: [
+    { q: 'A map scale is a:', a: ['fraction', 'ratio', 'percentage', 'proportion of area'], c: 1, why: 'Map length to real length.' },
+    { q: 'To go from map to ground you:', a: ['divide by the scale', 'multiply by the scale', 'add it', 'square it'], c: 1, why: 'The ground is bigger.' },
+    { q: 'To go from ground to map you:', a: ['divide by the scale', 'multiply by the scale', 'subtract it', 'do nothing'], c: 0, why: 'The map is smaller.' },
+    { q: 'Best value is found by comparing:', a: ['total prices', 'unit costs', 'pack sizes', 'shops'], c: 1, why: 'Price per unit.' },
+    { q: 'At ' + m('1 : 25 000') + ', ' + m('4 cm') + ' is:', a: [m('1') + ' km', m('10') + ' km', m('100') + ' m', m('25') + ' km'], c: 0, why: m('100 000') + ' cm.' },
+    { q: 'Proportion describes growth in height:', a: ['well', 'badly', 'exactly', 'always'], c: 1, why: 'Growth is uneven.' }
+  ],
+  practice: {
+    easy: [
+      ['At ' + m('1 : 100 000') + ', ' + m('1 cm') + ' represents', m('1') + ' km'],
+      ['At ' + m('1 : 25 000') + ', ' + m('1 cm') + ' represents', m('250') + ' m'],
+      ['At ' + m('1 : 50') + ', ' + m('1 cm') + ' represents', m('50') + ' cm'],
+      ['At ' + m('1 : 100 000') + ', ' + m('5 cm') + ' represents', m('5') + ' km'],
+      [m('3') + ' pens for ' + m('12 000') + ': one pen', m('4000')],
+      [m('5') + ' pens for ' + m('18 000') + ': one pen', m('3600')],
+      ['Which is better value?', 'The pack of five']
+    ],
+    med: [
+      ['At ' + m('1 : 25 000') + ', ' + m('8 cm') + ' represents', m('2') + ' km'],
+      ['At ' + m('1 : 50') + ', a ' + m('4 m') + ' room is drawn', m('8') + ' cm'],
+      [m('500') + ' g for ' + m('9 000') + ' or ' + m('2') + ' kg for ' + m('32 000'), 'The ' + m('2') + ' kg pack'],
+      ['A photo enlarged ' + m('1 : 3') + ': a ' + m('5 cm') + ' side becomes', m('15') + ' cm'],
+      ['At ' + m('1 : 200') + ', ' + m('7 cm') + ' represents', m('14') + ' m'],
+      ['A ' + m('12 m') + ' wall at ' + m('1 : 200'), m('6') + ' cm'],
+      ['Teachers to pupils ' + m('1 : 20') + ' with ' + m('300') + ' pupils', m('15') + ' teachers']
+    ],
+    hard: [
+      ['At ' + m('1 : 50 000') + ', a real distance of ' + m('3.5') + ' km is drawn', m('7') + ' cm'],
+      ['A map at ' + m('1 : 25 000') + ' and one at ' + m('1 : 100 000') + ': which shows more detail?', 'The ' + m('1 : 25 000')],
+      [m('750') + ' g for ' + m('15 000') + ' or ' + m('1.2') + ' kg for ' + m('22 800'), 'The ' + m('1.2') + ' kg pack, at ' + m('19') + ' a gram'],
+      ['A model car at ' + m('1 : 43') + ' is ' + m('10 cm') + ' long: the real car', m('4.3') + ' m'],
+      ['Why is “' + m('100') + ' pens cost ' + m('100') + ' times one” often false?', 'Bulk prices are usually discounted'],
+      ['Gears ' + m('2 : 5') + ': wheel turns for ' + m('30') + ' pedal turns', m('75')],
+      ['At what scale is ' + m('1 cm') + ' equal to ' + m('1 m') + '?', m('1 : 100')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Convert units only at the end of the calculation.',
+  homework: [
+    'At a scale of ' + m('1 : 25 000') + ', find the real distance for ' + m('6 cm') + '.',
+    'At a scale of ' + m('1 : 50') + ', find the plan length of a ' + m('7 m') + ' wall.',
+    'Which is better value: ' + m('4') + ' notebooks for ' + m('20 000') + ' or ' + m('7') + ' for ' + m('33 600') + '?',
+    'A map shows two towns ' + m('4.5 cm') + ' apart at ' + m('1 : 200 000') + '. Find the real distance.',
+    'Give one situation where proportion describes the world well and one where it does not.'
+  ]
+});
