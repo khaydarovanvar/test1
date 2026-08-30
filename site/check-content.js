@@ -183,6 +183,17 @@ for (const name of Object.keys(ctx.FIG)) {
 const byGrade = {};
 for (const t of all) byGrade[t.grade] = (byGrade[t.grade] || 0) + 1;
 
+/* A mistyped f('1", "2') is a single string, not two arguments: it renders as
+   garbage with no denominator and nothing in the loaded data can reveal it, so
+   the source itself is scanned. */
+for (const file of ['data/g6-mat.js', 'data/g7-mat.js', 'data/g8-alg.js', 'data/g8-geo.js',
+                    'data/g9-alg.js', 'data/g9-geo.js', 'data/g10-alg.js', 'data/g10-geo.js',
+                    'data/g11-alg.js', 'data/g11-geo.js']) {
+  const src = fs.readFileSync(path.join(here, file), 'utf8');
+  const bad = src.match(/[a-z]\('[^'\n]*", "[^'\n]*'\)/g) || [];
+  for (const b of bad) issues.push(`${file}: mistyped call ${b} — the quotes are inside the string`);
+}
+
 /* data/grades.js carries the counts the homepage prints, so they must match. */
 vm.runInContext(fs.readFileSync(path.join(here, 'data/grades.js'), 'utf8'), ctx, { filename: 'data/grades.js' });
 for (const [g, n] of Object.entries(ctx.TOPIC_COUNTS || {})) {

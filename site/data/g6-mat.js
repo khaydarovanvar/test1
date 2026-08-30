@@ -2986,3 +2986,171 @@ G6_MAT.push({
     m(f('5', '8')) + ' of a barrel is ' + m('25') + ' litres. Find its capacity.'
   ]
 });
+
+/* ============================== 17 ============================== */
+G6_MAT.push({
+  id: 'g6-17', stream: 'mat', grade: 6, quarter: 1, lessons: '36–37', hours: 2,
+  title: 'Control work 2 — division of fractions, and work on the mistakes',
+  subtitle: 'The four operations on fractions in one paper, then the repair.',
+  uz: 'Matematika 6, Nazorat ishi 2', uzPage: 'pp. 54–98',
+  cam: 'S7 7 review', camPage: 'Stage 7, pp. 66–80', wb: 'Control paper 2',
+  objectives: [
+    'Work accurately with all four operations on fractions.',
+    'Handle mixed numbers correctly.',
+    'Solve a word problem, naming the operation.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Division of fractions', 'Kasrlarni bo‘lish', 'Деление дробей'],
+    ['Reciprocal', 'Teskari son', 'Обратное число'],
+    ['Mixed number', 'Aralash son', 'Смешанное число'],
+    ['Common denominator', 'Umumiy maxraj', 'Общий знаменатель'],
+    ['Lowest terms', 'Qisqarmas ko‘rinish', 'Несократимый вид'],
+    ['Word problem', 'Matnli masala', 'Текстовая задача'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [35, 'The paper'], [12, 'Answers'], [25, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 35 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>${m(f('3', '4') + ' + ' + f('2', '5'))} and ${m(f('7', '8') + ' − ' + f('1', '4'))}</td><td class="m">4</td><td>L21</td></tr>
+        <tr><td>2</td><td>${m(f('4', '9') + ' · ' + f('3', '8'))}</td><td class="m">3</td><td>L21</td></tr>
+        <tr><td>3</td><td>${m(f('5', '6') + ' ÷ 5')} and ${m('8 ÷ ' + f('2', '3'))}</td><td class="m">4</td><td>L22–26</td></tr>
+        <tr><td>4</td><td>${m(f('2', '3') + ' ÷ ' + f('8', '9'))}</td><td class="m">4</td><td>L27–29</td></tr>
+        <tr><td>5</td><td>${m('2' + f('1', '4') + ' ÷ 1' + f('1', '2'))}</td><td class="m">4</td><td>L27–29</td></tr>
+        <tr><td>6</td><td>${m(f('3', '5'))} of a tank is ${m('24')} litres: find its capacity</td><td class="m">3</td><td>L30–32</td></tr>
+        <tr><td>7</td><td>How many ${m(f('3', '4'))} m planks come from ${m('9')} m?</td><td class="m">3</td><td>L30–32</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The answers</div>
+      ${m('1' + f('3', '20'))} and ${m(f('5', '8'))}; ${m(f('1', '6'))}; ${m(f('1', '6'))} and ${m('12')};
+      ${m(f('3', '4'))}; ${m('1' + f('1', '2'))}; ${m('40')} litres; ${m('12')} planks.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>denominators added</td><td class="m">${f('3', '4')} + ${f('2', '5')} = ${f('5', '9')}</td><td>use the LCD ${m('20')}</td></tr>
+        <tr><td>cancelled after multiplying</td><td class="m">${f('12', '72')}</td><td>cancel first: ${m(f('1', '6'))}</td></tr>
+        <tr><td>numerator multiplied when dividing by a whole number</td><td class="m">${f('25', '6')}</td><td class="m">${f('1', '6')}</td></tr>
+        <tr><td>wrong fraction inverted</td><td class="m">${f('3', '2')} · ${f('8', '9')}</td><td class="m">${f('2', '3')} · ${f('9', '8')}</td></tr>
+        <tr><td>mixed number not converted</td><td class="m">2${f('1', '4')} ÷ 1${f('1', '2')} = 2${f('1', '6')}</td><td class="m">${f('9', '4')} ÷ ${f('3', '2')}</td></tr>
+        <tr><td>multiplied instead of divided</td><td class="m">24 · ${f('3', '5')}</td><td class="m">24 ÷ ${f('3', '5')}</td></tr>
+        <tr><td>answer not simplified</td><td class="m">${f('9', '12')}</td><td class="m">${f('3', '4')}</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'The chapter as one map',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Case</th><th>Method</th><th>Answer compared with the first number</th></tr></thead>
+      <tbody>
+        <tr><td>fraction ${m('÷')} whole number</td><td>multiply the denominator</td><td>smaller</td></tr>
+        <tr><td>whole number ${m('÷')} fraction</td><td>multiply by the reciprocal</td><td>larger</td></tr>
+        <tr><td>fraction ${m('÷')} fraction under ${m('1')}</td><td>multiply by the reciprocal</td><td>larger</td></tr>
+        <tr><td>fraction ${m('÷')} fraction over ${m('1')}</td><td>multiply by the reciprocal</td><td>smaller</td></tr>
+        <tr><td>mixed numbers</td><td>convert first, then as above</td><td>depends on the divisor</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      Next come three short Cambridge lessons — common multiples, divisibility and roots — and then ratio,
+      where dividing fractions returns as “how many times bigger is this than that”.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q3: ' + m(f('5', '6') + ' ÷ 5') + ' and ' + m('8 ÷ ' + f('2', '3')) + '.',
+      steps: [
+        [m(f('5', '6') + ' · ' + f('1', '5')), 'Cancel the ' + m('5') + 's.'],
+        [m('= ' + f('1', '6')), 'Smaller ✓'],
+        [m('8 · ' + f('3', '2')), 'Turn over the divisor.'],
+        [m('= 12'), 'Larger ✓']
+      ],
+      ans: m(f('1', '6')) + ' and ' + m('12')
+    },
+    {
+      q: 'Model answer, Q5: ' + m('2' + f('1', '4') + ' ÷ 1' + f('1', '2')) + '.',
+      steps: [
+        ['Convert: ' + m(f('9', '4') + ' ÷ ' + f('3', '2')) + '.', 'Never divide mixed numbers directly.'],
+        [m(f('9', '4') + ' · ' + f('2', '3')), ''],
+        ['Cancel and multiply.', ''],
+        [m('= ' + f('3', '2') + ' = 1' + f('1', '2')), '']
+      ],
+      ans: m('1' + f('1', '2'))
+    },
+    {
+      q: 'Model answer, Q6: ' + m(f('3', '5')) + ' of a tank is ' + m('24') + ' litres.',
+      steps: [
+        ['A part is given and the whole is wanted: divide.', ''],
+        [m('24 ÷ ' + f('3', '5') + ' = 24 · ' + f('5', '3')), ''],
+        [m('= 40') + ' litres.', 'Larger than ' + m('24') + ' ✓']
+      ],
+      ans: m('40') + ' litres'
+    }
+  ],
+  modelNote: 'Return Q6 and Q7 first and ask which operation each needed; almost every lost mark there is a choice of operation, not arithmetic.',
+  interactive: {
+    type: 'quiz',
+    title: 'The chapter in eight questions',
+    hint: 'Method first, arithmetic second.',
+    items: [
+      { q: m(f('3', '4') + ' + ' + f('2', '5')) + ' equals:', a: [m(f('5', '9')), m('1' + f('3', '20')), m(f('6', '20')), m('1' + f('1', '20'))], c: 1, why: 'LCD ' + m('20') + '.' },
+      { q: m(f('4', '9') + ' · ' + f('3', '8')) + ' equals:', a: [m(f('1', '6')), m(f('12', '72')) + ' unsimplified', m(f('7', '17')), m(f('32', '27'))], c: 0, why: 'Cancel first.' },
+      { q: m(f('5', '6') + ' ÷ 5') + ' equals:', a: [m(f('1', '6')), m(f('25', '6')), m(f('5', '30')) + ' unsimplified', m(f('6', '5'))], c: 0, why: 'Cancel the ' + m('5') + 's.' },
+      { q: m('8 ÷ ' + f('2', '3')) + ' equals:', a: [m(f('16', '3')), m('12'), m(f('4', '3')), m('5' + f('1', '3'))], c: 1, why: m('8 · ' + f('3', '2')) + '.' },
+      { q: m(f('2', '3') + ' ÷ ' + f('8', '9')) + ' equals:', a: [m(f('16', '27')), m(f('3', '4')), m(f('4', '3')), m(f('27', '16'))], c: 1, why: m(f('2', '3') + ' · ' + f('9', '8')) + '.' },
+      { q: m('2' + f('1', '4') + ' ÷ 1' + f('1', '2')) + ' equals:', a: [m('1' + f('1', '2')), m('2' + f('1', '6')), m('3' + f('3', '8')), m(f('2', '3'))], c: 0, why: 'Convert first.' },
+      { q: m(f('3', '5')) + ' of a tank is ' + m('24') + ' l; the tank holds:', a: [m('14.4') + ' l', m('40') + ' l', m('30') + ' l', m('72') + ' l'], c: 1, why: 'Divide.' },
+      { q: m('9') + ' m in ' + m(f('3', '4')) + ' m planks gives:', a: [m('6.75'), m('12'), m('9'), m('3')], c: 1, why: 'How many fit.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 needs:', a: ['the reciprocal', 'a common denominator', 'converting', 'nothing'], c: 1, why: 'Adding and subtracting.' },
+    { q: 'Q2 is quickest if you:', a: ['multiply then simplify', 'cancel then multiply', 'find a common denominator', 'convert'], c: 1, why: 'Smaller numbers.' },
+    { q: 'Q3 first part gives an answer:', a: ['larger', 'smaller', 'equal', 'negative'], c: 1, why: 'Dividing by a whole number.' },
+    { q: 'Q3 second part gives an answer:', a: ['larger', 'smaller', 'equal', 'negative'], c: 0, why: 'Dividing by a fraction under ' + m('1') + '.' },
+    { q: 'Q5 must begin with:', a: ['turning over', 'converting the mixed numbers', 'a common denominator', 'cancelling'], c: 1, why: 'Then the rule applies.' },
+    { q: 'Q6 needs:', a: ['multiplication', 'division', 'addition', 'subtraction'], c: 1, why: 'The whole from a part.' }
+  ],
+  practice: {
+    easy: [
+      [m(f('3', '4') + ' + ' + f('2', '5')), m('1' + f('3', '20'))],
+      [m(f('7', '8') + ' − ' + f('1', '4')), m(f('5', '8'))],
+      [m(f('4', '9') + ' · ' + f('3', '8')), m(f('1', '6'))],
+      [m(f('5', '6') + ' ÷ 5'), m(f('1', '6'))],
+      [m('8 ÷ ' + f('2', '3')), m('12')],
+      [m(f('2', '3') + ' ÷ ' + f('8', '9')), m(f('3', '4'))],
+      [m('2' + f('1', '4') + ' ÷ 1' + f('1', '2')), m('1' + f('1', '2'))]
+    ],
+    med: [
+      [m(f('3', '5')) + ' of a tank is ' + m('24') + ' l', m('40') + ' l'],
+      [m('9') + ' m in ' + m(f('3', '4')) + ' m planks', m('12')],
+      [m('1' + f('1', '2') + ' + 2' + f('3', '4')), m('4' + f('1', '4'))],
+      [m('5 ÷ ' + f('5', '8')), m('8')],
+      [m(f('7', '10') + ' ÷ ' + f('7', '5')), m(f('1', '2'))],
+      [m(f('3', '8') + ' · 4'), m('1' + f('1', '2'))],
+      [m(f('9', '10') + ' ÷ 3'), m(f('3', '10'))]
+    ],
+    hard: [
+      [m('3' + f('1', '3') + ' ÷ 2' + f('2', '9')), m('1' + f('1', '2'))],
+      [m(f('5', '6') + ' + ' + f('3', '4') + ' ÷ ' + f('3', '2')), m('1' + f('1', '3'))],
+      ['A tank ' + m(f('7', '8')) + ' full holds ' + m('35') + ' l: its capacity', m('40') + ' l'],
+      ['How many ' + m(f('2', '5')) + ' kg bags from ' + m('6') + ' kg?', m('15')],
+      [m('1 ÷ ' + f('3', '7')), m('2' + f('1', '3'))],
+      ['After using ' + m(f('3', '8')) + ', ' + m('30') + ' l is left: the original', m('48') + ' l'],
+      ['Why is the answer to Q3 second part larger than ' + m('8') + '?', 'The divisor is smaller than one']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every question you lost a mark on in full, from the first line.',
+  homework: [
+    'Rewrite in full every question on which you lost a mark.',
+    'Compute ' + m(f('5', '6') + ' + ' + f('3', '8')) + ' and ' + m(f('5', '6') + ' − ' + f('1', '3')) + '.',
+    'Compute ' + m(f('3', '4') + ' ÷ 6') + ' and ' + m('10 ÷ ' + f('5', '7')) + '.',
+    'Compute ' + m('3' + f('1', '2') + ' ÷ 1' + f('3', '4')) + '.',
+    m(f('4', '9')) + ' of a road is ' + m('12') + ' km. Find the whole road.'
+  ]
+});
