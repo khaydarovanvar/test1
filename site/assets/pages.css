@@ -508,3 +508,20 @@
   .tview { flex: 1; text-align: center; padding: 9px 6px; }
   .twhere { white-space: normal; }
 }
+
+/* ---------- the annual-plans page ---------- */
+.dlgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.dlcard{display:flex;align-items:center;gap:14px;padding:16px 18px;text-decoration:none;
+  background:var(--surface);border:1px solid var(--rule);border-radius:12px;color:inherit;
+  transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease}
+.dlcard:hover{border-color:var(--brand);transform:translateY(-2px);
+  box-shadow:0 8px 22px -14px rgba(0,0,0,.28)}
+.dlnum{flex:0 0 auto;width:44px;height:44px;display:grid;place-items:center;border-radius:10px;
+  background:var(--brand-tint);color:var(--brand);font-family:var(--serif);font-size:21px;font-weight:600}
+.dlnum.sm{font-family:var(--mono);font-size:11px;letter-spacing:.06em}
+.dlbody{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:3px}
+.dlt{font-family:var(--serif);font-size:16px;font-weight:600;line-height:1.25}
+.dlm{font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.4}
+.dlc{font-size:12px;color:var(--brass);font-weight:500}
+.dlgo{flex:0 0 auto;color:var(--faint);transition:color .18s ease,transform .18s ease}
+.dlcard:hover .dlgo{color:var(--brand);transform:translateX(2px)}

@@ -32,6 +32,7 @@
   var NAV = [
     ['index.html', 'Home'],
     ['grades.html', 'Grades 5–11', 'grades'],
+    ['plans.html', 'Annual plans'],
     ['terminology.html', 'Terminology'],
     ['about.html', 'About the course']
   ];

@@ -201,8 +201,17 @@ def main():
     parts.append('\n</div>\n')
     parts.append(SCRIPT)
 
+    page = '\n'.join(parts) + '\n'
     with open(OUT, 'w', encoding='utf-8') as fh:
-        fh.write('\n'.join(parts) + '\n')
+        fh.write(page)
+    # the site serves its own copy, with the viewers named by grade */
+    SITE_COPY = os.path.join(HERE, os.pardir, 'site', 'plans', 'grades6-7-9.html')
+    if os.path.isdir(os.path.dirname(SITE_COPY)):
+        for a, b in (('plans.html', 'grade8.html'), ('plans-10-11.html', 'grades10-11.html'),
+                     ('plans-6-7-9.html', 'grades6-7-9.html')):
+            page = page.replace('href="' + a + '"', 'href="' + b + '"')
+        with open(SITE_COPY, 'w', encoding='utf-8') as fh:
+            fh.write(page)
     print('wrote', os.path.basename(OUT),
           '| views:', ', '.join(v[2] for v in VIEWS),
           '| Cambridge inserts:', sum(counts.values()))
