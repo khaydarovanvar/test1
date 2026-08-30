@@ -14064,3 +14064,209 @@ G7_MAT.push({
     'Check whether ' + m('(2; 5)') + ' solves ' + m('{ 2x + y = 9 ; x − y = −3 }') + '.'
   ]
 });
+
+/* ============================== 79 ============================== */
+G7_MAT.push({
+  id: 'g7-79', stream: 'mat', grade: 7, quarter: 4, lessons: '147–149', hours: 3,
+  title: 'Methods of solving a system of linear equations',
+  subtitle: 'Substitution and elimination — two exact methods that finish where the drawing could only estimate.',
+  uz: 'Matematika 7, §63', uzPage: 'pp. 440–450',
+  cam: 'Beyond Stage 8', camPage: 'Stage 8 extension', wb: 'Extension sheet 2E',
+  objectives: [
+    'Solve a system by substitution.',
+    'Solve a system by adding or subtracting the equations.',
+    'Multiply an equation through to make elimination possible.',
+    'Recognise from the algebra when there is no solution or infinitely many.'
+  ],
+  terms: [
+    ['Substitution method', 'O‘rniga qo‘yish usuli', 'Способ подстановки'],
+    ['Elimination method', 'Qo‘shish usuli', 'Способ сложения'],
+    ['To express', 'Ifodalash', 'Выразить'],
+    ['To eliminate', 'Yo‘qotmoq', 'Исключить'],
+    ['Opposite coefficients', 'Qarama-qarshi koeffitsiyentlar', 'Противоположные коэффициенты'],
+    ['To multiply through', 'Ko‘paytirib chiqish', 'Умножить обе части'],
+    ['Back-substitution', 'Teskari o‘rniga qo‘yish', 'Обратная подстановка'],
+    ['Check', 'Tekshirish', 'Проверка']
+  ],
+  timing: [[10, 'Two exact methods'], [30, 'Substitution'], [35, 'Elimination'], [30, 'Multiplying first'], [15, 'No solution, or infinitely many']],
+  sections: [
+    {
+      h: 'Two exact methods',
+      html: `<p>The graph showed <i>where</i> the answer is; these two methods produce it exactly. Both work
+      by turning two equations in two unknowns into one equation in one unknown.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Method</th><th>The move</th><th>Best when</th></tr></thead>
+      <tbody>
+        <tr><td>substitution</td><td>express one unknown and put it into the other equation</td><td>one unknown already stands alone</td></tr>
+        <tr><td>elimination</td><td>add or subtract the equations to cancel an unknown</td><td>a pair of coefficients match or are opposite</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Both methods have the same aim</div>
+      Get to one equation with one letter in it. Everything already known about linear equations then
+      finishes the job, and the second unknown comes from back-substitution.</div>`
+    },
+    {
+      h: 'Substitution',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working for ${m('{ y = x − 1 ; x + y = 5 }')}</th></tr></thead>
+      <tbody>
+        <tr><td>1 — express one unknown</td><td class="m">y = x − 1</td></tr>
+        <tr><td>2 — substitute into the other</td><td class="m">x + (x − 1) = 5</td></tr>
+        <tr><td>3 — solve</td><td class="m">2x = 6, x = 3</td></tr>
+        <tr><td>4 — back-substitute</td><td class="m">y = 3 − 1 = 2</td></tr>
+        <tr><td>5 — check both</td><td class="m">3 + 2 = 5 ✓, 3 − 2 = 1 ✓</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Substitute into the <i>other</i> equation</span>
+      Putting ${m('y = x − 1')} back into ${m('y = x − 1')} gives ${m('0 = 0')} and no information at all.
+      The expression must go into the equation it did not come from.</div>`
+    },
+    {
+      h: 'Elimination',
+      html: `<p>When the coefficients of one unknown are equal, subtract the equations; when they are
+      opposite, add them.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>System</th><th>Move</th><th>Result</th><th>Solution</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x + y = 5, x − y = 1</td><td>add</td><td class="m">2x = 6</td><td class="m">(3; 2)</td></tr>
+        <tr><td class="m">2x + y = 7, x + y = 4</td><td>subtract</td><td class="m">x = 3</td><td class="m">(3; 1)</td></tr>
+        <tr><td class="m">3x + 2y = 12, 3x − 2y = 0</td><td>add</td><td class="m">6x = 12</td><td class="m">(2; 3)</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Subtracting means subtracting every term</span>
+      From ${m('2x + y = 7')} take ${m('x + y = 4')}: the right-hand sides give ${m('7 − 4 = 3')}, not
+      ${m('7')}. Line the two equations up and work column by column.</div>`
+    },
+    {
+      h: 'Multiplying first',
+      html: `<p>When no coefficients match, multiply one equation — or both — through by a number until a
+      pair of them does. Multiplying every term of an equation by the same non-zero number leaves its
+      solutions untouched.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working for ${m('{ 2x + 3y = 12 ; x − y = 1 }')}</th></tr></thead>
+      <tbody>
+        <tr><td>multiply the second by ${m('3')}</td><td class="m">3x − 3y = 3</td></tr>
+        <tr><td>now the ${m('y')} coefficients are opposite</td><td class="m">+3y</td></tr>
+        <tr><td>add the two equations</td><td class="m">5x = 15</td></tr>
+        <tr><td>solve and back-substitute</td><td class="m">x = 3, y = 2</td></tr>
+        <tr><td>check both</td><td class="m">6 + 6 = 12 ✓, 3 − 2 = 1 ✓</td></tr>
+      </tbody></table></div>
+      <p>Sometimes both equations need multiplying:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working for ${m('{ 2x + 5y = 16 ; 3x − 2y = 5 }')}</th></tr></thead>
+      <tbody>
+        <tr><td>multiply the first by ${m('2')}</td><td class="m">4x + 10y = 32</td></tr>
+        <tr><td>multiply the second by ${m('5')}</td><td class="m">15x − 10y = 25</td></tr>
+        <tr><td>add</td><td class="m">19x = 57</td></tr>
+        <tr><td>solve and back-substitute</td><td class="m">x = 3, y = 2</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Multiply <i>every</i> term, both sides included</span>
+      Turning ${m('x − y = 1')} into ${m('3x − 3y = 1')} changes the equation and loses the solution. The
+      right-hand side is multiplied too.</div>`
+    },
+    {
+      h: 'No solution, or infinitely many',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>System</th><th>The algebra gives</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = 2x, y = 2x + 3</td><td class="m">0 = 3</td><td>no solution — parallel lines</td></tr>
+        <tr><td class="m">y = 2x, 2y = 4x</td><td class="m">0 = 0</td><td>infinitely many — the same line</td></tr>
+        <tr><td class="m">x + y = 5, x − y = 1</td><td class="m">x = 3</td><td>one solution</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The algebra reports the geometry</div>
+      Reaching a false statement means the lines never meet; reaching an always-true one means they are
+      the same line. Neither is a mistake — each is the answer, and it should be written in words.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('{ y = x − 1 ; x + y = 5 }') + ' by substitution.',
+      steps: [
+        [m('y') + ' is already expressed.', ''],
+        [m('x + (x − 1) = 5'), 'Into the other equation.'],
+        [m('2x = 6') + ', so ' + m('x = 3') + '.', ''],
+        [m('y = 2') + '. Check: ' + m('3 + 2 = 5') + ' ✓', '']
+      ],
+      ans: m('(3; 2)')
+    },
+    {
+      q: 'Solve ' + m('{ 2x + y = 7 ; x + y = 4 }') + ' by elimination.',
+      steps: [
+        ['The coefficients of ' + m('y') + ' are equal.', ''],
+        ['Subtract: ' + m('(2x − x) + (y − y) = 7 − 4') + '.', ''],
+        [m('x = 3'), ''],
+        [m('3 + y = 4') + ', so ' + m('y = 1') + '.', '']
+      ],
+      ans: m('(3; 1)')
+    },
+    {
+      q: 'Solve ' + m('{ 2x + 3y = 12 ; x − y = 1 }') + '.',
+      steps: [
+        ['From the second, ' + m('x = y + 1') + '.', 'A coefficient of ' + m('1') + ' invites substitution.'],
+        [m('2(y + 1) + 3y = 12'), ''],
+        [m('5y = 10') + ', so ' + m('y = 2') + '.', ''],
+        [m('x = 3') + '. Check: ' + m('6 + 6 = 12') + ' ✓', '']
+      ],
+      ans: m('(3; 2)')
+    }
+  ],
+  modelNote: 'Solve one system by both methods side by side on the board; the class chooses its own favourite and, more usefully, learns to see which system suits which.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which method, and what does it give?',
+    hint: 'Look at the coefficients before choosing.',
+    items: [
+      { q: m('{ y = x − 1 ; x + y = 5 }') + ' suits:', a: ['substitution', 'elimination', 'drawing only', 'neither'], c: 0, why: m('y') + ' is already expressed.' },
+      { q: m('{ x + y = 5 ; x − y = 1 }') + ' suits:', a: ['substitution', 'elimination by adding', 'elimination by subtracting', 'drawing only'], c: 1, why: 'Opposite coefficients of ' + m('y') + '.' },
+      { q: m('{ 2x + y = 7 ; x + y = 4 }') + ' suits:', a: ['adding', 'subtracting', 'multiplying first', 'drawing'], c: 1, why: 'Equal coefficients of ' + m('y') + '.' },
+      { q: 'Adding ' + m('x + y = 5') + ' and ' + m('x − y = 1') + ' gives:', a: [m('2x = 6'), m('2y = 4'), m('2x = 4'), m('x = 6')], c: 0, why: 'The ' + m('y') + 's cancel.' },
+      { q: 'Then ' + m('x') + ' is:', a: [m('2'), m('3'), m('4'), m('6')], c: 1, why: 'Divide by ' + m('2') + '.' },
+      { q: 'And ' + m('y') + ' is:', a: [m('1'), m('2'), m('3'), m('5')], c: 1, why: 'Back-substitute.' },
+      { q: 'Reaching ' + m('0 = 3') + ' means:', a: ['one solution', 'no solution', 'infinitely many', 'an error'], c: 1, why: 'Parallel lines.' },
+      { q: 'Reaching ' + m('0 = 0') + ' means:', a: ['one solution', 'no solution', 'infinitely many', 'an error'], c: 2, why: 'The same line twice.' }
+    ]
+  },
+  quiz: [
+    { q: 'Substitution puts an expression into:', a: ['the same equation', 'the other equation', 'both', 'neither'], c: 1, why: 'Otherwise nothing is learnt.' },
+    { q: 'Equal coefficients call for:', a: ['adding', 'subtracting', 'multiplying', 'drawing'], c: 1, why: 'The terms cancel.' },
+    { q: 'Opposite coefficients call for:', a: ['adding', 'subtracting', 'dividing', 'nothing'], c: 0, why: 'They cancel on adding.' },
+    { q: m('{ 2x + y = 7 ; x + y = 4 }') + ' has solution:', a: [m('(3; 1)'), m('(1; 3)'), m('(2; 2)'), m('(4; 0)')], c: 0, why: 'Subtract, then back-substitute.' },
+    { q: 'After finding one unknown you should:', a: ['stop', 'back-substitute', 'draw the graph', 'multiply'], c: 1, why: 'The answer is a pair.' },
+    { q: 'The final check uses:', a: ['one equation', 'both equations', 'the graph', 'nothing'], c: 1, why: 'The pair must satisfy both.' }
+  ],
+  practice: {
+    easy: [
+      [m('{ y = x − 1 ; x + y = 5 }'), m('(3; 2)')],
+      [m('{ x + y = 5 ; x − y = 1 }'), m('(3; 2)')],
+      [m('{ 2x + y = 7 ; x + y = 4 }'), m('(3; 1)')],
+      [m('{ y = 2x ; x + y = 6 }'), m('(2; 4)')],
+      [m('{ x = 3 ; x + y = 8 }'), m('(3; 5)')],
+      [m('{ y = 5 ; 2x + y = 11 }'), m('(3; 5)')],
+      ['Adding ' + m('x + y = 5') + ' and ' + m('x − y = 1'), m('2x = 6')]
+    ],
+    med: [
+      [m('{ 2x + 3y = 12 ; x − y = 1 }'), m('(3; 2)')],
+      [m('{ 3x + 2y = 12 ; 3x − 2y = 0 }'), m('(2; 3)')],
+      [m('{ x + 2y = 8 ; 3x − 2y = 0 }'), m('(2; 3)')],
+      [m('{ 2x − y = 3 ; x + y = 3 }'), m('(2; 1)')],
+      [m('{ y = 2x ; y = 2x + 3 }'), 'No solution'],
+      [m('{ y = 2x ; 2y = 4x }'), 'Infinitely many'],
+      [m('{ 4x + y = 14 ; x − y = 1 }'), m('(3; 2)')]
+    ],
+    hard: [
+      [m('{ 3x + 2y = 16 ; 5x − 2y = 8 }'), m('(3; 3.5)')],
+      [m('{ 2x + 5y = 16 ; 3x − 2y = 5 }'), m('(3; 2)')],
+      [m('{ 5x − 3y = 9 ; 2x + 3y = 12 }'), m('(3; 2)')],
+      ['For which ' + m('k') + ' has ' + m('{ y = kx + 1 ; y = 3x + 5 }') + ' no solution?', m('k = 3')],
+      [m('{ ' + f('x', '2') + ' + y = 4 ; x − y = 2 }'), m('(4; 2)')],
+      ['Why does substituting an expression into its own equation fail?', 'It gives ' + m('0 = 0') + ' and no information'],
+      [m('{ x + y = 10 ; x − y = 10 }'), m('(10; 0)')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Say which method you chose and why, then check the pair in both equations.',
+  homework: [
+    'Solve ' + m('{ y = x + 2 ; 2x + y = 11 }') + ' by substitution.',
+    'Solve ' + m('{ x + y = 9 ; x − y = 3 }') + ' by elimination.',
+    'Solve ' + m('{ 3x + y = 11 ; x + y = 5 }') + '.',
+    'Solve ' + m('{ 2x + 3y = 13 ; x − y = −1 }') + '.',
+    'Decide how many solutions ' + m('{ y = 4x − 1 ; y = 4x + 2 }') + ' has, and explain.'
+  ]
+});
