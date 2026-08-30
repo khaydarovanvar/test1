@@ -47,9 +47,11 @@
       <h2 id="alg-head">Algebra</h2><p id="alg-sub"></p></div>
     <div class="llist" id="alglist"></div>
 
-    <div class="sechead" style="margin-top:56px"><span class="eyebrow" id="geo-eyebrow">Geometry</span>
-      <h2 id="geo-head">Geometry</h2><p id="geo-sub"></p></div>
-    <div class="llist" id="geolist"></div>
+    <div id="geoblock">
+      <div class="sechead" style="margin-top:56px"><span class="eyebrow" id="geo-eyebrow">Geometry</span>
+        <h2 id="geo-head">Geometry</h2><p id="geo-sub"></p></div>
+      <div class="llist" id="geolist"></div>
+    </div>
   </div>
 </section>
 <div id="site-footer"></div>
@@ -57,8 +59,12 @@
 <script src="assets/mathfmt.js"></script>
 <script src="assets/figures.js"></script>
 <script src="data/grades.js"></script>
+<script src="data/g6-mat.js"></script>
+<script src="data/g7-mat.js"></script>
 <script src="data/g8-alg.js"></script>
 <script src="data/g8-geo.js"></script>
+<script src="data/g9-alg.js"></script>
+<script src="data/g9-geo.js"></script>
 <script src="data/g10-alg.js"></script>
 <script src="data/g10-geo.js"></script>
 <script src="data/g11-alg.js"></script>
@@ -71,8 +77,12 @@ var INFO = (window.GRADE_INFO || {})[G];
 if (!INFO) { window.location.replace('grades.html'); }
 
 var QUARTERS = INFO.quarters;
-var ALL_ALG = (window['G' + G + '_ALG'] || []);
-var ALL_GEO = (window['G' + G + '_GEO'] || []);
+/* Grades 6 and 7 are taught as one subject, so their topics live in G<n>_MAT
+   and the geometry column is hidden. */
+var SINGLE = !!INFO.single;
+var ALL_ALG = (window['G' + G + (SINGLE ? '_MAT' : '_ALG')] || []);
+var ALL_GEO = SINGLE ? [] : (window['G' + G + '_GEO'] || []);
+if (SINGLE) document.getElementById('geoblock').hidden = true;
 
 document.title = 'Grade ' + G + ' Mathematics · Anvarbek Khaydarov';
 document.getElementById('gcrumb').textContent = 'Grade ' + G;
@@ -105,13 +115,16 @@ function show(q){
   var a = ALL_ALG.filter(function(t){return t.quarter===q;});
   var g = ALL_GEO.filter(function(t){return t.quarter===q;});
   document.getElementById('alg-eyebrow').textContent = Q.label;
-  document.getElementById('geo-eyebrow').textContent = Q.label;
-  document.getElementById('alg-head').textContent = 'Algebra — ' + hours(a) + ' hours';
-  document.getElementById('geo-head').textContent = 'Geometry — ' + hours(g) + ' hours';
-  document.getElementById('alg-sub').innerHTML = Q.alg;
-  document.getElementById('geo-sub').innerHTML = Q.geo;
+  document.getElementById('alg-head').textContent =
+    (SINGLE ? 'Mathematics — ' : 'Algebra — ') + hours(a) + ' hours';
+  document.getElementById('alg-sub').innerHTML = SINGLE ? (Q.mat || Q.alg) : Q.alg;
+  if (!SINGLE) {
+    document.getElementById('geo-eyebrow').textContent = Q.label;
+    document.getElementById('geo-head').textContent = 'Geometry — ' + hours(g) + ' hours';
+    document.getElementById('geo-sub').innerHTML = Q.geo;
+    document.getElementById('geolist').innerHTML = rows(g);
+  }
   document.getElementById('alglist').innerHTML = rows(a);
-  document.getElementById('geolist').innerHTML = rows(g);
   [].forEach.call(document.querySelectorAll('.qtab'), function(b){
     b.setAttribute('aria-pressed', +b.dataset.q === q ? 'true' : 'false');
   });

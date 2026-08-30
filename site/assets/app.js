@@ -38,7 +38,10 @@
 
   /* What the grades drop-down says under each year. Keyed by grade; anything
      not listed is still to be written. */
-  var MENU_NOTE = { 8: 'all 95 lessons', 10: 'all 80 lessons', 11: 'all 76 lessons' };
+  function menuNote(g) {
+    var n = (w.TOPIC_COUNTS || {})[g];
+    return n ? 'all ' + n + ' lessons' : 'coming';
+  }
 
   function header(active) {
     var links = NAV.map(function (n) {
@@ -51,7 +54,7 @@
         '<path d="M6 9l6 6 6-6"/></svg></a>' +
         '<span class="submenu">' + GRADES_MENU.map(function (g) {
           return '<a href="' + ROOT + 'grade.html?g=' + g + '">Grade ' + g +
-            '<em>' + (MENU_NOTE[g] || 'coming') + '</em></a>';
+            '<em>' + menuNote(g) + '</em></a>';
         }).join('') + '</span></span>';
     }).join('');
     return '<header class="site-head" id="sitehead"><div class="bar">' + brandmark() +
@@ -381,14 +384,17 @@
   }
 
   /* Every topic the page has loaded, whatever grade. Data files register
-     themselves as G8_ALG, G10_GEO and so on, so adding a grade is one more
-     <script> tag and one more entry here. */
-  var GRADE_KEYS = [8, 10, 11];
+     themselves as G8_ALG, G10_GEO, G6_MAT and so on, so adding a grade is one
+     more <script> tag and one more entry here. Grades 6 and 7 are taught as a
+     single subject, hence the MAT stream. */
+  var GRADE_KEYS = [6, 7, 8, 9, 10, 11];
+  var STREAM_KEYS = ['MAT', 'ALG', 'GEO'];
   function allTopics() {
-    var out = [];
-    for (var i = 0; i < GRADE_KEYS.length; i++) {
-      out = out.concat(w['G' + GRADE_KEYS[i] + '_ALG'] || [],
-                       w['G' + GRADE_KEYS[i] + '_GEO'] || []);
+    var out = [], i, j;
+    for (i = 0; i < GRADE_KEYS.length; i++) {
+      for (j = 0; j < STREAM_KEYS.length; j++) {
+        out = out.concat(w['G' + GRADE_KEYS[i] + '_' + STREAM_KEYS[j]] || []);
+      }
     }
     return out;
   }

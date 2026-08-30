@@ -10,7 +10,9 @@ const ctx = {};
 ctx.window = ctx; ctx.self = ctx; ctx.document = {};
 vm.createContext(ctx);
 for (const f of ['assets/mathfmt.js', 'assets/figures.js', 'assets/interactive.js',
+                 'data/g6-mat.js', 'data/g7-mat.js',
                  'data/g8-alg.js', 'data/g8-geo.js',
+                 'data/g9-alg.js', 'data/g9-geo.js',
                  'data/g10-alg.js', 'data/g10-geo.js',
                  'data/g11-alg.js', 'data/g11-geo.js']) {
   vm.runInContext(fs.readFileSync(path.join(here, f), 'utf8'), ctx, { filename: f });
@@ -25,11 +27,19 @@ if (!LESSON.includes(FIGPAT.source)) {
   console.log('WARNING: the figure pattern here no longer matches the one in lesson.js');
 }
 
-/* The quarter totals the annual plans commit to. Every grade runs algebra
-   3 h/week and geometry 2 h/week, so the shape is the same each year. */
-const HOURS = { alg: { 1: 27, 2: 21, 3: 30, 4: 24 }, geo: { 1: 18, 2: 14, 3: 20, 4: 16 } };
+/* The quarter totals the annual plans commit to. Grades 8 to 11 run algebra
+   3 h/week and geometry 2 h/week; grades 6 and 7 are one subject, at 6 and
+   5 hours a week. The quarters are always 9 / 7 / 10 / 8 weeks. */
+const HOURS = {
+  alg: { 1: 27, 2: 21, 3: 30, 4: 24 },
+  geo: { 1: 18, 2: 14, 3: 20, 4: 16 },
+  mat6: { 1: 54, 2: 42, 3: 60, 4: 48 },
+  mat7: { 1: 45, 2: 35, 3: 50, 4: 40 }
+};
 const STREAMS = [
+  ['G6_MAT', 6, 'mat', 'mat6'], ['G7_MAT', 7, 'mat', 'mat7'],
   ['G8_ALG', 8, 'alg'], ['G8_GEO', 8, 'geo'],
+  ['G9_ALG', 9, 'alg'], ['G9_GEO', 9, 'geo'],
   ['G10_ALG', 10, 'alg'], ['G10_GEO', 10, 'geo'],
   ['G11_ALG', 11, 'alg'], ['G11_GEO', 11, 'geo']
 ];
@@ -38,7 +48,7 @@ const progress = [];
 let all = [];
 for (const [key] of STREAMS) all = all.concat(ctx[key] || []);
 
-for (const [key, grade, stream] of STREAMS) {
+for (const [key, grade, stream, hourKey] of STREAMS) {
   const arr = ctx[key] || [];
   if (!arr.length) continue;
   const byQ = {};
@@ -57,7 +67,7 @@ for (const [key, grade, stream] of STREAMS) {
      overrun its hours is an error, because the annual plan is fixed. */
   for (const q of [1, 2, 3, 4]) {
     if (byQ[q] === undefined) continue;
-    const want = HOURS[stream][q];
+    const want = HOURS[hourKey || stream][q];
     if (byQ[q] > want) issues.push(`${key} quarter ${q}: ${byQ[q]} hours, over the plan's ${want}`);
     else if (byQ[q] < want) progress.push(`${key} Q${q}  ${byQ[q]}/${want} h`);
   }
@@ -102,6 +112,14 @@ for (const t of all) {
     for (const raw of s.html.match(/\{\{fig:[^}]*\}\}/g) || []) {
       const name = raw.slice(6).split(':')[0];
       if (!named.has(name)) issues.push(`${t.id}: section ${i} placeholder "${raw.slice(0, 40)}" will not be replaced`);
+    }
+    /* Text that escapes its cell — "</td> more words</tr>" — balances the tag
+       counts but renders outside the table. Catch it explicitly. */
+    for (const row of s.html.match(/<tr[\s\S]*?<\/tr>/g) || []) {
+      const tail = row.slice(row.lastIndexOf('</td>') + 5, row.lastIndexOf('</tr>'));
+      if (row.includes('</td>') && tail.trim()) {
+        issues.push(`${t.id}: section ${i} has text outside a cell: "${tail.trim().slice(0, 40)}"`);
+      }
     }
     for (const [open, close] of [['<table', '</table>'], ['<td', '</td>'], ['<tr', '</tr>'], ['<ul', '</ul>'], ['<ol', '</ol>']]) {
       const a = (s.html.match(new RegExp(open, 'g')) || []).length;

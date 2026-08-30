@@ -9,16 +9,16 @@
      the data globals directly rather than depending on it. */
   function allTopics() {
     if (w.AKM_allTopics) return w.AKM_allTopics();
-    var out = [], g = [8, 10, 11], i;
+    var out = [], g = [6, 7, 8, 9, 10, 11], st = ['MAT', 'ALG', 'GEO'], i, j;
     for (i = 0; i < g.length; i++) {
-      out = out.concat(w['G' + g[i] + '_ALG'] || [], w['G' + g[i] + '_GEO'] || []);
+      for (j = 0; j < st.length; j++) out = out.concat(w['G' + g[i] + '_' + st[j]] || []);
     }
     return out;
   }
   var TOPICS = allTopics();
   var GLOSS = w.GLOSSARY || [];
 
-  var STREAM = { alg: 'Algebra', geo: 'Geometry' };
+  var STREAM = { mat: 'Mathematics', alg: 'Algebra', geo: 'Geometry' };
   var QNAME = { 1: 'Quarter I', 2: 'Quarter II', 3: 'Quarter III', 4: 'Quarter IV' };
 
   /* ---------- the A–Z index -------------------------------------------

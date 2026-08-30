@@ -337,9 +337,9 @@ G10_ALG.push({
       <tbody>
         <tr><td>the vertex</td><td class="m">(−p, q)</td></tr>
         <tr><td>the axis of symmetry</td><td class="m">x = −p</td></tr>
-        <tr><td>the least value of ${m('y')}</td><td class="m">q</td>, at ${m('x = −p')}</tr>
+        <tr><td>the least value of ${m('y')}</td><td>${m('q')}, at ${m('x = −p')}</td></tr>
         <tr><td>the range</td><td class="m">y ≥ q</td></tr>
-        <tr><td>the roots</td><td class="m">(x + p)² = −q</td> — real only if ${m('q ≤ 0')}</tr>
+        <tr><td>the roots</td><td>${m('(x + p)² = −q')} — real only if ${m('q ≤ 0')}</td></tr>
       </tbody></table></div>
       <p>A square is never negative, so ${m('(x + p)² ≥ 0')} and therefore ${m('y ≥ q')} always. That one
       line answers every "find the minimum value" question in the quarter.</p>`
