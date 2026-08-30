@@ -4055,3 +4055,187 @@ G6_MAT.push({
     'A ratio is ' + m('5 : 8') + ' and the larger quantity is ' + m('40') + '. Find the smaller and the total.'
   ]
 });
+
+/* ============================== 23 ============================== */
+G6_MAT.push({
+  id: 'g6-23', stream: 'mat', grade: 6, quarter: 1, lessons: '44–46', hours: 3,
+  title: 'Word problems on ratio',
+  subtitle: 'Sharing an amount, scaling a recipe, and finding a quantity from a difference.',
+  uz: 'Matematika 6, §10', uzPage: 'pp. 121–130',
+  cam: 'S7 12', camPage: 'Stage 7, pp. 118–125', wb: 'Exercise 12.3'
+  ,
+  objectives: [
+    'Share a quantity in a given ratio.',
+    'Find the total from one share or from the difference of two shares.',
+    'Scale a recipe or a mixture up and down.',
+    'Check that the shares rebuild the total.'
+  ],
+  terms: [
+    ['To share in a ratio', 'Nisbatda taqsimlash', 'Разделить в отношении'],
+    ['Share', 'Ulush', 'Доля'],
+    ['Difference', 'Ayirma', 'Разность'],
+    ['Recipe', 'Retsept', 'Рецепт'],
+    ['To scale', 'Miqyoslash', 'Масштабировать'],
+    ['Mixture', 'Aralashma', 'Смесь'],
+    ['Total', 'Jami', 'Всего'],
+    ['Check', 'Tekshirish', 'Проверка']
+  ],
+  timing: [[25, 'Sharing an amount'], [30, 'From one share to the total'], [30, 'From a difference'], [25, 'Recipes and mixtures'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'Sharing an amount',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Sharing ${m('120')} in ${m('2 : 3')}</th></tr></thead>
+      <tbody>
+        <tr><td>add the parts</td><td class="m">2 + 3 = 5</td></tr>
+        <tr><td>one part</td><td class="m">120 ÷ 5 = 24</td></tr>
+        <tr><td>the shares</td><td class="m">48 and 72</td></tr>
+        <tr><td>check</td><td class="m">48 + 72 = 120 ✓</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Amount</th><th>Ratio</th><th>Shares</th></tr></thead>
+      <tbody>
+        <tr><td class="m">120</td><td class="m">2 : 3</td><td class="m">48, 72</td></tr>
+        <tr><td class="m">200</td><td class="m">3 : 7</td><td class="m">60, 140</td></tr>
+        <tr><td class="m">450</td><td class="m">4 : 5</td><td class="m">200, 250</td></tr>
+        <tr><td class="m">96</td><td class="m">1 : 3</td><td class="m">24, 72</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The check takes two seconds</div>
+      Adding the shares must give the original amount. Nearly every arithmetic slip in this topic shows up
+      in that one line.</div>`
+    },
+    {
+      h: 'From one share to the total',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>One part</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>ratio ${m('2 : 3')}, the first share is ${m('18')}</td><td class="m">9</td><td class="m">45</td></tr>
+        <tr><td>ratio ${m('3 : 4')}, the second share is ${m('28')}</td><td class="m">7</td><td class="m">49</td></tr>
+        <tr><td>ratio ${m('5 : 2')}, the second share is ${m('16')}</td><td class="m">8</td><td class="m">56</td></tr>
+        <tr><td>ratio ${m('1 : 6')}, the first share is ${m('9')}</td><td class="m">9</td><td class="m">63</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Divide the share by its own number, not by the total parts</span>
+      With ratio ${m('2 : 3')} and a first share of ${m('18')}, one part is ${m('18 ÷ 2 = 9')} — not
+      ${m('18 ÷ 5')}. The share belongs to the ${m('2')}, so the ${m('2')} is the divisor.</div>`
+    },
+    {
+      h: 'From a difference',
+      html: `<p>The difference between two shares is the difference of their parts, times one part.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Parts of difference</th><th>One part</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>ratio ${m('5 : 3')}, difference ${m('16')}</td><td class="m">2</td><td class="m">8</td><td class="m">64</td></tr>
+        <tr><td>ratio ${m('7 : 4')}, difference ${m('12')}</td><td class="m">3</td><td class="m">4</td><td class="m">44</td></tr>
+        <tr><td>ratio ${m('3 : 1')}, difference ${m('30')}</td><td class="m">2</td><td class="m">15</td><td class="m">60</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One part answers everything</div>
+      Whether the problem gives a total, one share or a difference, the first move is the same: turn what
+      you are given into the value of one part.</div>`
+    },
+    {
+      h: 'Recipes and mixtures',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>concrete ${m('1 : 2 : 4')} cement, sand, gravel in ${m('700')} kg</td><td>one part ${m('= 100')}</td><td class="m">100, 200, 400 kg</td></tr>
+        <tr><td>a recipe for ${m('4')} uses ${m('600')} g flour: for ${m('6')}</td><td class="m">150 · 6</td><td class="m">900 g</td></tr>
+        <tr><td>paint ${m('3 : 2')} blue to white, ${m('12')} l of blue</td><td>one part ${m('= 4')}</td><td class="m">8 l white</td></tr>
+        <tr><td>a drink ${m('1 : 5')} in ${m('1.8')} l</td><td>one part ${m('= 0.3')}</td><td class="m">0.3 l syrup</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Keep the units with every number</span>
+      A recipe scaled from kilograms to grams by mistake is out by a factor of a thousand. Writing the
+      unit beside each share is the cheapest protection there is.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Share ' + m('450') + ' in the ratio ' + m('4 : 5') + '.',
+      steps: [
+        [m('4 + 5 = 9') + ' parts.', ''],
+        [m('450 ÷ 9 = 50') + ' for one part.', ''],
+        [m('4 · 50 = 200') + ' and ' + m('5 · 50 = 250') + '.', 'Check: ' + m('200 + 250 = 450') + ' ✓']
+      ],
+      ans: m('200') + ' and ' + m('250')
+    },
+    {
+      q: 'Two shares are in the ratio ' + m('5 : 3') + ' and differ by ' + m('16') + '. Find both.',
+      steps: [
+        ['The difference is ' + m('5 − 3 = 2') + ' parts.', ''],
+        [m('16 ÷ 2 = 8') + ' for one part.', ''],
+        [m('5 · 8 = 40') + ' and ' + m('3 · 8 = 24') + '.', 'Check: ' + m('40 − 24 = 16') + ' ✓']
+      ],
+      ans: m('40') + ' and ' + m('24')
+    },
+    {
+      q: 'Concrete is mixed ' + m('1 : 2 : 4') + ' by mass. How much of each is in ' + m('700') + ' kg?',
+      steps: [
+        [m('1 + 2 + 4 = 7') + ' parts.', ''],
+        [m('700 ÷ 7 = 100') + ' kg for one part.', ''],
+        [m('100') + ', ' + m('200') + ' and ' + m('400') + ' kg.', 'Check: they total ' + m('700') + ' ✓']
+      ],
+      ans: m('100, 200, 400') + ' kg'
+    }
+  ],
+  modelNote: 'Use a real recipe card and scale it for the whole class; the ratio work is identical to the textbook and the purpose is never in doubt.',
+  interactive: {
+    type: 'quiz',
+    title: 'Total, share or difference?',
+    hint: 'Turn what you are given into one part.',
+    items: [
+      { q: m('120') + ' in ' + m('2 : 3') + ' gives:', a: [m('40, 80'), m('48, 72'), m('50, 70'), m('60, 60')], c: 1, why: 'One part ' + m('24') + '.' },
+      { q: m('200') + ' in ' + m('3 : 7') + ' gives:', a: [m('60, 140'), m('70, 130'), m('80, 120'), m('100, 100')], c: 0, why: 'One part ' + m('20') + '.' },
+      { q: 'Ratio ' + m('2 : 3') + ' with first share ' + m('18') + ': one part is:', a: [m('3.6'), m('6'), m('9'), m('18')], c: 2, why: m('18 ÷ 2') + '.' },
+      { q: 'So the total is:', a: [m('27'), m('45'), m('30'), m('90')], c: 1, why: m('5 · 9') + '.' },
+      { q: 'Ratio ' + m('5 : 3') + ' with difference ' + m('16') + ': one part is:', a: [m('2'), m('8'), m('16'), m('4')], c: 1, why: 'The difference is ' + m('2') + ' parts.' },
+      { q: 'So the shares are:', a: [m('40') + ' and ' + m('24'), m('30') + ' and ' + m('14'), m('50') + ' and ' + m('34'), m('20') + ' and ' + m('4')], c: 0, why: m('5 · 8') + ' and ' + m('3 · 8') + '.' },
+      { q: 'Concrete ' + m('1 : 2 : 4') + ' in ' + m('700') + ' kg has cement:', a: [m('50') + ' kg', m('100') + ' kg', m('175') + ' kg', m('200') + ' kg'], c: 1, why: m('7') + ' parts.' },
+      { q: 'The check on any sharing problem is:', a: ['the ratio', 'the shares add to the total', 'the difference', 'the units'], c: 1, why: 'Two seconds.' }
+    ]
+  },
+  quiz: [
+    { q: 'The first step in sharing is:', a: ['divide by the first part', 'add the parts', 'multiply', 'subtract'], c: 1, why: 'Then find one part.' },
+    { q: m('96') + ' in ' + m('1 : 3') + ' gives:', a: [m('24') + ' and ' + m('72'), m('32') + ' and ' + m('64'), m('48') + ' and ' + m('48'), m('16') + ' and ' + m('80')], c: 0, why: 'Four parts of ' + m('24') + '.' },
+    { q: 'Given one share, divide it by:', a: ['the total parts', 'its own number in the ratio', 'the other number', 'the total'], c: 1, why: 'That gives one part.' },
+    { q: 'Ratio ' + m('7 : 4') + ' with difference ' + m('12') + ': the total is:', a: [m('33'), m('44'), m('55'), m('66')], c: 1, why: 'One part ' + m('4') + '.' },
+    { q: 'A recipe for ' + m('4') + ' scaled to ' + m('6') + ' multiplies by:', a: [m('1.5'), m('2'), m('0.5'), m('6')], c: 0, why: m(f('6', '4')) + '.' },
+    { q: 'Paint ' + m('3 : 2') + ' with ' + m('12') + ' l of blue needs white:', a: [m('6') + ' l', m('8') + ' l', m('18') + ' l', m('4') + ' l'], c: 1, why: 'One part ' + m('4') + ' l.' }
+  ],
+  practice: {
+    easy: [
+      ['Share ' + m('120') + ' in ' + m('2 : 3'), m('48') + ' and ' + m('72')],
+      ['Share ' + m('200') + ' in ' + m('3 : 7'), m('60') + ' and ' + m('140')],
+      ['Share ' + m('450') + ' in ' + m('4 : 5'), m('200') + ' and ' + m('250')],
+      ['Share ' + m('96') + ' in ' + m('1 : 3'), m('24') + ' and ' + m('72')],
+      ['Ratio ' + m('2 : 3') + ', first share ' + m('18') + ': one part', m('9')],
+      ['And the total', m('45')],
+      ['Ratio ' + m('3 : 4') + ', second share ' + m('28') + ': the total', m('49')]
+    ],
+    med: [
+      ['Ratio ' + m('5 : 3') + ', difference ' + m('16'), m('40') + ' and ' + m('24')],
+      ['Ratio ' + m('7 : 4') + ', difference ' + m('12'), m('28') + ' and ' + m('16')],
+      ['Concrete ' + m('1 : 2 : 4') + ' in ' + m('700') + ' kg', m('100, 200, 400') + ' kg'],
+      ['A recipe for ' + m('4') + ' with ' + m('600') + ' g flour: for ' + m('6'), m('900') + ' g'],
+      ['Paint ' + m('3 : 2') + ', ' + m('12') + ' l blue: the white', m('8') + ' l'],
+      ['A drink ' + m('1 : 5') + ' in ' + m('1.8') + ' l: the syrup', m('0.3') + ' l'],
+      ['Ratio ' + m('5 : 2') + ', second share ' + m('16') + ': the total', m('56')]
+    ],
+    hard: [
+      ['Share ' + m('540') + ' in ' + m('2 : 3 : 4'), m('120, 180, 240')],
+      ['Ratio ' + m('4 : 9') + ', difference ' + m('35') + ': the total', m('91')],
+      ['A recipe for ' + m('6') + ' uses ' + m('750') + ' g: for ' + m('10'), m('1250') + ' g'],
+      ['Money shared ' + m('3 : 5') + ' so that the smaller share is ' + m('45 000'), 'Total ' + m('120 000')],
+      ['Concrete ' + m('1 : 2 : 4') + ' using ' + m('150') + ' kg of cement: the total', m('1050') + ' kg'],
+      ['Two numbers in ratio ' + m('4 : 7') + ' add to ' + m('132'), m('48') + ' and ' + m('84')],
+      ['Why divide a known share by its own number?', 'That share is exactly that many parts']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Add your shares back to the total before writing the answer down.',
+  homework: [
+    'Share ' + m('360') + ' in the ratio ' + m('5 : 4') + '.',
+    'Share ' + m('840') + ' in the ratio ' + m('1 : 2 : 4') + '.',
+    'Two shares are in the ratio ' + m('7 : 3') + ' and differ by ' + m('24') + '. Find both.',
+    'A recipe for ' + m('5') + ' people uses ' + m('400') + ' g of rice. How much for ' + m('8') + '?',
+    'Paint is mixed ' + m('4 : 3') + ' blue to white. With ' + m('20') + ' litres of blue, how much white is needed?'
+  ]
+});
