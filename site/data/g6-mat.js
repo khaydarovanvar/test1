@@ -9000,3 +9000,182 @@ G6_MAT.push({
     'A square of side ' + m('28') + ' cm has a disc of radius ' + m('14') + ' cm cut out. Find the area remaining.'
   ]
 });
+
+/* ============================== 51 ============================== */
+G6_MAT.push({
+  id: 'g6-51', stream: 'mat', grade: 6, quarter: 3, lessons: '106', hours: 1,
+  title: 'Think — compound figures in the world',
+  subtitle: 'Sports pitches, windows, tiles and gardens — real shapes, cut into known pieces.',
+  uz: 'Matematika 6, o‘ylab ko‘r', uzPage: 'pp. 311–313',
+  cam: 'S7 15 in context', camPage: 'Stage 7, pp. 148–156', wb: 'Exercise 15.5',
+  objectives: [
+    'Model a real object as a compound of simple shapes.',
+    'Decide whether the question wants an area or a length.',
+    'Estimate a real quantity from a measured plan.',
+    'Judge the accuracy of the answer.'
+  ],
+  terms: [
+    ['Model', 'Model', 'Модель'],
+    ['Plan', 'Reja', 'План'],
+    ['Estimate', 'Baholash', 'Оценка'],
+    ['Material', 'Material', 'Материал'],
+    ['Cost', 'Narx', 'Стоимость'],
+    ['Per square metre', 'Bir kvadrat metrga', 'За квадратный метр'],
+    ['Accuracy', 'Aniqlik', 'Точность'],
+    ['Assumption', 'Faraz', 'Допущение']
+  ],
+  timing: [[10, 'Modelling a real shape'], [12, 'Area or length?'], [12, 'Costing a job'], [6, 'How accurate?']],
+  sections: [
+    {
+      h: 'Modelling a real shape',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Object</th><th>Modelled as</th></tr></thead>
+      <tbody>
+        <tr><td>a running track</td><td>a rectangle with two semicircular ends</td></tr>
+        <tr><td>an arched window</td><td>a rectangle with a semicircle on top</td></tr>
+        <tr><td>a football pitch</td><td>a rectangle, with a circle in the middle</td></tr>
+        <tr><td>a paved corner</td><td>a square less a quadrant</td></tr>
+        <tr><td>a garden with a round pond</td><td>a rectangle less a disc</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Every model leaves something out</div>
+      A real track has a kerb, a real window has a frame of some thickness. Saying what has been ignored
+      is part of a good answer, not an apology for it.</div>`
+    },
+    {
+      h: 'Area or length?',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>What is wanted</th><th>Measurement</th><th>Units</th></tr></thead>
+      <tbody>
+        <tr><td>grass seed for a lawn</td><td>area</td><td class="m">m²</td></tr>
+        <tr><td>fencing round it</td><td>perimeter</td><td class="m">m</td></tr>
+        <tr><td>glass for a window</td><td>area</td><td class="m">cm²</td></tr>
+        <tr><td>beading round the glass</td><td>perimeter</td><td class="m">cm</td></tr>
+        <tr><td>paint for a wall</td><td>area</td><td class="m">m²</td></tr>
+        <tr><td>skirting board</td><td>length</td><td class="m">m</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The material tells you which</div>
+      Anything sold by the roll or the metre is a length; anything sold by the tin or the square metre is
+      an area. Read the material, not the shape.</div>`
+    },
+    {
+      h: 'Costing a job',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>turf at ${m('35 000')} sum a ${m('m²')} for a ${m('12 × 8')} m lawn</td><td class="m">96 · 35 000</td><td class="m">3 360 000</td></tr>
+        <tr><td>fencing at ${m('25 000')} a metre round the same lawn</td><td class="m">40 · 25 000</td><td class="m">1 000 000</td></tr>
+        <tr><td>the same lawn with a ${m('2')} m round pond removed</td><td class="m">96 − 12.57</td><td class="m">83.43 m²</td></tr>
+        <tr><td>tiles ${m('20')} cm square for a ${m('3 × 4')} m floor</td><td class="m">12 ÷ 0.04</td><td class="m">300 tiles</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Convert units before dividing</span>
+      A ${m('20')} cm tile is ${m('0.04')} m², not ${m('20')} m². Mixing centimetres and metres in one
+      division is where a factor of ten thousand goes missing.</div>`
+    },
+    {
+      h: 'How accurate?',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Assumption</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>the corners are exactly square</td><td>small</td></tr>
+        <tr><td>${m('π = 3.14')} rather than more places</td><td>tiny</td></tr>
+        <tr><td>no waste when cutting tiles</td><td>can be ${m('10%')}</td></tr>
+        <tr><td>the ground is flat</td><td>can be large on a slope</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Add for waste, then round up</div>
+      Nobody orders ${m('83.43')} m² of turf. The professional answer is “about ${m('90')} m², allowing
+      for waste” — and saying so is a mathematical judgement, not a vague one.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A lawn is ' + m('12') + ' m by ' + m('8') + ' m with a circular pond of radius ' + m('2') + ' m in it. Find the grassed area.',
+      steps: [
+        ['Rectangle: ' + m('96') + ' m².', ''],
+        ['Pond: ' + m('3.14 · 4 = 12.57') + ' m².', ''],
+        [m('96 − 12.57 = 83.43') + ' m².', ''],
+        ['Order about ' + m('90') + ' m² of turf, allowing for waste.', '']
+      ],
+      ans: m('83.43 m²')
+    },
+    {
+      q: 'How many ' + m('20') + ' cm square tiles cover a floor ' + m('3') + ' m by ' + m('4') + ' m?',
+      steps: [
+        ['Floor: ' + m('12') + ' m².', ''],
+        ['One tile: ' + m('0.2 · 0.2 = 0.04') + ' m².', 'Convert first.'],
+        [m('12 ÷ 0.04 = 300') + ' tiles.', '']
+      ],
+      ans: m('300') + ' tiles'
+    },
+    {
+      q: 'An arched window is a ' + m('80') + ' cm by ' + m('120') + ' cm rectangle with a semicircle of radius ' + m('40') + ' cm on top. Find the glass area.',
+      steps: [
+        ['Rectangle: ' + m('9 600') + ' cm².', ''],
+        ['Semicircle: ' + m(f('1', '2') + ' · 3.14 · 1 600 = 2 512') + ' cm².', ''],
+        [m('9 600 + 2 512 = 12 112') + ' cm².', 'About ' + m('1.2') + ' m².']
+      ],
+      ans: m('12 112 cm²')
+    }
+  ],
+  modelNote: 'Measure a real room or courtyard and cost a job in it; the arithmetic is the same as the textbook and the answer can be checked against a real price.',
+  interactive: {
+    type: 'quiz',
+    title: 'Area, length, or number of pieces?',
+    hint: 'Read the material being bought.',
+    items: [
+      { q: 'Grass seed for a lawn is bought by:', a: ['the metre', 'the square metre', 'the piece', 'the litre'], c: 1, why: 'An area.' },
+      { q: 'Fencing is bought by:', a: ['the metre', 'the square metre', 'the tin', 'the tile'], c: 0, why: 'A length.' },
+      { q: 'A ' + m('12 × 8') + ' m lawn has area:', a: [m('40'), m('96'), m('20'), m('192')], c: 1, why: m('12 · 8') + '.' },
+      { q: 'Its perimeter is:', a: [m('20'), m('40'), m('96'), m('48')], c: 1, why: m('2(12 + 8)') + '.' },
+      { q: 'A pond of radius ' + m('2') + ' m has area about:', a: [m('6.28'), m('12.57'), m('4'), m('25.1')], c: 1, why: m('3.14 · 4') + '.' },
+      { q: 'A ' + m('20') + ' cm square tile is:', a: [m('20') + ' m²', m('0.4') + ' m²', m('0.04') + ' m²', m('400') + ' m²'], c: 2, why: m('0.2 · 0.2') + '.' },
+      { q: 'Tiles for a ' + m('12') + ' m² floor:', a: [m('60'), m('300'), m('600'), m('30')], c: 1, why: m('12 ÷ 0.04') + '.' },
+      { q: 'Ordering exactly the calculated area is:', a: ['sensible', 'risky — allow for waste', 'required', 'impossible'], c: 1, why: 'Cutting wastes material.' }
+    ]
+  },
+  quiz: [
+    { q: 'A running track is modelled as:', a: ['a circle', 'a rectangle with semicircular ends', 'a square', 'an oval with no formula'], c: 1, why: 'Two known shapes.' },
+    { q: 'Paint is bought by:', a: ['the metre', 'the area to cover', 'the perimeter', 'the tile'], c: 1, why: 'Coverage per tin.' },
+    { q: 'Skirting board is bought by:', a: ['the area', 'the length', 'the piece', 'the tin'], c: 1, why: 'It runs round the room.' },
+    { q: 'A ' + m('20') + ' cm tile covers:', a: [m('0.04') + ' m²', m('0.2') + ' m²', m('4') + ' m²', m('20') + ' m²'], c: 0, why: 'Convert before squaring.' },
+    { q: 'A model of a real shape:', a: ['is exact', 'ignores some details', 'is useless', 'needs no assumptions'], c: 1, why: 'And they should be stated.' },
+    { q: 'A sensible order for ' + m('83.43') + ' m² of turf is:', a: [m('83.43'), 'about ' + m('90'), m('80'), m('83')], c: 1, why: 'Allow for waste.' }
+  ],
+  practice: {
+    easy: [
+      ['A ' + m('12 × 8') + ' m lawn: the area', m('96 m²')],
+      ['Its perimeter', m('40 m')],
+      ['Turf at ' + m('35 000') + ' a ' + m('m²'), m('3 360 000') + ' sum'],
+      ['Fencing at ' + m('25 000') + ' a metre', m('1 000 000') + ' sum'],
+      ['A ' + m('20') + ' cm tile in ' + m('m²'), m('0.04')],
+      ['Tiles for ' + m('12') + ' m²', m('300')],
+      ['Grass seed is measured by', 'area']
+    ],
+    med: [
+      ['A ' + m('12 × 8') + ' lawn with a pond of radius ' + m('2') + ' m', m('83.43 m²')],
+      ['An arched window ' + m('80 × 120') + ' with a semicircle of radius ' + m('40'), m('12 112 cm²')],
+      ['A ' + m('3 × 4') + ' m floor in ' + m('25') + ' cm tiles', m('192') + ' tiles'],
+      ['Paint covering ' + m('10') + ' m² a litre for ' + m('45') + ' m²', m('4.5') + ' litres'],
+      ['A ' + m('5 × 4') + ' m room: skirting board', m('18 m')],
+      ['A track ' + m('80 × 70') + ' with ends of radius ' + m('35') + ': the area', m('9450 m²')],
+      ['Which needs the perimeter: turf or fencing?', 'Fencing']
+    ],
+    hard: [
+      ['A lawn ' + m('20 × 15') + ' m with two round beds of radius ' + m('3') + ' m', m('243.5 m²')],
+      ['Turf for that lawn at ' + m('40 000') + ' a ' + m('m²') + ', allowing ' + m('10%') + ' waste', 'About ' + m('10 700 000') + ' sum'],
+      ['A room ' + m('6 × 4') + ' m with a door ' + m('0.9') + ' m wide: the skirting', m('19.1 m')],
+      ['A wall ' + m('8') + ' m by ' + m('2.5') + ' m with a ' + m('2 × 1.5') + ' m window: the paint area', m('17 m²')],
+      ['Why allow for waste?', 'Cut pieces at the edges cannot always be reused'],
+      ['A ' + m('30') + ' cm tile for the same ' + m('12') + ' m² floor', m('134') + ' tiles, rounded up'],
+      ['State two assumptions in the lawn problem', 'The ground is flat and the corners are square']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Say what you are assuming, and round the final order sensibly.',
+  homework: [
+    'Measure a room at home and find its floor area and perimeter.',
+    'Work out how many ' + m('30') + ' cm square tiles would cover that floor.',
+    'A lawn ' + m('15 × 10') + ' m has a circular pond of radius ' + m('2.5') + ' m. Find the grassed area.',
+    'Cost turf for that lawn at ' + m('38 000') + ' sum a square metre, allowing ' + m('10%') + ' for waste.',
+    'Write two sentences saying what your model of the lawn has ignored.'
+  ]
+});
