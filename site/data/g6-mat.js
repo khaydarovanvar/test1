@@ -10430,3 +10430,179 @@ G6_MAT.push({
     'A walker covers ' + m('9') + ' km at ' + m('4') + ' km/h. Give the time in hours and minutes.'
   ]
 });
+
+/* ============================== 59 ============================== */
+G6_MAT.push({
+  id: 'g6-59', stream: 'mat', grade: 6, quarter: 3, lessons: '123–125', hours: 3,
+  title: 'Word problems on motion with two speeds',
+  subtitle: 'A journey in two parts, and the current or wind that changes the speed.',
+  uz: 'Matematika 6, §26', uzPage: 'pp. 359–368',
+  cam: 'S7 12 rates', camPage: 'Stage 7, pp. 122–126', wb: 'Exercise 12.7',
+  objectives: [
+    'Handle a journey made in two stages at different speeds.',
+    'Use downstream and upstream speeds.',
+    'Set out the working in a table.',
+    'Check each stage separately as well as the whole.'
+  ],
+  terms: [
+    ['Stage of a journey', 'Yo‘l bosqichi', 'Участок пути'],
+    ['Downstream', 'Oqim bo‘ylab', 'По течению'],
+    ['Upstream', 'Oqimga qarshi', 'Против течения'],
+    ['Current', 'Oqim', 'Течение'],
+    ['Still water', 'Turg‘un suv', 'Стоячая вода'],
+    ['Total distance', 'Umumiy masofa', 'Общее расстояние'],
+    ['Total time', 'Umumiy vaqt', 'Общее время'],
+    ['Table of working', 'Jadval', 'Таблица']
+  ],
+  timing: [[25, 'Two stages'], [30, 'Setting out a table'], [35, 'Downstream and upstream'], [25, 'Harder problems'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Two stages',
+      html: `<p>Work each stage separately, then add the distances and add the times. Never add the
+      speeds.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Stage</th><th>Speed</th><th>Time</th><th>Distance</th></tr></thead>
+      <tbody>
+        <tr><td>first</td><td class="m">60 km/h</td><td class="m">2 h</td><td class="m">120 km</td></tr>
+        <tr><td>second</td><td class="m">80 km/h</td><td class="m">3 h</td><td class="m">240 km</td></tr>
+        <tr><td>total</td><td>—</td><td class="m">5 h</td><td class="m">360 km</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Speeds are never added</span>
+      The two stages above do not make a journey at ${m('140')} km/h. Distances add, times add; a speed is
+      a ratio between them and has to be worked out at the end.</div>`
+    },
+    {
+      h: 'Setting out a table',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Table</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('2')} h at ${m('60')} then ${m('3')} h at ${m('80')}</td><td class="m">120 + 240</td><td class="m">360 km</td></tr>
+        <tr><td>${m('90')} km at ${m('45')} then ${m('60')} km at ${m('60')}</td><td class="m">2 + 1</td><td class="m">3 h</td></tr>
+        <tr><td>${m('1.5')} h at ${m('50')} then ${m('30')} min at ${m('70')}</td><td class="m">75 + 35</td><td class="m">110 km</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Three columns, one row per stage</div>
+      Speed, time, distance — with a totals row underneath. The table does the organising, and the
+      arithmetic becomes obvious.</div>`
+    },
+    {
+      h: 'Downstream and upstream',
+      html: `${eq('downstream ' + m('= v + u') + '     upstream ' + m('= v − u'), true)}
+      <p>with ${m('v')} the speed of the boat in still water and ${m('u')} the speed of the current.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Boat</th><th>Current</th><th>Downstream</th><th>Upstream</th></tr></thead>
+      <tbody>
+        <tr><td class="m">16</td><td class="m">4</td><td class="m">20</td><td class="m">12</td></tr>
+        <tr><td class="m">18</td><td class="m">3</td><td class="m">21</td><td class="m">15</td></tr>
+        <tr><td class="m">10</td><td class="m">2</td><td class="m">12</td><td class="m">8</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The same idea works for wind</div>
+      An aeroplane with a tailwind flies at ${m('v + u')} and against it at ${m('v − u')}. The two speeds
+      add and subtract exactly as with a river.</div>`
+    },
+    {
+      h: 'Harder problems',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a boat at ${m('16')} in still water, current ${m('4')}: ${m('60')} km downstream</td><td class="m">60 ÷ 20</td><td class="m">3 h</td></tr>
+        <tr><td>the same boat coming back</td><td class="m">60 ÷ 12</td><td class="m">5 h</td></tr>
+        <tr><td>the whole trip</td><td class="m">3 + 5</td><td class="m">8 h</td></tr>
+        <tr><td>a boat covering ${m('20')} km down in ${m('1')} h and ${m('12')} km up in ${m('1')} h</td><td class="m">(20 + 12) ÷ 2</td><td>boat ${m('16')}, current ${m('4')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Half the sum and half the difference</div>
+      Given the two speeds, the boat's own speed is their average and the current is half their difference.
+      Grade 7 will write that as a system of two equations.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A car drives ' + m('2') + ' hours at ' + m('60') + ' km/h and then ' + m('3') + ' hours at ' + m('80') + ' km/h. Find the total distance.',
+      steps: [
+        ['First stage: ' + m('120') + ' km.', ''],
+        ['Second stage: ' + m('240') + ' km.', ''],
+        [m('120 + 240 = 360') + ' km.', 'The speeds are not added.']
+      ],
+      ans: m('360 km')
+    },
+    {
+      q: 'A boat travels at ' + m('16') + ' km/h in still water. The current is ' + m('4') + ' km/h. How long to go ' + m('60') + ' km downstream and back?',
+      steps: [
+        ['Downstream: ' + m('20') + ' km/h, so ' + m('3') + ' h.', ''],
+        ['Upstream: ' + m('12') + ' km/h, so ' + m('5') + ' h.', ''],
+        [m('3 + 5 = 8') + ' h.', 'Not ' + m('60 ÷ 16') + ' doubled.']
+      ],
+      ans: m('8') + ' hours'
+    },
+    {
+      q: 'A boat covers ' + m('20') + ' km downstream and ' + m('12') + ' km upstream, each in one hour. Find the speed of the boat and of the current.',
+      steps: [
+        ['Downstream speed ' + m('20') + ', upstream ' + m('12') + '.', ''],
+        ['Boat: ' + m('(20 + 12) ÷ 2 = 16') + ' km/h.', ''],
+        ['Current: ' + m('(20 − 12) ÷ 2 = 4') + ' km/h.', 'Check: ' + m('16 + 4 = 20') + ' ✓']
+      ],
+      ans: 'Boat ' + m('16') + ', current ' + m('4')
+    }
+  ],
+  modelNote: 'Draw the table on the board and fill it in with the class before any arithmetic; the organisation is what makes these problems easy.',
+  interactive: {
+    type: 'quiz',
+    title: 'Two stages, two speeds',
+    hint: 'Add distances and times, never speeds.',
+    items: [
+      { q: m('2') + ' h at ' + m('60') + ' then ' + m('3') + ' h at ' + m('80') + ': the distance is:', a: [m('140'), m('360'), m('280'), m('700')], c: 1, why: m('120 + 240') + '.' },
+      { q: 'The total time is:', a: [m('5') + ' h', m('6') + ' h', m('2.5') + ' h', m('140') + ' h'], c: 0, why: 'Add the times.' },
+      { q: 'Adding the two speeds gives:', a: ['the average speed', 'nothing useful', 'the total', 'the distance'], c: 1, why: 'Speeds do not add.' },
+      { q: 'A boat at ' + m('16') + ' with a ' + m('4') + ' current goes downstream at:', a: [m('12'), m('16'), m('20'), m('64')], c: 2, why: m('v + u') + '.' },
+      { q: 'And upstream at:', a: [m('12'), m('16'), m('20'), m('4')], c: 0, why: m('v − u') + '.' },
+      { q: m('60') + ' km downstream at ' + m('20') + ' takes:', a: [m('3') + ' h', m('5') + ' h', m('4') + ' h', m('12') + ' h'], c: 0, why: m(f('60', '20')) + '.' },
+      { q: 'And back upstream:', a: [m('3') + ' h', m('5') + ' h', m('4') + ' h', m('15') + ' h'], c: 1, why: m(f('60', '12')) + '.' },
+      { q: 'Down ' + m('20') + ', up ' + m('12') + ': the current is:', a: [m('4'), m('8'), m('16'), m('32')], c: 0, why: 'Half the difference.' }
+    ]
+  },
+  quiz: [
+    { q: 'In a two-stage journey you add:', a: ['the speeds', 'the distances and the times', 'the speeds and times', 'nothing'], c: 1, why: 'Speeds are ratios.' },
+    { q: 'Downstream speed is:', a: [m('v − u'), m('v + u'), m('vu'), m('v')], c: 1, why: 'The current helps.' },
+    { q: 'Upstream speed is:', a: [m('v − u'), m('v + u'), m(f('v', 'u')), m('u')], c: 0, why: 'The current hinders.' },
+    { q: 'A boat at ' + m('18') + ' with a ' + m('3') + ' current goes upstream at:', a: [m('15'), m('21'), m('18'), m('6')], c: 0, why: m('18 − 3') + '.' },
+    { q: 'Given both speeds, the boat’s own speed is:', a: ['their sum', 'their average', 'their difference', 'the larger'], c: 1, why: 'Half the sum.' },
+    { q: 'And the current is:', a: ['their average', 'half their difference', 'their difference', 'the smaller'], c: 1, why: 'Half the gap.' }
+  ],
+  practice: {
+    easy: [
+      [m('2') + ' h at ' + m('60') + ' then ' + m('3') + ' h at ' + m('80') + ': the distance', m('360 km')],
+      ['And the total time', m('5 h')],
+      ['A boat at ' + m('16') + ', current ' + m('4') + ': downstream', m('20 km/h')],
+      ['And upstream', m('12 km/h')],
+      ['A boat at ' + m('18') + ', current ' + m('3') + ': downstream', m('21 km/h')],
+      ['And upstream', m('15 km/h')],
+      [m('60') + ' km at ' + m('20') + ' km/h', m('3 h')]
+    ],
+    med: [
+      [m('90') + ' km at ' + m('45') + ' then ' + m('60') + ' km at ' + m('60') + ': the time', m('3 h')],
+      [m('1.5') + ' h at ' + m('50') + ' then ' + m('30') + ' min at ' + m('70'), m('110 km')],
+      ['A boat, ' + m('60') + ' km down at ' + m('20') + ' and back at ' + m('12'), m('8 h')],
+      ['Down ' + m('20') + ', up ' + m('12') + ': the boat', m('16 km/h')],
+      ['And the current', m('4 km/h')],
+      ['Down ' + m('24') + ', up ' + m('16') + ': the boat and current', m('20') + ' and ' + m('4')],
+      ['A plane at ' + m('500') + ' with a ' + m('50') + ' tailwind', m('550 km/h')]
+    ],
+    hard: [
+      ['A boat at ' + m('12') + ' in still water, current ' + m('3') + ': ' + m('45') + ' km each way', m('8 h')],
+      ['A car does ' + m('120') + ' km at ' + m('60') + ' and ' + m('120') + ' km at ' + m('40') + ': the total time', m('5 h')],
+      ['A plane flies ' + m('1 800') + ' km out at ' + m('600') + ' and back at ' + m('450'), m('7 h')],
+      ['A boat takes ' + m('2') + ' h down and ' + m('3') + ' h up for the same ' + m('36') + ' km', 'Boat ' + m('15') + ', current ' + m('3')],
+      ['A journey of ' + m('300') + ' km, half at ' + m('50') + ' and half at ' + m('75'), m('5 h')],
+      ['Why can the two speeds not be added?', 'A speed is a ratio, not an amount'],
+      ['A boat’s downstream speed is twice its upstream speed and the current is ' + m('3') + ': the boat', m('9 km/h')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw the three-column table before writing any arithmetic.',
+  homework: [
+    'A car drives ' + m('3') + ' h at ' + m('70') + ' km/h then ' + m('2') + ' h at ' + m('90') + '. Find the distance and the total time.',
+    'A boat travels at ' + m('14') + ' km/h in still water with a current of ' + m('2') + '. Find its speed each way.',
+    'How long does that boat take to go ' + m('48') + ' km downstream and back?',
+    'A boat covers ' + m('30') + ' km downstream in ' + m('1.5') + ' h and ' + m('30') + ' km upstream in ' + m('3') + ' h. Find the boat and the current.',
+    'A journey of ' + m('180') + ' km is half at ' + m('45') + ' km/h and half at ' + m('90') + '. Find the total time.'
+  ]
+});
