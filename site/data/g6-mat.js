@@ -11300,3 +11300,375 @@ G6_MAT.push({
     'Explain why it is nevertheless the wrong way to add two fractions.'
   ]
 });
+
+/* ============================== 64 ============================== */
+G6_MAT.push({
+  id: 'g6-64', stream: 'mat', grade: 6, quarter: 3, lessons: '134–136', hours: 3,
+  title: 'Ordering fractions; adding mixed numbers',
+  subtitle: 'One common denominator settles both the order and the sum. [Cambridge insert]',
+  uz: 'Matematika 6, takrorlash', uzPage: 'pp. 389–394',
+  cam: 'S7 7.1–7.2 fractions', camPage: 'Stage 7, pp. 68–75', wb: 'Exercise 7.1–7.2',
+  objectives: [
+    'Compare two fractions by rewriting them over a common denominator.',
+    'Order a list of fractions and place them on a number line.',
+    'Add and subtract mixed numbers, converting the improper part back.',
+    'Regroup one whole when the subtraction of the fraction parts will not go.'
+  ],
+  terms: [
+    ['Mixed number', 'Aralash son', 'Смешанное число'],
+    ['Improper fraction', 'Noto‘g‘ri kasr', 'Неправильная дробь'],
+    ['Proper fraction', 'To‘g‘ri kasr', 'Правильная дробь'],
+    ['Common denominator', 'Umumiy maxraj', 'Общий знаменатель'],
+    ['Lowest common denominator', 'Eng kichik umumiy maxraj', 'Наименьший общий знаменатель'],
+    ['To order', 'Tartiblamoq', 'Упорядочить'],
+    ['Ascending order', 'O‘sish tartibida', 'По возрастанию'],
+    ['To regroup a whole', 'Butundan olmoq', 'Занимать из целой части']
+  ],
+  timing: [[25, 'Comparing two fractions'], [30, 'Ordering a list'], [35, 'Adding mixed numbers'], [25, 'Subtracting with a regroup'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Comparing two fractions',
+      html: `<p>Two fractions can be compared the moment they share a denominator: the one with the larger
+      numerator is larger. Everything in this topic is that one sentence, applied twice.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Pair</th><th>Common denominator</th><th>Rewritten</th><th>Larger</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('3', '4')} and ${f('5', '7')}</td><td class="m">28</td><td class="m">${f('21', '28')} and ${f('20', '28')}</td><td class="m">${f('3', '4')}</td></tr>
+        <tr><td class="m">${f('5', '8')} and ${f('7', '12')}</td><td class="m">24</td><td class="m">${f('15', '24')} and ${f('14', '24')}</td><td class="m">${f('5', '8')}</td></tr>
+        <tr><td class="m">${f('4', '9')} and ${f('3', '7')}</td><td class="m">63</td><td class="m">${f('28', '63')} and ${f('27', '63')}</td><td class="m">${f('4', '9')}</td></tr>
+        <tr><td class="m">${f('2', '3')} and ${f('5', '8')}</td><td class="m">24</td><td class="m">${f('16', '24')} and ${f('15', '24')}</td><td class="m">${f('2', '3')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The cross check, for two fractions only</div>
+      For ${m(f('a', 'b'))} against ${m(f('c', 'd'))}, compare ${m('ad')} with ${m('bc')}. For
+      ${m(f('3', '4'))} and ${m(f('5', '7'))}: ${m('3 · 7 = 21')} against ${m('4 · 5 = 20')}, so the first
+      is larger. It is the same arithmetic as the table, with the denominator left unwritten.</div>`
+    },
+    {
+      h: 'Ordering a list',
+      html: `<p>For three or more fractions the cross check is no help — one denominator for the whole list
+      is quicker. Order ${m(f('2', '3'))}, ${m(f('3', '5'))}, ${m(f('7', '10'))}, ${m(f('5', '8'))}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Fraction</th><th>Over 120</th><th>As a decimal</th><th>Place</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('3', '5')}</td><td class="m">${f('72', '120')}</td><td class="m">0.600</td><td>1st</td></tr>
+        <tr><td class="m">${f('5', '8')}</td><td class="m">${f('75', '120')}</td><td class="m">0.625</td><td>2nd</td></tr>
+        <tr><td class="m">${f('2', '3')}</td><td class="m">${f('80', '120')}</td><td class="m">0.667</td><td>3rd</td></tr>
+        <tr><td class="m">${f('7', '10')}</td><td class="m">${f('84', '120')}</td><td class="m">0.700</td><td>4th</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A bigger denominator does not mean a bigger fraction</span>
+      ${m(f('7', '10'))} beats ${m(f('5', '8'))} and ${m(f('3', '5'))} beats nothing at all: the
+      denominator alone decides nothing. Rewrite, then compare.</div>
+      <p>With directed numbers the order reverses on the negative side: ${m(f('2', '3'))} is larger than
+      ${m(f('3', '5'))}, so ${m('−' + f('2', '3'))} is <b>smaller</b> than ${m('−' + f('3', '5'))}.</p>`
+    },
+    {
+      h: 'Adding mixed numbers',
+      html: `<p>Add the whole parts, add the fraction parts over a common denominator, then carry any whole
+      that the fraction part has produced.</p>
+      ${eq(m('2' + f('3', '4') + ' + 1' + f('5', '6') + ' = 3 + ' + f('9', '12') + ' + ' + f('10', '12') + ' = 3' + f('19', '12') + ' = 4' + f('7', '12')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sum</th><th>Wholes</th><th>Fractions</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3${f('2', '5')} + 2${f('1', '3')}</td><td class="m">5</td><td class="m">${f('6', '15')} + ${f('5', '15')} = ${f('11', '15')}</td><td class="m">5${f('11', '15')}</td></tr>
+        <tr><td class="m">1${f('1', '2')} + 2${f('2', '3')}</td><td class="m">3</td><td class="m">${f('3', '6')} + ${f('4', '6')} = ${f('7', '6')}</td><td class="m">4${f('1', '6')}</td></tr>
+        <tr><td class="m">3${f('5', '6')} + 1${f('3', '4')}</td><td class="m">4</td><td class="m">${f('10', '12')} + ${f('9', '12')} = ${f('19', '12')}</td><td class="m">5${f('7', '12')}</td></tr>
+        <tr><td class="m">2${f('7', '10')} + 3${f('4', '5')}</td><td class="m">5</td><td class="m">${f('7', '10')} + ${f('8', '10')} = ${f('15', '10')}</td><td class="m">6${f('1', '2')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Never leave an improper fraction in the answer</div>
+      ${m('3' + f('19', '12'))} is a correct value but not a finished answer: ${m(f('19', '12') + ' = 1' + f('7', '12'))},
+      so the whole part becomes ${m('4')}.</div>`
+    },
+    {
+      h: 'Subtracting with a regroup',
+      html: `<p>Subtraction is the same, until the fraction parts will not go. Then one whole is exchanged
+      for a fraction of the same denominator — exactly the borrowing of column subtraction.</p>
+      ${eq(m('4' + f('1', '3') + ' − 1' + f('5', '6') + ' = 4' + f('2', '6') + ' = 3' + f('8', '6') + ', so 3' + f('8', '6') + ' − 1' + f('5', '6') + ' = 2' + f('3', '6') + ' = 2' + f('1', '2')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Difference</th><th>Regroup</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5${f('1', '4')} − 2${f('3', '4')}</td><td class="m">4${f('5', '4')} − 2${f('3', '4')}</td><td class="m">2${f('1', '2')}</td></tr>
+        <tr><td class="m">6 − 2${f('3', '8')}</td><td class="m">5${f('8', '8')} − 2${f('3', '8')}</td><td class="m">3${f('5', '8')}</td></tr>
+        <tr><td class="m">7${f('2', '5')} − 3${f('4', '5')}</td><td class="m">6${f('7', '5')} − 3${f('4', '5')}</td><td class="m">3${f('3', '5')}</td></tr>
+        <tr><td class="m">5${f('1', '6')} − 2${f('3', '4')}</td><td class="m">4${f('14', '12')} − 2${f('9', '12')}</td><td class="m">2${f('5', '12')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Take the whole across in the right pieces</span>
+      One whole is ${m(f('4', '4'))} when the denominator is ${m('4')} and ${m(f('12', '12'))} when it is
+      ${m('12')}. Change the denominators first, regroup second, or the exchange will be the wrong size.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Which is larger, ' + m(f('4', '9')) + ' or ' + m(f('3', '7')) + '?',
+      steps: [
+        ['Common denominator ' + m('63') + '.', ''],
+        [m(f('4', '9') + ' = ' + f('28', '63')) + ' and ' + m(f('3', '7') + ' = ' + f('27', '63')) + '.', ''],
+        [m('28 > 27') + '.', 'Cross check: ' + m('4 · 7 = 28 > 27 = 9 · 3') + ' ✓']
+      ],
+      ans: m(f('4', '9')) + ' is larger'
+    },
+    {
+      q: 'Work out ' + m('2' + f('3', '4') + ' + 1' + f('5', '6')) + '.',
+      steps: [
+        ['Wholes: ' + m('2 + 1 = 3') + '.', ''],
+        ['Fractions over ' + m('12') + ': ' + m(f('9', '12') + ' + ' + f('10', '12') + ' = ' + f('19', '12')) + '.', ''],
+        [m(f('19', '12') + ' = 1' + f('7', '12')) + ', so the answer is ' + m('4' + f('7', '12')) + '.', 'Estimate: ' + m('2.75 + 1.83 ≈ 4.6') + ' ✓']
+      ],
+      ans: m('4' + f('7', '12'))
+    },
+    {
+      q: 'Work out ' + m('4' + f('1', '3') + ' − 1' + f('5', '6')) + '.',
+      steps: [
+        ['Over ' + m('6') + ': ' + m('4' + f('2', '6') + ' − 1' + f('5', '6')) + '.', ''],
+        [m(f('2', '6') + ' < ' + f('5', '6')) + ', so regroup: ' + m('3' + f('8', '6')) + '.', ''],
+        [m('3' + f('8', '6') + ' − 1' + f('5', '6') + ' = 2' + f('3', '6') + ' = 2' + f('1', '2')) + '.', '']
+      ],
+      ans: m('2' + f('1', '2'))
+    }
+  ],
+  modelNote: 'Run the model on the pair 9 and 7 last: the extra factors are the other denominator, and the class sees why unrelated denominators multiply.',
+  interactive: {
+    type: 'lcdBuilder',
+    title: 'Building the common denominator',
+    hint: 'Factorise each denominator; the extra factor is whatever the other one has and this one lacks.',
+    items: [
+      { label: '4 and 6', rows: [['4', '2 · 2', '× 3'], ['6', '2 · 3', '× 2']], lcd: '2 · 2 · 3 = 12', note: 'The shared factor 2 is counted once, not twice.' },
+      { label: '8 and 12', rows: [['8', '2 · 2 · 2', '× 3'], ['12', '2 · 2 · 3', '× 2']], lcd: '2 · 2 · 2 · 3 = 24', note: 'Not 96: the two 2s they share are counted once.' },
+      { label: '6 and 10', rows: [['6', '2 · 3', '× 5'], ['10', '2 · 5', '× 3']], lcd: '2 · 3 · 5 = 30', note: 'Each denominator supplies the factor the other is missing.' },
+      { label: '9 and 7', rows: [['9', '3 · 3', '× 7'], ['7', '7', '× 9']], lcd: '9 · 7 = 63', note: 'With no shared factor the lowest common denominator is simply the product.' },
+      { label: '4, 6 and 10', rows: [['4', '2 · 2', '× 15'], ['6', '2 · 3', '× 10'], ['10', '2 · 5', '× 6']], lcd: '2 · 2 · 3 · 5 = 60', note: 'Three denominators, one table — this is how a list is ordered.' }
+    ]
+  },
+  quiz: [
+    { q: 'To compare two fractions you first make equal the:', a: ['numerators', 'denominators', 'wholes', 'decimals'], c: 1, why: 'Then the numerators decide.' },
+    { q: 'The larger of ' + m(f('5', '8')) + ' and ' + m(f('7', '12')) + ' is:', a: [m(f('5', '8')), m(f('7', '12')), 'they are equal', 'cannot tell'], c: 0, why: m(f('15', '24') + ' > ' + f('14', '24')) + '.' },
+    { q: m('2' + f('3', '4') + ' + 1' + f('5', '6')) + ' equals:', a: [m('3' + f('19', '12')), m('4' + f('7', '12')), m('3' + f('8', '10')), m('4' + f('1', '2'))], c: 1, why: 'Carry the improper part.' },
+    { q: 'In ' + m('6 − 2' + f('3', '8')) + ' the whole ' + m('6') + ' becomes:', a: [m('5' + f('8', '8')), m('6' + f('8', '8')), m('5' + f('1', '8')), m('5')], c: 0, why: 'One whole, in eighths.' },
+    { q: 'Of ' + m('−' + f('2', '3')) + ' and ' + m('−' + f('3', '5')) + ' the smaller is:', a: [m('−' + f('3', '5')), m('−' + f('2', '3')), 'equal', 'neither'], c: 1, why: 'The order reverses on the negative side.' },
+    { q: 'The lowest common denominator of ' + m('9') + ' and ' + m('7') + ' is:', a: [m('16'), m('63'), m('9'), m('126')], c: 1, why: 'No shared factor, so the product.' }
+  ],
+  practice: {
+    easy: [
+      ['Which is larger, ' + m(f('3', '4')) + ' or ' + m(f('5', '7')) + '?', m(f('3', '4'))],
+      ['Which is larger, ' + m(f('5', '8')) + ' or ' + m(f('7', '12')) + '?', m(f('5', '8'))],
+      ['Which is larger, ' + m(f('2', '3')) + ' or ' + m(f('5', '8')) + '?', m(f('2', '3'))],
+      [m('1' + f('1', '4') + ' + 2' + f('1', '4')), m('3' + f('1', '2'))],
+      [m('3' + f('2', '5') + ' + 1' + f('1', '5')), m('4' + f('3', '5'))],
+      [m('5' + f('3', '4') + ' − 2' + f('1', '4')), m('3' + f('1', '2'))],
+      ['The lowest common denominator of ' + m('6') + ' and ' + m('8'), m('24')]
+    ],
+    med: [
+      [m('2' + f('3', '4') + ' + 1' + f('5', '6')), m('4' + f('7', '12'))],
+      [m('3' + f('5', '6') + ' + 1' + f('3', '4')), m('5' + f('7', '12'))],
+      [m('4' + f('1', '3') + ' − 1' + f('5', '6')), m('2' + f('1', '2'))],
+      [m('6 − 2' + f('3', '8')), m('3' + f('5', '8'))],
+      [m('7' + f('2', '5') + ' − 3' + f('4', '5')), m('3' + f('3', '5'))],
+      ['Order ' + m(f('3', '5')) + ', ' + m(f('2', '3')) + ', ' + m(f('7', '10')) + ', ' + m(f('5', '8')) + ' upwards', m(f('3', '5') + ', ' + f('5', '8') + ', ' + f('2', '3') + ', ' + f('7', '10'))],
+      ['Which is larger, ' + m('−' + f('2', '3')) + ' or ' + m('−' + f('3', '5')) + '?', m('−' + f('3', '5'))]
+    ],
+    hard: [
+      [m('2' + f('7', '10') + ' + 3' + f('4', '5')), m('6' + f('1', '2'))],
+      [m('5' + f('1', '6') + ' − 2' + f('3', '4')), m('2' + f('5', '12'))],
+      [m('1' + f('3', '8') + ' + 2' + f('1', '6') + ' + 1' + f('1', '4')), m('4' + f('19', '24'))],
+      [m('10 − 3' + f('2', '7') + ' − 2' + f('5', '7')), m('4')],
+      ['Find a fraction between ' + m(f('5', '9')) + ' and ' + m(f('4', '7')), m(f('71', '126'))],
+      ['A recipe needs ' + m('2' + f('1', '3')) + ' cups and ' + m('1' + f('3', '4')) + ' cups: the total', m('4' + f('1', '12')) + ' cups'],
+      ['Which is larger, ' + m(f('12', '17')) + ' or ' + m(f('7', '10')) + '?', m(f('12', '17')) + ', since ' + m('120 > 119')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every answer as a mixed number in lowest terms, with the common denominator shown.',
+  homework: [
+    'Which is larger, ' + m(f('7', '9')) + ' or ' + m(f('5', '6')) + '? Show the rewriting.',
+    'Order ' + m(f('1', '2')) + ', ' + m(f('4', '9')) + ', ' + m(f('5', '12')) + ' and ' + m(f('7', '18')) + ' in ascending order.',
+    'Work out ' + m('3' + f('2', '3') + ' + 2' + f('3', '4')) + '.',
+    'Work out ' + m('5' + f('1', '4') + ' − 2' + f('2', '3')) + '.',
+    'A plank ' + m('4') + ' m long has ' + m('1' + f('5', '8')) + ' m sawn off. How much is left?'
+  ]
+});
+
+/* ============================== 65 ============================== */
+G6_MAT.push({
+  id: 'g6-65', stream: 'mat', grade: 6, quarter: 3, lessons: '137–138', hours: 2,
+  title: 'Generating sequences and finding the nth term',
+  subtitle: 'From “add four each time” to a rule that reaches the hundredth term at once. [Cambridge insert]',
+  uz: 'Matematika 6, qo‘shimcha mavzu', uzPage: 'pp. 395–399',
+  cam: 'S7 9 sequences and functions', camPage: 'Stage 7, pp. 90–97', wb: 'Exercise 9.1–9.3',
+  objectives: [
+    'Continue a sequence from its term-to-term rule.',
+    'Generate terms from a position-to-term rule such as ' + m('3n + 2') + '.',
+    'Find the nth term of a linear sequence from its common difference.',
+    'Decide whether a given number is a term, and say which one.'
+  ],
+  terms: [
+    ['Sequence', 'Ketma-ketlik', 'Последовательность'],
+    ['Term', 'Had', 'Член последовательности'],
+    ['Position', 'O‘rin (tartib raqami)', 'Номер (позиция)'],
+    ['Term-to-term rule', 'Haddan hadga o‘tish qoidasi', 'Рекуррентное правило'],
+    ['nth term', 'n-chi had', 'n-й член'],
+    ['Common difference', 'Ayirma', 'Разность'],
+    ['Linear sequence', 'Chiziqli ketma-ketlik', 'Линейная последовательность'],
+    ['Square numbers', 'Kvadrat sonlar', 'Квадратные числа']
+  ],
+  timing: [[20, 'Term-to-term rules'], [20, 'From position to term'], [25, 'Finding the nth term'], [10, 'Using the rule'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Term-to-term rules',
+      html: `<p>A sequence is a list of numbers in a fixed order. Each number is a <b>term</b>, and its
+      <b>position</b> is ${m('n = 1, 2, 3, …')}. The easiest rule says what to do to one term to get the
+      next.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sequence</th><th>Term-to-term rule</th><th>Next two terms</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3, 7, 11, 15, …</td><td>add ${m('4')}</td><td class="m">19, 23</td></tr>
+        <tr><td class="m">5, 8, 11, 14, …</td><td>add ${m('3')}</td><td class="m">17, 20</td></tr>
+        <tr><td class="m">20, 17, 14, 11, …</td><td>subtract ${m('3')}</td><td class="m">8, 5</td></tr>
+        <tr><td class="m">2, 4, 8, 16, …</td><td>multiply by ${m('2')}</td><td class="m">32, 64</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A term-to-term rule cannot jump</span>
+      To reach the ${m('100')}th term of the first sequence this way you would add ${m('4')} ninety-nine
+      times. That is why the next rule is worth having.</div>`
+    },
+    {
+      h: 'From position to term',
+      html: `<p>A <b>position-to-term</b> rule — the nth term — takes the position straight to the term.
+      Substitute ${m('n = 1, 2, 3, …')} and the sequence appears.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>nth term</th><th>${m('n = 1')}</th><th>${m('n = 2')}</th><th>${m('n = 3')}</th><th>${m('n = 4')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3n + 2</td><td class="m">5</td><td class="m">8</td><td class="m">11</td><td class="m">14</td></tr>
+        <tr><td class="m">4n − 1</td><td class="m">3</td><td class="m">7</td><td class="m">11</td><td class="m">15</td></tr>
+        <tr><td class="m">23 − 3n</td><td class="m">20</td><td class="m">17</td><td class="m">14</td><td class="m">11</td></tr>
+        <tr><td class="m">n²</td><td class="m">1</td><td class="m">4</td><td class="m">9</td><td class="m">16</td></tr>
+      </tbody></table></div>
+      {{fig:linearSequence:A pattern of squares — the count rises by two each time, so the nth term is 2n + 1}}
+      <div class="keybox"><div class="klabel">The rule reaches any term in one step</div>
+      The ${m('100')}th term of ${m('4n − 1')} is ${m('4 · 100 − 1 = 399')}. No list, no adding
+      ninety-nine times.</div>`
+    },
+    {
+      h: 'Finding the nth term',
+      html: `<p>A sequence that goes up (or down) by the same amount every time is <b>linear</b>. Call that
+      amount the common difference ${m('d')}, and the first term ${m('a')}.</p>
+      ${eq(m('n') + 'th term ' + m('= dn + (a − d)'), true)}
+      <p>The ${m('dn')} builds the steady climb; the bracket is the adjustment that makes the first term
+      come out right. In practice: write ${m('dn')}, work out the first term it gives, and correct it.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sequence</th><th>${m('d')}</th><th>${m('dn')} gives at ${m('n = 1')}</th><th>Correction</th><th>nth term</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5, 8, 11, 14</td><td class="m">3</td><td class="m">3</td><td class="m">+2</td><td class="m">3n + 2</td></tr>
+        <tr><td class="m">2, 9, 16, 23</td><td class="m">7</td><td class="m">7</td><td class="m">−5</td><td class="m">7n − 5</td></tr>
+        <tr><td class="m">6, 10, 14, 18</td><td class="m">4</td><td class="m">4</td><td class="m">+2</td><td class="m">4n + 2</td></tr>
+        <tr><td class="m">20, 17, 14, 11</td><td class="m">−3</td><td class="m">−3</td><td class="m">+23</td><td class="m">23 − 3n</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Check the rule on the first two terms</span>
+      A rule that gives the right first term but the wrong second one has the wrong ${m('d')}; one that
+      climbs correctly but starts wrong needs a different correction. Both take five seconds to test.</div>`
+    },
+    {
+      h: 'Using the rule',
+      html: `<p>Once the nth term is known, two questions can be answered that a list cannot answer at all.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>the ${m('50')}th term of ${m('3n + 2')}</td><td class="m">3 · 50 + 2</td><td class="m">152</td></tr>
+        <tr><td>is ${m('47')} a term of ${m('3n + 2')}?</td><td class="m">3n = 45, n = 15</td><td>yes, the ${m('15')}th</td></tr>
+        <tr><td>is ${m('60')} a term of ${m('4n − 1')}?</td><td class="m">4n = 61</td><td>no — ${m('n')} is not whole</td></tr>
+        <tr><td>the first negative term of ${m('23 − 3n')}</td><td class="m">23 − 3n < 0, n > 7.67</td><td class="m">n = 8, term −1</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The position must be a whole number</div>
+      That is the whole test for membership. Solve for ${m('n')}; if it comes out a whole number the value
+      is a term, and ${m('n')} says which one.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the nth term of ' + m('5, 8, 11, 14, …') + ' and its ' + m('20') + 'th term.',
+      steps: [
+        ['Common difference ' + m('d = 3') + ', so start from ' + m('3n') + '.', ''],
+        [m('3n') + ' gives ' + m('3') + ' at ' + m('n = 1') + ', but the term is ' + m('5') + ': add ' + m('2') + '.', ''],
+        ['nth term ' + m('= 3n + 2') + '; at ' + m('n = 20') + ', ' + m('3 · 20 + 2 = 62') + '.', 'Check ' + m('n = 2') + ': ' + m('8') + ' ✓']
+      ],
+      ans: m('3n + 2') + ', and ' + m('62')
+    },
+    {
+      q: 'Find the nth term of ' + m('20, 17, 14, 11, …') + ' and its first negative term.',
+      steps: [
+        [m('d = −3') + ', so start from ' + m('−3n') + '.', ''],
+        [m('−3n') + ' gives ' + m('−3') + ' at ' + m('n = 1') + ', but the term is ' + m('20') + ': add ' + m('23') + '.', ''],
+        ['nth term ' + m('= 23 − 3n') + '. It is negative when ' + m('n > 7' + f('2', '3')) + ', so ' + m('n = 8') + ' gives ' + m('−1') + '.', '']
+      ],
+      ans: m('23 − 3n') + '; the ' + m('8') + 'th term, ' + m('−1')
+    },
+    {
+      q: 'Is ' + m('47') + ' a term of the sequence with nth term ' + m('3n + 2') + '?',
+      steps: [
+        ['Set ' + m('3n + 2 = 47') + '.', ''],
+        [m('3n = 45') + '.', ''],
+        [m('n = 15') + ' — a whole number, so yes.', 'Check: ' + m('3 · 15 + 2 = 47') + ' ✓']
+      ],
+      ans: 'Yes, the ' + m('15') + 'th term'
+    }
+  ],
+  modelNote: 'Ask for the 100th term before giving the nth-term rule; the impatience the class feels is exactly the reason the rule exists.',
+  interactive: {
+    type: 'quiz',
+    title: 'Position, term and rule',
+    hint: 'Find the common difference first; everything else follows from it.',
+    items: [
+      { q: 'In ' + m('3, 7, 11, 15') + ' the common difference is:', a: [m('3'), m('4'), m('7'), m('11')], c: 1, why: 'Each term is ' + m('4') + ' more.' },
+      { q: 'The nth term of ' + m('5, 8, 11, 14') + ' is:', a: [m('3n'), m('3n + 2'), m('5n'), m('n + 3')], c: 1, why: m('d = 3') + ', corrected by ' + m('+2') + '.' },
+      { q: 'The ' + m('10') + 'th term of ' + m('4n − 1') + ' is:', a: [m('39'), m('40'), m('41'), m('36')], c: 0, why: m('40 − 1') + '.' },
+      { q: 'The nth term of ' + m('20, 17, 14') + ' is:', a: [m('3n + 20'), m('23 − 3n'), m('20 − 3n'), m('17n')], c: 1, why: 'At ' + m('n = 1') + ' it must give ' + m('20') + '.' },
+      { q: 'Is ' + m('60') + ' a term of ' + m('4n − 1') + '?', a: ['yes, the ' + m('15') + 'th', 'no', 'yes, the ' + m('61') + 'st', 'cannot tell'], c: 1, why: m('4n = 61') + ' has no whole solution.' },
+      { q: m('1, 4, 9, 16') + ' is generated by:', a: [m('4n'), m('n²'), m('3n + 1'), m('n + 3')], c: 1, why: 'The square numbers.' },
+      { q: 'A term-to-term rule of “multiply by ' + m('2') + '” makes the sequence:', a: ['linear', 'not linear', 'decreasing', 'constant'], c: 1, why: 'The steps grow.' },
+      { q: 'The nth term of ' + m('6, 10, 14, 18') + ' is:', a: [m('4n + 2'), m('4n'), m('6n'), m('2n + 4')], c: 0, why: m('d = 4') + ', corrected by ' + m('+2') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'The common difference of ' + m('2, 9, 16, 23') + ' is:', a: [m('5'), m('7'), m('9'), m('2')], c: 1, why: 'Each step is ' + m('7') + '.' },
+    { q: 'The nth term of ' + m('2, 9, 16, 23') + ' is:', a: [m('7n'), m('7n − 5'), m('7n + 2'), m('2n + 7')], c: 1, why: 'Corrected to give ' + m('2') + ' first.' },
+    { q: 'A position-to-term rule lets you:', a: ['only continue the list', 'reach any term at once', 'find the difference', 'nothing new'], c: 1, why: 'Substitute the position.' },
+    { q: 'The ' + m('100') + 'th term of ' + m('4n − 1') + ' is:', a: [m('399'), m('400'), m('401'), m('403')], c: 0, why: m('400 − 1') + '.' },
+    { q: 'A number is a term only when ' + m('n') + ' comes out:', a: ['positive', 'a whole number', 'even', 'small'], c: 1, why: 'Positions are whole numbers.' },
+    { q: 'In ' + m('dn + (a − d)') + ' the letter ' + m('d') + ' is:', a: ['the first term', 'the common difference', 'the position', 'the last term'], c: 1, why: 'It sets the steady climb.' }
+  ],
+  practice: {
+    easy: [
+      ['The next two terms of ' + m('3, 7, 11, 15'), m('19, 23')],
+      ['The next two terms of ' + m('20, 17, 14'), m('11, 8')],
+      ['The first three terms of ' + m('5n'), m('5, 10, 15')],
+      ['The first three terms of ' + m('2n + 3'), m('5, 7, 9')],
+      ['The ' + m('10') + 'th term of ' + m('4n − 1'), m('39')],
+      ['The term-to-term rule of ' + m('5, 8, 11'), 'Add ' + m('3')],
+      ['The first term of ' + m('3n + 2'), m('5')]
+    ],
+    med: [
+      ['The nth term of ' + m('5, 8, 11, 14'), m('3n + 2')],
+      ['The nth term of ' + m('2, 9, 16, 23'), m('7n − 5')],
+      ['The nth term of ' + m('6, 10, 14, 18'), m('4n + 2')],
+      ['The nth term of ' + m('20, 17, 14, 11'), m('23 − 3n')],
+      ['The ' + m('100') + 'th term of ' + m('4n − 1'), m('399')],
+      ['The ' + m('50') + 'th term of ' + m('3n + 2'), m('152')],
+      ['Is ' + m('47') + ' a term of ' + m('3n + 2') + '?', 'Yes, the ' + m('15') + 'th']
+    ],
+    hard: [
+      ['Is ' + m('60') + ' a term of ' + m('4n − 1') + '?', 'No — ' + m('4n = 61') + ' is not whole'],
+      ['Which term of ' + m('7n − 5') + ' equals ' + m('100') + '?', 'The ' + m('15') + 'th'],
+      ['The nth term of ' + m('1, 4, 9, 16'), m('n²')],
+      ['The nth term of ' + m('1, 3, 6, 10'), m('n(n + 1) ÷ 2')],
+      ['The first term of ' + m('4n + 2') + ' above ' + m('100'), m('102') + ', at ' + m('n = 25')],
+      ['A sequence starts at ' + m('4') + ' and adds ' + m('6') + ': its nth term', m('6n − 2')],
+      ['The first negative term of ' + m('23 − 3n'), m('−1') + ', at ' + m('n = 8')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Test every nth term you write on the first two terms before moving on.',
+  homework: [
+    'Write the first five terms of the sequence with nth term ' + m('6n − 1') + '.',
+    'Find the nth term of ' + m('7, 12, 17, 22, …') + '.',
+    'Find the nth term of ' + m('30, 26, 22, 18, …') + '.',
+    'Is ' + m('82') + ' a term of the sequence with nth term ' + m('5n + 2') + '? Say which term, or why not.',
+    'A pattern of squares uses ' + m('4, 7, 10, …') + ' tiles. Find the nth term and the ' + m('50') + 'th figure.'
+  ]
+});
