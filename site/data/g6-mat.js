@@ -13324,3 +13324,199 @@ G6_MAT.push({
     'Draw the recording sheet you will use, with a row for every option and a column for the tally.'
   ]
 });
+
+/* ============================== 75 ============================== */
+G6_MAT.push({
+  id: 'g6-75', stream: 'mat', grade: 6, quarter: 4, lessons: '160–163', hours: 4,
+  title: 'Representing data on a pie chart',
+  subtitle: 'The whole circle is the whole survey — every frequency becomes an angle.',
+  uz: 'Matematika 6, §32', uzPage: 'pp. 458–469',
+  cam: 'S7 16 interpreting results', camPage: 'Stage 7, pp. 174–180', wb: 'Exercise 16.1',
+  objectives: [
+    'Explain why the sectors of a pie chart must total ' + m('360°') + '.',
+    'Turn a frequency into a sector angle.',
+    'Draw a pie chart accurately with a protractor and label it.',
+    'Turn a percentage into an angle, and check the total.'
+  ],
+  terms: [
+    ['Pie chart', 'Doiraviy diagramma', 'Круговая диаграмма'],
+    ['Sector', 'Sektor', 'Сектор'],
+    ['Sector angle', 'Sektor burchagi', 'Угол сектора'],
+    ['Frequency', 'Chastota', 'Частота'],
+    ['Total frequency', 'Umumiy chastota', 'Общая частота'],
+    ['Protractor', 'Transportir', 'Транспортир'],
+    ['Key (legend)', 'Izoh', 'Легенда'],
+    ['Proportion', 'Ulush', 'Доля']
+  ],
+  timing: [[30, 'The whole is 360°'], [35, 'From frequency to angle'], [35, 'Drawing the chart'], [35, 'Percentages and pie charts'], [15, 'When the numbers are awkward'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'The whole is 360°',
+      html: `<p>A pie chart shows how a whole is divided. The whole circle — ${m('360°')} — stands for
+      everyone who was asked, and each sector takes the share of ${m('360°')} that its group deserves.</p>
+      {{fig:pieChart:Thirty-six pupils and their favourite sport — each pupil is worth 10°}}
+      ${eq('angle ' + m('= ' + f('frequency', 'total') + ' × 360°'), true)}
+      <div class="keybox"><div class="klabel">Find what one person is worth, once</div>
+      With ${m('36')} pupils, ${m('360 ÷ 36 = 10°')} for each. Every angle is then the frequency times
+      ${m('10')} — no fractions at all. With ${m('60')} pupils it is ${m('6°')} each; with ${m('45')},
+      ${m('8°')}.</div>`
+    },
+    {
+      h: 'From frequency to angle',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Sport</th><th>Pupils</th><th>Working</th><th>Angle</th></tr></thead>
+      <tbody>
+        <tr><td>football</td><td class="m">12</td><td class="m">12 · 10</td><td class="m">120°</td></tr>
+        <tr><td>volleyball</td><td class="m">9</td><td class="m">9 · 10</td><td class="m">90°</td></tr>
+        <tr><td>basketball</td><td class="m">6</td><td class="m">6 · 10</td><td class="m">60°</td></tr>
+        <tr><td>tennis</td><td class="m">5</td><td class="m">5 · 10</td><td class="m">50°</td></tr>
+        <tr><td>other</td><td class="m">4</td><td class="m">4 · 10</td><td class="m">40°</td></tr>
+        <tr><td>total</td><td class="m">36</td><td>—</td><td class="m">360°</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">If the angles do not add to 360°, something is wrong</span>
+      Add the last column before drawing anything. A total of ${m('355°')} or ${m('365°')} means an
+      arithmetic slip, and it is far easier to find it in the table than in the drawing.</div>`
+    },
+    {
+      h: 'Drawing the chart',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>What to do</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>draw a circle and one radius, straight up</td><td>a fixed starting line</td></tr>
+        <tr><td>2</td><td>measure the first angle from that radius</td><td>the protractor needs a base</td></tr>
+        <tr><td>3</td><td>measure each next angle from the line just drawn</td><td>the sectors join up</td></tr>
+        <tr><td>4</td><td>label every sector, or add a key</td><td>a chart without labels says nothing</td></tr>
+        <tr><td>5</td><td>write the total and the title</td><td>the reader needs the ${m('36')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Draw the largest sector first</div>
+      Small errors then accumulate into the smallest sector, where they matter least — and the last sector
+      is what is left over, which is a free check on all the others.</div>`
+    },
+    {
+      h: 'Percentages and pie charts',
+      html: `<p>A percentage is already a share of the whole, so it converts even faster: ${m('100')}% is
+      ${m('360°')}, so ${m('1')}% is ${m('3.6°')}.</p>
+      ${eq('angle ' + m('= percentage × 3.6°'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Percentage</th><th>Working</th><th>Angle</th></tr></thead>
+      <tbody>
+        <tr><td class="m">50%</td><td class="m">50 · 3.6</td><td class="m">180°</td></tr>
+        <tr><td class="m">25%</td><td class="m">25 · 3.6</td><td class="m">90°</td></tr>
+        <tr><td class="m">40%</td><td class="m">40 · 3.6</td><td class="m">144°</td></tr>
+        <tr><td class="m">12.5%</td><td class="m">12.5 · 3.6</td><td class="m">45°</td></tr>
+        <tr><td class="m">10%</td><td class="m">10 · 3.6</td><td class="m">36°</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Three landmarks worth knowing by heart</div>
+      A half is ${m('180°')}, a quarter ${m('90°')}, a tenth ${m('36°')}. Any sector can then be judged by
+      eye before the protractor confirms it.</div>`
+    },
+    {
+      h: 'When the numbers are awkward',
+      html: `<p>Not every total divides ${m('360')} exactly. With ${m('7')} people each is worth
+      ${m('360 ÷ 7 = 51.4°')} to one decimal place, and seven of those come to ${m('359.8°')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Total asked</th><th>One person is worth</th><th>Exact?</th></tr></thead>
+      <tbody>
+        <tr><td class="m">36</td><td class="m">10°</td><td>yes</td></tr>
+        <tr><td class="m">45</td><td class="m">8°</td><td>yes</td></tr>
+        <tr><td class="m">50</td><td class="m">7.2°</td><td>yes</td></tr>
+        <tr><td class="m">7</td><td class="m">51.4°</td><td>no — rounded</td></tr>
+        <tr><td class="m">11</td><td class="m">32.7°</td><td>no — rounded</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Round the angles, then give the leftover to the largest sector</span>
+      A pie chart must close. If the rounded angles come to ${m('359.8°')}, add the missing ${m('0.2°')} to
+      the biggest sector, where it cannot be seen — and say in the working that you did.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Thirty-six pupils name a favourite sport: ' + m('12, 9, 6, 5, 4') + '. Find the five sector angles.',
+      steps: [
+        [m('360 ÷ 36 = 10°') + ' for each pupil.', ''],
+        ['Multiply each frequency by ' + m('10') + '.', ''],
+        [m('120°, 90°, 60°, 50°, 40°') + '.', 'They total ' + m('360°') + ' ✓']
+      ],
+      ans: m('120°, 90°, 60°, 50°') + ' and ' + m('40°')
+    },
+    {
+      q: 'Of ' + m('60') + ' pupils, ' + m('9') + ' prefer tennis. Find that sector angle.',
+      steps: [
+        [m('360 ÷ 60 = 6°') + ' for each pupil.', ''],
+        [m('9 · 6') + '.', ''],
+        [m('= 54°') + '.', 'Or ' + m(f('9', '60') + ' · 360') + ' directly.']
+      ],
+      ans: m('54°')
+    },
+    {
+      q: 'A survey gives ' + m('25%, 30%, 20%, 15%') + ' and ' + m('10%') + '. Find the angles.',
+      steps: [
+        [m('1') + '% is ' + m('3.6°') + '.', ''],
+        [m('25 · 3.6 = 90') + ', ' + m('30 · 3.6 = 108') + ', ' + m('20 · 3.6 = 72') + '.', ''],
+        [m('15 · 3.6 = 54') + ' and ' + m('10 · 3.6 = 36') + '.', 'Total ' + m('360°') + ' ✓']
+      ],
+      ans: m('90°, 108°, 72°, 54°') + ' and ' + m('36°')
+    }
+  ],
+  modelNote: 'Have the class find “what one person is worth” aloud before any angle is calculated; almost every mistake in this topic is a missed division at that first step.',
+  interactive: {
+    type: 'quiz',
+    title: 'Frequencies into angles',
+    hint: 'Divide 360 by the total first — then it is one multiplication each.',
+    items: [
+      { q: 'The sectors of a pie chart total:', a: [m('100°'), m('180°'), m('360°'), 'the frequency'], c: 2, why: 'A full circle.' },
+      { q: 'With ' + m('36') + ' pupils, one pupil is worth:', a: [m('6°'), m('10°'), m('36°'), m('12°')], c: 1, why: m('360 ÷ 36') + '.' },
+      { q: 'With ' + m('60') + ' pupils, one pupil is worth:', a: [m('6°'), m('10°'), m('60°'), m('3.6°')], c: 0, why: m('360 ÷ 60') + '.' },
+      { q: m('12') + ' out of ' + m('36') + ' gives:', a: [m('60°'), m('90°'), m('120°'), m('12°')], c: 2, why: m('12 · 10') + '.' },
+      { q: m('9') + ' out of ' + m('60') + ' gives:', a: [m('45°'), m('54°'), m('60°'), m('90°')], c: 1, why: m('9 · 6') + '.' },
+      { q: m('25') + '% of a pie chart is:', a: [m('25°'), m('90°'), m('72°'), m('180°')], c: 1, why: 'A quarter turn.' },
+      { q: m('1') + '% of a pie chart is:', a: [m('1°'), m('3.6°'), m('36°'), m('0.36°')], c: 1, why: m('360 ÷ 100') + '.' },
+      { q: 'If the rounded angles total ' + m('359.8°') + ' you should:', a: ['leave a gap', 'start again', 'give the extra to the largest sector', 'divide by 7'], c: 2, why: 'The chart must close.' }
+    ]
+  },
+  quiz: [
+    { q: 'The angle of a sector is the frequency divided by the total, times:', a: [m('100'), m('180'), m('360'), m('60')], c: 2, why: 'The whole circle.' },
+    { q: 'With ' + m('45') + ' people, one person is worth:', a: [m('8°'), m('45°'), m('9°'), m('10°')], c: 0, why: m('360 ÷ 45') + '.' },
+    { q: 'A sector of ' + m('180°') + ' represents:', a: ['a quarter', 'a half', 'a tenth', 'everyone'], c: 1, why: 'Half the circle.' },
+    { q: 'A percentage becomes an angle when multiplied by:', a: [m('3.6'), m('36'), m('360'), m('1.8')], c: 0, why: m('360 ÷ 100') + '.' },
+    { q: 'Before drawing you should check that the angles:', a: ['are all equal', 'total ' + m('360°'), 'are whole numbers', 'are under ' + m('90°')], c: 1, why: 'A closing chart.' },
+    { q: 'A pie chart without labels or a key:', a: ['is still complete', 'says nothing', 'is more accurate', 'needs no total'], c: 1, why: 'The reader cannot tell what the sectors are.' }
+  ],
+  practice: {
+    easy: [
+      ['The whole circle in degrees', m('360°')],
+      [m('36') + ' pupils: the angle for one pupil', m('10°')],
+      [m('60') + ' pupils: the angle for one pupil', m('6°')],
+      [m('12') + ' out of ' + m('36'), m('120°')],
+      [m('9') + ' out of ' + m('36'), m('90°')],
+      [m('6') + ' out of ' + m('36'), m('60°')],
+      ['The angles of a pie chart add to', m('360°')]
+    ],
+    med: [
+      [m('20') + ' out of ' + m('60'), m('120°')],
+      [m('15') + ' out of ' + m('60'), m('90°')],
+      [m('9') + ' out of ' + m('60'), m('54°')],
+      [m('6') + ' out of ' + m('60'), m('36°')],
+      [m('8') + ' out of ' + m('24'), m('120°')],
+      [m('3') + ' out of ' + m('24'), m('45°')],
+      [m('45') + ' people: the angle for one', m('8°')]
+    ],
+    hard: [
+      [m('25') + '% of a pie chart', m('90°')],
+      [m('40') + '%', m('144°')],
+      [m('12.5') + '%', m('45°')],
+      [m('7') + ' out of ' + m('40'), m('63°')],
+      [m('13') + ' out of ' + m('50'), m('93.6°')],
+      [m('7') + ' people in total: the angle for one, to 1 d.p.', m('51.4°')],
+      ['Why must the drawn angles be checked against ' + m('360°') + '?', 'Rounding can leave the chart open']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every pie chart needs a title, a total, and a label or key on every sector.',
+  homework: [
+    'A survey has ' + m('30') + ' pupils. Find the angle representing one pupil.',
+    'Draw the pie chart for frequencies ' + m('10, 8, 6, 4, 2') + ' out of ' + m('30') + ', with every angle labelled.',
+    'Of ' + m('200') + ' people, ' + m('70') + ' prefer tea. Find that sector angle.',
+    'Find the angles for the percentages ' + m('45%, 30%, 15%') + ' and ' + m('10%') + '.',
+    'Draw the pie chart of your own survey data, with the total and a key.'
+  ]
+});
