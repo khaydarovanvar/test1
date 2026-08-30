@@ -11844,3 +11844,201 @@ G6_MAT.push({
     'Explain in one sentence why ' + m('1') + ' m³ is ' + m('1 000 000') + ' cm³ and not ' + m('100') + ' cm³.'
   ]
 });
+
+/* ============================== 67 ============================== */
+G6_MAT.push({
+  id: 'g6-67', stream: 'mat', grade: 6, quarter: 3, lessons: '140–142', hours: 3,
+  title: 'Finding an edge of a cuboid',
+  subtitle: 'The volume formula run backwards — and the surface-area formula run backwards too.',
+  uz: 'Matematika 6, §29', uzPage: 'pp. 404–413',
+  cam: 'S7 15 distance, area and volume', camPage: 'Stage 7, pp. 156–162', wb: 'Exercise 15.2',
+  objectives: [
+    'Find the third edge of a cuboid from its volume and two edges.',
+    'Find the edge of a cube from its volume or its surface area.',
+    'Find a missing edge from the total surface area of a cuboid.',
+    'Solve depth-of-water and height-of-box problems in the right units.'
+  ],
+  terms: [
+    ['Missing edge', 'Noma’lum qirra', 'Неизвестное ребро'],
+    ['Base', 'Asos', 'Основание'],
+    ['Height', 'Balandlik', 'Высота'],
+    ['Depth', 'Chuqurlik', 'Глубина'],
+    ['Base area', 'Asos yuzasi', 'Площадь основания'],
+    ['Cube root', 'Kub ildiz', 'Кубический корень'],
+    ['Capacity', 'Sig‘im', 'Вместимость'],
+    ['To rearrange', 'O‘zgartirib yozish', 'Выразить']
+  ],
+  timing: [[25, 'Reversing the volume formula'], [30, 'The edge of a cube'], [35, 'From the surface area'], [25, 'Depth and height in context'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Reversing the volume formula',
+      html: `<p>${m('V = abc')} is a multiplication of three numbers. If two of them and the product are
+      known, the third is a division.</p>
+      ${eq(m('c = ' + f('V', 'ab')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Volume</th><th>Base</th><th>Base area</th><th>Missing edge</th></tr></thead>
+      <tbody>
+        <tr><td class="m">120 cm³</td><td class="m">5 × 4</td><td class="m">20 cm²</td><td class="m">6 cm</td></tr>
+        <tr><td class="m">240 cm³</td><td class="m">10 × 6</td><td class="m">60 cm²</td><td class="m">4 cm</td></tr>
+        <tr><td class="m">84 cm³</td><td class="m">7 × 3</td><td class="m">21 cm²</td><td class="m">4 cm</td></tr>
+        <tr><td class="m">150 cm³</td><td class="m">5 × 5</td><td class="m">25 cm²</td><td class="m">6 cm</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Multiply the two you have, then divide once</div>
+      Finding the base area first turns a three-number problem into a two-number one. It also makes the
+      units obvious: ${m('cm³ ÷ cm² = cm')}.</div>`
+    },
+    {
+      h: 'The edge of a cube',
+      html: `<p>For a cube all three edges are the same, so ${m('V = a³')} and the edge is the number whose
+      cube is the volume.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Volume</th><th>Question asked</th><th>Edge</th></tr></thead>
+      <tbody>
+        <tr><td class="m">27 cm³</td><td class="m">a³ = 27</td><td class="m">3 cm</td></tr>
+        <tr><td class="m">64 cm³</td><td class="m">a³ = 64</td><td class="m">4 cm</td></tr>
+        <tr><td class="m">343 cm³</td><td class="m">a³ = 343</td><td class="m">7 cm</td></tr>
+        <tr><td class="m">512 cm³</td><td class="m">a³ = 512</td><td class="m">8 cm</td></tr>
+        <tr><td class="m">1000 cm³</td><td class="m">a³ = 1000</td><td class="m">10 cm</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Do not divide the volume by three</span>
+      ${m('a³')} means ${m('a · a · a')}, not ${m('3a')}. A cube of volume ${m('27')} has edge ${m('3')},
+      not ${m('9')} — and ${m('3 · 3 · 3')} checks it in one line.</div>
+      <p>Keeping the first ten cubes in mind — ${m('1, 8, 27, 64, 125, 216, 343, 512, 729, 1000')} — makes
+      almost every question of this kind immediate.</p>`
+    },
+    {
+      h: 'From the surface area',
+      html: `<p>For a cube, ${m('S = 6a²')}: divide by six, then take the square root.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Surface area</th><th class="m">a²</th><th>Edge</th></tr></thead>
+      <tbody>
+        <tr><td class="m">54 cm²</td><td class="m">9</td><td class="m">3 cm</td></tr>
+        <tr><td class="m">96 cm²</td><td class="m">16</td><td class="m">4 cm</td></tr>
+        <tr><td class="m">150 cm²</td><td class="m">25</td><td class="m">5 cm</td></tr>
+        <tr><td class="m">216 cm²</td><td class="m">36</td><td class="m">6 cm</td></tr>
+      </tbody></table></div>
+      <p>For a cuboid with two edges known the same idea gives an equation instead of a division. With
+      ${m('a = 5')}, ${m('b = 4')} and ${m('S = 94')}:</p>
+      ${eq(m('2(20 + 4c + 5c) = 94') + ', so ' + m('40 + 18c = 94') + ', ' + m('18c = 54') + ', ' + m('c = 3'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Two edges</th><th>Surface area</th><th>Equation</th><th>Third edge</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5 and 4</td><td class="m">94 cm²</td><td class="m">40 + 18c = 94</td><td class="m">3 cm</td></tr>
+        <tr><td class="m">8 and 5</td><td class="m">132 cm²</td><td class="m">80 + 26c = 132</td><td class="m">2 cm</td></tr>
+        <tr><td class="m">10 and 6</td><td class="m">248 cm²</td><td class="m">120 + 32c = 248</td><td class="m">4 cm</td></tr>
+        <tr><td class="m">6 and 4</td><td class="m">108 cm²</td><td class="m">48 + 20c = 108</td><td class="m">3 cm</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The face you know is a constant, the other two are the unknown</div>
+      Only the pair of faces built from the two known edges contributes a fixed number. The other four
+      faces all carry ${m('c')}, which is why the equation is always linear.</div>`
+    },
+    {
+      h: 'Depth and height in context',
+      html: `<p>Almost every practical question is the volume formula reversed, with a unit conversion in
+      front of it.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Volume in one unit</th><th>Base area</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a tank ${m('80 × 50')} cm holding ${m('120')} litres: its depth</td><td class="m">120 000 cm³</td><td class="m">4000 cm²</td><td class="m">30 cm</td></tr>
+        <tr><td>a pool ${m('25 × 10')} m holding ${m('500')} m³: its depth</td><td class="m">500 m³</td><td class="m">250 m²</td><td class="m">2 m</td></tr>
+        <tr><td>a box of ${m('360')} cm³ on a ${m('12 × 6')} base: its height</td><td class="m">360 cm³</td><td class="m">72 cm²</td><td class="m">5 cm</td></tr>
+        <tr><td>a brick of ${m('1920')} cm³, ${m('20')} long and ${m('12')} wide</td><td class="m">1920 cm³</td><td class="m">240 cm²</td><td class="m">8 cm</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Litres are not lengths</span>
+      A capacity in litres must become ${m('cm³')} — multiply by ${m('1000')} — before it can be divided by
+      an area in ${m('cm²')}. Dividing ${m('120')} by ${m('4000')} gives ${m('0.03')}, which is the right
+      arithmetic on the wrong numbers.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A cuboid has volume ' + m('240') + ' cm³ and a base ' + m('10') + ' cm by ' + m('6') + ' cm. Find its height.',
+      steps: [
+        ['Base area ' + m('10 · 6 = 60') + ' cm².', ''],
+        [m('240 ÷ 60') + '.', ''],
+        [m('= 4') + ' cm.', 'Check: ' + m('10 · 6 · 4 = 240') + ' ✓']
+      ],
+      ans: m('4') + ' cm'
+    },
+    {
+      q: 'A cube has volume ' + m('512') + ' cm³. Find its edge.',
+      steps: [
+        ['We need ' + m('a') + ' with ' + m('a³ = 512') + '.', ''],
+        [m('8 · 8 = 64') + ' and ' + m('64 · 8 = 512') + '.', ''],
+        [m('a = 8') + ' cm.', 'Not ' + m('512 ÷ 3') + ' — the edges multiply, they do not add.']
+      ],
+      ans: m('8') + ' cm'
+    },
+    {
+      q: 'A cuboid is ' + m('5') + ' cm by ' + m('4') + ' cm and has surface area ' + m('94') + ' cm². Find the third edge.',
+      steps: [
+        [m('S = 2(5 · 4 + 4c + 5c) = 94') + '.', ''],
+        [m('40 + 18c = 94') + ', so ' + m('18c = 54') + '.', ''],
+        [m('c = 3') + ' cm.', 'Check: ' + m('2(20 + 12 + 15) = 94') + ' ✓']
+      ],
+      ans: m('3') + ' cm'
+    }
+  ],
+  modelNote: 'Give the volume and one pair of edges and let the class find the third by trial before the division is written down; the division then looks like a shortcut, not a rule.',
+  interactive: {
+    type: 'quiz',
+    title: 'Working the formula backwards',
+    hint: 'Find the base area first, then divide once.',
+    items: [
+      { q: 'A cuboid of volume ' + m('120') + ' cm³ on a ' + m('5 × 4') + ' base has height:', a: [m('6') + ' cm', m('4') + ' cm', m('24') + ' cm', m('3') + ' cm'], c: 0, why: m('120 ÷ 20') + '.' },
+      { q: 'A cuboid of volume ' + m('84') + ' cm³ on a ' + m('7 × 3') + ' base has height:', a: [m('3'), m('4'), m('12'), m('21')], c: 1, why: m('84 ÷ 21') + '.' },
+      { q: 'A cube of volume ' + m('343') + ' cm³ has edge:', a: [m('6'), m('7'), m('8'), m('49')], c: 1, why: m('7³ = 343') + '.' },
+      { q: 'A cube of volume ' + m('27') + ' cm³ has edge:', a: [m('9'), m('3'), m('27'), m('13.5')], c: 1, why: 'Not ' + m('27 ÷ 3') + '.' },
+      { q: 'A cube of surface area ' + m('150') + ' cm² has edge:', a: [m('5'), m('25'), m('6'), m('12.5')], c: 0, why: m('150 ÷ 6 = 25') + ', root ' + m('5') + '.' },
+      { q: 'A cuboid ' + m('8') + ' by ' + m('5') + ' with ' + m('S = 132') + ' cm² has third edge:', a: [m('2'), m('3'), m('4'), m('5')], c: 0, why: m('80 + 26c = 132') + '.' },
+      { q: 'A tank ' + m('80 × 50') + ' cm holding ' + m('120') + ' litres is deep:', a: [m('0.03') + ' cm', m('30') + ' cm', m('3') + ' cm', m('300') + ' cm'], c: 1, why: m('120 000 ÷ 4000') + '.' },
+      { q: 'To find a missing edge from the volume you:', a: ['divide by 3', 'divide by the base area', 'take the square root', 'multiply'], c: 1, why: m('cm³ ÷ cm² = cm') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'From ' + m('V = abc') + ', the edge ' + m('c') + ' equals:', a: [m('V − ab'), m('V ÷ (ab)'), m('V ÷ 3'), m('Vab')], c: 1, why: 'Reverse the multiplication.' },
+    { q: 'A cuboid of volume ' + m('240') + ' cm³ on a ' + m('10 × 6') + ' base is:', a: [m('4') + ' cm high', m('24') + ' cm high', m('40') + ' cm high', m('60') + ' cm high'], c: 0, why: m('240 ÷ 60') + '.' },
+    { q: 'A cube of volume ' + m('1000') + ' cm³ has edge:', a: [m('10') + ' cm', m('100') + ' cm', m('333') + ' cm', m('31.6') + ' cm'], c: 0, why: m('10³') + '.' },
+    { q: 'A cube of surface area ' + m('96') + ' cm² has edge:', a: [m('16'), m('4'), m('6'), m('8')], c: 1, why: m('96 ÷ 6 = 16') + '.' },
+    { q: 'A capacity in litres must first be turned into:', a: [m('cm²'), m('cm³'), 'metres', 'nothing'], c: 1, why: 'Multiply by ' + m('1000') + '.' },
+    { q: 'The units of volume divided by area are:', a: ['cm³', 'cm²', 'cm', 'litres'], c: 2, why: 'A length — which is what an edge is.' }
+  ],
+  practice: {
+    easy: [
+      [m('V = 120') + ' cm³ on a ' + m('5 × 4') + ' base: the height', m('6') + ' cm'],
+      [m('V = 240') + ' cm³ on a ' + m('10 × 6') + ' base: the height', m('4') + ' cm'],
+      [m('V = 84') + ' cm³ on a ' + m('7 × 3') + ' base: the height', m('4') + ' cm'],
+      ['A cube of volume ' + m('27') + ' cm³: the edge', m('3') + ' cm'],
+      ['A cube of volume ' + m('343') + ' cm³: the edge', m('7') + ' cm'],
+      ['A cube of surface area ' + m('96') + ' cm²: the edge', m('4') + ' cm'],
+      ['From ' + m('V = abc') + ' the third edge is', m('V ÷ (ab)')]
+    ],
+    med: [
+      ['A cube of volume ' + m('512') + ' cm³: the edge', m('8') + ' cm'],
+      ['A cube of surface area ' + m('150') + ' cm²: the edge', m('5') + ' cm'],
+      [m('V = 150') + ' cm³ on a ' + m('5 × 5') + ' base: the height', m('6') + ' cm'],
+      ['A box of ' + m('360') + ' cm³ on a ' + m('12 × 6') + ' base: the height', m('5') + ' cm'],
+      ['A brick of ' + m('1920') + ' cm³, ' + m('20') + ' cm by ' + m('12') + ' cm: the height', m('8') + ' cm'],
+      ['A cube of surface area ' + m('54') + ' cm²: the edge', m('3') + ' cm'],
+      ['A cube of volume ' + m('1000') + ' cm³: the edge', m('10') + ' cm']
+    ],
+    hard: [
+      ['A cuboid ' + m('5') + ' by ' + m('4') + ' with ' + m('S = 94') + ' cm²: the third edge', m('3') + ' cm'],
+      ['A cuboid ' + m('8') + ' by ' + m('5') + ' with ' + m('S = 132') + ' cm²: the third edge', m('2') + ' cm'],
+      ['A cuboid ' + m('10') + ' by ' + m('6') + ' with ' + m('S = 248') + ' cm²: the third edge', m('4') + ' cm'],
+      ['A tank ' + m('80 × 50') + ' cm holding ' + m('120') + ' litres: the depth', m('30') + ' cm'],
+      ['A pool ' + m('25') + ' m by ' + m('10') + ' m holding ' + m('500') + ' m³: the depth', m('2') + ' m'],
+      ['A cuboid ' + m('12') + ' by ' + m('3') + ' has the volume of a cube of edge ' + m('6') + ': its third edge', m('6') + ' cm'],
+      ['A cuboid ' + m('6') + ' by ' + m('4') + ' with ' + m('S = 108') + ' cm²: its volume', m('72') + ' cm³']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Check every answer by putting the edge back into the formula it came from.',
+  homework: [
+    'A cuboid has volume ' + m('180') + ' cm³ and a base ' + m('9') + ' cm by ' + m('5') + ' cm. Find its height.',
+    'A cube has volume ' + m('729') + ' cm³. Find its edge.',
+    'A cube has surface area ' + m('294') + ' cm². Find its edge.',
+    'A tank with base ' + m('60') + ' cm by ' + m('40') + ' cm holds ' + m('96') + ' litres. Find its depth.',
+    'A cuboid is ' + m('7') + ' cm by ' + m('3') + ' cm and has surface area ' + m('122') + ' cm². Find the third edge.'
+  ]
+});
