@@ -2504,3 +2504,358 @@ G7_MAT.push({
     'Find ' + m('x') + ' if ' + m('x − (−6) = −1') + '.'
   ]
 });
+
+/* ============================== 15 ============================== */
+G7_MAT.push({
+  id: 'g7-15', stream: 'mat', grade: 7, quarter: 1, lessons: '29–30', hours: 2,
+  title: 'Multiplication of integers',
+  subtitle: 'Multiply the moduli, then decide the sign — and two minuses really do make a plus.',
+  uz: 'Matematika 7, §12', uzPage: 'pp. 77–82',
+  cam: 'S8 1.2', camPage: 'Stage 8, pp. 6–10', wb: 'Exercise 1.2',
+  objectives: [
+    'State and use the sign rules for multiplication.',
+    'Explain why (−a)(−b) = ab.',
+    'Find the sign of a product of several factors.',
+    'Compute powers of negative numbers.'
+  ],
+  terms: [
+    ['Multiplication', 'Ko‘paytirish', 'Умножение'],
+    ['Product', 'Ko‘paytma', 'Произведение'],
+    ['Factor', 'Ko‘paytuvchi', 'Множитель'],
+    ['Sign rule', 'Ishoralar qoidasi', 'Правило знаков'],
+    ['Power', 'Daraja', 'Степень'],
+    ['Even number of factors', 'Juft sondagi ko‘paytuvchilar', 'Чётное число множителей'],
+    ['Square', 'Kvadrat', 'Квадрат'],
+    ['Cube', 'Kub', 'Куб']
+  ],
+  timing: [[15, 'The sign rules'], [25, 'Why two minuses make a plus'], [25, 'Several factors'], [20, 'Powers'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The sign rules',
+      html: `${eq('Multiply the moduli; the product is positive if the signs are alike and negative if they differ', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Signs</th><th>Product</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(+)(+)</td><td class="m">+</td><td class="m">4 × 5 = 20</td></tr>
+        <tr><td class="m">(+)(−)</td><td class="m">−</td><td class="m">4 × (−5) = −20</td></tr>
+        <tr><td class="m">(−)(+)</td><td class="m">−</td><td class="m">(−4) × 5 = −20</td></tr>
+        <tr><td class="m">(−)(−)</td><td class="m">+</td><td class="m">(−4) × (−5) = 20</td></tr>
+        <tr><td>anything ${m('× 0')}</td><td class="m">0</td><td class="m">(−4) × 0 = 0</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Sign first, then size</div>
+      Decide the sign from the two signs alone, write it down, then multiply the moduli. Two separate
+      decisions are far more reliable than one combined one.</div>`
+    },
+    {
+      h: 'Why two minuses make a plus',
+      html: `<p>Look at a pattern in which one factor decreases by ${m('1')} each time:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Product</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(−4) × 3</td><td class="m">−12</td></tr>
+        <tr><td class="m">(−4) × 2</td><td class="m">−8</td></tr>
+        <tr><td class="m">(−4) × 1</td><td class="m">−4</td></tr>
+        <tr><td class="m">(−4) × 0</td><td class="m">0</td></tr>
+        <tr><td class="m">(−4) × (−1)</td><td class="m">4</td></tr>
+        <tr><td class="m">(−4) × (−2)</td><td class="m">8</td></tr>
+      </tbody></table></div>
+      <p>Each step adds ${m('4')}. Continuing the pattern past zero forces the products to become
+      positive — there is no other way to keep the arithmetic consistent.</p>
+      <div class="keybox"><div class="klabel">The rule is not a convention, it is forced</div>
+      If ${m('(−4)(−1)')} were ${m('−4')}, then the distributive law would fail. Mathematics chooses the
+      only definition under which all the old laws keep working.</div>`
+    },
+    {
+      h: 'Several factors',
+      html: `${eq('The product is negative when the number of negative factors is odd, and positive when it is even', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Product</th><th>Negative factors</th><th>Sign</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(−2)(−3)(−4)</td><td class="m">3</td><td class="m">−</td><td class="m">−24</td></tr>
+        <tr><td class="m">(−2)(−3)(4)</td><td class="m">2</td><td class="m">+</td><td class="m">24</td></tr>
+        <tr><td class="m">(−1)(−1)(−1)(−1)</td><td class="m">4</td><td class="m">+</td><td class="m">1</td></tr>
+        <tr><td class="m">(−5)(2)(−3)(−1)</td><td class="m">3</td><td class="m">−</td><td class="m">−30</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">One zero factor makes the whole product zero</span>
+      However many negatives there are. Scanning for a zero before counting signs saves the whole
+      calculation.</div>`
+    },
+    {
+      h: 'Powers',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Power</th><th>Meaning</th><th>Sign</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(−3)²</td><td class="m">(−3)(−3)</td><td class="m">+</td><td class="m">9</td></tr>
+        <tr><td class="m">(−3)³</td><td class="m">(−3)(−3)(−3)</td><td class="m">−</td><td class="m">−27</td></tr>
+        <tr><td class="m">(−2)⁴</td><td>four factors</td><td class="m">+</td><td class="m">16</td></tr>
+        <tr><td class="m">−3²</td><td class="m">−(3 × 3)</td><td class="m">−</td><td class="m">−9</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('(−3)²')} and ${m('−3²')} are different</span>
+      The brackets decide what is squared. Without them only the ${m('3')} is squared and the minus stays
+      outside: ${m('−3² = −9')}. This distinction is tested in every year from now on.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compute ' + m('(−4) × (−5)') + ', ' + m('4 × (−5)') + ' and ' + m('(−2)(−3)(−4)') + '.',
+      steps: [
+        ['Alike signs: positive. ' + m('4 × 5 = 20') + '.', ''],
+        ['Different signs: negative. ' + m('−20') + '.', ''],
+        ['Three negatives — odd, so negative.', ''],
+        [m('2 × 3 × 4 = 24') + ', so ' + m('−24') + '.', '']
+      ],
+      ans: m('20, −20, −24')
+    },
+    {
+      q: 'Compute ' + m('(−3)²') + ', ' + m('(−3)³') + ' and ' + m('−3²') + '.',
+      steps: [
+        [m('(−3)² = (−3)(−3) = 9'), 'Two negatives.'],
+        [m('(−3)³ = 9 × (−3) = −27'), 'Three negatives.'],
+        [m('−3²') + ' means ' + m('−(3²)') + '.', 'No brackets.'],
+        [m('= −9'), '']
+      ],
+      ans: m('9, −27, −9')
+    },
+    {
+      q: 'Find the sign of ' + m('(−5)(2)(−3)(−1)(4)') + ' without computing it.',
+      steps: [
+        ['Count the negative factors: ' + m('−5, −3, −1') + '.', ''],
+        ['Three of them — an odd number.', ''],
+        ['The product is negative.', ''],
+        ['Its value is ' + m('−120') + '.', '']
+      ],
+      ans: 'Negative; ' + m('−120')
+    }
+  ],
+  modelNote: 'Write the descending pattern (−4)×3, (−4)×2, … on the board and let the class continue it past zero; they produce the rule themselves.',
+  interactive: {
+    type: 'substitute',
+    title: 'Signs in a product',
+    hint: 'Count the negative factors.'
+  },
+  quiz: [
+    { q: m('(−4)(−5)') + ' equals:', a: [m('20'), m('−20'), m('9'), m('−9')], c: 0, why: 'Alike signs.' },
+    { q: m('4 × (−5)') + ' equals:', a: [m('20'), m('−20'), m('−1'), m('1')], c: 1, why: 'Different signs.' },
+    { q: 'A product of three negatives is:', a: ['positive', 'negative', 'zero', 'undefined'], c: 1, why: 'An odd count.' },
+    { q: m('(−3)²') + ' equals:', a: [m('9'), m('−9'), m('6'), m('−6')], c: 0, why: 'Two negative factors.' },
+    { q: m('−3²') + ' equals:', a: [m('9'), m('−9'), m('6'), m('−6')], c: 1, why: 'Only the ' + m('3') + ' is squared.' },
+    { q: 'A product containing a zero is:', a: ['positive', 'negative', 'zero', 'it depends'], c: 2, why: 'Whatever else is there.' }
+  ],
+  practice: {
+    easy: [
+      [m('4 × 5'), m('20')],
+      [m('4 × (−5)'), m('−20')],
+      [m('(−4) × 5'), m('−20')],
+      [m('(−4) × (−5)'), m('20')],
+      [m('(−7) × 0'), m('0')],
+      [m('(−3)²'), m('9')],
+      [m('(−3)³'), m('−27')]
+    ],
+    med: [
+      [m('(−2)(−3)(−4)'), m('−24')],
+      [m('(−2)(−3)(4)'), m('24')],
+      [m('(−1)⁴'), m('1')],
+      [m('(−1)⁵'), m('−1')],
+      [m('−3²'), m('−9')],
+      [m('(−2)⁴'), m('16')],
+      [m('(−5)(2)(−3)(−1)'), m('−30')]
+    ],
+    hard: [
+      [m('(−2)³ × (−3)²'), m('−72')],
+      [m('(−1)¹⁰⁰'), m('1')],
+      [m('(−1)¹⁰¹'), m('−1')],
+      [m('(−2)² − (−2)³'), m('12')],
+      ['The sign of ' + m('(−1)(−2)(−3)…(−9)'), 'Negative'],
+      ['Find ' + m('x') + ': ' + m('−3x = 21'), m('−7')],
+      [m('(−4)² ÷ (−2)³'), m('−2')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the sign of every answer before computing its size.',
+  homework: [
+    'Compute ' + m('(−6)(−7)') + ', ' + m('6 × (−7)') + ' and ' + m('(−6)(7)') + '.',
+    'Compute ' + m('(−2)(−5)(−3)') + ' and ' + m('(−2)(−5)(3)') + '.',
+    'Compute ' + m('(−4)²') + ', ' + m('(−4)³') + ' and ' + m('−4²') + '.',
+    'Find the sign of ' + m('(−1)(2)(−3)(4)(−5)') + ' without computing it.',
+    'Find ' + m('x') + ' if ' + m('−5x = 35') + '.'
+  ]
+});
+
+/* ============================== 16 ============================== */
+G7_MAT.push({
+  id: 'g7-16', stream: 'mat', grade: 7, quarter: 1, lessons: '31–32', hours: 2,
+  title: 'Division of integers',
+  subtitle: 'The same sign rules as multiplication — and the one thing that is never allowed.',
+  uz: 'Matematika 7, §13', uzPage: 'pp. 83–88',
+  cam: 'S8 1.2', camPage: 'Stage 8, pp. 6–10', wb: 'Exercise 1.2',
+  objectives: [
+    'Divide integers using the sign rules.',
+    'Explain why division by zero is undefined.',
+    'Decide whether a quotient of two integers is an integer.',
+    'Use the order of operations with signed numbers.'
+  ],
+  terms: [
+    ['Division', 'Bo‘lish', 'Деление'],
+    ['Quotient', 'Bo‘linma', 'Частное'],
+    ['Dividend', 'Bo‘linuvchi', 'Делимое'],
+    ['Divisor', 'Bo‘luvchi', 'Делитель'],
+    ['Undefined', 'Aniqlanmagan', 'Не определено'],
+    ['Order of operations', 'Amallar tartibi', 'Порядок действий'],
+    ['Exactly divisible', 'Butun bo‘linadi', 'Делится нацело'],
+    ['Remainder', 'Qoldiq', 'Остаток']
+  ],
+  timing: [[15, 'The sign rules'], [25, 'Division by zero'], [25, 'Order of operations'], [20, 'When is it an integer?'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The sign rules',
+      html: `<p>Division is the reverse of multiplication, so the signs behave in exactly the same way.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Signs</th><th>Quotient</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(+) ÷ (+)</td><td class="m">+</td><td class="m">20 ÷ 5 = 4</td></tr>
+        <tr><td class="m">(+) ÷ (−)</td><td class="m">−</td><td class="m">20 ÷ (−5) = −4</td></tr>
+        <tr><td class="m">(−) ÷ (+)</td><td class="m">−</td><td class="m">(−20) ÷ 5 = −4</td></tr>
+        <tr><td class="m">(−) ÷ (−)</td><td class="m">+</td><td class="m">(−20) ÷ (−5) = 4</td></tr>
+      </tbody></table></div>
+      <p><b>Why.</b> ${m('(−20) ÷ (−5) = 4')} because ${m('4 × (−5) = −20')}. Every division is checked by
+      the multiplication that undoes it.</p>
+      <div class="keybox"><div class="klabel">Check every division by multiplying back</div>
+      It takes two seconds and catches both a wrong size and a wrong sign. It is the only check that
+      needs nothing but the answer you already have.</div>`
+    },
+    {
+      h: 'Division by zero',
+      html: `${eq(m('a ÷ 0') + ' is undefined for every ' + m('a'), true)}
+      <p><b>Why.</b> ${m('20 ÷ 0')} would be a number ${m('q')} with ${m('q × 0 = 20')} — but every
+      product with zero is zero, so no such ${m('q')} exists.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0 ÷ 7</td><td class="m">0</td></tr>
+        <tr><td class="m">7 ÷ 0</td><td>undefined</td></tr>
+        <tr><td class="m">0 ÷ 0</td><td>undefined</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('0 ÷ 7')} and ${m('7 ÷ 0')} are completely different</span>
+      The first is ${m('0')}; the second does not exist. Zero on the top is fine, zero on the bottom
+      never is — a rule that will matter in every algebra lesson from now on.</div>`
+    },
+    {
+      h: 'Order of operations',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Order</th><th>Operation</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>brackets</td></tr>
+        <tr><td>2</td><td>powers</td></tr>
+        <tr><td>3</td><td>multiplication and division, left to right</td></tr>
+        <tr><td>4</td><td>addition and subtraction, left to right</td></tr>
+      </tbody></table></div>
+      <p><b>Example.</b> ${m('−12 ÷ 4 + (−3) × 2')}. Divide and multiply first:
+      ${m('−3 + (−6)')}. Then add: ${m('−9')}.</p>
+      <div class="warn"><span class="wl">Left to right within the same level</span>
+      ${m('24 ÷ 4 × 2')} is ${m('12')}, not ${m('3')}: division and multiplication have equal rank, so
+      they are done in the order written.</div>`
+    },
+    {
+      h: 'When is it an integer?',
+      html: `<p>A quotient of integers is an integer only when the divisor is a factor of the
+      dividend.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Division</th><th>Integer?</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(−36) ÷ 9</td><td>yes</td><td class="m">−4</td></tr>
+        <tr><td class="m">(−36) ÷ (−12)</td><td>yes</td><td class="m">3</td></tr>
+        <tr><td class="m">(−36) ÷ 5</td><td>no</td><td class="m">−7.2</td></tr>
+        <tr><td class="m">7 ÷ (−2)</td><td>no</td><td class="m">−3.5</td></tr>
+      </tbody></table></div>
+      <p>This is why ${m('ℤ')} is not closed under division, and why the next chapter introduces the
+      rational numbers.</p>
+      <div class="keybox"><div class="klabel">The sign has nothing to do with it</div>
+      Whether the answer is a whole number depends only on the moduli. The sign is decided separately,
+      and never affects divisibility.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compute ' + m('(−20) ÷ (−5)') + ', ' + m('20 ÷ (−5)') + ' and ' + m('(−36) ÷ 9') + '.',
+      steps: [
+        ['Alike signs: positive. ' + m('20 ÷ 5 = 4') + '.', ''],
+        ['Different signs: negative. ' + m('−4') + '.', ''],
+        ['Different signs: ' + m('36 ÷ 9 = 4') + ', so ' + m('−4') + '.', ''],
+        ['Check: ' + m('(−4) × 9 = −36') + ' ✓', '']
+      ],
+      ans: m('4, −4, −4')
+    },
+    {
+      q: 'Compute ' + m('−12 ÷ 4 + (−3) × 2') + '.',
+      steps: [
+        ['Division and multiplication first.', ''],
+        [m('−12 ÷ 4 = −3') + ' and ' + m('(−3) × 2 = −6') + '.', ''],
+        [m('−3 + (−6)'), ''],
+        [m('= −9'), '']
+      ],
+      ans: m('−9')
+    },
+    {
+      q: 'Explain why ' + m('7 ÷ 0') + ' has no value, while ' + m('0 ÷ 7 = 0') + '.',
+      steps: [
+        [m('7 ÷ 0 = q') + ' would mean ' + m('q × 0 = 7') + '.', ''],
+        ['Every product with zero is zero, never ' + m('7') + '.', 'So no ' + m('q') + ' exists.'],
+        [m('0 ÷ 7 = q') + ' means ' + m('q × 7 = 0') + '.', ''],
+        [m('q = 0') + ' works — and only that.', '']
+      ],
+      ans: 'Undefined; and ' + m('0')
+    }
+  ],
+  modelNote: 'Ask how many times zero fits into seven; the class runs out of patience before the answer, which is exactly the point.',
+  interactive: {
+    type: 'substitute',
+    title: 'Signs in a quotient',
+    hint: 'Same rules as multiplication.'
+  },
+  quiz: [
+    { q: m('(−20) ÷ (−5)') + ' equals:', a: [m('4'), m('−4'), m('100'), m('−100')], c: 0, why: 'Alike signs.' },
+    { q: m('20 ÷ (−5)') + ' equals:', a: [m('4'), m('−4'), m('15'), m('−15')], c: 1, why: 'Different signs.' },
+    { q: m('0 ÷ 7') + ' equals:', a: [m('0'), m('7'), 'undefined', m('1')], c: 0, why: 'Zero on the top is fine.' },
+    { q: m('7 ÷ 0') + ' is:', a: [m('0'), m('7'), 'undefined', m('∞')], c: 2, why: 'No such number exists.' },
+    { q: m('24 ÷ 4 × 2') + ' equals:', a: [m('3'), m('12'), m('48'), m('192')], c: 1, why: 'Left to right.' },
+    { q: m('(−36) ÷ 5') + ' is:', a: ['an integer', 'not an integer', 'zero', 'undefined'], c: 1, why: m('−7.2') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('20 ÷ 5'), m('4')],
+      [m('20 ÷ (−5)'), m('−4')],
+      [m('(−20) ÷ 5'), m('−4')],
+      [m('(−20) ÷ (−5)'), m('4')],
+      [m('0 ÷ 9'), m('0')],
+      [m('9 ÷ 0'), 'Undefined'],
+      [m('(−36) ÷ 9'), m('−4')]
+    ],
+    med: [
+      [m('(−36) ÷ (−12)'), m('3')],
+      [m('(−45) ÷ 9'), m('−5')],
+      [m('−12 ÷ 4 + (−3) × 2'), m('−9')],
+      [m('24 ÷ 4 × 2'), m('12')],
+      [m('(−18) ÷ (−3) − 4'), m('2')],
+      [m('(−2)³ ÷ 4'), m('−2')],
+      ['Is ' + m('(−36) ÷ 5') + ' an integer?', 'No']
+    ],
+    hard: [
+      [m('(−48) ÷ (−6) ÷ (−2)'), m('−4')],
+      [m('(−3)² × 2 − 30 ÷ (−5)'), m('24')],
+      [m('(−60) ÷ (2 − 5)'), m('20')],
+      ['Find ' + m('x') + ': ' + m(f('x', '−4') + ' = 7'), m('−28')],
+      ['Find ' + m('x') + ': ' + m(f('−36', 'x') + ' = −9'), m('4')],
+      ['For which integers ' + m('n') + ' is ' + m(f('12', 'n')) + ' an integer?', m('±1, ±2, ±3, ±4, ±6, ±12')],
+      ['Why is ' + m('0 ÷ 0') + ' undefined?', 'Every number would satisfy it']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Check every division by multiplying the answer back.',
+  homework: [
+    'Compute ' + m('(−42) ÷ 7') + ', ' + m('42 ÷ (−7)') + ' and ' + m('(−42) ÷ (−7)') + '.',
+    'Compute ' + m('−20 ÷ 5 + (−4) × 3') + '.',
+    'Compute ' + m('(−2)⁴ ÷ (−8)') + '.',
+    'Explain why ' + m('5 ÷ 0') + ' is undefined.',
+    'List all integers ' + m('n') + ' for which ' + m(f('18', 'n')) + ' is an integer.'
+  ]
+});
