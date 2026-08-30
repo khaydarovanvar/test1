@@ -3562,3 +3562,904 @@ G9_ALG.push({
     'Prove ' + m('x² + 25 ≥ 10x') + ' and name the equality case.'
   ]
 });
+
+/* ============================== 21 ============================== */
+G9_ALG.push({
+  id: 'a9-21', stream: 'alg', grade: 9, quarter: 2, lessons: '39–40', hours: 2,
+  title: 'The radian measure of an angle',
+  subtitle: 'A second unit for angle — one that measures the arc rather than counting Babylonian steps.',
+  uz: 'Algebra 9, §17', uzPage: 'pp. 91–96',
+  cam: 'IGX 15.1', camPage: 'Core & Extended, pp. 304–309', wb: 'Exercise 15.1',
+  objectives: [
+    'Define one radian as the angle subtending an arc equal to the radius.',
+    'Convert between degrees and radians in both directions.',
+    'Know the common angles in both units without a table.',
+    'Use l = rα and S = ½r²α for an arc and a sector.'
+  ],
+  terms: [
+    ['Radian', 'Radian', 'Радиан'],
+    ['Degree', 'Gradus', 'Градус'],
+    ['Arc', 'Yoy', 'Дуга'],
+    ['Arc length', 'Yoy uzunligi', 'Длина дуги'],
+    ['Sector', 'Sektor', 'Сектор'],
+    ['Central angle', 'Markaziy burchak', 'Центральный угол'],
+    ['Circumference', 'Aylana uzunligi', 'Длина окружности'],
+    ['Conversion', 'O‘tkazish', 'Перевод']
+  ],
+  timing: [[15, 'What a radian is'], [22, 'Converting'], [23, 'The angles worth knowing'], [25, 'Arcs and sectors'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'What a radian is',
+      html: `<p>Take a circle of radius ${m('r')} and lay an arc of length ${m('r')} along it. The central
+      angle you have made is <b>one radian</b>.</p>
+      {{fig:radianSector:An arc equal to the radius subtends one radian — about 57°.}}
+      <p>Nothing in that definition mentions the size of the circle, which is the point: a radian is a
+      ratio of two lengths, so it is the same angle in every circle.</p>
+      ${eq(m('α = ' + f('l', 'r')) + '     — the angle, in radians, is arc ÷ radius', true)}
+      <p>Going all the way round gives an arc of ${m('2πr')}, so a full turn is ${m('2π')} radians.
+      A straight angle is ${m('π')}, a right angle ${m(f('π', '2'))}.</p>
+      <div class="keybox"><div class="klabel">Why bother with a second unit</div>
+      The 360 degrees of a full turn are a Babylonian convention — a good one, since 360 has many
+      divisors, but arbitrary. The radian is not chosen; it falls out of the circle itself. Every
+      formula in later mathematics that involves angles is simpler in radians, and from Grade 10
+      onwards degrees appear only in geometry questions.</div>`
+    },
+    {
+      h: 'Converting',
+      html: `<p>One equation carries everything:</p>
+      ${eq(m('180° = π rad'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Direction</th><th>Multiply by</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>degrees → radians</td><td class="m">${f('π', '180°')}</td><td class="m">60° = 60 · ${f('π', '180')} = ${f('π', '3')}</td></tr>
+        <tr><td>radians → degrees</td><td class="m">${f('180°', 'π')}</td><td class="m">${f('3π', '4')} = ${f('3', '4')} · 180° = 135°</td></tr>
+      </tbody></table></div>
+      <p>Radians are usually written as multiples of ${m('π')} and the word “rad” is left off:
+      ${m('x = ' + f('π', '6'))} means an angle, not a number of degrees. A radian measure without
+      ${m('π')} in it is a plain real number — ${m('1 rad ≈ 57.3°')}.</p>
+      <div class="warn"><span class="wl">Set the calculator, or every answer is wrong</span>
+      ${m('sin 30 = 0.5')} in degree mode and ${m('≈ −0.988')} in radian mode. Neither is a mistake by
+      the calculator. Check the DEG/RAD indicator before the first line of any trigonometry paper.</div>`
+    },
+    {
+      h: 'The angles worth knowing',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Degrees</th><th class="m">0°</th><th class="m">30°</th><th class="m">45°</th><th class="m">60°</th><th class="m">90°</th><th class="m">180°</th><th class="m">270°</th><th class="m">360°</th></tr></thead>
+      <tbody>
+        <tr><td>Radians</td><td class="m">0</td><td class="m">${f('π', '6')}</td><td class="m">${f('π', '4')}</td><td class="m">${f('π', '3')}</td><td class="m">${f('π', '2')}</td><td class="m">π</td><td class="m">${f('3π', '2')}</td><td class="m">2π</td></tr>
+      </tbody></table></div>
+      {{fig:unitCircle:The circle marked in both units — the eight angles that must be automatic.}}
+      <div class="keybox"><div class="klabel">Learn the row, not the rule</div>
+      Converting ${m('45°')} from first principles takes fifteen seconds; recognising ${m(f('π', '4'))}
+      takes none. Every question in the next four lessons uses these eight values, so the table above
+      is worth memorising outright — read it left to right, then right to left, until both directions
+      are instant.</div>`
+    },
+    {
+      h: 'Arcs and sectors',
+      html: `<p>With ${m('α')} in <b>radians</b>, the two formulae are as short as they can be:</p>
+      ${eq(m('l = rα') + '     ' + m('S = ' + f('1', '2') + 'r²α'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quantity</th><th>Radians</th><th>Degrees</th></tr></thead>
+      <tbody>
+        <tr><td>arc length</td><td class="m">l = rα</td><td class="m">l = ${f('θ', '360')} · 2πr</td></tr>
+        <tr><td>sector area</td><td class="m">S = ½r²α</td><td class="m">S = ${f('θ', '360')} · πr²</td></tr>
+      </tbody></table></div>
+      <p><b>Example.</b> ${m('r = 6 cm')}, ${m('α = ' + f('π', '3'))}. Then ${m('l = 6 · ' + f('π', '3') + ' = 2π cm')}
+      and ${m('S = ' + f('1', '2') + ' · 36 · ' + f('π', '3') + ' = 6π cm²')}.</p>
+      <div class="warn"><span class="wl">${m('l = rα')} is false in degrees</span>
+      The compact formulae are the reward for using radians, and they are only true in radians. If the
+      angle is given in degrees, convert first — or use the ${m(f('θ', '360'))} versions instead.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Convert ' + m('135°') + ' to radians and ' + m(f('5π', '6')) + ' to degrees.',
+      steps: [
+        [m('135 · ' + f('π', '180') + ' = ' + f('135π', '180')), ''],
+        ['Cancel by ' + m('45') + ': ' + m(f('3π', '4')) + '.', ''],
+        [m(f('5π', '6') + ' · ' + f('180', 'π') + ' = ' + f('5 · 180', '6')), ''],
+        [m('= 150°'), '']
+      ],
+      ans: m(f('3π', '4')) + ' and ' + m('150°')
+    },
+    {
+      q: 'A circle has ' + m('r = 6 cm') + '. Find the arc and sector for ' + m('α = ' + f('π', '3')) + '.',
+      steps: [
+        [m('l = rα = 6 · ' + f('π', '3')), ''],
+        [m('l = 2π ≈ 6.28 cm'), ''],
+        [m('S = ½ · 6² · ' + f('π', '3') + ' = ½ · 36 · ' + f('π', '3')), ''],
+        [m('S = 6π ≈ 18.85 cm²'), '']
+      ],
+      ans: m('l = 2π cm') + ', ' + m('S = 6π cm²')
+    },
+    {
+      q: 'An arc of ' + m('10 cm') + ' subtends ' + m('2 rad') + '. Find the radius and the sector area.',
+      steps: [
+        [m('α = ' + f('l', 'r') + ' ⇒ r = ' + f('l', 'α')), ''],
+        [m('r = ' + f('10', '2') + ' = 5 cm'), ''],
+        [m('S = ½ · 25 · 2'), ''],
+        [m('S = 25 cm²'), '']
+      ],
+      ans: m('r = 5 cm') + ', ' + m('S = 25 cm²')
+    }
+  ],
+  modelNote: 'Cut a length of string equal to the radius of a large circle drawn on the board and bend it round the rim — one radian becomes a physical object, not a definition.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'Degrees and radians on one circle',
+    hint: 'Drag the radius and watch both readings.'
+  },
+  quiz: [
+    { q: 'One radian is the angle whose arc equals:', a: ['the diameter', 'the radius', 'the circumference', m('π')], c: 1, why: 'That is the definition.' },
+    { q: m('180°') + ' in radians:', a: [m(f('π', '2')), m('π'), m('2π'), m(f('π', '4'))], c: 1, why: 'Half a turn.' },
+    { q: m('60°') + ' in radians:', a: [m(f('π', '6')), m(f('π', '4')), m(f('π', '3')), m(f('π', '2'))], c: 2, why: m('60 · ' + f('π', '180')) + '.' },
+    { q: m(f('3π', '4')) + ' in degrees:', a: [m('120°'), m('135°'), m('150°'), m('45°')], c: 1, why: m(f('3', '4') + ' · 180') + '.' },
+    { q: 'Arc length, ' + m('α') + ' in radians:', a: [m('l = rα'), m('l = r²α'), m('l = ' + f('α', 'r')), m('l = 2πrα')], c: 0, why: 'From ' + m('α = ' + f('l', 'r')) + '.' },
+    { q: 'Sector area, ' + m('α') + ' in radians:', a: [m('r²α'), m('½r²α'), m('½rα'), m('πr²α')], c: 1, why: 'Half the radius squared, times the angle.' }
+  ],
+  practice: {
+    easy: [
+      [m('90°') + ' in radians', m(f('π', '2'))],
+      [m('45°') + ' in radians', m(f('π', '4'))],
+      [m('30°') + ' in radians', m(f('π', '6'))],
+      [m('π') + ' in degrees', m('180°')],
+      [m(f('π', '3')) + ' in degrees', m('60°')],
+      [m('r = 4') + ', ' + m('α = 2') + ': arc', m('8')],
+      [m('r = 2') + ', ' + m('α = 3') + ': sector area', m('6')]
+    ],
+    med: [
+      [m('135°') + ' in radians', m(f('3π', '4'))],
+      [m('210°') + ' in radians', m(f('7π', '6'))],
+      [m(f('5π', '6')) + ' in degrees', m('150°')],
+      [m(f('7π', '4')) + ' in degrees', m('315°')],
+      [m('r = 6') + ', ' + m('α = ' + f('π', '3')) + ': arc', m('2π')],
+      [m('r = 6') + ', ' + m('α = ' + f('π', '3')) + ': sector area', m('6π')],
+      ['Arc ' + m('10') + ', ' + m('α = 2') + ': radius', m('5')]
+    ],
+    hard: [
+      [m('1 rad') + ' in degrees, to 1 d.p.', m('57.3°')],
+      ['Arc ' + m('12') + ', radius ' + m('8') + ': the angle in degrees', m('≈ 85.9°')],
+      ['A sector of area ' + m('18') + ' and radius ' + m('6') + ': the angle', m('1 rad')],
+      ['Perimeter of a sector, ' + m('r = 5') + ', ' + m('α = ' + f('π', '2')), m('10 + ' + f('5π', '2'))],
+      ['A sector of angle ' + m(f('2π', '3')) + ' has area ' + m('12π') + ': the radius', m('6')],
+      ['The minute hand is ' + m('9 cm') + '; the arc its tip sweeps in ' + m('20') + ' minutes', m('6π cm')],
+      ['Area swept by that hand in ' + m('20') + ' minutes', m('27π cm²')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Give every radian answer as an exact multiple of ' + m('π') + ', not as a decimal.',
+  homework: [
+    'Convert ' + m('120°') + ', ' + m('225°') + ' and ' + m('300°') + ' to radians.',
+    'Convert ' + m(f('π', '5')) + ', ' + m(f('4π', '3')) + ' and ' + m(f('11π', '6')) + ' to degrees.',
+    'A circle of radius ' + m('10 cm') + ': find the arc and sector for ' + m('α = ' + f('π', '4')) + '.',
+    'An arc of ' + m('15 cm') + ' subtends ' + m('1.5 rad') + '. Find the radius.',
+    'Find the perimeter of a sector with ' + m('r = 8') + ' and ' + m('α = ' + f('π', '3')) + '.'
+  ]
+});
+
+/* ============================== 22 ============================== */
+G9_ALG.push({
+  id: 'a9-22', stream: 'alg', grade: 9, quarter: 2, lessons: '41–42', hours: 2,
+  title: 'Rotation of a point about the origin',
+  subtitle: 'The angle leaves the triangle: a point turning on the unit circle can turn as far as it likes.',
+  uz: 'Algebra 9, §18', uzPage: 'pp. 97–102',
+  cam: 'IGX 15.2', camPage: 'Core & Extended, pp. 310–314', wb: 'Exercise 15.2',
+  objectives: [
+    'Describe an angle as a rotation of the point P(1, 0) about the origin.',
+    'Give a rotation a sign — anticlockwise positive, clockwise negative.',
+    'Find every angle that lands a point in the same position: α + 2πk.',
+    'Name the quadrant in which a given rotation ends.'
+  ],
+  terms: [
+    ['Rotation', 'Aylanish', 'Поворот'],
+    ['Unit circle', 'Birlik aylana', 'Единичная окружность'],
+    ['Initial side', 'Boshlang‘ich tomon', 'Начальная сторона'],
+    ['Terminal side', 'Yakuniy tomon', 'Конечная сторона'],
+    ['Anticlockwise', 'Soat strelkasiga teskari', 'Против часовой стрелки'],
+    ['Quadrant', 'Chorak', 'Четверть'],
+    ['Coterminal angles', 'Ustma-ust tushuvchi burchaklar', 'Совпадающие углы'],
+    ['Full turn', 'To‘liq aylanish', 'Полный оборот']
+  ],
+  timing: [[15, 'An angle as a turn'], [22, 'Sign and size'], [25, 'Angles that land together'], [23, 'Quadrants'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'An angle as a turn',
+      html: `<p>In Grade 8 an angle lived inside a triangle, so it was between ${m('0°')} and ${m('180°')}.
+      That restriction is now dropped.</p>
+      <p>Draw the <b>unit circle</b> ${m('x² + y² = 1')} and start at ${m('P₀(1, 0)')}. Turn the point
+      about the origin. The angle of the turn is the angle; the ray ${m('OP₀')} is the <b>initial
+      side</b> and the ray to the new position the <b>terminal side</b>.</p>
+      {{fig:unitCircle:Every angle is a position reached by turning P(1, 0) about the origin.}}
+      <div class="keybox"><div class="klabel">Nothing is lost, and a great deal is gained</div>
+      For ${m('0 < α < ' + f('π', '2'))} the new definition agrees exactly with the triangle one — the
+      old sine and cosine are the coordinates of the turned point. But now ${m('α = 400°')} and
+      ${m('α = −30°')} also mean something, and that is what makes trigonometry into a subject about
+      functions rather than triangles.</div>`
+    },
+    {
+      h: 'Sign and size',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Turn</th><th>Sign</th><th>Example</th><th>Ends at</th></tr></thead>
+      <tbody>
+        <tr><td>anticlockwise</td><td>positive</td><td class="m">+90°</td><td class="m">(0, 1)</td></tr>
+        <tr><td>clockwise</td><td>negative</td><td class="m">−90°</td><td class="m">(0, −1)</td></tr>
+        <tr><td>more than one turn</td><td>positive</td><td class="m">450°</td><td class="m">(0, 1)</td></tr>
+        <tr><td>no turn</td><td>zero</td><td class="m">0</td><td class="m">(1, 0)</td></tr>
+      </tbody></table></div>
+      <p>The convention is universal and never varies: anticlockwise is the positive direction, in every
+      country and every textbook. It matches the direction in which the first quadrant is entered.</p>
+      <div class="warn"><span class="wl">A negative angle is not a negative number of degrees “backwards along the axis”</span>
+      ${m('−30°')} means turn thirty degrees the other way — clockwise, into the fourth quadrant. It is
+      a direction, not a subtraction.</div>`
+    },
+    {
+      h: 'Angles that land together',
+      html: `<p>A full turn is ${m('2π')}, so adding or subtracting ${m('2π')} changes the angle without
+      moving the point.</p>
+      ${eq(m('α') + ' and ' + m('α + 2πk') + ', ' + m('k ∈ ℤ') + ', end at the same place', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Angle</th><th>Same position as</th><th>Because</th></tr></thead>
+      <tbody>
+        <tr><td class="m">400°</td><td class="m">40°</td><td class="m">400 − 360</td></tr>
+        <tr><td class="m">−30°</td><td class="m">330°</td><td class="m">−30 + 360</td></tr>
+        <tr><td class="m">${f('9π', '4')}</td><td class="m">${f('π', '4')}</td><td class="m">${f('9π', '4')} − 2π</td></tr>
+        <tr><td class="m">−${f('π', '3')}</td><td class="m">${f('5π', '3')}</td><td class="m">−${f('π', '3')} + 2π</td></tr>
+        <tr><td class="m">1080°</td><td class="m">0°</td><td>three whole turns</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">This is where periodicity comes from</div>
+      Because the position repeats every ${m('2π')}, so does every quantity read off the position. That
+      single observation is the reason sine and cosine are periodic with period ${m('2π')} — a fact the
+      next lesson will use constantly.</div>`
+    },
+    {
+      h: 'Quadrants',
+      html: `<p>The two axes cut the circle into four quadrants, numbered anticlockwise from the top
+      right.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quadrant</th><th>Degrees</th><th>Radians</th><th>Signs of ${m('(x, y)')}</th></tr></thead>
+      <tbody>
+        <tr><td>I</td><td class="m">0°–90°</td><td class="m">0–${f('π', '2')}</td><td class="m">(+, +)</td></tr>
+        <tr><td>II</td><td class="m">90°–180°</td><td class="m">${f('π', '2')}–π</td><td class="m">(−, +)</td></tr>
+        <tr><td>III</td><td class="m">180°–270°</td><td class="m">π–${f('3π', '2')}</td><td class="m">(−, −)</td></tr>
+        <tr><td>IV</td><td class="m">270°–360°</td><td class="m">${f('3π', '2')}–2π</td><td class="m">(+, −)</td></tr>
+      </tbody></table></div>
+      <p>To find the quadrant of any angle, first reduce it to ${m('[0, 2π)')} by adding or subtracting
+      whole turns, then read the table.</p>
+      <div class="warn"><span class="wl">The axes belong to no quadrant</span>
+      ${m('90°')}, ${m('180°')}, ${m('270°')} and ${m('0°')} are boundary angles. Asked for “the
+      quadrant of ${m('180°')}”, the answer is that there is none — it lies on the negative
+      ${m('x')}-axis.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Where does a rotation of ' + m('400°') + ' end, and in which quadrant?',
+      steps: [
+        [m('400 − 360 = 40'), 'One full turn removed.'],
+        ['So it ends where ' + m('40°') + ' ends.', ''],
+        [m('0° < 40° < 90°'), ''],
+        ['Quadrant I.', '']
+      ],
+      ans: 'Same as ' + m('40°') + ' — quadrant I'
+    },
+    {
+      q: 'In which quadrant does ' + m('−' + f('2π', '3')) + ' end?',
+      steps: [
+        ['Add a full turn: ' + m('−' + f('2π', '3') + ' + 2π'), ''],
+        [m('= ' + f('4π', '3')), ''],
+        [m('π < ' + f('4π', '3') + ' < ' + f('3π', '2')), ''],
+        ['Quadrant III.', '']
+      ],
+      ans: 'Quadrant III'
+    },
+    {
+      q: 'Write every angle that ends where ' + m('50°') + ' ends.',
+      steps: [
+        ['Adding whole turns changes nothing.', ''],
+        [m('50° + 360°k') + ', ' + m('k ∈ ℤ') + '.', ''],
+        ['In radians: ' + m(f('5π', '18') + ' + 2πk') + '.', ''],
+        [m('k = −1') + ' gives ' + m('−310°') + ' — the same place.', '']
+      ],
+      ans: m('50° + 360°k, k ∈ ℤ')
+    }
+  ],
+  modelNote: 'Pin a paper arrow at the origin of a circle drawn on the board; turn it 400° and then −310° and let the class see both stop in the same place.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'Turn the point',
+    hint: 'Positive is anticlockwise. Pass 360° and start again.'
+  },
+  quiz: [
+    { q: 'The positive direction of rotation is:', a: ['clockwise', 'anticlockwise', 'either', 'downwards'], c: 1, why: 'Universal convention.' },
+    { q: 'Rotation starts from the point:', a: [m('(0, 0)'), m('(1, 0)'), m('(0, 1)'), m('(−1, 0)')], c: 1, why: 'The initial side is along ' + m('Ox') + '.' },
+    { q: m('400°') + ' ends where:', a: [m('40°'), m('60°'), m('400°'), m('−40°')], c: 0, why: 'One turn removed.' },
+    { q: m('−30°') + ' ends where:', a: [m('30°'), m('150°'), m('330°'), m('210°')], c: 2, why: 'Add ' + m('360°') + '.' },
+    { q: 'Angles ending together differ by:', a: [m('π k'), m('2π k'), m(f('π', '2') + 'k'), m('πk²')], c: 1, why: 'Whole turns.' },
+    { q: m(f('4π', '3')) + ' lies in quadrant:', a: ['I', 'II', 'III', 'IV'], c: 2, why: 'Between ' + m('π') + ' and ' + m(f('3π', '2')) + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Quadrant of ' + m('50°'), 'I'],
+      ['Quadrant of ' + m('120°'), 'II'],
+      ['Quadrant of ' + m('200°'), 'III'],
+      ['Quadrant of ' + m('300°'), 'IV'],
+      [m('370°') + ' ends where?', m('10°')],
+      [m('−90°') + ' ends where?', m('270°')],
+      ['Sign of an anticlockwise turn', 'Positive']
+    ],
+    med: [
+      ['Reduce ' + m('400°') + ' to ' + m('[0°, 360°)'), m('40°')],
+      ['Reduce ' + m('−200°') + ' to ' + m('[0°, 360°)'), m('160°')],
+      ['Reduce ' + m(f('9π', '4')) + ' to ' + m('[0, 2π)'), m(f('π', '4'))],
+      ['Reduce ' + m('−' + f('π', '3')) + ' to ' + m('[0, 2π)'), m(f('5π', '3'))],
+      ['Quadrant of ' + m(f('4π', '3')), 'III'],
+      ['Quadrant of ' + m('−' + f('2π', '3')), 'III'],
+      ['All angles ending where ' + m('50°') + ' ends', m('50° + 360°k')]
+    ],
+    hard: [
+      ['Reduce ' + m('1000°') + ' to ' + m('[0°, 360°)'), m('280°')],
+      ['Reduce ' + m('−' + f('17π', '6')) + ' to ' + m('[0, 2π)'), m(f('7π', '6'))],
+      ['Quadrant of ' + m('−1000°'), 'I — it reduces to ' + m('80°')],
+      ['How many full turns in ' + m('2000°') + '?', m('5') + ', with ' + m('200°') + ' left'],
+      ['Two angles end together and differ by ' + m('1440°') + '. How many turns?', m('4')],
+      ['For which ' + m('k') + ' does ' + m('30° + 360°k') + ' lie in ' + m('[700°, 1100°)') + '?', m('k = 2') + ' — that is ' + m('750°')],
+      ['A wheel turns ' + m('7.25') + ' times. The final position, in degrees', m('90°')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'For every angle give the reduced angle, the quadrant, and one negative angle ending in the same place.',
+  homework: [
+    'Reduce ' + m('520°') + ', ' + m('−140°') + ' and ' + m('900°') + ' to ' + m('[0°, 360°)') + '.',
+    'Reduce ' + m(f('11π', '4')) + ' and ' + m('−' + f('5π', '3')) + ' to ' + m('[0, 2π)') + '.',
+    'Name the quadrant of ' + m('160°') + ', ' + m(f('7π', '6')) + ' and ' + m('−80°') + '.',
+    'Write every angle that ends where ' + m(f('π', '6')) + ' ends.',
+    'A wheel makes ' + m('3.75') + ' turns. Where does the marked point finish?'
+  ]
+});
+
+/* ============================== 23 ============================== */
+G9_ALG.push({
+  id: 'a9-23', stream: 'alg', grade: 9, quarter: 2, lessons: '43–44', hours: 2,
+  title: 'Sine, cosine, tangent and cotangent of any angle',
+  subtitle: 'Four numbers read off one turned point — and the definitions no longer need a triangle.',
+  uz: 'Algebra 9, §19', uzPage: 'pp. 103–108',
+  cam: 'IGX 15.3', camPage: 'Core & Extended, pp. 315–321', wb: 'Exercise 15.3',
+  objectives: [
+    'Define sin α and cos α as the coordinates of the point turned through α on the unit circle.',
+    'Define tan α and cot α as the ratios y/x and x/y, and say where they fail to exist.',
+    'Give the exact values at 0, π/6, π/4, π/3, π/2 and the axis angles.',
+    'State and use sin²α + cos²α = 1.'
+  ],
+  terms: [
+    ['Sine', 'Sinus', 'Синус'],
+    ['Cosine', 'Kosinus', 'Косинус'],
+    ['Tangent', 'Tangens', 'Тангенс'],
+    ['Cotangent', 'Kotangens', 'Котангенс'],
+    ['Ordinate', 'Ordinata', 'Ордината'],
+    ['Abscissa', 'Abssissa', 'Абсцисса'],
+    ['Undefined', 'Aniqlanmagan', 'Не определён'],
+    ['Fundamental identity', 'Asosiy ayniyat', 'Основное тождество']
+  ],
+  timing: [[18, 'The definitions'], [22, 'The exact values'], [22, 'Where tangent and cotangent fail'], [23, 'The fundamental identity'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The definitions',
+      html: `<p>Turn ${m('P₀(1, 0)')} through ${m('α')} and let it arrive at ${m('P(x, y)')}. The four
+      quantities are read straight off that point.</p>
+      ${eq(m('cos α = x') + '     ' + m('sin α = y') + '     ' + m('tan α = ' + f('y', 'x')) + '     ' + m('cot α = ' + f('x', 'y')), true)}
+      {{fig:trigCircle:cos is the abscissa, sin the ordinate — the two coordinates of the turned point.}}
+      <p>For an acute angle the point lies in the first quadrant and the right triangle ${m('OPQ')} has
+      hypotenuse ${m('1')}, so ${m('sin α = ' + f('opposite', 'hypotenuse') + ' = y')} exactly as before.
+      Nothing that was true in Grade 8 has changed; the definition has only been widened.</p>
+      <div class="keybox"><div class="klabel">Two coordinates, four functions</div>
+      Only ${m('sin')} and ${m('cos')} are genuinely new definitions. Tangent and cotangent are
+      quotients of them: ${m('tan α = ' + f('sin α', 'cos α'))} and ${m('cot α = ' + f('cos α', 'sin α'))}.
+      Every identity in the next chapter follows from that.</div>`
+    },
+    {
+      h: 'The exact values',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th class="m">α</th><th class="m">0</th><th class="m">${f('π', '6')}</th><th class="m">${f('π', '4')}</th><th class="m">${f('π', '3')}</th><th class="m">${f('π', '2')}</th><th class="m">π</th><th class="m">${f('3π', '2')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">sin α</td><td class="m">0</td><td class="m">${f('1', '2')}</td><td class="m">${f(sr('2'), '2')}</td><td class="m">${f(sr('3'), '2')}</td><td class="m">1</td><td class="m">0</td><td class="m">−1</td></tr>
+        <tr><td class="m">cos α</td><td class="m">1</td><td class="m">${f(sr('3'), '2')}</td><td class="m">${f(sr('2'), '2')}</td><td class="m">${f('1', '2')}</td><td class="m">0</td><td class="m">−1</td><td class="m">0</td></tr>
+        <tr><td class="m">tan α</td><td class="m">0</td><td class="m">${f(sr('3'), '3')}</td><td class="m">1</td><td class="m">${sr('3')}</td><td>—</td><td class="m">0</td><td>—</td></tr>
+        <tr><td class="m">cot α</td><td>—</td><td class="m">${sr('3')}</td><td class="m">1</td><td class="m">${f(sr('3'), '3')}</td><td class="m">0</td><td>—</td><td class="m">0</td></tr>
+      </tbody></table></div>
+      {{fig:specialAngles:The half-square and the half-equilateral triangle — where every exact value comes from.}}
+      <div class="keybox"><div class="klabel">Read the sine row, not the whole table</div>
+      The sine row for ${m('0, ' + f('π', '6') + ', ' + f('π', '4') + ', ' + f('π', '3') + ', ' + f('π', '2'))}
+      is ${m(f(sr('0'), '2') + ', ' + f(sr('1'), '2') + ', ' + f(sr('2'), '2') + ', ' + f(sr('3'), '2') + ', ' + f(sr('4'), '2'))}
+      — the roots of ${m('0, 1, 2, 3, 4')} over two. The cosine row is the same read backwards, and the
+      tangent row is one divided by the other.</div>`
+    },
+    {
+      h: 'Where tangent and cotangent fail',
+      html: `<p>A quotient needs a non-zero denominator, so two of the four functions have gaps.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Function</th><th>Undefined when</th><th>That is</th><th>Because the point is at</th></tr></thead>
+      <tbody>
+        <tr><td class="m">tan α</td><td class="m">cos α = 0</td><td class="m">α = ${f('π', '2')} + πk</td><td class="m">(0, ±1)</td></tr>
+        <tr><td class="m">cot α</td><td class="m">sin α = 0</td><td class="m">α = πk</td><td class="m">(±1, 0)</td></tr>
+      </tbody></table></div>
+      <p>Sine and cosine, by contrast, exist for every angle: they are coordinates, and a point on the
+      circle always has both.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Function</th><th>Domain</th><th>Range</th></tr></thead>
+      <tbody>
+        <tr><td class="m">sin α, cos α</td><td class="m">ℝ</td><td class="m">[−1, 1]</td></tr>
+        <tr><td class="m">tan α</td><td class="m">α ≠ ${f('π', '2')} + πk</td><td class="m">ℝ</td></tr>
+        <tr><td class="m">cot α</td><td class="m">α ≠ πk</td><td class="m">ℝ</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('sin α = 2')} is not a hard equation — it is an impossible one</span>
+      Both coordinates of a point on the unit circle lie between ${m('−1')} and ${m('1')}. An equation
+      asking for a sine or cosine outside that range has no solution at all, and saying so is the
+      complete answer.</div>`
+    },
+    {
+      h: 'The fundamental identity',
+      html: `<p>The point ${m('P(x, y)')} lies on ${m('x² + y² = 1')}. Substituting the definitions gives
+      the identity everything else is built on:</p>
+      ${eq(m('sin²α + cos²α = 1') + '     for every angle ' + m('α'), true)}
+      <p>It is Pythagoras' theorem, written for a triangle with hypotenuse ${m('1')} — and because it
+      came from the circle rather than from a triangle, it holds for angles of any size and sign.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Then</th><th>Sign chosen by</th></tr></thead>
+      <tbody>
+        <tr><td class="m">sin α = ${f('3', '5')}</td><td class="m">cos α = ±${f('4', '5')}</td><td>the quadrant</td></tr>
+        <tr><td class="m">cos α = −${f('5', '13')}</td><td class="m">sin α = ±${f('12', '13')}</td><td>the quadrant</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The identity gives the size, the quadrant gives the sign</span>
+      ${m('sin²α + cos²α = 1')} always produces ${m('±')}. It cannot tell you which — only the quadrant
+      can, and that is exactly what the next lesson is about. An answer left as ${m('±')} when the
+      quadrant was given is an incomplete answer.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find ' + m('sin, cos, tan, cot') + ' of ' + m(f('π', '4')) + '.',
+      steps: [
+        ['The point is ' + m('(' + f(sr('2'), '2') + ', ' + f(sr('2'), '2') + ')') + '.', 'Half a square.'],
+        [m('cos = ' + f(sr('2'), '2')) + ', ' + m('sin = ' + f(sr('2'), '2')) + '.', ''],
+        [m('tan = ' + f('y', 'x') + ' = 1'), ''],
+        [m('cot = 1'), 'Equal coordinates.']
+      ],
+      ans: m(f(sr('2'), '2') + ', ' + f(sr('2'), '2') + ', 1, 1')
+    },
+    {
+      q: 'Given ' + m('sin α = ' + f('3', '5')) + ' and ' + m('α') + ' in quadrant II, find the other three.',
+      steps: [
+        [m('cos²α = 1 − ' + f('9', '25') + ' = ' + f('16', '25')), ''],
+        ['Quadrant II: ' + m('cos α < 0') + ', so ' + m('cos α = −' + f('4', '5')) + '.', 'The sign comes from the quadrant.'],
+        [m('tan α = ' + f('3/5', '−4/5') + ' = −' + f('3', '4')), ''],
+        [m('cot α = −' + f('4', '3')), '']
+      ],
+      ans: m('cos = −' + f('4', '5') + ', tan = −' + f('3', '4') + ', cot = −' + f('4', '3'))
+    },
+    {
+      q: 'Evaluate ' + m('sin ' + f('π', '2') + ' + cos π − tan 0') + '.',
+      steps: [
+        [m('sin ' + f('π', '2') + ' = 1'), 'The point ' + m('(0, 1)') + '.'],
+        [m('cos π = −1'), 'The point ' + m('(−1, 0)') + '.'],
+        [m('tan 0 = 0'), ''],
+        [m('1 + (−1) − 0 = 0'), '']
+      ],
+      ans: m('0')
+    }
+  ],
+  modelNote: 'Draw the unit circle once and label only the point; ask the class to read each of the four values off it, so the definitions stay attached to a picture rather than to a table.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'Read the four values off the point',
+    hint: 'cos is across, sin is up.'
+  },
+  quiz: [
+    { q: m('cos α') + ' is the point’s:', a: ['ordinate', 'abscissa', 'radius', 'arc'], c: 1, why: 'The ' + m('x') + '-coordinate.' },
+    { q: m('tan α') + ' equals:', a: [m(f('x', 'y')), m(f('y', 'x')), m('xy'), m('x + y')], c: 1, why: m(f('sin', 'cos')) + '.' },
+    { q: m('sin ' + f('π', '3')) + ' is:', a: [m(f('1', '2')), m(f(sr('2'), '2')), m(f(sr('3'), '2')), m('1')], c: 2, why: 'The half-equilateral triangle.' },
+    { q: m('tan α') + ' is undefined when:', a: [m('sin α = 0'), m('cos α = 0'), m('α = 0'), 'never'], c: 1, why: 'A zero denominator.' },
+    { q: 'The range of ' + m('cos α') + ':', a: [m('ℝ'), m('[−1, 1]'), m('[0, 1]'), m('(0, ∞)')], c: 1, why: 'It is a coordinate on the unit circle.' },
+    { q: m('sin²α + cos²α') + ' equals:', a: [m('0'), m('1'), m('2'), 'it depends'], c: 1, why: 'Pythagoras on the unit circle.' }
+  ],
+  practice: {
+    easy: [
+      [m('sin 0'), m('0')],
+      [m('cos 0'), m('1')],
+      [m('sin ' + f('π', '2')), m('1')],
+      [m('cos π'), m('−1')],
+      [m('tan ' + f('π', '4')), m('1')],
+      [m('sin ' + f('π', '6')), m(f('1', '2'))],
+      [m('cos ' + f('π', '3')), m(f('1', '2'))]
+    ],
+    med: [
+      [m('cos ' + f('π', '6')), m(f(sr('3'), '2'))],
+      [m('tan ' + f('π', '3')), m(sr('3'))],
+      [m('cot ' + f('π', '6')), m(sr('3'))],
+      [m('sin ' + f('3π', '2')), m('−1')],
+      [m('tan ' + f('π', '2')), 'Undefined'],
+      [m('sin²' + f('π', '4') + ' + cos²' + f('π', '4')), m('1')],
+      [m('sin ' + f('π', '2') + ' + cos π − tan 0'), m('0')]
+    ],
+    hard: [
+      [m('sin α = ' + f('3', '5')) + ', quadrant II: ' + m('cos α'), m('−' + f('4', '5'))],
+      [m('cos α = −' + f('5', '13')) + ', quadrant III: ' + m('sin α'), m('−' + f('12', '13'))],
+      [m('tan α = ' + f('3', '4')) + ', quadrant III: ' + m('sin α'), m('−' + f('3', '5'))],
+      ['Simplify ' + m('sin⁴α − cos⁴α'), m('sin²α − cos²α')],
+      ['Simplify ' + m('(1 − cos²α)(1 + cot²α)'), m('1')],
+      ['Solve ' + m('sin α = 2'), 'No solution'],
+      [m('sin α + cos α = ' + f('1', '5')) + ': find ' + m('sin α cos α'), m('−' + f('12', '25'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every exact value must be written as a fraction or a surd — no decimals in this homework.',
+  homework: [
+    'Complete the table of ' + m('sin, cos, tan, cot') + ' for ' + m('0, ' + f('π', '6') + ', ' + f('π', '4') + ', ' + f('π', '3') + ', ' + f('π', '2')) + '.',
+    'Given ' + m('cos α = ' + f('8', '17')) + ' and ' + m('α') + ' in quadrant IV, find the other three.',
+    'Evaluate ' + m('cos ' + f('π', '3') + ' + sin ' + f('π', '6') + ' − tan ' + f('π', '4')) + '.',
+    'Say why ' + m('cos α = 1.2') + ' has no solution.',
+    'Simplify ' + m('(1 − sin²α)(1 + tan²α)') + '.'
+  ]
+});
+
+/* ============================== 24 ============================== */
+G9_ALG.push({
+  id: 'a9-24', stream: 'alg', grade: 9, quarter: 2, lessons: '45–46',
+  hours: 2,
+  title: 'The signs of the trigonometric functions in the quadrants',
+  subtitle: 'Which of the four are positive where — decided by two coordinates, not by a rhyme.',
+  uz: 'Algebra 9, §20', uzPage: 'pp. 109–113',
+  cam: 'IGX 15.4', camPage: 'Core & Extended, pp. 322–327', wb: 'Exercise 15.4',
+  objectives: [
+    'Give the sign of each of the four functions in each of the four quadrants.',
+    'Derive the sign table from the signs of x and y rather than memorising it.',
+    'Choose the correct sign after using the fundamental identity.',
+    'Find the quadrant of an angle from the signs of two of its functions.'
+  ],
+  terms: [
+    ['Sign', 'Ishora', 'Знак'],
+    ['Quadrant', 'Chorak', 'Четверть'],
+    ['Positive', 'Musbat', 'Положительный'],
+    ['Negative', 'Manfiy', 'Отрицательный'],
+    ['Coordinate', 'Koordinata', 'Координата'],
+    ['Quotient', 'Bo‘linma', 'Частное'],
+    ['Boundary angle', 'Chegaraviy burchak', 'Граничный угол'],
+    ['Determine', 'Aniqlash', 'Определить']
+  ],
+  timing: [[15, 'Where the signs come from'], [22, 'The table'], [25, 'Choosing the sign'], [23, 'Working backwards'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Where the signs come from',
+      html: `<p>There is nothing to learn here that is not already known: ${m('cos α = x')} and
+      ${m('sin α = y')}, so their signs are simply the signs of the coordinates.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quadrant</th><th class="m">x</th><th class="m">y</th><th class="m">cos</th><th class="m">sin</th></tr></thead>
+      <tbody>
+        <tr><td>I</td><td class="m">+</td><td class="m">+</td><td class="m">+</td><td class="m">+</td></tr>
+        <tr><td>II</td><td class="m">−</td><td class="m">+</td><td class="m">−</td><td class="m">+</td></tr>
+        <tr><td>III</td><td class="m">−</td><td class="m">−</td><td class="m">−</td><td class="m">−</td></tr>
+        <tr><td>IV</td><td class="m">+</td><td class="m">−</td><td class="m">+</td><td class="m">−</td></tr>
+      </tbody></table></div>
+      <p>Tangent and cotangent are quotients of the two, so they are positive exactly where the
+      coordinates share a sign — quadrants I and III.</p>
+      <div class="keybox"><div class="klabel">Do not memorise a mnemonic you cannot rebuild</div>
+      Rhymes for this table exist in every language and they all fail under pressure, because a rhyme
+      cannot be checked. Sketching the circle and asking “is ${m('x')} left or right of the axis?” takes
+      four seconds and is never wrong.</div>`
+    },
+    {
+      h: 'The table',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Function</th><th>I</th><th>II</th><th>III</th><th>IV</th><th>Positive in</th></tr></thead>
+      <tbody>
+        <tr><td class="m">sin α</td><td class="m">+</td><td class="m">+</td><td class="m">−</td><td class="m">−</td><td>the upper half</td></tr>
+        <tr><td class="m">cos α</td><td class="m">+</td><td class="m">−</td><td class="m">−</td><td class="m">+</td><td>the right half</td></tr>
+        <tr><td class="m">tan α</td><td class="m">+</td><td class="m">−</td><td class="m">+</td><td class="m">−</td><td>I and III</td></tr>
+        <tr><td class="m">cot α</td><td class="m">+</td><td class="m">−</td><td class="m">+</td><td class="m">−</td><td>I and III</td></tr>
+      </tbody></table></div>
+      {{fig:unitCircle:sine is positive above the axis, cosine to the right of it — the two halves that decide everything.}}
+      <p>Two sentences replace the whole table: <b>sine is positive above the ${m('x')}-axis; cosine is
+      positive to the right of the ${m('y')}-axis.</b> Tangent and cotangent follow by division.</p>`
+    },
+    {
+      h: 'Choosing the sign',
+      html: `<p>This is the working use of the table. The identity ${m('sin²α + cos²α = 1')} always leaves
+      a ${m('±')}; the quadrant removes it.</p>
+      <p><b>Example.</b> ${m('cos α = −' + f('5', '13'))} and ${m('α')} is in quadrant III. Then
+      ${m('sin²α = 1 − ' + f('25', '169') + ' = ' + f('144', '169'))}, so ${m('sin α = ±' + f('12', '13'))} —
+      and quadrant III makes it negative: ${m('sin α = −' + f('12', '13'))}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Gives</th></tr></thead>
+      <tbody>
+        <tr><td>the identity</td><td>the size</td></tr>
+        <tr><td>the quadrant</td><td>the sign</td></tr>
+        <tr><td>the quotient</td><td class="m">tan, cot</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Two answers where the question expected one</span>
+      If the quadrant is <b>not</b> given, ${m('±')} is the correct answer and both cases must be
+      written out. If it <b>is</b> given and you still write ${m('±')}, the mark is lost — the whole
+      point of the quadrant was to decide.</div>`
+    },
+    {
+      h: 'Working backwards',
+      html: `<p>Two signs pin down the quadrant, because each function splits the circle into two halves
+      and two halves intersect in one quarter.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Quadrant</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">sin α > 0, cos α < 0</td><td>II</td><td>upper half, left half</td></tr>
+        <tr><td class="m">sin α < 0, cos α > 0</td><td>IV</td><td>lower half, right half</td></tr>
+        <tr><td class="m">tan α > 0, sin α < 0</td><td>III</td><td>matching signs, lower half</td></tr>
+        <tr><td class="m">cos α > 0, tan α < 0</td><td>IV</td><td>right half, mismatched signs</td></tr>
+      </tbody></table></div>
+      <p>One sign alone is never enough: ${m('sin α > 0')} leaves quadrants I and II both open.</p>
+      <div class="warn"><span class="wl">On an axis there is no quadrant</span>
+      At ${m('α = π')} the point is ${m('(−1, 0)')}: ${m('sin α = 0')}, which is neither positive nor
+      negative, and ${m('cot α')} does not exist. Boundary angles are handled by reading the point, not
+      by the sign table.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Give the sign of ' + m('sin 200°') + ', ' + m('cos 200°') + ' and ' + m('tan 200°') + '.',
+      steps: [
+        [m('180° < 200° < 270°') + ' — quadrant III.', ''],
+        ['Both coordinates negative.', ''],
+        [m('sin < 0') + ', ' + m('cos < 0') + '.', ''],
+        [m('tan > 0') + ' — matching signs.', '']
+      ],
+      ans: m('−, −, +')
+    },
+    {
+      q: 'Given ' + m('cos α = −' + f('5', '13')) + ' with ' + m('α') + ' in quadrant III, find ' + m('sin α') + ' and ' + m('tan α') + '.',
+      steps: [
+        [m('sin²α = 1 − ' + f('25', '169') + ' = ' + f('144', '169')), ''],
+        [m('sin α = ±' + f('12', '13')), 'The size.'],
+        ['Quadrant III ⇒ negative: ' + m('sin α = −' + f('12', '13')) + '.', 'The sign.'],
+        [m('tan α = ' + f('−12/13', '−5/13') + ' = ' + f('12', '5')), 'Positive, as III demands.']
+      ],
+      ans: m('sin α = −' + f('12', '13')) + ', ' + m('tan α = ' + f('12', '5'))
+    },
+    {
+      q: 'In which quadrant is ' + m('α') + ' if ' + m('tan α > 0') + ' and ' + m('cos α < 0') + '?',
+      steps: [
+        [m('tan α > 0') + ' ⇒ quadrant I or III.', 'Matching signs.'],
+        [m('cos α < 0') + ' ⇒ quadrant II or III.', 'Left half.'],
+        ['The only quadrant in both lists is III.', ''],
+        ['Quadrant III.', '']
+      ],
+      ans: 'Quadrant III'
+    }
+  ],
+  modelNote: 'Ask for the sign of sin 200° before any algebra: the class should point at the lower-left of a sketched circle, not recite a rule.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'Signs around the circle',
+    hint: 'Watch which coordinate changes sign as you cross each axis.'
+  },
+  quiz: [
+    { q: m('sin α') + ' is positive in quadrants:', a: ['I and II', 'I and III', 'III and IV', 'II and III'], c: 0, why: 'The upper half.' },
+    { q: m('cos α') + ' is positive in quadrants:', a: ['I and II', 'I and IV', 'II and III', 'III and IV'], c: 1, why: 'The right half.' },
+    { q: m('tan α') + ' is positive in quadrants:', a: ['I and II', 'I and III', 'II and IV', 'III and IV'], c: 1, why: 'Matching coordinate signs.' },
+    { q: 'Sign of ' + m('cos 200°') + ':', a: ['positive', 'negative', 'zero', 'undefined'], c: 1, why: 'Quadrant III.' },
+    { q: m('sin α > 0') + ' and ' + m('cos α < 0') + ' means quadrant:', a: ['I', 'II', 'III', 'IV'], c: 1, why: 'Upper left.' },
+    { q: 'The identity gives the size; the sign comes from:', a: ['the identity', 'the quadrant', 'the calculator', 'the radius'], c: 1, why: 'Only the quadrant can decide.' }
+  ],
+  practice: {
+    easy: [
+      ['Sign of ' + m('sin 100°'), m('+')],
+      ['Sign of ' + m('cos 100°'), m('−')],
+      ['Sign of ' + m('sin 250°'), m('−')],
+      ['Sign of ' + m('cos 300°'), m('+')],
+      ['Sign of ' + m('tan 200°'), m('+')],
+      ['Sign of ' + m('tan 150°'), m('−')],
+      ['Quadrant of ' + m('α') + ' if both are positive', 'I']
+    ],
+    med: [
+      ['Signs of ' + m('sin, cos, tan') + ' at ' + m('200°'), m('−, −, +')],
+      ['Signs at ' + m(f('3π', '4')), m('+, −, −')],
+      ['Signs at ' + m('−' + f('π', '4')), m('−, +, −')],
+      [m('sin α > 0, tan α < 0') + ': quadrant', 'II'],
+      [m('cos α > 0, sin α < 0') + ': quadrant', 'IV'],
+      [m('cos α = −' + f('5', '13')) + ', III: ' + m('sin α'), m('−' + f('12', '13'))],
+      [m('sin α = ' + f('4', '5')) + ', II: ' + m('tan α'), m('−' + f('4', '3'))]
+    ],
+    hard: [
+      [m('tan α = ' + f('3', '4')) + ', III: ' + m('sin α') + ' and ' + m('cos α'), m('−' + f('3', '5')) + ', ' + m('−' + f('4', '5'))],
+      [m('cos α = 0.6') + ', IV: ' + m('cot α'), m('−' + f('3', '4'))],
+      [m('sin α cos α < 0') + ': which quadrants?', 'II and IV'],
+      [m('sin α + cos α') + ' at ' + m(f('5π', '4')), m('−' + sr('2'))],
+      ['Sign of ' + m('sin 400° · cos 400°'), m('+') + ' — quadrant I'],
+      [m('sin α = −' + f('7', '25')) + ', IV: ' + m('cos α'), m(f('24', '25'))],
+      ['For which quadrants is ' + m('sin α + cos α') + ' certainly negative?', 'III only']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Sketch the circle for every task; a sign written without a picture is a guess.',
+  homework: [
+    'Give the signs of the four functions at ' + m('130°') + ', ' + m('220°') + ' and ' + m('310°') + '.',
+    'Given ' + m('sin α = −' + f('8', '17')) + ' with ' + m('α') + ' in quadrant III, find ' + m('cos α') + ' and ' + m('tan α') + '.',
+    'In which quadrant is ' + m('α') + ' if ' + m('cot α > 0') + ' and ' + m('sin α < 0') + '?',
+    'Explain why one sign alone never determines the quadrant.',
+    'Find ' + m('sin α + cos α') + ' at ' + m(f('7π', '4')) + '.'
+  ]
+});
+
+/* ============================== 25 ============================== */
+G9_ALG.push({
+  id: 'a9-25', stream: 'alg', grade: 9, quarter: 2, lessons: '47–48', hours: 2,
+  title: 'Control work 4, and the quarter reviewed',
+  subtitle: 'The radian, the turned point and the four functions — the opening of trigonometry, tested.',
+  uz: 'Algebra 9, Nazorat ishi 4', uzPage: 'pp. 91–113',
+  cam: 'IGX 15 review', camPage: 'Core & Extended, pp. 304–330', wb: 'Control paper A4',
+  objectives: [
+    'Convert between degrees and radians and use l = rα, S = ½r²α under time.',
+    'Reduce an angle to [0, 2π) and name its quadrant.',
+    'Use the fundamental identity together with the quadrant to fix a sign.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Radian', 'Radian', 'Радиан'],
+    ['Sector', 'Sektor', 'Сектор'],
+    ['Rotation', 'Aylanish', 'Поворот'],
+    ['Quadrant', 'Chorak', 'Четверть'],
+    ['Fundamental identity', 'Asosiy ayniyat', 'Основное тождество'],
+    ['Exact value', 'Aniq qiymat', 'Точное значение'],
+    ['Revision', 'Takrorlash', 'Повторение']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The quarter']],
+  sections: [
+    {
+      h: 'The paper — 30 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Convert ${m('150°')} to radians and ${m(f('7π', '6'))} to degrees</td><td class="m">4</td><td>L39–40</td></tr>
+        <tr><td>2</td><td>${m('r = 9')}, ${m('α = ' + f('π', '3'))}: find the arc and the sector area</td><td class="m">6</td><td>L39–40</td></tr>
+        <tr><td>3</td><td>Reduce ${m('−480°')} to ${m('[0°, 360°)')} and name the quadrant</td><td class="m">5</td><td>L41–42</td></tr>
+        <tr><td>4</td><td>Evaluate ${m('sin ' + f('π', '6') + ' + cos ' + f('π', '3') + ' − tan ' + f('π', '4'))}</td><td class="m">5</td><td>L43–44</td></tr>
+        <tr><td>5</td><td>${m('sin α = ' + f('12', '13'))}, quadrant II: find ${m('cos α')} and ${m('tan α')}</td><td class="m">6</td><td>L45–46</td></tr>
+        <tr><td>6</td><td>In which quadrant is ${m('α')} if ${m('tan α < 0')} and ${m('sin α > 0')}?</td><td class="m">4</td><td>L45–46</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries one mark for cancelling the fraction; Q2 one for using radians rather than
+      ${m(f('θ', '360'))}; Q3 one for adding <b>two</b> full turns; Q5 two marks for the sign, not the
+      size; Q6 one for naming both halves before intersecting them.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>fraction not cancelled</td><td class="m">${f('150π', '180')}</td><td class="m">${f('5π', '6')}</td></tr>
+        <tr><td>degrees in ${m('l = rα')}</td><td class="m">l = 9 · 60</td><td>convert first</td></tr>
+        <tr><td>one turn only</td><td class="m">−480 + 360 = −120</td><td>add ${m('720°')}</td></tr>
+        <tr><td>exact value guessed</td><td class="m">sin ${f('π', '6')} = ${f(sr('3'), '2')}</td><td class="m">${f('1', '2')} — sine of the smaller angle is smaller</td></tr>
+        <tr><td>sign left as ${m('±')}</td><td class="m">cos α = ±${f('5', '13')}</td><td>quadrant II ⇒ negative</td></tr>
+        <tr><td>one condition used</td><td>“${m('tan α < 0')} ⇒ II”</td><td>II or IV; the second condition decides</td></tr>
+        <tr><td>calculator in the wrong mode</td><td class="m">sin ${f('π', '6')} = 0.0091</td><td>set RAD</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'The quarter in one page',
+      html: `<p>Quarter II covered two chapters, and each reduces to a single sentence.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Block</th><th>The sentence</th></tr></thead>
+      <tbody>
+        <tr><td>systems of equations</td><td>substitute, add, or use ${m('u = x + y, v = xy')} — the shape chooses</td></tr>
+        <tr><td>systems of inequalities</td><td>solve separately, draw one number line, intersect</td></tr>
+        <tr><td>proving inequalities</td><td>everything to one side, then a square</td></tr>
+        <tr><td>the radian</td><td>angle = arc ÷ radius, and ${m('180° = π')}</td></tr>
+        <tr><td>rotation</td><td>an angle is a turn of ${m('P(1, 0)')}; ${m('+2πk')} changes nothing</td></tr>
+        <tr><td>the four functions</td><td>${m('cos = x')}, ${m('sin = y')}, and the other two are quotients</td></tr>
+        <tr><td>the signs</td><td>sine above the axis, cosine to the right of it</td></tr>
+      </tbody></table></div>
+      {{fig:unitCircle:The picture that carries the whole of the second half of this quarter.}}
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      Quarter III takes the four functions and finds the relations between them: the identities, what
+      happens to ${m('−α')}, the addition formulae, the double angle, and the reduction formulae. Every
+      one of them is proved on the circle drawn above, so the picture is worth keeping in the front of
+      the exercise book.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q2: ' + m('r = 9') + ', ' + m('α = ' + f('π', '3')) + '.',
+      steps: [
+        [m('l = rα = 9 · ' + f('π', '3')), 'The angle is already in radians.'],
+        [m('l = 3π ≈ 9.42'), ''],
+        [m('S = ½ · 81 · ' + f('π', '3')), ''],
+        [m('S = ' + f('27π', '2') + ' ≈ 42.41'), '']
+      ],
+      ans: m('l = 3π') + ', ' + m('S = ' + f('27π', '2'))
+    },
+    {
+      q: 'Model answer, Q3: reduce ' + m('−480°') + ' and name the quadrant.',
+      steps: [
+        [m('−480 + 360 = −120') + ' — still negative.', 'One turn is not enough.'],
+        [m('−120 + 360 = 240'), 'A second turn.'],
+        [m('180° < 240° < 270°'), ''],
+        ['Quadrant III.', '']
+      ],
+      ans: m('240°') + ' — quadrant III'
+    },
+    {
+      q: 'Model answer, Q5: ' + m('sin α = ' + f('12', '13')) + ', quadrant II.',
+      steps: [
+        [m('cos²α = 1 − ' + f('144', '169') + ' = ' + f('25', '169')), ''],
+        [m('cos α = ±' + f('5', '13')), 'The size.'],
+        ['Quadrant II ⇒ ' + m('cos α = −' + f('5', '13')) + '.', 'The sign.'],
+        [m('tan α = −' + f('12', '5')), 'Negative, as II demands.']
+      ],
+      ans: m('cos α = −' + f('5', '13')) + ', ' + m('tan α = −' + f('12', '5'))
+    }
+  ],
+  modelNote: 'Put Q5 on the board with the answer left as ±, and ask the class what is still missing — the sign, and the sentence that justifies it.',
+  interactive: {
+    type: 'quiz',
+    title: 'Quarter II in twelve questions',
+    hint: 'Two from each block.',
+    items: [
+      { q: 'A symmetric system suggests:', a: [m('u = x + y, v = xy'), 'squaring', 'a graph', 'addition'], c: 0, why: 'It becomes linear.' },
+      { q: 'A candidate pair is tested in:', a: ['one equation', 'both', 'neither', 'the simpler one'], c: 1, why: 'Or the check proves nothing.' },
+      { q: 'A system of inequalities gives:', a: ['a union', 'an intersection', 'one interval always', 'the empty set'], c: 1, why: 'Every line must hold.' },
+      { q: 'A denominator zero is drawn:', a: ['filled', 'open', 'either', 'twice'], c: 1, why: 'Undefined there.' },
+      { q: 'To prove ' + m('A ≥ B') + ':', a: ['test values', 'show ' + m('A − B ≥ 0'), 'draw it', 'show ' + m('A > 0')], c: 1, why: 'One side, one sign.' },
+      { q: 'Equality in ' + m('a + b ≥ 2' + sr('ab')) + ':', a: [m('a = 0'), m('a = b'), m('b = 1'), 'never'], c: 1, why: 'The square vanishes.' },
+      { q: m('180°') + ' in radians:', a: [m(f('π', '2')), m('π'), m('2π'), m('90')], c: 1, why: 'Half a turn.' },
+      { q: 'Arc length in radians:', a: [m('l = rα'), m('l = r²α'), m('l = 2πrα'), m('l = ' + f('r', 'α'))], c: 0, why: 'From ' + m('α = ' + f('l', 'r')) + '.' },
+      { q: m('400°') + ' ends where:', a: [m('40°'), m('60°'), m('−40°'), m('340°')], c: 0, why: 'One turn removed.' },
+      { q: m('cos α') + ' is the:', a: ['ordinate', 'abscissa', 'radius', 'arc'], c: 1, why: m('x') + '-coordinate.' },
+      { q: m('tan α') + ' is undefined when:', a: [m('sin α = 0'), m('cos α = 0'), m('α = 0'), 'never'], c: 1, why: 'Zero denominator.' },
+      { q: m('sin α > 0, cos α < 0') + ' means quadrant:', a: ['I', 'II', 'III', 'IV'], c: 1, why: 'Upper left.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 loses a mark most often for:', a: ['a wrong formula', 'an uncancelled fraction', 'no units', 'a decimal'], c: 1, why: m(f('150π', '180')) + ' is not finished.' },
+    { q: m('l = rα') + ' requires ' + m('α') + ' in:', a: ['degrees', 'radians', 'either', 'turns'], c: 1, why: 'The compact formula is a radian formula.' },
+    { q: m('−480°') + ' needs:', a: ['one turn', 'two turns', 'three turns', 'none'], c: 1, why: 'One leaves it negative.' },
+    { q: 'In Q5 the quadrant supplies:', a: ['the size', 'the sign', 'both', 'neither'], c: 1, why: 'The identity gave the size.' },
+    { q: 'One sign condition determines:', a: ['one quadrant', 'two quadrants', 'all four', 'none'], c: 1, why: 'It splits the circle in half.' },
+    { q: 'Work on the mistakes means:', a: ['fix the wrong line', 'rewrite the solution', 'copy the answer', 'skip it'], c: 1, why: 'The whole solution, again.' }
+  ],
+  practice: {
+    easy: [
+      [m('150°') + ' in radians', m(f('5π', '6'))],
+      [m(f('7π', '6')) + ' in degrees', m('210°')],
+      [m('r = 9, α = ' + f('π', '3')) + ': arc', m('3π')],
+      [m('r = 9, α = ' + f('π', '3')) + ': sector area', m(f('27π', '2'))],
+      ['Reduce ' + m('−480°'), m('240°')],
+      [m('sin ' + f('π', '6') + ' + cos ' + f('π', '3')), m('1')],
+      ['Sign of ' + m('cos 130°'), m('−')]
+    ],
+    med: [
+      [m('sin ' + f('π', '6') + ' + cos ' + f('π', '3') + ' − tan ' + f('π', '4')), m('0')],
+      [m('sin α = ' + f('12', '13')) + ', II: ' + m('cos α'), m('−' + f('5', '13'))],
+      [m('sin α = ' + f('12', '13')) + ', II: ' + m('tan α'), m('−' + f('12', '5'))],
+      [m('tan α < 0, sin α > 0') + ': quadrant', 'II'],
+      ['Quadrant of ' + m('−480°'), 'III'],
+      ['Solve ' + m('{ x + y = 5 ; xy = 6 }'), m('(2, 3), (3, 2)')],
+      ['Solve ' + m('{ x² − 1 > 0 ; x² − 9 < 0 }'), m('(−3, −1) ∪ (1, 3)')]
+    ],
+    hard: [
+      ['A sector of radius ' + m('12') + ' has area ' + m('24π') + ': the angle', m(f('π', '3'))],
+      ['Perimeter of that sector', m('24 + 4π')],
+      [m('cos α = −' + f('3', '5')) + ', III: ' + m('sin α + cos α'), m('−' + f('7', '5'))],
+      ['Prove ' + m('x² + 16 ≥ 8x') + ' and name the equality case', m('(x − 4)² ≥ 0') + '; ' + m('x = 4')],
+      ['Solve ' + m('{ x² + y² = 25 ; x² − y² = 7 }'), m('(±4, ±3)')],
+      ['Reduce ' + m('−' + f('19π', '6')) + ' to ' + m('[0, 2π)'), m(f('5π', '6'))],
+      ['A wheel of radius ' + m('30 cm') + ' rolls ' + m('6 m') + '. The angle turned, in radians', m('20')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite in full every question that lost a mark; the holiday is not the place to leave them.',
+  homework: [
+    'Convert ' + m('240°') + ' to radians and ' + m(f('5π', '4')) + ' to degrees.',
+    'A sector has ' + m('r = 12') + ' and ' + m('α = ' + f('π', '4')) + '. Find its arc, area and perimeter.',
+    'Reduce ' + m('−750°') + ' to ' + m('[0°, 360°)') + ' and name the quadrant.',
+    'Given ' + m('cos α = −' + f('4', '5')) + ' with ' + m('α') + ' in quadrant II, find ' + m('sin α') + ' and ' + m('cot α') + '.',
+    'Evaluate ' + m('sin ' + f('π', '3') + ' · cos ' + f('π', '6') + ' + cos ' + f('π', '3') + ' · sin ' + f('π', '6')) + '.'
+  ]
+});
