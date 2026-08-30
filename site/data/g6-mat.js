@@ -9179,3 +9179,180 @@ G6_MAT.push({
     'Write two sentences saying what your model of the lawn has ignored.'
   ]
 });
+
+/* ============================== 52 ============================== */
+G6_MAT.push({
+  id: 'g6-52', stream: 'mat', grade: 6, quarter: 3, lessons: '107–108', hours: 2,
+  title: 'Revision — the circle and its measures',
+  subtitle: 'Circumference, area, arcs, sectors and compound shapes on one page.',
+  uz: 'Matematika 6, takrorlash', uzPage: 'pp. 314–318',
+  cam: 'S7 8 and 15 consolidation', camPage: 'Stage 7, pp. 80–84, 148–156', wb: 'Revision 15',
+  objectives: [
+    'Choose between ' + m('C = 2πr') + ' and ' + m('S = πr²') + ' from the wording.',
+    'Work forwards and backwards with both formulae.',
+    'Find arc lengths and sector areas as fractions.',
+    'Handle a compound shape confidently.'
+  ],
+  terms: [
+    ['Circumference', 'Aylana uzunligi', 'Длина окружности'],
+    ['Area', 'Yuza', 'Площадь'],
+    ['Arc', 'Yoy', 'Дуга'],
+    ['Sector', 'Sektor', 'Сектор'],
+    ['Semicircle', 'Yarim doira', 'Полукруг'],
+    ['Quadrant', 'Chorak doira', 'Четверть круга'],
+    ['Compound shape', 'Murakkab shakl', 'Составная фигура'],
+    ['Units', 'O‘lchov birligi', 'Единицы измерения']
+  ],
+  timing: [[20, 'The two formulae'], [25, 'Fractions of a circle'], [25, 'Compound shapes'], [8, 'The errors that remain'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'The two formulae',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Wanted</th><th>Formula</th><th>Units</th><th>Backwards</th></tr></thead>
+      <tbody>
+        <tr><td>circumference</td><td class="m">C = 2πr = πd</td><td class="m">cm</td><td class="m">r = C ÷ 2π</td></tr>
+        <tr><td>area</td><td class="m">S = πr²</td><td class="m">cm²</td><td class="m">r = √(S ÷ π)</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">r</th><th class="m">C</th><th class="m">S</th></tr></thead>
+      <tbody>
+        <tr><td class="m">7</td><td class="m">44</td><td class="m">154</td></tr>
+        <tr><td class="m">14</td><td class="m">88</td><td class="m">616</td></tr>
+        <tr><td class="m">21</td><td class="m">132</td><td class="m">1386</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The units decide the formula</div>
+      Fencing, edging and string are lengths; turf, glass and paint are areas. Reading the material tells
+      you which formula before any number is written.</div>`
+    },
+    {
+      h: 'Fractions of a circle',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Figure</th><th>Arc or curve</th><th>Area</th><th>Perimeter</th></tr></thead>
+      <tbody>
+        <tr><td>semicircle, ${m('r = 7')}</td><td class="m">22</td><td class="m">77</td><td class="m">36</td></tr>
+        <tr><td>quadrant, ${m('r = 7')}</td><td class="m">11</td><td class="m">38.5</td><td class="m">25</td></tr>
+        <tr><td>${m('120°')} sector, ${m('r = 21')}</td><td class="m">44</td><td class="m">462</td><td class="m">86</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Area is a clean fraction; perimeter is not</span>
+      A semicircle has half the area of the disc but not half the perimeter — the straight edge is added.
+      This is the single most repeated error of the chapter.</div>`
+    },
+    {
+      h: 'Compound shapes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Shape</th><th>Area</th><th>Perimeter</th></tr></thead>
+      <tbody>
+        <tr><td>a semicircle of radius ${m('7')} on a ${m('14 × 10')} rectangle</td><td class="m">217</td><td class="m">56</td></tr>
+        <tr><td>a square of side ${m('14')} less a disc of radius ${m('7')}</td><td class="m">42</td><td class="m">100</td></tr>
+        <tr><td>a ring between radii ${m('7')} and ${m('14')}</td><td class="m">462</td><td class="m">132</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Sketch, label, then calculate</div>
+      Writing the area of each piece on the sketch, and tracing the boundary with a finger, catches almost
+      every error before it happens.</div>`
+    },
+    {
+      h: 'The errors that remain',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Error</th><th>Looks like</th><th>Correct</th></tr></thead>
+      <tbody>
+        <tr><td>diameter used as radius</td><td class="m">π · 14²</td><td class="m">π · 7²</td></tr>
+        <tr><td class="m">(πr)²</td><td class="m">484</td><td class="m">πr² = 154</td></tr>
+        <tr><td>semicircle perimeter without the diameter</td><td class="m">22</td><td class="m">36</td></tr>
+        <tr><td>square root forgotten</td><td class="m">r = 49</td><td class="m">r = 7</td></tr>
+        <tr><td>units missing or wrong</td><td class="m">154 cm</td><td class="m">154 cm²</td></tr>
+      </tbody></table></div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A circle has radius ' + m('21 cm') + '. Find its circumference and area.',
+      steps: [
+        [m('C = 2 · ' + f('22', '7') + ' · 21 = 132') + ' cm.', ''],
+        [m('S = ' + f('22', '7') + ' · 441 = 1386') + ' cm².', ''],
+        ['One in ' + m('cm') + ', one in ' + m('cm²') + '.', '']
+      ],
+      ans: m('132 cm') + ' and ' + m('1386 cm²')
+    },
+    {
+      q: 'A ' + m('120°') + ' sector has radius ' + m('21 cm') + '. Find its arc, area and perimeter.',
+      steps: [
+        ['Fraction: ' + m(f('1', '3')) + '.', ''],
+        ['Arc: ' + m('132 ÷ 3 = 44') + ' cm.', ''],
+        ['Area: ' + m('1386 ÷ 3 = 462') + ' cm².', ''],
+        ['Perimeter: ' + m('44 + 42 = 86') + ' cm.', 'Two radii added.']
+      ],
+      ans: m('44 cm') + ', ' + m('462 cm²') + ', ' + m('86 cm')
+    },
+    {
+      q: 'A disc has area ' + m('1386 cm²') + '. Find its circumference.',
+      steps: [
+        [m('r² = 1386 ÷ ' + f('22', '7') + ' = 441'), ''],
+        [m('r = 21') + ' cm.', 'The square root — easily forgotten.'],
+        [m('C = 2 · ' + f('22', '7') + ' · 21 = 132') + ' cm.', '']
+      ],
+      ans: m('132 cm')
+    }
+  ],
+  modelNote: 'Give six questions and ask only whether each needs C or S; sorting them takes two minutes and removes most of the errors in the control work.',
+  interactive: {
+    type: 'quiz',
+    title: 'Length or area?',
+    hint: 'Read the material or the units.',
+    items: [
+      { q: 'Fencing round a circular pond needs:', a: [m('C'), m('S'), 'both', 'neither'], c: 0, why: 'A length.' },
+      { q: 'Turf for the same pond area needs:', a: [m('C'), m('S'), 'both', 'neither'], c: 1, why: 'An area.' },
+      { q: 'With ' + m('r = 21') + ', ' + m('C') + ' is:', a: [m('66'), m('132'), m('1386'), m('441')], c: 1, why: m('2πr') + '.' },
+      { q: 'With ' + m('r = 21') + ', ' + m('S') + ' is:', a: [m('132'), m('441'), m('1386'), m('66')], c: 2, why: m('πr²') + '.' },
+      { q: 'A semicircle of radius ' + m('7') + ' has perimeter:', a: [m('22'), m('36'), m('44'), m('77')], c: 1, why: 'Curve plus diameter.' },
+      { q: 'Its area is:', a: [m('22'), m('36'), m('77'), m('154')], c: 2, why: 'Half the disc.' },
+      { q: 'An area of ' + m('1386') + ' gives ' + m('r') + ' equal to:', a: [m('21'), m('441'), m('132'), m('66')], c: 0, why: 'Divide, then take the root.' },
+      { q: m('154 cm') + ' as an answer for an area is:', a: ['fine', 'the wrong units', 'a radius', 'a perimeter'], c: 1, why: m('cm²') + ' is needed.' }
+    ]
+  },
+  quiz: [
+    { q: m('C') + ' is measured in:', a: ['cm', 'cm²', 'cm³', 'degrees'], c: 0, why: 'A length.' },
+    { q: m('S') + ' is measured in:', a: ['cm', 'cm²', 'cm³', 'degrees'], c: 1, why: 'An area.' },
+    { q: 'A disc of radius ' + m('14') + ' has area:', a: [m('88'), m('308'), m('616'), m('196')], c: 2, why: m('πr²') + '.' },
+    { q: 'A semicircle of radius ' + m('14') + ' has perimeter:', a: [m('44'), m('72'), m('88'), m('28')], c: 1, why: m('44 + 28') + '.' },
+    { q: 'A ' + m('120°') + ' sector is what fraction?', a: [m(f('1', '2')), m(f('1', '3')), m(f('1', '4')), m(f('1', '6'))], c: 1, why: m(f('120', '360')) + '.' },
+    { q: 'To find ' + m('r') + ' from the area you:', a: ['divide by ' + m('π'), 'divide by ' + m('π') + ' then take the root', 'divide by ' + m('2π'), 'take the root'], c: 1, why: 'Two steps.' }
+  ],
+  practice: {
+    easy: [
+      [m('r = 7') + ': ' + m('C'), m('44 cm')],
+      [m('r = 7') + ': ' + m('S'), m('154 cm²')],
+      [m('r = 14') + ': ' + m('C'), m('88 cm')],
+      [m('r = 14') + ': ' + m('S'), m('616 cm²')],
+      [m('r = 21') + ': ' + m('C'), m('132 cm')],
+      [m('r = 21') + ': ' + m('S'), m('1386 cm²')],
+      ['Units for an area', m('cm²')]
+    ],
+    med: [
+      ['A semicircle of radius ' + m('7') + ': area and perimeter', m('77 cm²') + ', ' + m('36 cm')],
+      ['A quadrant of radius ' + m('7'), m('38.5 cm²') + ', ' + m('25 cm')],
+      ['A ' + m('120°') + ' sector of radius ' + m('21'), m('462 cm²') + ', ' + m('86 cm')],
+      [m('C = 88') + ': the radius', m('14')],
+      [m('S = 616') + ': the radius', m('14')],
+      ['A ring between radii ' + m('7') + ' and ' + m('14') + ': the area', m('462 cm²')],
+      ['A square of side ' + m('14') + ' less a disc of radius ' + m('7'), m('42 cm²')]
+    ],
+    hard: [
+      ['A disc of area ' + m('1386') + ': its circumference', m('132 cm')],
+      ['A disc of circumference ' + m('132') + ': its area', m('1386 cm²')],
+      ['A semicircle of radius ' + m('7') + ' on a ' + m('14 × 10') + ' rectangle: area and perimeter', m('217 cm²') + ', ' + m('56 cm')],
+      ['A ' + m('60°') + ' sector of radius ' + m('14') + ': the area', m('102.67 cm²')],
+      ['A ring between radii ' + m('7') + ' and ' + m('14') + ': its outer and inner boundary total', m('132 cm')],
+      ['Doubling the radius: what happens to ' + m('C') + ' and ' + m('S') + '?', m('C') + ' doubles, ' + m('S') + ' quadruples'],
+      ['Why is ' + m('154 cm') + ' wrong for an area?', 'Areas need square units']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the units first, and let them tell you which formula to use.',
+  homework: [
+    'Find ' + m('C') + ' and ' + m('S') + ' for circles of radius ' + m('3.5 cm') + ' and ' + m('28 cm') + '.',
+    'A circle has circumference ' + m('66 cm') + '. Find its radius and area.',
+    'Find the area and perimeter of a semicircle of radius ' + m('14 cm') + '.',
+    'Find the area of a ' + m('45°') + ' sector of a circle of radius ' + m('28 cm') + '.',
+    'A rectangle ' + m('20 × 14') + ' cm has a semicircle of radius ' + m('7') + ' cm cut from one short side. Find the area left.'
+  ]
+});
