@@ -809,3 +809,649 @@ G9_GEO.push({
     'Show that the second criterion also proves ' + m('DE ∥ BC') + ' in the standard figure.'
   ]
 });
+
+/* ============================== 6 ============================== */
+G9_GEO.push({
+  id: 'g9-06', stream: 'geo', grade: 9, quarter: 1, lessons: '7', hours: 1,
+  title: 'The third criterion of similarity — three sides',
+  subtitle: 'No angle needed at all: three proportional sides make the same shape.',
+  uz: 'Geometriya 9, §5', uzPage: 'pp. 28–31',
+  cam: 'IGX 11.2', camPage: 'Core & Extended, pp. 226–231', wb: 'Exercise 11.2',
+  objectives: [
+    'State the SSS similarity criterion.',
+    'Test three ratios and decide similarity from numbers alone.',
+    'Order the sides before comparing, so that corresponding sides are paired.',
+    'Choose between the three criteria according to what is given.'
+  ],
+  terms: [
+    ['Third criterion', 'Uchinchi alomat', 'Третий признак'],
+    ['Three sides', 'Uchta tomon', 'Три стороны'],
+    ['To order', 'Tartiblash', 'Упорядочить'],
+    ['Ratio test', 'Nisbat sinovi', 'Проверка отношений'],
+    ['Shortest side', 'Eng kichik tomon', 'Наименьшая сторона'],
+    ['Longest side', 'Eng katta tomon', 'Наибольшая сторона'],
+    ['Equal ratios', 'Teng nisbatlar', 'Равные отношения'],
+    ['Decide', 'Aniqlash', 'Определить']
+  ],
+  timing: [[10, 'The criterion'], [12, 'Ordering first'], [12, 'Choosing a criterion'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The criterion',
+      html: `${eq('If the three sides of one triangle are proportional to the three sides of another, the triangles are similar', true)}
+      ${eq(m(f('AB', 'A₁B₁') + ' = ' + f('BC', 'B₁C₁') + ' = ' + f('CA', 'C₁A₁')) + '  ⟹  ' + m('△ABC ∼ △A₁B₁C₁'), true)}
+      <p>This is the criterion for the case where no angle is known — a set of measurements, and nothing
+      else. It is also the one that a computer would use, because it needs no reasoning about the
+      figure.</p>
+      <div class="keybox"><div class="klabel">Three numbers, three numbers, one decision</div>
+      Divide the sides in matching order and look at the three quotients. If they agree, the triangles
+      are similar and the quotient is ${m('k')}; if any one differs, they are not.</div>`
+    },
+    {
+      h: 'Ordering first',
+      html: `<p>Corresponding sides must be paired correctly, and without a figure the only reliable way
+      is to sort both lists.</p>
+      <p><b>Example.</b> ${m('△ABC')} has sides ${m('4, 7, 5')} and ${m('△DEF')} has ${m('10.5, 6, 7.5')}.
+      Sorted: ${m('4, 5, 7')} and ${m('6, 7.5, 10.5')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Pair</th><th>Ratio</th></tr></thead>
+      <tbody>
+        <tr><td class="m">6 : 4</td><td class="m">1.5</td></tr>
+        <tr><td class="m">7.5 : 5</td><td class="m">1.5</td></tr>
+        <tr><td class="m">10.5 : 7</td><td class="m">1.5</td></tr>
+      </tbody></table></div>
+      <p>All three agree, so the triangles are similar with ${m('k = 1.5')}.</p>
+      <div class="warn"><span class="wl">Comparing the lists in the order given is a lottery</span>
+      Pairing ${m('4')} with ${m('10.5')} produces ${m('2.625')}, and the question looks as if the answer
+      is “not similar”. Sorting both lists takes five seconds and removes the whole risk.</div>`
+    },
+    {
+      h: 'Choosing a criterion',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>What you are given</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td>parallel lines, or a shared angle plus another equal angle</td><td>the first (AA)</td></tr>
+        <tr><td>a shared angle and two ratios around it</td><td>the second (SAS)</td></tr>
+        <tr><td>six side lengths and no angles</td><td>the third (SSS)</td></tr>
+      </tbody></table></div>
+      <p>In practice the first criterion does most of the work, because angles are what diagrams supply.
+      The third is for numerical questions, and the second for the ${m('Λ')} figure run backwards.</p>
+      <div class="keybox"><div class="klabel">Say which criterion you used</div>
+      A proof that establishes similarity without naming the criterion is incomplete. One sentence —
+      “by the third criterion, since all three ratios equal ${m('1.5')}” — is what the mark is for.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Are triangles with sides ' + m('4, 7, 5') + ' and ' + m('10.5, 6, 7.5') + ' similar?',
+      steps: [
+        ['Sort: ' + m('4, 5, 7') + ' and ' + m('6, 7.5, 10.5') + '.', ''],
+        [m(f('6', '4') + ' = 1.5'), ''],
+        [m(f('7.5', '5') + ' = 1.5') + ', ' + m(f('10.5', '7') + ' = 1.5') + '.', ''],
+        ['Yes — by the third criterion, ' + m('k = 1.5') + '.', '']
+      ],
+      ans: 'Yes, ' + m('k = 1.5')
+    },
+    {
+      q: 'Are triangles with sides ' + m('3, 4, 5') + ' and ' + m('6, 8, 11') + ' similar?',
+      steps: [
+        [m(f('6', '3') + ' = 2'), ''],
+        [m(f('8', '4') + ' = 2'), ''],
+        [m(f('11', '5') + ' = 2.2') + ' — different.', ''],
+        ['No.', 'One failing ratio is enough.']
+      ],
+      ans: 'No'
+    },
+    {
+      q: 'A triangle has sides ' + m('6, 8, 10') + '. A similar triangle has perimeter ' + m('36') + '. Find its sides.',
+      steps: [
+        ['Perimeter of the first: ' + m('24') + '.', ''],
+        [m('k = ' + f('36', '24') + ' = 1.5'), ''],
+        [m('6 × 1.5 = 9') + ', ' + m('8 × 1.5 = 12') + ', ' + m('10 × 1.5 = 15') + '.', ''],
+        ['Check: ' + m('9 + 12 + 15 = 36') + ' ✓', '']
+      ],
+      ans: m('9, 12, 15')
+    }
+  ],
+  modelNote: 'Give the six numbers in scrambled order and let half the class compare as given while the other half sorts first; the disagreement teaches the rule.',
+  interactive: {
+    type: 'triangleAngles',
+    title: 'Three sides fix the shape',
+    hint: 'Scale all three together and nothing about the shape changes.'
+  },
+  quiz: [
+    { q: 'The third criterion needs:', a: ['two angles', 'three sides', 'two sides and an angle', 'one side'], c: 1, why: 'SSS, proportionally.' },
+    { q: 'Before comparing, you should:', a: ['draw', 'sort both lists', 'measure the angles', 'nothing'], c: 1, why: 'To pair corresponding sides.' },
+    { q: m('4, 5, 7') + ' and ' + m('6, 7.5, 10.5') + ' give ' + m('k') + ' =', a: [m('1.25'), m('1.5'), m('1.75'), m('2')], c: 1, why: 'All three ratios agree.' },
+    { q: m('3, 4, 5') + ' and ' + m('6, 8, 11') + ' are:', a: ['similar', 'not similar', 'congruent', 'right-angled and so similar'], c: 1, why: 'The third ratio differs.' },
+    { q: 'With six sides and no angles, use:', a: ['the first', 'the second', 'the third', 'any'], c: 2, why: 'No angle is available.' },
+    { q: 'A complete proof must:', a: ['give the answer', 'name the criterion', 'include a graph', 'measure'], c: 1, why: 'That is what the mark is for.' }
+  ],
+  practice: {
+    easy: [
+      [m('3, 4, 5') + ' and ' + m('6, 8, 10'), 'Similar, ' + m('k = 2')],
+      [m('2, 3, 4') + ' and ' + m('4, 6, 8'), 'Similar, ' + m('k = 2')],
+      [m('3, 4, 5') + ' and ' + m('6, 8, 11'), 'Not similar'],
+      [m('5, 12, 13') + ' and ' + m('10, 24, 26'), 'Similar, ' + m('k = 2')],
+      ['Ratio ' + m('7.5 : 5'), m('1.5')],
+      ['Ratio ' + m('10.5 : 7'), m('1.5')],
+      ['Perimeter ' + m('24') + ' scaled to ' + m('36') + ': ' + m('k'), m('1.5')]
+    ],
+    med: [
+      [m('4, 7, 5') + ' and ' + m('10.5, 6, 7.5'), 'Similar, ' + m('k = 1.5')],
+      ['Sides ' + m('6, 8, 10') + ', similar perimeter ' + m('36') + ': the sides', m('9, 12, 15')],
+      [m('6, 9, 12') + ' and ' + m('8, 12, 16'), 'Similar, ' + m('k = ' + f('4', '3'))],
+      [m('4, 6, 8') + ' and ' + m('6, 9, 11'), 'Not similar'],
+      ['Sides ' + m('5, 7, 9') + ' and ' + m('15, x, y'), m('x = 21, y = 27')],
+      ['Which criterion for six side lengths?', 'The third'],
+      ['Which criterion for two parallel lines?', 'The first']
+    ],
+    hard: [
+      ['Sides ' + m('a, a + 2, a + 4') + ' and ' + m('2a, 2a + 4, 2a + 8') + ': similar?', 'Yes, ' + m('k = 2')],
+      ['Two similar triangles have perimeters ' + m('20') + ' and ' + m('35') + ' and the smaller has sides ' + m('4, 7, 9'), m('7, 12.25, 15.75')],
+      ['A triangle ' + m('9, 12, 15') + ' is similar to one of area ' + m('24') + ': the smaller sides', m('6, 8, 10')],
+      ['For which ' + m('x') + ' are ' + m('4, 6, 8') + ' and ' + m('6, 9, x') + ' similar?', m('x = 12')],
+      ['Are ' + m('2, 3, 4') + ' and ' + m('3, 4, 5') + ' similar?', 'No'],
+      ['A triangle with sides in the ratio ' + m('3 : 4 : 5') + ' and perimeter ' + m('60'), m('15, 20, 25')],
+      ['Its area', m('150')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Sort both lists of sides before comparing, every time.',
+  homework: [
+    'Are triangles with sides ' + m('6, 9, 12') + ' and ' + m('8, 12, 16') + ' similar?',
+    'Are triangles with sides ' + m('5, 6, 7') + ' and ' + m('10, 12, 15') + ' similar?',
+    'A triangle has sides ' + m('8, 15, 17') + '. A similar triangle has perimeter ' + m('80') + '. Find its sides.',
+    'For which ' + m('x') + ' are ' + m('3, 5, 7') + ' and ' + m('9, 15, x') + ' similar?',
+    'Say which criterion you would use for each of the three standard situations.'
+  ]
+});
+
+/* ============================== 7 ============================== */
+G9_GEO.push({
+  id: 'g9-07', stream: 'geo', grade: 9, quarter: 1, lessons: '8', hours: 1,
+  title: 'Criteria of similarity of right-angled triangles',
+  subtitle: 'With one right angle given free, a single further fact is enough.',
+  uz: 'Geometriya 9, §6', uzPage: 'pp. 32–35',
+  cam: 'IGX 11.1–11.2', camPage: 'Core & Extended, pp. 220–231', wb: 'Exercise 11.1',
+  objectives: [
+    'State the special criteria for right-angled triangles.',
+    'Use one acute angle, or two proportional legs, to establish similarity.',
+    'Use the hypotenuse-and-leg criterion.',
+    'Recognise the three similar triangles created by the altitude to the hypotenuse.'
+  ],
+  terms: [
+    ['Right-angled triangle', 'To‘g‘ri burchakli uchburchak', 'Прямоугольный треугольник'],
+    ['Leg', 'Katet', 'Катет'],
+    ['Hypotenuse', 'Gipotenuza', 'Гипотенуза'],
+    ['Acute angle', 'O‘tkir burchak', 'Острый угол'],
+    ['Altitude', 'Balandlik', 'Высота'],
+    ['Foot of the altitude', 'Balandlik asosi', 'Основание высоты'],
+    ['Projection', 'Proyeksiya', 'Проекция'],
+    ['Mean proportional', 'O‘rta proporsional', 'Среднее пропорциональное']
+  ],
+  timing: [[10, 'The three special criteria'], [14, 'The altitude figure'], [10, 'Working with it'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The three special criteria',
+      html: `<p>One right angle is common to both triangles already, so each general criterion needs one
+      fact fewer.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>From</th><th>Needs only</th><th>Because</th></tr></thead>
+      <tbody>
+        <tr><td>the first</td><td>one equal acute angle</td><td>the right angles are the second pair</td></tr>
+        <tr><td>the second</td><td>two proportional legs</td><td>the right angle is included</td></tr>
+        <tr><td>the third</td><td>a leg and the hypotenuse proportional</td><td>Pythagoras supplies the third side</td></tr>
+      </tbody></table></div>
+      {{fig:rightTriangle:One right angle is free; a single further fact decides similarity.}}
+      <div class="keybox"><div class="klabel">Two right triangles sharing an acute angle are always similar</div>
+      This is the workhorse of the whole chapter, and the reason shadow problems, ladder problems and
+      the altitude figure below all work.</div>`
+    },
+    {
+      h: 'The altitude figure',
+      html: `<p>Drop the altitude ${m('CH')} from the right angle ${m('C')} to the hypotenuse ${m('AB')}.
+      Three triangles appear — ${m('△ACH')}, ${m('△CBH')} and ${m('△ABC')} — and all three are
+      similar.</p>
+      {{fig:rightTriangle:The altitude from the right angle splits the triangle into two copies of itself.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Pair</th><th>Equal angles</th></tr></thead>
+      <tbody>
+        <tr><td class="m">△ACH ∼ △ABC</td><td class="m">∠A common, both right-angled</td></tr>
+        <tr><td class="m">△CBH ∼ △ABC</td><td class="m">∠B common, both right-angled</td></tr>
+        <tr><td class="m">△ACH ∼ △CBH</td><td>both similar to ${m('△ABC')}</td></tr>
+      </tbody></table></div>
+      <p>Reading the proportions off gives three relations, which Quarter IV will use constantly:</p>
+      ${eq(m('CH² = AH · HB') + '     ' + m('AC² = AH · AB') + '     ' + m('BC² = BH · AB'), true)}
+      <div class="keybox"><div class="klabel">Each leg is the mean proportional between the hypotenuse and its own projection</div>
+      And the altitude is the mean proportional between the two projections. Three sentences, three
+      formulae — and adding the last two gives Pythagoras' theorem in one line.</div>`
+    },
+    {
+      h: 'Working with it',
+      html: `<p><b>Example.</b> In a right triangle the altitude to the hypotenuse divides it into
+      ${m('4')} and ${m('9')}. Find the altitude and the two legs.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quantity</th><th>Relation</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="m">CH</td><td class="m">CH² = 4 × 9</td><td class="m">6</td></tr>
+        <tr><td class="m">AC</td><td class="m">AC² = 4 × 13</td><td class="m">2${sr('13')}</td></tr>
+        <tr><td class="m">BC</td><td class="m">BC² = 9 × 13</td><td class="m">3${sr('13')}</td></tr>
+      </tbody></table></div>
+      <p>Check: ${m('52 + 117 = 169 = 13²')} ✓ — Pythagoras holds, as it must.</p>
+      <div class="warn"><span class="wl">${m('AB')} is ${m('13')}, not ${m('9')}</span>
+      The relation for a leg uses the <b>whole</b> hypotenuse and that leg's own projection. Using the
+      other projection, or only part of the hypotenuse, is the usual slip here.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'The altitude to the hypotenuse divides it into ' + m('4') + ' and ' + m('9') + '. Find the altitude.',
+      steps: [
+        [m('△ACH ∼ △CBH'), 'Both similar to the whole.'],
+        [m(f('AH', 'CH') + ' = ' + f('CH', 'HB')), ''],
+        [m('CH² = 4 × 9 = 36'), ''],
+        [m('CH = 6'), '']
+      ],
+      ans: m('6')
+    },
+    {
+      q: 'In the same triangle find the two legs.',
+      steps: [
+        [m('AB = 4 + 9 = 13'), 'The whole hypotenuse.'],
+        [m('AC² = AH · AB = 4 × 13 = 52'), ''],
+        [m('AC = 2' + sr('13')), ''],
+        [m('BC² = 9 × 13 = 117') + ', so ' + m('BC = 3' + sr('13')) + '.', '']
+      ],
+      ans: m('2' + sr('13')) + ' and ' + m('3' + sr('13'))
+    },
+    {
+      q: 'Two right triangles have legs ' + m('6, 8') + ' and ' + m('9, 12') + '. Are they similar?',
+      steps: [
+        [m(f('9', '6') + ' = 1.5'), ''],
+        [m(f('12', '8') + ' = 1.5'), 'Equal ratios.'],
+        ['The right angle is the included angle.', ''],
+        ['Yes — by the second criterion, ' + m('k = 1.5') + '.', '']
+      ],
+      ans: 'Yes, ' + m('k = 1.5')
+    }
+  ],
+  modelNote: 'Cut a paper right triangle along the altitude from the right angle; the two pieces can be laid on the original to show all three are the same shape.',
+  interactive: {
+    type: 'rightTriangle',
+    title: 'The altitude to the hypotenuse',
+    hint: 'Move the right-angle vertex and watch the three similar triangles.'
+  },
+  quiz: [
+    { q: 'Two right triangles with one equal acute angle are:', a: ['congruent', 'similar', 'equal in area', 'unrelated'], c: 1, why: 'AA, with the right angles as the second pair.' },
+    { q: 'The altitude to the hypotenuse creates:', a: ['two similar triangles', 'three similar triangles', 'no similar triangles', 'congruent triangles'], c: 1, why: 'Both parts and the whole.' },
+    { q: m('CH²') + ' equals:', a: [m('AH · AB'), m('AH · HB'), m('HB · AB'), m('AB²')], c: 1, why: 'The mean proportional of the projections.' },
+    { q: m('AC²') + ' equals:', a: [m('AH · HB'), m('AH · AB'), m('HB · AB'), m('CH²')], c: 1, why: 'Its own projection times the hypotenuse.' },
+    { q: 'Projections ' + m('4') + ' and ' + m('9') + ' give an altitude of:', a: [m('5'), m('6'), m('6.5'), m('13')], c: 1, why: m(sr('36')) + '.' },
+    { q: 'Adding the two leg relations gives:', a: ['the sine rule', 'Pythagoras', 'the area', 'nothing'], c: 1, why: m('AH · AB + HB · AB = AB²') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Projections ' + m('4') + ' and ' + m('9') + ': the altitude', m('6')],
+      ['Projections ' + m('9') + ' and ' + m('16') + ': the altitude', m('12')],
+      ['Projections ' + m('3') + ' and ' + m('12') + ': the altitude', m('6')],
+      [m('CH²') + ' equals', m('AH · HB')],
+      [m('AC²') + ' equals', m('AH · AB')],
+      ['Legs ' + m('6, 8') + ' and ' + m('9, 12') + ': similar?', 'Yes, ' + m('k = 1.5')],
+      ['Two right triangles with a ' + m('30°') + ' angle each', 'Similar']
+    ],
+    med: [
+      ['Projections ' + m('4') + ' and ' + m('9') + ': the legs', m('2' + sr('13')) + ' and ' + m('3' + sr('13'))],
+      ['Projections ' + m('9') + ' and ' + m('16') + ': the legs', m('15') + ' and ' + m('20')],
+      ['Legs ' + m('15') + ' and ' + m('20') + ': the hypotenuse', m('25')],
+      ['Hypotenuse ' + m('25') + ', one projection ' + m('9') + ': that leg', m('15')],
+      ['Altitude ' + m('12') + ', one projection ' + m('9') + ': the other', m('16')],
+      ['A ' + m('3–4–5') + ' triangle: the altitude to the hypotenuse', m('2.4')],
+      ['Its two projections', m('1.8') + ' and ' + m('3.2')]
+    ],
+    hard: [
+      ['A right triangle with hypotenuse ' + m('13') + ' and altitude ' + m('6') + ': the projections', m('4') + ' and ' + m('9')],
+      ['Legs ' + m('a') + ' and ' + m('b') + ': the altitude to the hypotenuse', m(f('ab', sr('a² + b²')))],
+      ['A ' + m('5–12–13') + ' triangle: its altitude to the hypotenuse', m(f('60', '13'))],
+      ['Its two projections', m(f('25', '13')) + ' and ' + m(f('144', '13'))],
+      ['Prove Pythagoras from the two leg relations', m('AH · AB + HB · AB = AB²')],
+      ['A right triangle: the altitude is ' + m('6') + ' and one projection twice the other', m('AH = 3' + sr('2')) + ', ' + m('HB = 6' + sr('2'))],
+      ['A ladder ' + m('13 m') + ' reaches ' + m('12 m') + ' up a wall: its foot from the wall', m('5 m')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Label the foot of the altitude on every figure; the three relations are unreadable without it.',
+  homework: [
+    'The altitude to the hypotenuse divides it into ' + m('9') + ' and ' + m('16') + '. Find the altitude and the legs.',
+    'A right triangle has legs ' + m('9') + ' and ' + m('12') + '. Find the altitude to the hypotenuse.',
+    'Find the projections of the legs in that triangle.',
+    'Two right triangles have legs ' + m('5, 12') + ' and ' + m('10, 24') + '. Are they similar?',
+    'Derive Pythagoras’ theorem from the two leg relations.'
+  ]
+});
+
+/* ============================== 8 ============================== */
+G9_GEO.push({
+  id: 'g9-08', stream: 'geo', grade: 9, quarter: 1, lessons: '9', hours: 1,
+  title: 'Applying the criteria to problems on proof',
+  subtitle: 'Similarity is mostly used not to find lengths but to prove that two lines are parallel, or two products equal.',
+  uz: 'Geometriya 9, §7', uzPage: 'pp. 36–40',
+  cam: 'IGX 11.4', camPage: 'Core & Extended, pp. 237–241', wb: 'Exercise 11.4',
+  objectives: [
+    'Write a proof that uses similarity as its central step.',
+    'Convert a proportion into an equal-products statement and back.',
+    'Prove the bisector property of a triangle.',
+    'Lay a proof out in the standard statement–reason form.'
+  ],
+  terms: [
+    ['Proof', 'Isbot', 'Доказательство'],
+    ['Statement', 'Tasdiq', 'Утверждение'],
+    ['Reason', 'Asos', 'Обоснование'],
+    ['To follow', 'Kelib chiqmoq', 'Следовать'],
+    ['Bisector', 'Bissektrisa', 'Биссектриса'],
+    ['Equal products', 'Teng ko‘paytmalar', 'Равные произведения'],
+    ['Converse', 'Teskari teorema', 'Обратная теорема'],
+    ['Auxiliary line', 'Yordamchi chiziq', 'Вспомогательная линия']
+  ],
+  timing: [[10, 'The shape of a proof'], [14, 'Proportions and products'], [10, 'The bisector property'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The shape of a proof',
+      html: `<p>Almost every similarity proof has the same four lines.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Line</th><th>Content</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>name two equal angles (or the three ratios)</td></tr>
+        <tr><td>2</td><td>conclude the similarity, naming the criterion</td></tr>
+        <tr><td>3</td><td>write the proportion that follows</td></tr>
+        <tr><td>4</td><td>rearrange it into what was asked</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Write reasons, not only statements</div>
+      “${m('∠A = ∠A')} (common)”, “${m('∠ADE = ∠ABC')} (corresponding angles, ${m('DE ∥ BC')})”. Each
+      bracket is a mark. A chain of true statements without reasons is not a proof.</div>`
+    },
+    {
+      h: 'Proportions and products',
+      html: `<p>Examination questions almost always ask for a product, not a ratio.</p>
+      ${eq(m(f('a', 'b') + ' = ' + f('c', 'd')) + '  ⟺  ' + m('ad = bc'), true)}
+      <p><b>Example.</b> In ${m('△ABC')}, ${m('CH')} is the altitude from the right angle. Prove
+      ${m('AC² = AH · AB')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td class="m">∠A = ∠A</td><td>common</td></tr>
+        <tr><td class="m">∠AHC = ∠ACB = 90°</td><td>given</td></tr>
+        <tr><td class="m">△AHC ∼ △ACB</td><td>first criterion</td></tr>
+        <tr><td class="m">${f('AH', 'AC')} = ${f('AC', 'AB')}</td><td>corresponding sides</td></tr>
+        <tr><td class="m">AC² = AH · AB</td><td>cross-multiplying</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The middle term repeats — that is the signal</span>
+      A statement of the form ${m('x² = pq')} always comes from a proportion in which ${m('x')} appears
+      twice. Looking for that repeated term tells you which two triangles to compare.</div>`
+    },
+    {
+      h: 'The bisector property',
+      html: `${eq('The bisector of an angle of a triangle divides the opposite side in the ratio of the two adjacent sides', true)}
+      ${eq(m(f('BD', 'DC') + ' = ' + f('AB', 'AC')), true)}
+      {{fig:bisectorConstruction:The bisector from A meets BC at D, cutting it in the ratio of the two sides at A.}}
+      <p>The proof draws an auxiliary line: through ${m('C')}, a parallel to ${m('AD')} meeting
+      ${m('BA')} extended at ${m('E')}. Then ${m('△ACE')} is isosceles and the similar triangles
+      ${m('△BAD')} and ${m('△BEC')} give the ratio.</p>
+      <div class="keybox"><div class="klabel">An auxiliary line is a legitimate move, not a trick</div>
+      Many proofs are impossible until one extra line is drawn — usually a parallel, an altitude, or an
+      extension of a side. Trying those three, in that order, solves most problems that appear to have
+      no route in.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Prove ' + m('AC² = AH · AB') + ' where ' + m('CH') + ' is the altitude from the right angle ' + m('C') + '.',
+      steps: [
+        [m('∠A') + ' is common to ' + m('△AHC') + ' and ' + m('△ACB') + '.', ''],
+        [m('∠AHC = ∠ACB = 90°') + '.', ''],
+        [m('△AHC ∼ △ACB') + ' by the first criterion.', ''],
+        [m(f('AH', 'AC') + ' = ' + f('AC', 'AB') + ' ⇒ AC² = AH · AB') + '.', '']
+      ],
+      ans: 'Proved'
+    },
+    {
+      q: 'In ' + m('△ABC') + ', ' + m('AB = 8') + ', ' + m('AC = 12') + ' and the bisector from ' + m('A') + ' meets ' + m('BC') + ' at ' + m('D') + '. If ' + m('BC = 15') + ', find ' + m('BD') + '.',
+      steps: [
+        [m(f('BD', 'DC') + ' = ' + f('8', '12') + ' = ' + f('2', '3')), ''],
+        ['Let ' + m('BD = 2t') + ', ' + m('DC = 3t') + '.', ''],
+        [m('5t = 15 ⇒ t = 3'), ''],
+        [m('BD = 6'), '']
+      ],
+      ans: m('BD = 6')
+    },
+    {
+      q: 'In ' + m('△ABC') + ', ' + m('D') + ' on ' + m('AB') + ' and ' + m('E') + ' on ' + m('AC') + ' satisfy ' + m('AD · AB = AE · AC') + '. Prove ' + m('△ADE ∼ △ACB') + '.',
+      steps: [
+        ['Rewrite: ' + m(f('AD', 'AC') + ' = ' + f('AE', 'AB')) + '.', 'Note the crossing.'],
+        [m('∠A') + ' is common.', ''],
+        ['Two sides proportional with the included angle equal.', 'Second criterion.'],
+        [m('△ADE ∼ △ACB') + '.', 'Vertices in that order.']
+      ],
+      ans: 'Proved'
+    }
+  ],
+  modelNote: 'Write a proof on the board with the reasons column blank and ask the class to fill it in; they discover that the reasons are the proof.',
+  interactive: {
+    type: 'thales',
+    title: 'Ratios that stay equal',
+    hint: 'Move the line and watch the two ratios track each other.'
+  },
+  quiz: [
+    { q: 'A similarity proof begins by:', a: ['writing the answer', 'naming equal angles', 'measuring', 'drawing a graph'], c: 1, why: 'The criterion needs them.' },
+    { q: m(f('a', 'b') + ' = ' + f('c', 'd')) + ' is the same as:', a: [m('ac = bd'), m('ad = bc'), m('a + d = b + c'), m('ab = cd')], c: 1, why: 'Cross-multiplying.' },
+    { q: m('x² = pq') + ' comes from a proportion where:', a: [m('x') + ' appears once', m('x') + ' appears twice', m('p = q'), 'nothing repeats'], c: 1, why: 'The repeated middle term.' },
+    { q: 'The bisector from ' + m('A') + ' cuts ' + m('BC') + ' in the ratio:', a: [m('AB : BC'), m('AB : AC'), m('AC : BC'), m('1 : 1')], c: 1, why: 'The two adjacent sides.' },
+    { q: m('AB = 8, AC = 12, BC = 15') + ': ' + m('BD') + ' =', a: [m('5'), m('6'), m('7.5'), m('9')], c: 1, why: m('2 : 3') + ' of ' + m('15') + '.' },
+    { q: 'An auxiliary line is:', a: ['cheating', 'a legitimate step', 'always a circle', 'never needed'], c: 1, why: 'Many proofs need one.' }
+  ],
+  practice: {
+    easy: [
+      ['Rewrite ' + m(f('a', 'b') + ' = ' + f('c', 'd')) + ' as products', m('ad = bc')],
+      ['Rewrite ' + m('x² = pq') + ' as a proportion', m(f('p', 'x') + ' = ' + f('x', 'q'))],
+      ['Bisector ratio in ' + m('△ABC') + ' from ' + m('A'), m(f('AB', 'AC'))],
+      [m('AB = 6, AC = 9') + ': ' + m('BD : DC'), m('2 : 3')],
+      [m('AB = 5, AC = 5') + ': ' + m('BD : DC'), m('1 : 1')],
+      ['Reason for “' + m('∠A = ∠A') + '”', 'Common angle'],
+      ['Criterion used with two equal angles', 'The first']
+    ],
+    med: [
+      [m('AB = 8, AC = 12, BC = 15') + ': ' + m('BD'), m('6')],
+      ['Same: ' + m('DC'), m('9')],
+      [m('AB = 10, AC = 15, BD = 4') + ': ' + m('DC'), m('6')],
+      ['Prove ' + m('AC² = AH · AB'), 'Similar triangles, then cross-multiply'],
+      ['Prove ' + m('CH² = AH · HB'), m('△ACH ∼ △CBH')],
+      [m('AD · AB = AE · AC') + ' with ' + m('∠A') + ' common gives', m('△ADE ∼ △ACB')],
+      ['A bisector divides ' + m('BC = 21') + ' in ' + m('3 : 4') + ': the parts', m('9') + ' and ' + m('12')]
+    ],
+    hard: [
+      [m('AB = 6, AC = 8, BC = 7') + ': ' + m('BD'), m('3')],
+      ['A triangle with a bisector cutting ' + m('BC') + ' into ' + m('4') + ' and ' + m('6') + ', ' + m('AB = 10') + ': ' + m('AC'), m('15')],
+      ['Prove that ' + m('DE ∥ BC') + ' follows from ' + m(f('AD', 'AB') + ' = ' + f('AE', 'AC')), 'Second criterion, then equal corresponding angles'],
+      ['Two chords ' + m('AB') + ' and ' + m('CD') + ' meet at ' + m('P') + ': prove ' + m('PA · PB = PC · PD'), m('△APC ∼ △DPB')],
+      ['In that figure ' + m('PA = 4, PB = 9, PC = 6') + ': ' + m('PD'), m('6')],
+      ['A tangent ' + m('PT') + ' and a secant ' + m('PAB') + ': prove ' + m('PT² = PA · PB'), m('△PTA ∼ △PBT')],
+      [m('PA = 4, PB = 9') + ': ' + m('PT'), m('6')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Set every proof out in two columns — statement and reason.',
+  homework: [
+    'Prove ' + m('BC² = BH · AB') + ' in the altitude figure.',
+    'In ' + m('△ABC') + ', ' + m('AB = 9') + ', ' + m('AC = 12') + ', ' + m('BC = 14') + '. Find the parts into which the bisector from ' + m('A') + ' divides ' + m('BC') + '.',
+    'Prove that a line dividing two sides of a triangle proportionally is parallel to the third.',
+    'Two chords meet inside a circle at ' + m('P') + '. Prove ' + m('PA · PB = PC · PD') + '.',
+    'In that figure ' + m('PA = 3') + ', ' + m('PB = 8') + ', ' + m('PC = 4') + '. Find ' + m('PD') + '.'
+  ]
+});
+
+/* ============================== 9 ============================== */
+G9_GEO.push({
+  id: 'g9-09', stream: 'geo', grade: 9, quarter: 1, lessons: '10', hours: 1,
+  title: 'Transformations of the plane — movement and translation',
+  subtitle: 'A second way to think about figures: not as sets of points but as things that can be moved.',
+  uz: 'Geometriya 9, §8', uzPage: 'pp. 41–45',
+  cam: 'IGX 3.1 extension', camPage: 'Core & Extended, pp. 40–46', wb: 'Exercise 3.1',
+  objectives: [
+    'Define a transformation of the plane and a movement (isometry).',
+    'Describe a translation by a vector and find images of points.',
+    'Know what a movement preserves and what it does not.',
+    'Compose two translations.'
+  ],
+  terms: [
+    ['Transformation', 'Almashtirish', 'Преобразование'],
+    ['Movement', 'Harakat', 'Движение'],
+    ['Isometry', 'Izometriya', 'Изометрия'],
+    ['Translation', 'Parallel ko‘chirish', 'Параллельный перенос'],
+    ['Image', 'Tasvir', 'Образ'],
+    ['Pre-image', 'Asl nusxa', 'Прообраз'],
+    ['Vector', 'Vektor', 'Вектор'],
+    ['Composition', 'Kompozitsiya', 'Композиция']
+  ],
+  timing: [[10, 'What a transformation is'], [14, 'Translation'], [10, 'What is preserved'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'What a transformation is',
+      html: `<p>A <b>transformation</b> of the plane is a rule that sends every point ${m('P')} to exactly
+      one point ${m('P′')}, its <b>image</b>. A transformation that preserves distance is a
+      <b>movement</b> — in Cambridge, an <b>isometry</b>.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Transformation</th><th>A movement?</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>translation</td><td>yes</td><td>slides the figure</td></tr>
+        <tr><td>axial symmetry (reflection)</td><td>yes</td><td>flips it</td></tr>
+        <tr><td>rotation</td><td>yes</td><td>turns it</td></tr>
+        <tr><td>homothety (enlargement)</td><td>no</td><td>resizes it</td></tr>
+      </tbody></table></div>
+      {{fig:transformations:The four transformations of the Grade 9 course — three preserve size, one does not.}}
+      <div class="keybox"><div class="klabel">Movements produce congruent figures, homothety similar ones</div>
+      That single sentence organises the whole chapter: the first three lessons are about congruence in
+      motion, the last three about similarity in motion.</div>`
+    },
+    {
+      h: 'Translation',
+      html: `<p>A <b>translation</b> by the vector ${m('a⃗(m, n)')} sends ${m('P(x, y)')} to</p>
+      ${eq(m('P′(x + m, y + n)'), true)}
+      <p>Every point moves the same distance in the same direction, so ${m('PP′')} is the same segment
+      for every ${m('P')} — which is exactly what a vector is.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Point</th><th>Vector</th><th>Image</th></tr></thead>
+      <tbody>
+        <tr><td class="m">A(1, 2)</td><td class="m">(3, −1)</td><td class="m">A′(4, 1)</td></tr>
+        <tr><td class="m">B(−2, 5)</td><td class="m">(3, −1)</td><td class="m">B′(1, 4)</td></tr>
+        <tr><td class="m">C(0, 0)</td><td class="m">(3, −1)</td><td class="m">C′(3, −1)</td></tr>
+      </tbody></table></div>
+      <p>Composing two translations gives a third: translate by ${m('(3, −1)')} then by ${m('(1, 4)')}
+      and the result is a translation by ${m('(4, 3)')} — the vectors add.</p>
+      <div class="warn"><span class="wl">A translation has no fixed points</span>
+      Unless the vector is zero, nothing stays where it was. A rotation fixes its centre and a
+      reflection fixes its axis; a translation fixes nothing — a fact that distinguishes it at once.</div>`
+    },
+    {
+      h: 'What is preserved',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Preserved by a movement</th><th>Not preserved</th></tr></thead>
+      <tbody>
+        <tr><td>distances</td><td>position</td></tr>
+        <tr><td>angles</td><td>orientation (by a reflection)</td></tr>
+        <tr><td>areas</td><td>—</td></tr>
+        <tr><td>parallelism</td><td>—</td></tr>
+        <tr><td>straightness</td><td>—</td></tr>
+      </tbody></table></div>
+      <p>Because distances are preserved, a figure and its image under a movement are <b>congruent</b>.
+      Under a homothety they are only similar — angles survive but distances are multiplied by
+      ${m('k')}.</p>
+      <div class="keybox"><div class="klabel">Cambridge asks for a full description</div>
+      “A translation” is not an answer; “a translation by the vector ${m('(3, −1)')}” is. Each type of
+      transformation has its own required data: a vector, an axis, a centre and angle, or a centre and
+      a scale factor.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Translate ' + m('△ABC') + ' with ' + m('A(1, 2)') + ', ' + m('B(4, 2)') + ', ' + m('C(1, 6)') + ' by ' + m('(3, −1)') + '.',
+      steps: [
+        [m('A′(1 + 3, 2 − 1) = A′(4, 1)'), ''],
+        [m('B′(7, 1)'), ''],
+        [m('C′(4, 5)'), ''],
+        ['The image is congruent to the original.', 'A movement.']
+      ],
+      ans: m('A′(4, 1), B′(7, 1), C′(4, 5)')
+    },
+    {
+      q: 'A translation sends ' + m('P(2, 5)') + ' to ' + m('P′(−1, 9)') + '. Find its vector, and the image of ' + m('Q(4, 0)') + '.',
+      steps: [
+        [m('m = −1 − 2 = −3'), ''],
+        [m('n = 9 − 5 = 4'), 'Vector ' + m('(−3, 4)') + '.'],
+        [m('Q′(4 − 3, 0 + 4)'), ''],
+        [m('Q′(1, 4)'), '']
+      ],
+      ans: 'Vector ' + m('(−3, 4)') + '; ' + m('Q′(1, 4)')
+    },
+    {
+      q: 'Translate by ' + m('(3, −1)') + ' and then by ' + m('(1, 4)') + '. Describe the single transformation that does the same.',
+      steps: [
+        ['Each point gains ' + m('3') + ' then ' + m('1') + ' in ' + m('x') + '.', ''],
+        ['And loses ' + m('1') + ' then gains ' + m('4') + ' in ' + m('y') + '.', ''],
+        ['Total: ' + m('(4, 3)') + '.', 'The vectors add.'],
+        ['A translation by ' + m('(4, 3)') + '.', 'Full description.']
+      ],
+      ans: 'A translation by ' + m('(4, 3)')
+    }
+  ],
+  modelNote: 'Slide a cut-out triangle across squared paper without turning it; every vertex traces the same arrow, and the vector is that arrow.',
+  interactive: {
+    type: 'transform',
+    title: 'Slide the figure',
+    hint: 'Change the vector and watch every point move alike.'
+  },
+  quiz: [
+    { q: 'A movement preserves:', a: ['position', 'distance', 'colour', 'nothing'], c: 1, why: 'That is the definition.' },
+    { q: 'A translation is described by:', a: ['an axis', 'a centre', 'a vector', 'a scale factor'], c: 2, why: 'Direction and distance.' },
+    { q: m('P(1, 2)') + ' translated by ' + m('(3, −1)') + ':', a: [m('(4, 1)'), m('(3, 1)'), m('(4, 3)'), m('(−2, 3)')], c: 0, why: 'Add the components.' },
+    { q: 'A translation fixes:', a: ['one point', 'a line', 'nothing', 'everything'], c: 2, why: 'Unless the vector is zero.' },
+    { q: 'Two translations compose into:', a: ['a rotation', 'a reflection', 'a translation', 'nothing'], c: 2, why: 'The vectors add.' },
+    { q: 'A homothety is:', a: ['a movement', 'not a movement', 'a reflection', 'a translation'], c: 1, why: 'It changes distances.' }
+  ],
+  practice: {
+    easy: [
+      [m('(1, 2)') + ' by ' + m('(3, −1)'), m('(4, 1)')],
+      [m('(0, 0)') + ' by ' + m('(3, −1)'), m('(3, −1)')],
+      [m('(−2, 5)') + ' by ' + m('(3, −1)'), m('(1, 4)')],
+      [m('(4, 2)') + ' by ' + m('(−1, 3)'), m('(3, 5)')],
+      ['Does a translation preserve area?', 'Yes'],
+      ['Does a translation have a fixed point?', 'No'],
+      ['A translation is described by', 'A vector']
+    ],
+    med: [
+      [m('P(2,5) → P′(−1,9)') + ': the vector', m('(−3, 4)')],
+      ['Same vector applied to ' + m('Q(4, 0)'), m('(1, 4)')],
+      [m('(3, −1)') + ' then ' + m('(1, 4)'), m('(4, 3)')],
+      [m('(5, 2)') + ' then ' + m('(−5, −2)'), 'The identity'],
+      ['Translate ' + m('A(1,2), B(4,2), C(1,6)') + ' by ' + m('(3, −1)'), m('(4,1), (7,1), (4,5)')],
+      ['The image triangle is', 'Congruent to the original'],
+      ['Which of the four is not a movement?', 'Homothety']
+    ],
+    hard: [
+      ['A translation maps ' + m('(1, 1)') + ' to ' + m('(4, 5)') + ': the length of the vector', m('5')],
+      ['The image of the line ' + m('y = 2x') + ' under ' + m('(0, 3)'), m('y = 2x + 3')],
+      ['The image of ' + m('y = x²') + ' under ' + m('(2, 0)'), m('y = (x − 2)²')],
+      ['A translation maps the circle ' + m('x² + y² = 9') + ' by ' + m('(1, −2)'), m('(x−1)² + (y+2)² = 9')],
+      ['Composing ' + m('n') + ' translations by ' + m('(1, 1)'), m('(n, n)')],
+      ['Two translations commute?', 'Yes — vector addition is commutative'],
+      ['A movement that fixes exactly one point is a', 'Rotation']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Give a full description of every transformation — the type <i>and</i> its data.',
+  homework: [
+    'Translate ' + m('A(2, 1)') + ', ' + m('B(5, 1)') + ', ' + m('C(2, 5)') + ' by ' + m('(−2, 3)') + '.',
+    'A translation sends ' + m('(3, 4)') + ' to ' + m('(0, 8)') + '. Find its vector and the image of ' + m('(1, 1)') + '.',
+    'Compose translations by ' + m('(2, −3)') + ' and ' + m('(−5, 1)') + '.',
+    'Find the image of the line ' + m('y = 3x − 1') + ' under a translation by ' + m('(0, 4)') + '.',
+    'State what a movement preserves and give one thing it does not.'
+  ]
+});
