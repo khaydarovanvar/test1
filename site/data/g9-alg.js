@@ -4463,3 +4463,703 @@ G9_ALG.push({
     'Evaluate ' + m('sin ' + f('π', '3') + ' · cos ' + f('π', '6') + ' + cos ' + f('π', '3') + ' · sin ' + f('π', '6')) + '.'
   ]
 });
+
+/* ============================== 26 ============================== */
+G9_ALG.push({
+  id: 'a9-26', stream: 'alg', grade: 9, quarter: 3, lessons: '49–50', hours: 2,
+  title: 'Relations between the functions of one angle',
+  subtitle: 'Know one of the four and you know them all — up to a sign the quadrant supplies.',
+  uz: 'Algebra 9, §21', uzPage: 'pp. 114–119',
+  cam: 'IGX 15.5', camPage: 'Core & Extended, pp. 328–333', wb: 'Exercise 15.5',
+  objectives: [
+    'State the three Pythagorean relations and derive the second and third from the first.',
+    'Use tan α · cot α = 1 and the quotient definitions fluently.',
+    'Find all four functions from any one of them plus a quadrant.',
+    'Express one function in terms of another with the correct sign.'
+  ],
+  terms: [
+    ['Relation', 'Munosabat', 'Соотношение'],
+    ['Identity', 'Ayniyat', 'Тождество'],
+    ['Reciprocal', 'Teskari son', 'Обратное число'],
+    ['Quotient', 'Bo‘linma', 'Частное'],
+    ['To divide through', 'Bo‘lib chiqish', 'Разделить почленно'],
+    ['Valid for', 'O‘rinli', 'Справедливо для'],
+    ['Restriction', 'Cheklov', 'Ограничение'],
+    ['Derive', 'Keltirib chiqarish', 'Вывести']
+  ],
+  timing: [[15, 'The three relations'], [22, 'Deriving the second and third'], [25, 'From one to all four'], [23, 'Expressing one by another'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The three relations',
+      html: `${eq(m('sin²α + cos²α = 1') + '     ' + m('1 + tan²α = ' + f('1', 'cos²α')) + '     ' + m('1 + cot²α = ' + f('1', 'sin²α')), true)}
+      <p>Together with ${m('tan α = ' + f('sin α', 'cos α'))}, ${m('cot α = ' + f('cos α', 'sin α'))} and
+      ${m('tan α · cot α = 1')}, these are the whole of this lesson.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Relation</th><th>Valid for</th></tr></thead>
+      <tbody>
+        <tr><td class="m">sin²α + cos²α = 1</td><td>every ${m('α')}</td></tr>
+        <tr><td class="m">1 + tan²α = ${f('1', 'cos²α')}</td><td class="m">cos α ≠ 0</td></tr>
+        <tr><td class="m">1 + cot²α = ${f('1', 'sin²α')}</td><td class="m">sin α ≠ 0</td></tr>
+        <tr><td class="m">tan α · cot α = 1</td><td>both defined</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Only the first is new</div>
+      The second and third are the first, divided. That is worth knowing, because a formula you can
+      rebuild in ten seconds never has to be trusted to memory — and in an examination it never has to
+      be looked up.</div>`
+    },
+    {
+      h: 'Deriving the second and third',
+      html: `<p>Start from ${m('sin²α + cos²α = 1')} and divide every term by ${m('cos²α')}:</p>
+      ${eq(m(f('sin²α', 'cos²α') + ' + ' + f('cos²α', 'cos²α') + ' = ' + f('1', 'cos²α')) + '  ⟹  ' + m('tan²α + 1 = ' + f('1', 'cos²α')), true)}
+      <p>Divide instead by ${m('sin²α')} and the third relation appears the same way:</p>
+      ${eq(m('1 + cot²α = ' + f('1', 'sin²α')), true)}
+      <div class="warn"><span class="wl">Dividing by something that may be zero costs the identity a condition</span>
+      The first relation holds everywhere. The second is meaningless when ${m('cos α = 0')} — at
+      ${m('α = ' + f('π', '2'))}, ${m('tan α')} does not exist and neither does ${m(f('1', 'cos²α'))}.
+      Writing the condition beside the formula is part of the formula.</div>`
+    },
+    {
+      h: 'From one to all four',
+      html: `<p>The standard question: one value, one quadrant, find the rest.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Using</th></tr></thead>
+      <tbody>
+        <tr><td>find the partner of ${m('sin')} or ${m('cos')}</td><td class="m">sin²α + cos²α = 1</td></tr>
+        <tr><td>fix its sign</td><td>the quadrant</td></tr>
+        <tr><td>form ${m('tan α')}</td><td class="m">${f('sin α', 'cos α')}</td></tr>
+        <tr><td>form ${m('cot α')}</td><td class="m">${f('1', 'tan α')}</td></tr>
+      </tbody></table></div>
+      <p><b>Example.</b> ${m('tan α = ' + f('4', '3'))}, quadrant III. Then
+      ${m(f('1', 'cos²α') + ' = 1 + ' + f('16', '9') + ' = ' + f('25', '9'))}, so
+      ${m('cos²α = ' + f('9', '25'))} and, in quadrant III, ${m('cos α = −' + f('3', '5'))}. Hence
+      ${m('sin α = tan α · cos α = −' + f('4', '5'))} and ${m('cot α = ' + f('3', '4'))}.</p>
+      <div class="keybox"><div class="klabel">The 3–4–5 triangle in disguise</div>
+      Almost every textbook question of this kind uses ${m('3, 4, 5')} or ${m('5, 12, 13')}. Recognising
+      the triple lets you write the three magnitudes down at sight, and leaves the only real work —
+      the signs — properly visible.</div>`
+    },
+    {
+      h: 'Expressing one by another',
+      html: `<p>Sometimes the question asks not for a number but for a formula.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Wanted</th><th>In terms of</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">cos α</td><td class="m">sin α</td><td class="m">±${sr('1 − sin²α')}</td></tr>
+        <tr><td class="m">tan α</td><td class="m">cos α</td><td class="m">±${f(sr('1 − cos²α'), 'cos α')}</td></tr>
+        <tr><td class="m">sin α</td><td class="m">tan α</td><td class="m">±${f('tan α', sr('1 + tan²α'))}</td></tr>
+      </tbody></table></div>
+      <p>The ${m('±')} is not laziness — without a quadrant it is the honest answer, and both branches
+      really occur.</p>
+      <div class="warn"><span class="wl">A simplification that loses a sign is wrong, not merely untidy</span>
+      ${m(sr('sin²α') + ' = |sin α|')}, not ${m('sin α')}. In quadrant III the two differ by a minus
+      sign, and a question that supplies a quadrant is usually testing exactly that.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Given ' + m('tan α = ' + f('4', '3')) + ' in quadrant III, find the other three.',
+      steps: [
+        [m(f('1', 'cos²α') + ' = 1 + ' + f('16', '9') + ' = ' + f('25', '9')), ''],
+        [m('cos²α = ' + f('9', '25') + ' ⇒ cos α = −' + f('3', '5')), 'Quadrant III.'],
+        [m('sin α = tan α · cos α = ' + f('4', '3') + ' · (−' + f('3', '5') + ') = −' + f('4', '5')), ''],
+        [m('cot α = ' + f('3', '4')), '']
+      ],
+      ans: m('sin = −' + f('4', '5') + ', cos = −' + f('3', '5') + ', cot = ' + f('3', '4'))
+    },
+    {
+      q: 'Simplify ' + m(f('1', '1 + tan²α') + ' + ' + f('1', '1 + cot²α')) + '.',
+      steps: [
+        [m(f('1', '1 + tan²α') + ' = cos²α'), 'The second relation.'],
+        [m(f('1', '1 + cot²α') + ' = sin²α'), 'The third.'],
+        [m('cos²α + sin²α'), ''],
+        [m('= 1'), 'For every ' + m('α') + ' where both exist.']
+      ],
+      ans: m('1')
+    },
+    {
+      q: 'Given ' + m('sin α − cos α = ' + f('1', '2')) + ', find ' + m('sin α cos α') + '.',
+      steps: [
+        ['Square both sides.', ''],
+        [m('sin²α − 2 sin α cos α + cos²α = ' + f('1', '4')), ''],
+        [m('1 − 2 sin α cos α = ' + f('1', '4')), 'The first relation.'],
+        [m('sin α cos α = ' + f('3', '8')), '']
+      ],
+      ans: m(f('3', '8'))
+    }
+  ],
+  modelNote: 'Derive the second relation on the board by dividing the first — and then rub it out and ask a pupil to do it again, so that nobody leaves believing it must be memorised.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'One value fixes the rest',
+    hint: 'Set the angle and watch all four readings move together.'
+  },
+  quiz: [
+    { q: m('1 + tan²α') + ' equals:', a: [m(f('1', 'sin²α')), m(f('1', 'cos²α')), m('sin²α'), m('cos²α')], c: 1, why: 'Divide the first relation by ' + m('cos²α') + '.' },
+    { q: m('tan α · cot α') + ' equals:', a: [m('0'), m('1'), m('sin α'), m('α')], c: 1, why: 'They are reciprocals.' },
+    { q: m('1 + cot²α') + ' is undefined when:', a: [m('cos α = 0'), m('sin α = 0'), m('α = 0') + ' only', 'never'], c: 1, why: 'Zero denominator.' },
+    { q: m(sr('sin²α')) + ' equals:', a: [m('sin α'), m('|sin α|'), m('−sin α'), m('sin²α')], c: 1, why: 'A root is non-negative.' },
+    { q: m(f('1', '1 + tan²α')) + ' equals:', a: [m('sin²α'), m('cos²α'), m('tan²α'), m('1')], c: 1, why: 'The second relation, inverted.' },
+    { q: 'To fix the sign of ' + m('cos α') + ' you need:', a: ['the identity', 'the quadrant', 'a calculator', 'nothing'], c: 1, why: 'The identity gives only the size.' }
+  ],
+  practice: {
+    easy: [
+      [m('sin²α + cos²α'), m('1')],
+      [m('tan α · cot α'), m('1')],
+      [m('1 + tan²α'), m(f('1', 'cos²α'))],
+      [m('1 + cot²α'), m(f('1', 'sin²α'))],
+      [m('tan α') + ' in terms of ' + m('sin, cos'), m(f('sin α', 'cos α'))],
+      [m('sin α = ' + f('3', '5')) + ', I: ' + m('cos α'), m(f('4', '5'))],
+      [m('cos α = ' + f('12', '13')) + ', IV: ' + m('sin α'), m('−' + f('5', '13'))]
+    ],
+    med: [
+      [m('tan α = ' + f('4', '3')) + ', III: ' + m('cos α'), m('−' + f('3', '5'))],
+      [m('tan α = ' + f('4', '3')) + ', III: ' + m('sin α'), m('−' + f('4', '5'))],
+      [m('cot α = ' + f('5', '12')) + ', I: ' + m('sin α'), m(f('12', '13'))],
+      ['Simplify ' + m('sin²α + sin²α tan²α'), m('tan²α')],
+      ['Simplify ' + m(f('1', '1 + tan²α') + ' + ' + f('1', '1 + cot²α')), m('1')],
+      ['Simplify ' + m('(1 + tan²α) cos²α'), m('1')],
+      ['Simplify ' + m('cot α · sin α'), m('cos α')]
+    ],
+    hard: [
+      [m('sin α − cos α = ' + f('1', '2')) + ': ' + m('sin α cos α'), m(f('3', '8'))],
+      [m('sin α + cos α = ' + f('7', '5')) + ': ' + m('sin α cos α'), m(f('12', '25'))],
+      ['Simplify ' + m('sin⁴α + cos⁴α + 2 sin²α cos²α'), m('1')],
+      ['Simplify ' + m(f('1 − cos²α', 'sin α cos α')), m('tan α')],
+      ['Prove ' + m('tan²α − sin²α = tan²α sin²α'), 'Factor ' + m('sin²α') + ' out of the left side'],
+      [m('tan α + cot α = 3') + ': ' + m('sin α cos α'), m(f('1', '3'))],
+      ['Express ' + m('sin α') + ' by ' + m('tan α'), m('±' + f('tan α', sr('1 + tan²α')))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Derive the second and third relations from the first at the top of the page before starting.',
+  homework: [
+    'Given ' + m('sin α = −' + f('8', '17')) + ' in quadrant III, find the other three.',
+    'Given ' + m('cot α = −' + f('3', '4')) + ' in quadrant II, find the other three.',
+    'Simplify ' + m('(1 + cot²α) sin²α') + '.',
+    'Given ' + m('sin α + cos α = ' + f('1', '3')) + ', find ' + m('sin α cos α') + '.',
+    'Prove ' + m('cot²α − cos²α = cot²α cos²α') + '.'
+  ]
+});
+
+/* ============================== 27 ============================== */
+G9_ALG.push({
+  id: 'a9-27', stream: 'alg', grade: 9, quarter: 3, lessons: '51–52', hours: 2,
+  title: 'Proving trigonometric identities',
+  subtitle: 'Work on one side only, head for sines and cosines, and stop when the two sides agree.',
+  uz: 'Algebra 9, §22', uzPage: 'pp. 120–125',
+  cam: 'IGX 15.6', camPage: 'Core & Extended, pp. 334–338', wb: 'Exercise 15.6',
+  objectives: [
+    'Prove an identity by transforming one side into the other.',
+    'Convert every function to sine and cosine as a default strategy.',
+    'Use the difference of two squares and common denominators on trigonometric expressions.',
+    'State the values of α for which an identity is not defined.'
+  ],
+  terms: [
+    ['Identity', 'Ayniyat', 'Тождество'],
+    ['Left-hand side', 'Chap tomon', 'Левая часть'],
+    ['Right-hand side', 'O‘ng tomon', 'Правая часть'],
+    ['Common denominator', 'Umumiy maxraj', 'Общий знаменатель'],
+    ['To transform', 'Almashtirish', 'Преобразовать'],
+    ['Permissible values', 'Joiz qiymatlar', 'Допустимые значения'],
+    ['Equivalent', 'Teng kuchli', 'Равносильный'],
+    ['Q.E.D.', 'Isbot tamom', 'Что и требовалось доказать']
+  ],
+  timing: [[12, 'What an identity asks'], [25, 'The default strategy'], [25, 'The standard moves'], [23, 'Permissible values'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'What an identity asks',
+      html: `<p>An <b>identity</b> is a statement that two expressions are equal for every permissible
+      value of the variable. Proving one is not solving one.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th></th><th>Equation</th><th>Identity</th></tr></thead>
+      <tbody>
+        <tr><td>true for</td><td>some ${m('α')}</td><td>all permissible ${m('α')}</td></tr>
+        <tr><td>you must</td><td>find them</td><td>transform</td></tr>
+        <tr><td>you may</td><td>operate on both sides</td><td>work on one side only</td></tr>
+        <tr><td>the answer is</td><td>a set</td><td>a chain of equalities</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Never cross-multiply an identity you have not yet proved</span>
+      Starting from what you are trying to prove and manipulating both sides assumes the very thing in
+      question. Take one side, and travel to the other; that argument is valid in one direction and
+      cannot be criticised.</div>`
+    },
+    {
+      h: 'The default strategy',
+      html: `<p>When nothing else suggests itself, do this:</p>
+      <ol>
+        <li>Choose the more complicated side — there is more to simplify there.</li>
+        <li>Write every ${m('tan')} and ${m('cot')} as ${m(f('sin', 'cos'))} and ${m(f('cos', 'sin'))}.</li>
+        <li>Put fractions over a common denominator.</li>
+        <li>Look for ${m('sin²α + cos²α')} and replace it by ${m('1')}.</li>
+        <li>Cancel, and compare with the other side.</li>
+      </ol>
+      <p><b>Example.</b> Prove ${m('tan α + cot α = ' + f('1', 'sin α cos α'))}.</p>
+      ${eq(m('tan α + cot α = ' + f('sin α', 'cos α') + ' + ' + f('cos α', 'sin α') + ' = ' + f('sin²α + cos²α', 'sin α cos α') + ' = ' + f('1', 'sin α cos α')), true)}
+      <div class="keybox"><div class="klabel">Sines and cosines are the common language</div>
+      Four functions can be combined in many ways; two can be combined in few. Converting everything to
+      ${m('sin')} and ${m('cos')} removes the choices, and the proof usually falls out in two lines.</div>`
+    },
+    {
+      h: 'The standard moves',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Seeing</th><th>Do</th><th>Because</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1 − sin²α</td><td>write ${m('cos²α')}</td><td>the first relation</td></tr>
+        <tr><td class="m">1 − cos⁴α</td><td>factor as ${m('(1 − cos²α)(1 + cos²α)')}</td><td>difference of squares</td></tr>
+        <tr><td class="m">${f('1', '1 − sin α')}</td><td>multiply by ${m(f('1 + sin α', '1 + sin α'))}</td><td>it creates ${m('cos²α')}</td></tr>
+        <tr><td>two fractions</td><td>common denominator</td><td>the numerator often becomes ${m('1')}</td></tr>
+        <tr><td class="m">tan α sin α + cos α</td><td>convert and combine</td><td>it equals ${m(f('1', 'cos α'))}</td></tr>
+      </tbody></table></div>
+      <p>The third row is worth practising on its own: multiplying by the conjugate is exactly the
+      rationalising trick from Chapter I, applied to a trigonometric denominator.</p>`
+    },
+    {
+      h: 'Permissible values',
+      html: `<p>An identity is only claimed where both sides exist. Naming those values is part of the
+      statement.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Identity</th><th>Excluded</th></tr></thead>
+      <tbody>
+        <tr><td class="m">tan α + cot α = ${f('1', 'sin α cos α')}</td><td class="m">α = ${f('πk', '2')}</td></tr>
+        <tr><td class="m">${f('1 − cos²α', 'sin α')} = sin α</td><td class="m">α = πk</td></tr>
+        <tr><td class="m">1 + tan²α = ${f('1', 'cos²α')}</td><td class="m">α = ${f('π', '2')} + πk</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A cancelled denominator does not remove its restriction</span>
+      ${m(f('1 − cos²α', 'sin α'))} simplifies to ${m('sin α')}, which is defined everywhere — but the
+      original expression is not, and the identity therefore still excludes ${m('α = πk')}. The
+      restriction belongs to the statement, not to the final form.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Prove ' + m('tan α + cot α = ' + f('1', 'sin α cos α')) + '.',
+      steps: [
+        ['Convert: ' + m(f('sin α', 'cos α') + ' + ' + f('cos α', 'sin α')) + '.', 'Left side.'],
+        ['Common denominator ' + m('sin α cos α') + '.', ''],
+        ['Numerator ' + m('sin²α + cos²α = 1') + '.', ''],
+        [m('= ' + f('1', 'sin α cos α')) + ' — Q.E.D., for ' + m('α ≠ ' + f('πk', '2')) + '.', '']
+      ],
+      ans: 'Proved'
+    },
+    {
+      q: 'Prove ' + m(f('1', '1 − sin α') + ' + ' + f('1', '1 + sin α') + ' = ' + f('2', 'cos²α')) + '.',
+      steps: [
+        ['Common denominator ' + m('(1 − sin α)(1 + sin α)') + '.', ''],
+        ['Numerator: ' + m('(1 + sin α) + (1 − sin α) = 2') + '.', ''],
+        ['Denominator: ' + m('1 − sin²α = cos²α') + '.', 'Difference of squares.'],
+        [m('= ' + f('2', 'cos²α')) + ' — Q.E.D., for ' + m('cos α ≠ 0') + '.', '']
+      ],
+      ans: 'Proved'
+    },
+    {
+      q: 'Prove ' + m('sin⁴α − cos⁴α = sin²α − cos²α') + '.',
+      steps: [
+        ['Difference of two squares on the left.', ''],
+        [m('(sin²α − cos²α)(sin²α + cos²α)'), ''],
+        ['The second bracket is ' + m('1') + '.', ''],
+        [m('= sin²α − cos²α') + ' — Q.E.D., for every ' + m('α') + '.', '']
+      ],
+      ans: 'Proved'
+    }
+  ],
+  modelNote: 'Prove one identity correctly and then “prove” it again by cross-multiplying from the statement itself; ask the class which argument they would accept, and why.',
+  interactive: {
+    type: 'substitute',
+    title: 'Test, then prove',
+    hint: 'A value that works is evidence; the algebra is the proof.'
+  },
+  quiz: [
+    { q: 'To prove an identity you work:', a: ['on both sides', 'on one side', 'by cross-multiplying', 'by testing values'], c: 1, why: 'A one-way chain is valid.' },
+    { q: 'The default first move is:', a: ['square both sides', 'convert to ' + m('sin') + ' and ' + m('cos'), 'differentiate', 'substitute ' + m('α = 0')], c: 1, why: 'Two functions, fewer choices.' },
+    { q: m('1 − sin²α') + ' is:', a: [m('cos²α'), m('tan²α'), m('cot²α'), m('1')], c: 0, why: 'The first relation.' },
+    { q: m('tan α + cot α') + ' equals:', a: [m('1'), m(f('1', 'sin α cos α')), m('sin α cos α'), m('2')], c: 1, why: 'Common denominator.' },
+    { q: m(f('1', '1 − sin α')) + ' is multiplied by the conjugate to create:', a: [m('sin²α'), m('cos²α'), m('1'), m('tan α')], c: 1, why: m('1 − sin²α') + '.' },
+    { q: 'A cancelled denominator:', a: ['removes its restriction', 'keeps its restriction', 'creates a new one', 'is ignored'], c: 1, why: 'The domain is fixed by the original.' }
+  ],
+  practice: {
+    easy: [
+      ['Simplify ' + m('1 − sin²α'), m('cos²α')],
+      ['Simplify ' + m('1 − cos²α'), m('sin²α')],
+      ['Simplify ' + m('cot α sin α'), m('cos α')],
+      ['Simplify ' + m('tan α cos α'), m('sin α')],
+      ['Simplify ' + m('sin²α + cos²α + 1'), m('2')],
+      ['Simplify ' + m(f('sin α', 'cos α') + ' cot α'), m('1')],
+      ['Simplify ' + m('(1 − sin α)(1 + sin α)'), m('cos²α')]
+    ],
+    med: [
+      ['Prove ' + m('tan α + cot α = ' + f('1', 'sin α cos α')), 'Common denominator'],
+      ['Prove ' + m('sin⁴α − cos⁴α = sin²α − cos²α'), 'Difference of squares'],
+      ['Prove ' + m(f('1', '1 − sin α') + ' + ' + f('1', '1 + sin α') + ' = ' + f('2', 'cos²α')), 'Conjugate denominator'],
+      ['Simplify ' + m('tan α sin α + cos α'), m(f('1', 'cos α'))],
+      ['Simplify ' + m(f('1 − cos²α', 'sin α cos α')), m('tan α')],
+      ['Prove ' + m('(1 + tan²α) cos²α = 1'), 'The second relation'],
+      ['Simplify ' + m('sin²α cot²α + sin²α'), m('1')]
+    ],
+    hard: [
+      ['Prove ' + m('tan²α − sin²α = tan²α sin²α'), 'Factor ' + m('sin²α')],
+      ['Prove ' + m(f('cos α', '1 − sin α') + ' = ' + f('1 + sin α', 'cos α')), 'Cross-check by the conjugate'],
+      ['Prove ' + m('sin⁶α + cos⁶α = 1 − 3 sin²α cos²α'), 'Sum of cubes, then the first relation'],
+      ['Prove ' + m(f('1 + cos α', 'sin α') + ' + ' + f('sin α', '1 + cos α') + ' = ' + f('2', 'sin α')), 'Common denominator'],
+      ['Simplify ' + m('(tan α + cot α) sin α cos α'), m('1')],
+      ['Prove ' + m(f('tan α', '1 + tan²α') + ' = sin α cos α'), 'Use the second relation'],
+      ['Excluded values of ' + m('tan α + cot α = ' + f('1', 'sin α cos α')), m('α = ' + f('πk', '2'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'End every proof with the values of ' + m('α') + ' that had to be excluded.',
+  homework: [
+    'Prove ' + m('(1 + cot²α) sin²α = 1') + '.',
+    'Prove ' + m(f('1', '1 − cos α') + ' + ' + f('1', '1 + cos α') + ' = ' + f('2', 'sin²α')) + '.',
+    'Prove ' + m('cot²α − cos²α = cot²α cos²α') + '.',
+    'Simplify ' + m('cot α cos α + sin α') + '.',
+    'Prove ' + m('sin⁴α + cos⁴α = 1 − 2 sin²α cos²α') + '.'
+  ]
+});
+
+/* ============================== 28 ============================== */
+G9_ALG.push({
+  id: 'a9-28', stream: 'alg', grade: 9, quarter: 3, lessons: '53–54', hours: 2,
+  title: 'The functions of −α, and periodicity',
+  subtitle: 'Turning backwards reflects the point in the x-axis — and that one picture gives four formulae.',
+  uz: 'Algebra 9, §23', uzPage: 'pp. 126–130',
+  cam: 'IGX 15.7', camPage: 'Core & Extended, pp. 339–343', wb: 'Exercise 15.7',
+  objectives: [
+    'Derive sin(−α) = −sin α and cos(−α) = cos α from the unit circle.',
+    'Classify the four functions as even or odd.',
+    'State the period of each function and use it to reduce an angle.',
+    'Evaluate a function at a large or negative angle in one line.'
+  ],
+  terms: [
+    ['Even function', 'Juft funksiya', 'Чётная функция'],
+    ['Odd function', 'Toq funksiya', 'Нечётная функция'],
+    ['Reflection', 'Simmetriya', 'Отражение'],
+    ['Period', 'Davr', 'Период'],
+    ['Periodic', 'Davriy', 'Периодический'],
+    ['Least period', 'Eng kichik davr', 'Наименьший период'],
+    ['Reduce', 'Keltirish', 'Привести'],
+    ['Symmetric', 'Simmetrik', 'Симметричный']
+  ],
+  timing: [[15, 'Turning the other way'], [22, 'Even and odd'], [25, 'Period'], [23, 'Reducing an angle'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Turning the other way',
+      html: `<p>Turn ${m('P(1, 0)')} through ${m('α')} to reach ${m('(x, y)')}. Turning through
+      ${m('−α')} — the same amount, clockwise — reaches ${m('(x, −y)')}: the mirror image in the
+      ${m('x')}-axis.</p>
+      {{fig:trigCircle:α and −α land at points that are mirror images in the horizontal axis.}}
+      <p>The abscissa is unchanged and the ordinate has changed sign, so:</p>
+      ${eq(m('cos(−α) = cos α') + '     ' + m('sin(−α) = −sin α'), true)}
+      <p>Dividing gives the other two: ${m('tan(−α) = −tan α')} and ${m('cot(−α) = −cot α')}.</p>
+      <div class="keybox"><div class="klabel">One picture, four formulae</div>
+      There is nothing here to memorise separately. Reflecting a point in the ${m('x')}-axis keeps
+      ${m('x')} and flips ${m('y')} — and cosine <b>is</b> ${m('x')}, sine <b>is</b> ${m('y')}. Anyone
+      who can draw the reflection can rebuild all four in seconds.</div>`
+    },
+    {
+      h: 'Even and odd',
+      html: `<p>This is exactly the parity of Chapter I, applied to the new functions.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Function</th><th class="m">f(−α)</th><th>Parity</th><th>Graph symmetric about</th></tr></thead>
+      <tbody>
+        <tr><td class="m">cos α</td><td class="m">cos α</td><td>even</td><td>the ${m('y')}-axis</td></tr>
+        <tr><td class="m">sin α</td><td class="m">−sin α</td><td>odd</td><td>the origin</td></tr>
+        <tr><td class="m">tan α</td><td class="m">−tan α</td><td>odd</td><td>the origin</td></tr>
+        <tr><td class="m">cot α</td><td class="m">−cot α</td><td>odd</td><td>the origin</td></tr>
+      </tbody></table></div>
+      {{fig:sinCosGraph:The cosine curve is symmetric in the vertical axis; the sine curve is symmetric about the origin.}}
+      <p>Cosine is the only even one of the four, which is why it appears so often as the “safe” function
+      in symmetric problems.</p>`
+    },
+    {
+      h: 'Period',
+      html: `<p>A full turn returns the point to where it started, so adding ${m('2π')} changes nothing:</p>
+      ${eq(m('sin(α + 2πk) = sin α') + '     ' + m('cos(α + 2πk) = cos α') + ', ' + m('k ∈ ℤ'), true)}
+      <p>Tangent and cotangent repeat sooner. A turn of ${m('π')} sends ${m('(x, y)')} to
+      ${m('(−x, −y)')}, and a quotient of two numbers is unchanged when both change sign:</p>
+      ${eq(m('tan(α + πk) = tan α') + '     ' + m('cot(α + πk) = cot α'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Function</th><th>Least period</th></tr></thead>
+      <tbody>
+        <tr><td class="m">sin α, cos α</td><td class="m">2π</td></tr>
+        <tr><td class="m">tan α, cot α</td><td class="m">π</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('4π')} is a period of sine; it is not <i>the</i> period</span>
+      Any multiple of a period is again a period. “The period” always means the <b>least</b> positive
+      one, and for sine that is ${m('2π')}.</div>`
+    },
+    {
+      h: 'Reducing an angle',
+      html: `<p>Parity and period together evaluate any angle at all.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Step</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="m">sin(−${f('π', '6')})</td><td>odd</td><td class="m">−${f('1', '2')}</td></tr>
+        <tr><td class="m">cos(−${f('π', '3')})</td><td>even</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td class="m">sin ${f('13π', '6')}</td><td class="m">−2π</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td class="m">tan ${f('9π', '4')}</td><td class="m">−2π</td><td class="m">1</td></tr>
+        <tr><td class="m">cos 750°</td><td class="m">−720°</td><td class="m">${f(sr('3'), '2')}</td></tr>
+      </tbody></table></div>
+      <p>The order is always the same: strip whole periods first, then use parity if what remains is
+      negative.</p>
+      <div class="warn"><span class="wl">Strip ${m('2π')} from sine and cosine, but ${m('π')} is enough for tangent</span>
+      ${m('tan ' + f('9π', '4'))} can be reduced by ${m('2π')} to ${m('tan ' + f('π', '4'))}, but also
+      by ${m('π')} twice. Using the wrong period for the wrong function is the commonest error in this
+      lesson.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Evaluate ' + m('sin(−' + f('π', '6') + ') + cos(−' + f('π', '3') + ')') + '.',
+      steps: [
+        ['Sine is odd: ' + m('sin(−' + f('π', '6') + ') = −' + f('1', '2')) + '.', ''],
+        ['Cosine is even: ' + m('cos(−' + f('π', '3') + ') = ' + f('1', '2')) + '.', ''],
+        [m('−' + f('1', '2') + ' + ' + f('1', '2')), ''],
+        [m('= 0'), '']
+      ],
+      ans: m('0')
+    },
+    {
+      q: 'Evaluate ' + m('cos 750°') + '.',
+      steps: [
+        [m('750 − 720 = 30'), 'Two full turns.'],
+        [m('cos 750° = cos 30°'), ''],
+        ['Read the table.', ''],
+        [m('= ' + f(sr('3'), '2')), '']
+      ],
+      ans: m(f(sr('3'), '2'))
+    },
+    {
+      q: 'Simplify ' + m(f('sin(−α) + cos(−α)', 'cos α')) + '.',
+      steps: [
+        ['Numerator: ' + m('−sin α + cos α') + '.', 'Odd, then even.'],
+        [m('= ' + f('cos α − sin α', 'cos α')), ''],
+        ['Split the fraction.', ''],
+        [m('= 1 − tan α'), '']
+      ],
+      ans: m('1 − tan α')
+    }
+  ],
+  modelNote: 'Fold a sheet with the unit circle drawn on it along the x-axis; the two angles land on each other and the four parity formulae become one physical fact.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'α and −α together',
+    hint: 'Watch which of the two coordinates changes sign.'
+  },
+  quiz: [
+    { q: m('cos(−α)') + ' equals:', a: [m('cos α'), m('−cos α'), m('sin α'), m('−sin α')], c: 0, why: 'The abscissa is unchanged.' },
+    { q: m('sin(−α)') + ' equals:', a: [m('sin α'), m('−sin α'), m('cos α'), m('0')], c: 1, why: 'The ordinate flips.' },
+    { q: 'The only even function of the four is:', a: [m('sin'), m('cos'), m('tan'), m('cot')], c: 1, why: 'It is the ' + m('x') + '-coordinate.' },
+    { q: 'The least period of ' + m('tan α') + ':', a: [m(f('π', '2')), m('π'), m('2π'), m('4π')], c: 1, why: 'A half turn flips both signs.' },
+    { q: m('sin ' + f('13π', '6')) + ' equals:', a: [m(f('1', '2')), m('−' + f('1', '2')), m(f(sr('3'), '2')), m('1')], c: 0, why: 'Strip ' + m('2π') + '.' },
+    { q: m('4π') + ' for sine is:', a: ['the period', 'a period', 'not a period', 'the least period'], c: 1, why: 'Any multiple works; the least is ' + m('2π') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('sin(−' + f('π', '6') + ')'), m('−' + f('1', '2'))],
+      [m('cos(−' + f('π', '3') + ')'), m(f('1', '2'))],
+      [m('tan(−' + f('π', '4') + ')'), m('−1')],
+      [m('cos(−π)'), m('−1')],
+      [m('sin(−' + f('π', '2') + ')'), m('−1')],
+      ['Period of ' + m('cos α'), m('2π')],
+      ['Period of ' + m('cot α'), m('π')]
+    ],
+    med: [
+      [m('sin ' + f('13π', '6')), m(f('1', '2'))],
+      [m('cos ' + f('9π', '4')), m(f(sr('2'), '2'))],
+      [m('tan ' + f('9π', '4')), m('1')],
+      [m('cos 750°'), m(f(sr('3'), '2'))],
+      [m('sin(−390°)'), m('−' + f('1', '2'))],
+      ['Simplify ' + m('sin(−α) cos(−α)'), m('−sin α cos α')],
+      ['Simplify ' + m(f('sin(−α) + cos(−α)', 'cos α')), m('1 − tan α')]
+    ],
+    hard: [
+      ['Simplify ' + m('sin(−α) + sin(α + 2π)'), m('0')],
+      ['Simplify ' + m('tan(−α) cot(α + π)'), m('−1')],
+      [m('cos(−' + f('17π', '3') + ')'), m(f('1', '2'))],
+      [m('sin(−1110°)'), m('−' + f('1', '2'))],
+      ['Is ' + m('y = sin α cos α') + ' even or odd?', 'Odd'],
+      ['Is ' + m('y = sin²α') + ' even or odd?', 'Even'],
+      ['Least period of ' + m('y = sin 2α'), m('π')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Strip the whole periods first; only then use parity.',
+  homework: [
+    'Evaluate ' + m('sin(−' + f('π', '3') + ') + cos(−' + f('π', '6') + ')') + '.',
+    'Evaluate ' + m('cos 840°') + ' and ' + m('tan 405°') + '.',
+    'Simplify ' + m(f('cos(−α) − sin(−α)', 'sin α')) + '.',
+    'Say whether ' + m('y = cos α tan α') + ' is even or odd, and prove it.',
+    'Give the least period of ' + m('y = cos 3α') + '.'
+  ]
+});
+
+/* ============================== 29 ============================== */
+G9_ALG.push({
+  id: 'a9-29', stream: 'alg', grade: 9, quarter: 3, lessons: '55–56', hours: 2,
+  title: 'The addition formulae for sine and cosine',
+  subtitle: 'The formulae that decide, once and for all, that sin(α + β) is not sin α + sin β.',
+  uz: 'Algebra 9, §24', uzPage: 'pp. 131–137',
+  cam: 'IGX 15.8', camPage: 'Core & Extended, pp. 344–350', wb: 'Exercise 15.8',
+  objectives: [
+    'State the four addition formulae for sine and cosine accurately.',
+    'Use them to find exact values at 15°, 75° and similar angles.',
+    'Recognise the formulae read backwards, in order to compress an expression.',
+    'Show by a counter-example that sine is not additive.'
+  ],
+  terms: [
+    ['Addition formula', 'Qo‘shish formulasi', 'Формула сложения'],
+    ['Sum of angles', 'Burchaklar yig‘indisi', 'Сумма углов'],
+    ['Difference of angles', 'Burchaklar ayirmasi', 'Разность углов'],
+    ['Expand', 'Yoyish', 'Раскрыть'],
+    ['Compress', 'Yig‘ish', 'Свернуть'],
+    ['Counter-example', 'Qarama-qarshi misol', 'Контрпример'],
+    ['Exact value', 'Aniq qiymat', 'Точное значение'],
+    ['Substitution', 'O‘rniga qo‘yish', 'Подстановка']
+  ],
+  timing: [[12, 'A warning first'], [25, 'The four formulae'], [25, 'New exact values'], [23, 'Reading them backwards'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'A warning first',
+      html: `<p>Before the formulae, the mistake they exist to prevent.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Claim</th><th>Test at ${m('α = β = ' + f('π', '2'))}</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td class="m">sin(α + β) = sin α + sin β</td><td class="m">sin π = 0</td><td class="m">1 + 1 = 2 ✗</td></tr>
+        <tr><td class="m">cos(α + β) = cos α + cos β</td><td class="m">cos π = −1</td><td class="m">0 + 0 = 0 ✗</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Sine is a function, not a multiplier</span>
+      ${m('sin')} written in front of a bracket is not a coefficient and cannot be distributed over the
+      bracket. One substitution disposes of the idea permanently — and it is worth doing once, by hand,
+      rather than being told.</div>`
+    },
+    {
+      h: 'The four formulae',
+      html: `${eq(m('sin(α + β) = sin α cos β + cos α sin β'), true)}
+      ${eq(m('sin(α − β) = sin α cos β − cos α sin β'), true)}
+      ${eq(m('cos(α + β) = cos α cos β − sin α sin β'), true)}
+      ${eq(m('cos(α − β) = cos α cos β + sin α sin β'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Pattern</th><th>Sine</th><th>Cosine</th></tr></thead>
+      <tbody>
+        <tr><td>the products</td><td>mixed: ${m('sc')} and ${m('cs')}</td><td>alike: ${m('cc')} and ${m('ss')}</td></tr>
+        <tr><td>the sign</td><td>the same as in the bracket</td><td>the opposite</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two sentences instead of four formulae</div>
+      <b>Sine mixes and keeps the sign; cosine matches and flips it.</b> Learn those two sentences and
+      all four formulae can be written out correctly, in either order, without hesitation.</div>`
+    },
+    {
+      h: 'New exact values',
+      html: `<p>Any angle that is a sum or difference of two known angles now has an exact value.</p>
+      <p><b>Example.</b> ${m('15° = 45° − 30°')}, so</p>
+      ${eq(m('sin 15° = sin 45° cos 30° − cos 45° sin 30° = ' + f(sr('2'), '2') + ' · ' + f(sr('3'), '2') + ' − ' + f(sr('2'), '2') + ' · ' + f('1', '2') + ' = ' + f(sr('6') + ' − ' + sr('2'), '4')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Angle</th><th>As</th><th class="m">sin</th><th class="m">cos</th></tr></thead>
+      <tbody>
+        <tr><td class="m">15°</td><td class="m">45° − 30°</td><td class="m">${f(sr('6') + ' − ' + sr('2'), '4')}</td><td class="m">${f(sr('6') + ' + ' + sr('2'), '4')}</td></tr>
+        <tr><td class="m">75°</td><td class="m">45° + 30°</td><td class="m">${f(sr('6') + ' + ' + sr('2'), '4')}</td><td class="m">${f(sr('6') + ' − ' + sr('2'), '4')}</td></tr>
+      </tbody></table></div>
+      <p>Notice that ${m('sin 75° = cos 15°')}: the two angles add to ${m('90°')}, and complementary
+      angles always swap sine and cosine.</p>`
+    },
+    {
+      h: 'Reading them backwards',
+      html: `<p>Half the examination questions on this topic use the formulae from right to left.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Seeing</th><th>Write</th></tr></thead>
+      <tbody>
+        <tr><td class="m">sin 40° cos 20° + cos 40° sin 20°</td><td class="m">sin 60° = ${f(sr('3'), '2')}</td></tr>
+        <tr><td class="m">cos 70° cos 10° + sin 70° sin 10°</td><td class="m">cos 60° = ${f('1', '2')}</td></tr>
+        <tr><td class="m">sin 3α cos α − cos 3α sin α</td><td class="m">sin 2α</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Look for the pattern before you compute</div>
+      An expression with four trigonometric factors and one plus sign is almost never meant to be
+      evaluated term by term. Match it against the four formulae first; the whole question usually
+      collapses to a single known value.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find ' + m('sin 15°') + ' exactly.',
+      steps: [
+        [m('15° = 45° − 30°'), ''],
+        [m('sin 45° cos 30° − cos 45° sin 30°'), 'Mix, keep the sign.'],
+        [m(f(sr('2'), '2') + ' · ' + f(sr('3'), '2') + ' − ' + f(sr('2'), '2') + ' · ' + f('1', '2')), ''],
+        [m('= ' + f(sr('6') + ' − ' + sr('2'), '4')), '']
+      ],
+      ans: m(f(sr('6') + ' − ' + sr('2'), '4'))
+    },
+    {
+      q: 'Simplify ' + m('sin 40° cos 20° + cos 40° sin 20°') + '.',
+      steps: [
+        ['Mixed products, plus sign — this is ' + m('sin(α + β)') + '.', ''],
+        [m('= sin(40° + 20°)'), ''],
+        [m('= sin 60°'), ''],
+        [m('= ' + f(sr('3'), '2')), '']
+      ],
+      ans: m(f(sr('3'), '2'))
+    },
+    {
+      q: 'Given ' + m('sin α = ' + f('3', '5')) + ' (I) and ' + m('cos β = ' + f('5', '13')) + ' (I), find ' + m('sin(α + β)') + '.',
+      steps: [
+        [m('cos α = ' + f('4', '5')) + ', ' + m('sin β = ' + f('12', '13')) + '.', 'Both in quadrant I.'],
+        [m('sin α cos β + cos α sin β'), ''],
+        [m(f('3', '5') + ' · ' + f('5', '13') + ' + ' + f('4', '5') + ' · ' + f('12', '13')), ''],
+        [m('= ' + f('15', '65') + ' + ' + f('48', '65') + ' = ' + f('63', '65')), '']
+      ],
+      ans: m(f('63', '65'))
+    }
+  ],
+  modelNote: 'Open the lesson by asking the class to evaluate sin 90° two ways — directly, and as sin 45° + sin 45°; the contradiction motivates everything that follows.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'Adding two angles',
+    hint: 'The turn of α + β is not the sum of the two heights.'
+  },
+  quiz: [
+    { q: m('sin(α + β)') + ' equals:', a: [m('sin α + sin β'), m('sin α cos β + cos α sin β'), m('cos α cos β − sin α sin β'), m('2 sin α sin β')], c: 1, why: 'Mix, keep the sign.' },
+    { q: m('cos(α + β)') + ' equals:', a: [m('cos α cos β + sin α sin β'), m('cos α cos β − sin α sin β'), m('cos α + cos β'), m('sin α cos β')], c: 1, why: 'Match, flip the sign.' },
+    { q: m('cos(α − β)') + ' equals:', a: [m('cc − ss'), m('cc + ss'), m('sc − cs'), m('sc + cs')], c: 1, why: 'Match, flip: minus becomes plus.' },
+    { q: m('sin 40° cos 20° + cos 40° sin 20°') + ' equals:', a: [m('sin 20°'), m('sin 60°'), m('cos 60°'), m('sin 800°')], c: 1, why: 'Read the formula backwards.' },
+    { q: m('sin 15°') + ' equals:', a: [m(f(sr('6') + ' − ' + sr('2'), '4')), m(f(sr('6') + ' + ' + sr('2'), '4')), m(f('1', '4')), m(f(sr('3'), '2'))], c: 0, why: m('45° − 30°') + '.' },
+    { q: m('sin(α + β) = sin α + sin β') + ' is:', a: ['always true', 'never true', 'true for some ' + m('α, β'), 'an identity'], c: 2, why: 'True at ' + m('α = β = 0') + ', false in general.' }
+  ],
+  practice: {
+    easy: [
+      [m('sin(α + β)'), m('sin α cos β + cos α sin β')],
+      [m('cos(α + β)'), m('cos α cos β − sin α sin β')],
+      [m('sin(α − β)'), m('sin α cos β − cos α sin β')],
+      [m('cos(α − β)'), m('cos α cos β + sin α sin β')],
+      [m('sin 40° cos 20° + cos 40° sin 20°'), m(f(sr('3'), '2'))],
+      [m('cos 70° cos 10° + sin 70° sin 10°'), m(f('1', '2'))],
+      ['Is ' + m('sin(α + β) = sin α + sin β') + '?', 'No']
+    ],
+    med: [
+      [m('sin 15°'), m(f(sr('6') + ' − ' + sr('2'), '4'))],
+      [m('cos 15°'), m(f(sr('6') + ' + ' + sr('2'), '4'))],
+      [m('sin 75°'), m(f(sr('6') + ' + ' + sr('2'), '4'))],
+      [m('cos 75°'), m(f(sr('6') + ' − ' + sr('2'), '4'))],
+      ['Simplify ' + m('sin 3α cos α − cos 3α sin α'), m('sin 2α')],
+      ['Simplify ' + m('cos 5α cos 3α + sin 5α sin 3α'), m('cos 2α')],
+      [m('sin α = ' + f('3', '5')) + ', ' + m('cos β = ' + f('5', '13')) + ', both I: ' + m('sin(α + β)'), m(f('63', '65'))]
+    ],
+    hard: [
+      [m('sin α = ' + f('3', '5')) + ', ' + m('cos β = ' + f('5', '13')) + ', both I: ' + m('cos(α + β)'), m('−' + f('16', '65'))],
+      [m('sin α = ' + f('4', '5')) + ' (II), ' + m('cos β = ' + f('3', '5')) + ' (I): ' + m('sin(α − β)'), m(f('24', '25'))],
+      ['Prove ' + m('sin(α + β) sin(α − β) = sin²α − sin²β'), 'Expand both brackets'],
+      ['Simplify ' + m('cos(60° + α) + cos(60° − α)'), m('cos α')],
+      ['Simplify ' + m('sin(45° + α) − sin(45° − α)'), m(sr('2') + ' sin α')],
+      [m('tan 15°') + ' from ' + m('sin 15°') + ' and ' + m('cos 15°'), m('2 − ' + sr('3'))],
+      ['Prove ' + m('cos(α + β) cos(α − β) = cos²α − sin²β'), 'Expand both brackets']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write out the formula you are using before substituting; the mark is for the formula.',
+  homework: [
+    'Find ' + m('cos 15°') + ' and ' + m('sin 75°') + ' exactly.',
+    'Simplify ' + m('sin 50° cos 10° − cos 50° sin 10°') + '.',
+    'Given ' + m('sin α = ' + f('8', '17')) + ' (I) and ' + m('cos β = ' + f('4', '5')) + ' (I), find ' + m('cos(α − β)') + '.',
+    'Prove ' + m('sin(α + β) + sin(α − β) = 2 sin α cos β') + '.',
+    'Show that ' + m('cos(α + β) = cos α + cos β') + ' is false, with one substitution.'
+  ]
+});
