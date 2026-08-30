@@ -13878,3 +13878,182 @@ G6_MAT.push({
     'Express ' + m('72°') + ' as a percentage and as a fraction of the whole.'
   ]
 });
+
+/* ============================== 78 ============================== */
+G6_MAT.push({
+  id: 'g6-78', stream: 'mat', grade: 6, quarter: 4, lessons: '168', hours: 1,
+  title: 'Think — choosing a chart',
+  subtitle: 'Four kinds of diagram, four kinds of question — and the charts that quietly mislead.',
+  uz: 'Matematika 6, o‘ylab ko‘r', uzPage: 'pp. 480–482',
+  cam: 'S7 16 interpreting results', camPage: 'Stage 7, pp. 184–188', wb: 'Investigation 16',
+  objectives: [
+    'Match each kind of data to the chart that shows it best.',
+    'Justify the choice in one sentence.',
+    'Recognise a truncated axis and other misleading devices.',
+    'State the three things every chart must carry.'
+  ],
+  terms: [
+    ['Bar chart', 'Ustunli diagramma', 'Столбчатая диаграмма'],
+    ['Pie chart', 'Doiraviy diagramma', 'Круговая диаграмма'],
+    ['Line graph', 'Chiziqli grafik', 'Линейный график'],
+    ['Scatter graph', 'Sochilish diagrammasi', 'Диаграмма рассеяния'],
+    ['Category', 'Toifa', 'Категория'],
+    ['Axis', 'O‘q', 'Ось'],
+    ['Misleading', 'Chalg‘ituvchi', 'Вводящий в заблуждение'],
+    ['Title and key', 'Sarlavha va izoh', 'Заголовок и легенда']
+  ],
+  timing: [[10, 'Four charts, four questions'], [12, 'Choosing, with a reason'], [12, 'Charts that mislead'], [6, 'The task']],
+  sections: [
+    {
+      h: 'Four charts, four questions',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Chart</th><th>Answers the question</th><th>Good example</th></tr></thead>
+      <tbody>
+        <tr><td>bar chart</td><td>how do the categories compare in size?</td><td>pupils in each of six grades</td></tr>
+        <tr><td>pie chart</td><td>how is one whole shared out?</td><td>the school budget by item</td></tr>
+        <tr><td>line graph</td><td>how has one quantity changed over time?</td><td>the noon temperature each month</td></tr>
+        <tr><td>scatter graph</td><td>are two measurements related?</td><td>height against arm span</td></tr>
+      </tbody></table></div>
+      {{fig:scatterGraph:A scatter graph — the only one of the four that shows a relationship between two measurements}}
+      <div class="keybox"><div class="klabel">Ask what the reader should see at a glance</div>
+      A bar chart makes sizes comparable; a pie chart makes shares obvious; a line graph makes a trend
+      visible; a scatter graph makes a relationship visible. Choose the one whose strength is the question.</div>`
+    },
+    {
+      h: 'Choosing, with a reason',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>The data</th><th>Best chart</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>favourite sport of ${m('60')} pupils</td><td>pie chart</td><td>the ${m('60')} form one whole to be shared</td></tr>
+        <tr><td>pupils in each of six grades</td><td>bar chart</td><td>six sizes to be compared, not shares</td></tr>
+        <tr><td>rainfall each month for a year</td><td>line graph</td><td>the months are in order and the trend matters</td></tr>
+        <tr><td>height against arm span</td><td>scatter graph</td><td>two measurements from each pupil</td></tr>
+        <tr><td>marks out of ten for one class</td><td>bar chart of the frequencies</td><td>the marks are ordered categories</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A line graph needs an ordered horizontal axis</span>
+      Joining “football” to “tennis” with a line says that something exists between them. Nothing does.
+      Time, length and temperature may be joined; favourite sports may not.</div>`
+    },
+    {
+      h: 'Charts that mislead',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Device</th><th>What the reader thinks</th><th>The truth</th></tr></thead>
+      <tbody>
+        <tr><td>the vertical axis starts at ${m('40')}, not ${m('0')}</td><td>one bar is three times another</td><td>${m('44')} against ${m('52')} — a small difference</td></tr>
+        <tr><td>bars of different widths</td><td>the wider bar means more</td><td>only the height carries the number</td></tr>
+        <tr><td>a pie chart with ${m('15')} sectors</td><td>nothing at all</td><td>the thin sectors cannot be read</td></tr>
+        <tr><td>two pie charts, no totals given</td><td>the groups are equal</td><td>shares are equal; the numbers may not be</td></tr>
+        <tr><td>a pictogram with pictures of different sizes</td><td>a big picture means many</td><td>each picture should stand for a fixed number</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Three things every chart must carry</div>
+      A title that says what is shown; labelled axes or a key; and the total number the data came from.
+      A chart missing any of the three can be read in more than one way.</div>`
+    },
+    {
+      h: 'The task',
+      html: `<div class="keybox"><div class="klabel">Today’s task</div>
+      For each of these five sets of data, name the chart you would draw and give one sentence of reason —
+      then say what would be lost if the wrong one were chosen instead.</div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Data</th><th>Wrong choice to argue against</th></tr></thead>
+      <tbody>
+        <tr><td>the ${m('60')} pupils’ favourite sports</td><td>a line graph</td></tr>
+        <tr><td>the noon temperature each month</td><td>a pie chart</td></tr>
+        <tr><td>height and arm span of ${m('30')} pupils</td><td>a bar chart</td></tr>
+        <tr><td>the population of six grades</td><td>a pie chart with no total</td></tr>
+        <tr><td>a class’s marks out of ten</td><td>a pie chart with ${m('11')} sectors</td></tr>
+      </tbody></table></div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Sixty pupils name a favourite sport. Which chart, and why?',
+      steps: [
+        ['The ' + m('60') + ' pupils make one whole that is being shared out.', ''],
+        ['A pie chart shows shares directly.', ''],
+        ['A bar chart would also work if the question is “which is largest”.', 'A line graph would not: sports have no order.']
+      ],
+      ans: 'A pie chart — the data is shares of one whole'
+    },
+    {
+      q: 'Monthly rainfall for a year. Which chart, and why?',
+      steps: [
+        ['The months are in order and the interest is the trend.', ''],
+        ['A line graph joins them meaningfully.', ''],
+        ['A pie chart would hide the order entirely.', 'Which month was wettest would be almost unreadable.']
+      ],
+      ans: 'A line graph — ordered time on the horizontal axis'
+    },
+    {
+      q: 'Two bars stand for ' + m('44') + ' and ' + m('52') + ', drawn on an axis starting at ' + m('40') + '. Why does this mislead?',
+      steps: [
+        ['The drawn heights are ' + m('4') + ' and ' + m('12') + ' — a ratio of ' + m('1') + ' to ' + m('3') + '.', ''],
+        ['The real values differ by under a fifth.', ''],
+        ['Starting the axis at ' + m('0') + ' shows the truth.', 'Or mark the break in the axis clearly.']
+      ],
+      ans: 'The heights exaggerate the difference by a factor of about three'
+    }
+  ],
+  modelNote: 'Draw the same two bars twice on the board — once from zero and once from forty. The class sees the trick before it is named.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which chart, and why',
+    hint: 'Ask what the reader should see at a glance.',
+    items: [
+      { q: 'Shares of one whole are best shown by:', a: ['a bar chart', 'a pie chart', 'a line graph', 'a scatter graph'], c: 1, why: 'The circle is the whole.' },
+      { q: 'Change over time is best shown by:', a: ['a pie chart', 'a line graph', 'a scatter graph', 'a pictogram'], c: 1, why: 'Ordered horizontal axis.' },
+      { q: 'A relationship between two measurements needs:', a: ['a bar chart', 'a pie chart', 'a scatter graph', 'a line graph'], c: 2, why: 'Two values from each person.' },
+      { q: 'Joining “football” to “tennis” with a line is wrong because:', a: ['the colours differ', 'the categories have no order', 'the totals differ', 'lines are hard to draw'], c: 1, why: 'Nothing lies between them.' },
+      { q: 'An axis starting at ' + m('40') + ' rather than ' + m('0') + ':', a: ['saves space honestly', 'exaggerates differences', 'is always wrong', 'changes the data'], c: 1, why: 'The heights no longer match the numbers.' },
+      { q: 'A pie chart with ' + m('15') + ' sectors is:', a: ['clearer', 'unreadable', 'more accurate', 'preferred'], c: 1, why: 'The sectors become too thin.' },
+      { q: 'Bars of different widths suggest:', a: ['nothing', 'that width carries meaning', 'a larger total', 'better data'], c: 1, why: 'Only the height carries the number.' },
+      { q: 'Every chart must carry:', a: ['a title, labels and the total', 'colour', 'a percentage', 'a protractor'], c: 0, why: 'Otherwise it can be read two ways.' }
+    ]
+  },
+  quiz: [
+    { q: 'A pie chart is best for:', a: ['a trend', 'shares of a whole', 'two measurements', 'a timetable'], c: 1, why: 'The whole circle is the total.' },
+    { q: 'A bar chart compares:', a: ['shares', 'sizes across categories', 'time only', 'nothing'], c: 1, why: 'Heights side by side.' },
+    { q: 'A scatter graph needs:', a: ['one value each', 'two values from each person', 'a total', 'angles'], c: 1, why: 'A point has two coordinates.' },
+    { q: 'A truncated vertical axis:', a: ['is always fine', 'exaggerates differences', 'shrinks differences', 'has no effect'], c: 1, why: 'Heights stop matching values.' },
+    { q: 'Two pie charts without totals compare:', a: ['numbers', 'shares only', 'nothing', 'means'], c: 1, why: 'Angles are proportions.' },
+    { q: 'A pictogram’s pictures must:', a: ['vary in size', 'each stand for a fixed number', 'be coloured', 'be circles'], c: 1, why: 'Otherwise the area misleads.' }
+  ],
+  practice: {
+    easy: [
+      ['The chart for shares of one whole', 'A pie chart'],
+      ['The chart for comparing counts across categories', 'A bar chart'],
+      ['The chart for change over time', 'A line graph'],
+      ['The chart for a relationship between two measurements', 'A scatter graph'],
+      ['The sectors of a pie chart total', m('360°')],
+      ['Bars in a bar chart should have', 'Equal widths, with gaps'],
+      ['Every chart needs a title, labels and', 'The total the data came from']
+    ],
+    med: [
+      ['Favourite sports of ' + m('60') + ' pupils', 'A pie chart (or a bar chart)'],
+      ['The noon temperature for twelve months', 'A line graph'],
+      ['Height against arm span for ' + m('30') + ' pupils', 'A scatter graph'],
+      ['The number of pupils in each of six grades', 'A bar chart'],
+      ['The share of the school budget by item', 'A pie chart'],
+      ['A bar chart whose axis starts at ' + m('40'), 'Misleading'],
+      ['Two pie charts of different totals compare', 'Shares, not numbers']
+    ],
+    hard: [
+      ['Why is a pie chart poor for ' + m('15') + ' categories?', 'The sectors are too thin to read or label'],
+      ['Why is a line graph wrong for favourite sports?', 'The categories have no order'],
+      ['Bars of different widths suggest', 'That the area carries meaning, which it does not'],
+      ['The best chart for one class’s marks out of ten', 'A bar chart of the frequencies'],
+      ['The best chart for “do taller pupils have longer arms?”', 'A scatter graph'],
+      ['A pie chart of ' + m('7') + ' people needs angles to', '1 decimal place, adjusted to total ' + m('360°')],
+      ['Bars of ' + m('44') + ' and ' + m('52') + ' on an axis from ' + m('40'), 'Look like ' + m('1') + ' to ' + m('3')]
+    ]
+  },
+  hwTitle: 'Homework — the task',
+  hwNote: 'One page: five choices, five reasons, and one sentence on what the wrong chart would hide.',
+  homework: [
+    'Name the chart you would draw for each of the five data sets in the last section.',
+    'Give one sentence of reason for each choice.',
+    'For each, say what would be lost if the wrong chart named beside it were used.',
+    'Draw the two-bar example twice — from zero and from forty — and label which is honest.',
+    'List the three things every chart must carry.'
+  ]
+});
