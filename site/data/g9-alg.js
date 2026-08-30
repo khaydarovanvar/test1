@@ -6943,3 +6943,725 @@ G9_ALG.push({
     'Find the sum of all multiples of ' + m('3') + ' between ' + m('1') + ' and ' + m('100') + '.'
   ]
 });
+
+/* ============================== 40 ============================== */
+G9_ALG.push({
+  id: 'a9-40', stream: 'alg', grade: 9, quarter: 4, lessons: '79–80', hours: 2,
+  title: 'The geometric progression',
+  subtitle: 'Multiply by the same number every time, and growth stops being steady and becomes explosive.',
+  uz: 'Algebra 9, §32', uzPage: 'pp. 188–194',
+  cam: 'IGX 11.5', camPage: 'Core & Extended, pp. 241–247', wb: 'Exercise 11.5',
+  objectives: [
+    'Define a geometric progression and find its common ratio.',
+    'Use bₙ = b₁qⁿ⁻¹ in all four directions.',
+    'Use the characteristic property bₙ² = bₙ₋₁ bₙ₊₁.',
+    'Insert geometric means and recognise a GP in a word problem.'
+  ],
+  terms: [
+    ['Geometric progression', 'Geometrik progressiya', 'Геометрическая прогрессия'],
+    ['Common ratio', 'Maxraj', 'Знаменатель'],
+    ['Geometric mean', 'O‘rta geometrik', 'Среднее геометрическое'],
+    ['Growth', 'O‘sish', 'Рост'],
+    ['Decay', 'Kamayish', 'Убывание'],
+    ['Compound interest', 'Murakkab foiz', 'Сложный процент'],
+    ['Doubling', 'Ikkilanish', 'Удвоение'],
+    ['Non-zero', 'Noldan farqli', 'Отличный от нуля']
+  ],
+  timing: [[18, 'The definition'], [22, 'The nth term'], [25, 'The middle-term property'], [20, 'Growth and decay'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The definition',
+      html: `<p>A sequence is a <b>geometric progression</b> if each term after the first is obtained by
+      multiplying by the same non-zero number ${m('q')}, the <b>common ratio</b>.</p>
+      ${eq(m('bₙ₊₁ = bₙ q') + '     equivalently     ' + m('q = ' + f('bₙ₊₁', 'bₙ')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sequence</th><th class="m">b₁</th><th class="m">q</th><th>Behaviour</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2, 6, 18, 54, …</td><td class="m">2</td><td class="m">3</td><td>grows fast</td></tr>
+        <tr><td class="m">16, 8, 4, 2, …</td><td class="m">16</td><td class="m">${f('1', '2')}</td><td>decays to zero</td></tr>
+        <tr><td class="m">1, −2, 4, −8, …</td><td class="m">1</td><td class="m">−2</td><td>alternates and grows</td></tr>
+        <tr><td class="m">5, 5, 5, …</td><td class="m">5</td><td class="m">1</td><td>constant</td></tr>
+        <tr><td class="m">1, 3, 6, 10, …</td><td class="m">1</td><td>—</td><td>not a GP</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Neither ${m('b₁')} nor ${m('q')} may be zero</span>
+      A zero term would make the next ratio ${m(f('0', '0'))} and destroy the definition. This is the
+      one structural difference from an arithmetic progression, where ${m('d = 0')} is perfectly
+      allowed.</div>`
+    },
+    {
+      h: 'The nth term',
+      html: `<p>Starting at ${m('b₁')} and multiplying by ${m('q')} a total of ${m('n − 1')} times:</p>
+      ${eq(m('bₙ = b₁ q') + p('', 'n−1'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Find</th><th>How</th></tr></thead>
+      <tbody>
+        <tr><td class="m">b₁, q, n</td><td class="m">bₙ</td><td>substitute</td></tr>
+        <tr><td class="m">b₁, q, bₙ</td><td class="m">n</td><td>compare powers</td></tr>
+        <tr><td>two terms</td><td class="m">b₁, q</td><td>divide one equation by the other</td></tr>
+      </tbody></table></div>
+      <p>The last row is the standard technique, and it is why a GP question is often <b>easier</b> than
+      the corresponding AP one: dividing ${m('b₅ = b₁q⁴')} by ${m('b₂ = b₁q')} gives ${m('q³')} at once,
+      with ${m('b₁')} eliminated.</p>
+      <p><b>Example.</b> ${m('b₂ = 6')}, ${m('b₅ = 162')}. Then ${m('q³ = 27')}, ${m('q = 3')}, and
+      ${m('b₁ = 2')}.</p>
+      <div class="keybox"><div class="klabel">The exponent is ${m('n − 1')} again</div>
+      Exactly as in an AP, the first term needs no step at all. Writing ${m('b₁q')}${p('', 'n')} is the
+      single commonest error of the chapter — and it is caught instantly by testing ${m('n = 1')}.</div>`
+    },
+    {
+      h: 'The middle-term property',
+      html: `<p>Each term is the geometric mean of its neighbours, in absolute value:</p>
+      ${eq(m('bₙ² = bₙ₋₁ · bₙ₊₁'), true)}
+      <p>It is the multiplicative twin of ${m('2aₙ = aₙ₋₁ + aₙ₊₁')}, and it is the standard way to test
+      whether three numbers form a GP or to fill a gap.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3, x, 27</td><td class="m">x² = 81</td><td class="m">x = ±9</td></tr>
+        <tr><td class="m">x, 6, 18</td><td class="m">36 = 18x</td><td class="m">x = 2</td></tr>
+        <tr><td>is ${m('2, 6, 18')} a GP?</td><td class="m">36 = 2 · 18 ✓</td><td>yes</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The first row really has two answers</span>
+      Both ${m('3, 9, 27')} and ${m('3, −9, 27')} are geometric progressions, with ${m('q = 3')} and
+      ${m('q = −3')}. Giving only the positive value loses half the marks — unless the question says
+      the terms are positive.</div>`
+    },
+    {
+      h: 'Growth and decay',
+      html: `<p>The behaviour depends entirely on ${m('q')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">q</th><th>Behaviour</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="m">q > 1</td><td>grows without limit</td><td>a population doubling</td></tr>
+        <tr><td class="m">0 < q < 1</td><td>decays towards zero</td><td>a bouncing ball</td></tr>
+        <tr><td class="m">q = 1</td><td>constant</td><td>—</td></tr>
+        <tr><td class="m">q < 0</td><td>alternates in sign</td><td class="m">1, −2, 4, −8</td></tr>
+      </tbody></table></div>
+      {{fig:gpConverge:With |q| < 1 the terms shrink towards zero; with |q| > 1 they run away.}}
+      <p><b>Compound interest.</b> A sum ${m('P')} at ${m('r')}% a year is a GP with ${m('q = 1 + ' + f('r', '100'))};
+      after ${m('n')} years it is ${m('P(1 + ' + f('r', '100') + ')')}${p('', 'n')}. Simple interest is an AP;
+      compound interest is a GP — one sentence that explains why the two grow so differently.</p>
+      <div class="keybox"><div class="klabel">Arithmetic loses to geometric, always, in the end</div>
+      Whatever ${m('d')} is, and however small ${m('q > 1')} is, the geometric progression eventually
+      overtakes the arithmetic one. That is the whole difference between adding and multiplying, and it
+      is why compound interest matters.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'In a GP, ' + m('b₂ = 6') + ' and ' + m('b₅ = 162') + '. Find ' + m('b₁') + ', ' + m('q') + ' and ' + m('b₇') + '.',
+      steps: [
+        [m(f('b₅', 'b₂') + ' = q³ = ' + f('162', '6') + ' = 27'), m('b₁') + ' cancels.'],
+        [m('q = 3'), ''],
+        [m('b₁ = ' + f('6', '3') + ' = 2'), ''],
+        [m('b₇ = 2 · 3⁶ = 1458'), '']
+      ],
+      ans: m('b₁ = 2, q = 3, b₇ = 1458')
+    },
+    {
+      q: 'Find ' + m('x') + ' if ' + m('3, x, 27') + ' is a GP.',
+      steps: [
+        [m('x² = 3 · 27 = 81'), 'The characteristic property.'],
+        [m('x = ±9'), ''],
+        [m('3, 9, 27') + ' with ' + m('q = 3') + ';', ''],
+        [m('3, −9, 27') + ' with ' + m('q = −3') + '. Both are valid.', '']
+      ],
+      ans: m('x = ±9')
+    },
+    {
+      q: 'A ball is dropped from ' + m('2 m') + ' and rebounds to ' + m('60%') + ' of its height each bounce. How high after the 5th bounce?',
+      steps: [
+        [m('b₁ = 2 · 0.6 = 1.2') + ' — the first rebound.', ''],
+        [m('q = 0.6'), ''],
+        [m('b₅ = 1.2 · 0.6⁴'), ''],
+        [m('= 1.2 · 0.1296 ≈ 0.156 m'), '']
+      ],
+      ans: m('≈ 0.16 m')
+    }
+  ],
+  modelNote: 'Fold a sheet of paper repeatedly and count the layers; the class reaches the impossibility of eight folds and the meaning of geometric growth at the same moment.',
+  interactive: {
+    type: 'substitute',
+    title: 'b₁ and q',
+    hint: 'Make q slightly greater than 1 and watch the tenth term.'
+  },
+  quiz: [
+    { q: 'In a GP, ' + m('q') + ' equals:', a: [m('bₙ₊₁ − bₙ'), m(f('bₙ₊₁', 'bₙ')), m('bₙ bₙ₊₁'), m('b₁')], c: 1, why: 'The common ratio.' },
+    { q: m('bₙ') + ' equals:', a: [m('b₁ q') + p('', 'n'), m('b₁ q') + p('', 'n−1'), m('b₁ + (n − 1)q'), m('b₁ n q')], c: 1, why: m('n − 1') + ' multiplications.' },
+    { q: m('2, 6, 18, …') + ' has ' + m('b₅') + ' =', a: [m('54'), m('108'), m('162'), m('486')], c: 2, why: m('2 · 3⁴') + '.' },
+    { q: 'The characteristic property is:', a: [m('2bₙ = bₙ₋₁ + bₙ₊₁'), m('bₙ² = bₙ₋₁ bₙ₊₁'), m('bₙ = b₁ + q'), m('bₙ = nq')], c: 1, why: 'The geometric mean.' },
+    { q: m('3, x, 27') + ' gives ' + m('x') + ' =', a: [m('9'), m('−9'), m('±9'), m('15')], c: 2, why: 'Two progressions fit.' },
+    { q: 'Compound interest is:', a: ['an AP', 'a GP', 'neither', 'both'], c: 1, why: 'It multiplies each year.' }
+  ],
+  practice: {
+    easy: [
+      [m('q') + ' of ' + m('2, 6, 18, …'), m('3')],
+      [m('q') + ' of ' + m('16, 8, 4, …'), m(f('1', '2'))],
+      [m('q') + ' of ' + m('1, −2, 4, …'), m('−2')],
+      [m('b₁ = 3, q = 2') + ': ' + m('b₅'), m('48')],
+      [m('b₁ = 5, q = 3') + ': ' + m('b₄'), m('135')],
+      [m('2, 6, 18, …') + ': ' + m('b₅'), m('162')],
+      ['Is ' + m('1, 3, 6, 10, …') + ' a GP?', 'No']
+    ],
+    med: [
+      [m('b₂ = 6, b₅ = 162') + ': ' + m('q'), m('3')],
+      ['Same: ' + m('b₁'), m('2')],
+      ['Same: ' + m('b₇'), m('1458')],
+      ['Find ' + m('x') + ': ' + m('3, x, 27') + ' is a GP', m('±9')],
+      ['Find ' + m('x') + ': ' + m('x, 6, 18') + ' is a GP', m('2')],
+      ['Which term of ' + m('2, 6, 18, …') + ' is ' + m('486') + '?', 'The 6th'],
+      [m('b₁ = 100, q = 0.5') + ': ' + m('b₆'), m('3.125')]
+    ],
+    hard: [
+      [m('b₃ = 12, b₆ = 96') + ': ' + m('b₁'), m('3')],
+      ['Three numbers in GP: sum ' + m('21') + ', product ' + m('216'), m('3, 6, 12')],
+      ['Insert two numbers between ' + m('2') + ' and ' + m('54') + ' to make a GP', m('6') + ' and ' + m('18')],
+      ['A ball from ' + m('2 m') + ' rebounds ' + m('60%') + ': height after 5 bounces', m('≈ 0.16 m')],
+      [m('1000') + ' at ' + m('5%') + ' compound for ' + m('3') + ' years', m('1157.63')],
+      ['For which ' + m('x') + ' is ' + m('x, x + 2, x + 6') + ' a GP?', m('x = 2')],
+      ['Show that ' + m('b₁, b₃, b₅') + ' of a GP is again a GP', 'Its ratio is ' + m('q²')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write ' + m('b₁') + ' and ' + m('q') + ' at the top of every solution, and test ' + m('n = 1') + ' on your formula.',
+  homework: [
+    'In a GP, ' + m('b₁ = 4') + ' and ' + m('q = 3') + '. Find ' + m('b₆') + ' and say which term equals ' + m('972') + '.',
+    'Given ' + m('b₃ = 20') + ' and ' + m('b₆ = 160') + ', find ' + m('b₁') + ' and ' + m('q') + '.',
+    'Find ' + m('x') + ' if ' + m('5, x, 45') + ' is a GP.',
+    'Insert three numbers between ' + m('1') + ' and ' + m('16') + ' to make a GP.',
+    'A sum of ' + m('2000') + ' earns ' + m('4%') + ' compound interest. Find its value after ' + m('5') + ' years.'
+  ]
+});
+
+/* ============================== 41 ============================== */
+G9_ALG.push({
+  id: 'a9-41', stream: 'alg', grade: 9, quarter: 4, lessons: '81–82', hours: 2,
+  title: 'The sum of the first n terms of a geometric progression',
+  subtitle: 'Multiply the sum by q, subtract, and everything in the middle cancels.',
+  uz: 'Algebra 9, §33', uzPage: 'pp. 195–200',
+  cam: 'IGX 11.6', camPage: 'Core & Extended, pp. 248–253', wb: 'Exercise 11.6',
+  objectives: [
+    'Derive Sₙ = b₁(qⁿ − 1)/(q − 1) by the shift-and-subtract method.',
+    'Use the formula in the form that avoids negative numerators.',
+    'Treat the case q = 1 separately.',
+    'Apply the formula to compound interest and repayment problems.'
+  ],
+  terms: [
+    ['Sum of n terms', 'n ta hadning yig‘indisi', 'Сумма n членов'],
+    ['Shift and subtract', 'Siljitib ayirish', 'Сдвиг и вычитание'],
+    ['Cancellation', 'Qisqarish', 'Сокращение'],
+    ['Special case', 'Xususiy hol', 'Частный случай'],
+    ['Numerator', 'Surat', 'Числитель'],
+    ['Repayment', 'To‘lov', 'Выплата'],
+    ['Doubling problem', 'Ikkilanish masalasi', 'Задача об удвоении'],
+    ['Estimate', 'Baholash', 'Оценка']
+  ],
+  timing: [[20, 'The derivation'], [25, 'Two arrangements'], [25, 'Worked problems'], [25, 'The chessboard'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The derivation',
+      html: `<p>Write the sum, then the same sum multiplied by ${m('q')}:</p>
+      ${eq(m('Sₙ = b₁ + b₁q + b₁q² + … + b₁q') + p('', 'n−1'), false)}
+      ${eq(m('qSₙ = b₁q + b₁q² + … + b₁q') + p('', 'n−1') + ' + b₁q' + p('', 'n'), false)}
+      <p>Subtract the first from the second. Every term but two cancels:</p>
+      ${eq(m('qSₙ − Sₙ = b₁q') + p('', 'n') + m(' − b₁'), false)}
+      ${eq(m('Sₙ = ' + f('b₁(qⁿ − 1)', 'q − 1')) + ',   ' + m('q ≠ 1'), true)}
+      <div class="keybox"><div class="klabel">Why the trick works</div>
+      Multiplying by ${m('q')} shifts the whole list one place along. Subtracting therefore removes
+      everything the two lists have in common — which is all of it except the first term of one and the
+      last of the other. The same idea will reappear in Grade 11 for series.</div>`
+    },
+    {
+      h: 'Two arrangements',
+      html: `<p>Multiplying numerator and denominator by ${m('−1')} gives an equivalent form:</p>
+      ${eq(m('Sₙ = ' + f('b₁(qⁿ − 1)', 'q − 1') + ' = ' + f('b₁(1 − qⁿ)', '1 − q')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Use</th><th>When</th><th>Because</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('b₁(qⁿ − 1)', 'q − 1')}</td><td class="m">q > 1</td><td>both parts are positive</td></tr>
+        <tr><td class="m">${f('b₁(1 − qⁿ)', '1 − q')}</td><td class="m">|q| < 1</td><td>both parts are positive</td></tr>
+        <tr><td class="m">Sₙ = n b₁</td><td class="m">q = 1</td><td>the formula divides by zero</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('q = 1')} must be checked before the formula is used</span>
+      With ${m('q = 1')} every term is ${m('b₁')} and the sum is ${m('n b₁')} — but the formula has
+      ${m('q − 1')} in the denominator and is undefined. A question that sets ${m('q = 1')} is testing
+      exactly whether you looked.</div>`
+    },
+    {
+      h: 'Worked problems',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">S₆ of 2, 6, 18, …</td><td class="m">${f('2(3⁶ − 1)', '2')}</td><td class="m">728</td></tr>
+        <tr><td class="m">S₅ of 3, 6, 12, …</td><td class="m">${f('3(2⁵ − 1)', '1')}</td><td class="m">93</td></tr>
+        <tr><td class="m">S₄ of 16, 8, 4, …</td><td class="m">${f('16(1 − ' + f('1', '16') + ')', '1 − ' + f('1', '2'))}</td><td class="m">30</td></tr>
+      </tbody></table></div>
+      <p>The third row is a useful check: ${m('16 + 8 + 4 + 2 = 30')} by direct addition, which confirms
+      the arrangement of the formula for ${m('q < 1')}.</p>
+      <div class="keybox"><div class="klabel">Always sanity-check a small case by adding</div>
+      Four or five terms can be added directly in a few seconds. Doing so once, at the start of the
+      exercise, catches a mis-remembered formula before it spoils ten questions.</div>`
+    },
+    {
+      h: 'The chessboard',
+      html: `<p>The classical problem: one grain on the first square, two on the second, four on the third,
+      doubling to the sixty-fourth.</p>
+      ${eq(m('S₆₄ = ' + f('1(2⁶⁴ − 1)', '2 − 1') + ' = 2⁶⁴ − 1 ≈ 1.8 × 10¹⁹'), true)}
+      <p>That is more grain than has ever been grown. It is the standard demonstration that geometric
+      growth is not merely “fast” but of a different order altogether.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Situation</th><th>The GP</th><th>The sum means</th></tr></thead>
+      <tbody>
+        <tr><td>a bouncing ball</td><td class="m">b₁ = first rebound, q < 1</td><td>total distance</td></tr>
+        <tr><td>annual savings with interest</td><td class="m">q = 1 + ${f('r', '100')}</td><td>the accumulated fund</td></tr>
+        <tr><td>a rumour told to ${m('3')} people each</td><td class="m">q = 3</td><td>how many have heard it</td></tr>
+      </tbody></table></div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find ' + m('S₆') + ' for ' + m('2, 6, 18, …') + '.',
+      steps: [
+        [m('b₁ = 2, q = 3, n = 6'), ''],
+        [m('S₆ = ' + f('2(3⁶ − 1)', '3 − 1')), m('q > 1') + ' form.'],
+        [m('3⁶ = 729'), ''],
+        [m('S₆ = ' + f('2 · 728', '2') + ' = 728'), '']
+      ],
+      ans: m('728')
+    },
+    {
+      q: 'Find ' + m('S₄') + ' for ' + m('16, 8, 4, …') + '.',
+      steps: [
+        [m('b₁ = 16, q = ' + f('1', '2')), ''],
+        [m('S₄ = ' + f('16(1 − ' + f('1', '16') + ')', '1 − ' + f('1', '2'))), m('|q| < 1') + ' form.'],
+        [m('= ' + f('16 · ' + f('15', '16'), f('1', '2')) + ' = ' + f('15', f('1', '2'))), ''],
+        [m('= 30'), 'Check: ' + m('16 + 8 + 4 + 2 = 30') + ' ✓']
+      ],
+      ans: m('30')
+    },
+    {
+      q: 'How many terms of ' + m('3, 6, 12, …') + ' give a sum of ' + m('381') + '?',
+      steps: [
+        [m('b₁ = 3, q = 2'), ''],
+        [m(f('3(2ⁿ − 1)', '1') + ' = 381'), ''],
+        [m('2ⁿ − 1 = 127 ⇒ 2ⁿ = 128'), ''],
+        [m('n = 7'), '']
+      ],
+      ans: m('n = 7')
+    }
+  ],
+  modelNote: 'Do the chessboard problem on the board without the formula for the first eight squares, then with it for all sixty-four; the gap between intuition and arithmetic is the lesson.',
+  interactive: {
+    type: 'substitute',
+    title: 'Sₙ of a GP',
+    hint: 'Compare the sum with the last term — for large q they are almost equal.'
+  },
+  quiz: [
+    { q: m('Sₙ') + ' of a GP equals:', a: [m(f('b₁(qⁿ − 1)', 'q − 1')), m(f('n(b₁ + bₙ)', '2')), m('b₁ qⁿ'), m('n b₁ q')], c: 0, why: 'Shift and subtract.' },
+    { q: 'The formula fails when:', a: [m('q = 0'), m('q = 1'), m('q < 0'), 'never'], c: 1, why: 'Zero denominator.' },
+    { q: 'When ' + m('q = 1') + ', ' + m('Sₙ') + ' equals:', a: [m('0'), m('n b₁'), m('b₁'), 'undefined'], c: 1, why: 'Every term is the same.' },
+    { q: m('S₆') + ' of ' + m('2, 6, 18, …') + ':', a: [m('486'), m('728'), m('729'), m('1458')], c: 1, why: m(f('2(729 − 1)', '2')) + '.' },
+    { q: m('S₄') + ' of ' + m('16, 8, 4, …') + ':', a: [m('28'), m('30'), m('31'), m('32')], c: 1, why: m('16 + 8 + 4 + 2') + '.' },
+    { q: 'The chessboard total is:', a: [m('2⁶⁴'), m('2⁶⁴ − 1'), m('64²'), m('2⁶³')], c: 1, why: m('b₁ = 1, q = 2') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('S₃') + ' of ' + m('1, 2, 4'), m('7')],
+      [m('S₄') + ' of ' + m('1, 3, 9, 27'), m('40')],
+      [m('S₅') + ' of ' + m('3, 6, 12, …'), m('93')],
+      [m('S₄') + ' of ' + m('16, 8, 4, …'), m('30')],
+      [m('S₆') + ' of ' + m('2, 6, 18, …'), m('728')],
+      [m('q = 1, b₁ = 5, n = 8') + ': ' + m('S₈'), m('40')],
+      [m('S₃') + ' of ' + m('1, −2, 4'), m('3')]
+    ],
+    med: [
+      ['How many terms of ' + m('3, 6, 12, …') + ' give ' + m('381') + '?', m('7')],
+      [m('b₁ = 1, q = 2, n = 10') + ': ' + m('S₁₀'), m('1023')],
+      [m('b₁ = 5, q = 3, n = 5') + ': ' + m('S₅'), m('605')],
+      [m('S₅') + ' of ' + m('81, 27, 9, …'), m('121')],
+      [m('b₂ = 6, b₅ = 162') + ': ' + m('S₅'), m('242')],
+      ['Sum of ' + m('1 + 2 + 4 + … + 2') + p('', '63'), m('2⁶⁴ − 1')],
+      [m('S₄') + ' of ' + m('2, −6, 18, −54'), m('−40')]
+    ],
+    hard: [
+      ['How many terms of ' + m('1, 2, 4, …') + ' give ' + m('1023') + '?', m('10')],
+      [m('S₃ = 21') + ' and ' + m('q = 2') + ': find ' + m('b₁'), m('3')],
+      ['A ball from ' + m('2 m') + ' rebounds ' + m('50%') + ': total distance to rest', m('6 m')],
+      ['Save ' + m('1000') + ' at the start of each year at ' + m('10%') + ' for ' + m('5') + ' years', m('≈ 6716')],
+      [m('S₄ = 30') + ' and ' + m('S₈ = 510') + ': find ' + m('q'), m('2')],
+      ['Show ' + m('Sₙ = ' + f('bₙ q − b₁', 'q − 1')), 'Substitute ' + m('bₙ = b₁q') + p('', 'n−1')],
+      ['A rumour: each teller tells ' + m('3') + ' new people. After ' + m('5') + ' rounds, how many know?', m('364')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Check every answer by adding the first three or four terms directly.',
+  homework: [
+    'Find ' + m('S₅') + ' for ' + m('2, 8, 32, …') + '.',
+    'Find ' + m('S₅') + ' for ' + m('243, 81, 27, …') + '.',
+    'How many terms of ' + m('1, 3, 9, …') + ' give a sum of ' + m('364') + '?',
+    'A GP has ' + m('b₁ = 6') + ' and ' + m('q = ' + f('1', '3')) + '. Find ' + m('S₄') + '.',
+    'Explain why the formula cannot be used when ' + m('q = 1') + ', and give the sum in that case.'
+  ]
+});
+
+/* ============================== 42 ============================== */
+G9_ALG.push({
+  id: 'a9-42', stream: 'alg', grade: 9, quarter: 4, lessons: '83–84', hours: 2,
+  title: 'The infinite decreasing geometric progression',
+  subtitle: 'Add infinitely many numbers and get a finite answer — provided each is small enough.',
+  uz: 'Algebra 9, §34', uzPage: 'pp. 201–206',
+  cam: 'IGX 11.7', camPage: 'Core & Extended, pp. 254–258', wb: 'Exercise 11.7',
+  objectives: [
+    'State the condition |q| < 1 for an infinite geometric sum to exist.',
+    'Use S = b₁/(1 − q) and explain where it comes from.',
+    'Convert a recurring decimal into a fraction by summing a GP.',
+    'Solve problems about total distance and repeated halving.'
+  ],
+  terms: [
+    ['Infinite progression', 'Cheksiz progressiya', 'Бесконечная прогрессия'],
+    ['Decreasing', 'Kamayuvchi', 'Убывающая'],
+    ['Sum of the progression', 'Progressiya yig‘indisi', 'Сумма прогрессии'],
+    ['Converges', 'Yaqinlashadi', 'Сходится'],
+    ['Diverges', 'Uzoqlashadi', 'Расходится'],
+    ['Recurring decimal', 'Davriy o‘nli kasr', 'Периодическая дробь'],
+    ['Limit', 'Limit', 'Предел'],
+    ['Condition', 'Shart', 'Условие']
+  ],
+  timing: [[18, 'When infinitely many terms have a sum'], [22, 'The formula'], [25, 'Recurring decimals'], [23, 'Distance problems'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'When infinitely many terms have a sum',
+      html: `<p>Consider ${m('1 + ' + f('1', '2') + ' + ' + f('1', '4') + ' + ' + f('1', '8') + ' + …')}.
+      The partial sums are ${m('1, 1.5, 1.75, 1.875, …')} — they climb, but never past ${m('2')}.</p>
+      {{fig:gpConverge:The partial sums of a decreasing GP creep towards a ceiling they never reach.}}
+      <p>Compare ${m('1 + 2 + 4 + 8 + …')}, whose partial sums are ${m('1, 3, 7, 15, …')} and run away
+      to infinity. The difference is entirely in ${m('q')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">|q|</th><th class="m">qⁿ</th><th>The sum</th></tr></thead>
+      <tbody>
+        <tr><td class="m">|q| < 1</td><td>shrinks to ${m('0')}</td><td>exists — the progression converges</td></tr>
+        <tr><td class="m">|q| ≥ 1</td><td>does not shrink</td><td>does not exist — it diverges</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">“Infinitely many” does not mean “infinitely large”</div>
+      This is the first place in school mathematics where an endless process has a finite answer, and it
+      is worth pausing on. The terms must shrink fast enough — and geometric shrinking, by a constant
+      factor each time, is fast enough.</div>`
+    },
+    {
+      h: 'The formula',
+      html: `<p>In ${m('Sₙ = ' + f('b₁(1 − qⁿ)', '1 − q'))}, if ${m('|q| < 1')} then ${m('qⁿ')} becomes
+      as small as you like as ${m('n')} grows. Dropping it:</p>
+      ${eq(m('S = ' + f('b₁', '1 − q')) + ',   ' + m('|q| < 1'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Progression</th><th class="m">b₁</th><th class="m">q</th><th class="m">S</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1, ${f('1', '2')}, ${f('1', '4')}, …</td><td class="m">1</td><td class="m">${f('1', '2')}</td><td class="m">2</td></tr>
+        <tr><td class="m">9, 3, 1, …</td><td class="m">9</td><td class="m">${f('1', '3')}</td><td class="m">${f('27', '2')}</td></tr>
+        <tr><td class="m">4, −2, 1, …</td><td class="m">4</td><td class="m">−${f('1', '2')}</td><td class="m">${f('8', '3')}</td></tr>
+        <tr><td class="m">1, 2, 4, …</td><td class="m">1</td><td class="m">2</td><td>none</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Check ${m('|q| < 1')} before writing the formula down</span>
+      Applying ${m(f('b₁', '1 − q'))} to ${m('1 + 2 + 4 + …')} gives ${m(f('1', '−1') + ' = −1')} — a
+      finite negative answer to a sum of positive numbers. The formula is not merely inaccurate outside
+      its condition; it is meaningless there.</div>`
+    },
+    {
+      h: 'Recurring decimals',
+      html: `<p>Every recurring decimal is an infinite GP in disguise, which is why every one of them is a
+      fraction.</p>
+      <p><b>Example.</b> ${m('0.3333… = ' + f('3', '10') + ' + ' + f('3', '100') + ' + ' + f('3', '1000') + ' + …')}
+      — a GP with ${m('b₁ = ' + f('3', '10'))} and ${m('q = ' + f('1', '10'))}:</p>
+      ${eq(m('S = ' + f(f('3', '10'), '1 − ' + f('1', '10')) + ' = ' + f(f('3', '10'), f('9', '10')) + ' = ' + f('1', '3')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Decimal</th><th class="m">b₁</th><th class="m">q</th><th>Fraction</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0.333…</td><td class="m">${f('3', '10')}</td><td class="m">${f('1', '10')}</td><td class="m">${f('1', '3')}</td></tr>
+        <tr><td class="m">0.777…</td><td class="m">${f('7', '10')}</td><td class="m">${f('1', '10')}</td><td class="m">${f('7', '9')}</td></tr>
+        <tr><td class="m">0.121212…</td><td class="m">${f('12', '100')}</td><td class="m">${f('1', '100')}</td><td class="m">${f('4', '33')}</td></tr>
+        <tr><td class="m">0.999…</td><td class="m">${f('9', '10')}</td><td class="m">${f('1', '10')}</td><td class="m">1</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">${m('0.999… = 1')}, and this is the proof</div>
+      Not “nearly ${m('1')}”, not “${m('1')} for practical purposes” — exactly ${m('1')}. The two
+      symbols name the same number, and the geometric sum above is the shortest honest demonstration
+      of it.</div>`
+    },
+    {
+      h: 'Distance problems',
+      html: `<p><b>A bouncing ball.</b> Dropped from ${m('h')} and rebounding to a fraction ${m('k')} of
+      its height, the total distance travelled before coming to rest is</p>
+      ${eq(m('h + 2hk + 2hk² + … = h + ' + f('2hk', '1 − k')), true)}
+      <p>The first drop is counted once; every later height is travelled twice, up and down. Forgetting
+      the factor ${m('2')}, or double-counting the first drop, are the two standard errors.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>dropped from ${m('2 m')}, rebound ${m('50%')}</td><td class="m">2 + ${f('2 · 2 · 0.5', '0.5')} = 6 m</td></tr>
+        <tr><td>a square of side ${m('1')}, each next joining midpoints</td><td>perimeters sum to ${m(f('4', '1 − ' + f(sr('2'), '2')))}</td></tr>
+        <tr><td>a pendulum swinging ${m('80%')} of the previous arc, first arc ${m('40 cm')}</td><td class="m">200 cm</td></tr>
+      </tbody></table></div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the sum of ' + m('9 + 3 + 1 + ' + f('1', '3') + ' + …') + '.',
+      steps: [
+        [m('b₁ = 9, q = ' + f('1', '3')), ''],
+        [m('|q| < 1') + ' ✓ — the sum exists.', ''],
+        [m('S = ' + f('9', '1 − ' + f('1', '3')) + ' = ' + f('9', f('2', '3'))), ''],
+        [m('= ' + f('27', '2') + ' = 13.5'), '']
+      ],
+      ans: m(f('27', '2'))
+    },
+    {
+      q: 'Write ' + m('0.121212…') + ' as a fraction.',
+      steps: [
+        [m('b₁ = ' + f('12', '100') + ', q = ' + f('1', '100')), ''],
+        [m('S = ' + f(f('12', '100'), '1 − ' + f('1', '100'))), ''],
+        [m('= ' + f('12', '99')), ''],
+        [m('= ' + f('4', '33')), 'Cancel by ' + m('3') + '.']
+      ],
+      ans: m(f('4', '33'))
+    },
+    {
+      q: 'A ball is dropped from ' + m('2 m') + ' and rebounds to half its height each time. Find the total distance travelled.',
+      steps: [
+        ['The first drop: ' + m('2 m') + '.', 'Counted once.'],
+        ['Then up and down ' + m('1, 0.5, 0.25, …') + ', each twice.', ''],
+        [m('2 · ' + f('1', '1 − 0.5') + ' = 4'), ''],
+        [m('2 + 4 = 6 m'), '']
+      ],
+      ans: m('6 m')
+    }
+  ],
+  modelNote: 'Walk half the distance to the wall, then half of what remains, and again; the class sees an endless process with a finite destination before any algebra is written.',
+  interactive: {
+    type: 'substitute',
+    title: 'Partial sums approaching a ceiling',
+    hint: 'Increase n and watch the sum settle.'
+  },
+  quiz: [
+    { q: 'An infinite GP has a sum when:', a: [m('q > 0'), m('|q| < 1'), m('q > 1'), 'always'], c: 1, why: 'The terms must shrink.' },
+    { q: m('S') + ' equals:', a: [m(f('b₁', '1 − q')), m(f('b₁', '1 + q')), m(f('1 − q', 'b₁')), m('b₁ q')], c: 0, why: 'Drop ' + m('qⁿ') + '.' },
+    { q: m('1 + ' + f('1', '2') + ' + ' + f('1', '4') + ' + …') + ' equals:', a: [m('1.5'), m('2'), m('∞'), m('2.5')], c: 1, why: m(f('1', '1 − 0.5')) + '.' },
+    { q: m('0.999…') + ' equals:', a: ['nearly ' + m('1'), m('1'), m('0.99'), m(f('9', '10'))], c: 1, why: 'Exactly — the sum is ' + m('1') + '.' },
+    { q: m('1 + 2 + 4 + …') + ' has:', a: [m('−1'), 'no sum', m('∞') + ' as an answer', m('2')], c: 1, why: m('|q| ≥ 1') + '.' },
+    { q: m('0.333…') + ' equals:', a: [m(f('1', '3')), m(f('3', '10')), m(f('33', '100')), m(f('1', '9'))], c: 0, why: 'A GP with ' + m('q = 0.1') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('1 + ' + f('1', '2') + ' + ' + f('1', '4') + ' + …'), m('2')],
+      [m('9 + 3 + 1 + …'), m(f('27', '2'))],
+      [m('b₁ = 6, q = ' + f('1', '3')) + ': ' + m('S'), m('9')],
+      [m('b₁ = 4, q = −' + f('1', '2')) + ': ' + m('S'), m(f('8', '3'))],
+      ['Does ' + m('1 + 2 + 4 + …') + ' have a sum?', 'No'],
+      [m('0.333…') + ' as a fraction', m(f('1', '3'))],
+      [m('0.777…') + ' as a fraction', m(f('7', '9'))]
+    ],
+    med: [
+      [m('0.121212…') + ' as a fraction', m(f('4', '33'))],
+      [m('0.999…'), m('1')],
+      [m('b₁ = 12, q = 0.25') + ': ' + m('S'), m('16')],
+      [m('S = 8') + ' and ' + m('q = ' + f('1', '2')) + ': find ' + m('b₁'), m('4')],
+      [m('S = 27') + ' and ' + m('b₁ = 18') + ': find ' + m('q'), m(f('1', '3'))],
+      ['Ball from ' + m('2 m') + ', rebound ' + m('50%') + ': total distance', m('6 m')],
+      ['Pendulum, first arc ' + m('40 cm') + ', each ' + m('80%') + ': total', m('200 cm')]
+    ],
+    hard: [
+      [m('0.4545…') + ' as a fraction', m(f('5', '11'))],
+      [m('0.1666…') + ' as a fraction', m(f('1', '6'))],
+      ['Ball from ' + m('10 m') + ', rebound ' + m(f('2', '3')) + ': total distance', m('50 m')],
+      ['An infinite GP has ' + m('S = 9') + ' and ' + m('b₁ = 6') + ': find ' + m('b₃'), m(f('2', '3'))],
+      ['For which ' + m('x') + ' does ' + m('1 + x + x² + …') + ' have a sum?', m('−1 < x < 1')],
+      ['Sum that progression when ' + m('x = ' + f('1', '4')), m(f('4', '3'))],
+      ['Squares: side ' + m('1') + ', each next joining midpoints. Sum of the areas', m('2')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'State ' + m('|q| < 1') + ' explicitly before using the formula, every time.',
+  homework: [
+    'Find the sum of ' + m('16 + 4 + 1 + ' + f('1', '4') + ' + …') + '.',
+    'Write ' + m('0.636363…') + ' as a fraction.',
+    'An infinite GP has ' + m('S = 12') + ' and ' + m('q = ' + f('2', '3')) + '. Find ' + m('b₁') + '.',
+    'A ball dropped from ' + m('3 m') + ' rebounds to ' + m(f('1', '3')) + ' of its height. Find the total distance.',
+    'Explain why ' + m('2 + 4 + 8 + …') + ' has no sum.'
+  ]
+});
+
+/* ============================== 43 ============================== */
+G9_ALG.push({
+  id: 'a9-43', stream: 'alg', grade: 9, quarter: 4, lessons: '85', hours: 1,
+  title: 'Chapter exercises — Cambridge sequences and the nth-term test',
+  subtitle: 'The same progressions, in the language and the question style of an IGCSE paper.',
+  uz: 'Algebra 9, IV bob mashqlari', uzPage: 'pp. 207–210',
+  cam: 'IGX 11 review', camPage: 'Core & Extended, pp. 259–264', wb: 'Exercise 11 review',
+  objectives: [
+    'Find the nth term of a linear, a quadratic and a geometric sequence.',
+    'Use the second-difference method on a quadratic sequence.',
+    'Answer in the phrasing Cambridge expects: “write down an expression for the nth term”.',
+    'Decide which type a sequence is before choosing a method.'
+  ],
+  terms: [
+    ['Linear sequence', 'Chiziqli ketma-ketlik', 'Линейная последовательность'],
+    ['Quadratic sequence', 'Kvadratik ketma-ketlik', 'Квадратичная последовательность'],
+    ['First difference', 'Birinchi ayirma', 'Первая разность'],
+    ['Second difference', 'Ikkinchi ayirma', 'Вторая разность'],
+    ['Expression', 'Ifoda', 'Выражение'],
+    ['Position', 'O‘rin', 'Позиция'],
+    ['Pattern', 'Naqsh', 'Закономерность'],
+    ['Justify', 'Asoslash', 'Обосновать']
+  ],
+  timing: [[8, 'Which type is it?'], [12, 'Linear and geometric'], [15, 'Quadratic sequences'], [8, 'Exam phrasing'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'Which type is it?',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Test</th><th>If constant</th><th>Type</th><th>${m('n')}th term</th></tr></thead>
+      <tbody>
+        <tr><td>first differences</td><td class="m">d</td><td>linear (AP)</td><td class="m">dn + c</td></tr>
+        <tr><td>second differences</td><td class="m">2a</td><td>quadratic</td><td class="m">an² + bn + c</td></tr>
+        <tr><td>ratios</td><td class="m">q</td><td>geometric (GP)</td><td class="m">b₁q${p('', 'n−1')}</td></tr>
+      </tbody></table></div>
+      <p>Run the three tests in that order. It takes fifteen seconds and it decides everything that
+      follows.</p>
+      <div class="keybox"><div class="klabel">Cambridge asks for the ${m('n')}th term far more often than for a particular term</div>
+      An Uzbek paper says “find ${m('a₂₀')}”; an IGCSE paper says “write down an expression for the
+      ${m('n')}th term”. The second is harder and is worth practising directly.</div>`
+    },
+    {
+      h: 'Linear and geometric',
+      html: `<p><b>Linear.</b> ${m('5, 8, 11, 14, …')} has ${m('d = 3')}, so the ${m('n')}th term is
+      ${m('3n')} plus a correction. At ${m('n = 1')}, ${m('3 · 1 = 3')} but the term is ${m('5')}, so add
+      ${m('2')}: the answer is ${m('3n + 2')}.</p>
+      <p><b>Geometric.</b> ${m('3, 6, 12, 24, …')} has ${m('q = 2')}, so the ${m('n')}th term is
+      ${m('3 · 2')}${p('', 'n−1')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sequence</th><th>${m('n')}th term</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5, 8, 11, 14, …</td><td class="m">3n + 2</td></tr>
+        <tr><td class="m">20, 17, 14, …</td><td class="m">23 − 3n</td></tr>
+        <tr><td class="m">3, 6, 12, 24, …</td><td class="m">3 · 2${p('', 'n−1')}</td></tr>
+        <tr><td class="m">2, −6, 18, …</td><td class="m">2(−3)${p('', 'n−1')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Always test your expression at ${m('n = 1')}</span>
+      It costs two seconds and catches the “off by ${m('d')}” error that this topic generates more than
+      any other.</div>`
+    },
+    {
+      h: 'Quadratic sequences',
+      html: `<p>If the first differences are not constant but the <b>second</b> differences are, the
+      sequence is quadratic.</p>
+      <p><b>Example.</b> ${m('3, 8, 15, 24, 35, …')}</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Terms</th><th class="m">3</th><th class="m">8</th><th class="m">15</th><th class="m">24</th><th class="m">35</th></tr></thead>
+      <tbody>
+        <tr><td>first differences</td><td></td><td class="m">5</td><td class="m">7</td><td class="m">9</td><td class="m">11</td></tr>
+        <tr><td>second differences</td><td></td><td></td><td class="m">2</td><td class="m">2</td><td class="m">2</td></tr>
+      </tbody></table></div>
+      <p>The second difference is ${m('2a')}, so ${m('a = 1')}. Subtracting ${m('n²')} from the terms
+      leaves ${m('2, 4, 6, 8, 10')} — which is ${m('2n')}. So the ${m('n')}th term is ${m('n² + 2n')},
+      and a check at ${m('n = 1')} gives ${m('3')} ✓.</p>
+      <div class="keybox"><div class="klabel">The method in one line</div>
+      Halve the second difference to get ${m('a')}; subtract ${m('an²')} from every term; what remains is
+      linear, and you already know how to do that.</div>`
+    },
+    {
+      h: 'Exam phrasing',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Cambridge says</th><th>You must give</th></tr></thead>
+      <tbody>
+        <tr><td>“write down the next two terms”</td><td>two numbers</td></tr>
+        <tr><td>“write down an expression for the ${m('n')}th term”</td><td>a formula in ${m('n')}</td></tr>
+        <tr><td>“show that the ${m('n')}th term is…”</td><td>the working, not just the answer</td></tr>
+        <tr><td>“explain why ${m('50')} is not a term”</td><td>a sentence with a reason</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">“Explain” and “show that” carry the marks in the words</span>
+      A correct number with no sentence scores zero on an “explain” question. “Because ${m('3n + 2 = 50')}
+      gives ${m('n = 16')}, which is a whole number, ${m('50')} <b>is</b> a term” — that is the answer,
+      including the reason.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Write down an expression for the ' + m('n') + 'th term of ' + m('5, 8, 11, 14, …') + '.',
+      steps: [
+        ['First differences: all ' + m('3') + ' — linear.', ''],
+        ['Start from ' + m('3n') + '.', ''],
+        ['At ' + m('n = 1') + ': ' + m('3') + ', but the term is ' + m('5') + '.', 'Add ' + m('2') + '.'],
+        [m('3n + 2'), 'Check ' + m('n = 4') + ': ' + m('14') + ' ✓']
+      ],
+      ans: m('3n + 2')
+    },
+    {
+      q: 'Find the ' + m('n') + 'th term of ' + m('3, 8, 15, 24, 35, …') + '.',
+      steps: [
+        ['First differences ' + m('5, 7, 9, 11') + '; second differences all ' + m('2') + '.', 'Quadratic.'],
+        [m('2a = 2 ⇒ a = 1') + '.', ''],
+        ['Subtract ' + m('n²') + ': ' + m('2, 4, 6, 8, 10') + ' — that is ' + m('2n') + '.', ''],
+        [m('n² + 2n'), 'Check ' + m('n = 1') + ': ' + m('3') + ' ✓']
+      ],
+      ans: m('n² + 2n')
+    },
+    {
+      q: 'Explain why ' + m('50') + ' is not a term of ' + m('2, 6, 18, 54, …') + '.',
+      steps: [
+        ['Ratios all ' + m('3') + ' — geometric, ' + m('n') + 'th term ' + m('2 · 3') + p('', 'n−1') + '.', ''],
+        ['Solve ' + m('2 · 3') + p('', 'n−1') + m(' = 50') + '.', ''],
+        [m('3') + p('', 'n−1') + m(' = 25') + ' — not a power of ' + m('3') + '.', ''],
+        ['So there is no whole ' + m('n') + ', and ' + m('50') + ' is not a term.', 'The sentence is the answer.']
+      ],
+      ans: 'Not a term — ' + m('25') + ' is not a power of ' + m('3')
+    }
+  ],
+  modelNote: 'Give one linear, one quadratic and one geometric sequence unlabelled and let the class sort them by running the three tests; the sorting is the skill being taught.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which type, and what is the nth term?',
+    hint: 'Differences, then second differences, then ratios.'
+  },
+  quiz: [
+    { q: 'Constant first differences mean:', a: ['linear', 'quadratic', 'geometric', 'none'], c: 0, why: 'An AP.' },
+    { q: 'Constant second differences mean:', a: ['linear', 'quadratic', 'geometric', 'none'], c: 1, why: m('an² + bn + c') + '.' },
+    { q: 'Constant ratios mean:', a: ['linear', 'quadratic', 'geometric', 'none'], c: 2, why: 'A GP.' },
+    { q: 'The ' + m('n') + 'th term of ' + m('5, 8, 11, …') + ':', a: [m('3n'), m('3n + 2'), m('3n − 2'), m('5n')], c: 1, why: 'Check at ' + m('n = 1') + '.' },
+    { q: 'Second difference ' + m('2') + ' gives ' + m('a') + ' =', a: [m('1'), m('2'), m('4'), m(f('1', '2'))], c: 0, why: 'Halve it.' },
+    { q: 'An “explain” question needs:', a: ['a number', 'a sentence with a reason', 'a graph', 'a table'], c: 1, why: 'The words carry the marks.' }
+  ],
+  practice: {
+    easy: [
+      [m('n') + 'th term of ' + m('2, 4, 6, 8, …'), m('2n')],
+      [m('n') + 'th term of ' + m('5, 8, 11, …'), m('3n + 2')],
+      [m('n') + 'th term of ' + m('20, 17, 14, …'), m('23 − 3n')],
+      [m('n') + 'th term of ' + m('3, 6, 12, 24, …'), m('3 · 2') + p('', 'n−1')],
+      ['Next two terms of ' + m('1, 4, 9, 16, …'), m('25, 36')],
+      ['Type of ' + m('2, 6, 18, 54, …'), 'Geometric'],
+      ['Type of ' + m('1, 3, 6, 10, …'), 'Quadratic']
+    ],
+    med: [
+      [m('n') + 'th term of ' + m('3, 8, 15, 24, …'), m('n² + 2n')],
+      [m('n') + 'th term of ' + m('1, 4, 9, 16, …'), m('n²')],
+      [m('n') + 'th term of ' + m('2, 5, 10, 17, …'), m('n² + 1')],
+      [m('n') + 'th term of ' + m('2, −6, 18, …'), m('2(−3)') + p('', 'n−1')],
+      ['Is ' + m('50') + ' a term of ' + m('2, 6, 18, …') + '?', 'No'],
+      ['Is ' + m('50') + ' a term of ' + m('5, 8, 11, …') + '?', 'Yes — the 16th'],
+      [m('n') + 'th term of ' + m('1, 3, 6, 10, …'), m(f('n(n + 1)', '2'))]
+    ],
+    hard: [
+      [m('n') + 'th term of ' + m('4, 11, 22, 37, …'), m('2n² + n + 1')],
+      [m('n') + 'th term of ' + m('0, 3, 8, 15, …'), m('n² − 1')],
+      [m('n') + 'th term of ' + m('5, 11, 21, 35, …'), m('2n² + 3')],
+      ['Which term of ' + m('n² + 2n') + ' equals ' + m('120') + '?', 'The 10th'],
+      ['Explain why ' + m('100') + ' is not a term of ' + m('n² + 2n'), m('n² + 2n = 100') + ' has no whole root'],
+      [m('n') + 'th term of ' + m('1, 2, 4, 8, …') + ' and of ' + m('1, 2, 4, 7, …'), m('2') + p('', 'n−1') + ' and ' + m(f('n² − n + 2', '2'))],
+      ['A sequence has ' + m('n') + 'th term ' + m('n² − 10n') + '. Its least term', m('−25') + ', at ' + m('n = 5')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Test every expression at ' + m('n = 1') + ' and at ' + m('n = 3') + ' before writing it down as final.',
+  homework: [
+    'Write an expression for the ' + m('n') + 'th term of ' + m('7, 12, 17, 22, …') + '.',
+    'Write an expression for the ' + m('n') + 'th term of ' + m('2, 8, 18, 32, …') + '.',
+    'Write an expression for the ' + m('n') + 'th term of ' + m('5, 15, 45, …') + '.',
+    'Explain why ' + m('60') + ' is not a term of ' + m('7, 12, 17, …') + '.',
+    'Find the ' + m('n') + 'th term of ' + m('6, 11, 18, 27, …') + '.'
+  ]
+});
