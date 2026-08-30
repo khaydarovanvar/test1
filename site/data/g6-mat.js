@@ -14779,3 +14779,188 @@ G6_MAT.push({
     'Explain in one sentence why a cuboid is a kind of prism.'
   ]
 });
+
+/* ============================== 83 ============================== */
+G6_MAT.push({
+  id: 'g6-83', stream: 'mat', grade: 6, quarter: 4, lessons: '176–178', hours: 3,
+  title: 'The cone, the cylinder, the prism and the pyramid',
+  subtitle: 'Four families of solid, told apart by their cross-sections — and one volume rule that covers two of them.',
+  uz: 'Matematika 6, §34', uzPage: 'pp. 502–511',
+  cam: 'S7 8.4 3-D shapes', camPage: 'Stage 7, pp. 84–90', wb: 'Exercise 8.4',
+  objectives: [
+    'Describe a prism by its cross-section and count its parts.',
+    'Describe a cylinder, a cone and a pyramid, naming their surfaces.',
+    'Find the volume of a prism as base area times height.',
+    'Find the volume and the curved surface of a cylinder.'
+  ],
+  terms: [
+    ['Cross-section', 'Kesim', 'Поперечное сечение'],
+    ['Prism', 'Prizma', 'Призма'],
+    ['Cylinder', 'Silindr', 'Цилиндр'],
+    ['Cone', 'Konus', 'Конус'],
+    ['Pyramid', 'Piramida', 'Пирамида'],
+    ['Apex', 'Uchi (cho‘qqi)', 'Вершина'],
+    ['Curved surface', 'Yon sirt', 'Боковая поверхность'],
+    ['Base area', 'Asos yuzasi', 'Площадь основания']
+  ],
+  timing: [[30, 'Prisms and the cross-section'], [30, 'The cylinder'], [30, 'Pyramids and the cone'], [25, 'The volume of a prism'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Prisms and the cross-section',
+      html: `<p>A prism has two identical ends joined by rectangles. Slice it anywhere across and the face
+      you expose is always that same shape — its <b>cross-section</b>.</p>
+      {{fig:prismSection:Cutting a prism across gives the same shape every time}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Prism</th><th>Cross-section</th><th>Faces</th><th>Edges</th><th>Vertices</th></tr></thead>
+      <tbody>
+        <tr><td>cuboid</td><td>rectangle</td><td class="m">6</td><td class="m">12</td><td class="m">8</td></tr>
+        <tr><td>triangular prism</td><td>triangle</td><td class="m">5</td><td class="m">9</td><td class="m">6</td></tr>
+        <tr><td>pentagonal prism</td><td>pentagon</td><td class="m">7</td><td class="m">15</td><td class="m">10</td></tr>
+        <tr><td>hexagonal prism</td><td>hexagon</td><td class="m">8</td><td class="m">18</td><td class="m">12</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A cuboid is a prism, and so is a cube</div>
+      Nothing new has to be learnt for them: they are the case where the cross-section happens to be a
+      rectangle or a square.</div>`
+    },
+    {
+      h: 'The cylinder',
+      html: `<p>A cylinder is a prism whose cross-section is a circle — except that its “rectangles” have
+      curled into a single curved surface.</p>
+      {{fig:cylinderNet:The net of a cylinder — two circles and one rectangle}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Part</th><th>Shape</th><th>Its measurement</th></tr></thead>
+      <tbody>
+        <tr><td>the two ends</td><td>circles of radius ${m('r')}</td><td class="m">πr² each</td></tr>
+        <tr><td>the curved surface</td><td>a rectangle when unrolled</td><td class="m">2πr × h</td></tr>
+        <tr><td>the whole surface</td><td>both together</td><td class="m">2πr² + 2πrh</td></tr>
+      </tbody></table></div>
+      <p>The unrolled rectangle is as long as the circle it came from — that is why its width is the
+      circumference ${m('2πr')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Cylinder</th><th>End area</th><th>Curved surface</th><th>Total surface</th></tr></thead>
+      <tbody>
+        <tr><td class="m">r = 5, h = 10</td><td class="m">78.5 cm²</td><td class="m">314 cm²</td><td class="m">471 cm²</td></tr>
+        <tr><td class="m">r = 3, h = 8</td><td class="m">28.3 cm²</td><td class="m">150.7 cm²</td><td class="m">207.2 cm²</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Take ${m('π ≈ 3.14')} and say so</span>
+      Every answer here is rounded. Writing “taking ${m('π = 3.14')}” beside the working is what makes
+      ${m('471')} a correct answer rather than an approximate one.</div>`
+    },
+    {
+      h: 'Pyramids and the cone',
+      html: `<p>A pyramid has one base and triangles rising to a single point, the <b>apex</b>. A cone is the
+      same idea with a circular base and one curved surface.</p>
+      {{fig:coneNet:The net of a cone — a circle and a sector}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Base</th><th>Sides</th><th>Faces</th><th>Edges</th><th>Vertices</th></tr></thead>
+      <tbody>
+        <tr><td>triangular pyramid</td><td>triangle</td><td>${m('3')} triangles</td><td class="m">4</td><td class="m">6</td><td class="m">4</td></tr>
+        <tr><td>square pyramid</td><td>square</td><td>${m('4')} triangles</td><td class="m">5</td><td class="m">8</td><td class="m">5</td></tr>
+        <tr><td>hexagonal pyramid</td><td>hexagon</td><td>${m('6')} triangles</td><td class="m">7</td><td class="m">12</td><td class="m">7</td></tr>
+        <tr><td>cone</td><td>circle</td><td>one curved surface</td><td class="m">1 flat</td><td>one curved edge</td><td class="m">1 apex</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A pyramid holds a third of the prism on the same base</div>
+      Pour sand from a pyramid into a prism of the same base and height and it fills exactly one third of
+      it — and a cone fills a third of its cylinder. Grade 11 proves it; a jug of sand shows it today.</div>`
+    },
+    {
+      h: 'The volume of a prism',
+      html: `<p>The cuboid rule ${m('V = abc')} was really ${m('(a · b)')} — a base area — multiplied by the
+      height. That is true of every prism, whatever its cross-section.</p>
+      ${eq(m('V = base area × height'), true)}
+      {{fig:prismVolume:Base area times height — the rule for every prism}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Prism</th><th>Cross-section area</th><th>Length</th><th>Volume</th></tr></thead>
+      <tbody>
+        <tr><td>triangular, base ${m('6')} by height ${m('4')}</td><td class="m">12 cm²</td><td class="m">10 cm</td><td class="m">120 cm³</td></tr>
+        <tr><td>trapezium ended</td><td class="m">20 cm²</td><td class="m">8 cm</td><td class="m">160 cm³</td></tr>
+        <tr><td>cylinder, ${m('r = 5')}</td><td class="m">78.5 cm²</td><td class="m">10 cm</td><td class="m">785 cm³</td></tr>
+        <tr><td>cylinder, ${m('r = 3')}</td><td class="m">28.3 cm²</td><td class="m">8 cm</td><td class="m">226 cm³</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One rule, four solids</div>
+      Find the area of the end, multiply by the length. The only work that changes from one prism to the
+      next is the area of the cross-section — a triangle, a trapezium, or a circle.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A triangular prism has a cross-section with base ' + m('6') + ' cm and height ' + m('4') + ' cm, and is ' + m('10') + ' cm long. Find its volume.',
+      steps: [
+        ['Cross-section ' + m(f('1', '2') + ' · 6 · 4 = 12') + ' cm².', ''],
+        [m('12 · 10') + '.', ''],
+        [m('= 120') + ' cm³.', 'Area in ' + m('cm²') + ' times a length ✓']
+      ],
+      ans: m('120') + ' cm³'
+    },
+    {
+      q: 'A cylinder has radius ' + m('5') + ' cm and height ' + m('10') + ' cm. Find its volume, taking ' + m('π = 3.14') + '.',
+      steps: [
+        ['End area ' + m('3.14 · 25 = 78.5') + ' cm².', ''],
+        [m('78.5 · 10') + '.', ''],
+        [m('= 785') + ' cm³.', 'Taking ' + m('π = 3.14') + ' ✓']
+      ],
+      ans: m('785') + ' cm³'
+    },
+    {
+      q: 'A prism has volume ' + m('240') + ' cm³ and length ' + m('8') + ' cm. Find the area of its cross-section.',
+      steps: [
+        [m('V = ') + ' area ' + m('× 8') + '.', ''],
+        [m('240 ÷ 8') + '.', ''],
+        [m('= 30') + ' cm².', m('cm³ ÷ cm = cm²') + ' ✓']
+      ],
+      ans: m('30') + ' cm²'
+    }
+  ],
+  modelNote: 'Set the base of the model to four sides and then to many; as the polygon rounds off into a circle the prism becomes a cylinder in front of the class.',
+  interactive: {
+    type: 'solidVolume',
+    title: 'Base area times height',
+    hint: 'Change the number of sides in the base. The rule never changes — only the area of the end.'
+  },
+  quiz: [
+    { q: 'The cross-section of a prism is:', a: ['different at each cut', 'the same at every cut', 'always a circle', 'always a triangle'], c: 1, why: 'That is what makes it a prism.' },
+    { q: 'A cylinder has:', a: [m('2') + ' flat faces and ' + m('1') + ' curved', m('3') + ' flat faces', m('1') + ' flat face', 'no faces'], c: 0, why: 'Two circles and a tube.' },
+    { q: 'A cone has how many apexes?', a: [m('0'), m('1'), m('2'), m('4')], c: 1, why: 'The single point at the top.' },
+    { q: 'The volume of any prism is:', a: ['base × height ÷ 3', 'base area × height', 'base + height', 'base area ÷ height'], c: 1, why: 'Layers of the cross-section.' },
+    { q: 'A cylinder of radius ' + m('5') + ' and height ' + m('10') + ' holds (taking ' + m('π = 3.14') + '):', a: [m('157'), m('314'), m('785'), m('78.5')], c: 2, why: m('78.5 · 10') + '.' },
+    { q: 'The curved surface of a cylinder unrolls into:', a: ['a circle', 'a rectangle', 'a triangle', 'a sector'], c: 1, why: 'Of width ' + m('2πr') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['The cross-section of a prism is', 'The same all along'],
+      ['The faces of a cylinder', m('2') + ' flat and ' + m('1') + ' curved'],
+      ['The faces of a cone', m('1') + ' flat and ' + m('1') + ' curved'],
+      ['The volume of a prism', 'Base area × height'],
+      ['A prism of cross-section ' + m('12') + ' cm² and length ' + m('10') + ' cm', m('120') + ' cm³'],
+      ['The cross-section of a cuboid', 'A rectangle'],
+      ['The point at the top of a cone', 'The apex']
+    ],
+    med: [
+      ['A prism of cross-section ' + m('20') + ' cm² and length ' + m('8') + ' cm', m('160') + ' cm³'],
+      ['A cylinder of ' + m('r = 5') + ' cm and ' + m('h = 10') + ' cm, ' + m('π = 3.14'), m('785') + ' cm³'],
+      ['A cylinder of ' + m('r = 3') + ' cm and ' + m('h = 8') + ' cm', m('226') + ' cm³'],
+      ['The area of a circle of radius ' + m('5') + ' cm', m('78.5') + ' cm²'],
+      ['The curved surface of a cylinder ' + m('r = 5') + ', ' + m('h = 10'), m('314') + ' cm²'],
+      ['The faces of a pyramid on a square base', m('5')],
+      ['The net of a cone', 'A circle and a sector']
+    ],
+    hard: [
+      ['A cylinder of ' + m('r = 7') + ' cm and ' + m('h = 10') + ' cm', m('1539') + ' cm³'],
+      ['The total surface of a cylinder ' + m('r = 5') + ', ' + m('h = 10'), m('471') + ' cm²'],
+      ['A triangular prism, cross-section base ' + m('6') + ' height ' + m('4') + ', length ' + m('10'), m('120') + ' cm³'],
+      ['A pyramid on the same base and height as a prism holds', 'A third as much'],
+      ['A prism of volume ' + m('240') + ' cm³ and length ' + m('8') + ' cm: its cross-section', m('30') + ' cm²'],
+      ['A cylinder of volume ' + m('628') + ' cm³ and radius ' + m('5') + ' cm: its height', m('8') + ' cm'],
+      ['Which solid has a circular cross-section all along?', 'The cylinder']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write “taking ' + m('π = 3.14') + '” beside every answer that uses it.',
+  homework: [
+    'A prism has cross-section ' + m('15') + ' cm² and length ' + m('12') + ' cm. Find its volume.',
+    'A cylinder has radius ' + m('4') + ' cm and height ' + m('10') + ' cm. Find its volume.',
+    'Find the curved surface area of that cylinder.',
+    'Count the faces, edges and vertices of a pentagonal prism.',
+    'Name the cross-section of a cuboid, a cylinder and a triangular prism.'
+  ]
+});
