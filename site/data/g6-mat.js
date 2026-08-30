@@ -13706,3 +13706,175 @@ G6_MAT.push({
     'Write two questions that a pie chart on its own cannot answer.'
   ]
 });
+
+/* ============================== 77 ============================== */
+G6_MAT.push({
+  id: 'g6-77', stream: 'mat', grade: 6, quarter: 4, lessons: '167', hours: 1,
+  title: 'Control work 9 — data handling',
+  subtitle: 'Frequency tables, the three averages, and pie charts drawn and read.',
+  uz: 'Matematika 6, Nazorat ishi 9', uzPage: 'pp. 449–479',
+  cam: 'S7 6 and 16 review', camPage: 'Stage 7, pp. 58–184', wb: 'Control paper 9',
+  objectives: [
+    'Complete a frequency table and find its total.',
+    'Find the mean, median, mode and range from a table.',
+    'Turn a frequency into a sector angle and back again.',
+    'Name each lost mark by its type and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Frequency table', 'Chastotalar jadvali', 'Таблица частот'],
+    ['Mean', 'O‘rtacha arifmetik', 'Среднее арифметическое'],
+    ['Median', 'Mediana', 'Медиана'],
+    ['Mode', 'Moda', 'Мода'],
+    ['Range', 'Farq (kenglik)', 'Размах'],
+    ['Sector angle', 'Sektor burchagi', 'Угол сектора'],
+    ['Bias', 'Yon bosish', 'Смещение']
+  ],
+  timing: [[2, 'Instructions'], [28, 'The paper'], [8, 'Answers and diagnosis'], [2, 'What comes next']],
+  sections: [
+    {
+      h: 'The paper — 20 marks, 28 minutes',
+      html: `<p>Questions 1 to 4 use this table of marks out of ten for one class.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Mark</th><th class="m">5</th><th class="m">6</th><th class="m">7</th><th class="m">8</th></tr></thead>
+      <tbody>
+        <tr><td>frequency</td><td class="m">3</td><td class="m">6</td><td class="m">7</td><td class="m">4</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>The number of pupils in the class</td><td class="m">2</td><td>L157</td></tr>
+        <tr><td>2</td><td>The mode and the range</td><td class="m">3</td><td>L157</td></tr>
+        <tr><td>3</td><td>The median</td><td class="m">3</td><td>L157</td></tr>
+        <tr><td>4</td><td>The mean</td><td class="m">3</td><td>L157</td></tr>
+        <tr><td>5</td><td>A survey of ${m('45')} pupils: the sector angle for a group of ${m('10')}</td><td class="m">3</td><td>L160–163</td></tr>
+        <tr><td>6</td><td>A pie chart of ${m('200')} people has a ${m('63°')} sector: how many people?</td><td class="m">3</td><td>L164–166</td></tr>
+        <tr><td>7</td><td>Express ${m('108°')} as a percentage of the whole</td><td class="m">2</td><td>L164–166</td></tr>
+        <tr><td>8</td><td>Give one reason a survey of the school football team is biased</td><td class="m">1</td><td>L158–159</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The answers</div>
+      ${m('20')} pupils; mode ${m('7')}, range ${m('3')}; median ${m('7')}; mean ${m('6.6')}; ${m('80°')};
+      ${m('35')} people; ${m('30')}%; the team already prefers football.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>the mean divided by the number of marks</td><td class="m">132 ÷ 4</td><td class="m">132 ÷ 20</td></tr>
+        <tr><td>the range given as an interval</td><td class="m">5 to 8</td><td class="m">3</td></tr>
+        <tr><td>the median taken as the middle mark of the row</td><td class="m">6.5</td><td class="m">7</td></tr>
+        <tr><td>the angle taken as the frequency over the total</td><td class="m">10 ÷ 45</td><td class="m">10 · 8 = 80°</td></tr>
+        <tr><td>the sector read as the number of people</td><td class="m">63</td><td class="m">35</td></tr>
+        <tr><td>the percentage division reversed</td><td class="m">3.6 ÷ 108</td><td class="m">108 ÷ 3.6</td></tr>
+        <tr><td>the degree sign missing</td><td class="m">80</td><td class="m">80°</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'What comes next',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>If you lost marks on</th><th>Revise</th></tr></thead>
+      <tbody>
+        <tr><td>Q1–Q4</td><td>frequency tables and the averages, L157</td></tr>
+        <tr><td>Q5</td><td>drawing a pie chart, L160–163</td></tr>
+        <tr><td>Q6–Q7</td><td>reading a pie chart, L164–166</td></tr>
+        <tr><td>Q8</td><td>samples and bias, L158–159</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      Next comes the choice of chart for a given kind of data, then graphs of relationships, probability,
+      the transformations on a grid, and the three-dimensional shapes.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q3: the median of the twenty marks.',
+      steps: [
+        ['With ' + m('20') + ' values the median is between the ' + m('10') + 'th and ' + m('11') + 'th.', ''],
+        ['Cumulative frequencies: ' + m('3, 9, 16, 20') + '.', 'Both fall in the mark ' + m('7') + '.'],
+        ['The median is ' + m('7') + '.', '']
+      ],
+      ans: m('7')
+    },
+    {
+      q: 'Model answer, Q5: ' + m('45') + ' pupils, a group of ' + m('10') + '.',
+      steps: [
+        [m('360 ÷ 45 = 8°') + ' for each pupil.', 'What one person is worth.'],
+        [m('10 · 8') + '.', ''],
+        [m('= 80°') + '.', 'Under a quarter of the circle ✓']
+      ],
+      ans: m('80°')
+    },
+    {
+      q: 'Model answer, Q6: a ' + m('63°') + ' sector of ' + m('200') + ' people.',
+      steps: [
+        [m(f('63', '360')) + ' of the survey.', ''],
+        [m(f('63', '360') + ' · 200') + '.', ''],
+        [m('= 35') + ' people.', 'Under a fifth of ' + m('200') + ' ✓']
+      ],
+      ans: m('35') + ' people'
+    }
+  ],
+  modelNote: 'Return Q4 first and ask who divided by four; naming it as “dividing by the number of different marks” fixes it permanently.',
+  interactive: {
+    type: 'quiz',
+    title: 'The paper in eight questions',
+    hint: 'Check whether the question wants a share or a number.',
+    items: [
+      { q: 'Frequencies ' + m('3, 6, 7, 4') + ' give a class of:', a: [m('4'), m('16'), m('20'), m('26')], c: 2, why: 'Add the frequencies.' },
+      { q: 'The mode of that table is:', a: [m('6'), m('7'), m('8'), m('3')], c: 1, why: 'The largest frequency.' },
+      { q: 'The range is:', a: [m('3'), m('5'), m('8'), m('13')], c: 0, why: m('8 − 5') + '.' },
+      { q: 'The median is:', a: [m('6'), m('6.5'), m('7'), m('7.5')], c: 2, why: 'The 10th and 11th values.' },
+      { q: 'The mean is:', a: [m('6.6'), m('33'), m('7'), m('6.5')], c: 0, why: m('132 ÷ 20') + '.' },
+      { q: 'With ' + m('45') + ' pupils, ' + m('10') + ' of them take:', a: [m('45°'), m('80°'), m('10°'), m('36°')], c: 1, why: m('10 · 8') + '.' },
+      { q: 'A ' + m('63°') + ' sector of ' + m('200') + ' people is:', a: [m('63'), m('35'), m('50'), m('20')], c: 1, why: m(f('63', '360') + ' · 200') + '.' },
+      { q: m('108°') + ' as a percentage is:', a: [m('10.8') + '%', m('30') + '%', m('36') + '%', m('108') + '%'], c: 1, why: m('108 ÷ 3.6') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 is answered by:', a: ['adding the marks', 'adding the frequencies', 'counting the columns', 'dividing'], c: 1, why: 'The frequencies are the people.' },
+    { q: 'Q4 divides the total of the marks by:', a: [m('4'), m('20'), m('132'), m('8')], c: 1, why: 'The number of pupils.' },
+    { q: 'Q5 first finds:', a: ['the percentage', 'what one pupil is worth', 'the total angle', 'the median'], c: 1, why: m('360 ÷ 45') + '.' },
+    { q: 'Q6 needs:', a: ['the angle only', 'the angle and the total', 'the total only', 'the mode'], c: 1, why: 'A share of a known number.' },
+    { q: 'Q7 needs no total because a percentage is:', a: ['a number', 'a share', 'an angle', 'a frequency'], c: 1, why: 'It is already out of a hundred.' },
+    { q: 'Q8 is about:', a: ['arithmetic', 'a biased sample', 'the mean', 'a chart'], c: 1, why: 'The team is not the school.' }
+  ],
+  practice: {
+    easy: [
+      ['The total of frequencies ' + m('3, 6, 7, 4'), m('20')],
+      ['The mode of that table', m('7')],
+      ['The range of marks from ' + m('5') + ' to ' + m('8'), m('3')],
+      [m('45') + ' pupils: the angle for one', m('8°')],
+      [m('10') + ' pupils out of ' + m('45'), m('80°')],
+      [m('108°') + ' as a percentage', m('30') + '%'],
+      ['The angles of a pie chart total', m('360°')]
+    ],
+    med: [
+      ['The median of that table', m('7')],
+      ['The mean of that table', m('6.6')],
+      ['The total of the twenty marks', m('132')],
+      [m('200') + ' people, a sector of ' + m('63°'), m('35') + ' people'],
+      ['How many scored ' + m('7') + ' or more', m('11')],
+      ['How many scored below ' + m('7'), m('9')],
+      ['The frequency of the mark ' + m('6'), m('6')]
+    ],
+    hard: [
+      ['Why is ' + m('132 ÷ 4') + ' the wrong mean?', 'It divides by the number of different marks'],
+      [m('45') + ' pupils, a group of ' + m('18') + ': the angle', m('144°')],
+      [m('200') + ' people, a sector of ' + m('90°'), m('50') + ' people'],
+      ['A 21st pupil scores ' + m('8') + ': the new mean, to 2 d.p.', m('6.67')],
+      ['A survey of the football team gives', 'Too large a share for football'],
+      [m('90°') + ' as a percentage', m('25') + '%'],
+      ['The median of an even number of values is', 'Halfway between the two middle values']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every question you lost a mark on in full, with the units and the degree signs.',
+  homework: [
+    'Rewrite in full every question on which you lost a mark, naming the slip in the margin.',
+    'Marks ' + m('4, 5, 6, 7') + ' have frequencies ' + m('2, 5, 8, 5') + '. Find the mean, median, mode and range.',
+    'A survey of ' + m('90') + ' pupils has a group of ' + m('25') + '. Find the sector angle.',
+    'A pie chart of ' + m('300') + ' people has a ' + m('126°') + ' sector. How many people is that?',
+    'Express ' + m('72°') + ' as a percentage and as a fraction of the whole.'
+  ]
+});
