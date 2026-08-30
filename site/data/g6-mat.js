@@ -16078,3 +16078,202 @@ G6_MAT.push({
     'Work out ' + m('0.9 × 0.06') + ', ' + m('4.8 ÷ 0.6') + ' and ' + m('2.5 × 10³') + '.'
   ]
 });
+
+/* ============================== 90 ============================== */
+G6_MAT.push({
+  id: 'g6-90', stream: 'mat', grade: 6, quarter: 4, lessons: '195–198', hours: 4,
+  title: 'General revision II — ratio, percentage and rates',
+  subtitle: 'Sharing, proportion, the three percentage questions, percentage change and speed.',
+  uz: 'Matematika 6, yakuniy takrorlash', uzPage: 'pp. 557–568',
+  cam: 'S7 whole-course review', camPage: 'Stage 7, pp. 120–132', wb: 'Checkpoint practice 2',
+  objectives: [
+    'Simplify a ratio and share a quantity in a given ratio.',
+    'Use direct and inverse proportion correctly.',
+    'Answer all three kinds of percentage question, including the reverse one.',
+    'Use ' + m('s = vt') + ' and find an average speed.'
+  ],
+  terms: [
+    ['Ratio', 'Nisbat', 'Отношение'],
+    ['To share in a ratio', 'Nisbatda taqsimlash', 'Делить в отношении'],
+    ['Direct proportion', 'To‘g‘ri proporsionallik', 'Прямая пропорциональность'],
+    ['Inverse proportion', 'Teskari proporsionallik', 'Обратная пропорциональность'],
+    ['Percentage', 'Foiz', 'Процент'],
+    ['Percentage change', 'Foizli o‘zgarish', 'Процентное изменение'],
+    ['Multiplier', 'Ko‘paytuvchi', 'Множитель'],
+    ['Average speed', 'O‘rtacha tezlik', 'Средняя скорость']
+  ],
+  timing: [[30, 'Ratio'], [35, 'Sharing and proportion'], [35, 'The three percentage questions'], [35, 'Percentage change'], [20, 'Speed and motion'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Ratio',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Ratio</th><th>Divide by</th><th>Simplest form</th></tr></thead>
+      <tbody>
+        <tr><td class="m">12 : 18</td><td class="m">6</td><td class="m">2 : 3</td></tr>
+        <tr><td class="m">45 : 60</td><td class="m">15</td><td class="m">3 : 4</td></tr>
+        <tr><td class="m">0.5 : 2</td><td>multiply by ${m('2')} first</td><td class="m">1 : 4</td></tr>
+        <tr><td class="m">${f('3', '4')} : ${f('1', '2')}</td><td>multiply by ${m('4')} first</td><td class="m">3 : 2</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A ratio compares parts; a fraction compares a part with the whole</div>
+      In ${m('2 : 3')} the first quantity is ${m(f('2', '5'))} of the total, not ${m(f('2', '3'))}. Adding
+      the parts before writing any fraction removes the commonest error of the whole topic.</div>`
+    },
+    {
+      h: 'Sharing and proportion',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>Parts</th><th>One part</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>share ${m('60')} in ${m('2 : 3')}</td><td class="m">5</td><td class="m">12</td><td class="m">24 and 36</td></tr>
+        <tr><td>share ${m('84')} in ${m('3 : 4')}</td><td class="m">7</td><td class="m">12</td><td class="m">36 and 48</td></tr>
+        <tr><td>share ${m('120')} in ${m('2 : 3 : 5')}</td><td class="m">10</td><td class="m">12</td><td class="m">24, 36 and 60</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Kind</th><th>Situation</th><th>Method</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>direct</td><td>${m('5')} pens cost ${m('20 000')} so‘m; ${m('8')} pens?</td><td>one pen is ${m('4000')}</td><td class="m">32 000 so‘m</td></tr>
+        <tr><td>inverse</td><td>${m('4')} workers take ${m('12')} days; ${m('6')} workers?</td><td>the job is ${m('48')} worker-days</td><td class="m">8 days</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">More workers, fewer days</span>
+      In direct proportion both quantities rise together; in inverse proportion one rises as the other
+      falls, and the <i>product</i> stays the same. Ask which of the two the situation is before
+      calculating.</div>`
+    },
+    {
+      h: 'The three percentage questions',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Example</th><th>Method</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>find a percentage of a number</td><td>${m('15')}% of ${m('240')}</td><td class="m">0.15 · 240</td><td class="m">36</td></tr>
+        <tr><td>express one number as a percentage of another</td><td>${m('30')} out of ${m('120')}</td><td class="m">${f('30', '120')} · 100</td><td class="m">25%</td></tr>
+        <tr><td>find the whole from a percentage</td><td>${m('20')}% of it is ${m('45')}</td><td class="m">45 ÷ 0.2</td><td class="m">225</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Name the question before choosing the method</div>
+      All three use the same three numbers in different places. Writing “this is the third kind” at the top
+      of the working is worth more than remembering three formulas.</div>`
+    },
+    {
+      h: 'Percentage change',
+      html: `${eq('multiplier ' + m('= 1 + ' + f('percentage', '100')) + ' for a rise, ' + m('1 − ' + f('percentage', '100')) + ' for a fall', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>Multiplier</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>increase ${m('400')} by ${m('15')}%</td><td class="m">1.15</td><td class="m">400 · 1.15</td><td class="m">460</td></tr>
+        <tr><td>decrease ${m('500')} by ${m('20')}%</td><td class="m">0.8</td><td class="m">500 · 0.8</td><td class="m">400</td></tr>
+        <tr><td>${m('200')} rises to ${m('250')}</td><td>—</td><td class="m">${f('50', '200')} · 100</td><td>a ${m('25')}% rise</td></tr>
+        <tr><td>${m('80')} falls to ${m('60')}</td><td>—</td><td class="m">${f('20', '80')} · 100</td><td>a ${m('25')}% fall</td></tr>
+        <tr><td>after a ${m('20')}% rise a price is ${m('60 000')}</td><td class="m">1.2</td><td class="m">60 000 ÷ 1.2</td><td class="m">50 000 so‘m</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The change is always measured against the <i>original</i></span>
+      ${m('200')} to ${m('250')} is a rise of ${m('25')}%, but ${m('250')} back to ${m('200')} is a fall of
+      ${m('20')}%. The same difference, two different percentages, because the starting numbers differ.</div>`
+    },
+    {
+      h: 'Speed and motion',
+      html: `${eq(m('s = vt') + '     ' + m('v = ' + f('s', 't')) + '     ' + m('t = ' + f('s', 'v')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('180')} km in ${m('3')} h</td><td class="m">180 ÷ 3</td><td class="m">60 km/h</td></tr>
+        <tr><td>${m('4')} km in ${m('20')} min</td><td class="m">4 ÷ ${f('1', '3')}</td><td class="m">12 km/h</td></tr>
+        <tr><td>${m('7')} km at ${m('5')} km/h</td><td class="m">1.4 h</td><td class="m">1 h 24 min</td></tr>
+        <tr><td>${m('72')} km/h in m/s</td><td class="m">72 ÷ 3.6</td><td class="m">20 m/s</td></tr>
+        <tr><td>${m('120')} km at ${m('60')}, back at ${m('40')}</td><td class="m">240 ÷ 5</td><td class="m">48 km/h</td></tr>
+        <tr><td>two cars ${m('300')} km apart at ${m('60')} and ${m('40')}</td><td class="m">300 ÷ 100</td><td>meet after ${m('3')} h</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Units first, formula second</div>
+      Minutes become hours before they meet a speed in km/h; an average speed is total distance over total
+      time and never the mean of the speeds.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Share ' + m('120') + ' in the ratio ' + m('2 : 3 : 5') + '.',
+      steps: [
+        [m('2 + 3 + 5 = 10') + ' parts.', ''],
+        [m('120 ÷ 10 = 12') + ' for one part.', ''],
+        [m('24, 36') + ' and ' + m('60') + '.', 'They add to ' + m('120') + ' ✓']
+      ],
+      ans: m('24, 36') + ' and ' + m('60')
+    },
+    {
+      q: 'After a ' + m('20') + '% rise a price is ' + m('60 000') + ' so‘m. Find the original price.',
+      steps: [
+        ['The multiplier for a ' + m('20') + '% rise is ' + m('1.2') + '.', ''],
+        ['The original times ' + m('1.2') + ' is ' + m('60 000') + '.', ''],
+        [m('60 000 ÷ 1.2 = 50 000') + ' so‘m.', 'Check: ' + m('50 000 · 1.2 = 60 000') + ' ✓']
+      ],
+      ans: m('50 000') + ' so‘m'
+    },
+    {
+      q: 'A car drives ' + m('120') + ' km at ' + m('60') + ' km/h and returns at ' + m('40') + '. Find the average speed.',
+      steps: [
+        ['Out ' + m('2') + ' h, back ' + m('3') + ' h.', ''],
+        ['Total ' + m('240') + ' km in ' + m('5') + ' h.', ''],
+        [m('48') + ' km/h.', 'Not ' + m('50') + ' — more time at the slower speed.']
+      ],
+      ans: m('48') + ' km/h'
+    }
+  ],
+  modelNote: 'Put the three percentage questions on the board with the same three numbers in each and let the class sort them; naming the question is the skill being revised.',
+  interactive: {
+    type: 'quiz',
+    title: 'Ratio, percentage and rates in eight questions',
+    hint: 'Add the parts of a ratio; name the percentage question; convert the units.',
+    items: [
+      { q: m('12 : 18') + ' in simplest form:', a: [m('2 : 3'), m('3 : 2'), m('6 : 9'), m('4 : 6')], c: 0, why: 'Divide by ' + m('6') + '.' },
+      { q: 'Sharing ' + m('60') + ' in ' + m('2 : 3') + ' gives:', a: [m('20') + ' and ' + m('40'), m('24') + ' and ' + m('36'), m('30') + ' and ' + m('30'), m('12') + ' and ' + m('18')], c: 1, why: 'One part is ' + m('12') + '.' },
+      { q: m('15') + '% of ' + m('240') + ' is:', a: [m('16'), m('36'), m('24'), m('3.6')], c: 1, why: m('0.15 · 240') + '.' },
+      { q: m('30') + ' as a percentage of ' + m('120') + ' is:', a: [m('4') + '%', m('25') + '%', m('30') + '%', m('40') + '%'], c: 1, why: 'A quarter.' },
+      { q: 'Increasing ' + m('400') + ' by ' + m('15') + '% gives:', a: [m('415'), m('460'), m('340'), m('600')], c: 1, why: 'Multiplier ' + m('1.15') + '.' },
+      { q: 'After a ' + m('20') + '% rise a price is ' + m('60 000') + '; it was:', a: [m('48 000'), m('50 000'), m('54 000'), m('72 000')], c: 1, why: 'Divide by ' + m('1.2') + '.' },
+      { q: m('4') + ' km in ' + m('20') + ' minutes is:', a: [m('0.2'), m('12'), m('80'), m('4')], c: 1, why: 'Time in hours.' },
+      { q: m('4') + ' workers take ' + m('12') + ' days; ' + m('6') + ' workers take:', a: [m('18'), m('8'), m('6'), m('12')], c: 1, why: 'Inverse proportion.' }
+    ]
+  },
+  quiz: [
+    { q: 'In the ratio ' + m('2 : 3') + ' the first part is:', a: [m(f('2', '3')) + ' of the total', m(f('2', '5')) + ' of the total', 'half', m(f('3', '5')) + ' of the total'], c: 1, why: 'Five parts altogether.' },
+    { q: 'More workers taking fewer days is:', a: ['direct proportion', 'inverse proportion', 'a ratio', 'a percentage'], c: 1, why: 'The product stays fixed.' },
+    { q: 'The multiplier for a ' + m('20') + '% fall is:', a: [m('0.2'), m('0.8'), m('1.2'), m('20')], c: 1, why: m('1 − 0.2') + '.' },
+    { q: 'A percentage change is measured against:', a: ['the new value', 'the original value', 'the difference', 'a hundred'], c: 1, why: 'That is what makes it comparable.' },
+    { q: 'Average speed is:', a: ['the mean of the speeds', 'total distance over total time', 'the largest speed', 'the first speed'], c: 1, why: 'One division at the end.' },
+    { q: m('72') + ' km/h in m/s is:', a: [m('7.2'), m('20'), m('26'), m('259')], c: 1, why: 'Divide by ' + m('3.6') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Simplify ' + m('12 : 18'), m('2 : 3')],
+      ['Simplify ' + m('45 : 60'), m('3 : 4')],
+      ['Share ' + m('60') + ' in the ratio ' + m('2 : 3'), m('24') + ' and ' + m('36')],
+      [m('15') + '% of ' + m('240'), m('36')],
+      [m('180') + ' km in ' + m('3') + ' hours', m('60') + ' km/h'],
+      [m('30') + ' as a percentage of ' + m('120'), m('25') + '%'],
+      [m('5') + ' pens cost ' + m('20 000') + ' so‘m: one pen', m('4000') + ' so‘m']
+    ],
+    med: [
+      ['Share ' + m('84') + ' in the ratio ' + m('3 : 4'), m('36') + ' and ' + m('48')],
+      ['Share ' + m('120') + ' in the ratio ' + m('2 : 3 : 5'), m('24, 36') + ' and ' + m('60')],
+      [m('8') + ' pens at ' + m('4000') + ' so‘m each', m('32 000') + ' so‘m'],
+      ['Increase ' + m('400') + ' by ' + m('15') + '%', m('460')],
+      ['Decrease ' + m('500') + ' by ' + m('20') + '%', m('400')],
+      [m('4') + ' km in ' + m('20') + ' minutes', m('12') + ' km/h'],
+      [m('72') + ' km/h in m/s', m('20') + ' m/s']
+    ],
+    hard: [
+      ['Simplify ' + m(f('3', '4') + ' : ' + f('1', '2')), m('3 : 2')],
+      [m('4') + ' workers take ' + m('12') + ' days: ' + m('6') + ' workers', m('8') + ' days'],
+      [m('200') + ' rising to ' + m('250'), 'A ' + m('25') + '% increase'],
+      [m('80') + ' falling to ' + m('60'), 'A ' + m('25') + '% decrease'],
+      ['After a ' + m('20') + '% rise a price is ' + m('60 000') + ' so‘m: the original', m('50 000') + ' so‘m'],
+      [m('120') + ' km at ' + m('60') + ' km/h and back at ' + m('40'), m('48') + ' km/h'],
+      ['Two cars ' + m('300') + ' km apart at ' + m('60') + ' and ' + m('40') + ' km/h meet after', m('3') + ' hours']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Name the kind of question at the top of each solution before working it.',
+  homework: [
+    'Share ' + m('150') + ' in the ratio ' + m('3 : 7') + ' and ' + m('180') + ' in the ratio ' + m('1 : 2 : 3') + '.',
+    'Find ' + m('18') + '% of ' + m('350') + ', and express ' + m('42') + ' as a percentage of ' + m('120') + '.',
+    'A price falls by ' + m('15') + '% to ' + m('68 000') + ' so‘m. Find the original price.',
+    m('6') + ' workers take ' + m('10') + ' days. How long would ' + m('4') + ' workers take?',
+    'A cyclist rides ' + m('30') + ' km at ' + m('15') + ' km/h and ' + m('30') + ' km at ' + m('10') + '. Find the average speed.'
+  ]
+});
