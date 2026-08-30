@@ -1835,3 +1835,208 @@ G6_MAT.push({
     'Compute ' + m(f('3', '5') + ' · ' + f('10', '9')) + ', cancelling first.'
   ]
 });
+
+/* ============================== 11 ============================== */
+G6_MAT.push({
+  id: 'g6-11', stream: 'mat', grade: 6, quarter: 1, lessons: '22–23', hours: 2,
+  title: 'Dividing a proper fraction by a natural number',
+  subtitle: 'Sharing a part into equal pieces — the denominator grows, the numerator does not.',
+  uz: 'Matematika 6, §5', uzPage: 'pp. 58–64',
+  cam: 'S7 7.4', camPage: 'Stage 7, pp. 71–75', wb: 'Exercise 7.4',
+  objectives: [
+    'Divide a fraction by a whole number and explain the result with a picture.',
+    'Write the division as multiplication by the reciprocal.',
+    'Cancel before multiplying.',
+    'Solve simple sharing problems with fractions.'
+  ],
+  terms: [
+    ['To divide', 'Bo‘lish', 'Делить'],
+    ['Divisor', 'Bo‘luvchi', 'Делитель'],
+    ['Reciprocal', 'Teskari son', 'Обратное число'],
+    ['To share equally', 'Teng taqsimlash', 'Разделить поровну'],
+    ['Part', 'Ulush', 'Доля'],
+    ['Whole', 'Butun', 'Целое'],
+    ['To cancel', 'Qisqartirish', 'Сокращать'],
+    ['Lowest terms', 'Qisqarmas ko‘rinish', 'Несократимый вид']
+  ],
+  timing: [[20, 'Sharing a part'], [25, 'The rule'], [20, 'Cancelling first'], [12, 'Problems'], [3, 'Homework']],
+  sections: [
+    {
+      h: 'Sharing a part',
+      html: `<p>Half a cake shared between three people: each gets a sixth. The number of pieces the whole
+      is cut into has trebled, and the number taken has not.</p>
+      ${eq(m(f('1', '2') + ' ÷ 3 = ' + f('1', '6')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Division</th><th>In words</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('1', '2')} ÷ 3</td><td>half shared among three</td><td class="m">${f('1', '6')}</td></tr>
+        <tr><td class="m">${f('2', '3')} ÷ 2</td><td>two thirds shared between two</td><td class="m">${f('1', '3')}</td></tr>
+        <tr><td class="m">${f('3', '4')} ÷ 5</td><td>three quarters among five</td><td class="m">${f('3', '20')}</td></tr>
+        <tr><td class="m">${f('4', '5')} ÷ 4</td><td>four fifths among four</td><td class="m">${f('1', '5')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Dividing makes the pieces smaller</div>
+      The answer is always less than the fraction you started with. That is the check to make before
+      writing anything down.</div>`
+    },
+    {
+      h: 'The rule',
+      html: `${eq(m(f('a', 'b') + ' ÷ n = ' + f('a', 'b · n') + ' = ' + f('a', 'b') + ' · ' + f('1', 'n')), true)}
+      <p>Multiply the denominator by the whole number — or, in the form that will cover every case from
+      now on, multiply by the reciprocal of the divisor.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Division</th><th>As multiplication</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('3', '4')} ÷ 5</td><td class="m">${f('3', '4')} · ${f('1', '5')}</td><td class="m">${f('3', '20')}</td></tr>
+        <tr><td class="m">${f('5', '7')} ÷ 2</td><td class="m">${f('5', '7')} · ${f('1', '2')}</td><td class="m">${f('5', '14')}</td></tr>
+        <tr><td class="m">${f('2', '9')} ÷ 3</td><td class="m">${f('2', '9')} · ${f('1', '3')}</td><td class="m">${f('2', '27')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The numerator is untouched</span>
+      ${m(f('3', '4') + ' ÷ 5')} is ${m(f('3', '20'))}, not ${m(f('15', '4'))} and not the whole fraction
+      turned upside down. Only the denominator grows.</div>`
+    },
+    {
+      h: 'Cancelling first',
+      html: `<p>When the whole number divides the numerator, cancel — the answer comes out in lowest terms
+      with no extra step.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Division</th><th>Cancel</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('4', '5')} ÷ 4</td><td class="m">4 ÷ 4 = 1</td><td class="m">${f('1', '5')}</td></tr>
+        <tr><td class="m">${f('6', '7')} ÷ 3</td><td class="m">6 ÷ 3 = 2</td><td class="m">${f('2', '7')}</td></tr>
+        <tr><td class="m">${f('9', '10')} ÷ 3</td><td class="m">9 ÷ 3 = 3</td><td class="m">${f('3', '10')}</td></tr>
+        <tr><td class="m">${f('2', '3')} ÷ 2</td><td class="m">2 ÷ 2 = 1</td><td class="m">${f('1', '3')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Cancelling first keeps the numbers small</div>
+      ${m(f('9', '10') + ' ÷ 3')} done without cancelling gives ${m(f('9', '30'))}, which then has to be
+      simplified anyway. One step is better than two.</div>`
+    },
+    {
+      h: 'Problems',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m(f('3', '4'))} of a litre of juice shared between ${m('3')} glasses</td><td class="m">${f('3', '4')} ÷ 3</td><td class="m">${f('1', '4')} litre each</td></tr>
+        <tr><td>${m(f('5', '6'))} of a field ploughed in ${m('5')} days, equally</td><td class="m">${f('5', '6')} ÷ 5</td><td class="m">${f('1', '6')} a day</td></tr>
+        <tr><td>${m(f('7', '8'))} of a metre of ribbon cut into ${m('7')} pieces</td><td class="m">${f('7', '8')} ÷ 7</td><td class="m">${f('1', '8')} m each</td></tr>
+        <tr><td>a bottle ${m(f('4', '5'))} full poured into ${m('2')} equal jugs</td><td class="m">${f('4', '5')} ÷ 2</td><td class="m">${f('2', '5')} each</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">“Shared between” means divide</div>
+      Every one of these problems contains that phrase or one like it. Finding it in the sentence is the
+      whole difficulty; the arithmetic afterwards is one line.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compute ' + m(f('3', '4') + ' ÷ 5') + '.',
+      steps: [
+        ['Multiply by the reciprocal of ' + m('5') + '.', ''],
+        [m(f('3', '4') + ' · ' + f('1', '5')), ''],
+        [m('= ' + f('3', '20')), 'Smaller than ' + m(f('3', '4')) + ' ✓']
+      ],
+      ans: m(f('3', '20'))
+    },
+    {
+      q: 'Compute ' + m(f('6', '7') + ' ÷ 3') + '.',
+      steps: [
+        [m('3') + ' divides the numerator ' + m('6') + '.', ''],
+        ['Cancel: ' + m('6 ÷ 3 = 2') + '.', ''],
+        [m('= ' + f('2', '7')), '']
+      ],
+      ans: m(f('2', '7'))
+    },
+    {
+      q: m(f('3', '4')) + ' of a litre of juice is shared equally between ' + m('3') + ' glasses. How much is in each?',
+      steps: [
+        ['“Shared between” means divide.', ''],
+        [m(f('3', '4') + ' ÷ 3'), ''],
+        ['Cancel the ' + m('3') + 's.', ''],
+        [m('= ' + f('1', '4')) + ' litre.', '']
+      ],
+      ans: m(f('1', '4')) + ' litre'
+    }
+  ],
+  modelNote: 'Fold a paper strip in half, then cut the half into three; the sixth appears in the hand before it appears on the board.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'Dividing a fraction by a whole number',
+    hint: 'Multiply by the reciprocal, cancelling first.',
+    items: [
+      {
+        title: '3/4 ÷ 5',
+        start: m(f('3', '4') + ' ÷ 5'),
+        steps: [
+          [m(f('3', '4') + ' · ' + f('1', '5')), 'Multiply by the reciprocal.'],
+          ['Nothing cancels: ' + m('3') + ' and ' + m('5') + ' share no factor.', ''],
+          [m(f('3', '20')), 'Smaller than ' + m(f('3', '4')) + ' — as it must be.']
+        ],
+        answer: m(f('3', '20'))
+      },
+      {
+        title: '6/7 ÷ 3',
+        start: m(f('6', '7') + ' ÷ 3'),
+        steps: [
+          [m(f('6', '7') + ' · ' + f('1', '3')), ''],
+          ['Cancel: ' + m('6 ÷ 3 = 2') + '.', 'Before multiplying.'],
+          [m(f('2', '7')), 'Already in lowest terms.']
+        ],
+        answer: m(f('2', '7'))
+      },
+      {
+        title: '9/10 ÷ 3',
+        start: m(f('9', '10') + ' ÷ 3'),
+        steps: [
+          ['Without cancelling: ' + m(f('9', '30')) + '.', 'It still has to be simplified.'],
+          ['With cancelling: ' + m('9 ÷ 3 = 3') + '.', ''],
+          [m(f('3', '10')), 'One step instead of two.']
+        ],
+        answer: m(f('3', '10'))
+      }
+    ]
+  },
+  quiz: [
+    { q: m(f('1', '2') + ' ÷ 3') + ' equals:', a: [m(f('1', '6')), m(f('3', '2')), m(f('1', '5')), m(f('2', '3'))], c: 0, why: 'Three times as many pieces.' },
+    { q: 'Dividing a fraction by a whole number makes it:', a: ['larger', 'smaller', 'the same', 'negative'], c: 1, why: 'The pieces shrink.' },
+    { q: m(f('3', '4') + ' ÷ 5') + ' equals:', a: [m(f('15', '4')), m(f('3', '20')), m(f('3', '9')), m(f('4', '15'))], c: 1, why: 'The denominator grows.' },
+    { q: m(f('6', '7') + ' ÷ 3') + ' equals:', a: [m(f('2', '7')), m(f('6', '21')), m(f('18', '7')), m(f('2', '21'))], c: 0, why: 'Cancel first.' },
+    { q: 'Dividing by ' + m('n') + ' is the same as multiplying by:', a: [m('n'), m(f('1', 'n')), m('−n'), m('n²')], c: 1, why: 'The reciprocal.' },
+    { q: m(f('4', '5') + ' ÷ 4') + ' equals:', a: [m(f('1', '5')), m(f('4', '20')), m(f('16', '5')), m(f('1', '20'))], c: 0, why: 'Cancel the ' + m('4') + 's.' }
+  ],
+  practice: {
+    easy: [
+      [m(f('1', '2') + ' ÷ 3'), m(f('1', '6'))],
+      [m(f('2', '3') + ' ÷ 2'), m(f('1', '3'))],
+      [m(f('3', '4') + ' ÷ 5'), m(f('3', '20'))],
+      [m(f('4', '5') + ' ÷ 4'), m(f('1', '5'))],
+      [m(f('6', '7') + ' ÷ 3'), m(f('2', '7'))],
+      [m(f('5', '7') + ' ÷ 2'), m(f('5', '14'))],
+      [m(f('9', '10') + ' ÷ 3'), m(f('3', '10'))]
+    ],
+    med: [
+      [m(f('2', '9') + ' ÷ 3'), m(f('2', '27'))],
+      [m(f('8', '9') + ' ÷ 4'), m(f('2', '9'))],
+      [m(f('3', '4')) + ' of a litre into ' + m('3') + ' glasses', m(f('1', '4')) + ' litre'],
+      [m(f('5', '6')) + ' of a field in ' + m('5') + ' days', m(f('1', '6')) + ' a day'],
+      [m(f('7', '8')) + ' m of ribbon into ' + m('7') + ' pieces', m(f('1', '8')) + ' m'],
+      [m(f('4', '5')) + ' of a bottle into ' + m('2') + ' jugs', m(f('2', '5'))],
+      [m(f('10', '11') + ' ÷ 5'), m(f('2', '11'))]
+    ],
+    hard: [
+      [m(f('5', '8') + ' ÷ 10'), m(f('1', '16'))],
+      [m(f('12', '13') + ' ÷ 6'), m(f('2', '13'))],
+      [m('1' + f('1', '2') + ' ÷ 3'), m(f('1', '2'))],
+      [m('2' + f('2', '3') + ' ÷ 4'), m(f('2', '3'))],
+      ['A rope ' + m(f('9', '10')) + ' m long is cut into ' + m('6') + ' equal pieces', m(f('3', '20')) + ' m'],
+      ['Why is the answer always smaller than the fraction?', 'The same part is cut into more pieces'],
+      ['Divide ' + m(f('3', '7')) + ' by ' + m('3') + ' and then by ' + m('2'), m(f('1', '14'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Cancel before multiplying, and check that the answer is smaller than you started with.',
+  homework: [
+    'Compute ' + m(f('2', '5') + ' ÷ 3') + ' and ' + m(f('3', '8') + ' ÷ 2') + '.',
+    'Compute ' + m(f('8', '9') + ' ÷ 2') + ' and ' + m(f('10', '13') + ' ÷ 5') + ', cancelling first.',
+    'Compute ' + m('1' + f('1', '3') + ' ÷ 4') + '.',
+    m(f('5', '6')) + ' of a litre of milk is shared between ' + m('5') + ' cups. How much is in each?',
+    'Explain in one sentence why dividing a fraction by ' + m('4') + ' makes it smaller.'
+  ]
+});
