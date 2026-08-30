@@ -8365,3 +8365,374 @@ G7_MAT.push({
     'Explain why a triangle cannot have two right angles.'
   ]
 });
+
+/* ============================== 49 ============================== */
+G7_MAT.push({
+  id: 'g7-49', stream: 'mat', grade: 7, quarter: 3, lessons: '88–89', hours: 2,
+  title: 'Right-angled triangles',
+  subtitle: 'Acute angles that add to ' + m('90°') + ', the hypotenuse as the longest side, and the ' + m('30°') + ' half-side rule.',
+  uz: 'Matematika 7, §41', uzPage: 'pp. 254–261',
+  cam: 'S8 5.2', camPage: 'Stage 8, pp. 48–51', wb: 'Exercise 5.2',
+  objectives: [
+    'Name the legs and the hypotenuse and show that the hypotenuse is longest.',
+    'Use the fact that the two acute angles add to ' + m('90°') + '.',
+    'Prove and apply the ' + m('30°') + ' rule: the leg opposite ' + m('30°') + ' is half the hypotenuse.',
+    'Use the congruence tests special to right-angled triangles.'
+  ],
+  terms: [
+    ['Right-angled triangle', 'To‘g‘ri burchakli uchburchak', 'Прямоугольный треугольник'],
+    ['Hypotenuse', 'Gipotenuza', 'Гипотенуза'],
+    ['Leg', 'Katet', 'Катет'],
+    ['Acute angle', 'O‘tkir burchak', 'Острый угол'],
+    ['Complementary', 'Yig‘indisi 90° bo‘lgan', 'Дополнительные до 90°'],
+    ['Opposite', 'Qarshi', 'Противолежащий'],
+    ['Half', 'Yarim', 'Половина'],
+    ['Congruence test', 'Tenglik alomati', 'Признак равенства']
+  ],
+  timing: [[10, 'Legs and hypotenuse'], [20, 'The acute angles'], [25, 'The 30° rule'], [25, 'Congruence tests'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Legs and hypotenuse',
+      html: `<p>In a right-angled triangle the side opposite the right angle is the <b>hypotenuse</b>; the
+      other two are the <b>legs</b>.</p>
+      {{fig:rightTriangle:The legs and the hypotenuse}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Side</th><th>Opposite</th><th>Length</th></tr></thead>
+      <tbody>
+        <tr><td>hypotenuse</td><td class="m">90°</td><td>the longest</td></tr>
+        <tr><td>each leg</td><td>an acute angle</td><td>shorter than the hypotenuse</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Why the hypotenuse must be longest</div>
+      The larger angle faces the longer side, and the right angle is the largest of the three. The
+      hypotenuse therefore beats both legs — before any calculation is done.</div>`
+    },
+    {
+      h: 'The acute angles',
+      html: `<p>The three angles add to ${m('180°')} and one of them is ${m('90°')}, so the other two add
+      to ${m('90°')}: they are <b>complementary</b>.</p>
+      ${eq(m('∠A + ∠B = 90°') + '  when  ' + m('∠C = 90°'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>One acute angle</th><th>The other</th></tr></thead>
+      <tbody>
+        <tr><td class="m">30°</td><td class="m">60°</td></tr>
+        <tr><td class="m">45°</td><td class="m">45°</td></tr>
+        <tr><td class="m">37°</td><td class="m">53°</td></tr>
+        <tr><td class="m">72°</td><td class="m">18°</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Complementary, not supplementary</span>
+      The two acute angles add to ${m('90°')}, not ${m('180°')}. Subtracting from ${m('180°')} here is the
+      commonest slip of the topic and always gives an impossible answer.</div>`
+    },
+    {
+      h: 'The ' + m('30°') + ' rule',
+      html: `<p>In a right-angled triangle with an angle of ${m('30°')}, the leg opposite it is exactly
+      half the hypotenuse — and the statement runs backwards too.</p>
+      ${eq(m('∠A = 30°') + '  ⟺  ' + m('BC = ' + f('1', '2') + ' · AB'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td>reflect the triangle in the leg ${m('AC')}</td><td>construction</td></tr>
+        <tr><td>the two copies form a triangle with three ${m('60°')} angles</td><td class="m">30° + 30° = 60°</td></tr>
+        <tr><td>that triangle is equilateral</td><td>equiangular ⟹ equilateral</td></tr>
+        <tr><td>the doubled leg equals the hypotenuse</td><td>equal sides</td></tr>
+        <tr><td class="m">BC = ${f('1', '2')} · AB</td><td>halving</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Hypotenuse</th><th>Leg opposite ${m('30°')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">10 cm</td><td class="m">5 cm</td></tr>
+        <tr><td class="m">7 cm</td><td class="m">3.5 cm</td></tr>
+        <tr><td class="m">24 cm</td><td class="m">12 cm</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">This is where a ramp's rule comes from</div>
+      A ramp at ${m('30°')} rises one metre for every two metres of ramp. Builders quote it as a ratio;
+      it is this theorem.</div>`
+    },
+    {
+      h: 'Congruence tests',
+      html: `<p>Because one angle is already known to be equal, right-angled triangles need less data
+      than others.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Test</th><th>What must match</th><th>Which general criterion it is</th></tr></thead>
+      <tbody>
+        <tr><td>two legs</td><td>both legs</td><td>the first — the right angle is included</td></tr>
+        <tr><td>a leg and an acute angle</td><td>one leg, one acute angle</td><td>the second</td></tr>
+        <tr><td>hypotenuse and an acute angle</td><td>hypotenuse, one acute angle</td><td>the second</td></tr>
+        <tr><td>hypotenuse and a leg</td><td>hypotenuse, one leg</td><td>special to right triangles</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Two angles are never enough</span>
+      Knowing the right angle and one acute angle fixes the shape but not the size: the triangles are the
+      same shape at any scale. At least one side must be given.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'One acute angle of a right-angled triangle is ' + m('37°') + '. Find the other.',
+      steps: [
+        ['The acute angles are complementary.', ''],
+        [m('90° − 37° = 53°'), '']
+      ],
+      ans: m('53°')
+    },
+    {
+      q: 'The hypotenuse is ' + m('16 cm') + ' and one angle is ' + m('30°') + '. Find the leg opposite it.',
+      steps: [
+        ['The leg opposite ' + m('30°') + ' is half the hypotenuse.', ''],
+        [m('16 ÷ 2 = 8'), ''],
+        ['The leg is ' + m('8 cm') + '.', '']
+      ],
+      ans: m('8 cm')
+    },
+    {
+      q: 'A leg is ' + m('6 cm') + ' and the hypotenuse is ' + m('12 cm') + '. Find all three angles.',
+      steps: [
+        ['The leg is half the hypotenuse.', ''],
+        ['By the converse of the ' + m('30°') + ' rule, the angle opposite it is ' + m('30°') + '.', ''],
+        ['The other acute angle is ' + m('90° − 30° = 60°') + '.', ''],
+        ['The angles are ' + m('30°, 60°, 90°') + '.', '']
+      ],
+      ans: m('30°, 60°, 90°')
+    }
+  ],
+  modelNote: 'Give each pair a triangle with hypotenuse 10 cm and an angle of 30° and ask them to measure the short leg; every group reports 5 cm, and the theorem is already believed before it is proved.',
+  interactive: {
+    type: 'rightTriangle',
+    title: 'The two acute angles always add to ' + m('90°'),
+    hint: 'Move the angle and watch the sides respond.'
+  },
+  quiz: [
+    { q: 'The side opposite the right angle is the:', a: ['leg', 'hypotenuse', 'median', 'base'], c: 1, why: 'By definition.' },
+    { q: 'The hypotenuse is:', a: ['the shortest side', 'the longest side', 'equal to a leg', 'any side'], c: 1, why: 'It faces the largest angle.' },
+    { q: 'The two acute angles add to:', a: [m('45°'), m('90°'), m('180°'), m('360°')], c: 1, why: m('180° − 90°') + '.' },
+    { q: 'One acute angle is ' + m('72°') + '; the other is:', a: [m('18°'), m('28°'), m('108°'), m('118°')], c: 0, why: m('90 − 72') + '.' },
+    { q: 'The leg opposite ' + m('30°') + ' is:', a: ['the hypotenuse', 'half the hypotenuse', 'twice the hypotenuse', 'equal to the other leg'], c: 1, why: 'The ' + m('30°') + ' rule.' },
+    { q: 'Two right-angled triangles with two equal angles are:', a: ['congruent', 'not necessarily congruent', 'equal in area', 'impossible'], c: 1, why: 'No side is fixed.' }
+  ],
+  practice: {
+    easy: [
+      ['One acute angle ' + m('37°') + ': the other', m('53°')],
+      ['One acute angle ' + m('45°') + ': the other', m('45°')],
+      ['One acute angle ' + m('72°') + ': the other', m('18°')],
+      ['Hypotenuse ' + m('10 cm') + ', angle ' + m('30°') + ': the opposite leg', m('5 cm')],
+      ['Hypotenuse ' + m('7 cm') + ', angle ' + m('30°') + ': the opposite leg', m('3.5 cm')],
+      ['The longest side of a right-angled triangle', 'the hypotenuse'],
+      ['Name the sides beside the right angle', 'the legs']
+    ],
+    med: [
+      ['Leg ' + m('6') + ', hypotenuse ' + m('12') + ': the angles', m('30°, 60°, 90°')],
+      ['Hypotenuse ' + m('24 cm') + ', angle ' + m('60°') + ': the shorter leg', m('12 cm')],
+      ['One acute angle is twice the other: find both', m('30°') + ' and ' + m('60°')],
+      ['One acute angle is ' + m('10°') + ' more than the other', m('40°') + ' and ' + m('50°')],
+      ['Can a right-angled triangle be obtuse-angled?', 'No'],
+      ['Can a right-angled triangle be isosceles?', 'Yes — the acute angles are ' + m('45°') + ' each'],
+      ['A ramp at ' + m('30°') + ' is ' + m('6 m') + ' long: its rise', m('3 m')]
+    ],
+    hard: [
+      ['One acute angle is ' + m('4') + ' times the other: find both', m('18°') + ' and ' + m('72°')],
+      ['The hypotenuse is ' + m('2') + ' times a leg: find the angles', m('30°, 60°, 90°')],
+      ['A leg is ' + m('9 cm') + ' and it faces ' + m('30°') + ': find the hypotenuse', m('18 cm')],
+      ['Which test lets two right triangles be congruent from a hypotenuse and a leg?', 'The test special to right-angled triangles'],
+      ['Prove the ' + m('30°') + ' rule by reflection', 'The two copies form an equilateral triangle'],
+      ['The acute angles are ' + m('2x') + ' and ' + m('3x') + ': find them', m('36°') + ' and ' + m('54°')],
+      ['Why are two equal angles not enough for congruence here?', 'The size is not fixed — only the shape']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Subtract from ' + m('90°') + ', never from ' + m('180°') + ', when finding the second acute angle.',
+  homework: [
+    'One acute angle is ' + m('28°') + '. Find the other.',
+    'The hypotenuse is ' + m('18 cm') + ' and one angle is ' + m('30°') + '. Find the opposite leg.',
+    'A leg is ' + m('7 cm') + ' and the hypotenuse ' + m('14 cm') + '. Find all three angles.',
+    'The acute angles are in the ratio ' + m('1 : 5') + '. Find them.',
+    'List the four congruence tests for right-angled triangles and say which general criterion each is.'
+  ]
+});
+
+/* ============================== 50 ============================== */
+G7_MAT.push({
+  id: 'g7-50', stream: 'mat', grade: 7, quarter: 3, lessons: '90–91', hours: 2,
+  title: 'The property of the bisector of an angle',
+  subtitle: 'Every point of a bisector is the same distance from the two arms — and only those points are.',
+  uz: 'Matematika 7, §42', uzPage: 'pp. 262–268',
+  cam: 'S8 5.3', camPage: 'Stage 8, pp. 52–56', wb: 'Exercise 5.3',
+  objectives: [
+    'State the bisector property and its converse.',
+    'Prove the property using congruent right-angled triangles.',
+    'Construct the bisector of an angle with compasses.',
+    'Use the property to find the point equidistant from two lines.'
+  ],
+  terms: [
+    ['Bisector', 'Bissektrisa', 'Биссектриса'],
+    ['Arm of an angle', 'Burchak tomoni', 'Сторона угла'],
+    ['Equidistant', 'Teng uzoqlikda', 'Равноудалённый'],
+    ['Distance to a line', 'Nuqtadan chiziqqa masofa', 'Расстояние до прямой'],
+    ['Converse', 'Teskari teorema', 'Обратная теорема'],
+    ['Locus', 'Geometrik o‘rin', 'Геометрическое место точек'],
+    ['Compasses', 'Sirkul', 'Циркуль'],
+    ['Incentre', 'Ichki markaz', 'Центр вписанной окружности']
+  ],
+  timing: [[10, 'What distance means here'], [25, 'The property'], [20, 'The converse'], [25, 'The construction and its use'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'What distance means here',
+      html: `<p>The distance from a point to a line is the length of the perpendicular dropped from the
+      point to the line — not any slanting segment.</p>
+      {{fig:bisectorConstruction:Dropping perpendiculars to both arms}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Segment from ${m('M')} to the line</th><th>Is it the distance?</th></tr></thead>
+      <tbody>
+        <tr><td>perpendicular</td><td>yes — and it is the shortest</td></tr>
+        <tr><td>slanting</td><td>no — it is longer</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Measure to the arm, not to the vertex</span>
+      The distance from a point on the bisector to the vertex is not what the theorem is about. Every
+      statement below concerns the perpendiculars to the two arms.</div>`
+    },
+    {
+      h: 'The property',
+      html: `<p>Let ${m('M')} lie on the bisector of ${m('∠AOB')}, and drop perpendiculars ${m('MP')} and
+      ${m('MQ')} to the arms.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td class="m">∠MOP = ∠MOQ</td><td>${m('OM')} is the bisector</td></tr>
+        <tr><td class="m">∠MPO = ∠MQO = 90°</td><td>construction</td></tr>
+        <tr><td class="m">OM = OM</td><td>common hypotenuse</td></tr>
+        <tr><td class="m">△MPO ≡ △MQO</td><td>hypotenuse and an acute angle</td></tr>
+        <tr><td class="m">MP = MQ</td><td>corresponding sides of congruent triangles</td></tr>
+      </tbody></table></div>
+      ${eq(m('M') + ' on the bisector  ⟹  ' + m('MP = MQ'), true)}
+      <div class="keybox"><div class="klabel">The right-angle congruence test earns its keep</div>
+      The proof needs exactly the test met last lesson: a common hypotenuse and one equal acute angle.
+      That is why the two topics stand next to each other in the plan.</div>`
+    },
+    {
+      h: 'The converse',
+      html: `<p>The statement also runs backwards: a point inside the angle that is equidistant from both
+      arms lies on the bisector.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Direction</th><th>Given</th><th>Conclusion</th></tr></thead>
+      <tbody>
+        <tr><td>property</td><td class="m">M</td><td class="m">MP = MQ</td></tr>
+        <tr><td>converse</td><td class="m">MP = MQ</td><td class="m">M</td></tr>
+      </tbody></table></div>
+      <p>Taken together the two say: the bisector is <b>exactly</b> the set of points inside the angle
+      equidistant from the arms — a locus, not merely a line with a nice property.</p>
+      <div class="keybox"><div class="klabel">Where the three bisectors meet</div>
+      Each bisector of a triangle is the locus of points equidistant from two sides, so the point common
+      to two of them is equidistant from all three — and therefore lies on the third. That point is the
+      incentre, the centre of the inscribed circle.</div>`
+    },
+    {
+      h: 'The construction and its use',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>What to do</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>with centre ${m('O')}, cut both arms at ${m('A')} and ${m('B')}</td></tr>
+        <tr><td>2</td><td>with the same radius and centres ${m('A')} and ${m('B')}, draw two arcs</td></tr>
+        <tr><td>3</td><td>call their intersection ${m('M')}</td></tr>
+        <tr><td>4</td><td>draw ${m('OM')} — it bisects the angle</td></tr>
+      </tbody></table></div>
+      <p>Why it works: ${m('OA = OB')} and ${m('AM = BM')} by construction, and ${m('OM')} is common, so
+      ${m('△OAM ≡ △OBM')} by the third criterion and the two angles at ${m('O')} are equal.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>The point wanted</th></tr></thead>
+      <tbody>
+        <tr><td>a well equidistant from two straight roads</td><td>on the bisector of the angle between them</td></tr>
+        <tr><td>a lamp lighting two walls equally</td><td>on the bisector of the corner</td></tr>
+        <tr><td>the centre of a circle touching both arms</td><td>on the bisector</td></tr>
+      </tbody></table></div>`
+    }
+  ],
+  examples: [
+    {
+      q: m('M') + ' lies on the bisector of ' + m('∠AOB') + ' and its distance to one arm is ' + m('3.5 cm') + '. Find its distance to the other.',
+      steps: [
+        ['The bisector property applies.', ''],
+        ['Both perpendiculars are equal.', ''],
+        ['So the distance is ' + m('3.5 cm') + '.', '']
+      ],
+      ans: m('3.5 cm')
+    },
+    {
+      q: 'A point inside an angle is ' + m('4 cm') + ' from each arm. What can be said about it?',
+      steps: [
+        ['It is equidistant from both arms.', ''],
+        ['By the converse, it lies on the bisector.', '']
+      ],
+      ans: 'It lies on the bisector'
+    },
+    {
+      q: 'Prove that the compass construction really bisects the angle.',
+      steps: [
+        [m('OA = OB'), 'Same radius from ' + m('O') + '.'],
+        [m('AM = BM'), 'Same radius from ' + m('A') + ' and ' + m('B') + '.'],
+        [m('OM = OM'), 'Common side.'],
+        [m('△OAM ≡ △OBM') + ' by the third criterion, so ' + m('∠AOM = ∠BOM') + '.', '']
+      ],
+      ans: 'Proved by SSS'
+    }
+  ],
+  modelNote: 'Ask where to dig a well equidistant from two roads before any theory; the class reaches for the bisector on its own, and the proof then explains a choice they have already made.',
+  interactive: {
+    type: 'quiz',
+    title: 'Distance, bisector, locus',
+    hint: 'Perpendiculars only.',
+    items: [
+      { q: 'The distance from a point to a line is measured:', a: ['any way', 'along the perpendicular', 'to the nearest end', 'to the vertex'], c: 1, why: 'The shortest segment.' },
+      { q: 'A point on a bisector is equidistant from:', a: ['the two arms', 'the vertex and an arm', 'two vertices', 'nothing'], c: 0, why: 'The property.' },
+      { q: 'The proof of the property uses:', a: ['the third criterion', 'hypotenuse and an acute angle', 'the angle sum', 'the axiom of parallels'], c: 1, why: 'Two right triangles.' },
+      { q: 'A point equidistant from both arms lies:', a: ['at the vertex', 'on the bisector', 'anywhere inside', 'outside'], c: 1, why: 'The converse.' },
+      { q: 'The bisector is the set of such points — that makes it a:', a: ['locus', 'median', 'transversal', 'tangent'], c: 0, why: 'A defined set of points.' },
+      { q: 'The three bisectors of a triangle meet at the:', a: ['centroid', 'incentre', 'circumcentre', 'orthocentre'], c: 1, why: 'Equidistant from all three sides.' },
+      { q: 'The compass construction is proved by:', a: ['SSS', 'SAS', 'ASA', 'measuring'], c: 0, why: 'Three pairs of equal sides.' },
+      { q: 'A well equidistant from two roads should be:', a: ['at the crossing', 'on the bisector', 'on either road', 'anywhere'], c: 1, why: 'The locus.' }
+    ]
+  },
+  quiz: [
+    { q: 'A bisector divides an angle into:', a: ['two equal parts', 'two unequal parts', 'three parts', 'a right angle'], c: 0, why: 'By definition.' },
+    { q: 'Distance to a line is measured along the:', a: ['bisector', 'perpendicular', 'arm', 'diagonal'], c: 1, why: 'The shortest path.' },
+    { q: 'On a bisector, the two perpendicular distances are:', a: ['equal', 'in ratio ' + m('2 : 1'), 'unrelated', 'zero'], c: 0, why: 'The property.' },
+    { q: 'The converse concludes that the point:', a: ['is the vertex', 'lies on the bisector', 'is outside', 'is the midpoint'], c: 1, why: 'Equidistant ⟹ on the bisector.' },
+    { q: 'The proof uses which congruence test?', a: ['two legs', 'hypotenuse and an acute angle', 'three angles', 'two angles only'], c: 1, why: m('OM') + ' is common.' },
+    { q: 'The incentre is equidistant from:', a: ['the vertices', 'the three sides', 'two sides', 'the midpoints'], c: 1, why: 'It is on all three bisectors.' }
+  ],
+  practice: {
+    easy: [
+      ['A bisector divides an angle into', 'two equal angles'],
+      ['Distance from a point to a line is measured along the', 'perpendicular'],
+      [m('M') + ' on the bisector, one distance ' + m('3.5 cm') + ': the other', m('3.5 cm')],
+      ['A point ' + m('4 cm') + ' from each arm lies on the', 'bisector'],
+      ['The bisector of ' + m('80°') + ' makes two angles of', m('40°')],
+      ['The three bisectors of a triangle meet at the', 'incentre'],
+      ['The incentre is the centre of the', 'inscribed circle']
+    ],
+    med: [
+      ['The bisector of ' + m('∠AOB = 116°') + ': each half', m('58°')],
+      ['Two bisectors of adjacent supplementary angles meet at', m('90°')],
+      ['Name the congruence test used in the proof', 'Hypotenuse and an acute angle'],
+      ['Name the congruence test used for the construction', 'The third criterion (SSS)'],
+      ['Where should a well equidistant from two roads be dug?', 'On the bisector of the angle between them'],
+      ['Is the vertex equidistant from both arms?', 'Yes — both distances are zero'],
+      ['A point is ' + m('3 cm') + ' from one arm and ' + m('5 cm') + ' from the other: is it on the bisector?', 'No']
+    ],
+    hard: [
+      ['Prove that the bisector property and its converse together define a locus', 'Every point on it qualifies and every point that qualifies is on it'],
+      ['Why do the three bisectors of a triangle meet at one point?', 'Two give a point equidistant from all three sides, so the third passes through it'],
+      ['In a triangle with ' + m('∠A = 60°') + ', the bisectors of ' + m('∠B') + ' and ' + m('∠C') + ' meet at ' + m('I') + ': find ' + m('∠BIC'), m('120°')],
+      ['The bisector of the apex of an isosceles triangle is also its', 'median and altitude'],
+      ['A circle of radius ' + m('2 cm') + ' touches both arms: where is its centre?', 'On the bisector, ' + m('2 cm') + ' from each arm'],
+      ['Explain why the compass construction cannot fail for an angle under ' + m('180°'), 'The two equal arcs always meet inside the angle'],
+      ['The bisectors of two vertical angles form', 'one straight line']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Leave your construction arcs on the page — they are the working.',
+  homework: [
+    'Construct the bisector of an angle of ' + m('70°') + ' with compasses and check it with a protractor.',
+    'Write the proof of the bisector property in statement-and-reason form.',
+    'A point inside an angle is ' + m('2.5 cm') + ' from each arm. Where does it lie, and why?',
+    'Construct the three bisectors of a triangle and mark the incentre.',
+    'Explain why the bisector is called the locus of points equidistant from the arms.'
+  ]
+});
