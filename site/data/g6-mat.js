@@ -12788,3 +12788,169 @@ G6_MAT.push({
     'List the five mistakes of the last section and write one line on how you will avoid each.'
   ]
 });
+
+/* ============================== 72 ============================== */
+G6_MAT.push({
+  id: 'g6-72', stream: 'mat', grade: 6, quarter: 3, lessons: '155–156', hours: 2,
+  title: 'Control work 8 — volume and surface, and work on the mistakes',
+  subtitle: 'Twenty-five marks on the solids block, then the diagnosis and the rewriting.',
+  uz: 'Matematika 6, Nazorat ishi 8', uzPage: 'pp. 400–448',
+  cam: 'S7 15 review', camPage: 'Stage 7, pp. 156–172', wb: 'Control paper 8',
+  objectives: [
+    'Find the volume and the surface area of a cuboid and of a cube.',
+    'Run both formulae backwards to a missing edge.',
+    'Solve a capacity, a filling-time and a displacement problem.',
+    'Name each lost mark by its type and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Volume', 'Hajm', 'Объём'],
+    ['Surface area', 'Sirt yuzasi', 'Площадь поверхности'],
+    ['Capacity', 'Sig‘im', 'Вместимость'],
+    ['Displacement', 'Siqib chiqarish', 'Вытеснение'],
+    ['Open box', 'Qopqog‘i yo‘q quti', 'Открытая коробка'],
+    ['Unit', 'O‘lchov birligi', 'Единица измерения'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [27, 'Answers and diagnosis'], [10, 'What comes next']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>The volume and surface area of a ${m('6 × 5 × 4')} cm cuboid</td><td class="m">3</td><td>L139, L143–145</td></tr>
+        <tr><td>2</td><td>The volume and surface area of a cube of edge ${m('5')} cm</td><td class="m">3</td><td>L139</td></tr>
+        <tr><td>3</td><td>A cuboid of volume ${m('168')} cm³ on a ${m('7 × 6')} base: the height</td><td class="m">3</td><td>L140–142</td></tr>
+        <tr><td>4</td><td>A cube of surface area ${m('384')} cm²: the edge</td><td class="m">3</td><td>L140–142</td></tr>
+        <tr><td>5</td><td>A cuboid ${m('8')} by ${m('3')} cm with ${m('S = 158')} cm²: the third edge</td><td class="m">4</td><td>L140–142</td></tr>
+        <tr><td>6</td><td>A tank ${m('70 × 40 × 50')} cm: its capacity, and the time to fill it at ${m('14')} l/min</td><td class="m">4</td><td>L146–149</td></tr>
+        <tr><td>7</td><td>A stone raises the water from ${m('8')} cm to ${m('9.2')} cm on a ${m('50 × 30')} cm base: its volume</td><td class="m">3</td><td>L146–149</td></tr>
+        <tr><td>8</td><td>The card for an open box ${m('12 × 8 × 5')} cm</td><td class="m">2</td><td>L143–145</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The answers</div>
+      ${m('120')} cm³ and ${m('148')} cm²; ${m('125')} cm³ and ${m('150')} cm²; ${m('4')} cm; ${m('8')} cm;
+      ${m('5')} cm; ${m('140')} litres and ${m('10')} min; ${m('1800')} cm³; ${m('296')} cm².</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>a metre left as ${m('1')}</td><td class="m">1 · 80 · 50</td><td class="m">100 · 80 · 50</td></tr>
+        <tr><td>a cube edge by dividing by three</td><td class="m">125 ÷ 3</td><td class="m">a³ = 125, a = 5</td></tr>
+        <tr><td>the root taken before the six</td><td class="m">√384</td><td class="m">√(384 ÷ 6) = 8</td></tr>
+        <tr><td>litres divided by an area</td><td class="m">140 ÷ 2800</td><td class="m">140 000 ÷ 2800</td></tr>
+        <tr><td>a volume written in ${m('cm²')}</td><td class="m">120 cm²</td><td class="m">120 cm³</td></tr>
+        <tr><td>the lid counted on an open box</td><td class="m">392 cm²</td><td class="m">296 cm²</td></tr>
+        <tr><td>the new level used instead of the rise</td><td class="m">1500 · 9.2</td><td class="m">1500 · 1.2</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'What comes next',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>If you lost marks on</th><th>Revise</th></tr></thead>
+      <tbody>
+        <tr><td>Q1–Q2</td><td>the two formulae, L139 and L143–145</td></tr>
+        <tr><td>Q3–Q5</td><td>the formulae run backwards, L140–142</td></tr>
+        <tr><td>Q6–Q7</td><td>capacity, filling and displacement, L146–149</td></tr>
+        <tr><td>Q8</td><td>choosing which faces to count, L143–145</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      Quarter IV opens with data handling — collecting it, drawing pie charts and reading them — then
+      probability, the three-dimensional shapes and their nets, and the revision of the year.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q5: a cuboid ' + m('8') + ' cm by ' + m('3') + ' cm with surface area ' + m('158') + ' cm².',
+      steps: [
+        [m('S = 2(8 · 3 + 3c + 8c) = 158') + '.', ''],
+        [m('48 + 22c = 158') + ', so ' + m('22c = 110') + '.', ''],
+        [m('c = 5') + ' cm.', 'Check: ' + m('2(24 + 15 + 40) = 158') + ' ✓']
+      ],
+      ans: m('5') + ' cm'
+    },
+    {
+      q: 'Model answer, Q6: a tank ' + m('70') + ' cm by ' + m('40') + ' cm by ' + m('50') + ' cm, filled at ' + m('14') + ' litres a minute.',
+      steps: [
+        [m('70 · 40 · 50 = 140 000') + ' cm³.', ''],
+        ['That is ' + m('140') + ' litres.', 'Divide by ' + m('1000') + '.'],
+        [m('140 ÷ 14 = 10') + ' minutes.', '']
+      ],
+      ans: m('140') + ' litres and ' + m('10') + ' minutes'
+    },
+    {
+      q: 'Model answer, Q7: the water rises from ' + m('8') + ' cm to ' + m('9.2') + ' cm on a ' + m('50 × 30') + ' cm base.',
+      steps: [
+        ['Base area ' + m('50 · 30 = 1500') + ' cm².', ''],
+        ['The rise is ' + m('9.2 − 8 = 1.2') + ' cm.', 'The rise, not the new level.'],
+        [m('1500 · 1.2 = 1800') + ' cm³.', '']
+      ],
+      ans: m('1800') + ' cm³'
+    }
+  ],
+  modelNote: 'Return Q7 first and ask who multiplied by 9.2; naming the error as “the level instead of the rise” fixes it for the year.',
+  interactive: {
+    type: 'quiz',
+    title: 'The paper in eight questions',
+    hint: 'Convert the units first, then decide forwards or backwards.',
+    items: [
+      { q: 'The volume of a ' + m('6 × 5 × 4') + ' cm cuboid:', a: [m('74'), m('120'), m('148'), m('30')], c: 1, why: 'Three edges multiplied.' },
+      { q: 'Its surface area:', a: [m('74'), m('120'), m('148'), m('296')], c: 2, why: m('2(30 + 20 + 24)') + '.' },
+      { q: 'A cube of edge ' + m('5') + ' cm has volume:', a: [m('25'), m('125'), m('150'), m('15')], c: 1, why: m('5³') + '.' },
+      { q: 'A cuboid of volume ' + m('168') + ' cm³ on a ' + m('7 × 6') + ' base is high:', a: [m('4') + ' cm', m('42') + ' cm', m('24') + ' cm', m('8') + ' cm'], c: 0, why: m('168 ÷ 42') + '.' },
+      { q: 'A cube of surface area ' + m('384') + ' cm² has edge:', a: [m('64'), m('8'), m('19.6'), m('6')], c: 1, why: m('384 ÷ 6 = 64') + ', root ' + m('8') + '.' },
+      { q: 'A ' + m('70 × 40 × 50') + ' cm tank holds:', a: [m('14') + ' litres', m('140') + ' litres', m('1400') + ' litres', m('140 000') + ' litres'], c: 1, why: m('140 000') + ' cm³.' },
+      { q: 'A rise from ' + m('8') + ' to ' + m('9.2') + ' cm on ' + m('1500') + ' cm² means:', a: [m('13 800') + ' cm³', m('1800') + ' cm³', m('12 000') + ' cm³', m('1.2') + ' cm³'], c: 1, why: 'Use the rise, ' + m('1.2') + ' cm.' },
+      { q: 'An open box ' + m('12 × 8 × 5') + ' cm needs:', a: [m('392'), m('296'), m('200'), m('96')], c: 1, why: 'Five faces only.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 wants the surface area in:', a: [m('cm'), m('cm²'), m('cm³'), 'litres'], c: 1, why: 'Two lengths multiplied.' },
+    { q: 'Q4 divides by six:', a: ['after the root', 'before the root', 'never', 'twice'], c: 1, why: 'One face first.' },
+    { q: 'Q5 gives an equation that is:', a: ['quadratic', 'linear', 'impossible', 'a fraction'], c: 1, why: 'Only one unknown edge.' },
+    { q: 'Q6 needs the volume converted to:', a: [m('cm²'), 'litres', 'metres', 'nothing'], c: 1, why: 'To match the rate.' },
+    { q: 'Q7 multiplies the base area by:', a: ['the new level', 'the rise', 'the old level', 'their sum'], c: 1, why: 'The displaced volume.' },
+    { q: 'Q8 leaves out:', a: ['the base', 'the lid', 'two walls', 'nothing'], c: 1, why: 'The box is open.' }
+  ],
+  practice: {
+    easy: [
+      ['The volume of a ' + m('6 × 5 × 4') + ' cm cuboid', m('120') + ' cm³'],
+      ['Its surface area', m('148') + ' cm²'],
+      ['The volume of a cube of edge ' + m('5') + ' cm', m('125') + ' cm³'],
+      ['Its surface area', m('150') + ' cm²'],
+      [m('V = 168') + ' cm³ on a ' + m('7 × 6') + ' base: the height', m('4') + ' cm'],
+      ['One face of a cube of surface area ' + m('384') + ' cm²', m('64') + ' cm²'],
+      ['The capacity of a ' + m('70 × 40 × 50') + ' cm tank', m('140') + ' litres']
+    ],
+    med: [
+      ['The edge of a cube of surface area ' + m('384') + ' cm²', m('8') + ' cm'],
+      ['A cuboid ' + m('8') + ' by ' + m('3') + ' cm with ' + m('S = 158') + ' cm²: the third edge', m('5') + ' cm'],
+      ['A ' + m('140') + '-litre tank filled at ' + m('14') + ' l/min', m('10') + ' min'],
+      ['A stone raising ' + m('8') + ' cm to ' + m('9.2') + ' cm on a ' + m('50 × 30') + ' base', m('1800') + ' cm³'],
+      ['Card for an open box ' + m('12 × 8 × 5') + ' cm', m('296') + ' cm²'],
+      ['The closed box of the same size', m('392') + ' cm²'],
+      ['The volume of that box', m('480') + ' cm³']
+    ],
+    hard: [
+      ['A ' + m('1') + ' m by ' + m('80') + ' cm by ' + m('50') + ' cm tank, in litres', m('400') + ' litres'],
+      ['The commonest lost mark in this paper', 'A unit not converted'],
+      ['A cube of volume ' + m('1728') + ' cm³: its edge and surface area', m('12') + ' cm and ' + m('864') + ' cm²'],
+      ['The mass of the water in a full ' + m('140') + '-litre tank', m('140') + ' kg'],
+      ['Doubling every edge of the Q1 cuboid: the new volume', m('960') + ' cm³'],
+      ['…and the new surface area', m('592') + ' cm²'],
+      ['The depth of ' + m('28') + ' litres in a tank of base ' + m('70 × 40') + ' cm', m('10') + ' cm']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every question you lost a mark on in full, with the units on every line.',
+  homework: [
+    'Rewrite in full every question on which you lost a mark, naming the slip in the margin.',
+    'Find the volume and the surface area of a cuboid ' + m('7') + ' cm by ' + m('6') + ' cm by ' + m('3') + ' cm.',
+    'A cube has volume ' + m('1331') + ' cm³. Find its edge and its surface area.',
+    'A tank ' + m('100') + ' cm by ' + m('60') + ' cm by ' + m('45') + ' cm is filled at ' + m('15') + ' litres a minute. How long does it take?',
+    'How much card is needed for an open box ' + m('15') + ' cm by ' + m('10') + ' cm by ' + m('6') + ' cm deep?'
+  ]
+});
