@@ -8023,3 +8023,735 @@ G9_ALG.push({
     'Give an example of two compatible events on a die, and two mutually exclusive ones.'
   ]
 });
+
+/* ============================== 46 ============================== */
+G9_ALG.push({
+  id: 'a9-46', stream: 'alg', grade: 9, quarter: 4, lessons: '90–91', hours: 2,
+  title: 'The classical definition of probability',
+  subtitle: 'Count the favourable outcomes, count them all, and divide — but only when they are equally likely.',
+  uz: 'Algebra 9, §36', uzPage: 'pp. 217–223',
+  cam: 'IGX 8.2', camPage: 'Core & Extended, pp. 164–170', wb: 'Exercise 8.2',
+  objectives: [
+    'State and apply P(A) = m/n, naming the condition of equal likelihood.',
+    'Know that 0 ≤ P(A) ≤ 1 and that P(A) + P(A′) = 1.',
+    'Compute probabilities for dice, coins, cards and coloured balls.',
+    'Use the complement when it is quicker than direct counting.'
+  ],
+  terms: [
+    ['Probability', 'Ehtimollik', 'Вероятность'],
+    ['Favourable outcome', 'Qulay natija', 'Благоприятный исход'],
+    ['Equally likely', 'Teng imkoniyatli', 'Равновозможные'],
+    ['Classical definition', 'Klassik ta’rif', 'Классическое определение'],
+    ['Complement rule', 'Qarama-qarshi hodisa qoidasi', 'Правило дополнения'],
+    ['At least', 'Kamida', 'Хотя бы'],
+    ['At most', 'Ko‘pi bilan', 'Не более'],
+    ['Without replacement', 'Qaytarmasdan', 'Без возвращения']
+  ],
+  timing: [[15, 'The definition'], [22, 'What the number means'], [25, 'Counting carefully'], [23, 'The complement'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The definition',
+      html: `<p>If a trial has ${m('n')} <b>equally likely</b> outcomes and ${m('m')} of them belong to
+      the event ${m('A')}, then</p>
+      ${eq(m('P(A) = ' + f('m', 'n')) + '   —   ' + m(f('favourable outcomes', 'all outcomes')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Event</th><th class="m">m</th><th class="m">n</th><th class="m">P</th></tr></thead>
+      <tbody>
+        <tr><td>a die shows ${m('4')}</td><td class="m">1</td><td class="m">6</td><td class="m">${f('1', '6')}</td></tr>
+        <tr><td>a die shows an even number</td><td class="m">3</td><td class="m">6</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td>two coins give two heads</td><td class="m">1</td><td class="m">4</td><td class="m">${f('1', '4')}</td></tr>
+        <tr><td>a card is a heart</td><td class="m">13</td><td class="m">52</td><td class="m">${f('1', '4')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">“Equally likely” is a condition, not a decoration</span>
+      A drawing pin lands point-up or point-down: two outcomes, but not equally likely, so the answer is
+      <b>not</b> ${m(f('1', '2'))}. The classical definition simply does not apply, and the next lesson
+      supplies what does.</div>`
+    },
+    {
+      h: 'What the number means',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Property</th><th>Statement</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>bounds</td><td class="m">0 ≤ P(A) ≤ 1</td><td class="m">0 ≤ m ≤ n</td></tr>
+        <tr><td>impossible</td><td class="m">P(∅) = 0</td><td class="m">m = 0</td></tr>
+        <tr><td>certain</td><td class="m">P(ξ) = 1</td><td class="m">m = n</td></tr>
+        <tr><td>complement</td><td class="m">P(A) + P(A′) = 1</td><td>every outcome is in one or the other</td></tr>
+      </tbody></table></div>
+      <p>A probability is never negative, never greater than ${m('1')}, and is best given as a fraction
+      in lowest terms unless the question asks for a decimal or a percentage.</p>
+      <div class="warn"><span class="wl">An answer of ${m(f('7', '6'))} or ${m('−0.2')} is not a small slip</span>
+      It is a signal that the counting went wrong — usually that ${m('n')} was taken too small. Check
+      every probability against ${m('0 ≤ P ≤ 1')} before writing it down.</div>`
+    },
+    {
+      h: 'Counting carefully',
+      html: `<p>Almost every mark in this topic is a counting mark.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Experiment</th><th class="m">n</th><th>A trap</th></tr></thead>
+      <tbody>
+        <tr><td>two dice</td><td class="m">36</td><td>${m('(2,5)')} and ${m('(5,2)')} are different</td></tr>
+        <tr><td>two coins</td><td class="m">4</td><td class="m">HT ≠ TH</td></tr>
+        <tr><td>drawing 2 balls of 10, without replacement</td><td class="m">90</td><td>${m('n')} changes after the first draw</td></tr>
+        <tr><td>a card from a pack</td><td class="m">52</td><td>four suits, thirteen ranks</td></tr>
+      </tbody></table></div>
+      <p><b>Example.</b> Two dice. ${m('P')}(sum ${m('= 7')}): the favourable pairs are
+      ${m('(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)')} — six of them — so ${m('P = ' + f('6', '36') + ' = ' + f('1', '6'))}.
+      A sum of ${m('7')} is the most likely total, and this counting is why.</p>
+      <div class="keybox"><div class="klabel">Draw the ${m('6 × 6')} grid once</div>
+      Every two-dice question in the Grade 9 course can be read off a single ${m('6 × 6')} table of
+      sums. Drawing it once, at the start of the exercise, turns ten questions into ten readings.</div>`
+    },
+    {
+      h: 'The complement',
+      html: `<p>When an event contains many outcomes and its opposite contains few, count the opposite.</p>
+      ${eq(m('P(A) = 1 − P(A′)'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Event</th><th>Direct count</th><th>By complement</th></tr></thead>
+      <tbody>
+        <tr><td>at least one six in two rolls</td><td class="m">11</td><td class="m">1 − ${f('25', '36')} = ${f('11', '36')}</td></tr>
+        <tr><td>at least one head in three tosses</td><td class="m">7</td><td class="m">1 − ${f('1', '8')} = ${f('7', '8')}</td></tr>
+        <tr><td>a card that is not a heart</td><td class="m">39</td><td class="m">1 − ${f('1', '4')} = ${f('3', '4')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">“At least one” almost always means “one minus none”</div>
+      Counting the ways to get at least one six means adding several cases; counting the ways to get
+      none means one multiplication. Recognising the phrase is worth more marks in this chapter than
+      any formula.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A die is rolled. Find ' + m('P') + '(even) and ' + m('P') + '(more than 4).',
+      steps: [
+        [m('n = 6') + ' equally likely outcomes.', ''],
+        ['even ' + m('= {2,4,6}') + ', so ' + m('m = 3') + '.', ''],
+        [m('P = ' + f('3', '6') + ' = ' + f('1', '2')), ''],
+        ['more than 4 ' + m('= {5,6}') + ': ' + m('P = ' + f('2', '6') + ' = ' + f('1', '3')) + '.', '']
+      ],
+      ans: m(f('1', '2')) + ' and ' + m(f('1', '3'))
+    },
+    {
+      q: 'Two dice are rolled. Find ' + m('P') + '(the sum is 7).',
+      steps: [
+        [m('n = 6 × 6 = 36'), 'Ordered pairs.'],
+        ['Favourable: ' + m('(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)') + '.', ''],
+        [m('m = 6'), ''],
+        [m('P = ' + f('6', '36') + ' = ' + f('1', '6')), '']
+      ],
+      ans: m(f('1', '6'))
+    },
+    {
+      q: 'Two dice are rolled. Find ' + m('P') + '(at least one six).',
+      steps: [
+        ['The opposite is “no six at all”.', ''],
+        ['No six: ' + m('5 × 5 = 25') + ' outcomes.', ''],
+        [m('P') + '(no six) ' + m('= ' + f('25', '36')) + '.', ''],
+        [m('P = 1 − ' + f('25', '36') + ' = ' + f('11', '36')), '']
+      ],
+      ans: m(f('11', '36'))
+    }
+  ],
+  modelNote: 'Draw the 6 × 6 grid of dice sums on the board and leave it there for the whole chapter; almost every question becomes a matter of counting cells.',
+  interactive: {
+    type: 'quiz',
+    title: 'Count, count, divide',
+    hint: 'Find n first, then m.'
+  },
+  quiz: [
+    { q: m('P(A)') + ' equals:', a: [m(f('n', 'm')), m(f('m', 'n')), m('m n'), m('m − n')], c: 1, why: 'Favourable over all.' },
+    { q: 'The definition requires the outcomes to be:', a: ['few', 'equally likely', 'independent', 'positive'], c: 1, why: 'Otherwise it does not apply.' },
+    { q: m('P') + ' of a certain event:', a: [m('0'), m(f('1', '2')), m('1'), m('∞')], c: 2, why: m('m = n') + '.' },
+    { q: m('P(A) + P(A′)') + ' equals:', a: [m('0'), m(f('1', '2')), m('1'), m('2')], c: 2, why: 'Every outcome is in one of them.' },
+    { q: 'Two dice: ' + m('P') + '(sum ' + m('7') + ') =', a: [m(f('1', '6')), m(f('1', '9')), m(f('1', '12')), m(f('1', '36'))], c: 0, why: 'Six pairs out of ' + m('36') + '.' },
+    { q: '“At least one” is best done by:', a: ['direct counting', 'the complement', 'a tree', 'guessing'], c: 1, why: m('1 − P') + '(none).' }
+  ],
+  practice: {
+    easy: [
+      [m('P') + '(a die shows 4)', m(f('1', '6'))],
+      [m('P') + '(a die shows even)', m(f('1', '2'))],
+      [m('P') + '(a die shows more than 4)', m(f('1', '3'))],
+      [m('P') + '(a coin shows heads)', m(f('1', '2'))],
+      [m('P') + '(two coins give two heads)', m(f('1', '4'))],
+      [m('P') + '(a card is a heart)', m(f('1', '4'))],
+      [m('P') + '(a die shows 7)', m('0')]
+    ],
+    med: [
+      ['Two dice: ' + m('P') + '(sum 7)', m(f('1', '6'))],
+      ['Two dice: ' + m('P') + '(sum 2)', m(f('1', '36'))],
+      ['Two dice: ' + m('P') + '(at least one six)', m(f('11', '36'))],
+      ['Three coins: ' + m('P') + '(exactly two heads)', m(f('3', '8'))],
+      ['Three coins: ' + m('P') + '(at least one head)', m(f('7', '8'))],
+      ['A bag: ' + m('4') + ' red, ' + m('6') + ' blue. ' + m('P') + '(red)', m(f('2', '5'))],
+      ['A card: ' + m('P') + '(a king)', m(f('1', '13'))]
+    ],
+    hard: [
+      ['Two dice: ' + m('P') + '(sum is even)', m(f('1', '2'))],
+      ['Two dice: ' + m('P') + '(the numbers differ by 1)', m(f('5', '18'))],
+      ['A bag: ' + m('3') + ' red, ' + m('5') + ' blue; two drawn without replacement. ' + m('P') + '(both red)', m(f('3', '28'))],
+      ['Same bag: ' + m('P') + '(one of each)', m(f('15', '28'))],
+      ['A card: ' + m('P') + '(red or a king)', m(f('7', '13'))],
+      ['Three dice: ' + m('P') + '(at least one six)', m(f('91', '216'))],
+      ['A number from ' + m('1') + ' to ' + m('20') + ': ' + m('P') + '(a multiple of 3 or of 5)', m(f('9', '20'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write ' + m('n') + ' and ' + m('m') + ' explicitly before dividing, and check that ' + m('0 ≤ P ≤ 1') + '.',
+  homework: [
+    'A die is rolled. Find ' + m('P') + '(odd), ' + m('P') + '(less than 3) and ' + m('P') + '(a multiple of 3).',
+    'Two dice are rolled. Find ' + m('P') + '(sum 8) and ' + m('P') + '(a double).',
+    'Three coins are tossed. Find ' + m('P') + '(exactly one head).',
+    'A bag holds ' + m('5') + ' red and ' + m('7') + ' green balls. Find ' + m('P') + '(green).',
+    'Find ' + m('P') + '(at least one head in four tosses) using the complement.'
+  ]
+});
+
+/* ============================== 47 ============================== */
+G9_ALG.push({
+  id: 'a9-47', stream: 'alg', grade: 9, quarter: 4, lessons: '92–93', hours: 2,
+  title: 'Relative frequency and statistical probability',
+  subtitle: 'When outcomes are not equally likely, count what actually happens instead.',
+  uz: 'Algebra 9, §37', uzPage: 'pp. 224–229',
+  cam: 'IGX 8.3', camPage: 'Core & Extended, pp. 171–176', wb: 'Exercise 8.3',
+  objectives: [
+    'Define relative frequency and compute it from a table of results.',
+    'Explain why relative frequency settles down as the number of trials grows.',
+    'Use relative frequency to estimate a probability, and to estimate expected numbers.',
+    'Say when the classical definition applies and when it does not.'
+  ],
+  terms: [
+    ['Relative frequency', 'Nisbiy chastota', 'Относительная частота'],
+    ['Frequency', 'Chastota', 'Частота'],
+    ['Number of trials', 'Sinovlar soni', 'Число испытаний'],
+    ['Estimate', 'Baholash', 'Оценка'],
+    ['Stabilises', 'Barqarorlashadi', 'Стабилизируется'],
+    ['Expected number', 'Kutilayotgan son', 'Ожидаемое число'],
+    ['Biased', 'Nosimmetrik', 'Смещённый'],
+    ['Fair', 'Simmetrik', 'Правильный']
+  ],
+  timing: [[15, 'When counting outcomes fails'], [22, 'Relative frequency'], [25, 'Why it settles'], [23, 'Estimating with it'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'When counting outcomes fails',
+      html: `<p>The classical definition needs equally likely outcomes. Very often they are not.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Trial</th><th>Outcomes</th><th>Equally likely?</th></tr></thead>
+      <tbody>
+        <tr><td>a fair die</td><td class="m">6</td><td>yes</td></tr>
+        <tr><td>a drawing pin</td><td class="m">2</td><td>no</td></tr>
+        <tr><td>a weighted die</td><td class="m">6</td><td>no</td></tr>
+        <tr><td>whether it rains tomorrow</td><td class="m">2</td><td>no</td></tr>
+        <tr><td>whether a bulb lasts ${m('1000')} hours</td><td class="m">2</td><td>no</td></tr>
+      </tbody></table></div>
+      <p>For all but the first, the probability cannot be calculated in advance. It must be
+      <b>measured</b>.</p>
+      <div class="keybox"><div class="klabel">Two definitions, two situations</div>
+      The classical definition is used when the symmetry of the object tells you the answer; the
+      statistical one when only experiment can. Neither replaces the other, and saying which one a
+      question needs is itself a mark.</div>`
+    },
+    {
+      h: 'Relative frequency',
+      html: `<p>Perform the trial ${m('N')} times and let the event happen ${m('M')} times. The
+      <b>relative frequency</b> is</p>
+      ${eq(m('W(A) = ' + f('M', 'N')), true)}
+      <p><b>Example.</b> A drawing pin is dropped ${m('200')} times and lands point-up ${m('124')} times.
+      Then ${m('W = ' + f('124', '200') + ' = 0.62')}, and ${m('0.62')} is the best available estimate of
+      the probability.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Result</th><th>Frequency</th><th>Relative frequency</th></tr></thead>
+      <tbody>
+        <tr><td>point up</td><td class="m">124</td><td class="m">0.62</td></tr>
+        <tr><td>point down</td><td class="m">76</td><td class="m">0.38</td></tr>
+        <tr><td>total</td><td class="m">200</td><td class="m">1.00</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The relative frequencies of all outcomes add to ${m('1')}</span>
+      Exactly as probabilities do. A table whose last column does not total ${m('1')} contains an
+      arithmetic error, and checking it takes three seconds.</div>`
+    },
+    {
+      h: 'Why it settles',
+      html: `<p>Repeat the experiment in blocks and watch the relative frequency:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">N</th><th class="m">10</th><th class="m">50</th><th class="m">100</th><th class="m">500</th><th class="m">5000</th></tr></thead>
+      <tbody>
+        <tr><td class="m">W</td><td class="m">0.70</td><td class="m">0.58</td><td class="m">0.63</td><td class="m">0.615</td><td class="m">0.618</td></tr>
+      </tbody></table></div>
+      {{fig:frequencyPolygon:As the number of trials grows the relative frequency wanders less and less.}}
+      <p>The values jump about at first and then settle. This <b>stability of relative frequency</b> is
+      an experimental fact, observed for three centuries, and it is what makes probability a science
+      rather than an opinion.</p>
+      <div class="warn"><span class="wl">Ten trials prove nothing</span>
+      Getting seven heads in ten tosses is entirely ordinary for a fair coin. Declaring the coin biased
+      on that evidence is the classic error; a few hundred trials are needed before a departure from
+      ${m('0.5')} means anything.</div>`
+    },
+    {
+      h: 'Estimating with it',
+      html: `<p>Once ${m('P')} is estimated, the expected number of occurrences in ${m('N')} future trials
+      is ${m('N × P')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>the pin, ${m('500')} more drops</td><td class="m">500 × 0.62</td><td class="m">310</td></tr>
+        <tr><td>a die, ${m('P')}(six) ${m('= ' + f('1', '6'))}, ${m('300')} rolls</td><td class="m">300 × ${f('1', '6')}</td><td class="m">50</td></tr>
+        <tr><td>${m('3%')} of bulbs are faulty, ${m('2000')} bulbs</td><td class="m">2000 × 0.03</td><td class="m">60</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">“Expected” means on average, not exactly</div>
+      Fifty sixes in ${m('300')} rolls is what the arithmetic predicts; ${m('47')} or ${m('55')} would
+      surprise nobody. The expected number is the centre of a spread, and a question asking “how many
+      would you expect” is asking for that centre.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A pin is dropped ' + m('200') + ' times and lands point-up ' + m('124') + ' times. Estimate the probability, and predict the point-up count in ' + m('500') + ' more drops.',
+      steps: [
+        [m('W = ' + f('124', '200')), ''],
+        [m('= 0.62'), 'The estimate.'],
+        [m('500 × 0.62'), ''],
+        [m('= 310') + ' times.', 'Expected, not exact.']
+      ],
+      ans: m('0.62') + '; about ' + m('310')
+    },
+    {
+      q: 'A die is rolled ' + m('600') + ' times; a six appears ' + m('92') + ' times. Is there evidence of bias?',
+      steps: [
+        [m('W = ' + f('92', '600') + ' ≈ 0.153'), ''],
+        ['A fair die would give ' + m(f('1', '6') + ' ≈ 0.167') + '.', ''],
+        ['Expected count ' + m('100') + '; observed ' + m('92') + '.', ''],
+        ['The difference is small for ' + m('600') + ' trials — no clear evidence.', 'More trials would be needed.']
+      ],
+      ans: 'No clear evidence of bias'
+    },
+    {
+      q: 'In a school of ' + m('800') + ', a survey of ' + m('50') + ' pupils found ' + m('18') + ' walk to school. Estimate how many walk in total.',
+      steps: [
+        [m('W = ' + f('18', '50') + ' = 0.36'), ''],
+        [m('800 × 0.36'), ''],
+        [m('= 288'), ''],
+        ['About ' + m('288') + ' pupils.', 'A sample of ' + m('50') + ' is small — treat it as an estimate.']
+      ],
+      ans: 'About ' + m('288')
+    }
+  ],
+  modelNote: 'Have every pupil toss a coin twenty times and pool the results on the board; the class watches the pooled relative frequency approach 0.5 while individual results scatter wildly.',
+  interactive: {
+    type: 'averages',
+    title: 'Relative frequency as trials grow',
+    hint: 'Add trials and watch the value settle.'
+  },
+  quiz: [
+    { q: 'Relative frequency is:', a: [m(f('M', 'N')), m(f('N', 'M')), m('M N'), m('M − N')], c: 0, why: 'Occurrences over trials.' },
+    { q: 'It is used when outcomes are:', a: ['equally likely', 'not equally likely', 'few', 'many'], c: 1, why: 'The classical definition fails there.' },
+    { q: 'As ' + m('N') + ' grows, ' + m('W') + ':', a: ['grows', 'settles', 'falls', 'oscillates forever'], c: 1, why: 'Stability of relative frequency.' },
+    { q: 'The relative frequencies of all outcomes total:', a: [m('0'), m(f('1', '2')), m('1'), m('N')], c: 2, why: 'Every trial gives one outcome.' },
+    { q: 'Expected number in ' + m('N') + ' trials:', a: [m('N + P'), m('N × P'), m(f('N', 'P')), m('P')], c: 1, why: 'On average.' },
+    { q: 'Seven heads in ten tosses shows:', a: ['bias', 'nothing much', 'a fair coin', 'an error'], c: 1, why: 'Ten trials prove nothing.' }
+  ],
+  practice: {
+    easy: [
+      [m('M = 124, N = 200') + ': ' + m('W'), m('0.62')],
+      [m('M = 30, N = 50') + ': ' + m('W'), m('0.6')],
+      [m('M = 9, N = 20') + ': ' + m('W'), m('0.45')],
+      ['If ' + m('W') + '(up) ' + m('= 0.62') + ', ' + m('W') + '(down)', m('0.38')],
+      ['Expected sixes in ' + m('300') + ' rolls', m('50')],
+      ['Expected heads in ' + m('80') + ' tosses', m('40')],
+      [m('3%') + ' faulty of ' + m('2000'), m('60')]
+    ],
+    med: [
+      ['Pin: ' + m('0.62') + ', ' + m('500') + ' more drops', m('310')],
+      ['Survey ' + m('18') + ' of ' + m('50') + ' walk; school of ' + m('800'), m('288')],
+      ['A die: ' + m('92') + ' sixes in ' + m('600') + ': ' + m('W'), m('≈ 0.153')],
+      ['Is that clear evidence of bias?', 'No'],
+      ['A seed germinates ' + m('171') + ' times in ' + m('200') + ': ' + m('W'), m('0.855')],
+      ['Expected germinations from ' + m('1000') + ' seeds', m('855')],
+      ['Which definition for “will it rain tomorrow”?', 'Statistical']
+    ],
+    hard: [
+      ['A biased coin: ' + m('W') + '(head) ' + m('= 0.6') + '. Expected heads in ' + m('250'), m('150')],
+      ['A machine: ' + m('4') + ' faults in ' + m('500') + '. Expected faults in ' + m('12000'), m('96')],
+      ['A survey of ' + m('40') + ' found ' + m('14') + ' left-handed. Estimate for ' + m('1200'), m('420')],
+      ['Two dice rolled ' + m('360') + ' times: expected number of sevens', m('60')],
+      ['A spinner: ' + m('W') + ' values ' + m('0.2, 0.35, x, 0.15') + '. Find ' + m('x'), m('0.3')],
+      ['Why is ' + m('N = 10') + ' too few to judge a coin?', 'The scatter is far larger than the effect'],
+      ['A die gives ' + m('40') + ' sixes in ' + m('120') + '. Comment.', m('W = ' + f('1', '3')) + ' — strong evidence of bias']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Say for every task whether the classical or the statistical definition applies, and why.',
+  homework: [
+    'A pin lands point-up ' + m('87') + ' times in ' + m('150') + ' drops. Find ' + m('W') + ' and predict the count in ' + m('600') + ' drops.',
+    'A survey of ' + m('60') + ' pupils found ' + m('21') + ' cycle to school. Estimate the number in a school of ' + m('900') + '.',
+    'A die is rolled ' + m('300') + ' times and gives ' + m('72') + ' sixes. Comment on whether it is fair.',
+    'A factory finds ' + m('6') + ' faulty items in ' + m('400') + '. How many would you expect in ' + m('10 000') + '?',
+    'Explain why the classical definition cannot be used for tomorrow’s weather.'
+  ]
+});
+
+/* ============================== 48 ============================== */
+G9_ALG.push({
+  id: 'a9-48', stream: 'alg', grade: 9, quarter: 4, lessons: '94–95', hours: 2,
+  title: 'Counting for probability — the two rules and arrangements',
+  subtitle: 'Before a probability can be found, the outcomes must be counted — and counting has rules.',
+  uz: 'Algebra 9, §38', uzPage: 'pp. 230–236',
+  cam: 'IGX 8.4', camPage: 'Core & Extended, pp. 177–182', wb: 'Exercise 8.4',
+  objectives: [
+    'Use the multiplication rule for a sequence of independent choices.',
+    'Use the addition rule for alternatives that cannot both happen.',
+    'Count arrangements of n distinct objects and selections of k from n.',
+    'Apply the counting to a probability question.'
+  ],
+  terms: [
+    ['Multiplication rule', 'Ko‘paytirish qoidasi', 'Правило умножения'],
+    ['Addition rule', 'Qo‘shish qoidasi', 'Правило сложения'],
+    ['Arrangement', 'O‘rin almashtirish', 'Перестановка'],
+    ['Selection', 'Tanlash', 'Выбор'],
+    ['Factorial', 'Faktorial', 'Факториал'],
+    ['Order matters', 'Tartib muhim', 'Порядок важен'],
+    ['With replacement', 'Qaytarib', 'С возвращением'],
+    ['Tree diagram', 'Daraxt diagrammasi', 'Дерево вариантов']
+  ],
+  timing: [[15, 'The two rules'], [22, 'Arrangements'], [25, 'Selections'], [23, 'Counting into probability'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The two rules',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Rule</th><th>Use when</th><th>Count</th><th>Word</th></tr></thead>
+      <tbody>
+        <tr><td>multiplication</td><td>choices are made one after another</td><td class="m">m × n</td><td><b>and</b></td></tr>
+        <tr><td>addition</td><td>the cases are alternatives</td><td class="m">m + n</td><td><b>or</b></td></tr>
+      </tbody></table></div>
+      <p><b>Multiplication.</b> Four shirts and three trousers give ${m('4 × 3 = 12')} outfits: a shirt
+      <b>and</b> a pair of trousers.</p>
+      <p><b>Addition.</b> Travelling by one of ${m('3')} buses <b>or</b> one of ${m('2')} trains gives
+      ${m('3 + 2 = 5')} ways.</p>
+      {{fig:treeDiagram:Each stage of a tree multiplies the branches; the leaves are all the outcomes.}}
+      <div class="keybox"><div class="klabel">Find the word “and” or the word “or”</div>
+      Almost every counting question is settled by which of the two words describes the situation. Read
+      the sentence aloud and listen for it before writing anything.</div>`
+    },
+    {
+      h: 'Arrangements',
+      html: `<p>Arranging ${m('n')} distinct objects in a row: ${m('n')} choices for the first place,
+      ${m('n − 1')} for the second, and so on.</p>
+      ${eq(m('n! = n(n − 1)(n − 2) … 2 · 1'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">n</th><th class="m">1</th><th class="m">2</th><th class="m">3</th><th class="m">4</th><th class="m">5</th><th class="m">6</th></tr></thead>
+      <tbody>
+        <tr><td class="m">n!</td><td class="m">1</td><td class="m">2</td><td class="m">6</td><td class="m">24</td><td class="m">120</td><td class="m">720</td></tr>
+      </tbody></table></div>
+      <p>Arranging ${m('k')} of ${m('n')} in order — filling ${m('k')} places from ${m('n')} objects —
+      gives ${m('n(n − 1) … (n − k + 1)')}. For example, choosing a president, a secretary and a
+      treasurer from ${m('10')} people: ${m('10 × 9 × 8 = 720')} ways.</p>
+      <div class="warn"><span class="wl">Choosing <i>with</i> replacement is different</span>
+      A three-digit code from ${m('10')} digits, repeats allowed, is ${m('10³ = 1000')}, not
+      ${m('10 × 9 × 8')}. Decide first whether an object can be used twice; the two answers differ by a
+      lot.</div>`
+    },
+    {
+      h: 'Selections',
+      html: `<p>When the order does <b>not</b> matter, every selection has been counted ${m('k!')} times,
+      so divide.</p>
+      ${eq(m('C = ' + f('n(n − 1) … (n − k + 1)', 'k!')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Order?</th><th>Count</th></tr></thead>
+      <tbody>
+        <tr><td>3 offices from 10 people</td><td>yes</td><td class="m">10 × 9 × 8 = 720</td></tr>
+        <tr><td>a committee of 3 from 10</td><td>no</td><td class="m">${f('720', '6')} = 120</td></tr>
+        <tr><td>2 balls from 8</td><td>no</td><td class="m">${f('8 × 7', '2')} = 28</td></tr>
+        <tr><td>a handshake among 6 people</td><td>no</td><td class="m">${f('6 × 5', '2')} = 15</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One question decides everything: does order matter?</div>
+      A committee is a set — Ali, Bek, Dilnoza is the same committee as Dilnoza, Bek, Ali. A podium is
+      a list — first, second and third are different places. Ask the question in words before choosing
+      a formula.</div>`
+    },
+    {
+      h: 'Counting into probability',
+      html: `<p>With ${m('n')} and ${m('m')} both counted properly, the classical definition finishes the
+      job.</p>
+      <p><b>Example.</b> Two balls are drawn from a bag of ${m('3')} red and ${m('5')} blue. Find
+      ${m('P')}(both red).</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>all selections of 2 from 8</td><td class="m">${f('8 × 7', '2')} = 28</td></tr>
+        <tr><td>selections of 2 from the 3 red</td><td class="m">${f('3 × 2', '2')} = 3</td></tr>
+        <tr><td>probability</td><td class="m">${f('3', '28')}</td></tr>
+      </tbody></table></div>
+      <p>The same answer comes from multiplying stage by stage:
+      ${m(f('3', '8') + ' × ' + f('2', '7') + ' = ' + f('6', '56') + ' = ' + f('3', '28'))}. Both routes
+      are correct, and agreeing with yourself by two methods is a good check.</p>
+      <div class="warn"><span class="wl">Count ${m('n')} and ${m('m')} the same way</span>
+      If the total is counted as ordered pairs, the favourable cases must be too. Mixing an ordered
+      total with an unordered favourable count is the classic source of answers that are out by a
+      factor of ${m('2')}.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'How many three-digit numbers can be made from ' + m('1, 2, 3, 4, 5') + ' (a) with repeats, (b) without?',
+      steps: [
+        ['(a) Each of the three places has ' + m('5') + ' choices.', ''],
+        [m('5³ = 125'), ''],
+        ['(b) ' + m('5 × 4 × 3') + '.', 'No digit reused.'],
+        [m('= 60'), '']
+      ],
+      ans: m('125') + ' and ' + m('60')
+    },
+    {
+      q: 'A committee of ' + m('3') + ' is chosen from ' + m('10') + ' people. In how many ways?',
+      steps: [
+        ['Order does not matter.', ''],
+        ['Ordered count: ' + m('10 × 9 × 8 = 720') + '.', ''],
+        ['Each committee counted ' + m('3! = 6') + ' times.', ''],
+        [m(f('720', '6') + ' = 120'), '']
+      ],
+      ans: m('120')
+    },
+    {
+      q: 'Two balls are drawn from ' + m('3') + ' red and ' + m('5') + ' blue. Find ' + m('P') + '(both red).',
+      steps: [
+        ['All selections: ' + m(f('8 × 7', '2') + ' = 28') + '.', ''],
+        ['Red selections: ' + m(f('3 × 2', '2') + ' = 3') + '.', ''],
+        [m('P = ' + f('3', '28')), ''],
+        ['Check: ' + m(f('3', '8') + ' × ' + f('2', '7') + ' = ' + f('3', '28')) + ' ✓', 'Two routes agree.']
+      ],
+      ans: m(f('3', '28'))
+    }
+  ],
+  modelNote: 'Ask how many ways three pupils can stand in a row, then how many ways three can be chosen for a team; the class discovers the division by 3! themselves.',
+  interactive: {
+    type: 'quiz',
+    title: 'And, or, and does order matter?',
+    hint: 'Two questions settle every counting problem.'
+  },
+  quiz: [
+    { q: '“And” means:', a: ['add', 'multiply', 'divide', 'subtract'], c: 1, why: 'Successive choices.' },
+    { q: '“Or” (exclusive alternatives) means:', a: ['add', 'multiply', 'divide', 'subtract'], c: 0, why: 'Separate cases.' },
+    { q: m('4!') + ' equals:', a: [m('12'), m('16'), m('24'), m('64')], c: 2, why: m('4 · 3 · 2 · 1') + '.' },
+    { q: 'A committee of ' + m('3') + ' from ' + m('10') + ':', a: [m('720'), m('120'), m('30'), m('1000')], c: 1, why: 'Divide by ' + m('3!') + '.' },
+    { q: 'Three offices from ' + m('10') + ' people:', a: [m('720'), m('120'), m('30'), m('1000')], c: 0, why: 'Order matters.' },
+    { q: 'A three-digit code from ' + m('10') + ' digits, repeats allowed:', a: [m('720'), m('120'), m('1000'), m('30')], c: 2, why: m('10³') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('4') + ' shirts, ' + m('3') + ' trousers: outfits', m('12')],
+      [m('3') + ' buses or ' + m('2') + ' trains: ways', m('5')],
+      [m('3!'), m('6')],
+      [m('4!'), m('24')],
+      [m('5!'), m('120')],
+      ['Arrangements of ' + m('3') + ' pupils in a row', m('6')],
+      ['Two coins: outcomes', m('4')]
+    ],
+    med: [
+      ['Three-digit numbers from ' + m('1..5') + ', repeats allowed', m('125')],
+      ['Same, no repeats', m('60')],
+      ['Three offices from ' + m('10') + ' people', m('720')],
+      ['A committee of ' + m('3') + ' from ' + m('10'), m('120')],
+      ['Handshakes among ' + m('6') + ' people', m('15')],
+      ['Selections of ' + m('2') + ' from ' + m('8'), m('28')],
+      [m('P') + '(both red) from ' + m('3') + ' red, ' + m('5') + ' blue', m(f('3', '28'))]
+    ],
+    hard: [
+      ['Arrangements of the letters of ' + m('KITOB'), m('120')],
+      ['Four-digit codes from ' + m('0–9') + ', repeats allowed', m('10000')],
+      ['A committee of ' + m('2') + ' boys and ' + m('2') + ' girls from ' + m('5') + ' and ' + m('4'), m('60')],
+      [m('P') + '(a committee of 3 from 5 boys and 5 girls is all boys)', m(f('1', '12'))],
+      ['Diagonals of a decagon', m('35')],
+      ['Two cards from a pack: ' + m('P') + '(both aces)', m(f('1', '221'))],
+      ['How many ways can ' + m('5') + ' pupils sit if two insist on sitting together?', m('48')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write “order matters” or “order does not matter” at the top of every solution.',
+  homework: [
+    'How many four-digit numbers can be made from ' + m('1, 2, 3, 4, 5, 6') + ' without repeats?',
+    'In how many ways can a committee of ' + m('4') + ' be chosen from ' + m('9') + ' people?',
+    'How many handshakes take place among ' + m('8') + ' people?',
+    'Two balls are drawn from ' + m('4') + ' red and ' + m('6') + ' blue. Find ' + m('P') + '(both blue).',
+    'How many arrangements has the word ' + m('DAFTAR') + ' if all letters are treated as distinct?'
+  ]
+});
+
+/* ============================== 49 ============================== */
+G9_ALG.push({
+  id: 'a9-49', stream: 'alg', grade: 9, quarter: 4, lessons: '96–97', hours: 2,
+  title: 'Chapter exercises — Cambridge probability with tree diagrams',
+  subtitle: 'Two-stage experiments, with and without replacement — the IGCSE way of laying them out.',
+  uz: 'Algebra 9, V bob mashqlari', uzPage: 'pp. 237–240',
+  cam: 'IGX 8.5–8.6', camPage: 'Core & Extended, pp. 183–192', wb: 'Exercise 8.5–8.6',
+  objectives: [
+    'Draw a tree diagram for a two-stage experiment and label every branch.',
+    'Multiply along a path and add between paths.',
+    'Adjust the second-stage probabilities when there is no replacement.',
+    'Use a Venn diagram or a two-way table where it is quicker than a tree.'
+  ],
+  terms: [
+    ['Tree diagram', 'Daraxt diagrammasi', 'Дерево вероятностей'],
+    ['Branch', 'Shox', 'Ветвь'],
+    ['Path', 'Yo‘l', 'Путь'],
+    ['Independent events', 'Bog‘liqsiz hodisalar', 'Независимые события'],
+    ['Dependent events', 'Bog‘liq hodisalar', 'Зависимые события'],
+    ['With replacement', 'Qaytarib', 'С возвращением'],
+    ['Without replacement', 'Qaytarmasdan', 'Без возвращения'],
+    ['Two-way table', 'Ikki yo‘nalishli jadval', 'Таблица сопряжённости']
+  ],
+  timing: [[15, 'Drawing the tree'], [22, 'Along and between'], [25, 'Without replacement'], [23, 'Tables and Venn diagrams'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Drawing the tree',
+      html: `<p>A tree diagram sets out a two-stage experiment so that no case is missed.</p>
+      {{fig:treeDiagram:Two stages, four paths — the probabilities on each set of branches add to 1.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Rule</th><th>Check</th></tr></thead>
+      <tbody>
+        <tr><td>each set of branches</td><td>its probabilities add to ${m('1')}</td></tr>
+        <tr><td>along a path</td><td>multiply</td></tr>
+        <tr><td>between paths</td><td>add</td></tr>
+        <tr><td>all the paths together</td><td>add to ${m('1')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Label the branches before computing anything</span>
+      Cambridge awards marks for a correctly labelled tree even when the arithmetic afterwards goes
+      wrong. Drawing it is never wasted time.</div>`
+    },
+    {
+      h: 'Along and between',
+      html: `<p><b>Example.</b> A bag holds ${m('3')} red and ${m('5')} blue balls. One is drawn, replaced,
+      and another drawn.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Path</th><th>Probability</th></tr></thead>
+      <tbody>
+        <tr><td>RR</td><td class="m">${f('3', '8')} × ${f('3', '8')} = ${f('9', '64')}</td></tr>
+        <tr><td>RB</td><td class="m">${f('3', '8')} × ${f('5', '8')} = ${f('15', '64')}</td></tr>
+        <tr><td>BR</td><td class="m">${f('5', '8')} × ${f('3', '8')} = ${f('15', '64')}</td></tr>
+        <tr><td>BB</td><td class="m">${f('5', '8')} × ${f('5', '8')} = ${f('25', '64')}</td></tr>
+        <tr><td>total</td><td class="m">${f('64', '64')} = 1 ✓</td></tr>
+      </tbody></table></div>
+      <p>Then ${m('P')}(one of each) ${m('= ' + f('15', '64') + ' + ' + f('15', '64') + ' = ' + f('30', '64') + ' = ' + f('15', '32'))},
+      and ${m('P')}(at least one red) ${m('= 1 − ' + f('25', '64') + ' = ' + f('39', '64'))}.</p>
+      <div class="keybox"><div class="klabel">Two paths for “one of each”, not one</div>
+      RB and BR are different paths and both must be counted. Forgetting the second is the commonest
+      tree-diagram error, and the total-equals-${m('1')} check catches it every time.</div>`
+    },
+    {
+      h: 'Without replacement',
+      html: `<p>If the first ball is not replaced, the second stage has one fewer ball — and one fewer of
+      whichever colour was drawn.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Path</th><th>With replacement</th><th>Without replacement</th></tr></thead>
+      <tbody>
+        <tr><td>RR</td><td class="m">${f('3', '8')} × ${f('3', '8')}</td><td class="m">${f('3', '8')} × ${f('2', '7')} = ${f('3', '28')}</td></tr>
+        <tr><td>RB</td><td class="m">${f('3', '8')} × ${f('5', '8')}</td><td class="m">${f('3', '8')} × ${f('5', '7')} = ${f('15', '56')}</td></tr>
+        <tr><td>BR</td><td class="m">${f('5', '8')} × ${f('3', '8')}</td><td class="m">${f('5', '8')} × ${f('3', '7')} = ${f('15', '56')}</td></tr>
+        <tr><td>BB</td><td class="m">${f('5', '8')} × ${f('5', '8')}</td><td class="m">${f('5', '8')} × ${f('4', '7')} = ${f('5', '14')}</td></tr>
+      </tbody></table></div>
+      <p>The denominators of the second stage are all ${m('7')}; the numerators depend on the first
+      branch. That is the whole difference, and it is where the marks are.</p>
+      <div class="warn"><span class="wl">Only the second-stage branches change</span>
+      The first stage is untouched by the question of replacement — nothing has been removed yet. And
+      the four paths must still total ${m('1')}: ${m(f('3', '28') + ' + ' + f('15', '56') + ' + ' + f('15', '56') + ' + ' + f('5', '14') + ' = 1')} ✓</div>`
+    },
+    {
+      h: 'Tables and Venn diagrams',
+      html: `<p>Two other layouts appear constantly in IGCSE papers.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th></th><th>Boys</th><th>Girls</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Walk</td><td class="m">12</td><td class="m">9</td><td class="m">21</td></tr>
+        <tr><td>Bus</td><td class="m">8</td><td class="m">11</td><td class="m">19</td></tr>
+        <tr><td>Total</td><td class="m">20</td><td class="m">20</td><td class="m">40</td></tr>
+      </tbody></table></div>
+      <p>From the table, ${m('P')}(a girl who walks) ${m('= ' + f('9', '40'))} and
+      ${m('P')}(walks) ${m('= ' + f('21', '40'))}.</p>
+      {{fig:vennTwo:A Venn diagram answers “both”, “either” and “neither” at a glance.}}
+      <div class="keybox"><div class="klabel">Choose the layout that fits the question</div>
+      A tree for stages, a two-way table for two classifications of the same people, a Venn diagram for
+      overlapping sets. Using the wrong one is not wrong, only slow — and slowness costs marks in a
+      timed paper.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A bag holds ' + m('3') + ' red and ' + m('5') + ' blue. Two are drawn with replacement. Find ' + m('P') + '(one of each).',
+      steps: [
+        ['Paths RB and BR.', 'Two paths, not one.'],
+        [m('RB = ' + f('3', '8') + ' × ' + f('5', '8') + ' = ' + f('15', '64')), ''],
+        [m('BR = ' + f('5', '8') + ' × ' + f('3', '8') + ' = ' + f('15', '64')), ''],
+        [m('P = ' + f('30', '64') + ' = ' + f('15', '32')), '']
+      ],
+      ans: m(f('15', '32'))
+    },
+    {
+      q: 'The same bag, two drawn without replacement. Find ' + m('P') + '(both blue).',
+      steps: [
+        ['First blue: ' + m(f('5', '8')) + '.', ''],
+        ['Then ' + m('4') + ' blue of ' + m('7') + ' left: ' + m(f('4', '7')) + '.', ''],
+        [m(f('5', '8') + ' × ' + f('4', '7') + ' = ' + f('20', '56')), ''],
+        [m('= ' + f('5', '14')), '']
+      ],
+      ans: m(f('5', '14'))
+    },
+    {
+      q: 'From the two-way table above, find ' + m('P') + '(a boy, given the pupil walks).',
+      steps: [
+        ['Restrict to the “Walk” row: ' + m('21') + ' pupils.', 'A conditional question.'],
+        ['Of those, ' + m('12') + ' are boys.', ''],
+        [m('P = ' + f('12', '21')), ''],
+        [m('= ' + f('4', '7')), '']
+      ],
+      ans: m(f('4', '7'))
+    }
+  ],
+  modelNote: 'Draw the same experiment twice, with and without replacement, on one board; the only cells that change are the second-stage branches, and seeing that is the lesson.',
+  interactive: {
+    type: 'quiz',
+    title: 'Trees, tables and Venn diagrams',
+    hint: 'Multiply along, add between.'
+  },
+  quiz: [
+    { q: 'Along a path you:', a: ['add', 'multiply', 'divide', 'subtract'], c: 1, why: 'Successive stages.' },
+    { q: 'Between paths you:', a: ['add', 'multiply', 'divide', 'subtract'], c: 0, why: 'Alternative routes.' },
+    { q: 'All the paths together total:', a: [m('0'), m(f('1', '2')), m('1'), 'it varies'], c: 2, why: 'Something must happen.' },
+    { q: 'Without replacement, what changes?', a: ['the first stage', 'the second stage', 'both', 'neither'], c: 1, why: 'Nothing has been removed yet at stage one.' },
+    { q: '“One of each” uses:', a: ['one path', 'two paths', 'three paths', 'all paths'], c: 1, why: 'RB and BR.' },
+    { q: 'For two classifications of the same people, use:', a: ['a tree', 'a two-way table', 'a bar chart', 'a formula'], c: 1, why: 'It is the fastest layout.' }
+  ],
+  practice: {
+    easy: [
+      ['Along a path you', 'Multiply'],
+      ['Between paths you', 'Add'],
+      ['Branches from one point total', m('1')],
+      [m('P') + '(RR) with replacement, ' + m('3') + ' red of ' + m('8'), m(f('9', '64'))],
+      [m('P') + '(BB) with replacement, ' + m('5') + ' blue of ' + m('8'), m(f('25', '64'))],
+      [m('P') + '(two heads in two tosses)', m(f('1', '4'))],
+      [m('P') + '(a girl who walks) from the table', m(f('9', '40'))]
+    ],
+    med: [
+      [m('P') + '(one of each), with replacement', m(f('15', '32'))],
+      [m('P') + '(at least one red), with replacement', m(f('39', '64'))],
+      [m('P') + '(both red), without replacement', m(f('3', '28'))],
+      [m('P') + '(both blue), without replacement', m(f('5', '14'))],
+      [m('P') + '(one of each), without replacement', m(f('15', '28'))],
+      [m('P') + '(walks) from the table', m(f('21', '40'))],
+      [m('P') + '(a boy given the pupil walks)', m(f('4', '7'))]
+    ],
+    hard: [
+      ['Three tosses: ' + m('P') + '(exactly two heads)', m(f('3', '8'))],
+      ['A bag of ' + m('4') + ' white, ' + m('6') + ' black; two without replacement: ' + m('P') + '(same colour)', m(f('7', '15'))],
+      ['Same bag: ' + m('P') + '(different colours)', m(f('8', '15'))],
+      [m('P') + '(at least one six in three rolls)', m(f('91', '216'))],
+      ['A test is ' + m('90%') + ' accurate; ' + m('P') + '(two correct verdicts in two tests)', m('0.81')],
+      ['Two cards without replacement: ' + m('P') + '(both hearts)', m(f('1', '17'))],
+      ['A machine: ' + m('P') + '(fault) ' + m('= 0.02') + '. ' + m('P') + '(no fault in ' + m('3') + ' items)', m('≈ 0.941')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw the tree for every task, and check that the paths total ' + m('1') + '.',
+  homework: [
+    'A bag holds ' + m('4') + ' red and ' + m('6') + ' blue. Two are drawn with replacement. Find ' + m('P') + '(both red) and ' + m('P') + '(one of each).',
+    'The same bag, without replacement. Find ' + m('P') + '(both blue).',
+    'Find ' + m('P') + '(at least one head in three tosses).',
+    'Draw a two-way table for ' + m('30') + ' pupils, ' + m('18') + ' of whom are girls and ' + m('20') + ' of whom cycle, with ' + m('12') + ' girls cycling. Find ' + m('P') + '(a boy who does not cycle).',
+    'Two cards are drawn without replacement. Find ' + m('P') + '(both are kings).'
+  ]
+});
