@@ -6598,3 +6598,349 @@ G7_MAT.push({
     'Find the value of ' + m('x') + ' for which ' + m('3x − 6 = 0') + '.'
   ]
 });
+
+/* ============================== 39 ============================== */
+G7_MAT.push({
+  id: 'g7-39', stream: 'mat', grade: 7, quarter: 2, lessons: '69–70', hours: 2,
+  title: 'Like terms and their collection',
+  subtitle: 'Only terms with the same letters can be added — and that one rule tidies every expression.',
+  uz: 'Matematika 7, §32', uzPage: 'pp. 193–198',
+  cam: 'S8 2.2', camPage: 'Stage 8, pp. 16–20', wb: 'Exercise 2.2',
+  objectives: [
+    'Recognise like terms.',
+    'Collect like terms, including with negative coefficients.',
+    'Simplify an expression after removing brackets.',
+    'Use collection to shorten a perimeter or a cost calculation.'
+  ],
+  terms: [
+    ['Like terms', 'O‘xshash hadlar', 'Подобные члены'],
+    ['To collect', 'Ixchamlash', 'Приведение подобных'],
+    ['Unlike terms', 'O‘xshash bo‘lmagan hadlar', 'Неподобные члены'],
+    ['Coefficient', 'Koeffitsiyent', 'Коэффициент'],
+    ['Letter part', 'Harfiy qism', 'Буквенная часть'],
+    ['To simplify', 'Soddalashtirish', 'Упростить'],
+    ['Perimeter', 'Perimetr', 'Периметр'],
+    ['Cost', 'Narx', 'Стоимость']
+  ],
+  timing: [[15, 'Which terms are alike'], [25, 'Collecting'], [25, 'After brackets'], [20, 'In problems'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Which terms are alike',
+      html: `<p>Two terms are <b>like</b> if their letter parts are identical — the same letters with the
+      same exponents. The coefficients may be anything.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Pair</th><th>Like?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3x, −7x</td><td>yes</td><td>same letter part ${m('x')}</td></tr>
+        <tr><td class="m">4a²b, a²b</td><td>yes</td><td>same letter part</td></tr>
+        <tr><td class="m">4a²b, 4ab²</td><td>no</td><td>different exponents</td></tr>
+        <tr><td class="m">5x, 5y</td><td>no</td><td>different letters</td></tr>
+        <tr><td class="m">7, −2</td><td>yes</td><td>both constants</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Think of the letter part as a unit</div>
+      Three apples plus five apples is eight apples; three apples plus five pears is neither. That is the
+      whole rule, and it explains why unlike terms simply stay as they are.</div>`
+    },
+    {
+      h: 'Collecting',
+      html: `${eq(m('ka + la = (k + l)a'), true)}
+      <p>Add the coefficients and keep the letter part.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Collected</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3x + 5x</td><td class="m">8x</td></tr>
+        <tr><td class="m">7a − 10a</td><td class="m">−3a</td></tr>
+        <tr><td class="m">4x + 3y − x + 5y</td><td class="m">3x + 8y</td></tr>
+        <tr><td class="m">2a² + 3a − a² + a</td><td class="m">a² + 4a</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Take the sign with the term</span>
+      In ${m('4x + 3y − x + 5y')} the third term is ${m('−x')}, so the ${m('x')} terms give
+      ${m('4 − 1 = 3')}. Copying a term without its sign is the commonest error here.</div>`
+    },
+    {
+      h: 'After brackets',
+      html: `<p>Remove the brackets first, then collect.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Brackets removed</th><th>Collected</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2(x + 3) + 3(x − 1)</td><td class="m">2x + 6 + 3x − 3</td><td class="m">5x + 3</td></tr>
+        <tr><td class="m">5(a − 2) − 2(a − 5)</td><td class="m">5a − 10 − 2a + 10</td><td class="m">3a</td></tr>
+        <tr><td class="m">x − (3x − 4)</td><td class="m">x − 3x + 4</td><td class="m">−2x + 4</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two passes, never one</div>
+      Removing brackets and collecting at the same time is where the signs go wrong. Write the expanded
+      line in full before touching the collection.</div>`
+    },
+    {
+      h: 'In problems',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Situation</th><th>Expression</th><th>Simplified</th></tr></thead>
+      <tbody>
+        <tr><td>perimeter of a rectangle ${m('a')} by ${m('b')}</td><td class="m">a + b + a + b</td><td class="m">2a + 2b</td></tr>
+        <tr><td>perimeter of a triangle ${m('x, x, 2x − 1')}</td><td class="m">x + x + 2x − 1</td><td class="m">4x − 1</td></tr>
+        <tr><td>${m('3')} pens at ${m('p')} and ${m('4')} books at ${m('b')}, twice over</td><td class="m">2(3p + 4b)</td><td class="m">6p + 8b</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Simplifying is what makes a formula usable</div>
+      ${m('2a + 2b')} can be evaluated in two operations; ${m('a + b + a + b')} needs three. Over a whole
+      calculation the saving is large, and the shorter form is also easier to read.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Collect ' + m('4x + 3y − x + 5y') + '.',
+      steps: [
+        [m('x') + ' terms: ' + m('4x − x = 3x') + '.', 'The sign belongs to the term.'],
+        [m('y') + ' terms: ' + m('3y + 5y = 8y') + '.', ''],
+        ['They cannot be combined further.', ''],
+        [m('3x + 8y'), '']
+      ],
+      ans: m('3x + 8y')
+    },
+    {
+      q: 'Simplify ' + m('5(a − 2) − 2(a − 5)') + '.',
+      steps: [
+        [m('5a − 10') + ' and ' + m('−2a + 10') + '.', 'Both signs change in the second.'],
+        [m('5a − 10 − 2a + 10'), ''],
+        [m('a') + ' terms: ' + m('3a') + '; constants: ' + m('0') + '.', ''],
+        [m('= 3a'), '']
+      ],
+      ans: m('3a')
+    },
+    {
+      q: 'Find and simplify the perimeter of a triangle with sides ' + m('x') + ', ' + m('x') + ' and ' + m('2x − 1') + '.',
+      steps: [
+        [m('P = x + x + (2x − 1)'), ''],
+        [m('= x + x + 2x − 1'), ''],
+        ['Collect: ' + m('4x − 1') + '.', ''],
+        ['Check at ' + m('x = 3') + ': ' + m('3 + 3 + 5 = 11 = 4(3) − 1') + ' ✓', '']
+      ],
+      ans: m('4x − 1')
+    }
+  ],
+  modelNote: 'Ask for the perimeter of a rectangle twice — once unsimplified and once collected — and have the class evaluate both at a = 7, b = 4; the answers agree and one is far quicker.',
+  interactive: {
+    type: 'areaModel',
+    title: 'Collecting like terms',
+    hint: 'Group the same shapes together.'
+  },
+  quiz: [
+    { q: 'Are ' + m('4a²b') + ' and ' + m('4ab²') + ' like terms?', a: ['yes', 'no', 'sometimes', 'only if ' + m('a = b')], c: 1, why: 'Different exponents.' },
+    { q: m('3x + 5x') + ' equals:', a: [m('8x'), m('8x²'), m('15x'), m('8')], c: 0, why: 'Add the coefficients.' },
+    { q: m('7a − 10a') + ' equals:', a: [m('3a'), m('−3a'), m('17a'), m('−17a')], c: 1, why: 'The second is larger.' },
+    { q: m('4x + 3y − x + 5y') + ' equals:', a: [m('3x + 8y'), m('5x + 8y'), m('3x + 2y'), m('11xy')], c: 0, why: 'Two groups.' },
+    { q: m('5(a − 2) − 2(a − 5)') + ' equals:', a: [m('3a − 20'), m('3a'), m('7a − 20'), m('3a + 20')], c: 1, why: 'The constants cancel.' },
+    { q: 'Can ' + m('3x') + ' and ' + m('5y') + ' be collected?', a: ['yes', 'no', 'as ' + m('8xy'), 'as ' + m('15xy')], c: 1, why: 'Different letters.' }
+  ],
+  practice: {
+    easy: [
+      [m('3x + 5x'), m('8x')],
+      [m('7a − 10a'), m('−3a')],
+      [m('2b + b'), m('3b')],
+      [m('5x − 5x'), m('0')],
+      [m('4a² + 3a²'), m('7a²')],
+      ['Can ' + m('3x') + ' and ' + m('5y') + ' be collected?', 'No'],
+      ['Are ' + m('7') + ' and ' + m('−2') + ' like terms?', 'Yes']
+    ],
+    med: [
+      [m('4x + 3y − x + 5y'), m('3x + 8y')],
+      [m('2a² + 3a − a² + a'), m('a² + 4a')],
+      [m('2(x + 3) + 3(x − 1)'), m('5x + 3')],
+      [m('5(a − 2) − 2(a − 5)'), m('3a')],
+      [m('x − (3x − 4)'), m('4 − 2x')],
+      ['Perimeter of a rectangle ' + m('a') + ' by ' + m('b'), m('2a + 2b')],
+      ['Perimeter of a triangle ' + m('x, x, 2x − 1'), m('4x − 1')]
+    ],
+    hard: [
+      [m('3(2a − b) − 2(3a − 2b)'), m('b')],
+      [m('4x² − 3x + 1 − (x² − 3x + 5)'), m('3x² − 4')],
+      [m('a − [2a − (3a − b)]'), m('2a − b')],
+      [m('2(x + y) − 3(x − y) + x'), m('5y')],
+      ['Perimeter of a square of side ' + m('3x − 2'), m('12x − 8')],
+      ['A rectangle ' + m('x + 3') + ' by ' + m('x − 3') + ': its perimeter', m('4x')],
+      ['Simplify ' + m('5ab − 2ba'), m('3ab')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the expanded line in full before collecting anything.',
+  homework: [
+    'Collect ' + m('6a + 2b − 4a + 7b') + '.',
+    'Simplify ' + m('3(x + 4) − 2(x − 1)') + '.',
+    'Simplify ' + m('y − (4y − 7)') + '.',
+    'Find and simplify the perimeter of a rectangle ' + m('2x + 1') + ' by ' + m('x − 2') + '.',
+    'Simplify ' + m('5m² + 2m − 3m² − 6m') + '.'
+  ]
+});
+
+/* ============================== 40 ============================== */
+G7_MAT.push({
+  id: 'g7-40', stream: 'mat', grade: 7, quarter: 2, lessons: '71–72', hours: 2,
+  title: 'Addition and subtraction of polynomials',
+  subtitle: 'Remove the brackets, collect the like terms — two steps and nothing more.',
+  uz: 'Matematika 7, §33', uzPage: 'pp. 199–204',
+  cam: 'S8 2.2', camPage: 'Stage 8, pp. 16–20', wb: 'Exercise 2.2',
+  objectives: [
+    'Add two polynomials.',
+    'Subtract one polynomial from another, changing every sign.',
+    'Simplify an expression containing several polynomials.',
+    'Check an answer by substituting a value.'
+  ],
+  terms: [
+    ['Sum of polynomials', 'Ko‘phadlar yig‘indisi', 'Сумма многочленов'],
+    ['Difference', 'Ayirma', 'Разность'],
+    ['To remove brackets', 'Qavslarni ochish', 'Раскрыть скобки'],
+    ['Like terms', 'O‘xshash hadlar', 'Подобные члены'],
+    ['Opposite polynomial', 'Qarama-qarshi ko‘phad', 'Противоположный многочлен'],
+    ['Check by substitution', 'O‘rniga qo‘yib tekshirish', 'Проверка подстановкой'],
+    ['Standard form', 'Standart ko‘rinish', 'Стандартный вид'],
+    ['Degree', 'Daraja', 'Степень']
+  ],
+  timing: [[15, 'Adding'], [25, 'Subtracting'], [25, 'Longer expressions'], [20, 'Checking'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Adding',
+      html: `<p>A plus before a bracket leaves every sign as it is.</p>
+      ${eq(m('(3x² − 2x + 5) + (x² + 4x − 1) = 4x² + 2x + 4'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Line</th></tr></thead>
+      <tbody>
+        <tr><td>remove brackets</td><td class="m">3x² − 2x + 5 + x² + 4x − 1</td></tr>
+        <tr><td class="m">x²</td><td class="m">3x² + x² = 4x²</td></tr>
+        <tr><td class="m">x</td><td class="m">−2x + 4x = 2x</td></tr>
+        <tr><td>constants</td><td class="m">5 − 1 = 4</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Work one degree at a time</div>
+      All the ${m('x²')} terms, then all the ${m('x')} terms, then the constants. Doing them in a fixed
+      order means nothing is missed.</div>`
+    },
+    {
+      h: 'Subtracting',
+      html: `<p>A minus before a bracket changes <b>every</b> sign inside it.</p>
+      ${eq(m('(3x² − 2x + 5) − (x² + 4x − 1) = 2x² − 6x + 6'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Line</th></tr></thead>
+      <tbody>
+        <tr><td>remove brackets</td><td class="m">3x² − 2x + 5 − x² − 4x + 1</td></tr>
+        <tr><td class="m">x²</td><td class="m">3x² − x² = 2x²</td></tr>
+        <tr><td class="m">x</td><td class="m">−2x − 4x = −6x</td></tr>
+        <tr><td>constants</td><td class="m">5 + 1 = 6</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">All three signs change, not just the first</span>
+      ${m('−(x² + 4x − 1)')} is ${m('−x² − 4x + 1')}. Writing that line out in full, before collecting,
+      is the single most useful habit in this topic.</div>`
+    },
+    {
+      h: 'Longer expressions',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(a + b) + (a − b)</td><td class="m">2a</td></tr>
+        <tr><td class="m">(a + b) − (a − b)</td><td class="m">2b</td></tr>
+        <tr><td class="m">(2x − 3) + (x + 1) − (x − 4)</td><td class="m">2x + 2</td></tr>
+        <tr><td class="m">2(x² − x) − 3(x² + x)</td><td class="m">−x² − 5x</td></tr>
+      </tbody></table></div>
+      <p>The last row combines this lesson with the distributive law: expand first, then collect.</p>
+      <div class="keybox"><div class="klabel">The degree never rises</div>
+      Adding or subtracting polynomials of degree ${m('2')} gives a polynomial of degree at most
+      ${m('2')} — and sometimes less, if the leading terms cancel.</div>`
+    },
+    {
+      h: 'Checking',
+      html: `<p>Substitute one convenient value into the original and into the answer. If they differ, the
+      simplification is wrong.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Check</th><th>Original at ${m('x = 1')}</th><th>Answer at ${m('x = 1')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(3x² − 2x + 5) + (x² + 4x − 1)</td><td class="m">6 + 4 = 10</td><td class="m">4 + 2 + 4 = 10 ✓</td></tr>
+        <tr><td class="m">(3x² − 2x + 5) − (x² + 4x − 1)</td><td class="m">6 − 4 = 2</td><td class="m">2 − 6 + 6 = 2 ✓</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Use ${m('x = 1')}, or ${m('x = 2')} if terms cancel</div>
+      At ${m('x = 1')} every power is ${m('1')}, so the check is a sum of the coefficients — the quickest
+      arithmetic there is. If it happens to give ${m('0')} on both sides by accident, try ${m('x = 2')}
+      as well.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compute ' + m('(3x² − 2x + 5) + (x² + 4x − 1)') + '.',
+      steps: [
+        ['A plus: signs unchanged.', ''],
+        [m('3x² − 2x + 5 + x² + 4x − 1'), ''],
+        ['Collect by degree.', ''],
+        [m('= 4x² + 2x + 4'), 'Check at ' + m('x = 1') + ': ' + m('10 = 10') + ' ✓']
+      ],
+      ans: m('4x² + 2x + 4')
+    },
+    {
+      q: 'Compute ' + m('(3x² − 2x + 5) − (x² + 4x − 1)') + '.',
+      steps: [
+        ['A minus: every sign in the second bracket changes.', ''],
+        [m('3x² − 2x + 5 − x² − 4x + 1'), ''],
+        ['Collect by degree.', ''],
+        [m('= 2x² − 6x + 6'), 'Check at ' + m('x = 1') + ': ' + m('2 = 2') + ' ✓']
+      ],
+      ans: m('2x² − 6x + 6')
+    },
+    {
+      q: 'Simplify ' + m('2(x² − x) − 3(x² + x)') + '.',
+      steps: [
+        ['Expand: ' + m('2x² − 2x') + ' and ' + m('−3x² − 3x') + '.', ''],
+        [m('2x² − 2x − 3x² − 3x'), ''],
+        [m('x²') + ': ' + m('−x²') + '; ' + m('x') + ': ' + m('−5x') + '.', ''],
+        [m('= −x² − 5x'), '']
+      ],
+      ans: m('−x² − 5x')
+    }
+  ],
+  modelNote: 'Do one subtraction wrongly on purpose — changing only the first sign — and check it at x = 1; the check fails, and the class sees why the habit matters.',
+  interactive: {
+    type: 'substitute',
+    title: 'Checking a simplification',
+    hint: 'Substitute x = 1 into both forms.'
+  },
+  quiz: [
+    { q: 'A plus before a bracket:', a: ['changes all signs', 'changes none', 'changes the first', 'removes the terms'], c: 1, why: 'Nothing happens.' },
+    { q: 'A minus before a bracket:', a: ['changes all signs', 'changes none', 'changes the first', 'doubles the terms'], c: 0, why: 'Every one.' },
+    { q: m('(a + b) − (a − b)') + ' equals:', a: [m('2a'), m('2b'), m('0'), m('2a + 2b')], c: 1, why: 'The ' + m('a') + ' terms cancel.' },
+    { q: m('(3x² − 2x + 5) − (x² + 4x − 1)') + ' equals:', a: [m('2x² + 2x + 4'), m('2x² − 6x + 6'), m('4x² + 2x + 4'), m('2x² − 6x + 4')], c: 1, why: 'All three signs change.' },
+    { q: 'The best value for a quick check:', a: [m('x = 0'), m('x = 1'), m('x = 10'), m('x = −1')], c: 1, why: 'Every power is ' + m('1') + '.' },
+    { q: 'Adding two polynomials of degree ' + m('2') + ' gives degree:', a: ['exactly ' + m('2'), 'at most ' + m('2'), 'exactly ' + m('4'), 'at least ' + m('2')], c: 1, why: 'Leading terms may cancel.' }
+  ],
+  practice: {
+    easy: [
+      [m('(a + b) + (a − b)'), m('2a')],
+      [m('(a + b) − (a − b)'), m('2b')],
+      [m('(x + 2) + (x + 3)'), m('2x + 5')],
+      [m('(x + 2) − (x + 3)'), m('−1')],
+      [m('(2x − 1) + (3x + 4)'), m('5x + 3')],
+      [m('(2x − 1) − (3x + 4)'), m('−x − 5')],
+      ['A minus before a bracket', 'Changes every sign']
+    ],
+    med: [
+      [m('(3x² − 2x + 5) + (x² + 4x − 1)'), m('4x² + 2x + 4')],
+      [m('(3x² − 2x + 5) − (x² + 4x − 1)'), m('2x² − 6x + 6')],
+      [m('(2x − 3) + (x + 1) − (x − 4)'), m('2x + 2')],
+      [m('2(x² − x) − 3(x² + x)'), m('−x² − 5x')],
+      [m('(a² + ab) − (ab − b²)'), m('a² + b²')],
+      [m('(5m − 2n) − (3m − 7n)'), m('2m + 5n')],
+      ['Check ' + m('4x² + 2x + 4') + ' at ' + m('x = 1'), m('10')]
+    ],
+    hard: [
+      [m('(x³ − 2x² + x) − (x³ + x² − 3x)'), m('−3x² + 4x')],
+      [m('3(2a − b) − 2(a − 3b) + (a − b)'), m('5a + 2b')],
+      ['Subtract ' + m('x² − 3x + 2') + ' from ' + m('2x² + x − 5'), m('x² + 4x − 7')],
+      ['What must be added to ' + m('3x − 4') + ' to give ' + m('5x + 1') + '?', m('2x + 5')],
+      [m('(a + b + c) − (a − b + c)'), m('2b')],
+      ['The degree of ' + m('(x² + x) − (x² − x)'), m('1')],
+      ['Simplify ' + m('(2x² − 3) + (3 − 2x²)'), m('0')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the bracket-free line in full, then collect, then check at ' + m('x = 1') + '.',
+  homework: [
+    'Compute ' + m('(4x² + x − 3) + (2x² − 5x + 7)') + '.',
+    'Compute ' + m('(4x² + x − 3) − (2x² − 5x + 7)') + '.',
+    'Simplify ' + m('3(a − 2b) − 2(2a − b)') + '.',
+    'Subtract ' + m('2y² − y + 4') + ' from ' + m('5y² + 3y − 1') + '.',
+    'What must be added to ' + m('7m − 2') + ' to give ' + m('4m + 5') + '?'
+  ]
+});
