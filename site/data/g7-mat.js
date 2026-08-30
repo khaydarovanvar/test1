@@ -1797,3 +1797,359 @@ G7_MAT.push({
     'List all integers ' + m('x') + ' with ' + m('−5 ≤ x < 3') + '.'
   ]
 });
+
+/* ============================== 11 ============================== */
+G7_MAT.push({
+  id: 'g7-11', stream: 'mat', grade: 7, quarter: 1, lessons: '21–22', hours: 2,
+  title: 'Opposite numbers, and the modulus of a number',
+  subtitle: 'The same distance from zero, on the two sides — and the number that forgets the side.',
+  uz: 'Matematika 7, §8', uzPage: 'pp. 53–58',
+  cam: 'S8 1', camPage: 'Stage 8, pp. 2–10', wb: 'Exercise 1.1',
+  objectives: [
+    'Define opposite numbers and use −(−a) = a.',
+    'Define the modulus and compute it for any number.',
+    'Solve simple equations of the form |x| = a.',
+    'Use the modulus to express a distance on the coordinate line.'
+  ],
+  terms: [
+    ['Opposite number', 'Qarama-qarshi son', 'Противоположное число'],
+    ['Modulus', 'Modul', 'Модуль'],
+    ['Absolute value', 'Absolyut qiymat', 'Абсолютная величина'],
+    ['Distance from zero', 'Noldan masofa', 'Расстояние от нуля'],
+    ['Non-negative', 'Manfiy emas', 'Неотрицательный'],
+    ['Two solutions', 'Ikkita yechim', 'Два решения'],
+    ['Sign', 'Ishora', 'Знак'],
+    ['Symmetric', 'Simmetrik', 'Симметричный']
+  ],
+  timing: [[15, 'Opposite numbers'], [25, 'The modulus'], [25, 'Equations with a modulus'], [20, 'Modulus and distance'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Opposite numbers',
+      html: `<p>Two numbers are <b>opposite</b> if they lie the same distance from ${m('0')} on opposite
+      sides. The opposite of ${m('a')} is written ${m('−a')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Number</th><th>Its opposite</th></tr></thead>
+      <tbody>
+        <tr><td class="m">7</td><td class="m">−7</td></tr>
+        <tr><td class="m">−7</td><td class="m">7</td></tr>
+        <tr><td class="m">0</td><td class="m">0</td></tr>
+        <tr><td class="m">−2.5</td><td class="m">2.5</td></tr>
+      </tbody></table></div>
+      ${eq(m('−(−a) = a') + '     ' + m('a + (−a) = 0'), true)}
+      <div class="warn"><span class="wl">${m('−a')} is not always a negative number</span>
+      If ${m('a = −7')} then ${m('−a = 7')}, which is positive. The minus sign means “the opposite of”,
+      not “a negative number”. This is one of the hardest points of the whole chapter.</div>`
+    },
+    {
+      h: 'The modulus',
+      html: `<p>The <b>modulus</b> ${m('|a|')} is the distance from ${m('a')} to ${m('0')} on the
+      coordinate line. Distance is never negative, so:</p>
+      ${eq(m('|a| = a') + ' if ' + m('a ≥ 0') + ',    ' + m('|a| = −a') + ' if ' + m('a < 0'), true)}
+      {{fig:modulusLine:The modulus is the distance to the origin — the same for a number and its opposite.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">a</th><th class="m">|a|</th></tr></thead>
+      <tbody>
+        <tr><td class="m">7</td><td class="m">7</td></tr>
+        <tr><td class="m">−7</td><td class="m">7</td></tr>
+        <tr><td class="m">0</td><td class="m">0</td></tr>
+        <tr><td class="m">−2.5</td><td class="m">2.5</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The modulus forgets the sign, and keeps the size</div>
+      Opposite numbers have the same modulus, which is exactly what “same distance from zero” means. So
+      ${m('|a| = |−a|')} for every ${m('a')}.</div>`
+    },
+    {
+      h: 'Equations with a modulus',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Equation</th><th>Solutions</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">|x| = 5</td><td>${m('x = 5')} or ${m('x = −5')}</td><td>two points at distance ${m('5')}</td></tr>
+        <tr><td class="m">|x| = 0</td><td class="m">x = 0</td><td>only the origin</td></tr>
+        <tr><td class="m">|x| = −3</td><td>none</td><td>a distance is never negative</td></tr>
+        <tr><td class="m">|x| < 3</td><td class="m">−3 < x < 3</td><td>nearer than ${m('3')} to zero</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('|x| = 5')} has two answers, not one</span>
+      Giving only ${m('x = 5')} loses half the marks. Asking “which points are ${m('5')} units from
+      zero?” makes both visible immediately.</div>`
+    },
+    {
+      h: 'Modulus and distance',
+      html: `<p>The distance between the points with coordinates ${m('a')} and ${m('b')} is</p>
+      ${eq(m('d = |a − b| = |b − a|'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Points</th><th>Working</th><th>Distance</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3, 10</td><td class="m">|3 − 10| = |−7|</td><td class="m">7</td></tr>
+        <tr><td class="m">−4, 6</td><td class="m">|−4 − 6| = |−10|</td><td class="m">10</td></tr>
+        <tr><td class="m">−9, −2</td><td class="m">|−9 + 2| = |−7|</td><td class="m">7</td></tr>
+      </tbody></table></div>
+      <p>The order of subtraction does not matter, because ${m('|a − b|')} and ${m('|b − a|')} are
+      opposites and therefore have the same modulus.</p>
+      <div class="keybox"><div class="klabel">Two useful properties</div>
+      ${m('|ab| = |a| · |b|')} and ${m('|a| ≥ 0')} always, with equality only for ${m('a = 0')}. Both
+      follow at once from the definition, and both will be used in every later year.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find ' + m('|−7|') + ', ' + m('|3.5|') + ', ' + m('|0|') + ' and ' + m('−(−4)') + '.',
+      steps: [
+        [m('|−7| = 7'), 'Seven units from zero.'],
+        [m('|3.5| = 3.5'), ''],
+        [m('|0| = 0'), ''],
+        [m('−(−4) = 4'), 'The opposite of the opposite.']
+      ],
+      ans: m('7, 3.5, 0, 4')
+    },
+    {
+      q: 'Solve ' + m('|x| = 6') + ' and ' + m('|x| = −2') + '.',
+      steps: [
+        ['Which points are ' + m('6') + ' from zero?', ''],
+        [m('x = 6') + ' or ' + m('x = −6') + '.', 'Two answers.'],
+        ['A distance is never negative.', ''],
+        [m('|x| = −2') + ' has no solution.', '']
+      ],
+      ans: m('x = ±6') + '; no solution'
+    },
+    {
+      q: 'Find the distance between the points ' + m('−4') + ' and ' + m('6') + ' on the coordinate line.',
+      steps: [
+        [m('d = |−4 − 6|'), ''],
+        [m('= |−10|'), ''],
+        [m('= 10'), ''],
+        ['Check: ' + m('4') + ' units to zero, then ' + m('6') + ' more.', '']
+      ],
+      ans: m('10')
+    }
+  ],
+  modelNote: 'Ask two pupils to stand equally far from a chalk zero on opposite sides; they have opposite coordinates and the same modulus, and the definition needs no more.',
+  interactive: {
+    type: 'inequalityLine',
+    title: 'Distance from zero',
+    hint: 'Move the point and watch |x| stay positive.'
+  },
+  quiz: [
+    { q: 'The opposite of ' + m('−7') + ':', a: [m('−7'), m('7'), m('0'), m(f('1', '7'))], c: 1, why: 'The same distance, other side.' },
+    { q: m('−(−a)') + ' equals:', a: [m('−a'), m('a'), m('0'), m('|a|')], c: 1, why: 'The opposite of the opposite.' },
+    { q: m('|−7|') + ' equals:', a: [m('−7'), m('7'), m('0'), m('49')], c: 1, why: 'A distance.' },
+    { q: m('|x| = 5') + ' has:', a: ['one solution', 'two solutions', 'no solution', 'many'], c: 1, why: m('±5') + '.' },
+    { q: m('|x| = −3') + ' has:', a: ['one solution', 'two solutions', 'no solution', m('x = 3')], c: 2, why: 'Distance is non-negative.' },
+    { q: 'The distance between ' + m('a') + ' and ' + m('b') + ':', a: [m('a − b'), m('|a − b|'), m('a + b'), m('|a| − |b|')], c: 1, why: 'Never negative.' }
+  ],
+  practice: {
+    easy: [
+      ['Opposite of ' + m('7'), m('−7')],
+      ['Opposite of ' + m('−7'), m('7')],
+      ['Opposite of ' + m('0'), m('0')],
+      [m('|−7|'), m('7')],
+      [m('|3.5|'), m('3.5')],
+      [m('|0|'), m('0')],
+      [m('−(−4)'), m('4')]
+    ],
+    med: [
+      ['Solve ' + m('|x| = 6'), m('x = ±6')],
+      ['Solve ' + m('|x| = 0'), m('x = 0')],
+      ['Solve ' + m('|x| = −2'), 'No solution'],
+      ['Distance between ' + m('−4') + ' and ' + m('6'), m('10')],
+      ['Distance between ' + m('−9') + ' and ' + m('−2'), m('7')],
+      [m('|−3| + |5|'), m('8')],
+      [m('|−3 + 5|'), m('2')]
+    ],
+    hard: [
+      ['Solve ' + m('|x| < 3') + ' in integers', m('−2, −1, 0, 1, 2')],
+      ['Solve ' + m('|x| ≥ 4') + ' in integers from ' + m('−6') + ' to ' + m('6'), m('±4, ±5, ±6')],
+      [m('|−2| · |−5|'), m('10')],
+      [m('|(−2)(−5)|'), m('10')],
+      ['For which ' + m('a') + ' is ' + m('|a| = a') + '?', m('a ≥ 0')],
+      ['For which ' + m('a') + ' is ' + m('|a| = −a') + '?', m('a ≤ 0')],
+      ['Solve ' + m('|x − 3| = 5'), m('x = 8') + ' or ' + m('x = −2')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every modulus question has a picture: mark the point and measure to zero.',
+  homework: [
+    'Find ' + m('|−12|') + ', ' + m('|4.8|') + ', ' + m('−(−9)') + ' and the opposite of ' + m('−15') + '.',
+    'Solve ' + m('|x| = 9') + ' and ' + m('|x| = −1') + '.',
+    'Find the distance between ' + m('−11') + ' and ' + m('5') + '.',
+    'List all integers with ' + m('|x| ≤ 3') + '.',
+    'Explain why ' + m('−a') + ' need not be a negative number.'
+  ]
+});
+
+/* ============================== 12 ============================== */
+G7_MAT.push({
+  id: 'g7-12', stream: 'mat', grade: 7, quarter: 1, lessons: '23–24', hours: 2,
+  title: 'Comparing integers',
+  subtitle: 'Two rules, both read off the coordinate line — and one trap with negatives.',
+  uz: 'Matematika 7, §9', uzPage: 'pp. 59–63',
+  cam: 'S8 1', camPage: 'Stage 8, pp. 2–10', wb: 'Exercise 1.1',
+  objectives: [
+    'Compare any two integers using their positions on the line.',
+    'Compare two negatives by comparing their moduli, in reverse.',
+    'Order a list of integers, ascending and descending.',
+    'Use the symbols <, >, ≤, ≥ correctly.'
+  ],
+  terms: [
+    ['To compare', 'Taqqoslash', 'Сравнить'],
+    ['Greater than', 'Katta', 'Больше'],
+    ['Less than', 'Kichik', 'Меньше'],
+    ['Ascending order', 'O‘sish tartibi', 'По возрастанию'],
+    ['Descending order', 'Kamayish tartibi', 'По убыванию'],
+    ['Inequality sign', 'Tengsizlik belgisi', 'Знак неравенства'],
+    ['Between', 'Orasida', 'Между'],
+    ['Consecutive', 'Ketma-ket', 'Последовательные']
+  ],
+  timing: [[15, 'The rules'], [25, 'Two negatives'], [25, 'Ordering'], [20, 'The symbols'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The rules',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Case</th><th>Rule</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>both positive</td><td>as usual</td><td class="m">3 < 8</td></tr>
+        <tr><td>one of each</td><td>the negative is smaller</td><td class="m">−3 < 8</td></tr>
+        <tr><td>a negative and zero</td><td>the negative is smaller</td><td class="m">−3 < 0</td></tr>
+        <tr><td>zero and a positive</td><td>zero is smaller</td><td class="m">0 < 8</td></tr>
+        <tr><td>both negative</td><td>the one with the larger modulus is smaller</td><td class="m">−8 < −3</td></tr>
+      </tbody></table></div>
+      <p>Every row is the same statement about the line: further right means greater.</p>
+      <div class="keybox"><div class="klabel">One picture replaces five rules</div>
+      Sketch the line, mark both numbers, read left to right. The table above is only a record of what
+      the picture shows.</div>`
+    },
+    {
+      h: 'Two negatives',
+      html: `<p>This is the only case that catches people out.</p>
+      ${eq('For negatives: the bigger the modulus, the smaller the number', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Pair</th><th>Moduli</th><th>Comparison</th></tr></thead>
+      <tbody>
+        <tr><td class="m">−3, −8</td><td class="m">3, 8</td><td class="m">−8 < −3</td></tr>
+        <tr><td class="m">−15, −2</td><td class="m">15, 2</td><td class="m">−15 < −2</td></tr>
+        <tr><td class="m">−1, −100</td><td class="m">1, 100</td><td class="m">−100 < −1</td></tr>
+      </tbody></table></div>
+      <p>A debt of ${m('100')} is a worse position than a debt of ${m('1')}; a temperature of
+      ${m('−100°')} is colder than ${m('−1°')}. The rule matches every real situation.</p>
+      <div class="warn"><span class="wl">${m('−8 > −3')} is false</span>
+      Comparing the moduli and forgetting to reverse is the standard mistake. Saying the numbers aloud
+      as temperatures settles it in a second.</div>`
+    },
+    {
+      h: 'Ordering',
+      html: `<p><b>Ascending</b> means smallest first; <b>descending</b> means largest first.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>List</th><th>Ascending</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3, −7, 0, −1, 5</td><td class="m">−7, −1, 0, 3, 5</td></tr>
+        <tr><td class="m">−2, −9, −5</td><td class="m">−9, −5, −2</td></tr>
+        <tr><td class="m">10, −10, 1, −1</td><td class="m">−10, −1, 1, 10</td></tr>
+      </tbody></table></div>
+      <p>A method that never fails: put the negatives first, ordered by decreasing modulus, then zero,
+      then the positives ordered as usual.</p>
+      <div class="keybox"><div class="klabel">Say the list as temperatures</div>
+      “Minus nine, minus five, minus two, zero, three, five” is plainly a list of increasing warmth. The
+      language does the ordering for you.</div>`
+    },
+    {
+      h: 'The symbols',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Symbol</th><th>Read</th><th>True example</th></tr></thead>
+      <tbody>
+        <tr><td class="m">&lt;</td><td>is less than</td><td class="m">−5 &lt; −2</td></tr>
+        <tr><td class="m">&gt;</td><td>is greater than</td><td class="m">3 &gt; −7</td></tr>
+        <tr><td class="m">≤</td><td>is less than or equal to</td><td class="m">4 ≤ 4</td></tr>
+        <tr><td class="m">≥</td><td>is greater than or equal to</td><td class="m">−2 ≥ −2</td></tr>
+        <tr><td class="m">≠</td><td>is not equal to</td><td class="m">3 ≠ −3</td></tr>
+      </tbody></table></div>
+      <p>A double inequality such as ${m('−3 < x ≤ 2')} says two things at once, and is read as a
+      stretch of the line between two marks.</p>
+      <div class="warn"><span class="wl">The point of the symbol faces the smaller number</span>
+      ${m('−5 < −2')}: the narrow end is at ${m('−5')}. Reading the symbol as a mouth that eats the
+      larger number is a reliable check.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compare ' + m('−8') + ' and ' + m('−3') + ', and ' + m('−8') + ' and ' + m('3') + '.',
+      steps: [
+        ['Both negative: compare moduli ' + m('8') + ' and ' + m('3') + '.', ''],
+        ['Larger modulus, smaller number: ' + m('−8 < −3') + '.', ''],
+        ['A negative is always less than a positive.', ''],
+        [m('−8 < 3'), '']
+      ],
+      ans: m('−8 < −3') + ' and ' + m('−8 < 3')
+    },
+    {
+      q: 'Put ' + m('3, −7, 0, −1, 5') + ' in ascending order.',
+      steps: [
+        ['Negatives first, by decreasing modulus: ' + m('−7, −1') + '.', ''],
+        ['Then zero.', ''],
+        ['Then the positives: ' + m('3, 5') + '.', ''],
+        [m('−7, −1, 0, 3, 5'), '']
+      ],
+      ans: m('−7, −1, 0, 3, 5')
+    },
+    {
+      q: 'List all integers ' + m('x') + ' with ' + m('−4 ≤ x < 2') + '.',
+      steps: [
+        [m('≤') + ' includes ' + m('−4') + '.', ''],
+        [m('<') + ' excludes ' + m('2') + '.', ''],
+        ['Count from ' + m('−4') + ' up to ' + m('1') + '.', ''],
+        [m('−4, −3, −2, −1, 0, 1'), 'Six integers.']
+      ],
+      ans: m('−4, −3, −2, −1, 0, 1')
+    }
+  ],
+  modelNote: 'Read a week of winter temperatures aloud and ask which day was coldest; the ordering of negatives is settled by experience before it is a rule.',
+  interactive: {
+    type: 'inequalityLine',
+    title: 'Ordering on the line',
+    hint: 'Drag two points and read the inequality.'
+  },
+  quiz: [
+    { q: 'Which is greater, ' + m('−8') + ' or ' + m('−3') + '?', a: [m('−8'), m('−3'), 'equal', 'cannot tell'], c: 1, why: 'Further right.' },
+    { q: 'A negative number compared with a positive is:', a: ['greater', 'less', 'equal', 'it depends'], c: 1, why: 'It lies left of zero.' },
+    { q: 'For negatives, a larger modulus means:', a: ['a larger number', 'a smaller number', 'the same', 'nothing'], c: 1, why: 'Further left.' },
+    { q: 'Ascending order of ' + m('−2, −9, −5') + ':', a: [m('−2, −5, −9'), m('−9, −5, −2'), m('−5, −2, −9'), m('−9, −2, −5')], c: 1, why: 'Most negative first.' },
+    { q: m('−2 ≥ −2') + ' is:', a: ['true', 'false', 'meaningless', 'sometimes'], c: 0, why: 'Equality is allowed.' },
+    { q: 'Integers with ' + m('−4 ≤ x < 2') + ' number:', a: [m('5'), m('6'), m('7'), m('4')], c: 1, why: m('−4') + ' to ' + m('1') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Greater: ' + m('−8') + ' or ' + m('−3'), m('−3')],
+      ['Greater: ' + m('−8') + ' or ' + m('3'), m('3')],
+      ['Greater: ' + m('0') + ' or ' + m('−1'), m('0')],
+      ['Greater: ' + m('−100') + ' or ' + m('−1'), m('−1')],
+      ['Is ' + m('−5 < −2') + '?', 'True'],
+      ['Is ' + m('−5 > −2') + '?', 'False'],
+      ['Is ' + m('4 ≤ 4') + '?', 'True']
+    ],
+    med: [
+      ['Ascending: ' + m('3, −7, 0, −1, 5'), m('−7, −1, 0, 3, 5')],
+      ['Ascending: ' + m('−2, −9, −5'), m('−9, −5, −2')],
+      ['Descending: ' + m('10, −10, 1, −1'), m('10, 1, −1, −10')],
+      ['Integers with ' + m('−4 ≤ x < 2'), m('−4, −3, −2, −1, 0, 1')],
+      ['Integers with ' + m('−2 < x ≤ 3'), m('−1, 0, 1, 2, 3')],
+      ['The greatest integer less than ' + m('−3'), m('−4')],
+      ['The least integer greater than ' + m('−3'), m('−2')]
+    ],
+    hard: [
+      ['How many integers satisfy ' + m('−20 < x < 15') + '?', m('34')],
+      ['The greatest negative integer', m('−1')],
+      ['The least positive integer', m('1')],
+      ['Order ' + m('−|−4|, |−3|, −(−2), 0'), m('−4, 0, 2, 3')],
+      ['If ' + m('a < 0') + ' and ' + m('b > 0') + ', compare ' + m('a') + ' and ' + m('−b'), 'Cannot tell without more'],
+      ['Between which two consecutive integers does ' + m('−3.7') + ' lie?', m('−4') + ' and ' + m('−3')],
+      ['The smallest three-digit negative integer', m('−999')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Sketch the line for every comparison, and say each list aloud as temperatures.',
+  homework: [
+    'Compare ' + m('−11') + ' and ' + m('−4') + ', and ' + m('−11') + ' and ' + m('4') + '.',
+    'Put in ascending order: ' + m('−6, 2, 0, −13, 7') + '.',
+    'Put in descending order: ' + m('−1, −8, 5, 0') + '.',
+    'List all integers ' + m('x') + ' with ' + m('−5 < x ≤ 1') + '.',
+    'Name the greatest negative integer and the least positive integer.'
+  ]
+});
