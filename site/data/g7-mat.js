@@ -8003,3 +8003,365 @@ G7_MAT.push({
     'Explain why two equal vertical angles do not prove that two lines are parallel.'
   ]
 });
+
+/* ============================== 47 ============================== */
+G7_MAT.push({
+  id: 'g7-47', stream: 'mat', grade: 7, quarter: 3, lessons: '84–85', hours: 2,
+  title: 'Angles formed when two parallel lines are cut by a transversal',
+  subtitle: 'The criteria read backwards: now parallelism is given, and the angles are the conclusion.',
+  uz: 'Matematika 7, §39', uzPage: 'pp. 238–245',
+  cam: 'S8 5.1', camPage: 'Stage 8, pp. 44–47', wb: 'Exercise 5.1'
+  ,
+  objectives: [
+    'State the three properties of angles on parallel lines.',
+    'Find every one of the eight angles from a single given one.',
+    'Distinguish a property from a criterion, and use each in its own direction.',
+    'Solve angle problems in which parallel lines are given.'
+  ],
+  terms: [
+    ['Property', 'Xossa', 'Свойство'],
+    ['Criterion', 'Alomat', 'Признак'],
+    ['Converse', 'Teskari teorema', 'Обратная теорема'],
+    ['Alternate angles', 'Ichki almashinuvchi burchaklar', 'Накрест лежащие углы'],
+    ['Corresponding angles', 'Mos burchaklar', 'Соответственные углы'],
+    ['Co-interior angles', 'Ichki bir tomonli burchaklar', 'Односторонние углы'],
+    ['Vertical angles', 'Vertikal burchaklar', 'Вертикальные углы'],
+    ['Supplementary', 'Qo‘shni (yig‘indisi 180°)', 'Смежные'],
+    ['Angle', 'Burchak', 'Угол']
+  ],
+  timing: [[15, 'The properties'], [25, 'All eight from one'], [25, 'Property or criterion?'], [20, 'Problems'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The properties',
+      html: `<p>If the lines <b>are</b> parallel, the same three pairs behave as follows.</p>
+      ${eq(m('a ∥ b') + '  ⟹  alternate equal,  corresponding equal,  co-interior add to ' + m('180°'), true)}
+      {{fig:parallelLines:One angle decides all eight}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Pair</th><th>Property</th></tr></thead>
+      <tbody>
+        <tr><td>alternate</td><td>equal</td></tr>
+        <tr><td>corresponding</td><td>equal</td></tr>
+        <tr><td>co-interior</td><td>sum ${m('180°')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two theorems, one picture</div>
+      Last lesson the angle fact was the evidence and parallelism the conclusion. This lesson the arrow
+      is reversed. The picture is identical; only the direction of the reasoning changes.</div>`
+    },
+    {
+      h: 'All eight from one',
+      html: `<p>Given one angle at a transversal cutting parallel lines, every other angle follows. With
+      ${m('∠1 = 70°')}:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Angle</th><th>Relation to ${m('∠1')}</th><th>Size</th></tr></thead>
+      <tbody>
+        <tr><td class="m">∠2</td><td>supplementary</td><td class="m">110°</td></tr>
+        <tr><td class="m">∠3</td><td>vertical</td><td class="m">70°</td></tr>
+        <tr><td class="m">∠4</td><td>supplementary</td><td class="m">110°</td></tr>
+        <tr><td class="m">∠5</td><td>corresponding</td><td class="m">70°</td></tr>
+        <tr><td class="m">∠6</td><td>co-interior</td><td class="m">110°</td></tr>
+        <tr><td class="m">∠7</td><td>alternate</td><td class="m">70°</td></tr>
+        <tr><td class="m">∠8</td><td>supplementary to ${m('∠7')}</td><td class="m">110°</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Only two sizes appear</div>
+      Every angle is either ${m('70°')} or ${m('110°')}, and the two add to ${m('180°')}. Once you see
+      that, the eight angles collapse into one question: which of the two is this?</div>`
+    },
+    {
+      h: 'Property or criterion?',
+      html: `<p>Which one you may use depends entirely on what you were given.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Wanted</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td class="m">a ∥ b</td><td>an angle</td><td>the property</td></tr>
+        <tr><td>an angle equality</td><td class="m">a ∥ b</td><td>the criterion</td></tr>
+        <tr><td class="m">a ∥ b</td><td class="m">a ∥ b</td><td>nothing to prove</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Using the property to prove parallelism is circular</span>
+      Writing “the angles are alternate, so they are equal, so the lines are parallel” assumes what it
+      sets out to prove. If parallelism is the goal, the angle equality must be given, not
+      deduced.</div>`
+    },
+    {
+      h: 'Problems',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Reasoning</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('a ∥ b')}, one co-interior angle is ${m('3x')}, the other ${m('2x')}</td><td class="m">5x = 180</td><td class="m">36° and 144°</td></tr>
+        <tr><td>${m('a ∥ b')}, corresponding angles ${m('4x − 20')} and ${m('2x + 40')}</td><td class="m">2x = 60</td><td class="m">x = 30</td></tr>
+        <tr><td>${m('a ∥ b')}, alternate angles are equal and one is ${m('5x')}, the other ${m('105°')}</td><td class="m">5x = 105</td><td class="m">x = 21</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A parallel drawn in is often the whole solution</div>
+      Where a figure gives no transversal, drawing a line through a vertex parallel to a given side
+      creates alternate angles out of nothing. The next lesson proves the angle sum of a triangle in
+      exactly this way.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: m('a ∥ b') + ' and one angle at the transversal is ' + m('70°') + '. Find the co-interior angle and the alternate angle.',
+      steps: [
+        ['Alternate angles are equal: ' + m('70°') + '.', ''],
+        ['Co-interior angles add to ' + m('180°') + '.', ''],
+        [m('180° − 70° = 110°'), '']
+      ],
+      ans: 'Alternate ' + m('70°') + ', co-interior ' + m('110°')
+    },
+    {
+      q: m('a ∥ b') + '. Co-interior angles are ' + m('3x') + ' and ' + m('2x') + '. Find them.',
+      steps: [
+        [m('3x + 2x = 180°'), 'The co-interior property.'],
+        [m('5x = 180°'), ''],
+        [m('x = 36°'), ''],
+        ['The angles are ' + m('108°') + ' and ' + m('72°') + '.', '']
+      ],
+      ans: m('108°') + ' and ' + m('72°')
+    },
+    {
+      q: m('a ∥ b') + '. Corresponding angles are ' + m('4x − 20') + ' and ' + m('2x + 40') + '. Find ' + m('x') + '.',
+      steps: [
+        ['Corresponding angles are equal.', ''],
+        [m('4x − 20 = 2x + 40'), ''],
+        [m('2x = 60'), ''],
+        [m('x = 30'), '']
+      ],
+      ans: m('x = 30')
+    }
+  ],
+  modelNote: 'Mark one angle on the board and ask the class to fill in the other seven in silence; the eight-angle picture is learnt in a single minute this way.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which of the two sizes is it?',
+    hint: 'Every angle is the given one or its supplement.',
+    items: [
+      { q: m('a ∥ b') + ', ' + m('∠1 = 70°') + '. Its vertical angle:', a: [m('70°'), m('110°'), m('90°'), m('35°')], c: 0, why: 'Vertical angles are equal.' },
+      { q: 'Its corresponding angle:', a: [m('70°'), m('110°'), m('20°'), m('180°')], c: 0, why: 'Equal on parallel lines.' },
+      { q: 'Its co-interior angle:', a: [m('70°'), m('110°'), m('90°'), m('140°')], c: 1, why: m('180° − 70°') + '.' },
+      { q: 'Its alternate angle:', a: [m('70°'), m('110°'), m('35°'), m('180°')], c: 0, why: 'Equal on parallel lines.' },
+      { q: 'How many distinct sizes appear among the eight?', a: [m('1'), m('2'), m('4'), m('8')], c: 1, why: 'The angle and its supplement.' },
+      { q: 'Given ' + m('a ∥ b') + ' and asked for an angle, you use:', a: ['the criterion', 'the property', 'either', 'neither'], c: 1, why: 'Parallelism is the given.' },
+      { q: 'Given equal alternate angles and asked to prove ' + m('a ∥ b') + ':', a: ['the criterion', 'the property', 'either', 'neither'], c: 0, why: 'The angle fact is the given.' },
+      { q: 'Co-interior angles ' + m('3x') + ' and ' + m('2x') + ' on parallel lines:', a: [m('x = 30'), m('x = 36'), m('x = 45'), m('x = 60')], c: 1, why: m('5x = 180') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'On parallel lines, alternate angles are:', a: ['equal', 'supplementary', 'complementary', 'unrelated'], c: 0, why: 'The property.' },
+    { q: 'On parallel lines, co-interior angles:', a: ['are equal', 'add to ' + m('180°'), 'add to ' + m('90°'), 'are right'], c: 1, why: 'The property.' },
+    { q: 'If one angle is ' + m('70°') + ', the others are:', a: [m('70°') + ' only', m('70°') + ' or ' + m('110°'), m('110°') + ' only', 'all different'], c: 1, why: 'Two sizes.' },
+    { q: 'The property is used when the given is:', a: ['an angle equality', 'parallelism', 'a length', 'nothing'], c: 1, why: 'Parallel ⟹ angles.' },
+    { q: 'Corresponding angles ' + m('4x − 20') + ' and ' + m('2x + 40') + ' give:', a: [m('x = 10'), m('x = 30'), m('x = 20'), m('x = 60')], c: 1, why: m('2x = 60') + '.' },
+    { q: 'Proving parallelism from the property is:', a: ['valid', 'circular', 'quicker', 'the same thing'], c: 1, why: 'It assumes the conclusion.' }
+  ],
+  practice: {
+    easy: [
+      [m('a ∥ b') + ', alternate to ' + m('70°'), m('70°')],
+      [m('a ∥ b') + ', corresponding to ' + m('70°'), m('70°')],
+      [m('a ∥ b') + ', co-interior with ' + m('70°'), m('110°')],
+      ['The vertical angle of ' + m('70°'), m('70°')],
+      ['The supplement of ' + m('70°'), m('110°')],
+      ['How many distinct sizes among the eight?', m('2')],
+      [m('a ∥ b') + ', co-interior with ' + m('90°'), m('90°')]
+    ],
+    med: [
+      ['Co-interior ' + m('3x') + ' and ' + m('2x'), m('108°') + ' and ' + m('72°')],
+      ['Corresponding ' + m('4x − 20') + ' and ' + m('2x + 40'), m('x = 30')],
+      ['Alternate ' + m('5x') + ' and ' + m('105°'), m('x = 21')],
+      ['One angle is ' + m('130°') + ': its co-interior angle', m('50°')],
+      ['One angle is ' + m('130°') + ': its alternate angle', m('130°')],
+      ['Co-interior angles are equal: how big is each?', m('90°')],
+      ['Given ' + m('a ∥ b') + ', which do you use, property or criterion?', 'The property']
+    ],
+    hard: [
+      ['Co-interior ' + m('x + 40') + ' and ' + m('2x − 10') + ' on parallel lines', m('x = 50')],
+      ['Alternate ' + m('7x − 15') + ' and ' + m('5x + 9'), m('x = 12')],
+      ['A transversal cuts three parallel lines; one angle is ' + m('64°') + ': how many angles equal ' + m('64°') + '?', m('6') + ' — three crossings, two each'],
+      ['Why does a proof of parallelism need the criterion, not the property?', 'The property starts from parallelism, which is what is being proved'],
+      [m('a ∥ b') + ' and a transversal is perpendicular to ' + m('a') + ': what are all eight angles?', 'All ' + m('90°')],
+      ['Co-interior ' + m('4x') + ' and ' + m('5x'), m('80°') + ' and ' + m('100°')],
+      ['One angle is ' + m('α') + ': write every other angle in terms of ' + m('α'), m('α') + ' or ' + m('180° − α')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the name of the pair beside every number you find.',
+  homework: [
+    'Mark one angle of ' + m('55°') + ' at a transversal cutting parallel lines and find the other seven.',
+    'Co-interior angles are ' + m('5x') + ' and ' + m('4x') + '. Find both.',
+    'Alternate angles are ' + m('3x + 12') + ' and ' + m('4x − 8') + '. Find ' + m('x') + '.',
+    'Explain in two sentences the difference between the property and the criterion.',
+    'A transversal is perpendicular to one of two parallel lines. What can you say about the other?'
+  ]
+});
+
+/* ============================== 48 ============================== */
+G7_MAT.push({
+  id: 'g7-48', stream: 'mat', grade: 7, quarter: 3, lessons: '86–87', hours: 2,
+  title: 'The sum of the interior angles of a triangle',
+  subtitle: m('180°') + ' for every triangle, proved with one line drawn parallel to a side — and the exterior angle that follows.',
+  uz: 'Matematika 7, §40', uzPage: 'pp. 246–253',
+  cam: 'S8 5.2', camPage: 'Stage 8, pp. 48–51', wb: 'Exercise 5.2',
+  objectives: [
+    'Prove that the angles of a triangle add to ' + m('180°') + '.',
+    'Find a missing angle of a triangle.',
+    'State and use the exterior-angle theorem.',
+    'Deduce that a triangle has at most one right or obtuse angle.'
+  ],
+  terms: [
+    ['Interior angle', 'Ichki burchak', 'Внутренний угол'],
+    ['Exterior angle', 'Tashqi burchak', 'Внешний угол'],
+    ['Angle sum', 'Burchaklar yig‘indisi', 'Сумма углов'],
+    ['Auxiliary line', 'Yordamchi chiziq', 'Вспомогательная линия'],
+    ['Theorem', 'Teorema', 'Теорема'],
+    ['Acute-angled', 'O‘tkir burchakli', 'Остроугольный'],
+    ['Obtuse-angled', 'O‘tmas burchakli', 'Тупоугольный'],
+    ['Equiangular', 'Teng burchakli', 'Равноугольный']
+  ],
+  timing: [[10, 'The experiment'], [25, 'The proof'], [20, 'Finding a missing angle'], [25, 'The exterior angle'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The experiment',
+      html: `<p>Tear the three corners off a paper triangle and lay them side by side: they form a
+      straight angle. Every triangle in the class gives the same result, whatever its shape.</p>
+      {{fig:triangleAngleSum:The three angles laid along a straight line}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Triangle</th><th>Angles</th><th>Sum</th></tr></thead>
+      <tbody>
+        <tr><td>equilateral</td><td class="m">60°, 60°, 60°</td><td class="m">180°</td></tr>
+        <tr><td>right</td><td class="m">90°, 55°, 35°</td><td class="m">180°</td></tr>
+        <tr><td>obtuse</td><td class="m">120°, 40°, 20°</td><td class="m">180°</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The experiment is not the proof</span>
+      Tearing paper checks three triangles; the theorem claims it for all of them. That gap is exactly
+      what a proof closes, and here the proof needs the parallel lines of the last two lessons.</div>`
+    },
+    {
+      h: 'The proof',
+      html: `<p>Through the vertex ${m('A')} draw the line parallel to ${m('BC')}. Now ${m('AB')} and
+      ${m('AC')} are transversals of a pair of parallel lines.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td>draw ${m('ℓ ∥ BC')} through ${m('A')}</td><td>the axiom of parallels</td></tr>
+        <tr><td class="m">∠1 = ∠B</td><td>alternate angles, ${m('AB')} a transversal</td></tr>
+        <tr><td class="m">∠2 = ∠C</td><td>alternate angles, ${m('AC')} a transversal</td></tr>
+        <tr><td class="m">∠1 + ∠A + ∠2 = 180°</td><td>angles on a straight line at ${m('A')}</td></tr>
+        <tr><td class="m">∠A + ∠B + ∠C = 180°</td><td>substituting the first two lines</td></tr>
+      </tbody></table></div>
+      ${eq(m('∠A + ∠B + ∠C = 180°'), true)}
+      <div class="keybox"><div class="klabel">Where the axiom hides</div>
+      The proof used the parallel through ${m('A')} — and needed it to be the only one. This theorem is
+      therefore a consequence of the axiom of parallels, not an independent fact.</div>`
+    },
+    {
+      h: 'Finding a missing angle',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Working</th><th>Third angle</th></tr></thead>
+      <tbody>
+        <tr><td class="m">50°, 60°</td><td class="m">180 − 110</td><td class="m">70°</td></tr>
+        <tr><td class="m">90°, 35°</td><td class="m">180 − 125</td><td class="m">55°</td></tr>
+        <tr><td>isosceles, apex ${m('40°')}</td><td class="m">(180 − 40) ÷ 2</td><td class="m">70° each</td></tr>
+        <tr><td>angles in ratio ${m('2 : 3 : 4')}</td><td class="m">9x = 180</td><td class="m">40°, 60°, 80°</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Three consequences, free of charge</div>
+      A triangle has at most one right angle and at most one obtuse angle, since two of them already
+      reach ${m('180°')}; and an equiangular triangle has three angles of ${m('60°')}.</div>`
+    },
+    {
+      h: 'The exterior angle',
+      html: `<p>Produce one side. The angle outside the triangle beside ${m('∠C')} is an <b>exterior
+      angle</b>, and it equals the sum of the two interior angles not next to it.</p>
+      {{fig:exteriorAngles:An exterior angle equals the two remote interior angles}}
+      ${eq(m('∠ext = ∠A + ∠B'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td class="m">∠ext + ∠C = 180°</td><td>angles on a straight line</td></tr>
+        <tr><td class="m">∠A + ∠B + ∠C = 180°</td><td>the angle sum</td></tr>
+        <tr><td class="m">∠ext = ∠A + ∠B</td><td>comparing the two lines</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The two <i>remote</i> angles, not all three</span>
+      An exterior angle equals the sum of the two interior angles at the other vertices. Adding
+      ${m('∠C')} as well is the standard slip, and it always gives an answer over ${m('180°')}.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Two angles of a triangle are ' + m('50°') + ' and ' + m('60°') + '. Find the third.',
+      steps: [
+        [m('50° + 60° = 110°'), ''],
+        [m('180° − 110° = 70°'), '']
+      ],
+      ans: m('70°')
+    },
+    {
+      q: 'The angles of a triangle are in the ratio ' + m('2 : 3 : 4') + '. Find them.',
+      steps: [
+        ['Let them be ' + m('2x, 3x, 4x') + '.', ''],
+        [m('2x + 3x + 4x = 180°'), ''],
+        [m('9x = 180°') + ', so ' + m('x = 20°') + '.', ''],
+        ['The angles are ' + m('40°, 60°, 80°') + '.', '']
+      ],
+      ans: m('40°, 60°, 80°')
+    },
+    {
+      q: 'An exterior angle of a triangle is ' + m('120°') + ' and one remote interior angle is ' + m('45°') + '. Find the other two interior angles.',
+      steps: [
+        ['The remote pair sums to the exterior angle.', ''],
+        [m('120° − 45° = 75°'), 'The second remote angle.'],
+        ['The adjacent angle is ' + m('180° − 120° = 60°') + '.', ''],
+        ['Check: ' + m('45° + 75° + 60° = 180°') + ' ✓', '']
+      ],
+      ans: m('75°') + ' and ' + m('60°')
+    }
+  ],
+  modelNote: 'Have the class tear the corners first and only then draw the parallel through the vertex; the proof lands as the explanation of something they have already seen happen.',
+  interactive: {
+    type: 'triangleAngles',
+    title: 'Drag a vertex — the sum never moves',
+    hint: 'Watch the three angles change while the total stays at ' + m('180°') + '.'
+  },
+  quiz: [
+    { q: 'The angles of any triangle add to:', a: [m('90°'), m('180°'), m('270°'), m('360°')], c: 1, why: 'The theorem.' },
+    { q: 'The proof draws through a vertex a line:', a: ['perpendicular to a side', 'parallel to a side', 'bisecting an angle', 'to the midpoint'], c: 1, why: 'To make alternate angles.' },
+    { q: 'Two angles are ' + m('90°') + ' and ' + m('35°') + '; the third is:', a: [m('45°'), m('55°'), m('65°'), m('125°')], c: 1, why: m('180 − 125') + '.' },
+    { q: 'A triangle can have at most how many right angles?', a: [m('1'), m('2'), m('3'), 'any number'], c: 0, why: 'Two make ' + m('180°') + ' already.' },
+    { q: 'An exterior angle equals:', a: ['the adjacent angle', 'the sum of the two remote angles', 'the sum of all three', m('180°')], c: 1, why: 'The exterior-angle theorem.' },
+    { q: 'An equiangular triangle has angles of:', a: [m('45°'), m('60°'), m('90°'), m('30°')], c: 1, why: m('180 ÷ 3') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('50°') + ' and ' + m('60°') + ': the third angle', m('70°')],
+      [m('90°') + ' and ' + m('35°'), m('55°')],
+      [m('120°') + ' and ' + m('40°'), m('20°')],
+      ['Each angle of an equiangular triangle', m('60°')],
+      ['Isosceles, apex ' + m('40°') + ': the base angles', m('70°') + ' each'],
+      ['Isosceles, base angle ' + m('50°') + ': the apex', m('80°')],
+      ['Exterior ' + m('110°') + ': the adjacent interior angle', m('70°')]
+    ],
+    med: [
+      ['Angles in the ratio ' + m('2 : 3 : 4'), m('40°, 60°, 80°')],
+      ['Angles in the ratio ' + m('1 : 2 : 3'), m('30°, 60°, 90°')],
+      ['Exterior ' + m('120°') + ', one remote angle ' + m('45°') + ': the other', m('75°')],
+      ['A right triangle with one angle ' + m('37°') + ': the third', m('53°')],
+      ['Can a triangle have two obtuse angles?', 'No — they already exceed ' + m('180°')],
+      ['The angles are ' + m('x, 2x, 3x') + ': find ' + m('x'), m('x = 30°')],
+      ['Exterior angles of a triangle add to', m('360°')]
+    ],
+    hard: [
+      ['One angle is ' + m('20°') + ' more than the second and ' + m('40°') + ' more than the third: find all three', m('80°, 60°, 40°')],
+      ['An exterior angle is ' + m('3') + ' times its adjacent interior angle: find both', m('135°') + ' and ' + m('45°')],
+      ['An isosceles triangle has an exterior angle of ' + m('100°') + ' at the apex: find all angles', 'Apex ' + m('80°') + ', base angles ' + m('50°') + ' each'],
+      ['The bisectors of ' + m('∠B') + ' and ' + m('∠C') + ' meet at ' + m('I') + ': find ' + m('∠BIC') + ' if ' + m('∠A = 60°'), m('120°')],
+      ['Prove that a triangle has at most one obtuse angle', 'Two obtuse angles exceed ' + m('180°') + ' on their own'],
+      ['Angles ' + m('2x − 10, x + 30, 3x + 10') + ': find ' + m('x'), m('x = 25')],
+      ['Why does the proof need the axiom of parallels?', 'It uses the unique parallel through the vertex']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Check every answer by adding your three angles back to ' + m('180°') + '.',
+  homework: [
+    'Two angles are ' + m('72°') + ' and ' + m('43°') + '. Find the third.',
+    'The angles are in the ratio ' + m('3 : 4 : 5') + '. Find them.',
+    'Write out the proof of the angle sum in statement-and-reason form.',
+    'An exterior angle is ' + m('115°') + ' and one remote interior angle is ' + m('52°') + '. Find the other two interior angles.',
+    'Explain why a triangle cannot have two right angles.'
+  ]
+});
