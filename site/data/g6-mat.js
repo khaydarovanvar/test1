@@ -2455,3 +2455,180 @@ G6_MAT.push({
     'Say, without calculating, whether ' + m(f('2', '3') + ' ÷ ' + f('5', '4')) + ' is larger or smaller than ' + m(f('2', '3')) + ', and why.'
   ]
 });
+
+/* ============================== 14 ============================== */
+G6_MAT.push({
+  id: 'g6-14', stream: 'mat', grade: 6, quarter: 1, lessons: '30–32', hours: 3,
+  title: 'Word problems on the division of fractions',
+  subtitle: 'Deciding whether to multiply or divide — and finding the whole when a part is given.',
+  uz: 'Matematika 6, §8', uzPage: 'pp. 81–90',
+  cam: 'S7 7.5', camPage: 'Stage 7, pp. 76–80', wb: 'Exercise 7.5',
+  objectives: [
+    'Decide from the wording whether a problem needs multiplication or division.',
+    'Find the whole when a fractional part of it is known.',
+    'Solve problems where a fraction of a fraction is taken.',
+    'Check an answer against the sense of the problem.'
+  ],
+  terms: [
+    ['Word problem', 'Matnli masala', 'Текстовая задача'],
+    ['Part of a whole', 'Butunning qismi', 'Часть целого'],
+    ['To find the whole', 'Butunni topish', 'Найти целое'],
+    ['Fraction of a fraction', 'Kasrning kasri', 'Дробь от дроби'],
+    ['Remainder', 'Qoldiq', 'Остаток'],
+    ['Per unit', 'Bir birlikka', 'На единицу'],
+    ['To interpret', 'Talqin qilmoq', 'Истолковать'],
+    ['Sense check', 'Mantiqiy tekshirish', 'Проверка по смыслу']
+  ],
+  timing: [[25, 'Multiply or divide?'], [30, 'Finding the whole'], [30, 'A fraction of a fraction'], [25, 'Harder problems'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'Multiply or divide?',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>The problem asks</th><th>Operation</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>a fraction <b>of</b> a known amount</td><td>multiply</td><td class="m">${f('3', '4')} of 20 = 15</td></tr>
+        <tr><td>how many small amounts <b>fit</b> in a large one</td><td>divide</td><td class="m">6 ÷ ${f('2', '3')} = 9</td></tr>
+        <tr><td>share an amount into equal parts</td><td>divide</td><td class="m">${f('3', '4')} ÷ 3 = ${f('1', '4')}</td></tr>
+        <tr><td>the whole, when a part is known</td><td>divide</td><td class="m">12 ÷ ${f('3', '4')} = 16</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The word “of” means multiply</div>
+      And “how many fit”, “shared between” and “if this is a third of it” all mean divide. Reading for
+      those phrases is more reliable than reading for the numbers.</div>`
+    },
+    {
+      h: 'Finding the whole',
+      html: `<p>If ${m(f('3', '4'))} of a length is ${m('12')} m, the whole is ${m('12 ÷ ' + f('3', '4') + ' = 16')} m. Dividing
+      by the fraction undoes taking the fraction.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Working</th><th>The whole</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('3', '4')} of it is ${m('12')}</td><td class="m">12 ÷ ${f('3', '4')}</td><td class="m">16</td></tr>
+        <tr><td class="m">${f('2', '5')} of it is ${m('18')}</td><td class="m">18 ÷ ${f('2', '5')}</td><td class="m">45</td></tr>
+        <tr><td class="m">${f('5', '6')} of it is ${m('25')}</td><td class="m">25 ÷ ${f('5', '6')}</td><td class="m">30</td></tr>
+        <tr><td class="m">${f('1', '3')} of it is ${m('7')}</td><td class="m">7 ÷ ${f('1', '3')}</td><td class="m">21</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The whole is always bigger than the part</span>
+      An answer smaller than the given part means the operations were the wrong way round. This single
+      check catches nearly every error in this section.</div>`
+    },
+    {
+      h: 'A fraction of a fraction',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m(f('2', '3'))} of ${m(f('3', '5'))} of a field</td><td class="m">${f('2', '3')} · ${f('3', '5')}</td><td class="m">${f('2', '5')}</td></tr>
+        <tr><td>half of ${m(f('4', '7'))}</td><td class="m">${f('1', '2')} · ${f('4', '7')}</td><td class="m">${f('2', '7')}</td></tr>
+        <tr><td>${m(f('3', '4'))} of a class of ${m('28')} are girls; ${m(f('1', '3'))} of the girls wear glasses</td><td class="m">21 · ${f('1', '3')}</td><td class="m">7</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">“Of” chains multiply</div>
+      A fraction of a fraction of a whole is one product with three factors. There is no need to work out
+      each stage separately unless the question asks for it.</div>`
+    },
+    {
+      h: 'Harder problems',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a tank is ${m(f('3', '5'))} full with ${m('24')} litres; its capacity</td><td class="m">24 ÷ ${f('3', '5')}</td><td class="m">40</td></tr>
+        <tr><td>${m(f('2', '3'))} of a job is done in ${m('4')} days; the whole job</td><td class="m">4 ÷ ${f('2', '3')}</td><td class="m">6 days</td></tr>
+        <tr><td>after spending ${m(f('2', '5'))}, ${m('18 000')} sum is left; the original</td><td class="m">18 000 ÷ ${f('3', '5')}</td><td class="m">30 000</td></tr>
+        <tr><td>${m(f('3', '8'))} of a road is ${m('15')} km; the rest</td><td class="m">40 − 15</td><td class="m">25 km</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Read what the given number is a fraction <i>of</i></span>
+      In the third row ${m('18 000')} is what is <b>left</b>, so it is ${m(f('3', '5'))} of the money, not
+      ${m(f('2', '5'))}. Naming the fraction that matches the given number is the whole
+      difficulty.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: m(f('3', '4')) + ' of a rope is ' + m('12') + ' m. How long is the whole rope?',
+      steps: [
+        ['A part is given; the whole is wanted, so divide.', ''],
+        [m('12 ÷ ' + f('3', '4') + ' = 12 · ' + f('4', '3')), ''],
+        [m('= 16') + ' m.', 'Bigger than ' + m('12') + ' ✓']
+      ],
+      ans: m('16') + ' m'
+    },
+    {
+      q: 'A tank is ' + m(f('3', '5')) + ' full and holds ' + m('24') + ' litres. What is its capacity?',
+      steps: [
+        [m('24') + ' litres is ' + m(f('3', '5')) + ' of the capacity.', ''],
+        [m('24 ÷ ' + f('3', '5') + ' = 24 · ' + f('5', '3')), ''],
+        [m('= 40') + ' litres.', '']
+      ],
+      ans: m('40') + ' litres'
+    },
+    {
+      q: 'After spending ' + m(f('2', '5')) + ' of her money, Nilufar has ' + m('18 000') + ' sum left. How much had she?',
+      steps: [
+        ['What is left is ' + m('1 − ' + f('2', '5') + ' = ' + f('3', '5')) + ' of the money.', 'The key step.'],
+        [m('18 000 ÷ ' + f('3', '5')), ''],
+        [m('= 30 000') + ' sum.', 'Check: ' + m(f('2', '5')) + ' of ' + m('30 000') + ' is ' + m('12 000') + ' ✓']
+      ],
+      ans: m('30 000') + ' sum'
+    }
+  ],
+  modelNote: 'Give six problems and ask only for the operation, not the answer; deciding between × and ÷ is the skill, and it is worth a lesson on its own.',
+  interactive: {
+    type: 'quiz',
+    title: 'Multiply or divide?',
+    hint: 'Look for “of”, “fit”, “shared” and “this is a part of it”.',
+    items: [
+      { q: m(f('3', '4')) + ' of ' + m('20') + ':', a: ['multiply', 'divide', 'add', 'subtract'], c: 0, why: '“Of” means multiply.' },
+      { q: 'How many ' + m(f('2', '3')) + ' m pieces fit in ' + m('6') + ' m:', a: ['multiply', 'divide', 'add', 'subtract'], c: 1, why: '“How many fit”.' },
+      { q: m(f('3', '4')) + ' of a rope is ' + m('12') + ' m; the whole rope:', a: ['multiply', 'divide', 'add', 'subtract'], c: 1, why: 'Part given, whole wanted.' },
+      { q: 'The whole rope is:', a: [m('9') + ' m', m('16') + ' m', m('15') + ' m', m('48') + ' m'], c: 1, why: m('12 · ' + f('4', '3')) + '.' },
+      { q: 'A tank ' + m(f('3', '5')) + ' full holds ' + m('24') + ' l; its capacity:', a: [m('14.4') + ' l', m('40') + ' l', m('30') + ' l', m('72') + ' l'], c: 1, why: m('24 ÷ ' + f('3', '5')) + '.' },
+      { q: m(f('2', '3')) + ' of ' + m(f('3', '5')) + ':', a: [m(f('2', '5')), m(f('5', '8')), m(f('10', '9')), m(f('6', '15')) + ' unsimplified'], c: 0, why: 'Cancel the ' + m('3') + 's.' },
+      { q: 'After spending ' + m(f('2', '5')) + ', what is left is:', a: [m(f('2', '5')), m(f('3', '5')), m(f('1', '5')), m(f('5', '3'))], c: 1, why: m('1 − ' + f('2', '5')) + '.' },
+      { q: 'The whole must be:', a: ['smaller than the part', 'larger than the part', 'equal to it', 'either'], c: 1, why: 'The sense check.' }
+    ]
+  },
+  quiz: [
+    { q: '“Of” means:', a: ['add', 'multiply', 'divide', 'subtract'], c: 1, why: 'A part of an amount.' },
+    { q: '“How many fit” means:', a: ['multiply', 'divide', 'add', 'square'], c: 1, why: 'A measuring division.' },
+    { q: m(f('2', '5')) + ' of a number is ' + m('18') + '; the number is:', a: [m('7.2'), m('45'), m('36'), m('90')], c: 1, why: m('18 ÷ ' + f('2', '5')) + '.' },
+    { q: m(f('5', '6')) + ' of it is ' + m('25') + '; it is:', a: [m('30'), m('20.8'), m('35'), m('150')], c: 0, why: m('25 · ' + f('6', '5')) + '.' },
+    { q: m(f('2', '3')) + ' of ' + m(f('3', '5')) + ' equals:', a: [m(f('2', '5')), m(f('9', '10')), m(f('5', '8')), m(f('6', '8'))], c: 0, why: 'Cancel.' },
+    { q: 'A whole smaller than its part means:', a: ['a correct answer', 'the wrong operation', 'a large fraction', 'nothing'], c: 1, why: 'Impossible.' }
+  ],
+  practice: {
+    easy: [
+      [m(f('3', '4')) + ' of ' + m('20'), m('15')],
+      [m(f('2', '3')) + ' of ' + m('27'), m('18')],
+      [m('6') + ' m in ' + m(f('2', '3')) + ' m pieces', m('9')],
+      [m(f('3', '4')) + ' of a rope is ' + m('12') + ' m: the rope', m('16') + ' m'],
+      [m(f('1', '3')) + ' of it is ' + m('7') + ': it', m('21')],
+      [m(f('2', '5')) + ' of it is ' + m('18') + ': it', m('45')],
+      [m(f('5', '6')) + ' of it is ' + m('25') + ': it', m('30')]
+    ],
+    med: [
+      [m(f('2', '3')) + ' of ' + m(f('3', '5')), m(f('2', '5'))],
+      ['Half of ' + m(f('4', '7')), m(f('2', '7'))],
+      ['A tank ' + m(f('3', '5')) + ' full holds ' + m('24') + ' l: its capacity', m('40') + ' l'],
+      [m(f('2', '3')) + ' of a job in ' + m('4') + ' days: the whole job', m('6') + ' days'],
+      ['After spending ' + m(f('2', '5')) + ', ' + m('18 000') + ' is left: the original', m('30 000')],
+      [m(f('3', '4')) + ' of ' + m('28') + ' are girls; ' + m(f('1', '3')) + ' of them wear glasses', m('7')],
+      [m(f('3', '8')) + ' of a road is ' + m('15') + ' km: the whole road', m('40') + ' km']
+    ],
+    hard: [
+      [m(f('3', '8')) + ' of a road is ' + m('15') + ' km: the rest', m('25') + ' km'],
+      ['After giving away ' + m(f('1', '4')) + ' and then ' + m(f('1', '3')) + ' of the rest, ' + m('12') + ' are left: the original', m('24')],
+      [m(f('4', '5')) + ' of a number is ' + m('4') + ' more than ' + m(f('3', '5')) + ' of it: the number', m('20')],
+      ['A jug holds ' + m('1' + f('1', '2')) + ' l; how many ' + m(f('1', '4')) + ' l cups fill it?', m('6')],
+      [m(f('2', '3')) + ' of ' + m(f('3', '4')) + ' of ' + m('40'), m('20')],
+      ['Half of a number added to a third of it is ' + m('25') + ': the number', m('30')],
+      ['Why must the whole be larger than the part?', 'The part is a fraction of it, under one']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the operation you have chosen before doing any arithmetic.',
+  homework: [
+    m(f('2', '3')) + ' of a length is ' + m('14') + ' m. Find the whole length.',
+    'A barrel is ' + m(f('5', '8')) + ' full with ' + m('30') + ' litres. Find its capacity.',
+    'Find ' + m(f('3', '5')) + ' of ' + m(f('5', '9')) + ' of ' + m('36') + '.',
+    'After spending ' + m(f('3', '7')) + ' of his money, Bekzod has ' + m('24 000') + ' sum left. How much had he?',
+    'How many ' + m(f('3', '4')) + ' m planks can be cut from a board ' + m('9') + ' m long?'
+  ]
+});
