@@ -1,0 +1,1093 @@
+<title>Nega matematika kerak?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Fraunces:opsz,wght@9..144,600;9..144,800&family=JetBrains+Mono:wght@500;700&family=Karla:ital,wght@0,400;0,600;0,800;1,400&display=swap">
+<style>
+:root{
+  --paper:#FBFAF6;
+  --panel:#FFFFFF;
+  --panel-2:#F2F0E9;
+  --ink:#14213D;
+  --graphite:#55607A;
+  --faint:#8B94A9;
+  --grid:#CBD8EA;
+  --rule:#E4E0D5;
+  --pen:#C81E3C;
+  --gold:#B8801B;
+  --good:#157F63;
+  --sA:#2F5D9E;
+  --sB:#1F8A70;
+  --shadow:0 1px 2px rgba(20,33,61,.06),0 12px 32px -18px rgba(20,33,61,.35);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1524; --panel:#16203A; --panel-2:#1B2745;
+    --ink:#E9EEF8; --graphite:#A3AFC7; --faint:#7C88A2;
+    --grid:#22314F; --rule:#2A3859;
+    --pen:#FF6079; --gold:#E9BE5C; --good:#3FBF9A;
+    --sA:#5B8FD6; --sB:#2BA085;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px -20px rgba(0,0,0,.8);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1524; --panel:#16203A; --panel-2:#1B2745;
+  --ink:#E9EEF8; --graphite:#A3AFC7; --faint:#7C88A2;
+  --grid:#22314F; --rule:#2A3859;
+  --pen:#FF6079; --gold:#E9BE5C; --good:#3FBF9A;
+  --sA:#5B8FD6; --sB:#2BA085;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px -20px rgba(0,0,0,.8);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  background-image:
+    linear-gradient(to right,var(--grid) 1px,transparent 1px),
+    linear-gradient(to bottom,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px;
+  color:var(--ink);
+  font-family:Karla,"Segoe UI",system-ui,sans-serif;
+  font-size:clamp(15px,1.05vw + 9px,19px);
+  line-height:1.55;
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";position:fixed;inset:0 auto 0 clamp(18px,4.5vw,72px);
+  width:2px;background:var(--pen);opacity:.5;z-index:2;pointer-events:none;
+}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:800;text-wrap:balance;margin:0;line-height:1.05;letter-spacing:-.015em}
+h1{font-size:clamp(2.4rem,6.2vw,5rem)}
+h2{font-size:clamp(1.8rem,3.6vw,3.1rem)}
+h3{font-size:clamp(1.05rem,1.5vw,1.35rem);font-weight:600;letter-spacing:-.005em}
+p{margin:0;max-width:64ch}
+b,strong{font-weight:800}
+em{font-style:italic}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.note{font-family:Caveat,cursive;color:var(--pen);font-size:clamp(1.15rem,1.9vw,1.7rem);line-height:1.2;transform:rotate(-1.4deg);display:inline-block}
+.eyebrow{
+  font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--pen);
+}
+.lede{font-size:clamp(1.05rem,1.5vw,1.3rem);color:var(--graphite);max-width:58ch}
+
+/* ---------- deck shell ---------- */
+#deck{position:relative;overflow-x:clip}
+.slide{
+  min-height:100svh;
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:clamp(14px,2.2vh,26px);
+  padding:clamp(64px,7vh,88px) clamp(28px,7vw,110px) clamp(84px,10vh,104px);
+  max-width:1180px;
+  margin-inline:auto;
+}
+.slide.on{display:flex;animation:rise .42s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .slide.on{animation:none}
+  *{animation-duration:.001s!important;transition-duration:.001s!important}
+}
+
+/* ---------- HUD ---------- */
+.hud{
+  position:fixed;top:0;left:0;right:0;z-index:20;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px clamp(14px,3vw,26px);
+  background:linear-gradient(var(--paper) 55%,transparent);
+  pointer-events:none;
+}
+.hud > *{pointer-events:auto}
+.brand{
+  font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint);padding-left:clamp(28px,4.5vw,58px);
+}
+.hud-r{display:flex;align-items:center;gap:8px}
+.btn{
+  font-family:"JetBrains Mono",monospace;font-size:.74rem;font-weight:700;
+  letter-spacing:.06em;border:1px solid var(--rule);background:var(--panel);
+  color:var(--graphite);border-radius:8px;padding:7px 10px;cursor:pointer;
+  transition:border-color .15s,color .15s,background .15s;
+}
+.btn:hover{border-color:var(--pen);color:var(--pen)}
+.btn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+:focus-visible{outline:2px solid var(--pen);outline-offset:3px;border-radius:6px}
+.count{font-family:"JetBrains Mono",monospace;font-size:.74rem;color:var(--faint);min-width:52px;text-align:right}
+
+/* ---------- footer nav ---------- */
+.foot{
+  position:fixed;left:0;right:0;bottom:0;z-index:20;
+  display:flex;align-items:center;gap:14px;
+  padding:10px clamp(14px,3vw,26px);
+  background:linear-gradient(transparent,var(--paper) 45%);
+  pointer-events:none;
+}
+.foot > *{pointer-events:auto}
+.ticks{display:flex;gap:4px;flex:1;padding-left:clamp(28px,4.5vw,58px);flex-wrap:wrap}
+.tick{width:22px;height:6px;border-radius:2px;background:var(--rule);border:0;padding:0;cursor:pointer;transition:background .2s,transform .2s}
+.tick:hover{transform:scaleY(1.6)}
+.tick.done{background:var(--graphite);opacity:.5}
+.tick.here{background:var(--pen)}
+.arrows{display:flex;gap:6px}
+.arrow{width:38px;height:34px;display:grid;place-items:center;font-size:1rem}
+
+/* ---------- surfaces ---------- */
+.card{
+  background:var(--panel);border:1px solid var(--rule);border-radius:14px;
+  padding:clamp(14px,1.6vw,22px);box-shadow:var(--shadow);
+}
+.grid2{display:grid;gap:clamp(12px,1.6vw,20px);grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.grid3{display:grid;gap:clamp(10px,1.2vw,16px);grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.stack{display:flex;flex-direction:column;gap:clamp(10px,1.6vh,18px)}
+.scroll-x{overflow-x:auto}
+.hero-num{font-family:Fraunces,Georgia,serif;font-weight:800;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1;font-variant-numeric:tabular-nums}
+
+/* ---------- interactive bits ---------- */
+.opt{
+  display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;
+  background:var(--panel);border:1px solid var(--rule);border-radius:12px;
+  padding:13px 15px;cursor:pointer;color:inherit;font:inherit;
+  transition:border-color .16s,background .16s,transform .16s;
+}
+.opt:hover{border-color:var(--pen);transform:translateX(3px)}
+.opt .key{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--faint);flex:none}
+.opt.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 9%,var(--panel))}
+.opt.correct .key{color:var(--good)}
+.opt.wrong{border-color:var(--pen);background:color-mix(in srgb,var(--pen) 8%,var(--panel))}
+.opt.wrong .key{color:var(--pen)}
+.opt[disabled]{cursor:default;transform:none}
+.verdict{
+  border-left:3px solid var(--pen);padding:2px 0 2px 14px;color:var(--graphite);
+  display:none;max-width:66ch;
+}
+.verdict.show{display:block;animation:rise .3s both}
+.pill{
+  font-family:"JetBrains Mono",monospace;font-size:.68rem;font-weight:700;letter-spacing:.05em;
+  text-transform:uppercase;padding:4px 8px;border-radius:999px;border:1px solid var(--rule);
+  color:var(--graphite);white-space:nowrap;
+}
+.pill.hot{border-color:var(--pen);color:var(--pen)}
+.pill.mid{border-color:var(--gold);color:var(--gold)}
+.pill.no{opacity:.6}
+label.field{display:flex;flex-direction:column;gap:6px;font-size:.8rem;color:var(--graphite);font-weight:600}
+label.field .val{font-family:"JetBrains Mono",monospace;color:var(--ink);font-weight:700}
+input[type=range]{width:100%;accent-color:var(--pen);cursor:pointer}
+input[type=text],input[type=number]{
+  font-family:"JetBrains Mono",monospace;font-size:1.1rem;padding:9px 12px;border-radius:10px;
+  border:1px solid var(--rule);background:var(--panel);color:var(--ink);width:100%;max-width:260px;
+}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.82rem;color:var(--graphite)}
+.swatch{width:11px;height:11px;border-radius:3px;display:inline-block;margin-right:6px;vertical-align:-1px}
+figure{margin:0}
+figcaption{font-size:.8rem;color:var(--faint);margin-top:8px}
+.chart{width:100%;height:auto;display:block;touch-action:none}
+.tag{
+  display:inline-flex;align-items:center;gap:7px;border:1px solid var(--rule);background:var(--panel);
+  border-radius:999px;padding:7px 13px;font-size:.85rem;font-weight:600;cursor:pointer;color:inherit;
+  transition:border-color .15s,background .15s;
+}
+.tag:hover{border-color:var(--pen)}
+.tag[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+ul.clean{margin:0;padding-left:1.1em;color:var(--graphite);display:flex;flex-direction:column;gap:6px}
+ul.clean b{color:var(--ink)}
+.check{display:flex;gap:11px;align-items:flex-start;cursor:pointer;padding:8px 0;border-bottom:1px dashed var(--rule)}
+.check input{margin-top:4px;accent-color:var(--pen);width:17px;height:17px;flex:none;cursor:pointer}
+.check.done span{opacity:.5;text-decoration:line-through}
+.strike{position:relative;display:inline-block}
+.strike::after{
+  content:"";position:absolute;left:-2%;right:-2%;top:52%;height:3px;background:var(--pen);
+  transform:scaleX(0);transform-origin:left;border-radius:2px;
+}
+.slide.on .strike::after{animation:sweep .6s .5s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes sweep{to{transform:scaleX(1)}}
+.circle-wrap{position:relative;display:inline-block}
+.circle-wrap svg{position:absolute;inset:-24% -11%;width:122%;height:148%;overflow:visible;pointer-events:none}
+.circle-wrap path{fill:none;stroke:var(--pen);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:1100;stroke-dashoffset:1100;opacity:.85}
+.slide.on .circle-wrap path{animation:draw 1.1s .7s cubic-bezier(.5,0,.3,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.bar-track{height:12px;border-radius:6px;background:var(--panel-2);overflow:hidden;flex:1;min-width:80px}
+.bar-fill{height:100%;background:var(--pen);border-radius:6px;width:0;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.digits{
+  font-family:"JetBrains Mono",monospace;font-weight:700;letter-spacing:.22em;
+  font-size:clamp(2rem,5vw,3.6rem);color:var(--ink);min-height:1.2em;
+}
+.hint{font-size:.85rem;color:var(--faint)}
+.kbd{font-family:"JetBrains Mono",monospace;font-size:.72rem;border:1px solid var(--rule);border-bottom-width:2px;border-radius:5px;padding:1px 5px;color:var(--graphite)}
+#poll .row{flex-wrap:nowrap}
+@media (max-width:640px){
+  #poll .row{flex-wrap:wrap}
+  #poll .bar-track{order:5;flex-basis:100%}
+  body::before{display:none}
+  .brand,.ticks{padding-left:0}
+  .slide{padding:70px 20px 90px}
+}
+</style>
+<style>
+.tool{text-align:left;font:inherit;color:inherit;cursor:pointer;display:flex;flex-direction:column;gap:8px;transition:border-color .16s,transform .16s}
+.tool:hover{border-color:var(--pen);transform:translateY(-2px)}
+.tool .more{display:none;border-top:1px dashed var(--rule);padding-top:10px;margin-top:2px;font-size:.9rem;color:var(--graphite)}
+.tool.open .more{display:flex;flex-direction:column;gap:8px;animation:rise .28s both}
+.tool .num{font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--pen);letter-spacing:.12em;font-weight:700}
+.tool .more b{color:var(--ink);font-weight:800;display:block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
+.band{display:grid;grid-template-columns:auto 1fr;gap:10px 16px;align-items:baseline}
+.band .lbl{font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;white-space:nowrap}
+.split{display:grid;gap:10px 22px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.split .col{display:flex;flex-direction:column;gap:10px}
+.arrow-row{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;padding:11px 0;border-bottom:1px dashed var(--rule)}
+.arrow-row .to{color:var(--pen);font-family:"JetBrains Mono",monospace;font-weight:700}
+.job{display:none}
+.job.on{display:flex;flex-direction:column;gap:12px;animation:rise .3s both}
+.tally{font-family:"JetBrains Mono",monospace;font-size:.82rem;color:var(--graphite);display:flex;gap:18px;flex-wrap:wrap}
+.tally b{color:var(--ink)}
+.big-eq{font-family:"JetBrains Mono",monospace;font-size:clamp(1rem,2.1vw,1.5rem);font-weight:700;letter-spacing:.02em;color:var(--ink)}
+.pair{display:flex;gap:6px;flex-wrap:wrap;font-family:"JetBrains Mono",monospace;font-size:.9rem}
+.pair span{background:var(--panel-2);border-radius:6px;padding:3px 8px;opacity:0;animation:pop .3s forwards}
+@keyframes pop{to{opacity:1}}
+</style>
+
+<header class="hud">
+  <div class="brand" data-i18n data-en="Lesson 1 · Anvarbek Khaydarov" data-uz="1-dars · Anvarbek Khaydarov"></div>
+  <div class="hud-r">
+    <button class="btn" id="lang" type="button" aria-pressed="false">O‘ZB / ENG</button>
+    <button class="btn" id="full" type="button" title="Fullscreen">⛶</button>
+    <div class="count mono"><span id="cur">1</span>/<span id="tot">15</span></div>
+  </div>
+</header>
+
+<main id="deck">
+
+<!-- 0 ─ TITLE -->
+<section class="slide">
+  <div class="eyebrow" data-i18n data-en="First lesson of the year" data-uz="Yilning birinchi darsi"></div>
+  <h1><span class="circle-wrap"><span data-i18n data-en="Why do we learn math?" data-uz="Nega matematika kerak?"></span><svg viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><path d="M22 62 C22 22 118 10 206 12 C312 14 386 30 384 62 C382 96 286 112 196 110 C96 108 20 96 24 66 C28 44 82 26 150 22"/></svg></span></h1>
+  <p class="lede" data-i18n data-en="No slogans. No “you’ll need it one day.” Today we look at the honest answer — including the parts where you are right and I am not going to argue." data-uz="Shiorlarsiz. “Bir kun kerak bo‘ladi” degan gapsiz. Bugun halol javobni ko‘ramiz — siz haq bo‘lgan joylarni ham men inkor qilmayman."></p>
+  <div class="row" style="margin-top:6px">
+    <span class="note" data-i18n data-en="Bring your honest opinion →" data-uz="Halol fikringizni olib keling →"></span>
+  </div>
+  <p class="hint" style="margin-top:auto"><span data-i18n data-en="Move with" data-uz="Boshqarish:"></span> <span class="kbd">→</span> <span class="kbd">←</span> <span class="kbd">Space</span> · <span data-i18n data-en="tap the arrows below" data-uz="pastdagi strelkalar"></span></p>
+</section>
+
+<!-- 1 ─ POLL -->
+<section class="slide">
+  <div class="eyebrow" data-i18n data-en="Question for you · 01" data-uz="Sizga savol · 01"></div>
+  <h2 data-i18n data-en="Be honest. How useful is math for <em>your</em> future?" data-uz="Halol ayting. Matematika <em>sizning</em> kelajagingizga qanchalik kerak?"></h2>
+  <p class="lede" data-i18n data-en="Hands up. I count, I write it down, and nobody is wrong here. This number is our starting point — we will look at it again in 40 minutes." data-uz="Qo‘l ko‘taring. Men sanayman va yozib qo‘yaman — bu yerda noto‘g‘ri javob yo‘q. Bu raqam — boshlang‘ich nuqtamiz, 40 daqiqadan keyin yana qaraymiz."></p>
+  <div class="card stack" id="poll" style="max-width:760px"></div>
+  <div class="row">
+    <button class="btn" id="pollReset" type="button" data-i18n data-en="RESET" data-uz="TOZALASH"></button>
+    <span class="note" data-i18n data-en="Answer “zero” if that is the truth. I want the truth." data-uz="Agar rost shunday bo‘lsa, “umuman” deng. Menga rost kerak."></span>
+  </div>
+</section>
+
+<!-- 2 ─ THE ADMISSION -->
+<section class="slide">
+  <div class="eyebrow" data-i18n data-en="The honest part · 02" data-uz="Halol qism · 02"></div>
+  <h2 data-i18n data-en="You are right: <span class='strike'>you will use integrals every day</span>" data-uz="Siz haqsiz: <span class='strike'>integral har kuni kerak bo‘ladi</span>"></h2>
+  <p class="lede" data-i18n data-en="Most of you will finish school and never compute an integral again. A teacher who denies that is lying, and you can tell. So let me sort the course honestly:" data-uz="Ko‘pchiligingiz maktabni tugatib, boshqa hech qachon integral hisoblamaysiz. Buni inkor qilgan o‘qituvchi yolg‘on gapiradi — siz buni sezasiz. Shuning uchun kursni halol ajratamiz:"></p>
+  <div class="card band">
+    <div class="lbl" style="color:var(--pen)" data-i18n data-en="Every week, for life" data-uz="Har hafta, umr bo‘yi"></div>
+    <div data-i18n data-en="Percentages · proportion · estimating in your head · reading a chart · probability · “does this number make sense?”" data-uz="Foizlar · nisbat · og‘zaki chamalash · grafikni o‘qish · ehtimollik · “bu raqam mantiqqa to‘g‘ri keladimi?”"></div>
+    <div class="lbl" style="color:var(--gold)" data-i18n data-en="Sometimes" data-uz="Ba’zan"></div>
+    <div data-i18n data-en="Algebra as a model of a real situation · geometry and area · statistics · systems of equations" data-uz="Real vaziyat modeli sifatidagi algebra · geometriya va yuza · statistika · tenglamalar sistemasi"></div>
+    <div class="lbl" style="color:var(--faint)" data-i18n data-en="Almost never — unless" data-uz="Deyarli hech qachon — agar"></div>
+    <div data-i18n data-en="Integrals · trig identities · matrices — <b>unless</b> you go into engineering, architecture, physics, economics, programming, medicine research or design." data-uz="Integrallar · trigonometrik ayniyatlar · matritsalar — <b>agar</b> muhandislik, arxitektura, fizika, iqtisod, dasturlash, tibbiy tadqiqot yoki dizaynga bormasangiz."></div>
+  </div>
+  <p class="lede" data-i18n data-en="So one honest question stays on the table: if a part of this course is “almost never”, why are we doing it at all?" data-uz="Demak, bitta halol savol qoladi: agar kursning bir qismi “deyarli hech qachon” bo‘lsa, nega uni umuman o‘qiymiz?"></p>
+</section>
+
+<!-- 3 ─ THE GYM -->
+<section class="slide">
+  <div class="eyebrow" data-i18n data-en="The answer · 03" data-uz="Javob · 03"></div>
+  <h2 data-i18n data-en="Name one real moment when you must lift a heavy metal bar over your head." data-uz="Hayotda og‘ir temir shtangani bosh uzra ko‘tarishingiz shart bo‘lgan bitta holatni ayting."></h2>
+  <p class="lede" data-i18n data-en="There isn’t one. Nobody here will ever need that movement — yet the strongest, healthiest people alive do it on purpose, every week." data-uz="Bunday holat yo‘q. Bu yerdagi hech kimga bu harakat kerak emas — shunga qaramay, dunyodagi eng kuchli odamlar buni har hafta ataylab qiladi."></p>
+  <p class="lede" data-i18n data-en="So why do they do it? Because the bar is not the point. What the bar builds is the point." data-uz="Xo‘sh, nega qiladi? Chunki gap shtangada emas. Gap shtanga qurgan narsada."></p>
+  <span class="note" data-i18n data-en="Same question, one word changed: what does this build?" data-uz="O‘sha savol, bitta so‘z o‘zgardi: bu nimani quradi?"></span>
+</section>
+
+<!-- 3b ─ TRANSFER -->
+<section class="slide">
+  <div class="eyebrow" data-i18n data-en="What it builds · 03" data-uz="U nima quradi · 03"></div>
+  <h2 data-i18n data-en="The exercise is never the reason. The transfer is." data-uz="Mashqning o‘zi hech qachon maqsad emas. Maqsad — o‘tkazma."></h2>
+  <div class="card stack" style="max-width:860px">
+    <div class="arrow-row">
+      <div data-i18n data-en="<b>Lifting the barbell</b>" data-uz="<b>Shtanga ko‘tarish</b>"></div><div class="to">→</div>
+      <div data-i18n data-en="carrying your little brother, moving furniture, a back that doesn’t hurt at 40" data-uz="ukangizni ko‘tarish, mebel surish, 40 yoshda og‘rimaydigan bel"></div>
+    </div>
+    <div class="arrow-row">
+      <div data-i18n data-en="<b>Solving an integral</b>" data-uz="<b>Integral yechish</b>"></div><div class="to">→</div>
+      <div data-i18n data-en="holding five steps in your head at once, seeing the structure under a mess, not panicking at a hard problem" data-uz="beshta qadamni bir vaqtda boshda ushlab turish, chalkashlik ostidagi tuzilmani ko‘rish, qiyin masaladan qo‘rqmaslik"></div>
+    </div>
+    <div class="arrow-row" style="border:0">
+      <div data-i18n data-en="<b>Proving a theorem</b>" data-uz="<b>Teoremani isbotlash</b>"></div><div class="to">→</div>
+      <div data-i18n data-en="knowing the difference between “I saw it on the internet” and “I know it is true”" data-uz="“internetda ko‘rdim” bilan “bilaman, bu rost” orasidagi farqni bilish"></div>
+    </div>
+  </div>
+  <p class="lede" data-i18n data-en="The barbell is not the point. The strength is. <b>The integral is a barbell</b> — you put it down after the exam, and what you built lifting it stays." data-uz="Gap shtangada emas — kuchda. <b>Integral ham shtanga</b> — imtihondan keyin uni qo‘yasiz, ko‘targanda orttirgan kuchingiz qoladi."></p>
+  <p class="hint" data-i18n data-en="Honest footnote: this only works if you actually think. A copied answer builds nothing — like watching gym videos and expecting muscles." data-uz="Halol izoh: bu faqat <em>o‘zingiz o‘ylasangiz</em> ishlaydi. Ko‘chirilgan javob hech narsa bermaydi — sport videolarini ko‘rib mushak kutgandek."></p>
+</section>
+
+<!-- 4 ─ BRAIN DRILL -->
+<section class="slide">
+  <div class="eyebrow" data-i18n data-en="Try it on yourself · 04" data-uz="O‘zingizda sinang · 04"></div>
+  <h2 data-i18n data-en="Your brain, right now — two rounds" data-uz="Miyangiz, hozir — ikki bosqich"></h2>
+  <p class="lede" id="drillIntro" data-i18n data-en="I will show you 8 digits for four seconds. Then they disappear and you write them down. No pens up yet." data-uz="Men sizga 8 ta raqamni to‘rt soniyaga ko‘rsataman. Keyin ular yo‘qoladi, siz yozasiz. Hozircha qalam yo‘q."></p>
+  <div class="card stack" style="max-width:760px">
+    <div class="digits mono" id="drillShow">– – – – – – – –</div>
+    <div class="row">
+      <button class="btn" id="drillGo" type="button" data-i18n data-en="SHOW · ROUND 1" data-uz="KO‘RSATISH · 1-BOSQICH"></button>
+      <input type="text" id="drillIn" inputmode="numeric" autocomplete="off" placeholder="……" disabled>
+      <button class="btn" id="drillCheck" type="button" disabled data-i18n data-en="CHECK" data-uz="TEKSHIRISH"></button>
+    </div>
+    <div class="verdict" id="drillOut"></div>
+  </div>
+  <p class="lede" id="drillMoral" style="display:none" data-i18n data-en="Same brain. Same eight digits. The only thing that changed was <b>structure</b> — the digits came in groups. That is the whole trick of mathematics: it does not make your memory bigger, it makes the world smaller by grouping it." data-uz="O‘sha miya. O‘sha sakkiz raqam. Faqat <b>tuzilma</b> o‘zgardi — raqamlar guruhlab berildi. Matematikaning butun siri shu: u xotirangizni kattalashtirmaydi, dunyoni guruhlab kichraytiradi."></p>
+</section>
+
+<!-- 5 ─ FIVE TOOLS -->
+<section class="slide">
+  <div class="eyebrow" data-i18n data-en="What actually gets installed · 05" data-uz="Aslida nima o‘rnatiladi · 05"></div>
+  <h2 data-i18n data-en="Five tools you keep after the formulas are gone" data-uz="Formulalar unutilgach qoladigan beshta asbob"></h2>
+  <p class="hint" data-i18n data-en="Tap a card." data-uz="Kartani bosing."></p>
+  <div class="grid3" id="tools"></div>
+</section>
+
+<!-- 6 ─ PERCENT TRAP -->
+<section class="slide">
+  <div class="eyebrow" data-i18n data-en="Question for you · 06" data-uz="Sizga savol · 06"></div>
+  <h2 data-i18n data-en="A shop raises a price by 20%, then gives you 20% off. Where are you?" data-uz="Do‘kon narxni 20% oshirdi, keyin sizga 20% chegirma berdi. Qayerdasiz?"></h2>
+  <div class="grid2">
+    <div class="stack quiz" data-quiz="pct"></div>
+    <div class="card stack">
+      <label class="field" for="pctR"><span data-i18n data-en="Change the percent yourself" data-uz="Foizni o‘zingiz o‘zgartiring"></span> <span class="val"><span id="pctV">20</span>%</span></label>
+      <input type="range" id="pctR" min="5" max="60" step="5" value="20">
+      <div class="big-eq" id="pctEq"></div>
+      <div class="hero-num" id="pctOut" style="color:var(--pen)"></div>
+      <div class="hint" id="pctSay"></div>
+    </div>
+  </div>
+  <p class="lede" data-i18n data-en="Same 20 both times, and it never comes back. Percent is not a thing you add — it is a thing you <b>multiply</b>. This is why “50% off, then 30% more off” is 65% off, not 80%. Shops know this. Now you do too." data-uz="Ikkala safar ham bir xil 20, lekin narx qaytmaydi. Foiz — qo‘shiladigan emas, <b>ko‘paytiriladigan</b> narsa. Shuning uchun “50% chegirma, ustiga yana 30%” — bu 80% emas, 65%. Do‘konlar buni biladi. Endi siz ham bilasiz."></p>
+</section>
+
+<!-- 7 ─ BULLSHIT DETECTOR -->
+<section class="slide">
+  <div class="eyebrow" data-i18n data-en="Question for you · 07" data-uz="Sizga savol · 07"></div>
+  <h2 data-i18n data-en="Three claims. Only one of them is actually <em>proved</em>. Which?" data-uz="Uchta da’vo. Faqat bittasi haqiqatan <em>isbotlangan</em>. Qaysi biri?"></h2>
+  <div class="stack quiz" data-quiz="proof" style="max-width:860px"></div>
+  <p class="lede" data-i18n data-en="This is the single most valuable habit school can give you: the reflex to ask <b>“how do you know?”</b> — about an advert, a loan offer, a headline, a rumour, a promise. Mathematics is the only subject where that question is the whole method." data-uz="Maktab sizga bera oladigan eng qimmatli odat shu: <b>“qayerdan bilasan?”</b> deb so‘rash refleksi — reklamaga, kredit taklifiga, sarlavhaga, mish-mishga, va’daga nisbatan. Matematika — bu savolning o‘zi butun usul bo‘lgan yagona fan."></p>
+</section>
+
+<!-- 8 ─ MONEY -->
+<section class="slide">
+  <div class="eyebrow" data-i18n data-en="Math you will use every month · 08" data-uz="Har oy ishlatadigan matematika · 08"></div>
+  <h2 data-i18n data-en="Two people, same salary. One of them multiplied." data-uz="Ikki kishi, bir xil maosh. Biri ko‘paytirishni bilgan."></h2>
+  <div class="grid2">
+    <div class="card stack">
+      <label class="field" for="mA"><span data-i18n data-en="Saved each month" data-uz="Har oy jamg‘arma"></span> <span class="val"><span id="mAv"></span></span></label>
+      <input type="range" id="mA" min="50000" max="2000000" step="50000" value="300000">
+      <label class="field" for="mY"><span data-i18n data-en="Years" data-uz="Yil"></span> <span class="val"><span id="mYv">20</span></span></label>
+      <input type="range" id="mY" min="1" max="40" step="1" value="20">
+      <label class="field" for="mR"><span data-i18n data-en="Yearly interest" data-uz="Yillik foiz"></span> <span class="val"><span id="mRv">18</span>%</span></label>
+      <input type="range" id="mR" min="0" max="24" step="1" value="18">
+      <div class="tally">
+        <span><span data-i18n data-en="You put in" data-uz="Siz qo‘ydingiz"></span><br><b id="mIn"></b></span>
+        <span><span data-i18n data-en="Interest added" data-uz="Foiz qo‘shdi"></span><br><b id="mInt" style="color:var(--sB)"></b></span>
+      </div>
+      <div class="hero-num" id="mTot"></div>
+    </div>
+    <figure class="card">
+      <div class="legend" style="margin-bottom:8px">
+        <span><i class="swatch" style="background:var(--sA)"></i><span data-i18n data-en="Your own money" data-uz="O‘z pulingiz"></span></span>
+        <span><i class="swatch" style="background:var(--sB)"></i><span data-i18n data-en="Money the math made" data-uz="Matematika qilgan pul"></span></span>
+      </div>
+      <svg class="chart" id="mChart" viewBox="0 0 520 300" role="img" aria-label="Savings growth"></svg>
+      <figcaption data-i18n data-en="Deposit at the start of each month, interest compounded monthly." data-uz="Har oy boshida omonat, foiz oylik qo‘shilib boradi."></figcaption>
+    </figure>
+  </div>
+  <p class="lede" data-i18n data-en="Nobody in this picture is a genius. One person just knew that money multiplies instead of adding. <b>And the exact same curve works against you</b> on a loan or a credit card — that is the shape of a debt you cannot climb out of." data-uz="Bu rasmda hech kim daho emas. Bir kishi shunchaki pul qo‘shilmay, ko‘payishini bilgan. <b>Va aynan shu egri chiziq sizga qarshi ham ishlaydi</b> — kredit yoki karta foizida. Chiqib ketolmaydigan qarzning shakli aynan shunday."></p>
+</section>
+
+<!-- 9 ─ BIRTHDAYS -->
+<section class="slide">
+  <div class="eyebrow" data-i18n data-en="Question for you · 09" data-uz="Sizga savol · 09"></div>
+  <h2 data-i18n data-en="How many people do you need before two of them share a birthday — more likely than not?" data-uz="Ikki kishining tug‘ilgan kuni bir xil bo‘lishi ehtimoli 50%dan oshishi uchun nechta odam kerak?"></h2>
+  <p class="lede" data-i18n data-en="Write your guess down before you look. Most people say 180. Most people are wrong by a factor of eight." data-uz="Qarashdan oldin taxminingizni yozing. Ko‘pchilik 180 deydi. Ko‘pchilik sakkiz baravar adashadi."></p>
+  <div class="grid2">
+    <div class="card stack">
+      <label class="field" for="bR"><span data-i18n data-en="People in the room" data-uz="Xonadagi odamlar"></span> <span class="val" id="bNv">23</span></label>
+      <input type="range" id="bR" min="2" max="70" step="1" value="23">
+      <div class="hero-num" id="bOut" style="color:var(--pen)"></div>
+      <div class="hint" id="bSay"></div>
+      <button class="btn" id="bClass" type="button" data-i18n data-en="SET TO OUR CLASS SIZE" data-uz="SINFIMIZ SONIGA QO‘YISH"></button>
+    </div>
+    <figure class="card">
+      <svg class="chart" id="bChart" viewBox="0 0 520 300" role="img" aria-label="Shared-birthday probability"></svg>
+      <figcaption data-i18n data-en="Probability that at least two people share a birthday, by group size." data-uz="Guruh hajmiga qarab, kamida ikki kishining tug‘ilgan kuni mos kelishi ehtimoli."></figcaption>
+    </figure>
+  </div>
+  <p class="lede" data-i18n data-en="Your intuition compared people to <em>days</em>. The math counts <em>pairs</em> — 23 people make 253 pairs. Your gut is not stupid; it is just not built for numbers this size. That is exactly what math is for." data-uz="Sezgingiz odamlarni <em>kunlar</em> bilan solishtirdi. Matematika esa <em>juftlarni</em> sanaydi — 23 kishi 253 ta juft hosil qiladi. Sezgingiz ahmoq emas, shunchaki bunday kattalikdagi sonlarga mo‘ljallanmagan. Matematika aynan shu uchun kerak."></p>
+</section>
+
+<!-- 10 ─ CAREERS -->
+<section class="slide">
+  <div class="eyebrow" data-i18n data-en="The fair answer · 10" data-uz="Adolatli javob · 10"></div>
+  <h2 data-i18n data-en="“When will I ever use this?” — pick a job and I will tell you honestly" data-uz="“Bu menga qachon kerak bo‘ladi?” — kasbni tanlang, halol aytaman"></h2>
+  <div class="row" id="jobs" style="gap:8px"></div>
+  <div class="card job" id="jobCard"></div>
+  <div class="tally" id="jobTally"></div>
+</section>
+
+<!-- 11 ─ THE FORK -->
+<section class="slide">
+  <div class="eyebrow" data-i18n data-en="Why it has to be now · 11" data-uz="Nega aynan hozir · 11"></div>
+  <h2 data-i18n data-en="You are fifteen. You do not know yet who you will be." data-uz="Siz o‘n beshdasiz. Kim bo‘lishingizni hali bilmaysiz."></h2>
+  <p class="lede" data-i18n data-en="Ask any thirty-year-old what they wanted at fifteen. Almost none of them are doing it — which is exactly the problem with deciding today that you will never need math." data-uz="O‘ttiz yoshli odamdan o‘n beshda kim bo‘lmoqchi bo‘lganini so‘rang. Deyarli hech biri o‘shani qilmaydi — bugun “matematika kerak emas” deb hal qilish shuning uchun xavfli."></p>
+  <figure class="card scroll-x">
+    <svg class="chart" viewBox="0 0 760 240" role="img" aria-label="One decision at fifteen, many possible roads at twenty-five">
+      <g fill="none" stroke="var(--rule)" stroke-width="2">
+        <path d="M90 130 C 250 130 260 34 430 34"/><path d="M90 130 C 250 130 260 72 430 72"/>
+        <path d="M90 130 C 250 130 260 110 430 110"/><path d="M90 130 C 250 130 260 150 430 150"/>
+        <path d="M90 130 C 250 130 260 188 430 188"/><path d="M90 130 C 250 130 260 226 430 226"/>
+      </g>
+      <g fill="none" stroke="var(--pen)" stroke-width="2.5">
+        <path d="M90 130 C 250 130 260 34 430 34"/><path d="M90 130 C 250 130 260 72 430 72"/>
+        <path d="M90 130 C 250 130 260 110 430 110"/><path d="M90 130 C 250 130 260 150 430 150"/>
+      </g>
+      <circle cx="90" cy="130" r="7" fill="var(--pen)"/>
+      <text x="90" y="112" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="var(--ink)">15</text>
+      <g font-family="Karla, sans-serif" font-size="14" fill="var(--ink)">
+        <text x="444" y="39" data-i18n data-en="engineer, architect" data-uz="muhandis, arxitektor"></text>
+        <text x="444" y="77" data-i18n data-en="doctor, researcher" data-uz="shifokor, tadqiqotchi"></text>
+        <text x="444" y="115" data-i18n data-en="programmer, analyst" data-uz="dasturchi, tahlilchi"></text>
+        <text x="444" y="155" data-i18n data-en="business owner, economist" data-uz="tadbirkor, iqtisodchi"></text>
+      </g>
+      <g font-family="Karla, sans-serif" font-size="14" fill="var(--faint)">
+        <text x="444" y="193" data-i18n data-en="teacher, lawyer, journalist" data-uz="o‘qituvchi, yurist, jurnalist"></text>
+        <text x="444" y="231" data-i18n data-en="driver, cook, builder" data-uz="haydovchi, oshpaz, quruvchi"></text>
+      </g>
+      <text x="700" y="20" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="1.5" fill="var(--pen)">25</text>
+    </svg>
+  </figure>
+  <div class="split">
+    <p data-i18n data-en="Red roads need the math you are deciding about right now. One sentence closes them today — and no single night at twenty-five reopens them." data-uz="Qizil yo‘llar aynan hozirgi matematikani talab qiladi. Bugun bir gap ularni yopadi — yigirma beshda bir kecha ularni qayta ocholmaydi."></p>
+    <p class="hint" data-i18n data-en="And if your road turns out grey — nothing is lost. You still trained the thing every road runs on: a mind that does not quit on a hard problem." data-uz="Yo‘lingiz kulrang bo‘lsa ham — hech narsa yo‘qolmaydi. Siz har qanday yo‘l uchun kerak narsani mashq qildingiz: qiyin masaladan qochmaydigan tafakkur."></p>
+  </div>
+</section>
+
+<!-- 12 ─ NOT A MATH PERSON -->
+<section class="slide">
+  <div class="eyebrow" data-i18n data-en="One sentence I will not accept · 12" data-uz="Men qabul qilmaydigan bitta gap · 12"></div>
+  <h2 data-i18n data-en="“I’m just not a math person.”" data-uz="“Men matematikachi emasman-da.”"></h2>
+  <p class="lede" data-i18n data-en="Nobody is born knowing this. Every person who is good at math was once confused by exactly the thing that confuses you. The difference is not talent — it is what they said to themselves when it got hard. Tap each sentence to fix it." data-uz="Hech kim buni bilib tug‘ilmaydi. Matematikani yaxshi biladigan har bir odam bir vaqtlar sizni chalkashtirgan narsadan chalkashgan. Farq iste’dodda emas — qiyin bo‘lganda o‘ziga nima deganida. Har bir gapni bosib to‘g‘rilang."></p>
+  <div class="grid3" id="flips"></div>
+  <p class="hint" data-i18n data-en="Being slow is not the same as being wrong. Some of the best mathematicians in history were slow — they were just impossible to stop." data-uz="Sekin bo‘lish — noto‘g‘ri bo‘lish emas. Tarixdagi eng zo‘r matematiklarning ba’zilari sekin bo‘lgan — ularni to‘xtatib bo‘lmagan, xolos."></p>
+</section>
+
+<!-- 13 ─ GAUSS -->
+<section class="slide">
+  <div class="eyebrow" data-i18n data-en="Last challenge · 13" data-uz="Oxirgi sinov · 13"></div>
+  <h2 data-i18n data-en="Add every whole number from 1 to 100. You have 60 seconds." data-uz="1 dan 100 gacha barcha butun sonlarni qo‘shing. 60 soniya vaqtingiz bor."></h2>
+  <p class="lede" data-i18n data-en="A teacher gave this to a class of eight-year-olds to keep them quiet for an hour. One boy answered in under a minute. He did not add faster than anyone — he refused to add at all." data-uz="Bir o‘qituvchi sakkiz yashar bolalarni bir soat tinch qo‘yish uchun shu vazifani bergan. Bir bola bir daqiqada javob bergan. U hech kimdan tez qo‘shmagan — u umuman qo‘shishdan bosh tortgan."></p>
+  <div class="card stack" style="max-width:720px">
+    <div class="row">
+      <button class="btn" id="gGo" type="button" data-i18n data-en="START 60s" data-uz="60s BOSHLASH"></button>
+      <div class="hero-num mono" id="gClock" style="font-size:clamp(1.4rem,3vw,2.2rem)">60</div>
+      <input type="number" id="gIn" placeholder="?" style="max-width:150px">
+      <button class="btn" id="gCheck" type="button" data-i18n data-en="ANSWER" data-uz="JAVOB"></button>
+    </div>
+    <div class="verdict" id="gOut"></div>
+    <div class="pair" id="gPairs" aria-hidden="true"></div>
+  </div>
+  <p class="lede" id="gMoral" style="display:none" data-i18n data-en="<b>50 pairs × 101 = 5050.</b> He was not faster. He looked for a minute before he started working — and that minute beat an hour of grinding. That is the actual promise of this subject: a good idea is worth more than hard labour. Learning to find that idea is what we are here for." data-uz="<b>50 juft × 101 = 5050.</b> U tezroq emas edi. U ishni boshlashdan oldin bir daqiqa qarab turdi — va o‘sha daqiqa bir soatlik mehnatni yengdi. Bu fanning asl va’dasi shu: yaxshi g‘oya og‘ir mehnatdan qimmatroq. Biz shu g‘oyani topishni o‘rganish uchun keldik."></p>
+</section>
+
+<!-- 14 ─ CONTRACT -->
+<section class="slide">
+  <div class="eyebrow" data-i18n data-en="Our deal for this year · 14" data-uz="Shu yilgi kelishuvimiz · 14"></div>
+  <h2 data-i18n data-en="What I promise you, and what I ask back" data-uz="Men nima va’da beraman, sizdan nima so‘rayman"></h2>
+  <div class="split">
+    <div class="col">
+      <h3 style="color:var(--pen)" data-i18n data-en="My four promises" data-uz="Mening to‘rtta va’dam"></h3>
+      <div id="promises"></div>
+    </div>
+    <div class="col">
+      <h3 data-i18n data-en="What I ask from you" data-uz="Sizdan so‘raydiganim"></h3>
+      <div id="asks"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 ─ CLOSING -->
+<section class="slide">
+  <div class="eyebrow" data-i18n data-en="Before you go · 15" data-uz="Ketishdan oldin · 15"></div>
+  <div class="card stack">
+    <div class="eyebrow" data-i18n data-en="Exit ticket — write it, hand it in" data-uz="Chiqish chiptasi — yozing va topshiring"></div>
+    <ul class="clean">
+      <li data-i18n data-en="<b>1.</b> One thing from today you already knew was true but had never said out loud." data-uz="<b>1.</b> Bugungi darsdan: siz allaqachon bilgan, lekin hech qachon ovoz chiqarib aytmagan bitta narsa."></li>
+      <li data-i18n data-en="<b>2.</b> A job you are curious about — I will tell you next lesson exactly what math it uses." data-uz="<b>2.</b> Sizni qiziqtirgan bitta kasb — keyingi darsda unga qanday matematika kerakligini aniq aytaman."></li>
+      <li data-i18n data-en="<b>3.</b> One question you were embarrassed to ask last year. No names on this one." data-uz="<b>3.</b> O‘tgan yili so‘rashga uyalgan bitta savol. Bunisiga ism yozilmaydi."></li>
+    </ul>
+  </div>
+  <p class="lede" style="font-size:clamp(1.25rem,2.2vw,1.75rem);color:var(--ink)" data-i18n data-en="I am not asking you to love mathematics today. I am asking you not to close a door you cannot see through yet. Let’s start." data-uz="Men bugun sizdan matematikani sevishni so‘ramayapman. Men sizdan hali orqasini ko‘rmagan eshikni yopmaslikni so‘rayapman. Boshladik."></p>
+  <div class="row" style="margin-top:4px;align-items:baseline;gap:14px">
+    <span class="note" style="font-size:clamp(1.4rem,2.6vw,2.2rem)">Anvarbek Khaydarov</span>
+    <span class="hint" data-i18n data-en="mathematics" data-uz="matematika o‘qituvchisi"></span>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="ticks" id="ticks"></div>
+  <div class="arrows">
+    <button class="btn arrow" id="prev" type="button" aria-label="Previous">←</button>
+    <button class="btn arrow" id="next" type="button" aria-label="Next">→</button>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+/* ───────────── language ───────────── */
+var LANG = "en";
+try { var s = localStorage.getItem("wm-lang"); if (s === "uz" || s === "en") LANG = s; } catch (e) {}
+
+function tx(node, en, uz){ node.setAttribute("data-i18n",""); node.dataset.en = en; node.dataset.uz = uz; return node; }
+function T(en, uz){ return LANG === "uz" ? uz : en; }
+function paint(root){
+  var scope = root || document;
+  var list = Array.prototype.slice.call(scope.querySelectorAll("[data-i18n]"));
+  if (root && root.hasAttribute && root.hasAttribute("data-i18n")) list.unshift(root);
+  list.forEach(function(n){
+    var v = n.dataset[LANG]; if (v == null) return;
+    if (n instanceof SVGElement) n.textContent = v.replace(/<[^>]+>/g, ""); else n.innerHTML = v;
+  });
+  langBtn.textContent = LANG === "uz" ? "ENGLISH" : "O‘ZBEKCHA";
+  langBtn.setAttribute("aria-pressed", LANG === "uz" ? "true" : "false");
+  document.documentElement.lang = LANG;
+}
+var langBtn = document.getElementById("lang");
+langBtn.addEventListener("click", function(){
+  LANG = LANG === "uz" ? "en" : "uz";
+  try { localStorage.setItem("wm-lang", LANG); } catch (e) {}
+  paint(); redrawAll();
+});
+
+function el(tag, cls, html){ var n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; }
+
+/* ───────────── deck ───────────── */
+var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+var at = 0, ticks = document.getElementById("ticks");
+document.getElementById("tot").textContent = slides.length;
+slides.forEach(function(_, i){
+  var b = el("button", "tick"); b.type = "button";
+  b.setAttribute("aria-label", "Slide " + (i + 1));
+  b.addEventListener("click", function(){ go(i); });
+  ticks.appendChild(b);
+});
+function go(i){
+  at = Math.max(0, Math.min(slides.length - 1, i));
+  slides.forEach(function(s, k){ s.classList.toggle("on", k === at); });
+  Array.prototype.forEach.call(ticks.children, function(t, k){
+    t.classList.toggle("here", k === at);
+    t.classList.toggle("done", k < at);
+  });
+  document.getElementById("cur").textContent = at + 1;
+  window.scrollTo(0, 0);
+  try { localStorage.setItem("wm-at", String(at)); } catch (e) {}
+}
+document.getElementById("next").addEventListener("click", function(){ go(at + 1); });
+document.getElementById("prev").addEventListener("click", function(){ go(at - 1); });
+document.addEventListener("keydown", function(e){
+  var t = e.target.tagName;
+  if (t === "INPUT" || t === "TEXTAREA") { if (e.key !== "Escape") return; }
+  if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); go(at + 1); }
+  else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); go(at - 1); }
+  else if (e.key === "Home") go(0);
+  else if (e.key === "End") go(slides.length - 1);
+});
+var tsx = 0, tsy = 0;
+document.addEventListener("touchstart", function(e){ tsx = e.changedTouches[0].clientX; tsy = e.changedTouches[0].clientY; }, {passive:true});
+document.addEventListener("touchend", function(e){
+  var dx = e.changedTouches[0].clientX - tsx, dy = e.changedTouches[0].clientY - tsy;
+  if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.8) go(at + (dx < 0 ? 1 : -1));
+}, {passive:true});
+document.getElementById("full").addEventListener("click", function(){
+  if (document.fullscreenElement) document.exitFullscreen();
+  else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+});
+
+/* ───────────── 01 · poll ───────────── */
+var POLL = [
+  { en: "A lot — I know I need it", uz: "Juda ko‘p — kerakligini bilaman" },
+  { en: "Some parts of it, maybe", uz: "Ba’zi qismlari, balki" },
+  { en: "Only until the exam is over", uz: "Faqat imtihon tugaguncha" },
+  { en: "Honestly? None of it", uz: "Rostini aytsam — umuman kerak emas" }
+];
+var counts = [0, 0, 0, 0], pollBox = document.getElementById("poll"), pollBars = [], pollNums = [];
+POLL.forEach(function(o, i){
+  var row = el("div", "row");
+  var key = el("span", "key mono", String.fromCharCode(65 + i));
+  key.style.color = "var(--faint)"; key.style.width = "18px";
+  var lab = tx(el("span"), o.en, o.uz);
+  lab.style.flex = "0 0 clamp(150px,26%,260px)";
+  var track = el("div", "bar-track"), fill = el("div", "bar-fill");
+  track.appendChild(fill); pollBars.push(fill);
+  var num = el("b", "mono", "0"); num.style.width = "34px"; num.style.textAlign = "right"; pollNums.push(num);
+  var minus = el("button", "btn", "−"); minus.type = "button"; minus.setAttribute("aria-label", "minus");
+  var plus = el("button", "btn", "+"); plus.type = "button"; plus.setAttribute("aria-label", "plus");
+  minus.addEventListener("click", function(){ counts[i] = Math.max(0, counts[i] - 1); drawPoll(); });
+  plus.addEventListener("click", function(){ counts[i]++; drawPoll(); });
+  [key, lab, track, num, minus, plus].forEach(function(n){ row.appendChild(n); });
+  pollBox.appendChild(row);
+});
+function drawPoll(){
+  var max = Math.max(1, Math.max.apply(null, counts));
+  counts.forEach(function(c, i){ pollBars[i].style.width = (c / max * 100) + "%"; pollNums[i].textContent = c; });
+}
+document.getElementById("pollReset").addEventListener("click", function(){ counts = [0,0,0,0]; drawPoll(); });
+drawPoll();
+
+/* ───────────── 04 · memory drill ───────────── */
+var round = 1, target = "", shown = "";
+var dShow = document.getElementById("drillShow"), dGo = document.getElementById("drillGo"),
+    dIn = document.getElementById("drillIn"), dChk = document.getElementById("drillCheck"),
+    dOut = document.getElementById("drillOut"), dMoral = document.getElementById("drillMoral");
+function digits(n){ var s = ""; for (var i = 0; i < n; i++) s += Math.floor(Math.random() * 10); return s; }
+dGo.addEventListener("click", function(){
+  target = digits(8);
+  shown = round === 1 ? target : target.slice(0,2) + " " + target.slice(2,5) + " " + target.slice(5);
+  dShow.textContent = shown; dOut.classList.remove("show");
+  dIn.value = ""; dIn.disabled = true; dChk.disabled = true; dGo.disabled = true;
+  setTimeout(function(){
+    dShow.textContent = "· · · · · · · ·";
+    dIn.disabled = false; dChk.disabled = false; dIn.focus();
+  }, 4000);
+});
+dChk.addEventListener("click", function(){
+  var got = dIn.value.replace(/\D/g, ""), ok = got === target;
+  dOut.className = "verdict show";
+  dOut.innerHTML = (ok ? "<b style='color:var(--good)'>" + T("Correct.", "To‘g‘ri.") + "</b> " : "<b style='color:var(--pen)'>" + T("Not quite — it was ", "Deyarli — bu edi: ") + target + ".</b> ")
+    + (round === 1
+        ? T("Round 1 was eight loose digits. Now watch what one change does.", "1-bosqichda sakkizta tarqoq raqam edi. Endi bitta o‘zgarish nima qilishini ko‘ring.")
+        : T("Round 2 was the same eight digits — grouped.", "2-bosqichda o‘sha sakkizta raqam edi — guruhlangan."));
+  dGo.disabled = false;
+  if (round === 1) {
+    round = 2;
+    tx(dGo, "SHOW · ROUND 2", "KO‘RSATISH · 2-BOSQICH"); paint(dGo.parentNode);
+  } else {
+    dMoral.style.display = "";
+  }
+});
+
+/* ───────────── 05 · five tools ───────────── */
+var TOOLS = [
+  { t:{en:"Breaking it down",uz:"Bo‘laklarga ajratish"}, s:{en:"A big problem is never solved. Small ones are.",uz:"Katta masala hech qachon yechilmaydi. Kichiklari yechiladi."},
+    c:{en:"Splitting one hard equation into three easy steps.",uz:"Bitta qiyin tenglamani uchta oson qadamga bo‘lish."},
+    l:{en:"Planning a wedding, a business, a trip, a repair — anything with more than four moving parts.",uz:"To‘y, biznes, sayohat, ta’mir rejalashtirish — to‘rttadan ko‘p qismi bor har qanday ish."} },
+  { t:{en:"Saying exactly what you mean",uz:"Aniq gapirish"}, s:{en:"“Almost” and “about” are where money and trust get lost.",uz:"“Deyarli” va “taxminan” — pul va ishonch yo‘qoladigan joy."},
+    c:{en:"A definition. An “if … then”. One misplaced sign and the whole answer dies.",uz:"Ta’rif. “Agar … u holda”. Bitta noto‘g‘ri ishora — butun javob nobud."},
+    l:{en:"Contracts, arguments, instructions, a doctor’s dose, a message you cannot take back.",uz:"Shartnoma, bahs, ko‘rsatma, shifokor dozasi, qaytarib bo‘lmaydigan xabar."} },
+  { t:{en:"Seeing the pattern",uz:"Naqshni ko‘rish"}, s:{en:"Two problems that look different are usually the same problem.",uz:"Har xil ko‘ringan ikki masala, odatda, bitta masala."},
+    c:{en:"Recognising that this new question is last week’s question wearing a hat.",uz:"Bu yangi savol — o‘tgan haftaniki, faqat kiyimi boshqa, deb tanish."},
+    l:{en:"Why an experienced person solves in ten minutes what takes a beginner two days.",uz:"Tajribali odam nega yangi boshlovchining ikki kunlik ishini o‘n daqiqada bajaradi."} },
+  { t:{en:"“How do you know?”",uz:"“Qayerdan bilasan?”"}, s:{en:"The rarest skill in the world, and this is the only class that drills it.",uz:"Dunyodagi eng kam uchraydigan ko‘nikma, va uni faqat shu dars mashq qiladi."},
+    c:{en:"A proof. Not “the teacher said so” — a reason that would convince a stranger.",uz:"Isbot. “O‘qituvchi aytdi” emas — begonani ham ishontiradigan sabab."},
+    l:{en:"Adverts, loan offers, headlines, rumours, a “guaranteed” investment, a confident liar.",uz:"Reklama, kredit taklifi, sarlavha, mish-mish, “kafolatlangan” investitsiya, ishonchli yolg‘onchi."} },
+  { t:{en:"Being wrong without falling apart",uz:"Xato qilib, sinmaslik"}, s:{en:"Math is the safest place in your life to fail. Use it.",uz:"Matematika — hayotingizda xato qilish uchun eng xavfsiz joy. Foydalaning."},
+    c:{en:"Twenty crossed-out lines, then the answer. Every single mathematician works this way.",uz:"Yigirmata o‘chirilgan qator, keyin javob. Har bir matematik shunday ishlaydi."},
+    l:{en:"The first business that fails, the first interview you lose, the first year of anything.",uz:"Birinchi yopilgan biznes, birinchi yutqazilgan suhbat, har qanday ishning birinchi yili."} }
+];
+var toolBox = document.getElementById("tools");
+TOOLS.forEach(function(o, i){
+  var b = el("button", "card tool"); b.type = "button";
+  b.appendChild(el("span", "num", "0" + (i + 1)));
+  b.appendChild(tx(el("h3"), o.t.en, o.t.uz));
+  b.appendChild(tx(el("p"), o.s.en, o.s.uz));
+  var more = el("div", "more");
+  more.appendChild(tx(el("div"), "<b>In this room</b>" + o.c.en, "<b>Shu xonada</b>" + o.c.uz));
+  more.appendChild(tx(el("div"), "<b>Out there</b>" + o.l.en, "<b>Tashqarida</b>" + o.l.uz));
+  b.appendChild(more);
+  b.addEventListener("click", function(){ b.classList.toggle("open"); });
+  toolBox.appendChild(b);
+});
+
+/* ───────────── quizzes ───────────── */
+var QUIZ = {
+  pct: [
+    { en:"Exactly back to the old price", uz:"Aynan eski narxga qaytdi", ok:false,
+      w:{en:"That is what almost everyone answers — and it is the reason this trick works.",uz:"Deyarli hamma shunday javob beradi — bu hiyla shuning uchun ishlaydi."} },
+    { en:"You pay a little less than before", uz:"Avvalgidan bir oz kam to‘laysiz", ok:true,
+      w:{en:"Correct. 100 → 120 → 96. You save 4% — because the 20% off was taken from the bigger price, and the 20% on was added to the smaller one.",uz:"To‘g‘ri. 100 → 120 → 96. Siz 4% yutasiz — chunki 20% chegirma kattaroq narxdan olindi, 20% qo‘shimcha esa kichigiga qo‘shilgan edi."} },
+    { en:"You pay a little more than before", uz:"Avvalgidan bir oz ko‘p to‘laysiz", ok:false,
+      w:{en:"Close instinct — the order matters, you feel that. But run it: 100 × 1.2 × 0.8 = 96.",uz:"Sezgingiz yaqin — tartib muhimligini his qildingiz. Lekin hisoblang: 100 × 1,2 × 0,8 = 96."} }
+  ],
+  proof: [
+    { en:"Ice cream sales and drownings both rise every summer — so ice cream is dangerous.", uz:"Yozda muzqaymoq savdosi ham, cho‘kish hollari ham ko‘payadi — demak, muzqaymoq xavfli.", ok:false,
+      w:{en:"Two things moving together is not one causing the other. Something else moved both: heat. This mistake costs people money and health every day.",uz:"Ikki narsaning birga o‘zgarishi — biri ikkinchisini keltirib chiqardi degani emas. Ikkalasini uchinchi narsa harakatga keltirdi: issiq. Bu xato odamlarga har kuni pul va sog‘liq baholiga tushadi."} },
+    { en:"This medicine cured my neighbour, so it works.", uz:"Bu dori qo‘shnimga yordam berdi, demak u ishlaydi.", ok:false,
+      w:{en:"One person is not evidence — most illnesses end on their own. That is exactly why medicine tests on thousands and compares against a group that got nothing.",uz:"Bitta odam — dalil emas: kasalliklarning ko‘pi o‘z-o‘zidan tugaydi. Aynan shuning uchun dori minglab odamda sinaladi va hech narsa olmagan guruh bilan solishtiriladi."} },
+    { en:"In a room of 23 people, two of them probably share a birthday.", uz:"23 kishilik xonada ikkitasining tug‘ilgan kuni katta ehtimol bilan bir xil.", ok:true,
+      w:{en:"This one is proved — you can compute it exactly, and we will in a moment. It sounds the most absurd of the three, and it is the only one that is certain. That is the point: your feeling of “obvious” is not evidence.",uz:"Bu isbotlangan — uni aniq hisoblash mumkin, hozir hisoblaymiz ham. Uchtasidan eng bema’ni tuyuladi, lekin faqat shu aniq. Gap shunda: “ravshan-ku” degan tuyg‘u dalil emas."} }
+  ]
+};
+Object.keys(QUIZ).forEach(function(key){
+  var box = document.querySelector('[data-quiz="' + key + '"]');
+  var verdict = el("div", "verdict");
+  QUIZ[key].forEach(function(o, i){
+    var b = el("button", "opt"); b.type = "button";
+    b.appendChild(el("span", "key", String.fromCharCode(65 + i)));
+    b.appendChild(tx(el("span"), o.en, o.uz));
+    b.addEventListener("click", function(){
+      Array.prototype.forEach.call(box.querySelectorAll(".opt"), function(x){ x.disabled = true; });
+      QUIZ[key].forEach(function(oo, k){ if (oo.ok) box.querySelectorAll(".opt")[k].classList.add("correct"); });
+      if (!o.ok) b.classList.add("wrong");
+      tx(verdict, o.w.en, o.w.uz); paint(verdict); verdict.classList.add("show");
+    });
+    box.appendChild(b);
+  });
+  box.appendChild(verdict);
+});
+
+/* ───────────── 06 · percent slider ───────────── */
+var pR = document.getElementById("pctR");
+function drawPct(){
+  var p = +pR.value, end = 100 * (1 + p / 100) * (1 - p / 100), lost = 100 - end;
+  document.getElementById("pctV").textContent = p;
+  document.getElementById("pctEq").textContent = "100 × " + (1 + p / 100).toFixed(2) + " × " + (1 - p / 100).toFixed(2) + " = " + end.toFixed(2);
+  document.getElementById("pctOut").textContent = "−" + lost.toFixed(2) + "%";
+  document.getElementById("pctSay").textContent = T(
+    "Up " + p + "%, then down " + p + "% leaves you " + lost.toFixed(2) + "% below where you started. Always below. Never equal.",
+    p + "% oshirib, keyin " + p + "% tushirsangiz, boshlang‘ich narxdan " + lost.toFixed(2).replace(".", ",") + "% pastda qolasiz. Doim pastda. Hech qachon teng emas."
+  );
+}
+pR.addEventListener("input", drawPct);
+
+/* ───────────── svg helpers ───────────── */
+var NS = "http://www.w3.org/2000/svg";
+function sv(name, attrs){
+  var n = document.createElementNS(NS, name);
+  for (var k in attrs) n.setAttribute(k, attrs[k]);
+  return n;
+}
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function money(v){
+  if (LANG === "uz") {
+    if (v >= 1e9) return (v / 1e9).toFixed(v < 1e10 ? 2 : 1).replace(".", ",") + " mlrd";
+    if (v >= 1e6) return (v / 1e6).toFixed(v < 1e7 ? 1 : 0).replace(".", ",") + " mln";
+    return Math.round(v / 1e3) + " ming";
+  }
+  if (v >= 1e9) return (v / 1e9).toFixed(v < 1e10 ? 2 : 1) + "bn";
+  if (v >= 1e6) return (v / 1e6).toFixed(v < 1e7 ? 1 : 0) + "M";
+  return Math.round(v / 1e3) + "K";
+}
+
+/* ───────────── 08 · savings ───────────── */
+var mA = document.getElementById("mA"), mY = document.getElementById("mY"), mR = document.getElementById("mR"),
+    mChart = document.getElementById("mChart");
+function fv(P, i, n){ return i === 0 ? P * n : P * ((Math.pow(1 + i, n) - 1) / i) * (1 + i); }
+function drawMoney(){
+  var P = +mA.value, Y = +mY.value, r = +mR.value, i = r / 100 / 12;
+  document.getElementById("mAv").textContent = money(P) + " so‘m";
+  document.getElementById("mYv").textContent = Y;
+  document.getElementById("mRv").textContent = r;
+  var pts = [], maxV = 0;
+  for (var y = 0; y <= Y; y++) {
+    var m = y * 12, d = P * m, t = fv(P, i, m);
+    pts.push({ y: y, d: d, t: t }); if (t > maxV) maxV = t;
+  }
+  var last = pts[pts.length - 1];
+  document.getElementById("mIn").textContent = money(last.d);
+  document.getElementById("mInt").textContent = money(last.t - last.d);
+  document.getElementById("mTot").textContent = money(last.t) + " so‘m";
+
+  var W = 520, H = 300, L = 62, R = 78, Tp = 16, B = 34;
+  var X = function(y){ return L + (Y === 0 ? 0 : y / Y) * (W - L - R); };
+  var Yy = function(v){ return H - B - (maxV === 0 ? 0 : v / maxV) * (H - Tp - B); };
+  clear(mChart);
+
+  for (var g = 0; g <= 4; g++) {
+    var vv = maxV * g / 4, yy = Yy(vv);
+    mChart.appendChild(sv("line", { x1: L, x2: W - R, y1: yy, y2: yy, stroke: "var(--rule)", "stroke-width": 1 }));
+    var lb = sv("text", { x: L - 8, y: yy + 4, "text-anchor": "end", fill: "var(--faint)", "font-size": 11, "font-family": "JetBrains Mono, monospace" });
+    lb.textContent = g === 0 ? "0" : money(vv); mChart.appendChild(lb);
+  }
+  [0, Math.round(Y / 2), Y].forEach(function(y){
+    if (Y < 2 && y !== Y) return;
+    var t = sv("text", { x: X(y), y: H - 12, "text-anchor": "middle", fill: "var(--faint)", "font-size": 11, "font-family": "JetBrains Mono, monospace" });
+    t.textContent = y + (LANG === "uz" ? " y." : "y"); mChart.appendChild(t);
+  });
+
+  function area(key){
+    var d = "M" + X(0) + " " + Yy(0);
+    pts.forEach(function(p){ d += " L" + X(p.y).toFixed(1) + " " + Yy(p[key]).toFixed(1); });
+    d += " L" + X(Y) + " " + Yy(0) + " Z"; return d;
+  }
+  mChart.appendChild(sv("path", { d: area("t"), fill: "var(--sB)", "fill-opacity": .9 }));
+  mChart.appendChild(sv("path", { d: area("d"), fill: "var(--sA)", "fill-opacity": .95 }));
+  var dl = "M" + pts.map(function(p){ return X(p.y).toFixed(1) + " " + Yy(p.d).toFixed(1); }).join(" L");
+  mChart.appendChild(sv("path", { d: dl, fill: "none", stroke: "var(--panel)", "stroke-width": 2 }));
+
+  var midInt = (Yy(last.t) + Yy(last.d)) / 2, midDep = (Yy(last.d) + Yy(0)) / 2;
+  if (Yy(last.d) - Yy(last.t) > 16) {
+    var t1 = sv("text", { x: W - R + 8, y: midInt + 4, fill: "var(--sB)", "font-size": 11, "font-weight": 700, "font-family": "Karla, sans-serif" });
+    t1.textContent = T("interest", "foiz"); mChart.appendChild(t1);
+  }
+  if (Yy(0) - Yy(last.d) > 16) {
+    var t2 = sv("text", { x: W - R + 8, y: midDep + 4, fill: "var(--sA)", "font-size": 11, "font-weight": 700, "font-family": "Karla, sans-serif" });
+    t2.textContent = T("yours", "o‘zingiz"); mChart.appendChild(t2);
+  }
+
+  var hov = sv("g", { opacity: 0 });
+  var vline = sv("line", { y1: Tp, y2: H - B, stroke: "var(--ink)", "stroke-width": 1, "stroke-dasharray": "3 3", opacity: .5 });
+  var dot1 = sv("circle", { r: 4.5, fill: "var(--sA)", stroke: "var(--panel)", "stroke-width": 2 });
+  var dot2 = sv("circle", { r: 4.5, fill: "var(--sB)", stroke: "var(--panel)", "stroke-width": 2 });
+  var box = sv("rect", { rx: 6, fill: "var(--panel)", stroke: "var(--rule)", width: 118, height: 40 });
+  var l1 = sv("text", { "font-size": 11, "font-family": "JetBrains Mono, monospace", fill: "var(--ink)", "font-weight": 700 });
+  var l2 = sv("text", { "font-size": 11, "font-family": "JetBrains Mono, monospace", fill: "var(--graphite)" });
+  [vline, box, l1, l2, dot1, dot2].forEach(function(n){ hov.appendChild(n); });
+  mChart.appendChild(hov);
+  var hit = sv("rect", { x: L, y: Tp, width: W - L - R, height: H - Tp - B, fill: "transparent", style: "cursor:crosshair" });
+  mChart.appendChild(hit);
+  hit.addEventListener("pointermove", function(e){
+    var bb = mChart.getBoundingClientRect(), px = (e.clientX - bb.left) / bb.width * W;
+    var y = Math.max(0, Math.min(Y, Math.round((px - L) / (W - L - R) * Y))), p = pts[y];
+    hov.setAttribute("opacity", 1);
+    vline.setAttribute("x1", X(y)); vline.setAttribute("x2", X(y));
+    dot1.setAttribute("cx", X(y)); dot1.setAttribute("cy", Yy(p.d));
+    dot2.setAttribute("cx", X(y)); dot2.setAttribute("cy", Yy(p.t));
+    var bx = Math.min(W - R - 118, Math.max(L, X(y) - 59));
+    box.setAttribute("x", bx); box.setAttribute("y", Tp + 2);
+    l1.setAttribute("x", bx + 9); l1.setAttribute("y", Tp + 19);
+    l2.setAttribute("x", bx + 9); l2.setAttribute("y", Tp + 34);
+    l1.textContent = (LANG === "uz" ? y + "-yil: " : "Year " + y + ": ") + money(p.t);
+    l2.textContent = money(p.d) + " + " + money(p.t - p.d);
+  });
+  hit.addEventListener("pointerleave", function(){ hov.setAttribute("opacity", 0); });
+}
+[mA, mY, mR].forEach(function(n){ n.addEventListener("input", drawMoney); });
+
+/* ───────────── 09 · birthdays ───────────── */
+var bR = document.getElementById("bR"), bChart = document.getElementById("bChart");
+function pShare(n){ var q = 1; for (var k = 1; k < n; k++) q *= (365 - k) / 365; return 1 - q; }
+var bClassBtn = document.getElementById("bClass");
+var bWrap = el("div", "row");
+var bNum = document.createElement("input");
+bNum.type = "number"; bNum.min = 2; bNum.max = 70; bNum.value = 28; bNum.style.maxWidth = "110px";
+bClassBtn.parentNode.insertBefore(bWrap, bClassBtn);
+bWrap.appendChild(bNum); bWrap.appendChild(bClassBtn);
+bClassBtn.addEventListener("click", function(){
+  var v = Math.max(2, Math.min(70, +bNum.value || 28));
+  bR.value = v; drawBirthday();
+});
+function drawBirthday(){
+  var n = +bR.value, p = pShare(n);
+  document.getElementById("bNv").textContent = n;
+  document.getElementById("bOut").textContent = (p * 100).toFixed(1).replace(".", LANG === "uz" ? "," : ".") + "%";
+  var pairs = n * (n - 1) / 2;
+  document.getElementById("bSay").textContent = T(
+    n + " people make " + pairs + " different pairs — and every single pair gets a chance to match.",
+    n + " kishi " + pairs + " ta har xil juft hosil qiladi — va har bir juftga mos kelish imkoni beriladi."
+  );
+  var W = 520, H = 300, L = 46, R = 22, Tp = 18, B = 34, N0 = 2, N1 = 70;
+  var X = function(v){ return L + (v - N0) / (N1 - N0) * (W - L - R); };
+  var Yy = function(v){ return H - B - v * (H - Tp - B); };
+  clear(bChart);
+  [0, .25, .5, .75, 1].forEach(function(v){
+    bChart.appendChild(sv("line", { x1: L, x2: W - R, y1: Yy(v), y2: Yy(v), stroke: "var(--rule)", "stroke-width": 1 }));
+    var t = sv("text", { x: L - 8, y: Yy(v) + 4, "text-anchor": "end", fill: "var(--faint)", "font-size": 11, "font-family": "JetBrains Mono, monospace" });
+    t.textContent = (v * 100) + "%"; bChart.appendChild(t);
+  });
+  [10, 23, 40, 60].forEach(function(v){
+    var t = sv("text", { x: X(v), y: H - 12, "text-anchor": "middle", fill: "var(--faint)", "font-size": 11, "font-family": "JetBrains Mono, monospace" });
+    t.textContent = v; bChart.appendChild(t);
+  });
+  bChart.appendChild(sv("line", { x1: L, x2: W - R, y1: Yy(.5), y2: Yy(.5), stroke: "var(--graphite)", "stroke-width": 1, "stroke-dasharray": "4 4", opacity: .7 }));
+  var ln = [], ar = "M" + L + " " + Yy(0);
+  for (var v = N0; v <= N1; v++) { var yv = pShare(v); ln.push(X(v).toFixed(1) + " " + Yy(yv).toFixed(1)); ar += " L" + X(v).toFixed(1) + " " + Yy(yv).toFixed(1); }
+  ar += " L" + X(N1) + " " + Yy(0) + " Z";
+  bChart.appendChild(sv("path", { d: ar, fill: "var(--pen)", "fill-opacity": .1 }));
+  bChart.appendChild(sv("path", { d: "M" + ln.join(" L"), fill: "none", stroke: "var(--pen)", "stroke-width": 2, "stroke-linejoin": "round" }));
+  bChart.appendChild(sv("circle", { cx: X(n), cy: Yy(p), r: 6, fill: "var(--pen)", stroke: "var(--panel)", "stroke-width": 2 }));
+  var lab = sv("text", { x: Math.min(W - R - 4, X(n) + 12), y: Math.max(Tp + 12, Yy(p) - 12), fill: "var(--ink)", "font-size": 13, "font-weight": 700, "font-family": "JetBrains Mono, monospace", "text-anchor": X(n) > W - 130 ? "end" : "start" });
+  if (X(n) > W - 130) lab.setAttribute("x", X(n) - 12);
+  lab.textContent = n + " → " + Math.round(p * 100) + "%";
+  bChart.appendChild(lab);
+  var hit = sv("rect", { x: L, y: Tp, width: W - L - R, height: H - Tp - B, fill: "transparent", style: "cursor:ew-resize" });
+  bChart.appendChild(hit);
+  function pick(e){
+    var bb = bChart.getBoundingClientRect(), px = (e.clientX - bb.left) / bb.width * W;
+    bR.value = Math.max(N0, Math.min(N1, Math.round(N0 + (px - L) / (W - L - R) * (N1 - N0))));
+    drawBirthday();
+  }
+  hit.addEventListener("pointerdown", function(e){ hit.setPointerCapture(e.pointerId); pick(e); });
+  hit.addEventListener("pointermove", function(e){ if (e.buttons) pick(e); });
+}
+bR.addEventListener("input", drawBirthday);
+
+/* ───────────── 10 · careers ───────────── */
+var AREA = [
+  { k: "pct",  en: "Arithmetic & percent", uz: "Arifmetika va foiz" },
+  { k: "stat", en: "Statistics & data",    uz: "Statistika va ma’lumot" },
+  { k: "geom", en: "Geometry & trig",      uz: "Geometriya va trigonometriya" },
+  { k: "calc", en: "Calculus (integrals)", uz: "Oliy matematika (integral)" }
+];
+var LVL = [
+  { cls: "pill no",  en: "not really", uz: "deyarli yo‘q" },
+  { cls: "pill mid", en: "sometimes",  uz: "ba’zan" },
+  { cls: "pill hot", en: "daily",      uz: "har kuni" }
+];
+var JOBS = [
+  { en:"Nurse", uz:"Hamshira", v:{pct:2,stat:1,geom:0,calc:0},
+    n:{en:"Dose per kilo of body weight, drip rate per minute, a 5% solution. An arithmetic slip here is not a bad grade — it is a patient.",uz:"Tana vazniga qarab doza, daqiqasiga tomchi, 5% eritma. Bu yerdagi arifmetik xato — yomon baho emas, bemor."} },
+  { en:"Chef", uz:"Oshpaz", v:{pct:2,stat:1,geom:1,calc:0},
+    n:{en:"Scaling a recipe from 8 people to 60, food cost as a percent of the price, how much more a 30 cm pan holds than a 24 cm one.",uz:"8 kishilik retseptni 60 kishiga ko‘chirish, taom tannarxining narxdagi foizi, 30 sm qozon 24 smdan qancha ko‘p sig‘dirishi."} },
+  { en:"Driver", uz:"Haydovchi", v:{pct:2,stat:1,geom:1,calc:0},
+    n:{en:"Fuel per 100 km, commission percent, time–distance–speed, and whether this load actually fits in this space.",uz:"100 km ga yoqilg‘i, komissiya foizi, vaqt–masofa–tezlik va bu yuk shu joyga sig‘adimi."} },
+  { en:"Farmer", uz:"Fermer", v:{pct:2,stat:1,geom:2,calc:0},
+    n:{en:"Area of a field that is not a rectangle, fertiliser per hectare, yield compared with last year — and the interest on the equipment loan.",uz:"To‘g‘ri to‘rtburchak bo‘lmagan dala yuzasi, gektariga o‘g‘it, o‘tgan yilga nisbatan hosil — va texnika krediti foizi."} },
+  { en:"Business owner", uz:"Tadbirkor", v:{pct:2,stat:2,geom:0,calc:1},
+    n:{en:"Margin, break-even, cash flow, loan interest. Most businesses that close did not fail at cooking or sewing. They failed at arithmetic.",uz:"Ustama, zararsizlik nuqtasi, pul aylanmasi, kredit foizi. Yopilgan bizneslarning ko‘pi ovqat pishirish yoki tikuvda yiqilmagan — arifmetikada yiqilgan."} },
+  { en:"Programmer", uz:"Dasturchi", v:{pct:1,stat:2,geom:1,calc:1},
+    n:{en:"Logic and proof every single day, the cost of an algorithm, statistics for anything with data. Calculus only if you go into graphics or machine learning.",uz:"Har kuni mantiq va isbot, algoritm narxi, ma’lumot bilan ishlaganda statistika. Integral faqat grafika yoki sun’iy intellektga borsangiz."} },
+  { en:"Game developer", uz:"O‘yin dasturchisi", v:{pct:1,stat:1,geom:2,calc:2},
+    n:{en:"Vectors and trigonometry all day — every jump, every camera turn, every ray of light. The physics engine is calculus wearing a costume.",uz:"Kun bo‘yi vektor va trigonometriya — har sakrash, har kamera burilishi, har nur. Fizika dvigateli — niqob kiygan integral."} },
+  { en:"Architect", uz:"Arxitektor", v:{pct:1,stat:1,geom:2,calc:1},
+    n:{en:"Geometry and trigonometry constantly: angles, slopes, areas, loads. Calculus turns up as soon as the structure gets serious.",uz:"Doimiy geometriya va trigonometriya: burchak, qiyalik, yuza, yuklama. Konstruksiya jiddiylashishi bilan integral ham keladi."} },
+  { en:"Engineer", uz:"Muhandis", v:{pct:1,stat:2,geom:2,calc:2},
+    n:{en:"This is where the integral moves in and never leaves: bridges, motors, circuits, water, heat, sound. Yes — you were asking about this one.",uz:"Integral aynan shu yerga ko‘chib keladi va ketmaydi: ko‘prik, motor, elektr sxema, suv, issiqlik, tovush. Ha — siz aynan buni so‘rayotgan edingiz."} },
+  { en:"Doctor", uz:"Shifokor", v:{pct:2,stat:2,geom:0,calc:0},
+    n:{en:"Probability <em>is</em> diagnosis: a positive test is not a verdict, it moves the odds. And you must read research without being fooled by it.",uz:"Ehtimollik — bu tashxisning o‘zi: musbat tahlil hukm emas, u ehtimolni o‘zgartiradi. Va tadqiqotlarni aldanish qilmay o‘qish kerak."} },
+  { en:"Journalist", uz:"Jurnalist", v:{pct:2,stat:2,geom:0,calc:0},
+    n:{en:"Almost every lie in public life is a percentage or a chart. Your whole value is being the person who does not repeat it.",uz:"Ommaviy hayotdagi yolg‘onning deyarli hammasi — foiz yoki grafik. Sizning butun qiymatingiz — uni takrorlamaydigan odam bo‘lish."} },
+  { en:"Blogger", uz:"Bloger", v:{pct:2,stat:2,geom:1,calc:0},
+    n:{en:"Revenue share, growth rate, what your analytics actually say, and why one post going viral is not yet a trend.",uz:"Daromad ulushi, o‘sish sur’ati, analitikangiz aslida nima deyayotgani va nega bitta viral post hali tendensiya emas."} }
+];
+var jobsBox = document.getElementById("jobs"), jobCard = document.getElementById("jobCard"), jobAt = -1;
+JOBS.forEach(function(j, i){
+  var b = el("button", "tag"); b.type = "button";
+  tx(b, j.en, j.uz);
+  b.setAttribute("aria-pressed", "false");
+  b.addEventListener("click", function(){ jobAt = i; drawJob(); });
+  jobsBox.appendChild(b);
+});
+function drawJob(){
+  Array.prototype.forEach.call(jobsBox.children, function(b, k){ b.setAttribute("aria-pressed", k === jobAt ? "true" : "false"); });
+  if (jobAt < 0) { jobCard.className = "card job"; return; }
+  var j = JOBS[jobAt];
+  clear(jobCard); jobCard.className = "card job on";
+  jobCard.appendChild(tx(el("h3"), j.en, j.uz));
+  var row = el("div", "row");
+  AREA.forEach(function(a){
+    var lv = LVL[j.v[a.k]], p = el("span", lv.cls);
+    p.textContent = T(a.en, a.uz) + " — " + T(lv.en, lv.uz);
+    row.appendChild(p);
+  });
+  jobCard.appendChild(row);
+  jobCard.appendChild(tx(el("p"), j.n.en, j.n.uz));
+  paint(jobCard);
+}
+(function(){
+  var c = { pct: 0, stat: 0, geom: 0, calc: 0 };
+  JOBS.forEach(function(j){ ["pct","stat","geom","calc"].forEach(function(k){ if (j.v[k] >= 1) c[k]++; }); });
+  var box = document.getElementById("jobTally");
+  box.appendChild(tx(el("span"),
+    "In these " + JOBS.length + " jobs — arithmetic &amp; percent: <b>" + c.pct + "/" + JOBS.length + "</b> · statistics: <b>" + c.stat + "/" + JOBS.length + "</b> · calculus: <b>" + c.calc + "/" + JOBS.length + "</b>",
+    "Shu " + JOBS.length + " kasbda — arifmetika va foiz: <b>" + c.pct + "/" + JOBS.length + "</b> · statistika: <b>" + c.stat + "/" + JOBS.length + "</b> · oliy matematika: <b>" + c.calc + "/" + JOBS.length + "</b>"));
+  box.parentNode.appendChild(tx(el("p", "lede"),
+    "So you were half right. The integral is for <b>some</b> of you. The percent is for <b>all</b> of you — and today nobody in this room knows which list they are on.",
+    "Demak, siz yarim haqsiz. Integral — <b>ba’zilaringiz</b> uchun. Foiz — <b>hammangiz</b> uchun. Va bugun bu xonada kim qaysi ro‘yxatda ekanini hech kim bilmaydi."));
+})();
+
+/* ───────────── 12 · reframes ───────────── */
+var FLIPS = [
+  { a:{en:"“I’m not a math person.”",uz:"“Men matematikachi emasman.”"}, b:{en:"“I have not learned this <em>yet</em>.”",uz:"“Men buni <em>hali</em> o‘rganmadim.”"} },
+  { a:{en:"“I’m slow, so I’m bad at it.”",uz:"“Men sekinman, demak yomonman.”"}, b:{en:"“Slow is not wrong. Understanding has no speed limit.”",uz:"“Sekin — noto‘g‘ri degani emas. Tushunishning tezlik chegarasi yo‘q.”"} },
+  { a:{en:"“I got it wrong. I’m stupid.”",uz:"“Xato qildim. Men ahmoqman.”"}, b:{en:"“I got it wrong — now I know one way that does not work.”",uz:"“Xato qildim — endi ishlamaydigan bitta yo‘lni bilaman.”"} }
+];
+var flipBox = document.getElementById("flips");
+FLIPS.forEach(function(f){
+  var b = el("button", "card tool"); b.type = "button";
+  var top = tx(el("h3"), f.a.en, f.a.uz);
+  top.style.color = "var(--pen)";
+  var bot = tx(el("h3"), f.b.en, f.b.uz);
+  bot.style.color = "var(--good)"; bot.style.display = "none";
+  var hint = tx(el("span", "hint"), "tap to fix", "bosib to‘g‘rilang");
+  b.appendChild(top); b.appendChild(bot); b.appendChild(hint);
+  b.addEventListener("click", function(){
+    var on = top.style.display === "none";
+    top.style.display = on ? "" : "none";
+    bot.style.display = on ? "none" : "";
+    tx(hint, on ? "tap to fix" : "…that is all it takes", on ? "bosib to‘g‘rilang" : "…hammasi shu");
+    paint(hint);
+  });
+  flipBox.appendChild(b);
+});
+
+/* ───────────── 13 · Gauss ───────────── */
+var gClock = document.getElementById("gClock"), gOut = document.getElementById("gOut"),
+    gPairs = document.getElementById("gPairs"), gTimer = null, gLeft = 60;
+document.getElementById("gGo").addEventListener("click", function(){
+  clearInterval(gTimer); gLeft = 60; gClock.textContent = gLeft;
+  gTimer = setInterval(function(){
+    gLeft--; gClock.textContent = gLeft;
+    if (gLeft <= 0) { clearInterval(gTimer); gClock.textContent = "0"; }
+  }, 1000);
+});
+document.getElementById("gCheck").addEventListener("click", function(){
+  clearInterval(gTimer);
+  var v = +document.getElementById("gIn").value;
+  gOut.className = "verdict show";
+  gOut.innerHTML = v === 5050
+    ? "<b style='color:var(--good)'>" + T("5050. Correct.", "5050. To‘g‘ri.") + "</b> " + T("Now the real question: did you add, or did you find a shortcut?", "Endi asl savol: qo‘shdingizmi yoki qisqa yo‘l topdingizmi?")
+    : "<b style='color:var(--pen)'>" + T("The answer is 5050.", "Javob — 5050.") + "</b> " + T("Nobody expects you to add 100 numbers in a minute. Watch what he did instead.", "Hech kim sizdan 100 ta sonni bir daqiqada qo‘shishni kutmaydi. U nima qilganini ko‘ring.");
+  clear(gPairs);
+  var lines = ["1 + 100 = 101","2 + 99 = 101","3 + 98 = 101","4 + 97 = 101","…","50 + 51 = 101","","50 × 101 = 5050"];
+  lines.forEach(function(s, i){
+    if (s === "") return;
+    var c = el("span", null, s);
+    c.style.animationDelay = (i * 0.16) + "s";
+    if (i === lines.length - 1) { c.style.background = "var(--pen)"; c.style.color = "var(--paper)"; c.style.fontWeight = "700"; }
+    gPairs.appendChild(c);
+  });
+  document.getElementById("gMoral").style.display = "";
+});
+
+/* ───────────── 14 · the deal ───────────── */
+var PROMISES = [
+  {en:"I will never make you feel stupid for asking. Not once, not ever, not even for the question you think is too basic.",uz:"So‘raganingiz uchun sizni hech qachon ahmoq his qildirmayman. Bir marta ham, hatto “juda oddiy” deb o‘ylagan savolingiz uchun ham."},
+  {en:"For every topic I will tell you what it is actually for — or admit honestly that its only job is training your head.",uz:"Har bir mavzuda uning aslida nimaga kerakligini aytaman — yoki halol tan olaman: uning yagona vazifasi — miyangizni mashq qildirish."},
+  {en:"If my explanation does not reach you, I will find a second one. Then a third. That is my job, not your fault.",uz:"Tushuntirishim yetib bormasa, ikkinchisini topaman. Keyin uchinchisini. Bu — mening ishim, sizning aybingiz emas."},
+  {en:"I will not confuse “fast” with “clever” when I grade you.",uz:"Baho qo‘yishda “tez”ni “aqlli” bilan chalkashtirmayman."}
+];
+var ASKS = [
+  {en:"Try before you ask. One honest attempt — a wrong one is fine.",uz:"So‘rashdan oldin urinib ko‘ring. Bitta halol urinish — noto‘g‘ri bo‘lsa ham mayli."},
+  {en:"Then actually ask. The silent confused student is the only real failure in this room.",uz:"Keyin haqiqatan so‘rang. Jim o‘tirgan tushunmagan o‘quvchi — bu xonadagi yagona haqiqiy muvaffaqiyatsizlik."},
+  {en:"Write the steps, not just the answer. I cannot help a mind I cannot see.",uz:"Faqat javobni emas, qadamlarni yozing. Men ko‘rmagan fikrga yordam berolmayman."},
+  {en:"Be wrong out loud. That is how the whole class learns — usually more than from a correct answer.",uz:"Xatoni ovoz chiqarib ayting. Butun sinf shundan o‘rganadi — ko‘pincha to‘g‘ri javobdan ko‘ra ko‘proq."}
+];
+function deal(box, arr){
+  arr.forEach(function(o){
+    var l = el("label", "check"), i = document.createElement("input");
+    i.type = "checkbox";
+    var s = tx(el("span"), o.en, o.uz);
+    i.addEventListener("change", function(){ l.classList.toggle("done", i.checked); });
+    l.appendChild(i); l.appendChild(s); box.appendChild(l);
+  });
+}
+deal(document.getElementById("promises"), PROMISES);
+deal(document.getElementById("asks"), ASKS);
+
+/* ───────────── boot ───────────── */
+function redrawAll(){ drawPct(); drawMoney(); drawBirthday(); drawJob(); drawPoll(); }
+paint();
+redrawAll();
+go(0);
+window.addEventListener("resize", function(){ drawMoney(); drawBirthday(); });
+})();
+</script>
