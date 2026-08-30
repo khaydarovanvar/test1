@@ -6031,3 +6031,361 @@ G6_MAT.push({
     'A pupil scores ' + m('57') + ' out of ' + m('60') + '. Give the mark as a percentage.'
   ]
 });
+
+/* ============================== 34 ============================== */
+G6_MAT.push({
+  id: 'g6-34', stream: 'mat', grade: 6, quarter: 2, lessons: '71', hours: 1,
+  title: 'Think — Project 2: clock rectangles',
+  subtitle: 'A Cambridge project: the numbers on a clock face, boxed four at a time, and the pattern that appears.',
+  uz: 'Matematika 6, o‘ylab ko‘r', uzPage: 'pp. 203–205',
+  cam: 'S7 Project 2', camPage: 'Stage 7, project pages', wb: 'Project sheet 2',
+  objectives: [
+    'Collect data systematically from a simple arrangement.',
+    'Notice a pattern and state it in words.',
+    'Express the pattern with letters.',
+    'Test the statement on cases not yet tried.'
+  ],
+  terms: [
+    ['Clock face', 'Soat siferblati', 'Циферблат'],
+    ['Rectangle', 'To‘rtburchak', 'Прямоугольник'],
+    ['Diagonal', 'Diagonal', 'Диагональ'],
+    ['Pattern', 'Qonuniyat', 'Закономерность'],
+    ['Conjecture', 'Faraz', 'Гипотеза'],
+    ['To generalise', 'Umumlashtirish', 'Обобщить'],
+    ['Systematic', 'Tartibli', 'Систематический'],
+    ['Proof', 'Isbot', 'Доказательство']
+  ],
+  timing: [[8, 'The arrangement'], [12, 'Collecting the data'], [14, 'Stating the pattern'], [6, 'Explaining why']],
+  sections: [
+    {
+      h: 'The arrangement',
+      html: `<p>Write the numbers ${m('1')} to ${m('12')} in three rows of four, as on a calendar page:</p>
+      <div class="tablewrap"><table>
+      <tbody>
+        <tr><td class="m">1</td><td class="m">2</td><td class="m">3</td><td class="m">4</td></tr>
+        <tr><td class="m">5</td><td class="m">6</td><td class="m">7</td><td class="m">8</td></tr>
+        <tr><td class="m">9</td><td class="m">10</td><td class="m">11</td><td class="m">12</td></tr>
+      </tbody></table></div>
+      <p>Draw a rectangle round any four numbers that form a block — two rows and two columns — and
+      multiply each pair of opposite corners.</p>
+      <div class="keybox"><div class="klabel">The question</div>
+      What is the difference between the two products? Try several rectangles before deciding.</div>`
+    },
+    {
+      h: 'Collecting the data',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Rectangle</th><th>One diagonal</th><th>The other</th><th>Difference</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1, 2, 5, 6</td><td class="m">1 · 6 = 6</td><td class="m">2 · 5 = 10</td><td class="m">4</td></tr>
+        <tr><td class="m">2, 3, 6, 7</td><td class="m">2 · 7 = 14</td><td class="m">3 · 6 = 18</td><td class="m">4</td></tr>
+        <tr><td class="m">6, 7, 10, 11</td><td class="m">6 · 11 = 66</td><td class="m">7 · 10 = 70</td><td class="m">4</td></tr>
+        <tr><td class="m">3, 4, 7, 8</td><td class="m">3 · 8 = 24</td><td class="m">4 · 7 = 28</td><td class="m">4</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Be systematic, not random</div>
+      Working across the top row and then down catches every case and makes it obvious when the pattern
+      holds. Random examples leave gaps that hide exceptions.</div>`
+    },
+    {
+      h: 'Stating the pattern',
+      html: `<p>The difference is always ${m('4')}. Now say why, with letters: let the top-left number be
+      ${m('n')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Position</th><th>Number</th></tr></thead>
+      <tbody>
+        <tr><td>top left</td><td class="m">n</td></tr>
+        <tr><td>top right</td><td class="m">n + 1</td></tr>
+        <tr><td>bottom left</td><td class="m">n + 4</td></tr>
+        <tr><td>bottom right</td><td class="m">n + 5</td></tr>
+      </tbody></table></div>
+      ${eq(m('(n + 1)(n + 4) − n(n + 5) = n² + 5n + 4 − n² − 5n = 4'), true)}
+      <div class="keybox"><div class="klabel">The letters prove what the numbers suggested</div>
+      Four examples show a pattern; the algebra shows it must hold for every rectangle in the grid,
+      including ones nobody has tried.</div>`
+    },
+    {
+      h: 'Explaining why',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Grid width</th><th>Bottom-left is</th><th>The difference</th></tr></thead>
+      <tbody>
+        <tr><td class="m">4</td><td class="m">n + 4</td><td class="m">4</td></tr>
+        <tr><td class="m">5</td><td class="m">n + 5</td><td class="m">5</td></tr>
+        <tr><td class="m">7</td><td class="m">n + 7</td><td class="m">7</td></tr>
+        <tr><td class="m">w</td><td class="m">n + w</td><td class="m">w</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The difference is the width of the grid</div>
+      A calendar month, seven columns wide, gives a difference of ${m('7')} for every ${m('2 × 2')} block —
+      which is worth testing on a real calendar before the lesson ends.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Take the rectangle ' + m('6, 7, 10, 11') + '. Find the two products and their difference.',
+      steps: [
+        [m('6 · 11 = 66'), ''],
+        [m('7 · 10 = 70'), ''],
+        [m('70 − 66 = 4'), '']
+      ],
+      ans: m('4')
+    },
+    {
+      q: 'Prove that the difference is always ' + m('4') + ' in a grid four columns wide.',
+      steps: [
+        ['Let the top-left number be ' + m('n') + '.', ''],
+        ['The four numbers are ' + m('n, n + 1, n + 4, n + 5') + '.', ''],
+        [m('(n + 1)(n + 4) = n² + 5n + 4'), ''],
+        [m('n(n + 5) = n² + 5n') + ', so the difference is ' + m('4') + '.', '']
+      ],
+      ans: 'Always ' + m('4')
+    },
+    {
+      q: 'What would the difference be on a calendar, seven columns wide?',
+      steps: [
+        ['The bottom-left number is ' + m('n + 7') + '.', ''],
+        [m('(n + 1)(n + 7) = n² + 8n + 7'), ''],
+        [m('n(n + 8) = n² + 8n'), ''],
+        ['The difference is ' + m('7') + '.', '']
+      ],
+      ans: m('7')
+    }
+  ],
+  modelNote: 'Hand out real calendar pages and let the class discover the seven before any algebra; the general result then answers a question they have already asked.',
+  interactive: {
+    type: 'quiz',
+    title: 'The clock-rectangle pattern',
+    hint: 'Try it, state it, then prove it.',
+    items: [
+      { q: 'For ' + m('1, 2, 5, 6') + ' the difference is:', a: [m('2'), m('4'), m('6'), m('10')], c: 1, why: m('10 − 6') + '.' },
+      { q: 'For ' + m('6, 7, 10, 11') + ' the difference is:', a: [m('4'), m('6'), m('66'), m('70')], c: 0, why: m('70 − 66') + '.' },
+      { q: 'If the top left is ' + m('n') + ', the bottom right is:', a: [m('n + 4'), m('n + 5'), m('n + 1'), m('n + 6')], c: 1, why: 'One right and one down.' },
+      { q: m('(n + 1)(n + 4)') + ' equals:', a: [m('n² + 4'), m('n² + 5n + 4'), m('n² + 4n + 1'), m('n² + 5')], c: 1, why: 'Four products.' },
+      { q: m('n(n + 5)') + ' equals:', a: [m('n² + 5'), m('n² + 5n'), m('n + 5n'), m('5n²')], c: 1, why: 'Expand.' },
+      { q: 'So the difference is:', a: [m('n'), m('4'), m('5'), m('5n')], c: 1, why: 'Everything else cancels.' },
+      { q: 'On a seven-column calendar the difference is:', a: [m('4'), m('7'), m('12'), m('49')], c: 1, why: 'The width of the grid.' },
+      { q: 'Four examples showing the pattern are:', a: ['a proof', 'evidence for a conjecture', 'irrelevant', 'a counter-example'], c: 1, why: 'The algebra proves it.' }
+    ]
+  },
+  quiz: [
+    { q: 'In the ' + m('3 × 4') + ' grid the difference is always:', a: [m('2'), m('4'), m('5'), 'it varies'], c: 1, why: 'The grid width.' },
+    { q: 'With top left ' + m('n') + ', the bottom left is:', a: [m('n + 1'), m('n + 4'), m('n + 5'), m('n + 3')], c: 1, why: 'One row down.' },
+    { q: 'The proof needs:', a: ['more examples', 'letters', 'a calculator', 'a diagram only'], c: 1, why: 'Algebra covers every case.' },
+    { q: 'On a grid ' + m('w') + ' wide the difference is:', a: [m('4'), m('w'), m('2w'), m('w²')], c: 1, why: 'From the same expansion.' },
+    { q: 'A pattern seen in four cases is:', a: ['proved', 'a conjecture', 'false', 'a theorem'], c: 1, why: 'Until it is proved.' },
+    { q: 'Systematic data collection means:', a: ['random examples', 'working in order', 'one example', 'guessing'], c: 1, why: 'Nothing is missed.' }
+  ],
+  practice: {
+    easy: [
+      ['The difference for ' + m('1, 2, 5, 6'), m('4')],
+      ['The difference for ' + m('2, 3, 6, 7'), m('4')],
+      ['The difference for ' + m('3, 4, 7, 8'), m('4')],
+      ['The difference for ' + m('6, 7, 10, 11'), m('4')],
+      ['With top left ' + m('n') + ', the top right', m('n + 1')],
+      ['The bottom left', m('n + 4')],
+      ['The bottom right', m('n + 5')]
+    ],
+    med: [
+      [m('(n + 1)(n + 4)') + ' expanded', m('n² + 5n + 4')],
+      [m('n(n + 5)') + ' expanded', m('n² + 5n')],
+      ['Their difference', m('4')],
+      ['On a five-column grid', m('5')],
+      ['On a calendar (seven columns)', m('7')],
+      ['On a grid ' + m('w') + ' columns wide', m('w')],
+      ['Is the pattern proved by four examples?', 'No — they are evidence only']
+    ],
+    hard: [
+      ['A ' + m('3 × 3') + ' block on a seven-column calendar: the corner difference', m('28')],
+      ['Why does the ' + m('n²') + ' term always cancel?', 'Both products have the same leading term'],
+      ['Predict the difference on a ten-column grid', m('10')],
+      ['Test the prediction with ' + m('n = 3') + ' on a ten-column grid', m('4 · 13 − 3 · 14 = 10') + ' ✓'],
+      ['What would happen with a ' + m('2 × 3') + ' block on a four-column grid?', 'The difference becomes ' + m('8')],
+      ['Write the four numbers of a block with bottom right ' + m('n'), m('n − 5, n − 4, n − 1, n')],
+      ['Why is algebra better than more examples here?', 'It settles every case at once, including untried ones']
+    ]
+  },
+  hwTitle: 'Homework — the project',
+  hwNote: 'One page: your data table, the pattern in words, the algebra, and one prediction tested.',
+  homework: [
+    'Draw the ' + m('3 × 4') + ' grid and test six different rectangles.',
+    'Record your results in a table and state the pattern in one sentence.',
+    'Prove the pattern using ' + m('n') + ' for the top-left number.',
+    'Repeat the investigation on a real calendar month and record what happens.',
+    'Predict the difference on a grid ' + m('9') + ' columns wide, then test your prediction.'
+  ]
+});
+
+/* ============================== 35 ============================== */
+G6_MAT.push({
+  id: 'g6-35', stream: 'mat', grade: 6, quarter: 2, lessons: '72–73', hours: 2,
+  title: 'Revision — percentages',
+  subtitle: 'The three questions, the multiplier and the reverse case, gathered before the control work.',
+  uz: 'Matematika 6, takrorlash', uzPage: 'pp. 206–210',
+  cam: 'S7 10 consolidation', camPage: 'Stage 7, pp. 96–104', wb: 'Revision 10',
+  objectives: [
+    'Choose the right method for each kind of percentage question.',
+    'Work with increases, decreases and successive changes.',
+    'Solve the reverse question reliably.',
+    'Identify the errors that remain.'
+  ],
+  terms: [
+    ['Percentage', 'Foiz', 'Процент'],
+    ['Multiplier', 'Ko‘paytuvchi', 'Множитель'],
+    ['Increase', 'Ortish', 'Увеличение'],
+    ['Decrease', 'Kamayish', 'Уменьшение'],
+    ['Original value', 'Boshlang‘ich qiymat', 'Первоначальное значение'],
+    ['Percentage change', 'Foizli o‘zgarish', 'Процентное изменение'],
+    ['Successive', 'Ketma-ket', 'Последовательный'],
+    ['Check', 'Tekshirish', 'Проверка']
+  ],
+  timing: [[20, 'The methods on one page'], [25, 'Worked mixture'], [25, 'The errors that remain'], [8, 'A last check'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'The methods on one page',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Method</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>a percentage of an amount</td><td>multiply by the decimal</td><td class="m">0.35 · 240 = 84</td></tr>
+        <tr><td>the whole from a part</td><td>divide by the decimal</td><td class="m">84 ÷ 0.35 = 240</td></tr>
+        <tr><td>one amount as a percentage of another</td><td class="m">${f('part', 'whole')} · 100</td><td class="m">${f('84', '240')} · 100 = 35%</td></tr>
+        <tr><td>increase or decrease</td><td class="m">· (1 ± ${f('p', '100')})</td><td class="m">240 · 1.35 = 324</td></tr>
+        <tr><td>the original after a change</td><td>divide by the multiplier</td><td class="m">324 ÷ 1.35 = 240</td></tr>
+        <tr><td>successive changes</td><td>multiply the multipliers</td><td class="m">1.2 · 0.8 = 0.96</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Six rows, and the whole topic</div>
+      Every percentage question in the paper is one of these. Read the wording, pick the row, do the one
+      operation it names.</div>`
+    },
+    {
+      h: 'Worked mixture',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Row</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('18%')} of ${m('350')}</td><td>first</td><td class="m">63</td></tr>
+        <tr><td>${m('63')} is ${m('18%')} of what?</td><td>second</td><td class="m">350</td></tr>
+        <tr><td>${m('63')} as a percentage of ${m('350')}</td><td>third</td><td class="m">18%</td></tr>
+        <tr><td>increase ${m('350')} by ${m('18%')}</td><td>fourth</td><td class="m">413</td></tr>
+        <tr><td>after ${m('+18%')} it is ${m('413')}: before</td><td>fifth</td><td class="m">350</td></tr>
+        <tr><td>up ${m('18%')}, then down ${m('18%')}</td><td>sixth</td><td class="m">−3.24%</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One set of numbers, all six questions</div>
+      Seeing ${m('63')}, ${m('350')} and ${m('18%')} arranged six ways is the fastest way to stop confusing
+      the questions with each other.</div>`
+    },
+    {
+      h: 'The errors that remain',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Error</th><th>Looks like</th><th>Correct</th></tr></thead>
+      <tbody>
+        <tr><td>dividing by the new value</td><td class="m">${f('10', '50')} for 40 → 50</td><td class="m">${f('10', '40')} = 25%</td></tr>
+        <tr><td>subtracting instead of dividing</td><td class="m">96 000 − 19 200</td><td class="m">96 000 ÷ 1.2</td></tr>
+        <tr><td>adding successive percentages</td><td class="m">+20% + 10% = +30%</td><td class="m">+32%</td></tr>
+        <tr><td>a percentage over ${m('100')} rejected</td><td>“that must be wrong”</td><td>it is possible</td></tr>
+        <tr><td>profit taken on the selling price</td><td class="m">${f('10 000', '50 000')}</td><td class="m">${f('10 000', '40 000')}</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'A last check',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Answer</th><th>Sense check</th></tr></thead>
+      <tbody>
+        <tr><td>a part</td><td>smaller than the whole, unless the percentage is over ${m('100')}</td></tr>
+        <tr><td>the whole from a part</td><td>larger than the part</td></tr>
+        <tr><td>after an increase</td><td>larger than before</td></tr>
+        <tr><td>after a decrease</td><td>smaller than before</td></tr>
+        <tr><td>a reverse question</td><td>multiply forwards and see</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The sense check costs nothing</div>
+      Most lost marks in this topic are answers that are obviously the wrong size. Ten seconds of checking
+      recovers them.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find ' + m('18%') + ' of ' + m('350') + ', and then check that ' + m('63') + ' is ' + m('18%') + ' of ' + m('350') + '.',
+      steps: [
+        [m('0.18 · 350 = 63'), ''],
+        [m(f('63', '350') + ' = 0.18'), ''],
+        [m('18%') + ' ✓', 'The first and third questions, one after the other.']
+      ],
+      ans: m('63') + ' and ' + m('18%')
+    },
+    {
+      q: 'After a rise of ' + m('18%') + ' a price is ' + m('413') + '. Find the original.',
+      steps: [
+        ['Multiplier ' + m('1.18') + '.', ''],
+        [m('413 ÷ 1.18'), ''],
+        [m('= 350'), 'Check: ' + m('350 · 1.18 = 413') + ' ✓']
+      ],
+      ans: m('350')
+    },
+    {
+      q: 'A price goes up ' + m('18%') + ' and then down ' + m('18%') + '. What is the net change?',
+      steps: [
+        [m('1.18 · 0.82'), ''],
+        [m('= 0.9676'), ''],
+        ['A fall of ' + m('3.24%') + '.', 'Never zero.']
+      ],
+      ans: m('−3.24%')
+    }
+  ],
+  modelNote: 'Write 63, 350 and 18% on the board and ask the class to invent all six questions; they revise the topic by writing it rather than reading it.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which row of the table?',
+    hint: 'Read the wording, name the method.',
+    items: [
+      { q: m('18%') + ' of ' + m('350') + ':', a: [m('63'), m('350'), m('413'), m('18')], c: 0, why: 'Multiply by ' + m('0.18') + '.' },
+      { q: m('63') + ' is ' + m('18%') + ' of:', a: [m('11.34'), m('350'), m('413'), m('81')], c: 1, why: 'Divide.' },
+      { q: m('63') + ' as a percentage of ' + m('350') + ':', a: [m('18%'), m('56%'), m('5.6%'), m('180%')], c: 0, why: m(f('63', '350')) + '.' },
+      { q: m('350') + ' increased by ' + m('18%') + ':', a: [m('368'), m('413'), m('287'), m('63')], c: 1, why: m('· 1.18') + '.' },
+      { q: 'After ' + m('+18%') + ' it is ' + m('413') + '; before:', a: [m('339'), m('350'), m('487'), m('395')], c: 1, why: m('÷ 1.18') + '.' },
+      { q: 'Up ' + m('18%') + ' then down ' + m('18%') + ':', a: [m('0%'), m('−3.24%'), m('+3.24%'), m('−36%')], c: 1, why: m('1.18 · 0.82') + '.' },
+      { q: 'From ' + m('40') + ' to ' + m('50') + ' the base is:', a: [m('40'), m('50'), m('10'), m('90')], c: 0, why: 'The old value.' },
+      { q: 'A profit percentage uses:', a: ['the selling price', 'the cost price', 'the profit', 'either'], c: 1, why: 'What was paid.' }
+    ]
+  },
+  quiz: [
+    { q: 'A percentage of an amount:', a: ['multiply', 'divide', 'add', 'subtract'], c: 0, why: 'By the decimal.' },
+    { q: 'The whole from a part:', a: ['multiply', 'divide', 'add', 'subtract'], c: 1, why: 'By the decimal.' },
+    { q: 'The original after an increase:', a: ['multiply by the multiplier', 'divide by the multiplier', 'subtract the percentage', 'add it back'], c: 1, why: 'The reverse question.' },
+    { q: 'Successive changes:', a: ['add', 'multiply', 'cancel', 'subtract'], c: 1, why: 'The multipliers.' },
+    { q: 'Percentage change divides by:', a: ['the new value', 'the old value', m('100'), 'the change'], c: 1, why: 'The base.' },
+    { q: 'An answer larger than the whole is:', a: ['always wrong', 'possible', 'impossible', 'a decimal'], c: 1, why: 'Over ' + m('100%') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('18%') + ' of ' + m('350'), m('63')],
+      [m('63') + ' is ' + m('18%') + ' of', m('350')],
+      [m('63') + ' as a percentage of ' + m('350'), m('18%')],
+      [m('350') + ' up ' + m('18%'), m('413')],
+      [m('350') + ' down ' + m('18%'), m('287')],
+      ['The multiplier for ' + m('+18%'), m('1.18')],
+      ['The multiplier for ' + m('−18%'), m('0.82')]
+    ],
+    med: [
+      ['After ' + m('+18%') + ' it is ' + m('413') + ': before', m('350')],
+      ['After ' + m('−18%') + ' it is ' + m('287') + ': before', m('350')],
+      ['Up ' + m('18%') + ' then down ' + m('18%'), m('−3.24%')],
+      ['From ' + m('40') + ' to ' + m('50'), m('+25%')],
+      ['From ' + m('50') + ' to ' + m('40'), m('−20%')],
+      ['Bought ' + m('40 000') + ', sold ' + m('50 000'), m('25%') + ' profit'],
+      [m('12.5%') + ' of ' + m('480'), m('60')]
+    ],
+    hard: [
+      ['A price after ' + m('30%') + ' off is ' + m('147 000') + ': the original', m('210 000')],
+      ['Up ' + m('25%') + ' then down ' + m('20%'), 'No change'],
+      ['Two rises of ' + m('15%') + ' from ' + m('200'), m('264.5')],
+      [m('72') + ' as a percentage of ' + m('60'), m('120%')],
+      ['A salary of ' + m('3 000 000') + ' after ' + m('12%') + ' rise and ' + m('5%') + ' tax', m('3 192 000')],
+      ['Which loses more: ' + m('−10%') + ' twice, or ' + m('−20%') + ' once?', m('−20%') + ' once, at ' + m('0.8') + ' against ' + m('0.81')],
+      ['Why check the size of a percentage answer?', 'Most lost marks are answers of obviously the wrong size']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Name the row of the method table before every calculation.',
+  homework: [
+    'Find ' + m('22%') + ' of ' + m('450') + ' and write ' + m('99') + ' as a percentage of ' + m('450') + '.',
+    'Increase ' + m('450') + ' by ' + m('22%') + ' and decrease it by ' + m('22%') + '.',
+    'After a rise of ' + m('22%') + ' a price is ' + m('549') + '. Find the original.',
+    'A price rises ' + m('30%') + ' and then falls ' + m('30%') + '. Find the net change.',
+    'A trader buys at ' + m('80 000') + ' and sells at ' + m('92 000') + '. Find the profit percentage.'
+  ]
+});
