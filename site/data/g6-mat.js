@@ -6915,3 +6915,182 @@ G6_MAT.push({
     'A rope ' + m('7.2') + ' m long is cut into ' + m('0.6') + ' m pieces. How many pieces?'
   ]
 });
+
+/* ============================== 39 ============================== */
+G6_MAT.push({
+  id: 'g6-39', stream: 'mat', grade: 6, quarter: 2, lessons: '80', hours: 1,
+  title: 'Recall — angles',
+  subtitle: 'Naming, measuring and estimating angles before the calculating begins.',
+  uz: 'Matematika 6, takrorlash', uzPage: 'pp. 223–226',
+  cam: 'S7 5 entry', camPage: 'Stage 7, pp. 55–58', wb: 'Exercise 5.1',
+  objectives: [
+    'Name angles as acute, right, obtuse, straight or reflex.',
+    'Measure and draw an angle with a protractor.',
+    'Estimate an angle before measuring it.',
+    'Use the three-letter naming of an angle.'
+  ],
+  terms: [
+    ['Angle', 'Burchak', 'Угол'],
+    ['Vertex', 'Uchi', 'Вершина'],
+    ['Arm', 'Tomon', 'Сторона'],
+    ['Acute angle', 'O‘tkir burchak', 'Острый угол'],
+    ['Right angle', 'To‘g‘ri burchak', 'Прямой угол'],
+    ['Obtuse angle', 'O‘tmas burchak', 'Тупой угол'],
+    ['Reflex angle', 'Yoyiq burchakdan katta', 'Развёрнутый и больше'],
+    ['Protractor', 'Transportir', 'Транспортир']
+  ],
+  timing: [[10, 'Naming'], [12, 'Measuring'], [12, 'Estimating'], [6, 'Naming with three letters']],
+  sections: [
+    {
+      h: 'Naming',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Name</th><th>Size</th><th>Everyday example</th></tr></thead>
+      <tbody>
+        <tr><td>acute</td><td>between ${m('0°')} and ${m('90°')}</td><td>a slice of pizza</td></tr>
+        <tr><td>right</td><td class="m">90°</td><td>the corner of a book</td></tr>
+        <tr><td>obtuse</td><td>between ${m('90°')} and ${m('180°')}</td><td>a laptop half open</td></tr>
+        <tr><td>straight</td><td class="m">180°</td><td>a flat line</td></tr>
+        <tr><td>reflex</td><td>between ${m('180°')} and ${m('360°')}</td><td>the outside of a corner</td></tr>
+        <tr><td>full turn</td><td class="m">360°</td><td>once round</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A right angle is the ruler for the others</div>
+      Acute is less than a corner, obtuse is more. Holding up a corner of paper is a perfectly good way to
+      classify an angle before measuring it.</div>`
+    },
+    {
+      h: 'Measuring',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>What to do</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>put the centre of the protractor on the vertex</td></tr>
+        <tr><td>2</td><td>lay the base line along one arm</td></tr>
+        <tr><td>3</td><td>read where the other arm crosses the scale</td></tr>
+        <tr><td>4</td><td>choose the scale that agrees with your estimate</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Two scales, one right answer</span>
+      A protractor reads ${m('50°')} and ${m('130°')} at the same place. Estimating first — acute or
+      obtuse? — decides which to take, and it is why step 4 exists.</div>`
+    },
+    {
+      h: 'Estimating',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Landmark</th><th>Size</th><th>Recognised by</th></tr></thead>
+      <tbody>
+        <tr><td>a right angle</td><td class="m">90°</td><td>a square corner</td></tr>
+        <tr><td>half of it</td><td class="m">45°</td><td>a diagonal of a square</td></tr>
+        <tr><td>a third of it</td><td class="m">30°</td><td>a thin wedge</td></tr>
+        <tr><td>two right angles</td><td class="m">180°</td><td>a straight line</td></tr>
+        <tr><td>a little over a right angle</td><td class="m">100°</td><td>just past square</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Estimate to the nearest landmark first</div>
+      “A bit more than ${m('90')}” is enough to reject a reading of ${m('80')}. The estimate is not the
+      answer; it is the check on the answer.</div>`
+    },
+    {
+      h: 'Naming with three letters',
+      html: `<p>${m('∠ABC')} means the angle at ${m('B')}, between the arms ${m('BA')} and ${m('BC')}. The
+      middle letter is always the vertex.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Written</th><th>Vertex</th><th>Arms</th></tr></thead>
+      <tbody>
+        <tr><td class="m">∠ABC</td><td class="m">B</td><td class="m">BA and BC</td></tr>
+        <tr><td class="m">∠XYZ</td><td class="m">Y</td><td class="m">YX and YZ</td></tr>
+        <tr><td class="m">∠B</td><td class="m">B</td><td>only if there is no ambiguity</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The middle letter is the vertex</span>
+      ${m('∠ABC')} and ${m('∠CBA')} are the same angle; ${m('∠BAC')} is a different one. Reading the middle
+      letter first is the habit to build.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Classify angles of ' + m('42°') + ', ' + m('90°') + ', ' + m('137°') + ' and ' + m('210°') + '.',
+      steps: [
+        [m('42°') + ' — acute.', ''],
+        [m('90°') + ' — right.', ''],
+        [m('137°') + ' — obtuse.', ''],
+        [m('210°') + ' — reflex.', '']
+      ],
+      ans: 'Acute, right, obtuse, reflex'
+    },
+    {
+      q: 'A protractor reads either ' + m('50°') + ' or ' + m('130°') + '. The angle looks clearly less than a corner. Which is it?',
+      steps: [
+        ['Less than a right angle means acute.', ''],
+        ['Acute means under ' + m('90°') + '.', ''],
+        [m('50°'), '']
+      ],
+      ans: m('50°')
+    },
+    {
+      q: 'In ' + m('∠PQR') + ', which point is the vertex?',
+      steps: [
+        ['The middle letter names the vertex.', ''],
+        [m('Q') + '.', 'The arms are ' + m('QP') + ' and ' + m('QR') + '.']
+      ],
+      ans: m('Q')
+    }
+  ],
+  modelNote: 'Have the class estimate ten angles on the board before any protractor comes out; measurement errors of a hundred degrees disappear once estimating is a habit.',
+  interactive: {
+    type: 'quiz',
+    title: 'Name that angle',
+    hint: 'Compare with a right angle first.',
+    items: [
+      { q: m('42°') + ' is:', a: ['acute', 'right', 'obtuse', 'reflex'], c: 0, why: 'Under ' + m('90°') + '.' },
+      { q: m('137°') + ' is:', a: ['acute', 'right', 'obtuse', 'reflex'], c: 2, why: 'Between ' + m('90') + ' and ' + m('180') + '.' },
+      { q: m('210°') + ' is:', a: ['acute', 'obtuse', 'straight', 'reflex'], c: 3, why: 'Over ' + m('180°') + '.' },
+      { q: m('180°') + ' is:', a: ['obtuse', 'straight', 'reflex', 'a full turn'], c: 1, why: 'A flat line.' },
+      { q: 'A full turn is:', a: [m('180°'), m('270°'), m('360°'), m('90°')], c: 2, why: 'Once round.' },
+      { q: 'In ' + m('∠ABC') + ' the vertex is:', a: [m('A'), m('B'), m('C'), 'any of them'], c: 1, why: 'The middle letter.' },
+      { q: m('∠ABC') + ' and ' + m('∠CBA') + ' are:', a: ['the same angle', 'different angles', 'supplementary', 'complementary'], c: 0, why: 'Same vertex, same arms.' },
+      { q: 'A protractor showing ' + m('50') + ' and ' + m('130') + ' for an obtuse angle means:', a: [m('50°'), m('130°'), 'either', 'neither'], c: 1, why: 'Obtuse is over ' + m('90°') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'An acute angle is:', a: ['under ' + m('90°'), 'over ' + m('90°'), 'exactly ' + m('90°'), 'over ' + m('180°')], c: 0, why: 'Less than a corner.' },
+    { q: 'An obtuse angle is:', a: ['under ' + m('90°'), 'between ' + m('90°') + ' and ' + m('180°'), 'over ' + m('180°'), 'exactly ' + m('180°')], c: 1, why: 'More than a corner.' },
+    { q: 'A reflex angle is:', a: ['under ' + m('90°'), 'between ' + m('90°') + ' and ' + m('180°'), 'between ' + m('180°') + ' and ' + m('360°'), 'exactly ' + m('360°')], c: 2, why: 'Past a straight line.' },
+    { q: 'The protractor is placed with its centre on:', a: ['an arm', 'the vertex', 'the page', 'the scale'], c: 1, why: 'Where the angle turns.' },
+    { q: 'Estimating before measuring decides:', a: ['the arms', 'which scale to read', 'the vertex', 'the units'], c: 1, why: 'Two scales, one answer.' },
+    { q: 'In ' + m('∠XYZ') + ' the arms are:', a: [m('XY') + ' and ' + m('XZ'), m('YX') + ' and ' + m('YZ'), m('ZX') + ' and ' + m('ZY'), 'none of these'], c: 1, why: 'From the vertex ' + m('Y') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Classify ' + m('42°'), 'Acute'],
+      ['Classify ' + m('90°'), 'Right'],
+      ['Classify ' + m('137°'), 'Obtuse'],
+      ['Classify ' + m('180°'), 'Straight'],
+      ['Classify ' + m('210°'), 'Reflex'],
+      ['A full turn', m('360°')],
+      ['The vertex of ' + m('∠ABC'), m('B')]
+    ],
+    med: [
+      ['Classify ' + m('89°') + ' and ' + m('91°'), 'Acute and obtuse'],
+      ['A protractor reads ' + m('50') + ' or ' + m('130') + ' for an acute angle', m('50°')],
+      ['Half a right angle', m('45°')],
+      ['A third of a right angle', m('30°')],
+      ['Two right angles', m('180°')],
+      ['Three right angles', m('270°')],
+      ['Are ' + m('∠ABC') + ' and ' + m('∠CBA') + ' the same?', 'Yes']
+    ],
+    hard: [
+      ['The reflex angle beside an angle of ' + m('130°'), m('230°')],
+      ['The reflex angle beside a right angle', m('270°')],
+      ['An angle and its reflex partner add to', m('360°')],
+      ['Why does a protractor carry two scales?', 'So it can be laid along either arm'],
+      ['The smallest reflex angle', 'Just over ' + m('180°')],
+      ['Estimate the angle between the hands at ' + m('3') + ' o’clock', m('90°')],
+      ['And at ' + m('6') + ' o’clock', m('180°')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Estimate every angle before you measure it, and write both numbers down.',
+  homework: [
+    'Classify angles of ' + m('37°') + ', ' + m('90°') + ', ' + m('154°') + ' and ' + m('265°') + '.',
+    'Draw angles of ' + m('35°') + ', ' + m('115°') + ' and ' + m('90°') + ' with a protractor.',
+    'Measure four angles from your textbook, estimating each one first.',
+    'Name the vertex and the arms of ' + m('∠MNP') + '.',
+    'Find the reflex angle that goes with an angle of ' + m('145°') + '.'
+  ]
+});
