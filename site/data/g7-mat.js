@@ -5744,3 +5744,178 @@ G7_MAT.push({
     'Simplify ' + m('6a − 2b + 3b − 4a') + '.'
   ]
 });
+
+/* ============================== 34 ============================== */
+G7_MAT.push({
+  id: 'g7-34', stream: 'mat', grade: 7, quarter: 2, lessons: '61–62', hours: 2,
+  title: 'Powers with a natural exponent',
+  subtitle: 'Repeated multiplication, written short — and the vocabulary that goes with it.',
+  uz: 'Matematika 7, §27', uzPage: 'pp. 164–170',
+  cam: 'S8 6.1', camPage: 'Stage 8, pp. 58–62', wb: 'Exercise 6.1',
+  objectives: [
+    'Define aⁿ for a natural exponent and name the base and the exponent.',
+    'Compute powers of positive, negative and fractional bases.',
+    'Use the correct order of operations with powers.',
+    'Recognise squares and cubes of the small numbers.'
+  ],
+  terms: [
+    ['Power', 'Daraja', 'Степень'],
+    ['Base', 'Asos', 'Основание'],
+    ['Exponent', 'Ko‘rsatkich', 'Показатель'],
+    ['Square', 'Kvadrat', 'Квадрат'],
+    ['Cube', 'Kub', 'Куб'],
+    ['To raise to a power', 'Darajaga ko‘tarish', 'Возвести в степень'],
+    ['Repeated multiplication', 'Takroriy ko‘paytirish', 'Повторное умножение'],
+    ['Order of operations', 'Amallar tartibi', 'Порядок действий']
+  ],
+  timing: [[15, 'The definition'], [25, 'Signs and fractions'], [25, 'Order of operations'], [20, 'Squares and cubes'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The definition',
+      html: `${eq(m('aⁿ = a × a × … × a') + '   (' + m('n') + ' factors),   ' + m('n ∈ ℕ'), true)}
+      <p>${m('a')} is the <b>base</b>, ${m('n')} the <b>exponent</b>. ${m('a¹ = a')}, and ${m('a²')} is
+      read “${m('a')} squared”, ${m('a³')} “${m('a')} cubed”.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Power</th><th>Means</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2⁵</td><td class="m">2 × 2 × 2 × 2 × 2</td><td class="m">32</td></tr>
+        <tr><td class="m">3⁴</td><td class="m">3 × 3 × 3 × 3</td><td class="m">81</td></tr>
+        <tr><td class="m">10³</td><td class="m">10 × 10 × 10</td><td class="m">1000</td></tr>
+        <tr><td class="m">7¹</td><td class="m">7</td><td class="m">7</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('2⁵')} is not ${m('2 × 5')}</span>
+      It is ${m('32')}, not ${m('10')}. The exponent counts the factors; it is not a multiplier. Reading
+      the power aloud as “two multiplied by itself five times over” prevents the confusion.</div>`
+    },
+    {
+      h: 'Signs and fractions',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Power</th><th>Value</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(−2)³</td><td class="m">−8</td><td>three negative factors</td></tr>
+        <tr><td class="m">(−2)⁴</td><td class="m">16</td><td>four negative factors</td></tr>
+        <tr><td class="m">−2⁴</td><td class="m">−16</td><td>only the ${m('2')} is raised</td></tr>
+        <tr><td class="m">(${f('2', '3')})³</td><td class="m">${f('8', '27')}</td><td>numerator and denominator both</td></tr>
+        <tr><td class="m">(0.1)²</td><td class="m">0.01</td><td class="m">0.1 × 0.1</td></tr>
+      </tbody></table></div>
+      ${eq(m('(−a)ⁿ = aⁿ') + ' for even ' + m('n') + ',   ' + m('(−a)ⁿ = −aⁿ') + ' for odd ' + m('n'), true)}
+      <div class="warn"><span class="wl">The brackets decide what is raised</span>
+      ${m('(−2)⁴ = 16')} but ${m('−2⁴ = −16')}. This distinction is tested every year from now to Grade
+      11.</div>`
+    },
+    {
+      h: 'Order of operations',
+      html: `<p>Powers come after brackets and before multiplication.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Working</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3 × 2³</td><td class="m">3 × 8</td><td class="m">24</td></tr>
+        <tr><td class="m">(3 × 2)³</td><td class="m">6³</td><td class="m">216</td></tr>
+        <tr><td class="m">2 + 3²</td><td class="m">2 + 9</td><td class="m">11</td></tr>
+        <tr><td class="m">(2 + 3)²</td><td class="m">5²</td><td class="m">25</td></tr>
+        <tr><td class="m">5² − 3 × 2²</td><td class="m">25 − 12</td><td class="m">13</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A bracket is the only way to raise a sum</div>
+      ${m('(2 + 3)²')} is ${m('25')}; ${m('2 + 3²')} is ${m('11')}; and ${m('2² + 3²')} is ${m('13')}.
+      Three different expressions, and the brackets are what distinguish them.</div>`
+    },
+    {
+      h: 'Squares and cubes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th class="m">n</th><th class="m">1</th><th class="m">2</th><th class="m">3</th><th class="m">4</th><th class="m">5</th><th class="m">6</th><th class="m">7</th><th class="m">8</th><th class="m">9</th><th class="m">10</th></tr></thead>
+      <tbody>
+        <tr><td class="m">n²</td><td class="m">1</td><td class="m">4</td><td class="m">9</td><td class="m">16</td><td class="m">25</td><td class="m">36</td><td class="m">49</td><td class="m">64</td><td class="m">81</td><td class="m">100</td></tr>
+        <tr><td class="m">n³</td><td class="m">1</td><td class="m">8</td><td class="m">27</td><td class="m">64</td><td class="m">125</td><td class="m">216</td><td class="m">343</td><td class="m">512</td><td class="m">729</td><td class="m">1000</td></tr>
+      </tbody></table></div>
+      <p>Worth adding: ${m('2⁵ = 32')}, ${m('2⁶ = 64')}, ${m('2⁷ = 128')}, ${m('2⁸ = 256')}, ${m('2¹⁰ = 1024')},
+      and ${m('3⁴ = 81')}, ${m('5⁴ = 625')}.</p>
+      <div class="keybox"><div class="klabel">These two rows save more time than any rule</div>
+      They are used in factorising, in simplifying surds, in Pythagoras and in every prime
+      factorisation. Learning them once repays the effort for five years.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compute ' + m('(−2)⁴') + ', ' + m('−2⁴') + ' and ' + m('(−2)⁵') + '.',
+      steps: [
+        [m('(−2)⁴') + ': four negative factors — positive.', ''],
+        [m('= 16'), ''],
+        [m('−2⁴') + ' means ' + m('−(2⁴)') + ' — only the ' + m('2') + ' is raised.', ''],
+        [m('= −16') + '; and ' + m('(−2)⁵ = −32') + '.', 'Five factors — odd.']
+      ],
+      ans: m('16, −16, −32')
+    },
+    {
+      q: 'Compute ' + m('5² − 3 × 2²') + '.',
+      steps: [
+        ['Powers first: ' + m('25') + ' and ' + m('4') + '.', ''],
+        ['Then multiplication: ' + m('3 × 4 = 12') + '.', ''],
+        ['Then subtraction.', ''],
+        [m('25 − 12 = 13'), '']
+      ],
+      ans: m('13')
+    },
+    {
+      q: 'Compute ' + m('(' + f('2', '3') + ')³') + ' and ' + m('(0.1)²') + '.',
+      steps: [
+        ['Raise the numerator and the denominator.', ''],
+        [m(f('2³', '3³') + ' = ' + f('8', '27')), ''],
+        [m('0.1 × 0.1'), ''],
+        [m('= 0.01'), '']
+      ],
+      ans: m(f('8', '27')) + ' and ' + m('0.01')
+    }
+  ],
+  modelNote: 'Fold a sheet of paper in half repeatedly and count the layers; the class reaches 2⁷ before the paper stops folding, and the growth is felt rather than stated.',
+  interactive: {
+    type: 'rootPower',
+    title: 'Powers of a number',
+    hint: 'Change the exponent by one and watch the value.'
+  },
+  quiz: [
+    { q: m('2⁵') + ' equals:', a: [m('10'), m('25'), m('32'), m('16')], c: 2, why: 'Five factors of ' + m('2') + '.' },
+    { q: 'In ' + m('aⁿ') + ', ' + m('n') + ' is the:', a: ['base', 'exponent', 'coefficient', 'term'], c: 1, why: 'It counts the factors.' },
+    { q: m('(−2)⁴') + ' equals:', a: [m('16'), m('−16'), m('8'), m('−8')], c: 0, why: 'An even exponent.' },
+    { q: m('−2⁴') + ' equals:', a: [m('16'), m('−16'), m('8'), m('−8')], c: 1, why: 'Only the ' + m('2') + ' is raised.' },
+    { q: m('(2 + 3)²') + ' equals:', a: [m('11'), m('13'), m('25'), m('36')], c: 2, why: 'Bracket first.' },
+    { q: m('(' + f('2', '3') + ')³') + ' equals:', a: [m(f('2', '27')), m(f('8', '27')), m(f('6', '9')), m(f('8', '3'))], c: 1, why: 'Both parts are cubed.' }
+  ],
+  practice: {
+    easy: [
+      [m('2⁵'), m('32')],
+      [m('3⁴'), m('81')],
+      [m('10³'), m('1000')],
+      [m('7²'), m('49')],
+      [m('5³'), m('125')],
+      [m('(−2)³'), m('−8')],
+      [m('(−2)⁴'), m('16')]
+    ],
+    med: [
+      [m('−2⁴'), m('−16')],
+      [m('(' + f('2', '3') + ')³'), m(f('8', '27'))],
+      [m('(0.1)²'), m('0.01')],
+      [m('3 × 2³'), m('24')],
+      [m('(3 × 2)³'), m('216')],
+      [m('2 + 3²'), m('11')],
+      [m('5² − 3 × 2²'), m('13')]
+    ],
+    hard: [
+      [m('(2 + 3)² − 2² − 3²'), m('12')],
+      [m('(−3)² + (−3)³'), m('−18')],
+      [m('2⁸ ÷ 2⁵'), m('8')],
+      [m('(0.2)³'), m('0.008')],
+      [m('(−' + f('1', '2') + ')⁴'), m(f('1', '16'))],
+      ['Which is larger, ' + m('2¹⁰') + ' or ' + m('10³') + '?', m('2¹⁰ = 1024')],
+      [m('3² × 3³'), m('243')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write out the factors for any power you are unsure of.',
+  homework: [
+    'Compute ' + m('2⁶') + ', ' + m('3⁵') + ' and ' + m('10⁴') + '.',
+    'Compute ' + m('(−3)³') + ', ' + m('(−3)⁴') + ' and ' + m('−3⁴') + '.',
+    'Compute ' + m('(' + f('3', '4') + ')²') + ' and ' + m('(0.3)²') + '.',
+    'Compute ' + m('4² + 2 × 3²') + '.',
+    'Learn the squares to ' + m('12') + ' and the cubes to ' + m('6') + ', and write them out from memory.'
+  ]
+});
