@@ -11891,3 +11891,380 @@ G7_MAT.push({
     'Write one equation with one root, one with none, and one true for every number.'
   ]
 });
+
+/* ============================== 67 ============================== */
+G7_MAT.push({
+  id: 'g7-67', stream: 'mat', grade: 7, quarter: 3, lessons: '123–124', hours: 2,
+  title: 'Linear equations with one unknown',
+  subtitle: 'One standard form, four steps, and the three things that can happen at the end.',
+  uz: 'Matematika 7, §55', uzPage: 'pp. 363–370',
+  cam: 'S8 2.5', camPage: 'Stage 8, pp. 31–36', wb: 'Exercise 2.5',
+  objectives: [
+    'Recognise a linear equation and write it as ' + m('ax = b') + '.',
+    'Solve by collecting the unknowns on one side and the numbers on the other.',
+    'Solve equations containing brackets and fractions.',
+    'Interpret the cases ' + m('a = 0, b ≠ 0') + ' and ' + m('a = 0, b = 0') + '.'
+  ],
+  terms: [
+    ['Linear equation', 'Chiziqli tenglama', 'Линейное уравнение'],
+    ['Unknown', 'Noma’lum', 'Неизвестное'],
+    ['Coefficient', 'Koeffitsiyent', 'Коэффициент'],
+    ['To transpose', 'Qarama-qarshi tomonga o‘tkazish', 'Перенести'],
+    ['To collect', 'Ixchamlash', 'Привести подобные'],
+    ['To clear fractions', 'Maxrajdan qutulish', 'Избавиться от знаменателей'],
+    ['Standard form', 'Standart ko‘rinish', 'Стандартный вид'],
+    ['Check', 'Tekshirish', 'Проверка']
+  ],
+  timing: [[10, 'The standard form'], [25, 'The four steps'], [25, 'Brackets and fractions'], [20, 'The three endings'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The standard form',
+      html: `<p>An equation is <b>linear</b> in ${m('x')} when, after simplification, it can be written as</p>
+      ${eq(m('ax = b'), true)}
+      <p>with no ${m('x²')}, no ${m('x')} in a denominator and no ${m('x')} under a root.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Equation</th><th>Linear?</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3x − 5 = 7</td><td>yes</td></tr>
+        <tr><td class="m">2(x + 1) = 5x − 4</td><td>yes — after expanding</td></tr>
+        <tr><td class="m">x² = 9</td><td>no</td></tr>
+        <tr><td class="m">${f('1', 'x')} = 3</td><td>no — the unknown is in the denominator</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Why the standard form matters</div>
+      Once an equation reads ${m('ax = b')} the answer is ${m('x = ' + f('b', 'a'))} and nothing is left to
+      decide. Every step of the solution is aimed at reaching that one line.</div>`
+    },
+    {
+      h: 'The four steps',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>What to do</th><th>Example: ${m('3x − 5 = x + 7')}</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>expand any brackets</td><td>none here</td></tr>
+        <tr><td>2</td><td>unknowns to the left, numbers to the right</td><td class="m">3x − x = 7 + 5</td></tr>
+        <tr><td>3</td><td>collect like terms</td><td class="m">2x = 12</td></tr>
+        <tr><td>4</td><td>divide by the coefficient</td><td class="m">x = 6</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A term that crosses the equals sign changes its sign</span>
+      ${m('−5')} on the left becomes ${m('+5')} on the right. Moving a term without changing its sign is
+      the commonest error in the whole of equation-solving, and the check catches it every time.</div>`
+    },
+    {
+      h: 'Brackets and fractions',
+      html: `<p>Expand first; clear denominators by multiplying <b>every</b> term by the lowest common
+      denominator.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Equation</th><th>First move</th><th>Then</th><th>Root</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2(x + 3) = 5x − 6</td><td>expand</td><td class="m">2x + 6 = 5x − 6</td><td class="m">x = 4</td></tr>
+        <tr><td class="m">${f('x', '2')} + ${f('x', '3')} = 5</td><td>multiply by ${m('6')}</td><td class="m">3x + 2x = 30</td><td class="m">x = 6</td></tr>
+        <tr><td class="m">${f('x − 1', '4')} = ${f('x + 1', '6')}</td><td>multiply by ${m('12')}</td><td class="m">3(x − 1) = 2(x + 1)</td><td class="m">x = 5</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Every term is multiplied, the whole-number ones too</span>
+      In ${m(f('x', '2') + ' + ' + f('x', '3') + ' = 5')} the ${m('5')} becomes ${m('30')}. Multiplying only
+      the fractions is the standard slip and gives a wrong root that the check exposes at once.</div>`
+    },
+    {
+      h: 'The three endings',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Final line</th><th>Meaning</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2x = 12</td><td class="m">a ≠ 0</td><td class="m">x = 6</td></tr>
+        <tr><td class="m">0 · x = 5</td><td class="m">a = 0, b ≠ 0</td><td>no roots</td></tr>
+        <tr><td class="m">0 · x = 0</td><td class="m">a = 0, b = 0</td><td>every number is a root</td></tr>
+      </tbody></table></div>
+      <p>And the check, always into the original equation:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Equation</th><th>Root</th><th>Left</th><th>Right</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3x − 5 = x + 7</td><td class="m">x = 6</td><td class="m">13</td><td class="m">13</td></tr>
+        <tr><td class="m">2(x + 3) = 5x − 6</td><td class="m">x = 4</td><td class="m">14</td><td class="m">14</td></tr>
+      </tbody></table></div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('3x − 5 = x + 7') + '.',
+      steps: [
+        [m('3x − x = 7 + 5'), 'Both terms change sign as they cross.'],
+        [m('2x = 12'), ''],
+        [m('x = 6'), ''],
+        ['Check: ' + m('3 · 6 − 5 = 13') + ' and ' + m('6 + 7 = 13') + ' ✓', '']
+      ],
+      ans: m('x = 6')
+    },
+    {
+      q: 'Solve ' + m(f('x', '2') + ' + ' + f('x', '3') + ' = 5') + '.',
+      steps: [
+        ['Multiply every term by ' + m('6') + '.', 'Including the ' + m('5') + '.'],
+        [m('3x + 2x = 30'), ''],
+        [m('5x = 30'), ''],
+        [m('x = 6'), '']
+      ],
+      ans: m('x = 6')
+    },
+    {
+      q: 'Solve ' + m('2(x + 3) = 2x + 5') + '.',
+      steps: [
+        [m('2x + 6 = 2x + 5'), 'Expand.'],
+        [m('2x − 2x = 5 − 6'), ''],
+        [m('0 · x = −1'), ''],
+        ['No value of ' + m('x') + ' can satisfy this.', '']
+      ],
+      ans: 'No roots'
+    }
+  ],
+  modelNote: 'Insist on the check for one full lesson and mark it as a separate step; the number of sign errors handed in falls immediately.',
+  interactive: {
+    type: 'quiz',
+    title: 'One step at a time',
+    hint: 'Sign changes when a term crosses.',
+    items: [
+      { q: 'In ' + m('3x − 5 = x + 7') + ', moving ' + m('x') + ' to the left gives:', a: [m('3x + x'), m('3x − x'), m('2x + 5'), m('4x')], c: 1, why: 'The sign changes.' },
+      { q: 'Moving ' + m('−5') + ' to the right gives:', a: [m('7 − 5'), m('7 + 5'), m('−7 − 5'), m('5 − 7')], c: 1, why: 'The sign changes.' },
+      { q: 'So the equation becomes:', a: [m('2x = 12'), m('4x = 2'), m('2x = 2'), m('4x = 12')], c: 0, why: 'Collect both sides.' },
+      { q: 'And the root is:', a: [m('x = 2'), m('x = 6'), m('x = 12'), m('x = 24')], c: 1, why: 'Divide by ' + m('2') + '.' },
+      { q: 'To clear ' + m(f('x', '2') + ' + ' + f('x', '3') + ' = 5') + ' multiply by:', a: [m('2'), m('3'), m('5'), m('6')], c: 3, why: 'The LCD.' },
+      { q: 'The ' + m('5') + ' then becomes:', a: [m('5'), m('10'), m('15'), m('30')], c: 3, why: 'Every term is multiplied.' },
+      { q: m('0 · x = 5') + ' means:', a: ['no roots', 'one root', 'every number', 'an error'], c: 0, why: 'Never true.' },
+      { q: m('0 · x = 0') + ' means:', a: ['no roots', 'one root', 'every number is a root', 'an error'], c: 2, why: 'Always true.' }
+    ]
+  },
+  quiz: [
+    { q: 'A linear equation can be written as:', a: [m('ax² = b'), m('ax = b'), m(f('a', 'x') + ' = b'), m('a + x = 0') + ' only'], c: 1, why: 'After simplification.' },
+    { q: 'A term crossing the equals sign:', a: ['keeps its sign', 'changes its sign', 'disappears', 'doubles'], c: 1, why: 'It is subtracted from both sides.' },
+    { q: m('3x − 5 = x + 7') + ' gives:', a: [m('x = 3'), m('x = 6'), m('x = 12'), m('x = 1')], c: 1, why: m('2x = 12') + '.' },
+    { q: 'To clear fractions, multiply:', a: ['the fractions only', 'every term', 'the right side only', 'nothing'], c: 1, why: 'Or the equation changes.' },
+    { q: m('0 · x = 7') + ' has:', a: ['one root', 'no roots', 'two roots', 'every root'], c: 1, why: 'Never true.' },
+    { q: 'The final check uses:', a: ['the last line', 'the original equation', 'a calculator', 'nothing'], c: 1, why: 'Errors do not repeat that way.' }
+  ],
+  practice: {
+    easy: [
+      [m('x + 5 = 12'), m('x = 7')],
+      [m('3x = 12'), m('x = 4')],
+      [m('2x − 4 = 10'), m('x = 7')],
+      [m('3x − 5 = x + 7'), m('x = 6')],
+      [m('5x + 2 = 3x + 10'), m('x = 4')],
+      [m('7 − x = 3'), m('x = 4')],
+      [m('4x = 0'), m('x = 0')]
+    ],
+    med: [
+      [m('2(x + 3) = 5x − 6'), m('x = 4')],
+      [m(f('x', '2') + ' + ' + f('x', '3') + ' = 5'), m('x = 6')],
+      [m(f('x − 1', '4') + ' = ' + f('x + 1', '6')), m('x = 5')],
+      [m('3(x − 2) = 2(x + 1)'), m('x = 8')],
+      [m('2(x + 3) = 2x + 5'), 'No roots'],
+      [m('3(x − 1) = 3x − 3'), 'Every number'],
+      [m(f('2x', '5') + ' = 4'), m('x = 10')]
+    ],
+    hard: [
+      [m('4(x − 1) − 3(x + 2) = 0'), m('x = 10')],
+      [m(f('x + 1', '2') + ' − ' + f('x − 1', '3') + ' = 1'), m('x = 1')],
+      [m('5(2x − 3) = 2(5x − 7)'), 'No roots'],
+      [m(f('3x', '4') + ' − ' + f('x', '6') + ' = 7'), m('x = 12')],
+      [m('a x = 5') + ' with ' + m('a = 0') + ': how many roots?', 'None'],
+      [m('0.2x + 1 = 0.5x − 0.5'), m('x = 5')],
+      [m('2(3x − 1) − 3(2x − 1) = 1'), 'Every number']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the check as a separate line under every answer.',
+  homework: [
+    'Solve ' + m('4x − 7 = 2x + 9') + '.',
+    'Solve ' + m('3(x + 2) = 4x − 1') + '.',
+    'Solve ' + m(f('x', '3') + ' + ' + f('x', '4') + ' = 7') + '.',
+    'Solve ' + m(f('x + 2', '3') + ' = ' + f('x − 1', '2')) + '.',
+    'Solve ' + m('2(x + 4) = 2x + 8') + ' and explain the answer.'
+  ]
+});
+
+/* ============================== 68 ============================== */
+G7_MAT.push({
+  id: 'g7-68', stream: 'mat', grade: 7, quarter: 3, lessons: '125–126', hours: 2,
+  title: 'Al-Khwarizmi’s method of solving equations',
+  subtitle: 'Al-jabr and al-muqabala — the two moves that gave algebra its name, written in Khiva twelve centuries ago.',
+  uz: 'Matematika 7, §56', uzPage: 'pp. 371–377',
+  cam: 'S8 2.5 historical', camPage: 'Stage 8, pp. 31–36', wb: 'History sheet 2C',
+  objectives: [
+    'Explain what al-jabr and al-muqabala mean and do.',
+    'Solve an equation in the medieval style, without negative numbers.',
+    'Connect the two moves to the modern rules for transposing and collecting.',
+    'Place Al-Khwarizmi in the history of mathematics in Central Asia.'
+  ],
+  terms: [
+    ['Al-Khwarizmi', 'Al-Xorazmiy', 'Аль-Хорезми'],
+    ['Al-jabr — restoring', 'Al-jabr — to‘ldirish', 'Аль-джабр — восполнение'],
+    ['Al-muqabala — balancing', 'Al-muqobala — muvozanatlash', 'Аль-мукабала — сопоставление'],
+    ['Algebra', 'Algebra', 'Алгебра'],
+    ['Algorithm', 'Algoritm', 'Алгоритм'],
+    ['Manuscript', 'Qo‘lyozma', 'Рукопись'],
+    ['House of Wisdom', 'Bayt ul-hikma', 'Дом мудрости'],
+    ['Heritage', 'Meros', 'Наследие']
+  ],
+  timing: [[10, 'Who he was'], [20, 'Al-jabr — restoring'], [20, 'Al-muqabala — balancing'], [30, 'A medieval solution, and the modern one beside it'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Who he was',
+      html: `<p>Muhammad ibn Musa <b>al-Khwarizmi</b> (c. 780 – c. 850) came from Khorezm, in what is now
+      Uzbekistan, and worked at the House of Wisdom in Baghdad. His book <i>al-Kitab al-mukhtasar fi
+      hisab al-jabr wa-l-muqabala</i> gave two words to the world.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Word</th><th>From</th><th>Meaning today</th></tr></thead>
+      <tbody>
+        <tr><td>algebra</td><td class="m">al-jabr</td><td>the whole subject</td></tr>
+        <tr><td>algorithm</td><td>his own name, Latinised</td><td>a finite list of steps</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Why he wrote in words, not symbols</div>
+      There were no symbols for the unknown, no equals sign and no negative numbers. Every equation was a
+      sentence, and every solution a paragraph. That is the difficulty his two moves were invented to
+      overcome.</div>`
+    },
+    {
+      h: 'Al-jabr — restoring',
+      html: `<p><b>Al-jabr</b> means restoring: a subtracted quantity is removed from one side by adding
+      it to both. It is how a negative term is got rid of when negative numbers do not exist.</p>
+      ${eq(m('5x − 3 = 12') + '  →  ' + m('5x = 12 + 3'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Before</th><th>After al-jabr</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5x − 3 = 12</td><td class="m">5x = 15</td></tr>
+        <tr><td class="m">2x − 7 = x + 1</td><td class="m">2x = x + 8</td></tr>
+        <tr><td class="m">x² − 4x = 5</td><td class="m">x² = 4x + 5</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The same move you already make</div>
+      Modern algebra says “transpose and change the sign”. Al-jabr says “add the missing amount to both
+      sides”. They are the same operation; only the language differs.</div>`
+    },
+    {
+      h: 'Al-muqabala — balancing',
+      html: `<p><b>Al-muqabala</b> means balancing: like quantities on the two sides are cancelled against
+      each other.</p>
+      ${eq(m('5x + 3 = 2x + 12') + '  →  ' + m('3x = 9'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Before</th><th>After al-muqabala</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5x + 3 = 2x + 12</td><td class="m">3x = 9</td></tr>
+        <tr><td class="m">4x + 7 = x + 19</td><td class="m">3x = 12</td></tr>
+        <tr><td class="m">x² + 5 = 3x + 5</td><td class="m">x² = 3x</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two moves, and every linear equation falls</div>
+      Al-jabr removes what is subtracted; al-muqabala removes what is repeated. Applied in turn they
+      reduce any linear equation to ${m('ax = b')} — which is exactly the modern four-step method with
+      older names.</div>`
+    },
+    {
+      h: 'A medieval solution, and the modern one beside it',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Al-Khwarizmi's words</th><th>Modern line</th></tr></thead>
+      <tbody>
+        <tr><td>“Five things less three dirhams equal two things and nine dirhams.”</td><td class="m">5x − 3 = 2x + 9</td></tr>
+        <tr><td>“Restore the three: five things equal two things and twelve dirhams.”</td><td class="m">5x = 2x + 12</td></tr>
+        <tr><td>“Balance the two things: three things equal twelve dirhams.”</td><td class="m">3x = 12</td></tr>
+        <tr><td>“Then one thing is four.”</td><td class="m">x = 4</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>His term</th><th>Our term</th></tr></thead>
+      <tbody>
+        <tr><td>thing (shay)</td><td class="m">x</td></tr>
+        <tr><td>dirham</td><td>the constant term</td></tr>
+        <tr><td>square (mal)</td><td class="m">x²</td></tr>
+        <tr><td>al-jabr</td><td>transposing a negative term</td></tr>
+        <tr><td>al-muqabala</td><td>collecting like terms</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">He also proved his methods geometrically</span>
+      Where we write ${m('(x + 3)² = x² + 6x + 9')}, he drew the square and its four pieces — the same
+      picture used two chapters ago. Without symbols, the diagram <i>was</i> the proof.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('5x − 3 = 2x + 9') + ' in the medieval style, naming each move.',
+      steps: [
+        ['Al-jabr: add ' + m('3') + ' to both sides.', m('5x = 2x + 12')],
+        ['Al-muqabala: cancel ' + m('2x') + ' from both sides.', m('3x = 12')],
+        ['Divide by ' + m('3') + '.', m('x = 4')],
+        ['Check: ' + m('5 · 4 − 3 = 17') + ' and ' + m('2 · 4 + 9 = 17') + ' ✓', '']
+      ],
+      ans: m('x = 4')
+    },
+    {
+      q: 'Which move turns ' + m('4x + 7 = x + 19') + ' into ' + m('3x = 12') + '?',
+      steps: [
+        ['The ' + m('x') + ' terms are cancelled against each other.', ''],
+        ['The dirhams are cancelled too.', ''],
+        ['That is al-muqabala, balancing.', '']
+      ],
+      ans: 'Al-muqabala'
+    },
+    {
+      q: 'Write “four things less two dirhams equal ten dirhams” as an equation and solve it.',
+      steps: [
+        [m('4x − 2 = 10'), ''],
+        ['Al-jabr: ' + m('4x = 12') + '.', ''],
+        [m('x = 3'), '']
+      ],
+      ans: m('x = 3')
+    }
+  ],
+  modelNote: 'Have the class solve one equation entirely in words, with no symbols at all; the effort involved explains better than any lecture why notation was worth inventing.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which move is this?',
+    hint: 'Restoring, or balancing?',
+    items: [
+      { q: m('5x − 3 = 12') + ' becomes ' + m('5x = 15') + ' by:', a: ['al-jabr', 'al-muqabala', 'division', 'expanding'], c: 0, why: 'A subtracted amount is restored.' },
+      { q: m('5x + 3 = 2x + 12') + ' becomes ' + m('3x = 9') + ' by:', a: ['al-jabr', 'al-muqabala', 'division', 'squaring'], c: 1, why: 'Like quantities are balanced.' },
+      { q: 'The word “algebra” comes from:', a: ['al-muqabala', 'al-jabr', 'his name', 'Arabic for “number”'], c: 1, why: 'From the book’s title.' },
+      { q: 'The word “algorithm” comes from:', a: ['al-jabr', 'al-muqabala', 'his name', 'Greek'], c: 2, why: 'Al-Khwarizmi, Latinised.' },
+      { q: 'He was born in:', a: ['Khorezm', 'Baghdad', 'Cairo', 'Samarkand'], c: 0, why: 'In present-day Uzbekistan.' },
+      { q: 'In his work, a “thing” means:', a: [m('x²'), m('x'), 'the constant', 'the answer'], c: 1, why: 'The unknown.' },
+      { q: 'A “dirham” means:', a: [m('x'), m('x²'), 'the constant term', 'a fraction'], c: 2, why: 'A number.' },
+      { q: 'He could not use:', a: ['addition', 'negative numbers', 'multiplication', 'fractions'], c: 1, why: 'Hence al-jabr.' }
+    ]
+  },
+  quiz: [
+    { q: 'Al-jabr means:', a: ['balancing', 'restoring', 'dividing', 'squaring'], c: 1, why: 'Adding back what was subtracted.' },
+    { q: 'Al-muqabala means:', a: ['restoring', 'balancing', 'expanding', 'factorising'], c: 1, why: 'Cancelling like quantities.' },
+    { q: 'Al-Khwarizmi worked at:', a: ['the House of Wisdom', 'Oxford', 'Alexandria', 'Bukhara only'], c: 0, why: 'In Baghdad.' },
+    { q: 'His century was the:', a: ['5th', '9th', '13th', '16th'], c: 1, why: 'Around ' + m('800') + '.' },
+    { q: m('2x − 7 = x + 1') + ' → ' + m('2x = x + 8') + ' is:', a: ['al-jabr', 'al-muqabala', 'division', 'a check'], c: 0, why: 'The ' + m('7') + ' is restored.' },
+    { q: 'His proofs were:', a: ['symbolic', 'geometric', 'numerical only', 'absent'], c: 1, why: 'Drawn as squares.' }
+  ],
+  practice: {
+    easy: [
+      ['Al-jabr means', 'restoring'],
+      ['Al-muqabala means', 'balancing'],
+      ['“Algebra” comes from', 'al-jabr'],
+      ['“Algorithm” comes from', 'his name'],
+      ['A “thing” is', m('x')],
+      ['A “dirham” is', 'the constant term'],
+      [m('5x − 3 = 12') + ' after al-jabr', m('5x = 15')]
+    ],
+    med: [
+      [m('5x − 3 = 2x + 9'), m('x = 4')],
+      [m('4x + 7 = x + 19'), m('x = 4')],
+      ['“Four things less two dirhams equal ten dirhams”', m('4x − 2 = 10') + ', ' + m('x = 3')],
+      [m('2x − 7 = x + 1') + ': which move first?', 'Al-jabr'],
+      [m('5x + 3 = 2x + 12') + ': which move first?', 'Al-muqabala'],
+      ['Why could he not write ' + m('−3') + '?', 'Negative numbers were not in use'],
+      ['In which country was he born?', 'In Khorezm, in present-day Uzbekistan']
+    ],
+    hard: [
+      ['Write ' + m('7x − 5 = 3x + 11') + ' as a medieval sentence', '“Seven things less five dirhams equal three things and eleven dirhams”'],
+      ['Solve it, naming both moves', 'Al-jabr, then al-muqabala; ' + m('x = 4')],
+      ['Why do the two moves suffice for any linear equation?', 'One removes subtractions, the other removes repetitions'],
+      ['What does the modern phrase “change the sign” correspond to?', 'Al-jabr'],
+      ['What does “collect like terms” correspond to?', 'Al-muqabala'],
+      ['Why did he prove ' + m('(x + 3)²') + ' with a diagram?', 'There was no symbolic algebra to argue with'],
+      ['Name the two words modern mathematics owes him', 'Algebra and algorithm']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Name the move beside every line, as he would have done.',
+  homework: [
+    'Solve ' + m('6x − 4 = 3x + 11') + ', naming al-jabr and al-muqabala where you use them.',
+    'Write “six things less one dirham equal three things and eight dirhams” as an equation and solve it.',
+    'Explain in three sentences why algebra is named after a book written in Baghdad.',
+    'Write ' + m('9x + 2 = 4x + 22') + ' as a medieval sentence.',
+    'Find out one more contribution of Al-Khwarizmi and write two sentences about it.'
+  ]
+});
