@@ -7642,3 +7642,364 @@ G7_MAT.push({
     'Write one sentence for each of the seven blocks on the Quarter II map.'
   ]
 });
+
+/* ============================== 45 ============================== */
+G7_MAT.push({
+  id: 'g7-45', stream: 'mat', grade: 7, quarter: 3, lessons: '81', hours: 1,
+  title: 'Parallel lines',
+  subtitle: 'Two lines in a plane that never meet — and how you can tell without following them.',
+  uz: 'Matematika 7, §37', uzPage: 'pp. 226–230',
+  cam: 'S8 5.1', camPage: 'Stage 8, pp. 44–47', wb: 'Exercise 5.1',
+  objectives: [
+    'Define parallel lines and use the symbol ' + m('∥') + '.',
+    'Distinguish parallel lines from lines that merely look apart.',
+    'State the axiom of parallels and what it guarantees.',
+    'Recognise parallel lines in the figures and objects around the room.'
+  ],
+  terms: [
+    ['Parallel lines', 'Parallel to‘g‘ri chiziqlar', 'Параллельные прямые'],
+    ['To intersect', 'Kesishmoq', 'Пересекаться'],
+    ['Plane', 'Tekislik', 'Плоскость'],
+    ['Axiom', 'Aksioma', 'Аксиома'],
+    ['Distance', 'Masofa', 'Расстояние'],
+    ['Direction', 'Yo‘nalish', 'Направление'],
+    ['Unique', 'Yagona', 'Единственный'],
+    ['Symbol', 'Belgi', 'Обозначение']
+  ],
+  timing: [[8, 'The definition'], [12, 'The axiom of parallels'], [12, 'Always the same distance'], [6, 'Around the room'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'The definition',
+      html: `<p>Two lines in the same plane are <b>parallel</b> if they have no common point, however far
+      they are produced in either direction. We write ${m('a ∥ b')}.</p>
+      {{fig:parallelLines:Two parallel lines and a transversal}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Two lines in a plane</th><th>Common points</th><th>Name</th></tr></thead>
+      <tbody>
+        <tr><td>they cross</td><td class="m">1</td><td>intersecting</td></tr>
+        <tr><td>they never meet</td><td class="m">0</td><td>parallel</td></tr>
+        <tr><td>every point is shared</td><td>all</td><td>the same line</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">“They do not meet on my page” proves nothing</span>
+      A line has no end. Two lines drawn a little apart may cross far outside the page, so parallelism
+      can never be checked by looking — it has to be established from angles, which is the next
+      lesson.</div>`
+    },
+    {
+      h: 'The axiom of parallels',
+      html: `${eq('Through a point not on a line there passes exactly one line parallel to it.', true)}
+      <p>“At least one” can be proved; “exactly one” cannot, and is taken as an <b>axiom</b>. It is the
+      most famous statement in geometry — mathematicians tried for two thousand years to derive it, and
+      the failure produced the non-Euclidean geometries.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Claim</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>at least one parallel exists</td><td>a theorem</td></tr>
+        <tr><td>there is no more than one</td><td>the axiom</td></tr>
+        <tr><td>parallels stay the same distance apart</td><td>follows from the axiom</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Why the axiom is needed</div>
+      Without it a triangle's angles need not add to ${m('180°')}. Every result of the next three lessons
+      rests on it, which is why it is stated openly rather than assumed silently.</div>`
+    },
+    {
+      h: 'Always the same distance',
+      html: `<p>The distance from a point to a line is measured along the perpendicular. If ${m('a ∥ b')},
+      that distance is the same wherever the point is taken on ${m('a')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Lines</th><th>Distance between them</th></tr></thead>
+      <tbody>
+        <tr><td>parallel</td><td>constant</td></tr>
+        <tr><td>intersecting</td><td>falls to zero at the crossing</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">This is how rails and ruled paper work</div>
+      A railway is built to a constant gauge precisely so that the rails are parallel; if the distance
+      changed anywhere, the wheels would jam or drop. Constant distance and parallelism are the same
+      fact stated two ways.</div>`
+    },
+    {
+      h: 'Around the room',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Object</th><th>Parallel pair</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td>ruled paper</td><td>the lines</td><td>writing stays level</td></tr>
+        <tr><td>a railway</td><td>the rails</td><td>constant gauge</td></tr>
+        <tr><td>a ladder</td><td>the two side rails</td><td>the rungs stay square</td></tr>
+        <tr><td>a window frame</td><td>opposite edges</td><td>the pane fits</td></tr>
+        <tr><td>a book's opposite edges</td><td>top and bottom</td><td>the pages stack</td></tr>
+      </tbody></table></div>
+      <p>In each case the parallelism is not decoration: it is what makes the object work.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'How many lines through a point ' + m('M') + ' outside a line ' + m('a') + ' are parallel to ' + m('a') + '?',
+      steps: [
+        ['At least one exists — this can be constructed.', ''],
+        ['The axiom says there is no second.', ''],
+        ['So the number is exactly one.', '']
+      ],
+      ans: m('1')
+    },
+    {
+      q: 'Two lines in a plane are drawn ' + m('3 cm') + ' apart at one point and ' + m('3.4 cm') + ' apart at another. Are they parallel?',
+      steps: [
+        ['Parallel lines keep a constant distance.', ''],
+        ['Here the distance changes.', ''],
+        ['So they are not parallel — they meet somewhere.', '']
+      ],
+      ans: 'No'
+    },
+    {
+      q: 'If ' + m('a ∥ b') + ' and ' + m('b ∥ c') + ', what can be said about ' + m('a') + ' and ' + m('c') + '?',
+      steps: [
+        ['Suppose ' + m('a') + ' met ' + m('c') + ' at a point ' + m('P') + '.', ''],
+        ['Then through ' + m('P') + ' there would be two lines parallel to ' + m('b') + '.', ''],
+        ['That contradicts the axiom.', ''],
+        ['So ' + m('a ∥ c') + '.', '']
+      ],
+      ans: m('a ∥ c')
+    }
+  ],
+  modelNote: 'Ask the class to draw two lines that “look parallel” and then measure the gap at both ends of the page; the ones that fail are the lesson.',
+  interactive: {
+    type: 'transform',
+    title: 'A translated line is parallel to the original',
+    hint: 'Translation keeps direction, so the image never meets the object.'
+  },
+  quiz: [
+    { q: 'Parallel lines have how many common points?', a: [m('0'), m('1'), m('2'), 'infinitely many'], c: 0, why: 'They never meet.' },
+    { q: 'The symbol for parallel is:', a: [m('⊥'), m('∥'), m('≡'), m('≈')], c: 1, why: 'Two strokes.' },
+    { q: 'Through a point off a line, parallels number:', a: [m('0'), 'exactly one', 'two', 'many'], c: 1, why: 'The axiom.' },
+    { q: 'The distance between parallel lines is:', a: ['increasing', 'constant', 'decreasing', 'zero'], c: 1, why: 'Everywhere the same.' },
+    { q: 'Distance from a point to a line is measured:', a: ['any way', 'along the perpendicular', 'along the line', 'diagonally'], c: 1, why: 'The shortest path.' },
+    { q: 'If ' + m('a ∥ b') + ' and ' + m('b ∥ c') + ' then:', a: [m('a ⊥ c'), m('a ∥ c'), m('a = c'), 'nothing follows'], c: 1, why: 'By the axiom.' }
+  ],
+  practice: {
+    easy: [
+      ['Two lines with no common point are', 'parallel'],
+      ['Write “' + m('a') + ' is parallel to ' + m('b') + '” in symbols', m('a ∥ b')],
+      ['Two lines crossing at one point are', 'intersecting'],
+      ['Parallels through a point off a line', m('1')],
+      ['The distance between parallels is', 'constant'],
+      ['Distance to a line is measured along the', 'perpendicular'],
+      ['Name one parallel pair in the classroom', 'e.g. the opposite edges of the board']
+    ],
+    med: [
+      ['Gaps of ' + m('3') + ' and ' + m('3.4 cm') + ': parallel?', 'No'],
+      [m('a ∥ b') + ', ' + m('b ∥ c') + ': is ' + m('a ∥ c') + '?', 'Yes'],
+      ['Can two parallel lines lie in different planes?', 'Not by this definition — the same plane is required'],
+      ['Is “exactly one parallel” a theorem or an axiom?', 'An axiom'],
+      ['Is “at least one parallel” a theorem or an axiom?', 'A theorem'],
+      ['Two rails ' + m('1520 mm') + ' apart everywhere are', 'parallel'],
+      ['Why is looking at a drawing not a proof?', 'The lines may meet beyond the page']
+    ],
+    hard: [
+      ['Prove that ' + m('a ∥ b') + ' and ' + m('b ∥ c') + ' force ' + m('a ∥ c'), 'Two parallels to ' + m('b') + ' through one point contradict the axiom'],
+      ['If ' + m('a ⊥ c') + ' and ' + m('b ⊥ c') + ' in a plane, then', m('a ∥ b')],
+      ['How many lines are parallel to ' + m('a') + ' in the whole plane?', 'Infinitely many — one through each point off it'],
+      ['A quadrilateral with both pairs of opposite sides parallel is a', 'parallelogram'],
+      ['Explain why the axiom cannot be checked by measurement', 'Measurement covers a finite part of an endless line'],
+      ['What fails without the axiom of parallels?', 'The angle sum of a triangle is no longer ' + m('180°')],
+      ['Two lines are ' + m('0') + ' apart at one point: what are they?', 'Intersecting there, or the same line']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Measure, do not eyeball: take the gap at both ends of the page.',
+  homework: [
+    'Draw a line ' + m('a') + ' and a point ' + m('M') + ' off it, and construct the parallel through ' + m('M') + '.',
+    'Find five parallel pairs at home and say what each is for.',
+    'State the axiom of parallels in your own words.',
+    'Two lines are ' + m('4 cm') + ' apart at the left edge and ' + m('4 cm') + ' apart at the right. Are they parallel? What else would you check?',
+    'Explain why ' + m('a ∥ b') + ' and ' + m('b ∥ c') + ' give ' + m('a ∥ c') + '.'
+  ]
+});
+
+/* ============================== 46 ============================== */
+G7_MAT.push({
+  id: 'g7-46', stream: 'mat', grade: 7, quarter: 3, lessons: '82–83', hours: 2,
+  title: 'The criterion for two lines to be parallel',
+  subtitle: 'One pair of equal alternate angles is enough — parallelism becomes something you can check.',
+  uz: 'Matematika 7, §38', uzPage: 'pp. 231–237',
+  cam: 'S8 5.1', camPage: 'Stage 8, pp. 44–47', wb: 'Exercise 5.1',
+  objectives: [
+    'Name the alternate, corresponding and co-interior angles at a transversal.',
+    'State and use the three criteria for two lines to be parallel.',
+    'Prove that two lines are parallel from an angle equality.',
+    'Deduce that two perpendiculars to the same line are parallel.'
+  ],
+  terms: [
+    ['Transversal', 'Kesuvchi', 'Секущая'],
+    ['Alternate angles', 'Ichki almashinuvchi burchaklar', 'Накрест лежащие углы'],
+    ['Corresponding angles', 'Mos burchaklar', 'Соответственные углы'],
+    ['Co-interior angles', 'Ichki bir tomonli burchaklar', 'Односторонние углы'],
+    ['Criterion', 'Alomat', 'Признак'],
+    ['To conclude', 'Xulosa chiqarmoq', 'Сделать вывод'],
+    ['Perpendicular', 'Perpendikulyar', 'Перпендикуляр'],
+    ['Proof', 'Isbot', 'Доказательство']
+  ],
+  timing: [[15, 'The transversal and its eight angles'], [25, 'The three criteria'], [25, 'Using a criterion'], [20, 'Perpendiculars to one line'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The transversal and its eight angles',
+      html: `<p>A line that cuts two others is a <b>transversal</b>. It makes eight angles, and three pairs
+      of them have names.</p>
+      {{fig:parallelLines:The transversal and the named pairs}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Pair</th><th>Where they sit</th><th>When the lines are parallel</th></tr></thead>
+      <tbody>
+        <tr><td>alternate</td><td>between the lines, opposite sides of the transversal</td><td>equal</td></tr>
+        <tr><td>corresponding</td><td>same side, one above and one below</td><td>equal</td></tr>
+        <tr><td>co-interior</td><td>between the lines, same side</td><td>add to ${m('180°')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Names first, facts second</div>
+      Half the errors in this chapter are naming errors, not reasoning errors. Point at a pair and say
+      its name aloud before quoting any rule about it.</div>`
+    },
+    {
+      h: 'The three criteria',
+      html: `<p>Each pair gives a criterion. Every one of them is a one-way street read this way: the
+      angle fact comes first, and parallelism is the conclusion.</p>
+      ${eq('alternate equal  ⟹  ' + m('a ∥ b') + '     corresponding equal  ⟹  ' + m('a ∥ b') + '     co-interior sum ' + m('180°') + '  ⟹  ' + m('a ∥ b'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Conclusion</th></tr></thead>
+      <tbody>
+        <tr><td class="m">∠1 = ∠2</td><td>alternate — the lines are parallel</td></tr>
+        <tr><td class="m">∠1 = ∠3</td><td>corresponding — the lines are parallel</td></tr>
+        <tr><td class="m">∠1 + ∠4 = 180°</td><td>co-interior — the lines are parallel</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">One correct pair is enough — but it must be a named pair</span>
+      Two angles that happen to be equal prove nothing unless they are alternate or corresponding. Check
+      the position first; the equality alone is not a criterion.</div>`
+    },
+    {
+      h: 'Using a criterion',
+      html: `<p>The written proof is three lines: name the pair, quote the criterion, state the
+      conclusion.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td class="m">∠1 = 70°, ∠2 = 70°</td><td>given</td></tr>
+        <tr><td>they are alternate angles</td><td>position at the transversal</td></tr>
+        <tr><td class="m">a ∥ b</td><td>the alternate-angle criterion</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Data</th><th>Pair</th><th>Parallel?</th></tr></thead>
+      <tbody>
+        <tr><td class="m">∠1 = 70°, ∠2 = 70°</td><td>alternate</td><td>yes</td></tr>
+        <tr><td class="m">∠1 = 110°, ∠4 = 70°</td><td>co-interior</td><td>yes</td></tr>
+        <tr><td class="m">∠1 = 70°, ∠4 = 80°</td><td>co-interior</td><td>no</td></tr>
+        <tr><td class="m">∠1 = 70°, ∠3 = 70°</td><td>corresponding</td><td>yes</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'Perpendiculars to one line',
+      html: `<p>The neatest consequence: if two lines are both perpendicular to a third, they are
+      parallel.</p>
+      ${eq(m('a ⊥ c') + ' and ' + m('b ⊥ c') + '  ⟹  ' + m('a ∥ b'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td class="m">a ⊥ c, b ⊥ c</td><td>given</td></tr>
+        <tr><td>the two angles at ${m('c')} are ${m('90°')} each</td><td>definition of perpendicular</td></tr>
+        <tr><td>they are corresponding and equal</td><td>position at the transversal</td></tr>
+        <tr><td class="m">a ∥ b</td><td>the corresponding-angle criterion</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">This is what a set square does</div>
+      Sliding a set square along a ruler draws parallel lines because every line it draws is
+      perpendicular to the ruler. The tool is the theorem made of plastic.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A transversal makes ' + m('∠1 = 64°') + ' and its alternate ' + m('∠2 = 64°') + '. Are the lines parallel?',
+      steps: [
+        ['The pair is alternate — check the position.', ''],
+        ['They are equal.', ''],
+        ['By the alternate-angle criterion, ' + m('a ∥ b') + '.', '']
+      ],
+      ans: 'Yes'
+    },
+    {
+      q: 'Co-interior angles measure ' + m('115°') + ' and ' + m('65°') + '. Are the lines parallel?',
+      steps: [
+        [m('115° + 65° = 180°'), ''],
+        ['Co-interior angles adding to ' + m('180°') + ' is the criterion.', ''],
+        ['So the lines are parallel.', '']
+      ],
+      ans: 'Yes'
+    },
+    {
+      q: 'Prove that ' + m('a ⊥ c') + ' and ' + m('b ⊥ c') + ' give ' + m('a ∥ b') + '.',
+      steps: [
+        ['Both lines meet ' + m('c') + ' at ' + m('90°') + '.', ''],
+        ['Those two right angles are corresponding.', ''],
+        ['They are equal.', ''],
+        ['By the corresponding-angle criterion, ' + m('a ∥ b') + '.', '']
+      ],
+      ans: m('a ∥ b')
+    }
+  ],
+  modelNote: 'Draw one transversal on the board and have the class colour the three named pairs in three colours before any rule is stated; the naming errors disappear.',
+  interactive: {
+    type: 'quiz',
+    title: 'Name the pair, then decide',
+    hint: 'Position first, equality second.',
+    items: [
+      { q: 'Angles between the lines, opposite sides of the transversal:', a: ['corresponding', 'alternate', 'co-interior', 'vertical'], c: 1, why: 'Across the transversal.' },
+      { q: 'Angles on the same side, one above and one below:', a: ['corresponding', 'alternate', 'co-interior', 'adjacent'], c: 0, why: 'They match in position.' },
+      { q: 'Angles between the lines on the same side:', a: ['corresponding', 'alternate', 'co-interior', 'vertical'], c: 2, why: 'One side only.' },
+      { q: 'Equal alternate angles give:', a: ['perpendicular lines', 'parallel lines', 'nothing', 'a triangle'], c: 1, why: 'The criterion.' },
+      { q: 'Co-interior angles that add to ' + m('180°') + ' give:', a: ['parallel lines', 'intersecting lines', 'nothing', 'equal lines'], c: 0, why: 'The criterion.' },
+      { q: m('∠1 = 70°') + ' and co-interior ' + m('∠4 = 80°') + ':', a: ['parallel', 'not parallel', 'perpendicular', 'cannot say'], c: 1, why: 'The sum is ' + m('150°') + '.' },
+      { q: 'Two lines perpendicular to a third are:', a: ['perpendicular', 'parallel', 'skew', 'equal'], c: 1, why: 'Equal corresponding angles.' },
+      { q: 'Two equal angles that are not a named pair prove:', a: ['parallelism', 'nothing', 'perpendicularity', 'congruence'], c: 1, why: 'Position matters.' }
+    ]
+  },
+  quiz: [
+    { q: 'A line cutting two others is a:', a: ['bisector', 'transversal', 'median', 'chord'], c: 1, why: 'It crosses both.' },
+    { q: 'A transversal makes how many angles?', a: [m('4'), m('6'), m('8'), m('12')], c: 2, why: 'Four at each crossing.' },
+    { q: 'Alternate angles equal ⟹', a: ['the lines meet', 'the lines are parallel', 'nothing', 'a right angle'], c: 1, why: 'The criterion.' },
+    { q: 'Co-interior angles of parallel lines add to:', a: [m('90°'), m('180°'), m('270°'), m('360°')], c: 1, why: 'A straight angle.' },
+    { q: 'Corresponding angles of ' + m('64°') + ' and ' + m('64°') + ' give:', a: ['parallel lines', 'perpendicular lines', 'nothing', 'a triangle'], c: 0, why: 'The criterion.' },
+    { q: m('a ⊥ c') + ' and ' + m('b ⊥ c') + ' give:', a: [m('a ⊥ b'), m('a ∥ b'), m('a = b'), 'nothing'], c: 1, why: 'Right angles correspond.' }
+  ],
+  practice: {
+    easy: [
+      ['Name the pair between the lines, opposite sides', 'alternate'],
+      ['Name the pair on the same side, one above one below', 'corresponding'],
+      ['Name the pair between the lines, same side', 'co-interior'],
+      ['Alternate angles ' + m('70°') + ' and ' + m('70°') + ': parallel?', 'Yes'],
+      ['Corresponding angles ' + m('50°') + ' and ' + m('60°') + ': parallel?', 'No'],
+      ['Co-interior ' + m('100°') + ' and ' + m('80°') + ': parallel?', 'Yes'],
+      ['A transversal makes how many angles?', m('8')]
+    ],
+    med: [
+      ['Co-interior ' + m('115°') + ' and ' + m('65°'), 'Parallel'],
+      ['Co-interior ' + m('70°') + ' and ' + m('80°'), 'Not parallel'],
+      ['Alternate ' + m('3x') + ' and ' + m('75°') + ' with the lines parallel: find ' + m('x'), m('x = 25')],
+      ['Corresponding ' + m('2x + 10') + ' and ' + m('80°') + ' with the lines parallel', m('x = 35')],
+      [m('a ⊥ c') + ', ' + m('b ⊥ c') + ': what follows?', m('a ∥ b')],
+      ['Write the three-line proof for equal alternate angles', 'given; alternate; criterion'],
+      ['Two equal angles that are vertical prove parallelism?', 'No — not a named pair']
+    ],
+    hard: [
+      ['Co-interior angles are ' + m('x') + ' and ' + m('2x') + ' with the lines parallel: find both', m('60°') + ' and ' + m('120°')],
+      ['Alternate angles are ' + m('4x − 10') + ' and ' + m('3x + 20') + ': find ' + m('x') + ' for parallelism', m('x = 30')],
+      ['Co-interior ' + m('5x') + ' and ' + m('4x') + ': find ' + m('x'), m('x = 20')],
+      ['Why is each criterion stated as an implication, not an equality?', 'The angle fact is the evidence; parallelism is the conclusion'],
+      ['A set square slid along a ruler draws parallels — why?', 'Every line drawn is perpendicular to the ruler'],
+      ['Corresponding angles ' + m('x + 30') + ' and ' + m('2x − 10') + ': find ' + m('x'), m('x = 40')],
+      ['Given ' + m('∠1 = 108°') + ', find the co-interior angle that makes the lines parallel', m('72°')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Name the pair in words before you write a single number.',
+  homework: [
+    'Draw a transversal across two lines and label all three named pairs.',
+    'Alternate angles are ' + m('5x') + ' and ' + m('65°') + '. Find ' + m('x') + ' if the lines are parallel.',
+    'Co-interior angles are ' + m('3x') + ' and ' + m('2x') + '. Find both.',
+    'Write the three-line proof that ' + m('a ⊥ c') + ' and ' + m('b ⊥ c') + ' give ' + m('a ∥ b') + '.',
+    'Explain why two equal vertical angles do not prove that two lines are parallel.'
+  ]
+});
