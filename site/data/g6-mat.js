@@ -577,3 +577,370 @@ G6_MAT.push({
     'Compute ' + m('−6 · 3 + 20 ÷ (−4)') + '.'
   ]
 });
+
+/* ============================== 04 ============================== */
+G6_MAT.push({
+  id: 'g6-04', stream: 'mat', grade: 6, quarter: 1, lessons: '8–10', hours: 3,
+  title: 'Algebraic expressions',
+  subtitle: 'A letter standing for a number — and a sentence in words turned into one line of algebra.',
+  uz: 'Matematika 6, §1', uzPage: 'pp. 21–28',
+  cam: 'S7 2.1', camPage: 'Stage 7, pp. 20–24', wb: 'Exercise 2.1',
+  objectives: [
+    'Explain what a letter stands for in an expression.',
+    'Write a worded rule as an algebraic expression.',
+    'Read an expression back into words.',
+    'Use the standard shorthands of algebraic notation.'
+  ],
+  terms: [
+    ['Algebraic expression', 'Harfli ifoda', 'Буквенное выражение'],
+    ['Variable', 'O‘zgaruvchi', 'Переменная'],
+    ['Constant', 'O‘zgarmas', 'Постоянная'],
+    ['Term', 'Had', 'Член'],
+    ['Coefficient', 'Koeffitsiyent', 'Коэффициент'],
+    ['Sum', 'Yig‘indi', 'Сумма'],
+    ['Product', 'Ko‘paytma', 'Произведение'],
+    ['Formula', 'Formula', 'Формула']
+  ],
+  timing: [[20, 'A letter for a number'], [30, 'Words into algebra'], [30, 'Algebra into words'], [30, 'The shorthands'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'A letter for a number',
+      html: `<p>An <b>algebraic expression</b> is an arithmetic expression in which some numbers are
+      replaced by letters. The letter stands for a number that may change — which is why it is called a
+      <b>variable</b>.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>What the letter stands for</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3n</td><td>the number of legs on ${m('n')} tripods</td></tr>
+        <tr><td class="m">x + 5</td><td>a number five more than ${m('x')}</td></tr>
+        <tr><td class="m">2(a + b)</td><td>the perimeter of a rectangle ${m('a')} by ${m('b')}</td></tr>
+        <tr><td class="m">100 − p</td><td>the change from ${m('100')} after spending ${m('p')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Why letters are worth the trouble</div>
+      One line, ${m('P = 2(a + b)')}, replaces a sentence that would have to be rewritten for every
+      rectangle in the world. Algebra is arithmetic said once instead of endlessly.</div>`
+    },
+    {
+      h: 'Words into algebra',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>In words</th><th>In algebra</th></tr></thead>
+      <tbody>
+        <tr><td>a number increased by ${m('7')}</td><td class="m">x + 7</td></tr>
+        <tr><td>a number decreased by ${m('7')}</td><td class="m">x − 7</td></tr>
+        <tr><td>${m('7')} less than a number</td><td class="m">x − 7</td></tr>
+        <tr><td>a number subtracted from ${m('7')}</td><td class="m">7 − x</td></tr>
+        <tr><td>three times a number</td><td class="m">3x</td></tr>
+        <tr><td>a third of a number</td><td class="m">${f('x', '3')}</td></tr>
+        <tr><td>three times a number, then add ${m('2')}</td><td class="m">3x + 2</td></tr>
+        <tr><td>add ${m('2')} to a number, then treble it</td><td class="m">3(x + 2)</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The order of the words decides the brackets</span>
+      ${m('3x + 2')} and ${m('3(x + 2)')} are different: for ${m('x = 4')} they are ${m('14')} and
+      ${m('18')}. “Then” tells you which operation happens second, and a bracket is how you write
+      that.</div>`
+    },
+    {
+      h: 'Algebra into words',
+      html: `<p>Reading in the other direction is the better test of understanding — and there is usually
+      more than one right reading.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>One reading</th><th>A context</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5n</td><td>five times a number</td><td>the cost of ${m('n')} pens at ${m('5')} each</td></tr>
+        <tr><td class="m">n + 3</td><td>three more than a number</td><td>an age three years from now</td></tr>
+        <tr><td class="m">2n + 1</td><td>double a number and add one</td><td>an odd number</td></tr>
+        <tr><td class="m">${f('s', 't')}</td><td>one number divided by another</td><td>speed, from distance and time</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Every formula is an expression with a name</div>
+      ${m('P = 2(a + b)')}, ${m('S = ab')}, ${m('v = ' + f('s', 't'))} — the left side names what the
+      expression on the right computes.</div>`
+    },
+    {
+      h: 'The shorthands',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Written as</th><th>Not as</th><th>Rule</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3x</td><td class="m">3 · x</td><td>the multiplication sign is dropped</td></tr>
+        <tr><td class="m">ab</td><td class="m">a · b</td><td>the same between two letters</td></tr>
+        <tr><td class="m">x</td><td class="m">1x</td><td>a coefficient of ${m('1')} is not written</td></tr>
+        <tr><td class="m">−x</td><td class="m">−1x</td><td>the same for ${m('−1')}</td></tr>
+        <tr><td class="m">${f('x', '3')}</td><td class="m">x ÷ 3</td><td>division is written as a fraction</td></tr>
+        <tr><td class="m">x²</td><td class="m">x · x</td><td>a power counts equal factors</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('3x')} means multiply, never “thirty-something”</span>
+      In arithmetic, digits written together mean place value; in algebra, symbols written together mean
+      a product. It is the one place where the two notations disagree.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Write “three times a number, then add ' + m('2') + '” and “add ' + m('2') + ' to a number, then treble it”.',
+      steps: [
+        ['First: multiply, then add.', m('3x + 2')],
+        ['Second: add, then multiply — the addition needs a bracket.', m('3(x + 2)')],
+        ['They differ: for ' + m('x = 4') + ' they give ' + m('14') + ' and ' + m('18') + '.', '']
+      ],
+      ans: m('3x + 2') + ' and ' + m('3(x + 2)')
+    },
+    {
+      q: 'A pen costs ' + m('p') + ' sum and a pencil ' + m('q') + '. Write the cost of ' + m('3') + ' pens and ' + m('4') + ' pencils.',
+      steps: [
+        [m('3') + ' pens cost ' + m('3p') + '.', ''],
+        [m('4') + ' pencils cost ' + m('4q') + '.', ''],
+        ['Together: ' + m('3p + 4q') + '.', '']
+      ],
+      ans: m('3p + 4q')
+    },
+    {
+      q: 'Write the perimeter and area of a rectangle with sides ' + m('a') + ' and ' + m('b') + '.',
+      steps: [
+        ['Perimeter: two lots of ' + m('a + b') + '.', m('P = 2(a + b)')],
+        ['Area: one side times the other.', m('S = ab')]
+      ],
+      ans: m('2(a + b)') + ' and ' + m('ab')
+    }
+  ],
+  modelNote: 'Read an expression aloud and ask for a story that fits it; the class invents contexts far faster than they translate them, and the translation improves as a result.',
+  interactive: {
+    type: 'quiz',
+    title: 'Words into algebra',
+    hint: '“Then” tells you where the brackets go.',
+    items: [
+      { q: '“A number increased by ' + m('7') + '”:', a: [m('7x'), m('x + 7'), m('x − 7'), m('7 − x')], c: 1, why: 'Add.' },
+      { q: '“' + m('7') + ' less than a number”:', a: [m('7 − x'), m('x − 7'), m('x + 7'), m('7x')], c: 1, why: 'Take ' + m('7') + ' away from ' + m('x') + '.' },
+      { q: '“A number subtracted from ' + m('7') + '”:', a: [m('7 − x'), m('x − 7'), m('x + 7'), m('7x')], c: 0, why: 'The other way round.' },
+      { q: '“Three times a number, then add ' + m('2') + '”:', a: [m('3x + 2'), m('3(x + 2)'), m('2x + 3'), m('x + 6')], c: 0, why: 'Multiply first.' },
+      { q: '“Add ' + m('2') + ' to a number, then treble it”:', a: [m('3x + 2'), m('3(x + 2)'), m('2(x + 3)'), m('3x + 6') + ' only'], c: 1, why: 'The bracket carries “then”.' },
+      { q: '“A third of a number”:', a: [m('3x'), m(f('x', '3')), m('x − 3'), m('x + 3')], c: 1, why: 'Divide.' },
+      { q: m('1x') + ' is written:', a: [m('1x'), m('x'), m('x¹'), m('x + 1')], c: 1, why: 'The ' + m('1') + ' is not written.' },
+      { q: 'The perimeter of an ' + m('a') + ' by ' + m('b') + ' rectangle:', a: [m('ab'), m('a + b'), m('2(a + b)'), m('2ab')], c: 2, why: 'Two of each side.' }
+    ]
+  },
+  quiz: [
+    { q: 'A letter in an expression stands for:', a: ['a word', 'a number', 'an operation', 'nothing'], c: 1, why: 'A variable.' },
+    { q: m('3x') + ' means:', a: [m('3 + x'), m('3 · x'), 'thirty-something', m('x³')], c: 1, why: 'A product.' },
+    { q: '“' + m('7') + ' less than ' + m('x') + '” is:', a: [m('7 − x'), m('x − 7'), m('7x'), m('x + 7')], c: 1, why: 'Take away from ' + m('x') + '.' },
+    { q: m('3(x + 2)') + ' at ' + m('x = 4') + ' is:', a: [m('14'), m('18'), m('20'), m('12')], c: 1, why: 'Bracket first.' },
+    { q: 'A third of ' + m('x') + ' is written:', a: [m('3x'), m(f('x', '3')), m(f('3', 'x')), m('x − 3')], c: 1, why: 'Division as a fraction.' },
+    { q: 'The area of an ' + m('a') + ' by ' + m('b') + ' rectangle:', a: [m('2(a + b)'), m('ab'), m('a + b'), m('2ab')], c: 1, why: 'One side times the other.' }
+  ],
+  practice: {
+    easy: [
+      ['“A number increased by ' + m('7') + '”', m('x + 7')],
+      ['“A number decreased by ' + m('7') + '”', m('x − 7')],
+      ['“Three times a number”', m('3x')],
+      ['“A third of a number”', m(f('x', '3'))],
+      ['“A number subtracted from ' + m('7') + '”', m('7 − x')],
+      ['The cost of ' + m('n') + ' pens at ' + m('5') + ' sum', m('5n')],
+      ['The perimeter of an ' + m('a') + ' by ' + m('b') + ' rectangle', m('2(a + b)')]
+    ],
+    med: [
+      ['“Three times a number, then add ' + m('2') + '”', m('3x + 2')],
+      ['“Add ' + m('2') + ' to a number, then treble it”', m('3(x + 2)')],
+      [m('3') + ' pens at ' + m('p') + ' and ' + m('4') + ' pencils at ' + m('q'), m('3p + 4q')],
+      ['The change from ' + m('100') + ' after spending ' + m('p'), m('100 − p')],
+      ['An age ' + m('n') + ' now, in ' + m('5') + ' years', m('n + 5')],
+      ['An odd number, written with ' + m('n'), m('2n + 1')],
+      ['Speed from distance ' + m('s') + ' and time ' + m('t'), m(f('s', 't'))]
+    ],
+    hard: [
+      ['The perimeter of a square of side ' + m('a'), m('4a')],
+      ['The total of three consecutive numbers starting at ' + m('n'), m('3n + 3')],
+      ['The cost of ' + m('n') + ' books at ' + m('p') + ' each with ' + m('2000') + ' postage', m('np + 2000')],
+      ['Half of one number added to twice another', m(f('a', '2') + ' + 2b')],
+      ['The area of a rectangle whose length is ' + m('3') + ' more than its width ' + m('w'), m('w(w + 3)')],
+      ['Read ' + m('2(n − 1)') + ' in words', 'One less than a number, then doubled'],
+      ['Why do ' + m('3x + 2') + ' and ' + m('3(x + 2)') + ' differ?', 'The bracket changes which operation is done first']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Say the expression aloud before writing it; the word “then” marks the bracket.',
+  homework: [
+    'Write in algebra: a number increased by ' + m('12') + '; ' + m('12') + ' less than a number; a quarter of a number.',
+    'Write “double a number, then subtract ' + m('5') + '” and “subtract ' + m('5') + ' from a number, then double it”.',
+    'A notebook costs ' + m('a') + ' and a pen ' + m('b') + '. Write the cost of ' + m('5') + ' notebooks and ' + m('2') + ' pens.',
+    'Write the perimeter and area of a square of side ' + m('a') + '.',
+    'Read ' + m('4(n + 3)') + ' in words and give its value at ' + m('n = 2') + '.'
+  ]
+});
+
+/* ============================== 05 ============================== */
+G6_MAT.push({
+  id: 'g6-05', stream: 'mat', grade: 6, quarter: 1, lessons: '11–12', hours: 2,
+  title: 'Simplifying algebraic expressions',
+  subtitle: 'Collecting like terms, and taking a common factor out of a bracket.',
+  uz: 'Matematika 6, §2', uzPage: 'pp. 29–34',
+  cam: 'S7 2.3', camPage: 'Stage 7, pp. 25–29', wb: 'Exercise 2.3',
+  objectives: [
+    'Identify like terms and collect them.',
+    'Expand a bracket by multiplying every term inside it.',
+    'Take a common factor outside a bracket.',
+    'Check a simplification by substituting a number.'
+  ],
+  terms: [
+    ['To simplify', 'Soddalashtirish', 'Упростить'],
+    ['Like terms', 'O‘xshash hadlar', 'Подобные члены'],
+    ['To collect', 'Ixchamlash', 'Приведение подобных'],
+    ['To expand', 'Qavsni ochish', 'Раскрыть скобки'],
+    ['Common factor', 'Umumiy ko‘paytuvchi', 'Общий множитель'],
+    ['Bracket', 'Qavs', 'Скобка'],
+    ['Coefficient', 'Koeffitsiyent', 'Коэффициент'],
+    ['Substitution check', 'Tekshirish', 'Проверка подстановкой']
+  ],
+  timing: [[20, 'Like terms'], [25, 'Collecting'], [20, 'Expanding a bracket'], [12, 'Taking a factor out'], [3, 'Homework']],
+  sections: [
+    {
+      h: 'Like terms',
+      html: `<p>Terms are <b>like</b> when their letter parts are identical. Only like terms can be
+      collected — for the same reason that apples and oranges cannot be added into one number of
+      apples.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Pair</th><th>Like?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5x and −2x</td><td>yes</td><td>the same letter</td></tr>
+        <tr><td class="m">5x and 5y</td><td>no</td><td>different letters</td></tr>
+        <tr><td class="m">5x and 5x²</td><td>no</td><td>different powers</td></tr>
+        <tr><td class="m">3ab and 7ba</td><td>yes</td><td class="m">ab = ba</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The coefficient may differ; the letters may not</div>
+      ${m('5x')} and ${m('−2x')} are like terms and collect to ${m('3x')}. ${m('5x')} and ${m('5y')} are
+      not, and ${m('5x + 5y')} is already as simple as it gets.</div>`
+    },
+    {
+      h: 'Collecting',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Collected</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5x + 3x</td><td class="m">8x</td></tr>
+        <tr><td class="m">7a − 2a</td><td class="m">5a</td></tr>
+        <tr><td class="m">4x + 3y + 2x − y</td><td class="m">6x + 2y</td></tr>
+        <tr><td class="m">6m − 9m</td><td class="m">−3m</td></tr>
+        <tr><td class="m">3a + 4b</td><td class="m">3a + 4b</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A term carries the sign in front of it</span>
+      In ${m('4x + 3y + 2x − y')} the last term is ${m('−y')}, with coefficient ${m('−1')}. Collecting the
+      ${m('y')} terms gives ${m('3y − y = 2y')}, not ${m('4y')}.</div>`
+    },
+    {
+      h: 'Expanding a bracket',
+      html: `${eq(m('a(b + c) = ab + ac'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Expanded</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3(x + 4)</td><td class="m">3x + 12</td></tr>
+        <tr><td class="m">5(2a − 3)</td><td class="m">10a − 15</td></tr>
+        <tr><td class="m">x(x + 2)</td><td class="m">x² + 2x</td></tr>
+        <tr><td class="m">2(x + 3) + 4x</td><td class="m">6x + 6</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Every term inside the bracket is multiplied</span>
+      ${m('3(x + 4)')} is ${m('3x + 12')}, not ${m('3x + 4')}. Drawing two arrows from the ${m('3')} to
+      both terms stops this error for good.</div>`
+    },
+    {
+      h: 'Taking a factor out',
+      html: `<p>Expanding read backwards: find what every term has in common and write it outside.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Common factor</th><th>Factorised</th></tr></thead>
+      <tbody>
+        <tr><td class="m">6x + 9</td><td class="m">3</td><td class="m">3(2x + 3)</td></tr>
+        <tr><td class="m">4a − 10</td><td class="m">2</td><td class="m">2(2a − 5)</td></tr>
+        <tr><td class="m">x² + 5x</td><td class="m">x</td><td class="m">x(x + 5)</td></tr>
+        <tr><td class="m">12m + 8n</td><td class="m">4</td><td class="m">4(3m + 2n)</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Check by substituting a number</div>
+      Put ${m('x = 2')} into ${m('6x + 9')} and into ${m('3(2x + 3)')}: both give ${m('21')}. One
+      substitution catches almost every slip in this lesson.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Simplify ' + m('4x + 3y + 2x − y') + '.',
+      steps: [
+        [m('x') + ' terms: ' + m('4x + 2x = 6x') + '.', ''],
+        [m('y') + ' terms: ' + m('3y − y = 2y') + '.', 'The last term is ' + m('−y') + '.'],
+        [m('= 6x + 2y'), 'Nothing else is like.']
+      ],
+      ans: m('6x + 2y')
+    },
+    {
+      q: 'Simplify ' + m('2(x + 3) + 4x') + '.',
+      steps: [
+        ['Expand: ' + m('2x + 6 + 4x') + '.', 'Both terms multiplied.'],
+        ['Collect: ' + m('6x + 6') + '.', ''],
+        ['Check at ' + m('x = 1') + ': ' + m('8 = 8') + ' ✓', '']
+      ],
+      ans: m('6x + 6')
+    },
+    {
+      q: 'Factorise ' + m('6x + 9') + '.',
+      steps: [
+        ['Both terms divide by ' + m('3') + '.', ''],
+        [m('6x ÷ 3 = 2x') + ' and ' + m('9 ÷ 3 = 3') + '.', ''],
+        [m('= 3(2x + 3)'), 'Check by expanding.']
+      ],
+      ans: m('3(2x + 3)')
+    }
+  ],
+  modelNote: 'Use coloured chalk for each letter when collecting; the class sees the groups before it counts them, and the sign errors halve.',
+  interactive: {
+    type: 'quiz',
+    title: 'Collect, expand, factorise',
+    hint: 'Only like terms collect.',
+    items: [
+      { q: m('5x + 3x') + ' equals:', a: [m('8x'), m('8x²'), m('15x'), m('8')], c: 0, why: 'Add the coefficients.' },
+      { q: m('5x') + ' and ' + m('5y') + ' collect to:', a: [m('10xy'), m('10x'), 'they do not collect', m('25xy')], c: 2, why: 'Different letters.' },
+      { q: m('4x + 3y + 2x − y') + ' equals:', a: [m('6x + 4y'), m('6x + 2y'), m('8x + 2y'), m('6x − 2y')], c: 1, why: m('3y − y') + '.' },
+      { q: m('6m − 9m') + ' equals:', a: [m('3m'), m('−3m'), m('15m'), m('−15m')], c: 1, why: 'The larger coefficient is negative.' },
+      { q: m('3(x + 4)') + ' equals:', a: [m('3x + 4'), m('3x + 12'), m('x + 12'), m('3x + 7')], c: 1, why: 'Both terms.' },
+      { q: m('5(2a − 3)') + ' equals:', a: [m('10a − 3'), m('10a − 15'), m('7a − 15'), m('2a − 15')], c: 1, why: 'Both terms.' },
+      { q: m('6x + 9') + ' factorises to:', a: [m('3(2x + 3)'), m('3(2x + 9)'), m('6(x + 9)'), m('3(x + 3)')], c: 0, why: 'Common factor ' + m('3') + '.' },
+      { q: m('x² + 5x') + ' factorises to:', a: [m('x(x + 5)'), m('x(x + 5x)'), m('5x(x + 1)'), m('x²(1 + 5)')], c: 0, why: 'Common factor ' + m('x') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'Like terms have:', a: ['the same coefficient', 'the same letter part', 'the same sign', 'nothing in common'], c: 1, why: 'Only then can they collect.' },
+    { q: m('7a − 2a') + ' equals:', a: [m('5a'), m('9a'), m('5'), m('14a')], c: 0, why: 'Subtract the coefficients.' },
+    { q: m('3a + 4b') + ' simplifies to:', a: [m('7ab'), m('7a'), 'it is already simplest', m('12ab')], c: 2, why: 'Not like terms.' },
+    { q: m('x(x + 2)') + ' equals:', a: [m('x² + 2'), m('x² + 2x'), m('2x²'), m('x + 2x')], c: 1, why: 'Both terms multiplied.' },
+    { q: m('4a − 10') + ' factorises to:', a: [m('2(2a − 5)'), m('2(2a − 10)'), m('4(a − 10)'), m('2(a − 5)')], c: 0, why: 'Common factor ' + m('2') + '.' },
+    { q: 'A simplification is checked by:', a: ['looking', 'substituting a number', 'expanding again', 'nothing'], c: 1, why: 'Both forms must agree.' }
+  ],
+  practice: {
+    easy: [
+      [m('5x + 3x'), m('8x')],
+      [m('7a − 2a'), m('5a')],
+      [m('6m − 9m'), m('−3m')],
+      [m('3(x + 4)'), m('3x + 12')],
+      [m('5(2a − 3)'), m('10a − 15')],
+      [m('6x + 9') + ' factorised', m('3(2x + 3)')],
+      [m('3a + 4b'), 'Already simplest']
+    ],
+    med: [
+      [m('4x + 3y + 2x − y'), m('6x + 2y')],
+      [m('2(x + 3) + 4x'), m('6x + 6')],
+      [m('x(x + 2)'), m('x² + 2x')],
+      [m('x² + 5x') + ' factorised', m('x(x + 5)')],
+      [m('12m + 8n') + ' factorised', m('4(3m + 2n)')],
+      [m('5a + 2b − 3a + 4b'), m('2a + 6b')],
+      [m('3(2x − 1) + 5'), m('6x + 2')]
+    ],
+    hard: [
+      [m('4(x + 2) − 3(x − 1)'), m('x + 11')],
+      [m('2x(x + 3) − x²'), m('x² + 6x')],
+      [m('5(a + b) − 5a'), m('5b')],
+      [m('3x + 2y − (x − y)'), m('2x + 3y')],
+      ['Factorise ' + m('9x² + 6x'), m('3x(3x + 2)')],
+      ['Check ' + m('6x + 9 = 3(2x + 3)') + ' at ' + m('x = 2'), 'Both give ' + m('21')],
+      ['Why can ' + m('3a') + ' and ' + m('3a²') + ' not be collected?', 'Their letter parts differ']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Substitute one number into both forms at the end; if they disagree, the simplification is wrong.',
+  homework: [
+    'Simplify ' + m('7x + 2y − 3x + 5y') + '.',
+    'Expand ' + m('4(x + 5)') + ' and ' + m('6(2a − 3)') + '.',
+    'Simplify ' + m('3(x + 2) + 2x') + '.',
+    'Factorise ' + m('8x + 12') + ' and ' + m('x² + 7x') + '.',
+    'Check your answer to task 4 by substituting ' + m('x = 3') + ' into both forms.'
+  ]
+});
