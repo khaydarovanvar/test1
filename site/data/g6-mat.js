@@ -14234,3 +14234,192 @@ G6_MAT.push({
     'A taxi charges ' + m('4000') + ' so‘m plus ' + m('1500') + ' so‘m a kilometre. Find the cost of ' + m('6') + ' km and the distance costing ' + m('16 000') + ' so‘m.'
   ]
 });
+
+/* ============================== 80 ============================== */
+G6_MAT.push({
+  id: 'g6-80', stream: 'mat', grade: 6, quarter: 4, lessons: '171–172', hours: 2,
+  title: 'The probability scale; calculating and estimating probability',
+  subtitle: 'From “likely” to a number between 0 and 1 — by counting, and by experiment. [Cambridge insert]',
+  uz: 'Matematika 6, qo‘shimcha mavzu', uzPage: 'pp. 488–492',
+  cam: 'S7 13 probability', camPage: 'Stage 7, pp. 132–140', wb: 'Exercise 13.1–13.2',
+  objectives: [
+    'Place an event on the probability scale from ' + m('0') + ' to ' + m('1') + '.',
+    'Calculate a probability when the outcomes are equally likely.',
+    'Use the fact that all the probabilities of one experiment add to ' + m('1') + '.',
+    'Estimate a probability from the results of an experiment.'
+  ],
+  terms: [
+    ['Probability', 'Ehtimollik', 'Вероятность'],
+    ['Event', 'Hodisa', 'Событие'],
+    ['Outcome', 'Natija', 'Исход'],
+    ['Equally likely', 'Teng ehtimolli', 'Равновозможные'],
+    ['Impossible', 'Imkonsiz', 'Невозможное'],
+    ['Certain', 'Muqarrar', 'Достоверное'],
+    ['Relative frequency', 'Nisbiy chastota', 'Относительная частота'],
+    ['Fair', 'Adolatli (bir jinsli)', 'Правильный (симметричный)']
+  ],
+  timing: [[20, 'The probability scale'], [22, 'Counting the outcomes'], [20, 'Probabilities that add to 1'], [18, 'Estimating from experiment']],
+  sections: [
+    {
+      h: 'The probability scale',
+      html: `<p>Every probability is a number from ${m('0')} to ${m('1')}. Nothing is less likely than
+      impossible and nothing more likely than certain, so nothing lies outside.</p>
+      {{fig:probabilityScale:The probability scale — impossible at 0, certain at 1}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Event</th><th>In words</th><th>Probability</th></tr></thead>
+      <tbody>
+        <tr><td>a die shows ${m('7')}</td><td>impossible</td><td class="m">0</td></tr>
+        <tr><td>a coin shows a head</td><td>even chance</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td>a die shows a number under ${m('7')}</td><td>certain</td><td class="m">1</td></tr>
+        <tr><td>a die shows ${m('4')}</td><td>unlikely</td><td class="m">${f('1', '6')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A probability is never a number like ${m('2')} or ${m('−0.3')}</span>
+      An answer outside ${m('0')} to ${m('1')} means the counting went wrong — usually the wrong total
+      underneath. Check that number before anything else.</div>`
+    },
+    {
+      h: 'Counting the outcomes',
+      html: `<p>When every outcome is equally likely, a probability is a fraction: how many outcomes count
+      as success, over how many there are altogether.</p>
+      ${eq(m('P(event) = ' + f('favourable outcomes', 'all outcomes')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Experiment</th><th>Event</th><th>Count</th><th>Probability</th></tr></thead>
+      <tbody>
+        <tr><td>one fair die</td><td>a ${m('4')}</td><td class="m">1 of 6</td><td class="m">${f('1', '6')}</td></tr>
+        <tr><td>one fair die</td><td>an even number</td><td class="m">3 of 6</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td>one fair die</td><td>more than ${m('4')}</td><td class="m">2 of 6</td><td class="m">${f('1', '3')}</td></tr>
+        <tr><td>one fair die</td><td>a multiple of ${m('3')}</td><td class="m">2 of 6</td><td class="m">${f('1', '3')}</td></tr>
+        <tr><td>a bag of ${m('10')} counters</td><td>red, with ${m('4')} red</td><td class="m">4 of 10</td><td class="m">${f('2', '5')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">“Equally likely” is a real condition, not a formality</div>
+      The fraction rule works for a fair die and for counters drawn without looking. It does not work for
+      “it rains tomorrow”, where the two outcomes are not equally likely at all.</div>`
+    },
+    {
+      h: 'Probabilities that add to 1',
+      html: `<p>A bag holds ${m('4')} red, ${m('3')} blue, ${m('2')} green and ${m('1')} yellow counter.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Colour</th><th>Counters</th><th>Probability</th><th>In lowest terms</th></tr></thead>
+      <tbody>
+        <tr><td>red</td><td class="m">4</td><td class="m">${f('4', '10')}</td><td class="m">${f('2', '5')}</td></tr>
+        <tr><td>blue</td><td class="m">3</td><td class="m">${f('3', '10')}</td><td class="m">${f('3', '10')}</td></tr>
+        <tr><td>green</td><td class="m">2</td><td class="m">${f('2', '10')}</td><td class="m">${f('1', '5')}</td></tr>
+        <tr><td>yellow</td><td class="m">1</td><td class="m">${f('1', '10')}</td><td class="m">${f('1', '10')}</td></tr>
+        <tr><td>total</td><td class="m">10</td><td class="m">${f('10', '10')}</td><td class="m">1</td></tr>
+      </tbody></table></div>
+      ${eq(m('P(not red) = 1 − P(red) = 1 − ' + f('2', '5') + ' = ' + f('3', '5')), true)}
+      <div class="keybox"><div class="klabel">Subtracting from one saves a lot of counting</div>
+      “Not a six” has five favourable outcomes, but ${m('1 − ' + f('1', '6') + ' = ' + f('5', '6'))} is
+      quicker and safer — and for a large set of outcomes it is the only sensible route.</div>`
+    },
+    {
+      h: 'Estimating from experiment',
+      html: `<p>Some probabilities cannot be counted, because the outcomes are not equally likely. Then the
+      experiment itself is the evidence: the <b>relative frequency</b> estimates the probability.</p>
+      ${eq('relative frequency ' + m('= ' + f('times it happened', 'times it was tried')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Experiment</th><th>Result</th><th>Estimate</th><th>Comment</th></tr></thead>
+      <tbody>
+        <tr><td>a drawing pin dropped ${m('100')} times</td><td>point up ${m('63')}</td><td class="m">0.63</td><td>no counting could have found it</td></tr>
+        <tr><td>a die thrown ${m('60')} times</td><td>${m('12')} sixes</td><td class="m">0.2</td><td>theory says ${m(f('1', '6') + ' ≈ 0.167')}</td></tr>
+        <tr><td>a coin tossed ${m('200')} times</td><td>${m('92')} heads</td><td class="m">0.46</td><td>close to ${m('0.5')} — it looks fair</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">More trials, better estimate</span>
+      Ten throws of a fair die can easily give four sixes; six hundred throws will not. A relative
+      frequency far from the theory is evidence of bias only when the number of trials is large.</div>
+      <p>Once a probability is known, the expected number in ${m('n')} trials is ${m('n')} times it:
+      ${m('300')} throws of a fair die should give about ${m('300 · ' + f('1', '6') + ' = 50')} sixes.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A bag holds ' + m('4') + ' red, ' + m('3') + ' blue, ' + m('2') + ' green and ' + m('1') + ' yellow counter. Find ' + m('P(red)') + ' and ' + m('P(not red)') + '.',
+      steps: [
+        ['There are ' + m('10') + ' counters altogether.', ''],
+        [m('P(red) = ' + f('4', '10') + ' = ' + f('2', '5')) + '.', ''],
+        [m('P(not red) = 1 − ' + f('2', '5') + ' = ' + f('3', '5')) + '.', 'Check: ' + m('6') + ' of the ' + m('10') + ' are not red ✓']
+      ],
+      ans: m(f('2', '5')) + ' and ' + m(f('3', '5'))
+    },
+    {
+      q: 'One fair die is thrown. Find ' + m('P(even)') + ', ' + m('P(more than 4)') + ' and ' + m('P(7)') + '.',
+      steps: [
+        ['Even: ' + m('2, 4, 6') + ' — three of six, so ' + m(f('1', '2')) + '.', ''],
+        ['More than ' + m('4') + ': ' + m('5, 6') + ' — two of six, so ' + m(f('1', '3')) + '.', ''],
+        ['A ' + m('7') + ' is impossible, so ' + m('0') + '.', 'All three lie between ' + m('0') + ' and ' + m('1') + ' ✓']
+      ],
+      ans: m(f('1', '2')) + ', ' + m(f('1', '3')) + ' and ' + m('0')
+    },
+    {
+      q: 'A drawing pin lands point up ' + m('63') + ' times in ' + m('100') + ' drops. Estimate the probability and the number of point-up landings in ' + m('500') + ' drops.',
+      steps: [
+        ['Relative frequency ' + m(f('63', '100') + ' = 0.63') + '.', ''],
+        ['Expected number ' + m('= 500 · 0.63') + '.', ''],
+        [m('= 315') + '.', 'An estimate, not a guarantee.']
+      ],
+      ans: m('0.63') + ' and about ' + m('315')
+    }
+  ],
+  modelNote: 'Throw a die twenty times as a class and write the running relative frequency of sixes on the board; watching it settle towards a sixth is worth more than any explanation.',
+  interactive: {
+    type: 'quiz',
+    title: 'Numbers between 0 and 1',
+    hint: 'Count the successes, count the total, and check the answer is not outside the scale.',
+    items: [
+      { q: 'An impossible event has probability:', a: [m('0'), m('1'), m('−1'), m(f('1', '2'))], c: 0, why: 'The left end of the scale.' },
+      { q: m('P(4)') + ' on a fair die is:', a: [m(f('1', '4')), m(f('1', '6')), m(f('4', '6')), m('4')], c: 1, why: 'One of six outcomes.' },
+      { q: m('P(even)') + ' on a fair die is:', a: [m(f('1', '3')), m(f('1', '2')), m(f('2', '3')), m(f('1', '6'))], c: 1, why: 'Three of six.' },
+      { q: m('P(more than 4)') + ' on a fair die is:', a: [m(f('1', '6')), m(f('1', '3')), m(f('1', '2')), m(f('2', '3'))], c: 1, why: m('5') + ' and ' + m('6') + '.' },
+      { q: 'With ' + m('4') + ' red in ' + m('10') + ' counters, ' + m('P(not red)') + ' is:', a: [m(f('2', '5')), m(f('3', '5')), m(f('1', '2')), m(f('6', '4'))], c: 1, why: m('1 − ' + f('2', '5')) + '.' },
+      { q: 'All the probabilities of one experiment add to:', a: [m('0'), m(f('1', '2')), m('1'), m('100')], c: 2, why: 'Something must happen.' },
+      { q: m('12') + ' sixes in ' + m('60') + ' throws gives a relative frequency of:', a: [m('0.12'), m('0.2'), m('0.6'), m('5')], c: 1, why: m('12 ÷ 60') + '.' },
+      { q: 'In ' + m('300') + ' throws of a fair die the expected number of sixes is:', a: [m('6'), m('30'), m('50'), m('60')], c: 2, why: m('300 · ' + f('1', '6')) + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'Every probability lies:', a: ['above ' + m('1'), 'between ' + m('0') + ' and ' + m('1'), 'below ' + m('0'), 'anywhere'], c: 1, why: 'Impossible to certain.' },
+    { q: 'A certain event has probability:', a: [m('0'), m(f('1', '2')), m('1'), m('100')], c: 2, why: 'The right end of the scale.' },
+    { q: 'The fraction rule needs the outcomes to be:', a: ['many', 'equally likely', 'few', 'written down'], c: 1, why: 'Otherwise counting is not enough.' },
+    { q: m('P(not A)') + ' equals:', a: [m('1 − P(A)'), m('P(A) − 1'), m('1 ÷ P(A)'), m('0')], c: 0, why: 'Everything else.' },
+    { q: 'Relative frequency is:', a: ['a theory', 'an estimate from experiment', 'always exact', 'a percentage'], c: 1, why: 'What happened over what was tried.' },
+    { q: 'A better estimate comes from:', a: ['fewer trials', 'more trials', 'a bigger die', 'rounding'], c: 1, why: 'It settles towards the true value.' }
+  ],
+  practice: {
+    easy: [
+      ['The probability of an impossible event', m('0')],
+      ['The probability of a certain event', m('1')],
+      [m('P(head)') + ' on a fair coin', m(f('1', '2'))],
+      [m('P(4)') + ' on a fair die', m(f('1', '6'))],
+      [m('P(even)') + ' on a fair die', m(f('1', '2'))],
+      [m('P(7)') + ' on a fair die', m('0')],
+      ['Every probability lies between', m('0') + ' and ' + m('1')]
+    ],
+    med: [
+      [m('P(more than 4)') + ' on a fair die', m(f('1', '3'))],
+      [m('P(red)') + ' with ' + m('4') + ' red in ' + m('10'), m(f('2', '5'))],
+      [m('P(blue)') + ' with ' + m('3') + ' blue in ' + m('10'), m(f('3', '10'))],
+      [m('P(not red)') + ' for that bag', m(f('3', '5'))],
+      ['The four probabilities of that bag add to', m('1')],
+      ['A pin lands point up ' + m('63') + ' times in ' + m('100'), m('0.63')],
+      [m('12') + ' sixes in ' + m('60') + ' throws', m('0.2')]
+    ],
+    hard: [
+      [m('P(a multiple of 3)') + ' on a fair die', m(f('1', '3'))],
+      [m('P(not a 6)') + ' on a fair die', m(f('5', '6'))],
+      [m('5') + ' red and ' + m('15') + ' blue: ' + m('P(red)') + ' as a percentage', m('25') + '%'],
+      ['Is a die giving ' + m('12') + ' sixes in ' + m('60') + ' throws unfair?', 'Probably not — ' + m('10') + ' expected, ' + m('12') + ' seen'],
+      ['Expected sixes in ' + m('300') + ' throws of a fair die', m('50')],
+      [m('P(red) = 0.4') + ' in a bag of ' + m('25') + ': the number of red', m('10')],
+      ['If ' + m('P(win) = 0.35') + ', then ' + m('P(not win)'), m('0.65')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every answer as a fraction in lowest terms or a decimal, and never outside ' + m('0') + ' to ' + m('1') + '.',
+  homework: [
+    'A fair die is thrown. Find ' + m('P(3)') + ', ' + m('P(odd)') + ' and ' + m('P(at least 5)') + '.',
+    'A bag holds ' + m('6') + ' red, ' + m('9') + ' blue and ' + m('5') + ' green counters. Find ' + m('P(red)') + ', ' + m('P(blue)') + ' and ' + m('P(not green)') + '.',
+    'Show that the three probabilities in task 2 add to ' + m('1') + '.',
+    'A coin lands heads ' + m('92') + ' times in ' + m('200') + ' tosses. Estimate ' + m('P(head)') + ' and say whether the coin looks fair.',
+    'If ' + m('P(rain) = 0.3') + ', find ' + m('P(no rain)') + ' and the expected number of rainy days in ' + m('30') + '.'
+  ]
+});
