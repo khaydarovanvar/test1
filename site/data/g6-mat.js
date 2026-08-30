@@ -14057,3 +14057,180 @@ G6_MAT.push({
     'List the three things every chart must carry.'
   ]
 });
+
+/* ============================== 79 ============================== */
+G6_MAT.push({
+  id: 'g6-79', stream: 'mat', grade: 6, quarter: 4, lessons: '169–170', hours: 2,
+  title: 'Plotting points and drawing graphs of relationships',
+  subtitle: 'Coordinates in all four quadrants, and a rule turned into a straight line. [Cambridge insert]',
+  uz: 'Matematika 6, qo‘shimcha mavzu', uzPage: 'pp. 483–487',
+  cam: 'S7 11 graphs', camPage: 'Stage 7, pp. 112–120', wb: 'Exercise 11.1–11.2',
+  objectives: [
+    'Plot and read points in all four quadrants.',
+    'Build a table of values from a rule such as ' + m('y = 2x + 1') + '.',
+    'Plot the table and join the points into a straight line.',
+    'Read values off a graph, including a conversion graph.'
+  ],
+  terms: [
+    ['Coordinates', 'Koordinatalar', 'Координаты'],
+    ['Origin', 'Koordinata boshi', 'Начало координат'],
+    ['x-axis', 'Abssissa o‘qi', 'Ось абсцисс'],
+    ['y-axis', 'Ordinata o‘qi', 'Ось ординат'],
+    ['Quadrant', 'Chorak', 'Четверть'],
+    ['Table of values', 'Qiymatlar jadvali', 'Таблица значений'],
+    ['Straight-line graph', 'To‘g‘ri chiziqli grafik', 'Прямолинейный график'],
+    ['Conversion graph', 'O‘tkazish grafigi', 'График перевода']
+  ],
+  timing: [[20, 'The coordinate grid'], [20, 'From a rule to a table'], [25, 'From a table to a line'], [15, 'Conversion graphs']],
+  sections: [
+    {
+      h: 'The coordinate grid',
+      html: `<p>Two number lines crossing at the <b>origin</b> fix every point by a pair of numbers: across
+      first, then up. The signs decide the quadrant.</p>
+      {{fig:coordPoint:A point fixed by its two coordinates — across first, then up}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Point</th><th>Signs</th><th>Quadrant</th><th>Where</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(3, 2)</td><td class="m">+ , +</td><td>first</td><td>right and up</td></tr>
+        <tr><td class="m">(−3, 2)</td><td class="m">− , +</td><td>second</td><td>left and up</td></tr>
+        <tr><td class="m">(−3, −2)</td><td class="m">− , −</td><td>third</td><td>left and down</td></tr>
+        <tr><td class="m">(3, −2)</td><td class="m">+ , −</td><td>fourth</td><td>right and down</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('(3, 2)')} and ${m('(2, 3)')} are different points</span>
+      The order is fixed: the first number is the ${m('x')}-coordinate, measured along, and the second is
+      the ${m('y')}-coordinate, measured up. “Along the corridor, then up the stairs.”</div>`
+    },
+    {
+      h: 'From a rule to a table',
+      html: `<p>A rule connects two quantities. Choose values of ${m('x')}, work out each ${m('y')}, and
+      collect the pairs in a table.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">x</th><th class="m">−2</th><th class="m">−1</th><th class="m">0</th><th class="m">1</th><th class="m">2</th><th class="m">3</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = 2x + 1</td><td class="m">−3</td><td class="m">−1</td><td class="m">1</td><td class="m">3</td><td class="m">5</td><td class="m">7</td></tr>
+        <tr><td class="m">y = x + 3</td><td class="m">1</td><td class="m">2</td><td class="m">3</td><td class="m">4</td><td class="m">5</td><td class="m">6</td></tr>
+        <tr><td class="m">y = 10 − x</td><td class="m">12</td><td class="m">11</td><td class="m">10</td><td class="m">9</td><td class="m">8</td><td class="m">7</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Equal steps in ${m('x')} give equal steps in ${m('y')}</div>
+      In the first row every step of ${m('1')} across raises ${m('y')} by ${m('2')}; in the last it lowers
+      ${m('y')} by ${m('1')}. That steadiness is exactly why the points will lie on a straight line.</div>`
+    },
+    {
+      h: 'From a table to a line',
+      html: `{{fig:gradientIntercept:A straight-line graph — the steady climb and the point where it crosses the y-axis}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>What to do</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>draw and number both axes, including the negatives</td><td>every point must fit</td></tr>
+        <tr><td>2</td><td>plot each pair from the table with a small cross</td><td>a dot hides its own centre</td></tr>
+        <tr><td>3</td><td>check the points look like a line before joining</td><td>one stray point is an arithmetic slip</td></tr>
+        <tr><td>4</td><td>join them with a ruler and extend a little each way</td><td>the rule holds beyond the table</td></tr>
+        <tr><td>5</td><td>label the line with its rule</td><td>two lines on one grid must be told apart</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A point out of line is a mistake, not a feature</span>
+      Recalculate that ${m('y')} rather than drawing a bend. The rules in this topic all give perfectly
+      straight lines.</div>`
+    },
+    {
+      h: 'Conversion graphs',
+      html: `<p>A straight-line graph is the fastest way to convert between two units. Eight kilometres is
+      about five miles, so the line through ${m('(0, 0)')} and ${m('(8, 5)')} converts either way.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Kilometres</th><th class="m">8</th><th class="m">16</th><th class="m">24</th><th class="m">40</th></tr></thead>
+      <tbody>
+        <tr><td>miles</td><td class="m">5</td><td class="m">10</td><td class="m">15</td><td class="m">25</td></tr>
+      </tbody></table></div>
+      <p>Not every real-life graph starts at the origin. A taxi charging ${m('5000')} so‘m plus
+      ${m('2000')} so‘m a kilometre has the rule ${m('c = 5000 + 2000d')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Kilometres ${m('d')}</th><th class="m">0</th><th class="m">1</th><th class="m">3</th><th class="m">5</th><th class="m">7</th></tr></thead>
+      <tbody>
+        <tr><td>cost in so‘m</td><td class="m">5000</td><td class="m">7000</td><td class="m">11 000</td><td class="m">15 000</td><td class="m">19 000</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Read across, then down — or down, then across</div>
+      To convert ${m('24')} km, go up from ${m('24')} to the line and across to ${m('15')} miles. To go the
+      other way, start on the miles axis. One line answers both questions.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Complete a table for ' + m('y = 2x + 1') + ' from ' + m('x = −2') + ' to ' + m('x = 3') + '.',
+      steps: [
+        ['Double each ' + m('x') + ' and add ' + m('1') + '.', ''],
+        [m('−3, −1, 1, 3, 5, 7') + '.', ''],
+        ['Each step of ' + m('1') + ' in ' + m('x') + ' raises ' + m('y') + ' by ' + m('2') + '.', 'So the points lie on a line ✓']
+      ],
+      ans: m('−3, −1, 1, 3, 5, 7')
+    },
+    {
+      q: 'Using ' + m('8') + ' km ' + m('= 5') + ' miles, convert ' + m('24') + ' km and ' + m('20') + ' miles.',
+      steps: [
+        [m('24') + ' km is three lots of ' + m('8') + '.', ''],
+        ['So ' + m('3 · 5 = 15') + ' miles.', ''],
+        [m('20') + ' miles is four lots of ' + m('5') + ', so ' + m('4 · 8 = 32') + ' km.', 'The same line, read both ways.']
+      ],
+      ans: m('15') + ' miles and ' + m('32') + ' km'
+    },
+    {
+      q: 'A taxi charges ' + m('5000') + ' so‘m plus ' + m('2000') + ' so‘m a kilometre. A ride costs ' + m('19 000') + ' so‘m. How far was it?',
+      steps: [
+        [m('19 000 − 5000 = 14 000') + ' so‘m for the distance.', ''],
+        [m('14 000 ÷ 2000') + '.', ''],
+        [m('= 7') + ' km.', 'Check: ' + m('5000 + 14 000 = 19 000') + ' ✓']
+      ],
+      ans: m('7') + ' km'
+    }
+  ],
+  modelNote: 'Drag one point in the model along a row and watch only the first coordinate change; that is the whole of “across first, then up”. The distance readout is a Grade 8 preview — ignore it for now.',
+  interactive: {
+    type: 'coordPlane',
+    title: 'Points on the coordinate grid',
+    hint: 'Drag A and B. Watch the coordinates, and the differences across and up.'
+  },
+  quiz: [
+    { q: 'In ' + m('(3, −2)') + ' the ' + m('−2') + ' is measured:', a: ['along', 'up or down', 'diagonally', 'from B'], c: 1, why: 'It is the ' + m('y') + '-coordinate.' },
+    { q: m('(−3, 2)') + ' lies in the:', a: ['first quadrant', 'second quadrant', 'third quadrant', 'fourth quadrant'], c: 1, why: 'Left and up.' },
+    { q: m('y = 2x + 1') + ' at ' + m('x = 3') + ' is:', a: [m('5'), m('7'), m('6'), m('9')], c: 1, why: m('6 + 1') + '.' },
+    { q: 'A graph crosses the ' + m('y') + '-axis where:', a: [m('y = 0'), m('x = 0'), m('x = y'), 'nowhere'], c: 1, why: 'Nothing across.' },
+    { q: 'Points from ' + m('y = 2x + 1') + ' lie on:', a: ['a curve', 'a straight line', 'a circle', 'nothing'], c: 1, why: 'Equal steps throughout.' },
+    { q: 'With ' + m('8') + ' km ' + m('= 5') + ' miles, ' + m('40') + ' km is:', a: [m('20'), m('25'), m('32'), m('64')], c: 1, why: 'Five lots of ' + m('8') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['The quadrant of ' + m('(3, 2)'), 'The first'],
+      ['The quadrant of ' + m('(−3, 2)'), 'The second'],
+      ['The quadrant of ' + m('(−3, −2)'), 'The third'],
+      ['The quadrant of ' + m('(3, −2)'), 'The fourth'],
+      [m('y = 2x + 1') + ' at ' + m('x = 3'), m('7')],
+      [m('y = 2x + 1') + ' at ' + m('x = 0'), m('1')],
+      ['On the ' + m('y') + '-axis the ' + m('x') + '-coordinate is', m('0')]
+    ],
+    med: [
+      [m('y = 2x + 1') + ' for ' + m('x = −2, −1, 0, 1'), m('−3, −1, 1, 3')],
+      [m('y = x + 3') + ' at ' + m('x = −2'), m('1')],
+      [m('y = 3x − 2') + ' at ' + m('x = 2'), m('4')],
+      [m('y = 10 − x') + ' at ' + m('x = 4'), m('6')],
+      ['With ' + m('8') + ' km ' + m('= 5') + ' miles, ' + m('16') + ' km', m('10') + ' miles'],
+      ['…and ' + m('40') + ' km', m('25') + ' miles'],
+      ['A taxi at ' + m('5000 + 2000d') + ' for ' + m('3') + ' km', m('11 000') + ' so‘m']
+    ],
+    hard: [
+      [m('y = 2x + 1') + ': the value of ' + m('x') + ' when ' + m('y = 11'), m('x = 5')],
+      [m('y = 3x − 2') + ': the value of ' + m('x') + ' when ' + m('y = 13'), m('x = 5')],
+      ['With ' + m('8') + ' km ' + m('= 5') + ' miles, ' + m('24') + ' km', m('15') + ' miles'],
+      ['…and ' + m('20') + ' miles', m('32') + ' km'],
+      ['A taxi ride at ' + m('5000 + 2000d') + ' costs ' + m('19 000') + ' so‘m: the distance', m('7') + ' km'],
+      ['Why do the points of ' + m('y = 2x + 1') + ' lie on a line?', 'Equal steps in ' + m('x') + ' give equal steps in ' + m('y')],
+      ['The graph of ' + m('y = 10 − x') + ' slopes', 'Downwards']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Plot with small crosses, join with a ruler, and label each line with its rule.',
+  homework: [
+    'Plot ' + m('(2, 3)') + ', ' + m('(−2, 3)') + ', ' + m('(−2, −3)') + ' and ' + m('(2, −3)') + ', and name the shape they make.',
+    'Complete a table for ' + m('y = 3x − 1') + ' from ' + m('x = −2') + ' to ' + m('x = 3') + ', and draw the graph.',
+    'On the same grid draw ' + m('y = x + 3') + ' and write down where the two lines cross.',
+    'Using ' + m('8') + ' km ' + m('= 5') + ' miles, convert ' + m('32') + ' km and ' + m('15') + ' miles.',
+    'A taxi charges ' + m('4000') + ' so‘m plus ' + m('1500') + ' so‘m a kilometre. Find the cost of ' + m('6') + ' km and the distance costing ' + m('16 000') + ' so‘m.'
+  ]
+});
