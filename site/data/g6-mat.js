@@ -13520,3 +13520,189 @@ G6_MAT.push({
     'Draw the pie chart of your own survey data, with the total and a key.'
   ]
 });
+
+/* ============================== 76 ============================== */
+G6_MAT.push({
+  id: 'g6-76', stream: 'mat', grade: 6, quarter: 4, lessons: '164–166', hours: 3,
+  title: 'Reading and interpreting data from pie charts',
+  subtitle: 'The same rule run backwards — and the questions a pie chart is not able to answer.',
+  uz: 'Matematika 6, §33', uzPage: 'pp. 470–479',
+  cam: 'S7 16 interpreting results', camPage: 'Stage 7, pp. 178–184', wb: 'Exercise 16.2',
+  objectives: [
+    'Turn a sector angle back into a frequency when the total is known.',
+    'Express a sector as a percentage of the whole.',
+    'Compare two pie charts drawn from different totals.',
+    'State what a pie chart cannot show, and what extra information is needed.'
+  ],
+  terms: [
+    ['To interpret', 'Talqin qilmoq', 'Интерпретировать'],
+    ['Sector angle', 'Sektor burchagi', 'Угол сектора'],
+    ['Proportion', 'Ulush', 'Доля'],
+    ['Total surveyed', 'So‘ralganlar soni', 'Число опрошенных'],
+    ['To compare', 'Taqqoslamoq', 'Сравнивать'],
+    ['Conclusion', 'Xulosa', 'Вывод'],
+    ['Misleading', 'Chalg‘ituvchi', 'Вводящий в заблуждение'],
+    ['Estimate', 'Taxminiy baho', 'Оценка']
+  ],
+  timing: [[30, 'From an angle back to a frequency'], [30, 'Angles as percentages'], [35, 'Comparing two pie charts'], [20, 'What a pie chart cannot tell you'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'From an angle back to a frequency',
+      html: `<p>Drawing the chart divided ${m('360')} by the total. Reading it does the reverse: divide the
+      angle by what one person was worth.</p>
+      {{fig:pieChart:The same chart, now being read rather than drawn}}
+      ${eq('frequency ' + m('= ' + f('angle', '360°') + ' × total'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Total asked</th><th>Sector</th><th>Working</th><th>Frequency</th></tr></thead>
+      <tbody>
+        <tr><td class="m">36</td><td class="m">120°</td><td class="m">120 ÷ 10</td><td class="m">12</td></tr>
+        <tr><td class="m">60</td><td class="m">54°</td><td class="m">54 ÷ 6</td><td class="m">9</td></tr>
+        <tr><td class="m">200</td><td class="m">90°</td><td class="m">${f('90', '360')} · 200</td><td class="m">50</td></tr>
+        <tr><td class="m">500</td><td class="m">72°</td><td class="m">${f('72', '360')} · 500</td><td class="m">100</td></tr>
+        <tr><td class="m">240</td><td class="m">45°</td><td class="m">${f('45', '360')} · 240</td><td class="m">30</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The total must be given somewhere</span>
+      A ${m('90°')} sector is a quarter of <i>something</i>. Without the total written on the chart, it is
+      a quarter of an unknown number — and no frequency can be recovered at all.</div>`
+    },
+    {
+      h: 'Angles as percentages',
+      html: `<p>A percentage needs no total: it is the share itself. Divide the angle by ${m('3.6')}.</p>
+      ${eq('percentage ' + m('= ' + f('angle', '3.6')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sector</th><th>Working</th><th>Percentage</th><th>As a fraction</th></tr></thead>
+      <tbody>
+        <tr><td class="m">180°</td><td class="m">180 ÷ 3.6</td><td class="m">50%</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td class="m">144°</td><td class="m">144 ÷ 3.6</td><td class="m">40%</td><td class="m">${f('2', '5')}</td></tr>
+        <tr><td class="m">90°</td><td class="m">90 ÷ 3.6</td><td class="m">25%</td><td class="m">${f('1', '4')}</td></tr>
+        <tr><td class="m">54°</td><td class="m">54 ÷ 3.6</td><td class="m">15%</td><td class="m">${f('3', '20')}</td></tr>
+        <tr><td class="m">36°</td><td class="m">36 ÷ 3.6</td><td class="m">10%</td><td class="m">${f('1', '10')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Judge by eye, then confirm</div>
+      A sector that looks like a quarter should come out near ${m('25')}%. If the arithmetic gives
+      ${m('2.5')}% or ${m('250')}%, the division went the wrong way round.</div>`
+    },
+    {
+      h: 'Comparing two pie charts',
+      html: `<p>Two charts of the same size can stand for very different numbers of people. The angles
+      compare <b>shares</b>; only the totals compare <b>numbers</b>.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>School</th><th>Pupils</th><th>Football sector</th><th>Football pupils</th></tr></thead>
+      <tbody>
+        <tr><td>A</td><td class="m">200</td><td class="m">90°</td><td class="m">50</td></tr>
+        <tr><td>B</td><td class="m">500</td><td class="m">90°</td><td class="m">125</td></tr>
+        <tr><td>C</td><td class="m">180</td><td class="m">120°</td><td class="m">60</td></tr>
+        <tr><td>D</td><td class="m">400</td><td class="m">90°</td><td class="m">100</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A larger share can be a smaller number</span>
+      School C gives football a third of its chart and school D only a quarter — yet D has ${m('100')}
+      footballers and C has ${m('60')}. Comparing the angles alone would have reversed the answer.</div>`
+    },
+    {
+      h: 'What a pie chart cannot tell you',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Can the chart answer it?</th><th>What is needed</th></tr></thead>
+      <tbody>
+        <tr><td>which group is the largest?</td><td>yes</td><td>nothing — the biggest sector</td></tr>
+        <tr><td>what share does a group have?</td><td>yes</td><td>the angle</td></tr>
+        <tr><td>how many people is that?</td><td>no</td><td>the total surveyed</td></tr>
+        <tr><td>has it changed since last year?</td><td>no</td><td>a second chart and both totals</td></tr>
+        <tr><td>what is the mean?</td><td>no</td><td>the original values, not the shares</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Three sentences make a good interpretation</div>
+      The largest group and its share; a comparison between two groups; and one honest limit — usually
+      the sample, its size, or something the chart cannot show.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A pie chart of ' + m('60') + ' pupils has a ' + m('54°') + ' sector for tennis. How many pupils is that?',
+      steps: [
+        [m('360 ÷ 60 = 6°') + ' for each pupil.', ''],
+        [m('54 ÷ 6') + '.', ''],
+        [m('= 9') + ' pupils.', 'Check: ' + m('9 · 6 = 54') + ' ✓']
+      ],
+      ans: m('9') + ' pupils'
+    },
+    {
+      q: 'A survey of ' + m('500') + ' people has a ' + m('72°') + ' sector. Find the number and the percentage.',
+      steps: [
+        [m(f('72', '360') + ' = ' + f('1', '5')) + '.', ''],
+        [m(f('1', '5') + ' · 500 = 100') + ' people.', ''],
+        [m('72 ÷ 3.6 = 20') + '%.', 'A fifth ✓']
+      ],
+      ans: m('100') + ' people, or ' + m('20') + '%'
+    },
+    {
+      q: 'School A has ' + m('200') + ' pupils and school B has ' + m('500') + '. Football is ' + m('90°') + ' in both charts. Compare them.',
+      steps: [
+        ['The shares are equal — a quarter each.', ''],
+        [m('50') + ' pupils in A, ' + m('125') + ' in B.', ''],
+        ['Same proportion, very different numbers.', 'The angle alone cannot compare schools.']
+      ],
+      ans: 'Equal shares; ' + m('50') + ' against ' + m('125') + ' pupils'
+    }
+  ],
+  modelNote: 'Show two charts side by side with the totals covered, ask which school has more footballers, then uncover the totals. The reversal is the point of the lesson.',
+  interactive: {
+    type: 'quiz',
+    title: 'Reading the chart',
+    hint: 'The angle gives the share; only the total gives the number.',
+    items: [
+      { q: 'A ' + m('120°') + ' sector of ' + m('36') + ' pupils is:', a: [m('9'), m('12'), m('120'), m('30')], c: 1, why: m('120 ÷ 10') + '.' },
+      { q: 'A ' + m('54°') + ' sector of ' + m('60') + ' pupils is:', a: [m('6'), m('9'), m('54'), m('15')], c: 1, why: m('54 ÷ 6') + '.' },
+      { q: 'A ' + m('90°') + ' sector of ' + m('200') + ' people is:', a: [m('25'), m('45'), m('50'), m('90')], c: 2, why: 'A quarter.' },
+      { q: 'A ' + m('144°') + ' sector as a percentage is:', a: [m('14.4') + '%', m('40') + '%', m('44') + '%', m('60') + '%'], c: 1, why: m('144 ÷ 3.6') + '.' },
+      { q: 'A ' + m('36°') + ' sector as a percentage is:', a: [m('3.6') + '%', m('10') + '%', m('36') + '%', m('20') + '%'], c: 1, why: 'A tenth.' },
+      { q: 'Without the total, a chart gives:', a: ['the numbers', 'the shares only', 'the mean', 'nothing at all'], c: 1, why: 'Angles are proportions.' },
+      { q: m('90°') + ' of ' + m('400') + ' against ' + m('120°') + ' of ' + m('180') + ':', a: [m('100') + ' against ' + m('60'), m('60') + ' against ' + m('100'), 'equal', 'cannot tell'], c: 0, why: 'The smaller share is the larger number.' },
+      { q: 'A pie chart cannot show:', a: ['the largest group', 'a share', 'the change over time', 'a comparison of two sectors'], c: 2, why: 'One chart is one moment.' }
+    ]
+  },
+  quiz: [
+    { q: 'To turn a sector into a frequency you need:', a: ['the angle only', 'the angle and the total', 'the total only', 'a protractor'], c: 1, why: 'The angle is a share of the total.' },
+    { q: 'A ' + m('180°') + ' sector is:', a: ['a quarter', 'a half', 'a third', 'everything'], c: 1, why: 'Half the circle.' },
+    { q: 'To turn an angle into a percentage divide by:', a: [m('3.6'), m('36'), m('360'), m('100')], c: 0, why: m('100') + '% is ' + m('360°') + '.' },
+    { q: 'Two charts with equal sectors represent:', a: ['equal numbers', 'equal shares', 'nothing comparable', 'equal totals'], c: 1, why: 'Numbers need the totals.' },
+    { q: 'A larger sector always means:', a: ['more people', 'a larger share', 'a larger total', 'a better result'], c: 1, why: 'Only within one chart.' },
+    { q: 'A good interpretation ends with:', a: ['a bigger chart', 'an honest limit', 'the mean', 'the angles'], c: 1, why: 'What the data cannot say.' }
+  ],
+  practice: {
+    easy: [
+      [m('36') + ' pupils, a sector of ' + m('120°'), m('12') + ' pupils'],
+      [m('36') + ' pupils, a sector of ' + m('90°'), m('9') + ' pupils'],
+      [m('60') + ' pupils, a sector of ' + m('54°'), m('9') + ' pupils'],
+      [m('60') + ' pupils, a sector of ' + m('36°'), m('6') + ' pupils'],
+      ['A sector of ' + m('180°') + ' as a fraction', m(f('1', '2'))],
+      ['A sector of ' + m('90°') + ' as a percentage', m('25') + '%'],
+      ['A sector of ' + m('36°') + ' as a percentage', m('10') + '%']
+    ],
+    med: [
+      [m('200') + ' people, a sector of ' + m('90°'), m('50') + ' people'],
+      [m('500') + ' people, a sector of ' + m('72°'), m('100') + ' people'],
+      [m('240') + ' people, a sector of ' + m('45°'), m('30') + ' people'],
+      ['A sector of ' + m('144°') + ' as a percentage', m('40') + '%'],
+      ['A sector of ' + m('54°') + ' as a percentage', m('15') + '%'],
+      [m('90') + ' people, a sector of ' + m('100°'), m('25') + ' people'],
+      [m('720') + ' people, a sector of ' + m('30°'), m('60') + ' people']
+    ],
+    hard: [
+      ['A sector of ' + m('60°') + ' as a percentage, to 1 d.p.', m('16.7') + '%'],
+      ['Football at ' + m('90°') + ' in schools of ' + m('200') + ' and ' + m('500'), m('50') + ' and ' + m('125') + ' pupils'],
+      [m('120°') + ' of ' + m('180') + ' against ' + m('90°') + ' of ' + m('400'), m('60') + ' against ' + m('100')],
+      ['Which of those two has more footballers?', 'The second, despite the smaller sector'],
+      ['What can a pie chart never give without more information?', 'The number of people surveyed'],
+      ['A sector estimated at ' + m('100°') + ' out of ' + m('90') + ' pupils', m('25') + ' pupils'],
+      ['Two pie charts can be compared by number only when', 'Both totals are known']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the total beside every chart you read; without it no frequency can be found.',
+  homework: [
+    'A pie chart of ' + m('72') + ' pupils has a ' + m('100°') + ' sector. How many pupils does it represent?',
+    'The same chart has a ' + m('45°') + ' sector. How many pupils is that?',
+    'Express ' + m('144°') + ' and ' + m('54°') + ' as percentages of the whole.',
+    'In school A (' + m('300') + ' pupils) football is ' + m('120°') + '; in school B (' + m('600') + ') it is ' + m('90°') + '. Which school has more footballers?',
+    'Write two questions that a pie chart on its own cannot answer.'
+  ]
+});
