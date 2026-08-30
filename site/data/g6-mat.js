@@ -3529,3 +3529,170 @@ G6_MAT.push({
     'Explain in two sentences why the digit-sum test works for ' + m('9') + '.'
   ]
 });
+
+/* ============================== 20 ============================== */
+G6_MAT.push({
+  id: 'g6-20', stream: 'mat', grade: 6, quarter: 1, lessons: '40', hours: 1,
+  title: 'Square roots and cube roots',
+  subtitle: 'A Cambridge insert: undoing a square and a cube, and knowing the small ones by heart.',
+  uz: 'Matematika 6, qo‘shimcha mavzu', uzPage: 'pp. 106–108',
+  cam: 'S7 1.6', camPage: 'Stage 7, pp. 27–31', wb: 'Exercise 1.6',
+  objectives: [
+    'Find squares and cubes of small whole numbers.',
+    'Find square roots and cube roots exactly where they are whole.',
+    'Estimate a square root between two whole numbers.',
+    'Use roots in area and volume problems.'
+  ],
+  terms: [
+    ['Square', 'Kvadrat', 'Квадрат'],
+    ['Cube', 'Kub', 'Куб'],
+    ['Square root', 'Kvadrat ildiz', 'Квадратный корень'],
+    ['Cube root', 'Kub ildiz', 'Кубический корень'],
+    ['Perfect square', 'To‘la kvadrat', 'Полный квадрат'],
+    ['Perfect cube', 'To‘la kub', 'Полный куб'],
+    ['To estimate', 'Baholash', 'Оценить'],
+    ['Inverse operation', 'Teskari amal', 'Обратное действие']
+  ],
+  timing: [[10, 'Squares and cubes'], [12, 'The roots'], [12, 'Estimating'], [6, 'In area and volume']],
+  sections: [
+    {
+      h: 'Squares and cubes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th class="m">n</th><th class="m">1</th><th class="m">2</th><th class="m">3</th><th class="m">4</th><th class="m">5</th><th class="m">6</th><th class="m">7</th><th class="m">8</th><th class="m">9</th><th class="m">10</th></tr></thead>
+      <tbody>
+        <tr><td class="m">n²</td><td class="m">1</td><td class="m">4</td><td class="m">9</td><td class="m">16</td><td class="m">25</td><td class="m">36</td><td class="m">49</td><td class="m">64</td><td class="m">81</td><td class="m">100</td></tr>
+        <tr><td class="m">n³</td><td class="m">1</td><td class="m">8</td><td class="m">27</td><td class="m">64</td><td class="m">125</td><td class="m">216</td><td class="m">343</td><td class="m">512</td><td class="m">729</td><td class="m">1000</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Learn these two rows</div>
+      They are needed for the rest of school mathematics — in area, in volume, in Pythagoras and in every
+      quadratic equation from Grade 8 onwards. Ten minutes now saves hours later.</div>`
+    },
+    {
+      h: 'The roots',
+      html: `${eq(m('√25 = 5') + '  because ' + m('5² = 25') + ';     ' + m('∛27 = 3') + '  because ' + m('3³ = 27'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Root</th><th>Value</th><th>Check</th></tr></thead>
+      <tbody>
+        <tr><td class="m">√49</td><td class="m">7</td><td class="m">7² = 49</td></tr>
+        <tr><td class="m">√81</td><td class="m">9</td><td class="m">9² = 81</td></tr>
+        <tr><td class="m">√100</td><td class="m">10</td><td class="m">10² = 100</td></tr>
+        <tr><td class="m">∛8</td><td class="m">2</td><td class="m">2³ = 8</td></tr>
+        <tr><td class="m">∛125</td><td class="m">5</td><td class="m">5³ = 125</td></tr>
+        <tr><td class="m">∛1000</td><td class="m">10</td><td class="m">10³ = 1000</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A root undoes a power; it does not halve it</span>
+      ${m('√36')} is ${m('6')}, not ${m('18')}. The question a root asks is “what number, multiplied by
+      itself, gives this?” — never “what is half of it?”</div>`
+    },
+    {
+      h: 'Estimating',
+      html: `<p>Most numbers are not perfect squares. Trap the root between the two nearest ones.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Root</th><th>Between</th><th>Nearer to</th></tr></thead>
+      <tbody>
+        <tr><td class="m">√50</td><td class="m">7 and 8</td><td class="m">7</td></tr>
+        <tr><td class="m">√30</td><td class="m">5 and 6</td><td class="m">5</td></tr>
+        <tr><td class="m">√90</td><td class="m">9 and 10</td><td class="m">9</td></tr>
+        <tr><td class="m">∛30</td><td class="m">3 and 4</td><td class="m">3</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">${m('√50')} is a little over ${m('7')}</div>
+      Because ${m('49')} is just below ${m('50')} and ${m('64')} is far above it. Comparing the gaps tells
+      you which whole number the root is nearer, without any calculation.</div>`
+    },
+    {
+      h: 'In area and volume',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a square of area ${m('64 cm²')}: its side</td><td class="m">√64</td><td class="m">8 cm</td></tr>
+        <tr><td>a square of area ${m('121 cm²')}: its perimeter</td><td class="m">4 · √121</td><td class="m">44 cm</td></tr>
+        <tr><td>a cube of volume ${m('125 cm³')}: its edge</td><td class="m">∛125</td><td class="m">5 cm</td></tr>
+        <tr><td>a cube of edge ${m('4 cm')}: its volume</td><td class="m">4³</td><td class="m">64 cm³</td></tr>
+        <tr><td>a cube of volume ${m('64 cm³')}: its surface</td><td class="m">6 · 4²</td><td class="m">96 cm²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Squares belong to area, cubes to volume</div>
+      Two directions give ${m('cm²')} and a square; three give ${m('cm³')} and a cube. The units say which
+      root is needed before any number is written.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find ' + m('√81') + ' and ' + m('∛64') + '.',
+      steps: [
+        [m('9² = 81') + ', so ' + m('√81 = 9') + '.', ''],
+        [m('4³ = 64') + ', so ' + m('∛64 = 4') + '.', 'Note that ' + m('√64 = 8') + ' — different roots, different answers.']
+      ],
+      ans: m('9') + ' and ' + m('4')
+    },
+    {
+      q: 'Between which two whole numbers does ' + m('√50') + ' lie?',
+      steps: [
+        [m('7² = 49') + ' and ' + m('8² = 64') + '.', ''],
+        [m('49 < 50 < 64'), ''],
+        ['So ' + m('7 < √50 < 8') + ', and much nearer ' + m('7') + '.', '']
+      ],
+      ans: 'Between ' + m('7') + ' and ' + m('8')
+    },
+    {
+      q: 'A cube has volume ' + m('125 cm³') + '. Find its edge and its surface area.',
+      steps: [
+        [m('∛125 = 5') + ', so the edge is ' + m('5 cm') + '.', ''],
+        ['Each face is ' + m('5² = 25 cm²') + '.', ''],
+        ['Six faces: ' + m('150 cm²') + '.', '']
+      ],
+      ans: m('5 cm') + ' and ' + m('150 cm²')
+    }
+  ],
+  modelNote: 'Build a cube from 27 unit blocks and ask for its edge; the cube root is picked up in the hand rather than from a table.',
+  interactive: {
+    type: 'rootPower',
+    title: 'A number, its square and its square root',
+    hint: 'One operation undoes the other.'
+  },
+  quiz: [
+    { q: m('√49') + ' equals:', a: [m('7'), m('24.5'), m('9'), m('6')], c: 0, why: m('7² = 49') + '.' },
+    { q: m('√100') + ' equals:', a: [m('10'), m('50'), m('20'), m('1000')], c: 0, why: m('10² = 100') + '.' },
+    { q: m('∛27') + ' equals:', a: [m('3'), m('9'), m('13.5'), m('27')], c: 0, why: m('3³ = 27') + '.' },
+    { q: m('∛64') + ' equals:', a: [m('4'), m('8'), m('16'), m('32')], c: 0, why: m('4³ = 64') + '.' },
+    { q: m('√50') + ' lies between:', a: [m('6') + ' and ' + m('7'), m('7') + ' and ' + m('8'), m('8') + ' and ' + m('9'), m('24') + ' and ' + m('25')], c: 1, why: m('49 < 50 < 64') + '.' },
+    { q: 'A square of area ' + m('64 cm²') + ' has side:', a: [m('8 cm'), m('16 cm'), m('32 cm'), m('4 cm')], c: 0, why: m('√64') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('6²'), m('36')],
+      [m('9²'), m('81')],
+      [m('4³'), m('64')],
+      [m('5³'), m('125')],
+      [m('√49'), m('7')],
+      [m('√100'), m('10')],
+      [m('∛27'), m('3')]
+    ],
+    med: [
+      [m('∛64'), m('4')],
+      [m('√64'), m('8')],
+      [m('∛1000'), m('10')],
+      [m('√50') + ' lies between', m('7') + ' and ' + m('8')],
+      [m('∛30') + ' lies between', m('3') + ' and ' + m('4')],
+      ['A square of area ' + m('121 cm²') + ': its perimeter', m('44 cm')],
+      ['A cube of volume ' + m('125 cm³') + ': its edge', m('5 cm')]
+    ],
+    hard: [
+      ['A cube of volume ' + m('64 cm³') + ': its surface area', m('96 cm²')],
+      ['A cube of volume ' + m('125 cm³') + ': its surface area', m('150 cm²')],
+      [m('√144 + ∛8'), m('14')],
+      [m('√(36 + 64)'), m('10')],
+      ['Is ' + m('√36 + √64') + ' the same as ' + m('√(36 + 64)') + '?', 'No — ' + m('14') + ' against ' + m('10')],
+      ['A square of area ' + m('90 cm²') + ': its side, to the nearest cm', m('9 cm') + ' (a little over ' + m('9.4') + ')'],
+      ['Which is larger, ' + m('√81') + ' or ' + m('∛512') + '?', m('√81 = 9') + ' beats ' + m('∛512 = 8')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Learn the squares to ' + m('12') + ' and the cubes to ' + m('10') + ' by heart.',
+  homework: [
+    'Write the squares of ' + m('1') + ' to ' + m('12') + '.',
+    'Write the cubes of ' + m('1') + ' to ' + m('10') + '.',
+    'Find ' + m('√169') + ', ' + m('√225') + ' and ' + m('∛216') + '.',
+    'Between which whole numbers does ' + m('√200') + ' lie?',
+    'A cube has volume ' + m('343 cm³') + '. Find its edge and its surface area.'
+  ]
+});
