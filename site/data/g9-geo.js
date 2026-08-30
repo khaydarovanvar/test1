@@ -4868,3 +4868,368 @@ G9_GEO.push({
     'Explain why ' + m('R = a') + ' for a regular hexagon but not for a square.'
   ]
 });
+
+/* ============================== 30 ============================== */
+G9_GEO.push({
+  id: 'g9-30', stream: 'geo', grade: 9, quarter: 3, lessons: '40–41', hours: 2,
+  title: 'The side of a regular polygon and the radii',
+  subtitle: 'Exact expressions for the triangle, the square and the hexagon — and one recurrence for doubling n.',
+  uz: 'Geometriya 9, §25', uzPage: 'pp. 146–152',
+  cam: 'IGX 3.4', camPage: 'Core & Extended, pp. 58–63', wb: 'Exercise 3.4',
+  objectives: [
+    'Derive the exact side of the inscribed triangle, square and hexagon in terms of R.',
+    'Use a = 2R sin(180°/n) for any n.',
+    'Use the doubling formula to pass from an n-gon to a 2n-gon.',
+    'Compare the perimeters of inscribed polygons with the circumference.'
+  ],
+  terms: [
+    ['Side of a polygon', 'Ko‘pburchak tomoni', 'Сторона многоугольника'],
+    ['Inscribed in a circle', 'Aylanaga ichki chizilgan', 'Вписанный в окружность'],
+    ['Exact expression', 'Aniq ifoda', 'Точное выражение'],
+    ['Doubling formula', 'Ikkilantirish formulasi', 'Формула удвоения'],
+    ['Approximation', 'Taqribiy qiymat', 'Приближение'],
+    ['Perimeter', 'Perimetr', 'Периметр'],
+    ['Limit', 'Limit', 'Предел'],
+    ['Archimedes', 'Arximed', 'Архимед']
+  ],
+  timing: [[15, 'Three exact sides'], [25, 'The general formula'], [25, 'Doubling n'], [20, 'Towards the circumference'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Three exact sides',
+      html: `<p>For a polygon inscribed in a circle of radius ${m('R')}, the central triangle gives the
+      side directly.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">n</th><th>Central angle</th><th class="m">a = 2R sin ${f('180°', 'n')}</th><th>Exact</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3</td><td class="m">120°</td><td class="m">2R sin 60°</td><td class="m">R${sr('3')}</td></tr>
+        <tr><td class="m">4</td><td class="m">90°</td><td class="m">2R sin 45°</td><td class="m">R${sr('2')}</td></tr>
+        <tr><td class="m">6</td><td class="m">60°</td><td class="m">2R sin 30°</td><td class="m">R</td></tr>
+        <tr><td class="m">8</td><td class="m">45°</td><td class="m">2R sin 22.5°</td><td class="m">R${sr('2 − ' + sr('2'))}</td></tr>
+        <tr><td class="m">12</td><td class="m">30°</td><td class="m">2R sin 15°</td><td class="m">R${sr('2 − ' + sr('3'))}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Three that must be automatic</div>
+      ${m('a₃ = R' + sr('3'))}, ${m('a₄ = R' + sr('2'))}, ${m('a₆ = R')}. The pattern
+      ${m(sr('3') + ', ' + sr('2') + ', ' + sr('1'))} is easy to hold, and these three cover almost every
+      examination question.</div>`
+    },
+    {
+      h: 'The general formula',
+      html: `${eq(m('aₙ = 2R sin ' + f('180°', 'n')) + '     ' + m('rₙ = R cos ' + f('180°', 'n')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Find</th><th>Formula</th></tr></thead>
+      <tbody>
+        <tr><td class="m">R, n</td><td class="m">a</td><td class="m">2R sin ${f('180°', 'n')}</td></tr>
+        <tr><td class="m">a, n</td><td class="m">R</td><td class="m">${f('a', '2 sin (180°/n)')}</td></tr>
+        <tr><td class="m">r, n</td><td class="m">R</td><td class="m">${f('r', 'cos (180°/n)')}</td></tr>
+        <tr><td class="m">R, r</td><td class="m">a</td><td class="m">2${sr('R² − r²')}</td></tr>
+      </tbody></table></div>
+      <p>The last row is Pythagoras in the half-central triangle, and it needs no trigonometry at all —
+      useful when neither ${m('n')} nor a calculator is available.</p>
+      <div class="warn"><span class="wl">${m('R² = r² + ' + f('a²', '4'))}</span>
+      This one relation ties all three quantities together. Given any two of ${m('R')}, ${m('r')},
+      ${m('a')}, it gives the third without knowing ${m('n')}.</div>`
+    },
+    {
+      h: 'Doubling n',
+      html: `<p>From the side of an inscribed ${m('n')}-gon, the side of the ${m('2n')}-gon follows:</p>
+      ${eq(m('a₂ₙ = ' + sr('2R² − 2R' + sr('R² − ' + f('aₙ²', '4')))), true)}
+      <p>Starting from the hexagon (${m('a₆ = R')}) and doubling repeatedly gives the ${m('12')}-gon,
+      the ${m('24')}-gon, the ${m('48')}-gon — which is how Archimedes computed ${m('π')} to two decimal
+      places, about 250 BC.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">n</th><th class="m">aₙ ÷ R</th><th>Perimeter ÷ ${m('2R')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">6</td><td class="m">1</td><td class="m">3.000</td></tr>
+        <tr><td class="m">12</td><td class="m">0.5176</td><td class="m">3.106</td></tr>
+        <tr><td class="m">24</td><td class="m">0.2611</td><td class="m">3.133</td></tr>
+        <tr><td class="m">48</td><td class="m">0.1308</td><td class="m">3.139</td></tr>
+        <tr><td class="m">96</td><td class="m">0.0654</td><td class="m">3.141</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The last column is ${m('π')} appearing</div>
+      The perimeter of an inscribed ${m('n')}-gon divided by the diameter creeps up towards
+      ${m('3.14159…')}. The next lesson gives that limit its name.</div>`
+    },
+    {
+      h: 'Towards the circumference',
+      html: `<p>As ${m('n')} grows, three things happen together:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quantity</th><th>Behaviour</th><th>Limit</th></tr></thead>
+      <tbody>
+        <tr><td class="m">aₙ</td><td>decreases</td><td class="m">0</td></tr>
+        <tr><td class="m">rₙ</td><td>increases</td><td class="m">R</td></tr>
+        <tr><td>the perimeter ${m('naₙ')}</td><td>increases</td><td>the circumference</td></tr>
+        <tr><td>the area</td><td>increases</td><td>the area of the disc</td></tr>
+      </tbody></table></div>
+      <p>The inscribed polygon is always <b>smaller</b> than the circle and the circumscribed one always
+      larger, so the circumference is trapped between two computable numbers — which is exactly how
+      Archimedes bounded ${m('π')} between ${m(f('223', '71'))} and ${m(f('22', '7'))}.</p>
+      <div class="warn"><span class="wl">A polygon never becomes a circle</span>
+      For every finite ${m('n')} the polygon has corners and the circle does not. The circle is the
+      <b>limit</b>, a word that will be defined properly in Grade 11 — but the idea is already clear
+      here.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A regular hexagon is inscribed in a circle of radius ' + m('8') + '. Find its side and perimeter.',
+      steps: [
+        [m('a₆ = 2R sin 30°'), ''],
+        [m('= 2 × 8 × 0.5'), ''],
+        [m('a = 8'), 'Equal to ' + m('R') + '.'],
+        [m('P = 48'), '']
+      ],
+      ans: m('a = 8, P = 48')
+    },
+    {
+      q: 'A square is inscribed in a circle of radius ' + m('5') + '. Find its side, apothem and area.',
+      steps: [
+        [m('a = R' + sr('2') + ' = 5' + sr('2') + ' ≈ 7.07'), ''],
+        [m('r = R cos 45° = ' + f('5' + sr('2'), '2') + ' ≈ 3.54'), ''],
+        [m('S = a² = 50'), ''],
+        ['Check: ' + m('½ × 4 × 7.07 × 3.54 ≈ 50') + ' ✓', '']
+      ],
+      ans: m('a = 5' + sr('2') + ', r = ' + f('5' + sr('2'), '2') + ', S = 50')
+    },
+    {
+      q: 'A regular polygon inscribed in a circle of radius ' + m('10') + ' has apothem ' + m('8') + '. Find its side.',
+      steps: [
+        [m('R² = r² + ' + f('a²', '4')), ''],
+        [m('100 = 64 + ' + f('a²', '4')), ''],
+        [m(f('a²', '4') + ' = 36 ⇒ a² = 144'), ''],
+        [m('a = 12'), 'No trigonometry needed.']
+      ],
+      ans: m('a = 12')
+    }
+  ],
+  modelNote: 'Draw a hexagon, a 12-gon and a 24-gon in one circle on the board; the 24-gon is already visually a circle, and the class sees the limit forming.',
+  interactive: {
+    type: 'polygonAngles',
+    title: 'More sides, closer to a circle',
+    hint: 'Increase n and watch the perimeter approach 2πR.'
+  },
+  quiz: [
+    { q: m('a₆') + ' equals:', a: [m('R'), m('R' + sr('2')), m('R' + sr('3')), m('2R')], c: 0, why: 'Six equilateral triangles.' },
+    { q: m('a₄') + ' equals:', a: [m('R'), m('R' + sr('2')), m('R' + sr('3')), m('2R')], c: 1, why: m('2R sin 45°') + '.' },
+    { q: m('a₃') + ' equals:', a: [m('R'), m('R' + sr('2')), m('R' + sr('3')), m('3R')], c: 2, why: m('2R sin 60°') + '.' },
+    { q: m('R² ') + ' equals:', a: [m('r² + a²'), m('r² + ' + f('a²', '4')), m('r² − a²'), m('2r²')], c: 1, why: 'Pythagoras in the half-triangle.' },
+    { q: 'As ' + m('n') + ' grows, ' + m('rₙ') + ':', a: ['decreases to ' + m('0'), 'increases to ' + m('R'), 'stays fixed', 'oscillates'], c: 1, why: 'The apothem approaches the radius.' },
+    { q: 'The inscribed perimeter is:', a: ['greater than the circumference', 'less than it', 'equal to it', 'unrelated'], c: 1, why: 'A chord is shorter than its arc.' }
+  ],
+  practice: {
+    easy: [
+      [m('a₆') + ' for ' + m('R = 8'), m('8')],
+      [m('a₄') + ' for ' + m('R = 5'), m('5' + sr('2'))],
+      [m('a₃') + ' for ' + m('R = 6'), m('6' + sr('3'))],
+      [m('r₆') + ' for ' + m('R = 8'), m('4' + sr('3'))],
+      [m('r₄') + ' for ' + m('R = 5'), m(f('5' + sr('2'), '2'))],
+      ['Perimeter of a hexagon in ' + m('R = 8'), m('48')],
+      ['Area of a square in ' + m('R = 5'), m('50')]
+    ],
+    med: [
+      [m('R = 10, r = 8') + ': ' + m('a'), m('12')],
+      [m('R = 13, a = 24') + ': ' + m('r'), m('5')],
+      [m('a₁₂') + ' for ' + m('R = 10'), m('≈ 5.18')],
+      ['Perimeter of a ' + m('12') + '-gon in ' + m('R = 10'), m('≈ 62.1')],
+      ['Circumference of that circle', m('≈ 62.8')],
+      [m('a₈') + ' for ' + m('R = 4'), m('≈ 3.06')],
+      ['Area of a hexagon in ' + m('R = 8'), m('96' + sr('3'))]
+    ],
+    hard: [
+      ['A regular ' + m('24') + '-gon in ' + m('R = 1') + ': its perimeter', m('≈ 6.265')],
+      ['Compare with ' + m('2π'), m('≈ 6.283') + ' — the polygon is smaller'],
+      ['A hexagon and a square in the same circle: the ratio of their perimeters', m('6R : 4R' + sr('2')) + ', i.e. ' + m('3 : 2' + sr('2'))],
+      ['A regular polygon with ' + m('a = R') + ': ' + m('n'), m('6')],
+      ['A regular polygon with ' + m('a = R' + sr('2')) + ': ' + m('n'), m('4')],
+      ['A regular ' + m('n') + '-gon has ' + m('r = ' + f('R', '2')) + ': find ' + m('n'), m('3')],
+      ['Archimedes bounded ' + m('π') + ' between', m(f('223', '71')) + ' and ' + m(f('22', '7'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Use ' + m('R² = r² + ' + f('a²', '4')) + ' whenever two of the three are known.',
+  homework: [
+    'A regular hexagon is inscribed in a circle of radius ' + m('12') + '. Find its side, apothem and area.',
+    'A square is inscribed in a circle of radius ' + m('9') + '. Find its side and area.',
+    'An equilateral triangle is inscribed in a circle of radius ' + m('10') + '. Find its side.',
+    'A regular polygon inscribed in a circle of radius ' + m('13') + ' has side ' + m('10') + '. Find its apothem.',
+    'Compare the perimeter of a regular ' + m('12') + '-gon inscribed in a unit circle with ' + m('2π') + '.'
+  ]
+});
+
+/* ============================== 31 ============================== */
+G9_GEO.push({
+  id: 'g9-31', stream: 'geo', grade: 9, quarter: 3, lessons: '42–43', hours: 2,
+  title: 'The circumference of a circle',
+  subtitle: 'One number, the same for every circle — and the formula that follows from it.',
+  uz: 'Geometriya 9, §26', uzPage: 'pp. 153–158',
+  cam: 'IGX 7.1', camPage: 'Core & Extended, pp. 130–136', wb: 'Exercise 7.1',
+  objectives: [
+    'Define π as the ratio of the circumference to the diameter.',
+    'Use C = 2πR = πd in both directions.',
+    'Solve problems on wheels, belts and perimeters of composite figures.',
+    'Give answers exactly in terms of π and as decimals.'
+  ],
+  terms: [
+    ['Circumference', 'Aylana uzunligi', 'Длина окружности'],
+    ['Diameter', 'Diametr', 'Диаметр'],
+    ['Radius', 'Radius', 'Радиус'],
+    ['Pi', 'Pi soni', 'Число пи'],
+    ['Irrational', 'Irratsional', 'Иррациональное'],
+    ['Composite figure', 'Murakkab shakl', 'Составная фигура'],
+    ['Revolution', 'Aylanish', 'Оборот'],
+    ['Exactly', 'Aniq', 'Точно']
+  ],
+  timing: [[15, 'What π is'], [25, 'The formula'], [25, 'Wheels and belts'], [20, 'Composite perimeters'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'What π is',
+      html: `<p>Measure the circumference ${m('C')} and the diameter ${m('d')} of any circle and divide.
+      The answer is the same every time:</p>
+      ${eq(m('π = ' + f('C', 'd') + ' = 3.14159265…'), true)}
+      <p>This is not a coincidence but a consequence of the fact that all circles are similar: a circle
+      of twice the radius is an enlargement with ${m('k = 2')}, so its circumference is twice as
+      long.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Approximation</th><th>Value</th><th>Error</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3</td><td class="m">3</td><td class="m">≈ 4.5%</td></tr>
+        <tr><td class="m">${f('22', '7')}</td><td class="m">3.1428…</td><td class="m">≈ 0.04%</td></tr>
+        <tr><td class="m">3.14</td><td class="m">3.14</td><td class="m">≈ 0.05%</td></tr>
+        <tr><td class="m">${f('355', '113')}</td><td class="m">3.14159292…</td><td class="m">≈ 0.000009%</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">${m('π')} is irrational — and that was proved only in 1761</div>
+      No fraction equals it exactly, and no decimal expansion terminates or repeats. Every value above is
+      an approximation, which is why exact answers are left in terms of ${m('π')}.</div>`
+    },
+    {
+      h: 'The formula',
+      html: `${eq(m('C = πd = 2πR'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Find</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td class="m">R = 7</td><td class="m">C</td><td class="m">14π ≈ 44.0</td></tr>
+        <tr><td class="m">d = 10</td><td class="m">C</td><td class="m">10π ≈ 31.4</td></tr>
+        <tr><td class="m">C = 62.8</td><td class="m">R</td><td class="m">${f('62.8', '2π')} ≈ 10</td></tr>
+        <tr><td class="m">C = 12π</td><td class="m">d</td><td class="m">12</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Exact means “in terms of ${m('π')}”</span>
+      A circle of radius ${m('7')} has circumference exactly ${m('14π')}; ${m('43.98')} is a rounded
+      value. When a question says “give your answer in terms of ${m('π')}”, a decimal scores
+      nothing.</div>`
+    },
+    {
+      h: 'Wheels and belts',
+      html: `<p>One revolution of a wheel moves it forward by one circumference.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>a wheel of radius ${m('30 cm')} in ${m('100')} turns</td><td class="m">100 × 60π ≈ 188 m</td></tr>
+        <tr><td>turns needed to travel ${m('1 km')}</td><td class="m">${f('100000', '60π')} ≈ 531</td></tr>
+        <tr><td>a belt round two equal pulleys of radius ${m('r')}, centres ${m('d')} apart</td><td class="m">2πr + 2d</td></tr>
+      </tbody></table></div>
+      <p>The last row is worth thinking through: the two straight parts total ${m('2d')}, and the two
+      arcs together make one complete circle.</p>
+      <div class="keybox"><div class="klabel">Distance ÷ circumference = number of turns</div>
+      Every wheel question is one of those two divisions. Deciding which before starting takes five
+      seconds and settles the whole problem.</div>`
+    },
+    {
+      h: 'Composite perimeters',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Figure</th><th>Perimeter</th></tr></thead>
+      <tbody>
+        <tr><td>a semicircle of radius ${m('R')}</td><td class="m">πR + 2R</td></tr>
+        <tr><td>a quarter-circle of radius ${m('R')}</td><td class="m">${f('πR', '2')} + 2R</td></tr>
+        <tr><td>a running track: two straights ${m('L')}, two semicircular ends of radius ${m('R')}</td><td class="m">2L + 2πR</td></tr>
+        <tr><td>a square of side ${m('a')} with a semicircle on one side</td><td class="m">3a + ${f('πa', '2')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A semicircle’s perimeter includes the diameter</span>
+      ${m('πR')} is only the curved part. The boundary of the region also runs along the straight edge,
+      so ${m('2R')} must be added. Omitting it is the single most common error in composite-perimeter
+      questions.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A circle has radius ' + m('7 cm') + '. Find its circumference exactly and to 3 s.f.',
+      steps: [
+        [m('C = 2πR = 14π'), 'Exact.'],
+        [m('14 × 3.14159…'), ''],
+        [m('≈ 43.98'), ''],
+        [m('≈ 44.0 cm'), 'Three significant figures.']
+      ],
+      ans: m('14π ≈ 44.0 cm')
+    },
+    {
+      q: 'A bicycle wheel has radius ' + m('30 cm') + '. How many turns to travel ' + m('1 km') + '?',
+      steps: [
+        [m('C = 60π ≈ 188.5 cm'), ''],
+        [m('1 km = 100 000 cm'), ''],
+        [m(f('100000', '188.5')), ''],
+        [m('≈ 531') + ' turns.', '']
+      ],
+      ans: m('≈ 531')
+    },
+    {
+      q: 'Find the perimeter of a semicircular region of radius ' + m('10') + '.',
+      steps: [
+        ['Curved part: ' + m(f('1', '2') + ' × 2π × 10 = 10π') + '.', ''],
+        ['Straight part: the diameter, ' + m('20') + '.', ''],
+        [m('P = 10π + 20'), ''],
+        [m('≈ 51.4'), '']
+      ],
+      ans: m('10π + 20 ≈ 51.4')
+    }
+  ],
+  modelNote: 'Measure a tin lid with string and a ruler, divide, and collect the whole class’s answers on the board; they cluster around 3.14 without anyone being told to expect it.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'C and d together',
+    hint: 'Change the radius and watch the ratio hold.'
+  },
+  quiz: [
+    { q: m('π') + ' is:', a: [m(f('C', 'R')), m(f('C', 'd')), m(f('d', 'C')), m('Cd')], c: 1, why: 'Circumference over diameter.' },
+    { q: m('C') + ' equals:', a: [m('πR'), m('2πR'), m('πR²'), m('2πR²')], c: 1, why: 'Or ' + m('πd') + '.' },
+    { q: m('R = 7') + ' gives ' + m('C') + ' =', a: [m('7π'), m('14π'), m('49π'), m('21π')], c: 1, why: m('2 × 7 × π') + '.' },
+    { q: m('C = 12π') + ' gives ' + m('d') + ' =', a: [m('6'), m('12'), m('24'), m('36')], c: 1, why: m('C = πd') + '.' },
+    { q: 'The perimeter of a semicircle of radius ' + m('R') + ':', a: [m('πR'), m('πR + 2R'), m('2πR'), m('πR + R')], c: 1, why: 'Include the diameter.' },
+    { q: 'Turns to travel a distance ' + m('D') + ':', a: [m('DC'), m(f('D', 'C')), m(f('C', 'D')), m('D + C')], c: 1, why: 'One turn is one circumference.' }
+  ],
+  practice: {
+    easy: [
+      [m('R = 7') + ': ' + m('C') + ' exactly', m('14π')],
+      [m('R = 5') + ': ' + m('C') + ' exactly', m('10π')],
+      [m('d = 10') + ': ' + m('C') + ' exactly', m('10π')],
+      [m('C = 12π') + ': ' + m('R'), m('6')],
+      [m('C = 20π') + ': ' + m('d'), m('20')],
+      [m('R = 7') + ': ' + m('C') + ' to 3 s.f.', m('44.0')],
+      ['Perimeter of a semicircle, ' + m('R = 10'), m('10π + 20')]
+    ],
+    med: [
+      ['A wheel ' + m('R = 30 cm') + ': distance in ' + m('100') + ' turns', m('≈ 188 m')],
+      ['Same wheel: turns to travel ' + m('1 km'), m('≈ 531')],
+      ['Perimeter of a quarter-circle, ' + m('R = 8'), m('4π + 16')],
+      ['A track: straights ' + m('100 m') + ', ends of radius ' + m('35 m'), m('200 + 70π ≈ 420 m')],
+      ['A belt round two pulleys of radius ' + m('5') + ', centres ' + m('20') + ' apart', m('10π + 40')],
+      [m('C = 31.4') + ': ' + m('R'), m('≈ 5')],
+      ['A square of side ' + m('6') + ' with a semicircle on one side: its perimeter', m('18 + 3π')]
+    ],
+    hard: [
+      ['A circle whose circumference equals its diameter times ' + m('π') + ': always true?', 'Yes — that is the definition'],
+      ['Two circles of radii ' + m('3') + ' and ' + m('5') + ': the difference of their circumferences', m('4π')],
+      ['A circle of circumference ' + m('C') + ': the circumference when ' + m('R') + ' is doubled', m('2C')],
+      ['Earth’s equator, ' + m('R ≈ 6371 km') + ': its length', m('≈ 40 030 km')],
+      ['A rope round the equator, raised ' + m('1 m') + ' everywhere: extra length needed', m('2π ≈ 6.28 m')],
+      ['A running track lane ' + m('1.22 m') + ' wide: the extra length of the outer lane', m('≈ 7.67 m')],
+      ['Three equal circles of radius ' + m('r') + ' touching pairwise: the perimeter of the curved triangle between', m('πr')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Give every answer twice: exactly in terms of ' + m('π') + ', and to three significant figures.',
+  homework: [
+    'Find the circumference of a circle of radius ' + m('9 cm') + '.',
+    'A circle has circumference ' + m('44 cm') + '. Find its radius, taking ' + m('π = ' + f('22', '7')) + '.',
+    'A wheel of diameter ' + m('70 cm') + ' makes ' + m('500') + ' turns. How far does it travel?',
+    'Find the perimeter of a semicircular region of radius ' + m('14') + '.',
+    'A rope stretched round the Earth is raised ' + m('1 m') + ' at every point. How much extra rope is needed?'
+  ]
+});
