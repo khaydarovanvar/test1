@@ -15150,3 +15150,191 @@ G6_MAT.push({
     'Draw a solid of your own from six cubes and give its three views.'
   ]
 });
+
+/* ============================== 85 ============================== */
+G6_MAT.push({
+  id: 'g6-85', stream: 'mat', grade: 6, quarter: 4, lessons: '182–184', hours: 3,
+  title: 'Nets of three-dimensional figures',
+  subtitle: 'Unfold the solid, and its surface area becomes an ordinary area on flat paper.',
+  uz: 'Matematika 6, §36', uzPage: 'pp. 522–531',
+  cam: 'S7 8.4 3-D shapes', camPage: 'Stage 7, pp. 90–96', wb: 'Exercise 8.6',
+  objectives: [
+    'Draw a net of a cube, a cuboid and a prism.',
+    'Decide whether a given arrangement of squares folds into a cube.',
+    'Name the parts of the net of a cylinder, a cone and a pyramid.',
+    'Find a surface area by adding the parts of the net.'
+  ],
+  terms: [
+    ['Net', 'Yoyilma', 'Развёртка'],
+    ['To fold', 'Buklamoq', 'Складывать'],
+    ['Opposite faces', 'Qarama-qarshi yoqlar', 'Противоположные грани'],
+    ['Tab (flap)', 'Yopishtirish qismi', 'Клапан'],
+    ['Slant height', 'Yon balandlik (apofema)', 'Апофема'],
+    ['Sector', 'Sektor', 'Сектор'],
+    ['Circumference', 'Aylana uzunligi', 'Длина окружности'],
+    ['Surface area', 'Sirt yuzasi', 'Площадь поверхности']
+  ],
+  timing: [[25, 'What a net is'], [30, 'The nets of a cube'], [35, 'Nets of prisms, pyramids and cones'], [25, 'Surface area from a net'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'What a net is',
+      html: `<p>A net is the solid cut along some of its edges and laid flat, with every face still joined to
+      at least one neighbour. Fold it up and the original solid comes back.</p>
+      {{fig:surfaceNet:The net of a cuboid — six rectangles in three equal pairs}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Its net</th></tr></thead>
+      <tbody>
+        <tr><td>cube</td><td>six equal squares</td></tr>
+        <tr><td>cuboid</td><td>six rectangles, in three equal pairs</td></tr>
+        <tr><td>triangular prism</td><td>two triangles and three rectangles</td></tr>
+        <tr><td>square pyramid</td><td>one square and four triangles</td></tr>
+        <tr><td>cylinder</td><td>two circles and one rectangle</td></tr>
+        <tr><td>cone</td><td>one circle and one sector</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The area of the net is the surface area of the solid</div>
+      Nothing is lost or added by folding. Every surface-area question in this course could be answered by
+      drawing the net and adding its pieces.</div>`
+    },
+    {
+      h: 'The nets of a cube',
+      html: `<p>Six squares can be arranged in many ways, but only some of them fold into a cube. There are
+      exactly ${m('11')} genuinely different ones.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Arrangement</th><th>Folds into a cube?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>a row of four with one square each side</td><td>yes</td><td>the classic cross</td></tr>
+        <tr><td>a row of three, two above, one below</td><td>yes</td><td>one of the eleven</td></tr>
+        <tr><td>a row of six</td><td>no</td><td>it wraps round and two faces land on the same place</td></tr>
+        <tr><td>a ${m('2')} by ${m('3')} rectangle</td><td>no</td><td>there is no square left for the top</td></tr>
+        <tr><td>four in a square with two attached</td><td>sometimes</td><td>it depends where the two are</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The test: which faces end up opposite?</div>
+      In a row of squares, the first and the fourth become opposite faces. If two squares of the net would
+      have to become the <i>same</i> face, the arrangement fails. Cutting the shape out and folding it is
+      the honest check — and the one worth doing.</div>`
+    },
+    {
+      h: 'Nets of prisms, pyramids and cones',
+      html: `{{fig:cylinderNet:Two circles and a rectangle whose width is the circumference}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Pieces of the net</th><th>The measurement that surprises</th></tr></thead>
+      <tbody>
+        <tr><td>prism on an ${m('n')}-sided base</td><td>${m('2')} ends and ${m('n')} rectangles</td><td>each rectangle is as long as the prism</td></tr>
+        <tr><td>cylinder</td><td>${m('2')} circles and ${m('1')} rectangle</td><td>the rectangle’s width is ${m('2πr')}</td></tr>
+        <tr><td>pyramid on an ${m('n')}-sided base</td><td>${m('1')} base and ${m('n')} triangles</td><td>the triangle’s height is the slant height, not the solid’s</td></tr>
+        <tr><td>cone</td><td>${m('1')} circle and ${m('1')} sector</td><td>the sector’s radius is the slant height</td></tr>
+      </tbody></table></div>
+      {{fig:coneNet:The net of a cone — a base circle and a sector}}
+      <div class="warn"><span class="wl">The slant height is not the height</span>
+      In a pyramid the triangle leans outwards, so its own height is longer than the height of the solid.
+      Using the wrong one is the single commonest error in net questions.</div>`
+    },
+    {
+      h: 'Surface area from a net',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>The pieces</th><th>Surface area</th></tr></thead>
+      <tbody>
+        <tr><td>cube, edge ${m('4')} cm</td><td>${m('6')} squares of ${m('16')}</td><td class="m">96 cm²</td></tr>
+        <tr><td>cuboid ${m('5 × 4 × 3')} cm</td><td class="m">2(20 + 12 + 15)</td><td class="m">94 cm²</td></tr>
+        <tr><td>triangular prism, ${m('3')}-${m('4')}-${m('5')} ends, ${m('10')} cm long</td><td class="m">2 · 6 + 30 + 40 + 50</td><td class="m">132 cm²</td></tr>
+        <tr><td>cylinder, ${m('r = 5')}, ${m('h = 10')}</td><td class="m">2 · 78.5 + 314</td><td class="m">471 cm²</td></tr>
+        <tr><td>square pyramid, base ${m('6')}, slant ${m('5')}</td><td class="m">36 + 4 · 15</td><td class="m">96 cm²</td></tr>
+        <tr><td>cone, ${m('r = 3')}, slant ${m('5')}</td><td class="m">28.3 + 47.1</td><td class="m">75.4 cm²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">List the pieces before adding anything</div>
+      Write the shapes down — “two triangles of ${m('6')}, three rectangles of ${m('30, 40, 50')}” — and
+      the addition can hardly go wrong. Most lost marks here are a forgotten face, not bad arithmetic.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the surface area of a ' + m('5 × 4 × 3') + ' cm cuboid from its net.',
+      steps: [
+        ['The net has three pairs: ' + m('20, 12') + ' and ' + m('15') + ' cm².', ''],
+        [m('2(20 + 12 + 15)') + '.', ''],
+        [m('= 94') + ' cm².', 'The same answer as the formula ✓']
+      ],
+      ans: m('94') + ' cm²'
+    },
+    {
+      q: 'A triangular prism has ' + m('3') + '-' + m('4') + '-' + m('5') + ' cm ends and is ' + m('10') + ' cm long. Find its surface area.',
+      steps: [
+        ['Two triangles of ' + m(f('1', '2') + ' · 3 · 4 = 6') + ' cm².', ''],
+        ['Three rectangles: ' + m('3 · 10 = 30') + ', ' + m('4 · 10 = 40') + ', ' + m('5 · 10 = 50') + '.', ''],
+        [m('12 + 120 = 132') + ' cm².', 'Five pieces, all listed ✓']
+      ],
+      ans: m('132') + ' cm²'
+    },
+    {
+      q: 'A cylinder has radius ' + m('5') + ' cm and height ' + m('10') + ' cm. Find its surface area from the net, taking ' + m('π = 3.14') + '.',
+      steps: [
+        ['Two circles of ' + m('78.5') + ' cm².', ''],
+        ['A rectangle ' + m('31.4') + ' cm by ' + m('10') + ' cm ' + m('= 314') + ' cm².', 'Its width is the circumference.'],
+        [m('157 + 314 = 471') + ' cm².', '']
+      ],
+      ans: m('471') + ' cm²'
+    }
+  ],
+  modelNote: 'Give out six paper squares taped in a row and ask the class to make a cube; the failure is more instructive than any diagram of the eleven nets.',
+  interactive: {
+    type: 'quiz',
+    title: 'Folding and unfolding',
+    hint: 'Name every piece of the net before adding any areas.',
+    items: [
+      { q: 'A net of a cube has:', a: [m('4') + ' squares', m('6') + ' squares', m('8') + ' squares', m('11') + ' squares'], c: 1, why: 'One for each face.' },
+      { q: 'The number of genuinely different nets of a cube is:', a: [m('6'), m('8'), m('11'), m('24')], c: 2, why: 'A well-known result.' },
+      { q: 'A row of six squares folds into a cube:', a: ['yes', 'no', 'sometimes', 'only if bent'], c: 1, why: 'It wraps round on itself.' },
+      { q: 'The net of a cylinder is:', a: ['two circles and a rectangle', 'a circle and a sector', 'six rectangles', 'two triangles'], c: 0, why: 'The tube unrolls flat.' },
+      { q: 'The rectangle in that net has width:', a: [m('r'), m('2r'), m('πr'), m('2πr')], c: 3, why: 'The circumference of the end.' },
+      { q: 'The net of a cone is:', a: ['a circle and a rectangle', 'a circle and a sector', 'two sectors', 'a triangle'], c: 1, why: 'The curved surface opens into a sector.' },
+      { q: 'The triangles of a pyramid’s net use:', a: ['the height of the solid', 'the slant height', 'the base only', 'the volume'], c: 1, why: 'They lean outwards.' },
+      { q: 'The area of a net equals:', a: ['the volume', 'the surface area', 'half the surface area', 'nothing useful'], c: 1, why: 'Folding loses nothing.' }
+    ]
+  },
+  quiz: [
+    { q: 'A net is the solid:', a: ['cut in half', 'cut along edges and laid flat', 'drawn in perspective', 'filled with cubes'], c: 1, why: 'Every face still joined.' },
+    { q: 'A cuboid’s net has:', a: [m('3') + ' rectangles', m('6') + ' rectangles in ' + m('3') + ' pairs', m('6') + ' squares', m('4') + ' rectangles'], c: 1, why: 'Opposite faces are equal.' },
+    { q: 'A prism on a hexagonal base has a net with:', a: [m('6') + ' rectangles and ' + m('2') + ' hexagons', m('6') + ' triangles', m('8') + ' squares', m('2') + ' circles'], c: 0, why: 'One rectangle per side.' },
+    { q: 'A ' + m('2') + ' by ' + m('3') + ' rectangle of squares folds into a cube:', a: ['yes', 'no', 'sometimes', 'only with tabs'], c: 1, why: 'There is no face for the top.' },
+    { q: 'The surface area of a cube of edge ' + m('4') + ' cm from its net is:', a: [m('16'), m('64'), m('96'), m('24')], c: 2, why: 'Six squares of ' + m('16') + '.' },
+    { q: 'The commonest error in pyramid nets is using:', a: ['the base', 'the height instead of the slant height', 'too many triangles', 'the wrong unit'], c: 1, why: 'The triangle leans outwards.' }
+  ],
+  practice: {
+    easy: [
+      ['The faces in the net of a cube', m('6')],
+      ['The number of different nets of a cube', m('11')],
+      ['The net of a cylinder', 'Two circles and a rectangle'],
+      ['The net of a cone', 'A circle and a sector'],
+      ['The net of a square pyramid', 'A square and four triangles'],
+      ['The net of a triangular prism', 'Two triangles and three rectangles'],
+      ['The area of a net equals', 'The surface area of the solid']
+    ],
+    med: [
+      ['The area of the net of a ' + m('5 × 4 × 3') + ' cm cuboid', m('94') + ' cm²'],
+      ['The area of the net of a cube of edge ' + m('4') + ' cm', m('96') + ' cm²'],
+      ['The area of the net of a cube of edge ' + m('5') + ' cm', m('150') + ' cm²'],
+      ['The width of the rectangle in a cylinder’s net', m('2πr')],
+      ['That width for ' + m('r = 5') + ' cm, ' + m('π = 3.14'), m('31.4') + ' cm'],
+      ['The rectangles in the net of a hexagonal prism', m('6')],
+      ['The triangles in the net of a pentagonal pyramid', m('5')]
+    ],
+    hard: [
+      ['The net of a triangular prism, ' + m('3') + '-' + m('4') + '-' + m('5') + ' ends, ' + m('10') + ' cm long', m('132') + ' cm²'],
+      ['The net of a cylinder, ' + m('r = 5') + ', ' + m('h = 10'), m('471') + ' cm²'],
+      ['The net of a square pyramid, base ' + m('6') + ', slant ' + m('5'), m('96') + ' cm²'],
+      ['The net of a cone, ' + m('r = 3') + ', slant ' + m('5'), m('75.4') + ' cm²'],
+      ['Why does a row of six squares not fold into a cube?', 'It wraps round and two faces meet in one place'],
+      ['The area of the rectangle in the net of a cylinder ' + m('r = 5') + ', ' + m('h = 10'), m('314') + ' cm²'],
+      ['Which squares of a cube net must not touch?', 'Those that will become opposite faces']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw the nets on squared paper, list every piece, then add.',
+  homework: [
+    'Draw a net of a cube of edge ' + m('3') + ' cm and find its area.',
+    'Draw a net of a ' + m('6 × 4 × 2') + ' cm cuboid and find its area.',
+    'A cylinder has radius ' + m('4') + ' cm and height ' + m('9') + ' cm. Sketch its net and give the dimensions of the rectangle.',
+    'Find the total surface area of that cylinder, taking ' + m('π = 3.14') + '.',
+    'Draw two different nets of a cube, and explain why a row of six squares is not one of them.'
+  ]
+});
