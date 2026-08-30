@@ -4434,3 +4434,347 @@ G6_MAT.push({
     'Concrete ' + m('1 : 2 : 4') + ' is needed to a total of ' + m('1 400') + ' kg. Find each ingredient.'
   ]
 });
+
+/* ============================== 25 ============================== */
+G6_MAT.push({
+  id: 'g6-25', stream: 'mat', grade: 6, quarter: 1, lessons: '50–52', hours: 3,
+  title: 'Variable ratios — direct and inverse proportion',
+  subtitle: 'When one quantity grows with another, and when it shrinks instead.',
+  uz: 'Matematika 6, §12', uzPage: 'pp. 141–150',
+  cam: 'S7 12', camPage: 'Stage 7, pp. 118–125', wb: 'Exercise 12.5',
+  objectives: [
+    'Recognise direct proportion and use the unitary method.',
+    'Recognise inverse proportion and use the constant product.',
+    'Decide which kind a situation is before calculating.',
+    'Read a proportional relationship from a table.'
+  ],
+  terms: [
+    ['Direct proportion', 'To‘g‘ri proporsionallik', 'Прямая пропорциональность'],
+    ['Inverse proportion', 'Teskari proporsionallik', 'Обратная пропорциональность'],
+    ['Unitary method', 'Birlik usuli', 'Метод приведения к единице'],
+    ['Constant', 'O‘zgarmas', 'Постоянная'],
+    ['Product', 'Ko‘paytma', 'Произведение'],
+    ['Rate', 'Tezlik, narx', 'Норма'],
+    ['To increase', 'Ortmoq', 'Увеличиваться'],
+    ['To decrease', 'Kamaymoq', 'Уменьшаться']
+  ],
+  timing: [[25, 'Direct proportion'], [30, 'The unitary method'], [30, 'Inverse proportion'], [25, 'Which is which?'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'Direct proportion',
+      html: `<p>Two quantities are in <b>direct proportion</b> when doubling one doubles the other. Their
+      quotient stays the same.</p>
+      ${eq(m(f('y', 'x') + ' = k') + ', a constant', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Pens</th><th class="m">1</th><th class="m">2</th><th class="m">5</th><th class="m">8</th></tr></thead>
+      <tbody>
+        <tr><td>cost, sum</td><td class="m">3000</td><td class="m">6000</td><td class="m">15 000</td><td class="m">24 000</td></tr>
+        <tr><td class="m">cost ÷ pens</td><td class="m">3000</td><td class="m">3000</td><td class="m">3000</td><td class="m">3000</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The constant is the price of one</div>
+      In every direct proportion the constant has a meaning: the cost of one pen, the distance in one
+      hour, the mass of one metre. Finding it is the whole method.</div>`
+    },
+    {
+      h: 'The unitary method',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>One unit</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('5')} pens cost ${m('15 000')}: ${m('8')} pens</td><td class="m">3000</td><td class="m">24 000</td></tr>
+        <tr><td>${m('4')} m of cloth costs ${m('60 000')}: ${m('7')} m</td><td class="m">15 000</td><td class="m">105 000</td></tr>
+        <tr><td>a car does ${m('180')} km in ${m('3')} h: in ${m('5')} h</td><td class="m">60 km</td><td class="m">300 km</td></tr>
+        <tr><td>${m('6')} identical books weigh ${m('2.4')} kg: ${m('10')} books</td><td class="m">0.4 kg</td><td class="m">4 kg</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Divide, then multiply</div>
+      Down to one, then up to what is asked. Two operations, in that order, solve every direct-proportion
+      problem in the course.</div>`
+    },
+    {
+      h: 'Inverse proportion',
+      html: `<p>Two quantities are in <b>inverse proportion</b> when doubling one halves the other. Their
+      product stays the same.</p>
+      ${eq(m('xy = k') + ', a constant', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Workers</th><th class="m">2</th><th class="m">3</th><th class="m">4</th><th class="m">6</th></tr></thead>
+      <tbody>
+        <tr><td>days</td><td class="m">12</td><td class="m">8</td><td class="m">6</td><td class="m">4</td></tr>
+        <tr><td>product</td><td class="m">24</td><td class="m">24</td><td class="m">24</td><td class="m">24</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The constant is the size of the job</div>
+      ${m('24')} worker-days is the work itself, whoever does it. Once that number is found, any number of
+      workers can be answered by dividing.</div>`
+    },
+    {
+      h: 'Which is which?',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Situation</th><th>Kind</th><th>Constant</th></tr></thead>
+      <tbody>
+        <tr><td>cost of ${m('n')} identical pens</td><td>direct</td><td>the price of one</td></tr>
+        <tr><td>distance in ${m('t')} hours at a fixed speed</td><td>direct</td><td>the speed</td></tr>
+        <tr><td>workers and days for one job</td><td>inverse</td><td>worker-days</td></tr>
+        <tr><td>speed and time for a fixed distance</td><td>inverse</td><td>the distance</td></tr>
+        <tr><td>taps and time to fill a tank</td><td>inverse</td><td>tap-minutes</td></tr>
+        <tr><td>a person's age and height</td><td>neither</td><td>—</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Not everything that changes together is proportional</span>
+      A child twice as old is not twice as tall, and eight workers may get in each other's way. Proportion
+      is a model, and the question is always whether it fits.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: m('5') + ' pens cost ' + m('15 000') + ' sum. What do ' + m('8') + ' cost?',
+      steps: [
+        ['More pens, more money — direct.', ''],
+        ['One pen: ' + m('15 000 ÷ 5 = 3000') + '.', ''],
+        ['Eight pens: ' + m('8 · 3000 = 24 000') + '.', '']
+      ],
+      ans: m('24 000') + ' sum'
+    },
+    {
+      q: m('4') + ' workers finish a job in ' + m('6') + ' days. How long would ' + m('8') + ' take?',
+      steps: [
+        ['More workers, fewer days — inverse.', ''],
+        [m('4 · 6 = 24') + ' worker-days.', ''],
+        [m('24 ÷ 8 = 3') + ' days.', '']
+      ],
+      ans: m('3') + ' days'
+    },
+    {
+      q: 'A car covers ' + m('180') + ' km in ' + m('3') + ' hours at a steady speed. How far in ' + m('5') + ' hours?',
+      steps: [
+        ['Direct: more time, more distance.', ''],
+        ['One hour: ' + m('60') + ' km.', ''],
+        ['Five hours: ' + m('300') + ' km.', '']
+      ],
+      ans: m('300') + ' km'
+    }
+  ],
+  modelNote: 'Ask how long six taps take if three take twenty minutes; the wrong answer of forty is worth hearing aloud before the constant product is introduced.',
+  interactive: {
+    type: 'quiz',
+    title: 'Direct, inverse, or neither?',
+    hint: 'Ask what stays constant: the quotient or the product.',
+    items: [
+      { q: 'The cost of ' + m('n') + ' identical pens:', a: ['direct', 'inverse', 'neither', 'constant'], c: 0, why: 'Both grow together.' },
+      { q: 'Workers and days for one job:', a: ['direct', 'inverse', 'neither', 'constant'], c: 1, why: 'The product is fixed.' },
+      { q: m('5') + ' pens cost ' + m('15 000') + '; ' + m('8') + ' cost:', a: [m('20 000'), m('24 000'), m('30 000'), m('18 000')], c: 1, why: m('3000') + ' each.' },
+      { q: m('4') + ' workers take ' + m('6') + ' days; ' + m('8') + ' take:', a: [m('12'), m('3'), m('2'), m('4')], c: 1, why: m('24 ÷ 8') + '.' },
+      { q: 'Speed and time for a fixed distance:', a: ['direct', 'inverse', 'neither', 'constant'], c: 1, why: 'Faster means sooner.' },
+      { q: 'In direct proportion the constant is:', a: [m('xy'), m(f('y', 'x')), m('x + y'), m('x − y')], c: 1, why: 'The value of one unit.' },
+      { q: 'In inverse proportion the constant is:', a: [m('xy'), m(f('y', 'x')), m('x + y'), m('y − x')], c: 0, why: 'The size of the job.' },
+      { q: 'A person’s age and height are:', a: ['directly proportional', 'inversely proportional', 'not proportional', 'constant'], c: 2, why: 'Growth is not steady.' }
+    ]
+  },
+  quiz: [
+    { q: 'Direct proportion keeps constant:', a: ['the product', 'the quotient', 'the sum', 'the difference'], c: 1, why: m(f('y', 'x') + ' = k') + '.' },
+    { q: 'Inverse proportion keeps constant:', a: ['the product', 'the quotient', 'the sum', 'the difference'], c: 0, why: m('xy = k') + '.' },
+    { q: m('4') + ' m of cloth costs ' + m('60 000') + '; ' + m('7') + ' m costs:', a: [m('90 000'), m('105 000'), m('120 000'), m('84 000')], c: 1, why: m('15 000') + ' a metre.' },
+    { q: m('6') + ' taps fill a tank in ' + m('4') + ' h; ' + m('8') + ' taps take:', a: [m('3') + ' h', m('5') + ' h', m('2') + ' h', m('6') + ' h'], c: 0, why: m('24 ÷ 8') + '.' },
+    { q: 'The unitary method means:', a: ['multiply then divide', 'divide to one, then multiply', 'add', 'take the product'], c: 1, why: 'Down then up.' },
+    { q: 'Doubling one quantity halves the other: this is:', a: ['direct', 'inverse', 'neither', 'impossible'], c: 1, why: 'The product is unchanged.' }
+  ],
+  practice: {
+    easy: [
+      [m('5') + ' pens cost ' + m('15 000') + ': one pen', m('3000')],
+      ['So ' + m('8') + ' pens cost', m('24 000')],
+      [m('4') + ' m of cloth costs ' + m('60 000') + ': ' + m('7') + ' m', m('105 000')],
+      [m('180') + ' km in ' + m('3') + ' h: in ' + m('5') + ' h', m('300') + ' km'],
+      [m('6') + ' books weigh ' + m('2.4') + ' kg: ' + m('10') + ' books', m('4') + ' kg'],
+      ['Cost against number of pens is', 'direct'],
+      ['Workers against days is', 'inverse']
+    ],
+    med: [
+      [m('4') + ' workers take ' + m('6') + ' days: ' + m('8') + ' workers', m('3') + ' days'],
+      [m('6') + ' taps fill a tank in ' + m('4') + ' h: ' + m('8') + ' taps', m('3') + ' h'],
+      [m('3') + ' taps take ' + m('20') + ' min: ' + m('6') + ' taps', m('10') + ' min'],
+      ['Speed and time for a fixed distance', 'inverse'],
+      ['Distance and time at a fixed speed', 'direct'],
+      ['Age and height', 'neither'],
+      [m('12') + ' workers take ' + m('5') + ' days: ' + m('4') + ' workers', m('15') + ' days']
+    ],
+    hard: [
+      ['If ' + m('y') + ' is inversely proportional to ' + m('x') + ' and ' + m('y = 12') + ' at ' + m('x = 2') + ': ' + m('y') + ' at ' + m('x = 8'), m('3')],
+      ['If ' + m('y') + ' is directly proportional to ' + m('x') + ' and ' + m('y = 12') + ' at ' + m('x = 2') + ': ' + m('y') + ' at ' + m('x = 8'), m('48')],
+      [m('9') + ' workers take ' + m('8') + ' days; how many for ' + m('6') + ' days?', m('12')],
+      ['Food lasts ' + m('30') + ' people ' + m('12') + ' days: for ' + m('40') + ' people', m('9') + ' days'],
+      [m('15') + ' m of wire weighs ' + m('600') + ' g: the mass of ' + m('4') + ' m', m('160') + ' g'],
+      ['Why is “more workers, more days” never the model?', 'The job is fixed, so the product must be'],
+      ['A tap fills a tank in ' + m('12') + ' min: two such taps together', m('6') + ' min']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Name the kind of proportion before doing any arithmetic.',
+  homework: [
+    m('7') + ' notebooks cost ' + m('42 000') + ' sum. Find the cost of ' + m('11') + '.',
+    'A car travels ' + m('240') + ' km in ' + m('4') + ' hours. How far in ' + m('7') + ' hours?',
+    m('5') + ' workers finish a job in ' + m('12') + ' days. How long would ' + m('10') + ' take?',
+    m('4') + ' taps fill a tank in ' + m('15') + ' minutes. How long would ' + m('6') + ' take?',
+    'Say which of these is direct, which inverse and which neither: cost and quantity; speed and time; a pupil’s age and marks.'
+  ]
+});
+
+/* ============================== 26 ============================== */
+G6_MAT.push({
+  id: 'g6-26', stream: 'mat', grade: 6, quarter: 1, lessons: '53', hours: 1,
+  title: 'Control work 3 — ratio and proportion',
+  subtitle: 'Simplifying, sharing, chaining and proportion in one short paper.',
+  uz: 'Matematika 6, Nazorat ishi 3', uzPage: 'pp. 109–150',
+  cam: 'S7 12 review', camPage: 'Stage 7, pp. 118–125', wb: 'Control paper 3',
+  objectives: [
+    'Simplify ratios, converting units first.',
+    'Share a quantity in a two- and three-part ratio.',
+    'Use direct and inverse proportion correctly.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Ratio', 'Nisbat', 'Отношение'],
+    ['To share', 'Taqsimlash', 'Разделить'],
+    ['One part', 'Bir ulush', 'Одна часть'],
+    ['Direct proportion', 'To‘g‘ri proporsionallik', 'Прямая пропорциональность'],
+    ['Inverse proportion', 'Teskari proporsionallik', 'Обратная пропорциональность'],
+    ['Units', 'O‘lchov birligi', 'Единицы'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[2, 'Instructions'], [28, 'The paper'], [8, 'Answers and diagnosis'], [2, 'What comes next']],
+  sections: [
+    {
+      h: 'The paper — 20 marks, 28 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Simplify ${m('24 : 36')} and ${m('75 cm : 3 m')}</td><td class="m">3</td><td>L41</td></tr>
+        <tr><td>2</td><td>In ${m('3 : 5')} write each part as a fraction of the whole</td><td class="m">3</td><td>L42–43</td></tr>
+        <tr><td>3</td><td>Share ${m('480')} in the ratio ${m('5 : 7')}</td><td class="m">3</td><td>L44–46</td></tr>
+        <tr><td>4</td><td>Two shares are in the ratio ${m('7 : 3')} and differ by ${m('24')}: find both</td><td class="m">3</td><td>L44–46</td></tr>
+        <tr><td>5</td><td>Share ${m('540')} in the ratio ${m('2 : 3 : 4')}</td><td class="m">3</td><td>L47–49</td></tr>
+        <tr><td>6</td><td>${m('7')} books cost ${m('49 000')}: find the cost of ${m('11')}</td><td class="m">3</td><td>L50–52</td></tr>
+        <tr><td>7</td><td>${m('5')} workers take ${m('12')} days: how long for ${m('10')}?</td><td class="m">2</td><td>L50–52</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The answers</div>
+      ${m('2 : 3')} and ${m('1 : 4')}; ${m(f('3', '8'))} and ${m(f('5', '8'))}; ${m('200')} and ${m('280')};
+      ${m('42')} and ${m('18')}; ${m('120, 180, 240')}; ${m('77 000')} sum; ${m('6')} days.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>units not converted</td><td class="m">75 : 3</td><td class="m">75 : 300 = 1 : 4</td></tr>
+        <tr><td>denominator taken as the other part</td><td class="m">${f('3', '5')} of the whole</td><td class="m">${f('3', '8')}</td></tr>
+        <tr><td>total divided by the wrong number</td><td class="m">480 ÷ 5</td><td class="m">480 ÷ 12</td></tr>
+        <tr><td>difference treated as the total</td><td class="m">24 ÷ 10</td><td class="m">24 ÷ 4</td></tr>
+        <tr><td>three-part total miscounted</td><td class="m">2 + 3 + 4 = 8</td><td class="m">9</td></tr>
+        <tr><td>inverse solved as direct</td><td class="m">24 days</td><td class="m">6 days</td></tr>
+        <tr><td>no check</td><td>shares that do not add to the total</td><td>add them back</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'What comes next',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>If you lost marks on</th><th>It returns in</th></tr></thead>
+      <tbody>
+        <tr><td>Q1–Q2</td><td>percentages, lesson 55 — a percentage is a ratio out of ${m('100')}</td></tr>
+        <tr><td>Q3–Q5</td><td>the pie chart, lesson 160, where ${m('360°')} is shared in a ratio</td></tr>
+        <tr><td>Q6</td><td>speed, lesson 117 — distance is directly proportional to time</td></tr>
+        <tr><td>Q7</td><td>every “more workers, fewer days” problem in the year</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Quarter I ends here</div>
+      Directed numbers, algebra, the division of fractions and ratio are done. Quarter II opens with
+      percentages, which uses all four.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q4: two shares in ratio ' + m('7 : 3') + ' differ by ' + m('24') + '.',
+      steps: [
+        ['The difference is ' + m('7 − 3 = 4') + ' parts.', 'Not ' + m('10') + '.'],
+        [m('24 ÷ 4 = 6') + ' for one part.', ''],
+        [m('7 · 6 = 42') + ' and ' + m('3 · 6 = 18') + '.', 'Check: ' + m('42 − 18 = 24') + ' ✓']
+      ],
+      ans: m('42') + ' and ' + m('18')
+    },
+    {
+      q: 'Model answer, Q6: ' + m('7') + ' books cost ' + m('49 000') + '; find ' + m('11') + '.',
+      steps: [
+        ['Direct proportion.', ''],
+        ['One book: ' + m('49 000 ÷ 7 = 7000') + '.', ''],
+        ['Eleven: ' + m('11 · 7000 = 77 000') + '.', '']
+      ],
+      ans: m('77 000') + ' sum'
+    },
+    {
+      q: 'Model answer, Q7: ' + m('5') + ' workers take ' + m('12') + ' days; how long for ' + m('10') + '?',
+      steps: [
+        ['Inverse proportion — more workers, fewer days.', ''],
+        [m('5 · 12 = 60') + ' worker-days.', ''],
+        [m('60 ÷ 10 = 6') + ' days.', '']
+      ],
+      ans: m('6') + ' days'
+    }
+  ],
+  modelNote: 'Return Q7 first and ask who doubled the days; naming the mistake as “solved an inverse problem as a direct one” makes it memorable.',
+  interactive: {
+    type: 'quiz',
+    title: 'The block in eight questions',
+    hint: 'Units, parts, and which kind of proportion.',
+    items: [
+      { q: m('24 : 36') + ' simplifies to:', a: [m('2 : 3'), m('3 : 2'), m('4 : 6'), m('1 : 2')], c: 0, why: 'Divide by ' + m('12') + '.' },
+      { q: m('75 cm : 3 m') + ' simplifies to:', a: [m('25 : 1'), m('1 : 4'), m('75 : 3'), m('1 : 40')], c: 1, why: 'Convert first.' },
+      { q: 'In ' + m('3 : 5') + ' the first part is:', a: [m(f('3', '5')), m(f('3', '8')), m(f('5', '8')), m(f('5', '3'))], c: 1, why: 'Eight parts.' },
+      { q: m('480') + ' in ' + m('5 : 7') + ' gives:', a: [m('200, 280'), m('240, 240'), m('180, 300'), m('220, 260')], c: 0, why: 'One part ' + m('40') + '.' },
+      { q: 'Ratio ' + m('7 : 3') + ' with difference ' + m('24') + ' gives one part:', a: [m('2.4'), m('4'), m('6'), m('8')], c: 2, why: 'Four parts of difference.' },
+      { q: m('540') + ' in ' + m('2 : 3 : 4') + ' gives:', a: [m('120, 180, 240'), m('100, 200, 240'), m('135, 180, 225'), m('90, 180, 270')], c: 0, why: 'Nine parts of ' + m('60') + '.' },
+      { q: m('7') + ' books cost ' + m('49 000') + '; ' + m('11') + ' cost:', a: [m('66 000'), m('77 000'), m('70 000'), m('84 000')], c: 1, why: m('7000') + ' each.' },
+      { q: m('5') + ' workers take ' + m('12') + ' days; ' + m('10') + ' take:', a: [m('24'), m('6'), m('10'), m('2.4')], c: 1, why: 'Inverse.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 requires first:', a: ['dividing', 'converting units', 'adding', 'multiplying'], c: 1, why: 'Or the ratio is wrong.' },
+    { q: 'Q2 denominator is:', a: ['the other part', 'the total of the parts', 'the first part', m('10')], c: 1, why: 'A fraction of the whole.' },
+    { q: 'Q3 divides ' + m('480') + ' by:', a: [m('5'), m('7'), m('12'), m('35')], c: 2, why: 'The total parts.' },
+    { q: 'Q4 divides ' + m('24') + ' by:', a: [m('10'), m('7'), m('3'), m('4')], c: 3, why: 'The difference in parts.' },
+    { q: 'Q6 is:', a: ['direct', 'inverse', 'neither', 'a ratio'], c: 0, why: 'More books, more money.' },
+    { q: 'Q7 is:', a: ['direct', 'inverse', 'neither', 'a ratio'], c: 1, why: 'More workers, fewer days.' }
+  ],
+  practice: {
+    easy: [
+      ['Simplify ' + m('24 : 36'), m('2 : 3')],
+      ['Simplify ' + m('75 cm : 3 m'), m('1 : 4')],
+      ['In ' + m('3 : 5') + ', the first as a fraction', m(f('3', '8'))],
+      ['Share ' + m('480') + ' in ' + m('5 : 7'), m('200') + ' and ' + m('280')],
+      ['Ratio ' + m('7 : 3') + ', difference ' + m('24'), m('42') + ' and ' + m('18')],
+      ['Share ' + m('540') + ' in ' + m('2 : 3 : 4'), m('120, 180, 240')],
+      [m('7') + ' books cost ' + m('49 000') + ': ' + m('11') + ' books', m('77 000')]
+    ],
+    med: [
+      [m('5') + ' workers take ' + m('12') + ' days: ' + m('10') + ' workers', m('6') + ' days'],
+      ['Simplify ' + m('40 min : 2 h'), m('1 : 3')],
+      ['Share ' + m('320') + ' in ' + m('3 : 5'), m('120') + ' and ' + m('200')],
+      ['Ratio ' + m('5 : 2') + ', difference ' + m('18'), m('30') + ' and ' + m('12')],
+      [m('9') + ' m of cloth costs ' + m('72 000') + ': ' + m('5') + ' m', m('40 000')],
+      [m('6') + ' taps fill a tank in ' + m('10') + ' min: ' + m('4') + ' taps', m('15') + ' min'],
+      ['In ' + m('2 : 3 : 5') + ', the last as a fraction', m(f('1', '2'))]
+    ],
+    hard: [
+      [m('A : B = 2 : 3') + ', ' + m('B : C = 4 : 5') + ': find ' + m('A : B : C'), m('8 : 12 : 15')],
+      ['Share ' + m('1 200') + ' in ' + m('1 : 2 : 3 : 6'), m('100, 200, 300, 600')],
+      ['Food for ' + m('20') + ' people lasts ' + m('9') + ' days: for ' + m('15') + ' people', m('12') + ' days'],
+      ['A ratio ' + m('4 : 9') + ' with the total ' + m('91'), m('28') + ' and ' + m('63')],
+      ['Why is a ratio of ' + m('75 : 3') + ' wrong for ' + m('75 cm : 3 m') + '?', 'The two numbers count different units'],
+      ['If ' + m('12') + ' workers take ' + m('10') + ' days, how many take ' + m('8') + '?', m('15')],
+      ['Which of Q6 and Q7 keeps a constant product?', 'Q7, the inverse one']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every question you lost a mark on in full, from the first line.',
+  homework: [
+    'Rewrite in full every question on which you lost a mark.',
+    'Simplify ' + m('45 : 60') + ' and ' + m('90 cm : 2.7 m') + '.',
+    'Share ' + m('660') + ' in the ratio ' + m('4 : 7') + '.',
+    m('8') + ' pencils cost ' + m('24 000') + ' sum. Find the cost of ' + m('14') + '.',
+    m('6') + ' workers take ' + m('15') + ' days. How long would ' + m('9') + ' take?'
+  ]
+});
