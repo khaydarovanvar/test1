@@ -14964,3 +14964,189 @@ G6_MAT.push({
     'Name the cross-section of a cuboid, a cylinder and a triangular prism.'
   ]
 });
+
+/* ============================== 84 ============================== */
+G6_MAT.push({
+  id: 'g6-84', stream: 'mat', grade: 6, quarter: 4, lessons: '179–181', hours: 3,
+  title: 'Building three-dimensional figures on an isometric grid',
+  subtitle: 'Drawing a solid honestly on flat paper — and reading it back from its three views.',
+  uz: 'Matematika 6, §35', uzPage: 'pp. 512–521',
+  cam: 'S7 8.4 3-D shapes', camPage: 'Stage 7, pp. 88–94', wb: 'Exercise 8.5',
+  objectives: [
+    'Draw a solid made of unit cubes on an isometric grid.',
+    'Count the cubes in a stack, including the hidden ones.',
+    'Find the surface area of a stack of unit cubes.',
+    'Draw the plan and the two elevations, and rebuild a solid from them.'
+  ],
+  terms: [
+    ['Isometric grid', 'Izometrik to‘r', 'Изометрическая сетка'],
+    ['Unit cube', 'Birlik kub', 'Единичный куб'],
+    ['Stack', 'Ustma-ust taxlam', 'Стопка'],
+    ['Plan', 'Ustdan ko‘rinish', 'Вид сверху'],
+    ['Front elevation', 'Oldindan ko‘rinish', 'Вид спереди'],
+    ['Side elevation', 'Yon ko‘rinish', 'Вид сбоку'],
+    ['Hidden cube', 'Yashirin kub', 'Скрытый куб'],
+    ['Exposed face', 'Ochiq yoq', 'Открытая грань']
+  ],
+  timing: [[30, 'Drawing on the isometric grid'], [30, 'Counting the cubes'], [30, 'Plan and elevations'], [25, 'From views back to the solid'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Drawing on the isometric grid',
+      html: `<p>Isometric paper carries dots in triangles rather than squares. Vertical edges are drawn
+      vertically; the other two directions run along the sloping lines of the grid. Every edge of a unit
+      cube is then the same length on the page.</p>
+      {{fig:isometricGrid:Three unit cubes drawn on an isometric grid}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Rule</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>vertical edges stay vertical</td><td>height must look like height</td></tr>
+        <tr><td>the other two directions follow the grid lines</td><td>they keep equal lengths equal</td></tr>
+        <tr><td>never draw a horizontal line</td><td>there are none in this projection</td></tr>
+        <tr><td>draw the front cubes last</td><td>they must cover what is behind them</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The drawing is not a photograph</span>
+      In a real photograph the far edges would look shorter. On an isometric grid they do not, which is
+      exactly what makes the drawing measurable — and slightly strange to look at.</div>`
+    },
+    {
+      h: 'Counting the cubes',
+      html: `<p>Count layer by layer, from the bottom up. A cube you cannot see still has to be there if
+      something is resting on it.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Stack</th><th>Cubes</th><th>Hidden</th><th>Surface, in unit squares</th></tr></thead>
+      <tbody>
+        <tr><td>an L of three cubes</td><td class="m">3</td><td class="m">0</td><td class="m">14</td></tr>
+        <tr><td class="m">2 × 2 × 1</td><td class="m">4</td><td class="m">0</td><td class="m">16</td></tr>
+        <tr><td class="m">3 × 2 × 2</td><td class="m">12</td><td class="m">0</td><td class="m">32</td></tr>
+        <tr><td class="m">2 × 2 × 2</td><td class="m">8</td><td class="m">0</td><td class="m">24</td></tr>
+        <tr><td class="m">3 × 3 × 3</td><td class="m">27</td><td class="m">1</td><td class="m">54</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Surface area from the joins</div>
+      Three cubes have ${m('18')} faces in all. Two pairs are glued together, hiding ${m('4')} of them, so
+      ${m('14')} are exposed. Every join hides exactly two faces — that is the quickest way to count.</div>`
+    },
+    {
+      h: 'Plan and elevations',
+      html: `<p>Three flat drawings describe a solid without any perspective at all: the view from above and
+      the views from the front and the side.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>View</th><th>Looking</th><th>Shows</th><th>For the L of three cubes</th></tr></thead>
+      <tbody>
+        <tr><td>plan</td><td>from above</td><td>length and depth</td><td>a ${m('2')} by ${m('1')} rectangle</td></tr>
+        <tr><td>front elevation</td><td>from the front</td><td>length and height</td><td>an L of three squares</td></tr>
+        <tr><td>side elevation</td><td>from the side</td><td>depth and height</td><td>a ${m('1')} by ${m('2')} rectangle</td></tr>
+      </tbody></table></div>
+      {{fig:surfaceNet:Flat views and flat nets both turn a solid into drawings on one page}}
+      <div class="keybox"><div class="klabel">Each view is a shadow, not a picture</div>
+      Anything behind something else disappears. That is why the plan of the L is only two squares, even
+      though the solid has three cubes.</div>`
+    },
+    {
+      h: 'From views back to the solid',
+      html: `<p>Given three views, rebuild the solid layer by layer: the plan gives the footprint, the
+      elevations give the height of each part.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Plan</th><th>Front</th><th>Side</th><th>Solid</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2 × 2</td><td class="m">2 × 2</td><td class="m">2 × 2</td><td>a ${m('2 × 2 × 2')} cube, ${m('8')} cubes</td></tr>
+        <tr><td class="m">3 × 1</td><td class="m">3 × 1</td><td class="m">1 × 1</td><td>a row of ${m('3')} cubes</td></tr>
+        <tr><td class="m">2 × 1</td><td>an L</td><td class="m">1 × 2</td><td>the L of ${m('3')} cubes</td></tr>
+        <tr><td class="m">3 × 1</td><td>a staircase</td><td class="m">1 × 3</td><td>a staircase of ${m('6')} cubes</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Three views do not always fix the number of cubes</span>
+      A cube tucked out of sight behind another changes none of the views. The views give the shape from
+      outside; only the drawing or the solid itself gives the count for certain.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A stack is ' + m('3') + ' cubes long, ' + m('2') + ' deep and ' + m('2') + ' high. How many cubes, and what is its surface area in unit squares?',
+      steps: [
+        [m('3 · 2 · 2 = 12') + ' cubes.', ''],
+        ['The three faces are ' + m('6, 4') + ' and ' + m('6') + '.', ''],
+        [m('2(6 + 4 + 6) = 32') + ' unit squares.', 'It is a cuboid, so the old rule applies ✓']
+      ],
+      ans: m('12') + ' cubes, surface ' + m('32')
+    },
+    {
+      q: 'Three cubes form an L: two in a row, one on top of the left-hand cube. Find the exposed surface.',
+      steps: [
+        [m('3 · 6 = 18') + ' faces altogether.', ''],
+        ['Two joins, each hiding ' + m('2') + ' faces: ' + m('4') + ' hidden.', ''],
+        [m('18 − 4 = 14') + ' unit squares.', 'Count the joins, not the faces ✓']
+      ],
+      ans: m('14') + ' unit squares'
+    },
+    {
+      q: 'Describe the plan and the two elevations of that L of three cubes.',
+      steps: [
+        ['From above, the top cube hides the one below: a ' + m('2') + ' by ' + m('1') + ' rectangle.', ''],
+        ['From the front, heights ' + m('2') + ' and ' + m('1') + ': an L of three squares.', ''],
+        ['From the side, one deep and two high: a ' + m('1') + ' by ' + m('2') + ' rectangle.', 'Each view is a shadow.']
+      ],
+      ans: 'A ' + m('2 × 1') + ' rectangle, an L, and a ' + m('1 × 2') + ' rectangle'
+    }
+  ],
+  modelNote: 'Build each solid from real cubes before drawing it; the hidden cube in a 3 × 3 × 3 stack is only convincing when the class has had to put it there.',
+  interactive: {
+    type: 'quiz',
+    title: 'Cubes, views and surfaces',
+    hint: 'Every join between two cubes hides exactly two faces.',
+    items: [
+      { q: 'A ' + m('2 × 2 × 2') + ' stack contains:', a: [m('4'), m('6'), m('8'), m('12')], c: 2, why: 'Two layers of four.' },
+      { q: 'A ' + m('3 × 3 × 3') + ' stack has how many cubes no face of which can be seen?', a: [m('0'), m('1'), m('3'), m('9')], c: 1, why: 'The one at the centre.' },
+      { q: 'Three cubes joined in an L expose:', a: [m('18'), m('16'), m('14'), m('12')], c: 2, why: 'Two joins hide four faces.' },
+      { q: 'A ' + m('2 × 2 × 1') + ' block has surface:', a: [m('12'), m('16'), m('20'), m('24')], c: 1, why: m('2(4 + 2 + 2)') + '.' },
+      { q: 'The plan is the view from:', a: ['the front', 'the side', 'above', 'below'], c: 2, why: 'It shows length and depth.' },
+      { q: 'The side elevation shows:', a: ['length and depth', 'depth and height', 'length and height', 'nothing'], c: 1, why: 'Looking along the length.' },
+      { q: 'On isometric paper you never draw:', a: ['a vertical line', 'a horizontal line', 'a sloping line', 'a dot'], c: 1, why: 'The two horizontal directions both slope.' },
+      { q: 'Three views fix the number of cubes:', a: ['always', 'never', 'not always', 'only for cuboids'], c: 2, why: 'A hidden cube changes no view.' }
+    ]
+  },
+  quiz: [
+    { q: 'On an isometric grid the dots form:', a: ['squares', 'triangles', 'circles', 'hexagons'], c: 1, why: 'Three directions at ' + m('60°') + '.' },
+    { q: 'A vertical edge of a cube is drawn:', a: ['sloping left', 'sloping right', 'vertically', 'horizontally'], c: 2, why: 'Height looks like height.' },
+    { q: 'Each join between two cubes hides:', a: [m('1') + ' face', m('2') + ' faces', m('4') + ' faces', 'nothing'], c: 1, why: 'One from each cube.' },
+    { q: 'A cube with something resting on it:', a: ['need not be there', 'must be there', 'is optional', 'is hollow'], c: 1, why: 'Nothing floats.' },
+    { q: 'The front elevation shows:', a: ['length and depth', 'length and height', 'depth and height', 'volume'], c: 1, why: 'Looking from the front.' },
+    { q: 'A view is:', a: ['a photograph', 'a shadow, with nothing behind', 'a net', 'a cross-section'], c: 1, why: 'Hidden parts disappear.' }
+  ],
+  practice: {
+    easy: [
+      ['Cubes in a ' + m('2 × 2 × 1') + ' stack', m('4')],
+      ['Cubes in a ' + m('2 × 2 × 2') + ' stack', m('8')],
+      ['Cubes in a ' + m('3 × 2 × 2') + ' stack', m('12')],
+      ['Cubes in a ' + m('3 × 3 × 3') + ' stack', m('27')],
+      ['The dots of an isometric grid form', 'Triangles'],
+      ['A vertical edge is drawn', 'Vertically'],
+      ['The plan is the view from', 'Above']
+    ],
+    med: [
+      ['The surface of a ' + m('2 × 2 × 1') + ' block', m('16') + ' unit squares'],
+      ['The surface of a ' + m('2 × 2 × 2') + ' block', m('24') + ' unit squares'],
+      ['Cubes in a staircase of ' + m('1, 2') + ' and ' + m('3'), m('6')],
+      ['The exposed faces of an L of three cubes', m('14')],
+      ['The front elevation of a ' + m('2 × 2 × 2') + ' stack', 'A ' + m('2') + ' by ' + m('2') + ' square'],
+      ['The plan of a ' + m('3 × 2 × 2') + ' stack', 'A ' + m('3') + ' by ' + m('2') + ' rectangle'],
+      ['Cubes with no visible face in a ' + m('3 × 3 × 3') + ' stack', m('1')]
+    ],
+    hard: [
+      ['The surface of a ' + m('3 × 2 × 2') + ' block', m('32') + ' unit squares'],
+      ['The surface of a ' + m('3 × 3 × 3') + ' block', m('54') + ' unit squares'],
+      ['The exposed faces of a staircase of ' + m('1, 2, 3') + ' cubes', m('24')],
+      ['A plan, front and side all ' + m('2') + ' by ' + m('2') + ': the largest possible solid', 'A ' + m('2 × 2 × 2') + ' cube of ' + m('8') + ' cubes'],
+      ['Why can three views not fix the number of cubes?', 'A hidden cube changes none of them'],
+      ['Which view shows depth and height?', 'The side elevation'],
+      ['How many faces does each join between two cubes hide?', m('2')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Use isometric paper for the drawings and squared paper for the three views.',
+  homework: [
+    'Draw a ' + m('2 × 2 × 2') + ' stack of cubes on isometric paper.',
+    'Draw the L of three cubes and write its plan, front and side elevations.',
+    'Find the number of cubes and the surface area of a ' + m('4 × 2 × 2') + ' stack.',
+    'Build a staircase of ' + m('1, 2, 3') + ' and ' + m('4') + ' cubes and count the cubes.',
+    'Draw a solid of your own from six cubes and give its three views.'
+  ]
+});
