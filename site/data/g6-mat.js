@@ -12429,3 +12429,168 @@ G6_MAT.push({
     'Concrete weighs ' + m('2.4') + ' tonnes per m³. Find the mass of a slab ' + m('5') + ' m by ' + m('2') + ' m by ' + m('0.2') + ' m.'
   ]
 });
+
+/* ============================== 70 ============================== */
+G6_MAT.push({
+  id: 'g6-70', stream: 'mat', grade: 6, quarter: 3, lessons: '150', hours: 1,
+  title: 'Think — volume in context',
+  subtitle: 'The same volume, six different boxes: which one uses the least card?',
+  uz: 'Matematika 6, o‘ylab ko‘r', uzPage: 'pp. 436–438',
+  cam: 'S7 15 in context', camPage: 'Stage 7, pp. 168–170', wb: 'Investigation 15',
+  objectives: [
+    'Find every cuboid with whole-number edges and a given volume.',
+    'Compare their surface areas and identify the most economical.',
+    'State what happens to volume and surface area when every edge is doubled.',
+    'Turn the saving into a quantity of material and a cost.'
+  ],
+  terms: [
+    ['Packaging', 'Qadoqlash', 'Упаковка'],
+    ['Economical', 'Tejamkor', 'Экономичный'],
+    ['Material', 'Material', 'Материал'],
+    ['Whole-number edge', 'Butun sonli qirra', 'Целое ребро'],
+    ['Scale factor', 'O‘lchov koeffitsiyenti', 'Коэффициент подобия'],
+    ['To conjecture', 'Taxmin qilmoq', 'Выдвигать гипотезу'],
+    ['Saving', 'Tejamkorlik', 'Экономия'],
+    ['Per unit', 'Bir birlikka', 'На единицу']
+  ],
+  timing: [[10, 'The packaging problem'], [10, 'Testing the boxes'], [12, 'What doubling does'], [8, 'Writing the report']],
+  sections: [
+    {
+      h: 'The packaging problem',
+      html: `<p>A factory must pack ${m('216')} cm³ of tea into a cuboid box with whole-number edges in
+      centimetres. Every box holds the same tea. They do not use the same amount of card.</p>
+      <div class="keybox"><div class="klabel">The question</div>
+      Among all cuboids of volume ${m('216')} cm³ with whole-number edges, which uses the least card — and
+      is there a pattern that would let you answer the same question for any volume?</div>
+      <p>Start by listing boxes. Each one is three whole numbers whose product is ${m('216')}.</p>`
+    },
+    {
+      h: 'Testing the boxes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Box</th><th>Volume</th><th>The three faces</th><th>Card used</th></tr></thead>
+      <tbody>
+        <tr><td class="m">6 × 6 × 6</td><td class="m">216 cm³</td><td class="m">36, 36, 36</td><td class="m">216 cm²</td></tr>
+        <tr><td class="m">9 × 6 × 4</td><td class="m">216 cm³</td><td class="m">54, 24, 36</td><td class="m">228 cm²</td></tr>
+        <tr><td class="m">8 × 9 × 3</td><td class="m">216 cm³</td><td class="m">72, 27, 24</td><td class="m">246 cm²</td></tr>
+        <tr><td class="m">12 × 6 × 3</td><td class="m">216 cm³</td><td class="m">72, 18, 36</td><td class="m">252 cm²</td></tr>
+        <tr><td class="m">12 × 9 × 2</td><td class="m">216 cm³</td><td class="m">108, 18, 24</td><td class="m">300 cm²</td></tr>
+        <tr><td class="m">216 × 1 × 1</td><td class="m">216 cm³</td><td class="m">216, 1, 216</td><td class="m">866 cm²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The conjecture</div>
+      The nearer the box is to a cube, the less card it uses; the long thin box is by far the worst. The
+      cube is the cheapest cuboid for any given volume.</div>`
+    },
+    {
+      h: 'What doubling does',
+      html: `<p>Now change the size instead of the shape. Double every edge of a cube and both quantities
+      grow — but not at the same rate.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Cube</th><th>Volume</th><th>Surface area</th><th>Card per cm³</th></tr></thead>
+      <tbody>
+        <tr><td>edge ${m('3')} cm</td><td class="m">27 cm³</td><td class="m">54 cm²</td><td class="m">2</td></tr>
+        <tr><td>edge ${m('6')} cm</td><td class="m">216 cm³</td><td class="m">216 cm²</td><td class="m">1</td></tr>
+        <tr><td>edge ${m('12')} cm</td><td class="m">1728 cm³</td><td class="m">864 cm²</td><td class="m">0.5</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Volume grows faster than surface area</span>
+      Doubling the edges multiplies the volume by ${m('8')} and the surface area by only ${m('4')}. That is
+      why a large packet is cheaper per gram than a small one — and why a small animal loses heat faster
+      than a large one.</div>`
+    },
+    {
+      h: 'Writing the report',
+      html: `<p>Turn the finding into money, which is the form a factory understands.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quantity</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>card saved per box</td><td class="m">252 − 216</td><td class="m">36 cm²</td></tr>
+        <tr><td>cost saved per box at ${m('2')} so‘m per cm²</td><td class="m">36 · 2</td><td class="m">72 so‘m</td></tr>
+        <tr><td>card saved on ${m('10 000')} boxes</td><td class="m">36 · 10 000</td><td class="m">36 m²</td></tr>
+        <tr><td>money saved on ${m('10 000')} boxes</td><td class="m">72 · 10 000</td><td class="m">720 000 so‘m</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">And why is the cube not always used?</div>
+      Because boxes must stand on shelves, be gripped by a hand, and hold a shape that is not itself a
+      cube. A good report says what the mathematics recommends <i>and</i> what overrules it.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compare the card used by a ' + m('12 × 6 × 3') + ' box and a ' + m('6 × 6 × 6') + ' box of the same volume.',
+      steps: [
+        ['Both hold ' + m('216') + ' cm³.', ''],
+        [m('2(72 + 18 + 36) = 252') + ' cm² against ' + m('6 · 36 = 216') + ' cm².', ''],
+        ['The cube saves ' + m('36') + ' cm² per box.', 'About ' + m('14') + '% less card ✓']
+      ],
+      ans: m('252') + ' against ' + m('216') + ' cm²'
+    },
+    {
+      q: 'Find the card used by a ' + m('9 × 6 × 4') + ' box.',
+      steps: [
+        ['The three faces: ' + m('54, 24, 36') + '.', ''],
+        [m('2(54 + 24 + 36)') + '.', ''],
+        [m('= 228') + ' cm².', 'Between the cube and the ' + m('12 × 6 × 3') + ' box ✓']
+      ],
+      ans: m('228') + ' cm²'
+    },
+    {
+      q: 'A factory makes ' + m('10 000') + ' boxes a day. How much card does the cube save, in square metres?',
+      steps: [
+        [m('36') + ' cm² per box.', ''],
+        [m('36 · 10 000 = 360 000') + ' cm².', ''],
+        [m('360 000 ÷ 10 000 = 36') + ' m².', m('1') + ' m² is ' + m('10 000') + ' cm².']
+      ],
+      ans: m('36') + ' m² a day'
+    }
+  ],
+  modelNote: 'Set k = 2 in the model and read the three multipliers aloud: 2, 4, 8. That single line is the whole of the third section.',
+  interactive: {
+    type: 'scaleSolid',
+    title: 'Lengths, areas and volumes under a scale factor',
+    hint: 'Set k = 2 and read the three multipliers: lengths ×2, areas ×4, volumes ×8.'
+  },
+  quiz: [
+    { q: 'Among cuboids of a fixed volume, the least card is used by:', a: ['the longest', 'the cube', 'the flattest', 'they are all equal'], c: 1, why: 'The nearer to a cube, the better.' },
+    { q: 'A ' + m('216 × 1 × 1') + ' box uses:', a: [m('216') + ' cm²', m('433') + ' cm²', m('866') + ' cm²', m('218') + ' cm²'], c: 2, why: 'Two enormous faces.' },
+    { q: 'Doubling every edge multiplies the volume by:', a: [m('2'), m('4'), m('6'), m('8')], c: 3, why: 'Three lengths doubled.' },
+    { q: 'It multiplies the surface area by:', a: [m('2'), m('4'), m('6'), m('8')], c: 1, why: 'Two lengths doubled.' },
+    { q: 'Card per cm³ for a large cube compared with a small one is:', a: ['larger', 'smaller', 'the same', 'zero'], c: 1, why: 'Volume grows faster.' },
+    { q: 'The cube is not always used because:', a: ['it is hard to make', 'shelves and contents have shapes too', 'it uses more card', 'it holds less'], c: 1, why: 'Practice overrules the optimum.' }
+  ],
+  practice: {
+    easy: [
+      ['The volume of a ' + m('6 × 6 × 6') + ' box', m('216') + ' cm³'],
+      ['The card used by that box', m('216') + ' cm²'],
+      ['The card used by a ' + m('12 × 6 × 3') + ' box', m('252') + ' cm²'],
+      ['The card used by a ' + m('9 × 6 × 4') + ' box', m('228') + ' cm²'],
+      ['Which of those three is the most economical?', 'The cube'],
+      ['The volume of a ' + m('9 × 6 × 4') + ' box', m('216') + ' cm³'],
+      ['The card used by a ' + m('216 × 1 × 1') + ' box', m('866') + ' cm²']
+    ],
+    med: [
+      ['The card used by an ' + m('8 × 9 × 3') + ' box', m('246') + ' cm²'],
+      ['The card used by a ' + m('12 × 9 × 2') + ' box', m('300') + ' cm²'],
+      ['The most economical shape for a fixed volume', 'The cube'],
+      ['Order ' + m('6 × 6 × 6') + ', ' + m('9 × 6 × 4') + ', ' + m('12 × 6 × 3') + ' by card used', m('216, 228, 252') + ' cm²'],
+      ['The volume of a cube of edge ' + m('3') + ' cm', m('27') + ' cm³'],
+      ['The surface area of a cube of edge ' + m('3') + ' cm', m('54') + ' cm²'],
+      ['The surface area of a cube of edge ' + m('6') + ' cm', m('216') + ' cm²']
+    ],
+    hard: [
+      ['Doubling every edge multiplies the volume by', m('8')],
+      ['…and the surface area by', m('4')],
+      ['A cube of edge ' + m('10') + ' cm: its volume and surface area', m('1000') + ' cm³ and ' + m('600') + ' cm²'],
+      ['Card per cm³ for cubes of edge ' + m('3') + ' and ' + m('6'), m('2') + ' against ' + m('1')],
+      ['At ' + m('2') + ' so‘m per cm², the cube saves against ' + m('12 × 6 × 3'), m('72') + ' so‘m a box'],
+      ['On ' + m('10 000') + ' boxes, the card saved', m('36') + ' m²'],
+      ['Why is a cube not always used?', 'Shelves, handling and the shape of the contents']
+    ]
+  },
+  hwTitle: 'Homework — the report',
+  hwNote: 'One page: the table of boxes, the conjecture, the doubling result, and the cost in so‘m.',
+  homework: [
+    'List every cuboid with whole-number edges and volume ' + m('64') + ' cm³, and find the card each uses.',
+    'State which is the most economical and whether it agrees with the conjecture.',
+    'Work out what happens to the volume and the surface area of a cube when every edge is trebled.',
+    'A factory makes ' + m('5000') + ' boxes a day. Find the card saved by the best shape, in m².',
+    'Write two sentences on why a factory might still not choose the best shape.'
+  ]
+});
