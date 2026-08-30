@@ -11122,3 +11122,181 @@ G6_MAT.push({
     'Convert ' + m('90') + ' km/h to m/s and ' + m('25') + ' m/s to km/h.'
   ]
 });
+
+/* ============================== 63 ============================== */
+G6_MAT.push({
+  id: 'g6-63', stream: 'mat', grade: 6, quarter: 3, lessons: '133', hours: 1,
+  title: 'Think — Project 3: fraction averages',
+  subtitle: 'A Cambridge project: the fraction that lies between two others, and where it always lands.',
+  uz: 'Matematika 6, o‘ylab ko‘r', uzPage: 'pp. 389–391',
+  cam: 'S7 Project 3', camPage: 'Stage 7, project pages', wb: 'Project sheet 3',
+  objectives: [
+    'Find the mean of two fractions.',
+    'Investigate what happens when numerators and denominators are added instead.',
+    'State a conjecture and test it.',
+    'Present the investigation clearly.'
+  ],
+  terms: [
+    ['Mean', 'O‘rta arifmetik', 'Среднее арифметическое'],
+    ['Between', 'Orasida', 'Между'],
+    ['Conjecture', 'Faraz', 'Гипотеза'],
+    ['To test', 'Sinab ko‘rmoq', 'Проверить'],
+    ['Numerator', 'Surat', 'Числитель'],
+    ['Denominator', 'Maxraj', 'Знаменатель'],
+    ['Investigation', 'Tadqiqot', 'Исследование'],
+    ['Counter-example', 'Qarshi misol', 'Контрпример']
+  ],
+  timing: [[8, 'The mean of two fractions'], [12, 'A strange rule'], [14, 'Testing the conjecture'], [6, 'Presenting it']],
+  sections: [
+    {
+      h: 'The mean of two fractions',
+      html: `${eq('mean ' + m('= ' + f('a + b', '2')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Two fractions</th><th>Sum</th><th>Mean</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('1', '2')}, ${f('1', '4')}</td><td class="m">${f('3', '4')}</td><td class="m">${f('3', '8')}</td></tr>
+        <tr><td class="m">${f('1', '3')}, ${f('1', '2')}</td><td class="m">${f('5', '6')}</td><td class="m">${f('5', '12')}</td></tr>
+        <tr><td class="m">${f('2', '5')}, ${f('3', '5')}</td><td class="m">1</td><td class="m">${f('1', '2')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The mean always lies between the two</div>
+      That is the point of an average, and it is the check to make on every answer in this
+      investigation.</div>`
+    },
+    {
+      h: 'A strange rule',
+      html: `<p>Now try something that looks wrong: add the numerators and add the denominators.</p>
+      ${eq(m(f('a', 'b') + ' ⊕ ' + f('c', 'd') + ' = ' + f('a + c', 'b + d')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Two fractions</th><th>The strange rule</th><th>The true mean</th><th>Between them?</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('1', '2')}, ${f('1', '4')}</td><td class="m">${f('2', '6')} = ${f('1', '3')}</td><td class="m">${f('3', '8')}</td><td>yes</td></tr>
+        <tr><td class="m">${f('1', '3')}, ${f('1', '2')}</td><td class="m">${f('2', '5')}</td><td class="m">${f('5', '12')}</td><td>yes</td></tr>
+        <tr><td class="m">${f('1', '4')}, ${f('3', '4')}</td><td class="m">${f('4', '8')} = ${f('1', '2')}</td><td class="m">${f('1', '2')}</td><td>yes</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">This is not how fractions are added</span>
+      ${m(f('1', '2') + ' + ' + f('1', '4'))} is ${m(f('3', '4'))}, not ${m(f('2', '6'))}. The rule above is
+      a different operation, worth investigating precisely because it is the mistake everyone makes.</div>`
+    },
+    {
+      h: 'Testing the conjecture',
+      html: `<p><b>Conjecture:</b> the result of the strange rule always lies between the two fractions.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Test</th><th>Result</th><th>Between?</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('1', '5')}, ${f('4', '5')}</td><td class="m">${f('5', '10')} = ${f('1', '2')}</td><td>yes</td></tr>
+        <tr><td class="m">${f('2', '3')}, ${f('5', '7')}</td><td class="m">${f('7', '10')}</td><td>yes — ${m('0.667 < 0.7 < 0.714')}</td></tr>
+        <tr><td class="m">${f('1', '2')}, ${f('1', '2')}</td><td class="m">${f('2', '4')} = ${f('1', '2')}</td><td>equal to both</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The conjecture survives every test</div>
+      It is true, and it has a name: the <b>mediant</b> of two fractions. It always lies between them —
+      but it is not usually the mean, as the first table showed.</div>`
+    },
+    {
+      h: 'Presenting it',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Part</th><th>What it contains</th></tr></thead>
+      <tbody>
+        <tr><td>the question</td><td>where does ${m(f('a + c', 'b + d'))} lie?</td></tr>
+        <tr><td>the data</td><td>at least six pairs, chosen systematically</td></tr>
+        <tr><td>the pattern</td><td>always between, but not the mean</td></tr>
+        <tr><td>the comparison</td><td>the mean against the mediant, in decimals</td></tr>
+        <tr><td>the conclusion</td><td>two sentences, with one worked example</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the mediant is used</div>
+      Two batsmen scoring ${m('40')} runs off ${m('50')} balls and ${m('30')} off ${m('40')} have a
+      combined rate of ${m(f('70', '90'))} — the mediant, not the mean of their two rates. Adding the tops
+      and the bottoms is exactly right for combining rates.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the mean of ' + m(f('1', '2')) + ' and ' + m(f('1', '4')) + '.',
+      steps: [
+        [m(f('1', '2') + ' + ' + f('1', '4') + ' = ' + f('3', '4')), ''],
+        ['Divide by ' + m('2') + '.', ''],
+        [m(f('3', '8')), 'Between ' + m(f('1', '4')) + ' and ' + m(f('1', '2')) + ' ✓']
+      ],
+      ans: m(f('3', '8'))
+    },
+    {
+      q: 'Apply the strange rule to ' + m(f('1', '3')) + ' and ' + m(f('1', '2')) + ', and compare with the mean.',
+      steps: [
+        ['Strange rule: ' + m(f('2', '5') + ' = 0.4') + '.', ''],
+        ['Mean: ' + m(f('5', '12') + ' ≈ 0.417') + '.', ''],
+        ['Both lie between ' + m('0.333') + ' and ' + m('0.5') + ', but they differ.', '']
+      ],
+      ans: m(f('2', '5')) + ' against ' + m(f('5', '12'))
+    },
+    {
+      q: 'A batsman scores ' + m('40') + ' off ' + m('50') + ' balls and then ' + m('30') + ' off ' + m('40') + '. Find the combined rate.',
+      steps: [
+        ['Total runs: ' + m('70') + '. Total balls: ' + m('90') + '.', ''],
+        [m(f('70', '90') + ' ≈ 0.78') + ' runs a ball.', ''],
+        ['That is the mediant of ' + m(f('40', '50')) + ' and ' + m(f('30', '40')) + '.', 'Adding tops and bottoms is right here.']
+      ],
+      ans: m(f('7', '9'))
+    }
+  ],
+  modelNote: 'Point out that the “wrong” way to add fractions is exactly the right way to combine rates; the class remembers both rules better for seeing where each belongs.',
+  interactive: {
+    type: 'quiz',
+    title: 'Mean or mediant?',
+    hint: 'Both lie between; only one is the average.',
+    items: [
+      { q: 'The mean of ' + m(f('1', '2')) + ' and ' + m(f('1', '4')) + ' is:', a: [m(f('1', '3')), m(f('3', '8')), m(f('2', '6')), m(f('3', '4'))], c: 1, why: 'Add and halve.' },
+      { q: 'The mediant of the same two is:', a: [m(f('1', '3')), m(f('3', '8')), m(f('3', '4')), m(f('1', '6'))], c: 0, why: m(f('2', '6')) + '.' },
+      { q: m(f('1', '2') + ' + ' + f('1', '4')) + ' equals:', a: [m(f('2', '6')), m(f('3', '4')), m(f('1', '3')), m(f('1', '8'))], c: 1, why: 'Real addition.' },
+      { q: 'The mediant always lies:', a: ['above both', 'below both', 'between them', 'anywhere'], c: 2, why: 'The conjecture, which is true.' },
+      { q: 'Is the mediant the mean?', a: ['always', 'sometimes', 'never', 'only for equal fractions'], c: 3, why: 'They agree only then.' },
+      { q: 'Two rates ' + m(f('40', '50')) + ' and ' + m(f('30', '40')) + ' combine to:', a: [m(f('70', '90')), m(f('70', '45')), m(f('35', '45')), m(f('1200', '2000'))], c: 0, why: 'Total over total.' },
+      { q: 'Adding tops and bottoms is right for:', a: ['adding fractions', 'combining rates', 'both', 'neither'], c: 1, why: 'Different questions.' },
+      { q: 'A conjecture becomes a fact when it is:', a: ['tested twice', 'proved', 'written down', 'believed'], c: 1, why: 'Evidence is not proof.' }
+    ]
+  },
+  quiz: [
+    { q: 'The mean of two numbers is:', a: ['their sum', 'half their sum', 'their difference', 'their product'], c: 1, why: 'The average.' },
+    { q: 'The mediant of ' + m(f('a', 'b')) + ' and ' + m(f('c', 'd')) + ' is:', a: [m(f('a + c', 'b + d')), m(f('a + c', '2')), m(f('ac', 'bd')), m(f('a', 'b') + ' + ' + f('c', 'd'))], c: 0, why: 'Tops and bottoms.' },
+    { q: 'The mediant of ' + m(f('1', '4')) + ' and ' + m(f('3', '4')) + ' is:', a: [m(f('1', '2')), m(f('4', '4')), m(f('3', '16')), m(f('1', '8'))], c: 0, why: m(f('4', '8')) + '.' },
+    { q: 'Is that also the mean here?', a: ['yes', 'no', 'sometimes', 'never'], c: 0, why: 'The denominators are equal.' },
+    { q: 'Adding fractions needs:', a: ['a common denominator', 'adding the denominators', 'the mediant', 'nothing'], c: 0, why: 'Same-sized parts.' },
+    { q: 'The strange rule is right for:', a: ['fractions', 'rates', 'both', 'neither'], c: 1, why: 'Runs over balls.' }
+  ],
+  practice: {
+    easy: [
+      ['The mean of ' + m(f('1', '2')) + ' and ' + m(f('1', '4')), m(f('3', '8'))],
+      ['The mean of ' + m(f('1', '3')) + ' and ' + m(f('1', '2')), m(f('5', '12'))],
+      ['The mean of ' + m(f('2', '5')) + ' and ' + m(f('3', '5')), m(f('1', '2'))],
+      ['The mediant of ' + m(f('1', '2')) + ' and ' + m(f('1', '4')), m(f('1', '3'))],
+      ['The mediant of ' + m(f('1', '3')) + ' and ' + m(f('1', '2')), m(f('2', '5'))],
+      ['The mediant of ' + m(f('1', '4')) + ' and ' + m(f('3', '4')), m(f('1', '2'))],
+      [m(f('1', '2') + ' + ' + f('1', '4')), m(f('3', '4'))]
+    ],
+    med: [
+      ['Is the mediant always between the two fractions?', 'Yes'],
+      ['Is the mediant always the mean?', 'No'],
+      ['When are they equal?', 'When the two fractions are equal, or the denominators match'],
+      ['The mediant of ' + m(f('1', '5')) + ' and ' + m(f('4', '5')), m(f('1', '2'))],
+      ['The mediant of ' + m(f('2', '3')) + ' and ' + m(f('5', '7')), m(f('7', '10'))],
+      ['Combine ' + m('40') + ' off ' + m('50') + ' and ' + m('30') + ' off ' + m('40'), m(f('7', '9'))],
+      ['Which rule adds fractions?', 'The common denominator']
+    ],
+    hard: [
+      ['Show that ' + m(f('7', '10')) + ' lies between ' + m(f('2', '3')) + ' and ' + m(f('5', '7')), m('0.667 < 0.7 < 0.714')],
+      ['The mean of ' + m(f('2', '3')) + ' and ' + m(f('5', '7')), m(f('29', '42'))],
+      ['Which is larger, the mean or the mediant, for those two?', 'The mean, at ' + m('0.690') + ' against ' + m('0.7') + ' — the mediant'],
+      ['A pupil scores ' + m('18') + '/' + m('25') + ' and ' + m('27') + '/' + m('35') + ': the combined mark', m(f('45', '60') + ' = 75%')],
+      ['Why is the mediant right for combining marks?', 'Totals over totals is what a combined mark means'],
+      ['Find a fraction between ' + m(f('3', '7')) + ' and ' + m(f('4', '7')), m(f('7', '14') + ' = ' + f('1', '2'))],
+      ['Find a fraction between ' + m(f('5', '8')) + ' and ' + m(f('2', '3')), m(f('7', '11'))]
+    ]
+  },
+  hwTitle: 'Homework — the project',
+  hwNote: 'One page: six tested pairs, the pattern, and where the rule is genuinely useful.',
+  homework: [
+    'Find the mean and the mediant of six pairs of fractions of your own.',
+    'Record both in a table, with decimals for comparison.',
+    'State in one sentence where the mediant always lies.',
+    'Give one example where adding tops and bottoms is the right thing to do.',
+    'Explain why it is nevertheless the wrong way to add two fractions.'
+  ]
+});
