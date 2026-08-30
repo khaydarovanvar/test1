@@ -58,6 +58,7 @@
         }).join('') + '</span></span>';
     }).join('');
     return '<header class="site-head" id="sitehead"><div class="bar">' + brandmark() +
+      '<div class="solidstrip" id="solidstrip" aria-hidden="true"></div>' +
       '<div class="navwrap"><nav class="nav" id="navlinks">' + links + '</nav>' +
       '<div class="findwrap"><button class="findbtn" id="findbtn" type="button" ' +
       'aria-label="Search the topics" title="Search the topics">' +
@@ -370,6 +371,30 @@
     });
   }
 
+  /* The rotating solids beside the brandmark. Six shapes at different speeds,
+     so the strip never falls into a single rhythm. */
+  var STRIP = [
+    { shape: 'cube',   colour: 'var(--brand)', speed: 1.00 },
+    { shape: 'octa',   colour: 'var(--brass)', speed: -0.82 },
+    { shape: 'sphere', colour: 'var(--brand)', speed: 0.64 },
+    { shape: 'prism',  colour: 'var(--brass)', speed: -0.55 },
+    { shape: 'cone',   colour: 'var(--brand)', speed: 0.73 },
+    { shape: 'tetra',  colour: 'var(--brass)', speed: -0.91 }
+  ];
+  function mountSolids() {
+    var host = document.getElementById('solidstrip');
+    if (!host || !w.SOLIDS || host.childNodes.length) return;
+    for (var i = 0; i < STRIP.length; i++) {
+      var cell = document.createElement('span');
+      cell.className = 'solidcell';
+      host.appendChild(cell);
+      w.SOLIDS.mount(cell, {
+        shape: STRIP[i].shape, size: 26, colour: STRIP[i].colour,
+        speed: STRIP[i].speed, phase: i * 1.05
+      });
+    }
+  }
+
   function mount(active) {
     var h = document.getElementById('site-header');
     if (h) h.outerHTML = header(active);
@@ -381,6 +406,7 @@
     searchBehaviour();
     initHero();
     initTranslate();
+    mountSolids();
   }
 
   /* Every topic the page has loaded, whatever grade. Data files register

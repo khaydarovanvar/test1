@@ -375,3 +375,18 @@ body{top:0!important}                       /* the banner pushes body down */
   .quiz .opt{background:#fff}
   .readout .rd{background:#fff;border:1px solid #ddd}
 }
+
+/* ---------- the rotating solids in the header ----------
+   A quiet strip of wireframe polyhedra beside the brandmark. They carry no
+   information, so they are aria-hidden; they stop entirely for anyone who has
+   asked for reduced motion, and they are dropped on narrow screens where the
+   nav needs the room. */
+.solidstrip{display:flex;align-items:center;gap:10px;margin-left:18px;padding-left:18px;
+  border-left:1px solid var(--rule-soft);flex:0 0 auto}
+.solidcell{display:block;width:26px;height:26px;line-height:0;
+  opacity:.9;transition:opacity .3s ease,transform .3s ease}
+.solidcell:hover{opacity:1;transform:translateY(-1px)}
+.solid3d{display:block;overflow:visible}
+@media (max-width:1180px){ .solidstrip .solidcell:nth-child(n+4){display:none} }
+@media (max-width:1020px){ .solidstrip{display:none} }
+@media (prefers-reduced-motion:reduce){ .solidcell{transition:none} }
