@@ -8291,3 +8291,183 @@ G6_MAT.push({
     'Measure three round objects at home and tabulate ' + m('C ÷ d') + ' for each.'
   ]
 });
+
+/* ============================== 47 ============================== */
+G6_MAT.push({
+  id: 'g6-47', stream: 'mat', grade: 6, quarter: 2, lessons: '95–96', hours: 2,
+  title: 'The perimeter of a semicircle and of a quarter circle',
+  subtitle: 'Half the curve is not the whole perimeter — the straight edges have to be added.',
+  uz: 'Matematika 6, §20', uzPage: 'pp. 273–280',
+  cam: 'S7 15', camPage: 'Stage 7, pp. 148–154', wb: 'Exercise 15.1',
+  objectives: [
+    'Find the length of an arc as a fraction of the circumference.',
+    'Find the perimeter of a semicircle and of a quadrant.',
+    'Find the perimeter of a shape made of arcs and straight edges.',
+    'Distinguish arc length from perimeter.'
+  ],
+  terms: [
+    ['Perimeter', 'Perimetr', 'Периметр'],
+    ['Arc length', 'Yoy uzunligi', 'Длина дуги'],
+    ['Semicircle', 'Yarim doira', 'Полукруг'],
+    ['Quadrant', 'Chorak doira', 'Четверть круга'],
+    ['Straight edge', 'To‘g‘ri tomon', 'Прямая сторона'],
+    ['Compound shape', 'Murakkab shakl', 'Составная фигура'],
+    ['Fraction of the circle', 'Aylananing qismi', 'Часть окружности'],
+    ['To add the edges', 'Tomonlarni qo‘shish', 'Сложить стороны']
+  ],
+  timing: [[20, 'Arc length'], [25, 'The semicircle'], [25, 'The quadrant'], [8, 'Compound shapes'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'Arc length',
+      html: `${eq('arc ' + m('= ' + f('α', '360') + ' × C'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Central angle</th><th>Fraction</th><th>Arc of a circle with ${m('C = 44')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">180°</td><td class="m">${f('1', '2')}</td><td class="m">22</td></tr>
+        <tr><td class="m">90°</td><td class="m">${f('1', '4')}</td><td class="m">11</td></tr>
+        <tr><td class="m">120°</td><td class="m">${f('1', '3')}</td><td class="m">14.67</td></tr>
+        <tr><td class="m">45°</td><td class="m">${f('1', '8')}</td><td class="m">5.5</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Everything is a fraction of the whole circle</div>
+      The fraction is the central angle over ${m('360')}. Nothing else about arcs is needed at this
+      stage.</div>`
+    },
+    {
+      h: 'The semicircle',
+      html: `<p>The perimeter of a half disc is the curved half <b>plus the diameter</b>.</p>
+      ${eq(m('P = πr + 2r'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">r</th><th>Curve ${m('πr')}</th><th>Diameter</th><th>Perimeter</th></tr></thead>
+      <tbody>
+        <tr><td class="m">7</td><td class="m">22</td><td class="m">14</td><td class="m">36</td></tr>
+        <tr><td class="m">14</td><td class="m">44</td><td class="m">28</td><td class="m">72</td></tr>
+        <tr><td class="m">10</td><td class="m">31.4</td><td class="m">20</td><td class="m">51.4</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Half the circumference is not the perimeter</span>
+      A half disc is bounded by a curve <i>and</i> a straight edge. Leaving out the diameter is the
+      commonest error in the whole topic — and the shape it describes would be open.</div>`
+    },
+    {
+      h: 'The quadrant',
+      html: `<p>A quarter disc is bounded by a quarter of the curve and <b>two radii</b>.</p>
+      ${eq(m('P = ' + f('1', '2') + 'πr + 2r'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">r</th><th>Curve</th><th>Two radii</th><th>Perimeter</th></tr></thead>
+      <tbody>
+        <tr><td class="m">7</td><td class="m">11</td><td class="m">14</td><td class="m">25</td></tr>
+        <tr><td class="m">14</td><td class="m">22</td><td class="m">28</td><td class="m">50</td></tr>
+        <tr><td class="m">10</td><td class="m">15.7</td><td class="m">20</td><td class="m">35.7</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Count the straight edges from the picture</div>
+      A semicircle has one; a quadrant has two. Drawing the shape and tracing round it with a finger is a
+      more reliable method than remembering formulae.</div>`
+    },
+    {
+      h: 'Compound shapes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Shape</th><th>Pieces of the boundary</th><th>Perimeter with ${m('r = 7')}</th></tr></thead>
+      <tbody>
+        <tr><td>a semicircle on a ${m('14')} by ${m('10')} rectangle</td><td>three sides plus the curve</td><td class="m">10 + 10 + 14 + 22 = 56</td></tr>
+        <tr><td>a running track: two straights of ${m('80')} and two semicircular ends of radius ${m('35')}</td><td>two straights plus a full circle</td><td class="m">160 + 220 = 380</td></tr>
+        <tr><td>a quadrant cut from a square of side ${m('7')}</td><td>two sides plus the curve</td><td class="m">7 + 7 + 11 = 25</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Only the outside counts</span>
+      Where the semicircle sits on the rectangle, the ${m('14')} cm edge is inside the shape and is not
+      part of the perimeter — but the two ends of it are. Trace the boundary before adding
+      anything.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the perimeter of a semicircle of radius ' + m('7 cm') + ', taking ' + m('π = ' + f('22', '7')) + '.',
+      steps: [
+        ['The curve: ' + m('πr = ' + f('22', '7') + ' · 7 = 22') + ' cm.', ''],
+        ['The straight edge is the diameter: ' + m('14') + ' cm.', ''],
+        [m('22 + 14 = 36') + ' cm.', '']
+      ],
+      ans: m('36 cm')
+    },
+    {
+      q: 'Find the perimeter of a quadrant of radius ' + m('14 cm') + '.',
+      steps: [
+        ['The circumference is ' + m('2 · ' + f('22', '7') + ' · 14 = 88') + ' cm.', ''],
+        ['A quarter of it: ' + m('22') + ' cm.', ''],
+        ['Two radii: ' + m('28') + ' cm.', ''],
+        [m('22 + 28 = 50') + ' cm.', '']
+      ],
+      ans: m('50 cm')
+    },
+    {
+      q: 'A running track has two straights of ' + m('80 m') + ' and two semicircular ends of radius ' + m('35 m') + '. Find one lap.',
+      steps: [
+        ['The two semicircles make one full circle.', ''],
+        [m('2 · ' + f('22', '7') + ' · 35 = 220') + ' m.', ''],
+        ['The straights: ' + m('160') + ' m.', ''],
+        [m('220 + 160 = 380') + ' m.', '']
+      ],
+      ans: m('380 m')
+    }
+  ],
+  modelNote: 'Have the class trace the boundary of each shape with a finger and say aloud what they pass; the missing diameter stops being missed.',
+  interactive: {
+    type: 'quiz',
+    title: 'Curve plus straight edges',
+    hint: 'Trace the boundary and count what you cross.',
+    items: [
+      { q: 'A semicircle of radius ' + m('7') + ' has curve of length:', a: [m('11'), m('22'), m('44'), m('14')], c: 1, why: m('πr') + '.' },
+      { q: 'Its perimeter is:', a: [m('22'), m('36'), m('44'), m('14')], c: 1, why: 'Plus the diameter.' },
+      { q: 'A quadrant of radius ' + m('7') + ' has curve of length:', a: [m('11'), m('22'), m('44'), m('7')], c: 0, why: 'A quarter of ' + m('44') + '.' },
+      { q: 'Its perimeter is:', a: [m('11'), m('18'), m('25'), m('32')], c: 2, why: 'Plus two radii.' },
+      { q: 'A semicircle of radius ' + m('14') + ' has perimeter:', a: [m('44'), m('72'), m('88'), m('28')], c: 1, why: m('44 + 28') + '.' },
+      { q: 'A ' + m('120°') + ' arc of a circle with ' + m('C = 44') + ' is:', a: [m('11'), m('14.67'), m('22'), m('5.5')], c: 1, why: m(f('1', '3') + ' · 44') + '.' },
+      { q: 'Two semicircular ends of a track make:', a: ['half a circle', 'one full circle', 'two circles', 'a quadrant'], c: 1, why: 'They join up.' },
+      { q: 'The commonest error here is:', a: ['using ' + m('π'), 'forgetting the straight edges', 'using the radius', 'adding twice'], c: 1, why: 'The boundary is not just the curve.' }
+    ]
+  },
+  quiz: [
+    { q: 'An arc of ' + m('90°') + ' is what fraction of the circle?', a: [m(f('1', '2')), m(f('1', '3')), m(f('1', '4')), m(f('1', '8'))], c: 2, why: m(f('90', '360')) + '.' },
+    { q: 'The perimeter of a semicircle is:', a: [m('πr'), m('πr + 2r'), m('2πr'), m('πr + r')], c: 1, why: 'Curve plus diameter.' },
+    { q: 'The perimeter of a quadrant is:', a: [m(f('1', '2') + 'πr'), m(f('1', '2') + 'πr + 2r'), m(f('1', '4') + 'πr + r'), m('πr + 2r')], c: 1, why: 'Curve plus two radii.' },
+    { q: 'A semicircle of radius ' + m('10') + ' has perimeter about:', a: [m('31.4'), m('51.4'), m('62.8'), m('20')], c: 1, why: m('31.4 + 20') + '.' },
+    { q: 'Two semicircular ends of equal radius make:', a: ['a semicircle', 'a full circle', 'a quadrant', 'nothing'], c: 1, why: 'Two halves.' },
+    { q: 'A boundary edge inside a compound shape:', a: ['counts', 'does not count', 'counts twice', 'is halved'], c: 1, why: 'Only the outside.' }
+  ],
+  practice: {
+    easy: [
+      ['A semicircle of radius ' + m('7') + ': the curve', m('22')],
+      ['Its perimeter', m('36')],
+      ['A semicircle of radius ' + m('14') + ': the curve', m('44')],
+      ['Its perimeter', m('72')],
+      ['A quadrant of radius ' + m('7') + ': the curve', m('11')],
+      ['Its perimeter', m('25')],
+      ['A ' + m('90°') + ' arc as a fraction of the circle', m(f('1', '4'))]
+    ],
+    med: [
+      ['A quadrant of radius ' + m('14') + ': its perimeter', m('50')],
+      ['A semicircle of radius ' + m('10') + ' (' + m('π = 3.14') + ')', m('51.4')],
+      ['A quadrant of radius ' + m('10'), m('35.7')],
+      ['A ' + m('120°') + ' arc of a circle with ' + m('C = 44'), m('14.67')],
+      ['A ' + m('45°') + ' arc of the same circle', m('5.5')],
+      ['A track: straights ' + m('80') + ' m, ends of radius ' + m('35') + ' m', m('380') + ' m'],
+      ['A quadrant cut from a square of side ' + m('7'), m('25')]
+    ],
+    hard: [
+      ['A semicircle on top of a ' + m('14') + ' by ' + m('10') + ' rectangle: the perimeter', m('56')],
+      ['A shape made of three quadrants of radius ' + m('7'), 'Curve ' + m('33') + ' plus the straight edges'],
+      ['A semicircle of perimeter ' + m('36') + ': its radius', m('7')],
+      ['A semicircular window of diameter ' + m('1.4') + ' m: the frame length', m('3.6') + ' m'],
+      ['A running track of two straights ' + m('100') + ' m and ends of radius ' + m('28') + ' m', m('376') + ' m'],
+      ['Why add the diameter to a semicircle?', 'The straight edge is part of the boundary'],
+      ['A quarter-circle path of radius ' + m('21') + ' m: its curved length', m('33') + ' m']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Trace the boundary with a finger and list every piece before adding.',
+  homework: [
+    'Find the perimeter of a semicircle of radius ' + m('21 cm') + '.',
+    'Find the perimeter of a quadrant of radius ' + m('21 cm') + '.',
+    'Find the length of a ' + m('60°') + ' arc of a circle of radius ' + m('7 cm') + '.',
+    'A semicircle sits on top of a rectangle ' + m('20') + ' cm by ' + m('12') + ' cm, on the ' + m('20') + ' cm side. Find the whole perimeter.',
+    'A track has straights of ' + m('90') + ' m and semicircular ends of radius ' + m('21') + ' m. Find one lap.'
+  ]
+});
