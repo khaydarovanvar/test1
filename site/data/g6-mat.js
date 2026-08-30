@@ -7942,3 +7942,352 @@ G6_MAT.push({
     'Write one sentence explaining the difference between a circle and a disc.'
   ]
 });
+
+/* ============================== 45 ============================== */
+G6_MAT.push({
+  id: 'g6-45', stream: 'mat', grade: 6, quarter: 2, lessons: '90–91', hours: 2,
+  title: 'The elements of a circle and of a disc',
+  subtitle: 'Arcs, sectors and segments — and the angle at the centre that measures them.',
+  uz: 'Matematika 6, §18', uzPage: 'pp. 254–261',
+  cam: 'S7 8.2', camPage: 'Stage 7, pp. 80–84', wb: 'Exercise 8.2',
+  objectives: [
+    'Name every part of a circle and of a disc.',
+    'Measure an arc by the angle it subtends at the centre.',
+    'Distinguish a sector from a segment.',
+    'Use the fact that the angles at the centre fill ' + m('360°') + '.'
+  ],
+  terms: [
+    ['Arc', 'Yoy', 'Дуга'],
+    ['Sector', 'Sektor', 'Сектор'],
+    ['Segment', 'Segment', 'Сегмент'],
+    ['Central angle', 'Markaziy burchak', 'Центральный угол'],
+    ['To subtend', 'Qarshi turmoq', 'Стягивать'],
+    ['Semicircle', 'Yarim aylana', 'Полуокружность'],
+    ['Quadrant', 'Chorak doira', 'Четверть круга'],
+    ['Tangent', 'Urinma', 'Касательная']
+  ],
+  timing: [[20, 'Arcs and central angles'], [25, 'Sectors'], [25, 'Segments and the rest'], [8, 'Filling the turn'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'Arcs and central angles',
+      html: `<p>An <b>arc</b> is a piece of the curve. Its size is given by the <b>central angle</b> — the
+      angle it makes at the centre.</p>
+      {{fig:centralAngle:An arc and the angle it makes at the centre}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Central angle</th><th>The arc is</th><th>Fraction of the circle</th></tr></thead>
+      <tbody>
+        <tr><td class="m">360°</td><td>the whole circle</td><td class="m">1</td></tr>
+        <tr><td class="m">180°</td><td>a semicircle</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td class="m">90°</td><td>a quarter</td><td class="m">${f('1', '4')}</td></tr>
+        <tr><td class="m">120°</td><td>a third</td><td class="m">${f('1', '3')}</td></tr>
+        <tr><td class="m">60°</td><td>a sixth</td><td class="m">${f('1', '6')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The angle is the measure</div>
+      Two arcs of the same circle are equal exactly when their central angles are equal. This is what makes
+      a pie chart work: a share of the data becomes a share of ${m('360°')}.</div>`
+    },
+    {
+      h: 'Sectors',
+      html: `<p>A <b>sector</b> is a slice of the disc: the region between two radii and the arc between
+      them.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Central angle</th><th>Name</th><th>Fraction of the disc</th></tr></thead>
+      <tbody>
+        <tr><td class="m">180°</td><td>half disc</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td class="m">90°</td><td>quadrant</td><td class="m">${f('1', '4')}</td></tr>
+        <tr><td class="m">45°</td><td>an eighth</td><td class="m">${f('1', '8')}</td></tr>
+        <tr><td class="m">72°</td><td>a fifth</td><td class="m">${f('1', '5')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A sector is a fraction of the whole disc</div>
+      The fraction is ${m(f('α', '360'))}. Everything about sectors — arc length, area, pie charts — comes
+      from that one fraction.</div>`
+    },
+    {
+      h: 'Segments and the rest',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Part</th><th>Bounded by</th><th>Not to be confused with</th></tr></thead>
+      <tbody>
+        <tr><td>sector</td><td>two radii and an arc</td><td>a segment</td></tr>
+        <tr><td>segment</td><td>a chord and an arc</td><td>a sector</td></tr>
+        <tr><td>semicircle</td><td>a diameter and half the curve</td><td>a quadrant</td></tr>
+        <tr><td>tangent</td><td>touches the circle at one point</td><td>a chord</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A sector is a slice of pizza; a segment is the crust end</span>
+      The sector reaches the centre; the segment does not. Naming them the wrong way round is the standard
+      slip, and the picture fixes it.</div>`
+    },
+    {
+      h: 'Filling the turn',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a disc split into ${m('4')} equal sectors</td><td class="m">360 ÷ 4</td><td class="m">90°</td></tr>
+        <tr><td>into ${m('5')} equal sectors</td><td class="m">360 ÷ 5</td><td class="m">72°</td></tr>
+        <tr><td>into ${m('8')} equal sectors</td><td class="m">360 ÷ 8</td><td class="m">45°</td></tr>
+        <tr><td>three sectors of ${m('100°, 140°')} and ${m('x')}</td><td class="m">360 − 240</td><td class="m">120°</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">This is the pie chart, three months early</div>
+      Sharing ${m('360°')} among categories is exactly the calculation of Quarter IV. The geometry is being
+      built now so the statistics can use it later.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A disc is divided into ' + m('5') + ' equal sectors. Find the central angle of each.',
+      steps: [
+        ['The angles at the centre fill ' + m('360°') + '.', ''],
+        [m('360 ÷ 5'), ''],
+        [m('= 72°'), '']
+      ],
+      ans: m('72°')
+    },
+    {
+      q: 'Three sectors of a disc have central angles ' + m('100°') + ', ' + m('140°') + ' and ' + m('x') + '. Find ' + m('x') + '.',
+      steps: [
+        [m('100 + 140 = 240'), ''],
+        [m('360 − 240 = 120'), ''],
+        [m('x = 120°'), '']
+      ],
+      ans: m('120°')
+    },
+    {
+      q: 'What fraction of a disc is a sector of ' + m('45°') + '?',
+      steps: [
+        [m(f('45', '360')), ''],
+        ['Simplify by ' + m('45') + '.', ''],
+        [m(f('1', '8')), '']
+      ],
+      ans: m(f('1', '8'))
+    }
+  ],
+  modelNote: 'Cut a paper disc into sectors of different sizes and have the class name the angle of each; the fractions of 360° are then physical objects on the desk.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'A sector and its central angle',
+    hint: 'The angle decides the fraction of the disc.'
+  },
+  quiz: [
+    { q: 'An arc is measured by:', a: ['its chord', 'its central angle', 'the radius', 'the diameter'], c: 1, why: 'The angle at the centre.' },
+    { q: 'A sector is bounded by:', a: ['a chord and an arc', 'two radii and an arc', 'two chords', 'a tangent'], c: 1, why: 'It reaches the centre.' },
+    { q: 'A segment is bounded by:', a: ['a chord and an arc', 'two radii and an arc', 'two diameters', 'a tangent and a radius'], c: 0, why: 'It does not reach the centre.' },
+    { q: 'A ' + m('90°') + ' sector is:', a: ['a semicircle', 'a quadrant', 'a segment', 'a third'], c: 1, why: 'A quarter of the disc.' },
+    { q: 'Five equal sectors have central angles of:', a: [m('60°'), m('72°'), m('90°'), m('45°')], c: 1, why: m('360 ÷ 5') + '.' },
+    { q: 'A ' + m('45°') + ' sector is what fraction of the disc?', a: [m(f('1', '4')), m(f('1', '6')), m(f('1', '8')), m(f('1', '45'))], c: 2, why: m(f('45', '360')) + '.' }
+  ],
+  practice: {
+    easy: [
+      ['A ' + m('180°') + ' arc is', 'a semicircle'],
+      ['A ' + m('90°') + ' sector is', 'a quadrant'],
+      ['A disc in ' + m('4') + ' equal sectors: each angle', m('90°')],
+      ['A disc in ' + m('5') + ' equal sectors', m('72°')],
+      ['A disc in ' + m('8') + ' equal sectors', m('45°')],
+      ['A sector is bounded by', 'two radii and an arc'],
+      ['A segment is bounded by', 'a chord and an arc']
+    ],
+    med: [
+      ['Sectors of ' + m('100°, 140°') + ' and ' + m('x'), m('x = 120°')],
+      ['A ' + m('120°') + ' sector as a fraction', m(f('1', '3'))],
+      ['A ' + m('45°') + ' sector as a fraction', m(f('1', '8'))],
+      ['A ' + m('72°') + ' sector as a fraction', m(f('1', '5'))],
+      ['A disc in ' + m('6') + ' equal sectors', m('60°')],
+      ['A disc in ' + m('12') + ' equal sectors', m('30°')],
+      ['A tangent touches the circle at', 'one point']
+    ],
+    hard: [
+      ['A sector that is ' + m(f('3', '8')) + ' of a disc: its angle', m('135°')],
+      ['A sector of ' + m('216°') + ' as a fraction', m(f('3', '5'))],
+      ['Four sectors in the ratio ' + m('1 : 2 : 3 : 4'), m('36°, 72°, 108°, 144°')],
+      ['Two sectors of ' + m('150°') + ' each and one more: the third', m('60°')],
+      ['A clock face: the angle between consecutive hour marks', m('30°')],
+      ['The angle swept by the minute hand in ' + m('20') + ' minutes', m('120°')],
+      ['Why does a pie chart need ' + m('360°') + '?', 'The whole data set fills one complete turn']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every sector question is a fraction of ' + m('360°') + '.',
+  homework: [
+    'Draw a circle and mark on it a sector, a segment, a chord and an arc.',
+    'A disc is divided into ' + m('9') + ' equal sectors. Find each central angle.',
+    'Sectors of ' + m('75°, 125°') + ' and ' + m('x') + ' fill a disc. Find ' + m('x') + '.',
+    'What fraction of a disc is a sector of ' + m('108°') + '?',
+    'Find the angle of a sector that is ' + m(f('5', '12')) + ' of a disc.'
+  ]
+});
+
+/* ============================== 46 ============================== */
+G6_MAT.push({
+  id: 'g6-46', stream: 'mat', grade: 6, quarter: 2, lessons: '92–94', hours: 3,
+  title: 'The circumference of a circle',
+  subtitle: m('C = πd') + ' — measured with thread, then trusted as a formula.',
+  uz: 'Matematika 6, §19', uzPage: 'pp. 262–272',
+  cam: 'S7 8.2', camPage: 'Stage 7, pp. 80–84', wb: 'Exercise 8.3',
+  objectives: [
+    'Find the ratio ' + m('C ÷ d') + ' by measurement.',
+    'Use ' + m('C = πd') + ' and ' + m('C = 2πr') + '.',
+    'Find the radius or diameter from the circumference.',
+    'Solve practical problems about wheels and circular edges.'
+  ],
+  terms: [
+    ['Circumference', 'Aylana uzunligi', 'Длина окружности'],
+    ['Pi', 'Pi soni', 'Число пи'],
+    ['Diameter', 'Diametr', 'Диаметр'],
+    ['Radius', 'Radius', 'Радиус'],
+    ['Ratio', 'Nisbat', 'Отношение'],
+    ['Revolution', 'Aylanish', 'Оборот'],
+    ['Approximation', 'Taqribiy qiymat', 'Приближение'],
+    ['Formula', 'Formula', 'Формула']
+  ],
+  timing: [[25, 'The measurement'], [30, 'The formula'], [35, 'Backwards'], [25, 'Wheels and edges'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The measurement',
+      html: `<p>Wrap thread round several round objects and divide the length by the diameter.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Object</th><th class="m">d</th><th class="m">C</th><th class="m">C ÷ d</th></tr></thead>
+      <tbody>
+        <tr><td>a coin</td><td class="m">2.4 cm</td><td class="m">7.5 cm</td><td class="m">3.13</td></tr>
+        <tr><td>a glass</td><td class="m">7 cm</td><td class="m">22 cm</td><td class="m">3.14</td></tr>
+        <tr><td>a plate</td><td class="m">21 cm</td><td class="m">66 cm</td><td class="m">3.14</td></tr>
+        <tr><td>a bucket</td><td class="m">28 cm</td><td class="m">88 cm</td><td class="m">3.14</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The same number, every time</div>
+      Whatever the size of the circle, the ratio lands near ${m('3.14')}. That constant is ${m('π')}, and
+      the small differences in the table are measuring error, not differences between the circles.</div>`
+    },
+    {
+      h: 'The formula',
+      html: `${eq(m('C = πd = 2πr'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">r</th><th class="m">d</th><th>${m('C')} with ${m('π = 3.14')}</th><th>with ${m('π = ' + f('22', '7'))}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5</td><td class="m">10</td><td class="m">31.4</td><td class="m">31.43</td></tr>
+        <tr><td class="m">7</td><td class="m">14</td><td class="m">43.96</td><td class="m">44</td></tr>
+        <tr><td class="m">10</td><td class="m">20</td><td class="m">62.8</td><td class="m">62.86</td></tr>
+        <tr><td class="m">21</td><td class="m">42</td><td class="m">131.88</td><td class="m">132</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Choose the approximation to suit the numbers</div>
+      ${m(f('22', '7'))} is exact-looking whenever the radius is a multiple of ${m('7')}; ${m('3.14')} suits
+      everything else. Both are approximations to the same constant.</div>`
+    },
+    {
+      h: 'Backwards',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">C = 31.4</td><td class="m">d = C ÷ π</td><td class="m">d = 10</td></tr>
+        <tr><td class="m">C = 44</td><td class="m">r = C ÷ 2π</td><td class="m">r = 7</td></tr>
+        <tr><td class="m">C = 62.8</td><td class="m">r = C ÷ 2π</td><td class="m">r = 10</td></tr>
+        <tr><td class="m">C = 132</td><td class="m">d = C ÷ π</td><td class="m">d = 42</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Dividing by ${m('π')} gives the diameter, not the radius</span>
+      ${m('C ÷ π = d')}, and the radius is half of that. Stopping one step early is the standard error in
+      the reverse question.</div>`
+    },
+    {
+      h: 'Wheels and edges',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a wheel of diameter ${m('70')} cm: one turn</td><td class="m">${f('22', '7')} · 70</td><td class="m">220 cm</td></tr>
+        <tr><td>how many turns in ${m('220')} m</td><td class="m">22 000 ÷ 220</td><td class="m">100</td></tr>
+        <tr><td>a round pond of radius ${m('14')} m: the fence</td><td class="m">2 · ${f('22', '7')} · 14</td><td class="m">88 m</td></tr>
+        <tr><td>a running track of radius ${m('35')} m: one lap</td><td class="m">2 · ${f('22', '7')} · 35</td><td class="m">220 m</td></tr>
+        <tr><td>a bicycle wheel of radius ${m('35')} cm in ${m('50')} turns</td><td class="m">50 · 220</td><td class="m">110 m</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Keep the units in one system</div>
+      Turning ${m('220')} m into ${m('22 000')} cm before dividing avoids the factor-of-a-hundred error
+      that this kind of problem invites.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A circle has radius ' + m('7 cm') + '. Find its circumference, taking ' + m('π = ' + f('22', '7')) + '.',
+      steps: [
+        [m('C = 2πr'), ''],
+        [m('= 2 · ' + f('22', '7') + ' · 7'), ''],
+        [m('= 44 cm'), '']
+      ],
+      ans: m('44 cm')
+    },
+    {
+      q: 'A circle has circumference ' + m('62.8 cm') + '. Find its radius, taking ' + m('π = 3.14') + '.',
+      steps: [
+        [m('C = 2πr'), ''],
+        [m('62.8 = 6.28r'), ''],
+        [m('r = 10 cm'), '']
+      ],
+      ans: m('10 cm')
+    },
+    {
+      q: 'A wheel of diameter ' + m('70 cm') + ' rolls ' + m('220 m') + '. How many turns?',
+      steps: [
+        ['One turn: ' + m(f('22', '7') + ' · 70 = 220') + ' cm.', ''],
+        [m('220') + ' m is ' + m('22 000') + ' cm.', 'Same units.'],
+        [m('22 000 ÷ 220 = 100'), '']
+      ],
+      ans: m('100') + ' turns'
+    }
+  ],
+  modelNote: 'Do the thread measurement in groups and tabulate every ratio on the board; π arrives as a discovery rather than a fact to be believed.',
+  interactive: {
+    type: 'quiz',
+    title: 'Circumference, forwards and backwards',
+    hint: 'Multiply for ' + m('C') + ', divide to get back.',
+    items: [
+      { q: m('C ÷ d') + ' equals:', a: [m('2'), m('π'), m('2π'), m('r')], c: 1, why: 'For every circle.' },
+      { q: 'With ' + m('r = 7') + ' and ' + m('π = ' + f('22', '7')) + ', ' + m('C') + ' is:', a: [m('22'), m('44'), m('154'), m('49')], c: 1, why: m('2πr') + '.' },
+      { q: 'With ' + m('d = 10') + ' and ' + m('π = 3.14') + ', ' + m('C') + ' is:', a: [m('31.4'), m('15.7'), m('62.8'), m('314')], c: 0, why: m('πd') + '.' },
+      { q: m('C = 62.8') + ' gives ' + m('r') + ' equal to:', a: [m('5'), m('10'), m('20'), m('31.4')], c: 1, why: m('C ÷ 2π') + '.' },
+      { q: m('C = 44') + ' gives ' + m('r') + ' equal to:', a: [m('7'), m('14'), m('22'), m('3.5')], c: 0, why: m('C ÷ 2π') + '.' },
+      { q: 'A wheel of diameter ' + m('70') + ' cm covers per turn:', a: [m('70') + ' cm', m('140') + ' cm', m('220') + ' cm', m('440') + ' cm'], c: 2, why: m('πd') + '.' },
+      { q: 'In ' + m('220') + ' m it makes:', a: [m('10') + ' turns', m('100') + ' turns', m('1000') + ' turns', m('22') + ' turns'], c: 1, why: 'Convert to cm first.' },
+      { q: m('C ÷ π') + ' gives:', a: ['the radius', 'the diameter', 'the area', m('π')], c: 1, why: 'Halve it for the radius.' }
+    ]
+  },
+  quiz: [
+    { q: m('π') + ' is the ratio of:', a: [m('C') + ' to ' + m('r'), m('C') + ' to ' + m('d'), m('d') + ' to ' + m('r'), m('r') + ' to ' + m('C')], c: 1, why: 'The same for all circles.' },
+    { q: m('C') + ' equals:', a: [m('πr'), m('πd'), m('πr²'), m('2πd')], c: 1, why: 'Or ' + m('2πr') + '.' },
+    { q: 'A circle of radius ' + m('5') + ' has circumference about:', a: [m('15.7'), m('31.4'), m('78.5'), m('10')], c: 1, why: m('2πr') + '.' },
+    { q: 'To find ' + m('d') + ' from ' + m('C') + ' you:', a: ['multiply by ' + m('π'), 'divide by ' + m('π'), 'divide by ' + m('2π'), 'square it'], c: 1, why: m('C = πd') + '.' },
+    { q: 'A pond of radius ' + m('14') + ' m needs a fence of about:', a: [m('44') + ' m', m('88') + ' m', m('176') + ' m', m('616') + ' m'], c: 1, why: m('2πr') + '.' },
+    { q: m(f('22', '7')) + ' is best used when the radius is a multiple of:', a: [m('2'), m('3'), m('7'), m('10')], c: 2, why: 'The sevens cancel.' }
+  ],
+  practice: {
+    easy: [
+      [m('r = 5') + ': the circumference (' + m('π = 3.14') + ')', m('31.4')],
+      [m('r = 7') + ': the circumference (' + m('π = ' + f('22', '7')) + ')', m('44')],
+      [m('d = 20') + ': the circumference (' + m('π = 3.14') + ')', m('62.8')],
+      [m('d = 42') + ': the circumference (' + m('π = ' + f('22', '7')) + ')', m('132')],
+      [m('C ÷ d'), m('π')],
+      [m('r = 10') + ': the circumference', m('62.8')],
+      [m('r = 21') + ': the circumference (' + m('π = ' + f('22', '7')) + ')', m('132')]
+    ],
+    med: [
+      [m('C = 31.4') + ': the diameter', m('10')],
+      [m('C = 44') + ': the radius', m('7')],
+      [m('C = 62.8') + ': the radius', m('10')],
+      [m('C = 132') + ': the diameter', m('42')],
+      ['A wheel of diameter ' + m('70') + ' cm: one turn', m('220') + ' cm'],
+      ['Turns in ' + m('220') + ' m', m('100')],
+      ['A pond of radius ' + m('14') + ' m: the fence', m('88') + ' m']
+    ],
+    hard: [
+      ['A track of radius ' + m('35') + ' m: one lap', m('220') + ' m'],
+      ['Laps in ' + m('1 100') + ' m', m('5')],
+      ['A bicycle wheel of radius ' + m('35') + ' cm in ' + m('50') + ' turns', m('110') + ' m'],
+      ['A circle whose circumference equals its diameter times ' + m('3.14') + ' has radius ' + m('9') + ': its ' + m('C'), m('56.52')],
+      ['Doubling the radius does what to the circumference?', 'Doubles it'],
+      ['A circular table of circumference ' + m('220') + ' cm: its diameter', m('70') + ' cm'],
+      ['Why is ' + m('C ÷ d') + ' the same for every circle?', 'All circles are the same shape, scaled']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Say which value of ' + m('π') + ' you are using, and why.',
+  homework: [
+    'Find the circumference of circles with ' + m('r = 3.5 cm') + ' and ' + m('d = 28 cm') + '.',
+    'Find the radius of a circle with circumference ' + m('88 cm') + '.',
+    'A wheel of diameter ' + m('56 cm') + ' makes ' + m('100') + ' turns. How far does it go?',
+    'A circular flower bed has radius ' + m('7 m') + '. Find the length of edging needed.',
+    'Measure three round objects at home and tabulate ' + m('C ÷ d') + ' for each.'
+  ]
+});
