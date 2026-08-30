@@ -8648,3 +8648,355 @@ G6_MAT.push({
     'Explain in one sentence why doubling the radius quadruples the area.'
   ]
 });
+
+/* ============================== 49 ============================== */
+G6_MAT.push({
+  id: 'g6-49', stream: 'mat', grade: 6, quarter: 3, lessons: '100–102', hours: 3,
+  title: 'The area of a semicircle and of a quarter circle',
+  subtitle: 'A fraction of the disc — and the fraction is the central angle over ' + m('360') + '.',
+  uz: 'Matematika 6, §22', uzPage: 'pp. 291–300',
+  cam: 'S7 15', camPage: 'Stage 7, pp. 148–154', wb: 'Exercise 15.3',
+  objectives: [
+    'Find the area of a semicircle and of a quadrant.',
+    'Find the area of any sector from its central angle.',
+    'Distinguish area from perimeter in the same figure.',
+    'Solve problems about circular parts of real objects.'
+  ],
+  terms: [
+    ['Semicircle', 'Yarim doira', 'Полукруг'],
+    ['Quadrant', 'Chorak doira', 'Четверть круга'],
+    ['Sector', 'Sektor', 'Сектор'],
+    ['Central angle', 'Markaziy burchak', 'Центральный угол'],
+    ['Fraction of the disc', 'Doiraning qismi', 'Часть круга'],
+    ['Area', 'Yuza', 'Площадь'],
+    ['Perimeter', 'Perimetr', 'Периметр'],
+    ['Square units', 'Kvadrat birlik', 'Квадратные единицы']
+  ],
+  timing: [[25, 'Halves and quarters'], [30, 'Any sector'], [35, 'Area against perimeter'], [25, 'Problems'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Halves and quarters',
+      html: `${eq('semicircle ' + m('S = ' + f('1', '2') + 'πr²') + '     quadrant ' + m('S = ' + f('1', '4') + 'πr²'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">r</th><th>Whole disc</th><th>Semicircle</th><th>Quadrant</th></tr></thead>
+      <tbody>
+        <tr><td class="m">7</td><td class="m">154</td><td class="m">77</td><td class="m">38.5</td></tr>
+        <tr><td class="m">14</td><td class="m">616</td><td class="m">308</td><td class="m">154</td></tr>
+        <tr><td class="m">10</td><td class="m">314</td><td class="m">157</td><td class="m">78.5</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Find the whole disc first, then take the fraction</div>
+      One calculation and one division is safer than trying to remember a separate formula for each
+      fraction.</div>`
+    },
+    {
+      h: 'Any sector',
+      html: `${eq('sector ' + m('S = ' + f('α', '360') + ' × πr²'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Angle</th><th>Fraction</th><th>Area with ${m('r = 7')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">180°</td><td class="m">${f('1', '2')}</td><td class="m">77</td></tr>
+        <tr><td class="m">120°</td><td class="m">${f('1', '3')}</td><td class="m">51.33</td></tr>
+        <tr><td class="m">90°</td><td class="m">${f('1', '4')}</td><td class="m">38.5</td></tr>
+        <tr><td class="m">60°</td><td class="m">${f('1', '6')}</td><td class="m">25.67</td></tr>
+        <tr><td class="m">45°</td><td class="m">${f('1', '8')}</td><td class="m">19.25</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The same fraction as for the arc</div>
+      A ${m('120°')} sector is a third of the disc's area and a third of its circumference. One fraction
+      does both jobs.</div>`
+    },
+    {
+      h: 'Area against perimeter',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Figure, ${m('r = 7')}</th><th>Perimeter</th><th>Area</th></tr></thead>
+      <tbody>
+        <tr><td>whole disc</td><td class="m">44 cm</td><td class="m">154 cm²</td></tr>
+        <tr><td>semicircle</td><td class="m">36 cm</td><td class="m">77 cm²</td></tr>
+        <tr><td>quadrant</td><td class="m">25 cm</td><td class="m">38.5 cm²</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Halving the disc halves the area but not the perimeter</span>
+      The semicircle keeps half the curve and gains a diameter, so its perimeter is ${m('36')}, not
+      ${m('22')}. Area is halved cleanly; boundary is not.</div>`
+    },
+    {
+      h: 'Problems',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a semicircular window of radius ${m('70')} cm: the glass</td><td class="m">${f('1', '2')} · ${f('22', '7')} · 4900</td><td class="m">7700 cm²</td></tr>
+        <tr><td>a quadrant flower bed of radius ${m('14')} m</td><td class="m">${f('1', '4')} · 616</td><td class="m">154 m²</td></tr>
+        <tr><td>a ${m('60°')} slice of a pizza of radius ${m('21')} cm</td><td class="m">${f('1', '6')} · 1386</td><td class="m">231 cm²</td></tr>
+        <tr><td>a fan sweeping ${m('120°')} with a blade of ${m('35')} cm</td><td class="m">${f('1', '3')} · 3850</td><td class="m">1283.33 cm²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Read the question: glass or frame?</div>
+      Glass is an area, framing is a perimeter. The same window gives two different answers depending on
+      which is asked for.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the area of a semicircle of radius ' + m('14 cm') + '.',
+      steps: [
+        ['The whole disc: ' + m(f('22', '7') + ' · 196 = 616') + ' cm².', ''],
+        ['Half of it.', ''],
+        [m('308 cm²'), '']
+      ],
+      ans: m('308 cm²')
+    },
+    {
+      q: 'Find the area of a ' + m('60°') + ' sector of a circle of radius ' + m('21 cm') + '.',
+      steps: [
+        ['Whole disc: ' + m(f('22', '7') + ' · 441 = 1386') + ' cm².', ''],
+        ['The fraction is ' + m(f('60', '360') + ' = ' + f('1', '6')) + '.', ''],
+        [m('1386 ÷ 6 = 231') + ' cm².', '']
+      ],
+      ans: m('231 cm²')
+    },
+    {
+      q: 'A semicircular window has radius ' + m('70 cm') + '. Find the area of glass and the length of framing.',
+      steps: [
+        ['Glass: ' + m(f('1', '2') + ' · ' + f('22', '7') + ' · 4900 = 7700') + ' cm².', 'An area.'],
+        ['Framing: ' + m('πr + 2r = 220 + 140') + '.', 'A perimeter.'],
+        [m('360') + ' cm of framing.', '']
+      ],
+      ans: m('7700 cm²') + ' and ' + m('360 cm')
+    }
+  ],
+  modelNote: 'Ask for the glass and the framing of the same window in one question; the class learns to read for area or perimeter rather than for numbers.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which fraction, and area or perimeter?',
+    hint: 'The angle over ' + m('360') + ' does both.',
+    items: [
+      { q: 'A semicircle of radius ' + m('7') + ' has area:', a: [m('154'), m('77'), m('38.5'), m('22')], c: 1, why: 'Half the disc.' },
+      { q: 'A quadrant of radius ' + m('7') + ' has area:', a: [m('154'), m('77'), m('38.5'), m('11')], c: 2, why: 'A quarter.' },
+      { q: 'A ' + m('120°') + ' sector is what fraction?', a: [m(f('1', '2')), m(f('1', '3')), m(f('1', '4')), m(f('1', '6'))], c: 1, why: m(f('120', '360')) + '.' },
+      { q: 'A ' + m('60°') + ' sector of radius ' + m('21') + ' has area:', a: [m('231'), m('462'), m('1386'), m('33')], c: 0, why: m('1386 ÷ 6') + '.' },
+      { q: 'A semicircle of radius ' + m('7') + ' has perimeter:', a: [m('22'), m('36'), m('44'), m('77')], c: 1, why: 'Curve plus diameter.' },
+      { q: 'Halving a disc halves:', a: ['the perimeter', 'the area', 'both', 'neither'], c: 1, why: 'The boundary gains a diameter.' },
+      { q: 'A ' + m('90°') + ' sector of radius ' + m('14') + ' has area:', a: [m('77'), m('154'), m('308'), m('616')], c: 1, why: m('616 ÷ 4') + '.' },
+      { q: 'Glass in a window is measured as:', a: ['a perimeter', 'an area', 'a length', 'an angle'], c: 1, why: m('cm²') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'The area of a semicircle is:', a: [m('πr²'), m(f('1', '2') + 'πr²'), m('πr'), m('2πr')], c: 1, why: 'Half the disc.' },
+    { q: 'The area of a quadrant is:', a: [m(f('1', '2') + 'πr²'), m(f('1', '4') + 'πr²'), m(f('1', '4') + 'πr'), m('πr²')], c: 1, why: 'A quarter.' },
+    { q: 'A sector of angle ' + m('α') + ' has area:', a: [m(f('α', '360') + ' πr²'), m(f('α', '180') + ' πr²'), m('απr²'), m(f('360', 'α') + ' πr²')], c: 0, why: 'The fraction of the turn.' },
+    { q: 'A semicircle of radius ' + m('14') + ' has area:', a: [m('154'), m('308'), m('616'), m('88')], c: 1, why: 'Half of ' + m('616') + '.' },
+    { q: 'A ' + m('45°') + ' sector of radius ' + m('7') + ' has area:', a: [m('19.25'), m('38.5'), m('77'), m('154')], c: 0, why: m('154 ÷ 8') + '.' },
+    { q: 'Perimeter and area of the same figure are:', a: ['the same', 'different measurements', 'proportional', 'both lengths'], c: 1, why: 'One is a length, one an area.' }
+  ],
+  practice: {
+    easy: [
+      ['A semicircle of radius ' + m('7') + ': the area', m('77 cm²')],
+      ['A quadrant of radius ' + m('7'), m('38.5 cm²')],
+      ['A semicircle of radius ' + m('14'), m('308 cm²')],
+      ['A quadrant of radius ' + m('14'), m('154 cm²')],
+      ['A semicircle of radius ' + m('10') + ' (' + m('π = 3.14') + ')', m('157 cm²')],
+      ['A ' + m('90°') + ' sector as a fraction', m(f('1', '4'))],
+      ['A ' + m('60°') + ' sector as a fraction', m(f('1', '6'))]
+    ],
+    med: [
+      ['A ' + m('60°') + ' sector of radius ' + m('21'), m('231 cm²')],
+      ['A ' + m('120°') + ' sector of radius ' + m('7'), m('51.33 cm²')],
+      ['A ' + m('45°') + ' sector of radius ' + m('7'), m('19.25 cm²')],
+      ['A semicircular window of radius ' + m('70') + ' cm: the glass', m('7700 cm²')],
+      ['And the framing', m('360 cm')],
+      ['A quadrant flower bed of radius ' + m('14') + ' m', m('154 m²')],
+      ['A ' + m('120°') + ' fan sweep with a ' + m('35') + ' cm blade', m('1283.33 cm²')]
+    ],
+    hard: [
+      ['A ' + m('30°') + ' sector of radius ' + m('12') + ' (' + m('π = 3.14') + ')', m('37.68 cm²')],
+      ['A sector of area ' + m('77') + ' in a circle of radius ' + m('7') + ': its angle', m('180°')],
+      ['A sector of area ' + m('38.5') + ' in the same circle', m('90°')],
+      ['Half a ring between radii ' + m('7') + ' and ' + m('14'), m('231 cm²')],
+      ['A quadrant of radius ' + m('21') + ': area and perimeter', m('346.5 cm²') + ' and ' + m('75 cm')],
+      ['Why does a semicircle keep half the area but more than half the boundary?', 'The diameter is added to the boundary'],
+      ['A ' + m('270°') + ' sector of radius ' + m('14'), m('462 cm²')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Find the whole disc first, then take the fraction.',
+  homework: [
+    'Find the area of a semicircle of radius ' + m('21 cm') + '.',
+    'Find the area of a quadrant of radius ' + m('28 cm') + '.',
+    'Find the area of a ' + m('120°') + ' sector of a circle of radius ' + m('14 cm') + '.',
+    'A semicircular table top has radius ' + m('60 cm') + '. Find its area and the length of edging.',
+    'Find the area of a ' + m('30°') + ' sector of a circle of radius ' + m('6 cm') + ', taking ' + m('π = 3.14') + '.'
+  ]
+});
+
+/* ============================== 50 ============================== */
+G6_MAT.push({
+  id: 'g6-50', stream: 'mat', grade: 6, quarter: 3, lessons: '103–105', hours: 3,
+  title: 'The area and perimeter of compound figures',
+  subtitle: 'Cut the shape into pieces you know, add or subtract, and trace the boundary separately.',
+  uz: 'Matematika 6, §23', uzPage: 'pp. 301–310',
+  cam: 'S7 15', camPage: 'Stage 7, pp. 148–156', wb: 'Exercise 15.4',
+  objectives: [
+    'Split a compound figure into rectangles, triangles and parts of circles.',
+    'Find an area by adding or by subtracting.',
+    'Find the perimeter by tracing the boundary.',
+    'Keep area and perimeter apart in the same question.'
+  ],
+  terms: [
+    ['Compound figure', 'Murakkab shakl', 'Составная фигура'],
+    ['To decompose', 'Bo‘laklarga ajratish', 'Разбить на части'],
+    ['To subtract', 'Ayirmoq', 'Вычесть'],
+    ['Boundary', 'Chegara', 'Граница'],
+    ['Internal edge', 'Ichki chegara', 'Внутренняя линия'],
+    ['Rectangle', 'To‘g‘ri to‘rtburchak', 'Прямоугольник'],
+    ['Semicircle', 'Yarim doira', 'Полукруг'],
+    ['Sum of the parts', 'Qismlar yig‘indisi', 'Сумма частей']
+  ],
+  timing: [[25, 'Cutting into pieces'], [30, 'Subtracting'], [35, 'Perimeter by tracing'], [25, 'Mixed problems'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Cutting into pieces',
+      html: `{{fig:polygonDecompose:A compound shape cut into known pieces}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Shape</th><th>Pieces</th><th>Area</th></tr></thead>
+      <tbody>
+        <tr><td>an L-shape ${m('10 × 8')} with a ${m('4 × 3')} corner removed</td><td>two rectangles</td><td class="m">68</td></tr>
+        <tr><td>a house outline: ${m('6 × 4')} rectangle under a triangle of height ${m('3')}</td><td>rectangle + triangle</td><td class="m">33</td></tr>
+        <tr><td>a rectangle ${m('14 × 10')} with a semicircle of radius ${m('7')} on top</td><td>rectangle + semicircle</td><td class="m">217</td></tr>
+        <tr><td>a running-track shape: ${m('80 × 70')} rectangle with two semicircular ends of radius ${m('35')}</td><td>rectangle + circle</td><td class="m">9450</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Write the area of each piece on the sketch</div>
+      Almost every lost mark in compound-area questions is a piece counted twice or left out — not an
+      arithmetic error.</div>`
+    },
+    {
+      h: 'Subtracting',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Shape</th><th>Working</th><th>Area</th></tr></thead>
+      <tbody>
+        <tr><td>a ${m('20 × 15')} plot with a ${m('4 × 3')} shed</td><td class="m">300 − 12</td><td class="m">288</td></tr>
+        <tr><td>a square of side ${m('14')} with a disc of radius ${m('7')} cut out</td><td class="m">196 − 154</td><td class="m">42</td></tr>
+        <tr><td>a ${m('1')} m path round a ${m('5 × 4')} m plot</td><td class="m">42 − 20</td><td class="m">22</td></tr>
+        <tr><td>a ring between radii ${m('7')} and ${m('14')}</td><td class="m">616 − 154</td><td class="m">462</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Subtracting is often quicker than cutting</div>
+      A path round a plot could be split into four rectangles, but subtracting the inner area from the
+      outer is one line of working instead of five.</div>`
+    },
+    {
+      h: 'Perimeter by tracing',
+      html: `<p>Put a finger at one point of the boundary and travel round, writing down every edge you
+      cross. Internal cuts are not part of the perimeter.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Shape</th><th>Boundary pieces</th><th>Perimeter</th></tr></thead>
+      <tbody>
+        <tr><td>rectangle ${m('14 × 10')} with a semicircle of radius ${m('7')} on top</td><td class="m">10 + 14 + 10 + 22</td><td class="m">56</td></tr>
+        <tr><td>a square of side ${m('14')} with a disc cut out</td><td>four sides ${m('+')} the circle</td><td class="m">56 + 44 = 100</td></tr>
+        <tr><td>an L-shape ${m('10 × 8')} less a ${m('4 × 3')} corner</td><td>six sides</td><td class="m">36</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The cut edge is not on the boundary</span>
+      Where the semicircle meets the rectangle, that ${m('14')} cm line is inside the shape. It counts for
+      neither perimeter piece — but the bottom ${m('14')} cm does.</div>`
+    },
+    {
+      h: 'Mixed problems',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Area</th><th>Perimeter</th></tr></thead>
+      <tbody>
+        <tr><td>a semicircle of radius ${m('7')} on a ${m('14 × 10')} rectangle</td><td class="m">217 cm²</td><td class="m">56 cm</td></tr>
+        <tr><td>a ${m('20 × 12')} plot with a quadrant lawn of radius ${m('7')}</td><td class="m">240 − 38.5 = 201.5 m²</td><td>—</td></tr>
+        <tr><td>a track: ${m('80 × 70')} rectangle plus two semicircular ends of radius ${m('35')}</td><td class="m">9450 m²</td><td class="m">380 m</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two answers, two units</div>
+      An area is in ${m('m²')} and a perimeter in ${m('m')}. Writing the units is the last check that the
+      right question has been answered.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A semicircle of radius ' + m('7 cm') + ' sits on top of a rectangle ' + m('14') + ' cm by ' + m('10') + ' cm. Find the area.',
+      steps: [
+        ['Rectangle: ' + m('14 · 10 = 140') + ' cm².', ''],
+        ['Semicircle: ' + m(f('1', '2') + ' · ' + f('22', '7') + ' · 49 = 77') + ' cm².', ''],
+        [m('140 + 77 = 217') + ' cm².', '']
+      ],
+      ans: m('217 cm²')
+    },
+    {
+      q: 'Find the perimeter of the same shape.',
+      steps: [
+        ['Trace the boundary: two sides of ' + m('10') + ', the bottom of ' + m('14') + ', then the curve.', ''],
+        ['The curve is ' + m('πr = 22') + ' cm.', ''],
+        [m('10 + 14 + 10 + 22 = 56') + ' cm.', 'The top ' + m('14') + ' is internal.']
+      ],
+      ans: m('56 cm')
+    },
+    {
+      q: 'A square of side ' + m('14 cm') + ' has a disc of radius ' + m('7 cm') + ' cut out of it. Find the area left.',
+      steps: [
+        ['Square: ' + m('196') + ' cm².', ''],
+        ['Disc: ' + m('154') + ' cm².', ''],
+        [m('196 − 154 = 42') + ' cm².', 'The four corner pieces.']
+      ],
+      ans: m('42 cm²')
+    }
+  ],
+  modelNote: 'Ask for area and perimeter of the same compound shape in every exercise; separating the two is the whole difficulty of the topic.',
+  interactive: {
+    type: 'quiz',
+    title: 'Add, subtract, or trace?',
+    hint: 'Area needs pieces; perimeter needs the boundary.',
+    items: [
+      { q: 'An L-shape ' + m('10 × 8') + ' less a ' + m('4 × 3') + ' corner has area:', a: [m('68'), m('80'), m('92'), m('12')], c: 0, why: m('80 − 12') + '.' },
+      { q: 'A ' + m('14 × 10') + ' rectangle with a semicircle of radius ' + m('7') + ' on top has area:', a: [m('140'), m('154'), m('217'), m('294')], c: 2, why: m('140 + 77') + '.' },
+      { q: 'Its perimeter is:', a: [m('48'), m('56'), m('70'), m('62')], c: 1, why: 'The top edge is internal.' },
+      { q: 'A square of side ' + m('14') + ' less a disc of radius ' + m('7') + ' has area:', a: [m('42'), m('154'), m('196'), m('350')], c: 0, why: m('196 − 154') + '.' },
+      { q: 'Its perimeter is:', a: [m('56'), m('44'), m('100'), m('12')], c: 2, why: 'Four sides plus the circle.' },
+      { q: 'A ' + m('1') + ' m path round a ' + m('5 × 4') + ' plot has area:', a: [m('20'), m('22'), m('42'), m('9')], c: 1, why: m('42 − 20') + '.' },
+      { q: 'An internal cut edge counts in:', a: ['the area', 'the perimeter', 'both', 'neither'], c: 3, why: 'It is not a boundary and not a piece.' },
+      { q: 'Areas are written in:', a: ['m', 'm²', 'm³', 'no units'], c: 1, why: 'Two directions.' }
+    ]
+  },
+  quiz: [
+    { q: 'A compound area is found by:', a: ['measuring', 'cutting into known pieces', 'guessing', 'tracing'], c: 1, why: 'Add or subtract.' },
+    { q: 'A compound perimeter is found by:', a: ['adding all the pieces’ perimeters', 'tracing the boundary', 'subtracting', 'halving'], c: 1, why: 'Internal edges do not count.' },
+    { q: 'A ' + m('20 × 15') + ' plot less a ' + m('4 × 3') + ' shed:', a: [m('288'), m('300'), m('312'), m('12')], c: 0, why: 'Subtract.' },
+    { q: 'A ring between radii ' + m('7') + ' and ' + m('14') + ':', a: [m('154'), m('462'), m('616'), m('770')], c: 1, why: m('616 − 154') + '.' },
+    { q: 'Where a semicircle meets a rectangle, the shared edge:', a: ['counts once', 'counts twice', 'does not count', 'is halved'], c: 2, why: 'It is internal.' },
+    { q: 'The best first step is:', a: ['calculate', 'sketch and label the pieces', 'estimate', 'measure'], c: 1, why: 'Then nothing is missed.' }
+  ],
+  practice: {
+    easy: [
+      ['An L-shape ' + m('10 × 8') + ' less ' + m('4 × 3'), m('68')],
+      ['A house: ' + m('6 × 4') + ' plus a triangle of height ' + m('3'), m('33')],
+      ['A ' + m('20 × 15') + ' plot less a ' + m('4 × 3') + ' shed', m('288')],
+      ['A ' + m('1') + ' m path round a ' + m('5 × 4') + ' plot', m('22 m²')],
+      ['A square of side ' + m('14') + ' less a disc of radius ' + m('7'), m('42 cm²')],
+      ['A ring between radii ' + m('7') + ' and ' + m('14'), m('462 cm²')],
+      ['Units for an area', m('cm²')]
+    ],
+    med: [
+      ['A ' + m('14 × 10') + ' rectangle plus a semicircle of radius ' + m('7'), m('217 cm²')],
+      ['Its perimeter', m('56 cm')],
+      ['The square-less-disc shape: its perimeter', m('100 cm')],
+      ['The L-shape: its perimeter', m('36')],
+      ['A track: ' + m('80 × 70') + ' plus ends of radius ' + m('35') + ': the area', m('9450 m²')],
+      ['And its perimeter', m('380 m')],
+      ['A ' + m('20 × 12') + ' plot less a quadrant of radius ' + m('7'), m('201.5 m²')]
+    ],
+    hard: [
+      ['A ' + m('2') + ' m path round a ' + m('10 × 6') + ' m garden', m('80 m²')],
+      ['A ' + m('28') + ' cm square with quadrants of radius ' + m('14') + ' cut from two corners', m('476 cm²')],
+      ['A shape of two semicircles of radius ' + m('7') + ' on opposite sides of a ' + m('14 × 20') + ' rectangle: the area', m('434 cm²')],
+      ['Its perimeter', m('84 cm')],
+      ['A disc of radius ' + m('14') + ' with a ' + m('14') + ' cm square hole', m('420 cm²')],
+      ['Why is subtracting often better than cutting?', 'One line of working instead of several'],
+      ['A ' + m('60°') + ' sector of radius ' + m('21') + ' cut from a ' + m('21 × 21') + ' square', m('210 cm²')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Sketch, label every piece, then answer area and perimeter separately.',
+  homework: [
+    'Find the area of an L-shape ' + m('12 × 9') + ' with a ' + m('5 × 4') + ' corner removed, and its perimeter.',
+    'A semicircle of radius ' + m('10') + ' cm sits on a ' + m('20 × 15') + ' cm rectangle. Find the area (' + m('π = 3.14') + ').',
+    'Find the perimeter of the same shape.',
+    'A ' + m('1.5') + ' m path runs round a ' + m('12') + ' m by ' + m('8') + ' m lawn. Find the area of the path.',
+    'A square of side ' + m('28') + ' cm has a disc of radius ' + m('14') + ' cm cut out. Find the area remaining.'
+  ]
+});
