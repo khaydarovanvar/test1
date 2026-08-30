@@ -10707,3 +10707,409 @@ G7_MAT.push({
     'Simplify ' + m('(x + 4)² − (x − 4)²') + ' and say which slip you were avoiding.'
   ]
 });
+
+/* ============================== 61 ============================== */
+G7_MAT.push({
+  id: 'g7-61', stream: 'mat', grade: 7, quarter: 3, lessons: '112–113', hours: 2,
+  title: 'The algebraic fraction. Cancelling fractions',
+  subtitle: 'A fraction whose parts are polynomials — and the one rule that only factors may be cancelled.',
+  uz: 'Matematika 7, §50', uzPage: 'pp. 327–334',
+  cam: 'S8 7', camPage: 'Stage 8, pp. 66–78', wb: 'Exercise 7.1',
+  objectives: [
+    'Define an algebraic fraction and state where it has no value.',
+    'Factorise numerator and denominator before cancelling.',
+    'Cancel only common factors, never terms.',
+    'Write the values of the letter that must be excluded.'
+  ],
+  terms: [
+    ['Algebraic fraction', 'Algebraik kasr', 'Алгебраическая дробь'],
+    ['Numerator', 'Surat', 'Числитель'],
+    ['Denominator', 'Maxraj', 'Знаменатель'],
+    ['To cancel', 'Qisqartirish', 'Сокращать'],
+    ['Common factor', 'Umumiy ko‘paytuvchi', 'Общий множитель'],
+    ['Excluded value', 'Mumkin bo‘lmagan qiymat', 'Недопустимое значение'],
+    ['Undefined', 'Aniqlanmagan', 'Не определено'],
+    ['Simplest form', 'Eng sodda ko‘rinish', 'Несократимый вид']
+  ],
+  timing: [[15, 'What an algebraic fraction is'], [20, 'Where it has no value'], [25, 'Cancelling'], [20, 'Factors, never terms'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'What an algebraic fraction is',
+      html: `<p>An <b>algebraic fraction</b> is a quotient of two polynomials, exactly as an ordinary
+      fraction is a quotient of two whole numbers.</p>
+      ${eq(m(f('P(x)', 'Q(x)')) + '   with ' + m('Q(x) ≠ 0'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>An algebraic fraction?</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('x + 1', 'x − 2')}</td><td>yes</td></tr>
+        <tr><td class="m">${f('x²', '3')}</td><td>yes — the denominator may be a number</td></tr>
+        <tr><td class="m">${f('5', 'x')}</td><td>yes</td></tr>
+        <tr><td class="m">x² + 1</td><td>a polynomial, not a fraction</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Everything you know about ordinary fractions carries over</div>
+      Cancelling, common denominators, adding, multiplying, dividing — the rules are the same ones learnt
+      in Quarter I. Only the objects in the numerator and denominator have changed.</div>`
+    },
+    {
+      h: 'Where it has no value',
+      html: `<p>A denominator of zero makes the fraction meaningless, so those values of the letter must be
+      excluded and written down.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Fraction</th><th>Denominator zero when</th><th>Excluded</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('5', 'x')}</td><td class="m">x = 0</td><td class="m">x ≠ 0</td></tr>
+        <tr><td class="m">${f('x + 1', 'x − 2')}</td><td class="m">x = 2</td><td class="m">x ≠ 2</td></tr>
+        <tr><td class="m">${f('3', 'x² − 9')}</td><td class="m">x = ±3</td><td class="m">x ≠ 3, x ≠ −3</td></tr>
+        <tr><td class="m">${f('x', 'x² + 1')}</td><td>never</td><td>nothing to exclude</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Find the excluded values <i>before</i> cancelling</span>
+      In ${m(f('x² − 9', 'x − 3'))} the answer is ${m('x + 3')}, but ${m('x = 3')} is still forbidden — the
+      original fraction had no value there. Cancelling does not make a forbidden value legal.</div>`
+    },
+    {
+      h: 'Cancelling',
+      html: `<p>Factorise both parts fully, then divide out every factor they share.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Fraction</th><th>Factorised</th><th>Simplified</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('12a³', '4a')}</td><td class="m">${f('4a · 3a²', '4a')}</td><td class="m">3a²</td></tr>
+        <tr><td class="m">${f('x² − 9', 'x + 3')}</td><td class="m">${f('(x − 3)(x + 3)', 'x + 3')}</td><td class="m">x − 3</td></tr>
+        <tr><td class="m">${f('x² + 5x + 6', 'x + 2')}</td><td class="m">${f('(x + 2)(x + 3)', 'x + 2')}</td><td class="m">x + 3</td></tr>
+        <tr><td class="m">${f('2x + 6', 'x² − 9')}</td><td class="m">${f('2(x + 3)', '(x − 3)(x + 3)')}</td><td class="m">${f('2', 'x − 3')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">This is why the last chapter came first</div>
+      Every one of these cancellations begins with a factorisation from the abridged formulae. Without
+      that chapter, none of these fractions could be simplified at all.</div>`
+    },
+    {
+      h: 'Factors, never terms',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Attempt</th><th>Right?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('(x − 3)(x + 3)', 'x + 3')} = x − 3</td><td>yes</td><td class="m">x + 3</td></tr>
+        <tr><td class="m">${f('x² − 9', 'x + 3')} = x² − 3</td><td>no</td><td>the ${m('9')} and the ${m('3')} are not factors</td></tr>
+        <tr><td class="m">${f('x + 5', 'x')} = 5</td><td>no</td><td class="m">x</td></tr>
+        <tr><td class="m">${f('2x', '2')} = x</td><td>yes</td><td class="m">2</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A term that is added can never be cancelled</span>
+      ${m(f('x + 5', 'x'))} is not ${m('5')}: try ${m('x = 1')} and the fraction is ${m('6')}. Only things
+      that are <b>multiplied</b> may be divided out.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Simplify ' + m(f('x² + 5x + 6', 'x + 2')) + ' and state the excluded value.',
+      steps: [
+        [m('x + 2 = 0') + ' when ' + m('x = −2') + ', so ' + m('x ≠ −2') + '.', 'Written down first.'],
+        [m('x² + 5x + 6 = (x + 2)(x + 3)'), 'Product ' + m('6') + ', sum ' + m('5') + '.'],
+        [m(f('(x + 2)(x + 3)', 'x + 2')), ''],
+        [m('= x + 3'), '']
+      ],
+      ans: m('x + 3') + ', ' + m('x ≠ −2')
+    },
+    {
+      q: 'Simplify ' + m(f('2x + 6', 'x² − 9')) + '.',
+      steps: [
+        [m('2x + 6 = 2(x + 3)'), ''],
+        [m('x² − 9 = (x − 3)(x + 3)'), ''],
+        ['Cancel ' + m('x + 3') + '.', ''],
+        [m('= ' + f('2', 'x − 3')) + ', with ' + m('x ≠ ±3') + '.', '']
+      ],
+      ans: m(f('2', 'x − 3'))
+    },
+    {
+      q: 'Is ' + m(f('x + 5', 'x') + ' = 5') + ' correct?',
+      steps: [
+        ['Try ' + m('x = 1') + ': the fraction is ' + m('6') + '.', ''],
+        ['So the equality is false.', ''],
+        [m('x') + ' is a term of the numerator, not a factor of it.', '']
+      ],
+      ans: 'No'
+    }
+  ],
+  modelNote: 'Write (x + 5)/x = 5 on the board and ask the class to test it with x = 1; one substitution ends the argument for the rest of the year.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'Factorise, then cancel',
+    hint: 'Only common factors go.',
+    items: [
+      {
+        title: '(x² + 5x + 6) / (x + 2)',
+        start: m(f('x² + 5x + 6', 'x + 2')),
+        steps: [
+          [m('x ≠ −2'), 'The excluded value, noted first.'],
+          [m('x² + 5x + 6 = (x + 2)(x + 3)'), 'Product ' + m('6') + ', sum ' + m('5') + '.'],
+          [m('x + 3'), 'Cancel the common factor ' + m('x + 2') + '.']
+        ],
+        answer: m('x + 3') + ', &nbsp;' + m('x ≠ −2')
+      },
+      {
+        title: '(2x + 6) / (x² − 9)',
+        start: m(f('2x + 6', 'x² − 9')),
+        steps: [
+          [m('2x + 6 = 2(x + 3)'), 'Common factor.'],
+          [m('x² − 9 = (x − 3)(x + 3)'), 'Difference of squares.'],
+          [m(f('2', 'x − 3')), 'Cancel ' + m('x + 3') + '; ' + m('x ≠ ±3') + '.']
+        ],
+        answer: m(f('2', 'x − 3'))
+      },
+      {
+        title: '(x² − 4) / (x² + 4x + 4)',
+        start: m(f('x² − 4', 'x² + 4x + 4')),
+        steps: [
+          [m('x² − 4 = (x − 2)(x + 2)'), ''],
+          [m('x² + 4x + 4 = (x + 2)²'), 'A perfect square.'],
+          [m(f('x − 2', 'x + 2')), 'One ' + m('x + 2') + ' cancels, one remains.']
+        ],
+        answer: m(f('x − 2', 'x + 2')) + ', &nbsp;' + m('x ≠ −2')
+      }
+    ]
+  },
+  quiz: [
+    { q: 'An algebraic fraction is a quotient of:', a: ['two numbers', 'two polynomials', 'two equations', 'two roots'], c: 1, why: 'By definition.' },
+    { q: m(f('5', 'x')) + ' has no value when:', a: [m('x = 5'), m('x = 0'), m('x = 1'), 'never'], c: 1, why: 'The denominator is zero.' },
+    { q: m(f('3', 'x² − 9')) + ' excludes:', a: [m('x = 3'), m('x = −3'), 'both', 'neither'], c: 2, why: 'Both make it zero.' },
+    { q: m(f('x² − 9', 'x + 3')) + ' simplifies to:', a: [m('x² − 3'), m('x − 3'), m('x + 3'), m('x')], c: 1, why: 'Factorise first.' },
+    { q: m(f('x + 5', 'x')) + ' simplifies to:', a: [m('5'), m('x + 5'), 'it does not simplify', m('6')], c: 2, why: m('x') + ' is a term, not a factor.' },
+    { q: 'Cancelling is allowed for:', a: ['terms', 'factors', 'anything', 'signs'], c: 1, why: 'Only what is multiplied.' }
+  ],
+  practice: {
+    easy: [
+      [m(f('12a³', '4a')), m('3a²')],
+      [m(f('x² − 9', 'x + 3')), m('x − 3')],
+      [m(f('2x', '2')), m('x')],
+      [m(f('6x²', '3x')), m('2x')],
+      [m(f('5', 'x')) + ': the excluded value', m('x = 0')],
+      [m(f('x + 1', 'x − 2')) + ': the excluded value', m('x = 2')],
+      [m(f('x² + 5x + 6', 'x + 2')), m('x + 3')]
+    ],
+    med: [
+      [m(f('2x + 6', 'x² − 9')), m(f('2', 'x − 3'))],
+      [m(f('x² − 4', 'x² + 4x + 4')), m(f('x − 2', 'x + 2'))],
+      [m(f('3', 'x² − 9')) + ': the excluded values', m('x = ±3')],
+      [m(f('x² − 7x + 12', 'x − 3')), m('x − 4')],
+      [m(f('4x² − 25', '2x + 5')), m('2x − 5')],
+      [m(f('x', 'x² + 1')) + ': the excluded values', 'None'],
+      ['Is ' + m(f('x + 5', 'x') + ' = 5') + '?', 'No']
+    ],
+    hard: [
+      [m(f('x³ − 8', 'x − 2')), m('x² + 2x + 4')],
+      [m(f('x² − 1', 'x² + 2x + 1')), m(f('x − 1', 'x + 1'))],
+      [m(f('2x² − 18', 'x² + 6x + 9')), m(f('2(x − 3)', 'x + 3'))],
+      [m(f('a² − b²', 'a² − 2ab + b²')), m(f('a + b', 'a − b'))],
+      [m(f('x² + x − 6', 'x² − 4')), m(f('x + 3', 'x + 2'))],
+      ['Why must the excluded values be found before cancelling?', 'The original fraction, not the simplified one, defines them'],
+      [m(f('3 − x', 'x − 3')), m('−1')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the excluded values first, then simplify.',
+  homework: [
+    'Simplify ' + m(f('x² − 16', 'x + 4')) + ' and state the excluded value.',
+    'Simplify ' + m(f('3x + 12', 'x² − 16')) + '.',
+    'Simplify ' + m(f('x² + 7x + 10', 'x + 5')) + '.',
+    'Find the excluded values of ' + m(f('7', 'x² − 4x')) + '.',
+    'Explain with one substitution why ' + m(f('x + 3', 'x')) + ' is not ' + m('3') + '.'
+  ]
+});
+
+/* ============================== 62 ============================== */
+G7_MAT.push({
+  id: 'g7-62', stream: 'mat', grade: 7, quarter: 3, lessons: '114–115', hours: 2,
+  title: 'Reducing algebraic fractions to a common denominator',
+  subtitle: 'Factorise every denominator, take each factor to its highest power, and multiply each fraction up.',
+  uz: 'Matematika 7, §51', uzPage: 'pp. 335–341',
+  cam: 'S8 7', camPage: 'Stage 8, pp. 66–78', wb: 'Exercise 7.2',
+  objectives: [
+    'Find the lowest common denominator of two algebraic fractions.',
+    'Determine the extra factor each fraction must be multiplied by.',
+    'Multiply numerator and denominator by the same expression without changing the value.',
+    'Handle denominators that differ only in sign.'
+  ],
+  terms: [
+    ['Common denominator', 'Umumiy maxraj', 'Общий знаменатель'],
+    ['Lowest common denominator', 'Eng kichik umumiy maxraj', 'Наименьший общий знаменатель'],
+    ['Extra factor', 'Qo‘shimcha ko‘paytuvchi', 'Дополнительный множитель'],
+    ['To factorise', 'Ko‘paytuvchilarga ajratish', 'Разложить на множители'],
+    ['Highest power', 'Eng yuqori daraja', 'Наивысшая степень'],
+    ['Equivalent fraction', 'Teng kuchli kasr', 'Равная дробь'],
+    ['Opposite expression', 'Qarama-qarshi ifoda', 'Противоположное выражение'],
+    ['Sign change', 'Ishorani o‘zgartirish', 'Смена знака']
+  ],
+  timing: [[10, 'The rule that makes it legal'], [25, 'Building the denominator'], [25, 'The extra factors'], [20, 'Denominators that differ in sign'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The rule that makes it legal',
+      html: `<p>Multiplying the numerator and the denominator by the same non-zero expression does not
+      change the value of a fraction — it only changes how it is written.</p>
+      ${eq(m(f('P', 'Q') + ' = ' + f('P · R', 'Q · R')) + '   for ' + m('R ≠ 0'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Fraction</th><th>Multiplied by</th><th>New form</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('1', 'x')}</td><td class="m">x + 1</td><td class="m">${f('x + 1', 'x(x + 1)')}</td></tr>
+        <tr><td class="m">${f('2', 'x − 3')}</td><td class="m">x + 3</td><td class="m">${f('2(x + 3)', 'x² − 9')}</td></tr>
+        <tr><td class="m">${f('3', 'a')}</td><td class="m">2</td><td class="m">${f('6', '2a')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Cancelling and building are the same rule</div>
+      Last lesson divided both parts by a common factor; this lesson multiplies both parts by an extra
+      one. It is one rule read in two directions.</div>`
+    },
+    {
+      h: 'Building the denominator',
+      html: `<p>Factorise every denominator, then take each distinct factor to the highest power in which
+      it appears anywhere.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Denominators</th><th>Factorised</th><th>Lowest common denominator</th></tr></thead>
+      <tbody>
+        <tr><td class="m">6x, 8x²</td><td class="m">2 · 3 · x, 2³ · x²</td><td class="m">24x²</td></tr>
+        <tr><td class="m">x − 3, x + 3</td><td>already factorised</td><td class="m">(x − 3)(x + 3)</td></tr>
+        <tr><td class="m">x² − 9, x + 3</td><td class="m">(x − 3)(x + 3), x + 3</td><td class="m">(x − 3)(x + 3)</td></tr>
+        <tr><td class="m">x² + 2x + 1, x² − 1</td><td class="m">(x + 1)², (x − 1)(x + 1)</td><td class="m">(x + 1)²(x − 1)</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Multiplying the denominators together is not wrong, only wasteful</span>
+      For ${m('x² − 9')} and ${m('x + 3')} the product is ${m('(x − 3)(x + 3)²')}, which works but leaves a
+      factor to cancel at the end. Factorising first gives the lowest one and half the arithmetic.</div>`
+    },
+    {
+      h: 'The extra factors',
+      html: `<p>Each fraction is multiplied by whatever its own denominator is missing.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Fraction</th><th>Denominator</th><th>Extra factor</th><th>New numerator</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('1', 'x − 3')}</td><td class="m">x − 3</td><td class="m">x + 3</td><td class="m">x + 3</td></tr>
+        <tr><td class="m">${f('2', 'x + 3')}</td><td class="m">x + 3</td><td class="m">x − 3</td><td class="m">2x − 6</td></tr>
+        <tr><td class="m">${f('5', '6x')}</td><td class="m">6x</td><td class="m">4x</td><td class="m">20x</td></tr>
+        <tr><td class="m">${f('3', '8x²')}</td><td class="m">8x²</td><td class="m">3</td><td class="m">9</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Multiply the numerator out</div>
+      ${m(f('2', 'x + 3'))} becomes ${m(f('2x − 6', '(x − 3)(x + 3)'))}, not ${m(f('2(x − 3)', '…'))} left
+      unexpanded — the next lesson has to add these numerators, and an unexpanded bracket with a minus in
+      front is where the sign errors start.</div>`
+    },
+    {
+      h: 'Denominators that differ in sign',
+      html: `<p>${m('3 − x')} and ${m('x − 3')} are opposites, so one sign change makes them equal.</p>
+      ${eq(m(f('1', '3 − x') + ' = −' + f('1', 'x − 3')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Pair</th><th>Rewritten</th><th>Common denominator</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x − 3, 3 − x</td><td class="m">3 − x = −(x − 3)</td><td class="m">x − 3</td></tr>
+        <tr><td class="m">a − b, b − a</td><td class="m">b − a = −(a − b)</td><td class="m">a − b</td></tr>
+        <tr><td class="m">2x − 1, 1 − 2x</td><td class="m">1 − 2x = −(2x − 1)</td><td class="m">2x − 1</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Treating them as different factors doubles the work</span>
+      Building ${m('(x − 3)(3 − x)')} as a common denominator is legal but pointless — and it hides the
+      fact that the answer will simplify. Take the minus out in front instead.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Reduce ' + m(f('1', 'x − 3')) + ' and ' + m(f('2', 'x + 3')) + ' to a common denominator.',
+      steps: [
+        ['Neither denominator factorises further.', ''],
+        ['The LCD is ' + m('(x − 3)(x + 3) = x² − 9') + '.', ''],
+        [m(f('1', 'x − 3') + ' = ' + f('x + 3', 'x² − 9')), 'Extra factor ' + m('x + 3') + '.'],
+        [m(f('2', 'x + 3') + ' = ' + f('2x − 6', 'x² − 9')), 'Extra factor ' + m('x − 3') + '.']
+      ],
+      ans: m(f('x + 3', 'x² − 9')) + ' and ' + m(f('2x − 6', 'x² − 9'))
+    },
+    {
+      q: 'Find the lowest common denominator of ' + m(f('1', 'x² + 2x + 1')) + ' and ' + m(f('1', 'x² − 1')) + '.',
+      steps: [
+        [m('x² + 2x + 1 = (x + 1)²'), ''],
+        [m('x² − 1 = (x − 1)(x + 1)'), ''],
+        ['Take ' + m('(x + 1)') + ' to its highest power and ' + m('(x − 1)') + ' once.', ''],
+        ['LCD ' + m('= (x + 1)²(x − 1)') + '.', '']
+      ],
+      ans: m('(x + 1)²(x − 1)')
+    },
+    {
+      q: 'Reduce ' + m(f('1', 'x − 3')) + ' and ' + m(f('2', '3 − x')) + ' to a common denominator.',
+      steps: [
+        [m('3 − x = −(x − 3)'), ''],
+        [m(f('2', '3 − x') + ' = −' + f('2', 'x − 3')), ''],
+        ['The common denominator is just ' + m('x − 3') + '.', ''],
+        ['The fractions are ' + m(f('1', 'x − 3')) + ' and ' + m(f('−2', 'x − 3')) + '.', '']
+      ],
+      ans: 'Common denominator ' + m('x − 3')
+    }
+  ],
+  modelNote: 'Set the pair 1/(x − 3) and 2/(3 − x) before teaching the sign rule; the class builds a monstrous denominator, and the one-line alternative then sells itself.',
+  interactive: {
+    type: 'lcdBuilder',
+    title: 'Assembling the lowest common denominator',
+    hint: 'Factorise first; take each factor to its highest power.',
+    items: [
+      {
+        label: m(f('5', '6x') + ' and ' + f('3', '8x²')),
+        rows: [['6x', '2 · 3 · x', '4x'], ['8x²', '2³ · x²', '3']],
+        lcd: m('24x²'),
+        note: 'The numerators become ' + m('20x') + ' and ' + m('9') + '.'
+      },
+      {
+        label: m(f('1', 'x − 3') + ' and ' + f('2', 'x + 3')),
+        rows: [['x − 3', 'x − 3', 'x + 3'], ['x + 3', 'x + 3', 'x − 3']],
+        lcd: m('(x − 3)(x + 3) = x² − 9'),
+        note: 'The numerators become ' + m('x + 3') + ' and ' + m('2x − 6') + '.'
+      },
+      {
+        label: m(f('1', 'x² + 2x + 1') + ' and ' + f('1', 'x² − 1')),
+        rows: [['x² + 2x + 1', '(x + 1)²', 'x − 1'], ['x² − 1', '(x − 1)(x + 1)', 'x + 1']],
+        lcd: m('(x + 1)²(x − 1)'),
+        note: 'Each factor appears to the highest power it reaches in either denominator.'
+      },
+      {
+        label: m(f('1', 'x − 3') + ' and ' + f('2', '3 − x')),
+        rows: [['x − 3', 'x − 3', '1'], ['3 − x', '−(x − 3)', '−1']],
+        lcd: m('x − 3'),
+        note: 'Opposite denominators need a sign change, not a bigger denominator.'
+      }
+    ]
+  },
+  quiz: [
+    { q: 'Multiplying both parts of a fraction by the same expression:', a: ['changes its value', 'keeps its value', 'makes it zero', 'is not allowed'], c: 1, why: 'It is an equivalent fraction.' },
+    { q: 'The LCD of ' + m('6x') + ' and ' + m('8x²') + ' is:', a: [m('48x³'), m('24x²'), m('14x²'), m('24x')], c: 1, why: 'Highest power of each factor.' },
+    { q: 'The LCD of ' + m('x − 3') + ' and ' + m('x + 3') + ' is:', a: [m('x² − 9'), m('x² + 9'), m('x − 3'), m('(x − 3)²')], c: 0, why: 'Their product.' },
+    { q: 'The LCD of ' + m('x² − 9') + ' and ' + m('x + 3') + ' is:', a: [m('(x − 3)(x + 3)²'), m('x² − 9'), m('x + 3'), m('(x + 3)²')], c: 1, why: m('x + 3') + ' is already inside.' },
+    { q: m('3 − x') + ' equals:', a: [m('x − 3'), m('−(x − 3)'), m('x + 3'), m('−(x + 3)')], c: 1, why: 'Opposites.' },
+    { q: 'The extra factor for ' + m(f('2', 'x + 3')) + ' towards ' + m('x² − 9') + ' is:', a: [m('x + 3'), m('x − 3'), m('2'), m('x')], c: 1, why: 'What the denominator is missing.' }
+  ],
+  practice: {
+    easy: [
+      ['LCD of ' + m('6x') + ' and ' + m('8x²'), m('24x²')],
+      ['LCD of ' + m('x − 3') + ' and ' + m('x + 3'), m('x² − 9')],
+      ['LCD of ' + m('2a') + ' and ' + m('3a'), m('6a')],
+      ['LCD of ' + m('x') + ' and ' + m('x + 1'), m('x(x + 1)')],
+      [m(f('1', 'x')) + ' to denominator ' + m('x(x + 1)'), m(f('x + 1', 'x(x + 1)'))],
+      [m(f('3', 'a')) + ' to denominator ' + m('2a'), m(f('6', '2a'))],
+      [m('3 − x') + ' written with ' + m('x − 3'), m('−(x − 3)')]
+    ],
+    med: [
+      ['LCD of ' + m('x² − 9') + ' and ' + m('x + 3'), m('x² − 9')],
+      ['LCD of ' + m('x² + 2x + 1') + ' and ' + m('x² − 1'), m('(x + 1)²(x − 1)')],
+      [m(f('2', 'x + 3')) + ' to denominator ' + m('x² − 9'), m(f('2x − 6', 'x² − 9'))],
+      [m(f('1', 'x − 3')) + ' to denominator ' + m('x² − 9'), m(f('x + 3', 'x² − 9'))],
+      [m(f('5', '6x')) + ' to denominator ' + m('24x²'), m(f('20x', '24x²'))],
+      ['LCD of ' + m('x − 3') + ' and ' + m('3 − x'), m('x − 3')],
+      ['LCD of ' + m('a − b') + ' and ' + m('b − a'), m('a − b')]
+    ],
+    hard: [
+      ['LCD of ' + m('x² − 4') + ', ' + m('x² + 4x + 4') + ' and ' + m('x + 2'), m('(x − 2)(x + 2)²')],
+      ['LCD of ' + m('x² − x') + ' and ' + m('x² − 1'), m('x(x − 1)(x + 1)')],
+      [m(f('1', 'x² − 4')) + ' to denominator ' + m('(x − 2)(x + 2)²'), m(f('x + 2', '(x − 2)(x + 2)²'))],
+      ['LCD of ' + m('4x²y') + ' and ' + m('6xy³'), m('12x²y³')],
+      ['Why is the lowest common denominator preferred?', 'The numbers stay small and nothing has to be cancelled at the end'],
+      [m(f('2', '3 − x')) + ' with denominator ' + m('x − 3'), m(f('−2', 'x − 3'))],
+      ['LCD of ' + m('x² − 9') + ', ' + m('x² − 6x + 9'), m('(x + 3)(x − 3)²')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Factorise every denominator before you write a single common denominator.',
+  homework: [
+    'Find the LCD of ' + m('10x') + ' and ' + m('15x²') + '.',
+    'Reduce ' + m(f('1', 'x − 5')) + ' and ' + m(f('3', 'x + 5')) + ' to a common denominator.',
+    'Find the LCD of ' + m('x² − 16') + ' and ' + m('x + 4') + ', and rewrite both fractions.',
+    'Find the LCD of ' + m('x² − 25') + ' and ' + m('x² + 10x + 25') + '.',
+    'Rewrite ' + m(f('4', '2 − x')) + ' with denominator ' + m('x − 2') + '.'
+  ]
+});
