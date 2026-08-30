@@ -3876,3 +3876,182 @@ G6_MAT.push({
     'Explain the difference between “boys to girls is ' + m('2 : 3') + '” and “boys are ' + m(f('2', '3')) + ' of the class”.'
   ]
 });
+
+/* ============================== 22 ============================== */
+G6_MAT.push({
+  id: 'g6-22', stream: 'mat', grade: 6, quarter: 1, lessons: '42–43', hours: 2,
+  title: 'Ratio and fraction',
+  subtitle: 'Moving between “three parts to five” and “three eighths of the whole”.',
+  uz: 'Matematika 6, §9', uzPage: 'pp. 113–120',
+  cam: 'S7 12', camPage: 'Stage 7, pp. 118–125', wb: 'Exercise 12.2',
+  objectives: [
+    'Write each part of a ratio as a fraction of the whole.',
+    'Write a ratio from two fractions of a whole.',
+    'Find one quantity from the other using the ratio.',
+    'Solve problems mixing ratios and fractions.'
+  ],
+  terms: [
+    ['Ratio', 'Nisbat', 'Отношение'],
+    ['Fraction of the whole', 'Butunning qismi', 'Часть от целого'],
+    ['Total parts', 'Jami ulushlar', 'Всего частей'],
+    ['One part', 'Bir ulush', 'Одна часть'],
+    ['To convert', 'O‘girmoq', 'Преобразовать'],
+    ['Share', 'Ulush', 'Доля'],
+    ['Proportion', 'Proporsiya', 'Пропорция'],
+    ['Equivalent', 'Teng kuchli', 'Равносильный']
+  ],
+  timing: [[20, 'From ratio to fraction'], [25, 'From fraction to ratio'], [25, 'One quantity from the other'], [8, 'Mixed problems'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'From ratio to fraction',
+      html: `<p>Add the parts of the ratio; each part is that many of the total.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Ratio</th><th>Total parts</th><th>First as a fraction</th><th>Second as a fraction</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2 : 3</td><td class="m">5</td><td class="m">${f('2', '5')}</td><td class="m">${f('3', '5')}</td></tr>
+        <tr><td class="m">3 : 5</td><td class="m">8</td><td class="m">${f('3', '8')}</td><td class="m">${f('5', '8')}</td></tr>
+        <tr><td class="m">1 : 4</td><td class="m">5</td><td class="m">${f('1', '5')}</td><td class="m">${f('4', '5')}</td></tr>
+        <tr><td class="m">2 : 3 : 5</td><td class="m">10</td><td class="m">${f('2', '10')} = ${f('1', '5')}</td><td class="m">${f('3', '10')} and ${f('5', '10')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The denominator is the total, not the other part</span>
+      In ${m('2 : 3')} the first quantity is ${m(f('2', '5'))} of the whole — but ${m(f('2', '3'))} of the
+      second quantity. Both statements are true and they mean different things.</div>`
+    },
+    {
+      h: 'From fraction to ratio',
+      html: `<p>If one part is ${m(f('3', '8'))} of the whole, the rest is ${m(f('5', '8'))}, so the ratio
+      is ${m('3 : 5')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>The rest</th><th>Ratio</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('3', '8')} are boys</td><td class="m">${f('5', '8')}</td><td class="m">3 : 5</td></tr>
+        <tr><td class="m">${f('2', '7')} are red</td><td class="m">${f('5', '7')}</td><td class="m">2 : 5</td></tr>
+        <tr><td class="m">${f('1', '3')} is water</td><td class="m">${f('2', '3')}</td><td class="m">1 : 2</td></tr>
+        <tr><td class="m">${f('3', '4')} is full</td><td class="m">${f('1', '4')}</td><td class="m">3 : 1</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A common denominator turns fractions into a ratio</div>
+      If ${m(f('1', '2'))} is juice and ${m(f('1', '3'))} is water, write both over ${m('6')}: ${m(f('3', '6'))}
+      and ${m(f('2', '6'))}, so the ratio is ${m('3 : 2')} — with a sixth left over for something
+      else.</div>`
+    },
+    {
+      h: 'One quantity from the other',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>boys to girls ${m('2 : 3')}, ${m('14')} boys</td><td>one part ${m('= 7')}</td><td class="m">21</td></tr>
+        <tr><td>ratio ${m('3 : 5')}, the smaller is ${m('12')}</td><td>one part ${m('= 4')}</td><td class="m">20</td></tr>
+        <tr><td>ratio ${m('4 : 7')}, the larger is ${m('35')}</td><td>one part ${m('= 5')}</td><td class="m">20</td></tr>
+        <tr><td>ratio ${m('2 : 3')}, ${m('14')} boys: the class</td><td class="m">5 · 7</td><td class="m">35</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Find one part first, every time</div>
+      Divide the known quantity by its own number in the ratio. That single number then answers every
+      other question in the problem.</div>`
+    },
+    {
+      h: 'Mixed problems',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a drink is ${m('1')} part syrup to ${m('4')} water; syrup as a fraction</td><td class="m">${f('1', '5')}</td></tr>
+        <tr><td>${m('600')} ml of that drink: the syrup in it</td><td class="m">120 ml</td></tr>
+        <tr><td>${m(f('3', '8'))} of a class of ${m('32')} are boys: the ratio of boys to girls</td><td class="m">3 : 5</td></tr>
+        <tr><td>and the number of girls</td><td class="m">20</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Read which quantity the given number belongs to</span>
+      “Fourteen boys” is one part of the ratio; “a class of thirty-five” is the total. The two lead to
+      different first steps, and misreading which is given accounts for most lost marks here.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Boys to girls is ' + m('2 : 3') + ' and there are ' + m('14') + ' boys. How many girls, and how many pupils?',
+      steps: [
+        [m('14') + ' boys is ' + m('2') + ' parts, so one part is ' + m('7') + '.', ''],
+        ['Girls: ' + m('3 · 7 = 21') + '.', ''],
+        ['Class: ' + m('5 · 7 = 35') + '.', 'Check: ' + m('14 + 21 = 35') + ' ✓']
+      ],
+      ans: m('21') + ' girls, ' + m('35') + ' pupils'
+    },
+    {
+      q: 'In a class ' + m(f('3', '8')) + ' are boys. Write the ratio of boys to girls.',
+      steps: [
+        ['Girls are ' + m('1 − ' + f('3', '8') + ' = ' + f('5', '8')) + '.', ''],
+        ['Both are eighths, so compare the numerators.', ''],
+        [m('3 : 5'), '']
+      ],
+      ans: m('3 : 5')
+    },
+    {
+      q: 'A drink is ' + m('1') + ' part syrup to ' + m('4') + ' parts water. How much syrup is in ' + m('600') + ' ml?',
+      steps: [
+        ['Total parts: ' + m('5') + '.', ''],
+        ['Syrup is ' + m(f('1', '5')) + ' of the drink.', ''],
+        [m('600 ÷ 5 = 120') + ' ml.', '']
+      ],
+      ans: m('120') + ' ml'
+    }
+  ],
+  modelNote: 'Mix a jug of squash in front of the class at 1 : 4 and ask for the fraction that is syrup; the fifth is visible in the jug.',
+  interactive: {
+    type: 'quiz',
+    title: 'Ratio to fraction and back',
+    hint: 'Add the parts to get the denominator.',
+    items: [
+      { q: 'In ' + m('2 : 3') + ' the first part is what fraction of the whole?', a: [m(f('2', '3')), m(f('2', '5')), m(f('3', '5')), m(f('1', '2'))], c: 1, why: 'Five parts in all.' },
+      { q: 'In ' + m('3 : 5') + ' the second part is:', a: [m(f('5', '8')), m(f('5', '8')), m(f('3', '8')), m(f('5', '3'))], c: 1, why: 'Eight parts in all.' },
+      { q: 'If ' + m(f('3', '8')) + ' are boys, the ratio of boys to girls is:', a: [m('3 : 8'), m('3 : 5'), m('5 : 3'), m('8 : 3')], c: 1, why: 'The rest is ' + m(f('5', '8')) + '.' },
+      { q: 'Boys to girls ' + m('2 : 3') + ' with ' + m('14') + ' boys gives girls:', a: [m('7'), m('21'), m('28'), m('35')], c: 1, why: 'One part is ' + m('7') + '.' },
+      { q: 'And a class of:', a: [m('21'), m('28'), m('35'), m('42')], c: 2, why: m('5') + ' parts.' },
+      { q: 'A drink ' + m('1 : 4') + ' syrup to water is what fraction syrup?', a: [m(f('1', '4')), m(f('1', '5')), m(f('4', '5')), m(f('1', '3'))], c: 1, why: 'Five parts.' },
+      { q: m('600') + ' ml of it contains syrup:', a: [m('100') + ' ml', m('120') + ' ml', m('150') + ' ml', m('480') + ' ml'], c: 1, why: m(f('1', '5')) + ' of ' + m('600') + '.' },
+      { q: 'In ' + m('2 : 3') + ', the first is what fraction of the second?', a: [m(f('2', '5')), m(f('2', '3')), m(f('3', '2')), m(f('3', '5'))], c: 1, why: 'Part against part.' }
+    ]
+  },
+  quiz: [
+    { q: 'To turn a ratio into fractions you:', a: ['multiply the parts', 'add the parts', 'subtract them', 'divide them'], c: 1, why: 'The total is the denominator.' },
+    { q: 'In ' + m('1 : 4') + ' the first part is:', a: [m(f('1', '4')), m(f('1', '5')), m(f('4', '5')), m(f('1', '3'))], c: 1, why: 'Five parts.' },
+    { q: 'If ' + m(f('2', '7')) + ' are red, the ratio red to the rest is:', a: [m('2 : 7'), m('2 : 5'), m('5 : 2'), m('7 : 2')], c: 1, why: 'The rest is ' + m(f('5', '7')) + '.' },
+    { q: 'Ratio ' + m('3 : 5') + ' with the smaller ' + m('12') + ' gives the larger:', a: [m('15'), m('20'), m('24'), m('36')], c: 1, why: 'One part is ' + m('4') + '.' },
+    { q: 'Ratio ' + m('4 : 7') + ' with the larger ' + m('35') + ' gives the smaller:', a: [m('15'), m('20'), m('25'), m('28')], c: 1, why: 'One part is ' + m('5') + '.' },
+    { q: 'The first step in every such problem is:', a: ['add the parts', 'find one part', 'divide the total', 'multiply'], c: 1, why: 'From the known quantity.' }
+  ],
+  practice: {
+    easy: [
+      ['In ' + m('2 : 3') + ' the first as a fraction', m(f('2', '5'))],
+      ['In ' + m('3 : 5') + ' the second as a fraction', m(f('5', '8'))],
+      ['In ' + m('1 : 4') + ' the first as a fraction', m(f('1', '5'))],
+      ['If ' + m(f('3', '8')) + ' are boys, the ratio boys : girls', m('3 : 5')],
+      ['If ' + m(f('2', '7')) + ' are red, the ratio red : rest', m('2 : 5')],
+      ['The parts of ' + m('2 : 3 : 5'), m('10')],
+      ['In that ratio the last as a fraction', m(f('1', '2'))]
+    ],
+    med: [
+      ['Boys to girls ' + m('2 : 3') + ', ' + m('14') + ' boys: girls', m('21')],
+      ['And the class', m('35')],
+      ['Ratio ' + m('3 : 5') + ', smaller ' + m('12') + ': larger', m('20')],
+      ['Ratio ' + m('4 : 7') + ', larger ' + m('35') + ': smaller', m('20')],
+      ['A drink ' + m('1 : 4') + ': syrup in ' + m('600') + ' ml', m('120') + ' ml'],
+      [m(f('3', '8')) + ' of ' + m('32') + ' are boys: the girls', m('20')],
+      ['And the ratio boys : girls', m('3 : 5')]
+    ],
+    hard: [
+      ['If ' + m(f('1', '2')) + ' is juice and ' + m(f('1', '3')) + ' water, the ratio juice : water', m('3 : 2')],
+      ['Ratio ' + m('5 : 3') + ', the difference is ' + m('16') + ': the total', m('64')],
+      ['Ratio ' + m('2 : 5') + ', the total is ' + m('63') + ': the parts', m('18') + ' and ' + m('45')],
+      ['In ' + m('2 : 3') + ', the first is what fraction of the second?', m(f('2', '3'))],
+      ['A mixture ' + m('2 : 3 : 5') + ' of ' + m('400') + ' g: the three parts', m('80, 120, 200') + ' g'],
+      ['If boys are ' + m(f('4', '9')) + ' of a class, the ratio boys : girls', m('4 : 5')],
+      ['Why is the denominator the total and not the other part?', 'A fraction of the whole counts every pupil']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Find one part first; every other number in the problem follows from it.',
+  homework: [
+    'In ' + m('3 : 7') + ' write each part as a fraction of the whole.',
+    'If ' + m(f('2', '5')) + ' of a class are boys, write the ratio of boys to girls.',
+    'Boys to girls is ' + m('3 : 4') + ' and there are ' + m('18') + ' boys. Find the girls and the class size.',
+    'A drink is ' + m('2') + ' parts syrup to ' + m('7') + ' water. How much syrup is in ' + m('900') + ' ml?',
+    'A ratio is ' + m('5 : 8') + ' and the larger quantity is ' + m('40') + '. Find the smaller and the total.'
+  ]
+});
