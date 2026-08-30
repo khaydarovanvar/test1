@@ -4152,3 +4152,374 @@ G9_GEO.push({
     'Find the angle between the vectors ' + m('(3, 1)') + ' and ' + m('(1, 2)') + '.'
   ]
 });
+
+/* ============================== 26 ============================== */
+G9_GEO.push({
+  id: 'g9-26', stream: 'geo', grade: 9, quarter: 3, lessons: '33–34', hours: 2,
+  title: 'The inscribed polygon',
+  subtitle: 'A polygon whose every vertex lies on one circle — and the condition that decides when that is possible.',
+  uz: 'Geometriya 9, §21', uzPage: 'pp. 121–127',
+  cam: 'IGX 3.5', camPage: 'Core & Extended, pp. 63–70', wb: 'Exercise 3.5',
+  objectives: [
+    'Define an inscribed polygon and a circumscribed circle.',
+    'Prove that every triangle has a circumscribed circle, and construct its centre.',
+    'State and use the cyclic-quadrilateral condition ∠A + ∠C = 180°.',
+    'Decide whether a given quadrilateral is cyclic.'
+  ],
+  terms: [
+    ['Inscribed polygon', 'Ichki chizilgan ko‘pburchak', 'Вписанный многоугольник'],
+    ['Circumscribed circle', 'Tashqi chizilgan aylana', 'Описанная окружность'],
+    ['Circumcentre', 'Tashqi markaz', 'Центр описанной окружности'],
+    ['Perpendicular bisector', 'O‘rta perpendikulyar', 'Серединный перпендикуляр'],
+    ['Cyclic quadrilateral', 'Ichki chizilgan to‘rtburchak', 'Вписанный четырёхугольник'],
+    ['Opposite angles', 'Qarama-qarshi burchaklar', 'Противоположные углы'],
+    ['Chord', 'Vatar', 'Хорда'],
+    ['Concurrent', 'Bir nuqtada kesishuvchi', 'Пересекающиеся в одной точке']
+  ],
+  timing: [[15, 'The definition'], [25, 'Every triangle has one'], [25, 'Cyclic quadrilaterals'], [20, 'Deciding'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The definition',
+      html: `<p>A polygon is <b>inscribed</b> in a circle if every one of its vertices lies on the circle;
+      the circle is then <b>circumscribed</b> about the polygon.</p>
+      {{fig:inscribedAngle:A polygon inscribed in a circle — every vertex on the circumference, every side a chord.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Polygon</th><th>Always has a circumscribed circle?</th></tr></thead>
+      <tbody>
+        <tr><td>any triangle</td><td>yes</td></tr>
+        <tr><td>a rectangle</td><td>yes</td></tr>
+        <tr><td>a general quadrilateral</td><td><b>no</b></td></tr>
+        <tr><td>a parallelogram (not a rectangle)</td><td><b>no</b></td></tr>
+        <tr><td>any regular polygon</td><td>yes</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Every side of an inscribed polygon is a chord</div>
+      So all the chord theorems of Grade 8 apply at once: equal chords subtend equal angles, the
+      perpendicular from the centre bisects the chord, and the inscribed angle is half the central
+      angle.</div>`
+    },
+    {
+      h: 'Every triangle has one',
+      html: `${eq('The three perpendicular bisectors of the sides of a triangle meet in one point, which is equidistant from all three vertices', true)}
+      {{fig:perpBisector:A point on the perpendicular bisector of a segment is equidistant from its ends.}}
+      <p>The proof is short. A point on the perpendicular bisector of ${m('AB')} is equidistant from
+      ${m('A')} and ${m('B')}; one on the bisector of ${m('BC')} is equidistant from ${m('B')} and
+      ${m('C')}. Their intersection ${m('O')} therefore satisfies ${m('OA = OB = OC')}, so it also lies
+      on the third bisector, and the circle of radius ${m('OA')} passes through all three vertices.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Triangle</th><th>Where the circumcentre lies</th></tr></thead>
+      <tbody>
+        <tr><td>acute</td><td>inside</td></tr>
+        <tr><td>right</td><td>at the midpoint of the hypotenuse</td></tr>
+        <tr><td>obtuse</td><td>outside</td></tr>
+      </tbody></table></div>
+      <p>The middle row is Thales' theorem restated: the hypotenuse of a right triangle is a diameter of
+      its circumcircle, and ${m('R = ' + f('c', '2'))}.</p>`
+    },
+    {
+      h: 'Cyclic quadrilaterals',
+      html: `${eq('A quadrilateral can be inscribed in a circle if and only if its opposite angles are supplementary', true)}
+      ${eq(m('∠A + ∠C = 180°') + '     and     ' + m('∠B + ∠D = 180°'), true)}
+      <p>The forward direction follows from the inscribed-angle theorem: ${m('∠A')} and ${m('∠C')} stand
+      on the two arcs ${m('BCD')} and ${m('BAD')}, whose central angles add to ${m('360°')}, so the
+      inscribed angles add to ${m('180°')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quadrilateral</th><th>Cyclic?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>a rectangle</td><td>yes</td><td>all angles ${m('90°')}</td></tr>
+        <tr><td>a square</td><td>yes</td><td>a rectangle</td></tr>
+        <tr><td>an isosceles trapezium</td><td>yes</td><td>base angles equal</td></tr>
+        <tr><td>a rhombus (not a square)</td><td>no</td><td>opposite angles are equal, not supplementary</td></tr>
+        <tr><td>a kite</td><td>only if two opposite angles are ${m('90°')}</td><td>—</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Equal is not supplementary</span>
+      A parallelogram has ${m('∠A = ∠C')}. That gives ${m('∠A + ∠C = 180°')} only when both are
+      ${m('90°')} — which is why the only cyclic parallelograms are rectangles.</div>`
+    },
+    {
+      h: 'Deciding',
+      html: `<p>Three practical tests for whether four points lie on a circle:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Test</th><th>Condition</th></tr></thead>
+      <tbody>
+        <tr><td>opposite angles</td><td class="m">∠A + ∠C = 180°</td></tr>
+        <tr><td>an exterior angle</td><td>equals the opposite interior angle</td></tr>
+        <tr><td>equal angles on one side</td><td class="m">∠ACB = ∠ADB</td> </tr>
+      </tbody></table></div>
+      <p>The third is the converse of “angles on the same arc are equal”, and it is the one used when
+      the quadrilateral is not drawn but two triangles share a base.</p>
+      <div class="keybox"><div class="klabel">Cyclic quadrilaterals appear constantly in circle proofs</div>
+      Recognising one in a complicated figure converts an unknown angle into a known one in a single
+      step. It is the most useful theorem of the Grade 9 circle work.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A cyclic quadrilateral has ' + m('∠A = 85°') + ' and ' + m('∠B = 110°') + '. Find ' + m('∠C') + ' and ' + m('∠D') + '.',
+      steps: [
+        [m('∠A + ∠C = 180°'), ''],
+        [m('∠C = 95°'), ''],
+        [m('∠B + ∠D = 180°'), ''],
+        [m('∠D = 70°'), 'Check: ' + m('85 + 110 + 95 + 70 = 360') + ' ✓']
+      ],
+      ans: m('∠C = 95°, ∠D = 70°')
+    },
+    {
+      q: 'A right triangle has legs ' + m('6') + ' and ' + m('8') + '. Find the radius of its circumscribed circle.',
+      steps: [
+        ['The hypotenuse is ' + m('10') + '.', ''],
+        ['For a right triangle the hypotenuse is a diameter.', 'Thales.'],
+        [m('R = ' + f('10', '2')), ''],
+        [m('R = 5'), '']
+      ],
+      ans: m('R = 5')
+    },
+    {
+      q: 'Is a rhombus with angles ' + m('60°') + ' and ' + m('120°') + ' cyclic?',
+      steps: [
+        ['Opposite angles of a rhombus are equal.', ''],
+        ['So they are ' + m('60°, 60°') + ' and ' + m('120°, 120°') + '.', ''],
+        [m('60 + 60 = 120 ≠ 180'), ''],
+        ['No — it is not cyclic.', 'Only a square among rhombi is.']
+      ],
+      ans: 'No'
+    }
+  ],
+  modelNote: 'Draw a triangle on the board and construct two perpendicular bisectors; the third passes through their meeting point without being drawn, and the class sees why.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'Four points on a circle',
+    hint: 'Drag a vertex and watch the opposite angles keep their sum.'
+  },
+  quiz: [
+    { q: 'An inscribed polygon has:', a: ['its sides touching the circle', 'its vertices on the circle', 'the circle inside', 'no circle'], c: 1, why: 'Vertices, not sides.' },
+    { q: 'The circumcentre is where the ______ meet:', a: ['medians', 'bisectors of the angles', 'perpendicular bisectors', 'altitudes'], c: 2, why: 'Equidistant from the vertices.' },
+    { q: 'For a right triangle, ' + m('R') + ' equals:', a: [m(f('a', '2')), m(f('c', '2')), m('c'), m(f('a + b', '2'))], c: 1, why: 'The hypotenuse is a diameter.' },
+    { q: 'A quadrilateral is cyclic when:', a: ['its sides are equal', 'opposite angles sum to ' + m('180°'), 'its diagonals are equal', 'always'], c: 1, why: 'The standard test.' },
+    { q: 'Which parallelogram is cyclic?', a: ['all of them', 'the rhombus', 'the rectangle', 'none'], c: 2, why: 'All angles ' + m('90°') + '.' },
+    { q: 'An isosceles trapezium is:', a: ['never cyclic', 'always cyclic', 'sometimes cyclic', 'not a quadrilateral'], c: 1, why: 'Its base angles are equal.' }
+  ],
+  practice: {
+    easy: [
+      ['Cyclic quadrilateral, ' + m('∠A = 85°') + ': ' + m('∠C'), m('95°')],
+      ['Cyclic quadrilateral, ' + m('∠B = 110°') + ': ' + m('∠D'), m('70°')],
+      ['Right triangle legs ' + m('6, 8') + ': ' + m('R'), m('5')],
+      ['Right triangle legs ' + m('5, 12') + ': ' + m('R'), m('6.5')],
+      ['Is a rectangle cyclic?', 'Yes'],
+      ['Is a rhombus (not a square) cyclic?', 'No'],
+      ['Where is the circumcentre of an acute triangle?', 'Inside']
+    ],
+    med: [
+      ['Cyclic, ' + m('∠A = 3x') + ' and ' + m('∠C = 2x') + ': ' + m('x'), m('36°')],
+      ['Cyclic, ' + m('∠A = 100°') + ' and ' + m('∠B = 75°') + ': the other two', m('80°') + ' and ' + m('105°')],
+      ['Where is the circumcentre of an obtuse triangle?', 'Outside'],
+      ['An equilateral triangle of side ' + m('6') + ': ' + m('R'), m('2' + sr('3'))],
+      ['Is an isosceles trapezium cyclic?', 'Yes'],
+      ['The exterior angle of a cyclic quadrilateral equals', 'The opposite interior angle'],
+      ['A triangle ' + m('5, 12, 13') + ': ' + m('R'), m('6.5')]
+    ],
+    hard: [
+      ['A cyclic quadrilateral with ' + m('∠A : ∠C = 4 : 5'), m('80°') + ' and ' + m('100°')],
+      ['A triangle ' + m('a = 7, A = 30°') + ': ' + m('R'), m('7')],
+      ['A cyclic quadrilateral with sides ' + m('4, 5, 6, 7') + ': its area (Brahmagupta)', m('≈ 29.0')],
+      ['A square of side ' + m('8') + ': the radius of its circumscribed circle', m('4' + sr('2'))],
+      ['A regular hexagon of side ' + m('6') + ': ' + m('R'), m('6')],
+      ['A cyclic quadrilateral has an exterior angle of ' + m('70°') + ': the opposite interior angle', m('70°')],
+      ['Prove that a rectangle is cyclic', 'Opposite angles are both ' + m('90°')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Mark the circle and its centre on every figure before hunting for angles.',
+  homework: [
+    'A cyclic quadrilateral has ' + m('∠A = 72°') + ' and ' + m('∠B = 95°') + '. Find the other two angles.',
+    'A right triangle has legs ' + m('9') + ' and ' + m('12') + '. Find the radius of its circumscribed circle.',
+    'Show that a parallelogram is cyclic only if it is a rectangle.',
+    'Find the circumradius of an equilateral triangle of side ' + m('10') + '.',
+    'A cyclic quadrilateral has ' + m('∠A : ∠C = 2 : 3') + '. Find both angles.'
+  ]
+});
+
+/* ============================== 27 ============================== */
+G9_GEO.push({
+  id: 'g9-27', stream: 'geo', grade: 9, quarter: 3, lessons: '35–36', hours: 2,
+  title: 'The circumscribed polygon',
+  subtitle: 'A polygon whose every side touches one circle — and the tangent lengths that make it work.',
+  uz: 'Geometriya 9, §22', uzPage: 'pp. 128–134',
+  cam: 'IGX 3.5', camPage: 'Core & Extended, pp. 63–70', wb: 'Exercise 3.5',
+  objectives: [
+    'Define a circumscribed polygon and an inscribed circle.',
+    'Prove that every triangle has an inscribed circle and locate its centre.',
+    'Use S = pr, where p is the semiperimeter.',
+    'State and use the tangential-quadrilateral condition a + c = b + d.'
+  ],
+  terms: [
+    ['Circumscribed polygon', 'Tashqi chizilgan ko‘pburchak', 'Описанный многоугольник'],
+    ['Inscribed circle', 'Ichki chizilgan aylana', 'Вписанная окружность'],
+    ['Incentre', 'Ichki markaz', 'Центр вписанной окружности'],
+    ['Inradius', 'Ichki radius', 'Радиус вписанной окружности'],
+    ['Angle bisector', 'Bissektrisa', 'Биссектриса'],
+    ['Tangent length', 'Urinma uzunligi', 'Длина касательной'],
+    ['Semiperimeter', 'Yarim perimetr', 'Полупериметр'],
+    ['Tangential quadrilateral', 'Tashqi chizilgan to‘rtburchak', 'Описанный четырёхугольник']
+  ],
+  timing: [[15, 'The definition'], [25, 'Every triangle has one'], [25, 'The area formula'], [20, 'Tangential quadrilaterals'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The definition',
+      html: `<p>A polygon is <b>circumscribed</b> about a circle if every one of its sides is tangent to
+      the circle; the circle is then <b>inscribed</b> in the polygon.</p>
+      {{fig:tangentProperty:A tangent is perpendicular to the radius at the point of contact.}}
+      <p>Two facts from Grade 8 are used throughout:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Fact</th><th>Statement</th></tr></thead>
+      <tbody>
+        <tr><td>tangent and radius</td><td>perpendicular at the point of contact</td></tr>
+        <tr><td>two tangents from one point</td><td>equal in length</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Inscribed and circumscribed are opposite words</div>
+      A polygon inscribed <b>in</b> a circle has its vertices on it; a polygon circumscribed <b>about</b>
+      a circle has its sides touching it. Reading which is which in a question is worth doing
+      slowly.</div>`
+    },
+    {
+      h: 'Every triangle has one',
+      html: `${eq('The three angle bisectors of a triangle meet in one point, which is equidistant from all three sides', true)}
+      <p>A point on the bisector of an angle is equidistant from its two arms. The intersection ${m('I')}
+      of two bisectors is therefore equidistant from all three sides, so the circle centred at ${m('I')}
+      with that distance as radius touches all three sides.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Centre</th><th>Meeting point of</th><th>Always inside?</th></tr></thead>
+      <tbody>
+        <tr><td>circumcentre</td><td>the perpendicular bisectors</td><td>no</td></tr>
+        <tr><td>incentre</td><td>the angle bisectors</td><td><b>yes</b></td></tr>
+        <tr><td>centroid</td><td>the medians</td><td>yes</td></tr>
+        <tr><td>orthocentre</td><td>the altitudes</td><td>no</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The incentre is always inside</div>
+      Because it is equidistant from the three sides and inside the angle at each vertex. That
+      distinguishes it from the circumcentre, which leaves the triangle as soon as an angle becomes
+      obtuse.</div>`
+    },
+    {
+      h: 'The area formula',
+      html: `<p>Join the incentre to the three vertices. The triangle splits into three triangles, each
+      with height ${m('r')} on one of the sides:</p>
+      ${eq(m('S = ' + f('1', '2') + 'ar + ' + f('1', '2') + 'br + ' + f('1', '2') + 'cr = ' + f('1', '2') + '(a + b + c)r'), true)}
+      ${eq(m('S = pr') + ',   where ' + m('p = ' + f('a + b + c', '2')) + ' is the semiperimeter', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Triangle</th><th class="m">p</th><th class="m">S</th><th class="m">r = ${f('S', 'p')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3, 4, 5</td><td class="m">6</td><td class="m">6</td><td class="m">1</td></tr>
+        <tr><td class="m">5, 12, 13</td><td class="m">15</td><td class="m">30</td><td class="m">2</td></tr>
+        <tr><td class="m">13, 14, 15</td><td class="m">21</td><td class="m">84</td><td class="m">4</td></tr>
+      </tbody></table></div>
+      <p>For a right triangle there is a shortcut: ${m('r = ' + f('a + b − c', '2'))}, which the
+      ${m('3–4–5')} row confirms.</p>
+      <div class="warn"><span class="wl">${m('p')} is the <i>semi</i>perimeter</span>
+      Using the whole perimeter halves the inradius. Writing ${m('p')} out as ${m(f('a + b + c', '2'))}
+      once, at the top of the solution, prevents it.</div>`
+    },
+    {
+      h: 'Tangential quadrilaterals',
+      html: `${eq('A quadrilateral has an inscribed circle if and only if the sums of its opposite sides are equal', true)}
+      ${eq(m('a + c = b + d'), true)}
+      <p>The proof uses the equal tangent lengths. If the tangent lengths from the four vertices are
+      ${m('x, y, z, t')}, then ${m('a = x + y')}, ${m('b = y + z')}, ${m('c = z + t')}, ${m('d = t + x')},
+      and both sums equal ${m('x + y + z + t')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quadrilateral</th><th>Tangential?</th></tr></thead>
+      <tbody>
+        <tr><td>a rhombus</td><td>yes — all sides equal</td></tr>
+        <tr><td>a square</td><td>yes</td></tr>
+        <tr><td>a kite</td><td>yes — ${m('a + c = b + d')} by symmetry</td></tr>
+        <tr><td>a rectangle (not a square)</td><td><b>no</b></td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The rectangle and the rhombus swap places</div>
+      A rectangle is cyclic but not tangential; a rhombus is tangential but not cyclic. Only the square
+      is both — which is the neatest way to remember the two conditions.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the inradius of the triangle with sides ' + m('13, 14, 15') + '.',
+      steps: [
+        [m('p = ' + f('13 + 14 + 15', '2') + ' = 21'), ''],
+        ['Heron: ' + m('S = ' + sr('21 · 8 · 7 · 6') + ' = 84') + '.', ''],
+        [m('r = ' + f('S', 'p') + ' = ' + f('84', '21')), ''],
+        [m('r = 4'), '']
+      ],
+      ans: m('r = 4')
+    },
+    {
+      q: 'A tangential quadrilateral has sides ' + m('7') + ', ' + m('9') + ', ' + m('11') + ' and ' + m('x') + ' in order. Find ' + m('x') + '.',
+      steps: [
+        [m('a + c = b + d'), ''],
+        [m('7 + 11 = 9 + x'), ''],
+        [m('18 = 9 + x'), ''],
+        [m('x = 9'), '']
+      ],
+      ans: m('x = 9')
+    },
+    {
+      q: 'Find the inradius of a right triangle with legs ' + m('6') + ' and ' + m('8') + '.',
+      steps: [
+        ['Hypotenuse ' + m('10') + ', ' + m('S = 24') + ', ' + m('p = 12') + '.', ''],
+        [m('r = ' + f('24', '12') + ' = 2'), ''],
+        ['Check with the shortcut: ' + m(f('6 + 8 − 10', '2') + ' = 2') + ' ✓', ''],
+        [m('r = 2'), '']
+      ],
+      ans: m('r = 2')
+    }
+  ],
+  modelNote: 'Construct the three angle bisectors of a scalene triangle with compasses; the circle drawn from their meeting point touches all three sides at the first attempt.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'The inscribed circle',
+    hint: 'Move a vertex and watch the incentre stay inside.'
+  },
+  quiz: [
+    { q: 'A circumscribed polygon has:', a: ['vertices on the circle', 'sides touching the circle', 'the circle outside', 'no circle'], c: 1, why: 'Sides, not vertices.' },
+    { q: 'The incentre is where the ______ meet:', a: ['medians', 'angle bisectors', 'perpendicular bisectors', 'altitudes'], c: 1, why: 'Equidistant from the sides.' },
+    { q: 'The incentre is:', a: ['sometimes outside', 'always inside', 'on a side', 'at a vertex'], c: 1, why: 'It is inside every angle.' },
+    { q: m('S') + ' equals:', a: [m('pr'), m('2pr'), m(f('pr', '2')), m('p + r')], c: 0, why: 'Three triangles of height ' + m('r') + '.' },
+    { q: 'For ' + m('13, 14, 15') + ', ' + m('r') + ' =', a: [m('2'), m('3'), m('4'), m('6')], c: 2, why: m(f('84', '21')) + '.' },
+    { q: 'A tangential quadrilateral satisfies:', a: [m('a + b = c + d'), m('a + c = b + d'), m('a = c'), m('abcd = 1')], c: 1, why: 'Opposite sides.' }
+  ],
+  practice: {
+    easy: [
+      [m('3, 4, 5') + ': ' + m('p'), m('6')],
+      ['Same: ' + m('S'), m('6')],
+      ['Same: ' + m('r'), m('1')],
+      [m('5, 12, 13') + ': ' + m('r'), m('2')],
+      [m('13, 14, 15') + ': ' + m('r'), m('4')],
+      ['Is a rhombus tangential?', 'Yes'],
+      ['Is a rectangle (not a square) tangential?', 'No']
+    ],
+    med: [
+      ['Right triangle legs ' + m('6, 8') + ': ' + m('r'), m('2')],
+      ['Right triangle legs ' + m('9, 12') + ': ' + m('r'), m('3')],
+      ['Tangential quadrilateral ' + m('7, 9, 11, x'), m('x = 9')],
+      ['Tangential quadrilateral ' + m('5, 8, 10, x'), m('x = 7')],
+      ['A triangle with ' + m('S = 60') + ' and ' + m('p = 20') + ': ' + m('r'), m('3')],
+      ['An equilateral triangle of side ' + m('6') + ': ' + m('r'), m(sr('3'))],
+      ['Which quadrilateral is both cyclic and tangential?', 'The square']
+    ],
+    hard: [
+      ['A triangle ' + m('7, 8, 9') + ': ' + m('r'), m('≈ 2.24')],
+      ['An equilateral triangle of side ' + m('a') + ': ' + m('r'), m(f('a', '2' + sr('3')))],
+      ['Same: the ratio ' + m('R : r'), m('2 : 1')],
+      ['A right triangle with legs ' + m('a, b') + ': ' + m('r'), m(f('a + b − c', '2'))],
+      ['A rhombus of side ' + m('10') + ' with diagonals ' + m('12') + ' and ' + m('16') + ': ' + m('r'), m('4.8')],
+      ['A tangential quadrilateral of perimeter ' + m('40') + ': ' + m('a + c'), m('20')],
+      ['A triangle with ' + m('r = 3') + ' and perimeter ' + m('30') + ': its area', m('45')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write ' + m('p') + ' as a fraction over ' + m('2') + ' before using ' + m('S = pr') + '.',
+  homework: [
+    'Find the inradius of the triangle with sides ' + m('9, 10, 17') + '.',
+    'Find the inradius of a right triangle with legs ' + m('5') + ' and ' + m('12') + '.',
+    'A tangential quadrilateral has sides ' + m('6, 11, 13, x') + ' in order. Find ' + m('x') + '.',
+    'Find the inradius of an equilateral triangle of side ' + m('12') + '.',
+    'Explain why a rectangle that is not a square has no inscribed circle touching all four sides.'
+  ]
+});
