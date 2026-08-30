@@ -2252,3 +2252,206 @@ G6_MAT.push({
     'Explain why ' + m('6 ÷ ' + f('2', '3')) + ' is larger than ' + m('6') + '.'
   ]
 });
+
+/* ============================== 13 ============================== */
+G6_MAT.push({
+  id: 'g6-13', stream: 'mat', grade: 6, quarter: 1, lessons: '27–29', hours: 3,
+  title: 'Dividing a proper fraction by a proper fraction',
+  subtitle: 'One rule now covers every case: multiply by the reciprocal of the divisor.',
+  uz: 'Matematika 6, §7', uzPage: 'pp. 73–80',
+  cam: 'S7 7.4', camPage: 'Stage 7, pp. 71–75', wb: 'Exercise 7.4',
+  objectives: [
+    'Divide any fraction by any fraction.',
+    'Divide mixed numbers by converting them first.',
+    'Cancel before multiplying, and simplify the answer.',
+    'Decide from the divisor whether the answer grows or shrinks.'
+  ],
+  terms: [
+    ['Division of fractions', 'Kasrlarni bo‘lish', 'Деление дробей'],
+    ['Reciprocal', 'Teskari son', 'Обратное число'],
+    ['Mixed number', 'Aralash son', 'Смешанное число'],
+    ['Improper fraction', 'Noto‘g‘ri kasr', 'Неправильная дробь'],
+    ['To cancel', 'Qisqartirish', 'Сокращать'],
+    ['Complex fraction', 'Qavatli kasr', 'Многоэтажная дробь'],
+    ['Estimate', 'Baholash', 'Оценка'],
+    ['Lowest terms', 'Qisqarmas ko‘rinish', 'Несократимый вид']
+  ],
+  timing: [[20, 'The single rule'], [30, 'Cancelling'], [30, 'Mixed numbers'], [30, 'Bigger or smaller?'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'The single rule',
+      html: `${eq(m(f('a', 'b') + ' ÷ ' + f('c', 'd') + ' = ' + f('a', 'b') + ' · ' + f('d', 'c') + ' = ' + f('ad', 'bc')), true)}
+      <p>The three cases of the last two lessons were the same rule in disguise: a whole number ${m('n')}
+      is ${m(f('n', '1'))}, whose reciprocal is ${m(f('1', 'n'))}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Division</th><th>As multiplication</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('1', '2')} ÷ ${f('1', '4')}</td><td class="m">${f('1', '2')} · ${f('4', '1')}</td><td class="m">2</td></tr>
+        <tr><td class="m">${f('3', '4')} ÷ ${f('1', '2')}</td><td class="m">${f('3', '4')} · ${f('2', '1')}</td><td class="m">${f('3', '2')} = 1${f('1', '2')}</td></tr>
+        <tr><td class="m">${f('2', '3')} ÷ ${f('4', '5')}</td><td class="m">${f('2', '3')} · ${f('5', '4')}</td><td class="m">${f('5', '6')}</td></tr>
+        <tr><td class="m">${f('5', '8')} ÷ ${f('5', '8')}</td><td class="m">${f('5', '8')} · ${f('8', '5')}</td><td class="m">1</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Any number divided by itself is ${m('1')}</div>
+      The last line is a check worth remembering: if the two fractions are equal, the answer must be
+      ${m('1')}, whatever the digits look like.</div>`
+    },
+    {
+      h: 'Cancelling',
+      html: `<p>After turning the divisor over, cancel any numerator against any denominator before
+      multiplying.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Division</th><th>After turning over</th><th>Cancel</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('3', '4')} ÷ ${f('9', '8')}</td><td class="m">${f('3', '4')} · ${f('8', '9')}</td><td class="m">3</td><td class="m">${f('2', '3')}</td></tr>
+        <tr><td class="m">${f('5', '6')} ÷ ${f('10', '3')}</td><td class="m">${f('5', '6')} · ${f('3', '10')}</td><td class="m">5</td><td class="m">${f('1', '4')}</td></tr>
+        <tr><td class="m">${f('7', '9')} ÷ ${f('14', '3')}</td><td class="m">${f('7', '9')} · ${f('3', '14')}</td><td class="m">7</td><td class="m">${f('1', '6')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Cancel only after the divisor has been turned over</span>
+      In ${m(f('3', '4') + ' ÷ ' + f('9', '8'))} the ${m('4')} and the ${m('8')} cannot be cancelled while
+      the ${m('÷')} sign is still there. Turn over first, then cancel — in that order, every time.</div>`
+    },
+    {
+      h: 'Mixed numbers',
+      html: `<p>Convert every mixed number to an improper fraction <b>before</b> dividing. Nothing else in
+      the method changes.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Division</th><th>Converted</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1${f('1', '2')} ÷ ${f('3', '4')}</td><td class="m">${f('3', '2')} · ${f('4', '3')}</td><td class="m">2</td></tr>
+        <tr><td class="m">2${f('1', '4')} ÷ 1${f('1', '2')}</td><td class="m">${f('9', '4')} · ${f('2', '3')}</td><td class="m">1${f('1', '2')}</td></tr>
+        <tr><td class="m">3${f('1', '3')} ÷ ${f('5', '6')}</td><td class="m">${f('10', '3')} · ${f('6', '5')}</td><td class="m">4</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A mixed number cannot be turned over as it stands</span>
+      The reciprocal of ${m('1' + f('1', '2'))} is ${m(f('2', '3'))}, not ${m('1' + f('2', '1'))}. Convert
+      to ${m(f('3', '2'))} first and the reciprocal is obvious.</div>`
+    },
+    {
+      h: 'Bigger or smaller?',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Divisor</th><th>The answer, compared with the first fraction</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>less than ${m('1')}</td><td>larger</td><td class="m">${f('3', '4')} ÷ ${f('1', '2')} = 1${f('1', '2')}</td></tr>
+        <tr><td>equal to ${m('1')}</td><td>unchanged</td><td class="m">${f('3', '4')} ÷ 1 = ${f('3', '4')}</td></tr>
+        <tr><td>greater than ${m('1')}</td><td>smaller</td><td class="m">${f('3', '4')} ÷ ${f('3', '2')} = ${f('1', '2')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One glance at the divisor predicts the answer</div>
+      Comparing the divisor with ${m('1')} takes no calculation at all, and it catches the commonest error
+      of the whole block — turning over the wrong fraction.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compute ' + m(f('2', '3') + ' ÷ ' + f('4', '5')) + '.',
+      steps: [
+        ['The divisor is under ' + m('1') + ', so expect an answer over ' + m(f('2', '3')) + '.', ''],
+        [m(f('2', '3') + ' · ' + f('5', '4')), 'Turn over the divisor.'],
+        ['Cancel ' + m('2') + ' against ' + m('4') + '.', ''],
+        [m('= ' + f('5', '6')), '']
+      ],
+      ans: m(f('5', '6'))
+    },
+    {
+      q: 'Compute ' + m('2' + f('1', '4') + ' ÷ 1' + f('1', '2')) + '.',
+      steps: [
+        ['Convert: ' + m(f('9', '4')) + ' and ' + m(f('3', '2')) + '.', ''],
+        [m(f('9', '4') + ' · ' + f('2', '3')), ''],
+        ['Cancel ' + m('9') + ' with ' + m('3') + ', and ' + m('2') + ' with ' + m('4') + '.', ''],
+        [m('= ' + f('3', '2') + ' = 1' + f('1', '2')), '']
+      ],
+      ans: m('1' + f('1', '2'))
+    },
+    {
+      q: 'Compute ' + m(f('5', '6') + ' ÷ ' + f('10', '3')) + '.',
+      steps: [
+        [m(f('5', '6') + ' · ' + f('3', '10')), ''],
+        ['Cancel ' + m('5') + ' with ' + m('10') + ', and ' + m('3') + ' with ' + m('6') + '.', ''],
+        [m('= ' + f('1', '4')), 'Smaller, because the divisor is over ' + m('1') + '.']
+      ],
+      ans: m(f('1', '4'))
+    }
+  ],
+  modelNote: 'Put the four divisions of the block side by side — fraction by whole, whole by fraction, fraction by fraction — and ask what is common; the class states the single rule itself.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'One rule for every division',
+    hint: 'Turn over the divisor, cancel, multiply.',
+    items: [
+      {
+        title: '2/3 ÷ 4/5',
+        start: m(f('2', '3') + ' ÷ ' + f('4', '5')),
+        steps: [
+          ['Divisor under ' + m('1') + ' — the answer will be larger.', 'Estimate first.'],
+          [m(f('2', '3') + ' · ' + f('5', '4')), 'Turn over the divisor.'],
+          [m(f('5', '6')), 'Cancel ' + m('2') + ' against ' + m('4') + '.']
+        ],
+        answer: m(f('5', '6'))
+      },
+      {
+        title: '5/6 ÷ 10/3',
+        start: m(f('5', '6') + ' ÷ ' + f('10', '3')),
+        steps: [
+          [m(f('5', '6') + ' · ' + f('3', '10')), ''],
+          ['Cancel ' + m('5') + ' with ' + m('10') + ' and ' + m('3') + ' with ' + m('6') + '.', ''],
+          [m(f('1', '4')), 'Smaller — the divisor was over ' + m('1') + '.']
+        ],
+        answer: m(f('1', '4'))
+      },
+      {
+        title: '2¼ ÷ 1½',
+        start: m('2' + f('1', '4') + ' ÷ 1' + f('1', '2')),
+        steps: [
+          [m(f('9', '4') + ' ÷ ' + f('3', '2')), 'Convert both mixed numbers first.'],
+          [m(f('9', '4') + ' · ' + f('2', '3')), ''],
+          [m('1' + f('1', '2')), 'Cancel, multiply, convert back.']
+        ],
+        answer: m('1' + f('1', '2'))
+      }
+    ]
+  },
+  quiz: [
+    { q: m(f('1', '2') + ' ÷ ' + f('1', '4')) + ' equals:', a: [m(f('1', '8')), m('2'), m(f('1', '2')), m('8')], c: 1, why: 'Two quarters in a half.' },
+    { q: 'To divide by a fraction you:', a: ['turn over the first', 'turn over the divisor', 'turn over both', 'turn over neither'], c: 1, why: 'Only the divisor.' },
+    { q: m(f('2', '3') + ' ÷ ' + f('4', '5')) + ' equals:', a: [m(f('8', '15')), m(f('5', '6')), m(f('6', '5')), m(f('10', '12'))], c: 1, why: m(f('2', '3') + ' · ' + f('5', '4')) + '.' },
+    { q: 'A mixed number must first be:', a: ['turned over', 'converted to an improper fraction', 'rounded', 'doubled'], c: 1, why: 'Then the rule applies.' },
+    { q: m('1' + f('1', '2') + ' ÷ ' + f('3', '4')) + ' equals:', a: [m('2'), m(f('9', '8')), m(f('1', '2')), m('1')], c: 0, why: m(f('3', '2') + ' · ' + f('4', '3')) + '.' },
+    { q: 'A divisor greater than ' + m('1') + ' makes the answer:', a: ['larger', 'smaller', 'the same', 'zero'], c: 1, why: 'Fewer big pieces fit.' }
+  ],
+  practice: {
+    easy: [
+      [m(f('1', '2') + ' ÷ ' + f('1', '4')), m('2')],
+      [m(f('3', '4') + ' ÷ ' + f('1', '2')), m('1' + f('1', '2'))],
+      [m(f('5', '8') + ' ÷ ' + f('5', '8')), m('1')],
+      [m(f('2', '3') + ' ÷ ' + f('4', '5')), m(f('5', '6'))],
+      [m(f('1', '3') + ' ÷ ' + f('2', '3')), m(f('1', '2'))],
+      ['The reciprocal of ' + m(f('4', '9')), m(f('9', '4'))],
+      ['The reciprocal of ' + m('1' + f('1', '2')), m(f('2', '3'))]
+    ],
+    med: [
+      [m(f('3', '4') + ' ÷ ' + f('9', '8')), m(f('2', '3'))],
+      [m(f('5', '6') + ' ÷ ' + f('10', '3')), m(f('1', '4'))],
+      [m(f('7', '9') + ' ÷ ' + f('14', '3')), m(f('1', '6'))],
+      [m('1' + f('1', '2') + ' ÷ ' + f('3', '4')), m('2')],
+      [m('2' + f('1', '4') + ' ÷ 1' + f('1', '2')), m('1' + f('1', '2'))],
+      [m('3' + f('1', '3') + ' ÷ ' + f('5', '6')), m('4')],
+      [m(f('3', '4') + ' ÷ ' + f('3', '2')), m(f('1', '2'))]
+    ],
+    hard: [
+      [m(f('4', '5') + ' ÷ ' + f('2', '15')), m('6')],
+      [m('2' + f('2', '3') + ' ÷ 1' + f('1', '3')), m('2')],
+      [m(f('9', '10') + ' ÷ ' + f('3', '5') + ' ÷ ' + f('3', '2')), m('1')],
+      ['Without calculating: is ' + m(f('5', '7') + ' ÷ ' + f('8', '9')) + ' larger or smaller than ' + m(f('5', '7')) + '?', 'Smaller'],
+      ['Without calculating: is ' + m(f('5', '7') + ' ÷ ' + f('2', '3')) + ' larger or smaller?', 'Larger'],
+      ['A jug holds ' + m(f('3', '4')) + ' litre; how many ' + m(f('1', '8')) + '-litre cups fill it?', m('6')],
+      ['Why is ' + m(f('5', '8') + ' ÷ ' + f('5', '8') + ' = 1') + '?', 'Any number divided by itself is one']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Turn over the divisor first, then cancel — never the other way round.',
+  homework: [
+    'Compute ' + m(f('3', '5') + ' ÷ ' + f('1', '2')) + ' and ' + m(f('4', '7') + ' ÷ ' + f('8', '9')) + '.',
+    'Compute ' + m(f('5', '6') + ' ÷ ' + f('5', '12')) + '.',
+    'Compute ' + m('1' + f('3', '4') + ' ÷ ' + f('7', '8')) + '.',
+    'Compute ' + m('2' + f('1', '2') + ' ÷ 1' + f('1', '4')) + '.',
+    'Say, without calculating, whether ' + m(f('2', '3') + ' ÷ ' + f('5', '4')) + ' is larger or smaller than ' + m(f('2', '3')) + ', and why.'
+  ]
+});
