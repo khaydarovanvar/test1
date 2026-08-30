@@ -12268,3 +12268,362 @@ G7_MAT.push({
     'Find out one more contribution of Al-Khwarizmi and write two sentences about it.'
   ]
 });
+
+/* ============================== 69 ============================== */
+G7_MAT.push({
+  id: 'g7-69', stream: 'mat', grade: 7, quarter: 3, lessons: '127–128', hours: 2,
+  title: 'Solving problems with the help of equations',
+  subtitle: 'Name the unknown, write the sentence as an equation, solve it, and answer the question that was asked.',
+  uz: 'Matematika 7, §57', uzPage: 'pp. 378–386',
+  cam: 'S8 2.5', camPage: 'Stage 8, pp. 31–36', wb: 'Exercise 2.6',
+  objectives: [
+    'Choose the unknown so that the other quantities are easy to express.',
+    'Translate a worded condition into an equation.',
+    'Solve the equation and check the root against the original words.',
+    'Reject a root that is impossible in the situation described.'
+  ],
+  terms: [
+    ['Word problem', 'Matnli masala', 'Текстовая задача'],
+    ['To denote', 'Belgilamoq', 'Обозначить'],
+    ['Condition', 'Shart', 'Условие'],
+    ['To translate', 'O‘girmoq', 'Перевести'],
+    ['Total', 'Jami', 'Всего'],
+    ['Speed', 'Tezlik', 'Скорость'],
+    ['Impossible answer', 'Mos kelmaydigan javob', 'Посторонний ответ'],
+    ['To interpret', 'Talqin qilmoq', 'Истолковать']
+  ],
+  timing: [[10, 'The five steps'], [25, 'Choosing the unknown'], [25, 'Three families of problem'], [20, 'Checking against the words'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The five steps',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>What to do</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>let ${m('x')} be one of the unknown quantities, and say in words which</td></tr>
+        <tr><td>2</td><td>write every other quantity in terms of ${m('x')}</td></tr>
+        <tr><td>3</td><td>find the sentence in the problem that is an equality, and write it as an equation</td></tr>
+        <tr><td>4</td><td>solve the equation</td></tr>
+        <tr><td>5</td><td>answer the question that was asked, in words and units</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Step 5 is not automatic</span>
+      If ${m('x')} is the son's age but the question asks for the father's, the root is not the answer.
+      Read the question again after solving — this is where whole marks are lost for correct
+      algebra.</div>`
+    },
+    {
+      h: 'Choosing the unknown',
+      html: `<p>Let ${m('x')} be the quantity that makes the others simplest to write — usually the
+      smallest one, or the one the others are compared with.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Let ${m('x')} be</th><th>Then</th></tr></thead>
+      <tbody>
+        <tr><td>a father is ${m('3')} times as old as his son</td><td>the son's age</td><td>the father is ${m('3x')}</td></tr>
+        <tr><td>two numbers differ by ${m('7')}</td><td>the smaller</td><td>the larger is ${m('x + 7')}</td></tr>
+        <tr><td>a rectangle is ${m('4 cm')} longer than it is wide</td><td>the width</td><td>the length is ${m('x + 4')}</td></tr>
+        <tr><td>a sum of ${m('120')} split in the ratio ${m('2 : 3')}</td><td>one part of the ratio</td><td>the shares are ${m('2x')} and ${m('3x')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A bad choice is not wrong, only slower</div>
+      Taking the father's age as ${m('x')} makes the son ${m(f('x', '3'))} and brings fractions into the
+      equation. The answer is the same; the work is not.</div>`
+    },
+    {
+      h: 'Three families of problem',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Family</th><th>Problem</th><th>Equation</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>ages</td><td>a father is ${m('3')} times as old as his son; in ${m('12')} years he will be twice as old</td><td class="m">3x + 12 = 2(x + 12)</td><td>son ${m('12')}, father ${m('36')}</td></tr>
+        <tr><td>numbers</td><td>two numbers differ by ${m('7')} and add to ${m('39')}</td><td class="m">x + (x + 7) = 39</td><td class="m">16</td></tr>
+        <tr><td>geometry</td><td>a rectangle is ${m('4 cm')} longer than wide, perimeter ${m('36 cm')}</td><td class="m">2(x + x + 4) = 36</td><td class="m">7 cm</td></tr>
+        <tr><td>sharing</td><td>${m('120')} split in the ratio ${m('2 : 3')}</td><td class="m">2x + 3x = 120</td><td class="m">48</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Find the equality sentence</div>
+      Every problem contains exactly one sentence that says two things are equal — “add to”, “will be
+      twice”, “the perimeter is”. That sentence, and only that one, becomes the equation.</div>`
+    },
+    {
+      h: 'Checking against the words',
+      html: `<p>The check is against the problem, not against the equation. And a root that cannot be true
+      of the situation must be rejected.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Root</th><th>Question</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x = 12</td><td>the son's age</td><td>accepted</td></tr>
+        <tr><td class="m">x = −5</td><td>a length</td><td>rejected — a length is positive</td></tr>
+        <tr><td class="m">x = 7.5</td><td>a number of pupils</td><td>rejected — it must be whole</td></tr>
+        <tr><td class="m">x = 0</td><td>a speed</td><td>usually rejected — nothing moves</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Rejecting a root is part of the answer, not a failure</span>
+      An equation knows nothing about ages and lengths. Deciding which of its roots the situation allows
+      is the mathematician's job, and saying so explicitly earns the mark.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A father is ' + m('3') + ' times as old as his son. In ' + m('12') + ' years he will be twice as old. How old is each now?',
+      steps: [
+        ['Let ' + m('x') + ' be the son\'s age; the father is ' + m('3x') + '.', ''],
+        ['In ' + m('12') + ' years: son ' + m('x + 12') + ', father ' + m('3x + 12') + '.', ''],
+        [m('3x + 12 = 2(x + 12)'), 'The equality sentence.'],
+        [m('3x + 12 = 2x + 24') + ', so ' + m('x = 12') + '.', 'Son ' + m('12') + ', father ' + m('36') + '.']
+      ],
+      ans: 'Son ' + m('12') + ', father ' + m('36')
+    },
+    {
+      q: 'The perimeter of a rectangle is ' + m('36 cm') + ' and it is ' + m('4 cm') + ' longer than it is wide. Find its sides.',
+      steps: [
+        ['Let the width be ' + m('x') + '; the length is ' + m('x + 4') + '.', ''],
+        [m('2(x + x + 4) = 36'), ''],
+        [m('4x + 8 = 36') + ', so ' + m('x = 7') + '.', ''],
+        ['Width ' + m('7 cm') + ', length ' + m('11 cm') + '. Check: ' + m('2(7 + 11) = 36') + ' ✓', '']
+      ],
+      ans: m('7 cm') + ' by ' + m('11 cm')
+    },
+    {
+      q: 'Two numbers differ by ' + m('7') + ' and add to ' + m('39') + '. Find them.',
+      steps: [
+        ['Let the smaller be ' + m('x') + '; the larger is ' + m('x + 7') + '.', ''],
+        [m('x + (x + 7) = 39'), ''],
+        [m('2x = 32') + ', so ' + m('x = 16') + '.', ''],
+        ['The numbers are ' + m('16') + ' and ' + m('23') + '.', '']
+      ],
+      ans: m('16') + ' and ' + m('23')
+    }
+  ],
+  modelNote: 'Ask the class to write only step 1 and step 3 for six problems, without solving any of them; translation is the skill, and separating it from the arithmetic doubles the practice.',
+  interactive: {
+    type: 'quiz',
+    title: 'Translate the sentence',
+    hint: 'Find the equality first.',
+    items: [
+      { q: '“A number increased by ' + m('5') + '” is:', a: [m('5x'), m('x + 5'), m('x − 5'), m(f('x', '5'))], c: 1, why: 'Increased means added.' },
+      { q: '“Three times a number, less ' + m('2') + '” is:', a: [m('3x − 2'), m('3(x − 2)'), m('2 − 3x'), m('x − 6')], c: 0, why: 'Multiply, then subtract.' },
+      { q: '“Three times a number less ' + m('2') + ', all doubled” is:', a: [m('2 · 3x − 2'), m('2(3x − 2)'), m('6x − 4') + ' only', m('3x − 4')], c: 1, why: 'The bracket carries “all”.' },
+      { q: 'If the son is ' + m('x') + ' and the father is ' + m('3') + ' times as old, the father is:', a: [m('x + 3'), m('3x'), m(f('x', '3')), m('x − 3')], c: 1, why: '“Times” means multiply.' },
+      { q: 'In ' + m('12') + ' years the father will be:', a: [m('3x'), m('3x + 12'), m('3(x + 12)'), m('3x − 12')], c: 1, why: 'Add ' + m('12') + ' to his present age.' },
+      { q: 'The equation is then:', a: [m('3x + 12 = 2(x + 12)'), m('3x = 2x + 12'), m('3x + 12 = 2x'), m('3(x + 12) = 2x')], c: 0, why: '“Twice as old” as the son will then be.' },
+      { q: 'A rectangle ' + m('4') + ' longer than wide has perimeter:', a: [m('2x + 4'), m('4x + 8'), m('x(x + 4)'), m('4x + 4')], c: 1, why: m('2(x + x + 4)') + '.' },
+      { q: 'A root of ' + m('−5') + ' for a length is:', a: ['accepted', 'rejected', 'doubled', 'squared'], c: 1, why: 'Lengths are positive.' }
+    ]
+  },
+  quiz: [
+    { q: 'The first step is:', a: ['writing the equation', 'naming the unknown', 'solving', 'checking'], c: 1, why: 'And saying what it stands for.' },
+    { q: 'The equation comes from:', a: ['the question asked', 'the equality in the problem', 'the units', 'the answer'], c: 1, why: 'One sentence gives it.' },
+    { q: 'If the son is ' + m('x') + ' and the father ' + m('3x') + ', in ' + m('12') + ' years the father is:', a: [m('3x'), m('3x + 12'), m('3(x + 12)'), m('3x + 36')], c: 1, why: 'Everyone ages equally.' },
+    { q: 'A rectangle ' + m('4 cm') + ' longer than wide with perimeter ' + m('36') + ' has width:', a: [m('5'), m('7'), m('9'), m('11')], c: 1, why: m('4x + 8 = 36') + '.' },
+    { q: 'Two numbers differ by ' + m('7') + ' and add to ' + m('39') + ': the smaller is:', a: [m('14'), m('16'), m('18'), m('23')], c: 1, why: m('2x + 7 = 39') + '.' },
+    { q: 'A root of ' + m('7.5') + ' pupils is:', a: ['accepted', 'rejected', 'rounded', 'doubled'], c: 1, why: 'It must be whole.' }
+  ],
+  practice: {
+    easy: [
+      ['“A number increased by ' + m('5') + '”', m('x + 5')],
+      ['“Three times a number, less ' + m('2') + '”', m('3x − 2')],
+      ['“Half a number”', m(f('x', '2'))],
+      ['A father is ' + m('3') + ' times a son aged ' + m('x'), m('3x')],
+      ['Two numbers differing by ' + m('7') + ', smaller ' + m('x'), m('x') + ' and ' + m('x + 7')],
+      ['A rectangle of width ' + m('x') + ' and length ' + m('x + 4') + ': its perimeter', m('4x + 8')],
+      [m('120') + ' in the ratio ' + m('2 : 3'), m('2x') + ' and ' + m('3x')]
+    ],
+    med: [
+      ['Two numbers differ by ' + m('7') + ' and add to ' + m('39'), m('16') + ' and ' + m('23')],
+      ['A rectangle ' + m('4 cm') + ' longer than wide, perimeter ' + m('36 cm'), m('7 cm') + ' by ' + m('11 cm')],
+      [m('120') + ' split in the ratio ' + m('2 : 3'), m('48') + ' and ' + m('72')],
+      ['A father ' + m('3') + ' times his son; in ' + m('12') + ' years twice as old', 'Son ' + m('12') + ', father ' + m('36')],
+      ['A number is ' + m('5') + ' more than another and they total ' + m('31'), m('13') + ' and ' + m('18')],
+      ['Three consecutive numbers add to ' + m('72'), m('23, 24, 25')],
+      ['A pencil costs ' + m('x') + ' and a pen ' + m('3x') + '; together ' + m('8000') + ' sum', 'Pencil ' + m('2000') + ', pen ' + m('6000')]
+    ],
+    hard: [
+      ['A mother is ' + m('4') + ' times her daughter; in ' + m('20') + ' years twice as old', 'Daughter ' + m('10') + ', mother ' + m('40')],
+      ['The perimeter of a rectangle is ' + m('44') + ' and the length is ' + m('3') + ' times the width', m('5.5') + ' by ' + m('16.5')],
+      ['Three consecutive even numbers add to ' + m('90'), m('28, 30, 32')],
+      ['A sum of ' + m('300') + ' is split so that the second share is ' + m('20') + ' more than the first and the third twice the first', m('70, 90, 140')],
+      ['Half a number less ' + m('3') + ' equals a third of it plus ' + m('1'), m('x = 24')],
+      ['A father was ' + m('5') + ' times his son ' + m('4') + ' years ago and is ' + m('3') + ' times now', 'Son ' + m('8') + ', father ' + m('24')],
+      ['Why must a root of ' + m('−5') + ' be rejected for a length?', 'A length cannot be negative']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write “Let x be …” in words before any algebra, and answer in words at the end.',
+  homework: [
+    'Two numbers differ by ' + m('9') + ' and add to ' + m('45') + '. Find them.',
+    'A rectangle is ' + m('5 cm') + ' longer than it is wide and has perimeter ' + m('42 cm') + '. Find its sides.',
+    'A mother is ' + m('4') + ' times as old as her daughter; in ' + m('20') + ' years she will be twice as old. Find both ages.',
+    'Split ' + m('210') + ' in the ratio ' + m('3 : 4') + '.',
+    'Three consecutive numbers add to ' + m('81') + '. Find them.'
+  ]
+});
+
+/* ============================== 70 ============================== */
+G7_MAT.push({
+  id: 'g7-70', stream: 'mat', grade: 7, quarter: 3, lessons: '129–130', hours: 2,
+  title: 'Control work 9, and work on the mistakes',
+  subtitle: 'Linear equations and the problems behind them — Quarter III closed.',
+  uz: 'Matematika 7, Nazorat ishi 9', uzPage: 'pp. 358–386',
+  cam: 'S8 2.5 review', camPage: 'Stage 8, pp. 31–36', wb: 'Control paper M9',
+  objectives: [
+    'Solve linear equations with brackets and with fractions.',
+    'Interpret the cases of no roots and of every number being a root.',
+    'Turn a worded problem into an equation and answer the question asked.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Linear equation', 'Chiziqli tenglama', 'Линейное уравнение'],
+    ['Root', 'Ildiz', 'Корень'],
+    ['To transpose', 'O‘tkazish', 'Перенести'],
+    ['To clear fractions', 'Maxrajdan qutulish', 'Избавиться от знаменателей'],
+    ['Word problem', 'Matnli masala', 'Текстовая задача'],
+    ['Check', 'Tekshirish', 'Проверка'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Solve ${m('4x − 7 = 2x + 9')}</td><td class="m">3</td><td>L123–124</td></tr>
+        <tr><td>2</td><td>Solve ${m('3(x + 2) = 5x − 8')}</td><td class="m">4</td><td>L123–124</td></tr>
+        <tr><td>3</td><td>Solve ${m(f('x', '2') + ' + ' + f('x', '5') + ' = 7')}</td><td class="m">4</td><td>L123–124</td></tr>
+        <tr><td>4</td><td>Solve ${m('2(x + 4) = 2x + 8')} and say how many roots it has</td><td class="m">4</td><td>L122–124</td></tr>
+        <tr><td>5</td><td>Solve ${m('5x − 3 = 2x + 9')} naming al-jabr and al-muqabala</td><td class="m">4</td><td>L125–126</td></tr>
+        <tr><td>6</td><td>Two numbers differ by ${m('9')} and add to ${m('45')}: find them</td><td class="m">6</td><td>L127–128</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q3 carries two marks for multiplying the ${m('7')} by ${m('10')} as well as the fractions; Q4 two for
+      the words “every number is a root”; Q6 one for “let ${m('x')} be the smaller number”, two for the
+      equation and one for answering with both numbers.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>sign not changed on transposing</td><td class="m">4x + 2x = 9 − 7</td><td class="m">4x − 2x = 9 + 7</td></tr>
+        <tr><td>bracket expanded partly</td><td class="m">3x + 2 = 5x − 8</td><td class="m">3x + 6 = 5x − 8</td></tr>
+        <tr><td>whole-number term not multiplied</td><td class="m">5x + 2x = 7</td><td class="m">5x + 2x = 70</td></tr>
+        <tr><td>identity read as no roots</td><td class="m">0 = 0</td><td>every number is a root</td></tr>
+        <tr><td>moves not named</td><td>a correct but unlabelled solution</td><td>al-jabr, then al-muqabala</td></tr>
+        <tr><td>unknown not declared</td><td>an equation with no “let”</td><td>“let ${m('x')} be the smaller number”</td></tr>
+        <tr><td>only one number given</td><td class="m">16</td><td class="m">18 and 27</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'Quarter III as one map',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Block</th><th>The sentence</th></tr></thead>
+      <tbody>
+        <tr><td>parallel lines</td><td>an angle fact proves parallelism; parallelism proves an angle fact</td></tr>
+        <tr><td>triangles</td><td>the angles add to ${m('180°')}, and an exterior angle is the two remote ones</td></tr>
+        <tr><td>right triangles</td><td>the acute angles add to ${m('90°')}; the leg opposite ${m('30°')} is half the hypotenuse</td></tr>
+        <tr><td>abridged formulae</td><td>five products worth knowing by heart, in both directions</td></tr>
+        <tr><td>factorising</td><td>common factor, formula, grouping, splitting — in that order</td></tr>
+        <tr><td>algebraic fractions</td><td>cancel factors only; add over the lowest common denominator</td></tr>
+        <tr><td>equations</td><td>reduce to ${m('ax = b')}, then check in the original</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      Quarter IV opens with percentages and constructions, then coordinates, functions, systems of two
+      equations and combinatorics — and every one of those uses the equation work of this block.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q3: ' + m(f('x', '2') + ' + ' + f('x', '5') + ' = 7') + '.',
+      steps: [
+        ['The LCD is ' + m('10') + '.', ''],
+        ['Multiply every term: ' + m('5x + 2x = 70') + '.', 'The ' + m('7') + ' is multiplied too.'],
+        [m('7x = 70'), ''],
+        [m('x = 10') + '. Check: ' + m('5 + 2 = 7') + ' ✓', '']
+      ],
+      ans: m('x = 10')
+    },
+    {
+      q: 'Model answer, Q4: ' + m('2(x + 4) = 2x + 8') + '.',
+      steps: [
+        [m('2x + 8 = 2x + 8'), 'Expand.'],
+        [m('0 · x = 0'), ''],
+        ['True for every value of ' + m('x') + '.', ''],
+        ['It is an identity: every number is a root.', '']
+      ],
+      ans: 'Every number'
+    },
+    {
+      q: 'Model answer, Q6: two numbers differ by ' + m('9') + ' and add to ' + m('45') + '.',
+      steps: [
+        ['Let ' + m('x') + ' be the smaller; the larger is ' + m('x + 9') + '.', ''],
+        [m('x + (x + 9) = 45'), ''],
+        [m('2x = 36') + ', so ' + m('x = 18') + '.', ''],
+        ['The numbers are ' + m('18') + ' and ' + m('27') + '. Check: ' + m('18 + 27 = 45') + ' ✓', '']
+      ],
+      ans: m('18') + ' and ' + m('27')
+    }
+  ],
+  modelNote: 'Give back Q6 and ask only whether the final sentence answers the question; the algebra is usually right and the answer usually incomplete.',
+  interactive: {
+    type: 'quiz',
+    title: 'Quarter III in twelve questions',
+    hint: 'Two from each block.',
+    items: [
+      { q: 'On parallel lines, co-interior angles:', a: ['are equal', 'add to ' + m('90°'), 'add to ' + m('180°'), 'are right'], c: 2, why: 'The property.' },
+      { q: 'Equal alternate angles prove:', a: ['parallelism', 'congruence', 'nothing', 'perpendicularity'], c: 0, why: 'The criterion.' },
+      { q: 'The angles of a triangle add to:', a: [m('90°'), m('180°'), m('270°'), m('360°')], c: 1, why: 'The theorem.' },
+      { q: 'An exterior angle equals:', a: ['the adjacent angle', 'the two remote angles', 'all three', m('90°')], c: 1, why: 'The exterior-angle theorem.' },
+      { q: 'In a right triangle the leg opposite ' + m('30°') + ' is:', a: ['the hypotenuse', 'half the hypotenuse', 'twice it', 'equal to the other leg'], c: 1, why: 'The ' + m('30°') + ' rule.' },
+      { q: m('(a + b)²') + ' equals:', a: [m('a² + b²'), m('a² + 2ab + b²'), m('a² − 2ab + b²'), m('2a + 2b')], c: 1, why: 'The middle term.' },
+      { q: m('x² − 49') + ' factorises to:', a: [m('(x − 7)²'), m('(x − 7)(x + 7)'), m('(x − 49)(x + 1)'), 'it does not'], c: 1, why: 'A difference of squares.' },
+      { q: 'The first factorising method to try is:', a: ['a formula', 'the common factor', 'grouping', 'splitting'], c: 1, why: 'Always step 1.' },
+      { q: 'In an algebraic fraction you may cancel:', a: ['terms', 'factors', 'anything', 'signs'], c: 1, why: 'Only what is multiplied.' },
+      { q: 'When subtracting fractions the second numerator needs:', a: ['a bracket', 'a denominator', 'nothing', 'a factor'], c: 0, why: 'Every sign changes.' },
+      { q: m('0 · x = 0') + ' means:', a: ['no roots', 'one root', 'every number is a root', 'an error'], c: 2, why: 'An identity.' },
+      { q: 'Al-jabr means:', a: ['balancing', 'restoring', 'dividing', 'checking'], c: 1, why: 'Adding back what was subtracted.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 gives:', a: [m('x = 4'), m('x = 8'), m('x = 1'), m('x = 16')], c: 1, why: m('2x = 16') + '.' },
+    { q: 'Q2 begins by:', a: ['dividing', 'expanding the bracket', 'clearing fractions', 'checking'], c: 1, why: 'Step 1.' },
+    { q: 'Q3 is multiplied through by:', a: [m('2'), m('5'), m('7'), m('10')], c: 3, why: 'The LCD.' },
+    { q: 'Q4 has:', a: ['no roots', 'one root', 'every number as a root', 'two roots'], c: 2, why: 'An identity.' },
+    { q: 'Q5 asks you to name:', a: ['the roots', 'al-jabr and al-muqabala', 'the coefficients', 'the check'], c: 1, why: 'The two medieval moves.' },
+    { q: 'Q6 is answered with:', a: ['one number', 'both numbers', 'the equation', m('x')], c: 1, why: 'The question asked for two.' }
+  ],
+  practice: {
+    easy: [
+      [m('4x − 7 = 2x + 9'), m('x = 8')],
+      [m('3(x + 2) = 5x − 8'), m('x = 7')],
+      [m(f('x', '2') + ' + ' + f('x', '5') + ' = 7'), m('x = 10')],
+      [m('2(x + 4) = 2x + 8'), 'Every number'],
+      [m('5x − 3 = 2x + 9'), m('x = 4')],
+      ['Al-jabr means', 'restoring'],
+      ['Al-muqabala means', 'balancing']
+    ],
+    med: [
+      ['Two numbers differ by ' + m('9') + ' and add to ' + m('45'), m('18') + ' and ' + m('27')],
+      [m('2(x − 3) = 2x − 5'), 'No roots'],
+      [m(f('x', '3') + ' − ' + f('x', '4') + ' = 1'), m('x = 12')],
+      ['On parallel lines, co-interior ' + m('5x') + ' and ' + m('4x'), m('100°') + ' and ' + m('80°')],
+      [m('x² − 64'), m('(x − 8)(x + 8)')],
+      [m(f('x² − 4', 'x + 2')), m('x − 2')],
+      ['An exterior angle of ' + m('130°') + ', one remote angle ' + m('60°') + ': the other', m('70°')]
+    ],
+    hard: [
+      [m(f('x + 2', '3') + ' − ' + f('x − 1', '4') + ' = 1'), m('x = 1')],
+      ['A rectangle ' + m('5 cm') + ' longer than wide, perimeter ' + m('42 cm'), m('8 cm') + ' by ' + m('13 cm')],
+      ['Three consecutive numbers add to ' + m('81'), m('26, 27, 28')],
+      [m('3(2x − 1) − 2(3x − 2) = 1'), 'Every number'],
+      ['Factorise ' + m('2x³ − 8x'), m('2x(x − 2)(x + 2)')],
+      [m(f('1', 'x − 2') + ' + ' + f('1', 'x + 2')), m(f('2x', 'x² − 4'))],
+      ['A right triangle with hypotenuse ' + m('20') + ' and an angle of ' + m('30°'), 'The opposite leg is ' + m('10')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every question you lost a mark on in full, from the first line.',
+  homework: [
+    'Rewrite in full every question on which you lost a mark.',
+    'Solve ' + m('5x − 4 = 3x + 10') + ' and check your root.',
+    'Solve ' + m(f('x', '4') + ' + ' + f('x', '6') + ' = 5') + '.',
+    'Two numbers differ by ' + m('11') + ' and add to ' + m('47') + '. Find them.',
+    'Write one sentence for each of the seven blocks on the Quarter III map.'
+  ]
+});
