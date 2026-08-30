@@ -122,6 +122,17 @@ for (const t of all) {
         if (text) issues.push(`${t.id}: section ${i} has text outside a cell: "${text.slice(0, 40)}"`);
       }
     }
+    /* A <span> opened for a warn/keybox label but closed with </div> renders
+       the rest of the block inside the label (klabel is a div, wl a span).
+       And a leftover ${ or a stray
+       "') +" means a template literal was nested or quoted wrongly, so the
+       JavaScript reached the page as text. */
+    if (/class="wl">[^<]*<\/div>/.test(s.html)) {
+      issues.push(`${t.id}: section ${i} closes a <span class="wl"> with </div>`);
+    }
+    for (const leak of ['${', "') +", '+ m(']) {
+      if (s.html.includes(leak)) issues.push(`${t.id}: section ${i} leaks source text "${leak}"`);
+    }
     for (const [open, close] of [['<table', '</table>'], ['<td', '</td>'], ['<tr', '</tr>'], ['<ul', '</ul>'], ['<ol', '</ol>']]) {
       const a = (s.html.match(new RegExp(open, 'g')) || []).length;
       const b = (s.html.match(new RegExp(close, 'g')) || []).length;

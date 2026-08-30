@@ -8755,3 +8755,368 @@ G9_ALG.push({
     'Two cards are drawn without replacement. Find ' + m('P') + '(both are kings).'
   ]
 });
+
+/* ============================== 50 ============================== */
+G9_ALG.push({
+  id: 'a9-50', stream: 'alg', grade: 9, quarter: 4, lessons: '98–99', hours: 2,
+  title: 'Annual control work',
+  subtitle: 'One paper across the whole year: quadratics, systems, trigonometry, progressions and probability.',
+  uz: 'Algebra 9, Yillik nazorat ishi', uzPage: 'pp. 1–240',
+  cam: 'IGX 1–15 review', camPage: 'Core & Extended, full course', wb: 'Annual paper A8',
+  objectives: [
+    'Work accurately across five chapters under a single time limit.',
+    'Choose the right method quickly when the question does not name it.',
+    'Show the working that carries the method marks.',
+    'Diagnose each lost mark by chapter, not only by question.'
+  ],
+  terms: [
+    ['Annual control work', 'Yillik nazorat ishi', 'Годовая контрольная работа'],
+    ['Quadratic inequality', 'Kvadrat tengsizlik', 'Квадратное неравенство'],
+    ['System', 'Sistema', 'Система'],
+    ['Reduction formula', 'Keltirish formulasi', 'Формула приведения'],
+    ['Progression', 'Progressiya', 'Прогрессия'],
+    ['Probability', 'Ehtimollik', 'Вероятность'],
+    ['Method mark', 'Usul uchun ball', 'Балл за метод'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [45, 'The paper'], [12, 'Answers'], [15, 'Diagnosis by chapter'], [5, 'What to revise']],
+  sections: [
+    {
+      h: 'The paper — 50 marks, 45 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>Chapter</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Solve ${m('x² − 5x + 6 < 0')}</td><td class="m">5</td><td>I</td></tr>
+        <tr><td>2</td><td>Find the domain of ${m('y = ' + sr('x² − 9'))}</td><td class="m">5</td><td>I</td></tr>
+        <tr><td>3</td><td>Solve ${m('{ x + y = 7 ; x² + y² = 25 }')}</td><td class="m">6</td><td>II</td></tr>
+        <tr><td>4</td><td>Prove ${m('x² + 36 ≥ 12x')} and name the equality case</td><td class="m">5</td><td>II</td></tr>
+        <tr><td>5</td><td>Given ${m('sin α = ' + f('3', '5'))} (II), find ${m('cos α')} and ${m('sin 2α')}</td><td class="m">6</td><td>III</td></tr>
+        <tr><td>6</td><td>Evaluate ${m('cos 210° + sin 150°')}</td><td class="m">5</td><td>III</td></tr>
+        <tr><td>7</td><td>In an AP, ${m('a₃ = 10')}, ${m('a₈ = 30')}: find ${m('S₁₀')}</td><td class="m">6</td><td>IV</td></tr>
+        <tr><td>8</td><td>Sum ${m('16 + 8 + 4 + …')} to infinity</td><td class="m">5</td><td>IV</td></tr>
+        <tr><td>9</td><td>Two dice: find ${m('P')}(sum ${m('8')}) and ${m('P')}(at least one six)</td><td class="m">7</td><td>V</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Method marks are given for the method</div>
+      Q3 carries a mark for choosing substitution; Q5 two for the sign; Q7 one for using the gap of five
+      steps; Q9 two for the complement. Writing the method down, even without finishing, is worth
+      roughly a third of this paper.</div>`
+    },
+    {
+      h: 'Diagnosis by chapter',
+      html: `<p>Fill this in honestly; it is the revision plan for the summer.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Chapter</th><th>Questions</th><th>Marks available</th><th>If you lost marks, revise</th></tr></thead>
+      <tbody>
+        <tr><td>I — the quadratic function</td><td>1, 2</td><td class="m">10</td><td>the sign of a trinomial; domains</td></tr>
+        <tr><td>II — systems and inequalities</td><td>3, 4</td><td class="m">11</td><td>substitution; the square method</td></tr>
+        <tr><td>III — trigonometry</td><td>5, 6</td><td class="m">11</td><td>the quadrant rule; reduction</td></tr>
+        <tr><td>IV — progressions</td><td>7, 8</td><td class="m">11</td><td class="m">aₙ, Sₙ, and |q| < 1</td></tr>
+        <tr><td>V — probability</td><td>9</td><td class="m">7</td><td>counting, and the complement</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A chapter with two lost marks is not a weak chapter</span>
+      Look for a whole block that went wrong. Losing four marks spread over five chapters is
+      carelessness under time; losing seven marks in one chapter is a gap in understanding, and only
+      the second needs re-teaching.</div>`
+    },
+    {
+      h: 'What to revise, and in what order',
+      html: `<p>The Grade 10 course opens with powers and roots, then trigonometric equations, then the
+      exponential and logarithmic functions. What matters most from Grade 9 is therefore:</p>
+      <ol>
+        <li><b>The sign of a quadratic and the method of intervals</b> — used in every domain question
+        for the next two years.</li>
+        <li><b>The quadrant rule and the reduction formulae</b> — Grade 10 trigonometric equations are
+        unreadable without them.</li>
+        <li><b>The addition and double-angle formulae</b> — they are assumed, not re-taught.</li>
+        <li><b>Progressions</b> — they return in Grade 11 as series and limits.</li>
+        <li><b>Counting</b> — probability in Grade 11 is combinatorics with a division at the end.</li>
+      </ol>
+      {{fig:unitCircle:The single most useful picture of the year, and the one to redraw first in Grade 10.}}
+      <div class="keybox"><div class="klabel">Two hours a week, not two days in August</div>
+      Anything practised for twenty minutes a week over the summer survives; anything crammed in the
+      last week before September does not. The five items above, one a week, is enough.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q3: solve ' + m('{ x + y = 7 ; x² + y² = 25 }') + '.',
+      steps: [
+        ['One equation is linear — substitute ' + m('y = 7 − x') + '.', 'The method mark.'],
+        [m('x² + (7 − x)² = 25 ⇒ 2x² − 14x + 24 = 0'), ''],
+        [m('x² − 7x + 12 = 0 ⇒ x = 3, 4'), ''],
+        [m('(3, 4)') + ' and ' + m('(4, 3)') + ' — both checked.', '']
+      ],
+      ans: m('(3, 4)') + ' and ' + m('(4, 3)')
+    },
+    {
+      q: 'Model answer, Q5: ' + m('sin α = ' + f('3', '5')) + ' in quadrant II.',
+      steps: [
+        [m('cos²α = 1 − ' + f('9', '25') + ' = ' + f('16', '25')), ''],
+        ['Quadrant II ⇒ ' + m('cos α = −' + f('4', '5')) + '.', 'The sign.'],
+        [m('sin 2α = 2 · ' + f('3', '5') + ' · (−' + f('4', '5') + ')'), ''],
+        [m('= −' + f('24', '25')), '']
+      ],
+      ans: m('cos α = −' + f('4', '5') + ', sin 2α = −' + f('24', '25'))
+    },
+    {
+      q: 'Model answer, Q9: two dice — ' + m('P') + '(sum 8) and ' + m('P') + '(at least one six).',
+      steps: [
+        [m('n = 36') + '.', ''],
+        ['Sum ' + m('8') + ': ' + m('(2,6),(3,5),(4,4),(5,3),(6,2)') + ' — five pairs.', m('P = ' + f('5', '36')) + '.'],
+        ['At least one six: complement is ' + m('5 × 5 = 25') + '.', ''],
+        [m('P = 1 − ' + f('25', '36') + ' = ' + f('11', '36')), '']
+      ],
+      ans: m(f('5', '36')) + ' and ' + m(f('11', '36'))
+    }
+  ],
+  modelNote: 'Return the papers with the chapter column filled in but the marks hidden; pupils diagnose their own weakest chapter before they see their total.',
+  interactive: {
+    type: 'quiz',
+    title: 'The year in twelve questions',
+    hint: 'Two or three from each chapter.',
+    items: [
+      { q: 'For ' + m('a > 0') + ', ' + m('ax² + bx + c < 0') + ' holds:', a: ['outside the roots', 'between them', 'nowhere', 'everywhere'], c: 1, why: 'The dip.' },
+      { q: 'The domain of ' + m(sr('x − 4')) + ':', a: [m('x > 4'), m('x ≥ 4'), m('x ≤ 4'), 'all ' + m('x')], c: 1, why: 'Zero is allowed.' },
+      { q: 'A system with one linear equation:', a: ['substitution', 'addition', 'squaring', 'a graph'], c: 0, why: 'Isolate and replace.' },
+      { q: 'To prove ' + m('A ≥ B') + ':', a: ['test values', 'show ' + m('A − B ≥ 0'), 'draw it', 'cross-multiply'], c: 1, why: 'One side, one sign.' },
+      { q: m('180°') + ' in radians:', a: [m(f('π', '2')), m('π'), m('2π'), m('90')], c: 1, why: 'Half a turn.' },
+      { q: m('sin(α + β)') + ' equals:', a: [m('sin α + sin β'), m('sc + cs'), m('cc − ss'), m('2sc')], c: 1, why: 'Mix, keep the sign.' },
+      { q: m('cos(' + f('π', '2') + ' + α)') + ' equals:', a: [m('sin α'), m('−sin α'), m('cos α'), m('−cos α')], c: 1, why: 'Name changes, cosine negative in II.' },
+      { q: m('aₙ') + ' of an AP:', a: [m('a₁ + nd'), m('a₁ + (n − 1)d'), m('nd'), m('a₁ d')], c: 1, why: m('n − 1') + ' steps.' },
+      { q: m('bₙ') + ' of a GP:', a: [m('b₁ q') + p('', 'n'), m('b₁ q') + p('', 'n−1'), m('b₁ + nq'), m('nq')], c: 1, why: m('n − 1') + ' multiplications.' },
+      { q: 'An infinite GP sums when:', a: [m('q > 0'), m('|q| < 1'), m('q > 1'), 'always'], c: 1, why: 'The terms must shrink.' },
+      { q: m('P(A) + P(A′)') + ' equals:', a: [m('0'), m(f('1', '2')), m('1'), m('2')], c: 2, why: 'Every outcome is in one.' },
+      { q: '“At least one” is best done by:', a: ['direct counting', 'the complement', 'a tree', 'guessing'], c: 1, why: m('1 − P') + '(none).' }
+    ]
+  },
+  quiz: [
+    { q: 'Method marks are earned by:', a: ['the answer', 'the working', 'speed', 'neatness'], c: 1, why: 'Even an unfinished method scores.' },
+    { q: 'Q5 loses marks most often for:', a: ['arithmetic', 'the sign', 'the formula', 'the units'], c: 1, why: 'The quadrant decides it.' },
+    { q: 'Q8 must state:', a: [m('n'), m('|q| < 1'), m('b₁'), 'a decimal'], c: 1, why: 'The condition is part of the answer.' },
+    { q: 'Q9 is quickest by:', a: ['listing 36 cases', 'the complement', 'a tree', 'a formula'], c: 1, why: 'Twenty-five, not eleven, cases.' },
+    { q: 'Seven marks lost in one chapter means:', a: ['carelessness', 'a gap in understanding', 'bad luck', 'nothing'], c: 1, why: 'That chapter needs re-teaching.' },
+    { q: 'The best summer plan is:', a: ['two days in August', 'twenty minutes a week', 'nothing', 'the whole textbook'], c: 1, why: 'Spaced practice survives.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m('x² − 5x + 6 < 0'), m('(2, 3)')],
+      ['Domain of ' + m('y = ' + sr('x² − 9')), m('(−∞, −3] ∪ [3, +∞)')],
+      ['Prove ' + m('x² + 36 ≥ 12x'), m('(x − 6)² ≥ 0')],
+      [m('cos 210°'), m('−' + f(sr('3'), '2'))],
+      [m('sin 150°'), m(f('1', '2'))],
+      [m('16 + 8 + 4 + …'), m('32')],
+      ['Two dice: ' + m('P') + '(sum 8)', m(f('5', '36'))]
+    ],
+    med: [
+      ['Solve ' + m('{ x + y = 7 ; x² + y² = 25 }'), m('(3, 4), (4, 3)')],
+      [m('sin α = ' + f('3', '5')) + ' (II): ' + m('cos α'), m('−' + f('4', '5'))],
+      ['Same: ' + m('sin 2α'), m('−' + f('24', '25'))],
+      [m('cos 210° + sin 150°'), m(f('1 − ' + sr('3'), '2'))],
+      [m('a₃ = 10, a₈ = 30') + ': ' + m('d'), m('4')],
+      ['Same: ' + m('S₁₀'), m('200')],
+      ['Two dice: ' + m('P') + '(at least one six)', m(f('11', '36'))]
+    ],
+    hard: [
+      ['Solve ' + m('{ x² − 4 > 0 ; x² − 49 < 0 }'), m('(−7, −2) ∪ (2, 7)')],
+      ['Prove ' + m('a + ' + f('1', 'a') + ' ≥ 2') + ' for ' + m('a > 0'), m('(' + sr('a') + ' − ' + f('1', sr('a')) + ')² ≥ 0')],
+      ['Evaluate ' + m('sin 225° + cos 315° + tan 225°'), m('1')],
+      [m('S₅ = 55') + ' and ' + m('d = 3') + ' in an AP: ' + m('a₁'), m('5')],
+      ['A GP with ' + m('b₁ = 9') + ' and ' + m('S = ' + f('27', '2')) + ': find ' + m('q'), m(f('1', '3'))],
+      ['Three coins: ' + m('P') + '(exactly two heads)', m(f('3', '8'))],
+      ['A bag of ' + m('3') + ' red, ' + m('5') + ' blue; two without replacement: ' + m('P') + '(one of each)', m(f('15', '28'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Do the five tasks from the chapter in which you lost most marks, not one from each.',
+  homework: [
+    'Solve ' + m('x² − 7x + 10 ≤ 0') + ' and give the answer in set notation.',
+    'Given ' + m('cos α = −' + f('12', '13')) + ' in quadrant III, find ' + m('sin 2α') + '.',
+    'In an AP, ' + m('a₄ = 11') + ' and ' + m('a₉ = 26') + '. Find ' + m('S₁₂') + '.',
+    'Sum ' + m('24 + 8 + ' + f('8', '3') + ' + …') + ' to infinity.',
+    'Two dice are rolled. Find ' + m('P') + '(sum less than 5).'
+  ]
+});
+
+/* ============================== 51 ============================== */
+G9_ALG.push({
+  id: 'a9-51', stream: 'alg', grade: 9, quarter: 4, lessons: '100–102', hours: 3,
+  title: 'Annual revision — the year on one page, and what Grade 10 expects',
+  subtitle: 'Five chapters, five sentences, and an honest look at what has to be secure by September.',
+  uz: 'Algebra 9, Yillik takrorlash', uzPage: 'pp. 1–240',
+  cam: 'IGX full course', camPage: 'Core & Extended, full course', wb: 'Revision exercises',
+  objectives: [
+    'State the central idea of each of the five chapters in one sentence.',
+    'Recognise which chapter a question belongs to before choosing a method.',
+    'Identify personally weak areas and plan summer practice around them.',
+    'See how each chapter is used in Grade 10 and beyond.'
+  ],
+  terms: [
+    ['Revision', 'Takrorlash', 'Повторение'],
+    ['Summary', 'Xulosa', 'Итог'],
+    ['Concept map', 'Tushunchalar xaritasi', 'Карта понятий'],
+    ['Prerequisite', 'Zaruriy bilim', 'Необходимое условие'],
+    ['Consolidation', 'Mustahkamlash', 'Закрепление'],
+    ['Weak area', 'Zaif tomon', 'Слабое место'],
+    ['Practice', 'Mashq', 'Практика'],
+    ['Preparation', 'Tayyorgarlik', 'Подготовка']
+  ],
+  timing: [[25, 'Five chapters, five sentences'], [35, 'Which chapter is this?'], [35, 'Mixed practice'], [20, 'What Grade 10 expects'], [5, 'The summer plan']],
+  sections: [
+    {
+      h: 'Five chapters, five sentences',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Chapter</th><th>The sentence</th><th>The picture</th></tr></thead>
+      <tbody>
+        <tr><td>I — the quadratic function</td><td>${m('a')} gives the direction, ${m('D')} the number of roots, and the roots give the sign</td><td>a parabola</td></tr>
+        <tr><td>II — systems and inequalities</td><td>solve each line separately, then combine — and to prove, move everything to one side</td><td>a number line</td></tr>
+        <tr><td>III — trigonometry</td><td>an angle is a point on the unit circle, and every formula is a statement about that point</td><td>the unit circle</td></tr>
+        <tr><td>IV — progressions</td><td>add the same thing, or multiply by the same thing — and both sums have a trick</td><td>a straight line, or a curve</td></tr>
+        <tr><td>V — probability</td><td>count what can happen, count what you want, divide</td><td>a tree</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Five pictures are enough</div>
+      A parabola, a number line, the unit circle, a straight line of terms, and a tree. If those five
+      can be drawn from memory with their labels, the year is secure — and anything forgotten can be
+      rebuilt from them.</div>`
+    },
+    {
+      h: 'Which chapter is this?',
+      html: `<p>The hardest part of a mixed paper is not the mathematics but the recognition. Practise it
+      directly.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Chapter</th><th>Because</th></tr></thead>
+      <tbody>
+        <tr><td>${m('“Find the domain of ' + sr('x² − 4') + '”')}</td><td>I</td><td>a quadratic must be ${m('≥ 0')}</td></tr>
+        <tr><td>“Prove ${m('a² + b² ≥ 2ab')}”</td><td>II</td><td>one side, then a square</td></tr>
+        <tr><td>“Evaluate ${m('cos 750°')}”</td><td>III</td><td>strip turns, then reduce</td></tr>
+        <tr><td>“How many multiples of ${m('7')} below ${m('500')}?”</td><td>IV</td><td>an AP with ${m('d = 7')}</td></tr>
+        <tr><td>“${m('P')}(at least one six)”</td><td>V</td><td>the complement</td></tr>
+        <tr><td>“Two numbers with sum ${m('9')} and product ${m('20')}”</td><td>I or II</td><td>Vieta, or a symmetric system</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Read the whole question before choosing a method</span>
+      The last row has two correct routes and one wrong reflex — trying to solve it as a pair of
+      simultaneous linear equations. Thirty seconds of reading saves ten minutes of the wrong
+      algebra.</div>`
+    },
+    {
+      h: 'Mixed practice',
+      html: `<p>Work these without knowing which chapter each belongs to; that is the point.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>Solve ${m('x² − x − 12 ≥ 0')}</td><td class="m">(−∞, −3] ∪ [4, +∞)</td></tr>
+        <tr><td>Solve ${m('{ x − y = 1 ; xy = 6 }')}</td><td class="m">(3, 2), (−2, −3)</td></tr>
+        <tr><td>Evaluate ${m('sin 120° cos 30°')}</td><td class="m">${f('3', '4')}</td></tr>
+        <tr><td>${m('S₂₀')} of ${m('1, 5, 9, …')}</td><td class="m">780</td></tr>
+        <tr><td>Sum ${m('27 + 9 + 3 + …')}</td><td class="m">${f('81', '2')}</td></tr>
+        <tr><td>${m('P')}(a card is a red king)</td><td class="m">${f('1', '26')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Mixed practice is the only practice that tests recognition</div>
+      Twenty questions from one chapter train the method; twenty from five chapters train the choice —
+      and it is the choice that a mixed examination actually measures.</div>`
+    },
+    {
+      h: 'What Grade 10 expects',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Grade 10 topic</th><th>Needs, from Grade 9</th></tr></thead>
+      <tbody>
+        <tr><td>powers with rational exponents</td><td>surds and index laws</td></tr>
+        <tr><td>irrational equations</td><td>domains, and checking for false roots</td></tr>
+        <tr><td>trigonometric equations</td><td>the unit circle, quadrants, reduction formulae</td></tr>
+        <tr><td>the exponential function</td><td>geometric progressions</td></tr>
+        <tr><td>logarithms</td><td>index laws, and the idea of an inverse</td></tr>
+        <tr><td>probability (Grade 11)</td><td>counting, and the complement</td></tr>
+      </tbody></table></div>
+      <p>Cambridge continues in parallel: Grade 9 covered IGCSE chapters up to trigonometry and
+      sequences; Grade 10 takes the remaining Extended chapters and the first Pure Mathematics topics.
+      The two courses have run together all year, and they continue to.</p>
+      <div class="keybox"><div class="klabel">The summer plan, in one line</div>
+      One page a week: the parabola and the sign rule; the unit circle with the exact values; the four
+      progression formulae; ten mixed problems. Four short sessions across the summer, and September
+      starts from a full page rather than a blank one.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('{ x − y = 1 ; xy = 6 }') + '.',
+      steps: [
+        ['One equation is linear: ' + m('x = y + 1') + '.', 'Chapter II.'],
+        [m('(y + 1)y = 6 ⇒ y² + y − 6 = 0'), ''],
+        [m('y = 2') + ' or ' + m('y = −3') + '.', ''],
+        [m('(3, 2)') + ' and ' + m('(−2, −3)') + ' — both checked.', '']
+      ],
+      ans: m('(3, 2)') + ' and ' + m('(−2, −3)')
+    },
+    {
+      q: 'Evaluate ' + m('sin 120° cos 30°') + '.',
+      steps: [
+        [m('sin 120° = sin(180° − 60°) = sin 60° = ' + f(sr('3'), '2')), 'Chapter III.'],
+        [m('cos 30° = ' + f(sr('3'), '2')), ''],
+        [m(f(sr('3'), '2') + ' × ' + f(sr('3'), '2')), ''],
+        [m('= ' + f('3', '4')), '']
+      ],
+      ans: m(f('3', '4'))
+    },
+    {
+      q: 'Find ' + m('S₂₀') + ' for ' + m('1, 5, 9, …') + ', and sum ' + m('27 + 9 + 3 + …') + ' to infinity.',
+      steps: [
+        [m('a₁ = 1, d = 4') + ': ' + m('a₂₀ = 1 + 19 · 4 = 77') + '.', 'Chapter IV.'],
+        [m('S₂₀ = ' + f('20(1 + 77)', '2') + ' = 780'), ''],
+        [m('b₁ = 27, q = ' + f('1', '3')) + ', and ' + m('|q| < 1') + '.', ''],
+        [m('S = ' + f('27', '1 − ' + f('1', '3')) + ' = ' + f('81', '2')), '']
+      ],
+      ans: m('780') + ' and ' + m(f('81', '2'))
+    }
+  ],
+  modelNote: 'Give the class twelve questions in random order and ask only for the chapter of each — no solving. Recognition, practised alone, is what a mixed paper rewards.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which chapter, and which method?',
+    hint: 'Name the chapter before naming the method.'
+  },
+  quiz: [
+    { q: '“Find the domain of ' + m(sr('x² − 4')) + '” belongs to:', a: ['Chapter I', 'Chapter II', 'Chapter III', 'Chapter V'], c: 0, why: 'The sign of a quadratic.' },
+    { q: '“Evaluate ' + m('cos 750°') + '” belongs to:', a: ['Chapter I', 'Chapter II', 'Chapter III', 'Chapter IV'], c: 2, why: 'Period, then reduction.' },
+    { q: '“How many multiples of ' + m('7') + ' below ' + m('500') + '” belongs to:', a: ['Chapter II', 'Chapter III', 'Chapter IV', 'Chapter V'], c: 2, why: 'An AP with ' + m('d = 7') + '.' },
+    { q: '“' + m('P') + '(at least one six)” is done by:', a: ['listing', 'the complement', 'a formula', 'a graph'], c: 1, why: m('1 − P') + '(none).' },
+    { q: 'Grade 10 trigonometric equations most need:', a: ['progressions', 'the unit circle and reduction', 'probability', 'Vieta'], c: 1, why: 'They are used in every line.' },
+    { q: 'The best revision is:', a: ['one chapter at a time', 'mixed questions', 'reading the book', 'copying notes'], c: 1, why: 'It trains recognition.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m('x² − x − 12 ≥ 0'), m('(−∞, −3] ∪ [4, +∞)')],
+      ['Domain of ' + m(sr('x² − 4')), m('(−∞, −2] ∪ [2, +∞)')],
+      [m('sin 120°'), m(f(sr('3'), '2'))],
+      [m('cos 30°'), m(f(sr('3'), '2'))],
+      [m('S₂₀') + ' of ' + m('1, 5, 9, …'), m('780')],
+      [m('27 + 9 + 3 + …'), m(f('81', '2'))],
+      [m('P') + '(a card is a red king)', m(f('1', '26'))]
+    ],
+    med: [
+      ['Solve ' + m('{ x − y = 1 ; xy = 6 }'), m('(3, 2), (−2, −3)')],
+      [m('sin 120° cos 30°'), m(f('3', '4'))],
+      ['Prove ' + m('a² + b² ≥ 2ab'), m('(a − b)² ≥ 0')],
+      ['Multiples of ' + m('7') + ' below ' + m('500'), m('71')],
+      [m('cos 750°'), m(f(sr('3'), '2'))],
+      ['Two numbers: sum ' + m('9') + ', product ' + m('20'), m('4') + ' and ' + m('5')],
+      ['Two dice: ' + m('P') + '(at least one six)', m(f('11', '36'))]
+    ],
+    hard: [
+      ['Solve ' + m('{ x² + y² = 20 ; xy = 8 }'), m('(4, 2), (2, 4), (−4, −2), (−2, −4)')],
+      ['Prove ' + m(f('sin 2α', '1 + cos 2α') + ' = tan α'), 'Use ' + m('2cos²α')],
+      ['An AP has ' + m('S₁₀ = 155') + ' and ' + m('a₁ = 2') + ': find ' + m('d'), m('3')],
+      ['A GP has ' + m('S = 12') + ' and ' + m('b₁ = 8') + ': find ' + m('q'), m(f('1', '3'))],
+      ['Three coins: ' + m('P') + '(at least two heads)', m(f('1', '2'))],
+      ['Solve ' + m('sin 3x + sin x = 0'), m('x = ' + f('πk', '2'))],
+      ['Domain of ' + m('y = ' + f(sr('x + 1'), 'x − 2')), m('[−1, 2) ∪ (2, +∞)')]
+    ]
+  },
+  hwTitle: 'Summer work — 5 tasks, one a week',
+  hwNote: 'Not five tasks for one evening: one page a week, spread across the summer.',
+  homework: [
+    'Week 1: draw the parabola with its sign rule and solve ten quadratic inequalities.',
+    'Week 2: draw the unit circle with all eight exact values, from memory.',
+    'Week 3: write the four progression formulae and do ten mixed progression problems.',
+    'Week 4: do ten probability problems, using the complement wherever “at least” appears.',
+    'Week 5: do the annual control work again, from a blank page, and compare.'
+  ]
+});
