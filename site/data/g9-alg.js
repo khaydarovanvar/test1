@@ -2513,3 +2513,1052 @@ G9_ALG.push({
     'Write your target for Chapter II in one checkable sentence, and date it.'
   ]
 });
+
+/* ===================== QUARTER II (21 hours) ===================== */
+
+/* ============================== 15 ============================== */
+G9_ALG.push({
+  id: 'a9-15', stream: 'alg', grade: 9, quarter: 2, lessons: '28–29', hours: 2,
+  title: 'The simplest systems containing a second-degree equation',
+  subtitle: 'One equation is linear — so make one unknown the subject and substitute.',
+  uz: 'Algebra 9, §13', uzPage: 'pp. 68–71',
+  cam: 'IGX 10.2', camPage: 'Core & Extended, pp. 216–225', wb: 'Exercise 10.2',
+  objectives: [
+    'Solve a linear-and-quadratic system by substitution.',
+    'Interpret the solutions as the meeting points of a line and a curve.',
+    'Use the discriminant to say how many solutions there are.',
+    'Give every solution as an ordered pair.'
+  ],
+  terms: [
+    ['System of equations', 'Tenglamalar sistemasi', 'Система уравнений'],
+    ['Substitution method', 'O‘rniga qo‘yish usuli', 'Способ подстановки'],
+    ['Second-degree equation', 'Ikkinchi darajali tenglama', 'Уравнение второй степени'],
+    ['Ordered pair', 'Tartiblangan juftlik', 'Упорядоченная пара'],
+    ['Point of intersection', 'Kesishish nuqtasi', 'Точка пересечения'],
+    ['Consistent system', 'Birgalikdagi sistema', 'Совместная система'],
+    ['No solution', 'Yechimga ega emas', 'Не имеет решений'],
+    ['Check', 'Tekshirish', 'Проверка']
+  ],
+  timing: [[12, 'What a solution is'], [25, 'Substitution'], [22, 'How many solutions'], [23, 'Reading the picture'], [8, 'Homework']],
+  sections: [
+    {
+      h: 'What a solution is',
+      html: `<p>A solution of a system in two unknowns is an <b>ordered pair</b> ${m('(x, y)')} that
+      satisfies <b>both</b> equations at once.</p>
+      ${eq(m('{ y = x + 1 ;  x² + y² = 25 }') + '   has solutions   ' + m('(3, 4)') + '  and  ' + m('(−4, −3)'), true)}
+      <div class="warn"><span class="wl">Two numbers, paired — not two separate answers</span>
+      Writing “${m('x = 3, −4')} and ${m('y = 4, −3')}” is ambiguous: it seems to allow ${m('(3, −3)')},
+      which satisfies neither equation. Always write the pairs.</div>
+      {{fig:coordPoint:A solution is one point of the plane, lying on both graphs at once.}}`
+    },
+    {
+      h: 'Substitution',
+      html: `<div class="keybox"><div class="klabel">The method, when one equation is linear</div>
+      <ol>
+        <li>From the <b>linear</b> equation, make the easier unknown the subject.</li>
+        <li>Substitute into the second-degree equation.</li>
+        <li>Solve the resulting quadratic in one unknown.</li>
+        <li>Substitute each root back into the <b>linear</b> equation for the partner.</li>
+      </ol>
+      Step 4 uses the linear equation, never the quadratic — it is simpler and cannot introduce a
+      false pair.</div>
+      <p><b>Example.</b> ${m('{ x + y = 5 ; xy = 6 }')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>make the subject</td><td class="m">y = 5 − x</td></tr>
+        <tr><td>substitute</td><td class="m">x(5 − x) = 6</td></tr>
+        <tr><td>tidy</td><td class="m">x² − 5x + 6 = 0</td></tr>
+        <tr><td>solve</td><td class="m">x = 2, 3</td></tr>
+        <tr><td>partners</td><td class="m">(2, 3) and (3, 2)</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'How many solutions',
+      html: `<p>After substitution the system becomes one quadratic, so the discriminant answers the
+      counting question directly.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">D</th><th>Solutions</th><th>Geometrically</th></tr></thead>
+      <tbody>
+        <tr><td class="m">D > 0</td><td>two pairs</td><td>the line cuts the curve twice</td></tr>
+        <tr><td class="m">D = 0</td><td>one pair</td><td>the line is a tangent</td></tr>
+        <tr><td class="m">D &lt; 0</td><td>none</td><td>they miss each other</td></tr>
+      </tbody></table></div>
+      {{fig:lineCircleCases:Two points, one, or none — decided by D alone.}}
+      <p><b>Example.</b> For which ${m('c')} is ${m('y = x + c')} a tangent to ${m('x² + y² = 8')}?
+      Substituting: ${m('2x² + 2cx + c² − 8 = 0')}, so ${m('D = 4c² − 8(c² − 8) = 64 − 4c²')}. Setting
+      ${m('D = 0')} gives ${m('c = ±4')}.</p>`
+    },
+    {
+      h: 'Reading the picture',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>System</th><th>The two graphs</th><th>Solutions</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = x + 1 ; x² + y² = 25</td><td>line and circle</td><td class="m">(3, 4), (−4, −3)</td></tr>
+        <tr><td class="m">y = 2x ; y = x²</td><td>line and parabola</td><td class="m">(0, 0), (2, 4)</td></tr>
+        <tr><td class="m">x + y = 5 ; xy = 6</td><td>line and hyperbola</td><td class="m">(2, 3), (3, 2)</td></tr>
+        <tr><td class="m">y = x + 5 ; y = x²</td><td>line and parabola</td><td>two irrational pairs</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Always check one pair</div>
+      Substituting ${m('(3, 4)')} into both equations of the first system takes ten seconds and catches
+      every arithmetic slip. The check is part of the answer, not an optional extra.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('{ x + y = 5 ; xy = 6 }') + '.',
+      steps: [
+        [m('y = 5 − x'), 'From the linear equation.'],
+        [m('x(5 − x) = 6 ⇒ x² − 5x + 6 = 0'), ''],
+        [m('x = 2') + ' or ' + m('x = 3'), ''],
+        [m('(2, 3)') + ' and ' + m('(3, 2)') + '.', 'Check: ' + m('2 + 3 = 5') + ', ' + m('2 × 3 = 6') + ' ✓']
+      ],
+      ans: m('(2, 3)') + ' and ' + m('(3, 2)')
+    },
+    {
+      q: 'Solve ' + m('{ y = x + 1 ; x² + y² = 25 }') + '.',
+      steps: [
+        [m('x² + (x + 1)² = 25'), ''],
+        [m('2x² + 2x − 24 = 0 ⇒ x² + x − 12 = 0'), ''],
+        [m('x = 3') + ' or ' + m('x = −4'), ''],
+        [m('(3, 4)') + ' and ' + m('(−4, −3)') + '.', 'Partners from the line.']
+      ],
+      ans: m('(3, 4)') + ' and ' + m('(−4, −3)')
+    },
+    {
+      q: 'For which ' + m('c') + ' is ' + m('y = x + c') + ' a tangent to ' + m('x² + y² = 8') + '?',
+      steps: [
+        [m('x² + (x + c)² = 8'), ''],
+        [m('2x² + 2cx + c² − 8 = 0'), ''],
+        [m('D = 4c² − 8(c² − 8) = 64 − 4c²'), ''],
+        [m('D = 0 ⇒ c = ±4'), '']
+      ],
+      ans: m('c = 4') + ' or ' + m('c = −4')
+    }
+  ],
+  modelNote: 'Draw the line and the circle on the board and move the line; the class calls out two, one or none before any algebra.',
+  interactive: {
+    type: 'coordPlane',
+    title: 'Where two graphs meet',
+    hint: 'Move the line and count the crossings.'
+  },
+  quiz: [
+    { q: 'A solution of a system in two unknowns is:', a: ['a number', 'an ordered pair', 'two separate numbers', 'an interval'], c: 1, why: 'Both equations at once.' },
+    { q: 'With one linear equation, use:', a: ['elimination', 'substitution', 'squaring', 'a graph only'], c: 1, why: 'Make one unknown the subject.' },
+    { q: 'Substitute the roots back into:', a: ['the quadratic', 'the linear equation', 'either', 'neither'], c: 1, why: 'Simpler and safer.' },
+    { q: m('D = 0') + ' after substitution means:', a: ['two points', 'a tangent', 'no meeting', 'an error'], c: 1, why: 'One repeated solution.' },
+    { q: m('{ x + y = 5 ; xy = 6 }') + ' has:', a: ['one solution', 'two solutions', 'none', 'infinitely many'], c: 1, why: m('(2,3)') + ' and ' + m('(3,2)') + '.' },
+    { q: 'The check is:', a: ['optional', 'part of the answer', 'only for hard questions', 'impossible'], c: 1, why: 'Ten seconds, and conclusive.' }
+  ],
+  practice: {
+    easy: [
+      ['Make ' + m('y') + ' the subject of ' + m('x + y = 5'), m('y = 5 − x')],
+      ['Solve ' + m('{ y = x ; y = x² }'), m('(0, 0)') + ', ' + m('(1, 1)')],
+      ['Solve ' + m('{ y = 2x ; y = x² }'), m('(0, 0)') + ', ' + m('(2, 4)')],
+      ['Solve ' + m('{ y = 4 ; y = x² }'), m('(±2, 4)')],
+      ['Does ' + m('(3, 4)') + ' satisfy ' + m('x² + y² = 25') + '?', 'Yes'],
+      ['Does ' + m('(3, 4)') + ' satisfy ' + m('y = x + 1') + '?', 'Yes'],
+      ['Solve ' + m('{ x = 2 ; x² + y² = 13 }'), m('(2, ±3)')]
+    ],
+    med: [
+      ['Solve ' + m('{ x + y = 5 ; xy = 6 }'), m('(2, 3)') + ', ' + m('(3, 2)')],
+      ['Solve ' + m('{ y = x + 1 ; x² + y² = 25 }'), m('(3, 4)') + ', ' + m('(−4, −3)')],
+      ['Solve ' + m('{ x − y = 1 ; xy = 12 }'), m('(4, 3)') + ', ' + m('(−3, −4)')],
+      ['Solve ' + m('{ y = x + 5 ; y = x² + 3 }'), m('(2, 7)') + ', ' + m('(−1, 4)')],
+      ['Solve ' + m('{ x + y = 7 ; x² + y² = 25 }'), m('(3, 4)') + ', ' + m('(4, 3)')],
+      ['How many solutions has ' + m('{ y = x + 6 ; y = x² }') + '?', 'Two'],
+      ['How many solutions has ' + m('{ y = x − 3 ; y = x² }') + '?', 'None']
+    ],
+    hard: [
+      ['For which ' + m('c') + ' is ' + m('y = x + c') + ' a tangent to ' + m('x² + y² = 8') + '?', m('c = ±4')],
+      ['Solve ' + m('{ x + y = 6 ; x² + y² = 20 }'), m('(2, 4)') + ', ' + m('(4, 2)')],
+      ['Solve ' + m('{ ' + f('1', 'x') + ' + ' + f('1', 'y') + ' = ' + f('5', '6') + ' ; x + y = 5 }'), m('(2, 3)') + ', ' + m('(3, 2)')],
+      ['Two numbers have sum ' + m('12') + ' and product ' + m('35') + ': find them', m('5') + ' and ' + m('7')],
+      ['A rectangle has perimeter ' + m('26') + ' and area ' + m('40') + ': find its sides', m('5') + ' and ' + m('8')],
+      ['For which ' + m('k') + ' has ' + m('{ y = kx ; y = x² + 1 }') + ' exactly one solution?', m('k = ±2')],
+      ['Solve ' + m('{ x² + y² = 10 ; x² − y² = 6 }'), m('(±2' + sr('2') + ', ±' + sr('2') + ')')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every answer is a list of ordered pairs, and every pair is checked in both equations.',
+  homework: [
+    'Solve ' + m('{ x + y = 8 ; xy = 15 }') + '.',
+    'Solve ' + m('{ y = 2x − 1 ; x² + y² = 25 }') + '.',
+    'Solve ' + m('{ y = x + 2 ; y = x² }') + ' and say what the answer means on a graph.',
+    'For which ' + m('c') + ' is ' + m('y = 2x + c') + ' a tangent to ' + m('y = x²') + '?',
+    'Two numbers have sum ' + m('9') + ' and sum of squares ' + m('45') + '. Find them.'
+  ]
+});
+
+/* ============================== 16 ============================== */
+G9_ALG.push({
+  id: 'a9-16', stream: 'alg', grade: 9, quarter: 2, lessons: '30–31', hours: 2,
+  title: 'Methods of solving systems of equations',
+  subtitle: 'Substitution, addition, and the symmetric trick — one of the three fits every system.',
+  uz: 'Algebra 9, §14', uzPage: 'pp. 72–76',
+  cam: 'IGX 6.2', camPage: 'Core & Extended, pp. 124–128', wb: 'Exercise 6.2',
+  objectives: [
+    'Choose between substitution and addition from the shape of the system.',
+    'Solve a system of two second-degree equations by adding or subtracting.',
+    'Use the substitution u = x + y, v = xy on a symmetric system.',
+    'Reject pairs that fail the original equations.'
+  ],
+  terms: [
+    ['Method of addition', 'Qo‘shish usuli', 'Способ сложения'],
+    ['Elimination', 'Yo‘qotish', 'Исключение'],
+    ['Symmetric system', 'Simmetrik sistema', 'Симметричная система'],
+    ['Auxiliary unknown', 'Yordamchi noma’lum', 'Вспомогательная переменная'],
+    ['Homogeneous system', 'Bir jinsli sistema', 'Однородная система'],
+    ['Equivalent systems', 'Teng kuchli sistemalar', 'Равносильные системы'],
+    ['Extraneous pair', 'Chet juftlik', 'Посторонняя пара'],
+    ['Verification', 'Tekshirish', 'Проверка']
+  ],
+  timing: [[15, 'Choosing a method'], [25, 'Addition'], [25, 'Symmetric systems'], [20, 'Checking'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Choosing a method',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>The system looks like</th><th>Use</th><th>Because</th></tr></thead>
+      <tbody>
+        <tr><td>one equation linear</td><td>substitution</td><td>one unknown is easy to isolate</td></tr>
+        <tr><td>both have ${m('x²')} and ${m('y²')}</td><td>addition or subtraction</td><td>a whole square cancels</td></tr>
+        <tr><td>unchanged when ${m('x')} and ${m('y')} swap</td><td class="m">u = x + y, v = xy</td><td>it becomes linear in ${m('u, v')}</td></tr>
+        <tr><td>every term of the same degree</td><td>divide by ${m('y²')}</td><td>it becomes a quadratic in ${m(f('x', 'y'))}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Look before you compute</div>
+      Ten seconds spent naming the shape saves a page of algebra. The four rows above cover almost every
+      system in the Grade 9 course, and the wrong choice is what makes a question take twenty minutes
+      instead of four.</div>`
+    },
+    {
+      h: 'Addition',
+      html: `<p>When both equations contain ${m('x²')} and ${m('y²')}, adding or subtracting removes
+      one of them entirely.</p>
+      <p><b>Example.</b> ${m('{ x² + y² = 25 ; x² − y² = 7 }')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>add</td><td class="m">2x² = 32 ⇒ x² = 16</td></tr>
+        <tr><td>subtract</td><td class="m">2y² = 18 ⇒ y² = 9</td></tr>
+        <tr><td>solve</td><td class="m">x = ±4, y = ±3</td></tr>
+        <tr><td>pair them</td><td class="m">(4,3), (4,−3), (−4,3), (−4,−3)</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Four sign choices means four solutions — unless a third condition cuts them down</span>
+      Here both equations involve only squares, so all four pairs work. If the system had contained
+      ${m('xy = 12')} instead, only the two with matching signs would survive. Always test the pairs
+      against every equation.</div>`
+    },
+    {
+      h: 'Symmetric systems',
+      html: `<p>A system is <b>symmetric</b> if swapping ${m('x')} and ${m('y')} leaves it unchanged. Then
+      ${m('u = x + y')} and ${m('v = xy')} turn it into something much smaller.</p>
+      ${eq(m('x² + y² = u² − 2v') + '     ' + m('x³ + y³ = u³ − 3uv') + '     ' + m(f('1', 'x') + ' + ' + f('1', 'y') + ' = ' + f('v', 'u') + '^{-1}') + ' … i.e. ' + m(f('u', 'v')), true)}
+      <p><b>Example.</b> ${m('{ x + y = 5 ; x² + y² = 13 }')}. Here ${m('u = 5')} and
+      ${m('u² − 2v = 13')}, so ${m('25 − 2v = 13')} and ${m('v = 6')}.</p>
+      <p>Then ${m('x')} and ${m('y')} are the roots of ${m('t² − ut + v = 0')}, that is
+      ${m('t² − 5t + 6 = 0')}: ${m('t = 2, 3')}. The solutions are ${m('(2, 3)')} and ${m('(3, 2)')}.</p>
+      <div class="keybox"><div class="klabel">Vieta, running backwards</div>
+      Two numbers with sum ${m('u')} and product ${m('v')} are exactly the roots of
+      ${m('t² − ut + v = 0')}. That single fact is what makes the substitution work, and it is worth
+      knowing on its own — it answers every “two numbers whose sum and product are…” question in one
+      line.</div>`
+    },
+    {
+      h: 'Checking',
+      html: `<p>Squaring, multiplying by an unknown, or dividing can all introduce pairs that solve the
+      new system but not the old one.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Operation</th><th>Risk</th><th>Guard</th></tr></thead>
+      <tbody>
+        <tr><td>squaring both sides</td><td>false pairs appear</td><td>substitute back</td></tr>
+        <tr><td>dividing by ${m('y')}</td><td>${m('y = 0')} is lost</td><td>treat ${m('y = 0')} separately</td></tr>
+        <tr><td>multiplying by ${m('x')}</td><td>${m('x = 0')} may appear</td><td>substitute back</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Substituting into one equation is not a check</span>
+      A false pair usually satisfies one of the two. Test every candidate in <b>both</b> original
+      equations, or the check proves nothing.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('{ x² + y² = 25 ; x² − y² = 7 }') + '.',
+      steps: [
+        ['Add: ' + m('2x² = 32 ⇒ x = ±4') + '.', ''],
+        ['Subtract: ' + m('2y² = 18 ⇒ y = ±3') + '.', ''],
+        ['All four sign combinations satisfy both.', 'Only squares appear.'],
+        [m('(±4, ±3)') + ' — four pairs.', '']
+      ],
+      ans: m('(4,3), (4,−3), (−4,3), (−4,−3)')
+    },
+    {
+      q: 'Solve ' + m('{ x + y = 5 ; x² + y² = 13 }') + '.',
+      steps: [
+        [m('u = 5') + ', and ' + m('x² + y² = u² − 2v') + '.', ''],
+        [m('25 − 2v = 13 ⇒ v = 6'), ''],
+        [m('t² − 5t + 6 = 0 ⇒ t = 2, 3'), ''],
+        [m('(2, 3)') + ' and ' + m('(3, 2)') + '.', '']
+      ],
+      ans: m('(2, 3)') + ' and ' + m('(3, 2)')
+    },
+    {
+      q: 'Solve ' + m('{ x² + xy = 12 ; xy + y² = 24 }') + '.',
+      steps: [
+        ['Add: ' + m('x² + 2xy + y² = 36') + '.', ''],
+        [m('(x + y)² = 36 ⇒ x + y = ±6'), ''],
+        ['With ' + m('x + y = 6') + ': ' + m('x(x + y) = 12 ⇒ 6x = 12 ⇒ x = 2, y = 4') + '.', ''],
+        ['With ' + m('x + y = −6') + ': ' + m('x = −2, y = −4') + '.', '']
+      ],
+      ans: m('(2, 4)') + ' and ' + m('(−2, −4)')
+    }
+  ],
+  modelNote: 'Write four systems on the board and ask only which method each needs — no solving — until every pupil names all four correctly.',
+  interactive: {
+    type: 'coordPlane',
+    title: 'Two curves, and where they meet',
+    hint: 'A system is a question about intersection.'
+  },
+  quiz: [
+    { q: 'Both equations have ' + m('x²') + ' and ' + m('y²') + '. Use:', a: ['substitution', 'addition or subtraction', 'squaring', 'a graph'], c: 1, why: 'A square cancels.' },
+    { q: 'A symmetric system is best handled by:', a: [m('u = x + y, v = xy'), 'squaring', 'dividing', 'guessing'], c: 0, why: 'It becomes small.' },
+    { q: m('x² + y²') + ' in terms of ' + m('u') + ' and ' + m('v') + ':', a: [m('u² − v'), m('u² − 2v'), m('u² + 2v'), m('u − 2v')], c: 1, why: m('(x+y)² − 2xy') + '.' },
+    { q: 'Numbers with sum ' + m('u') + ' and product ' + m('v') + ' are roots of:', a: [m('t² + ut + v = 0'), m('t² − ut + v = 0'), m('t² − ut − v = 0'), m('t² + v = 0')], c: 1, why: 'Vieta, backwards.' },
+    { q: 'Dividing by ' + m('y') + ' risks losing:', a: [m('y = 1'), m('y = 0'), m('x = 0'), 'nothing'], c: 1, why: 'Treat it separately.' },
+    { q: 'A candidate pair must be tested in:', a: ['one equation', 'both equations', 'neither', 'the simpler one'], c: 1, why: 'Or the check proves nothing.' }
+  ],
+  practice: {
+    easy: [
+      ['Which method for ' + m('{ y = 2x ; x² + y² = 20 }') + '?', 'Substitution'],
+      ['Which method for ' + m('{ x² + y² = 25 ; x² − y² = 7 }') + '?', 'Addition'],
+      ['Which method for ' + m('{ x + y = 5 ; xy = 6 }') + '?', 'Symmetric — ' + m('u, v')],
+      [m('x² + y²') + ' in terms of ' + m('u, v'), m('u² − 2v')],
+      ['Roots of ' + m('t² − 5t + 6 = 0'), m('2') + ' and ' + m('3')],
+      ['Solve ' + m('{ x² = 16 ; y² = 9 }'), m('(±4, ±3)')],
+      ['Solve ' + m('{ x + y = 7 ; x − y = 1 }'), m('(4, 3)')]
+    ],
+    med: [
+      ['Solve ' + m('{ x² + y² = 25 ; x² − y² = 7 }'), m('(±4, ±3)') + ' — four pairs'],
+      ['Solve ' + m('{ x + y = 5 ; x² + y² = 13 }'), m('(2, 3)') + ', ' + m('(3, 2)')],
+      ['Solve ' + m('{ x + y = 6 ; xy = 8 }'), m('(2, 4)') + ', ' + m('(4, 2)')],
+      ['Solve ' + m('{ x² + y² = 10 ; xy = 3 }'), m('(1, 3), (3, 1), (−1, −3), (−3, −1)')],
+      ['Solve ' + m('{ x² + xy = 12 ; xy + y² = 24 }'), m('(2, 4)') + ', ' + m('(−2, −4)')],
+      ['Solve ' + m('{ x − y = 2 ; x² − y² = 16 }'), m('(5, 3)')],
+      ['Two numbers: sum ' + m('10') + ', product ' + m('21'), m('3') + ' and ' + m('7')]
+    ],
+    hard: [
+      ['Solve ' + m('{ x + y = 4 ; x³ + y³ = 28 }'), m('(1, 3)') + ', ' + m('(3, 1)')],
+      ['Solve ' + m('{ ' + f('1', 'x') + ' + ' + f('1', 'y') + ' = ' + f('3', '4') + ' ; xy = 8 }'), m('(2, 4)') + ', ' + m('(4, 2)')],
+      ['Solve ' + m('{ x² − 3xy + 2y² = 0 ; x + y = 6 }'), m('(3, 3)') + ', ' + m('(4, 2)')],
+      ['Solve ' + m('{ x² + y² = 5 ; x² − xy = 0 }'), m('(0, ±' + sr('5') + ')') + ' and ' + m('(±' + f(sr('10'), '2') + ', ±' + f(sr('10'), '2') + ')')],
+      ['Two numbers: sum ' + m('6') + ', sum of squares ' + m('26'), m('1') + ' and ' + m('5')],
+      ['A rectangle: perimeter ' + m('34') + ', diagonal ' + m('13'), m('5') + ' by ' + m('12')],
+      ['Solve ' + m('{ x + y + xy = 11 ; x + y − xy = −1 }'), m('(2, 3)') + ', ' + m('(3, 2)')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Name the method before solving; the name is worth a mark on its own.',
+  homework: [
+    'Solve ' + m('{ x² + y² = 34 ; x² − y² = 16 }') + '.',
+    'Solve ' + m('{ x + y = 7 ; x² + y² = 29 }') + ' using ' + m('u') + ' and ' + m('v') + '.',
+    'Solve ' + m('{ x + y = 9 ; xy = 20 }') + '.',
+    'Two numbers have sum ' + m('11') + ' and sum of squares ' + m('65') + '. Find them.',
+    'Explain in two sentences why dividing a system by ' + m('y') + ' can lose a solution.'
+  ]
+});
+
+/* ============================== 17 ============================== */
+G9_ALG.push({
+  id: 'a9-17', stream: 'alg', grade: 9, quarter: 2, lessons: '32–33', hours: 2,
+  title: 'Systems of second-degree inequalities with one unknown',
+  subtitle: 'Solve each line on its own number line, then keep only what every line agrees on.',
+  uz: 'Algebra 9, §15', uzPage: 'pp. 77–81',
+  cam: 'IGX 14.3', camPage: 'Core & Extended, pp. 292–296', wb: 'Exercise 14.3',
+  objectives: [
+    'Solve each inequality of a system separately by the sign of the parabola.',
+    'Draw the solution sets on one number line and read off the intersection.',
+    'Distinguish a system (and) from a collection (or).',
+    'Write the answer in interval notation, with the right kind of bracket.'
+  ],
+  terms: [
+    ['System of inequalities', 'Tengsizliklar sistemasi', 'Система неравенств'],
+    ['Collection of inequalities', 'Tengsizliklar majmuasi', 'Совокупность неравенств'],
+    ['Intersection', 'Kesishma', 'Пересечение'],
+    ['Union', 'Birlashma', 'Объединение'],
+    ['Number line', 'Sonlar o‘qi', 'Числовая прямая'],
+    ['Interval', 'Oraliq', 'Промежуток'],
+    ['Closed bracket', 'Yopiq qavs', 'Закрытая скобка'],
+    ['Empty set', 'Bo‘sh to‘plam', 'Пустое множество']
+  ],
+  timing: [[12, 'One line at a time'], [25, 'Two inequalities together'], [22, 'Systems and collections'], [26, 'Harder shapes'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'One line at a time',
+      html: `<p>A <b>system</b> of inequalities asks for the values of ${m('x')} that satisfy
+      <b>every</b> line at once. There is no clever combined method: solve each line separately,
+      then intersect.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>What you do</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>bring each line to ${m('… > 0')} form</td><td>the sign rule needs one side zero</td></tr>
+        <tr><td>2</td><td>find the roots of each</td><td>they are the only places a sign can change</td></tr>
+        <tr><td>3</td><td>read the sign from ${m('a')} and the roots</td><td>outside for ${m('a')}'s sign, between for the other</td></tr>
+        <tr><td>4</td><td>draw all the solution sets on one axis</td><td>the intersection becomes visible</td></tr>
+        <tr><td>5</td><td>write the overlap</td><td>that is the answer</td></tr>
+      </tbody></table></div>
+      {{fig:systemIntervals:Two solution sets on one axis — the answer is the strip where both are shaded.}}
+      <div class="keybox"><div class="klabel">Draw, do not reason in words</div>
+      Almost every mark lost on this topic is lost by trying to combine ${m('x < 5')} and ${m('x > −2')}
+      in the head. Two short strokes on a number line and the answer reads itself.</div>`
+    },
+    {
+      h: 'Two inequalities together',
+      html: `<p><b>Example.</b> ${m('{ x² − 4 > 0 ; x² − 9 < 0 }')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Line</th><th>Roots</th><th>Solution</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x² − 4 > 0</td><td class="m">−2, 2</td><td class="m">(−∞, −2) ∪ (2, +∞)</td></tr>
+        <tr><td class="m">x² − 9 < 0</td><td class="m">−3, 3</td><td class="m">(−3, 3)</td></tr>
+        <tr><td>both</td><td>—</td><td class="m">(−3, −2) ∪ (2, 3)</td></tr>
+      </tbody></table></div>
+      <p>The first is satisfied outside ${m('±2')} because ${m('a > 0')}; the second inside ${m('±3')}
+      for the same reason read the other way. The overlap is two short intervals, not one.</p>
+      <div class="warn"><span class="wl">An answer may be two intervals</span>
+      Learners often assume the intersection of two sets is a single interval. It is whatever the picture
+      shows — here two pieces, and sometimes ${m('∅')}. Never force the answer into one bracket.</div>`
+    },
+    {
+      h: 'Systems and collections',
+      html: `<p>Uzbek textbooks distinguish the two carefully, and so should the answer.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Written</th><th>Name</th><th>Means</th><th>Answer is</th></tr></thead>
+      <tbody>
+        <tr><td class="m">{ … ; … }</td><td>system</td><td>both hold</td><td>the intersection</td></tr>
+        <tr><td class="m">[ … ; … ]</td><td>collection</td><td>at least one holds</td><td>the union</td></tr>
+      </tbody></table></div>
+      <p>So ${m('{ x > 1 ; x > 4 }')} gives ${m('x > 4')}, while ${m('[ x > 1 ; x > 4 ]')} gives
+      ${m('x > 1')}. The same two lines, opposite answers.</p>
+      <div class="keybox"><div class="klabel">A double inequality is a system in disguise</div>
+      ${m('−3 < x² − 4 < 5')} is exactly the system ${m('{ x² − 4 > −3 ; x² − 4 < 5 }')}. Split it,
+      solve both, intersect. Trying to work on all three parts at once is where sign errors breed.</div>`
+    },
+    {
+      h: 'Harder shapes',
+      html: `<p>Three cases worth practising before the control work:</p>
+      <ul>
+        <li><b>No solution.</b> ${m('{ x² + 1 < 0 ; x > 0 }')} — the first line is never true, so the
+        answer is ${m('∅')}. Say so; do not leave the page blank.</li>
+        <li><b>One point.</b> ${m('{ x² ≤ 0 ; x ≥ 0 }')} gives ${m('x = 0')} alone — a single number is
+        a perfectly good answer set.</li>
+        <li><b>A fraction.</b> ${m(f('x − 1', 'x + 2') + ' ≥ 0')} is not a system, but it is solved the
+        same way: mark ${m('1')} filled, ${m('−2')} open, alternate the signs.</li>
+      </ul>
+      {{fig:numberLineExcluded:A filled dot is admitted, an open dot is not — the bracket follows the dot.}}
+      <div class="warn"><span class="wl">The bracket follows the dot, always</span>
+      ${m('≥')} on a numerator gives a square bracket; a zero of a <b>denominator</b> is always a round
+      bracket, whatever the sign in the inequality. Mixing these up is the single most common slip in
+      this chapter.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('{ x² − 4 > 0 ; x² − 9 < 0 }') + '.',
+      steps: [
+        [m('x² − 4 > 0 ⇒ x < −2') + ' or ' + m('x > 2') + '.', 'Outside the roots.'],
+        [m('x² − 9 < 0 ⇒ −3 < x < 3') + '.', 'Between the roots.'],
+        ['Draw both on one axis.', ''],
+        ['Overlap: ' + m('(−3, −2) ∪ (2, 3)') + '.', 'Two pieces.']
+      ],
+      ans: m('(−3, −2) ∪ (2, 3)')
+    },
+    {
+      q: 'Solve ' + m('{ x² − 5x + 6 ≤ 0 ; x − 1 > 0 }') + '.',
+      steps: [
+        [m('(x − 2)(x − 3) ≤ 0 ⇒ 2 ≤ x ≤ 3') + '.', ''],
+        [m('x > 1') + '.', ''],
+        ['The whole of ' + m('[2, 3]') + ' lies beyond ' + m('1') + '.', ''],
+        [m('[2, 3]') + '.', '']
+      ],
+      ans: m('[2, 3]')
+    },
+    {
+      q: 'Solve ' + m(f('x − 1', 'x + 2') + ' ≥ 0') + '.',
+      steps: [
+        ['Zeros: ' + m('x = 1') + ' (filled), ' + m('x = −2') + ' (open).', 'Denominator never filled.'],
+        ['Three intervals; test one point in each.', ''],
+        [m('x = −3: +') + ', ' + m('x = 0: −') + ', ' + m('x = 2: +') + '.', ''],
+        [m('(−∞, −2) ∪ [1, +∞)') + '.', '']
+      ],
+      ans: m('(−∞, −2) ∪ [1, +∞)')
+    }
+  ],
+  modelNote: 'Give the class the same two lines twice — once as a system, once as a collection — and let them discover that the answers differ.',
+  interactive: {
+    type: 'inequalityLine',
+    title: 'Two sets on one axis',
+    hint: 'Drag the endpoints and watch the overlap.'
+  },
+  quiz: [
+    { q: 'A system of inequalities asks for:', a: ['the union', 'the intersection', 'either', 'neither'], c: 1, why: 'Every line must hold.' },
+    { q: m('{ x > 1 ; x > 4 }') + ' gives:', a: [m('x > 1'), m('x > 4'), m('1 < x < 4'), m('∅')], c: 1, why: 'The stricter one wins.' },
+    { q: m('[ x > 1 ; x > 4 ]') + ' gives:', a: [m('x > 1'), m('x > 4'), m('1 < x < 4'), m('∅')], c: 0, why: 'A collection is a union.' },
+    { q: m('x² − 9 < 0') + ' solves to:', a: [m('x < −3') + ' or ' + m('x > 3'), m('−3 < x < 3'), m('x < 3'), m('∅')], c: 1, why: 'Between the roots.' },
+    { q: 'A zero of a denominator is drawn:', a: ['filled', 'open', 'either', 'twice'], c: 1, why: 'Undefined there.' },
+    { q: m('{ x² + 1 < 0 ; x > 0 }') + ' has:', a: ['one solution', 'no solution', 'all ' + m('x'), m('x > 0')], c: 1, why: m('x² + 1') + ' is always positive.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m('x² − 4 > 0'), m('(−∞, −2) ∪ (2, +∞)')],
+      ['Solve ' + m('x² − 9 < 0'), m('(−3, 3)')],
+      ['Solve ' + m('{ x > 2 ; x > 5 }'), m('x > 5')],
+      ['Solve ' + m('{ x < 3 ; x > 0 }'), m('(0, 3)')],
+      ['Solve ' + m('[ x < 0 ; x > 4 ]'), m('(−∞, 0) ∪ (4, +∞)')],
+      ['Solve ' + m('x² ≤ 0'), m('x = 0')],
+      ['Solve ' + m('x² + 4 > 0'), 'all ' + m('x')]
+    ],
+    med: [
+      ['Solve ' + m('{ x² − 4 > 0 ; x² − 9 < 0 }'), m('(−3, −2) ∪ (2, 3)')],
+      ['Solve ' + m('{ x² − 5x + 6 ≤ 0 ; x > 1 }'), m('[2, 3]')],
+      ['Solve ' + m('{ x² − x − 6 < 0 ; x ≥ 0 }'), m('[0, 3)')],
+      ['Solve ' + m('−3 < x² − 4 < 5'), m('(−3, −1) ∪ (1, 3)')],
+      ['Solve ' + m(f('x − 1', 'x + 2') + ' ≥ 0'), m('(−∞, −2) ∪ [1, +∞)')],
+      ['Solve ' + m('{ x² > 1 ; x < 0 }'), m('(−∞, −1)')],
+      ['Solve ' + m('{ x² − 2x ≤ 0 ; x ≠ 1 }'), m('[0, 1) ∪ (1, 2]')]
+    ],
+    hard: [
+      ['Solve ' + m('{ x² − 7x + 10 < 0 ; x² − 4x + 3 > 0 }'), m('(3, 5)')],
+      ['Solve ' + m(f('x² − 4', 'x − 1') + ' ≤ 0'), m('(−∞, −2] ∪ (1, 2]')],
+      ['Solve ' + m('{ x² + x − 2 > 0 ; x² − 4x < 0 }'), m('(1, 4)')],
+      ['For which ' + m('a') + ' has ' + m('{ x² < 4 ; x > a }') + ' no solution?', m('a ≥ 2')],
+      ['Solve ' + m('1 ≤ x² ≤ 4'), m('[−2, −1] ∪ [1, 2]')],
+      ['Solve ' + m('{ x² − 6x + 9 ≤ 0 ; x < 5 }'), m('x = 3')],
+      ['Solve ' + m('{ (x − 1)² > 0 ; x² − 4 ≤ 0 }'), m('[−2, 1) ∪ (1, 2]')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw the number line for every task, even the ones you can see at once.',
+  homework: [
+    'Solve ' + m('{ x² − 1 > 0 ; x² − 16 < 0 }') + '.',
+    'Solve ' + m('{ x² − 3x ≤ 0 ; x > 1 }') + '.',
+    'Solve ' + m('−1 < x² − 5 < 4') + '.',
+    'Solve ' + m(f('x + 3', 'x − 2') + ' < 0') + '.',
+    'For which ' + m('a') + ' does ' + m('{ x² ≤ 9 ; x ≥ a }') + ' have exactly one solution?'
+  ]
+});
+
+/* ============================== 18 ============================== */
+G9_ALG.push({
+  id: 'a9-18', stream: 'alg', grade: 9, quarter: 2, lessons: '34–35', hours: 2,
+  title: 'Proving the simplest inequalities',
+  subtitle: 'A square is never negative — nearly every proof in this section is that one fact, arranged.',
+  uz: 'Algebra 9, §16', uzPage: 'pp. 82–86',
+  cam: 'IGX 14.4', camPage: 'Core & Extended, pp. 297–300', wb: 'Exercise 14.4',
+  objectives: [
+    'Prove an inequality by moving everything to one side and completing a square.',
+    'State and use the arithmetic–geometric mean inequality for two numbers.',
+    'Say where equality holds, and prove that it holds only there.',
+    'Distinguish proving an inequality from solving one.'
+  ],
+  terms: [
+    ['To prove', 'Isbotlash', 'Доказать'],
+    ['Identity', 'Ayniyat', 'Тождество'],
+    ['Non-negative', 'Manfiy emas', 'Неотрицательный'],
+    ['Perfect square', 'To‘la kvadrat', 'Полный квадрат'],
+    ['Arithmetic mean', 'O‘rta arifmetik', 'Среднее арифметическое'],
+    ['Geometric mean', 'O‘rta geometrik', 'Среднее геометрическое'],
+    ['Equality case', 'Tenglik holati', 'Случай равенства'],
+    ['Counter-example', 'Qarama-qarshi misol', 'Контрпример']
+  ],
+  timing: [[10, 'Proving is not solving'], [25, 'The square method'], [25, 'The mean inequality'], [25, 'Equality, and counter-examples'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Proving is not solving',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th></th><th>Solving</th><th>Proving</th></tr></thead>
+      <tbody>
+        <tr><td>the question</td><td>for which ${m('x')}?</td><td>for <b>all</b> ${m('x')}?</td></tr>
+        <tr><td>the answer</td><td>a set</td><td>a chain of true statements</td></tr>
+        <tr><td>one value is</td><td>a solution</td><td>not a proof</td></tr>
+        <tr><td>one failing value is</td><td>nothing</td><td>a complete disproof</td></tr>
+      </tbody></table></div>
+      <p>The asymmetry in the last row is worth dwelling on. To prove ${m('x² + 1 ≥ 2x')} you must argue
+      for every ${m('x')} at once; to disprove ${m('x² ≥ x')} you need only exhibit ${m('x = ' + f('1', '2'))}.</p>
+      <div class="keybox"><div class="klabel">The standard opening</div>
+      Move everything to one side. The inequality ${m('A ≥ B')} becomes ${m('A − B ≥ 0')}, and now there
+      is only one thing to do: show that the expression on the left cannot be negative.</div>`
+    },
+    {
+      h: 'The square method',
+      html: `<p>The whole method rests on ${m('t² ≥ 0')} for every real ${m('t')}. Everything else is
+      rearrangement.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>To prove</th><th>Difference</th><th>Why it is ${m('≥ 0')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x² + 1 ≥ 2x</td><td class="m">(x − 1)²</td><td>a square</td></tr>
+        <tr><td class="m">a² + b² ≥ 2ab</td><td class="m">(a − b)²</td><td>a square</td></tr>
+        <tr><td class="m">x² + x + 1 > 0</td><td class="m">(x + ½)² + ¾</td><td>square plus a positive</td></tr>
+        <tr><td class="m">a² + b² + c² ≥ ab + bc + ca</td><td class="m">½[(a−b)² + (b−c)² + (c−a)²]</td><td>three squares</td></tr>
+      </tbody></table></div>
+      {{fig:completeSquare:Completing the square is what turns an unclear sign into an obvious one.}}
+      <div class="warn"><span class="wl">Write the square, do not describe it</span>
+      “The left side is bigger because of the square” earns nothing. The proof is the line
+      ${m('x² + 1 − 2x = (x − 1)² ≥ 0')} — the identity, then the reason, then the conclusion.</div>`
+    },
+    {
+      h: 'The mean inequality',
+      html: `<p>For ${m('a ≥ 0')} and ${m('b ≥ 0')}:</p>
+      ${eq(m(f('a + b', '2') + ' ≥ ' + sr('ab')), true)}
+      <p>The proof is one line of the previous section. Since ${m('(' + sr('a') + ' − ' + sr('b') + ')² ≥ 0')},
+      expanding gives ${m('a − 2' + sr('ab') + ' + b ≥ 0')}, that is ${m('a + b ≥ 2' + sr('ab'))}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Form</th><th>Says</th></tr></thead>
+      <tbody>
+        <tr><td class="m">a + b ≥ 2${sr('ab')}</td><td>the sum is at least twice the geometric mean</td></tr>
+        <tr><td class="m">x + ${f('1', 'x')} ≥ 2 &nbsp;(x > 0)</td><td>the classic special case, ${m('b = ' + f('1', 'a'))}</td></tr>
+        <tr><td class="m">(a + b)(${f('1', 'a')} + ${f('1', 'b')}) ≥ 4</td><td>two applications, multiplied</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The rectangle behind it</div>
+      Of all rectangles with a given area, the square has the smallest perimeter. That is exactly
+      ${m('a + b ≥ 2' + sr('ab'))}, with ${m('ab')} the area — and it is why the equality case is
+      ${m('a = b')}.</div>`
+    },
+    {
+      h: 'Equality, and counter-examples',
+      html: `<p>A complete answer names the equality case, and a complete disproof names a value.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Equality when</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x² + 1 ≥ 2x</td><td class="m">x = 1</td></tr>
+        <tr><td class="m">a + b ≥ 2${sr('ab')}</td><td class="m">a = b</td></tr>
+        <tr><td class="m">x + ${f('1', 'x')} ≥ 2</td><td class="m">x = 1</td></tr>
+        <tr><td class="m">a² + b² + c² ≥ ab + bc + ca</td><td class="m">a = b = c</td></tr>
+      </tbody></table></div>
+      <p>And two statements that are simply false, with the value that kills them:</p>
+      <ul>
+        <li>“${m('x² ≥ x')} for all ${m('x')}” — take ${m('x = ' + f('1', '2'))}: ${m(f('1', '4') + ' < ' + f('1', '2'))}.</li>
+        <li>“${m('x + ' + f('1', 'x') + ' ≥ 2')} for all ${m('x ≠ 0')}” — take ${m('x = −1')}: the sum is ${m('−2')}.</li>
+      </ul>
+      <div class="warn"><span class="wl">The condition ${m('x > 0')} is part of the statement</span>
+      The second bullet is the reason. Dropping a condition because it looks decorative turns a theorem
+      into a false claim — and in a proof, a dropped condition is a lost proof.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Prove ' + m('x² + 1 ≥ 2x') + ' for all real ' + m('x') + '.',
+      steps: [
+        ['Move everything left: ' + m('x² − 2x + 1 ≥ 0') + '.', ''],
+        ['Factorise: ' + m('(x − 1)² ≥ 0') + '.', 'An identity.'],
+        ['A square is never negative — true for every ' + m('x') + '.', ''],
+        ['Equality only when ' + m('x = 1') + '.', '']
+      ],
+      ans: 'Proved; equality at ' + m('x = 1')
+    },
+    {
+      q: 'Prove ' + m('a + b ≥ 2' + sr('ab')) + ' for ' + m('a, b ≥ 0') + '.',
+      steps: [
+        ['Both roots exist because ' + m('a, b ≥ 0') + '.', ''],
+        [m('(' + sr('a') + ' − ' + sr('b') + ')² ≥ 0'), ''],
+        ['Expand: ' + m('a − 2' + sr('ab') + ' + b ≥ 0') + '.', ''],
+        ['Rearrange: ' + m('a + b ≥ 2' + sr('ab')) + ', equality at ' + m('a = b') + '.', '']
+      ],
+      ans: 'Proved; equality at ' + m('a = b')
+    },
+    {
+      q: 'Prove ' + m('a² + b² + c² ≥ ab + bc + ca') + '.',
+      steps: [
+        ['Double both sides: ' + m('2a² + 2b² + 2c² ≥ 2ab + 2bc + 2ca') + '.', 'Easier to split.'],
+        ['Difference ' + m('= (a−b)² + (b−c)² + (c−a)²') + '.', ''],
+        ['A sum of squares is non-negative.', ''],
+        ['Equality only when ' + m('a = b = c') + '.', '']
+      ],
+      ans: 'Proved; equality at ' + m('a = b = c')
+    }
+  ],
+  modelNote: 'Ask the class to disprove “x² ≥ x for all x” before proving anything — one fraction settles it, and the difference between proving and disproving lands immediately.',
+  interactive: {
+    type: 'substitute',
+    title: 'Test a claim, then prove it',
+    hint: 'Testing values can only disprove; the algebra proves.'
+  },
+  quiz: [
+    { q: 'To prove ' + m('A ≥ B') + ' you show:', a: [m('A − B ≥ 0'), m('A > 0'), m('B < 0'), 'one value works'], c: 0, why: 'One side, one sign.' },
+    { q: 'The engine of nearly every proof here is:', a: [m('t² ≥ 0'), m('t > 0'), m('t ≠ 0'), m('t = 0')], c: 0, why: 'A square is never negative.' },
+    { q: 'Equality in ' + m('x² + 1 ≥ 2x') + ' holds at:', a: [m('x = 0'), m('x = 1'), m('x = −1'), 'never'], c: 1, why: m('(x − 1)² = 0') + '.' },
+    { q: m('a + b ≥ 2' + sr('ab')) + ' needs:', a: ['nothing', m('a, b ≥ 0'), m('a > b'), m('a = b')], c: 1, why: 'The roots must exist.' },
+    { q: 'One value that fails a claim is:', a: ['nothing', 'a full disproof', 'a partial proof', 'a proof'], c: 1, why: '“For all” dies to one exception.' },
+    { q: m('x + ' + f('1', 'x') + ' ≥ 2') + ' requires:', a: [m('x ≠ 0'), m('x > 0'), m('x < 0'), 'nothing'], c: 1, why: m('x = −1') + ' gives ' + m('−2') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Prove ' + m('x² ≥ 0'), 'A square is non-negative'],
+      ['Prove ' + m('x² + 4 > 0'), m('x² ≥ 0') + ', add ' + m('4')],
+      ['Prove ' + m('(x − 3)² ≥ 0'), 'A square'],
+      ['Prove ' + m('a² + b² ≥ 2ab'), m('(a − b)² ≥ 0')],
+      ['Prove ' + m('x² + 1 ≥ 2x'), m('(x − 1)² ≥ 0')],
+      ['Disprove “' + m('x² ≥ x') + ' for all ' + m('x') + '”', m('x = ' + f('1', '2'))],
+      ['Equality in ' + m('a + b ≥ 2' + sr('ab')), m('a = b')]
+    ],
+    med: [
+      ['Prove ' + m('x² + x + 1 > 0'), m('(x + ½)² + ¾ > 0')],
+      ['Prove ' + m('x + ' + f('1', 'x') + ' ≥ 2') + ' for ' + m('x > 0'), m('(' + sr('x') + ' − ' + f('1', sr('x')) + ')² ≥ 0')],
+      ['Prove ' + m('a² + b² + c² ≥ ab + bc + ca'), 'Three squares, halved'],
+      ['Prove ' + m('(a + b)² ≥ 4ab'), m('(a − b)² ≥ 0')],
+      ['Prove ' + m('a⁴ + b⁴ ≥ a³b + ab³'), m('(a − b)²(a² + ab + b²) ≥ 0')],
+      ['Prove ' + m('x⁴ + 1 ≥ x³ + x') + ' for ' + m('x > 0'), m('(x³ − 1)(x − 1) ≥ 0')],
+      ['Disprove “' + m('a + b ≥ 2' + sr('ab')) + ' for all reals”', m('a = b = −1')]
+    ],
+    hard: [
+      ['Prove ' + m('(a + b)(' + f('1', 'a') + ' + ' + f('1', 'b') + ') ≥ 4') + ' for ' + m('a, b > 0'), 'Multiply two mean inequalities'],
+      ['Prove ' + m('a² + b² + 1 ≥ ab + a + b'), 'Half a sum of three squares'],
+      ['Least value of ' + m('x + ' + f('4', 'x')) + ' for ' + m('x > 0'), m('4') + ', at ' + m('x = 2')],
+      ['Prove ' + m(f('a', 'b') + ' + ' + f('b', 'a') + ' ≥ 2') + ' for ' + m('ab > 0'), m('(a − b)² ≥ 0') + ', divided by ' + m('ab')],
+      ['Prove ' + m('a³ + b³ ≥ ab(a + b)') + ' for ' + m('a, b > 0'), m('(a + b)(a − b)² ≥ 0')],
+      ['Greatest area of a rectangle of perimeter ' + m('20'), m('25') + ' — the square'],
+      ['Prove ' + m('(1 + a)(1 + b) ≥ (1 + ' + sr('ab') + ')²') + ' for ' + m('a, b ≥ 0'), 'Expand; reduces to ' + m('(' + sr('a') + ' − ' + sr('b') + ')² ≥ 0')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every proof ends with the equality case named; a proof without it is incomplete.',
+  homework: [
+    'Prove ' + m('x² + 9 ≥ 6x') + ' and say when equality holds.',
+    'Prove ' + m('a² + b² ≥ 2ab') + ' and interpret it as a statement about rectangles.',
+    'Prove ' + m('x + ' + f('9', 'x') + ' ≥ 6') + ' for ' + m('x > 0') + '.',
+    'Disprove “' + m('x³ ≥ x²') + ' for all ' + m('x') + '”.',
+    'Prove ' + m('a² + b² + c² ≥ ab + bc + ca') + ' and name the equality case.'
+  ]
+});
+
+/* ============================== 19 ============================== */
+G9_ALG.push({
+  id: 'a9-19', stream: 'alg', grade: 9, quarter: 2, lessons: '36', hours: 1,
+  title: 'Chapter exercises — sets, Venn diagrams and notation',
+  subtitle: 'Cambridge writes solution sets in the language of sets; this hour makes both notations one.',
+  uz: 'Algebra 9, II bob mashqlari', uzPage: 'pp. 87–90',
+  cam: 'IGX 1.1–1.2, 14.1', camPage: 'Core & Extended, pp. 2–14', wb: 'Exercise 1.1–1.2',
+  objectives: [
+    'Read and write the set notation ∈, ⊂, ∩, ∪, ∅ and ξ.',
+    'Show two or three sets on a Venn diagram and shade a described region.',
+    'Translate an interval answer into set-builder notation and back.',
+    'Recognise a system as an intersection and a collection as a union.'
+  ],
+  terms: [
+    ['Set', 'To‘plam', 'Множество'],
+    ['Element', 'Element', 'Элемент'],
+    ['Subset', 'Qism to‘plam', 'Подмножество'],
+    ['Universal set', 'Universal to‘plam', 'Универсальное множество'],
+    ['Complement', 'To‘ldiruvchi', 'Дополнение'],
+    ['Venn diagram', 'Venn diagrammasi', 'Диаграмма Венна'],
+    ['Set-builder notation', 'To‘plamni yozish usuli', 'Способ задания множества'],
+    ['Disjoint', 'Kesishmaydigan', 'Непересекающиеся']
+  ],
+  timing: [[8, 'The symbols'], [12, 'Venn diagrams'], [12, 'Sets and intervals'], [6, 'Mixed exercises'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'The symbols',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Symbol</th><th>Read as</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="m">∈</td><td>is an element of</td><td class="m">3 ∈ ℕ</td></tr>
+        <tr><td class="m">∉</td><td>is not an element of</td><td class="m">${sr('2')} ∉ ℚ</td></tr>
+        <tr><td class="m">⊂</td><td>is a subset of</td><td class="m">ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ</td></tr>
+        <tr><td class="m">∩</td><td>intersection — “and”</td><td class="m">A ∩ B</td></tr>
+        <tr><td class="m">∪</td><td>union — “or”</td><td class="m">A ∪ B</td></tr>
+        <tr><td class="m">∅</td><td>the empty set</td><td class="m">{x : x² < 0} = ∅</td></tr>
+        <tr><td class="m">ξ</td><td>the universal set</td><td>everything under discussion</td></tr>
+        <tr><td class="m">A′</td><td>the complement of ${m('A')}</td><td>everything in ${m('ξ')} not in ${m('A')}</td></tr>
+        <tr><td class="m">n(A)</td><td>the number of elements</td><td class="m">n({2,4,6}) = 3</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One idea, two alphabets</div>
+      A <b>system</b> of inequalities is an ${m('∩')}; a <b>collection</b> is a ${m('∪')}. The Uzbek
+      textbook writes the braces, Cambridge writes the symbols. Nothing mathematical separates them.</div>`
+    },
+    {
+      h: 'Venn diagrams',
+      html: `<p>Two sets divide the universal set into four regions; three sets into eight.</p>
+      {{fig:vennTwo:Two sets, four regions — both, only A, only B, neither.}}
+      {{fig:vennThree:Three sets, eight regions — the centre belongs to all three.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Region</th><th>Notation</th></tr></thead>
+      <tbody>
+        <tr><td>in both</td><td class="m">A ∩ B</td></tr>
+        <tr><td>in ${m('A')} only</td><td class="m">A ∩ B′</td></tr>
+        <tr><td>in at least one</td><td class="m">A ∪ B</td></tr>
+        <tr><td>in neither</td><td class="m">(A ∪ B)′</td></tr>
+      </tbody></table></div>
+      <p>Counting follows the picture: ${m('n(A ∪ B) = n(A) + n(B) − n(A ∩ B)')}, because the overlap
+      would otherwise be counted twice.</p>`
+    },
+    {
+      h: 'Sets and intervals',
+      html: `<p>Every answer from the last two lessons can be written either way.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Interval</th><th>Set-builder</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(−3, 3)</td><td class="m">{x ∈ ℝ : −3 &lt; x &lt; 3}</td></tr>
+        <tr><td class="m">[2, 3]</td><td class="m">{x ∈ ℝ : 2 ≤ x ≤ 3}</td></tr>
+        <tr><td class="m">(−∞, −2) ∪ (2, +∞)</td><td class="m">{x ∈ ℝ : x² &gt; 4}</td></tr>
+        <tr><td class="m">∅</td><td class="m">{x ∈ ℝ : x² + 1 &lt; 0}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Cambridge marks the notation, not only the answer</span>
+      A correct set written with the wrong brackets loses a mark in an IGCSE paper. Round for excluded,
+      square for included, and the colon inside set-builder braces reads “such that”.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'With ' + m('ξ = {1,…,10}') + ', ' + m('A = {even}') + ', ' + m('B = {multiples of 3}') + ', list ' + m('A ∩ B') + ' and ' + m('A ∪ B') + '.',
+      steps: [
+        [m('A = {2,4,6,8,10}'), ''],
+        [m('B = {3,6,9}'), ''],
+        [m('A ∩ B = {6}'), 'In both.'],
+        [m('A ∪ B = {2,3,4,6,8,9,10}'), 'Eight elements.']
+      ],
+      ans: m('{6}') + ' and ' + m('{2,3,4,6,8,9,10}')
+    },
+    {
+      q: 'In a class of ' + m('30') + ', ' + m('18') + ' play football, ' + m('14') + ' play chess, ' + m('6') + ' play both. How many play neither?',
+      steps: [
+        [m('n(F ∪ C) = 18 + 14 − 6 = 26'), 'Overlap counted once.'],
+        [m('30 − 26 = 4'), ''],
+        ['Check the four regions: ' + m('12 + 6 + 8 + 4 = 30') + ' ✓', ''],
+        [m('4') + ' pupils.', '']
+      ],
+      ans: m('4')
+    },
+    {
+      q: 'Write the solution of ' + m('{ x² − 4 > 0 ; x² − 9 < 0 }') + ' in set notation.',
+      steps: [
+        ['First set: ' + m('{x : x < −2} ∪ {x : x > 2}') + '.', ''],
+        ['Second set: ' + m('{x : −3 < x < 3}') + '.', ''],
+        ['A system is an intersection.', ''],
+        [m('{x ∈ ℝ : −3 < x < −2} ∪ {x ∈ ℝ : 2 < x < 3}'), '']
+      ],
+      ans: m('(−3, −2) ∪ (2, 3)')
+    }
+  ],
+  modelNote: 'Shade the four regions of a two-set Venn diagram on the board and let the class name each one in symbols before any counting begins.',
+  interactive: {
+    type: 'quiz',
+    title: 'Set notation at speed',
+    hint: 'Symbols to words, and back.'
+  },
+  quiz: [
+    { q: m('∩') + ' means:', a: ['or', 'and', 'not', 'all'], c: 1, why: 'Intersection.' },
+    { q: 'A system of inequalities corresponds to:', a: [m('∪'), m('∩'), m('∅'), m('⊂')], c: 1, why: 'Both must hold.' },
+    { q: m('n(A ∪ B)') + ' equals:', a: [m('n(A) + n(B)'), m('n(A) + n(B) − n(A ∩ B)'), m('n(A) − n(B)'), m('n(A ∩ B)')], c: 1, why: 'The overlap once.' },
+    { q: m('A′') + ' is:', a: ['everything in ' + m('A'), 'everything not in ' + m('A'), m('A ∩ B'), m('∅')], c: 1, why: 'The complement.' },
+    { q: m('{x : x² + 1 < 0}') + ' is:', a: [m('ℝ'), m('∅'), m('{0}'), m('{−1}')], c: 1, why: 'Never negative.' },
+    { q: 'Three sets divide ' + m('ξ') + ' into:', a: ['six regions', 'eight regions', 'four regions', 'nine regions'], c: 1, why: m('2³') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Is ' + m('5 ∈ ℕ') + '?', 'Yes'],
+      ['Is ' + m(sr('2') + ' ∈ ℚ') + '?', 'No'],
+      [m('{1,2,3} ∩ {3,4}'), m('{3}')],
+      [m('{1,2} ∪ {2,3}'), m('{1,2,3}')],
+      [m('n({2,4,6,8})'), m('4')],
+      ['Write ' + m('(1, 5)') + ' in set-builder form', m('{x : 1 < x < 5}')],
+      ['Write ' + m('{x : x ≥ 0}') + ' as an interval', m('[0, +∞)')]
+    ],
+    med: [
+      [m('ξ = {1..10}') + ', ' + m('A') + ' = even, ' + m('B') + ' = multiples of 3: ' + m('A ∩ B'), m('{6}')],
+      ['Same sets: ' + m('A ∪ B'), m('{2,3,4,6,8,9,10}')],
+      ['Same sets: ' + m('A′'), m('{1,3,5,7,9}')],
+      [m('n(A) = 18, n(B) = 14, n(A ∩ B) = 6') + ': ' + m('n(A ∪ B)'), m('26')],
+      ['Of ' + m('30') + ', how many in neither?', m('4')],
+      ['Write ' + m('(−∞, −2) ∪ (2, ∞)') + ' as one condition', m('{x : x² > 4}')],
+      ['Shade “in ' + m('A') + ' only”', m('A ∩ B′')]
+    ],
+    hard: [
+      ['Solve ' + m('{ x² < 9 ; x > 0 }') + ' in set notation', m('{x ∈ ℝ : 0 < x < 3}')],
+      [m('n(ξ) = 40, n(A) = 25, n(B) = 20, n((A ∪ B)′) = 5') + ': ' + m('n(A ∩ B)'), m('10')],
+      ['How many subsets has ' + m('{a, b, c}') + '?', m('8')],
+      ['Describe the shaded centre of three circles', m('A ∩ B ∩ C')],
+      [m('A ⊂ B') + ' — simplify ' + m('A ∩ B'), m('A')],
+      [m('A ⊂ B') + ' — simplify ' + m('A ∪ B'), m('B')],
+      ['Of ' + m('50') + ': ' + m('30') + ' study French, ' + m('25') + ' German, ' + m('8') + ' neither. Both?', m('13')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Answer every task twice: once in interval notation, once in set-builder notation.',
+  homework: [
+    'With ' + m('ξ = {1,…,12}') + ', list ' + m('A ∩ B') + ' for ' + m('A') + ' = multiples of 3 and ' + m('B') + ' = even.',
+    'In a group of ' + m('40') + ', ' + m('22') + ' play tennis, ' + m('18') + ' swim, ' + m('7') + ' do both. How many do neither?',
+    'Write the solution of ' + m('x² − 16 ≤ 0') + ' in both notations.',
+    'Draw a three-set Venn diagram and shade ' + m('A ∩ B ∩ C′') + '.',
+    'How many subsets does a set of ' + m('5') + ' elements have?'
+  ]
+});
+
+/* ============================== 20 ============================== */
+G9_ALG.push({
+  id: 'a9-20', stream: 'alg', grade: 9, quarter: 2, lessons: '37–38', hours: 2,
+  title: 'Control work 3, and work on the mistakes',
+  subtitle: 'Systems and proofs in one paper, and Chapter II closed before trigonometry opens.',
+  uz: 'Algebra 9, Nazorat ishi 3', uzPage: 'pp. 68–90',
+  cam: 'IGX 6, 14 review', camPage: 'Core & Extended, pp. 118–300', wb: 'Control paper A3',
+  objectives: [
+    'Solve a system of two equations by the method the system asks for.',
+    'Solve a system of second-degree inequalities and write the answer as intervals.',
+    'Prove one inequality in full, with the equality case named.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['System', 'Sistema', 'Система'],
+    ['Collection', 'Majmua', 'Совокупность'],
+    ['Substitution', 'O‘rniga qo‘yish', 'Подстановка'],
+    ['Method of addition', 'Qo‘shish usuli', 'Способ сложения'],
+    ['Proof', 'Isbot', 'Доказательство'],
+    ['Equality case', 'Tenglik holati', 'Случай равенства'],
+    ['Interval notation', 'Oraliq belgisi', 'Обозначение промежутка']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 30 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Solve ${m('{ x + y = 7 ; xy = 12 }')}</td><td class="m">5</td><td>L28–29</td></tr>
+        <tr><td>2</td><td>Solve ${m('{ x² + y² = 20 ; x² − y² = 12 }')}</td><td class="m">5</td><td>L30–31</td></tr>
+        <tr><td>3</td><td>Solve ${m('{ x² − 1 > 0 ; x² − 25 < 0 }')}</td><td class="m">5</td><td>L32–33</td></tr>
+        <tr><td>4</td><td>Solve ${m(f('x − 2', 'x + 1') + ' ≤ 0')}</td><td class="m">5</td><td>L32–33</td></tr>
+        <tr><td>5</td><td>Prove ${m('x² + 4 ≥ 4x')}, naming the equality case</td><td class="m">5</td><td>L34–35</td></tr>
+        <tr><td>6</td><td>Write the answer to Q3 in set-builder notation</td><td class="m">5</td><td>L36</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries one mark for checking the pair in <b>both</b> equations; Q2 one for pairing the signs
+      correctly; Q3 one for a drawn number line; Q4 one for the round bracket at ${m('−1')}; Q5 one for
+      the equality case. Five of the thirty marks are habits, again.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>one pair only</td><td class="m">(3, 4)</td><td>the system is symmetric — ${m('(4, 3)')} too</td></tr>
+        <tr><td>signs mispaired</td><td class="m">(4, 2)</td><td>test in the second equation</td></tr>
+        <tr><td>intersection forced into one interval</td><td class="m">(−5, 5)</td><td>the picture shows two pieces</td></tr>
+        <tr><td>square bracket on a denominator</td><td class="m">[−1, 2]</td><td class="m">(−1, 2]</td></tr>
+        <tr><td>proof by example</td><td>“try ${m('x = 3')}: true”</td><td>move to one side and factorise</td></tr>
+        <tr><td>equality case missing</td><td class="m">(x − 2)² ≥ 0</td><td>“…with equality at ${m('x = 2')}”</td></tr>
+        <tr><td>system read as collection</td><td class="m">∪ instead of ∩</td><td>braces mean “and”</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'Chapter II as one map',
+      html: `<p>Five boxes, and the links written as sentences:</p>
+      <ul>
+        <li><b>a linear equation present</b> → <b>substitute</b> — “isolate, replace, solve one unknown”</li>
+        <li><b>two squares present</b> → <b>add or subtract</b> — “one square disappears”</li>
+        <li><b>symmetric</b> → <b>${m('u = x + y, v = xy')}</b> — “and then Vieta backwards”</li>
+        <li><b>a system of inequalities</b> → <b>one number line</b> — “solve separately, intersect”</li>
+        <li><b>an inequality to prove</b> → <b>one side, a square</b> — “and name the equality case”</li>
+      </ul>
+      {{fig:systemIntervals:Two sets, one axis — the whole of the inequality half of this chapter.}}
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      Chapter III leaves algebra for a while: the angle escapes the triangle, the radian arrives, and
+      sine and cosine become functions of any angle at all. Nothing in it needs Chapter II — but the
+      equations it produces will be solved by exactly the methods just tested.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q1: solve ' + m('{ x + y = 7 ; xy = 12 }') + '.',
+      steps: [
+        ['Symmetric: ' + m('u = 7') + ', ' + m('v = 12') + '.', ''],
+        [m('t² − 7t + 12 = 0'), 'Vieta backwards.'],
+        [m('t = 3, 4'), ''],
+        [m('(3, 4)') + ' and ' + m('(4, 3)') + ' — both checked.', '']
+      ],
+      ans: m('(3, 4)') + ' and ' + m('(4, 3)')
+    },
+    {
+      q: 'Model answer, Q3: solve ' + m('{ x² − 1 > 0 ; x² − 25 < 0 }') + '.',
+      steps: [
+        [m('x < −1') + ' or ' + m('x > 1') + '.', 'Outside ' + m('±1') + '.'],
+        [m('−5 < x < 5') + '.', 'Inside ' + m('±5') + '.'],
+        ['One number line, both sets drawn.', ''],
+        [m('(−5, −1) ∪ (1, 5)') + '.', 'Two pieces.']
+      ],
+      ans: m('(−5, −1) ∪ (1, 5)')
+    },
+    {
+      q: 'Model answer, Q5: prove ' + m('x² + 4 ≥ 4x') + '.',
+      steps: [
+        [m('x² − 4x + 4 ≥ 0'), 'Everything to one side.'],
+        [m('(x − 2)² ≥ 0'), 'An identity.'],
+        ['A square is never negative — true for all ' + m('x') + '.', ''],
+        ['Equality only at ' + m('x = 2') + '.', '']
+      ],
+      ans: 'Proved; equality at ' + m('x = 2')
+    }
+  ],
+  modelNote: 'Mark Q5 in front of the class: read out a “proof” that only tests three values, and let them say what is missing.',
+  interactive: {
+    type: 'quiz',
+    title: 'Chapter II in twelve questions',
+    hint: 'Two from each block of lessons.',
+    items: [
+      { q: 'A system with one linear equation is best solved by:', a: ['substitution', 'addition', 'squaring', 'a graph'], c: 0, why: 'Isolate and replace.' },
+      { q: 'Both equations have ' + m('x²') + ' and ' + m('y²') + ': use', a: ['substitution', 'addition', 'Vieta', 'guessing'], c: 1, why: 'One square cancels.' },
+      { q: m('x² + y²') + ' in terms of ' + m('u, v') + ':', a: [m('u² − v'), m('u² − 2v'), m('u² + 2v'), m('u + v')], c: 1, why: m('(x+y)² − 2xy') + '.' },
+      { q: 'Numbers with sum ' + m('u') + ', product ' + m('v') + ' are roots of:', a: [m('t² + ut + v = 0'), m('t² − ut + v = 0'), m('t² − v = 0'), m('t² + v = 0')], c: 1, why: 'Vieta backwards.' },
+      { q: 'A candidate pair must be tested in:', a: ['one equation', 'both', 'neither', 'the easier one'], c: 1, why: 'Or the check proves nothing.' },
+      { q: 'A system of inequalities gives:', a: ['a union', 'an intersection', 'either', 'always one interval'], c: 1, why: 'Every line holds.' },
+      { q: m('x² − 25 < 0') + ' solves to:', a: [m('x < −5') + ' or ' + m('x > 5'), m('−5 < x < 5'), m('x < 5'), m('∅')], c: 1, why: 'Between the roots.' },
+      { q: 'A zero of a denominator gets:', a: ['a square bracket', 'a round bracket', 'either', 'no bracket'], c: 1, why: 'Undefined there.' },
+      { q: 'To prove ' + m('A ≥ B') + ':', a: ['test values', 'show ' + m('A − B ≥ 0'), 'draw a graph', 'show ' + m('A > 0')], c: 1, why: 'One side, one sign.' },
+      { q: 'The engine of these proofs is:', a: [m('t² ≥ 0'), m('t > 0'), m('t ≠ 0'), m('t = 1')], c: 0, why: 'A square is non-negative.' },
+      { q: 'One failing value is:', a: ['nothing', 'a disproof', 'a proof', 'a special case'], c: 1, why: '“For all” dies to one exception.' },
+      { q: m('∩') + ' corresponds to:', a: ['a collection', 'a system', 'a complement', 'the empty set'], c: 1, why: 'Braces mean “and”.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 is worth full marks only if you give:', a: ['one pair', 'both pairs', 'the sum', 'the product'], c: 1, why: 'Symmetric systems come in pairs.' },
+    { q: 'Q3’s answer has:', a: ['one interval', 'two intervals', 'no solution', 'one point'], c: 1, why: 'The overlap is two strips.' },
+    { q: 'The bracket at ' + m('−1') + ' in Q4 is:', a: ['square', 'round', 'either', 'omitted'], c: 1, why: 'A denominator zero.' },
+    { q: 'Q5 needs, besides the square:', a: ['a graph', 'the equality case', 'three test values', 'nothing'], c: 1, why: 'A proof without it is incomplete.' },
+    { q: 'Q6 tests:', a: ['algebra', 'notation', 'speed', 'proof'], c: 1, why: 'Cambridge marks notation.' },
+    { q: 'Work on the mistakes means:', a: ['fix the wrong line', 'rewrite the solution', 'copy the answer', 'skip it'], c: 1, why: 'The whole solution, again.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m('{ x + y = 7 ; xy = 12 }'), m('(3, 4), (4, 3)')],
+      ['Solve ' + m('{ x² = 9 ; y² = 4 }'), m('(±3, ±2)')],
+      ['Solve ' + m('x² − 1 > 0'), m('(−∞, −1) ∪ (1, +∞)')],
+      ['Solve ' + m('x² − 25 < 0'), m('(−5, 5)')],
+      ['Prove ' + m('x² + 4 ≥ 4x'), m('(x − 2)² ≥ 0')],
+      ['Equality in ' + m('x² + 4 ≥ 4x'), m('x = 2')],
+      ['Write ' + m('(1, 5)') + ' in set-builder form', m('{x : 1 < x < 5}')]
+    ],
+    med: [
+      ['Solve ' + m('{ x² + y² = 20 ; x² − y² = 12 }'), m('(±4, ±2)')],
+      ['Solve ' + m('{ x² − 1 > 0 ; x² − 25 < 0 }'), m('(−5, −1) ∪ (1, 5)')],
+      ['Solve ' + m(f('x − 2', 'x + 1') + ' ≤ 0'), m('(−1, 2]')],
+      ['Solve ' + m('{ y = x + 1 ; x² + y² = 25 }'), m('(3, 4)') + ', ' + m('(−4, −3)')],
+      ['Prove ' + m('a² + 9 ≥ 6a'), m('(a − 3)² ≥ 0')],
+      ['Solve ' + m('{ x + y = 6 ; x² + y² = 20 }'), m('(2, 4), (4, 2)')],
+      ['Write the answer to ' + m('x² ≤ 4') + ' in set notation', m('{x ∈ ℝ : −2 ≤ x ≤ 2}')]
+    ],
+    hard: [
+      ['Solve ' + m('{ x² + xy = 10 ; xy + y² = 15 }'), m('(2, 3)') + ', ' + m('(−2, −3)')],
+      ['Solve ' + m('{ x² − 4x + 3 < 0 ; x² − 9 > 0 }'), m('∅')],
+      ['Prove ' + m('a + ' + f('1', 'a') + ' ≥ 2') + ' for ' + m('a > 0'), m('(' + sr('a') + ' − ' + f('1', sr('a')) + ')² ≥ 0')],
+      ['For which ' + m('k') + ' is ' + m('y = x + k') + ' tangent to ' + m('x² + y² = 8') + '?', m('k = ±4')],
+      ['Solve ' + m('2 ≤ x² − 2 ≤ 7'), m('[−3, −2] ∪ [2, 3]')],
+      ['Two numbers: sum ' + m('8') + ', sum of squares ' + m('34'), m('3') + ' and ' + m('5')],
+      ['Prove ' + m('(a + b)² ≥ 4ab') + ' and name the equality case', m('(a − b)² ≥ 0') + '; ' + m('a = b')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every question you lost a mark on, in full, before starting the new chapter.',
+  homework: [
+    'Solve ' + m('{ x + y = 9 ; xy = 20 }') + '.',
+    'Solve ' + m('{ x² + y² = 34 ; x² − y² = 16 }') + '.',
+    'Solve ' + m('{ x² − 4 > 0 ; x² − 36 < 0 }') + ' and write the answer in set notation.',
+    'Solve ' + m(f('x + 4', 'x − 3') + ' ≥ 0') + '.',
+    'Prove ' + m('x² + 25 ≥ 10x') + ' and name the equality case.'
+  ]
+});
