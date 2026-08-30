@@ -4960,3 +4960,189 @@ G6_MAT.push({
     'Give one situation where proportion describes the world well and one where it does not.'
   ]
 });
+
+/* ============================== 28 ============================== */
+G6_MAT.push({
+  id: 'g6-28', stream: 'mat', grade: 6, quarter: 2, lessons: '55', hours: 1,
+  title: 'Recall — percentages',
+  subtitle: 'A percentage is a fraction with denominator ' + m('100') + ' — and everything else follows from that.',
+  uz: 'Matematika 6, takrorlash', uzPage: 'pp. 154–157',
+  cam: 'S7 10 entry', camPage: 'Stage 7, pp. 96–100', wb: 'Exercise 10.1',
+  objectives: [
+    'Convert between percentages, fractions and decimals.',
+    'Find a percentage of a quantity.',
+    'Express one quantity as a percentage of another.',
+    'Recognise the percentages worth knowing by heart.'
+  ],
+  terms: [
+    ['Percentage', 'Foiz', 'Процент'],
+    ['Per cent', 'Yuzdan', 'Со ста'],
+    ['Fraction', 'Kasr', 'Дробь'],
+    ['Decimal', 'O‘nli kasr', 'Десятичная дробь'],
+    ['To convert', 'O‘girmoq', 'Преобразовать'],
+    ['Of a quantity', 'Miqdordan', 'От величины'],
+    ['Whole', 'Butun', 'Целое'],
+    ['Equivalent', 'Teng kuchli', 'Равный']
+  ],
+  timing: [[10, 'What a percentage is'], [12, 'The three forms'], [12, 'Finding a percentage of an amount'], [6, 'One quantity as a percentage of another']],
+  sections: [
+    {
+      h: 'What a percentage is',
+      html: `${eq(m('p% = ' + f('p', '100')), true)}
+      <p>“Per cent” means “out of a hundred”, so ${m('37%')} is ${m(f('37', '100'))} and nothing more
+      mysterious.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Means</th></tr></thead>
+      <tbody>
+        <tr><td class="m">50%</td><td>half</td></tr>
+        <tr><td class="m">25%</td><td>a quarter</td></tr>
+        <tr><td class="m">10%</td><td>a tenth</td></tr>
+        <tr><td class="m">100%</td><td>all of it</td></tr>
+        <tr><td class="m">150%</td><td>one and a half times it</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Percentages exist to make comparison easy</div>
+      Is ${m(f('17', '25'))} better than ${m(f('27', '40'))}? As ${m('68%')} and ${m('67.5%')} the answer
+      is immediate. A common denominator of ${m('100')} is the whole point.</div>`
+    },
+    {
+      h: 'The three forms',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Percentage</th><th>Fraction</th><th>Decimal</th></tr></thead>
+      <tbody>
+        <tr><td class="m">10%</td><td class="m">${f('1', '10')}</td><td class="m">0.1</td></tr>
+        <tr><td class="m">20%</td><td class="m">${f('1', '5')}</td><td class="m">0.2</td></tr>
+        <tr><td class="m">25%</td><td class="m">${f('1', '4')}</td><td class="m">0.25</td></tr>
+        <tr><td class="m">50%</td><td class="m">${f('1', '2')}</td><td class="m">0.5</td></tr>
+        <tr><td class="m">75%</td><td class="m">${f('3', '4')}</td><td class="m">0.75</td></tr>
+        <tr><td class="m">12.5%</td><td class="m">${f('1', '8')}</td><td class="m">0.125</td></tr>
+        <tr><td class="m">33${f('1', '3')}%</td><td class="m">${f('1', '3')}</td><td class="m">0.333…</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Percentage to decimal: divide by ${m('100')}</div>
+      And decimal to percentage: multiply by ${m('100')}. The digits move two places, and which way they
+      move is settled by asking whether the answer should be bigger or smaller.</div>`
+    },
+    {
+      h: 'Finding a percentage of an amount',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>Method</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">10%</td><td>divide by ${m('10')}</td><td class="m">24</td></tr>
+        <tr><td class="m">20%</td><td>double the ${m('10%')}</td><td class="m">48</td></tr>
+        <tr><td class="m">5%</td><td>half the ${m('10%')}</td><td class="m">12</td></tr>
+        <tr><td class="m">25%</td><td>divide by ${m('4')}</td><td class="m">60</td></tr>
+        <tr><td class="m">15%</td><td class="m">10% + 5%</td><td class="m">36</td></tr>
+        <tr><td class="m">37%</td><td class="m">0.37 · 240</td><td class="m">88.8</td></tr>
+      </tbody></table></div>
+      <p>Every row is a percentage of ${m('240')}.</p>
+      <div class="keybox"><div class="klabel">Build awkward percentages from easy ones</div>
+      ${m('10%')}, ${m('5%')} and ${m('1%')} are all one division away, and ${m('35%')} is
+      ${m('10% + 10% + 10% + 5%')}. Mental percentage work is nearly all addition.</div>`
+    },
+    {
+      h: 'One quantity as a percentage of another',
+      html: `${eq('percentage ' + m('= ' + f('part', 'whole') + ' × 100%'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Part</th><th>Whole</th><th>Working</th><th>Percentage</th></tr></thead>
+      <tbody>
+        <tr><td class="m">17</td><td class="m">25</td><td class="m">${f('17', '25')} · 100</td><td class="m">68%</td></tr>
+        <tr><td class="m">27</td><td class="m">40</td><td class="m">${f('27', '40')} · 100</td><td class="m">67.5%</td></tr>
+        <tr><td class="m">18</td><td class="m">24</td><td class="m">${f('18', '24')} · 100</td><td class="m">75%</td></tr>
+        <tr><td class="m">9</td><td class="m">60</td><td class="m">${f('9', '60')} · 100</td><td class="m">15%</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The whole goes underneath</span>
+      “What percentage of ${m('40')} is ${m('27')}” puts ${m('40')} in the denominator. Swapping them gives
+      ${m('148%')}, which the sense check rejects at once.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find ' + m('15%') + ' of ' + m('240') + '.',
+      steps: [
+        [m('10%') + ' is ' + m('24') + '.', ''],
+        [m('5%') + ' is half of that, ' + m('12') + '.', ''],
+        [m('24 + 12 = 36'), '']
+      ],
+      ans: m('36')
+    },
+    {
+      q: 'What percentage of ' + m('40') + ' is ' + m('27') + '?',
+      steps: [
+        [m(f('27', '40')), 'The whole underneath.'],
+        [m('· 100 = 67.5'), ''],
+        [m('67.5%'), '']
+      ],
+      ans: m('67.5%')
+    },
+    {
+      q: 'Which is better, ' + m('17') + ' out of ' + m('25') + ' or ' + m('27') + ' out of ' + m('40') + '?',
+      steps: [
+        [m(f('17', '25') + ' = 68%'), ''],
+        [m(f('27', '40') + ' = 67.5%'), ''],
+        ['The first, by half a percentage point.', 'Impossible to see without converting.']
+      ],
+      ans: m('17') + ' out of ' + m('25')
+    }
+  ],
+  modelNote: 'Put two test scores out of different totals on the board and ask which is better; the class reaches for percentages without being told to.',
+  interactive: {
+    type: 'quiz',
+    title: 'Percentage, fraction, decimal',
+    hint: 'Divide by ' + m('100') + ' one way, multiply by ' + m('100') + ' the other.',
+    items: [
+      { q: m('25%') + ' as a fraction:', a: [m(f('1', '4')), m(f('1', '25')), m(f('25', '1')), m(f('1', '5'))], c: 0, why: m(f('25', '100')) + '.' },
+      { q: m('0.2') + ' as a percentage:', a: [m('2%'), m('20%'), m('0.2%'), m('200%')], c: 1, why: 'Multiply by ' + m('100') + '.' },
+      { q: m('10%') + ' of ' + m('240') + ':', a: [m('2.4'), m('24'), m('240'), m('12')], c: 1, why: 'Divide by ' + m('10') + '.' },
+      { q: m('5%') + ' of ' + m('240') + ':', a: [m('6'), m('12'), m('24'), m('48')], c: 1, why: 'Half the ' + m('10%') + '.' },
+      { q: m('15%') + ' of ' + m('240') + ':', a: [m('30'), m('36'), m('40'), m('48')], c: 1, why: m('24 + 12') + '.' },
+      { q: m('27') + ' as a percentage of ' + m('40') + ':', a: [m('67.5%'), m('148%'), m('54%'), m('75%')], c: 0, why: 'The whole underneath.' },
+      { q: m('18') + ' as a percentage of ' + m('24') + ':', a: [m('60%'), m('75%'), m('80%'), m('133%')], c: 1, why: m(f('3', '4')) + '.' },
+      { q: m('150%') + ' of a number is:', a: ['half of it', 'one and a half times it', 'impossible', 'the same'], c: 1, why: 'More than the whole.' }
+    ]
+  },
+  quiz: [
+    { q: m('37%') + ' means:', a: [m(f('37', '10')), m(f('37', '100')), m(f('100', '37')), m('37')], c: 1, why: 'Out of a hundred.' },
+    { q: m('0.75') + ' as a percentage:', a: [m('7.5%'), m('75%'), m('0.75%'), m('750%')], c: 1, why: 'Multiply by ' + m('100') + '.' },
+    { q: m(f('1', '8')) + ' as a percentage:', a: [m('8%'), m('12.5%'), m('18%'), m('1.8%')], c: 1, why: m('1 ÷ 8 = 0.125') + '.' },
+    { q: m('25%') + ' of ' + m('240') + ':', a: [m('48'), m('60'), m('80'), m('96')], c: 1, why: 'Divide by ' + m('4') + '.' },
+    { q: 'To write a part as a percentage you divide by:', a: ['the part', 'the whole', m('100'), 'the difference'], c: 1, why: 'Then multiply by ' + m('100') + '.' },
+    { q: m('9') + ' as a percentage of ' + m('60') + ':', a: [m('9%'), m('15%'), m('54%'), m('6.7%')], c: 1, why: m(f('9', '60')) + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('25%') + ' as a fraction', m(f('1', '4'))],
+      [m('20%') + ' as a decimal', m('0.2')],
+      [m('0.75') + ' as a percentage', m('75%')],
+      [m(f('1', '8')) + ' as a percentage', m('12.5%')],
+      [m('10%') + ' of ' + m('240'), m('24')],
+      [m('25%') + ' of ' + m('240'), m('60')],
+      [m('50%') + ' of ' + m('240'), m('120')]
+    ],
+    med: [
+      [m('5%') + ' of ' + m('240'), m('12')],
+      [m('15%') + ' of ' + m('240'), m('36')],
+      [m('37%') + ' of ' + m('240'), m('88.8')],
+      [m('17') + ' as a percentage of ' + m('25'), m('68%')],
+      [m('27') + ' as a percentage of ' + m('40'), m('67.5%')],
+      [m('18') + ' as a percentage of ' + m('24'), m('75%')],
+      [m('9') + ' as a percentage of ' + m('60'), m('15%')]
+    ],
+    hard: [
+      [m('35%') + ' of ' + m('240') + ' by building from ' + m('10%'), m('84')],
+      [m('12.5%') + ' of ' + m('320'), m('40')],
+      ['Which is better, ' + m('17') + '/' + m('25') + ' or ' + m('27') + '/' + m('40') + '?', m('17') + '/' + m('25') + ', at ' + m('68%')],
+      [m('150%') + ' of ' + m('60'), m('90')],
+      [m('1%') + ' of ' + m('240') + ', and hence ' + m('3%'), m('2.4') + ' and ' + m('7.2')],
+      ['A test mark of ' + m('45') + ' out of ' + m('60') + ' as a percentage', m('75%')],
+      ['Why do percentages make comparison easy?', 'Every fraction is put over the same denominator, ' + m('100')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Build awkward percentages from ' + m('10%') + ', ' + m('5%') + ' and ' + m('1%') + '.',
+  homework: [
+    'Convert ' + m('45%') + ', ' + m('8%') + ' and ' + m('130%') + ' to decimals and to fractions in lowest terms.',
+    'Find ' + m('10%') + ', ' + m('5%') + ' and ' + m('15%') + ' of ' + m('360') + '.',
+    'Find ' + m('35%') + ' of ' + m('480') + '.',
+    'Write ' + m('21') + ' as a percentage of ' + m('35') + '.',
+    'Which is the better mark: ' + m('19') + ' out of ' + m('25') + ' or ' + m('30') + ' out of ' + m('40') + '?'
+  ]
+});
