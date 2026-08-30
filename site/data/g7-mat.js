@@ -12627,3 +12627,372 @@ G7_MAT.push({
     'Write one sentence for each of the seven blocks on the Quarter III map.'
   ]
 });
+
+/* ============================== 71 ============================== */
+G7_MAT.push({
+  id: 'g7-71', stream: 'mat', grade: 7, quarter: 4, lessons: '131–132', hours: 2,
+  title: 'Practical exercises — percentage change and simple interest',
+  subtitle: 'A Cambridge insert: increase, decrease, and the reverse question that catches everybody.',
+  uz: 'Matematika 7, amaliy mashqlar', uzPage: 'pp. 387–392',
+  cam: 'S8 10', camPage: 'Stage 8, pp. 96–104', wb: 'Exercise 10.2',
+  objectives: [
+    'Increase and decrease a quantity by a given percentage in one multiplication.',
+    'Find a percentage change from the old and new values.',
+    'Calculate simple interest over several years.',
+    'Find the original amount when the changed one is given.'
+  ],
+  terms: [
+    ['Percentage', 'Foiz', 'Процент'],
+    ['Increase', 'Ortish', 'Увеличение'],
+    ['Decrease', 'Kamayish', 'Уменьшение'],
+    ['Multiplier', 'Ko‘paytuvchi', 'Множитель'],
+    ['Percentage change', 'Foizli o‘zgarish', 'Процентное изменение'],
+    ['Simple interest', 'Oddiy foiz', 'Простые проценты'],
+    ['Principal', 'Asosiy summa', 'Основная сумма'],
+    ['Original value', 'Boshlang‘ich qiymat', 'Первоначальное значение']
+  ],
+  timing: [[15, 'One multiplication, not two steps'], [20, 'Finding the change'], [25, 'Simple interest'], [20, 'The reverse question'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'One multiplication, not two steps',
+      html: `<p>An increase of ${m('15%')} multiplies by ${m('1.15')}; a decrease of ${m('15%')} multiplies
+      by ${m('0.85')}. Finding the part and then adding it is the same thing done twice.</p>
+      ${eq('new value = old value ' + m('× (1 ± ' + f('p', '100') + ')'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Change</th><th>Multiplier</th><th>${m('4000')} becomes</th></tr></thead>
+      <tbody>
+        <tr><td>up ${m('15%')}</td><td class="m">1.15</td><td class="m">4600</td></tr>
+        <tr><td>down ${m('15%')}</td><td class="m">0.85</td><td class="m">3400</td></tr>
+        <tr><td>up ${m('8%')}</td><td class="m">1.08</td><td class="m">4320</td></tr>
+        <tr><td>down ${m('40%')}</td><td class="m">0.6</td><td class="m">2400</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Up ${m('10%')} then down ${m('10%')} is not back where you started</span>
+      ${m('100 · 1.1 · 0.9 = 99')}. The two percentages are taken of different amounts, so they do not
+      cancel — a fact every discount advertisement relies on.</div>`
+    },
+    {
+      h: 'Finding the change',
+      html: `${eq('percentage change ' + m('= ' + f('new − old', 'old') + ' × 100%'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Old</th><th>New</th><th>Change</th><th>Percentage</th></tr></thead>
+      <tbody>
+        <tr><td class="m">50</td><td class="m">65</td><td class="m">+15</td><td class="m">+30%</td></tr>
+        <tr><td class="m">80</td><td class="m">60</td><td class="m">−20</td><td class="m">−25%</td></tr>
+        <tr><td class="m">200</td><td class="m">250</td><td class="m">+50</td><td class="m">+25%</td></tr>
+        <tr><td class="m">250</td><td class="m">200</td><td class="m">−50</td><td class="m">−20%</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Always divide by the <i>old</i> value</span>
+      The last two rows are the same pair of numbers and give different percentages, because the base
+      changed. A rise of ${m('25%')} is undone by a fall of ${m('20%')}, not of ${m('25%')}.</div>`
+    },
+    {
+      h: 'Simple interest',
+      html: `${eq(m('I = ' + f('P · r · t', '100')), true)}
+      <p>with ${m('P')} the principal, ${m('r')} the yearly rate as a percentage and ${m('t')} the number
+      of years. Simple interest is calculated on the original sum every year.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">P</th><th class="m">r</th><th class="m">t</th><th>Interest</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1 000 000</td><td class="m">12%</td><td class="m">1</td><td class="m">120 000</td><td class="m">1 120 000</td></tr>
+        <tr><td class="m">1 000 000</td><td class="m">12%</td><td class="m">3</td><td class="m">360 000</td><td class="m">1 360 000</td></tr>
+        <tr><td class="m">500 000</td><td class="m">8%</td><td class="m">2</td><td class="m">80 000</td><td class="m">580 000</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Simple, not compound</div>
+      Here the second year earns interest on ${m('1 000 000')} again, not on ${m('1 120 000')}. Compound
+      interest, where it does, waits until Grade 9 — but the difference is worth stating now.</div>`
+    },
+    {
+      h: 'The reverse question',
+      html: `<p>“After a rise of ${m('20%')} the price is ${m('60 000')}. What was it before?” The
+      ${m('60 000')} is <b>not</b> the base: divide by the multiplier rather than taking ${m('20%')} of
+      it.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Wrong</th><th>Right</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>after ${m('+20%')} it is ${m('60 000')}</td><td class="m">60 000 − 12 000</td><td class="m">60 000 ÷ 1.2</td><td class="m">50 000</td></tr>
+        <tr><td>after ${m('−20%')} it is ${m('60 000')}</td><td class="m">60 000 + 12 000</td><td class="m">60 000 ÷ 0.8</td><td class="m">75 000</td></tr>
+        <tr><td>after ${m('+25%')} it is ${m('500')}</td><td class="m">500 − 125</td><td class="m">500 ÷ 1.25</td><td class="m">400</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Check by going forwards</div>
+      ${m('50 000 · 1.2 = 60 000')} ✓. The reverse question is the one most often got wrong in the whole
+      of percentages, and the forward check takes five seconds.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A price of ' + m('4000') + ' sum rises by ' + m('15%') + '. Find the new price.',
+      steps: [
+        ['The multiplier is ' + m('1.15') + '.', ''],
+        [m('4000 · 1.15'), ''],
+        [m('= 4600'), '']
+      ],
+      ans: m('4600') + ' sum'
+    },
+    {
+      q: m('1 000 000') + ' sum is invested at ' + m('12%') + ' simple interest for ' + m('3') + ' years. Find the interest and the total.',
+      steps: [
+        [m('I = ' + f('1 000 000 · 12 · 3', '100')), ''],
+        [m('= 360 000'), 'Each year earns ' + m('120 000') + '.'],
+        ['Total ' + m('= 1 360 000') + '.', '']
+      ],
+      ans: m('360 000') + ' interest, ' + m('1 360 000') + ' in all'
+    },
+    {
+      q: 'After a rise of ' + m('20%') + ' a price is ' + m('60 000') + ' sum. What was it before?',
+      steps: [
+        ['The old price was multiplied by ' + m('1.2') + '.', ''],
+        [m('60 000 ÷ 1.2'), 'Divide, do not subtract.'],
+        [m('= 50 000'), ''],
+        ['Check: ' + m('50 000 · 1.2 = 60 000') + ' ✓', '']
+      ],
+      ans: m('50 000') + ' sum'
+    }
+  ],
+  modelNote: 'Ask the class whether a 20% rise followed by a 20% fall returns the original price; the near-unanimous “yes” makes the arithmetic that follows memorable.',
+  interactive: {
+    type: 'quiz',
+    title: 'Multiplier, change, or reverse?',
+    hint: 'Decide which of the three questions is being asked.',
+    items: [
+      { q: 'The multiplier for a rise of ' + m('15%') + ' is:', a: [m('0.15'), m('1.15'), m('15'), m('0.85')], c: 1, why: 'The whole plus the part.' },
+      { q: 'The multiplier for a fall of ' + m('15%') + ' is:', a: [m('0.85'), m('1.15'), m('0.15'), m('−15')], c: 0, why: 'The whole minus the part.' },
+      { q: m('4000') + ' up ' + m('15%') + ' is:', a: [m('4150'), m('4600'), m('4015'), m('3400')], c: 1, why: m('4000 · 1.15') + '.' },
+      { q: 'From ' + m('50') + ' to ' + m('65') + ' is a change of:', a: [m('15%'), m('23%'), m('30%'), m('130%')], c: 2, why: m(f('15', '50')) + '.' },
+      { q: 'From ' + m('80') + ' to ' + m('60') + ' is a change of:', a: [m('−20%'), m('−25%'), m('−33%'), m('−75%')], c: 1, why: 'Divide by the old value.' },
+      { q: m('1 000 000') + ' at ' + m('12%') + ' simple for ' + m('3') + ' years earns:', a: [m('120 000'), m('360 000'), m('404 928'), m('36 000')], c: 1, why: 'Three equal years.' },
+      { q: 'After ' + m('+20%') + ' a price is ' + m('60 000') + '; before it was:', a: [m('48 000'), m('50 000'), m('72 000'), m('40 000')], c: 1, why: 'Divide by ' + m('1.2') + '.' },
+      { q: 'Up ' + m('10%') + ' then down ' + m('10%') + ' gives:', a: ['the same value', m('99%') + ' of it', m('101%') + ' of it', m('90%') + ' of it'], c: 1, why: m('1.1 · 0.9 = 0.99') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'To increase by ' + m('8%') + ' multiply by:', a: [m('0.08'), m('1.08'), m('8'), m('0.92')], c: 1, why: 'One plus the fraction.' },
+    { q: 'To decrease by ' + m('40%') + ' multiply by:', a: [m('0.4'), m('0.6'), m('1.4'), m('0.96')], c: 1, why: m('100 − 40') + '.' },
+    { q: 'Percentage change divides by:', a: ['the new value', 'the old value', 'the difference', m('100')], c: 1, why: 'The base is where you started.' },
+    { q: 'Simple interest for ' + m('t') + ' years is:', a: [m(f('Prt', '100')), m(f('Pr', '100')), m('P(1 + r)ᵗ'), m('Prt')], c: 0, why: 'The same each year.' },
+    { q: 'After ' + m('−20%') + ' a price is ' + m('60 000') + '; before it was:', a: [m('72 000'), m('75 000'), m('48 000'), m('80 000')], c: 1, why: 'Divide by ' + m('0.8') + '.' },
+    { q: 'A rise of ' + m('25%') + ' is undone by a fall of:', a: [m('25%'), m('20%'), m('30%'), m('75%')], c: 1, why: 'The base has grown.' }
+  ],
+  practice: {
+    easy: [
+      [m('4000') + ' up ' + m('15%'), m('4600')],
+      [m('4000') + ' down ' + m('15%'), m('3400')],
+      [m('4000') + ' up ' + m('8%'), m('4320')],
+      [m('4000') + ' down ' + m('40%'), m('2400')],
+      ['The multiplier for ' + m('+12%'), m('1.12')],
+      ['The multiplier for ' + m('−7%'), m('0.93')],
+      [m('20%') + ' of ' + m('350'), m('70')]
+    ],
+    med: [
+      ['From ' + m('50') + ' to ' + m('65'), m('+30%')],
+      ['From ' + m('80') + ' to ' + m('60'), m('−25%')],
+      [m('1 000 000') + ' at ' + m('12%') + ' simple, ' + m('3') + ' years: the interest', m('360 000')],
+      [m('500 000') + ' at ' + m('8%') + ' simple, ' + m('2') + ' years: the total', m('580 000')],
+      ['After ' + m('+20%') + ' it is ' + m('60 000') + ': before', m('50 000')],
+      ['After ' + m('−20%') + ' it is ' + m('60 000') + ': before', m('75 000')],
+      ['Up ' + m('10%') + ' then down ' + m('10%') + ' from ' + m('100'), m('99')]
+    ],
+    hard: [
+      ['A rise of ' + m('25%') + ' is undone by a fall of', m('20%')],
+      ['After two rises of ' + m('10%') + ' from ' + m('200'), m('242')],
+      ['A price falls ' + m('30%') + ' to ' + m('49 000') + ': the original', m('70 000')],
+      ['At ' + m('10%') + ' simple, how long until ' + m('P') + ' doubles?', m('10') + ' years'],
+      [m('P') + ' at ' + m('15%') + ' simple for ' + m('4') + ' years: the total as a multiple of ' + m('P'), m('1.6P')],
+      ['A shop raises a price ' + m('20%') + ' then advertises ' + m('20%') + ' off: the net change', m('−4%')],
+      ['Interest of ' + m('90 000') + ' on ' + m('750 000') + ' over ' + m('2') + ' years: the rate', m('6%')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'For every reverse question, check your answer by going forwards.',
+  homework: [
+    'Increase ' + m('25 000') + ' by ' + m('18%') + ' and decrease it by ' + m('18%') + '.',
+    'A price rises from ' + m('40 000') + ' to ' + m('46 000') + '. Find the percentage change.',
+    'Find the simple interest on ' + m('2 000 000') + ' at ' + m('9%') + ' for ' + m('4') + ' years.',
+    'After a fall of ' + m('25%') + ' a price is ' + m('90 000') + '. What was it before?',
+    'Show that a rise of ' + m('50%') + ' followed by a fall of ' + m('50%') + ' loses a quarter of the original.'
+  ]
+});
+
+/* ============================== 72 ============================== */
+G7_MAT.push({
+  id: 'g7-72', stream: 'mat', grade: 7, quarter: 4, lessons: '133–134', hours: 2,
+  title: 'Construction problems with compasses and a straightedge',
+  subtitle: 'Four basic constructions combined into triangles — and the rule that decides when it can be done at all.',
+  uz: 'Matematika 7, §58', uzPage: 'pp. 393–400',
+  cam: 'S8 5.3', camPage: 'Stage 8, pp. 52–56', wb: 'Exercise 5.3',
+  objectives: [
+    'Construct a triangle from three sides, from two sides and the angle between, and from a side and two angles.',
+    'Decide when a construction is impossible.',
+    'Construct the perpendicular from a point to a line and the midpoint of a segment.',
+    'Justify a construction with a congruence criterion.'
+  ],
+  terms: [
+    ['Construction', 'Yasash', 'Построение'],
+    ['Compasses', 'Sirkul', 'Циркуль'],
+    ['Straightedge', 'Chizg‘ich', 'Линейка'],
+    ['Arc', 'Yoy', 'Дуга'],
+    ['Perpendicular bisector', 'O‘rta perpendikulyar', 'Серединный перпендикуляр'],
+    ['Midpoint', 'O‘rta nuqta', 'Середина'],
+    ['Given data', 'Berilganlar', 'Данные'],
+    ['Impossible', 'Yasab bo‘lmaydi', 'Невозможно']
+  ],
+  timing: [[10, 'The rules of the game'], [25, 'A triangle from three sides'], [25, 'The other two triangles'], [20, 'Perpendiculars and midpoints'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The rules of the game',
+      html: `<p>Only two tools are allowed: a straightedge, which draws a line through two points, and
+      compasses, which draw a circle of a given radius. No measuring with the ruler's scale, and no
+      protractor.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Allowed</th><th>Not allowed</th></tr></thead>
+      <tbody>
+        <tr><td>a line through two points</td><td>measuring a length with the scale</td></tr>
+        <tr><td>a circle with a given centre and radius</td><td>measuring an angle with a protractor</td></tr>
+        <tr><td>marking where two drawn curves cross</td><td>sliding the ruler until it looks right</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Leave every arc on the page</div>
+      The arcs are the proof that the construction was done and not estimated. Rubbing them out removes
+      the working, and with it the marks.</div>`
+    },
+    {
+      h: 'A triangle from three sides',
+      html: `<p>Given three lengths ${m('a, b, c')}:</p>
+      {{fig:bisectorConstruction:Arcs meeting to fix the third vertex}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>What to do</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>draw a segment ${m('BC = a')}</td></tr>
+        <tr><td>2</td><td>with centre ${m('B')} and radius ${m('c')}, draw an arc</td></tr>
+        <tr><td>3</td><td>with centre ${m('C')} and radius ${m('b')}, draw a second arc</td></tr>
+        <tr><td>4</td><td>call the crossing ${m('A')} and join ${m('AB')} and ${m('AC')}</td></tr>
+      </tbody></table></div>
+      <p>Every triangle built this way is congruent to every other, by the third criterion — which is why
+      the three sides determine the triangle completely.</p>
+      <div class="warn"><span class="wl">The arcs meet only if the triangle inequality holds</span>
+      With ${m('5, 8, 14')} the arcs fall short of each other and there is nothing to mark. The
+      construction fails exactly when the triangle does not exist.</div>`
+    },
+    {
+      h: 'The other two triangles',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Construction</th><th>Justified by</th></tr></thead>
+      <tbody>
+        <tr><td>three sides</td><td>two arcs from the ends of the first side</td><td>the third criterion</td></tr>
+        <tr><td>two sides and the angle between</td><td>copy the angle, then mark the two lengths along its arms</td><td>the first criterion</td></tr>
+        <tr><td>a side and the two angles on it</td><td>copy each angle at one end of the side</td><td>the second criterion</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The three criteria are the three constructions</div>
+      Each congruence criterion says which data fix a triangle; each construction is the recipe for
+      building the triangle those data describe. The chapters answer each other.</div>`
+    },
+    {
+      h: 'Perpendiculars and midpoints',
+      html: `{{fig:perpBisector:The perpendicular bisector of a segment}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Construction</th><th>Method</th><th>What it also gives</th></tr></thead>
+      <tbody>
+        <tr><td>perpendicular bisector of ${m('AB')}</td><td>equal arcs from ${m('A')} and from ${m('B')}, joined</td><td>the midpoint of ${m('AB')}</td></tr>
+        <tr><td>perpendicular from ${m('P')} to a line</td><td>an arc from ${m('P')} cutting the line twice, then the bisector of that segment</td><td>the distance from ${m('P')} to the line</td></tr>
+        <tr><td>bisector of an angle</td><td>equal arcs from the vertex, then from the two crossings</td><td>the locus of equidistant points</td></tr>
+        <tr><td>an angle of ${m('60°')}</td><td>an equilateral triangle on a segment</td><td class="m">30°</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Why the perpendicular bisector works</div>
+      Both arc centres are the same distance from the two crossing points, so each crossing is equidistant
+      from ${m('A')} and ${m('B')}. The line through them is the set of all such points — and that line
+      meets ${m('AB')} at right angles, at its midpoint.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Construct a triangle with sides ' + m('6 cm') + ', ' + m('5 cm') + ' and ' + m('4 cm') + '.',
+      steps: [
+        ['Check: ' + m('4 + 5 > 6') + ' ✓', 'The longest side only.'],
+        ['Draw ' + m('BC = 6 cm') + '.', ''],
+        ['Arc of ' + m('5 cm') + ' from ' + m('B') + ', arc of ' + m('4 cm') + ' from ' + m('C') + '.', ''],
+        ['Join the crossing to both ends.', 'Congruent by SSS to any other such triangle.']
+      ],
+      ans: 'Constructed'
+    },
+    {
+      q: 'Can a triangle with sides ' + m('5, 8, 14') + ' be constructed?',
+      steps: [
+        ['The longest side is ' + m('14') + '.', ''],
+        [m('5 + 8 = 13 < 14'), ''],
+        ['The two arcs never meet.', ''],
+        ['No such triangle exists.', '']
+      ],
+      ans: 'No'
+    },
+    {
+      q: 'Construct the midpoint of a segment ' + m('AB') + '.',
+      steps: [
+        ['With centre ' + m('A') + ' and radius more than half ' + m('AB') + ', draw an arc.', ''],
+        ['Repeat from ' + m('B') + ' with the same radius.', ''],
+        ['Join the two crossings.', ''],
+        ['That line meets ' + m('AB') + ' at its midpoint, at right angles.', '']
+      ],
+      ans: 'The perpendicular bisector gives it'
+    }
+  ],
+  modelNote: 'Set 5, 8 and 14 cm without comment; the class works for two minutes before discovering the arcs cannot meet, and the triangle inequality is never forgotten again.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which construction, and does it work?',
+    hint: 'Check the data before you draw.',
+    items: [
+      { q: 'The two allowed tools are:', a: ['ruler and protractor', 'straightedge and compasses', 'compasses and protractor', 'ruler and set square'], c: 1, why: 'No measuring.' },
+      { q: 'Arcs should be:', a: ['rubbed out', 'left on the page', 'drawn in pen', 'omitted'], c: 1, why: 'They are the working.' },
+      { q: 'Three sides fix a triangle by:', a: ['the first criterion', 'the second', 'the third', 'none'], c: 2, why: 'SSS.' },
+      { q: 'Sides ' + m('5, 8, 14') + ' can be constructed:', a: ['yes', 'no', 'only with a protractor', 'sometimes'], c: 1, why: 'The arcs fall short.' },
+      { q: 'Two sides and the angle between them use:', a: ['the first criterion', 'the second', 'the third', 'none'], c: 0, why: 'SAS.' },
+      { q: 'The perpendicular bisector also gives:', a: ['the midpoint', 'the bisector of an angle', 'the area', 'the centroid'], c: 0, why: 'It cuts the segment in half.' },
+      { q: 'An equilateral triangle constructs an angle of:', a: [m('45°'), m('60°'), m('90°'), m('30°') + ' directly'], c: 1, why: 'All three angles are ' + m('60°') + '.' },
+      { q: 'Every point of the perpendicular bisector is:', a: ['on the segment', 'equidistant from the ends', 'the midpoint', 'outside'], c: 1, why: 'That is what defines it.' }
+    ]
+  },
+  quiz: [
+    { q: 'Compasses may be used to:', a: ['measure an angle', 'draw a circle of given radius', 'draw a straight line', 'estimate'], c: 1, why: 'That is their only job.' },
+    { q: 'The construction from three sides fails when:', a: ['the sides are equal', 'the triangle inequality fails', 'one side is long', 'never'], c: 1, why: 'The arcs cannot meet.' },
+    { q: 'A side and the two angles on it use:', a: ['the first criterion', 'the second criterion', 'the third criterion', 'none'], c: 1, why: 'ASA.' },
+    { q: 'The perpendicular bisector of ' + m('AB') + ' passes through:', a: [m('A'), 'the midpoint of ' + m('AB'), m('B'), 'no special point'], c: 1, why: 'At right angles.' },
+    { q: 'Construction arcs should be:', a: ['erased', 'left visible', 'coloured', 'redrawn'], c: 1, why: 'They show the method.' },
+    { q: 'A construction is justified by:', a: ['measuring the result', 'a congruence criterion', 'the drawing looking right', 'nothing'], c: 1, why: 'Proof, not appearance.' }
+  ],
+  practice: {
+    easy: [
+      ['The two allowed tools', 'straightedge and compasses'],
+      ['Three sides fix a triangle by', 'the third criterion'],
+      ['Two sides and the included angle', 'the first criterion'],
+      ['A side and two angles on it', 'the second criterion'],
+      ['Sides ' + m('6, 5, 4') + ': constructible?', 'Yes'],
+      ['Sides ' + m('5, 8, 14') + ': constructible?', 'No'],
+      ['The perpendicular bisector gives the', 'midpoint']
+    ],
+    med: [
+      ['Sides ' + m('3, 4, 8') + ': constructible?', 'No'],
+      ['Sides ' + m('7, 7, 13') + ': constructible?', 'Yes'],
+      ['Which construction gives an angle of ' + m('60°') + '?', 'An equilateral triangle'],
+      ['And of ' + m('30°') + '?', 'Bisect the ' + m('60°')],
+      ['And of ' + m('90°') + '?', 'A perpendicular to a line at a point'],
+      ['And of ' + m('45°') + '?', 'Bisect the ' + m('90°')],
+      ['Why leave the arcs?', 'They show the construction was not estimated']
+    ],
+    hard: [
+      ['Construct a triangle from two sides ' + m('5') + ' and ' + m('7') + ' with the angle between them ' + m('60°'), 'Copy the angle, mark the lengths on its arms'],
+      ['How many triangles arise from three given sides?', 'One, up to congruence'],
+      ['Construct an angle of ' + m('15°'), 'Bisect ' + m('60°') + ' twice'],
+      ['Construct the perpendicular from a point to a line', 'An arc cutting the line twice, then bisect that segment'],
+      ['Why does the perpendicular-bisector construction work?', 'Both crossings are equidistant from the two ends'],
+      ['Given the perimeter and two angles, is the triangle fixed?', 'Yes — the third angle follows and the shape scales to the perimeter'],
+      ['Sides ' + m('2, 3, 5') + ': constructible?', 'No — the points would be in a line']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Check the triangle inequality before touching the compasses.',
+  homework: [
+    'Construct a triangle with sides ' + m('7 cm') + ', ' + m('5 cm') + ' and ' + m('4 cm') + '.',
+    'Try to construct one with sides ' + m('3 cm') + ', ' + m('4 cm') + ' and ' + m('9 cm') + ', and explain what happens.',
+    'Construct an angle of ' + m('60°') + ' and bisect it.',
+    'Construct the perpendicular bisector of a ' + m('8 cm') + ' segment and mark its midpoint.',
+    'Name the congruence criterion that justifies each of the three triangle constructions.'
+  ]
+});
