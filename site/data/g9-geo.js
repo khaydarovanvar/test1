@@ -5925,3 +5925,181 @@ G9_GEO.push({
     'Show that a sphere inscribed in a cylinder occupies two thirds of its volume.'
   ]
 });
+
+/* ============================== 36 ============================== */
+G9_GEO.push({
+  id: 'g9-36', stream: 'geo', grade: 9, quarter: 3, lessons: '51–52', hours: 2,
+  title: 'Control work 3, and work on the mistakes',
+  subtitle: 'Regular polygons and the circle in one paper, and the chapter closed.',
+  uz: 'Geometriya 9, Nazorat ishi 3', uzPage: 'pp. 121–182',
+  cam: 'IGX 3, 7 review', camPage: 'Core & Extended, pp. 58–152', wb: 'Control paper G3',
+  objectives: [
+    'Use the interior and exterior angle formulae under time.',
+    'Relate R, r and a for a regular polygon.',
+    'Compute arc, sector and segment accurately.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Regular polygon', 'Muntazam ko‘pburchak', 'Правильный многоугольник'],
+    ['Inscribed circle', 'Ichki chizilgan aylana', 'Вписанная окружность'],
+    ['Circumscribed circle', 'Tashqi chizilgan aylana', 'Описанная окружность'],
+    ['Arc', 'Yoy', 'Дуга'],
+    ['Sector', 'Sektor', 'Сектор'],
+    ['Segment', 'Segment', 'Сегмент'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 30 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>A regular polygon has an interior angle of ${m('150°')}: find ${m('n')}</td><td class="m">4</td><td>L37</td></tr>
+        <tr><td>2</td><td>A cyclic quadrilateral has ${m('∠A = 78°')}: find ${m('∠C')}</td><td class="m">3</td><td>L33–34</td></tr>
+        <tr><td>3</td><td>A regular hexagon of side ${m('8')}: find ${m('R')}, ${m('r')} and its area</td><td class="m">6</td><td>L38–41</td></tr>
+        <tr><td>4</td><td>A circle of radius ${m('15')}: find the arc and sector for ${m('θ = 72°')}</td><td class="m">6</td><td>L44–47</td></tr>
+        <tr><td>5</td><td>A ring with radii ${m('13')} and ${m('5')}: find its area</td><td class="m">5</td><td>L46–47</td></tr>
+        <tr><td>6</td><td>The segment cut off by a ${m('90°')} chord in a circle of radius ${m('10')}</td><td class="m">6</td><td>L48–49</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries one mark for going through the exterior angle; Q3 two for ${m('R = a')}; Q4 one for the
+      fraction ${m(f('72', '360'))}; Q5 two for factorising; Q6 two for subtracting the triangle.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>interior-angle equation solved directly</td><td class="m">${f('(n − 2)180', 'n')} = 150</td><td class="m">e = 30 ⇒ n = 12</td></tr>
+        <tr><td>cyclic angles taken as equal</td><td class="m">∠C = 78°</td><td class="m">∠C = 102°</td></tr>
+        <tr><td class="m">R</td><td class="m">R = ${f('a', '2')}</td><td class="m">R = a for a hexagon</td></tr>
+        <tr><td>circumference used for area</td><td class="m">2πR</td><td class="m">πR²</td></tr>
+        <tr><td>ring radii squared wrongly</td><td class="m">π(13 − 5)²</td><td class="m">π(13² − 5²)</td></tr>
+        <tr><td>segment left as the sector</td><td class="m">25π</td><td class="m">25π − 50</td></tr>
+        <tr><td>degrees used in ${m('½R²α')}</td><td class="m">½ × 100 × 90</td><td>convert to radians first</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'Chapter III as one map',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Block</th><th>The sentence</th></tr></thead>
+      <tbody>
+        <tr><td>inscribed polygons</td><td>vertices on the circle; a quadrilateral needs ${m('∠A + ∠C = 180°')}</td></tr>
+        <tr><td>circumscribed polygons</td><td>sides touching the circle; a quadrilateral needs ${m('a + c = b + d')}</td></tr>
+        <tr><td>regular polygons</td><td class="m">e = ${f('360°', 'n')}, i = 180° − e</td></tr>
+        <tr><td>the two radii</td><td class="m">a = 2R sin ${f('180°', 'n')}, r = R cos ${f('180°', 'n')}</td></tr>
+        <tr><td>the circumference</td><td class="m">C = 2πR</td></tr>
+        <tr><td>the arc</td><td class="m">l = ${f('θ', '360')}·2πR = Rα</td></tr>
+        <tr><td>the disc</td><td class="m">S = πR²</td></tr>
+        <tr><td>the sector</td><td class="m">S = ${f('θ', '360')}·πR² = ½R²α</td></tr>
+        <tr><td>the segment</td><td>sector ${m('−')} triangle</td></tr>
+      </tbody></table></div>
+      {{fig:circleArea:One circle carries every formula of the chapter.}}
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      Chapter IV returns to similarity, in its most computational form: proportional segments in a
+      triangle and in a circle, the mean proportional, and the constructions that produce it. The
+      chapter after this one is Grade 10.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q3: a regular hexagon of side ' + m('8') + '.',
+      steps: [
+        ['Central angle ' + m('60°') + ' — the triangles are equilateral.', ''],
+        [m('R = a = 8'), 'The key fact.'],
+        [m('r = R cos 30° = 4' + sr('3')), ''],
+        [m('S = ½ × 48 × 4' + sr('3') + ' = 96' + sr('3') + ' ≈ 166'), '']
+      ],
+      ans: m('R = 8, r = 4' + sr('3') + ', S = 96' + sr('3'))
+    },
+    {
+      q: 'Model answer, Q4: ' + m('R = 15') + ', ' + m('θ = 72°') + '.',
+      steps: [
+        [m(f('72', '360') + ' = ' + f('1', '5')), 'The fraction.'],
+        [m('l = ' + f('1', '5') + ' × 30π = 6π ≈ 18.8'), ''],
+        [m('S = ' + f('1', '5') + ' × 225π = 45π'), ''],
+        [m('≈ 141'), '']
+      ],
+      ans: m('l = 6π') + ', ' + m('S = 45π')
+    },
+    {
+      q: 'Model answer, Q6: the segment for ' + m('θ = 90°') + ', ' + m('R = 10') + '.',
+      steps: [
+        ['Sector: ' + m(f('1', '4') + ' × 100π = 25π ≈ 78.5') + '.', ''],
+        ['Triangle: ' + m('½ × 10 × 10 = 50') + '.', 'Right-angled.'],
+        [m('25π − 50'), ''],
+        [m('≈ 28.5'), '']
+      ],
+      ans: m('25π − 50 ≈ 28.5')
+    }
+  ],
+  modelNote: 'Put a Q6 answer of 25π on the board and ask what is still missing; the class names the triangle before you do.',
+  interactive: {
+    type: 'quiz',
+    title: 'Chapter III in twelve questions',
+    hint: 'Two from each block.',
+    items: [
+      { q: 'An inscribed polygon has:', a: ['sides touching', 'vertices on the circle', 'the circle inside', 'no circle'], c: 1, why: 'Vertices.' },
+      { q: 'A cyclic quadrilateral satisfies:', a: [m('∠A = ∠C'), m('∠A + ∠C = 180°'), m('a + c = b + d'), 'nothing'], c: 1, why: 'Opposite angles.' },
+      { q: 'A tangential quadrilateral satisfies:', a: [m('∠A + ∠C = 180°'), m('a + c = b + d'), m('a = c'), 'nothing'], c: 1, why: 'Opposite sides.' },
+      { q: 'The incentre is where the ______ meet:', a: ['medians', 'angle bisectors', 'perpendicular bisectors', 'altitudes'], c: 1, why: 'Equidistant from the sides.' },
+      { q: 'An exterior angle of a regular ' + m('n') + '-gon:', a: [m(f('180°', 'n')), m(f('360°', 'n')), m(f('(n−2)180°', 'n')), m('n · 180°')], c: 1, why: 'They total ' + m('360°') + '.' },
+      { q: 'For a regular hexagon:', a: [m('R = 2a'), m('R = a'), m('R = ' + f('a', '2')), m('R = a' + sr('2'))], c: 1, why: 'Six equilateral triangles.' },
+      { q: m('a') + ' equals:', a: [m('2R sin ' + f('180°', 'n')), m('2R cos ' + f('180°', 'n')), m('R sin ' + f('360°', 'n')), m('R tan ' + f('180°', 'n'))], c: 0, why: 'Half the central angle.' },
+      { q: m('C') + ' equals:', a: [m('πR'), m('2πR'), m('πR²'), m('2πR²')], c: 1, why: 'Or ' + m('πd') + '.' },
+      { q: 'An arc with ' + m('α') + ' in radians:', a: [m('Rα'), m('R²α'), m('2πRα'), m(f('α', 'R'))], c: 0, why: m('α = ' + f('l', 'R')) + '.' },
+      { q: 'The area of a disc:', a: [m('2πR'), m('πR²'), m('πd²'), m(f('4', '3') + 'πR³')], c: 1, why: 'From ' + m('½CR') + '.' },
+      { q: 'A sector in radians:', a: [m('R²α'), m('½R²α'), m('2R²α'), m('½Rα')], c: 1, why: 'Half of ' + m('R²α') + '.' },
+      { q: 'A segment is:', a: ['sector ' + m('+') + ' triangle', 'sector ' + m('−') + ' triangle', 'disc ' + m('−') + ' sector', 'half a disc'], c: 1, why: 'Between chord and arc.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 is quickest through:', a: ['the interior angle', 'the exterior angle', 'the angle sum', 'a diagram'], c: 1, why: 'Two subtractions.' },
+    { q: 'In Q2 the angles are:', a: ['equal', 'supplementary', 'complementary', 'unrelated'], c: 1, why: 'Cyclic quadrilateral.' },
+    { q: 'In Q3, ' + m('R') + ' equals:', a: [m(f('a', '2')), m('a'), m('a' + sr('2')), m('2a')], c: 1, why: 'Hexagon only.' },
+    { q: 'Q4 begins with:', a: ['the circumference', 'the fraction', 'the radius', 'a sketch'], c: 1, why: m(f('72', '360')) + '.' },
+    { q: 'Q5 is quickest by:', a: ['squaring separately', 'factorising', 'a calculator', 'estimating'], c: 1, why: m('π(R − r)(R + r)') + '.' },
+    { q: 'Q6 must subtract:', a: ['a sector', 'a triangle', 'a ring', 'nothing'], c: 1, why: 'Segment = sector − triangle.' }
+  ],
+  practice: {
+    easy: [
+      ['Interior angle ' + m('150°') + ': ' + m('n'), m('12')],
+      ['Cyclic, ' + m('∠A = 78°') + ': ' + m('∠C'), m('102°')],
+      ['Hexagon of side ' + m('8') + ': ' + m('R'), m('8')],
+      ['Hexagon of side ' + m('8') + ': ' + m('r'), m('4' + sr('3'))],
+      [m('R = 15, θ = 72°') + ': the arc', m('6π')],
+      [m('R = 15, θ = 72°') + ': the sector', m('45π')],
+      ['Ring ' + m('13') + ' and ' + m('5') + ': its area', m('144π')]
+    ],
+    med: [
+      ['Hexagon of side ' + m('8') + ': its area', m('96' + sr('3'))],
+      ['Segment, ' + m('R = 10, θ = 90°'), m('25π − 50')],
+      ['Exterior angle ' + m('30°') + ': ' + m('n'), m('12')],
+      ['A square of side ' + m('10') + ': ' + m('R'), m('5' + sr('2'))],
+      ['Circumference of a circle of radius ' + m('15'), m('30π')],
+      ['Area of that circle', m('225π')],
+      ['A sector of ' + m('R = 15') + ' and ' + m('α = 1.2'), m('135')]
+    ],
+    hard: [
+      ['A regular polygon with ' + m('R = 10') + ' and ' + m('a = 10') + ': its area', m('150' + sr('3'))],
+      ['A ring of area ' + m('144π') + ' and inner radius ' + m('5') + ': its outer radius', m('13')],
+      ['A segment of ' + m('R = 6') + ' and ' + m('θ = 120°'), m('12π − 9' + sr('3'))],
+      ['A cyclic quadrilateral with ' + m('∠A : ∠C = 5 : 7'), m('75°') + ' and ' + m('105°')],
+      ['A regular octagon of side ' + m('6') + ': its area', m('≈ 174')],
+      ['A circle inscribed in a regular hexagon of side ' + m('8') + ': its area', m('48π')],
+      ['The area between that circle and the hexagon', m('96' + sr('3') + ' − 48π')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite in full every question that lost a mark before Chapter IV begins.',
+  homework: [
+    'A regular polygon has an exterior angle of ' + m('15°') + '. Find ' + m('n') + ' and its interior angle.',
+    'A regular hexagon has side ' + m('10') + '. Find ' + m('R') + ', ' + m('r') + ' and its area.',
+    'A circle has radius ' + m('12') + '. Find the arc and the sector area for ' + m('θ = 150°') + '.',
+    'Find the area of a ring with radii ' + m('17') + ' and ' + m('8') + '.',
+    'Find the area of the segment cut off by a ' + m('60°') + ' chord in a circle of radius ' + m('12') + '.'
+  ]
+});
