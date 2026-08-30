@@ -13351,3 +13351,371 @@ G7_MAT.push({
     'Reflect ' + m('(−5; 2)') + ' in each axis and give both images.'
   ]
 });
+
+/* ============================== 75 ============================== */
+G7_MAT.push({
+  id: 'g7-75', stream: 'mat', grade: 7, quarter: 4, lessons: '139–140', hours: 2,
+  title: 'The idea of a function',
+  subtitle: 'A rule that gives each input exactly one output — as a table, a formula, and a graph.',
+  uz: 'Matematika 7, §60', uzPage: 'pp. 415–422',
+  cam: 'S8 9.4', camPage: 'Stage 8, pp. 90–95', wb: 'Exercise 9.4',
+  objectives: [
+    'State what makes a rule a function.',
+    'Move between a table, a formula and a graph of the same function.',
+    'Find the value of a function at a given argument, and the argument for a given value.',
+    'Name the domain of a simple function.'
+  ],
+  terms: [
+    ['Function', 'Funksiya', 'Функция'],
+    ['Argument', 'Argument', 'Аргумент'],
+    ['Value of a function', 'Funksiya qiymati', 'Значение функции'],
+    ['Independent variable', 'Erkli o‘zgaruvchi', 'Независимая переменная'],
+    ['Dependent variable', 'Bog‘liq o‘zgaruvchi', 'Зависимая переменная'],
+    ['Domain', 'Aniqlanish sohasi', 'Область определения'],
+    ['Table of values', 'Qiymatlar jadvali', 'Таблица значений'],
+    ['Graph', 'Grafik', 'График']
+  ],
+  timing: [[15, 'What a function is'], [20, 'Three ways of giving one'], [25, 'Values, forwards and backwards'], [20, 'The domain'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'What a function is',
+      html: `<p>A <b>function</b> is a rule that assigns to each value of ${m('x')} exactly one value of
+      ${m('y')}. One input, one output — never two.</p>
+      {{fig:funcMachine:A function as a machine: one input, one output}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Rule</th><th>A function?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>${m('y')} is twice ${m('x')}</td><td>yes</td><td>one answer every time</td></tr>
+        <tr><td>${m('y')} is the area of a square of side ${m('x')}</td><td>yes</td><td class="m">y = x²</td></tr>
+        <tr><td>${m('y')} is a number whose square is ${m('x')}</td><td>no</td><td class="m">x = 9</td></tr>
+        <tr><td>${m('y')} is the day of the week for a date ${m('x')}</td><td>yes</td><td>each date has one day</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The vertical-line test</div>
+      On a graph, a rule is a function exactly when no vertical line meets the curve twice — because a
+      second meeting would be a second ${m('y')} for the same ${m('x')}.</div>`
+    },
+    {
+      h: 'Three ways of giving one',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Way</th><th>Example</th><th>Best for</th></tr></thead>
+      <tbody>
+        <tr><td>a formula</td><td class="m">y = 2x + 1</td><td>calculating any value exactly</td></tr>
+        <tr><td>a table</td><td>a row of ${m('x')} and a row of ${m('y')}</td><td>seeing a few values at once</td></tr>
+        <tr><td>a graph</td><td>points ${m('(x; y)')} plotted</td><td>seeing the shape of the change</td></tr>
+        <tr><td>words</td><td>“double it and add one”</td><td>stating the rule to somebody</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">x</th><th class="m">−2</th><th class="m">−1</th><th class="m">0</th><th class="m">1</th><th class="m">2</th><th class="m">3</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = 2x + 1</td><td class="m">−3</td><td class="m">−1</td><td class="m">1</td><td class="m">3</td><td class="m">5</td><td class="m">7</td></tr>
+        <tr><td class="m">y = x²</td><td class="m">4</td><td class="m">1</td><td class="m">0</td><td class="m">1</td><td class="m">4</td><td class="m">9</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">All three describe one object</div>
+      The table is a sample of the formula; the graph is the whole table drawn at once. Being able to move
+      between them is the skill this lesson is really about.</div>`
+    },
+    {
+      h: 'Values, forwards and backwards',
+      html: `<p>Write ${m('f(x)')} for the value at ${m('x')}. Finding ${m('f(3)')} is substitution;
+      finding ${m('x')} from a known ${m('f(x)')} is solving an equation.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">f(x) = 2x + 1, f(3)</td><td class="m">2 · 3 + 1</td><td class="m">7</td></tr>
+        <tr><td class="m">f(x) = 2x + 1, f(−4)</td><td class="m">−8 + 1</td><td class="m">−7</td></tr>
+        <tr><td class="m">f(x) = 2x + 1 = 11</td><td class="m">2x = 10</td><td class="m">x = 5</td></tr>
+        <tr><td class="m">f(x) = x², f(x) = 25</td><td class="m">x² = 25</td><td class="m">x = ±5</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">One ${m('y')} may come from two ${m('x')}s</span>
+      A function forbids two outputs for one input, not two inputs for one output. ${m('f(x) = x²')} sends
+      both ${m('5')} and ${m('−5')} to ${m('25')} and is still perfectly a function.</div>`
+    },
+    {
+      h: 'The domain',
+      html: `<p>The <b>domain</b> is the set of values of ${m('x')} for which the rule gives an answer.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Function</th><th>Domain</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = 2x + 1</td><td>every number</td><td>nothing can go wrong</td></tr>
+        <tr><td class="m">y = ${f('1', 'x')}</td><td class="m">x ≠ 0</td><td>division by zero</td></tr>
+        <tr><td class="m">y = ${f('1', 'x − 3')}</td><td class="m">x ≠ 3</td><td>the denominator vanishes</td></tr>
+        <tr><td>the area of a square of side ${m('x')}</td><td class="m">x > 0</td><td>a side cannot be negative</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two kinds of restriction</div>
+      One comes from the algebra — a zero denominator; the other from the situation — a length must be
+      positive. Both are part of the answer when a function describes something real.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'For ' + m('f(x) = 2x + 1') + ', find ' + m('f(3)') + ' and ' + m('f(−4)') + '.',
+      steps: [
+        [m('f(3) = 2 · 3 + 1 = 7'), ''],
+        [m('f(−4) = 2 · (−4) + 1'), ''],
+        [m('= −8 + 1 = −7'), '']
+      ],
+      ans: m('7') + ' and ' + m('−7')
+    },
+    {
+      q: 'For ' + m('f(x) = 2x + 1') + ', find ' + m('x') + ' when ' + m('f(x) = 11') + '.',
+      steps: [
+        [m('2x + 1 = 11'), 'Now it is an equation.'],
+        [m('2x = 10'), ''],
+        [m('x = 5'), '']
+      ],
+      ans: m('x = 5')
+    },
+    {
+      q: 'Is “' + m('y') + ' is a number whose square is ' + m('x') + '” a function?',
+      steps: [
+        ['Take ' + m('x = 9') + '.', ''],
+        ['Both ' + m('3') + ' and ' + m('−3') + ' qualify.', ''],
+        ['One input gives two outputs.', ''],
+        ['So it is not a function.', '']
+      ],
+      ans: 'No'
+    }
+  ],
+  modelNote: 'Draw a function machine on the board and feed it numbers the class calls out; the definition arrives as a description of what everyone has just watched.',
+  interactive: {
+    type: 'substitute',
+    title: 'Feed a value into ' + m(f('1', 'x − 3')),
+    hint: 'Watch what happens as ' + m('x') + ' approaches ' + m('3') + '.',
+    expr: m('f(x) = ' + f('1', 'x − 3')),
+    f: function (x) { return 1 / (x - 3); },
+    den: function (x) { return x - 3; },
+    bad: ['3'],
+    start: 5
+  },
+  quiz: [
+    { q: 'A function gives each input:', a: ['many outputs', 'exactly one output', 'no output', 'two outputs'], c: 1, why: 'By definition.' },
+    { q: 'The vertical-line test fails when a vertical line:', a: ['misses the curve', 'touches it once', 'meets it twice', 'is an axis'], c: 2, why: 'Two ' + m('y') + 's for one ' + m('x') + '.' },
+    { q: 'For ' + m('f(x) = 2x + 1') + ', ' + m('f(3)') + ' is:', a: [m('5'), m('7'), m('6'), m('9')], c: 1, why: 'Substitute.' },
+    { q: m('f(x) = 11') + ' gives ' + m('x') + ' equal to:', a: [m('5'), m('6'), m('11'), m('23')], c: 0, why: 'Solve the equation.' },
+    { q: 'The domain of ' + m('y = ' + f('1', 'x − 3')) + ' is:', a: ['every number', m('x ≠ 0'), m('x ≠ 3'), m('x > 3')], c: 2, why: 'The denominator.' },
+    { q: m('f(x) = x²') + ' sends both ' + m('5') + ' and ' + m('−5') + ' to ' + m('25') + ', so it is:', a: ['not a function', 'still a function', 'undefined', 'two functions'], c: 1, why: 'Two inputs, one output, is allowed.' }
+  ],
+  practice: {
+    easy: [
+      [m('f(x) = 2x + 1') + ': ' + m('f(0)'), m('1')],
+      [m('f(3)'), m('7')],
+      [m('f(−4)'), m('−7')],
+      [m('f(x) = x²') + ': ' + m('f(3)'), m('9')],
+      [m('f(−3)'), m('9')],
+      ['The domain of ' + m('y = 2x + 1'), 'Every number'],
+      ['The domain of ' + m('y = ' + f('1', 'x')), m('x ≠ 0')]
+    ],
+    med: [
+      [m('f(x) = 2x + 1 = 11') + ': find ' + m('x'), m('x = 5')],
+      [m('f(x) = x² = 25') + ': find ' + m('x'), m('x = ±5')],
+      ['The domain of ' + m('y = ' + f('1', 'x − 3')), m('x ≠ 3')],
+      ['Is “' + m('y²') + ' equals ' + m('x') + '” a function of ' + m('x') + '?', 'No'],
+      ['Is the area of a square a function of its side?', 'Yes'],
+      ['A table for ' + m('y = 2x + 1') + ' at ' + m('x = −2, 0, 2'), m('−3, 1, 5')],
+      ['The vertical-line test decides', 'whether a graph shows a function']
+    ],
+    hard: [
+      [m('f(x) = 3x − 2') + ': find ' + m('f(f(1))'), m('1')],
+      [m('f(x) = x² − 4') + ': find every ' + m('x') + ' with ' + m('f(x) = 0'), m('x = ±2')],
+      ['The domain of ' + m('y = ' + f('1', 'x² − 4')), m('x ≠ ±2')],
+      ['A function whose graph is a horizontal line', m('y = c')],
+      ['Why is a vertical line not the graph of a function?', 'One ' + m('x') + ' would have every ' + m('y')],
+      [m('f(x) = 2x + 1') + ': for which ' + m('x') + ' is ' + m('f(x) = x') + '?', m('x = −1')],
+      ['The domain of the perimeter of a square as a function of its side', m('x > 0')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Say which is the argument and which is the value in every task.',
+  homework: [
+    'For ' + m('f(x) = 3x − 5') + ', find ' + m('f(0)') + ', ' + m('f(2)') + ' and ' + m('f(−1)') + '.',
+    'For the same function, find ' + m('x') + ' when ' + m('f(x) = 7') + '.',
+    'Make a table of ' + m('y = x² − 1') + ' for ' + m('x = −3') + ' to ' + m('3') + '.',
+    'Give the domain of ' + m('y = ' + f('1', 'x + 2')) + '.',
+    'Explain why “' + m('y') + ' is a number whose square is ' + m('x') + '” is not a function.'
+  ]
+});
+
+/* ============================== 76 ============================== */
+G7_MAT.push({
+  id: 'g7-76', stream: 'mat', grade: 7, quarter: 4, lessons: '141–142', hours: 2,
+  title: 'The linear function',
+  subtitle: m('y = kx + b') + ' — a straight line, with ' + m('k') + ' its steepness and ' + m('b') + ' where it crosses.',
+  uz: 'Matematika 7, §61', uzPage: 'pp. 423–431',
+  cam: 'S8 9.2–9.3', camPage: 'Stage 8, pp. 88–95', wb: 'Exercise 9.3',
+  objectives: [
+    'Draw the graph of ' + m('y = kx + b') + ' from two points.',
+    'Interpret ' + m('k') + ' as the gradient and ' + m('b') + ' as the intercept.',
+    'Find where the line meets each axis.',
+    'Decide whether a point lies on a given line.'
+  ],
+  terms: [
+    ['Linear function', 'Chiziqli funksiya', 'Линейная функция'],
+    ['Gradient', 'Burchak koeffitsiyenti', 'Угловой коэффициент'],
+    ['Intercept', 'Kesma', 'Свободный член'],
+    ['Straight line', 'To‘g‘ri chiziq', 'Прямая'],
+    ['Increasing', 'O‘suvchi', 'Возрастающая'],
+    ['Decreasing', 'Kamayuvchi', 'Убывающая'],
+    ['Direct proportion', 'To‘g‘ri proporsionallik', 'Прямая пропорциональность'],
+    ['To lie on a line', 'Chiziqqa tegishli', 'Принадлежать прямой']
+  ],
+  timing: [[15, 'Two points are enough'], [25, 'What k and b do'], [20, 'Meeting the axes'], [20, 'Is the point on the line?'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Two points are enough',
+      html: `${eq(m('y = kx + b'), true)}
+      <p>Every such function has a straight line for its graph, and two points determine a straight line —
+      so a table of two values is all that is needed. A third point is worth plotting as a check.</p>
+      {{fig:gradientIntercept:The gradient and the intercept of a line}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Function</th><th class="m">x = 0</th><th class="m">x = 1</th><th>Line through</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = 2x + 1</td><td class="m">1</td><td class="m">3</td><td class="m">(0; 1) and (1; 3)</td></tr>
+        <tr><td class="m">y = −x + 4</td><td class="m">4</td><td class="m">3</td><td class="m">(0; 4) and (1; 3)</td></tr>
+        <tr><td class="m">y = 3x</td><td class="m">0</td><td class="m">3</td><td class="m">(0; 0) and (1; 3)</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">${m('b = 0')} means the line passes through the origin</div>
+      Then ${m('y = kx')} is a <b>direct proportion</b>: doubling ${m('x')} doubles ${m('y')}. Every
+      proportional relationship met in Grade 6 was a linear function with ${m('b = 0')}.</div>`
+    },
+    {
+      h: 'What ' + m('k') + ' and ' + m('b') + ' do',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Coefficient</th><th>Meaning</th><th>On the graph</th></tr></thead>
+      <tbody>
+        <tr><td class="m">k > 0</td><td>increasing</td><td>rises left to right</td></tr>
+        <tr><td class="m">k < 0</td><td>decreasing</td><td>falls left to right</td></tr>
+        <tr><td class="m">k = 0</td><td>constant</td><td>a horizontal line</td></tr>
+        <tr><td class="m">b</td><td>the value at ${m('x = 0')}</td><td>where the line cuts the ${m('y')}-axis</td></tr>
+      </tbody></table></div>
+      <p>The gradient is the change in ${m('y')} for a step of ${m('1')} in ${m('x')}:</p>
+      ${eq(m('k = ' + f('y₂ − y₁', 'x₂ − x₁')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Two points</th><th>Working</th><th class="m">k</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(0; 1) and (1; 3)</td><td class="m">${f('3 − 1', '1 − 0')}</td><td class="m">2</td></tr>
+        <tr><td class="m">(0; 4) and (1; 3)</td><td class="m">${f('3 − 4', '1 − 0')}</td><td class="m">−1</td></tr>
+        <tr><td class="m">(1; 2) and (4; 8)</td><td class="m">${f('8 − 2', '4 − 1')}</td><td class="m">2</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The two differences must be taken in the same order</span>
+      ${m(f('y₂ − y₁', 'x₁ − x₂'))} gives the gradient with the wrong sign. Fix an order — second minus
+      first, top and bottom — and keep it.</div>`
+    },
+    {
+      h: 'Meeting the axes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Axis</th><th>Set</th><th>Gives</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y</td><td class="m">x = 0</td><td class="m">y = b</td></tr>
+        <tr><td class="m">x</td><td class="m">y = 0</td><td class="m">x = −${f('b', 'k')}</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Function</th><th>Cuts ${m('Oy')} at</th><th>Cuts ${m('Ox')} at</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = 2x + 1</td><td class="m">(0; 1)</td><td class="m">(−0.5; 0)</td></tr>
+        <tr><td class="m">y = −x + 4</td><td class="m">(0; 4)</td><td class="m">(4; 0)</td></tr>
+        <tr><td class="m">y = 3x − 6</td><td class="m">(0; −6)</td><td class="m">(2; 0)</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The two intercepts are the two easiest points</div>
+      For a line with ${m('b ≠ 0')} they are usually the quickest pair to plot, and they lie far apart,
+      which makes the drawn line more accurate than one built from two nearby points.</div>`
+    },
+    {
+      h: 'Is the point on the line?',
+      html: `<p>Substitute the coordinates. If the equation becomes true, the point lies on the line; if
+      not, it does not.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Line</th><th>Point</th><th>Check</th><th>On it?</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = 2x + 1</td><td class="m">(3; 7)</td><td class="m">2 · 3 + 1 = 7</td><td>yes</td></tr>
+        <tr><td class="m">y = 2x + 1</td><td class="m">(3; 6)</td><td class="m">7 ≠ 6</td><td>no</td></tr>
+        <tr><td class="m">y = −x + 4</td><td class="m">(1; 3)</td><td class="m">−1 + 4 = 3</td><td>yes</td></tr>
+        <tr><td class="m">y = 3x</td><td class="m">(2; 5)</td><td class="m">6 ≠ 5</td><td>no</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">This is what the next block is built on</div>
+      A pair ${m('(x; y)')} satisfying two linear equations at once lies on both lines — that is, at their
+      crossing point. Systems of equations, three lessons from now, are exactly that idea.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Draw the graph of ' + m('y = 2x + 1') + '.',
+      steps: [
+        [m('x = 0') + ' gives ' + m('y = 1') + '.', 'The intercept.'],
+        [m('x = 1') + ' gives ' + m('y = 3') + '.', ''],
+        ['Plot ' + m('(0; 1)') + ' and ' + m('(1; 3)') + ' and join them.', ''],
+        ['Check with ' + m('x = −1') + ': ' + m('y = −1') + ' lies on the same line ✓', '']
+      ],
+      ans: 'A line through ' + m('(0; 1)') + ' and ' + m('(1; 3)')
+    },
+    {
+      q: 'Find where ' + m('y = 3x − 6') + ' meets the axes.',
+      steps: [
+        [m('x = 0') + ': ' + m('y = −6') + ', so ' + m('(0; −6)') + '.', ''],
+        [m('y = 0') + ': ' + m('3x − 6 = 0') + '.', ''],
+        [m('x = 2') + ', so ' + m('(2; 0)') + '.', '']
+      ],
+      ans: m('(0; −6)') + ' and ' + m('(2; 0)')
+    },
+    {
+      q: 'A line passes through ' + m('(1; 2)') + ' and ' + m('(4; 8)') + '. Find its gradient.',
+      steps: [
+        [m('k = ' + f('y₂ − y₁', 'x₂ − x₁')), ''],
+        [m('= ' + f('8 − 2', '4 − 1')), 'Same order top and bottom.'],
+        [m('= ' + f('6', '3') + ' = 2'), '']
+      ],
+      ans: m('k = 2')
+    }
+  ],
+  modelNote: 'Draw y = 2x + 1, y = 2x and y = 2x − 3 on one grid; the class sees at once that k tilts the line and b slides it, without being told.',
+  interactive: {
+    type: 'graphTransform',
+    title: 'Move ' + m('k') + ' and ' + m('b') + ' and watch the line',
+    hint: 'One tilts it, the other slides it up and down.'
+  },
+  quiz: [
+    { q: 'The graph of ' + m('y = kx + b') + ' is:', a: ['a curve', 'a straight line', 'a parabola', 'two lines'], c: 1, why: 'Always.' },
+    { q: 'How many points determine it?', a: [m('1'), m('2'), m('3'), 'many'], c: 1, why: 'Two fix a line.' },
+    { q: m('b') + ' is the value of ' + m('y') + ' when:', a: [m('x = 1'), m('x = 0'), m('y = 0'), m('k = 0')], c: 1, why: 'The intercept.' },
+    { q: m('k < 0') + ' means the line:', a: ['rises', 'falls', 'is horizontal', 'is vertical'], c: 1, why: 'Decreasing.' },
+    { q: m('y = 3x − 6') + ' meets ' + m('Ox') + ' at:', a: [m('(0; −6)'), m('(2; 0)'), m('(−2; 0)'), m('(6; 0)')], c: 1, why: 'Set ' + m('y = 0') + '.' },
+    { q: 'Is ' + m('(3; 6)') + ' on ' + m('y = 2x + 1') + '?', a: ['yes', 'no', 'only if ' + m('k') + ' changes', 'cannot tell'], c: 1, why: m('2 · 3 + 1 = 7') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('y = 2x + 1') + ' at ' + m('x = 0'), m('y = 1')],
+      [m('y = 2x + 1') + ' at ' + m('x = 1'), m('y = 3')],
+      [m('y = −x + 4') + ' at ' + m('x = 1'), m('y = 3')],
+      ['The intercept of ' + m('y = 3x − 6'), m('(0; −6)')],
+      ['Is ' + m('y = 3x') + ' increasing?', 'Yes'],
+      ['Is ' + m('y = −2x + 1') + ' increasing?', 'No'],
+      ['The graph of ' + m('y = 5') + ' is', 'a horizontal line']
+    ],
+    med: [
+      [m('y = 3x − 6') + ' meets ' + m('Ox') + ' at', m('(2; 0)')],
+      [m('y = −x + 4') + ' meets ' + m('Ox') + ' at', m('(4; 0)')],
+      [m('y = 2x + 1') + ' meets ' + m('Ox') + ' at', m('(−0.5; 0)')],
+      ['The gradient through ' + m('(1; 2)') + ' and ' + m('(4; 8)'), m('k = 2')],
+      ['The gradient through ' + m('(0; 4)') + ' and ' + m('(1; 3)'), m('k = −1')],
+      ['Is ' + m('(3; 7)') + ' on ' + m('y = 2x + 1') + '?', 'Yes'],
+      ['Is ' + m('(2; 5)') + ' on ' + m('y = 3x') + '?', 'No']
+    ],
+    hard: [
+      ['A line through ' + m('(0; 3)') + ' with gradient ' + m('−2'), m('y = −2x + 3')],
+      ['A line through ' + m('(1; 5)') + ' and ' + m('(3; 11)'), m('y = 3x + 2')],
+      ['For which ' + m('k') + ' does ' + m('y = kx + 1') + ' pass through ' + m('(2; 7)') + '?', m('k = 3')],
+      ['Where do ' + m('y = 2x + 1') + ' and ' + m('y = −x + 4') + ' cross?', m('(1; 3)')],
+      ['Two lines with the same ' + m('k') + ' are', 'parallel'],
+      ['The graph of ' + m('y = kx') + ' always passes through', 'the origin'],
+      ['For which ' + m('b') + ' does ' + m('y = 2x + b') + ' pass through ' + m('(3; 1)') + '?', m('b = −5')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Plot three points, not two — the third is your check.',
+  homework: [
+    'Draw the graphs of ' + m('y = 2x − 3') + ' and ' + m('y = −x + 2') + ' on one grid.',
+    'Find where each of them meets the axes.',
+    'Find the gradient of the line through ' + m('(2; 1)') + ' and ' + m('(5; 10)') + '.',
+    'Decide whether ' + m('(4; 5)') + ' lies on ' + m('y = 2x − 3') + '.',
+    'Find ' + m('b') + ' so that ' + m('y = 3x + b') + ' passes through ' + m('(2; 4)') + '.'
+  ]
+});
