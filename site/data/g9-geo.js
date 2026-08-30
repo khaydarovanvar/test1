@@ -2116,3 +2116,511 @@ G9_GEO.push({
     'A figure is scaled so that its area is halved. Find ' + m('k') + '.'
   ]
 });
+
+/* ============================== 14 ============================== */
+G9_GEO.push({
+  id: 'g9-14', stream: 'geo', grade: 9, quarter: 1, lessons: '15', hours: 1,
+  title: 'Homothety and similarity',
+  subtitle: 'The transformation that actually produces similar figures — a stretch from a fixed centre.',
+  uz: 'Geometriya 9, §13', uzPage: 'pp. 66–71',
+  cam: 'IGX 11.3', camPage: 'Core & Extended, pp. 232–236', wb: 'Exercise 11.3',
+  objectives: [
+    'Define homothety with centre O and coefficient k.',
+    'Construct the image of a figure under a homothety, including negative k.',
+    'Find images under a homothety centred at the origin.',
+    'Know that every similarity is a homothety followed by a movement.'
+  ],
+  terms: [
+    ['Homothety', 'Gomotetiya', 'Гомотетия'],
+    ['Centre of homothety', 'Gomotetiya markazi', 'Центр гомотетии'],
+    ['Coefficient', 'Koeffitsiyent', 'Коэффициент'],
+    ['Enlargement', 'Kattalashtirish', 'Увеличение'],
+    ['Negative coefficient', 'Manfiy koeffitsiyent', 'Отрицательный коэффициент'],
+    ['Ray', 'Nur', 'Луч'],
+    ['Corresponding points', 'Mos nuqtalar', 'Соответственные точки'],
+    ['Invariant point', 'O‘zgarmas nuqta', 'Инвариантная точка']
+  ],
+  timing: [[10, 'The definition'], [14, 'Constructing the image'], [10, 'Homothety and similarity'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The definition',
+      html: `<p>A <b>homothety</b> with centre ${m('O')} and coefficient ${m('k ≠ 0')} sends each point
+      ${m('P')} to the point ${m('P′')} on the line ${m('OP')} with</p>
+      ${eq(m('OP′ = |k| · OP'), true)}
+      <p>on the same side of ${m('O')} if ${m('k > 0')}, on the opposite side if ${m('k < 0')}.</p>
+      {{fig:enlargement:Rays from the centre carry every point outwards (or inwards) by the same factor.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">k</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="m">k > 1</td><td>enlargement, same side</td></tr>
+        <tr><td class="m">0 < k < 1</td><td>reduction, same side</td></tr>
+        <tr><td class="m">k = 1</td><td>the identity</td></tr>
+        <tr><td class="m">k = −1</td><td>central symmetry in ${m('O')}</td></tr>
+        <tr><td class="m">k < 0</td><td>resize and turn through ${m('180°')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Cambridge calls it an enlargement, and allows negative scale factors</div>
+      The row ${m('k = −1')} is worth noticing: central symmetry, met two lessons ago, is a homothety.
+      The transformations of this chapter form one family, not five unrelated rules.</div>`
+    },
+    {
+      h: 'Constructing the image',
+      html: `<p>With the centre at the origin the formula is as simple as it can be:</p>
+      ${eq(m('P(x, y) ↦ P′(kx, ky)'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Point</th><th class="m">k = 2</th><th class="m">k = ${f('1', '2')}</th><th class="m">k = −1</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(3, 4)</td><td class="m">(6, 8)</td><td class="m">(1.5, 2)</td><td class="m">(−3, −4)</td></tr>
+        <tr><td class="m">(−2, 6)</td><td class="m">(−4, 12)</td><td class="m">(−1, 3)</td><td class="m">(2, −6)</td></tr>
+      </tbody></table></div>
+      <p>With a centre ${m('C(a, b)')} other than the origin, work relative to ${m('C')}:</p>
+      ${eq(m('P′ = (a + k(x − a),  b + k(y − b))'), true)}
+      <p>To construct without coordinates: draw the ray from ${m('O')} through each vertex, and mark the
+      new point at ${m('k')} times the distance. Joining the marks gives the image.</p>
+      <div class="warn"><span class="wl">The centre is the only point that does not move</span>
+      Every other point slides along its ray. A construction in which ${m('O')} has moved is wrong, and
+      that single check catches most errors.</div>`
+    },
+    {
+      h: 'Homothety and similarity',
+      html: `${eq('A homothety with coefficient k is a similarity transformation with coefficient |k|', true)}
+      <p>So a figure and its homothetic image are always similar. The converse is almost true and is the
+      structural fact of the chapter:</p>
+      ${eq('Every similarity is a homothety followed by a movement', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Transformation</th><th>Preserves distance?</th><th>Preserves shape?</th></tr></thead>
+      <tbody>
+        <tr><td>translation, reflection, rotation</td><td>yes</td><td>yes</td></tr>
+        <tr><td>homothety</td><td>no</td><td>yes</td></tr>
+        <tr><td>a general similarity</td><td>no</td><td>yes</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The whole chapter in one sentence</div>
+      Movements are similarities with ${m('k = 1')}; homotheties supply every other ${m('k')}; and
+      combining the two produces every similarity there is. Nothing else is needed.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the image of ' + m('A(3, 4)') + ' under a homothety centred at ' + m('O') + ' with ' + m('k = 2') + ', and with ' + m('k = −1') + '.',
+      steps: [
+        [m('k = 2') + ': multiply both coordinates.', ''],
+        [m('(6, 8)'), ''],
+        [m('k = −1') + ': ' + m('(−3, −4)') + '.', ''],
+        ['The second is central symmetry in ' + m('O') + '.', '']
+      ],
+      ans: m('(6, 8)') + ' and ' + m('(−3, −4)')
+    },
+    {
+      q: 'A homothety with centre ' + m('C(1, 2)') + ' and ' + m('k = 3') + ' maps ' + m('P(4, 6)') + '. Find its image.',
+      steps: [
+        ['Relative to ' + m('C') + ': ' + m('(4 − 1, 6 − 2) = (3, 4)') + '.', ''],
+        ['Multiply by ' + m('3') + ': ' + m('(9, 12)') + '.', ''],
+        ['Add ' + m('C') + ' back: ' + m('(1 + 9, 2 + 12)') + '.', ''],
+        [m('P′(10, 14)'), '']
+      ],
+      ans: m('(10, 14)')
+    },
+    {
+      q: 'A triangle of area ' + m('12') + ' undergoes a homothety with ' + m('k = −2') + '. Find the area of the image.',
+      steps: [
+        ['Lengths scale by ' + m('|k| = 2') + '.', 'The sign only turns the figure.'],
+        ['Areas scale by ' + m('|k|² = 4') + '.', ''],
+        [m('12 × 4'), ''],
+        [m('= 48'), '']
+      ],
+      ans: m('48')
+    }
+  ],
+  modelNote: 'Use a torch and a cut-out shape to cast a shadow on the wall; the bulb is the centre, and moving it changes k in front of the class.',
+  interactive: {
+    type: 'transform',
+    title: 'Stretch from a centre',
+    hint: 'Try a negative k and watch the figure flip through the centre.'
+  },
+  quiz: [
+    { q: 'A homothety is described by:', a: ['a vector', 'a centre and a coefficient', 'an axis', 'an angle'], c: 1, why: 'Both are needed.' },
+    { q: m('k = −1') + ' gives:', a: ['the identity', 'a translation', 'central symmetry', 'a reflection'], c: 2, why: 'A half-turn about ' + m('O') + '.' },
+    { q: m('(3, 4)') + ' under ' + m('k = 2') + ' about ' + m('O') + ':', a: [m('(5, 6)'), m('(6, 8)'), m('(1.5, 2)'), m('(−3, −4)')], c: 1, why: 'Multiply both coordinates.' },
+    { q: 'The only fixed point is:', a: ['the origin', 'the centre', 'every point', 'none'], c: 1, why: 'Everything else slides along a ray.' },
+    { q: 'Areas scale by:', a: [m('k'), m('|k|'), m('k²'), m('|k|³')], c: 2, why: m('k²') + ' is positive either way.' },
+    { q: 'Every similarity is:', a: ['a homothety', 'a movement', 'a homothety followed by a movement', 'a reflection'], c: 2, why: 'The structural theorem.' }
+  ],
+  practice: {
+    easy: [
+      [m('(3, 4)') + ', ' + m('k = 2') + ' about ' + m('O'), m('(6, 8)')],
+      [m('(3, 4)') + ', ' + m('k = ' + f('1', '2')) + ' about ' + m('O'), m('(1.5, 2)')],
+      [m('(3, 4)') + ', ' + m('k = −1') + ' about ' + m('O'), m('(−3, −4)')],
+      [m('(−2, 6)') + ', ' + m('k = 2') + ' about ' + m('O'), m('(−4, 12)')],
+      [m('k = 1') + ' gives', 'The identity'],
+      ['Fixed point of a homothety', 'The centre'],
+      ['Areas scale by', m('k²')]
+    ],
+    med: [
+      [m('P(4, 6)') + ', centre ' + m('(1, 2)') + ', ' + m('k = 3'), m('(10, 14)')],
+      [m('P(5, 1)') + ', centre ' + m('(1, 1)') + ', ' + m('k = 2'), m('(9, 1)')],
+      ['Area ' + m('12') + ', ' + m('k = −2') + ': the image area', m('48')],
+      ['Area ' + m('50') + ', ' + m('k = ' + f('1', '5')) + ': the image area', m('2')],
+      [m('k = −1') + ' is the same as', 'Central symmetry'],
+      ['A homothety with ' + m('k = 3') + ' applied twice', m('k = 9')],
+      ['Perimeter ' + m('30') + ', ' + m('k = −1.5'), m('45')]
+    ],
+    hard: [
+      ['The image of ' + m('y = 2x + 4') + ' under ' + m('k = 2') + ' about ' + m('O'), m('y = 2x + 8')],
+      ['The image of ' + m('x² + y² = 4') + ' under ' + m('k = 3') + ' about ' + m('O'), m('x² + y² = 36')],
+      ['A homothety maps ' + m('(2, 3)') + ' to ' + m('(6, 9)') + ': find ' + m('k') + ' if the centre is ' + m('O'), m('3')],
+      ['A homothety centred at ' + m('(2, 2)') + ' maps ' + m('(4, 6)') + ' to ' + m('(8, 14)') + ': find ' + m('k'), m('3')],
+      ['Composing homotheties with ' + m('k₁') + ' and ' + m('k₂') + ' about the same centre', m('k₁k₂')],
+      ['A homothety with ' + m('k = −2') + ' followed by one with ' + m('k = −' + f('1', '2')), 'The identity'],
+      ['Why is a homothety not a movement?', 'It changes distances unless ' + m('|k| = 1')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw the rays from the centre in every construction; the image is read off them.',
+  homework: [
+    'Find the image of ' + m('(5, −3)') + ' under homotheties about ' + m('O') + ' with ' + m('k = 3') + ', ' + m('k = ' + f('1', '2')) + ' and ' + m('k = −2') + '.',
+    'A homothety with centre ' + m('(2, 1)') + ' and ' + m('k = 2') + ' maps ' + m('(5, 4)') + '. Find its image.',
+    'A polygon of area ' + m('18') + ' undergoes a homothety with ' + m('k = −3') + '. Find the image area.',
+    'Explain why central symmetry is a homothety.',
+    'Find the image of the circle ' + m('x² + y² = 9') + ' under a homothety about ' + m('O') + ' with ' + m('k = 2') + '.'
+  ]
+});
+
+/* ============================== 15 ============================== */
+G9_GEO.push({
+  id: 'g9-15', stream: 'geo', grade: 9, quarter: 1, lessons: '16', hours: 1,
+  title: 'Chapter exercises — Cambridge congruence and similarity notation',
+  subtitle: 'The same theorems in the language and the question style of an IGCSE paper.',
+  uz: 'Geometriya 9, I bob mashqlari', uzPage: 'pp. 72–75',
+  cam: 'IGX 11.4', camPage: 'Core & Extended, pp. 237–241', wb: 'Exercise 11.4',
+  objectives: [
+    'Use the Cambridge names for the congruence conditions: SSS, SAS, ASA, RHS.',
+    'Describe a transformation fully in the form an IGCSE paper requires.',
+    'Answer “prove that these triangles are congruent” with reasons in the expected form.',
+    'Use scale-factor language for enlargement, including a negative scale factor.'
+  ],
+  terms: [
+    ['Congruent', 'Teng', 'Равный'],
+    ['SSS', 'USU', 'ССС'],
+    ['SAS', 'UBU', 'СУС'],
+    ['ASA', 'BUB', 'УСУ'],
+    ['RHS', 'TGK', 'ПГК'],
+    ['Enlargement', 'Kattalashtirish', 'Увеличение'],
+    ['Scale factor', 'Masshtab koeffitsiyenti', 'Масштабный коэффициент'],
+    ['Fully describe', 'To‘liq tasvirlash', 'Полностью описать']
+  ],
+  timing: [[10, 'The four congruence conditions'], [12, 'Describing a transformation fully'], [12, 'Exam-style items'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The four congruence conditions',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Code</th><th>Means</th><th>Uzbek criterion</th></tr></thead>
+      <tbody>
+        <tr><td class="m">SSS</td><td>three sides</td><td>the third</td></tr>
+        <tr><td class="m">SAS</td><td>two sides and the included angle</td><td>the first</td></tr>
+        <tr><td class="m">ASA</td><td>two angles and the side between</td><td>the second</td></tr>
+        <tr><td class="m">AAS</td><td>two angles and a side not between</td><td>a consequence of ASA</td></tr>
+        <tr><td class="m">RHS</td><td>right angle, hypotenuse and one side</td><td>the right-triangle criterion</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('AAA')} is not a congruence condition</span>
+      Three equal angles give <b>similarity</b>, never congruence — the triangles can be any size. This
+      is the single most common wrong answer in IGCSE congruence questions.</div>`
+    },
+    {
+      h: 'Describing a transformation fully',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Transformation</th><th>Must state</th><th>Example of a full answer</th></tr></thead>
+      <tbody>
+        <tr><td>translation</td><td>the vector</td><td>a translation by ${m('(3, −2)')}</td></tr>
+        <tr><td>reflection</td><td>the mirror line</td><td>a reflection in ${m('y = x')}</td></tr>
+        <tr><td>rotation</td><td>centre, angle, direction</td><td>a rotation of ${m('90°')} clockwise about ${m('(0, 0)')}</td></tr>
+        <tr><td>enlargement</td><td>centre and scale factor</td><td>an enlargement, centre ${m('(1, 1)')}, scale factor ${m('2')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One transformation only</div>
+      If a question says “describe the <b>single</b> transformation”, an answer of the form “a reflection
+      and then a translation” scores zero, even when it is geometrically correct. Find the one
+      transformation that does the whole job.</div>`
+    },
+    {
+      h: 'Exam-style items',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>What earns the marks</th></tr></thead>
+      <tbody>
+        <tr><td>“Prove ${m('△ABC ≡ △DEF')}”</td><td>three statements with reasons, then the condition named</td></tr>
+        <tr><td>“Describe fully the single transformation”</td><td>the type plus its data</td></tr>
+        <tr><td>“Find the scale factor”</td><td>a ratio of corresponding lengths, with the direction stated</td></tr>
+        <tr><td>“Explain why the triangles are similar”</td><td>two equal angles, each with a reason</td></tr>
+        <tr><td>“Work out the area of the larger shape”</td><td class="m">k²</td></tr>
+      </tbody></table></div>
+      <p>A worked model answer for the first row:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td class="m">AB = DE</td><td>given</td></tr>
+        <tr><td class="m">∠ABC = ∠DEF</td><td>given</td></tr>
+        <tr><td class="m">BC = EF</td><td>given</td></tr>
+        <tr><td class="m">△ABC ≡ △DEF</td><td class="m">SAS</td></tr>
+      </tbody></table></div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A shape at ' + m('(1,1), (3,1), (1,4)') + ' maps to ' + m('(2,2), (6,2), (2,8)') + '. Describe the single transformation fully.',
+      steps: [
+        ['Each coordinate is doubled.', ''],
+        ['That is an enlargement about the origin.', ''],
+        ['Scale factor ' + m('2') + '.', ''],
+        ['An enlargement, centre ' + m('(0, 0)') + ', scale factor ' + m('2') + '.', 'Type plus data.']
+      ],
+      ans: 'Enlargement, centre ' + m('(0,0)') + ', scale factor ' + m('2')
+    },
+    {
+      q: 'Two triangles have a right angle, equal hypotenuses of ' + m('13') + ' and one leg of ' + m('5') + ' each. Name the condition.',
+      steps: [
+        ['A right angle in each.', ''],
+        ['Equal hypotenuses.', ''],
+        ['One pair of equal sides.', ''],
+        [m('RHS') + ' — congruent.', '']
+      ],
+      ans: m('RHS')
+    },
+    {
+      q: 'A shape of area ' + m('7') + ' is enlarged by scale factor ' + m('4') + '. Find the new area.',
+      steps: [
+        ['Lengths ×' + m('4') + '.', ''],
+        ['Areas ×' + m('4² = 16') + '.', ''],
+        [m('7 × 16'), ''],
+        [m('= 112'), '']
+      ],
+      ans: m('112')
+    }
+  ],
+  modelNote: 'Read out four candidate answers to “describe fully” — one missing the centre, one missing the direction, one giving two transformations, one complete — and let the class mark them.',
+  interactive: {
+    type: 'transform',
+    title: 'Name the transformation',
+    hint: 'Type plus data, always.'
+  },
+  quiz: [
+    { q: m('AAA') + ' gives:', a: ['congruence', 'similarity', 'nothing', 'equality of areas'], c: 1, why: 'Any size fits.' },
+    { q: m('RHS') + ' stands for:', a: ['right, hypotenuse, side', 'right, height, side', 'ratio, height, side', 'none'], c: 0, why: 'For right triangles.' },
+    { q: 'A rotation must state:', a: ['the angle', 'the centre', 'the direction', 'all three'], c: 3, why: 'All of them.' },
+    { q: 'An enlargement must state:', a: ['the vector', 'the centre and the scale factor', 'the axis', 'the angle'], c: 1, why: 'Both.' },
+    { q: '“Describe the single transformation” allows:', a: ['two transformations', 'one transformation', 'any description', 'a sketch only'], c: 1, why: 'One, or no marks.' },
+    { q: 'Area ' + m('7') + ', scale factor ' + m('4') + ':', a: [m('28'), m('49'), m('112'), m('448')], c: 2, why: m('7 × 16') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Three equal sides', m('SSS')],
+      ['Two sides and the included angle', m('SAS')],
+      ['Two angles and the side between', m('ASA')],
+      ['Right angle, hypotenuse and a side', m('RHS')],
+      ['Three equal angles gives', 'Similarity only'],
+      ['A translation is described by', 'A vector'],
+      ['A reflection is described by', 'A mirror line']
+    ],
+    med: [
+      [m('(1,1),(3,1),(1,4) → (2,2),(6,2),(2,8)'), 'Enlargement, centre ' + m('O') + ', s.f. ' + m('2')],
+      [m('(1,2) → (1,−2)') + ' with the shape flipped', 'Reflection in ' + m('Ox')],
+      [m('(2,3) → (−3,2)'), 'Rotation ' + m('90°') + ' anticlockwise about ' + m('O')],
+      ['Area ' + m('7') + ', scale factor ' + m('4'), m('112')],
+      ['Area ' + m('45') + ', scale factor ' + m(f('1', '3')), m('5')],
+      ['A rotation description missing the centre scores', 'Fewer marks'],
+      ['Two triangles, hypotenuse ' + m('13') + ' and leg ' + m('5'), m('RHS')]
+    ],
+    hard: [
+      ['An enlargement with s.f. ' + m('−2') + ' about ' + m('O') + ' maps ' + m('(3, 1)'), m('(−6, −2)')],
+      ['An enlargement, centre ' + m('(1,1)') + ', s.f. ' + m('3') + ', maps ' + m('(2, 3)'), m('(4, 7)')],
+      ['A shape and its image have areas ' + m('9') + ' and ' + m('81') + ': the scale factor', m('±3')],
+      ['Describe fully: ' + m('(x, y) ↦ (y, x)'), 'Reflection in ' + m('y = x')],
+      ['Describe fully: ' + m('(x, y) ↦ (−x, −y)'), 'Rotation ' + m('180°') + ' about ' + m('O')],
+      ['Describe fully: ' + m('(x, y) ↦ (x + 2, y − 5)'), 'Translation by ' + m('(2, −5)')],
+      ['Why is ' + m('AAA') + ' not a congruence condition?', 'The triangles may differ in size']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every description must give the type and all of its data.',
+  homework: [
+    'Name the congruence condition for each of: three sides; two angles and the side between; a right angle with the hypotenuse and a leg.',
+    'Describe fully the transformation ' + m('(x, y) ↦ (−y, x)') + '.',
+    'Describe fully the transformation ' + m('(x, y) ↦ (3x, 3y)') + '.',
+    'A shape of area ' + m('12') + ' is enlarged by scale factor ' + m('2.5') + '. Find the new area.',
+    'Explain, with a diagram, why ' + m('AAA') + ' does not prove congruence.'
+  ]
+});
+
+/* ============================== 16 ============================== */
+G9_GEO.push({
+  id: 'g9-16', stream: 'geo', grade: 9, quarter: 1, lessons: '17–18', hours: 2,
+  title: 'Control work 1, and work on the mistakes',
+  subtitle: 'Similarity and the transformations of the plane, tested — and the chapter closed as one map.',
+  uz: 'Geometriya 9, Nazorat ishi 1', uzPage: 'pp. 9–75',
+  cam: 'IGX 11 review', camPage: 'Core & Extended, pp. 220–241', wb: 'Control paper G1',
+  objectives: [
+    'Establish similarity by the appropriate criterion under time.',
+    'Use k, k² correctly for lengths and areas.',
+    'Describe a transformation fully.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Criterion', 'Alomat', 'Признак'],
+    ['Coefficient of similarity', 'O‘xshashlik koeffitsiyenti', 'Коэффициент подобия'],
+    ['Ratio of areas', 'Yuzalar nisbati', 'Отношение площадей'],
+    ['Transformation', 'Almashtirish', 'Преобразование'],
+    ['Homothety', 'Gomotetiya', 'Гомотетия'],
+    ['Full description', 'To‘liq tavsif', 'Полное описание'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 30 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>In ${m('△ABC')}, ${m('DE ∥ BC')}, ${m('AD = 5')}, ${m('DB = 3')}, ${m('DE = 10')}: find ${m('BC')}</td><td class="m">5</td><td>L5</td></tr>
+        <tr><td>2</td><td>Are triangles ${m('4, 6, 8')} and ${m('6, 9, 12')} similar? Name the criterion</td><td class="m">5</td><td>L7</td></tr>
+        <tr><td>3</td><td>Two similar polygons have areas ${m('27')} and ${m('48')}: find the ratio of their perimeters</td><td class="m">5</td><td>L14</td></tr>
+        <tr><td>4</td><td>The altitude to the hypotenuse divides it into ${m('4')} and ${m('16')}: find the altitude</td><td class="m">5</td><td>L8</td></tr>
+        <tr><td>5</td><td>Reflect ${m('(3, −2)')} in ${m('Ox')}, in ${m('Oy')} and in ${m('y = x')}</td><td class="m">5</td><td>L11</td></tr>
+        <tr><td>6</td><td>Describe fully the transformation ${m('(x, y) ↦ (2x, 2y)')}</td><td class="m">5</td><td>L15</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries one mark for using ${m('AB = 8')} rather than ${m('DB = 3')}; Q2 two for naming the
+      criterion; Q3 two for taking the square root; Q5 one for the swap in ${m('y = x')}; Q6 two for
+      giving the centre as well as the scale factor.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>part of a side used as the whole</td><td class="m">k = ${f('3', '5')}</td><td class="m">k = ${f('8', '5')}</td></tr>
+        <tr><td>criterion not named</td><td>“they are similar”</td><td>“by the third criterion”</td></tr>
+        <tr><td>ratio of areas given for a length</td><td class="m">${f('48', '27')}</td><td class="m">${f('4', '3')}</td></tr>
+        <tr><td>wrong altitude relation</td><td class="m">CH² = 4 × 20</td><td class="m">CH² = 4 × 16</td></tr>
+        <tr><td class="m">y = x</td><td class="m">(−3, 2)</td><td class="m">(−2, 3)</td></tr>
+        <tr><td>centre omitted</td><td>“an enlargement, s.f. ${m('2')}”</td><td>“…centre ${m('(0, 0)')}”</td></tr>
+        <tr><td>sides not sorted</td><td class="m">${f('6', '8')} ≠ ${f('9', '4')}</td><td>sort both lists first</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'Chapter I as one map',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Block</th><th>The sentence</th></tr></thead>
+      <tbody>
+        <tr><td>similarity of polygons</td><td>equal angles <b>and</b> proportional sides</td></tr>
+        <tr><td>similar triangles</td><td>either condition alone is enough</td></tr>
+        <tr><td>the three criteria</td><td>AA, SAS, SSS — proportionally</td></tr>
+        <tr><td>right triangles</td><td>the altitude makes three similar triangles</td></tr>
+        <tr><td>movements</td><td>translation, reflection, rotation — distance preserved</td></tr>
+        <tr><td>homothety</td><td>a stretch from a centre — shape preserved, size not</td></tr>
+        <tr><td>the ratios</td><td>lengths ${m('k')}, areas ${m('k²')}, volumes ${m('k³')}</td></tr>
+      </tbody></table></div>
+      {{fig:enlargement:One picture for the whole chapter — a figure and its scaled copy.}}
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      Chapter II removes the right angle. The sine and cosine rules let a triangle be solved from any
+      three suitable pieces of information, and the trigonometric ratios are extended to obtuse angles.
+      Nothing from Chapter I is needed for the formulae, but the similar-triangle habits are used in
+      every proof.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q1: ' + m('DE ∥ BC') + ', ' + m('AD = 5') + ', ' + m('DB = 3') + ', ' + m('DE = 10') + '.',
+      steps: [
+        [m('∠A') + ' common; ' + m('∠ADE = ∠ABC') + ' (corresponding).', 'First criterion.'],
+        [m('AB = 5 + 3 = 8'), 'The whole side.'],
+        [m('k = ' + f('8', '5')), ''],
+        [m('BC = 10 × ' + f('8', '5') + ' = 16'), '']
+      ],
+      ans: m('BC = 16')
+    },
+    {
+      q: 'Model answer, Q3: areas ' + m('27') + ' and ' + m('48') + '.',
+      steps: [
+        [m('k² = ' + f('48', '27') + ' = ' + f('16', '9')), ''],
+        [m('k = ' + f('4', '3')), 'Square root.'],
+        ['Perimeters scale by ' + m('k') + '.', ''],
+        [m('4 : 3'), '']
+      ],
+      ans: m('4 : 3')
+    },
+    {
+      q: 'Model answer, Q6: describe ' + m('(x, y) ↦ (2x, 2y)') + '.',
+      steps: [
+        ['Every distance from the origin is doubled.', ''],
+        ['The origin itself does not move.', 'It is the centre.'],
+        ['Shape preserved, size not — an enlargement.', ''],
+        ['An enlargement, centre ' + m('(0, 0)') + ', scale factor ' + m('2') + '.', 'Type plus data.']
+      ],
+      ans: 'Enlargement, centre ' + m('(0,0)') + ', scale factor ' + m('2')
+    }
+  ],
+  modelNote: 'Return Q6 with four candidate answers written on the board — one missing the centre, one naming two transformations — and let the class allocate the five marks.',
+  interactive: {
+    type: 'quiz',
+    title: 'Chapter I in twelve questions',
+    hint: 'Two from each block.',
+    items: [
+      { q: 'Similar polygons need:', a: ['equal angles only', 'proportional sides only', 'both', 'neither'], c: 2, why: 'Both conditions.' },
+      { q: 'For triangles, equal angles give:', a: ['nothing', 'proportional sides', 'equal sides', 'equal areas'], c: 1, why: 'Triangles are rigid.' },
+      { q: 'The first criterion needs:', a: ['one angle', 'two angles', 'three sides', 'two sides'], c: 1, why: 'AA.' },
+      { q: 'The second criterion needs the angle to be:', a: ['the largest', 'included', 'acute', 'right'], c: 1, why: 'Between the two sides.' },
+      { q: 'Six sides and no angles: use', a: ['the first', 'the second', 'the third', 'none'], c: 2, why: 'SSS.' },
+      { q: 'The altitude to the hypotenuse makes:', a: ['two', 'three', 'four', 'no'], c: 1, why: 'Three similar triangles.' },
+      { q: m('CH²') + ' equals:', a: [m('AH · AB'), m('AH · HB'), m('HB · AB'), m('AB²')], c: 1, why: 'The two projections.' },
+      { q: 'A translation is described by:', a: ['a vector', 'a centre', 'an axis', 'an angle'], c: 0, why: 'Direction and distance.' },
+      { q: 'A reflection reverses:', a: ['distance', 'angle size', 'orientation', 'area'], c: 2, why: 'A mirror image.' },
+      { q: 'Central symmetry is a rotation of:', a: [m('90°'), m('180°'), m('270°'), m('360°')], c: 1, why: 'A half-turn.' },
+      { q: 'A homothety is described by:', a: ['a vector', 'a centre and a coefficient', 'an axis', 'an angle'], c: 1, why: 'Both.' },
+      { q: 'Areas scale by:', a: [m('k'), m('k²'), m('k³'), m('2k')], c: 1, why: 'Two dimensions.' }
+    ]
+  },
+  quiz: [
+    { q: 'In Q1 the ratio uses:', a: [m('DB'), m('AB'), m('DE'), m('AC')], c: 1, why: 'The whole side.' },
+    { q: 'Q2 must include:', a: ['a diagram', 'the criterion', 'a decimal', 'an angle'], c: 1, why: 'Two of the five marks.' },
+    { q: 'Q3 needs:', a: ['squaring', 'a square root', 'a cube root', 'nothing'], c: 1, why: 'Areas to lengths.' },
+    { q: 'In Q4 the whole hypotenuse is:', a: [m('4'), m('16'), m('20'), m('12')], c: 2, why: m('4 + 16') + '.' },
+    { q: 'Q5’s ' + m('y = x') + ' image of ' + m('(3, −2)') + ':', a: [m('(−3, 2)'), m('(−2, 3)'), m('(2, −3)'), m('(3, 2)')], c: 1, why: 'Swap the coordinates.' },
+    { q: 'Q6 must give:', a: ['the type only', 'the type and its data', 'two transformations', 'a sketch'], c: 1, why: 'Both, always.' }
+  ],
+  practice: {
+    easy: [
+      [m('DE ∥ BC') + ', ' + m('AD = 5, DB = 3') + ': ' + m('AB'), m('8')],
+      ['Same: ' + m('k'), m(f('8', '5'))],
+      ['Same, ' + m('DE = 10') + ': ' + m('BC'), m('16')],
+      [m('4, 6, 8') + ' and ' + m('6, 9, 12'), 'Similar, ' + m('k = 1.5')],
+      ['Areas ' + m('27') + ' and ' + m('48') + ': ' + m('k'), m(f('4', '3'))],
+      ['Projections ' + m('4') + ' and ' + m('16') + ': the altitude', m('8')],
+      [m('(3, −2)') + ' in ' + m('Ox'), m('(3, 2)')]
+    ],
+    med: [
+      [m('(3, −2)') + ' in ' + m('Oy'), m('(−3, −2)')],
+      [m('(3, −2)') + ' in ' + m('y = x'), m('(−2, 3)')],
+      ['Describe ' + m('(x, y) ↦ (2x, 2y)'), 'Enlargement, centre ' + m('O') + ', s.f. ' + m('2')],
+      ['Areas ' + m('27') + ' and ' + m('48') + ': ratio of perimeters', m('4 : 3')],
+      ['Projections ' + m('4') + ' and ' + m('16') + ': the legs', m('4' + sr('5')) + ' and ' + m('8' + sr('5'))],
+      ['Which criterion for ' + m('4, 6, 8') + ' and ' + m('6, 9, 12') + '?', 'The third'],
+      ['A shape of area ' + m('9') + ' with ' + m('k = 2') + ': its area', m('36')]
+    ],
+    hard: [
+      [m('DE ∥ BC') + ', ' + m('[△ADE] = 25, [△ABC] = 64') + ': ' + m('AD : DB'), m('5 : 3')],
+      ['A right triangle with hypotenuse ' + m('20') + ' and altitude ' + m('8') + ': the projections', m('4') + ' and ' + m('16')],
+      ['Two similar polygons: perimeters ' + m('21') + ' and ' + m('28') + ', smaller area ' + m('45'), m('80')],
+      ['Describe ' + m('(x, y) ↦ (−x, −y)'), 'Rotation ' + m('180°') + ' about ' + m('O')],
+      ['Describe ' + m('(x, y) ↦ (y, x)'), 'Reflection in ' + m('y = x')],
+      ['A bisector from ' + m('A') + ' with ' + m('AB = 12, AC = 18, BC = 20') + ': ' + m('BD'), m('8')],
+      ['A triangle ' + m('6, 8, 10') + ': the altitude to the hypotenuse', m('4.8')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite in full every question that lost a mark before Chapter II begins.',
+  homework: [
+    'In ' + m('△ABC') + ', ' + m('DE ∥ BC') + ', ' + m('AD = 6') + ', ' + m('DB = 2') + ', ' + m('DE = 9') + '. Find ' + m('BC') + '.',
+    'Two similar polygons have areas ' + m('50') + ' and ' + m('72') + '. Find the ratio of their perimeters.',
+    'The altitude to the hypotenuse divides it into ' + m('5') + ' and ' + m('20') + '. Find the altitude and the legs.',
+    'Reflect ' + m('(−4, 1)') + ' in ' + m('Ox') + ', ' + m('Oy') + ' and ' + m('y = x') + '.',
+    'Describe fully the transformation ' + m('(x, y) ↦ (−y, x)') + '.'
+  ]
+});
