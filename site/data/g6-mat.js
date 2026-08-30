@@ -2040,3 +2040,215 @@ G6_MAT.push({
     'Explain in one sentence why dividing a fraction by ' + m('4') + ' makes it smaller.'
   ]
 });
+
+/* ============================== 12 ============================== */
+G6_MAT.push({
+  id: 'g6-12', stream: 'mat', grade: 6, quarter: 1, lessons: '24–26', hours: 3,
+  title: 'Dividing a natural number by a proper fraction',
+  subtitle: 'How many halves are in three? — the division that makes the answer bigger.',
+  uz: 'Matematika 6, §6', uzPage: 'pp. 65–72',
+  cam: 'S7 7.4', camPage: 'Stage 7, pp. 71–75', wb: 'Exercise 7.4',
+  objectives: [
+    'Interpret dividing by a fraction as “how many of these fit”.',
+    'Divide a whole number by a fraction using the reciprocal.',
+    'Explain why the answer is larger than the number divided.',
+    'Solve measuring and packing problems.'
+  ],
+  terms: [
+    ['Reciprocal', 'Teskari son', 'Обратное число'],
+    ['How many fit', 'Nechta joylashadi', 'Сколько помещается'],
+    ['To turn upside down', 'Ag‘darib qo‘yish', 'Перевернуть'],
+    ['Divisor', 'Bo‘luvchi', 'Делитель'],
+    ['Quotient', 'Bo‘linma', 'Частное'],
+    ['Measuring problem', 'O‘lchash masalasi', 'Задача на измерение'],
+    ['Whole number', 'Butun son', 'Целое число'],
+    ['Estimate', 'Baholash', 'Оценка']
+  ],
+  timing: [[25, 'How many fit?'], [25, 'The reciprocal'], [30, 'Why the answer grows'], [30, 'Problems'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'How many fit?',
+      html: `<p>${m('3 ÷ ' + f('1', '2'))} asks: how many halves are there in ${m('3')}? Six — and a picture
+      settles it before any rule is stated.</p>
+      ${eq(m('3 ÷ ' + f('1', '2') + ' = 6'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Division</th><th>The question it asks</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3 ÷ ${f('1', '2')}</td><td>how many halves in ${m('3')}</td><td class="m">6</td></tr>
+        <tr><td class="m">4 ÷ ${f('1', '4')}</td><td>how many quarters in ${m('4')}</td><td class="m">16</td></tr>
+        <tr><td class="m">6 ÷ ${f('2', '3')}</td><td>how many two-thirds in ${m('6')}</td><td class="m">9</td></tr>
+        <tr><td class="m">5 ÷ ${f('1', '3')}</td><td>how many thirds in ${m('5')}</td><td class="m">15</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Division has two meanings, and this is the second</div>
+      ${m('12 ÷ 3')} can mean “share ${m('12')} among ${m('3')}” or “how many ${m('3')}s are in
+      ${m('12')}”. With a fraction as the divisor, only the second question makes sense.</div>`
+    },
+    {
+      h: 'The reciprocal',
+      html: `${eq(m('n ÷ ' + f('a', 'b') + ' = n · ' + f('b', 'a')), true)}
+      <p>Turn the divisor upside down and multiply. The <b>reciprocal</b> of ${m(f('a', 'b'))} is
+      ${m(f('b', 'a'))}, and the two multiply to ${m('1')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Fraction</th><th>Reciprocal</th><th>Product</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('1', '2')}</td><td class="m">2</td><td class="m">1</td></tr>
+        <tr><td class="m">${f('2', '3')}</td><td class="m">${f('3', '2')}</td><td class="m">1</td></tr>
+        <tr><td class="m">5</td><td class="m">${f('1', '5')}</td><td class="m">1</td></tr>
+        <tr><td class="m">${f('7', '4')}</td><td class="m">${f('4', '7')}</td><td class="m">1</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Division</th><th>As multiplication</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">6 ÷ ${f('2', '3')}</td><td class="m">6 · ${f('3', '2')}</td><td class="m">9</td></tr>
+        <tr><td class="m">4 ÷ ${f('4', '5')}</td><td class="m">4 · ${f('5', '4')}</td><td class="m">5</td></tr>
+        <tr><td class="m">10 ÷ ${f('5', '6')}</td><td class="m">10 · ${f('6', '5')}</td><td class="m">12</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Turn over the divisor, never the dividend</span>
+      ${m('6 ÷ ' + f('2', '3'))} is ${m('6 · ' + f('3', '2') + ' = 9')}. Turning over the ${m('6')} instead
+      gives ${m(f('1', '9'))} — the reciprocal of the right answer, and a mistake the estimate below
+      catches instantly.</div>`
+    },
+    {
+      h: 'Why the answer grows',
+      html: `<p>Dividing by a number smaller than ${m('1')} always gives a larger answer, because the
+      pieces being counted are smaller than the whole.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Divisor</th><th>Compared with ${m('1')}</th><th>The answer is</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('1', '2')}</td><td>smaller</td><td>larger than ${m('6')}</td><td class="m">6 ÷ ${f('1', '2')} = 12</td></tr>
+        <tr><td class="m">1</td><td>equal</td><td>unchanged</td><td class="m">6 ÷ 1 = 6</td></tr>
+        <tr><td class="m">${f('3', '2')}</td><td>larger</td><td>smaller than ${m('6')}</td><td class="m">6 ÷ ${f('3', '2')} = 4</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Estimate before you calculate</div>
+      Ask first: will the answer be bigger or smaller than the number I started with? One second of
+      thought rules out half the possible mistakes.</div>`
+    },
+    {
+      h: 'Problems',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('6')} m of cloth cut into pieces of ${m(f('2', '3'))} m</td><td class="m">6 ÷ ${f('2', '3')}</td><td class="m">9</td></tr>
+        <tr><td>${m('4')} litres poured into ${m(f('1', '4'))}-litre cups</td><td class="m">4 ÷ ${f('1', '4')}</td><td class="m">16</td></tr>
+        <tr><td>${m('10')} kg of rice in ${m(f('5', '6'))}-kg bags</td><td class="m">10 ÷ ${f('5', '6')}</td><td class="m">12</td></tr>
+        <tr><td>a wall ${m('9')} m long, tiles ${m(f('3', '4'))} m wide</td><td class="m">9 ÷ ${f('3', '4')}</td><td class="m">12</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">“How many … fit” is the phrase to look for</div>
+      Cutting, pouring, packing and tiling are all the same question. Once the phrase is spotted, the
+      division writes itself.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compute ' + m('6 ÷ ' + f('2', '3')) + '.',
+      steps: [
+        ['The divisor is less than ' + m('1') + ', so expect an answer over ' + m('6') + '.', ''],
+        [m('6 · ' + f('3', '2')), 'Turn over the divisor.'],
+        [m('= ' + f('18', '2') + ' = 9'), '']
+      ],
+      ans: m('9')
+    },
+    {
+      q: 'How many ' + m(f('3', '4')) + ' m tiles fit along a wall ' + m('9') + ' m long?',
+      steps: [
+        ['The question is “how many fit”, so divide.', ''],
+        [m('9 ÷ ' + f('3', '4') + ' = 9 · ' + f('4', '3')), ''],
+        [m('= 12'), '']
+      ],
+      ans: m('12') + ' tiles'
+    },
+    {
+      q: 'Compute ' + m('10 ÷ ' + f('5', '6')) + '.',
+      steps: [
+        [m('10 · ' + f('6', '5')), ''],
+        ['Cancel: ' + m('10 ÷ 5 = 2') + '.', ''],
+        [m('2 · 6 = 12'), '']
+      ],
+      ans: m('12')
+    }
+  ],
+  modelNote: 'Lay a metre rule on the desk and count how many 25-cm cards fit along it; the class answers “four” without hesitation and has just divided by a quarter.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'Dividing by a fraction',
+    hint: 'Turn over the divisor, then cancel.',
+    items: [
+      {
+        title: '6 ÷ 2/3',
+        start: m('6 ÷ ' + f('2', '3')),
+        steps: [
+          ['The divisor is under ' + m('1') + ', so the answer beats ' + m('6') + '.', 'Estimate first.'],
+          [m('6 · ' + f('3', '2')), 'Turn over the divisor.'],
+          [m('9'), 'How many two-thirds fit in six.']
+        ],
+        answer: m('9')
+      },
+      {
+        title: '10 ÷ 5/6',
+        start: m('10 ÷ ' + f('5', '6')),
+        steps: [
+          [m('10 · ' + f('6', '5')), ''],
+          ['Cancel ' + m('10') + ' against ' + m('5') + '.', 'Before multiplying.'],
+          [m('2 · 6 = 12'), '']
+        ],
+        answer: m('12')
+      },
+      {
+        title: '4 ÷ 4/5',
+        start: m('4 ÷ ' + f('4', '5')),
+        steps: [
+          [m('4 · ' + f('5', '4')), ''],
+          ['Cancel the ' + m('4') + 's.', ''],
+          [m('5'), 'Only a little more than ' + m('4') + ', because the divisor is nearly ' + m('1') + '.']
+        ],
+        answer: m('5')
+      }
+    ]
+  },
+  quiz: [
+    { q: m('3 ÷ ' + f('1', '2')) + ' equals:', a: [m(f('3', '2')), m('6'), m(f('1', '6')), m('1.5')], c: 1, why: 'Six halves in three.' },
+    { q: 'The reciprocal of ' + m(f('2', '3')) + ' is:', a: [m(f('3', '2')), m('−' + f('2', '3')), m(f('2', '3')), m('3')], c: 0, why: 'They multiply to ' + m('1') + '.' },
+    { q: 'Dividing by a number under ' + m('1') + ' gives an answer:', a: ['smaller', 'larger', 'the same', 'negative'], c: 1, why: 'The pieces are small.' },
+    { q: m('6 ÷ ' + f('2', '3')) + ' equals:', a: [m('4'), m('9'), m(f('4', '9')), m('12')], c: 1, why: m('6 · ' + f('3', '2')) + '.' },
+    { q: m('4 ÷ ' + f('4', '5')) + ' equals:', a: [m('5'), m(f('16', '5')), m(f('5', '4')), m('3.2')], c: 0, why: 'Cancel the ' + m('4') + 's.' },
+    { q: 'Which fraction is turned over?', a: ['the first', 'the divisor', 'both', 'neither'], c: 1, why: 'Only the divisor.' }
+  ],
+  practice: {
+    easy: [
+      [m('3 ÷ ' + f('1', '2')), m('6')],
+      [m('4 ÷ ' + f('1', '4')), m('16')],
+      [m('5 ÷ ' + f('1', '3')), m('15')],
+      [m('6 ÷ ' + f('2', '3')), m('9')],
+      [m('4 ÷ ' + f('4', '5')), m('5')],
+      ['The reciprocal of ' + m(f('3', '7')), m(f('7', '3'))],
+      ['The reciprocal of ' + m('5'), m(f('1', '5'))]
+    ],
+    med: [
+      [m('10 ÷ ' + f('5', '6')), m('12')],
+      [m('9 ÷ ' + f('3', '4')), m('12')],
+      [m('8 ÷ ' + f('2', '5')), m('20')],
+      [m('6') + ' m of cloth in ' + m(f('2', '3')) + ' m pieces', m('9')],
+      [m('4') + ' litres in ' + m(f('1', '4')) + '-litre cups', m('16')],
+      [m('10') + ' kg in ' + m(f('5', '6')) + '-kg bags', m('12')],
+      [m('6 ÷ ' + f('3', '2')), m('4')]
+    ],
+    hard: [
+      [m('7 ÷ ' + f('7', '9')), m('9')],
+      [m('12 ÷ ' + f('8', '9')), m('13' + f('1', '2'))],
+      [m('1 ÷ ' + f('4', '7')), m(f('7', '4'))],
+      ['Which is larger, ' + m('8 ÷ ' + f('1', '2')) + ' or ' + m('8 · ' + f('1', '2')) + '?', m('8 ÷ ' + f('1', '2') + ' = 16')],
+      ['A wall ' + m('15') + ' m long, tiles ' + m(f('5', '8')) + ' m wide', m('24') + ' tiles'],
+      ['Why does dividing by ' + m(f('1', '2')) + ' double a number?', 'Two halves make each whole'],
+      [m('20 ÷ ' + f('4', '5') + ' ÷ 5'), m('5')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Estimate first: will the answer be larger or smaller than the number you started with?',
+  homework: [
+    'Compute ' + m('8 ÷ ' + f('1', '2')) + ' and ' + m('9 ÷ ' + f('1', '3')) + '.',
+    'Compute ' + m('12 ÷ ' + f('3', '4')) + ' and ' + m('15 ÷ ' + f('5', '6')) + '.',
+    'How many ' + m(f('2', '5')) + '-litre bottles can be filled from ' + m('6') + ' litres?',
+    'A ribbon ' + m('8') + ' m long is cut into ' + m(f('4', '5')) + ' m pieces. How many pieces?',
+    'Explain why ' + m('6 ÷ ' + f('2', '3')) + ' is larger than ' + m('6') + '.'
+  ]
+});
