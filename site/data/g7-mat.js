@@ -4760,3 +4760,332 @@ G7_MAT.push({
     'Describe how to measure the width of a river using the second criterion.'
   ]
 });
+
+/* ============================== 28 ============================== */
+G7_MAT.push({
+  id: 'g7-28', stream: 'mat', grade: 7, quarter: 2, lessons: '53–54', hours: 2,
+  title: 'The third criterion of congruence of triangles',
+  subtitle: 'Three sides and nothing else — the criterion that makes a triangle rigid.',
+  uz: 'Matematika 7, §23', uzPage: 'pp. 143–148',
+  cam: 'S8 5', camPage: 'Stage 8, pp. 48–56', wb: 'Exercise 5.1',
+  objectives: [
+    'State and apply the SSS criterion.',
+    'Use it to prove properties of the rhombus and the kite.',
+    'Explain why a triangle is rigid and a quadrilateral is not.',
+    'Choose between the three criteria from the given data.'
+  ],
+  terms: [
+    ['Third criterion', 'Uchinchi alomat', 'Третий признак'],
+    ['Three sides', 'Uchta tomon', 'Три стороны'],
+    ['Rigid', 'Qattiq', 'Жёсткий'],
+    ['Rhombus', 'Romb', 'Ромб'],
+    ['Kite', 'Deltoid', 'Дельтоид'],
+    ['Diagonal', 'Diagonal', 'Диагональ'],
+    ['Framework', 'Karkas', 'Каркас'],
+    ['To choose', 'Tanlash', 'Выбрать']
+  ],
+  timing: [[15, 'The criterion'], [25, 'Rigidity'], [25, 'Using it'], [20, 'Choosing a criterion'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The criterion',
+      html: `${eq('If the three sides of one triangle are equal to the three sides of another, the triangles are congruent', true)}
+      ${eq(m('AB = A₁B₁') + ',   ' + m('BC = B₁C₁') + ',   ' + m('CA = C₁A₁') + '   ⟹   ' + m('△ABC ≡ △A₁B₁C₁'), true)}
+      <p>No angle is mentioned at all, and yet all three angles turn out equal. Three lengths determine a
+      triangle completely.</p>
+      <div class="keybox"><div class="klabel">This is the criterion a computer would use</div>
+      It needs no reasoning about the figure — only three comparisons. Every question that supplies six
+      lengths and no angles is answered by it.</div>`
+    },
+    {
+      h: 'Rigidity',
+      html: `<p>A framework of three rods joined at their ends cannot change shape; one of four rods
+      can.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Framework</th><th>Rigid?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>triangle</td><td>yes</td><td>three sides fix it — the third criterion</td></tr>
+        <tr><td>quadrilateral</td><td>no</td><td>it can be pushed into a parallelogram</td></tr>
+        <tr><td>quadrilateral with one diagonal</td><td>yes</td><td>it becomes two triangles</td></tr>
+      </tbody></table></div>
+      <p>This is why bridges, roof trusses and pylons are built from triangles, and why a garden gate is
+      braced with a diagonal.</p>
+      <div class="keybox"><div class="klabel">The third criterion is an engineering fact</div>
+      Every triangulated structure in the world depends on it. The theorem and the brace on a gate are
+      the same statement.</div>`
+    },
+    {
+      h: 'Using it',
+      html: `<p><b>Problem.</b> In a rhombus ${m('ABCD')}, prove that the diagonal ${m('AC')} bisects the
+      angles at ${m('A')} and ${m('C')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td class="m">AB = AD</td><td>a rhombus has four equal sides</td></tr>
+        <tr><td class="m">CB = CD</td><td>the same</td></tr>
+        <tr><td class="m">AC = AC</td><td>common</td></tr>
+        <tr><td class="m">△ABC ≡ △ADC</td><td>third criterion</td></tr>
+        <tr><td class="m">∠BAC = ∠DAC</td><td>CPCT</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The common side again</div>
+      As in the first criterion, the shared side supplies the third equality without being given. Look
+      for it first in every figure.</div>`
+    },
+    {
+      h: 'Choosing a criterion',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Criterion</th></tr></thead>
+      <tbody>
+        <tr><td>two sides and the angle between them</td><td>the first (SAS)</td></tr>
+        <tr><td>a side and two angles</td><td>the second (ASA)</td></tr>
+        <tr><td>three sides</td><td>the third (SSS)</td></tr>
+        <tr><td>two sides and a non-included angle</td><td>none — not enough</td></tr>
+        <tr><td>three angles</td><td>none — similarity only</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Name the criterion in every proof</span>
+      A proof that reaches the right conclusion without naming which criterion was used is incomplete,
+      and is marked as such in both the national and the Cambridge papers.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Two triangles have sides ' + m('5, 6, 7') + ' and ' + m('7, 5, 6') + '. Are they congruent?',
+      steps: [
+        ['Sort both lists: ' + m('5, 6, 7') + ' and ' + m('5, 6, 7') + '.', ''],
+        ['All three pairs are equal.', ''],
+        ['By the third criterion, congruent.', ''],
+        ['The order in which they were written does not matter.', '']
+      ],
+      ans: 'Yes, by SSS'
+    },
+    {
+      q: 'In rhombus ' + m('ABCD') + ', prove ' + m('△ABC ≡ △ADC') + '.',
+      steps: [
+        [m('AB = AD') + ' — all sides of a rhombus are equal.', ''],
+        [m('CB = CD') + ' — the same.', ''],
+        [m('AC') + ' is common.', ''],
+        ['Third criterion.', '']
+      ],
+      ans: 'Proved by SSS'
+    },
+    {
+      q: 'Why is a four-rod framework not rigid, and how is it braced?',
+      steps: [
+        ['Four sides do not determine the angles.', ''],
+        ['The frame can be pushed out of square.', ''],
+        ['Adding one diagonal makes two triangles.', ''],
+        ['Each is rigid by SSS, so the whole frame is.', '']
+      ],
+      ans: 'Add a diagonal'
+    }
+  ],
+  modelNote: 'Pin three strips of card into a triangle and four into a quadrilateral; the class pushes both, and the third criterion becomes visible in ten seconds.',
+  interactive: {
+    type: 'triangleAngles',
+    title: 'Three sides fix the triangle',
+    hint: 'Change a side and every angle changes.'
+  },
+  quiz: [
+    { q: 'The third criterion needs:', a: ['three angles', 'three sides', 'two sides and an angle', 'a side and two angles'], c: 1, why: 'SSS.' },
+    { q: 'A triangular framework is:', a: ['flexible', 'rigid', 'unstable', 'impossible'], c: 1, why: 'Three sides fix it.' },
+    { q: 'A quadrilateral framework is made rigid by:', a: ['a fifth rod along a side', 'a diagonal', 'nothing', 'a shorter rod'], c: 1, why: 'It becomes two triangles.' },
+    { q: 'Sides ' + m('5, 6, 7') + ' and ' + m('7, 5, 6') + ' give:', a: ['congruence', 'similarity only', 'nothing', 'an error'], c: 0, why: 'The same three lengths.' },
+    { q: 'Two sides and a non-included angle give:', a: ['congruence', 'not necessarily', 'similarity', 'nothing at all'], c: 1, why: 'Two shapes may fit.' },
+    { q: 'A complete proof must:', a: ['give the answer', 'name the criterion', 'include measurements', 'be short'], c: 1, why: 'That is where the mark is.' }
+  ],
+  practice: {
+    easy: [
+      ['The third criterion in letters', m('SSS')],
+      ['Sides ' + m('5, 6, 7') + ' and ' + m('5, 6, 7'), 'Congruent'],
+      ['Sides ' + m('5, 6, 7') + ' and ' + m('5, 6, 8'), 'Not congruent'],
+      ['Is a triangle rigid?', 'Yes'],
+      ['Is a quadrilateral rigid?', 'No'],
+      ['How is it braced?', 'With a diagonal'],
+      ['A shared side gives', 'An equality for free']
+    ],
+    med: [
+      ['Sides ' + m('5, 6, 7') + ' and ' + m('7, 5, 6'), 'Congruent'],
+      ['Which criterion for six lengths?', 'The third'],
+      ['Which for a side and two angles?', 'The second'],
+      ['Which for two sides and the included angle?', 'The first'],
+      ['Which for three angles?', 'None'],
+      ['In a rhombus, ' + m('△ABC') + ' and ' + m('△ADC'), 'Congruent by SSS'],
+      ['What follows about ' + m('∠BAC') + ' and ' + m('∠DAC') + '?', 'They are equal']
+    ],
+    hard: [
+      ['Prove that a diagonal of a rhombus bisects its angles', 'SSS, then CPCT'],
+      ['Prove that the diagonals of a rhombus are perpendicular', 'Congruent triangles at the centre'],
+      ['Prove that a kite has one diagonal as an axis of symmetry', 'SSS on the two triangles'],
+      ['Why is a bridge built of triangles?', 'Only triangles are rigid'],
+      ['Two triangles with sides ' + m('a, b, c') + ' and ' + m('c, b, a'), 'Congruent'],
+      ['Can two triangles have five equal elements and not be congruent?', 'Yes — similar triangles can'],
+      ['How many rods brace a quadrilateral?', 'One diagonal']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Sort both lists of sides before comparing, and name the criterion in every proof.',
+  homework: [
+    'Are triangles with sides ' + m('8, 9, 10') + ' and ' + m('10, 8, 9') + ' congruent?',
+    'Prove that a diagonal of a rhombus bisects two of its angles.',
+    'Explain why a triangle is rigid and a quadrilateral is not.',
+    'State which criterion applies to each of the five cases in the table.',
+    'Prove that the diagonals of a rhombus are perpendicular.'
+  ]
+});
+
+/* ============================== 29 ============================== */
+G7_MAT.push({
+  id: 'g7-29', stream: 'mat', grade: 7, quarter: 2, lessons: '55', hours: 1,
+  title: 'Practical exercises — constructions with compasses and a straightedge',
+  subtitle: 'A Cambridge insert: the four constructions every later proof depends on.',
+  uz: 'Matematika 7, amaliy mashqlar', uzPage: 'pp. 149–151',
+  cam: 'S8 5.3', camPage: 'Stage 8, pp. 53–56', wb: 'Exercise 5.3',
+  objectives: [
+    'Copy a segment and an angle with compasses.',
+    'Construct the perpendicular bisector of a segment.',
+    'Construct the bisector of an angle.',
+    'Construct a triangle from three given sides.'
+  ],
+  terms: [
+    ['Construction', 'Yasash', 'Построение'],
+    ['Compasses', 'Sirkul', 'Циркуль'],
+    ['Straightedge', 'Chizg‘ich', 'Линейка'],
+    ['Arc', 'Yoy', 'Дуга'],
+    ['To copy', 'Ko‘chirish', 'Перенести'],
+    ['Perpendicular bisector', 'O‘rta perpendikulyar', 'Серединный перпендикуляр'],
+    ['Bisector', 'Bissektrisa', 'Биссектриса'],
+    ['Equidistant', 'Teng uzoqlikda', 'Равноудалённый']
+  ],
+  timing: [[8, 'The tools'], [14, 'The four constructions'], [12, 'Building a triangle'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The tools',
+      html: `<p>A <b>construction</b> uses only two tools: compasses to draw circles and to carry lengths,
+      and a straightedge to draw lines. The straightedge is <b>not</b> a ruler — no measuring is
+      allowed.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Tool</th><th>May be used to</th><th>May not</th></tr></thead>
+      <tbody>
+        <tr><td>compasses</td><td>draw an arc, carry a length</td><td>measure in centimetres</td></tr>
+        <tr><td>straightedge</td><td>join two points</td><td>measure</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Leave every arc visible</span>
+      The arcs are the working. A finished construction with the arcs rubbed out cannot be marked, and
+      scores less than an untidy one that shows them.</div>`
+    },
+    {
+      h: 'The four constructions',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Construction</th><th>Method</th></tr></thead>
+      <tbody>
+        <tr><td>copy a segment</td><td>open the compasses to it and step it off on a ray</td></tr>
+        <tr><td>copy an angle</td><td>one arc across both arms of the original and of the copy, then transfer the chord</td></tr>
+        <tr><td>perpendicular bisector of ${m('AB')}</td><td>equal arcs from ${m('A')} and from ${m('B')}, both sides; join the crossings</td></tr>
+        <tr><td>bisector of an angle</td><td>one arc across both arms, then equal arcs from the two points; join to the vertex</td></tr>
+      </tbody></table></div>
+      {{fig:perpBisector:Equal arcs from both ends give the perpendicular bisector.}}
+      {{fig:bisectorConstruction:One arc across the arms, then two equal arcs, gives the bisector.}}
+      <div class="keybox"><div class="klabel">All four are the same idea</div>
+      Two points equidistant from the same pair of points determine a line of symmetry. Every one of the
+      four constructions is that statement applied somewhere.</div>`
+    },
+    {
+      h: 'Building a triangle',
+      html: `<p><b>Given three sides ${m('a, b, c')}:</b></p>
+      <ol>
+        <li>draw a segment ${m('BC = a')};</li>
+        <li>from ${m('B')}, an arc of radius ${m('c')};</li>
+        <li>from ${m('C')}, an arc of radius ${m('b')};</li>
+        <li>the crossing is ${m('A')}; join ${m('AB')} and ${m('AC')}.</li>
+      </ol>
+      <p>By the third criterion, every triangle built this way from the same three lengths is congruent
+      to every other — so the construction gives <b>the</b> triangle, not <b>a</b> triangle.</p>
+      <div class="warn"><span class="wl">The arcs must actually cross</span>
+      If the two short sides together are less than the long one, the arcs miss and no triangle exists.
+      The construction fails exactly when the triangle inequality fails.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Describe the construction of the perpendicular bisector of a segment ' + m('AB') + '.',
+      steps: [
+        ['Open the compasses to more than half of ' + m('AB') + '.', ''],
+        ['Draw arcs from ' + m('A') + ' above and below the segment.', ''],
+        ['Draw the same arcs from ' + m('B') + '.', 'Same radius.'],
+        ['Join the two crossings — that line is the perpendicular bisector.', '']
+      ],
+      ans: 'Equal arcs from both ends, joined'
+    },
+    {
+      q: 'Construct a triangle with sides ' + m('4 cm') + ', ' + m('5 cm') + ' and ' + m('6 cm') + '.',
+      steps: [
+        ['Draw ' + m('BC = 6 cm') + '.', 'The longest side is easiest.'],
+        ['Arc of ' + m('4 cm') + ' from ' + m('B') + '.', ''],
+        ['Arc of ' + m('5 cm') + ' from ' + m('C') + '.', ''],
+        ['Join the crossing to both ends.', 'The arcs cross since ' + m('4 + 5 > 6') + '.']
+      ],
+      ans: 'A unique triangle'
+    },
+    {
+      q: 'Why does no triangle exist with sides ' + m('3, 4, 9') + '?',
+      steps: [
+        ['Draw the ' + m('9 cm') + ' side.', ''],
+        ['Arcs of ' + m('3') + ' and ' + m('4') + ' from its ends.', ''],
+        [m('3 + 4 = 7 < 9') + ' — the arcs fall short.', ''],
+        ['They never meet, so there is no third vertex.', '']
+      ],
+      ans: 'The arcs do not cross'
+    }
+  ],
+  modelNote: 'Have the class construct the same triangle from the same three lengths and then lay the sheets on top of one another; every triangle coincides, and the third criterion is confirmed.',
+  interactive: {
+    type: 'triangleAngles',
+    title: 'Building from three sides',
+    hint: 'The two arcs cross in exactly one place above the line.'
+  },
+  quiz: [
+    { q: 'A construction uses:', a: ['a ruler and a protractor', 'compasses and a straightedge', 'a calculator', 'a set square only'], c: 1, why: 'No measuring.' },
+    { q: 'Construction arcs should be:', a: ['rubbed out', 'left visible', 'drawn in pen', 'omitted'], c: 1, why: 'They are the working.' },
+    { q: 'The perpendicular bisector is found by:', a: ['measuring the midpoint', 'equal arcs from both ends', 'a protractor', 'folding only'], c: 1, why: 'Two equidistant points.' },
+    { q: 'A triangle from three sides is:', a: ['not always possible', 'always possible', 'possible in two ways', 'never unique'], c: 0, why: 'The inequality may fail.' },
+    { q: 'Sides ' + m('3, 4, 9') + ':', a: ['one triangle', 'two triangles', 'no triangle', 'infinitely many'], c: 2, why: m('3 + 4 < 9') + '.' },
+    { q: 'All triangles built from the same three sides are:', a: ['similar only', 'congruent', 'different', 'right-angled'], c: 1, why: 'The third criterion.' }
+  ],
+  practice: {
+    easy: [
+      ['Tools allowed', 'Compasses and a straightedge'],
+      ['May the straightedge measure?', 'No'],
+      ['Should arcs be left?', 'Yes'],
+      ['Sides ' + m('4, 5, 6') + ': constructible?', 'Yes'],
+      ['Sides ' + m('3, 4, 9') + ': constructible?', 'No'],
+      ['Sides ' + m('5, 5, 5') + ': what triangle?', 'Equilateral'],
+      ['Sides ' + m('3, 4, 5') + ': what triangle?', 'Right-angled']
+    ],
+    med: [
+      ['Which construction gives the midpoint?', 'The perpendicular bisector'],
+      ['Which gives two equal angles?', 'The angle bisector'],
+      ['How many arcs for a perpendicular bisector?', 'Four — two from each end'],
+      ['Construct ' + m('60°') + ': method', 'An equilateral triangle'],
+      ['Construct ' + m('30°') + ': method', 'Bisect ' + m('60°')],
+      ['Construct ' + m('90°') + ': method', 'A perpendicular'],
+      ['Construct ' + m('45°') + ': method', 'Bisect ' + m('90°')]
+    ],
+    hard: [
+      ['Construct ' + m('15°'), 'Bisect ' + m('30°')],
+      ['Construct ' + m('75°'), m('60° + 15°')],
+      ['Construct an isosceles triangle with base ' + m('5') + ' and lateral side ' + m('7'), 'Two arcs of ' + m('7')],
+      ['Why must the compasses open beyond half of ' + m('AB') + '?', 'Otherwise the arcs do not meet'],
+      ['Construct the centre of a given circle', 'Two chords and their perpendicular bisectors'],
+      ['Construct a triangle from two sides and the included angle', 'Copy the angle, step off the sides'],
+      ['Which construction cannot be done with these tools?', 'Trisecting a general angle']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Leave every arc on the page; the arcs are the answer.',
+  homework: [
+    'Construct the perpendicular bisector of a segment of ' + m('8 cm') + '.',
+    'Construct the bisector of an angle of ' + m('80°') + '.',
+    'Construct a triangle with sides ' + m('5 cm') + ', ' + m('6 cm') + ' and ' + m('7 cm') + '.',
+    'Construct an angle of ' + m('30°') + ' using only compasses and a straightedge.',
+    'Explain why no triangle can be constructed with sides ' + m('2, 3, 8') + '.'
+  ]
+});
