@@ -10337,3 +10337,175 @@ G7_MAT.push({
     'Write ' + m('15') + ' and ' + m('21') + ' each as a difference of two squares.'
   ]
 });
+
+/* ============================== 60 ============================== */
+G7_MAT.push({
+  id: 'g7-60', stream: 'mat', grade: 7, quarter: 3, lessons: '110–111', hours: 2,
+  title: 'Control work 7, and work on the mistakes',
+  subtitle: 'The five abridged multiplication formulae, in both directions, in one paper.',
+  uz: 'Matematika 7, Nazorat ishi 7', uzPage: 'pp. 282–326',
+  cam: 'S8 2 review', camPage: 'Stage 8, pp. 18–30', wb: 'Control paper M7',
+  objectives: [
+    'Expand squares and cubes of binomials accurately under time.',
+    'Factorise by common factor, formula, grouping and splitting.',
+    'Use the formulae for mental calculation.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Square of a sum', 'Yig‘indining kvadrati', 'Квадрат суммы'],
+    ['Difference of two squares', 'Kvadratlar ayirmasi', 'Разность квадратов'],
+    ['Cube of a difference', 'Ayirmaning kubi', 'Куб разности'],
+    ['Sum of two cubes', 'Kublar yig‘indisi', 'Сумма кубов'],
+    ['To factorise', 'Ko‘paytuvchilarga ajratish', 'Разложить на множители'],
+    ['Completely', 'To‘liq', 'Полностью'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Expand ${m('(x + 6)²')}, ${m('(2a − 5)²')} and ${m('(x − 1)³')}</td><td class="m">5</td><td>L98–103</td></tr>
+        <tr><td>2</td><td>Factorise ${m('x² − 49')} and ${m('9a² − 16b²')}</td><td class="m">4</td><td>L100–101</td></tr>
+        <tr><td>3</td><td>Factorise ${m('2x² − 50')} completely</td><td class="m">4</td><td>L106–107</td></tr>
+        <tr><td>4</td><td>Factorise ${m('x² + 2x − 15')} and ${m('x³ + 8')}</td><td class="m">5</td><td>L104–107</td></tr>
+        <tr><td>5</td><td>Find ${m('98²')} and ${m('64 · 56')} without a calculator</td><td class="m">4</td><td>L108–109</td></tr>
+        <tr><td>6</td><td>Simplify ${m('(a + b)² − (a − b)²')}</td><td class="m">3</td><td>L108–109</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries one mark for the middle term of each square and one for the four signs of the cube;
+      Q3 two for taking the ${m('2')} out before anything else; Q5 one for naming the formula used; Q6
+      two for expanding both brackets rather than subtracting them whole.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>middle term dropped</td><td class="m">(x + 6)² = x² + 36</td><td class="m">x² + 12x + 36</td></tr>
+        <tr><td>coefficient not squared</td><td class="m">(2a − 5)² = 2a² − 20a + 25</td><td class="m">4a² − 20a + 25</td></tr>
+        <tr><td>cube ended with a plus</td><td class="m">(x − 1)³ = x³ − 3x² + 3x + 1</td><td class="m">… − 1</td></tr>
+        <tr><td>sum of squares “factorised”</td><td class="m">x² + 49 = (x + 7)²</td><td>it does not factorise</td></tr>
+        <tr><td>common factor left in</td><td class="m">2(x² − 25)</td><td class="m">2(x − 5)(x + 5)</td></tr>
+        <tr><td>cube formula signs matched</td><td class="m">x³ + 8 = (x + 2)(x² + 2x + 4)</td><td class="m">(x + 2)(x² − 2x + 4)</td></tr>
+        <tr><td>brackets subtracted whole</td><td class="m">(a + b)² − (a − b)² = (2b)²</td><td>expand both first</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'The chapter as one map',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Formula</th><th>Read left to right</th><th>Read right to left</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(a ± b)²</td><td>expanding</td><td>recognising a perfect square</td></tr>
+        <tr><td class="m">a² − b²</td><td>a quick product</td><td>the fastest factorisation</td></tr>
+        <tr><td class="m">(a ± b)³</td><td>expanding</td><td>recognising a perfect cube</td></tr>
+        <tr><td class="m">a³ ± b³</td><td>checking</td><td>factorising</td></tr>
+        <tr><td>splitting the middle term</td><td>—</td><td>factorising a trinomial</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      Every one of these formulae is about to earn its keep: algebraic fractions cancel only when
+      numerator and denominator are factorised, and that is the next four lessons.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q1: expand ' + m('(2a − 5)²') + '.',
+      steps: [
+        [m('a = 2a') + ', ' + m('b = 5') + '.', ''],
+        [m('(2a)² = 4a²'), 'The coefficient is squared too.'],
+        [m('−2 · 2a · 5 = −20a'), ''],
+        [m('+25') + ', so the answer is ' + m('4a² − 20a + 25') + '.', '']
+      ],
+      ans: m('4a² − 20a + 25')
+    },
+    {
+      q: 'Model answer, Q3: factorise ' + m('2x² − 50') + ' completely.',
+      steps: [
+        ['Common factor ' + m('2') + ': ' + m('2(x² − 25)') + '.', ''],
+        [m('x² − 25 = (x − 5)(x + 5)'), 'Do not stop at the previous line.'],
+        [m('= 2(x − 5)(x + 5)'), '']
+      ],
+      ans: m('2(x − 5)(x + 5)')
+    },
+    {
+      q: 'Model answer, Q5: find ' + m('64 · 56') + '.',
+      steps: [
+        ['Both are ' + m('4') + ' from ' + m('60') + '.', ''],
+        [m('= (60 + 4)(60 − 4)'), 'A difference of squares.'],
+        [m('= 3600 − 16'), ''],
+        [m('= 3584'), '']
+      ],
+      ans: m('3584')
+    }
+  ],
+  modelNote: 'Hand back Q1 and Q2 together: expanding and factorising are the same five formulae read in opposite directions, and the paper is easier to learn from that way.',
+  interactive: {
+    type: 'quiz',
+    title: 'The chapter in twelve questions',
+    hint: 'Count the terms, name the formula.',
+    items: [
+      { q: m('(a + b)²') + ' equals:', a: [m('a² + b²'), m('a² + 2ab + b²'), m('a² − 2ab + b²'), m('2a + 2b')], c: 1, why: 'The middle term.' },
+      { q: m('(a − b)²') + ' ends in:', a: [m('+ b²'), m('− b²'), m('+ b³'), m('− b')], c: 0, why: 'A square is never negative.' },
+      { q: m('(x + 6)²') + ' equals:', a: [m('x² + 36'), m('x² + 12x + 36'), m('x² + 6x + 36'), m('x² + 12x + 6')], c: 1, why: m('2 · x · 6') + '.' },
+      { q: m('(2a − 5)²') + ' begins with:', a: [m('2a²'), m('4a²'), m('10a²'), m('a²')], c: 1, why: m('(2a)²') + '.' },
+      { q: m('(x − 1)³') + ' ends in:', a: [m('+ 1'), m('− 1'), m('+ 3'), m('− 3')], c: 1, why: 'An odd power.' },
+      { q: m('x² − 49') + ' factorises to:', a: [m('(x − 7)²'), m('(x − 7)(x + 7)'), m('(x − 49)(x + 1)'), 'it does not'], c: 1, why: 'A difference of squares.' },
+      { q: m('x² + 49') + ' factorises to:', a: [m('(x + 7)²'), m('(x − 7)(x + 7)'), m('(x + 7)(x + 7)'), 'it does not'], c: 3, why: 'A sum of squares.' },
+      { q: m('2x² − 50') + ' factorises completely to:', a: [m('2(x² − 25)'), m('2(x − 5)(x + 5)'), m('(2x − 5)(x + 10)'), m('(x − 5)(x + 5)')], c: 1, why: 'Two steps.' },
+      { q: m('x² + 2x − 15') + ' factorises to:', a: [m('(x + 5)(x − 3)'), m('(x − 5)(x + 3)'), m('(x + 15)(x − 1)'), m('(x + 5)(x + 3)')], c: 0, why: 'Product ' + m('−15') + ', sum ' + m('2') + '.' },
+      { q: m('x³ + 8') + ' factorises to:', a: [m('(x + 2)(x² + 2x + 4)'), m('(x + 2)(x² − 2x + 4)'), m('(x + 2)³'), 'it does not'], c: 1, why: 'Opposite signs.' },
+      { q: m('98²') + ' equals:', a: [m('9604'), m('9704'), m('9404'), m('9600')], c: 0, why: m('10000 − 400 + 4') + '.' },
+      { q: m('(a + b)² − (a − b)²') + ' equals:', a: [m('4ab'), m('2b²'), m('4b²'), m('0')], c: 0, why: 'Expand both.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 loses a mark most often through:', a: ['the first term', 'the middle term', 'the sign of ' + m('b²'), 'the brackets'], c: 1, why: 'It gets dropped.' },
+    { q: 'Q2 needs:', a: ['a common factor', 'a difference of squares', 'grouping', 'splitting'], c: 1, why: 'Two square terms.' },
+    { q: 'Q3 begins with:', a: ['the formula', 'the common factor', 'grouping', 'splitting'], c: 1, why: 'Always step 1.' },
+    { q: 'In Q4, ' + m('x³ + 8') + ' has middle sign:', a: ['plus', 'minus', 'either', 'none'], c: 1, why: 'Opposite to the short bracket.' },
+    { q: 'Q5 uses ' + m('64 · 56') + ' as:', a: [m('(60 + 4)(60 − 4)'), m('(64 − 8)²'), m('60 · 60'), m('(60 + 4)²')], c: 0, why: 'A difference of squares.' },
+    { q: 'Q6 must begin by:', a: ['subtracting the brackets', 'expanding both brackets', 'factorising', 'substituting'], c: 1, why: 'Then subtract term by term.' }
+  ],
+  practice: {
+    easy: [
+      [m('(x + 6)²'), m('x² + 12x + 36')],
+      [m('(2a − 5)²'), m('4a² − 20a + 25')],
+      [m('(x − 1)³'), m('x³ − 3x² + 3x − 1')],
+      [m('x² − 49'), m('(x − 7)(x + 7)')],
+      [m('9a² − 16b²'), m('(3a − 4b)(3a + 4b)')],
+      [m('98²'), m('9604')],
+      [m('64 · 56'), m('3584')]
+    ],
+    med: [
+      [m('2x² − 50'), m('2(x − 5)(x + 5)')],
+      [m('x² + 2x − 15'), m('(x + 5)(x − 3)')],
+      [m('x³ + 8'), m('(x + 2)(x² − 2x + 4)')],
+      [m('(a + b)² − (a − b)²'), m('4ab')],
+      [m('3x² + 18x + 27'), m('3(x + 3)²')],
+      [m('x² − 7x + 12'), m('(x − 3)(x − 4)')],
+      ['Does ' + m('x² + 49') + ' factorise?', 'No']
+    ],
+    hard: [
+      [m('x⁴ − 81'), m('(x − 3)(x + 3)(x² + 9)')],
+      [m('2x³ − 54'), m('2(x − 3)(x² + 3x + 9)')],
+      [m('(3a + 1)² − (3a − 1)²'), m('12a')],
+      [m('x² + 6x + 9 − y²'), m('(x + 3 − y)(x + 3 + y)')],
+      [m('125² − 75²'), m('10000')],
+      [m('a³ − a'), m('a(a − 1)(a + 1)')],
+      ['Simplify ' + m(f('x² − 36', 'x − 6')), m('x + 6')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every question you lost a mark on in full, from the first line.',
+  homework: [
+    'Rewrite in full every question on which you lost a mark.',
+    'Write out the five formulae with one worked example of each.',
+    'Factorise ' + m('3x² − 75') + ' and ' + m('x³ − 27') + ' completely.',
+    'Find ' + m('106²') + ' and ' + m('73 · 67') + ' by the formulae.',
+    'Simplify ' + m('(x + 4)² − (x − 4)²') + ' and say which slip you were avoiding.'
+  ]
+});
