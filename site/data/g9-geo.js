@@ -3642,3 +3642,513 @@ G9_GEO.push({
     'Prove that the diagonals of a rhombus are perpendicular using the scalar product.'
   ]
 });
+
+/* ============================== 23 ============================== */
+G9_GEO.push({
+  id: 'g9-23', stream: 'geo', grade: 9, quarter: 2, lessons: '28–29', hours: 2,
+  title: 'Solving triangles',
+  subtitle: 'Four kinds of data, four routes — and a checklist that finishes any triangle.',
+  uz: 'Geometriya 9, §20', uzPage: 'pp. 111–117',
+  cam: 'Extension beyond IGX', camPage: 'Core & Extended, pp. 310–330', wb: 'Exercise 15.6',
+  objectives: [
+    'Recognise the four standard cases and choose the right route for each.',
+    'Find all remaining sides and angles from three given elements.',
+    'Decide how many triangles exist in the ambiguous case.',
+    'Check the answer against the triangle inequality and the largest-side rule.'
+  ],
+  terms: [
+    ['To solve a triangle', 'Uchburchakni yechish', 'Решить треугольник'],
+    ['Given elements', 'Berilgan elementlar', 'Данные элементы'],
+    ['Case', 'Hol', 'Случай'],
+    ['Triangle inequality', 'Uchburchak tengsizligi', 'Неравенство треугольника'],
+    ['Largest side', 'Eng katta tomon', 'Наибольшая сторона'],
+    ['Check', 'Tekshirish', 'Проверка'],
+    ['Two solutions', 'Ikkita yechim', 'Два решения'],
+    ['No solution', 'Yechimi yo‘q', 'Нет решения']
+  ],
+  timing: [[15, 'The four cases'], [25, 'SSS and SAS'], [25, 'ASA and SSA'], [20, 'Checking'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The four cases',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Case</th><th>Given</th><th>First step</th><th>Solutions</th></tr></thead>
+      <tbody>
+        <tr><td class="m">SSS</td><td>three sides</td><td>cosine rule for the largest angle</td><td class="m">1</td></tr>
+        <tr><td class="m">SAS</td><td>two sides and the included angle</td><td>cosine rule for the third side</td><td class="m">1</td></tr>
+        <tr><td class="m">ASA / AAS</td><td>two angles and a side</td><td>third angle, then the sine rule</td><td class="m">1</td></tr>
+        <tr><td class="m">SSA</td><td>two sides and a non-included angle</td><td>sine rule for the second angle</td><td class="m">0, 1 or 2</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('AAA')} is not a case</span>
+      Three angles determine the shape but not the size — infinitely many similar triangles fit. A
+      question giving only angles cannot ask for a side.</div>`
+    },
+    {
+      h: 'SSS and SAS',
+      html: `<p><b>SSS.</b> ${m('a = 5')}, ${m('b = 6')}, ${m('c = 7')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>largest angle first</td><td class="m">cos C = ${f('25 + 36 − 49', '60')} = 0.2</td><td class="m">C ≈ 78.5°</td></tr>
+        <tr><td>sine rule</td><td class="m">sin A = ${f('5 sin 78.5°', '7')}</td><td class="m">A ≈ 44.4°</td></tr>
+        <tr><td>angle sum</td><td class="m">180 − 78.5 − 44.4</td><td class="m">B ≈ 57.1°</td></tr>
+      </tbody></table></div>
+      <p><b>SAS.</b> ${m('a = 8')}, ${m('b = 5')}, ${m('C = 60°')}. The cosine rule gives
+      ${m('c² = 64 + 25 − 40 = 49')}, so ${m('c = 7')}; then the sine rule or the cosine rule finishes
+      the angles.</p>
+      <div class="keybox"><div class="klabel">Find the largest angle first in the SSS case</div>
+      It is the only one that might be obtuse. Once it is known, every remaining angle is acute, so the
+      sine rule cannot be ambiguous — the ambiguity has been removed before it can arise.</div>`
+    },
+    {
+      h: 'ASA and SSA',
+      html: `<p><b>ASA.</b> ${m('A = 50°')}, ${m('B = 60°')}, ${m('c = 10')}. Then ${m('C = 70°')} and the
+      sine rule gives ${m('a = ' + f('10 sin 50°', 'sin 70°') + ' ≈ 8.15')} and
+      ${m('b = ' + f('10 sin 60°', 'sin 70°') + ' ≈ 9.21')}.</p>
+      <p><b>SSA.</b> This is the case that needs care. With ${m('a')}, ${m('b')} and ${m('A')}:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Condition</th><th>Number of triangles</th></tr></thead>
+      <tbody>
+        <tr><td class="m">a ≥ b</td><td class="m">1</td></tr>
+        <tr><td class="m">a < b</td> <td>compute ${m('sin B = ' + f('b sin A', 'a'))}</td></tr>
+        <tr><td class="m">sin B > 1</td><td class="m">0</td></tr>
+        <tr><td class="m">sin B = 1</td><td class="m">1</td> </tr>
+        <tr><td class="m">sin B < 1</td><td class="m">2</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The last row assumes ${m('A')} is acute</span>
+      If ${m('A')} is obtuse there can be at most one triangle, because a triangle has at most one obtuse
+      angle. Check ${m('A')} before counting.</div>`
+    },
+    {
+      h: 'Checking',
+      html: `<p>Three checks catch almost every arithmetic slip.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Check</th><th>Statement</th></tr></thead>
+      <tbody>
+        <tr><td>angle sum</td><td>the three angles total ${m('180°')}</td></tr>
+        <tr><td>largest side</td><td>the largest side faces the largest angle</td></tr>
+        <tr><td>triangle inequality</td><td>each side is less than the sum of the other two</td></tr>
+      </tbody></table></div>
+      <p>A fourth, when the area is also wanted: compute it twice, by ${m(f('1', '2') + 'ab sin C')} and
+      by Heron's formula, and compare.</p>
+      <div class="keybox"><div class="klabel">Thirty seconds of checking is worth five marks</div>
+      An answer in which the largest angle faces the shortest side is wrong, whatever the working shows.
+      That single glance catches mismatched pairs, the commonest error in this whole chapter.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve the triangle with ' + m('a = 5') + ', ' + m('b = 6') + ', ' + m('c = 7') + '.',
+      steps: [
+        [m('cos C = ' + f('25 + 36 − 49', '60') + ' = 0.2 ⇒ C ≈ 78.5°'), 'Largest angle first.'],
+        [m('sin A = ' + f('5 sin 78.5°', '7') + ' ≈ 0.700 ⇒ A ≈ 44.4°'), ''],
+        [m('B ≈ 180 − 78.5 − 44.4 = 57.1°'), ''],
+        ['Check: largest side ' + m('7') + ' faces ' + m('78.5°') + ' ✓', '']
+      ],
+      ans: m('A ≈ 44.4°, B ≈ 57.1°, C ≈ 78.5°')
+    },
+    {
+      q: 'Solve the triangle with ' + m('a = 8') + ', ' + m('b = 5') + ', ' + m('C = 60°') + '.',
+      steps: [
+        [m('c² = 64 + 25 − 2 · 40 · 0.5 = 49'), ''],
+        [m('c = 7'), ''],
+        [m('cos A = ' + f('25 + 49 − 64', '70') + ' = ' + f('10', '70') + ' ≈ 0.143 ⇒ A ≈ 81.8°'), ''],
+        [m('B ≈ 180 − 60 − 81.8 = 38.2°'), '']
+      ],
+      ans: m('c = 7, A ≈ 81.8°, B ≈ 38.2°')
+    },
+    {
+      q: 'How many triangles have ' + m('a = 6') + ', ' + m('b = 10') + ', ' + m('A = 30°') + '?',
+      steps: [
+        [m('a < b') + ', and ' + m('A') + ' is acute — the ambiguous case.', ''],
+        [m('sin B = ' + f('10 × 0.5', '6') + ' ≈ 0.833'), ''],
+        [m('B ≈ 56.4°') + ' or ' + m('123.6°') + '.', ''],
+        ['Both leave a positive third angle — two triangles.', '']
+      ],
+      ans: 'Two'
+    }
+  ],
+  modelNote: 'Give the class one set of data at a time and ask only “which case, and which rule first?” for ten sets before any calculation; the recognition is the skill.',
+  interactive: {
+    type: 'solveTriangle',
+    title: 'Three elements, one triangle',
+    hint: 'Switch between the four cases and see which rule starts.'
+  },
+  quiz: [
+    { q: 'SSS starts with:', a: ['the sine rule', 'the cosine rule', 'the area formula', 'the angle sum'], c: 1, why: 'No matched pair.' },
+    { q: 'In SSS, find first:', a: ['the smallest angle', 'the largest angle', 'any angle', 'the area'], c: 1, why: 'It is the only one that can be obtuse.' },
+    { q: 'ASA starts with:', a: ['the cosine rule', 'the third angle', 'the area', 'Pythagoras'], c: 1, why: 'Then the sine rule.' },
+    { q: 'SSA can give:', a: ['one triangle', 'two triangles', 'no triangle', 'any of these'], c: 3, why: 'The ambiguous case.' },
+    { q: m('AAA') + ' determines:', a: ['the triangle', 'the shape only', 'the area', 'nothing'], c: 1, why: 'Infinitely many similar triangles.' },
+    { q: 'The largest side faces:', a: ['the smallest angle', 'the largest angle', 'the right angle', 'no particular angle'], c: 1, why: 'A quick check on any answer.' }
+  ],
+  practice: {
+    easy: [
+      ['Three sides: which rule?', 'Cosine'],
+      ['Two sides and the included angle: which rule?', 'Cosine'],
+      ['Two angles and a side: which rule?', 'Sine'],
+      ['Two sides and a non-included angle: which rule?', 'Sine'],
+      [m('A = 50°, B = 60°') + ': ' + m('C'), m('70°')],
+      ['Largest side faces', 'The largest angle'],
+      [m('AAA') + ' determines', 'The shape only']
+    ],
+    med: [
+      [m('a = 5, b = 6, c = 7') + ': ' + m('C'), m('≈ 78.5°')],
+      ['Same: ' + m('A'), m('≈ 44.4°')],
+      [m('a = 8, b = 5, C = 60°') + ': ' + m('c'), m('7')],
+      ['Same: ' + m('A'), m('≈ 81.8°')],
+      [m('A = 50°, B = 60°, c = 10') + ': ' + m('a'), m('≈ 8.15')],
+      ['Same: ' + m('b'), m('≈ 9.21')],
+      [m('a = 6, b = 10, A = 30°') + ': how many triangles?', 'Two']
+    ],
+    hard: [
+      [m('a = 5, b = 12, A = 60°') + ': how many triangles?', 'None'],
+      [m('a = 12, b = 5, A = 60°') + ': how many triangles?', 'One'],
+      [m('a = 5, b = 10, A = 30°') + ': how many triangles?', 'One — a right triangle'],
+      ['Solve ' + m('a = 7, b = 8, c = 9') + ': the largest angle', m('≈ 73.4°')],
+      ['Its area, by Heron', m('≈ 26.8')],
+      ['Its area, by ' + m('½ab sin C'), m('≈ 26.8')],
+      ['A triangle with ' + m('A = 30°, a = 6, b = 8') + ': the two possible areas', m('≈ 22.8') + ' and ' + m('≈ 4.9')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Name the case before starting, and finish with the two checks.',
+  homework: [
+    'Solve the triangle with ' + m('a = 6') + ', ' + m('b = 7') + ', ' + m('c = 9') + '.',
+    'Solve the triangle with ' + m('b = 10') + ', ' + m('c = 12') + ', ' + m('A = 45°') + '.',
+    'Solve the triangle with ' + m('A = 40°') + ', ' + m('C = 75°') + ', ' + m('b = 15') + '.',
+    'How many triangles have ' + m('a = 7') + ', ' + m('b = 9') + ', ' + m('A = 50°') + '?',
+    'Explain why the largest angle should be found first in the SSS case.'
+  ]
+});
+
+/* ============================== 24 ============================== */
+G9_GEO.push({
+  id: 'g9-24', stream: 'geo', grade: 9, quarter: 2, lessons: '30', hours: 1,
+  title: 'Chapter exercises — Cambridge triangles and bearings',
+  subtitle: 'The same two rules, in the wording and the marking scheme of an IGCSE paper.',
+  uz: 'Geometriya 9, II bob mashqlari', uzPage: 'pp. 118–120',
+  cam: 'IGX 3.2', camPage: 'Core & Extended, pp. 51–58', wb: 'Exercise 3.2',
+  objectives: [
+    'Answer “calculate the length of…” and “calculate the size of…” in the expected form.',
+    'Use three-figure bearings correctly in both directions.',
+    'Give answers to 3 significant figures with units.',
+    'Recognise when a diagram must be drawn before anything else.'
+  ],
+  terms: [
+    ['Calculate', 'Hisoblang', 'Вычислите'],
+    ['Three significant figures', 'Uchta ma’noli raqam', 'Три значащие цифры'],
+    ['Not to scale', 'Masshtabda emas', 'Не в масштабе'],
+    ['Bearing', 'Azimut', 'Азимут'],
+    ['Correct to', 'Aniqlikda', 'С точностью до'],
+    ['Show your working', 'Yechimni yozing', 'Покажите решение'],
+    ['Units', 'Birliklar', 'Единицы'],
+    ['Diagram', 'Chizma', 'Диаграмма']
+  ],
+  timing: [[8, 'What the wording asks for'], [14, 'Bearings both ways'], [12, 'Worked items'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'What the wording asks for',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Cambridge says</th><th>You must give</th></tr></thead>
+      <tbody>
+        <tr><td>“Calculate the length of ${m('BC')}”</td><td>a number with units, 3 s.f.</td></tr>
+        <tr><td>“Calculate the size of angle ${m('ABC')}”</td><td>degrees, 1 d.p. or 3 s.f.</td></tr>
+        <tr><td>“Show that ${m('BC = 12.4')}”</td><td>working ending at more accuracy than ${m('12.4')}</td></tr>
+        <tr><td>“The diagram is not to scale”</td><td>never measure — calculate</td></tr>
+        <tr><td>“Calculate the bearing of ${m('C')} from ${m('A')}”</td><td>three figures, e.g. ${m('072°')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">“Show that” must not start from the answer</span>
+      Working that begins ${m('BC = 12.4')} and verifies it scores nothing. Start from the data, and
+      finish with a value more accurate than the one given — ${m('12.43…')} — then state that it rounds
+      to ${m('12.4')}.</div>`
+    },
+    {
+      h: 'Bearings both ways',
+      html: `<p>Half the marks in a bearings question are for converting between the bearing and the angle
+      inside the triangle.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Situation</th><th>Angle in the triangle</th></tr></thead>
+      <tbody>
+        <tr><td>two bearings from one point</td><td>their difference</td></tr>
+        <tr><td>a leg and then a turn</td><td class="m">180° − (difference of the bearings)</td></tr>
+        <tr><td>bearing of ${m('B')} from ${m('A')} is ${m('θ')}</td><td>bearing of ${m('A')} from ${m('B')} is ${m('θ ± 180°')}</td></tr>
+      </tbody></table></div>
+      {{fig:bearings:North is redrawn at every point; the angles of the triangle are read between the legs.}}
+      <div class="keybox"><div class="klabel">Draw a north arrow at every vertex</div>
+      Bearings are measured from north <b>at the point you are standing on</b>. Drawing the arrow at each
+      vertex turns every bearing question into an ordinary angle-chase.</div>`
+    },
+    {
+      h: 'Worked items',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Item</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('AB = 9')}, ${m('AC = 12')}, ${m('∠A = 65°')}: calculate ${m('BC')}</td><td class="m">≈ 11.6</td></tr>
+        <tr><td>${m('a = 11')}, ${m('b = 13')}, ${m('c = 20')}: calculate the largest angle</td><td class="m">≈ 113°</td></tr>
+        <tr><td>${m('A = 42°')}, ${m('B = 71°')}, ${m('a = 8')}: calculate ${m('b')}</td><td class="m">≈ 11.3</td></tr>
+        <tr><td>${m('AB = 9')}, ${m('AC = 12')}, ${m('∠A = 65°')}: calculate the area</td><td class="m">≈ 48.9</td></tr>
+      </tbody></table></div>
+      <p>Each answer is given to three significant figures, with the units the question used.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'In ' + m('△ABC') + ', ' + m('AB = 9 cm') + ', ' + m('AC = 12 cm') + ', ' + m('∠A = 65°') + '. Calculate ' + m('BC') + '.',
+      steps: [
+        ['SAS — use the cosine rule.', ''],
+        [m('BC² = 81 + 144 − 2 · 108 · cos 65°'), ''],
+        [m('= 225 − 216 × 0.4226 = 133.7'), ''],
+        [m('BC ≈ 11.6 cm'), 'Three significant figures.']
+      ],
+      ans: m('≈ 11.6 cm')
+    },
+    {
+      q: 'A ship sails from ' + m('A') + ' to ' + m('B') + ' on a bearing of ' + m('072°') + '. What is the bearing of ' + m('A') + ' from ' + m('B') + '?',
+      steps: [
+        ['Add ' + m('180°') + '.', ''],
+        [m('072° + 180° = 252°'), ''],
+        ['Less than ' + m('360°') + ', so no subtraction is needed.', ''],
+        [m('252°'), 'Three figures.']
+      ],
+      ans: m('252°')
+    },
+    {
+      q: 'Calculate the area of the triangle with ' + m('AB = 9') + ', ' + m('AC = 12') + ' and ' + m('∠A = 65°') + '.',
+      steps: [
+        [m('S = ' + f('1', '2') + ' · 9 · 12 · sin 65°'), ''],
+        [m('= 54 × 0.9063'), ''],
+        [m('≈ 48.9'), ''],
+        ['Units: ' + m('cm²') + ' if the sides were in ' + m('cm') + '.', '']
+      ],
+      ans: m('≈ 48.9 cm²')
+    }
+  ],
+  modelNote: 'Show a “show that” answer that begins with the given value and one that begins with the data; the class marks both, and the rule becomes theirs.',
+  interactive: {
+    type: 'solveTriangle',
+    title: 'Calculate and round',
+    hint: 'Keep full accuracy; round only at the end.'
+  },
+  quiz: [
+    { q: 'Answers are normally given to:', a: ['1 s.f.', '2 s.f.', '3 s.f.', 'exact values only'], c: 2, why: 'The IGCSE convention.' },
+    { q: '“Not to scale” means:', a: ['measure carefully', 'calculate', 'estimate', 'redraw'], c: 1, why: 'The diagram is a sketch.' },
+    { q: 'A “show that” answer must:', a: ['start from the answer', 'start from the data', 'be measured', 'be estimated'], c: 1, why: 'Otherwise it proves nothing.' },
+    { q: 'Bearing of ' + m('B') + ' from ' + m('A') + ' is ' + m('072°') + '. Bearing of ' + m('A') + ' from ' + m('B') + ':', a: [m('108°'), m('252°'), m('288°'), m('072°')], c: 1, why: 'Add ' + m('180°') + '.' },
+    { q: m('AB = 9, AC = 12, ∠A = 65°') + ': ' + m('BC') + ' ≈', a: [m('9.8'), m('11.6'), m('13.2'), m('15.0')], c: 1, why: 'The cosine rule.' },
+    { q: 'A bearing is always written with:', a: ['one figure', 'two figures', 'three figures', 'four figures'], c: 2, why: m('072°') + ', not ' + m('72°') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Bearing of due west', m('270°')],
+      ['Back bearing of ' + m('072°'), m('252°')],
+      ['Back bearing of ' + m('250°'), m('070°')],
+      ['Answers to how many significant figures?', 'Three'],
+      ['“Not to scale” means', 'Calculate, do not measure'],
+      [m('AB = 9, AC = 12, ∠A = 65°') + ': which rule?', 'Cosine'],
+      [m('A = 42°, B = 71°, a = 8') + ': which rule?', 'Sine']
+    ],
+    med: [
+      [m('AB = 9, AC = 12, ∠A = 65°') + ': ' + m('BC'), m('≈ 11.6')],
+      ['Same: the area', m('≈ 48.9')],
+      [m('a = 11, b = 13, c = 20') + ': the largest angle', m('≈ 113°')],
+      [m('A = 42°, B = 71°, a = 8') + ': ' + m('b'), m('≈ 11.3')],
+      [m('a = 7, b = 10, C = 55°') + ': ' + m('c'), m('≈ 8.29')],
+      [m('a = 6, b = 7, c = 8') + ': the smallest angle', m('≈ 46.6°')],
+      ['A ship on ' + m('072°') + ' for ' + m('40 km') + ': how far east?', m('≈ 38.0 km')]
+    ],
+    hard: [
+      [m('B') + ' is ' + m('12 km') + ' from ' + m('A') + ' on ' + m('040°') + '; ' + m('C') + ' is ' + m('15 km') + ' from ' + m('B') + ' on ' + m('130°') + ': ' + m('AC'), m('≈ 19.2 km')],
+      ['Its bearing from ' + m('A'), m('≈ 091°')],
+      ['A triangle with ' + m('a = 9, b = 12, c = 15') + ': its type', 'Right-angled'],
+      ['Its area', m('54')],
+      ['Show that ' + m('BC = 11.6') + ' when ' + m('AB = 9, AC = 12, ∠A = 65°'), m('BC = 11.56…') + ' rounds to ' + m('11.6')],
+      ['A kite: two pairs ' + m('6, 6') + ' and ' + m('9, 9') + ' with an angle of ' + m('120°') + ' between ' + m('6') + ' and ' + m('9'), 'Area ' + m('≈ 46.8')],
+      ['A regular pentagon of side ' + m('10') + ': its area', m('≈ 172')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every answer needs units and three significant figures unless the question says otherwise.',
+  homework: [
+    'In ' + m('△ABC') + ', ' + m('AB = 7 cm') + ', ' + m('AC = 10 cm') + ', ' + m('∠A = 48°') + '. Calculate ' + m('BC') + ' and the area.',
+    'Calculate the largest angle of the triangle with sides ' + m('9') + ', ' + m('12') + ' and ' + m('18 cm') + '.',
+    'A ship sails from ' + m('P') + ' on a bearing of ' + m('115°') + '. Find the bearing of ' + m('P') + ' from the ship.',
+    'In ' + m('△ABC') + ', ' + m('A = 38°') + ', ' + m('B = 64°') + ', ' + m('a = 11 cm') + '. Calculate ' + m('b') + '.',
+    'Show that a triangle with sides ' + m('9') + ', ' + m('12') + ' and ' + m('15') + ' is right-angled, and find its area.'
+  ]
+});
+
+/* ============================== 25 ============================== */
+G9_GEO.push({
+  id: 'g9-25', stream: 'geo', grade: 9, quarter: 2, lessons: '31–32', hours: 2,
+  title: 'Control work 2, and work on the mistakes',
+  subtitle: 'Solving triangles in one paper, and the trigonometry chapter closed.',
+  uz: 'Geometriya 9, Nazorat ishi 2', uzPage: 'pp. 76–120',
+  cam: 'IGX 3, 7 review', camPage: 'Core & Extended, pp. 40–72, 130–140', wb: 'Control paper G2',
+  objectives: [
+    'Choose and apply the correct rule under time.',
+    'Use the area formula and the extended ratios accurately.',
+    'Handle the ambiguous case correctly.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Sine rule', 'Sinuslar teoremasi', 'Теорема синусов'],
+    ['Cosine rule', 'Kosinuslar teoremasi', 'Теорема косинусов'],
+    ['Area formula', 'Yuza formulasi', 'Формула площади'],
+    ['Scalar product', 'Skalyar ko‘paytma', 'Скалярное произведение'],
+    ['Ambiguous case', 'Noaniq hol', 'Неоднозначный случай'],
+    ['Bearing', 'Azimut', 'Азимут'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 30 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Find ${m('sin 135°')}, ${m('cos 135°')} and ${m('tan 150°')}</td><td class="m">5</td><td>L19–20</td></tr>
+        <tr><td>2</td><td>Find the area of a triangle with sides ${m('9')} and ${m('12')} and included angle ${m('30°')}</td><td class="m">4</td><td>L21</td></tr>
+        <tr><td>3</td><td>${m('A = 45°')}, ${m('B = 60°')}, ${m('a = 10')}: find ${m('b')}</td><td class="m">5</td><td>L22</td></tr>
+        <tr><td>4</td><td>${m('a = 6')}, ${m('b = 9')}, ${m('C = 120°')}: find ${m('c')}</td><td class="m">5</td><td>L23</td></tr>
+        <tr><td>5</td><td>Find the largest angle of the triangle with sides ${m('4, 7, 9')}</td><td class="m">5</td><td>L23</td></tr>
+        <tr><td>6</td><td>Find the angle between ${m('(2, 1)')} and ${m('(1, 3)')}</td><td class="m">6</td><td>L26–27</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries two marks for the signs; Q3 one for finding ${m('C')} first; Q4 one for the sign of
+      ${m('cos 120°')}; Q5 two for choosing the angle opposite ${m('9')}; Q6 two for the two
+      magnitudes.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>cosine of an obtuse angle left positive</td><td class="m">cos 135° = ${f(sr('2'), '2')}</td><td class="m">−${f(sr('2'), '2')}</td></tr>
+        <tr><td>angle not the included one</td><td class="m">½ab sin A</td><td class="m">½ab sin C</td></tr>
+        <tr><td>mismatched pair in the sine rule</td><td class="m">${f('a', 'sin B')}</td><td class="m">${f('a', 'sin A')}</td></tr>
+        <tr><td>sign of the correction term</td><td class="m">c² = 36 + 81 − 54</td><td class="m">= 36 + 81 + 54</td></tr>
+        <tr><td>wrong angle chosen as largest</td><td>opposite ${m('4')}</td><td>opposite ${m('9')}</td></tr>
+        <tr><td>magnitudes omitted</td><td class="m">cos φ = a⃗ · b⃗</td><td class="m">cos φ = ${f('a⃗ · b⃗', '|a⃗||b⃗|')}</td></tr>
+        <tr><td>second answer missing in SSA</td><td>one angle</td><td>test the obtuse option</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'Chapter II as one map',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Block</th><th>The sentence</th></tr></thead>
+      <tbody>
+        <tr><td>ratios to ${m('180°')}</td><td>coordinates on the upper semicircle; sine positive, cosine changing sign</td></tr>
+        <tr><td>the area</td><td class="m">S = ½ab sin C</td></tr>
+        <tr><td>the sine rule</td><td class="m">${f('a', 'sin A')} = 2R — needs a matched pair</td></tr>
+        <tr><td>the cosine rule</td><td>Pythagoras with ${m('−2ab cos C')}</td></tr>
+        <tr><td>solving a triangle</td><td>four cases, and only SSA is ambiguous</td></tr>
+        <tr><td>the scalar product</td><td class="m">a⃗ · b⃗ = x₁x₂ + y₁y₂ = |a⃗||b⃗| cos φ</td></tr>
+      </tbody></table></div>
+      {{fig:sineCosRule:One triangle, two rules — and between them every triangle can be solved.}}
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      Chapter III returns to the circle: inscribed and circumscribed polygons, regular polygons, and the
+      circumference and area of a disc. The trigonometry of this chapter is used throughout — the side of
+      a regular ${m('n')}-gon is found with a sine.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q4: ' + m('a = 6') + ', ' + m('b = 9') + ', ' + m('C = 120°') + '.',
+      steps: [
+        [m('c² = 36 + 81 − 2 · 54 · cos 120°'), ''],
+        [m('cos 120° = −0.5'), 'The sign matters.'],
+        [m('c² = 117 + 54 = 171'), ''],
+        [m('c = ' + sr('171') + ' ≈ 13.1'), '']
+      ],
+      ans: m('c ≈ 13.1')
+    },
+    {
+      q: 'Model answer, Q5: the largest angle of ' + m('4, 7, 9') + '.',
+      steps: [
+        ['It is opposite the longest side, ' + m('9') + '.', ''],
+        [m('cos C = ' + f('16 + 49 − 81', '2 · 4 · 7')), ''],
+        [m('= ' + f('−16', '56') + ' ≈ −0.2857'), 'Negative — obtuse.'],
+        [m('C ≈ 106.6°'), '']
+      ],
+      ans: m('≈ 106.6°')
+    },
+    {
+      q: 'Model answer, Q6: the angle between ' + m('(2, 1)') + ' and ' + m('(1, 3)') + '.',
+      steps: [
+        [m('a⃗ · b⃗ = 2 + 3 = 5'), ''],
+        [m('|a⃗| = ' + sr('5')) + ', ' + m('|b⃗| = ' + sr('10')), ''],
+        [m('cos φ = ' + f('5', sr('50')) + ' ≈ 0.7071'), ''],
+        [m('φ = 45°'), 'Exactly.']
+      ],
+      ans: m('45°')
+    }
+  ],
+  modelNote: 'Read out a solution to Q4 that treats cos 120° as positive; the class finds a c smaller than both given sides, which is impossible for an obtuse angle.',
+  interactive: {
+    type: 'quiz',
+    title: 'Chapter II in twelve questions',
+    hint: 'Two from each block.',
+    items: [
+      { q: m('sin(180° − α)') + ' equals:', a: [m('−sin α'), m('sin α'), m('cos α'), m('−cos α')], c: 1, why: 'Mirror in the ' + m('y') + '-axis.' },
+      { q: m('cos 120°') + ' equals:', a: [m(f('1', '2')), m('−' + f('1', '2')), m(f(sr('3'), '2')), m('−' + f(sr('3'), '2'))], c: 1, why: m('180° − 60°') + '.' },
+      { q: 'The area formula is:', a: [m('½ab sin C'), m('ab sin C'), m('½ab cos C'), m('½ac sin C')], c: 0, why: m('h = b sin C') + '.' },
+      { q: 'The area is greatest when ' + m('C') + ' is:', a: [m('30°'), m('60°'), m('90°'), m('120°')], c: 2, why: m('sin C = 1') + '.' },
+      { q: 'The sine rule needs:', a: ['three sides', 'a matched pair', 'a right angle', 'an area'], c: 1, why: 'A side and its opposite angle.' },
+      { q: 'The common value of the sine rule is:', a: [m('R'), m('2R'), m('πR'), m('R²')], c: 1, why: 'The circumdiameter.' },
+      { q: 'The cosine rule is used for:', a: ['AAS', 'SSA', 'SAS or SSS', 'AAA'], c: 2, why: 'No matched pair.' },
+      { q: m('cos C < 0') + ' means:', a: ['acute', 'right', 'obtuse', 'impossible'], c: 2, why: 'Beyond ' + m('90°') + '.' },
+      { q: 'Only which case is ambiguous?', a: ['SSS', 'SAS', 'ASA', 'SSA'], c: 3, why: 'A non-included angle.' },
+      { q: 'The largest side faces:', a: ['the smallest angle', 'the largest angle', 'the right angle', 'no particular angle'], c: 1, why: 'A standard check.' },
+      { q: m('a⃗ · b⃗') + ' in coordinates:', a: [m('x₁y₂ − x₂y₁'), m('x₁x₂ + y₁y₂'), m('x₁x₂ − y₁y₂'), m('x₁ + y₁')], c: 1, why: 'Multiply and add.' },
+      { q: m('a⃗ · b⃗ = 0') + ' means:', a: ['parallel', 'perpendicular', 'equal', 'zero'], c: 1, why: m('cos 90° = 0') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 loses marks most often for:', a: ['arithmetic', 'the signs', 'the formula', 'the units'], c: 1, why: 'Obtuse cosines are negative.' },
+    { q: 'Q2’s angle must be:', a: ['the largest', 'the included one', 'acute', 'opposite ' + m('a')], c: 1, why: 'Between the two sides.' },
+    { q: 'Q3 begins by finding:', a: [m('b'), m('C'), 'the area', m('R')], c: 1, why: 'Then the sine rule.' },
+    { q: 'In Q4 the correction term is:', a: ['subtracted', 'added', 'zero', 'halved'], c: 1, why: m('cos 120° < 0') + '.' },
+    { q: 'Q5’s angle is opposite:', a: [m('4'), m('7'), m('9'), 'any side'], c: 2, why: 'The longest side.' },
+    { q: 'Q6 needs, besides the product:', a: ['an angle', 'the two magnitudes', 'a diagram', 'nothing'], c: 1, why: m('cos φ = ' + f('a⃗ · b⃗', '|a⃗||b⃗|')) + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('sin 135°'), m(f(sr('2'), '2'))],
+      [m('cos 135°'), m('−' + f(sr('2'), '2'))],
+      [m('tan 150°'), m('−' + f(sr('3'), '3'))],
+      ['Sides ' + m('9, 12') + ', angle ' + m('30°') + ': area', m('27')],
+      [m('A = 45°, B = 60°') + ': ' + m('C'), m('75°')],
+      [m('(2,1) · (1,3)'), m('5')],
+      [m('|(2,1)|'), m(sr('5'))]
+    ],
+    med: [
+      [m('A = 45°, B = 60°, a = 10') + ': ' + m('b'), m('≈ 12.2')],
+      [m('a = 6, b = 9, C = 120°') + ': ' + m('c'), m('≈ 13.1')],
+      ['Sides ' + m('4, 7, 9') + ': the largest angle', m('≈ 106.6°')],
+      ['Angle between ' + m('(2,1)') + ' and ' + m('(1,3)'), m('45°')],
+      ['Sides ' + m('4, 7, 9') + ': the area', m('≈ 13.4')],
+      [m('a = 10, A = 45°') + ': ' + m('R'), m('≈ 7.07')],
+      ['Sides ' + m('4, 7, 9') + ': type', 'Obtuse']
+    ],
+    hard: [
+      ['A triangle with ' + m('a = 8, b = 11, A = 40°') + ': how many triangles?', 'Two'],
+      ['Its two possible areas', m('≈ 43.0') + ' and ' + m('≈ 16.5')],
+      ['A parallelogram ' + m('6, 10') + ' with an angle of ' + m('135°') + ': the shorter diagonal', m('≈ 7.15')],
+      ['For which ' + m('t') + ' are ' + m('(t, 4)') + ' and ' + m('(2, −t)') + ' perpendicular?', m('t = 0')],
+      ['A triangle inscribed in a circle of radius ' + m('8') + ' with ' + m('A = 60°') + ': ' + m('a'), m('8' + sr('3'))],
+      ['A ship: ' + m('18 km') + ' on ' + m('050°') + ' then ' + m('24 km') + ' on ' + m('140°'), m('30 km')],
+      ['Sides ' + m('5, 5, 6') + ': the area', m('12')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite in full every question that lost a mark before Chapter III begins.',
+  homework: [
+    'Find ' + m('sin 120°') + ', ' + m('cos 150°') + ' and ' + m('tan 135°') + '.',
+    'Find the area of a triangle with sides ' + m('8') + ' and ' + m('15') + ' and included angle ' + m('150°') + '.',
+    'In ' + m('△ABC') + ', ' + m('A = 35°') + ', ' + m('B = 80°') + ', ' + m('a = 9') + '. Find ' + m('b') + '.',
+    'Find the largest angle of the triangle with sides ' + m('5, 9, 11') + '.',
+    'Find the angle between the vectors ' + m('(3, 1)') + ' and ' + m('(1, 2)') + '.'
+  ]
+});
