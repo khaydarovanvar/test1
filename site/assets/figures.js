@@ -2828,6 +2828,96 @@
     return svg('0 0 ' + W + ' ' + H, g);
   };
 
+  /* a pie chart of 36 pupils' favourite sport, with the sector angles written on */
+  F.pieChart = function () {
+    var W = 360, H = 240, cx = 118, cy = 120, R = 92;
+    var data = [
+      ['Football', 12, 120, 'var(--brand)', 0.85],
+      ['Volleyball', 9, 90, 'var(--brass)', 0.85],
+      ['Basketball', 6, 60, 'var(--brand)', 0.55],
+      ['Tennis', 5, 50, 'var(--brass)', 0.55],
+      ['Other', 4, 40, 'var(--brand)', 0.3]
+    ];
+    var g = '', start = -90;
+    data.forEach(function (d, i) {
+      var a0 = start * Math.PI / 180, a1 = (start + d[2]) * Math.PI / 180;
+      var x0 = cx + R * Math.cos(a0), y0 = cy + R * Math.sin(a0);
+      var x1 = cx + R * Math.cos(a1), y1 = cy + R * Math.sin(a1);
+      var big = d[2] > 180 ? 1 : 0;
+      g += '<path d="M' + cx.toFixed(1) + ' ' + cy.toFixed(1) + ' L' + x0.toFixed(1) + ' ' +
+        y0.toFixed(1) + ' A' + R + ' ' + R + ' 0 ' + big + ' 1 ' + x1.toFixed(1) + ' ' +
+        y1.toFixed(1) + ' Z" fill="' + d[3] + '" fill-opacity="' + d[4] +
+        '" stroke="currentColor" stroke-width="1.4"/>';
+      var am = (start + d[2] / 2) * Math.PI / 180;
+      g += LT(cx + R * 0.62 * Math.cos(am), cy + R * 0.62 * Math.sin(am), d[2] + '°', 'currentColor', 11);
+      /* key */
+      var ky = 44 + i * 30;
+      g += '<rect x="238" y="' + (ky - 8) + '" width="15" height="15" rx="2" fill="' + d[3] +
+        '" fill-opacity="' + d[4] + '" stroke="currentColor" stroke-width="1.1"/>';
+      g += '<text x="260" y="' + ky + '" font-family="Work Sans,system-ui,sans-serif" font-size="11" ' +
+        'fill="var(--muted)" dominant-baseline="middle">' + d[0] + ' · ' + d[1] + '</text>';
+      start += d[2];
+    });
+    g += LT(cx, H - 12, '36 pupils · each pupil is 10°', 'var(--muted)', 10.5);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* the probability scale from 0 to 1, with the five words on it */
+  F.probabilityScale = function () {
+    var W = 360, H = 128, ox = 54, oy = 62, len = 252;
+    var g = line([ox, oy], [ox + len, oy], 'stroke="var(--brand)" stroke-width="2.6" stroke-linecap="round"');
+    var marks = [
+      [0, '0', 'impossible'], [0.25, '0.25', 'unlikely'], [0.5, '0.5', 'even chance'],
+      [0.75, '0.75', 'likely'], [1, '1', 'certain']
+    ];
+    marks.forEach(function (mk) {
+      var x = ox + len * mk[0];
+      g += line([x, oy - 9], [x, oy + 9], 'stroke="var(--brass)" stroke-width="2.2" stroke-linecap="round"');
+      g += LT(x, oy - 22, mk[1], 'currentColor', 12);
+      g += LT(x, oy + 28, mk[2], 'var(--muted)', 10);
+    });
+    g += LT(W / 2, H - 12, 'every probability lies on this line', 'var(--muted)', 10.5);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
+  /* a stack of unit cubes drawn on an isometric grid */
+  F.isometricGrid = function () {
+    var W = 340, H = 224, s = 34, ox = 150, oy = 156;
+    var hx = s * 0.866, hy = s * 0.5;
+    function P(a, b, c) { return [ox + hx * (a - b), oy + hy * (a + b) - s * c]; }
+    var g = '';
+    /* the triangular dot grid: every lattice point of the projection */
+    for (var m = -5; m <= 5; m++) {
+      for (var n = -5; n <= 5; n++) {
+        if ((m + n) % 2 !== 0) continue;
+        var x = ox + hx * m, y = oy + hy * n;
+        if (x > 8 && x < W - 8 && y > 14 && y < H - 26) {
+          g += '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="1.4" fill="var(--faint)"/>';
+        }
+      }
+    }
+    function face(pts, fill, op) {
+      return '<polygon points="' + pts.map(function (q) {
+        return q[0].toFixed(1) + ',' + q[1].toFixed(1);
+      }).join(' ') + '" fill="' + fill + '" fill-opacity="' + op +
+        '" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>';
+    }
+    /* two cubes side by side and one on top of the left-hand one, drawn back to front */
+    var cubes = [[0, 0, 0], [1, 0, 0], [0, 0, 1]];
+    cubes.sort(function (u, v) { return (u[0] + u[1] + u[2]) - (v[0] + v[1] + v[2]); });
+    cubes.forEach(function (k) {
+      var a = k[0], b = k[1], c = k[2];
+      /* top */
+      g += face([P(a, b, c + 1), P(a + 1, b, c + 1), P(a + 1, b + 1, c + 1), P(a, b + 1, c + 1)], 'var(--brand)', 0.25);
+      /* the face towards the lower left */
+      g += face([P(a, b + 1, c), P(a + 1, b + 1, c), P(a + 1, b + 1, c + 1), P(a, b + 1, c + 1)], 'var(--brand)', 0.55);
+      /* the face towards the lower right */
+      g += face([P(a + 1, b, c), P(a + 1, b + 1, c), P(a + 1, b + 1, c + 1), P(a + 1, b, c + 1)], 'var(--brass)', 0.5);
+    });
+    g += LT(W / 2, H - 10, 'three cubes on an isometric grid', 'var(--muted)', 10.5);
+    return svg('0 0 ' + W + ' ' + H, g);
+  };
+
   w.FIG = F;
   w.FIGH = { svg: svg, L: L, LT: LT, dot: dot, poly: poly, line: line, ticks: ticks, ang: ang, right: right, mid: mid, cent: cent, norm: norm, S: S };
 })(window);
