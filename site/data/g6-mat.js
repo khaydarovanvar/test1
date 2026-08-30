@@ -6389,3 +6389,173 @@ G6_MAT.push({
     'A trader buys at ' + m('80 000') + ' and sells at ' + m('92 000') + '. Find the profit percentage.'
   ]
 });
+
+/* ============================== 36 ============================== */
+G6_MAT.push({
+  id: 'g6-36', stream: 'mat', grade: 6, quarter: 2, lessons: '74–75', hours: 2,
+  title: 'Control work 4 — percentages, and work on the mistakes',
+  subtitle: 'The three questions, the multiplier and the reverse case, under time.',
+  uz: 'Matematika 6, Nazorat ishi 4', uzPage: 'pp. 154–210',
+  cam: 'S7 10 review', camPage: 'Stage 7, pp. 96–104', wb: 'Control paper 4',
+  objectives: [
+    'Convert between percentages, fractions and decimals.',
+    'Find a part, a whole and a percentage.',
+    'Handle an increase, a decrease and a reverse question.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Percentage', 'Foiz', 'Процент'],
+    ['Multiplier', 'Ko‘paytuvchi', 'Множитель'],
+    ['Whole', 'Butun', 'Целое'],
+    ['Increase', 'Ortish', 'Увеличение'],
+    ['Original value', 'Boshlang‘ich qiymat', 'Первоначальное значение'],
+    ['Profit', 'Foyda', 'Прибыль'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [35, 'The paper'], [12, 'Answers'], [25, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 35 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Write ${m('35%')} as a fraction in lowest terms and as a decimal</td><td class="m">3</td><td>L55</td></tr>
+        <tr><td>2</td><td>Find ${m('18%')} of ${m('350')}</td><td class="m">3</td><td>L59–62</td></tr>
+        <tr><td>3</td><td>${m('63')} is ${m('18%')} of a number: find it</td><td class="m">4</td><td>L59–62</td></tr>
+        <tr><td>4</td><td>Write ${m('42')} as a percentage of ${m('56')}</td><td class="m">3</td><td>L59–62</td></tr>
+        <tr><td>5</td><td>Increase ${m('80 000')} by ${m('15%')}</td><td class="m">3</td><td>L63–66</td></tr>
+        <tr><td>6</td><td>After a fall of ${m('20%')} a price is ${m('64 000')}: find the original</td><td class="m">4</td><td>L63–66</td></tr>
+        <tr><td>7</td><td>A trader buys at ${m('40 000')} and sells at ${m('50 000')}: find the profit percentage</td><td class="m">5</td><td>L67–70</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The answers</div>
+      ${m(f('7', '20'))} and ${m('0.35')}; ${m('63')}; ${m('350')}; ${m('75%')}; ${m('92 000')};
+      ${m('80 000')}; ${m('25%')} profit.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>fraction not simplified</td><td class="m">${f('35', '100')}</td><td class="m">${f('7', '20')}</td></tr>
+        <tr><td>decimal point misplaced</td><td class="m">3.5</td><td class="m">0.35</td></tr>
+        <tr><td>multiplied instead of divided</td><td class="m">63 · 0.18</td><td class="m">63 ÷ 0.18</td></tr>
+        <tr><td>part and whole swapped</td><td class="m">${f('56', '42')}</td><td class="m">${f('42', '56')}</td></tr>
+        <tr><td>increase found but not added</td><td class="m">12 000</td><td class="m">92 000</td></tr>
+        <tr><td>reverse question added back</td><td class="m">64 000 + 12 800</td><td class="m">64 000 ÷ 0.8</td></tr>
+        <tr><td>profit on the selling price</td><td class="m">${f('10 000', '50 000')} = 20%</td><td class="m">${f('10 000', '40 000')} = 25%</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'The chapter as one map',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Operation</th><th>Sense check</th></tr></thead>
+      <tbody>
+        <tr><td>a part</td><td>multiply</td><td>smaller than the whole</td></tr>
+        <tr><td>the whole</td><td>divide</td><td>larger than the part</td></tr>
+        <tr><td>the percentage</td><td class="m">${f('part', 'whole')} · 100</td><td>under ${m('100')} if it really is a part</td></tr>
+        <tr><td>increase</td><td class="m">· (1 + ${f('p', '100')})</td><td>larger</td></tr>
+        <tr><td>decrease</td><td class="m">· (1 − ${f('p', '100')})</td><td>smaller</td></tr>
+        <tr><td>reverse</td><td>divide by the multiplier</td><td>multiply forwards to check</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      Percentages return in the pie chart in Quarter IV, where ${m('360°')} is shared out, and in every
+      later problem about money. The next two lessons are the decimals that all this arithmetic
+      needs.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q3: ' + m('63') + ' is ' + m('18%') + ' of a number.',
+      steps: [
+        ['The whole is wanted, so divide.', ''],
+        [m('63 ÷ 0.18'), ''],
+        [m('= 350'), ''],
+        ['Check: ' + m('0.18 · 350 = 63') + ' ✓', '']
+      ],
+      ans: m('350')
+    },
+    {
+      q: 'Model answer, Q6: after ' + m('−20%') + ' a price is ' + m('64 000') + '.',
+      steps: [
+        ['The multiplier was ' + m('0.8') + '.', ''],
+        [m('64 000 ÷ 0.8'), 'Divide, never add back.'],
+        [m('= 80 000'), 'Check: ' + m('80 000 · 0.8 = 64 000') + ' ✓']
+      ],
+      ans: m('80 000')
+    },
+    {
+      q: 'Model answer, Q7: bought at ' + m('40 000') + ', sold at ' + m('50 000') + '.',
+      steps: [
+        ['Profit: ' + m('10 000') + '.', ''],
+        ['The base is the cost price.', ''],
+        [m(f('10 000', '40 000') + ' · 100'), ''],
+        [m('= 25%'), '']
+      ],
+      ans: m('25%') + ' profit'
+    }
+  ],
+  modelNote: 'Return Q6 and Q7 first; both are decided by which number is the base, and naming the base is what the class needs to practise.',
+  interactive: {
+    type: 'quiz',
+    title: 'The chapter in eight questions',
+    hint: 'Name the base, then the operation.',
+    items: [
+      { q: m('35%') + ' as a fraction in lowest terms:', a: [m(f('35', '100')), m(f('7', '20')), m(f('1', '3')), m(f('3', '5'))], c: 1, why: 'Divide by ' + m('5') + '.' },
+      { q: m('35%') + ' as a decimal:', a: [m('3.5'), m('0.35'), m('0.035'), m('35')], c: 1, why: 'Divide by ' + m('100') + '.' },
+      { q: m('18%') + ' of ' + m('350') + ':', a: [m('63'), m('68'), m('54'), m('35')], c: 0, why: m('0.18 · 350') + '.' },
+      { q: m('63') + ' is ' + m('18%') + ' of:', a: [m('11.34'), m('350'), m('81'), m('413')], c: 1, why: 'Divide.' },
+      { q: m('42') + ' as a percentage of ' + m('56') + ':', a: [m('75%'), m('133%'), m('42%'), m('24%')], c: 0, why: m(f('42', '56')) + '.' },
+      { q: m('80 000') + ' increased by ' + m('15%') + ':', a: [m('92 000'), m('12 000'), m('80 015'), m('68 000')], c: 0, why: m('· 1.15') + '.' },
+      { q: 'After ' + m('−20%') + ' it is ' + m('64 000') + '; before:', a: [m('76 800'), m('80 000'), m('51 200'), m('84 000')], c: 1, why: m('÷ 0.8') + '.' },
+      { q: 'Bought ' + m('40 000') + ', sold ' + m('50 000') + ':', a: [m('20%'), m('25%'), m('10%'), m('125%')], c: 1, why: 'Base is the cost.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 needs the fraction:', a: ['as written', 'in lowest terms', 'as a decimal only', 'as a percentage'], c: 1, why: 'A mark for simplifying.' },
+    { q: 'Q3 is:', a: ['multiplication', 'division', 'addition', 'a percentage'], c: 1, why: 'The whole is wanted.' },
+    { q: 'Q4 puts underneath:', a: [m('42'), m('56'), m('100'), m('14')], c: 1, why: 'The whole.' },
+    { q: 'Q5 ends with:', a: ['the increase', 'the new amount', 'the percentage', 'the multiplier'], c: 1, why: 'Add it on, or multiply.' },
+    { q: 'Q6 is:', a: ['multiplication', 'division', 'subtraction', 'addition'], c: 1, why: 'The reverse question.' },
+    { q: 'Q7 divides by:', a: ['the selling price', 'the cost price', 'the profit', m('100')], c: 1, why: 'What was paid.' }
+  ],
+  practice: {
+    easy: [
+      [m('35%') + ' as a fraction', m(f('7', '20'))],
+      [m('35%') + ' as a decimal', m('0.35')],
+      [m('18%') + ' of ' + m('350'), m('63')],
+      [m('63') + ' is ' + m('18%') + ' of', m('350')],
+      [m('42') + ' as a percentage of ' + m('56'), m('75%')],
+      [m('80 000') + ' up ' + m('15%'), m('92 000')],
+      ['After ' + m('−20%') + ' it is ' + m('64 000') + ': before', m('80 000')]
+    ],
+    med: [
+      ['Bought ' + m('40 000') + ', sold ' + m('50 000'), m('25%') + ' profit'],
+      [m('12%') + ' of ' + m('2 500'), m('300')],
+      [m('96') + ' is ' + m('40%') + ' of', m('240')],
+      [m('27') + ' as a percentage of ' + m('45'), m('60%')],
+      [m('600') + ' down ' + m('35%'), m('390')],
+      ['After ' + m('+25%') + ' it is ' + m('500') + ': before', m('400')],
+      ['Bought ' + m('60 000') + ', sold ' + m('54 000'), m('10%') + ' loss']
+    ],
+    hard: [
+      ['Up ' + m('20%') + ' then down ' + m('25%'), m('−10%')],
+      ['A price after ' + m('40%') + ' off is ' + m('66 000') + ': the original', m('110 000')],
+      [m('84') + ' as a percentage of ' + m('70'), m('120%')],
+      ['A salary rises ' + m('8%') + ' to ' + m('2 700 000') + ': the old salary', m('2 500 000')],
+      [m('2.5%') + ' of ' + m('16 000'), m('400')],
+      ['Which is worth more: ' + m('15%') + ' of ' + m('80') + ' or ' + m('80%') + ' of ' + m('15') + '?', 'Equal — both ' + m('12')],
+      ['Why is the base always named first?', 'Every percentage is a percentage of something']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every question you lost a mark on in full, from the first line.',
+  homework: [
+    'Rewrite in full every question on which you lost a mark.',
+    'Write ' + m('64%') + ' as a fraction in lowest terms and as a decimal.',
+    'Find ' + m('24%') + ' of ' + m('750') + ', and say what ' + m('180') + ' is as a percentage of ' + m('750') + '.',
+    'After a rise of ' + m('30%') + ' a price is ' + m('91 000') + '. Find the original.',
+    'A trader buys at ' + m('120 000') + ' and sells at ' + m('138 000') + '. Find the profit percentage.'
+  ]
+});
