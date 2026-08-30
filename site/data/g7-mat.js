@@ -7290,3 +7290,355 @@ G7_MAT.push({
     'Find the HCF of ' + m('8a²b') + ' and ' + m('12ab²') + ', and divide their sum by it.'
   ]
 });
+
+/* ============================== 43 ============================== */
+G7_MAT.push({
+  id: 'g7-43', stream: 'mat', grade: 7, quarter: 2, lessons: '77–78', hours: 2,
+  title: 'Factorising a polynomial',
+  subtitle: 'Taking out the common factor, and grouping when there is no single one.',
+  uz: 'Matematika 7, §36', uzPage: 'pp. 218–224',
+  cam: 'S8 2.4', camPage: 'Stage 8, pp. 25–30', wb: 'Exercise 2.4',
+  objectives: [
+    'Find the highest common factor of the terms of a polynomial.',
+    'Take that factor outside a bracket, and check by expanding.',
+    'Factorise a four-term polynomial by grouping.',
+    'Use a factorised form to evaluate an expression quickly.'
+  ],
+  terms: [
+    ['To factorise', 'Ko‘paytuvchilarga ajratish', 'Разложить на множители'],
+    ['Factor', 'Ko‘paytuvchi', 'Множитель'],
+    ['Highest common factor', 'Eng katta umumiy bo‘luvchi', 'Наибольший общий делитель'],
+    ['To take outside the bracket', 'Qavsdan tashqariga chiqarish', 'Вынести за скобку'],
+    ['Grouping', 'Guruhlash', 'Группировка'],
+    ['Product', 'Ko‘paytma', 'Произведение'],
+    ['Sum', 'Yig‘indi', 'Сумма'],
+    ['Check by expanding', 'Qavsni ochib tekshirish', 'Проверка раскрытием']
+  ],
+  timing: [[10, 'The idea'], [25, 'The common factor'], [25, 'Grouping'], [25, 'What it is for'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The idea',
+      html: `<p>Expanding turns a product into a sum. <b>Factorising</b> is the same road travelled
+      backwards: it turns a sum into a product.</p>
+      ${eq(m('3x(2x + 3) = 6x² + 9x') + '   →   ' + m('6x² + 9x = 3x(2x + 3)'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Direction</th><th>Start</th><th>Finish</th></tr></thead>
+      <tbody>
+        <tr><td>expanding</td><td class="m">3x(2x + 3)</td><td class="m">6x² + 9x</td></tr>
+        <tr><td>factorising</td><td class="m">6x² + 9x</td><td class="m">3x(2x + 3)</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The check is free</div>
+      Every factorisation can be checked by expanding it again. If the expansion does not return the
+      original polynomial exactly, the factorisation is wrong — there is nothing to argue about.</div>`
+    },
+    {
+      h: 'The common factor',
+      html: `<p>Take the highest common factor of <b>all</b> the terms outside the bracket. For the
+      numbers that is their HCF; for each letter it is the lowest power that appears in every term.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Polynomial</th><th>HCF</th><th>Factorised</th></tr></thead>
+      <tbody>
+        <tr><td class="m">6x² + 9x</td><td class="m">3x</td><td class="m">3x(2x + 3)</td></tr>
+        <tr><td class="m">8a³ − 4a²</td><td class="m">4a²</td><td class="m">4a²(2a − 1)</td></tr>
+        <tr><td class="m">10x³y − 15x²y²</td><td class="m">5x²y</td><td class="m">5x²y(2x − 3y)</td></tr>
+        <tr><td class="m">12a²b + 8ab² − 4ab</td><td class="m">4ab</td><td class="m">4ab(3a + 2b − 1)</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A term that is entirely the factor leaves a 1</span>
+      In ${m('12a²b + 8ab² − 4ab')} the last term is ${m('−4ab')}, which is the factor itself; inside the
+      bracket it becomes ${m('−1')}, not nothing. Losing that ${m('1')} is the commonest error of the
+      whole topic, and expanding back catches it at once.</div>`
+    },
+    {
+      h: 'Grouping',
+      html: `<p>When the four terms have no common factor between all of them, split them into two pairs
+      that do, and a common bracket appears.</p>
+      ${eq(m('ax + ay + bx + by = a(x + y) + b(x + y) = (x + y)(a + b)'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>the polynomial</td><td class="m">2x² + 6x + ax + 3a</td></tr>
+        <tr><td>pair them</td><td class="m">(2x² + 6x) + (ax + 3a)</td></tr>
+        <tr><td>factorise each pair</td><td class="m">2x(x + 3) + a(x + 3)</td></tr>
+        <tr><td>the bracket is common</td><td class="m">(x + 3)(2x + a)</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A minus in front of the second pair changes both signs</span>
+      ${m('x² − 3x − 2x + 6')} pairs as ${m('x(x − 3) − 2(x − 3)')}, giving ${m('(x − 3)(x − 2)')}. Writing
+      ${m('− 2(x + 3)')} there is a sign slip, and the two brackets then fail to match.</div>`
+    },
+    {
+      h: 'What it is for',
+      html: `<p>A product is easier to evaluate, easier to cancel and — next year — the only way to solve
+      an equation.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Use</th><th>Example</th><th>Why the product helps</th></tr></thead>
+      <tbody>
+        <tr><td>evaluating</td><td class="m">37 · 24 + 37 · 76</td><td class="m">37(24 + 76) = 3700</td></tr>
+        <tr><td>cancelling</td><td class="m">${f('6x² + 9x', '3x')}</td><td class="m">${f('3x(2x + 3)', '3x')} = 2x + 3</td></tr>
+        <tr><td>divisibility</td><td class="m">n² + n</td><td class="m">n(n + 1)</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Why ${m('n² + n')} is always even</div>
+      Factorised it is ${m('n(n + 1)')} — the product of two consecutive whole numbers, one of which must
+      be even. In the unfactorised form the fact is invisible; that is the whole value of a product.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Factorise ' + m('12a²b + 8ab² − 4ab') + '.',
+      steps: [
+        ['HCF of ' + m('12, 8, 4') + ' is ' + m('4') + '.', ''],
+        ['Every term has ' + m('a') + ' and ' + m('b') + ', so the HCF is ' + m('4ab') + '.', ''],
+        [m('= 4ab(3a + 2b − 1)'), 'The last term leaves ' + m('−1') + '.'],
+        ['Check: ' + m('4ab(3a + 2b − 1) = 12a²b + 8ab² − 4ab') + ' ✓', '']
+      ],
+      ans: m('4ab(3a + 2b − 1)')
+    },
+    {
+      q: 'Factorise ' + m('2x² + 6x + ax + 3a') + ' by grouping.',
+      steps: [
+        [m('(2x² + 6x) + (ax + 3a)'), ''],
+        [m('2x(x + 3) + a(x + 3)'), 'The same bracket in both.'],
+        [m('= (x + 3)(2x + a)'), ''],
+        ['Check: ' + m('(x + 3)(2x + a) = 2x² + ax + 6x + 3a') + ' ✓', '']
+      ],
+      ans: m('(x + 3)(2x + a)')
+    },
+    {
+      q: 'Evaluate ' + m('37 · 24 + 37 · 76') + ' without a calculator.',
+      steps: [
+        ['Both terms contain ' + m('37') + '.', ''],
+        [m('= 37(24 + 76)'), ''],
+        [m('= 37 · 100'), ''],
+        [m('= 3700'), '']
+      ],
+      ans: m('3700')
+    }
+  ],
+  modelNote: 'Give the class the factorised answers first and ask them to expand; when they then meet the sums, the factor is already familiar and the missing 1 stops appearing.',
+  interactive: {
+    type: 'areaModel',
+    title: 'A common factor as one side of a rectangle',
+    hint: 'The factor is the width; the bracket is the length.'
+  },
+  quiz: [
+    { q: 'Factorising turns a sum into:', a: ['a difference', 'a product', 'a quotient', 'a power'], c: 1, why: 'The reverse of expanding.' },
+    { q: m('6x² + 9x') + ' factorises to:', a: [m('3x(2x + 3)'), m('3x(2x + 9)'), m('x(6x + 9)'), m('3(2x² + 3x)')], c: 0, why: 'The HCF is ' + m('3x') + '.' },
+    { q: 'In ' + m('12a²b + 8ab² − 4ab') + ' the last term leaves:', a: [m('0'), m('−1'), m('−4ab'), m('1')], c: 1, why: 'It is the factor itself.' },
+    { q: 'Grouping is used when:', a: ['there are two terms', 'no factor is common to all', 'the terms are like', 'there is a power'], c: 1, why: 'Pair them instead.' },
+    { q: m('ax + ay + bx + by') + ' equals:', a: [m('(x + y)(a + b)'), m('(a + x)(b + y)'), m('ab(x + y)'), m('(a + b)²')], c: 0, why: 'Group in pairs.' },
+    { q: 'A factorisation is checked by:', a: ['dividing', 'expanding', 'substituting 0', 'nothing'], c: 1, why: 'It must return the original.' }
+  ],
+  practice: {
+    easy: [
+      [m('4x + 8'), m('4(x + 2)')],
+      [m('6x² + 9x'), m('3x(2x + 3)')],
+      [m('8a³ − 4a²'), m('4a²(2a − 1)')],
+      [m('5x − 15'), m('5(x − 3)')],
+      [m('x² + x'), m('x(x + 1)')],
+      [m('9y³ + 3y'), m('3y(3y² + 1)')],
+      [m('10ab − 5a'), m('5a(2b − 1)')]
+    ],
+    med: [
+      [m('10x³y − 15x²y²'), m('5x²y(2x − 3y)')],
+      [m('12a²b + 8ab² − 4ab'), m('4ab(3a + 2b − 1)')],
+      [m('ax + ay + bx + by'), m('(x + y)(a + b)')],
+      [m('2x² + 6x + ax + 3a'), m('(x + 3)(2x + a)')],
+      [m('x² − 3x − 2x + 6'), m('(x − 3)(x − 2)')],
+      [m('37 · 24 + 37 · 76'), m('3700')],
+      [m('14m²n − 21mn²'), m('7mn(2m − 3n)')]
+    ],
+    hard: [
+      [m('15x⁴y² − 10x³y³ + 5x²y'), m('5x²y(3x²y − 2xy² + 1)')],
+      [m('3a(x − 2) + 5(x − 2)'), m('(x − 2)(3a + 5)')],
+      [m('x(a − b) − y(b − a)'), m('(a − b)(x + y)')],
+      ['Show that ' + m('n² + n') + ' is always even', m('n(n + 1)') + ' — one of them is even'],
+      [m('56 · 19 + 56 · 81'), m('5600')],
+      ['Simplify ' + m(f('4a²b − 6ab²', '2ab')) + ' by factorising first', m('2a − 3b')],
+      ['Factorise ' + m('x³ + x² + x + 1'), m('(x + 1)(x² + 1)')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Expand every answer back; a factorisation that does not return the original is not an answer.',
+  homework: [
+    'Factorise ' + m('12x² − 8x') + ' and ' + m('9a³b − 6a²b²') + '.',
+    'Factorise ' + m('6m²n + 9mn² − 3mn') + ', and say what the last term leaves.',
+    'Factorise ' + m('3x² + 12x + ax + 4a') + ' by grouping.',
+    'Evaluate ' + m('48 · 37 + 48 · 63') + ' by factorising.',
+    'Explain, using a factorisation, why ' + m('n² − n') + ' is always even.'
+  ]
+});
+
+/* ============================== 44 ============================== */
+G7_MAT.push({
+  id: 'g7-44', stream: 'mat', grade: 7, quarter: 2, lessons: '79–80', hours: 2,
+  title: 'Control work 5, and work on the mistakes',
+  subtitle: 'Expressions, powers, monomials and polynomials in one paper — Quarter II closed.',
+  uz: 'Matematika 7, Nazorat ishi 5', uzPage: 'pp. 152–224',
+  cam: 'S8 2 review', camPage: 'Stage 8, pp. 12–30', wb: 'Control paper M5',
+  objectives: [
+    'Apply the laws of indices without confusing them with the laws of arithmetic.',
+    'Add, subtract, multiply and divide polynomials accurately under time.',
+    'Factorise by the common factor and by grouping.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Power', 'Daraja', 'Степень'],
+    ['Monomial', 'Bir had', 'Одночлен'],
+    ['Polynomial', 'Ko‘phad', 'Многочлен'],
+    ['Like terms', 'O‘xshash hadlar', 'Подобные члены'],
+    ['To expand', 'Qavsni ochish', 'Раскрыть скобки'],
+    ['To factorise', 'Ko‘paytuvchilarga ajratish', 'Разложить на множители'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Simplify ${m('a⁵ · a³')}, ${m('a⁸ ÷ a³')}, ${m('(a²)⁴')} and ${m('a⁰')}</td><td class="m">4</td><td>L63–64</td></tr>
+        <tr><td>2</td><td>Multiply the monomials ${m('3x²y')} and ${m('−4xy³')}</td><td class="m">3</td><td>L66–67</td></tr>
+        <tr><td>3</td><td>Collect ${m('5a² − 3a + 2 − 2a² + 7a − 5')}</td><td class="m">4</td><td>L69–70</td></tr>
+        <tr><td>4</td><td>Expand ${m('(x + 4)(x − 3)')} and ${m('−3a(a² + 2a − 5)')}</td><td class="m">5</td><td>L73–74</td></tr>
+        <tr><td>5</td><td>Divide ${m('(10x³y − 15x²y²) ÷ 5x²y')}</td><td class="m">4</td><td>L75–76</td></tr>
+        <tr><td>6</td><td>Factorise ${m('12a²b + 8ab² − 4ab')} and ${m('2x² + 6x + ax + 3a')}</td><td class="m">5</td><td>L77–78</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries one mark for ${m('a⁰ = 1')} alone; Q2 one for the sign; Q4 two for the four products of
+      the binomial pair and one for the sign of the last term; Q6 one for the ${m('−1')} left by the third
+      term and two for the common bracket in the grouping.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>indices multiplied</td><td class="m">a⁵ · a³ = a¹⁵</td><td class="m">a⁸ — add them</td></tr>
+        <tr><td>zero index misread</td><td class="m">a⁰ = 0</td><td class="m">a⁰ = 1</td></tr>
+        <tr><td>sign of a product</td><td class="m">3x²y · (−4xy³) = 12x³y⁴</td><td class="m">−12x³y⁴</td></tr>
+        <tr><td>unlike terms collected</td><td class="m">5a² − 3a = 2a</td><td>they are not like</td></tr>
+        <tr><td>only two products</td><td class="m">(x + 4)(x − 3) = x² − 12</td><td>all four, then collect</td></tr>
+        <tr><td>last term of a division dropped</td><td class="m">2x</td><td class="m">2x − 3y</td></tr>
+        <tr><td>the ${m('1')} lost when factorising</td><td class="m">4ab(3a + 2b)</td><td class="m">4ab(3a + 2b − 1)</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'Quarter II as one map',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Block</th><th>The sentence</th></tr></thead>
+      <tbody>
+        <tr><td>expressions</td><td>a letter stands for a number, so the laws of arithmetic still hold</td></tr>
+        <tr><td>powers</td><td>an index counts the factors, so multiplying adds the indices</td></tr>
+        <tr><td>monomials</td><td>one product of numbers and letters, with a degree</td></tr>
+        <tr><td>polynomials</td><td>a sum of monomials; only like terms may be collected</td></tr>
+        <tr><td>multiplication</td><td>every term of the first by every term of the second</td></tr>
+        <tr><td>division</td><td>term by term, and only when the divisor is a common factor</td></tr>
+        <tr><td>factorising</td><td>the common factor outside, or grouping in pairs</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      Quarter III opens with geometry again — parallel lines, the angle sum of a triangle and
+      right-angled triangles — and returns to algebra with the abridged multiplication formulae, which
+      are the products of Q4 learned by heart.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q1: the four index tasks.',
+      steps: [
+        [m('a⁵ · a³ = a⁸'), 'Add the indices.'],
+        [m('a⁸ ÷ a³ = a⁵'), 'Subtract them.'],
+        [m('(a²)⁴ = a⁸'), 'Multiply them.'],
+        [m('a⁰ = 1'), 'For every ' + m('a ≠ 0') + '.']
+      ],
+      ans: m('a⁸, a⁵, a⁸, 1')
+    },
+    {
+      q: 'Model answer, Q4: expand ' + m('(x + 4)(x − 3)') + '.',
+      steps: [
+        [m('x · x = x²'), ''],
+        [m('x · (−3) = −3x') + ' and ' + m('4 · x = 4x') + '.', ''],
+        [m('4 · (−3) = −12'), 'The sign is the mark.'],
+        [m('= x² + x − 12'), '']
+      ],
+      ans: m('x² + x − 12')
+    },
+    {
+      q: 'Model answer, Q6: factorise ' + m('2x² + 6x + ax + 3a') + '.',
+      steps: [
+        [m('(2x² + 6x) + (ax + 3a)'), ''],
+        [m('2x(x + 3) + a(x + 3)'), ''],
+        [m('= (x + 3)(2x + a)'), ''],
+        ['Check by expanding: ' + m('2x² + ax + 6x + 3a') + ' ✓', '']
+      ],
+      ans: m('(x + 3)(2x + a)')
+    }
+  ],
+  modelNote: 'Hand back Q4 and Q6 together and ask which is which: expanding and factorising are one skill in two directions, and seeing them side by side fixes it.',
+  interactive: {
+    type: 'quiz',
+    title: 'Quarter II in twelve questions',
+    hint: 'Two from each block.',
+    items: [
+      { q: m('a⁵ · a³') + ' equals:', a: [m('a¹⁵'), m('a⁸'), m('a²'), m('2a⁸')], c: 1, why: 'Add the indices.' },
+      { q: m('a⁸ ÷ a³') + ' equals:', a: [m('a⁵'), m('a¹¹'), m('a²'), m('a²⁴')], c: 0, why: 'Subtract them.' },
+      { q: m('(a²)⁴') + ' equals:', a: [m('a⁶'), m('a⁸'), m('a¹⁶'), m('2a⁴')], c: 1, why: 'Multiply them.' },
+      { q: m('a⁰') + ' equals:', a: [m('0'), m('1'), m('a'), 'undefined'], c: 1, why: 'For ' + m('a ≠ 0') + '.' },
+      { q: 'The degree of ' + m('3x²y') + ' is:', a: [m('2'), m('3'), m('5'), m('1')], c: 1, why: m('2 + 1') + '.' },
+      { q: m('3x²y · (−4xy³)') + ' equals:', a: [m('12x³y⁴'), m('−12x³y⁴'), m('−12x²y³'), m('−7x³y⁴')], c: 1, why: 'One minus sign.' },
+      { q: 'Like terms differ only in:', a: ['the letters', 'the coefficient', 'the degree', 'the sign of the letter'], c: 1, why: 'The letter parts match.' },
+      { q: m('5a² − 3a + 2 − 2a² + 7a − 5') + ' equals:', a: [m('3a² + 4a − 3'), m('7a² + 4a − 3'), m('3a² − 4a + 3'), m('3a² + 10a − 3')], c: 0, why: 'Collect each kind.' },
+      { q: m('(x + 4)(x − 3)') + ' equals:', a: [m('x² − 12'), m('x² + x − 12'), m('x² + 7x − 12'), m('x² − x − 12')], c: 1, why: 'Four products.' },
+      { q: m('(8a³ − 4a²) ÷ 4a²') + ' equals:', a: [m('2a'), m('2a − 1'), m('2a − 4'), m('2a³')], c: 1, why: 'Every term.' },
+      { q: m('12a²b + 8ab² − 4ab') + ' factorises to:', a: [m('4ab(3a + 2b)'), m('4ab(3a + 2b − 1)'), m('ab(12a + 8b − 4)'), m('4(3a²b + 2ab² − ab)')], c: 1, why: 'The last term leaves ' + m('−1') + '.' },
+      { q: 'A factorisation is checked by:', a: ['dividing', 'expanding', 'substituting', 'nothing'], c: 1, why: 'It must return the original.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 is answered with:', a: ['the laws of arithmetic', 'the laws of indices', 'a calculator', 'estimation'], c: 1, why: 'Add, subtract, multiply the indices.' },
+    { q: 'The sign in Q2 comes from:', a: ['the letters', 'one negative factor', 'the degree', 'the coefficients only'], c: 1, why: m('+ · − = −') + '.' },
+    { q: 'In Q3 the terms ' + m('5a²') + ' and ' + m('−3a') + ' are:', a: ['like', 'not like', 'equal', 'opposite'], c: 1, why: 'Different powers.' },
+    { q: 'Q4 needs how many products for the binomial pair?', a: [m('2'), m('3'), m('4'), m('6')], c: 2, why: 'Each by each.' },
+    { q: 'Q5 is wrong if:', a: ['the first term is divided', 'the last term is dropped', 'the check is done', 'the answer is a polynomial'], c: 1, why: 'Every term is divided.' },
+    { q: 'The commonest slip in Q6 is:', a: ['the wrong HCF', 'the lost ' + m('1'), 'too many brackets', 'expanding'], c: 1, why: 'The third term is the factor itself.' }
+  ],
+  practice: {
+    easy: [
+      [m('a⁵ · a³'), m('a⁸')],
+      [m('a⁸ ÷ a³'), m('a⁵')],
+      [m('(a²)⁴'), m('a⁸')],
+      [m('a⁰') + ', for ' + m('a ≠ 0'), m('1')],
+      [m('3x²y · (−4xy³)'), m('−12x³y⁴')],
+      [m('5a² − 2a²'), m('3a²')],
+      [m('(x² + x) ÷ x'), m('x + 1')]
+    ],
+    med: [
+      [m('5a² − 3a + 2 − 2a² + 7a − 5'), m('3a² + 4a − 3')],
+      [m('(x + 4)(x − 3)'), m('x² + x − 12')],
+      [m('−3a(a² + 2a − 5)'), m('−3a³ − 6a² + 15a')],
+      [m('(10x³y − 15x²y²) ÷ 5x²y'), m('2x − 3y')],
+      [m('12a²b + 8ab² − 4ab'), m('4ab(3a + 2b − 1)')],
+      [m('2x² + 6x + ax + 3a'), m('(x + 3)(2x + a)')],
+      ['The degree of ' + m('3x²y'), m('3')]
+    ],
+    hard: [
+      [m('(2x − 1)(x² + x − 3)'), m('2x³ + x² − 7x + 3')],
+      [m('(15x⁴y² − 10x³y³ + 5x²y) ÷ 5x²y'), m('3x²y − 2xy² + 1')],
+      [m('x(a − b) − y(b − a)'), m('(a − b)(x + y)')],
+      ['Simplify ' + m(f('6x² + 9x', '3x')), m('2x + 3')],
+      ['Expand and collect ' + m('(a + b)² − (a − b)²'), m('4ab')],
+      [m('48 · 37 + 48 · 63'), m('4800')],
+      ['Why is ' + m('n² + n') + ' always even?', m('n(n + 1)') + ' — one factor is even']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every question you lost a mark on in full, from the first line.',
+  homework: [
+    'Rewrite in full every question on which you lost a mark.',
+    'Write out the four laws of indices with one example each.',
+    'Expand ' + m('(2x − 5)(x + 3)') + ' and check by substituting ' + m('x = 1') + '.',
+    'Factorise ' + m('9m²n + 12mn² − 3mn') + ' and expand your answer back.',
+    'Write one sentence for each of the seven blocks on the Quarter II map.'
+  ]
+});
