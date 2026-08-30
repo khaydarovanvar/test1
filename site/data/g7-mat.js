@@ -14651,3 +14651,206 @@ G7_MAT.push({
     'Two numbers add to ' + m('34') + ' and differ by ' + m('10') + '. Find them.'
   ]
 });
+
+/* ============================== 82 ============================== */
+G7_MAT.push({
+  id: 'g7-82', stream: 'mat', grade: 7, quarter: 4, lessons: '155–157', hours: 3,
+  title: 'The basic rules of combinatorics',
+  subtitle: 'Two rules decide every counting problem: “and” multiplies, “or” adds.',
+  uz: 'Matematika 7, §65', uzPage: 'pp. 462–472',
+  cam: 'S8 13', camPage: 'Stage 8, pp. 126–134', wb: 'Exercise 13.1',
+  objectives: [
+    'State and apply the multiplication rule and the addition rule.',
+    'Decide from the wording which rule a problem needs.',
+    'Draw a tree diagram and a table of outcomes.',
+    'Count outcomes with and without repetition.'
+  ],
+  terms: [
+    ['Combinatorics', 'Kombinatorika', 'Комбинаторика'],
+    ['Multiplication rule', 'Ko‘paytirish qoidasi', 'Правило умножения'],
+    ['Addition rule', 'Qo‘shish qoidasi', 'Правило сложения'],
+    ['Outcome', 'Natija', 'Исход'],
+    ['Tree diagram', 'Daraxt sxemasi', 'Дерево вариантов'],
+    ['With repetition', 'Takrorlanish bilan', 'С повторением'],
+    ['Without repetition', 'Takrorlanishsiz', 'Без повторения'],
+    ['Mutually exclusive', 'Birgalikda bo‘lmagan', 'Взаимоисключающие']
+  ],
+  timing: [[15, 'Counting without listing'], [30, 'The multiplication rule'], [30, 'The addition rule'], [30, 'Trees and tables'], [15, 'With or without repetition']],
+  sections: [
+    {
+      h: 'Counting without listing',
+      html: `<p>How many two-course meals can be made from ${m('3')} soups and ${m('4')} main dishes? The
+      list has ${m('12')} lines; the answer can be had without writing any of them.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>By listing</th><th>By rule</th></tr></thead>
+      <tbody>
+        <tr><td>${m('3')} soups, ${m('4')} mains</td><td>${m('12')} lines</td><td class="m">3 · 4</td></tr>
+        <tr><td>${m('10')} digits, ${m('4')}-figure code</td><td>${m('10 000')} lines</td><td class="m">10⁴</td></tr>
+        <tr><td>${m('26')} letters, ${m('3')}-letter word</td><td>${m('17 576')} lines</td><td class="m">26³</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Why the rules matter</div>
+      Listing works for a dozen outcomes and fails for a thousand. Combinatorics is the art of counting a
+      set without writing it down — which is also what makes probability possible.</div>`
+    },
+    {
+      h: 'The multiplication rule',
+      html: `<p>If a first choice can be made in ${m('m')} ways and, after it, a second in ${m('n')} ways,
+      then the pair of choices can be made in ${m('m · n')} ways.</p>
+      ${eq('“and”  ⟹  ' + m('m · n'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('3')} shirts and ${m('4')} ties</td><td class="m">3 · 4</td><td class="m">12</td></tr>
+        <tr><td>${m('5')} starters, ${m('3')} mains, ${m('2')} puddings</td><td class="m">5 · 3 · 2</td><td class="m">30</td></tr>
+        <tr><td>a coin and a die</td><td class="m">2 · 6</td><td class="m">12</td></tr>
+        <tr><td>two dice</td><td class="m">6 · 6</td><td class="m">36</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The rule extends to any number of stages</div>
+      Three choices give ${m('m · n · p')}, four give ${m('m · n · p · q')}. Each new stage multiplies,
+      which is why counting problems grow so quickly.</div>`
+    },
+    {
+      h: 'The addition rule',
+      html: `<p>If one thing can be chosen in ${m('m')} ways and another, incompatible with it, in
+      ${m('n')} ways, then one <b>or</b> the other can be chosen in ${m('m + n')} ways.</p>
+      ${eq('“or”  ⟹  ' + m('m + n'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>one book from ${m('7')} novels or ${m('5')} poetry books</td><td class="m">7 + 5</td><td class="m">12</td></tr>
+        <tr><td>travel by one of ${m('3')} buses or ${m('2')} trains</td><td class="m">3 + 2</td><td class="m">5</td></tr>
+        <tr><td>a shirt and a tie, or a jumper alone (${m('3')}, ${m('4')}, ${m('6')})</td><td class="m">3 · 4 + 6</td><td class="m">18</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The addition rule needs the choices to exclude each other</span>
+      If ${m('2')} of the ${m('7')} novels are also counted among the poetry books, adding gives
+      ${m('12')} where the true count is ${m('10')}. Check that nothing is counted twice before
+      adding.</div>`
+    },
+    {
+      h: 'Trees and tables',
+      html: `{{fig:treeDiagram:A tree for two stages of choice}}
+      <p>A tree diagram shows every outcome as a path; the number of paths is the product of the branchings
+      — the multiplication rule made visible.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Tool</th><th>Good for</th><th>Reads as</th></tr></thead>
+      <tbody>
+        <tr><td>tree diagram</td><td>two or three stages</td><td>multiply along a path</td></tr>
+        <tr><td>table of outcomes</td><td>exactly two stages</td><td>rows times columns</td></tr>
+        <tr><td>the rules alone</td><td>many stages, or large numbers</td><td>a single product</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Coin \\ die</th><th class="m">1</th><th class="m">2</th><th class="m">3</th><th class="m">4</th><th class="m">5</th><th class="m">6</th></tr></thead>
+      <tbody>
+        <tr><td>heads</td><td class="m">H1</td><td class="m">H2</td><td class="m">H3</td><td class="m">H4</td><td class="m">H5</td><td class="m">H6</td></tr>
+        <tr><td>tails</td><td class="m">T1</td><td class="m">T2</td><td class="m">T3</td><td class="m">T4</td><td class="m">T5</td><td class="m">T6</td></tr>
+      </tbody></table></div>`
+    },
+    {
+      h: 'With or without repetition',
+      html: `<p>The second question to ask, after “and or or?”, is whether an item may be used twice.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Repetition</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('3')}-figure codes from ${m('10')} digits</td><td>allowed</td><td class="m">10 · 10 · 10</td><td class="m">1000</td></tr>
+        <tr><td>${m('3')}-figure codes, digits all different</td><td>not allowed</td><td class="m">10 · 9 · 8</td><td class="m">720</td></tr>
+        <tr><td>seating ${m('4')} pupils in ${m('4')} chairs</td><td>not allowed</td><td class="m">4 · 3 · 2 · 1</td><td class="m">24</td></tr>
+        <tr><td>${m('2')}-letter codes from ${m('5')} letters</td><td>allowed</td><td class="m">5 · 5</td><td class="m">25</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Without repetition the numbers count down</div>
+      ${m('10, 9, 8')} — each stage has one fewer choice because one item has been used. That descending
+      product is the whole difference between the two cases.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A canteen offers ' + m('5') + ' starters, ' + m('3') + ' main dishes and ' + m('2') + ' puddings. How many three-course meals are possible?',
+      steps: [
+        ['The three choices are made together — “and”.', ''],
+        [m('5 · 3 · 2'), ''],
+        [m('= 30'), '']
+      ],
+      ans: m('30')
+    },
+    {
+      q: 'How many ' + m('3') + '-figure codes can be made from ' + m('10') + ' digits if the digits must all differ?',
+      steps: [
+        ['First digit: ' + m('10') + ' ways.', ''],
+        ['Second: ' + m('9') + ', since one is used.', ''],
+        ['Third: ' + m('8') + '.', ''],
+        [m('10 · 9 · 8 = 720'), '']
+      ],
+      ans: m('720')
+    },
+    {
+      q: 'A pupil may take one of ' + m('7') + ' novels or one of ' + m('5') + ' poetry books, with no book in both lists. How many choices?',
+      steps: [
+        ['The two options exclude each other — “or”.', ''],
+        [m('7 + 5'), ''],
+        [m('= 12'), '']
+      ],
+      ans: m('12')
+    }
+  ],
+  modelNote: 'Have the class list all 12 shirt-and-tie outfits by hand, then ask for the number with 8 shirts and 9 ties; the rule is welcomed rather than imposed.',
+  interactive: {
+    type: 'quiz',
+    title: 'And, or, and repeats',
+    hint: 'Two questions settle every problem.',
+    items: [
+      { q: m('3') + ' shirts <b>and</b> ' + m('4') + ' ties give:', a: [m('7'), m('12'), m('34'), m('43')], c: 1, why: 'Multiply.' },
+      { q: m('7') + ' novels <b>or</b> ' + m('5') + ' poetry books give:', a: [m('12'), m('35'), m('2'), m('75')], c: 0, why: 'Add.' },
+      { q: 'A coin and a die give:', a: [m('8'), m('12'), m('36'), m('6')], c: 1, why: m('2 · 6') + '.' },
+      { q: 'Two dice give:', a: [m('12'), m('24'), m('36'), m('6')], c: 2, why: m('6 · 6') + '.' },
+      { q: m('3') + '-figure codes from ' + m('10') + ' digits, repeats allowed:', a: [m('30'), m('720'), m('1000'), m('120')], c: 2, why: m('10³') + '.' },
+      { q: 'The same with all digits different:', a: [m('720'), m('1000'), m('504'), m('90')], c: 0, why: m('10 · 9 · 8') + '.' },
+      { q: 'Seating ' + m('4') + ' pupils in ' + m('4') + ' chairs:', a: [m('4'), m('12'), m('16'), m('24')], c: 3, why: m('4!') + '.' },
+      { q: 'The addition rule requires the options to be:', a: ['equal', 'mutually exclusive', 'ordered', 'repeated'], c: 1, why: 'Nothing counted twice.' }
+    ]
+  },
+  quiz: [
+    { q: '“And” calls for:', a: ['adding', 'multiplying', 'subtracting', 'dividing'], c: 1, why: 'The multiplication rule.' },
+    { q: '“Or” calls for:', a: ['adding', 'multiplying', 'subtracting', 'dividing'], c: 0, why: 'The addition rule.' },
+    { q: m('5') + ' starters, ' + m('3') + ' mains, ' + m('2') + ' puddings give:', a: [m('10'), m('30'), m('60'), m('15')], c: 1, why: 'Three stages.' },
+    { q: 'Without repetition the numbers:', a: ['stay the same', 'count down', 'count up', 'double'], c: 1, why: 'One item is used each time.' },
+    { q: m('3') + '-figure codes with different digits number:', a: [m('720'), m('1000'), m('30'), m('120')], c: 0, why: m('10 · 9 · 8') + '.' },
+    { q: 'A tree diagram shows each outcome as:', a: ['a branch', 'a path', 'a node', 'a row'], c: 1, why: 'From root to leaf.' }
+  ],
+  practice: {
+    easy: [
+      [m('3') + ' shirts and ' + m('4') + ' ties', m('12')],
+      [m('7') + ' novels or ' + m('5') + ' poetry books', m('12')],
+      ['A coin and a die', m('12')],
+      ['Two dice', m('36')],
+      ['Two coins', m('4')],
+      [m('5') + ' starters, ' + m('3') + ' mains, ' + m('2') + ' puddings', m('30')],
+      [m('3') + ' buses or ' + m('2') + ' trains', m('5')]
+    ],
+    med: [
+      [m('3') + '-figure codes from ' + m('10') + ' digits, repeats allowed', m('1000')],
+      ['The same, all digits different', m('720')],
+      ['Seating ' + m('4') + ' pupils in ' + m('4') + ' chairs', m('24')],
+      [m('2') + '-letter codes from ' + m('5') + ' letters, repeats allowed', m('25')],
+      ['The same without repeats', m('20')],
+      ['A shirt and a tie (' + m('3') + ', ' + m('4') + ') or a jumper (' + m('6') + ')', m('18')],
+      ['Three coins', m('8')]
+    ],
+    hard: [
+      ['Car plates: ' + m('3') + ' letters from ' + m('26') + ' then ' + m('3') + ' digits, repeats allowed', m('26³ · 10³ = 17 576 000')],
+      ['How many ' + m('4') + '-figure PINs have all digits different?', m('5040')],
+      ['How many ' + m('3') + '-digit numbers are there in all?', m('900')],
+      ['How many ' + m('3') + '-digit numbers have no repeated digit?', m('648')],
+      ['How many even ' + m('3') + '-figure codes from ' + m('10') + ' digits, repeats allowed?', m('500')],
+      ['Why does the addition rule fail if the lists overlap?', 'The common items are counted twice'],
+      ['Arrangements of the ' + m('5') + ' letters of a word with all letters different', m('120')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Ask two questions first: “and or or?”, then “may anything repeat?”',
+  homework: [
+    'A shop has ' + m('6') + ' shirts and ' + m('5') + ' ties. How many outfits?',
+    'How many ' + m('4') + '-figure codes can be made from ' + m('10') + ' digits with repeats allowed, and how many without?',
+    'A pupil chooses one of ' + m('8') + ' novels or one of ' + m('6') + ' science books. How many choices?',
+    'Draw a tree diagram for tossing three coins and count the outcomes.',
+    'In how many ways can ' + m('5') + ' pupils be seated in ' + m('5') + ' chairs?'
+  ]
+});
