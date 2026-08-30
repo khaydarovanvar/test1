@@ -8471,3 +8471,180 @@ G6_MAT.push({
     'A track has straights of ' + m('90') + ' m and semicircular ends of radius ' + m('21') + ' m. Find one lap.'
   ]
 });
+
+/* ============================== 48 ============================== */
+G6_MAT.push({
+  id: 'g6-48', stream: 'mat', grade: 6, quarter: 3, lessons: '97–99', hours: 3,
+  title: 'The area of a circle',
+  subtitle: m('S = πr²') + ' — where the formula comes from, and why the radius is squared.',
+  uz: 'Matematika 6, §21', uzPage: 'pp. 281–290',
+  cam: 'S7 15', camPage: 'Stage 7, pp. 148–154', wb: 'Exercise 15.2',
+  objectives: [
+    'Use ' + m('S = πr²') + ' to find the area of a disc.',
+    'Find the radius from the area.',
+    'Explain why doubling the radius quadruples the area.',
+    'Solve practical problems about circular regions.'
+  ],
+  terms: [
+    ['Area', 'Yuza', 'Площадь'],
+    ['Disc', 'Doira', 'Круг'],
+    ['Radius', 'Radius', 'Радиус'],
+    ['Square units', 'Kvadrat birlik', 'Квадратные единицы'],
+    ['To square', 'Kvadratga ko‘tarish', 'Возвести в квадрат'],
+    ['Square root', 'Kvadrat ildiz', 'Квадратный корень'],
+    ['Scale factor', 'O‘xshashlik koeffitsiyenti', 'Коэффициент подобия'],
+    ['Circular region', 'Doiraviy soha', 'Круговая область']
+  ],
+  timing: [[25, 'Where the formula comes from'], [30, 'Using it'], [35, 'Backwards'], [25, 'Doubling the radius'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Where the formula comes from',
+      html: `<p>Cut a disc into many thin sectors and lay them alternately point-up and point-down: they
+      form a shape close to a rectangle.</p>
+      {{fig:circleArea:A disc cut into sectors and rearranged}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Side of the rectangle</th><th>Length</th></tr></thead>
+      <tbody>
+        <tr><td>the long side</td><td>half the circumference, ${m('πr')}</td></tr>
+        <tr><td>the short side</td><td>the radius, ${m('r')}</td></tr>
+        <tr><td>so the area</td><td class="m">πr · r = πr²</td></tr>
+      </tbody></table></div>
+      ${eq(m('S = πr²'), true)}
+      <div class="keybox"><div class="klabel">The thinner the sectors, the better the rectangle</div>
+      With eight sectors the shape is lumpy; with sixty it is almost exactly a rectangle. The formula is
+      what that process arrives at.</div>`
+    },
+    {
+      h: 'Using it',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th class="m">r</th><th class="m">r²</th><th>Area (${m('π = ' + f('22', '7'))})</th><th>Area (${m('π = 3.14')})</th></tr></thead>
+      <tbody>
+        <tr><td class="m">7</td><td class="m">49</td><td class="m">154</td><td class="m">153.86</td></tr>
+        <tr><td class="m">14</td><td class="m">196</td><td class="m">616</td><td class="m">615.44</td></tr>
+        <tr><td class="m">10</td><td class="m">100</td><td class="m">314.29</td><td class="m">314</td></tr>
+        <tr><td class="m">21</td><td class="m">441</td><td class="m">1386</td><td class="m">1384.74</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Square the radius, not ${m('πr')}</span>
+      ${m('πr²')} means ${m('π · r · r')}, not ${m('(πr)²')}. With ${m('r = 7')} the area is ${m('154')},
+      not ${m('484')}.</div>`
+    },
+    {
+      h: 'Backwards',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Given area</th><th class="m">r² = S ÷ π</th><th class="m">r</th></tr></thead>
+      <tbody>
+        <tr><td class="m">154</td><td class="m">49</td><td class="m">7</td></tr>
+        <tr><td class="m">616</td><td class="m">196</td><td class="m">14</td></tr>
+        <tr><td class="m">314</td><td class="m">100</td><td class="m">10</td></tr>
+        <tr><td class="m">1386</td><td class="m">441</td><td class="m">21</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Divide by ${m('π')}, then take the square root</div>
+      Two steps, in that order. Stopping after the division gives ${m('r²')}, which is a common half-done
+      answer.</div>`
+    },
+    {
+      h: 'Doubling the radius',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th class="m">r</th><th>Circumference</th><th>Area</th></tr></thead>
+      <tbody>
+        <tr><td class="m">7</td><td class="m">44</td><td class="m">154</td></tr>
+        <tr><td class="m">14</td><td class="m">88</td><td class="m">616</td></tr>
+        <tr><td>doubled</td><td>doubled</td><td>four times</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Lengths scale by ${m('k')}, areas by ${m('k²')}</span>
+      A pizza of twice the diameter is four times as much pizza. It is the same rule met with rectangles,
+      and it applies to every shape.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the area of a disc of radius ' + m('7 cm') + ', taking ' + m('π = ' + f('22', '7')) + '.',
+      steps: [
+        [m('S = πr²'), ''],
+        [m('= ' + f('22', '7') + ' · 49'), ''],
+        [m('= 154 cm²'), 'Square units.']
+      ],
+      ans: m('154 cm²')
+    },
+    {
+      q: 'A disc has area ' + m('616 cm²') + '. Find its radius.',
+      steps: [
+        [m('r² = S ÷ π = 616 ÷ ' + f('22', '7')), ''],
+        [m('= 196'), ''],
+        [m('r = √196 = 14') + ' cm.', '']
+      ],
+      ans: m('14 cm')
+    },
+    {
+      q: 'A circular pond of radius ' + m('14 m') + ' is to be covered with netting. Find the area needed.',
+      steps: [
+        [m('S = ' + f('22', '7') + ' · 196'), ''],
+        [m('= 616') + ' m².', ''],
+        ['Netting is sold by the square metre, so ' + m('616') + ' m² is the order.', '']
+      ],
+      ans: m('616 m²')
+    }
+  ],
+  modelNote: 'Cut a paper disc into twelve sectors and rearrange them on the board; the near-rectangle makes πr² obvious in a way no derivation can.',
+  interactive: {
+    type: 'quiz',
+    title: 'Area, forwards and backwards',
+    hint: 'Square the radius first; take the root last.',
+    items: [
+      { q: 'The area of a disc is:', a: [m('2πr'), m('πr²'), m('πd'), m('πr')], c: 1, why: 'Square units.' },
+      { q: 'With ' + m('r = 7') + ' and ' + m('π = ' + f('22', '7')) + ':', a: [m('44'), m('154'), m('49'), m('484')], c: 1, why: m(f('22', '7') + ' · 49') + '.' },
+      { q: 'With ' + m('r = 10') + ' and ' + m('π = 3.14') + ':', a: [m('31.4'), m('62.8'), m('314'), m('100')], c: 2, why: m('3.14 · 100') + '.' },
+      { q: 'An area of ' + m('154') + ' gives ' + m('r²') + ' equal to:', a: [m('7'), m('49'), m('154'), m('22')], c: 1, why: 'Divide by ' + m('π') + '.' },
+      { q: 'So the radius is:', a: [m('7'), m('49'), m('14'), m('22')], c: 0, why: 'Take the square root.' },
+      { q: 'Doubling the radius multiplies the area by:', a: [m('2'), m('3'), m('4'), m('8')], c: 2, why: m('r') + ' is squared.' },
+      { q: 'And the circumference by:', a: [m('2'), m('4'), m('8'), m('1')], c: 0, why: m('C') + ' uses ' + m('r') + ' once.' },
+      { q: 'An answer in ' + m('cm') + ' for an area is:', a: ['fine', 'wrong units', 'a radius', 'a diameter'], c: 1, why: 'Areas need ' + m('cm²') + '.' }
+    ]
+  },
+  quiz: [
+    { q: m('S = πr²') + ' means:', a: [m('(πr)²'), m('π · r · r'), m('2πr'), m('π + r²')], c: 1, why: 'Only ' + m('r') + ' is squared.' },
+    { q: 'A disc of radius ' + m('14') + ' has area:', a: [m('88'), m('616'), m('196'), m('308')], c: 1, why: m(f('22', '7') + ' · 196') + '.' },
+    { q: 'To find ' + m('r') + ' from ' + m('S') + ' you:', a: ['divide by ' + m('π'), 'divide by ' + m('π') + ' then take the root', 'take the root', 'multiply'], c: 1, why: 'Two steps.' },
+    { q: 'A disc of area ' + m('314') + ' has radius:', a: [m('10'), m('100'), m('50'), m('31.4')], c: 0, why: m('√100') + '.' },
+    { q: 'Trebling the radius multiplies the area by:', a: [m('3'), m('6'), m('9'), m('27')], c: 2, why: m('3²') + '.' },
+    { q: 'Area is measured in:', a: ['cm', 'cm²', 'cm³', 'degrees'], c: 1, why: 'Two directions.' }
+  ],
+  practice: {
+    easy: [
+      [m('r = 7') + ': the area (' + m('π = ' + f('22', '7')) + ')', m('154 cm²')],
+      [m('r = 14') + ': the area', m('616 cm²')],
+      [m('r = 10') + ': the area (' + m('π = 3.14') + ')', m('314 cm²')],
+      [m('r = 21') + ': the area (' + m('π = ' + f('22', '7')) + ')', m('1386 cm²')],
+      [m('r = 5') + ': the area (' + m('π = 3.14') + ')', m('78.5 cm²')],
+      ['The formula for the area of a disc', m('πr²')],
+      ['The units of an area', m('cm²')]
+    ],
+    med: [
+      ['Area ' + m('154') + ': the radius', m('7')],
+      ['Area ' + m('616') + ': the radius', m('14')],
+      ['Area ' + m('314') + ': the radius', m('10')],
+      ['A pond of radius ' + m('14') + ' m: the netting needed', m('616') + ' m²'],
+      [m('d = 14') + ': the area', m('154 cm²')],
+      [m('d = 28') + ': the area', m('616 cm²')],
+      ['Doubling ' + m('r') + ' multiplies the area by', m('4')]
+    ],
+    hard: [
+      ['A ring between radii ' + m('7') + ' and ' + m('14'), m('462') + ' cm²'],
+      ['A ring between radii ' + m('10') + ' and ' + m('6') + ' (' + m('π = 3.14') + ')', m('200.96') + ' cm²'],
+      ['A disc of circumference ' + m('44') + ': its area', m('154') + ' cm²'],
+      ['A disc of area ' + m('154') + ': its circumference', m('44') + ' cm'],
+      ['Trebling the radius multiplies the area by', m('9')],
+      ['A pizza of ' + m('30') + ' cm across against two of ' + m('15') + ' cm: which is more?', 'The one of ' + m('30') + ' cm, by twice'],
+      ['Why is the radius squared?', 'Area has two directions, and both scale with ' + m('r')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Square the radius before multiplying by ' + m('π') + ', and write ' + m('cm²') + '.',
+  homework: [
+    'Find the area of discs of radius ' + m('3.5 cm') + ' and ' + m('21 cm') + '.',
+    'Find the area of a disc of diameter ' + m('28 cm') + '.',
+    'A disc has area ' + m('1386 cm²') + '. Find its radius.',
+    'Find the area of a ring between circles of radii ' + m('14') + ' and ' + m('7') + ' cm.',
+    'Explain in one sentence why doubling the radius quadruples the area.'
+  ]
+});
