@@ -6460,3 +6460,370 @@ G9_GEO.push({
     'Prove the bisector theorem using an auxiliary parallel.'
   ]
 });
+
+/* ============================== 39 ============================== */
+G9_GEO.push({
+  id: 'g9-39', stream: 'geo', grade: 9, quarter: 4, lessons: '57–58', hours: 2,
+  title: 'Proportional segments in a right-angled triangle',
+  subtitle: 'The altitude to the hypotenuse, and the three mean proportionals it creates.',
+  uz: 'Geometriya 9, §32', uzPage: 'pp. 197–203',
+  cam: 'IGX 11.1', camPage: 'Core & Extended, pp. 220–226', wb: 'Exercise 11.1',
+  objectives: [
+    'Define the mean proportional of two segments.',
+    'State the three relations of the altitude figure and use them fluently.',
+    'Derive Pythagoras’ theorem from them.',
+    'Solve numerical problems on the altitude and the projections.'
+  ],
+  terms: [
+    ['Mean proportional', 'O‘rta proporsional', 'Среднее пропорциональное'],
+    ['Geometric mean', 'O‘rta geometrik', 'Среднее геометрическое'],
+    ['Altitude', 'Balandlik', 'Высота'],
+    ['Projection', 'Proyeksiya', 'Проекция'],
+    ['Hypotenuse', 'Gipotenuza', 'Гипотенуза'],
+    ['Leg', 'Katet', 'Катет'],
+    ['Relation', 'Munosabat', 'Соотношение'],
+    ['Derive', 'Keltirib chiqarish', 'Вывести']
+  ],
+  timing: [[15, 'The mean proportional'], [25, 'The three relations'], [25, 'Pythagoras from them'], [20, 'Problems'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The mean proportional',
+      html: `<p>${m('x')} is the <b>mean proportional</b> between ${m('a')} and ${m('b')} if</p>
+      ${eq(m(f('a', 'x') + ' = ' + f('x', 'b')) + '   that is   ' + m('x² = ab') + '   that is   ' + m('x = ' + sr('ab')), true)}
+      <p>It is the geometric mean of the algebra course, met here as a length. Since a length is positive,
+      only the positive root is taken.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">a</th><th class="m">b</th><th class="m">x = ${sr('ab')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">4</td><td class="m">9</td><td class="m">6</td></tr>
+        <tr><td class="m">2</td><td class="m">8</td><td class="m">4</td></tr>
+        <tr><td class="m">3</td><td class="m">12</td><td class="m">6</td></tr>
+        <tr><td class="m">5</td><td class="m">20</td><td class="m">10</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The mean proportional always lies between the two</div>
+      Because ${m(sr('ab'))} is between ${m('a')} and ${m('b')} whenever they differ — the
+      arithmetic–geometric mean inequality of the algebra course, seen as a picture.</div>`
+    },
+    {
+      h: 'The three relations',
+      html: `<p>In a right triangle with the right angle at ${m('C')} and altitude ${m('CH')} to the
+      hypotenuse ${m('AB')}:</p>
+      ${eq(m('CH² = AH · HB') + '     ' + m('AC² = AH · AB') + '     ' + m('BC² = BH · AB'), true)}
+      {{fig:rightTriangle:The altitude divides the triangle into two triangles similar to it and to each other.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Segment</th><th>Is the mean proportional between</th></tr></thead>
+      <tbody>
+        <tr><td>the altitude ${m('CH')}</td><td>the two projections</td></tr>
+        <tr><td>the leg ${m('AC')}</td><td>its own projection and the whole hypotenuse</td></tr>
+        <tr><td>the leg ${m('BC')}</td><td>its own projection and the whole hypotenuse</td></tr>
+      </tbody></table></div>
+      <p>All three come from the similarity of the three triangles, and each is one cross-multiplication
+      away from a proportion.</p>
+      <div class="warn"><span class="wl">Each leg goes with its <i>own</i> projection</span>
+      ${m('AC')} with ${m('AH')}, ${m('BC')} with ${m('BH')}. Crossing them gives a plausible number and
+      a wrong answer, and it is by far the commonest error of this lesson.</div>`
+    },
+    {
+      h: 'Pythagoras from them',
+      html: `<p>Add the two leg relations:</p>
+      ${eq(m('AC² + BC² = AH · AB + BH · AB = (AH + BH) · AB = AB · AB = AB²'), true)}
+      <p>That is Pythagoras' theorem, in one line, from similar triangles alone — a proof quite different
+      from the area proofs of Grade 8.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Also worth knowing</th><th>Statement</th></tr></thead>
+      <tbody>
+        <tr><td>the altitude</td><td class="m">CH = ${f('AC · BC', 'AB')}</td></tr>
+        <tr><td>the area, two ways</td><td class="m">½ · AC · BC = ½ · AB · CH</td></tr>
+        <tr><td>the reciprocal relation</td><td class="m">${f('1', 'CH²')} = ${f('1', 'AC²')} + ${f('1', 'BC²')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two expressions for the same area</div>
+      The middle row is where ${m('CH = ' + f('AC · BC', 'AB'))} comes from, and it is often the fastest
+      route to the altitude when both legs are known.</div>`
+    },
+    {
+      h: 'Problems',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Find</th><th>Relation</th></tr></thead>
+      <tbody>
+        <tr><td>projections ${m('9')} and ${m('16')}</td><td class="m">CH</td><td class="m">${sr('144')} = 12</td></tr>
+        <tr><td>same</td><td class="m">AC, BC</td><td class="m">${sr('9 · 25')} = 15, ${sr('16 · 25')} = 20</td></tr>
+        <tr><td>legs ${m('6')} and ${m('8')}</td><td class="m">CH</td><td class="m">${f('48', '10')} = 4.8</td></tr>
+        <tr><td>same</td><td>the projections</td><td class="m">3.6 and 6.4</td></tr>
+        <tr><td class="m">AB = 25, AC = 15</td><td class="m">AH</td><td class="m">${f('225', '25')} = 9</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Label the figure before writing any relation</div>
+      Mark ${m('A')}, ${m('B')}, ${m('C')}, ${m('H')} and every known length. The three relations are
+      unusable on an unlabelled diagram, and readable at a glance on a labelled one.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'The altitude to the hypotenuse divides it into ' + m('9') + ' and ' + m('16') + '. Find the altitude and the two legs.',
+      steps: [
+        [m('CH² = 9 × 16 = 144 ⇒ CH = 12'), ''],
+        [m('AB = 25'), ''],
+        [m('AC² = 9 × 25 = 225 ⇒ AC = 15'), ''],
+        [m('BC² = 16 × 25 = 400 ⇒ BC = 20'), 'Check: ' + m('15² + 20² = 625') + ' ✓']
+      ],
+      ans: m('CH = 12, AC = 15, BC = 20')
+    },
+    {
+      q: 'A right triangle has legs ' + m('6') + ' and ' + m('8') + '. Find the altitude to the hypotenuse and the projections.',
+      steps: [
+        [m('AB = 10'), ''],
+        [m('CH = ' + f('6 × 8', '10') + ' = 4.8'), 'Two areas.'],
+        [m('AH = ' + f('36', '10') + ' = 3.6'), ''],
+        [m('BH = ' + f('64', '10') + ' = 6.4'), 'Check: ' + m('3.6 + 6.4 = 10') + ' ✓']
+      ],
+      ans: m('CH = 4.8, AH = 3.6, BH = 6.4')
+    },
+    {
+      q: 'Find the mean proportional between ' + m('3') + ' and ' + m('27') + ', and between ' + m('5') + ' and ' + m('20') + '.',
+      steps: [
+        [m('x = ' + sr('3 × 27') + ' = ' + sr('81')), ''],
+        [m('= 9'), ''],
+        [m('x = ' + sr('5 × 20') + ' = ' + sr('100')), ''],
+        [m('= 10'), '']
+      ],
+      ans: m('9') + ' and ' + m('10')
+    }
+  ],
+  modelNote: 'Draw the altitude figure once, very large, and label all six lengths; every question in the lesson is then read off that one picture.',
+  interactive: {
+    type: 'rightTriangle',
+    title: 'The altitude figure',
+    hint: 'Move the right-angle vertex and watch all three relations hold.'
+  },
+  quiz: [
+    { q: 'The mean proportional between ' + m('a') + ' and ' + m('b') + ':', a: [m(f('a + b', '2')), m(sr('ab')), m('ab'), m('a − b')], c: 1, why: m('x² = ab') + '.' },
+    { q: m('CH²') + ' equals:', a: [m('AH · AB'), m('AH · HB'), m('HB · AB'), m('AB²')], c: 1, why: 'The two projections.' },
+    { q: m('AC²') + ' equals:', a: [m('AH · HB'), m('AH · AB'), m('HB · AB'), m('CH²')], c: 1, why: 'Its own projection and the hypotenuse.' },
+    { q: 'Adding the two leg relations gives:', a: ['the sine rule', 'Pythagoras', 'the area', 'nothing'], c: 1, why: m('(AH + HB) · AB') + '.' },
+    { q: 'Legs ' + m('6') + ' and ' + m('8') + ': the altitude is', a: [m('4'), m('4.8'), m('5'), m('7')], c: 1, why: m(f('48', '10')) + '.' },
+    { q: 'The mean proportional between ' + m('4') + ' and ' + m('9') + ':', a: [m('6'), m('6.5'), m('13'), m('36')], c: 0, why: m(sr('36')) + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Mean proportional of ' + m('4') + ' and ' + m('9'), m('6')],
+      ['Mean proportional of ' + m('2') + ' and ' + m('8'), m('4')],
+      ['Mean proportional of ' + m('5') + ' and ' + m('20'), m('10')],
+      ['Projections ' + m('9') + ' and ' + m('16') + ': the altitude', m('12')],
+      ['Same: the hypotenuse', m('25')],
+      ['Same: the legs', m('15') + ' and ' + m('20')],
+      ['Legs ' + m('6') + ' and ' + m('8') + ': the altitude', m('4.8')]
+    ],
+    med: [
+      ['Legs ' + m('6') + ' and ' + m('8') + ': the projections', m('3.6') + ' and ' + m('6.4')],
+      ['Legs ' + m('5') + ' and ' + m('12') + ': the altitude', m(f('60', '13'))],
+      [m('AB = 25, AC = 15') + ': ' + m('AH'), m('9')],
+      [m('AB = 25, AC = 15') + ': ' + m('CH'), m('12')],
+      ['Projections ' + m('4') + ' and ' + m('12') + ': the altitude', m('4' + sr('3'))],
+      ['Altitude ' + m('6') + ', one projection ' + m('4') + ': the other', m('9')],
+      ['Same: the hypotenuse', m('13')]
+    ],
+    hard: [
+      ['A right triangle with hypotenuse ' + m('20') + ' and altitude ' + m('8') + ': the projections', m('4') + ' and ' + m('16')],
+      ['Legs ' + m('a') + ' and ' + m('b') + ': the altitude', m(f('ab', sr('a² + b²')))],
+      ['Prove ' + m(f('1', 'CH²') + ' = ' + f('1', 'AC²') + ' + ' + f('1', 'BC²')), 'Substitute ' + m('CH = ' + f('ab', 'c'))],
+      ['A right triangle whose altitude divides the hypotenuse in ' + m('1 : 4') + ': the ratio of the legs', m('1 : 2')],
+      ['A right triangle with projections in ratio ' + m('9 : 16') + ': the ratio of the legs', m('3 : 4')],
+      ['The altitude of a right triangle with hypotenuse ' + m('c') + ' equals ' + m(f('c', '2')) + ' when', 'The triangle is isosceles'],
+      ['A right triangle with altitude ' + m('13') + ' and hypotenuse ' + m('25') + ': possible?', 'No — the maximum altitude is ' + m('12.5')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Pair each leg with its own projection; write the pairing down before substituting.',
+  homework: [
+    'The altitude to the hypotenuse divides it into ' + m('4') + ' and ' + m('21') + '. Find the altitude and the legs.',
+    'A right triangle has legs ' + m('9') + ' and ' + m('12') + '. Find the altitude and the projections.',
+    'Find the mean proportional between ' + m('8') + ' and ' + m('18') + '.',
+    'A right triangle has hypotenuse ' + m('26') + ' and one leg ' + m('10') + '. Find that leg’s projection.',
+    'Derive Pythagoras’ theorem from the two leg relations.'
+  ]
+});
+
+/* ============================== 40 ============================== */
+G9_GEO.push({
+  id: 'g9-40', stream: 'geo', grade: 9, quarter: 4, lessons: '59–60', hours: 2,
+  title: 'Constructing the mean proportional of two segments',
+  subtitle: 'Compasses and a straight edge produce √ab exactly — no measuring, no decimals.',
+  uz: 'Geometriya 9, §33', uzPage: 'pp. 204–209',
+  cam: 'IGX 3.6', camPage: 'Core & Extended, pp. 70–75', wb: 'Exercise 3.6',
+  objectives: [
+    'Carry out the semicircle construction for the mean proportional.',
+    'Justify it with the altitude relation.',
+    'Construct √a for a given segment a, and hence √2, √3, √5.',
+    'Use the construction to build a square equal in area to a given rectangle.'
+  ],
+  terms: [
+    ['Construction', 'Yasash', 'Построение'],
+    ['Compasses', 'Sirkul', 'Циркуль'],
+    ['Straight edge', 'Chizg‘ich', 'Линейка'],
+    ['Semicircle', 'Yarim aylana', 'Полуокружность'],
+    ['Perpendicular', 'Perpendikulyar', 'Перпендикуляр'],
+    ['Justification', 'Asoslash', 'Обоснование'],
+    ['Unit segment', 'Birlik kesma', 'Единичный отрезок'],
+    ['Quadrature', 'Kvadratura', 'Квадратура']
+  ],
+  timing: [[15, 'The construction'], [25, 'Why it works'], [25, 'Constructing surds'], [20, 'Squaring a rectangle'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The construction',
+      html: `<p><b>Problem.</b> Given segments of lengths ${m('a')} and ${m('b')}, construct a segment of
+      length ${m(sr('ab'))}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>What to do</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>on a line, mark ${m('AH = a')} and then ${m('HB = b')}, in that order</td></tr>
+        <tr><td>2</td><td>find the midpoint of ${m('AB')} with the perpendicular-bisector construction</td></tr>
+        <tr><td>3</td><td>draw the semicircle on ${m('AB')} as diameter</td></tr>
+        <tr><td>4</td><td>erect the perpendicular to ${m('AB')} at ${m('H')}</td></tr>
+        <tr><td>5</td><td>it meets the semicircle at ${m('C')}; then ${m('CH = ' + sr('ab'))}</td></tr>
+      </tbody></table></div>
+      {{fig:semicircleAngle:Any point on a semicircle sees the diameter at a right angle.}}
+      <div class="keybox"><div class="klabel">The whole construction is Thales’ semicircle theorem</div>
+      Because ${m('C')} lies on the semicircle, ${m('∠ACB = 90°')}. So ${m('CH')} is the altitude of a
+      right triangle to its hypotenuse, and the relation of the last lesson applies.</div>`
+    },
+    {
+      h: 'Why it works',
+      html: `<p>In the figure, ${m('△ACB')} is right-angled at ${m('C')} and ${m('CH ⊥ AB')}. Therefore</p>
+      ${eq(m('CH² = AH · HB = ab') + '   so   ' + m('CH = ' + sr('ab')), true)}
+      <p>The construction is exact — not an approximation. That is the point of a straight-edge and
+      compasses construction: it produces the number itself, however irrational.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">a</th><th class="m">b</th><th class="m">CH</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1</td><td class="m">2</td><td class="m">${sr('2')}</td></tr>
+        <tr><td class="m">1</td><td class="m">3</td><td class="m">${sr('3')}</td></tr>
+        <tr><td class="m">1</td><td class="m">5</td><td class="m">${sr('5')}</td></tr>
+        <tr><td class="m">2</td><td class="m">8</td><td class="m">4</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('a')} and ${m('b')} must be laid end to end</span>
+      ${m('AH = a')} and ${m('HB = b')} along the <b>same</b> line, so that ${m('AB = a + b')} is the
+      diameter. Marking them from the same end gives the wrong figure entirely.</div>`
+    },
+    {
+      h: 'Constructing surds',
+      html: `<p>Taking ${m('a = 1')} makes ${m('CH = ' + sr('b'))}. So from a unit segment and a segment
+      of length ${m('b')}, the construction produces ${m(sr('b'))} exactly.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>To construct</th><th>Take</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${sr('2')}</td><td class="m">a = 1, b = 2</td></tr>
+        <tr><td class="m">${sr('3')}</td><td class="m">a = 1, b = 3</td></tr>
+        <tr><td class="m">${sr('6')}</td><td class="m">a = 2, b = 3</td></tr>
+        <tr><td class="m">${sr('10')}</td><td class="m">a = 2, b = 5</td></tr>
+      </tbody></table></div>
+      <p>There is a second route for ${m(sr('2'))}: the diagonal of a unit square. For ${m(sr('3'))}: the
+      diagonal of a unit cube, or the height of an equilateral triangle of side ${m('2')}. The
+      semicircle construction is the one that works for every ${m('b')}.</p>
+      <div class="keybox"><div class="klabel">Not every number can be constructed</div>
+      Square roots can; ${m(rt('3', '2'))} cannot, and neither can ${m('π')}. Proving that took until the
+      nineteenth century, and it is why “squaring the circle” is impossible — a phrase that entered
+      ordinary language from this very construction.</div>`
+    },
+    {
+      h: 'Squaring a rectangle',
+      html: `<p><b>Problem.</b> Construct a square with the same area as a given rectangle ${m('a × b')}.</p>
+      <p>The square must have side ${m('x')} with ${m('x² = ab')} — that is, ${m('x = ' + sr('ab'))}, which
+      is exactly what the construction produces.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Rectangle</th><th>Equal square</th></tr></thead>
+      <tbody>
+        <tr><td class="m">4 × 9</td><td>side ${m('6')}</td></tr>
+        <tr><td class="m">2 × 8</td><td>side ${m('4')}</td></tr>
+        <tr><td class="m">3 × 5</td><td>side ${m(sr('15'))}</td></tr>
+        <tr><td class="m">a × b</td><td>side ${m(sr('ab'))}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">This is what “quadrature” meant to the Greeks</div>
+      To find the area of a figure was to construct a square equal to it. Rectangles, triangles and
+      polygons can all be squared; the circle cannot, and that question stayed open for two thousand
+      years.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Describe the construction of ' + m(sr('12')) + ' from a unit segment.',
+      steps: [
+        ['Take ' + m('a = 1') + ' and ' + m('b = 12') + ' end to end.', 'Or ' + m('a = 3, b = 4') + '.'],
+        ['Draw the semicircle on the total, ' + m('13') + ', as diameter.', ''],
+        ['Erect the perpendicular at the join.', ''],
+        ['Its length to the semicircle is ' + m(sr('12') + ' = 2' + sr('3')) + '.', '']
+      ],
+      ans: m(sr('12') + ' = 2' + sr('3'))
+    },
+    {
+      q: 'A rectangle is ' + m('3 cm') + ' by ' + m('12 cm') + '. Find the side of the square of equal area.',
+      steps: [
+        [m('x² = 3 × 12'), ''],
+        [m('= 36'), ''],
+        [m('x = 6'), ''],
+        ['Check: ' + m('6² = 36 = 3 × 12') + ' ✓', '']
+      ],
+      ans: m('6 cm')
+    },
+    {
+      q: 'The perpendicular at ' + m('H') + ' meets the semicircle at height ' + m('CH = 8') + ', and ' + m('AH = 4') + '. Find ' + m('HB') + ' and the diameter.',
+      steps: [
+        [m('CH² = AH · HB'), ''],
+        [m('64 = 4 · HB'), ''],
+        [m('HB = 16'), ''],
+        [m('AB = 4 + 16 = 20'), '']
+      ],
+      ans: m('HB = 16, AB = 20')
+    }
+  ],
+  modelNote: 'Do the construction on the board with real compasses for a = 1 cm and b = 3 cm, then measure CH; it comes out at 1.7 cm, and √3 = 1.732.',
+  interactive: {
+    type: 'rightTriangle',
+    title: 'The semicircle construction',
+    hint: 'Slide H and watch CH follow √(AH · HB).'
+  },
+  quiz: [
+    { q: 'The construction rests on:', a: ['the sine rule', 'Thales’ semicircle theorem', 'Pythagoras only', 'the bisector theorem'], c: 1, why: m('∠ACB = 90°') + '.' },
+    { q: m('CH') + ' equals:', a: [m('a + b'), m(sr('ab')), m(f('a + b', '2')), m('ab')], c: 1, why: 'The altitude relation.' },
+    { q: m('a') + ' and ' + m('b') + ' are laid:', a: ['from the same end', 'end to end', 'perpendicular', 'anywhere'], c: 1, why: 'Their sum is the diameter.' },
+    { q: 'To construct ' + m(sr('5')) + ' take:', a: [m('a = 1, b = 5'), m('a = 5, b = 5'), m('a = 2, b = 3'), m('a = 1, b = 25')], c: 0, why: m(sr('1 × 5')) + '.' },
+    { q: 'A square equal to a ' + m('3 × 12') + ' rectangle has side:', a: [m('6'), m('7.5'), m('15'), m('36')], c: 0, why: m(sr('36')) + '.' },
+    { q: 'Which cannot be constructed?', a: [m(sr('2')), m(sr('7')), m('π'), m(sr('15'))], c: 2, why: 'Proved impossible in 1882.' }
+  ],
+  practice: {
+    easy: [
+      ['Mean proportional of ' + m('1') + ' and ' + m('4'), m('2')],
+      ['Mean proportional of ' + m('1') + ' and ' + m('9'), m('3')],
+      ['To construct ' + m(sr('2')) + ' take', m('a = 1, b = 2')],
+      ['To construct ' + m(sr('3')) + ' take', m('a = 1, b = 3')],
+      ['Square equal to a ' + m('4 × 9') + ' rectangle', 'Side ' + m('6')],
+      ['Square equal to a ' + m('2 × 8') + ' rectangle', 'Side ' + m('4')],
+      [m('CH²') + ' equals', m('AH · HB')]
+    ],
+    med: [
+      ['Square equal to a ' + m('3 × 12') + ' rectangle', 'Side ' + m('6')],
+      ['Square equal to a ' + m('3 × 5') + ' rectangle', 'Side ' + m(sr('15'))],
+      [m('CH = 8, AH = 4') + ': ' + m('HB'), m('16')],
+      ['Same: the diameter', m('20')],
+      ['To construct ' + m(sr('6')) + ' take', m('a = 2, b = 3')],
+      ['To construct ' + m(sr('10')) + ' take', m('a = 2, b = 5')],
+      [m('AH = 2, HB = 18') + ': ' + m('CH'), m('6')]
+    ],
+    hard: [
+      ['Construct ' + m(sr('12')) + ': one choice of ' + m('a, b'), m('3') + ' and ' + m('4')],
+      ['A rectangle of perimeter ' + m('26') + ' and area ' + m('36') + ': the equal square’s side', m('6')],
+      ['The greatest ' + m('CH') + ' for a fixed ' + m('AB = c'), m(f('c', '2')) + ', when ' + m('H') + ' is the midpoint'],
+      ['Which is larger, ' + m(f('a + b', '2')) + ' or ' + m(sr('ab')) + '?', 'The arithmetic mean, unless ' + m('a = b')],
+      ['Interpret that inequality in the semicircle', 'The radius is at least the altitude'],
+      ['Construct a square equal to a triangle of base ' + m('8') + ' and height ' + m('6'), 'Side ' + m(sr('24') + ' = 2' + sr('6'))],
+      ['Why can a circle not be squared?', m('π') + ' is not constructible']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Describe every construction as numbered steps, and justify it in one sentence.',
+  homework: [
+    'Describe the construction of the mean proportional between ' + m('2 cm') + ' and ' + m('8 cm') + '.',
+    'Find the side of the square equal in area to a ' + m('5 × 20') + ' rectangle.',
+    'Describe how to construct ' + m(sr('7')) + ' from a unit segment.',
+    'In the semicircle figure, ' + m('AH = 3') + ' and ' + m('CH = 6') + '. Find ' + m('HB') + ' and the diameter.',
+    'Explain why the greatest possible altitude in the figure is half the diameter.'
+  ]
+});

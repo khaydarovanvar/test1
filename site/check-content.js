@@ -117,7 +117,7 @@ for (const t of all) {
        balances the tag counts but renders outside the table. Catch it wherever
        it sits in the row, not only at the end. */
     for (const row of s.html.match(/<tr[\s\S]*?<\/tr>/g) || []) {
-      for (const stray of row.match(/<\/t[dh]>([^<]*)(?=<t[dh]|<\/tr>)/g) || []) {
+      for (const stray of row.match(/<\/t[dh]>([^<]*)(?=<)/g) || []) {
         const text = stray.slice(5).trim();
         if (text) issues.push(`${t.id}: section ${i} has text outside a cell: "${text.slice(0, 40)}"`);
       }
