@@ -944,3 +944,364 @@ G6_MAT.push({
     'Check your answer to task 4 by substituting ' + m('x = 3') + ' into both forms.'
   ]
 });
+
+/* ============================== 06 ============================== */
+G6_MAT.push({
+  id: 'g6-06', stream: 'mat', grade: 6, quarter: 1, lessons: '13–15', hours: 3,
+  title: 'Finding the value of an algebraic expression',
+  subtitle: 'Substituting a number for the letter — including a negative one, where the brackets matter.',
+  uz: 'Matematika 6, §3', uzPage: 'pp. 35–42',
+  cam: 'S7 2.2', camPage: 'Stage 7, pp. 24–28', wb: 'Exercise 2.2',
+  objectives: [
+    'Substitute a value and evaluate, respecting the order of operations.',
+    'Substitute a negative value using brackets.',
+    'Use a formula to compute a required quantity.',
+    'Build a table of values for an expression.'
+  ],
+  terms: [
+    ['To substitute', 'O‘rniga qo‘yish', 'Подставить'],
+    ['Value of an expression', 'Ifodaning qiymati', 'Значение выражения'],
+    ['Formula', 'Formula', 'Формула'],
+    ['Table of values', 'Qiymatlar jadvali', 'Таблица значений'],
+    ['To evaluate', 'Hisoblash', 'Вычислить'],
+    ['Order of operations', 'Amallar tartibi', 'Порядок действий'],
+    ['Square', 'Kvadrat', 'Квадрат'],
+    ['Units', 'O‘lchov birligi', 'Единицы измерения']
+  ],
+  timing: [[20, 'Substituting a number'], [25, 'Negative values'], [30, 'Using formulae'], [30, 'Tables of values'], [15, 'Homework']],
+  sections: [
+    {
+      h: 'Substituting a number',
+      html: `<p>Replace the letter by the number, then follow the order of operations exactly as in
+      arithmetic.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>At ${m('x = 4')}</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3x + 2</td><td class="m">3 · 4 + 2</td><td class="m">14</td></tr>
+        <tr><td class="m">3(x + 2)</td><td class="m">3 · 6</td><td class="m">18</td></tr>
+        <tr><td class="m">x²</td><td class="m">4 · 4</td><td class="m">16</td></tr>
+        <tr><td class="m">2x²</td><td class="m">2 · 16</td><td class="m">32</td></tr>
+        <tr><td class="m">(2x)²</td><td class="m">8²</td><td class="m">64</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('2x²')} and ${m('(2x)²')} are different</span>
+      In ${m('2x²')} only ${m('x')} is squared; in ${m('(2x)²')} the whole product is. Powers act before
+      multiplication unless a bracket says otherwise.</div>`
+    },
+    {
+      h: 'Negative values',
+      html: `<p>Substitute a negative number <b>inside brackets</b>, and the sign rules do the rest.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>At ${m('x = −3')}</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2x + 5</td><td class="m">2 · (−3) + 5</td><td class="m">−1</td></tr>
+        <tr><td class="m">x²</td><td class="m">(−3)²</td><td class="m">9</td></tr>
+        <tr><td class="m">−x</td><td class="m">−(−3)</td><td class="m">3</td></tr>
+        <tr><td class="m">x² − x</td><td class="m">9 − (−3)</td><td class="m">12</td></tr>
+        <tr><td class="m">5 − 2x</td><td class="m">5 − 2(−3)</td><td class="m">11</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">${m('−x')} is not always negative</div>
+      It means “the opposite of ${m('x')}”. When ${m('x')} is negative, ${m('−x')} is positive. Reading
+      the minus sign as “opposite” rather than “negative” removes the confusion entirely.</div>`
+    },
+    {
+      h: 'Using formulae',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Formula</th><th>Data</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="m">P = 2(a + b)</td><td class="m">a = 7, b = 4</td><td class="m">22 cm</td></tr>
+        <tr><td class="m">S = ab</td><td class="m">a = 7, b = 4</td><td class="m">28 cm²</td></tr>
+        <tr><td class="m">s = vt</td><td class="m">v = 60, t = 3</td><td class="m">180 km</td></tr>
+        <tr><td class="m">S = ${f('1', '2')}ah</td><td class="m">a = 10, h = 6</td><td class="m">30 cm²</td></tr>
+        <tr><td class="m">C = ${f('5', '9')}(F − 32)</td><td class="m">F = 68</td><td class="m">20 °C</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Carry the units through</div>
+      A formula answers with a quantity, not a bare number: ${m('22 cm')}, ${m('28 cm²')}, ${m('180 km')}.
+      The units also check the work — an area that comes out in ${m('cm')} means something went
+      wrong.</div>`
+    },
+    {
+      h: 'Tables of values',
+      html: `<p>A table shows how the value moves as the letter changes — the first step towards a
+      graph.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">x</th><th class="m">−2</th><th class="m">−1</th><th class="m">0</th><th class="m">1</th><th class="m">2</th><th class="m">3</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2x + 1</td><td class="m">−3</td><td class="m">−1</td><td class="m">1</td><td class="m">3</td><td class="m">5</td><td class="m">7</td></tr>
+        <tr><td class="m">x²</td><td class="m">4</td><td class="m">1</td><td class="m">0</td><td class="m">1</td><td class="m">4</td><td class="m">9</td></tr>
+        <tr><td class="m">10 − 3x</td><td class="m">16</td><td class="m">13</td><td class="m">10</td><td class="m">7</td><td class="m">4</td><td class="m">1</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two patterns to notice</div>
+      ${m('2x + 1')} climbs by ${m('2')} each step and ${m('10 − 3x')} falls by ${m('3')}, while ${m('x²')}
+      does neither — it falls, reaches zero and climbs again. Grade 7 will call the first two
+      <i>linear</i>.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the value of ' + m('x² − x') + ' at ' + m('x = −3') + '.',
+      steps: [
+        ['Substitute in brackets: ' + m('(−3)² − (−3)') + '.', ''],
+        [m('(−3)² = 9'), ''],
+        [m('− (−3) = +3'), ''],
+        [m('9 + 3 = 12'), '']
+      ],
+      ans: m('12')
+    },
+    {
+      q: 'A car travels at ' + m('60 km/h') + ' for ' + m('3') + ' hours. Use ' + m('s = vt') + '.',
+      steps: [
+        [m('s = 60 · 3'), ''],
+        [m('= 180'), ''],
+        ['With units: ' + m('180 km') + '.', '']
+      ],
+      ans: m('180 km')
+    },
+    {
+      q: 'Convert ' + m('68 °F') + ' using ' + m('C = ' + f('5', '9') + '(F − 32)') + '.',
+      steps: [
+        [m('F − 32 = 36'), 'Bracket first.'],
+        [m(f('5', '9') + ' · 36'), ''],
+        [m('= 20'), ''],
+        [m('20 °C') + '.', '']
+      ],
+      ans: m('20 °C')
+    }
+  ],
+  modelNote: 'Insist on brackets round every substituted negative number; the sign errors that plague the whole year begin here and end here.',
+  interactive: {
+    type: 'substitute',
+    title: 'Substitute into ' + m('2x + 1'),
+    hint: 'Slide ' + m('x') + ' and watch the value.',
+    expr: m('f(x) = 2x + 1'),
+    f: function (x) { return 2 * x + 1; },
+    den: function () { return 1; },
+    start: 2
+  },
+  quiz: [
+    { q: m('3x + 2') + ' at ' + m('x = 4') + ' is:', a: [m('14'), m('18'), m('20'), m('12')], c: 0, why: 'Multiply first.' },
+    { q: m('3(x + 2)') + ' at ' + m('x = 4') + ' is:', a: [m('14'), m('18'), m('20'), m('12')], c: 1, why: 'Bracket first.' },
+    { q: m('x²') + ' at ' + m('x = −3') + ' is:', a: [m('9'), m('−9'), m('6'), m('−6')], c: 0, why: 'A square is never negative.' },
+    { q: m('−x') + ' at ' + m('x = −3') + ' is:', a: [m('−3'), m('3'), m('0'), m('9')], c: 1, why: 'The opposite of ' + m('−3') + '.' },
+    { q: m('(2x)²') + ' at ' + m('x = 4') + ' is:', a: [m('16'), m('32'), m('64'), m('8')], c: 2, why: 'The whole product is squared.' },
+    { q: m('s = vt') + ' with ' + m('v = 60, t = 3') + ' gives:', a: [m('20'), m('63'), m('180'), m('180 km')], c: 3, why: 'With units.' }
+  ],
+  practice: {
+    easy: [
+      [m('3x + 2') + ' at ' + m('x = 4'), m('14')],
+      [m('3(x + 2)') + ' at ' + m('x = 4'), m('18')],
+      [m('x²') + ' at ' + m('x = 4'), m('16')],
+      [m('2x²') + ' at ' + m('x = 4'), m('32')],
+      [m('(2x)²') + ' at ' + m('x = 4'), m('64')],
+      [m('2x + 5') + ' at ' + m('x = −3'), m('−1')],
+      [m('−x') + ' at ' + m('x = −3'), m('3')]
+    ],
+    med: [
+      [m('x² − x') + ' at ' + m('x = −3'), m('12')],
+      [m('5 − 2x') + ' at ' + m('x = −3'), m('11')],
+      [m('P = 2(a + b)') + ' at ' + m('a = 7, b = 4'), m('22 cm')],
+      [m('S = ab') + ' at ' + m('a = 7, b = 4'), m('28 cm²')],
+      [m('S = ' + f('1', '2') + 'ah') + ' at ' + m('a = 10, h = 6'), m('30 cm²')],
+      [m('s = vt') + ' at ' + m('v = 60, t = 3'), m('180 km')],
+      ['A table of ' + m('2x + 1') + ' at ' + m('x = −1, 0, 1'), m('−1, 1, 3')]
+    ],
+    hard: [
+      [m('C = ' + f('5', '9') + '(F − 32)') + ' at ' + m('F = 68'), m('20 °C')],
+      [m('C = ' + f('5', '9') + '(F − 32)') + ' at ' + m('F = 32'), m('0 °C')],
+      [m('x² + 2x − 3') + ' at ' + m('x = −4'), m('5')],
+      [m('(x − 1)(x + 2)') + ' at ' + m('x = −2'), m('0')],
+      [m(f('a + b', '2')) + ' at ' + m('a = −7, b = 3'), m('−2')],
+      ['For which ' + m('x') + ' does ' + m('2x + 1') + ' equal ' + m('9') + '?', m('x = 4')],
+      ['Why is ' + m('2x²') + ' not ' + m('(2x)²') + '?', 'The power acts on ' + m('x') + ' alone unless a bracket says otherwise']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Put every negative substitution in brackets, without exception.',
+  homework: [
+    'Find ' + m('4x − 3') + ' at ' + m('x = 5') + ' and at ' + m('x = −5') + '.',
+    'Find ' + m('x² + x') + ' at ' + m('x = −4') + '.',
+    'Find the perimeter and area of a rectangle with ' + m('a = 9') + ' and ' + m('b = 6') + '.',
+    'Convert ' + m('86 °F') + ' to Celsius.',
+    'Make a table of ' + m('10 − 3x') + ' for ' + m('x = −2') + ' to ' + m('3') + '.'
+  ]
+});
+
+/* ============================== 07 ============================== */
+G6_MAT.push({
+  id: 'g6-07', stream: 'mat', grade: 6, quarter: 1, lessons: '16–18', hours: 3,
+  title: 'Solving equations',
+  subtitle: 'Undoing what was done to the unknown — and checking the root in the equation you were given.',
+  uz: 'Matematika 6, §4', uzPage: 'pp. 43–50',
+  cam: 'S7 2.5', camPage: 'Stage 7, pp. 32–38', wb: 'Exercise 2.5',
+  objectives: [
+    'Solve one-step and two-step equations by inverse operations.',
+    'Solve equations with a bracket and with the unknown on both sides.',
+    'Check a root by substituting into the original equation.',
+    'Write a simple word problem as an equation.'
+  ],
+  terms: [
+    ['Equation', 'Tenglama', 'Уравнение'],
+    ['Root', 'Ildiz', 'Корень'],
+    ['Unknown', 'Noma’lum', 'Неизвестное'],
+    ['Inverse operation', 'Teskari amal', 'Обратное действие'],
+    ['To balance', 'Muvozanatlash', 'Уравновешивать'],
+    ['Both sides', 'Ikkala tomon', 'Обе части'],
+    ['To check', 'Tekshirmoq', 'Проверить'],
+    ['Solution', 'Yechim', 'Решение']
+  ],
+  timing: [[20, 'The balance'], [25, 'One and two steps'], [30, 'Brackets and both sides'], [30, 'Word problems'], [15, 'Homework']],
+  sections: [
+    {
+      h: 'The balance',
+      html: `<p>An equation is a balance: whatever is done to one side must be done to the other, or it
+      tips.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Operation on the unknown</th><th>Undone by</th></tr></thead>
+      <tbody>
+        <tr><td>adding ${m('5')}</td><td>subtracting ${m('5')}</td></tr>
+        <tr><td>subtracting ${m('5')}</td><td>adding ${m('5')}</td></tr>
+        <tr><td>multiplying by ${m('3')}</td><td>dividing by ${m('3')}</td></tr>
+        <tr><td>dividing by ${m('3')}</td><td>multiplying by ${m('3')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Undo in the reverse order</div>
+      In ${m('3x + 5')} the ${m('x')} was multiplied first and added to second, so the addition is undone
+      first and the multiplication second — like taking off shoes before socks were put on.</div>`
+    },
+    {
+      h: 'One and two steps',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Equation</th><th>Step</th><th>Root</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x + 7 = 12</td><td>subtract ${m('7')}</td><td class="m">x = 5</td></tr>
+        <tr><td class="m">x − 4 = 9</td><td>add ${m('4')}</td><td class="m">x = 13</td></tr>
+        <tr><td class="m">5x = 40</td><td>divide by ${m('5')}</td><td class="m">x = 8</td></tr>
+        <tr><td class="m">${f('x', '3')} = 6</td><td>multiply by ${m('3')}</td><td class="m">x = 18</td></tr>
+        <tr><td class="m">3x + 5 = 20</td><td>subtract ${m('5')}, divide by ${m('3')}</td><td class="m">x = 5</td></tr>
+        <tr><td class="m">2x − 7 = 11</td><td>add ${m('7')}, divide by ${m('2')}</td><td class="m">x = 9</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Check in the equation as it was given</span>
+      For ${m('3x + 5 = 20')}: ${m('3 · 5 + 5 = 20')} ✓. Checking in a line of your own working repeats
+      any error you have already made.</div>`
+    },
+    {
+      h: 'Brackets and both sides',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Equation</th><th>First move</th><th>Root</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2(x + 3) = 14</td><td>expand or divide by ${m('2')}</td><td class="m">x = 4</td></tr>
+        <tr><td class="m">3(x − 1) = 12</td><td>divide by ${m('3')}</td><td class="m">x = 5</td></tr>
+        <tr><td class="m">5x = 2x + 12</td><td>subtract ${m('2x')}</td><td class="m">x = 4</td></tr>
+        <tr><td class="m">4x + 1 = 2x + 9</td><td>subtract ${m('2x')}, then ${m('1')}</td><td class="m">x = 4</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Gather the unknowns on the side where more of them are</div>
+      In ${m('4x + 1 = 2x + 9')} taking ${m('2x')} from both sides leaves ${m('2x')} on the left, which is
+      positive. Working the other way gives ${m('−2x')} and an extra chance to slip.</div>`
+    },
+    {
+      h: 'Word problems',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Equation</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a number trebled and increased by ${m('5')} is ${m('26')}</td><td class="m">3x + 5 = 26</td><td class="m">7</td></tr>
+        <tr><td>a rectangle of perimeter ${m('30')} with width ${m('6')}</td><td class="m">2(6 + b) = 30</td><td class="m">b = 9</td></tr>
+        <tr><td>${m('5')} pens cost ${m('20 000')}</td><td class="m">5p = 20 000</td><td class="m">4000</td></tr>
+        <tr><td>Ali is ${m('4')} years older than Sardor; together ${m('26')}</td><td class="m">x + (x + 4) = 26</td><td class="m">11 and 15</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Three lines: let, equation, answer</div>
+      Say what the letter stands for, write the equation, solve it, and answer the question in words. The
+      first and last lines carry as many marks as the algebra between them.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('3x + 5 = 20') + '.',
+      steps: [
+        ['Subtract ' + m('5') + ' from both sides: ' + m('3x = 15') + '.', ''],
+        ['Divide both sides by ' + m('3') + ': ' + m('x = 5') + '.', ''],
+        ['Check: ' + m('3 · 5 + 5 = 20') + ' ✓', '']
+      ],
+      ans: m('x = 5')
+    },
+    {
+      q: 'Solve ' + m('4x + 1 = 2x + 9') + '.',
+      steps: [
+        ['Subtract ' + m('2x') + ': ' + m('2x + 1 = 9') + '.', ''],
+        ['Subtract ' + m('1') + ': ' + m('2x = 8') + '.', ''],
+        ['Divide by ' + m('2') + ': ' + m('x = 4') + '.', ''],
+        ['Check: ' + m('17 = 17') + ' ✓', '']
+      ],
+      ans: m('x = 4')
+    },
+    {
+      q: 'A rectangle has perimeter ' + m('30 cm') + ' and width ' + m('6 cm') + '. Find its length.',
+      steps: [
+        ['Let the length be ' + m('b') + '.', ''],
+        [m('2(6 + b) = 30'), ''],
+        [m('6 + b = 15'), 'Divide by ' + m('2') + '.'],
+        [m('b = 9 cm'), '']
+      ],
+      ans: m('9 cm')
+    }
+  ],
+  modelNote: 'Draw a pair of scales on the board and physically remove the same weight from both pans; every later step of algebra is that picture.',
+  interactive: {
+    type: 'quiz',
+    title: 'One step at a time',
+    hint: 'Undo the last thing that was done first.',
+    items: [
+      { q: m('x + 7 = 12') + ' gives:', a: [m('x = 19'), m('x = 5'), m('x = 7'), m('x = 12')], c: 1, why: 'Subtract ' + m('7') + '.' },
+      { q: m('5x = 40') + ' gives:', a: [m('x = 35'), m('x = 45'), m('x = 8'), m('x = 200')], c: 2, why: 'Divide by ' + m('5') + '.' },
+      { q: m(f('x', '3') + ' = 6') + ' gives:', a: [m('x = 2'), m('x = 18'), m('x = 9'), m('x = 3')], c: 1, why: 'Multiply by ' + m('3') + '.' },
+      { q: 'In ' + m('3x + 5 = 20') + ' you first:', a: ['divide by ' + m('3'), 'subtract ' + m('5'), 'add ' + m('5'), 'multiply by ' + m('3')], c: 1, why: 'Undo in reverse order.' },
+      { q: 'It gives:', a: [m('x = 5'), m('x = 15'), m('x = 8'), m('x = 25')], c: 0, why: m('3x = 15') + '.' },
+      { q: m('2(x + 3) = 14') + ' gives:', a: [m('x = 4'), m('x = 7'), m('x = 11'), m('x = 8')], c: 0, why: 'Divide by ' + m('2') + ' first.' },
+      { q: m('5x = 2x + 12') + ' gives:', a: [m('x = 4'), m('x = 12'), m('x = 3'), m('x = 6')], c: 0, why: m('3x = 12') + '.' },
+      { q: 'A root should be checked in:', a: ['your last line', 'the original equation', 'a calculator', 'nothing'], c: 1, why: 'Errors do not repeat that way.' }
+    ]
+  },
+  quiz: [
+    { q: 'An equation is like:', a: ['a list', 'a balance', 'a graph', 'a table'], c: 1, why: 'Both sides stay equal.' },
+    { q: 'Multiplying by ' + m('3') + ' is undone by:', a: ['adding ' + m('3'), 'subtracting ' + m('3'), 'dividing by ' + m('3'), 'squaring'], c: 2, why: 'The inverse operation.' },
+    { q: m('2x − 7 = 11') + ' gives:', a: [m('x = 2'), m('x = 9'), m('x = 18'), m('x = 4')], c: 1, why: m('2x = 18') + '.' },
+    { q: m('3(x − 1) = 12') + ' gives:', a: [m('x = 3'), m('x = 5'), m('x = 4'), m('x = 13')], c: 1, why: m('x − 1 = 4') + '.' },
+    { q: 'In ' + m('4x + 1 = 2x + 9') + ' you gather the unknowns:', a: ['on the left', 'on the right', 'either way', 'nowhere'], c: 0, why: 'More of them there.' },
+    { q: 'A word problem needs first:', a: ['the equation', 'a “let” sentence', 'the answer', 'a check'], c: 1, why: 'Say what the letter is.' }
+  ],
+  practice: {
+    easy: [
+      [m('x + 7 = 12'), m('x = 5')],
+      [m('x − 4 = 9'), m('x = 13')],
+      [m('5x = 40'), m('x = 8')],
+      [m(f('x', '3') + ' = 6'), m('x = 18')],
+      [m('3x + 5 = 20'), m('x = 5')],
+      [m('2x − 7 = 11'), m('x = 9')],
+      [m('x + 12 = 12'), m('x = 0')]
+    ],
+    med: [
+      [m('2(x + 3) = 14'), m('x = 4')],
+      [m('3(x − 1) = 12'), m('x = 5')],
+      [m('5x = 2x + 12'), m('x = 4')],
+      [m('4x + 1 = 2x + 9'), m('x = 4')],
+      ['A number trebled and increased by ' + m('5') + ' is ' + m('26'), m('7')],
+      [m('5') + ' pens cost ' + m('20 000') + ': one pen', m('4000')],
+      ['A rectangle of perimeter ' + m('30') + ' and width ' + m('6'), 'Length ' + m('9')]
+    ],
+    hard: [
+      [m('4(x − 2) = 2(x + 3)'), m('x = 7')],
+      [m('5x − 3 = 3x + 7'), m('x = 5')],
+      [m(f('x', '2') + ' + 4 = 10'), m('x = 12')],
+      [m('7 − x = 2'), m('x = 5')],
+      ['Ali is ' + m('4') + ' years older than Sardor and together they are ' + m('26'), m('11') + ' and ' + m('15')],
+      ['Three consecutive numbers add to ' + m('42'), m('13, 14, 15')],
+      ['Why check in the original equation?', 'A check on your own working repeats your own error']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the check as its own line beneath every answer.',
+  homework: [
+    'Solve ' + m('x + 9 = 21') + ', ' + m('6x = 54') + ' and ' + m(f('x', '4') + ' = 7') + '.',
+    'Solve ' + m('4x + 3 = 27') + ' and ' + m('5x − 8 = 12') + '.',
+    'Solve ' + m('3(x + 2) = 21') + '.',
+    'Solve ' + m('6x + 2 = 4x + 14') + '.',
+    'A number doubled and increased by ' + m('7') + ' is ' + m('31') + '. Find it, writing all three lines.'
+  ]
+});
