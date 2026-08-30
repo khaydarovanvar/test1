@@ -4523,3 +4523,348 @@ G9_GEO.push({
     'Explain why a rectangle that is not a square has no inscribed circle touching all four sides.'
   ]
 });
+
+/* ============================== 28 ============================== */
+G9_GEO.push({
+  id: 'g9-28', stream: 'geo', grade: 9, quarter: 3, lessons: '37', hours: 1,
+  title: 'Regular polygons',
+  subtitle: 'All sides equal and all angles equal — and one formula for every interior angle.',
+  uz: 'Geometriya 9, §23', uzPage: 'pp. 135–138',
+  cam: 'IGX 3.4', camPage: 'Core & Extended, pp. 58–63', wb: 'Exercise 3.4',
+  objectives: [
+    'Define a regular polygon and give the interior and exterior angle formulae.',
+    'Find n from a given interior or exterior angle.',
+    'Know which regular polygons tessellate.',
+    'Compute the sum of the interior angles of any polygon.'
+  ],
+  terms: [
+    ['Regular polygon', 'Muntazam ko‘pburchak', 'Правильный многоугольник'],
+    ['Interior angle', 'Ichki burchak', 'Внутренний угол'],
+    ['Exterior angle', 'Tashqi burchak', 'Внешний угол'],
+    ['Angle sum', 'Burchaklar yig‘indisi', 'Сумма углов'],
+    ['Central angle', 'Markaziy burchak', 'Центральный угол'],
+    ['Tessellation', 'Parketlash', 'Замощение'],
+    ['Equilateral', 'Teng tomonli', 'Равносторонний'],
+    ['Equiangular', 'Teng burchakli', 'Равноугольный']
+  ],
+  timing: [[10, 'The definition and the angles'], [14, 'Working backwards'], [10, 'Tessellation'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The definition and the angles',
+      html: `<p>A polygon is <b>regular</b> if it is both equilateral and equiangular. Both conditions are
+      needed: a rhombus is equilateral but not regular, a rectangle equiangular but not regular.</p>
+      ${eq('Sum of the interior angles: ' + m('(n − 2) · 180°'), true)}
+      ${eq('Each interior angle: ' + m(f('(n − 2) · 180°', 'n')) + '     Each exterior angle: ' + m(f('360°', 'n')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">n</th><th>Name</th><th>Interior</th><th>Exterior</th><th>Central</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3</td><td>triangle</td><td class="m">60°</td><td class="m">120°</td><td class="m">120°</td></tr>
+        <tr><td class="m">4</td><td>square</td><td class="m">90°</td><td class="m">90°</td><td class="m">90°</td></tr>
+        <tr><td class="m">5</td><td>pentagon</td><td class="m">108°</td><td class="m">72°</td><td class="m">72°</td></tr>
+        <tr><td class="m">6</td><td>hexagon</td><td class="m">120°</td><td class="m">60°</td><td class="m">60°</td></tr>
+        <tr><td class="m">8</td><td>octagon</td><td class="m">135°</td><td class="m">45°</td><td class="m">45°</td></tr>
+        <tr><td class="m">10</td><td>decagon</td><td class="m">144°</td><td class="m">36°</td><td class="m">36°</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The exterior angles always total ${m('360°')}</div>
+      For every polygon, regular or not, convex or not. Walking once round the boundary turns you through
+      one full circle — which is why the exterior angle formula has no ${m('n − 2')} in it, and why it is
+      the easier of the two to use.</div>`
+    },
+    {
+      h: 'Working backwards',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Find ${m('n')} by</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>an exterior angle ${m('e')}</td><td class="m">n = ${f('360°', 'e')}</td><td class="m">e = 24° ⇒ n = 15</td></tr>
+        <tr><td>an interior angle ${m('i')}</td><td class="m">e = 180° − i, then divide</td><td class="m">i = 162° ⇒ e = 18° ⇒ n = 20</td></tr>
+        <tr><td>the angle sum ${m('S')}</td><td class="m">n = ${f('S', '180°')} + 2</td><td class="m">S = 1440° ⇒ n = 10</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Go through the exterior angle</span>
+      Solving ${m(f('(n − 2)180', 'n') + ' = 162')} directly needs an equation; ${m('180 − 162 = 18')}
+      then ${m(f('360', '18') + ' = 20')} needs two subtractions. The second route is faster and far
+      less error-prone.</div>`
+    },
+    {
+      h: 'Tessellation',
+      html: `<p>A regular polygon <b>tessellates</b> — tiles the plane with no gaps — exactly when its
+      interior angle divides ${m('360°')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Polygon</th><th>Interior</th><th class="m">360° ÷</th><th>Tessellates?</th></tr></thead>
+      <tbody>
+        <tr><td>triangle</td><td class="m">60°</td><td class="m">6</td><td>yes</td></tr>
+        <tr><td>square</td><td class="m">90°</td><td class="m">4</td><td>yes</td></tr>
+        <tr><td>pentagon</td><td class="m">108°</td><td class="m">3.33…</td><td><b>no</b></td></tr>
+        <tr><td>hexagon</td><td class="m">120°</td><td class="m">3</td><td>yes</td></tr>
+        <tr><td>octagon</td><td class="m">135°</td><td class="m">2.67</td><td><b>no</b></td></tr>
+      </tbody></table></div>
+      <p>Only three regular polygons tessellate on their own: the equilateral triangle, the square and
+      the regular hexagon. The hexagon is the most efficient of the three, which is why bees build
+      hexagonal cells.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A regular polygon has an interior angle of ' + m('162°') + '. Find ' + m('n') + '.',
+      steps: [
+        ['Exterior angle ' + m('= 180° − 162° = 18°') + '.', ''],
+        [m('n = ' + f('360°', '18°')), ''],
+        [m('n = 20'), ''],
+        ['Check: ' + m(f('18 · 180', '20') + ' = 162') + ' ✓', '']
+      ],
+      ans: m('n = 20')
+    },
+    {
+      q: 'Find the sum of the interior angles of a polygon with ' + m('12') + ' sides, and each angle if it is regular.',
+      steps: [
+        [m('(12 − 2) × 180° = 1800°'), ''],
+        ['Each angle ' + m('= ' + f('1800', '12')), ''],
+        [m('= 150°'), ''],
+        ['Check: exterior ' + m('= 30° = ' + f('360', '12')) + ' ✓', '']
+      ],
+      ans: m('1800°') + '; each ' + m('150°')
+    },
+    {
+      q: 'Does a regular pentagon tessellate?',
+      steps: [
+        ['Its interior angle is ' + m('108°') + '.', ''],
+        [m(f('360', '108') + ' = 3.33…'), 'Not a whole number.'],
+        ['Three pentagons leave a gap of ' + m('36°') + '.', ''],
+        ['No.', '']
+      ],
+      ans: 'No'
+    }
+  ],
+  modelNote: 'Give out card triangles, squares, pentagons and hexagons and let the class try to tile a desk; the pentagon fails visibly, and the arithmetic afterwards explains it.',
+  interactive: {
+    type: 'polygonAngles',
+    title: 'Interior and exterior angles',
+    hint: 'Change n and watch both formulae.'
+  },
+  quiz: [
+    { q: 'The interior angle sum is:', a: [m('n · 180°'), m('(n − 2) · 180°'), m('360°'), m('(n + 2) · 180°')], c: 1, why: m('n − 2') + ' triangles.' },
+    { q: 'The exterior angles total:', a: [m('180°'), m('360°'), m('n · 180°'), 'it varies'], c: 1, why: 'One full turn.' },
+    { q: 'A regular pentagon’s interior angle:', a: [m('72°'), m('108°'), m('120°'), m('135°')], c: 1, why: m('180 − 72') + '.' },
+    { q: 'An exterior angle of ' + m('24°') + ' gives:', a: [m('n = 12'), m('n = 15'), m('n = 18'), m('n = 20')], c: 1, why: m(f('360', '24')) + '.' },
+    { q: 'An interior angle of ' + m('162°') + ' gives:', a: [m('n = 18'), m('n = 20'), m('n = 24'), m('n = 30')], c: 1, why: 'Exterior ' + m('18°') + '.' },
+    { q: 'Which regular polygons tessellate?', a: ['all', 'triangle, square, hexagon', 'square only', 'pentagon and hexagon'], c: 1, why: 'Their angles divide ' + m('360°') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Interior angle of a regular hexagon', m('120°')],
+      ['Exterior angle of a regular hexagon', m('60°')],
+      ['Interior angle of a regular octagon', m('135°')],
+      ['Angle sum of a pentagon', m('540°')],
+      ['Angle sum of a decagon', m('1440°')],
+      ['Exterior angles always total', m('360°')],
+      ['Interior angle of a regular pentagon', m('108°')]
+    ],
+    med: [
+      ['Exterior angle ' + m('24°') + ': ' + m('n'), m('15')],
+      ['Interior angle ' + m('162°') + ': ' + m('n'), m('20')],
+      ['Angle sum ' + m('1800°') + ': ' + m('n'), m('12')],
+      ['Interior angle of a regular ' + m('12') + '-gon', m('150°')],
+      ['Interior angle of a regular ' + m('9') + '-gon', m('140°')],
+      ['Does a regular pentagon tessellate?', 'No'],
+      ['Does a regular hexagon tessellate?', 'Yes']
+    ],
+    hard: [
+      ['A regular polygon whose interior angle is ' + m('5') + ' times its exterior', m('n = 12')],
+      ['A regular polygon with ' + m('n') + ' diagonals from one vertex is a', m('(n + 3)') + '-gon'],
+      ['Total diagonals of a regular decagon', m('35')],
+      ['A regular polygon with interior angle ' + m('175°'), m('n = 72')],
+      ['Two regular polygons tile with a square at a point: which?', 'Two octagons and a square'],
+      ['Interior angle of a regular ' + m('20') + '-gon', m('162°')],
+      ['Is there a regular polygon with interior angle ' + m('155°') + '?', 'No — ' + m(f('360', '25')) + ' is not whole']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Find ' + m('n') + ' through the exterior angle, never by solving the interior-angle equation.',
+  homework: [
+    'Find the interior and exterior angles of a regular ' + m('15') + '-gon.',
+    'A regular polygon has an exterior angle of ' + m('20°') + '. Find ' + m('n') + ' and the angle sum.',
+    'A regular polygon has an interior angle of ' + m('156°') + '. Find ' + m('n') + '.',
+    'Which regular polygons tessellate, and why?',
+    'How many diagonals has a regular ' + m('12') + '-gon?'
+  ]
+});
+
+/* ============================== 29 ============================== */
+G9_GEO.push({
+  id: 'g9-29', stream: 'geo', grade: 9, quarter: 3, lessons: '38–39', hours: 2,
+  title: 'Circles inscribed in and circumscribed about a regular polygon',
+  subtitle: 'Every regular polygon has both circles, and they share a centre.',
+  uz: 'Geometriya 9, §24', uzPage: 'pp. 139–145',
+  cam: 'IGX 3.4–3.5', camPage: 'Core & Extended, pp. 58–70', wb: 'Exercise 3.4',
+  objectives: [
+    'Prove that a regular polygon has both an inscribed and a circumscribed circle with the same centre.',
+    'Use the central triangle to relate R, r and the side a.',
+    'Compute the area of a regular polygon as ½ P r.',
+    'Find R and r for the standard polygons.'
+  ],
+  terms: [
+    ['Centre of a regular polygon', 'Muntazam ko‘pburchak markazi', 'Центр правильного многоугольника'],
+    ['Apothem', 'Apofema', 'Апофема'],
+    ['Central triangle', 'Markaziy uchburchak', 'Центральный треугольник'],
+    ['Circumradius', 'Tashqi radius', 'Радиус описанной окружности'],
+    ['Inradius', 'Ichki radius', 'Радиус вписанной окружности'],
+    ['Half-angle', 'Yarim burchak', 'Половинный угол'],
+    ['Perimeter', 'Perimetr', 'Периметр'],
+    ['Area of a polygon', 'Ko‘pburchak yuzi', 'Площадь многоугольника']
+  ],
+  timing: [[15, 'One centre, two circles'], [25, 'The central triangle'], [25, 'The area'], [20, 'The standard polygons'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'One centre, two circles',
+      html: `<p>Join the centre ${m('O')} of a regular ${m('n')}-gon to all ${m('n')} vertices. The
+      ${m('n')} triangles formed are congruent isosceles triangles, so:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>All equal</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>the distances ${m('O')} to the vertices</td><td>a circumscribed circle of radius ${m('R')}</td></tr>
+        <tr><td>the distances ${m('O')} to the sides</td><td>an inscribed circle of radius ${m('r')}</td></tr>
+      </tbody></table></div>
+      <p>The inradius ${m('r')} is also called the <b>apothem</b>: it is the distance from the centre to
+      the midpoint of a side, and it is the height of one of the ${m('n')} triangles.</p>
+      <div class="keybox"><div class="klabel">Only regular polygons have both circles concentric</div>
+      A general triangle has both circles, but with different centres. A rhombus has only the inscribed
+      one, a rectangle only the circumscribed one. Regularity is exactly the condition that makes the
+      two centres coincide.</div>`
+    },
+    {
+      h: 'The central triangle',
+      html: `<p>One of the ${m('n')} triangles has apex angle ${m(f('360°', 'n'))} at ${m('O')}, two
+      sides ${m('R')}, base ${m('a')} and height ${m('r')}. Halving it gives a right triangle with acute
+      angle ${m(f('180°', 'n'))}:</p>
+      ${eq(m(f('a', '2') + ' = R sin ' + f('180°', 'n')) + '     ' + m('r = R cos ' + f('180°', 'n')), true)}
+      ${eq(m('a = 2R sin ' + f('180°', 'n')) + '     ' + m('a = 2r tan ' + f('180°', 'n')), true)}
+      {{fig:circleArea:One of the n congruent triangles — its height is the apothem, its base a side.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Known</th><th>Find</th><th>Formula</th></tr></thead>
+      <tbody>
+        <tr><td class="m">R, n</td><td class="m">a</td><td class="m">2R sin ${f('180°', 'n')}</td></tr>
+        <tr><td class="m">a, n</td><td class="m">R</td><td class="m">${f('a', '2 sin (180°/n)')}</td></tr>
+        <tr><td class="m">a, n</td><td class="m">r</td><td class="m">${f('a', '2 tan (180°/n)')}</td></tr>
+        <tr><td class="m">R, n</td><td class="m">r</td><td class="m">R cos ${f('180°', 'n')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The angle in the formula is ${m(f('180°', 'n'))}, not ${m(f('360°', 'n'))}</span>
+      Because the right triangle is <b>half</b> of the central one. Using the full central angle doubles
+      every side — the commonest error of this lesson.</div>`
+    },
+    {
+      h: 'The area',
+      html: `<p>The polygon is ${m('n')} triangles, each of area ${m(f('1', '2') + 'ar')}:</p>
+      ${eq(m('S = n · ' + f('1', '2') + 'ar = ' + f('1', '2') + 'Pr'), true)}
+      <p>where ${m('P = na')} is the perimeter. This is exactly the formula ${m('S = pr')} of the last
+      lesson, with ${m('p = ' + f('P', '2'))}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Polygon of side ${m('a')}</th><th>Area</th></tr></thead>
+      <tbody>
+        <tr><td>equilateral triangle</td><td class="m">${f('a²' + sr('3'), '4')}</td></tr>
+        <tr><td>square</td><td class="m">a²</td></tr>
+        <tr><td>regular hexagon</td><td class="m">${f('3a²' + sr('3'), '2')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A regular hexagon is six equilateral triangles</div>
+      Its central angle is ${m('60°')}, so each of the six triangles is equilateral and ${m('R = a')}.
+      That single fact answers most hexagon questions in one line.</div>`
+    },
+    {
+      h: 'The standard polygons',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Polygon</th><th class="m">R</th><th class="m">r</th><th class="m">a</th></tr></thead>
+      <tbody>
+        <tr><td>equilateral triangle</td><td class="m">${f('a', sr('3'))}</td><td class="m">${f('a', '2' + sr('3'))}</td><td class="m">R${sr('3')}</td></tr>
+        <tr><td>square</td><td class="m">${f('a' + sr('2'), '2')}</td><td class="m">${f('a', '2')}</td><td class="m">R${sr('2')}</td></tr>
+        <tr><td>regular hexagon</td><td class="m">a</td><td class="m">${f('a' + sr('3'), '2')}</td><td class="m">R</td></tr>
+      </tbody></table></div>
+      <p>These three are worth knowing by heart: the ratio ${m('R : r')} is ${m('2 : 1')} for the
+      triangle, ${m(sr('2') + ' : 1')} for the square and ${m('2 : ' + sr('3'))} for the hexagon.</p>
+      <div class="warn"><span class="wl">${m('R = a')} is true only for the hexagon</span>
+      For the square ${m('R')} is larger than half the side by a factor of ${m(sr('2'))}; for the
+      triangle larger still. Assuming ${m('R = a')} in general is a serious error.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A regular hexagon has side ' + m('6') + '. Find ' + m('R') + ', ' + m('r') + ' and its area.',
+      steps: [
+        ['Central angle ' + m('60°') + ' — the triangles are equilateral, so ' + m('R = 6') + '.', ''],
+        [m('r = R cos 30° = 6 × ' + f(sr('3'), '2') + ' = 3' + sr('3')), ''],
+        [m('P = 36'), ''],
+        [m('S = ' + f('1', '2') + ' × 36 × 3' + sr('3') + ' = 54' + sr('3') + ' ≈ 93.5'), '']
+      ],
+      ans: m('R = 6, r = 3' + sr('3') + ', S = 54' + sr('3'))
+    },
+    {
+      q: 'A regular pentagon has circumradius ' + m('10') + '. Find its side and area.',
+      steps: [
+        [m('a = 2R sin 36° = 20 × 0.5878'), ''],
+        [m('a ≈ 11.76'), ''],
+        [m('r = R cos 36° = 10 × 0.8090 ≈ 8.09'), ''],
+        [m('S = ' + f('1', '2') + ' × 5 × 11.76 × 8.09 ≈ 238'), '']
+      ],
+      ans: m('a ≈ 11.8') + ', ' + m('S ≈ 238')
+    },
+    {
+      q: 'A square has side ' + m('8') + '. Find ' + m('R') + ' and ' + m('r') + '.',
+      steps: [
+        [m('r = ' + f('a', '2') + ' = 4'), 'Half the side.'],
+        [m('R = ' + f('a' + sr('2'), '2') + ' = 4' + sr('2')), 'Half the diagonal.'],
+        [m('R ≈ 5.66'), ''],
+        [m('R : r = ' + sr('2') + ' : 1') + ' ✓', '']
+      ],
+      ans: m('R = 4' + sr('2') + ', r = 4')
+    }
+  ],
+  modelNote: 'Draw a regular hexagon by stepping the radius round a circle with compasses; the six equal chords prove R = a without any algebra.',
+  interactive: {
+    type: 'polygonAngles',
+    title: 'R, r and the side',
+    hint: 'Increase n and watch both radii approach each other.'
+  },
+  quiz: [
+    { q: 'A regular polygon has:', a: ['only an inscribed circle', 'only a circumscribed circle', 'both, concentric', 'neither'], c: 2, why: 'The centres coincide.' },
+    { q: 'The apothem is:', a: [m('R'), m('r'), m('a'), m('P')], c: 1, why: 'The distance to a side.' },
+    { q: m('a') + ' equals:', a: [m('2R sin ' + f('360°', 'n')), m('2R sin ' + f('180°', 'n')), m('R sin ' + f('180°', 'n')), m('2R cos ' + f('180°', 'n'))], c: 1, why: 'Half the central angle.' },
+    { q: 'The area of a regular polygon is:', a: [m('Pr'), m('½Pr'), m('2Pr'), m('Pr²')], c: 1, why: m('n') + ' triangles of height ' + m('r') + '.' },
+    { q: 'For a regular hexagon:', a: [m('R = 2a'), m('R = a'), m('R = ' + f('a', '2')), m('R = a' + sr('3'))], c: 1, why: 'Six equilateral triangles.' },
+    { q: 'For a square, ' + m('R : r') + ' is:', a: [m('2 : 1'), m(sr('2') + ' : 1'), m('1 : 1'), m('2 : ' + sr('3'))], c: 1, why: 'Half-diagonal to half-side.' }
+  ],
+  practice: {
+    easy: [
+      ['Hexagon of side ' + m('6') + ': ' + m('R'), m('6')],
+      ['Hexagon of side ' + m('6') + ': ' + m('r'), m('3' + sr('3'))],
+      ['Square of side ' + m('8') + ': ' + m('r'), m('4')],
+      ['Square of side ' + m('8') + ': ' + m('R'), m('4' + sr('2'))],
+      ['Equilateral triangle of side ' + m('6') + ': ' + m('R'), m('2' + sr('3'))],
+      ['Same: ' + m('r'), m(sr('3'))],
+      ['Area of a regular polygon', m('½Pr')]
+    ],
+    med: [
+      ['Hexagon of side ' + m('6') + ': its area', m('54' + sr('3'))],
+      ['Square of side ' + m('8') + ': its area', m('64')],
+      ['Pentagon with ' + m('R = 10') + ': its side', m('≈ 11.8')],
+      ['Same: its area', m('≈ 238')],
+      ['Octagon of side ' + m('4') + ': its apothem', m('≈ 4.83')],
+      ['Same: its area', m('≈ 77.3')],
+      ['Hexagon with ' + m('R = 10') + ': its area', m('150' + sr('3'))]
+    ],
+    hard: [
+      ['A regular ' + m('12') + '-gon with ' + m('R = 6') + ': its area', m('108')],
+      ['A regular polygon with ' + m('a = 5') + ' and ' + m('r = 6') + ': ' + m('n'), m('8')],
+      ['A hexagon inscribed in a circle of radius ' + m('8') + ': its perimeter', m('48')],
+      ['A square inscribed in a circle of radius ' + m('8') + ': its area', m('128')],
+      ['An equilateral triangle inscribed in a circle of radius ' + m('8') + ': its side', m('8' + sr('3'))],
+      ['The ratio of the areas of the inscribed square and hexagon of the same circle', m('4 : 3' + sr('3'))],
+      ['As ' + m('n → ∞') + ', ' + m(f('r', 'R')) + ' tends to', m('1')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw the central triangle and mark the half-angle ' + m(f('180°', 'n')) + ' every time.',
+  homework: [
+    'A regular hexagon has side ' + m('10') + '. Find ' + m('R') + ', ' + m('r') + ' and its area.',
+    'A square has circumradius ' + m('6') + '. Find its side and area.',
+    'A regular octagon has side ' + m('5') + '. Find its apothem and area.',
+    'An equilateral triangle is inscribed in a circle of radius ' + m('9') + '. Find its side.',
+    'Explain why ' + m('R = a') + ' for a regular hexagon but not for a square.'
+  ]
+});
