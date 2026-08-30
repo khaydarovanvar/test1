@@ -15706,3 +15706,179 @@ G6_MAT.push({
     'Draw a ' + m('3 × 2 × 1') + ' stack of unit cubes and give its surface area in unit squares.'
   ]
 });
+
+/* ============================== 88 ============================== */
+G6_MAT.push({
+  id: 'g6-88', stream: 'mat', grade: 6, quarter: 4, lessons: '190', hours: 1,
+  title: 'Think — nets in context',
+  subtitle: 'Designing a real box: the same six faces, laid out two ways, and two very different bills for card.',
+  uz: 'Matematika 6, o‘ylab ko‘r', uzPage: 'pp. 542–544',
+  cam: 'S7 8.4 in context', camPage: 'Stage 7, pp. 94–96', wb: 'Investigation 8',
+  objectives: [
+    'Design a net for a box of given dimensions, with tabs.',
+    'Find the smallest rectangle of card the net will fit into.',
+    'Compare two layouts by the card each wastes.',
+    'Relate the result back to the shape of the box itself.'
+  ],
+  terms: [
+    ['Layout', 'Joylashtirish', 'Раскладка'],
+    ['Tab (flap)', 'Yopishtirish qismi', 'Клапан'],
+    ['Waste', 'Chiqindi', 'Отходы'],
+    ['Offcut', 'Qirqindi', 'Обрезок'],
+    ['Bounding rectangle', 'O‘rovchi to‘rtburchak', 'Охватывающий прямоугольник'],
+    ['To nest', 'Zich joylashtirmoq', 'Компоновать'],
+    ['Efficiency', 'Samaradorlik', 'Эффективность'],
+    ['Production run', 'Ishlab chiqarish partiyasi', 'Партия']
+  ],
+  timing: [[10, 'The task'], [12, 'Two layouts for the same box'], [12, 'Waste, tabs and the sheet'], [6, 'Back to the shape of the box']],
+  sections: [
+    {
+      h: 'The task',
+      html: `<div class="keybox"><div class="klabel">Today’s task</div>
+      A box must hold ${m('10')} cm by ${m('8')} cm by ${m('5')} cm of tea. Design its net, decide how it
+      should be laid out on a sheet of card, and say how much card is actually bought for each box.</div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quantity</th><th>Working</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>volume</td><td class="m">10 · 8 · 5</td><td class="m">400 cm³</td></tr>
+        <tr><td>the three faces</td><td class="m">80, 40, 50</td><td class="m">cm²</td></tr>
+        <tr><td>surface area</td><td class="m">2(80 + 40 + 50)</td><td class="m">340 cm²</td></tr>
+      </tbody></table></div>
+      <p>The ${m('340')} cm² is the card that ends up as box. It is not the card that is bought.</p>`
+    },
+    {
+      h: 'Two layouts for the same box',
+      html: `{{fig:surfaceNet:A net laid out flat — the pieces are fixed, their arrangement is not}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Layout</th><th>Arrangement</th><th>Smallest rectangle</th><th>Its area</th></tr></thead>
+      <tbody>
+        <tr><td>the cross</td><td>a column of four faces with the two sides beside the front</td><td class="m">26 × 26 cm</td><td class="m">676 cm²</td></tr>
+        <tr><td>the row</td><td>four faces in a row, top above and bottom below</td><td class="m">36 × 21 cm</td><td class="m">756 cm²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the ${m('26')}s come from</div>
+      Down the column: ${m('8 + 5 + 8 + 5 = 26')} cm. Across: ${m('8 + 10 + 8 = 26')} cm. The row layout
+      is ${m('10 + 8 + 10 + 8 = 36')} cm across and ${m('8 + 5 + 8 = 21')} cm down.</div>`
+    },
+    {
+      h: 'Waste, tabs and the sheet',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Layout</th><th>Card bought</th><th>Card used</th><th>Waste</th><th>Waste as a share</th></tr></thead>
+      <tbody>
+        <tr><td>the cross</td><td class="m">676 cm²</td><td class="m">340 cm²</td><td class="m">336 cm²</td><td>about ${m('50')}%</td></tr>
+        <tr><td>the row</td><td class="m">756 cm²</td><td class="m">340 cm²</td><td class="m">416 cm²</td><td>about ${m('55')}%</td></tr>
+      </tbody></table></div>
+      <p>Tabs are extra. Seven glued edges of total length ${m('46')} cm, each given a ${m('1')} cm tab,
+      add ${m('46')} cm² more card — and they must fit inside the same rectangle.</p>
+      <div class="warn"><span class="wl">The surface area is the same in both layouts</span>
+      Both boxes use ${m('340')} cm² of card as box. What differs is the rectangle it has to be cut from,
+      and the offcuts are paid for. On a run of ${m('10 000')} boxes the cross layout saves
+      ${m('80')} cm² each — ${m('80')} m² of card.</div>`
+    },
+    {
+      h: 'Back to the shape of the box',
+      html: `<p>Project 3 of Quarter III found that, for a fixed volume, the cube uses least card. This box
+      holds ${m('400')} cm³, so the cube would have edge ${m('7.4')} cm.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Box</th><th>Volume</th><th>Surface area</th></tr></thead>
+      <tbody>
+        <tr><td class="m">10 × 8 × 5</td><td class="m">400 cm³</td><td class="m">340 cm²</td></tr>
+        <tr><td>cube of edge ${m('7.4')}</td><td class="m">about 400 cm³</td><td>about ${m('326')} cm²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two savings, of very different sizes</div>
+      Reshaping the box towards a cube saves about ${m('14')} cm²; laying the net out well saves
+      ${m('80')} cm². For this box the layout matters more than the shape — which is not what most people
+      guess, and is exactly the kind of thing a report should say.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the card used, and the card bought, for the cross layout.',
+      steps: [
+        ['Used: ' + m('2(80 + 40 + 50) = 340') + ' cm².', ''],
+        ['Bought: the rectangle ' + m('26') + ' by ' + m('26') + ' cm.', ''],
+        [m('676') + ' cm², so ' + m('336') + ' cm² is waste.', 'About half of what is bought ✓']
+      ],
+      ans: m('340') + ' used, ' + m('676') + ' bought'
+    },
+    {
+      q: 'How much card does the cross layout save over the row layout on ' + m('10 000') + ' boxes?',
+      steps: [
+        [m('756 − 676 = 80') + ' cm² a box.', ''],
+        [m('80 · 10 000 = 800 000') + ' cm².', ''],
+        [m('800 000 ÷ 10 000 = 80') + ' m².', m('1') + ' m² is ' + m('10 000') + ' cm².']
+      ],
+      ans: m('80') + ' m²'
+    },
+    {
+      q: 'A cube holding the same ' + m('400') + ' cm³ has edge about ' + m('7.4') + ' cm. Find its surface area and compare.',
+      steps: [
+        [m('7.4² = 54.76') + ' cm² a face.', ''],
+        [m('6 · 54.76 ≈ 326') + ' cm².', ''],
+        [m('340 − 326 = 14') + ' cm² saved.', 'Less than the ' + m('80') + ' cm² the layout saves.']
+      ],
+      ans: 'About ' + m('326') + ' cm² — a saving of ' + m('14') + ' cm²'
+    }
+  ],
+  modelNote: 'Let pairs cut both layouts from squared paper and measure the offcuts; the “obvious” row layout losing to the cross is the moment worth waiting for.',
+  interactive: {
+    type: 'quiz',
+    title: 'Card used and card bought',
+    hint: 'The surface area never changes; the rectangle it is cut from does.',
+    items: [
+      { q: 'A ' + m('10 × 8 × 5') + ' cm box has surface area:', a: [m('170'), m('340'), m('400'), m('676')], c: 1, why: m('2(80 + 40 + 50)') + '.' },
+      { q: 'Its volume is:', a: [m('170'), m('340'), m('400'), m('676')], c: 2, why: 'Three edges multiplied.' },
+      { q: 'The cross layout fits into a rectangle:', a: [m('26 × 26'), m('36 × 21'), m('34 × 20'), m('26 × 36')], c: 0, why: m('8 + 5 + 8 + 5') + ' each way.' },
+      { q: 'The row layout fits into:', a: [m('26 × 26'), m('36 × 21'), m('21 × 21'), m('36 × 26')], c: 1, why: m('10 + 8 + 10 + 8') + ' across.' },
+      { q: 'The cross layout wastes:', a: [m('80'), m('336'), m('416'), m('676')], c: 1, why: m('676 − 340') + '.' },
+      { q: 'The cross saves, per box:', a: [m('14') + ' cm²', m('80') + ' cm²', m('336') + ' cm²', 'nothing'], c: 1, why: m('756 − 676') + '.' },
+      { q: 'A cube of the same volume saves about:', a: [m('14') + ' cm²', m('80') + ' cm²', m('340') + ' cm²', 'nothing'], c: 0, why: m('340 − 326') + '.' },
+      { q: 'For this box the bigger saving comes from:', a: ['the shape', 'the layout', 'the tabs', 'the colour'], c: 1, why: m('80') + ' against ' + m('14') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'The card used as box is:', a: ['the bounding rectangle', 'the surface area', 'the volume', 'the waste'], c: 1, why: 'The net folds into the box.' },
+    { q: 'The card bought is:', a: ['the surface area', 'the smallest rectangle the net fits into', 'the volume', 'the tabs'], c: 1, why: 'Offcuts are paid for.' },
+    { q: 'Changing the layout changes:', a: ['the surface area', 'the waste', 'the volume', 'the number of faces'], c: 1, why: 'The pieces are the same.' },
+    { q: 'Tabs are needed so that:', a: ['the box looks better', 'the faces can be glued', 'the volume grows', 'the net is square'], c: 1, why: 'Something must hold the edges.' },
+    { q: 'Nesting the nets of many boxes:', a: ['wastes more', 'shares the offcuts', 'changes the volume', 'needs no tabs'], c: 1, why: 'The gaps of one hold part of another.' },
+    { q: 'A good report gives:', a: ['only the best answer', 'the comparison and its limits', 'the volume alone', 'a drawing only'], c: 1, why: 'Both savings, and which is larger.' }
+  ],
+  practice: {
+    easy: [
+      ['The surface area of a ' + m('10 × 8 × 5') + ' cm box', m('340') + ' cm²'],
+      ['Its volume', m('400') + ' cm³'],
+      ['The faces in its net', m('6')],
+      ['Tabs are needed so that', 'The faces can be glued together'],
+      ['The bounding rectangle of the cross layout', m('26') + ' by ' + m('26') + ' cm'],
+      ['Its area', m('676') + ' cm²'],
+      ['The card that ends up as box', m('340') + ' cm²']
+    ],
+    med: [
+      ['The waste in the cross layout', m('336') + ' cm²'],
+      ['The bounding rectangle of the row layout', m('36') + ' by ' + m('21') + ' cm'],
+      ['Its area', m('756') + ' cm²'],
+      ['The waste in the row layout', m('416') + ' cm²'],
+      ['Which layout wastes less', 'The cross'],
+      ['The waste of the cross layout as a share', 'About ' + m('50') + '%'],
+      ['The waste of the row layout as a share', 'About ' + m('55') + '%']
+    ],
+    hard: [
+      ['A cube holding ' + m('400') + ' cm³ has edge, to 1 d.p.', m('7.4') + ' cm'],
+      ['Its surface area', 'About ' + m('326') + ' cm²'],
+      ['The card a cube would save', 'About ' + m('14') + ' cm² a box'],
+      ['The card the better layout saves', m('80') + ' cm² a box'],
+      ['On ' + m('10 000') + ' boxes, that saving', m('80') + ' m²'],
+      [m('1') + ' cm tabs on seven edges totalling ' + m('46') + ' cm add', m('46') + ' cm²'],
+      ['Why does the layout matter if the surface area is fixed?', 'The offcuts of the rectangle are paid for too']
+    ]
+  },
+  hwTitle: 'Homework — the task',
+  hwNote: 'One page: the net with its measurements, the two layouts, the waste of each, and one conclusion.',
+  homework: [
+    'Draw a net for a ' + m('12') + ' cm by ' + m('6') + ' cm by ' + m('4') + ' cm box and find its surface area.',
+    'Lay that net out two different ways and give the smallest rectangle each fits into.',
+    'Work out the waste of each layout, in cm² and as a percentage.',
+    'Find the edge and the surface area of a cube holding the same volume.',
+    'Write one sentence saying whether the shape or the layout saves more card for your box.'
+  ]
+});
