@@ -908,3 +908,357 @@ G7_MAT.push({
     'Explain why the distance from a point to a line is measured along the perpendicular.'
   ]
 });
+
+/* ============================== 6 ============================== */
+G7_MAT.push({
+  id: 'g7-06', stream: 'mat', grade: 7, quarter: 1, lessons: '11–12', hours: 2,
+  title: 'Practical exercises — ordering and multiplying decimals',
+  subtitle: 'A Cambridge insert: putting decimals in order, and multiplying them without a calculator.',
+  uz: 'Matematika 7, amaliy mashqlar', uzPage: 'pp. 32–35',
+  cam: 'S8 4.1–4.2', camPage: 'Stage 8, pp. 36–44', wb: 'Exercise 4.1–4.2',
+  objectives: [
+    'Order decimals by comparing place value, digit by digit.',
+    'Multiply two decimals and place the point by counting decimal places.',
+    'Divide a decimal by a decimal by making the divisor whole.',
+    'Check every answer by estimation.'
+  ],
+  terms: [
+    ['To order', 'Tartiblash', 'Упорядочить'],
+    ['Ascending order', 'O‘sish tartibi', 'По возрастанию'],
+    ['Descending order', 'Kamayish tartibi', 'По убыванию'],
+    ['Place value', 'Xona qiymati', 'Разрядное значение'],
+    ['Divisor', 'Bo‘luvchi', 'Делитель'],
+    ['Dividend', 'Bo‘linuvchi', 'Делимое'],
+    ['Trailing zero', 'Oxirgi nol', 'Конечный ноль'],
+    ['Product', 'Ko‘paytma', 'Произведение']
+  ],
+  timing: [[15, 'Ordering'], [25, 'Multiplying'], [25, 'Dividing'], [20, 'Checking'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Ordering',
+      html: `<p>Compare decimals digit by digit from the left, not by counting digits.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Pair</th><th>Larger</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0.7 and 0.65</td><td class="m">0.7</td><td>${m('7 > 6')} in the tenths</td></tr>
+        <tr><td class="m">3.09 and 3.1</td><td class="m">3.1</td><td>${m('1 > 0')} in the tenths</td></tr>
+        <tr><td class="m">0.4 and 0.400</td><td>equal</td><td>trailing zeros change nothing</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">More digits does not mean larger</span>
+      ${m('0.65')} has more digits than ${m('0.7')} and is smaller. Writing both with the same number of
+      decimal places — ${m('0.70')} and ${m('0.65')} — removes the illusion entirely.</div>`
+    },
+    {
+      h: 'Multiplying',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>What to do</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>ignore the points and multiply as whole numbers</td></tr>
+        <tr><td>2</td><td>count the decimal places in both factors</td></tr>
+        <tr><td>3</td><td>put that many decimal places in the answer</td></tr>
+      </tbody></table></div>
+      <p><b>Example.</b> ${m('0.34 × 0.6')}. Whole numbers: ${m('34 × 6 = 204')}. Places:
+      ${m('2 + 1 = 3')}. Answer: ${m('0.204')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Product</th><th>Whole numbers</th><th>Places</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0.3 × 0.4</td><td class="m">12</td><td class="m">2</td><td class="m">0.12</td></tr>
+        <tr><td class="m">1.2 × 0.05</td><td class="m">60</td><td class="m">3</td><td class="m">0.060</td></tr>
+        <tr><td class="m">2.5 × 0.4</td><td class="m">100</td><td class="m">2</td><td class="m">1.00</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Multiplying two decimals below ${m('1')} gives a smaller answer</div>
+      ${m('0.3 × 0.4 = 0.12')} — smaller than both. It is the same surprise as division by ${m('0.1')},
+      seen from the other side, and the estimate catches it every time.</div>`
+    },
+    {
+      h: 'Dividing',
+      html: `<p>Make the <b>divisor</b> a whole number by multiplying both numbers by the same power of
+      ten. The quotient is unchanged.</p>
+      ${eq(m(f('4.8', '0.06') + ' = ' + f('480', '6') + ' = 80'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Division</th><th>Rewritten</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">7.2 ÷ 0.9</td><td class="m">72 ÷ 9</td><td class="m">8</td></tr>
+        <tr><td class="m">0.35 ÷ 0.7</td><td class="m">3.5 ÷ 7</td><td class="m">0.5</td></tr>
+        <tr><td class="m">1.44 ÷ 0.12</td><td class="m">144 ÷ 12</td><td class="m">12</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Both numbers must be multiplied</span>
+      Multiplying only the divisor changes the answer. Writing the division as a fraction makes it
+      obvious: a fraction is unchanged only when top and bottom are treated alike.</div>`
+    },
+    {
+      h: 'Checking',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Check</th><th>Question to ask</th></tr></thead>
+      <tbody>
+        <tr><td>size</td><td>is the answer roughly what the estimate said?</td></tr>
+        <tr><td>direction</td><td>should multiplying have made it bigger or smaller?</td></tr>
+        <tr><td>last digit</td><td>does ${m('0.34 × 0.6')} end in the last digit of ${m('4 × 6')}?</td></tr>
+        <tr><td>reverse</td><td>does the answer times the divisor give the dividend back?</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The estimate is the check</div>
+      Every answer in this lesson can be verified in ten seconds by rounding to one significant figure.
+      Doing so consistently is worth more than any amount of careful digit-copying.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Put in ascending order: ' + m('0.7, 0.65, 0.702, 0.6') + '.',
+      steps: [
+        ['Write with three decimal places: ' + m('0.700, 0.650, 0.702, 0.600') + '.', ''],
+        ['Compare as whole numbers: ' + m('600, 650, 700, 702') + '.', ''],
+        [m('0.6 < 0.65 < 0.7 < 0.702'), ''],
+        ['Equalising the places is the whole method.', '']
+      ],
+      ans: m('0.6, 0.65, 0.7, 0.702')
+    },
+    {
+      q: 'Compute ' + m('0.34 × 0.6') + '.',
+      steps: [
+        [m('34 × 6 = 204'), 'Whole numbers.'],
+        ['Decimal places: ' + m('2 + 1 = 3') + '.', ''],
+        [m('0.204'), ''],
+        ['Estimate: ' + m('0.3 × 0.6 = 0.18') + ' ✓', '']
+      ],
+      ans: m('0.204')
+    },
+    {
+      q: 'Compute ' + m('4.8 ÷ 0.06') + '.',
+      steps: [
+        ['Multiply both by ' + m('100') + '.', ''],
+        [m('480 ÷ 6'), ''],
+        [m('= 80'), ''],
+        ['Check: ' + m('80 × 0.06 = 4.8') + ' ✓', '']
+      ],
+      ans: m('80')
+    }
+  ],
+  modelNote: 'Write 0.7 and 0.65 on the board and ask which is larger; collect the wrong answer, then write 0.70 and 0.65 and let the class correct itself.',
+  interactive: {
+    type: 'substitute',
+    title: 'Decimal products',
+    hint: 'Count the places in both factors.'
+  },
+  quiz: [
+    { q: 'Which is larger, ' + m('0.7') + ' or ' + m('0.65') + '?', a: [m('0.7'), m('0.65'), 'equal', 'cannot tell'], c: 0, why: 'Tenths first.' },
+    { q: m('0.4') + ' and ' + m('0.400') + ' are:', a: [m('0.4') + ' larger', m('0.400') + ' larger', 'equal', 'different'], c: 2, why: 'Trailing zeros change nothing.' },
+    { q: m('0.3 × 0.4') + ' equals:', a: [m('1.2'), m('0.12'), m('0.012'), m('12')], c: 1, why: 'Two decimal places.' },
+    { q: m('0.34 × 0.6') + ' has how many decimal places?', a: [m('1'), m('2'), m('3'), m('4')], c: 2, why: m('2 + 1') + '.' },
+    { q: m('4.8 ÷ 0.06') + ' equals:', a: [m('0.8'), m('8'), m('80'), m('800')], c: 2, why: m('480 ÷ 6') + '.' },
+    { q: 'In a division, you may multiply:', a: ['only the divisor', 'only the dividend', 'both by the same number', 'neither'], c: 2, why: 'The quotient is then unchanged.' }
+  ],
+  practice: {
+    easy: [
+      ['Larger: ' + m('0.7') + ' or ' + m('0.65'), m('0.7')],
+      ['Larger: ' + m('3.09') + ' or ' + m('3.1'), m('3.1')],
+      [m('0.3 × 0.4'), m('0.12')],
+      [m('0.2 × 0.5'), m('0.1')],
+      [m('7.2 ÷ 0.9'), m('8')],
+      [m('0.35 ÷ 0.7'), m('0.5')],
+      [m('1.44 ÷ 0.12'), m('12')]
+    ],
+    med: [
+      ['Ascending: ' + m('0.7, 0.65, 0.702, 0.6'), m('0.6, 0.65, 0.7, 0.702')],
+      [m('0.34 × 0.6'), m('0.204')],
+      [m('1.2 × 0.05'), m('0.06')],
+      [m('2.5 × 0.4'), m('1')],
+      [m('4.8 ÷ 0.06'), m('80')],
+      [m('0.048 ÷ 0.8'), m('0.06')],
+      [m('1.25 × 0.08'), m('0.1')]
+    ],
+    hard: [
+      [m('0.25 × 0.4 × 0.5'), m('0.05')],
+      [m('(0.2)³'), m('0.008')],
+      [m('6.25 ÷ 0.025'), m('250')],
+      ['Descending: ' + m('0.09, 0.1, 0.089, 0.091'), m('0.1, 0.091, 0.09, 0.089')],
+      [m('0.6 × 0.6 − 0.4 × 0.9'), m('0')],
+      ['A cloth of ' + m('0.85 m') + ' costs ' + m('34 000') + ' so‘m: the price per metre', m('40 000')],
+      [m('12.5 × 0.008 ÷ 0.05'), m('2')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Estimate every product and quotient before computing it.',
+  homework: [
+    'Put in ascending order: ' + m('0.45, 0.5, 0.409, 0.451') + '.',
+    'Compute ' + m('0.28 × 0.7') + ' and ' + m('1.5 × 0.06') + '.',
+    'Compute ' + m('9.6 ÷ 0.08') + ' and ' + m('0.56 ÷ 0.7') + '.',
+    'Compute ' + m('(0.3)²') + ' and ' + m('(0.1)³') + '.',
+    m('1.2 kg') + ' of rice costs ' + m('18 000') + ' so‘m. Find the price of ' + m('1 kg') + '.'
+  ]
+});
+
+/* ============================== 7 ============================== */
+G7_MAT.push({
+  id: 'g7-07', stream: 'mat', grade: 7, quarter: 1, lessons: '13–14', hours: 2,
+  title: 'Control work 1, and work on the mistakes',
+  subtitle: 'The basic geometric figures, tested — and the first chapter closed.',
+  uz: 'Matematika 7, Nazorat ishi 1', uzPage: 'pp. 3–35',
+  cam: 'S8 5 review', camPage: 'Stage 8, pp. 48–56', wb: 'Control paper M1',
+  objectives: [
+    'Use the additive properties of segments and angles under time.',
+    'Classify angles and find complements and supplements.',
+    'Use vertical and adjacent angles at a crossing.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Segment', 'Kesma', 'Отрезок'],
+    ['Angle', 'Burchak', 'Угол'],
+    ['Midpoint', 'O‘rta nuqta', 'Середина'],
+    ['Bisector', 'Bissektrisa', 'Биссектриса'],
+    ['Adjacent angles', 'Qo‘shni burchaklar', 'Смежные углы'],
+    ['Vertical angles', 'Vertikal burchaklar', 'Вертикальные углы'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>${m('C')} lies between ${m('A')} and ${m('B')}; ${m('AC = 14')}, ${m('AB = 37')}: find ${m('CB')}</td><td class="m">4</td><td>L3–4</td></tr>
+        <tr><td>2</td><td>${m('AB = 26 cm')}: find ${m('AM')} for the midpoint ${m('M')}</td><td class="m">3</td><td>L3–4</td></tr>
+        <tr><td>3</td><td>Classify ${m('35°')}, ${m('90°')}, ${m('142°')}, ${m('200°')}</td><td class="m">4</td><td>L5–6</td></tr>
+        <tr><td>4</td><td>Find the complement and supplement of ${m('48°')}</td><td class="m">4</td><td>L5–6</td></tr>
+        <tr><td>5</td><td>Two lines cross; one angle is ${m('71°')}: find the other three</td><td class="m">5</td><td>L9–10</td></tr>
+        <tr><td>6</td><td>Compute ${m('0.42 × 0.5')} and ${m('3.6 ÷ 0.04')}</td><td class="m">5</td><td>L7–8, 11–12</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries one mark for writing ${m('AB = AC + CB')} before substituting; Q3 one for the reflex
+      angle; Q5 two for saying which pairs are vertical; Q6 two for the decimal places.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>subtraction reversed</td><td class="m">CB = 37 + 14</td><td class="m">CB = 37 − 14</td></tr>
+        <tr><td>unit missing</td><td class="m">13</td><td class="m">13 cm</td></tr>
+        <tr><td class="m">200°</td><td>“obtuse”</td><td>reflex</td></tr>
+        <tr><td>complement and supplement swapped</td><td class="m">132°</td><td>${m('42°')} and ${m('132°')}, named correctly</td></tr>
+        <tr><td>vertical taken as supplementary</td><td class="m">109°</td><td class="m">71°</td></tr>
+        <tr><td>decimal places miscounted</td><td class="m">0.42 × 0.5 = 2.1</td><td class="m">0.21</td></tr>
+        <tr><td>only the divisor multiplied</td><td class="m">3.6 ÷ 4 = 0.9</td><td class="m">360 ÷ 4 = 90</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'Chapter I as one map',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Block</th><th>The sentence</th></tr></thead>
+      <tbody>
+        <tr><td>the basic figures</td><td>point, line and plane are undefined; everything else follows</td></tr>
+        <tr><td>the segment</td><td>${m('AB = AC + CB')} when ${m('C')} is between</td></tr>
+        <tr><td>the midpoint</td><td class="m">AM = MB = ${f('AB', '2')}</td></tr>
+        <tr><td>the angle</td><td>two rays from one vertex, measured in degrees</td></tr>
+        <tr><td>the five kinds</td><td>acute, right, obtuse, straight, reflex</td></tr>
+        <tr><td>at a crossing</td><td>adjacent add to ${m('180°')}, vertical are equal</td></tr>
+        <tr><td>perpendicular</td><td>the shortest distance from a point to a line</td></tr>
+        <tr><td>decimals</td><td>count the places when multiplying; make the divisor whole when dividing</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      The next chapter leaves geometry for a while and introduces <b>negative numbers</b> — the first
+      real widening of the number system since fractions. The four operations all have to be learnt
+      again, with signs.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q1: ' + m('AC = 14') + ', ' + m('AB = 37') + '.',
+      steps: [
+        [m('AB = AC + CB'), 'The formula first.'],
+        [m('37 = 14 + CB'), ''],
+        [m('CB = 23'), ''],
+        ['With the unit: ' + m('23 cm') + '.', '']
+      ],
+      ans: m('CB = 23 cm')
+    },
+    {
+      q: 'Model answer, Q5: one angle at a crossing is ' + m('71°') + '.',
+      steps: [
+        ['Adjacent: ' + m('180° − 71° = 109°') + '.', ''],
+        ['Vertical to the first: ' + m('71°') + '.', 'Equal.'],
+        ['The fourth: ' + m('109°') + '.', ''],
+        ['Total ' + m('360°') + ' ✓', '']
+      ],
+      ans: m('109°, 71°, 109°')
+    },
+    {
+      q: 'Model answer, Q6: ' + m('0.42 × 0.5') + ' and ' + m('3.6 ÷ 0.04') + '.',
+      steps: [
+        [m('42 × 5 = 210') + '; places ' + m('2 + 1 = 3') + '.', ''],
+        [m('= 0.210 = 0.21'), ''],
+        [m('3.6 ÷ 0.04 = 360 ÷ 4'), 'Both × ' + m('100') + '.'],
+        [m('= 90'), '']
+      ],
+      ans: m('0.21') + ' and ' + m('90')
+    }
+  ],
+  modelNote: 'Return the papers with Q3 unmarked and let the class decide together whether 200° is obtuse or reflex; the vocabulary sticks when it is argued over.',
+  interactive: {
+    type: 'quiz',
+    title: 'Chapter I in twelve questions',
+    hint: 'Two from each block.',
+    items: [
+      { q: 'Which is undefined?', a: ['segment', 'point', 'angle', 'triangle'], c: 1, why: 'The chain must stop.' },
+      { q: 'Through two points there passes:', a: ['no line', 'one line', 'two lines', 'many'], c: 1, why: 'Axiom 1.' },
+      { q: 'Which has two ends?', a: ['a line', 'a ray', 'a segment', 'a plane'], c: 2, why: 'Only a segment.' },
+      { q: m('AB = AC + CB') + ' needs ' + m('C') + ':', a: ['anywhere', 'between ' + m('A') + ' and ' + m('B'), 'outside', 'on a ray'], c: 1, why: 'Otherwise false.' },
+      { q: 'A right angle is:', a: [m('45°'), m('90°'), m('180°'), m('360°')], c: 1, why: 'A quarter turn.' },
+      { q: m('200°') + ' is:', a: ['obtuse', 'straight', 'reflex', 'acute'], c: 2, why: 'Beyond ' + m('180°') + '.' },
+      { q: 'Complementary angles add to:', a: [m('90°'), m('180°'), m('270°'), m('360°')], c: 0, why: 'The smaller pair.' },
+      { q: 'Vertical angles are:', a: ['supplementary', 'equal', 'complementary', 'unrelated'], c: 1, why: 'Same supplement.' },
+      { q: 'The distance to a line is measured:', a: ['any way', 'along the perpendicular', 'to the nearest point drawn', 'in degrees'], c: 1, why: 'The shortest route.' },
+      { q: m('0.3 × 0.4') + ' equals:', a: [m('1.2'), m('0.12'), m('0.012'), m('12')], c: 1, why: 'Two places.' },
+      { q: m('6 ÷ 0.1') + ' equals:', a: [m('0.6'), m('6'), m('60'), m('600')], c: 2, why: 'Sixty tenths.' },
+      { q: m('0.7') + ' and ' + m('0.65') + ':', a: [m('0.65') + ' larger', m('0.7') + ' larger', 'equal', 'cannot tell'], c: 1, why: 'Compare the tenths.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 begins with:', a: ['the answer', 'the formula', 'a guess', 'a measurement'], c: 1, why: m('AB = AC + CB') + '.' },
+    { q: 'Q3 includes which unusual kind?', a: ['acute', 'right', 'reflex', 'straight'], c: 2, why: m('200°') + '.' },
+    { q: 'In Q5 the vertical angle is:', a: [m('71°'), m('109°'), m('90°'), m('289°')], c: 0, why: 'Equal, not supplementary.' },
+    { q: 'Q6 needs, for the product:', a: ['an estimate only', 'the count of decimal places', 'a calculator', 'rounding'], c: 1, why: m('2 + 1 = 3') + '.' },
+    { q: 'For the division in Q6, multiply:', a: ['only the divisor', 'only the dividend', 'both by ' + m('100'), 'neither'], c: 2, why: 'The quotient is unchanged.' },
+    { q: 'Work on the mistakes means:', a: ['fix the wrong line', 'rewrite the solution', 'copy the answer', 'skip it'], c: 1, why: 'The whole solution, again.' }
+  ],
+  practice: {
+    easy: [
+      [m('AC = 14, AB = 37') + ': ' + m('CB'), m('23')],
+      [m('AB = 26') + ': ' + m('AM'), m('13')],
+      ['Classify ' + m('35°'), 'Acute'],
+      ['Classify ' + m('142°'), 'Obtuse'],
+      ['Classify ' + m('200°'), 'Reflex'],
+      ['Complement of ' + m('48°'), m('42°')],
+      ['Supplement of ' + m('48°'), m('132°')]
+    ],
+    med: [
+      ['One angle ' + m('71°') + ': the other three', m('109°, 71°, 109°')],
+      [m('0.42 × 0.5'), m('0.21')],
+      [m('3.6 ÷ 0.04'), m('90')],
+      [m('AB = 40') + ' with ' + m('AC : CB = 3 : 5') + ': ' + m('AC'), m('15')],
+      ['Adjacent angles in the ratio ' + m('1 : 3'), m('45°') + ' and ' + m('135°')],
+      ['Bisector of ' + m('126°'), m('63°') + ' each'],
+      ['Ascending: ' + m('0.5, 0.45, 0.505'), m('0.45, 0.5, 0.505')]
+    ],
+    hard: [
+      ['An angle is ' + m('5') + ' times its complement', m('75°')],
+      [m('AB = 36') + ', ' + m('M') + ' the midpoint of ' + m('AB') + ', ' + m('N') + ' of ' + m('MB') + ': ' + m('AN'), m('27')],
+      ['Four angles at a point in the ratio ' + m('2 : 3 : 4 : 3'), m('60°, 90°, 120°, 90°')],
+      [m('0.125 × 0.8'), m('0.1')],
+      [m('2.4 ÷ 0.015'), m('160')],
+      ['A point ' + m('7') + ' from a line and ' + m('24') + ' along it from the foot', m('25')],
+      ['Two adjacent angles whose bisectors are ' + m('90°') + ' apart: always?', 'Yes']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite in full every question that lost a mark before the next chapter begins.',
+  homework: [
+    m('C') + ' lies between ' + m('A') + ' and ' + m('B') + ' with ' + m('AC = 19') + ' and ' + m('AB = 45') + '. Find ' + m('CB') + '.',
+    'Find the complement and the supplement of ' + m('27°') + '.',
+    'Two lines cross and one angle is ' + m('124°') + '. Find the other three.',
+    'Compute ' + m('0.36 × 0.5') + ' and ' + m('4.5 ÷ 0.09') + '.',
+    'Classify ' + m('89°') + ', ' + m('90°') + ', ' + m('91°') + ' and ' + m('181°') + '.'
+  ]
+});
