@@ -15882,3 +15882,199 @@ G6_MAT.push({
     'Write one sentence saying whether the shape or the layout saves more card for your box.'
   ]
 });
+
+/* ============================== 89 ============================== */
+G6_MAT.push({
+  id: 'g6-89', stream: 'mat', grade: 6, quarter: 4, lessons: '191–194', hours: 4,
+  title: 'General revision I — number and algebra',
+  subtitle: 'Directed numbers, fractions, expressions and equations, place value, roots and sequences.',
+  uz: 'Matematika 6, yakuniy takrorlash', uzPage: 'pp. 545–556',
+  cam: 'S7 whole-course review', camPage: 'Stage 7, pp. 8–120', wb: 'Checkpoint practice 1',
+  objectives: [
+    'Calculate with directed numbers in all four operations.',
+    'Divide fractions and add or subtract mixed numbers.',
+    'Simplify an expression and solve a linear equation.',
+    'Work with powers of ten, rounding, roots and the nth term.'
+  ],
+  terms: [
+    ['Directed number', 'Musbat va manfiy son', 'Целое число со знаком'],
+    ['Reciprocal', 'Teskari son', 'Обратное число'],
+    ['Like terms', 'O‘xshash hadlar', 'Подобные слагаемые'],
+    ['Equation', 'Tenglama', 'Уравнение'],
+    ['Lowest common multiple', 'EKUK', 'НОК'],
+    ['Highest common factor', 'EKUB', 'НОД'],
+    ['Square root', 'Kvadrat ildiz', 'Квадратный корень'],
+    ['nth term', 'n-chi had', 'n-й член']
+  ],
+  timing: [[30, 'Directed numbers'], [35, 'Fractions'], [35, 'Expressions and equations'], [35, 'Place value, decimals and roots'], [20, 'Sequences'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Directed numbers',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Calculation</th><th>Rule</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">−7 + 3</td><td>move right from ${m('−7')}</td><td class="m">−4</td></tr>
+        <tr><td class="m">−5 − 4</td><td>move left from ${m('−5')}</td><td class="m">−9</td></tr>
+        <tr><td class="m">3 − (−8)</td><td>subtracting a negative adds</td><td class="m">11</td></tr>
+        <tr><td class="m">(−6)(−4)</td><td>two negatives multiply to a positive</td><td class="m">24</td></tr>
+        <tr><td class="m">−20 ÷ 5</td><td>one negative gives a negative</td><td class="m">−4</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two rules, not many</div>
+      For adding and subtracting, think of movement on the number line. For multiplying and dividing, count
+      the negative signs: an even number of them gives a positive answer, an odd number a negative.</div>`
+    },
+    {
+      h: 'Fractions',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Calculation</th><th>Method</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('3', '4')} ÷ 2</td><td>multiply by ${m(f('1', '2'))}</td><td class="m">${f('3', '8')}</td></tr>
+        <tr><td class="m">5 ÷ ${f('1', '4')}</td><td>how many quarters in ${m('5')}</td><td class="m">20</td></tr>
+        <tr><td class="m">${f('2', '3')} ÷ ${f('4', '9')}</td><td>multiply by the reciprocal</td><td class="m">1${f('1', '2')}</td></tr>
+        <tr><td class="m">2${f('3', '4')} + 1${f('5', '6')}</td><td>wholes, then twelfths</td><td class="m">4${f('7', '12')}</td></tr>
+        <tr><td class="m">4${f('1', '3')} − 1${f('5', '6')}</td><td>regroup one whole</td><td class="m">2${f('1', '2')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A mixed number is converted before dividing, not after</span>
+      ${m('2' + f('1', '4') + ' ÷ 1' + f('1', '2'))} is ${m(f('9', '4') + ' ÷ ' + f('3', '2') + ' = ' + f('9', '4') + ' · ' + f('2', '3') + ' = ' + f('3', '2'))}.
+      Turning over a mixed number as it stands gives nonsense.</div>`
+    },
+    {
+      h: 'Expressions and equations',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>simplify ${m('3x + 5x − 2x')}</td><td>collect like terms</td><td class="m">6x</td></tr>
+        <tr><td>expand ${m('2(3x − 4)')}</td><td>multiply both terms</td><td class="m">6x − 8</td></tr>
+        <tr><td>evaluate ${m('4x − 7')} at ${m('x = 3')}</td><td class="m">12 − 7</td><td class="m">5</td></tr>
+        <tr><td>solve ${m('3x + 7 = 22')}</td><td class="m">3x = 15</td><td class="m">x = 5</td></tr>
+        <tr><td>solve ${m('5x − 4 = 3x + 10')}</td><td class="m">2x = 14</td><td class="m">x = 7</td></tr>
+        <tr><td>solve ${m('2(x − 3) = 14')}</td><td class="m">x − 3 = 7</td><td class="m">x = 10</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Every solution can be checked in one line</div>
+      Put ${m('x = 7')} back into ${m('5x − 4 = 3x + 10')}: ${m('31 = 31')} ✓. There is no excuse for a
+      wrong answer to an equation surviving to the end of a paper.</div>`
+    },
+    {
+      h: 'Place value, decimals and roots',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>Answer</th><th>Task</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3.6 × 10³</td><td class="m">3600</td><td class="m">√144</td><td class="m">12</td></tr>
+        <tr><td class="m">4500 ÷ 10²</td><td class="m">45</td><td class="m">√81</td><td class="m">9</td></tr>
+        <tr><td class="m">0.05 × 10⁴</td><td class="m">500</td><td class="m">∛64</td><td class="m">4</td></tr>
+        <tr><td class="m">0.6 + 0.35</td><td class="m">0.95</td><td class="m">∛125</td><td class="m">5</td></tr>
+        <tr><td class="m">2.4 × 0.5</td><td class="m">1.2</td><td class="m">HCF(12, 18)</td><td class="m">6</td></tr>
+        <tr><td class="m">6.3 ÷ 0.7</td><td class="m">9</td><td class="m">LCM(12, 18)</td><td class="m">36</td></tr>
+        <tr><td class="m">0.8 × 0.04</td><td class="m">0.032</td><td class="m">3.847 to 2 d.p.</td><td class="m">3.85</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Count the decimal places in a multiplication</span>
+      ${m('0.8')} has one and ${m('0.04')} has two, so the answer has three: ${m('0.032')}. In a division,
+      make the divisor whole first — ${m('6.3 ÷ 0.7')} becomes ${m('63 ÷ 7')}.</div>`
+    },
+    {
+      h: 'Sequences',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Sequence</th><th>Difference</th><th>nth term</th><th>The ${m('100')}th</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5, 8, 11, 14</td><td class="m">3</td><td class="m">3n + 2</td><td class="m">302</td></tr>
+        <tr><td class="m">3, 7, 11, 15</td><td class="m">4</td><td class="m">4n − 1</td><td class="m">399</td></tr>
+        <tr><td class="m">2, 9, 16, 23</td><td class="m">7</td><td class="m">7n − 5</td><td class="m">695</td></tr>
+        <tr><td class="m">20, 17, 14, 11</td><td class="m">−3</td><td class="m">23 − 3n</td><td class="m">−277</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Write ${m('dn')}, then correct it</div>
+      The difference gives the ${m('dn')}; the first term says what to add or subtract. Test the rule on
+      the second term before using it — five seconds that saves the whole question.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Work out ' + m('3 − (−8) + (−6)(−4) ÷ 8') + '.',
+      steps: [
+        [m('3 − (−8) = 11') + '.', 'Subtracting a negative adds.'],
+        [m('(−6)(−4) = 24') + ', and ' + m('24 ÷ 8 = 3') + '.', 'Two negatives make a positive.'],
+        [m('11 + 3 = 14') + '.', 'Multiplication before addition ✓']
+      ],
+      ans: m('14')
+    },
+    {
+      q: 'Solve ' + m('5x − 4 = 3x + 10') + ' and check the answer.',
+      steps: [
+        ['Subtract ' + m('3x') + ': ' + m('2x − 4 = 10') + '.', ''],
+        ['Add ' + m('4') + ': ' + m('2x = 14') + ', so ' + m('x = 7') + '.', ''],
+        ['Check: ' + m('35 − 4 = 31') + ' and ' + m('21 + 10 = 31') + ' ✓', '']
+      ],
+      ans: m('x = 7')
+    },
+    {
+      q: 'Find the nth term of ' + m('2, 9, 16, 23, …') + ' and its ' + m('100') + 'th term.',
+      steps: [
+        [m('d = 7') + ', so start from ' + m('7n') + '.', ''],
+        [m('7n') + ' gives ' + m('7') + ' at ' + m('n = 1') + ', but the term is ' + m('2') + ': subtract ' + m('5') + '.', ''],
+        [m('7n − 5') + '; at ' + m('n = 100') + ', ' + m('695') + '.', 'Check ' + m('n = 2') + ': ' + m('9') + ' ✓']
+      ],
+      ans: m('7n − 5') + ' and ' + m('695')
+    }
+  ],
+  modelNote: 'Run the revision as a relay: one section per group, each producing three questions and their answers for the others. Writing the questions revises more than answering them.',
+  interactive: {
+    type: 'quiz',
+    title: 'Number and algebra in eight questions',
+    hint: 'Count the negative signs; convert mixed numbers first; check every equation.',
+    items: [
+      { q: m('−5 − 4') + ' equals:', a: [m('−1'), m('−9'), m('1'), m('9')], c: 1, why: 'Further left.' },
+      { q: m('(−6)(−4)') + ' equals:', a: [m('−24'), m('24'), m('−10'), m('10')], c: 1, why: 'Two negatives.' },
+      { q: m(f('2', '3') + ' ÷ ' + f('4', '9')) + ' equals:', a: [m(f('8', '27')), m('1' + f('1', '2')), m(f('2', '3')), m('6')], c: 1, why: 'Multiply by ' + m(f('9', '4')) + '.' },
+      { q: m('2' + f('3', '4') + ' + 1' + f('5', '6')) + ' equals:', a: [m('3' + f('8', '10')), m('4' + f('7', '12')), m('4' + f('1', '2')), m('3' + f('19', '12'))], c: 1, why: 'Carry the improper part.' },
+      { q: m('2(3x − 4)') + ' equals:', a: [m('6x − 4'), m('6x − 8'), m('5x − 8'), m('6x + 8')], c: 1, why: 'Both terms.' },
+      { q: m('3x + 7 = 22') + ' gives:', a: [m('x = 5'), m('x = 7'), m('x = 15'), m('x = 9')], c: 0, why: m('3x = 15') + '.' },
+      { q: m('6.3 ÷ 0.7') + ' equals:', a: [m('0.9'), m('9'), m('90'), m('0.09')], c: 1, why: m('63 ÷ 7') + '.' },
+      { q: 'The nth term of ' + m('5, 8, 11, 14') + ' is:', a: [m('3n'), m('3n + 2'), m('5n'), m('n + 3')], c: 1, why: m('d = 3') + ', corrected by ' + m('+2') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'Subtracting a negative:', a: ['subtracts twice', 'adds', 'gives zero', 'changes nothing'], c: 1, why: m('3 − (−8) = 11') + '.' },
+    { q: 'Dividing by a fraction is the same as:', a: ['multiplying by it', 'multiplying by its reciprocal', 'adding it', 'subtracting it'], c: 1, why: 'Turn it over.' },
+    { q: 'Like terms can be:', a: ['multiplied only', 'collected', 'ignored', 'squared'], c: 1, why: m('3x + 5x − 2x = 6x') + '.' },
+    { q: 'A solution should always be:', a: ['rounded', 'checked in the original equation', 'doubled', 'left as a fraction'], c: 1, why: 'One line of arithmetic.' },
+    { q: m('0.8 × 0.04') + ' has how many decimal places?', a: [m('1'), m('2'), m('3'), m('4')], c: 2, why: m('1 + 2') + '.' },
+    { q: 'In ' + m('dn + (a − d)') + ' the ' + m('d') + ' is:', a: ['the first term', 'the common difference', 'the position', 'the answer'], c: 1, why: 'It sets the climb.' }
+  ],
+  practice: {
+    easy: [
+      [m('−7 + 3'), m('−4')],
+      [m('−5 − 4'), m('−9')],
+      [m('(−6)(−4)'), m('24')],
+      ['Simplify ' + m('3x + 5x − 2x'), m('6x')],
+      ['Solve ' + m('3x + 7 = 22'), m('x = 5')],
+      [m('√144'), m('12')],
+      [m('3.6 × 10³'), m('3600')]
+    ],
+    med: [
+      [m('3 − (−8)'), m('11')],
+      [m(f('2', '3') + ' ÷ ' + f('4', '9')), m('1' + f('1', '2'))],
+      ['Expand ' + m('2(3x − 4)'), m('6x − 8')],
+      ['Solve ' + m('5x − 4 = 3x + 10'), m('x = 7')],
+      [m('HCF(12, 18)'), m('6')],
+      [m('LCM(12, 18)'), m('36')],
+      [m('6.3 ÷ 0.7'), m('9')]
+    ],
+    hard: [
+      [m('2' + f('3', '4') + ' + 1' + f('5', '6')), m('4' + f('7', '12'))],
+      [m('4' + f('1', '3') + ' − 1' + f('5', '6')), m('2' + f('1', '2'))],
+      ['Solve ' + m('2(x − 3) = 14'), m('x = 10')],
+      ['The nth term of ' + m('5, 8, 11, 14'), m('3n + 2')],
+      ['The ' + m('100') + 'th term of ' + m('4n − 1'), m('399')],
+      [m('3.847') + ' to 2 d.p.', m('3.85')],
+      [m('0.8 × 0.04'), m('0.032')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Show the working line by line; the marks in the annual paper are for the method as much as the answer.',
+  homework: [
+    'Work out ' + m('−9 + 4 − (−6)') + ' and ' + m('(−8)(−3) ÷ 4') + '.',
+    'Work out ' + m('3' + f('1', '2') + ' + 2' + f('2', '3')) + ' and ' + m('5' + f('1', '4') + ' − 2' + f('2', '3')) + '.',
+    'Solve ' + m('4x − 5 = 2x + 11') + ' and check your answer.',
+    'Find the nth term of ' + m('4, 11, 18, 25, …') + ' and its ' + m('50') + 'th term.',
+    'Work out ' + m('0.9 × 0.06') + ', ' + m('4.8 ÷ 0.6') + ' and ' + m('2.5 × 10³') + '.'
+  ]
+});
