@@ -8736,3 +8736,355 @@ G7_MAT.push({
     'Explain why the bisector is called the locus of points equidistant from the arms.'
   ]
 });
+
+/* ============================== 51 ============================== */
+G7_MAT.push({
+  id: 'g7-51', stream: 'mat', grade: 7, quarter: 3, lessons: '92–93', hours: 2,
+  title: 'Relations between the sides and the angles of a triangle',
+  subtitle: 'The longer side faces the larger angle — and the triangle inequality follows from the same idea.',
+  uz: 'Matematika 7, §43', uzPage: 'pp. 269–276',
+  cam: 'S8 5', camPage: 'Stage 8, pp. 44–56', wb: 'Exercise 5.4',
+  objectives: [
+    'State that the larger angle faces the longer side, and its converse.',
+    'Order the sides of a triangle from its angles, and the angles from its sides.',
+    'Use the triangle inequality to decide whether three lengths make a triangle.',
+    'Show that the perpendicular is the shortest segment from a point to a line.'
+  ],
+  terms: [
+    ['Opposite side', 'Qarshi tomon', 'Противолежащая сторона'],
+    ['The larger', 'Kattaroq', 'Больший'],
+    ['The smaller', 'Kichikroq', 'Меньший'],
+    ['To order', 'Tartiblash', 'Упорядочить'],
+    ['Triangle inequality', 'Uchburchak tengsizligi', 'Неравенство треугольника'],
+    ['Perpendicular', 'Perpendikulyar', 'Перпендикуляр'],
+    ['Slant segment', 'Og‘ma', 'Наклонная'],
+    ['Shortest', 'Eng qisqa', 'Кратчайший']
+  ],
+  timing: [[15, 'The larger angle faces the longer side'], [20, 'Reading the order both ways'], [25, 'The triangle inequality'], [20, 'The shortest path to a line'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The larger angle faces the longer side',
+      html: `<p>In any triangle, the longer of two sides is opposite the larger of two angles — and the
+      statement runs backwards as well.</p>
+      ${eq(m('AB > AC') + '  ⟺  ' + m('∠C > ∠B'), true)}
+      {{fig:triangleAngleSum:Each side faces the angle of matching rank}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Triangle</th><th>Largest angle</th><th>Longest side</th></tr></thead>
+      <tbody>
+        <tr><td class="m">∠A = 90°, ∠B = 60°, ∠C = 30°</td><td class="m">∠A</td><td class="m">BC</td></tr>
+        <tr><td class="m">∠A = 40°, ∠B = 40°, ∠C = 100°</td><td class="m">∠C</td><td class="m">AB</td></tr>
+        <tr><td>equilateral</td><td>all equal</td><td>all equal</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A side and the angle at its own end are not partners</span>
+      The side ${m('BC')} is matched with ${m('∠A')}, the angle it faces, not with ${m('∠B')} or
+      ${m('∠C')}. Reading the label off the wrong vertex reverses every answer.</div>`
+    },
+    {
+      h: 'Reading the order both ways',
+      html: `<p>Ranking the angles ranks the sides in exactly the same order, and the other way round.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Order of angles</th><th>Order of sides</th></tr></thead>
+      <tbody>
+        <tr><td class="m">∠A = 80°, ∠B = 60°, ∠C = 40°</td><td class="m">∠A > ∠B > ∠C</td><td class="m">BC > AC > AB</td></tr>
+        <tr><td class="m">a = 5, b = 7, c = 9</td><td class="m">∠C > ∠B > ∠A</td><td class="m">c > b > a</td></tr>
+        <tr><td>isosceles with ${m('AB = AC')}</td><td class="m">∠B = ∠C</td><td class="m">AC = AB</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The isosceles theorem is this theorem</div>
+      Equal sides ⟺ equal base angles is the borderline case of the same statement: when neither side is
+      longer, neither angle is larger.</div>`
+    },
+    {
+      h: 'The triangle inequality',
+      html: `<p>Each side of a triangle is shorter than the sum of the other two — the straight path from
+      one vertex to another beats any detour through a third.</p>
+      ${eq(m('a < b + c') + ',   ' + m('b < a + c') + ',   ' + m('c < a + b'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Lengths</th><th>Check the longest</th><th>A triangle?</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3, 4, 5</td><td class="m">3 + 4 > 5</td><td>yes</td></tr>
+        <tr><td class="m">5, 8, 14</td><td class="m">5 + 8 < 14</td><td>no</td></tr>
+        <tr><td class="m">6, 9, 13</td><td class="m">6 + 9 > 13</td><td>yes</td></tr>
+        <tr><td class="m">2, 3, 5</td><td class="m">2 + 3 = 5</td><td>no — the three points are in a line</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Only the longest side needs checking</div>
+      If the longest side is beaten by the sum of the other two, the other two inequalities hold
+      automatically. One line of working settles the question.</div>`
+    },
+    {
+      h: 'The shortest path to a line',
+      html: `<p>Drop a perpendicular ${m('MP')} from a point ${m('M')} to a line, and take any other
+      segment ${m('MQ')} to that line.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td class="m">∠MPQ = 90°</td><td>construction</td></tr>
+        <tr><td class="m">∠MPQ</td><td>the largest angle of ${m('△MPQ')}</td></tr>
+        <tr><td class="m">MQ > MP</td><td>the longer side faces the larger angle</td></tr>
+      </tbody></table></div>
+      <p>So the perpendicular is shorter than every slant segment — which is exactly why distance to a
+      line was defined along the perpendicular two lessons ago.</p>
+      <div class="keybox"><div class="klabel">A definition justified after the event</div>
+      Calling the perpendicular “the distance” was a choice; this theorem shows it was the only sensible
+      one, since it is the minimum.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'In ' + m('△ABC') + ', ' + m('∠A = 80°') + ', ' + m('∠B = 60°') + '. Order the sides.',
+      steps: [
+        [m('∠C = 180° − 140° = 40°'), ''],
+        [m('∠A > ∠B > ∠C'), ''],
+        ['Each side faces the angle of matching rank.', ''],
+        [m('BC > AC > AB'), '']
+      ],
+      ans: m('BC > AC > AB')
+    },
+    {
+      q: 'Can ' + m('5, 8, 14') + ' be the sides of a triangle? And ' + m('6, 9, 13') + '?',
+      steps: [
+        ['Longest of the first is ' + m('14') + '.', ''],
+        [m('5 + 8 = 13 < 14') + ' — no.', ''],
+        ['Longest of the second is ' + m('13') + '.', ''],
+        [m('6 + 9 = 15 > 13') + ' — yes.', '']
+      ],
+      ans: 'No; yes'
+    },
+    {
+      q: 'Two sides of a triangle are ' + m('7') + ' and ' + m('10') + '. Between what values must the third lie?',
+      steps: [
+        ['It must beat the difference: ' + m('x > 10 − 7 = 3') + '.', ''],
+        ['It must be beaten by the sum: ' + m('x < 10 + 7 = 17') + '.', ''],
+        [m('3 < x < 17'), '']
+      ],
+      ans: m('3 < x < 17')
+    }
+  ],
+  modelNote: 'Hand out strips of 5, 8 and 14 cm and ask the class to build the triangle; the failure is visible and the inequality is never forgotten.',
+  interactive: {
+    type: 'triangleAngles',
+    title: 'Watch the longest side and the largest angle move together',
+    hint: 'The readout names both — they always agree.'
+  },
+  quiz: [
+    { q: 'The longest side faces:', a: ['the smallest angle', 'the largest angle', 'the right angle only', 'any angle'], c: 1, why: 'The theorem.' },
+    { q: 'In a right-angled triangle the longest side is:', a: ['a leg', 'the hypotenuse', 'either', 'undetermined'], c: 1, why: 'It faces ' + m('90°') + '.' },
+    { q: m('∠A = 80°, ∠B = 60°, ∠C = 40°') + ' gives:', a: [m('AB > BC > AC'), m('BC > AC > AB'), m('AC > AB > BC'), 'all equal'], c: 1, why: 'Matching ranks.' },
+    { q: 'Sides ' + m('5, 8, 14') + ' make:', a: ['a triangle', 'no triangle', 'a right triangle', 'an isosceles triangle'], c: 1, why: m('5 + 8 < 14') + '.' },
+    { q: 'To test three lengths you need to check:', a: ['all three sums', 'the longest side only', 'the shortest side', 'the perimeter'], c: 1, why: 'The rest follow.' },
+    { q: 'The shortest segment from a point to a line is:', a: ['any slant', 'the perpendicular', 'the bisector', 'the median'], c: 1, why: 'It faces the right angle.' }
+  ],
+  practice: {
+    easy: [
+      ['The longest side faces the', 'largest angle'],
+      ['The shortest side faces the', 'smallest angle'],
+      [m('3, 4, 5') + ': a triangle?', 'Yes'],
+      [m('5, 8, 14') + ': a triangle?', 'No'],
+      [m('2, 3, 5') + ': a triangle?', 'No'],
+      ['In a right triangle the longest side is the', 'hypotenuse'],
+      ['The shortest segment to a line is the', 'perpendicular']
+    ],
+    med: [
+      [m('∠A = 80°, ∠B = 60°') + ': order the sides', m('BC > AC > AB')],
+      [m('a = 5, b = 7, c = 9') + ': order the angles', m('∠C > ∠B > ∠A')],
+      ['Sides ' + m('7') + ' and ' + m('10') + ': the range of the third', m('3 < x < 17')],
+      ['Sides ' + m('4') + ' and ' + m('9') + ': the range of the third', m('5 < x < 13')],
+      ['An obtuse triangle: which side is longest?', 'The one facing the obtuse angle'],
+      ['Isosceles with ' + m('AB = AC') + ': which angles are equal?', m('∠B = ∠C')],
+      [m('6, 9, 13') + ': a triangle?', 'Yes']
+    ],
+    hard: [
+      ['The perimeter of a triangle with sides ' + m('7, 10, x') + ' is a whole number: how many values of ' + m('x') + ' are whole?', m('13') + ' — from ' + m('4') + ' to ' + m('16')],
+      ['Prove that the perpendicular is shorter than any slant segment', 'It faces the largest angle of the right triangle'],
+      ['In ' + m('△ABC') + ', ' + m('∠A = 90°') + ': prove ' + m('BC') + ' is the longest side', 'It faces the largest angle'],
+      ['Two sides are ' + m('8') + ' and ' + m('15') + ' and the third is a whole number: the smallest possible', m('8')],
+      ['Can a triangle have sides ' + m('1, 2, 3') + '?', 'No — ' + m('1 + 2 = 3')],
+      ['If ' + m('∠A > ∠B') + ' and ' + m('∠B > ∠C') + ', order the sides', m('a > b > c')],
+      ['Why is checking the longest side enough?', 'The other two inequalities then hold automatically']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'For a triangle test, find the longest side first and check only that one.',
+  homework: [
+    'In ' + m('△ABC') + ', ' + m('∠A = 95°') + ' and ' + m('∠B = 45°') + '. Order the three sides.',
+    'Decide whether ' + m('4, 6, 11') + ' and ' + m('4, 6, 9') + ' make triangles.',
+    'Two sides are ' + m('9') + ' and ' + m('12') + '. Find the range of the third.',
+    'Explain in two lines why the perpendicular is the shortest path to a line.',
+    'A triangle has ' + m('a = 6, b = 6, c = 10') + '. Order its angles.'
+  ]
+});
+
+/* ============================== 52 ============================== */
+G7_MAT.push({
+  id: 'g7-52', stream: 'mat', grade: 7, quarter: 3, lessons: '94–95', hours: 2,
+  title: 'Practical exercises — area of triangles and quadrilaterals',
+  subtitle: 'A Cambridge insert: one height, one base, and a compound shape cut into pieces you already know.',
+  uz: 'Matematika 7, amaliy mashqlar', uzPage: 'pp. 277–281',
+  cam: 'S8 15', camPage: 'Stage 8, pp. 148–156', wb: 'Exercise 15.2',
+  objectives: [
+    'Use the area formulae for a rectangle, a triangle, a parallelogram and a trapezium.',
+    'Identify the height that belongs to a chosen base.',
+    'Find the area of a compound shape by cutting or by subtracting.',
+    'Work with the units of area and convert between them.'
+  ],
+  terms: [
+    ['Area', 'Yuza', 'Площадь'],
+    ['Base', 'Asos', 'Основание'],
+    ['Height', 'Balandlik', 'Высота'],
+    ['Perpendicular height', 'Perpendikulyar balandlik', 'Перпендикулярная высота'],
+    ['Compound shape', 'Murakkab shakl', 'Составная фигура'],
+    ['Trapezium', 'Trapetsiya', 'Трапеция'],
+    ['Square centimetre', 'Kvadrat santimetr', 'Квадратный сантиметр'],
+    ['Hectare', 'Gektar', 'Гектар']
+  ],
+  timing: [[10, 'The four formulae'], [25, 'Choosing the right height'], [25, 'Compound shapes'], [20, 'Units and estimation'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The four formulae',
+      html: `${eq(m('S = ab') + '     ' + m('S = ' + f('1', '2') + 'ah') + '     ' + m('S = ah') + '     ' + m('S = ' + f('a + b', '2') + ' · h'), true)}
+      {{fig:areaTriangle:Base and perpendicular height}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Shape</th><th>Formula</th><th>What ${m('h')} means</th></tr></thead>
+      <tbody>
+        <tr><td>rectangle</td><td class="m">ab</td><td>the second side</td></tr>
+        <tr><td>triangle</td><td class="m">${f('1', '2')}ah</td><td>perpendicular from the base to the opposite vertex</td></tr>
+        <tr><td>parallelogram</td><td class="m">ah</td><td>perpendicular between the two parallel sides</td></tr>
+        <tr><td>trapezium</td><td class="m">${f('a + b', '2')} · h</td><td>perpendicular between the parallel sides</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Three formulae, one idea</div>
+      A parallelogram is two copies of a triangle, and a trapezium is a parallelogram whose two parallel
+      sides have been averaged. Learning ${m('S = ' + f('1', '2') + 'ah')} and the reason for it makes the
+      other two memorable rather than memorised.</div>`
+    },
+    {
+      h: 'Choosing the right height',
+      html: `<p>The height must be perpendicular to <b>the base you chose</b>. A slanting side is never a
+      height, and in an obtuse triangle the height may fall outside the figure.</p>
+      {{fig:areaParallelogram:The height is perpendicular, not slanting}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Figure</th><th>Base</th><th>Height</th><th>Area</th></tr></thead>
+      <tbody>
+        <tr><td>triangle</td><td class="m">10 cm</td><td class="m">6 cm</td><td class="m">30 cm²</td></tr>
+        <tr><td>parallelogram</td><td class="m">8 cm</td><td class="m">5 cm</td><td class="m">40 cm²</td></tr>
+        <tr><td>trapezium</td><td class="m">6 cm and 10 cm</td><td class="m">4 cm</td><td class="m">32 cm²</td></tr>
+        <tr><td>rectangle</td><td class="m">7 cm</td><td class="m">3 cm</td><td class="m">21 cm²</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The slanting side is not the height</span>
+      A parallelogram with sides ${m('8')} and ${m('6')} and height ${m('5')} has area ${m('40')}, not
+      ${m('48')}. Using the second side instead of the perpendicular is the single commonest area error
+      in the paper.</div>`
+    },
+    {
+      h: 'Compound shapes',
+      html: `<p>Two routes work for any compound figure: cut it into known pieces and add, or enclose it
+      in a rectangle and subtract what is not wanted.</p>
+      {{fig:polygonDecompose:Cutting a compound shape into known pieces}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Shape</th><th>Method</th><th>Working</th><th>Area</th></tr></thead>
+      <tbody>
+        <tr><td>an L-shape ${m('10 × 8')} with a ${m('4 × 3')} corner removed</td><td>subtract</td><td class="m">80 − 12</td><td class="m">68 cm²</td></tr>
+        <tr><td>a house outline: ${m('6 × 4')} rectangle under a triangle of height ${m('3')}</td><td>add</td><td class="m">24 + 9</td><td class="m">33 cm²</td></tr>
+        <tr><td>a path ${m('1 m')} wide round a ${m('5 × 4')} plot</td><td>subtract</td><td class="m">42 − 20</td><td class="m">22 m²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Label the pieces before you calculate</div>
+      Write the area of each piece next to it on the sketch. Nearly every lost mark on a compound shape
+      is a piece counted twice or left out, not an arithmetic slip.</div>`
+    },
+    {
+      h: 'Units and estimation',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Conversion</th><th>Factor</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1 cm² = 100 mm²</td><td class="m">10²</td><td>both sides scaled by ${m('10')}</td></tr>
+        <tr><td class="m">1 m² = 10 000 cm²</td><td class="m">100²</td><td>both sides scaled by ${m('100')}</td></tr>
+        <tr><td class="m">1 ha = 10 000 m²</td><td class="m">100 × 100</td><td>a square ${m('100 m')} on a side</td></tr>
+        <tr><td class="m">1 km² = 100 ha</td><td class="m">1000²</td><td>a square ${m('1 km')} on a side</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Lengths scale by ${m('k')}, areas by ${m('k²')}</span>
+      A metre is ${m('100')} centimetres, but a square metre is ${m('10 000')} square centimetres. Using
+      ${m('100')} for the area conversion is wrong by a factor of a hundred.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A triangle has base ' + m('10 cm') + ' and height ' + m('6 cm') + '. Find its area.',
+      steps: [
+        [m('S = ' + f('1', '2') + 'ah'), ''],
+        [m('S = ' + f('1', '2') + ' · 10 · 6'), ''],
+        [m('S = 30 cm²'), '']
+      ],
+      ans: m('30 cm²')
+    },
+    {
+      q: 'A trapezium has parallel sides ' + m('6 cm') + ' and ' + m('10 cm') + ' and height ' + m('4 cm') + '. Find its area.',
+      steps: [
+        [m('S = ' + f('a + b', '2') + ' · h'), ''],
+        [m('S = ' + f('6 + 10', '2') + ' · 4'), ''],
+        [m('S = 8 · 4'), ''],
+        [m('S = 32 cm²'), '']
+      ],
+      ans: m('32 cm²')
+    },
+    {
+      q: 'A rectangular plot ' + m('5 m') + ' by ' + m('4 m') + ' has a path ' + m('1 m') + ' wide all round it. Find the area of the path.',
+      steps: [
+        ['The outer rectangle is ' + m('7 m') + ' by ' + m('6 m') + '.', 'One metre on each side.'],
+        [m('7 · 6 = 42 m²'), ''],
+        [m('5 · 4 = 20 m²'), ''],
+        [m('42 − 20 = 22 m²'), '']
+      ],
+      ans: m('22 m²')
+    }
+  ],
+  modelNote: 'Give one parallelogram with all three lengths marked — base, slanting side and height — and ask for the area; the marks separate those who read the figure from those who multiply the first two numbers.',
+  interactive: {
+    type: 'areaModel',
+    title: 'Slide the apex — the area does not move',
+    hint: 'The base and the perpendicular height decide everything.'
+  },
+  quiz: [
+    { q: 'The area of a triangle is:', a: [m('ah'), m(f('1', '2') + 'ah'), m('a + h'), m('2ah')], c: 1, why: 'Half a parallelogram.' },
+    { q: 'The area of a parallelogram is:', a: [m('ah'), m(f('1', '2') + 'ah'), m('ab'), m('a + h')], c: 0, why: 'Base times perpendicular height.' },
+    { q: 'In the formulae, ' + m('h') + ' must be:', a: ['a side', 'perpendicular to the base', 'the longest length', 'the diagonal'], c: 1, why: 'Always perpendicular.' },
+    { q: 'A trapezium with parallel sides ' + m('6') + ' and ' + m('10') + ' and height ' + m('4') + ' has area:', a: [m('24'), m('32'), m('40'), m('64')], c: 1, why: m(f('16', '2') + ' · 4') + '.' },
+    { q: m('1 m²') + ' equals:', a: [m('100 cm²'), m('1000 cm²'), m('10 000 cm²'), m('100 000 cm²')], c: 2, why: m('100²') + '.' },
+    { q: m('1 ha') + ' equals:', a: [m('100 m²'), m('1000 m²'), m('10 000 m²'), m('100 000 m²')], c: 2, why: 'A ' + m('100 m') + ' square.' }
+  ],
+  practice: {
+    easy: [
+      ['Triangle, base ' + m('10') + ', height ' + m('6'), m('30 cm²')],
+      ['Rectangle ' + m('7 × 3'), m('21 cm²')],
+      ['Parallelogram, base ' + m('8') + ', height ' + m('5'), m('40 cm²')],
+      ['Trapezium ' + m('6') + ' and ' + m('10') + ', height ' + m('4'), m('32 cm²')],
+      ['Triangle, base ' + m('12') + ', height ' + m('5'), m('30 cm²')],
+      [m('1 cm²') + ' in ' + m('mm²'), m('100')],
+      [m('1 m²') + ' in ' + m('cm²'), m('10 000')]
+    ],
+    med: [
+      ['Parallelogram with sides ' + m('8') + ' and ' + m('6') + ' and height ' + m('5'), m('40 cm²')],
+      ['A triangle of area ' + m('24') + ' has base ' + m('8') + ': find the height', m('6')],
+      ['A trapezium of area ' + m('45') + ', parallel sides ' + m('6') + ' and ' + m('9') + ': find the height', m('6')],
+      ['L-shape: ' + m('10 × 8') + ' with a ' + m('4 × 3') + ' corner removed', m('68 cm²')],
+      ['House outline: ' + m('6 × 4') + ' rectangle plus a triangle of height ' + m('3'), m('33 cm²')],
+      ['A ' + m('1 m') + ' path round a ' + m('5 × 4') + ' plot', m('22 m²')],
+      [m('3 ha') + ' in ' + m('m²'), m('30 000')]
+    ],
+    hard: [
+      ['A rhombus with diagonals ' + m('10') + ' and ' + m('12'), m('60 cm²')],
+      ['A triangle with base ' + m('a') + ' and height ' + m('h') + ' has its base doubled: the new area', m('twice the old')],
+      ['Both dimensions of a rectangle are trebled: the area is multiplied by', m('9')],
+      ['A field of ' + m('2.5 ha') + ' in ' + m('m²'), m('25 000')],
+      ['A trapezium has parallel sides ' + m('x') + ' and ' + m('x + 6') + ' and height ' + m('4') + ': its area', m('4x + 12')],
+      ['Two triangles have the same base and lie between the same parallels: their areas are', 'equal'],
+      ['A ' + m('12 × 9') + ' rectangle contains a triangle on the ' + m('12') + ' side with apex on the opposite side: its area', m('54 cm²')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Sketch every shape and write the area of each piece beside it.',
+  homework: [
+    'Find the area of a triangle with base ' + m('14 cm') + ' and height ' + m('9 cm') + '.',
+    'A parallelogram has sides ' + m('12') + ' and ' + m('7') + ' and height ' + m('5') + '. Find its area and say which number is not used.',
+    'Find the area of a trapezium with parallel sides ' + m('8') + ' and ' + m('14') + ' and height ' + m('6') + '.',
+    'A ' + m('2 m') + ' path runs round a ' + m('10 m') + ' by ' + m('6 m') + ' garden. Find the area of the path.',
+    'Convert ' + m('4.5 ha') + ' to square metres and ' + m('250 000 cm²') + ' to square metres.'
+  ]
+});
