@@ -11536,3 +11536,358 @@ G7_MAT.push({
     'List every excluded value of ' + m(f('x + 1', 'x − 2') + ' ÷ ' + f('x + 3', 'x')) + '.'
   ]
 });
+
+/* ============================== 65 ============================== */
+G7_MAT.push({
+  id: 'g7-65', stream: 'mat', grade: 7, quarter: 3, lessons: '120–121', hours: 2,
+  title: 'Control work 8, and work on the mistakes',
+  subtitle: 'Algebraic fractions from end to end — cancelling, common denominators, products and quotients.',
+  uz: 'Matematika 7, Nazorat ishi 8', uzPage: 'pp. 327–357',
+  cam: 'S8 7 review', camPage: 'Stage 8, pp. 66–78', wb: 'Control paper M8',
+  objectives: [
+    'Cancel only after factorising, and state the excluded values.',
+    'Build the lowest common denominator and add or subtract correctly.',
+    'Multiply and divide fractions, cancelling first.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Algebraic fraction', 'Algebraik kasr', 'Алгебраическая дробь'],
+    ['To cancel', 'Qisqartirish', 'Сокращать'],
+    ['Common denominator', 'Umumiy maxraj', 'Общий знаменатель'],
+    ['Reciprocal', 'Teskari kasr', 'Обратная дробь'],
+    ['Bracket', 'Qavs', 'Скобка'],
+    ['Excluded value', 'Mumkin bo‘lmagan qiymat', 'Недопустимое значение'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Simplify ${m(f('x² − 25', 'x + 5'))} and state the excluded value</td><td class="m">4</td><td>L112–113</td></tr>
+        <tr><td>2</td><td>Find the excluded values of ${m(f('3', 'x² − 4x'))}</td><td class="m">3</td><td>L112–113</td></tr>
+        <tr><td>3</td><td>Find the lowest common denominator of ${m('x² − 9')} and ${m('x + 3')}</td><td class="m">3</td><td>L114–115</td></tr>
+        <tr><td>4</td><td>Simplify ${m(f('1', 'x − 2') + ' + ' + f('3', 'x + 2'))}</td><td class="m">5</td><td>L116–117</td></tr>
+        <tr><td>5</td><td>Simplify ${m(f('4x + 1', 'x − 3') + ' − ' + f('2x + 7', 'x − 3'))}</td><td class="m">4</td><td>L116–117</td></tr>
+        <tr><td>6</td><td>Simplify ${m(f('x² − 1', 'x') + ' ÷ ' + f('x + 1', 'x²'))}</td><td class="m">6</td><td>L118–119</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries one mark for ${m('x ≠ −5')} alone; Q4 two for the extra factors and one for expanding the
+      numerators; Q5 two for the bracket; Q6 two for inverting the right fraction and one for the hidden
+      exclusion ${m('x ≠ −1')}.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>terms cancelled</td><td class="m">${f('x² − 25', 'x + 5')} = x² − 5</td><td>factorise, then cancel factors</td></tr>
+        <tr><td>excluded value forgotten</td><td>an answer with no condition</td><td class="m">x ≠ −5</td></tr>
+        <tr><td>only one excluded value found</td><td class="m">x ≠ 0</td><td class="m">x ≠ 0 and x ≠ 4</td></tr>
+        <tr><td>denominators multiplied blindly</td><td class="m">(x − 3)(x + 3)²</td><td class="m">(x − 3)(x + 3)</td></tr>
+        <tr><td>numerator not multiplied up</td><td class="m">${f('1 + 3', 'x² − 4')}</td><td class="m">${f('(x + 2) + 3(x − 2)', 'x² − 4')}</td></tr>
+        <tr><td>bracket missing on subtraction</td><td class="m">4x + 1 − 2x + 7</td><td class="m">(4x + 1) − (2x + 7)</td></tr>
+        <tr><td>wrong fraction inverted</td><td class="m">${f('x', 'x² − 1')} · ${f('x + 1', 'x²')}</td><td>invert the divisor</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'The chapter as one map',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Operation</th><th>What it needs</th><th>What it does not need</th></tr></thead>
+      <tbody>
+        <tr><td>cancelling</td><td>both parts factorised</td><td>a common denominator</td></tr>
+        <tr><td>adding</td><td>the LCD and brackets</td><td>anything inverted</td></tr>
+        <tr><td>subtracting</td><td>the LCD and a bracket on the second numerator</td><td>—</td></tr>
+        <tr><td>multiplying</td><td>factorising, then cancelling</td><td>a common denominator</td></tr>
+        <tr><td>dividing</td><td>inverting the divisor</td><td>a common denominator</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      The last block of the quarter is equations: what a root is, how a linear equation is solved,
+      Al-Khwarizmi's method, and problems written as equations. Fractions will appear inside those
+      equations, so this chapter stays in use.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q2: the excluded values of ' + m(f('3', 'x² − 4x')) + '.',
+      steps: [
+        [m('x² − 4x = x(x − 4)'), 'Factorise the denominator.'],
+        ['It is zero when ' + m('x = 0') + ' or ' + m('x = 4') + '.', ''],
+        [m('x ≠ 0') + ' and ' + m('x ≠ 4') + '.', 'Both, not one.']
+      ],
+      ans: m('x ≠ 0, x ≠ 4')
+    },
+    {
+      q: 'Model answer, Q4: ' + m(f('1', 'x − 2') + ' + ' + f('3', 'x + 2')) + '.',
+      steps: [
+        ['LCD ' + m('= (x − 2)(x + 2) = x² − 4') + '.', ''],
+        [m(f('x + 2', 'x² − 4') + ' + ' + f('3x − 6', 'x² − 4')), 'Numerators multiplied out.'],
+        [m('= ' + f('4x − 4', 'x² − 4')), ''],
+        [m('= ' + f('4(x − 1)', '(x − 2)(x + 2)')) + ', ' + m('x ≠ ±2') + '.', 'Nothing cancels.']
+      ],
+      ans: m(f('4x − 4', 'x² − 4'))
+    },
+    {
+      q: 'Model answer, Q6: ' + m(f('x² − 1', 'x') + ' ÷ ' + f('x + 1', 'x²')) + '.',
+      steps: [
+        ['Invert the divisor: ' + m(f('x² − 1', 'x') + ' · ' + f('x²', 'x + 1')) + '.', ''],
+        [m('x² − 1 = (x − 1)(x + 1)'), ''],
+        ['Cancel ' + m('x + 1') + ' and one ' + m('x') + '.', ''],
+        [m('= x(x − 1)') + ', with ' + m('x ≠ 0') + ' and ' + m('x ≠ −1') + '.', 'The second one is hidden.']
+      ],
+      ans: m('x(x − 1)')
+    }
+  ],
+  modelNote: 'Mark Q5 for the bracket alone and Q6 for the exclusions alone; the class sees that the algebra was rarely the problem.',
+  interactive: {
+    type: 'quiz',
+    title: 'The chapter in twelve questions',
+    hint: 'Factorise, then decide.',
+    items: [
+      { q: 'An algebraic fraction has no value when:', a: ['the numerator is zero', 'the denominator is zero', 'both are zero', 'never'], c: 1, why: 'Division by zero.' },
+      { q: m(f('x² − 25', 'x + 5')) + ' equals:', a: [m('x² − 5'), m('x − 5'), m('x + 5'), m('x')], c: 1, why: 'Factorise first.' },
+      { q: 'Its excluded value is:', a: [m('x ≠ 5'), m('x ≠ −5'), m('x ≠ 0'), 'none'], c: 1, why: 'The original denominator.' },
+      { q: m(f('3', 'x² − 4x')) + ' excludes:', a: [m('x ≠ 0'), m('x ≠ 4'), 'both', 'neither'], c: 2, why: m('x(x − 4)') + '.' },
+      { q: 'The LCD of ' + m('x² − 9') + ' and ' + m('x + 3') + ' is:', a: [m('(x − 3)(x + 3)²'), m('x² − 9'), m('x + 3'), m('(x + 3)²')], c: 1, why: 'One already contains the other.' },
+      { q: 'Cancelling is allowed for:', a: ['terms', 'factors', 'both', 'neither'], c: 1, why: 'Only what is multiplied.' },
+      { q: 'When subtracting, the second numerator needs:', a: ['a bracket', 'a denominator', 'a factor', 'nothing'], c: 0, why: 'Every sign changes.' },
+      { q: m('(4x + 1) − (2x + 7)') + ' equals:', a: [m('2x + 8'), m('2x − 6'), m('6x + 8'), m('2x + 6')], c: 1, why: 'Both signs negated.' },
+      { q: 'To divide by a fraction you invert:', a: ['the first', 'the second', 'both', 'neither'], c: 1, why: 'The divisor.' },
+      { q: m(f('x² − 1', 'x') + ' ÷ ' + f('x + 1', 'x²')) + ' equals:', a: [m('x(x − 1)'), m(f('x − 1', 'x')), m('x(x + 1)'), m(f('1', 'x'))], c: 0, why: 'Invert and cancel.' },
+      { q: 'Its hidden exclusion is:', a: [m('x ≠ 1'), m('x ≠ −1'), m('x ≠ 2'), 'none'], c: 1, why: 'The divisor’s numerator becomes a denominator.' },
+      { q: 'In a product you should cancel:', a: ['after expanding', 'before expanding', 'never', 'only numbers'], c: 1, why: 'It saves a factorisation.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 begins by:', a: ['cancelling', 'factorising', 'expanding', 'substituting'], c: 1, why: 'Only factors cancel.' },
+    { q: 'Q2 needs how many excluded values?', a: [m('0'), m('1'), m('2'), m('3')], c: 2, why: m('x(x − 4)') + '.' },
+    { q: 'Q3 is answered with:', a: [m('(x − 3)(x + 3)²'), m('x² − 9'), m('x + 3'), m('(x − 3)²')], c: 1, why: 'Factorise first.' },
+    { q: 'Q4 loses marks most often at:', a: ['the LCD', 'multiplying the numerators up', 'the final answer', 'the exclusions'], c: 1, why: 'The extra factors are forgotten.' },
+    { q: 'Q5 is about:', a: ['the LCD', 'the bracket', 'the reciprocal', 'the exclusions'], c: 1, why: 'The denominators already match.' },
+    { q: 'Q6 requires inverting:', a: ['the first fraction', 'the second fraction', 'both', 'neither'], c: 1, why: 'The divisor.' }
+  ],
+  practice: {
+    easy: [
+      [m(f('x² − 25', 'x + 5')), m('x − 5')],
+      ['Its excluded value', m('x ≠ −5')],
+      [m(f('3', 'x² − 4x')) + ': the excluded values', m('x ≠ 0, x ≠ 4')],
+      ['LCD of ' + m('x² − 9') + ' and ' + m('x + 3'), m('x² − 9')],
+      [m('(4x + 1) − (2x + 7)'), m('2x − 6')],
+      [m(f('3', 'x') + ' + ' + f('5', 'x')), m(f('8', 'x'))],
+      [m(f('2', 'x') + ' · ' + f('x', '4')), m(f('1', '2'))]
+    ],
+    med: [
+      [m(f('1', 'x − 2') + ' + ' + f('3', 'x + 2')), m(f('4x − 4', 'x² − 4'))],
+      [m(f('4x + 1', 'x − 3') + ' − ' + f('2x + 7', 'x − 3')), m(f('2x − 6', 'x − 3') + ' = 2')],
+      [m(f('x² − 1', 'x') + ' ÷ ' + f('x + 1', 'x²')), m('x(x − 1)')],
+      ['Its excluded values', m('x ≠ 0, x ≠ −1')],
+      [m(f('x² + 6x + 9', 'x + 3')), m('x + 3')],
+      ['LCD of ' + m('x² − 4') + ' and ' + m('x + 2'), m('x² − 4')],
+      [m(f('x', 'x + 1') + ' · ' + f('x² − 1', 'x')), m('x − 1')]
+    ],
+    hard: [
+      [m(f('1', 'x − 1') + ' − ' + f('2', 'x² − 1')), m(f('1', 'x + 1'))],
+      [m(f('x² − 4', 'x² − 4x + 4')), m(f('x + 2', 'x − 2'))],
+      [m(f('a', 'a − b') + ' − ' + f('b', 'a − b')), m('1')],
+      [m(f('x² − 9', 'x + 2') + ' ÷ ' + f('x − 3', 'x + 2')), m('x + 3')],
+      [m(f('1', 'x') + ' + ' + f('1', 'x + 1')) + ' as one fraction', m(f('2x + 1', 'x(x + 1)'))],
+      ['Why does Q6 exclude ' + m('x = −1') + '?', 'That numerator becomes a denominator on inverting'],
+      [m(f('x³ + 8', 'x + 2')), m('x² − 2x + 4')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every question you lost a mark on in full, from the first line.',
+  homework: [
+    'Rewrite in full every question on which you lost a mark.',
+    'Simplify ' + m(f('x² − 36', 'x − 6')) + ' and state the excluded value.',
+    'Simplify ' + m(f('2', 'x − 1') + ' + ' + f('1', 'x + 1')) + '.',
+    'Simplify ' + m(f('x² − 4', 'x') + ' ÷ ' + f('x − 2', 'x²')) + ' and list every excluded value.',
+    'Write one sentence for each row of the chapter map.'
+  ]
+});
+
+/* ============================== 66 ============================== */
+G7_MAT.push({
+  id: 'g7-66', stream: 'mat', grade: 7, quarter: 3, lessons: '122', hours: 1,
+  title: 'The equation and its root',
+  subtitle: 'An equality that is true only for certain values — and what it means to check one.',
+  uz: 'Matematika 7, §54', uzPage: 'pp. 358–362',
+  cam: 'S8 2.5', camPage: 'Stage 8, pp. 31–36', wb: 'Exercise 2.5',
+  objectives: [
+    'Distinguish an equation from an identity and from an expression.',
+    'Define a root and verify one by substitution.',
+    'Say how many roots an equation has, including none and infinitely many.',
+    'Recognise equivalent equations.'
+  ],
+  terms: [
+    ['Equation', 'Tenglama', 'Уравнение'],
+    ['Root', 'Ildiz', 'Корень'],
+    ['Solution', 'Yechim', 'Решение'],
+    ['To solve', 'Yechmoq', 'Решить'],
+    ['Unknown', 'Noma’lum', 'Неизвестное'],
+    ['Identity', 'Ayniyat', 'Тождество'],
+    ['To check', 'Tekshirmoq', 'Проверить'],
+    ['Equivalent equations', 'Teng kuchli tenglamalar', 'Равносильные уравнения']
+  ],
+  timing: [[10, 'Three kinds of equality'], [10, 'What a root is'], [12, 'How many roots'], [6, 'Equivalent equations'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'Three kinds of equality',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Written</th><th>Name</th><th>True for</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2x + 3</td><td>an expression</td><td>nothing — it makes no claim</td></tr>
+        <tr><td class="m">2x + 3 = 11</td><td>an equation</td><td>one value, ${m('x = 4')}</td></tr>
+        <tr><td class="m">(a + b)² = a² + 2ab + b²</td><td>an identity</td><td>every value</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">An equation is a question</div>
+      It asks: for which values of the letter is this equality true? The whole of the rest of the quarter
+      is about answering that question efficiently.</div>`
+    },
+    {
+      h: 'What a root is',
+      html: `<p>A <b>root</b> is a value of the unknown that makes the equation a true statement.
+      Substituting it is the only test.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Equation</th><th>Candidate</th><th>Left side</th><th>Right side</th><th>A root?</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2x + 3 = 11</td><td class="m">x = 4</td><td class="m">11</td><td class="m">11</td><td>yes</td></tr>
+        <tr><td class="m">2x + 3 = 11</td><td class="m">x = 3</td><td class="m">9</td><td class="m">11</td><td>no</td></tr>
+        <tr><td class="m">x² = 9</td><td class="m">x = −3</td><td class="m">9</td><td class="m">9</td><td>yes</td></tr>
+        <tr><td class="m">x² = 9</td><td class="m">x = 3</td><td class="m">9</td><td class="m">9</td><td>yes — there are two</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Checking means substituting into the <i>original</i> equation</span>
+      Substituting into a line halfway through the working repeats any error made before it. Go back to
+      the equation as it was set.</div>`
+    },
+    {
+      h: 'How many roots',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Equation</th><th>Roots</th><th>How many</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2x + 3 = 11</td><td class="m">x = 4</td><td>one</td></tr>
+        <tr><td class="m">x² = 9</td><td class="m">x = ±3</td><td>two</td></tr>
+        <tr><td class="m">x + 1 = x + 2</td><td>none</td><td>none — it says ${m('1 = 2')}</td></tr>
+        <tr><td class="m">2(x + 1) = 2x + 2</td><td>every number</td><td>infinitely many — an identity</td></tr>
+        <tr><td class="m">x² = −4</td><td>none among the numbers we know</td><td>none</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">“No roots” is an answer</div>
+      Reaching ${m('0 = 1')} does not mean the working failed; it means the equation is never true.
+      Reaching ${m('0 = 0')} means it is always true. Both are complete answers.</div>`
+    },
+    {
+      h: 'Equivalent equations',
+      html: `<p>Two equations are <b>equivalent</b> when they have exactly the same roots. Solving an
+      equation is replacing it by simpler equivalent ones until the answer is visible.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Operation</th><th>Keeps the roots?</th></tr></thead>
+      <tbody>
+        <tr><td>add the same number to both sides</td><td>yes</td></tr>
+        <tr><td>multiply both sides by a non-zero number</td><td>yes</td></tr>
+        <tr><td>multiply both sides by ${m('0')}</td><td>no — everything becomes a root</td></tr>
+        <tr><td>square both sides</td><td>not always — new roots can appear</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Multiplying by an expression that could be zero is not safe</span>
+      Multiplying ${m('x = 1')} by ${m('x')} gives ${m('x² = x')}, which also has the root ${m('0')}. The
+      new equation is not equivalent, and that is why every answer is checked.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Is ' + m('x = 4') + ' a root of ' + m('2x + 3 = 11') + '?',
+      steps: [
+        ['Substitute: ' + m('2 · 4 + 3') + '.', ''],
+        [m('= 11'), ''],
+        ['The right side is ' + m('11') + '.', ''],
+        ['The equality holds, so yes.', '']
+      ],
+      ans: 'Yes'
+    },
+    {
+      q: 'How many roots has ' + m('x + 1 = x + 2') + '?',
+      steps: [
+        ['Subtract ' + m('x') + ' from both sides.', ''],
+        [m('1 = 2'), ''],
+        ['This is false for every value of ' + m('x') + '.', ''],
+        ['The equation has no roots.', '']
+      ],
+      ans: 'None'
+    },
+    {
+      q: 'How many roots has ' + m('2(x + 1) = 2x + 2') + '?',
+      steps: [
+        ['Expand the left side: ' + m('2x + 2') + '.', ''],
+        [m('2x + 2 = 2x + 2'), ''],
+        ['True for every value of ' + m('x') + '.', ''],
+        ['It is an identity — infinitely many roots.', '']
+      ],
+      ans: 'Every number'
+    }
+  ],
+  modelNote: 'Give three equations with one root, no roots and infinitely many, unlabelled, and ask the class to sort them; the categories are learnt in one go.',
+  interactive: {
+    type: 'quiz',
+    title: 'Root, no root, or every number?',
+    hint: 'Substitute, or simplify both sides.',
+    items: [
+      { q: 'Is ' + m('x = 4') + ' a root of ' + m('2x + 3 = 11') + '?', a: ['yes', 'no', 'only sometimes', 'cannot say'], c: 0, why: m('11 = 11') + '.' },
+      { q: 'Is ' + m('x = 3') + ' a root of ' + m('2x + 3 = 11') + '?', a: ['yes', 'no', 'both', 'cannot say'], c: 1, why: m('9 ≠ 11') + '.' },
+      { q: 'How many roots has ' + m('x² = 9') + '?', a: [m('0'), m('1'), m('2'), 'infinitely many'], c: 2, why: m('±3') + '.' },
+      { q: 'How many roots has ' + m('x + 1 = x + 2') + '?', a: [m('0'), m('1'), m('2'), 'infinitely many'], c: 0, why: 'It reduces to ' + m('1 = 2') + '.' },
+      { q: 'How many roots has ' + m('2(x + 1) = 2x + 2') + '?', a: [m('0'), m('1'), m('2'), 'infinitely many'], c: 3, why: 'An identity.' },
+      { q: m('2x + 3') + ' on its own is:', a: ['an equation', 'an expression', 'an identity', 'a root'], c: 1, why: 'It claims nothing.' },
+      { q: 'Reaching ' + m('0 = 0') + ' means:', a: ['no roots', 'one root', 'every number is a root', 'an error'], c: 2, why: 'Always true.' },
+      { q: 'Squaring both sides:', a: ['always keeps the roots', 'can add new ones', 'removes roots', 'is never allowed'], c: 1, why: 'Check every answer.' }
+    ]
+  },
+  quiz: [
+    { q: 'A root is a value that makes the equation:', a: ['simpler', 'true', 'false', 'linear'], c: 1, why: 'By definition.' },
+    { q: 'A root is checked by:', a: ['guessing', 'substituting into the original', 'substituting into the last line', 'estimating'], c: 1, why: 'Errors do not repeat that way.' },
+    { q: m('x² = 9') + ' has:', a: ['one root', 'two roots', 'no roots', 'infinitely many'], c: 1, why: m('3') + ' and ' + m('−3') + '.' },
+    { q: 'An identity is true for:', a: ['one value', 'two values', 'every value', 'no value'], c: 2, why: 'That is what makes it an identity.' },
+    { q: 'Reaching ' + m('0 = 1') + ' means:', a: ['no roots', 'every root', 'one root', 'an error was made'], c: 0, why: 'Never true.' },
+    { q: 'Equivalent equations have:', a: ['the same form', 'the same roots', 'the same degree', 'the same letters'], c: 1, why: 'Roots are what matter.' }
+  ],
+  practice: {
+    easy: [
+      ['Is ' + m('x = 4') + ' a root of ' + m('2x + 3 = 11') + '?', 'Yes'],
+      ['Is ' + m('x = 3') + ' a root of ' + m('2x + 3 = 11') + '?', 'No'],
+      ['Is ' + m('x = −3') + ' a root of ' + m('x² = 9') + '?', 'Yes'],
+      ['The roots of ' + m('x² = 9'), m('x = ±3')],
+      ['The root of ' + m('x + 5 = 12'), m('x = 7')],
+      ['The root of ' + m('3x = 12'), m('x = 4')],
+      [m('2x + 3') + ' is an equation or an expression?', 'An expression']
+    ],
+    med: [
+      ['How many roots has ' + m('x + 1 = x + 2') + '?', 'None'],
+      ['How many roots has ' + m('2(x + 1) = 2x + 2') + '?', 'Infinitely many'],
+      ['Is ' + m('(a + b)² = a² + 2ab + b²') + ' an equation or an identity?', 'An identity'],
+      ['Is ' + m('x = 1') + ' a root of ' + m('x² = x') + '?', 'Yes'],
+      ['Is ' + m('x = 0') + ' a root of ' + m('x² = x') + '?', 'Yes'],
+      ['Is ' + m('x = 0') + ' a root of ' + m('x = 1') + '?', 'No'],
+      ['What does reaching ' + m('0 = 5') + ' tell you?', 'The equation has no roots']
+    ],
+    hard: [
+      ['Are ' + m('x = 1') + ' and ' + m('x² = x') + ' equivalent?', 'No — the second also has the root ' + m('0')],
+      ['Which operations preserve the roots?', 'Adding the same number, and multiplying by a non-zero number'],
+      ['Why is multiplying both sides by ' + m('x') + ' unsafe?', m('x') + ' may be zero, and a new root appears'],
+      ['How many roots has ' + m('x² = −4') + ' among the numbers of Grade 7?', 'None'],
+      ['Give an equation with exactly one root', 'e.g. ' + m('2x = 6')],
+      ['Give an equation with no roots', 'e.g. ' + m('x = x + 1')],
+      ['Give an equation true for every number', 'e.g. ' + m('3(x − 1) = 3x − 3')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Check every answer by substituting into the equation as it was originally written.',
+  homework: [
+    'Check whether ' + m('x = 5') + ' is a root of ' + m('3x − 4 = 11') + '.',
+    'Find all the roots of ' + m('x² = 16') + '.',
+    'How many roots has ' + m('x + 3 = x + 7') + '? Explain.',
+    'How many roots has ' + m('5(x − 2) = 5x − 10') + '? Explain.',
+    'Write one equation with one root, one with none, and one true for every number.'
+  ]
+});
