@@ -7183,3 +7183,342 @@ G9_GEO.push({
     'Describe and draw the locus of points equidistant from two parallel lines ' + m('6 cm') + ' apart.'
   ]
 });
+
+/* ============================== 43 ============================== */
+G9_GEO.push({
+  id: 'g9-43', stream: 'geo', grade: 9, quarter: 4, lessons: '65', hours: 1,
+  title: 'Control work 4 — proportional segments',
+  subtitle: 'Thales, the bisector, the altitude figure and the circle, in one short paper.',
+  uz: 'Geometriya 9, Nazorat ishi 4', uzPage: 'pp. 183–220',
+  cam: 'IGX 11 review', camPage: 'Core & Extended, pp. 220–241', wb: 'Control paper G4',
+  objectives: [
+    'Apply Thales’ theorem and the bisector theorem under time.',
+    'Use the three relations of the altitude figure.',
+    'Use the power of a point in all three configurations.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Thales’ theorem', 'Fales teoremasi', 'Теорема Фалеса'],
+    ['Bisector theorem', 'Bissektrisa teoremasi', 'Теорема о биссектрисе'],
+    ['Mean proportional', 'O‘rta proporsional', 'Среднее пропорциональное'],
+    ['Power of a point', 'Nuqtaning darajasi', 'Степень точки'],
+    ['Projection', 'Proyeksiya', 'Проекция'],
+    ['Tangent', 'Urinma', 'Касательная'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[2, 'Instructions'], [25, 'The paper'], [8, 'Answers'], [5, 'Diagnosis and rewrite']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 25 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>${m('DE ∥ BC')}, ${m('AD = 5')}, ${m('DB = 3')}, ${m('AE = 10')}: find ${m('EC')}</td><td class="m">5</td><td>L53–54</td></tr>
+        <tr><td>2</td><td>${m('AB = 12')}, ${m('AC = 20')}, ${m('BC = 24')}: find ${m('BD')} for the bisector from ${m('A')}</td><td class="m">5</td><td>L55–56</td></tr>
+        <tr><td>3</td><td>The altitude divides the hypotenuse into ${m('5')} and ${m('20')}: find it and the legs</td><td class="m">5</td><td>L57–58</td></tr>
+        <tr><td>4</td><td>Find the mean proportional between ${m('6')} and ${m('24')}</td><td class="m">4</td><td>L59–60</td></tr>
+        <tr><td>5</td><td>A tangent and a secant with ${m('PA = 4')}, ${m('AB = 12')}: find ${m('PT')}</td><td class="m">6</td><td>L61–62</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries one mark for the part-to-part ratio; Q2 two for ${m('AB : AC = 3 : 5')}; Q3 one for
+      ${m('AB = 25')}; Q5 two for using ${m('PB = 16')} rather than ${m('AB = 12')}.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>part and whole mixed</td><td class="m">${f('AD', 'AB')} = ${f('AE', 'EC')}</td><td class="m">${f('AD', 'DB')} = ${f('AE', 'EC')}</td></tr>
+        <tr><td>bisector ratio reversed</td><td class="m">${f('BD', 'DC')} = ${f('AC', 'AB')}</td><td class="m">= ${f('AB', 'AC')}</td></tr>
+        <tr><td>leg paired with the wrong projection</td><td class="m">AC² = HB · AB</td><td class="m">AC² = AH · AB</td></tr>
+        <tr><td>hypotenuse taken as one part</td><td class="m">AB = 20</td><td class="m">AB = 25</td></tr>
+        <tr><td>mean proportional as the average</td><td class="m">15</td><td class="m">12</td></tr>
+        <tr><td class="m">AB</td><td class="m">PT² = 4 × 12</td><td class="m">PT² = 4 × 16</td></tr>
+        <tr><td>square root omitted</td><td class="m">PT = 64</td><td class="m">PT = 8</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'Chapter IV as one map',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Block</th><th>The relation</th></tr></thead>
+      <tbody>
+        <tr><td>Thales</td><td class="m">${f('AD', 'DB')} = ${f('AE', 'EC')}</td></tr>
+        <tr><td>part and whole</td><td class="m">${f('AD', 'AB')} = ${f('DE', 'BC')}</td></tr>
+        <tr><td>the bisector</td><td class="m">${f('BD', 'DC')} = ${f('AB', 'AC')}</td></tr>
+        <tr><td>the altitude</td><td class="m">CH² = AH · HB</td></tr>
+        <tr><td>each leg</td><td class="m">AC² = AH · AB</td></tr>
+        <tr><td>chords</td><td class="m">PA · PB = PC · PD</td></tr>
+        <tr><td>tangent and secant</td><td class="m">PT² = PA · PB</td></tr>
+      </tbody></table></div>
+      {{fig:thales:Seven relations, all of them one proportion cross-multiplied.}}
+      <div class="keybox"><div class="klabel">Every line of that table is ${m('x² = ab')} or ${m(f('a', 'b') + ' = ' + f('c', 'd'))}</div>
+      There is only one idea in the chapter — a proportion between segments — and seven places where it
+      appears. Recognising which configuration a question is in is the whole task.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q2: ' + m('AB = 12') + ', ' + m('AC = 20') + ', ' + m('BC = 24') + '.',
+      steps: [
+        [m(f('BD', 'DC') + ' = ' + f('12', '20') + ' = ' + f('3', '5')), ''],
+        ['Total parts ' + m('8') + '.', ''],
+        [m('BD = ' + f('3', '8') + ' × 24 = 9'), ''],
+        [m('DC = 15'), 'Check: ' + m('9 + 15 = 24') + ' ✓']
+      ],
+      ans: m('BD = 9')
+    },
+    {
+      q: 'Model answer, Q3: projections ' + m('5') + ' and ' + m('20') + '.',
+      steps: [
+        [m('CH² = 5 × 20 = 100 ⇒ CH = 10'), ''],
+        [m('AB = 25'), 'The whole hypotenuse.'],
+        [m('AC² = 5 × 25 = 125 ⇒ AC = 5' + sr('5')), ''],
+        [m('BC² = 20 × 25 = 500 ⇒ BC = 10' + sr('5')), '']
+      ],
+      ans: m('CH = 10, AC = 5' + sr('5') + ', BC = 10' + sr('5'))
+    },
+    {
+      q: 'Model answer, Q5: ' + m('PA = 4') + ', ' + m('AB = 12') + '.',
+      steps: [
+        [m('PB = PA + AB = 16'), 'The whole secant.'],
+        [m('PT² = PA · PB = 4 × 16'), ''],
+        [m('= 64'), ''],
+        [m('PT = 8'), '']
+      ],
+      ans: m('PT = 8')
+    }
+  ],
+  modelNote: 'Put four configurations on the board unlabelled and ask only which relation each needs; the recognition is what the paper tests.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which relation?',
+    hint: 'Name the configuration before the formula.'
+  },
+  quiz: [
+    { q: 'Q1 uses:', a: [m(f('AD', 'AB') + ' = ' + f('AE', 'AC')), m(f('AD', 'DB') + ' = ' + f('AE', 'EC')), m('AD = AE'), 'the bisector theorem'], c: 1, why: 'Part to part.' },
+    { q: 'In Q2 the ratio is:', a: [m('AC : AB'), m('AB : AC'), m('AB : BC'), m('1 : 1')], c: 1, why: 'The two adjacent sides.' },
+    { q: 'In Q3 the hypotenuse is:', a: [m('5'), m('20'), m('25'), m('15')], c: 2, why: 'The sum of the projections.' },
+    { q: 'The mean proportional between ' + m('6') + ' and ' + m('24') + ':', a: [m('12'), m('15'), m('18'), m('144')], c: 0, why: m(sr('144')) + '.' },
+    { q: 'In Q5, ' + m('PB') + ' is:', a: [m('12'), m('16'), m('4'), m('8')], c: 1, why: m('PA + AB') + '.' },
+    { q: 'The chapter’s single idea is:', a: ['area', 'a proportion between segments', 'congruence', 'symmetry'], c: 1, why: 'Seven appearances of one relation.' }
+  ],
+  practice: {
+    easy: [
+      [m('AD = 5, DB = 3, AE = 10') + ': ' + m('EC'), m('6')],
+      [m('AB = 12, AC = 20') + ': ' + m('BD : DC'), m('3 : 5')],
+      ['Same, ' + m('BC = 24') + ': ' + m('BD'), m('9')],
+      ['Projections ' + m('5') + ' and ' + m('20') + ': the altitude', m('10')],
+      ['Same: the hypotenuse', m('25')],
+      ['Mean proportional of ' + m('6') + ' and ' + m('24'), m('12')],
+      [m('PA = 4, AB = 12') + ': ' + m('PB'), m('16')]
+    ],
+    med: [
+      [m('PA = 4, AB = 12') + ': ' + m('PT'), m('8')],
+      ['Projections ' + m('5') + ' and ' + m('20') + ': the legs', m('5' + sr('5')) + ' and ' + m('10' + sr('5'))],
+      [m('AD = 6, DB = 4, AE = 9') + ': ' + m('EC'), m('6')],
+      [m('AB = 9, AC = 12, BC = 14') + ': ' + m('BD'), m('6')],
+      ['Chords ' + m('PA = 5, PB = 6, PC = 3') + ': ' + m('PD'), m('10')],
+      ['Mean proportional of ' + m('8') + ' and ' + m('50'), m('20')],
+      ['A tangent of ' + m('6') + ' and ' + m('PA = 3') + ': ' + m('PB'), m('12')]
+    ],
+    hard: [
+      ['A right triangle with legs ' + m('15') + ' and ' + m('20') + ': the projections', m('9') + ' and ' + m('16')],
+      [m('DE ∥ BC') + ' with ' + m('[ADE] : [ABC] = 4 : 9') + ': ' + m('AD : DB'), m('2 : 1')],
+      ['A bisector cuts ' + m('BC = 35') + ' as ' + m('2 : 5') + ' with ' + m('AC = 25') + ': ' + m('AB'), m('10')],
+      ['A tangent of ' + m('PT = 10') + ' and a secant with ' + m('AB = 21') + ': ' + m('PA'), m('4')],
+      ['Two chords: ' + m('PA · PB = 24') + ' and ' + m('PC = PD') + ': ' + m('PC'), m('2' + sr('6'))],
+      ['A point ' + m('P') + ' with ' + m('OP = 17') + ' and ' + m('R = 8') + ': the tangent length', m('15')],
+      ['A rectangle ' + m('4 × 25') + ': the side of the equal square', m('10')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite in full every question that lost a mark before the annual revision.',
+  homework: [
+    'In ' + m('△ABC') + ', ' + m('DE ∥ BC') + ', ' + m('AD = 8') + ', ' + m('DB = 4') + ', ' + m('AE = 10') + '. Find ' + m('EC') + '.',
+    'A bisector from ' + m('A') + ' divides ' + m('BC = 30') + ' with ' + m('AB = 14') + ' and ' + m('AC = 21') + '. Find ' + m('BD') + '.',
+    'The altitude divides a hypotenuse into ' + m('8') + ' and ' + m('18') + '. Find the altitude and the legs.',
+    'Find the mean proportional between ' + m('9') + ' and ' + m('49') + '.',
+    'A tangent and a secant give ' + m('PA = 5') + ' and ' + m('AB = 15') + '. Find ' + m('PT') + '.'
+  ]
+});
+
+/* ============================== 44 ============================== */
+G9_GEO.push({
+  id: 'g9-44', stream: 'geo', grade: 9, quarter: 4, lessons: '66–68', hours: 3,
+  title: 'Annual revision, and the Grade 10 preview',
+  subtitle: 'Four chapters, four pictures — and the plane geometry course closed before solid geometry opens.',
+  uz: 'Geometriya 9, Yillik takrorlash', uzPage: 'pp. 1–220',
+  cam: 'IGX 1–12 review', camPage: 'Core & Extended, full course', wb: 'Revision exercises',
+  objectives: [
+    'State the central idea of each of the four chapters in one sentence.',
+    'Recognise which chapter a mixed question belongs to.',
+    'Identify personally weak areas and plan summer practice.',
+    'See what Grade 10 solid geometry will assume.'
+  ],
+  terms: [
+    ['Revision', 'Takrorlash', 'Повторение'],
+    ['Similarity', 'O‘xshashlik', 'Подобие'],
+    ['Solving triangles', 'Uchburchaklarni yechish', 'Решение треугольников'],
+    ['Regular polygon', 'Muntazam ko‘pburchak', 'Правильный многоугольник'],
+    ['Proportional segments', 'Proporsional kesmalar', 'Пропорциональные отрезки'],
+    ['Solid geometry', 'Stereometriya', 'Стереометрия'],
+    ['Plane', 'Tekislik', 'Плоскость'],
+    ['Preparation', 'Tayyorgarlik', 'Подготовка']
+  ],
+  timing: [[25, 'Four chapters, four pictures'], [35, 'Which chapter is this?'], [35, 'Mixed practice'], [20, 'What Grade 10 expects'], [5, 'The summer plan']],
+  sections: [
+    {
+      h: 'Four chapters, four pictures',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Chapter</th><th>The sentence</th><th>The picture</th></tr></thead>
+      <tbody>
+        <tr><td>I — similarity and transformations</td><td>same shape, all lengths ${m('× k')}, all areas ${m('× k²')}</td><td>a figure and its scaled copy</td></tr>
+        <tr><td>II — trigonometry in any triangle</td><td>the sine rule for a matched pair, the cosine rule otherwise</td><td>a triangle with all six elements</td></tr>
+        <tr><td>III — regular polygons and the circle</td><td>${m('n')} congruent triangles, and the circle as their limit</td><td>a circle with a polygon inside</td></tr>
+        <tr><td>IV — proportional segments</td><td>one proportion, seven configurations</td><td>a triangle cut by a parallel</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Four pictures are enough</div>
+      If those four can be drawn from memory with their labels, the year is secure. Every formula in the
+      course can be rebuilt from one of them.</div>`
+    },
+    {
+      h: 'Which chapter is this?',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Chapter</th><th>Because</th></tr></thead>
+      <tbody>
+        <tr><td>“Two similar polygons have areas ${m('27')} and ${m('48')}…”</td><td>I</td><td class="m">k²</td></tr>
+        <tr><td>“Find the largest angle of a triangle ${m('4, 7, 9')}”</td><td>II</td><td>SSS — the cosine rule</td></tr>
+        <tr><td>“A regular polygon has interior angle ${m('150°')}”</td><td>III</td><td>the exterior angle</td></tr>
+        <tr><td>“A tangent and a secant from ${m('P')}…”</td><td>IV</td><td class="m">PT² = PA · PB</td></tr>
+        <tr><td>“The area of a segment…”</td><td>III</td><td>sector ${m('−')} triangle</td></tr>
+        <tr><td>“The altitude to the hypotenuse…”</td><td>I or IV</td><td>similar triangles, or the mean proportional</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Two chapters can both be right</span>
+      The last row is genuinely either: Chapter I proves the three triangles similar, Chapter IV names
+      the relations that follow. Choose whichever route you can carry out fastest.</div>`
+    },
+    {
+      h: 'Mixed practice',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>Two similar triangles, areas ${m('16')} and ${m('81')}: the ratio of perimeters</td><td class="m">4 : 9</td></tr>
+        <tr><td>${m('a = 7, b = 8, C = 60°')}: find ${m('c')}</td><td class="m">${sr('57')} ≈ 7.55</td></tr>
+        <tr><td>A regular hexagon of side ${m('5')}: its area</td><td class="m">${f('75' + sr('3'), '2')}</td></tr>
+        <tr><td>A sector ${m('R = 6, θ = 60°')}</td><td class="m">6π</td></tr>
+        <tr><td>A bisector with ${m('AB = 9, AC = 12, BC = 21')}: ${m('BD')}</td><td class="m">9</td></tr>
+        <tr><td>Chords ${m('PA = 3, PB = 8, PC = 4')}: ${m('PD')}</td><td class="m">6</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Mixed practice trains the choice</div>
+      Twenty questions from one chapter train a method; twenty from four chapters train the recognition
+      — and it is the recognition an examination measures.</div>`
+    },
+    {
+      h: 'What Grade 10 expects',
+      html: `<p>Grade 10 geometry is <b>solid</b> geometry: points, lines and planes in space. What it
+      assumes from this year:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Grade 10 topic</th><th>Needs, from Grade 9</th></tr></thead>
+      <tbody>
+        <tr><td>lines and planes in space</td><td>parallels, perpendiculars, projections</td></tr>
+        <tr><td>the angle between a line and a plane</td><td>projection, and right-triangle trigonometry</td></tr>
+        <tr><td>sections of a cube and a prism</td><td>similar triangles and Thales</td></tr>
+        <tr><td>areas of sections</td><td>the ratio ${m('k²')}</td></tr>
+        <tr><td>volumes (Grade 11)</td><td>the ratio ${m('k³')}</td></tr>
+        <tr><td>the surface of a cylinder and a cone</td><td>the circumference and the sector</td></tr>
+      </tbody></table></div>
+      <p>Nothing in solid geometry is new mathematics: it is plane geometry applied inside a
+      three-dimensional figure, one plane at a time.</p>
+      <div class="keybox"><div class="klabel">The summer plan, in one line</div>
+      One page a week: the similarity ratios ${m('k, k², k³')}; the sine and cosine rules with one worked
+      triangle each; the circle formulae; the altitude figure with all three relations. Four sessions,
+      and September starts from a full page.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Two similar triangles have areas ' + m('16') + ' and ' + m('81') + '. Find the ratio of their perimeters.',
+      steps: [
+        [m('k² = ' + f('81', '16')), 'Chapter I.'],
+        [m('k = ' + f('9', '4')), ''],
+        ['Perimeters scale by ' + m('k') + '.', ''],
+        [m('9 : 4'), '']
+      ],
+      ans: m('9 : 4')
+    },
+    {
+      q: 'In ' + m('△ABC') + ', ' + m('a = 7') + ', ' + m('b = 8') + ', ' + m('C = 60°') + '. Find ' + m('c') + ' and the area.',
+      steps: [
+        [m('c² = 49 + 64 − 2 · 56 · 0.5'), 'Chapter II.'],
+        [m('= 113 − 56 = 57 ⇒ c = ' + sr('57') + ' ≈ 7.55'), ''],
+        [m('S = ½ · 56 · sin 60°'), ''],
+        [m('= 14' + sr('3') + ' ≈ 24.2'), '']
+      ],
+      ans: m('c ≈ 7.55') + ', ' + m('S = 14' + sr('3'))
+    },
+    {
+      q: 'A regular hexagon has side ' + m('5') + '. Find its area, and the area of its inscribed circle.',
+      steps: [
+        [m('S = ' + f('3' + sr('3'), '2') + ' × 25 = ' + f('75' + sr('3'), '2') + ' ≈ 65.0'), 'Chapter III.'],
+        [m('r = ' + f('5' + sr('3'), '2')), ''],
+        [m('πr² = π × ' + f('75', '4')), ''],
+        [m('= ' + f('75π', '4') + ' ≈ 58.9'), '']
+      ],
+      ans: m(f('75' + sr('3'), '2')) + ' and ' + m(f('75π', '4'))
+    }
+  ],
+  modelNote: 'Give twelve questions in random order and ask only for the chapter of each — no solving. Recognition, practised on its own, is what a mixed paper rewards.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which chapter, and which relation?',
+    hint: 'Name the chapter before the formula.'
+  },
+  quiz: [
+    { q: '“Areas ' + m('27') + ' and ' + m('48') + '” belongs to:', a: ['Chapter I', 'Chapter II', 'Chapter III', 'Chapter IV'], c: 0, why: m('k²') + '.' },
+    { q: '“Largest angle of ' + m('4, 7, 9') + '” belongs to:', a: ['Chapter I', 'Chapter II', 'Chapter III', 'Chapter IV'], c: 1, why: 'The cosine rule.' },
+    { q: '“Interior angle ' + m('150°') + '” belongs to:', a: ['Chapter I', 'Chapter II', 'Chapter III', 'Chapter IV'], c: 2, why: 'Regular polygons.' },
+    { q: '“A tangent and a secant” belongs to:', a: ['Chapter I', 'Chapter II', 'Chapter III', 'Chapter IV'], c: 3, why: m('PT² = PA · PB') + '.' },
+    { q: 'Grade 10 geometry is:', a: ['more plane geometry', 'solid geometry', 'coordinate geometry', 'trigonometry'], c: 1, why: 'Lines and planes in space.' },
+    { q: 'The most useful thing to revise is:', a: ['the whole book', 'the four pictures', 'the definitions', 'nothing'], c: 1, why: 'Every formula rebuilds from them.' }
+  ],
+  practice: {
+    easy: [
+      ['Areas ' + m('16') + ' and ' + m('81') + ': ' + m('k'), m('9 : 4')],
+      [m('a = 7, b = 8, C = 60°') + ': ' + m('c'), m(sr('57'))],
+      ['Regular hexagon of side ' + m('5') + ': its area', m(f('75' + sr('3'), '2'))],
+      ['Sector ' + m('R = 6, θ = 60°'), m('6π')],
+      [m('AB = 9, AC = 12, BC = 21') + ': ' + m('BD'), m('9')],
+      ['Chords ' + m('PA = 3, PB = 8, PC = 4') + ': ' + m('PD'), m('6')],
+      ['Interior angle of a regular ' + m('12') + '-gon', m('150°')]
+    ],
+    med: [
+      ['Two similar solids, volumes ' + m('8') + ' and ' + m('125') + ': the ratio of areas', m('4 : 25')],
+      ['Sides ' + m('4, 7, 9') + ': the largest angle', m('≈ 106.6°')],
+      ['Its area', m('≈ 13.4')],
+      ['A segment, ' + m('R = 6, θ = 90°'), m('9π − 18')],
+      ['Projections ' + m('4') + ' and ' + m('9') + ': the altitude', m('6')],
+      ['A tangent with ' + m('PA = 4, AB = 12'), m('PT = 8')],
+      ['A regular hexagon of side ' + m('5') + ': its inscribed circle area', m(f('75π', '4'))]
+    ],
+    hard: [
+      ['A triangle ' + m('13, 14, 15') + ': its area, inradius and circumradius', m('84') + ', ' + m('4') + ', ' + m('8.125')],
+      ['A regular hexagon and its circumscribed circle: the ratio of their areas', m('3' + sr('3') + ' : 2π')],
+      ['A right triangle with legs ' + m('9, 12') + ': the altitude and the two projections', m('7.2') + '; ' + m('5.4') + ' and ' + m('9.6')],
+      ['Two similar triangles: perimeters ' + m('20') + ' and ' + m('28') + ', smaller area ' + m('25'), m('49')],
+      ['A ship: ' + m('15 km') + ' on ' + m('070°') + ' then ' + m('20 km') + ' on ' + m('160°'), m('25 km')],
+      ['A sector of perimeter ' + m('30') + ' and radius ' + m('10') + ': its area', m('50')],
+      ['A cyclic quadrilateral with three angles ' + m('80°, 95°, 100°') + ': the fourth', m('85°')]
+    ]
+  },
+  hwTitle: 'Summer work — 5 tasks, one a week',
+  hwNote: 'Not five tasks for one evening: one page a week, spread across the summer.',
+  homework: [
+    'Week 1: draw a figure and its enlargement, and write the three ratios ' + m('k, k², k³') + '.',
+    'Week 2: solve one triangle by the sine rule and one by the cosine rule, in full.',
+    'Week 3: draw a circle with an inscribed hexagon and write every circle formula on it.',
+    'Week 4: draw the altitude figure and write all three relations, then do ten problems on them.',
+    'Week 5: do Control work 4 again from a blank page and compare.'
+  ]
+});
