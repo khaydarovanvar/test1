@@ -5587,3 +5587,341 @@ G9_GEO.push({
     'Find the radius of a disc whose area is ' + m('200 cm²') + '.'
   ]
 });
+
+/* ============================== 34 ============================== */
+G9_GEO.push({
+  id: 'g9-34', stream: 'geo', grade: 9, quarter: 3, lessons: '48–49', hours: 2,
+  title: 'The areas of the parts of a disc',
+  subtitle: 'Sector and segment — one is a fraction of the disc, the other is that fraction minus a triangle.',
+  uz: 'Geometriya 9, §29', uzPage: 'pp. 172–178',
+  cam: 'IGX 7.1', camPage: 'Core & Extended, pp. 130–140', wb: 'Exercise 7.1',
+  objectives: [
+    'Find the area of a sector in degrees and in radians.',
+    'Find the area of a segment as sector minus triangle.',
+    'Solve problems on shaded regions built from sectors and segments.',
+    'Choose between the degree and radian forms.'
+  ],
+  terms: [
+    ['Sector', 'Sektor', 'Сектор'],
+    ['Segment', 'Segment', 'Сегмент'],
+    ['Minor sector', 'Kichik sektor', 'Малый сектор'],
+    ['Major sector', 'Katta sektor', 'Большой сектор'],
+    ['Chord', 'Vatar', 'Хорда'],
+    ['Shaded region', 'Bo‘yalgan soha', 'Закрашенная область'],
+    ['Subtract', 'Ayirmoq', 'Вычесть'],
+    ['Exact answer', 'Aniq javob', 'Точный ответ']
+  ],
+  timing: [[15, 'The sector'], [25, 'The segment'], [25, 'Shaded regions'], [20, 'Choosing the form'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The sector',
+      html: `<p>A <b>sector</b> is the region between two radii and the arc between them — a slice of the
+      disc.</p>
+      ${eq(m('S = ' + f('θ', '360°') + ' · πR²') + '     (degrees)     ' + m('S = ' + f('1', '2') + 'R²α') + '     (radians)', true)}
+      {{fig:radianSector:A sector is the same fraction of the disc as its angle is of a full turn.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">θ</th><th>Fraction</th><th>Area, ${m('R = 6')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">90°</td><td class="m">${f('1', '4')}</td><td class="m">9π</td></tr>
+        <tr><td class="m">60°</td><td class="m">${f('1', '6')}</td><td class="m">6π</td></tr>
+        <tr><td class="m">120°</td><td class="m">${f('1', '3')}</td><td class="m">12π</td></tr>
+        <tr><td class="m">45°</td><td class="m">${f('1', '8')}</td><td class="m">4.5π</td></tr>
+      </tbody></table></div>
+      <p>Note the pleasing relation ${m('S = ' + f('1', '2') + 'lR')}: a sector is “half base times height”
+      with the arc as the base — the same shape of formula as for a triangle.</p>`
+    },
+    {
+      h: 'The segment',
+      html: `<p>A <b>segment</b> is the region between a chord and its arc. It is the sector minus the
+      triangle formed by the two radii and the chord:</p>
+      ${eq(m('S_segment = ' + f('1', '2') + 'R²α − ' + f('1', '2') + 'R² sin α = ' + f('1', '2') + 'R²(α − sin α)'), true)}
+      <p>with ${m('α')} in radians. In degrees, compute the sector by the fraction and the triangle by
+      ${m(f('1', '2') + 'R² sin θ')}, then subtract.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Formula</th><th class="m">R = 10, θ = 60°</th></tr></thead>
+      <tbody>
+        <tr><td>sector</td><td class="m">${f('θ', '360')}πR²</td><td class="m">${f('100π', '6')} ≈ 52.36</td></tr>
+        <tr><td>triangle</td><td class="m">½R² sin θ</td><td class="m">50 sin 60° ≈ 43.30</td></tr>
+        <tr><td>segment</td><td>the difference</td><td class="m">≈ 9.06</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('sin α')} needs ${m('α')} in the calculator’s current mode</span>
+      In the radian formula ${m(f('1', '2') + 'R²(α − sin α)')}, both ${m('α')} and ${m('sin α')} are in
+      radians. Subtracting a degree sine from a radian angle produces nonsense — and it is the standard
+      error in segment questions.</div>`
+    },
+    {
+      h: 'Shaded regions',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Region</th><th>Built from</th></tr></thead>
+      <tbody>
+        <tr><td>a segment</td><td>sector ${m('−')} triangle</td></tr>
+        <tr><td>a major sector</td><td>disc ${m('−')} minor sector</td></tr>
+        <tr><td>a lune between two arcs</td><td>sector ${m('−')} sector</td></tr>
+        <tr><td>a square minus four quarter-discs at its corners</td><td class="m">a² − πr²</td></tr>
+        <tr><td>the region between a square and its inscribed disc</td><td class="m">a² − ${f('πa²', '4')}</td></tr>
+      </tbody></table></div>
+      <p>The fourth row is worth noticing: four quarter-discs of radius ${m('r')} make one whole disc, so
+      no fractions are needed at all.</p>
+      <div class="keybox"><div class="klabel">Name the two simple regions before computing either</div>
+      Almost every shaded-area question is “this minus that”, and the difficulty is entirely in seeing
+      which two. Writing the two names on the diagram makes the arithmetic routine.</div>`
+    },
+    {
+      h: 'Choosing the form',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>If the angle is given in</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td>degrees, a nice fraction of ${m('360')}</td><td class="m">${f('θ', '360')}πR²</td></tr>
+        <tr><td>radians</td><td class="m">½R²α</td></tr>
+        <tr><td>degrees, awkward</td><td>convert, then ${m('½R²α')}</td></tr>
+      </tbody></table></div>
+      <p>The radian form is the one used from Grade 10 onwards, so it is worth becoming fluent in it now
+      even where the degree form would serve.</p>
+      <div class="keybox"><div class="klabel">Four formulae, and they are all the same one</div>
+      ${m('l = ' + f('θ', '360') + '·2πR = Rα')} and ${m('S = ' + f('θ', '360') + '·πR² = ' + f('1', '2') + 'R²α')}.
+      Both radian forms come from the degree forms by substituting ${m('θ = ' + f('180α', 'π'))}, and both
+      are shorter.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the area of a sector with ' + m('R = 6') + ' and ' + m('θ = 120°') + '.',
+      steps: [
+        [m(f('120', '360') + ' = ' + f('1', '3')), ''],
+        [m('πR² = 36π'), ''],
+        [m('S = ' + f('1', '3') + ' × 36π'), ''],
+        [m('= 12π ≈ 37.7'), '']
+      ],
+      ans: m('12π ≈ 37.7')
+    },
+    {
+      q: 'Find the area of the segment cut off by a chord subtending ' + m('60°') + ' in a circle of radius ' + m('10') + '.',
+      steps: [
+        ['Sector: ' + m(f('1', '6') + ' × 100π ≈ 52.36') + '.', ''],
+        ['Triangle: ' + m('½ × 100 × sin 60° ≈ 43.30') + '.', 'Equilateral, in fact.'],
+        [m('52.36 − 43.30'), ''],
+        [m('≈ 9.06'), '']
+      ],
+      ans: m('≈ 9.06')
+    },
+    {
+      q: 'A sector has area ' + m('24π') + ' and radius ' + m('12') + '. Find its angle in degrees.',
+      steps: [
+        [m(f('θ', '360') + ' × 144π = 24π'), ''],
+        [m(f('θ', '360') + ' = ' + f('24', '144') + ' = ' + f('1', '6')), ''],
+        [m('θ = 60°'), ''],
+        ['In radians, ' + m(f('π', '3')) + '.', '']
+      ],
+      ans: m('60°')
+    }
+  ],
+  modelNote: 'Draw one circle with a 60° chord and shade the segment; ask which two regions the class would subtract before writing a single number.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'Sector and segment',
+    hint: 'Open the angle and watch the two areas separate.'
+  },
+  quiz: [
+    { q: 'A sector’s area in degrees:', a: [m(f('θ', '360') + 'πR²'), m(f('θ', '180') + 'πR²'), m('θπR²'), m(f('θ', '360') + '2πR')], c: 0, why: 'A fraction of the disc.' },
+    { q: 'A sector’s area in radians:', a: [m('R²α'), m('½R²α'), m('2R²α'), m('½Rα')], c: 1, why: 'Substitute ' + m('θ = ' + f('180α', 'π')) + '.' },
+    { q: 'A segment is:', a: ['sector ' + m('+') + ' triangle', 'sector ' + m('−') + ' triangle', 'disc ' + m('−') + ' sector', 'half a sector'], c: 1, why: 'Between chord and arc.' },
+    { q: m('R = 6, θ = 120°') + ': the sector area', a: [m('6π'), m('9π'), m('12π'), m('36π')], c: 2, why: m(f('1', '3') + ' × 36π') + '.' },
+    { q: 'A sector of area ' + m('24π') + ' and ' + m('R = 12') + ' has angle:', a: [m('30°'), m('60°'), m('90°'), m('120°')], c: 1, why: m(f('1', '6')) + ' of the disc.' },
+    { q: m('S = ½lR') + ' resembles the formula for:', a: ['a circle', 'a triangle', 'a square', 'a ring'], c: 1, why: 'Half base times height.' }
+  ],
+  practice: {
+    easy: [
+      ['Sector ' + m('R = 6, θ = 90°'), m('9π')],
+      ['Sector ' + m('R = 6, θ = 60°'), m('6π')],
+      ['Sector ' + m('R = 6, θ = 120°'), m('12π')],
+      ['Sector ' + m('R = 4, α = ' + f('π', '2')), m('4π')],
+      ['Sector ' + m('R = 10, α = 1'), m('50')],
+      ['Area of a semicircle, ' + m('R = 8'), m('32π')],
+      ['A segment is sector minus', 'A triangle']
+    ],
+    med: [
+      ['Segment, ' + m('R = 10, θ = 60°'), m('≈ 9.06')],
+      ['Segment, ' + m('R = 6, θ = 90°'), m('9π − 18 ≈ 10.3')],
+      ['Sector of area ' + m('24π') + ', ' + m('R = 12') + ': the angle', m('60°')],
+      ['Sector of area ' + m('50') + ', ' + m('R = 10') + ': ' + m('α'), m('1 rad')],
+      ['Major sector, ' + m('R = 6, θ = 120°'), m('24π')],
+      ['A square of side ' + m('10') + ' minus four quarter-discs of radius ' + m('5'), m('100 − 25π')],
+      ['Segment, ' + m('R = 8, α = ' + f('π', '3')), m(f('32π', '3') + ' − 16' + sr('3'))]
+    ],
+    hard: [
+      ['A segment of ' + m('R = 12') + ' and ' + m('θ = 90°'), m('36π − 72 ≈ 41.1')],
+      ['A chord of length ' + m('R') + ': the area of the minor segment', m('R²(' + f('π', '6') + ' − ' + f(sr('3'), '4') + ')')],
+      ['A goat tethered by ' + m('12 m') + ' at the corner of a square shed, grazing a ' + m('90°') + ' region', m('36π')],
+      ['Two circles of radius ' + m('r') + ' whose centres are ' + m('r') + ' apart: the area of overlap', m('r²(' + f('2π', '3') + ' − ' + f(sr('3'), '2') + ')')],
+      ['A sector of perimeter ' + m('28') + ' and radius ' + m('8') + ': its area', m('48')],
+      ['The greatest sector area for a given perimeter ' + m('P'), m(f('P²', '16')) + ', at ' + m('α = 2')],
+      ['A disc of radius ' + m('10') + ' with a ' + m('120°') + ' sector removed: the remaining area', m(f('200π', '3'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'For a segment, write down the sector and the triangle separately before subtracting.',
+  homework: [
+    'Find the area of a sector with ' + m('R = 9') + ' and ' + m('θ = 40°') + '.',
+    'Find the area of a sector with ' + m('R = 5') + ' and ' + m('α = 1.2') + '.',
+    'Find the area of the segment cut off by a ' + m('90°') + ' chord in a circle of radius ' + m('8') + '.',
+    'A sector has area ' + m('27π') + ' and radius ' + m('9') + '. Find its angle.',
+    'A square of side ' + m('12') + ' has a quarter-disc of radius ' + m('12') + ' drawn from one corner. Find the area outside the quarter-disc.'
+  ]
+});
+
+/* ============================== 35 ============================== */
+G9_GEO.push({
+  id: 'g9-35', stream: 'geo', grade: 9, quarter: 3, lessons: '50', hours: 1,
+  title: 'Chapter exercises — Cambridge solids, surface area and volume',
+  subtitle: 'The circle formulae carried into three dimensions, as an IGCSE paper uses them.',
+  uz: 'Geometriya 9, III bob mashqlari', uzPage: 'pp. 179–182',
+  cam: 'IGX 7.2–7.3', camPage: 'Core & Extended, pp. 137–152', wb: 'Exercise 7.2–7.3',
+  objectives: [
+    'Use the volume and surface-area formulae for a prism, cylinder, cone and sphere.',
+    'Recognise which circle formula each one contains.',
+    'Solve problems requiring a formula to be rearranged.',
+    'Give answers in terms of π and to three significant figures.'
+  ],
+  terms: [
+    ['Prism', 'Prizma', 'Призма'],
+    ['Cylinder', 'Silindr', 'Цилиндр'],
+    ['Cone', 'Konus', 'Конус'],
+    ['Sphere', 'Sfera', 'Сфера'],
+    ['Slant height', 'Yasovchi', 'Образующая'],
+    ['Curved surface area', 'Yon sirt yuzi', 'Площадь боковой поверхности'],
+    ['Cross-section', 'Kesim', 'Сечение'],
+    ['Net', 'Yoyilma', 'Развёртка']
+  ],
+  timing: [[8, 'The formulae'], [14, 'Where the circle appears'], [12, 'Rearranging'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The formulae',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Volume</th><th>Curved surface</th><th>Total surface</th></tr></thead>
+      <tbody>
+        <tr><td>prism</td><td class="m">A × h</td><td>perimeter ${m('× h')}</td><td class="m">+ 2A</td></tr>
+        <tr><td>cylinder</td><td class="m">πR²h</td><td class="m">2πRh</td><td class="m">2πRh + 2πR²</td></tr>
+        <tr><td>cone</td><td class="m">${f('1', '3')}πR²h</td><td class="m">πRL</td><td class="m">πRL + πR²</td></tr>
+        <tr><td>sphere</td><td class="m">${f('4', '3')}πR³</td><td class="m">4πR²</td><td class="m">4πR²</td></tr>
+        <tr><td>pyramid</td><td class="m">${f('1', '3')}Ah</td><td>—</td><td>—</td></tr>
+      </tbody></table></div>
+      {{fig:cylinderNet:The net of a cylinder — a rectangle 2πR wide and two discs.}}
+      <div class="keybox"><div class="klabel">The cone and the pyramid share the ${m(f('1', '3'))}</div>
+      Anything that tapers to a point has one third the volume of the prism or cylinder on the same base
+      with the same height. That single sentence covers both rows.</div>`
+    },
+    {
+      h: 'Where the circle appears',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Formula</th><th>Contains</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">V = πR²h</td><td class="m">πR²</td><td>the area of the circular base</td></tr>
+        <tr><td class="m">2πRh</td><td class="m">2πR</td><td>the circumference, unrolled</td></tr>
+        <tr><td class="m">πRL</td><td class="m">πR</td><td>half the circumference times ${m('L')}</td></tr>
+        <tr><td class="m">L² = R² + h²</td><td>Pythagoras</td><td>the slant height of a cone</td></tr>
+      </tbody></table></div>
+      {{fig:coneNet:The net of a cone — a sector whose arc is the base circumference.}}
+      <p>The curved surface of a cone unrolls into a sector of radius ${m('L')} whose arc is
+      ${m('2πR')}; its area is ${m(f('1', '2') + ' × 2πR × L = πRL')}, by the sector formula of the last
+      lesson.</p>`
+    },
+    {
+      h: 'Rearranging',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Find</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>a cylinder, ${m('V = 500')}, ${m('R = 5')}</td><td class="m">h</td><td class="m">${f('500', '25π')} ≈ 6.37</td></tr>
+        <tr><td>a sphere, ${m('V = 36π')}</td><td class="m">R</td><td class="m">3</td></tr>
+        <tr><td>a cone, ${m('R = 6')}, ${m('h = 8')}</td><td>${m('L')}, then the surface</td><td class="m">L = 10, S = 96π</td></tr>
+        <tr><td>a sphere, ${m('S = 100π')}</td><td class="m">R</td><td class="m">5</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A cube root for a sphere’s volume</span>
+      ${m('V = ' + f('4', '3') + 'πR³ = 36π')} gives ${m('R³ = 27')}, so ${m('R = 3')}. Taking a square
+      root instead is the usual slip.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A cylinder has radius ' + m('5') + ' and height ' + m('12') + '. Find its volume and total surface area.',
+      steps: [
+        [m('V = πR²h = π × 25 × 12'), ''],
+        [m('= 300π ≈ 942'), ''],
+        [m('S = 2πRh + 2πR² = 120π + 50π'), ''],
+        [m('= 170π ≈ 534'), '']
+      ],
+      ans: m('V = 300π') + ', ' + m('S = 170π')
+    },
+    {
+      q: 'A cone has radius ' + m('6') + ' and height ' + m('8') + '. Find its slant height, volume and total surface area.',
+      steps: [
+        [m('L = ' + sr('36 + 64') + ' = 10'), 'Pythagoras.'],
+        [m('V = ' + f('1', '3') + 'π × 36 × 8 = 96π'), ''],
+        [m('S = πRL + πR² = 60π + 36π'), ''],
+        [m('= 96π ≈ 302'), '']
+      ],
+      ans: m('L = 10, V = 96π, S = 96π')
+    },
+    {
+      q: 'A sphere has volume ' + m('36π') + '. Find its radius and surface area.',
+      steps: [
+        [m(f('4', '3') + 'πR³ = 36π'), ''],
+        [m('R³ = 27'), ''],
+        [m('R = 3'), 'A cube root.'],
+        [m('S = 4πR² = 36π ≈ 113'), '']
+      ],
+      ans: m('R = 3, S = 36π')
+    }
+  ],
+  modelNote: 'Fill a cone with sand and pour it into a cylinder of the same base and height; three pours fill it, and the one third is measured rather than asserted.',
+  interactive: {
+    type: 'solidVolume',
+    title: 'Volumes of the standard solids',
+    hint: 'Compare the cone and the cylinder on the same base.'
+  },
+  quiz: [
+    { q: 'The volume of a cylinder:', a: [m('2πRh'), m('πR²h'), m(f('1', '3') + 'πR²h'), m(f('4', '3') + 'πR³')], c: 1, why: 'Base area times height.' },
+    { q: 'The curved surface of a cylinder:', a: [m('πR²'), m('2πRh'), m('πRL'), m('4πR²')], c: 1, why: 'The circumference, unrolled.' },
+    { q: 'The volume of a cone:', a: [m('πR²h'), m(f('1', '3') + 'πR²h'), m(f('1', '2') + 'πR²h'), m('πRL')], c: 1, why: 'One third of the cylinder.' },
+    { q: 'The slant height of a cone:', a: [m('R + h'), m(sr('R² + h²')), m(sr('R² − h²')), m('Rh')], c: 1, why: 'Pythagoras.' },
+    { q: 'The surface area of a sphere:', a: [m('πR²'), m('2πR²'), m('4πR²'), m(f('4', '3') + 'πR³')], c: 2, why: 'Four great circles.' },
+    { q: m('V = 36π') + ' for a sphere gives ' + m('R') + ' =', a: [m('3'), m('6'), m('9'), m('27')], c: 0, why: 'A cube root.' }
+  ],
+  practice: {
+    easy: [
+      ['Cylinder ' + m('R = 5, h = 12') + ': ' + m('V'), m('300π')],
+      ['Cylinder ' + m('R = 5, h = 12') + ': curved surface', m('120π')],
+      ['Cone ' + m('R = 6, h = 8') + ': ' + m('L'), m('10')],
+      ['Cone ' + m('R = 6, h = 8') + ': ' + m('V'), m('96π')],
+      ['Sphere ' + m('R = 3') + ': ' + m('V'), m('36π')],
+      ['Sphere ' + m('R = 3') + ': ' + m('S'), m('36π')],
+      ['Volume of a prism', m('A × h')]
+    ],
+    med: [
+      ['Cylinder ' + m('R = 5, h = 12') + ': total surface', m('170π')],
+      ['Cone ' + m('R = 6, h = 8') + ': total surface', m('96π')],
+      ['Sphere of volume ' + m('36π') + ': ' + m('R'), m('3')],
+      ['Sphere of surface ' + m('100π') + ': ' + m('R'), m('5')],
+      ['Cylinder of volume ' + m('500') + ' and ' + m('R = 5') + ': ' + m('h'), m('≈ 6.37')],
+      ['Cone of volume ' + m('100π') + ' and ' + m('R = 5') + ': ' + m('h'), m('12')],
+      ['A hemisphere of radius ' + m('6') + ': its volume', m('144π')]
+    ],
+    hard: [
+      ['A sphere fits exactly in a cylinder: the ratio of their volumes', m('2 : 3')],
+      ['And of their curved surfaces', m('1 : 1')],
+      ['A cone, a hemisphere and a cylinder of the same radius and height ' + m('R'), m('1 : 2 : 3')],
+      ['A cylinder of height ' + m('h') + ' and volume ' + m('V') + ': its radius', m(sr(f('V', 'πh')))],
+      ['A cone of slant height ' + m('13') + ' and radius ' + m('5') + ': its volume', m('100π')],
+      ['A sphere of radius ' + m('R') + ' melted into cones of radius ' + m('R') + ' and height ' + m('R'), m('4') + ' cones'],
+      ['A cylindrical tank of diameter ' + m('2 m') + ' holding ' + m('6280 L') + ': its height', m('≈ 2 m')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Give every answer in terms of ' + m('π') + ' and then to three significant figures, with units.',
+  homework: [
+    'A cylinder has radius ' + m('7') + ' and height ' + m('10') + '. Find its volume and total surface area.',
+    'A cone has radius ' + m('9') + ' and height ' + m('12') + '. Find its slant height and total surface area.',
+    'A sphere has surface area ' + m('144π') + '. Find its radius and volume.',
+    'A cone of volume ' + m('48π') + ' has radius ' + m('6') + '. Find its height.',
+    'Show that a sphere inscribed in a cylinder occupies two thirds of its volume.'
+  ]
+});

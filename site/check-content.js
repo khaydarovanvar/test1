@@ -130,7 +130,7 @@ for (const t of all) {
     if (/class="wl">[^<]*<\/div>/.test(s.html)) {
       issues.push(`${t.id}: section ${i} closes a <span class="wl"> with </div>`);
     }
-    for (const leak of ['${', "') +", '+ m(']) {
+    for (const leak of ['${', "') +", '+ m(', "')}"]) {
       if (s.html.includes(leak)) issues.push(`${t.id}: section ${i} leaks source text "${leak}"`);
     }
     for (const [open, close] of [['<table', '</table>'], ['<td', '</td>'], ['<tr', '</tr>'], ['<ul', '</ul>'], ['<ol', '</ol>']]) {
