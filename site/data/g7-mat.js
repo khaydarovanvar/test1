@@ -6264,3 +6264,337 @@ G7_MAT.push({
     'Write ' + m('(3x)² · 2y') + ' in standard form and give its degree.'
   ]
 });
+
+/* ============================== 37 ============================== */
+G7_MAT.push({
+  id: 'g7-37', stream: 'mat', grade: 7, quarter: 2, lessons: '66–67', hours: 2,
+  title: 'Multiplication and division of monomials',
+  subtitle: 'Numbers with numbers, letters with letters — and the laws of indices do the rest.',
+  uz: 'Matematika 7, §30', uzPage: 'pp. 182–188',
+  cam: 'S8 2.1', camPage: 'Stage 8, pp. 12–18', wb: 'Exercise 2.1',
+  objectives: [
+    'Multiply two or more monomials and give the answer in standard form.',
+    'Divide one monomial by another when the division is exact.',
+    'Raise a monomial to a power.',
+    'Use the operations in area and volume problems.'
+  ],
+  terms: [
+    ['To multiply', 'Ko‘paytirish', 'Умножить'],
+    ['To divide', 'Bo‘lish', 'Разделить'],
+    ['Standard form', 'Standart ko‘rinish', 'Стандартный вид'],
+    ['Exactly divisible', 'Butun bo‘linadi', 'Делится нацело'],
+    ['Power of a monomial', 'Bir had darajasi', 'Степень одночлена'],
+    ['Area', 'Yuza', 'Площадь'],
+    ['Volume', 'Hajm', 'Объём'],
+    ['Cancel', 'Qisqartirish', 'Сократить']
+  ],
+  timing: [[15, 'Multiplying'], [25, 'Raising to a power'], [25, 'Dividing'], [20, 'Areas and volumes'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Multiplying',
+      html: `<p>Multiply the coefficients; then, for each letter, add the exponents.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Product</th><th>Numbers</th><th>Letters</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3a · 4b</td><td class="m">12</td><td class="m">ab</td><td class="m">12ab</td></tr>
+        <tr><td class="m">2x² · 5x³</td><td class="m">10</td><td class="m">x⁵</td><td class="m">10x⁵</td></tr>
+        <tr><td class="m">(−3a²b)(4ab³)</td><td class="m">−12</td><td class="m">a³b⁴</td><td class="m">−12a³b⁴</td></tr>
+        <tr><td class="m">(${f('1', '2')}xy)(6x²)</td><td class="m">3</td><td class="m">x³y</td><td class="m">3x³y</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The product of two monomials is always a monomial</div>
+      Its degree is the sum of the two degrees. That is worth checking as you go: ${m('(−3a²b)')} has
+      degree ${m('3')}, ${m('(4ab³)')} degree ${m('4')}, and the answer degree ${m('7')} ✓</div>`
+    },
+    {
+      h: 'Raising to a power',
+      html: `${eq(m('(ka^m b^n)^p = k^p a^{mp} b^{np}'), true)}
+      <p>Every factor is raised — the coefficient included.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(2x)³</td><td class="m">8x³</td></tr>
+        <tr><td class="m">(3a²b)²</td><td class="m">9a⁴b²</td></tr>
+        <tr><td class="m">(−2x³)³</td><td class="m">−8x⁹</td></tr>
+        <tr><td class="m">(−2x³)²</td><td class="m">4x⁶</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The coefficient is raised too</span>
+      ${m('(3a²b)² = 9a⁴b²')}, not ${m('3a⁴b²')}. Forgetting to square the ${m('3')} is the standard
+      slip.</div>`
+    },
+    {
+      h: 'Dividing',
+      html: `<p>Divide the coefficients; then, for each letter, subtract the exponents.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quotient</th><th>Numbers</th><th>Letters</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">12a⁵ ÷ 4a²</td><td class="m">3</td><td class="m">a³</td><td class="m">3a³</td></tr>
+        <tr><td class="m">−15x³y² ÷ 5xy</td><td class="m">−3</td><td class="m">x²y</td><td class="m">−3x²y</td></tr>
+        <tr><td class="m">8a⁴b³ ÷ (−2a⁴b)</td><td class="m">−4</td><td class="m">b²</td><td class="m">−4b²</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The quotient is a monomial only if every exponent stays natural</span>
+      ${m('a² ÷ a⁵')} is not a monomial. In Grade 7 the divisions set are always exact, but the condition
+      is worth knowing.</div>`
+    },
+    {
+      h: 'Areas and volumes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Figure</th><th>Dimensions</th><th>Area or volume</th></tr></thead>
+      <tbody>
+        <tr><td>rectangle</td><td class="m">3a</td><td class="m">12ab</td></tr>
+        <tr><td>square</td><td class="m">2x</td><td class="m">4x²</td></tr>
+        <tr><td>cuboid</td><td class="m">a, 2a, 3a</td><td class="m">6a³</td></tr>
+        <tr><td>cube</td><td class="m">2x</td><td class="m">8x³</td></tr>
+      </tbody></table></div>
+      <p>The first row assumes a rectangle ${m('3a')} by ${m('4b')}. Notice that the units follow the
+      degree: a length is degree ${m('1')}, an area degree ${m('2')}, a volume degree ${m('3')}.</p>
+      <div class="keybox"><div class="klabel">The degree is a dimension check</div>
+      An answer of degree ${m('2')} for a volume is wrong before any arithmetic is examined. This is the
+      algebraic version of checking the units.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Simplify ' + m('(−3a²b)(4ab³)') + '.',
+      steps: [
+        ['Numbers: ' + m('−3 × 4 = −12') + '.', ''],
+        [m('a') + ': ' + m('a² · a = a³') + '.', ''],
+        [m('b') + ': ' + m('b · b³ = b⁴') + '.', ''],
+        [m('= −12a³b⁴'), 'Degree ' + m('7') + ' ✓']
+      ],
+      ans: m('−12a³b⁴')
+    },
+    {
+      q: 'Simplify ' + m('(3a²b)²') + ' and ' + m('(−2x³)³') + '.',
+      steps: [
+        ['Square every factor: ' + m('3² = 9') + ', ' + m('(a²)² = a⁴') + ', ' + m('b² ') + '.', ''],
+        [m('= 9a⁴b²'), ''],
+        ['Cube every factor: ' + m('(−2)³ = −8') + ', ' + m('(x³)³ = x⁹') + '.', ''],
+        [m('= −8x⁹'), '']
+      ],
+      ans: m('9a⁴b²') + ' and ' + m('−8x⁹')
+    },
+    {
+      q: 'Simplify ' + m('−15x³y² ÷ 5xy') + '.',
+      steps: [
+        ['Numbers: ' + m('−15 ÷ 5 = −3') + '.', ''],
+        [m('x') + ': ' + m('x³ ÷ x = x²') + '.', ''],
+        [m('y') + ': ' + m('y² ÷ y = y') + '.', ''],
+        [m('= −3x²y'), '']
+      ],
+      ans: m('−3x²y')
+    }
+  ],
+  modelNote: 'Draw a rectangle 3a by 4b on the board and ask for its area before any rule is stated; the class multiplies numbers and letters separately without being told to.',
+  interactive: {
+    type: 'areaModel',
+    title: 'A rectangle with algebraic sides',
+    hint: 'Area is the product of the two sides.'
+  },
+  quiz: [
+    { q: m('2x² · 5x³') + ' equals:', a: [m('10x⁵'), m('10x⁶'), m('7x⁵'), m('10x')], c: 0, why: 'Multiply, then add exponents.' },
+    { q: m('(3a²b)²') + ' equals:', a: [m('3a⁴b²'), m('9a⁴b²'), m('9a⁴b'), m('6a⁴b²')], c: 1, why: 'The coefficient is squared too.' },
+    { q: m('(−2x³)³') + ' equals:', a: [m('−8x⁹'), m('8x⁹'), m('−6x⁹'), m('−8x⁶')], c: 0, why: 'An odd exponent.' },
+    { q: m('12a⁵ ÷ 4a²') + ' equals:', a: [m('3a³'), m('3a⁷'), m('8a³'), m('3a²')], c: 0, why: 'Subtract the exponents.' },
+    { q: 'The degree of a product of monomials is:', a: ['the larger degree', 'the sum of the degrees', 'the product of them', 'unchanged'], c: 1, why: 'The exponents add.' },
+    { q: 'A cube of side ' + m('2x') + ' has volume:', a: [m('2x³'), m('6x³'), m('8x³'), m('8x²')], c: 2, why: m('(2x)³') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('3a · 4b'), m('12ab')],
+      [m('2x² · 5x³'), m('10x⁵')],
+      [m('(2x)³'), m('8x³')],
+      [m('(3a²b)²'), m('9a⁴b²')],
+      [m('12a⁵ ÷ 4a²'), m('3a³')],
+      [m('(−2x³)²'), m('4x⁶')],
+      [m('(−2x³)³'), m('−8x⁹')]
+    ],
+    med: [
+      [m('(−3a²b)(4ab³)'), m('−12a³b⁴')],
+      [m('(' + f('1', '2') + 'xy)(6x²)'), m('3x³y')],
+      [m('−15x³y² ÷ 5xy'), m('−3x²y')],
+      [m('8a⁴b³ ÷ (−2a⁴b)'), m('−4b²')],
+      ['Area of a rectangle ' + m('3a') + ' by ' + m('4b'), m('12ab')],
+      ['Volume of a cuboid ' + m('a, 2a, 3a'), m('6a³')],
+      ['Degree of ' + m('(−3a²b)(4ab³)'), m('7')]
+    ],
+    hard: [
+      [m('(2a²b)³ · 3ab'), m('24a⁷b⁴')],
+      [m(f('(3xy²)³', '9x²y⁴')), m('3xy²')],
+      [m('(−a²b)⁴ ÷ (a³b²)'), m('a⁵b²')],
+      ['A cube of volume ' + m('27x⁶') + ': its edge', m('3x²')],
+      ['A square of area ' + m('49a⁴') + ': its side', m('7a²')],
+      [m('(2x)² · (3x)³'), m('108x⁵')],
+      ['Why is ' + m('a² ÷ a⁵') + ' not a monomial?', 'The exponent would be negative']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Check the degree of every answer against the degrees you started with.',
+  homework: [
+    'Simplify ' + m('(−2a³b)(5ab²)') + '.',
+    'Simplify ' + m('(4x²y)²') + ' and ' + m('(−3a)³') + '.',
+    'Simplify ' + m('20a⁶b³ ÷ 5a²b') + '.',
+    'Find the volume of a cuboid with edges ' + m('2a') + ', ' + m('3a') + ' and ' + m('4b') + '.',
+    'A cube has volume ' + m('64x³') + '. Find its edge.'
+  ]
+});
+
+/* ============================== 38 ============================== */
+G7_MAT.push({
+  id: 'g7-38', stream: 'mat', grade: 7, quarter: 2, lessons: '68', hours: 1,
+  title: 'Polynomials',
+  subtitle: 'A sum of monomials — and the object that the rest of algebra is about.',
+  uz: 'Matematika 7, §31', uzPage: 'pp. 189–192',
+  cam: 'S8 2.2', camPage: 'Stage 8, pp. 16–20', wb: 'Exercise 2.2',
+  objectives: [
+    'Define a polynomial and name its terms.',
+    'Write a polynomial in standard form and give its degree.',
+    'Name a binomial and a trinomial.',
+    'Evaluate a polynomial for given values.'
+  ],
+  terms: [
+    ['Polynomial', 'Ko‘phad', 'Многочлен'],
+    ['Binomial', 'Ikki had', 'Двучлен'],
+    ['Trinomial', 'Uch had', 'Трёхчлен'],
+    ['Term of a polynomial', 'Ko‘phad hadi', 'Член многочлена'],
+    ['Degree of a polynomial', 'Ko‘phad darajasi', 'Степень многочлена'],
+    ['Standard form', 'Standart ko‘rinish', 'Стандартный вид'],
+    ['Leading term', 'Bosh had', 'Старший член'],
+    ['Constant term', 'Ozod had', 'Свободный член']
+  ],
+  timing: [[10, 'The definition'], [12, 'Standard form and degree'], [12, 'Evaluating'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The definition',
+      html: `<p>A <b>polynomial</b> is a sum of monomials. Each monomial is a <b>term</b>.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Polynomial</th><th>Terms</th><th>Name</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3x</td><td class="m">1</td><td>monomial</td></tr>
+        <tr><td class="m">3x + 5</td><td class="m">2</td><td>binomial</td></tr>
+        <tr><td class="m">x² − 4x + 3</td><td class="m">3</td><td>trinomial</td></tr>
+        <tr><td class="m">a³ + a² − a + 7</td><td class="m">4</td><td>polynomial</td></tr>
+      </tbody></table></div>
+      <p>Subtraction counts as addition of a negative, so ${m('x² − 4x')} is the sum of ${m('x²')} and
+      ${m('−4x')}.</p>
+      <div class="keybox"><div class="klabel">Every monomial is a polynomial</div>
+      With one term. The names simply record how many terms there are, and only the first three have
+      special names.</div>`
+    },
+    {
+      h: 'Standard form and degree',
+      html: `<p>A polynomial is in <b>standard form</b> when every term is a monomial in standard form, no
+      two terms are similar, and the terms are written in decreasing degree.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>As written</th><th>Standard form</th><th>Degree</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5 + x² − 3x</td><td class="m">x² − 3x + 5</td><td class="m">2</td></tr>
+        <tr><td class="m">2x + 3x</td><td class="m">5x</td><td class="m">1</td></tr>
+        <tr><td class="m">a³ + 2a³ − 4</td><td class="m">3a³ − 4</td><td class="m">3</td></tr>
+        <tr><td class="m">x²y + xy² + 1</td><td>already standard</td><td class="m">3</td></tr>
+      </tbody></table></div>
+      <p>The <b>degree of a polynomial</b> is the greatest of the degrees of its terms. The term of that
+      degree is the <b>leading term</b>; a term with no letters is the <b>constant term</b>.</p>
+      <div class="warn"><span class="wl">Collect similar terms before reading the degree</span>
+      In ${m('a³ + 2a³ − 4')} the first two terms combine. Reading the degree from an uncollected
+      expression can give the wrong answer when terms cancel.</div>`
+    },
+    {
+      h: 'Evaluating',
+      html: `<p>Substitute and compute, with every negative value in brackets.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Polynomial</th><th class="m">x = 2</th><th class="m">x = −1</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x² − 4x + 3</td><td class="m">4 − 8 + 3 = −1</td><td class="m">1 + 4 + 3 = 8</td></tr>
+        <tr><td class="m">2x³ − x</td><td class="m">16 − 2 = 14</td><td class="m">−2 + 1 = −1</td></tr>
+        <tr><td class="m">5 − x²</td><td class="m">5 − 4 = 1</td><td class="m">5 − 1 = 4</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A value that makes the polynomial zero is a root</div>
+      ${m('x² − 4x + 3')} is zero at ${m('x = 1')} and at ${m('x = 3')}. Finding roots is what the whole
+      of the equation work later this year is about.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Write ' + m('5 + x² − 3x') + ' in standard form and give its degree and constant term.',
+      steps: [
+        ['Order by decreasing degree.', ''],
+        [m('x² − 3x + 5'), ''],
+        ['Degree ' + m('2') + ' — the greatest term degree.', ''],
+        ['Constant term ' + m('5') + '.', '']
+      ],
+      ans: m('x² − 3x + 5') + '; degree ' + m('2') + ', constant ' + m('5')
+    },
+    {
+      q: 'Simplify ' + m('a³ + 2a³ − 4') + ' and give its degree.',
+      steps: [
+        ['Collect the similar terms.', ''],
+        [m('3a³ − 4'), ''],
+        ['Two terms — a binomial.', ''],
+        ['Degree ' + m('3') + '.', '']
+      ],
+      ans: m('3a³ − 4') + ', degree ' + m('3')
+    },
+    {
+      q: 'Evaluate ' + m('x² − 4x + 3') + ' at ' + m('x = 2') + ' and at ' + m('x = −1') + '.',
+      steps: [
+        [m('4 − 8 + 3'), ''],
+        [m('= −1'), ''],
+        [m('(−1)² − 4(−1) + 3 = 1 + 4 + 3'), 'Brackets round the negative.'],
+        [m('= 8'), '']
+      ],
+      ans: m('−1') + ' and ' + m('8')
+    }
+  ],
+  modelNote: 'Ask for the value of x² − 4x + 3 at x = 1 and x = 3; both give zero, and the idea of a root arrives before any equation is written.',
+  interactive: {
+    type: 'substitute',
+    title: 'Evaluating a polynomial',
+    hint: 'Try values that make it zero.'
+  },
+  quiz: [
+    { q: 'A polynomial is:', a: ['a product of monomials', 'a sum of monomials', 'a fraction', 'an equation'], c: 1, why: 'Terms added.' },
+    { q: m('3x + 5') + ' is a:', a: ['monomial', 'binomial', 'trinomial', 'constant'], c: 1, why: 'Two terms.' },
+    { q: 'The degree of ' + m('x² − 3x + 5') + ':', a: [m('1'), m('2'), m('3'), m('5')], c: 1, why: 'The greatest term degree.' },
+    { q: 'The constant term of ' + m('x² − 3x + 5') + ':', a: [m('1'), m('−3'), m('5'), m('0')], c: 2, why: 'No letters.' },
+    { q: m('a³ + 2a³ − 4') + ' simplifies to:', a: [m('2a³ − 4'), m('3a³ − 4'), m('3a⁶ − 4'), m('a³ − 4')], c: 1, why: 'Collect similar terms.' },
+    { q: m('x² − 4x + 3') + ' at ' + m('x = −1') + ':', a: [m('0'), m('−1'), m('8'), m('2')], c: 2, why: m('1 + 4 + 3') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['How many terms in ' + m('3x + 5') + '?', m('2')],
+      ['Its name', 'Binomial'],
+      ['How many terms in ' + m('x² − 4x + 3') + '?', m('3')],
+      ['Its name', 'Trinomial'],
+      ['Degree of ' + m('x² − 3x + 5'), m('2')],
+      ['Constant term of ' + m('x² − 3x + 5'), m('5')],
+      ['Degree of ' + m('7'), m('0')]
+    ],
+    med: [
+      ['Standard form of ' + m('5 + x² − 3x'), m('x² − 3x + 5')],
+      ['Simplify ' + m('2x + 3x'), m('5x')],
+      ['Simplify ' + m('a³ + 2a³ − 4'), m('3a³ − 4')],
+      ['Degree of ' + m('x²y + xy² + 1'), m('3')],
+      [m('x² − 4x + 3') + ' at ' + m('x = 2'), m('−1')],
+      [m('x² − 4x + 3') + ' at ' + m('x = −1'), m('8')],
+      [m('2x³ − x') + ' at ' + m('x = 2'), m('14')]
+    ],
+    hard: [
+      ['For which ' + m('x') + ' is ' + m('x² − 4x + 3 = 0') + '?', m('x = 1') + ' and ' + m('x = 3')],
+      ['Simplify ' + m('3x² − 5x + 2 − x² + 5x − 7'), m('2x² − 5')],
+      ['Its degree', m('2')],
+      ['Degree of ' + m('(x + 1)(x − 1)'), m('2')],
+      [m('5 − x²') + ' at ' + m('x = −3'), m('−4')],
+      ['A polynomial of degree ' + m('0'), 'A non-zero constant'],
+      ['Simplify ' + m('a² + a² + a²'), m('3a²')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Collect similar terms before naming the degree.',
+  homework: [
+    'Write ' + m('7 − 2x + x³') + ' in standard form and give its degree.',
+    'Simplify ' + m('4y² + 3y² − 5') + ' and name the result.',
+    'Give the constant term of ' + m('2x² − x + 9') + '.',
+    'Evaluate ' + m('x² + 2x − 5') + ' at ' + m('x = 3') + ' and at ' + m('x = −2') + '.',
+    'Find the value of ' + m('x') + ' for which ' + m('3x − 6 = 0') + '.'
+  ]
+});
