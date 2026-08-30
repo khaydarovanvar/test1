@@ -12042,3 +12042,190 @@ G6_MAT.push({
     'A cuboid is ' + m('7') + ' cm by ' + m('3') + ' cm and has surface area ' + m('122') + ' cm². Find the third edge.'
   ]
 });
+
+/* ============================== 68 ============================== */
+G6_MAT.push({
+  id: 'g6-68', stream: 'mat', grade: 6, quarter: 3, lessons: '143–145', hours: 3,
+  title: 'Finding the area of one face of a cube and of a cuboid',
+  subtitle: 'Six faces in three equal pairs — and what a single one of them is worth.',
+  uz: 'Matematika 6, §30', uzPage: 'pp. 414–423',
+  cam: 'S7 15 distance, area and volume', camPage: 'Stage 7, pp. 160–166', wb: 'Exercise 15.3',
+  objectives: [
+    'Name the three different faces of a cuboid and find each area.',
+    'Find one face of a cube from its total surface area.',
+    'Find a face area from the volume and the perpendicular edge.',
+    'Choose which faces a practical question actually needs.'
+  ],
+  terms: [
+    ['Face', 'Yoq', 'Грань'],
+    ['Opposite faces', 'Qarama-qarshi yoqlar', 'Противоположные грани'],
+    ['Base face', 'Asos yog‘i', 'Основание'],
+    ['Side face', 'Yon yoq', 'Боковая грань'],
+    ['Lateral surface', 'Yon sirt', 'Боковая поверхность'],
+    ['Total surface area', 'To‘la sirt yuzasi', 'Полная площадь поверхности'],
+    ['Net', 'Yoyilma', 'Развёртка'],
+    ['Open box', 'Qopqog‘i yo‘q quti', 'Открытая коробка']
+  ],
+  timing: [[25, 'The three pairs of faces'], [30, 'One face of a cube'], [35, 'A face from the volume'], [25, 'Which faces the question needs'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The three pairs of faces',
+      html: `<p>A cuboid with edges ${m('a')}, ${m('b')}, ${m('c')} has only three different faces —
+      ${m('ab')}, ${m('bc')} and ${m('ac')} — and each of them appears twice, on opposite sides.</p>
+      {{fig:surfaceNet:The net of a cuboid: three pairs of equal rectangles}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Cuboid</th><th class="m">ab</th><th class="m">bc</th><th class="m">ac</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5 × 4 × 3</td><td class="m">20 cm²</td><td class="m">12 cm²</td><td class="m">15 cm²</td><td class="m">94 cm²</td></tr>
+        <tr><td class="m">8 × 5 × 2</td><td class="m">40 cm²</td><td class="m">10 cm²</td><td class="m">16 cm²</td><td class="m">132 cm²</td></tr>
+        <tr><td class="m">10 × 6 × 4</td><td class="m">60 cm²</td><td class="m">24 cm²</td><td class="m">40 cm²</td><td class="m">248 cm²</td></tr>
+        <tr><td class="m">6 × 4 × 3</td><td class="m">24 cm²</td><td class="m">12 cm²</td><td class="m">18 cm²</td><td class="m">108 cm²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The largest face uses the two largest edges</div>
+      In the ${m('5 × 4 × 3')} cuboid the largest face is ${m('5 · 4 = 20')} and the smallest is
+      ${m('4 · 3 = 12')}. Pairing the edges off in the three possible ways is the whole exercise.</div>`
+    },
+    {
+      h: 'One face of a cube',
+      html: `<p>All six faces of a cube are the same square, so the total is six of them and one of them is
+      the total divided by six.</p>
+      ${eq(m('one face = ' + f('S', '6')) + '     and     ' + m('a = ') + ' the square root of that', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Total surface</th><th>One face</th><th>Edge</th></tr></thead>
+      <tbody>
+        <tr><td class="m">54 cm²</td><td class="m">9 cm²</td><td class="m">3 cm</td></tr>
+        <tr><td class="m">96 cm²</td><td class="m">16 cm²</td><td class="m">4 cm</td></tr>
+        <tr><td class="m">150 cm²</td><td class="m">25 cm²</td><td class="m">5 cm</td></tr>
+        <tr><td class="m">216 cm²</td><td class="m">36 cm²</td><td class="m">6 cm</td></tr>
+        <tr><td class="m">294 cm²</td><td class="m">49 cm²</td><td class="m">7 cm</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Divide by six before taking any root</span>
+      The square root of ${m('96')} is not the edge of anything here. ${m('96 ÷ 6 = 16')} is a face, and
+      ${m('4')} is the edge. Two steps, always in that order.</div>`
+    },
+    {
+      h: 'A face from the volume',
+      html: `<p>Volume is a face multiplied by the edge standing perpendicular to it. Reverse that and a
+      face area falls out of a division.</p>
+      ${eq(m('face = ' + f('V', 'perpendicular edge')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Volume</th><th>Edge given</th><th>Face perpendicular to it</th></tr></thead>
+      <tbody>
+        <tr><td class="m">120 cm³</td><td class="m">height 6 cm</td><td class="m">20 cm²</td></tr>
+        <tr><td class="m">240 cm³</td><td class="m">height 4 cm</td><td class="m">60 cm²</td></tr>
+        <tr><td class="m">84 cm³</td><td class="m">height 4 cm</td><td class="m">21 cm²</td></tr>
+        <tr><td class="m">360 cm³</td><td class="m">height 5 cm</td><td class="m">72 cm²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The units confirm the choice</div>
+      ${m('cm³ ÷ cm = cm²')} — a face. Dividing by an area would have given a length instead, which is the
+      previous topic, not this one.</div>`
+    },
+    {
+      h: 'Which faces the question needs',
+      html: `<p>Practical questions rarely want all six faces. Read what is being covered before adding
+      anything up.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>Faces counted</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>wrapping a ${m('20 × 15 × 10')} cm box</td><td>all six</td><td class="m">2(300 + 150 + 200)</td><td class="m">1300 cm²</td></tr>
+        <tr><td>card for an open box ${m('8 × 5 × 4')} cm</td><td>five — no lid</td><td class="m">40 + 64 + 40</td><td class="m">144 cm²</td></tr>
+        <tr><td>painting the walls of a ${m('5 × 4 × 3')} m room</td><td>four walls</td><td class="m">2(15) + 2(12)</td><td class="m">54 m²</td></tr>
+        <tr><td>the same room with the ceiling</td><td>four walls and the top</td><td class="m">54 + 20</td><td class="m">74 m²</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A floor is not painted, a lid may not exist</span>
+      Each of these questions has the same four numbers in it and four different answers. The reading, not
+      the arithmetic, is what is being tested.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the three different face areas of a ' + m('5 × 4 × 3') + ' cm cuboid, and the total surface area.',
+      steps: [
+        ['Pair the edges: ' + m('5 · 4 = 20') + ', ' + m('4 · 3 = 12') + ', ' + m('5 · 3 = 15') + '.', ''],
+        ['Each appears twice.', ''],
+        [m('2(20 + 12 + 15) = 94') + ' cm².', 'The largest face uses the two largest edges ✓']
+      ],
+      ans: m('20') + ', ' + m('12') + ' and ' + m('15') + ' cm²; total ' + m('94') + ' cm²'
+    },
+    {
+      q: 'A cube has surface area ' + m('294') + ' cm². Find the area of one face and the edge.',
+      steps: [
+        [m('294 ÷ 6 = 49') + ' cm² for one face.', ''],
+        ['That face is a square, so the edge is its square root.', ''],
+        [m('7') + ' cm.', 'Check: ' + m('6 · 49 = 294') + ' ✓']
+      ],
+      ans: m('49') + ' cm² and ' + m('7') + ' cm'
+    },
+    {
+      q: 'How much card is needed for an open box (no lid) ' + m('8') + ' cm by ' + m('5') + ' cm by ' + m('4') + ' cm deep?',
+      steps: [
+        ['Base: ' + m('8 · 5 = 40') + ' cm².', ''],
+        ['Two long walls: ' + m('2 · 8 · 4 = 64') + '. Two short walls: ' + m('2 · 5 · 4 = 40') + '.', ''],
+        [m('40 + 64 + 40 = 144') + ' cm².', 'The closed box would need ' + m('184') + ' — one lid more.']
+      ],
+      ans: m('144') + ' cm²'
+    }
+  ],
+  modelNote: 'Open out a cardboard box along its edges before the lesson; laying the net flat makes the three pairs visible in a way no drawing does.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which face, and how big',
+    hint: 'Pair the edges off; for a cube, divide by six first.',
+    items: [
+      { q: 'The largest face of a ' + m('5 × 4 × 3') + ' cuboid is:', a: [m('12'), m('15'), m('20'), m('60')], c: 2, why: 'The two largest edges.' },
+      { q: 'The smallest face of that cuboid is:', a: [m('12'), m('15'), m('20'), m('9')], c: 0, why: m('4 · 3') + '.' },
+      { q: 'A cube of surface area ' + m('150') + ' cm² has one face of:', a: [m('25'), m('50'), m('30'), m('12.5')], c: 0, why: m('150 ÷ 6') + '.' },
+      { q: 'That cube has edge:', a: [m('25'), m('5'), m('6'), m('12.5')], c: 1, why: 'The root of ' + m('25') + '.' },
+      { q: 'A cuboid of volume ' + m('240') + ' cm³ and height ' + m('4') + ' cm has base:', a: [m('60') + ' cm²', m('960') + ' cm²', m('60') + ' cm', m('24') + ' cm²'], c: 0, why: m('cm³ ÷ cm = cm²') + '.' },
+      { q: 'Wrapping a ' + m('20 × 15 × 10') + ' cm box needs:', a: [m('650'), m('1300'), m('3000'), m('900')], c: 1, why: 'All six faces.' },
+      { q: 'An open box ' + m('8 × 5 × 4') + ' cm needs:', a: [m('184'), m('144'), m('104'), m('40')], c: 1, why: 'Five faces, no lid.' },
+      { q: 'The four walls of a ' + m('5 × 4 × 3') + ' m room measure:', a: [m('54') + ' m²', m('74') + ' m²', m('94') + ' m²', m('60') + ' m²'], c: 0, why: m('2 · 15 + 2 · 12') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'A cuboid has how many <i>different</i> face areas?', a: [m('2'), m('3'), m('6'), m('12')], c: 1, why: 'Three pairs.' },
+    { q: 'One face of a cube is the total surface:', a: ['times six', 'divided by six', 'squared', 'divided by four'], c: 1, why: 'Six equal squares.' },
+    { q: 'The area of a face of an ' + m('8 × 5 × 2') + ' cuboid cannot be:', a: [m('40'), m('16'), m('10'), m('80')], c: 3, why: m('80') + ' is the volume, not a face.' },
+    { q: 'Volume divided by an edge gives:', a: ['a length', 'an area', 'a volume', 'nothing'], c: 1, why: m('cm³ ÷ cm = cm²') + '.' },
+    { q: 'An open box needs how many faces of card?', a: [m('4'), m('5'), m('6'), m('3')], c: 1, why: 'All but the lid.' },
+    { q: 'Painting only the walls of a room leaves out:', a: ['the walls', 'the floor and ceiling', 'one wall', 'nothing'], c: 1, why: 'Read what is covered.' }
+  ],
+  practice: {
+    easy: [
+      ['The largest face of a ' + m('5 × 4 × 3') + ' cm cuboid', m('20') + ' cm²'],
+      ['The smallest face of that cuboid', m('12') + ' cm²'],
+      ['The three faces of an ' + m('8 × 5 × 2') + ' cm cuboid', m('40, 16') + ' and ' + m('10') + ' cm²'],
+      ['One face of a cube of edge ' + m('4') + ' cm', m('16') + ' cm²'],
+      ['One face of a cube of surface area ' + m('96') + ' cm²', m('16') + ' cm²'],
+      ['The number of faces of a cuboid', m('6')],
+      ['The faces of a cube are', 'six equal squares']
+    ],
+    med: [
+      ['One face of a cube of surface area ' + m('150') + ' cm²', m('25') + ' cm²'],
+      ['One face of a cube of surface area ' + m('294') + ' cm²', m('49') + ' cm²'],
+      ['The base of a cuboid of volume ' + m('120') + ' cm³ and height ' + m('6') + ' cm', m('20') + ' cm²'],
+      ['The base of a cuboid of volume ' + m('240') + ' cm³ and height ' + m('4') + ' cm', m('60') + ' cm²'],
+      ['The three faces of a ' + m('10 × 6 × 4') + ' cm cuboid', m('60, 40') + ' and ' + m('24') + ' cm²'],
+      ['The total surface of a ' + m('6 × 4 × 3') + ' cm cuboid', m('108') + ' cm²'],
+      ['The base of a cuboid of volume ' + m('360') + ' cm³ and height ' + m('5') + ' cm', m('72') + ' cm²']
+    ],
+    hard: [
+      ['A cube of surface area ' + m('216') + ' cm²: one face and the edge', m('36') + ' cm² and ' + m('6') + ' cm'],
+      ['The four walls of a ' + m('5') + ' m by ' + m('4') + ' m by ' + m('3') + ' m room', m('54') + ' m²'],
+      ['The same room including the ceiling', m('74') + ' m²'],
+      ['Card for an open box ' + m('8 × 5 × 4') + ' cm', m('144') + ' cm²'],
+      ['Paper to wrap a ' + m('20 × 15 × 10') + ' cm box', m('1300') + ' cm²'],
+      ['A cuboid has faces ' + m('12, 15') + ' and ' + m('20') + ' cm²: its edges', m('3, 4') + ' and ' + m('5') + ' cm'],
+      ['…and its volume', m('60') + ' cm³']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'For every task, say first which faces the question is asking about.',
+  homework: [
+    'List the three different face areas of a ' + m('9 × 4 × 2') + ' cm cuboid and find the total surface area.',
+    'A cube has surface area ' + m('384') + ' cm². Find one face and the edge.',
+    'A cuboid has volume ' + m('210') + ' cm³ and height ' + m('7') + ' cm. Find the area of its base.',
+    'How much card is needed for an open box ' + m('10') + ' cm by ' + m('6') + ' cm by ' + m('4') + ' cm deep?',
+    'A room is ' + m('6') + ' m by ' + m('5') + ' m by ' + m('3') + ' m. Find the area of its four walls.'
+  ]
+});
