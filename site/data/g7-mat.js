@@ -9088,3 +9088,178 @@ G7_MAT.push({
     'Convert ' + m('4.5 ha') + ' to square metres and ' + m('250 000 cm²') + ' to square metres.'
   ]
 });
+
+/* ============================== 53 ============================== */
+G7_MAT.push({
+  id: 'g7-53', stream: 'mat', grade: 7, quarter: 3, lessons: '96–97', hours: 2,
+  title: 'Control work 6, and work on the mistakes',
+  subtitle: 'Parallel lines, the angle sum and right-angled triangles in one paper.',
+  uz: 'Matematika 7, Nazorat ishi 6', uzPage: 'pp. 226–281',
+  cam: 'S8 5 review', camPage: 'Stage 8, pp. 44–56', wb: 'Control paper M6',
+  objectives: [
+    'Name a pair of angles at a transversal before quoting any rule about it.',
+    'Use the property when parallelism is given and the criterion when it is wanted.',
+    'Find angles of triangles, including from an exterior angle.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Transversal', 'Kesuvchi', 'Секущая'],
+    ['Alternate angles', 'Ichki almashinuvchi burchaklar', 'Накрест лежащие углы'],
+    ['Co-interior angles', 'Ichki bir tomonli burchaklar', 'Односторонние углы'],
+    ['Angle sum', 'Burchaklar yig‘indisi', 'Сумма углов'],
+    ['Exterior angle', 'Tashqi burchak', 'Внешний угол'],
+    ['Hypotenuse', 'Gipotenuza', 'Гипотенуза'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Name the three pairs of angles at a transversal and say what each does when the lines are parallel</td><td class="m">3</td><td>L82–85</td></tr>
+        <tr><td>2</td><td>${m('a ∥ b')} and one angle is ${m('112°')}: find all eight angles</td><td class="m">4</td><td>L84–85</td></tr>
+        <tr><td>3</td><td>Co-interior angles are ${m('4x')} and ${m('5x')}: find both</td><td class="m">4</td><td>L84–85</td></tr>
+        <tr><td>4</td><td>The angles of a triangle are in the ratio ${m('2 : 3 : 4')}: find them</td><td class="m">4</td><td>L86–87</td></tr>
+        <tr><td>5</td><td>An exterior angle is ${m('125°')} and one remote interior angle is ${m('47°')}: find the other two interior angles</td><td class="m">5</td><td>L86–87</td></tr>
+        <tr><td>6</td><td>Hypotenuse ${m('16 cm')}, one angle ${m('30°')}: find the opposite leg and the third angle</td><td class="m">5</td><td>L88–89</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries one mark for the word “co-interior” alone; Q2 one for noticing that only two sizes
+      appear; Q5 two for using the <i>remote</i> pair and one for the check against ${m('180°')}; Q6 one
+      for the ${m('30°')} rule being quoted by name.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>pair misnamed</td><td>“alternate” for two angles on the same side</td><td>check the position first</td></tr>
+        <tr><td>co-interior treated as equal</td><td class="m">4x = 5x</td><td class="m">4x + 5x = 180°</td></tr>
+        <tr><td>criterion used as a property</td><td>“alternate, so parallel, so equal”</td><td>parallelism was given — use the property</td></tr>
+        <tr><td>all three angles added to the exterior angle</td><td class="m">125° = 47° + b + c</td><td>the two <i>remote</i> angles only</td></tr>
+        <tr><td>acute angles subtracted from ${m('180°')}</td><td class="m">180° − 30° = 150°</td><td class="m">90° − 30° = 60°</td></tr>
+        <tr><td>${m('30°')} rule inverted</td><td>the leg is twice the hypotenuse</td><td>it is half</td></tr>
+        <tr><td>no check</td><td>three angles that do not total ${m('180°')}</td><td>add them back</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'The chapter as one map',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Block</th><th>The sentence</th></tr></thead>
+      <tbody>
+        <tr><td>parallel lines</td><td>no common point, and exactly one parallel through an outside point</td></tr>
+        <tr><td>the criteria</td><td>an angle fact proves parallelism</td></tr>
+        <tr><td>the properties</td><td>parallelism proves an angle fact</td></tr>
+        <tr><td>the angle sum</td><td class="m">180°</td></tr>
+        <tr><td>the exterior angle</td><td>equal to the two remote interior angles</td></tr>
+        <tr><td>right-angled triangles</td><td>the acute angles add to ${m('90°')}</td></tr>
+        <tr><td>the ${m('30°')} rule</td><td>that leg is half the hypotenuse</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      The rest of Quarter III is algebra: the abridged multiplication formulae, algebraic fractions and
+      linear equations. Geometry returns in Quarter IV with construction problems.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q3: co-interior angles ' + m('4x') + ' and ' + m('5x') + '.',
+      steps: [
+        ['Co-interior angles on parallel lines add to ' + m('180°') + '.', ''],
+        [m('4x + 5x = 180°'), ''],
+        [m('9x = 180°') + ', so ' + m('x = 20°') + '.', ''],
+        ['The angles are ' + m('80°') + ' and ' + m('100°') + '.', '']
+      ],
+      ans: m('80°') + ' and ' + m('100°')
+    },
+    {
+      q: 'Model answer, Q5: exterior ' + m('125°') + ', one remote interior angle ' + m('47°') + '.',
+      steps: [
+        ['The exterior angle equals the sum of the two remote angles.', ''],
+        [m('125° − 47° = 78°'), 'The second remote angle.'],
+        ['The adjacent interior angle is ' + m('180° − 125° = 55°') + '.', ''],
+        ['Check: ' + m('47° + 78° + 55° = 180°') + ' ✓', '']
+      ],
+      ans: m('78°') + ' and ' + m('55°')
+    },
+    {
+      q: 'Model answer, Q6: hypotenuse ' + m('16 cm') + ', one angle ' + m('30°') + '.',
+      steps: [
+        ['The leg opposite ' + m('30°') + ' is half the hypotenuse.', ''],
+        [m('16 ÷ 2 = 8 cm'), ''],
+        ['The acute angles add to ' + m('90°') + '.', ''],
+        [m('90° − 30° = 60°'), '']
+      ],
+      ans: m('8 cm') + ' and ' + m('60°')
+    }
+  ],
+  modelNote: 'Return Q1 first and have the class read the three names aloud; most of the lost marks in Q2 and Q3 turn out to be naming errors carried forward.',
+  interactive: {
+    type: 'quiz',
+    title: 'The chapter in twelve questions',
+    hint: 'Position first, rule second.',
+    items: [
+      { q: 'Parallel lines have how many common points?', a: [m('0'), m('1'), m('2'), 'many'], c: 0, why: 'They never meet.' },
+      { q: 'Parallels through a point off a line:', a: [m('0'), 'exactly one', 'two', 'many'], c: 1, why: 'The axiom.' },
+      { q: 'Equal alternate angles prove:', a: ['perpendicularity', 'parallelism', 'congruence', 'nothing'], c: 1, why: 'The criterion.' },
+      { q: 'On parallel lines, co-interior angles:', a: ['are equal', 'add to ' + m('90°'), 'add to ' + m('180°'), 'add to ' + m('360°')], c: 2, why: 'The property.' },
+      { q: 'With one angle of ' + m('112°') + ', the eight angles take:', a: ['one size', 'two sizes', 'four sizes', 'eight sizes'], c: 1, why: m('112°') + ' and ' + m('68°') + '.' },
+      { q: 'Co-interior ' + m('4x') + ' and ' + m('5x') + ' give ' + m('x') + ' equal to:', a: [m('10'), m('20'), m('36'), m('45')], c: 1, why: m('9x = 180') + '.' },
+      { q: 'The angles of a triangle add to:', a: [m('90°'), m('180°'), m('270°'), m('360°')], c: 1, why: 'The theorem.' },
+      { q: 'Ratio ' + m('2 : 3 : 4') + ' gives:', a: [m('40°, 60°, 80°'), m('30°, 60°, 90°'), m('45°, 60°, 75°'), m('20°, 30°, 40°')], c: 0, why: m('9x = 180') + '.' },
+      { q: 'An exterior angle equals:', a: ['the adjacent angle', 'the two remote angles', 'all three', m('90°')], c: 1, why: 'The theorem.' },
+      { q: 'The acute angles of a right triangle add to:', a: [m('45°'), m('90°'), m('180°'), m('270°')], c: 1, why: m('180 − 90') + '.' },
+      { q: 'Hypotenuse ' + m('16') + ', angle ' + m('30°') + ': the opposite leg is:', a: [m('4'), m('8'), m('16'), m('32')], c: 1, why: 'Half.' },
+      { q: 'The longest side of any triangle faces:', a: ['the smallest angle', 'the largest angle', 'the right angle only', 'any angle'], c: 1, why: 'The ordering theorem.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 asks first for:', a: ['a calculation', 'the names of the pairs', 'a construction', 'a proof'], c: 1, why: 'Naming is a mark.' },
+    { q: 'In Q2 the eight angles take:', a: ['one size', 'two sizes', 'four sizes', 'eight sizes'], c: 1, why: 'An angle and its supplement.' },
+    { q: 'Q3 uses:', a: ['equal co-interior angles', 'co-interior angles adding to ' + m('180°'), 'the angle sum', 'the exterior angle'], c: 1, why: 'The property.' },
+    { q: 'Q4 sets up:', a: [m('9x = 180'), m('9x = 360'), m('x = 180'), m('3x = 180')], c: 0, why: m('2 + 3 + 4 = 9') + '.' },
+    { q: 'Q5 uses:', a: ['all three interior angles', 'the two remote angles', 'the adjacent angle only', 'the angle sum alone'], c: 1, why: 'The exterior-angle theorem.' },
+    { q: 'Q6 quotes:', a: ['the angle sum', 'the ' + m('30°') + ' rule', 'the criterion', 'the triangle inequality'], c: 1, why: 'Half the hypotenuse.' }
+  ],
+  practice: {
+    easy: [
+      ['On parallel lines, alternate angles are', 'equal'],
+      ['On parallel lines, co-interior angles add to', m('180°')],
+      ['One angle is ' + m('112°') + ': its supplement', m('68°')],
+      ['Angles of a triangle add to', m('180°')],
+      ['Acute angles of a right triangle add to', m('90°')],
+      ['Hypotenuse ' + m('16') + ', angle ' + m('30°') + ': the opposite leg', m('8')],
+      ['Exterior ' + m('125°') + ': the adjacent interior angle', m('55°')]
+    ],
+    med: [
+      ['Co-interior ' + m('4x') + ' and ' + m('5x'), m('80°') + ' and ' + m('100°')],
+      ['Ratio ' + m('2 : 3 : 4'), m('40°, 60°, 80°')],
+      ['Exterior ' + m('125°') + ', one remote angle ' + m('47°') + ': the other', m('78°')],
+      [m('a ∥ b') + ' and one angle ' + m('112°') + ': the alternate angle', m('112°')],
+      [m('a ∥ b') + ' and one angle ' + m('112°') + ': the co-interior angle', m('68°')],
+      ['Right triangle with an angle of ' + m('58°') + ': the third angle', m('32°')],
+      ['Sides ' + m('4, 6, 11') + ': a triangle?', 'No']
+    ],
+    hard: [
+      ['Alternate angles ' + m('6x − 5') + ' and ' + m('4x + 25') + ' on parallel lines', m('x = 15')],
+      ['An exterior angle is ' + m('4') + ' times its adjacent interior angle', m('144°') + ' and ' + m('36°')],
+      ['A right triangle has acute angles in the ratio ' + m('2 : 7'), m('20°') + ' and ' + m('70°')],
+      ['Co-interior ' + m('2x + 30') + ' and ' + m('x + 60'), m('x = 30')],
+      ['One angle of a triangle is the sum of the other two: what kind of triangle is it?', 'Right-angled'],
+      ['A transversal cuts two parallel lines at ' + m('90°') + ': all eight angles are', m('90°')],
+      ['Angles ' + m('x, x + 20, x + 40'), m('40°, 60°, 80°')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every question you lost a mark on in full, from the first line.',
+  homework: [
+    'Rewrite in full every question on which you lost a mark.',
+    'Draw a transversal across two parallel lines, mark ' + m('118°') + ' and label all eight angles.',
+    'Co-interior angles are ' + m('7x') + ' and ' + m('2x') + '. Find both.',
+    'An exterior angle is ' + m('132°') + ' and one remote interior angle is ' + m('61°') + '. Find the other two.',
+    'Write one sentence for each of the seven blocks on the chapter map.'
+  ]
+});
