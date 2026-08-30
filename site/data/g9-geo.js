@@ -2624,3 +2624,655 @@ G9_GEO.push({
     'Describe fully the transformation ' + m('(x, y) ↦ (−y, x)') + '.'
   ]
 });
+
+/* ============================== 17 ============================== */
+G9_GEO.push({
+  id: 'g9-17', stream: 'geo', grade: 9, quarter: 2, lessons: '19–20', hours: 2,
+  title: 'Sine, cosine, tangent and cotangent of angles from 0° to 180°',
+  subtitle: 'The ratios escape the right triangle, so that an obtuse angle can have a sine too.',
+  uz: 'Geometriya 9, §14', uzPage: 'pp. 76–82',
+  cam: 'Extension beyond IGX', camPage: 'Core & Extended, pp. 300–310', wb: 'Exercise 15.1',
+  objectives: [
+    'Define the four ratios for any angle from 0° to 180° using the unit semicircle.',
+    'Give the exact values at 0°, 30°, 45°, 60°, 90°, 120°, 135°, 150° and 180°.',
+    'Use sin(180° − α) = sin α and cos(180° − α) = −cos α.',
+    'Determine the sign of each ratio for an obtuse angle.'
+  ],
+  terms: [
+    ['Obtuse angle', 'O‘tmas burchak', 'Тупой угол'],
+    ['Unit semicircle', 'Birlik yarim aylana', 'Единичная полуокружность'],
+    ['Supplementary angles', 'Qo‘shni burchaklar', 'Смежные углы'],
+    ['Ordinate', 'Ordinata', 'Ордината'],
+    ['Abscissa', 'Abssissa', 'Абсцисса'],
+    ['Sign', 'Ishora', 'Знак'],
+    ['Exact value', 'Aniq qiymat', 'Точное значение'],
+    ['Extension', 'Kengaytirish', 'Расширение']
+  ],
+  timing: [[15, 'Why the right triangle is not enough'], [25, 'The definition on a semicircle'], [22, 'Supplementary angles'], [23, 'The table'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Why the right triangle is not enough',
+      html: `<p>In Grade 8 ${m('sin A')} was defined as ${m(f('opposite', 'hypotenuse'))} in a right
+      triangle, so ${m('A')} had to be acute. But a triangle can have an obtuse angle, and the sine rule
+      of the next lesson will need its sine.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Definition</th><th>Works for</th></tr></thead>
+      <tbody>
+        <tr><td>ratios in a right triangle</td><td class="m">0° < α < 90°</td></tr>
+        <tr><td>coordinates on the unit semicircle</td><td class="m">0° ≤ α ≤ 180°</td></tr>
+        <tr><td>coordinates on the whole unit circle</td><td>every angle (Grade 9 algebra)</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The same extension as in algebra, arriving from the other side</div>
+      The algebra course reaches the unit circle from rotation; geometry reaches it from the need to
+      solve an obtuse triangle. The definition is identical, and the two courses meet here.</div>`
+    },
+    {
+      h: 'The definition on a semicircle',
+      html: `<p>Draw the unit semicircle above ${m('Ox')} and let the ray at angle ${m('α')} from the
+      positive ${m('x')}-axis meet it at ${m('P(x, y)')}. Then</p>
+      ${eq(m('sin α = y') + '     ' + m('cos α = x') + '     ' + m('tan α = ' + f('y', 'x')) + '     ' + m('cot α = ' + f('x', 'y')), true)}
+      {{fig:unitCircle:For an angle up to 180° the point lies on the upper half — the ordinate is never negative.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Range</th><th class="m">sin</th><th class="m">cos</th><th class="m">tan</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0° < α < 90°</td><td class="m">+</td><td class="m">+</td><td class="m">+</td></tr>
+        <tr><td class="m">α = 90°</td><td class="m">1</td><td class="m">0</td><td>undefined</td></tr>
+        <tr><td class="m">90° < α < 180°</td><td class="m">+</td><td class="m">−</td><td class="m">−</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Sine is never negative for a triangle’s angle</div>
+      Every angle of a triangle lies strictly between ${m('0°')} and ${m('180°')}, so its point is on the
+      upper semicircle and its sine is positive. That is exactly what makes the sine rule and the area
+      formula work without any case analysis.</div>`
+    },
+    {
+      h: 'Supplementary angles',
+      html: `<p>The points at ${m('α')} and ${m('180° − α')} are mirror images in the ${m('y')}-axis, so
+      the ordinates agree and the abscissae are opposite:</p>
+      ${eq(m('sin(180° − α) = sin α') + '     ' + m('cos(180° − α) = −cos α'), true)}
+      ${eq(m('tan(180° − α) = −tan α') + '     ' + m('cot(180° − α) = −cot α'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Angle</th><th>Rewrite</th><th class="m">sin</th><th class="m">cos</th></tr></thead>
+      <tbody>
+        <tr><td class="m">120°</td><td class="m">180° − 60°</td><td class="m">${f(sr('3'), '2')}</td><td class="m">−${f('1', '2')}</td></tr>
+        <tr><td class="m">135°</td><td class="m">180° − 45°</td><td class="m">${f(sr('2'), '2')}</td><td class="m">−${f(sr('2'), '2')}</td></tr>
+        <tr><td class="m">150°</td><td class="m">180° − 30°</td><td class="m">${f('1', '2')}</td><td class="m">−${f(sr('3'), '2')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Two angles share a sine; only one shares a cosine</span>
+      ${m('sin 30° = sin 150°')}. This ambiguity is the reason the sine rule can give two answers for an
+      angle, and why the cosine rule — whose cosine determines the angle uniquely — is preferred when
+      there is any doubt.</div>`
+    },
+    {
+      h: 'The table',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th class="m">α</th><th class="m">0°</th><th class="m">30°</th><th class="m">45°</th><th class="m">60°</th><th class="m">90°</th><th class="m">120°</th><th class="m">135°</th><th class="m">150°</th><th class="m">180°</th></tr></thead>
+      <tbody>
+        <tr><td class="m">sin</td><td class="m">0</td><td class="m">${f('1', '2')}</td><td class="m">${f(sr('2'), '2')}</td><td class="m">${f(sr('3'), '2')}</td><td class="m">1</td><td class="m">${f(sr('3'), '2')}</td><td class="m">${f(sr('2'), '2')}</td><td class="m">${f('1', '2')}</td><td class="m">0</td></tr>
+        <tr><td class="m">cos</td><td class="m">1</td><td class="m">${f(sr('3'), '2')}</td><td class="m">${f(sr('2'), '2')}</td><td class="m">${f('1', '2')}</td><td class="m">0</td><td class="m">−${f('1', '2')}</td><td class="m">−${f(sr('2'), '2')}</td><td class="m">−${f(sr('3'), '2')}</td><td class="m">−1</td></tr>
+        <tr><td class="m">tan</td><td class="m">0</td><td class="m">${f(sr('3'), '3')}</td><td class="m">1</td><td class="m">${sr('3')}</td><td>—</td><td class="m">−${sr('3')}</td><td class="m">−1</td><td class="m">−${f(sr('3'), '3')}</td><td class="m">0</td></tr>
+      </tbody></table></div>
+      <p>The sine row is symmetric about ${m('90°')}; the cosine row is antisymmetric. Reading the table
+      that way halves what has to be remembered.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find ' + m('sin 120°') + ', ' + m('cos 120°') + ' and ' + m('tan 120°') + '.',
+      steps: [
+        [m('120° = 180° − 60°'), ''],
+        [m('sin 120° = sin 60° = ' + f(sr('3'), '2')), 'Sine unchanged.'],
+        [m('cos 120° = −cos 60° = −' + f('1', '2')), 'Cosine negated.'],
+        [m('tan 120° = −' + sr('3')), '']
+      ],
+      ans: m(f(sr('3'), '2') + ', −' + f('1', '2') + ', −' + sr('3'))
+    },
+    {
+      q: 'An angle of a triangle has ' + m('sin α = ' + f('1', '2')) + '. What can ' + m('α') + ' be?',
+      steps: [
+        [m('sin 30° = ' + f('1', '2')), ''],
+        [m('sin 150° = sin(180° − 30°) = ' + f('1', '2')), ''],
+        ['Both lie strictly between ' + m('0°') + ' and ' + m('180°') + '.', ''],
+        [m('α = 30°') + ' or ' + m('α = 150°') + '.', 'Two possibilities.']
+      ],
+      ans: m('30°') + ' or ' + m('150°')
+    },
+    {
+      q: 'An angle of a triangle has ' + m('cos α = −' + f('1', '2')) + '. Find ' + m('α') + '.',
+      steps: [
+        ['A negative cosine means an obtuse angle.', ''],
+        [m('cos 60° = ' + f('1', '2')), ''],
+        [m('cos(180° − 60°) = −' + f('1', '2')), ''],
+        [m('α = 120°') + ' — the only possibility.', 'Cosine is not ambiguous.']
+      ],
+      ans: m('120°')
+    }
+  ],
+  modelNote: 'Draw one semicircle and swing a ruler from 0° to 180°; the class watches the height rise and fall while the horizontal reading passes through zero and turns negative.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'From 0° to 180°',
+    hint: 'Watch the abscissa change sign at 90°.'
+  },
+  quiz: [
+    { q: 'For ' + m('0° < α < 180°') + ', ' + m('sin α') + ' is:', a: ['always positive', 'always negative', 'sometimes zero', 'undefined'], c: 0, why: 'The upper semicircle.' },
+    { q: m('cos α') + ' for an obtuse ' + m('α') + ' is:', a: ['positive', 'negative', 'zero', 'undefined'], c: 1, why: 'The abscissa is to the left.' },
+    { q: m('sin(180° − α)') + ' equals:', a: [m('−sin α'), m('sin α'), m('cos α'), m('−cos α')], c: 1, why: 'Mirror in the ' + m('y') + '-axis.' },
+    { q: m('cos(180° − α)') + ' equals:', a: [m('cos α'), m('−cos α'), m('sin α'), m('−sin α')], c: 1, why: 'The abscissa is negated.' },
+    { q: m('cos 120°') + ' equals:', a: [m(f('1', '2')), m('−' + f('1', '2')), m(f(sr('3'), '2')), m('−' + f(sr('3'), '2'))], c: 1, why: m('180° − 60°') + '.' },
+    { q: m('sin α = ' + f('1', '2')) + ' in a triangle gives:', a: [m('30°') + ' only', m('150°') + ' only', 'both', 'neither'], c: 2, why: 'Sine is ambiguous.' }
+  ],
+  practice: {
+    easy: [
+      [m('sin 90°'), m('1')],
+      [m('cos 90°'), m('0')],
+      [m('sin 180°'), m('0')],
+      [m('cos 180°'), m('−1')],
+      [m('sin 120°'), m(f(sr('3'), '2'))],
+      [m('cos 120°'), m('−' + f('1', '2'))],
+      [m('sin 150°'), m(f('1', '2'))]
+    ],
+    med: [
+      [m('cos 150°'), m('−' + f(sr('3'), '2'))],
+      [m('sin 135°'), m(f(sr('2'), '2'))],
+      [m('cos 135°'), m('−' + f(sr('2'), '2'))],
+      [m('tan 120°'), m('−' + sr('3'))],
+      [m('tan 135°'), m('−1')],
+      [m('sin α = ' + f('1', '2')) + ' in a triangle', m('30°') + ' or ' + m('150°')],
+      [m('cos α = −' + f('1', '2')) + ' in a triangle', m('120°')]
+    ],
+    hard: [
+      [m('sin 120° + cos 60°'), m(f(sr('3') + ' + 1', '2'))],
+      [m('sin 150° · cos 150°'), m('−' + f(sr('3'), '4'))],
+      [m('sin²120° + cos²120°'), m('1')],
+      [m('cos α = −0.8') + ' in a triangle: ' + m('sin α'), m('0.6')],
+      [m('sin α = 0.6') + ' and ' + m('α') + ' obtuse: ' + m('cos α'), m('−0.8')],
+      ['Which angle of a triangle can have a negative cosine?', 'At most one — the obtuse angle'],
+      ['Simplify ' + m('sin(180° − α) + cos(180° − α)'), m('sin α − cos α')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every obtuse angle as ' + m('180° − α') + ' before using the table.',
+  homework: [
+    'Find ' + m('sin 135°') + ', ' + m('cos 135°') + ' and ' + m('tan 135°') + '.',
+    'Find ' + m('sin 150°') + ' and ' + m('cos 150°') + '.',
+    'An angle of a triangle has ' + m('sin α = ' + f(sr('2'), '2')) + '. What can ' + m('α') + ' be?',
+    'An angle of a triangle has ' + m('cos α = −0.6') + '. Find ' + m('sin α') + '.',
+    'Explain why the sine of any angle of a triangle is positive.'
+  ]
+});
+
+/* ============================== 18 ============================== */
+G9_GEO.push({
+  id: 'g9-18', stream: 'geo', grade: 9, quarter: 2, lessons: '21', hours: 1,
+  title: 'The area of a triangle from two sides and the angle between them',
+  subtitle: 'S = ½ab sin C — the formula that needs no height at all.',
+  uz: 'Geometriya 9, §15', uzPage: 'pp. 83–86',
+  cam: 'IGX 7.1', camPage: 'Core & Extended, pp. 130–136', wb: 'Exercise 7.1',
+  objectives: [
+    'Derive S = ½ab sin C from the base-and-height formula.',
+    'Use the formula for acute and obtuse included angles.',
+    'Rearrange it to find a side or the angle.',
+    'Apply it to parallelograms and to land measurement.'
+  ],
+  terms: [
+    ['Area of a triangle', 'Uchburchak yuzi', 'Площадь треугольника'],
+    ['Included angle', 'Orasidagi burchak', 'Угол между сторонами'],
+    ['Height', 'Balandlik', 'Высота'],
+    ['Base', 'Asos', 'Основание'],
+    ['To rearrange', 'Almashtirish', 'Выразить'],
+    ['Parallelogram', 'Parallelogramm', 'Параллелограмм'],
+    ['Square unit', 'Kvadrat birlik', 'Квадратная единица'],
+    ['Two answers', 'Ikki javob', 'Два ответа']
+  ],
+  timing: [[10, 'The derivation'], [14, 'Using it'], [10, 'Backwards'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The derivation',
+      html: `<p>In ${m('△ABC')} drop the height ${m('h')} from ${m('A')} to ${m('BC')}. In the right
+      triangle formed, ${m('h = b sin C')}. Substituting into ${m('S = ' + f('1', '2') + 'ah')}:</p>
+      ${eq(m('S = ' + f('1', '2') + 'ab sin C'), true)}
+      {{fig:areaTriangle:The height is b sin C — so the area needs only two sides and the angle between them.}}
+      <p>The same argument works when ${m('C')} is obtuse: the foot of the height falls outside the
+      triangle, but ${m('h = b sin(180° − C) = b sin C')} all the same. That is precisely why the last
+      lesson was needed.</p>
+      <div class="keybox"><div class="klabel">Two sides and the angle <b>between</b> them</div>
+      The angle must be the included one. ${m('S = ' + f('1', '2') + 'ab sin A')} is wrong unless
+      ${m('A')} happens to lie between the sides ${m('a')} and ${m('b')} — which it does not, since
+      ${m('a')} is opposite ${m('A')}.</div>`
+    },
+    {
+      h: 'Using it',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Sides</th><th>Angle</th><th>Area</th></tr></thead>
+      <tbody>
+        <tr><td class="m">6, 8</td><td class="m">30°</td><td class="m">½ · 48 · 0.5 = 12</td></tr>
+        <tr><td class="m">6, 8</td><td class="m">90°</td><td class="m">24</td></tr>
+        <tr><td class="m">6, 8</td><td class="m">150°</td><td class="m">12</td></tr>
+        <tr><td class="m">5, 5</td><td class="m">60°</td><td class="m">${f('25' + sr('3'), '4')}</td></tr>
+      </tbody></table></div>
+      <p>The first and third rows have the same area, because ${m('sin 30° = sin 150°')}. The area is
+      greatest when the angle is ${m('90°')} — a fact worth remembering for optimisation questions.</p>
+      <p>For a <b>parallelogram</b> the same two sides and angle give twice as much:
+      ${m('S = ab sin C')}.</p>
+      <div class="keybox"><div class="klabel">The greatest area for two given sides is at ${m('90°')}</div>
+      Because ${m('sin C ≤ 1')} with equality only at ${m('C = 90°')}. Any “maximise the area” question
+      about two fixed sides has the same one-word answer.</div>`
+    },
+    {
+      h: 'Backwards',
+      html: `<p>Rearranging gives a side or the angle.</p>
+      ${eq(m('sin C = ' + f('2S', 'ab')) + '     ' + m('b = ' + f('2S', 'a sin C')), true)}
+      <p><b>Example.</b> ${m('S = 12')}, ${m('a = 6')}, ${m('b = 8')}. Then
+      ${m('sin C = ' + f('24', '48') + ' = 0.5')}, so ${m('C = 30°')} <b>or</b> ${m('C = 150°')}.</p>
+      <div class="warn"><span class="wl">Give both answers unless the question rules one out</span>
+      A sine does not determine an angle of a triangle. Only extra information — “the triangle is
+      acute”, or a diagram — removes one of the two. Losing the second answer is the standard mistake
+      here and in the sine rule.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the area of a triangle with sides ' + m('6') + ' and ' + m('8') + ' and included angle ' + m('30°') + '.',
+      steps: [
+        [m('S = ' + f('1', '2') + ' · 6 · 8 · sin 30°'), ''],
+        [m('= 24 × 0.5'), ''],
+        [m('= 12'), ''],
+        ['The same as with ' + m('150°') + '.', m('sin 30° = sin 150°') + '.']
+      ],
+      ans: m('12')
+    },
+    {
+      q: 'A triangle has area ' + m('20') + ' and sides ' + m('8') + ' and ' + m('10') + ' about the included angle. Find that angle.',
+      steps: [
+        [m('sin C = ' + f('2 × 20', '80')), ''],
+        [m('= 0.5'), ''],
+        [m('C = 30°') + ' or ' + m('C = 150°') + '.', ''],
+        ['Both are possible without more information.', '']
+      ],
+      ans: m('30°') + ' or ' + m('150°')
+    },
+    {
+      q: 'A parallelogram has sides ' + m('7') + ' and ' + m('9') + ' with an angle of ' + m('120°') + '. Find its area.',
+      steps: [
+        [m('S = ab sin C') + ' for a parallelogram.', 'Twice the triangle.'],
+        [m('= 7 × 9 × sin 120°'), ''],
+        [m('= 63 × ' + f(sr('3'), '2')), ''],
+        [m('= ' + f('63' + sr('3'), '2') + ' ≈ 54.6'), '']
+      ],
+      ans: m(f('63' + sr('3'), '2'))
+    }
+  ],
+  modelNote: 'Fix two rods at a hinge and open them slowly; the area of the triangle they span grows to a maximum at a right angle and falls again — the formula made physical.',
+  interactive: {
+    type: 'solveTriangle',
+    title: 'Two sides and the angle between',
+    hint: 'Open the angle past 90° and watch the area fall.'
+  },
+  quiz: [
+    { q: 'The area formula is:', a: [m('½ab sin C'), m('ab sin C'), m('½ab cos C'), m('½a sin C')], c: 0, why: m('h = b sin C') + '.' },
+    { q: 'The angle must be:', a: ['the largest', 'the included one', 'acute', 'opposite ' + m('a')], c: 1, why: 'Between the two sides.' },
+    { q: 'Sides ' + m('6, 8') + ' and ' + m('30°') + ':', a: [m('12'), m('24'), m('48'), m('6')], c: 0, why: m('24 × 0.5') + '.' },
+    { q: 'The area is greatest when the angle is:', a: [m('30°'), m('60°'), m('90°'), m('180°')], c: 2, why: m('sin C ≤ 1') + '.' },
+    { q: m('sin C = 0.5') + ' gives:', a: [m('30°'), m('150°'), 'both', 'neither'], c: 2, why: 'Sine is ambiguous.' },
+    { q: 'For a parallelogram the area is:', a: [m('½ab sin C'), m('ab sin C'), m('2ab sin C'), m('ab cos C')], c: 1, why: 'Two triangles.' }
+  ],
+  practice: {
+    easy: [
+      ['Sides ' + m('6, 8') + ', angle ' + m('30°'), m('12')],
+      ['Sides ' + m('6, 8') + ', angle ' + m('90°'), m('24')],
+      ['Sides ' + m('6, 8') + ', angle ' + m('150°'), m('12')],
+      ['Sides ' + m('10, 12') + ', angle ' + m('30°'), m('30')],
+      ['Sides ' + m('5, 5') + ', angle ' + m('60°'), m(f('25' + sr('3'), '4'))],
+      ['Parallelogram ' + m('4, 6') + ', angle ' + m('30°'), m('12')],
+      ['Greatest area for sides ' + m('6, 8'), m('24')]
+    ],
+    med: [
+      ['Sides ' + m('7, 9') + ', angle ' + m('120°') + ': triangle area', m(f('63' + sr('3'), '4'))],
+      ['Same as a parallelogram', m(f('63' + sr('3'), '2'))],
+      [m('S = 20') + ', sides ' + m('8, 10') + ': the angle', m('30°') + ' or ' + m('150°')],
+      [m('S = 24') + ', ' + m('a = 8') + ', ' + m('C = 30°') + ': ' + m('b'), m('12')],
+      ['Sides ' + m('12, 5') + ', angle ' + m('90°'), m('30')],
+      ['An equilateral triangle of side ' + m('a'), m(f('a²' + sr('3'), '4'))],
+      ['A rhombus of side ' + m('6') + ' with a ' + m('60°') + ' angle', m('18' + sr('3'))]
+    ],
+    hard: [
+      ['A field: two sides ' + m('120 m') + ' and ' + m('150 m') + ' with an angle of ' + m('75°'), m('≈ 8693 m²')],
+      ['A triangle with ' + m('S = 30') + ', ' + m('a = 10') + ', ' + m('b = 12') + ': the angle', m('30°') + ' or ' + m('150°')],
+      ['A quadrilateral split by a diagonal into ' + m('△(6, 8, 45°)') + ' and ' + m('△(8, 5, 60°)'), m('≈ 34.3')],
+      ['A regular hexagon of side ' + m('4'), m('24' + sr('3'))],
+      ['Two sides ' + m('a') + ' and ' + m('b') + ': the angle giving half the maximum area', m('30°') + ' or ' + m('150°')],
+      ['A triangle of area ' + m('18') + ' with sides ' + m('6') + ' and ' + m('12'), m('30°') + ' or ' + m('150°')],
+      ['Prove that the area of a parallelogram is ' + m('ab sin C'), 'Two congruent triangles']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'When a sine gives two angles, write both unless the question excludes one.',
+  homework: [
+    'Find the area of a triangle with sides ' + m('9') + ' and ' + m('14') + ' and included angle ' + m('45°') + '.',
+    'A triangle has area ' + m('35') + ' and sides ' + m('10') + ' and ' + m('14') + '. Find the included angle.',
+    'A parallelogram has sides ' + m('5') + ' and ' + m('8') + ' with an angle of ' + m('150°') + '. Find its area.',
+    'Find the area of a regular hexagon of side ' + m('6') + '.',
+    'Show that the area of a triangle with two given sides is greatest when the included angle is ' + m('90°') + '.'
+  ]
+});
+
+/* ============================== 19 ============================== */
+G9_GEO.push({
+  id: 'g9-19', stream: 'geo', grade: 9, quarter: 2, lessons: '22', hours: 1,
+  title: 'The sine rule',
+  subtitle: 'A side and its opposite angle move together — and the constant is the circumcircle’s diameter.',
+  uz: 'Geometriya 9, §16', uzPage: 'pp. 87–91',
+  cam: 'Extension beyond IGX', camPage: 'Core & Extended, pp. 310–316', wb: 'Exercise 15.2',
+  objectives: [
+    'State and prove the sine rule.',
+    'Use it when a side and its opposite angle are known.',
+    'Know that a/sin A = 2R and use it to find a circumradius.',
+    'Recognise and resolve the ambiguous case.'
+  ],
+  terms: [
+    ['Sine rule', 'Sinuslar teoremasi', 'Теорема синусов'],
+    ['Opposite side', 'Qarshi tomon', 'Противолежащая сторона'],
+    ['Circumscribed circle', 'Tashqi chizilgan aylana', 'Описанная окружность'],
+    ['Circumradius', 'Tashqi radius', 'Радиус описанной окружности'],
+    ['Ambiguous case', 'Noaniq hol', 'Неоднозначный случай'],
+    ['Proportion', 'Proporsiya', 'Пропорция'],
+    ['Solve a triangle', 'Uchburchakni yechish', 'Решить треугольник'],
+    ['Given', 'Berilgan', 'Дано']
+  ],
+  timing: [[10, 'The rule'], [12, 'When to use it'], [12, 'The ambiguous case'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The rule',
+      html: `${eq(m(f('a', 'sin A') + ' = ' + f('b', 'sin B') + ' = ' + f('c', 'sin C') + ' = 2R'), true)}
+      <p>where ${m('R')} is the radius of the circumscribed circle. The proof: the area of the triangle
+      is ${m(f('1', '2') + 'ab sin C = ' + f('1', '2') + 'bc sin A = ' + f('1', '2') + 'ca sin B')};
+      dividing all three by ${m(f('1', '2') + 'abc')} gives the rule at once.</p>
+      {{fig:sineCosRule:Each side divided by the sine of its opposite angle gives the same number.}}
+      <div class="keybox"><div class="klabel">The constant is not arbitrary</div>
+      That the common value is ${m('2R')} is a genuinely useful fact: it turns any triangle question
+      into a circle question. A triangle with ${m('a = 6')} and ${m('A = 30°')} sits in a circle of
+      radius ${m('6')}, whatever its other two sides are.</div>`
+    },
+    {
+      h: 'When to use it',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Use</th><th>Find</th></tr></thead>
+      <tbody>
+        <tr><td>two angles and any side (AAS, ASA)</td><td>the sine rule</td><td>the other sides</td></tr>
+        <tr><td>two sides and an angle opposite one of them (SSA)</td><td>the sine rule</td><td>the other angle — <b>possibly two answers</b></td></tr>
+        <tr><td>two sides and the included angle (SAS)</td><td>the cosine rule</td><td>—</td></tr>
+        <tr><td>three sides (SSS)</td><td>the cosine rule</td><td>—</td></tr>
+      </tbody></table></div>
+      <p><b>Example.</b> ${m('A = 40°')}, ${m('B = 60°')}, ${m('a = 8')}. Then ${m('C = 80°')} and</p>
+      ${eq(m('b = ' + f('a sin B', 'sin A') + ' = ' + f('8 sin 60°', 'sin 40°') + ' ≈ 10.8'), true)}
+      <div class="keybox"><div class="klabel">Pair a side with its own opposite angle</div>
+      The rule links ${m('a')} with ${m('A')}, never ${m('a')} with ${m('B')}. If the given data contains
+      no such matched pair, the sine rule cannot start and the cosine rule is the tool.</div>`
+    },
+    {
+      h: 'The ambiguous case',
+      html: `<p>When two sides and a <b>non-included</b> angle are given, the sine found may correspond to
+      two angles, and both may give a valid triangle.</p>
+      <p><b>Example.</b> ${m('a = 7')}, ${m('b = 9')}, ${m('A = 40°')}. Then</p>
+      ${eq(m('sin B = ' + f('9 sin 40°', '7') + ' ≈ 0.826'), true)}
+      <p>so ${m('B ≈ 55.7°')} or ${m('B ≈ 124.3°')}. Both leave a positive third angle
+      (${m('84.3°')} or ${m('15.7°')}), so <b>both triangles exist</b>.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Check</th><th>Conclusion</th></tr></thead>
+      <tbody>
+        <tr><td class="m">sin B > 1</td><td>no triangle</td></tr>
+        <tr><td>the obtuse option makes the angle sum exceed ${m('180°')}</td><td>one triangle</td></tr>
+        <tr><td>both options leave a positive third angle</td><td>two triangles</td></tr>
+        <tr><td>the side opposite the given angle is the longer</td><td>one triangle</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Always test the obtuse option</span>
+      Add it to the given angle: if the total is ${m('180°')} or more, discard it; otherwise it is a real
+      second answer. A question that expects two triangles and receives one loses half its marks.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'In ' + m('△ABC') + ', ' + m('A = 40°') + ', ' + m('B = 60°') + ', ' + m('a = 8') + '. Find ' + m('b') + ' and ' + m('C') + '.',
+      steps: [
+        [m('C = 180° − 40° − 60° = 80°'), ''],
+        [m(f('b', 'sin 60°') + ' = ' + f('8', 'sin 40°')), ''],
+        [m('b = ' + f('8 × 0.866', '0.643')), ''],
+        [m('b ≈ 10.8'), '']
+      ],
+      ans: m('b ≈ 10.8') + ', ' + m('C = 80°')
+    },
+    {
+      q: 'In ' + m('△ABC') + ', ' + m('a = 7') + ', ' + m('b = 9') + ', ' + m('A = 40°') + '. Find ' + m('B') + '.',
+      steps: [
+        [m('sin B = ' + f('9 sin 40°', '7') + ' ≈ 0.826'), ''],
+        [m('B ≈ 55.7°') + ' or ' + m('B ≈ 124.3°') + '.', ''],
+        ['Check: ' + m('40 + 124.3 = 164.3 < 180') + ' ✓', 'Both survive.'],
+        ['Two triangles exist.', '']
+      ],
+      ans: m('B ≈ 55.7°') + ' or ' + m('124.3°')
+    },
+    {
+      q: 'A triangle has ' + m('a = 10') + ' and ' + m('A = 30°') + '. Find the radius of its circumscribed circle.',
+      steps: [
+        [m(f('a', 'sin A') + ' = 2R'), ''],
+        [m('2R = ' + f('10', '0.5')), ''],
+        [m('2R = 20'), ''],
+        [m('R = 10'), '']
+      ],
+      ans: m('R = 10')
+    }
+  ],
+  modelNote: 'Draw one circle and inscribe three different triangles on the same chord; the class sees that the angle opposite that chord never changes, which is the sine rule in a picture.',
+  interactive: {
+    type: 'solveTriangle',
+    title: 'A side and its opposite angle',
+    hint: 'Change one pair and watch the ratio stay fixed.'
+  },
+  quiz: [
+    { q: 'The sine rule links:', a: ['any side with any angle', 'a side with its opposite angle', 'two sides', 'two angles'], c: 1, why: 'Matched pairs only.' },
+    { q: 'The common value equals:', a: [m('R'), m('2R'), m('R²'), m('πR')], c: 1, why: 'The circumdiameter.' },
+    { q: 'Use the sine rule when given:', a: ['SSS', 'SAS', 'AAS', 'nothing'], c: 2, why: 'A matched pair exists.' },
+    { q: 'The ambiguous case arises with:', a: ['AAS', 'SAS', 'SSA', 'SSS'], c: 2, why: 'A non-included angle.' },
+    { q: m('a = 10, A = 30°') + ': ' + m('R') + ' =', a: [m('5'), m('10'), m('20'), m('15')], c: 1, why: m('2R = 20') + '.' },
+    { q: m('sin B > 1') + ' means:', a: ['two triangles', 'one triangle', 'no triangle', 'a right angle'], c: 2, why: 'Impossible data.' }
+  ],
+  practice: {
+    easy: [
+      ['State the sine rule', m(f('a', 'sin A') + ' = ' + f('b', 'sin B') + ' = ' + f('c', 'sin C'))],
+      ['The common value equals', m('2R')],
+      [m('a = 10, A = 30°') + ': ' + m('R'), m('10')],
+      [m('a = 8, A = 90°') + ': ' + m('R'), m('4')],
+      [m('A = 40°, B = 60°') + ': ' + m('C'), m('80°')],
+      ['Use the sine rule for', 'AAS or SSA'],
+      ['Use the cosine rule for', 'SAS or SSS']
+    ],
+    med: [
+      [m('A = 40°, B = 60°, a = 8') + ': ' + m('b'), m('≈ 10.8')],
+      ['Same: ' + m('c'), m('≈ 12.3')],
+      [m('a = 7, b = 9, A = 40°') + ': ' + m('sin B'), m('≈ 0.826')],
+      ['Same: ' + m('B'), m('≈ 55.7°') + ' or ' + m('124.3°')],
+      [m('a = 12, A = 45°, B = 60°') + ': ' + m('b'), m('≈ 14.7')],
+      [m('a = 5, b = 8, A = 30°') + ': ' + m('sin B'), m('0.8')],
+      ['Same: how many triangles?', 'Two']
+    ],
+    hard: [
+      [m('a = 9, b = 5, A = 60°') + ': how many triangles?', 'One — ' + m('a > b')],
+      [m('a = 4, b = 9, A = 40°') + ': how many triangles?', 'None — ' + m('sin B > 1')],
+      ['A triangle inscribed in a circle of radius ' + m('6') + ' has ' + m('A = 30°') + ': ' + m('a'), m('6')],
+      ['An equilateral triangle of side ' + m('a') + ': its circumradius', m(f('a', sr('3')))],
+      [m('A = 45°, B = 105°, c = 10') + ': ' + m('a'), m('≈ 14.1')],
+      ['A triangle with ' + m('A = 30°, B = 45°') + ' and ' + m('a = 6') + ': its area', m('≈ 24.6')],
+      ['Prove ' + m(f('a', 'sin A') + ' = 2R'), 'The inscribed angle on the chord ' + m('a')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Test the obtuse option in every SSA question, and say whether it survives.',
+  homework: [
+    'In ' + m('△ABC') + ', ' + m('A = 50°') + ', ' + m('B = 70°') + ', ' + m('a = 12') + '. Find ' + m('b') + ' and ' + m('c') + '.',
+    'In ' + m('△ABC') + ', ' + m('a = 6') + ', ' + m('b = 10') + ', ' + m('A = 30°') + '. Find ' + m('B') + ', and say how many triangles exist.',
+    'A triangle has ' + m('a = 14') + ' and ' + m('A = 45°') + '. Find its circumradius.',
+    'In ' + m('△ABC') + ', ' + m('a = 5') + ', ' + m('b = 12') + ', ' + m('A = 60°') + '. How many triangles are possible?',
+    'Prove the sine rule from the area formula.'
+  ]
+});
+
+/* ============================== 20 ============================== */
+G9_GEO.push({
+  id: 'g9-20', stream: 'geo', grade: 9, quarter: 2, lessons: '23', hours: 1,
+  title: 'The cosine rule',
+  subtitle: 'Pythagoras with a correction term — and the tool for every triangle the sine rule cannot start.',
+  uz: 'Geometriya 9, §17', uzPage: 'pp. 92–96',
+  cam: 'Extension beyond IGX', camPage: 'Core & Extended, pp. 317–322', wb: 'Exercise 15.3',
+  objectives: [
+    'State and use the cosine rule in both of its forms.',
+    'Use it for SAS and for SSS.',
+    'See Pythagoras’ theorem as the special case C = 90°.',
+    'Use the sign of cos C to classify a triangle as acute, right or obtuse.'
+  ],
+  terms: [
+    ['Cosine rule', 'Kosinuslar teoremasi', 'Теорема косинусов'],
+    ['Correction term', 'Tuzatish hadi', 'Поправочный член'],
+    ['Special case', 'Xususiy hol', 'Частный случай'],
+    ['Acute triangle', 'O‘tkir burchakli uchburchak', 'Остроугольный треугольник'],
+    ['Obtuse triangle', 'O‘tmas burchakli uchburchak', 'Тупоугольный треугольник'],
+    ['Rearrange', 'Almashtirish', 'Выразить'],
+    ['Longest side', 'Eng katta tomon', 'Наибольшая сторона'],
+    ['Unique', 'Yagona', 'Единственный']
+  ],
+  timing: [[10, 'The rule'], [12, 'Two uses'], [12, 'Classifying a triangle'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The rule',
+      html: `${eq(m('c² = a² + b² − 2ab cos C'), true)}
+      <p>and likewise for the other two sides. When ${m('C = 90°')}, ${m('cos C = 0')} and the rule
+      becomes ${m('c² = a² + b²')} — Pythagoras' theorem is the special case.</p>
+      {{fig:sineCosRule:The cosine rule corrects Pythagoras by the term −2ab cos C.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">C</th><th class="m">cos C</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="m">< 90°</td><td class="m">> 0</td><td class="m">c² < a² + b²</td></tr>
+        <tr><td class="m">= 90°</td><td class="m">0</td><td class="m">c² = a² + b²</td></tr>
+        <tr><td class="m">> 90°</td><td class="m">< 0</td><td class="m">c² > a² + b²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Unlike the sine rule, the cosine rule is never ambiguous</div>
+      A cosine determines an angle between ${m('0°')} and ${m('180°')} uniquely, sign and all. When both
+      rules could be used to find an angle, the cosine rule is the safer choice.</div>`
+    },
+    {
+      h: 'Two uses',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Form to use</th><th>Finds</th></tr></thead>
+      <tbody>
+        <tr><td>SAS — two sides and the included angle</td><td class="m">c² = a² + b² − 2ab cos C</td><td>the third side</td></tr>
+        <tr><td>SSS — three sides</td><td class="m">cos C = ${f('a² + b² − c²', '2ab')}</td><td>any angle</td></tr>
+      </tbody></table></div>
+      <p><b>Example (SAS).</b> ${m('a = 7')}, ${m('b = 9')}, ${m('C = 60°')}:</p>
+      ${eq(m('c² = 49 + 81 − 2 · 63 · 0.5 = 130 − 63 = 67') + ',  so  ' + m('c = ' + sr('67') + ' ≈ 8.19'), true)}
+      <p><b>Example (SSS).</b> ${m('a = 5')}, ${m('b = 6')}, ${m('c = 7')}:</p>
+      ${eq(m('cos C = ' + f('25 + 36 − 49', '60') + ' = ' + f('12', '60') + ' = 0.2') + ',  so  ' + m('C ≈ 78.5°'), true)}
+      <div class="warn"><span class="wl">The angle in the formula is opposite the side that stands alone</span>
+      In ${m('c² = a² + b² − 2ab cos C')}, the angle ${m('C')} and the side ${m('c')} are a matched pair.
+      Using ${m('cos A')} with ${m('c')} on the left is the standard error.</div>`
+    },
+    {
+      h: 'Classifying a triangle',
+      html: `<p>Compare the square of the longest side with the sum of the other two squares.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sides</th><th>Test</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3, 4, 5</td><td class="m">25 = 9 + 16</td><td>right</td></tr>
+        <tr><td class="m">4, 5, 6</td><td class="m">36 < 16 + 25</td><td>acute</td></tr>
+        <tr><td class="m">4, 5, 8</td><td class="m">64 > 16 + 25</td><td>obtuse</td></tr>
+      </tbody></table></div>
+      <p>Only the longest side needs testing: the angle opposite it is the largest, and a triangle has at
+      most one non-acute angle.</p>
+      <div class="keybox"><div class="klabel">One inequality decides the whole triangle</div>
+      That is why the test is so quick, and it is a favourite short question in both the national and
+      the Cambridge papers.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find ' + m('c') + ' when ' + m('a = 7') + ', ' + m('b = 9') + ', ' + m('C = 60°') + '.',
+      steps: [
+        [m('c² = 7² + 9² − 2 · 7 · 9 · cos 60°'), ''],
+        [m('= 49 + 81 − 126 × 0.5'), ''],
+        [m('= 130 − 63 = 67'), ''],
+        [m('c = ' + sr('67') + ' ≈ 8.19'), '']
+      ],
+      ans: m('c ≈ 8.19')
+    },
+    {
+      q: 'Find the largest angle of the triangle with sides ' + m('5, 6, 7') + '.',
+      steps: [
+        ['The largest angle is opposite ' + m('7') + '.', ''],
+        [m('cos C = ' + f('25 + 36 − 49', '2 · 5 · 6')), ''],
+        [m('= ' + f('12', '60') + ' = 0.2'), ''],
+        [m('C ≈ 78.5°'), 'Acute — so the triangle is acute.']
+      ],
+      ans: m('≈ 78.5°')
+    },
+    {
+      q: 'Classify the triangle with sides ' + m('4, 5, 8') + '.',
+      steps: [
+        ['Longest side ' + m('8') + ': ' + m('8² = 64') + '.', ''],
+        [m('4² + 5² = 16 + 25 = 41'), ''],
+        [m('64 > 41'), ''],
+        ['Obtuse.', 'The angle opposite ' + m('8') + ' exceeds ' + m('90°') + '.']
+      ],
+      ans: 'Obtuse'
+    }
+  ],
+  modelNote: 'Fix two rods at 90° and read the third side; then open and close the angle and let the class see the correction term appear with each sign.',
+  interactive: {
+    type: 'solveTriangle',
+    title: 'Pythagoras, corrected',
+    hint: 'Set the angle to 90° and the correction vanishes.'
+  },
+  quiz: [
+    { q: 'The cosine rule is:', a: [m('c² = a² + b² − 2ab cos C'), m('c² = a² + b² + 2ab cos C'), m('c = a + b − 2ab cos C'), m('c² = a² − b²')], c: 0, why: 'Pythagoras plus a correction.' },
+    { q: m('C = 90°') + ' gives:', a: ['the sine rule', 'Pythagoras', 'nothing', 'the area formula'], c: 1, why: m('cos 90° = 0') + '.' },
+    { q: 'Use it for:', a: ['AAS', 'SSA', 'SAS or SSS', 'AAA'], c: 2, why: 'When no matched pair exists.' },
+    { q: 'Is the cosine rule ambiguous?', a: ['yes', 'no', 'sometimes', 'only for SSS'], c: 1, why: 'A cosine fixes the angle.' },
+    { q: 'Sides ' + m('4, 5, 8') + ' make a triangle that is:', a: ['acute', 'right', 'obtuse', 'impossible'], c: 2, why: m('64 > 41') + '.' },
+    { q: m('cos C < 0') + ' means ' + m('C') + ' is:', a: ['acute', 'right', 'obtuse', 'impossible'], c: 2, why: 'Beyond ' + m('90°') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['State the cosine rule', m('c² = a² + b² − 2ab cos C')],
+      [m('C = 90°') + ' gives', m('c² = a² + b²')],
+      ['Use for SAS or', 'SSS'],
+      ['Sides ' + m('3, 4, 5'), 'Right'],
+      ['Sides ' + m('4, 5, 6'), 'Acute'],
+      ['Sides ' + m('4, 5, 8'), 'Obtuse'],
+      [m('cos C < 0') + ' means', m('C') + ' is obtuse']
+    ],
+    med: [
+      [m('a = 7, b = 9, C = 60°') + ': ' + m('c'), m('≈ 8.19')],
+      [m('a = 5, b = 8, C = 120°') + ': ' + m('c'), m('≈ 11.4')],
+      ['Sides ' + m('5, 6, 7') + ': the largest angle', m('≈ 78.5°')],
+      ['Sides ' + m('3, 5, 7') + ': the largest angle', m('120°')],
+      [m('a = 6, b = 10, C = 90°') + ': ' + m('c'), m('≈ 11.66')],
+      ['Sides ' + m('2, 3, 4') + ': ' + m('cos C') + ' for the largest angle', m('−' + f('1', '4'))],
+      ['Sides ' + m('7, 8, 9') + ': type', 'Acute']
+    ],
+    hard: [
+      ['Sides ' + m('3, 5, 7') + ': the area', m(f('15' + sr('3'), '4'))],
+      ['A parallelogram with sides ' + m('5, 8') + ' and an angle of ' + m('60°') + ': the shorter diagonal', m('7')],
+      ['The longer diagonal', m(sr('129'))],
+      ['A triangle with ' + m('a = 8, b = 5, c = 7') + ': ' + m('cos A'), m(f('1', '7'))],
+      ['Two ships leave a port at ' + m('40°') + ' apart, at ' + m('12') + ' and ' + m('18 km/h') + ': their distance after ' + m('2 h'), m('≈ 23.4 km')],
+      ['For which ' + m('x') + ' is the triangle ' + m('5, 12, x') + ' right-angled?', m('13') + ' or ' + m(sr('119'))],
+      ['A triangle with sides ' + m('n, n+1, n+2') + ' is right-angled for', m('n = 3')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Pair the lone side with the angle in the formula; write the pair down before substituting.',
+  homework: [
+    'Find ' + m('c') + ' when ' + m('a = 6') + ', ' + m('b = 10') + ', ' + m('C = 120°') + '.',
+    'Find the largest angle of the triangle with sides ' + m('4, 6, 8') + '.',
+    'Classify the triangles with sides ' + m('6, 8, 9') + ' and ' + m('6, 8, 11') + '.',
+    'Two roads leave a junction at ' + m('55°') + '. Find the distance between points ' + m('5 km') + ' and ' + m('8 km') + ' along them.',
+    'Show that the cosine rule gives Pythagoras’ theorem when ' + m('C = 90°') + '.'
+  ]
+});
