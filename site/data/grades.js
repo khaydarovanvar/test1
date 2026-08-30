@@ -3,14 +3,14 @@
    'live' when at least one topic exists for it in the data files. */
 /* Written topics per grade. The homepage and the grade page read these instead of
    loading every data file; check-content.js verifies them against the data. */
-var TOPIC_COUNTS = { 7: 90, 8: 95, 9: 95, 10: 80, 11: 76 };
+var TOPIC_COUNTS = { 6: 92, 7: 90, 8: 95, 9: 95, 10: 80, 11: 76 };
 
 var GRADES = [
   { g: 5,  name: 'Mathematics',        meta: 'Natural numbers · fractions · geometry of the plane', status: 'soon' },
-  { g: 6,  name: 'Mathematics',        meta: 'Fractions · ratio · percentage · the circle · data', status: 'live' },
-  { g: 7,  name: 'Mathematics',        meta: 'Integers · polynomials · triangles · linear functions', status: 'live' },
+  { g: 6,  name: 'Mathematics',        meta: 'Full year — 92 topics, 1932 practice problems',       status: 'live' },
+  { g: 7,  name: 'Mathematics',        meta: 'Full year — 90 topics, 1890 practice problems',       status: 'live' },
   { g: 8,  name: 'Algebra + Geometry', meta: 'Full year — 95 topics, 1995 practice problems',       status: 'live' },
-  { g: 9,  name: 'Algebra + Geometry', meta: 'Quadratic functions · trigonometry · progressions · similarity', status: 'live' },
+  { g: 9,  name: 'Algebra + Geometry', meta: 'Full year — 95 topics, 1995 practice problems',       status: 'live' },
   { g: 10, name: 'Algebra + Geometry', meta: 'Full year — 80 topics, 1680 practice problems',       status: 'live' },
   { g: 11, name: 'Algebra + Geometry', meta: 'Full year — 76 topics, 1596 practice problems',       status: 'live' }
 ];
@@ -18,7 +18,7 @@ var GRADES = [
 var GRADE_INFO = {
   6: {
     title: 'Grade 6 · Mathematics',
-    lede: 'One subject, six hours a week — the national plan with a Cambridge Stage 7 layer on top. Pick a quarter, then a topic.',
+    lede: 'All four quarters are written — 92 topics, one subject at six hours a week, the national plan with a Cambridge Stage 7 layer on top.',
     single: true,
     streams: [
       ['cam', 'Cambridge class', 'Mathematics · 6 h a week', '204 hours. Quarters 54 · 42 · 60 · 48.', '<em>Matematika 6</em> (Ismailov and others)'],
@@ -38,7 +38,7 @@ var GRADE_INFO = {
   },
   7: {
     title: 'Grade 7 · Mathematics',
-    lede: 'Algebra and geometry taught as one subject, five hours a week, mapped lesson by lesson onto Cambridge Stage 8.',
+    lede: 'All four quarters are written — 90 topics, algebra and geometry as one subject at five hours a week, mapped onto Cambridge Stage 8.',
     single: true,
     streams: [
       ['uz',  'Special class', 'Mathematics · 5 h a week', '170 hours. Quarters 45 · 35 · 50 · 40.', '<em>Algebra 7</em> · <em>Geometry 7</em>'],
@@ -58,7 +58,7 @@ var GRADE_INFO = {
   },
   9: {
     title: 'Grade 9 · Algebra and Geometry',
-    lede: 'The quadratic function, trigonometry and the progressions in algebra; similarity, solving triangles and the circle in geometry.',
+    lede: 'All four quarters are written — 95 topics. The quadratic function, trigonometry and the progressions in algebra; similarity, solving triangles and the circle in geometry.',
     streams: [
       ['uz',  'Special class', 'Algebra · 3 h a week',  '102 hours. Quarters 27 · 21 · 30 · 24.', '<em>Algebra 9</em>, §§1–38'],
       ['uz',  'Special class', 'Geometry · 2 h a week', '68 hours. Quarters 18 · 14 · 20 · 16.',  '<em>Geometry 9</em>'],

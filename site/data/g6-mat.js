@@ -16487,3 +16487,189 @@ G6_MAT.push({
     'A pie chart of ' + m('45') + ' pupils has a group of ' + m('15') + '. Find the sector angle, and find ' + m('P(odd)') + ' for one throw of a die.'
   ]
 });
+
+/* ============================== 92 ============================== */
+G6_MAT.push({
+  id: 'g6-92', stream: 'mat', grade: 6, quarter: 4, lessons: '203–204', hours: 2,
+  title: 'Presentation and assessment of the project work',
+  subtitle: 'The survey, the pie chart and the conclusions — presented, questioned and marked.',
+  uz: 'Matematika 6, loyiha himoyasi', uzPage: 'pp. 581–584',
+  cam: 'S7 project presentation', camPage: 'Stage 7, pp. 184–188', wb: 'Project assessment',
+  objectives: [
+    'Present a survey, its chart and its conclusions in four minutes.',
+    'Justify the sample and state one honest limit of the result.',
+    'Answer questions about the data with the numbers in front of you.',
+    'Assess another project against the published criteria.'
+  ],
+  terms: [
+    ['Presentation', 'Taqdimot', 'Презентация'],
+    ['Poster', 'Plakat', 'Плакат'],
+    ['Conclusion', 'Xulosa', 'Вывод'],
+    ['Criterion', 'Mezon', 'Критерий'],
+    ['Peer assessment', 'O‘zaro baholash', 'Взаимооценивание'],
+    ['To justify', 'Asoslamoq', 'Обосновать'],
+    ['Limitation', 'Cheklov', 'Ограничение'],
+    ['Scaling up', 'Kengaytirib baholash', 'Перенос на всю совокупность']
+  ],
+  timing: [[10, 'What is presented'], [25, 'The presentations'], [25, 'The assessment criteria'], [20, 'Questions, and closing the year']],
+  sections: [
+    {
+      h: 'What is presented',
+      html: `<p>Each pupil brings one poster and speaks for four minutes. The mathematics of the project is
+      everything from lessons ${m('157')} to ${m('168')}, applied to data they collected themselves.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>On the poster</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>the question, with its list of answers</td><td>L158–159</td></tr>
+        <tr><td>the sample: who was asked, how many, and how they were chosen</td><td>L158–159</td></tr>
+        <tr><td>the frequency table, with the total</td><td>L157</td></tr>
+        <tr><td>the pie chart, with every sector angle written on</td><td>L160–163</td></tr>
+        <tr><td>three conclusions and one honest limit</td><td>L164–168</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The total is not decoration</div>
+      Without the number surveyed written on the poster, no sector can be turned back into people. It is
+      the first thing the audience will ask for.</div>`
+    },
+    {
+      h: 'The presentations',
+      html: `<p>A worked example, from a survey of ${m('60')} pupils.</p>
+      {{fig:pieChart:A survey turned into a pie chart, with every sector angle shown}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sport</th><th>Pupils</th><th>Angle</th><th>Percentage</th></tr></thead>
+      <tbody>
+        <tr><td>football</td><td class="m">20</td><td class="m">120°</td><td class="m">33.3%</td></tr>
+        <tr><td>volleyball</td><td class="m">15</td><td class="m">90°</td><td class="m">25%</td></tr>
+        <tr><td>basketball</td><td class="m">10</td><td class="m">60°</td><td class="m">16.7%</td></tr>
+        <tr><td>tennis</td><td class="m">9</td><td class="m">54°</td><td class="m">15%</td></tr>
+        <tr><td>swimming</td><td class="m">6</td><td class="m">36°</td><td class="m">10%</td></tr>
+        <tr><td>total</td><td class="m">60</td><td class="m">360°</td><td class="m">100%</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One pupil is ${m('6°')}</div>
+      ${m('360 ÷ 60')}. Every angle in the table is the frequency times six, and the check is that the
+      column adds to ${m('360°')}.</div>`
+    },
+    {
+      h: 'The assessment criteria',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Criterion</th><th>What earns the marks</th><th>Marks</th></tr></thead>
+      <tbody>
+        <tr><td>the question and the sample</td><td>fixed options, no gaps or overlaps; the sample justified</td><td class="m">4</td></tr>
+        <tr><td>the data and the table</td><td>at least ${m('60')} asked; frequencies adding to the total</td><td class="m">4</td></tr>
+        <tr><td>the pie chart</td><td>angles correct and adding to ${m('360°')}; labels or a key; the total shown</td><td class="m">5</td></tr>
+        <tr><td>the conclusions</td><td>three statements from the data, and one honest limit</td><td class="m">4</td></tr>
+        <tr><td>the talk</td><td>four minutes, clear, and questions answered</td><td class="m">3</td></tr>
+        <tr><td>total</td><td>—</td><td class="m">20</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A beautiful chart with the wrong angles scores badly</span>
+      Five of the twenty marks are for the chart, and most of those are for the arithmetic behind it.
+      Check the angle column against ${m('360°')} before the poster is glued.</div>`
+    },
+    {
+      h: 'Questions, and closing the year',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Question the audience may ask</th><th>What a good answer uses</th></tr></thead>
+      <tbody>
+        <tr><td>how many people is that sector?</td><td>the angle and the total</td></tr>
+        <tr><td>what percentage is it?</td><td>the angle divided by ${m('3.6')}</td></tr>
+        <tr><td>would the whole school agree?</td><td>the sample, and its honest limit</td></tr>
+        <tr><td>if the school has ${m('600')} pupils, how many play football?</td><td>the share, scaled up: ${m('200')}</td></tr>
+        <tr><td>why a pie chart and not a bar chart?</td><td>the data is shares of one whole</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The year, in one line</div>
+      Directed numbers and fractions; expressions and equations; ratio, proportion and percentage; the
+      circle and the solids; speed; and data with probability. Every one of them appeared in somebody’s
+      project.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A survey of ' + m('60') + ' pupils gives ' + m('20, 15, 10, 9') + ' and ' + m('6') + '. Find the five sector angles.',
+      steps: [
+        [m('360 ÷ 60 = 6°') + ' for each pupil.', ''],
+        ['Multiply each frequency by ' + m('6') + '.', ''],
+        [m('120°, 90°, 60°, 54°') + ' and ' + m('36°') + '.', 'They total ' + m('360°') + ' ✓']
+      ],
+      ans: m('120°, 90°, 60°, 54°') + ' and ' + m('36°')
+    },
+    {
+      q: 'The school has ' + m('600') + ' pupils. Estimate how many prefer football, and say what the estimate assumes.',
+      steps: [
+        ['Football is ' + m(f('20', '60') + ' = ' + f('1', '3')) + ' of the sample.', ''],
+        [m(f('1', '3') + ' · 600 = 200') + ' pupils.', ''],
+        ['It assumes the sample is representative of the school.', 'That is the honest limit ✓']
+      ],
+      ans: 'About ' + m('200') + ', if the sample represents the school'
+    },
+    {
+      q: 'Two more pupils are asked and both choose football. Find the new sector angle, to 1 decimal place.',
+      steps: [
+        ['Now ' + m('22') + ' of ' + m('62') + '.', ''],
+        [m(f('22', '62') + ' · 360') + '.', ''],
+        [m('= 127.7°') + '.', 'Every other angle changes too — the total is still ' + m('360°') + '.']
+      ],
+      ans: m('127.7°')
+    }
+  ],
+  modelNote: 'Give each pupil the criteria table and one other project to mark; explaining a lost mark to a classmate teaches the criterion better than losing it yourself.',
+  interactive: {
+    type: 'quiz',
+    title: 'Reading a classmate’s project',
+    hint: 'Ask for the total first; every other question depends on it.',
+    items: [
+      { q: 'With ' + m('60') + ' surveyed, one pupil is worth:', a: [m('6°'), m('10°'), m('60°'), m('3.6°')], c: 0, why: m('360 ÷ 60') + '.' },
+      { q: m('20') + ' of the ' + m('60') + ' gives a sector of:', a: [m('60°'), m('90°'), m('120°'), m('200°')], c: 2, why: m('20 · 6') + '.' },
+      { q: 'That is what percentage?', a: [m('20') + '%', m('25') + '%', m('33.3') + '%', m('40') + '%'], c: 2, why: m('120 ÷ 3.6') + '.' },
+      { q: 'A ' + m('54°') + ' sector of ' + m('60') + ' pupils is:', a: [m('6'), m('9'), m('15'), m('54')], c: 1, why: m('54 ÷ 6') + '.' },
+      { q: 'The angle column must total:', a: [m('100'), m('180°'), m('360°'), 'the number surveyed'], c: 2, why: 'A full circle.' },
+      { q: 'Scaling ' + m(f('1', '3')) + ' up to a school of ' + m('600') + ' gives:', a: [m('60'), m('180'), m('200'), m('300')], c: 2, why: m(f('1', '3') + ' · 600') + '.' },
+      { q: 'A poster with no total:', a: ['is complete', 'cannot be turned into numbers', 'is more accurate', 'scores full marks'], c: 1, why: 'Angles are only shares.' },
+      { q: 'Most of the chart marks are for:', a: ['the colours', 'the arithmetic behind the angles', 'the size', 'the handwriting'], c: 1, why: 'Five marks, mostly for the angles.' }
+    ]
+  },
+  quiz: [
+    { q: 'The first thing an audience asks for is:', a: ['the colours', 'the number surveyed', 'the title', 'the date'], c: 1, why: 'Nothing converts without it.' },
+    { q: 'Three conclusions should come from:', a: ['opinion', 'the data', 'the textbook', 'the teacher'], c: 1, why: 'Each must be readable off the chart.' },
+    { q: 'An honest limit is:', a: ['a weakness to hide', 'part of a good report', 'a lost mark', 'optional'], c: 1, why: 'It earns marks, not loses them.' },
+    { q: 'A pie chart suits this project because the data is:', a: ['ordered in time', 'shares of one whole', 'two measurements', 'continuous'], c: 1, why: 'Everyone asked is in the circle.' },
+    { q: 'Scaling a share up to the whole school assumes:', a: ['nothing', 'the sample is representative', 'the school is small', 'the chart is neat'], c: 1, why: 'Say it aloud when you do it.' },
+    { q: 'Peer assessment is done against:', a: ['a feeling', 'the published criteria', 'the largest poster', 'the loudest talk'], c: 1, why: 'The same table for everyone.' }
+  ],
+  practice: {
+    easy: [
+      ['The total surveyed in the example', m('60')],
+      ['The angle representing one pupil', m('6°')],
+      ['The sector for football, ' + m('20') + ' pupils', m('120°')],
+      ['The sector for volleyball, ' + m('15') + ' pupils', m('90°')],
+      ['The sector for basketball, ' + m('10') + ' pupils', m('60°')],
+      ['The angles of the chart total', m('360°')],
+      ['The largest group in the example', 'Football']
+    ],
+    med: [
+      ['The sector for tennis, ' + m('9') + ' pupils', m('54°')],
+      ['The sector for swimming, ' + m('6') + ' pupils', m('36°')],
+      ['Football as a percentage', m('33.3') + '%'],
+      ['Volleyball as a percentage', m('25') + '%'],
+      ['Swimming as a percentage', m('10') + '%'],
+      ['How many chose a ball game', m('45') + ' pupils'],
+      ['…as a sector angle', m('270°')]
+    ],
+    hard: [
+      ['Basketball as a percentage, to 1 d.p.', m('16.7') + '%'],
+      ['If the school of ' + m('600') + ' followed this pattern, the footballers', m('200')],
+      ['One honest limit of this survey', 'Only ' + m('60') + ' of ' + m('600') + ' pupils were asked'],
+      ['Why must the angle column be checked against ' + m('360°') + '?', 'Rounding can leave the chart open'],
+      ['Two more pupils choose football: the new sector, to 1 d.p.', m('127.7°')],
+      ['The better chart for comparing the sizes of six grades', 'A bar chart'],
+      ['The three things every chart must carry', 'A title, labels or a key, and the total']
+    ]
+  },
+  hwTitle: 'Homework — the reflection',
+  hwNote: 'Half a page, handed in with the poster; it is read, not marked out of twenty.',
+  homework: [
+    'Mark your own project against the five criteria and give yourself a total out of ' + m('20') + '.',
+    'Write the one criterion you would most like to improve, and how.',
+    'Write the question from the audience that was hardest to answer, and your answer to it now.',
+    'Name the topic of the year you found most useful outside mathematics, and why.',
+    'Write one question about Grade 7 mathematics that you would like answered in September.'
+  ]
+});
