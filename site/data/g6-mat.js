@@ -10780,3 +10780,180 @@ G6_MAT.push({
     'A walk of ' + m('3') + ' km at ' + m('6') + ' km/h and ' + m('3') + ' km at ' + m('3') + '. Find the average speed.'
   ]
 });
+
+/* ============================== 61 ============================== */
+G6_MAT.push({
+  id: 'g6-61', stream: 'mat', grade: 6, quarter: 3, lessons: '129–131', hours: 3,
+  title: 'Word problems on the motion of two bodies',
+  subtitle: 'Towards each other, in the same direction, and the closing speed that decides both.',
+  uz: 'Matematika 6, §28', uzPage: 'pp. 379–388',
+  cam: 'S7 12 rates', camPage: 'Stage 7, pp. 122–126', wb: 'Exercise 12.9',
+  objectives: [
+    'Use the closing speed for two bodies approaching.',
+    'Use the difference of speeds for one overtaking another.',
+    'Find the time and place of meeting.',
+    'Draw a diagram before writing any arithmetic.'
+  ],
+  terms: [
+    ['To approach', 'Yaqinlashmoq', 'Сближаться'],
+    ['To meet', 'Uchrashmoq', 'Встретиться'],
+    ['Closing speed', 'Yaqinlashish tezligi', 'Скорость сближения'],
+    ['To overtake', 'Quvib yetmoq', 'Догонять'],
+    ['Same direction', 'Bir yo‘nalishda', 'В одном направлении'],
+    ['Opposite directions', 'Qarama-qarshi', 'Навстречу'],
+    ['Meeting point', 'Uchrashuv nuqtasi', 'Точка встречи'],
+    ['Head start', 'Oldindan boshlash', 'Фора']
+  ],
+  timing: [[25, 'Towards each other'], [30, 'The place of meeting'], [35, 'Overtaking'], [25, 'Head starts'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Towards each other',
+      html: `<p>Two bodies approaching close the gap at the <b>sum</b> of their speeds.</p>
+      ${eq('time to meet ' + m('= ' + f('distance apart', 'v₁ + v₂')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Apart</th><th>Speeds</th><th>Closing speed</th><th>Time to meet</th></tr></thead>
+      <tbody>
+        <tr><td class="m">300 km</td><td>${m('60')} and ${m('40')}</td><td class="m">100 km/h</td><td class="m">3 h</td></tr>
+        <tr><td class="m">240 km</td><td>${m('70')} and ${m('50')}</td><td class="m">120 km/h</td><td class="m">2 h</td></tr>
+        <tr><td class="m">12 km</td><td>${m('5')} and ${m('3')}</td><td class="m">8 km/h</td><td class="m">1.5 h</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Here the speeds really do add</div>
+      Not because speeds can be added in general, but because each hour the gap shrinks by both distances
+      at once. The sum is the speed of the <i>gap</i>, not of either body.</div>`
+    },
+    {
+      h: 'The place of meeting',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>For ${m('300')} km apart at ${m('60')} and ${m('40')}</th></tr></thead>
+      <tbody>
+        <tr><td>closing speed</td><td class="m">100 km/h</td></tr>
+        <tr><td>time to meet</td><td class="m">3 h</td></tr>
+        <tr><td>first travels</td><td class="m">180 km</td></tr>
+        <tr><td>second travels</td><td class="m">120 km</td></tr>
+        <tr><td>check</td><td class="m">180 + 120 = 300 ✓</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The faster one covers more of the gap</div>
+      In the same time, distances are in the ratio of the speeds — here ${m('60 : 40 = 3 : 2')}, so the
+      ${m('300')} km splits as ${m('180')} and ${m('120')}.</div>`
+    },
+    {
+      h: 'Overtaking',
+      html: `<p>Two bodies going the same way close the gap at the <b>difference</b> of their speeds.</p>
+      ${eq('time to catch ' + m('= ' + f('head start', 'v₁ − v₂')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Head start</th><th>Speeds</th><th>Difference</th><th>Time to catch</th></tr></thead>
+      <tbody>
+        <tr><td class="m">30 km</td><td>${m('80')} and ${m('60')}</td><td class="m">20 km/h</td><td class="m">1.5 h</td></tr>
+        <tr><td class="m">12 km</td><td>${m('15')} and ${m('12')}</td><td class="m">3 km/h</td><td class="m">4 h</td></tr>
+        <tr><td class="m">100 m</td><td>${m('8')} and ${m('6')} m/s</td><td class="m">2 m/s</td><td class="m">50 s</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">If the speeds are equal, the gap never closes</span>
+      A difference of zero means no catching up, however long the chase. The formula says so by dividing
+      by zero, which is the mathematics agreeing with common sense.</div>`
+    },
+    {
+      h: 'Head starts',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Head start</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a cyclist at ${m('12')} leaves ${m('1')} h before a car at ${m('60')}</td><td class="m">12 km</td><td>caught after ${m('0.25')} h</td></tr>
+        <tr><td>a walker at ${m('5')} leaves ${m('2')} h before a cyclist at ${m('15')}</td><td class="m">10 km</td><td>caught after ${m('1')} h</td></tr>
+        <tr><td>a bus at ${m('60')} leaves ${m('30')} min before a car at ${m('80')}</td><td class="m">30 km</td><td>caught after ${m('1.5')} h</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Turn the time head start into a distance head start</div>
+      An hour's start at ${m('12')} km/h is a ${m('12')} km gap. Once the head start is a distance, the
+      chase formula applies directly.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Two cars ' + m('300') + ' km apart drive towards each other at ' + m('60') + ' and ' + m('40') + ' km/h. When do they meet, and where?',
+      steps: [
+        ['Closing speed: ' + m('100') + ' km/h.', ''],
+        ['Time: ' + m('300 ÷ 100 = 3') + ' h.', ''],
+        ['First: ' + m('180') + ' km; second: ' + m('120') + ' km.', 'Check: they total ' + m('300') + ' ✓']
+      ],
+      ans: 'After ' + m('3') + ' h, ' + m('180') + ' km from the first'
+    },
+    {
+      q: 'A bus leaves at ' + m('60') + ' km/h. Half an hour later a car follows at ' + m('80') + '. When does it catch up?',
+      steps: [
+        ['Head start: ' + m('60 · 0.5 = 30') + ' km.', ''],
+        ['Difference of speeds: ' + m('20') + ' km/h.', ''],
+        [m('30 ÷ 20 = 1.5') + ' h after the car starts.', '']
+      ],
+      ans: 'After ' + m('1.5') + ' hours'
+    },
+    {
+      q: 'Two walkers ' + m('12') + ' km apart walk towards each other at ' + m('5') + ' and ' + m('3') + ' km/h. When do they meet?',
+      steps: [
+        ['Closing speed: ' + m('8') + ' km/h.', ''],
+        [m('12 ÷ 8 = 1.5') + ' h.', ''],
+        ['They meet ' + m('7.5') + ' km from the first.', m('5 · 1.5') + '.']
+      ],
+      ans: 'After ' + m('1.5') + ' hours'
+    }
+  ],
+  modelNote: 'Two pupils walking towards each other along the corridor, timed, is a five-minute experiment that makes the closing speed obvious.',
+  interactive: {
+    type: 'quiz',
+    title: 'Sum or difference?',
+    hint: 'Towards each other adds; same direction subtracts.',
+    items: [
+      { q: 'Two bodies approaching close the gap at:', a: ['the sum of the speeds', 'the difference', 'the average', 'the faster speed'], c: 0, why: 'Both shrink it.' },
+      { q: 'One overtaking another closes at:', a: ['the sum', 'the difference', 'the average', 'the slower speed'], c: 1, why: 'Only the extra counts.' },
+      { q: m('300') + ' km apart at ' + m('60') + ' and ' + m('40') + ': they meet after:', a: [m('3') + ' h', m('5') + ' h', m('7.5') + ' h', m('30') + ' h'], c: 0, why: m('300 ÷ 100') + '.' },
+      { q: 'The first car has then travelled:', a: [m('120') + ' km', m('150') + ' km', m('180') + ' km', m('300') + ' km'], c: 2, why: m('60 · 3') + '.' },
+      { q: 'A ' + m('30') + ' km head start with speeds ' + m('80') + ' and ' + m('60') + ': caught after:', a: [m('0.375') + ' h', m('1.5') + ' h', m('2') + ' h', m('3') + ' h'], c: 1, why: m('30 ÷ 20') + '.' },
+      { q: 'A bus at ' + m('60') + ' leaving ' + m('30') + ' min early has a head start of:', a: [m('30') + ' km', m('60') + ' km', m('0.5') + ' km', m('120') + ' km'], c: 0, why: m('60 · 0.5') + '.' },
+      { q: 'If both speeds are equal, the chaser:', a: ['catches up slowly', 'never catches up', 'catches up at once', 'falls behind'], c: 1, why: 'The gap is fixed.' },
+      { q: 'Two walkers ' + m('12') + ' km apart at ' + m('5') + ' and ' + m('3') + ' meet after:', a: [m('1.5') + ' h', m('2') + ' h', m('4') + ' h', m('6') + ' h'], c: 0, why: m('12 ÷ 8') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'Towards each other, the closing speed is:', a: [m('v₁ + v₂'), m('v₁ − v₂'), m('v₁ v₂'), m('v₁')], c: 0, why: 'Both close the gap.' },
+    { q: 'In the same direction it is:', a: [m('v₁ + v₂'), m('v₁ − v₂'), 'the average', 'the larger'], c: 1, why: 'Only the excess.' },
+    { q: m('240') + ' km apart at ' + m('70') + ' and ' + m('50') + ': the time to meet is:', a: [m('2') + ' h', m('4') + ' h', m('12') + ' h', m('1.2') + ' h'], c: 0, why: m('240 ÷ 120') + '.' },
+    { q: 'The distances covered are in the ratio of:', a: ['the times', 'the speeds', 'the total', 'nothing'], c: 1, why: 'Same time each.' },
+    { q: 'A ' + m('12') + ' km head start with speeds ' + m('15') + ' and ' + m('12') + ':', a: [m('0.8') + ' h', m('4') + ' h', m('1') + ' h', m('12') + ' h'], c: 1, why: m('12 ÷ 3') + '.' },
+    { q: 'The first step in these problems is:', a: ['a formula', 'a diagram', 'a calculation', 'a guess'], c: 1, why: 'It shows which case it is.' }
+  ],
+  practice: {
+    easy: [
+      [m('300') + ' km apart at ' + m('60') + ' and ' + m('40') + ': the closing speed', m('100 km/h')],
+      ['And the time to meet', m('3 h')],
+      [m('240') + ' km apart at ' + m('70') + ' and ' + m('50'), m('2 h')],
+      [m('12') + ' km apart at ' + m('5') + ' and ' + m('3'), m('1.5 h')],
+      ['A ' + m('30') + ' km head start, speeds ' + m('80') + ' and ' + m('60'), m('1.5 h')],
+      ['A ' + m('12') + ' km head start, speeds ' + m('15') + ' and ' + m('12'), m('4 h')],
+      ['Equal speeds in the same direction', 'The gap never closes']
+    ],
+    med: [
+      ['Where do the ' + m('300') + ' km cars meet?', m('180') + ' km from the first'],
+      ['A bus at ' + m('60') + ' leaves ' + m('30') + ' min before a car at ' + m('80'), 'Caught after ' + m('1.5 h')],
+      ['A walker at ' + m('5') + ' leaves ' + m('2') + ' h before a cyclist at ' + m('15'), 'Caught after ' + m('1 h')],
+      ['A cyclist at ' + m('12') + ' leaves ' + m('1') + ' h before a car at ' + m('60'), 'Caught after ' + m('0.25 h')],
+      ['Runners at ' + m('8') + ' and ' + m('6') + ' m/s with a ' + m('100') + ' m start', m('50 s')],
+      ['Two trains ' + m('420') + ' km apart at ' + m('90') + ' and ' + m('120'), m('2 h')],
+      ['Where do they meet?', m('180') + ' km from the first']
+    ],
+    hard: [
+      ['Two cars ' + m('450') + ' km apart meet after ' + m('3') + ' h; one does ' + m('80') + ': the other', m('70 km/h')],
+      ['A car catches a bus ' + m('40') + ' km ahead in ' + m('2') + ' h: the difference in speeds', m('20 km/h')],
+      ['Two walkers ' + m('9') + ' km apart at ' + m('4') + ' and ' + m('5') + ': where do they meet?', m('4') + ' km from the first'],
+      ['A boat and a raft ' + m('24') + ' km apart moving towards each other at ' + m('10') + ' and ' + m('2'), m('2 h')],
+      ['A train ' + m('200') + ' m long passing a pole at ' + m('20') + ' m/s', m('10 s')],
+      ['Why does the gap close at the sum when they approach?', 'Each covers part of it in the same time'],
+      ['Two cyclists start together at ' + m('12') + ' and ' + m('18') + ': the gap after ' + m('2') + ' h', m('12') + ' km']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw the two bodies and an arrow each before choosing sum or difference.',
+  homework: [
+    'Two cars ' + m('420') + ' km apart drive towards each other at ' + m('90') + ' and ' + m('120') + ' km/h. When do they meet?',
+    'How far has each travelled by then?',
+    'A bus at ' + m('50') + ' km/h leaves ' + m('1') + ' hour before a car at ' + m('75') + '. When does the car catch it?',
+    'Two runners ' + m('120') + ' m apart run in the same direction at ' + m('7') + ' and ' + m('5') + ' m/s. When is the first caught?',
+    'Explain why the closing speed is the sum in one case and the difference in the other.'
+  ]
+});
