@@ -1638,3 +1638,200 @@ G6_MAT.push({
     'How many integers satisfy ' + m('−10 < x ≤ 0') + '?'
   ]
 });
+
+/* ============================== 10 ============================== */
+G6_MAT.push({
+  id: 'g6-10', stream: 'mat', grade: 6, quarter: 1, lessons: '21', hours: 1,
+  title: 'Discuss and recall — fractions',
+  subtitle: 'What Grade 5 established about fractions, gathered on one page before the division begins.',
+  uz: 'Matematika 6, takrorlash', uzPage: 'pp. 54–57',
+  cam: 'S7 7 entry', camPage: 'Stage 7, pp. 66–70', wb: 'Exercise 7.1',
+  objectives: [
+    'Simplify a fraction to its lowest terms.',
+    'Convert between mixed numbers and improper fractions.',
+    'Compare and order fractions.',
+    'Add, subtract and multiply fractions.'
+  ],
+  terms: [
+    ['Proper fraction', 'To‘g‘ri kasr', 'Правильная дробь'],
+    ['Improper fraction', 'Noto‘g‘ri kasr', 'Неправильная дробь'],
+    ['Mixed number', 'Aralash son', 'Смешанное число'],
+    ['Lowest terms', 'Qisqarmas ko‘rinish', 'Несократимый вид'],
+    ['Common denominator', 'Umumiy maxraj', 'Общий знаменатель'],
+    ['Reciprocal', 'Teskari son', 'Обратное число'],
+    ['To simplify', 'Qisqartirish', 'Сократить'],
+    ['To compare', 'Taqqoslash', 'Сравнить']
+  ],
+  timing: [[8, 'The vocabulary'], [10, 'Simplifying and converting'], [12, 'Comparing'], [10, 'The three operations you already have']],
+  sections: [
+    {
+      h: 'The vocabulary',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Kind</th><th>Example</th><th>Test</th></tr></thead>
+      <tbody>
+        <tr><td>proper</td><td class="m">${f('3', '5')}</td><td>numerator smaller</td></tr>
+        <tr><td>improper</td><td class="m">${f('7', '5')}</td><td>numerator larger</td></tr>
+        <tr><td>mixed</td><td class="m">1${f('2', '5')}</td><td>a whole part and a proper fraction</td></tr>
+        <tr><td>equal to one</td><td class="m">${f('5', '5')}</td><td>the two are equal</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A fraction is a division waiting to happen</div>
+      ${m(f('7', '5'))} means ${m('7 ÷ 5')}, which is ${m('1')} remainder ${m('2')} — that is,
+      ${m('1' + f('2', '5'))}. The two forms are the same number written for different purposes.</div>`
+    },
+    {
+      h: 'Simplifying and converting',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>Method</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>simplify</td><td>divide both parts by their HCF</td><td class="m">${f('18', '24')} = ${f('3', '4')}</td></tr>
+        <tr><td>mixed to improper</td><td>whole ${m('×')} denominator, plus numerator</td><td class="m">2${f('3', '4')} = ${f('11', '4')}</td></tr>
+        <tr><td>improper to mixed</td><td>divide, keep the remainder</td><td class="m">${f('17', '5')} = 3${f('2', '5')}</td></tr>
+        <tr><td>equivalent fractions</td><td>multiply both parts by the same number</td><td class="m">${f('2', '3')} = ${f('8', '12')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Simplify at the end, always</span>
+      An answer of ${m(f('12', '18'))} is not wrong but is not finished; ${m(f('2', '3'))} is. Marks for
+      “lowest terms” are lost far more often than marks for the arithmetic itself.</div>`
+    },
+    {
+      h: 'Comparing',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Pair</th><th>Method</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('3', '7')} and ${f('5', '7')}</td><td>same denominator</td><td class="m">${f('3', '7')} < ${f('5', '7')}</td></tr>
+        <tr><td class="m">${f('3', '5')} and ${f('3', '8')}</td><td>same numerator — bigger denominator, smaller parts</td><td class="m">${f('3', '8')} < ${f('3', '5')}</td></tr>
+        <tr><td class="m">${f('3', '5')} and ${f('5', '8')}</td><td>common denominator ${m('40')}</td><td class="m">${f('24', '40')} < ${f('25', '40')}</td></tr>
+        <tr><td class="m">${f('4', '9')} and ${f('1', '2')}</td><td>compare with ${m(f('1', '2'))}</td><td class="m">${f('4', '9')} < ${f('1', '2')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Bigger denominator, smaller pieces</div>
+      A cake cut into ${m('8')} gives smaller slices than the same cake cut into ${m('5')}. That single
+      picture settles every comparison with equal numerators.</div>`
+    },
+    {
+      h: 'The three operations you already have',
+      html: `${eq(m(f('a', 'b') + ' + ' + f('c', 'b') + ' = ' + f('a + c', 'b')) + '     ' + m(f('a', 'b') + ' · ' + f('c', 'd') + ' = ' + f('ac', 'bd')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('2', '3')} + ${f('1', '4')}</td><td class="m">${f('8', '12')} + ${f('3', '12')}</td><td class="m">${f('11', '12')}</td></tr>
+        <tr><td class="m">${f('5', '6')} − ${f('1', '3')}</td><td class="m">${f('5', '6')} − ${f('2', '6')}</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td class="m">${f('2', '3')} · ${f('3', '5')}</td><td>cancel the ${m('3')}s</td><td class="m">${f('2', '5')}</td></tr>
+        <tr><td class="m">${f('3', '4')} of ${m('20')}</td><td class="m">20 ÷ 4 · 3</td><td class="m">15</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One operation is still missing</div>
+      Adding, subtracting and multiplying are done. Division is the whole of the next four lessons — and
+      it turns out to be the easiest of the four.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Simplify ' + m(f('18', '24')) + ' and convert ' + m(f('17', '5')) + ' to a mixed number.',
+      steps: [
+        ['HCF of ' + m('18') + ' and ' + m('24') + ' is ' + m('6') + '.', m(f('3', '4'))],
+        [m('17 ÷ 5 = 3') + ' remainder ' + m('2') + '.', m('3' + f('2', '5'))]
+      ],
+      ans: m(f('3', '4')) + ' and ' + m('3' + f('2', '5'))
+    },
+    {
+      q: 'Which is larger, ' + m(f('3', '5')) + ' or ' + m(f('5', '8')) + '?',
+      steps: [
+        ['Common denominator ' + m('40') + '.', ''],
+        [m(f('3', '5') + ' = ' + f('24', '40')), ''],
+        [m(f('5', '8') + ' = ' + f('25', '40')), ''],
+        [m(f('5', '8')) + ' is larger.', '']
+      ],
+      ans: m(f('5', '8'))
+    },
+    {
+      q: 'Compute ' + m(f('2', '3') + ' · ' + f('3', '5')) + '.',
+      steps: [
+        ['Cancel the ' + m('3') + ' in the numerator against the ' + m('3') + ' in the denominator.', ''],
+        [m(f('2', '5')), 'Cancel before multiplying — it is always quicker.']
+      ],
+      ans: m(f('2', '5'))
+    }
+  ],
+  modelNote: 'Ask which is bigger, a fifth or an eighth, before anything else; the answer that comes back tells you exactly how much recall this class needs.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'Simplifying to lowest terms',
+    hint: 'Divide both parts by their highest common factor.',
+    items: [
+      {
+        title: '18 / 24',
+        start: m(f('18', '24')),
+        steps: [
+          [m('18 = 2 · 3²') + ', ' + m('24 = 2³ · 3'), 'Factorise both.'],
+          ['The HCF is ' + m('6') + '.', 'The highest one — anything less leaves work.'],
+          [m(f('3', '4')), 'Divide both parts by it.']
+        ],
+        answer: m(f('3', '4'))
+      },
+      {
+        title: '45 / 60',
+        start: m(f('45', '60')),
+        steps: [
+          ['Both end in ' + m('5') + ' or ' + m('0') + ', so both divide by ' + m('5') + '.', ''],
+          [m(f('9', '12')), 'Not finished — both divide by ' + m('3') + '.'],
+          [m(f('3', '4')), 'Now the parts share no factor.']
+        ],
+        answer: m(f('3', '4'))
+      },
+      {
+        title: '2/3 · 3/5',
+        start: m(f('2', '3') + ' · ' + f('3', '5')),
+        steps: [
+          ['The ' + m('3') + ' above cancels the ' + m('3') + ' below.', 'Cancel before multiplying.'],
+          [m(f('2', '1') + ' · ' + f('1', '5')), ''],
+          [m(f('2', '5')), '']
+        ],
+        answer: m(f('2', '5'))
+      }
+    ]
+  },
+  quiz: [
+    { q: m(f('7', '5')) + ' is:', a: ['proper', 'improper', 'mixed', 'equal to one'], c: 1, why: 'Numerator larger.' },
+    { q: m('2' + f('3', '4')) + ' as an improper fraction:', a: [m(f('9', '4')), m(f('11', '4')), m(f('5', '4')), m(f('23', '4'))], c: 1, why: m('2 · 4 + 3') + '.' },
+    { q: m(f('18', '24')) + ' simplifies to:', a: [m(f('9', '12')), m(f('3', '4')), m(f('2', '3')), m(f('6', '8'))], c: 1, why: 'HCF ' + m('6') + '.' },
+    { q: 'Which is larger, ' + m(f('3', '5')) + ' or ' + m(f('3', '8')) + '?', a: [m(f('3', '5')), m(f('3', '8')), 'equal', 'cannot say'], c: 0, why: 'Bigger denominator, smaller pieces.' },
+    { q: m(f('2', '3') + ' + ' + f('1', '4')) + ' equals:', a: [m(f('3', '7')), m(f('11', '12')), m(f('2', '12')), m(f('3', '12'))], c: 1, why: 'LCD ' + m('12') + '.' },
+    { q: m(f('3', '4')) + ' of ' + m('20') + ' is:', a: [m('5'), m('15'), m('16'), m('60')], c: 1, why: m('20 ÷ 4 · 3') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m(f('18', '24')) + ' simplified', m(f('3', '4'))],
+      [m(f('45', '60')) + ' simplified', m(f('3', '4'))],
+      [m('2' + f('3', '4')) + ' as improper', m(f('11', '4'))],
+      [m(f('17', '5')) + ' as mixed', m('3' + f('2', '5'))],
+      [m(f('3', '7')) + ' or ' + m(f('5', '7')) + ': larger', m(f('5', '7'))],
+      [m(f('3', '5')) + ' or ' + m(f('3', '8')) + ': larger', m(f('3', '5'))],
+      [m(f('2', '3') + ' + ' + f('1', '4')), m(f('11', '12'))]
+    ],
+    med: [
+      [m(f('5', '6') + ' − ' + f('1', '3')), m(f('1', '2'))],
+      [m(f('2', '3') + ' · ' + f('3', '5')), m(f('2', '5'))],
+      [m(f('3', '4')) + ' of ' + m('20'), m('15')],
+      [m(f('3', '5')) + ' or ' + m(f('5', '8')) + ': larger', m(f('5', '8'))],
+      [m(f('4', '9')) + ' or ' + m(f('1', '2')) + ': larger', m(f('1', '2'))],
+      [m('1' + f('1', '2') + ' + ' + f('3', '4')), m('2' + f('1', '4'))],
+      [m(f('2', '5') + ' · ' + f('10', '3')), m('1' + f('1', '3'))]
+    ],
+    hard: [
+      ['Order ' + m(f('2', '3') + ', ' + f('3', '5') + ', ' + f('5', '8')), m(f('3', '5') + ' < ' + f('5', '8') + ' < ' + f('2', '3'))],
+      [m('2' + f('1', '3') + ' − 1' + f('1', '2')), m(f('5', '6'))],
+      [m(f('5', '8')) + ' of ' + m('64'), m('40')],
+      ['A fraction equal to ' + m(f('3', '4')) + ' with denominator ' + m('28'), m(f('21', '28'))],
+      [m(f('3', '4') + ' · ' + f('2', '9')), m(f('1', '6'))],
+      ['Which is nearer to ' + m('1') + ', ' + m(f('7', '8')) + ' or ' + m(f('9', '10')) + '?', m(f('9', '10'))],
+      ['Why is ' + m(f('12', '18'))+ ' an unfinished answer?', 'Both parts still divide by ' + m('6')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every answer in lowest terms, and mixed numbers where the fraction is improper.',
+  homework: [
+    'Simplify ' + m(f('24', '36')) + ', ' + m(f('30', '45')) + ' and ' + m(f('16', '40')) + '.',
+    'Convert ' + m('3' + f('2', '5')) + ' to an improper fraction and ' + m(f('23', '6')) + ' to a mixed number.',
+    'Order ' + m(f('1', '2') + ', ' + f('3', '7') + ', ' + f('5', '9')) + '.',
+    'Compute ' + m(f('3', '4') + ' + ' + f('2', '5')) + ' and ' + m(f('7', '8') + ' − ' + f('1', '4')) + '.',
+    'Compute ' + m(f('3', '5') + ' · ' + f('10', '9')) + ', cancelling first.'
+  ]
+});
