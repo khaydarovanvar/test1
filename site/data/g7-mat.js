@@ -9263,3 +9263,357 @@ G7_MAT.push({
     'Write one sentence for each of the seven blocks on the chapter map.'
   ]
 });
+
+/* ============================== 54 ============================== */
+G7_MAT.push({
+  id: 'g7-54', stream: 'mat', grade: 7, quarter: 3, lessons: '98–99', hours: 2,
+  title: 'The square of a sum and of a difference',
+  subtitle: 'Two formulae worth knowing by heart — and the middle term that everybody forgets.',
+  uz: 'Matematika 7, §44', uzPage: 'pp. 282–289',
+  cam: 'S8 2.3', camPage: 'Stage 8, pp. 18–24', wb: 'Exercise 2.3',
+  objectives: [
+    'Derive ' + m('(a + b)²') + ' and ' + m('(a − b)²') + ' by multiplying out.',
+    'Apply both formulae in either direction.',
+    'Explain the middle term with a square picture.',
+    'Use the formulae to square numbers mentally.'
+  ],
+  terms: [
+    ['Square of a sum', 'Yig‘indining kvadrati', 'Квадрат суммы'],
+    ['Square of a difference', 'Ayirmaning kvadrati', 'Квадрат разности'],
+    ['Abridged multiplication', 'Qisqa ko‘paytirish', 'Сокращённое умножение'],
+    ['Middle term', 'O‘rta had', 'Средний член'],
+    ['Double product', 'Ikkilangan ko‘paytma', 'Удвоенное произведение'],
+    ['Identity', 'Ayniyat', 'Тождество'],
+    ['Perfect square', 'To‘la kvadrat', 'Полный квадрат'],
+    ['Mental arithmetic', 'Og‘zaki hisoblash', 'Устный счёт']
+  ],
+  timing: [[15, 'Where the formulae come from'], [20, 'The square picture'], [25, 'Using them both ways'], [20, 'Squaring numbers in the head'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Where the formulae come from',
+      html: `<p>Nothing new is being claimed: both formulae are ordinary multiplications, done once and
+      then remembered.</p>
+      ${eq(m('(a + b)² = a² + 2ab + b²'), true)}
+      ${eq(m('(a − b)² = a² − 2ab + b²'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>write it out</td><td class="m">(a + b)(a + b)</td></tr>
+        <tr><td>four products</td><td class="m">a² + ab + ba + b²</td></tr>
+        <tr><td>collect</td><td class="m">a² + 2ab + b²</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('(a + b)²')} is not ${m('a² + b²')}</span>
+      Try ${m('a = 3, b = 4')}: the left side is ${m('49')}, the right ${m('25')}. The missing
+      ${m('2ab = 24')} is the whole difference, and it is missing from more answers than any other term
+      in the course.</div>`
+    },
+    {
+      h: 'The square picture',
+      html: `<p>A square of side ${m('a + b')} splits into four pieces: two squares and two equal
+      rectangles.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Piece</th><th>Dimensions</th><th>Area</th></tr></thead>
+      <tbody>
+        <tr><td>large square</td><td class="m">a × a</td><td class="m">a²</td></tr>
+        <tr><td>rectangle</td><td class="m">a × b</td><td class="m">ab</td></tr>
+        <tr><td>rectangle</td><td class="m">b × a</td><td class="m">ab</td></tr>
+        <tr><td>small square</td><td class="m">b × b</td><td class="m">b²</td></tr>
+      </tbody></table></div>
+      <p>Total: ${m('a² + 2ab + b²')}. The two rectangles are the middle term, and they are impossible to
+      overlook once the picture has been drawn.</p>
+      <div class="keybox"><div class="klabel">The sign is the only difference</div>
+      In ${m('(a − b)²')} the middle term is subtracted, but ${m('b²')} is still added: a square is never
+      negative. Both formulae end in ${m('+ b²')}.</div>`
+    },
+    {
+      h: 'Using them both ways',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Expand</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(x + 5)²</td><td class="m">x² + 10x + 25</td></tr>
+        <tr><td class="m">(x − 7)²</td><td class="m">x² − 14x + 49</td></tr>
+        <tr><td class="m">(3a + 2)²</td><td class="m">9a² + 12a + 4</td></tr>
+        <tr><td class="m">(2x − 5y)²</td><td class="m">4x² − 20xy + 25y²</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Recognise a perfect square</th><th>As a square</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x² + 10x + 25</td><td class="m">(x + 5)²</td></tr>
+        <tr><td class="m">x² − 14x + 49</td><td class="m">(x − 7)²</td></tr>
+        <tr><td class="m">9a² + 12a + 4</td><td class="m">(3a + 2)²</td></tr>
+        <tr><td class="m">x² + 6x + 10</td><td>not a perfect square</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The test for a perfect square</div>
+      Take the square roots of the first and last terms, double their product, and compare with the
+      middle term. For ${m('x² + 6x + 10')} that gives ${m('2 · x · √10')}, which is not ${m('6x')} — so
+      it is not one.</div>`
+    },
+    {
+      h: 'Squaring numbers in the head',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Number</th><th>Split</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">51²</td><td class="m">(50 + 1)²</td><td class="m">2500 + 100 + 1</td><td class="m">2601</td></tr>
+        <tr><td class="m">49²</td><td class="m">(50 − 1)²</td><td class="m">2500 − 100 + 1</td><td class="m">2401</td></tr>
+        <tr><td class="m">102²</td><td class="m">(100 + 2)²</td><td class="m">10000 + 400 + 4</td><td class="m">10404</td></tr>
+        <tr><td class="m">98²</td><td class="m">(100 − 2)²</td><td class="m">10000 − 400 + 4</td><td class="m">9604</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Split at the nearest round number</div>
+      Choose ${m('a')} to be the ten or hundred nearest to the number; then ${m('b')} is small, ${m('b²')}
+      is tiny, and the whole calculation fits in the head.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Expand ' + m('(2x − 5y)²') + '.',
+      steps: [
+        [m('a = 2x') + ', ' + m('b = 5y') + '.', ''],
+        [m('a² = 4x²'), ''],
+        [m('2ab = 2 · 2x · 5y = 20xy'), 'Subtracted, because of the minus.'],
+        [m('b² = 25y²') + ', so the answer is ' + m('4x² − 20xy + 25y²') + '.', '']
+      ],
+      ans: m('4x² − 20xy + 25y²')
+    },
+    {
+      q: 'Is ' + m('9a² + 12a + 4') + ' a perfect square?',
+      steps: [
+        [m('√(9a²) = 3a') + ' and ' + m('√4 = 2') + '.', ''],
+        [m('2 · 3a · 2 = 12a'), 'It matches the middle term.'],
+        ['So it is ' + m('(3a + 2)²') + '.', '']
+      ],
+      ans: m('(3a + 2)²')
+    },
+    {
+      q: 'Find ' + m('49²') + ' mentally.',
+      steps: [
+        [m('49 = 50 − 1'), ''],
+        [m('50² = 2500'), ''],
+        [m('2 · 50 · 1 = 100') + ', subtracted.', ''],
+        [m('2500 − 100 + 1 = 2401'), '']
+      ],
+      ans: m('2401')
+    }
+  ],
+  modelNote: 'Ask the class for (a + b)² before teaching anything; collect the wrong a² + b² answers on the board, then draw the square picture beside them.',
+  interactive: {
+    type: 'areaModel',
+    title: 'The square cut into four pieces',
+    hint: 'The two rectangles are the middle term.'
+  },
+  quiz: [
+    { q: m('(a + b)²') + ' equals:', a: [m('a² + b²'), m('a² + 2ab + b²'), m('a² − 2ab + b²'), m('2a + 2b')], c: 1, why: 'Four products, collected.' },
+    { q: m('(a − b)²') + ' equals:', a: [m('a² − b²'), m('a² − 2ab + b²'), m('a² + 2ab − b²'), m('a² − 2ab − b²')], c: 1, why: m('+ b²') + ' either way.' },
+    { q: m('(x + 5)²') + ' equals:', a: [m('x² + 25'), m('x² + 10x + 25'), m('x² + 5x + 25'), m('x² + 10x + 10')], c: 1, why: m('2 · x · 5') + '.' },
+    { q: 'The middle term of ' + m('(3a + 2)²') + ' is:', a: [m('6a'), m('12a'), m('5a'), m('9a')], c: 1, why: m('2 · 3a · 2') + '.' },
+    { q: m('x² + 6x + 10') + ' is:', a: ['a perfect square', 'not a perfect square', m('(x + 3)²'), m('(x + 5)²')], c: 1, why: m('2 · x · √10 ≠ 6x') + '.' },
+    { q: m('49²') + ' by the formula is:', a: [m('2401'), m('2409'), m('2601'), m('2500')], c: 0, why: m('2500 − 100 + 1') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('(x + 3)²'), m('x² + 6x + 9')],
+      [m('(x − 4)²'), m('x² − 8x + 16')],
+      [m('(x + 5)²'), m('x² + 10x + 25')],
+      [m('(a + 1)²'), m('a² + 2a + 1')],
+      [m('(2x + 1)²'), m('4x² + 4x + 1')],
+      [m('(y − 6)²'), m('y² − 12y + 36')],
+      [m('51²'), m('2601')]
+    ],
+    med: [
+      [m('(3a + 2)²'), m('9a² + 12a + 4')],
+      [m('(2x − 5y)²'), m('4x² − 20xy + 25y²')],
+      [m('(4m − 3n)²'), m('16m² − 24mn + 9n²')],
+      [m('x² + 10x + 25') + ' as a square', m('(x + 5)²')],
+      [m('x² − 14x + 49') + ' as a square', m('(x − 7)²')],
+      [m('98²'), m('9604')],
+      [m('102²'), m('10404')]
+    ],
+    hard: [
+      [m('(a + b)² − (a − b)²'), m('4ab')],
+      [m('(a + b)² + (a − b)²'), m('2a² + 2b²')],
+      ['If ' + m('a + b = 7') + ' and ' + m('ab = 12') + ', find ' + m('a² + b²'), m('25')],
+      ['If ' + m('a − b = 3') + ' and ' + m('ab = 10') + ', find ' + m('a² + b²'), m('29')],
+      [m('(x + ' + f('1', 'x') + ')²'), m('x² + 2 + ' + f('1', 'x²'))],
+      ['For which ' + m('k') + ' is ' + m('x² + kx + 36') + ' a perfect square?', m('k = ±12')],
+      [m('(2a − 3)² − (2a + 3)²'), m('−24a')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the middle term before the last one; it is the term that gets forgotten.',
+  homework: [
+    'Expand ' + m('(x + 8)²') + ', ' + m('(x − 9)²') + ' and ' + m('(5a + 2)²') + '.',
+    'Expand ' + m('(3x − 4y)²') + '.',
+    'Write ' + m('x² + 12x + 36') + ' and ' + m('4a² − 20a + 25') + ' as squares.',
+    'Find ' + m('52²') + ' and ' + m('97²') + ' mentally, showing the split.',
+    'If ' + m('a + b = 9') + ' and ' + m('ab = 20') + ', find ' + m('a² + b²') + '.'
+  ]
+});
+
+/* ============================== 55 ============================== */
+G7_MAT.push({
+  id: 'g7-55', stream: 'mat', grade: 7, quarter: 3, lessons: '100–101', hours: 2,
+  title: 'The difference of two squares',
+  subtitle: 'The one product whose middle term cancels — and the fastest factorisation in algebra.',
+  uz: 'Matematika 7, §45', uzPage: 'pp. 290–296',
+  cam: 'S8 2.4', camPage: 'Stage 8, pp. 25–30', wb: 'Exercise 2.4',
+  objectives: [
+    'Derive ' + m('(a − b)(a + b) = a² − b²') + ' and explain why the middle term vanishes.',
+    'Factorise a difference of two squares in one step.',
+    'Recognise that a sum of two squares does not factorise this way.',
+    'Use the formula for mental arithmetic and for cancelling fractions.'
+  ],
+  terms: [
+    ['Difference of two squares', 'Kvadratlar ayirmasi', 'Разность квадратов'],
+    ['Sum of two squares', 'Kvadratlar yig‘indisi', 'Сумма квадратов'],
+    ['Conjugate pair', 'Qo‘shma ifodalar', 'Сопряжённые выражения'],
+    ['To cancel', 'Qisqartirish', 'Сокращать'],
+    ['Factorisation', 'Ko‘paytuvchilarga ajratish', 'Разложение на множители'],
+    ['Square root', 'Kvadrat ildiz', 'Квадратный корень'],
+    ['One step', 'Bir qadamda', 'В один шаг'],
+    ['Identity', 'Ayniyat', 'Тождество']
+  ],
+  timing: [[15, 'The vanishing middle term'], [25, 'Factorising in one step'], [20, 'What does not work'], [25, 'Two uses'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The vanishing middle term',
+      html: `${eq(m('(a − b)(a + b) = a² − b²'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>four products</td><td class="m">a² + ab − ba − b²</td></tr>
+        <tr><td class="m">+ab</td><td>cancels ${m('−ba')}</td></tr>
+        <tr><td>what is left</td><td class="m">a² − b²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Why this pair and no other</div>
+      The two middle products are equal and opposite only because one bracket has ${m('+b')} and the
+      other ${m('−b')}. Change either sign and the middle term returns.</div>`
+    },
+    {
+      h: 'Factorising in one step',
+      html: `<p>Read the identity from right to left: any difference of two squares factorises
+      immediately.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th class="m">a</th><th class="m">b</th><th>Factorised</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x² − 9</td><td class="m">x</td><td class="m">3</td><td class="m">(x − 3)(x + 3)</td></tr>
+        <tr><td class="m">4a² − 25</td><td class="m">2a</td><td class="m">5</td><td class="m">(2a − 5)(2a + 5)</td></tr>
+        <tr><td class="m">49 − y²</td><td class="m">7</td><td class="m">y</td><td class="m">(7 − y)(7 + y)</td></tr>
+        <tr><td class="m">16x² − 81y²</td><td class="m">4x</td><td class="m">9y</td><td class="m">(4x − 9y)(4x + 9y)</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Take the common factor out first</span>
+      ${m('2x² − 18')} is not a difference of two squares as it stands. Take out the ${m('2')} first:
+      ${m('2(x² − 9) = 2(x − 3)(x + 3)')}. Factorising is always finished, never stopped halfway.</div>`
+    },
+    {
+      h: 'What does not work',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Factorises like this?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x² − 9</td><td>yes</td><td>a difference of squares</td></tr>
+        <tr><td class="m">x² + 9</td><td>no</td><td>a sum of squares</td></tr>
+        <tr><td class="m">x² − 5</td><td>not over whole numbers</td><td class="m">√5</td></tr>
+        <tr><td class="m">x³ − 8</td><td>not by this formula</td><td>cubes, not squares</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('a² + b²')} does not factorise</span>
+      Writing ${m('x² + 9 = (x + 3)(x + 3)')} is wrong twice over: that product is ${m('x² + 6x + 9')}. A
+      sum of two squares has no factorisation with real numbers at all.</div>`
+    },
+    {
+      h: 'Two uses',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Product</th><th>As a difference</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">51 · 49</td><td class="m">50² − 1²</td><td class="m">2499</td></tr>
+        <tr><td class="m">102 · 98</td><td class="m">100² − 2²</td><td class="m">9996</td></tr>
+        <tr><td class="m">37 · 43</td><td class="m">40² − 3²</td><td class="m">1591</td></tr>
+      </tbody></table></div>
+      <p>And in a fraction the factorisation is what makes the cancelling possible:</p>
+      ${eq(m(f('x² − 9', 'x + 3') + ' = ' + f('(x − 3)(x + 3)', 'x + 3') + ' = x − 3'), true)}
+      <div class="keybox"><div class="klabel">This is why factorising comes before fractions</div>
+      Nothing can be cancelled from ${m('x² − 9')} as it stands, because cancelling needs factors. Three
+      lessons from now every algebraic fraction will begin with exactly this step.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Factorise ' + m('16x² − 81y²') + '.',
+      steps: [
+        [m('√(16x²) = 4x'), ''],
+        [m('√(81y²) = 9y'), ''],
+        [m('= (4x − 9y)(4x + 9y)'), ''],
+        ['Check: the middle terms cancel ✓', '']
+      ],
+      ans: m('(4x − 9y)(4x + 9y)')
+    },
+    {
+      q: 'Factorise ' + m('2x² − 18') + ' completely.',
+      steps: [
+        ['Common factor first: ' + m('2(x² − 9)') + '.', ''],
+        [m('x² − 9 = (x − 3)(x + 3)'), ''],
+        [m('= 2(x − 3)(x + 3)'), '']
+      ],
+      ans: m('2(x − 3)(x + 3)')
+    },
+    {
+      q: 'Find ' + m('37 · 43') + ' mentally.',
+      steps: [
+        ['Both are ' + m('3') + ' from ' + m('40') + '.', ''],
+        [m('37 · 43 = (40 − 3)(40 + 3)'), ''],
+        [m('= 1600 − 9'), ''],
+        [m('= 1591'), '']
+      ],
+      ans: m('1591')
+    }
+  ],
+  modelNote: 'Put 51 · 49 and 50 · 50 side by side on the board and ask which is bigger; the difference of exactly 1 is the formula arriving before its name.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'Factorise, then cancel',
+    hint: 'Only factors cancel — that is what the formula provides.'
+  },
+  quiz: [
+    { q: m('(a − b)(a + b)') + ' equals:', a: [m('a² + b²'), m('a² − b²'), m('a² − 2ab + b²'), m('a² + 2ab + b²')], c: 1, why: 'The middle terms cancel.' },
+    { q: m('x² − 9') + ' factorises to:', a: [m('(x − 3)²'), m('(x − 3)(x + 3)'), m('(x − 9)(x + 1)'), 'it does not'], c: 1, why: m('b = 3') + '.' },
+    { q: m('x² + 9') + ' factorises to:', a: [m('(x + 3)²'), m('(x − 3)(x + 3)'), m('(x + 3)(x + 3)'), 'it does not'], c: 3, why: 'A sum of squares.' },
+    { q: m('4a² − 25') + ' factorises to:', a: [m('(2a − 5)(2a + 5)'), m('(4a − 5)(a + 5)'), m('(2a − 5)²'), m('(4a − 25)(a + 1)')], c: 0, why: m('a = 2a, b = 5') + '.' },
+    { q: m('2x² − 18') + ' factorises completely to:', a: [m('2(x² − 9)'), m('2(x − 3)(x + 3)'), m('(2x − 3)(x + 6)'), m('(x − 3)(x + 3)')], c: 1, why: 'Finish the job.' },
+    { q: m('51 · 49') + ' equals:', a: [m('2499'), m('2500'), m('2501'), m('2401')], c: 0, why: m('2500 − 1') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('x² − 9'), m('(x − 3)(x + 3)')],
+      [m('x² − 16'), m('(x − 4)(x + 4)')],
+      [m('a² − 1'), m('(a − 1)(a + 1)')],
+      [m('49 − y²'), m('(7 − y)(7 + y)')],
+      [m('4a² − 25'), m('(2a − 5)(2a + 5)')],
+      [m('(x − 2)(x + 2)'), m('x² − 4')],
+      [m('51 · 49'), m('2499')]
+    ],
+    med: [
+      [m('16x² − 81y²'), m('(4x − 9y)(4x + 9y)')],
+      [m('2x² − 18'), m('2(x − 3)(x + 3)')],
+      [m('x⁴ − 16'), m('(x² − 4)(x² + 4) = (x − 2)(x + 2)(x² + 4)')],
+      [m('102 · 98'), m('9996')],
+      [m('37 · 43'), m('1591')],
+      [m(f('x² − 9', 'x + 3')), m('x − 3')],
+      ['Does ' + m('x² + 25') + ' factorise?', 'No']
+    ],
+    hard: [
+      [m('9a² − 4b²'), m('(3a − 2b)(3a + 2b)')],
+      [m('(x + 1)² − 4'), m('(x − 1)(x + 3)')],
+      [m('a⁴ − b⁴'), m('(a − b)(a + b)(a² + b²)')],
+      [m(f('4x² − 25', '2x + 5')), m('2x − 5')],
+      [m('123² − 122²'), m('245')],
+      ['Factorise ' + m('50² − 49²') + ' and evaluate', m('99')],
+      [m('x² − ' + f('1', '4')), m('(x − ' + f('1', '2') + ')(x + ' + f('1', '2') + ')')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Always take out the common factor before looking for a difference of squares.',
+  homework: [
+    'Factorise ' + m('x² − 36') + ', ' + m('9a² − 16') + ' and ' + m('25 − 4y²') + '.',
+    'Factorise ' + m('3x² − 27') + ' completely.',
+    'Find ' + m('61 · 59') + ' and ' + m('104 · 96') + ' by the formula.',
+    'Simplify ' + m(f('x² − 25', 'x − 5')) + '.',
+    'Explain in one sentence why ' + m('x² + 16') + ' does not factorise.'
+  ]
+});
