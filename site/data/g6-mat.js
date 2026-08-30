@@ -5853,3 +5853,181 @@ G6_MAT.push({
     'Show that a rise of ' + m('50%') + ' followed by a fall of ' + m('50%') + ' leaves ' + m('75%') + ' of the original.'
   ]
 });
+
+/* ============================== 33 ============================== */
+G6_MAT.push({
+  id: 'g6-33', stream: 'mat', grade: 6, quarter: 2, lessons: '67–70', hours: 4,
+  title: 'Word problems on percentages',
+  subtitle: 'Shops, salaries, populations and exam marks — all the same three questions in disguise.',
+  uz: 'Matematika 6, §15', uzPage: 'pp. 191–202',
+  cam: 'S7 10', camPage: 'Stage 7, pp. 96–104', wb: 'Exercise 10.4',
+  objectives: [
+    'Choose which percentage question a problem is asking.',
+    'Work with successive percentage changes.',
+    'Solve problems about discounts, taxes and interest.',
+    'Interpret a percentage answer in the context it came from.'
+  ],
+  terms: [
+    ['Discount', 'Chegirma', 'Скидка'],
+    ['Tax', 'Soliq', 'Налог'],
+    ['Interest', 'Foiz (bank)', 'Проценты'],
+    ['Salary', 'Maosh', 'Зарплата'],
+    ['Population', 'Aholi', 'Население'],
+    ['Successive change', 'Ketma-ket o‘zgarish', 'Последовательное изменение'],
+    ['Net change', 'Yakuniy o‘zgarish', 'Итоговое изменение'],
+    ['To interpret', 'Talqin qilmoq', 'Истолковать']
+  ],
+  timing: [[30, 'Naming the question'], [40, 'Shops and money'], [50, 'Successive changes'], [30, 'Populations and marks'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'Naming the question',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Wording</th><th>Question</th><th>Operation</th></tr></thead>
+      <tbody>
+        <tr><td>“find ${m('15%')} of…”</td><td>a part</td><td>multiply</td></tr>
+        <tr><td>“…is ${m('15%')} of what?”</td><td>the whole</td><td>divide</td></tr>
+        <tr><td>“what percentage of… is…?”</td><td>the percentage</td><td class="m">${f('part', 'whole')} · 100</td></tr>
+        <tr><td>“increase by ${m('15%')}”</td><td>a new value</td><td class="m">· 1.15</td></tr>
+        <tr><td>“after a rise of ${m('15%')} it is…”</td><td>the original</td><td class="m">÷ 1.15</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Five phrases, five operations</div>
+      Nearly every percentage problem in the paper opens with one of those five wordings. Matching the
+      phrase to the operation is more reliable than reasoning from the numbers.</div>`
+    },
+    {
+      h: 'Shops and money',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a jacket at ${m('400 000')} with ${m('25%')} off</td><td class="m">· 0.75</td><td class="m">300 000</td></tr>
+        <tr><td>a bill of ${m('80 000')} plus ${m('15%')} service</td><td class="m">· 1.15</td><td class="m">92 000</td></tr>
+        <tr><td>a salary of ${m('2 400 000')} rising ${m('8%')}</td><td class="m">· 1.08</td><td class="m">2 592 000</td></tr>
+        <tr><td>${m('1 000 000')} at ${m('14%')} simple interest for a year</td><td class="m">· 0.14</td><td class="m">140 000 interest</td></tr>
+        <tr><td>a sale price of ${m('300 000')} after ${m('25%')} off</td><td class="m">÷ 0.75</td><td class="m">400 000</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The last row is the first row backwards</div>
+      Shops advertise the discount and the sale price; finding the original from them is the question most
+      likely to appear in an examination.</div>`
+    },
+    {
+      h: 'Successive changes',
+      html: `<p>Two changes multiply — they never add.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Changes</th><th>Combined multiplier</th><th>Net change</th></tr></thead>
+      <tbody>
+        <tr><td>up ${m('20%')}, then up ${m('10%')}</td><td class="m">1.2 · 1.1 = 1.32</td><td class="m">+32%</td></tr>
+        <tr><td>up ${m('20%')}, then down ${m('20%')}</td><td class="m">1.2 · 0.8 = 0.96</td><td class="m">−4%</td></tr>
+        <tr><td>down ${m('10%')} twice</td><td class="m">0.9 · 0.9 = 0.81</td><td class="m">−19%</td></tr>
+        <tr><td>up ${m('50%')}, then down ${m('50%')}</td><td class="m">1.5 · 0.5 = 0.75</td><td class="m">−25%</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('+20%')} then ${m('+10%')} is not ${m('+30%')}</span>
+      It is ${m('+32%')}, because the second rise is taken from the already-increased amount. Adding
+      percentage changes is the commonest error in this whole topic.</div>`
+    },
+    {
+      h: 'Populations and marks',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a village of ${m('2 500')} grows ${m('4%')}</td><td class="m">· 1.04</td><td class="m">2 600</td></tr>
+        <tr><td>a mark of ${m('34')} out of ${m('40')}</td><td class="m">${f('34', '40')} · 100</td><td class="m">85%</td></tr>
+        <tr><td>${m('18')} of ${m('24')} pupils passed</td><td class="m">${f('18', '24')} · 100</td><td class="m">75%</td></tr>
+        <tr><td>attendance rose from ${m('80%')} to ${m('92%')}</td><td class="m">92 − 80</td><td>${m('12')} percentage points</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Percentage points are not percentages</span>
+      A rise from ${m('80%')} to ${m('92%')} is ${m('12')} percentage points — but a ${m('15%')} increase
+      in the attendance figure. Newspapers confuse the two constantly; a mathematician should not.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A jacket costing ' + m('400 000') + ' sum is reduced by ' + m('25%') + '. Find the sale price.',
+      steps: [
+        ['A fall of ' + m('25%') + ' means multiplying by ' + m('0.75') + '.', ''],
+        [m('400 000 · 0.75'), ''],
+        [m('= 300 000') + ' sum.', '']
+      ],
+      ans: m('300 000') + ' sum'
+    },
+    {
+      q: 'A price rises ' + m('20%') + ' and then falls ' + m('20%') + '. What is the net change?',
+      steps: [
+        ['Multipliers: ' + m('1.2') + ' and ' + m('0.8') + '.', ''],
+        [m('1.2 · 0.8 = 0.96'), ''],
+        ['That is ' + m('96%') + ' of the original — a fall of ' + m('4%') + '.', '']
+      ],
+      ans: m('−4%')
+    },
+    {
+      q: 'A pupil scores ' + m('34') + ' out of ' + m('40') + '. Give the mark as a percentage.',
+      steps: [
+        [m(f('34', '40')), ''],
+        [m('= 0.85'), ''],
+        [m('85%'), '']
+      ],
+      ans: m('85%')
+    }
+  ],
+  modelNote: 'Collect real advertisements with percentages on them; the class checks the arithmetic and often finds the offer is worse than it looks.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which question, and what answer?',
+    hint: 'Match the wording to the operation.',
+    items: [
+      { q: m('400 000') + ' with ' + m('25%') + ' off:', a: [m('100 000'), m('300 000'), m('375 000'), m('500 000')], c: 1, why: m('· 0.75') + '.' },
+      { q: 'A bill of ' + m('80 000') + ' plus ' + m('15%') + ':', a: [m('92 000'), m('95 000'), m('12 000'), m('68 000')], c: 0, why: m('· 1.15') + '.' },
+      { q: 'A sale price of ' + m('300 000') + ' after ' + m('25%') + ' off; the original:', a: [m('375 000'), m('400 000'), m('325 000'), m('225 000')], c: 1, why: m('÷ 0.75') + '.' },
+      { q: 'Up ' + m('20%') + ' then up ' + m('10%') + ' is:', a: [m('+30%'), m('+32%'), m('+2%'), m('+22%')], c: 1, why: m('1.2 · 1.1') + '.' },
+      { q: 'Up ' + m('20%') + ' then down ' + m('20%') + ' is:', a: [m('0%'), m('−4%'), m('+4%'), m('−40%')], c: 1, why: m('1.2 · 0.8') + '.' },
+      { q: 'Down ' + m('10%') + ' twice is:', a: [m('−20%'), m('−19%'), m('−21%'), m('−100%')], c: 1, why: m('0.9 · 0.9') + '.' },
+      { q: m('34') + ' out of ' + m('40') + ' as a percentage:', a: [m('80%'), m('85%'), m('75%'), m('88%')], c: 1, why: m('0.85') + '.' },
+      { q: 'From ' + m('80%') + ' to ' + m('92%') + ' is:', a: [m('12') + ' percentage points', m('12%') + ' increase', 'both the same', m('92%')], c: 0, why: 'The increase itself is ' + m('15%') + '.' }
+    ]
+  },
+  quiz: [
+    { q: '“Increase by ' + m('15%') + '” means multiply by:', a: [m('0.15'), m('1.15'), m('15'), m('0.85')], c: 1, why: 'One step.' },
+    { q: '“After a rise of ' + m('15%') + ' it is…” means:', a: ['multiply by ' + m('1.15'), 'divide by ' + m('1.15'), 'subtract ' + m('15%'), 'add ' + m('15%')], c: 1, why: 'The reverse question.' },
+    { q: 'Two successive changes:', a: ['add', 'multiply', 'subtract', 'cancel'], c: 1, why: 'The multipliers multiply.' },
+    { q: 'A salary of ' + m('2 400 000') + ' rising ' + m('8%') + ' becomes:', a: [m('2 592 000'), m('2 592'), m('2 400 008'), m('2 208 000')], c: 0, why: m('· 1.08') + '.' },
+    { q: m('1 000 000') + ' at ' + m('14%') + ' for a year earns:', a: [m('14 000'), m('140 000'), m('1 400 000'), m('114 000')], c: 1, why: m('· 0.14') + '.' },
+    { q: 'A rise from ' + m('80%') + ' to ' + m('92%') + ' is an increase of:', a: [m('12%'), m('15%'), m('92%'), m('8%')], c: 1, why: m(f('12', '80')) + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('400 000') + ' with ' + m('25%') + ' off', m('300 000')],
+      [m('80 000') + ' plus ' + m('15%'), m('92 000')],
+      [m('2 400 000') + ' up ' + m('8%'), m('2 592 000')],
+      [m('1 000 000') + ' at ' + m('14%') + ' for a year: the interest', m('140 000')],
+      [m('2 500') + ' up ' + m('4%'), m('2 600')],
+      [m('34') + ' out of ' + m('40'), m('85%')],
+      [m('18') + ' out of ' + m('24'), m('75%')]
+    ],
+    med: [
+      ['A sale price of ' + m('300 000') + ' after ' + m('25%') + ' off: the original', m('400 000')],
+      ['Up ' + m('20%') + ' then up ' + m('10%'), m('+32%')],
+      ['Up ' + m('20%') + ' then down ' + m('20%'), m('−4%')],
+      ['Down ' + m('10%') + ' twice', m('−19%')],
+      ['Up ' + m('50%') + ' then down ' + m('50%'), m('−25%')],
+      ['From ' + m('80%') + ' to ' + m('92%') + ': the increase', m('15%')],
+      ['A price of ' + m('92 000') + ' after ' + m('15%') + ' was added: before', m('80 000')]
+    ],
+    hard: [
+      ['A shop adds ' + m('20%') + ' then advertises ' + m('20%') + ' off: the net change', m('−4%')],
+      ['A population of ' + m('2 500') + ' after two years at ' + m('4%') + ' a year', m('2 704')],
+      ['A price falls ' + m('30%') + ' to ' + m('84 000') + ': the original', m('120 000')],
+      ['Which is better: ' + m('30%') + ' off, or ' + m('20%') + ' off then ' + m('10%') + ' more off?', m('30%') + ' off — the other leaves ' + m('72%')],
+      ['A mark rose from ' + m('60') + ' to ' + m('75') + ' out of ' + m('100') + ': the percentage increase', m('25%')],
+      ['A salary rises ' + m('10%') + ' then falls ' + m('10%') + ': the net change', m('−1%')],
+      ['Why do successive percentages multiply?', 'Each acts on the amount left by the one before']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the multiplier for every change before you touch the numbers.',
+  homework: [
+    'A coat costs ' + m('520 000') + ' sum and is reduced by ' + m('35%') + '. Find the sale price.',
+    'A bill of ' + m('140 000') + ' has ' + m('12%') + ' added. Find the total.',
+    'After a discount of ' + m('40%') + ' a price is ' + m('96 000') + '. Find the original price.',
+    'A price rises ' + m('25%') + ' and then falls ' + m('20%') + '. Find the net change.',
+    'A pupil scores ' + m('57') + ' out of ' + m('60') + '. Give the mark as a percentage.'
+  ]
+});
