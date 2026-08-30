@@ -14270,3 +14270,209 @@ G7_MAT.push({
     'Decide how many solutions ' + m('{ y = 4x − 1 ; y = 4x + 2 }') + ' has, and explain.'
   ]
 });
+
+/* ============================== 80 ============================== */
+G7_MAT.push({
+  id: 'g7-80', stream: 'mat', grade: 7, quarter: 4, lessons: '150–152', hours: 3,
+  title: 'Solving problems with the help of systems',
+  subtitle: 'Two unknowns, two sentences, two equations — and an answer that names both quantities.',
+  uz: 'Matematika 7, §64', uzPage: 'pp. 451–461',
+  cam: 'Beyond Stage 8', camPage: 'Stage 8 extension', wb: 'Extension sheet 2F',
+  objectives: [
+    'Choose two unknowns and say in words what each stands for.',
+    'Turn two conditions into two equations.',
+    'Solve the system by the method that suits it.',
+    'Check both numbers against the original words and reject impossible answers.'
+  ],
+  terms: [
+    ['Two unknowns', 'Ikki noma’lum', 'Два неизвестных'],
+    ['Condition', 'Shart', 'Условие'],
+    ['To denote', 'Belgilamoq', 'Обозначить'],
+    ['Total cost', 'Umumiy narx', 'Общая стоимость'],
+    ['Digit', 'Raqam', 'Цифра'],
+    ['Two-digit number', 'Ikki xonali son', 'Двузначное число'],
+    ['Perimeter', 'Perimetr', 'Периметр'],
+    ['To interpret', 'Talqin qilmoq', 'Истолковать']
+  ],
+  timing: [[10, 'When two unknowns are needed'], [30, 'Money and quantities'], [35, 'Numbers and digits'], [30, 'Geometry and motion'], [15, 'Checking and rejecting']],
+  sections: [
+    {
+      h: 'When two unknowns are needed',
+      html: `<p>If the problem names two quantities and gives two facts relating them, two letters and two
+      equations are usually shorter than one letter and a long expression.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>What to do</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>let ${m('x')} and ${m('y')} be the two quantities, and say which is which</td></tr>
+        <tr><td>2</td><td>write the first condition as an equation</td></tr>
+        <tr><td>3</td><td>write the second condition as a second equation</td></tr>
+        <tr><td>4</td><td>solve the system</td></tr>
+        <tr><td>5</td><td>answer both parts of the question, with units</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two facts, two equations</div>
+      Count the conditions in the problem before starting. Two unknowns need two independent facts; if
+      only one is given, the problem has infinitely many answers and something has been misread.</div>`
+    },
+    {
+      h: 'Money and quantities',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Unknowns</th><th>System</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('3')} pens and ${m('2')} pencils cost ${m('13 000')}; ${m('1')} pen and ${m('1')} pencil cost ${m('5000')}</td><td>prices ${m('x')} and ${m('y')}</td><td class="m">3x + 2y = 13000, x + y = 5000</td><td>pen ${m('3000')}, pencil ${m('2000')}</td></tr>
+        <tr><td>${m('20')} coins of ${m('100')} and ${m('500')} sum, worth ${m('4400')} in all</td><td>counts ${m('x')} and ${m('y')}</td><td class="m">x + y = 20, 100x + 500y = 4400</td><td class="m">14</td></tr>
+        <tr><td>a class of ${m('30')} with ${m('4')} more girls than boys</td><td>counts ${m('x')} and ${m('y')}</td><td class="m">x + y = 30, y − x = 4</td><td class="m">13</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One equation counts, the other values</div>
+      In coin and ticket problems the first equation counts the items and the second adds up their worth.
+      Recognising that pattern writes both equations almost automatically.</div>`
+    },
+    {
+      h: 'Numbers and digits',
+      html: `<p>A two-digit number with tens digit ${m('a')} and units digit ${m('b')} is
+      ${m('10a + b')} — not ${m('ab')}, which would be a product.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>As algebra</th></tr></thead>
+      <tbody>
+        <tr><td>the number</td><td class="m">10a + b</td></tr>
+        <tr><td>the sum of its digits</td><td class="m">a + b</td></tr>
+        <tr><td>the number with its digits reversed</td><td class="m">10b + a</td></tr>
+      </tbody></table></div>
+      <p>Example: the digits of a two-digit number add to ${m('9')}, and reversing them gives a number
+      ${m('27')} larger.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>first condition</td><td class="m">a + b = 9</td></tr>
+        <tr><td>second condition</td><td class="m">10b + a = 10a + b + 27</td></tr>
+        <tr><td>simplify it</td><td class="m">9b − 9a = 27, so b − a = 3</td></tr>
+        <tr><td>solve</td><td class="m">a = 3, b = 6</td></tr>
+        <tr><td>the number</td><td class="m">36</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Digits are whole and the tens digit is not zero</span>
+      A root of ${m('a = 4.5')} or ${m('a = 0')} must be rejected: no such two-digit number exists. The
+      algebra does not know this — the reader does.</div>`
+    },
+    {
+      h: 'Geometry and motion',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>System</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a rectangle of perimeter ${m('36')} whose length exceeds its width by ${m('4')}</td><td class="m">2(x + y) = 36, y − x = 4</td><td class="m">7 by 11</td></tr>
+        <tr><td>two angles are complementary and differ by ${m('20°')}</td><td class="m">x + y = 90, y − x = 20</td><td class="m">35° and 55°</td></tr>
+        <tr><td>a boat goes ${m('20 km/h')} downstream and ${m('12 km/h')} up</td><td class="m">x + y = 20, x − y = 12</td><td>boat ${m('16')}, current ${m('4')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Downstream and upstream</div>
+      The current adds its speed going down and subtracts it coming up, so the two speeds are
+      ${m('x + y')} and ${m('x − y')}. Adding the equations gives the boat's own speed; subtracting gives
+      the current's.</div>`
+    },
+    {
+      h: 'Checking and rejecting',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Answer</th><th>Quantity</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(3000; 2000)</td><td>two prices</td><td>accepted</td></tr>
+        <tr><td class="m">(14; 6)</td><td>two counts of coins</td><td>accepted — both whole</td></tr>
+        <tr><td class="m">(4.5; 4.5)</td><td>two counts of pupils</td><td>rejected — not whole</td></tr>
+        <tr><td class="m">(−2; 8)</td><td>two lengths</td><td>rejected — negative</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Check in the words, not in the equations</div>
+      Substituting into your own equations only tests your arithmetic. Reading the answer back into the
+      original sentences also tests the translation, which is where the marks are.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: m('3') + ' pens and ' + m('2') + ' pencils cost ' + m('13 000') + ' sum; a pen and a pencil together cost ' + m('5000') + '. Find each price.',
+      steps: [
+        ['Let ' + m('x') + ' be the price of a pen and ' + m('y') + ' of a pencil.', ''],
+        [m('3x + 2y = 13 000') + ' and ' + m('x + y = 5000') + '.', ''],
+        ['From the second, ' + m('y = 5000 − x') + '; substitute: ' + m('3x + 10 000 − 2x = 13 000') + '.', ''],
+        [m('x = 3000') + ', so ' + m('y = 2000') + '. Check: ' + m('9000 + 4000 = 13 000') + ' ✓', '']
+      ],
+      ans: 'Pen ' + m('3000') + ', pencil ' + m('2000') + ' sum'
+    },
+    {
+      q: 'The digits of a two-digit number add to ' + m('9') + ', and reversing them gives a number ' + m('27') + ' larger. Find it.',
+      steps: [
+        ['Let the digits be ' + m('a') + ' (tens) and ' + m('b') + ' (units).', ''],
+        [m('a + b = 9'), ''],
+        [m('10b + a = 10a + b + 27') + ', which is ' + m('b − a = 3') + '.', ''],
+        [m('a = 3, b = 6') + ' — the number is ' + m('36') + ', and ' + m('63 − 36 = 27') + ' ✓', '']
+      ],
+      ans: m('36')
+    },
+    {
+      q: 'A boat travels at ' + m('20 km/h') + ' downstream and ' + m('12 km/h') + ' upstream. Find the speed of the boat and of the current.',
+      steps: [
+        ['Let ' + m('x') + ' be the boat\'s speed and ' + m('y') + ' the current\'s.', ''],
+        [m('x + y = 20') + ' and ' + m('x − y = 12') + '.', ''],
+        ['Add: ' + m('2x = 32') + ', so ' + m('x = 16') + '.', ''],
+        [m('y = 4') + '. Check: ' + m('16 + 4 = 20') + ' ✓ and ' + m('16 − 4 = 12') + ' ✓', '']
+      ],
+      ans: 'Boat ' + m('16 km/h') + ', current ' + m('4 km/h')
+    }
+  ],
+  modelNote: 'Ask the class to write only the two equations for six problems and collect them before any solving; almost every lost mark in this block is a translation error, not an algebraic one.',
+  interactive: {
+    type: 'quiz',
+    title: 'Write the two equations',
+    hint: 'One sentence, one equation.',
+    items: [
+      { q: 'A pen ' + m('x') + ' and a pencil ' + m('y') + ' cost ' + m('5000') + ' together:', a: [m('x + y = 5000'), m('xy = 5000'), m('x − y = 5000'), m('x = 5000y')], c: 0, why: '“Together” means add.' },
+      { q: 'Three pens and two pencils cost ' + m('13 000') + ':', a: [m('3x + 2y = 13000'), m('5xy = 13000'), m('3x = 2y'), m('x + y = 13000')], c: 0, why: 'Count times price.' },
+      { q: m('20') + ' coins altogether:', a: [m('x + y = 20'), m('xy = 20'), m('100x + 500y = 20'), m('x − y = 20')], c: 0, why: 'The counting equation.' },
+      { q: 'Their value is ' + m('4400') + ' sum:', a: [m('x + y = 4400'), m('100x + 500y = 4400'), m('600xy = 4400'), m('x = 4400')], c: 1, why: 'The value equation.' },
+      { q: 'A two-digit number with digits ' + m('a') + ' and ' + m('b') + ' is:', a: [m('ab'), m('a + b'), m('10a + b'), m('10b + a')], c: 2, why: 'Place value.' },
+      { q: 'Reversed, it is:', a: [m('10a + b'), m('10b + a'), m('a + b'), m('ba')], c: 1, why: 'The digits swap places.' },
+      { q: 'A rectangle of perimeter ' + m('36') + ':', a: [m('x + y = 36'), m('2(x + y) = 36'), m('xy = 36'), m('x − y = 36')], c: 1, why: 'Twice the sum of two sides.' },
+      { q: 'Downstream speed with current ' + m('y') + ':', a: [m('x − y'), m('x + y'), m('xy'), m('x')], c: 1, why: 'The current helps.' }
+    ]
+  },
+  quiz: [
+    { q: 'Two unknowns need how many independent facts?', a: [m('1'), m('2'), m('3'), 'any number'], c: 1, why: 'One equation each.' },
+    { q: 'A two-digit number with digits ' + m('a, b') + ' is:', a: [m('ab'), m('10a + b'), m('a + b'), m('10b + a')], c: 1, why: 'Place value.' },
+    { q: 'Pens ' + m('x') + ' and pencils ' + m('y') + ': ' + m('3x + 2y = 13 000') + ' and ' + m('x + y = 5000') + ' give a pen at:', a: [m('2000'), m('3000'), m('4000'), m('2500')], c: 1, why: 'Substitute.' },
+    { q: 'Complementary angles differing by ' + m('20°') + ' are:', a: [m('30°') + ' and ' + m('50°'), m('35°') + ' and ' + m('55°'), m('40°') + ' and ' + m('60°'), m('45°') + ' and ' + m('65°')], c: 1, why: 'They add to ' + m('90°') + '.' },
+    { q: 'Downstream ' + m('20') + ', upstream ' + m('12') + ': the current is:', a: [m('4'), m('8'), m('16'), m('32')], c: 0, why: 'Half the difference.' },
+    { q: 'An answer of ' + m('4.5') + ' pupils is:', a: ['accepted', 'rejected', 'rounded up', 'doubled'], c: 1, why: 'Counts are whole.' }
+  ],
+  practice: {
+    easy: [
+      ['Two numbers add to ' + m('12') + ' and differ by ' + m('4'), m('8') + ' and ' + m('4')],
+      ['A class of ' + m('30') + ' with ' + m('4') + ' more girls than boys', m('17') + ' girls, ' + m('13') + ' boys'],
+      ['Complementary angles differing by ' + m('20°'), m('55°') + ' and ' + m('35°')],
+      ['A two-digit number with digits ' + m('a, b'), m('10a + b')],
+      ['The same number reversed', m('10b + a')],
+      ['Downstream speed with current ' + m('y'), m('x + y')],
+      ['Upstream speed', m('x − y')]
+    ],
+    med: [
+      [m('3') + ' pens and ' + m('2') + ' pencils cost ' + m('13 000') + '; one of each costs ' + m('5000'), 'Pen ' + m('3000') + ', pencil ' + m('2000')],
+      [m('20') + ' coins of ' + m('100') + ' and ' + m('500') + ' worth ' + m('4400'), m('14') + ' of ' + m('100') + ', ' + m('6') + ' of ' + m('500')],
+      ['A rectangle of perimeter ' + m('36') + ', length ' + m('4') + ' more than width', m('7') + ' by ' + m('11')],
+      ['Downstream ' + m('20') + ', upstream ' + m('12'), 'Boat ' + m('16') + ', current ' + m('4')],
+      ['Digits add to ' + m('9') + ', reversal is ' + m('27') + ' larger', m('36')],
+      ['Two numbers: three times the first plus the second is ' + m('11') + ', and they add to ' + m('5'), m('(3; 2)')],
+      ['Supplementary angles differing by ' + m('40°'), m('110°') + ' and ' + m('70°')]
+    ],
+    hard: [
+      ['Digits add to ' + m('11') + ' and the reversal is ' + m('27') + ' smaller', m('74')],
+      [m('5') + ' apples and ' + m('3') + ' pears cost ' + m('19 000') + '; ' + m('2') + ' apples and ' + m('4') + ' pears cost ' + m('16 000'), 'Apple ' + m('2000') + ', pear ' + m('3000')],
+      ['A boat covers ' + m('60 km') + ' down in ' + m('3 h') + ' and ' + m('60 km') + ' up in ' + m('5 h'), 'Boat ' + m('16') + ', current ' + m('4')],
+      ['Two angles of a triangle differ by ' + m('30°') + ' and the third is ' + m('60°'), m('45°') + ' and ' + m('75°')],
+      ['A father is ' + m('4') + ' times his son and their ages add to ' + m('50'), 'Son ' + m('10') + ', father ' + m('40')],
+      ['Why must a digit answer be whole and under ' + m('10') + '?', 'Digits are the symbols ' + m('0') + ' to ' + m('9')],
+      ['Two numbers have sum ' + m('20') + ' and one is ' + m('4') + ' times the other', m('4') + ' and ' + m('16')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write both “let” sentences in words, and answer with both quantities.',
+  homework: [
+    'Two numbers add to ' + m('26') + ' and differ by ' + m('8') + '. Find them.',
+    m('4') + ' notebooks and ' + m('3') + ' pens cost ' + m('26 000') + ' sum; ' + m('2') + ' notebooks and ' + m('1') + ' pen cost ' + m('12 000') + '. Find each price.',
+    'The digits of a two-digit number add to ' + m('12') + ' and the reversal is ' + m('18') + ' larger. Find the number.',
+    'A rectangle has perimeter ' + m('48 cm') + ' and its length is ' + m('6 cm') + ' more than its width. Find its sides.',
+    'A boat does ' + m('22 km/h') + ' downstream and ' + m('14 km/h') + ' upstream. Find both speeds.'
+  ]
+});
