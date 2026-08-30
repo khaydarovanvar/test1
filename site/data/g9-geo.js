@@ -6827,3 +6827,359 @@ G9_GEO.push({
     'Explain why the greatest possible altitude in the figure is half the diameter.'
   ]
 });
+
+/* ============================== 41 ============================== */
+G9_GEO.push({
+  id: 'g9-41', stream: 'geo', grade: 9, quarter: 4, lessons: '61–62', hours: 2,
+  title: 'Proportional segments in a circle',
+  subtitle: 'Chords, secants and a tangent — three theorems that are one theorem.',
+  uz: 'Geometriya 9, §34', uzPage: 'pp. 210–216',
+  cam: 'IGX 3.5', camPage: 'Core & Extended, pp. 63–70', wb: 'Exercise 3.5',
+  objectives: [
+    'State and prove the intersecting-chords theorem.',
+    'State and use the secant–secant and tangent–secant theorems.',
+    'Recognise that all three are the power of a point.',
+    'Solve numerical problems on each configuration.'
+  ],
+  terms: [
+    ['Chord', 'Vatar', 'Хорда'],
+    ['Secant', 'Kesuvchi', 'Секущая'],
+    ['Tangent', 'Urinma', 'Касательная'],
+    ['Intersecting chords', 'Kesishuvchi vatarlar', 'Пересекающиеся хорды'],
+    ['External point', 'Tashqi nuqta', 'Внешняя точка'],
+    ['Power of a point', 'Nuqtaning darajasi', 'Степень точки'],
+    ['Product of segments', 'Kesmalar ko‘paytmasi', 'Произведение отрезков'],
+    ['Tangent–secant', 'Urinma-kesuvchi', 'Касательная–секущая']
+  ],
+  timing: [[15, 'Two chords inside'], [25, 'Two secants outside'], [25, 'A tangent and a secant'], [20, 'One theorem'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Two chords inside',
+      html: `${eq('If two chords meet inside a circle, the products of the two parts of each are equal', true)}
+      ${eq(m('PA · PB = PC · PD'), true)}
+      {{fig:chordProperty:Two chords crossing at P — the two products are equal.}}
+      <p><b>Proof.</b> Join ${m('A')} to ${m('C')} and ${m('D')} to ${m('B')}. Then
+      ${m('∠APC = ∠DPB')} (vertical) and ${m('∠CAP = ∠BDP')} (angles on the arc ${m('CB')}), so
+      ${m('△APC ∼ △DPB')}. Hence ${m(f('PA', 'PD') + ' = ' + f('PC', 'PB'))}, and cross-multiplying gives
+      the result.</p>
+      <div class="keybox"><div class="klabel">The proof is the whole chapter in miniature</div>
+      Two equal angles, a similarity, a proportion, a cross-multiplication. Every theorem in this section
+      follows the same four steps with a different pair of triangles.</div>`
+    },
+    {
+      h: 'Two secants outside',
+      html: `<p>From a point ${m('P')} outside the circle, draw two secants meeting it at ${m('A, B')} and
+      ${m('C, D')} (with ${m('A')} and ${m('C')} nearer to ${m('P')}). Then</p>
+      ${eq(m('PA · PB = PC · PD'), true)}
+      {{fig:secantToTangent:Two secants from an external point — again the products agree.}}
+      <p>The proof is the same: ${m('∠P')} is common and ${m('∠PAC = ∠PDB')} because ${m('ABDC')} is
+      cyclic, so ${m('△PAC ∼ △PDB')}.</p>
+      <div class="warn"><span class="wl">The products use the <i>whole</i> secant, not the far part</span>
+      ${m('PB')} runs from ${m('P')} all the way to the far intersection, not from ${m('A')} to
+      ${m('B')}. Using ${m('AB')} in place of ${m('PB')} is the standard error, and it gives an answer
+      that looks reasonable.</div>`
+    },
+    {
+      h: 'A tangent and a secant',
+      html: `<p>If ${m('PT')} is a tangent and ${m('PAB')} a secant from the same external point,</p>
+      ${eq(m('PT² = PA · PB'), true)}
+      <p>so the tangent length is the mean proportional between the two parts of the secant — the
+      construction of the last lesson, appearing in a circle.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Find</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td class="m">PA = 4, PB = 9</td><td class="m">PT</td><td class="m">${sr('36')} = 6</td></tr>
+        <tr><td class="m">PT = 8, PA = 4</td><td class="m">PB</td><td class="m">16</td></tr>
+        <tr><td class="m">PT = 12, PB = 18</td><td class="m">PA</td><td class="m">8</td></tr>
+        <tr><td class="m">PA = 5, AB = 11</td><td class="m">PT</td><td class="m">${sr('80')} = 4${sr('5')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A tangent is the limiting case of a secant</div>
+      Rotate a secant until its two intersections merge into one: then ${m('PA')} and ${m('PB')} both
+      become ${m('PT')}, and ${m('PA · PB')} becomes ${m('PT²')}. The third theorem is the second one at
+      its limit.</div>`
+    },
+    {
+      h: 'One theorem',
+      html: `<p>Define the <b>power</b> of a point ${m('P')} with respect to a circle of centre ${m('O')}
+      and radius ${m('R')} as</p>
+      ${eq(m('k = OP² − R²'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Position of ${m('P')}</th><th class="m">k</th><th>Equals</th></tr></thead>
+      <tbody>
+        <tr><td>outside</td><td class="m">> 0</td><td class="m">PA · PB = PT²</td></tr>
+        <tr><td>on the circle</td><td class="m">0</td><td class="m">0</td></tr>
+        <tr><td>inside</td><td class="m">< 0</td><td class="m">−PA · PB</td></tr>
+      </tbody></table></div>
+      <p>So all three theorems say the same thing: the product ${m('PA · PB')} depends only on ${m('P')}
+      and the circle, not on which line through ${m('P')} is drawn.</p>
+      <div class="keybox"><div class="klabel">Three theorems, one idea, one thing to remember</div>
+      Draw any line through ${m('P')}; multiply the two distances to the circle. The answer is always the
+      same. That sentence replaces all three statements.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Two chords meet at ' + m('P') + ' with ' + m('PA = 4') + ', ' + m('PB = 9') + ', ' + m('PC = 6') + '. Find ' + m('PD') + '.',
+      steps: [
+        [m('PA · PB = PC · PD'), ''],
+        [m('4 × 9 = 6 × PD'), ''],
+        [m('36 = 6 PD'), ''],
+        [m('PD = 6'), '']
+      ],
+      ans: m('PD = 6')
+    },
+    {
+      q: 'From ' + m('P') + ', a tangent ' + m('PT') + ' and a secant meeting the circle at ' + m('A') + ' and ' + m('B') + ' with ' + m('PA = 4') + ' and ' + m('AB = 5') + '. Find ' + m('PT') + '.',
+      steps: [
+        [m('PB = PA + AB = 9'), 'The whole secant.'],
+        [m('PT² = PA · PB = 4 × 9'), ''],
+        [m('= 36'), ''],
+        [m('PT = 6'), '']
+      ],
+      ans: m('PT = 6')
+    },
+    {
+      q: 'From an external point, two secants give ' + m('PA = 5') + ', ' + m('PB = 12') + ' and ' + m('PC = 4') + '. Find ' + m('PD') + '.',
+      steps: [
+        [m('PA · PB = PC · PD'), ''],
+        [m('5 × 12 = 4 × PD'), ''],
+        [m('60 = 4 PD'), ''],
+        [m('PD = 15'), '']
+      ],
+      ans: m('PD = 15')
+    }
+  ],
+  modelNote: 'Draw one circle and three lines through a single external point; measuring the products with a ruler gives the same answer each time, and the theorem is discovered rather than told.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'The power of a point',
+    hint: 'Rotate the line through P and watch the product hold.'
+  },
+  quiz: [
+    { q: 'Two chords meeting inside give:', a: [m('PA + PB = PC + PD'), m('PA · PB = PC · PD'), m('PA = PC'), 'nothing'], c: 1, why: 'Equal products.' },
+    { q: 'For two secants, ' + m('PB') + ' means:', a: [m('AB'), 'the whole secant from ' + m('P'), 'half the secant', 'the tangent'], c: 1, why: 'From ' + m('P') + ' to the far point.' },
+    { q: 'The tangent–secant theorem:', a: [m('PT = PA · PB'), m('PT² = PA · PB'), m('PT = PA + PB'), m('PT² = PA + PB')], c: 1, why: 'A mean proportional.' },
+    { q: m('PA = 4, PB = 9') + ': ' + m('PT') + ' =', a: [m('6'), m('13'), m('36'), m('18')], c: 0, why: m(sr('36')) + '.' },
+    { q: 'The power of a point on the circle is:', a: [m('R'), m('0'), m('R²'), 'undefined'], c: 1, why: m('OP = R') + '.' },
+    { q: 'A tangent is the limiting case of:', a: ['a chord', 'a secant', 'a radius', 'a diameter'], c: 1, why: 'Its two intersections merge.' }
+  ],
+  practice: {
+    easy: [
+      ['Chords: ' + m('PA = 4, PB = 9, PC = 6') + ': ' + m('PD'), m('6')],
+      ['Chords: ' + m('PA = 3, PB = 8, PC = 4') + ': ' + m('PD'), m('6')],
+      ['Tangent: ' + m('PA = 4, PB = 9') + ': ' + m('PT'), m('6')],
+      ['Tangent: ' + m('PA = 2, PB = 8') + ': ' + m('PT'), m('4')],
+      ['Secants: ' + m('PA = 5, PB = 12, PC = 4') + ': ' + m('PD'), m('15')],
+      ['Power of a point on the circle', m('0')],
+      [m('PT² ') + ' equals', m('PA · PB')]
+    ],
+    med: [
+      ['Tangent with ' + m('PA = 4, AB = 5') + ': ' + m('PT'), m('6')],
+      ['Tangent with ' + m('PT = 8, PA = 4') + ': ' + m('PB'), m('16')],
+      ['Same: ' + m('AB'), m('12')],
+      ['Tangent with ' + m('PT = 12, PB = 18') + ': ' + m('PA'), m('8')],
+      ['Chords: ' + m('PA = 6, PB = 4') + ' and ' + m('PC = PD') + ': ' + m('PC'), m('2' + sr('6'))],
+      ['Secants: ' + m('PA = 3, AB = 9, PC = 4') + ': ' + m('PD'), m('9')],
+      ['Tangent with ' + m('PA = 5, AB = 11') + ': ' + m('PT'), m('4' + sr('5'))]
+    ],
+    hard: [
+      ['A chord of length ' + m('10') + ' meets another at ' + m('4') + ' from one end; the second is cut into ' + m('3') + ' and ' + m('x'), m('x = 8')],
+      ['Two chords of a circle meet at the centre: the products', 'Both equal ' + m('R²')],
+      [m('OP = 13, R = 5') + ': the tangent length from ' + m('P'), m('12')],
+      [m('OP = 13, R = 5') + ': the power of ' + m('P'), m('144')],
+      ['A point ' + m('3') + ' from the centre of a circle of radius ' + m('5') + ': ' + m('PA · PB'), m('16')],
+      ['Two circles meet at ' + m('A') + ' and ' + m('B') + '; ' + m('P') + ' on line ' + m('AB') + ' outside both', 'Equal tangent lengths to both'],
+      ['A tangent of length ' + m('15') + ' and a secant with ' + m('AB = 16') + ': ' + m('PA'), m('9')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'For a secant, mark ' + m('PA') + ' and ' + m('PB') + ' from ' + m('P') + ' on the figure before writing anything.',
+  homework: [
+    'Two chords meet at ' + m('P') + ' with ' + m('PA = 6') + ', ' + m('PB = 8') + ', ' + m('PC = 4') + '. Find ' + m('PD') + '.',
+    'A tangent and a secant from ' + m('P') + ' give ' + m('PA = 3') + ' and ' + m('AB = 9') + '. Find ' + m('PT') + '.',
+    'Two secants give ' + m('PA = 4') + ', ' + m('PB = 15') + ' and ' + m('PC = 5') + '. Find ' + m('PD') + '.',
+    'A point is ' + m('10') + ' from the centre of a circle of radius ' + m('6') + '. Find the tangent length from it.',
+    'Prove the intersecting-chords theorem.'
+  ]
+});
+
+/* ============================== 42 ============================== */
+G9_GEO.push({
+  id: 'g9-42', stream: 'geo', grade: 9, quarter: 4, lessons: '63–64', hours: 2,
+  title: 'Practical exercises — constructions, scale drawing and similarity in use',
+  subtitle: 'Compasses, a scale and a measured field — geometry taken outside the exercise book.',
+  uz: 'Geometriya 9, IV bob amaliy mashqlari', uzPage: 'pp. 217–220',
+  cam: 'IGX 3.6', camPage: 'Core & Extended, pp. 70–78', wb: 'Exercise 3.6',
+  objectives: [
+    'Carry out the standard straight-edge and compasses constructions.',
+    'Make and read a scale drawing, converting both ways.',
+    'Use similar triangles to measure an inaccessible height or width.',
+    'Construct a locus described in words.'
+  ],
+  terms: [
+    ['Scale drawing', 'Masshtabli chizma', 'Масштабный чертёж'],
+    ['Scale', 'Masshtab', 'Масштаб'],
+    ['Locus', 'Geometrik o‘rin', 'Геометрическое место точек'],
+    ['Equidistant', 'Teng uzoqlikda', 'Равноудалённый'],
+    ['Bisector', 'Bissektrisa', 'Биссектриса'],
+    ['Perpendicular from a point', 'Nuqtadan perpendikulyar', 'Перпендикуляр из точки'],
+    ['Inaccessible', 'Yetib bo‘lmaydigan', 'Недоступный'],
+    ['Plan', 'Reja', 'План']
+  ],
+  timing: [[15, 'The four constructions'], [25, 'Scale drawing'], [25, 'Measuring the unreachable'], [20, 'Loci'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The four constructions',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Construction</th><th>Method</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>perpendicular bisector of ${m('AB')}</td><td>arcs of equal radius from ${m('A')} and ${m('B')}</td><td>the set of points equidistant from ${m('A')} and ${m('B')}</td></tr>
+        <tr><td>bisector of an angle</td><td>arc across both arms, then two equal arcs</td><td>the set of points equidistant from the arms</td></tr>
+        <tr><td>perpendicular from a point to a line</td><td>an arc cutting the line twice, then a bisector</td><td>the shortest distance</td></tr>
+        <tr><td>an angle of ${m('60°')}</td><td>one arc, one equal step</td><td>an equilateral triangle</td></tr>
+      </tbody></table></div>
+      {{fig:bisectorConstruction:The angle bisector — one arc across both arms, then two equal arcs.}}
+      <div class="warn"><span class="wl">Leave the construction arcs on the page</span>
+      Cambridge and the national papers both award marks for visible arcs. A perfect line with the
+      working rubbed out scores less than a slightly wobbly one with the arcs showing.</div>`
+    },
+    {
+      h: 'Scale drawing',
+      html: `<p>A scale of ${m('1 : n')} means every length on the drawing represents ${m('n')} times as
+      much in reality.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Scale</th><th>${m('1 cm')} represents</th><th>${m('1 cm²')} represents</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1 : 100</td><td class="m">1 m</td><td class="m">1 m²</td></tr>
+        <tr><td class="m">1 : 1000</td><td class="m">10 m</td><td class="m">100 m²</td></tr>
+        <tr><td class="m">1 : 25 000</td><td class="m">250 m</td><td class="m">62 500 m²</td></tr>
+        <tr><td class="m">1 : 50 000</td><td class="m">500 m</td><td class="m">250 000 m²</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Areas scale by ${m('n²')}, not ${m('n')}</span>
+      On a ${m('1 : 1000')} plan, ${m('1 cm²')} is ${m('100 m²')} — because both dimensions are
+      multiplied by ${m('1000')}. This is the ${m('k²')} rule of Chapter I, in its most practical
+      form.</div>`
+    },
+    {
+      h: 'Measuring the unreachable',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>To measure</th><th>Method</th></tr></thead>
+      <tbody>
+        <tr><td>the height of a tree</td><td>compare its shadow with a metre rule’s shadow</td></tr>
+        <tr><td>the height of a building</td><td>a mirror on the ground, similar triangles</td></tr>
+        <tr><td>the width of a river</td><td>a baseline on one bank and two measured angles</td></tr>
+        <tr><td>a distance across a lake</td><td>a triangle with two measured sides and the included angle</td></tr>
+      </tbody></table></div>
+      <p><b>The mirror method.</b> Place a mirror on the ground between you and the building. Step back
+      until you see the top in it. Then</p>
+      ${eq(m(f('your height', 'your distance to the mirror') + ' = ' + f('the building’s height', 'its distance to the mirror')), true)}
+      <p>because the angle of incidence equals the angle of reflection, making the two triangles
+      similar.</p>
+      <div class="keybox"><div class="klabel">Every method here is two similar triangles</div>
+      A shadow, a mirror, a sighting stick: in each case one triangle is small enough to measure and one
+      is not, and they are similar. Chapter I, used outdoors.</div>`
+    },
+    {
+      h: 'Loci',
+      html: `<p>A <b>locus</b> is the set of all points satisfying a condition.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Condition</th><th>Locus</th></tr></thead>
+      <tbody>
+        <tr><td>at a fixed distance ${m('r')} from a point</td><td>a circle of radius ${m('r')}</td></tr>
+        <tr><td>equidistant from two points</td><td>the perpendicular bisector of the segment</td></tr>
+        <tr><td>equidistant from two intersecting lines</td><td>the pair of angle bisectors</td></tr>
+        <tr><td>at a fixed distance from a line</td><td>two parallels</td></tr>
+        <tr><td>seeing a segment at ${m('90°')}</td><td>the circle on it as diameter</td></tr>
+      </tbody></table></div>
+      <p>A question asking for a region — “nearer to ${m('A')} than to ${m('B')} <b>and</b> within
+      ${m('5 cm')} of ${m('C')}” — is answered by drawing both loci and shading the overlap.</p>
+      <div class="keybox"><div class="klabel">Draw each condition separately, then intersect</div>
+      Exactly the method used for systems of inequalities in the algebra course. Two conditions, two
+      constructions, one shaded region.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A plan has scale ' + m('1 : 200') + '. A room measures ' + m('4 cm') + ' by ' + m('3 cm') + ' on the plan. Find its real dimensions and area.',
+      steps: [
+        [m('4 cm × 200 = 800 cm = 8 m'), ''],
+        [m('3 cm × 200 = 600 cm = 6 m'), ''],
+        ['Real area ' + m('= 48 m²') + '.', ''],
+        ['Check: ' + m('12 cm² × 200² = 480 000 cm² = 48 m²') + ' ✓', '']
+      ],
+      ans: m('8 m × 6 m = 48 m²')
+    },
+    {
+      q: 'A ' + m('1.6 m') + ' student stands ' + m('2 m') + ' from a mirror and sees the top of a building ' + m('15 m') + ' beyond it. Find the building’s height.',
+      steps: [
+        [m(f('1.6', '2') + ' = ' + f('h', '15')), 'Similar triangles.'],
+        [m('2h = 24'), ''],
+        [m('h = 12 m'), ''],
+        ['The mirror method needs no instruments beyond a tape.', '']
+      ],
+      ans: m('12 m')
+    },
+    {
+      q: 'Describe the locus of points equidistant from two intersecting lines.',
+      steps: [
+        ['A point equidistant from two lines lies on a bisector of the angle between them.', ''],
+        ['Two lines make two pairs of vertical angles.', ''],
+        ['So there are two bisectors.', ''],
+        ['The locus is the pair of angle bisectors — two perpendicular lines.', '']
+      ],
+      ans: 'The two angle bisectors'
+    }
+  ],
+  modelNote: 'Take the class outside with a tape and a mirror and measure the school building; the answer agrees with the plan on the wall, and the method is believed.',
+  interactive: {
+    type: 'transform',
+    title: 'Scale and construction',
+    hint: 'Change the scale and watch the real dimensions follow.'
+  },
+  quiz: [
+    { q: 'The locus of points equidistant from two points:', a: ['a circle', 'the perpendicular bisector', 'two parallels', 'an angle bisector'], c: 1, why: 'Every point on it is equidistant.' },
+    { q: 'The locus at a fixed distance from a line:', a: ['a circle', 'one parallel', 'two parallels', 'a bisector'], c: 2, why: 'One on each side.' },
+    { q: 'On a ' + m('1 : 1000') + ' plan, ' + m('1 cm²') + ' is:', a: [m('10 m²'), m('100 m²'), m('1000 m²'), m('1 m²')], c: 1, why: 'Areas scale by ' + m('n²') + '.' },
+    { q: 'Construction arcs should be:', a: ['rubbed out', 'left visible', 'drawn in pen', 'omitted'], c: 1, why: 'They carry marks.' },
+    { q: 'The mirror method uses:', a: ['Pythagoras', 'similar triangles', 'the cosine rule', 'a protractor'], c: 1, why: 'Incidence equals reflection.' },
+    { q: 'The locus of points seeing a segment at ' + m('90°') + ':', a: ['a line', 'the circle on it as diameter', 'two parallels', 'a bisector'], c: 1, why: 'Thales’ theorem.' }
+  ],
+  practice: {
+    easy: [
+      ['Locus at distance ' + m('r') + ' from a point', 'A circle'],
+      ['Locus equidistant from two points', 'The perpendicular bisector'],
+      ['Locus at distance ' + m('d') + ' from a line', 'Two parallels'],
+      [m('1 : 100') + ': ' + m('1 cm') + ' represents', m('1 m')],
+      [m('1 : 1000') + ': ' + m('1 cm') + ' represents', m('10 m')],
+      [m('1 : 1000') + ': ' + m('1 cm²') + ' represents', m('100 m²')],
+      ['Construction arcs should be', 'Left visible']
+    ],
+    med: [
+      [m('1 : 200') + ' plan, room ' + m('4 × 3 cm') + ': real size', m('8 m × 6 m')],
+      ['Same: real area', m('48 m²')],
+      ['Mirror: ' + m('1.6 m') + ' at ' + m('2 m') + ', building at ' + m('15 m'), m('12 m')],
+      ['Shadow: ' + m('1 m') + ' rule casts ' + m('1.5 m') + ', tree casts ' + m('18 m'), m('12 m')],
+      [m('1 : 25 000') + ': ' + m('6 cm') + ' on the map', m('1.5 km')],
+      ['Locus equidistant from two intersecting lines', 'The two angle bisectors'],
+      ['Locus seeing ' + m('AB') + ' at ' + m('90°'), 'The circle on ' + m('AB')]
+    ],
+    hard: [
+      ['Points nearer to ' + m('A') + ' than ' + m('B') + ' and within ' + m('5 cm') + ' of ' + m('C'), 'A region — half-plane ∩ disc'],
+      [m('1 : 50 000') + ': a lake of ' + m('4 cm²') + ' on the map', m('1 km²')],
+      ['A plan at ' + m('1 : 250') + ': a garden of ' + m('600 m²'), m('96 cm²') + ' on the plan'],
+      ['Describe the locus of the centre of a circle of radius ' + m('2') + ' rolling along a line', 'A parallel at distance ' + m('2')],
+      ['Describe the locus of points ' + m('3 cm') + ' from a circle of radius ' + m('5 cm'), 'Two concentric circles, radii ' + m('2') + ' and ' + m('8')],
+      ['A field is surveyed as a triangle ' + m('80, 100, 120 m') + ': its area', m('≈ 3968 m²')],
+      ['Its area on a ' + m('1 : 2000') + ' plan', m('≈ 9.9 cm²')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Leave every construction arc visible, and state the scale on every drawing.',
+  homework: [
+    'Construct the perpendicular bisector of a ' + m('7 cm') + ' segment, leaving all arcs.',
+    'Construct the bisector of a ' + m('70°') + ' angle.',
+    'A plan has scale ' + m('1 : 500') + '. A field is ' + m('6 cm') + ' by ' + m('4 cm') + ' on the plan. Find its real area.',
+    'A ' + m('1.7 m') + ' person stands ' + m('2.5 m') + ' from a mirror and sees the top of a mast ' + m('20 m') + ' beyond it. Find the mast’s height.',
+    'Describe and draw the locus of points equidistant from two parallel lines ' + m('6 cm') + ' apart.'
+  ]
+});
