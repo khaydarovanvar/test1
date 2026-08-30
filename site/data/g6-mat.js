@@ -12954,3 +12954,187 @@ G6_MAT.push({
     'How much card is needed for an open box ' + m('15') + ' cm by ' + m('10') + ' cm by ' + m('6') + ' cm deep?'
   ]
 });
+
+/* ============================== 73 ============================== */
+G6_MAT.push({
+  id: 'g6-73', stream: 'mat', grade: 6, quarter: 4, lessons: '157', hours: 1,
+  title: 'Recall — data handling, and the project topic',
+  subtitle: 'Tally, frequency, the three averages and the range — and the question the project will answer.',
+  uz: 'Matematika 6, takrorlash', uzPage: 'pp. 449–452',
+  cam: 'S7 6 collecting data', camPage: 'Stage 7, pp. 58–62', wb: 'Exercise 6.1',
+  objectives: [
+    'Record data in a tally and turn it into a frequency table.',
+    'Find the mean, the median, the mode and the range of a small set.',
+    'Find the mean from a frequency table without listing every value.',
+    'Frame a question that a survey can actually answer.'
+  ],
+  terms: [
+    ['Data', 'Ma’lumot', 'Данные'],
+    ['Tally', 'Sanoq belgisi', 'Подсчёт чёрточками'],
+    ['Frequency', 'Chastota', 'Частота'],
+    ['Frequency table', 'Chastotalar jadvali', 'Таблица частот'],
+    ['Mean', 'O‘rtacha arifmetik', 'Среднее арифметическое'],
+    ['Median', 'Mediana', 'Медиана'],
+    ['Mode', 'Moda', 'Мода'],
+    ['Range', 'Farq (kenglik)', 'Размах']
+  ],
+  timing: [[8, 'Collecting and recording'], [12, 'The three averages and the range'], [12, 'The mean from a frequency table'], [8, 'The project topic']],
+  sections: [
+    {
+      h: 'Collecting and recording',
+      html: `<p>Data is either a category — a favourite sport, a colour — or a number. Numbers that can only
+      be counted, such as marks out of ten, are <b>discrete</b>; those that are measured, such as heights,
+      are <b>continuous</b>.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Mark</th><th>Tally (a crossed group is five)</th><th>Frequency</th></tr></thead>
+      <tbody>
+        <tr><td class="m">4</td><td class="m">|</td><td class="m">1</td></tr>
+        <tr><td class="m">5</td><td class="m">||</td><td class="m">2</td></tr>
+        <tr><td class="m">6</td><td class="m">|||</td><td class="m">3</td></tr>
+        <tr><td class="m">7</td><td class="m">||||/</td><td class="m">5</td></tr>
+        <tr><td class="m">8</td><td class="m">||||</td><td class="m">4</td></tr>
+        <tr><td class="m">9</td><td class="m">|||</td><td class="m">3</td></tr>
+        <tr><td class="m">10</td><td class="m">||</td><td class="m">2</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The frequencies must add to the number of people asked</div>
+      Here ${m('1 + 2 + 3 + 5 + 4 + 3 + 2 = 20')}. That single check catches most recording errors before
+      any calculation begins.</div>`
+    },
+    {
+      h: 'The three averages and the range',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Measure</th><th>What it is</th><th>For ${m('2, 5, 5, 6, 12')}</th></tr></thead>
+      <tbody>
+        <tr><td>mean</td><td>the total shared out equally</td><td class="m">30 ÷ 5 = 6</td></tr>
+        <tr><td>median</td><td>the middle value, in order</td><td class="m">5</td></tr>
+        <tr><td>mode</td><td>the value that occurs most</td><td class="m">5</td></tr>
+        <tr><td>range</td><td>largest minus smallest</td><td class="m">12 − 2 = 10</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The range is not an average</span>
+      It says how spread out the data is, not where its centre lies. Two classes can share a mean of
+      ${m('6')} and have ranges of ${m('2')} and ${m('10')} — very different classes.</div>
+      <p>For an even number of values the median is halfway between the two middle ones. Order the data
+      first, every time; an unordered list gives the wrong median more often than not.</p>`
+    },
+    {
+      h: 'The mean from a frequency table',
+      html: `<p>Twenty marks need not be written out. Multiply each mark by its frequency, add, and divide
+      by the total frequency.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Mark ${m('x')}</th><th>Frequency ${m('f')}</th><th class="m">x · f</th></tr></thead>
+      <tbody>
+        <tr><td class="m">4</td><td class="m">1</td><td class="m">4</td></tr>
+        <tr><td class="m">5</td><td class="m">2</td><td class="m">10</td></tr>
+        <tr><td class="m">6</td><td class="m">3</td><td class="m">18</td></tr>
+        <tr><td class="m">7</td><td class="m">5</td><td class="m">35</td></tr>
+        <tr><td class="m">8</td><td class="m">4</td><td class="m">32</td></tr>
+        <tr><td class="m">9</td><td class="m">3</td><td class="m">27</td></tr>
+        <tr><td class="m">10</td><td class="m">2</td><td class="m">20</td></tr>
+        <tr><td>total</td><td class="m">20</td><td class="m">146</td></tr>
+      </tbody></table></div>
+      ${eq('mean ' + m('= ' + f('146', '20') + ' = 7.3'), true)}
+      <div class="keybox"><div class="klabel">Mode, median and range come off the same table</div>
+      The mode is the mark with the largest frequency — ${m('7')}. The median is between the ${m('10')}th
+      and ${m('11')}th values, both of which are ${m('7')}. The range is ${m('10 − 4 = 6')}.</div>`
+    },
+    {
+      h: 'The project topic',
+      html: `<div class="keybox"><div class="klabel">The project, announced today and presented in lesson 203</div>
+      <b>Which sport do the pupils of our school prefer?</b> Ask at least ${m('60')} pupils, record the
+      answers in a tally, and present the result as a pie chart with the angle of every sector shown.</div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Stage</th><th>Lessons</th><th>What is produced</th></tr></thead>
+      <tbody>
+        <tr><td>plan the survey</td><td class="m">158–159</td><td>the question and the sample</td></tr>
+        <tr><td>collect and tally</td><td>at home</td><td>a frequency table</td></tr>
+        <tr><td>draw the chart</td><td class="m">160–163</td><td>a pie chart with angles</td></tr>
+        <tr><td>interpret it</td><td class="m">164–166</td><td>three written conclusions</td></tr>
+        <tr><td>present</td><td class="m">203–204</td><td>a poster and four minutes of talk</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A good question has a small, fixed list of answers</span>
+      “Which sport do you prefer?” with six options can be tallied. “What do you think about sport?”
+      cannot. Deciding the options before asking anyone is half the work of a survey.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the mean, median, mode and range of ' + m('2, 5, 5, 6, 12') + '.',
+      steps: [
+        ['Total ' + m('30') + ', so the mean is ' + m('30 ÷ 5 = 6') + '.', ''],
+        ['In order, the middle value is ' + m('5') + '.', 'Already in order ✓'],
+        ['The mode is ' + m('5') + '; the range is ' + m('12 − 2 = 10') + '.', 'Three different “middles”.']
+      ],
+      ans: 'Mean ' + m('6') + ', median ' + m('5') + ', mode ' + m('5') + ', range ' + m('10')
+    },
+    {
+      q: 'Find the mean of the twenty marks in the frequency table.',
+      steps: [
+        ['Multiply each mark by its frequency: ' + m('4, 10, 18, 35, 32, 27, 20') + '.', ''],
+        ['Total ' + m('146') + ' over ' + m('20') + ' pupils.', ''],
+        [m('146 ÷ 20 = 7.3') + '.', 'Between ' + m('4') + ' and ' + m('10') + ' ✓']
+      ],
+      ans: m('7.3')
+    },
+    {
+      q: 'From the same table, find the median and the mode.',
+      steps: [
+        ['With ' + m('20') + ' values the median is between the ' + m('10') + 'th and ' + m('11') + 'th.', ''],
+        ['Cumulative frequencies: ' + m('1, 3, 6, 11') + ' — both fall on ' + m('7') + '.', ''],
+        ['The mode is ' + m('7') + ', with frequency ' + m('5') + '.', 'Median and mode agree here.']
+      ],
+      ans: 'Median ' + m('7') + ', mode ' + m('7')
+    }
+  ],
+  modelNote: 'Drag the largest value far to the right in the model: the mean chases it, the median does not. That is the whole argument for the median in one movement.',
+  interactive: {
+    type: 'averages',
+    title: 'Mean, median, mode and range',
+    hint: 'Move the tallest bar and watch which of the three averages follows it.'
+  },
+  quiz: [
+    { q: 'The mode is:', a: ['the middle value', 'the most common value', 'the total ÷ the count', 'the spread'], c: 1, why: 'Largest frequency.' },
+    { q: 'The median of ' + m('2, 5, 5, 6, 12') + ' is:', a: [m('5'), m('6'), m('5.5'), m('10')], c: 0, why: 'The middle of five values.' },
+    { q: 'The range of that set is:', a: [m('5'), m('6'), m('10'), m('12')], c: 2, why: m('12 − 2') + '.' },
+    { q: 'The mean of the twenty marks is:', a: [m('7'), m('7.3'), m('146'), m('20')], c: 1, why: m('146 ÷ 20') + '.' },
+    { q: 'Before finding a median you must:', a: ['add the values', 'order the values', 'count the modes', 'draw a chart'], c: 1, why: 'Otherwise the middle is meaningless.' },
+    { q: 'Heights of pupils are:', a: ['categorical', 'discrete', 'continuous', 'a tally'], c: 2, why: 'They are measured, not counted.' }
+  ],
+  practice: {
+    easy: [
+      ['The mode of ' + m('2, 5, 5, 6, 12'), m('5')],
+      ['The median of ' + m('2, 5, 5, 6, 12'), m('5')],
+      ['The mean of ' + m('2, 5, 5, 6, 12'), m('6')],
+      ['The range of ' + m('2, 5, 5, 6, 12'), m('10')],
+      ['The mean of ' + m('3, 4, 4, 5, 9'), m('5')],
+      ['The mode of the twenty marks', m('7')],
+      ['The number of pupils in the table', m('20')]
+    ],
+    med: [
+      ['The median of the twenty marks', m('7')],
+      ['The mean of the twenty marks', m('7.3')],
+      ['The range of the twenty marks', m('6')],
+      ['The total of the twenty marks', m('146')],
+      ['The frequency of the mark ' + m('8'), m('4')],
+      ['How many scored ' + m('8') + ' or more', m('9')],
+      ['How many scored below ' + m('7'), m('6')]
+    ],
+    hard: [
+      ['A tally of four groups of five and two more', m('22')],
+      ['Which average is least affected by one very large value?', 'The median'],
+      ['A 21st pupil scores ' + m('5') + ': the new mean, to 1 d.p.', m('7.2')],
+      ['If every mark rose by ' + m('1') + ', the new mean', m('8.3')],
+      ['…and the new range', m('6') + ', unchanged'],
+      ['Which average must always be one of the data values?', 'The mode'],
+      ['Data that is measured rather than counted is called', 'Continuous']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Bring the frequency table of your own survey to the next lesson; the project depends on it.',
+  homework: [
+    'Find the mean, median, mode and range of ' + m('3, 7, 7, 8, 10, 13') + '.',
+    'A frequency table has marks ' + m('5, 6, 7, 8') + ' with frequencies ' + m('2, 5, 8, 5') + '. Find the mean.',
+    'Find the median and the mode of that table.',
+    'Write your survey question with a list of at most six possible answers.',
+    'Explain in one sentence why the range is not an average.'
+  ]
+});
