@@ -13719,3 +13719,348 @@ G7_MAT.push({
     'Find ' + m('b') + ' so that ' + m('y = 3x + b') + ' passes through ' + m('(2; 4)') + '.'
   ]
 });
+
+/* ============================== 77 ============================== */
+G7_MAT.push({
+  id: 'g7-77', stream: 'mat', grade: 7, quarter: 4, lessons: '143–144', hours: 2,
+  title: 'Control work 10, and work on the mistakes',
+  subtitle: 'Coordinates, functions and the straight line in one paper.',
+  uz: 'Matematika 7, Nazorat ishi 10', uzPage: 'pp. 407–431',
+  cam: 'S8 9–11 review', camPage: 'Stage 8, pp. 88–116', wb: 'Control paper M10',
+  objectives: [
+    'Plot and read points accurately and name their quadrants.',
+    'Evaluate a function and solve for the argument.',
+    'Draw a linear graph and find its intercepts.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Coordinate', 'Koordinata', 'Координата'],
+    ['Quadrant', 'Chorak', 'Четверть'],
+    ['Function', 'Funksiya', 'Функция'],
+    ['Domain', 'Aniqlanish sohasi', 'Область определения'],
+    ['Gradient', 'Burchak koeffitsiyenti', 'Угловой коэффициент'],
+    ['Intercept', 'Kesma', 'Свободный член'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Plot ${m('A(3; 2)')}, ${m('B(−4; 1)')}, ${m('C(−2; −3)')}, ${m('D(5; −1)')} and name each quadrant</td><td class="m">4</td><td>L137–138</td></tr>
+        <tr><td>2</td><td>Find the length and midpoint of the segment from ${m('(1; 3)')} to ${m('(7; 3)')}</td><td class="m">4</td><td>L137–138</td></tr>
+        <tr><td>3</td><td>For ${m('f(x) = 2x + 1')} find ${m('f(3)')}, ${m('f(−4)')} and the ${m('x')} with ${m('f(x) = 11')}</td><td class="m">4</td><td>L139–140</td></tr>
+        <tr><td>4</td><td>Give the domain of ${m('y = ' + f('1', 'x − 3'))}</td><td class="m">3</td><td>L139–140</td></tr>
+        <tr><td>5</td><td>Draw ${m('y = 2x − 4')} and mark both intercepts</td><td class="m">5</td><td>L141–142</td></tr>
+        <tr><td>6</td><td>Find the gradient through ${m('(1; 2)')} and ${m('(4; 8)')}, and say whether ${m('(3; 6)')} lies on that line</td><td class="m">5</td><td>L141–142</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries one mark for labelling the points and one for the quadrant names; Q3 two for the
+      substitutions and two for solving the equation; Q5 two for the two intercepts and one for a ruled
+      line; Q6 two for the gradient and two for the substitution check.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>coordinates reversed</td><td class="m">(3; 2)</td><td>along first, then up</td></tr>
+        <tr><td>quadrants numbered clockwise</td><td class="m">(−4; 1)</td><td>anticlockwise from the top right</td></tr>
+        <tr><td>midpoint subtracted</td><td class="m">7 − 1 = 6</td><td class="m">${f('1 + 7', '2')} = 4</td></tr>
+        <tr><td>negative substituted carelessly</td><td class="m">f(−4) = 9</td><td class="m">2 · (−4) + 1 = −7</td></tr>
+        <tr><td>domain left blank</td><td>“every number”</td><td class="m">x ≠ 3</td></tr>
+        <tr><td>line drawn freehand</td><td>a wobbling curve</td><td>a ruled line through the intercepts</td></tr>
+        <tr><td>gradient differences out of order</td><td class="m">${f('8 − 2', '1 − 4')} = −2</td><td class="m">${f('8 − 2', '4 − 1')} = 2</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'The chapter as one map',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Block</th><th>The sentence</th></tr></thead>
+      <tbody>
+        <tr><td>the plane</td><td>two axes, one origin, and an ordered pair for every point</td></tr>
+        <tr><td>quadrants</td><td>numbered anticlockwise, with a sign pattern each</td></tr>
+        <tr><td>functions</td><td>one input, exactly one output</td></tr>
+        <tr><td>three descriptions</td><td>formula, table and graph say the same thing</td></tr>
+        <tr><td>the domain</td><td>the values of ${m('x')} the rule allows</td></tr>
+        <tr><td>the linear function</td><td class="m">y = kx + b</td></tr>
+        <tr><td>the graph</td><td>a straight line, two points enough, third as a check</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      Two lines that cross give a pair of numbers satisfying both equations at once. That is a
+      <b>system</b>, and it is the next block of the quarter.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q3: ' + m('f(x) = 2x + 1') + '.',
+      steps: [
+        [m('f(3) = 7'), ''],
+        [m('f(−4) = 2 · (−4) + 1 = −7'), 'The bracket keeps the sign right.'],
+        [m('2x + 1 = 11'), ''],
+        [m('x = 5'), '']
+      ],
+      ans: m('7, −7, x = 5')
+    },
+    {
+      q: 'Model answer, Q5: draw ' + m('y = 2x − 4') + '.',
+      steps: [
+        [m('x = 0') + ': ' + m('y = −4') + ', so ' + m('(0; −4)') + '.', ''],
+        [m('y = 0') + ': ' + m('2x = 4') + ', so ' + m('(2; 0)') + '.', ''],
+        ['Rule a line through both.', ''],
+        ['Check with ' + m('x = 3') + ': ' + m('y = 2') + ' lies on it ✓', '']
+      ],
+      ans: 'A line through ' + m('(0; −4)') + ' and ' + m('(2; 0)')
+    },
+    {
+      q: 'Model answer, Q6: gradient through ' + m('(1; 2)') + ' and ' + m('(4; 8)') + ', and is ' + m('(3; 6)') + ' on it?',
+      steps: [
+        [m('k = ' + f('8 − 2', '4 − 1') + ' = 2'), ''],
+        ['Through ' + m('(1; 2)') + ': ' + m('2 = 2 · 1 + b') + ', so ' + m('b = 0') + '.', ''],
+        ['The line is ' + m('y = 2x') + '.', ''],
+        [m('2 · 3 = 6') + ' ✓ — the point lies on it.', '']
+      ],
+      ans: m('k = 2') + '; yes'
+    }
+  ],
+  modelNote: 'Return Q5 first and ask who used a ruler; the mark for a straight line is the easiest in the paper and the most often lost.',
+  interactive: {
+    type: 'quiz',
+    title: 'The chapter in twelve questions',
+    hint: 'Points, functions, lines.',
+    items: [
+      { q: 'The first coordinate is read:', a: ['up the ' + m('y') + '-axis', 'along the ' + m('x') + '-axis', 'from the origin', 'either way'], c: 1, why: 'Along first.' },
+      { q: m('(−2; −3)') + ' lies in quadrant:', a: ['I', 'II', 'III', 'IV'], c: 2, why: 'Both negative.' },
+      { q: m('(0; 4)') + ' lies:', a: ['in quadrant I', 'on the ' + m('y') + '-axis', 'on the ' + m('x') + '-axis', 'at the origin'], c: 1, why: m('x = 0') + '.' },
+      { q: 'The midpoint of ' + m('(1; 3)') + ' and ' + m('(7; 3)') + ' is:', a: [m('(4; 3)'), m('(3; 3)'), m('(6; 3)'), m('(8; 3)')], c: 0, why: 'Average.' },
+      { q: 'A function gives each input:', a: ['one output', 'two outputs', 'many outputs', 'none'], c: 0, why: 'Exactly one.' },
+      { q: 'For ' + m('f(x) = 2x + 1') + ', ' + m('f(−4)') + ' is:', a: [m('9'), m('−7'), m('−9'), m('7')], c: 1, why: m('−8 + 1') + '.' },
+      { q: 'The domain of ' + m('y = ' + f('1', 'x − 3')) + ' is:', a: ['every number', m('x ≠ 0'), m('x ≠ 3'), m('x > 3')], c: 2, why: 'A zero denominator.' },
+      { q: 'The graph of ' + m('y = kx + b') + ' is:', a: ['a curve', 'a straight line', 'two lines', 'a circle'], c: 1, why: 'Always.' },
+      { q: m('y = 2x − 4') + ' cuts ' + m('Oy') + ' at:', a: [m('(0; −4)'), m('(2; 0)'), m('(0; 2)'), m('(−4; 0)')], c: 0, why: m('x = 0') + '.' },
+      { q: 'And cuts ' + m('Ox') + ' at:', a: [m('(0; −4)'), m('(2; 0)'), m('(4; 0)'), m('(−2; 0)')], c: 1, why: m('y = 0') + '.' },
+      { q: 'The gradient through ' + m('(1; 2)') + ' and ' + m('(4; 8)') + ' is:', a: [m('2'), m('−2'), m('3'), m('6')], c: 0, why: m(f('6', '3')) + '.' },
+      { q: 'Is ' + m('(3; 6)') + ' on ' + m('y = 2x') + '?', a: ['yes', 'no', 'only if ' + m('b') + ' changes', 'cannot tell'], c: 0, why: m('2 · 3 = 6') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 also asks for:', a: ['the lengths', 'the quadrants', 'the gradients', 'the domain'], c: 1, why: 'One mark of the four.' },
+    { q: 'Q2 midpoint uses:', a: ['the difference', 'the average', 'the product', 'the sum'], c: 1, why: 'Halfway.' },
+    { q: 'Q3 last part is:', a: ['a substitution', 'an equation', 'a graph', 'a domain'], c: 1, why: 'Working backwards.' },
+    { q: 'Q4 answer is:', a: ['every number', m('x ≠ 3'), m('x ≠ 0'), m('x > 0')], c: 1, why: 'The denominator vanishes.' },
+    { q: 'Q5 is drawn with:', a: ['freehand', 'a ruler', 'compasses', 'a protractor'], c: 1, why: 'It is a straight line.' },
+    { q: 'Q6 checks the point by:', a: ['plotting only', 'substituting', 'measuring', 'guessing'], c: 1, why: 'Algebra decides.' }
+  ],
+  practice: {
+    easy: [
+      ['The quadrant of ' + m('(3; 2)'), 'I'],
+      ['The quadrant of ' + m('(−2; −3)'), 'III'],
+      ['The midpoint of ' + m('(1; 3)') + ' and ' + m('(7; 3)'), m('(4; 3)')],
+      [m('f(x) = 2x + 1') + ': ' + m('f(3)'), m('7')],
+      [m('f(−4)'), m('−7')],
+      ['The domain of ' + m('y = ' + f('1', 'x − 3')), m('x ≠ 3')],
+      [m('y = 2x − 4') + ' cuts ' + m('Oy') + ' at', m('(0; −4)')]
+    ],
+    med: [
+      [m('f(x) = 2x + 1 = 11'), m('x = 5')],
+      [m('y = 2x − 4') + ' cuts ' + m('Ox') + ' at', m('(2; 0)')],
+      ['The gradient through ' + m('(1; 2)') + ' and ' + m('(4; 8)'), m('2')],
+      ['Is ' + m('(3; 6)') + ' on ' + m('y = 2x') + '?', 'Yes'],
+      ['The length from ' + m('(1; 3)') + ' to ' + m('(7; 3)'), m('6')],
+      ['The equation of the line through ' + m('(1; 2)') + ' with gradient ' + m('2'), m('y = 2x')],
+      ['Where is ' + m('(6; 0)') + '?', 'On the ' + m('x') + '-axis']
+    ],
+    hard: [
+      ['Where do ' + m('y = 2x − 4') + ' and ' + m('y = −x + 5') + ' cross?', m('(3; 2)')],
+      ['A line through ' + m('(0; −4)') + ' and ' + m('(2; 0)') + ': its equation', m('y = 2x − 4')],
+      ['For which ' + m('k') + ' does ' + m('y = kx − 4') + ' pass through ' + m('(1; −1)') + '?', m('k = 3')],
+      ['The domain of ' + m('y = ' + f('1', 'x² − 9')), m('x ≠ ±3')],
+      ['The fourth vertex of a rectangle on ' + m('(1; 1), (5; 1), (5; 4)'), m('(1; 4)')],
+      [m('f(x) = 2x + 1') + ': for which ' + m('x') + ' is ' + m('f(x) = x') + '?', m('x = −1')],
+      ['Two lines with equal gradients are', 'parallel']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every question you lost a mark on in full, from the first line.',
+  homework: [
+    'Rewrite in full every question on which you lost a mark.',
+    'Plot ' + m('(4; 3)') + ', ' + m('(−1; 5)') + ', ' + m('(−3; −2)') + ' and ' + m('(2; −4)') + ' and name the quadrants.',
+    'For ' + m('f(x) = 3x − 2') + ' find ' + m('f(4)') + ', ' + m('f(−2)') + ' and the ' + m('x') + ' with ' + m('f(x) = 10') + '.',
+    'Draw ' + m('y = −2x + 6') + ' and mark both intercepts.',
+    'Find the gradient of the line through ' + m('(−1; 1)') + ' and ' + m('(3; 9)') + '.'
+  ]
+});
+
+/* ============================== 78 ============================== */
+G7_MAT.push({
+  id: 'g7-78', stream: 'mat', grade: 7, quarter: 4, lessons: '145–146', hours: 2,
+  title: 'Systems of linear equations',
+  subtitle: 'Two equations, two unknowns, and a solution that is a pair — the point where two lines cross.',
+  uz: 'Matematika 7, §62', uzPage: 'pp. 432–439',
+  cam: 'S8 2.5 extension', camPage: 'Stage 8, pp. 31–36', wb: 'Extension sheet 2D',
+  objectives: [
+    'Recognise a linear equation in two unknowns and describe its solutions.',
+    'Understand a system, and that its solution is an ordered pair.',
+    'Solve a system graphically.',
+    'Say when a system has one solution, none, or infinitely many.'
+  ],
+  terms: [
+    ['System of equations', 'Tenglamalar sistemasi', 'Система уравнений'],
+    ['Two unknowns', 'Ikki noma’lum', 'Два неизвестных'],
+    ['Solution of a system', 'Sistemaning yechimi', 'Решение системы'],
+    ['Ordered pair', 'Tartiblangan juftlik', 'Упорядоченная пара'],
+    ['Graphical method', 'Grafik usul', 'Графический способ'],
+    ['Intersection point', 'Kesishish nuqtasi', 'Точка пересечения'],
+    ['Parallel', 'Parallel', 'Параллельные'],
+    ['Coincident', 'Ustma-ust tushuvchi', 'Совпадающие']
+  ],
+  timing: [[15, 'One equation, two unknowns'], [20, 'What a system is'], [25, 'Solving by drawing'], [20, 'One, none, or infinitely many'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'One equation, two unknowns',
+      html: `<p>${m('x + y = 5')} has no single answer: ${m('(1; 4)')}, ${m('(2; 3)')}, ${m('(0; 5)')} and
+      infinitely many other pairs all satisfy it.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">x</th><th class="m">0</th><th class="m">1</th><th class="m">2</th><th class="m">3</th><th class="m">5</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = 5 − x</td><td class="m">5</td><td class="m">4</td><td class="m">3</td><td class="m">2</td><td class="m">0</td></tr>
+      </tbody></table></div>
+      <p>Plotted, those pairs lie on a straight line. A linear equation in two unknowns <b>is</b> a
+      line.</p>
+      <div class="keybox"><div class="klabel">Why one equation is not enough</div>
+      One condition on two unknowns leaves one degree of freedom, and the answers fill a line. To pin the
+      pair down, a second independent condition is needed — which is the whole idea of a system.</div>`
+    },
+    {
+      h: 'What a system is',
+      html: `${eq(m('{ x + y = 5 ;  x − y = 1 }'), true)}
+      <p>A <b>system</b> asks for the pairs that satisfy <b>both</b> equations at once. Its solution is
+      written as an ordered pair.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Pair</th><th class="m">x + y = 5</th><th class="m">x − y = 1</th><th>A solution?</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(1; 4)</td><td>✓</td><td class="m">−3 ≠ 1</td><td>no</td></tr>
+        <tr><td class="m">(3; 2)</td><td>✓</td><td>✓</td><td>yes</td></tr>
+        <tr><td class="m">(4; 3)</td><td class="m">7 ≠ 5</td><td>✓</td><td>no</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The answer is a pair, not a number</span>
+      Writing “${m('x = 3')}” alone answers half the question. The solution is ${m('(3; 2)')}, and both
+      numbers are needed for the mark.</div>`
+    },
+    {
+      h: 'Solving by drawing',
+      html: `<p>Draw both lines on one grid; the point where they cross is the solution.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Equation</th><th>As a function</th><th>Two points</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x + y = 5</td><td class="m">y = 5 − x</td><td class="m">(0; 5), (5; 0)</td></tr>
+        <tr><td class="m">x − y = 1</td><td class="m">y = x − 1</td><td class="m">(0; −1), (1; 0)</td></tr>
+      </tbody></table></div>
+      <p>The lines cross at ${m('(3; 2)')}, and substituting confirms it: ${m('3 + 2 = 5')} ✓ and
+      ${m('3 − 2 = 1')} ✓.</p>
+      <div class="warn"><span class="wl">A drawing gives an answer, not a proof</span>
+      If the crossing falls between grid lines — say at ${m('(2.4; 1.7)')} — the graph cannot say so
+      exactly. That is why the next lesson introduces two algebraic methods.</div>`
+    },
+    {
+      h: 'One, none, or infinitely many',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>The two lines</th><th>Picture</th><th>Solutions</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>different gradients</td><td>they cross once</td><td>exactly one</td><td class="m">y = 2x, y = x + 1</td></tr>
+        <tr><td>same gradient, different intercept</td><td>parallel</td><td>none</td><td class="m">y = 2x, y = 2x + 3</td></tr>
+        <tr><td>same gradient and intercept</td><td>one line drawn twice</td><td>infinitely many</td><td class="m">y = 2x, 2y = 4x</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The same three cases as for one equation</div>
+      A single linear equation had one root, no roots, or every number as a root. A system of two has one
+      pair, no pair, or every point of a line. The pattern repeats one dimension higher.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Is ' + m('(3; 2)') + ' a solution of ' + m('{ x + y = 5 ; x − y = 1 }') + '?',
+      steps: [
+        [m('3 + 2 = 5') + ' ✓', ''],
+        [m('3 − 2 = 1') + ' ✓', ''],
+        ['Both hold, so yes.', '']
+      ],
+      ans: 'Yes'
+    },
+    {
+      q: 'Solve ' + m('{ x + y = 5 ; x − y = 1 }') + ' graphically.',
+      steps: [
+        [m('y = 5 − x') + ' through ' + m('(0; 5)') + ' and ' + m('(5; 0)') + '.', ''],
+        [m('y = x − 1') + ' through ' + m('(0; −1)') + ' and ' + m('(1; 0)') + '.', ''],
+        ['They cross at ' + m('(3; 2)') + '.', ''],
+        ['Check both equations ✓', '']
+      ],
+      ans: m('(3; 2)')
+    },
+    {
+      q: 'How many solutions has ' + m('{ y = 2x ; y = 2x + 3 }') + '?',
+      steps: [
+        ['Both gradients are ' + m('2') + '.', ''],
+        ['The intercepts differ.', ''],
+        ['The lines are parallel and never meet.', ''],
+        ['No solutions.', '']
+      ],
+      ans: 'None'
+    }
+  ],
+  modelNote: 'Ask for five pairs satisfying x + y = 5 before anything else; the class produces a line without knowing it, and the second equation then visibly picks one point out of it.',
+  interactive: {
+    type: 'coordPlane',
+    title: 'Two lines and their crossing',
+    hint: 'The solution of a system is where the two graphs meet.'
+  },
+  quiz: [
+    { q: m('x + y = 5') + ' has:', a: ['one solution', 'no solutions', 'infinitely many pairs', 'two pairs'], c: 2, why: 'A whole line of them.' },
+    { q: 'The graph of a linear equation in two unknowns is:', a: ['a point', 'a line', 'a curve', 'a region'], c: 1, why: 'Always a straight line.' },
+    { q: 'The solution of a system is:', a: ['a number', 'an ordered pair', 'a line', 'an equation'], c: 1, why: 'Both unknowns.' },
+    { q: 'Graphically it is:', a: ['the origin', 'the crossing point', 'the intercept', 'the gradient'], c: 1, why: 'On both lines.' },
+    { q: 'Parallel lines mean:', a: ['one solution', 'no solutions', 'infinitely many', 'two solutions'], c: 1, why: 'They never meet.' },
+    { q: 'Coincident lines mean:', a: ['one solution', 'no solutions', 'infinitely many', 'none of these'], c: 2, why: 'Every point is common.' }
+  ],
+  practice: {
+    easy: [
+      ['Three pairs satisfying ' + m('x + y = 5'), m('(0; 5), (2; 3), (5; 0)')],
+      ['Is ' + m('(3; 2)') + ' a solution of ' + m('x + y = 5') + '?', 'Yes'],
+      ['Is ' + m('(3; 2)') + ' a solution of ' + m('x − y = 1') + '?', 'Yes'],
+      ['Is ' + m('(1; 4)') + ' a solution of the system?', 'No'],
+      [m('x + y = 5') + ' as a function', m('y = 5 − x')],
+      [m('x − y = 1') + ' as a function', m('y = x − 1')],
+      ['The solution of the system', m('(3; 2)')]
+    ],
+    med: [
+      ['Solve ' + m('{ y = 2x ; y = x + 1 }') + ' graphically', m('(1; 2)')],
+      ['How many solutions has ' + m('{ y = 2x ; y = 2x + 3 }') + '?', 'None'],
+      ['How many has ' + m('{ y = 2x ; 2y = 4x }') + '?', 'Infinitely many'],
+      ['Solve ' + m('{ x + y = 6 ; x − y = 2 }'), m('(4; 2)')],
+      ['Solve ' + m('{ y = x ; y = 4 − x }'), m('(2; 2)')],
+      ['Two lines with different gradients meet', 'exactly once'],
+      ['Why is a graphical answer sometimes only approximate?', 'The crossing may fall between grid lines']
+    ],
+    hard: [
+      ['Solve ' + m('{ 2x + y = 7 ; x − y = 2 }'), m('(3; 1)')],
+      ['For which ' + m('k') + ' has ' + m('{ y = kx + 1 ; y = 2x + 3 }') + ' no solution?', m('k = 2')],
+      ['For which ' + m('b') + ' has ' + m('{ y = 2x + b ; y = 2x + 3 }') + ' infinitely many?', m('b = 3')],
+      ['Does ' + m('(2.5; 2.5)') + ' solve ' + m('{ x + y = 5 ; x = y }') + '?', 'Yes'],
+      ['A system of two equations in two unknowns can have how many solutions?', 'One, none, or infinitely many'],
+      ['Solve ' + m('{ x + 2y = 8 ; x = 2 }'), m('(2; 3)')],
+      ['Write a system whose solution is ' + m('(1; 1)'), 'e.g. ' + m('{ x + y = 2 ; x − y = 0 }')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Always give the answer as a pair, and check it in both equations.',
+  homework: [
+    'Write five pairs satisfying ' + m('x + y = 7') + ' and plot them.',
+    'Solve ' + m('{ x + y = 7 ; x − y = 3 }') + ' graphically.',
+    'Decide how many solutions ' + m('{ y = 3x + 1 ; y = 3x − 2 }') + ' has, and why.',
+    'Decide how many solutions ' + m('{ y = 3x + 1 ; 2y = 6x + 2 }') + ' has, and why.',
+    'Check whether ' + m('(2; 5)') + ' solves ' + m('{ 2x + y = 9 ; x − y = −3 }') + '.'
+  ]
+});
