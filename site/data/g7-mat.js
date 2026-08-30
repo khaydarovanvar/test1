@@ -6944,3 +6944,349 @@ G7_MAT.push({
     'What must be added to ' + m('7m − 2') + ' to give ' + m('4m + 5') + '?'
   ]
 });
+
+/* ============================== 41 ============================== */
+G7_MAT.push({
+  id: 'g7-41', stream: 'mat', grade: 7, quarter: 2, lessons: '73–74', hours: 2,
+  title: 'Multiplication of polynomials',
+  subtitle: 'Every term of the first times every term of the second — and a rectangle explains why.',
+  uz: 'Matematika 7, §34', uzPage: 'pp. 205–211',
+  cam: 'S8 2.3', camPage: 'Stage 8, pp. 18–24', wb: 'Exercise 2.3',
+  objectives: [
+    'Multiply a polynomial by a monomial.',
+    'Multiply two binomials and collect the result.',
+    'Multiply a binomial by a trinomial.',
+    'Use an area diagram to justify the expansion.'
+  ],
+  terms: [
+    ['To multiply out', 'Ko‘paytirish', 'Умножение'],
+    ['To expand', 'Yoyish', 'Раскрыть'],
+    ['Binomial', 'Ikki had', 'Двучлен'],
+    ['Trinomial', 'Uch had', 'Трёхчлен'],
+    ['Every term', 'Har bir had', 'Каждый член'],
+    ['Area diagram', 'Yuza chizmasi', 'Схема площадей'],
+    ['To collect', 'Ixchamlash', 'Приведение подобных'],
+    ['Product', 'Ko‘paytma', 'Произведение']
+  ],
+  timing: [[15, 'By a monomial'], [25, 'Two binomials'], [25, 'The area picture'], [20, 'Longer products'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'By a monomial',
+      html: `${eq(m('k(a + b + c) = ka + kb + kc'), true)}
+      <p>Multiply every term — including the last, and including the signs.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Product</th><th>Expanded</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3x(x − 4)</td><td class="m">3x² − 12x</td></tr>
+        <tr><td class="m">−2a(a² − 3a + 1)</td><td class="m">−2a³ + 6a² − 2a</td></tr>
+        <tr><td class="m">xy(x + y)</td><td class="m">x²y + xy²</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The last term is the one most often forgotten</span>
+      In ${m('−2a(a² − 3a + 1)')} the third term gives ${m('−2a')}. Counting the terms before and after
+      expanding catches the omission.</div>`
+    },
+    {
+      h: 'Two binomials',
+      html: `${eq(m('(a + b)(c + d) = ac + ad + bc + bd'), true)}
+      <p>Four products, one for each pair. Then collect any like terms.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Product</th><th>Four terms</th><th>Collected</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(x + 2)(x + 3)</td><td class="m">x² + 3x + 2x + 6</td><td class="m">x² + 5x + 6</td></tr>
+        <tr><td class="m">(x − 2)(x + 5)</td><td class="m">x² + 5x − 2x − 10</td><td class="m">x² + 3x − 10</td></tr>
+        <tr><td class="m">(2a − 1)(a + 4)</td><td class="m">2a² + 8a − a − 4</td><td class="m">2a² + 7a − 4</td></tr>
+        <tr><td class="m">(x − 3)(x + 3)</td><td class="m">x² + 3x − 3x − 9</td><td class="m">x² − 9</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The last row is worth remembering</div>
+      The middle terms cancel and only ${m('x² − 9')} survives. That pattern — the difference of two
+      squares — is the subject of a whole lesson in Quarter III.</div>`
+    },
+    {
+      h: 'The area picture',
+      html: `<p>A rectangle of sides ${m('a + b')} and ${m('c + d')} splits into four smaller
+      rectangles.</p>
+      {{fig:areaParallelogram:A rectangle cut into four — the four products of the expansion.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th></th><th class="m">c</th><th class="m">d</th></tr></thead>
+      <tbody>
+        <tr><td class="m">a</td><td class="m">ac</td><td class="m">ad</td></tr>
+        <tr><td class="m">b</td><td class="m">bc</td><td class="m">bd</td></tr>
+      </tbody></table></div>
+      <p>The whole area is the sum of the four parts — which is exactly the expansion. The grid also
+      makes it impossible to miss a product.</p>
+      <div class="keybox"><div class="klabel">Use the grid when there are more than four products</div>
+      For a binomial times a trinomial there are six, and a ${m('2 × 3')} grid keeps them all in
+      view.</div>`
+    },
+    {
+      h: 'Longer products',
+      html: `<p><b>Example.</b> ${m('(x + 2)(x² − 3x + 1)')}. Six products:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th></th><th class="m">x²</th><th class="m">−3x</th><th class="m">+1</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x</td><td class="m">x³</td><td class="m">−3x²</td><td class="m">x</td></tr>
+        <tr><td class="m">+2</td><td class="m">2x²</td><td class="m">−6x</td><td class="m">2</td></tr>
+      </tbody></table></div>
+      ${eq(m('x³ − 3x² + 2x² + x − 6x + 2 = x³ − x² − 5x + 2'), true)}
+      <div class="keybox"><div class="klabel">The degree of a product is the sum of the degrees</div>
+      Here ${m('1 + 2 = 3')}, and the answer is cubic. Checking the degree first tells you what to
+      expect before any arithmetic.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Expand ' + m('−2a(a² − 3a + 1)') + '.',
+      steps: [
+        [m('−2a × a² = −2a³'), ''],
+        [m('−2a × (−3a) = 6a²'), 'Two minuses.'],
+        [m('−2a × 1 = −2a'), ''],
+        [m('= −2a³ + 6a² − 2a'), 'Three terms in, three out.']
+      ],
+      ans: m('−2a³ + 6a² − 2a')
+    },
+    {
+      q: 'Expand ' + m('(x − 2)(x + 5)') + '.',
+      steps: [
+        [m('x · x = x²') + ', ' + m('x · 5 = 5x') + '.', ''],
+        [m('−2 · x = −2x') + ', ' + m('−2 · 5 = −10') + '.', ''],
+        [m('x² + 5x − 2x − 10'), ''],
+        [m('= x² + 3x − 10'), '']
+      ],
+      ans: m('x² + 3x − 10')
+    },
+    {
+      q: 'Expand ' + m('(x + 2)(x² − 3x + 1)') + '.',
+      steps: [
+        [m('x') + ' row: ' + m('x³ − 3x² + x') + '.', ''],
+        [m('+2') + ' row: ' + m('2x² − 6x + 2') + '.', ''],
+        ['Add and collect.', ''],
+        [m('= x³ − x² − 5x + 2'), 'Degree ' + m('3') + ' ✓']
+      ],
+      ans: m('x³ − x² − 5x + 2')
+    }
+  ],
+  modelNote: 'Draw the rectangle for (x + 2)(x + 3) with its four parts labelled; the expansion is read off the picture before any rule is stated.',
+  interactive: {
+    type: 'areaModel',
+    title: 'Expanding as an area',
+    hint: 'Four rectangles, four products.'
+  },
+  quiz: [
+    { q: m('3x(x − 4)') + ' equals:', a: [m('3x² − 4'), m('3x² − 12x'), m('3x − 12x'), m('3x² − 12')], c: 1, why: 'Both terms are multiplied.' },
+    { q: m('(a + b)(c + d)') + ' gives how many products?', a: [m('2'), m('3'), m('4'), m('6')], c: 2, why: 'One for each pair.' },
+    { q: m('(x + 2)(x + 3)') + ' equals:', a: [m('x² + 6'), m('x² + 5x + 6'), m('x² + 6x + 5'), m('2x + 5')], c: 1, why: 'Collect the middle terms.' },
+    { q: m('(x − 3)(x + 3)') + ' equals:', a: [m('x² − 9'), m('x² + 9'), m('x² − 6x − 9'), m('x² − 6x + 9')], c: 0, why: 'The middle terms cancel.' },
+    { q: 'A binomial times a trinomial gives:', a: [m('4') + ' products', m('5') + ' products', m('6') + ' products', m('3') + ' products'], c: 2, why: m('2 × 3') + '.' },
+    { q: 'The degree of a product is:', a: ['the larger degree', 'the sum of the degrees', 'always ' + m('2'), 'unchanged'], c: 1, why: 'The exponents add.' }
+  ],
+  practice: {
+    easy: [
+      [m('3x(x − 4)'), m('3x² − 12x')],
+      [m('2a(a + 5)'), m('2a² + 10a')],
+      [m('xy(x + y)'), m('x²y + xy²')],
+      [m('(x + 2)(x + 3)'), m('x² + 5x + 6')],
+      [m('(x + 1)(x + 4)'), m('x² + 5x + 4')],
+      [m('(x − 3)(x + 3)'), m('x² − 9')],
+      [m('(x + 5)(x − 5)'), m('x² − 25')]
+    ],
+    med: [
+      [m('−2a(a² − 3a + 1)'), m('−2a³ + 6a² − 2a')],
+      [m('(x − 2)(x + 5)'), m('x² + 3x − 10')],
+      [m('(2a − 1)(a + 4)'), m('2a² + 7a − 4')],
+      [m('(3x + 2)(x − 1)'), m('3x² − x − 2')],
+      [m('(x + 2)(x² − 3x + 1)'), m('x³ − x² − 5x + 2')],
+      [m('(a − b)(a + b)'), m('a² − b²')],
+      [m('(2x − 3)(2x + 3)'), m('4x² − 9')]
+    ],
+    hard: [
+      [m('(x + 1)(x + 2)(x + 3)'), m('x³ + 6x² + 11x + 6')],
+      [m('(a + b)²'), m('a² + 2ab + b²')],
+      [m('(a − b)²'), m('a² − 2ab + b²')],
+      [m('(2x − 1)(x² + x − 3)'), m('2x³ + x² − 7x + 3')],
+      ['A rectangle ' + m('(x + 3)') + ' by ' + m('(x + 5)') + ': its area', m('x² + 8x + 15')],
+      ['Its perimeter', m('4x + 16')],
+      [m('(x + a)(x + b)') + ' in general', m('x² + (a + b)x + ab')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Count the products you expect before expanding, and again afterwards.',
+  homework: [
+    'Expand ' + m('4x(2x − 3)') + ' and ' + m('−3a(a² + 2a − 5)') + '.',
+    'Expand ' + m('(x + 4)(x + 6)') + ' and ' + m('(x − 4)(x + 6)') + '.',
+    'Expand ' + m('(3a + 2)(2a − 5)') + '.',
+    'Expand ' + m('(x − 1)(x² + 2x + 3)') + '.',
+    'A rectangle has sides ' + m('x + 2') + ' and ' + m('x + 7') + '. Find its area and perimeter.'
+  ]
+});
+
+/* ============================== 42 ============================== */
+G7_MAT.push({
+  id: 'g7-42', stream: 'mat', grade: 7, quarter: 2, lessons: '75–76', hours: 2,
+  title: 'Division of polynomials',
+  subtitle: 'Dividing by a monomial — term by term, and only when it goes exactly.',
+  uz: 'Matematika 7, §35', uzPage: 'pp. 212–217',
+  cam: 'S8 2.3', camPage: 'Stage 8, pp. 18–24', wb: 'Exercise 2.3',
+  objectives: [
+    'Divide a polynomial by a monomial, term by term.',
+    'Decide when the quotient is again a polynomial.',
+    'Use division to reverse a multiplication.',
+    'Simplify an algebraic fraction whose denominator is a monomial.'
+  ],
+  terms: [
+    ['Division', 'Bo‘lish', 'Деление'],
+    ['Quotient', 'Bo‘linma', 'Частное'],
+    ['Term by term', 'Hadma-had', 'Почленно'],
+    ['Exactly divisible', 'Butun bo‘linadi', 'Делится нацело'],
+    ['Common factor', 'Umumiy ko‘paytuvchi', 'Общий множитель'],
+    ['To reverse', 'Teskari amal', 'Обратное действие'],
+    ['Algebraic fraction', 'Algebraik kasr', 'Алгебраическая дробь'],
+    ['Check', 'Tekshirish', 'Проверка']
+  ],
+  timing: [[15, 'Term by term'], [25, 'When it works'], [25, 'Reversing a multiplication'], [20, 'Simplifying fractions'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Term by term',
+      html: `${eq(m(f('a + b + c', 'k') + ' = ' + f('a', 'k') + ' + ' + f('b', 'k') + ' + ' + f('c', 'k')), true)}
+      <p>Divide each term of the polynomial by the monomial.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quotient</th><th>Term by term</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(6x² + 9x) ÷ 3x</td><td class="m">${f('6x²', '3x')} + ${f('9x', '3x')}</td><td class="m">2x + 3</td></tr>
+        <tr><td class="m">(8a³ − 4a²) ÷ 4a²</td><td class="m">2a − 1</td><td class="m">2a − 1</td></tr>
+        <tr><td class="m">(10x³y − 15x²y²) ÷ 5x²y</td><td class="m">2x − 3y</td><td class="m">2x − 3y</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Every term is divided, including the last</span>
+      ${m('(8a³ − 4a²) ÷ 4a²')} is ${m('2a − 1')}, not ${m('2a')}. The second term gives ${m('−1')}, and
+      dropping it is the standard slip.</div>`
+    },
+    {
+      h: 'When it works',
+      html: `<p>The quotient is a polynomial only if the monomial divides <b>every</b> term exactly — the
+      coefficients and each letter.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Division</th><th>Polynomial?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(6x² + 9x) ÷ 3x</td><td>yes</td><td>${m('3x')} divides both terms</td></tr>
+        <tr><td class="m">(6x² + 9x) ÷ 3x²</td><td>no</td><td>${m('3x²')} does not divide ${m('9x')}</td></tr>
+        <tr><td class="m">(4a + 6b) ÷ 2</td><td>yes</td><td>${m('2')} divides both terms</td></tr>
+        <tr><td class="m">(4a + 5b) ÷ 2</td><td>no</td><td>${m('2')} does not divide ${m('5b')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The divisor must be a common factor</div>
+      Finding the highest common factor of all the terms tells you at once what the polynomial can be
+      divided by — and that is exactly what factorising will use two lessons from now.</div>`
+    },
+    {
+      h: 'Reversing a multiplication',
+      html: `<p>Division undoes multiplication, so every division can be checked by multiplying back.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Division</th><th>Answer</th><th>Check</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(6x² + 9x) ÷ 3x</td><td class="m">2x + 3</td><td class="m">3x(2x + 3) = 6x² + 9x ✓</td></tr>
+        <tr><td class="m">(10a² − 5a) ÷ 5a</td><td class="m">2a − 1</td><td class="m">5a(2a − 1) = 10a² − 5a ✓</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One multiplication checks the whole division</div>
+      It takes ten seconds and catches every slip, including the dropped last term. There is no faster
+      check in algebra.</div>`
+    },
+    {
+      h: 'Simplifying fractions',
+      html: `<p>An algebraic fraction is simplified by cancelling the common factors of numerator and
+      denominator.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Fraction</th><th>Simplified</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('12a³', '4a')}</td><td class="m">3a²</td></tr>
+        <tr><td class="m">${f('6x² + 9x', '3x')}</td><td class="m">2x + 3</td></tr>
+        <tr><td class="m">${f('5ab', '10a²')}</td><td class="m">${f('b', '2a')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Cancel factors, never terms</span>
+      In ${m(f('6x² + 9x', '3x'))} the whole numerator is divided. Cancelling the ${m('x')} of ${m('9x')}
+      against the denominator alone, and leaving the ${m('6x²')} untouched, is wrong — the division
+      applies to every term or to none.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compute ' + m('(6x² + 9x) ÷ 3x') + '.',
+      steps: [
+        [m(f('6x²', '3x') + ' = 2x'), ''],
+        [m(f('9x', '3x') + ' = 3'), ''],
+        [m('= 2x + 3'), ''],
+        ['Check: ' + m('3x(2x + 3) = 6x² + 9x') + ' ✓', '']
+      ],
+      ans: m('2x + 3')
+    },
+    {
+      q: 'Compute ' + m('(10x³y − 15x²y²) ÷ 5x²y') + '.',
+      steps: [
+        ['First term: ' + m(f('10x³y', '5x²y') + ' = 2x') + '.', ''],
+        ['Second: ' + m(f('−15x²y²', '5x²y') + ' = −3y') + '.', ''],
+        [m('= 2x − 3y'), ''],
+        ['Check: ' + m('5x²y(2x − 3y) = 10x³y − 15x²y²') + ' ✓', '']
+      ],
+      ans: m('2x − 3y')
+    },
+    {
+      q: 'Is ' + m('(6x² + 9x) ÷ 3x²') + ' a polynomial?',
+      steps: [
+        ['First term: ' + m(f('6x²', '3x²') + ' = 2') + ' ✓', ''],
+        ['Second: ' + m(f('9x', '3x²') + ' = ' + f('3', 'x')) + '.', ''],
+        ['That is not a monomial.', ''],
+        ['No — the quotient is not a polynomial.', '']
+      ],
+      ans: 'No'
+    }
+  ],
+  modelNote: 'Ask the class to check every division by multiplying back, and mark only the checks for one lesson; the accuracy of the divisions rises immediately.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'Cancelling common factors',
+    hint: 'Every term of the numerator is divided.'
+  },
+  quiz: [
+    { q: 'To divide a polynomial by a monomial:', a: ['divide the first term', 'divide every term', 'multiply', 'cancel one letter'], c: 1, why: 'Term by term.' },
+    { q: m('(8a³ − 4a²) ÷ 4a²') + ' equals:', a: [m('2a'), m('2a − 1'), m('2a³'), m('2a − 4')], c: 1, why: 'The second term gives ' + m('−1') + '.' },
+    { q: m('(6x² + 9x) ÷ 3x') + ' equals:', a: [m('2x'), m('2x + 3'), m('2x + 9'), m('2x² + 3')], c: 1, why: 'Both terms divided.' },
+    { q: m('(6x² + 9x) ÷ 3x²') + ' is:', a: ['a polynomial', 'not a polynomial', 'a monomial', 'zero'], c: 1, why: m(f('3', 'x')) + ' appears.' },
+    { q: 'A division is checked by:', a: ['dividing again', 'multiplying back', 'estimating', 'nothing'], c: 1, why: 'It undoes the division.' },
+    { q: 'In an algebraic fraction you may cancel:', a: ['terms', 'factors', 'anything', 'signs'], c: 1, why: 'Only common factors.' }
+  ],
+  practice: {
+    easy: [
+      [m('(6x² + 9x) ÷ 3x'), m('2x + 3')],
+      [m('(8a³ − 4a²) ÷ 4a²'), m('2a − 1')],
+      [m('(4a + 6b) ÷ 2'), m('2a + 3b')],
+      [m(f('12a³', '4a')), m('3a²')],
+      [m('(10a² − 5a) ÷ 5a'), m('2a − 1')],
+      [m('(x² + x) ÷ x'), m('x + 1')],
+      [m('(9y³ + 3y) ÷ 3y'), m('3y² + 1')]
+    ],
+    med: [
+      [m('(10x³y − 15x²y²) ÷ 5x²y'), m('2x − 3y')],
+      [m('(12a²b + 8ab²) ÷ 4ab'), m('3a + 2b')],
+      [m(f('5ab', '10a²')), m(f('b', '2a'))],
+      ['Is ' + m('(6x² + 9x) ÷ 3x²') + ' a polynomial?', 'No'],
+      ['Is ' + m('(4a + 5b) ÷ 2') + ' a polynomial?', 'No'],
+      ['Check ' + m('2x + 3') + ' by multiplying by ' + m('3x'), m('6x² + 9x')],
+      [m('(a³ − a²) ÷ a²'), m('a − 1')]
+    ],
+    hard: [
+      [m('(15x⁴y² − 10x³y³ + 5x²y) ÷ 5x²y'), m('3x²y − 2xy² + 1')],
+      [m(f('4a²b − 6ab²', '2ab')), m('2a − 3b')],
+      ['What must ' + m('3x') + ' be multiplied by to give ' + m('12x³ − 9x²') + '?', m('4x² − 3x')],
+      [m(f('x² − x', 'x')), m('x − 1')],
+      ['The HCF of ' + m('6x²') + ' and ' + m('9x'), m('3x')],
+      ['Divide ' + m('8a³b − 12a²b² + 4ab') + ' by its HCF', m('2a² − 3ab + 1')],
+      ['Why must the divisor be a common factor?', 'Otherwise some term gives a fraction']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Check every division by multiplying the answer by the divisor.',
+  homework: [
+    'Compute ' + m('(12x² − 8x) ÷ 4x') + '.',
+    'Compute ' + m('(9a³b − 6a²b²) ÷ 3a²b') + '.',
+    'Simplify ' + m(f('20m³', '5m')) + '.',
+    'Is ' + m('(10x² + 4x) ÷ 4x²') + ' a polynomial? Explain.',
+    'Find the HCF of ' + m('8a²b') + ' and ' + m('12ab²') + ', and divide their sum by it.'
+  ]
+});
