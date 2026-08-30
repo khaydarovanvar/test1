@@ -7094,3 +7094,345 @@ G6_MAT.push({
     'Find the reflex angle that goes with an angle of ' + m('145°') + '.'
   ]
 });
+
+/* ============================== 40 ============================== */
+G6_MAT.push({
+  id: 'g6-40', stream: 'mat', grade: 6, quarter: 2, lessons: '81–83', hours: 3,
+  title: 'Unknown angles at a point and on a line',
+  subtitle: 'Four facts about angles that meet — and the equations they turn into.',
+  uz: 'Matematika 6, §16', uzPage: 'pp. 227–236',
+  cam: 'S7 5.1–5.2', camPage: 'Stage 7, pp. 55–62', wb: 'Exercise 5.2',
+  objectives: [
+    'Use the fact that angles on a straight line add to ' + m('180°') + '.',
+    'Use the fact that angles at a point add to ' + m('360°') + '.',
+    'Use vertically opposite angles.',
+    'Write and solve an equation for an unknown angle.'
+  ],
+  terms: [
+    ['Angles on a line', 'Yoyiq burchak', 'Смежные углы'],
+    ['Angles at a point', 'Nuqtadagi burchaklar', 'Углы вокруг точки'],
+    ['Vertically opposite', 'Vertikal burchaklar', 'Вертикальные углы'],
+    ['Complementary', 'Yig‘indisi 90°', 'Дополнительные до 90°'],
+    ['Supplementary', 'Yig‘indisi 180°', 'Смежные'],
+    ['To justify', 'Asoslash', 'Обосновать'],
+    ['Unknown angle', 'Noma’lum burchak', 'Неизвестный угол'],
+    ['Reason', 'Sabab', 'Обоснование']
+  ],
+  timing: [[25, 'The four facts'], [30, 'One unknown'], [35, 'Equations with letters'], [25, 'Writing reasons'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The four facts',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Situation</th><th>Fact</th><th>Reason to quote</th></tr></thead>
+      <tbody>
+        <tr><td>two angles making a straight line</td><td>they add to ${m('180°')}</td><td>angles on a line</td></tr>
+        <tr><td>angles filling a turn</td><td>they add to ${m('360°')}</td><td>angles at a point</td></tr>
+        <tr><td>two lines crossing</td><td>opposite angles are equal</td><td>vertically opposite</td></tr>
+        <tr><td>two angles making a right angle</td><td>they add to ${m('90°')}</td><td>complementary angles</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Every answer carries a reason</div>
+      In geometry the number alone is half the answer. “${m('x = 55°')}, angles on a line” is the whole
+      one, and the reason is where the mark is.</div>`
+    },
+    {
+      h: 'One unknown',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Fact</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('125°')} on a line with ${m('x')}</td><td class="m">180°</td><td class="m">180 − 125</td><td class="m">55°</td></tr>
+        <tr><td>${m('140°, 90°')} and ${m('x')} at a point</td><td class="m">360°</td><td class="m">360 − 230</td><td class="m">130°</td></tr>
+        <tr><td>${m('x')} vertically opposite ${m('68°')}</td><td>equal</td><td>—</td><td class="m">68°</td></tr>
+        <tr><td>${m('x')} and ${m('37°')} make a right angle</td><td class="m">90°</td><td class="m">90 − 37</td><td class="m">53°</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Choose the fact by the picture, not by the numbers</span>
+      Angles that look as if they fill a turn add to ${m('360°')} even if there are five of them; angles
+      along a line add to ${m('180°')} however many there are.</div>`
+    },
+    {
+      h: 'Equations with letters',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Situation</th><th>Equation</th><th>Solution</th><th>The angles</th></tr></thead>
+      <tbody>
+        <tr><td>${m('x')} and ${m('2x')} on a line</td><td class="m">3x = 180</td><td class="m">x = 60</td><td class="m">60°, 120°</td></tr>
+        <tr><td>${m('x, x + 20')} and ${m('2x')} at a point with ${m('90°')}</td><td class="m">4x + 110 = 360</td><td class="m">x = 62.5</td><td class="m">62.5°, 82.5°, 125°</td></tr>
+        <tr><td>${m('3x')} and ${m('x + 40')} vertically opposite</td><td class="m">3x = x + 40</td><td class="m">x = 20</td><td class="m">60°</td></tr>
+        <tr><td>${m('x, 2x, 3x')} on a line</td><td class="m">6x = 180</td><td class="m">x = 30</td><td class="m">30°, 60°, 90°</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Geometry becomes algebra, and back again</div>
+      Write the equation from the picture, solve it with the methods of lesson 16, then put the value back
+      into every expression to find the actual angles.</div>`
+    },
+    {
+      h: 'Writing reasons',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x + 125 = 180</td><td>angles on a straight line</td></tr>
+        <tr><td class="m">x = 55°</td><td>solving</td></tr>
+        <tr><td class="m">y = 68°</td><td>vertically opposite angles</td></tr>
+        <tr><td class="m">a + b + c = 360°</td><td>angles at a point</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">“It looks like it” is not a reason</span>
+      A diagram is a guide, not evidence: angles are rarely drawn to scale. The reason must be one of the
+      four facts, named.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Two angles on a straight line are ' + m('125°') + ' and ' + m('x') + '. Find ' + m('x') + '.',
+      steps: [
+        [m('x + 125 = 180'), 'Angles on a line.'],
+        [m('x = 55°'), '']
+      ],
+      ans: m('55°')
+    },
+    {
+      q: 'Angles of ' + m('x') + ' and ' + m('2x') + ' lie on a straight line. Find both.',
+      steps: [
+        [m('x + 2x = 180'), ''],
+        [m('3x = 180') + ', so ' + m('x = 60') + '.', ''],
+        ['The angles are ' + m('60°') + ' and ' + m('120°') + '.', 'Check: they add to ' + m('180°') + ' ✓']
+      ],
+      ans: m('60°') + ' and ' + m('120°')
+    },
+    {
+      q: 'Two crossing lines make angles of ' + m('3x') + ' and ' + m('x + 40') + ' vertically opposite. Find them.',
+      steps: [
+        ['Vertically opposite angles are equal.', ''],
+        [m('3x = x + 40'), ''],
+        [m('2x = 40') + ', so ' + m('x = 20') + '.', ''],
+        ['Each angle is ' + m('60°') + '.', '']
+      ],
+      ans: m('60°')
+    }
+  ],
+  modelNote: 'Insist on a reason beside every line for a fortnight; the habit carries into Grade 7 proofs, where it becomes most of the mark.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'Angles at a point add to ' + m('360°'),
+    hint: 'Drag an arm and watch the others adjust.'
+  },
+  quiz: [
+    { q: 'Angles on a straight line add to:', a: [m('90°'), m('180°'), m('270°'), m('360°')], c: 1, why: 'A half turn.' },
+    { q: 'Angles at a point add to:', a: [m('90°'), m('180°'), m('270°'), m('360°')], c: 3, why: 'A full turn.' },
+    { q: 'Vertically opposite angles are:', a: ['supplementary', 'equal', 'complementary', 'unrelated'], c: 1, why: 'Both are what remains from ' + m('180°') + '.' },
+    { q: m('125°') + ' on a line with ' + m('x') + ' gives:', a: [m('45°'), m('55°'), m('65°'), m('235°')], c: 1, why: m('180 − 125') + '.' },
+    { q: m('x') + ' and ' + m('2x') + ' on a line give ' + m('x') + ' equal to:', a: [m('45'), m('60'), m('90'), m('120')], c: 1, why: m('3x = 180') + '.' },
+    { q: 'A geometry answer needs:', a: ['the number', 'the number and a reason', 'a diagram', 'a measurement'], c: 1, why: 'The reason carries the mark.' }
+  ],
+  practice: {
+    easy: [
+      [m('125°') + ' on a line with ' + m('x'), m('55°')],
+      [m('90°') + ' on a line with ' + m('x'), m('90°')],
+      [m('x') + ' vertically opposite ' + m('68°'), m('68°')],
+      [m('x') + ' and ' + m('37°') + ' make a right angle', m('53°')],
+      [m('140°, 90°') + ' and ' + m('x') + ' at a point', m('130°')],
+      ['Angles on a line add to', m('180°')],
+      ['Angles at a point add to', m('360°')]
+    ],
+    med: [
+      [m('x') + ' and ' + m('2x') + ' on a line', m('60°') + ' and ' + m('120°')],
+      [m('x, 2x, 3x') + ' on a line', m('30°, 60°, 90°')],
+      [m('3x') + ' and ' + m('x + 40') + ' vertically opposite', m('x = 20') + ', each ' + m('60°')],
+      [m('x, x, x, x') + ' at a point', m('90°') + ' each'],
+      [m('2x') + ' and ' + m('x + 30') + ' on a line: find ' + m('x'), m('x = 50')],
+      ['Four angles at a point, three of them ' + m('80°, 100°, 60°'), m('120°')],
+      ['Two supplementary angles differ by ' + m('40°'), m('110°') + ' and ' + m('70°')]
+    ],
+    hard: [
+      [m('x, x + 20, 2x') + ' and ' + m('90°') + ' at a point', m('x = 62.5°')],
+      ['Two complementary angles in the ratio ' + m('2 : 3'), m('36°') + ' and ' + m('54°')],
+      ['Two supplementary angles in the ratio ' + m('4 : 5'), m('80°') + ' and ' + m('100°')],
+      ['An angle is ' + m('3') + ' times its supplement', m('135°') + ' and ' + m('45°')],
+      ['An angle equals its own complement', m('45°')],
+      ['An angle is ' + m('20°') + ' more than twice its complement', m('66' + f('2', '3') + '°')],
+      ['Why is “it looks equal” not a reason?', 'Diagrams are rarely drawn to scale']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write a reason beside every line of working.',
+  homework: [
+    'Find ' + m('x') + ' if ' + m('x') + ' and ' + m('118°') + ' lie on a straight line.',
+    'Find ' + m('x') + ' if ' + m('x, 3x') + ' and ' + m('140°') + ' meet at a point.',
+    'Find ' + m('x') + ' if ' + m('5x') + ' and ' + m('2x + 60') + ' are vertically opposite.',
+    'Two supplementary angles are in the ratio ' + m('3 : 7') + '. Find both.',
+    'Find the angle that is twice its own complement.'
+  ]
+});
+
+/* ============================== 41 ============================== */
+G6_MAT.push({
+  id: 'g6-41', stream: 'mat', grade: 6, quarter: 2, lessons: '84–86', hours: 3,
+  title: 'Unknown angles in triangles and quadrilaterals',
+  subtitle: m('180°') + ' in a triangle, ' + m('360°') + ' in a quadrilateral, and the special figures that follow.',
+  uz: 'Matematika 6, §17', uzPage: 'pp. 237–246',
+  cam: 'S7 5.2', camPage: 'Stage 7, pp. 58–62', wb: 'Exercise 5.3',
+  objectives: [
+    'Use the angle sum of a triangle and of a quadrilateral.',
+    'Use the base angles of an isosceles triangle.',
+    'Find angles in figures made of several triangles.',
+    'Write an equation for an unknown angle in a figure.'
+  ],
+  terms: [
+    ['Triangle', 'Uchburchak', 'Треугольник'],
+    ['Quadrilateral', 'To‘rtburchak', 'Четырёхугольник'],
+    ['Angle sum', 'Burchaklar yig‘indisi', 'Сумма углов'],
+    ['Isosceles', 'Teng yonli', 'Равнобедренный'],
+    ['Equilateral', 'Teng tomonli', 'Равносторонний'],
+    ['Base angles', 'Asosdagi burchaklar', 'Углы при основании'],
+    ['Parallelogram', 'Parallelogramm', 'Параллелограмм'],
+    ['Diagonal', 'Diagonal', 'Диагональ']
+  ],
+  timing: [[25, 'The angle sum of a triangle'], [30, 'Special triangles'], [35, 'Quadrilaterals'], [25, 'Figures made of triangles'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The angle sum of a triangle',
+      html: `${eq(m('∠A + ∠B + ∠C = 180°'), true)}
+      {{fig:triangleAngleSum:The three angles of a triangle}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Working</th><th>Third angle</th></tr></thead>
+      <tbody>
+        <tr><td class="m">50°, 60°</td><td class="m">180 − 110</td><td class="m">70°</td></tr>
+        <tr><td class="m">90°, 35°</td><td class="m">180 − 125</td><td class="m">55°</td></tr>
+        <tr><td class="m">120°, 25°</td><td class="m">180 − 145</td><td class="m">35°</td></tr>
+        <tr><td>angles ${m('x, 2x, 3x')}</td><td class="m">6x = 180</td><td class="m">30°, 60°, 90°</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Tear the corners off and check</div>
+      The three corners of any paper triangle lay flat along a straight line. It is not a proof, but it is
+      convincing, and the proof waits until Grade 7.</div>`
+    },
+    {
+      h: 'Special triangles',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Kind</th><th>What is equal</th><th>Angles</th></tr></thead>
+      <tbody>
+        <tr><td>equilateral</td><td>all three sides</td><td class="m">60°, 60°, 60°</td></tr>
+        <tr><td>isosceles</td><td>two sides</td><td>the two base angles are equal</td></tr>
+        <tr><td>right-angled</td><td>one angle is ${m('90°')}</td><td>the other two add to ${m('90°')}</td></tr>
+        <tr><td>right isosceles</td><td>two sides and a right angle</td><td class="m">90°, 45°, 45°</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Isosceles triangle</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>apex ${m('40°')}</td><td class="m">(180 − 40) ÷ 2</td><td>${m('70°')} each</td></tr>
+        <tr><td>base angle ${m('50°')}</td><td class="m">180 − 100</td><td class="m">80°</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Read which angle is given</span>
+      An apex of ${m('40°')} gives base angles of ${m('70°')}; a base angle of ${m('40°')} gives an apex of
+      ${m('100°')}. The same number, two different triangles.</div>`
+    },
+    {
+      h: 'Quadrilaterals',
+      html: `${eq(m('∠A + ∠B + ∠C + ∠D = 360°'), true)}
+      <p>A diagonal cuts any quadrilateral into two triangles, so its angles add to ${m('2 · 180°')}.</p>
+      {{fig:quadAngleSum:A quadrilateral split into two triangles}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Figure</th><th>Angle facts</th></tr></thead>
+      <tbody>
+        <tr><td>any quadrilateral</td><td>the four add to ${m('360°')}</td></tr>
+        <tr><td>rectangle</td><td>four right angles</td></tr>
+        <tr><td>parallelogram</td><td>opposite angles equal; neighbours add to ${m('180°')}</td></tr>
+        <tr><td>rhombus</td><td>as a parallelogram, and all sides equal</td></tr>
+        <tr><td>kite</td><td>one pair of opposite angles equal</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two triangles, one quadrilateral</div>
+      That single picture explains the ${m('360°')}, and it generalises: a pentagon splits into three
+      triangles and has an angle sum of ${m('540°')}.</div>`
+    },
+    {
+      h: 'Figures made of triangles',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Route</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a triangle with angles ${m('x, x, 80°')}</td><td class="m">2x = 100</td><td class="m">50°</td></tr>
+        <tr><td>a quadrilateral with ${m('90°, 90°, 130°')}</td><td class="m">360 − 310</td><td class="m">50°</td></tr>
+        <tr><td>a parallelogram with one angle ${m('72°')}</td><td>neighbours add to ${m('180°')}</td><td class="m">108°</td></tr>
+        <tr><td>an exterior angle of a triangle, interior ${m('115°')}</td><td class="m">180 − 115</td><td class="m">65°</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Work outwards from what you know</div>
+      Fill in every angle you can, even ones the question did not ask for; the wanted angle usually appears
+      after two or three of them are written on the diagram.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A triangle has angles ' + m('50°') + ' and ' + m('60°') + '. Find the third.',
+      steps: [
+        [m('50 + 60 = 110'), ''],
+        [m('180 − 110 = 70'), ''],
+        [m('70°'), '']
+      ],
+      ans: m('70°')
+    },
+    {
+      q: 'An isosceles triangle has an apex angle of ' + m('40°') + '. Find the base angles.',
+      steps: [
+        ['The two base angles are equal.', ''],
+        [m('180 − 40 = 140') + ' shared between them.', ''],
+        [m('140 ÷ 2 = 70°') + ' each.', '']
+      ],
+      ans: m('70°') + ' each'
+    },
+    {
+      q: 'A quadrilateral has angles ' + m('90°, 90°') + ' and ' + m('130°') + '. Find the fourth.',
+      steps: [
+        ['The four add to ' + m('360°') + '.', ''],
+        [m('90 + 90 + 130 = 310'), ''],
+        [m('360 − 310 = 50°'), '']
+      ],
+      ans: m('50°')
+    }
+  ],
+  modelNote: 'Give a quadrilateral and ask the class to draw one diagonal; the 360° is then discovered rather than announced.',
+  interactive: {
+    type: 'triangleAngles',
+    title: 'Drag a vertex — the sum stays at ' + m('180°'),
+    hint: 'Watch the three angles change together.'
+  },
+  quiz: [
+    { q: 'The angles of a triangle add to:', a: [m('90°'), m('180°'), m('270°'), m('360°')], c: 1, why: 'Always.' },
+    { q: 'The angles of a quadrilateral add to:', a: [m('180°'), m('270°'), m('360°'), m('540°')], c: 2, why: 'Two triangles.' },
+    { q: 'An equilateral triangle has angles of:', a: [m('45°'), m('60°'), m('90°'), m('30°')], c: 1, why: m('180 ÷ 3') + '.' },
+    { q: 'An isosceles triangle with apex ' + m('40°') + ' has base angles:', a: [m('40°'), m('70°'), m('100°'), m('140°')], c: 1, why: m('(180 − 40) ÷ 2') + '.' },
+    { q: 'A parallelogram with one angle ' + m('72°') + ' has a neighbour of:', a: [m('72°'), m('108°'), m('118°'), m('288°')], c: 1, why: 'They add to ' + m('180°') + '.' },
+    { q: 'A pentagon’s angles add to:', a: [m('360°'), m('450°'), m('540°'), m('720°')], c: 2, why: 'Three triangles.' }
+  ],
+  practice: {
+    easy: [
+      [m('50°') + ' and ' + m('60°') + ': the third angle', m('70°')],
+      [m('90°') + ' and ' + m('35°'), m('55°')],
+      [m('120°') + ' and ' + m('25°'), m('35°')],
+      ['Each angle of an equilateral triangle', m('60°')],
+      ['Isosceles with apex ' + m('40°') + ': the base angles', m('70°')],
+      ['Isosceles with base angle ' + m('50°') + ': the apex', m('80°')],
+      ['A quadrilateral with ' + m('90°, 90°, 130°'), m('50°')]
+    ],
+    med: [
+      ['A triangle with angles ' + m('x, 2x, 3x'), m('30°, 60°, 90°')],
+      ['A triangle with ' + m('x, x, 80°'), m('50°') + ' each'],
+      ['A parallelogram with one angle ' + m('72°'), m('108°')],
+      ['A right isosceles triangle', m('90°, 45°, 45°')],
+      ['A quadrilateral with ' + m('x, x, 2x, 2x'), m('60°, 60°, 120°, 120°')],
+      ['An exterior angle beside an interior angle of ' + m('115°'), m('65°')],
+      ['The angle sum of a pentagon', m('540°')]
+    ],
+    hard: [
+      ['A triangle with angles in the ratio ' + m('2 : 3 : 4'), m('40°, 60°, 80°')],
+      ['A quadrilateral with angles in the ratio ' + m('1 : 2 : 3 : 4'), m('36°, 72°, 108°, 144°')],
+      ['An isosceles triangle with one angle ' + m('100°') + ': the others', m('40°') + ' each'],
+      ['An isosceles triangle with one angle ' + m('40°') + ': two possibilities', m('40°, 70°, 70°') + ' or ' + m('40°, 40°, 100°')],
+      ['A kite with angles ' + m('110°, 80°, 80°') + ': the fourth', m('90°')],
+      ['Why do a quadrilateral’s angles add to ' + m('360°') + '?', 'A diagonal splits it into two triangles'],
+      ['The angle sum of a hexagon', m('720°')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Fill in every angle you can find, not only the one asked for.',
+  homework: [
+    'A triangle has angles ' + m('72°') + ' and ' + m('43°') + '. Find the third.',
+    'An isosceles triangle has an apex angle of ' + m('34°') + '. Find the base angles.',
+    'A quadrilateral has angles ' + m('85°, 95°') + ' and ' + m('110°') + '. Find the fourth.',
+    'A triangle has angles in the ratio ' + m('3 : 4 : 5') + '. Find them.',
+    'A parallelogram has one angle of ' + m('115°') + '. Find all four.'
+  ]
+});
