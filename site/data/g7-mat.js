@@ -5089,3 +5089,339 @@ G7_MAT.push({
     'Explain why no triangle can be constructed with sides ' + m('2, 3, 8') + '.'
   ]
 });
+
+/* ============================== 30 ============================== */
+G7_MAT.push({
+  id: 'g7-30', stream: 'mat', grade: 7, quarter: 2, lessons: '56–57', hours: 2,
+  title: 'Control work 4, and work on the mistakes',
+  subtitle: 'The congruence of triangles in one paper, and the geometry chapter closed.',
+  uz: 'Matematika 7, Nazorat ishi 4', uzPage: 'pp. 118–151',
+  cam: 'S8 5 review', camPage: 'Stage 8, pp. 48–56', wb: 'Control paper M4',
+  objectives: [
+    'Choose the right criterion from the given data.',
+    'Write a proof in statement-and-reason form under time.',
+    'Use the properties of isosceles triangles and the triangle inequality.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Congruence', 'Tenglik', 'Равенство'],
+    ['Criterion', 'Alomat', 'Признак'],
+    ['Isosceles', 'Teng yonli', 'Равнобедренный'],
+    ['Triangle inequality', 'Uchburchak tengsizligi', 'Неравенство треугольника'],
+    ['Common side', 'Umumiy tomon', 'Общая сторона'],
+    ['Reason', 'Asos', 'Обоснование'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Can a triangle have sides ${m('5, 8, 14')}? And ${m('6, 9, 13')}?</td><td class="m">4</td><td>L46</td></tr>
+        <tr><td>2</td><td>An isosceles triangle has apex ${m('44°')}: find the base angles</td><td class="m">4</td><td>L49–50</td></tr>
+        <tr><td>3</td><td>${m('AB = AD')}, ${m('∠BAC = ∠DAC')}: prove ${m('△ABC ≡ △ADC')}</td><td class="m">6</td><td>L47–48</td></tr>
+        <tr><td>4</td><td>Name the criterion for: three sides; a side and two angles; two sides and the angle between</td><td class="m">3</td><td>L47–54</td></tr>
+        <tr><td>5</td><td>In a rhombus, prove that a diagonal bisects two angles</td><td class="m">5</td><td>L53–54</td></tr>
+        <tr><td>6</td><td>Describe the construction of an angle bisector</td><td class="m">3</td><td>L55</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries one mark for checking the longest side only; Q3 two for the common side and the named
+      criterion; Q5 two for stating that all four sides of a rhombus are equal; Q6 one for “leave the
+      arcs”.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>only two sides checked</td><td class="m">5 + 14 > 8 ✓</td><td>check the longest: ${m('5 + 8 < 14')}</td></tr>
+        <tr><td>apex used as a base angle</td><td class="m">44°, 44°, 92°</td><td class="m">44°, 68°, 68°</td></tr>
+        <tr><td>common side omitted</td><td>two facts only</td><td class="m">AC = AC</td></tr>
+        <tr><td>criterion not named</td><td>“so they are congruent”</td><td>“by the first criterion”</td></tr>
+        <tr><td>rhombus sides assumed unequal</td><td>“given ${m('AB = AD')}”</td><td>state that all four are equal</td></tr>
+        <tr><td>reasons missing</td><td>a list of true statements</td><td>a reason beside each</td></tr>
+        <tr><td>arcs rubbed out</td><td>a clean bisector</td><td>leave the construction visible</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'Chapter IV as one map',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Block</th><th>The sentence</th></tr></thead>
+      <tbody>
+        <tr><td>triangles</td><td>classified by sides and by angles, independently</td></tr>
+        <tr><td>the triangle inequality</td><td>the longest side is less than the sum of the other two</td></tr>
+        <tr><td>the first criterion</td><td>two sides and the angle between them</td></tr>
+        <tr><td>isosceles triangles</td><td>equal sides ⟺ equal base angles</td></tr>
+        <tr><td>the second criterion</td><td>a side and two angles</td></tr>
+        <tr><td>the third criterion</td><td>three sides — and rigidity</td></tr>
+        <tr><td>constructions</td><td>compasses and a straightedge, arcs left visible</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      The rest of Quarter II is algebra: expressions, powers, monomials and polynomials. Geometry returns
+      in Quarter III with parallel lines and the angle sum of a triangle.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q1: sides ' + m('5, 8, 14') + ' and ' + m('6, 9, 13') + '.',
+      steps: [
+        ['Longest of the first is ' + m('14') + '.', ''],
+        [m('5 + 8 = 13 < 14') + ' — no triangle.', ''],
+        ['Longest of the second is ' + m('13') + '.', ''],
+        [m('6 + 9 = 15 > 13') + ' — yes.', '']
+      ],
+      ans: 'No; yes'
+    },
+    {
+      q: 'Model answer, Q3: ' + m('AB = AD') + ', ' + m('∠BAC = ∠DAC') + '.',
+      steps: [
+        [m('AB = AD') + ' — given.', ''],
+        [m('∠BAC = ∠DAC') + ' — given, and it is the included angle.', ''],
+        [m('AC = AC') + ' — common side.', 'The mark most often missed.'],
+        [m('△ABC ≡ △ADC') + ' by the first criterion.', '']
+      ],
+      ans: 'Proved by SAS'
+    },
+    {
+      q: 'Model answer, Q5: a diagonal of a rhombus bisects two angles.',
+      steps: [
+        ['All four sides of a rhombus are equal: ' + m('AB = AD') + ' and ' + m('CB = CD') + '.', ''],
+        [m('AC') + ' is common.', ''],
+        [m('△ABC ≡ △ADC') + ' by the third criterion.', ''],
+        ['CPCT gives ' + m('∠BAC = ∠DAC') + ' and ' + m('∠BCA = ∠DCA') + '.', '']
+      ],
+      ans: 'Proved by SSS'
+    }
+  ],
+  modelNote: 'Return Q3 with the reasons column blank and have the class fill it in; they discover that the reasons carry most of the marks.',
+  interactive: {
+    type: 'quiz',
+    title: 'Chapter IV in twelve questions',
+    hint: 'Two from each block.',
+    items: [
+      { q: 'A triangle with two equal sides is:', a: ['scalene', 'isosceles', 'equilateral only', 'right'], c: 1, why: 'By sides.' },
+      { q: 'Can ' + m('2, 3, 6') + ' be a triangle?', a: ['yes', 'no', 'sometimes', 'only if right'], c: 1, why: m('2 + 3 < 6') + '.' },
+      { q: 'Congruent triangles have how many equal pairs?', a: [m('3'), m('4'), m('6'), m('2')], c: 2, why: 'Three sides, three angles.' },
+      { q: 'The first criterion needs:', a: ['three sides', 'two sides and the included angle', 'a side and two angles', 'three angles'], c: 1, why: 'SAS.' },
+      { q: 'Base angles of an isosceles triangle are:', a: ['unequal', 'equal', 'right', 'obtuse'], c: 1, why: 'Opposite the equal sides.' },
+      { q: 'Apex ' + m('40°') + ' gives base angles:', a: [m('40°'), m('70°'), m('100°'), m('140°')], c: 1, why: m(f('140', '2')) + '.' },
+      { q: 'The second criterion needs:', a: ['three sides', 'a side and two angles', 'three angles', 'two sides'], c: 1, why: 'ASA.' },
+      { q: 'The third criterion needs:', a: ['three sides', 'three angles', 'two sides', 'a side and an angle'], c: 0, why: 'SSS.' },
+      { q: 'A triangular framework is:', a: ['flexible', 'rigid', 'unstable', 'impossible'], c: 1, why: 'Three sides fix it.' },
+      { q: 'A common side in a figure gives:', a: ['nothing', 'an equality', 'an angle', 'a contradiction'], c: 1, why: m('AC = AC') + '.' },
+      { q: 'Three equal angles give:', a: ['congruence', 'similarity only', 'nothing', 'rigidity'], c: 1, why: 'Size is not fixed.' },
+      { q: 'Construction arcs should be:', a: ['rubbed out', 'left visible', 'in pen', 'omitted'], c: 1, why: 'They are the working.' }
+    ]
+  },
+  quiz: [
+    { q: 'For Q1 it is enough to check:', a: ['all three sums', 'the longest side', 'the shortest side', 'the perimeter'], c: 1, why: 'The others follow.' },
+    { q: 'Q2 needs the angles to add to:', a: [m('90°'), m('180°'), m('270°'), m('360°')], c: 1, why: 'Every triangle.' },
+    { q: 'The missing fact in Q3 is:', a: ['an angle', 'the common side', 'a third side', 'nothing'], c: 1, why: m('AC = AC') + '.' },
+    { q: 'Q5 uses:', a: ['SAS', 'ASA', 'SSS', 'none'], c: 2, why: 'All four sides equal.' },
+    { q: 'Q6 must mention:', a: ['a protractor', 'leaving the arcs', 'measuring', 'a ruler'], c: 1, why: 'The arcs are the working.' },
+    { q: 'Work on the mistakes means:', a: ['fix the wrong line', 'rewrite the solution', 'copy the answer', 'skip it'], c: 1, why: 'The whole solution, again.' }
+  ],
+  practice: {
+    easy: [
+      ['Can ' + m('5, 8, 14') + ' be a triangle?', 'No'],
+      ['Can ' + m('6, 9, 13') + ' be a triangle?', 'Yes'],
+      ['Apex ' + m('44°') + ': base angles', m('68°')],
+      ['Three sides: which criterion?', 'The third'],
+      ['A side and two angles: which?', 'The second'],
+      ['Two sides and the included angle: which?', 'The first'],
+      ['Three angles: which?', 'None']
+    ],
+    med: [
+      [m('AB = AD, ∠BAC = ∠DAC') + ': the third fact', m('AC') + ' common'],
+      ['That proof uses', 'The first criterion'],
+      ['A rhombus diagonal proof uses', 'The third criterion'],
+      ['Base angle ' + m('68°') + ': apex', m('44°')],
+      ['An isosceles triangle with perimeter ' + m('28') + ' and base ' + m('8'), 'Sides ' + m('10, 10, 8')],
+      ['Sides ' + m('7, 7, 7') + ': angles', m('60°') + ' each'],
+      ['Which framework is rigid?', 'The triangle']
+    ],
+    hard: [
+      ['Range of ' + m('c') + ' with ' + m('a = 6, b = 11'), m('5 < c < 17')],
+      ['Integer values of ' + m('c') + ' there', m('6') + ' to ' + m('16')],
+      ['An isosceles triangle with an exterior base angle of ' + m('115°') + ': the apex', m('50°')],
+      ['Prove the base angles equal, using the bisector from the apex', 'SAS then CPCT'],
+      ['Prove the diagonals of a rhombus are perpendicular', 'SSS then equal adjacent angles'],
+      ['Two triangles with ' + m('AB = DE, ∠A = ∠D, ∠B = ∠E'), 'Congruent by ASA'],
+      ['Two triangles with ' + m('AB = DE, BC = EF, ∠A = ∠D'), 'Not necessarily congruent']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite in full every proof that lost a mark, with a reason beside every statement.',
+  homework: [
+    'Can a triangle have sides ' + m('4, 7, 12') + '? And ' + m('5, 7, 11') + '?',
+    'An isosceles triangle has apex angle ' + m('52°') + '. Find the base angles.',
+    'Prove that a diagonal of a rhombus bisects two of its angles.',
+    'Name the criterion that applies to each of the three standard sets of data.',
+    'Describe the construction of the bisector of an angle.'
+  ]
+});
+
+/* ============================== 31 ============================== */
+G7_MAT.push({
+  id: 'g7-31', stream: 'mat', grade: 7, quarter: 2, lessons: '58', hours: 1,
+  title: 'Algebraic expressions',
+  subtitle: 'Letters standing for numbers — and the vocabulary the rest of the year needs.',
+  uz: 'Matematika 7, §24', uzPage: 'pp. 152–155',
+  cam: 'S8 2.1', camPage: 'Stage 8, pp. 12–18', wb: 'Exercise 2.1',
+  objectives: [
+    'Write a worded statement as an algebraic expression.',
+    'Name the terms, factors and coefficients of an expression.',
+    'Evaluate an expression for given values of the letters.',
+    'Distinguish an expression from an equation.'
+  ],
+  terms: [
+    ['Algebraic expression', 'Algebraik ifoda', 'Алгебраическое выражение'],
+    ['Variable', 'O‘zgaruvchi', 'Переменная'],
+    ['Term', 'Had', 'Член'],
+    ['Coefficient', 'Koeffitsiyent', 'Коэффициент'],
+    ['Constant', 'O‘zgarmas', 'Постоянная'],
+    ['To evaluate', 'Qiymatini topmoq', 'Вычислить значение'],
+    ['To substitute', 'O‘rniga qo‘ymoq', 'Подставить'],
+    ['Equation', 'Tenglama', 'Уравнение']
+  ],
+  timing: [[10, 'Words into symbols'], [12, 'The parts of an expression'], [12, 'Evaluating'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'Words into symbols',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Words</th><th>Expression</th></tr></thead>
+      <tbody>
+        <tr><td>five more than ${m('x')}</td><td class="m">x + 5</td></tr>
+        <tr><td>five less than ${m('x')}</td><td class="m">x − 5</td></tr>
+        <tr><td>five times ${m('x')}</td><td class="m">5x</td></tr>
+        <tr><td>${m('x')} divided by five</td><td class="m">${f('x', '5')}</td></tr>
+        <tr><td>the square of ${m('x')}, less three</td><td class="m">x² − 3</td></tr>
+        <tr><td>twice the sum of ${m('x')} and ${m('y')}</td><td class="m">2(x + y)</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">“Twice the sum” needs brackets</span>
+      ${m('2(x + y)')} and ${m('2x + y')} are different expressions. The bracket is what makes the
+      doubling apply to the whole sum.</div>`
+    },
+    {
+      h: 'The parts of an expression',
+      html: `<p>An expression is built from <b>terms</b> separated by ${m('+')} and ${m('−')}. Each term is
+      a product of a number and some letters.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Terms</th><th>Coefficients</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3x + 5y − 7</td><td class="m">3x, 5y, −7</td><td class="m">3, 5</td></tr>
+        <tr><td class="m">−4a² + a</td><td class="m">−4a², a</td><td class="m">−4, 1</td></tr>
+        <tr><td class="m">x − ${f('y', '2')}</td><td class="m">x, −${f('y', '2')}</td><td class="m">1, −${f('1', '2')}</td></tr>
+      </tbody></table></div>
+      <p>A term with no letter is a <b>constant</b>. A coefficient of ${m('1')} or ${m('−1')} is not
+      written: ${m('a')} means ${m('1a')} and ${m('−a')} means ${m('−1a')}.</p>
+      <div class="warn"><span class="wl">The sign belongs to the term</span>
+      In ${m('3x − 7y')} the second term is ${m('−7y')}, with coefficient ${m('−7')}. Reading the
+      coefficient as ${m('7')} loses the sign in every later calculation.</div>`
+    },
+    {
+      h: 'Evaluating',
+      html: `<p>To <b>evaluate</b> an expression, substitute the given numbers and compute, respecting the
+      order of operations.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th class="m">x = 3, y = −2</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2x + y</td><td class="m">6 + (−2)</td><td class="m">4</td></tr>
+        <tr><td class="m">x² − y</td><td class="m">9 − (−2)</td><td class="m">11</td></tr>
+        <tr><td class="m">xy</td><td class="m">3 × (−2)</td><td class="m">−6</td></tr>
+        <tr><td class="m">2(x + y)</td><td class="m">2(1)</td><td class="m">2</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Put negative values in brackets</div>
+      Writing ${m('x² − y')} as ${m('9 − −2')} invites an error; ${m('9 − (−2)')} does not. The brackets
+      cost nothing and prevent the commonest slip in substitution.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Write as expressions: seven more than twice ' + m('x') + '; the square of the sum of ' + m('a') + ' and ' + m('b') + '.',
+      steps: [
+        ['Twice ' + m('x') + ' is ' + m('2x') + '.', ''],
+        ['Seven more: ' + m('2x + 7') + '.', ''],
+        ['The sum is ' + m('a + b') + '.', ''],
+        ['Its square: ' + m('(a + b)²') + '.', 'Brackets are essential.']
+      ],
+      ans: m('2x + 7') + ' and ' + m('(a + b)²')
+    },
+    {
+      q: 'Name the terms and coefficients of ' + m('3x + 5y − 7') + '.',
+      steps: [
+        ['Terms are separated by ' + m('+') + ' and ' + m('−') + '.', ''],
+        [m('3x') + ', ' + m('5y') + ', ' + m('−7') + '.', ''],
+        ['Coefficients: ' + m('3') + ' and ' + m('5') + '.', ''],
+        [m('−7') + ' is a constant term.', '']
+      ],
+      ans: 'Three terms; coefficients ' + m('3') + ' and ' + m('5')
+    },
+    {
+      q: 'Evaluate ' + m('x² − y') + ' and ' + m('2(x + y)') + ' at ' + m('x = 3') + ', ' + m('y = −2') + '.',
+      steps: [
+        [m('3² − (−2) = 9 + 2'), 'Brackets round the negative.'],
+        [m('= 11'), ''],
+        [m('2(3 + (−2)) = 2(1)'), ''],
+        [m('= 2'), '']
+      ],
+      ans: m('11') + ' and ' + m('2')
+    }
+  ],
+  modelNote: 'Read six phrases aloud and have the class write the expressions before any of them is discussed; the errors that appear are exactly the ones to teach.',
+  interactive: {
+    type: 'substitute',
+    title: 'Substituting values',
+    hint: 'Put every negative value in brackets.'
+  },
+  quiz: [
+    { q: '“Five less than ' + m('x') + '” is:', a: [m('5 − x'), m('x − 5'), m('5x'), m(f('x', '5'))], c: 1, why: 'Start from ' + m('x') + '.' },
+    { q: '“Twice the sum of ' + m('x') + ' and ' + m('y') + '” is:', a: [m('2x + y'), m('2(x + y)'), m('x + 2y'), m('2xy')], c: 1, why: 'The bracket is needed.' },
+    { q: 'How many terms in ' + m('3x + 5y − 7') + '?', a: [m('1'), m('2'), m('3'), m('4')], c: 2, why: 'Separated by ' + m('+') + ' and ' + m('−') + '.' },
+    { q: 'The coefficient of ' + m('y') + ' in ' + m('3x − 7y') + ':', a: [m('7'), m('−7'), m('3'), m('1')], c: 1, why: 'The sign belongs to the term.' },
+    { q: m('x² − y') + ' at ' + m('x = 3, y = −2') + ':', a: [m('7'), m('11'), m('−11'), m('5')], c: 1, why: m('9 + 2') + '.' },
+    { q: 'A term with no letter is:', a: ['a coefficient', 'a constant', 'a variable', 'an equation'], c: 1, why: 'It never changes.' }
+  ],
+  practice: {
+    easy: [
+      ['Five more than ' + m('x'), m('x + 5')],
+      ['Five less than ' + m('x'), m('x − 5')],
+      ['Five times ' + m('x'), m('5x')],
+      [m('x') + ' divided by five', m(f('x', '5'))],
+      ['Terms in ' + m('3x + 5y − 7'), m('3')],
+      ['Coefficient of ' + m('x') + ' in ' + m('3x'), m('3')],
+      ['Coefficient of ' + m('a') + ' in ' + m('−a'), m('−1')]
+    ],
+    med: [
+      ['Twice the sum of ' + m('x') + ' and ' + m('y'), m('2(x + y)')],
+      ['Seven more than twice ' + m('x'), m('2x + 7')],
+      ['The square of the sum of ' + m('a') + ' and ' + m('b'), m('(a + b)²')],
+      ['Coefficient of ' + m('y') + ' in ' + m('3x − 7y'), m('−7')],
+      [m('2x + y') + ' at ' + m('x = 3, y = −2'), m('4')],
+      [m('x² − y') + ' at the same', m('11')],
+      [m('xy') + ' at the same', m('−6')]
+    ],
+    hard: [
+      [m('x² + 2xy + y²') + ' at ' + m('x = 3, y = −2'), m('1')],
+      [m(f('x + y', 'x − y')) + ' at ' + m('x = 3, y = −2'), m(f('1', '5'))],
+      [m('−a²') + ' at ' + m('a = −4'), m('−16')],
+      [m('(−a)²') + ' at ' + m('a = −4'), m('16')],
+      ['Write: the sum of the squares of ' + m('a') + ' and ' + m('b'), m('a² + b²')],
+      ['Write: the square of the sum of ' + m('a') + ' and ' + m('b'), m('(a + b)²')],
+      ['Are they the same?', 'No — try ' + m('a = b = 1')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Put every substituted negative value in brackets.',
+  homework: [
+    'Write as expressions: four less than three times ' + m('x') + '; half the sum of ' + m('a') + ' and ' + m('b') + '.',
+    'Name the terms and coefficients of ' + m('5a − 2b + 9') + '.',
+    'Evaluate ' + m('3x − 2y') + ' at ' + m('x = −1') + ', ' + m('y = 4') + '.',
+    'Evaluate ' + m('(x + y)²') + ' at the same values.',
+    'Explain the difference between ' + m('a² + b²') + ' and ' + m('(a + b)²') + '.'
+  ]
+});
