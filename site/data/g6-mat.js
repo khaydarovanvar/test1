@@ -9525,3 +9525,365 @@ G6_MAT.push({
     'Find the area of a ' + m('150°') + ' sector of a circle of radius ' + m('14 cm') + '.'
   ]
 });
+
+/* ============================== 54 ============================== */
+G6_MAT.push({
+  id: 'g6-54', stream: 'mat', grade: 6, quarter: 3, lessons: '111–113', hours: 3,
+  title: 'Angles and constructions — intersecting lines and quadrilaterals',
+  subtitle: 'A Cambridge insert: drawing accurately with compasses, ruler and protractor.',
+  uz: 'Matematika 6, qo‘shimcha mavzu', uzPage: 'pp. 319–328',
+  cam: 'S7 5.2–5.3', camPage: 'Stage 7, pp. 58–65', wb: 'Exercise 5.3',
+  objectives: [
+    'Use the angle facts at intersecting lines.',
+    'Construct a triangle from given sides and angles.',
+    'Construct a rectangle, a parallelogram and a rhombus.',
+    'Check a construction by measuring what was not given.'
+  ],
+  terms: [
+    ['Construction', 'Yasash', 'Построение'],
+    ['Intersecting lines', 'Kesishuvchi chiziqlar', 'Пересекающиеся прямые'],
+    ['Vertically opposite', 'Vertikal burchaklar', 'Вертикальные углы'],
+    ['Parallelogram', 'Parallelogramm', 'Параллелограмм'],
+    ['Rhombus', 'Romb', 'Ромб'],
+    ['Perpendicular', 'Perpendikulyar', 'Перпендикуляр'],
+    ['To check by measuring', 'O‘lchab tekshirish', 'Проверить измерением'],
+    ['Accuracy', 'Aniqlik', 'Точность']
+  ],
+  timing: [[25, 'Angles where lines cross'], [30, 'Constructing triangles'], [35, 'Constructing quadrilaterals'], [25, 'Checking'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Angles where lines cross',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Fact</th><th>Statement</th></tr></thead>
+      <tbody>
+        <tr><td>vertically opposite</td><td>the two opposite angles are equal</td></tr>
+        <tr><td>on a line</td><td>neighbours add to ${m('180°')}</td></tr>
+        <tr><td>at the crossing</td><td>all four add to ${m('360°')}</td></tr>
+        <tr><td>perpendicular lines</td><td>all four are ${m('90°')}</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>One angle</th><th>The other three</th></tr></thead>
+      <tbody>
+        <tr><td class="m">70°</td><td class="m">110°, 70°, 110°</td></tr>
+        <tr><td class="m">125°</td><td class="m">55°, 125°, 55°</td></tr>
+        <tr><td class="m">90°</td><td class="m">90°, 90°, 90°</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two crossing lines give only two different sizes</div>
+      An angle and its supplement, each appearing twice. Knowing one of the four gives all of them.</div>`
+    },
+    {
+      h: 'Constructing triangles',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Tools</th><th>Steps</th></tr></thead>
+      <tbody>
+        <tr><td>three sides</td><td>ruler and compasses</td><td>draw one side, two arcs, join</td></tr>
+        <tr><td>two sides and the angle between</td><td>ruler and protractor</td><td>draw the angle, mark both lengths</td></tr>
+        <tr><td>a side and two angles</td><td>ruler and protractor</td><td>draw the side, both angles at its ends</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Draw the given angle before measuring the sides</span>
+      Marking two lengths first and hoping the angle comes out right does not work. The given data fix the
+      order of the construction.</div>`
+    },
+    {
+      h: 'Constructing quadrilaterals',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Shape</th><th>Method</th></tr></thead>
+      <tbody>
+        <tr><td>rectangle ${m('6 × 4')}</td><td>two perpendiculars at the ends of a ${m('6')} cm side</td></tr>
+        <tr><td>square of side ${m('5')}</td><td>the same, with equal sides</td></tr>
+        <tr><td>parallelogram, sides ${m('6')} and ${m('4')}, angle ${m('60°')}</td><td>draw the angle, mark both sides, complete with parallels</td></tr>
+        <tr><td>rhombus of side ${m('5')}, angle ${m('70°')}</td><td>as a parallelogram with all sides equal</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Opposite sides are made equal, not measured twice</div>
+      In a parallelogram, set the compasses to the side length and step it off; measuring each side
+      separately introduces small errors that leave the figure open.</div>`
+    },
+    {
+      h: 'Checking',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Construction</th><th>Check by measuring</th><th>Should be</th></tr></thead>
+      <tbody>
+        <tr><td>triangle from three sides</td><td>the three angles</td><td>they add to ${m('180°')}</td></tr>
+        <tr><td>rectangle</td><td>the two diagonals</td><td>equal</td></tr>
+        <tr><td>parallelogram</td><td>opposite sides</td><td>equal</td></tr>
+        <tr><td>rhombus</td><td>the diagonals</td><td>they cross at ${m('90°')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Check something you were not given</div>
+      Measuring what you drew tells you nothing; measuring a diagonal, or an angle you did not set, is a
+      real test of the construction.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Two lines cross and one angle is ' + m('125°') + '. Find the other three.',
+      steps: [
+        ['Vertically opposite: ' + m('125°') + '.', ''],
+        ['On the line: ' + m('180 − 125 = 55°') + '.', ''],
+        ['Its opposite: ' + m('55°') + '.', ''],
+        ['So ' + m('125°, 55°, 125°, 55°') + '.', '']
+      ],
+      ans: m('55°, 125°, 55°')
+    },
+    {
+      q: 'Construct a triangle with sides ' + m('6') + ', ' + m('5') + ' and ' + m('4') + ' cm, and check it.',
+      steps: [
+        ['Draw the ' + m('6') + ' cm side.', ''],
+        ['Arc of ' + m('5') + ' from one end, arc of ' + m('4') + ' from the other.', ''],
+        ['Join the crossing to both ends.', ''],
+        ['Measure the three angles: they should total ' + m('180°') + '.', 'The check.']
+      ],
+      ans: 'Constructed and checked'
+    },
+    {
+      q: 'Construct a parallelogram with sides ' + m('6') + ' and ' + m('4') + ' cm and an angle of ' + m('60°') + '.',
+      steps: [
+        ['Draw a ' + m('6') + ' cm side.', ''],
+        ['At one end, set off ' + m('60°') + ' and mark ' + m('4') + ' cm.', ''],
+        ['From the two free ends, step off ' + m('6') + ' and ' + m('4') + ' cm with compasses.', ''],
+        ['Check: opposite sides equal, and the other angle is ' + m('120°') + '.', '']
+      ],
+      ans: 'Constructed'
+    }
+  ],
+  modelNote: 'Ask every pupil to measure a diagonal of their rectangle and compare with a neighbour; the two answers agreeing is a better verdict than any teacher’s tick.',
+  interactive: {
+    type: 'quiz',
+    title: 'Crossing lines and constructions',
+    hint: 'One angle at a crossing gives all four.',
+    items: [
+      { q: 'Two lines cross; one angle is ' + m('70°') + '. Its opposite is:', a: [m('70°'), m('110°'), m('90°'), m('20°')], c: 0, why: 'Vertically opposite.' },
+      { q: 'Its neighbour is:', a: [m('70°'), m('110°'), m('20°'), m('290°')], c: 1, why: 'On a straight line.' },
+      { q: 'How many different sizes appear?', a: [m('1'), m('2'), m('3'), m('4')], c: 1, why: 'An angle and its supplement.' },
+      { q: 'To construct a triangle from three sides you need:', a: ['a protractor', 'compasses', 'a set square', 'nothing'], c: 1, why: 'Two arcs.' },
+      { q: 'To construct one from two sides and the angle between:', a: ['compasses only', 'a protractor and a ruler', 'a set square', 'a calculator'], c: 1, why: 'The angle is set first.' },
+      { q: 'A rectangle is checked by measuring:', a: ['the sides', 'the diagonals', 'the angles only', 'nothing'], c: 1, why: 'They should be equal.' },
+      { q: 'A rhombus is checked by:', a: ['equal sides', 'diagonals crossing at ' + m('90°'), 'equal diagonals', 'right angles'], c: 1, why: 'A property not set directly.' },
+      { q: 'A parallelogram with one angle ' + m('60°') + ' has another of:', a: [m('60°'), m('120°'), m('30°'), m('90°')], c: 1, why: 'Neighbours add to ' + m('180°') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'Vertically opposite angles are:', a: ['supplementary', 'equal', 'complementary', 'right'], c: 1, why: 'At a crossing.' },
+    { q: 'The four angles at a crossing add to:', a: [m('90°'), m('180°'), m('270°'), m('360°')], c: 3, why: 'A full turn.' },
+    { q: 'One angle of ' + m('125°') + ' gives the others:', a: [m('55, 125, 55'), m('125, 125, 125'), m('35, 125, 35'), m('55, 55, 55')], c: 0, why: 'Two sizes.' },
+    { q: 'Three given sides need:', a: ['a protractor', 'compasses', 'a set square', 'a calculator'], c: 1, why: 'Arcs from the ends.' },
+    { q: 'A construction should be checked by measuring:', a: ['what was given', 'something not given', 'nothing', 'the paper'], c: 1, why: 'A real test.' },
+    { q: 'In a rhombus the diagonals:', a: ['are equal', 'cross at ' + m('90°'), 'are parallel', 'bisect the sides'], c: 1, why: 'A defining property.' }
+  ],
+  practice: {
+    easy: [
+      ['One angle at a crossing is ' + m('70°') + ': its opposite', m('70°')],
+      ['And its neighbour', m('110°')],
+      ['One angle is ' + m('125°') + ': the neighbour', m('55°')],
+      ['Perpendicular lines: all four angles', m('90°')],
+      ['Angles at a crossing add to', m('360°')],
+      ['Sizes appearing at a crossing', m('2')],
+      ['A parallelogram with one angle ' + m('60°') + ': the next', m('120°')]
+    ],
+    med: [
+      ['Which tool for three given sides?', 'Compasses'],
+      ['Which for two sides and the included angle?', 'Protractor and ruler'],
+      ['Which for a side and two angles?', 'Protractor and ruler'],
+      ['A rectangle is checked by', 'measuring the diagonals'],
+      ['A rhombus is checked by', 'the diagonals crossing at ' + m('90°')],
+      ['A parallelogram is checked by', 'opposite sides being equal'],
+      ['A triangle from three sides is checked by', 'the angles adding to ' + m('180°')]
+    ],
+    hard: [
+      ['Can a triangle be constructed with sides ' + m('3, 4, 8') + '?', 'No — the arcs do not meet'],
+      ['A parallelogram of sides ' + m('6') + ' and ' + m('4') + ' with angle ' + m('60°') + ': all four angles', m('60°, 120°, 60°, 120°')],
+      ['Its perimeter', m('20') + ' cm'],
+      ['A rhombus of side ' + m('5') + ' with angle ' + m('70°') + ': the other angles', m('110°, 70°, 110°')],
+      ['Its perimeter', m('20') + ' cm'],
+      ['Why measure a diagonal to check a rectangle?', 'It was not given, so it is an independent test'],
+      ['A square of side ' + m('5') + ': the diagonal, to the nearest mm', m('7.1') + ' cm']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Leave every construction line and arc visible on the page.',
+  homework: [
+    'Two lines cross and one angle is ' + m('142°') + '. Find the other three.',
+    'Construct a triangle with sides ' + m('7') + ', ' + m('6') + ' and ' + m('5') + ' cm and measure its angles.',
+    'Construct a rectangle ' + m('7') + ' cm by ' + m('4') + ' cm and measure both diagonals.',
+    'Construct a parallelogram with sides ' + m('7') + ' and ' + m('5') + ' cm and an angle of ' + m('50°') + '.',
+    'Construct a rhombus of side ' + m('6') + ' cm with one angle ' + m('60°') + ' and measure its diagonals.'
+  ]
+});
+
+/* ============================== 55 ============================== */
+G6_MAT.push({
+  id: 'g6-55', stream: 'mat', grade: 6, quarter: 3, lessons: '114–115', hours: 2,
+  title: 'The symmetry of 2D shapes; congruent shapes',
+  subtitle: 'A Cambridge insert: lines of symmetry, order of rotation, and when two shapes are the same.',
+  uz: 'Matematika 6, qo‘shimcha mavzu', uzPage: 'pp. 329–334',
+  cam: 'S7 8.1, 8.3', camPage: 'Stage 7, pp. 78–86', wb: 'Exercise 8.1',
+  objectives: [
+    'Find the lines of symmetry of a shape.',
+    'Find the order of rotational symmetry.',
+    'Decide whether two shapes are congruent.',
+    'Recognise symmetry in ornament and in nature.'
+  ],
+  terms: [
+    ['Symmetry', 'Simmetriya', 'Симметрия'],
+    ['Line of symmetry', 'Simmetriya o‘qi', 'Ось симметрии'],
+    ['Rotational symmetry', 'Aylanma simmetriya', 'Поворотная симметрия'],
+    ['Order of symmetry', 'Simmetriya tartibi', 'Порядок симметрии'],
+    ['Congruent', 'Teng (mos)', 'Равные (конгруэнтные)'],
+    ['Reflection', 'Simmetrik akslantirish', 'Отражение'],
+    ['Rotation', 'Burish', 'Поворот'],
+    ['Translation', 'Parallel ko‘chirish', 'Параллельный перенос']
+  ],
+  timing: [[20, 'Lines of symmetry'], [25, 'Rotational symmetry'], [25, 'Congruent shapes'], [8, 'In the world'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'Lines of symmetry',
+      html: `<p>A <b>line of symmetry</b> folds the shape onto itself exactly.</p>
+      {{fig:transformations:Reflection in a line of symmetry}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Shape</th><th>Lines of symmetry</th></tr></thead>
+      <tbody>
+        <tr><td>square</td><td class="m">4</td></tr>
+        <tr><td>rectangle (not square)</td><td class="m">2</td></tr>
+        <tr><td>equilateral triangle</td><td class="m">3</td></tr>
+        <tr><td>isosceles triangle</td><td class="m">1</td></tr>
+        <tr><td>scalene triangle</td><td class="m">0</td></tr>
+        <tr><td>rhombus</td><td class="m">2</td></tr>
+        <tr><td>regular hexagon</td><td class="m">6</td></tr>
+        <tr><td>circle</td><td>infinitely many</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A rectangle has two lines, not four</span>
+      Its diagonals do not fold it onto itself — the folded corner does not land on a corner. Testing with
+      a folded piece of paper settles it.</div>`
+    },
+    {
+      h: 'Rotational symmetry',
+      html: `<p>The <b>order</b> is the number of positions, in one full turn, where the shape looks the
+      same.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Shape</th><th>Order</th><th>Angle of rotation</th></tr></thead>
+      <tbody>
+        <tr><td>square</td><td class="m">4</td><td class="m">90°</td></tr>
+        <tr><td>rectangle</td><td class="m">2</td><td class="m">180°</td></tr>
+        <tr><td>equilateral triangle</td><td class="m">3</td><td class="m">120°</td></tr>
+        <tr><td>regular hexagon</td><td class="m">6</td><td class="m">60°</td></tr>
+        <tr><td>parallelogram</td><td class="m">2</td><td class="m">180°</td></tr>
+        <tr><td>isosceles triangle</td><td class="m">1</td><td>none but the full turn</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Order ${m('1')} means no rotational symmetry</div>
+      Every shape returns to itself after ${m('360°')}, so the order is never zero. A regular
+      ${m('n')}-sided polygon has order ${m('n')} and ${m('n')} lines of symmetry.</div>`
+    },
+    {
+      h: 'Congruent shapes',
+      html: `<p>Two shapes are <b>congruent</b> when one can be moved exactly onto the other by a
+      translation, a rotation, a reflection, or a combination of them.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Pair</th><th>Congruent?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>two squares of side ${m('5')}</td><td>yes</td><td>same shape and size</td></tr>
+        <tr><td>a square of ${m('5')} and one of ${m('6')}</td><td>no</td><td>different size</td></tr>
+        <tr><td>a triangle and its mirror image</td><td>yes</td><td>reflection is allowed</td></tr>
+        <tr><td>a shape and its enlargement</td><td>no</td><td>similar, not congruent</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Congruent is “identical”; similar is “same shape”</div>
+      Two photographs of different sizes are similar; two copies of the same photograph are congruent.
+      Grade 9 will separate the two ideas properly.</div>`
+    },
+    {
+      h: 'In the world',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Where</th><th>Symmetry</th></tr></thead>
+      <tbody>
+        <tr><td>a butterfly</td><td>one line</td></tr>
+        <tr><td>a snowflake</td><td>six lines, order ${m('6')}</td></tr>
+        <tr><td>a wheel with ${m('8')} spokes</td><td>order ${m('8')}</td></tr>
+        <tr><td>an Uzbek ornamental star</td><td>often order ${m('8')} or ${m('16')}</td></tr>
+        <tr><td>the letter ${m('H')}</td><td>two lines, order ${m('2')}</td></tr>
+        <tr><td>the letter ${m('S')}</td><td>no lines, order ${m('2')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Reflection and rotation are independent</div>
+      ${m('S')} has rotational symmetry but no line; an isosceles triangle has a line but no rotation.
+      Having one says nothing about the other.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'How many lines of symmetry has a rectangle that is not a square? What is its order of rotational symmetry?',
+      steps: [
+        ['Two lines: through the midpoints of opposite sides.', ''],
+        ['The diagonals are not lines of symmetry.', ''],
+        ['Rotating ' + m('180°') + ' leaves it unchanged, so the order is ' + m('2') + '.', '']
+      ],
+      ans: m('2') + ' lines, order ' + m('2')
+    },
+    {
+      q: 'A regular octagon: how many lines of symmetry, and what order?',
+      steps: [
+        ['A regular ' + m('n') + '-gon has ' + m('n') + ' lines and order ' + m('n') + '.', ''],
+        ['Here ' + m('n = 8') + '.', ''],
+        ['Eight lines, order ' + m('8') + '; the rotation angle is ' + m('45°') + '.', '']
+      ],
+      ans: m('8') + ' and ' + m('8')
+    },
+    {
+      q: 'Are a triangle and its mirror image congruent?',
+      steps: [
+        ['Congruence allows reflection.', ''],
+        ['The two have the same sides and the same angles.', ''],
+        ['So yes.', '']
+      ],
+      ans: 'Yes'
+    }
+  ],
+  modelNote: 'Fold paper shapes to find the lines and turn them on a pin to find the order; both symmetries become physical before they become vocabulary.',
+  interactive: {
+    type: 'transform',
+    title: 'Reflect, rotate and translate a shape',
+    hint: 'All three keep the shape congruent to the original.'
+  },
+  quiz: [
+    { q: 'A square has how many lines of symmetry?', a: [m('2'), m('4'), m('6'), m('8')], c: 1, why: 'Two through sides, two through corners.' },
+    { q: 'A rectangle that is not a square:', a: [m('1'), m('2'), m('4'), m('0')], c: 1, why: 'The diagonals do not count.' },
+    { q: 'An equilateral triangle has order:', a: [m('1'), m('2'), m('3'), m('6')], c: 2, why: 'Every ' + m('120°') + '.' },
+    { q: 'The order of rotational symmetry is never:', a: [m('0'), m('1'), m('2'), m('6')], c: 0, why: 'A full turn always works.' },
+    { q: 'Two shapes are congruent when:', a: ['they look alike', 'one fits exactly on the other', 'they have the same area', 'they are both regular'], c: 1, why: 'Same shape and size.' },
+    { q: 'A shape and its enlargement are:', a: ['congruent', 'similar', 'identical', 'unrelated'], c: 1, why: 'The size differs.' }
+  ],
+  practice: {
+    easy: [
+      ['Lines of symmetry of a square', m('4')],
+      ['Of a rectangle', m('2')],
+      ['Of an equilateral triangle', m('3')],
+      ['Of an isosceles triangle', m('1')],
+      ['Of a scalene triangle', m('0')],
+      ['Of a circle', 'infinitely many'],
+      ['Order of a square', m('4')]
+    ],
+    med: [
+      ['Order of a rectangle', m('2')],
+      ['Order of an equilateral triangle', m('3')],
+      ['Order of a regular hexagon', m('6')],
+      ['Order of a parallelogram', m('2')],
+      ['Lines of symmetry of a rhombus', m('2')],
+      ['Are two squares of side ' + m('5') + ' congruent?', 'Yes'],
+      ['Are a shape and its enlargement congruent?', 'No — similar']
+    ],
+    hard: [
+      ['A regular octagon: lines and order', m('8') + ' and ' + m('8')],
+      ['A regular ' + m('n') + '-gon: lines and order', m('n') + ' and ' + m('n')],
+      ['A shape with order ' + m('2') + ' but no line of symmetry', 'The letter ' + m('S') + ', or a parallelogram'],
+      ['A shape with a line of symmetry but order ' + m('1'), 'An isosceles triangle'],
+      ['The rotation angle for order ' + m('5'), m('72°')],
+      ['Is a rotation of ' + m('360°') + ' counted?', 'Yes — it is the last of the order'],
+      ['Why is a rectangle’s diagonal not a line of symmetry?', 'The folded corner does not land on a corner']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Fold to find lines; turn to find the order.',
+  homework: [
+    'Find the lines of symmetry and the order for a square, a rectangle and a rhombus.',
+    'Find them for an equilateral, an isosceles and a scalene triangle.',
+    'Find the order of rotational symmetry of a regular pentagon and its rotation angle.',
+    'Write three capital letters with a line of symmetry and two with rotational symmetry.',
+    'Draw two congruent shapes in different positions and say which movement takes one to the other.'
+  ]
+});
