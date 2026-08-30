@@ -3696,3 +3696,183 @@ G6_MAT.push({
     'A cube has volume ' + m('343 cm³') + '. Find its edge and its surface area.'
   ]
 });
+
+/* ============================== 21 ============================== */
+G6_MAT.push({
+  id: 'g6-21', stream: 'mat', grade: 6, quarter: 1, lessons: '41', hours: 1,
+  title: 'Recall — ratio',
+  subtitle: 'What a ratio is, how it differs from a fraction, and how it simplifies.',
+  uz: 'Matematika 6, takrorlash', uzPage: 'pp. 109–112',
+  cam: 'S7 12 entry', camPage: 'Stage 7, pp. 118–122', wb: 'Exercise 12.1',
+  objectives: [
+    'Write a ratio from a description and simplify it.',
+    'Convert units before comparing.',
+    'Say what each number of a ratio counts.',
+    'Distinguish a ratio from a fraction of the whole.'
+  ],
+  terms: [
+    ['Ratio', 'Nisbat', 'Отношение'],
+    ['Part', 'Ulush', 'Часть'],
+    ['To simplify a ratio', 'Nisbatni qisqartirish', 'Сократить отношение'],
+    ['Equivalent ratios', 'Teng nisbatlar', 'Равные отношения'],
+    ['Order of the terms', 'Hadlar tartibi', 'Порядок членов'],
+    ['Same units', 'Bir xil birlik', 'Одинаковые единицы'],
+    ['Total parts', 'Jami ulushlar', 'Всего частей'],
+    ['Comparison', 'Taqqoslash', 'Сравнение']
+  ],
+  timing: [[10, 'What a ratio says'], [12, 'Simplifying'], [12, 'Ratio against fraction'], [6, 'Reading a ratio back']],
+  sections: [
+    {
+      h: 'What a ratio says',
+      html: `<p>A <b>ratio</b> compares two quantities of the same kind. In a class of ${m('12')} boys and
+      ${m('18')} girls the ratio of boys to girls is ${m('12 : 18')}, which simplifies to ${m('2 : 3')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Situation</th><th>Ratio</th><th>Simplified</th></tr></thead>
+      <tbody>
+        <tr><td>${m('12')} boys, ${m('18')} girls</td><td class="m">12 : 18</td><td class="m">2 : 3</td></tr>
+        <tr><td>${m('20')} cm to ${m('50')} cm</td><td class="m">20 : 50</td><td class="m">2 : 5</td></tr>
+        <tr><td>${m('4')} red, ${m('6')} blue, ${m('10')} green</td><td class="m">4 : 6 : 10</td><td class="m">2 : 3 : 5</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The order matters</span>
+      ${m('2 : 3')} is boys to girls; ${m('3 : 2')} is girls to boys. Writing the ratio the wrong way
+      round reverses every answer that follows.</div>`
+    },
+    {
+      h: 'Simplifying',
+      html: `<p>Divide every part by their highest common factor — exactly as with a fraction. And convert
+      to the same units first.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Ratio</th><th>First step</th><th>Simplified</th></tr></thead>
+      <tbody>
+        <tr><td class="m">12 : 18</td><td>divide by ${m('6')}</td><td class="m">2 : 3</td></tr>
+        <tr><td class="m">50 cm : 2 m</td><td class="m">50 : 200</td><td class="m">1 : 4</td></tr>
+        <tr><td class="m">30 min : 2 h</td><td class="m">30 : 120</td><td class="m">1 : 4</td></tr>
+        <tr><td class="m">0.5 : 2</td><td class="m">5 : 20</td><td class="m">1 : 4</td></tr>
+        <tr><td class="m">${f('1', '2')} : ${f('1', '3')}</td><td>multiply by ${m('6')}</td><td class="m">3 : 2</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Different units make a ratio meaningless</span>
+      ${m('50 cm : 2 m')} is not ${m('25 : 1')} — it is ${m('1 : 4')}. Converting first is not optional; it
+      changes the answer completely.</div>`
+    },
+    {
+      h: 'Ratio against fraction',
+      html: `<p>A ratio compares two parts with each other; a fraction compares one part with the
+      <b>whole</b>.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>boys to girls ${m('= 2 : 3')}</td><td>for every ${m('2')} boys there are ${m('3')} girls</td></tr>
+        <tr><td>boys are ${m(f('2', '5'))} of the class</td><td>${m('2')} of every ${m('5')} pupils</td></tr>
+        <tr><td>girls are ${m(f('3', '5'))} of the class</td><td>the parts add to ${m('5')}</td></tr>
+        <tr><td>boys are ${m(f('2', '3'))} as many as the girls</td><td>the ratio again, as a fraction</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Add the parts to get the whole</div>
+      A ratio of ${m('2 : 3')} has ${m('5')} parts altogether. Every fraction-of-the-whole question starts
+      by adding the parts.</div>`
+    },
+    {
+      h: 'Reading a ratio back',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Ratio</th><th>Total parts</th><th>If the total is ${m('30')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2 : 3</td><td class="m">5</td><td class="m">12 and 18</td></tr>
+        <tr><td class="m">1 : 4</td><td class="m">5</td><td class="m">6 and 24</td></tr>
+        <tr><td class="m">1 : 2 : 3</td><td class="m">6</td><td class="m">5, 10 and 15</td></tr>
+        <tr><td class="m">3 : 7</td><td class="m">10</td><td class="m">9 and 21</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One part first, then multiply out</div>
+      Total ${m('÷')} number of parts gives one part; each share is that times its own number. Sharing in
+      a ratio, four lessons from now, is exactly this table read forwards.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Simplify the ratio ' + m('50 cm : 2 m') + '.',
+      steps: [
+        ['Convert to the same unit: ' + m('50 cm : 200 cm') + '.', ''],
+        ['Divide both by ' + m('50') + '.', ''],
+        [m('= 1 : 4'), '']
+      ],
+      ans: m('1 : 4')
+    },
+    {
+      q: 'A class has ' + m('12') + ' boys and ' + m('18') + ' girls. Write the ratio of boys to girls and the fraction of the class that is boys.',
+      steps: [
+        ['Ratio: ' + m('12 : 18 = 2 : 3') + '.', ''],
+        ['Total parts: ' + m('2 + 3 = 5') + '.', ''],
+        ['Boys are ' + m(f('2', '5')) + ' of the class.', '']
+      ],
+      ans: m('2 : 3') + ' and ' + m(f('2', '5'))
+    },
+    {
+      q: 'Simplify ' + m(f('1', '2') + ' : ' + f('1', '3')) + '.',
+      steps: [
+        ['Multiply both parts by ' + m('6') + '.', 'A ratio is unchanged by that.'],
+        [m('3 : 2'), '']
+      ],
+      ans: m('3 : 2')
+    }
+  ],
+  modelNote: 'Count the boys and girls in the room and write the ratio on the board; the class simplifies its own numbers, which is more convincing than any textbook example.',
+  interactive: {
+    type: 'quiz',
+    title: 'Ratio, or fraction of the whole?',
+    hint: 'A ratio compares parts; a fraction compares a part with the whole.',
+    items: [
+      { q: m('12 : 18') + ' simplifies to:', a: [m('2 : 3'), m('3 : 2'), m('6 : 9'), m('1 : 2')], c: 0, why: 'Divide by ' + m('6') + '.' },
+      { q: m('50 cm : 2 m') + ' simplifies to:', a: [m('25 : 1'), m('1 : 4'), m('50 : 2'), m('1 : 40')], c: 1, why: 'Convert first.' },
+      { q: 'With ' + m('12') + ' boys and ' + m('18') + ' girls, boys are what fraction of the class?', a: [m(f('2', '3')), m(f('2', '5')), m(f('3', '5')), m(f('1', '2'))], c: 1, why: m('5') + ' parts in all.' },
+      { q: 'A ratio of ' + m('2 : 3') + ' has how many parts?', a: [m('2'), m('3'), m('5'), m('6')], c: 2, why: 'Add them.' },
+      { q: m('2 : 3') + ' and ' + m('3 : 2') + ' are:', a: ['the same', 'different', 'both wrong', 'equal to ' + m(f('2', '3'))], c: 1, why: 'The order matters.' },
+      { q: m(f('1', '2') + ' : ' + f('1', '3')) + ' simplifies to:', a: [m('1 : 1'), m('3 : 2'), m('2 : 3'), m('1 : 6')], c: 1, why: 'Multiply both by ' + m('6') + '.' },
+      { q: m('30') + ' shared in ' + m('1 : 4') + ' gives:', a: [m('6') + ' and ' + m('24'), m('10') + ' and ' + m('20'), m('5') + ' and ' + m('25'), m('15') + ' and ' + m('15')], c: 0, why: m('5') + ' parts of ' + m('6') + '.' },
+      { q: m('30 min : 2 h') + ' simplifies to:', a: [m('15 : 1'), m('1 : 4'), m('30 : 2'), m('1 : 2')], c: 1, why: m('30 : 120') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'A ratio compares:', a: ['a part with the whole', 'two quantities of the same kind', 'two units', 'nothing'], c: 1, why: 'Part with part.' },
+    { q: 'Before simplifying, the units must be:', a: ['different', 'the same', 'metric', 'ignored'], c: 1, why: 'Or the ratio is meaningless.' },
+    { q: m('20 : 50') + ' simplifies to:', a: [m('2 : 5'), m('5 : 2'), m('4 : 10'), m('1 : 3')], c: 0, why: 'Divide by ' + m('10') + '.' },
+    { q: 'In ' + m('2 : 3') + ' the first quantity is:', a: ['larger', 'smaller', 'equal', 'unknown'], c: 1, why: 'Two parts against three.' },
+    { q: 'A ratio of ' + m('1 : 2 : 3') + ' has:', a: [m('3') + ' parts', m('6') + ' parts', m('5') + ' parts', m('123') + ' parts'], c: 1, why: m('1 + 2 + 3') + '.' },
+    { q: 'Boys to girls ' + m('2 : 3') + ' means girls are:', a: [m(f('2', '5')), m(f('3', '5')), m(f('2', '3')), m(f('1', '2'))], c: 1, why: 'Three of five.' }
+  ],
+  practice: {
+    easy: [
+      ['Simplify ' + m('12 : 18'), m('2 : 3')],
+      ['Simplify ' + m('20 : 50'), m('2 : 5')],
+      ['Simplify ' + m('4 : 6 : 10'), m('2 : 3 : 5')],
+      ['Simplify ' + m('50 cm : 2 m'), m('1 : 4')],
+      ['Simplify ' + m('30 min : 2 h'), m('1 : 4')],
+      ['The parts of ' + m('2 : 3'), m('5')],
+      ['The parts of ' + m('1 : 2 : 3'), m('6')]
+    ],
+    med: [
+      [m('12') + ' boys and ' + m('18') + ' girls: the ratio', m('2 : 3')],
+      ['And the fraction that is boys', m(f('2', '5'))],
+      ['Simplify ' + m('0.5 : 2'), m('1 : 4')],
+      ['Simplify ' + m(f('1', '2') + ' : ' + f('1', '3')), m('3 : 2')],
+      [m('30') + ' shared in ' + m('1 : 4'), m('6') + ' and ' + m('24')],
+      [m('30') + ' shared in ' + m('2 : 3'), m('12') + ' and ' + m('18')],
+      [m('30') + ' shared in ' + m('1 : 2 : 3'), m('5, 10, 15')]
+    ],
+    hard: [
+      ['Simplify ' + m('750 g : 1.5 kg'), m('1 : 2')],
+      ['Simplify ' + m('45 s : 3 min'), m('1 : 4')],
+      ['If boys to girls is ' + m('3 : 7') + ', what fraction are girls?', m(f('7', '10'))],
+      ['A ratio ' + m('2 : 3') + ' with the first quantity ' + m('14') + ': the second', m('21')],
+      ['Simplify ' + m(f('2', '3') + ' : ' + f('4', '9')), m('3 : 2')],
+      ['Why must units match before simplifying?', 'Otherwise the two numbers count different things'],
+      ['A ratio of ' + m('1 : 1') + ' means', 'the two quantities are equal']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Convert to the same unit before you simplify anything.',
+  homework: [
+    'Simplify ' + m('16 : 24') + ', ' + m('35 : 49') + ' and ' + m('18 : 27 : 45') + '.',
+    'Simplify ' + m('80 cm : 2 m') + ' and ' + m('20 min : 1 h') + '.',
+    'A class has ' + m('14') + ' boys and ' + m('21') + ' girls. Write the ratio and the fraction that is girls.',
+    'Share ' + m('40') + ' in the ratio ' + m('3 : 5') + '.',
+    'Explain the difference between “boys to girls is ' + m('2 : 3') + '” and “boys are ' + m(f('2', '3')) + ' of the class”.'
+  ]
+});
