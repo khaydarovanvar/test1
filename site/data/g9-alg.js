@@ -7665,3 +7665,361 @@ G9_ALG.push({
     'Find the ' + m('n') + 'th term of ' + m('6, 11, 18, 27, …') + '.'
   ]
 });
+
+/* ============================== 44 ============================== */
+G9_ALG.push({
+  id: 'a9-44', stream: 'alg', grade: 9, quarter: 4, lessons: '86–87', hours: 2,
+  title: 'Control work 7, and progressions closed',
+  subtitle: 'Both progressions, both sums, and the infinite case — Chapter IV in one paper.',
+  uz: 'Algebra 9, Nazorat ishi 7', uzPage: 'pp. 167–210',
+  cam: 'IGX 11 review', camPage: 'Core & Extended, pp. 220–264', wb: 'Control paper A7',
+  objectives: [
+    'Find a term and a sum of an arithmetic and of a geometric progression under time.',
+    'Sum an infinite decreasing progression, stating the condition.',
+    'Find the nth term of a sequence given only its first few terms.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Arithmetic progression', 'Arifmetik progressiya', 'Арифметическая прогрессия'],
+    ['Geometric progression', 'Geometrik progressiya', 'Геометрическая прогрессия'],
+    ['Common ratio', 'Maxraj', 'Знаменатель'],
+    ['Infinite sum', 'Cheksiz yig‘indi', 'Бесконечная сумма'],
+    ['Condition', 'Shart', 'Условие'],
+    ['nth term', 'n-had', 'n-й член'],
+    ['Revision', 'Takrorlash', 'Повторение']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 30 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>In an AP, ${m('a₁ = 4')}, ${m('d = 6')}: find ${m('a₁₂')} and ${m('S₁₂')}</td><td class="m">5</td><td>L72–76</td></tr>
+        <tr><td>2</td><td>In a GP, ${m('b₂ = 12')} and ${m('b₅ = 96')}: find ${m('b₁')} and ${m('q')}</td><td class="m">5</td><td>L79–80</td></tr>
+        <tr><td>3</td><td>Find ${m('S₆')} of ${m('3, 6, 12, …')}</td><td class="m">5</td><td>L81–82</td></tr>
+        <tr><td>4</td><td>Sum ${m('12 + 4 + ' + f('4', '3') + ' + …')} to infinity</td><td class="m">5</td><td>L83–84</td></tr>
+        <tr><td>5</td><td>Write ${m('0.272727…')} as a fraction</td><td class="m">5</td><td>L83–84</td></tr>
+        <tr><td>6</td><td>Find the ${m('n')}th term of ${m('2, 5, 10, 17, …')}</td><td class="m">5</td><td>L85</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q2 carries two marks for dividing rather than solving two equations; Q4 one for stating
+      ${m('|q| < 1')}; Q5 two for identifying ${m('b₁')} and ${m('q')} correctly; Q6 one for running
+      the second-difference test before guessing.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>exponent ${m('n')} instead of ${m('n − 1')}</td><td class="m">b₁ qⁿ</td><td>test ${m('n = 1')}</td></tr>
+        <tr><td>AP formula used on a GP</td><td class="m">a₁ + (n − 1)d</td><td>check the ratios first</td></tr>
+        <tr><td>the two ${m('Sₙ')} forms mixed</td><td class="m">${f('b₁(qⁿ − 1)', '1 − q')}</td><td>pick one and write it out</td></tr>
+        <tr><td>condition not stated</td><td class="m">S = ${f('b₁', '1 − q')} with no comment</td><td>“since ${m('|q| < 1')}…”</td></tr>
+        <tr><td>recurring decimal ${m('b₁')} wrong</td><td class="m">b₁ = 27</td><td class="m">b₁ = ${f('27', '100')}</td></tr>
+        <tr><td>fraction not cancelled</td><td class="m">${f('27', '99')}</td><td class="m">${f('3', '11')}</td></tr>
+        <tr><td>quadratic sequence guessed</td><td class="m">3n − 1</td><td>second differences first</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'Chapter IV as one map',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th></th><th>Arithmetic</th><th>Geometric</th></tr></thead>
+      <tbody>
+        <tr><td>step</td><td>add ${m('d')}</td><td>multiply by ${m('q')}</td></tr>
+        <tr><td class="m">n</td><td class="m">aₙ = a₁ + (n − 1)d</td><td class="m">bₙ = b₁q${p('', 'n−1')}</td></tr>
+        <tr><td>middle term</td><td class="m">2aₙ = aₙ₋₁ + aₙ₊₁</td><td class="m">bₙ² = bₙ₋₁ bₙ₊₁</td></tr>
+        <tr><td>sum</td><td class="m">${f('n(a₁ + aₙ)', '2')}</td><td class="m">${f('b₁(qⁿ − 1)', 'q − 1')}</td></tr>
+        <tr><td>proof of the sum</td><td>pair the ends</td><td>shift and subtract</td></tr>
+        <tr><td>infinite sum</td><td>never</td><td class="m">${f('b₁', '1 − q')}, |q| < 1</td></tr>
+        <tr><td>in life</td><td>simple interest</td><td>compound interest</td></tr>
+      </tbody></table></div>
+      {{fig:gpConverge:The geometric case, where the partial sums have a ceiling — the arithmetic ones never do.}}
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      The last chapter of the year is probability: events, the classical definition, and relative
+      frequency. It borrows the counting habits of this chapter but nothing of its formulae — and it
+      finishes the Grade 9 course.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q2: ' + m('b₂ = 12') + ', ' + m('b₅ = 96') + '.',
+      steps: [
+        [m(f('b₅', 'b₂') + ' = q³ = ' + f('96', '12') + ' = 8'), m('b₁') + ' cancels.'],
+        [m('q = 2'), ''],
+        [m('b₁ = ' + f('12', '2') + ' = 6'), ''],
+        [m('b₁ = 6, q = 2'), '']
+      ],
+      ans: m('b₁ = 6, q = 2')
+    },
+    {
+      q: 'Model answer, Q4: sum ' + m('12 + 4 + ' + f('4', '3') + ' + …') + '.',
+      steps: [
+        [m('q = ' + f('4', '12') + ' = ' + f('1', '3')), ''],
+        [m('|q| < 1') + ', so the sum exists.', 'State it.'],
+        [m('S = ' + f('12', '1 − ' + f('1', '3')) + ' = ' + f('12', f('2', '3'))), ''],
+        [m('= 18'), '']
+      ],
+      ans: m('18')
+    },
+    {
+      q: 'Model answer, Q5: write ' + m('0.272727…') + ' as a fraction.',
+      steps: [
+        [m('b₁ = ' + f('27', '100') + ', q = ' + f('1', '100')), ''],
+        [m('S = ' + f(f('27', '100'), '1 − ' + f('1', '100'))), ''],
+        [m('= ' + f('27', '99')), ''],
+        [m('= ' + f('3', '11')), 'Cancel by ' + m('9') + '.']
+      ],
+      ans: m(f('3', '11'))
+    }
+  ],
+  modelNote: 'Put an AP and a GP side by side with the same first term and ask which is larger at n = 5 and at n = 20; the answer changes, and that is the chapter in one picture.',
+  interactive: {
+    type: 'quiz',
+    title: 'Chapter IV in twelve questions',
+    hint: 'Arithmetic and geometric, alternating.',
+    items: [
+      { q: 'In an AP, ' + m('d') + ' is:', a: [m(f('aₙ₊₁', 'aₙ')), m('aₙ₊₁ − aₙ'), m('a₁'), m('n')], c: 1, why: 'The difference.' },
+      { q: 'In a GP, ' + m('q') + ' is:', a: [m('bₙ₊₁ − bₙ'), m(f('bₙ₊₁', 'bₙ')), m('b₁'), m('n')], c: 1, why: 'The ratio.' },
+      { q: m('aₙ') + ' equals:', a: [m('a₁ + nd'), m('a₁ + (n − 1)d'), m('nd'), m('a₁ d')], c: 1, why: m('n − 1') + ' steps.' },
+      { q: m('bₙ') + ' equals:', a: [m('b₁ q') + p('', 'n'), m('b₁ q') + p('', 'n−1'), m('b₁ + nq'), m('nq')], c: 1, why: m('n − 1') + ' multiplications.' },
+      { q: m('Sₙ') + ' of an AP:', a: [m(f('n(a₁ + aₙ)', '2')), m(f('b₁(qⁿ − 1)', 'q − 1')), m('n a₁'), m('a₁ + aₙ')], c: 0, why: 'Pair the ends.' },
+      { q: m('Sₙ') + ' of a GP:', a: [m(f('n(b₁ + bₙ)', '2')), m(f('b₁(qⁿ − 1)', 'q − 1')), m('n b₁'), m('b₁ qⁿ')], c: 1, why: 'Shift and subtract.' },
+      { q: 'The GP sum formula fails when:', a: [m('q = 0'), m('q = 1'), m('q < 0'), 'never'], c: 1, why: 'Zero denominator.' },
+      { q: 'An infinite GP has a sum when:', a: [m('q > 0'), m('|q| < 1'), m('q > 1'), 'always'], c: 1, why: 'The terms must shrink.' },
+      { q: m('0.999…') + ' equals:', a: ['nearly ' + m('1'), m('1'), m('0.99'), m(f('9', '10'))], c: 1, why: 'Exactly.' },
+      { q: 'Constant second differences mean:', a: ['linear', 'quadratic', 'geometric', 'none'], c: 1, why: m('an² + bn + c') + '.' },
+      { q: 'Compound interest is:', a: ['an AP', 'a GP', 'neither', 'both'], c: 1, why: 'It multiplies.' },
+      { q: 'The sum of the first ' + m('n') + ' odd numbers:', a: [m('n'), m('n²'), m('2n'), m('n(n+1)')], c: 1, why: 'A square.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q2 is fastest by:', a: ['two equations', 'dividing one by the other', 'a graph', 'guessing'], c: 1, why: m('b₁') + ' cancels.' },
+    { q: 'Q4 must include:', a: ['a decimal', 'the condition ' + m('|q| < 1'), 'a graph', m('n')], c: 1, why: 'It is part of the statement.' },
+    { q: 'In Q5, ' + m('b₁') + ' is:', a: [m('27'), m(f('27', '100')), m(f('27', '10')), m('0.27')], c: 1, why: 'The first block, over ' + m('100') + '.' },
+    { q: 'Q6 begins with:', a: ['guessing', 'the second differences', 'the ratios', 'a graph'], c: 1, why: 'They identify the type.' },
+    { q: m('2, 5, 10, 17, …') + ' has ' + m('n') + 'th term:', a: [m('3n − 1'), m('n² + 1'), m('2n²'), m('n² + n')], c: 1, why: 'Second differences ' + m('2') + '.' },
+    { q: 'Work on the mistakes means:', a: ['fix the wrong line', 'rewrite the solution', 'copy the answer', 'skip it'], c: 1, why: 'The whole solution, again.' }
+  ],
+  practice: {
+    easy: [
+      [m('a₁ = 4, d = 6') + ': ' + m('a₁₂'), m('70')],
+      ['Same: ' + m('S₁₂'), m('444')],
+      [m('b₂ = 12, b₅ = 96') + ': ' + m('q'), m('2')],
+      ['Same: ' + m('b₁'), m('6')],
+      [m('S₆') + ' of ' + m('3, 6, 12, …'), m('189')],
+      [m('12 + 4 + ' + f('4', '3') + ' + …'), m('18')],
+      [m('0.272727…'), m(f('3', '11'))]
+    ],
+    med: [
+      [m('n') + 'th term of ' + m('2, 5, 10, 17, …'), m('n² + 1')],
+      [m('S₁₀') + ' of ' + m('1, 4, 7, …'), m('145')],
+      [m('S₅') + ' of ' + m('2, 6, 18, …'), m('242')],
+      ['An infinite GP with ' + m('b₁ = 20, q = 0.2'), m('25')],
+      [m('0.454545…'), m(f('5', '11'))],
+      ['Which term of ' + m('4, 10, 16, …') + ' is ' + m('100') + '?', 'The 17th'],
+      ['Which term of ' + m('3, 6, 12, …') + ' is ' + m('384') + '?', 'The 8th']
+    ],
+    hard: [
+      ['Three numbers in AP: sum ' + m('24') + ', and the squares sum to ' + m('200'), m('6, 8, 10')],
+      ['Three numbers in GP: sum ' + m('14') + ', product ' + m('64'), m('2, 4, 8')],
+      [m('S₄ = 30, S₈ = 510') + ' in a GP: ' + m('q'), m('2')],
+      ['An infinite GP has ' + m('S = 16') + ' and ' + m('b₂ = 4') + ': find ' + m('q'), m(f('1', '2'))],
+      [m('n') + 'th term of ' + m('1, 5, 12, 22, …'), m(f('n(3n − 1)', '2'))],
+      ['A ball from ' + m('4 m') + ' rebounds ' + m(f('1', '2')) + ': total distance', m('12 m')],
+      ['Sum ' + m('1 − ' + f('1', '2') + ' + ' + f('1', '4') + ' − …'), m(f('2', '3'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite in full every question that lost a mark before the probability chapter begins.',
+  homework: [
+    'In an AP, ' + m('a₃ = 10') + ' and ' + m('a₇ = 26') + '. Find ' + m('a₁') + ', ' + m('d') + ' and ' + m('S₁₀') + '.',
+    'In a GP, ' + m('b₁ = 5') + ' and ' + m('q = 3') + '. Find ' + m('b₅') + ' and ' + m('S₅') + '.',
+    'Sum ' + m('18 + 6 + 2 + …') + ' to infinity.',
+    'Write ' + m('0.181818…') + ' as a fraction.',
+    'Find the ' + m('n') + 'th term of ' + m('3, 9, 19, 33, …') + '.'
+  ]
+});
+
+/* ============================== 45 ============================== */
+G9_ALG.push({
+  id: 'a9-45', stream: 'alg', grade: 9, quarter: 4, lessons: '88–89', hours: 2,
+  title: 'Events, and the kinds of event',
+  subtitle: 'Before any number can be attached to chance, the language has to be exact.',
+  uz: 'Algebra 9, §35', uzPage: 'pp. 211–216',
+  cam: 'IGX 8.1', camPage: 'Core & Extended, pp. 158–163', wb: 'Exercise 8.1',
+  objectives: [
+    'Distinguish a trial, an outcome and an event.',
+    'Classify events as certain, impossible or random.',
+    'Decide whether two events are mutually exclusive, and what the opposite event is.',
+    'List the sample space of a simple experiment.'
+  ],
+  terms: [
+    ['Trial', 'Sinov', 'Испытание'],
+    ['Outcome', 'Natija', 'Исход'],
+    ['Event', 'Hodisa', 'Событие'],
+    ['Certain event', 'Muqarrar hodisa', 'Достоверное событие'],
+    ['Impossible event', 'Mumkin bo‘lmagan hodisa', 'Невозможное событие'],
+    ['Random event', 'Tasodifiy hodisa', 'Случайное событие'],
+    ['Mutually exclusive', 'Birgalikda bo‘lmagan', 'Несовместные'],
+    ['Complementary event', 'Qarama-qarshi hodisa', 'Противоположное событие']
+  ],
+  timing: [[15, 'Trial, outcome, event'], [22, 'Three kinds of event'], [25, 'Relations between events'], [23, 'The sample space'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Trial, outcome, event',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Word</th><th>Means</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>trial</td><td>the experiment performed once</td><td>rolling a die</td></tr>
+        <tr><td>outcome</td><td>one indivisible result</td><td class="m">4</td></tr>
+        <tr><td>sample space</td><td>the set of all outcomes</td><td class="m">{1,2,3,4,5,6}</td></tr>
+        <tr><td>event</td><td>a set of outcomes</td><td>“even”, i.e. ${m('{2,4,6}')}</td></tr>
+      </tbody></table></div>
+      <p>An <b>event</b> is any collection of outcomes, so it is a <b>subset</b> of the sample space —
+      which is why the set notation of Quarter II reappears here almost unchanged.</p>
+      <div class="keybox"><div class="klabel">Say the event out loud as a set</div>
+      “An even number” is ${m('{2,4,6}')}; “more than 4” is ${m('{5,6}')}; “even and more than 4” is
+      ${m('{6}')}. Writing the set removes almost every ambiguity that word problems in this chapter
+      contain.</div>`
+    },
+    {
+      h: 'Three kinds of event',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Kind</th><th>Happens</th><th>As a set</th><th>Example (a die)</th></tr></thead>
+      <tbody>
+        <tr><td>certain</td><td>always</td><td>the whole sample space</td><td>“less than 7”</td></tr>
+        <tr><td>impossible</td><td>never</td><td class="m">∅</td><td>“equal to 8”</td></tr>
+        <tr><td>random</td><td>sometimes</td><td>a proper non-empty subset</td><td>“even”</td></tr>
+      </tbody></table></div>
+      <p>Only random events are interesting, but naming the other two matters: a probability of
+      ${m('1')} means certain, a probability of ${m('0')} means impossible, and every random event lies
+      strictly between.</p>
+      <div class="warn"><span class="wl">“Unlikely” is not “impossible”</span>
+      Rolling six sixes in a row is unlikely — probability ${m(f('1', '46656'))} — but perfectly
+      possible. Rolling a ${m('7')} is impossible. The two words describe different things, and the
+      first chapter of probability exists largely to separate them.</div>`
+    },
+    {
+      h: 'Relations between events',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Relation</th><th>Means</th><th>In sets</th><th>Example (a die)</th></tr></thead>
+      <tbody>
+        <tr><td>mutually exclusive</td><td>cannot both happen</td><td class="m">A ∩ B = ∅</td><td>“even” and “equal to 3”</td></tr>
+        <tr><td>compatible</td><td>can both happen</td><td class="m">A ∩ B ≠ ∅</td><td>“even” and “more than 3”</td></tr>
+        <tr><td>complementary</td><td>exactly one must happen</td><td class="m">B = A′</td><td>“even” and “odd”</td></tr>
+        <tr><td>${m('A')} implies ${m('B')}</td><td>${m('A')} forces ${m('B')}</td><td class="m">A ⊂ B</td><td>“equal to 6” and “even”</td></tr>
+      </tbody></table></div>
+      {{fig:vennTwo:Mutually exclusive events do not overlap; complementary events fill the space between them.}}
+      <p>Complementary events are mutually exclusive <b>and</b> cover everything. Two events can be
+      mutually exclusive without being complementary — “equal to 1” and “equal to 2”, for example.</p>
+      <div class="warn"><span class="wl">The opposite of “at least one” is “none”</span>
+      Not “at most one”, and not “exactly one”. Getting the complement wrong is the single most common
+      error in probability word problems, and it is a language error, not a mathematical one.</div>`
+    },
+    {
+      h: 'The sample space',
+      html: `<p>Listing all outcomes is the first step in nearly every probability question.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Experiment</th><th>Sample space</th><th>Size</th></tr></thead>
+      <tbody>
+        <tr><td>one coin</td><td class="m">{H, T}</td><td class="m">2</td></tr>
+        <tr><td>two coins</td><td class="m">{HH, HT, TH, TT}</td><td class="m">4</td></tr>
+        <tr><td>one die</td><td class="m">{1,…,6}</td><td class="m">6</td></tr>
+        <tr><td>two dice</td><td>all ordered pairs</td><td class="m">36</td></tr>
+        <tr><td>a card from a pack</td><td>all cards</td><td class="m">52</td></tr>
+      </tbody></table></div>
+      {{fig:treeDiagram:A tree diagram lists the sample space of a two-stage experiment without missing a branch.}}
+      <div class="keybox"><div class="klabel">${m('HT')} and ${m('TH')} are different outcomes</div>
+      With two coins there are four outcomes, not three. Treating “one head and one tail” as a single
+      outcome makes it twice as likely as the others — and this is exactly the mistake that made
+      probability a hard subject for two centuries.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A die is rolled. Classify: (a) “less than 7”, (b) “equal to 8”, (c) “even”.',
+      steps: [
+        ['(a) The set is ' + m('{1,…,6}') + ' — everything.', 'Certain.'],
+        ['(b) The set is ' + m('∅') + '.', 'Impossible.'],
+        ['(c) The set is ' + m('{2,4,6}') + '.', 'Random.'],
+        ['Certain, impossible, random.', '']
+      ],
+      ans: 'Certain, impossible, random'
+    },
+    {
+      q: 'Are “even” and “more than 3” mutually exclusive on a die?',
+      steps: [
+        ['“even” ' + m('= {2,4,6}') + '.', ''],
+        ['“more than 3” ' + m('= {4,5,6}') + '.', ''],
+        [m('{2,4,6} ∩ {4,5,6} = {4,6} ≠ ∅'), ''],
+        ['No — they are compatible.', '']
+      ],
+      ans: 'No — they can both happen'
+    },
+    {
+      q: 'Two coins are tossed. List the sample space and the event “at least one head”.',
+      steps: [
+        ['Sample space: ' + m('{HH, HT, TH, TT}') + '.', 'Four outcomes.'],
+        ['“at least one head” ' + m('= {HH, HT, TH}') + '.', ''],
+        ['Its opposite is “no heads” ' + m('= {TT}') + '.', ''],
+        ['Three outcomes out of four.', '']
+      ],
+      ans: m('{HH, HT, TH}') + ' — 3 of 4'
+    }
+  ],
+  modelNote: 'Toss two coins twenty times and tally HH, HT, TH, TT; the class sees that “one of each” occurs about half the time, and the four-outcome sample space explains why.',
+  interactive: {
+    type: 'quiz',
+    title: 'Certain, impossible, or random?',
+    hint: 'Write the event as a set first.'
+  },
+  quiz: [
+    { q: 'An event is:', a: ['one outcome', 'a set of outcomes', 'the whole trial', 'a number'], c: 1, why: 'A subset of the sample space.' },
+    { q: '“Rolling a 7 on a die” is:', a: ['certain', 'impossible', 'random', 'unlikely'], c: 1, why: 'The set is ' + m('∅') + '.' },
+    { q: 'Mutually exclusive means:', a: [m('A ∩ B = ∅'), m('A ∪ B = ξ'), m('A ⊂ B'), m('A = B')], c: 0, why: 'They cannot both happen.' },
+    { q: 'The opposite of “at least one head” is:', a: ['at most one head', 'exactly one head', 'no heads', 'two heads'], c: 2, why: 'Nothing, rather than something.' },
+    { q: 'Two coins have how many outcomes?', a: [m('2'), m('3'), m('4'), m('6')], c: 2, why: m('HT') + ' and ' + m('TH') + ' differ.' },
+    { q: 'A certain event has probability:', a: [m('0'), m(f('1', '2')), m('1'), 'undefined'], c: 2, why: 'It always happens.' }
+  ],
+  practice: {
+    easy: [
+      ['“less than 7” on a die', 'Certain'],
+      ['“equal to 8” on a die', 'Impossible'],
+      ['“even” on a die', 'Random'],
+      ['Sample space of one coin', m('{H, T}')],
+      ['Sample space of one die', m('{1,…,6}')],
+      ['Number of outcomes for two coins', m('4')],
+      ['Number of outcomes for two dice', m('36')]
+    ],
+    med: [
+      ['“even” as a set', m('{2,4,6}')],
+      ['“more than 3” as a set', m('{4,5,6}')],
+      ['Are they mutually exclusive?', 'No'],
+      ['Opposite of “even”', '“odd”'],
+      ['Opposite of “at least one head”', '“no heads”'],
+      ['“at least one head” with two coins', m('{HH, HT, TH}')],
+      ['Is “equal to 6” ⊂ “even”?', 'Yes']
+    ],
+    hard: [
+      ['Two dice: outcomes with a sum of ' + m('7'), m('6')],
+      ['Two dice: outcomes with a sum of ' + m('2'), m('1')],
+      ['Opposite of “at most two heads” in three tosses', '“three heads”'],
+      ['Three coins: how many outcomes?', m('8')],
+      ['Three coins: “exactly two heads” as a set', m('{HHT, HTH, THH}')],
+      ['Give two mutually exclusive but not complementary events on a die', '“= 1” and “= 2”'],
+      ['A card: are “red” and “king” mutually exclusive?', 'No — there are two red kings']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write every event as a set before answering anything about it.',
+  homework: [
+    'Classify on a die: “more than 0”, “equal to 0”, “odd”.',
+    'List the sample space for three coins.',
+    'Write “at least two heads” in three tosses as a set.',
+    'Give the opposite of “at least one six” in two rolls.',
+    'Give an example of two compatible events on a die, and two mutually exclusive ones.'
+  ]
+});
