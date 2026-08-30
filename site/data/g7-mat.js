@@ -14854,3 +14854,403 @@ G7_MAT.push({
     'In how many ways can ' + m('5') + ' pupils be seated in ' + m('5') + ' chairs?'
   ]
 });
+
+/* ============================== 83 ============================== */
+G7_MAT.push({
+  id: 'g7-83', stream: 'mat', grade: 7, quarter: 4, lessons: '158–160', hours: 3,
+  title: 'Kinds of combinatorial problem',
+  subtitle: 'Arrangements, permutations and selections — and the one question that tells them apart.',
+  uz: 'Matematika 7, §66', uzPage: 'pp. 473–483',
+  cam: 'S8 13', camPage: 'Stage 8, pp. 126–134', wb: 'Exercise 13.2',
+  objectives: [
+    'Ask whether order matters, and answer accordingly.',
+    'Count permutations of ' + m('n') + ' objects with ' + m('n!') + '.',
+    'Count arrangements of ' + m('k') + ' objects chosen from ' + m('n') + '.',
+    'Count selections where order does not matter.'
+  ],
+  terms: [
+    ['Arrangement', 'O‘rinlashtirish', 'Размещение'],
+    ['Permutation', 'O‘rin almashtirish', 'Перестановка'],
+    ['Selection', 'Tanlash', 'Сочетание'],
+    ['Factorial', 'Faktorial', 'Факториал'],
+    ['Order matters', 'Tartib muhim', 'Порядок важен'],
+    ['Order does not matter', 'Tartib muhim emas', 'Порядок не важен'],
+    ['Committee', 'Guruh', 'Комиссия'],
+    ['Handshake', 'Qo‘l berish', 'Рукопожатие']
+  ],
+  timing: [[15, 'The question that decides everything'], [30, 'Permutations and the factorial'], [30, 'Arrangements of k from n'], [30, 'Selections'], [15, 'Telling them apart']],
+  sections: [
+    {
+      h: 'The question that decides everything',
+      html: `<p>Before counting anything, ask: <b>does the order matter?</b> Two problems with identical
+      numbers can have different answers because of it.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Order?</th><th>Because</th></tr></thead>
+      <tbody>
+        <tr><td>first and second prize among ${m('5')} pupils</td><td>yes</td><td>first is not second</td></tr>
+        <tr><td>two pupils on duty from ${m('5')}</td><td>no</td><td>the pair is the same either way</td></tr>
+        <tr><td>a ${m('4')}-figure PIN</td><td>yes</td><td class="m">1234 ≠ 4321</td></tr>
+        <tr><td>a hand of ${m('4')} cards</td><td>no</td><td>the hand is a set</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Order doubles or halves the answer</div>
+      From ${m('5')} pupils, ordered pairs number ${m('20')} and unordered pairs ${m('10')}. Every ordered
+      pair appears twice in the ordered count — once each way round.</div>`
+    },
+    {
+      h: 'Permutations and the factorial',
+      html: `<p>A <b>permutation</b> arranges all ${m('n')} objects in a row. There are ${m('n')} choices
+      for the first place, ${m('n − 1')} for the second, and so on.</p>
+      ${eq(m('n! = n · (n − 1) · … · 2 · 1'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">n</th><th class="m">n!</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td class="m">1</td><td class="m">1</td><td>one object, one order</td></tr>
+        <tr><td class="m">2</td><td class="m">2</td><td class="m">AB, BA</td></tr>
+        <tr><td class="m">3</td><td class="m">6</td><td>six orders of three letters</td></tr>
+        <tr><td class="m">4</td><td class="m">24</td><td>seating four pupils</td></tr>
+        <tr><td class="m">5</td><td class="m">120</td><td>five books on a shelf</td></tr>
+        <tr><td class="m">6</td><td class="m">720</td><td>growing fast</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The factorial grows faster than anything met so far</span>
+      ${m('10! = 3 628 800')}. Ten books can be shelved in more than three and a half million orders — a
+      good reason never to try listing them.</div>`
+    },
+    {
+      h: 'Arrangements of ' + m('k') + ' from ' + m('n'),
+      html: `<p>When only ${m('k')} of the ${m('n')} objects are used and the order matters, the product
+      simply stops after ${m('k')} factors.</p>
+      ${eq(m('n · (n − 1) · … ') + ' — ' + m('k') + ' factors', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>first and second prize among ${m('5')}</td><td class="m">5 · 4</td><td class="m">20</td></tr>
+        <tr><td>gold, silver and bronze among ${m('8')}</td><td class="m">8 · 7 · 6</td><td class="m">336</td></tr>
+        <tr><td>${m('3')} of ${m('10')} digits, all different</td><td class="m">10 · 9 · 8</td><td class="m">720</td></tr>
+        <tr><td>president and secretary from ${m('12')}</td><td class="m">12 · 11</td><td class="m">132</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A permutation is the case ${m('k = n')}</div>
+      Arranging ${m('5')} of ${m('5')} gives ${m('5 · 4 · 3 · 2 · 1 = 5!')}. The two ideas are one idea,
+      stopped at different points.</div>`
+    },
+    {
+      h: 'Selections',
+      html: `<p>When the order does <b>not</b> matter, count the ordered arrangements first and then divide
+      by the number of orders of the chosen group.</p>
+      ${eq('selections ' + m('= ' + f('arrangements', 'k!')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Ordered</th><th>Divide by</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('2')} pupils on duty from ${m('5')}</td><td class="m">5 · 4 = 20</td><td class="m">2! = 2</td><td class="m">10</td></tr>
+        <tr><td>${m('3')} pupils from ${m('6')}</td><td class="m">6 · 5 · 4 = 120</td><td class="m">3! = 6</td><td class="m">20</td></tr>
+        <tr><td>handshakes among ${m('10')} people</td><td class="m">10 · 9 = 90</td><td class="m">2</td><td class="m">45</td></tr>
+        <tr><td>diagonals and sides of a hexagon</td><td class="m">6 · 5 = 30</td><td class="m">2</td><td class="m">15</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Handshakes, diagonals and pairs are one problem</div>
+      Every pair of people shakes once, every pair of vertices joins once. The hexagon's ${m('15')} pairs
+      are its ${m('6')} sides and ${m('9')} diagonals — a check worth making.</div>`
+    },
+    {
+      h: 'Telling them apart',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Wording</th><th>Order?</th><th>Kind</th></tr></thead>
+      <tbody>
+        <tr><td>“in how many orders”</td><td>yes</td><td>permutation</td></tr>
+        <tr><td>“first, second and third”</td><td>yes</td><td>arrangement</td></tr>
+        <tr><td>“a code” or “a number”</td><td>yes</td><td>arrangement</td></tr>
+        <tr><td>“choose a group of”</td><td>no</td><td>selection</td></tr>
+        <tr><td>“how many pairs”</td><td>no</td><td>selection</td></tr>
+        <tr><td>“how many handshakes”</td><td>no</td><td>selection</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Prizes are ordered; duties usually are not</span>
+      “First and second prize” distinguishes the two places; “two pupils on duty” does not. Reading the
+      wording carefully is the whole of the skill — the arithmetic afterwards is easy.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'In how many ways can ' + m('5') + ' books be arranged on a shelf?',
+      steps: [
+        ['All five are used and the order matters.', ''],
+        [m('5! = 5 · 4 · 3 · 2 · 1'), ''],
+        [m('= 120'), '']
+      ],
+      ans: m('120')
+    },
+    {
+      q: 'From ' + m('8') + ' runners, in how many ways can gold, silver and bronze be awarded?',
+      steps: [
+        ['Three of eight, and the order matters.', ''],
+        [m('8 · 7 · 6'), ''],
+        [m('= 336'), '']
+      ],
+      ans: m('336')
+    },
+    {
+      q: 'How many handshakes take place if ' + m('10') + ' people each shake hands once with every other?',
+      steps: [
+        ['Ordered pairs: ' + m('10 · 9 = 90') + '.', ''],
+        ['Each handshake was counted twice.', ''],
+        [m('90 ÷ 2 = 45'), '']
+      ],
+      ans: m('45')
+    }
+  ],
+  modelNote: 'Have five pupils stand at the front and ask first for prize orders, then for duty pairs; the same five children give 20 and 10, and the distinction is made physically.',
+  interactive: {
+    type: 'quiz',
+    title: 'Does the order matter?',
+    hint: 'Answer that first, then count.',
+    items: [
+      { q: 'First and second prize among ' + m('5') + ':', a: ['order matters', 'order does not', 'neither', 'both'], c: 0, why: 'The places differ.' },
+      { q: 'So the count is:', a: [m('10'), m('20'), m('25'), m('120')], c: 1, why: m('5 · 4') + '.' },
+      { q: 'Two pupils on duty from ' + m('5') + ':', a: ['order matters', 'order does not', 'neither', 'both'], c: 1, why: 'The pair is a set.' },
+      { q: 'So the count is:', a: [m('10'), m('20'), m('25'), m('120')], c: 0, why: m('20 ÷ 2') + '.' },
+      { q: m('5!') + ' equals:', a: [m('25'), m('60'), m('120'), m('720')], c: 2, why: 'Five factors.' },
+      { q: 'Gold, silver and bronze among ' + m('8') + ':', a: [m('24'), m('56'), m('336'), m('512')], c: 2, why: m('8 · 7 · 6') + '.' },
+      { q: 'Handshakes among ' + m('10') + ' people:', a: [m('45'), m('90'), m('100'), m('20')], c: 0, why: 'Each pair once.' },
+      { q: 'Choosing ' + m('3') + ' pupils from ' + m('6') + ':', a: [m('18'), m('20'), m('120'), m('720')], c: 1, why: m(f('120', '6')) + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'A permutation arranges:', a: ['some of the objects', 'all of the objects', 'two objects', 'none'], c: 1, why: 'All ' + m('n') + ' of them.' },
+    { q: m('4!') + ' equals:', a: [m('12'), m('16'), m('24'), m('64')], c: 2, why: m('4 · 3 · 2 · 1') + '.' },
+    { q: 'Order matters in:', a: ['a committee', 'a PIN', 'a handshake', 'a pair'], c: 1, why: m('1234 ≠ 4321') + '.' },
+    { q: 'Order does not matter in:', a: ['a race result', 'a code', 'a group on duty', 'a queue'], c: 2, why: 'The group is a set.' },
+    { q: 'To go from arrangements to selections you:', a: ['multiply by ' + m('k!'), 'divide by ' + m('k!'), 'add ' + m('k'), 'do nothing'], c: 1, why: 'Each group counted ' + m('k!') + ' times.' },
+    { q: 'Handshakes among ' + m('n') + ' people number:', a: [m('n²'), m(f('n(n − 1)', '2')), m('n(n − 1)'), m('2n')], c: 1, why: 'Unordered pairs.' }
+  ],
+  practice: {
+    easy: [
+      [m('3!'), m('6')],
+      [m('4!'), m('24')],
+      [m('5!'), m('120')],
+      [m('6!'), m('720')],
+      ['Arranging ' + m('5') + ' books', m('120')],
+      ['First and second prize among ' + m('5'), m('20')],
+      ['Two on duty from ' + m('5'), m('10')]
+    ],
+    med: [
+      ['Gold, silver, bronze among ' + m('8'), m('336')],
+      ['President and secretary from ' + m('12'), m('132')],
+      ['Choosing ' + m('3') + ' from ' + m('6'), m('20')],
+      ['Handshakes among ' + m('10'), m('45')],
+      ['Pairs of vertices of a hexagon', m('15')],
+      ['Diagonals of a hexagon', m('9')],
+      ['Seating ' + m('6') + ' pupils in ' + m('6') + ' chairs', m('720')]
+    ],
+    hard: [
+      ['Handshakes among ' + m('n') + ' people', m(f('n(n − 1)', '2'))],
+      ['Diagonals of an ' + m('n') + '-gon', m(f('n(n − 3)', '2'))],
+      ['Choosing ' + m('2') + ' from ' + m('20'), m('190')],
+      ['Arranging ' + m('4') + ' of ' + m('7') + ' books on a shelf', m('840')],
+      ['How many ' + m('3') + '-letter “words” from ' + m('AБВГД') + ' with no repeats?', m('60')],
+      ['Why divide by ' + m('k!') + ' for a selection?', 'Each group has been counted in all its orders'],
+      [m('10!') + ' is about', m('3.6') + ' million']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write “order matters” or “order does not matter” beside every question before counting.',
+  homework: [
+    'In how many ways can ' + m('6') + ' books be arranged on a shelf?',
+    'From ' + m('9') + ' athletes, in how many ways can the first three places be awarded?',
+    'How many pairs on duty can be chosen from ' + m('8') + ' pupils?',
+    'How many handshakes take place among ' + m('12') + ' people?',
+    'Find the number of diagonals of an octagon.'
+  ]
+});
+
+/* ============================== 84 ============================== */
+G7_MAT.push({
+  id: 'g7-84', stream: 'mat', grade: 7, quarter: 4, lessons: '161–163', hours: 3,
+  title: 'Methods of solving combinatorial problems',
+  subtitle: 'Four working methods — the tree, the table, the rules, and counting the opposite case.',
+  uz: 'Matematika 7, §67', uzPage: 'pp. 484–494',
+  cam: 'S8 13', camPage: 'Stage 8, pp. 126–134', wb: 'Exercise 13.3',
+  objectives: [
+    'Choose a method that fits the size of the problem.',
+    'Handle a restriction by dealing with it first.',
+    'Count a difficult case as the total minus the opposite one.',
+    'Check an answer by a second method or by a small case.'
+  ],
+  terms: [
+    ['Method', 'Usul', 'Метод'],
+    ['Restriction', 'Cheklov', 'Ограничение'],
+    ['Complementary counting', 'Teskarisini sanash', 'Подсчёт дополнения'],
+    ['At least one', 'Kamida bitta', 'Хотя бы один'],
+    ['Systematic list', 'Tartibli ro‘yxat', 'Систематический перечень'],
+    ['To check', 'Tekshirmoq', 'Проверить'],
+    ['Small case', 'Kichik holat', 'Малый случай'],
+    ['Total', 'Umumiy soni', 'Общее число']
+  ],
+  timing: [[15, 'Choosing a method'], [30, 'Dealing with a restriction first'], [30, 'Counting the opposite case'], [30, 'Worked problems'], [15, 'Checking an answer']],
+  sections: [
+    {
+      h: 'Choosing a method',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Method</th><th>Use it when</th><th>Danger</th></tr></thead>
+      <tbody>
+        <tr><td>a systematic list</td><td>under about ${m('20')} outcomes</td><td>missing one</td></tr>
+        <tr><td>a tree diagram</td><td>two or three stages</td><td>the page runs out</td></tr>
+        <tr><td>the two rules</td><td>most problems</td><td>choosing the wrong rule</td></tr>
+        <tr><td>the opposite case</td><td>“at least one” problems</td><td>forgetting to subtract from the total</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">List small, calculate large</div>
+      A list is worth writing when it can be finished in a minute — and it is then the best check on a
+      calculation. Beyond that, the rules are the only practical route.</div>`
+    },
+    {
+      h: 'Dealing with a restriction first',
+      html: `<p>Whatever is restricted is chosen at the first stage; the free choices follow.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>First</th><th>Then</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('3')}-figure numbers from ${m('1,2,3,4,5')}, no repeats</td><td>any digit: ${m('5')}</td><td class="m">4 · 3</td><td class="m">60</td></tr>
+        <tr><td>the same, but even</td><td>last digit ${m('2')} or ${m('4')}: ${m('2')}</td><td class="m">4 · 3</td><td class="m">24</td></tr>
+        <tr><td>the same, but starting with ${m('5')}</td><td>first digit fixed: ${m('1')}</td><td class="m">4 · 3</td><td class="m">12</td></tr>
+        <tr><td>seating ${m('4')} pupils with one fixed at the end</td><td>that pupil: ${m('1')}</td><td class="m">3!</td><td class="m">6</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Choose the restricted place first, not last</span>
+      If the units digit is chosen last, the number of choices left depends on what went before and the
+      product is no longer a single multiplication. Taking the restriction first keeps every stage
+      independent.</div>`
+    },
+    {
+      h: 'Counting the opposite case',
+      html: `<p>“At least one” is nearly always easier as “all of them minus none of them”.</p>
+      ${eq('at least one ' + m('=') + ' total ' + m('−') + ' none', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Total</th><th>None</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('3')}-figure codes with at least one ${m('7')}</td><td class="m">1000</td><td class="m">9³ = 729</td><td class="m">271</td></tr>
+        <tr><td>three coins with at least one head</td><td class="m">8</td><td class="m">1</td><td class="m">7</td></tr>
+        <tr><td>two dice with at least one six</td><td class="m">36</td><td class="m">25</td><td class="m">11</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">“At least one” is not “exactly one”</span>
+      Two dice give ${m('11')} outcomes with at least one six, but only ${m('10')} with exactly one — the
+      double six belongs to the first count and not to the second.</div>`
+    },
+    {
+      h: 'Worked problems',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('3')}-figure numbers from ${m('1,2,3,4,5')} without repeats</td><td class="m">5 · 4 · 3</td><td class="m">60</td></tr>
+        <tr><td>how many of them are even</td><td class="m">2 · 4 · 3</td><td class="m">24</td></tr>
+        <tr><td>how many are odd</td><td class="m">60 − 24</td><td class="m">36</td></tr>
+        <tr><td>how many are greater than ${m('300')}</td><td class="m">3 · 4 · 3</td><td class="m">36</td></tr>
+        <tr><td>a committee of ${m('2')} from ${m('4')} boys and ${m('3')} girls with one of each</td><td class="m">4 · 3</td><td class="m">12</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Even and odd should add to the total</div>
+      ${m('24 + 36 = 60')} ✓. Splitting a count into two cases gives a free check: the parts must rebuild
+      the whole.</div>`
+    },
+    {
+      h: 'Checking an answer',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Check</th><th>How</th></tr></thead>
+      <tbody>
+        <tr><td>a small case</td><td>redo the problem with ${m('2')} or ${m('3')} objects and list them</td></tr>
+        <tr><td>the complement</td><td>the case and its opposite must add to the total</td></tr>
+        <tr><td>a second method</td><td>tree against rules, or list against product</td></tr>
+        <tr><td>size</td><td>an answer larger than the total is impossible</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The small case is the best check there is</div>
+      If a formula gives ${m('45')} handshakes for ${m('10')} people, test it on ${m('3')} people: it
+      should give ${m('3')}, and three people shaking hands really do make three handshakes.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'How many ' + m('3') + '-figure numbers with different digits can be made from ' + m('1, 2, 3, 4, 5') + ', and how many of them are even?',
+      steps: [
+        [m('5 · 4 · 3 = 60') + ' altogether.', ''],
+        ['Even: the units digit must be ' + m('2') + ' or ' + m('4') + ' — ' + m('2') + ' ways.', 'The restriction first.'],
+        ['The other two places: ' + m('4 · 3 = 12') + '.', ''],
+        [m('2 · 12 = 24') + ' even numbers.', 'Check: ' + m('24 + 36 = 60') + ' ✓']
+      ],
+      ans: m('60') + ' in all, ' + m('24') + ' even'
+    },
+    {
+      q: 'How many ' + m('3') + '-figure codes from ' + m('10') + ' digits contain at least one ' + m('7') + '?',
+      steps: [
+        ['Total: ' + m('10³ = 1000') + '.', ''],
+        ['With no ' + m('7') + ': ' + m('9³ = 729') + '.', 'Nine digits remain at each place.'],
+        [m('1000 − 729'), ''],
+        [m('= 271'), '']
+      ],
+      ans: m('271')
+    },
+    {
+      q: 'A committee of two is chosen from ' + m('4') + ' boys and ' + m('3') + ' girls, one of each. How many committees?',
+      steps: [
+        ['One boy: ' + m('4') + ' ways.', ''],
+        ['One girl: ' + m('3') + ' ways.', ''],
+        ['“And” — multiply.', ''],
+        [m('4 · 3 = 12'), '']
+      ],
+      ans: m('12')
+    }
+  ],
+  modelNote: 'Ask for the number of three-coin outcomes with at least one head; most of the class starts listing, and the total-minus-none route wins by a distance.',
+  interactive: {
+    type: 'quiz',
+    title: 'Restrictions and opposites',
+    hint: 'The restricted place goes first; “at least one” goes backwards.',
+    items: [
+      { q: m('3') + '-figure numbers from ' + m('1,2,3,4,5') + ' without repeats:', a: [m('15'), m('60'), m('125'), m('120')], c: 1, why: m('5 · 4 · 3') + '.' },
+      { q: 'How many are even?', a: [m('12'), m('24'), m('30'), m('36')], c: 1, why: 'Units digit ' + m('2') + ' or ' + m('4') + '.' },
+      { q: 'How many are odd?', a: [m('24'), m('30'), m('36'), m('40')], c: 2, why: m('60 − 24') + '.' },
+      { q: 'The restricted place should be chosen:', a: ['first', 'last', 'in the middle', 'at random'], c: 0, why: 'It keeps the stages independent.' },
+      { q: '“At least one” is best counted as:', a: ['exactly one', 'total minus none', 'total plus none', 'none'], c: 1, why: 'The complement.' },
+      { q: m('3') + '-figure codes with at least one ' + m('7') + ':', a: [m('271'), m('300'), m('729'), m('100')], c: 0, why: m('1000 − 729') + '.' },
+      { q: 'Three coins with at least one head:', a: [m('3'), m('6'), m('7'), m('8')], c: 2, why: m('8 − 1') + '.' },
+      { q: 'Two dice with at least one six:', a: [m('6'), m('10'), m('11'), m('12')], c: 2, why: m('36 − 25') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'A restriction should be handled:', a: ['first', 'last', 'never', 'twice'], c: 0, why: 'Then the rest is free.' },
+    { q: '“At least one” equals:', a: ['exactly one', 'total minus none', 'none', 'all'], c: 1, why: 'Complementary counting.' },
+    { q: m('3') + '-figure codes with at least one ' + m('7') + ' number:', a: [m('271'), m('729'), m('100'), m('300')], c: 0, why: m('1000 − 729') + '.' },
+    { q: 'Two dice with at least one six:', a: [m('10'), m('11'), m('12'), m('6')], c: 1, why: 'Not the same as exactly one.' },
+    { q: 'A good check on a count is:', a: ['doing it again the same way', 'a small case', 'guessing', 'rounding'], c: 1, why: 'It can be listed.' },
+    { q: 'Even and odd counts must:', a: ['be equal', 'add to the total', 'differ by one', 'multiply to the total'], c: 1, why: 'They split the whole.' }
+  ],
+  practice: {
+    easy: [
+      [m('3') + '-figure numbers from ' + m('1,2,3,4,5') + ', no repeats', m('60')],
+      ['How many are even', m('24')],
+      ['How many are odd', m('36')],
+      ['How many start with ' + m('5'), m('12')],
+      ['Three coins: outcomes in all', m('8')],
+      ['Three coins with at least one head', m('7')],
+      ['Two dice: outcomes in all', m('36')]
+    ],
+    med: [
+      [m('3') + '-figure codes with at least one ' + m('7'), m('271')],
+      ['Two dice with at least one six', m('11')],
+      ['Two dice with exactly one six', m('10')],
+      ['A committee of one boy and one girl from ' + m('4') + ' and ' + m('3'), m('12')],
+      [m('3') + '-figure numbers from ' + m('1,2,3,4,5') + ' greater than ' + m('300'), m('36')],
+      ['Seating ' + m('4') + ' pupils with one fixed at the end', m('6')],
+      [m('4') + '-figure PINs with no ' + m('0'), m('6561')]
+    ],
+    hard: [
+      [m('4') + '-figure codes with at least one ' + m('7'), m('3439')],
+      ['Three dice with at least one six', m('91')],
+      [m('3') + '-digit numbers with no repeated digit and even', m('328')],
+      ['Committees of ' + m('2') + ' from ' + m('7') + ' pupils', m('21')],
+      ['Committees of ' + m('2') + ' from ' + m('7') + ' with at least one of ' + m('3') + ' girls', m('15')],
+      ['Why check with a small case?', 'It can be listed in full and compared'],
+      ['Arrangements of ' + m('5') + ' books with two particular ones together', m('48')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'For every “at least one”, count the opposite case and subtract.',
+  homework: [
+    'How many ' + m('3') + '-figure numbers with different digits can be made from ' + m('2, 3, 4, 5, 6') + '?',
+    'How many of them are even?',
+    'How many ' + m('4') + '-figure codes from ' + m('10') + ' digits contain at least one ' + m('9') + '?',
+    'How many outcomes of four coins contain at least one tail?',
+    'A committee of one boy and one girl is chosen from ' + m('5') + ' boys and ' + m('6') + ' girls. How many committees?'
+  ]
+});
