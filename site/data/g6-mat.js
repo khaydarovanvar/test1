@@ -10073,3 +10073,182 @@ G6_MAT.push({
     'Convert ' + m('108') + ' km/h to m/s and ' + m('15') + ' m/s to km/h.'
   ]
 });
+
+/* ============================== 57 ============================== */
+G6_MAT.push({
+  id: 'g6-57', stream: 'mat', grade: 6, quarter: 3, lessons: '117–119', hours: 3,
+  title: 'Speed',
+  subtitle: 'What a speed measures, how it is written, and how fast things actually go.',
+  uz: 'Matematika 6, §24', uzPage: 'pp. 339–348',
+  cam: 'S7 12 rates', camPage: 'Stage 7, pp. 122–126', wb: 'Exercise 12.5',
+  objectives: [
+    'Define speed as distance per unit of time.',
+    'Compare speeds given in different units.',
+    'Read a speed from a table or a description.',
+    'Judge whether a speed is reasonable.'
+  ],
+  terms: [
+    ['Speed', 'Tezlik', 'Скорость'],
+    ['Per hour', 'Bir soatda', 'В час'],
+    ['Per second', 'Bir sekundda', 'В секунду'],
+    ['Uniform speed', 'Bir tekis tezlik', 'Равномерная скорость'],
+    ['To compare', 'Taqqoslash', 'Сравнить'],
+    ['Reasonable', 'Maqbul', 'Разумный'],
+    ['Rate', 'Me’yor', 'Норма'],
+    ['Unit of speed', 'Tezlik birligi', 'Единица скорости']
+  ],
+  timing: [[25, 'What a speed is'], [30, 'Finding a speed'], [35, 'Comparing speeds'], [25, 'Is it reasonable?'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'What a speed is',
+      html: `${eq(m('v = ' + f('s', 't')), true)}
+      <p>A speed of ${m('60')} km/h means ${m('60')} km in every hour — and therefore ${m('30')} km in half
+      an hour, ${m('1')} km per minute, and ${m('16.7')} m each second.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Speed</th><th>In one hour</th><th>In one minute</th></tr></thead>
+      <tbody>
+        <tr><td class="m">60 km/h</td><td class="m">60 km</td><td class="m">1 km</td></tr>
+        <tr><td class="m">90 km/h</td><td class="m">90 km</td><td class="m">1.5 km</td></tr>
+        <tr><td class="m">5 km/h</td><td class="m">5 km</td><td class="m">83 m</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A speed is a rate: something per something</div>
+      Price per kilogram, pupils per class, kilometres per hour — all are rates, and all are found by
+      dividing one quantity by another.</div>`
+    },
+    {
+      h: 'Finding a speed',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Journey</th><th>Working</th><th>Speed</th></tr></thead>
+      <tbody>
+        <tr><td>${m('180')} km in ${m('3')} h</td><td class="m">180 ÷ 3</td><td class="m">60 km/h</td></tr>
+        <tr><td>${m('240')} km in ${m('4')} h</td><td class="m">240 ÷ 4</td><td class="m">60 km/h</td></tr>
+        <tr><td>${m('100')} m in ${m('12.5')} s</td><td class="m">100 ÷ 12.5</td><td class="m">8 m/s</td></tr>
+        <tr><td>${m('9')} km in ${m('40')} min</td><td class="m">9 ÷ ${f('2', '3')}</td><td class="m">13.5 km/h</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Divide the distance by the time, never the other way round</span>
+      ${m('3 ÷ 180')} gives ${m('0.017')}, which is hours per kilometre — a real quantity, but not the one
+      asked for. The units tell you which division you have done.</div>`
+    },
+    {
+      h: 'Comparing speeds',
+      html: `<p>Two speeds can only be compared in the same units.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>A</th><th>B</th><th>In one unit</th><th>Faster</th></tr></thead>
+      <tbody>
+        <tr><td class="m">72 km/h</td><td class="m">18 m/s</td><td>${m('20')} and ${m('18')} m/s</td><td>A</td></tr>
+        <tr><td class="m">54 km/h</td><td class="m">16 m/s</td><td>${m('15')} and ${m('16')} m/s</td><td>B</td></tr>
+        <tr><td class="m">4 km/h</td><td class="m">70 m/min</td><td>${m('66.7')} and ${m('70')} m/min</td><td>B</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Convert first, compare second</div>
+      The larger number is not the faster speed unless the units match. This is the same rule as comparing
+      ${m('50')} cm with ${m('2')} m.</div>`
+    },
+    {
+      h: 'Is it reasonable?',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Mover</th><th>Typical speed</th></tr></thead>
+      <tbody>
+        <tr><td>a walker</td><td class="m">5 km/h</td></tr>
+        <tr><td>a cyclist</td><td class="m">15–20 km/h</td></tr>
+        <tr><td>a car in a town</td><td class="m">40–60 km/h</td></tr>
+        <tr><td>a train</td><td class="m">100–160 km/h</td></tr>
+        <tr><td>an aeroplane</td><td class="m">800–900 km/h</td></tr>
+        <tr><td>sound in air</td><td class="m">340 m/s</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">An answer of ${m('600')} km/h for a cyclist is a signal, not a result</span>
+      Comparing an answer with the table catches unit errors and misplaced decimal points before the
+      working is even reread.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A runner covers ' + m('100') + ' m in ' + m('12.5') + ' seconds. Find the speed.',
+      steps: [
+        [m('v = ' + f('s', 't') + ' = ' + f('100', '12.5')), ''],
+        [m('= 8') + ' m/s.', ''],
+        ['In km/h that is ' + m('28.8') + ' — reasonable for a sprinter.', '']
+      ],
+      ans: m('8 m/s')
+    },
+    {
+      q: 'Which is faster, ' + m('72') + ' km/h or ' + m('18') + ' m/s?',
+      steps: [
+        [m('72 ÷ 3.6 = 20') + ' m/s.', ''],
+        [m('20 > 18') + '.', ''],
+        ['The first is faster.', '']
+      ],
+      ans: m('72') + ' km/h'
+    },
+    {
+      q: 'A cyclist covers ' + m('9') + ' km in ' + m('40') + ' minutes. Find the speed in km/h.',
+      steps: [
+        [m('40') + ' min ' + m('= ' + f('2', '3')) + ' h.', ''],
+        [m('9 ÷ ' + f('2', '3') + ' = 9 · ' + f('3', '2')), ''],
+        [m('= 13.5') + ' km/h.', 'Reasonable for a cyclist ✓']
+      ],
+      ans: m('13.5 km/h')
+    }
+  ],
+  modelNote: 'Have the class estimate the speed of a walk down the corridor, then measure it; being within 20% is a good result and makes the units real.',
+  interactive: {
+    type: 'quiz',
+    title: 'Speeds and their units',
+    hint: 'Convert before comparing.',
+    items: [
+      { q: m('180') + ' km in ' + m('3') + ' h:', a: [m('60 km/h'), m('540 km/h'), m('0.017'), m('183')], c: 0, why: 'Distance over time.' },
+      { q: m('100') + ' m in ' + m('12.5') + ' s:', a: [m('8 m/s'), m('12.5 m/s'), m('0.125 m/s'), m('1250 m/s')], c: 0, why: m('100 ÷ 12.5') + '.' },
+      { q: m('9') + ' km in ' + m('40') + ' min:', a: [m('13.5 km/h'), m('0.225 km/h'), m('360 km/h'), m('22.5 km/h')], c: 0, why: 'Time in hours.' },
+      { q: 'Which is faster, ' + m('72') + ' km/h or ' + m('18') + ' m/s?', a: [m('72') + ' km/h', m('18') + ' m/s', 'equal', 'cannot say'], c: 0, why: m('20 > 18') + '.' },
+      { q: 'Which is faster, ' + m('54') + ' km/h or ' + m('16') + ' m/s?', a: [m('54') + ' km/h', m('16') + ' m/s', 'equal', 'cannot say'], c: 1, why: m('16 > 15') + '.' },
+      { q: 'A walker’s speed is about:', a: [m('1') + ' km/h', m('5') + ' km/h', m('20') + ' km/h', m('60') + ' km/h'], c: 1, why: 'Ordinary walking.' },
+      { q: 'Sound travels at about:', a: [m('34') + ' m/s', m('340') + ' m/s', m('3400') + ' m/s', m('34') + ' km/h'], c: 1, why: 'In air.' },
+      { q: m('600') + ' km/h for a cyclist means:', a: ['a fast cyclist', 'an error somewhere', 'a downhill', 'a record'], c: 1, why: 'Compare with the table.' }
+    ]
+  },
+  quiz: [
+    { q: 'Speed is:', a: ['distance times time', 'distance over time', 'time over distance', 'distance plus time'], c: 1, why: 'A rate.' },
+    { q: m('240') + ' km in ' + m('4') + ' h is:', a: [m('60 km/h'), m('960 km/h'), m('0.017 km/h'), m('244 km/h')], c: 0, why: 'Divide.' },
+    { q: 'To compare km/h with m/s you:', a: ['add them', 'convert one', 'take the larger number', 'divide them'], c: 1, why: 'Same units first.' },
+    { q: m('4') + ' km/h in metres per minute is about:', a: [m('40'), m('67'), m('240'), m('4')], c: 1, why: m('4000 ÷ 60') + '.' },
+    { q: 'A train’s speed is about:', a: [m('15') + ' km/h', m('60') + ' km/h', m('120') + ' km/h', m('800') + ' km/h'], c: 2, why: 'Typical.' },
+    { q: 'Hours per kilometre is:', a: ['a speed', 'the reciprocal of a speed', 'nonsense', 'the same thing'], c: 1, why: 'Time over distance.' }
+  ],
+  practice: {
+    easy: [
+      [m('180') + ' km in ' + m('3') + ' h', m('60 km/h')],
+      [m('240') + ' km in ' + m('4') + ' h', m('60 km/h')],
+      [m('100') + ' m in ' + m('12.5') + ' s', m('8 m/s')],
+      [m('60') + ' km in ' + m('1') + ' h', m('60 km/h')],
+      [m('20') + ' m in ' + m('4') + ' s', m('5 m/s')],
+      ['A walker’s speed', 'about ' + m('5 km/h')],
+      ['Sound in air', m('340 m/s')]
+    ],
+    med: [
+      [m('9') + ' km in ' + m('40') + ' min', m('13.5 km/h')],
+      [m('3') + ' km in ' + m('45') + ' min', m('4 km/h')],
+      ['Faster: ' + m('72') + ' km/h or ' + m('18') + ' m/s?', m('72') + ' km/h'],
+      ['Faster: ' + m('54') + ' km/h or ' + m('16') + ' m/s?', m('16') + ' m/s'],
+      [m('4') + ' km/h in m/min', m('66.7')],
+      [m('90') + ' km/h in m/s', m('25')],
+      ['A cyclist at ' + m('600') + ' km/h means', 'an error somewhere']
+    ],
+    hard: [
+      ['A train covers ' + m('420') + ' km in ' + m('3 h 30 min'), m('120 km/h')],
+      ['An aeroplane covers ' + m('2 700') + ' km in ' + m('3') + ' h', m('900 km/h')],
+      ['Light takes ' + m('8') + ' minutes from the Sun, ' + m('150') + ' million km away: the speed', 'About ' + m('312 500') + ' km/s'],
+      ['A ' + m('400') + ' m lap in ' + m('50') + ' s', m('8 m/s') + ', or ' + m('28.8 km/h')],
+      ['Which is faster: ' + m('1') + ' km per minute or ' + m('60') + ' km/h?', 'Equal'],
+      ['A snail at ' + m('1') + ' cm/s in km/h', m('0.036')],
+      ['Why compare an answer with a table of typical speeds?', 'It catches unit errors at once']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Check every answer against a typical speed for that kind of mover.',
+  homework: [
+    'A car covers ' + m('330') + ' km in ' + m('5') + ' hours. Find its speed.',
+    'A sprinter runs ' + m('200') + ' m in ' + m('25') + ' seconds. Find the speed in m/s and in km/h.',
+    'A walker covers ' + m('6') + ' km in ' + m('1 h 20 min') + '. Find the speed.',
+    'Which is faster: ' + m('90') + ' km/h or ' + m('26') + ' m/s?',
+    'Write down a typical speed for a walker, a car and an aeroplane.'
+  ]
+});
