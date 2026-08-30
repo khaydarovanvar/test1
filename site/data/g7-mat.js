@@ -4072,3 +4072,343 @@ G7_MAT.push({
     'Solve ' + m('x + ' + f('3', '5') + ' = ' + f('1', '10')) + '.'
   ]
 });
+
+/* ============================== 24 ============================== */
+G7_MAT.push({
+  id: 'g7-24', stream: 'mat', grade: 7, quarter: 2, lessons: '46', hours: 1,
+  title: 'Triangles: their kinds and their elements',
+  subtitle: 'Three sides, three angles, and the two ways of classifying every triangle there is.',
+  uz: 'Matematika 7, §19', uzPage: 'pp. 118–122',
+  cam: 'S8 8.1', camPage: 'Stage 8, pp. 78–84', wb: 'Exercise 8.1',
+  objectives: [
+    'Name the elements of a triangle and use the standard notation.',
+    'Classify triangles by their sides and by their angles.',
+    'Use the triangle inequality to decide whether three lengths can form a triangle.',
+    'Identify the median, the altitude and the bisector of a triangle.'
+  ],
+  terms: [
+    ['Triangle', 'Uchburchak', 'Треугольник'],
+    ['Vertex', 'Uchi', 'Вершина'],
+    ['Side', 'Tomon', 'Сторона'],
+    ['Scalene', 'Turli tomonli', 'Разносторонний'],
+    ['Isosceles', 'Teng yonli', 'Равнобедренный'],
+    ['Equilateral', 'Teng tomonli', 'Равносторонний'],
+    ['Median', 'Mediana', 'Медиана'],
+    ['Altitude', 'Balandlik', 'Высота']
+  ],
+  timing: [[10, 'Elements and notation'], [12, 'Two classifications'], [12, 'The triangle inequality'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'Elements and notation',
+      html: `<p>A triangle has three <b>vertices</b>, three <b>sides</b> and three <b>angles</b>. The
+      standard notation names the side by the small letter of the opposite vertex.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Element</th><th>Written</th></tr></thead>
+      <tbody>
+        <tr><td>vertices</td><td class="m">A, B, C</td></tr>
+        <tr><td>sides</td><td class="m">a = BC, b = CA, c = AB</td></tr>
+        <tr><td>angles</td><td class="m">∠A, ∠B, ∠C</td></tr>
+        <tr><td>perimeter</td><td class="m">P = a + b + c</td></tr>
+      </tbody></table></div>
+      <p>Three special segments from a vertex:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Segment</th><th>Goes to</th></tr></thead>
+      <tbody>
+        <tr><td>median</td><td>the midpoint of the opposite side</td></tr>
+        <tr><td>altitude</td><td>the opposite side, at a right angle</td></tr>
+        <tr><td>bisector</td><td>the opposite side, halving the angle</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Side ${m('a')} faces angle ${m('A')}</div>
+      That single convention makes every later formula readable — the sine rule, the cosine rule, the
+      area formula. It is worth fixing now.</div>`
+    },
+    {
+      h: 'Two classifications',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>By sides</th><th>Means</th><th>By angles</th><th>Means</th></tr></thead>
+      <tbody>
+        <tr><td>scalene</td><td>all sides different</td><td>acute</td><td>all angles acute</td></tr>
+        <tr><td>isosceles</td><td>two sides equal</td><td>right</td><td>one angle ${m('90°')}</td></tr>
+        <tr><td>equilateral</td><td>all three equal</td><td>obtuse</td><td>one angle obtuse</td></tr>
+      </tbody></table></div>
+      <p>The two classifications are independent: a triangle may be isosceles and right, or scalene and
+      obtuse, and so on. An equilateral triangle is always acute, with all angles ${m('60°')}.</p>
+      {{fig:isoscelesTriangle:An isosceles triangle — two equal sides and two equal base angles.}}
+      <div class="warn"><span class="wl">Every equilateral triangle is isosceles</span>
+      “Two sides equal” does not mean “exactly two”. The equilateral triangle is the special case in
+      which all three are.</div>`
+    },
+    {
+      h: 'The triangle inequality',
+      html: `${eq('Each side is less than the sum of the other two', true)}
+      ${eq(m('a < b + c') + ',   ' + m('b < c + a') + ',   ' + m('c < a + b'), true)}
+      <p>It is enough to check the <b>longest</b> side: if the longest is less than the sum of the other
+      two, all three inequalities hold.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Lengths</th><th>Check</th><th>Triangle?</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3, 4, 5</td><td class="m">5 < 3 + 4</td><td>yes</td></tr>
+        <tr><td class="m">2, 3, 6</td><td class="m">6 > 2 + 3</td><td>no</td></tr>
+        <tr><td class="m">4, 4, 8</td><td class="m">8 = 4 + 4</td><td>no — flat</td></tr>
+        <tr><td class="m">7, 10, 15</td><td class="m">15 < 7 + 10</td><td>yes</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Equality gives no triangle</span>
+      ${m('4, 4, 8')} lays the two short sides flat along the long one. The inequality must be strict.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Can a triangle have sides ' + m('2, 3, 6') + '? And ' + m('7, 10, 15') + '?',
+      steps: [
+        ['Longest of the first: ' + m('6') + '.', ''],
+        [m('2 + 3 = 5 < 6') + ' — no triangle.', ''],
+        ['Longest of the second: ' + m('15') + '.', ''],
+        [m('7 + 10 = 17 > 15') + ' — yes.', '']
+      ],
+      ans: 'No; yes'
+    },
+    {
+      q: 'A triangle has ' + m('a = 5') + ' and ' + m('b = 9') + '. Between which values must ' + m('c') + ' lie?',
+      steps: [
+        [m('c < 5 + 9 = 14'), ''],
+        [m('9 < 5 + c ⇒ c > 4'), ''],
+        ['Combine.', ''],
+        [m('4 < c < 14'), '']
+      ],
+      ans: m('4 < c < 14')
+    },
+    {
+      q: 'Classify a triangle with sides ' + m('5, 5, 8') + ' and one angle of ' + m('106°') + '.',
+      steps: [
+        ['Two sides equal: isosceles.', 'By sides.'],
+        ['One angle above ' + m('90°') + ': obtuse.', 'By angles.'],
+        ['Both classifications apply at once.', ''],
+        ['An obtuse isosceles triangle.', '']
+      ],
+      ans: 'Obtuse isosceles'
+    }
+  ],
+  modelNote: 'Give out three strips of card of lengths 2, 3 and 6 cm and ask the class to make a triangle; the failure is more convincing than the inequality.',
+  interactive: {
+    type: 'triangleAngles',
+    title: 'Kinds of triangle',
+    hint: 'Drag a vertex and watch the classification change.'
+  },
+  quiz: [
+    { q: 'Side ' + m('a') + ' is opposite:', a: [m('∠A'), m('∠B'), m('∠C'), 'no angle'], c: 0, why: 'The standard convention.' },
+    { q: 'A triangle with two equal sides is:', a: ['scalene', 'isosceles', 'equilateral', 'right'], c: 1, why: 'By sides.' },
+    { q: 'An equilateral triangle has angles:', a: [m('45°'), m('60°'), m('90°'), 'various'], c: 1, why: m('180 ÷ 3') + '.' },
+    { q: 'Can ' + m('2, 3, 6') + ' form a triangle?', a: ['yes', 'no', 'sometimes', 'only if right'], c: 1, why: m('2 + 3 < 6') + '.' },
+    { q: 'A median goes to:', a: ['the midpoint', 'at a right angle', 'the bisected angle', 'the vertex'], c: 0, why: 'By definition.' },
+    { q: 'With ' + m('a = 5, b = 9') + ', ' + m('c') + ' satisfies:', a: [m('c < 14'), m('c > 4'), m('4 < c < 14'), m('c = 14')], c: 2, why: 'Both inequalities.' }
+  ],
+  practice: {
+    easy: [
+      ['Side opposite ' + m('∠B'), m('b')],
+      ['A triangle with all sides different', 'Scalene'],
+      ['A triangle with all sides equal', 'Equilateral'],
+      ['Angles of an equilateral triangle', m('60°') + ' each'],
+      ['Can ' + m('3, 4, 5') + ' be a triangle?', 'Yes'],
+      ['Can ' + m('2, 3, 6') + ' be a triangle?', 'No'],
+      ['Can ' + m('4, 4, 8') + ' be a triangle?', 'No']
+    ],
+    med: [
+      ['Can ' + m('7, 10, 15') + ' be a triangle?', 'Yes'],
+      [m('a = 5, b = 9') + ': range of ' + m('c'), m('4 < c < 14')],
+      [m('a = 6, b = 6') + ': range of ' + m('c'), m('0 < c < 12')],
+      ['Classify ' + m('5, 5, 8') + ' with a ' + m('106°') + ' angle', 'Obtuse isosceles'],
+      ['Classify ' + m('3, 4, 5'), 'Right scalene'],
+      ['Perimeter of a triangle ' + m('7, 9, 12'), m('28')],
+      ['A median goes to', 'The midpoint']
+    ],
+    hard: [
+      ['An isosceles triangle with perimeter ' + m('20') + ' and base ' + m('8'), 'Sides ' + m('6, 6, 8')],
+      ['The possible integer values of ' + m('c') + ' with ' + m('a = 5, b = 9'), m('5') + ' to ' + m('13')],
+      ['How many of them?', m('9')],
+      ['An isosceles triangle with sides ' + m('3') + ' and ' + m('7'), 'Only ' + m('3, 7, 7')],
+      ['Why not ' + m('3, 3, 7') + '?', m('3 + 3 < 7')],
+      ['A triangle with perimeter ' + m('12') + ' and integer sides: how many?', m('3')],
+      ['Name them', m('2,5,5; 3,4,5; 4,4,4')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Check the longest side against the sum of the other two, every time.',
+  homework: [
+    'Can a triangle have sides ' + m('4, 6, 11') + '? And ' + m('8, 9, 16') + '?',
+    'A triangle has ' + m('a = 7') + ' and ' + m('b = 11') + '. Give the range of ' + m('c') + '.',
+    'Classify a triangle with sides ' + m('6, 6, 6') + '.',
+    'Classify a triangle with a ' + m('90°') + ' angle and two equal sides.',
+    'An isosceles triangle has perimeter ' + m('26') + ' and base ' + m('10') + '. Find the equal sides.'
+  ]
+});
+
+/* ============================== 25 ============================== */
+G7_MAT.push({
+  id: 'g7-25', stream: 'mat', grade: 7, quarter: 2, lessons: '47–48', hours: 2,
+  title: 'The first criterion of congruence of triangles',
+  subtitle: 'Two sides and the angle between them fix a triangle completely.',
+  uz: 'Matematika 7, §20', uzPage: 'pp. 123–129',
+  cam: 'S8 5', camPage: 'Stage 8, pp. 48–56', wb: 'Exercise 5.1',
+  objectives: [
+    'Define congruent triangles and use the symbol ≡.',
+    'State and apply the SAS criterion.',
+    'Write a proof of congruence in statement-and-reason form.',
+    'Deduce equal sides and angles from a congruence.'
+  ],
+  terms: [
+    ['Congruent', 'Teng', 'Равный'],
+    ['Criterion', 'Alomat', 'Признак'],
+    ['Corresponding elements', 'Mos elementlar', 'Соответственные элементы'],
+    ['Included angle', 'Orasidagi burchak', 'Угол между сторонами'],
+    ['Superposition', 'Ustma-ust qo‘yish', 'Наложение'],
+    ['To follow', 'Kelib chiqmoq', 'Следовать'],
+    ['Common side', 'Umumiy tomon', 'Общая сторона'],
+    ['Proof', 'Isbot', 'Доказательство']
+  ],
+  timing: [[15, 'What congruence means'], [25, 'The criterion'], [25, 'Writing a proof'], [20, 'Consequences'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'What congruence means',
+      html: `<p>Two triangles are <b>congruent</b> if one can be laid exactly on the other. Written
+      ${m('△ABC ≡ △A₁B₁C₁')}, with the vertices in matching order.</p>
+      <p>Congruent triangles have <b>six</b> pairs of equal elements: three sides and three angles.</p>
+      {{fig:congruence:Congruent triangles — same shape and same size, in any position.}}
+      <div class="warn"><span class="wl">The order of the letters is part of the statement</span>
+      ${m('△ABC ≡ △A₁B₁C₁')} says ${m('A')} matches ${m('A₁')}, ${m('B')} matches ${m('B₁')} and
+      ${m('C')} matches ${m('C₁')}. Writing them in the wrong order claims something false.</div>`
+    },
+    {
+      h: 'The criterion',
+      html: `${eq('If two sides of one triangle and the angle between them are equal to two sides and the angle between them of another, the triangles are congruent', true)}
+      ${eq(m('AB = A₁B₁') + ',   ' + m('AC = A₁C₁') + ',   ' + m('∠A = ∠A₁') + '   ⟹   ' + m('△ABC ≡ △A₁B₁C₁'), true)}
+      <p>Three of the six pairs are enough — provided they are the <b>right</b> three.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Congruent?</th></tr></thead>
+      <tbody>
+        <tr><td>two sides and the included angle</td><td>yes — the first criterion</td></tr>
+        <tr><td>two sides and a non-included angle</td><td>not necessarily</td></tr>
+        <tr><td>three angles</td><td>no — only similar</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Why the angle must be included</div>
+      Two sides fixed at a hinge open and close: the third side changes with the angle. Fixing that angle
+      fixes the triangle. With a non-included angle the hinge is not fixed and two shapes remain
+      possible.</div>`
+    },
+    {
+      h: 'Writing a proof',
+      html: `<p><b>Problem.</b> ${m('AB = AD')} and ${m('∠BAC = ∠DAC')}. Prove ${m('△ABC ≡ △ADC')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td class="m">AB = AD</td><td>given</td></tr>
+        <tr><td class="m">∠BAC = ∠DAC</td><td>given</td></tr>
+        <tr><td class="m">AC = AC</td><td>common side</td></tr>
+        <tr><td class="m">△ABC ≡ △ADC</td><td>first criterion (SAS)</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The common side is the mark most often missed</div>
+      Almost every proof of this kind needs it, and it is always available. Looking for a shared side or
+      a shared angle is the first thing to do in any congruence question.</div>`
+    },
+    {
+      h: 'Consequences',
+      html: `<p>Once a congruence is proved, <b>all six</b> pairs of elements are equal. That is what makes
+      the criteria useful: three facts are given, and three more follow free.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Proved</th><th>Then also</th></tr></thead>
+      <tbody>
+        <tr><td class="m">△ABC ≡ △ADC</td><td class="m">BC = DC</td></tr>
+        <tr><td>same</td><td class="m">∠B = ∠D</td></tr>
+        <tr><td>same</td><td class="m">∠BCA = ∠DCA</td></tr>
+      </tbody></table></div>
+      <p>The abbreviation used in proofs is ${m('CPCT')} — corresponding parts of congruent triangles.</p>
+      <div class="warn"><span class="wl">Match the elements by position, not by appearance</span>
+      In ${m('△ABC ≡ △ADC')}, ${m('BC')} corresponds to ${m('DC')} because ${m('B')} matches ${m('D')}
+      and ${m('C')} matches ${m('C')}. Reading the correspondence off the letters is always safe; reading
+      it off the drawing is not.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: m('AB = AD') + ' and ' + m('∠BAC = ∠DAC') + '. Prove ' + m('△ABC ≡ △ADC') + '.',
+      steps: [
+        [m('AB = AD') + ' — given.', ''],
+        [m('∠BAC = ∠DAC') + ' — given.', 'The included angle.'],
+        [m('AC') + ' is common to both.', 'The extra fact.'],
+        ['By the first criterion, ' + m('△ABC ≡ △ADC') + '.', '']
+      ],
+      ans: 'Proved by SAS'
+    },
+    {
+      q: 'In the same figure, what else follows?',
+      steps: [
+        ['All six pairs of elements are equal.', 'CPCT.'],
+        [m('BC = DC'), ''],
+        [m('∠B = ∠D'), ''],
+        [m('∠BCA = ∠DCA'), '']
+      ],
+      ans: m('BC = DC') + ', ' + m('∠B = ∠D') + ', ' + m('∠BCA = ∠DCA')
+    },
+    {
+      q: 'Two triangles have sides ' + m('6') + ' and ' + m('8') + ' with an angle of ' + m('40°') + '. Must they be congruent?',
+      steps: [
+        ['If the ' + m('40°') + ' lies between the ' + m('6') + ' and the ' + m('8') + ': yes.', 'SAS.'],
+        ['If it lies elsewhere: not necessarily.', ''],
+        ['The position of the angle decides.', ''],
+        ['Only when it is the included angle.', '']
+      ],
+      ans: 'Only if the angle is included'
+    }
+  ],
+  modelNote: 'Hinge two rulers at a fixed angle and mark the third side; changing the angle changes it, and the criterion becomes a physical fact.',
+  interactive: {
+    type: 'triangleAngles',
+    title: 'Two sides and the angle between',
+    hint: 'Fix the angle and the triangle is fixed.'
+  },
+  quiz: [
+    { q: 'Congruent triangles have how many pairs of equal elements?', a: [m('3'), m('4'), m('6'), m('2')], c: 2, why: 'Three sides and three angles.' },
+    { q: 'The first criterion needs:', a: ['three sides', 'two angles', 'two sides and the included angle', 'three angles'], c: 2, why: 'SAS.' },
+    { q: 'Three equal angles give:', a: ['congruence', 'similarity only', 'nothing', 'equal areas'], c: 1, why: 'The size is not fixed.' },
+    { q: 'A shared side in a figure is:', a: ['irrelevant', 'a usable equality', 'a mistake', 'an angle'], c: 1, why: m('AC = AC') + '.' },
+    { q: m('CPCT') + ' means:', a: ['a criterion', 'corresponding parts of congruent triangles', 'a construction', 'a theorem name'], c: 1, why: 'The standard abbreviation.' },
+    { q: 'A non-included equal angle gives:', a: ['congruence', 'not necessarily congruence', 'similarity only', 'nothing'], c: 1, why: 'Two shapes remain possible.' }
+  ],
+  practice: {
+    easy: [
+      ['Congruent triangles have how many equal pairs?', m('6')],
+      ['The symbol for congruence', m('≡')],
+      ['The first criterion in letters', m('SAS')],
+      ['A common side gives', 'An equality for free'],
+      ['Three equal angles give', 'Similarity only'],
+      ['In ' + m('△ABC ≡ △DEF') + ', ' + m('AB') + ' matches', m('DE')],
+      ['In the same, ' + m('∠C') + ' matches', m('∠F')]
+    ],
+    med: [
+      [m('AB = AD, ∠BAC = ∠DAC') + ': the third fact', m('AC') + ' common'],
+      ['What follows about ' + m('BC') + '?', m('BC = DC')],
+      ['What follows about ' + m('∠B') + '?', m('∠B = ∠D')],
+      ['Sides ' + m('6, 8') + ' with ' + m('40°') + ' included: congruent?', 'Yes'],
+      ['Sides ' + m('6, 8') + ' with ' + m('40°') + ' not included: congruent?', 'Not necessarily'],
+      ['Two triangles with ' + m('5, 7') + ' and ' + m('60°') + ' included', 'Congruent'],
+      ['Are congruent triangles similar?', 'Yes, with ' + m('k = 1')]
+    ],
+    hard: [
+      ['In a parallelogram, prove the two triangles cut by a diagonal are congruent', 'SAS with the common diagonal'],
+      ['Prove that the diagonals of a parallelogram bisect each other', 'Congruent triangles at the centre'],
+      ['An isosceles triangle: prove the bisector from the apex is a median', 'SAS'],
+      ['Two triangles with ' + m('AB = DE, AC = DF, ∠A = ∠D') + ': name the criterion', 'The first'],
+      ['Why is ' + m('AAA') + ' not enough?', 'Any enlargement has the same angles'],
+      ['In ' + m('△ABC ≡ △DEF') + ' with ' + m('AB = 5, ∠B = 40°') + ': find ' + m('DE') + ' and ' + m('∠E'), m('5') + ' and ' + m('40°')],
+      ['Prove that a kite has two pairs of congruent triangles', 'SAS on each diagonal']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Look for a common side or a common angle in every figure before starting.',
+  homework: [
+    'In a figure with ' + m('AB = AC') + ' and ' + m('∠BAD = ∠CAD') + ', prove ' + m('△ABD ≡ △ACD') + '.',
+    'State what else follows from that congruence.',
+    'Explain why the equal angle must lie between the two equal sides.',
+    'Two triangles have sides ' + m('7') + ' and ' + m('9') + ' with an included angle of ' + m('55°') + '. Are they congruent?',
+    'Prove that a diagonal of a parallelogram divides it into two congruent triangles.'
+  ]
+});
