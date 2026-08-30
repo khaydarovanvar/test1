@@ -12594,3 +12594,197 @@ G6_MAT.push({
     'Write two sentences on why a factory might still not choose the best shape.'
   ]
 });
+
+/* ============================== 71 ============================== */
+G6_MAT.push({
+  id: 'g6-71', stream: 'mat', grade: 6, quarter: 3, lessons: '151–154', hours: 4,
+  title: 'Revision — mensuration of solids',
+  subtitle: 'Every formula of the block, forwards and backwards, with the units that decide the marks.',
+  uz: 'Matematika 6, takrorlash', uzPage: 'pp. 439–448',
+  cam: 'S7 15 consolidation', camPage: 'Stage 7, pp. 156–172', wb: 'Review 15',
+  objectives: [
+    'State and use every formula of the block from memory.',
+    'Answer forward questions — volume and surface area from the edges.',
+    'Answer reverse questions — an edge or a face from the volume or the surface area.',
+    'Name the five mistakes that lose the most marks and avoid each one.'
+  ],
+  terms: [
+    ['Volume', 'Hajm', 'Объём'],
+    ['Surface area', 'Sirt yuzasi', 'Площадь поверхности'],
+    ['Cuboid', 'Parallelepiped', 'Прямоугольный параллелепипед'],
+    ['Cube', 'Kub', 'Куб'],
+    ['Base area', 'Asos yuzasi', 'Площадь основания'],
+    ['Capacity', 'Sig‘im', 'Вместимость'],
+    ['Displacement', 'Siqib chiqarish', 'Вытеснение'],
+    ['Unit', 'Birlik', 'Единица измерения']
+  ],
+  timing: [[30, 'The formulae of the block'], [30, 'Forward questions'], [35, 'Reverse questions'], [35, 'Context and units'], [25, 'The mistakes that cost marks'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The formulae of the block',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Wanted</th><th>For a cuboid</th><th>For a cube</th></tr></thead>
+      <tbody>
+        <tr><td>volume</td><td class="m">V = abc</td><td class="m">V = a³</td></tr>
+        <tr><td>surface area</td><td class="m">S = 2(ab + bc + ac)</td><td class="m">S = 6a²</td></tr>
+        <tr><td>one face</td><td class="m">ab, bc or ac</td><td class="m">${f('S', '6')}</td></tr>
+        <tr><td>a missing edge</td><td class="m">${f('V', 'ab')}</td><td>the cube root of ${m('V')}</td></tr>
+        <tr><td>the edge from ${m('S')}</td><td>solve ${m('2(ab + bc + ac) = S')}</td><td>the square root of ${f('S', '6')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two conversions carry most of the marks</div>
+      ${m('1')} litre ${m('= 1000')} cm³, and ${m('1')} m³ ${m('= 1 000 000')} cm³ ${m('= 1000')} litres.
+      Everything else in the block is a multiplication or its reverse.</div>`
+    },
+    {
+      h: 'Forward questions',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Volume</th><th>The three faces</th><th>Surface area</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5 × 4 × 3 cm</td><td class="m">60 cm³</td><td class="m">20, 12, 15</td><td class="m">94 cm²</td></tr>
+        <tr><td class="m">8 × 5 × 2 cm</td><td class="m">80 cm³</td><td class="m">40, 10, 16</td><td class="m">132 cm²</td></tr>
+        <tr><td class="m">10 × 6 × 4 cm</td><td class="m">240 cm³</td><td class="m">60, 24, 40</td><td class="m">248 cm²</td></tr>
+        <tr><td>cube, edge ${m('4')} cm</td><td class="m">64 cm³</td><td class="m">16 each</td><td class="m">96 cm²</td></tr>
+        <tr><td>cube, edge ${m('7')} cm</td><td class="m">343 cm³</td><td class="m">49 each</td><td class="m">294 cm²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Three numbers multiplied, three products doubled</div>
+      Every forward question in the block is one of those two sentences. Write the three faces on their own
+      line and the surface area cannot go wrong.</div>`
+    },
+    {
+      h: 'Reverse questions',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Wanted</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">V = 120, base 5 × 4</td><td>the height</td><td class="m">120 ÷ 20</td><td class="m">6 cm</td></tr>
+        <tr><td class="m">V = 240, base 10 × 6</td><td>the height</td><td class="m">240 ÷ 60</td><td class="m">4 cm</td></tr>
+        <tr><td>cube, ${m('V = 512')}</td><td>the edge</td><td class="m">a³ = 512</td><td class="m">8 cm</td></tr>
+        <tr><td>cube, ${m('S = 150')}</td><td>the edge</td><td class="m">150 ÷ 6 = 25</td><td class="m">5 cm</td></tr>
+        <tr><td class="m">a = 5, b = 4, S = 94</td><td>the third edge</td><td class="m">40 + 18c = 94</td><td class="m">3 cm</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The direction decides the operation</span>
+      Forward is multiplication; reverse is division, a root, or a linear equation. Deciding which of the
+      two a question is before touching the numbers saves more marks than any amount of arithmetic care.</div>`
+    },
+    {
+      h: 'Context and units',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Steps</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a ${m('60 × 40 × 50')} cm tank, in litres</td><td class="m">120 000 ÷ 1000</td><td class="m">120 litres</td></tr>
+        <tr><td>…filled at ${m('8')} litres a minute</td><td class="m">120 ÷ 8</td><td class="m">15 min</td></tr>
+        <tr><td>water ${m('6')} cm deep on a ${m('40 × 25')} cm base</td><td class="m">1000 · 6</td><td class="m">6 litres</td></tr>
+        <tr><td>a stone raising that level by ${m('1.5')} cm</td><td class="m">1000 · 1.5</td><td class="m">1500 cm³</td></tr>
+        <tr><td>a ${m('4 × 3 × 0.1')} m slab at ${m('2.4')} t per m³</td><td class="m">1.2 · 2.4</td><td class="m">2.88 t</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Convert first, calculate second</div>
+      Every context question in this block is a formula from the first section with a unit conversion in
+      front of it. Doing the conversion first turns a hard question into an easy one.</div>`
+    },
+    {
+      h: 'The mistakes that cost marks',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Mistake</th><th>Looks like</th><th>Correct</th></tr></thead>
+      <tbody>
+        <tr><td>a metre left as ${m('1')}</td><td class="m">1 · 80 · 50 = 4000 cm³</td><td class="m">100 · 80 · 50 = 400 000 cm³</td></tr>
+        <tr><td>a cube edge by dividing by three</td><td class="m">27 ÷ 3 = 9</td><td class="m">a³ = 27, a = 3</td></tr>
+        <tr><td>the root taken before the six</td><td class="m">√96</td><td class="m">√(96 ÷ 6) = 4</td></tr>
+        <tr><td>litres divided by an area</td><td class="m">120 ÷ 4000</td><td class="m">120 000 ÷ 4000 = 30 cm</td></tr>
+        <tr><td>a volume written in ${m('cm²')}</td><td class="m">60 cm²</td><td class="m">60 cm³</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Four of the five are units, not arithmetic</span>
+      Which is the good news: reading the units off the working, line by line, removes almost every lost
+      mark in this block.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the volume and the surface area of a cuboid ' + m('10') + ' cm by ' + m('6') + ' cm by ' + m('4') + ' cm.',
+      steps: [
+        [m('V = 10 · 6 · 4 = 240') + ' cm³.', ''],
+        ['Faces: ' + m('60, 24, 40') + '.', ''],
+        [m('S = 2 · 124 = 248') + ' cm².', 'Volume cubed, area squared ✓']
+      ],
+      ans: m('240') + ' cm³ and ' + m('248') + ' cm²'
+    },
+    {
+      q: 'A cube has surface area ' + m('150') + ' cm². Find its edge and its volume.',
+      steps: [
+        [m('150 ÷ 6 = 25') + ' cm² for one face.', ''],
+        ['The edge is ' + m('5') + ' cm.', ''],
+        [m('V = 5³ = 125') + ' cm³.', 'Check: ' + m('6 · 25 = 150') + ' ✓']
+      ],
+      ans: m('5') + ' cm and ' + m('125') + ' cm³'
+    },
+    {
+      q: 'A tank with base ' + m('80') + ' cm by ' + m('50') + ' cm holds ' + m('120') + ' litres when full. Find its depth.',
+      steps: [
+        [m('120') + ' litres is ' + m('120 000') + ' cm³.', ''],
+        ['Base area ' + m('80 · 50 = 4000') + ' cm².', ''],
+        [m('120 000 ÷ 4000 = 30') + ' cm.', 'Convert first, divide second.']
+      ],
+      ans: m('30') + ' cm'
+    }
+  ],
+  modelNote: 'Give the class the five-row mistake table before the revision problems, not after; most of them recognise at least one of their own habits in it.',
+  interactive: {
+    type: 'quiz',
+    title: 'Revision of the solids block',
+    hint: 'Decide first whether the question runs forwards or backwards.',
+    items: [
+      { q: 'The volume of a ' + m('10 × 6 × 4') + ' cm cuboid:', a: [m('124'), m('240'), m('248'), m('20')], c: 1, why: 'Three edges multiplied.' },
+      { q: 'Its surface area:', a: [m('124'), m('240'), m('248'), m('480')], c: 2, why: m('2(60 + 24 + 40)') + '.' },
+      { q: 'A cube of surface area ' + m('150') + ' cm² has edge:', a: [m('5'), m('25'), m('6'), m('12.5')], c: 0, why: 'Divide by six, then take the root.' },
+      { q: 'A cuboid of volume ' + m('120') + ' cm³ on a ' + m('5 × 4') + ' base is high:', a: [m('6') + ' cm', m('24') + ' cm', m('20') + ' cm', m('4') + ' cm'], c: 0, why: m('120 ÷ 20') + '.' },
+      { q: 'A cube of volume ' + m('512') + ' cm³ has edge:', a: [m('7'), m('8'), m('9'), m('171')], c: 1, why: m('8³') + '.' },
+      { q: 'A ' + m('60 × 40 × 50') + ' cm tank holds:', a: [m('12'), m('120'), m('1200'), m('120 000')], c: 1, why: 'Litres, not cm³.' },
+      { q: 'A stone raising the level ' + m('1.5') + ' cm on a ' + m('1000') + ' cm² base has volume:', a: [m('1500') + ' cm³', m('150') + ' cm³', m('666') + ' cm³', m('1.5') + ' cm³'], c: 0, why: 'Base area times rise.' },
+      { q: 'A volume must be written in:', a: [m('cm'), m('cm²'), m('cm³'), 'any unit'], c: 2, why: 'Three lengths multiplied.' }
+    ]
+  },
+  quiz: [
+    { q: 'The surface area of a cuboid is:', a: [m('abc'), m('2(ab + bc + ac)'), m('6a²'), m('ab')], c: 1, why: 'Three pairs of faces.' },
+    { q: 'The edge of a cube from its volume is:', a: [m('V ÷ 3'), 'the cube root of ' + m('V'), 'the square root of ' + m('V'), m('V ÷ 6')], c: 1, why: m('V = a³') + '.' },
+    { q: 'The edge of a cube from ' + m('S') + ' is the square root of:', a: [m('S'), m('S ÷ 6'), m('6S'), m('S ÷ 2')], c: 1, why: 'One face first.' },
+    { q: m('1') + ' m³ equals:', a: [m('1000') + ' cm³', m('10 000') + ' cm³', m('1 000 000') + ' cm³', m('100') + ' cm³'], c: 2, why: m('100³') + '.' },
+    { q: 'A missing edge from the volume is found by dividing by:', a: ['three', 'the base area', 'the surface area', 'six'], c: 1, why: m('cm³ ÷ cm² = cm') + '.' },
+    { q: 'The most common lost mark in this block is:', a: ['arithmetic', 'the units', 'the diagram', 'the formula'], c: 1, why: 'Four of the five classic mistakes are units.' }
+  ],
+  practice: {
+    easy: [
+      ['The volume of a ' + m('5 × 4 × 3') + ' cm cuboid', m('60') + ' cm³'],
+      ['Its surface area', m('94') + ' cm²'],
+      ['The volume of a cube of edge ' + m('4') + ' cm', m('64') + ' cm³'],
+      ['Its surface area', m('96') + ' cm²'],
+      [m('1') + ' litre in cm³', m('1000') + ' cm³'],
+      ['The volume of an ' + m('8 × 5 × 2') + ' cm cuboid', m('80') + ' cm³'],
+      ['The number of faces of a cuboid', m('6')]
+    ],
+    med: [
+      ['The surface area of an ' + m('8 × 5 × 2') + ' cm cuboid', m('132') + ' cm²'],
+      ['The volume and surface area of a cube of edge ' + m('7') + ' cm', m('343') + ' cm³ and ' + m('294') + ' cm²'],
+      [m('V = 120') + ' cm³ on a ' + m('5 × 4') + ' base: the height', m('6') + ' cm'],
+      ['A cube of volume ' + m('512') + ' cm³: the edge', m('8') + ' cm'],
+      ['A cube of surface area ' + m('150') + ' cm²: the edge', m('5') + ' cm'],
+      ['The capacity of a ' + m('60 × 40 × 50') + ' cm tank', m('120') + ' litres'],
+      ['One face of a cube of surface area ' + m('294') + ' cm²', m('49') + ' cm²']
+    ],
+    hard: [
+      ['A cuboid ' + m('5') + ' by ' + m('4') + ' with ' + m('S = 94') + ' cm²: the third edge', m('3') + ' cm'],
+      ['A tank with base ' + m('80 × 50') + ' cm holding ' + m('120') + ' litres: the depth', m('30') + ' cm'],
+      ['A stone raising the level ' + m('1.5') + ' cm on a ' + m('1000') + ' cm² base', m('1500') + ' cm³'],
+      ['A ' + m('4') + ' m by ' + m('3') + ' m by ' + m('0.1') + ' m slab at ' + m('2.4') + ' t per m³', m('2.88') + ' tonnes'],
+      ['Card for an open box ' + m('8 × 5 × 4') + ' cm', m('144') + ' cm²'],
+      ['Doubling every edge multiplies ' + m('V') + ' and ' + m('S') + ' by', m('8') + ' and ' + m('4')],
+      ['Boxes ' + m('10 × 8 × 5') + ' cm in a crate ' + m('40 × 32 × 30') + ' cm', m('96')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the unit on every line of working, not only on the answer.',
+  homework: [
+    'Find the volume and the surface area of a cuboid ' + m('9') + ' cm by ' + m('5') + ' cm by ' + m('4') + ' cm.',
+    'A cube has surface area ' + m('216') + ' cm². Find its edge and its volume.',
+    'A cuboid has volume ' + m('252') + ' cm³ and a base ' + m('9') + ' cm by ' + m('7') + ' cm. Find its height.',
+    'A tank ' + m('90') + ' cm by ' + m('50') + ' cm by ' + m('40') + ' cm is filled at ' + m('12') + ' litres a minute. How long does it take?',
+    'List the five mistakes of the last section and write one line on how you will avoid each.'
+  ]
+});
