@@ -5425,3 +5425,322 @@ G7_MAT.push({
     'Explain the difference between ' + m('a² + b²') + ' and ' + m('(a + b)²') + '.'
   ]
 });
+
+/* ============================== 32 ============================== */
+G7_MAT.push({
+  id: 'g7-32', stream: 'mat', grade: 7, quarter: 2, lessons: '59', hours: 1,
+  title: 'Rules for removing brackets, and the coefficient',
+  subtitle: 'A plus leaves the signs alone; a minus changes every one of them.',
+  uz: 'Matematika 7, §25', uzPage: 'pp. 156–159',
+  cam: 'S8 2.2', camPage: 'Stage 8, pp. 16–20', wb: 'Exercise 2.2',
+  objectives: [
+    'Remove brackets preceded by a plus and by a minus sign.',
+    'Multiply a bracket by a number using the distributive law.',
+    'Identify and use the coefficient of a term.',
+    'Simplify an expression by removing brackets and collecting terms.'
+  ],
+  terms: [
+    ['Bracket', 'Qavs', 'Скобка'],
+    ['To remove brackets', 'Qavslarni ochish', 'Раскрыть скобки'],
+    ['Distributive law', 'Taqsimot qonuni', 'Распределительный закон'],
+    ['Coefficient', 'Koeffitsiyent', 'Коэффициент'],
+    ['Like terms', 'O‘xshash hadlar', 'Подобные члены'],
+    ['To simplify', 'Soddalashtirish', 'Упростить'],
+    ['Sign change', 'Ishora o‘zgarishi', 'Изменение знака'],
+    ['Nested brackets', 'Ichma-ich qavslar', 'Вложенные скобки']
+  ],
+  timing: [[10, 'Plus and minus before a bracket'], [12, 'A number before a bracket'], [12, 'The coefficient'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'Plus and minus before a bracket',
+      html: `${eq(m('a + (b − c) = a + b − c') + '     ' + m('a − (b − c) = a − b + c'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Brackets removed</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5 + (x − 3)</td><td class="m">5 + x − 3</td></tr>
+        <tr><td class="m">5 − (x − 3)</td><td class="m">5 − x + 3</td></tr>
+        <tr><td class="m">−(2a − b + 4)</td><td class="m">−2a + b − 4</td></tr>
+        <tr><td class="m">7 − (−x + 2)</td><td class="m">7 + x − 2</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A minus changes <b>every</b> sign inside</span>
+      ${m('−(2a − b + 4) = −2a + b − 4')} — all three. Changing only the first is the error this lesson
+      exists to prevent, and it recurs all year.</div>`
+    },
+    {
+      h: 'A number before a bracket',
+      html: `${eq(m('k(a + b) = ka + kb'), true)}
+      <p>Every term inside is multiplied — including the last one, and including the signs.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Expanded</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3(x + 4)</td><td class="m">3x + 12</td></tr>
+        <tr><td class="m">3(x − 4)</td><td class="m">3x − 12</td></tr>
+        <tr><td class="m">−3(x − 4)</td><td class="m">−3x + 12</td></tr>
+        <tr><td class="m">−2(3a − b + 5)</td><td class="m">−6a + 2b − 10</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">${m('−(…)')} is ${m('−1(…)')}</div>
+      The two rules of this lesson are one rule: a minus in front is multiplication by ${m('−1')}, and
+      the distributive law does the rest.</div>`
+    },
+    {
+      h: 'The coefficient',
+      html: `<p>The <b>coefficient</b> is the numerical factor of a term, taken with its sign.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Term</th><th>Coefficient</th><th>Letters</th></tr></thead>
+      <tbody>
+        <tr><td class="m">7ab</td><td class="m">7</td><td class="m">ab</td></tr>
+        <tr><td class="m">−3x²y</td><td class="m">−3</td><td class="m">x²y</td></tr>
+        <tr><td class="m">a</td><td class="m">1</td><td class="m">a</td></tr>
+        <tr><td class="m">−b</td><td class="m">−1</td><td class="m">b</td></tr>
+        <tr><td class="m">${f('2x', '3')}</td><td class="m">${f('2', '3')}</td><td class="m">x</td></tr>
+      </tbody></table></div>
+      <p>Terms with the <b>same letters to the same powers</b> are <b>like terms</b>, and only like terms
+      can be collected: ${m('3x + 5x = 8x')}, but ${m('3x + 5y')} cannot be simplified.</p>
+      <div class="warn"><span class="wl">${m('3x')} and ${m('3x²')} are not like terms</span>
+      The powers must match too. Adding them gives ${m('3x + 3x²')}, which is already as simple as it
+      gets.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Remove the brackets: ' + m('5 − (x − 3)') + ' and ' + m('−(2a − b + 4)') + '.',
+      steps: [
+        ['A minus before the bracket changes every sign.', ''],
+        [m('5 − x + 3 = 8 − x'), ''],
+        [m('−2a + b − 4'), 'All three signs.'],
+        ['Nothing further to collect in the second.', '']
+      ],
+      ans: m('8 − x') + ' and ' + m('−2a + b − 4')
+    },
+    {
+      q: 'Expand ' + m('−2(3a − b + 5)') + '.',
+      steps: [
+        ['Multiply every term by ' + m('−2') + '.', ''],
+        [m('−2 × 3a = −6a'), ''],
+        [m('−2 × (−b) = +2b'), ''],
+        [m('−2 × 5 = −10') + ', giving ' + m('−6a + 2b − 10') + '.', '']
+      ],
+      ans: m('−6a + 2b − 10')
+    },
+    {
+      q: 'Simplify ' + m('4(x + 2) − 3(x − 1)') + '.',
+      steps: [
+        [m('4x + 8'), ''],
+        [m('−3x + 3'), 'Both signs change.'],
+        [m('4x + 8 − 3x + 3'), ''],
+        [m('= x + 11'), '']
+      ],
+      ans: m('x + 11')
+    }
+  ],
+  modelNote: 'Write −(a − b) on the board and ask for its value at a = 5, b = 2 before removing the brackets; the numerical check settles the sign rule.',
+  interactive: {
+    type: 'substitute',
+    title: 'Removing brackets',
+    hint: 'Check your answer numerically.'
+  },
+  quiz: [
+    { q: m('5 − (x − 3)') + ' equals:', a: [m('5 − x − 3'), m('5 − x + 3'), m('5 + x − 3'), m('5 + x + 3')], c: 1, why: 'Every sign changes.' },
+    { q: m('−(2a − b + 4)') + ' equals:', a: [m('−2a − b + 4'), m('−2a + b − 4'), m('2a − b + 4'), m('−2a + b + 4')], c: 1, why: 'All three signs.' },
+    { q: m('−3(x − 4)') + ' equals:', a: [m('−3x − 12'), m('−3x + 12'), m('3x − 12'), m('3x + 12')], c: 1, why: m('−3 × (−4) = +12') + '.' },
+    { q: 'The coefficient of ' + m('−3x²y') + ':', a: [m('3'), m('−3'), m('x²y'), m('1')], c: 1, why: 'With its sign.' },
+    { q: 'The coefficient of ' + m('−b') + ':', a: [m('0'), m('1'), m('−1'), m('b')], c: 2, why: 'It is ' + m('−1b') + '.' },
+    { q: 'Are ' + m('3x') + ' and ' + m('3x²') + ' like terms?', a: ['yes', 'no', 'sometimes', 'only if ' + m('x = 1')], c: 1, why: 'The powers differ.' }
+  ],
+  practice: {
+    easy: [
+      [m('5 + (x − 3)'), m('x + 2')],
+      [m('5 − (x − 3)'), m('8 − x')],
+      [m('3(x + 4)'), m('3x + 12')],
+      [m('3(x − 4)'), m('3x − 12')],
+      [m('−3(x − 4)'), m('−3x + 12')],
+      ['Coefficient of ' + m('7ab'), m('7')],
+      ['Coefficient of ' + m('−b'), m('−1')]
+    ],
+    med: [
+      [m('−(2a − b + 4)'), m('−2a + b − 4')],
+      [m('−2(3a − b + 5)'), m('−6a + 2b − 10')],
+      [m('7 − (−x + 2)'), m('x + 5')],
+      [m('4(x + 2) − 3(x − 1)'), m('x + 11')],
+      [m('2(a − 3) + 5(a + 1)'), m('7a − 1')],
+      ['Collect ' + m('3x + 5x − 2x'), m('6x')],
+      ['Collect ' + m('3x + 5y'), 'Already simplest']
+    ],
+    hard: [
+      [m('3(2x − 1) − 2(3x − 4)'), m('5')],
+      [m('−[2 − (3 − x)]'), m('1 − x')],
+      [m('5 − 2(x − 3(x + 1))'), m('4x + 11')],
+      [m('a − (b − (c − d))'), m('a − b + c − d')],
+      ['Simplify ' + m('4(x + y) − 4(x − y)'), m('8y')],
+      ['Evaluate ' + m('−(a − b)') + ' at ' + m('a = 5, b = 2'), m('−3')],
+      ['Coefficient of ' + m(f('3x', '4')), m(f('3', '4'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Check every expansion by substituting one easy pair of values.',
+  homework: [
+    'Remove the brackets: ' + m('8 − (y − 5)') + ' and ' + m('−(3m − 2n + 1)') + '.',
+    'Expand ' + m('−4(2a − 3b + 1)') + '.',
+    'Simplify ' + m('5(x − 2) − 2(x + 3)') + '.',
+    'Give the coefficients in ' + m('−5a + b − ' + f('c', '2')) + '.',
+    'Simplify ' + m('3(a + b) − 3(a − b)') + '.'
+  ]
+});
+
+/* ============================== 33 ============================== */
+G7_MAT.push({
+  id: 'g7-33', stream: 'mat', grade: 7, quarter: 2, lessons: '60', hours: 1,
+  title: 'Properties of the arithmetic operations',
+  subtitle: 'The five laws that make algebra possible, written for letters instead of numbers.',
+  uz: 'Matematika 7, §26', uzPage: 'pp. 160–163',
+  cam: 'S8 2.1', camPage: 'Stage 8, pp. 12–18', wb: 'Exercise 2.1',
+  objectives: [
+    'State the commutative, associative and distributive laws.',
+    'Use them to reorder and regroup a calculation.',
+    'Recognise that subtraction and division are not commutative.',
+    'Use the laws to simplify an expression quickly.'
+  ],
+  terms: [
+    ['Commutative law', 'O‘rin almashtirish qonuni', 'Переместительный закон'],
+    ['Associative law', 'Guruhlash qonuni', 'Сочетательный закон'],
+    ['Distributive law', 'Taqsimot qonuni', 'Распределительный закон'],
+    ['Identity element', 'Neytral element', 'Нейтральный элемент'],
+    ['To reorder', 'Tartibini o‘zgartirish', 'Переставить'],
+    ['To regroup', 'Guruhlarni o‘zgartirish', 'Перегруппировать'],
+    ['Not commutative', 'Kommutativ emas', 'Не коммутативно'],
+    ['Counter-example', 'Qarama-qarshi misol', 'Контрпример']
+  ],
+  timing: [[10, 'The five laws'], [12, 'What is not a law'], [12, 'Using them'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The five laws',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Law</th><th>Statement</th><th>Says</th></tr></thead>
+      <tbody>
+        <tr><td>commutative (+)</td><td class="m">a + b = b + a</td><td>order does not matter</td></tr>
+        <tr><td>commutative (×)</td><td class="m">ab = ba</td><td>order does not matter</td></tr>
+        <tr><td>associative (+)</td><td class="m">(a + b) + c = a + (b + c)</td><td>grouping does not matter</td></tr>
+        <tr><td>associative (×)</td><td class="m">(ab)c = a(bc)</td><td>grouping does not matter</td></tr>
+        <tr><td>distributive</td><td class="m">a(b + c) = ab + ac</td><td>the two operations connect</td></tr>
+      </tbody></table></div>
+      <p>Two more, about the special numbers ${m('0')} and ${m('1')}:</p>
+      ${eq(m('a + 0 = a') + '     ' + m('a × 1 = a') + '     ' + m('a × 0 = 0'), true)}
+      <div class="keybox"><div class="klabel">The distributive law is the only one that mixes ${m('+')} and ${m('×')}</div>
+      Everything in algebra that turns a sum into a product, or a product into a sum, is that one law —
+      expanding brackets, factorising, and collecting like terms alike.</div>`
+    },
+    {
+      h: 'What is not a law',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Claim</th><th>True?</th><th>Counter-example</th></tr></thead>
+      <tbody>
+        <tr><td class="m">a − b = b − a</td><td>no</td><td class="m">5 − 3 ≠ 3 − 5</td></tr>
+        <tr><td class="m">a ÷ b = b ÷ a</td><td>no</td><td class="m">6 ÷ 2 ≠ 2 ÷ 6</td></tr>
+        <tr><td class="m">(a − b) − c = a − (b − c)</td><td>no</td><td class="m">(9 − 4) − 2 ≠ 9 − (4 − 2)</td></tr>
+        <tr><td class="m">a + (b × c) = (a + b)(a + c)</td><td>no</td><td class="m">2 + 3 × 4 ≠ 5 × 6</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">One counter-example is a complete disproof</span>
+      A rule that fails once is not a rule. Testing a suspicious claim with small numbers is the fastest
+      check in all of algebra.</div>`
+    },
+    {
+      h: 'Using them',
+      html: `<p>The laws are used to make a calculation easier, not to make it longer.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Calculation</th><th>Law used</th><th>Easy route</th></tr></thead>
+      <tbody>
+        <tr><td class="m">25 × 17 × 4</td><td>commutative and associative</td><td class="m">(25 × 4) × 17 = 1700</td></tr>
+        <tr><td class="m">7 × 98</td><td>distributive</td><td class="m">7(100 − 2) = 686</td></tr>
+        <tr><td class="m">36 + 47 + 64</td><td>commutative</td><td class="m">(36 + 64) + 47 = 147</td></tr>
+        <tr><td class="m">4a + 7b − a + 2b</td><td>commutative</td><td class="m">3a + 9b</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Look for pairs that make round numbers</div>
+      ${m('25')} with ${m('4')}, ${m('36')} with ${m('64')}, ${m('98')} with ${m('100')}. Spotting them
+      before starting turns a hard calculation into an easy one.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compute ' + m('25 × 17 × 4') + ' in the easiest way.',
+      steps: [
+        ['Reorder: ' + m('25 × 4 × 17') + '.', 'Commutative.'],
+        ['Regroup: ' + m('(25 × 4) × 17') + '.', 'Associative.'],
+        [m('= 100 × 17'), ''],
+        [m('= 1700'), '']
+      ],
+      ans: m('1700')
+    },
+    {
+      q: 'Compute ' + m('7 × 98') + ' without a calculator.',
+      steps: [
+        [m('98 = 100 − 2'), ''],
+        [m('7(100 − 2)'), 'Distributive.'],
+        [m('= 700 − 14'), ''],
+        [m('= 686'), '']
+      ],
+      ans: m('686')
+    },
+    {
+      q: 'Show that subtraction is not associative.',
+      steps: [
+        ['Test ' + m('(9 − 4) − 2') + ' and ' + m('9 − (4 − 2)') + '.', ''],
+        [m('5 − 2 = 3'), ''],
+        [m('9 − 2 = 7'), ''],
+        [m('3 ≠ 7') + ' — one counter-example is enough.', '']
+      ],
+      ans: 'Disproved'
+    }
+  ],
+  modelNote: 'Ask for 25 × 17 × 4 with no calculator; the class that reorders finishes in five seconds and the rest do not.',
+  interactive: {
+    type: 'areaModel',
+    title: 'The distributive law as an area',
+    hint: 'One rectangle, cut into two.'
+  },
+  quiz: [
+    { q: m('a + b = b + a') + ' is:', a: ['associative', 'commutative', 'distributive', 'not a law'], c: 1, why: 'Order.' },
+    { q: m('(ab)c = a(bc)') + ' is:', a: ['associative', 'commutative', 'distributive', 'not a law'], c: 0, why: 'Grouping.' },
+    { q: m('a(b + c) = ab + ac') + ' is:', a: ['associative', 'commutative', 'distributive', 'not a law'], c: 2, why: 'It mixes the two operations.' },
+    { q: 'Is subtraction commutative?', a: ['yes', 'no', 'sometimes', 'only for positives'], c: 1, why: m('5 − 3 ≠ 3 − 5') + '.' },
+    { q: 'The easiest route to ' + m('25 × 17 × 4') + ':', a: ['left to right', 'pair ' + m('25') + ' with ' + m('4'), 'pair ' + m('17') + ' with ' + m('4'), 'a calculator'], c: 1, why: m('100 × 17') + '.' },
+    { q: 'One counter-example:', a: ['weakens a rule', 'disproves it', 'proves it', 'means nothing'], c: 1, why: '“For all” fails.' }
+  ],
+  practice: {
+    easy: [
+      ['Name the law: ' + m('a + b = b + a'), 'Commutative'],
+      ['Name the law: ' + m('(ab)c = a(bc)'), 'Associative'],
+      ['Name the law: ' + m('a(b + c) = ab + ac'), 'Distributive'],
+      ['Is ' + m('a − b = b − a') + '?', 'No'],
+      ['Is ' + m('a ÷ b = b ÷ a') + '?', 'No'],
+      [m('a + 0'), m('a')],
+      [m('a × 1'), m('a')]
+    ],
+    med: [
+      [m('25 × 17 × 4'), m('1700')],
+      [m('7 × 98'), m('686')],
+      [m('36 + 47 + 64'), m('147')],
+      [m('8 × 125 × 6'), m('6000')],
+      [m('12 × 101'), m('1212')],
+      ['Simplify ' + m('4a + 7b − a + 2b'), m('3a + 9b')],
+      ['Simplify ' + m('5x − 2y + 3y − x'), m('4x + y')]
+    ],
+    hard: [
+      [m('99 × 99 + 99'), m('9900')],
+      [m('37 × 25 × 4'), m('3700')],
+      [m('16 × 47 + 16 × 53'), m('1600')],
+      ['Show that ' + m('(a − b) − c ≠ a − (b − c)'), m('(9−4)−2 = 3') + ', ' + m('9−(4−2) = 7')],
+      ['Simplify ' + m('2(3a − b) − 3(a − 2b)'), m('3a + 4b')],
+      [m('101 × 99'), m('9999')],
+      ['Why is the distributive law special?', 'It is the only one linking ' + m('+') + ' and ' + m('×')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Look for the easy pairing before computing anything.',
+  homework: [
+    'Compute ' + m('4 × 37 × 25') + ' using the laws.',
+    'Compute ' + m('9 × 102') + ' using the distributive law.',
+    'Compute ' + m('58 + 79 + 42') + ' by reordering.',
+    'Show with an example that division is not commutative.',
+    'Simplify ' + m('6a − 2b + 3b − 4a') + '.'
+  ]
+});
