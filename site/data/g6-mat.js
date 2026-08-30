@@ -13138,3 +13138,189 @@ G6_MAT.push({
     'Explain in one sentence why the range is not an average.'
   ]
 });
+
+/* ============================== 74 ============================== */
+G6_MAT.push({
+  id: 'g6-74', stream: 'mat', grade: 6, quarter: 4, lessons: '158–159', hours: 2,
+  title: 'Conducting an investigation; taking a sample',
+  subtitle: 'From a question to a sample that can honestly answer it. [Cambridge insert]',
+  uz: 'Matematika 6, qo‘shimcha mavzu', uzPage: 'pp. 453–457',
+  cam: 'S7 6.1–6.2 investigations', camPage: 'Stage 7, pp. 58–66', wb: 'Exercise 6.1–6.2',
+  objectives: [
+    'Name the five stages of a statistical investigation.',
+    'Write a survey question with a small, fixed list of answers.',
+    'Choose a sample that represents the population it is drawn from.',
+    'Recognise the four common sources of bias and remove them.'
+  ],
+  terms: [
+    ['Investigation', 'Tadqiqot', 'Исследование'],
+    ['Population', 'Bosh to‘plam', 'Генеральная совокупность'],
+    ['Sample', 'Tanlanma', 'Выборка'],
+    ['Representative', 'Vakillik qiluvchi', 'Репрезентативный'],
+    ['Bias', 'Yon bosish', 'Смещение'],
+    ['Random', 'Tasodifiy', 'Случайный'],
+    ['Leading question', 'Yo‘naltiruvchi savol', 'Наводящий вопрос'],
+    ['Recording sheet', 'Qayd varaqasi', 'Лист записи']
+  ],
+  timing: [[20, 'The statistical cycle'], [20, 'Asking a good question'], [25, 'Choosing a sample'], [15, 'Sources of bias']],
+  sections: [
+    {
+      h: 'The statistical cycle',
+      html: `<p>Every investigation runs through the same five stages, in the same order. Skipping one is
+      what makes a survey worthless.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Stage</th><th>The work</th><th>What it produces</th></tr></thead>
+      <tbody>
+        <tr><td>1 — plan</td><td>decide the question and the answers</td><td>a survey question</td></tr>
+        <tr><td>2 — sample</td><td>decide who is asked, and how many</td><td>a list of people</td></tr>
+        <tr><td>3 — collect</td><td>ask, and record on a sheet</td><td>a tally</td></tr>
+        <tr><td>4 — process</td><td>frequencies, averages, a chart</td><td>a table and a diagram</td></tr>
+        <tr><td>5 — interpret</td><td>write what the data says</td><td>conclusions, with limits</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The question comes first, always</div>
+      Data collected before the question is decided almost never answers it. Five minutes of planning saves
+      an afternoon of asking the wrong people the wrong thing.</div>`
+    },
+    {
+      h: 'Asking a good question',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Poor question</th><th>What is wrong</th><th>Better</th></tr></thead>
+      <tbody>
+        <tr><td>What do you think about sport?</td><td>the answers cannot be tallied</td><td>Which of these six sports do you prefer?</td></tr>
+        <tr><td>Don’t you agree football is best?</td><td>it leads the answer</td><td>Which sport do you prefer?</td></tr>
+        <tr><td>Do you do a lot of sport?</td><td>“a lot” means different things</td><td>How many hours of sport a week?</td></tr>
+        <tr><td>How old are you and what sport?</td><td>two questions in one</td><td>ask them separately</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Overlapping options are as bad as missing ones</span>
+      Age boxes of ${m('10–12')}, ${m('12–14')} leave a twelve-year-old with two homes and no rule for
+      choosing. Write ${m('10–11')}, ${m('12–13')}, ${m('14–15')} instead — no gaps, no overlaps.</div>`
+    },
+    {
+      h: 'Choosing a sample',
+      html: `<p>The <b>population</b> is everyone the question is about; the <b>sample</b> is the part
+      actually asked. A sample of ${m('60')} from a school of ${m('600')} is one pupil in ten.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Grade</th><th>Pupils</th><th>In a 1-in-10 sample</th></tr></thead>
+      <tbody>
+        <tr><td class="m">6</td><td class="m">120</td><td class="m">12</td></tr>
+        <tr><td class="m">7</td><td class="m">110</td><td class="m">11</td></tr>
+        <tr><td class="m">8</td><td class="m">130</td><td class="m">13</td></tr>
+        <tr><td class="m">9</td><td class="m">120</td><td class="m">12</td></tr>
+        <tr><td class="m">10</td><td class="m">60</td><td class="m">6</td></tr>
+        <tr><td class="m">11</td><td class="m">60</td><td class="m">6</td></tr>
+        <tr><td>total</td><td class="m">600</td><td class="m">60</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Give every part of the population its share</div>
+      Each grade contributes a tenth of itself, so the sample looks like the school. Taking all
+      ${m('60')} from Grade 6 would give a sample of ${m('60')} that answers a different question
+      entirely.</div>
+      <p>Two honest ways to choose the individuals: draw names from a hat (<b>random</b>), or take every
+      tenth name from an alphabetical list (<b>systematic</b>). Both are decided before anyone is asked.</p>`
+    },
+    {
+      h: 'Sources of bias',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>What was done</th><th>Why the result is biased</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>only the football team was asked</td><td>they already prefer football</td><td>sample across the school</td></tr>
+        <tr><td>only pupils in the canteen at lunch</td><td>it misses those who bring food</td><td>ask from a class list</td></tr>
+        <tr><td>only five pupils were asked</td><td>too few for any conclusion</td><td>at least ${m('60')}</td></tr>
+        <tr><td>the question was “isn’t football best?”</td><td>the answer is suggested</td><td>list the sports neutrally</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A large biased sample is still biased</span>
+      Asking ${m('500')} people at a football match which sport they prefer is worse than asking
+      ${m('60')} pupils chosen properly. Size does not repair a bad sample — only the choosing does.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Plan a 1-in-10 sample of a school of ' + m('600') + ' pupils spread over six grades.',
+      steps: [
+        [m('600 ÷ 10 = 60') + ' pupils in the sample.', ''],
+        ['Each grade gives a tenth of itself: ' + m('12, 11, 13, 12, 6, 6') + '.', ''],
+        ['Those add to ' + m('60') + '.', 'The sample now looks like the school ✓']
+      ],
+      ans: m('60') + ' pupils, ' + m('12, 11, 13, 12, 6') + ' and ' + m('6') + ' by grade'
+    },
+    {
+      q: 'A pupil surveys the football team about the school’s favourite sport. Say what is wrong and fix it.',
+      steps: [
+        ['The sample is not representative — every member already prefers football.', ''],
+        ['The conclusion would be true of the team, not of the school.', ''],
+        ['Take every tenth name from the whole school list instead.', 'Same effort, honest answer.']
+      ],
+      ans: 'A biased sample; sample across the whole school'
+    },
+    {
+      q: 'Improve the question “Do you do a lot of sport?”',
+      steps: [
+        ['“A lot” is not defined, so two pupils answer differently for the same behaviour.', ''],
+        ['Ask for a number instead.', ''],
+        ['“How many hours of sport did you do last week?”', 'Now the answers can be averaged.']
+      ],
+      ans: '“How many hours of sport did you do last week?”'
+    }
+  ],
+  modelNote: 'Ask the class the leading question first and count the hands; then ask the neutral one and count again. The gap between the two counts is the lesson.',
+  interactive: {
+    type: 'quiz',
+    title: 'Planning an honest survey',
+    hint: 'Ask who is left out — that is where bias hides.',
+    items: [
+      { q: 'The whole group being studied is the:', a: ['sample', 'population', 'tally', 'frequency'], c: 1, why: 'The sample is drawn from it.' },
+      { q: 'A 1-in-10 sample of ' + m('600') + ' pupils has:', a: [m('6'), m('10'), m('60'), m('600')], c: 2, why: m('600 ÷ 10') + '.' },
+      { q: 'A grade of ' + m('130') + ' contributes:', a: [m('10'), m('13'), m('30'), m('60')], c: 1, why: 'A tenth of itself.' },
+      { q: 'Asking only the football team gives a sample that is:', a: ['random', 'biased', 'systematic', 'too large'], c: 1, why: 'They already prefer football.' },
+      { q: '“Don’t you agree football is best?” is:', a: ['neutral', 'leading', 'too long', 'fine'], c: 1, why: 'It suggests the answer.' },
+      { q: 'Age boxes ' + m('10–12') + ' and ' + m('12–14') + ' are wrong because they:', a: ['overlap', 'have gaps', 'are too wide', 'are too narrow'], c: 0, why: 'Twelve fits both.' },
+      { q: 'Taking every tenth name from a list is a sample that is:', a: ['biased', 'systematic', 'too small', 'leading'], c: 1, why: 'Decided before asking.' },
+      { q: 'Asking ' + m('500') + ' people at a football match is:', a: ['fine, it is large', 'still biased', 'random', 'systematic'], c: 1, why: 'Size does not repair the choosing.' }
+    ]
+  },
+  quiz: [
+    { q: 'The first stage of an investigation is:', a: ['collecting', 'planning the question', 'drawing a chart', 'sampling'], c: 1, why: 'Everything else follows it.' },
+    { q: 'A sample should be:', a: ['as small as possible', 'representative of the population', 'taken from one class', 'chosen after the data'], c: 1, why: 'Or it answers a different question.' },
+    { q: 'A good survey question has:', a: ['open answers', 'a small fixed list of answers', 'two questions in one', 'no options'], c: 1, why: 'So the answers can be tallied.' },
+    { q: 'Bias means the sample:', a: ['is too large', 'favours part of the population', 'is random', 'has no answers'], c: 1, why: 'It leans one way.' },
+    { q: 'Options must have:', a: ['gaps', 'overlaps', 'neither gaps nor overlaps', 'both'], c: 2, why: 'Every answer has exactly one home.' },
+    { q: 'The last stage of the cycle is:', a: ['collecting', 'tallying', 'interpreting and reporting', 'planning'], c: 2, why: 'Saying what the data means.' }
+  ],
+  practice: {
+    easy: [
+      ['The whole group being studied is called', 'The population'],
+      ['The part actually asked is called', 'The sample'],
+      [m('60') + ' out of ' + m('600') + ' as a fraction', m(f('1', '10'))],
+      ['…as a percentage', m('10') + '%'],
+      ['A sample that favours one group is', 'Biased'],
+      ['The first stage of the statistical cycle', 'Planning the question'],
+      ['A question with a fixed list of answers can be', 'Tallied']
+    ],
+    med: [
+      ['A 1-in-10 sample of ' + m('600') + ' pupils', m('60')],
+      ['Grade 8 has ' + m('130') + ' pupils: its share of that sample', m('13')],
+      ['Grades of ' + m('120, 110, 130, 120, 60, 60') + ': the total', m('600')],
+      ['A school of ' + m('800') + ' with a 1-in-20 sample', m('40')],
+      ['Why ask ' + m('60') + ' rather than ' + m('6') + '?', 'A very small sample is unreliable'],
+      ['Asking only the football team is', 'Biased'],
+      ['“Don’t you agree football is best?” is', 'A leading question']
+    ],
+    hard: [
+      ['A school of ' + m('750') + ' with a 1-in-25 sample', m('30') + ' pupils'],
+      [m('300') + ' boys and ' + m('300') + ' girls in a sample of ' + m('60'), m('30') + ' and ' + m('30')],
+      [m('400') + ' boys and ' + m('200') + ' girls in a sample of ' + m('60'), m('40') + ' and ' + m('20')],
+      ['Grades of ' + m('120') + ' and ' + m('60') + ' in a 1-in-10 sample', m('12') + ' and ' + m('6')],
+      ['Every tenth name from a list of ' + m('600') + ' gives', m('60') + ' — a systematic sample'],
+      ['One reason a lunchtime canteen survey is biased', 'It misses those who bring food from home'],
+      ['The last stage of the cycle', 'Interpreting and reporting']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Bring the finished plan to the next lesson: the question, the options, the sample and the sheet.',
+  homework: [
+    'Write your survey question with at most six options, with no gaps and no overlaps.',
+    'A school has ' + m('540') + ' pupils. Plan a 1-in-10 sample and say how many come from a grade of ' + m('90') + '.',
+    'Explain in one sentence why asking only your own class would bias the result.',
+    'Rewrite the question “Do you watch a lot of television?” so that it can be averaged.',
+    'Draw the recording sheet you will use, with a row for every option and a column for the tally.'
+  ]
+});
