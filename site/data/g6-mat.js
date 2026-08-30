@@ -10252,3 +10252,181 @@ G6_MAT.push({
     'Write down a typical speed for a walker, a car and an aeroplane.'
   ]
 });
+
+/* ============================== 58 ============================== */
+G6_MAT.push({
+  id: 'g6-58', stream: 'mat', grade: 6, quarter: 3, lessons: '120–122', hours: 3,
+  title: 'Finding speed, distance and time',
+  subtitle: 'Three questions from one formula, with the units chosen before the arithmetic.',
+  uz: 'Matematika 6, §25', uzPage: 'pp. 349–358',
+  cam: 'S7 12 rates', camPage: 'Stage 7, pp. 122–126', wb: 'Exercise 12.6',
+  objectives: [
+    'Find any one of ' + m('s, v, t') + ' from the other two.',
+    'Convert times between hours, minutes and seconds.',
+    'Give an answer in hours and minutes where that is natural.',
+    'Check every answer against the sense of the situation.'
+  ],
+  terms: [
+    ['Formula', 'Formula', 'Формула'],
+    ['To rearrange', 'O‘zgartirib yozish', 'Выразить'],
+    ['Hours and minutes', 'Soat va daqiqa', 'Часы и минуты'],
+    ['Decimal hours', 'O‘nli soat', 'Часы в десятичной форме'],
+    ['Arrival time', 'Yetib borish vaqti', 'Время прибытия'],
+    ['Departure', 'Jo‘nash', 'Отправление'],
+    ['Journey', 'Sayohat', 'Поездка'],
+    ['Sense check', 'Mantiqiy tekshirish', 'Проверка по смыслу']
+  ],
+  timing: [[25, 'Finding the distance'], [30, 'Finding the speed'], [35, 'Finding the time'], [25, 'Hours and minutes'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Finding the distance',
+      html: `${eq(m('s = vt'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Speed</th><th>Time</th><th>Distance</th></tr></thead>
+      <tbody>
+        <tr><td class="m">65 km/h</td><td class="m">4 h</td><td class="m">260 km</td></tr>
+        <tr><td class="m">50 km/h</td><td class="m">2 h 30 min</td><td class="m">125 km</td></tr>
+        <tr><td class="m">12 km/h</td><td class="m">20 min</td><td class="m">4 km</td></tr>
+        <tr><td class="m">15 m/s</td><td class="m">40 s</td><td class="m">600 m</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Write the time in the unit the speed uses</div>
+      ${m('2')} h ${m('30')} min is ${m('2.5')} h; ${m('20')} min is ${m(f('1', '3'))} h. Doing that
+      conversion first turns every problem into one multiplication.</div>`
+    },
+    {
+      h: 'Finding the speed',
+      html: `${eq(m('v = ' + f('s', 't')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Distance</th><th>Time</th><th>Speed</th></tr></thead>
+      <tbody>
+        <tr><td class="m">260 km</td><td class="m">4 h</td><td class="m">65 km/h</td></tr>
+        <tr><td class="m">125 km</td><td class="m">2.5 h</td><td class="m">50 km/h</td></tr>
+        <tr><td class="m">4 km</td><td class="m">20 min</td><td class="m">12 km/h</td></tr>
+        <tr><td class="m">600 m</td><td class="m">40 s</td><td class="m">15 m/s</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A speed in km/h needs the time in hours</span>
+      ${m('4')} km in ${m('20')} minutes is ${m('12')} km/h, not ${m('0.2')} km/h. Dividing by ${m('20')}
+      answers a different question.</div>`
+    },
+    {
+      h: 'Finding the time',
+      html: `${eq(m('t = ' + f('s', 'v')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Distance</th><th>Speed</th><th>Time</th><th>In hours and minutes</th></tr></thead>
+      <tbody>
+        <tr><td class="m">260 km</td><td class="m">65 km/h</td><td class="m">4</td><td class="m">4 h</td></tr>
+        <tr><td class="m">150 km</td><td class="m">60 km/h</td><td class="m">2.5</td><td class="m">2 h 30 min</td></tr>
+        <tr><td class="m">90 km</td><td class="m">80 km/h</td><td class="m">1.125</td><td class="m">1 h 7.5 min</td></tr>
+        <tr><td class="m">7 km</td><td class="m">5 km/h</td><td class="m">1.4</td><td class="m">1 h 24 min</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Turning a decimal hour into minutes</div>
+      Multiply the decimal part by ${m('60')}: ${m('0.4')} h is ${m('24')} min, ${m('0.25')} h is
+      ${m('15')} min. Writing ${m('1.4')} h as “one hour forty minutes” is a real and common error.</div>`
+    },
+    {
+      h: 'Hours and minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a bus leaves at ${m('8:00')} and travels ${m('150')} km at ${m('60')} km/h</td><td class="m">2.5 h</td><td>arrives ${m('10:30')}</td></tr>
+        <tr><td>a train leaves at ${m('7:20')} and takes ${m('1 h 50 min')}</td><td class="m">7:20 + 1:50</td><td>arrives ${m('9:10')}</td></tr>
+        <tr><td>a journey of ${m('7')} km at ${m('5')} km/h</td><td class="m">1.4 h</td><td class="m">1 h 24 min</td></tr>
+        <tr><td>a walk from ${m('9:15')} to ${m('11:00')} covering ${m('7')} km</td><td class="m">1.75 h</td><td class="m">4 km/h</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Adding times is not decimal addition</span>
+      ${m('7:20')} plus ${m('1')} h ${m('50')} min is ${m('9:10')}, because ${m('70')} minutes is an hour
+      and ten. Times carry at ${m('60')}, not at ${m('100')}.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A cyclist rides at ' + m('12') + ' km/h for ' + m('20') + ' minutes. How far?',
+      steps: [
+        [m('20') + ' min ' + m('= ' + f('1', '3')) + ' h.', ''],
+        [m('s = 12 · ' + f('1', '3')), ''],
+        [m('= 4') + ' km.', '']
+      ],
+      ans: m('4 km')
+    },
+    {
+      q: 'A journey of ' + m('7') + ' km is walked at ' + m('5') + ' km/h. How long does it take?',
+      steps: [
+        [m('t = ' + f('7', '5') + ' = 1.4') + ' h.', ''],
+        [m('0.4 · 60 = 24') + ' min.', ''],
+        [m('1') + ' h ' + m('24') + ' min.', 'Not one hour forty.']
+      ],
+      ans: m('1 h 24 min')
+    },
+    {
+      q: 'A bus leaves at ' + m('8:00') + ' and covers ' + m('150') + ' km at ' + m('60') + ' km/h. When does it arrive?',
+      steps: [
+        [m('t = ' + f('150', '60') + ' = 2.5') + ' h.', ''],
+        [m('2.5') + ' h is ' + m('2') + ' h ' + m('30') + ' min.', ''],
+        [m('8:00 + 2:30 = 10:30') + '.', '']
+      ],
+      ans: m('10:30')
+    }
+  ],
+  modelNote: 'Use a real bus timetable: pupils compute the average speed between two stops and compare it with the road speed limit, which is a genuinely interesting comparison.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which one is wanted?',
+    hint: 'Convert the time first, then use ' + m('s = vt') + '.',
+    items: [
+      { q: m('65') + ' km/h for ' + m('4') + ' h:', a: [m('16.25') + ' km', m('260') + ' km', m('69') + ' km', m('260') + ' km/h'], c: 1, why: m('vt') + '.' },
+      { q: m('50') + ' km/h for ' + m('2 h 30 min') + ':', a: [m('100'), m('125'), m('150'), m('250')], c: 1, why: m('2.5') + ' h.' },
+      { q: m('12') + ' km/h for ' + m('20') + ' min:', a: [m('240'), m('4'), m('0.6'), m('36')], c: 1, why: m(f('1', '3')) + ' h.' },
+      { q: m('4') + ' km in ' + m('20') + ' min:', a: [m('0.2') + ' km/h', m('12') + ' km/h', m('80') + ' km/h', m('4') + ' km/h'], c: 1, why: 'Time in hours.' },
+      { q: m('150') + ' km at ' + m('60') + ' km/h takes:', a: [m('2.5') + ' h', m('90') + ' h', m('2.3') + ' h', m('9000') + ' h'], c: 0, why: m(f('s', 'v')) + '.' },
+      { q: m('1.4') + ' h in hours and minutes:', a: [m('1 h 40 min'), m('1 h 24 min'), m('1 h 4 min'), m('14 min')], c: 1, why: m('0.4 · 60') + '.' },
+      { q: m('7:20') + ' plus ' + m('1 h 50 min') + ':', a: [m('8:70'), m('9:10'), m('8:10'), m('9:70')], c: 1, why: 'Times carry at ' + m('60') + '.' },
+      { q: m('7') + ' km from ' + m('9:15') + ' to ' + m('11:00') + ':', a: [m('4') + ' km/h', m('7') + ' km/h', m('1.75') + ' km/h', m('12.25') + ' km/h'], c: 0, why: m('7 ÷ 1.75') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'To find the distance you:', a: ['divide', 'multiply', 'subtract', 'add'], c: 1, why: m('s = vt') + '.' },
+    { q: 'To find the time you:', a: [m('s · v'), m('s ÷ v'), m('v ÷ s'), m('s + v')], c: 1, why: 'Distance over speed.' },
+    { q: m('20') + ' minutes in hours is:', a: [m('0.2'), m(f('1', '3')), m('0.5'), m('2')], c: 1, why: m(f('20', '60')) + '.' },
+    { q: m('0.25') + ' h in minutes is:', a: [m('25'), m('15'), m('20'), m('45')], c: 1, why: m('0.25 · 60') + '.' },
+    { q: m('90') + ' km at ' + m('80') + ' km/h takes:', a: [m('1.125') + ' h', m('1.9') + ' h', m('0.9') + ' h', m('7200') + ' h'], c: 0, why: m(f('90', '80')) + '.' },
+    { q: 'A bus leaving at ' + m('8:00') + ' and taking ' + m('2 h 30 min') + ' arrives at:', a: [m('10:00'), m('10:30'), m('10:50'), m('11:30')], c: 1, why: 'Add the times.' }
+  ],
+  practice: {
+    easy: [
+      [m('65') + ' km/h for ' + m('4') + ' h', m('260 km')],
+      [m('50') + ' km/h for ' + m('2.5') + ' h', m('125 km')],
+      [m('15') + ' m/s for ' + m('40') + ' s', m('600 m')],
+      [m('260') + ' km in ' + m('4') + ' h', m('65 km/h')],
+      [m('125') + ' km in ' + m('2.5') + ' h', m('50 km/h')],
+      [m('260') + ' km at ' + m('65') + ' km/h', m('4 h')],
+      [m('150') + ' km at ' + m('60') + ' km/h', m('2.5 h')]
+    ],
+    med: [
+      [m('12') + ' km/h for ' + m('20') + ' min', m('4 km')],
+      [m('4') + ' km in ' + m('20') + ' min', m('12 km/h')],
+      [m('7') + ' km at ' + m('5') + ' km/h', m('1 h 24 min')],
+      [m('90') + ' km at ' + m('80') + ' km/h', m('1 h 7.5 min')],
+      ['A bus leaves ' + m('8:00') + ', ' + m('150') + ' km at ' + m('60') + ' km/h: arrival', m('10:30')],
+      [m('7:20') + ' plus ' + m('1 h 50 min'), m('9:10')],
+      [m('7') + ' km from ' + m('9:15') + ' to ' + m('11:00'), m('4 km/h')]
+    ],
+    hard: [
+      ['A train leaves ' + m('6:45') + ' and takes ' + m('3 h 40 min') + ': arrival', m('10:25')],
+      ['A journey of ' + m('340') + ' km at ' + m('85') + ' km/h', m('4 h')],
+      ['A journey of ' + m('200') + ' km taking ' + m('2 h 40 min'), m('75 km/h')],
+      ['How far in ' + m('1 h 45 min') + ' at ' + m('60') + ' km/h?', m('105 km')],
+      ['A car covering ' + m('45') + ' km in ' + m('30') + ' min', m('90 km/h')],
+      ['A walk of ' + m('11') + ' km at ' + m('4') + ' km/h', m('2 h 45 min')],
+      ['Why is ' + m('1.4') + ' h not ' + m('1') + ' h ' + m('40') + ' min?', 'The decimal part is ' + m('0.4') + ' of an hour, which is ' + m('24') + ' minutes']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Convert to hours before dividing, and back to minutes at the end.',
+  homework: [
+    'A car travels ' + m('3 h 15 min') + ' at ' + m('80') + ' km/h. Find the distance.',
+    'A journey of ' + m('96') + ' km takes ' + m('1 h 20 min') + '. Find the speed.',
+    'How long does ' + m('220') + ' km take at ' + m('55') + ' km/h?',
+    'A bus leaves at ' + m('7:40') + ' and takes ' + m('2 h 35 min') + '. When does it arrive?',
+    'A walker covers ' + m('9') + ' km at ' + m('4') + ' km/h. Give the time in hours and minutes.'
+  ]
+});
