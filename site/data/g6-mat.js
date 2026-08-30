@@ -1305,3 +1305,336 @@ G6_MAT.push({
     'A number doubled and increased by ' + m('7') + ' is ' + m('31') + '. Find it, writing all three lines.'
   ]
 });
+
+/* ============================== 08 ============================== */
+G6_MAT.push({
+  id: 'g6-08', stream: 'mat', grade: 6, quarter: 1, lessons: '19', hours: 1,
+  title: 'Control work 1 — expressions and equations',
+  subtitle: 'Directed numbers, algebraic expressions and one-step and two-step equations.',
+  uz: 'Matematika 6, Nazorat ishi 1', uzPage: 'pp. 9–50',
+  cam: 'S7 1–2 review', camPage: 'Stage 7, pp. 8–38', wb: 'Control paper 1',
+  objectives: [
+    'Work with the sign rules accurately under time.',
+    'Translate between words and algebra.',
+    'Simplify and evaluate an expression.',
+    'Solve an equation and check the root.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Integer', 'Butun son', 'Целое число'],
+    ['Expression', 'Ifoda', 'Выражение'],
+    ['Like terms', 'O‘xshash hadlar', 'Подобные члены'],
+    ['To substitute', 'O‘rniga qo‘yish', 'Подставить'],
+    ['Equation', 'Tenglama', 'Уравнение'],
+    ['Root', 'Ildiz', 'Корень'],
+    ['Check', 'Tekshirish', 'Проверка']
+  ],
+  timing: [[2, 'Instructions'], [28, 'The paper'], [8, 'Answers and diagnosis'], [2, 'What comes next']],
+  sections: [
+    {
+      h: 'The paper — 20 marks, 28 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>${m('−3 + 8')}, ${m('4 − 9')} and ${m('5 − (−6)')}</td><td class="m">3</td><td>L2–4</td></tr>
+        <tr><td>2</td><td>${m('(−7) · 4')}, ${m('(−36) ÷ (−9)')} and ${m('(−3)²')}</td><td class="m">3</td><td>L5–7</td></tr>
+        <tr><td>3</td><td>Write “four times a number, then subtract ${m('3')}” and “subtract ${m('3')} from a number, then multiply by ${m('4')}”</td><td class="m">3</td><td>L8–10</td></tr>
+        <tr><td>4</td><td>Simplify ${m('6x + 2y − 4x + 3y')}</td><td class="m">3</td><td>L11–12</td></tr>
+        <tr><td>5</td><td>Find ${m('x² − 2x')} at ${m('x = −3')}</td><td class="m">3</td><td>L13–15</td></tr>
+        <tr><td>6</td><td>Solve ${m('4x − 5 = 19')} and check</td><td class="m">3</td><td>L16–18</td></tr>
+        <tr><td>7</td><td>Solve ${m('3(x + 2) = 5x')}</td><td class="m">2</td><td>L16–18</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The answers</div>
+      ${m('5')}, ${m('−5')}, ${m('11')}; ${m('−28')}, ${m('4')}, ${m('9')}; ${m('4x − 3')} and
+      ${m('4(x − 3)')}; ${m('2x + 5y')}; ${m('15')}; ${m('x = 6')}; ${m('x = 3')}.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>double minus not applied</td><td class="m">5 − (−6) = −1</td><td class="m">11</td></tr>
+        <tr><td>sign rule reversed</td><td class="m">(−36) ÷ (−9) = −4</td><td class="m">4</td></tr>
+        <tr><td class="m">(−3)²</td><td class="m">−9</td><td class="m">9</td></tr>
+        <tr><td>bracket omitted in a translation</td><td class="m">4x − 3</td><td class="m">4(x − 3)</td></tr>
+        <tr><td>unlike terms collected</td><td class="m">6x + 2y = 8xy</td><td class="m">6x + 2y</td></tr>
+        <tr><td>negative substituted without brackets</td><td class="m">−3² = −9</td><td class="m">(−3)² = 9</td></tr>
+        <tr><td>no check</td><td>a root and nothing else</td><td>substitute into the original</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'What comes next',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>If you lost marks on</th><th>Revise before</th></tr></thead>
+      <tbody>
+        <tr><td>Q1–Q2</td><td>the next Cambridge insert — inequalities, lesson 20</td></tr>
+        <tr><td>Q3–Q4</td><td>ratio, lesson 42, where expressions return</td></tr>
+        <tr><td>Q5</td><td>percentages, lesson 59, where formulae are evaluated</td></tr>
+        <tr><td>Q6–Q7</td><td>every word problem for the rest of the year</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      The next block leaves algebra for a while and returns to fractions — but every one of the equations
+      above will be needed again in Quarter III, when speed and distance are found from formulae.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q5: find ' + m('x² − 2x') + ' at ' + m('x = −3') + '.',
+      steps: [
+        ['Substitute in brackets: ' + m('(−3)² − 2(−3)') + '.', ''],
+        [m('(−3)² = 9'), ''],
+        [m('−2 · (−3) = +6'), 'Two minuses.'],
+        [m('9 + 6 = 15'), '']
+      ],
+      ans: m('15')
+    },
+    {
+      q: 'Model answer, Q6: solve ' + m('4x − 5 = 19') + '.',
+      steps: [
+        ['Add ' + m('5') + ': ' + m('4x = 24') + '.', ''],
+        ['Divide by ' + m('4') + ': ' + m('x = 6') + '.', ''],
+        ['Check: ' + m('4 · 6 − 5 = 19') + ' ✓', '']
+      ],
+      ans: m('x = 6')
+    },
+    {
+      q: 'Model answer, Q7: solve ' + m('3(x + 2) = 5x') + '.',
+      steps: [
+        ['Expand: ' + m('3x + 6 = 5x') + '.', ''],
+        ['Subtract ' + m('3x') + ': ' + m('6 = 2x') + '.', ''],
+        [m('x = 3'), 'Check: ' + m('15 = 15') + ' ✓']
+      ],
+      ans: m('x = 3')
+    }
+  ],
+  modelNote: 'Mark Q1 and Q2 first and return them within the lesson; sign errors corrected the same day rarely come back.',
+  interactive: {
+    type: 'quiz',
+    title: 'The block in eight questions',
+    hint: 'Signs, translation, simplification, equations.',
+    items: [
+      { q: m('5 − (−6)') + ' equals:', a: [m('−1'), m('11'), m('1'), m('−11')], c: 1, why: 'Two minuses make a plus.' },
+      { q: m('(−7) · 4') + ' equals:', a: [m('28'), m('−28'), m('−3'), m('3')], c: 1, why: 'Different signs.' },
+      { q: m('(−36) ÷ (−9)') + ' equals:', a: [m('4'), m('−4'), m('−45'), m('45')], c: 0, why: 'Same signs.' },
+      { q: m('(−3)²') + ' equals:', a: [m('9'), m('−9'), m('6'), m('−6')], c: 0, why: 'The bracket squares the sign.' },
+      { q: '“Subtract ' + m('3') + ' from a number, then multiply by ' + m('4') + '”:', a: [m('4x − 3'), m('4(x − 3)'), m('4x + 3'), m('3 − 4x')], c: 1, why: '“Then” marks the bracket.' },
+      { q: m('6x + 2y − 4x + 3y') + ' equals:', a: [m('2x + 5y'), m('10x + 5y'), m('2x − y'), m('7xy')], c: 0, why: 'Collect each letter.' },
+      { q: m('x² − 2x') + ' at ' + m('x = −3') + ' is:', a: [m('3'), m('15'), m('−15'), m('9')], c: 1, why: m('9 + 6') + '.' },
+      { q: m('4x − 5 = 19') + ' gives:', a: [m('x = 6'), m('x = 3.5'), m('x = 24'), m('x = 4')], c: 0, why: m('4x = 24') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 tests:', a: ['multiplying integers', 'adding and subtracting integers', 'equations', 'expressions'], c: 1, why: 'The number line.' },
+    { q: 'Q3 loses marks most often through:', a: ['the numbers', 'the missing bracket', 'the letters', 'the sign'], c: 1, why: '“Then” marks it.' },
+    { q: 'Q4 answer is:', a: [m('2x + 5y'), m('10x + 5y'), m('7xy'), m('2xy')], c: 0, why: 'Only like terms collect.' },
+    { q: 'Q5 needs the substitution written:', a: ['without brackets', 'in brackets', 'as a decimal', 'as a fraction'], c: 1, why: 'The value is negative.' },
+    { q: 'Q6 must end with:', a: ['the root', 'the root and a check', 'a graph', 'a table'], c: 1, why: 'The check carries a mark.' },
+    { q: 'Q7 begins by:', a: ['dividing', 'expanding the bracket', 'squaring', 'checking'], c: 1, why: 'Or dividing by ' + m('3') + ' — either works.' }
+  ],
+  practice: {
+    easy: [
+      [m('−3 + 8'), m('5')],
+      [m('4 − 9'), m('−5')],
+      [m('5 − (−6)'), m('11')],
+      [m('(−7) · 4'), m('−28')],
+      [m('(−36) ÷ (−9)'), m('4')],
+      [m('(−3)²'), m('9')],
+      [m('6x + 2y − 4x + 3y'), m('2x + 5y')]
+    ],
+    med: [
+      ['“Four times a number, then subtract ' + m('3') + '”', m('4x − 3')],
+      ['“Subtract ' + m('3') + ' from a number, then multiply by ' + m('4') + '”', m('4(x − 3)')],
+      [m('x² − 2x') + ' at ' + m('x = −3'), m('15')],
+      [m('4x − 5 = 19'), m('x = 6')],
+      [m('3(x + 2) = 5x'), m('x = 3')],
+      [m('2x + 7 = x + 12'), m('x = 5')],
+      [m('(−2)³'), m('−8')]
+    ],
+    hard: [
+      [m('−4 − (−9) + (−2)'), m('3')],
+      [m('(−2)(−3)(−1)'), m('−6')],
+      [m('2x² − x') + ' at ' + m('x = −2'), m('10')],
+      [m('5(x − 1) = 3(x + 3)'), m('x = 7')],
+      ['Simplify ' + m('4(a + 2b) − 3a'), m('a + 8b')],
+      ['A number trebled and decreased by ' + m('4') + ' is ' + m('17'), m('7')],
+      ['Why must ' + m('−3') + ' be substituted in brackets?', 'Otherwise the square loses its sign']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every question you lost a mark on in full, from the first line.',
+  homework: [
+    'Rewrite in full every question on which you lost a mark.',
+    'Compute ' + m('−8 + 15') + ', ' + m('3 − 11') + ' and ' + m('7 − (−4)') + '.',
+    'Compute ' + m('(−5) · 6') + ' and ' + m('(−48) ÷ (−6)') + '.',
+    'Simplify ' + m('8a + 3b − 5a + b') + ' and find its value at ' + m('a = 2, b = −1') + '.',
+    'Solve ' + m('5x − 4 = 26') + ' and check your root.'
+  ]
+});
+
+/* ============================== 09 ============================== */
+G6_MAT.push({
+  id: 'g6-09', stream: 'mat', grade: 6, quarter: 1, lessons: '20', hours: 1,
+  title: 'Think — inequalities',
+  subtitle: 'A Cambridge insert: when two quantities are not equal, and how to write and read that.',
+  uz: 'Matematika 6, o‘ylab ko‘r', uzPage: 'pp. 51–53',
+  cam: 'S7 2.6', camPage: 'Stage 7, pp. 38–41', wb: 'Exercise 2.6',
+  objectives: [
+    'Read and write the four inequality symbols.',
+    'Show an inequality on a number line.',
+    'List the integers satisfying a simple inequality.',
+    'Use inequalities to describe a real restriction.'
+  ],
+  terms: [
+    ['Inequality', 'Tengsizlik', 'Неравенство'],
+    ['Greater than', 'Katta', 'Больше'],
+    ['Less than', 'Kichik', 'Меньше'],
+    ['At least', 'Kamida', 'Не менее'],
+    ['At most', 'Ko‘pi bilan', 'Не более'],
+    ['Number line', 'Sonlar o‘qi', 'Числовая прямая'],
+    ['Solution set', 'Yechimlar to‘plami', 'Множество решений'],
+    ['Integer', 'Butun son', 'Целое число']
+  ],
+  timing: [[10, 'Four symbols'], [12, 'On the number line'], [12, 'Listing the integers'], [6, 'In the world']],
+  sections: [
+    {
+      h: 'Four symbols',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Symbol</th><th>Read as</th><th>Everyday phrase</th></tr></thead>
+      <tbody>
+        <tr><td class="m">&gt;</td><td>is greater than</td><td>more than</td></tr>
+        <tr><td class="m">&lt;</td><td>is less than</td><td>fewer than</td></tr>
+        <tr><td class="m">≥</td><td>is greater than or equal to</td><td>at least</td></tr>
+        <tr><td class="m">≤</td><td>is less than or equal to</td><td>at most, no more than</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The wide end faces the larger number</div>
+      ${m('7 > 3')} and ${m('3 < 7')} say the same thing. Reading the symbol aloud from left to right,
+      every time, is how it stops being guessed at.</div>`
+    },
+    {
+      h: 'On the number line',
+      html: `{{fig:numberLineInterval:An inequality shown as a ray on the number line}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Inequality</th><th>Circle at the end</th><th>Arrow points</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x > 3</td><td>open</td><td>right</td></tr>
+        <tr><td class="m">x ≥ 3</td><td>filled</td><td>right</td></tr>
+        <tr><td class="m">x < 3</td><td>open</td><td>left</td></tr>
+        <tr><td class="m">x ≤ 3</td><td>filled</td><td>left</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The circle says whether the end point counts</div>
+      Filled means the number itself is included; open means it is not. That single dot is the whole
+      difference between ${m('>')} and ${m('≥')}.</div>`
+    },
+    {
+      h: 'Listing the integers',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Condition</th><th>The integers</th><th>How many</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2 < x < 7</td><td class="m">3, 4, 5, 6</td><td class="m">4</td></tr>
+        <tr><td class="m">2 ≤ x ≤ 7</td><td class="m">2, 3, 4, 5, 6, 7</td><td class="m">6</td></tr>
+        <tr><td class="m">−3 < x ≤ 1</td><td class="m">−2, −1, 0, 1</td><td class="m">4</td></tr>
+        <tr><td class="m">x ≥ 5</td><td class="m">5, 6, 7, …</td><td>infinitely many</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('<')} excludes the end, ${m('≤')} includes it</span>
+      ${m('2 < x < 7')} has four integers; ${m('2 ≤ x ≤ 7')} has six. Two symbols, two extra numbers —
+      and it is a mark in every paper that asks for a list.</div>`
+    },
+    {
+      h: 'In the world',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>In symbols</th></tr></thead>
+      <tbody>
+        <tr><td>a lift carries at most ${m('8')} people</td><td class="m">n ≤ 8</td></tr>
+        <tr><td>the class has at least ${m('20')} pupils</td><td class="m">n ≥ 20</td></tr>
+        <tr><td>the speed limit is ${m('60 km/h')}</td><td class="m">v ≤ 60</td></tr>
+        <tr><td>water is liquid between ${m('0')} and ${m('100 °C')}</td><td class="m">0 < t < 100</td></tr>
+        <tr><td>a triangle's angles</td><td class="m">0° < α < 180°</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">“At most” is ${m('≤')}, not ${m('<')}</div>
+      A lift that carries at most eight can carry eight. Everyday phrases translate into the symbols with
+      the equality included far more often than pupils expect.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'List the integers satisfying ' + m('−3 < x ≤ 1') + '.',
+      steps: [
+        [m('−3') + ' is excluded — the symbol is ' + m('<') + '.', ''],
+        [m('1') + ' is included — the symbol is ' + m('≤') + '.', ''],
+        ['So: ' + m('−2, −1, 0, 1') + '.', '']
+      ],
+      ans: m('−2, −1, 0, 1')
+    },
+    {
+      q: 'Write “a lift carries at most ' + m('8') + ' people” in symbols.',
+      steps: [
+        ['Let ' + m('n') + ' be the number of people.', ''],
+        ['“At most” includes ' + m('8') + ' itself.', ''],
+        [m('n ≤ 8'), '']
+      ],
+      ans: m('n ≤ 8')
+    },
+    {
+      q: 'How many integers satisfy ' + m('2 ≤ x ≤ 7') + '?',
+      steps: [
+        ['Both ends are included.', ''],
+        [m('2, 3, 4, 5, 6, 7'), ''],
+        ['Six integers.', '']
+      ],
+      ans: m('6')
+    }
+  ],
+  modelNote: 'Ask for the number of pupils the room may hold and write it as an inequality on the board; the class supplies the ≤ themselves once they see that the full room is allowed.',
+  interactive: {
+    type: 'inequalityLine',
+    title: 'An inequality on the number line',
+    hint: 'Open circle excludes, filled circle includes.'
+  },
+  quiz: [
+    { q: m('≥') + ' means:', a: ['greater than', 'at least', 'at most', 'less than'], c: 1, why: 'Equality included.' },
+    { q: m('≤') + ' means:', a: ['at least', 'at most', 'greater than', 'not equal'], c: 1, why: 'Equality included.' },
+    { q: 'An open circle on the line means the end point is:', a: ['included', 'excluded', 'negative', 'zero'], c: 1, why: 'Strict inequality.' },
+    { q: 'The integers with ' + m('2 < x < 7') + ' number:', a: [m('4'), m('5'), m('6'), m('7')], c: 0, why: m('3, 4, 5, 6') + '.' },
+    { q: 'The integers with ' + m('2 ≤ x ≤ 7') + ' number:', a: [m('4'), m('5'), m('6'), m('7')], c: 2, why: 'Both ends count.' },
+    { q: '“At most ' + m('8') + '” is:', a: [m('n < 8'), m('n ≤ 8'), m('n > 8'), m('n ≥ 8')], c: 1, why: 'Eight is allowed.' }
+  ],
+  practice: {
+    easy: [
+      ['Read ' + m('7 > 3'), 'Seven is greater than three'],
+      ['Read ' + m('3 < 7'), 'Three is less than seven'],
+      ['Read ' + m('x ≥ 5'), m('x') + ' is at least five'],
+      ['Read ' + m('x ≤ 5'), m('x') + ' is at most five'],
+      ['Is ' + m('−2 > −7') + '?', 'Yes'],
+      ['Is ' + m('0 < −1') + '?', 'No'],
+      ['The circle for ' + m('x > 3'), 'Open']
+    ],
+    med: [
+      ['The integers with ' + m('2 < x < 7'), m('3, 4, 5, 6')],
+      ['The integers with ' + m('2 ≤ x ≤ 7'), m('2, 3, 4, 5, 6, 7')],
+      ['The integers with ' + m('−3 < x ≤ 1'), m('−2, −1, 0, 1')],
+      ['“A lift carries at most ' + m('8') + '”', m('n ≤ 8')],
+      ['“The class has at least ' + m('20') + '”', m('n ≥ 20')],
+      ['“The speed limit is ' + m('60') + '”', m('v ≤ 60')],
+      ['Water is liquid between ' + m('0') + ' and ' + m('100 °C'), m('0 < t < 100')]
+    ],
+    hard: [
+      ['How many integers satisfy ' + m('−5 ≤ x < 4') + '?', m('9')],
+      ['Write “more than ' + m('3') + ' but no more than ' + m('10') + '”', m('3 < x ≤ 10')],
+      ['The angles of a triangle satisfy', m('0° < α < 180°')],
+      ['Which integers satisfy both ' + m('x > 2') + ' and ' + m('x ≤ 5') + '?', m('3, 4, 5')],
+      ['Can ' + m('x < 3') + ' and ' + m('x > 5') + ' both hold?', 'No'],
+      ['Write the ages of a Grade 6 pupil as an inequality', 'e.g. ' + m('11 ≤ a ≤ 13')],
+      ['Why does “at most” use ' + m('≤') + ' and not ' + m('<') + '?', 'The stated number is itself allowed']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Read every symbol aloud from left to right before writing anything.',
+  homework: [
+    'Write in symbols: at least ' + m('12') + '; at most ' + m('30') + '; more than ' + m('7') + '.',
+    'List the integers satisfying ' + m('−4 ≤ x < 2') + '.',
+    'Show ' + m('x > −1') + ' on a number line, with the right kind of circle.',
+    'Write three real restrictions from your own day as inequalities.',
+    'How many integers satisfy ' + m('−10 < x ≤ 0') + '?'
+  ]
+});
