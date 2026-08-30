@@ -10957,3 +10957,168 @@ G6_MAT.push({
     'Explain why the closing speed is the sum in one case and the difference in the other.'
   ]
 });
+
+/* ============================== 62 ============================== */
+G6_MAT.push({
+  id: 'g6-62', stream: 'mat', grade: 6, quarter: 3, lessons: '132', hours: 1,
+  title: 'Control work 7 — speed and motion',
+  subtitle: 'The formula, its rearrangements, average speed and two-body problems.',
+  uz: 'Matematika 6, Nazorat ishi 7', uzPage: 'pp. 335–388',
+  cam: 'S7 12 review', camPage: 'Stage 7, pp. 122–126', wb: 'Control paper 7',
+  objectives: [
+    'Use ' + m('s = vt') + ' in all three directions with correct units.',
+    'Find an average speed over a journey in stages.',
+    'Solve a meeting or overtaking problem.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Speed', 'Tezlik', 'Скорость'],
+    ['Distance', 'Masofa', 'Расстояние'],
+    ['Time', 'Vaqt', 'Время'],
+    ['Average speed', 'O‘rtacha tezlik', 'Средняя скорость'],
+    ['Closing speed', 'Yaqinlashish tezligi', 'Скорость сближения'],
+    ['Units', 'O‘lchov birligi', 'Единицы'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[2, 'Instructions'], [28, 'The paper'], [8, 'Answers and diagnosis'], [2, 'What comes next']],
+  sections: [
+    {
+      h: 'The paper — 20 marks, 28 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>A car does ${m('75')} km/h for ${m('4')} h: the distance</td><td class="m">2</td><td>L117–119</td></tr>
+        <tr><td>2</td><td>${m('4')} km in ${m('20')} min: the speed in km/h</td><td class="m">3</td><td>L120–122</td></tr>
+        <tr><td>3</td><td>${m('7')} km at ${m('5')} km/h: the time in hours and minutes</td><td class="m">3</td><td>L120–122</td></tr>
+        <tr><td>4</td><td>Convert ${m('72')} km/h to m/s</td><td class="m">2</td><td>L116</td></tr>
+        <tr><td>5</td><td>${m('120')} km at ${m('60')} and back at ${m('40')}: the average speed</td><td class="m">4</td><td>L126–128</td></tr>
+        <tr><td>6</td><td>Two cars ${m('300')} km apart at ${m('60')} and ${m('40')}: when and where do they meet?</td><td class="m">4</td><td>L129–131</td></tr>
+        <tr><td>7</td><td>A bus at ${m('60')} leaves ${m('30')} min before a car at ${m('80')}: when is it caught?</td><td class="m">2</td><td>L129–131</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The answers</div>
+      ${m('300')} km; ${m('12')} km/h; ${m('1')} h ${m('24')} min; ${m('20')} m/s; ${m('48')} km/h;
+      after ${m('3')} h, ${m('180')} km from the first; after ${m('1.5')} h.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>minutes used with km/h</td><td class="m">4 ÷ 20</td><td class="m">4 ÷ ${f('1', '3')}</td></tr>
+        <tr><td>decimal hours read as minutes</td><td class="m">1 h 40 min</td><td class="m">1 h 24 min</td></tr>
+        <tr><td>multiplied instead of divided</td><td class="m">72 · 3.6</td><td class="m">72 ÷ 3.6</td></tr>
+        <tr><td>speeds averaged</td><td class="m">(60 + 40) ÷ 2</td><td class="m">240 ÷ 5</td></tr>
+        <tr><td>closing speed subtracted for an approach</td><td class="m">60 − 40</td><td class="m">60 + 40</td></tr>
+        <tr><td>head start left as a time</td><td class="m">0.5 ÷ 20</td><td class="m">30 ÷ 20</td></tr>
+        <tr><td>units missing</td><td class="m">300</td><td class="m">300 km</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'What comes next',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>If you lost marks on</th><th>Revise</th></tr></thead>
+      <tbody>
+        <tr><td>Q1–Q3</td><td>the formula and time conversion, L116–122</td></tr>
+        <tr><td>Q4</td><td>unit conversion, L116</td></tr>
+        <tr><td>Q5</td><td>average speed, L126–128</td></tr>
+        <tr><td>Q6–Q7</td><td>two-body problems, L129–131</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      The rest of Quarter III is a Cambridge project, two lessons on fractions and sequences, and then the
+      volume of the cuboid — where a formula again does the work.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q2: ' + m('4') + ' km in ' + m('20') + ' minutes.',
+      steps: [
+        [m('20') + ' min ' + m('= ' + f('1', '3')) + ' h.', 'Convert first.'],
+        [m('v = 4 ÷ ' + f('1', '3') + ' = 4 · 3'), ''],
+        [m('= 12') + ' km/h.', 'Reasonable for a cyclist ✓']
+      ],
+      ans: m('12 km/h')
+    },
+    {
+      q: 'Model answer, Q5: ' + m('120') + ' km at ' + m('60') + ' and back at ' + m('40') + '.',
+      steps: [
+        ['Out: ' + m('2') + ' h. Back: ' + m('3') + ' h.', ''],
+        ['Total ' + m('240') + ' km in ' + m('5') + ' h.', ''],
+        [m('48') + ' km/h.', 'Not the mean of the speeds.']
+      ],
+      ans: m('48 km/h')
+    },
+    {
+      q: 'Model answer, Q6: two cars ' + m('300') + ' km apart.',
+      steps: [
+        ['Closing speed ' + m('100') + ' km/h.', 'They approach, so add.'],
+        ['Time ' + m('3') + ' h.', ''],
+        ['First travels ' + m('180') + ' km, second ' + m('120') + ' km.', 'Check: ' + m('300') + ' ✓']
+      ],
+      ans: 'After ' + m('3') + ' h, ' + m('180') + ' km from the first'
+    }
+  ],
+  modelNote: 'Return Q5 first and ask how many wrote 50; naming the error as “averaging the speeds” makes it memorable.',
+  interactive: {
+    type: 'quiz',
+    title: 'The chapter in eight questions',
+    hint: 'Units first, then the formula.',
+    items: [
+      { q: m('75') + ' km/h for ' + m('4') + ' h:', a: [m('18.75'), m('300'), m('79'), m('300') + ' km/h'], c: 1, why: m('vt') + '.' },
+      { q: m('4') + ' km in ' + m('20') + ' min:', a: [m('0.2'), m('12'), m('80'), m('4')], c: 1, why: 'Time in hours.' },
+      { q: m('7') + ' km at ' + m('5') + ' km/h:', a: [m('1.4') + ' h', m('1 h 40 min'), m('1 h 24 min'), m('35') + ' h'], c: 2, why: m('0.4 · 60') + '.' },
+      { q: m('72') + ' km/h in m/s:', a: [m('20'), m('259'), m('26'), m('7.2')], c: 0, why: 'Divide by ' + m('3.6') + '.' },
+      { q: m('120') + ' km at ' + m('60') + ' and back at ' + m('40') + ':', a: [m('50'), m('48'), m('100'), m('240')], c: 1, why: 'Total over total.' },
+      { q: 'Two cars approaching close the gap at:', a: ['the sum', 'the difference', 'the average', 'the larger'], c: 0, why: 'Both close it.' },
+      { q: m('300') + ' km apart at ' + m('60') + ' and ' + m('40') + ': they meet after:', a: [m('3') + ' h', m('5') + ' h', m('7.5') + ' h', m('2') + ' h'], c: 0, why: m('300 ÷ 100') + '.' },
+      { q: 'A ' + m('30') + ' min head start at ' + m('60') + ' is:', a: [m('0.5') + ' km', m('30') + ' km', m('60') + ' km', m('120') + ' km'], c: 1, why: 'Turn it into a distance.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q2 needs the time in:', a: ['minutes', 'hours', 'seconds', 'any unit'], c: 1, why: 'To match km/h.' },
+    { q: 'Q3 answer in hours and minutes is:', a: [m('1.4') + ' h', m('1 h 40 min'), m('1 h 24 min'), m('84') + ' min only'], c: 2, why: m('0.4') + ' h is ' + m('24') + ' min.' },
+    { q: 'Q4 divides by:', a: [m('3.6'), m('1000'), m('60'), m('36')], c: 0, why: 'km/h to m/s.' },
+    { q: 'Q5 must not:', a: ['add the distances', 'average the speeds', 'add the times', 'divide once'], c: 1, why: 'Time weights it.' },
+    { q: 'Q6 adds the speeds because:', a: ['they travel together', 'they approach', 'they are equal', 'of the units'], c: 1, why: 'The gap closes from both ends.' },
+    { q: 'Q7 turns the head start into:', a: ['a time', 'a distance', 'a speed', 'nothing'], c: 1, why: m('60 · 0.5') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('75') + ' km/h for ' + m('4') + ' h', m('300 km')],
+      [m('4') + ' km in ' + m('20') + ' min', m('12 km/h')],
+      [m('7') + ' km at ' + m('5') + ' km/h', m('1 h 24 min')],
+      [m('72') + ' km/h in m/s', m('20')],
+      [m('240') + ' km in ' + m('5') + ' h', m('48 km/h')],
+      ['Closing speed of ' + m('60') + ' and ' + m('40') + ' approaching', m('100 km/h')],
+      ['A ' + m('30') + ' min head start at ' + m('60'), m('30 km')]
+    ],
+    med: [
+      [m('120') + ' km at ' + m('60') + ' and back at ' + m('40'), m('48 km/h')],
+      ['Two cars ' + m('300') + ' km apart at ' + m('60') + ' and ' + m('40'), 'Meet after ' + m('3 h')],
+      ['Where?', m('180') + ' km from the first'],
+      ['A bus at ' + m('60') + ' caught by a car at ' + m('80') + ' after a ' + m('30') + ' min start', m('1.5 h')],
+      [m('54') + ' km/h in m/s', m('15')],
+      [m('9') + ' km at ' + m('4') + ' km/h', m('2 h 15 min')],
+      [m('150') + ' km in ' + m('2 h 30 min'), m('60 km/h')]
+    ],
+    hard: [
+      ['A journey of ' + m('200') + ' km, half at ' + m('40') + ' and half at ' + m('60'), m('48 km/h')],
+      ['Two trains ' + m('540') + ' km apart at ' + m('100') + ' and ' + m('80'), 'Meet after ' + m('3 h')],
+      ['A car catches a lorry ' + m('45') + ' km ahead in ' + m('1.5') + ' h: the speed difference', m('30 km/h')],
+      ['A cyclist at ' + m('15') + ' km/h for ' + m('40') + ' min then ' + m('20') + ' km/h for ' + m('30') + ' min: the average', m('17.1 km/h')],
+      ['A train ' + m('180') + ' m long passing a pole at ' + m('15') + ' m/s', m('12 s')],
+      ['Why is the average of ' + m('60') + ' and ' + m('40') + ' not ' + m('50') + ' here?', 'More time is spent at ' + m('40')],
+      [m('12') + ' m/s in km/h', m('43.2')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every question you lost a mark on, with its units.',
+  homework: [
+    'Rewrite in full every question on which you lost a mark.',
+    'A car covers ' + m('294') + ' km in ' + m('3 h 30 min') + '. Find its speed.',
+    'Find the average speed for ' + m('60') + ' km at ' + m('30') + ' km/h and ' + m('60') + ' km at ' + m('60') + '.',
+    'Two cyclists ' + m('45') + ' km apart ride towards each other at ' + m('12') + ' and ' + m('18') + ' km/h. When do they meet?',
+    'Convert ' + m('90') + ' km/h to m/s and ' + m('25') + ' m/s to km/h.'
+  ]
+});
