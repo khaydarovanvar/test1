@@ -10606,3 +10606,177 @@ G6_MAT.push({
     'A journey of ' + m('180') + ' km is half at ' + m('45') + ' km/h and half at ' + m('90') + '. Find the total time.'
   ]
 });
+
+/* ============================== 60 ============================== */
+G6_MAT.push({
+  id: 'g6-60', stream: 'mat', grade: 6, quarter: 3, lessons: '126–128', hours: 3,
+  title: 'Average speed',
+  subtitle: 'Total distance over total time — and why it is not the average of the two speeds.',
+  uz: 'Matematika 6, §27', uzPage: 'pp. 369–378',
+  cam: 'S7 12 rates', camPage: 'Stage 7, pp. 122–126', wb: 'Exercise 12.8',
+  objectives: [
+    'Define average speed as total distance over total time.',
+    'Compute it for a journey in stages.',
+    'Explain why the mean of the speeds is usually wrong.',
+    'Include stops in the total time when the question requires it.'
+  ],
+  terms: [
+    ['Average speed', 'O‘rtacha tezlik', 'Средняя скорость'],
+    ['Total distance', 'Umumiy masofa', 'Общее расстояние'],
+    ['Total time', 'Umumiy vaqt', 'Общее время'],
+    ['Stop', 'To‘xtash', 'Остановка'],
+    ['Stage', 'Bosqich', 'Участок'],
+    ['Mean of speeds', 'Tezliklarning o‘rtachasi', 'Среднее скоростей'],
+    ['Weighted', 'Vaznli', 'Взвешенный'],
+    ['Journey', 'Sayohat', 'Поездка']
+  ],
+  timing: [[25, 'The definition'], [30, 'Journeys in stages'], [35, 'Why not the mean of the speeds'], [25, 'Stops'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The definition',
+      html: `${eq('average speed ' + m('= ' + f('total distance', 'total time')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Journey</th><th>Total distance</th><th>Total time</th><th>Average speed</th></tr></thead>
+      <tbody>
+        <tr><td>${m('2')} h at ${m('60')}, ${m('3')} h at ${m('80')}</td><td class="m">360 km</td><td class="m">5 h</td><td class="m">72 km/h</td></tr>
+        <tr><td>${m('120')} km at ${m('60')}, ${m('120')} km at ${m('40')}</td><td class="m">240 km</td><td class="m">5 h</td><td class="m">48 km/h</td></tr>
+        <tr><td>${m('90')} km at ${m('45')}, ${m('60')} km at ${m('60')}</td><td class="m">150 km</td><td class="m">3 h</td><td class="m">50 km/h</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One division, at the very end</div>
+      Find the whole distance, find the whole time, divide once. Every average-speed problem is that
+      sentence.</div>`
+    },
+    {
+      h: 'Journeys in stages',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Stage</th><th>Speed</th><th>Time</th><th>Distance</th></tr></thead>
+      <tbody>
+        <tr><td>first</td><td class="m">45 km/h</td><td class="m">2 h</td><td class="m">90 km</td></tr>
+        <tr><td>second</td><td class="m">60 km/h</td><td class="m">1 h</td><td class="m">60 km</td></tr>
+        <tr><td>total</td><td class="m">50 km/h</td><td class="m">3 h</td><td class="m">150 km</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The average lies between the two speeds</div>
+      Here between ${m('45')} and ${m('60')}, and nearer the one that took longer. If your answer falls
+      outside the two speeds, something has gone wrong.</div>`
+    },
+    {
+      h: 'Why not the mean of the speeds',
+      html: `<p>A car goes ${m('120')} km at ${m('60')} km/h and comes back at ${m('40')} km/h. The mean of
+      the speeds is ${m('50')}; the average speed is not.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Stage</th><th>Distance</th><th>Speed</th><th>Time</th></tr></thead>
+      <tbody>
+        <tr><td>out</td><td class="m">120</td><td class="m">60</td><td class="m">2 h</td></tr>
+        <tr><td>back</td><td class="m">120</td><td class="m">40</td><td class="m">3 h</td></tr>
+        <tr><td>total</td><td class="m">240</td><td>—</td><td class="m">5 h</td></tr>
+      </tbody></table></div>
+      ${eq('average ' + m('= ' + f('240', '5') + ' = 48') + ' km/h, not ' + m('50'), true)}
+      <div class="warn"><span class="wl">More time is spent at the slower speed</span>
+      That is why the average is pulled below the mean. Only when the two <i>times</i> are equal does the
+      mean of the speeds happen to be right.</div>`
+    },
+    {
+      h: 'Stops',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Time used</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('150')} km driven in ${m('2')} h with a ${m('30')} min stop: average driving speed</td><td class="m">2 h</td><td class="m">75 km/h</td></tr>
+        <tr><td>the same journey: average speed for the whole trip</td><td class="m">2.5 h</td><td class="m">60 km/h</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Read whether the stop is included</span>
+      “Average speed for the journey” includes the stop; “average driving speed” does not. The same numbers
+      give ${m('60')} or ${m('75')} depending on which was asked.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A car drives ' + m('2') + ' h at ' + m('60') + ' km/h and ' + m('3') + ' h at ' + m('80') + '. Find the average speed.',
+      steps: [
+        ['Distance: ' + m('120 + 240 = 360') + ' km.', ''],
+        ['Time: ' + m('5') + ' h.', ''],
+        [m('360 ÷ 5 = 72') + ' km/h.', 'Between ' + m('60') + ' and ' + m('80') + ' ✓']
+      ],
+      ans: m('72 km/h')
+    },
+    {
+      q: 'A car goes ' + m('120') + ' km at ' + m('60') + ' km/h and returns at ' + m('40') + '. Find the average speed for the whole trip.',
+      steps: [
+        ['Out: ' + m('2') + ' h. Back: ' + m('3') + ' h.', ''],
+        ['Total: ' + m('240') + ' km in ' + m('5') + ' h.', ''],
+        [m('48') + ' km/h.', 'Not ' + m('50') + ' — more time at the slower speed.']
+      ],
+      ans: m('48 km/h')
+    },
+    {
+      q: 'A bus covers ' + m('150') + ' km in ' + m('2') + ' hours of driving, with a ' + m('30') + '-minute stop. Find both averages.',
+      steps: [
+        ['Driving: ' + m('150 ÷ 2 = 75') + ' km/h.', ''],
+        ['Whole trip: ' + m('2.5') + ' h.', ''],
+        [m('150 ÷ 2.5 = 60') + ' km/h.', '']
+      ],
+      ans: m('75') + ' and ' + m('60') + ' km/h'
+    }
+  ],
+  modelNote: 'Ask for the average of 60 and 40 first; almost everyone says 50, and the table that follows is then genuinely surprising.',
+  interactive: {
+    type: 'quiz',
+    title: 'Total over total',
+    hint: 'Never average the speeds themselves.',
+    items: [
+      { q: 'Average speed is:', a: ['the mean of the speeds', 'total distance over total time', 'the largest speed', 'the smallest'], c: 1, why: 'By definition.' },
+      { q: m('2') + ' h at ' + m('60') + ' and ' + m('3') + ' h at ' + m('80') + ' gives:', a: [m('70'), m('72'), m('140'), m('68')], c: 1, why: m('360 ÷ 5') + '.' },
+      { q: m('120') + ' km at ' + m('60') + ' and back at ' + m('40') + ' gives:', a: [m('50'), m('48'), m('52'), m('100')], c: 1, why: m('240 ÷ 5') + '.' },
+      { q: 'The answer is below ' + m('50') + ' because:', a: ['the distances differ', 'more time is spent slower', 'of rounding', 'of the stop'], c: 1, why: 'Time weights the average.' },
+      { q: m('90') + ' km at ' + m('45') + ' and ' + m('60') + ' km at ' + m('60') + ' gives:', a: [m('50'), m('52.5'), m('55'), m('105')], c: 0, why: m('150 ÷ 3') + '.' },
+      { q: 'An average speed must lie:', a: ['above both speeds', 'between them', 'below both', 'anywhere'], c: 1, why: 'A check on the answer.' },
+      { q: m('150') + ' km in ' + m('2') + ' h driving plus a ' + m('30') + ' min stop, whole trip:', a: [m('75'), m('60'), m('50'), m('120')], c: 1, why: m('150 ÷ 2.5') + '.' },
+      { q: 'The mean of the speeds is right only when:', a: ['the distances are equal', 'the times are equal', 'always', 'never'], c: 1, why: 'Equal weights.' }
+    ]
+  },
+  quiz: [
+    { q: 'Average speed uses:', a: ['the mean of the speeds', 'total distance and total time', 'the first speed', 'the last speed'], c: 1, why: 'One division at the end.' },
+    { q: m('240') + ' km in ' + m('5') + ' h is:', a: [m('48'), m('50'), m('1200'), m('4.8')], c: 0, why: 'Divide.' },
+    { q: 'The average of a journey out at ' + m('60') + ' and back at ' + m('40') + ' is:', a: ['exactly ' + m('50'), 'less than ' + m('50'), 'more than ' + m('50'), m('100')], c: 1, why: 'More time slower.' },
+    { q: 'An answer of ' + m('90') + ' for stages at ' + m('45') + ' and ' + m('60') + ' is:', a: ['possible', 'impossible', 'exact', 'the mean'], c: 1, why: 'It must lie between them.' },
+    { q: '“Average driving speed” excludes:', a: ['the distance', 'the stops', 'the return', 'nothing'], c: 1, why: 'Only moving time.' },
+    { q: 'Which weights the average?', a: ['the distances', 'the times', 'the speeds', 'nothing'], c: 1, why: 'Time spent at each speed.' }
+  ],
+  practice: {
+    easy: [
+      [m('360') + ' km in ' + m('5') + ' h', m('72 km/h')],
+      [m('240') + ' km in ' + m('5') + ' h', m('48 km/h')],
+      [m('150') + ' km in ' + m('3') + ' h', m('50 km/h')],
+      [m('150') + ' km in ' + m('2') + ' h', m('75 km/h')],
+      [m('150') + ' km in ' + m('2.5') + ' h', m('60 km/h')],
+      ['Average speed is total distance over', 'total time'],
+      ['An average must lie', 'between the two speeds']
+    ],
+    med: [
+      [m('2') + ' h at ' + m('60') + ' and ' + m('3') + ' h at ' + m('80'), m('72 km/h')],
+      [m('120') + ' km at ' + m('60') + ' and back at ' + m('40'), m('48 km/h')],
+      [m('90') + ' km at ' + m('45') + ' and ' + m('60') + ' km at ' + m('60'), m('50 km/h')],
+      [m('1.5') + ' h at ' + m('50') + ' and ' + m('0.5') + ' h at ' + m('70'), m('55 km/h')],
+      ['Why is the return trip average below ' + m('50') + '?', 'More time is spent at the slower speed'],
+      ['With a ' + m('30') + ' min stop in a ' + m('2') + ' h drive of ' + m('150') + ' km', m('60 km/h')],
+      ['Without the stop', m('75 km/h')]
+    ],
+    hard: [
+      ['Out at ' + m('80') + ' and back at ' + m('20') + ' over ' + m('80') + ' km each way', m('32 km/h')],
+      ['Out at ' + m('30') + ' and back at ' + m('30'), m('30 km/h')],
+      [m('100') + ' km at ' + m('50') + ' then ' + m('100') + ' km at ' + m('100'), m('66.7 km/h')],
+      ['A journey of ' + m('3') + ' equal parts at ' + m('30, 60') + ' and ' + m('60'), m('45 km/h')],
+      ['When does the mean of two speeds give the right answer?', 'When the two times are equal'],
+      ['A walk of ' + m('2') + ' km at ' + m('4') + ' km/h and ' + m('2') + ' km at ' + m('6'), m('4.8 km/h')],
+      ['Is the average speed ever above both speeds?', 'No']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Find the total distance and the total time before dividing once.',
+  homework: [
+    'A car drives ' + m('3') + ' h at ' + m('50') + ' km/h and ' + m('2') + ' h at ' + m('75') + '. Find the average speed.',
+    'A journey of ' + m('60') + ' km out at ' + m('30') + ' km/h and back at ' + m('60') + '. Find the average speed.',
+    'Explain in one sentence why the answer to task 2 is not ' + m('45') + '.',
+    'A bus covers ' + m('180') + ' km in ' + m('3') + ' hours of driving with a ' + m('45') + '-minute stop. Find both averages.',
+    'A walk of ' + m('3') + ' km at ' + m('6') + ' km/h and ' + m('3') + ' km at ' + m('3') + '. Find the average speed.'
+  ]
+});
