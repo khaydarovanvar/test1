@@ -14423,3 +14423,174 @@ G6_MAT.push({
     'If ' + m('P(rain) = 0.3') + ', find ' + m('P(no rain)') + ' and the expected number of rainy days in ' + m('30') + '.'
   ]
 });
+
+/* ============================== 81 ============================== */
+G6_MAT.push({
+  id: 'g6-81', stream: 'mat', grade: 6, quarter: 4, lessons: '173–174', hours: 2,
+  title: 'Reflection, rotation and translation on a grid',
+  subtitle: 'Three ways of moving a shape that leave every length and every angle alone. [Cambridge insert]',
+  uz: 'Matematika 6, qo‘shimcha mavzu', uzPage: 'pp. 493–497',
+  cam: 'S7 14 position and transformation', camPage: 'Stage 7, pp. 144–152', wb: 'Exercise 14.1–14.3',
+  objectives: [
+    'Reflect a shape in the axes and in the line ' + m('y = x') + '.',
+    'Rotate a shape about the origin through ' + m('90°') + ' and ' + m('180°') + '.',
+    'Translate a shape by a given pair of numbers.',
+    'State what each transformation keeps and what it changes.'
+  ],
+  terms: [
+    ['Transformation', 'Almashtirish', 'Преобразование'],
+    ['Reflection', 'Simmetriya (aks ettirish)', 'Отражение'],
+    ['Mirror line', 'Simmetriya o‘qi', 'Ось симметрии'],
+    ['Rotation', 'Burish', 'Поворот'],
+    ['Centre of rotation', 'Burilish markazi', 'Центр поворота'],
+    ['Translation', 'Parallel ko‘chirish', 'Параллельный перенос'],
+    ['Image', 'Tasvir', 'Образ'],
+    ['Orientation', 'Yo‘nalish', 'Ориентация']
+  ],
+  timing: [[16, 'The three transformations'], [22, 'Reflection'], [24, 'Rotation'], [18, 'Translation']],
+  sections: [
+    {
+      h: 'The three transformations',
+      html: `<p>Each of the three moves a shape without bending or resizing it: every length and every angle
+      of the <b>image</b> matches the original. Only the position — and for a reflection the sense — is
+      different.</p>
+      {{fig:transformations:Reflection, rotation and translation of the same triangle}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Transformation</th><th>Needs</th><th>Lengths</th><th>Orientation</th></tr></thead>
+      <tbody>
+        <tr><td>reflection</td><td>a mirror line</td><td>unchanged</td><td><b>reversed</b></td></tr>
+        <tr><td>rotation</td><td>a centre, an angle and a direction</td><td>unchanged</td><td>kept</td></tr>
+        <tr><td>translation</td><td>two numbers — across and up</td><td>unchanged</td><td>kept</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Describing a transformation fully is part of the answer</div>
+      “A rotation” is incomplete; “a rotation of ${m('90°')} anticlockwise about the origin” is not. A
+      reflection needs its mirror line, a translation its two numbers.</div>`
+    },
+    {
+      h: 'Reflection',
+      html: `<p>Each point moves straight across the mirror line to the same distance on the other side. A
+      point already on the line does not move at all.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Mirror</th><th>Rule</th><th class="m">A(1, 1)</th><th class="m">B(4, 1)</th><th class="m">C(2, 3)</th></tr></thead>
+      <tbody>
+        <tr><td>the ${m('y')}-axis</td><td class="m">(x, y) → (−x, y)</td><td class="m">(−1, 1)</td><td class="m">(−4, 1)</td><td class="m">(−2, 3)</td></tr>
+        <tr><td>the ${m('x')}-axis</td><td class="m">(x, y) → (x, −y)</td><td class="m">(1, −1)</td><td class="m">(4, −1)</td><td class="m">(2, −3)</td></tr>
+        <tr><td>the line ${m('y = x')}</td><td class="m">(x, y) → (y, x)</td><td class="m">(1, 1)</td><td class="m">(1, 4)</td><td class="m">(3, 2)</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A reflection turns the shape over</span>
+      Label the vertices ${m('A, B, C')} and read them round the triangle: if they ran clockwise before,
+      they run anticlockwise after. Nothing else in this topic does that.</div>`
+    },
+    {
+      h: 'Rotation',
+      html: `<p>Every point swings round the centre through the same angle, staying the same distance from
+      it. About the origin the three useful cases have simple rules.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Rotation about ${m('O')}</th><th>Rule</th><th class="m">A(1, 1)</th><th class="m">B(4, 1)</th><th class="m">C(2, 3)</th></tr></thead>
+      <tbody>
+        <tr><td class="m">90°</td><td>anticlockwise: ${m('(x, y) → (−y, x)')}</td><td class="m">(−1, 1)</td><td class="m">(−1, 4)</td><td class="m">(−3, 2)</td></tr>
+        <tr><td class="m">180°</td><td>either way: ${m('(x, y) → (−x, −y)')}</td><td class="m">(−1, −1)</td><td class="m">(−4, −1)</td><td class="m">(−2, −3)</td></tr>
+        <tr><td class="m">90°</td><td>clockwise: ${m('(x, y) → (y, −x)')}</td><td class="m">(1, −1)</td><td class="m">(1, −4)</td><td class="m">(3, −2)</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The centre is the only point that stays still</div>
+      For a rotation of ${m('180°')} the direction does not matter; for ${m('90°')} it decides everything,
+      so it must be stated. Tracing paper turned about a pin is the honest way to check.</div>`
+    },
+    {
+      h: 'Translation',
+      html: `<p>Every point slides the same distance in the same direction — so many across, so many up.
+      Nothing turns and nothing flips.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Translation</th><th>Rule</th><th class="m">A(1, 1)</th><th class="m">B(4, 1)</th><th class="m">C(2, 3)</th></tr></thead>
+      <tbody>
+        <tr><td>${m('3')} right, ${m('2')} down</td><td class="m">(x, y) → (x + 3, y − 2)</td><td class="m">(4, −1)</td><td class="m">(7, −1)</td><td class="m">(5, 1)</td></tr>
+        <tr><td>${m('2')} left, ${m('3')} up</td><td class="m">(x, y) → (x − 2, y + 3)</td><td class="m">(−1, 4)</td><td class="m">(2, 4)</td><td class="m">(0, 6)</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Every transformation here can be undone</div>
+      A translation of ${m('3')} right and ${m('2')} down is undone by ${m('3')} left and ${m('2')} up; a
+      reflection is undone by itself; a rotation of ${m('90°')} anticlockwise by ${m('90°')} clockwise.
+      Two reflections, in the ${m('x')}-axis then the ${m('y')}-axis, make a rotation of ${m('180°')}.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Reflect the triangle ' + m('A(1, 1)') + ', ' + m('B(4, 1)') + ', ' + m('C(2, 3)') + ' in the ' + m('y') + '-axis.',
+      steps: [
+        ['The rule is ' + m('(x, y) → (−x, y)') + '.', 'Only the sign of ' + m('x') + ' changes.'],
+        [m('A(1, 1) → (−1, 1)') + ', ' + m('B(4, 1) → (−4, 1)') + '.', ''],
+        [m('C(2, 3) → (−2, 3)') + '.', 'The labels now read the other way round ✓']
+      ],
+      ans: m('(−1, 1), (−4, 1)') + ' and ' + m('(−2, 3)')
+    },
+    {
+      q: 'Rotate the same triangle ' + m('90°') + ' anticlockwise about the origin.',
+      steps: [
+        ['The rule is ' + m('(x, y) → (−y, x)') + '.', ''],
+        [m('A(1, 1) → (−1, 1)') + ', ' + m('B(4, 1) → (−1, 4)') + '.', ''],
+        [m('C(2, 3) → (−3, 2)') + '.', 'Distances from ' + m('O') + ' are unchanged ✓']
+      ],
+      ans: m('(−1, 1), (−1, 4)') + ' and ' + m('(−3, 2)')
+    },
+    {
+      q: 'Translate the same triangle ' + m('3') + ' right and ' + m('2') + ' down.',
+      steps: [
+        ['Add ' + m('3') + ' to each ' + m('x') + ' and subtract ' + m('2') + ' from each ' + m('y') + '.', ''],
+        [m('(4, −1)') + ', ' + m('(7, −1)') + '.', ''],
+        [m('(5, 1)') + '.', 'The shape has not turned at all ✓']
+      ],
+      ans: m('(4, −1), (7, −1)') + ' and ' + m('(5, 1)')
+    }
+  ],
+  modelNote: 'Switch the model between reflection and rotation while watching the orientation readout; that one word is the difference the class most often misses.',
+  interactive: {
+    type: 'transform',
+    title: 'Move the shape',
+    hint: 'Change the transformation and its amount. Lengths and angles never move — watch the orientation.'
+  },
+  quiz: [
+    { q: 'Reflection in the ' + m('y') + '-axis sends ' + m('(3, 2)') + ' to:', a: [m('(3, −2)'), m('(−3, 2)'), m('(−3, −2)'), m('(2, 3)')], c: 1, why: 'Only ' + m('x') + ' changes sign.' },
+    { q: 'A rotation of ' + m('180°') + ' about ' + m('O') + ' sends ' + m('(3, 2)') + ' to:', a: [m('(−3, 2)'), m('(3, −2)'), m('(−3, −2)'), m('(2, 3)')], c: 2, why: 'Both signs change.' },
+    { q: 'Which transformation reverses the orientation?', a: ['rotation', 'translation', 'reflection', 'none'], c: 2, why: 'It turns the shape over.' },
+    { q: 'A rotation must be described with:', a: ['a mirror line', 'a centre, an angle and a direction', 'two numbers', 'nothing'], c: 1, why: 'All three are needed.' },
+    { q: 'A translation of ' + m('3') + ' right and ' + m('2') + ' down is undone by:', a: [m('3') + ' right, ' + m('2') + ' up', m('3') + ' left, ' + m('2') + ' up', m('2') + ' left, ' + m('3') + ' up', 'itself'], c: 1, why: 'Reverse both numbers.' },
+    { q: 'Under all three transformations the lengths are:', a: ['doubled', 'halved', 'unchanged', 'reversed'], c: 2, why: 'The image is congruent.' }
+  ],
+  practice: {
+    easy: [
+      ['Reflection in the ' + m('y') + '-axis sends ' + m('(3, 2)') + ' to', m('(−3, 2)')],
+      ['Reflection in the ' + m('x') + '-axis sends ' + m('(3, 2)') + ' to', m('(3, −2)')],
+      ['A translation of ' + m('2') + ' right and ' + m('3') + ' up sends ' + m('(1, 1)') + ' to', m('(3, 4)')],
+      ['A rotation of ' + m('180°') + ' about ' + m('O') + ' sends ' + m('(3, 2)') + ' to', m('(−3, −2)')],
+      ['All three transformations keep', 'The lengths and the angles'],
+      ['A reflection needs', 'A mirror line'],
+      ['A rotation needs', 'A centre, an angle and a direction']
+    ],
+    med: [
+      ['Reflection in ' + m('y = x') + ' sends ' + m('(4, 1)') + ' to', m('(1, 4)')],
+      ['A ' + m('90°') + ' anticlockwise rotation about ' + m('O') + ' sends ' + m('(4, 1)') + ' to', m('(−1, 4)')],
+      ['A ' + m('90°') + ' clockwise rotation about ' + m('O') + ' sends ' + m('(4, 1)') + ' to', m('(1, −4)')],
+      ['A translation of ' + m('3') + ' right and ' + m('2') + ' down sends ' + m('(2, 3)') + ' to', m('(5, 1)')],
+      ['Reflect ' + m('A(1, 1), B(4, 1), C(2, 3)') + ' in the ' + m('y') + '-axis', m('(−1, 1), (−4, 1), (−2, 3)')],
+      ['Which transformation reverses the labels round the shape?', 'Reflection'],
+      ['A translation is described by', 'Two numbers — across and up']
+    ],
+    hard: [
+      ['Rotate ' + m('A(1, 1), B(4, 1), C(2, 3)') + ' by ' + m('180°') + ' about ' + m('O'), m('(−1, −1), (−4, −1), (−2, −3)')],
+      ['Reflection in the ' + m('x') + '-axis then the ' + m('y') + '-axis equals', 'A rotation of ' + m('180°') + ' about ' + m('O')],
+      ['The translation that undoes ' + m('3') + ' right and ' + m('2') + ' down', m('3') + ' left and ' + m('2') + ' up'],
+      ['The rotation that undoes ' + m('90°') + ' anticlockwise', m('90°') + ' clockwise'],
+      ['A point on the mirror line maps to', 'Itself'],
+      ['Two rotations of ' + m('90°') + ' anticlockwise about ' + m('O') + ' make', 'A rotation of ' + m('180°')],
+      ['Which transformation leaves no point fixed?', 'A translation']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Describe every transformation fully, and label the image ' + m("A′, B′, C′") + '.',
+  homework: [
+    'Plot ' + m('A(1, 2)') + ', ' + m('B(4, 2)') + ', ' + m('C(1, 4)') + ' and reflect the triangle in the ' + m('y') + '-axis.',
+    'Reflect the original triangle in the ' + m('x') + '-axis and write the three image points.',
+    'Rotate the original triangle ' + m('90°') + ' clockwise about the origin.',
+    'Translate the original triangle ' + m('4') + ' left and ' + m('3') + ' down.',
+    'State which of your four images have the reversed orientation, and explain why.'
+  ]
+});
