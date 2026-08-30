@@ -15254,3 +15254,359 @@ G7_MAT.push({
     'A committee of one boy and one girl is chosen from ' + m('5') + ' boys and ' + m('6') + ' girls. How many committees?'
   ]
 });
+
+/* ============================== 85 ============================== */
+G7_MAT.push({
+  id: 'g7-85', stream: 'mat', grade: 7, quarter: 4, lessons: '164', hours: 1,
+  title: 'Practical exercises — experimental and theoretical probability',
+  subtitle: 'A Cambridge insert: what the die should do, what it actually does, and why the two converge.',
+  uz: 'Matematika 7, amaliy mashqlar', uzPage: 'pp. 495–498',
+  cam: 'S8 13', camPage: 'Stage 8, pp. 126–134', wb: 'Exercise 13.4',
+  objectives: [
+    'Calculate a theoretical probability by counting outcomes.',
+    'Calculate an experimental probability from a frequency table.',
+    'Explain why the two differ and what makes them close.',
+    'Estimate the expected number of successes in a run of trials.'
+  ],
+  terms: [
+    ['Probability', 'Ehtimollik', 'Вероятность'],
+    ['Theoretical', 'Nazariy', 'Теоретическая'],
+    ['Experimental', 'Tajribaviy', 'Экспериментальная'],
+    ['Relative frequency', 'Nisbiy chastota', 'Относительная частота'],
+    ['Trial', 'Sinov', 'Испытание'],
+    ['Fair', 'Bir jinsli', 'Правильный'],
+    ['Biased', 'Nosoz', 'Смещённый'],
+    ['Expected number', 'Kutilayotgan soni', 'Ожидаемое число']
+  ],
+  timing: [[10, 'Theoretical probability'], [12, 'The experiment'], [10, 'Why they differ'], [6, 'Expected numbers'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'Theoretical probability',
+      html: `${eq(m('P = ' + f('favourable outcomes', 'all outcomes')), true)}
+      <p>It is a counting problem — which is why combinatorics came first.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Event</th><th>Favourable</th><th>All</th><th class="m">P</th></tr></thead>
+      <tbody>
+        <tr><td>a six on one die</td><td class="m">1</td><td class="m">6</td><td class="m">${f('1', '6')} ≈ 0.17</td></tr>
+        <tr><td>an even number</td><td class="m">3</td><td class="m">6</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td>a head on a coin</td><td class="m">1</td><td class="m">2</td><td class="m">0.5</td></tr>
+        <tr><td>a total of ${m('7')} on two dice</td><td class="m">6</td><td class="m">36</td><td class="m">${f('1', '6')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Every probability lies between ${m('0')} and ${m('1')}</div>
+      An impossible event has ${m('P = 0')}, a certain one ${m('P = 1')}. An answer outside that range is
+      a signal that the counting went wrong.</div>`
+    },
+    {
+      h: 'The experiment',
+      html: `<p>Throw a die ${m('60')} times and tabulate. The <b>relative frequency</b> of a face is the
+      number of times it appeared divided by the number of throws.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Face</th><th class="m">1</th><th class="m">2</th><th class="m">3</th><th class="m">4</th><th class="m">5</th><th class="m">6</th></tr></thead>
+      <tbody>
+        <tr><td>frequency</td><td class="m">8</td><td class="m">12</td><td class="m">9</td><td class="m">11</td><td class="m">10</td><td class="m">10</td></tr>
+        <tr><td>relative frequency</td><td class="m">0.13</td><td class="m">0.20</td><td class="m">0.15</td><td class="m">0.18</td><td class="m">0.17</td><td class="m">0.17</td></tr>
+      </tbody></table></div>
+      <p>The theoretical value is ${m(f('1', '6') + ' ≈ 0.17')} for every face; the experiment scatters
+      around it.</p>
+      <div class="keybox"><div class="klabel">The frequencies must add to the number of throws</div>
+      ${m('8 + 12 + 9 + 11 + 10 + 10 = 60')} ✓, and the relative frequencies add to ${m('1')}. Both checks
+      take a moment and catch a miscount.</div>`
+    },
+    {
+      h: 'Why they differ',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Throws</th><th>Sixes</th><th>Relative frequency</th><th>Distance from ${m('0.17')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">10</td><td class="m">3</td><td class="m">0.30</td><td>far</td></tr>
+        <tr><td class="m">60</td><td class="m">10</td><td class="m">0.17</td><td>close</td></tr>
+        <tr><td class="m">600</td><td class="m">104</td><td class="m">0.173</td><td>closer</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A long run of sixes does not make the next six less likely</span>
+      The die has no memory. Relative frequency settles down because later throws swamp the early ones,
+      not because the die corrects itself.</div>`
+    },
+    {
+      h: 'Expected numbers',
+      html: `${eq('expected number ' + m('= P × ') + ' number of trials', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Experiment</th><th>Working</th><th>Expected</th></tr></thead>
+      <tbody>
+        <tr><td>sixes in ${m('60')} throws</td><td class="m">${f('1', '6')} · 60</td><td class="m">10</td></tr>
+        <tr><td>heads in ${m('50')} tosses</td><td class="m">0.5 · 50</td><td class="m">25</td></tr>
+        <tr><td>evens in ${m('90')} throws</td><td class="m">0.5 · 90</td><td class="m">45</td></tr>
+        <tr><td>totals of ${m('7')} in ${m('180')} throws of two dice</td><td class="m">${f('1', '6')} · 180</td><td class="m">30</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">“Expected” means on average, not exactly</div>
+      Ten sixes in sixty throws is the average outcome, not a promise. Getting eight or thirteen is
+      ordinary; getting none at all would be evidence that the die is biased.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A die is thrown ' + m('60') + ' times and a six appears ' + m('13') + ' times. Compare the experimental and theoretical probabilities.',
+      steps: [
+        ['Experimental: ' + m(f('13', '60') + ' ≈ 0.22') + '.', ''],
+        ['Theoretical: ' + m(f('1', '6') + ' ≈ 0.17') + '.', ''],
+        ['The experimental value is a little higher.', 'Ordinary variation in ' + m('60') + ' throws.']
+      ],
+      ans: m('0.22') + ' against ' + m('0.17')
+    },
+    {
+      q: 'How many heads would you expect in ' + m('50') + ' tosses of a fair coin?',
+      steps: [
+        [m('P = 0.5'), ''],
+        [m('0.5 · 50'), ''],
+        [m('= 25'), 'On average, not exactly.']
+      ],
+      ans: m('25')
+    },
+    {
+      q: 'Two dice are thrown. Find the probability of a total of ' + m('7') + '.',
+      steps: [
+        ['All outcomes: ' + m('6 · 6 = 36') + '.', ''],
+        ['Favourable: ' + m('(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)') + ' — six of them.', ''],
+        [m('P = ' + f('6', '36') + ' = ' + f('1', '6')), '']
+      ],
+      ans: m(f('1', '6'))
+    }
+  ],
+  modelNote: 'Pool the whole class’s throws on the board: each pupil’s twenty look erratic, and the combined six hundred sit visibly close to a sixth.',
+  interactive: {
+    type: 'quiz',
+    title: 'Theoretical, experimental, expected',
+    hint: 'Count for the first, divide for the second, multiply for the third.',
+    items: [
+      { q: m('P') + '(a six on one die) is:', a: [m(f('1', '2')), m(f('1', '3')), m(f('1', '6')), m(f('1', '12'))], c: 2, why: 'One of six faces.' },
+      { q: m('P') + '(an even number) is:', a: [m(f('1', '6')), m(f('1', '3')), m(f('1', '2')), m(f('2', '3'))], c: 2, why: 'Three of six.' },
+      { q: 'A six in ' + m('13') + ' of ' + m('60') + ' throws gives an experimental probability of:', a: [m('0.13'), m('0.17'), m('0.22'), m('0.60')], c: 2, why: m(f('13', '60')) + '.' },
+      { q: 'Expected sixes in ' + m('60') + ' throws:', a: [m('6'), m('10'), m('13'), m('30')], c: 1, why: m(f('1', '6') + ' · 60') + '.' },
+      { q: 'Expected heads in ' + m('50') + ' tosses:', a: [m('10'), m('25'), m('50'), m('5')], c: 1, why: m('0.5 · 50') + '.' },
+      { q: 'Relative frequencies of all faces add to:', a: [m('0'), m('0.5'), m('1'), m('6')], c: 2, why: 'Something must happen.' },
+      { q: 'After five sixes in a row, the next throw gives a six with probability:', a: [m(f('1', '6')), 'less than ' + m(f('1', '6')), 'more than ' + m(f('1', '6')), m('0')], c: 0, why: 'The die has no memory.' },
+      { q: 'Experimental values approach theoretical ones when:', a: ['the die is heavier', 'more trials are made', 'fewer trials are made', 'never'], c: 1, why: 'Later trials swamp the early ones.' }
+    ]
+  },
+  quiz: [
+    { q: 'Theoretical probability is found by:', a: ['experiment', 'counting outcomes', 'guessing', 'measuring'], c: 1, why: 'Favourable over all.' },
+    { q: 'Experimental probability is found by:', a: ['counting outcomes', 'dividing frequency by trials', 'multiplying', 'estimating'], c: 1, why: 'Relative frequency.' },
+    { q: 'Every probability lies between:', a: [m('0') + ' and ' + m('1'), m('−1') + ' and ' + m('1'), m('0') + ' and ' + m('100'), 'any values'], c: 0, why: 'A part of the whole.' },
+    { q: 'Expected sixes in ' + m('180') + ' throws:', a: [m('18'), m('30'), m('36'), m('60')], c: 1, why: m(f('1', '6') + ' · 180') + '.' },
+    { q: m('P') + '(total ' + m('7') + ' on two dice) is:', a: [m(f('1', '36')), m(f('1', '12')), m(f('1', '6')), m(f('1', '9'))], c: 2, why: 'Six of thirty-six.' },
+    { q: 'More trials make the experimental value:', a: ['further from', 'closer to', 'equal to', 'unrelated to'], c: 1, why: 'It settles down.' }
+  ],
+  practice: {
+    easy: [
+      [m('P') + '(a six on one die)', m(f('1', '6'))],
+      [m('P') + '(an even number)', m(f('1', '2'))],
+      [m('P') + '(a head)', m('0.5')],
+      [m('P') + '(a number over ' + m('4') + ')', m(f('1', '3'))],
+      ['Expected heads in ' + m('50') + ' tosses', m('25')],
+      ['Expected sixes in ' + m('60') + ' throws', m('10')],
+      ['Relative frequency of ' + m('12') + ' in ' + m('60'), m('0.20')]
+    ],
+    med: [
+      ['A six in ' + m('13') + ' of ' + m('60') + ' throws: the experimental probability', m('≈ 0.22')],
+      [m('P') + '(total ' + m('7') + ' on two dice)', m(f('1', '6'))],
+      [m('P') + '(total ' + m('12') + ' on two dice)', m(f('1', '36'))],
+      ['Expected totals of ' + m('7') + ' in ' + m('180') + ' throws', m('30')],
+      ['Do relative frequencies add to ' + m('1') + '?', 'Yes'],
+      ['After five sixes, ' + m('P') + '(six) is', m(f('1', '6'))],
+      ['Expected evens in ' + m('90') + ' throws', m('45')]
+    ],
+    hard: [
+      [m('P') + '(at least one six on two dice)', m(f('11', '36'))],
+      [m('P') + '(exactly one six on two dice)', m(f('10', '36') + ' = ' + f('5', '18'))],
+      [m('P') + '(at least one head on three coins)', m(f('7', '8'))],
+      ['A die gives ' + m('40') + ' sixes in ' + m('60') + ' throws: what would you conclude?', 'It is very likely biased'],
+      ['Expected sixes in ' + m('600') + ' throws', m('100')],
+      ['Why does relative frequency settle down?', 'Later trials outweigh the early variation'],
+      [m('P') + '(a total under ' + m('5') + ' on two dice)', m(f('6', '36') + ' = ' + f('1', '6'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Record every throw as you make it; filling the table afterwards from memory is not an experiment.',
+  homework: [
+    'Throw a die ' + m('60') + ' times, tabulate the results and find each relative frequency.',
+    'Compare your six values with ' + m(f('1', '6')) + ' and comment.',
+    'Find ' + m('P') + '(a total of ' + m('7') + ') and ' + m('P') + '(a total of ' + m('2') + ') for two dice.',
+    'How many heads would you expect in ' + m('80') + ' tosses of a coin?',
+    'Explain why a run of five heads does not change the probability of the next toss.'
+  ]
+});
+
+/* ============================== 86 ============================== */
+G7_MAT.push({
+  id: 'g7-86', stream: 'mat', grade: 7, quarter: 4, lessons: '165', hours: 1,
+  title: 'Practical exercises — data collection and sampling',
+  subtitle: 'A Cambridge insert: what to ask, whom to ask, and how a bad sample ruins a good question.',
+  uz: 'Matematika 7, amaliy mashqlar', uzPage: 'pp. 499–502',
+  cam: 'S8 6.1–6.2', camPage: 'Stage 8, pp. 58–65', wb: 'Exercise 6.1',
+  objectives: [
+    'Distinguish a population from a sample.',
+    'Explain why a sample must be representative, and how bias creeps in.',
+    'Write clear survey questions without leading or overlapping options.',
+    'Record data in a tally and frequency table.'
+  ],
+  terms: [
+    ['Population', 'Bosh to‘plam', 'Генеральная совокупность'],
+    ['Sample', 'Tanlanma', 'Выборка'],
+    ['Representative', 'Vakillik qiluvchi', 'Репрезентативная'],
+    ['Bias', 'Siljish', 'Смещение'],
+    ['Random', 'Tasodifiy', 'Случайный'],
+    ['Questionnaire', 'So‘rovnoma', 'Анкета'],
+    ['Tally', 'Sanoq belgisi', 'Отметка'],
+    ['Frequency', 'Chastota', 'Частота']
+  ],
+  timing: [[8, 'Population and sample'], [12, 'When a sample misleads'], [12, 'Writing the question'], [6, 'Tally and frequency'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'Population and sample',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Term</th><th>Meaning</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>population</td><td>everybody the question is about</td><td>all ${m('800')} pupils in the school</td></tr>
+        <tr><td>sample</td><td>the part actually asked</td><td class="m">50</td></tr>
+        <tr><td>census</td><td>asking the whole population</td><td>all ${m('800')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Why sample at all</div>
+      A census is exact but slow and expensive. A well-chosen sample of ${m('50')} can describe ${m('800')}
+      pupils well enough to act on — which is the trade every survey makes.</div>`
+    },
+    {
+      h: 'When a sample misleads',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Sample taken</th><th>What goes wrong</th></tr></thead>
+      <tbody>
+        <tr><td>“How much sport does a pupil do?”</td><td>the football team</td><td>far too much sport</td></tr>
+        <tr><td>“What is the favourite subject?”</td><td>one maths class</td><td>maths over-represented</td></tr>
+        <tr><td>“How do pupils travel to school?”</td><td>those in the bus queue</td><td>walkers excluded</td></tr>
+        <tr><td>“Should lessons start later?”</td><td>pupils arriving late</td><td>the keenest to say yes</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A big sample does not fix a biased one</span>
+      Asking the whole football team instead of half of it makes the wrong answer more confident, not more
+      correct. Bias is repaired by <i>how</i> the sample is chosen, not by its size.</div>`
+    },
+    {
+      h: 'Writing the question',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Fault</th><th>Bad</th><th>Better</th></tr></thead>
+      <tbody>
+        <tr><td>leading</td><td>“Don’t you agree maths is the best subject?”</td><td>“Which subject do you like most?”</td></tr>
+        <tr><td>overlapping options</td><td class="m">0–5, 5–10</td><td class="m">0–4, 5–9</td></tr>
+        <tr><td>gaps in the options</td><td class="m">0–4, 6–9</td><td class="m">0–4, 5–9</td></tr>
+        <tr><td>vague</td><td>“Do you read often?”</td><td>“How many books did you read last month?”</td></tr>
+        <tr><td>two questions in one</td><td>“Do you like maths and science?”</td><td>ask them separately</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Options must cover everything, once</div>
+      Every answer must fit exactly one box: no overlaps, no gaps. That single rule fixes most faulty
+      questionnaires.</div>`
+    },
+    {
+      h: 'Tally and frequency',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Books read last month</th><th>Tally</th><th>Frequency</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0</td><td>||||&nbsp;||</td><td class="m">7</td></tr>
+        <tr><td class="m">1</td><td>||||&nbsp;||||&nbsp;|||</td><td class="m">13</td></tr>
+        <tr><td class="m">2</td><td>||||&nbsp;||||</td><td class="m">10</td></tr>
+        <tr><td class="m">3</td><td>||||&nbsp;|</td><td class="m">6</td></tr>
+        <tr><td class="m">4 or more</td><td>||||</td><td class="m">4</td></tr>
+      </tbody></table></div>
+      <p>The frequencies add to ${m('40')} — the size of the sample, which is always worth checking.</p>
+      <div class="keybox"><div class="klabel">Tally in fives</div>
+      Four strokes and a cross-stroke make groups that can be counted at a glance. It is a small habit that
+      removes most counting errors from a class survey.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A school has ' + m('800') + ' pupils. A survey asks ' + m('50') + ' of them. Name the population and the sample.',
+      steps: [
+        ['The question is about all the pupils.', ''],
+        ['Population: the ' + m('800') + '.', ''],
+        ['Sample: the ' + m('50') + ' asked.', '']
+      ],
+      ans: 'Population ' + m('800') + ', sample ' + m('50')
+    },
+    {
+      q: 'Why is the football team a poor sample for “how much sport does a pupil do?”',
+      steps: [
+        ['Team members were chosen because they play sport.', ''],
+        ['Their hours are far above average.', ''],
+        ['The sample is biased and overstates the answer.', '']
+      ],
+      ans: 'It is biased'
+    },
+    {
+      q: 'What is wrong with the options ' + m('0–5') + ', ' + m('5–10') + ', ' + m('10–15') + '?',
+      steps: [
+        ['A pupil with exactly ' + m('5') + ' fits two boxes.', ''],
+        ['The same for ' + m('10') + '.', ''],
+        ['Use ' + m('0–4') + ', ' + m('5–9') + ', ' + m('10–14') + '.', '']
+      ],
+      ans: 'The options overlap'
+    }
+  ],
+  modelNote: 'Run one badly worded question on the class and one careful version of the same question; the difference in the answers makes the lesson better than any list of rules.',
+  interactive: {
+    type: 'quiz',
+    title: 'Good sample, good question?',
+    hint: 'Ask who was left out.',
+    items: [
+      { q: 'Everybody the question is about is the:', a: ['sample', 'population', 'tally', 'frequency'], c: 1, why: 'The whole group.' },
+      { q: 'The part actually asked is the:', a: ['sample', 'population', 'census', 'bias'], c: 0, why: 'A part of the whole.' },
+      { q: 'Asking the football team about sport gives:', a: ['a fair answer', 'a biased answer', 'no answer', 'a census'], c: 1, why: 'They were chosen for sport.' },
+      { q: 'A bigger biased sample is:', a: ['less biased', 'just as biased', 'unbiased', 'a census'], c: 1, why: 'Size does not cure bias.' },
+      { q: '“Don’t you agree maths is best?” is:', a: ['clear', 'leading', 'vague', 'fine'], c: 1, why: 'It pushes an answer.' },
+      { q: 'Options ' + m('0–5') + ' and ' + m('5–10') + ' are:', a: ['fine', 'overlapping', 'gapped', 'leading'], c: 1, why: m('5') + ' fits both.' },
+      { q: 'Options ' + m('0–4') + ' and ' + m('6–9') + ' have:', a: ['an overlap', 'a gap', 'nothing wrong', 'too many boxes'], c: 1, why: m('5') + ' fits none.' },
+      { q: 'Frequencies should add to:', a: [m('1'), 'the sample size', m('100'), 'the population'], c: 1, why: 'Everyone is counted once.' }
+    ]
+  },
+  quiz: [
+    { q: 'A sample is:', a: ['everybody', 'a part of the population', 'a question', 'a tally'], c: 1, why: 'The part asked.' },
+    { q: 'A census asks:', a: ['a sample', 'the whole population', 'nobody', 'ten people'], c: 1, why: 'Everybody.' },
+    { q: 'Bias is cured by:', a: ['a bigger sample', 'a better chosen sample', 'more questions', 'rounding'], c: 1, why: 'How, not how many.' },
+    { q: 'A leading question:', a: ['is clear', 'suggests an answer', 'has options', 'is short'], c: 1, why: 'It distorts the result.' },
+    { q: 'Options must be:', a: ['overlapping', 'without gaps or overlaps', 'few', 'wide'], c: 1, why: 'Each answer fits exactly one.' },
+    { q: 'A tally is grouped in:', a: ['twos', 'threes', 'fives', 'tens'], c: 2, why: 'Four and a cross-stroke.' }
+  ],
+  practice: {
+    easy: [
+      ['All ' + m('800') + ' pupils are the', 'population'],
+      ['The ' + m('50') + ' asked are the', 'sample'],
+      ['Asking everybody is a', 'census'],
+      ['A sample chosen badly gives', 'bias'],
+      ['“Don’t you agree maths is best?” is', 'a leading question'],
+      [m('0–5') + ' and ' + m('5–10') + ' are', 'overlapping'],
+      ['Frequencies should add to', 'the sample size']
+    ],
+    med: [
+      ['Why is the football team a poor sample for sport?', 'They were chosen because they play sport'],
+      ['Why is the bus queue a poor sample for travel?', 'Walkers are excluded'],
+      ['Fix the options ' + m('0–5, 5–10'), m('0–4, 5–9')],
+      ['Fix the options ' + m('0–4, 6–9'), m('0–4, 5–9')],
+      ['Rewrite “Do you read often?”', '“How many books did you read last month?”'],
+      ['Does doubling a biased sample help?', 'No'],
+      ['Frequencies ' + m('7, 13, 10, 6, 4') + ': the sample size', m('40')]
+    ],
+    hard: [
+      ['Design a fair way to choose ' + m('50') + ' from ' + m('800') + ' pupils', 'Number them and draw ' + m('50') + ' at random'],
+      ['Why not survey only your friends?', 'They are not representative of the school'],
+      ['What is wrong with “Do you like maths and science?”', 'It asks two questions at once'],
+      ['A survey on school lunches asks pupils leaving the canteen: the fault', 'Those who never eat there are excluded'],
+      ['Why must options have no gaps?', 'Some answers would fit no box'],
+      ['A sample of ' + m('50') + ' from ' + m('800') + ' is what fraction?', m(f('1', '16'))],
+      ['When is a census worth doing?', 'When the population is small or the answer must be exact']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write your question out fully before asking anybody anything.',
+  homework: [
+    'Write a survey question with five non-overlapping options about time spent reading.',
+    'Name the population and describe a fair sample for “how do pupils travel to school?”',
+    'Explain one way a sample can be biased and how to avoid it.',
+    'Collect ' + m('20') + ' answers to your question and record them in a tally table.',
+    'Find the frequency of each option and check that they add to ' + m('20') + '.'
+  ]
+});
