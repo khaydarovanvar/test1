@@ -6559,3 +6559,359 @@ G6_MAT.push({
     'A trader buys at ' + m('120 000') + ' and sells at ' + m('138 000') + '. Find the profit percentage.'
   ]
 });
+
+/* ============================== 37 ============================== */
+G6_MAT.push({
+  id: 'g6-37', stream: 'mat', grade: 6, quarter: 2, lessons: '76–77', hours: 2,
+  title: 'Ordering, adding and subtracting decimals',
+  subtitle: 'A Cambridge insert: place value decides the order, and the points line up for the arithmetic.',
+  uz: 'Matematika 6, qo‘shimcha mavzu', uzPage: 'pp. 211–216',
+  cam: 'S7 4.1–4.2', camPage: 'Stage 7, pp. 42–48', wb: 'Exercise 4.1',
+  objectives: [
+    'Compare and order decimals of different lengths.',
+    'Add and subtract decimals by lining up the points.',
+    'Use zeros to fill empty places.',
+    'Estimate a decimal calculation before doing it.'
+  ],
+  terms: [
+    ['Decimal', 'O‘nli kasr', 'Десятичная дробь'],
+    ['Decimal point', 'O‘nli nuqta (vergul)', 'Десятичная запятая'],
+    ['Tenth', 'O‘ndan bir', 'Десятая'],
+    ['Hundredth', 'Yuzdan bir', 'Сотая'],
+    ['Thousandth', 'Mingdan bir', 'Тысячная'],
+    ['To order', 'Tartiblash', 'Упорядочить'],
+    ['Trailing zero', 'Oxirgi nol', 'Конечный ноль'],
+    ['To line up', 'Ustma-ust qo‘yish', 'Выровнять']
+  ],
+  timing: [[20, 'Ordering'], [25, 'Adding'], [25, 'Subtracting'], [8, 'Estimating'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'Ordering',
+      html: `<p>Compare column by column from the left, not by counting digits. Fill the short numbers with
+      trailing zeros so every number has the same length.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Numbers</th><th>Filled out</th><th>Order</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0.7, 0.65</td><td class="m">0.70, 0.65</td><td class="m">0.65 < 0.7</td></tr>
+        <tr><td class="m">3.4, 3.25, 3.5</td><td class="m">3.40, 3.25, 3.50</td><td class="m">3.25 < 3.4 < 3.5</td></tr>
+        <tr><td class="m">0.09, 0.1</td><td class="m">0.09, 0.10</td><td class="m">0.09 < 0.1</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">More digits does not mean bigger</span>
+      ${m('0.65')} has more digits than ${m('0.7')} and is smaller. The comparison is made column by
+      column: tenths first, then hundredths.</div>`
+    },
+    {
+      h: 'Adding',
+      html: `<p>Write the numbers with their points in a vertical line and add column by column, exactly as
+      with whole numbers.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sum</th><th>Lined up</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">4.7 + 2.85</td><td class="m">4.70 + 2.85</td><td class="m">7.55</td></tr>
+        <tr><td class="m">12.6 + 0.47</td><td class="m">12.60 + 0.47</td><td class="m">13.07</td></tr>
+        <tr><td class="m">3 + 0.45</td><td class="m">3.00 + 0.45</td><td class="m">3.45</td></tr>
+        <tr><td class="m">0.8 + 0.9</td><td class="m">0.8 + 0.9</td><td class="m">1.7</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A whole number has a point too</div>
+      ${m('3')} is ${m('3.00')} when it is being added to hundredths. Writing the zeros makes the columns
+      line up and the arithmetic ordinary.</div>`
+    },
+    {
+      h: 'Subtracting',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Difference</th><th>Lined up</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">9.1 − 3.62</td><td class="m">9.10 − 3.62</td><td class="m">5.48</td></tr>
+        <tr><td class="m">5 − 1.35</td><td class="m">5.00 − 1.35</td><td class="m">3.65</td></tr>
+        <tr><td class="m">7.4 − 0.85</td><td class="m">7.40 − 0.85</td><td class="m">6.55</td></tr>
+        <tr><td class="m">0.5 − 0.28</td><td class="m">0.50 − 0.28</td><td class="m">0.22</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Fill the gap before borrowing</span>
+      ${m('9.1 − 3.62')} needs the ${m('9.1')} written as ${m('9.10')}; without the zero there is nothing
+      in the hundredths column to borrow from, and the answer comes out wrong by a tenth.</div>`
+    },
+    {
+      h: 'Estimating',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Calculation</th><th>Estimate</th><th>Exact</th></tr></thead>
+      <tbody>
+        <tr><td class="m">4.7 + 2.85</td><td class="m">5 + 3 = 8</td><td class="m">7.55</td></tr>
+        <tr><td class="m">9.1 − 3.62</td><td class="m">9 − 4 = 5</td><td class="m">5.48</td></tr>
+        <tr><td class="m">12.6 + 0.47</td><td class="m">13 + 0 = 13</td><td class="m">13.07</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The estimate places the point</div>
+      An answer of ${m('75.5')} or ${m('0.755')} would be rejected at once by an estimate of ${m('8')}. A
+      misplaced decimal point is the error estimating is best at catching.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Order ' + m('3.4, 3.25') + ' and ' + m('3.5') + '.',
+      steps: [
+        ['Fill out: ' + m('3.40, 3.25, 3.50') + '.', ''],
+        ['Compare the tenths: ' + m('2 < 4 < 5') + '.', ''],
+        [m('3.25 < 3.4 < 3.5'), '']
+      ],
+      ans: m('3.25 < 3.4 < 3.5')
+    },
+    {
+      q: 'Compute ' + m('9.1 − 3.62') + '.',
+      steps: [
+        ['Write ' + m('9.1') + ' as ' + m('9.10') + '.', ''],
+        ['Line up the points and subtract.', ''],
+        [m('= 5.48'), 'Estimate: ' + m('9 − 4 = 5') + ' ✓']
+      ],
+      ans: m('5.48')
+    },
+    {
+      q: 'Compute ' + m('3 + 0.45') + ' and ' + m('5 − 1.35') + '.',
+      steps: [
+        [m('3.00 + 0.45 = 3.45'), ''],
+        [m('5.00 − 1.35 = 3.65'), 'Whole numbers get zeros too.']
+      ],
+      ans: m('3.45') + ' and ' + m('3.65')
+    }
+  ],
+  modelNote: 'Ask which is bigger, 0.7 or 0.65, before teaching anything; the split in the class shows exactly who is counting digits rather than reading place value.',
+  interactive: {
+    type: 'quiz',
+    title: 'Place value decides',
+    hint: 'Fill with zeros, then compare column by column.',
+    items: [
+      { q: 'Which is larger, ' + m('0.7') + ' or ' + m('0.65') + '?', a: [m('0.7'), m('0.65'), 'equal', 'cannot say'], c: 0, why: 'Seven tenths beats six.' },
+      { q: 'Which is larger, ' + m('0.09') + ' or ' + m('0.1') + '?', a: [m('0.09'), m('0.1'), 'equal', 'cannot say'], c: 1, why: 'One tenth is ten hundredths.' },
+      { q: m('4.7 + 2.85') + ' equals:', a: [m('7.55'), m('6.55'), m('7.12'), m('4.98')], c: 0, why: 'Line up the points.' },
+      { q: m('9.1 − 3.62') + ' equals:', a: [m('5.48'), m('6.48'), m('5.52'), m('6.52')], c: 0, why: 'Write ' + m('9.10') + '.' },
+      { q: m('3 + 0.45') + ' equals:', a: [m('0.75'), m('3.45'), m('7.5'), m('3.045')], c: 1, why: m('3.00 + 0.45') + '.' },
+      { q: m('5 − 1.35') + ' equals:', a: [m('3.65'), m('4.65'), m('3.75'), m('4.35')], c: 0, why: m('5.00 − 1.35') + '.' },
+      { q: m('0.8 + 0.9') + ' equals:', a: [m('0.17'), m('1.7'), m('1.07'), m('0.98')], c: 1, why: 'The tenths carry.' },
+      { q: 'An estimate of ' + m('4.7 + 2.85') + ' is:', a: [m('8'), m('80'), m('0.8'), m('7.55')], c: 0, why: m('5 + 3') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'To compare decimals you:', a: ['count the digits', 'compare column by column', 'add them', 'round them'], c: 1, why: 'Place value.' },
+    { q: m('0.65') + ' compared with ' + m('0.7') + ' is:', a: ['larger', 'smaller', 'equal', 'undetermined'], c: 1, why: 'Six tenths against seven.' },
+    { q: 'To add decimals you line up:', a: ['the last digits', 'the decimal points', 'the first digits', 'nothing'], c: 1, why: 'Columns must match.' },
+    { q: m('9.1') + ' written to two decimal places is:', a: [m('9.01'), m('9.10'), m('9.1'), m('0.91')], c: 1, why: 'A trailing zero.' },
+    { q: m('12.6 + 0.47') + ' equals:', a: [m('13.07'), m('12.13'), m('17.6'), m('13.7')], c: 0, why: 'Line up.' },
+    { q: 'An estimate mainly checks:', a: ['the digits', 'the decimal point', 'the signs', 'the units'], c: 1, why: 'The size of the answer.' }
+  ],
+  practice: {
+    easy: [
+      ['Larger: ' + m('0.7') + ' or ' + m('0.65'), m('0.7')],
+      ['Larger: ' + m('0.09') + ' or ' + m('0.1'), m('0.1')],
+      ['Order ' + m('3.4, 3.25, 3.5'), m('3.25 < 3.4 < 3.5')],
+      [m('4.7 + 2.85'), m('7.55')],
+      [m('12.6 + 0.47'), m('13.07')],
+      [m('3 + 0.45'), m('3.45')],
+      [m('0.8 + 0.9'), m('1.7')]
+    ],
+    med: [
+      [m('9.1 − 3.62'), m('5.48')],
+      [m('5 − 1.35'), m('3.65')],
+      [m('7.4 − 0.85'), m('6.55')],
+      [m('0.5 − 0.28'), m('0.22')],
+      ['Estimate ' + m('4.7 + 2.85'), m('8')],
+      ['Estimate ' + m('9.1 − 3.62'), m('5')],
+      ['Order ' + m('0.5, 0.45, 0.505'), m('0.45 < 0.5 < 0.505')]
+    ],
+    hard: [
+      [m('12.05 + 3.7 + 0.68'), m('16.43')],
+      [m('20 − 6.47'), m('13.53')],
+      [m('4.2 − 1.35 + 0.7'), m('3.55')],
+      ['Order ' + m('1.1, 1.01, 1.011, 1.101'), m('1.01 < 1.011 < 1.1 < 1.101')],
+      ['The number halfway between ' + m('0.6') + ' and ' + m('0.7'), m('0.65')],
+      ['A length of ' + m('2.4') + ' m less ' + m('85') + ' cm', m('1.55') + ' m'],
+      ['Why write ' + m('9.1') + ' as ' + m('9.10') + ' before subtracting?', 'The hundredths column needs a digit to borrow from']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Fill every number with trailing zeros so all have the same length.',
+  homework: [
+    'Order ' + m('2.3, 2.25, 2.4') + ' and ' + m('2.05') + '.',
+    'Compute ' + m('6.8 + 3.45') + ' and ' + m('0.9 + 0.75') + '.',
+    'Compute ' + m('8.2 − 4.67') + ' and ' + m('6 − 2.48') + '.',
+    'Estimate each of the four answers above and compare with your exact values.',
+    'A plank ' + m('3.5') + ' m long has ' + m('68') + ' cm cut off. How much is left, in metres?'
+  ]
+});
+
+/* ============================== 38 ============================== */
+G6_MAT.push({
+  id: 'g6-38', stream: 'mat', grade: 6, quarter: 2, lessons: '78–79', hours: 2,
+  title: 'Multiplying and dividing decimals',
+  subtitle: 'A Cambridge insert: count the decimal places for a product, and shift both numbers for a quotient.',
+  uz: 'Matematika 6, qo‘shimcha mavzu', uzPage: 'pp. 217–222',
+  cam: 'S7 4.3–4.4', camPage: 'Stage 7, pp. 48–54', wb: 'Exercise 4.3',
+  objectives: [
+    'Multiply decimals by counting the decimal places.',
+    'Divide a decimal by a whole number.',
+    'Divide by a decimal by shifting both numbers.',
+    'Check every answer against an estimate.'
+  ],
+  terms: [
+    ['To multiply', 'Ko‘paytirish', 'Умножать'],
+    ['To divide', 'Bo‘lish', 'Делить'],
+    ['Decimal place', 'O‘nli xona', 'Десятичный знак'],
+    ['Product', 'Ko‘paytma', 'Произведение'],
+    ['Quotient', 'Bo‘linma', 'Частное'],
+    ['To shift', 'Siljitmoq', 'Сдвигать'],
+    ['Whole-number divisor', 'Butun bo‘luvchi', 'Целый делитель'],
+    ['Estimate', 'Baholash', 'Оценка']
+  ],
+  timing: [[25, 'Multiplying'], [25, 'Dividing by a whole number'], [25, 'Dividing by a decimal'], [3, 'Checking'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'Multiplying',
+      html: `<p>Multiply as if there were no points, then put in as many decimal places as the two numbers
+      had between them.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Product</th><th>Whole-number version</th><th>Places</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0.3 · 0.4</td><td class="m">3 · 4 = 12</td><td class="m">2</td><td class="m">0.12</td></tr>
+        <tr><td class="m">1.2 · 5</td><td class="m">12 · 5 = 60</td><td class="m">1</td><td class="m">6.0</td></tr>
+        <tr><td class="m">2.5 · 0.4</td><td class="m">25 · 4 = 100</td><td class="m">2</td><td class="m">1.00</td></tr>
+        <tr><td class="m">6.9 · 5.2</td><td class="m">69 · 52 = 3588</td><td class="m">2</td><td class="m">35.88</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('0.3 · 0.4')} is ${m('0.12')}, not ${m('1.2')}</span>
+      Two decimal places go in because the two numbers had one each. Multiplying two numbers below
+      ${m('1')} gives an answer smaller than either of them.</div>`
+    },
+    {
+      h: 'Dividing by a whole number',
+      html: `<p>Divide as usual and keep the decimal point above where it was.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quotient</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">7.2 ÷ 4</td><td class="m">72 ÷ 4 = 18</td><td class="m">1.8</td></tr>
+        <tr><td class="m">0.35 ÷ 5</td><td class="m">35 ÷ 5 = 7</td><td class="m">0.07</td></tr>
+        <tr><td class="m">9 ÷ 4</td><td class="m">9.00 ÷ 4</td><td class="m">2.25</td></tr>
+        <tr><td class="m">1.2 ÷ 8</td><td class="m">1.200 ÷ 8</td><td class="m">0.15</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Zeros may be added after the point</div>
+      ${m('9 ÷ 4')} does not stop at ${m('2')} remainder ${m('1')}: writing ${m('9.00')} lets the division
+      finish exactly, at ${m('2.25')}.</div>`
+    },
+    {
+      h: 'Dividing by a decimal',
+      html: `<p>Shift the point in <b>both</b> numbers until the divisor is a whole number. The quotient is
+      unchanged, because both have been multiplied by the same power of ten.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quotient</th><th>Shifted</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">6 ÷ 0.2</td><td class="m">60 ÷ 2</td><td class="m">30</td></tr>
+        <tr><td class="m">4.8 ÷ 0.6</td><td class="m">48 ÷ 6</td><td class="m">8</td></tr>
+        <tr><td class="m">1.44 ÷ 0.12</td><td class="m">144 ÷ 12</td><td class="m">12</td></tr>
+        <tr><td class="m">0.9 ÷ 0.05</td><td class="m">90 ÷ 5</td><td class="m">18</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Shift both, by the same amount</span>
+      ${m('6 ÷ 0.2')} becomes ${m('60 ÷ 2')}, not ${m('6 ÷ 2')}. Shifting only the divisor changes the
+      answer by a factor of ten.</div>`
+    },
+    {
+      h: 'Checking',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Calculation</th><th>Estimate</th><th>Exact</th></tr></thead>
+      <tbody>
+        <tr><td class="m">6.9 · 5.2</td><td class="m">7 · 5 = 35</td><td class="m">35.88</td></tr>
+        <tr><td class="m">0.3 · 0.4</td><td>less than ${m('0.4')}</td><td class="m">0.12</td></tr>
+        <tr><td class="m">6 ÷ 0.2</td><td>much more than ${m('6')}</td><td class="m">30</td></tr>
+        <tr><td class="m">7.2 ÷ 4</td><td>about ${m('2')}</td><td class="m">1.8</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two questions before every answer</div>
+      Should it be bigger or smaller than what I started with, and roughly how big? A decimal point in the
+      wrong place fails both tests immediately.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compute ' + m('6.9 · 5.2') + '.',
+      steps: [
+        ['Ignore the points: ' + m('69 · 52 = 3 588') + '.', ''],
+        ['One place plus one place makes two.', ''],
+        [m('= 35.88'), 'Estimate ' + m('7 · 5 = 35') + ' ✓']
+      ],
+      ans: m('35.88')
+    },
+    {
+      q: 'Compute ' + m('4.8 ÷ 0.6') + '.',
+      steps: [
+        ['Shift both one place: ' + m('48 ÷ 6') + '.', ''],
+        [m('= 8'), ''],
+        ['Sense check: the divisor is under ' + m('1') + ', so the answer beats ' + m('4.8') + ' ✓', '']
+      ],
+      ans: m('8')
+    },
+    {
+      q: 'Compute ' + m('9 ÷ 4') + '.',
+      steps: [
+        ['Write ' + m('9') + ' as ' + m('9.00') + '.', ''],
+        [m('9.00 ÷ 4'), ''],
+        [m('= 2.25'), '']
+      ],
+      ans: m('2.25')
+    }
+  ],
+  modelNote: 'Ask for 0.3 × 0.4 before any rule; the popular answer of 1.2 is worth writing on the board and then testing against “less than a half of 0.4”.',
+  interactive: {
+    type: 'quiz',
+    title: 'Places and shifts',
+    hint: 'Count places for a product; shift both for a quotient.',
+    items: [
+      { q: m('0.3 · 0.4') + ' equals:', a: [m('1.2'), m('0.12'), m('0.012'), m('12')], c: 1, why: 'Two decimal places.' },
+      { q: m('1.2 · 5') + ' equals:', a: [m('0.6'), m('6'), m('60'), m('6.5')], c: 1, why: 'One place.' },
+      { q: m('6.9 · 5.2') + ' equals:', a: [m('35.88'), m('3.588'), m('358.8'), m('34.88')], c: 0, why: 'Estimate ' + m('35') + '.' },
+      { q: m('7.2 ÷ 4') + ' equals:', a: [m('1.8'), m('18'), m('0.18'), m('2.8')], c: 0, why: m('72 ÷ 4') + '.' },
+      { q: m('9 ÷ 4') + ' equals:', a: [m('2.2'), m('2.25'), m('2.5'), m('2') + ' r ' + m('1')], c: 1, why: 'Add zeros after the point.' },
+      { q: m('6 ÷ 0.2') + ' equals:', a: [m('3'), m('12'), m('30'), m('1.2')], c: 2, why: m('60 ÷ 2') + '.' },
+      { q: m('1.44 ÷ 0.12') + ' equals:', a: [m('1.2'), m('12'), m('120'), m('0.12')], c: 1, why: m('144 ÷ 12') + '.' },
+      { q: 'Multiplying two numbers below ' + m('1') + ' gives:', a: ['a larger answer', 'a smaller answer than both', 'the same', 'a whole number'], c: 1, why: m('0.3 · 0.4 = 0.12') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'The number of decimal places in a product is:', a: ['the larger of the two', 'the sum of the two', 'always two', 'the smaller'], c: 1, why: 'One each gives two.' },
+    { q: m('2.5 · 0.4') + ' equals:', a: [m('1'), m('10'), m('0.1'), m('100')], c: 0, why: m('25 · 4 = 100') + ', two places.' },
+    { q: m('0.35 ÷ 5') + ' equals:', a: [m('0.7'), m('0.07'), m('7'), m('0.007')], c: 1, why: m('35 ÷ 5 = 7') + '.' },
+    { q: 'To divide by ' + m('0.6') + ' you first:', a: ['shift the dividend only', 'shift both one place', 'shift the divisor only', 'do nothing'], c: 1, why: 'The quotient is unchanged.' },
+    { q: m('0.9 ÷ 0.05') + ' equals:', a: [m('1.8'), m('18'), m('180'), m('0.18')], c: 1, why: m('90 ÷ 5') + '.' },
+    { q: 'The best first check on a decimal answer is:', a: ['the digits', 'the size and the point', 'the sign', 'the units'], c: 1, why: 'An estimate.' }
+  ],
+  practice: {
+    easy: [
+      [m('0.3 · 0.4'), m('0.12')],
+      [m('1.2 · 5'), m('6')],
+      [m('2.5 · 0.4'), m('1')],
+      [m('7.2 ÷ 4'), m('1.8')],
+      [m('0.35 ÷ 5'), m('0.07')],
+      [m('6 ÷ 0.2'), m('30')],
+      [m('4.8 ÷ 0.6'), m('8')]
+    ],
+    med: [
+      [m('6.9 · 5.2'), m('35.88')],
+      [m('9 ÷ 4'), m('2.25')],
+      [m('1.2 ÷ 8'), m('0.15')],
+      [m('1.44 ÷ 0.12'), m('12')],
+      [m('0.9 ÷ 0.05'), m('18')],
+      [m('0.25 · 0.8'), m('0.2')],
+      [m('3.6 ÷ 0.4'), m('9')]
+    ],
+    hard: [
+      [m('0.125 · 0.8'), m('0.1')],
+      [m('2.4 · 1.5'), m('3.6')],
+      [m('7 ÷ 0.25'), m('28')],
+      [m('0.084 ÷ 0.7'), m('0.12')],
+      ['A pen costs ' + m('3.5') + ' thousand sum: ' + m('12') + ' pens', m('42') + ' thousand'],
+      [m('1.6') + ' kg shared into ' + m('0.2') + ' kg bags', m('8') + ' bags'],
+      ['Why does ' + m('6 ÷ 0.2') + ' give ' + m('30') + '?', 'Thirty two-tenths make six']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Estimate first, calculate second, and compare the two.',
+  homework: [
+    'Compute ' + m('0.6 · 0.7') + ', ' + m('3.4 · 2.5') + ' and ' + m('1.25 · 0.4') + '.',
+    'Compute ' + m('8.4 ÷ 6') + ' and ' + m('11 ÷ 8') + '.',
+    'Compute ' + m('9 ÷ 0.3') + ' and ' + m('2.4 ÷ 0.08') + '.',
+    'Estimate each answer above before finding it exactly.',
+    'A rope ' + m('7.2') + ' m long is cut into ' + m('0.6') + ' m pieces. How many pieces?'
+  ]
+});
