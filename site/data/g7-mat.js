@@ -9970,3 +9970,370 @@ G7_MAT.push({
     'Explain in one sentence the difference between ' + m('a² + ab + b²') + ' and ' + m('(a + b)²') + '.'
   ]
 });
+
+/* ============================== 58 ============================== */
+G7_MAT.push({
+  id: 'g7-58', stream: 'mat', grade: 7, quarter: 3, lessons: '106–107', hours: 2,
+  title: 'Methods of factorising',
+  subtitle: 'Four methods in a fixed order — common factor, formula, grouping, and the trinomial split.',
+  uz: 'Matematika 7, §48', uzPage: 'pp. 311–318',
+  cam: 'S8 2.4', camPage: 'Stage 8, pp. 25–30', wb: 'Exercise 2.4',
+  objectives: [
+    'Apply the four methods of factorising in the right order.',
+    'Split the middle term of a quadratic trinomial into two.',
+    'Combine methods where one alone is not enough.',
+    'Recognise when a polynomial is already fully factorised.'
+  ],
+  terms: [
+    ['Method', 'Usul', 'Способ'],
+    ['Common factor', 'Umumiy ko‘paytuvchi', 'Общий множитель'],
+    ['Abridged formula', 'Qisqa ko‘paytirish formulasi', 'Формула сокращённого умножения'],
+    ['Grouping', 'Guruhlash', 'Группировка'],
+    ['Trinomial', 'Uch had', 'Трёхчлен'],
+    ['To split a term', 'Hadni ajratish', 'Разбить член'],
+    ['Completely factorised', 'To‘liq ajratilgan', 'Полностью разложен'],
+    ['Order of steps', 'Qadamlar tartibi', 'Порядок действий']
+  ],
+  timing: [[10, 'The order of the methods'], [25, 'Splitting the middle term'], [25, 'Combining methods'], [20, 'When to stop'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The order of the methods',
+      html: `<p>Always work down this list. Taking the steps out of order is what makes a factorisation
+      look impossible.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Method</th><th>Look for</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>common factor</td><td>something in every term</td></tr>
+        <tr><td>2</td><td>an abridged formula</td><td>two terms, or a perfect square</td></tr>
+        <tr><td>3</td><td>grouping</td><td>four terms</td></tr>
+        <tr><td>4</td><td>splitting the middle term</td><td>a quadratic trinomial</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Step 1 is never skipped</div>
+      ${m('2x² − 18')} looks like nothing until the ${m('2')} comes out; ${m('3x² + 12x + 12')} becomes
+      ${m('3(x + 2)²')} the same way. Take the common factor first, every single time.</div>`
+    },
+    {
+      h: 'Splitting the middle term',
+      html: `<p>For ${m('x² + px + q')}, find two numbers whose <b>product</b> is ${m('q')} and whose
+      <b>sum</b> is ${m('p')}. Split the middle term into those two and group.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Trinomial</th><th>Product</th><th>Sum</th><th>The two numbers</th><th>Factorised</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x² + 7x + 12</td><td class="m">12</td><td class="m">7</td><td class="m">3, 4</td><td class="m">(x + 3)(x + 4)</td></tr>
+        <tr><td class="m">x² − 5x + 6</td><td class="m">6</td><td class="m">−5</td><td class="m">−2, −3</td><td class="m">(x − 2)(x − 3)</td></tr>
+        <tr><td class="m">x² + x − 12</td><td class="m">−12</td><td class="m">1</td><td class="m">4, −3</td><td class="m">(x + 4)(x − 3)</td></tr>
+        <tr><td class="m">x² − 2x − 15</td><td class="m">−15</td><td class="m">−2</td><td class="m">−5, 3</td><td class="m">(x − 5)(x + 3)</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The sign of the product comes first</div>
+      A negative product means the two numbers have opposite signs; a positive product means they match,
+      and then the sign of the middle term tells you which sign both take. Deciding the signs before
+      hunting for the numbers halves the work.</div>`
+    },
+    {
+      h: 'Combining methods',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Steps</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2x² − 18</td><td>common factor, then difference of squares</td><td class="m">2(x − 3)(x + 3)</td></tr>
+        <tr><td class="m">3x² + 12x + 12</td><td>common factor, then a perfect square</td><td class="m">3(x + 2)²</td></tr>
+        <tr><td class="m">x³ − x</td><td>common factor, then difference of squares</td><td class="m">x(x − 1)(x + 1)</td></tr>
+        <tr><td class="m">2x² + 10x + 12</td><td>common factor, then split the middle term</td><td class="m">2(x + 2)(x + 3)</td></tr>
+        <tr><td class="m">a³ + a² − a − 1</td><td>grouping, then difference of squares</td><td class="m">(a − 1)(a + 1)²</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">One method is rarely the whole answer</span>
+      Stopping at ${m('2(x² − 9)')} loses the marks that the second step carries. Ask after every step
+      whether any bracket can still be broken down.</div>`
+    },
+    {
+      h: 'When to stop',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Fully factorised?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2(x − 3)(x + 3)</td><td>yes</td><td>each bracket is linear</td></tr>
+        <tr><td class="m">2(x² − 9)</td><td>no</td><td class="m">x² − 9</td></tr>
+        <tr><td class="m">(x + 1)(x² + 1)</td><td>yes</td><td>a sum of squares does not factorise</td></tr>
+        <tr><td class="m">(x − 2)(x² + 2x + 4)</td><td>yes</td><td>the incomplete square does not factorise</td></tr>
+        <tr><td class="m">x² + x + 1</td><td>yes — it is prime</td><td>no two whole numbers give the product and the sum</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Check by expanding, always</div>
+      A factorisation is finished when no bracket can be broken further, and it is correct when
+      expanding it returns the original polynomial exactly. Both checks take seconds.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Factorise ' + m('x² + x − 12') + '.',
+      steps: [
+        ['Product ' + m('−12') + ', sum ' + m('1') + '.', 'A negative product: opposite signs.'],
+        ['The numbers are ' + m('4') + ' and ' + m('−3') + '.', ''],
+        [m('x² + 4x − 3x − 12'), ''],
+        [m('x(x + 4) − 3(x + 4) = (x + 4)(x − 3)'), '']
+      ],
+      ans: m('(x + 4)(x − 3)')
+    },
+    {
+      q: 'Factorise ' + m('2x² + 10x + 12') + ' completely.',
+      steps: [
+        ['Common factor ' + m('2') + ': ' + m('2(x² + 5x + 6)') + '.', ''],
+        ['Product ' + m('6') + ', sum ' + m('5') + ': the numbers are ' + m('2') + ' and ' + m('3') + '.', ''],
+        [m('= 2(x + 2)(x + 3)'), ''],
+        ['Check by expanding ✓', '']
+      ],
+      ans: m('2(x + 2)(x + 3)')
+    },
+    {
+      q: 'Factorise ' + m('a³ + a² − a − 1') + '.',
+      steps: [
+        ['Group: ' + m('a²(a + 1) − (a + 1)') + '.', ''],
+        [m('= (a + 1)(a² − 1)'), ''],
+        [m('a² − 1 = (a − 1)(a + 1)'), 'Do not stop here.'],
+        [m('= (a − 1)(a + 1)²'), '']
+      ],
+      ans: m('(a − 1)(a + 1)²')
+    }
+  ],
+  modelNote: 'Put five mixed expressions on the board and ask only which method each needs, without factorising; choosing the method is the skill, and it can be practised on its own.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which method does this one need?',
+    hint: 'Common factor first, always.',
+    items: [
+      { q: m('6x² + 9x') + ' needs:', a: ['a common factor', 'a formula', 'grouping', 'splitting'], c: 0, why: m('3x') + ' is in both terms.' },
+      { q: m('x² − 25') + ' needs:', a: ['a common factor', 'a formula', 'grouping', 'splitting'], c: 1, why: 'A difference of squares.' },
+      { q: m('ax + ay + bx + by') + ' needs:', a: ['a common factor', 'a formula', 'grouping', 'splitting'], c: 2, why: 'Four terms.' },
+      { q: m('x² + 7x + 12') + ' needs:', a: ['a common factor', 'a formula', 'grouping', 'splitting'], c: 3, why: 'A quadratic trinomial.' },
+      { q: m('2x² − 18') + ' needs:', a: ['a common factor only', 'a formula only', 'a common factor then a formula', 'grouping'], c: 2, why: 'Both steps.' },
+      { q: 'For ' + m('x² − 5x + 6') + ' the two numbers are:', a: [m('2, 3'), m('−2, −3'), m('−1, −6'), m('1, 6')], c: 1, why: 'Product ' + m('6') + ', sum ' + m('−5') + '.' },
+      { q: 'A negative product means the numbers:', a: ['are both positive', 'are both negative', 'have opposite signs', 'are equal'], c: 2, why: 'One of each.' },
+      { q: m('2(x² − 9)') + ' is:', a: ['fully factorised', 'not fully factorised', 'wrong', 'prime'], c: 1, why: m('x² − 9') + ' still factorises.' }
+    ]
+  },
+  quiz: [
+    { q: 'The first method to try is always:', a: ['a formula', 'the common factor', 'grouping', 'splitting'], c: 1, why: 'It simplifies everything after it.' },
+    { q: 'Grouping is used when there are:', a: ['two terms', 'three terms', 'four terms', 'one term'], c: 2, why: 'Two pairs.' },
+    { q: 'For ' + m('x² + px + q') + ' the two numbers have product:', a: [m('p'), m('q'), m('p + q'), m('pq')], c: 1, why: 'And sum ' + m('p') + '.' },
+    { q: m('x² + x − 12') + ' factorises to:', a: [m('(x + 4)(x − 3)'), m('(x − 4)(x + 3)'), m('(x + 6)(x − 2)'), m('(x + 12)(x − 1)')], c: 0, why: m('4 − 3 = 1') + '.' },
+    { q: m('x³ − x') + ' factorises to:', a: [m('x(x² − 1)'), m('x(x − 1)(x + 1)'), m('(x − 1)(x + 1)'), m('x³(1 − x)')], c: 1, why: 'Finish the job.' },
+    { q: 'A factorisation is checked by:', a: ['dividing', 'expanding', 'substituting ' + m('0'), 'nothing'], c: 1, why: 'It must return the original.' }
+  ],
+  practice: {
+    easy: [
+      [m('x² + 7x + 12'), m('(x + 3)(x + 4)')],
+      [m('x² − 5x + 6'), m('(x − 2)(x − 3)')],
+      [m('x² + x − 12'), m('(x + 4)(x − 3)')],
+      [m('x² − 2x − 15'), m('(x − 5)(x + 3)')],
+      [m('x² − 9'), m('(x − 3)(x + 3)')],
+      [m('6x² + 9x'), m('3x(2x + 3)')],
+      [m('x² + 6x + 9'), m('(x + 3)²')]
+    ],
+    med: [
+      [m('2x² − 18'), m('2(x − 3)(x + 3)')],
+      [m('3x² + 12x + 12'), m('3(x + 2)²')],
+      [m('x³ − x'), m('x(x − 1)(x + 1)')],
+      [m('2x² + 10x + 12'), m('2(x + 2)(x + 3)')],
+      [m('x² − 8x + 15'), m('(x − 3)(x − 5)')],
+      [m('x² + 2x − 8'), m('(x + 4)(x − 2)')],
+      [m('ax + ay + bx + by'), m('(x + y)(a + b)')]
+    ],
+    hard: [
+      [m('a³ + a² − a − 1'), m('(a − 1)(a + 1)²')],
+      [m('x⁴ − 5x² + 4'), m('(x − 1)(x + 1)(x − 2)(x + 2)')],
+      [m('3x³ − 27x'), m('3x(x − 3)(x + 3)')],
+      [m('x² + x + 1'), 'Prime — it does not factorise'],
+      [m('2x³ + 16'), m('2(x + 2)(x² − 2x + 4)')],
+      [m('x² − 10x + 25 − y²'), m('(x − 5 − y)(x − 5 + y)')],
+      [m('4x² − 12x + 9'), m('(2x − 3)²')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Take the common factor out first, and expand your answer back at the end.',
+  homework: [
+    'Factorise ' + m('x² + 9x + 20') + ' and ' + m('x² − 7x + 10') + '.',
+    'Factorise ' + m('x² − 3x − 10') + '.',
+    'Factorise ' + m('5x² − 45') + ' completely.',
+    'Factorise ' + m('x³ + 2x² − x − 2') + ' by grouping.',
+    'Say which method each of ' + m('4a² − 9') + ', ' + m('6ab + 9a') + ' and ' + m('x² − x − 6') + ' needs.'
+  ]
+});
+
+/* ============================== 59 ============================== */
+G7_MAT.push({
+  id: 'g7-59', stream: 'mat', grade: 7, quarter: 3, lessons: '108–109', hours: 2,
+  title: 'Applying the abridged multiplication formulae',
+  subtitle: 'The five formulae at work — mental arithmetic, simplification, proofs and identities.',
+  uz: 'Matematika 7, §49', uzPage: 'pp. 319–326',
+  cam: 'S8 2.4', camPage: 'Stage 8, pp. 25–30', wb: 'Exercise 2.4',
+  objectives: [
+    'Choose the right formula from the shape of an expression.',
+    'Use the formulae to calculate quickly without a calculator.',
+    'Simplify expressions in which several formulae appear together.',
+    'Prove a simple divisibility statement by factorising.'
+  ],
+  terms: [
+    ['Abridged multiplication', 'Qisqa ko‘paytirish', 'Сокращённое умножение'],
+    ['To apply', 'Qo‘llash', 'Применять'],
+    ['To simplify', 'Soddalashtirish', 'Упростить'],
+    ['Identity', 'Ayniyat', 'Тождество'],
+    ['Divisible', 'Bo‘linadi', 'Делится'],
+    ['Consecutive', 'Ketma-ket', 'Последовательные'],
+    ['Even number', 'Juft son', 'Чётное число'],
+    ['Proof', 'Isbot', 'Доказательство']
+  ],
+  timing: [[10, 'The five formulae in one table'], [20, 'Mental arithmetic'], [25, 'Simplifying'], [25, 'Proving something'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The five formulae in one table',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Name</th><th>Formula</th><th>Recognise it by</th></tr></thead>
+      <tbody>
+        <tr><td>square of a sum</td><td class="m">(a + b)² = a² + 2ab + b²</td><td>three terms, middle ${m('2ab')}</td></tr>
+        <tr><td>square of a difference</td><td class="m">(a − b)² = a² − 2ab + b²</td><td>three terms, middle ${m('−2ab')}</td></tr>
+        <tr><td>difference of squares</td><td class="m">a² − b² = (a − b)(a + b)</td><td>two square terms, a minus</td></tr>
+        <tr><td>cube of a sum or difference</td><td class="m">(a ± b)³</td><td>four terms, ${m('1, 3, 3, 1')}</td></tr>
+        <tr><td>sum or difference of cubes</td><td class="m">a³ ± b³</td><td>two cube terms</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Count the terms first</div>
+      Two terms point to a difference of squares or a sum of cubes; three to a square; four to a cube or
+      to grouping. Counting decides the formula before any algebra is attempted.</div>`
+    },
+    {
+      h: 'Mental arithmetic',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>Formula</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">103²</td><td class="m">(a + b)²</td><td class="m">10000 + 600 + 9</td><td class="m">10609</td></tr>
+        <tr><td class="m">97²</td><td class="m">(a − b)²</td><td class="m">10000 − 600 + 9</td><td class="m">9409</td></tr>
+        <tr><td class="m">63 · 57</td><td class="m">a² − b²</td><td class="m">3600 − 9</td><td class="m">3591</td></tr>
+        <tr><td class="m">75² − 25²</td><td class="m">a² − b²</td><td class="m">50 · 100</td><td class="m">5000</td></tr>
+        <tr><td class="m">31³</td><td class="m">(a + b)³</td><td class="m">27000 + 2700 + 90 + 1</td><td class="m">29791</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">${m('75² − 25²')} in one line</div>
+      Factorised it is ${m('(75 − 25)(75 + 25) = 50 · 100')}. Squaring both numbers first takes four times
+      as long and invites an arithmetic slip.</div>`
+    },
+    {
+      h: 'Simplifying',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Simplified</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(a + b)² − (a − b)²</td><td class="m">4ab</td></tr>
+        <tr><td class="m">(a + b)² + (a − b)²</td><td class="m">2a² + 2b²</td></tr>
+        <tr><td class="m">(x + 3)² − (x − 3)²</td><td class="m">12x</td></tr>
+        <tr><td class="m">(x + 2)(x − 2) − x²</td><td class="m">−4</td></tr>
+        <tr><td class="m">${f('x² − 16', 'x + 4')}</td><td class="m">x − 4</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Expand both brackets before subtracting</span>
+      ${m('(a + b)² − (a − b)²')} is not ${m('(2b)²')}. Subtracting the brackets as if they were single
+      numbers is the standard slip; expand each one and then subtract term by term.</div>`
+    },
+    {
+      h: 'Proving something',
+      html: `<p>A factorised form can prove a statement that the expanded form hides completely.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Claim</th><th>Factorised</th><th>Why it follows</th></tr></thead>
+      <tbody>
+        <tr><td class="m">n² + n</td><td class="m">n(n + 1)</td><td>consecutive numbers — one is even</td></tr>
+        <tr><td class="m">n² − 1</td><td class="m">(n − 1)(n + 1)</td><td>for odd ${m('n')}, both factors are even</td></tr>
+        <tr><td class="m">(n + 1)² − n²</td><td class="m">2n + 1</td><td>always odd</td></tr>
+        <tr><td class="m">n³ − n</td><td class="m">(n − 1)n(n + 1)</td><td>three consecutive numbers</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Why the difference of two consecutive squares is odd</div>
+      ${m('(n + 1)² − n² = 2n + 1')}, which is odd for every whole ${m('n')}. It also explains why every
+      odd number is a difference of two squares — ${m('9 = 5² − 4²')}, ${m('11 = 6² − 5²')}, and so
+      on.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find ' + m('75² − 25²') + ' without a calculator.',
+      steps: [
+        ['A difference of squares.', ''],
+        [m('= (75 − 25)(75 + 25)'), ''],
+        [m('= 50 · 100'), ''],
+        [m('= 5000'), '']
+      ],
+      ans: m('5000')
+    },
+    {
+      q: 'Simplify ' + m('(x + 3)² − (x − 3)²') + '.',
+      steps: [
+        [m('(x + 3)² = x² + 6x + 9'), ''],
+        [m('(x − 3)² = x² − 6x + 9'), ''],
+        ['Subtract: ' + m('12x') + '.', 'The squares and the ' + m('9') + 's cancel.']
+      ],
+      ans: m('12x')
+    },
+    {
+      q: 'Prove that ' + m('n² − 1') + ' is divisible by ' + m('8') + ' for every odd ' + m('n') + '.',
+      steps: [
+        [m('n² − 1 = (n − 1)(n + 1)'), ''],
+        ['For odd ' + m('n') + ' both factors are even.', ''],
+        ['They are consecutive even numbers, so one is a multiple of ' + m('4') + '.', ''],
+        ['The product is therefore a multiple of ' + m('2 · 4 = 8') + '.', '']
+      ],
+      ans: 'Divisible by ' + m('8')
+    }
+  ],
+  modelNote: 'Give the class 25 · 35, 51 · 49 and 98² as a race against the calculators; the formulae win, and the point needs no further argument.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which formula fits?',
+    hint: 'Count the terms first.',
+    items: [
+      { q: m('x² − 49') + ' fits:', a: ['square of a sum', 'difference of squares', 'sum of cubes', 'none'], c: 1, why: 'Two square terms.' },
+      { q: m('x² + 10x + 25') + ' fits:', a: ['square of a sum', 'difference of squares', 'cube of a sum', 'none'], c: 0, why: m('2 · x · 5') + '.' },
+      { q: m('x³ − 27') + ' fits:', a: ['difference of squares', 'difference of cubes', 'cube of a difference', 'none'], c: 1, why: 'Two cube terms.' },
+      { q: m('x³ − 6x² + 12x − 8') + ' fits:', a: ['difference of cubes', 'cube of a difference', 'square of a difference', 'none'], c: 1, why: 'Four terms, ' + m('1, 3, 3, 1') + '.' },
+      { q: m('97²') + ' is easiest as:', a: [m('(100 − 3)²'), m('(90 + 7)²'), m('97 · 97'), m('(100 + 3)²')], c: 0, why: 'The nearest hundred.' },
+      { q: m('63 · 57') + ' equals:', a: [m('3591'), m('3600'), m('3609'), m('3549')], c: 0, why: m('3600 − 9') + '.' },
+      { q: m('(a + b)² − (a − b)²') + ' equals:', a: [m('2b²'), m('4ab'), m('2a²'), m('0')], c: 1, why: 'The squares cancel.' },
+      { q: m('(n + 1)² − n²') + ' is:', a: ['always even', 'always odd', 'always prime', 'sometimes zero'], c: 1, why: m('2n + 1') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'Three terms with a middle of ' + m('2ab') + ' point to:', a: ['a square', 'a difference of squares', 'a cube', 'grouping'], c: 0, why: 'A perfect square.' },
+    { q: 'Two square terms with a minus point to:', a: ['a square of a sum', 'a difference of squares', 'a sum of cubes', 'nothing'], c: 1, why: m('a² − b²') + '.' },
+    { q: m('75² − 25²') + ' equals:', a: [m('2500'), m('5000'), m('5625'), m('10000')], c: 1, why: m('50 · 100') + '.' },
+    { q: m('(x + 3)² − (x − 3)²') + ' equals:', a: [m('12x'), m('18'), m('6x'), m('0')], c: 0, why: 'Expand both.' },
+    { q: m('n² + n') + ' is always:', a: ['odd', 'even', 'prime', 'square'], c: 1, why: m('n(n + 1)') + '.' },
+    { q: m('103²') + ' equals:', a: [m('10609'), m('10309'), m('10906'), m('10009')], c: 0, why: m('10000 + 600 + 9') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('103²'), m('10609')],
+      [m('97²'), m('9409')],
+      [m('63 · 57'), m('3591')],
+      [m('75² − 25²'), m('5000')],
+      [m('(x + 3)² − (x − 3)²'), m('12x')],
+      [m('(x + 2)(x − 2) − x²'), m('−4')],
+      [m(f('x² − 16', 'x + 4')), m('x − 4')]
+    ],
+    med: [
+      [m('(a + b)² − (a − b)²'), m('4ab')],
+      [m('(a + b)² + (a − b)²'), m('2a² + 2b²')],
+      [m('31³'), m('29791')],
+      [m('45² − 35²'), m('800')],
+      [m('(2x + 1)² − (2x − 1)²'), m('8x')],
+      ['Prove ' + m('n² + n') + ' is even', m('n(n + 1)') + ' — one factor is even'],
+      [m('(n + 1)² − n²'), m('2n + 1')]
+    ],
+    hard: [
+      ['Prove ' + m('n² − 1') + ' is divisible by ' + m('8') + ' for odd ' + m('n'), 'Two consecutive even factors, one a multiple of ' + m('4')],
+      [m('n³ − n') + ' factorised', m('(n − 1)n(n + 1)')],
+      ['Write ' + m('11') + ' as a difference of two squares', m('6² − 5²')],
+      [m('(a + b)³ − (a − b)³'), m('6a²b + 2b³')],
+      ['If ' + m('a + b = 10') + ' and ' + m('a − b = 4') + ', find ' + m('a² − b²'), m('40')],
+      [m('1000² − 999²'), m('1999')],
+      ['Simplify ' + m(f('x³ − 27', 'x − 3')), m('x² + 3x + 9')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Count the terms, name the formula, then calculate.',
+  homework: [
+    'Find ' + m('104²') + ', ' + m('96²') + ' and ' + m('72 · 68') + ' by the formulae.',
+    'Find ' + m('85² − 15²') + ' in one line.',
+    'Simplify ' + m('(x + 5)² − (x − 5)²') + ' and ' + m('(3a + 1)² − (3a − 1)²') + '.',
+    'Prove that ' + m('n³ − n') + ' is divisible by ' + m('6') + ' for every whole ' + m('n') + '.',
+    'Write ' + m('15') + ' and ' + m('21') + ' each as a difference of two squares.'
+  ]
+});
