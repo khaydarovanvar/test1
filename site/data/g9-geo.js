@@ -3276,3 +3276,369 @@ G9_GEO.push({
     'Show that the cosine rule gives Pythagoras’ theorem when ' + m('C = 90°') + '.'
   ]
 });
+
+/* ============================== 21 ============================== */
+G9_GEO.push({
+  id: 'g9-21', stream: 'geo', grade: 9, quarter: 2, lessons: '24–25', hours: 2,
+  title: 'Applications of the sine and cosine rules',
+  subtitle: 'Bearings, heights, distances across a river — the rules put to work outside the exercise book.',
+  uz: 'Geometriya 9, §18', uzPage: 'pp. 97–103',
+  cam: 'Extension beyond IGX', camPage: 'Core & Extended, pp. 323–330', wb: 'Exercise 15.4',
+  objectives: [
+    'Choose between the two rules from the given data.',
+    'Draw a labelled diagram from a worded description, including bearings.',
+    'Solve problems on distance, height and navigation.',
+    'Give answers to a sensible accuracy with units.'
+  ],
+  terms: [
+    ['Bearing', 'Azimut', 'Азимут'],
+    ['Due north', 'Shimolga', 'На север'],
+    ['Angle of elevation', 'Ko‘tarilish burchagi', 'Угол возвышения'],
+    ['Angle of depression', 'Tushish burchagi', 'Угол понижения'],
+    ['Navigation', 'Navigatsiya', 'Навигация'],
+    ['Accuracy', 'Aniqlik', 'Точность'],
+    ['Three-figure bearing', 'Uch xonali azimut', 'Трёхзначный азимут'],
+    ['Sketch', 'Chizma', 'Чертёж']
+  ],
+  timing: [[15, 'Choosing the rule'], [25, 'Bearings'], [25, 'Heights and distances'], [20, 'Accuracy'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Choosing the rule',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Rule</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>two angles and a side</td><td>sine</td><td>find the third angle first</td></tr>
+        <tr><td>two sides and a non-included angle</td><td>sine</td><td>check for two answers</td></tr>
+        <tr><td>two sides and the included angle</td><td>cosine</td><td>gives the third side</td></tr>
+        <tr><td>three sides</td><td>cosine</td><td>gives any angle</td></tr>
+        <tr><td>two sides and the included angle, area wanted</td><td class="m">½ab sin C</td><td>no third side needed</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Look for a matched pair</div>
+      A side together with its opposite angle means the sine rule can start. If the data contains no such
+      pair, use the cosine rule — that decision takes five seconds and settles the whole question.</div>`
+    },
+    {
+      h: 'Bearings',
+      html: `<p>A <b>bearing</b> is measured clockwise from due north and always written with three
+      figures: ${m('060°')}, ${m('135°')}, ${m('310°')}.</p>
+      {{fig:bearings:Bearings are measured clockwise from north, and written with three figures.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Direction</th><th>Bearing</th></tr></thead>
+      <tbody>
+        <tr><td>north</td><td class="m">000°</td></tr>
+        <tr><td>east</td><td class="m">090°</td></tr>
+        <tr><td>south</td><td class="m">180°</td></tr>
+        <tr><td>west</td><td class="m">270°</td></tr>
+      </tbody></table></div>
+      <p>The <b>back bearing</b> — from ${m('B')} to ${m('A')} when the bearing from ${m('A')} to
+      ${m('B')} is known — is found by adding ${m('180°')} and subtracting ${m('360°')} if the result
+      exceeds it.</p>
+      <div class="warn"><span class="wl">The angle in the triangle is not the bearing</span>
+      Two bearings of ${m('060°')} and ${m('140°')} from the same point give an angle of ${m('80°')}
+      between the paths. Always convert bearings into an angle of the triangle before applying a
+      rule.</div>`
+    },
+    {
+      h: 'Heights and distances',
+      html: `<p><b>Across a river.</b> To find ${m('AB')} across water: mark a baseline ${m('AC')} on one
+      bank, measure ${m('AC')}, and measure the angles at ${m('A')} and ${m('C')} to the far point
+      ${m('B')}. Then the sine rule gives ${m('AB')}.</p>
+      <p><b>A tower.</b> From two points ${m('50 m')} apart in line with the base, the angles of
+      elevation are ${m('30°')} and ${m('45°')}. The triangle formed by the two observation points and
+      the top has angles ${m('30°')}, ${m('135°')} and ${m('15°')} — and the sine rule gives the slant
+      distance, then the height.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>angle at the top</td><td class="m">45° − 30° = 15°</td></tr>
+        <tr><td>sine rule</td><td class="m">${f('d', 'sin 30°')} = ${f('50', 'sin 15°')}</td></tr>
+        <tr><td class="m">d</td><td class="m">≈ 96.6</td></tr>
+        <tr><td>height</td><td class="m">96.6 sin 45° ≈ 68.3</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The angle at the top is the difference of the elevations</div>
+      It is the exterior-angle theorem in disguise, and it turns every two-observation tower problem into
+      a single application of the sine rule.</div>`
+    },
+    {
+      h: 'Accuracy',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Data given to</th><th>Answer to</th></tr></thead>
+      <tbody>
+        <tr><td>whole numbers</td><td>3 significant figures</td></tr>
+        <tr><td>1 decimal place</td><td>3 significant figures</td></tr>
+        <tr><td>exact values</td><td>exact, if possible</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Do not round in the middle</span>
+      Rounding ${m('sin 15°')} to ${m('0.26')} before dividing shifts the tower's height by more than a
+      metre. Keep full accuracy in the calculator and round only the final answer — and always give the
+      unit.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'From two points ' + m('50 m') + ' apart in line with a tower, the angles of elevation are ' + m('30°') + ' and ' + m('45°') + '. Find the height.',
+      steps: [
+        ['Angle at the top ' + m('= 45° − 30° = 15°') + '.', 'Exterior angle.'],
+        [m(f('d', 'sin 30°') + ' = ' + f('50', 'sin 15°')), ''],
+        [m('d = ' + f('50 × 0.5', '0.2588') + ' ≈ 96.6 m'), ''],
+        ['Height ' + m('= 96.6 sin 45° ≈ 68.3 m') + '.', '']
+      ],
+      ans: m('≈ 68.3 m')
+    },
+    {
+      q: 'A ship sails ' + m('30 km') + ' on a bearing of ' + m('060°') + ', then ' + m('40 km') + ' on ' + m('150°') + '. Find its distance from the start.',
+      steps: [
+        ['The turn is ' + m('150° − 060° = 90°') + '.', 'The interior angle is ' + m('90°') + '.'],
+        [m('d² = 30² + 40²'), 'The cosine rule with ' + m('cos 90° = 0') + '.'],
+        [m('= 900 + 1600 = 2500'), ''],
+        [m('d = 50 km'), '']
+      ],
+      ans: m('50 km')
+    },
+    {
+      q: 'To find the width ' + m('AB') + ' of a river, a baseline ' + m('AC = 60 m') + ' is measured with ' + m('∠BAC = 70°') + ' and ' + m('∠BCA = 55°') + '.',
+      steps: [
+        [m('∠ABC = 180° − 70° − 55° = 55°') + '.', ''],
+        [m(f('AB', 'sin 55°') + ' = ' + f('60', 'sin 55°')), ''],
+        ['The two angles are equal, so ' + m('AB = AC') + '.', 'An isosceles triangle.'],
+        [m('AB = 60 m'), '']
+      ],
+      ans: m('60 m')
+    }
+  ],
+  modelNote: 'Take the class outside with a protractor and a tape; measuring the school building by two elevations makes the sine rule an instrument in twenty minutes.',
+  interactive: {
+    type: 'solveTriangle',
+    title: 'Two observations, one height',
+    hint: 'Change the baseline and watch the computed height stay put.'
+  },
+  quiz: [
+    { q: 'A bearing is measured from:', a: ['east, anticlockwise', 'north, clockwise', 'north, anticlockwise', 'the horizontal'], c: 1, why: 'Always three figures.' },
+    { q: 'East is a bearing of:', a: [m('000°'), m('090°'), m('180°'), m('270°')], c: 1, why: 'A quarter turn clockwise.' },
+    { q: 'Bearings ' + m('060°') + ' and ' + m('140°') + ' give an angle of:', a: [m('60°'), m('80°'), m('140°'), m('200°')], c: 1, why: 'The difference.' },
+    { q: 'Elevations ' + m('30°') + ' and ' + m('45°') + ' give a top angle of:', a: [m('15°'), m('75°'), m('105°'), m('135°')], c: 0, why: 'The exterior-angle theorem.' },
+    { q: 'Two sides and the included angle: use', a: ['the sine rule', 'the cosine rule', 'Pythagoras', 'a bearing'], c: 1, why: 'No matched pair.' },
+    { q: 'Rounding should be done:', a: ['at every step', 'only at the end', 'never', 'to 1 s.f.'], c: 1, why: 'To avoid accumulated error.' }
+  ],
+  practice: {
+    easy: [
+      ['Bearing of due east', m('090°')],
+      ['Bearing of due south', m('180°')],
+      ['Back bearing of ' + m('070°'), m('250°')],
+      ['Back bearing of ' + m('200°'), m('020°')],
+      ['Angle between bearings ' + m('060°') + ' and ' + m('140°'), m('80°')],
+      ['Elevations ' + m('30°') + ' and ' + m('45°') + ': the top angle', m('15°')],
+      ['Two sides and the included angle: rule', 'Cosine']
+    ],
+    med: [
+      ['Ship: ' + m('30 km') + ' on ' + m('060°') + ', then ' + m('40 km') + ' on ' + m('150°'), m('50 km')],
+      ['Tower: ' + m('50 m') + ' apart, elevations ' + m('30°') + ' and ' + m('45°'), m('≈ 68.3 m')],
+      ['River: ' + m('AC = 60') + ', angles ' + m('70°') + ' and ' + m('55°') + ': ' + m('AB'), m('60 m')],
+      ['Two roads at ' + m('55°') + ', points ' + m('5') + ' and ' + m('8 km') + ' along', m('≈ 6.6 km')],
+      ['A triangle plot ' + m('40, 55, 70 m') + ': its largest angle', m('≈ 93.6°')],
+      ['Its area', m('≈ 1098 m²')],
+      ['A ladder ' + m('6 m') + ' at ' + m('70°') + ' to the ground: the height reached', m('≈ 5.64 m')]
+    ],
+    hard: [
+      ['A ship sails ' + m('20 km') + ' on ' + m('040°') + ' then ' + m('35 km') + ' on ' + m('110°') + ': its distance from the start', m('≈ 45.9 km')],
+      ['Its bearing from the start', m('≈ 086°')],
+      ['A tower: elevations ' + m('25°') + ' and ' + m('40°') + ' from points ' + m('80 m') + ' apart', m('≈ 83.9 m')],
+      ['Two lighthouses ' + m('12 km') + ' apart; a boat bears ' + m('040°') + ' from one and ' + m('310°') + ' from the other', 'Solve with the sine rule'],
+      ['A triangle field ' + m('120, 150 m') + ' with an angle of ' + m('75°') + ': the third side', m('≈ 166 m')],
+      ['Its area', m('≈ 8693 m²')],
+      ['An aircraft flies ' + m('300 km') + ' on ' + m('070°') + ' then turns onto ' + m('160°') + ' for ' + m('400 km'), m('500 km') + ' from the start']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw and label a diagram before any calculation; mark north on every bearing question.',
+  homework: [
+    'A ship sails ' + m('25 km') + ' on ' + m('050°') + ', then ' + m('40 km') + ' on ' + m('140°') + '. Find its distance from the start.',
+    'From two points ' + m('60 m') + ' apart the angles of elevation of a tower are ' + m('35°') + ' and ' + m('50°') + '. Find its height.',
+    'A triangular plot has sides ' + m('45') + ', ' + m('60') + ' and ' + m('75 m') + '. Find its largest angle and its area.',
+    'Two roads leave a junction at ' + m('65°') + '. Find the distance between points ' + m('6') + ' and ' + m('9 km') + ' along them.',
+    'Find the back bearing of ' + m('115°') + ' and of ' + m('295°') + '.'
+  ]
+});
+
+/* ============================== 22 ============================== */
+G9_GEO.push({
+  id: 'g9-22', stream: 'geo', grade: 9, quarter: 2, lessons: '26–27', hours: 2,
+  title: 'The angle between two vectors and the scalar product',
+  subtitle: 'A multiplication of vectors whose answer is a number — and it measures the angle between them.',
+  uz: 'Geometriya 9, §19', uzPage: 'pp. 104–110',
+  cam: 'Extension beyond IGX', camPage: 'Core & Extended, pp. 331–338', wb: 'Exercise 15.5',
+  objectives: [
+    'Define the angle between two vectors and the scalar product.',
+    'Compute a·b from coordinates and from |a||b| cos φ.',
+    'Use the scalar product to find an angle and to test perpendicularity.',
+    'Apply it to prove that two lines are perpendicular.'
+  ],
+  terms: [
+    ['Vector', 'Vektor', 'Вектор'],
+    ['Scalar product', 'Skalyar ko‘paytma', 'Скалярное произведение'],
+    ['Angle between vectors', 'Vektorlar orasidagi burchak', 'Угол между векторами'],
+    ['Magnitude', 'Modul', 'Модуль'],
+    ['Perpendicular', 'Perpendikulyar', 'Перпендикулярный'],
+    ['Coordinates of a vector', 'Vektor koordinatalari', 'Координаты вектора'],
+    ['Collinear', 'Kollinear', 'Коллинеарные'],
+    ['Unit vector', 'Birlik vektor', 'Единичный вектор']
+  ],
+  timing: [[15, 'The angle between vectors'], [25, 'The scalar product'], [25, 'Finding an angle'], [20, 'Perpendicularity'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The angle between vectors',
+      html: `<p>To measure the angle between ${m('a⃗')} and ${m('b⃗')}, move them so that they start at
+      the same point. The angle ${m('φ')} between them satisfies ${m('0° ≤ φ ≤ 180°')} — which is exactly
+      the range the first lesson of this chapter prepared.</p>
+      {{fig:scalarAngle:Brought to a common origin, two vectors make one angle between 0° and 180°.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">φ</th><th>The vectors are</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0°</td><td>parallel, same direction</td></tr>
+        <tr><td class="m">90°</td><td>perpendicular</td></tr>
+        <tr><td class="m">180°</td><td>parallel, opposite directions</td></tr>
+      </tbody></table></div>
+      <p>A vector ${m('a⃗(x, y)')} has magnitude ${m('|a⃗| = ' + sr('x² + y²'))} — the distance formula,
+      applied to the arrow.</p>`
+    },
+    {
+      h: 'The scalar product',
+      html: `${eq(m('a⃗ · b⃗ = |a⃗| |b⃗| cos φ'), true)}
+      <p>and, in coordinates,</p>
+      ${eq(m('a⃗(x₁, y₁) · b⃗(x₂, y₂) = x₁x₂ + y₁y₂'), true)}
+      <p>The result is a <b>number</b>, not a vector — which is why it is called the <i>scalar</i>
+      product.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Property</th><th>Statement</th></tr></thead>
+      <tbody>
+        <tr><td>commutative</td><td class="m">a⃗ · b⃗ = b⃗ · a⃗</td></tr>
+        <tr><td>distributive</td><td class="m">a⃗ · (b⃗ + c⃗) = a⃗ · b⃗ + a⃗ · c⃗</td></tr>
+        <tr><td>with a scalar</td><td class="m">(ka⃗) · b⃗ = k(a⃗ · b⃗)</td></tr>
+        <tr><td>square</td><td class="m">a⃗ · a⃗ = |a⃗|²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two formulae for one quantity — and that is the point</div>
+      One formula computes it from coordinates; the other contains the angle. Setting them equal is how
+      an angle is found, and it is the only method available without a diagram.</div>`
+    },
+    {
+      h: 'Finding an angle',
+      html: `${eq(m('cos φ = ' + f('a⃗ · b⃗', '|a⃗| |b⃗|')), true)}
+      <p><b>Example.</b> ${m('a⃗(3, 4)')} and ${m('b⃗(1, 2)')}. Then ${m('a⃗ · b⃗ = 3 + 8 = 11')},
+      ${m('|a⃗| = 5')}, ${m('|b⃗| = ' + sr('5'))}, so</p>
+      ${eq(m('cos φ = ' + f('11', '5' + sr('5')) + ' ≈ 0.9839') + ',  ' + m('φ ≈ 10.3°'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">a⃗ · b⃗</th><th class="m">φ</th></tr></thead>
+      <tbody>
+        <tr><td class="m">> 0</td><td>acute</td></tr>
+        <tr><td class="m">= 0</td><td class="m">90°</td></tr>
+        <tr><td class="m">< 0</td><td>obtuse</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The sign of the scalar product is the sign of the cosine</span>
+      Because the two magnitudes are never negative. So a single subtraction tells you whether the angle
+      is acute or obtuse, without computing it — a useful check on any answer.</div>`
+    },
+    {
+      h: 'Perpendicularity',
+      html: `${eq(m('a⃗ ⊥ b⃗') + '  ⟺  ' + m('a⃗ · b⃗ = 0') + '  ⟺  ' + m('x₁x₂ + y₁y₂ = 0'), true)}
+      <p>This is the standard way to prove a right angle without measuring anything.</p>
+      <p><b>Example.</b> Show that the triangle ${m('A(1, 1)')}, ${m('B(4, 2)')}, ${m('C(2, 8)')} is
+      right-angled.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Vector</th><th>Coordinates</th></tr></thead>
+      <tbody>
+        <tr><td class="m">AB</td><td class="m">(3, 1)</td></tr>
+        <tr><td class="m">AC</td><td class="m">(1, 7)</td></tr>
+        <tr><td class="m">BC</td><td class="m">(−2, 6)</td></tr>
+      </tbody></table></div>
+      <p>${m('AB · BC = −6 + 6 = 0')}, so the right angle is at ${m('B')}.</p>
+      <div class="keybox"><div class="klabel">One multiplication and one addition</div>
+      Compared with computing three side lengths and testing Pythagoras, the scalar product is far
+      quicker — and it also tells you <b>where</b> the right angle is, which Pythagoras only reveals
+      after the fact.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the angle between ' + m('a⃗(3, 4)') + ' and ' + m('b⃗(1, 2)') + '.',
+      steps: [
+        [m('a⃗ · b⃗ = 3 × 1 + 4 × 2 = 11'), ''],
+        [m('|a⃗| = 5') + ', ' + m('|b⃗| = ' + sr('5')), ''],
+        [m('cos φ = ' + f('11', '5' + sr('5')) + ' ≈ 0.9839'), ''],
+        [m('φ ≈ 10.3°'), 'Acute, as the positive product predicted.']
+      ],
+      ans: m('≈ 10.3°')
+    },
+    {
+      q: 'Show that ' + m('A(1, 1)') + ', ' + m('B(4, 2)') + ', ' + m('C(2, 8)') + ' is right-angled, and say where.',
+      steps: [
+        [m('AB(3, 1)') + ', ' + m('BC(−2, 6)') + '.', 'From ' + m('B') + ' in both directions.'],
+        [m('AB · BC = 3(−2) + 1(6)'), ''],
+        [m('= −6 + 6 = 0'), ''],
+        ['Right-angled at ' + m('B') + '.', '']
+      ],
+      ans: 'Right-angled at ' + m('B')
+    },
+    {
+      q: 'For which ' + m('t') + ' are ' + m('a⃗(t, 3)') + ' and ' + m('b⃗(4, −2)') + ' perpendicular?',
+      steps: [
+        [m('a⃗ · b⃗ = 4t − 6'), ''],
+        ['Perpendicular means the product is zero.', ''],
+        [m('4t − 6 = 0'), ''],
+        [m('t = 1.5'), '']
+      ],
+      ans: m('t = 1.5')
+    }
+  ],
+  modelNote: 'Hold two metre rules at a common point and ask the class to predict the sign of the product as the angle opens past a right angle; the sign change is visible before any arithmetic.',
+  interactive: {
+    type: 'vectors',
+    title: 'Two arrows and one number',
+    hint: 'Watch the product change sign as the angle passes 90°.'
+  },
+  quiz: [
+    { q: 'The scalar product of two vectors is:', a: ['a vector', 'a number', 'an angle', 'a length'], c: 1, why: 'Hence “scalar”.' },
+    { q: m('a⃗ · b⃗') + ' in coordinates:', a: [m('x₁y₂ − x₂y₁'), m('x₁x₂ + y₁y₂'), m('x₁x₂ − y₁y₂'), m('x₁ + y₂')], c: 1, why: 'Multiply and add.' },
+    { q: m('a⃗ · b⃗ = 0') + ' means:', a: ['parallel', 'perpendicular', 'equal', 'zero vectors'], c: 1, why: m('cos 90° = 0') + '.' },
+    { q: m('a⃗ · b⃗ < 0') + ' means ' + m('φ') + ' is:', a: ['acute', 'right', 'obtuse', 'zero'], c: 2, why: 'A negative cosine.' },
+    { q: m('a⃗ · a⃗') + ' equals:', a: [m('0'), m('|a⃗|'), m('|a⃗|²'), m('2|a⃗|')], c: 2, why: m('cos 0° = 1') + '.' },
+    { q: m('(3,4)') + ' has magnitude:', a: [m('5'), m('7'), m('12'), m('25')], c: 0, why: m(sr('9 + 16')) + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('(3,4) · (1,2)'), m('11')],
+      [m('(2,3) · (4,−1)'), m('5')],
+      [m('(1,0) · (0,1)'), m('0')],
+      [m('|(3,4)|'), m('5')],
+      [m('|(5,12)|'), m('13')],
+      [m('a⃗ · a⃗') + ' for ' + m('(3,4)'), m('25')],
+      [m('(2,1) · (−1,2)'), m('0')]
+    ],
+    med: [
+      ['Angle between ' + m('(3,4)') + ' and ' + m('(1,2)'), m('≈ 10.3°')],
+      ['Angle between ' + m('(1,0)') + ' and ' + m('(1,1)'), m('45°')],
+      ['Angle between ' + m('(1,0)') + ' and ' + m('(−1,1)'), m('135°')],
+      ['Are ' + m('(2,1)') + ' and ' + m('(−1,2)') + ' perpendicular?', 'Yes'],
+      [m('t') + ' with ' + m('(t,3) ⊥ (4,−2)'), m('1.5')],
+      ['Is the angle between ' + m('(2,3)') + ' and ' + m('(−4,1)') + ' acute?', 'No — the product is ' + m('−5')],
+      [m('A(1,1), B(4,2), C(2,8)') + ': the right angle is at', m('B')]
+    ],
+    hard: [
+      ['Angle between ' + m('(1,1)') + ' and ' + m('(1,' + sr('3') + ')'), m('15°')],
+      [m('|a⃗| = 3, |b⃗| = 4, φ = 60°') + ': ' + m('a⃗ · b⃗'), m('6')],
+      ['Same: ' + m('|a⃗ + b⃗|'), m(sr('37'))],
+      [m('A(0,0), B(4,3), C(−3,4)') + ': the angle at ' + m('A'), m('90°')],
+      ['For which ' + m('t') + ' is the angle between ' + m('(1,t)') + ' and ' + m('(1,1)') + ' equal to ' + m('45°') + '?', m('t = 0')],
+      ['Prove the cosine rule using ' + m('|a⃗ − b⃗|²'), 'Expand the scalar square'],
+      ['A rhombus: prove its diagonals are perpendicular', m('(a⃗ + b⃗) · (a⃗ − b⃗) = |a⃗|² − |b⃗|² = 0')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'State the sign of the scalar product before computing the angle, as a check.',
+  homework: [
+    'Find ' + m('(5, 2) · (3, −4)') + ' and say whether the angle is acute or obtuse.',
+    'Find the angle between ' + m('(1, 1)') + ' and ' + m('(0, 1)') + '.',
+    'For which ' + m('t') + ' are ' + m('(t, 2)') + ' and ' + m('(3, −6)') + ' perpendicular?',
+    'Show that ' + m('A(0, 0)') + ', ' + m('B(4, 3)') + ', ' + m('C(−3, 4)') + ' form a right angle at ' + m('A') + '.',
+    'Prove that the diagonals of a rhombus are perpendicular using the scalar product.'
+  ]
+});
