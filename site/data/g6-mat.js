@@ -3154,3 +3154,378 @@ G6_MAT.push({
     m(f('4', '9')) + ' of a road is ' + m('12') + ' km. Find the whole road.'
   ]
 });
+
+/* ============================== 18 ============================== */
+G6_MAT.push({
+  id: 'g6-18', stream: 'mat', grade: 6, quarter: 1, lessons: '38', hours: 1,
+  title: 'Lowest common multiples and highest common factors',
+  subtitle: 'A Cambridge insert: prime factors, and the two numbers they build.',
+  uz: 'Matematika 6, qo‘shimcha mavzu', uzPage: 'pp. 99–102',
+  cam: 'S7 1.3–1.4', camPage: 'Stage 7, pp. 18–24', wb: 'Exercise 1.3',
+  objectives: [
+    'Write a number as a product of prime factors.',
+    'Find the HCF and the LCM of two numbers.',
+    'Use the HCF to simplify a fraction and the LCM to add fractions.',
+    'Recognise where each is needed in a word problem.'
+  ],
+  terms: [
+    ['Factor', 'Bo‘luvchi', 'Делитель'],
+    ['Multiple', 'Karrali son', 'Кратное'],
+    ['Prime number', 'Tub son', 'Простое число'],
+    ['Prime factorisation', 'Tub ko‘paytuvchilarga ajratish', 'Разложение на простые множители'],
+    ['Highest common factor', 'EKUB', 'НОД'],
+    ['Lowest common multiple', 'EKUK', 'НОК'],
+    ['Common', 'Umumiy', 'Общий'],
+    ['Product', 'Ko‘paytma', 'Произведение']
+  ],
+  timing: [[10, 'Prime factors'], [12, 'The HCF'], [12, 'The LCM'], [6, 'Where each is used']],
+  sections: [
+    {
+      h: 'Prime factors',
+      html: `<p>Every whole number above ${m('1')} is a product of primes, in exactly one way.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Number</th><th>Prime factors</th><th>In index form</th></tr></thead>
+      <tbody>
+        <tr><td class="m">12</td><td class="m">2 · 2 · 3</td><td class="m">2² · 3</td></tr>
+        <tr><td class="m">18</td><td class="m">2 · 3 · 3</td><td class="m">2 · 3²</td></tr>
+        <tr><td class="m">24</td><td class="m">2 · 2 · 2 · 3</td><td class="m">2³ · 3</td></tr>
+        <tr><td class="m">60</td><td class="m">2 · 2 · 3 · 5</td><td class="m">2² · 3 · 5</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Divide by the smallest prime that fits, repeatedly</div>
+      ${m('60 ÷ 2 = 30')}, ${m('30 ÷ 2 = 15')}, ${m('15 ÷ 3 = 5')}, ${m('5 ÷ 5 = 1')}. The divisors used,
+      in order, are the prime factorisation.</div>`
+    },
+    {
+      h: 'The HCF',
+      html: `<p>The <b>highest common factor</b> is the product of the primes both numbers share, each to
+      the lower of its two powers.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Numbers</th><th>Factorised</th><th>Shared</th><th>HCF</th></tr></thead>
+      <tbody>
+        <tr><td class="m">12, 18</td><td class="m">2² · 3, 2 · 3²</td><td class="m">2 · 3</td><td class="m">6</td></tr>
+        <tr><td class="m">24, 60</td><td class="m">2³ · 3, 2² · 3 · 5</td><td class="m">2² · 3</td><td class="m">12</td></tr>
+        <tr><td class="m">8, 15</td><td class="m">2³, 3 · 5</td><td>nothing</td><td class="m">1</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">An HCF of ${m('1')} means the numbers are coprime</div>
+      ${m('8')} and ${m('15')} share no prime factor, so the fraction ${m(f('8', '15'))} is already in its
+      lowest terms.</div>`
+    },
+    {
+      h: 'The LCM',
+      html: `<p>The <b>lowest common multiple</b> takes every prime that appears in either number, each to
+      the higher of its powers.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Numbers</th><th>Factorised</th><th>Taken</th><th>LCM</th></tr></thead>
+      <tbody>
+        <tr><td class="m">12, 18</td><td class="m">2² · 3, 2 · 3²</td><td class="m">2² · 3²</td><td class="m">36</td></tr>
+        <tr><td class="m">24, 60</td><td class="m">2³ · 3, 2² · 3 · 5</td><td class="m">2³ · 3 · 5</td><td class="m">120</td></tr>
+        <tr><td class="m">8, 15</td><td class="m">2³, 3 · 5</td><td class="m">2³ · 3 · 5</td><td class="m">120</td></tr>
+      </tbody></table></div>
+      ${eq('HCF ' + m('×') + ' LCM ' + m('=') + ' the product of the two numbers', true)}
+      <div class="keybox"><div class="klabel">A check that costs nothing</div>
+      ${m('6 · 36 = 216 = 12 · 18')} ✓. If the HCF and LCM you found do not multiply to the product of the
+      two numbers, one of them is wrong.</div>`
+    },
+    {
+      h: 'Where each is used',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Which</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>simplifying ${m(f('12', '18'))}</td><td>HCF</td><td>divide both by ${m('6')}</td></tr>
+        <tr><td>adding ${m(f('1', '12') + ' + ' + f('1', '18'))}</td><td>LCM</td><td>the denominator ${m('36')}</td></tr>
+        <tr><td>the largest identical parcels from ${m('24')} pens and ${m('60')} pencils</td><td>HCF</td><td class="m">12</td></tr>
+        <tr><td>two buses leaving every ${m('12')} and ${m('18')} minutes together again</td><td>LCM</td><td class="m">36</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">“Cutting up” needs the HCF; “meeting again” needs the LCM</span>
+      The HCF is never bigger than either number; the LCM is never smaller. Comparing your answer with the
+      two numbers tells you at once whether you found the right one.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the HCF and LCM of ' + m('12') + ' and ' + m('18') + '.',
+      steps: [
+        [m('12 = 2² · 3') + ' and ' + m('18 = 2 · 3²') + '.', ''],
+        ['HCF: shared primes at the lower power — ' + m('2 · 3 = 6') + '.', ''],
+        ['LCM: every prime at the higher power — ' + m('2² · 3² = 36') + '.', ''],
+        ['Check: ' + m('6 · 36 = 216 = 12 · 18') + ' ✓', '']
+      ],
+      ans: 'HCF ' + m('6') + ', LCM ' + m('36')
+    },
+    {
+      q: m('24') + ' pens and ' + m('60') + ' pencils are made into identical parcels with nothing left over. What is the largest number of parcels?',
+      steps: [
+        ['“Largest identical parcels” means the HCF.', ''],
+        [m('24 = 2³ · 3') + ', ' + m('60 = 2² · 3 · 5') + '.', ''],
+        ['HCF ' + m('= 2² · 3 = 12') + '.', ''],
+        ['Twelve parcels, each with ' + m('2') + ' pens and ' + m('5') + ' pencils.', '']
+      ],
+      ans: m('12') + ' parcels'
+    },
+    {
+      q: 'Two buses leave at ' + m('8:00') + ', one every ' + m('12') + ' minutes and one every ' + m('18') + '. When do they next leave together?',
+      steps: [
+        ['“Together again” means the LCM.', ''],
+        ['LCM of ' + m('12') + ' and ' + m('18') + ' is ' + m('36') + '.', ''],
+        [m('36') + ' minutes later, at ' + m('8:36') + '.', '']
+      ],
+      ans: m('8:36')
+    }
+  ],
+  modelNote: 'Ask for the HCF and LCM of 12 and 18 by listing factors and multiples first; the prime-factor method then arrives as a shortcut for something already understood.',
+  interactive: {
+    type: 'lcdBuilder',
+    title: 'Building the LCM from prime factors',
+    hint: 'Every prime at its highest power.',
+    items: [
+      {
+        label: m('12') + ' and ' + m('18'),
+        rows: [['12', '2² · 3', '3'], ['18', '2 · 3²', '2']],
+        lcd: m('2² · 3² = 36'),
+        note: 'HCF ' + m('= 2 · 3 = 6') + ', and ' + m('6 · 36 = 12 · 18') + ' ✓'
+      },
+      {
+        label: m('24') + ' and ' + m('60'),
+        rows: [['24', '2³ · 3', '5'], ['60', '2² · 3 · 5', '2']],
+        lcd: m('2³ · 3 · 5 = 120'),
+        note: 'HCF ' + m('= 2² · 3 = 12') + '.'
+      },
+      {
+        label: m('8') + ' and ' + m('15'),
+        rows: [['8', '2³', '15'], ['15', '3 · 5', '8']],
+        lcd: m('2³ · 3 · 5 = 120'),
+        note: 'They share nothing, so the HCF is ' + m('1') + ' and the LCM is their product.'
+      }
+    ]
+  },
+  quiz: [
+    { q: m('12') + ' in prime factors is:', a: [m('2 · 6'), m('2² · 3'), m('3 · 4'), m('2 · 3²')], c: 1, why: 'Primes only.' },
+    { q: 'The HCF of ' + m('12') + ' and ' + m('18') + ' is:', a: [m('2'), m('3'), m('6'), m('36')], c: 2, why: 'Shared primes, lower powers.' },
+    { q: 'The LCM of ' + m('12') + ' and ' + m('18') + ' is:', a: [m('6'), m('36'), m('54'), m('216')], c: 1, why: 'All primes, higher powers.' },
+    { q: 'The HCF of ' + m('8') + ' and ' + m('15') + ' is:', a: [m('1'), m('2'), m('3'), m('120')], c: 0, why: 'They are coprime.' },
+    { q: 'HCF ' + m('×') + ' LCM equals:', a: ['the sum', 'the product of the numbers', 'the difference', 'nothing special'], c: 1, why: 'A free check.' },
+    { q: 'Two buses meeting again needs the:', a: ['HCF', 'LCM', 'product', 'difference'], c: 1, why: 'A common multiple.' }
+  ],
+  practice: {
+    easy: [
+      [m('12') + ' in prime factors', m('2² · 3')],
+      [m('18') + ' in prime factors', m('2 · 3²')],
+      [m('24') + ' in prime factors', m('2³ · 3')],
+      ['HCF of ' + m('12') + ' and ' + m('18'), m('6')],
+      ['LCM of ' + m('12') + ' and ' + m('18'), m('36')],
+      ['HCF of ' + m('8') + ' and ' + m('15'), m('1')],
+      ['LCM of ' + m('8') + ' and ' + m('15'), m('120')]
+    ],
+    med: [
+      [m('60') + ' in prime factors', m('2² · 3 · 5')],
+      ['HCF of ' + m('24') + ' and ' + m('60'), m('12')],
+      ['LCM of ' + m('24') + ' and ' + m('60'), m('120')],
+      ['Simplify ' + m(f('12', '18')) + ' using the HCF', m(f('2', '3'))],
+      ['Add ' + m(f('1', '12') + ' + ' + f('1', '18')) + ' using the LCM', m(f('5', '36'))],
+      [m('24') + ' pens and ' + m('60') + ' pencils in identical parcels', m('12') + ' parcels'],
+      ['Buses every ' + m('12') + ' and ' + m('18') + ' minutes from ' + m('8:00'), m('8:36')]
+    ],
+    hard: [
+      ['HCF and LCM of ' + m('36') + ' and ' + m('48'), m('12') + ' and ' + m('144')],
+      ['Check that HCF ' + m('×') + ' LCM ' + m('= 36 · 48'), m('12 · 144 = 1728') + ' ✓'],
+      ['HCF of ' + m('105') + ' and ' + m('154'), m('7')],
+      ['LCM of ' + m('4, 6') + ' and ' + m('10'), m('60')],
+      ['The largest square tile that tiles a ' + m('60') + ' by ' + m('84') + ' cm floor exactly', m('12') + ' cm'],
+      ['Two lights flash every ' + m('15') + ' and ' + m('25') + ' seconds: together again after', m('75') + ' s'],
+      ['If the HCF of two numbers is one of them, what does that mean?', 'The smaller divides the larger']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Check every pair with HCF ' + m('×') + ' LCM = the product of the numbers.',
+  homework: [
+    'Write ' + m('45') + ' and ' + m('75') + ' as products of prime factors.',
+    'Find their HCF and LCM, and check with the product rule.',
+    'Simplify ' + m(f('45', '75')) + ' using the HCF.',
+    'Find the LCM of ' + m('6, 8') + ' and ' + m('12') + '.',
+    'Two runners lap a track in ' + m('40') + ' and ' + m('60') + ' seconds. After how long are they together at the start again?'
+  ]
+});
+
+/* ============================== 19 ============================== */
+G6_MAT.push({
+  id: 'g6-19', stream: 'mat', grade: 6, quarter: 1, lessons: '39', hours: 1,
+  title: 'Tests for divisibility',
+  subtitle: 'A Cambridge insert: deciding what divides a number without doing the division.',
+  uz: 'Matematika 6, qo‘shimcha mavzu', uzPage: 'pp. 103–105',
+  cam: 'S7 1.5', camPage: 'Stage 7, pp. 24–27', wb: 'Exercise 1.5',
+  objectives: [
+    'State and apply the tests for ' + m('2, 3, 4, 5, 6, 8, 9') + ' and ' + m('10') + '.',
+    'Combine tests to check divisibility by a composite number.',
+    'Use the tests to factorise quickly.',
+    'Explain why the test for ' + m('3') + ' works.'
+  ],
+  terms: [
+    ['Divisible', 'Bo‘linadi', 'Делится'],
+    ['Test for divisibility', 'Bo‘linish alomati', 'Признак делимости'],
+    ['Digit sum', 'Raqamlar yig‘indisi', 'Сумма цифр'],
+    ['Last digit', 'Oxirgi raqam', 'Последняя цифра'],
+    ['Even number', 'Juft son', 'Чётное число'],
+    ['Odd number', 'Toq son', 'Нечётное число'],
+    ['Composite number', 'Murakkab son', 'Составное число'],
+    ['Remainder', 'Qoldiq', 'Остаток']
+  ],
+  timing: [[12, 'The tests'], [10, 'Using them together'], [12, 'Factorising quickly'], [6, 'Why the test for 3 works']],
+  sections: [
+    {
+      h: 'The tests',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Divisor</th><th>Test</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2</td><td>last digit even</td><td class="m">374</td></tr>
+        <tr><td class="m">3</td><td>digit sum divisible by ${m('3')}</td><td class="m">471 → 12</td></tr>
+        <tr><td class="m">4</td><td>last two digits divisible by ${m('4')}</td><td class="m">1316 → 16</td></tr>
+        <tr><td class="m">5</td><td>last digit ${m('0')} or ${m('5')}</td><td class="m">385</td></tr>
+        <tr><td class="m">6</td><td>divisible by ${m('2')} and by ${m('3')}</td><td class="m">474</td></tr>
+        <tr><td class="m">8</td><td>last three digits divisible by ${m('8')}</td><td class="m">3128 → 128</td></tr>
+        <tr><td class="m">9</td><td>digit sum divisible by ${m('9')}</td><td class="m">576 → 18</td></tr>
+        <tr><td class="m">10</td><td>last digit ${m('0')}</td><td class="m">4370</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The digit-sum tests can be repeated</div>
+      For ${m('99 999')} the digit sum is ${m('45')}, whose digit sum is ${m('9')} — divisible by ${m('9')},
+      so the original is too.</div>`
+    },
+    {
+      h: 'Using them together',
+      html: `<p>For a composite divisor, test its coprime factors separately.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Divisor</th><th>Test</th><th>Warning</th></tr></thead>
+      <tbody>
+        <tr><td class="m">6</td><td class="m">2 and 3</td><td>—</td></tr>
+        <tr><td class="m">12</td><td class="m">3 and 4</td><td>not ${m('2')} and ${m('6')}</td></tr>
+        <tr><td class="m">15</td><td class="m">3 and 5</td><td>—</td></tr>
+        <tr><td class="m">18</td><td class="m">2 and 9</td><td>not ${m('3')} and ${m('6')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The two factors must share nothing</span>
+      ${m('12 = 2 · 6')}, but passing the ${m('2')} and ${m('6')} tests is not enough: ${m('18')} passes
+      both and is not a multiple of ${m('12')}. Use ${m('3')} and ${m('4')}, which are coprime.</div>`
+    },
+    {
+      h: 'Factorising quickly',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Number</th><th>Tests it passes</th><th>Factorisation</th></tr></thead>
+      <tbody>
+        <tr><td class="m">180</td><td class="m">2, 3, 4, 5, 9, 10</td><td class="m">2² · 3² · 5</td></tr>
+        <tr><td class="m">252</td><td class="m">2, 3, 4, 9</td><td class="m">2² · 3² · 7</td></tr>
+        <tr><td class="m">385</td><td class="m">5</td><td class="m">5 · 7 · 11</td></tr>
+        <tr><td class="m">1001</td><td>none of the small ones</td><td class="m">7 · 11 · 13</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The tests save the trial divisions</div>
+      Knowing at a glance that ${m('180')} is divisible by ${m('4')} and by ${m('9')} gives
+      ${m('180 = 36 · 5')} immediately, without any long division at all.</div>`
+    },
+    {
+      h: 'Why the test for ' + m('3') + ' works',
+      html: `<p>Every power of ten is one more than a multiple of ${m('3')}: ${m('10 = 9 + 1')},
+      ${m('100 = 99 + 1')}, ${m('1000 = 999 + 1')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>For ${m('471')}</th></tr></thead>
+      <tbody>
+        <tr><td>split by place value</td><td class="m">4 · 100 + 7 · 10 + 1</td></tr>
+        <tr><td>rewrite the powers</td><td class="m">4(99 + 1) + 7(9 + 1) + 1</td></tr>
+        <tr><td>separate</td><td class="m">(4 · 99 + 7 · 9) + (4 + 7 + 1)</td></tr>
+        <tr><td>the first bracket</td><td>always a multiple of ${m('3')}</td></tr>
+        <tr><td>so the test</td><td>depends only on the digit sum</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The same argument works for ${m('9')}</div>
+      ${m('99')} and ${m('999')} are multiples of ${m('9')} as well, which is why the digit-sum test serves
+      both numbers — and why no such simple test exists for ${m('7')}.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Is ' + m('471') + ' divisible by ' + m('3') + '? By ' + m('9') + '?',
+      steps: [
+        ['Digit sum: ' + m('4 + 7 + 1 = 12') + '.', ''],
+        [m('12') + ' is divisible by ' + m('3') + ' — so ' + m('471') + ' is.', ''],
+        [m('12') + ' is not divisible by ' + m('9') + ' — so ' + m('471') + ' is not.', '']
+      ],
+      ans: 'By ' + m('3') + ' yes, by ' + m('9') + ' no'
+    },
+    {
+      q: 'Is ' + m('1316') + ' divisible by ' + m('4') + '?',
+      steps: [
+        ['Look at the last two digits: ' + m('16') + '.', ''],
+        [m('16 ÷ 4 = 4') + '.', ''],
+        ['So yes.', '']
+      ],
+      ans: 'Yes'
+    },
+    {
+      q: 'Factorise ' + m('180') + ' using the tests.',
+      steps: [
+        ['Last two digits ' + m('80') + ' — divisible by ' + m('4') + '.', m('180 = 4 · 45')],
+        ['Digit sum ' + m('9') + ' — divisible by ' + m('9') + '.', m('45 = 9 · 5')],
+        [m('180 = 4 · 9 · 5'), ''],
+        [m('= 2² · 3² · 5'), '']
+      ],
+      ans: m('2² · 3² · 5')
+    }
+  ],
+  modelNote: 'Call out five-digit numbers and have the class shout which of 2, 3, 5 and 9 divide them; the tests become automatic in a single lesson.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which numbers divide it?',
+    hint: 'Last digits for ' + m('2, 4, 5, 8, 10') + '; digit sums for ' + m('3') + ' and ' + m('9') + '.',
+    items: [
+      { q: 'Is ' + m('374') + ' divisible by ' + m('2') + '?', a: ['yes', 'no'], c: 0, why: 'Last digit even.' },
+      { q: 'Is ' + m('471') + ' divisible by ' + m('3') + '?', a: ['yes', 'no'], c: 0, why: 'Digit sum ' + m('12') + '.' },
+      { q: 'Is ' + m('471') + ' divisible by ' + m('9') + '?', a: ['yes', 'no'], c: 1, why: m('12') + ' is not.' },
+      { q: 'Is ' + m('1316') + ' divisible by ' + m('4') + '?', a: ['yes', 'no'], c: 0, why: 'Last two digits ' + m('16') + '.' },
+      { q: 'Is ' + m('385') + ' divisible by ' + m('5') + '?', a: ['yes', 'no'], c: 0, why: 'It ends in ' + m('5') + '.' },
+      { q: 'Is ' + m('474') + ' divisible by ' + m('6') + '?', a: ['yes', 'no'], c: 0, why: 'Even, and digit sum ' + m('15') + '.' },
+      { q: 'Is ' + m('576') + ' divisible by ' + m('9') + '?', a: ['yes', 'no'], c: 0, why: 'Digit sum ' + m('18') + '.' },
+      { q: 'To test for ' + m('12') + ' use:', a: [m('2') + ' and ' + m('6'), m('3') + ' and ' + m('4'), m('12') + ' itself only', m('6') + ' and ' + m('6')], c: 1, why: 'Coprime factors.' }
+    ]
+  },
+  quiz: [
+    { q: 'A number is divisible by ' + m('3') + ' when:', a: ['it is even', 'its digit sum is', 'it ends in ' + m('3'), 'it is odd'], c: 1, why: 'The digit-sum test.' },
+    { q: 'By ' + m('4') + ' when:', a: ['it is even', 'its last two digits are', 'its digit sum is', 'it ends in ' + m('4')], c: 1, why: m('100') + ' is a multiple of ' + m('4') + '.' },
+    { q: 'By ' + m('6') + ' when it is divisible by:', a: [m('2') + ' and ' + m('3'), m('3') + ' only', m('2') + ' only', m('6') + ' alone'], c: 0, why: 'Both together.' },
+    { q: 'By ' + m('9') + ' when:', a: ['it ends in ' + m('9'), 'its digit sum is', 'it is odd', 'it is even'], c: 1, why: 'As for ' + m('3') + '.' },
+    { q: 'Testing for ' + m('12') + ' by ' + m('2') + ' and ' + m('6') + ' is:', a: ['correct', 'not enough', 'too strong', 'impossible'], c: 1, why: m('18') + ' passes both.' },
+    { q: 'Which has no simple digit test?', a: [m('3'), m('7'), m('9'), m('5')], c: 1, why: 'No power of ten is one more than a multiple of ' + m('7') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Is ' + m('374') + ' divisible by ' + m('2') + '?', 'Yes'],
+      ['Is ' + m('471') + ' divisible by ' + m('3') + '?', 'Yes'],
+      ['Is ' + m('471') + ' divisible by ' + m('9') + '?', 'No'],
+      ['Is ' + m('1316') + ' divisible by ' + m('4') + '?', 'Yes'],
+      ['Is ' + m('385') + ' divisible by ' + m('5') + '?', 'Yes'],
+      ['Is ' + m('4370') + ' divisible by ' + m('10') + '?', 'Yes'],
+      ['Is ' + m('576') + ' divisible by ' + m('9') + '?', 'Yes']
+    ],
+    med: [
+      ['Is ' + m('474') + ' divisible by ' + m('6') + '?', 'Yes'],
+      ['Is ' + m('3128') + ' divisible by ' + m('8') + '?', 'Yes'],
+      ['Which of ' + m('2, 3, 5, 9') + ' divide ' + m('180') + '?', 'All four'],
+      ['Which divide ' + m('385') + '?', m('5') + ' only'],
+      ['Factorise ' + m('180'), m('2² · 3² · 5')],
+      ['Factorise ' + m('252'), m('2² · 3² · 7')],
+      ['Test for ' + m('15') + ': use', m('3') + ' and ' + m('5')]
+    ],
+    hard: [
+      ['Is ' + m('99 999') + ' divisible by ' + m('9') + '?', 'Yes — digit sum ' + m('45')],
+      ['Why is testing ' + m('12') + ' with ' + m('2') + ' and ' + m('6') + ' wrong?', m('18') + ' passes both but is not a multiple of ' + m('12')],
+      ['Factorise ' + m('1001'), m('7 · 11 · 13')],
+      ['Explain the test for ' + m('3'), 'Every power of ten is one more than a multiple of ' + m('3')],
+      ['The smallest digit ' + m('d') + ' making ' + m('47d') + ' divisible by ' + m('9'), m('d = 7')],
+      ['Which digits ' + m('d') + ' make ' + m('12d') + ' divisible by ' + m('4') + '?', m('0, 4, 8')],
+      ['Is ' + m('2 · 3 · 5 · 7 + 1') + ' divisible by any of ' + m('2, 3, 5, 7') + '?', 'No — each leaves remainder ' + m('1')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write which test you used beside every answer.',
+  homework: [
+    'Test ' + m('2 358') + ' for divisibility by ' + m('2, 3, 4, 6') + ' and ' + m('9') + '.',
+    'Test ' + m('7 425') + ' for divisibility by ' + m('3, 5, 9') + ' and ' + m('15') + '.',
+    'Factorise ' + m('360') + ' using the tests.',
+    'Find the digit ' + m('d') + ' making ' + m('61d') + ' divisible by ' + m('3') + ', listing every possibility.',
+    'Explain in two sentences why the digit-sum test works for ' + m('9') + '.'
+  ]
+});
