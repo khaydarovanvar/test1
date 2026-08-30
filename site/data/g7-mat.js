@@ -12996,3 +12996,358 @@ G7_MAT.push({
     'Name the congruence criterion that justifies each of the three triangle constructions.'
   ]
 });
+
+/* ============================== 73 ============================== */
+G7_MAT.push({
+  id: 'g7-73', stream: 'mat', grade: 7, quarter: 4, lessons: '135–136', hours: 2,
+  title: 'Practical exercises — the circumference of a circle',
+  subtitle: 'A Cambridge insert: why ' + m('C ÷ d') + ' is the same number for every circle in the world.',
+  uz: 'Matematika 7, amaliy mashqlar', uzPage: 'pp. 401–406',
+  cam: 'S8 8.2', camPage: 'Stage 8, pp. 82–88', wb: 'Exercise 8.2',
+  objectives: [
+    'Measure ' + m('C') + ' and ' + m('d') + ' for several circles and find their ratio.',
+    'Use ' + m('C = πd') + ' and ' + m('C = 2πr') + ' in both directions.',
+    'Find the area of a circle with ' + m('S = πr²') + '.',
+    'Solve practical problems about wheels, tracks and circular edges.'
+  ],
+  terms: [
+    ['Circle', 'Aylana', 'Окружность'],
+    ['Circumference', 'Aylana uzunligi', 'Длина окружности'],
+    ['Diameter', 'Diametr', 'Диаметр'],
+    ['Radius', 'Radius', 'Радиус'],
+    ['Pi', 'Pi soni', 'Число пи'],
+    ['Ratio', 'Nisbat', 'Отношение'],
+    ['Disc', 'Doira', 'Круг'],
+    ['Revolution', 'Aylanish', 'Оборот']
+  ],
+  timing: [[20, 'The measuring experiment'], [20, 'The two formulae'], [20, 'Backwards'], [25, 'Wheels and tracks'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The measuring experiment',
+      html: `<p>Wrap a thread round several round objects, measure the length and the diameter, and divide
+      one by the other.</p>
+      {{fig:circleArea:A circle, its radius and its diameter}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Object</th><th class="m">d</th><th class="m">C</th><th class="m">C ÷ d</th></tr></thead>
+      <tbody>
+        <tr><td>a coin</td><td class="m">2.4 cm</td><td class="m">7.5 cm</td><td class="m">3.13</td></tr>
+        <tr><td>a cup</td><td class="m">8 cm</td><td class="m">25.2 cm</td><td class="m">3.15</td></tr>
+        <tr><td>a bucket</td><td class="m">28 cm</td><td class="m">88 cm</td><td class="m">3.14</td></tr>
+        <tr><td>a wheel</td><td class="m">60 cm</td><td class="m">188 cm</td><td class="m">3.13</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The same number every time</div>
+      Whatever the size, the ratio lands near ${m('3.14')}. That constant is called ${m('π')}, and the
+      small differences in the table are measuring error, not a difference between the circles.</div>`
+    },
+    {
+      h: 'The two formulae',
+      html: `${eq(m('C = πd = 2πr') + '     ' + m('S = πr²'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">r</th><th class="m">d</th><th class="m">C</th><th class="m">S</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5 cm</td><td class="m">10 cm</td><td class="m">31.4 cm</td><td class="m">78.5 cm²</td></tr>
+        <tr><td class="m">7 cm</td><td class="m">14 cm</td><td class="m">44 cm</td><td class="m">154 cm²</td></tr>
+        <tr><td class="m">10 cm</td><td class="m">20 cm</td><td class="m">62.8 cm</td><td class="m">314 cm²</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('C')} uses ${m('r')} once, ${m('S')} uses it twice</span>
+      Doubling the radius doubles the circumference but multiplies the area by ${m('4')}. Using ${m('πd')}
+      for an area, or ${m('πr²')} for a length, is the standard confusion — check the units: ${m('cm')}
+      for a length, ${m('cm²')} for an area.</div>`
+    },
+    {
+      h: 'Backwards',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">C = 62.8 cm</td><td class="m">d = C ÷ π</td><td class="m">d = 20 cm</td></tr>
+        <tr><td class="m">C = 44 cm</td><td class="m">r = C ÷ (2π)</td><td class="m">r = 7 cm</td></tr>
+        <tr><td class="m">S = 78.5 cm²</td><td class="m">r² = S ÷ π</td><td class="m">r = 5 cm</td></tr>
+        <tr><td class="m">S = 314 cm²</td><td class="m">r² = 100</td><td class="m">r = 10 cm</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two useful approximations</div>
+      ${m('π ≈ 3.14')} suits a calculator; ${m('π ≈ ' + f('22', '7'))} suits mental work whenever the
+      radius or diameter is a multiple of ${m('7')} — which is why textbook circles so often have radius
+      ${m('7')} or ${m('14')}.</div>`
+    },
+    {
+      h: 'Wheels and tracks',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Idea</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>a wheel of diameter ${m('70 cm')}: distance in one turn</td><td class="m">C = πd</td><td class="m">≈ 220 cm</td></tr>
+        <tr><td>how many turns in ${m('220 m')}</td><td class="m">22000 ÷ 220</td><td class="m">100</td></tr>
+        <tr><td>a circular pond of radius ${m('14 m')}: the fence</td><td class="m">C = 2πr</td><td class="m">≈ 88 m</td></tr>
+        <tr><td>and the water surface</td><td class="m">S = πr²</td><td class="m">≈ 616 m²</td></tr>
+        <tr><td>a running track of radius ${m('35 m')}: one lap</td><td class="m">C = 2πr</td><td class="m">≈ 220 m</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where ${m('π')} came from</div>
+      Al-Kashi, working in Samarkand in ${m('1424')}, computed ${m('π')} to sixteen decimal places — a
+      record that stood for nearly two centuries. The constant measured with thread in this lesson has a
+      long local history.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A circle has radius ' + m('7 cm') + '. Find its circumference and area, taking ' + m('π = ' + f('22', '7')) + '.',
+      steps: [
+        [m('C = 2πr = 2 · ' + f('22', '7') + ' · 7'), ''],
+        [m('C = 44 cm'), ''],
+        [m('S = πr² = ' + f('22', '7') + ' · 49'), ''],
+        [m('S = 154 cm²'), '']
+      ],
+      ans: m('44 cm') + ' and ' + m('154 cm²')
+    },
+    {
+      q: 'A circle has circumference ' + m('62.8 cm') + '. Find its radius, taking ' + m('π = 3.14') + '.',
+      steps: [
+        [m('C = 2πr'), ''],
+        [m('62.8 = 6.28r'), ''],
+        [m('r = 10 cm'), '']
+      ],
+      ans: m('10 cm')
+    },
+    {
+      q: 'A wheel of diameter ' + m('70 cm') + ' rolls ' + m('220 m') + '. How many turns does it make?',
+      steps: [
+        [m('C = πd = ' + f('22', '7') + ' · 70 = 220 cm'), 'One turn.'],
+        [m('220 m = 22 000 cm'), 'Same units.'],
+        [m('22 000 ÷ 220 = 100'), '']
+      ],
+      ans: m('100') + ' turns'
+    }
+  ],
+  modelNote: 'Do the thread measurement first and tabulate every group’s ratio on the board; the class discovers π rather than being handed it.',
+  interactive: {
+    type: 'quiz',
+    title: 'Length or area?',
+    hint: 'Check the units of the answer.',
+    items: [
+      { q: m('C ÷ d') + ' equals:', a: [m('2'), m('π'), m('2π'), m('r')], c: 1, why: 'For every circle.' },
+      { q: 'The circumference of a circle is:', a: [m('πr²'), m('2πr'), m('πr'), m('4πr')], c: 1, why: 'A length.' },
+      { q: 'The area of a circle is:', a: [m('2πr'), m('πr²'), m('πd'), m('πr')], c: 1, why: 'An area.' },
+      { q: m('r = 7') + ', ' + m('π = ' + f('22', '7')) + ': the circumference is:', a: [m('22'), m('44'), m('154'), m('49')], c: 1, why: m('2πr') + '.' },
+      { q: 'The same circle has area:', a: [m('44'), m('154'), m('308'), m('49')], c: 1, why: m('πr²') + '.' },
+      { q: 'Doubling the radius multiplies the area by:', a: [m('2'), m('3'), m('4'), m('8')], c: 2, why: m('r') + ' appears squared.' },
+      { q: m('C = 62.8') + ' with ' + m('π = 3.14') + ' gives ' + m('r') + ' equal to:', a: [m('5'), m('10'), m('20'), m('31.4')], c: 1, why: m('C ÷ 2π') + '.' },
+      { q: 'An answer in ' + m('cm²') + ' must be:', a: ['a circumference', 'an area', 'a radius', 'a diameter'], c: 1, why: 'Square units.' }
+    ]
+  },
+  quiz: [
+    { q: m('π') + ' is the ratio of:', a: [m('C') + ' to ' + m('r'), m('C') + ' to ' + m('d'), m('S') + ' to ' + m('r'), m('d') + ' to ' + m('r')], c: 1, why: 'The same for all circles.' },
+    { q: m('π') + ' is about:', a: [m('3.41'), m('3.14'), m('2.14'), m('1.34')], c: 1, why: 'Or ' + m(f('22', '7')) + '.' },
+    { q: 'A circle of radius ' + m('5') + ' has circumference about:', a: [m('15.7'), m('31.4'), m('78.5'), m('25')], c: 1, why: m('2πr') + '.' },
+    { q: 'And area about:', a: [m('31.4'), m('78.5'), m('157'), m('25')], c: 1, why: m('πr²') + '.' },
+    { q: 'A wheel of diameter ' + m('70 cm') + ' covers per turn about:', a: [m('70 cm'), m('140 cm'), m('220 cm'), m('440 cm')], c: 2, why: m('πd') + '.' },
+    { q: m('S = 314 cm²') + ' gives ' + m('r') + ' equal to:', a: [m('5'), m('10'), m('20'), m('100')], c: 1, why: m('r² = 100') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('r = 5') + ': the circumference (' + m('π = 3.14') + ')', m('31.4 cm')],
+      [m('r = 5') + ': the area', m('78.5 cm²')],
+      [m('r = 7') + ': the circumference (' + m('π = ' + f('22', '7')) + ')', m('44 cm')],
+      [m('r = 7') + ': the area', m('154 cm²')],
+      [m('d = 20') + ': the circumference', m('62.8 cm')],
+      [m('r = 10') + ': the area', m('314 cm²')],
+      [m('C ÷ d'), m('π')]
+    ],
+    med: [
+      [m('C = 62.8') + ': the radius', m('10 cm')],
+      [m('C = 44') + ': the radius', m('7 cm')],
+      [m('S = 78.5') + ': the radius', m('5 cm')],
+      ['A wheel of diameter ' + m('70 cm') + ': one turn', m('220 cm')],
+      ['How many such turns in ' + m('220 m') + '?', m('100')],
+      ['A pond of radius ' + m('14 m') + ': the fence', m('88 m')],
+      ['And the surface', m('616 m²')]
+    ],
+    hard: [
+      ['Doubling the radius multiplies the area by', m('4')],
+      ['A track of radius ' + m('35 m') + ': one lap', m('220 m')],
+      ['How many laps make ' + m('1100 m') + '?', m('5')],
+      ['A circle of area ' + m('154 cm²') + ': its circumference', m('44 cm')],
+      ['The area of a semicircle of radius ' + m('7'), m('77 cm²')],
+      ['A ring between circles of radii ' + m('7') + ' and ' + m('14') + ': its area', m('462 cm²')],
+      ['Who computed ' + m('π') + ' to sixteen places in Samarkand?', 'Al-Kashi, in ' + m('1424')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the units with every answer: ' + m('cm') + ' for a length, ' + m('cm²') + ' for an area.',
+  homework: [
+    'Find the circumference and area of a circle of radius ' + m('21 cm') + ', taking ' + m('π = ' + f('22', '7')) + '.',
+    'A circle has circumference ' + m('88 cm') + '. Find its radius and area.',
+    'A wheel of diameter ' + m('56 cm') + ' makes ' + m('50') + ' turns. How far does it travel?',
+    'Find the area of a ring between circles of radii ' + m('10 cm') + ' and ' + m('6 cm') + '.',
+    'Measure three round objects at home and tabulate ' + m('C ÷ d') + ' for each.'
+  ]
+});
+
+/* ============================== 74 ============================== */
+G7_MAT.push({
+  id: 'g7-74', stream: 'mat', grade: 7, quarter: 4, lessons: '137–138', hours: 2,
+  title: 'The Cartesian coordinate system',
+  subtitle: 'Two number lines at right angles, and every point of the plane named by an ordered pair.',
+  uz: 'Matematika 7, §59', uzPage: 'pp. 407–414',
+  cam: 'S8 11', camPage: 'Stage 8, pp. 106–116', wb: 'Exercise 11.1',
+  objectives: [
+    'Plot a point from its coordinates and read the coordinates of a plotted point.',
+    'Name the four quadrants and the signs in each.',
+    'Recognise the points of the axes by their coordinates.',
+    'Find lengths and midpoints of segments parallel to an axis.'
+  ],
+  terms: [
+    ['Coordinate plane', 'Koordinata tekisligi', 'Координатная плоскость'],
+    ['Axis', 'O‘q', 'Ось'],
+    ['Origin', 'Koordinata boshi', 'Начало координат'],
+    ['Abscissa', 'Abssissa', 'Абсцисса'],
+    ['Ordinate', 'Ordinata', 'Ордината'],
+    ['Ordered pair', 'Tartiblangan juftlik', 'Упорядоченная пара'],
+    ['Quadrant', 'Chorak', 'Четверть'],
+    ['To plot', 'Belgilamoq', 'Отметить']
+  ],
+  timing: [[15, 'Two axes and one origin'], [20, 'Plotting and reading'], [25, 'The four quadrants'], [20, 'Lengths and midpoints'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Two axes and one origin',
+      html: `<p>Two perpendicular number lines meet at the <b>origin</b> ${m('O(0; 0)')}: the horizontal
+      ${m('Ox')} and the vertical ${m('Oy')}. Every point is then named by an ordered pair.</p>
+      {{fig:coordPoint:A point and its two coordinates}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Name</th><th>Which number</th><th>Read from</th></tr></thead>
+      <tbody>
+        <tr><td>abscissa ${m('x')}</td><td>the first</td><td>the horizontal axis</td></tr>
+        <tr><td>ordinate ${m('y')}</td><td>the second</td><td>the vertical axis</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The order is fixed: along first, then up</span>
+      ${m('A(3; 2)')} and ${m('B(2; 3)')} are different points. “Ordered pair” means exactly this — the
+      pair carries information in its order, not only in its two numbers.</div>`
+    },
+    {
+      h: 'Plotting and reading',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Point</th><th>Go along</th><th>Then</th><th>Where it lands</th></tr></thead>
+      <tbody>
+        <tr><td class="m">A(3; 2)</td><td class="m">3</td><td>up ${m('2')}</td><td>quadrant I</td></tr>
+        <tr><td class="m">B(−4; 1)</td><td>left ${m('4')}</td><td>up ${m('1')}</td><td>quadrant II</td></tr>
+        <tr><td class="m">C(−2; −3)</td><td>left ${m('2')}</td><td>down ${m('3')}</td><td>quadrant III</td></tr>
+        <tr><td class="m">D(5; −1)</td><td class="m">5</td><td>down ${m('1')}</td><td>quadrant IV</td></tr>
+        <tr><td class="m">E(0; 4)</td><td>nowhere</td><td>up ${m('4')}</td><td>on the ${m('y')}-axis</td></tr>
+        <tr><td class="m">F(6; 0)</td><td class="m">6</td><td>nowhere</td><td>on the ${m('x')}-axis</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A zero tells you which axis</div>
+      ${m('x = 0')} puts the point on the vertical axis; ${m('y = 0')} puts it on the horizontal one. Both
+      zero is the origin itself.</div>`
+    },
+    {
+      h: 'The four quadrants',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Quadrant</th><th>Where</th><th class="m">x</th><th class="m">y</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>I</td><td>top right</td><td class="m">+</td><td class="m">+</td><td class="m">(3; 2)</td></tr>
+        <tr><td>II</td><td>top left</td><td class="m">−</td><td class="m">+</td><td class="m">(−4; 1)</td></tr>
+        <tr><td>III</td><td>bottom left</td><td class="m">−</td><td class="m">−</td><td class="m">(−2; −3)</td></tr>
+        <tr><td>IV</td><td>bottom right</td><td class="m">+</td><td class="m">−</td><td class="m">(5; −1)</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">They are numbered anticlockwise</div>
+      Starting at the top right and turning the way a positive angle turns. The numbering is a convention,
+      but it is the same convention worldwide.</div>`
+    },
+    {
+      h: 'Lengths and midpoints',
+      html: `<p>When a segment is parallel to an axis, its length is the difference of the coordinates that
+      change, and its midpoint is their average.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Segment</th><th>Length</th><th>Midpoint</th></tr></thead>
+      <tbody>
+        <tr><td class="m">A(1; 3) to B(7; 3)</td><td class="m">6</td><td class="m">(4; 3)</td></tr>
+        <tr><td class="m">C(2; −1) to D(2; 5)</td><td class="m">6</td><td class="m">(2; 2)</td></tr>
+        <tr><td class="m">E(−3; 4) to F(4; 4)</td><td class="m">7</td><td class="m">(0.5; 4)</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The idea behind the coordinate plane</div>
+      Descartes' insight was that a geometric question — where is the midpoint? — becomes an arithmetic
+      one: take the average. Grade 8 turns every line and circle into an equation on exactly this
+      principle.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'In which quadrant does ' + m('(−2; −3)') + ' lie?',
+      steps: [
+        [m('x') + ' is negative: left of the ' + m('y') + '-axis.', ''],
+        [m('y') + ' is negative: below the ' + m('x') + '-axis.', ''],
+        ['Bottom left — quadrant III.', '']
+      ],
+      ans: 'Quadrant III'
+    },
+    {
+      q: 'Find the length and the midpoint of the segment from ' + m('A(1; 3)') + ' to ' + m('B(7; 3)') + '.',
+      steps: [
+        ['The ordinates are equal, so the segment is horizontal.', ''],
+        ['Length ' + m('= 7 − 1 = 6') + '.', ''],
+        ['Midpoint abscissa ' + m('= ' + f('1 + 7', '2') + ' = 4') + '.', ''],
+        ['Midpoint ' + m('(4; 3)') + '.', '']
+      ],
+      ans: 'Length ' + m('6') + ', midpoint ' + m('(4; 3)')
+    },
+    {
+      q: 'Three vertices of a rectangle are ' + m('(1; 1)') + ', ' + m('(5; 1)') + ' and ' + m('(5; 4)') + '. Find the fourth.',
+      steps: [
+        ['The side from ' + m('(1; 1)') + ' to ' + m('(5; 1)') + ' is horizontal.', ''],
+        ['The side from ' + m('(5; 1)') + ' to ' + m('(5; 4)') + ' is vertical.', ''],
+        ['The fourth vertex is above ' + m('(1; 1)') + ' by ' + m('3') + '.', ''],
+        [m('(1; 4)'), '']
+      ],
+      ans: m('(1; 4)')
+    }
+  ],
+  modelNote: 'Play “battleships” on squared paper for ten minutes with coordinates instead of letters; the order of the pair stops being a rule and becomes a habit.',
+  interactive: {
+    type: 'coordPlane',
+    title: 'Two points, their difference and their midpoint',
+    hint: 'Drag either point and watch the readout.'
+  },
+  quiz: [
+    { q: 'The first number of a pair is the:', a: ['ordinate', 'abscissa', 'origin', 'quadrant'], c: 1, why: 'Read along the ' + m('x') + '-axis.' },
+    { q: m('(3; 2)') + ' and ' + m('(2; 3)') + ' are:', a: ['the same point', 'different points', 'both on an axis', 'both in quadrant II'], c: 1, why: 'The pair is ordered.' },
+    { q: m('(−4; 1)') + ' lies in quadrant:', a: ['I', 'II', 'III', 'IV'], c: 1, why: m('x < 0, y > 0') + '.' },
+    { q: m('(5; −1)') + ' lies in quadrant:', a: ['I', 'II', 'III', 'IV'], c: 3, why: m('x > 0, y < 0') + '.' },
+    { q: m('(0; 4)') + ' lies:', a: ['in quadrant I', 'on the ' + m('y') + '-axis', 'on the ' + m('x') + '-axis', 'at the origin'], c: 1, why: m('x = 0') + '.' },
+    { q: 'The midpoint of ' + m('(1; 3)') + ' and ' + m('(7; 3)') + ' is:', a: [m('(4; 3)'), m('(3; 3)'), m('(8; 6)'), m('(4; 6)')], c: 0, why: 'Average the abscissas.' }
+  ],
+  practice: {
+    easy: [
+      ['The quadrant of ' + m('(3; 2)'), 'I'],
+      ['The quadrant of ' + m('(−4; 1)'), 'II'],
+      ['The quadrant of ' + m('(−2; −3)'), 'III'],
+      ['The quadrant of ' + m('(5; −1)'), 'IV'],
+      ['Where is ' + m('(0; 4)') + '?', 'On the ' + m('y') + '-axis'],
+      ['Where is ' + m('(6; 0)') + '?', 'On the ' + m('x') + '-axis'],
+      ['The coordinates of the origin', m('(0; 0)')]
+    ],
+    med: [
+      ['Length of ' + m('A(1; 3)') + ' to ' + m('B(7; 3)'), m('6')],
+      ['Its midpoint', m('(4; 3)')],
+      ['Length of ' + m('C(2; −1)') + ' to ' + m('D(2; 5)'), m('6')],
+      ['Its midpoint', m('(2; 2)')],
+      ['The fourth vertex of a rectangle on ' + m('(1; 1), (5; 1), (5; 4)'), m('(1; 4)')],
+      ['The reflection of ' + m('(3; 2)') + ' in the ' + m('x') + '-axis', m('(3; −2)')],
+      ['The reflection of ' + m('(3; 2)') + ' in the ' + m('y') + '-axis', m('(−3; 2)')]
+    ],
+    hard: [
+      ['The area of the rectangle with vertices ' + m('(1; 1), (5; 1), (5; 4), (1; 4)'), m('12')],
+      ['Its perimeter', m('14')],
+      ['All points with ' + m('y = 3') + ' form', 'a horizontal line'],
+      ['All points with ' + m('x = −2') + ' form', 'a vertical line'],
+      ['All points with ' + m('x = y') + ' form', 'the line through the origin bisecting quadrants I and III'],
+      ['The midpoint of ' + m('(−3; 4)') + ' and ' + m('(4; 4)'), m('(0.5; 4)')],
+      ['A point equidistant from both axes in quadrant III', 'e.g. ' + m('(−2; −2)')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Along first, then up — and label every point you plot.',
+  homework: [
+    'Plot ' + m('A(2; 5)') + ', ' + m('B(−3; 4)') + ', ' + m('C(−1; −2)') + ' and ' + m('D(4; −3)') + ', and name each quadrant.',
+    'Find the length and midpoint of the segment from ' + m('(−2; 3)') + ' to ' + m('(6; 3)') + '.',
+    'Three vertices of a rectangle are ' + m('(2; 1)') + ', ' + m('(8; 1)') + ' and ' + m('(8; 5)') + '. Find the fourth and the area.',
+    'Where do all the points with ' + m('y = −4') + ' lie?',
+    'Reflect ' + m('(−5; 2)') + ' in each axis and give both images.'
+  ]
+});
