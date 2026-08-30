@@ -9887,3 +9887,189 @@ G6_MAT.push({
     'Draw two congruent shapes in different positions and say which movement takes one to the other.'
   ]
 });
+
+/* ============================== 56 ============================== */
+G6_MAT.push({
+  id: 'g6-56', stream: 'mat', grade: 6, quarter: 3, lessons: '116', hours: 1,
+  title: 'Recall — speed, distance and time',
+  subtitle: 'One formula, three arrangements, and the units that keep them honest.',
+  uz: 'Matematika 6, takrorlash', uzPage: 'pp. 335–338',
+  cam: 'S7 12 rates', camPage: 'Stage 7, pp. 122–126', wb: 'Exercise 12.4',
+  objectives: [
+    'State the relation between speed, distance and time.',
+    'Rearrange it to find any one of the three.',
+    'Use consistent units.',
+    'Convert between ' + m('km/h') + ' and ' + m('m/s') + '.'
+  ],
+  terms: [
+    ['Speed', 'Tezlik', 'Скорость'],
+    ['Distance', 'Masofa', 'Расстояние'],
+    ['Time', 'Vaqt', 'Время'],
+    ['Kilometres per hour', 'km/soat', 'км/ч'],
+    ['Metres per second', 'm/sek', 'м/с'],
+    ['To rearrange', 'O‘zgartirib yozish', 'Выразить'],
+    ['Consistent units', 'Mos birliklar', 'Согласованные единицы'],
+    ['Rate', 'Tezlik (me’yor)', 'Норма']
+  ],
+  timing: [[10, 'The formula'], [12, 'Rearranging'], [12, 'Units'], [6, 'Converting']],
+  sections: [
+    {
+      h: 'The formula',
+      html: `${eq(m('s = vt'), true)}
+      <p>Distance equals speed times time — because a speed of ${m('60')} km/h means ${m('60')} km covered
+      in each hour.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Speed</th><th>Time</th><th>Distance</th></tr></thead>
+      <tbody>
+        <tr><td class="m">60 km/h</td><td class="m">3 h</td><td class="m">180 km</td></tr>
+        <tr><td class="m">80 km/h</td><td class="m">2.5 h</td><td class="m">200 km</td></tr>
+        <tr><td class="m">5 m/s</td><td class="m">12 s</td><td class="m">60 m</td></tr>
+        <tr><td class="m">4 km/h</td><td class="m">45 min</td><td class="m">3 km</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The last row needs the time in hours</span>
+      ${m('45')} minutes is ${m('0.75')} h, and ${m('4 · 0.75 = 3')} km. Using ${m('45')} with a speed in
+      km/h gives ${m('180')} km, which is absurd — and the absurdity is the check.</div>`
+    },
+    {
+      h: 'Rearranging',
+      html: `${eq(m('s = vt') + '     ' + m('v = ' + f('s', 't')) + '     ' + m('t = ' + f('s', 'v')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Wanted</th><th>Given</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>distance</td><td class="m">v = 60, t = 3</td><td class="m">60 · 3</td><td class="m">180 km</td></tr>
+        <tr><td>speed</td><td class="m">s = 180, t = 3</td><td class="m">180 ÷ 3</td><td class="m">60 km/h</td></tr>
+        <tr><td>time</td><td class="m">s = 180, v = 60</td><td class="m">180 ÷ 60</td><td class="m">3 h</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One formula, not three</div>
+      ${m('s = vt')} is all that has to be remembered; the other two are it rearranged. Writing the one you
+      know and rearranging is safer than memorising a triangle.</div>`
+    },
+    {
+      h: 'Units',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Speed in</th><th>Distance in</th><th>Time in</th></tr></thead>
+      <tbody>
+        <tr><td class="m">km/h</td><td class="m">km</td><td>hours</td></tr>
+        <tr><td class="m">m/s</td><td class="m">m</td><td>seconds</td></tr>
+        <tr><td class="m">m/min</td><td class="m">m</td><td>minutes</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Time given</th><th>In hours</th></tr></thead>
+      <tbody>
+        <tr><td class="m">30 min</td><td class="m">0.5</td></tr>
+        <tr><td class="m">45 min</td><td class="m">0.75</td></tr>
+        <tr><td class="m">20 min</td><td class="m">${f('1', '3')}</td></tr>
+        <tr><td class="m">1 h 30 min</td><td class="m">1.5</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The units of the answer are built from the others</div>
+      Kilometres divided by hours gives km/h automatically. Writing the units through the calculation makes
+      the answer's unit appear by itself.</div>`
+    },
+    {
+      h: 'Converting',
+      html: `${eq(m('1 km/h = ' + f('1000', '3600') + ' m/s = ' + f('5', '18') + ' m/s'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">km/h</th><th class="m">m/s</th></tr></thead>
+      <tbody>
+        <tr><td class="m">36</td><td class="m">10</td></tr>
+        <tr><td class="m">72</td><td class="m">20</td></tr>
+        <tr><td class="m">18</td><td class="m">5</td></tr>
+        <tr><td class="m">90</td><td class="m">25</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Divide by ${m('3.6')} to go from km/h to m/s</div>
+      And multiply by ${m('3.6')} to come back. A sprinter at ${m('10')} m/s is running at ${m('36')} km/h,
+      which is a useful pair of numbers to remember.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A car travels at ' + m('80 km/h') + ' for ' + m('2.5') + ' hours. How far does it go?',
+      steps: [
+        [m('s = vt'), ''],
+        [m('= 80 · 2.5'), ''],
+        [m('= 200') + ' km.', '']
+      ],
+      ans: m('200 km')
+    },
+    {
+      q: 'A cyclist covers ' + m('3 km') + ' in ' + m('45') + ' minutes. Find the speed in km/h.',
+      steps: [
+        [m('45') + ' min ' + m('= 0.75') + ' h.', 'Convert first.'],
+        [m('v = ' + f('3', '0.75')), ''],
+        [m('= 4') + ' km/h.', '']
+      ],
+      ans: m('4 km/h')
+    },
+    {
+      q: 'Convert ' + m('72 km/h') + ' to metres per second.',
+      steps: [
+        [m('72 ÷ 3.6'), ''],
+        [m('= 20') + ' m/s.', ''],
+        ['Check: ' + m('20 · 3.6 = 72') + ' ✓', '']
+      ],
+      ans: m('20 m/s')
+    }
+  ],
+  modelNote: 'Time a pupil walking a measured 20 m and compute the speed in both units; the numbers are their own and the units matter immediately.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which of the three is wanted?',
+    hint: 'Write ' + m('s = vt') + ' and rearrange.',
+    items: [
+      { q: m('v = 60') + ', ' + m('t = 3') + ': the distance is:', a: [m('20'), m('63'), m('180'), m('180 km')], c: 3, why: 'With units.' },
+      { q: m('s = 180') + ', ' + m('t = 3') + ': the speed is:', a: [m('540'), m('60 km/h'), m('60 km'), m('3')], c: 1, why: m('s ÷ t') + '.' },
+      { q: m('s = 180') + ', ' + m('v = 60') + ': the time is:', a: [m('3 h'), m('120'), m('240'), m('0.33')], c: 0, why: m('s ÷ v') + '.' },
+      { q: m('45') + ' minutes in hours:', a: [m('0.45'), m('0.75'), m('4.5'), m('45')], c: 1, why: m(f('45', '60')) + '.' },
+      { q: m('20') + ' minutes in hours:', a: [m('0.2'), m(f('1', '3')), m('0.5'), m('2')], c: 1, why: m(f('20', '60')) + '.' },
+      { q: m('36') + ' km/h in m/s:', a: [m('10'), m('36'), m('100'), m('3.6')], c: 0, why: 'Divide by ' + m('3.6') + '.' },
+      { q: m('20') + ' m/s in km/h:', a: [m('36'), m('72'), m('60'), m('7.2')], c: 1, why: 'Multiply by ' + m('3.6') + '.' },
+      { q: 'Using minutes with a speed in km/h gives:', a: ['the right answer', 'an absurd answer', 'metres', 'nothing'], c: 1, why: 'Convert to hours first.' }
+    ]
+  },
+  quiz: [
+    { q: m('s') + ' equals:', a: [m('vt'), m(f('v', 't')), m(f('t', 'v')), m('v + t')], c: 0, why: 'Speed times time.' },
+    { q: m('v') + ' equals:', a: [m('st'), m(f('s', 't')), m(f('t', 's')), m('s − t')], c: 1, why: 'Distance over time.' },
+    { q: m('t') + ' equals:', a: [m('sv'), m(f('v', 's')), m(f('s', 'v')), m('s + v')], c: 2, why: 'Distance over speed.' },
+    { q: 'With a speed in km/h, the time must be in:', a: ['minutes', 'hours', 'seconds', 'any unit'], c: 1, why: 'Consistent units.' },
+    { q: m('72') + ' km/h in m/s is:', a: [m('20'), m('26'), m('7.2'), m('259')], c: 0, why: 'Divide by ' + m('3.6') + '.' },
+    { q: 'A sprinter at ' + m('10') + ' m/s runs at:', a: [m('10') + ' km/h', m('36') + ' km/h', m('60') + ' km/h', m('3.6') + ' km/h'], c: 1, why: 'Multiply by ' + m('3.6') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('v = 60, t = 3') + ': the distance', m('180 km')],
+      [m('v = 80, t = 2.5'), m('200 km')],
+      [m('v = 5') + ' m/s, ' + m('t = 12') + ' s', m('60 m')],
+      [m('s = 180, t = 3') + ': the speed', m('60 km/h')],
+      [m('s = 180, v = 60') + ': the time', m('3 h')],
+      [m('30') + ' min in hours', m('0.5')],
+      [m('45') + ' min in hours', m('0.75')]
+    ],
+    med: [
+      [m('3') + ' km in ' + m('45') + ' min: the speed', m('4 km/h')],
+      [m('36') + ' km/h in m/s', m('10')],
+      [m('72') + ' km/h in m/s', m('20')],
+      [m('25') + ' m/s in km/h', m('90')],
+      [m('v = 4') + ' km/h, ' + m('t = 45') + ' min', m('3 km')],
+      [m('s = 150') + ' km, ' + m('v = 60') + ' km/h', m('2.5 h')],
+      [m('20') + ' min in hours', m(f('1', '3'))]
+    ],
+    hard: [
+      ['A train covers ' + m('210') + ' km in ' + m('2 h 30 min'), m('84 km/h')],
+      ['A walker at ' + m('5') + ' km/h covers ' + m('4') + ' km in', m('48') + ' min'],
+      ['A runner at ' + m('8') + ' m/s in ' + m('90') + ' s', m('720 m')],
+      ['Convert ' + m('54') + ' km/h to m/s', m('15')],
+      ['Convert ' + m('12') + ' m/s to km/h', m('43.2')],
+      ['A car at ' + m('90') + ' km/h covers ' + m('1') + ' km in', m('40') + ' s'],
+      ['Why must units match?', 'The formula divides one by the other, so they must belong together']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Convert the time to hours before using a speed in km/h.',
+  homework: [
+    'A bus travels at ' + m('70') + ' km/h for ' + m('4') + ' hours. Find the distance.',
+    'A car covers ' + m('240') + ' km in ' + m('3') + ' hours. Find its speed.',
+    'How long does ' + m('150') + ' km take at ' + m('50') + ' km/h?',
+    'A cyclist covers ' + m('9') + ' km in ' + m('40') + ' minutes. Find the speed in km/h.',
+    'Convert ' + m('108') + ' km/h to m/s and ' + m('15') + ' m/s to km/h.'
+  ]
+});
