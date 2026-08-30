@@ -3208,3 +3208,692 @@ G7_MAT.push({
     'Solve ' + m('|x| = 12') + ' and find the mean of ' + m('−7, 2, −4, 9') + '.'
   ]
 });
+
+/* ============================== 19 ============================== */
+G7_MAT.push({
+  id: 'g7-19', stream: 'mat', grade: 7, quarter: 1, lessons: '37–38', hours: 2,
+  title: 'The idea of the rational numbers',
+  subtitle: 'Every fraction, positive or negative — the set in which all four operations work.',
+  uz: 'Matematika 7, §15', uzPage: 'pp. 95–100',
+  cam: 'S8 7.1', camPage: 'Stage 8, pp. 66–72', wb: 'Exercise 7.1',
+  objectives: [
+    'Define a rational number and use the symbol ℚ.',
+    'Write an integer, a decimal and a mixed number as a fraction.',
+    'Convert between fractions and decimals, including recurring ones.',
+    'Place rational numbers on the coordinate line.'
+  ],
+  terms: [
+    ['Rational number', 'Ratsional son', 'Рациональное число'],
+    ['Fraction', 'Kasr', 'Дробь'],
+    ['Numerator', 'Surat', 'Числитель'],
+    ['Denominator', 'Maxraj', 'Знаменатель'],
+    ['Terminating decimal', 'Chekli o‘nli kasr', 'Конечная десятичная дробь'],
+    ['Recurring decimal', 'Davriy o‘nli kasr', 'Периодическая дробь'],
+    ['Mixed number', 'Aralash son', 'Смешанное число'],
+    ['Equivalent fractions', 'Teng kasrlar', 'Равные дроби']
+  ],
+  timing: [[15, 'The definition'], [25, 'Everything is a fraction'], [25, 'Fractions and decimals'], [20, 'On the line'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The definition',
+      html: `${eq('A number is rational if it can be written as ' + m(f('p', 'q')) + ' with ' + m('p, q ∈ ℤ') + ' and ' + m('q ≠ 0'), true)}
+      <p>The set of them is ${m('ℚ')}. It contains every integer, every fraction, every terminating
+      decimal and every recurring decimal — positive and negative alike.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Operation</th><th class="m">ℕ</th><th class="m">ℤ</th><th class="m">ℚ</th></tr></thead>
+      <tbody>
+        <tr><td>addition</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>subtraction</td><td>✗</td><td>✓</td><td>✓</td></tr>
+        <tr><td>multiplication</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>division (not by ${m('0')})</td><td>✗</td><td>✗</td><td>✓</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">${m('ℚ')} is the first set in which all four operations work</div>
+      That is the whole reason for the chapter. Grade 8 will find that ${m(sr('2'))} is <b>not</b>
+      rational, and the system will have to grow once more.</div>`
+    },
+    {
+      h: 'Everything is a fraction',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Number</th><th>As ${m(f('p', 'q'))}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">7</td><td class="m">${f('7', '1')}</td></tr>
+        <tr><td class="m">−4</td><td class="m">${f('−4', '1')}</td></tr>
+        <tr><td class="m">0.75</td><td class="m">${f('3', '4')}</td></tr>
+        <tr><td class="m">2${f('1', '3')}</td><td class="m">${f('7', '3')}</td></tr>
+        <tr><td class="m">−1.6</td><td class="m">−${f('8', '5')}</td></tr>
+        <tr><td class="m">0</td><td class="m">${f('0', '1')}</td></tr>
+      </tbody></table></div>
+      <p>A fraction may be written in many equivalent ways: ${m(f('3', '4') + ' = ' + f('6', '8') + ' = ' + f('75', '100'))}.
+      The <b>simplest form</b> has no common factor above ${m('1')} in numerator and denominator.</p>
+      <div class="warn"><span class="wl">The denominator may never be zero</span>
+      ${m(f('5', '0'))} is not a rational number; it is not a number at all. The condition ${m('q ≠ 0')}
+      is part of the definition, not an afterthought.</div>`
+    },
+    {
+      h: 'Fractions and decimals',
+      html: `<p>Divide the numerator by the denominator. The result is either terminating or
+      recurring — never anything else.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Fraction</th><th>Decimal</th><th>Kind</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('3', '4')}</td><td class="m">0.75</td><td>terminating</td></tr>
+        <tr><td class="m">${f('1', '8')}</td><td class="m">0.125</td><td>terminating</td></tr>
+        <tr><td class="m">${f('1', '3')}</td><td class="m">0.333…</td><td>recurring</td></tr>
+        <tr><td class="m">${f('2', '11')}</td><td class="m">0.1818…</td><td>recurring</td></tr>
+        <tr><td class="m">${f('5', '6')}</td><td class="m">0.8333…</td><td>recurring</td></tr>
+      </tbody></table></div>
+      <p>A fraction in simplest form terminates exactly when its denominator has no prime factors other
+      than ${m('2')} and ${m('5')} — because ${m('10 = 2 × 5')}.</p>
+      <div class="keybox"><div class="klabel">Rational ⟺ terminating or recurring</div>
+      A decimal that neither stops nor repeats — such as ${m('0.101001000100001…')} — is not rational.
+      Grade 8 will meet a famous one: ${m(sr('2'))}.</div>`
+    },
+    {
+      h: 'On the line',
+      html: `<p>Every rational number has a place. To mark ${m(f('3', '4'))}, divide the unit into
+      ${m('4')} parts and take ${m('3')}; to mark ${m('−' + f('3', '4'))}, do the same to the left.</p>
+      {{fig:numberLineInterval:Dividing the unit segment places any fraction exactly.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Number</th><th>Lies between</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('3', '4')}</td><td class="m">0 and 1</td></tr>
+        <tr><td class="m">−${f('3', '4')}</td><td class="m">−1 and 0</td></tr>
+        <tr><td class="m">${f('7', '3')}</td><td class="m">2 and 3</td></tr>
+        <tr><td class="m">−${f('7', '3')}</td><td class="m">−3 and −2</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Between any two rationals there is another</div>
+      Their average. So the rationals leave no gaps a ruler can see — and yet Grade 8 will show that
+      gaps remain.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Write ' + m('7') + ', ' + m('−1.6') + ' and ' + m('2' + f('1', '3')) + ' as fractions ' + m(f('p', 'q')) + '.',
+      steps: [
+        [m('7 = ' + f('7', '1')), 'Every integer is a fraction.'],
+        [m('−1.6 = −' + f('16', '10') + ' = −' + f('8', '5')), 'Simplify.'],
+        [m('2' + f('1', '3') + ' = ' + f('6 + 1', '3')), ''],
+        [m('= ' + f('7', '3')), '']
+      ],
+      ans: m(f('7', '1') + ', −' + f('8', '5') + ', ' + f('7', '3'))
+    },
+    {
+      q: 'Convert ' + m(f('3', '8')) + ' and ' + m(f('5', '6')) + ' to decimals, and say which recurs.',
+      steps: [
+        [m('3 ÷ 8 = 0.375'), 'Terminating.'],
+        [m('8 = 2³') + ' — only twos.', ''],
+        [m('5 ÷ 6 = 0.8333…'), 'Recurring.'],
+        [m('6 = 2 × 3') + ' — the ' + m('3') + ' causes it.', '']
+      ],
+      ans: m('0.375') + ' and ' + m('0.8333…')
+    },
+    {
+      q: 'Between which two integers does ' + m('−' + f('7', '3')) + ' lie?',
+      steps: [
+        [m(f('7', '3') + ' = 2' + f('1', '3')), ''],
+        ['So ' + m('−' + f('7', '3') + ' = −2' + f('1', '3')) + '.', ''],
+        ['That is further left than ' + m('−2') + '.', ''],
+        ['Between ' + m('−3') + ' and ' + m('−2') + '.', '']
+      ],
+      ans: m('−3') + ' and ' + m('−2')
+    }
+  ],
+  modelNote: 'Ask for a number between 0.33 and 0.34, then between that and 0.34; the class discovers that the process never ends, which is what “dense” means.',
+  interactive: {
+    type: 'fractionCancel',
+    title: 'Fractions and their simplest form',
+    hint: 'Cancel the common factors.'
+  },
+  quiz: [
+    { q: 'A rational number is:', a: ['any decimal', m(f('p', 'q')) + ' with integers, ' + m('q ≠ 0'), 'an integer', 'a fraction below ' + m('1')], c: 1, why: 'The definition.' },
+    { q: 'Is ' + m('7') + ' rational?', a: ['yes', 'no', 'sometimes', 'undefined'], c: 0, why: m(f('7', '1')) + '.' },
+    { q: m('ℚ') + ' is closed under:', a: ['addition only', 'all four operations (not ÷0)', 'subtraction only', 'none'], c: 1, why: 'That is why it exists.' },
+    { q: m(f('3', '8')) + ' as a decimal:', a: [m('0.38'), m('0.375'), m('0.83'), m('0.125')], c: 1, why: m('3 ÷ 8') + '.' },
+    { q: 'A fraction terminates when its denominator has only:', a: [m('2') + ' and ' + m('3'), m('2') + ' and ' + m('5'), m('3') + ' and ' + m('5'), 'primes'], c: 1, why: m('10 = 2 × 5') + '.' },
+    { q: m('−' + f('7', '3')) + ' lies between:', a: [m('−2') + ' and ' + m('−1'), m('−3') + ' and ' + m('−2'), m('2') + ' and ' + m('3'), m('−1') + ' and ' + m('0')], c: 1, why: m('−2' + f('1', '3')) + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('7') + ' as a fraction', m(f('7', '1'))],
+      [m('−4') + ' as a fraction', m('−' + f('4', '1'))],
+      [m('0.75') + ' as a fraction', m(f('3', '4'))],
+      [m('2' + f('1', '3')) + ' as a fraction', m(f('7', '3'))],
+      [m(f('1', '4')) + ' as a decimal', m('0.25')],
+      [m(f('1', '3')) + ' as a decimal', m('0.333…')],
+      ['Is ' + m(f('5', '0')) + ' a number?', 'No']
+    ],
+    med: [
+      [m('−1.6') + ' as a fraction', m('−' + f('8', '5'))],
+      [m(f('3', '8')) + ' as a decimal', m('0.375')],
+      [m(f('5', '6')) + ' as a decimal', m('0.8333…')],
+      [m(f('2', '11')) + ' as a decimal', m('0.1818…')],
+      ['Does ' + m(f('7', '20')) + ' terminate?', 'Yes'],
+      ['Does ' + m(f('7', '30')) + ' terminate?', 'No'],
+      [m('−' + f('7', '3')) + ' lies between', m('−3') + ' and ' + m('−2')]
+    ],
+    hard: [
+      ['Simplify ' + m(f('84', '126')), m(f('2', '3'))],
+      [m('0.375') + ' as a fraction in lowest terms', m(f('3', '8'))],
+      ['A number between ' + m(f('1', '3')) + ' and ' + m(f('1', '2')), m(f('5', '12'))],
+      ['Order ' + m(f('2', '3') + ', ' + f('3', '5') + ', ' + f('5', '8')), m(f('3', '5') + ' < ' + f('5', '8') + ' < ' + f('2', '3'))],
+      ['Which of ' + m(f('1', '6') + ', ' + f('3', '16') + ', ' + f('9', '25')) + ' terminate?', m(f('3', '16')) + ' and ' + m(f('9', '25'))],
+      ['Is every integer rational?', 'Yes'],
+      ['Is every rational an integer?', 'No']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Give every fraction in its simplest form.',
+  homework: [
+    'Write ' + m('9') + ', ' + m('−2.4') + ' and ' + m('3' + f('2', '5')) + ' as fractions.',
+    'Convert ' + m(f('5', '8')) + ', ' + m(f('4', '9')) + ' and ' + m(f('7', '20')) + ' to decimals.',
+    'Say which of them terminate, and why.',
+    'Simplify ' + m(f('72', '108')) + '.',
+    'Find a rational number between ' + m(f('2', '5')) + ' and ' + m(f('1', '2')) + '.'
+  ]
+});
+
+/* ============================== 20 ============================== */
+G7_MAT.push({
+  id: 'g7-20', stream: 'mat', grade: 7, quarter: 1, lessons: '39–40', hours: 2,
+  title: 'Addition of rational numbers',
+  subtitle: 'A common denominator, then the integer sign rules — nothing else is new.',
+  uz: 'Matematika 7, §16', uzPage: 'pp. 101–107',
+  cam: 'S8 7.2', camPage: 'Stage 8, pp. 70–76', wb: 'Exercise 7.2',
+  objectives: [
+    'Add fractions with the same and with different denominators.',
+    'Add positive and negative fractions using the sign rules.',
+    'Add mixed numbers and decimals.',
+    'Use the commutative and associative laws to simplify a sum.'
+  ],
+  terms: [
+    ['Common denominator', 'Umumiy maxraj', 'Общий знаменатель'],
+    ['Lowest common denominator', 'Eng kichik umumiy maxraj', 'Наименьший общий знаменатель'],
+    ['To simplify', 'Qisqartirish', 'Сократить'],
+    ['Mixed number', 'Aralash son', 'Смешанное число'],
+    ['Improper fraction', 'Noto‘g‘ri kasr', 'Неправильная дробь'],
+    ['Sum', 'Yig‘indi', 'Сумма'],
+    ['Like denominators', 'Bir xil maxrajlar', 'Одинаковые знаменатели'],
+    ['LCM', 'EKUK', 'НОК']
+  ],
+  timing: [[15, 'Same denominator'], [25, 'Different denominators'], [25, 'With signs'], [20, 'Mixed numbers'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Same denominator',
+      html: `${eq(m(f('a', 'c') + ' + ' + f('b', 'c') + ' = ' + f('a + b', 'c')), true)}
+      <p>Add the numerators and keep the denominator; then simplify.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sum</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('2', '7')} + ${f('3', '7')}</td><td class="m">${f('5', '7')}</td><td class="m">${f('5', '7')}</td></tr>
+        <tr><td class="m">${f('3', '8')} + ${f('1', '8')}</td><td class="m">${f('4', '8')}</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td class="m">−${f('5', '9')} + ${f('2', '9')}</td><td class="m">${f('−3', '9')}</td><td class="m">−${f('1', '3')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Denominators are not added</span>
+      ${m(f('2', '7') + ' + ' + f('3', '7'))} is ${m(f('5', '7'))}, not ${m(f('5', '14'))}. Thinking of
+      sevenths as a unit — two sevenths plus three sevenths — makes the rule obvious.</div>`
+    },
+    {
+      h: 'Different denominators',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>What to do</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>find the LCM of the denominators</td></tr>
+        <tr><td>2</td><td>rewrite each fraction with that denominator</td></tr>
+        <tr><td>3</td><td>add the numerators</td></tr>
+        <tr><td>4</td><td>simplify</td></tr>
+      </tbody></table></div>
+      <p><b>Example.</b> ${m(f('3', '4') + ' + ' + f('5', '6'))}. LCM of ${m('4')} and ${m('6')} is
+      ${m('12')}:</p>
+      ${eq(m(f('9', '12') + ' + ' + f('10', '12') + ' = ' + f('19', '12') + ' = 1' + f('7', '12')), true)}
+      <div class="keybox"><div class="klabel">Use the LCM, not the product</div>
+      ${m('4 × 6 = 24')} also works, but leaves ${m(f('38', '24'))} to simplify. The LCM gives the
+      shortest route and the least cancelling.</div>`
+    },
+    {
+      h: 'With signs',
+      html: `<p>Once the denominators agree, the numerators are added exactly as integers were in the
+      last chapter.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sum</th><th>Common denominator</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">−${f('1', '2')} + ${f('1', '3')}</td><td class="m">−${f('3', '6')} + ${f('2', '6')}</td><td class="m">−${f('1', '6')}</td></tr>
+        <tr><td class="m">−${f('3', '4')} + (−${f('1', '6')})</td><td class="m">−${f('9', '12')} − ${f('2', '12')}</td><td class="m">−${f('11', '12')}</td></tr>
+        <tr><td class="m">${f('5', '8')} + (−${f('5', '8')})</td><td class="m">${f('0', '8')}</td><td class="m">0</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two chapters, one calculation</div>
+      Chapter II supplied the sign rules; this chapter supplies the common denominator. Every question
+      here is one of each, done in that order.</div>`
+    },
+    {
+      h: 'Mixed numbers',
+      html: `<p>Two routes: convert to improper fractions, or add whole parts and fractional parts
+      separately.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sum</th><th>Route A</th><th>Route B</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2${f('1', '3')} + 1${f('1', '2')}</td><td class="m">${f('7', '3')} + ${f('3', '2')} = ${f('23', '6')}</td><td class="m">3 + ${f('5', '6')}</td></tr>
+      </tbody></table></div>
+      <p>Both give ${m('3' + f('5', '6'))}. Route B is quicker when the whole parts are large; Route A is
+      safer when signs are involved.</p>
+      <div class="warn"><span class="wl">With negative mixed numbers, convert first</span>
+      ${m('−2' + f('1', '3'))} means ${m('−(2 + ' + f('1', '3') + ') = −' + f('7', '3'))}, not
+      ${m('−2 + ' + f('1', '3'))}. Route A removes the ambiguity entirely.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compute ' + m(f('3', '4') + ' + ' + f('5', '6')) + '.',
+      steps: [
+        ['LCM of ' + m('4') + ' and ' + m('6') + ' is ' + m('12') + '.', ''],
+        [m(f('9', '12') + ' + ' + f('10', '12')), ''],
+        [m('= ' + f('19', '12')), ''],
+        [m('= 1' + f('7', '12')), '']
+      ],
+      ans: m('1' + f('7', '12'))
+    },
+    {
+      q: 'Compute ' + m('−' + f('1', '2') + ' + ' + f('1', '3')) + ' and ' + m('−' + f('3', '4') + ' + (−' + f('1', '6') + ')') + '.',
+      steps: [
+        [m('−' + f('3', '6') + ' + ' + f('2', '6') + ' = −' + f('1', '6')), 'Different signs.'],
+        ['LCM of ' + m('4') + ' and ' + m('6') + ' is ' + m('12') + '.', ''],
+        [m('−' + f('9', '12') + ' − ' + f('2', '12')), 'Same signs.'],
+        [m('= −' + f('11', '12')), '']
+      ],
+      ans: m('−' + f('1', '6')) + ' and ' + m('−' + f('11', '12'))
+    },
+    {
+      q: 'Compute ' + m('2' + f('1', '3') + ' + 1' + f('1', '2')) + '.',
+      steps: [
+        ['Whole parts: ' + m('2 + 1 = 3') + '.', 'Route B.'],
+        ['Fractions: ' + m(f('2', '6') + ' + ' + f('3', '6') + ' = ' + f('5', '6')), ''],
+        [m('3 + ' + f('5', '6')), ''],
+        [m('= 3' + f('5', '6')), '']
+      ],
+      ans: m('3' + f('5', '6'))
+    }
+  ],
+  modelNote: 'Cut two paper strips into quarters and sixths; the class sees that twelfths are the smallest pieces both can be made from, and the LCM stops being a rule.',
+  interactive: {
+    type: 'lcdBuilder',
+    title: 'Finding the common denominator',
+    hint: 'The LCM gives the least work.'
+  },
+  quiz: [
+    { q: m(f('2', '7') + ' + ' + f('3', '7')) + ' equals:', a: [m(f('5', '14')), m(f('5', '7')), m(f('6', '7')), m(f('6', '49'))], c: 1, why: 'Keep the denominator.' },
+    { q: 'For different denominators, first find:', a: ['the product', 'the LCM', 'the HCF', 'the sum'], c: 1, why: 'It gives the least work.' },
+    { q: m(f('3', '4') + ' + ' + f('5', '6')) + ' equals:', a: [m(f('8', '10')), m('1' + f('7', '12')), m(f('19', '24')), m('2')], c: 1, why: 'Twelfths.' },
+    { q: m('−' + f('1', '2') + ' + ' + f('1', '3')) + ' equals:', a: [m(f('1', '6')), m('−' + f('1', '6')), m('−' + f('5', '6')), m(f('5', '6'))], c: 1, why: 'The half is bigger.' },
+    { q: m('−2' + f('1', '3')) + ' as an improper fraction:', a: [m('−' + f('7', '3')), m('−' + f('5', '3')), m(f('7', '3')), m('−' + f('1', '3'))], c: 0, why: 'The minus covers both parts.' },
+    { q: m(f('5', '8') + ' + (−' + f('5', '8') + ')') + ' equals:', a: [m(f('10', '8')), m('0'), m(f('5', '4')), m('−' + f('5', '8'))], c: 1, why: 'Opposites.' }
+  ],
+  practice: {
+    easy: [
+      [m(f('2', '7') + ' + ' + f('3', '7')), m(f('5', '7'))],
+      [m(f('3', '8') + ' + ' + f('1', '8')), m(f('1', '2'))],
+      [m(f('1', '2') + ' + ' + f('1', '4')), m(f('3', '4'))],
+      [m(f('1', '3') + ' + ' + f('1', '6')), m(f('1', '2'))],
+      [m('−' + f('5', '9') + ' + ' + f('2', '9')), m('−' + f('1', '3'))],
+      [m(f('5', '8') + ' + (−' + f('5', '8') + ')'), m('0')],
+      [m('0.4 + 0.35'), m('0.75')]
+    ],
+    med: [
+      [m(f('3', '4') + ' + ' + f('5', '6')), m('1' + f('7', '12'))],
+      [m('−' + f('1', '2') + ' + ' + f('1', '3')), m('−' + f('1', '6'))],
+      [m('−' + f('3', '4') + ' + (−' + f('1', '6') + ')'), m('−' + f('11', '12'))],
+      [m('2' + f('1', '3') + ' + 1' + f('1', '2')), m('3' + f('5', '6'))],
+      [m(f('2', '3') + ' + ' + f('3', '5')), m('1' + f('4', '15'))],
+      [m('−' + f('5', '6') + ' + ' + f('3', '4')), m('−' + f('1', '12'))],
+      [m('1' + f('1', '4') + ' + (−' + f('1', '2') + ')'), m(f('3', '4'))]
+    ],
+    hard: [
+      [m(f('1', '2') + ' + ' + f('1', '3') + ' + ' + f('1', '6')), m('1')],
+      [m('−' + f('2', '3') + ' + ' + f('3', '4') + ' − ' + f('1', '2')), m('−' + f('5', '12'))],
+      [m('−1' + f('2', '5') + ' + 2' + f('3', '10')), m(f('9', '10'))],
+      [m(f('1', '2') + ' + ' + f('1', '4') + ' + ' + f('1', '8') + ' + ' + f('1', '16')), m(f('15', '16'))],
+      ['Find ' + m('x') + ': ' + m('x + ' + f('2', '3') + ' = ' + f('1', '6')), m('−' + f('1', '2'))],
+      [m('0.25 + ' + f('1', '3')), m(f('7', '12'))],
+      ['The mean of ' + m(f('1', '2')) + ' and ' + m('−' + f('1', '6')), m(f('1', '6'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Find the LCM before writing anything, and simplify every answer.',
+  homework: [
+    'Compute ' + m(f('2', '5') + ' + ' + f('1', '3')) + ' and ' + m(f('5', '6') + ' + ' + f('3', '8')) + '.',
+    'Compute ' + m('−' + f('2', '3') + ' + ' + f('1', '4')) + '.',
+    'Compute ' + m('−' + f('1', '5') + ' + (−' + f('3', '10') + ')') + '.',
+    'Compute ' + m('3' + f('1', '4') + ' + 2' + f('2', '3')) + '.',
+    'Find ' + m('x') + ' if ' + m('x + ' + f('3', '4') + ' = ' + f('1', '2')) + '.'
+  ]
+});
+
+/* ============================== 21 ============================== */
+G7_MAT.push({
+  id: 'g7-21', stream: 'mat', grade: 7, quarter: 1, lessons: '41–42', hours: 2,
+  title: 'Subtraction of rational numbers',
+  subtitle: 'Add the opposite, exactly as with integers — the fractions change nothing.',
+  uz: 'Matematika 7, §17', uzPage: 'pp. 108–113',
+  cam: 'S8 7.2', camPage: 'Stage 8, pp. 70–76', wb: 'Exercise 7.2',
+  objectives: [
+    'Subtract fractions with the same and with different denominators.',
+    'Use a − b = a + (−b) for rational numbers.',
+    'Subtract mixed numbers, including with borrowing.',
+    'Find the difference between two rational numbers on the line.'
+  ],
+  terms: [
+    ['Subtraction', 'Ayirish', 'Вычитание'],
+    ['Difference', 'Ayirma', 'Разность'],
+    ['Common denominator', 'Umumiy maxraj', 'Общий знаменатель'],
+    ['To borrow', 'Qarz olish', 'Занять'],
+    ['Improper fraction', 'Noto‘g‘ri kasr', 'Неправильная дробь'],
+    ['Opposite', 'Qarama-qarshi', 'Противоположное'],
+    ['Simplify', 'Soddalashtirish', 'Упростить'],
+    ['Compare', 'Taqqoslash', 'Сравнить']
+  ],
+  timing: [[15, 'The rule'], [25, 'Different denominators'], [25, 'Mixed numbers'], [20, 'Differences on the line'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The rule',
+      html: `${eq(m('a − b = a + (−b)'), true)}
+      <p>Exactly as for integers. With like denominators, subtract the numerators:</p>
+      ${eq(m(f('a', 'c') + ' − ' + f('b', 'c') + ' = ' + f('a − b', 'c')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Difference</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('5', '7')} − ${f('2', '7')}</td><td class="m">${f('3', '7')}</td><td class="m">${f('3', '7')}</td></tr>
+        <tr><td class="m">${f('2', '7')} − ${f('5', '7')}</td><td class="m">${f('−3', '7')}</td><td class="m">−${f('3', '7')}</td></tr>
+        <tr><td class="m">${f('1', '4')} − (−${f('1', '4')})</td><td class="m">${f('1', '4')} + ${f('1', '4')}</td><td class="m">${f('1', '2')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Two minuses give a plus here too</span>
+      ${m(f('1', '4') + ' − (−' + f('1', '4') + ')')} is ${m(f('1', '2'))}. The rules of Chapter II apply
+      to every rational number, not only to integers.</div>`
+    },
+    {
+      h: 'Different denominators',
+      html: `<p>Same four steps as for addition: LCM, rewrite, subtract, simplify.</p>
+      <p><b>Example.</b> ${m(f('5', '6') + ' − ' + f('3', '4'))}. LCM is ${m('12')}:</p>
+      ${eq(m(f('10', '12') + ' − ' + f('9', '12') + ' = ' + f('1', '12')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Difference</th><th>Common denominator</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('3', '4')} − ${f('1', '6')}</td><td class="m">${f('9', '12')} − ${f('2', '12')}</td><td class="m">${f('7', '12')}</td></tr>
+        <tr><td class="m">${f('1', '3')} − ${f('1', '2')}</td><td class="m">${f('2', '6')} − ${f('3', '6')}</td><td class="m">−${f('1', '6')}</td></tr>
+        <tr><td class="m">−${f('2', '5')} − ${f('3', '10')}</td><td class="m">−${f('4', '10')} − ${f('3', '10')}</td><td class="m">−${f('7', '10')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A negative answer is not a mistake</div>
+      ${m(f('1', '3') + ' − ' + f('1', '2') + ' = −' + f('1', '6'))} because a third is less than a half.
+      Estimating which is bigger before subtracting tells you the sign in advance.</div>`
+    },
+    {
+      h: 'Mixed numbers',
+      html: `<p>Two routes, as for addition. Route A — convert to improper fractions — never fails.</p>
+      <p><b>Example.</b> ${m('4' + f('1', '5') + ' − 1' + f('3', '5'))}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Route</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>A</td><td class="m">${f('21', '5')} − ${f('8', '5')} = ${f('13', '5')} = 2${f('3', '5')}</td></tr>
+        <tr><td>B</td><td class="m">4${f('1', '5')} = 3${f('6', '5')}</td></tr>
+      </tbody></table></div>
+      <p>Route B needs <b>borrowing</b>: since ${m(f('1', '5'))} is smaller than ${m(f('3', '5'))}, one
+      whole is exchanged for ${m(f('5', '5'))}. Both routes give ${m('2' + f('3', '5'))}.</p>
+      <div class="warn"><span class="wl">Borrowing is where the errors are</span>
+      ${m('4' + f('1', '5'))} becomes ${m('3' + f('6', '5'))}, not ${m('3' + f('11', '5'))}. Converting to
+      improper fractions avoids the step entirely, and is worth the extra line.</div>`
+    },
+    {
+      h: 'Differences on the line',
+      html: `<p>The distance between two rational numbers is ${m('|a − b|')}, exactly as for integers.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Points</th><th>Difference</th><th>Distance</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('3', '4')}, ${f('1', '4')}</td><td class="m">${f('1', '2')}</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td class="m">−${f('1', '2')}, ${f('1', '3')}</td><td class="m">−${f('5', '6')}</td><td class="m">${f('5', '6')}</td></tr>
+        <tr><td class="m">−${f('3', '4')}, −${f('1', '4')}</td><td class="m">−${f('1', '2')}</td><td class="m">${f('1', '2')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Which is larger? Subtract and look at the sign</div>
+      A positive difference means the first is larger; a negative one means the second is. That is often
+      quicker than finding a common denominator twice.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compute ' + m(f('5', '6') + ' − ' + f('3', '4')) + '.',
+      steps: [
+        ['LCM of ' + m('6') + ' and ' + m('4') + ' is ' + m('12') + '.', ''],
+        [m(f('10', '12') + ' − ' + f('9', '12')), ''],
+        [m('= ' + f('1', '12')), ''],
+        ['Positive, so ' + m(f('5', '6')) + ' is the larger.', '']
+      ],
+      ans: m(f('1', '12'))
+    },
+    {
+      q: 'Compute ' + m('4' + f('1', '5') + ' − 1' + f('3', '5')) + '.',
+      steps: [
+        ['Convert: ' + m(f('21', '5') + ' − ' + f('8', '5')) + '.', 'Route A.'],
+        [m('= ' + f('13', '5')), ''],
+        [m('= 2' + f('3', '5')), ''],
+        ['Check: ' + m('2' + f('3', '5') + ' + 1' + f('3', '5') + ' = 4' + f('1', '5')) + ' ✓', '']
+      ],
+      ans: m('2' + f('3', '5'))
+    },
+    {
+      q: 'Find the distance between ' + m('−' + f('1', '2')) + ' and ' + m(f('1', '3')) + ' on the line.',
+      steps: [
+        [m('−' + f('1', '2') + ' − ' + f('1', '3')), ''],
+        [m('= −' + f('3', '6') + ' − ' + f('2', '6') + ' = −' + f('5', '6')), ''],
+        ['Take the modulus.', ''],
+        [m(f('5', '6')), '']
+      ],
+      ans: m(f('5', '6'))
+    }
+  ],
+  modelNote: 'Ask which is larger, two thirds or three quarters, before any calculation; the class guesses, then subtracts, and the sign settles it.',
+  interactive: {
+    type: 'lcdBuilder',
+    title: 'Subtracting fractions',
+    hint: 'The same denominator, then the numerators.'
+  },
+  quiz: [
+    { q: m(f('2', '7') + ' − ' + f('5', '7')) + ' equals:', a: [m(f('3', '7')), m('−' + f('3', '7')), m(f('7', '7')), m('−' + f('7', '7'))], c: 1, why: 'The second is larger.' },
+    { q: m(f('1', '4') + ' − (−' + f('1', '4') + ')') + ' equals:', a: [m('0'), m(f('1', '2')), m('−' + f('1', '2')), m(f('1', '4'))], c: 1, why: 'Two minuses.' },
+    { q: m(f('1', '3') + ' − ' + f('1', '2')) + ' equals:', a: [m(f('1', '6')), m('−' + f('1', '6')), m(f('1', '5')), m('−' + f('1', '5'))], c: 1, why: 'A third is smaller.' },
+    { q: m('4' + f('1', '5')) + ' with one whole borrowed:', a: [m('3' + f('6', '5')), m('3' + f('11', '5')), m('3' + f('1', '5')), m('5' + f('1', '5'))], c: 0, why: 'One whole is ' + m(f('5', '5')) + '.' },
+    { q: 'The distance between ' + m('−' + f('1', '2')) + ' and ' + m(f('1', '3')) + ':', a: [m(f('1', '6')), m(f('5', '6')), m('−' + f('5', '6')), m(f('2', '5'))], c: 1, why: 'A modulus.' },
+    { q: 'A negative difference means:', a: ['an error', 'the second is larger', 'the first is larger', 'they are equal'], c: 1, why: 'New minus old.' }
+  ],
+  practice: {
+    easy: [
+      [m(f('5', '7') + ' − ' + f('2', '7')), m(f('3', '7'))],
+      [m(f('2', '7') + ' − ' + f('5', '7')), m('−' + f('3', '7'))],
+      [m(f('3', '4') + ' − ' + f('1', '4')), m(f('1', '2'))],
+      [m(f('1', '4') + ' − (−' + f('1', '4') + ')'), m(f('1', '2'))],
+      [m(f('1', '2') + ' − ' + f('1', '4')), m(f('1', '4'))],
+      [m('0.8 − 0.35'), m('0.45')],
+      [m(f('5', '8') + ' − ' + f('1', '8')), m(f('1', '2'))]
+    ],
+    med: [
+      [m(f('5', '6') + ' − ' + f('3', '4')), m(f('1', '12'))],
+      [m(f('3', '4') + ' − ' + f('1', '6')), m(f('7', '12'))],
+      [m(f('1', '3') + ' − ' + f('1', '2')), m('−' + f('1', '6'))],
+      [m('−' + f('2', '5') + ' − ' + f('3', '10')), m('−' + f('7', '10'))],
+      [m('4' + f('1', '5') + ' − 1' + f('3', '5')), m('2' + f('3', '5'))],
+      [m('3' + f('1', '4') + ' − 1' + f('1', '2')), m('1' + f('3', '4'))],
+      ['Distance between ' + m('−' + f('1', '2')) + ' and ' + m(f('1', '3')), m(f('5', '6'))]
+    ],
+    hard: [
+      [m(f('7', '8') + ' − ' + f('2', '3') + ' − ' + f('1', '6')), m(f('1', '24'))],
+      [m('−1' + f('1', '3') + ' − (−2' + f('1', '2') + ')'), m('1' + f('1', '6'))],
+      [m('5 − 2' + f('3', '7')), m('2' + f('4', '7'))],
+      ['Find ' + m('x') + ': ' + m(f('3', '4') + ' − x = ' + f('1', '3')), m(f('5', '12'))],
+      ['Which is larger, ' + m(f('5', '8')) + ' or ' + m(f('7', '11')) + '?', m(f('7', '11'))],
+      ['The difference between the largest and smallest of ' + m(f('1', '2') + ', −' + f('2', '3') + ', ' + f('3', '4')), m(f('17', '12'))],
+      [m('0.6 − ' + f('1', '4')), m(f('7', '20'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Predict the sign of every answer before computing it.',
+  homework: [
+    'Compute ' + m(f('7', '9') + ' − ' + f('2', '3')) + ' and ' + m(f('2', '5') + ' − ' + f('3', '4')) + '.',
+    'Compute ' + m('−' + f('1', '2') + ' − ' + f('2', '3')) + '.',
+    'Compute ' + m('5' + f('1', '4') + ' − 2' + f('2', '3')) + '.',
+    'Find the distance between ' + m('−' + f('3', '4')) + ' and ' + m(f('1', '2')) + '.',
+    'Find ' + m('x') + ' if ' + m(f('2', '3') + ' − x = ' + f('1', '6')) + '.'
+  ]
+});
+
+/* ============================== 22 ============================== */
+G7_MAT.push({
+  id: 'g7-22', stream: 'mat', grade: 7, quarter: 1, lessons: '43', hours: 1,
+  title: 'Addition and subtraction of rational numbers together',
+  subtitle: 'Long chains of fractions — one common denominator, one pass.',
+  uz: 'Matematika 7, §18', uzPage: 'pp. 114–117',
+  cam: 'S8 7.2', camPage: 'Stage 8, pp. 70–76', wb: 'Exercise 7.2',
+  objectives: [
+    'Evaluate a chain of additions and subtractions of rational numbers.',
+    'Use one common denominator for the whole chain.',
+    'Combine fractions and decimals in one calculation.',
+    'Solve a simple equation of the form x + a = b in ℚ.'
+  ],
+  terms: [
+    ['Chain of operations', 'Amallar zanjiri', 'Цепочка действий'],
+    ['Common denominator', 'Umumiy maxraj', 'Общий знаменатель'],
+    ['To combine', 'Birlashtirish', 'Объединить'],
+    ['Equation', 'Tenglama', 'Уравнение'],
+    ['Unknown', 'Noma’lum', 'Неизвестное'],
+    ['Check', 'Tekshirish', 'Проверка'],
+    ['Decimal form', 'O‘nli ko‘rinish', 'Десятичная форма'],
+    ['Simplest form', 'Eng sodda ko‘rinish', 'Несократимый вид']
+  ],
+  timing: [[10, 'One denominator for all'], [12, 'Mixing forms'], [12, 'Simple equations'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'One denominator for all',
+      html: `<p>For a chain such as ${m(f('1', '2') + ' − ' + f('2', '3') + ' + ' + f('3', '4'))}, find the
+      LCM of <b>all</b> the denominators at once and rewrite everything.</p>
+      ${eq(m(f('6', '12') + ' − ' + f('8', '12') + ' + ' + f('9', '12') + ' = ' + f('7', '12')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Chain</th><th>LCM</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('1', '2')} − ${f('2', '3')} + ${f('3', '4')}</td><td class="m">12</td><td class="m">${f('7', '12')}</td></tr>
+        <tr><td class="m">${f('2', '5')} + ${f('1', '2')} − ${f('7', '10')}</td><td class="m">10</td><td class="m">${f('1', '5')}</td></tr>
+        <tr><td class="m">−${f('1', '3')} − ${f('1', '4')} + ${f('5', '6')}</td><td class="m">12</td><td class="m">${f('1', '4')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One conversion, not two</div>
+      Working pairwise means converting twice and simplifying twice. Converting the whole chain once is
+      shorter and far less error-prone.</div>`
+    },
+    {
+      h: 'Mixing forms',
+      html: `<p>When fractions and decimals appear together, convert to whichever form is easier.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Best form</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">0.5 + ${f('1', '4')}</td><td>fractions</td><td class="m">${f('3', '4')}</td></tr>
+        <tr><td class="m">0.25 − ${f('1', '3')}</td><td>fractions</td><td class="m">−${f('1', '12')}</td></tr>
+        <tr><td class="m">${f('1', '2')} + 0.3</td><td>decimals</td><td class="m">0.8</td></tr>
+        <tr><td class="m">${f('1', '3')} + 0.2</td><td>fractions</td><td class="m">${f('8', '15')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Use fractions whenever a third is involved</span>
+      ${m(f('1', '3'))} has no exact decimal form, so any decimal working is an approximation. Fractions
+      keep the answer exact.</div>`
+    },
+    {
+      h: 'Simple equations',
+      html: `<p>${m('x + a = b')} is solved by subtracting ${m('a')} from both sides:</p>
+      ${eq(m('x = b − a'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Equation</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x + ${f('1', '3')} = ${f('5', '6')}</td><td class="m">${f('5', '6')} − ${f('2', '6')}</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td class="m">x − ${f('2', '5')} = ${f('1', '10')}</td><td class="m">${f('1', '10')} + ${f('4', '10')}</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td class="m">x + ${f('3', '4')} = ${f('1', '4')}</td><td class="m">${f('1', '4')} − ${f('3', '4')}</td><td class="m">−${f('1', '2')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Always substitute the answer back</div>
+      One line of checking catches every sign error and every denominator slip, and the check is quicker
+      than the solution.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compute ' + m(f('1', '2') + ' − ' + f('2', '3') + ' + ' + f('3', '4')) + '.',
+      steps: [
+        ['LCM of ' + m('2, 3, 4') + ' is ' + m('12') + '.', ''],
+        [m(f('6', '12') + ' − ' + f('8', '12') + ' + ' + f('9', '12')), ''],
+        [m('= ' + f('6 − 8 + 9', '12')), ''],
+        [m('= ' + f('7', '12')), '']
+      ],
+      ans: m(f('7', '12'))
+    },
+    {
+      q: 'Compute ' + m('0.25 − ' + f('1', '3')) + '.',
+      steps: [
+        [m('0.25 = ' + f('1', '4')), 'Fractions are exact.'],
+        ['LCM of ' + m('4') + ' and ' + m('3') + ' is ' + m('12') + '.', ''],
+        [m(f('3', '12') + ' − ' + f('4', '12')), ''],
+        [m('= −' + f('1', '12')), '']
+      ],
+      ans: m('−' + f('1', '12'))
+    },
+    {
+      q: 'Solve ' + m('x + ' + f('3', '4') + ' = ' + f('1', '4')) + '.',
+      steps: [
+        [m('x = ' + f('1', '4') + ' − ' + f('3', '4')), ''],
+        [m('= −' + f('2', '4')), ''],
+        [m('= −' + f('1', '2')), ''],
+        ['Check: ' + m('−' + f('1', '2') + ' + ' + f('3', '4') + ' = ' + f('1', '4')) + ' ✓', '']
+      ],
+      ans: m('x = −' + f('1', '2'))
+    }
+  ],
+  modelNote: 'Do one chain twice on the board — pairwise and all at once — and let the class time both; the single conversion wins visibly.',
+  interactive: {
+    type: 'lcdBuilder',
+    title: 'One denominator for the whole chain',
+    hint: 'Take the LCM of all of them at once.'
+  },
+  quiz: [
+    { q: 'For a chain, use the LCM of:', a: ['the first two', 'all the denominators', 'the largest', 'the smallest'], c: 1, why: 'One conversion only.' },
+    { q: m(f('1', '2') + ' − ' + f('2', '3') + ' + ' + f('3', '4')) + ' equals:', a: [m(f('7', '12')), m(f('5', '12')), m(f('11', '12')), m('−' + f('7', '12'))], c: 0, why: m(f('6 − 8 + 9', '12')) + '.' },
+    { q: m('0.25 − ' + f('1', '3')) + ' equals:', a: [m(f('1', '12')), m('−' + f('1', '12')), m('−0.08'), m(f('7', '12'))], c: 1, why: 'A third is larger.' },
+    { q: 'When a third is involved, prefer:', a: ['decimals', 'fractions', 'either', 'percentages'], c: 1, why: 'Decimals would be approximate.' },
+    { q: m('x + ' + f('3', '4') + ' = ' + f('1', '4')) + ' gives:', a: [m('1'), m(f('1', '2')), m('−' + f('1', '2')), m('−1')], c: 2, why: 'Subtract from both sides.' },
+    { q: 'After solving you should:', a: ['stop', 'substitute back', 'round', 'draw a graph'], c: 1, why: 'The quickest check there is.' }
+  ],
+  practice: {
+    easy: [
+      [m(f('1', '2') + ' + ' + f('1', '3')), m(f('5', '6'))],
+      [m(f('1', '2') + ' − ' + f('1', '3')), m(f('1', '6'))],
+      [m('0.5 + ' + f('1', '4')), m(f('3', '4'))],
+      [m(f('1', '2') + ' + 0.3'), m('0.8')],
+      ['Solve ' + m('x + ' + f('1', '3') + ' = ' + f('5', '6')), m(f('1', '2'))],
+      ['Solve ' + m('x − ' + f('2', '5') + ' = ' + f('1', '10')), m(f('1', '2'))],
+      [m(f('3', '8') + ' + ' + f('1', '8') + ' − ' + f('1', '4')), m(f('1', '4'))]
+    ],
+    med: [
+      [m(f('1', '2') + ' − ' + f('2', '3') + ' + ' + f('3', '4')), m(f('7', '12'))],
+      [m(f('2', '5') + ' + ' + f('1', '2') + ' − ' + f('7', '10')), m(f('1', '5'))],
+      [m('−' + f('1', '3') + ' − ' + f('1', '4') + ' + ' + f('5', '6')), m(f('1', '4'))],
+      [m('0.25 − ' + f('1', '3')), m('−' + f('1', '12'))],
+      [m(f('1', '3') + ' + 0.2'), m(f('8', '15'))],
+      ['Solve ' + m('x + ' + f('3', '4') + ' = ' + f('1', '4')), m('−' + f('1', '2'))],
+      [m('1 − ' + f('1', '2') + ' − ' + f('1', '3')), m(f('1', '6'))]
+    ],
+    hard: [
+      [m(f('1', '2') + ' − ' + f('1', '3') + ' + ' + f('1', '4') + ' − ' + f('1', '6')), m(f('1', '4'))],
+      [m('−' + f('3', '5') + ' + 0.25 − ' + f('1', '4')), m('−' + f('3', '5'))],
+      [m('2' + f('1', '3') + ' − 1' + f('1', '2') + ' + ' + f('5', '6')), m('1' + f('2', '3'))],
+      ['Solve ' + m(f('2', '3') + ' − x = −' + f('1', '6')), m(f('5', '6'))],
+      ['Three pieces of a rod are ' + m(f('1', '4') + ', ' + f('1', '3') + ', ' + f('1', '6')) + ' of it: the rest', m(f('1', '4'))],
+      [m('0.75 − ' + f('2', '3') + ' + ' + f('1', '12')), m(f('1', '6'))],
+      ['The mean of ' + m(f('1', '2') + ', ' + f('1', '3') + ', ' + f('1', '6')), m(f('1', '3'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Use one common denominator for each whole chain, and check every equation.',
+  homework: [
+    'Compute ' + m(f('2', '3') + ' − ' + f('1', '2') + ' + ' + f('1', '6')) + '.',
+    'Compute ' + m('−' + f('1', '4') + ' + ' + f('2', '5') + ' − ' + f('1', '10')) + '.',
+    'Compute ' + m('0.4 + ' + f('1', '3')) + '.',
+    'Solve ' + m('x + ' + f('5', '6') + ' = ' + f('1', '3')) + '.',
+    'Solve ' + m(f('3', '4') + ' − x = ' + f('1', '8')) + '.'
+  ]
+});
