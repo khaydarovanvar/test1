@@ -5233,3 +5233,357 @@ G9_GEO.push({
     'A rope stretched round the Earth is raised ' + m('1 m') + ' at every point. How much extra rope is needed?'
   ]
 });
+
+/* ============================== 32 ============================== */
+G9_GEO.push({
+  id: 'g9-32', stream: 'geo', grade: 9, quarter: 3, lessons: '44–45', hours: 2,
+  title: 'The length of an arc, and the radian measure of an angle',
+  subtitle: 'A fraction of a circle, and the unit of angle that makes the fraction disappear.',
+  uz: 'Geometriya 9, §27', uzPage: 'pp. 159–165',
+  cam: 'IGX 7.1', camPage: 'Core & Extended, pp. 130–136', wb: 'Exercise 7.1',
+  objectives: [
+    'Find an arc length as a fraction of the circumference.',
+    'Convert between degrees and radians.',
+    'Use l = Rα with α in radians.',
+    'Solve problems on arcs, sector perimeters and angular measure.'
+  ],
+  terms: [
+    ['Arc', 'Yoy', 'Дуга'],
+    ['Arc length', 'Yoy uzunligi', 'Длина дуги'],
+    ['Central angle', 'Markaziy burchak', 'Центральный угол'],
+    ['Radian', 'Radian', 'Радиан'],
+    ['Degree', 'Gradus', 'Градус'],
+    ['Sector', 'Sektor', 'Сектор'],
+    ['Perimeter of a sector', 'Sektor perimetri', 'Периметр сектора'],
+    ['Fraction of a circle', 'Aylananing ulushi', 'Доля окружности']
+  ],
+  timing: [[15, 'An arc as a fraction'], [25, 'The radian'], [25, 'l = Rα'], [20, 'Sector perimeters'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'An arc as a fraction',
+      html: `<p>A central angle of ${m('θ')} degrees cuts off ${m(f('θ', '360'))} of the whole circle, so</p>
+      ${eq(m('l = ' + f('θ', '360°') + ' · 2πR'), true)}
+      {{fig:radianSector:The arc is the same fraction of the circumference as the angle is of a full turn.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">θ</th><th>Fraction</th><th>Arc, ${m('R = 12')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">90°</td><td class="m">${f('1', '4')}</td><td class="m">6π</td></tr>
+        <tr><td class="m">60°</td><td class="m">${f('1', '6')}</td><td class="m">4π</td></tr>
+        <tr><td class="m">45°</td><td class="m">${f('1', '8')}</td><td class="m">3π</td></tr>
+        <tr><td class="m">120°</td><td class="m">${f('1', '3')}</td><td class="m">8π</td></tr>
+        <tr><td class="m">30°</td><td class="m">${f('1', '12')}</td><td class="m">2π</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Every arc question is a fraction question</div>
+      Write the fraction first, then multiply. Doing the fraction and the circumference in one step is
+      where the arithmetic errors live.</div>`
+    },
+    {
+      h: 'The radian',
+      html: `<p>One <b>radian</b> is the central angle whose arc equals the radius. Since a full turn has
+      arc ${m('2πR')}, a full turn is ${m('2π')} radians:</p>
+      ${eq(m('180° = π rad') + '     ' + m('1 rad = ' + f('180°', 'π') + ' ≈ 57.3°'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Degrees</th><th class="m">30°</th><th class="m">45°</th><th class="m">60°</th><th class="m">90°</th><th class="m">180°</th><th class="m">360°</th></tr></thead>
+      <tbody>
+        <tr><td>Radians</td><td class="m">${f('π', '6')}</td><td class="m">${f('π', '4')}</td><td class="m">${f('π', '3')}</td><td class="m">${f('π', '2')}</td><td class="m">π</td><td class="m">2π</td></tr>
+      </tbody></table></div>
+      <p>Degrees → radians: multiply by ${m(f('π', '180°'))}. Radians → degrees: multiply by
+      ${m(f('180°', 'π'))}.</p>
+      <div class="keybox"><div class="klabel">The same definition as in the algebra course</div>
+      Grade 9 algebra introduced the radian from the unit circle in Quarter II; geometry meets it here
+      through the arc. Both are the same statement, ${m('α = ' + f('l', 'R'))}, and the two courses
+      agree exactly.</div>`
+    },
+    {
+      h: 'l = Rα',
+      html: `<p>With ${m('α')} in radians the fraction ${m(f('θ', '360'))} disappears entirely:</p>
+      ${eq(m('α = ' + f('l', 'R')) + '     ⟹     ' + m('l = Rα'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Find</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td class="m">R = 12, α = ${f('π', '3')}</td><td class="m">l</td><td class="m">4π</td></tr>
+        <tr><td class="m">R = 5, α = 2</td><td class="m">l</td><td class="m">10</td></tr>
+        <tr><td class="m">l = 15, α = 3</td><td class="m">R</td><td class="m">5</td></tr>
+        <tr><td class="m">l = 6π, R = 12</td><td class="m">α</td><td class="m">${f('π', '2')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('l = Rα')} is false in degrees</span>
+      With ${m('α = 60')} meaning degrees, ${m('Rα')} would be ${m('720')} for ${m('R = 12')} — absurd.
+      Convert first, or use the ${m(f('θ', '360'))} form. Mixing the two is the standard error.</div>`
+    },
+    {
+      h: 'Sector perimeters',
+      html: `<p>The boundary of a sector is one arc and two radii:</p>
+      ${eq(m('P = l + 2R = Rα + 2R = R(α + 2)'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sector</th><th>Perimeter</th></tr></thead>
+      <tbody>
+        <tr><td class="m">R = 6, α = ${f('π', '3')}</td><td class="m">2π + 12</td></tr>
+        <tr><td class="m">R = 10, θ = 90°</td><td class="m">5π + 20</td></tr>
+        <tr><td class="m">a semicircle, ${m('R')}</td><td class="m">πR + 2R</td></tr>
+        <tr><td>a segment cut by a chord</td><td>arc ${m('+')} chord</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A sector has two radii, a segment has a chord</span>
+      They are different regions with different boundaries. Reading which one a question means — and
+      drawing it — settles the perimeter before any arithmetic.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the length of an arc of ' + m('60°') + ' in a circle of radius ' + m('12') + '.',
+      steps: [
+        [m(f('60', '360') + ' = ' + f('1', '6')), 'The fraction.'],
+        [m('C = 24π'), ''],
+        [m('l = ' + f('1', '6') + ' × 24π'), ''],
+        [m('= 4π ≈ 12.6'), '']
+      ],
+      ans: m('4π ≈ 12.6')
+    },
+    {
+      q: 'Convert ' + m('135°') + ' to radians and ' + m(f('5π', '6')) + ' to degrees.',
+      steps: [
+        [m('135 × ' + f('π', '180') + ' = ' + f('135π', '180')), ''],
+        ['Cancel by ' + m('45') + ': ' + m(f('3π', '4')) + '.', ''],
+        [m(f('5π', '6') + ' × ' + f('180', 'π') + ' = ' + f('900', '6')), ''],
+        [m('= 150°'), '']
+      ],
+      ans: m(f('3π', '4')) + ' and ' + m('150°')
+    },
+    {
+      q: 'A sector has radius ' + m('10') + ' and angle ' + m('90°') + '. Find its perimeter.',
+      steps: [
+        [m('α = ' + f('π', '2')), ''],
+        [m('l = 10 × ' + f('π', '2') + ' = 5π'), ''],
+        ['Two radii: ' + m('20') + '.', ''],
+        [m('P = 5π + 20 ≈ 35.7'), '']
+      ],
+      ans: m('5π + 20 ≈ 35.7')
+    }
+  ],
+  modelNote: 'Cut a length of string equal to the radius and lay it round the rim; the angle it subtends is one radian, and 57° becomes a measurement rather than a fact.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'Arc, angle and radius',
+    hint: 'Set the arc equal to the radius and read the angle.'
+  },
+  quiz: [
+    { q: 'One radian is the angle whose arc equals:', a: ['the diameter', 'the radius', 'the circumference', m('π')], c: 1, why: 'The definition.' },
+    { q: m('180°') + ' in radians:', a: [m(f('π', '2')), m('π'), m('2π'), m('90')], c: 1, why: 'Half a turn.' },
+    { q: m('l') + ' with ' + m('α') + ' in radians:', a: [m('Rα'), m('R²α'), m(f('α', 'R')), m('2πRα')], c: 0, why: 'From ' + m('α = ' + f('l', 'R')) + '.' },
+    { q: 'An arc of ' + m('60°') + ' in ' + m('R = 12') + ':', a: [m('2π'), m('4π'), m('6π'), m('8π')], c: 1, why: m(f('1', '6') + ' × 24π') + '.' },
+    { q: 'The perimeter of a sector is:', a: [m('l'), m('l + R'), m('l + 2R'), m('2l + R')], c: 2, why: 'One arc, two radii.' },
+    { q: m('135°') + ' in radians:', a: [m(f('π', '4')), m(f('3π', '4')), m(f('2π', '3')), m(f('5π', '6'))], c: 1, why: m('135 × ' + f('π', '180')) + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Arc of ' + m('90°') + ' in ' + m('R = 12'), m('6π')],
+      ['Arc of ' + m('60°') + ' in ' + m('R = 12'), m('4π')],
+      ['Arc of ' + m('30°') + ' in ' + m('R = 12'), m('2π')],
+      [m('90°') + ' in radians', m(f('π', '2'))],
+      [m('60°') + ' in radians', m(f('π', '3'))],
+      [m('π') + ' in degrees', m('180°')],
+      [m('R = 5, α = 2') + ': ' + m('l'), m('10')]
+    ],
+    med: [
+      [m('135°') + ' in radians', m(f('3π', '4'))],
+      [m(f('5π', '6')) + ' in degrees', m('150°')],
+      [m('R = 12, α = ' + f('π', '3')) + ': ' + m('l'), m('4π')],
+      [m('l = 15, α = 3') + ': ' + m('R'), m('5')],
+      ['Sector ' + m('R = 10, θ = 90°') + ': perimeter', m('5π + 20')],
+      ['Sector ' + m('R = 6, α = ' + f('π', '3')) + ': perimeter', m('2π + 12')],
+      ['Arc of ' + m('120°') + ' in ' + m('R = 9'), m('6π')]
+    ],
+    hard: [
+      ['An arc of ' + m('10 cm') + ' subtends ' + m('2 rad') + ': the radius', m('5 cm')],
+      ['An arc of ' + m('8π') + ' in a circle of radius ' + m('12') + ': the angle in degrees', m('120°')],
+      ['A sector of perimeter ' + m('20') + ' and radius ' + m('6') + ': its angle in radians', m(f('4', '3'))],
+      ['The minute hand is ' + m('12 cm') + ': the arc its tip sweeps in ' + m('25') + ' minutes', m('10π cm')],
+      ['A pendulum of length ' + m('80 cm') + ' swings through ' + m('12°') + ': the arc', m(f('16π', '3') + ' cm')],
+      ['Two arcs of equal length in circles of radii ' + m('4') + ' and ' + m('6') + ': the ratio of their angles', m('3 : 2')],
+      ['A wheel of radius ' + m('35 cm') + ' turns through ' + m('4') + ' radians: the distance rolled', m('140 cm')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Convert to radians before using ' + m('l = Rα') + ', and say so in the working.',
+  homework: [
+    'Find the arc length for ' + m('θ = 45°') + ' in a circle of radius ' + m('16') + '.',
+    'Convert ' + m('210°') + ' to radians and ' + m(f('7π', '4')) + ' to degrees.',
+    'A sector has radius ' + m('9') + ' and angle ' + m(f('2π', '3')) + '. Find its arc and perimeter.',
+    'An arc of ' + m('21 cm') + ' subtends ' + m('1.5 rad') + '. Find the radius.',
+    'The minute hand of a clock is ' + m('10 cm') + ' long. Find the arc its tip sweeps in ' + m('40') + ' minutes.'
+  ]
+});
+
+/* ============================== 33 ============================== */
+G9_GEO.push({
+  id: 'g9-33', stream: 'geo', grade: 9, quarter: 3, lessons: '46–47', hours: 2,
+  title: 'The area of a disc',
+  subtitle: 'πR² — proved by cutting the disc into ever-thinner triangles.',
+  uz: 'Geometriya 9, §28', uzPage: 'pp. 166–171',
+  cam: 'IGX 7.1', camPage: 'Core & Extended, pp. 130–136', wb: 'Exercise 7.1',
+  objectives: [
+    'Derive S = πR² from the area of a regular polygon.',
+    'Use S = πR² in both directions.',
+    'Find the area of a ring (annulus).',
+    'Solve problems on composite areas involving circles.'
+  ],
+  terms: [
+    ['Disc', 'Doira', 'Круг'],
+    ['Area of a disc', 'Doira yuzi', 'Площадь круга'],
+    ['Annulus', 'Halqa', 'Кольцо'],
+    ['Ring', 'Halqa', 'Кольцо'],
+    ['Composite area', 'Murakkab yuza', 'Составная площадь'],
+    ['Shaded region', 'Bo‘yalgan soha', 'Закрашенная область'],
+    ['Semicircle', 'Yarim doira', 'Полукруг'],
+    ['Limit', 'Limit', 'Предел']
+  ],
+  timing: [[15, 'The proof'], [25, 'Using the formula'], [25, 'Rings'], [20, 'Composite areas'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The proof',
+      html: `<p>A regular ${m('n')}-gon inscribed in the circle has area ${m('S = ' + f('1', '2') + 'Pr')}.
+      As ${m('n')} grows, ${m('P')} approaches the circumference ${m('2πR')} and ${m('r')} approaches
+      ${m('R')}. Hence</p>
+      ${eq(m('S → ' + f('1', '2') + ' · 2πR · R = πR²'), true)}
+      {{fig:circleArea:The disc cut into thin sectors and rearranged — the strip is πR long and R high.}}
+      <p>The same argument in a picture: cut the disc into many thin sectors and interleave them. The
+      result approaches a rectangle of height ${m('R')} and width ${m('πR')} — half the circumference —
+      whose area is ${m('πR²')}.</p>
+      <div class="keybox"><div class="klabel">Circumference and area are one formula apart</div>
+      ${m('C = 2πR')} and ${m('S = πR²')}, and ${m(f('1', '2') + 'CR = S')}. Every disc formula in this
+      chapter is a consequence of those two.</div>`
+    },
+    {
+      h: 'Using the formula',
+      html: `${eq(m('S = πR² = ' + f('πd²', '4')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Find</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td class="m">R = 7</td><td class="m">S</td><td class="m">49π ≈ 154</td></tr>
+        <tr><td class="m">d = 10</td><td class="m">S</td><td class="m">25π ≈ 78.5</td></tr>
+        <tr><td class="m">S = 36π</td><td class="m">R</td><td class="m">6</td></tr>
+        <tr><td class="m">S = 100</td><td class="m">R</td><td class="m">${sr(f('100', 'π'))} ≈ 5.64</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Going backwards needs a square root</span>
+      ${m('S = 36π')} gives ${m('R² = 36')} and then ${m('R = 6')} — not ${m('R = 36')}. Writing
+      ${m('R²')} explicitly before taking the root prevents the slip.</div>`
+    },
+    {
+      h: 'Rings',
+      html: `<p>An <b>annulus</b> is the region between two concentric circles of radii ${m('R')} and
+      ${m('r')}:</p>
+      ${eq(m('S = πR² − πr² = π(R² − r²) = π(R − r)(R + r)'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Ring</th><th>Area</th></tr></thead>
+      <tbody>
+        <tr><td class="m">R = 10, r = 6</td><td class="m">64π</td></tr>
+        <tr><td class="m">R = 5, r = 3</td><td class="m">16π</td></tr>
+        <tr><td>outer diameter ${m('20')}, width ${m('2')}</td><td class="m">36π</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Factorise rather than subtract</div>
+      ${m('π(R − r)(R + r)')} is usually quicker than squaring both radii, and it makes “a ring of width
+      ${m('w')}” questions almost immediate: the area is ${m('πw(2r + w)')}.</div>`
+    },
+    {
+      h: 'Composite areas',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Figure</th><th>Area</th></tr></thead>
+      <tbody>
+        <tr><td>a semicircle of radius ${m('R')}</td><td class="m">${f('πR²', '2')}</td></tr>
+        <tr><td>a quarter-disc of radius ${m('R')}</td><td class="m">${f('πR²', '4')}</td></tr>
+        <tr><td>a square of side ${m('a')} minus its inscribed disc</td><td class="m">a² − ${f('πa²', '4')}</td></tr>
+        <tr><td>a disc minus its inscribed square</td><td class="m">πR² − 2R²</td></tr>
+        <tr><td>a running track: two straights ${m('L')} wide ${m('w')}, two semicircular ends</td><td>strips plus rings</td></tr>
+      </tbody></table></div>
+      <p>The third row is worth remembering as a fraction: an inscribed disc occupies
+      ${m(f('π', '4') + ' ≈ 78.5%')} of its square, so the corners take about ${m('21.5%')}.</p>
+      <div class="warn"><span class="wl">Subtract, do not guess</span>
+      A shaded region is almost always a difference of two simple areas. Name both, compute both, and
+      subtract — attempting to find the shaded area directly is what makes these questions look
+      hard.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the area of a disc of radius ' + m('7 cm') + ' exactly and to 3 s.f.',
+      steps: [
+        [m('S = πR² = 49π'), 'Exact.'],
+        [m('49 × 3.14159…'), ''],
+        [m('≈ 153.94'), ''],
+        [m('≈ 154 cm²'), '']
+      ],
+      ans: m('49π ≈ 154 cm²')
+    },
+    {
+      q: 'A ring has outer radius ' + m('10') + ' and inner radius ' + m('6') + '. Find its area.',
+      steps: [
+        [m('S = π(R² − r²)'), ''],
+        [m('= π(100 − 36)'), ''],
+        [m('= 64π'), ''],
+        [m('≈ 201'), '']
+      ],
+      ans: m('64π ≈ 201')
+    },
+    {
+      q: 'A disc is inscribed in a square of side ' + m('12') + '. Find the area outside the disc.',
+      steps: [
+        ['Square: ' + m('144') + '.', ''],
+        ['Disc: ' + m('R = 6') + ', ' + m('S = 36π') + '.', ''],
+        [m('144 − 36π'), ''],
+        [m('≈ 144 − 113.1 = 30.9'), '']
+      ],
+      ans: m('144 − 36π ≈ 30.9')
+    }
+  ],
+  modelNote: 'Cut a paper disc into sixteen sectors and interleave them into a near-rectangle; the class measures its sides as πR and R and the formula is theirs.',
+  interactive: {
+    type: 'circleAngles',
+    title: 'From polygon to disc',
+    hint: 'Increase n and watch the area approach πR².'
+  },
+  quiz: [
+    { q: 'The area of a disc is:', a: [m('2πR'), m('πR²'), m('πd²'), m('2πR²')], c: 1, why: 'From ' + m('½CR') + '.' },
+    { q: m('R = 7') + ' gives ' + m('S') + ' =', a: [m('14π'), m('49π'), m('7π'), m('98π')], c: 1, why: m('π × 49') + '.' },
+    { q: m('S = 36π') + ' gives ' + m('R') + ' =', a: [m('6'), m('18'), m('36'), m('12')], c: 0, why: 'Square root of ' + m('36') + '.' },
+    { q: 'A ring of radii ' + m('10') + ' and ' + m('6') + ':', a: [m('16π'), m('64π'), m('136π'), m('4π')], c: 1, why: m('π(100 − 36)') + '.' },
+    { q: 'A disc inscribed in a square occupies:', a: [m('50%'), m('≈ 78.5%'), m('≈ 90%'), m('100%')], c: 1, why: m(f('π', '4')) + '.' },
+    { q: 'A shaded region is usually:', a: ['found directly', 'a difference of two areas', 'a product', 'impossible'], c: 1, why: 'Name both, subtract.' }
+  ],
+  practice: {
+    easy: [
+      [m('R = 7') + ': ' + m('S') + ' exactly', m('49π')],
+      [m('R = 5') + ': ' + m('S') + ' exactly', m('25π')],
+      [m('d = 10') + ': ' + m('S') + ' exactly', m('25π')],
+      [m('S = 36π') + ': ' + m('R'), m('6')],
+      [m('S = 81π') + ': ' + m('d'), m('18')],
+      ['Area of a semicircle, ' + m('R = 6'), m('18π')],
+      ['Area of a quarter-disc, ' + m('R = 8'), m('16π')]
+    ],
+    med: [
+      ['Ring ' + m('R = 10, r = 6'), m('64π')],
+      ['Ring ' + m('R = 5, r = 3'), m('16π')],
+      ['Square of side ' + m('12') + ' minus its inscribed disc', m('144 − 36π')],
+      ['A disc of area ' + m('100') + ': its radius', m('≈ 5.64')],
+      ['A ring of outer diameter ' + m('20') + ' and width ' + m('2'), m('36π')],
+      ['A disc minus its inscribed square, ' + m('R = 5'), m('25π − 50')],
+      ['Two discs of radii ' + m('3') + ' and ' + m('4') + ': the radius of a disc of equal total area', m('5')]
+    ],
+    hard: [
+      ['A disc inscribed in an equilateral triangle of side ' + m('12') + ': the area outside it', m('36' + sr('3') + ' − 12π')],
+      ['A running track: inner radius ' + m('30') + ', width ' + m('8') + ', straights ' + m('100') + ': the tarmac area', m('800 + 544π')],
+      ['A circle whose area equals its circumference numerically: its radius', m('2')],
+      ['A ring of area ' + m('96π') + ' and inner radius ' + m('10') + ': its outer radius', m('14')],
+      ['Three equal circles of radius ' + m('r') + ' touching pairwise: the area between them', m('r²(' + sr('3') + ' − ' + f('π', '2') + ')')],
+      ['A disc of radius ' + m('R') + ' and one of radius ' + m('2R') + ': the ratio of their areas', m('1 : 4')],
+      ['A goat tethered by ' + m('7 m') + ' at a corner of a large field: the grazed area', m(f('49π', '4'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Give every answer exactly in terms of ' + m('π') + ' and then to three significant figures.',
+  homework: [
+    'Find the area of a disc of radius ' + m('9 cm') + '.',
+    'A disc has area ' + m('64π') + '. Find its radius and circumference.',
+    'Find the area of a ring with radii ' + m('12') + ' and ' + m('9') + '.',
+    'A disc is inscribed in a square of side ' + m('20') + '. Find the area outside the disc.',
+    'Find the radius of a disc whose area is ' + m('200 cm²') + '.'
+  ]
+});
