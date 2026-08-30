@@ -15338,3 +15338,204 @@ G6_MAT.push({
     'Draw two different nets of a cube, and explain why a row of six squares is not one of them.'
   ]
 });
+
+/* ============================== 86 ============================== */
+G6_MAT.push({
+  id: 'g6-86', stream: 'mat', grade: 6, quarter: 4, lessons: '185–188', hours: 4,
+  title: 'Revision — three-dimensional shapes',
+  subtitle: 'The families, the counts, the nets, the volumes and the three views, in one block.',
+  uz: 'Matematika 6, takrorlash', uzPage: 'pp. 532–541',
+  cam: 'S7 8 consolidation', camPage: 'Stage 7, pp. 84–96', wb: 'Review 8',
+  objectives: [
+    'Name any common solid and give its faces, edges and vertices.',
+    'Draw or describe its net and find the surface area from it.',
+    'Find the volume of any prism, including a cylinder.',
+    'Move between an isometric drawing and the three views.'
+  ],
+  terms: [
+    ['Prism', 'Prizma', 'Призма'],
+    ['Pyramid', 'Piramida', 'Пирамида'],
+    ['Cylinder', 'Silindr', 'Цилиндр'],
+    ['Cone', 'Konus', 'Конус'],
+    ['Net', 'Yoyilma', 'Развёртка'],
+    ['Cross-section', 'Kesim', 'Поперечное сечение'],
+    ['Elevation', 'Ko‘rinish', 'Вид'],
+    ['Slant height', 'Yon balandlik', 'Апофема']
+  ],
+  timing: [[30, 'The families and their counts'], [35, 'Nets and surface areas'], [35, 'Volumes'], [35, 'Views and drawings'], [20, 'The mistakes that cost marks'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The families and their counts',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Faces</th><th>Edges</th><th>Vertices</th><th class="m">F + V − E</th></tr></thead>
+      <tbody>
+        <tr><td>cube or cuboid</td><td class="m">6</td><td class="m">12</td><td class="m">8</td><td class="m">2</td></tr>
+        <tr><td>triangular prism</td><td class="m">5</td><td class="m">9</td><td class="m">6</td><td class="m">2</td></tr>
+        <tr><td>hexagonal prism</td><td class="m">8</td><td class="m">18</td><td class="m">12</td><td class="m">2</td></tr>
+        <tr><td>square pyramid</td><td class="m">5</td><td class="m">8</td><td class="m">5</td><td class="m">2</td></tr>
+        <tr><td>hexagonal pyramid</td><td class="m">7</td><td class="m">12</td><td class="m">7</td><td class="m">2</td></tr>
+        <tr><td>prism on ${m('n')} sides</td><td class="m">n + 2</td><td class="m">3n</td><td class="m">2n</td><td class="m">2</td></tr>
+        <tr><td>pyramid on ${m('n')} sides</td><td class="m">n + 1</td><td class="m">2n</td><td class="m">n + 1</td><td class="m">2</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The curved solids stand outside the pattern</div>
+      A cylinder has ${m('2')} flat faces and ${m('1')} curved surface; a cone ${m('1')} and ${m('1')}; a
+      sphere ${m('0')} and ${m('1')}. ${m('F + V − E = 2')} applies to none of them.</div>`
+    },
+    {
+      h: 'Nets and surface areas',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Net</th><th>Worked example</th><th>Surface area</th></tr></thead>
+      <tbody>
+        <tr><td>cube</td><td>${m('6')} squares</td><td>edge ${m('4')} cm</td><td class="m">96 cm²</td></tr>
+        <tr><td>cuboid</td><td>${m('3')} pairs of rectangles</td><td class="m">5 × 4 × 3 cm</td><td class="m">94 cm²</td></tr>
+        <tr><td>triangular prism</td><td>${m('2')} triangles, ${m('3')} rectangles</td><td>${m('3')}-${m('4')}-${m('5')} ends, ${m('10')} cm long</td><td class="m">132 cm²</td></tr>
+        <tr><td>cylinder</td><td>${m('2')} circles, ${m('1')} rectangle</td><td class="m">r = 5, h = 10</td><td class="m">471 cm²</td></tr>
+        <tr><td>square pyramid</td><td>${m('1')} square, ${m('4')} triangles</td><td>base ${m('6')}, slant ${m('5')}</td><td class="m">96 cm²</td></tr>
+        <tr><td>cone</td><td>${m('1')} circle, ${m('1')} sector</td><td class="m">r = 3, slant 5</td><td class="m">75.4 cm²</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Two measurements are easy to confuse</span>
+      In a cylinder the rectangle’s width is ${m('2πr')}, not ${m('r')}. In a pyramid the triangles use the
+      slant height, not the height of the solid. Almost every lost mark in this block is one of those
+      two.</div>`
+    },
+    {
+      h: 'Volumes',
+      html: `${eq(m('V = base area × height') + '     for every prism, including the cylinder', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Base area</th><th>Height or length</th><th>Volume</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5 × 4 × 3 cm cuboid</td><td class="m">20 cm²</td><td class="m">3 cm</td><td class="m">60 cm³</td></tr>
+        <tr><td>cube of edge ${m('4')} cm</td><td class="m">16 cm²</td><td class="m">4 cm</td><td class="m">64 cm³</td></tr>
+        <tr><td>triangular prism</td><td class="m">12 cm²</td><td class="m">10 cm</td><td class="m">120 cm³</td></tr>
+        <tr><td>cylinder ${m('r = 5')}</td><td class="m">78.5 cm²</td><td class="m">10 cm</td><td class="m">785 cm³</td></tr>
+        <tr><td>cylinder ${m('r = 3')}</td><td class="m">28.3 cm²</td><td class="m">8 cm</td><td class="m">226 cm³</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Reverse it the same way as before</div>
+      Cross-section ${m('= V ÷ length')}; length ${m('= V ÷')} cross-section. A prism of ${m('240')} cm³
+      and length ${m('8')} cm has a cross-section of ${m('30')} cm².</div>`
+    },
+    {
+      h: 'Views and drawings',
+      html: `{{fig:isometricGrid:Unit cubes on an isometric grid}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Stack</th><th>Cubes</th><th>Surface</th><th>Plan</th></tr></thead>
+      <tbody>
+        <tr><td>L of three cubes</td><td class="m">3</td><td class="m">14</td><td class="m">2 × 1</td></tr>
+        <tr><td class="m">2 × 2 × 1</td><td class="m">4</td><td class="m">16</td><td class="m">2 × 2</td></tr>
+        <tr><td class="m">2 × 2 × 2</td><td class="m">8</td><td class="m">24</td><td class="m">2 × 2</td></tr>
+        <tr><td class="m">3 × 2 × 2</td><td class="m">12</td><td class="m">32</td><td class="m">3 × 2</td></tr>
+        <tr><td class="m">3 × 3 × 3</td><td class="m">27</td><td class="m">54</td><td class="m">3 × 3</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Three views, three pairs of dimensions</div>
+      The plan gives length and depth, the front elevation length and height, the side elevation depth and
+      height. Each dimension appears in two of the three views, which is how the drawings check one
+      another.</div>`
+    },
+    {
+      h: 'The mistakes that cost marks',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Mistake</th><th>Looks like</th><th>Correct</th></tr></thead>
+      <tbody>
+        <tr><td>hidden edges not counted</td><td class="m">16 edges on a hexagonal prism</td><td class="m">18</td></tr>
+        <tr><td>the cylinder’s rectangle given width ${m('r')}</td><td class="m">5 × 10</td><td class="m">31.4 × 10</td></tr>
+        <tr><td>the pyramid’s height used for its triangles</td><td class="m">4 · ${f('1', '2')} · 6 · 4</td><td class="m">4 · ${f('1', '2')} · 6 · 5</td></tr>
+        <tr><td>a face of the net forgotten</td><td class="m">5 faces of a cuboid</td><td class="m">6</td></tr>
+        <tr><td>surface area written in ${m('cm³')}</td><td class="m">94 cm³</td><td class="m">94 cm²</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Three of the five are a missing piece</span>
+      An edge, a face, or the second measurement of a rectangle. Listing every part before adding is the
+      whole defence.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A hexagonal prism: find its faces, edges and vertices, and check them.',
+      steps: [
+        [m('n = 6') + ', so ' + m('F = 8') + ', ' + m('E = 18') + ', ' + m('V = 12') + '.', ''],
+        [m('F + V − E = 8 + 12 − 18') + '.', ''],
+        [m('= 2') + ' ✓', 'The check catches a missed upright edge.']
+      ],
+      ans: m('8') + ' faces, ' + m('18') + ' edges, ' + m('12') + ' vertices'
+    },
+    {
+      q: 'A cylinder has radius ' + m('5') + ' cm and height ' + m('10') + ' cm. Find its volume and its surface area, taking ' + m('π = 3.14') + '.',
+      steps: [
+        ['Base area ' + m('78.5') + ' cm², so ' + m('V = 785') + ' cm³.', ''],
+        ['Two circles ' + m('157') + ' cm², rectangle ' + m('31.4 · 10 = 314') + ' cm².', ''],
+        ['Surface ' + m('471') + ' cm².', 'Volume in ' + m('cm³') + ', area in ' + m('cm²') + ' ✓']
+      ],
+      ans: m('785') + ' cm³ and ' + m('471') + ' cm²'
+    },
+    {
+      q: 'A prism has volume ' + m('240') + ' cm³ and length ' + m('8') + ' cm. Find the area of its cross-section and describe its plan if the cross-section is a ' + m('5') + ' by ' + m('6') + ' rectangle.',
+      steps: [
+        [m('240 ÷ 8 = 30') + ' cm².', ''],
+        ['A ' + m('5') + ' by ' + m('6') + ' rectangle has area ' + m('30') + ' ✓', ''],
+        ['Standing on that face, the plan is ' + m('5') + ' by ' + m('6') + '.', 'The prism is a ' + m('5 × 6 × 8') + ' cuboid.']
+      ],
+      ans: m('30') + ' cm²; the plan is a ' + m('5') + ' by ' + m('6') + ' rectangle'
+    }
+  ],
+  modelNote: 'Work the revision from the mistake table backwards: give the wrong answers first and let the class find each error. It fixes them faster than doing the questions correctly once.',
+  interactive: {
+    type: 'quiz',
+    title: 'The solids block in eight questions',
+    hint: 'Name the family first; the counts and the net follow from it.',
+    items: [
+      { q: 'A hexagonal prism has how many edges?', a: [m('12'), m('16'), m('18'), m('24')], c: 2, why: m('3n') + ' with ' + m('n = 6') + '.' },
+      { q: 'A square pyramid has how many faces?', a: [m('4'), m('5'), m('6'), m('8')], c: 1, why: 'A base and four triangles.' },
+      { q: 'The volume of any prism is:', a: ['base area × height', 'base × height ÷ 3', 'all edges multiplied', 'surface × height'], c: 0, why: 'Layers of the cross-section.' },
+      { q: 'A cylinder ' + m('r = 5') + ', ' + m('h = 10') + ' holds:', a: [m('157'), m('314'), m('471'), m('785')], c: 3, why: m('78.5 · 10') + '.' },
+      { q: 'Its surface area is:', a: [m('157'), m('314'), m('471'), m('785')], c: 2, why: 'Two circles and the rectangle.' },
+      { q: 'A ' + m('3 × 3 × 3') + ' stack of unit cubes has surface:', a: [m('27'), m('36'), m('54'), m('81')], c: 2, why: m('6 · 9') + '.' },
+      { q: 'The plan of a solid shows:', a: ['length and height', 'length and depth', 'depth and height', 'the volume'], c: 1, why: 'The view from above.' },
+      { q: m('F + V − E') + ' for a cone is:', a: [m('2'), m('1'), m('0'), 'not defined'], c: 3, why: 'The pattern needs flat polygons.' }
+    ]
+  },
+  quiz: [
+    { q: 'A prism on an ' + m('n') + '-sided base has faces:', a: [m('n'), m('n + 1'), m('n + 2'), m('2n')], c: 2, why: 'Two ends and ' + m('n') + ' rectangles.' },
+    { q: 'A pyramid on an ' + m('n') + '-sided base has edges:', a: [m('n'), m('n + 1'), m('2n'), m('3n')], c: 2, why: 'Base edges and sloping ones.' },
+    { q: 'The cylinder’s net rectangle is as wide as:', a: [m('r'), m('2r'), m('πr'), m('2πr')], c: 3, why: 'The circumference.' },
+    { q: 'The triangles of a pyramid net use:', a: ['the height', 'the slant height', 'the base', 'the volume'], c: 1, why: 'They lean outwards.' },
+    { q: 'Surface area is measured in:', a: [m('cm'), m('cm²'), m('cm³'), 'litres'], c: 1, why: 'Two lengths multiplied.' },
+    { q: 'A count giving ' + m('F + V − E = 3') + ' means:', a: ['an unusual solid', 'a wrong count', 'a curved surface', 'nothing'], c: 1, why: 'Usually a hidden edge.' }
+  ],
+  practice: {
+    easy: [
+      ['Faces, edges and vertices of a cube', m('6, 12, 8')],
+      ['Faces, edges and vertices of a triangular prism', m('5, 9, 6')],
+      [m('F + V − E') + ' for any flat-faced solid', m('2')],
+      ['The net of a cylinder', 'Two circles and a rectangle'],
+      ['The volume of a prism', 'Base area × height'],
+      ['The plan is the view from', 'Above'],
+      ['The number of different nets of a cube', m('11')]
+    ],
+    med: [
+      ['Faces, edges and vertices of a hexagonal prism', m('8, 18, 12')],
+      ['Faces, edges and vertices of a square pyramid', m('5, 8, 5')],
+      ['The volume of a ' + m('5 × 4 × 3') + ' cm cuboid', m('60') + ' cm³'],
+      ['Its surface area', m('94') + ' cm²'],
+      ['A prism of cross-section ' + m('12') + ' cm², length ' + m('10') + ' cm', m('120') + ' cm³'],
+      ['A cylinder ' + m('r = 5') + ', ' + m('h = 10') + ', ' + m('π = 3.14'), m('785') + ' cm³'],
+      ['The surface of a ' + m('2 × 2 × 2') + ' block of unit cubes', m('24')]
+    ],
+    hard: [
+      ['The surface area of a cylinder ' + m('r = 5') + ', ' + m('h = 10'), m('471') + ' cm²'],
+      ['The surface area of a ' + m('3') + '-' + m('4') + '-' + m('5') + ' triangular prism ' + m('10') + ' cm long', m('132') + ' cm²'],
+      ['The surface area of a square pyramid, base ' + m('6') + ', slant ' + m('5'), m('96') + ' cm²'],
+      ['Cubes in a ' + m('3 × 3 × 3') + ' stack, and how many are hidden', m('27') + ' and ' + m('1')],
+      ['A prism of volume ' + m('240') + ' cm³ and length ' + m('8') + ' cm: its cross-section', m('30') + ' cm²'],
+      ['The edges of a prism on an ' + m('n') + '-sided base', m('3n')],
+      ['Why can three views not fix the number of cubes?', 'A hidden cube changes none of them']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'List every face of a net before adding, and check every set of counts with ' + m('F + V − E = 2') + '.',
+  homework: [
+    'Give the faces, edges and vertices of a pentagonal prism and of a pentagonal pyramid.',
+    'Find the surface area of a cuboid ' + m('7') + ' cm by ' + m('5') + ' cm by ' + m('3') + ' cm from its net.',
+    'A cylinder has radius ' + m('3') + ' cm and height ' + m('10') + ' cm. Find its volume and surface area.',
+    'A triangular prism has a cross-section of area ' + m('18') + ' cm² and is ' + m('9') + ' cm long. Find its volume.',
+    'Draw a ' + m('3 × 2 × 1') + ' stack of cubes and give its plan and two elevations.'
+  ]
+});
