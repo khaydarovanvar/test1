@@ -5146,3 +5146,354 @@ G6_MAT.push({
     'Which is the better mark: ' + m('19') + ' out of ' + m('25') + ' or ' + m('30') + ' out of ' + m('40') + '?'
   ]
 });
+
+/* ============================== 29 ============================== */
+G6_MAT.push({
+  id: 'g6-29', stream: 'mat', grade: 6, quarter: 2, lessons: '56–57', hours: 2,
+  title: 'Multiplying and dividing by powers of ten',
+  subtitle: 'A Cambridge insert: the digits move, the point stays — and why that is the better picture.',
+  uz: 'Matematika 6, qo‘shimcha mavzu', uzPage: 'pp. 158–163',
+  cam: 'S7 3.1', camPage: 'Stage 7, pp. 32–36', wb: 'Exercise 3.1',
+  objectives: [
+    'Multiply and divide by ' + m('10, 100') + ' and ' + m('1000') + '.',
+    'Multiply and divide by ' + m('0.1') + ' and ' + m('0.01') + '.',
+    'Explain the effect in terms of place value.',
+    'Use the rules to convert between units.'
+  ],
+  terms: [
+    ['Place value', 'Xona qiymati', 'Разрядное значение'],
+    ['Power of ten', 'O‘nning darajasi', 'Степень десяти'],
+    ['Decimal point', 'O‘nli nuqta (vergul)', 'Десятичная запятая'],
+    ['To shift', 'Siljimoq', 'Сдвигаться'],
+    ['Tenth', 'O‘ndan bir', 'Десятая'],
+    ['Hundredth', 'Yuzdan bir', 'Сотая'],
+    ['Zero as a placeholder', 'O‘rin to‘ldiruvchi nol', 'Ноль как разделитель'],
+    ['Unit conversion', 'Birliklarni almashtirish', 'Перевод единиц']
+  ],
+  timing: [[20, 'Place value'], [25, 'Multiplying and dividing by ' + m('10, 100, 1000')], [25, 'By ' + m('0.1') + ' and ' + m('0.01')], [8, 'Converting units'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'Place value',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Column</th><th>Hundreds</th><th>Tens</th><th>Units</th><th>Tenths</th><th>Hundredths</th></tr></thead>
+      <tbody>
+        <tr><td>value</td><td class="m">100</td><td class="m">10</td><td class="m">1</td><td class="m">${f('1', '10')}</td><td class="m">${f('1', '100')}</td></tr>
+        <tr><td class="m">3.47</td><td>—</td><td>—</td><td class="m">3</td><td class="m">4</td><td class="m">7</td></tr>
+        <tr><td class="m">347</td><td class="m">3</td><td class="m">4</td><td class="m">7</td><td>—</td><td>—</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Each column is ten times the one on its right</div>
+      Multiplying by ${m('10')} moves every digit one column to the left, which is the same thing as
+      moving the point one place to the right. The first description is the true one; the second is a
+      shortcut.</div>`
+    },
+    {
+      h: 'Multiplying and dividing by ' + m('10, 100, 1000'),
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Start</th><th class="m">× 10</th><th class="m">× 100</th><th class="m">÷ 10</th><th class="m">÷ 100</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3.47</td><td class="m">34.7</td><td class="m">347</td><td class="m">0.347</td><td class="m">0.0347</td></tr>
+        <tr><td class="m">58</td><td class="m">580</td><td class="m">5800</td><td class="m">5.8</td><td class="m">0.58</td></tr>
+        <tr><td class="m">0.6</td><td class="m">6</td><td class="m">60</td><td class="m">0.06</td><td class="m">0.006</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Zeros hold the empty columns</span>
+      ${m('0.347 ÷ 10')} is ${m('0.0347')}: a zero has to appear in the tenths column, because that column
+      is now empty. Leaving it out changes the number tenfold.</div>`
+    },
+    {
+      h: 'By ' + m('0.1') + ' and ' + m('0.01'),
+      html: `<p>Multiplying by ${m('0.1')} is the same as dividing by ${m('10')} — and dividing by
+      ${m('0.1')} is the same as multiplying by ${m('10')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Operation</th><th>Same as</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="m">× 0.1</td><td class="m">÷ 10</td><td class="m">47 · 0.1 = 4.7</td></tr>
+        <tr><td class="m">× 0.01</td><td class="m">÷ 100</td><td class="m">47 · 0.01 = 0.47</td></tr>
+        <tr><td class="m">÷ 0.1</td><td class="m">× 10</td><td class="m">47 ÷ 0.1 = 470</td></tr>
+        <tr><td class="m">÷ 0.01</td><td class="m">× 100</td><td class="m">47 ÷ 0.01 = 4700</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Multiplying can make a number smaller</span>
+      ${m('47 · 0.1 = 4.7')}. “Multiplication makes bigger” is only true for multipliers above ${m('1')} —
+      one of the most useful facts of the year to unlearn.</div>`
+    },
+    {
+      h: 'Converting units',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Conversion</th><th>Operation</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>m to cm</td><td class="m">× 100</td><td class="m">3.5 m = 350 cm</td></tr>
+        <tr><td>cm to m</td><td class="m">÷ 100</td><td class="m">47 cm = 0.47 m</td></tr>
+        <tr><td>km to m</td><td class="m">× 1000</td><td class="m">2.4 km = 2400 m</td></tr>
+        <tr><td>g to kg</td><td class="m">÷ 1000</td><td class="m">750 g = 0.75 kg</td></tr>
+        <tr><td>l to ml</td><td class="m">× 1000</td><td class="m">1.5 l = 1500 ml</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Smaller unit, bigger number</div>
+      A metre is many centimetres, so the number of centimetres is larger. Deciding whether to multiply or
+      divide is a question about the units, not about the digits.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compute ' + m('3.47 · 100') + ' and ' + m('3.47 ÷ 100') + '.',
+      steps: [
+        ['Each digit moves two columns left: ' + m('347') + '.', ''],
+        ['Each digit moves two columns right: ' + m('0.0347') + '.', 'Zeros fill the empty columns.']
+      ],
+      ans: m('347') + ' and ' + m('0.0347')
+    },
+    {
+      q: 'Compute ' + m('47 ÷ 0.1') + '.',
+      steps: [
+        ['Dividing by ' + m('0.1') + ' is multiplying by ' + m('10') + '.', ''],
+        ['How many tenths are in ' + m('47') + '? Ten in each unit.', ''],
+        [m('470'), '']
+      ],
+      ans: m('470')
+    },
+    {
+      q: 'Convert ' + m('750') + ' g to kilograms and ' + m('2.4') + ' km to metres.',
+      steps: [
+        ['A kilogram is ' + m('1000') + ' g, so divide: ' + m('0.75') + ' kg.', ''],
+        ['A kilometre is ' + m('1000') + ' m, so multiply: ' + m('2400') + ' m.', '']
+      ],
+      ans: m('0.75') + ' kg and ' + m('2400') + ' m'
+    }
+  ],
+  modelNote: 'Write the place-value columns once on the board and move the digits along it rather than the point; the zeros then appear where they are needed without a rule.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which way do the digits move?',
+    hint: 'Bigger answer means left; smaller means right.',
+    items: [
+      { q: m('3.47 · 10') + ' equals:', a: [m('34.7'), m('0.347'), m('347'), m('3.470')], c: 0, why: 'One column left.' },
+      { q: m('3.47 ÷ 100') + ' equals:', a: [m('0.347'), m('0.0347'), m('347'), m('34.7')], c: 1, why: 'Two columns right.' },
+      { q: m('58 ÷ 10') + ' equals:', a: [m('5.8'), m('0.58'), m('580'), m('5800')], c: 0, why: 'One column right.' },
+      { q: m('47 · 0.1') + ' equals:', a: [m('470'), m('4.7'), m('0.47'), m('4700')], c: 1, why: 'Same as ' + m('÷ 10') + '.' },
+      { q: m('47 ÷ 0.1') + ' equals:', a: [m('4.7'), m('470'), m('0.47'), m('4700')], c: 1, why: 'Same as ' + m('· 10') + '.' },
+      { q: m('47 ÷ 0.01') + ' equals:', a: [m('470'), m('4700'), m('0.47'), m('4.7')], c: 1, why: 'Same as ' + m('· 100') + '.' },
+      { q: m('3.5') + ' m in centimetres:', a: [m('35'), m('350'), m('0.035'), m('3500')], c: 1, why: m('× 100') + '.' },
+      { q: m('750') + ' g in kilograms:', a: [m('7.5'), m('0.75'), m('75'), m('0.075')], c: 1, why: m('÷ 1000') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'Multiplying by ' + m('10') + ' moves each digit:', a: ['one column left', 'one column right', 'two left', 'nowhere'], c: 0, why: 'Ten times bigger.' },
+    { q: 'Dividing by ' + m('100') + ' moves each digit:', a: ['two left', 'two right', 'one right', 'nowhere'], c: 1, why: 'A hundred times smaller.' },
+    { q: 'Multiplying by ' + m('0.1') + ' is the same as:', a: ['dividing by ' + m('10'), 'multiplying by ' + m('10'), 'adding ' + m('0.1'), 'nothing'], c: 0, why: 'A tenth of it.' },
+    { q: 'Dividing by ' + m('0.01') + ' is the same as:', a: ['dividing by ' + m('100'), 'multiplying by ' + m('100'), 'multiplying by ' + m('0.01'), 'nothing'], c: 1, why: 'Many hundredths fit.' },
+    { q: m('0.347 ÷ 10') + ' equals:', a: [m('0.0347'), m('0.347'), m('3.47'), m('0.00347')], c: 0, why: 'A zero fills the tenths.' },
+    { q: 'To change metres to centimetres:', a: ['divide by ' + m('100'), 'multiply by ' + m('100'), 'multiply by ' + m('10'), 'divide by ' + m('10')], c: 1, why: 'Smaller unit, bigger number.' }
+  ],
+  practice: {
+    easy: [
+      [m('3.47 · 10'), m('34.7')],
+      [m('3.47 · 100'), m('347')],
+      [m('3.47 ÷ 10'), m('0.347')],
+      [m('3.47 ÷ 100'), m('0.0347')],
+      [m('58 · 100'), m('5800')],
+      [m('58 ÷ 10'), m('5.8')],
+      [m('0.6 · 100'), m('60')]
+    ],
+    med: [
+      [m('47 · 0.1'), m('4.7')],
+      [m('47 · 0.01'), m('0.47')],
+      [m('47 ÷ 0.1'), m('470')],
+      [m('47 ÷ 0.01'), m('4700')],
+      [m('3.5') + ' m in cm', m('350')],
+      [m('47') + ' cm in m', m('0.47')],
+      [m('750') + ' g in kg', m('0.75')]
+    ],
+    hard: [
+      [m('0.06 ÷ 0.1'), m('0.6')],
+      [m('0.06 · 1000'), m('60')],
+      [m('2.4') + ' km in cm', m('240 000')],
+      [m('1.5') + ' l in ml', m('1500')],
+      [m('0.008 · 100'), m('0.8')],
+      ['Why does ' + m('47 · 0.1') + ' make the number smaller?', 'The multiplier is less than one'],
+      [m('3 200') + ' ml in litres', m('3.2')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Ask first whether the answer should be bigger or smaller; that settles the direction.',
+  homework: [
+    'Compute ' + m('5.28 · 10') + ', ' + m('5.28 · 1000') + ' and ' + m('5.28 ÷ 100') + '.',
+    'Compute ' + m('36 · 0.1') + ' and ' + m('36 ÷ 0.01') + '.',
+    'Convert ' + m('4.7') + ' m to centimetres and ' + m('86') + ' cm to metres.',
+    'Convert ' + m('3.6') + ' kg to grams and ' + m('450') + ' ml to litres.',
+    'Explain in one sentence why ' + m('÷ 0.1') + ' makes a number larger.'
+  ]
+});
+
+/* ============================== 30 ============================== */
+G6_MAT.push({
+  id: 'g6-30', stream: 'mat', grade: 6, quarter: 2, lessons: '58', hours: 1,
+  title: 'Rounding to a given accuracy',
+  subtitle: 'A Cambridge insert: which digit decides, and what a rounded answer really claims.',
+  uz: 'Matematika 6, qo‘shimcha mavzu', uzPage: 'pp. 164–166',
+  cam: 'S7 3.2', camPage: 'Stage 7, pp. 36–40', wb: 'Exercise 3.2',
+  objectives: [
+    'Round to the nearest ten, hundred and thousand.',
+    'Round to a given number of decimal places.',
+    'Round to a given number of significant figures.',
+    'Estimate a calculation by rounding first.'
+  ],
+  terms: [
+    ['To round', 'Yaxlitlash', 'Округлить'],
+    ['Nearest', 'Eng yaqin', 'Ближайший'],
+    ['Decimal place', 'O‘nli xona', 'Десятичный знак'],
+    ['Significant figure', 'Muhim raqam', 'Значащая цифра'],
+    ['Deciding digit', 'Hal qiluvchi raqam', 'Решающая цифра'],
+    ['Estimate', 'Taxminiy hisob', 'Оценка'],
+    ['Accuracy', 'Aniqlik', 'Точность'],
+    ['Approximately', 'Taxminan', 'Приблизительно']
+  ],
+  timing: [[10, 'The deciding digit'], [12, 'Decimal places'], [12, 'Significant figures'], [6, 'Estimating']],
+  sections: [
+    {
+      h: 'The deciding digit',
+      html: `<p>Look at the digit <b>immediately after</b> the place you are rounding to. If it is ${m('5')}
+      or more, round up; otherwise leave the digit alone.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Number</th><th>To the nearest ten</th><th>Hundred</th><th>Thousand</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3 472</td><td class="m">3 470</td><td class="m">3 500</td><td class="m">3 000</td></tr>
+        <tr><td class="m">2 851</td><td class="m">2 850</td><td class="m">2 900</td><td class="m">3 000</td></tr>
+        <tr><td class="m">795</td><td class="m">800</td><td class="m">800</td><td class="m">1 000</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Only one digit decides</span>
+      For ${m('3 472')} to the nearest hundred, the deciding digit is the ${m('7')}, not the ${m('2')}.
+      Looking further along and “rounding twice” gives the wrong answer.</div>`
+    },
+    {
+      h: 'Decimal places',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Number</th><th class="m">1 d.p.</th><th class="m">2 d.p.</th><th>Whole number</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3.472</td><td class="m">3.5</td><td class="m">3.47</td><td class="m">3</td></tr>
+        <tr><td class="m">0.0851</td><td class="m">0.1</td><td class="m">0.09</td><td class="m">0</td></tr>
+        <tr><td class="m">9.96</td><td class="m">10.0</td><td class="m">9.96</td><td class="m">10</td></tr>
+        <tr><td class="m">2.345</td><td class="m">2.3</td><td class="m">2.35</td><td class="m">2</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">${m('9.96')} to one decimal place is ${m('10.0')}, not ${m('10')}</div>
+      The rounding can carry into the next column, and the zero must stay to show the accuracy claimed.
+      Writing ${m('10')} claims a whole number; ${m('10.0')} claims a tenth.</div>`
+    },
+    {
+      h: 'Significant figures',
+      html: `<p>Significant figures are counted from the first non-zero digit, whatever the size of the
+      number.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Number</th><th class="m">1 s.f.</th><th class="m">2 s.f.</th><th class="m">3 s.f.</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3 472</td><td class="m">3 000</td><td class="m">3 500</td><td class="m">3 470</td></tr>
+        <tr><td class="m">0.0851</td><td class="m">0.09</td><td class="m">0.085</td><td class="m">0.0851</td></tr>
+        <tr><td class="m">205.6</td><td class="m">200</td><td class="m">210</td><td class="m">206</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Leading zeros are not significant; zeros between digits are</span>
+      In ${m('0.0851')} the first significant figure is the ${m('8')}. In ${m('205.6')} the ${m('0')}
+      counts, because it sits between two significant digits.</div>`
+    },
+    {
+      h: 'Estimating',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Calculation</th><th>Rounded</th><th>Estimate</th><th>Exact</th></tr></thead>
+      <tbody>
+        <tr><td class="m">38 · 21</td><td class="m">40 · 20</td><td class="m">800</td><td class="m">798</td></tr>
+        <tr><td class="m">4 187 ÷ 21</td><td class="m">4 000 ÷ 20</td><td class="m">200</td><td class="m">199.4</td></tr>
+        <tr><td class="m">6.9 · 5.2</td><td class="m">7 · 5</td><td class="m">35</td><td class="m">35.88</td></tr>
+        <tr><td class="m">297 + 405</td><td class="m">300 + 400</td><td class="m">700</td><td class="m">702</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">An estimate catches the big mistakes</div>
+      It will not tell you whether the answer is ${m('798')} or ${m('799')}, but it tells you at once that
+      ${m('7 980')} is wrong. Estimating first is how a calculator error is caught.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Round ' + m('3 472') + ' to the nearest hundred and to ' + m('2') + ' significant figures.',
+      steps: [
+        ['Nearest hundred: the deciding digit is ' + m('7') + ', so round up.', m('3 500')],
+        ['Two significant figures: the first two digits are ' + m('3') + ' and ' + m('4') + '; the next is ' + m('7') + '.', m('3 500')]
+      ],
+      ans: m('3 500') + ' both times'
+    },
+    {
+      q: 'Round ' + m('9.96') + ' to one decimal place.',
+      steps: [
+        ['The deciding digit is the ' + m('6') + '.', ''],
+        ['Round the ' + m('9') + ' up: it becomes ' + m('10') + ' and carries.', ''],
+        [m('10.0'), 'The zero shows the accuracy claimed.']
+      ],
+      ans: m('10.0')
+    },
+    {
+      q: 'Estimate ' + m('4 187 ÷ 21') + '.',
+      steps: [
+        ['Round to one significant figure each: ' + m('4 000 ÷ 20') + '.', ''],
+        [m('= 200'), ''],
+        ['The exact value is ' + m('199.4') + ' — close enough to check by.', '']
+      ],
+      ans: 'About ' + m('200')
+    }
+  ],
+  modelNote: 'Ask for an estimate before every calculation for a week; the habit catches more errors than any amount of rechecking.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which digit decides?',
+    hint: 'The one immediately after the place you are keeping.',
+    items: [
+      { q: m('3 472') + ' to the nearest hundred:', a: [m('3 400'), m('3 500'), m('3 470'), m('3 000')], c: 1, why: 'The ' + m('7') + ' decides.' },
+      { q: m('2 851') + ' to the nearest thousand:', a: [m('2 000'), m('3 000'), m('2 900'), m('2 800')], c: 1, why: 'The ' + m('8') + ' decides.' },
+      { q: m('3.472') + ' to ' + m('1') + ' d.p.:', a: [m('3.4'), m('3.5'), m('3.47'), m('4')], c: 1, why: 'The ' + m('7') + ' decides.' },
+      { q: m('9.96') + ' to ' + m('1') + ' d.p.:', a: [m('9.9'), m('10.0'), m('10'), m('9.96')], c: 1, why: 'The rounding carries.' },
+      { q: m('0.0851') + ' to ' + m('2') + ' s.f.:', a: [m('0.08'), m('0.085'), m('0.09'), m('0.0851')], c: 1, why: 'Count from the ' + m('8') + '.' },
+      { q: m('205.6') + ' to ' + m('2') + ' s.f.:', a: [m('200'), m('210'), m('205'), m('206')], c: 1, why: 'The third digit is ' + m('5') + '.' },
+      { q: 'Estimate ' + m('38 · 21') + ':', a: [m('600'), m('800'), m('1000'), m('80')], c: 1, why: m('40 · 20') + '.' },
+      { q: 'Estimate ' + m('6.9 · 5.2') + ':', a: [m('30'), m('35'), m('42'), m('12')], c: 1, why: m('7 · 5') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'A digit of ' + m('5') + ' or more means:', a: ['round down', 'round up', 'leave it', 'add one to the last digit shown'], c: 1, why: 'The standard rule.' },
+    { q: m('795') + ' to the nearest ten:', a: [m('790'), m('800'), m('700'), m('750')], c: 1, why: 'The ' + m('5') + ' rounds up.' },
+    { q: m('3.472') + ' to ' + m('2') + ' d.p.:', a: [m('3.47'), m('3.48'), m('3.5'), m('3.4')], c: 0, why: 'The deciding digit is ' + m('2') + '.' },
+    { q: 'In ' + m('0.0851') + ' the first significant figure is:', a: [m('0'), m('8'), m('5'), m('1')], c: 1, why: 'Leading zeros do not count.' },
+    { q: m('3 472') + ' to ' + m('1') + ' s.f.:', a: [m('3 000'), m('3 400'), m('4 000'), m('3 500')], c: 0, why: 'The second digit is ' + m('4') + '.' },
+    { q: 'An estimate is used to:', a: ['get an exact answer', 'catch a large error', 'avoid working', 'round twice'], c: 1, why: 'A sense check.' }
+  ],
+  practice: {
+    easy: [
+      [m('3 472') + ' to the nearest ten', m('3 470')],
+      [m('3 472') + ' to the nearest hundred', m('3 500')],
+      [m('2 851') + ' to the nearest thousand', m('3 000')],
+      [m('795') + ' to the nearest ten', m('800')],
+      [m('3.472') + ' to ' + m('1') + ' d.p.', m('3.5')],
+      [m('3.472') + ' to ' + m('2') + ' d.p.', m('3.47')],
+      [m('2.345') + ' to ' + m('2') + ' d.p.', m('2.35')]
+    ],
+    med: [
+      [m('9.96') + ' to ' + m('1') + ' d.p.', m('10.0')],
+      [m('0.0851') + ' to ' + m('2') + ' s.f.', m('0.085')],
+      [m('0.0851') + ' to ' + m('1') + ' s.f.', m('0.09')],
+      [m('205.6') + ' to ' + m('2') + ' s.f.', m('210')],
+      [m('3 472') + ' to ' + m('1') + ' s.f.', m('3 000')],
+      ['Estimate ' + m('38 · 21'), m('800')],
+      ['Estimate ' + m('297 + 405'), m('700')]
+    ],
+    hard: [
+      ['Estimate ' + m('4 187 ÷ 21'), m('200')],
+      ['Estimate ' + m('6.9 · 5.2'), m('35')],
+      [m('205.6') + ' to ' + m('3') + ' s.f.', m('206')],
+      ['Why is ' + m('10.0') + ' not the same claim as ' + m('10') + '?', 'It claims accuracy to a tenth'],
+      ['The smallest whole number that rounds to ' + m('700') + ' to the nearest hundred', m('650')],
+      ['The largest whole number that rounds to ' + m('700') + ' to the nearest hundred', m('749')],
+      ['A length given as ' + m('4.5') + ' m to ' + m('1') + ' d.p. lies between', m('4.45') + ' and ' + m('4.55') + ' m']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Underline the deciding digit before you round anything.',
+  homework: [
+    'Round ' + m('6 483') + ' to the nearest ten, hundred and thousand.',
+    'Round ' + m('5.278') + ' to ' + m('1') + ' and to ' + m('2') + ' decimal places.',
+    'Round ' + m('0.04672') + ' to ' + m('1') + ' and to ' + m('2') + ' significant figures.',
+    'Estimate ' + m('58 · 42') + ' and ' + m('8 130 ÷ 19') + '.',
+    'Between which two values does a mass given as ' + m('3.2') + ' kg to ' + m('1') + ' d.p. lie?'
+  ]
+});
