@@ -2153,3 +2153,354 @@ G7_MAT.push({
     'Name the greatest negative integer and the least positive integer.'
   ]
 });
+
+/* ============================== 13 ============================== */
+G7_MAT.push({
+  id: 'g7-13', stream: 'mat', grade: 7, quarter: 1, lessons: '25–26', hours: 2,
+  title: 'Addition of integers',
+  subtitle: 'Two rules — same signs and different signs — and a number line that explains both.',
+  uz: 'Matematika 7, §10', uzPage: 'pp. 64–70',
+  cam: 'S8 1.2', camPage: 'Stage 8, pp. 6–10', wb: 'Exercise 1.2',
+  objectives: [
+    'Add two integers with the same sign and with different signs.',
+    'Use the coordinate line as a model for addition.',
+    'Use the commutative and associative laws to add several integers.',
+    'Solve word problems involving gains and losses.'
+  ],
+  terms: [
+    ['Addition', 'Qo‘shish', 'Сложение'],
+    ['Sum', 'Yig‘indi', 'Сумма'],
+    ['Same sign', 'Bir xil ishorali', 'Одинаковые знаки'],
+    ['Different signs', 'Turli ishorali', 'Разные знаки'],
+    ['Commutative law', 'O‘rin almashtirish qonuni', 'Переместительный закон'],
+    ['Associative law', 'Guruhlash qonuni', 'Сочетательный закон'],
+    ['Term', 'Qo‘shiluvchi', 'Слагаемое'],
+    ['Gain and loss', 'Foyda va zarar', 'Прибыль и убыток']
+  ],
+  timing: [[15, 'On the line'], [25, 'Same signs'], [25, 'Different signs'], [20, 'Several terms'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'On the line',
+      html: `<p>To add ${m('b')} to ${m('a')}: start at ${m('a')} and move ${m('|b|')} units — right if
+      ${m('b')} is positive, left if it is negative.</p>
+      {{fig:numberLineInterval:Adding a positive number moves right; adding a negative one moves left.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sum</th><th>Start</th><th>Move</th><th>End</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3 + 4</td><td class="m">3</td><td>${m('4')} right</td><td class="m">7</td></tr>
+        <tr><td class="m">3 + (−4)</td><td class="m">3</td><td>${m('4')} left</td><td class="m">−1</td></tr>
+        <tr><td class="m">−3 + 4</td><td class="m">−3</td><td>${m('4')} right</td><td class="m">1</td></tr>
+        <tr><td class="m">−3 + (−4)</td><td class="m">−3</td><td>${m('4')} left</td><td class="m">−7</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The line is the definition, the rules are the shortcut</div>
+      Anyone who forgets a rule can rebuild it in five seconds on a sketch. That is why the picture comes
+      first in this lesson and the rules second.</div>`
+    },
+    {
+      h: 'Same signs',
+      html: `${eq('Add the moduli and keep the common sign', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sum</th><th>Moduli</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5 + 8</td><td class="m">5 + 8 = 13</td><td class="m">13</td></tr>
+        <tr><td class="m">(−5) + (−8)</td><td class="m">5 + 8 = 13</td><td class="m">−13</td></tr>
+        <tr><td class="m">(−12) + (−7)</td><td class="m">12 + 7 = 19</td><td class="m">−19</td></tr>
+      </tbody></table></div>
+      <p>Two debts make a bigger debt; two falls in temperature make a bigger fall. The rule matches
+      every situation.</p>`
+    },
+    {
+      h: 'Different signs',
+      html: `${eq('Subtract the smaller modulus from the larger, and keep the sign of the larger modulus', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sum</th><th>Moduli</th><th>Larger</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">9 + (−4)</td><td class="m">9, 4</td><td class="m">9</td><td class="m">5</td></tr>
+        <tr><td class="m">4 + (−9)</td><td class="m">4, 9</td><td class="m">9</td><td class="m">−5</td></tr>
+        <tr><td class="m">(−12) + 7</td><td class="m">12, 7</td><td class="m">12</td><td class="m">−5</td></tr>
+        <tr><td class="m">6 + (−6)</td><td class="m">6, 6</td><td>equal</td><td class="m">0</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The sign comes from the larger modulus, not from the first number</span>
+      ${m('4 + (−9) = −5')}, even though the sum starts with a positive. Deciding the sign first, then
+      the size, keeps the two steps separate.</div>`
+    },
+    {
+      h: 'Several terms',
+      html: `<p>Addition is <b>commutative</b> and <b>associative</b>, so the terms may be reordered and
+      regrouped freely.</p>
+      ${eq(m('a + b = b + a') + '     ' + m('(a + b) + c = a + (b + c)'), true)}
+      <p><b>Method.</b> Add all the positives, add all the negatives, then combine the two results.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sum</th><th>Positives</th><th>Negatives</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">7 − 3 + 5 − 12</td><td class="m">12</td><td class="m">−15</td><td class="m">−3</td></tr>
+        <tr><td class="m">−4 + 9 − 6 + 1</td><td class="m">10</td><td class="m">−10</td><td class="m">0</td></tr>
+        <tr><td class="m">−2 − 5 − 8</td><td class="m">0</td><td class="m">−15</td><td class="m">−15</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Two piles, one subtraction</div>
+      Grouping like signs turns a long chain into a single easy step. It is the same idea as collecting
+      like terms in algebra, which arrives later this year.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compute ' + m('(−5) + (−8)') + ', ' + m('9 + (−4)') + ' and ' + m('4 + (−9)') + '.',
+      steps: [
+        ['Same signs: add moduli, keep the sign — ' + m('−13') + '.', ''],
+        ['Different signs: ' + m('9 − 4 = 5') + ', sign of ' + m('9') + ' — ' + m('5') + '.', ''],
+        ['Different signs: ' + m('9 − 4 = 5') + ', sign of ' + m('−9') + ' — ' + m('−5') + '.', ''],
+        ['Sign first, then size.', '']
+      ],
+      ans: m('−13, 5, −5')
+    },
+    {
+      q: 'Compute ' + m('7 − 3 + 5 − 12') + '.',
+      steps: [
+        ['Positives: ' + m('7 + 5 = 12') + '.', ''],
+        ['Negatives: ' + m('−3 − 12 = −15') + '.', ''],
+        [m('12 + (−15)'), ''],
+        [m('= −3'), '']
+      ],
+      ans: m('−3')
+    },
+    {
+      q: 'A shop makes a profit of ' + m('45 000') + ', then a loss of ' + m('70 000') + ', then a profit of ' + m('30 000') + '. Find the net result.',
+      steps: [
+        ['Profits: ' + m('45 000 + 30 000 = 75 000') + '.', ''],
+        ['Loss: ' + m('−70 000') + '.', ''],
+        [m('75 000 + (−70 000)'), ''],
+        [m('= +5000') + ' — a small profit.', '']
+      ],
+      ans: 'A profit of ' + m('5000')
+    }
+  ],
+  modelNote: 'Do every first example twice — once by the rule and once by walking the line on the floor; the two answers agreeing is what makes the rule trustworthy.',
+  interactive: {
+    type: 'inequalityLine',
+    title: 'Adding on the line',
+    hint: 'Positive moves right, negative moves left.'
+  },
+  quiz: [
+    { q: m('(−5) + (−8)') + ' equals:', a: [m('13'), m('−13'), m('3'), m('−3')], c: 1, why: 'Same signs: add and keep.' },
+    { q: m('9 + (−4)') + ' equals:', a: [m('13'), m('−13'), m('5'), m('−5')], c: 2, why: 'Sign of the larger modulus.' },
+    { q: m('4 + (−9)') + ' equals:', a: [m('5'), m('−5'), m('13'), m('−13')], c: 1, why: m('9') + ' has the larger modulus.' },
+    { q: m('6 + (−6)') + ' equals:', a: [m('12'), m('−12'), m('0'), m('6')], c: 2, why: 'Opposites.' },
+    { q: 'For different signs you:', a: ['add the moduli', 'subtract the moduli', 'multiply them', 'ignore them'], c: 1, why: 'Then take the larger sign.' },
+    { q: 'Addition is:', a: ['commutative only', 'associative only', 'both', 'neither'], c: 2, why: 'Order and grouping are free.' }
+  ],
+  practice: {
+    easy: [
+      [m('3 + 4'), m('7')],
+      [m('3 + (−4)'), m('−1')],
+      [m('−3 + 4'), m('1')],
+      [m('−3 + (−4)'), m('−7')],
+      [m('(−5) + (−8)'), m('−13')],
+      [m('9 + (−4)'), m('5')],
+      [m('6 + (−6)'), m('0')]
+    ],
+    med: [
+      [m('(−12) + 7'), m('−5')],
+      [m('4 + (−9)'), m('−5')],
+      [m('7 − 3 + 5 − 12'), m('−3')],
+      [m('−4 + 9 − 6 + 1'), m('0')],
+      [m('−2 − 5 − 8'), m('−15')],
+      [m('15 + (−15) + 8'), m('8')],
+      ['Profit ' + m('45') + ', loss ' + m('70') + ', profit ' + m('30'), m('+5')]
+    ],
+    hard: [
+      [m('−17 + 25 − 8 + 3 − 11'), m('−8')],
+      [m('(−3) + (−3) + (−3) + (−3)'), m('−12')],
+      ['A temperature of ' + m('−6°') + ' rises ' + m('4') + ', falls ' + m('9') + ', rises ' + m('12'), m('+1°')],
+      ['Find ' + m('x') + ': ' + m('x + (−7) = 3'), m('10')],
+      ['Find ' + m('x') + ': ' + m('−5 + x = −12'), m('−7')],
+      ['The sum of all integers from ' + m('−10') + ' to ' + m('10'), m('0')],
+      ['The sum of all integers from ' + m('−10') + ' to ' + m('12'), m('23')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Decide the sign of the answer before computing its size.',
+  homework: [
+    'Compute ' + m('(−7) + (−6)') + ', ' + m('11 + (−4)') + ' and ' + m('5 + (−13)') + '.',
+    'Compute ' + m('9 − 4 + 7 − 15') + '.',
+    'Compute ' + m('−3 − 8 + 20 − 6') + '.',
+    'A bank balance of ' + m('60 000') + ' has ' + m('85 000') + ' withdrawn and ' + m('40 000') + ' paid in. Find the balance.',
+    'Find ' + m('x') + ' if ' + m('x + (−9) = −2') + '.'
+  ]
+});
+
+/* ============================== 14 ============================== */
+G7_MAT.push({
+  id: 'g7-14', stream: 'mat', grade: 7, quarter: 1, lessons: '27–28', hours: 2,
+  title: 'Subtraction of integers',
+  subtitle: 'Subtracting is adding the opposite — one rule that replaces the whole operation.',
+  uz: 'Matematika 7, §11', uzPage: 'pp. 71–76',
+  cam: 'S8 1.2', camPage: 'Stage 8, pp. 6–10', wb: 'Exercise 1.2',
+  objectives: [
+    'State and use a − b = a + (−b).',
+    'Simplify expressions containing two signs in a row.',
+    'Compute chains of additions and subtractions.',
+    'Use subtraction to find a difference or a change.'
+  ],
+  terms: [
+    ['Subtraction', 'Ayirish', 'Вычитание'],
+    ['Difference', 'Ayirma', 'Разность'],
+    ['Minuend', 'Kamayuvchi', 'Уменьшаемое'],
+    ['Subtrahend', 'Ayiriluvchi', 'Вычитаемое'],
+    ['Opposite', 'Qarama-qarshi', 'Противоположное'],
+    ['Two signs in a row', 'Ketma-ket ikki ishora', 'Два знака подряд'],
+    ['Change', 'O‘zgarish', 'Изменение'],
+    ['Rise and fall', 'Ko‘tarilish va pasayish', 'Подъём и спад']
+  ],
+  timing: [[15, 'One rule'], [25, 'Two signs in a row'], [25, 'Chains'], [20, 'Differences'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'One rule',
+      html: `${eq(m('a − b = a + (−b)'), true)}
+      <p>To subtract a number, add its opposite. Subtraction is not a new operation at all — it is
+      addition, once the opposite is taken.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Subtraction</th><th>As an addition</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">7 − 3</td><td class="m">7 + (−3)</td><td class="m">4</td></tr>
+        <tr><td class="m">3 − 7</td><td class="m">3 + (−7)</td><td class="m">−4</td></tr>
+        <tr><td class="m">−3 − 7</td><td class="m">−3 + (−7)</td><td class="m">−10</td></tr>
+        <tr><td class="m">−3 − (−7)</td><td class="m">−3 + 7</td><td class="m">4</td></tr>
+        <tr><td class="m">3 − (−7)</td><td class="m">3 + 7</td><td class="m">10</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Nothing new has to be learnt</div>
+      Every subtraction becomes an addition, and addition was the last lesson. That is why the rule for
+      subtraction is a single line while the rule for addition took two cases.</div>`
+    },
+    {
+      h: 'Two signs in a row',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Written</th><th>Means</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="m">+(+a)</td><td class="m">+a</td><td class="m">5 + (+3) = 8</td></tr>
+        <tr><td class="m">+(−a)</td><td class="m">−a</td><td class="m">5 + (−3) = 2</td></tr>
+        <tr><td class="m">−(+a)</td><td class="m">−a</td><td class="m">5 − (+3) = 2</td></tr>
+        <tr><td class="m">−(−a)</td><td class="m">+a</td><td class="m">5 − (−3) = 8</td></tr>
+      </tbody></table></div>
+      <p>Two like signs give a plus; two unlike signs give a minus.</p>
+      <div class="warn"><span class="wl">${m('5 − (−3)')} is ${m('8')}, not ${m('2')}</span>
+      Taking away a debt leaves you better off. The everyday sentence explains the arithmetic, and it is
+      worth saying aloud each time until the rule is automatic.</div>`
+    },
+    {
+      h: 'Chains',
+      html: `<p>Rewrite every subtraction as an addition first, then use the two-pile method.</p>
+      <p><b>Example.</b> ${m('−4 − (−9) + (−6) − 2')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Expression</th></tr></thead>
+      <tbody>
+        <tr><td>rewrite</td><td class="m">−4 + 9 − 6 − 2</td></tr>
+        <tr><td>positives</td><td class="m">9</td></tr>
+        <tr><td>negatives</td><td class="m">−4 − 6 − 2 = −12</td></tr>
+        <tr><td>combine</td><td class="m">9 − 12 = −3</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Rewrite the whole chain before computing anything</div>
+      Doing the sign work and the arithmetic at the same time is where errors come from. Two separate
+      passes are quicker in the end.</div>`
+    },
+    {
+      h: 'Differences',
+      html: `<p>The <b>change</b> from ${m('a')} to ${m('b')} is ${m('b − a')}: the new value minus the
+      old one. A positive answer is a rise, a negative one a fall.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>From</th><th>To</th><th>Change</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td class="m">4°</td><td class="m">11°</td><td class="m">+7</td><td>a rise of ${m('7')}</td></tr>
+        <tr><td class="m">4°</td><td class="m">−3°</td><td class="m">−7</td><td>a fall of ${m('7')}</td></tr>
+        <tr><td class="m">−9°</td><td class="m">−2°</td><td class="m">+7</td><td>a rise of ${m('7')}</td></tr>
+        <tr><td class="m">−2°</td><td class="m">−9°</td><td class="m">−7</td><td>a fall of ${m('7')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">“New minus old”, in that order</span>
+      Reversing the subtraction reverses the sign and turns a rise into a fall. Writing the words “new −
+      old” at the top of the working prevents it.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compute ' + m('3 − (−7)') + ', ' + m('−3 − 7') + ' and ' + m('−3 − (−7)') + '.',
+      steps: [
+        [m('3 − (−7) = 3 + 7 = 10'), 'Two minuses give a plus.'],
+        [m('−3 − 7 = −3 + (−7) = −10'), ''],
+        [m('−3 − (−7) = −3 + 7 = 4'), ''],
+        ['Rewrite first, compute second.', '']
+      ],
+      ans: m('10, −10, 4')
+    },
+    {
+      q: 'Compute ' + m('−4 − (−9) + (−6) − 2') + '.',
+      steps: [
+        ['Rewrite: ' + m('−4 + 9 − 6 − 2') + '.', ''],
+        ['Positives: ' + m('9') + '.', ''],
+        ['Negatives: ' + m('−12') + '.', ''],
+        [m('9 − 12 = −3'), '']
+      ],
+      ans: m('−3')
+    },
+    {
+      q: 'The temperature falls from ' + m('4°C') + ' to ' + m('−9°C') + '. Find the change and the size of the fall.',
+      steps: [
+        ['Change ' + m('= new − old = −9 − 4') + '.', ''],
+        [m('= −13'), ''],
+        ['Negative, so it is a fall.', ''],
+        ['A fall of ' + m('13') + ' degrees.', '']
+      ],
+      ans: m('−13') + ' — a fall of ' + m('13°')
+    }
+  ],
+  modelNote: 'Say “taking away a debt makes you richer” once, and then let the class supply it themselves every time a −(−) appears; the rule sticks as a sentence, not a symbol.',
+  interactive: {
+    type: 'inequalityLine',
+    title: 'Subtracting on the line',
+    hint: 'Subtracting a negative moves right.'
+  },
+  quiz: [
+    { q: m('a − b') + ' equals:', a: [m('a + b'), m('a + (−b)'), m('−a + b'), m('b − a')], c: 1, why: 'Add the opposite.' },
+    { q: m('5 − (−3)') + ' equals:', a: [m('2'), m('8'), m('−2'), m('−8')], c: 1, why: 'Two minuses give a plus.' },
+    { q: m('−3 − 7') + ' equals:', a: [m('4'), m('−4'), m('10'), m('−10')], c: 3, why: 'Both negative.' },
+    { q: m('−(−a)') + ' equals:', a: [m('−a'), m('a'), m('0'), m('|a|')], c: 1, why: 'The opposite of the opposite.' },
+    { q: 'The change from ' + m('4') + ' to ' + m('−3') + ':', a: [m('7'), m('−7'), m('1'), m('−1')], c: 1, why: 'New minus old.' },
+    { q: 'A negative change means:', a: ['a rise', 'a fall', 'no change', 'an error'], c: 1, why: 'The value went down.' }
+  ],
+  practice: {
+    easy: [
+      [m('7 − 3'), m('4')],
+      [m('3 − 7'), m('−4')],
+      [m('−3 − 7'), m('−10')],
+      [m('3 − (−7)'), m('10')],
+      [m('−3 − (−7)'), m('4')],
+      [m('5 − (+3)'), m('2')],
+      [m('5 + (−3)'), m('2')]
+    ],
+    med: [
+      [m('−4 − (−9) + (−6) − 2'), m('−3')],
+      [m('12 − 20 + 5 − (−3)'), m('0')],
+      [m('−15 − (−15)'), m('0')],
+      [m('0 − (−8)'), m('8')],
+      ['Change from ' + m('4°') + ' to ' + m('−9°'), m('−13')],
+      ['Change from ' + m('−9°') + ' to ' + m('−2°'), m('+7')],
+      [m('−7 − (−2) − 5'), m('−10')]
+    ],
+    hard: [
+      [m('−3 − (−5) − (−7) − 9'), m('0')],
+      ['Find ' + m('x') + ': ' + m('x − (−4) = 1'), m('−3')],
+      ['Find ' + m('x') + ': ' + m('−6 − x = 2'), m('−8')],
+      ['The difference between the highest and lowest of ' + m('−12, 5, −3, 8'), m('20')],
+      ['A lift from ' + m('−3') + ' to ' + m('9') + ': floors travelled', m('12')],
+      ['On a day the temperature goes ' + m('−7 → 3 → −5'), 'A rise of ' + m('10') + ', a fall of ' + m('8')],
+      ['Simplify ' + m('a − (−b) − (−c)'), m('a + b + c')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every subtraction as an addition before computing anything.',
+  homework: [
+    'Compute ' + m('8 − (−5)') + ', ' + m('−8 − 5') + ' and ' + m('−8 − (−5)') + '.',
+    'Compute ' + m('−6 − (−11) + (−4) − 3') + '.',
+    'The temperature falls from ' + m('7°C') + ' to ' + m('−6°C') + '. Find the change.',
+    'Find the difference between the highest and lowest of ' + m('−15, 4, −8, 11') + '.',
+    'Find ' + m('x') + ' if ' + m('x − (−6) = −1') + '.'
+  ]
+});
