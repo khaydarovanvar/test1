@@ -14476,3 +14476,178 @@ G7_MAT.push({
     'A boat does ' + m('22 km/h') + ' downstream and ' + m('14 km/h') + ' upstream. Find both speeds.'
   ]
 });
+
+/* ============================== 81 ============================== */
+G7_MAT.push({
+  id: 'g7-81', stream: 'mat', grade: 7, quarter: 4, lessons: '153–154', hours: 2,
+  title: 'Control work 11, and work on the mistakes',
+  subtitle: 'Systems of two linear equations, by both methods, and the problems behind them.',
+  uz: 'Matematika 7, Nazorat ishi 11', uzPage: 'pp. 432–461',
+  cam: 'Extension review', camPage: 'Stage 8 extension', wb: 'Control paper M11',
+  objectives: [
+    'Solve a system by substitution and by elimination.',
+    'Say from the algebra when there is no solution or infinitely many.',
+    'Turn a two-condition problem into a system and answer both parts.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['System', 'Sistema', 'Система'],
+    ['Substitution', 'O‘rniga qo‘yish', 'Подстановка'],
+    ['Elimination', 'Qo‘shish usuli', 'Способ сложения'],
+    ['Ordered pair', 'Tartiblangan juftlik', 'Упорядоченная пара'],
+    ['No solution', 'Yechimga ega emas', 'Нет решений'],
+    ['Infinitely many', 'Cheksiz ko‘p', 'Бесконечно много'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 25 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Solve ${m('{ y = x − 1 ; x + y = 5 }')} by substitution</td><td class="m">4</td><td>L147–149</td></tr>
+        <tr><td>2</td><td>Solve ${m('{ x + y = 9 ; x − y = 3 }')} by elimination</td><td class="m">4</td><td>L147–149</td></tr>
+        <tr><td>3</td><td>Solve ${m('{ 2x + 3y = 12 ; x − y = 1 }')}</td><td class="m">5</td><td>L147–149</td></tr>
+        <tr><td>4</td><td>How many solutions has ${m('{ y = 4x − 1 ; y = 4x + 2 }')}? Explain</td><td class="m">3</td><td>L145–149</td></tr>
+        <tr><td>5</td><td>Two numbers add to ${m('26')} and differ by ${m('8')}: find them</td><td class="m">4</td><td>L150–152</td></tr>
+        <tr><td>6</td><td>A boat does ${m('22 km/h')} downstream and ${m('14 km/h')} upstream: find both speeds</td><td class="m">5</td><td>L150–152</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 one mark for back-substituting rather than stopping at ${m('x')}; Q2 two for lining the equations
+      up correctly; Q4 two for the words “parallel lines, so no solution”; Q5 and Q6 one each for the
+      “let” sentences and one each for answering both parts.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>substituted into its own equation</td><td class="m">0 = 0</td><td>put it into the other one</td></tr>
+        <tr><td>only one unknown found</td><td class="m">x = 3</td><td class="m">(3; 2)</td></tr>
+        <tr><td>right-hand sides not subtracted</td><td class="m">2x = 7</td><td class="m">2x = 7 − 4</td></tr>
+        <tr><td>multiplied one side only</td><td class="m">3x − 3y = 1</td><td class="m">3x − 3y = 3</td></tr>
+        <tr><td>“no solution” called an error</td><td>the working abandoned</td><td class="m">0 = 3</td></tr>
+        <tr><td>unknowns not declared</td><td>two equations with no “let”</td><td>say what ${m('x')} and ${m('y')} are</td></tr>
+        <tr><td>only one quantity reported</td><td>“the boat does ${m('18')}”</td><td>both the boat and the current</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'The chapter as one map',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Idea</th><th>The sentence</th></tr></thead>
+      <tbody>
+        <tr><td>one linear equation in two unknowns</td><td>its solutions fill a straight line</td></tr>
+        <tr><td>a system</td><td>the pairs satisfying both equations at once</td></tr>
+        <tr><td>graphically</td><td>the crossing point of the two lines</td></tr>
+        <tr><td>substitution</td><td>express one unknown, put it into the other equation</td></tr>
+        <tr><td>elimination</td><td>add or subtract to cancel an unknown</td></tr>
+        <tr><td class="m">0 = 3</td><td>parallel lines — no solution</td></tr>
+        <tr><td class="m">0 = 0</td><td>the same line — infinitely many</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      The last block of the year is combinatorics: counting arrangements and selections. It needs no
+      equations at all — only the two rules of “and” and “or”.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q3: ' + m('{ 2x + 3y = 12 ; x − y = 1 }') + '.',
+      steps: [
+        ['From the second, ' + m('x = y + 1') + '.', 'A coefficient of ' + m('1') + '.'],
+        [m('2(y + 1) + 3y = 12'), ''],
+        [m('5y = 10') + ', so ' + m('y = 2') + '.', ''],
+        [m('x = 3') + '. Check: ' + m('6 + 6 = 12') + ' ✓ and ' + m('3 − 2 = 1') + ' ✓', '']
+      ],
+      ans: m('(3; 2)')
+    },
+    {
+      q: 'Model answer, Q4: ' + m('{ y = 4x − 1 ; y = 4x + 2 }') + '.',
+      steps: [
+        ['Setting the right sides equal: ' + m('4x − 1 = 4x + 2') + '.', ''],
+        [m('0 = 3'), ''],
+        ['That is false for every ' + m('x') + '.', ''],
+        ['The gradients are equal and the intercepts differ: parallel lines, no solution.', '']
+      ],
+      ans: 'No solution'
+    },
+    {
+      q: 'Model answer, Q6: downstream ' + m('22') + ', upstream ' + m('14') + '.',
+      steps: [
+        ['Let ' + m('x') + ' be the boat\'s own speed and ' + m('y') + ' the current\'s.', ''],
+        [m('x + y = 22') + ' and ' + m('x − y = 14') + '.', ''],
+        ['Add: ' + m('2x = 36') + ', so ' + m('x = 18') + '.', ''],
+        [m('y = 4') + '. Both speeds are asked for, so both are given.', '']
+      ],
+      ans: 'Boat ' + m('18 km/h') + ', current ' + m('4 km/h')
+    }
+  ],
+  modelNote: 'Return Q5 and Q6 first and count how many scripts reported only one number; the habit of answering the whole question is worth more marks than any technique.',
+  interactive: {
+    type: 'quiz',
+    title: 'The chapter in twelve questions',
+    hint: 'Method, answer, interpretation.',
+    items: [
+      { q: m('x + y = 5') + ' alone has:', a: ['one solution', 'no solutions', 'a line of solutions', 'two solutions'], c: 2, why: 'Infinitely many pairs.' },
+      { q: 'The solution of a system is:', a: ['a number', 'an ordered pair', 'a line', 'an equation'], c: 1, why: 'Both unknowns.' },
+      { q: 'Graphically it is:', a: ['the intercept', 'the crossing point', 'the origin', 'the gradient'], c: 1, why: 'On both lines.' },
+      { q: m('{ y = x − 1 ; x + y = 5 }') + ' gives:', a: [m('(3; 2)'), m('(2; 3)'), m('(4; 3)'), m('(1; 4)')], c: 0, why: 'Substitute.' },
+      { q: 'Adding ' + m('x + y = 9') + ' and ' + m('x − y = 3') + ' gives:', a: [m('2x = 12'), m('2y = 6'), m('2x = 6'), m('x = 12')], c: 0, why: 'The ' + m('y') + 's cancel.' },
+      { q: 'So the solution is:', a: [m('(6; 3)'), m('(3; 6)'), m('(12; 3)'), m('(6; 6)')], c: 0, why: 'Back-substitute.' },
+      { q: m('{ 2x + 3y = 12 ; x − y = 1 }') + ' gives:', a: [m('(2; 3)'), m('(3; 2)'), m('(1; 2)'), m('(4; 3)')], c: 1, why: 'Substitution is quickest.' },
+      { q: 'Equal gradients and different intercepts give:', a: ['one solution', 'no solution', 'infinitely many', 'two solutions'], c: 1, why: 'Parallel.' },
+      { q: 'Equal gradients and equal intercepts give:', a: ['one solution', 'no solution', 'infinitely many', 'none of these'], c: 2, why: 'The same line.' },
+      { q: 'Two numbers adding to ' + m('26') + ' and differing by ' + m('8') + ' are:', a: [m('17') + ' and ' + m('9'), m('16') + ' and ' + m('10'), m('18') + ' and ' + m('8'), m('15') + ' and ' + m('11')], c: 0, why: m('2x = 34') + '.' },
+      { q: 'Downstream ' + m('22') + ' and upstream ' + m('14') + ' give a current of:', a: [m('4'), m('8'), m('18'), m('36')], c: 0, why: 'Half the difference.' },
+      { q: 'When a problem names two quantities you should report:', a: ['one of them', 'both of them', 'the equations', m('x') + ' only'], c: 1, why: 'The question asked for both.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 finishes with:', a: [m('x') + ' only', 'back-substitution', 'a graph', 'a check only'], c: 1, why: 'The answer is a pair.' },
+    { q: 'Q2 uses:', a: ['adding', 'subtracting', 'multiplying', 'drawing'], c: 0, why: 'Opposite coefficients of ' + m('y') + '.' },
+    { q: 'Q3 is quickest by:', a: ['substitution', 'drawing', 'guessing', 'squaring'], c: 0, why: 'A coefficient of ' + m('1') + '.' },
+    { q: 'Q4 answer is:', a: ['one solution', 'no solution', 'infinitely many', m('(0; 3)')], c: 1, why: 'Parallel lines.' },
+    { q: 'Q5 needs:', a: ['one number', 'two numbers', 'an equation', 'a graph'], c: 1, why: 'Both are asked for.' },
+    { q: 'Q6 asks for:', a: ['the boat only', 'the current only', 'both speeds', 'the distance'], c: 2, why: 'Two quantities.' }
+  ],
+  practice: {
+    easy: [
+      [m('{ y = x − 1 ; x + y = 5 }'), m('(3; 2)')],
+      [m('{ x + y = 9 ; x − y = 3 }'), m('(6; 3)')],
+      [m('{ 2x + 3y = 12 ; x − y = 1 }'), m('(3; 2)')],
+      [m('{ y = 4x − 1 ; y = 4x + 2 }'), 'No solution'],
+      ['Two numbers adding to ' + m('26') + ' and differing by ' + m('8'), m('17') + ' and ' + m('9')],
+      ['Downstream ' + m('22') + ', upstream ' + m('14') + ': the boat', m('18')],
+      ['And the current', m('4')]
+    ],
+    med: [
+      [m('{ 3x + y = 11 ; x + y = 5 }'), m('(3; 2)')],
+      [m('{ y = 2x + 1 ; y = 3x − 2 }'), m('(3; 7)')],
+      [m('{ 2x + y = 8 ; 3x − y = 7 }'), m('(3; 2)')],
+      [m('{ y = 4x − 1 ; 2y = 8x − 2 }'), 'Infinitely many'],
+      ['A rectangle of perimeter ' + m('48') + ', length ' + m('6') + ' more than width', m('9') + ' by ' + m('15')],
+      ['Complementary angles differing by ' + m('20°'), m('55°') + ' and ' + m('35°')],
+      [m('{ x + 2y = 7 ; x = 3 }'), m('(3; 2)')]
+    ],
+    hard: [
+      [m('{ 2x + 5y = 16 ; 3x − 2y = 5 }'), m('(3; 2)')],
+      [m('{ 4x + 3y = 18 ; 2x − y = 4 }'), m('(3; 2)')],
+      ['Digits add to ' + m('12') + ', reversal ' + m('18') + ' larger', m('57')],
+      [m('4') + ' notebooks and ' + m('3') + ' pens cost ' + m('26 000') + '; ' + m('2') + ' notebooks and ' + m('1') + ' pen cost ' + m('12 000'), 'Notebook ' + m('5000') + ', pen ' + m('2000')],
+      ['For which ' + m('k') + ' has ' + m('{ y = kx + 1 ; y = 5x − 2 }') + ' no solution?', m('k = 5')],
+      ['Why is “' + m('x = 3') + '” an incomplete answer to a system?', 'The solution is a pair'],
+      [m('{ x − y = 0 ; x + y = 14 }'), m('(7; 7)')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite every question you lost a mark on in full, from the first line.',
+  homework: [
+    'Rewrite in full every question on which you lost a mark.',
+    'Solve ' + m('{ y = 2x − 3 ; x + y = 6 }') + ' by substitution.',
+    'Solve ' + m('{ 3x + 2y = 16 ; 3x − 2y = 8 }') + ' by elimination.',
+    'Say how many solutions ' + m('{ y = 5x + 2 ; 2y = 10x + 4 }') + ' has and why.',
+    'Two numbers add to ' + m('34') + ' and differ by ' + m('10') + '. Find them.'
+  ]
+});
