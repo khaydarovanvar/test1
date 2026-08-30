@@ -1406,3 +1406,1110 @@ G9_ALG.push({
     'Write your target for the rest of Chapter I in one checkable sentence, and date it.'
   ]
 });
+
+/* ============================== 09 ============================== */
+G9_ALG.push({
+  id: 'a9-09', stream: 'alg', grade: 9, quarter: 1, lessons: '17–18', hours: 2,
+  title: 'The domain of a function',
+  subtitle: 'Three things forbid a value: a zero denominator, a negative under a square root, and both at once.',
+  uz: 'Algebra 9, §9', uzPage: 'pp. 37–40',
+  cam: 'IGX 10.1', camPage: 'Core & Extended, pp. 198–215', wb: 'Exercise 10.1',
+  objectives: [
+    'State what the domain of a function means.',
+    'Find the domain of a rational, a root and a mixed expression.',
+    'Write a domain as an interval or a union of intervals.',
+    'Recognise when a domain question is really a quadratic inequality.'
+  ],
+  terms: [
+    ['Domain', 'Aniqlanish sohasi', 'Область определения'],
+    ['Range', 'Qiymatlar sohasi', 'Область значений'],
+    ['Denominator', 'Maxraj', 'Знаменатель'],
+    ['Radicand', 'Ildiz ostidagi ifoda', 'Подкоренное выражение'],
+    ['Admissible value', 'Mumkin bo‘lgan qiymat', 'Допустимое значение'],
+    ['Excluded value', 'Chetlangan qiymat', 'Исключённое значение'],
+    ['Union of intervals', 'Oraliqlar birlashmasi', 'Объединение промежутков'],
+    ['Natural domain', 'Tabiiy soha', 'Естественная область']
+  ],
+  timing: [[12, 'What a domain is'], [22, 'The two forbidden things'], [25, 'Roots and quadratics'], [23, 'Both at once'], [8, 'Homework']],
+  sections: [
+    {
+      h: 'What a domain is',
+      html: `<p>The <b>domain</b> ${m('D(f)')} is the set of ${m('x')} for which the formula makes sense.
+      Unless a problem says otherwise, it is the largest such set — the <b>natural</b> domain.</p>
+      {{fig:mapping:Every x of the domain sends one y to the range; a forbidden x has no arrow at all.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Function</th><th>Domain</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = 3x − 7</td><td>all ${m('x')}</td><td>nothing forbids anything</td></tr>
+        <tr><td class="m">y = x² + 1</td><td>all ${m('x')}</td><td>polynomials are always defined</td></tr>
+        <tr><td class="m">y = ${f('1', 'x')}</td><td class="m">x ≠ 0</td><td>no division by zero</td></tr>
+        <tr><td class="m">y = ${sr('x')}</td><td class="m">x ≥ 0</td><td>no root of a negative</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Polynomials are free</div>
+      Any expression built only from ${m('+, −, ×')} and whole-number powers is defined everywhere. Only
+      a <b>division</b> or a <b>square root</b> can forbid a value — so look for those two and nothing
+      else.</div>`
+    },
+    {
+      h: 'The two forbidden things',
+      html: `${eq('denominator ' + m('≠ 0') + '     ·     radicand ' + m('≥ 0'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Function</th><th>Condition</th><th>Domain</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${f('1', 'x − 3')}</td><td class="m">x − 3 ≠ 0</td><td class="m">x ≠ 3</td></tr>
+        <tr><td class="m">${f('x', 'x² − 4')}</td><td class="m">x² − 4 ≠ 0</td><td class="m">x ≠ ±2</td></tr>
+        <tr><td class="m">${sr('x − 5')}</td><td class="m">x − 5 ≥ 0</td><td class="m">[5, +∞)</td></tr>
+        <tr><td class="m">${sr('7 − x')}</td><td class="m">7 − x ≥ 0</td><td class="m">(−∞, 7]</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A root in the <b>denominator</b> obeys both rules at once</span>
+      For ${m(f('1', sr('x − 5')))} the radicand must be non-negative <b>and</b> the denominator
+      non-zero, so ${m('x − 5 > 0')} — strictly. The domain is ${m('(5, +∞)')}, not ${m('[5, +∞)')}.</div>`
+    },
+    {
+      h: 'Roots and quadratics',
+      html: `<p>When the radicand is a quadratic, the domain question <b>is</b> a quadratic inequality —
+      exactly the work of Lessons 9–14.</p>
+      <p><b>Example.</b> ${m('y = ' + sr('x² − 5x + 6'))}. Need ${m('x² − 5x + 6 ≥ 0')}, that is
+      ${m('(x − 2)(x − 3) ≥ 0')}: outside the roots, inclusive.</p>
+      ${eq(m('D(f) = (−∞, 2] ∪ [3, +∞)'), true)}
+      {{fig:quadSignChart:The same sign chart, now answering a domain question.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Function</th><th>Inequality</th><th>Domain</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${sr('9 − x²')}</td><td class="m">9 − x² ≥ 0</td><td class="m">[−3, 3]</td></tr>
+        <tr><td class="m">${sr('x² + 1')}</td><td class="m">x² + 1 ≥ 0</td><td>all ${m('x')}</td></tr>
+        <tr><td class="m">${sr('−x² − 1')}</td><td class="m">−x² − 1 ≥ 0</td><td class="m">∅</td></tr>
+      </tbody></table></div>
+      <p>The last two are the degenerate cases again: ${m('x² + 1')} is never negative, so nothing is
+      forbidden; ${m('−x² − 1')} is never positive, so <b>everything</b> is.</p>`
+    },
+    {
+      h: 'Both at once',
+      html: `<p>When several conditions appear, find each and take the <b>intersection</b> — the values
+      that satisfy all of them.</p>
+      <p><b>Example.</b> ${m('y = ' + f(sr('x − 1'), 'x − 4'))}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Source</th><th>Condition</th><th>Set</th></tr></thead>
+      <tbody>
+        <tr><td>the root</td><td class="m">x − 1 ≥ 0</td><td class="m">[1, +∞)</td></tr>
+        <tr><td>the denominator</td><td class="m">x − 4 ≠ 0</td><td class="m">x ≠ 4</td></tr>
+        <tr><td><b>together</b></td><td>both</td><td class="m">[1, 4) ∪ (4, +∞)</td></tr>
+      </tbody></table></div>
+      {{fig:systemIntervals:Two conditions on one line; the domain is where both hold.}}
+      <div class="keybox"><div class="klabel">Draw both on the same line</div>
+      Mark the first condition above the line and the second below it. The domain is the part where both
+      marks agree — which is far quicker, and far safer, than trying to intersect the intervals in your
+      head.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the domain of ' + m('y = ' + f('x + 1', 'x² − 9')) + '.',
+      steps: [
+        [m('x² − 9 ≠ 0'), 'Only the denominator can forbid.'],
+        [m('(x − 3)(x + 3) ≠ 0'), ''],
+        [m('x ≠ 3') + ' and ' + m('x ≠ −3'), ''],
+        [m('(−∞, −3) ∪ (−3, 3) ∪ (3, +∞)'), '']
+      ],
+      ans: 'All ' + m('x') + ' except ' + m('±3')
+    },
+    {
+      q: 'Find the domain of ' + m('y = ' + sr('x² − 5x + 6')) + '.',
+      steps: [
+        [m('x² − 5x + 6 ≥ 0'), ''],
+        [m('(x − 2)(x − 3) ≥ 0'), ''],
+        [m('a > 0') + ', want ' + m('≥ 0') + ' — outside, inclusive.', ''],
+        [m('(−∞, 2] ∪ [3, +∞)'), '']
+      ],
+      ans: m('(−∞, 2] ∪ [3, +∞)')
+    },
+    {
+      q: 'Find the domain of ' + m('y = ' + f(sr('x − 1'), 'x − 4')) + '.',
+      steps: [
+        [m('x − 1 ≥ 0 ⇒ x ≥ 1'), ''],
+        [m('x − 4 ≠ 0 ⇒ x ≠ 4'), ''],
+        ['Intersect the two.', ''],
+        [m('[1, 4) ∪ (4, +∞)'), '']
+      ],
+      ans: m('[1, 4) ∪ (4, +∞)')
+    },
+    {
+      q: 'Find the domain of ' + m('y = ' + f('1', sr('4 − x²'))) + '.',
+      steps: [
+        ['A root downstairs: ' + m('4 − x² > 0') + ', strictly.', ''],
+        [m('x² < 4'), ''],
+        [m('−2 < x < 2'), '']
+      ],
+      ans: m('(−2, 2)')
+    }
+  ],
+  modelNote: 'Write five formulas on the board and ask only “what could possibly go wrong here?” before anyone computes.',
+  interactive: {
+    type: 'inequalityLine',
+    title: 'Where is the expression defined?',
+    hint: 'The domain is a set on the line, like any other.'
+  },
+  quiz: [
+    { q: 'The domain of a polynomial is:', a: [m('x ≥ 0'), 'all ' + m('x'), m('x ≠ 0'), 'an interval'], c: 1, why: 'Nothing forbids anything.' },
+    { q: 'Only two things forbid a value:', a: ['addition and subtraction', 'a zero denominator and a negative radicand', 'squares and cubes', 'brackets'], c: 1, why: 'Look for those.' },
+    { q: 'The domain of ' + m(sr('x − 5')) + ' is:', a: [m('x > 5'), m('x ≥ 5'), m('x ≤ 5'), 'all ' + m('x')], c: 1, why: 'Zero is allowed under a root.' },
+    { q: 'The domain of ' + m(f('1', sr('x − 5'))) + ' is:', a: [m('x ≥ 5'), m('x > 5'), m('x ≠ 5'), 'all ' + m('x')], c: 1, why: 'Both rules at once.' },
+    { q: 'The domain of ' + m(sr('x² + 1')) + ' is:', a: [m('x ≥ 0'), 'all ' + m('x'), m('∅'), m('x ≥ −1')], c: 1, why: 'Never negative.' },
+    { q: 'Several conditions are combined by:', a: ['union', 'intersection', 'addition', 'the first one only'], c: 1, why: 'All must hold.' }
+  ],
+  practice: {
+    easy: [
+      ['Domain of ' + m('y = 3x − 7'), 'All ' + m('x')],
+      ['Domain of ' + m('y = ' + f('1', 'x')), m('x ≠ 0')],
+      ['Domain of ' + m('y = ' + f('1', 'x − 3')), m('x ≠ 3')],
+      ['Domain of ' + m('y = ' + sr('x')), m('[0, +∞)')],
+      ['Domain of ' + m('y = ' + sr('x − 5')), m('[5, +∞)')],
+      ['Domain of ' + m('y = ' + sr('7 − x')), m('(−∞, 7]')],
+      ['Domain of ' + m('y = x² + 1'), 'All ' + m('x')]
+    ],
+    med: [
+      ['Domain of ' + m('y = ' + f('x + 1', 'x² − 9')), 'All ' + m('x') + ' except ' + m('±3')],
+      ['Domain of ' + m('y = ' + sr('x² − 5x + 6')), m('(−∞, 2] ∪ [3, +∞)')],
+      ['Domain of ' + m('y = ' + sr('9 − x²')), m('[−3, 3]')],
+      ['Domain of ' + m('y = ' + f('1', sr('x − 5'))), m('(5, +∞)')],
+      ['Domain of ' + m('y = ' + f(sr('x − 1'), 'x − 4')), m('[1, 4) ∪ (4, +∞)')],
+      ['Domain of ' + m('y = ' + f('1', sr('4 − x²'))), m('(−2, 2)')],
+      ['Domain of ' + m('y = ' + sr('−x² − 1')), m('∅')]
+    ],
+    hard: [
+      ['Domain of ' + m('y = ' + sr('x') + ' + ' + sr('6 − x')), m('[0, 6]')],
+      ['Domain of ' + m('y = ' + f(sr('x + 2'), 'x² − x − 6')), m('[−2, 3) ∪ (3, +∞)')],
+      ['Domain of ' + m('y = ' + sr(f('x − 1', 'x + 2'))), m('(−∞, −2) ∪ [1, +∞)')],
+      ['Domain of ' + m('y = ' + f('1', 'x² − 5x + 6')), 'All ' + m('x') + ' except ' + m('2') + ' and ' + m('3')],
+      ['Domain of ' + m('y = ' + sr('x² − 4') + ' + ' + f('1', 'x')), m('(−∞, −2] ∪ [2, +∞)')],
+      ['For which ' + m('k') + ' is the domain of ' + m(sr('x² + kx + 4')) + ' all of ' + m('ℝ') + '?', m('−4 ≤ k ≤ 4')],
+      ['Domain of ' + m('y = ' + f(sr('4 − x'), sr('x − 1'))), m('(1, 4]')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the condition before the answer; the mark is for the condition.',
+  homework: [
+    'Find the domain of ' + m('y = ' + f('2x', 'x² − 16')) + '.',
+    'Find the domain of ' + m('y = ' + sr('x² − x − 12')) + '.',
+    'Find the domain of ' + m('y = ' + f(sr('x + 3'), 'x − 2')) + '.',
+    'Find the domain of ' + m('y = ' + f('1', sr('16 − x²'))) + '.',
+    'Explain in two sentences why the domain of ' + m(f('1', sr('x')))+ ' is ' + m('(0, +∞)') + ' and not ' + m('[0, +∞)') + '.'
+  ]
+});
+
+/* ============================== 10 ============================== */
+G9_ALG.push({
+  id: 'a9-10', stream: 'alg', grade: 9, quarter: 1, lessons: '19', hours: 1,
+  title: 'Increasing and decreasing functions',
+  subtitle: 'Read the graph left to right: uphill is increasing, downhill is decreasing.',
+  uz: 'Algebra 9, §10', uzPage: 'pp. 41–44',
+  cam: 'IGX 10.1', camPage: 'Core & Extended, pp. 198–215', wb: 'Exercise 10.1',
+  objectives: [
+    'Define increasing and decreasing on an interval.',
+    'Read the intervals of monotonicity from a graph.',
+    'Find them for a quadratic from its vertex.',
+    'Prove a simple case from the definition.'
+  ],
+  terms: [
+    ['Increasing', 'O‘suvchi', 'Возрастающая'],
+    ['Decreasing', 'Kamayuvchi', 'Убывающая'],
+    ['Monotonic', 'Monoton', 'Монотонная'],
+    ['Interval of increase', 'O‘sish oralig‘i', 'Промежуток возрастания'],
+    ['Turning point', 'Burilish nuqtasi', 'Точка поворота'],
+    ['Constant function', 'O‘zgarmas funksiya', 'Постоянная функция'],
+    ['On an interval', 'Oraliqda', 'На промежутке'],
+    ['Definition', 'Ta’rif', 'Определение']
+  ],
+  timing: [[8, 'The definition'], [12, 'Reading a graph'], [12, 'Quadratics'], [8, 'A short proof']],
+  sections: [
+    {
+      h: 'The definition',
+      html: `${eq(m('f') + ' <b>increases</b> on ' + m('I') + ' if ' + m('x₁ < x₂ ⇒ f(x₁) < f(x₂)') + ' for all ' + m('x₁, x₂ ∈ I'), true)}
+      ${eq(m('f') + ' <b>decreases</b> on ' + m('I') + ' if ' + m('x₁ < x₂ ⇒ f(x₁) > f(x₂)'), true)}
+      {{fig:monotonic:Uphill on one interval, downhill on another — read left to right, always.}}
+      <div class="warn"><span class="wl">Always “on an interval”, never “at a point”</span>
+      A function is not increasing <i>at</i> ${m('x = 2')}; it increases <i>on</i> ${m('[2, 5]')} or on
+      ${m('(−∞, 1]')}. Naming the interval is half the answer, and an answer without one earns no
+      mark.</div>`
+    },
+    {
+      h: 'Reading a graph',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>The curve</th><th>Reading left to right</th><th>Name</th></tr></thead>
+      <tbody>
+        <tr><td>rises</td><td>${m('y')} grows</td><td>increasing</td></tr>
+        <tr><td>falls</td><td>${m('y')} shrinks</td><td>decreasing</td></tr>
+        <tr><td>flat</td><td>${m('y')} unchanged</td><td>constant</td></tr>
+      </tbody></table></div>
+      <p>The intervals change only at a <b>turning point</b> or where the function is undefined. So find
+      those first, and the intervals are what lies between them.</p>`
+    },
+    {
+      h: 'Quadratics',
+      html: `<p>A parabola has exactly one turning point — the vertex — so it has exactly two intervals of
+      monotonicity.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">a</th><th>Left of the vertex</th><th>Right of the vertex</th></tr></thead>
+      <tbody>
+        <tr><td class="m">a > 0</td><td>decreasing</td><td>increasing</td></tr>
+        <tr><td class="m">a &lt; 0</td><td>increasing</td><td>decreasing</td></tr>
+      </tbody></table></div>
+      <p><b>Example.</b> ${m('y = x² − 6x + 5')} has vertex at ${m('x = 3')} and ${m('a > 0')}, so it
+      decreases on ${m('(−∞, 3]')} and increases on ${m('[3, +∞)')}.</p>
+      <div class="keybox"><div class="klabel">The vertex is the only place it can turn</div>
+      Find ${m('x = −' + f('b', '2a'))}, look at the sign of ${m('a')}, and both intervals are written.
+      No table of values is needed at all.</div>`
+    },
+    {
+      h: 'A short proof',
+      html: `<p>Take ${m('f(x) = 3x + 1')} and any ${m('x₁ < x₂')}:</p>
+      ${eq(m('f(x₂) − f(x₁) = 3(x₂ − x₁) > 0'), true)}
+      <p>Since ${m('x₂ − x₁ > 0')}, the difference is positive, so ${m('f(x₂) > f(x₁)')}: the function
+      increases on the whole of ${m('ℝ')}.</p>
+      <div class="keybox"><div class="klabel">The pattern of every such proof</div>
+      Form ${m('f(x₂) − f(x₁)')}, factor out ${m('(x₂ − x₁)')}, and decide the sign of what is left.
+      For ${m('y = kx + b')} the answer is just the sign of ${m('k')} — which is why a line is
+      increasing exactly when its gradient is positive.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the intervals of monotonicity of ' + m('y = x² − 6x + 5') + '.',
+      steps: [
+        [m('x = ' + f('6', '2') + ' = 3'), 'The vertex.'],
+        [m('a = 1 > 0'), ''],
+        ['Decreasing on ' + m('(−∞, 3]') + '.', ''],
+        ['Increasing on ' + m('[3, +∞)') + '.', '']
+      ],
+      ans: 'Decreasing on ' + m('(−∞, 3]') + ', increasing on ' + m('[3, +∞)')
+    },
+    {
+      q: 'Find them for ' + m('y = −2x² + 8x − 1') + '.',
+      steps: [
+        [m('x = −' + f('8', '−4') + ' = 2'), ''],
+        [m('a = −2 < 0'), ''],
+        ['Increasing on ' + m('(−∞, 2]') + ', decreasing on ' + m('[2, +∞)') + '.', '']
+      ],
+      ans: 'Increasing on ' + m('(−∞, 2]') + ', decreasing on ' + m('[2, +∞)')
+    },
+    {
+      q: 'Prove that ' + m('f(x) = 3x + 1') + ' increases on ' + m('ℝ') + '.',
+      steps: [
+        ['Take any ' + m('x₁ < x₂') + '.', ''],
+        [m('f(x₂) − f(x₁) = 3x₂ + 1 − 3x₁ − 1'), ''],
+        [m('= 3(x₂ − x₁) > 0'), ''],
+        ['So ' + m('f(x₂) > f(x₁)') + ' — increasing.', '']
+      ],
+      ans: 'Increasing everywhere, since ' + m('k = 3 > 0')
+    }
+  ],
+  modelNote: 'Trace a finger along a drawn curve from left to right and let the class call out “up” or “down” — the definition follows the finger.',
+  interactive: {
+    type: 'graphTransform',
+    title: 'Where does it rise?',
+    hint: 'Move the vertex and watch both intervals move with it.'
+  },
+  quiz: [
+    { q: 'Increasing means:', a: [m('x₁ < x₂ ⇒ f(x₁) < f(x₂)'), m('f(x) > 0'), 'the graph is above ' + m('Ox'), m('a > 0')], c: 0, why: 'Bigger input, bigger output.' },
+    { q: 'Monotonicity is stated:', a: ['at a point', 'on an interval', 'for one value', 'never'], c: 1, why: 'Always an interval.' },
+    { q: m('y = x² − 6x + 5') + ' decreases on:', a: [m('(−∞, 3]'), m('[3, +∞)'), 'all ' + m('x'), m('[0, 3]')], c: 0, why: 'Left of the vertex, ' + m('a > 0') + '.' },
+    { q: 'For ' + m('a < 0') + ', right of the vertex the function:', a: ['increases', 'decreases', 'is constant', 'is undefined'], c: 1, why: 'Downhill after the peak.' },
+    { q: m('y = kx + b') + ' increases exactly when:', a: [m('b > 0'), m('k > 0'), m('k < 0'), 'always'], c: 1, why: 'The gradient.' }
+  ],
+  practice: {
+    easy: [
+      ['Is ' + m('y = 5x + 2') + ' increasing?', 'Yes — ' + m('k = 5 > 0')],
+      ['Is ' + m('y = −3x + 1') + ' increasing?', 'No — decreasing'],
+      ['Vertex of ' + m('y = x² − 6x + 5'), m('x = 3')],
+      ['Vertex of ' + m('y = −2x² + 8x − 1'), m('x = 2')],
+      [m('y = x²') + ' decreases on:', m('(−∞, 0]')],
+      [m('y = x²') + ' increases on:', m('[0, +∞)')],
+      ['Is ' + m('y = 7') + ' increasing?', 'No — constant']
+    ],
+    med: [
+      ['Monotonicity of ' + m('y = x² − 6x + 5'), 'Down on ' + m('(−∞, 3]') + ', up on ' + m('[3, +∞)')],
+      ['Monotonicity of ' + m('y = −2x² + 8x − 1'), 'Up on ' + m('(−∞, 2]') + ', down on ' + m('[2, +∞)')],
+      ['Monotonicity of ' + m('y = (x + 4)² − 1'), 'Down on ' + m('(−∞, −4]') + ', up after'],
+      ['Monotonicity of ' + m('y = 3 − x²'), 'Up on ' + m('(−∞, 0]') + ', down after'],
+      ['Prove ' + m('f(x) = 3x + 1') + ' increases', m('f(x₂) − f(x₁) = 3(x₂ − x₁) > 0')],
+      ['Prove ' + m('f(x) = −x + 5') + ' decreases', m('f(x₂) − f(x₁) = −(x₂ − x₁) < 0')],
+      ['How many turning points has a parabola?', 'One']
+    ],
+    hard: [
+      ['Monotonicity of ' + m('y = ' + f('1', 'x')) + ' on ' + m('(0, +∞)'), 'Decreasing'],
+      ['Monotonicity of ' + m('y = ' + sr('x')), 'Increasing on ' + m('[0, +∞)')],
+      ['Monotonicity of ' + m('y = |x|'), 'Down on ' + m('(−∞, 0]') + ', up on ' + m('[0, +∞)')],
+      ['For which ' + m('k') + ' is ' + m('y = (k − 2)x + 1') + ' decreasing?', m('k < 2')],
+      ['Prove ' + m('f(x) = x²') + ' increases on ' + m('[0, +∞)'), m('x₂² − x₁² = (x₂ − x₁)(x₂ + x₁) > 0')],
+      ['On which interval is ' + m('y = x² − 4x') + ' decreasing and negative?', m('(0, 2]')],
+      ['Monotonicity of ' + m('y = −' + f('2', 'x')) + ' on ' + m('(0, +∞)'), 'Increasing']
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Every answer names an interval; a bare “increasing” earns nothing.',
+  homework: [
+    'Find the intervals of monotonicity of ' + m('y = x² − 10x + 3') + '.',
+    'Find them for ' + m('y = −x² − 4x + 1') + '.',
+    'Prove from the definition that ' + m('f(x) = 4x − 9') + ' increases on ' + m('ℝ') + '.',
+    'Sketch any function that increases on ' + m('(−∞, −1]') + ', decreases on ' + m('[−1, 2]') + ' and increases on ' + m('[2, +∞)') + '.'
+  ]
+});
+
+/* ============================== 11 ============================== */
+G9_ALG.push({
+  id: 'a9-11', stream: 'alg', grade: 9, quarter: 1, lessons: '20–21', hours: 2,
+  title: 'Even and odd functions',
+  subtitle: 'Two symmetries: one in the axis Oy, one about the origin — and most functions have neither.',
+  uz: 'Algebra 9, §11', uzPage: 'pp. 45–50',
+  cam: 'Extension beyond IGX', camPage: 'Core & Extended, pp. 198–215', wb: 'Exercise 10.1',
+  objectives: [
+    'Test a function for evenness and oddness from f(−x).',
+    'Recognise the two symmetries on a graph.',
+    'Check the domain for symmetry before testing anything else.',
+    'Use parity to halve the work of sketching.'
+  ],
+  terms: [
+    ['Even function', 'Juft funksiya', 'Чётная функция'],
+    ['Odd function', 'Toq funksiya', 'Нечётная функция'],
+    ['Parity', 'Juft-toqlik', 'Чётность'],
+    ['Symmetric domain', 'Simmetrik soha', 'Симметричная область'],
+    ['Symmetry in Oy', 'Oy ga nisbatan simmetriya', 'Симметрия относительно Oy'],
+    ['Symmetry about O', 'O ga nisbatan simmetriya', 'Симметрия относительно начала'],
+    ['Neither', 'Na juft, na toq', 'Ни чётная, ни нечётная'],
+    ['Substitution', 'O‘rniga qo‘yish', 'Подстановка']
+  ],
+  timing: [[12, 'The two definitions'], [20, 'The domain comes first'], [25, 'Testing'], [23, 'On the graph'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'The two definitions',
+      html: `${eq(m('f') + ' is <b>even</b> if ' + m('f(−x) = f(x)') + ' for every ' + m('x') + ' of the domain', true)}
+      ${eq(m('f') + ' is <b>odd</b> if ' + m('f(−x) = −f(x)') + ' for every ' + m('x') + ' of the domain', true)}
+      {{fig:evenOdd:Even — a mirror in Oy. Odd — a half-turn about the origin.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Function</th><th class="m">f(−x)</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x²</td><td class="m">x²</td><td>even</td></tr>
+        <tr><td class="m">x³</td><td class="m">−x³</td><td>odd</td></tr>
+        <tr><td class="m">x² + 1</td><td class="m">x² + 1</td><td>even</td></tr>
+        <tr><td class="m">x + 1</td><td class="m">−x + 1</td><td>neither</td></tr>
+        <tr><td class="m">|x|</td><td class="m">|x|</td><td>even</td></tr>
+        <tr><td class="m">${f('1', 'x')}</td><td class="m">−${f('1', 'x')}</td><td>odd</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the names come from</div>
+      ${m('xⁿ')} is even exactly when ${m('n')} is an even number, and odd exactly when ${m('n')} is odd.
+      That is the whole origin of the two words — and a quick way to guess the answer before testing
+      it.</div>`
+    },
+    {
+      h: 'The domain comes first',
+      html: `<p>Both definitions say “for every ${m('x')} of the domain”, and they use ${m('−x')}. So
+      ${m('−x')} must itself be in the domain, or the question cannot even be asked.</p>
+      ${eq('a function can be even or odd only if its domain is <b>symmetric about ' + m('0') + '</b>', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Function</th><th>Domain</th><th>Symmetric?</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x²</td><td>all ${m('x')}</td><td>yes</td><td>test it</td></tr>
+        <tr><td class="m">${f('1', 'x')}</td><td class="m">x ≠ 0</td><td>yes</td><td>test it</td></tr>
+        <tr><td class="m">${sr('x')}</td><td class="m">[0, +∞)</td><td><b>no</b></td><td>neither, at once</td></tr>
+        <tr><td class="m">${sr('x − 1')}</td><td class="m">[1, +∞)</td><td><b>no</b></td><td>neither, at once</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Check the domain before substituting</span>
+      ${m(sr('x'))} is neither even nor odd — not because ${m(sr('−x'))} comes out wrong, but because
+      ${m(sr('−x'))} does not exist. Saying so is the whole answer, and it takes one line.</div>`
+    },
+    {
+      h: 'Testing',
+      html: `<div class="keybox"><div class="klabel">The three steps, every time</div>
+      <ol>
+        <li>Is the domain symmetric about ${m('0')}? If not, stop: <b>neither</b>.</li>
+        <li>Compute ${m('f(−x)')} and simplify.</li>
+        <li>Compare with ${m('f(x)')} and with ${m('−f(x)')}.</li>
+      </ol></div>
+      <p><b>Example.</b> ${m('f(x) = x⁴ − 3x² + 2')}. The domain is all of ${m('ℝ')} ✓.</p>
+      ${eq(m('f(−x) = (−x)⁴ − 3(−x)² + 2 = x⁴ − 3x² + 2 = f(x)'), true)}
+      <p>So it is even. <b>Example.</b> ${m('g(x) = x³ − 4x')}:</p>
+      ${eq(m('g(−x) = −x³ + 4x = −(x³ − 4x) = −g(x)'), true)}
+      <p>So it is odd. <b>Example.</b> ${m('h(x) = x² + x')}: ${m('h(−x) = x² − x')}, which is neither
+      ${m('h(x)')} nor ${m('−h(x)')} — neither.</p>
+      <div class="keybox"><div class="klabel">A polynomial is easy to read off</div>
+      All powers even (counting a constant as ${m('x⁰')}) → even. All powers odd → odd. A mixture →
+      neither. ${m('x⁴ − 3x² + 2')} is even by inspection; ${m('x³ − 4x')} is odd; ${m('x² + x')} is
+      neither.</div>`
+    },
+    {
+      h: 'On the graph',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Parity</th><th>Symmetry</th><th>What it saves you</th></tr></thead>
+      <tbody>
+        <tr><td>even</td><td>mirror in ${m('Oy')}</td><td>plot ${m('x ≥ 0')}, then reflect</td></tr>
+        <tr><td>odd</td><td>half-turn about ${m('O')}</td><td>plot ${m('x ≥ 0')}, then rotate ${m('180°')}</td></tr>
+        <tr><td>neither</td><td>none</td><td>nothing</td></tr>
+      </tbody></table></div>
+      <p>An <b>odd</b> function whose domain contains ${m('0')} must have ${m('f(0) = 0')}: putting
+      ${m('x = 0')} in ${m('f(−x) = −f(x)')} gives ${m('f(0) = −f(0)')}, so ${m('2f(0) = 0')}. That
+      single check rules out many candidates instantly.</p>
+      <div class="keybox"><div class="klabel">Only one function is both</div>
+      ${m('f(x) = 0')} satisfies both definitions at once. Every other function is even, odd, or
+      neither — never two of them.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Test ' + m('f(x) = x⁴ − 3x² + 2') + ' for parity.',
+      steps: [
+        ['Domain ' + m('ℝ') + ' — symmetric ✓', ''],
+        [m('f(−x) = x⁴ − 3x² + 2'), 'Even powers only.'],
+        [m('= f(x)'), ''],
+        ['Even.', '']
+      ],
+      ans: 'Even'
+    },
+    {
+      q: 'Test ' + m('g(x) = x³ − 4x') + '.',
+      steps: [
+        ['Domain ' + m('ℝ') + ' ✓', ''],
+        [m('g(−x) = −x³ + 4x'), ''],
+        [m('= −(x³ − 4x) = −g(x)'), ''],
+        ['Odd.', 'Check: ' + m('g(0) = 0') + ' ✓']
+      ],
+      ans: 'Odd'
+    },
+    {
+      q: 'Test ' + m('h(x) = ' + sr('x') + ' + 1') + '.',
+      steps: [
+        ['Domain ' + m('[0, +∞)') + '.', ''],
+        [m('−1') + ' is not in the domain although ' + m('1') + ' is.', 'Not symmetric.'],
+        ['Neither, and no substitution is needed.', '']
+      ],
+      ans: 'Neither — the domain is not symmetric'
+    },
+    {
+      q: 'Test ' + m('p(x) = ' + f('x', 'x² − 1')) + '.',
+      steps: [
+        ['Domain ' + m('x ≠ ±1') + ' — symmetric ✓', ''],
+        [m('p(−x) = ' + f('−x', 'x² − 1')), ''],
+        [m('= −p(x)'), ''],
+        ['Odd.', '']
+      ],
+      ans: 'Odd'
+    }
+  ],
+  modelNote: 'Fold a printed graph along Oy for even, and turn it upside down for odd — the class sees the two symmetries physically.',
+  interactive: {
+    type: 'graphTransform',
+    title: 'Two kinds of symmetry',
+    hint: 'Compare the curve with its mirror and with its half-turn.'
+  },
+  quiz: [
+    { q: 'Even means:', a: [m('f(−x) = f(x)'), m('f(−x) = −f(x)'), m('f(x) > 0'), m('f(0) = 0')], c: 0, why: 'Mirror in ' + m('Oy') + '.' },
+    { q: 'Odd means:', a: [m('f(−x) = f(x)'), m('f(−x) = −f(x)'), m('f(x) < 0'), 'the powers are odd'], c: 1, why: 'Half-turn about ' + m('O') + '.' },
+    { q: 'Before testing you must check:', a: ['the range', 'that the domain is symmetric about ' + m('0'), 'the roots', 'the vertex'], c: 1, why: 'Or ' + m('−x') + ' may not exist.' },
+    { q: m(sr('x')) + ' is:', a: ['even', 'odd', 'neither', 'both'], c: 2, why: 'Its domain is not symmetric.' },
+    { q: m('x³ − 4x') + ' is:', a: ['even', 'odd', 'neither', 'both'], c: 1, why: 'All powers odd.' },
+    { q: 'An odd function with ' + m('0') + ' in its domain has:', a: [m('f(0) = 1'), m('f(0) = 0'), m('f(0) > 0'), 'no value at ' + m('0')], c: 1, why: m('f(0) = −f(0)') + '.' },
+    { q: 'Which function is both even and odd?', a: [m('x'), m('x²'), m('f(x) = 0'), 'none'], c: 2, why: 'The zero function only.' }
+  ],
+  practice: {
+    easy: [
+      ['Parity of ' + m('y = x²'), 'Even'],
+      ['Parity of ' + m('y = x³'), 'Odd'],
+      ['Parity of ' + m('y = x + 1'), 'Neither'],
+      ['Parity of ' + m('y = |x|'), 'Even'],
+      ['Parity of ' + m('y = ' + f('1', 'x')), 'Odd'],
+      ['Parity of ' + m('y = 5'), 'Even'],
+      ['Is the domain of ' + m(sr('x')) + ' symmetric?', 'No']
+    ],
+    med: [
+      ['Parity of ' + m('y = x⁴ − 3x² + 2'), 'Even'],
+      ['Parity of ' + m('y = x³ − 4x'), 'Odd'],
+      ['Parity of ' + m('y = x² + x'), 'Neither'],
+      ['Parity of ' + m('y = ' + f('x', 'x² − 1')), 'Odd'],
+      ['Parity of ' + m('y = ' + sr('x') + ' + 1'), 'Neither — domain'],
+      ['Parity of ' + m('y = x|x|'), 'Odd'],
+      ['Parity of ' + m('y = x⁵ + x³ + x'), 'Odd']
+    ],
+    hard: [
+      ['Parity of ' + m('y = ' + f('x² + 1', 'x² − 4')), 'Even'],
+      ['Parity of ' + m('y = ' + sr('4 − x²')), 'Even'],
+      ['Parity of ' + m('y = x³ + x²'), 'Neither'],
+      ['For which ' + m('a') + ' is ' + m('y = x³ + ax²') + ' odd?', m('a = 0')],
+      ['Show that the product of two odd functions is even', m('(−f)(−g) = fg')],
+      ['Show that the sum of an even and an odd function is usually neither', m('f(−x) + g(−x) = f(x) − g(x)')],
+      ['Parity of ' + m('y = ' + f('1', 'x³') + ' − x'), 'Odd']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Begin every answer with the domain; parity questions are lost there more often than anywhere else.',
+  homework: [
+    'Test ' + m('y = x⁶ − x²') + ' for parity.',
+    'Test ' + m('y = x⁵ − 2x') + ' for parity.',
+    'Test ' + m('y = ' + sr('x + 2')) + ' for parity, giving the reason in one sentence.',
+    'Test ' + m('y = ' + f('x³', 'x² + 1')) + ' for parity.',
+    'Explain in two sentences why an odd function defined at ' + m('0') + ' must pass through the origin.'
+  ]
+});
+
+/* ============================== 12 ============================== */
+G9_ALG.push({
+  id: 'a9-12', stream: 'alg', grade: 9, quarter: 1, lessons: '22–23', hours: 2,
+  title: 'Equations and inequalities containing a power',
+  subtitle: 'Even powers lose the sign and need ±; odd powers keep it and need nothing.',
+  uz: 'Algebra 9, §12', uzPage: 'pp. 51–55',
+  cam: 'IGX 2.5', camPage: 'Core & Extended, pp. 35–43', wb: 'Exercise 2.5',
+  objectives: [
+    'Solve xⁿ = a for even and for odd n.',
+    'Solve inequalities of the form xⁿ > a and xⁿ < a.',
+    'Use substitution on a biquadratic equation.',
+    'Reject the roots that the substitution forbids.'
+  ],
+  terms: [
+    ['Power', 'Daraja', 'Степень'],
+    ['Even exponent', 'Juft ko‘rsatkich', 'Чётный показатель'],
+    ['Odd exponent', 'Toq ko‘rsatkich', 'Нечётный показатель'],
+    ['Biquadratic equation', 'Bikvadrat tenglama', 'Биквадратное уравнение'],
+    ['Substitution', 'O‘rniga qo‘yish', 'Подстановка'],
+    ['Root of degree n', 'n-darajali ildiz', 'Корень n-й степени'],
+    ['Extraneous root', 'Chet ildiz', 'Посторонний корень'],
+    ['Modulus', 'Modul', 'Модуль']
+  ],
+  timing: [[15, 'Even against odd'], [22, 'Equations'], [25, 'Inequalities'], [23, 'Biquadratics'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Even against odd',
+      html: `<p>The whole lesson turns on one fact: an even power destroys the sign, an odd power keeps
+      it.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th></th><th>Even ${m('n')}</th><th>Odd ${m('n')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(−2)ⁿ</td><td>positive</td><td>negative</td></tr>
+        <tr><td>range of ${m('xⁿ')}</td><td class="m">[0, +∞)</td><td class="m">ℝ</td></tr>
+        <tr><td>graph</td><td>parabola-like, symmetric in ${m('Oy')}</td><td>rising, symmetric about ${m('O')}</td></tr>
+        <tr><td class="m">xⁿ = a</td><td>two roots, one, or none</td><td>always exactly one</td></tr>
+      </tbody></table></div>
+      {{fig:evenOdd:The two shapes — even powers fold, odd powers pass through.}}
+      <div class="keybox"><div class="klabel">The consequence for solving</div>
+      ${m('x⁴ = 16')} has two solutions ${m('±2')}; ${m('x³ = 8')} has exactly one, ${m('2')};
+      ${m('x⁴ = −16')} has none, and ${m('x³ = −8')} has one, ${m('−2')}. Read the parity of the
+      exponent before anything else.</div>`
+    },
+    {
+      h: 'Equations',
+      html: `${eq(m('x^{2k} = a') + ':   ' + m('x = ±' + rt('2k', 'a')) + ' if ' + m('a > 0') + ';   ' + m('x = 0') + ' if ' + m('a = 0') + ';   none if ' + m('a < 0'), true)}
+      ${eq(m('x^{2k+1} = a') + ':   ' + m('x = ' + rt('2k+1', 'a')) + ',   always exactly one', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Equation</th><th>Solutions</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x² = 49</td><td class="m">±7</td></tr>
+        <tr><td class="m">x⁴ = 81</td><td class="m">±3</td></tr>
+        <tr><td class="m">x⁴ = −81</td><td>none</td></tr>
+        <tr><td class="m">x³ = 27</td><td class="m">3</td></tr>
+        <tr><td class="m">x⁵ = −32</td><td class="m">−2</td></tr>
+        <tr><td class="m">(x − 1)⁴ = 16</td><td class="m">x = 3, −1</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Do not lose the negative root</span>
+      ${m('x⁴ = 81')} gives ${m('x = ±3')}, not ${m('x = 3')}. And ${m('(x − 1)⁴ = 16')} gives
+      ${m('x − 1 = ±2')}, so <b>both</b> ${m('x = 3')} and ${m('x = −1')}.</div>`
+    },
+    {
+      h: 'Inequalities',
+      html: `<p>For an even power the solution set is symmetric; for an odd power it is a single ray.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Inequality</th><th>Solution</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x² &lt; 9</td><td class="m">(−3, 3)</td></tr>
+        <tr><td class="m">x² > 9</td><td class="m">(−∞, −3) ∪ (3, +∞)</td></tr>
+        <tr><td class="m">x⁴ ≤ 16</td><td class="m">[−2, 2]</td></tr>
+        <tr><td class="m">x² &lt; −4</td><td class="m">∅</td></tr>
+        <tr><td class="m">x² > −4</td><td>all ${m('x')}</td></tr>
+        <tr><td class="m">x³ &lt; 27</td><td class="m">(−∞, 3)</td></tr>
+        <tr><td class="m">x³ > −8</td><td class="m">(−2, +∞)</td></tr>
+      </tbody></table></div>
+      {{fig:numberLineInterval:Even powers give an interval about the origin or its complement; odd powers give one ray.}}
+      <div class="keybox"><div class="klabel">${m('x² < a')} is a modulus statement</div>
+      ${m('x² < 9')} says ${m('|x| < 3')}, and ${m('x² > 9')} says ${m('|x| > 3')}. Reading it that way
+      makes the symmetry obvious and the brackets automatic.</div>`
+    },
+    {
+      h: 'Biquadratics',
+      html: `<p>An equation ${m('ax⁴ + bx² + c = 0')} contains only even powers, so ${m('t = x²')} turns
+      it into a quadratic.</p>
+      ${eq(m('t = x² ≥ 0') + '   — every negative root of the quadratic is rejected', true)}
+      <p><b>Example.</b> ${m('x⁴ − 5x² + 4 = 0')}. With ${m('t = x²')}: ${m('t² − 5t + 4 = 0')}, so
+      ${m('t = 1')} or ${m('t = 4')}. Both are non-negative, so ${m('x² = 1')} gives ${m('x = ±1')} and
+      ${m('x² = 4')} gives ${m('x = ±2')} — four roots.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Equation</th><th>In ${m('t')}</th><th>Kept</th><th>Roots</th></tr></thead>
+      <tbody>
+        <tr><td class="m">x⁴ − 5x² + 4 = 0</td><td class="m">t = 1, 4</td><td>both</td><td class="m">±1, ±2</td></tr>
+        <tr><td class="m">x⁴ − 3x² − 4 = 0</td><td class="m">t = 4, −1</td><td class="m">t = 4</td><td class="m">±2</td></tr>
+        <tr><td class="m">x⁴ + 5x² + 4 = 0</td><td class="m">t = −1, −4</td><td>neither</td><td>none</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Undo the substitution, and reject before you do</span>
+      Stopping at ${m('t = 4')} answers a different question. And carrying ${m('t = −1')} forward gives
+      ${m('x² = −1')}, which has no real solution — say so rather than writing an imaginary answer in
+      Grade 9.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('x⁴ = 81') + ' and ' + m('x³ = −64') + '.',
+      steps: [
+        [m('x⁴ = 81') + ': even power, ' + m('81 > 0') + '.', ''],
+        [m('x = ±3'), ''],
+        [m('x³ = −64') + ': odd power.', ''],
+        [m('x = −4'), 'Exactly one root.']
+      ],
+      ans: m('x = ±3') + ' and ' + m('x = −4')
+    },
+    {
+      q: 'Solve ' + m('x⁴ − 5x² + 4 = 0') + '.',
+      steps: [
+        ['Let ' + m('t = x² ≥ 0') + '.', ''],
+        [m('t² − 5t + 4 = 0 ⇒ t = 1, 4'), ''],
+        ['Both are non-negative — keep both.', ''],
+        [m('x = ±1') + ' and ' + m('x = ±2') + '.', '']
+      ],
+      ans: m('x = ±1, ±2')
+    },
+    {
+      q: 'Solve ' + m('x⁴ − 3x² − 4 = 0') + '.',
+      steps: [
+        [m('t² − 3t − 4 = 0 ⇒ t = 4') + ' or ' + m('t = −1'), ''],
+        [m('t = −1') + ' is rejected: ' + m('x² ≥ 0') + '.', ''],
+        [m('x² = 4'), ''],
+        [m('x = ±2'), '']
+      ],
+      ans: m('x = ±2')
+    },
+    {
+      q: 'Solve ' + m('(x − 1)⁴ ≤ 16') + '.',
+      steps: [
+        [m('|x − 1| ≤ 2'), 'Even power, so a modulus.'],
+        [m('−2 ≤ x − 1 ≤ 2'), ''],
+        [m('−1 ≤ x ≤ 3'), '']
+      ],
+      ans: m('[−1, 3]')
+    }
+  ],
+  modelNote: 'Put y = x² and y = x³ on the same axes and let the class say, for each horizontal line, how many times it cuts each curve.',
+  interactive: {
+    type: 'rootPower',
+    title: 'Powers and their roots',
+    hint: 'Change the exponent and watch the number of solutions change.'
+  },
+  quiz: [
+    { q: m('x⁴ = 16') + ' has:', a: ['one root', 'two roots', 'four roots', 'none'], c: 1, why: m('±2') + '.' },
+    { q: m('x³ = 8') + ' has:', a: ['one root', 'two roots', 'three roots', 'none'], c: 0, why: 'Odd powers are one-to-one.' },
+    { q: m('x⁴ = −16') + ' has:', a: ['two roots', 'one root', 'no real root', 'four roots'], c: 2, why: 'An even power is never negative.' },
+    { q: m('x² < 9') + ' means:', a: [m('x < 3'), m('|x| < 3'), m('x > −3'), m('|x| > 3')], c: 1, why: 'Symmetric about ' + m('0') + '.' },
+    { q: 'In ' + m('x⁴ + bx² + c = 0') + ' the substitution needs:', a: [m('t ≥ 0'), m('t > 0'), m('t ≠ 0'), 'no condition'], c: 0, why: m('t = x²') + '.' },
+    { q: m('t = −1') + ' in a biquadratic gives:', a: [m('x = ±1'), 'no real root', m('x = −1'), m('x = 1')], c: 1, why: m('x² = −1') + ' is impossible.' },
+    { q: m('x³ < 27') + ' gives:', a: [m('(−3, 3)'), m('(−∞, 3)'), m('(3, +∞)'), 'all ' + m('x')], c: 1, why: 'One ray.' }
+  ],
+  practice: {
+    easy: [
+      ['Solve ' + m('x² = 49'), m('±7')],
+      ['Solve ' + m('x³ = 27'), m('3')],
+      ['Solve ' + m('x⁴ = 81'), m('±3')],
+      ['Solve ' + m('x⁵ = −32'), m('−2')],
+      ['Solve ' + m('x⁴ = −81'), 'No real root'],
+      ['Solve ' + m('x² < 9'), m('(−3, 3)')],
+      ['Solve ' + m('x³ < 27'), m('(−∞, 3)')]
+    ],
+    med: [
+      ['Solve ' + m('x⁴ − 5x² + 4 = 0'), m('±1, ±2')],
+      ['Solve ' + m('x⁴ − 3x² − 4 = 0'), m('±2')],
+      ['Solve ' + m('x⁴ + 5x² + 4 = 0'), 'No real root'],
+      ['Solve ' + m('(x − 1)⁴ = 16'), m('x = 3, −1')],
+      ['Solve ' + m('x⁴ ≤ 16'), m('[−2, 2]')],
+      ['Solve ' + m('x² > −4'), 'All ' + m('x')],
+      ['Solve ' + m('x³ > −8'), m('(−2, +∞)')]
+    ],
+    hard: [
+      ['Solve ' + m('(x − 1)⁴ ≤ 16'), m('[−1, 3]')],
+      ['Solve ' + m('x⁶ − 9x³ + 8 = 0'), m('x = 1, 2')],
+      ['Solve ' + m('x⁴ − 10x² + 9 < 0'), m('(−3, −1) ∪ (1, 3)')],
+      ['Solve ' + m('(2x + 1)³ = −27'), m('x = −2')],
+      ['For which ' + m('a') + ' has ' + m('x⁴ + a = 0') + ' a real root?', m('a ≤ 0')],
+      ['Solve ' + m('x⁴ − 2x² − 8 ≥ 0'), m('(−∞, −2] ∪ [2, +∞)')],
+      ['How many real roots has ' + m('x⁴ − 4x² + 4 = 0') + '?', 'Two — ' + m('x = ±' + sr('2'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'For every biquadratic, write the condition ' + m('t ≥ 0') + ' before solving.',
+  homework: [
+    'Solve ' + m('x⁴ = 625') + ' and ' + m('x³ = −125') + '.',
+    'Solve ' + m('x⁴ − 13x² + 36 = 0') + '.',
+    'Solve ' + m('x⁴ + 3x² − 4 = 0') + ', saying which root of the quadratic you rejected and why.',
+    'Solve ' + m('(x + 2)⁴ < 81') + '.',
+    'Explain in two sentences why ' + m('x⁵ = a') + ' always has exactly one real solution.'
+  ]
+});
+
+/* ============================== 13 ============================== */
+G9_ALG.push({
+  id: 'a9-13', stream: 'alg', grade: 9, quarter: 1, lessons: '24–25', hours: 2,
+  title: 'Chapter exercises — rational and irrational numbers [Cambridge insert]',
+  subtitle: 'Which numbers can be written as a fraction, and which provably cannot.',
+  uz: 'Algebra 9, Upraжнения k glave I', uzPage: 'pp. 56–62',
+  cam: 'IGX 9.2', camPage: 'Core & Extended, pp. 176–182', wb: 'Exercise 9.2',
+  objectives: [
+    'Classify a number as natural, integer, rational or irrational.',
+    'Convert a recurring decimal to a fraction.',
+    'Simplify surds and rationalise a denominator.',
+    'Follow the proof that √2 is irrational.'
+  ],
+  terms: [
+    ['Natural number', 'Natural son', 'Натуральное число'],
+    ['Integer', 'Butun son', 'Целое число'],
+    ['Rational number', 'Ratsional son', 'Рациональное число'],
+    ['Irrational number', 'Irratsional son', 'Иррациональное число'],
+    ['Real number', 'Haqiqiy son', 'Действительное число'],
+    ['Recurring decimal', 'Davriy o‘nli kasr', 'Периодическая дробь'],
+    ['Surd', 'Irratsional ildiz', 'Радикал'],
+    ['Rationalising', 'Maxrajni ratsionallashtirish', 'Освобождение от иррациональности'],
+    ['Proof by contradiction', 'Teskarisini faraz qilish', 'Доказательство от противного'],
+    ['Set notation', 'To‘plam belgisi', 'Обозначение множеств']
+  ],
+  timing: [[15, 'The number sets'], [22, 'Recurring decimals'], [25, 'Surds'], [23, 'Why √2 is irrational'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The number sets',
+      html: `${eq(m('ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Set</th><th>Symbol</th><th>Contains</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>natural</td><td class="m">ℕ</td><td>counting numbers</td><td class="m">1, 2, 3, …</td></tr>
+        <tr><td>integers</td><td class="m">ℤ</td><td>with zero and negatives</td><td class="m">…, −1, 0, 1, …</td></tr>
+        <tr><td>rational</td><td class="m">ℚ</td><td>${m(f('p', 'q'))} with ${m('q ≠ 0')}</td><td class="m">${f('3', '4')}, −2, 0.7, 0.333…</td></tr>
+        <tr><td>irrational</td><td>—</td><td>everything else real</td><td class="m">${sr('2')}, π, ${sr('3')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The decimal test</div>
+      A number is <b>rational</b> exactly when its decimal expansion terminates or recurs. ${m('0.25')}
+      terminates; ${m('0.333…')} recurs; ${m(sr('2') + ' = 1.41421356…')} does neither, and never
+      will.</div>`
+    },
+    {
+      h: 'Recurring decimals',
+      html: `<p>Every recurring decimal is a fraction, and the conversion is three lines.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th class="m">0.272727…</th></tr></thead>
+      <tbody>
+        <tr><td>let</td><td class="m">x = 0.272727…</td></tr>
+        <tr><td>multiply by ${m('100')}</td><td class="m">100x = 27.272727…</td></tr>
+        <tr><td>subtract</td><td class="m">99x = 27</td></tr>
+        <tr><td>solve</td><td class="m">x = ${f('27', '99')} = ${f('3', '11')}</td></tr>
+      </tbody></table></div>
+      <p>The multiplier is ${m('10')} to the power of the <b>length of the repeating block</b>: ${m('10')}
+      for one digit, ${m('100')} for two, ${m('1000')} for three.</p>
+      <div class="keybox"><div class="klabel">${m('0.999… = 1')}</div>
+      Let ${m('x = 0.999…')}; then ${m('10x = 9.999…')} and ${m('9x = 9')}, so ${m('x = 1')}. It is not
+      an approximation — the two decimals are two names for the same number.</div>`
+    },
+    {
+      h: 'Surds',
+      html: `${eq(m(sr('ab') + ' = ' + sr('a') + '·' + sr('b')) + '     ' + m(sr(f('a', 'b')) + ' = ' + f(sr('a'), sr('b'))) + '     ' + m('(' + sr('a') + ')² = a') + ' for ' + m('a ≥ 0'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Simplified</th></tr></thead>
+      <tbody>
+        <tr><td class="m">${sr('50')}</td><td class="m">5${sr('2')}</td></tr>
+        <tr><td class="m">${sr('12')} + ${sr('27')}</td><td class="m">5${sr('3')}</td></tr>
+        <tr><td class="m">${sr('8')} × ${sr('2')}</td><td class="m">4</td></tr>
+        <tr><td class="m">${f('1', sr('3'))}</td><td class="m">${f(sr('3'), '3')}</td></tr>
+        <tr><td class="m">${f('2', '1 + ' + sr('3'))}</td><td class="m">${sr('3')} − 1</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Rationalising uses the conjugate</div>
+      Multiply top and bottom by ${m('1 − ' + sr('3'))}: the bottom becomes
+      ${m('(1 + ' + sr('3') + ')(1 − ' + sr('3') + ') = 1 − 3 = −2')}, a whole number. It is the same
+      difference-of-squares trick as everywhere else.</div>
+      <div class="warn"><span class="wl">${m(sr('a') + ' + ' + sr('b'))} is not ${m(sr('a + b'))}</span>
+      ${m(sr('9') + ' + ' + sr('16') + ' = 3 + 4 = 7')}, but ${m(sr('25') + ' = 5')}. The root of a sum is
+      never the sum of the roots.</div>`
+    },
+    {
+      h: 'Why √2 is irrational',
+      html: `<p>Suppose it were rational. Then ${m(sr('2') + ' = ' + f('p', 'q'))} for whole numbers with
+      no common factor.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td class="m">p² = 2q²</td><td>square both sides</td></tr>
+        <tr><td>${m('p²')} is even</td><td>it equals ${m('2q²')}</td></tr>
+        <tr><td>${m('p')} is even</td><td>an odd square is odd</td></tr>
+        <tr><td>${m('p = 2k')}, so ${m('4k² = 2q²')}</td><td>substitute</td></tr>
+        <tr><td>${m('q² = 2k²')}, so ${m('q')} is even</td><td>the same argument</td></tr>
+        <tr><td>both even — contradiction</td><td>they had no common factor</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">What the proof really shows</div>
+      Not that ${m(sr('2'))} is hard to compute, but that <b>no</b> fraction can equal it — however many
+      decimal places you take. The same argument works for ${m(sr('3'))}, ${m(sr('5'))} and
+      ${m(sr('p'))} for any prime, and it is the oldest proof of its kind in mathematics.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Write ' + m('0.272727…') + ' as a fraction.',
+      steps: [
+        [m('x = 0.272727…'), ''],
+        [m('100x = 27.272727…'), 'Two repeating digits.'],
+        [m('99x = 27'), ''],
+        [m('x = ' + f('27', '99') + ' = ' + f('3', '11')), '']
+      ],
+      ans: m(f('3', '11'))
+    },
+    {
+      q: 'Simplify ' + m(sr('12') + ' + ' + sr('27')) + '.',
+      steps: [
+        [m(sr('12') + ' = 2' + sr('3')), ''],
+        [m(sr('27') + ' = 3' + sr('3')), ''],
+        [m('2' + sr('3') + ' + 3' + sr('3') + ' = 5' + sr('3')), '']
+      ],
+      ans: m('5' + sr('3'))
+    },
+    {
+      q: 'Rationalise ' + m(f('2', '1 + ' + sr('3'))) + '.',
+      steps: [
+        ['Multiply by ' + m(f('1 − ' + sr('3'), '1 − ' + sr('3'))) + '.', ''],
+        [m('bottom = 1 − 3 = −2'), ''],
+        [m(f('2(1 − ' + sr('3') + ')', '−2')), ''],
+        [m('= ' + sr('3') + ' − 1'), '']
+      ],
+      ans: m(sr('3') + ' − 1')
+    },
+    {
+      q: 'Is ' + m(sr('2') + ' + ' + sr('8')) + ' rational or irrational?',
+      steps: [
+        [m(sr('8') + ' = 2' + sr('2')), ''],
+        [m(sr('2') + ' + 2' + sr('2') + ' = 3' + sr('2')), ''],
+        [m('3' + sr('2')) + ' is a rational multiple of an irrational number.', ''],
+        ['Irrational.', '']
+      ],
+      ans: 'Irrational — it equals ' + m('3' + sr('2'))
+    }
+  ],
+  modelNote: 'Ask the class to find a fraction equal to √2 on a calculator; every attempt fails, and the proof explains why it must.',
+  interactive: {
+    type: 'rootPower',
+    title: 'Roots, exact and approximate',
+    hint: 'The decimal never settles for an irrational root.'
+  },
+  quiz: [
+    { q: 'A rational number is one that:', a: ['has a decimal', 'can be written as ' + m(f('p', 'q')), 'is positive', 'is whole'], c: 1, why: 'With ' + m('q ≠ 0') + '.' },
+    { q: 'A number is rational exactly when its decimal:', a: ['is short', 'terminates or recurs', 'has no zeros', 'is infinite'], c: 1, why: 'The decimal test.' },
+    { q: m('0.999…') + ' equals:', a: [m('0.99'), 'just under ' + m('1'), m('1'), m(f('9', '10'))], c: 2, why: m('9x = 9') + '.' },
+    { q: m(sr('50')) + ' simplifies to:', a: [m('5' + sr('2')), m('2' + sr('5')), m('25' + sr('2')), m('10' + sr('5'))], c: 0, why: m(sr('25 × 2')) + '.' },
+    { q: m(sr('9') + ' + ' + sr('16')) + ' equals:', a: [m('5'), m('7'), m('25'), m(sr('25'))], c: 1, why: 'Not the root of the sum.' },
+    { q: 'To rationalise ' + m(f('2', '1 + ' + sr('3'))) + ' multiply by:', a: [m('1 + ' + sr('3')), m('1 − ' + sr('3')), m(sr('3')), m('2')], c: 1, why: 'The conjugate.' },
+    { q: 'The proof that ' + m(sr('2')) + ' is irrational works by:', a: ['computing decimals', 'contradiction', 'induction', 'a graph'], c: 1, why: 'Assume a fraction, and fail.' }
+  ],
+  practice: {
+    easy: [
+      ['Is ' + m('−3') + ' an integer?', 'Yes'],
+      ['Is ' + m('0.25') + ' rational?', 'Yes'],
+      ['Is ' + m(sr('2')) + ' rational?', 'No'],
+      ['Is ' + m(sr('9')) + ' rational?', 'Yes — it is ' + m('3')],
+      [m('0.333…') + ' as a fraction', m(f('1', '3'))],
+      [m(sr('50')) + ' simplified', m('5' + sr('2'))],
+      [m(sr('8')) + ' × ' + m(sr('2')), m('4')]
+    ],
+    med: [
+      [m('0.272727…') + ' as a fraction', m(f('3', '11'))],
+      [m('0.4545…') + ' as a fraction', m(f('5', '11'))],
+      [m(sr('12') + ' + ' + sr('27')), m('5' + sr('3'))],
+      [m(sr('18') + ' − ' + sr('8')), m(sr('2'))],
+      ['Rationalise ' + m(f('1', sr('3'))), m(f(sr('3'), '3'))],
+      ['Rationalise ' + m(f('2', '1 + ' + sr('3'))), m(sr('3') + ' − 1')],
+      ['Is ' + m(sr('2') + ' + ' + sr('8')) + ' rational?', 'No — ' + m('3' + sr('2'))]
+    ],
+    hard: [
+      [m('0.1666…') + ' as a fraction', m(f('1', '6'))],
+      ['Rationalise ' + m(f(sr('5'), sr('5') + ' − 1')), m(f('5 + ' + sr('5'), '4'))],
+      ['Is ' + m('(' + sr('2') + ' + 1)(' + sr('2') + ' − 1)') + ' rational?', 'Yes — it is ' + m('1')],
+      ['Simplify ' + m('(' + sr('3') + ' + ' + sr('2') + ')²'), m('5 + 2' + sr('6'))],
+      ['Prove that ' + m(sr('3')) + ' is irrational', 'The same contradiction, with ' + m('3')],
+      ['Give an irrational number between ' + m('2') + ' and ' + m('3'), m(sr('5')) + ' ≈ ' + m('2.236')],
+      ['Is the sum of two irrationals always irrational?', 'No — ' + m(sr('2') + ' + (−' + sr('2') + ') = 0')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Give exact answers; a decimal is not a simplification of a surd.',
+  homework: [
+    'Write ' + m('0.636363…') + ' and ' + m('0.8333…') + ' as fractions.',
+    'Simplify ' + m(sr('75') + ' − ' + sr('12')) + '.',
+    'Rationalise ' + m(f('3', '2 − ' + sr('2'))) + '.',
+    'Decide, with a reason, whether ' + m('(' + sr('5') + ' + 2)(' + sr('5') + ' − 2)') + ' is rational.',
+    'Write out the proof that ' + m(sr('2')) + ' is irrational in your own words.'
+  ]
+});
+
+/* ============================== 14 ============================== */
+G9_ALG.push({
+  id: 'a9-14', stream: 'alg', grade: 9, quarter: 1, lessons: '26–27', hours: 2,
+  title: 'Control work 2, and work on the mistakes',
+  subtitle: 'The properties of functions in one paper, and the whole of Chapter I as a single map.',
+  uz: 'Algebra 9, Nazorat ishi 2', uzPage: 'pp. 60–67',
+  cam: 'IGX 9–10 review', camPage: 'Core & Extended, pp. 176–228', wb: 'Control paper A2',
+  objectives: [
+    'Find a domain, a monotonicity interval and a parity under time.',
+    'Solve an equation and an inequality containing a power.',
+    'Classify each lost mark and rewrite the solution in full.',
+    'Draw Chapter I as one map before the next chapter begins.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Domain', 'Aniqlanish sohasi', 'Область определения'],
+    ['Monotonicity', 'Monotonlik', 'Монотонность'],
+    ['Parity', 'Juft-toqlik', 'Чётность'],
+    ['Biquadratic', 'Bikvadrat', 'Биквадратное'],
+    ['Surd', 'Irratsional ildiz', 'Радикал'],
+    ['Concept map', 'Tushunchalar xaritasi', 'Карта понятий'],
+    ['Target', 'Maqsad', 'Цель']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 30 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Find the domain of ${m('y = ' + f(sr('x + 2'), 'x − 3'))}</td><td class="m">5</td><td>L17–18</td></tr>
+        <tr><td>2</td><td>Find the domain of ${m('y = ' + sr('x² − x − 6'))}</td><td class="m">5</td><td>L17–18</td></tr>
+        <tr><td>3</td><td>Give the intervals of monotonicity of ${m('y = x² + 6x − 1')}</td><td class="m">4</td><td>L19</td></tr>
+        <tr><td>4</td><td>Test ${m('y = x⁴ − x²')} and ${m('y = x³ + x')} for parity</td><td class="m">6</td><td>L20–21</td></tr>
+        <tr><td>5</td><td>Solve ${m('x⁴ − 13x² + 36 = 0')}</td><td class="m">6</td><td>L22–23</td></tr>
+        <tr><td>6</td><td>Simplify ${m(sr('32') + ' − ' + sr('8'))} and rationalise ${m(f('1', '2 + ' + sr('3')))}</td><td class="m">4</td><td>L24–25</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries one mark for combining <b>both</b> conditions; Q2 one for the square brackets; Q3 one
+      for naming the intervals rather than saying “increasing”; Q4 one for checking the domain first;
+      Q5 one for undoing the substitution. Five of the thirty marks are habits.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>one condition only</td><td class="m">[−2, +∞)</td><td>the denominator forbids ${m('3')} too</td></tr>
+        <tr><td>wrong side of the roots</td><td class="m">[−2, 3]</td><td>outside for ${m('≥ 0')}, ${m('a > 0')}</td></tr>
+        <tr><td>no interval named</td><td>“increasing”</td><td>on ${m('[−3, +∞)')}</td></tr>
+        <tr><td>parity without the domain</td><td>substituting into ${m(sr('x'))}</td><td>check symmetry first</td></tr>
+        <tr><td>substitution not undone</td><td class="m">t = 4, 9</td><td class="m">x = ±2, ±3</td></tr>
+        <tr><td>negative ${m('t')} kept</td><td class="m">x² = −1</td><td>reject it and say so</td></tr>
+        <tr><td>surd left unsimplified</td><td class="m">${sr('32')}</td><td class="m">4${sr('2')}</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'Chapter I as one map',
+      html: `<p>Six boxes, and the links written as sentences:</p>
+      <ul>
+        <li><b>${m('a')} and ${m('D')}</b> → <b>the picture</b> — “direction, and how many roots”</li>
+        <li><b>completing the square</b> → <b>the vertex</b> — “and therefore the least or greatest value”</li>
+        <li><b>the roots</b> → <b>the sign</b> — “${m('a')}'s sign outside, the opposite between”</li>
+        <li><b>factors</b> → <b>the number line</b> — “mark, alternate, read”</li>
+        <li><b>denominators and roots</b> → <b>the domain</b> — “the only two things that forbid”</li>
+        <li><b>${m('f(−x)')}</b> → <b>parity</b> — “but only if the domain is symmetric”</li>
+      </ul>
+      {{fig:quadGraph:One picture, and five of the six boxes read off it.}}
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      Chapter II takes the same quadratic and puts <b>two</b> of them together: systems of second-degree
+      equations, systems of second-degree inequalities, and the proof of simple inequalities. Nothing new
+      is needed — only what is on this map, used twice at once.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q1: the domain of ' + m('y = ' + f(sr('x + 2'), 'x − 3')) + '.',
+      steps: [
+        [m('x + 2 ≥ 0 ⇒ x ≥ −2'), 'The root.'],
+        [m('x − 3 ≠ 0 ⇒ x ≠ 3'), 'The denominator.'],
+        ['Both must hold.', ''],
+        [m('[−2, 3) ∪ (3, +∞)'), '']
+      ],
+      ans: m('[−2, 3) ∪ (3, +∞)')
+    },
+    {
+      q: 'Model answer, Q4: test ' + m('y = x⁴ − x²') + ' and ' + m('y = x³ + x') + '.',
+      steps: [
+        ['Both domains are ' + m('ℝ') + ' — symmetric ✓', ''],
+        [m('(−x)⁴ − (−x)² = x⁴ − x²') + ' — even.', 'All powers even.'],
+        [m('(−x)³ + (−x) = −x³ − x = −(x³ + x)') + ' — odd.', 'All powers odd.'],
+        ['Even, and odd, respectively.', '']
+      ],
+      ans: 'The first is even, the second odd'
+    },
+    {
+      q: 'Model answer, Q5: solve ' + m('x⁴ − 13x² + 36 = 0') + '.',
+      steps: [
+        ['Let ' + m('t = x² ≥ 0') + '.', ''],
+        [m('t² − 13t + 36 = 0 ⇒ t = 4, 9'), ''],
+        ['Both non-negative — keep both.', ''],
+        [m('x = ±2') + ' and ' + m('x = ±3') + '.', 'Four roots.']
+      ],
+      ans: m('x = ±2, ±3')
+    }
+  ],
+  modelNote: 'Work Q1 twice on the board — once with only the root condition — and let the class find the value that was wrongly admitted.',
+  interactive: {
+    type: 'quiz',
+    title: 'Chapter I in twelve questions',
+    hint: 'Two from each block of lessons.',
+    items: [
+      { q: m('y = ax² + bx + c') + ' is quadratic when:', a: [m('a ≠ 0'), m('b ≠ 0'), m('c ≠ 0'), 'always'], c: 0, why: 'Otherwise linear.' },
+      { q: 'The vertex of ' + m('y = (x − 4)² − 1') + ':', a: [m('(4, −1)'), m('(−4, −1)'), m('(4, 1)'), m('(1, 4)')], c: 0, why: 'Reverse the bracket.' },
+      { q: m('D < 0') + ' and ' + m('a > 0') + ' mean the trinomial is:', a: ['always negative', 'always positive', 'sometimes zero', 'undefined'], c: 1, why: 'Entirely above ' + m('Ox') + '.' },
+      { q: 'For ' + m('a > 0') + ', negative values occur:', a: ['outside the roots', 'between them', 'nowhere', 'everywhere'], c: 1, why: 'The dip.' },
+      { q: 'A double zero makes the sign:', a: ['flip', 'stay', 'vanish', 'invert'], c: 1, why: 'A square is non-negative.' },
+      { q: 'A denominator zero is drawn:', a: ['filled', 'open', 'either', 'not at all'], c: 1, why: 'Undefined there.' },
+      { q: 'The domain of ' + m(sr('x − 4')) + ':', a: [m('x > 4'), m('x ≥ 4'), m('x ≤ 4'), 'all ' + m('x')], c: 1, why: 'Zero is allowed.' },
+      { q: 'The domain of ' + m(f('1', sr('x − 4'))) + ':', a: [m('x ≥ 4'), m('x > 4'), m('x ≠ 4'), 'all ' + m('x')], c: 1, why: 'Both rules.' },
+      { q: 'Monotonicity is stated:', a: ['at a point', 'on an interval', 'for one value', 'never'], c: 1, why: 'Always an interval.' },
+      { q: m('x³ − 4x') + ' is:', a: ['even', 'odd', 'neither', 'both'], c: 1, why: 'All powers odd.' },
+      { q: m('x⁴ = 16') + ' has:', a: ['one root', 'two roots', 'four', 'none'], c: 1, why: m('±2') + '.' },
+      { q: m(sr('32')) + ' simplifies to:', a: [m('2' + sr('8')), m('4' + sr('2')), m('16' + sr('2')), m('8' + sr('2'))], c: 1, why: m(sr('16 × 2')) + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 needs how many conditions?', a: ['one', 'two', 'three', 'none'], c: 1, why: 'A root and a denominator.' },
+    { q: 'Q3’s answer must include:', a: ['the vertex only', 'the named intervals', 'the roots', 'a sketch'], c: 1, why: 'Monotonicity is on an interval.' },
+    { q: 'Q4 begins by checking:', a: [m('f(0)'), 'that the domain is symmetric', 'the roots', 'the range'], c: 1, why: 'Or the test is meaningless.' },
+    { q: 'Chapter II puts together:', a: ['one quadratic', 'two at once — systems', 'trigonometry', 'progressions'], c: 1, why: 'Systems of second degree.' }
+  ],
+  practice: {
+    easy: [
+      ['Domain of ' + m('y = ' + sr('x + 2')), m('[−2, +∞)')],
+      ['Domain of ' + m('y = ' + f('1', 'x − 3')), m('x ≠ 3')],
+      ['Vertex of ' + m('y = x² + 6x − 1'), m('(−3, −10)')],
+      ['Parity of ' + m('y = x⁴ − x²'), 'Even'],
+      ['Parity of ' + m('y = x³ + x'), 'Odd'],
+      [m(sr('32')) + ' simplified', m('4' + sr('2'))],
+      [m(sr('8')) + ' simplified', m('2' + sr('2'))]
+    ],
+    med: [
+      ['Domain of ' + m('y = ' + f(sr('x + 2'), 'x − 3')), m('[−2, 3) ∪ (3, +∞)')],
+      ['Domain of ' + m('y = ' + sr('x² − x − 6')), m('(−∞, −2] ∪ [3, +∞)')],
+      ['Monotonicity of ' + m('y = x² + 6x − 1'), 'Down on ' + m('(−∞, −3]') + ', up after'],
+      ['Solve ' + m('x⁴ − 13x² + 36 = 0'), m('±2, ±3')],
+      [m(sr('32') + ' − ' + sr('8')), m('2' + sr('2'))],
+      ['Rationalise ' + m(f('1', '2 + ' + sr('3'))), m('2 − ' + sr('3'))],
+      ['Solve ' + m('x⁴ = 16'), m('±2')]
+    ],
+    hard: [
+      ['Domain of ' + m('y = ' + f(sr('x² − 4'), 'x − 3')), m('(−∞, −2] ∪ [2, 3) ∪ (3, +∞)')],
+      ['Parity of ' + m('y = ' + f('x⁴ + 1', 'x²')), 'Even'],
+      ['Solve ' + m('x⁴ − 5x² − 36 = 0'), m('±3')],
+      ['Monotonicity of ' + m('y = −x² + 8x'), 'Up on ' + m('(−∞, 4]') + ', down after'],
+      ['Simplify ' + m('(2 + ' + sr('3') + ')(2 − ' + sr('3') + ')'), m('1')],
+      ['Domain of ' + m('y = ' + f('1', sr('x² − x − 6'))), m('(−∞, −2) ∪ (3, +∞)')],
+      ['For which ' + m('k') + ' is ' + m('y = x² + kx + 1') + ' decreasing on ' + m('(−∞, 2]') + '?', m('k = −4')]
+    ]
+  },
+  hwTitle: 'Homework — 4 tasks',
+  hwNote: 'Bring the six-box map to the first lesson of Chapter II.',
+  homework: [
+    'Rewrite in full every control-work question that lost a mark, naming the slip in the margin.',
+    'Complete the six-box concept map with every link written as a sentence.',
+    'Find the domain of ' + m('y = ' + f(sr('5 − x'), 'x + 1')) + '.',
+    'Write your target for Chapter II in one checkable sentence, and date it.'
+  ]
+});

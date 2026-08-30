@@ -113,12 +113,13 @@ for (const t of all) {
       const name = raw.slice(6).split(':')[0];
       if (!named.has(name)) issues.push(`${t.id}: section ${i} placeholder "${raw.slice(0, 40)}" will not be replaced`);
     }
-    /* Text that escapes its cell — "</td> more words</tr>" — balances the tag
-       counts but renders outside the table. Catch it explicitly. */
+    /* Text that escapes its cell — "</td> more words<td>" or "</td> words</tr>" —
+       balances the tag counts but renders outside the table. Catch it wherever
+       it sits in the row, not only at the end. */
     for (const row of s.html.match(/<tr[\s\S]*?<\/tr>/g) || []) {
-      const tail = row.slice(row.lastIndexOf('</td>') + 5, row.lastIndexOf('</tr>'));
-      if (row.includes('</td>') && tail.trim()) {
-        issues.push(`${t.id}: section ${i} has text outside a cell: "${tail.trim().slice(0, 40)}"`);
+      for (const stray of row.match(/<\/td>([^<]*)(?=<td|<\/tr>)/g) || []) {
+        const text = stray.slice(5).trim();
+        if (text) issues.push(`${t.id}: section ${i} has text outside a cell: "${text.slice(0, 40)}"`);
       }
     }
     for (const [open, close] of [['<table', '</table>'], ['<td', '</td>'], ['<tr', '</tr>'], ['<ul', '</ul>'], ['<ol', '</ol>']]) {
