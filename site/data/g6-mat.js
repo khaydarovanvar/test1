@@ -2632,3 +2632,357 @@ G6_MAT.push({
     'How many ' + m(f('3', '4')) + ' m planks can be cut from a board ' + m('9') + ' m long?'
   ]
 });
+
+/* ============================== 15 ============================== */
+G6_MAT.push({
+  id: 'g6-15', stream: 'mat', grade: 6, quarter: 1, lessons: '33', hours: 1,
+  title: 'Think — Project 1: mixed-up properties',
+  subtitle: 'A Cambridge project: which of the four operations obey which laws, tested rather than assumed.',
+  uz: 'Matematika 6, o‘ylab ko‘r', uzPage: 'pp. 91–93',
+  cam: 'S7 Project 1', camPage: 'Stage 7, project pages', wb: 'Project sheet 1',
+  objectives: [
+    'State the commutative, associative and distributive laws.',
+    'Test each law on each operation with examples.',
+    'Produce a counter-example where a law fails.',
+    'Present the findings as a table with a conclusion.'
+  ],
+  terms: [
+    ['Commutative', 'O‘rin almashtirish xossasi', 'Переместительный'],
+    ['Associative', 'Guruhlash xossasi', 'Сочетательный'],
+    ['Distributive', 'Taqsimot xossasi', 'Распределительный'],
+    ['Law', 'Qonun', 'Закон'],
+    ['Counter-example', 'Qarshi misol', 'Контрпример'],
+    ['To test', 'Sinab ko‘rmoq', 'Проверить'],
+    ['Conclusion', 'Xulosa', 'Вывод'],
+    ['Project', 'Loyiha', 'Проект']
+  ],
+  timing: [[8, 'The three laws'], [12, 'Testing them'], [14, 'Counter-examples'], [6, 'Presenting the findings']],
+  sections: [
+    {
+      h: 'The three laws',
+      html: `${eq(m('a + b = b + a') + '     ' + m('(a + b) + c = a + (b + c)') + '     ' + m('a(b + c) = ab + ac'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Law</th><th>What it says</th><th>In words</th></tr></thead>
+      <tbody>
+        <tr><td>commutative</td><td class="m">a + b = b + a</td><td>the order does not matter</td></tr>
+        <tr><td>associative</td><td class="m">(a + b) + c = a + (b + c)</td><td>the grouping does not matter</td></tr>
+        <tr><td>distributive</td><td class="m">a(b + c) = ab + ac</td><td>multiplication spreads over addition</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A law that holds for one operation may fail for another</div>
+      That is the whole point of the project: not to be told which laws hold, but to find out by
+      testing.</div>`
+    },
+    {
+      h: 'Testing them',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Operation</th><th>Commutative?</th><th>Associative?</th><th>Test used</th></tr></thead>
+      <tbody>
+        <tr><td>addition</td><td>yes</td><td>yes</td><td class="m">3 + 5 = 5 + 3</td></tr>
+        <tr><td>multiplication</td><td>yes</td><td>yes</td><td class="m">3 · 5 = 5 · 3</td></tr>
+        <tr><td>subtraction</td><td>no</td><td>no</td><td class="m">3 − 5 ≠ 5 − 3</td></tr>
+        <tr><td>division</td><td>no</td><td>no</td><td class="m">6 ÷ 2 ≠ 2 ÷ 6</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One example proves nothing; one counter-example proves everything</div>
+      ${m('2 + 2 = 2 · 2')} does not make addition and multiplication the same. But ${m('3 − 5 ≠ 5 − 3')}
+      settles for ever that subtraction is not commutative.</div>`
+    },
+    {
+      h: 'Counter-examples',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Claim</th><th>Counter-example</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td>subtraction is commutative</td><td class="m">3 − 5 = −2, 5 − 3 = 2</td><td>false</td></tr>
+        <tr><td>division is associative</td><td class="m">(12 ÷ 6) ÷ 2 = 1, 12 ÷ (6 ÷ 2) = 4</td><td>false</td></tr>
+        <tr><td>subtraction is associative</td><td class="m">(9 − 4) − 2 = 3, 9 − (4 − 2) = 7</td><td>false</td></tr>
+        <tr><td>multiplication distributes over addition</td><td>no counter-example exists</td><td>true</td></tr>
+        <tr><td>division distributes from the right</td><td class="m">(6 + 4) ÷ 2 = 5 = 3 + 2</td><td>true</td></tr>
+        <tr><td>division distributes from the left</td><td class="m">12 ÷ (6 + 2) = 1.5, but 2 + 6 = 8</td><td>false</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A counter-example must be a single, complete case</span>
+      “Sometimes it does not work” is not a counter-example. Two numbers, both calculations and the two
+      different answers — that is what settles a claim.</div>`
+    },
+    {
+      h: 'Presenting the findings',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Part of the report</th><th>What it contains</th></tr></thead>
+      <tbody>
+        <tr><td>the question</td><td>which laws hold for which operations</td></tr>
+        <tr><td>the method</td><td>the numbers you tested and why you chose them</td></tr>
+        <tr><td>the table</td><td>four operations against three laws, with ✓ or ✗</td></tr>
+        <tr><td>the evidence</td><td>one counter-example for every ✗</td></tr>
+        <tr><td>the conclusion</td><td>two sentences on what the pattern is</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The pattern worth noticing</div>
+      Addition and multiplication obey the laws; subtraction and division do not. The two that fail are
+      exactly the two that undo the other two — and that is not a coincidence.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Is subtraction commutative? Justify your answer.',
+      steps: [
+        ['Test ' + m('3') + ' and ' + m('5') + '.', ''],
+        [m('3 − 5 = −2'), ''],
+        [m('5 − 3 = 2'), ''],
+        ['The two differ, so no — and one counter-example is enough.', '']
+      ],
+      ans: 'No'
+    },
+    {
+      q: 'Is division associative?',
+      steps: [
+        ['Test ' + m('12, 6, 2') + '.', ''],
+        [m('(12 ÷ 6) ÷ 2 = 1'), ''],
+        [m('12 ÷ (6 ÷ 2) = 4'), ''],
+        ['Different, so no.', '']
+      ],
+      ans: 'No'
+    },
+    {
+      q: 'Show that ' + m('a(b + c) = ab + ac') + ' with ' + m('a = 4, b = 5, c = 3') + '.',
+      steps: [
+        ['Left: ' + m('4(5 + 3) = 4 · 8 = 32') + '.', ''],
+        ['Right: ' + m('4 · 5 + 4 · 3 = 20 + 12 = 32') + '.', ''],
+        ['They agree — as the distributive law says they must.', 'One case, not a proof.']
+      ],
+      ans: 'Both give ' + m('32')
+    }
+  ],
+  modelNote: 'Ask each group to try to break one law and to bring the counter-example to the board; the groups that fail have found the true laws, which is the more interesting result.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which laws hold?',
+    hint: 'One counter-example is enough to say no.',
+    items: [
+      { q: 'Addition is commutative:', a: ['true', 'false'], c: 0, why: m('a + b = b + a') + '.' },
+      { q: 'Subtraction is commutative:', a: ['true', 'false'], c: 1, why: m('3 − 5 ≠ 5 − 3') + '.' },
+      { q: 'Multiplication is commutative:', a: ['true', 'false'], c: 0, why: m('ab = ba') + '.' },
+      { q: 'Division is commutative:', a: ['true', 'false'], c: 1, why: m('6 ÷ 2 ≠ 2 ÷ 6') + '.' },
+      { q: 'Addition is associative:', a: ['true', 'false'], c: 0, why: 'Grouping does not matter.' },
+      { q: 'Division is associative:', a: ['true', 'false'], c: 1, why: m('(12 ÷ 6) ÷ 2 ≠ 12 ÷ (6 ÷ 2)') + '.' },
+      { q: m('a(b + c) = ab + ac') + ':', a: ['true', 'false'], c: 0, why: 'The distributive law.' },
+      { q: 'One example is enough to prove a law:', a: ['true', 'false'], c: 1, why: 'It only takes one counter-example to disprove one.' }
+    ]
+  },
+  quiz: [
+    { q: 'Commutative means:', a: ['the order does not matter', 'the grouping does not matter', 'brackets expand', 'nothing changes'], c: 0, why: m('a + b = b + a') + '.' },
+    { q: 'Associative means:', a: ['the order does not matter', 'the grouping does not matter', 'signs cancel', 'the answer is zero'], c: 1, why: 'Brackets may be moved.' },
+    { q: 'Subtraction is:', a: ['commutative', 'not commutative', 'associative', 'distributive'], c: 1, why: m('3 − 5 ≠ 5 − 3') + '.' },
+    { q: 'A claim is disproved by:', a: ['one example', 'one counter-example', 'many examples', 'a table'], c: 1, why: 'A single case suffices.' },
+    { q: 'The two operations obeying all the laws are:', a: ['addition and subtraction', 'addition and multiplication', 'multiplication and division', 'subtraction and division'], c: 1, why: 'The other two undo them.' },
+    { q: m('(6 + 4) ÷ 2') + ' equals:', a: [m('5'), m('8'), m('3'), m('1.5')], c: 0, why: 'And ' + m('3 + 2 = 5') + ' too.' }
+  ],
+  practice: {
+    easy: [
+      ['Is addition commutative?', 'Yes'],
+      ['Is subtraction commutative?', 'No'],
+      ['Is multiplication commutative?', 'Yes'],
+      ['Is division commutative?', 'No'],
+      ['Is addition associative?', 'Yes'],
+      ['Is division associative?', 'No'],
+      ['State the distributive law', m('a(b + c) = ab + ac')]
+    ],
+    med: [
+      ['A counter-example to “subtraction is commutative”', m('3 − 5 ≠ 5 − 3')],
+      ['A counter-example to “division is associative”', m('(12 ÷ 6) ÷ 2 ≠ 12 ÷ (6 ÷ 2)')],
+      ['A counter-example to “subtraction is associative”', m('(9 − 4) − 2 ≠ 9 − (4 − 2)')],
+      ['Check ' + m('a(b + c) = ab + ac') + ' at ' + m('4, 5, 3'), 'Both ' + m('32')],
+      [m('(6 + 4) ÷ 2') + ' and ' + m('6 ÷ 2 + 4 ÷ 2'), 'Both ' + m('5')],
+      [m('12 ÷ (6 + 2)') + ' and ' + m('12 ÷ 6 + 12 ÷ 2'), m('1.5') + ' and ' + m('8') + ' — different'],
+      ['How many counter-examples disprove a claim?', 'One']
+    ],
+    hard: [
+      ['Does division distribute over addition from the right?', 'Yes — ' + m('(a + b) ÷ c = a ÷ c + b ÷ c')],
+      ['From the left?', 'No — ' + m('c ÷ (a + b) ≠ c ÷ a + c ÷ b')],
+      ['Is ' + m('2 + 2 = 2 · 2') + ' evidence that the operations agree?', 'No — one case proves nothing'],
+      ['Find another pair with ' + m('a + b = ab'), m('0') + ' and ' + m('0')],
+      ['Why do subtraction and division fail the laws?', 'They are the inverses of the operations that obey them'],
+      ['Is ' + m('a − (b − c) = (a − b) + c') + ' true?', 'Yes — check with numbers'],
+      ['Which of the three laws holds for all four operations?', 'None of them — subtraction and division fail every one']
+    ]
+  },
+  hwTitle: 'Homework — the project',
+  hwNote: 'One page: the table, one counter-example for every cross, and two sentences of conclusion.',
+  homework: [
+    'Draw the table of four operations against the commutative and associative laws.',
+    'Fill it in with ✓ and ✗, testing each cell with numbers of your own.',
+    'Write one counter-example beside every ✗.',
+    'Test the distributive law with three numbers of your choice.',
+    'Write two sentences saying which operations obey the laws, and what the two exceptions have in common.'
+  ]
+});
+
+/* ============================== 16 ============================== */
+G6_MAT.push({
+  id: 'g6-16', stream: 'mat', grade: 6, quarter: 1, lessons: '34–35', hours: 2,
+  title: 'Revision — fractions and their division',
+  subtitle: 'The four operations on fractions gathered before the control work.',
+  uz: 'Matematika 6, takrorlash', uzPage: 'pp. 94–98',
+  cam: 'S7 7 consolidation', camPage: 'Stage 7, pp. 66–80', wb: 'Revision 7',
+  objectives: [
+    'Choose the right method for each of the four operations.',
+    'Work fluently with mixed numbers.',
+    'Solve a word problem in three lines.',
+    'Identify and repair the errors that remain.'
+  ],
+  terms: [
+    ['Revision', 'Takrorlash', 'Повторение'],
+    ['Common denominator', 'Umumiy maxraj', 'Общий знаменатель'],
+    ['Reciprocal', 'Teskari son', 'Обратное число'],
+    ['Mixed number', 'Aralash son', 'Смешанное число'],
+    ['To cancel', 'Qisqartirish', 'Сокращать'],
+    ['Lowest terms', 'Qisqarmas ko‘rinish', 'Несократимый вид'],
+    ['Word problem', 'Matnli masala', 'Текстовая задача'],
+    ['Check', 'Tekshirish', 'Проверка']
+  ],
+  timing: [[20, 'The four operations side by side'], [20, 'Mixed numbers'], [25, 'Word problems'], [12, 'The errors that remain'], [3, 'Homework']],
+  sections: [
+    {
+      h: 'The four operations side by side',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Operation</th><th>What it needs</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>addition</td><td>a common denominator</td><td class="m">${f('2', '3')} + ${f('1', '4')} = ${f('11', '12')}</td></tr>
+        <tr><td>subtraction</td><td>a common denominator</td><td class="m">${f('5', '6')} − ${f('1', '3')} = ${f('1', '2')}</td></tr>
+        <tr><td>multiplication</td><td>nothing — multiply across</td><td class="m">${f('2', '3')} · ${f('3', '5')} = ${f('2', '5')}</td></tr>
+        <tr><td>division</td><td>the reciprocal of the divisor</td><td class="m">${f('2', '3')} ÷ ${f('4', '5')} = ${f('5', '6')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Only ${m('+')} and ${m('−')} need a common denominator</span>
+      Finding one before multiplying or dividing is not wrong, only wasted work — and it is the single
+      commonest habit that slows this topic down.</div>`
+    },
+    {
+      h: 'Mixed numbers',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Operation</th><th>Best method</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>adding</td><td>wholes and fractions separately, or convert</td><td class="m">1${f('1', '2')} + 2${f('1', '3')} = 3${f('5', '6')}</td></tr>
+        <tr><td>subtracting</td><td>convert if borrowing is needed</td><td class="m">3${f('1', '4')} − 1${f('1', '2')} = 1${f('3', '4')}</td></tr>
+        <tr><td>multiplying</td><td>always convert first</td><td class="m">1${f('1', '2')} · 2 = 3</td></tr>
+        <tr><td>dividing</td><td>always convert first</td><td class="m">2${f('1', '4')} ÷ 1${f('1', '2')} = 1${f('1', '2')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Never multiply the whole parts and the fractions separately</span>
+      ${m('1' + f('1', '2') + ' · 2' + f('1', '2'))} is not ${m('2' + f('1', '4'))}. Convert to
+      ${m(f('3', '2') + ' · ' + f('5', '2'))}, which is ${m(f('15', '4') + ' = 3' + f('3', '4'))}.</div>`
+    },
+    {
+      h: 'Word problems',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Operation</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m(f('3', '4'))} of ${m('24')} pupils are present</td><td>multiply</td><td class="m">18</td></tr>
+        <tr><td>${m('9')} m of rope in ${m(f('3', '4'))} m pieces</td><td>divide</td><td class="m">12</td></tr>
+        <tr><td>${m(f('2', '3'))} of a tank is ${m('20')} l</td><td>divide</td><td class="m">30 l</td></tr>
+        <tr><td>${m(f('1', '2'))} l shared between ${m('4')}</td><td>divide</td><td class="m">${f('1', '8')} l</td></tr>
+        <tr><td>${m(f('1', '4'))} added to ${m(f('1', '3'))} of a day</td><td>add</td><td class="m">${f('7', '12')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Three lines every time</div>
+      Name the operation, do the arithmetic, answer in words with units. The middle line is the easiest of
+      the three and carries the fewest marks.</div>`
+    },
+    {
+      h: 'The errors that remain',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Error</th><th>Looks like</th><th>Correct</th></tr></thead>
+      <tbody>
+        <tr><td>adding denominators</td><td class="m">${f('1', '2')} + ${f('1', '3')} = ${f('2', '5')}</td><td class="m">${f('5', '6')}</td></tr>
+        <tr><td>common denominator before ${m('×')}</td><td>extra work</td><td>multiply across</td></tr>
+        <tr><td>turning over the wrong fraction</td><td class="m">${f('2', '3')} ÷ ${f('4', '5')} = ${f('3', '2')} · ${f('4', '5')}</td><td class="m">${f('2', '3')} · ${f('5', '4')}</td></tr>
+        <tr><td>mixed number multiplied in parts</td><td class="m">1${f('1', '2')} · 2${f('1', '2')} = 2${f('1', '4')}</td><td class="m">3${f('3', '4')}</td></tr>
+        <tr><td>answer not simplified</td><td class="m">${f('12', '18')}</td><td class="m">${f('2', '3')}</td></tr>
+      </tbody></table></div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Compute ' + m('1' + f('1', '2') + ' · 2' + f('1', '2')) + '.',
+      steps: [
+        ['Convert both: ' + m(f('3', '2')) + ' and ' + m(f('5', '2')) + '.', ''],
+        [m(f('3', '2') + ' · ' + f('5', '2') + ' = ' + f('15', '4')), ''],
+        [m('= 3' + f('3', '4')), '']
+      ],
+      ans: m('3' + f('3', '4'))
+    },
+    {
+      q: 'Compute ' + m('3' + f('1', '4') + ' − 1' + f('1', '2')) + '.',
+      steps: [
+        ['Convert: ' + m(f('13', '4') + ' − ' + f('3', '2')) + '.', ''],
+        ['Common denominator ' + m('4') + ': ' + m(f('13', '4') + ' − ' + f('6', '4')) + '.', ''],
+        [m('= ' + f('7', '4') + ' = 1' + f('3', '4')), '']
+      ],
+      ans: m('1' + f('3', '4'))
+    },
+    {
+      q: m(f('2', '3')) + ' of a tank is ' + m('20') + ' litres. Find its capacity.',
+      steps: [
+        ['A part is given, the whole is wanted: divide.', ''],
+        [m('20 ÷ ' + f('2', '3') + ' = 20 · ' + f('3', '2')), ''],
+        [m('= 30') + ' litres.', '']
+      ],
+      ans: m('30') + ' litres'
+    }
+  ],
+  modelNote: 'Put one addition, one multiplication and one division on the board unlabelled and ask which needs a common denominator; the answer separates fluency from habit.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which method does this one need?',
+    hint: 'Only ' + m('+') + ' and ' + m('−') + ' need a common denominator.',
+    items: [
+      { q: m(f('2', '3') + ' + ' + f('1', '4')) + ' needs:', a: ['a common denominator', 'the reciprocal', 'nothing', 'converting'], c: 0, why: 'Adding.' },
+      { q: m(f('2', '3') + ' · ' + f('3', '5')) + ' needs:', a: ['a common denominator', 'the reciprocal', 'multiplying across', 'converting'], c: 2, why: 'No denominator work.' },
+      { q: m(f('2', '3') + ' ÷ ' + f('4', '5')) + ' needs:', a: ['a common denominator', 'the reciprocal of the divisor', 'nothing', 'squaring'], c: 1, why: 'Turn over the second.' },
+      { q: m(f('1', '2') + ' + ' + f('1', '3')) + ' equals:', a: [m(f('2', '5')), m(f('5', '6')), m(f('1', '6')), m(f('2', '6'))], c: 1, why: 'Never add denominators.' },
+      { q: m('1' + f('1', '2') + ' · 2' + f('1', '2')) + ' equals:', a: [m('2' + f('1', '4')), m('3' + f('3', '4')), m('3'), m('2' + f('1', '2'))], c: 1, why: 'Convert first.' },
+      { q: m('3' + f('1', '4') + ' − 1' + f('1', '2')) + ' equals:', a: [m('1' + f('3', '4')), m('2' + f('1', '4')), m('1' + f('1', '4')), m('2' + f('3', '4'))], c: 0, why: 'Convert and subtract.' },
+      { q: m(f('2', '3')) + ' of a tank is ' + m('20') + ' l; the tank holds:', a: [m('13' + f('1', '3')) + ' l', m('30') + ' l', m('40') + ' l', m('60') + ' l'], c: 1, why: 'Divide.' },
+      { q: m(f('12', '18')) + ' as an answer is:', a: ['finished', 'not simplified', 'wrong', 'improper'], c: 1, why: 'Both divide by ' + m('6') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'Which operations need a common denominator?', a: ['all four', m('+') + ' and ' + m('−'), m('×') + ' and ' + m('÷'), 'none'], c: 1, why: 'Same-sized parts.' },
+    { q: 'To divide by a fraction:', a: ['find a common denominator', 'multiply by the reciprocal', 'multiply across', 'subtract'], c: 1, why: 'Turn over the divisor.' },
+    { q: 'Before multiplying mixed numbers you should:', a: ['multiply the wholes', 'convert to improper fractions', 'add them', 'round them'], c: 1, why: 'Otherwise the answer is wrong.' },
+    { q: m(f('1', '2') + ' + ' + f('1', '3')) + ' equals:', a: [m(f('2', '5')), m(f('5', '6')), m(f('1', '5')), m(f('2', '6'))], c: 1, why: 'LCD ' + m('6') + '.' },
+    { q: m('9') + ' m of rope in ' + m(f('3', '4')) + ' m pieces gives:', a: [m('6.75'), m('12'), m('9'), m('3')], c: 1, why: m('9 · ' + f('4', '3')) + '.' },
+    { q: 'An answer of ' + m(f('12', '18')) + ' should be written:', a: [m(f('12', '18')), m(f('2', '3')), m(f('6', '9')), m('0.67')], c: 1, why: 'Lowest terms.' }
+  ],
+  practice: {
+    easy: [
+      [m(f('2', '3') + ' + ' + f('1', '4')), m(f('11', '12'))],
+      [m(f('5', '6') + ' − ' + f('1', '3')), m(f('1', '2'))],
+      [m(f('2', '3') + ' · ' + f('3', '5')), m(f('2', '5'))],
+      [m(f('2', '3') + ' ÷ ' + f('4', '5')), m(f('5', '6'))],
+      [m(f('1', '2') + ' + ' + f('1', '3')), m(f('5', '6'))],
+      [m(f('3', '4')) + ' of ' + m('24'), m('18')],
+      [m('9') + ' m in ' + m(f('3', '4')) + ' m pieces', m('12')]
+    ],
+    med: [
+      [m('1' + f('1', '2') + ' + 2' + f('1', '3')), m('3' + f('5', '6'))],
+      [m('3' + f('1', '4') + ' − 1' + f('1', '2')), m('1' + f('3', '4'))],
+      [m('1' + f('1', '2') + ' · 2' + f('1', '2')), m('3' + f('3', '4'))],
+      [m('2' + f('1', '4') + ' ÷ 1' + f('1', '2')), m('1' + f('1', '2'))],
+      [m(f('2', '3')) + ' of a tank is ' + m('20') + ' l: the tank', m('30') + ' l'],
+      [m(f('1', '2')) + ' l shared between ' + m('4'), m(f('1', '8')) + ' l'],
+      [m(f('1', '4') + ' + ' + f('1', '3')), m(f('7', '12'))]
+    ],
+    hard: [
+      [m('2' + f('1', '3') + ' · 1' + f('2', '7')), m('3')],
+      [m('4' + f('1', '2') + ' ÷ ' + f('3', '4')), m('6')],
+      [m(f('3', '4') + ' + ' + f('2', '3') + ' − ' + f('1', '2')), m(f('11', '12'))],
+      [m(f('5', '8') + ' ÷ ' + f('5', '6') + ' · ' + f('2', '3')), m(f('1', '2'))],
+      ['A recipe needs ' + m(f('3', '4')) + ' kg for ' + m('6') + ' people: for ' + m('8'), m('1') + ' kg'],
+      ['Which is larger, ' + m(f('2', '3') + ' ÷ ' + f('3', '4')) + ' or ' + m(f('2', '3') + ' · ' + f('3', '4')) + '?', 'The division'],
+      ['Why is a common denominator not needed for ' + m('×') + '?', 'The parts are recut by the multiplication itself']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Name the operation before starting, and simplify every answer.',
+  homework: [
+    'Compute ' + m(f('3', '5') + ' + ' + f('1', '4')) + ' and ' + m(f('7', '8') + ' − ' + f('1', '2')) + '.',
+    'Compute ' + m(f('4', '9') + ' · ' + f('3', '8')) + ' and ' + m(f('4', '9') + ' ÷ ' + f('8', '3')) + '.',
+    'Compute ' + m('2' + f('1', '2') + ' · 1' + f('1', '5')) + '.',
+    'Compute ' + m('3' + f('3', '4') + ' ÷ 1' + f('1', '4')) + '.',
+    m(f('5', '8')) + ' of a barrel is ' + m('25') + ' litres. Find its capacity.'
+  ]
+});
