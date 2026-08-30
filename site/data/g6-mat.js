@@ -5675,3 +5675,181 @@ G6_MAT.push({
     'A sum of ' + m('84 000') + ' is ' + m('70%') + ' of a price. Find the price.'
   ]
 });
+
+/* ============================== 32 ============================== */
+G6_MAT.push({
+  id: 'g6-32', stream: 'mat', grade: 6, quarter: 2, lessons: '63–66', hours: 4,
+  title: 'Finding a percentage increase or decrease',
+  subtitle: 'One multiplier does the whole job — and the reverse question needs a division.',
+  uz: 'Matematika 6, §14', uzPage: 'pp. 179–190',
+  cam: 'S7 10', camPage: 'Stage 7, pp. 96–104', wb: 'Exercise 10.3',
+  objectives: [
+    'Increase and decrease a quantity by a percentage.',
+    'Find the percentage change from the old and new values.',
+    'Find the original value after a change.',
+    'Explain why a rise and a fall of the same percentage do not cancel.'
+  ],
+  terms: [
+    ['Increase', 'Ortish', 'Увеличение'],
+    ['Decrease', 'Kamayish', 'Уменьшение'],
+    ['Multiplier', 'Ko‘paytuvchi', 'Множитель'],
+    ['Percentage change', 'Foizli o‘zgarish', 'Процентное изменение'],
+    ['Original value', 'Boshlang‘ich qiymat', 'Первоначальное значение'],
+    ['Discount', 'Chegirma', 'Скидка'],
+    ['Profit', 'Foyda', 'Прибыль'],
+    ['Loss', 'Zarar', 'Убыток']
+  ],
+  timing: [[30, 'The multiplier'], [40, 'Finding the change'], [50, 'The reverse question'], [30, 'Profit, loss and discount'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'The multiplier',
+      html: `${eq('new ' + m('=') + ' old ' + m('× (1 ± ' + f('p', '100') + ')'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Change</th><th>Multiplier</th><th class="m">80 000</th><th class="m">250</th></tr></thead>
+      <tbody>
+        <tr><td>up ${m('20%')}</td><td class="m">1.2</td><td class="m">96 000</td><td class="m">300</td></tr>
+        <tr><td>down ${m('20%')}</td><td class="m">0.8</td><td class="m">64 000</td><td class="m">200</td></tr>
+        <tr><td>up ${m('7%')}</td><td class="m">1.07</td><td class="m">85 600</td><td class="m">267.5</td></tr>
+        <tr><td>down ${m('35%')}</td><td class="m">0.65</td><td class="m">52 000</td><td class="m">162.5</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One step, not two</div>
+      Finding ${m('20%')} and then adding it works, but ${m('· 1.2')} is one keystroke and cannot lose the
+      original amount along the way.</div>`
+    },
+    {
+      h: 'Finding the change',
+      html: `${eq('percentage change ' + m('= ' + f('new − old', 'old') + ' × 100%'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Old</th><th>New</th><th>Change</th><th>Percentage</th></tr></thead>
+      <tbody>
+        <tr><td class="m">40</td><td class="m">50</td><td class="m">+10</td><td class="m">+25%</td></tr>
+        <tr><td class="m">50</td><td class="m">40</td><td class="m">−10</td><td class="m">−20%</td></tr>
+        <tr><td class="m">80 000</td><td class="m">92 000</td><td class="m">+12 000</td><td class="m">+15%</td></tr>
+        <tr><td class="m">200</td><td class="m">150</td><td class="m">−50</td><td class="m">−25%</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Always divide by the <i>old</i> value</span>
+      The first two rows use the same pair of numbers and give different percentages, because the base
+      changes. A rise of ${m('25%')} is undone by a fall of ${m('20%')}, not of ${m('25%')}.</div>`
+    },
+    {
+      h: 'The reverse question',
+      html: `<p>“After a rise of ${m('20%')} the price is ${m('96 000')}” — the ${m('96 000')} is the
+      <b>new</b> value, so divide by the multiplier.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Wrong</th><th>Right</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>after ${m('+20%')} it is ${m('96 000')}</td><td class="m">96 000 − 19 200</td><td class="m">96 000 ÷ 1.2</td><td class="m">80 000</td></tr>
+        <tr><td>after ${m('−20%')} it is ${m('64 000')}</td><td class="m">64 000 + 12 800</td><td class="m">64 000 ÷ 0.8</td><td class="m">80 000</td></tr>
+        <tr><td>after ${m('−25%')} it is ${m('150')}</td><td class="m">150 + 37.5</td><td class="m">150 ÷ 0.75</td><td class="m">200</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Check by going forwards</div>
+      ${m('80 000 · 1.2 = 96 000')} ✓. The forward check takes five seconds and settles whether the
+      division was the right move.</div>`
+    },
+    {
+      h: 'Profit, loss and discount',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Situation</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>bought at ${m('40 000')}, sold at ${m('50 000')}</td><td class="m">${f('10 000', '40 000')} · 100</td><td class="m">25% profit</td></tr>
+        <tr><td>bought at ${m('50 000')}, sold at ${m('40 000')}</td><td class="m">${f('10 000', '50 000')} · 100</td><td class="m">20% loss</td></tr>
+        <tr><td>a coat at ${m('300 000')} with ${m('30%')} off</td><td class="m">· 0.7</td><td class="m">210 000</td></tr>
+        <tr><td>a bill of ${m('120 000')} plus ${m('12%')} tax</td><td class="m">· 1.12</td><td class="m">134 400</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Profit and loss are percentages of the <i>cost</i></span>
+      A trader who buys at ${m('40 000')} and sells at ${m('50 000')} makes ${m('25%')}, not ${m('20%')} —
+      the cost price is the base. Using the selling price instead is the classic error.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Increase ' + m('80 000') + ' by ' + m('15%') + '.',
+      steps: [
+        ['Multiplier: ' + m('1.15') + '.', ''],
+        [m('80 000 · 1.15'), ''],
+        [m('= 92 000'), '']
+      ],
+      ans: m('92 000')
+    },
+    {
+      q: 'A price falls from ' + m('200') + ' to ' + m('150') + '. Find the percentage decrease.',
+      steps: [
+        ['Change: ' + m('−50') + '.', ''],
+        [m(f('50', '200') + ' · 100'), 'The old value underneath.'],
+        [m('= 25%') + ' decrease.', '']
+      ],
+      ans: m('25%')
+    },
+    {
+      q: 'After a fall of ' + m('20%') + ' a price is ' + m('64 000') + '. What was it before?',
+      steps: [
+        ['The multiplier was ' + m('0.8') + '.', ''],
+        [m('64 000 ÷ 0.8'), 'Divide, do not add.'],
+        [m('= 80 000'), 'Check: ' + m('80 000 · 0.8 = 64 000') + ' ✓']
+      ],
+      ans: m('80 000')
+    }
+  ],
+  modelNote: 'Ask whether a shop that raises a price 20% and then takes 20% off has returned to the start; the near-unanimous “yes” is worth correcting in public.',
+  interactive: {
+    type: 'quiz',
+    title: 'Multiplier, change, or reverse?',
+    hint: 'Decide which of the three the question asks.',
+    items: [
+      { q: 'The multiplier for a rise of ' + m('15%') + ':', a: [m('0.15'), m('1.15'), m('15'), m('0.85')], c: 1, why: 'Whole plus part.' },
+      { q: 'The multiplier for a fall of ' + m('35%') + ':', a: [m('0.35'), m('0.65'), m('1.35'), m('0.7')], c: 1, why: m('100 − 35') + '.' },
+      { q: m('80 000') + ' up ' + m('15%') + ':', a: [m('92 000'), m('80 150'), m('96 000'), m('88 000')], c: 0, why: m('· 1.15') + '.' },
+      { q: 'From ' + m('40') + ' to ' + m('50') + ':', a: [m('+20%'), m('+25%'), m('+10%'), m('+50%')], c: 1, why: 'Divide by ' + m('40') + '.' },
+      { q: 'From ' + m('50') + ' to ' + m('40') + ':', a: [m('−20%'), m('−25%'), m('−10%'), m('−80%')], c: 0, why: 'Divide by ' + m('50') + '.' },
+      { q: 'After ' + m('+20%') + ' a price is ' + m('96 000') + '; before:', a: [m('76 800'), m('80 000'), m('115 200'), m('86 400')], c: 1, why: 'Divide by ' + m('1.2') + '.' },
+      { q: 'Bought at ' + m('40 000') + ', sold at ' + m('50 000') + ':', a: [m('20%') + ' profit', m('25%') + ' profit', m('10%') + ' profit', m('25%') + ' loss'], c: 1, why: 'The cost is the base.' },
+      { q: 'Up ' + m('20%') + ' then down ' + m('20%') + ' gives:', a: ['the same price', m('96%') + ' of it', m('104%') + ' of it', m('90%') + ' of it'], c: 1, why: m('1.2 · 0.8 = 0.96') + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'To increase by ' + m('7%') + ' multiply by:', a: [m('0.07'), m('1.07'), m('7'), m('0.93')], c: 1, why: 'One plus the fraction.' },
+    { q: 'To decrease by ' + m('35%') + ' multiply by:', a: [m('0.35'), m('0.65'), m('1.35'), m('0.35')], c: 1, why: m('100 − 35') + '.' },
+    { q: 'Percentage change divides by:', a: ['the new value', 'the old value', 'the change', m('100')], c: 1, why: 'The base is where you started.' },
+    { q: 'After ' + m('−25%') + ' a price is ' + m('150') + '; before:', a: [m('187.5'), m('200'), m('175'), m('112.5')], c: 1, why: 'Divide by ' + m('0.75') + '.' },
+    { q: 'A rise of ' + m('25%') + ' is undone by a fall of:', a: [m('25%'), m('20%'), m('30%'), m('75%')], c: 1, why: 'The base has grown.' },
+    { q: 'Profit is a percentage of:', a: ['the selling price', 'the cost price', 'the profit', 'the tax'], c: 1, why: 'What was paid.' }
+  ],
+  practice: {
+    easy: [
+      [m('80 000') + ' up ' + m('20%'), m('96 000')],
+      [m('80 000') + ' down ' + m('20%'), m('64 000')],
+      [m('250') + ' up ' + m('7%'), m('267.5')],
+      [m('250') + ' down ' + m('35%'), m('162.5')],
+      ['The multiplier for ' + m('+15%'), m('1.15')],
+      ['The multiplier for ' + m('−35%'), m('0.65')],
+      [m('300 000') + ' with ' + m('30%') + ' off', m('210 000')]
+    ],
+    med: [
+      ['From ' + m('40') + ' to ' + m('50'), m('+25%')],
+      ['From ' + m('50') + ' to ' + m('40'), m('−20%')],
+      ['From ' + m('80 000') + ' to ' + m('92 000'), m('+15%')],
+      ['From ' + m('200') + ' to ' + m('150'), m('−25%')],
+      ['After ' + m('+20%') + ' it is ' + m('96 000') + ': before', m('80 000')],
+      ['After ' + m('−20%') + ' it is ' + m('64 000') + ': before', m('80 000')],
+      ['A bill of ' + m('120 000') + ' plus ' + m('12%') + ' tax', m('134 400')]
+    ],
+    hard: [
+      ['Bought at ' + m('40 000') + ', sold at ' + m('50 000') + ': the profit percentage', m('25%')],
+      ['Bought at ' + m('50 000') + ', sold at ' + m('40 000') + ': the loss percentage', m('20%')],
+      ['Up ' + m('20%') + ' then down ' + m('20%') + ' from ' + m('500'), m('480')],
+      ['A price after two rises of ' + m('10%') + ' from ' + m('200'), m('242')],
+      ['After ' + m('−40%') + ' a price is ' + m('72 000') + ': before', m('120 000')],
+      ['A coat costs ' + m('210 000') + ' after ' + m('30%') + ' off: the original', m('300 000')],
+      ['Why is a ' + m('25%') + ' rise undone by a ' + m('20%') + ' fall?', 'The fall is taken from a larger amount']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Every reverse question is a division; check it by multiplying forwards.',
+  homework: [
+    'Increase ' + m('45 000') + ' by ' + m('16%') + ' and decrease it by ' + m('16%') + '.',
+    'A price rises from ' + m('250') + ' to ' + m('310') + '. Find the percentage increase.',
+    'After a fall of ' + m('25%') + ' a price is ' + m('180 000') + '. Find the original price.',
+    'A trader buys at ' + m('60 000') + ' and sells at ' + m('75 000') + '. Find the profit percentage.',
+    'Show that a rise of ' + m('50%') + ' followed by a fall of ' + m('50%') + ' leaves ' + m('75%') + ' of the original.'
+  ]
+});
