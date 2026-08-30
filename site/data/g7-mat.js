@@ -15610,3 +15610,357 @@ G7_MAT.push({
     'Find the frequency of each option and check that they add to ' + m('20') + '.'
   ]
 });
+
+/* ============================== 87 ============================== */
+G7_MAT.push({
+  id: 'g7-87', stream: 'mat', grade: 7, quarter: 4, lessons: '166', hours: 1,
+  title: 'Practical exercises — interpreting and discussing results',
+  subtitle: 'A Cambridge insert: averages, spread, and the graph that tells the truth about the data.',
+  uz: 'Matematika 7, amaliy mashqlar', uzPage: 'pp. 503–506',
+  cam: 'S8 16', camPage: 'Stage 8, pp. 158–166', wb: 'Exercise 16.1',
+  objectives: [
+    'Find the mean, median, mode and range of a small data set.',
+    'Choose the average that describes the data honestly.',
+    'Read a bar chart and a frequency table and compare two sets.',
+    'Recognise a misleading graph.'
+  ],
+  terms: [
+    ['Mean', 'O‘rta arifmetik', 'Среднее арифметическое'],
+    ['Median', 'Mediana', 'Медиана'],
+    ['Mode', 'Moda', 'Мода'],
+    ['Range', 'Ayirma (tarqoqlik)', 'Размах'],
+    ['Outlier', 'Chetlangan qiymat', 'Выброс'],
+    ['Bar chart', 'Ustunli diagramma', 'Столбчатая диаграмма'],
+    ['To compare', 'Taqqoslash', 'Сравнить'],
+    ['Misleading', 'Chalg‘ituvchi', 'Вводящий в заблуждение']
+  ],
+  timing: [[10, 'The three averages'], [12, 'Which average to use'], [10, 'Comparing two sets'], [6, 'Misleading graphs'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'The three averages',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Measure</th><th>How</th><th>For ${m('3, 5, 5, 6, 8, 9, 12')}</th></tr></thead>
+      <tbody>
+        <tr><td>mean</td><td>add and divide by the count</td><td class="m">${f('48', '7')} ≈ 6.9</td></tr>
+        <tr><td>median</td><td>the middle value in order</td><td class="m">6</td></tr>
+        <tr><td>mode</td><td>the commonest value</td><td class="m">5</td></tr>
+        <tr><td>range</td><td>largest minus smallest</td><td class="m">9</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Order the data before taking a median</span>
+      The middle of the list as written is not the median unless the list is sorted. With an even number
+      of values, average the two middle ones.</div>`
+    },
+    {
+      h: 'Which average to use',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Data</th><th>Best average</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>test marks, no extremes</td><td>mean</td><td>it uses every value</td></tr>
+        <tr><td>salaries with one very large one</td><td>median</td><td>the outlier drags the mean up</td></tr>
+        <tr><td>shoe sizes sold</td><td>mode</td><td>the shop wants the commonest</td></tr>
+        <tr><td>colours of cars</td><td>mode only</td><td>they cannot be added or ordered</td></tr>
+      </tbody></table></div>
+      <p>Example: ${m('2, 3, 3, 4, 88')} has mean ${m('20')} and median ${m('3')}. The mean describes no
+      one in the list.</p>
+      <div class="keybox"><div class="klabel">The range is not an average</div>
+      It measures spread, not the centre. Two classes can share a mean of ${m('60')} with ranges of
+      ${m('10')} and ${m('70')} — very different classes, and the range is what says so.</div>`
+    },
+    {
+      h: 'Comparing two sets',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Class</th><th>Mean</th><th>Range</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td>7A</td><td class="m">62</td><td class="m">14</td><td>similar marks, tightly grouped</td></tr>
+        <tr><td>7B</td><td class="m">62</td><td class="m">55</td><td>the same average, wildly spread</td></tr>
+      </tbody></table></div>
+      <p>A fair comparison quotes both: one measure of centre and one of spread. Quoting the mean alone
+      would make the two classes look identical.</p>
+      <div class="keybox"><div class="klabel">Two sentences finish any comparison</div>
+      “On average 7B did as well as 7A; but 7B’s marks were far more spread out.” Centre, then spread —
+      and both in words, not just numbers.</div>`
+    },
+    {
+      h: 'Misleading graphs',
+      html: `{{fig:histogram:A bar chart, drawn honestly}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Trick</th><th>What it does</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>vertical axis not starting at ${m('0')}</td><td>small differences look huge</td><td>start at ${m('0')}, or mark the break</td></tr>
+        <tr><td>bars of different widths</td><td>area misleads the eye</td><td>equal widths</td></tr>
+        <tr><td>no scale on an axis</td><td>nothing can be checked</td><td>label both axes</td></tr>
+        <tr><td>pictures scaled in two directions</td><td>doubling looks like quadrupling</td><td>use bars</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Always read the vertical axis first</span>
+      A bar twice as tall as another means twice as much only if the axis starts at zero. This is the
+      commonest way an honest set of numbers is used to tell a lie.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the mean, median, mode and range of ' + m('3, 5, 5, 6, 8, 9, 12') + '.',
+      steps: [
+        ['Sum ' + m('= 48') + ', count ' + m('7') + ', so the mean is ' + m('≈ 6.9') + '.', ''],
+        ['Already in order; the middle value is ' + m('6') + '.', ''],
+        [m('5') + ' appears twice — it is the mode.', ''],
+        ['Range ' + m('= 12 − 3 = 9') + '.', '']
+      ],
+      ans: 'Mean ' + m('≈ 6.9') + ', median ' + m('6') + ', mode ' + m('5') + ', range ' + m('9')
+    },
+    {
+      q: 'Which average best describes ' + m('2, 3, 3, 4, 88') + '?',
+      steps: [
+        ['Mean ' + m('= ' + f('100', '5') + ' = 20') + '.', ''],
+        ['Median ' + m('= 3') + '.', ''],
+        ['The ' + m('88') + ' is an outlier and drags the mean far above every other value.', ''],
+        ['The median describes the data honestly.', '']
+      ],
+      ans: 'The median'
+    },
+    {
+      q: 'Two classes both have mean ' + m('62') + '; the ranges are ' + m('14') + ' and ' + m('55') + '. What can be said?',
+      steps: [
+        ['On average they performed equally.', ''],
+        ['The second class is far more spread out.', ''],
+        ['Some pupils there did much better and some much worse.', '']
+      ],
+      ans: 'Same centre, very different spread'
+    }
+  ],
+  modelNote: 'Show the same bar chart twice, once with the axis from 0 and once from 55; the class sees the same data tell two different stories.',
+  interactive: {
+    type: 'averages',
+    title: 'Change one value and watch the three averages',
+    hint: 'The mean moves at once; the median often does not.'
+  },
+  quiz: [
+    { q: 'The mean of ' + m('3, 5, 5, 6, 8, 9, 12') + ' is about:', a: [m('5'), m('6'), m('6.9'), m('9')], c: 2, why: m(f('48', '7')) + '.' },
+    { q: 'Its median is:', a: [m('5'), m('6'), m('6.9'), m('8')], c: 1, why: 'The middle of seven values.' },
+    { q: 'Its mode is:', a: [m('3'), m('5'), m('6'), m('12')], c: 1, why: 'It appears twice.' },
+    { q: 'Its range is:', a: [m('3'), m('6'), m('9'), m('12')], c: 2, why: m('12 − 3') + '.' },
+    { q: 'With one huge outlier, the best average is the:', a: ['mean', 'median', 'mode', 'range'], c: 1, why: 'The outlier drags the mean.' },
+    { q: 'A bar chart whose axis starts at ' + m('55') + ' is:', a: ['fine', 'misleading', 'impossible', 'a histogram'], c: 1, why: 'Differences look bigger.' }
+  ],
+  practice: {
+    easy: [
+      ['The mean of ' + m('4, 6, 8'), m('6')],
+      ['The median of ' + m('4, 6, 8'), m('6')],
+      ['The mode of ' + m('4, 6, 6, 8'), m('6')],
+      ['The range of ' + m('4, 6, 8'), m('4')],
+      ['The mean of ' + m('3, 5, 5, 6, 8, 9, 12'), m('≈ 6.9')],
+      ['Its median', m('6')],
+      ['Its range', m('9')]
+    ],
+    med: [
+      ['The mean of ' + m('2, 3, 3, 4, 88'), m('20')],
+      ['Its median', m('3')],
+      ['Which average describes it better?', 'The median'],
+      ['The median of ' + m('4, 7, 9, 12'), m('8')],
+      ['Two classes, mean ' + m('62') + ', ranges ' + m('14') + ' and ' + m('55'), 'Same centre, different spread'],
+      ['Which average suits shoe sizes sold?', 'The mode'],
+      ['Which suits car colours?', 'The mode only']
+    ],
+    hard: [
+      ['Five numbers have mean ' + m('10') + ': their sum', m('50')],
+      ['Four numbers have mean ' + m('7') + '; a fifth is added and the mean becomes ' + m('8') + ': the fifth number', m('12')],
+      ['A set of ' + m('5') + ' numbers with mean ' + m('6') + ', median ' + m('5') + ' and mode ' + m('5'), 'e.g. ' + m('3, 5, 5, 7, 10')],
+      ['Why can the mean lie outside the commonest values?', 'One extreme value pulls it away'],
+      ['Two sets with the same mean but ranges ' + m('2') + ' and ' + m('40'), 'One is consistent, the other erratic'],
+      ['Why must a bar chart axis start at ' + m('0') + '?', 'Otherwise bar heights are not proportional'],
+      ['The mean of the first ' + m('10') + ' whole numbers ' + m('1') + ' to ' + m('10'), m('5.5')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Order the data first; the median depends on it and the range does too.',
+  homework: [
+    'Find the mean, median, mode and range of ' + m('7, 4, 9, 4, 6, 10, 4') + '.',
+    'For ' + m('1, 2, 2, 3, 92') + ', find the mean and median and say which describes the data better.',
+    'Two classes have mean ' + m('55') + ' with ranges ' + m('12') + ' and ' + m('48') + '. Write two sentences comparing them.',
+    'Draw a bar chart of your own data with the axis starting at ' + m('0') + '.',
+    'Describe two ways a graph can mislead.'
+  ]
+});
+
+/* ============================== 88 ============================== */
+G7_MAT.push({
+  id: 'g7-88', stream: 'mat', grade: 7, quarter: 4, lessons: '167', hours: 1,
+  title: 'Practical exercises — ratio and proportion',
+  subtitle: 'A Cambridge insert: sharing in a ratio, scaling a recipe, and telling direct from inverse.',
+  uz: 'Matematika 7, amaliy mashqlar', uzPage: 'pp. 507–510',
+  cam: 'S8 12', camPage: 'Stage 8, pp. 118–125', wb: 'Exercise 12.2',
+  objectives: [
+    'Simplify a ratio and share a quantity in a given ratio.',
+    'Use the unitary method to scale a recipe or a price.',
+    'Distinguish direct from inverse proportion.',
+    'Use a scale on a map or a plan.'
+  ],
+  terms: [
+    ['Ratio', 'Nisbat', 'Отношение'],
+    ['Proportion', 'Proporsiya', 'Пропорция'],
+    ['To share', 'Taqsimlash', 'Разделить'],
+    ['Unitary method', 'Birlik usuli', 'Метод приведения к единице'],
+    ['Direct proportion', 'To‘g‘ri proporsionallik', 'Прямая пропорциональность'],
+    ['Inverse proportion', 'Teskari proporsionallik', 'Обратная пропорциональность'],
+    ['Scale', 'Masshtab', 'Масштаб'],
+    ['Equivalent ratios', 'Teng nisbatlar', 'Равные отношения']
+  ],
+  timing: [[8, 'Ratios and their parts'], [12, 'Sharing in a ratio'], [12, 'The unitary method'], [6, 'Direct and inverse'], [2, 'Homework']],
+  sections: [
+    {
+      h: 'Ratios and their parts',
+      html: `<p>A ratio compares quantities of the same kind. It simplifies like a fraction, by dividing
+      every part by their common factor.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Ratio</th><th>Simplified</th><th>Parts in all</th></tr></thead>
+      <tbody>
+        <tr><td class="m">12 : 18</td><td class="m">2 : 3</td><td class="m">5</td></tr>
+        <tr><td class="m">30 : 45 : 75</td><td class="m">2 : 3 : 5</td><td class="m">10</td></tr>
+        <tr><td class="m">0.5 : 2</td><td class="m">1 : 4</td><td class="m">5</td></tr>
+        <tr><td class="m">${f('1', '2')} : ${f('1', '3')}</td><td class="m">3 : 2</td><td class="m">5</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Both quantities must be in the same units</span>
+      ${m('50 cm : 2 m')} is not ${m('50 : 2')}. Convert first: ${m('50 : 200 = 1 : 4')}.</div>`
+    },
+    {
+      h: 'Sharing in a ratio',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Sharing ${m('120')} in the ratio ${m('2 : 3')}</th></tr></thead>
+      <tbody>
+        <tr><td>add the parts</td><td class="m">2 + 3 = 5</td></tr>
+        <tr><td>find one part</td><td class="m">120 ÷ 5 = 24</td></tr>
+        <tr><td>multiply out</td><td class="m">2 · 24 = 48, 3 · 24 = 72</td></tr>
+        <tr><td>check</td><td class="m">48 + 72 = 120 ✓</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Amount</th><th>Ratio</th><th>Shares</th></tr></thead>
+      <tbody>
+        <tr><td class="m">120</td><td class="m">2 : 3</td><td class="m">48, 72</td></tr>
+        <tr><td class="m">210</td><td class="m">3 : 4</td><td class="m">90, 120</td></tr>
+        <tr><td class="m">300</td><td class="m">1 : 2 : 3</td><td class="m">50, 100, 150</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The shares must rebuild the total</div>
+      Adding them back is a two-second check that catches nearly every arithmetic slip in this
+      topic.</div>`
+    },
+    {
+      h: 'The unitary method',
+      html: `<p>Find the value of one unit, then multiply up.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>One unit</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('5')} pens cost ${m('15 000')}: ${m('8')} pens</td><td class="m">3000</td><td class="m">24 000</td></tr>
+        <tr><td>a recipe for ${m('4')} needs ${m('600 g')} flour: for ${m('6')}</td><td class="m">150 g</td><td class="m">900 g</td></tr>
+        <tr><td>${m('3')} workers lay ${m('90 m')} in a day: ${m('7')} workers</td><td class="m">30 m</td><td class="m">210 m</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Scales are ratios too</div>
+      A map at ${m('1 : 100 000')} shows ${m('1 cm')} for every ${m('1 km')} on the ground, so ${m('7 cm')}
+      between two towns means ${m('7 km')}. Read the scale as “one of these is that many of those”.</div>`
+    },
+    {
+      h: 'Direct and inverse',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Kind</th><th>As one grows</th><th>Constant</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>direct</td><td>the other grows</td><td class="m">${f('y', 'x')}</td><td>cost of ${m('n')} identical pens</td></tr>
+        <tr><td>inverse</td><td>the other shrinks</td><td class="m">xy</td><td>workers and the days a job takes</td></tr>
+      </tbody></table></div>
+      <p>Example: ${m('4')} workers finish a job in ${m('6')} days; how long would ${m('8')} take? The
+      product ${m('4 · 6 = 24')} worker-days is fixed, so ${m('8')} workers need ${m('3')} days.</p>
+      <div class="warn"><span class="wl">Not everything that changes together is proportional</span>
+      Doubling the workers may not halve the time if they get in each other's way, and a child twice as
+      old is not twice as tall. Proportion is a model, and it has to be checked against sense.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Share ' + m('120') + ' in the ratio ' + m('2 : 3') + '.',
+      steps: [
+        [m('2 + 3 = 5') + ' parts.', ''],
+        [m('120 ÷ 5 = 24') + ' for one part.', ''],
+        [m('48') + ' and ' + m('72') + '.', 'Check: ' + m('48 + 72 = 120') + ' ✓']
+      ],
+      ans: m('48') + ' and ' + m('72')
+    },
+    {
+      q: 'A recipe for ' + m('4') + ' people needs ' + m('600 g') + ' of flour. How much for ' + m('6') + '?',
+      steps: [
+        ['One person: ' + m('600 ÷ 4 = 150 g') + '.', ''],
+        ['Six people: ' + m('150 · 6') + '.', ''],
+        [m('= 900 g'), '']
+      ],
+      ans: m('900 g')
+    },
+    {
+      q: m('4') + ' workers finish a job in ' + m('6') + ' days. How long would ' + m('8') + ' workers take?',
+      steps: [
+        ['More workers, less time — inverse proportion.', ''],
+        [m('4 · 6 = 24') + ' worker-days.', ''],
+        [m('24 ÷ 8 = 3'), ''],
+        ['Three days.', '']
+      ],
+      ans: m('3') + ' days'
+    }
+  ],
+  modelNote: 'Scale a real recipe from four people to the size of the class; the arithmetic is identical to the textbook exercise and nobody asks what it is for.',
+  interactive: {
+    type: 'quiz',
+    title: 'Direct, inverse, or neither?',
+    hint: 'Ask what stays constant.',
+    items: [
+      { q: m('12 : 18') + ' simplifies to:', a: [m('2 : 3'), m('3 : 2'), m('6 : 9'), m('1 : 2')], c: 0, why: 'Divide by ' + m('6') + '.' },
+      { q: m('50 cm : 2 m') + ' is:', a: [m('50 : 2'), m('1 : 4'), m('25 : 1'), m('1 : 40')], c: 1, why: 'Convert first.' },
+      { q: m('120') + ' in the ratio ' + m('2 : 3') + ' gives:', a: [m('40, 80'), m('48, 72'), m('50, 70'), m('60, 60')], c: 1, why: 'Five parts of ' + m('24') + '.' },
+      { q: m('5') + ' pens cost ' + m('15 000') + '; ' + m('8') + ' cost:', a: [m('20 000'), m('24 000'), m('30 000'), m('18 000')], c: 1, why: m('3000') + ' each.' },
+      { q: 'Cost against number of identical pens is:', a: ['direct', 'inverse', 'neither', 'constant'], c: 0, why: 'Both grow together.' },
+      { q: 'Workers against days for a fixed job is:', a: ['direct', 'inverse', 'neither', 'constant'], c: 1, why: 'The product is fixed.' },
+      { q: m('4') + ' workers take ' + m('6') + ' days; ' + m('8') + ' take:', a: [m('12'), m('3'), m('2'), m('4')], c: 1, why: m('24 ÷ 8') + '.' },
+      { q: 'A map at ' + m('1 : 100 000') + ': ' + m('7 cm') + ' means:', a: [m('700 m'), m('7 km'), m('70 km'), m('7 m')], c: 1, why: m('1 cm') + ' is ' + m('1 km') + '.' }
+    ]
+  },
+  quiz: [
+    { q: m('30 : 45 : 75') + ' simplifies to:', a: [m('2 : 3 : 5'), m('1 : 2 : 3'), m('3 : 4 : 5'), m('6 : 9 : 15')], c: 0, why: 'Divide by ' + m('15') + '.' },
+    { q: 'Sharing needs first:', a: ['the total', 'the sum of the parts', 'one share', 'the ratio reversed'], c: 1, why: 'Then one part.' },
+    { q: m('210') + ' in the ratio ' + m('3 : 4') + ' gives:', a: [m('90, 120'), m('100, 110'), m('70, 140'), m('105, 105')], c: 0, why: 'Seven parts of ' + m('30') + '.' },
+    { q: 'The unitary method finds:', a: ['the total', 'the value of one unit', 'the ratio', 'the difference'], c: 1, why: 'Then multiplies up.' },
+    { q: 'In inverse proportion the constant is:', a: [m(f('y', 'x')), m('xy'), m('x + y'), m('x − y')], c: 1, why: 'The product.' },
+    { q: 'A recipe for ' + m('4') + ' scaled to ' + m('6') + ' multiplies amounts by:', a: [m('1.5'), m('2'), m('0.5'), m('6')], c: 0, why: m(f('6', '4')) + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Simplify ' + m('12 : 18'), m('2 : 3')],
+      ['Simplify ' + m('30 : 45 : 75'), m('2 : 3 : 5')],
+      ['Simplify ' + m('50 cm : 2 m'), m('1 : 4')],
+      ['Share ' + m('120') + ' in ' + m('2 : 3'), m('48') + ' and ' + m('72')],
+      ['Share ' + m('210') + ' in ' + m('3 : 4'), m('90') + ' and ' + m('120')],
+      [m('5') + ' pens cost ' + m('15 000') + ': one pen', m('3000')],
+      ['So ' + m('8') + ' pens cost', m('24 000')]
+    ],
+    med: [
+      ['Share ' + m('300') + ' in ' + m('1 : 2 : 3'), m('50, 100, 150')],
+      ['A recipe for ' + m('4') + ' needs ' + m('600 g') + ': for ' + m('6'), m('900 g')],
+      [m('3') + ' workers lay ' + m('90 m') + ' a day: ' + m('7') + ' workers', m('210 m')],
+      [m('4') + ' workers take ' + m('6') + ' days: ' + m('8') + ' workers', m('3') + ' days'],
+      ['A map at ' + m('1 : 100 000') + ': ' + m('7 cm') + ' on it', m('7 km')],
+      ['Simplify ' + m(f('1', '2') + ' : ' + f('1', '3')), m('3 : 2')],
+      ['Cost against number of pens is', 'direct proportion']
+    ],
+    hard: [
+      ['Share ' + m('480') + ' in ' + m('3 : 5 : 8'), m('90, 150, 240')],
+      [m('6') + ' taps fill a tank in ' + m('4') + ' hours: ' + m('8') + ' taps', m('3') + ' hours'],
+      ['Two shares in ratio ' + m('3 : 5') + ' differ by ' + m('40') + ': the total', m('160')],
+      ['A map at ' + m('1 : 25 000') + ': ' + m('3 km') + ' on the ground', m('12 cm')],
+      ['Is a child’s height directly proportional to age?', 'No — growth is not steady'],
+      ['If ' + m('y') + ' is inversely proportional to ' + m('x') + ' and ' + m('y = 12') + ' when ' + m('x = 2') + ', find ' + m('y') + ' when ' + m('x = 8'), m('3')],
+      ['A recipe for ' + m('4') + ' scaled to ' + m('10') + ' multiplies by', m('2.5')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Convert to the same units before simplifying any ratio.',
+  homework: [
+    'Simplify ' + m('24 : 36') + ', ' + m('75 cm : 3 m') + ' and ' + m('20 : 30 : 50') + '.',
+    'Share ' + m('360') + ' in the ratio ' + m('4 : 5') + '.',
+    m('7') + ' books cost ' + m('49 000') + ' sum. Find the cost of ' + m('11') + '.',
+    m('5') + ' workers take ' + m('12') + ' days. How long would ' + m('10') + ' take?',
+    'A map at ' + m('1 : 50 000') + ' shows two towns ' + m('9 cm') + ' apart. Find the real distance.'
+  ]
+});
