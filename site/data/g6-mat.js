@@ -5497,3 +5497,181 @@ G6_MAT.push({
     'Between which two values does a mass given as ' + m('3.2') + ' kg to ' + m('1') + ' d.p. lie?'
   ]
 });
+
+/* ============================== 31 ============================== */
+G6_MAT.push({
+  id: 'g6-31', stream: 'mat', grade: 6, quarter: 2, lessons: '59–62', hours: 4,
+  title: 'Finding a number from its percentage, and a part of it',
+  subtitle: 'The reverse question — given the part and the percentage, find the whole.',
+  uz: 'Matematika 6, §13', uzPage: 'pp. 167–178',
+  cam: 'S7 10', camPage: 'Stage 7, pp. 96–104', wb: 'Exercise 10.2',
+  objectives: [
+    'Find a percentage of a quantity fluently.',
+    'Find the whole when a percentage of it is given.',
+    'Express one quantity as a percentage of another.',
+    'Decide which of the three questions a problem is asking.'
+  ],
+  terms: [
+    ['Percentage', 'Foiz', 'Процент'],
+    ['Whole', 'Butun', 'Целое'],
+    ['Part', 'Qism', 'Часть'],
+    ['To find the whole', 'Butunni topish', 'Найти целое'],
+    ['One per cent', 'Bir foiz', 'Один процент'],
+    ['Reverse question', 'Teskari masala', 'Обратная задача'],
+    ['To express as', 'Ifodalamoq', 'Выразить в'],
+    ['Check', 'Tekshirish', 'Проверка']
+  ],
+  timing: [[25, 'The three questions'], [35, 'Finding a percentage'], [50, 'Finding the whole'], [40, 'Expressing as a percentage'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'The three questions',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Given</th><th>Method</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>find a part</td><td>the whole and the percentage</td><td>multiply</td><td class="m">15% of 240 = 36</td></tr>
+        <tr><td>find the whole</td><td>a part and its percentage</td><td>divide</td><td class="m">36 is 15% ⟹ 240</td></tr>
+        <tr><td>find the percentage</td><td>the part and the whole</td><td class="m">${f('part', 'whole')} · 100</td><td class="m">36 of 240 = 15%</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The same three numbers, three ways round</div>
+      Every percentage problem in the course is one of these. Naming which one is being asked, before
+      calculating anything, is the skill this block is really teaching.</div>`
+    },
+    {
+      h: 'Finding a percentage',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">30%</td><td class="m">0.3 · 250</td><td class="m">75</td></tr>
+        <tr><td class="m">8%</td><td class="m">0.08 · 250</td><td class="m">20</td></tr>
+        <tr><td class="m">45%</td><td class="m">0.45 · 250</td><td class="m">112.5</td></tr>
+        <tr><td class="m">120%</td><td class="m">1.2 · 250</td><td class="m">300</td></tr>
+      </tbody></table></div>
+      <p>Every row is a percentage of ${m('250')}.</p>
+      <div class="keybox"><div class="klabel">Turn the percentage into a decimal and multiply</div>
+      One multiplication replaces the two-step “find ${m('1%')} then multiply”. Both are correct; the
+      decimal method is faster once the conversion is automatic.</div>`
+    },
+    {
+      h: 'Finding the whole',
+      html: `<p>If ${m('36')} is ${m('15%')} of a number, then ${m('1%')} is ${m('36 ÷ 15 = 2.4')}, so the
+      whole is ${m('240')}.</p>
+      ${eq('whole ' + m('= ' + f('part', 'percentage') + ' × 100') + '   or   part ' + m('÷') + ' the decimal', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th class="m">1%</th><th>Whole</th></tr></thead>
+      <tbody>
+        <tr><td class="m">36</td><td class="m">2.4</td><td class="m">240</td></tr>
+        <tr><td class="m">45</td><td class="m">1.5</td><td class="m">150</td></tr>
+        <tr><td class="m">60</td><td class="m">3</td><td class="m">300</td></tr>
+        <tr><td class="m">18</td><td class="m">0.6</td><td class="m">60</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The whole is larger than the part — unless the percentage is over ${m('100')}</span>
+      If ${m('36')} is ${m('15%')} of a number, the number is ${m('240')}, not ${m('5.4')}. Multiplying
+      when you should divide is the error, and comparing the two numbers exposes it.</div>`
+    },
+    {
+      h: 'Expressing as a percentage',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Part</th><th>Whole</th><th>Working</th><th>Percentage</th></tr></thead>
+      <tbody>
+        <tr><td class="m">36</td><td class="m">240</td><td class="m">${f('36', '240')} · 100</td><td class="m">15%</td></tr>
+        <tr><td class="m">42</td><td class="m">56</td><td class="m">${f('42', '56')} · 100</td><td class="m">75%</td></tr>
+        <tr><td class="m">7</td><td class="m">20</td><td class="m">${f('7', '20')} · 100</td><td class="m">35%</td></tr>
+        <tr><td class="m">45</td><td class="m">36</td><td class="m">${f('45', '36')} · 100</td><td class="m">125%</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Over ${m('100%')} is not a mistake</div>
+      The last row compares a larger quantity with a smaller one, so the answer exceeds ${m('100%')}. It is
+      wrong only when the part really is part of the whole.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find ' + m('45%') + ' of ' + m('250') + '.',
+      steps: [
+        [m('45% = 0.45'), ''],
+        [m('0.45 · 250'), ''],
+        [m('= 112.5'), '']
+      ],
+      ans: m('112.5')
+    },
+    {
+      q: m('36') + ' is ' + m('15%') + ' of a number. Find the number.',
+      steps: [
+        [m('1%') + ' is ' + m('36 ÷ 15 = 2.4') + '.', ''],
+        [m('100%') + ' is ' + m('240') + '.', ''],
+        ['Check: ' + m('15%') + ' of ' + m('240') + ' is ' + m('36') + ' ✓', '']
+      ],
+      ans: m('240')
+    },
+    {
+      q: 'What percentage of ' + m('56') + ' is ' + m('42') + '?',
+      steps: [
+        [m(f('42', '56')), 'The whole underneath.'],
+        [m('= 0.75'), ''],
+        [m('· 100 = 75%'), '']
+      ],
+      ans: m('75%')
+    }
+  ],
+  modelNote: 'Give the three questions with the same three numbers — 36, 240 and 15% — and ask which is which; the pattern lands in one minute.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which of the three questions?',
+    hint: 'What is given, and what is wanted?',
+    items: [
+      { q: '“Find ' + m('15%') + ' of ' + m('240') + '” needs:', a: ['multiplying', 'dividing', m(f('part', 'whole')), 'nothing'], c: 0, why: 'The whole is given.' },
+      { q: '“' + m('36') + ' is ' + m('15%') + ' of what?” needs:', a: ['multiplying', 'dividing', 'adding', 'squaring'], c: 1, why: 'The whole is wanted.' },
+      { q: '“' + m('36') + ' out of ' + m('240') + ' as a percentage” needs:', a: ['multiplying by ' + m('100'), 'dividing then multiplying by ' + m('100'), 'dividing by ' + m('100'), 'nothing'], c: 1, why: m(f('part', 'whole') + ' · 100') + '.' },
+      { q: m('30%') + ' of ' + m('250') + ' is:', a: [m('75'), m('80'), m('7.5'), m('30')], c: 0, why: m('0.3 · 250') + '.' },
+      { q: m('8%') + ' of ' + m('250') + ' is:', a: [m('2'), m('20'), m('31.25'), m('8')], c: 1, why: m('0.08 · 250') + '.' },
+      { q: m('45') + ' is ' + m('30%') + ' of:', a: [m('13.5'), m('135'), m('150'), m('75')], c: 2, why: m('1%') + ' is ' + m('1.5') + '.' },
+      { q: m('42') + ' as a percentage of ' + m('56') + ':', a: [m('75%'), m('133%'), m('42%'), m('14%')], c: 0, why: m(f('42', '56')) + '.' },
+      { q: m('45') + ' as a percentage of ' + m('36') + ':', a: [m('80%'), m('125%'), m('9%'), m('45%')], c: 1, why: 'Larger than the whole.' }
+    ]
+  },
+  quiz: [
+    { q: 'To find a percentage of a quantity you:', a: ['divide', 'multiply', 'subtract', 'add'], c: 1, why: 'By the decimal.' },
+    { q: 'To find the whole from a part you:', a: ['divide', 'multiply', 'add ' + m('100'), 'subtract'], c: 0, why: 'By the decimal.' },
+    { q: m('36') + ' is ' + m('15%') + ' of:', a: [m('5.4'), m('54'), m('240'), m('2400')], c: 2, why: m('1%') + ' is ' + m('2.4') + '.' },
+    { q: m('120%') + ' of ' + m('250') + ' is:', a: [m('270'), m('300'), m('320'), m('250')], c: 1, why: m('1.2 · 250') + '.' },
+    { q: m('7') + ' as a percentage of ' + m('20') + ':', a: [m('7%'), m('35%'), m('14%'), m('70%')], c: 1, why: m(f('7', '20')) + '.' },
+    { q: 'A percentage over ' + m('100') + ' means:', a: ['an error', 'the part exceeds the whole compared with', 'a fraction', 'a decimal'], c: 1, why: 'Perfectly possible.' }
+  ],
+  practice: {
+    easy: [
+      [m('30%') + ' of ' + m('250'), m('75')],
+      [m('8%') + ' of ' + m('250'), m('20')],
+      [m('45%') + ' of ' + m('250'), m('112.5')],
+      [m('120%') + ' of ' + m('250'), m('300')],
+      [m('36') + ' is ' + m('15%') + ' of', m('240')],
+      [m('45') + ' is ' + m('30%') + ' of', m('150')],
+      [m('60') + ' is ' + m('20%') + ' of', m('300')]
+    ],
+    med: [
+      [m('18') + ' is ' + m('30%') + ' of', m('60')],
+      [m('36') + ' as a percentage of ' + m('240'), m('15%')],
+      [m('42') + ' as a percentage of ' + m('56'), m('75%')],
+      [m('7') + ' as a percentage of ' + m('20'), m('35%')],
+      [m('45') + ' as a percentage of ' + m('36'), m('125%')],
+      [m('12%') + ' of ' + m('4 500'), m('540')],
+      [m('84') + ' is ' + m('70%') + ' of', m('120')]
+    ],
+    hard: [
+      [m('2.5%') + ' of ' + m('4 800'), m('120')],
+      [m('150') + ' is ' + m('12.5%') + ' of', m('1 200')],
+      ['A price of ' + m('54 000') + ' is ' + m('90%') + ' of the original: the original', m('60 000')],
+      [m('64') + ' as a percentage of ' + m('80'), m('80%')],
+      ['If ' + m('30%') + ' of a class of ' + m('40') + ' wear glasses, how many do not?', m('28')],
+      ['A tax of ' + m('12%') + ' adds ' + m('36 000') + ': the price before tax', m('300 000')],
+      ['Why must the whole go underneath?', 'A percentage compares the part with the whole it belongs to']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Name which of the three questions you are answering before you calculate.',
+  homework: [
+    'Find ' + m('35%') + ' and ' + m('6%') + ' of ' + m('420') + '.',
+    m('54') + ' is ' + m('18%') + ' of a number. Find the number.',
+    'Write ' + m('27') + ' as a percentage of ' + m('45') + '.',
+    'Write ' + m('63') + ' as a percentage of ' + m('45') + ', and explain the answer.',
+    'A sum of ' + m('84 000') + ' is ' + m('70%') + ' of a price. Find the price.'
+  ]
+});
