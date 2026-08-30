@@ -1262,3 +1262,538 @@ G7_MAT.push({
     'Classify ' + m('89°') + ', ' + m('90°') + ', ' + m('91°') + ' and ' + m('181°') + '.'
   ]
 });
+
+/* ============================== 8 ============================== */
+G7_MAT.push({
+  id: 'g7-08', stream: 'mat', grade: 7, quarter: 1, lessons: '15–16', hours: 2,
+  title: 'The idea of positive and negative numbers',
+  subtitle: 'Numbers below zero — invented so that every subtraction has an answer.',
+  uz: 'Matematika 7, §5', uzPage: 'pp. 36–41',
+  cam: 'S8 1', camPage: 'Stage 8, pp. 2–10', wb: 'Exercise 1.1',
+  objectives: [
+    'Explain why negative numbers are needed.',
+    'Read and write negative numbers, and use them in context.',
+    'Interpret a negative number as a direction as well as a size.',
+    'Solve simple problems involving temperature, debt and height.'
+  ],
+  terms: [
+    ['Positive number', 'Musbat son', 'Положительное число'],
+    ['Negative number', 'Manfiy son', 'Отрицательное число'],
+    ['Zero', 'Nol', 'Ноль'],
+    ['Sign', 'Ishora', 'Знак'],
+    ['Below zero', 'Noldan past', 'Ниже нуля'],
+    ['Debt', 'Qarz', 'Долг'],
+    ['Sea level', 'Dengiz sathi', 'Уровень моря'],
+    ['Rise and fall', 'Ko‘tarilish va pasayish', 'Подъём и спад']
+  ],
+  timing: [[15, 'Why they are needed'], [25, 'Reading and writing'], [25, 'Direction as well as size'], [20, 'In practice'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Why they are needed',
+      html: `<p>Among the numbers known so far, ${m('3 − 5')} has no answer. Every other operation always
+      works; only subtraction can fail.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Operation</th><th>Always possible in ℕ?</th></tr></thead>
+      <tbody>
+        <tr><td>addition</td><td>yes</td></tr>
+        <tr><td>multiplication</td><td>yes</td></tr>
+        <tr><td>subtraction</td><td><b>no</b> — ${m('3 − 5')}</td></tr>
+        <tr><td>division</td><td>no — ${m('3 ÷ 5')} (that gave fractions)</td></tr>
+      </tbody></table></div>
+      <p>Fractions were invented so that division always works; <b>negative numbers</b> are invented so
+      that subtraction always works. The pattern is the same.</p>
+      <div class="keybox"><div class="klabel">The number system grows to fill a gap</div>
+      Naturals, then fractions, then negatives, then irrationals in Grade 8, then complex numbers in
+      Grade 11 — each new kind of number exists because some ordinary operation had no answer without
+      it.</div>`
+    },
+    {
+      h: 'Reading and writing',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Written</th><th>Read</th><th>Means</th></tr></thead>
+      <tbody>
+        <tr><td class="m">−5</td><td>minus five</td><td>five below zero</td></tr>
+        <tr><td class="m">+5</td><td>plus five</td><td>five above zero</td></tr>
+        <tr><td class="m">0</td><td>zero</td><td>neither positive nor negative</td></tr>
+        <tr><td class="m">−0.4</td><td>minus nought point four</td><td>a negative fraction</td></tr>
+      </tbody></table></div>
+      <p>The ${m('+')} sign is usually left off: ${m('5')} and ${m('+5')} are the same number. The
+      ${m('−')} sign is never left off.</p>
+      <div class="warn"><span class="wl">Zero is neither positive nor negative</span>
+      It is the boundary between them, and it belongs to neither side. Statements such as “all numbers
+      are positive or negative” are false because of zero.</div>`
+    },
+    {
+      h: 'Direction as well as size',
+      html: `<p>A negative number carries two pieces of information: a <b>size</b> and a
+      <b>direction</b>.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Situation</th><th class="m">+</th><th class="m">−</th></tr></thead>
+      <tbody>
+        <tr><td>temperature</td><td>above zero</td><td>below zero</td></tr>
+        <tr><td>money</td><td>owned</td><td>owed</td></tr>
+        <tr><td>height</td><td>above sea level</td><td>below it</td></tr>
+        <tr><td>time</td><td>after an event</td><td>before it</td></tr>
+        <tr><td>movement</td><td>forwards</td><td>backwards</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Which direction is positive is a choice</div>
+      Nothing makes “above sea level” positive; it is a convention. What matters is that once chosen it
+      is kept — and that the two directions are opposite.</div>`
+    },
+    {
+      h: 'In practice',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>As a number</th></tr></thead>
+      <tbody>
+        <tr><td>${m('12')} degrees of frost</td><td class="m">−12°C</td></tr>
+        <tr><td>a debt of ${m('50 000')} so‘m</td><td class="m">−50 000</td></tr>
+        <tr><td>the Dead Sea shore, ${m('430 m')} below sea level</td><td class="m">−430 m</td></tr>
+        <tr><td>a lift going down ${m('3')} floors</td><td class="m">−3</td></tr>
+        <tr><td>a loss of ${m('7')} points</td><td class="m">−7</td></tr>
+      </tbody></table></div>
+      <p><b>Example.</b> The temperature is ${m('−8°C')} and rises by ${m('5')} degrees. It becomes
+      ${m('−3°C')} — still below zero. It would need to rise by more than ${m('8')} degrees to reach the
+      positive side.</p>
+      <div class="warn"><span class="wl">${m('−12')} is colder than ${m('−5')}</span>
+      With negatives the bigger-looking number is the smaller one. Reading them on a thermometer, where
+      ${m('−12')} is plainly lower down, prevents the mistake.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Write as numbers: ' + m('7') + ' degrees of frost; a debt of ' + m('30 000') + '; ' + m('250 m') + ' below sea level.',
+      steps: [
+        ['Frost means below zero: ' + m('−7°C') + '.', ''],
+        ['A debt is money owed: ' + m('−30 000') + '.', ''],
+        ['Below sea level: ' + m('−250 m') + '.', ''],
+        ['Each carries a direction as well as a size.', '']
+      ],
+      ans: m('−7, −30 000, −250')
+    },
+    {
+      q: 'The temperature is ' + m('−8°C') + ' and rises by ' + m('5') + ' degrees. Then it falls by ' + m('4') + '. Find the final temperature.',
+      steps: [
+        ['A rise of ' + m('5') + ': ' + m('−8 + 5 = −3') + '.', 'Still below zero.'],
+        ['A fall of ' + m('4') + ': ' + m('−3 − 4') + '.', ''],
+        [m('= −7°C'), ''],
+        ['Colder than it began.', '']
+      ],
+      ans: m('−7°C')
+    },
+    {
+      q: 'A lift starts on floor ' + m('5') + ', goes down ' + m('8') + ' floors, then up ' + m('2') + '. Where does it stop?',
+      steps: [
+        [m('5 − 8 = −3'), 'Three floors below the ground.'],
+        [m('−3 + 2'), ''],
+        [m('= −1'), ''],
+        ['The first basement.', '']
+      ],
+      ans: m('−1') + ' — the first basement'
+    }
+  ],
+  modelNote: 'Draw a thermometer up the side of the board and mark the day’s temperatures; negative numbers arrive as readings, not as an abstraction.',
+  interactive: {
+    type: 'inequalityLine',
+    title: 'Above and below zero',
+    hint: 'Slide the marker through zero.'
+  },
+  quiz: [
+    { q: 'Negative numbers were invented so that:', a: ['addition works', 'subtraction always works', 'division works', 'nothing'], c: 1, why: m('3 − 5') + ' needed an answer.' },
+    { q: 'Zero is:', a: ['positive', 'negative', 'neither', 'both'], c: 2, why: 'It is the boundary.' },
+    { q: m('7') + ' degrees of frost is:', a: [m('7°C'), m('−7°C'), m('70°C'), m('0°C')], c: 1, why: 'Below zero.' },
+    { q: 'A debt of ' + m('30 000') + ' is:', a: [m('30 000'), m('−30 000'), m('0'), 'not a number'], c: 1, why: 'Money owed.' },
+    { q: m('−8 + 5') + ' equals:', a: [m('−13'), m('−3'), m('3'), m('13')], c: 1, why: 'A rise of five from eight below.' },
+    { q: 'Which is colder?', a: [m('−5°C'), m('−12°C'), 'equal', 'cannot tell'], c: 1, why: 'Further below zero.' }
+  ],
+  practice: {
+    easy: [
+      [m('9') + ' degrees of frost', m('−9')],
+      ['A debt of ' + m('20 000'), m('−20 000')],
+      [m('150 m') + ' below sea level', m('−150')],
+      ['A gain of ' + m('6') + ' points', m('+6')],
+      ['Is ' + m('0') + ' positive?', 'No'],
+      ['Is ' + m('0') + ' negative?', 'No'],
+      ['Colder: ' + m('−3') + ' or ' + m('−9'), m('−9')]
+    ],
+    med: [
+      [m('−8') + ' rises by ' + m('5'), m('−3')],
+      [m('−3') + ' falls by ' + m('4'), m('−7')],
+      ['Lift: floor ' + m('5') + ', down ' + m('8') + ', up ' + m('2'), m('−1')],
+      ['Temperature ' + m('−15') + ' rises by ' + m('20'), m('+5')],
+      ['A balance of ' + m('40 000') + ' after spending ' + m('55 000'), m('−15 000')],
+      ['Higher: ' + m('−200 m') + ' or ' + m('−50 m'), m('−50 m')],
+      ['A submarine at ' + m('−80 m') + ' rises ' + m('35 m'), m('−45 m')]
+    ],
+    hard: [
+      ['The temperature falls from ' + m('4°C') + ' to ' + m('−11°C') + ': the fall', m('15') + ' degrees'],
+      ['A mountain ' + m('3200 m') + ' above a lake ' + m('−150 m') + ': the difference', m('3350 m')],
+      ['Five readings ' + m('−3, 0, 2, −5, 1') + ': the coldest and the warmest', m('−5') + ' and ' + m('2')],
+      ['Their range', m('7')],
+      ['A lift from ' + m('−2') + ' to ' + m('7') + ': floors travelled', m('9')],
+      ['A debt of ' + m('80 000') + ' reduced by ' + m('95 000'), m('+15 000')],
+      ['Why is zero neither positive nor negative?', 'It is the boundary between them']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Give every answer with its sign and, where there is one, its unit.',
+  homework: [
+    'Write as numbers: ' + m('14') + ' degrees of frost; a debt of ' + m('45 000') + '; ' + m('60 m') + ' below sea level.',
+    'The temperature is ' + m('−6°C') + ' and rises by ' + m('9') + ' degrees. Find it now.',
+    'A lift starts on floor ' + m('3') + ', goes down ' + m('7') + ', then up ' + m('5') + '. Where does it stop?',
+    'Which is higher: ' + m('−120 m') + ' or ' + m('−45 m') + '?',
+    'The temperature falls from ' + m('2°C') + ' to ' + m('−13°C') + '. By how many degrees?'
+  ]
+});
+
+/* ============================== 9 ============================== */
+G7_MAT.push({
+  id: 'g7-09', stream: 'mat', grade: 7, quarter: 1, lessons: '17–18', hours: 2,
+  title: 'The idea of the integers',
+  subtitle: 'The naturals, their opposites and zero — one set closed under subtraction.',
+  uz: 'Matematika 7, §6', uzPage: 'pp. 42–46',
+  cam: 'S8 1.1', camPage: 'Stage 8, pp. 2–6', wb: 'Exercise 1.1',
+  objectives: [
+    'Define the set of integers and use the symbol ℤ.',
+    'Distinguish natural numbers, whole numbers and integers.',
+    'Recall factors, multiples and primes among the naturals.',
+    'Decide whether a given number is an integer.'
+  ],
+  terms: [
+    ['Integer', 'Butun son', 'Целое число'],
+    ['Natural number', 'Natural son', 'Натуральное число'],
+    ['Set', 'To‘plam', 'Множество'],
+    ['Factor', 'Bo‘luvchi', 'Делитель'],
+    ['Multiple', 'Karrali', 'Кратное'],
+    ['Prime number', 'Tub son', 'Простое число'],
+    ['Composite number', 'Murakkab son', 'Составное число'],
+    ['Closed under', 'Yopiq', 'Замкнутое относительно']
+  ],
+  timing: [[15, 'The three sets'], [25, 'Closure'], [25, 'Factors, multiples, primes'], [20, 'Recognising integers'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The three sets',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Set</th><th>Symbol</th><th>Members</th></tr></thead>
+      <tbody>
+        <tr><td>natural numbers</td><td class="m">ℕ</td><td class="m">1, 2, 3, …</td></tr>
+        <tr><td>whole numbers</td><td>—</td><td class="m">0, 1, 2, 3, …</td></tr>
+        <tr><td>integers</td><td class="m">ℤ</td><td class="m">…, −2, −1, 0, 1, 2, …</td></tr>
+      </tbody></table></div>
+      <p>Every natural number is an integer, and every integer is a rational number (the next chapter).
+      Written with the subset symbol: ${m('ℕ ⊂ ℤ ⊂ ℚ')}.</p>
+      <div class="keybox"><div class="klabel">${m('ℤ')} comes from the German <i>Zahlen</i></div>
+      Meaning “numbers”. ${m('ℕ')} is for <i>naturalis</i> and ${m('ℚ')} for <i>quoziente</i>. The
+      letters are international, and they will be used for the rest of school mathematics.</div>`
+    },
+    {
+      h: 'Closure',
+      html: `<p>A set is <b>closed</b> under an operation if the answer always stays inside the set.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Operation</th><th class="m">ℕ</th><th class="m">ℤ</th></tr></thead>
+      <tbody>
+        <tr><td>addition</td><td>closed</td><td>closed</td></tr>
+        <tr><td>multiplication</td><td>closed</td><td>closed</td></tr>
+        <tr><td>subtraction</td><td><b>not</b> closed</td><td>closed</td></tr>
+        <tr><td>division</td><td>not closed</td><td>not closed</td></tr>
+      </tbody></table></div>
+      <p>The third row is the whole reason for the chapter: ${m('3 − 5')} leaves ${m('ℕ')} but stays
+      inside ${m('ℤ')}. The fourth row is why ${m('ℚ')} will be needed.</p>
+      <div class="warn"><span class="wl">${m('6 ÷ 3 = 2')} does not make ${m('ℤ')} closed under division</span>
+      Closure requires <b>every</b> case to work. One counter-example — ${m('3 ÷ 2')} — settles it, just
+      as one counter-example disproved a claim in the algebra course.</div>`
+    },
+    {
+      h: 'Factors, multiples, primes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Word</th><th>Means</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>factor of ${m('n')}</td><td>divides ${m('n')} exactly</td><td class="m">1, 2, 3, 4, 6, 12</td></tr>
+        <tr><td>multiple of ${m('n')}</td><td>${m('n')} times a whole number</td><td class="m">12, 24, 36, …</td></tr>
+        <tr><td>prime</td><td>exactly two factors</td><td class="m">2, 3, 5, 7, 11, 13</td></tr>
+        <tr><td>composite</td><td>more than two factors</td><td class="m">4, 6, 8, 9, 10</td></tr>
+      </tbody></table></div>
+      <p>${m('1')} is neither prime nor composite: it has only one factor. ${m('2')} is the only even
+      prime.</p>
+      <div class="keybox"><div class="klabel">Every whole number greater than ${m('1')} is a product of primes, in one way only</div>
+      ${m('60 = 2² × 3 × 5')}, and no other set of primes gives ${m('60')}. This is the fundamental
+      theorem of arithmetic, and it underlies HCF, LCM and every fraction calculation.</div>`
+    },
+    {
+      h: 'Recognising integers',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Number</th><th>An integer?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">−7</td><td>yes</td><td>a negative whole number</td></tr>
+        <tr><td class="m">0</td><td>yes</td><td>—</td></tr>
+        <tr><td class="m">${f('6', '3')}</td><td>yes</td><td>it equals ${m('2')}</td></tr>
+        <tr><td class="m">${f('7', '2')}</td><td>no</td><td class="m">3.5</td></tr>
+        <tr><td class="m">−4.0</td><td>yes</td><td>it equals ${m('−4')}</td></tr>
+        <tr><td class="m">0.333…</td><td>no</td><td class="m">${f('1', '3')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Look at the value, not at the way it is written</span>
+      ${m(f('6', '3'))} is written as a fraction but <b>is</b> the integer ${m('2')}. A number is an
+      integer if it equals one, however it happens to be written.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Which of ' + m('−7, 0, ' + f('6', '3') + ', ' + f('7', '2') + ', −4.0, 0.333…') + ' are integers?',
+      steps: [
+        [m('−7') + ' and ' + m('0') + ' plainly are.', ''],
+        [m(f('6', '3') + ' = 2') + ' — an integer.', 'Look at the value.'],
+        [m(f('7', '2') + ' = 3.5') + ' — not.', ''],
+        [m('−4.0 = −4') + ' — yes; ' + m('0.333… = ' + f('1', '3')) + ' — no.', '']
+      ],
+      ans: m('−7, 0, ' + f('6', '3') + ', −4.0')
+    },
+    {
+      q: 'List all the factors of ' + m('36') + ', and say whether it is prime.',
+      steps: [
+        ['Pair them: ' + m('1 × 36, 2 × 18, 3 × 12, 4 × 9, 6 × 6') + '.', ''],
+        [m('1, 2, 3, 4, 6, 9, 12, 18, 36'), 'Nine factors.'],
+        ['More than two factors.', ''],
+        ['Composite.', '']
+      ],
+      ans: 'Nine factors; composite'
+    },
+    {
+      q: 'Is ' + m('ℤ') + ' closed under subtraction? Under division?',
+      steps: [
+        ['Subtraction: ' + m('a − b') + ' is always an integer.', 'Closed.'],
+        ['Division: ' + m('3 ÷ 2 = 1.5') + '.', ''],
+        ['Not an integer.', ''],
+        ['Closed under subtraction, not under division.', '']
+      ],
+      ans: 'Yes; no'
+    }
+  ],
+  modelNote: 'Ask the class to find a subtraction of naturals with no natural answer, then to find one of integers with no integer answer; the second search fails, and closure is understood.',
+  interactive: {
+    type: 'quiz',
+    title: 'Which set does it belong to?',
+    hint: 'Look at the value, not the notation.'
+  },
+  quiz: [
+    { q: m('ℤ') + ' denotes:', a: ['the naturals', 'the integers', 'the rationals', 'the reals'], c: 1, why: 'From German <i>Zahlen</i>.' },
+    { q: 'Is ' + m('0') + ' a natural number in this course?', a: ['yes', 'no', 'sometimes', 'undefined'], c: 1, why: m('ℕ') + ' starts at ' + m('1') + '.' },
+    { q: m('ℤ') + ' is closed under:', a: ['division', 'subtraction', 'both', 'neither'], c: 1, why: m('3 ÷ 2') + ' fails.' },
+    { q: 'Is ' + m(f('6', '3')) + ' an integer?', a: ['yes', 'no', 'sometimes', 'undefined'], c: 0, why: 'It equals ' + m('2') + '.' },
+    { q: 'How many factors has a prime?', a: [m('1'), m('2'), m('3'), 'many'], c: 1, why: m('1') + ' and itself.' },
+    { q: 'Is ' + m('1') + ' prime?', a: ['yes', 'no', 'sometimes', 'undefined'], c: 1, why: 'It has only one factor.' }
+  ],
+  practice: {
+    easy: [
+      ['Is ' + m('−7') + ' an integer?', 'Yes'],
+      ['Is ' + m('3.5') + ' an integer?', 'No'],
+      ['Is ' + m(f('8', '4')) + ' an integer?', 'Yes'],
+      ['Is ' + m('0') + ' an integer?', 'Yes'],
+      ['Factors of ' + m('12'), m('1, 2, 3, 4, 6, 12')],
+      ['The first five primes', m('2, 3, 5, 7, 11')],
+      ['Is ' + m('1') + ' prime?', 'No']
+    ],
+    med: [
+      ['Factors of ' + m('36'), m('1,2,3,4,6,9,12,18,36')],
+      ['Is ' + m('36') + ' prime or composite?', 'Composite'],
+      ['Prime factorisation of ' + m('60'), m('2² × 3 × 5')],
+      ['Prime factorisation of ' + m('84'), m('2² × 3 × 7')],
+      ['Is ' + m('ℕ') + ' closed under subtraction?', 'No'],
+      ['Is ' + m('ℤ') + ' closed under subtraction?', 'Yes'],
+      ['Is ' + m('ℤ') + ' closed under division?', 'No']
+    ],
+    hard: [
+      ['HCF of ' + m('36') + ' and ' + m('60'), m('12')],
+      ['LCM of ' + m('36') + ' and ' + m('60'), m('180')],
+      ['How many factors has ' + m('60') + '?', m('12')],
+      ['How many factors has ' + m('2⁴ × 3²') + '?', m('15')],
+      ['The only even prime', m('2')],
+      ['Every integer is rational: true?', 'Yes — ' + m('n = ' + f('n', '1'))],
+      ['Is the set of odd numbers closed under addition?', 'No — the sum is even']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Justify every “no” with a counter-example.',
+  homework: [
+    'Which of ' + m('−3, 2.5, ' + f('9', '3') + ', 0, −1.5') + ' are integers?',
+    'List all the factors of ' + m('48') + ' and say whether it is prime.',
+    'Write the prime factorisation of ' + m('90') + '.',
+    'Find the HCF and the LCM of ' + m('24') + ' and ' + m('36') + '.',
+    'Is the set of even numbers closed under addition? Under division?'
+  ]
+});
+
+/* ============================== 10 ============================== */
+G7_MAT.push({
+  id: 'g7-10', stream: 'mat', grade: 7, quarter: 1, lessons: '19–20', hours: 2,
+  title: 'Positive and negative numbers on the coordinate line',
+  subtitle: 'One line, one origin, one unit — and every integer has its own place.',
+  uz: 'Matematika 7, §7', uzPage: 'pp. 47–52',
+  cam: 'S8 1', camPage: 'Stage 8, pp. 2–10', wb: 'Exercise 1.1',
+  objectives: [
+    'Draw a coordinate line with an origin, a direction and a unit.',
+    'Mark integers and simple fractions on it.',
+    'Read the coordinate of a marked point.',
+    'Use the line to compare numbers and to find distances.'
+  ],
+  terms: [
+    ['Coordinate line', 'Koordinata to‘g‘ri chizig‘i', 'Координатная прямая'],
+    ['Origin', 'Boshlanish nuqtasi', 'Начало отсчёта'],
+    ['Unit segment', 'Birlik kesma', 'Единичный отрезок'],
+    ['Coordinate', 'Koordinata', 'Координата'],
+    ['Positive direction', 'Musbat yo‘nalish', 'Положительное направление'],
+    ['To the right', 'O‘ngda', 'Справа'],
+    ['To the left', 'Chapda', 'Слева'],
+    ['Distance', 'Masofa', 'Расстояние']
+  ],
+  timing: [[15, 'Building the line'], [25, 'Marking and reading'], [25, 'Comparing'], [20, 'Distance'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Building the line',
+      html: `<p>A <b>coordinate line</b> needs three things:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Ingredient</th><th>What it fixes</th></tr></thead>
+      <tbody>
+        <tr><td>an origin ${m('O')}</td><td>where ${m('0')} is</td></tr>
+        <tr><td>a positive direction</td><td>which way the numbers grow</td></tr>
+        <tr><td>a unit segment</td><td>how far apart consecutive integers are</td></tr>
+      </tbody></table></div>
+      {{fig:numberLineInterval:An origin, a direction and a unit — and every number has a place.}}
+      <p>The number attached to a point is its <b>coordinate</b>, written ${m('A(−3)')}.</p>
+      <div class="keybox"><div class="klabel">Every point has exactly one coordinate, and every number exactly one point</div>
+      That one-to-one correspondence is what makes the line useful: a question about numbers becomes a
+      question about positions, and the other way round.</div>`
+    },
+    {
+      h: 'Marking and reading',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Number</th><th>Position</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3</td><td>${m('3')} units right of ${m('O')}</td></tr>
+        <tr><td class="m">−3</td><td>${m('3')} units left of ${m('O')}</td></tr>
+        <tr><td class="m">0</td><td>at ${m('O')}</td></tr>
+        <tr><td class="m">2.5</td><td>halfway between ${m('2')} and ${m('3')}</td></tr>
+        <tr><td class="m">−1.5</td><td>halfway between ${m('−1')} and ${m('−2')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('−1.5')} lies between ${m('−1')} and ${m('−2')}</span>
+      Moving left from ${m('−1')} the numbers become more negative. Reading the negative half as if it
+      were the positive half reversed is the commonest error at this stage.</div>`
+    },
+    {
+      h: 'Comparing',
+      html: `${eq('Of two numbers, the one further to the right is the greater', true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Comparison</th><th>True statement</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3 and 5</td><td class="m">3 < 5</td><td>${m('5')} is further right</td></tr>
+        <tr><td class="m">−3 and 5</td><td class="m">−3 < 5</td><td>any negative is less than any positive</td></tr>
+        <tr><td class="m">−3 and −5</td><td class="m">−5 < −3</td><td>${m('−5')} is further left</td></tr>
+        <tr><td class="m">0 and −2</td><td class="m">−2 < 0</td><td>zero beats every negative</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Among negatives, the order is reversed</div>
+      ${m('5 > 3')} but ${m('−5 < −3')}. The picture makes it obvious; the arithmetic alone does not.
+      Sketching the line before comparing is worth the four seconds it costs.</div>`
+    },
+    {
+      h: 'Distance',
+      html: `<p>The distance between two points is the number of units between them — always
+      positive.</p>
+      ${eq(m('AB = |a − b|'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Points</th><th>Distance</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3 and 7</td><td class="m">4</td></tr>
+        <tr><td class="m">−3 and 5</td><td class="m">8</td></tr>
+        <tr><td class="m">−7 and −2</td><td class="m">5</td></tr>
+        <tr><td class="m">−4 and 0</td><td class="m">4</td></tr>
+      </tbody></table></div>
+      <p>The second row is worth checking on a sketch: from ${m('−3')} to ${m('0')} is ${m('3')} units,
+      and from ${m('0')} to ${m('5')} is ${m('5')} more — ${m('8')} in all.</p>
+      <div class="warn"><span class="wl">Subtract, then take the size</span>
+      ${m('3 − 7 = −4')}, but the distance is ${m('4')}. A distance is never negative, whichever way the
+      subtraction is done.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Mark ' + m('−4, −1.5, 0, 2, 3.5') + ' on a coordinate line and list them in ascending order.',
+      steps: [
+        ['Draw the origin, the direction and the unit.', ''],
+        [m('−4') + ' is four units left; ' + m('−1.5') + ' is between ' + m('−1') + ' and ' + m('−2') + '.', ''],
+        ['Reading left to right gives the order.', ''],
+        [m('−4 < −1.5 < 0 < 2 < 3.5'), '']
+      ],
+      ans: m('−4, −1.5, 0, 2, 3.5')
+    },
+    {
+      q: 'Find the distance between the points with coordinates ' + m('−3') + ' and ' + m('5') + '.',
+      steps: [
+        [m('|−3 − 5| = |−8|'), ''],
+        [m('= 8'), ''],
+        ['Check on the line: ' + m('3') + ' units to zero, ' + m('5') + ' more.', ''],
+        [m('8') + ' units.', '']
+      ],
+      ans: m('8')
+    },
+    {
+      q: 'Which is greater, ' + m('−7') + ' or ' + m('−2') + '? And ' + m('−7') + ' or ' + m('0.5') + '?',
+      steps: [
+        [m('−2') + ' is further right than ' + m('−7') + '.', ''],
+        [m('−7 < −2'), ''],
+        ['Any negative is less than any positive.', ''],
+        [m('−7 < 0.5'), '']
+      ],
+      ans: m('−2') + ' and ' + m('0.5')
+    }
+  ],
+  modelNote: 'Chalk a number line along the floor and have pupils stand on given coordinates; comparing and distance become physical before they are symbolic.',
+  interactive: {
+    type: 'inequalityLine',
+    title: 'The coordinate line',
+    hint: 'Drag a point and read its coordinate.'
+  },
+  quiz: [
+    { q: 'A coordinate line needs:', a: ['an origin only', 'an origin, a direction and a unit', 'a unit only', 'two points'], c: 1, why: 'All three.' },
+    { q: m('−1.5') + ' lies between:', a: [m('−1') + ' and ' + m('0'), m('−1') + ' and ' + m('−2'), m('1') + ' and ' + m('2'), m('0') + ' and ' + m('1')], c: 1, why: 'Further left than ' + m('−1') + '.' },
+    { q: 'The greater of ' + m('−3') + ' and ' + m('−5') + ':', a: [m('−3'), m('−5'), 'equal', 'cannot tell'], c: 0, why: 'Further right.' },
+    { q: 'Any negative number is:', a: ['greater than every positive', 'less than every positive', 'equal to zero', 'undefined'], c: 1, why: 'It lies left of zero.' },
+    { q: 'The distance between ' + m('−3') + ' and ' + m('5') + ':', a: [m('2'), m('8'), m('−8'), m('15')], c: 1, why: m('|−3 − 5|') + '.' },
+    { q: 'A distance is:', a: ['sometimes negative', 'never negative', 'always zero', 'a coordinate'], c: 1, why: 'It is a length.' }
+  ],
+  practice: {
+    easy: [
+      ['Greater: ' + m('3') + ' or ' + m('5'), m('5')],
+      ['Greater: ' + m('−3') + ' or ' + m('5'), m('5')],
+      ['Greater: ' + m('−3') + ' or ' + m('−5'), m('−3')],
+      ['Greater: ' + m('0') + ' or ' + m('−2'), m('0')],
+      ['Distance from ' + m('3') + ' to ' + m('7'), m('4')],
+      ['Distance from ' + m('−7') + ' to ' + m('−2'), m('5')],
+      ['Distance from ' + m('−4') + ' to ' + m('0'), m('4')]
+    ],
+    med: [
+      ['Ascending: ' + m('−4, −1.5, 0, 2, 3.5'), 'As written'],
+      ['Ascending: ' + m('2, −7, 0, −1, 5'), m('−7, −1, 0, 2, 5')],
+      ['Distance from ' + m('−3') + ' to ' + m('5'), m('8')],
+      ['Distance from ' + m('−12') + ' to ' + m('4'), m('16')],
+      ['The point halfway between ' + m('−6') + ' and ' + m('2'), m('−2')],
+      ['The point halfway between ' + m('−9') + ' and ' + m('−1'), m('−5')],
+      ['Descending: ' + m('−2, −8, 3, 0'), m('3, 0, −2, −8')]
+    ],
+    hard: [
+      ['All integers ' + m('x') + ' with ' + m('−4 < x ≤ 2'), m('−3, −2, −1, 0, 1, 2')],
+      ['How many integers between ' + m('−15') + ' and ' + m('9') + '?', m('23')],
+      ['Points ' + m('5') + ' units from ' + m('−2'), m('3') + ' and ' + m('−7')],
+      ['A point twice as far from ' + m('0') + ' as ' + m('−4') + ', on the same side', m('−8')],
+      ['The midpoint of ' + m('a') + ' and ' + m('b'), m(f('a + b', '2'))],
+      ['Distance between ' + m('a') + ' and ' + m('−a'), m('2|a|')],
+      ['All ' + m('x') + ' with distance ' + m('3') + ' from ' + m('7'), m('4') + ' and ' + m('10')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Sketch the line for every comparison; the picture is the argument.',
+  homework: [
+    'Mark ' + m('−5, −2.5, 0, 1, 4') + ' on a coordinate line.',
+    'Put in ascending order: ' + m('3, −6, 0, −1, 2') + '.',
+    'Find the distance between ' + m('−8') + ' and ' + m('3') + '.',
+    'Find the point halfway between ' + m('−10') + ' and ' + m('4') + '.',
+    'List all integers ' + m('x') + ' with ' + m('−5 ≤ x < 3') + '.'
+  ]
+});
