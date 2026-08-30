@@ -3897,3 +3897,178 @@ G7_MAT.push({
     'Solve ' + m(f('3', '4') + ' − x = ' + f('1', '8')) + '.'
   ]
 });
+
+/* ============================== 23 ============================== */
+G7_MAT.push({
+  id: 'g7-23', stream: 'mat', grade: 7, quarter: 1, lessons: '44–45', hours: 2,
+  title: 'Control work 3, and work on the mistakes',
+  subtitle: 'Rational numbers in one paper, and the first quarter closed.',
+  uz: 'Matematika 7, Nazorat ishi 3', uzPage: 'pp. 95–117',
+  cam: 'S8 7 review', camPage: 'Stage 8, pp. 66–76', wb: 'Control paper M3',
+  objectives: [
+    'Convert between fractions, decimals and mixed numbers under time.',
+    'Add and subtract rational numbers with signs.',
+    'Solve a simple equation in ℚ.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Rational number', 'Ratsional son', 'Рациональное число'],
+    ['Common denominator', 'Umumiy maxraj', 'Общий знаменатель'],
+    ['Mixed number', 'Aralash son', 'Смешанное число'],
+    ['Recurring decimal', 'Davriy o‘nli kasr', 'Периодическая дробь'],
+    ['Simplest form', 'Eng sodda ko‘rinish', 'Несократимый вид'],
+    ['Equation', 'Tenglama', 'Уравнение'],
+    ['Diagnosis', 'Tashxis', 'Диагностика']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The quarter']],
+  sections: [
+    {
+      h: 'The paper — 30 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Write ${m('−2.4')} and ${m('3' + f('1', '4'))} as fractions ${m(f('p', 'q'))}</td><td class="m">4</td><td>L37–38</td></tr>
+        <tr><td>2</td><td>Convert ${m(f('7', '8'))} and ${m(f('5', '12'))} to decimals</td><td class="m">4</td><td>L37–38</td></tr>
+        <tr><td>3</td><td>Compute ${m(f('2', '3') + ' + ' + f('3', '4'))} and ${m('−' + f('1', '2') + ' + ' + f('1', '5'))}</td><td class="m">6</td><td>L39–40</td></tr>
+        <tr><td>4</td><td>Compute ${m(f('5', '6') + ' − ' + f('3', '8'))} and ${m('−' + f('2', '5') + ' − ' + f('1', '2'))}</td><td class="m">6</td><td>L41–42</td></tr>
+        <tr><td>5</td><td>Compute ${m('3' + f('1', '3') + ' − 1' + f('3', '4'))}</td><td class="m">5</td><td>L41–42</td></tr>
+        <tr><td>6</td><td>Solve ${m('x + ' + f('2', '3') + ' = ' + f('1', '6'))}</td><td class="m">5</td><td>L43</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries one mark for simplifying; Q2 one for showing the recurrence; Q3 two for the LCM;
+      Q5 two for converting to improper fractions; Q6 one for the check.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>fraction not simplified</td><td class="m">−${f('24', '10')}</td><td class="m">−${f('12', '5')}</td></tr>
+        <tr><td>recurrence not shown</td><td class="m">0.41</td><td class="m">0.41666…</td></tr>
+        <tr><td>denominators added</td><td class="m">${f('2', '3')} + ${f('3', '4')} = ${f('5', '7')}</td><td class="m">${f('17', '12')}</td></tr>
+        <tr><td>wrong sign kept</td><td class="m">−${f('1', '2')} + ${f('1', '5')} = ${f('3', '10')}</td><td class="m">−${f('3', '10')}</td></tr>
+        <tr><td>mixed number sign</td><td class="m">−2${f('1', '3')} = −2 + ${f('1', '3')}</td><td class="m">−${f('7', '3')}</td></tr>
+        <tr><td>borrowing wrong</td><td class="m">3${f('1', '3')} = 2${f('11', '3')}</td><td class="m">2${f('4', '3')}</td></tr>
+        <tr><td>equation solved by adding</td><td class="m">x = ${f('1', '6')} + ${f('2', '3')}</td><td class="m">x = ${f('1', '6')} − ${f('2', '3')}</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'The quarter in one page',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Block</th><th>The sentence</th></tr></thead>
+      <tbody>
+        <tr><td>the basic figures</td><td>point, line and plane, and the axioms that govern them</td></tr>
+        <tr><td>segments and angles</td><td>both add when a point or a ray lies inside</td></tr>
+        <tr><td>perpendicular lines</td><td>adjacent add to ${m('180°')}, vertical are equal</td></tr>
+        <tr><td>the integers</td><td>invented so that subtraction always works</td></tr>
+        <tr><td>the sign rules</td><td>alike gives ${m('+')}, unlike gives ${m('−')}</td></tr>
+        <tr><td>the rationals</td><td>invented so that division always works</td></tr>
+        <tr><td>fractions</td><td>a common denominator, then the numerators</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      Quarter II returns to geometry for the congruence of triangles, then opens algebra proper with
+      powers, monomials and polynomials. The sign rules of this quarter are used in every line of
+      it.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q3: ' + m(f('2', '3') + ' + ' + f('3', '4')) + ' and ' + m('−' + f('1', '2') + ' + ' + f('1', '5')) + '.',
+      steps: [
+        ['LCM of ' + m('3') + ' and ' + m('4') + ' is ' + m('12') + '.', ''],
+        [m(f('8', '12') + ' + ' + f('9', '12') + ' = ' + f('17', '12') + ' = 1' + f('5', '12')), ''],
+        ['LCM of ' + m('2') + ' and ' + m('5') + ' is ' + m('10') + '.', ''],
+        [m('−' + f('5', '10') + ' + ' + f('2', '10') + ' = −' + f('3', '10')), 'The half is bigger.']
+      ],
+      ans: m('1' + f('5', '12')) + ' and ' + m('−' + f('3', '10'))
+    },
+    {
+      q: 'Model answer, Q5: ' + m('3' + f('1', '3') + ' − 1' + f('3', '4')) + '.',
+      steps: [
+        ['Convert: ' + m(f('10', '3') + ' − ' + f('7', '4')) + '.', ''],
+        ['LCM ' + m('12') + ': ' + m(f('40', '12') + ' − ' + f('21', '12')) + '.', ''],
+        [m('= ' + f('19', '12')), ''],
+        [m('= 1' + f('7', '12')), '']
+      ],
+      ans: m('1' + f('7', '12'))
+    },
+    {
+      q: 'Model answer, Q6: solve ' + m('x + ' + f('2', '3') + ' = ' + f('1', '6')) + '.',
+      steps: [
+        [m('x = ' + f('1', '6') + ' − ' + f('2', '3')), 'Subtract, do not add.'],
+        [m('= ' + f('1', '6') + ' − ' + f('4', '6')), ''],
+        [m('= −' + f('3', '6') + ' = −' + f('1', '2')), ''],
+        ['Check: ' + m('−' + f('1', '2') + ' + ' + f('2', '3') + ' = ' + f('1', '6')) + ' ✓', '']
+      ],
+      ans: m('x = −' + f('1', '2'))
+    }
+  ],
+  modelNote: 'Mark Q3 aloud with a paper strip folded into twelfths; the wrong answer of five sevenths becomes visibly impossible.',
+  interactive: {
+    type: 'quiz',
+    title: 'Chapter III in twelve questions',
+    hint: 'Two from each block.',
+    items: [
+      { q: 'A rational number is:', a: ['any decimal', m(f('p', 'q')) + ' with ' + m('q ≠ 0'), 'an integer', 'a fraction below ' + m('1')], c: 1, why: 'The definition.' },
+      { q: 'Is ' + m('−4') + ' rational?', a: ['yes', 'no', 'sometimes', 'undefined'], c: 0, why: m('−' + f('4', '1')) + '.' },
+      { q: m(f('3', '8')) + ' as a decimal:', a: [m('0.38'), m('0.375'), m('0.83'), m('0.125')], c: 1, why: m('3 ÷ 8') + '.' },
+      { q: 'A fraction terminates when the denominator has only:', a: [m('2') + ' and ' + m('3'), m('2') + ' and ' + m('5'), 'primes', 'odd factors'], c: 1, why: m('10 = 2 × 5') + '.' },
+      { q: m(f('2', '7') + ' + ' + f('3', '7')) + ' equals:', a: [m(f('5', '14')), m(f('5', '7')), m(f('6', '7')), m(f('6', '49'))], c: 1, why: 'Keep the denominator.' },
+      { q: 'For unlike denominators, use:', a: ['the product', 'the LCM', 'the HCF', 'the sum'], c: 1, why: 'Least work.' },
+      { q: m('−' + f('1', '2') + ' + ' + f('1', '3')) + ' equals:', a: [m(f('1', '6')), m('−' + f('1', '6')), m(f('5', '6')), m('−' + f('5', '6'))], c: 1, why: 'The half is bigger.' },
+      { q: m('a − b') + ' equals:', a: [m('a + b'), m('a + (−b)'), m('b − a'), m('−a + b')], c: 1, why: 'Add the opposite.' },
+      { q: m('−2' + f('1', '3')) + ' as an improper fraction:', a: [m('−' + f('7', '3')), m('−' + f('5', '3')), m(f('7', '3')), m('−' + f('1', '3'))], c: 0, why: 'The minus covers both parts.' },
+      { q: m('4' + f('1', '5')) + ' with one whole borrowed:', a: [m('3' + f('6', '5')), m('3' + f('11', '5')), m('3' + f('1', '5')), m('5' + f('1', '5'))], c: 0, why: 'One whole is ' + m(f('5', '5')) + '.' },
+      { q: 'For a chain, take the LCM of:', a: ['the first two', 'all of them', 'the largest', 'the smallest'], c: 1, why: 'One conversion.' },
+      { q: m('x + a = b') + ' gives:', a: [m('x = a + b'), m('x = b − a'), m('x = a − b'), m('x = ab')], c: 1, why: 'Subtract from both sides.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 loses a mark most often for:', a: ['a wrong sign', 'not simplifying', 'a decimal', 'no units'], c: 1, why: m('−' + f('24', '10')) + ' is unfinished.' },
+    { q: 'Q2 must show:', a: ['a fraction', 'the recurrence', 'a percentage', 'rounding'], c: 1, why: m('0.41666…') + '.' },
+    { q: 'Q3 begins with:', a: ['the numerators', 'the LCM', 'the answer', 'a sketch'], c: 1, why: 'One denominator first.' },
+    { q: 'In Q5, converting to improper fractions avoids:', a: ['the LCM', 'borrowing', 'signs', 'checking'], c: 1, why: 'The riskiest step.' },
+    { q: 'Q6 is solved by:', a: ['adding ' + m(f('2', '3')), 'subtracting ' + m(f('2', '3')), 'multiplying', 'dividing'], c: 1, why: 'Undo the addition.' },
+    { q: 'Work on the mistakes means:', a: ['fix the wrong line', 'rewrite the solution', 'copy the answer', 'skip it'], c: 1, why: 'The whole solution, again.' }
+  ],
+  practice: {
+    easy: [
+      [m('−2.4') + ' as a fraction', m('−' + f('12', '5'))],
+      [m('3' + f('1', '4')) + ' as a fraction', m(f('13', '4'))],
+      [m(f('7', '8')) + ' as a decimal', m('0.875')],
+      [m(f('5', '12')) + ' as a decimal', m('0.41666…')],
+      [m(f('2', '3') + ' + ' + f('3', '4')), m('1' + f('5', '12'))],
+      [m('−' + f('1', '2') + ' + ' + f('1', '5')), m('−' + f('3', '10'))],
+      [m(f('5', '6') + ' − ' + f('3', '8')), m(f('11', '24'))]
+    ],
+    med: [
+      [m('−' + f('2', '5') + ' − ' + f('1', '2')), m('−' + f('9', '10'))],
+      [m('3' + f('1', '3') + ' − 1' + f('3', '4')), m('1' + f('7', '12'))],
+      ['Solve ' + m('x + ' + f('2', '3') + ' = ' + f('1', '6')), m('−' + f('1', '2'))],
+      [m(f('1', '2') + ' + ' + f('1', '3') + ' − ' + f('1', '4')), m(f('7', '12'))],
+      [m('0.6 + ' + f('1', '5')), m(f('4', '5'))],
+      ['Simplify ' + m(f('45', '75')), m(f('3', '5'))],
+      ['Solve ' + m('x − ' + f('1', '4') + ' = ' + f('1', '2')), m(f('3', '4'))]
+    ],
+    hard: [
+      [m('2' + f('1', '6') + ' − 3' + f('1', '2')), m('−1' + f('1', '3'))],
+      [m('−' + f('3', '4') + ' + ' + f('5', '6') + ' − ' + f('1', '12')), m('0')],
+      ['Which is larger, ' + m(f('7', '12')) + ' or ' + m('0.6') + '?', m('0.6')],
+      ['Solve ' + m(f('5', '6') + ' − x = −' + f('1', '3')), m(f('7', '6'))],
+      ['The mean of ' + m(f('1', '4') + ', ' + f('1', '2') + ', ' + f('3', '4')), m(f('1', '2'))],
+      ['A tank ' + m(f('2', '3')) + ' full loses ' + m(f('1', '4')) + ' of the tank', m(f('5', '12')) + ' full'],
+      ['Order ' + m(f('3', '5') + ', ' + f('5', '8') + ', ' + f('7', '12')), m(f('7', '12') + ' < ' + f('3', '5') + ' < ' + f('5', '8'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite in full every question that lost a mark before the second quarter begins.',
+  homework: [
+    'Write ' + m('−1.8') + ' and ' + m('2' + f('3', '5')) + ' as fractions.',
+    'Convert ' + m(f('9', '16')) + ' and ' + m(f('7', '15')) + ' to decimals.',
+    'Compute ' + m(f('3', '5') + ' + ' + f('1', '4')) + ' and ' + m('−' + f('2', '3') + ' + ' + f('1', '6')) + '.',
+    'Compute ' + m('4' + f('1', '4') + ' − 2' + f('2', '3')) + '.',
+    'Solve ' + m('x + ' + f('3', '5') + ' = ' + f('1', '10')) + '.'
+  ]
+});
