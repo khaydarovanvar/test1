@@ -1,25 +1,25 @@
 #!/usr/bin/env python3
-"""Build plans-10-11.html — a browsable view of the four Grade 10-11 plans.
+"""Build plans-6-7-9.html — a browsable view of the four Grade 6, 7 and 9 plans.
 
-The stylesheet is lifted verbatim from plans.html (the Grade 8 viewer) so the
-two pages look like one document. Run after build-plans-10-11.py.
+The stylesheet is lifted verbatim from plans.html (the Grade 8 viewer) so all
+three pages look like one document. Run after build-plans-6-7-9.py.
 """
 import html
 import os
 import re
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(HERE, 'plans-10-11.html')
+OUT = os.path.join(HERE, 'plans-6-7-9.html')
 
 VIEWS = [
-    ('alg10', '04-special-class-algebra-grade10.md', 'G10 Algebra', 102,
-     'Algebra, Grade 10', '3 h / week', [27, 21, 30, 24], 'var(--uz)'),
-    ('geo10', '05-special-class-geometry-grade10.md', 'G10 Geometry', 68,
-     'Geometry, Grade 10', '2 h / week', [18, 14, 20, 16], 'var(--uz)'),
-    ('alg11', '06-special-class-algebra-grade11.md', 'G11 Algebra', 102,
-     'Algebra and Calculus, Grade 11', '3 h / week', [27, 21, 30, 24], 'var(--cam)'),
-    ('geo11', '07-special-class-geometry-grade11.md', 'G11 Geometry', 68,
-     'Geometry, Grade 11', '2 h / week', [18, 14, 20, 16], 'var(--cam)'),
+    ('m6', '08-cambridge-class-grade6-mathematics.md', 'G6 Mathematics', 204,
+     'Mathematics, Grade 6', '6 h / week', [54, 42, 60, 48], 'var(--cam)'),
+    ('m7', '09-special-class-mathematics-grade7.md', 'G7 Mathematics', 170,
+     'Mathematics, Grade 7', '5 h / week', [45, 35, 50, 40], 'var(--uz)'),
+    ('alg9', '10-special-class-algebra-grade9.md', 'G9 Algebra', 102,
+     'Algebra, Grade 9', '3 h / week', [27, 21, 30, 24], 'var(--uz)'),
+    ('geo9', '11-special-class-geometry-grade9.md', 'G9 Geometry', 68,
+     'Geometry, Grade 9', '2 h / week', [18, 14, 20, 16], 'var(--uz)'),
 ]
 ROMAN = ['I', 'II', 'III', 'IV']
 
@@ -67,7 +67,7 @@ def table(rows, quarters):
 
 
 def main():
-    parts = ['<title>Grade 10 &amp; 11 Maths Annual Plans</title>',
+    parts = ['<title>Grade 6, 7 &amp; 9 Maths Annual Plans</title>',
              '<link rel="preconnect" href="https://fonts.googleapis.com">',
              '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
              '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
@@ -83,11 +83,13 @@ def main():
     parts.append('''
 <div class="wrap">
 <header class="mast">
-  <p class="eyebrow">Uzbekistan national programme · Cambridge IGCSE Extended and AS &amp; A Level</p>
-  <h1>Annual plans — grades 10 and 11</h1>
-  <p class="lede">The national calendar-thematic plan kept lesson for lesson, with every lesson
-  mapped to its Cambridge sub-unit and the flexible lessons filled with the Cambridge content the
-  national programme does not reach. <a href="plans.html">Grade 8 plans &rarr;</a></p>
+  <p class="eyebrow">Uzbekistan national programme · Cambridge Lower Secondary Stages 7–8 and IGCSE Extended</p>
+  <h1>Annual plans — grades 6, 7 and 9</h1>
+  <p class="lede">Built from the official 2025–2026 calendar-thematic plans, lesson for lesson.
+  Grade 6 runs an hour a week ahead of the national plan, so it carries a 34-lesson Cambridge
+  Stage 7 layer; grades 7 and 9 match the national load exactly and take their Cambridge content
+  in the lessons the plan leaves open.
+  <a href="plans.html">Grade 8 plans &rarr;</a> &nbsp; <a href="plans-10-11.html">Grades 10–11 &rarr;</a></p>
   <div class="streams">''')
     for _, _, tab, total, name, load, qs, colour in VIEWS:
         parts.append('''    <div class="stream" style="--sc:%s">
@@ -117,46 +119,61 @@ def main():
     parts.append('''
 <section class="view prose" id="v-over" role="tabpanel" aria-labelledby="t-over">
   <div class="viewhead">
-    <h2>By grade 10 the national programme has caught Cambridge up</h2>
-    <p>In grade 8 the national programme is the harder of the two, so Cambridge Stage 9 had to be
-    folded into it. By grades 10 and 11 that has reversed in scope but not in level: the national
-    plan is already a full AS-and-A-Level-shaped course — functions, exponentials and logarithms,
-    trigonometric equations, then a complete year of differential and integral calculus followed by
-    combinatorics, statistics and probability.</p>
-    <p>So no hours are added. Every national lesson is mapped to the Cambridge sub-unit it answers
-    to, and the lessons the national plan leaves open are filled with what Cambridge has and the
-    national programme does not.</p>
+    <h2>Two different problems, two different solutions</h2>
+    <p>Grades 6 and 7 sit on the same national plan — 170 lessons, 45 / 35 / 50 / 40 by quarter.
+    What differs is the time available. Grade 6 is taught <strong>six</strong> hours a week against a
+    five-hour plan, and grade 7 is taught <strong>five</strong>. So grade 6 gains 34 lessons and
+    grade 7 gains none.</p>
+    <p>That single fact decides everything. In grade 6 the spare hour a week is spent on the Stage 7
+    content the national plan genuinely lacks — above all <strong>directed numbers</strong>, which the
+    national programme does not reach until grade 7. In grade 7 and in grade 9 there is no spare hour,
+    so Cambridge content goes into the lessons the national plan already leaves open: the twenty-one
+    &ldquo;practical exercises and applications&rdquo; lessons in grade 7, and the chapter-exercise and
+    cross-curricular lessons in grade 9.</p>
   </div>
   <div class="cmp">
-    <div class="card" style="--cc:var(--uz)">
-      <h4>Grade 10 · %d + %d Cambridge inserts</h4>
-      <p><strong>Algebra</strong> — quadratics and the discriminant, composite and inverse
-      functions, radians and circular measure, arithmetic and geometric progressions, the binomial
-      expansion.</p>
-      <p><strong>Geometry</strong> — symmetry in three dimensions, the sine and cosine rules,
-      trigonometry in three dimensions, bearings, coordinate geometry of the line and the circle,
-      vectors and transformations.</p>
-    </div>
     <div class="card" style="--cc:var(--cam)">
-      <h4>Grade 11 · %d + %d Cambridge inserts</h4>
-      <p><strong>Algebra and calculus</strong> — the modulus function, the trapezium rule,
-      integration by parts and by partial fractions, complex numbers and the Argand diagram,
-      differential equations.</p>
-      <p><strong>Geometry</strong> — the vector equation of a line in space, upper and lower
-      bounds, units of volume and capacity, arc and sector applied to cones, area and volume scale
-      factors, optimisation of a container.</p>
+      <h4>Grade 6 · %d Cambridge lessons added</h4>
+      <p><strong>Stage 7 as a layer on top.</strong> Directed numbers; place value, rounding and
+      decimal arithmetic; LCM, HCF and divisibility tests; square and cube roots; angle facts and
+      constructions; symmetry and congruence; data collection and sampling; graphs; probability;
+      position and transformation; the Stage 7 projects.</p>
+      <p>Every other lesson is national, in the national order, carrying the Stage 7 sub-unit it
+      answers to — so the class can sit Checkpoint papers without separate preparation.</p>
+    </div>
+    <div class="card" style="--cc:var(--uz)">
+      <h4>Grade 7 · %d Cambridge inserts</h4>
+      <p><strong>Stage 8 into the open lessons.</strong> Rounding and decimal arithmetic; percentage
+      change; the circumference of a circle; ratio and proportion; area and volume of prisms;
+      probability; data collection and sampling; interpreting results; congruence on a grid.</p>
+      <p>The national plan is the harder of the two here — it reaches polynomial division, the
+      abridged multiplication formulae, algebraic fractions and combinatorics, none of which Stage 8
+      contains.</p>
+    </div>
+    <div class="card" style="--cc:var(--uz)">
+      <h4>Grade 9 · %d + %d Cambridge inserts</h4>
+      <p><strong>Algebra</strong> — sets and Venn diagrams, rational and irrational numbers,
+      recurring decimals, standard form, rearranging formulae, complementary and mutually exclusive
+      events, percentiles and box-and-whisker plots.</p>
+      <p><strong>Geometry</strong> — congruence, triangle properties, three-dimensional objects,
+      surface area and volume, construction and scale drawing.</p>
+      <p>The national plan goes well past IGCSE here: radian measure, the addition and double-angle
+      formulae, the sine and cosine rules and the scalar product are all <em>Extension beyond</em>.</p>
     </div>
   </div>
   <div class="viewhead" style="margin-top:26px">
     <h2>Reference editions</h2>
-    <p><code>P1</code> Cambridge International AS &amp; A Level Mathematics — Pure Mathematics 1 ·
-    <code>P2</code> Pure Mathematics 2 ·
-    <code>IGX</code> Cambridge IGCSE Mathematics Extended, units 4–6.</p>
-    <p>Every quarter still totals 27 / 21 / 30 / 24 hours for algebra and 18 / 14 / 20 / 16 for
-    geometry, and every national topic keeps its exact hour count — the generator asserts both, so
-    a plan cannot drift out of compliance by accident.</p>
+    <p><code>S7</code> Cambridge Lower Secondary Mathematics Stage 7 ·
+    <code>S8</code> Stage 8 ·
+    <code>IGX</code> Cambridge IGCSE Mathematics Core &amp; Extended, units 1–3 (chapters 1–12).</p>
+    <p>Grades 10 and 11 take the other half of the IGCSE book — units 4–6, chapters 13–24 — so the
+    two plans together cover it once, with no overlap and no gap.</p>
+    <p>Every quarter totals 54 / 42 / 60 / 48 hours in grade 6, 45 / 35 / 50 / 40 in grade 7,
+    27 / 21 / 30 / 24 for grade 9 algebra and 18 / 14 / 20 / 16 for grade 9 geometry, and every
+    national topic keeps its exact hour count — the generator asserts both, so a plan cannot drift
+    out of compliance by accident.</p>
   </div>
-</section>''' % (counts['alg10'], counts['geo10'], counts['alg11'], counts['geo11']))
+</section>''' % (counts['m6'], counts['m7'], counts['alg9'], counts['geo9']))
 
     # ---- plan views ----
     for key, md, tab, total, name, load, qs, _ in VIEWS:
@@ -196,8 +213,8 @@ RED = '''
   <div class="viewhead">
     <h2>Red days and how the plan absorbs them</h2>
     <p>Calculated for the 2026–2027 academic year. Four to six public holidays fall on a working
-    day; for a subject taught three hours a week that costs two or three lessons, for two hours a
-    week one or two.</p>
+    day; for a subject taught six hours a week that costs four to six lessons, five hours a week
+    three to five, three hours a week two or three, and two hours a week one or two.</p>
   </div>
   <div class="tablewrap"><table><thead><tr><th>Date</th><th>Holiday</th>
   <th class="cnum">Weekday</th><th>Effect on the plan</th></tr></thead><tbody>

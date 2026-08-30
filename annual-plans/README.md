@@ -1,13 +1,18 @@
-# Mathematics Annual Plans 2026–2027 — Grades 8, 10 and 11
+# Mathematics Annual Plans 2026–2027 — Grades 6 to 11
 
-Plans for grades 8, 10 and 11, all running on the Uzbek school calendar
-(quarters of 9 / 7 / 10 / 8 weeks, 34 teaching weeks).
+Plans for grades 6, 7, 8, 9, 10 and 11, all running on the Uzbek school calendar
+(quarters of 9 / 7 / 10 / 8 weeks, 34 teaching weeks). Every plan is generated from the
+official national calendar-thematic plan, lesson for lesson.
 
 | Grade | Stream | Load | Hours/year | Backbone | Depth layer |
 |---:|---|---|---:|---|---|
+| 6 | **Cambridge class — Mathematics** | 6 h/week | 204 | Uzbekistan national KTP (170 h) | + 34 h Cambridge Stage 7 |
+| 7 | **Special class — Mathematics** | 5 h/week | 170 | Uzbekistan national KTP | Cambridge Stage 8 inserts |
 | 8 | **Special class — Algebra** | 3 h/week | 102 | Uzbekistan national KTP | Cambridge Stage 9 inserts |
 | 8 | **Special class — Geometry** | 2 h/week | 68 | Uzbekistan national KTP | Cambridge Stage 9 inserts |
 | 8 | **Cambridge class — Mathematics** | 6 h/week | 204 | Cambridge Stage 9 (Learner's Book 9) | Uzbekistan Grade 8 programme |
+| 9 | **Special class — Algebra** | 3 h/week | 102 | Uzbekistan national KTP | IGCSE Extended, chapters 1–12 |
+| 9 | **Special class — Geometry** | 2 h/week | 68 | Uzbekistan national KTP | IGCSE Extended, chapters 1–12 |
 | 10 | **Special class — Algebra** | 3 h/week | 102 | Uzbekistan national KTP | IGCSE Extended + AS Pure Maths 1 |
 | 10 | **Special class — Geometry** | 2 h/week | 68 | Uzbekistan national KTP | IGCSE Extended + AS Pure Maths 1 |
 | 11 | **Special class — Algebra and Calculus** | 3 h/week | 102 | Uzbekistan national KTP | AS & A Level Pure Maths 1 and 2 |
@@ -17,6 +22,10 @@ Plans for grades 8, 10 and 11, all running on the Uzbek school calendar
 
 | File | Contents |
 |---|---|
+| `08-cambridge-class-grade6-mathematics.md` | Grade 6 mathematics — 204 lessons, quarters 54 / 42 / 60 / 48 |
+| `09-special-class-mathematics-grade7.md` | Grade 7 mathematics — 170 lessons, quarters 45 / 35 / 50 / 40 |
+| `10-special-class-algebra-grade9.md` | Grade 9 algebra — 102 lessons, quarters 27 / 21 / 30 / 24 |
+| `11-special-class-geometry-grade9.md` | Grade 9 geometry — 68 lessons, quarters 18 / 14 / 20 / 16 |
 | `01-special-class-algebra-grade8.md` | Grade 8 algebra — 102 lessons, quarters 27 / 21 / 30 / 24 |
 | `02-special-class-geometry-grade8.md` | Grade 8 geometry — 68 lessons, quarters 18 / 14 / 20 / 16 |
 | `03-cambridge-class-grade8-mathematics.md` | Grade 8 Cambridge class — 204 lessons, quarters 54 / 42 / 60 / 48 |
@@ -26,8 +35,58 @@ Plans for grades 8, 10 and 11, all running on the Uzbek school calendar
 | `07-special-class-geometry-grade11.md` | Grade 11 geometry — 68 lessons |
 | `Grade8_Annual_Plans_2026-2027.xlsx` | The three Grade 8 plans + the red-day sheet, colour-coded |
 | `Grades10-11_Annual_Plans_2026-2027.xlsx` | The four Grade 10–11 plans + the red-day sheet, colour-coded |
+| `Grades6-7-9_Annual_Plans_2026-2027.xlsx` | The four Grade 6, 7 and 9 plans + the red-day sheet, colour-coded |
+| `plans.html`, `plans-10-11.html`, `plans-6-7-9.html` | Browsable, filterable views of all eleven plans |
 | `build-plans-10-11.py` | Generates the four Grade 10–11 plans; asserts the hour totals |
 | `build-xlsx-10-11.py` | Builds the Grade 10–11 workbook from those plans |
+| `build-plans-6-7-9.py` | Generates the four Grade 6, 7 and 9 plans; asserts the hour totals |
+| `build-xlsx-6-7-9.py` | Builds the Grade 6, 7 and 9 workbook from those plans |
+| `build-plans-html.py`, `build-html-6-7-9.py` | Build the two HTML viewers |
+| `verify-against-ktp.py` | Checks the Grade 6, 7 and 9 plans against the official KTP workbooks |
+| `ktp-source/` | The four official 2025–2026 KTP workbooks and the three Cambridge contents pages |
+
+## Grades 6, 7 and 9
+
+Grades 6 and 7 share one national plan — 170 lessons, 45 / 35 / 50 / 40 by quarter — but not the
+same amount of time. Grade 6 is taught **six** hours a week against that five-hour plan, so it has
+**34 lessons spare**: exactly one extra a week, 9 / 7 / 10 / 8 across the quarters. Grade 7 is
+taught five, so it has none.
+
+That decides the method. In grade 6 the spare hour carries the Stage 7 content the national plan
+genuinely lacks — above all **directed numbers**, which the national programme does not reach until
+grade 7 — together with place value and rounding, decimal arithmetic, LCM and HCF, divisibility
+tests, roots, angle facts and constructions, symmetry and congruence, sampling, graphs,
+probability, transformations and the Stage 7 projects. In grades 7 and 9 there is no spare hour, so
+Cambridge content goes into the lessons the national plan already leaves open: the twenty-one
+"practical exercises and applications" lessons in grade 7, and the chapter-exercise and
+"practical and cross-curricular problems" lessons in grade 9.
+
+| Plan | Inserts | Cambridge content added |
+|---|---:|---|
+| Grade 6 Mathematics | 37 | directed numbers, place value and rounding, decimals, LCM/HCF and divisibility, roots, constructions, symmetry and congruence, sampling, graphs, probability, transformations, projects |
+| Grade 7 Mathematics | 16 | rounding and decimal arithmetic, percentage change, the circumference of a circle, ratio and proportion, area and volume of prisms, probability, data collection, interpreting results |
+| Grade 9 Algebra | 9 | sets and Venn diagrams, rational and irrational numbers, recurring decimals, standard form, rearranging formulae, complementary and mutually exclusive events, percentiles and box-and-whisker plots |
+| Grade 9 Geometry | 5 | congruence, triangle properties, three-dimensional objects, surface area and volume, construction and scale drawing |
+
+Grade 9 uses **IGCSE Extended chapters 1–12** (units 1–3); grades 10 and 11 use **chapters 13–24**
+(units 4–6). Between them the book is covered once, with no overlap and no gap.
+
+### Checked against the source
+
+`verify-against-ktp.py` reads the four official KTP workbooks in `ktp-source/` and asserts that
+every national lesson appears in the generated plan, in the national order, in the national
+quarter, with the national number of hours on each topic:
+
+```
+$ python3 verify-against-ktp.py ktp-source
+08-cambridge-class-grade6-mathematics.md   national 170/170  blocks  77/ 77  OK
+09-special-class-mathematics-grade7.md     national 170/170  blocks  98/ 98  OK
+10-special-class-algebra-grade9.md         national 102/102  blocks  64/ 64  OK
+11-special-class-geometry-grade9.md        national  68/ 68  blocks  47/ 47  OK
+```
+
+The national plan runs well past IGCSE in grade 9: radian measure, the addition and double-angle
+formulae, the sine and cosine rules and the scalar product are all marked *Extension beyond*.
 
 ## Grades 10 and 11
 
