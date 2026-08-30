@@ -4239,3 +4239,198 @@ G6_MAT.push({
     'Paint is mixed ' + m('4 : 3') + ' blue to white. With ' + m('20') + ' litres of blue, how much white is needed?'
   ]
 });
+
+/* ============================== 24 ============================== */
+G6_MAT.push({
+  id: 'g6-24', stream: 'mat', grade: 6, quarter: 1, lessons: '47–49', hours: 3,
+  title: 'The ratio of three quantities',
+  subtitle: 'Chaining two ratios into one, and sharing among three.',
+  uz: 'Matematika 6, §11', uzPage: 'pp. 131–140',
+  cam: 'S7 12', camPage: 'Stage 7, pp. 118–125', wb: 'Exercise 12.4',
+  objectives: [
+    'Share a quantity among three in a given ratio.',
+    'Combine ' + m('a : b') + ' and ' + m('b : c') + ' into ' + m('a : b : c') + '.',
+    'Find all three quantities from one of them.',
+    'Solve mixture problems with three ingredients.'
+  ],
+  terms: [
+    ['Three-part ratio', 'Uch hadli nisbat', 'Отношение трёх величин'],
+    ['To combine ratios', 'Nisbatlarni birlashtirish', 'Объединить отношения'],
+    ['Common term', 'Umumiy had', 'Общий член'],
+    ['Equivalent ratio', 'Teng nisbat', 'Равное отношение'],
+    ['Share', 'Ulush', 'Доля'],
+    ['Mixture', 'Aralashma', 'Смесь'],
+    ['Total parts', 'Jami ulushlar', 'Всего частей'],
+    ['Scaling', 'Miqyoslash', 'Масштабирование']
+  ],
+  timing: [[25, 'Sharing among three'], [30, 'Chaining two ratios'], [30, 'From one quantity to all three'], [25, 'Mixtures'], [10, 'Homework']],
+  sections: [
+    {
+      h: 'Sharing among three',
+      html: `<p>Nothing new: add all three parts, find one part, multiply out.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Amount</th><th>Ratio</th><th>Parts</th><th>Shares</th></tr></thead>
+      <tbody>
+        <tr><td class="m">300</td><td class="m">1 : 2 : 3</td><td class="m">6</td><td class="m">50, 100, 150</td></tr>
+        <tr><td class="m">700</td><td class="m">1 : 2 : 4</td><td class="m">7</td><td class="m">100, 200, 400</td></tr>
+        <tr><td class="m">540</td><td class="m">2 : 3 : 4</td><td class="m">9</td><td class="m">120, 180, 240</td></tr>
+        <tr><td class="m">480</td><td class="m">3 : 5 : 8</td><td class="m">16</td><td class="m">90, 150, 240</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The check is the same</div>
+      All three shares must add to the original amount. With three numbers to add there is more to go
+      wrong, so the check matters more, not less.</div>`
+    },
+    {
+      h: 'Chaining two ratios',
+      html: `<p>Given ${m('A : B = 2 : 3')} and ${m('B : C = 4 : 5')}, the two ${m('B')}s must be made
+      equal before the ratios can be joined.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Step</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>the two ratios</td><td class="m">A : B = 2 : 3, B : C = 4 : 5</td></tr>
+        <tr><td>make the ${m('B')}s match — LCM of ${m('3')} and ${m('4')} is ${m('12')}</td><td class="m">A : B = 8 : 12, B : C = 12 : 15</td></tr>
+        <tr><td>join them</td><td class="m">A : B : C = 8 : 12 : 15</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th class="m">A : B</th><th class="m">B : C</th><th class="m">A : B : C</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2 : 3</td><td class="m">3 : 4</td><td class="m">2 : 3 : 4</td></tr>
+        <tr><td class="m">2 : 3</td><td class="m">4 : 5</td><td class="m">8 : 12 : 15</td></tr>
+        <tr><td class="m">1 : 2</td><td class="m">3 : 7</td><td class="m">3 : 6 : 14</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Only the shared quantity is matched</span>
+      Scaling ${m('A : B')} by ${m('4')} and ${m('B : C')} by ${m('3')} changes the numbers but not the
+      ratios — that is exactly why it is allowed. Scaling only one of the two would break them.</div>`
+    },
+    {
+      h: 'From one quantity to all three',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Ratio</th><th>Given</th><th>One part</th><th>All three</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2 : 3 : 5</td><td>the first is ${m('12')}</td><td class="m">6</td><td class="m">12, 18, 30</td></tr>
+        <tr><td class="m">1 : 4 : 6</td><td>the second is ${m('20')}</td><td class="m">5</td><td class="m">5, 20, 30</td></tr>
+        <tr><td class="m">3 : 4 : 5</td><td>the third is ${m('35')}</td><td class="m">7</td><td class="m">21, 28, 35</td></tr>
+        <tr><td class="m">2 : 3 : 4</td><td>the total is ${m('180')}</td><td class="m">20</td><td class="m">40, 60, 80</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Always one part first</div>
+      Whatever is given — a share, the total, or a difference — the first line of working is the value of
+      one part. Every three-quantity problem then finishes in one more line.</div>`
+    },
+    {
+      h: 'Mixtures',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>concrete ${m('1 : 2 : 4')} using ${m('150')} kg of cement</td><td>one part ${m('= 150')}</td><td class="m">1050 kg in all</td></tr>
+        <tr><td>a salad ${m('3 : 2 : 1')} of ${m('600')} g</td><td>one part ${m('= 100')}</td><td class="m">300, 200, 100 g</td></tr>
+        <tr><td>brass ${m('7 : 3')} copper to zinc in ${m('500')} g</td><td>one part ${m('= 50')}</td><td class="m">350 g copper</td></tr>
+        <tr><td>a mix ${m('2 : 3 : 5')} with ${m('60')} g of the largest part</td><td>one part ${m('= 12')}</td><td class="m">120 g in all</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Read which part the given amount is</span>
+      “Using ${m('150')} kg of cement” names the ${m('1')}; “with ${m('60')} g of the largest part” names
+      the ${m('5')}. The same number leads to very different totals depending on which part it is.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Share ' + m('540') + ' in the ratio ' + m('2 : 3 : 4') + '.',
+      steps: [
+        [m('2 + 3 + 4 = 9') + ' parts.', ''],
+        [m('540 ÷ 9 = 60') + ' for one part.', ''],
+        [m('120') + ', ' + m('180') + ' and ' + m('240') + '.', 'Check: they total ' + m('540') + ' ✓']
+      ],
+      ans: m('120, 180, 240')
+    },
+    {
+      q: 'If ' + m('A : B = 2 : 3') + ' and ' + m('B : C = 4 : 5') + ', find ' + m('A : B : C') + '.',
+      steps: [
+        ['The ' + m('B') + 's are ' + m('3') + ' and ' + m('4') + '; their LCM is ' + m('12') + '.', ''],
+        ['Scale the first by ' + m('4') + ': ' + m('8 : 12') + '.', ''],
+        ['Scale the second by ' + m('3') + ': ' + m('12 : 15') + '.', ''],
+        [m('A : B : C = 8 : 12 : 15'), '']
+      ],
+      ans: m('8 : 12 : 15')
+    },
+    {
+      q: 'Concrete is ' + m('1 : 2 : 4') + ' cement, sand and gravel. A builder uses ' + m('150') + ' kg of cement. What is the total mass?',
+      steps: [
+        ['Cement is ' + m('1') + ' part, so one part is ' + m('150') + ' kg.', ''],
+        ['Total parts: ' + m('7') + '.', ''],
+        [m('7 · 150 = 1050') + ' kg.', '']
+      ],
+      ans: m('1050') + ' kg'
+    }
+  ],
+  modelNote: 'Give the class two ratios sharing a middle quantity and ask them to join them without being shown how; most reach the LCM idea themselves.',
+  interactive: {
+    type: 'lcdBuilder',
+    title: 'Matching the shared quantity',
+    hint: 'The two middle numbers must be made equal.',
+    items: [
+      {
+        label: m('A : B = 2 : 3') + ' and ' + m('B : C = 4 : 5'),
+        rows: [['3', 'B in the first ratio', '×4'], ['4', 'B in the second', '×3']],
+        lcd: m('A : B : C = 8 : 12 : 15'),
+        note: 'The LCM of ' + m('3') + ' and ' + m('4') + ' is ' + m('12') + '.'
+      },
+      {
+        label: m('A : B = 2 : 3') + ' and ' + m('B : C = 3 : 4'),
+        rows: [['3', 'B in the first', '×1'], ['3', 'B in the second', '×1']],
+        lcd: m('A : B : C = 2 : 3 : 4'),
+        note: 'The two ' + m('B') + 's already match, so nothing needs scaling.'
+      },
+      {
+        label: m('A : B = 1 : 2') + ' and ' + m('B : C = 3 : 7'),
+        rows: [['2', 'B in the first', '×3'], ['3', 'B in the second', '×2']],
+        lcd: m('A : B : C = 3 : 6 : 14'),
+        note: 'The LCM of ' + m('2') + ' and ' + m('3') + ' is ' + m('6') + '.'
+      }
+    ]
+  },
+  quiz: [
+    { q: m('300') + ' in ' + m('1 : 2 : 3') + ' gives:', a: [m('50, 100, 150'), m('60, 100, 140'), m('100, 100, 100'), m('30, 60, 210')], c: 0, why: 'Six parts of ' + m('50') + '.' },
+    { q: 'To join ' + m('A : B') + ' and ' + m('B : C') + ' you make equal:', a: ['the ' + m('A') + 's', 'the ' + m('B') + 's', 'the ' + m('C') + 's', 'the totals'], c: 1, why: 'The shared quantity.' },
+    { q: m('2 : 3') + ' and ' + m('4 : 5') + ' join to:', a: [m('2 : 3 : 5'), m('8 : 12 : 15'), m('2 : 12 : 5'), m('6 : 12 : 20')], c: 1, why: 'LCM of ' + m('3') + ' and ' + m('4') + '.' },
+    { q: 'Ratio ' + m('2 : 3 : 5') + ' with the first ' + m('12') + ' gives the third:', a: [m('18'), m('24'), m('30'), m('36')], c: 2, why: 'One part ' + m('6') + '.' },
+    { q: 'Concrete ' + m('1 : 2 : 4') + ' with ' + m('150') + ' kg cement totals:', a: [m('450') + ' kg', m('750') + ' kg', m('1050') + ' kg', m('1200') + ' kg'], c: 2, why: m('7') + ' parts.' },
+    { q: 'The first line of working is always:', a: ['the total', 'one part', 'the ratio', 'the check'], c: 1, why: 'Everything follows from it.' }
+  ],
+  practice: {
+    easy: [
+      ['Share ' + m('300') + ' in ' + m('1 : 2 : 3'), m('50, 100, 150')],
+      ['Share ' + m('700') + ' in ' + m('1 : 2 : 4'), m('100, 200, 400')],
+      ['Share ' + m('540') + ' in ' + m('2 : 3 : 4'), m('120, 180, 240')],
+      ['Share ' + m('480') + ' in ' + m('3 : 5 : 8'), m('90, 150, 240')],
+      ['The parts of ' + m('2 : 3 : 5'), m('10')],
+      ['Ratio ' + m('2 : 3 : 5') + ', first ' + m('12') + ': one part', m('6')],
+      ['And all three', m('12, 18, 30')]
+    ],
+    med: [
+      [m('A : B = 2 : 3') + ', ' + m('B : C = 3 : 4'), m('2 : 3 : 4')],
+      [m('A : B = 2 : 3') + ', ' + m('B : C = 4 : 5'), m('8 : 12 : 15')],
+      [m('A : B = 1 : 2') + ', ' + m('B : C = 3 : 7'), m('3 : 6 : 14')],
+      ['Ratio ' + m('1 : 4 : 6') + ', second ' + m('20'), m('5, 20, 30')],
+      ['Ratio ' + m('3 : 4 : 5') + ', third ' + m('35'), m('21, 28, 35')],
+      ['Concrete ' + m('1 : 2 : 4') + ' with ' + m('150') + ' kg cement', m('1050') + ' kg'],
+      ['A salad ' + m('3 : 2 : 1') + ' of ' + m('600') + ' g', m('300, 200, 100') + ' g']
+    ],
+    hard: [
+      ['Brass ' + m('7 : 3') + ' in ' + m('500') + ' g: the copper', m('350') + ' g'],
+      ['A mix ' + m('2 : 3 : 5') + ' with ' + m('60') + ' g of the largest part: the total', m('120') + ' g'],
+      [m('A : B = 3 : 4') + ', ' + m('B : C = 6 : 7') + ': find ' + m('A : B : C'), m('9 : 12 : 14')],
+      ['Share ' + m('2 400') + ' in ' + m('1 : 3 : 4'), m('300, 900, 1200')],
+      ['Ratio ' + m('2 : 3 : 4') + ', the difference between largest and smallest is ' + m('30'), m('30, 45, 60')],
+      ['If ' + m('A : B = 2 : 5') + ' and ' + m('B : C = 10 : 3') + ', find ' + m('A : C'), m('4 : 3')],
+      ['Why must the shared quantity be matched before joining?', 'Otherwise the two ratios measure ' + m('B') + ' in different units']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'One part first; then every share is one multiplication away.',
+  homework: [
+    'Share ' + m('720') + ' in the ratio ' + m('2 : 3 : 7') + '.',
+    'If ' + m('A : B = 3 : 5') + ' and ' + m('B : C = 2 : 3') + ', find ' + m('A : B : C') + '.',
+    'A mixture is ' + m('1 : 3 : 6') + ' and uses ' + m('40') + ' g of the first ingredient. Find the total mass.',
+    'Three shares are in the ratio ' + m('4 : 5 : 6') + ' and the largest is ' + m('42') + '. Find the other two.',
+    'Concrete ' + m('1 : 2 : 4') + ' is needed to a total of ' + m('1 400') + ' kg. Find each ingredient.'
+  ]
+});
