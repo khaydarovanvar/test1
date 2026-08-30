@@ -1455,3 +1455,664 @@ G9_GEO.push({
     'State what a movement preserves and give one thing it does not.'
   ]
 });
+
+/* ============================== 10 ============================== */
+G9_GEO.push({
+  id: 'g9-10', stream: 'geo', grade: 9, quarter: 1, lessons: '11', hours: 1,
+  title: 'Axial symmetry',
+  subtitle: 'Reflection in a line — the movement that reverses orientation, and the only one that does.',
+  uz: 'Geometriya 9, §9', uzPage: 'pp. 46–50',
+  cam: 'Extension beyond IGX', camPage: 'Core & Extended, pp. 46–50', wb: 'Exercise 3.1',
+  objectives: [
+    'Construct the image of a point and a figure under reflection in a line.',
+    'Reflect a point in the axes and in the lines y = x and y = −x.',
+    'Find the axes of symmetry of a given figure.',
+    'Know that reflection reverses orientation but preserves distance.'
+  ],
+  terms: [
+    ['Axial symmetry', 'O‘qqa nisbatan simmetriya', 'Осевая симметрия'],
+    ['Reflection', 'Simmetriya', 'Отражение'],
+    ['Axis of symmetry', 'Simmetriya o‘qi', 'Ось симметрии'],
+    ['Perpendicular bisector', 'O‘rta perpendikulyar', 'Серединный перпендикуляр'],
+    ['Orientation', 'Yo‘nalish', 'Ориентация'],
+    ['Fixed point', 'Qo‘zg‘almas nuqta', 'Неподвижная точка'],
+    ['Mirror line', 'Ko‘zgu chizig‘i', 'Зеркальная линия'],
+    ['Symmetric figure', 'Simmetrik shakl', 'Симметричная фигура']
+  ],
+  timing: [[10, 'The construction'], [14, 'Reflection in the coordinate lines'], [10, 'Axes of symmetry'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The construction',
+      html: `<p>To reflect ${m('P')} in the line ${m('ℓ')}: drop a perpendicular from ${m('P')} to
+      ${m('ℓ')}, and continue it the same distance on the other side. The line ${m('ℓ')} is the
+      <b>perpendicular bisector</b> of ${m('PP′')}.</p>
+      {{fig:perpBisector:The axis is the perpendicular bisector of every segment joining a point to its image.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Property</th><th>Statement</th></tr></thead>
+      <tbody>
+        <tr><td>fixed points</td><td>every point of ${m('ℓ')}</td></tr>
+        <tr><td>distance</td><td>preserved</td></tr>
+        <tr><td>angles</td><td>preserved in size</td></tr>
+        <tr><td>orientation</td><td><b>reversed</b></td></tr>
+        <tr><td>applied twice</td><td>the identity</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A reflection is its own inverse</div>
+      Reflecting twice in the same line returns every point to where it started. No other transformation
+      of the chapter has that property, and it is a useful check on any construction.</div>`
+    },
+    {
+      h: 'Reflection in the coordinate lines',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Axis</th><th class="m">P(x, y) ↦</th><th>Example ${m('(3, 5)')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">Ox</td><td class="m">(x, −y)</td><td class="m">(3, −5)</td></tr>
+        <tr><td class="m">Oy</td><td class="m">(−x, y)</td><td class="m">(−3, 5)</td></tr>
+        <tr><td class="m">y = x</td><td class="m">(y, x)</td><td class="m">(5, 3)</td></tr>
+        <tr><td class="m">y = −x</td><td class="m">(−y, −x)</td><td class="m">(−5, −3)</td></tr>
+        <tr><td class="m">x = a</td><td class="m">(2a − x, y)</td><td class="m">a = 1: (−1, 5)</td></tr>
+        <tr><td class="m">y = b</td><td class="m">(x, 2b − y)</td><td class="m">b = 2: (3, −1)</td></tr>
+      </tbody></table></div>
+      <p>The last two rows contain the first four as special cases: ${m('a = 0')} gives reflection in
+      ${m('Oy')}, and ${m('b = 0')} gives reflection in ${m('Ox')}.</p>
+      <div class="warn"><span class="wl">${m('y = x')} swaps the coordinates; it does not negate them</span>
+      ${m('(3, 5) ↦ (5, 3)')}, not ${m('(−3, −5)')}. Reflecting a graph in ${m('y = x')} is exactly how
+      an inverse function is drawn, which is why this row matters beyond geometry.</div>`
+    },
+    {
+      h: 'Axes of symmetry',
+      html: `<p>A figure has an <b>axis of symmetry</b> if reflecting it in that line leaves it
+      unchanged.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Figure</th><th>Axes</th></tr></thead>
+      <tbody>
+        <tr><td>an isosceles triangle</td><td class="m">1</td></tr>
+        <tr><td>an equilateral triangle</td><td class="m">3</td></tr>
+        <tr><td>a rectangle</td><td class="m">2</td></tr>
+        <tr><td>a rhombus</td><td class="m">2</td></tr>
+        <tr><td>a square</td><td class="m">4</td></tr>
+        <tr><td>a regular ${m('n')}-gon</td><td class="m">n</td></tr>
+        <tr><td>a circle</td><td>infinitely many</td></tr>
+        <tr><td>a parallelogram (not a rhombus)</td><td class="m">0</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A parallelogram has no axis of symmetry</span>
+      Its diagonals are not axes: reflecting in a diagonal does not map the figure to itself. It has
+      <b>central</b> symmetry instead — which is the next lesson.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Reflect ' + m('A(3, 5)') + ' in ' + m('Ox') + ', in ' + m('Oy') + ' and in ' + m('y = x') + '.',
+      steps: [
+        [m('Ox') + ': negate ' + m('y') + ' — ' + m('(3, −5)') + '.', ''],
+        [m('Oy') + ': negate ' + m('x') + ' — ' + m('(−3, 5)') + '.', ''],
+        [m('y = x') + ': swap — ' + m('(5, 3)') + '.', ''],
+        ['Each image is the same distance from the axis.', '']
+      ],
+      ans: m('(3, −5), (−3, 5), (5, 3)')
+    },
+    {
+      q: 'Reflect ' + m('P(3, 5)') + ' in the line ' + m('x = 1') + '.',
+      steps: [
+        ['Distance from the line: ' + m('3 − 1 = 2') + '.', ''],
+        ['The image is ' + m('2') + ' on the other side.', ''],
+        [m('1 − 2 = −1'), ''],
+        [m('P′(−1, 5)'), m('y') + ' is unchanged.']
+      ],
+      ans: m('(−1, 5)')
+    },
+    {
+      q: 'How many axes of symmetry has a rhombus that is not a square?',
+      steps: [
+        ['Its two diagonals are perpendicular bisectors of each other.', ''],
+        ['Reflecting in either diagonal maps the rhombus to itself.', ''],
+        ['The lines through the midpoints of opposite sides do not.', ''],
+        ['Two.', '']
+      ],
+      ans: m('2')
+    }
+  ],
+  modelNote: 'Fold a paper figure along a proposed axis; if the two halves coincide it is an axis, and if they do not, the class sees exactly why.',
+  interactive: {
+    type: 'transform',
+    title: 'Reflect in a line',
+    hint: 'Drag the axis and watch the image follow.'
+  },
+  quiz: [
+    { q: 'The axis is the ______ of ' + m('PP′') + ':', a: ['midpoint', 'perpendicular bisector', 'parallel', 'extension'], c: 1, why: 'By construction.' },
+    { q: 'Reflection preserves:', a: ['orientation', 'distance', 'position', 'nothing'], c: 1, why: 'It is a movement.' },
+    { q: 'Reflection reverses:', a: ['distance', 'angle size', 'orientation', 'area'], c: 2, why: 'A mirror image.' },
+    { q: m('(3, 5)') + ' in ' + m('y = x') + ':', a: [m('(−3, −5)'), m('(5, 3)'), m('(3, −5)'), m('(−5, −3)')], c: 1, why: 'Swap the coordinates.' },
+    { q: 'A square has how many axes?', a: [m('2'), m('3'), m('4'), m('8')], c: 2, why: 'Two diagonals, two midlines.' },
+    { q: 'A parallelogram has how many axes?', a: [m('0'), m('1'), m('2'), m('4')], c: 0, why: 'Its diagonals are not axes.' }
+  ],
+  practice: {
+    easy: [
+      [m('(3, 5)') + ' in ' + m('Ox'), m('(3, −5)')],
+      [m('(3, 5)') + ' in ' + m('Oy'), m('(−3, 5)')],
+      [m('(3, 5)') + ' in ' + m('y = x'), m('(5, 3)')],
+      [m('(−2, 7)') + ' in ' + m('Ox'), m('(−2, −7)')],
+      ['Axes of an equilateral triangle', m('3')],
+      ['Axes of a rectangle', m('2')],
+      ['Axes of a circle', 'Infinitely many']
+    ],
+    med: [
+      [m('(3, 5)') + ' in ' + m('x = 1'), m('(−1, 5)')],
+      [m('(3, 5)') + ' in ' + m('y = 2'), m('(3, −1)')],
+      [m('(3, 5)') + ' in ' + m('y = −x'), m('(−5, −3)')],
+      ['Axes of a rhombus (not a square)', m('2')],
+      ['Axes of a parallelogram', m('0')],
+      ['Axes of a regular hexagon', m('6')],
+      ['Reflecting twice in the same line gives', 'The identity']
+    ],
+    hard: [
+      ['The image of ' + m('y = 2x + 1') + ' in ' + m('Ox'), m('y = −2x − 1')],
+      ['The image of ' + m('y = 2x + 1') + ' in ' + m('Oy'), m('y = −2x + 1')],
+      ['The image of ' + m('y = 2x + 1') + ' in ' + m('y = x'), m('y = ' + f('x − 1', '2'))],
+      ['The image of ' + m('y = x²') + ' in ' + m('Ox'), m('y = −x²')],
+      ['Reflect ' + m('(a, b)') + ' in ' + m('x = c'), m('(2c − a, b)')],
+      ['Two reflections in parallel lines ' + m('d') + ' apart give', 'A translation of ' + m('2d')],
+      ['Two reflections in perpendicular lines give', 'A half-turn about their intersection']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Draw the axis and the perpendicular for every construction.',
+  homework: [
+    'Reflect ' + m('(4, −3)') + ' in ' + m('Ox') + ', ' + m('Oy') + ', ' + m('y = x') + ' and ' + m('y = −x') + '.',
+    'Reflect ' + m('(5, 2)') + ' in the line ' + m('x = 3') + '.',
+    'How many axes of symmetry has a regular octagon?',
+    'Find the image of the line ' + m('y = 3x − 2') + ' under reflection in ' + m('Oy') + '.',
+    'Explain why a parallelogram has no axis of symmetry.'
+  ]
+});
+
+/* ============================== 11 ============================== */
+G9_GEO.push({
+  id: 'g9-11', stream: 'geo', grade: 9, quarter: 1, lessons: '12', hours: 1,
+  title: 'Central symmetry and rotation',
+  subtitle: 'Turning about a point — and the half-turn, which is the case worth knowing by heart.',
+  uz: 'Geometriya 9, §10', uzPage: 'pp. 51–56',
+  cam: 'Extension beyond IGX', camPage: 'Core & Extended, pp. 46–50', wb: 'Exercise 3.1',
+  objectives: [
+    'Define central symmetry as a half-turn about a point.',
+    'Describe a rotation by its centre, angle and direction.',
+    'Find images under a rotation of 90°, 180° or 270° about the origin.',
+    'Identify figures with central symmetry and with rotational symmetry of order n.'
+  ],
+  terms: [
+    ['Central symmetry', 'Markazga nisbatan simmetriya', 'Центральная симметрия'],
+    ['Centre of symmetry', 'Simmetriya markazi', 'Центр симметрии'],
+    ['Rotation', 'Burish', 'Поворот'],
+    ['Angle of rotation', 'Burilish burchagi', 'Угол поворота'],
+    ['Direction', 'Yo‘nalish', 'Направление'],
+    ['Half-turn', 'Yarim burilish', 'Поворот на 180°'],
+    ['Rotational symmetry', 'Burilish simmetriyasi', 'Поворотная симметрия'],
+    ['Order of symmetry', 'Simmetriya tartibi', 'Порядок симметрии']
+  ],
+  timing: [[10, 'Central symmetry'], [14, 'Rotation'], [10, 'Rotational symmetry'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'Central symmetry',
+      html: `<p>The image of ${m('P')} under central symmetry with centre ${m('O')} is the point
+      ${m('P′')} on the line ${m('PO')} with ${m('OP′ = OP')} and ${m('O')} between them: ${m('O')} is
+      the <b>midpoint</b> of ${m('PP′')}.</p>
+      ${eq(m('P(x, y) ↦ P′(−x, −y)') + '   for the centre at the origin', true)}
+      {{fig:transformations:A half-turn about O — every point goes through the centre to the far side.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Figure</th><th>Centre of symmetry?</th></tr></thead>
+      <tbody>
+        <tr><td>a parallelogram</td><td>yes — the intersection of the diagonals</td></tr>
+        <tr><td>a circle</td><td>yes — its centre</td></tr>
+        <tr><td>a regular hexagon</td><td>yes</td></tr>
+        <tr><td>an equilateral triangle</td><td><b>no</b></td></tr>
+        <tr><td>a regular pentagon</td><td><b>no</b></td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Central symmetry is a rotation of ${m('180°')}</div>
+      It is not a separate kind of transformation; it is the special case of a rotation that is worth its
+      own name because it appears so often — in the parallelogram, in the hyperbola, in every odd
+      function.</div>`
+    },
+    {
+      h: 'Rotation',
+      html: `<p>A <b>rotation</b> needs three pieces of data: a <b>centre</b>, an <b>angle</b> and a
+      <b>direction</b> (anticlockwise positive, as in trigonometry).</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Rotation about ${m('O')}</th><th class="m">(x, y) ↦</th><th>Example ${m('(3, 1)')}</th></tr></thead>
+      <tbody>
+        <tr><td class="m">90° anticlockwise</td><td class="m">(−y, x)</td><td class="m">(−1, 3)</td></tr>
+        <tr><td class="m">180°</td><td class="m">(−x, −y)</td><td class="m">(−3, −1)</td></tr>
+        <tr><td class="m">270° anticlockwise</td><td class="m">(y, −x)</td><td class="m">(1, −3)</td></tr>
+        <tr><td class="m">360°</td><td class="m">(x, y)</td><td class="m">(3, 1)</td></tr>
+      </tbody></table></div>
+      <p>A rotation of ${m('90°')} clockwise is the same as ${m('270°')} anticlockwise, so the third row
+      answers both.</p>
+      <div class="warn"><span class="wl">Give all three pieces of data</span>
+      “A rotation of ${m('90°')}” is incomplete: about which point, and which way? Cambridge marks the
+      description, and two of the three marks are for the centre and the direction.</div>`
+    },
+    {
+      h: 'Rotational symmetry',
+      html: `<p>A figure has <b>rotational symmetry of order ${m('n')}</b> if it maps onto itself
+      ${m('n')} times in a full turn — that is, under a rotation of ${m(f('360°', 'n'))}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Figure</th><th>Order</th><th>Smallest angle</th></tr></thead>
+      <tbody>
+        <tr><td>an equilateral triangle</td><td class="m">3</td><td class="m">120°</td></tr>
+        <tr><td>a square</td><td class="m">4</td><td class="m">90°</td></tr>
+        <tr><td>a rectangle</td><td class="m">2</td><td class="m">180°</td></tr>
+        <tr><td>a parallelogram</td><td class="m">2</td><td class="m">180°</td></tr>
+        <tr><td>a regular ${m('n')}-gon</td><td class="m">n</td><td class="m">${f('360°', 'n')}</td></tr>
+        <tr><td>a circle</td><td>infinite</td><td>any angle</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Order ${m('2')} and central symmetry are the same thing</div>
+      A figure has a centre of symmetry exactly when its rotational symmetry has even order — the
+      half-turn is then one of its symmetries. That is why the parallelogram and the regular hexagon
+      have centres and the equilateral triangle and regular pentagon do not.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find the image of ' + m('(3, 1)') + ' under a rotation of ' + m('90°') + ' anticlockwise about the origin.',
+      steps: [
+        ['The rule is ' + m('(x, y) ↦ (−y, x)') + '.', ''],
+        [m('x = 3, y = 1'), ''],
+        [m('(−1, 3)'), ''],
+        ['Check: both points are ' + m(sr('10')) + ' from the origin ✓', '']
+      ],
+      ans: m('(−1, 3)')
+    },
+    {
+      q: 'A point ' + m('P(4, −2)') + ' is mapped to ' + m('P′(−4, 2)') + '. Describe the transformation fully.',
+      steps: [
+        ['Both coordinates are negated.', ''],
+        ['That is a half-turn about the origin.', ''],
+        ['Equivalently, central symmetry in ' + m('O') + '.', ''],
+        ['A rotation of ' + m('180°') + ' about ' + m('(0, 0)') + '.', 'Direction is irrelevant at ' + m('180°') + '.']
+      ],
+      ans: 'A rotation of ' + m('180°') + ' about the origin'
+    },
+    {
+      q: 'Give the order of rotational symmetry and the number of axes for a regular hexagon.',
+      steps: [
+        ['A regular ' + m('n') + '-gon has order ' + m('n') + '.', ''],
+        ['Order ' + m('6') + ', smallest angle ' + m('60°') + '.', ''],
+        ['It has ' + m('n = 6') + ' axes of symmetry.', ''],
+        ['Order ' + m('6') + ' is even, so it also has a centre.', '']
+      ],
+      ans: 'Order ' + m('6') + ', ' + m('6') + ' axes, and a centre'
+    }
+  ],
+  modelNote: 'Pin a cut-out shape at a point and turn it; the class counts how many times it looks the same in one full turn, and that count is the order.',
+  interactive: {
+    type: 'transform',
+    title: 'Turn about a point',
+    hint: 'Change the centre and the angle separately.'
+  },
+  quiz: [
+    { q: 'Central symmetry is a rotation of:', a: [m('90°'), m('180°'), m('270°'), m('360°')], c: 1, why: 'A half-turn.' },
+    { q: m('(x, y)') + ' under a half-turn about ' + m('O') + ':', a: [m('(−x, y)'), m('(x, −y)'), m('(−x, −y)'), m('(y, x)')], c: 2, why: 'Both negated.' },
+    { q: m('90°') + ' anticlockwise sends ' + m('(3, 1)') + ' to:', a: [m('(1, 3)'), m('(−1, 3)'), m('(1, −3)'), m('(−3, −1)')], c: 1, why: m('(x, y) ↦ (−y, x)') + '.' },
+    { q: 'A rotation is described by:', a: ['a vector', 'an axis', 'centre, angle and direction', 'a scale factor'], c: 2, why: 'All three.' },
+    { q: 'A regular pentagon has a centre of symmetry:', a: ['yes', 'no', 'sometimes', 'five of them'], c: 1, why: 'Its order is odd.' },
+    { q: 'A parallelogram has rotational symmetry of order:', a: [m('1'), m('2'), m('3'), m('4')], c: 1, why: 'The half-turn.' }
+  ],
+  practice: {
+    easy: [
+      [m('(3, 1)') + ' under ' + m('180°'), m('(−3, −1)')],
+      [m('(3, 1)') + ' under ' + m('90°') + ' anticlockwise', m('(−1, 3)')],
+      [m('(3, 1)') + ' under ' + m('270°') + ' anticlockwise', m('(1, −3)')],
+      [m('(−2, 5)') + ' under ' + m('180°'), m('(2, −5)')],
+      ['Order of a square', m('4')],
+      ['Order of an equilateral triangle', m('3')],
+      ['Centre of symmetry of a parallelogram', 'Where the diagonals meet']
+    ],
+    med: [
+      [m('(4, −2) → (−4, 2)') + ': the transformation', 'Half-turn about ' + m('O')],
+      ['Order and axes of a regular hexagon', m('6') + ' and ' + m('6')],
+      ['Order and axes of a rectangle', m('2') + ' and ' + m('2')],
+      ['Has a regular pentagon a centre?', 'No'],
+      ['Has a regular hexagon a centre?', 'Yes'],
+      [m('90°') + ' clockwise is the same as', m('270°') + ' anticlockwise'],
+      ['Smallest rotation for a regular octagon', m('45°')]
+    ],
+    hard: [
+      ['The image of ' + m('y = 2x') + ' under a half-turn about ' + m('O'), m('y = 2x') + ' — unchanged'],
+      ['The image of ' + m('y = x²') + ' under a half-turn about ' + m('O'), m('y = −x²')],
+      ['The image of ' + m('(1, 2)') + ' under ' + m('90°') + ' anticlockwise about ' + m('(1, 1)'), m('(0, 1)')],
+      ['Two half-turns about different centres give', 'A translation'],
+      ['A rotation of ' + m('120°') + ' three times gives', 'The identity'],
+      ['Which quadrilaterals have both an axis and a centre?', 'Rectangle, rhombus, square'],
+      ['Order of rotational symmetry of the letter S', m('2')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Give centre, angle and direction in every description of a rotation.',
+  homework: [
+    'Find the image of ' + m('(5, −2)') + ' under rotations of ' + m('90°') + ', ' + m('180°') + ' and ' + m('270°') + ' anticlockwise about the origin.',
+    'A point ' + m('(2, 7)') + ' maps to ' + m('(−2, −7)') + '. Describe the transformation fully.',
+    'Give the order of rotational symmetry and the number of axes for a regular decagon.',
+    'Which of the special quadrilaterals have a centre of symmetry?',
+    'Find the image of ' + m('(3, 4)') + ' under a half-turn about ' + m('(1, 1)') + '.'
+  ]
+});
+
+/* ============================== 12 ============================== */
+G9_GEO.push({
+  id: 'g9-12', stream: 'geo', grade: 9, quarter: 1, lessons: '13', hours: 1,
+  title: 'Similarity of geometric figures',
+  subtitle: 'The definition widened from polygons to any figure at all — including curved ones.',
+  uz: 'Geometriya 9, §11', uzPage: 'pp. 57–60',
+  cam: 'IGX 11.3', camPage: 'Core & Extended, pp. 232–236', wb: 'Exercise 11.3',
+  objectives: [
+    'Define similarity of arbitrary figures by a distance-scaling map.',
+    'Recognise that all circles, all squares and all regular n-gons are similar.',
+    'Use the k, k², k³ rule for lengths, areas and volumes.',
+    'Apply similarity to scale models and maps.'
+  ],
+  terms: [
+    ['Similarity transformation', 'O‘xshashlik almashtirishi', 'Преобразование подобия'],
+    ['Figure', 'Shakl', 'Фигура'],
+    ['Scale factor', 'Masshtab koeffitsiyenti', 'Масштабный коэффициент'],
+    ['Volume', 'Hajm', 'Объём'],
+    ['Model', 'Model', 'Модель'],
+    ['Map scale', 'Xarita masshtabi', 'Масштаб карты'],
+    ['Enlargement', 'Kattalashtirish', 'Увеличение'],
+    ['Reduction', 'Kichraytirish', 'Уменьшение']
+  ],
+  timing: [[10, 'The general definition'], [12, 'Which figures are always similar'], [12, 'Lengths, areas, volumes'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The general definition',
+      html: `<p>A <b>similarity transformation</b> with coefficient ${m('k > 0')} is a map of the plane
+      such that for every pair of points,</p>
+      ${eq(m('P′Q′ = k · PQ'), true)}
+      <p>Two figures are <b>similar</b> if some similarity transformation carries one onto the other.
+      For polygons this reduces to the definition of the second lesson; but the new definition also
+      applies to circles, arcs, sectors and any curved figure at all.</p>
+      <div class="keybox"><div class="klabel">${m('k = 1')} gives the movements</div>
+      A similarity with ${m('k = 1')} preserves every distance — it is a movement. So congruence is the
+      special case of similarity in which nothing is resized, and the previous three lessons were about
+      that case.</div>`
+    },
+    {
+      h: 'Which figures are always similar',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Pair</th><th>Always similar?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>any two circles</td><td>yes</td><td>a circle is determined by its radius alone</td></tr>
+        <tr><td>any two squares</td><td>yes</td><td>determined by the side</td></tr>
+        <tr><td>any two regular ${m('n')}-gons (same ${m('n')})</td><td>yes</td><td>angles fixed, sides equal</td></tr>
+        <tr><td>any two equilateral triangles</td><td>yes</td><td>the case ${m('n = 3')}</td></tr>
+        <tr><td>any two rectangles</td><td><b>no</b></td><td>the ratio of the sides can differ</td></tr>
+        <tr><td>any two isosceles triangles</td><td><b>no</b></td><td>the apex angle can differ</td></tr>
+        <tr><td>any two sectors of the same angle</td><td>yes</td><td>the shape depends only on the angle</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">“Same shape” must mean “one shape parameter”</span>
+      A circle has no shape parameter at all, a regular ${m('n')}-gon none once ${m('n')} is fixed, but a
+      rectangle has one — the ratio of its sides — and that is exactly why two rectangles need not be
+      similar.</div>`
+    },
+    {
+      h: 'Lengths, areas, volumes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Quantity</th><th>Multiplied by</th><th>Example, ${m('k = 3')}</th></tr></thead>
+      <tbody>
+        <tr><td>length</td><td class="m">k</td><td class="m">×3</td></tr>
+        <tr><td>area</td><td class="m">k²</td><td class="m">×9</td></tr>
+        <tr><td>volume</td><td class="m">k³</td><td class="m">×27</td></tr>
+      </tbody></table></div>
+      {{fig:similarSolids:Doubling every length multiplies the surface by four and the volume by eight.}}
+      <p><b>Example.</b> A model car is built at scale ${m('1 : 20')}. Its surface needs ${m(f('1', '400'))}
+      of the paint and it holds ${m(f('1', '8000'))} of the volume — which is why small models are so
+      much lighter than they look.</p>
+      <div class="warn"><span class="wl">Going backwards needs a root</span>
+      Given the ratio of areas, ${m('k')} is the <b>square root</b>; given the ratio of volumes, the
+      <b>cube root</b>. Areas ${m('9 : 25')} give ${m('k = ' + f('3', '5'))}; volumes ${m('8 : 27')} give
+      ${m('k = ' + f('2', '3'))}.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Two similar solids have volumes ' + m('54') + ' and ' + m('128') + '. Find the ratio of their surface areas.',
+      steps: [
+        [m('k³ = ' + f('128', '54') + ' = ' + f('64', '27')), ''],
+        [m('k = ' + f('4', '3')), 'Cube root.'],
+        ['Areas scale by ' + m('k²') + '.', ''],
+        [m('k² = ' + f('16', '9')) + ', so ' + m('16 : 9') + '.', '']
+      ],
+      ans: m('16 : 9')
+    },
+    {
+      q: 'A map has scale ' + m('1 : 25 000') + '. A lake covers ' + m('8 cm²') + ' on the map. Find its real area in km².',
+      steps: [
+        [m('k = 25 000') + ' for lengths.', ''],
+        ['Areas scale by ' + m('k² = 6.25 × 10⁸') + '.', ''],
+        [m('8 × 6.25 × 10⁸ = 5 × 10⁹ cm²'), ''],
+        [m('= 5 × 10⁵ m² = 0.5 km²'), '']
+      ],
+      ans: m('0.5 km²')
+    },
+    {
+      q: 'Are all rectangles similar? Justify with an example.',
+      steps: [
+        ['All angles are ' + m('90°') + ' in every rectangle.', ''],
+        ['But a ' + m('1 × 2') + ' and a ' + m('1 × 3') + ' rectangle:', ''],
+        [m(f('1', '1') + ' = 1') + ' while ' + m(f('2', '3')) + ' — not equal.', ''],
+        ['No. Their side ratios differ.', '']
+      ],
+      ans: 'No'
+    }
+  ],
+  modelNote: 'Show a matchbox and a shipping container photograph at the same apparent size; ask what would happen to weight if one really were a scaled copy of the other.',
+  interactive: {
+    type: 'scaleSolid',
+    title: 'k, k² and k³',
+    hint: 'Change k and watch the three quantities separately.'
+  },
+  quiz: [
+    { q: 'A similarity multiplies every distance by:', a: [m('k'), m('k²'), m('k³'), m('1')], c: 0, why: 'That is the definition.' },
+    { q: m('k = 1') + ' gives:', a: ['an enlargement', 'a movement', 'a reduction', 'nothing'], c: 1, why: 'Distances unchanged.' },
+    { q: 'Any two circles are:', a: ['congruent', 'similar', 'equal', 'unrelated'], c: 1, why: 'One shape parameter — none.' },
+    { q: 'Any two rectangles are:', a: ['similar', 'not necessarily similar', 'congruent', 'equal in area'], c: 1, why: 'The side ratio can differ.' },
+    { q: 'Volumes scale by:', a: [m('k'), m('k²'), m('k³'), m('3k')], c: 2, why: 'Three dimensions.' },
+    { q: 'Volumes ' + m('8 : 27') + ' give ' + m('k') + ' =', a: [m(f('8', '27')), m(f('2', '3')), m(f('4', '9')), m(f('3', '2'))], c: 1, why: 'Cube root.' }
+  ],
+  practice: {
+    easy: [
+      [m('k = 2') + ': ratio of areas', m('4')],
+      [m('k = 2') + ': ratio of volumes', m('8')],
+      [m('k = 3') + ': ratio of volumes', m('27')],
+      ['Areas ' + m('9 : 25') + ': ' + m('k'), m('3 : 5')],
+      ['Volumes ' + m('8 : 27') + ': ' + m('k'), m('2 : 3')],
+      ['Are all circles similar?', 'Yes'],
+      ['Are all rectangles similar?', 'No']
+    ],
+    med: [
+      ['Volumes ' + m('54') + ' and ' + m('128') + ': ratio of areas', m('16 : 9')],
+      ['A model at ' + m('1 : 20') + ': ratio of surface areas', m('1 : 400')],
+      ['Same: ratio of volumes', m('1 : 8000')],
+      ['Map ' + m('1 : 25 000') + ': ' + m('8 cm²') + ' in km²', m('0.5')],
+      ['Areas ' + m('12') + ' and ' + m('27') + ': ' + m('k'), m('2 : 3')],
+      ['Are all regular hexagons similar?', 'Yes'],
+      ['Are all isosceles triangles similar?', 'No']
+    ],
+    hard: [
+      ['Two similar cones: heights ' + m('6') + ' and ' + m('9') + ', smaller volume ' + m('24π'), m('81π')],
+      ['Two similar cylinders: volumes ' + m('16') + ' and ' + m('54') + ', smaller radius ' + m('2'), m('3')],
+      ['A statue ' + m('2 m') + ' tall weighs ' + m('160 kg') + '; a model ' + m('0.5 m') + ' tall', m('2.5 kg')],
+      ['A map ' + m('1 : 50 000') + ': a field of ' + m('0.25 km²') + ' on the map', m('1 cm²')],
+      ['Two similar solids: surface areas ' + m('50') + ' and ' + m('72') + ', ratio of volumes', m('125 : 216')],
+      ['A cone is cut halfway up: the ratio of the small cone to the whole', m('1 : 8')],
+      ['The ratio of the frustum to the whole cone', m('7 : 8')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Say which of ' + m('k') + ', ' + m('k²') + ' or ' + m('k³') + ' each question needs before computing.',
+  homework: [
+    'Two similar solids have volumes ' + m('27') + ' and ' + m('125') + '. Find the ratio of their surface areas.',
+    'A model aeroplane is built at ' + m('1 : 72') + '. Find the ratio of the wing areas.',
+    'A map has scale ' + m('1 : 10 000') + '. A park covers ' + m('5 cm²') + '. Find its real area in hectares.',
+    'Explain why all regular pentagons are similar but not all isosceles triangles are.',
+    'A cone is cut by a plane halfway up. Find the ratio of the volumes of the two pieces.'
+  ]
+});
+
+/* ============================== 13 ============================== */
+G9_GEO.push({
+  id: 'g9-13', stream: 'geo', grade: 9, quarter: 1, lessons: '14', hours: 1,
+  title: 'Properties of similar polygons',
+  subtitle: 'The consequences of similarity, gathered — and the area theorem proved rather than asserted.',
+  uz: 'Geometriya 9, §12', uzPage: 'pp. 61–65',
+  cam: 'IGX 11.3', camPage: 'Core & Extended, pp. 232–236', wb: 'Exercise 11.3',
+  objectives: [
+    'Prove that the ratio of the areas of similar polygons is k².',
+    'Use the ratio of perimeters, diagonals and any corresponding lengths.',
+    'Solve problems in which the area ratio is given and k is required.',
+    'Apply the properties to a composite figure.'
+  ],
+  terms: [
+    ['Property', 'Xossa', 'Свойство'],
+    ['Ratio of areas', 'Yuzalar nisbati', 'Отношение площадей'],
+    ['Ratio of perimeters', 'Perimetrlar nisbati', 'Отношение периметров'],
+    ['Diagonal', 'Diagonal', 'Диагональ'],
+    ['Decomposition', 'Bo‘laklarga ajratish', 'Разбиение'],
+    ['Corresponding', 'Mos', 'Соответственный'],
+    ['Composite figure', 'Murakkab shakl', 'Составная фигура'],
+    ['Theorem', 'Teorema', 'Теорема']
+  ],
+  timing: [[10, 'The list of properties'], [14, 'Proving the area theorem'], [10, 'Backwards problems'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'The list of properties',
+      html: `<p>Let two polygons be similar with coefficient ${m('k')}. Then:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Quantity</th><th>Ratio</th></tr></thead>
+      <tbody>
+        <tr><td>corresponding sides</td><td class="m">k</td></tr>
+        <tr><td>corresponding diagonals</td><td class="m">k</td></tr>
+        <tr><td>corresponding heights and medians</td><td class="m">k</td></tr>
+        <tr><td>perimeters</td><td class="m">k</td></tr>
+        <tr><td>radii of inscribed and circumscribed circles</td><td class="m">k</td></tr>
+        <tr><td>corresponding angles</td><td class="m">1</td></tr>
+        <tr><td>areas</td><td class="m">k²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One rule, not seven</div>
+      Every <b>length</b> in the figure is multiplied by ${m('k')}; every <b>angle</b> is unchanged; every
+      <b>area</b> is multiplied by ${m('k²')}. The table is a list of examples of those three
+      statements, not seven separate facts to learn.</div>`
+    },
+    {
+      h: 'Proving the area theorem',
+      html: `<p>For triangles the proof is immediate: ${m('S = ' + f('1', '2') + 'ah')}, and both the base
+      and the height are multiplied by ${m('k')}, so ${m('S′ = ' + f('1', '2') + '(ka)(kh) = k²S')}.</p>
+      {{fig:polygonDecompose:Any polygon splits into triangles; each one scales by k², so the whole does.}}
+      <p>For a general polygon, cut it into triangles by diagonals from one vertex. The similar polygon
+      splits into corresponding triangles, each similar with the same ${m('k')}. Adding:</p>
+      ${eq(m('S′ = k²S₁ + k²S₂ + … = k²(S₁ + S₂ + …) = k²S'), true)}
+      <div class="keybox"><div class="klabel">Decomposition is the standard method for area proofs</div>
+      Cut into triangles, prove it for a triangle, add up. The same argument gives the area of a
+      trapezium, the area of a regular polygon, and — in the limit — the area of a disc in Quarter
+      III.</div>`
+    },
+    {
+      h: 'Backwards problems',
+      html: `<p>The examination favourite: the ratio of areas is given, and something linear is
+      required.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Step</th><th>Then</th></tr></thead>
+      <tbody>
+        <tr><td>areas ${m('S₁ : S₂')}</td><td class="m">k = ${sr('S₁ : S₂')}</td><td>any length scales by ${m('k')}</td></tr>
+        <tr><td>perimeters ${m('P₁ : P₂')}</td><td class="m">k = P₁ : P₂</td><td>areas scale by ${m('k²')}</td></tr>
+      </tbody></table></div>
+      <p><b>Example.</b> Two similar polygons have areas ${m('48')} and ${m('75')}. Then
+      ${m('k² = ' + f('75', '48') + ' = ' + f('25', '16'))}, so ${m('k = ' + f('5', '4'))} and the
+      perimeters are in the ratio ${m('5 : 4')}.</p>
+      <div class="warn"><span class="wl">Do not give the ratio of areas when a length was asked for</span>
+      ${m(f('75', '48'))} is the ratio of the areas; ${m(f('5', '4'))} is the ratio of the sides. Reading
+      the question for which of the two is wanted is worth as much as the arithmetic.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Two similar polygons have areas ' + m('48') + ' and ' + m('75') + '. Find the ratio of their perimeters.',
+      steps: [
+        [m('k² = ' + f('75', '48')), ''],
+        ['Cancel by ' + m('3') + ': ' + m(f('25', '16')) + '.', ''],
+        [m('k = ' + f('5', '4')), 'Square root.'],
+        ['Perimeters ' + m('5 : 4') + '.', '']
+      ],
+      ans: m('5 : 4')
+    },
+    {
+      q: 'A polygon of area ' + m('20') + ' and perimeter ' + m('18') + ' is enlarged so that its perimeter becomes ' + m('27') + '. Find its new area.',
+      steps: [
+        [m('k = ' + f('27', '18') + ' = 1.5'), ''],
+        ['Areas scale by ' + m('k² = 2.25') + '.', ''],
+        [m('20 × 2.25'), ''],
+        [m('= 45'), '']
+      ],
+      ans: m('45')
+    },
+    {
+      q: 'A quadrilateral has diagonals ' + m('10') + ' and ' + m('14') + ' and area ' + m('56') + '. A similar quadrilateral has a diagonal of ' + m('21') + ' corresponding to the ' + m('14') + '. Find its area.',
+      steps: [
+        [m('k = ' + f('21', '14') + ' = 1.5'), 'Diagonals are lengths.'],
+        [m('k² = 2.25'), ''],
+        [m('56 × 2.25'), ''],
+        [m('= 126'), '']
+      ],
+      ans: m('126')
+    }
+  ],
+  modelNote: 'Draw a pentagon, cut it into triangles from one vertex, and scale each triangle on the board; the sum makes the k² proof visible in one picture.',
+  interactive: {
+    type: 'areaModel',
+    title: 'Areas under enlargement',
+    hint: 'Double the sides and count the copies.'
+  },
+  quiz: [
+    { q: 'Corresponding diagonals are in the ratio:', a: [m('1'), m('k'), m('k²'), m('k³')], c: 1, why: 'They are lengths.' },
+    { q: 'Areas are in the ratio:', a: [m('k'), m('k²'), m('k³'), m('2k')], c: 1, why: 'Base and height both scale.' },
+    { q: 'The proof for a polygon uses:', a: ['Pythagoras', 'decomposition into triangles', 'the sine rule', 'coordinates'], c: 1, why: 'Cut, prove, add.' },
+    { q: 'Areas ' + m('48') + ' and ' + m('75') + ' give ' + m('k') + ' =', a: [m(f('75', '48')), m(f('5', '4')), m(f('4', '5')), m(f('25', '16'))], c: 1, why: 'Take the square root.' },
+    { q: 'Perimeter ' + m('18 → 27') + ' scales the area by:', a: [m('1.5'), m('2.25'), m('3'), m('4.5')], c: 1, why: m('k²') + '.' },
+    { q: 'The inradius scales by:', a: [m('1'), m('k'), m('k²'), 'it does not'], c: 1, why: 'It is a length.' }
+  ],
+  practice: {
+    easy: [
+      [m('k = 1.5') + ': ratio of areas', m('2.25')],
+      [m('k = 4') + ': ratio of perimeters', m('4')],
+      ['Areas ' + m('16 : 25') + ': ' + m('k'), m('4 : 5')],
+      ['Areas ' + m('4 : 9') + ': ratio of perimeters', m('2 : 3')],
+      ['Perimeters ' + m('3 : 7') + ': ratio of areas', m('9 : 49')],
+      ['Diagonals scale by', m('k')],
+      ['Angles scale by', m('1')]
+    ],
+    med: [
+      ['Areas ' + m('48') + ' and ' + m('75') + ': ratio of perimeters', m('5 : 4')],
+      ['Area ' + m('20') + ', perimeter ' + m('18 → 27') + ': the new area', m('45')],
+      ['Diagonal ' + m('14 → 21') + ', area ' + m('56') + ': the new area', m('126')],
+      ['Areas ' + m('50') + ' and ' + m('98') + ': ' + m('k'), m('5 : 7')],
+      ['Perimeter ' + m('24') + ', ' + m('k = ' + f('5', '6')) + ': the new perimeter', m('20')],
+      ['Inradius ' + m('6') + ', ' + m('k = 2.5') + ': the new inradius', m('15')],
+      ['Areas ' + m('27') + ' and ' + m('12') + ': ' + m('k'), m('3 : 2')]
+    ],
+    hard: [
+      ['Two similar polygons: areas differ by ' + m('44') + ' and ' + m('k = ' + f('5', '3')), 'Areas ' + m('24.75') + ' and ' + m('68.75')],
+      ['A polygon and its enlargement have total area ' + m('125') + ' with ' + m('k = 2'), m('25') + ' and ' + m('100')],
+      ['Two similar triangles with perimeters ' + m('30') + ' and ' + m('42') + ', larger area ' + m('98'), m('50')],
+      ['A rectangle ' + m('6 × 8') + ' is enlarged to area ' + m('192') + ': ' + m('k'), m('2')],
+      ['Its new diagonal', m('20')],
+      ['Two similar polygons with equal areas: ' + m('k'), m('1') + ' — they are congruent'],
+      ['A figure is scaled so that the area triples: ' + m('k'), m(sr('3'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Say whether the quantity asked for is a length or an area before choosing ' + m('k') + ' or ' + m('k²') + '.',
+  homework: [
+    'Two similar polygons have areas ' + m('27') + ' and ' + m('48') + '. Find the ratio of their perimeters.',
+    'A polygon of area ' + m('35') + ' has its perimeter increased from ' + m('20') + ' to ' + m('30') + '. Find its new area.',
+    'Two similar triangles have perimeters ' + m('16') + ' and ' + m('24') + '. The smaller has area ' + m('30') + '. Find the larger area.',
+    'Prove that the ratio of the areas of two similar polygons is ' + m('k²') + '.',
+    'A figure is scaled so that its area is halved. Find ' + m('k') + '.'
+  ]
+});
