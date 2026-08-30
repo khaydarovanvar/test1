@@ -5856,3 +5856,1090 @@ G9_ALG.push({
     'Write ' + m('2 cos 5α cos 3α') + ' as a sum.'
   ]
 });
+
+/* ============================== 34 ============================== */
+G9_ALG.push({
+  id: 'a9-34', stream: 'alg', grade: 9, quarter: 3, lessons: '65–66', hours: 2,
+  title: 'Chapter exercises — the graphs of the trigonometric functions',
+  subtitle: 'Cambridge draws the three curves and reads the answers off them; the algebra and the picture must agree.',
+  uz: 'Algebra 9, III bob mashqlari', uzPage: 'pp. 161–166',
+  cam: 'IGX 15.13–15.14', camPage: 'Core & Extended, pp. 373–382', wb: 'Exercise 15.13',
+  objectives: [
+    'Sketch y = sin x, y = cos x and y = tan x over 0° ≤ x ≤ 360°.',
+    'Read amplitude, period and asymptotes from a sketch.',
+    'Find all solutions of a simple equation in a given interval from the graph.',
+    'Describe the effect of y = a sin bx on the curve.'
+  ],
+  terms: [
+    ['Amplitude', 'Amplituda', 'Амплитуда'],
+    ['Period', 'Davr', 'Период'],
+    ['Asymptote', 'Asimptota', 'Асимптота'],
+    ['Maximum', 'Maksimum', 'Максимум'],
+    ['Minimum', 'Minimum', 'Минимум'],
+    ['Symmetry of the curve', 'Egri chiziq simmetriyasi', 'Симметрия кривой'],
+    ['Interval', 'Oraliq', 'Промежуток'],
+    ['Sketch', 'Chizma', 'Эскиз']
+  ],
+  timing: [[18, 'The three curves'], [22, 'What to read off'], [25, 'Solutions from a graph'], [20, 'Stretching the curve'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The three curves',
+      html: `{{fig:sinCosGraph:y = sin x and y = cos x — the same wave, a quarter turn apart.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th></th><th class="m">y = sin x</th><th class="m">y = cos x</th><th class="m">y = tan x</th></tr></thead>
+      <tbody>
+        <tr><td>period</td><td class="m">360°</td><td class="m">360°</td><td class="m">180°</td></tr>
+        <tr><td>range</td><td class="m">[−1, 1]</td><td class="m">[−1, 1]</td><td class="m">ℝ</td></tr>
+        <tr><td>at ${m('x = 0')}</td><td class="m">0</td><td class="m">1</td><td class="m">0</td></tr>
+        <tr><td>zeros</td><td class="m">180°k</td><td class="m">90° + 180°k</td><td class="m">180°k</td></tr>
+        <tr><td>asymptotes</td><td>none</td><td>none</td><td class="m">x = 90° + 180°k</td></tr>
+        <tr><td>symmetry</td><td>odd</td><td>even</td><td>odd</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The cosine curve is the sine curve, shifted</div>
+      ${m('cos x = sin(x + 90°)')} — which is one of the reduction formulae from the last lesson, read
+      as a statement about graphs. Anyone who can draw one curve can draw the other by sliding it
+      ${m('90°')} to the left.</div>`
+    },
+    {
+      h: 'What to read off',
+      html: `<p>A Cambridge question rarely says “find the period”; it says “write down the coordinates of
+      the maximum point” or “state the value of ${m('k')}”. Both mean the same reading.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Asked for</th><th>Read from the graph</th></tr></thead>
+      <tbody>
+        <tr><td>amplitude</td><td>half the vertical distance between the highest and lowest points</td></tr>
+        <tr><td>period</td><td>the horizontal distance between two consecutive maxima</td></tr>
+        <tr><td>maximum point</td><td>coordinates, not just the height</td></tr>
+        <tr><td>number of solutions</td><td>count the crossings of the horizontal line</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">“Amplitude” is a height, “maximum point” is a pair of numbers</span>
+      For ${m('y = 3 sin x')} the amplitude is ${m('3')} and the first maximum point is ${m('(90°, 3)')}.
+      Answering with the wrong kind of object loses the mark even when the number is right.</div>`
+    },
+    {
+      h: 'Solutions from a graph',
+      html: `<p>To solve ${m('sin x = 0.5')} for ${m('0° ≤ x ≤ 360°')}, draw the line ${m('y = 0.5')} across
+      the sine curve and count the crossings.</p>
+      {{fig:trigSolutions:One horizontal line, two crossings — a calculator gives only the first.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Equation</th><th>Crossings in ${m('[0°, 360°]')}</th><th>Solutions</th></tr></thead>
+      <tbody>
+        <tr><td class="m">sin x = 0.5</td><td class="m">2</td><td class="m">30°, 150°</td></tr>
+        <tr><td class="m">cos x = 0.5</td><td class="m">2</td><td class="m">60°, 300°</td></tr>
+        <tr><td class="m">tan x = 1</td><td class="m">2</td><td class="m">45°, 225°</td></tr>
+        <tr><td class="m">sin x = −0.5</td><td class="m">2</td><td class="m">210°, 330°</td></tr>
+        <tr><td class="m">sin x = 1</td><td class="m">1</td><td class="m">90°</td></tr>
+        <tr><td class="m">sin x = 2</td><td class="m">0</td><td>none</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The calculator gives one solution; the graph gives all of them</span>
+      ${m('sin⁻¹0.5 = 30°')} and the machine stops there. The second solution, ${m('150°')}, exists
+      because the curve comes back down — and a question that asks for “all solutions in the interval”
+      is testing exactly whether you drew the picture.</div>`
+    },
+    {
+      h: 'Stretching the curve',
+      html: `<p>This is the graph transformation work of Chapter I applied to a wave.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Curve</th><th>Amplitude</th><th>Period</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="m">y = sin x</td><td class="m">1</td><td class="m">360°</td><td>—</td></tr>
+        <tr><td class="m">y = 3 sin x</td><td class="m">3</td><td class="m">360°</td><td>three times as tall</td></tr>
+        <tr><td class="m">y = sin 2x</td><td class="m">1</td><td class="m">180°</td><td>twice as fast</td></tr>
+        <tr><td class="m">y = 2 cos 3x</td><td class="m">2</td><td class="m">120°</td><td>both at once</td></tr>
+        <tr><td class="m">y = sin x + 2</td><td class="m">1</td><td class="m">360°</td><td>lifted by ${m('2')}</td></tr>
+      </tbody></table></div>
+      <p>In general ${m('y = a sin bx')} has amplitude ${m('|a|')} and period ${m(f('360°', '|b|'))}. The
+      coefficient outside stretches vertically; the coefficient inside squeezes horizontally — the
+      reverse of what most learners first expect.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Solve ' + m('sin x = 0.5') + ' for ' + m('0° ≤ x ≤ 360°') + '.',
+      steps: [
+        [m('sin⁻¹0.5 = 30°'), 'The calculator value.'],
+        ['Sine is positive in quadrants I and II.', ''],
+        ['The second solution is ' + m('180° − 30° = 150°') + '.', ''],
+        [m('x = 30°') + ' or ' + m('x = 150°') + '.', '']
+      ],
+      ans: m('30°, 150°')
+    },
+    {
+      q: 'State the amplitude and period of ' + m('y = 4 sin 3x') + ', and its first maximum point.',
+      steps: [
+        ['Amplitude ' + m('= |4| = 4') + '.', 'The outside coefficient.'],
+        ['Period ' + m('= ' + f('360°', '3') + ' = 120°') + '.', 'The inside coefficient.'],
+        ['The first maximum is a quarter of a period in: ' + m('x = 30°') + '.', ''],
+        ['Maximum point ' + m('(30°, 4)') + '.', '']
+      ],
+      ans: 'Amplitude ' + m('4') + ', period ' + m('120°') + ', maximum ' + m('(30°, 4)')
+    },
+    {
+      q: 'How many solutions has ' + m('cos x = 0.3') + ' for ' + m('0° ≤ x ≤ 720°') + '?',
+      steps: [
+        ['The period is ' + m('360°') + '.', ''],
+        ['In one period the line ' + m('y = 0.3') + ' crosses twice.', ''],
+        ['The interval is two periods long.', ''],
+        [m('4') + ' solutions.', '']
+      ],
+      ans: m('4')
+    }
+  ],
+  modelNote: 'Ask for all solutions of sin x = 0.5 before mentioning the graph; let the class produce only 30°, then draw the curve and let them find what they missed.',
+  interactive: {
+    type: 'graphTransform',
+    title: 'a sin bx',
+    hint: 'Change a and b and watch amplitude and period separately.'
+  },
+  quiz: [
+    { q: 'The period of ' + m('y = tan x') + ':', a: [m('90°'), m('180°'), m('360°'), m('720°')], c: 1, why: 'It repeats twice as often as sine.' },
+    { q: 'The amplitude of ' + m('y = 3 sin x') + ':', a: [m('1'), m('3'), m('6'), m('360°')], c: 1, why: 'The outside coefficient.' },
+    { q: 'The period of ' + m('y = sin 2x') + ':', a: [m('90°'), m('180°'), m('360°'), m('720°')], c: 1, why: m(f('360°', '2')) + '.' },
+    { q: m('sin x = 0.5') + ' in ' + m('[0°, 360°]') + ' has:', a: ['one solution', 'two solutions', 'three', 'none'], c: 1, why: 'The line crosses twice.' },
+    { q: m('sin x = 2') + ' has:', a: ['one solution', 'two', 'no solution', 'infinitely many'], c: 2, why: 'The range is ' + m('[−1, 1]') + '.' },
+    { q: m('y = tan x') + ' has asymptotes at:', a: [m('180°k'), m('90° + 180°k'), m('360°k'), 'none'], c: 1, why: 'Where ' + m('cos x = 0') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Period of ' + m('y = sin x'), m('360°')],
+      ['Period of ' + m('y = tan x'), m('180°')],
+      ['Range of ' + m('y = cos x'), m('[−1, 1]')],
+      [m('y = cos x') + ' at ' + m('x = 0'), m('1')],
+      ['Amplitude of ' + m('y = 5 sin x'), m('5')],
+      ['Period of ' + m('y = sin 3x'), m('120°')],
+      ['Is ' + m('y = cos x') + ' even or odd?', 'Even']
+    ],
+    med: [
+      ['Solve ' + m('sin x = 0.5') + ' in ' + m('[0°, 360°]'), m('30°, 150°')],
+      ['Solve ' + m('cos x = 0.5') + ' in ' + m('[0°, 360°]'), m('60°, 300°')],
+      ['Solve ' + m('tan x = 1') + ' in ' + m('[0°, 360°]'), m('45°, 225°')],
+      ['Solve ' + m('sin x = −0.5') + ' in ' + m('[0°, 360°]'), m('210°, 330°')],
+      ['Amplitude and period of ' + m('y = 4 sin 3x'), m('4') + ' and ' + m('120°')],
+      ['First maximum point of ' + m('y = 4 sin 3x'), m('(30°, 4)')],
+      ['Solutions of ' + m('cos x = 0.3') + ' in ' + m('[0°, 720°]'), m('4')]
+    ],
+    hard: [
+      ['Solve ' + m('cos x = −1') + ' in ' + m('[0°, 720°]'), m('180°, 540°')],
+      ['Solve ' + m('2 sin x + 1 = 0') + ' in ' + m('[0°, 360°]'), m('210°, 330°')],
+      ['Solve ' + m('sin 2x = 0.5') + ' in ' + m('[0°, 360°]'), m('15°, 75°, 195°, 255°')],
+      ['Range of ' + m('y = 2 cos x + 1'), m('[−1, 3]')],
+      ['Least value of ' + m('y = 3 − 2 sin x'), m('1')],
+      ['Number of solutions of ' + m('tan x = 2') + ' in ' + m('[0°, 720°]'), m('4')],
+      ['Write ' + m('y = cos x') + ' as a shifted sine curve', m('y = sin(x + 90°)')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Sketch the curve for every equation, even when you are sure of the answer.',
+  homework: [
+    'Sketch ' + m('y = sin x') + ' and ' + m('y = cos x') + ' for ' + m('0° ≤ x ≤ 360°') + ' on one pair of axes.',
+    'Solve ' + m('cos x = −0.5') + ' for ' + m('0° ≤ x ≤ 360°') + '.',
+    'State the amplitude and period of ' + m('y = 2 sin 4x') + '.',
+    'How many solutions has ' + m('sin x = 0.8') + ' for ' + m('0° ≤ x ≤ 1080°') + '?',
+    'Give the range of ' + m('y = 3 cos x − 1') + '.'
+  ]
+});
+
+/* ============================== 35 ============================== */
+G9_ALG.push({
+  id: 'a9-35', stream: 'alg', grade: 9, quarter: 3, lessons: '67–68', hours: 2,
+  title: 'Control work 5, and the trigonometry chapter closed',
+  subtitle: 'Identities, addition, double angles and reduction — the whole of Chapter III in one paper.',
+  uz: 'Algebra 9, Nazorat ishi 5', uzPage: 'pp. 114–166',
+  cam: 'IGX 15 review', camPage: 'Core & Extended, pp. 328–382', wb: 'Control paper A5',
+  objectives: [
+    'Use the fundamental relations and a quadrant to find all four functions.',
+    'Apply an addition or double-angle formula accurately under time.',
+    'Reduce an angle to the first quadrant and evaluate it exactly.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Identity', 'Ayniyat', 'Тождество'],
+    ['Addition formula', 'Qo‘shish formulasi', 'Формула сложения'],
+    ['Double angle', 'Ikkilangan burchak', 'Двойной угол'],
+    ['Reduction formula', 'Keltirish formulasi', 'Формула приведения'],
+    ['Exact value', 'Aniq qiymat', 'Точное значение'],
+    ['Sum to product', 'Yig‘indini ko‘paytmaga', 'Сумма в произведение'],
+    ['Revision', 'Takrorlash', 'Повторение']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  sections: [
+    {
+      h: 'The paper — 30 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>${m('cos α = −' + f('3', '5'))}, quadrant II: find ${m('sin α')} and ${m('tan α')}</td><td class="m">5</td><td>L49–50</td></tr>
+        <tr><td>2</td><td>Prove ${m('tan α + cot α = ' + f('1', 'sin α cos α'))}</td><td class="m">5</td><td>L51–52</td></tr>
+        <tr><td>3</td><td>Find ${m('cos 15°')} exactly</td><td class="m">5</td><td>L55–56</td></tr>
+        <tr><td>4</td><td>${m('sin α = ' + f('5', '13'))} (I): find ${m('sin 2α')} and ${m('cos 2α')}</td><td class="m">6</td><td>L59–60</td></tr>
+        <tr><td>5</td><td>Evaluate ${m('sin 225°')} and ${m('cos 750°')}</td><td class="m">5</td><td>L61–62</td></tr>
+        <tr><td>6</td><td>Factorise ${m('sin 5x − sin x')}</td><td class="m">4</td><td>L63–64</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q1 carries two marks for the sign; Q2 one for stating the excluded values; Q3 one for
+      rationalising; Q4 two for choosing the form of ${m('cos 2α')} that needs only ${m('sin α')};
+      Q5 one for stripping the two whole turns before reducing.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>sign left as ${m('±')}</td><td class="m">sin α = ±${f('4', '5')}</td><td>quadrant II ⇒ positive</td></tr>
+        <tr><td>identity proved both ways at once</td><td>cross-multiplying the statement</td><td>start on one side</td></tr>
+        <tr><td>addition formula signs crossed</td><td class="m">cos 15° = cc + ss with a minus</td><td>cosine matches and flips</td></tr>
+        <tr><td>surd not rationalised</td><td class="m">${f('1', '2 + ' + sr('3'))}</td><td>multiply by the conjugate</td></tr>
+        <tr><td>wrong form of ${m('cos 2α')}</td><td>finding ${m('cos α')} unnecessarily</td><td class="m">1 − 2sin²α</td></tr>
+        <tr><td>${m('sin 2α = 2 sin α')}</td><td class="m">${f('10', '13')}</td><td class="m">2 sin α cos α</td></tr>
+        <tr><td>reduction sign from the new function</td><td class="m">cos(${f('π', '2')} + α) = sin α</td><td>ask about cosine, not sine</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'Chapter III as one map',
+      html: `<p>Six boxes, and every arrow is a derivation the class has done:</p>
+      <ul>
+        <li><b>the unit circle</b> → <b>${m('sin²α + cos²α = 1')}</b> — “Pythagoras with hypotenuse 1”</li>
+        <li><b>that identity, divided</b> → <b>${m('1 + tan²α')}</b> and <b>${m('1 + cot²α')}</b></li>
+        <li><b>the addition formulae</b> → <b>${m('tan(α ± β)')}</b> — “divide one by the other”</li>
+        <li><b>${m('β = α')}</b> → <b>the double angle</b> — “and three faces of ${m('cos 2α')}”</li>
+        <li><b>${m('cos 2α')} read backwards</b> → <b>degree lowering</b> — “${m('sin²α = ' + f('1 − cos 2α', '2'))}”</li>
+        <li><b>adding two addition formulae</b> → <b>sum to product</b> — “and hence factorising”</li>
+      </ul>
+      {{fig:unitCircle:One circle; every formula in the chapter is a statement about a point on it.}}
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      Chapter IV changes subject entirely: sequences, arithmetic progressions and their sums. It needs
+      nothing from trigonometry — but the habit of deriving rather than memorising, which this chapter
+      was built to teach, is exactly what makes the progression formulae easy.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q1: ' + m('cos α = −' + f('3', '5')) + ' in quadrant II.',
+      steps: [
+        [m('sin²α = 1 − ' + f('9', '25') + ' = ' + f('16', '25')), ''],
+        [m('sin α = ±' + f('4', '5')), 'The size.'],
+        ['Quadrant II ⇒ ' + m('sin α = ' + f('4', '5')) + '.', 'The sign.'],
+        [m('tan α = ' + f('4/5', '−3/5') + ' = −' + f('4', '3')), '']
+      ],
+      ans: m('sin α = ' + f('4', '5') + ', tan α = −' + f('4', '3'))
+    },
+    {
+      q: 'Model answer, Q3: find ' + m('cos 15°') + '.',
+      steps: [
+        [m('15° = 45° − 30°'), ''],
+        [m('cos 45° cos 30° + sin 45° sin 30°'), 'Match, flip: minus becomes plus.'],
+        [m(f(sr('2'), '2') + ' · ' + f(sr('3'), '2') + ' + ' + f(sr('2'), '2') + ' · ' + f('1', '2')), ''],
+        [m('= ' + f(sr('6') + ' + ' + sr('2'), '4')), '']
+      ],
+      ans: m(f(sr('6') + ' + ' + sr('2'), '4'))
+    },
+    {
+      q: 'Model answer, Q4: ' + m('sin α = ' + f('5', '13')) + ' in quadrant I.',
+      steps: [
+        [m('cos α = ' + f('12', '13')), 'Quadrant I.'],
+        [m('sin 2α = 2 · ' + f('5', '13') + ' · ' + f('12', '13') + ' = ' + f('120', '169')), ''],
+        [m('cos 2α = 1 − 2 · ' + f('25', '169')), 'Only ' + m('sin α') + ' needed.'],
+        [m('= ' + f('119', '169')), '']
+      ],
+      ans: m('sin 2α = ' + f('120', '169') + ', cos 2α = ' + f('119', '169'))
+    }
+  ],
+  modelNote: 'Put a wrong reduction on the board — cos(π/2 + α) = sin α — and let the class find the error by asking the two questions rather than by consulting a table.',
+  interactive: {
+    type: 'quiz',
+    title: 'Chapter III in twelve questions',
+    hint: 'Two from each block.',
+    items: [
+      { q: m('1 + tan²α') + ' equals:', a: [m(f('1', 'sin²α')), m(f('1', 'cos²α')), m('sin²α'), m('1')], c: 1, why: 'Divide by ' + m('cos²α') + '.' },
+      { q: 'To fix a sign you need:', a: ['the identity', 'the quadrant', 'a calculator', 'nothing'], c: 1, why: 'The identity gives only the size.' },
+      { q: 'An identity is proved by working:', a: ['on both sides', 'on one side', 'by testing', 'by cross-multiplying'], c: 1, why: 'A one-way chain.' },
+      { q: m('cos(−α)') + ' equals:', a: [m('cos α'), m('−cos α'), m('sin α'), m('−sin α')], c: 0, why: 'Cosine is even.' },
+      { q: 'The least period of ' + m('tan α') + ':', a: [m(f('π', '2')), m('π'), m('2π'), m('4π')], c: 1, why: 'A half turn.' },
+      { q: m('sin(α + β)') + ' equals:', a: [m('sin α + sin β'), m('sc + cs'), m('cc − ss'), m('2 sin α cos β')], c: 1, why: 'Mix, keep the sign.' },
+      { q: m('cos(α − β)') + ' equals:', a: [m('cc − ss'), m('cc + ss'), m('sc + cs'), m('sc − cs')], c: 1, why: 'Match, flip.' },
+      { q: m('tan(α + β)') + ' has denominator:', a: [m('1 + tan α tan β'), m('1 − tan α tan β'), m('tan α tan β'), m('1')], c: 1, why: 'Signs are crossed.' },
+      { q: m('sin 2α') + ' equals:', a: [m('2 sin α'), m('2 sin α cos α'), m('sin²α'), m('1 − cos 2α')], c: 1, why: 'Set ' + m('β = α') + '.' },
+      { q: m('sin²α') + ' equals:', a: [m(f('1 − cos 2α', '2')), m(f('1 + cos 2α', '2')), m(f('cos 2α', '2')), m('1 − cos 2α')], c: 0, why: 'Degree lowering.' },
+      { q: m('cos(' + f('π', '2') + ' + α)') + ' equals:', a: [m('sin α'), m('−sin α'), m('cos α'), m('−cos α')], c: 1, why: 'Name changes; cosine is negative in II.' },
+      { q: m('cos α − cos β') + ' equals:', a: [m('2 sin ' + f('α + β', '2') + ' sin ' + f('α − β', '2')), m('−2 sin ' + f('α + β', '2') + ' sin ' + f('α − β', '2')), m('2 cos ' + f('α + β', '2') + ' cos ' + f('α − β', '2')), m('cos(α − β)')], c: 1, why: 'The only formula with a minus.' }
+    ]
+  },
+  quiz: [
+    { q: 'Q1 loses marks most often for:', a: ['arithmetic', 'the sign', 'the formula', 'the units'], c: 1, why: 'The quadrant decides it.' },
+    { q: 'Q2 must end with:', a: ['a decimal', 'the excluded values', 'a graph', 'a check'], c: 1, why: 'The restriction is part of the identity.' },
+    { q: 'Q3 must end with:', a: ['a decimal', 'a rationalised surd', 'a fraction', 'a sketch'], c: 1, why: 'An unrationalised answer is unfinished.' },
+    { q: 'The best form of ' + m('cos 2α') + ' in Q4:', a: [m('cos²α − sin²α'), m('1 − 2sin²α'), m('2cos²α − 1'), 'any'], c: 1, why: 'Only ' + m('sin α') + ' is given.' },
+    { q: 'In Q5 the first step is:', a: ['reduce', 'strip whole turns', 'use parity', 'use a calculator'], c: 1, why: m('750° − 720°') + '.' },
+    { q: 'Work on the mistakes means:', a: ['fix the wrong line', 'rewrite the solution', 'copy the answer', 'skip it'], c: 1, why: 'The whole solution, again.' }
+  ],
+  practice: {
+    easy: [
+      [m('cos α = −' + f('3', '5')) + ' (II): ' + m('sin α'), m(f('4', '5'))],
+      ['Same: ' + m('tan α'), m('−' + f('4', '3'))],
+      [m('cos 15°'), m(f(sr('6') + ' + ' + sr('2'), '4'))],
+      [m('sin 225°'), m('−' + f(sr('2'), '2'))],
+      [m('cos 750°'), m(f(sr('3'), '2'))],
+      ['Factorise ' + m('sin 5x − sin x'), m('2 cos 3x sin 2x')],
+      [m('tan α + cot α'), m(f('1', 'sin α cos α'))]
+    ],
+    med: [
+      [m('sin α = ' + f('5', '13')) + ' (I): ' + m('sin 2α'), m(f('120', '169'))],
+      ['Same: ' + m('cos 2α'), m(f('119', '169'))],
+      [m('sin 15°'), m(f(sr('6') + ' − ' + sr('2'), '4'))],
+      [m('tan 15°'), m('2 − ' + sr('3'))],
+      ['Simplify ' + m('sin(π − α) + cos(' + f('π', '2') + ' + α)'), m('0')],
+      ['Simplify ' + m('cos⁴α − sin⁴α'), m('cos 2α')],
+      [m('sin 75° + sin 15°'), m(f(sr('6'), '2'))]
+    ],
+    hard: [
+      ['Prove ' + m(f('sin 2α', '1 + cos 2α') + ' = tan α'), 'Use ' + m('2cos²α')],
+      ['Prove ' + m('sin 3α = 3 sin α − 4 sin³α'), m('3α = 2α + α')],
+      ['Solve ' + m('sin 3x + sin x = 0'), m('x = ' + f('πk', '2'))],
+      [m('tan α = 2') + ': ' + m('tan 2α'), m('−' + f('4', '3'))],
+      ['Simplify ' + m('(sin α + cos α)² + (sin α − cos α)²'), m('2')],
+      [m('sin α + cos α = ' + f('7', '5')) + ': ' + m('sin 2α'), m(f('24', '25'))],
+      ['Prove ' + m('cot α − tan α = 2 cot 2α'), 'Common denominator, then ' + m('sin 2α')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite in full every question that lost a mark before the next chapter begins.',
+  homework: [
+    'Given ' + m('sin α = −' + f('12', '13')) + ' in quadrant III, find ' + m('cos α') + ' and ' + m('tan 2α') + '.',
+    'Find ' + m('sin 105°') + ' exactly.',
+    'Evaluate ' + m('cos 240°') + ' and ' + m('sin 930°') + '.',
+    'Prove ' + m(f('1 − cos 2α', 'sin 2α') + ' = tan α') + '.',
+    'Factorise ' + m('cos 7x + cos 3x') + ' and solve ' + m('cos 7x + cos 3x = 0') + '.'
+  ]
+});
+
+/* ============================== 36 ============================== */
+G9_ALG.push({
+  id: 'a9-36', stream: 'alg', grade: 9, quarter: 3, lessons: '69–71', hours: 3,
+  title: 'Numerical sequences',
+  subtitle: 'A function whose domain is the counting numbers — and the two ways of describing one.',
+  uz: 'Algebra 9, §29', uzPage: 'pp. 167–173',
+  cam: 'IGX 11.1–11.2', camPage: 'Core & Extended, pp. 220–228', wb: 'Exercise 11.1–11.2',
+  objectives: [
+    'Define a sequence and use the notation aₙ for its nth term.',
+    'Describe a sequence by a formula for the nth term and by a recurrence.',
+    'Find any term from either description, and continue a given sequence.',
+    'Recognise increasing, decreasing, bounded and periodic sequences.'
+  ],
+  terms: [
+    ['Sequence', 'Ketma-ketlik', 'Последовательность'],
+    ['Term', 'Had', 'Член'],
+    ['nth term', 'n-had', 'n-й член'],
+    ['General term', 'Umumiy had', 'Общий член'],
+    ['Recurrence relation', 'Rekurrent munosabat', 'Рекуррентное соотношение'],
+    ['Increasing', 'O‘suvchi', 'Возрастающая'],
+    ['Decreasing', 'Kamayuvchi', 'Убывающая'],
+    ['Bounded', 'Chegaralangan', 'Ограниченная']
+  ],
+  timing: [[15, 'What a sequence is'], [30, 'Two descriptions'], [35, 'Finding terms'], [35, 'Behaviour'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'What a sequence is',
+      html: `<p>A <b>numerical sequence</b> is a list of numbers in a fixed order:</p>
+      ${eq(m('a₁, a₂, a₃, …, aₙ, …'), true)}
+      <p>The subscript is the position, so ${m('a₁')} is the first term, ${m('a₅')} the fifth and
+      ${m('aₙ')} the ${m('n')}th. Order matters: ${m('1, 2, 3')} and ${m('3, 2, 1')} are different
+      sequences.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sequence</th><th>First four terms</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>natural numbers</td><td class="m">1, 2, 3, 4</td><td class="m">aₙ = n</td></tr>
+        <tr><td>odd numbers</td><td class="m">1, 3, 5, 7</td><td class="m">aₙ = 2n − 1</td></tr>
+        <tr><td>squares</td><td class="m">1, 4, 9, 16</td><td class="m">aₙ = n²</td></tr>
+        <tr><td>powers of two</td><td class="m">2, 4, 8, 16</td><td class="m">aₙ = 2${p('', 'n')}</td></tr>
+        <tr><td>alternating</td><td class="m">−1, 1, −1, 1</td><td class="m">aₙ = (−1)${p('', 'n')}</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">A sequence is a function</div>
+      ${m('aₙ')} is nothing but ${m('f(n)')} with the domain restricted to ${m('1, 2, 3, …')}. Everything
+      learnt about functions in Chapter I — increasing, decreasing, bounded — applies unchanged, which is
+      why this chapter follows that one.</div>`
+    },
+    {
+      h: 'Two descriptions',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th></th><th>Formula for the ${m('n')}th term</th><th>Recurrence</th></tr></thead>
+      <tbody>
+        <tr><td>looks like</td><td class="m">aₙ = 2n − 1</td><td class="m">a₁ = 1, aₙ₊₁ = aₙ + 2</td></tr>
+        <tr><td>gives ${m('a₁₀₀')}</td><td>at once</td><td>only after ${m('99')} steps</td></tr>
+        <tr><td>shows the pattern</td><td>less clearly</td><td>very clearly</td></tr>
+        <tr><td>needs</td><td>nothing</td><td>a starting value</td></tr>
+      </tbody></table></div>
+      <p>A <b>recurrence relation</b> says how to get from one term to the next; it is useless without
+      the first term. ${m('aₙ₊₁ = aₙ + 2')} describes the odd numbers if ${m('a₁ = 1')} and the even
+      numbers if ${m('a₁ = 2')}.</p>
+      <p>The most famous recurrence needs two starting values:</p>
+      ${eq(m('F₁ = 1, F₂ = 1, Fₙ₊₂ = Fₙ₊₁ + Fₙ') + '  —  ' + m('1, 1, 2, 3, 5, 8, 13, …'), true)}
+      <div class="warn"><span class="wl">Continuing a pattern is a guess, not a definition</span>
+      ${m('1, 2, 4, …')} may be ${m('2')} to a power, or the number of pieces a circle is cut into by
+      ${m('n')} chords — which continues ${m('8, 16, 31')}. Cambridge questions say “the ${m('n')}th
+      term is…” precisely to avoid this. When a question asks you to continue, give the rule you used.</div>`
+    },
+    {
+      h: 'Finding terms',
+      html: `<p>Three standard questions, and how each is done.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Method</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>find ${m('a₇')}</td><td>substitute ${m('n = 7')}</td><td class="m">aₙ = n² − 1 ⇒ a₇ = 48</td></tr>
+        <tr><td>is ${m('50')} a term?</td><td>solve ${m('aₙ = 50')} for ${m('n')}</td><td class="m">n² − 1 = 50 ⇒ n² = 51 — not a whole number, so no</td></tr>
+        <tr><td>which term is ${m('99')}?</td><td>solve and keep ${m('n ∈ ℕ')}</td><td class="m">n² − 1 = 99 ⇒ n = 10</td></tr>
+      </tbody></table></div>
+      <p>The middle row is the one that carries marks: a number belongs to the sequence only if the
+      equation gives a <b>positive whole</b> value of ${m('n')}.</p>
+      {{fig:linearSequence:The terms of a sequence plotted against their position — a set of isolated points, never a curve.}}
+      <div class="warn"><span class="wl">${m('n')} counts, so it is a positive integer</span>
+      ${m('n = 7.2')} or ${m('n = −3')} means the number is not a term. Solving the equation is only
+      half the work; checking that ${m('n')} is admissible is the other half.</div>`
+    },
+    {
+      h: 'Behaviour',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Name</th><th>Means</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>increasing</td><td class="m">aₙ₊₁ > aₙ</td><td class="m">1, 3, 5, 7, …</td></tr>
+        <tr><td>decreasing</td><td class="m">aₙ₊₁ < aₙ</td><td class="m">1, ${f('1', '2')}, ${f('1', '3')}, …</td></tr>
+        <tr><td>bounded above</td><td class="m">aₙ ≤ M</td><td class="m">1 − ${f('1', 'n')} ≤ 1</td></tr>
+        <tr><td>bounded below</td><td class="m">aₙ ≥ m</td><td class="m">n² ≥ 1</td></tr>
+        <tr><td>periodic</td><td>repeats after a fixed number of steps</td><td class="m">1, −1, 1, −1, …</td></tr>
+        <tr><td>constant</td><td class="m">aₙ = c</td><td class="m">5, 5, 5, …</td></tr>
+      </tbody></table></div>
+      <p>To decide between increasing and decreasing, form ${m('aₙ₊₁ − aₙ')} and look at its sign — which
+      is exactly the test used for functions in Chapter I.</p>
+      <div class="keybox"><div class="klabel">Bounded and monotonic together mean something</div>
+      A sequence that increases but never passes a ceiling must settle down towards a value. That idea —
+      the limit — is Grade 11 work, but it is already visible in ${m('1 − ' + f('1', 'n'))}, which climbs
+      forever and never reaches ${m('1')}.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Given ' + m('aₙ = 3n − 2') + ', find ' + m('a₁') + ', ' + m('a₅') + ' and ' + m('a₂₀') + '.',
+      steps: [
+        [m('a₁ = 3 · 1 − 2 = 1'), ''],
+        [m('a₅ = 15 − 2 = 13'), ''],
+        [m('a₂₀ = 60 − 2 = 58'), ''],
+        ['The sequence is ' + m('1, 4, 7, 10, …') + '.', 'Each term is ' + m('3') + ' more.']
+      ],
+      ans: m('1, 13, 58')
+    },
+    {
+      q: 'Is ' + m('100') + ' a term of ' + m('aₙ = n² − 1') + '?',
+      steps: [
+        ['Solve ' + m('n² − 1 = 100') + '.', ''],
+        [m('n² = 101'), ''],
+        [m('n = ' + sr('101') + ' ≈ 10.05') + ' — not a whole number.', ''],
+        ['No: ' + m('100') + ' is not a term.', '']
+      ],
+      ans: 'No'
+    },
+    {
+      q: 'A sequence has ' + m('a₁ = 2') + ' and ' + m('aₙ₊₁ = 2aₙ + 1') + '. Write the first five terms.',
+      steps: [
+        [m('a₂ = 2 · 2 + 1 = 5'), ''],
+        [m('a₃ = 2 · 5 + 1 = 11'), ''],
+        [m('a₄ = 2 · 11 + 1 = 23'), ''],
+        [m('a₅ = 2 · 23 + 1 = 47'), '']
+      ],
+      ans: m('2, 5, 11, 23, 47')
+    }
+  ],
+  modelNote: 'Write 1, 2, 4 on the board and ask for the next term; collect the different answers, then show that all of them can be justified — which is why a rule, not a pattern, defines a sequence.',
+  interactive: {
+    type: 'substitute',
+    title: 'Terms from a formula',
+    hint: 'Change n and watch the term.'
+  },
+  quiz: [
+    { q: m('aₙ') + ' denotes:', a: ['the sum', 'the ' + m('n') + 'th term', 'the number of terms', 'the first term'], c: 1, why: 'The subscript is the position.' },
+    { q: 'A recurrence relation needs:', a: ['nothing extra', 'a starting value', 'a graph', 'a limit'], c: 1, why: 'Otherwise it describes many sequences.' },
+    { q: m('aₙ = 2n − 1') + ' gives ' + m('a₄') + ' =', a: [m('5'), m('7'), m('8'), m('9')], c: 1, why: m('8 − 1') + '.' },
+    { q: m('n') + ' must be:', a: ['any real number', 'a positive integer', 'positive', 'an integer'], c: 1, why: 'It counts positions.' },
+    { q: 'To test increasing, look at:', a: [m('aₙ'), m('aₙ₊₁ − aₙ'), m('a₁'), 'the graph only'], c: 1, why: 'The sign of the difference.' },
+    { q: m('1, −1, 1, −1, …') + ' is:', a: ['increasing', 'decreasing', 'periodic', 'unbounded'], c: 2, why: 'It repeats every two terms.' }
+  ],
+  practice: {
+    easy: [
+      [m('aₙ = 3n − 2') + ': ' + m('a₁'), m('1')],
+      ['Same: ' + m('a₅'), m('13')],
+      [m('aₙ = n²') + ': ' + m('a₆'), m('36')],
+      [m('aₙ = 2') + p('', 'n') + ': ' + m('a₅'), m('32')],
+      [m('aₙ = (−1)') + p('', 'n') + ': ' + m('a₃'), m('−1')],
+      ['Next term of ' + m('2, 5, 8, 11, …'), m('14')],
+      ['Next term of ' + m('1, 4, 9, 16, …'), m('25')]
+    ],
+    med: [
+      [m('aₙ = n² − 1') + ': ' + m('a₇'), m('48')],
+      ['Is ' + m('100') + ' a term of ' + m('aₙ = n² − 1') + '?', 'No'],
+      ['Which term of ' + m('aₙ = n² − 1') + ' is ' + m('99') + '?', 'The 10th'],
+      [m('a₁ = 2, aₙ₊₁ = 2aₙ + 1') + ': first five terms', m('2, 5, 11, 23, 47')],
+      [m('a₁ = 1, a₂ = 1, aₙ₊₂ = aₙ₊₁ + aₙ') + ': ' + m('a₇'), m('13')],
+      ['Formula for ' + m('3, 5, 7, 9, …'), m('aₙ = 2n + 1')],
+      ['Formula for ' + m('1, ' + f('1', '2') + ', ' + f('1', '3') + ', …'), m('aₙ = ' + f('1', 'n'))]
+    ],
+    hard: [
+      ['Is ' + m('aₙ = ' + f('n', 'n + 1')) + ' increasing or decreasing?', 'Increasing'],
+      ['Is it bounded?', 'Yes — between ' + m(f('1', '2')) + ' and ' + m('1')],
+      ['Formula for ' + m('2, 6, 12, 20, 30, …'), m('aₙ = n(n + 1)')],
+      ['Formula for ' + m('1, −2, 3, −4, …'), m('aₙ = (−1)') + p('', 'n+1') + m('n')],
+      ['Which term of ' + m('aₙ = n² + n') + ' equals ' + m('132') + '?', 'The 11th'],
+      ['Show ' + m('aₙ = 1 − ' + f('1', 'n')) + ' never reaches ' + m('1'), m(f('1', 'n') + ' > 0') + ' for all ' + m('n')],
+      ['First term of ' + m('aₙ = n² − 20n') + ' that is positive', m('a₂₁ = 21')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'When you continue a sequence, always state the rule you used.',
+  homework: [
+    'Given ' + m('aₙ = 4n − 3') + ', write the first five terms and find ' + m('a₅₀') + '.',
+    'Is ' + m('81') + ' a term of ' + m('aₙ = 2n + 1') + '? Which one?',
+    'A sequence has ' + m('a₁ = 3') + ' and ' + m('aₙ₊₁ = 3aₙ − 2') + '. Write four terms.',
+    'Find a formula for the ' + m('n') + 'th term of ' + m('5, 8, 11, 14, …') + '.',
+    'Say whether ' + m('aₙ = ' + f('n + 1', 'n')) + ' is increasing or decreasing, and whether it is bounded.'
+  ]
+});
+
+/* ============================== 37 ============================== */
+G9_ALG.push({
+  id: 'a9-37', stream: 'alg', grade: 9, quarter: 3, lessons: '72–74', hours: 3,
+  title: 'The arithmetic progression',
+  subtitle: 'Add the same number every time, and the nth term becomes a straight line in n.',
+  uz: 'Algebra 9, §30', uzPage: 'pp. 174–180',
+  cam: 'IGX 11.3', camPage: 'Core & Extended, pp. 229–234', wb: 'Exercise 11.3',
+  objectives: [
+    'Define an arithmetic progression and find its common difference.',
+    'Use aₙ = a₁ + (n − 1)d in all four directions.',
+    'Use the characteristic property 2aₙ = aₙ₋₁ + aₙ₊₁.',
+    'Insert arithmetic means between two given numbers.'
+  ],
+  terms: [
+    ['Arithmetic progression', 'Arifmetik progressiya', 'Арифметическая прогрессия'],
+    ['Common difference', 'Ayirma', 'Разность'],
+    ['First term', 'Birinchi had', 'Первый член'],
+    ['Characteristic property', 'Xarakteristik xossa', 'Характеристическое свойство'],
+    ['Arithmetic mean', 'O‘rta arifmetik', 'Среднее арифметическое'],
+    ['Insert', 'Qo‘yish', 'Вставить'],
+    ['Finite', 'Chekli', 'Конечная'],
+    ['Infinite', 'Cheksiz', 'Бесконечная']
+  ],
+  timing: [[18, 'The definition'], [32, 'The nth term'], [35, 'The middle-term property'], [30, 'Applications'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The definition',
+      html: `<p>A sequence is an <b>arithmetic progression</b> if each term after the first is obtained by
+      adding the same number ${m('d')}, called the <b>common difference</b>.</p>
+      ${eq(m('aₙ₊₁ = aₙ + d') + '     equivalently     ' + m('d = aₙ₊₁ − aₙ'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Sequence</th><th class="m">a₁</th><th class="m">d</th><th>Behaviour</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3, 7, 11, 15, …</td><td class="m">3</td><td class="m">4</td><td>increasing</td></tr>
+        <tr><td class="m">20, 17, 14, 11, …</td><td class="m">20</td><td class="m">−3</td><td>decreasing</td></tr>
+        <tr><td class="m">5, 5, 5, 5, …</td><td class="m">5</td><td class="m">0</td><td>constant</td></tr>
+        <tr><td class="m">1, 2, 4, 8, …</td><td class="m">1</td><td>—</td><td>not an AP</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Check the difference at least twice</span>
+      ${m('1, 3, 5, 9')} passes the test between the first pair and fails at the last. To prove a
+      sequence is arithmetic you must show ${m('aₙ₊₁ − aₙ')} is the same for <b>every</b> ${m('n')} — in
+      practice, by computing the difference in general, not on two examples.</div>`
+    },
+    {
+      h: 'The nth term',
+      html: `<p>Starting at ${m('a₁')} and adding ${m('d')} a total of ${m('n − 1')} times:</p>
+      ${eq(m('aₙ = a₁ + (n − 1)d'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Find</th><th>How</th></tr></thead>
+      <tbody>
+        <tr><td class="m">a₁, d, n</td><td class="m">aₙ</td><td>substitute</td></tr>
+        <tr><td class="m">a₁, d, aₙ</td><td class="m">n</td><td>solve a linear equation</td></tr>
+        <tr><td class="m">a₁, aₙ, n</td><td class="m">d</td><td class="m">d = ${f('aₙ − a₁', 'n − 1')}</td></tr>
+        <tr><td>two terms</td><td class="m">a₁, d</td><td>two equations, two unknowns</td></tr>
+      </tbody></table></div>
+      <p>The last row is the standard examination question. From ${m('a₃ = 11')} and ${m('a₈ = 31')}:
+      subtracting gives ${m('5d = 20')}, so ${m('d = 4')} and ${m('a₁ = 11 − 2 · 4 = 3')}.</p>
+      <div class="keybox"><div class="klabel">It is a straight line</div>
+      ${m('aₙ = dn + (a₁ − d)')} is linear in ${m('n')}, with gradient ${m('d')}. Plotting the terms gives
+      points on a straight line — which is why the difference of two terms is always a multiple of
+      ${m('d')}, and why ${m('n − 1')}, not ${m('n')}, appears in the formula.</div>`
+    },
+    {
+      h: 'The middle-term property',
+      html: `<p>Every term except the first is the average of its two neighbours:</p>
+      ${eq(m('aₙ = ' + f('aₙ₋₁ + aₙ₊₁', '2')) + '     that is     ' + m('2aₙ = aₙ₋₁ + aₙ₊₁'), true)}
+      <p>This is the <b>characteristic property</b>: a sequence is arithmetic <b>if and only if</b> it
+      holds for every ${m('n > 1')}. It is therefore the standard way to prove that something is an AP,
+      and the standard way to fill a gap.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Question</th><th>Using the property</th></tr></thead>
+      <tbody>
+        <tr><td class="m">7, x, 19</td><td class="m">2x = 26 ⇒ x = 13</td></tr>
+        <tr><td class="m">x, 12, 3x</td><td class="m">24 = x + 3x ⇒ x = 6</td></tr>
+        <tr><td>is ${m('log 2, log 4, log 8')} an AP?</td><td class="m">2 log 4 = log 16 = log 2 + log 8</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Why it is called the arithmetic mean</div>
+      ${m(f('a + b', '2'))} is the arithmetic mean of ${m('a')} and ${m('b')} — the same quantity that
+      appeared in the inequality ${m(f('a + b', '2') + ' ≥ ' + sr('ab'))} last quarter. The progression
+      is named after the mean, not the other way round.</div>`
+    },
+    {
+      h: 'Applications',
+      html: `<p><b>Inserting means.</b> To put ${m('k')} terms between ${m('a')} and ${m('b')} so that the
+      whole list is an AP, there are ${m('k + 1')} steps from ${m('a')} to ${m('b')}, so
+      ${m('d = ' + f('b − a', 'k + 1'))}.</p>
+      <p><b>Counting terms.</b> How many multiples of ${m('7')} lie between ${m('100')} and ${m('500')}?
+      The first is ${m('105')}, the last ${m('497')}, and ${m('497 = 105 + (n − 1) · 7')} gives
+      ${m('n = 57')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Situation</th><th>The AP</th></tr></thead>
+      <tbody>
+        <tr><td>a salary rising by a fixed amount</td><td class="m">a₁ = start, d = rise</td></tr>
+        <tr><td>seats increasing by ${m('2')} per row</td><td class="m">d = 2</td></tr>
+        <tr><td>a stack of logs, one fewer each layer</td><td class="m">d = −1</td></tr>
+        <tr><td>simple interest</td><td>${m('d')} is the annual interest</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('n')} must come out a positive whole number</span>
+      In a counting question a fractional ${m('n')} means the number you chose is not a term of the
+      progression — usually because the first or last term was picked wrongly. Check both ends before
+      dividing.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'In an AP, ' + m('a₃ = 11') + ' and ' + m('a₈ = 31') + '. Find ' + m('a₁') + ', ' + m('d') + ' and ' + m('a₂₀') + '.',
+      steps: [
+        [m('a₈ − a₃ = 5d = 20'), 'Five steps apart.'],
+        [m('d = 4'), ''],
+        [m('a₁ = a₃ − 2d = 11 − 8 = 3'), ''],
+        [m('a₂₀ = 3 + 19 · 4 = 79'), '']
+      ],
+      ans: m('a₁ = 3, d = 4, a₂₀ = 79')
+    },
+    {
+      q: 'How many multiples of ' + m('7') + ' lie between ' + m('100') + ' and ' + m('500') + '?',
+      steps: [
+        ['First: ' + m('105') + '. Last: ' + m('497') + '.', ''],
+        [m('497 = 105 + (n − 1) · 7'), ''],
+        [m('392 = 7(n − 1) ⇒ n − 1 = 56'), ''],
+        [m('n = 57'), '']
+      ],
+      ans: m('57')
+    },
+    {
+      q: 'Insert four numbers between ' + m('2') + ' and ' + m('17') + ' so that all six form an AP.',
+      steps: [
+        ['There are ' + m('5') + ' steps from ' + m('2') + ' to ' + m('17') + '.', m('k + 1 = 5') + '.'],
+        [m('d = ' + f('15', '5') + ' = 3'), ''],
+        ['The terms: ' + m('2, 5, 8, 11, 14, 17') + '.', ''],
+        ['Check: the difference is ' + m('3') + ' throughout ✓', '']
+      ],
+      ans: m('5, 8, 11, 14')
+    }
+  ],
+  modelNote: 'Ask why the formula has n − 1 rather than n; getting the class to count the steps from a₁ to a₄ on their fingers prevents the commonest error of the whole chapter.',
+  interactive: {
+    type: 'substitute',
+    title: 'a₁, d and the nth term',
+    hint: 'Change d and watch the straight line tilt.'
+  },
+  quiz: [
+    { q: 'In an AP, ' + m('d') + ' equals:', a: [m('aₙ aₙ₊₁'), m('aₙ₊₁ − aₙ'), m(f('aₙ₊₁', 'aₙ')), m('a₁')], c: 1, why: 'The common difference.' },
+    { q: m('aₙ') + ' equals:', a: [m('a₁ + nd'), m('a₁ + (n − 1)d'), m('a₁ d') + p('', 'n−1'), m('a₁ − nd')], c: 1, why: m('n − 1') + ' steps.' },
+    { q: m('3, 7, 11, …') + ' has ' + m('a₁₀') + ' =', a: [m('39'), m('40'), m('43'), m('47')], c: 0, why: m('3 + 9 · 4') + '.' },
+    { q: 'The characteristic property is:', a: [m('aₙ² = aₙ₋₁ aₙ₊₁'), m('2aₙ = aₙ₋₁ + aₙ₊₁'), m('aₙ = a₁ + d'), m('aₙ = nd')], c: 1, why: 'Each term is the average of its neighbours.' },
+    { q: 'To insert ' + m('4') + ' terms between ' + m('2') + ' and ' + m('17') + ', ' + m('d') + ' is:', a: [m('3'), m(f('15', '4')), m('4'), m('5')], c: 0, why: 'Five steps.' },
+    { q: m('20, 17, 14, …') + ' is:', a: ['increasing', 'decreasing', 'constant', 'not an AP'], c: 1, why: m('d = −3') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('d') + ' of ' + m('3, 7, 11, …'), m('4')],
+      [m('d') + ' of ' + m('20, 17, 14, …'), m('−3')],
+      [m('a₁ = 5, d = 3') + ': ' + m('a₄'), m('14')],
+      [m('a₁ = 2, d = 6') + ': ' + m('a₁₀'), m('56')],
+      [m('3, 7, 11, …') + ': ' + m('a₁₀'), m('39')],
+      ['Middle term of ' + m('7, x, 19'), m('13')],
+      ['Is ' + m('5, 5, 5, …') + ' an AP?', 'Yes, ' + m('d = 0')]
+    ],
+    med: [
+      [m('a₃ = 11, a₈ = 31') + ': ' + m('d'), m('4')],
+      ['Same: ' + m('a₁'), m('3')],
+      ['Same: ' + m('a₂₀'), m('79')],
+      [m('a₁ = 4, aₙ = 49, d = 5') + ': ' + m('n'), m('10')],
+      ['Insert four numbers between ' + m('2') + ' and ' + m('17'), m('5, 8, 11, 14')],
+      ['Multiples of ' + m('7') + ' between ' + m('100') + ' and ' + m('500'), m('57')],
+      ['Find ' + m('x') + ' if ' + m('x, 12, 3x') + ' is an AP', m('6')]
+    ],
+    hard: [
+      [m('a₅ = 17, a₁₂ = 45') + ': ' + m('a₁'), m('1')],
+      ['Which term of ' + m('7, 11, 15, …') + ' equals ' + m('107') + '?', 'The 26th'],
+      ['Is ' + m('200') + ' a term of ' + m('3, 7, 11, …') + '?', 'No — ' + m('n') + ' is not whole'],
+      ['Three numbers in AP have sum ' + m('21') + ' and product ' + m('231'), m('3, 7, 11')],
+      ['How many two-digit multiples of ' + m('4') + ' are there?', m('22')],
+      ['In an AP, ' + m('a₄ + a₉ = 30') + '. Find ' + m('a₆ + a₇'), m('30')],
+      ['Prove ' + m('log 2, log 4, log 8') + ' is an AP', m('2 log 4 = log 2 + log 8')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write ' + m('a₁') + ' and ' + m('d') + ' at the top of every solution before doing anything else.',
+  homework: [
+    'In an AP, ' + m('a₁ = 6') + ' and ' + m('d = 5') + '. Find ' + m('a₁₅') + ' and say which term equals ' + m('106') + '.',
+    'Given ' + m('a₄ = 14') + ' and ' + m('a₉ = 34') + ', find ' + m('a₁') + ' and ' + m('d') + '.',
+    'Insert three numbers between ' + m('4') + ' and ' + m('24') + ' to make an AP.',
+    'How many multiples of ' + m('6') + ' lie between ' + m('50') + ' and ' + m('400') + '?',
+    'Find ' + m('x') + ' if ' + m('2x − 1, x + 4, 3x + 1') + ' form an AP.'
+  ]
+});
+
+/* ============================== 38 ============================== */
+G9_ALG.push({
+  id: 'a9-38', stream: 'alg', grade: 9, quarter: 3, lessons: '75–76', hours: 2,
+  title: 'The sum of the first n terms of an arithmetic progression',
+  subtitle: 'Gauss pairs the ends, and a sum of a hundred terms becomes one multiplication.',
+  uz: 'Algebra 9, §31', uzPage: 'pp. 181–187',
+  cam: 'IGX 11.4', camPage: 'Core & Extended, pp. 235–240', wb: 'Exercise 11.4',
+  objectives: [
+    'Derive Sₙ = n(a₁ + aₙ)/2 by writing the sum forwards and backwards.',
+    'Use both forms of the formula and choose the right one.',
+    'Solve for n when the sum is given, rejecting inadmissible roots.',
+    'Apply the formula to counting and word problems.'
+  ],
+  terms: [
+    ['Sum of n terms', 'n ta hadning yig‘indisi', 'Сумма n членов'],
+    ['Partial sum', 'Qismiy yig‘indi', 'Частичная сумма'],
+    ['Pairing', 'Juftlash', 'Разбиение на пары'],
+    ['Quadratic in n', 'n ga nisbatan kvadrat', 'Квадратное относительно n'],
+    ['Admissible root', 'Joiz ildiz', 'Допустимый корень'],
+    ['Reject', 'Rad etish', 'Отбросить'],
+    ['Word problem', 'Matnli masala', 'Текстовая задача'],
+    ['Total', 'Jami', 'Итого']
+  ],
+  timing: [[20, 'Gauss’s trick'], [25, 'Two forms'], [30, 'Solving for n'], [20, 'Word problems'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Gauss’s trick',
+      html: `<p>Write the sum forwards, and underneath it the same sum backwards:</p>
+      ${eq(m('Sₙ = a₁ + a₂ + … + aₙ₋₁ + aₙ'), false)}
+      ${eq(m('Sₙ = aₙ + aₙ₋₁ + … + a₂ + a₁'), false)}
+      <p>Add the two lines column by column. In an AP each column has the same total, because going one
+      step forward in the top row is matched by one step back in the bottom one:</p>
+      ${eq(m('2Sₙ = n(a₁ + aₙ)') + '  ⟹  ' + m('Sₙ = ' + f('n(a₁ + aₙ)', '2')), true)}
+      <div class="keybox"><div class="klabel">The schoolboy and the hundred numbers</div>
+      The story that Gauss summed ${m('1')} to ${m('100')} in seconds by pairing ${m('1 + 100')},
+      ${m('2 + 99')}, … is exactly this proof: fifty pairs, each worth ${m('101')}, giving ${m('5050')}.
+      The formula above is that idea written for any progression.</div>`
+    },
+    {
+      h: 'Two forms',
+      html: `<p>Substituting ${m('aₙ = a₁ + (n − 1)d')} into the first form gives the second:</p>
+      ${eq(m('Sₙ = ' + f('n(a₁ + aₙ)', '2')) + '     ' + m('Sₙ = ' + f('n[2a₁ + (n − 1)d]', '2')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Use the first when</th><th>Use the second when</th></tr></thead>
+      <tbody>
+        <tr><td>the last term is given</td><td>the common difference is given</td></tr>
+        <tr><td>the ends are known</td><td>only the start and the step are known</td></tr>
+        <tr><td>counting a finished list</td><td>${m('n')} is the unknown</td></tr>
+      </tbody></table></div>
+      <p><b>Example.</b> ${m('a₁ = 3')}, ${m('d = 4')}, ${m('n = 20')}. The second form gives
+      ${m('S₂₀ = ' + f('20(6 + 19 · 4)', '2') + ' = 10 · 82 = 820')}.</p>
+      <div class="warn"><span class="wl">Do not mix the two forms</span>
+      ${m(f('n(2a₁ + aₙ)', '2'))} is neither of them and is always wrong. Decide which form you are
+      using, write it out in full, and only then substitute.</div>`
+    },
+    {
+      h: 'Solving for n',
+      html: `<p>The second form is a <b>quadratic in ${m('n')}</b>, so a question that gives ${m('Sₙ')}
+      and asks for ${m('n')} produces a quadratic equation — and Chapter I comes back into use.</p>
+      <p><b>Example.</b> ${m('a₁ = 3')}, ${m('d = 4')}, ${m('Sₙ = 210')}. Then</p>
+      ${eq(m(f('n[6 + 4(n − 1)]', '2') + ' = 210') + '  ⟹  ' + m('n(4n + 2) = 420') + '  ⟹  ' + m('2n² + n − 210 = 0'), true)}
+      <p>The roots are ${m('n = 10')} and ${m('n = −10.5')}. A number of terms cannot be negative or
+      fractional, so ${m('n = 10')}.</p>
+      <div class="warn"><span class="wl">Rejecting the second root is part of the answer</span>
+      Writing “${m('n = 10')} or ${m('n = −10.5')}” loses a mark. Write ${m('n = 10')}, and one short
+      sentence saying that the other root is rejected because ${m('n')} counts terms.</div>`
+    },
+    {
+      h: 'Word problems',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Problem</th><th>The progression</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>${m('1 + 2 + … + 100')}</td><td class="m">a₁ = 1, aₙ = 100, n = 100</td><td class="m">5050</td></tr>
+        <tr><td>sum of the first ${m('n')} odd numbers</td><td class="m">a₁ = 1, d = 2</td><td class="m">n²</td></tr>
+        <tr><td>a theatre: ${m('20')} seats in row 1, ${m('2')} more each row, ${m('15')} rows</td><td class="m">a₁ = 20, d = 2, n = 15</td><td class="m">510</td></tr>
+        <tr><td>saving ${m('100')} the first month, ${m('50')} more each month, for a year</td><td class="m">a₁ = 100, d = 50, n = 12</td><td class="m">4500</td></tr>
+      </tbody></table></div>
+      <p>The second row is worth remembering on its own: the sum of the first ${m('n')} odd numbers is
+      exactly ${m('n²')}. It is the neatest small theorem in the chapter, and it can be seen at once by
+      arranging counters in a square.</p>
+      <div class="keybox"><div class="klabel">Name ${m('a₁')}, ${m('d')} and ${m('n')} first</div>
+      Almost every word problem in this section is solved the moment those three numbers are written
+      down. Extracting them from the sentence is the whole difficulty; the arithmetic afterwards is
+      one line.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find ' + m('S₂₀') + ' for the AP ' + m('3, 7, 11, …') + '.',
+      steps: [
+        [m('a₁ = 3, d = 4, n = 20'), ''],
+        [m('S₂₀ = ' + f('20[6 + 19 · 4]', '2')), 'The second form.'],
+        [m('= 10 · 82'), ''],
+        [m('= 820'), '']
+      ],
+      ans: m('820')
+    },
+    {
+      q: 'For ' + m('a₁ = 3') + ', ' + m('d = 4') + ', how many terms give a sum of ' + m('210') + '?',
+      steps: [
+        [m(f('n[6 + 4(n − 1)]', '2') + ' = 210'), ''],
+        [m('n(4n + 2) = 420 ⇒ 2n² + n − 210 = 0'), ''],
+        [m('n = 10') + ' or ' + m('n = −10.5') + '.', ''],
+        [m('n = 10') + '; the other root is rejected.', m('n') + ' counts terms.']
+      ],
+      ans: m('n = 10')
+    },
+    {
+      q: 'A theatre has ' + m('20') + ' seats in the first row and ' + m('2') + ' more in each next row. How many seats in ' + m('15') + ' rows?',
+      steps: [
+        [m('a₁ = 20, d = 2, n = 15'), ''],
+        [m('a₁₅ = 20 + 14 · 2 = 48'), ''],
+        [m('S₁₅ = ' + f('15(20 + 48)', '2')), 'The first form.'],
+        [m('= ' + f('15 · 68', '2') + ' = 510'), '']
+      ],
+      ans: m('510') + ' seats'
+    }
+  ],
+  modelNote: 'Ask the class to add 1 to 100 before showing any formula; the pairing they invent is the proof, and they will not forget a formula they built.',
+  interactive: {
+    type: 'substitute',
+    title: 'Sₙ as n grows',
+    hint: 'The sum grows like n², not like n.'
+  },
+  quiz: [
+    { q: m('Sₙ') + ' equals:', a: [m(f('n(a₁ + aₙ)', '2')), m('n(a₁ + aₙ)'), m(f('a₁ + aₙ', '2')), m('naₙ')], c: 0, why: 'Pair the ends.' },
+    { q: 'The other form is:', a: [m(f('n[2a₁ + nd]', '2')), m(f('n[2a₁ + (n − 1)d]', '2')), m(f('n[a₁ + d]', '2')), m('na₁ + d')], c: 1, why: 'Substitute ' + m('aₙ') + '.' },
+    { q: m('1 + 2 + … + 100') + ' equals:', a: [m('5000'), m('5050'), m('5100'), m('10100')], c: 1, why: 'Fifty pairs of ' + m('101') + '.' },
+    { q: 'The sum of the first ' + m('n') + ' odd numbers is:', a: [m('n'), m('n²'), m('2n'), m('n(n+1)')], c: 1, why: 'A square of counters.' },
+    { q: 'Given ' + m('Sₙ') + ', finding ' + m('n') + ' needs:', a: ['a linear equation', 'a quadratic equation', 'a graph', 'a calculator'], c: 1, why: m('Sₙ') + ' is quadratic in ' + m('n') + '.' },
+    { q: 'A negative root for ' + m('n') + ' is:', a: ['kept', 'rejected', 'halved', 'squared'], c: 1, why: m('n') + ' counts terms.' }
+  ],
+  practice: {
+    easy: [
+      [m('S₁₀') + ' of ' + m('1, 2, 3, …'), m('55')],
+      [m('1 + 2 + … + 100'), m('5050')],
+      [m('S₅') + ' of ' + m('2, 5, 8, …'), m('40')],
+      [m('a₁ = 3, d = 4, n = 20') + ': ' + m('S₂₀'), m('820')],
+      ['Sum of the first ' + m('7') + ' odd numbers', m('49')],
+      [m('S₄') + ' of ' + m('10, 8, 6, …'), m('28')],
+      [m('a₁ = 1, aₙ = 19, n = 10') + ': ' + m('Sₙ'), m('100')]
+    ],
+    med: [
+      [m('a₁ = 5, d = 3, n = 12') + ': ' + m('S₁₂'), m('258')],
+      [m('a₁ = 3, d = 4, Sₙ = 210') + ': ' + m('n'), m('10')],
+      ['Sum of all two-digit numbers', m('4905')],
+      ['Sum of multiples of ' + m('7') + ' below ' + m('100'), m('735')],
+      ['A theatre: ' + m('20') + ' seats, ' + m('+2') + ' a row, ' + m('15') + ' rows', m('510')],
+      ['Saving ' + m('100') + ', then ' + m('+50') + ' a month, for ' + m('12') + ' months', m('4500')],
+      [m('S₂₀') + ' of ' + m('50, 47, 44, …'), m('430')]
+    ],
+    hard: [
+      [m('a₃ = 11, a₈ = 31') + ': ' + m('S₁₅'), m('465')],
+      ['How many terms of ' + m('2, 5, 8, …') + ' give a sum of ' + m('155') + '?', m('10')],
+      [m('S₅ = 40') + ' and ' + m('S₁₀ = 155') + ': find ' + m('a₁') + ' and ' + m('d'), m('a₁ = 2, d = 3')],
+      ['Sum of the odd numbers between ' + m('1') + ' and ' + m('99'), m('2500')],
+      ['Prove the sum of the first ' + m('n') + ' odd numbers is ' + m('n²'), m(f('n(1 + 2n − 1)', '2'))],
+      ['A stack: ' + m('30') + ' logs at the bottom, one fewer each layer, ' + m('20') + ' layers', m('410')],
+      ['For which ' + m('n') + ' is ' + m('Sₙ') + ' of ' + m('20, 17, 14, …') + ' greatest?', m('n = 7') + ', ' + m('S₇ = 77')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'State which of the two forms you are using before substituting anything.',
+  homework: [
+    'Find ' + m('S₁₅') + ' for the AP ' + m('4, 9, 14, …') + '.',
+    'Find the sum of all multiples of ' + m('5') + ' between ' + m('1') + ' and ' + m('200') + '.',
+    'For ' + m('a₁ = 2') + ' and ' + m('d = 3') + ', how many terms give a sum of ' + m('155') + '?',
+    'A row of trees: ' + m('12') + ' in the first row, ' + m('3') + ' more in each next, ' + m('10') + ' rows. How many trees?',
+    'Given ' + m('S₄ = 26') + ' and ' + m('S₈ = 100') + ', find ' + m('a₁') + ' and ' + m('d') + '.'
+  ]
+});
+
+/* ============================== 39 ============================== */
+G9_ALG.push({
+  id: 'a9-39', stream: 'alg', grade: 9, quarter: 3, lessons: '77–78', hours: 2,
+  title: 'Control work 6, and the quarter reviewed',
+  subtitle: 'Trigonometric formulae and arithmetic progressions in one paper, before the third quarter closes.',
+  uz: 'Algebra 9, Nazorat ishi 6', uzPage: 'pp. 167–187',
+  cam: 'IGX 11 review', camPage: 'Core & Extended, pp. 220–240', wb: 'Control paper A6',
+  objectives: [
+    'Find a term and a sum of an arithmetic progression under time.',
+    'Solve for n from a given sum, rejecting the inadmissible root.',
+    'Apply a trigonometric formula from Chapter III accurately.',
+    'Classify each lost mark and rewrite the whole solution.'
+  ],
+  terms: [
+    ['Control work', 'Nazorat ishi', 'Контрольная работа'],
+    ['Arithmetic progression', 'Arifmetik progressiya', 'Арифметическая прогрессия'],
+    ['Common difference', 'Ayirma', 'Разность'],
+    ['Sum of n terms', 'n ta hadning yig‘indisi', 'Сумма n членов'],
+    ['Recurrence', 'Rekurrent munosabat', 'Рекуррентное соотношение'],
+    ['Admissible root', 'Joiz ildiz', 'Допустимый корень'],
+    ['Word problem', 'Matnli masala', 'Текстовая задача'],
+    ['Revision', 'Takrorlash', 'Повторение']
+  ],
+  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The quarter']],
+  sections: [
+    {
+      h: 'The paper — 30 marks, 40 minutes',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Write the first four terms of ${m('aₙ = 3n + 1')} and of ${m('a₁ = 2, aₙ₊₁ = 2aₙ − 1')}</td><td class="m">4</td><td>L69–71</td></tr>
+        <tr><td>2</td><td>In an AP, ${m('a₄ = 14')} and ${m('a₉ = 34')}: find ${m('a₁')} and ${m('d')}</td><td class="m">5</td><td>L72–74</td></tr>
+        <tr><td>3</td><td>Find ${m('S₁₅')} for ${m('4, 9, 14, …')}</td><td class="m">5</td><td>L75–76</td></tr>
+        <tr><td>4</td><td>For ${m('a₁ = 2')}, ${m('d = 3')}, find ${m('n')} with ${m('Sₙ = 155')}</td><td class="m">6</td><td>L75–76</td></tr>
+        <tr><td>5</td><td>Evaluate ${m('sin 150° + cos 300°')}</td><td class="m">5</td><td>L61–62</td></tr>
+        <tr><td>6</td><td>${m('sin α = ' + f('3', '5'))} (I): find ${m('sin 2α')}</td><td class="m">5</td><td>L59–60</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Where the marks actually go</div>
+      Q2 carries one mark for using the gap of five steps rather than solving two full equations; Q4 two
+      marks for forming the quadratic and one for rejecting the negative root; Q5 one for stating the
+      reduction used; Q6 one for finding ${m('cos α')} before substituting.</div>`
+    },
+    {
+      h: 'Naming the slip',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Slip</th><th>What it looks like</th><th>The fix</th></tr></thead>
+      <tbody>
+        <tr><td>recurrence applied to ${m('n')} instead of ${m('aₙ')}</td><td class="m">2, 3, 5, 7</td><td class="m">a₄ = 2 · 5 − 1 = 9</td></tr>
+        <tr><td class="m">n</td><td class="m">a₁ + nd</td><td class="m">a₁ + (n − 1)d</td></tr>
+        <tr><td>forms of ${m('Sₙ')} mixed</td><td class="m">${f('n(2a₁ + aₙ)', '2')}</td><td>pick one form and write it out</td></tr>
+        <tr><td>negative root kept</td><td class="m">n = 10 or −10.3</td><td>reject, and say why</td></tr>
+        <tr><td>reduction sign wrong</td><td class="m">cos 300° = −${f('1', '2')}</td><td>quadrant IV: cosine is positive</td></tr>
+        <tr><td class="m">sin 2α = 2 sin α</td><td class="m">${f('6', '5')}</td><td class="m">2 sin α cos α</td></tr>
+        <tr><td>no units or no sentence</td><td class="m">510</td><td>“510 seats”</td></tr>
+      </tbody></table></div>
+      <p>Name the slip in the margin, then rewrite the whole solution — not the wrong line.</p>`
+    },
+    {
+      h: 'The quarter in one page',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Block</th><th>The sentence</th></tr></thead>
+      <tbody>
+        <tr><td>relations</td><td>one function and a quadrant give all four</td></tr>
+        <tr><td>identities</td><td>one side only, and head for sines and cosines</td></tr>
+        <tr><td>parity and period</td><td>strip whole turns, then use ${m('−α')}</td></tr>
+        <tr><td>addition formulae</td><td>sine mixes and keeps the sign; cosine matches and flips it</td></tr>
+        <tr><td>double angle</td><td>set ${m('β = α')}; three faces of ${m('cos 2α')}</td></tr>
+        <tr><td>reduction</td><td>two questions: does the name change, and what is the sign?</td></tr>
+        <tr><td>sum to product</td><td>half-sum and half-difference, so that you can factorise</td></tr>
+        <tr><td>sequences</td><td>a function of ${m('n')}, given by a formula or a recurrence</td></tr>
+        <tr><td>arithmetic progression</td><td class="m">aₙ = a₁ + (n − 1)d</td></tr>
+        <tr><td>its sum</td><td class="m">Sₙ = ${f('n(a₁ + aₙ)', '2')} — pair the ends</td></tr>
+      </tbody></table></div>
+      {{fig:linearSequence:An arithmetic progression plotted: the terms lie on a straight line of gradient d.}}
+      <div class="keybox"><div class="klabel">Looking forward</div>
+      Quarter IV keeps the same shape and changes the operation: the geometric progression multiplies
+      where the arithmetic one adds. Everything — the ${m('n')}th term, the characteristic property, the
+      sum — has a geometric twin, and the last part of the year adds probability.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Model answer, Q2: ' + m('a₄ = 14') + ', ' + m('a₉ = 34') + '.',
+      steps: [
+        [m('a₉ − a₄ = 5d = 20'), 'Five steps apart.'],
+        [m('d = 4'), ''],
+        [m('a₁ = a₄ − 3d = 14 − 12 = 2'), ''],
+        [m('a₁ = 2, d = 4'), '']
+      ],
+      ans: m('a₁ = 2, d = 4')
+    },
+    {
+      q: 'Model answer, Q4: ' + m('a₁ = 2') + ', ' + m('d = 3') + ', ' + m('Sₙ = 155') + '.',
+      steps: [
+        [m(f('n[4 + 3(n − 1)]', '2') + ' = 155'), ''],
+        [m('n(3n + 1) = 310 ⇒ 3n² + n − 310 = 0'), ''],
+        [m('n = 10') + ' or ' + m('n = −' + f('31', '3')) + '.', ''],
+        [m('n = 10') + '; the negative root is rejected.', m('n') + ' counts terms.']
+      ],
+      ans: m('n = 10')
+    },
+    {
+      q: 'Model answer, Q5: evaluate ' + m('sin 150° + cos 300°') + '.',
+      steps: [
+        [m('sin 150° = sin(180° − 30°) = sin 30°'), 'Name stays; quadrant II.'],
+        [m('= ' + f('1', '2')), ''],
+        [m('cos 300° = cos(360° − 60°) = cos 60°'), 'Quadrant IV: cosine positive.'],
+        [m(f('1', '2') + ' + ' + f('1', '2') + ' = 1'), '']
+      ],
+      ans: m('1')
+    }
+  ],
+  modelNote: 'Mark Q4 aloud: read out a solution that keeps both roots, and let the class say what the sentence about n counting terms is worth.',
+  interactive: {
+    type: 'quiz',
+    title: 'Quarter III in twelve questions',
+    hint: 'Trigonometry and progressions, alternating.',
+    items: [
+      { q: m('1 + tan²α') + ' equals:', a: [m(f('1', 'cos²α')), m(f('1', 'sin²α')), m('cos²α'), m('1')], c: 0, why: 'Divide the first relation.' },
+      { q: m('cos(−α)') + ' equals:', a: [m('−cos α'), m('cos α'), m('sin α'), m('−sin α')], c: 1, why: 'Cosine is even.' },
+      { q: m('sin(α − β)') + ' equals:', a: [m('sc + cs'), m('sc − cs'), m('cc − ss'), m('cc + ss')], c: 1, why: 'Mix, keep the sign.' },
+      { q: m('cos 2α') + ' in terms of ' + m('sin α') + ':', a: [m('1 − 2sin²α'), m('2sin²α − 1'), m('1 + 2sin²α'), m('2 − sin²α')], c: 0, why: 'The third face.' },
+      { q: m('sin(π − α)') + ' equals:', a: [m('sin α'), m('−sin α'), m('cos α'), m('−cos α')], c: 0, why: 'Name stays; quadrant II.' },
+      { q: m('sin α + sin β') + ' equals:', a: [m('2 sin ' + f('α + β', '2') + ' cos ' + f('α − β', '2')), m('2 cos ' + f('α + β', '2') + ' sin ' + f('α − β', '2')), m('sin(α + β)'), m('2 sin α sin β')], c: 0, why: 'Sum to product.' },
+      { q: 'A recurrence needs:', a: ['nothing', 'a starting value', 'a limit', 'a graph'], c: 1, why: 'Otherwise it is ambiguous.' },
+      { q: m('aₙ') + ' of an AP equals:', a: [m('a₁ + nd'), m('a₁ + (n − 1)d'), m('a₁ d') + p('', 'n'), m('nd')], c: 1, why: m('n − 1') + ' steps.' },
+      { q: 'The characteristic property of an AP:', a: [m('aₙ² = aₙ₋₁ aₙ₊₁'), m('2aₙ = aₙ₋₁ + aₙ₊₁'), m('aₙ = nd'), m('aₙ = a₁ d')], c: 1, why: 'Each term averages its neighbours.' },
+      { q: m('Sₙ') + ' equals:', a: [m(f('n(a₁ + aₙ)', '2')), m('n(a₁ + aₙ)'), m(f('a₁ + aₙ', '2')), m('n aₙ')], c: 0, why: 'Pair the ends.' },
+      { q: m('1 + 2 + … + 100') + ':', a: [m('5000'), m('5050'), m('5100'), m('10000')], c: 1, why: 'Fifty pairs of ' + m('101') + '.' },
+      { q: 'A fractional root for ' + m('n') + ' is:', a: ['kept', 'rounded', 'rejected', 'doubled'], c: 2, why: m('n') + ' counts terms.' }
+    ]
+  },
+  quiz: [
+    { q: 'In Q2 the fastest route is:', a: ['two full equations', 'the gap of five steps', 'a graph', 'trial and error'], c: 1, why: m('a₉ − a₄ = 5d') + '.' },
+    { q: 'Q4 produces:', a: ['a linear equation', 'a quadratic equation', 'an identity', 'an inequality'], c: 1, why: m('Sₙ') + ' is quadratic in ' + m('n') + '.' },
+    { q: 'The negative root in Q4 is:', a: ['kept', 'rejected with a reason', 'rounded', 'halved'], c: 1, why: 'And the reason carries the mark.' },
+    { q: m('cos 300°') + ' is:', a: ['positive', 'negative', 'zero', 'undefined'], c: 0, why: 'Quadrant IV.' },
+    { q: 'Q6 needs, before substituting:', a: [m('tan α'), m('cos α'), m('cot α'), 'nothing'], c: 1, why: m('sin 2α = 2 sin α cos α') + '.' },
+    { q: 'Work on the mistakes means:', a: ['fix the wrong line', 'rewrite the solution', 'copy the answer', 'skip it'], c: 1, why: 'The whole solution, again.' }
+  ],
+  practice: {
+    easy: [
+      [m('aₙ = 3n + 1') + ': first four terms', m('4, 7, 10, 13')],
+      [m('a₁ = 2, aₙ₊₁ = 2aₙ − 1') + ': first four', m('2, 3, 5, 9')],
+      [m('a₄ = 14, a₉ = 34') + ': ' + m('d'), m('4')],
+      ['Same: ' + m('a₁'), m('2')],
+      [m('S₁₅') + ' of ' + m('4, 9, 14, …'), m('585')],
+      [m('sin 150°'), m(f('1', '2'))],
+      [m('cos 300°'), m(f('1', '2'))]
+    ],
+    med: [
+      [m('a₁ = 2, d = 3, Sₙ = 155') + ': ' + m('n'), m('10')],
+      [m('sin 150° + cos 300°'), m('1')],
+      [m('sin α = ' + f('3', '5')) + ' (I): ' + m('sin 2α'), m(f('24', '25'))],
+      ['Same: ' + m('cos 2α'), m(f('7', '25'))],
+      ['Sum of all two-digit multiples of ' + m('4'), m('1188')],
+      [m('S₁₀') + ' of ' + m('50, 47, 44, …'), m('365')],
+      ['Which term of ' + m('4, 9, 14, …') + ' is ' + m('104') + '?', 'The 21st']
+    ],
+    hard: [
+      [m('S₄ = 26, S₈ = 100') + ': ' + m('a₁') + ' and ' + m('d'), m('a₁ = 2, d = 3')],
+      ['Three numbers in AP: sum ' + m('15') + ', product ' + m('80'), m('2, 5, 8')],
+      ['Evaluate ' + m('sin 225° + cos 315° + tan 135°'), m('−1')],
+      ['Prove ' + m(f('sin 2α', '1 + cos 2α') + ' = tan α'), 'Use ' + m('2cos²α')],
+      ['For which ' + m('n') + ' is ' + m('Sₙ') + ' of ' + m('30, 27, 24, …') + ' greatest?', m('n = 10') + ' or ' + m('11') + ', ' + m('Sₙ = 165')],
+      ['Factorise ' + m('cos 5x + cos x') + ' and solve ' + m('= 0'), m('2 cos 3x cos 2x = 0')],
+      ['Sum of the first ' + m('n') + ' even numbers', m('n(n + 1)')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Rewrite in full every question that lost a mark; the holiday is not the place to leave them.',
+  homework: [
+    'In an AP, ' + m('a₅ = 20') + ' and ' + m('a₁₂ = 48') + '. Find ' + m('a₁') + ', ' + m('d') + ' and ' + m('S₁₂') + '.',
+    'For ' + m('a₁ = 3') + ' and ' + m('d = 5') + ', find ' + m('n') + ' such that ' + m('Sₙ = 255') + '.',
+    'Evaluate ' + m('cos 210° + sin 330°') + '.',
+    'Given ' + m('cos α = ' + f('4', '5')) + ' in quadrant IV, find ' + m('sin 2α') + ' and ' + m('cos 2α') + '.',
+    'Find the sum of all multiples of ' + m('3') + ' between ' + m('1') + ' and ' + m('100') + '.'
+  ]
+});
