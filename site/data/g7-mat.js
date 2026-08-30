@@ -4412,3 +4412,351 @@ G7_MAT.push({
     'Prove that a diagonal of a parallelogram divides it into two congruent triangles.'
   ]
 });
+
+/* ============================== 26 ============================== */
+G7_MAT.push({
+  id: 'g7-26', stream: 'mat', grade: 7, quarter: 2, lessons: '49–50', hours: 2,
+  title: 'Properties of isosceles triangles',
+  subtitle: 'Two equal sides force two equal angles — and one line does the work of three.',
+  uz: 'Matematika 7, §21', uzPage: 'pp. 130–136',
+  cam: 'S8 5.2', camPage: 'Stage 8, pp. 50–53', wb: 'Exercise 5.2',
+  objectives: [
+    'State and prove that the base angles of an isosceles triangle are equal.',
+    'State and use the converse.',
+    'Know that the bisector from the apex is also the median and the altitude.',
+    'Solve numerical problems on isosceles and equilateral triangles.'
+  ],
+  terms: [
+    ['Isosceles triangle', 'Teng yonli uchburchak', 'Равнобедренный треугольник'],
+    ['Lateral side', 'Yon tomon', 'Боковая сторона'],
+    ['Base', 'Asos', 'Основание'],
+    ['Base angle', 'Asosdagi burchak', 'Угол при основании'],
+    ['Apex angle', 'Uchidagi burchak', 'Угол при вершине'],
+    ['Converse', 'Teskari teorema', 'Обратная теорема'],
+    ['Axis of symmetry', 'Simmetriya o‘qi', 'Ось симметрии'],
+    ['Property', 'Xossa', 'Свойство']
+  ],
+  timing: [[15, 'The base angles'], [25, 'The proof'], [25, 'The converse'], [20, 'One line, three roles'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The base angles',
+      html: `${eq('In an isosceles triangle the angles at the base are equal', true)}
+      {{fig:isoscelesTriangle:Two equal sides, two equal base angles — and one axis of symmetry.}}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Name</th><th>In ${m('△ABC')} with ${m('AB = AC')}</th></tr></thead>
+      <tbody>
+        <tr><td>lateral sides</td><td class="m">AB, AC</td></tr>
+        <tr><td>base</td><td class="m">BC</td></tr>
+        <tr><td>base angles</td><td class="m">∠B, ∠C</td></tr>
+        <tr><td>apex angle</td><td class="m">∠A</td></tr>
+      </tbody></table></div>
+      <p>Since the angles add to ${m('180°')}: ${m('∠B = ∠C = ' + f('180° − ∠A', '2'))}, and
+      ${m('∠A = 180° − 2∠B')}.</p>
+      <div class="keybox"><div class="klabel">One angle determines all three</div>
+      Give any one angle of an isosceles triangle — apex or base — and the other two follow at once. That
+      is what makes these questions quick.</div>`
+    },
+    {
+      h: 'The proof',
+      html: `<p>Draw the bisector ${m('AD')} of the apex angle.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td class="m">AB = AC</td><td>given</td></tr>
+        <tr><td class="m">∠BAD = ∠CAD</td><td>${m('AD')} bisects ${m('∠A')}</td></tr>
+        <tr><td class="m">AD = AD</td><td>common</td></tr>
+        <tr><td class="m">△ABD ≡ △ACD</td><td>first criterion</td></tr>
+        <tr><td class="m">∠B = ∠C</td><td>CPCT</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">The auxiliary line is the whole proof</div>
+      Without ${m('AD')} there are no triangles to compare. Drawing the right extra line is the skill
+      this proof teaches, and it recurs throughout the year.</div>`
+    },
+    {
+      h: 'The converse',
+      html: `${eq('If two angles of a triangle are equal, the sides opposite them are equal', true)}
+      <p>So a triangle is isosceles <b>if and only if</b> two of its angles are equal. Either fact may be
+      used to prove the other.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Conclude</th></tr></thead>
+      <tbody>
+        <tr><td class="m">AB = AC</td><td class="m">∠B = ∠C</td></tr>
+        <tr><td class="m">∠B = ∠C</td><td class="m">AB = AC</td></tr>
+        <tr><td>all three sides equal</td><td>all three angles ${m('60°')}</td></tr>
+        <tr><td>all three angles equal</td><td>all three sides equal</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A converse must be proved separately</span>
+      That a statement is true does not make its converse true. Here both directions happen to hold, but
+      each needs its own proof — and in general they can differ.</div>`
+    },
+    {
+      h: 'One line, three roles',
+      html: `${eq('In an isosceles triangle the bisector from the apex is also the median and the altitude to the base', true)}
+      <p>It is also the axis of symmetry of the triangle. Four descriptions of one segment.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>The segment ${m('AD')}</th><th>Because</th></tr></thead>
+      <tbody>
+        <tr><td>bisects ${m('∠A')}</td><td>by construction</td></tr>
+        <tr><td class="m">BD = DC</td><td>CPCT — it is a median</td></tr>
+        <tr><td class="m">AD ⊥ BC</td><td class="m">∠ADB = ∠ADC = 90°</td></tr>
+        <tr><td>is the axis of symmetry</td><td>the two halves are congruent</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Only from the apex</span>
+      The bisector from a <b>base</b> angle is not a median and not an altitude. The property belongs to
+      the apex alone.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'An isosceles triangle has apex angle ' + m('40°') + '. Find the base angles.',
+      steps: [
+        ['The three angles add to ' + m('180°') + '.', ''],
+        [m('180° − 40° = 140°') + ' for the two base angles.', ''],
+        ['They are equal.', ''],
+        [m('70°') + ' each.', '']
+      ],
+      ans: m('70°') + ' each'
+    },
+    {
+      q: 'An isosceles triangle has a base angle of ' + m('72°') + '. Find the apex angle.',
+      steps: [
+        ['Both base angles are ' + m('72°') + '.', ''],
+        [m('72 + 72 = 144'), ''],
+        [m('180 − 144'), ''],
+        [m('= 36°'), '']
+      ],
+      ans: m('36°')
+    },
+    {
+      q: 'In ' + m('△ABC') + ', ' + m('∠B = ∠C = 55°') + ' and ' + m('BC = 12') + '. What can be said about the sides, and about the altitude from ' + m('A') + '?',
+      steps: [
+        ['Equal angles ⇒ equal opposite sides: ' + m('AB = AC') + '.', 'The converse.'],
+        ['So the triangle is isosceles with base ' + m('BC') + '.', ''],
+        ['The altitude from ' + m('A') + ' is also the median.', ''],
+        ['It meets ' + m('BC') + ' at its midpoint, ' + m('6') + ' from each end.', '']
+      ],
+      ans: m('AB = AC') + '; the altitude bisects ' + m('BC')
+    }
+  ],
+  modelNote: 'Fold a paper isosceles triangle along the line from the apex; the two halves coincide, and all four properties of that line appear at once.',
+  interactive: {
+    type: 'triangleAngles',
+    title: 'Isosceles angles',
+    hint: 'Change the apex angle and watch the base angles follow.'
+  },
+  quiz: [
+    { q: 'In an isosceles triangle the equal angles are:', a: ['at the apex', 'at the base', 'all three', 'none'], c: 1, why: 'Opposite the equal sides.' },
+    { q: 'Apex ' + m('40°') + ' gives base angles:', a: [m('40°'), m('70°'), m('140°'), m('100°')], c: 1, why: m(f('140', '2')) + '.' },
+    { q: 'Base angle ' + m('72°') + ' gives apex:', a: [m('36°'), m('72°'), m('108°'), m('144°')], c: 0, why: m('180 − 144') + '.' },
+    { q: 'Two equal angles imply:', a: ['nothing', 'two equal sides', 'a right angle', 'equal areas'], c: 1, why: 'The converse.' },
+    { q: 'The bisector from the apex is also:', a: ['a median only', 'an altitude only', 'both', 'neither'], c: 2, why: 'And the axis of symmetry.' },
+    { q: 'An equilateral triangle has angles:', a: [m('45°'), m('60°'), m('90°'), 'various'], c: 1, why: 'All three equal.' }
+  ],
+  practice: {
+    easy: [
+      ['Apex ' + m('40°') + ': base angles', m('70°')],
+      ['Apex ' + m('90°') + ': base angles', m('45°')],
+      ['Base angle ' + m('72°') + ': apex', m('36°')],
+      ['Base angle ' + m('50°') + ': apex', m('80°')],
+      ['Angles of an equilateral triangle', m('60°')],
+      ['Two equal angles imply', 'Two equal sides'],
+      ['The bisector from the apex is also', 'A median and an altitude']
+    ],
+    med: [
+      ['Apex ' + m('100°') + ': base angles', m('40°')],
+      ['Base angle ' + m('35°') + ': apex', m('110°')],
+      ['An isosceles triangle with a ' + m('90°') + ' apex: base angles', m('45°')],
+      ['An isosceles triangle with a ' + m('90°') + ' base angle: possible?', 'No'],
+      [m('∠B = ∠C = 55°') + ': ' + m('∠A'), m('70°')],
+      ['Perimeter ' + m('26') + ', base ' + m('10') + ': the lateral sides', m('8') + ' each'],
+      ['Perimeter ' + m('30') + ', lateral side ' + m('11') + ': the base', m('8')]
+    ],
+    hard: [
+      ['An isosceles triangle with base ' + m('10') + ' and lateral side ' + m('13') + ': its height', m('12')],
+      ['Its area', m('60')],
+      ['An isosceles triangle in which the apex is twice a base angle', m('90°, 45°, 45°')],
+      ['An isosceles triangle in which a base angle is twice the apex', m('36°, 72°, 72°')],
+      ['An exterior angle at the base of an isosceles triangle is ' + m('130°') + ': the apex', m('80°')],
+      ['Why can an isosceles triangle not have two obtuse angles?', 'The sum would exceed ' + m('180°')],
+      ['A triangle with angles ' + m('x, x, 4x'), m('30°, 30°, 120°')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Say which angle is the apex and which are the base angles before computing.',
+  homework: [
+    'An isosceles triangle has apex angle ' + m('64°') + '. Find the base angles.',
+    'An isosceles triangle has a base angle of ' + m('43°') + '. Find the apex angle.',
+    'An isosceles triangle has perimeter ' + m('34') + ' and base ' + m('12') + '. Find the lateral sides.',
+    'Prove that the base angles of an isosceles triangle are equal.',
+    'An isosceles triangle has base ' + m('16') + ' and lateral side ' + m('17') + '. Find its height and area.'
+  ]
+});
+
+/* ============================== 27 ============================== */
+G7_MAT.push({
+  id: 'g7-27', stream: 'mat', grade: 7, quarter: 2, lessons: '51–52', hours: 2,
+  title: 'The second criterion of congruence of triangles',
+  subtitle: 'A side and the two angles on it — the criterion that surveyors use.',
+  uz: 'Matematika 7, §22', uzPage: 'pp. 137–142',
+  cam: 'S8 5', camPage: 'Stage 8, pp. 48–56', wb: 'Exercise 5.1',
+  objectives: [
+    'State and apply the ASA criterion.',
+    'Recognise when the given side is between the two angles.',
+    'Use the criterion in proofs involving parallel lines.',
+    'Apply it to measuring an inaccessible distance.'
+  ],
+  terms: [
+    ['Second criterion', 'Ikkinchi alomat', 'Второй признак'],
+    ['Two angles and a side', 'Ikki burchak va tomon', 'Два угла и сторона'],
+    ['Adjacent side', 'Yondosh tomon', 'Прилежащая сторона'],
+    ['Angle sum', 'Burchaklar yig‘indisi', 'Сумма углов'],
+    ['Surveying', 'Yer o‘lchash', 'Съёмка местности'],
+    ['Inaccessible', 'Yetib bo‘lmaydigan', 'Недоступный'],
+    ['Alternate angles', 'Ichki almashinuvchi burchaklar', 'Накрест лежащие углы'],
+    ['Proof', 'Isbot', 'Доказательство']
+  ],
+  timing: [[15, 'The criterion'], [25, 'Which side counts'], [25, 'In proofs'], [20, 'Measuring a distance'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'The criterion',
+      html: `${eq('If a side and the two angles on it in one triangle equal a side and the two angles on it in another, the triangles are congruent', true)}
+      ${eq(m('BC = B₁C₁') + ',   ' + m('∠B = ∠B₁') + ',   ' + m('∠C = ∠C₁') + '   ⟹   ' + m('△ABC ≡ △A₁B₁C₁'), true)}
+      <p>The third angle is then equal too, since the angles of a triangle add to ${m('180°')}.</p>
+      <div class="keybox"><div class="klabel">Two angles and <i>any</i> side are enough</div>
+      Because the third angle follows from the angle sum, a side and any two angles determine the
+      triangle — whether the side lies between them or not. That is why the criterion is sometimes
+      written ASA and sometimes AAS.</div>`
+    },
+    {
+      h: 'Which side counts',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Given</th><th>Enough?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">a, ∠B, ∠C</td><td>yes</td><td>the side is between them</td></tr>
+        <tr><td class="m">a, ∠A, ∠B</td><td>yes</td><td>${m('∠C')} follows from the sum</td></tr>
+        <tr><td class="m">∠A, ∠B, ∠C</td><td><b>no</b></td><td>no side fixes the size</td></tr>
+      </tbody></table></div>
+      <p>The middle row is the one that surprises: the side need not be included, because the missing
+      angle is never really missing.</p>
+      <div class="warn"><span class="wl">Three angles fix the shape, never the size</span>
+      Any enlargement of a triangle has the same three angles. At least one length is always
+      needed.</div>`
+    },
+    {
+      h: 'In proofs',
+      html: `<p><b>Problem.</b> ${m('AB ∥ CD')} and ${m('AB = CD')}. Prove ${m('△ABO ≡ △DCO')}, where
+      ${m('O')} is the intersection of ${m('AD')} and ${m('BC')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Statement</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td class="m">AB = CD</td><td>given</td></tr>
+        <tr><td class="m">∠ABO = ∠DCO</td><td>alternate angles, ${m('AB ∥ CD')}</td></tr>
+        <tr><td class="m">∠BAO = ∠CDO</td><td>alternate angles</td></tr>
+        <tr><td class="m">△ABO ≡ △DCO</td><td>second criterion</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Parallel lines are a supply of equal angles</div>
+      Almost every use of the second criterion begins with a pair of parallels. Spotting them turns a
+      hard figure into an easy proof.</div>`
+    },
+    {
+      h: 'Measuring a distance',
+      html: `<p>To measure the width of a river without crossing it:</p>
+      <ol>
+        <li>mark ${m('A')} on one bank and a landmark ${m('B')} on the other;</li>
+        <li>walk along the bank to ${m('C')} and measure ${m('AC')};</li>
+        <li>measure ${m('∠BAC')} and ${m('∠BCA')};</li>
+        <li>construct a triangle with the same side and two angles on level ground, and measure its
+        third side.</li>
+      </ol>
+      <p>By the second criterion the constructed triangle is congruent to the real one, so the measured
+      side <b>is</b> the width of the river.</p>
+      <div class="keybox"><div class="klabel">This is what surveying was, before trigonometry</div>
+      A tape and a protractor, a criterion of congruence, and a drawing on level ground. The method is
+      ancient, exact, and still taught for exactly that reason.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Two triangles have a side of ' + m('7') + ' with angles ' + m('50°') + ' and ' + m('60°') + ' on it. Are they congruent?',
+      steps: [
+        ['A side and the two angles on it.', ''],
+        ['The second criterion applies.', ''],
+        ['The third angle is ' + m('70°') + ' in both.', ''],
+        ['Congruent.', '']
+      ],
+      ans: 'Yes, by ASA'
+    },
+    {
+      q: 'Two triangles have a side of ' + m('7') + ', an angle of ' + m('50°') + ' on it and an angle of ' + m('70°') + ' opposite it. Congruent?',
+      steps: [
+        ['The third angle is ' + m('180 − 50 − 70 = 60°') + '.', ''],
+        ['So all three angles are known in both.', ''],
+        ['With the side of ' + m('7') + ' in the same position, ASA applies.', ''],
+        ['Congruent.', 'The side need not be included.']
+      ],
+      ans: 'Yes'
+    },
+    {
+      q: m('AB ∥ CD') + ' and ' + m('AB = CD') + '. Prove that ' + m('AD') + ' and ' + m('BC') + ' bisect each other.',
+      steps: [
+        ['Alternate angles give ' + m('∠ABO = ∠DCO') + ' and ' + m('∠BAO = ∠CDO') + '.', ''],
+        ['With ' + m('AB = CD') + ', the second criterion gives ' + m('△ABO ≡ △DCO') + '.', ''],
+        ['CPCT: ' + m('AO = DO') + ' and ' + m('BO = CO') + '.', ''],
+        ['So each diagonal is bisected.', '']
+      ],
+      ans: 'Proved'
+    }
+  ],
+  modelNote: 'Measure the width of the corridor from inside the classroom using a tape and a protractor; the construction on paper gives an answer that can then be checked directly.',
+  interactive: {
+    type: 'triangleAngles',
+    title: 'A side and two angles',
+    hint: 'Fix one side and two angles — the triangle is fixed.'
+  },
+  quiz: [
+    { q: 'The second criterion needs:', a: ['three sides', 'a side and two angles', 'two sides and an angle', 'three angles'], c: 1, why: 'ASA.' },
+    { q: 'The third angle:', a: ['must be given', 'follows from the sum', 'is irrelevant', 'is always ' + m('90°')], c: 1, why: m('180°') + ' in total.' },
+    { q: 'Must the side lie between the angles?', a: ['yes', 'no', 'only sometimes', 'it depends on the size'], c: 1, why: 'The third angle is known anyway.' },
+    { q: 'Three angles alone give:', a: ['congruence', 'similarity', 'nothing', 'equal areas'], c: 1, why: 'No size is fixed.' },
+    { q: 'Parallel lines supply:', a: ['equal sides', 'equal angles', 'right angles', 'nothing'], c: 1, why: 'Alternate and corresponding angles.' },
+    { q: 'Surveying a river width uses:', a: ['the first criterion', 'the second criterion', 'the triangle inequality', 'Pythagoras'], c: 1, why: 'A side and two angles.' }
+  ],
+  practice: {
+    easy: [
+      ['The second criterion in letters', m('ASA')],
+      ['A side of ' + m('7') + ' with ' + m('50°') + ' and ' + m('60°') + ' on it: third angle', m('70°')],
+      ['Two triangles with that data', 'Congruent'],
+      ['Three equal angles give', 'Similarity only'],
+      ['Alternate angles come from', 'Parallel lines'],
+      ['Angles ' + m('50°, 70°') + ': the third', m('60°')],
+      ['Is a side always needed?', 'Yes']
+    ],
+    med: [
+      ['A side of ' + m('7') + ', ' + m('50°') + ' on it and ' + m('70°') + ' opposite: congruent?', 'Yes'],
+      [m('AB ∥ CD, AB = CD') + ': which criterion?', 'The second'],
+      ['What follows about ' + m('AO') + ' and ' + m('DO') + '?', 'They are equal'],
+      ['Two triangles with ' + m('∠A = ∠D, ∠B = ∠E, AB = DE'), 'Congruent'],
+      ['Two triangles with ' + m('∠A = ∠D, ∠B = ∠E') + ' only', 'Similar only'],
+      ['Angles ' + m('40°, 40°') + ' with the included side ' + m('9'), 'Congruent to any such triangle'],
+      ['The third angle there', m('100°')]
+    ],
+    hard: [
+      ['Prove that the diagonals of a parallelogram bisect each other', 'ASA with alternate angles'],
+      ['Prove that a point on the bisector of an angle is equidistant from the arms', 'ASA, then CPCT'],
+      ['Prove that the base angles of an isosceles triangle are equal, using ASA', 'Compare the triangle with itself, reversed'],
+      ['A triangle with ' + m('∠A = 3x, ∠B = 2x, ∠C = x'), m('90°, 60°, 30°')],
+      ['Why is ASA enough but SSA not?', 'The third angle is forced; the third side is not'],
+      ['Two triangles share a side and have two pairs of equal angles', 'Congruent'],
+      ['How many measurements are needed to fix a triangle?', 'Three, including at least one length']
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Mark the equal angles and the equal side on the figure before writing the proof.',
+  homework: [
+    'Two triangles have a side of ' + m('9') + ' with angles ' + m('45°') + ' and ' + m('65°') + ' on it. Are they congruent?',
+    'Find the third angle in that triangle.',
+    'Prove that the diagonals of a parallelogram bisect each other.',
+    'Explain why three angles alone do not prove congruence.',
+    'Describe how to measure the width of a river using the second criterion.'
+  ]
+});
