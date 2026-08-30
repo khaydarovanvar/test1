@@ -5919,3 +5919,348 @@ G7_MAT.push({
     'Learn the squares to ' + m('12') + ' and the cubes to ' + m('6') + ', and write them out from memory.'
   ]
 });
+
+/* ============================== 35 ============================== */
+G7_MAT.push({
+  id: 'g7-35', stream: 'mat', grade: 7, quarter: 2, lessons: '63–64', hours: 2,
+  title: 'Properties of powers with a natural exponent',
+  subtitle: 'Five laws — and every one of them is just counting the factors.',
+  uz: 'Matematika 7, §28', uzPage: 'pp. 171–177',
+  cam: 'S8 6.2', camPage: 'Stage 8, pp. 60–65', wb: 'Exercise 6.2',
+  objectives: [
+    'State and prove the laws of indices for natural exponents.',
+    'Multiply and divide powers with the same base.',
+    'Raise a power, a product and a quotient to a power.',
+    'Simplify an expression containing several powers.'
+  ],
+  terms: [
+    ['Law of indices', 'Daraja qonuni', 'Свойство степени'],
+    ['Same base', 'Bir xil asos', 'Одинаковое основание'],
+    ['To multiply powers', 'Darajalarni ko‘paytirish', 'Умножение степеней'],
+    ['To divide powers', 'Darajalarni bo‘lish', 'Деление степеней'],
+    ['Power of a power', 'Daraja darajasi', 'Степень степени'],
+    ['Power of a product', 'Ko‘paytma darajasi', 'Степень произведения'],
+    ['Exponent zero', 'Nolinchi daraja', 'Нулевая степень'],
+    ['Simplify', 'Soddalashtirish', 'Упростить']
+  ],
+  timing: [[15, 'Multiplying and dividing'], [25, 'Powers of powers'], [25, 'Products and quotients'], [20, 'Putting them together'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Multiplying and dividing',
+      html: `${eq(m('aᵐ · aⁿ = a') + p('', 'm+n') + '     ' + m('aᵐ ÷ aⁿ = a') + p('', 'm−n') + '   (' + m('m > n') + ')', true)}
+      <p><b>Why.</b> ${m('a³ · a² = (aaa)(aa) = a⁵')}: the exponents count the factors, and multiplying
+      puts the two lists end to end.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">2³ · 2⁴</td><td class="m">2³⁺⁴</td><td class="m">2⁷ = 128</td></tr>
+        <tr><td class="m">x⁵ · x</td><td class="m">x⁵⁺¹</td><td class="m">x⁶</td></tr>
+        <tr><td class="m">3⁷ ÷ 3⁴</td><td class="m">3⁷⁻⁴</td><td class="m">3³ = 27</td></tr>
+        <tr><td class="m">a⁶ ÷ a⁶</td><td class="m">a⁰</td><td class="m">1</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The bases must be the same</span>
+      ${m('2³ · 3²')} cannot be combined — the laws say nothing about it. Only ${m('2³ · 2²')} becomes
+      ${m('2⁵')}.</div>`
+    },
+    {
+      h: 'Powers of powers',
+      html: `${eq(m('(aᵐ)ⁿ = a') + p('', 'mn'), true)}
+      <p><b>Why.</b> ${m('(a³)² = a³ · a³ = a⁶')}: ${m('n')} copies of ${m('m')} factors is ${m('mn')}
+      factors.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(2³)²</td><td class="m">2⁶ = 64</td></tr>
+        <tr><td class="m">(x⁴)³</td><td class="m">x¹²</td></tr>
+        <tr><td class="m">(a²)⁵</td><td class="m">a¹⁰</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('(a³)² ')} and ${m('a³ · a²')} are different</span>
+      The first is ${m('a⁶')}, the second ${m('a⁵')}. Multiply the exponents for a power of a power; add
+      them for a product.</div>`
+    },
+    {
+      h: 'Products and quotients',
+      html: `${eq(m('(ab)ⁿ = aⁿbⁿ') + '     ' + m('(' + f('a', 'b') + ')ⁿ = ' + f('aⁿ', 'bⁿ')), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(2x)³</td><td class="m">8x³</td></tr>
+        <tr><td class="m">(−3a)²</td><td class="m">9a²</td></tr>
+        <tr><td class="m">(${f('x', '2')})⁴</td><td class="m">${f('x⁴', '16')}</td></tr>
+        <tr><td class="m">(2 × 5)³</td><td class="m">1000</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">There is no such law for a sum</span>
+      ${m('(a + b)² ≠ a² + b²')}. Try ${m('a = b = 1')}: ${m('4 ≠ 2')}. The correct expansion is the
+      subject of Quarter III.</div>`
+    },
+    {
+      h: 'Putting them together',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td class="m">(2x²)³</td><td class="m">2³(x²)³</td><td class="m">8x⁶</td></tr>
+        <tr><td class="m">x⁵ · x³ ÷ x⁶</td><td class="m">x⁸⁻⁶</td><td class="m">x²</td></tr>
+        <tr><td class="m">(a³b)² · a</td><td class="m">a⁶b² · a</td><td class="m">a⁷b²</td></tr>
+        <tr><td class="m">${f('(3a²)³', '9a⁴')}</td><td class="m">${f('27a⁶', '9a⁴')}</td><td class="m">3a²</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Deal with each base separately</div>
+      Collect the numbers, then the ${m('a')}s, then the ${m('b')}s. Trying to do all three at once is
+      where the errors come from.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Simplify ' + m('2³ · 2⁴') + ', ' + m('3⁷ ÷ 3⁴') + ' and ' + m('(2³)²') + '.',
+      steps: [
+        ['Same base, multiply: add the exponents.', ''],
+        [m('2⁷ = 128'), ''],
+        ['Same base, divide: subtract.', m('3³ = 27') + '.'],
+        ['Power of a power: multiply. ' + m('2⁶ = 64') + '.', '']
+      ],
+      ans: m('128, 27, 64')
+    },
+    {
+      q: 'Simplify ' + m('(2x²)³') + '.',
+      steps: [
+        ['Raise each factor: ' + m('2³ · (x²)³') + '.', ''],
+        [m('2³ = 8'), ''],
+        [m('(x²)³ = x⁶'), 'Multiply the exponents.'],
+        [m('= 8x⁶'), '']
+      ],
+      ans: m('8x⁶')
+    },
+    {
+      q: 'Simplify ' + m(f('(3a²)³', '9a⁴')) + '.',
+      steps: [
+        ['Numerator: ' + m('27a⁶') + '.', ''],
+        ['Numbers: ' + m(f('27', '9') + ' = 3') + '.', ''],
+        ['Letters: ' + m('a⁶ ÷ a⁴ = a²') + '.', ''],
+        [m('= 3a²'), '']
+      ],
+      ans: m('3a²')
+    }
+  ],
+  modelNote: 'Write a³ · a² out in full as aaaaa before stating the law; the class sees that the rule is only counting.',
+  interactive: {
+    type: 'rootPower',
+    title: 'Combining powers',
+    hint: 'Add for a product, multiply for a power of a power.'
+  },
+  quiz: [
+    { q: m('aᵐ · aⁿ') + ' equals:', a: [m('a') + p('', 'mn'), m('a') + p('', 'm+n'), m('a') + p('', 'm−n'), m('2a') + p('', 'm')], c: 1, why: 'The factor lists join.' },
+    { q: m('(aᵐ)ⁿ') + ' equals:', a: [m('a') + p('', 'm+n'), m('a') + p('', 'mn'), m('a') + p('', 'm−n'), m('aᵐ')], c: 1, why: m('n') + ' copies of ' + m('m') + ' factors.' },
+    { q: m('3⁷ ÷ 3⁴') + ' equals:', a: [m('3³'), m('3¹¹'), m('3²⁸'), m('1')], c: 0, why: 'Subtract the exponents.' },
+    { q: m('(2x)³') + ' equals:', a: [m('2x³'), m('6x³'), m('8x³'), m('8x')], c: 2, why: 'Both factors are cubed.' },
+    { q: m('(a + b)²') + ' equals:', a: [m('a² + b²'), m('a² + 2ab + b²'), m('2a + 2b'), m('ab')], c: 1, why: 'There is no simple law for sums.' },
+    { q: m('a⁶ ÷ a⁶') + ' equals:', a: [m('0'), m('1'), m('a'), m('a¹²')], c: 1, why: 'Anything over itself.' }
+  ],
+  practice: {
+    easy: [
+      [m('2³ · 2⁴'), m('2⁷')],
+      [m('x⁵ · x'), m('x⁶')],
+      [m('3⁷ ÷ 3⁴'), m('3³')],
+      [m('(2³)²'), m('2⁶')],
+      [m('(x⁴)³'), m('x¹²')],
+      [m('(2x)³'), m('8x³')],
+      [m('a⁶ ÷ a⁶'), m('1')]
+    ],
+    med: [
+      [m('(2x²)³'), m('8x⁶')],
+      [m('(−3a)²'), m('9a²')],
+      [m('(' + f('x', '2') + ')⁴'), m(f('x⁴', '16'))],
+      [m('x⁵ · x³ ÷ x⁶'), m('x²')],
+      [m('(a³b)² · a'), m('a⁷b²')],
+      [m(f('(3a²)³', '9a⁴')), m('3a²')],
+      [m('2³ · 3²'), m('72') + ' — bases differ']
+    ],
+    hard: [
+      [m(f('(2a²b)³', '4a³b')), m('2a³b²')],
+      [m('(x²y³)² · (xy)³'), m('x⁷y⁹')],
+      [m(f('5ⁿ⁺¹', '5ⁿ')), m('5')],
+      [m('(−2a²)³ ÷ (4a³)'), m('−2a³')],
+      ['Is ' + m('(a + b)² = a² + b²') + '?', 'No — try ' + m('a = b = 1')],
+      [m('2¹⁰ ÷ 2⁷'), m('8')],
+      [m('(3x)² · (2x)³'), m('72x⁵')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Deal with the numbers first, then each letter separately.',
+  homework: [
+    'Simplify ' + m('5² · 5³') + ', ' + m('7⁶ ÷ 7⁴') + ' and ' + m('(4²)³') + '.',
+    'Simplify ' + m('(3x³)²') + ' and ' + m('(−2a)⁴') + '.',
+    'Simplify ' + m('y⁷ · y² ÷ y⁵') + '.',
+    'Simplify ' + m(f('(2a³)⁴', '8a⁵')) + '.',
+    'Show with numbers that ' + m('(a + b)² ≠ a² + b²') + '.'
+  ]
+});
+
+/* ============================== 36 ============================== */
+G7_MAT.push({
+  id: 'g7-36', stream: 'mat', grade: 7, quarter: 2, lessons: '65', hours: 1,
+  title: 'The monomial and its standard form',
+  subtitle: 'A number times some letters — the simplest object in algebra.',
+  uz: 'Matematika 7, §29', uzPage: 'pp. 178–181',
+  cam: 'S8 2.1', camPage: 'Stage 8, pp. 12–18', wb: 'Exercise 2.1',
+  objectives: [
+    'Define a monomial and recognise one.',
+    'Write a monomial in standard form.',
+    'Find the coefficient and the degree of a monomial.',
+    'Recognise similar monomials.'
+  ],
+  terms: [
+    ['Monomial', 'Bir had', 'Одночлен'],
+    ['Standard form', 'Standart ko‘rinish', 'Стандартный вид'],
+    ['Coefficient', 'Koeffitsiyent', 'Коэффициент'],
+    ['Degree of a monomial', 'Bir hadning darajasi', 'Степень одночлена'],
+    ['Similar monomials', 'O‘xshash bir hadlar', 'Подобные одночлены'],
+    ['Letter part', 'Harfiy qism', 'Буквенная часть'],
+    ['Alphabetical order', 'Alifbo tartibi', 'Алфавитный порядок'],
+    ['Zero monomial', 'Nol bir had', 'Нулевой одночлен']
+  ],
+  timing: [[10, 'What a monomial is'], [12, 'Standard form'], [12, 'Degree and similarity'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'What a monomial is',
+      html: `<p>A <b>monomial</b> is a product of numbers and letters, with natural-number exponents. No
+      addition, no subtraction and no division by a letter.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Expression</th><th>A monomial?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="m">7a²b</td><td>yes</td><td>a product</td></tr>
+        <tr><td class="m">−x</td><td>yes</td><td class="m">−1 × x</td></tr>
+        <tr><td class="m">5</td><td>yes</td><td>a number alone</td></tr>
+        <tr><td class="m">a + b</td><td>no</td><td>a sum</td></tr>
+        <tr><td class="m">${f('3', 'x')}</td><td>no</td><td>division by a letter</td></tr>
+        <tr><td class="m">${f('x', '3')}</td><td>yes</td><td class="m">${f('1', '3')}x</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">Dividing by a number is allowed; dividing by a letter is not</span>
+      ${m(f('x', '3'))} is the monomial ${m(f('1', '3') + 'x')}; ${m(f('3', 'x'))} is not a monomial at
+      all. The difference matters for everything that follows.</div>`
+    },
+    {
+      h: 'Standard form',
+      html: `<p>A monomial is in <b>standard form</b> when it is written as one number followed by each
+      letter once, in alphabetical order, with its exponent.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>As written</th><th>Standard form</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3a · 4b</td><td class="m">12ab</td></tr>
+        <tr><td class="m">x · 5 · x · y</td><td class="m">5x²y</td></tr>
+        <tr><td class="m">2b · 3a · a</td><td class="m">6a²b</td></tr>
+        <tr><td class="m">−a · a · a · 2</td><td class="m">−2a³</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">Multiply the numbers, collect each letter</div>
+      Two steps, always in that order. The alphabetical order is only a convention, but it makes two
+      monomials easy to compare.</div>`
+    },
+    {
+      h: 'Degree and similarity',
+      html: `<p>The <b>degree</b> of a monomial is the sum of the exponents of its letters. A number
+      alone has degree ${m('0')}.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Monomial</th><th>Coefficient</th><th>Degree</th></tr></thead>
+      <tbody>
+        <tr><td class="m">7a²b</td><td class="m">7</td><td class="m">3</td></tr>
+        <tr><td class="m">−5x³y²</td><td class="m">−5</td><td class="m">5</td></tr>
+        <tr><td class="m">4</td><td class="m">4</td><td class="m">0</td></tr>
+        <tr><td class="m">x</td><td class="m">1</td><td class="m">1</td></tr>
+      </tbody></table></div>
+      <p>Two monomials are <b>similar</b> if their letter parts are identical — same letters, same
+      exponents. Only similar monomials can be added.</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Pair</th><th>Similar?</th></tr></thead>
+      <tbody>
+        <tr><td class="m">3a²b and −7a²b</td><td>yes</td></tr>
+        <tr><td class="m">3a²b and 3ab²</td><td>no</td></tr>
+        <tr><td class="m">5x and 5x²</td><td>no</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('a²b')} and ${m('ab²')} are not similar</span>
+      Both have degree ${m('3')}, but the letters carry different exponents. Similarity is about the
+      letter part, not about the degree.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Write ' + m('2b · 3a · a') + ' in standard form, and give its coefficient and degree.',
+      steps: [
+        ['Numbers: ' + m('2 × 3 = 6') + '.', ''],
+        ['Letters: ' + m('a · a = a²') + ', and one ' + m('b') + '.', ''],
+        [m('6a²b'), 'Alphabetical order.'],
+        ['Coefficient ' + m('6') + ', degree ' + m('2 + 1 = 3') + '.', '']
+      ],
+      ans: m('6a²b') + '; ' + m('6') + ' and ' + m('3')
+    },
+    {
+      q: 'Which of ' + m('7a²b, a + b, ' + f('3', 'x') + ', ' + f('x', '3') + ', 5') + ' are monomials?',
+      steps: [
+        [m('7a²b') + ' — a product ✓', ''],
+        [m('a + b') + ' — a sum ✗', ''],
+        [m(f('3', 'x')) + ' — division by a letter ✗', ''],
+        [m(f('x', '3')) + ' and ' + m('5') + ' ✓', '']
+      ],
+      ans: m('7a²b, ' + f('x', '3') + ', 5')
+    },
+    {
+      q: 'Are ' + m('3a²b') + ' and ' + m('3ab²') + ' similar? And ' + m('3a²b') + ' and ' + m('−7a²b') + '?',
+      steps: [
+        ['Compare the letter parts.', ''],
+        [m('a²b') + ' and ' + m('ab²') + ' differ.', 'Not similar.'],
+        [m('a²b') + ' and ' + m('a²b') + ' agree.', ''],
+        ['Similar — only the coefficients differ.', '']
+      ],
+      ans: 'No; yes'
+    }
+  ],
+  modelNote: 'Write the same monomial six different ways on the board and ask which is “tidiest”; the class defines standard form before it is named.',
+  interactive: {
+    type: 'substitute',
+    title: 'Monomials in standard form',
+    hint: 'Numbers first, then each letter once.'
+  },
+  quiz: [
+    { q: 'Which is a monomial?', a: [m('a + b'), m('7a²b'), m(f('3', 'x')), m('a − 1')], c: 1, why: 'A product only.' },
+    { q: 'Is ' + m(f('x', '3')) + ' a monomial?', a: ['yes', 'no', 'sometimes', 'only if ' + m('x > 0')], c: 0, why: 'It is ' + m(f('1', '3') + 'x') + '.' },
+    { q: 'Standard form of ' + m('2b · 3a · a') + ':', a: [m('6ab²'), m('6a²b'), m('5a²b'), m('6a³')], c: 1, why: 'Multiply, then collect.' },
+    { q: 'The degree of ' + m('−5x³y²') + ':', a: [m('3'), m('2'), m('5'), m('6')], c: 2, why: m('3 + 2') + '.' },
+    { q: 'The degree of ' + m('4') + ':', a: [m('0'), m('1'), m('4'), 'undefined'], c: 0, why: 'No letters.' },
+    { q: 'Are ' + m('3a²b') + ' and ' + m('3ab²') + ' similar?', a: ['yes', 'no', 'sometimes', 'only in degree'], c: 1, why: 'Different letter parts.' }
+  ],
+  practice: {
+    easy: [
+      ['Is ' + m('7a²b') + ' a monomial?', 'Yes'],
+      ['Is ' + m('a + b') + ' a monomial?', 'No'],
+      ['Is ' + m(f('3', 'x')) + ' a monomial?', 'No'],
+      ['Is ' + m('5') + ' a monomial?', 'Yes'],
+      ['Coefficient of ' + m('7a²b'), m('7')],
+      ['Degree of ' + m('7a²b'), m('3')],
+      ['Degree of ' + m('4'), m('0')]
+    ],
+    med: [
+      ['Standard form of ' + m('3a · 4b'), m('12ab')],
+      ['Standard form of ' + m('x · 5 · x · y'), m('5x²y')],
+      ['Standard form of ' + m('2b · 3a · a'), m('6a²b')],
+      ['Coefficient and degree of ' + m('−5x³y²'), m('−5') + ' and ' + m('5')],
+      ['Are ' + m('3a²b') + ' and ' + m('−7a²b') + ' similar?', 'Yes'],
+      ['Are ' + m('5x') + ' and ' + m('5x²') + ' similar?', 'No'],
+      ['Standard form of ' + m('−a · a · a · 2'), m('−2a³')]
+    ],
+    hard: [
+      ['Standard form of ' + m('(2a)³ · 3b'), m('24a³b')],
+      ['Degree of ' + m('(3x²y)²'), m('6')],
+      ['Standard form of ' + m(f('1', '2') + 'x · 4x²y'), m('2x³y')],
+      ['Two similar monomials of degree ' + m('4'), m('3a²b²') + ' and ' + m('−a²b²')],
+      ['Is ' + m('x') + p('', '−1') + ' a monomial?', 'No — the exponent is not natural'],
+      ['Degree of ' + m('7a²b · 3ab³'), m('7')],
+      ['Coefficient of ' + m('−' + f('2x³', '5')), m('−' + f('2', '5'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write every monomial in standard form before giving its coefficient or degree.',
+  homework: [
+    'Which of ' + m('4xy, x + 3, ' + f('5', 'y') + ', −2a³, 7') + ' are monomials?',
+    'Write ' + m('5a · 2b · a') + ' in standard form.',
+    'Give the coefficient and degree of ' + m('−3x²y⁴') + '.',
+    'Are ' + m('4ab²') + ' and ' + m('−ab²') + ' similar? And ' + m('4ab²') + ' and ' + m('4a²b') + '?',
+    'Write ' + m('(3x)² · 2y') + ' in standard form and give its degree.'
+  ]
+});
