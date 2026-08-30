@@ -16277,3 +16277,213 @@ G6_MAT.push({
     'A cyclist rides ' + m('30') + ' km at ' + m('15') + ' km/h and ' + m('30') + ' km at ' + m('10') + '. Find the average speed.'
   ]
 });
+
+/* ============================== 91 ============================== */
+G6_MAT.push({
+  id: 'g6-91', stream: 'mat', grade: 6, quarter: 4, lessons: '199–202', hours: 4,
+  title: 'General revision III — geometry, mensuration and data',
+  subtitle: 'Angles, the circle, areas, solids, and the whole of the data and probability block.',
+  uz: 'Matematika 6, yakuniy takrorlash', uzPage: 'pp. 569–580',
+  cam: 'S7 whole-course review', camPage: 'Stage 7, pp. 40–188', wb: 'Checkpoint practice 3',
+  objectives: [
+    'Find unknown angles at a point, on a line and inside a polygon.',
+    'Find the circumference and the area of a circle and its parts.',
+    'Find areas of compound figures and volumes of prisms.',
+    'Find averages, sector angles and probabilities.'
+  ],
+  terms: [
+    ['Angles on a line', 'Yoyiq burchak', 'Развёрнутый угол'],
+    ['Angles at a point', 'To‘la burchak', 'Полный угол'],
+    ['Circumference', 'Aylana uzunligi', 'Длина окружности'],
+    ['Area of a circle', 'Doira yuzasi', 'Площадь круга'],
+    ['Compound figure', 'Murakkab shakl', 'Составная фигура'],
+    ['Prism', 'Prizma', 'Призма'],
+    ['Sector angle', 'Sektor burchagi', 'Угол сектора'],
+    ['Probability', 'Ehtimollik', 'Вероятность']
+  ],
+  timing: [[30, 'Angles'], [35, 'The circle'], [35, 'Area and compound figures'], [35, 'Solids'], [20, 'Data and probability'], [5, 'Homework']],
+  sections: [
+    {
+      h: 'Angles',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Fact</th><th>Total</th><th>Example</th><th>Unknown</th></tr></thead>
+      <tbody>
+        <tr><td>angles on a straight line</td><td class="m">180°</td><td class="m">55° and x</td><td class="m">125°</td></tr>
+        <tr><td>angles at a point</td><td class="m">360°</td><td class="m">90°, 130° and x</td><td class="m">140°</td></tr>
+        <tr><td>angles of a triangle</td><td class="m">180°</td><td class="m">40°, 65° and x</td><td class="m">75°</td></tr>
+        <tr><td>angles of a quadrilateral</td><td class="m">360°</td><td class="m">100°, 85°, 95° and x</td><td class="m">80°</td></tr>
+        <tr><td>vertically opposite angles</td><td>equal</td><td class="m">x opposite 62°</td><td class="m">62°</td></tr>
+      </tbody></table></div>
+      {{fig:triangleAngleSum:The three angles of a triangle make a straight line}}
+      <div class="keybox"><div class="klabel">An isosceles triangle gives two facts at once</div>
+      Two equal sides mean two equal angles. With an apex of ${m('40°')} the other two share ${m('140°')},
+      so each is ${m('70°')}.</div>`
+    },
+    {
+      h: 'The circle',
+      html: `${eq(m('C = 2πr = πd') + '     and     ' + m('A = πr²'), true)}
+      <div class="tablewrap"><table>
+      <thead><tr><th>Circle</th><th>Circumference</th><th>Area</th></tr></thead>
+      <tbody>
+        <tr><td class="m">r = 5 cm</td><td class="m">31.4 cm</td><td class="m">78.5 cm²</td></tr>
+        <tr><td class="m">r = 10 cm</td><td class="m">62.8 cm</td><td class="m">314 cm²</td></tr>
+        <tr><td class="m">d = 14 cm</td><td>about ${m('44')} cm</td><td>about ${m('154')} cm²</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Part of a circle</th><th>Working</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>perimeter of a semicircle, ${m('r = 5')}</td><td class="m">15.7 + 10</td><td class="m">25.7 cm</td></tr>
+        <tr><td>area of a semicircle, ${m('r = 6')}</td><td class="m">113.04 ÷ 2</td><td class="m">56.52 cm²</td></tr>
+        <tr><td>area of a quarter circle, ${m('r = 4')}</td><td class="m">50.24 ÷ 4</td><td class="m">12.56 cm²</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">The perimeter of a semicircle includes the diameter</span>
+      Half the circumference is only the curve. The straight edge across the bottom is part of the boundary
+      and must be added — ${m('15.7 + 10')}, not ${m('15.7')}.</div>`
+    },
+    {
+      h: 'Area and compound figures',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Figure</th><th>Rule</th><th>Example</th><th>Area</th></tr></thead>
+      <tbody>
+        <tr><td>rectangle</td><td class="m">ab</td><td class="m">12 × 7</td><td class="m">84 cm²</td></tr>
+        <tr><td>triangle</td><td class="m">${f('1', '2')}bh</td><td class="m">base 10, height 6</td><td class="m">30 cm²</td></tr>
+        <tr><td>parallelogram</td><td class="m">bh</td><td class="m">8 × 5</td><td class="m">40 cm²</td></tr>
+        <tr><td>trapezium</td><td class="m">${f('a + b', '2')} · h</td><td class="m">6 and 10, height 4</td><td class="m">32 cm²</td></tr>
+        <tr><td>an L-shape</td><td>subtract the missing corner</td><td class="m">10 × 6 − 4 × 3</td><td class="m">48 cm²</td></tr>
+      </tbody></table></div>
+      {{fig:polygonDecompose:A compound figure cut into pieces whose areas are already known}}
+      <div class="keybox"><div class="klabel">Cut it up, or fill it in</div>
+      Every compound figure is either a sum of simple pieces or a large shape with pieces removed. Draw the
+      cutting lines on the diagram before writing any numbers.</div>`
+    },
+    {
+      h: 'Solids',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Volume</th><th>Surface area</th></tr></thead>
+      <tbody>
+        <tr><td class="m">5 × 4 × 3 cm cuboid</td><td class="m">60 cm³</td><td class="m">94 cm²</td></tr>
+        <tr><td>cube of edge ${m('4')} cm</td><td class="m">64 cm³</td><td class="m">96 cm²</td></tr>
+        <tr><td>prism, cross-section ${m('12')} cm², length ${m('10')} cm</td><td class="m">120 cm³</td><td>—</td></tr>
+        <tr><td>cylinder ${m('r = 5')}, ${m('h = 10')}</td><td class="m">785 cm³</td><td class="m">471 cm²</td></tr>
+      </tbody></table></div>
+      <div class="tablewrap"><table>
+      <thead><tr><th>Solid</th><th>Faces</th><th>Edges</th><th>Vertices</th></tr></thead>
+      <tbody>
+        <tr><td>cube</td><td class="m">6</td><td class="m">12</td><td class="m">8</td></tr>
+        <tr><td>triangular prism</td><td class="m">5</td><td class="m">9</td><td class="m">6</td></tr>
+        <tr><td>square pyramid</td><td class="m">5</td><td class="m">8</td><td class="m">5</td></tr>
+      </tbody></table></div>
+      <div class="keybox"><div class="klabel">One rule covers every prism</div>
+      Volume is the cross-section area times the length, whether the end is a rectangle, a triangle or a
+      circle. Surface area is the total of the pieces of the net.</div>`
+    },
+    {
+      h: 'Data and probability',
+      html: `<div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>Example</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>mean</td><td class="m">2, 5, 5, 6, 12</td><td class="m">6</td></tr>
+        <tr><td>median</td><td>the same set</td><td class="m">5</td></tr>
+        <tr><td>mode and range</td><td>the same set</td><td class="m">5 and 10</td></tr>
+        <tr><td>sector angle</td><td class="m">12 out of 36</td><td class="m">120°</td></tr>
+        <tr><td>reading a sector</td><td class="m">90° of 200 people</td><td class="m">50 people</td></tr>
+        <tr><td>probability</td><td>${m('P(even)')} on one throw of a die</td><td class="m">${f('1', '2')}</td></tr>
+        <tr><td>the complement</td><td>${m('P(not red)')} with ${m('4')} red in ${m('10')}</td><td class="m">${f('3', '5')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">A sector angle needs the total; a probability needs the whole set</span>
+      Both are shares. The commonest lost mark in this block is using the frequency where the total was
+      needed, or the other way round.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'A circle has radius ' + m('6') + ' cm. Find the area of a semicircle on it, taking ' + m('π = 3.14') + '.',
+      steps: [
+        [m('A = 3.14 · 36 = 113.04') + ' cm².', ''],
+        ['Half of that.', ''],
+        [m('56.52') + ' cm².', 'Taking ' + m('π = 3.14') + ' ✓']
+      ],
+      ans: m('56.52') + ' cm²'
+    },
+    {
+      q: 'An L-shape is a ' + m('10') + ' by ' + m('6') + ' cm rectangle with a ' + m('4') + ' by ' + m('3') + ' cm corner removed. Find its area.',
+      steps: [
+        [m('10 · 6 = 60') + ' cm².', ''],
+        [m('4 · 3 = 12') + ' cm² removed.', ''],
+        [m('60 − 12 = 48') + ' cm².', 'Draw the cut before calculating ✓']
+      ],
+      ans: m('48') + ' cm²'
+    },
+    {
+      q: 'A pie chart of ' + m('200') + ' people has a ' + m('90°') + ' sector. How many people, and what percentage?',
+      steps: [
+        [m('90°') + ' is a quarter of the circle.', ''],
+        [m('200 ÷ 4 = 50') + ' people.', ''],
+        [m('90 ÷ 3.6 = 25') + '%.', 'A quarter either way ✓']
+      ],
+      ans: m('50') + ' people, or ' + m('25') + '%'
+    }
+  ],
+  modelNote: 'Set one question from each of the five sections as a timed round; the switching between topics is the part of an annual paper that catches people out.',
+  interactive: {
+    type: 'quiz',
+    title: 'Geometry, mensuration and data in eight questions',
+    hint: 'Write the fact you are using beside every answer.',
+    items: [
+      { q: 'Angles at a point total:', a: [m('90°'), m('180°'), m('270°'), m('360°')], c: 3, why: 'A full turn.' },
+      { q: m('40°, 65°') + ' and ' + m('x') + ' in a triangle gives:', a: [m('65°'), m('75°'), m('85°'), m('105°')], c: 1, why: m('180 − 105') + '.' },
+      { q: 'The circumference of a circle of radius ' + m('5') + ' cm is:', a: [m('15.7'), m('31.4'), m('78.5'), m('10')], c: 1, why: m('2πr') + '.' },
+      { q: 'Its area is:', a: [m('15.7'), m('31.4'), m('78.5'), m('25')], c: 2, why: m('πr²') + '.' },
+      { q: 'The perimeter of a semicircle of radius ' + m('5') + ' cm is:', a: [m('15.7'), m('25.7'), m('31.4'), m('20')], c: 1, why: 'The curve plus the diameter.' },
+      { q: 'A trapezium with parallel sides ' + m('6') + ' and ' + m('10') + ' and height ' + m('4') + ' has area:', a: [m('24'), m('32'), m('40'), m('64')], c: 1, why: m(f('16', '2') + ' · 4') + '.' },
+      { q: 'A cylinder ' + m('r = 5') + ', ' + m('h = 10') + ' holds:', a: [m('157'), m('314'), m('471'), m('785')], c: 3, why: m('78.5 · 10') + '.' },
+      { q: m('P(not red)') + ' with ' + m('4') + ' red in ' + m('10') + ' is:', a: [m(f('2', '5')), m(f('3', '5')), m(f('1', '2')), m(f('6', '4'))], c: 1, why: m('1 − ' + f('2', '5')) + '.' }
+    ]
+  },
+  quiz: [
+    { q: 'Vertically opposite angles are:', a: ['supplementary', 'equal', 'complementary', 'unrelated'], c: 1, why: 'Both make the same straight line.' },
+    { q: 'The area of a circle is:', a: [m('2πr'), m('πr²'), m('πd'), m('2πr²')], c: 1, why: 'Radius squared.' },
+    { q: 'A compound figure is handled by:', a: ['guessing', 'cutting it into known pieces', 'measuring', 'ignoring part of it'], c: 1, why: 'Sum or difference.' },
+    { q: 'The volume of any prism is:', a: ['base area × length', 'all edges multiplied', 'surface × 3', 'base ÷ height'], c: 0, why: 'Layers of the cross-section.' },
+    { q: 'A sector angle is found from:', a: ['the frequency alone', 'the frequency and the total', 'the total alone', 'the mean'], c: 1, why: 'It is a share of ' + m('360°') + '.' },
+    { q: 'A probability of ' + m('1.4') + ' means:', a: ['a likely event', 'a mistake', 'a certain event', 'a percentage'], c: 1, why: 'Nothing lies outside ' + m('0') + ' to ' + m('1') + '.' }
+  ],
+  practice: {
+    easy: [
+      ['Angles on a straight line total', m('180°')],
+      ['Angles at a point total', m('360°')],
+      ['The angles of a triangle total', m('180°')],
+      ['The angles of a quadrilateral total', m('360°')],
+      ['The circumference of a circle of radius ' + m('5') + ' cm', m('31.4') + ' cm'],
+      ['The area of a rectangle ' + m('12') + ' by ' + m('7') + ' cm', m('84') + ' cm²'],
+      ['The mode of ' + m('2, 5, 5, 6, 12'), m('5')]
+    ],
+    med: [
+      [m('55°') + ' and ' + m('x') + ' on a straight line', m('125°')],
+      [m('90°, 130°') + ' and ' + m('x') + ' at a point', m('140°')],
+      [m('40°, 65°') + ' and ' + m('x') + ' in a triangle', m('75°')],
+      ['The area of a circle of radius ' + m('5') + ' cm', m('78.5') + ' cm²'],
+      ['The area of a triangle, base ' + m('10') + ', height ' + m('6'), m('30') + ' cm²'],
+      ['The area of a trapezium, sides ' + m('6') + ' and ' + m('10') + ', height ' + m('4'), m('32') + ' cm²'],
+      [m('12') + ' out of ' + m('36') + ' as a sector angle', m('120°')]
+    ],
+    hard: [
+      ['The base angles of an isosceles triangle with apex ' + m('40°'), m('70°') + ' each'],
+      ['The circumference of a circle of diameter ' + m('14') + ' cm', 'About ' + m('44') + ' cm'],
+      ['The perimeter of a semicircle of radius ' + m('5') + ' cm', m('25.7') + ' cm'],
+      ['The area of a semicircle of radius ' + m('6') + ' cm', m('56.52') + ' cm²'],
+      ['The volume and surface of a cylinder ' + m('r = 5') + ', ' + m('h = 10'), m('785') + ' cm³ and ' + m('471') + ' cm²'],
+      [m('200') + ' people, a sector of ' + m('90°'), m('50') + ' people'],
+      [m('P(not red)') + ' with ' + m('4') + ' red in ' + m('10'), m(f('3', '5'))]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Write the geometric fact or the formula beside every line of working.',
+  homework: [
+    'Find ' + m('x') + ' when ' + m('x') + ', ' + m('70°') + ' and ' + m('45°') + ' are the angles of a triangle, and again when they are angles at a point with ' + m('115°') + '.',
+    'Find the circumference and the area of a circle of radius ' + m('7') + ' cm, taking ' + m('π = 3.14') + '.',
+    'Find the area of an L-shape made from a ' + m('12') + ' by ' + m('8') + ' cm rectangle with a ' + m('5') + ' by ' + m('4') + ' cm corner removed.',
+    'Find the volume and the surface area of a cuboid ' + m('9') + ' cm by ' + m('4') + ' cm by ' + m('3') + ' cm.',
+    'A pie chart of ' + m('45') + ' pupils has a group of ' + m('15') + '. Find the sector angle, and find ' + m('P(odd)') + ' for one throw of a die.'
+  ]
+});
