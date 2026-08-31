@@ -158,6 +158,15 @@ for (const t of all) {
   }
   /* Three of the models read their whole content from spec.items; without it
      they throw on mount and the lesson shows "this model could not start". */
+  /* The evaluator needs something to evaluate; without it the slider moves and
+     nothing happens (and before the model was made tolerant, it threw). */
+  if (t.interactive && t.interactive.type === 'substitute') {
+    if (typeof t.interactive.f !== 'function') issues.push(`${t.id}: substitute needs an f(x)`);
+    if (!t.interactive.expr) issues.push(`${t.id}: substitute needs an expr to show`);
+    if (t.interactive.den && !(t.interactive.bad || []).length) {
+      issues.push(`${t.id}: substitute has a den but no bad values to name`);
+    }
+  }
   if (t.interactive && ['quiz', 'fractionCancel', 'lcdBuilder'].indexOf(t.interactive.type) > -1) {
     const items = t.interactive.items;
     if (!items || !items.length) {

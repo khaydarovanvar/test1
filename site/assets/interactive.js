@@ -486,27 +486,36 @@
   };
 
   /* ============ 9. substitute a value / domain check ============ */
+  /* Substitute a value into an expression and read the result. A `den` is
+     optional: supply one for a fraction, and the model shows the denominator
+     and refuses the values that make it zero. Without one it is simply an
+     evaluator, which is what most topics want. */
   INT.substitute = function (host, opt) {
     opt = opt || {};
-    var body = frame(host, opt.title || 'Try a value of x',
-      'Move x. Where the denominator hits zero the fraction has no value at all.');
+    var lab = opt.label || 'x';
+    var body = frame(host, opt.title || 'Try a value of ' + lab,
+      opt.hint || (opt.den
+        ? 'Move ' + lab + '. Where the denominator hits zero the fraction has no value at all.'
+        : 'Move ' + lab + ' and watch the value follow.'));
     var row = ctrlRow(body);
     var out = el('div', {}); body.appendChild(out);
-    var f = opt.f, den = opt.den, bad = opt.bad || [];
+    var f = opt.f || function () { return 0; };
+    var den = opt.den, bad = opt.bad || [];
     var x = opt.start == null ? 2 : opt.start;
     function render() {
-      var dv = den(x);
+      var dv = den ? den(x) : 1;
       var ok = Math.abs(dv) > 1e-9;
-      out.innerHTML = '<div class="eq boxed">' + opt.expr + '</div>' +
+      out.innerHTML = '<div class="eq boxed">' + (opt.expr || '') + '</div>' +
         '<div class="readout">' +
-        '<div class="rd">x <b>' + r2(x) + '</b></div>' +
-        '<div class="rd">denominator <b>' + r2(dv) + '</b></div>' +
+        '<div class="rd">' + lab + ' <b>' + r2(x) + '</b></div>' +
+        (den ? '<div class="rd">denominator <b>' + r2(dv) + '</b></div>' : '') +
         '<div class="rd">value <b style="color:' + (ok ? 'var(--easy)' : 'var(--hard)') + '">' +
         (ok ? r2(f(x)) : 'undefined') + '</b></div></div>' +
-        (ok ? '' : '<div class="warn"><span class="wl">Not allowed</span>The denominator is 0, so the fraction has no value here. That is why we write x ≠ ' + bad.join(', x ≠ ') + '.</div>');
+        (ok ? (opt.note ? '<p class="small" style="margin:8px 0 0">' + opt.note + '</p>' : '')
+            : '<div class="warn"><span class="wl">Not allowed</span>The denominator is 0, so the fraction has no value here. That is why we write ' + lab + ' \u2260 ' + bad.join(', ' + lab + ' \u2260 ') + '.</div>');
     }
-    slider(row, 'x', opt.min == null ? -6 : opt.min, opt.max == null ? 6 : opt.max, x, 0.5,
-      function (v) { x = v; render(); });
+    slider(row, lab, opt.min == null ? -6 : opt.min, opt.max == null ? 6 : opt.max, x,
+      opt.step == null ? 0.5 : opt.step, function (v) { x = v; render(); });
     render();
   };
 

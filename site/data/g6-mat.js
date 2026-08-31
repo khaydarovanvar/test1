@@ -1074,8 +1074,8 @@ G6_MAT.push({
     hint: 'Slide ' + m('x') + ' and watch the value.',
     expr: m('f(x) = 2x + 1'),
     f: function (x) { return 2 * x + 1; },
-    den: function () { return 1; },
-    start: 2
+    label: 'x', min: -6, max: 6, step: 0.5, start: 2,
+    note: 'Every value of ' + m('x') + ' gives exactly one value of ' + m('2x + 1') + ' — that is all a formula does.'
   },
   quiz: [
     { q: m('3x + 2') + ' at ' + m('x = 4') + ' is:', a: [m('14'), m('18'), m('20'), m('12')], c: 0, why: 'Multiply first.' },

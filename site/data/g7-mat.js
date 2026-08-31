@@ -679,7 +679,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Moving the decimal point',
-    hint: 'Multiply and divide by the same small number and watch it return.'
+    hint: 'Multiply and divide by the same small number and watch it return.',
+    expr: m('x × 0.1 = x ÷ 10'),
+    label: 'x', min: 0, max: 100, step: 0.5, start: 25,
+    f: function (x) { return x * 0.1; },
+    note: 'Multiplying by ' + m('0.1') + ' moves the point one place left; dividing by ' + m('0.1') + ' moves it one place right, back again.'
   },
   quiz: [
     { q: m('× 0.1') + ' moves the point:', a: ['one right', 'one left', 'two right', 'two left'], c: 1, why: 'Same as ' + m('÷ 10') + '.' },
@@ -1037,7 +1041,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Decimal products',
-    hint: 'Count the places in both factors.'
+    hint: 'Count the places in both factors.',
+    expr: m('0.4 × x'),
+    label: 'x', min: 0, max: 10, step: 0.1, start: 2.5,
+    f: function (x) { return 0.4 * x; },
+    note: 'One decimal place in ' + m('0.4') + ' and one in ' + m('x') + ' give two in the product — the digits are the same as ' + m('4 × 25') + '.'
   },
   quiz: [
     { q: 'Which is larger, ' + m('0.7') + ' or ' + m('0.65') + '?', a: [m('0.7'), m('0.65'), 'equal', 'cannot tell'], c: 0, why: 'Tenths first.' },
@@ -2641,7 +2649,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Signs in a product',
-    hint: 'Count the negative factors.'
+    hint: 'Count the negative factors.',
+    expr: m('(−4) × x'),
+    label: 'x', min: -6, max: 6, step: 1, start: 3,
+    f: function (x) { return -4 * x; },
+    note: 'Cross zero and the sign of the answer flips: one negative factor gives a negative, two give a positive.'
   },
   quiz: [
     { q: m('(−4)(−5)') + ' equals:', a: [m('20'), m('−20'), m('9'), m('−9')], c: 0, why: 'Alike signs.' },
@@ -2820,7 +2832,12 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Signs in a quotient',
-    hint: 'Same rules as multiplication.'
+    hint: 'Same rules as multiplication.',
+    expr: m('(−24) ÷ x'),
+    label: 'x', min: -6, max: 6, step: 1, start: 4,
+    f: function (x) { return -24 / x; },
+    den: function (x) { return x; }, bad: ['0'],
+    note: 'The sign rule is the same as for a product — but ' + m('x = 0') + ' is not allowed at all.'
   },
   quiz: [
     { q: m('(−20) ÷ (−5)') + ' equals:', a: [m('4'), m('−4'), m('100'), m('−100')], c: 0, why: 'Alike signs.' },
@@ -2993,7 +3010,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Order of operations with signs',
-    hint: 'Brackets, powers, × ÷, then + −.'
+    hint: 'Brackets, powers, × ÷, then + −.',
+    expr: m('(−2) · x − (−6)'),
+    label: 'x', min: -6, max: 6, step: 1, start: 4,
+    f: function (x) { return -2 * x + 6; },
+    note: 'Multiply first, then subtract — and subtracting ' + m('−6') + ' adds ' + m('6') + '.'
   },
   quiz: [
     { q: m('−5 + 3 × (−4)') + ' equals:', a: [m('8'), m('−17'), m('−32'), m('32')], c: 1, why: 'Multiply first.' },
@@ -5478,7 +5499,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Substituting values',
-    hint: 'Put every negative value in brackets.'
+    hint: 'Put every negative value in brackets.',
+    expr: m('3x² − 5x + 2'),
+    label: 'x', min: -4, max: 4, step: 0.5, start: 2,
+    f: function (x) { return 3 * x * x - 5 * x + 2; },
+    note: 'At ' + m('x = 1') + ' the value is zero; everywhere else the letter is just a number waiting to be put in.'
   },
   quiz: [
     { q: '“Five less than ' + m('x') + '” is:', a: [m('5 − x'), m('x − 5'), m('5x'), m(f('x', '5'))], c: 1, why: 'Start from ' + m('x') + '.' },
@@ -5639,7 +5664,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Removing brackets',
-    hint: 'Check your answer numerically.'
+    hint: 'Check your answer numerically.',
+    expr: m('5 − (2x − 3)') + ' = ' + m('8 − 2x'),
+    label: 'x', min: -5, max: 6, step: 0.5, start: 2,
+    f: function (x) { return 8 - 2 * x; },
+    note: 'The minus in front changes both signs inside. Substitute any value into either form and the two agree.'
   },
   quiz: [
     { q: m('5 − (x − 3)') + ' equals:', a: [m('5 − x − 3'), m('5 − x + 3'), m('5 + x − 3'), m('5 + x + 3')], c: 1, why: 'Every sign changes.' },
@@ -6317,7 +6346,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Monomials in standard form',
-    hint: 'Numbers first, then each letter once.'
+    hint: 'Numbers first, then each letter once.',
+    expr: m('(−3x²)(2x³)') + ' = ' + m('−6x⁵'),
+    label: 'x', min: -3, max: 3, step: 0.5, start: 2,
+    f: function (x) { return -6 * Math.pow(x, 5); },
+    note: 'Coefficients multiply, exponents add — and the standard form is the one number followed by the letters.'
   },
   quiz: [
     { q: 'Which is a monomial?', a: [m('a + b'), m('7a²b'), m(f('3', 'x')), m('a − 1')], c: 1, why: 'A product only.' },
@@ -6651,7 +6684,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Evaluating a polynomial',
-    hint: 'Try values that make it zero.'
+    hint: 'Try values that make it zero.',
+    expr: m('2x³ − 5x² + 3x − 7'),
+    label: 'x', min: -3, max: 4, step: 0.5, start: 2,
+    f: function (x) { return 2 * x * x * x - 5 * x * x + 3 * x - 7; },
+    note: 'A polynomial is a machine: put a number in, get a number out. Nothing else about it changes.'
   },
   quiz: [
     { q: 'A polynomial is:', a: ['a product of monomials', 'a sum of monomials', 'a fraction', 'an equation'], c: 1, why: 'Terms added.' },
@@ -6997,7 +7034,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Checking a simplification',
-    hint: 'Substitute x = 1 into both forms.'
+    hint: 'Substitute x = 1 into both forms.',
+    expr: m('(3x² − 2x + 1) − (x² − 5x + 4)') + ' = ' + m('2x² + 3x − 3'),
+    label: 'x', min: -4, max: 4, step: 0.5, start: 2,
+    f: function (x) { return 2 * x * x + 3 * x - 3; },
+    note: 'Both forms give the same value at every ' + m('x') + '. That is what makes the simplification correct — and it is how to check one.'
   },
   quiz: [
     { q: 'A plus before a bracket:', a: ['changes all signs', 'changes none', 'changes the first', 'removes the terms'], c: 1, why: 'Nothing happens.' },

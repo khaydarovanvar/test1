@@ -3177,7 +3177,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'Test a claim, then prove it',
-    hint: 'Testing values can only disprove; the algebra proves.'
+    hint: 'Testing values can only disprove; the algebra proves.',
+    expr: m('x² − 2x + 3'),
+    label: 'x', min: -4, max: 6, step: 0.5, start: 1,
+    f: function (x) { return x * x - 2 * x + 3; },
+    note: 'It never drops below ' + m('2') + ', reached at ' + m('x = 1') + '. Testing values can only disprove; ' + m('(x − 1)² + 2') + ' proves it.'
   },
   quiz: [
     { q: 'To prove ' + m('A ≥ B') + ' you show:', a: [m('A − B ≥ 0'), m('A > 0'), m('B < 0'), 'one value works'], c: 0, why: 'One side, one sign.' },
@@ -4776,7 +4780,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'Test, then prove',
-    hint: 'A value that works is evidence; the algebra is the proof.'
+    hint: 'A value that works is evidence; the algebra is the proof.',
+    expr: m('sin²x + cos²x'),
+    label: 'x°', min: 0, max: 360, step: 15, start: 30,
+    f: function (x) { var r = x * Math.PI / 180; return Math.sin(r) * Math.sin(r) + Math.cos(r) * Math.cos(r); },
+    note: 'Always ' + m('1') + ', at every angle. Testing shows it; Pythagoras on the unit circle proves it.'
   },
   quiz: [
     { q: 'To prove an identity you work:', a: ['on both sides', 'on one side', 'by cross-multiplying', 'by testing values'], c: 1, why: 'A one-way chain is valid.' },
@@ -5293,7 +5301,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'Two tangents, one angle',
-    hint: 'Watch the denominator as the two angles approach 90° together.'
+    hint: 'Watch the denominator as the two angles approach 90° together.',
+    expr: m('tan(45° + x°)'),
+    label: 'x°', min: -40, max: 40, step: 5, start: 15,
+    f: function (x) { return Math.tan((45 + x) * Math.PI / 180); },
+    note: 'Compare it with the addition formula ' + m(f('1 + tan x°', '1 − tan x°')) + ' — that is where this curve comes from.'
   },
   quiz: [
     { q: m('tan(α + β)') + ' equals:', a: [m(f('tan α + tan β', '1 + tan α tan β')), m(f('tan α + tan β', '1 − tan α tan β')), m('tan α + tan β'), m(f('1', 'tan α tan β'))], c: 1, why: 'Signs are crossed.' },
@@ -6363,7 +6375,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'Terms from a formula',
-    hint: 'Change n and watch the term.'
+    hint: 'Change n and watch the term.',
+    expr: m('aₙ = n² − 3n + 4'),
+    label: 'n', min: 1, max: 20, step: 1, start: 1,
+    f: function (n) { return n * n - 3 * n + 4; },
+    note: 'The domain is the counting numbers, so only whole ' + m('n') + ' has a term. The first four are ' + m('2, 2, 4, 8') + '.'
   },
   quiz: [
     { q: m('aₙ') + ' denotes:', a: ['the sum', 'the ' + m('n') + 'th term', 'the number of terms', 'the first term'], c: 1, why: 'The subscript is the position.' },
@@ -6552,7 +6568,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'a₁, d and the nth term',
-    hint: 'Change d and watch the straight line tilt.'
+    hint: 'Change d and watch the straight line tilt.',
+    expr: m('aₙ = 5 + 3(n − 1)'),
+    label: 'n', min: 1, max: 30, step: 1, start: 1,
+    f: function (n) { return 5 + 3 * (n - 1); },
+    note: 'A straight line in ' + m('n') + ': the first term is ' + m('5') + ' and every step adds ' + m('3') + '.'
   },
   quiz: [
     { q: 'In an AP, ' + m('d') + ' equals:', a: [m('aₙ aₙ₊₁'), m('aₙ₊₁ − aₙ'), m(f('aₙ₊₁', 'aₙ')), m('a₁')], c: 1, why: 'The common difference.' },
@@ -6724,7 +6744,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'Sₙ as n grows',
-    hint: 'The sum grows like n², not like n.'
+    hint: 'The sum grows like n², not like n.',
+    expr: m('Sₙ = ' + f('n(7 + 3n)', '2')),
+    label: 'n', min: 1, max: 30, step: 1, start: 1,
+    f: function (n) { return n * (7 + 3 * n) / 2; },
+    note: 'The sum of ' + m('5, 8, 11, …') + '. It grows like ' + m('n²') + ', not like ' + m('n') + ' — doubling ' + m('n') + ' roughly quadruples the sum.'
   },
   quiz: [
     { q: m('Sₙ') + ' equals:', a: [m(f('n(a₁ + aₙ)', '2')), m('n(a₁ + aₙ)'), m(f('a₁ + aₙ', '2')), m('naₙ')], c: 0, why: 'Pair the ends.' },
@@ -7093,7 +7117,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'b₁ and q',
-    hint: 'Make q slightly greater than 1 and watch the tenth term.'
+    hint: 'Make q slightly greater than 1 and watch the tenth term.',
+    expr: m('bₙ = 3 · 2ⁿ⁻¹'),
+    label: 'n', min: 1, max: 15, step: 1, start: 1,
+    f: function (n) { return 3 * Math.pow(2, n - 1); },
+    note: 'By the tenth term it has passed ' + m('1500') + '. That is the difference between adding and multiplying each time.'
   },
   quiz: [
     { q: 'In a GP, ' + m('q') + ' equals:', a: [m('bₙ₊₁ − bₙ'), m(f('bₙ₊₁', 'bₙ')), m('bₙ bₙ₊₁'), m('b₁')], c: 1, why: 'The common ratio.' },
@@ -7264,7 +7292,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'Sₙ of a GP',
-    hint: 'Compare the sum with the last term — for large q they are almost equal.'
+    hint: 'Compare the sum with the last term — for large q they are almost equal.',
+    expr: m('Sₙ = 3(2ⁿ − 1)'),
+    label: 'n', min: 1, max: 15, step: 1, start: 1,
+    f: function (n) { return 3 * (Math.pow(2, n) - 1); },
+    note: 'Always exactly three less than the next term, ' + m('3 · 2ⁿ') + ' — which is what the “multiply by ' + m('q') + ' and subtract” trick leaves behind.'
   },
   quiz: [
     { q: m('Sₙ') + ' of a GP equals:', a: [m(f('b₁(qⁿ − 1)', 'q − 1')), m(f('n(b₁ + bₙ)', '2')), m('b₁ qⁿ'), m('n b₁ q')], c: 0, why: 'Shift and subtract.' },
@@ -7447,7 +7479,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'Partial sums approaching a ceiling',
-    hint: 'Increase n and watch the sum settle.'
+    hint: 'Increase n and watch the sum settle.',
+    expr: m('Sₙ = 8(1 − 0.5ⁿ)'),
+    label: 'n', min: 1, max: 30, step: 1, start: 1,
+    f: function (n) { return 8 * (1 - Math.pow(0.5, n)); },
+    note: 'The terms are ' + m('4, 2, 1, ' + f('1', '2') + ', …') + ' and the sum never reaches ' + m('8') + ' — but it gets as close as you like.'
   },
   quiz: [
     { q: 'An infinite GP has a sum when:', a: [m('q > 0'), m('|q| < 1'), m('q > 1'), 'always'], c: 1, why: 'The terms must shrink.' },
