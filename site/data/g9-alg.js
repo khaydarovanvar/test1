@@ -369,7 +369,7 @@ G9_ALG.push({
     ['Least value', 'Eng kichik qiymat', 'Наименьшее значение'],
     ['Axis of symmetry', 'Simmetriya o‘qi', 'Ось симметрии']
   ],
-  timing: [[18, 'What a does'], [22, 'Moving the parabola'], [25, 'Completing the square'], [20, 'Reading either form'], [15, 'Homework']],
+  timing: [[14, 'What a does'], [18, 'Moving the parabola'], [20, 'Completing the square'], [16, 'Reading either form'], [12, 'Homework']],
   sections: [
     {
       h: 'What a does',
@@ -544,7 +544,7 @@ G9_ALG.push({
     ['Symmetry', 'Simmetriya', 'Симметрия'],
     ['Turning point', 'Burilish nuqtasi', 'Точка поворота']
   ],
-  timing: [[15, 'The five marks'], [25, 'A worked sketch'], [20, 'Reading the sketch'], [20, 'Matching graphs'], [10, 'Homework']],
+  timing: [[13, 'The five marks'], [22, 'A worked sketch'], [18, 'Reading the sketch'], [18, 'Matching graphs'], [9, 'Homework']],
   sections: [
     {
       h: 'The five marks',
@@ -719,7 +719,7 @@ G9_ALG.push({
     ['Sign of the trinomial', 'Uchhadning ishorasi', 'Знак трёхчлена'],
     ['Empty set', 'Bo‘sh to‘plam', 'Пустое множество']
   ],
-  timing: [[12, 'Standard form first'], [25, 'Outside and between'], [25, 'The three cases'], [20, 'Writing the answer'], [8, 'Homework']],
+  timing: [[11, 'Standard form first'], [22, 'Outside and between'], [22, 'The three cases'], [18, 'Writing the answer'], [7, 'Homework']],
   sections: [
     {
       h: 'Standard form first',
@@ -901,7 +901,7 @@ G9_ALG.push({
     ['Sketch', 'Eskiz', 'Эскиз'],
     ['Solution set', 'Yechimlar to‘plami', 'Множество решений']
   ],
-  timing: [[15, 'Reading the sketch'], [22, 'A curve against a line'], [25, 'Always true, never true'], [23, 'Checking an answer'], [5, 'Homework']],
+  timing: [[13, 'Reading the sketch'], [20, 'A curve against a line'], [23, 'Always true, never true'], [20, 'Checking an answer'], [4, 'Homework']],
   sections: [
     {
       h: 'Reading the sketch',
@@ -1074,7 +1074,7 @@ G9_ALG.push({
     ['Rational inequality', 'Ratsional tengsizlik', 'Рациональное неравенство'],
     ['Excluded value', 'Chetlangan qiymat', 'Исключённое значение']
   ],
-  timing: [[15, 'Why it works'], [25, 'The four steps'], [22, 'Repeated factors'], [23, 'Rational inequalities'], [5, 'Homework']],
+  timing: [[13, 'Why it works'], [23, 'The four steps'], [20, 'Repeated factors'], [20, 'Rational inequalities'], [4, 'Homework']],
   sections: [
     {
       h: 'Why it works',
@@ -1430,7 +1430,7 @@ G9_ALG.push({
     ['Union of intervals', 'Oraliqlar birlashmasi', 'Объединение промежутков'],
     ['Natural domain', 'Tabiiy soha', 'Естественная область']
   ],
-  timing: [[12, 'What a domain is'], [22, 'The two forbidden things'], [25, 'Roots and quadratics'], [23, 'Both at once'], [8, 'Homework']],
+  timing: [[11, 'What a domain is'], [20, 'The two forbidden things'], [22, 'Roots and quadratics'], [20, 'Both at once'], [7, 'Homework']],
   sections: [
     {
       h: 'What a domain is',
@@ -1778,7 +1778,7 @@ G9_ALG.push({
     ['Neither', 'Na juft, na toq', 'Ни чётная, ни нечётная'],
     ['Substitution', 'O‘rniga qo‘yish', 'Подстановка']
   ],
-  timing: [[12, 'The two definitions'], [20, 'The domain comes first'], [25, 'Testing'], [23, 'On the graph'], [10, 'Homework']],
+  timing: [[11, 'The two definitions'], [18, 'The domain comes first'], [22, 'Testing'], [20, 'On the graph'], [9, 'Homework']],
   sections: [
     {
       h: 'The two definitions',
@@ -1972,7 +1972,7 @@ G9_ALG.push({
     ['Extraneous root', 'Chet ildiz', 'Посторонний корень'],
     ['Modulus', 'Modul', 'Модуль']
   ],
-  timing: [[15, 'Even against odd'], [22, 'Equations'], [25, 'Inequalities'], [23, 'Biquadratics'], [5, 'Homework']],
+  timing: [[13, 'Even against odd'], [20, 'Equations'], [23, 'Inequalities'], [20, 'Biquadratics'], [4, 'Homework']],
   sections: [
     {
       h: 'Even against odd',
@@ -2171,7 +2171,7 @@ G9_ALG.push({
     ['Proof by contradiction', 'Teskarisini faraz qilish', 'Доказательство от противного'],
     ['Set notation', 'To‘plam belgisi', 'Обозначение множеств']
   ],
-  timing: [[15, 'The number sets'], [22, 'Recurring decimals'], [25, 'Surds'], [23, 'Why √2 is irrational'], [5, 'Homework']],
+  timing: [[13, 'The number sets'], [20, 'Recurring decimals'], [23, 'Surds'], [20, 'Why √2 is irrational'], [4, 'Homework']],
   sections: [
     {
       h: 'The number sets',
@@ -2539,7 +2539,7 @@ G9_ALG.push({
     ['No solution', 'Yechimga ega emas', 'Не имеет решений'],
     ['Check', 'Tekshirish', 'Проверка']
   ],
-  timing: [[12, 'What a solution is'], [25, 'Substitution'], [22, 'How many solutions'], [23, 'Reading the picture'], [8, 'Homework']],
+  timing: [[11, 'What a solution is'], [22, 'Substitution'], [20, 'How many solutions'], [20, 'Reading the picture'], [7, 'Homework']],
   sections: [
     {
       h: 'What a solution is',
@@ -2713,7 +2713,7 @@ G9_ALG.push({
     ['Extraneous pair', 'Chet juftlik', 'Посторонняя пара'],
     ['Verification', 'Tekshirish', 'Проверка']
   ],
-  timing: [[15, 'Choosing a method'], [25, 'Addition'], [25, 'Symmetric systems'], [20, 'Checking'], [5, 'Homework']],
+  timing: [[13, 'Choosing a method'], [23, 'Addition'], [22, 'Symmetric systems'], [18, 'Checking'], [4, 'Homework']],
   sections: [
     {
       h: 'Choosing a method',
@@ -2888,7 +2888,7 @@ G9_ALG.push({
     ['Closed bracket', 'Yopiq qavs', 'Закрытая скобка'],
     ['Empty set', 'Bo‘sh to‘plam', 'Пустое множество']
   ],
-  timing: [[12, 'One line at a time'], [25, 'Two inequalities together'], [22, 'Systems and collections'], [26, 'Harder shapes'], [5, 'Homework']],
+  timing: [[11, 'One line at a time'], [22, 'Two inequalities together'], [20, 'Systems and collections'], [23, 'Harder shapes'], [4, 'Homework']],
   sections: [
     {
       h: 'One line at a time',
@@ -3067,7 +3067,7 @@ G9_ALG.push({
     ['Equality case', 'Tenglik holati', 'Случай равенства'],
     ['Counter-example', 'Qarama-qarshi misol', 'Контрпример']
   ],
-  timing: [[10, 'Proving is not solving'], [25, 'The square method'], [25, 'The mean inequality'], [25, 'Equality, and counter-examples'], [5, 'Homework']],
+  timing: [[9, 'Proving is not solving'], [23, 'The square method'], [22, 'The mean inequality'], [22, 'Equality, and counter-examples'], [4, 'Homework']],
   sections: [
     {
       h: 'Proving is not solving',
@@ -3596,7 +3596,7 @@ G9_ALG.push({
     ['Circumference', 'Aylana uzunligi', 'Длина окружности'],
     ['Conversion', 'O‘tkazish', 'Перевод']
   ],
-  timing: [[15, 'What a radian is'], [22, 'Converting'], [23, 'The angles worth knowing'], [25, 'Arcs and sectors'], [5, 'Homework']],
+  timing: [[13, 'What a radian is'], [20, 'Converting'], [20, 'The angles worth knowing'], [23, 'Arcs and sectors'], [4, 'Homework']],
   sections: [
     {
       h: 'What a radian is',
@@ -3771,7 +3771,7 @@ G9_ALG.push({
     ['Coterminal angles', 'Ustma-ust tushuvchi burchaklar', 'Совпадающие углы'],
     ['Full turn', 'To‘liq aylanish', 'Полный оборот']
   ],
-  timing: [[15, 'An angle as a turn'], [22, 'Sign and size'], [25, 'Angles that land together'], [23, 'Quadrants'], [5, 'Homework']],
+  timing: [[13, 'An angle as a turn'], [20, 'Sign and size'], [23, 'Angles that land together'], [20, 'Quadrants'], [4, 'Homework']],
   sections: [
     {
       h: 'An angle as a turn',
@@ -3951,7 +3951,7 @@ G9_ALG.push({
     ['Undefined', 'Aniqlanmagan', 'Не определён'],
     ['Fundamental identity', 'Asosiy ayniyat', 'Основное тождество']
   ],
-  timing: [[18, 'The definitions'], [22, 'The exact values'], [22, 'Where tangent and cotangent fail'], [23, 'The fundamental identity'], [5, 'Homework']],
+  timing: [[16, 'The definitions'], [20, 'The exact values'], [20, 'Where tangent and cotangent fail'], [20, 'The fundamental identity'], [4, 'Homework']],
   sections: [
     {
       h: 'The definitions',
@@ -4136,7 +4136,7 @@ G9_ALG.push({
     ['Boundary angle', 'Chegaraviy burchak', 'Граничный угол'],
     ['Determine', 'Aniqlash', 'Определить']
   ],
-  timing: [[15, 'Where the signs come from'], [22, 'The table'], [25, 'Choosing the sign'], [23, 'Working backwards'], [5, 'Homework']],
+  timing: [[13, 'Where the signs come from'], [20, 'The table'], [23, 'Choosing the sign'], [20, 'Working backwards'], [4, 'Homework']],
   sections: [
     {
       h: 'Where the signs come from',
@@ -4497,7 +4497,7 @@ G9_ALG.push({
     ['Restriction', 'Cheklov', 'Ограничение'],
     ['Derive', 'Keltirib chiqarish', 'Вывести']
   ],
-  timing: [[15, 'The three relations'], [22, 'Deriving the second and third'], [25, 'From one to all four'], [23, 'Expressing one by another'], [5, 'Homework']],
+  timing: [[13, 'The three relations'], [20, 'Deriving the second and third'], [23, 'From one to all four'], [20, 'Expressing one by another'], [4, 'Homework']],
   sections: [
     {
       h: 'The three relations',
@@ -4674,7 +4674,7 @@ G9_ALG.push({
     ['Equivalent', 'Teng kuchli', 'Равносильный'],
     ['Q.E.D.', 'Isbot tamom', 'Что и требовалось доказать']
   ],
-  timing: [[12, 'What an identity asks'], [25, 'The default strategy'], [25, 'The standard moves'], [23, 'Permissible values'], [5, 'Homework']],
+  timing: [[11, 'What an identity asks'], [23, 'The default strategy'], [22, 'The standard moves'], [20, 'Permissible values'], [4, 'Homework']],
   sections: [
     {
       h: 'What an identity asks',
@@ -4849,7 +4849,7 @@ G9_ALG.push({
     ['Reduce', 'Keltirish', 'Привести'],
     ['Symmetric', 'Simmetrik', 'Симметричный']
   ],
-  timing: [[15, 'Turning the other way'], [22, 'Even and odd'], [25, 'Period'], [23, 'Reducing an angle'], [5, 'Homework']],
+  timing: [[13, 'Turning the other way'], [20, 'Even and odd'], [23, 'Period'], [20, 'Reducing an angle'], [4, 'Homework']],
   sections: [
     {
       h: 'Turning the other way',
@@ -5026,7 +5026,7 @@ G9_ALG.push({
     ['Exact value', 'Aniq qiymat', 'Точное значение'],
     ['Substitution', 'O‘rniga qo‘yish', 'Подстановка']
   ],
-  timing: [[12, 'A warning first'], [25, 'The four formulae'], [25, 'New exact values'], [23, 'Reading them backwards'], [5, 'Homework']],
+  timing: [[11, 'A warning first'], [23, 'The four formulae'], [22, 'New exact values'], [20, 'Reading them backwards'], [4, 'Homework']],
   sections: [
     {
       h: 'A warning first',
@@ -5197,7 +5197,7 @@ G9_ALG.push({
     ['Rationalise', 'Irratsionallikdan qutulish', 'Избавиться от иррациональности'],
     ['Compress', 'Yig‘ish', 'Свернуть']
   ],
-  timing: [[18, 'The derivation'], [20, 'The conditions'], [25, 'Exact values'], [22, 'Backwards'], [5, 'Homework']],
+  timing: [[16, 'The derivation'], [18, 'The conditions'], [22, 'Exact values'], [20, 'Backwards'], [4, 'Homework']],
   sections: [
     {
       h: 'The derivation',
@@ -5366,7 +5366,7 @@ G9_ALG.push({
     ['Triple angle', 'Uchlangan burchak', 'Тройной угол'],
     ['Verify', 'Tekshirmoq', 'Проверить']
   ],
-  timing: [[15, 'Setting β = α'], [25, 'Three faces of cos 2α'], [25, 'Lowering the degree'], [23, 'Both directions'], [5, 'Homework']],
+  timing: [[13, 'Setting β = α'], [21, 'Three faces of cos 2α'], [22, 'Lowering the degree'], [20, 'Both directions'], [4, 'Homework']],
   sections: [
     {
       h: 'Setting β = α',
@@ -5542,7 +5542,7 @@ G9_ALG.push({
     ['Name changes', 'Nomi o‘zgaradi', 'Название меняется'],
     ['Rule', 'Qoida', 'Правило']
   ],
-  timing: [[15, 'The two questions'], [25, 'Working the rule'], [25, 'The table it produces'], [23, 'Evaluating anything'], [5, 'Homework']],
+  timing: [[13, 'The two questions'], [21, 'Working the rule'], [22, 'The table it produces'], [20, 'Evaluating anything'], [4, 'Homework']],
   sections: [
     {
       h: 'The two questions',
@@ -5713,7 +5713,7 @@ G9_ALG.push({
     ['Auxiliary angle', 'Yordamchi burchak', 'Вспомогательный угол'],
     ['Zero product', 'Nol ko‘paytma', 'Нулевое произведение']
   ],
-  timing: [[15, 'Why a product is better'], [22, 'The four formulae'], [25, 'The derivation'], [23, 'Using them'], [5, 'Homework']],
+  timing: [[13, 'Why a product is better'], [20, 'The four formulae'], [23, 'The derivation'], [20, 'Using them'], [4, 'Homework']],
   sections: [
     {
       h: 'Why a product is better',
@@ -5890,7 +5890,7 @@ G9_ALG.push({
     ['Interval', 'Oraliq', 'Промежуток'],
     ['Sketch', 'Chizma', 'Эскиз']
   ],
-  timing: [[18, 'The three curves'], [22, 'What to read off'], [25, 'Solutions from a graph'], [20, 'Stretching the curve'], [5, 'Homework']],
+  timing: [[16, 'The three curves'], [20, 'What to read off'], [22, 'Solutions from a graph'], [18, 'Stretching the curve'], [4, 'Homework']],
   sections: [
     {
       h: 'The three curves',
@@ -6625,7 +6625,7 @@ G9_ALG.push({
     ['Word problem', 'Matnli masala', 'Текстовая задача'],
     ['Total', 'Jami', 'Итого']
   ],
-  timing: [[20, 'Gauss’s trick'], [25, 'Two forms'], [30, 'Solving for n'], [20, 'Word problems'], [5, 'Homework']],
+  timing: [[16, 'Gauss’s trick'], [20, 'Two forms'], [24, 'Solving for n'], [16, 'Word problems'], [4, 'Homework']],
   sections: [
     {
       h: 'Gauss’s trick',
@@ -6977,7 +6977,7 @@ G9_ALG.push({
     ['Doubling', 'Ikkilanish', 'Удвоение'],
     ['Non-zero', 'Noldan farqli', 'Отличный от нуля']
   ],
-  timing: [[18, 'The definition'], [22, 'The nth term'], [25, 'The middle-term property'], [20, 'Growth and decay'], [5, 'Homework']],
+  timing: [[16, 'The definition'], [20, 'The nth term'], [22, 'The middle-term property'], [18, 'Growth and decay'], [4, 'Homework']],
   sections: [
     {
       h: 'The definition',
@@ -7166,7 +7166,7 @@ G9_ALG.push({
     ['Doubling problem', 'Ikkilanish masalasi', 'Задача об удвоении'],
     ['Estimate', 'Baholash', 'Оценка']
   ],
-  timing: [[20, 'The derivation'], [25, 'Two arrangements'], [25, 'Worked problems'], [25, 'The chessboard'], [5, 'Homework']],
+  timing: [[16, 'The derivation'], [20, 'Two arrangements'], [20, 'Worked problems'], [20, 'The chessboard'], [4, 'Homework']],
   sections: [
     {
       h: 'The derivation',
@@ -7337,7 +7337,7 @@ G9_ALG.push({
     ['Limit', 'Limit', 'Предел'],
     ['Condition', 'Shart', 'Условие']
   ],
-  timing: [[18, 'When infinitely many terms have a sum'], [22, 'The formula'], [25, 'Recurring decimals'], [23, 'Distance problems'], [5, 'Homework']],
+  timing: [[15, 'When infinitely many terms have a sum'], [19, 'The formula'], [22, 'Recurring decimals'], [20, 'Distance problems'], [4, 'Homework']],
   sections: [
     {
       h: 'When infinitely many terms have a sum',
@@ -7520,7 +7520,7 @@ G9_ALG.push({
     ['Pattern', 'Naqsh', 'Закономерность'],
     ['Justify', 'Asoslash', 'Обосновать']
   ],
-  timing: [[8, 'Which type is it?'], [12, 'Linear and geometric'], [15, 'Quadratic sequences'], [8, 'Exam phrasing'], [2, 'Homework']],
+  timing: [[7, 'Which type is it?'], [11, 'Linear and geometric'], [13, 'Quadratic sequences'], [7, 'Exam phrasing'], [2, 'Homework']],
   sections: [
     {
       h: 'Which type is it?',
@@ -7886,7 +7886,7 @@ G9_ALG.push({
     ['Mutually exclusive', 'Birgalikda bo‘lmagan', 'Несовместные'],
     ['Complementary event', 'Qarama-qarshi hodisa', 'Противоположное событие']
   ],
-  timing: [[15, 'Trial, outcome, event'], [22, 'Three kinds of event'], [25, 'Relations between events'], [23, 'The sample space'], [5, 'Homework']],
+  timing: [[13, 'Trial, outcome, event'], [20, 'Three kinds of event'], [23, 'Relations between events'], [20, 'The sample space'], [4, 'Homework']],
   sections: [
     {
       h: 'Trial, outcome, event',
@@ -8077,7 +8077,7 @@ G9_ALG.push({
     ['At most', 'Ko‘pi bilan', 'Не более'],
     ['Without replacement', 'Qaytarmasdan', 'Без возвращения']
   ],
-  timing: [[15, 'The definition'], [22, 'What the number means'], [25, 'Counting carefully'], [23, 'The complement'], [5, 'Homework']],
+  timing: [[13, 'The definition'], [20, 'What the number means'], [23, 'Counting carefully'], [20, 'The complement'], [4, 'Homework']],
   sections: [
     {
       h: 'The definition',
@@ -8267,7 +8267,7 @@ G9_ALG.push({
     ['Biased', 'Nosimmetrik', 'Смещённый'],
     ['Fair', 'Simmetrik', 'Правильный']
   ],
-  timing: [[15, 'When counting outcomes fails'], [22, 'Relative frequency'], [25, 'Why it settles'], [23, 'Estimating with it'], [5, 'Homework']],
+  timing: [[13, 'When counting outcomes fails'], [20, 'Relative frequency'], [23, 'Why it settles'], [20, 'Estimating with it'], [4, 'Homework']],
   sections: [
     {
       h: 'When counting outcomes fails',
@@ -8450,7 +8450,7 @@ G9_ALG.push({
     ['With replacement', 'Qaytarib', 'С возвращением'],
     ['Tree diagram', 'Daraxt diagrammasi', 'Дерево вариантов']
   ],
-  timing: [[15, 'The two rules'], [22, 'Arrangements'], [25, 'Selections'], [23, 'Counting into probability'], [5, 'Homework']],
+  timing: [[13, 'The two rules'], [20, 'Arrangements'], [23, 'Selections'], [20, 'Counting into probability'], [4, 'Homework']],
   sections: [
     {
       h: 'The two rules',
@@ -8646,7 +8646,7 @@ G9_ALG.push({
     ['Without replacement', 'Qaytarmasdan', 'Без возвращения'],
     ['Two-way table', 'Ikki yo‘nalishli jadval', 'Таблица сопряжённости']
   ],
-  timing: [[15, 'Drawing the tree'], [22, 'Along and between'], [25, 'Without replacement'], [23, 'Tables and Venn diagrams'], [5, 'Homework']],
+  timing: [[13, 'Drawing the tree'], [20, 'Along and between'], [23, 'Without replacement'], [20, 'Tables and Venn diagrams'], [4, 'Homework']],
   sections: [
     {
       h: 'Drawing the tree',

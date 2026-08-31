@@ -5170,7 +5170,7 @@ G6_MAT.push({
     ['Zero as a placeholder', 'O‘rin to‘ldiruvchi nol', 'Ноль как разделитель'],
     ['Unit conversion', 'Birliklarni almashtirish', 'Перевод единиц']
   ],
-  timing: [[20, 'Place value'], [25, 'Multiplying and dividing by ' + m('10, 100, 1000')], [25, 'By ' + m('0.1') + ' and ' + m('0.01')], [8, 'Converting units'], [2, 'Homework']],
+  timing: [[54, 'Place value'], [21, 'Converting units'], [5, 'Homework']],
   sections: [
     {
       h: 'Place value',

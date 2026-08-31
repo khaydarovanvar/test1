@@ -26,7 +26,7 @@ G7_MAT.push({
     ['To belong to', 'Tegishli bo‘lmoq', 'Принадлежать'],
     ['Intersection', 'Kesishish', 'Пересечение']
   ],
-  timing: [[15, 'Three undefined words'], [25, 'Notation'], [25, 'The axioms'], [20, 'Counting lines'], [5, 'Homework']],
+  timing: [[13, 'Three undefined words'], [23, 'Notation'], [22, 'The axioms'], [18, 'Counting lines'], [4, 'Homework']],
   sections: [
     {
       h: 'Three undefined words',
@@ -204,7 +204,7 @@ G7_MAT.push({
     ['Unit of length', 'Uzunlik birligi', 'Единица длины'],
     ['Additive property', 'Additivlik xossasi', 'Свойство аддитивности']
   ],
-  timing: [[15, 'Comparing'], [25, 'Measuring'], [25, 'Adding segments'], [20, 'The midpoint'], [5, 'Homework']],
+  timing: [[13, 'Comparing'], [23, 'Measuring'], [22, 'Adding segments'], [18, 'The midpoint'], [4, 'Homework']],
   sections: [
     {
       h: 'Comparing',
@@ -386,7 +386,7 @@ G7_MAT.push({
     ['Straight angle', 'Yoyiq burchak', 'Развёрнутый угол'],
     ['Bisector', 'Bissektrisa', 'Биссектриса']
   ],
-  timing: [[15, 'What an angle is'], [25, 'Measuring'], [25, 'The five kinds'], [20, 'Adding angles'], [5, 'Homework']],
+  timing: [[13, 'What an angle is'], [23, 'Measuring'], [22, 'The five kinds'], [18, 'Adding angles'], [4, 'Homework']],
   sections: [
     {
       h: 'What an angle is',
@@ -568,7 +568,7 @@ G7_MAT.push({
     ['Hundredth', 'Yuzdan bir', 'Сотая'],
     ['Approximation', 'Taqribiy qiymat', 'Приближение']
   ],
-  timing: [[15, 'Moving the point'], [25, 'Dividing by a small number'], [25, 'Rounding'], [20, 'Estimating'], [5, 'Homework']],
+  timing: [[13, 'Moving the point'], [23, 'Dividing by a small number'], [22, 'Rounding'], [18, 'Estimating'], [4, 'Homework']],
   sections: [
     {
       h: 'Moving the point',
@@ -752,7 +752,7 @@ G7_MAT.push({
     ['Oblique', 'Og‘ma', 'Наклонная'],
     ['Set square', 'Gonio', 'Угольник']
   ],
-  timing: [[15, 'Perpendicularity'], [25, 'Angles at a crossing'], [25, 'The construction'], [20, 'The shortest distance'], [5, 'Homework']],
+  timing: [[13, 'Perpendicularity'], [23, 'Angles at a crossing'], [22, 'The construction'], [18, 'The shortest distance'], [4, 'Homework']],
   sections: [
     {
       h: 'Perpendicularity',
@@ -932,7 +932,7 @@ G7_MAT.push({
     ['Trailing zero', 'Oxirgi nol', 'Конечный ноль'],
     ['Product', 'Ko‘paytma', 'Произведение']
   ],
-  timing: [[15, 'Ordering'], [25, 'Multiplying'], [25, 'Dividing'], [20, 'Checking'], [5, 'Homework']],
+  timing: [[13, 'Ordering'], [23, 'Multiplying'], [22, 'Dividing'], [18, 'Checking'], [4, 'Homework']],
   sections: [
     {
       h: 'Ordering',
@@ -1286,7 +1286,7 @@ G7_MAT.push({
     ['Sea level', 'Dengiz sathi', 'Уровень моря'],
     ['Rise and fall', 'Ko‘tarilish va pasayish', 'Подъём и спад']
   ],
-  timing: [[15, 'Why they are needed'], [25, 'Reading and writing'], [25, 'Direction as well as size'], [20, 'In practice'], [5, 'Homework']],
+  timing: [[13, 'Why they are needed'], [23, 'Reading and writing'], [22, 'Direction as well as size'], [18, 'In practice'], [4, 'Homework']],
   sections: [
     {
       h: 'Why they are needed',
@@ -1468,7 +1468,7 @@ G7_MAT.push({
     ['Composite number', 'Murakkab son', 'Составное число'],
     ['Closed under', 'Yopiq', 'Замкнутое относительно']
   ],
-  timing: [[15, 'The three sets'], [25, 'Closure'], [25, 'Factors, multiples, primes'], [20, 'Recognising integers'], [5, 'Homework']],
+  timing: [[13, 'The three sets'], [23, 'Closure'], [22, 'Factors, multiples, primes'], [18, 'Recognising integers'], [4, 'Homework']],
   sections: [
     {
       h: 'The three sets',
@@ -1654,7 +1654,7 @@ G7_MAT.push({
     ['To the left', 'Chapda', 'Слева'],
     ['Distance', 'Masofa', 'Расстояние']
   ],
-  timing: [[15, 'Building the line'], [25, 'Marking and reading'], [25, 'Comparing'], [20, 'Distance'], [5, 'Homework']],
+  timing: [[13, 'Building the line'], [23, 'Marking and reading'], [22, 'Comparing'], [18, 'Distance'], [4, 'Homework']],
   sections: [
     {
       h: 'Building the line',
@@ -1831,7 +1831,7 @@ G7_MAT.push({
     ['Sign', 'Ishora', 'Знак'],
     ['Symmetric', 'Simmetrik', 'Симметричный']
   ],
-  timing: [[15, 'Opposite numbers'], [25, 'The modulus'], [25, 'Equations with a modulus'], [20, 'Modulus and distance'], [5, 'Homework']],
+  timing: [[13, 'Opposite numbers'], [23, 'The modulus'], [22, 'Equations with a modulus'], [18, 'Modulus and distance'], [4, 'Homework']],
   sections: [
     {
       h: 'Opposite numbers',
@@ -2009,7 +2009,7 @@ G7_MAT.push({
     ['Between', 'Orasida', 'Между'],
     ['Consecutive', 'Ketma-ket', 'Последовательные']
   ],
-  timing: [[15, 'The rules'], [25, 'Two negatives'], [25, 'Ordering'], [20, 'The symbols'], [5, 'Homework']],
+  timing: [[13, 'The rules'], [23, 'Two negatives'], [22, 'Ordering'], [18, 'The symbols'], [4, 'Homework']],
   sections: [
     {
       h: 'The rules',
@@ -2187,7 +2187,7 @@ G7_MAT.push({
     ['Term', 'Qo‘shiluvchi', 'Слагаемое'],
     ['Gain and loss', 'Foyda va zarar', 'Прибыль и убыток']
   ],
-  timing: [[15, 'On the line'], [25, 'Same signs'], [25, 'Different signs'], [20, 'Several terms'], [5, 'Homework']],
+  timing: [[13, 'On the line'], [23, 'Same signs'], [22, 'Different signs'], [18, 'Several terms'], [4, 'Homework']],
   sections: [
     {
       h: 'On the line',
@@ -2361,7 +2361,7 @@ G7_MAT.push({
     ['Change', 'O‘zgarish', 'Изменение'],
     ['Rise and fall', 'Ko‘tarilish va pasayish', 'Подъём и спад']
   ],
-  timing: [[15, 'One rule'], [25, 'Two signs in a row'], [25, 'Chains'], [20, 'Differences'], [5, 'Homework']],
+  timing: [[13, 'One rule'], [23, 'Two signs in a row'], [22, 'Chains'], [18, 'Differences'], [4, 'Homework']],
   sections: [
     {
       h: 'One rule',
@@ -2538,7 +2538,7 @@ G7_MAT.push({
     ['Square', 'Kvadrat', 'Квадрат'],
     ['Cube', 'Kub', 'Куб']
   ],
-  timing: [[15, 'The sign rules'], [25, 'Why two minuses make a plus'], [25, 'Several factors'], [20, 'Powers'], [5, 'Homework']],
+  timing: [[13, 'The sign rules'], [23, 'Why two minuses make a plus'], [22, 'Several factors'], [18, 'Powers'], [4, 'Homework']],
   sections: [
     {
       h: 'The sign rules',
@@ -2714,7 +2714,7 @@ G7_MAT.push({
     ['Exactly divisible', 'Butun bo‘linadi', 'Делится нацело'],
     ['Remainder', 'Qoldiq', 'Остаток']
   ],
-  timing: [[15, 'The sign rules'], [25, 'Division by zero'], [25, 'Order of operations'], [20, 'When is it an integer?'], [5, 'Homework']],
+  timing: [[13, 'The sign rules'], [23, 'Division by zero'], [22, 'Order of operations'], [18, 'When is it an integer?'], [4, 'Homework']],
   sections: [
     {
       h: 'The sign rules',
@@ -2893,7 +2893,7 @@ G7_MAT.push({
     ['Net change', 'Sof o‘zgarish', 'Чистое изменение'],
     ['Plausible', 'Ishonarli', 'Правдоподобный']
   ],
-  timing: [[15, 'Mixed expressions'], [25, 'The distributive law'], [25, 'Word problems'], [20, 'Averages'], [5, 'Homework']],
+  timing: [[13, 'Mixed expressions'], [23, 'The distributive law'], [22, 'Word problems'], [18, 'Averages'], [4, 'Homework']],
   sections: [
     {
       h: 'Mixed expressions',
@@ -3242,7 +3242,7 @@ G7_MAT.push({
     ['Mixed number', 'Aralash son', 'Смешанное число'],
     ['Equivalent fractions', 'Teng kasrlar', 'Равные дроби']
   ],
-  timing: [[15, 'The definition'], [25, 'Everything is a fraction'], [25, 'Fractions and decimals'], [20, 'On the line'], [5, 'Homework']],
+  timing: [[13, 'The definition'], [23, 'Everything is a fraction'], [22, 'Fractions and decimals'], [18, 'On the line'], [4, 'Homework']],
   sections: [
     {
       h: 'The definition',
@@ -3457,7 +3457,7 @@ G7_MAT.push({
     ['Like denominators', 'Bir xil maxrajlar', 'Одинаковые знаменатели'],
     ['LCM', 'EKUK', 'НОК']
   ],
-  timing: [[15, 'Same denominator'], [25, 'Different denominators'], [25, 'With signs'], [20, 'Mixed numbers'], [5, 'Homework']],
+  timing: [[13, 'Same denominator'], [23, 'Different denominators'], [22, 'With signs'], [18, 'Mixed numbers'], [4, 'Homework']],
   sections: [
     {
       h: 'Same denominator',
@@ -3651,7 +3651,7 @@ G7_MAT.push({
     ['Simplify', 'Soddalashtirish', 'Упростить'],
     ['Compare', 'Taqqoslash', 'Сравнить']
   ],
-  timing: [[15, 'The rule'], [25, 'Different denominators'], [25, 'Mixed numbers'], [20, 'Differences on the line'], [5, 'Homework']],
+  timing: [[13, 'The rule'], [23, 'Different denominators'], [22, 'Mixed numbers'], [18, 'Differences on the line'], [4, 'Homework']],
   sections: [
     {
       h: 'The rule',
@@ -4367,7 +4367,7 @@ G7_MAT.push({
     ['Common side', 'Umumiy tomon', 'Общая сторона'],
     ['Proof', 'Isbot', 'Доказательство']
   ],
-  timing: [[15, 'What congruence means'], [25, 'The criterion'], [25, 'Writing a proof'], [20, 'Consequences'], [5, 'Homework']],
+  timing: [[13, 'What congruence means'], [23, 'The criterion'], [22, 'Writing a proof'], [18, 'Consequences'], [4, 'Homework']],
   sections: [
     {
       h: 'What congruence means',
@@ -4538,7 +4538,7 @@ G7_MAT.push({
     ['Axis of symmetry', 'Simmetriya o‘qi', 'Ось симметрии'],
     ['Property', 'Xossa', 'Свойство']
   ],
-  timing: [[15, 'The base angles'], [25, 'The proof'], [25, 'The converse'], [20, 'One line, three roles'], [5, 'Homework']],
+  timing: [[13, 'The base angles'], [23, 'The proof'], [22, 'The converse'], [18, 'One line, three roles'], [4, 'Homework']],
   sections: [
     {
       h: 'The base angles',
@@ -4717,7 +4717,7 @@ G7_MAT.push({
     ['Alternate angles', 'Ichki almashinuvchi burchaklar', 'Накрест лежащие углы'],
     ['Proof', 'Isbot', 'Доказательство']
   ],
-  timing: [[15, 'The criterion'], [25, 'Which side counts'], [25, 'In proofs'], [20, 'Measuring a distance'], [5, 'Homework']],
+  timing: [[13, 'The criterion'], [23, 'Which side counts'], [22, 'In proofs'], [18, 'Measuring a distance'], [4, 'Homework']],
   sections: [
     {
       h: 'The criterion',
@@ -4886,7 +4886,7 @@ G7_MAT.push({
     ['Framework', 'Karkas', 'Каркас'],
     ['To choose', 'Tanlash', 'Выбрать']
   ],
-  timing: [[15, 'The criterion'], [25, 'Rigidity'], [25, 'Using it'], [20, 'Choosing a criterion'], [5, 'Homework']],
+  timing: [[13, 'The criterion'], [23, 'Rigidity'], [22, 'Using it'], [18, 'Choosing a criterion'], [4, 'Homework']],
   sections: [
     {
       h: 'The criterion',
@@ -5870,7 +5870,7 @@ G7_MAT.push({
     ['Repeated multiplication', 'Takroriy ko‘paytirish', 'Повторное умножение'],
     ['Order of operations', 'Amallar tartibi', 'Порядок действий']
   ],
-  timing: [[15, 'The definition'], [25, 'Signs and fractions'], [25, 'Order of operations'], [20, 'Squares and cubes'], [5, 'Homework']],
+  timing: [[13, 'The definition'], [23, 'Signs and fractions'], [22, 'Order of operations'], [18, 'Squares and cubes'], [4, 'Homework']],
   sections: [
     {
       h: 'The definition',
@@ -6045,7 +6045,7 @@ G7_MAT.push({
     ['Exponent zero', 'Nolinchi daraja', 'Нулевая степень'],
     ['Simplify', 'Soddalashtirish', 'Упростить']
   ],
-  timing: [[15, 'Multiplying and dividing'], [25, 'Powers of powers'], [25, 'Products and quotients'], [20, 'Putting them together'], [5, 'Homework']],
+  timing: [[13, 'Multiplying and dividing'], [23, 'Powers of powers'], [22, 'Products and quotients'], [18, 'Putting them together'], [4, 'Homework']],
   sections: [
     {
       h: 'Multiplying and dividing',
@@ -6390,7 +6390,7 @@ G7_MAT.push({
     ['Volume', 'Hajm', 'Объём'],
     ['Cancel', 'Qisqartirish', 'Сократить']
   ],
-  timing: [[15, 'Multiplying'], [25, 'Raising to a power'], [25, 'Dividing'], [20, 'Areas and volumes'], [5, 'Homework']],
+  timing: [[13, 'Multiplying'], [23, 'Raising to a power'], [22, 'Dividing'], [18, 'Areas and volumes'], [4, 'Homework']],
   sections: [
     {
       h: 'Multiplying',
@@ -6724,7 +6724,7 @@ G7_MAT.push({
     ['Perimeter', 'Perimetr', 'Периметр'],
     ['Cost', 'Narx', 'Стоимость']
   ],
-  timing: [[15, 'Which terms are alike'], [25, 'Collecting'], [25, 'After brackets'], [20, 'In problems'], [5, 'Homework']],
+  timing: [[13, 'Which terms are alike'], [23, 'Collecting'], [22, 'After brackets'], [18, 'In problems'], [4, 'Homework']],
   sections: [
     {
       h: 'Which terms are alike',
@@ -6896,7 +6896,7 @@ G7_MAT.push({
     ['Standard form', 'Standart ko‘rinish', 'Стандартный вид'],
     ['Degree', 'Daraja', 'Степень']
   ],
-  timing: [[15, 'Adding'], [25, 'Subtracting'], [25, 'Longer expressions'], [20, 'Checking'], [5, 'Homework']],
+  timing: [[13, 'Adding'], [23, 'Subtracting'], [22, 'Longer expressions'], [18, 'Checking'], [4, 'Homework']],
   sections: [
     {
       h: 'Adding',
@@ -7070,7 +7070,7 @@ G7_MAT.push({
     ['To collect', 'Ixchamlash', 'Приведение подобных'],
     ['Product', 'Ko‘paytma', 'Произведение']
   ],
-  timing: [[15, 'By a monomial'], [25, 'Two binomials'], [25, 'The area picture'], [20, 'Longer products'], [5, 'Homework']],
+  timing: [[13, 'By a monomial'], [23, 'Two binomials'], [22, 'The area picture'], [18, 'Longer products'], [4, 'Homework']],
   sections: [
     {
       h: 'By a monomial',
@@ -7244,7 +7244,7 @@ G7_MAT.push({
     ['Algebraic fraction', 'Algebraik kasr', 'Алгебраическая дробь'],
     ['Check', 'Tekshirish', 'Проверка']
   ],
-  timing: [[15, 'Term by term'], [25, 'When it works'], [25, 'Reversing a multiplication'], [20, 'Simplifying fractions'], [5, 'Homework']],
+  timing: [[13, 'Term by term'], [23, 'When it works'], [22, 'Reversing a multiplication'], [18, 'Simplifying fractions'], [4, 'Homework']],
   sections: [
     {
       h: 'Term by term',
@@ -7448,7 +7448,7 @@ G7_MAT.push({
     ['Sum', 'Yig‘indi', 'Сумма'],
     ['Check by expanding', 'Qavsni ochib tekshirish', 'Проверка раскрытием']
   ],
-  timing: [[10, 'The idea'], [25, 'The common factor'], [25, 'Grouping'], [25, 'What it is for'], [5, 'Homework']],
+  timing: [[9, 'The idea'], [23, 'The common factor'], [22, 'Grouping'], [22, 'What it is for'], [4, 'Homework']],
   sections: [
     {
       h: 'The idea',
@@ -7972,7 +7972,7 @@ G7_MAT.push({
     ['Perpendicular', 'Perpendikulyar', 'Перпендикуляр'],
     ['Proof', 'Isbot', 'Доказательство']
   ],
-  timing: [[15, 'The transversal and its eight angles'], [25, 'The three criteria'], [25, 'Using a criterion'], [20, 'Perpendiculars to one line'], [5, 'Homework']],
+  timing: [[13, 'The transversal and its eight angles'], [23, 'The three criteria'], [22, 'Using a criterion'], [18, 'Perpendiculars to one line'], [4, 'Homework']],
   sections: [
     {
       h: 'The transversal and its eight angles',
@@ -8163,7 +8163,7 @@ G7_MAT.push({
     ['Supplementary', 'Qo‘shni (yig‘indisi 180°)', 'Смежные'],
     ['Angle', 'Burchak', 'Угол']
   ],
-  timing: [[15, 'The properties'], [25, 'All eight from one'], [25, 'Property or criterion?'], [20, 'Problems'], [5, 'Homework']],
+  timing: [[13, 'The properties'], [23, 'All eight from one'], [22, 'Property or criterion?'], [18, 'Problems'], [4, 'Homework']],
   sections: [
     {
       h: 'The properties',
@@ -8348,7 +8348,7 @@ G7_MAT.push({
     ['Obtuse-angled', 'O‘tmas burchakli', 'Тупоугольный'],
     ['Equiangular', 'Teng burchakli', 'Равноугольный']
   ],
-  timing: [[10, 'The experiment'], [25, 'The proof'], [20, 'Finding a missing angle'], [25, 'The exterior angle'], [5, 'Homework']],
+  timing: [[9, 'The experiment'], [23, 'The proof'], [19, 'Finding a missing angle'], [24, 'The exterior angle'], [5, 'Homework']],
   sections: [
     {
       h: 'The experiment',
@@ -8523,7 +8523,7 @@ G7_MAT.push({
     ['Half', 'Yarim', 'Половина'],
     ['Congruence test', 'Tenglik alomati', 'Признак равенства']
   ],
-  timing: [[10, 'Legs and hypotenuse'], [20, 'The acute angles'], [25, 'The 30° rule'], [25, 'Congruence tests'], [5, 'Homework']],
+  timing: [[9, 'Legs and hypotenuse'], [19, 'The acute angles'], [23, 'The 30° rule'], [24, 'Congruence tests'], [5, 'Homework']],
   sections: [
     {
       h: 'Legs and hypotenuse',
@@ -8705,7 +8705,7 @@ G7_MAT.push({
     ['Compasses', 'Sirkul', 'Циркуль'],
     ['Incentre', 'Ichki markaz', 'Центр вписанной окружности']
   ],
-  timing: [[10, 'What distance means here'], [25, 'The property'], [20, 'The converse'], [25, 'The construction and its use'], [5, 'Homework']],
+  timing: [[9, 'What distance means here'], [23, 'The property'], [19, 'The converse'], [24, 'The construction and its use'], [5, 'Homework']],
   sections: [
     {
       h: 'What distance means here',
@@ -8894,7 +8894,7 @@ G7_MAT.push({
     ['Slant segment', 'Og‘ma', 'Наклонная'],
     ['Shortest', 'Eng qisqa', 'Кратчайший']
   ],
-  timing: [[15, 'The larger angle faces the longer side'], [20, 'Reading the order both ways'], [25, 'The triangle inequality'], [20, 'The shortest path to a line'], [5, 'Homework']],
+  timing: [[14, 'The larger angle faces the longer side'], [19, 'Reading the order both ways'], [23, 'The triangle inequality'], [19, 'The shortest path to a line'], [5, 'Homework']],
   sections: [
     {
       h: 'The larger angle faces the longer side',
@@ -9070,7 +9070,7 @@ G7_MAT.push({
     ['Square centimetre', 'Kvadrat santimetr', 'Квадратный сантиметр'],
     ['Hectare', 'Gektar', 'Гектар']
   ],
-  timing: [[10, 'The four formulae'], [25, 'Choosing the right height'], [25, 'Compound shapes'], [20, 'Units and estimation'], [5, 'Homework']],
+  timing: [[9, 'The four formulae'], [23, 'Choosing the right height'], [24, 'Compound shapes'], [19, 'Units and estimation'], [5, 'Homework']],
   sections: [
     {
       h: 'The four formulae',
@@ -9421,7 +9421,7 @@ G7_MAT.push({
     ['Perfect square', 'To‘la kvadrat', 'Полный квадрат'],
     ['Mental arithmetic', 'Og‘zaki hisoblash', 'Устный счёт']
   ],
-  timing: [[15, 'Where the formulae come from'], [20, 'The square picture'], [25, 'Using them both ways'], [20, 'Squaring numbers in the head'], [5, 'Homework']],
+  timing: [[14, 'Where the formulae come from'], [19, 'The square picture'], [23, 'Using them both ways'], [19, 'Squaring numbers in the head'], [5, 'Homework']],
   sections: [
     {
       h: 'Where the formulae come from',
@@ -9605,7 +9605,7 @@ G7_MAT.push({
     ['One step', 'Bir qadamda', 'В один шаг'],
     ['Identity', 'Ayniyat', 'Тождество']
   ],
-  timing: [[15, 'The vanishing middle term'], [25, 'Factorising in one step'], [20, 'What does not work'], [25, 'Two uses'], [5, 'Homework']],
+  timing: [[13, 'The vanishing middle term'], [23, 'Factorising in one step'], [18, 'What does not work'], [22, 'Two uses'], [4, 'Homework']],
   sections: [
     {
       h: 'The vanishing middle term',
@@ -9807,7 +9807,7 @@ G7_MAT.push({
     ['Expansion', 'Yoyilma', 'Разложение'],
     ['Pattern', 'Qonuniyat', 'Закономерность']
   ],
-  timing: [[15, 'From the square to the cube'], [20, 'The two formulae'], [25, 'Expanding with coefficients'], [20, 'Reading a cube backwards'], [5, 'Homework']],
+  timing: [[14, 'From the square to the cube'], [19, 'The two formulae'], [23, 'Expanding with coefficients'], [19, 'Reading a cube backwards'], [5, 'Homework']],
   sections: [
     {
       h: 'From the square to the cube',
@@ -9993,7 +9993,7 @@ G7_MAT.push({
     ['To verify', 'Tekshirmoq', 'Проверить'],
     ['Factorisation', 'Ko‘paytuvchilarga ajratish', 'Разложение на множители']
   ],
-  timing: [[15, 'The two formulae'], [20, 'Why the middle terms vanish'], [25, 'Factorising'], [20, 'Where they are used'], [5, 'Homework']],
+  timing: [[14, 'The two formulae'], [19, 'Why the middle terms vanish'], [23, 'Factorising'], [19, 'Where they are used'], [5, 'Homework']],
   sections: [
     {
       h: 'The two formulae',
@@ -10192,7 +10192,7 @@ G7_MAT.push({
     ['Completely factorised', 'To‘liq ajratilgan', 'Полностью разложен'],
     ['Order of steps', 'Qadamlar tartibi', 'Порядок действий']
   ],
-  timing: [[10, 'The order of the methods'], [25, 'Splitting the middle term'], [25, 'Combining methods'], [20, 'When to stop'], [5, 'Homework']],
+  timing: [[9, 'The order of the methods'], [23, 'Splitting the middle term'], [24, 'Combining methods'], [19, 'When to stop'], [5, 'Homework']],
   sections: [
     {
       h: 'The order of the methods',
@@ -10377,7 +10377,7 @@ G7_MAT.push({
     ['Even number', 'Juft son', 'Чётное число'],
     ['Proof', 'Isbot', 'Доказательство']
   ],
-  timing: [[10, 'The five formulae in one table'], [20, 'Mental arithmetic'], [25, 'Simplifying'], [25, 'Proving something'], [5, 'Homework']],
+  timing: [[9, 'The five formulae in one table'], [19, 'Mental arithmetic'], [23, 'Simplifying'], [24, 'Proving something'], [5, 'Homework']],
   sections: [
     {
       h: 'The five formulae in one table',
@@ -10731,7 +10731,7 @@ G7_MAT.push({
     ['Undefined', 'Aniqlanmagan', 'Не определено'],
     ['Simplest form', 'Eng sodda ko‘rinish', 'Несократимый вид']
   ],
-  timing: [[15, 'What an algebraic fraction is'], [20, 'Where it has no value'], [25, 'Cancelling'], [20, 'Factors, never terms'], [5, 'Homework']],
+  timing: [[14, 'What an algebraic fraction is'], [19, 'Where it has no value'], [23, 'Cancelling'], [19, 'Factors, never terms'], [5, 'Homework']],
   sections: [
     {
       h: 'What an algebraic fraction is',
@@ -10936,7 +10936,7 @@ G7_MAT.push({
     ['Opposite expression', 'Qarama-qarshi ifoda', 'Противоположное выражение'],
     ['Sign change', 'Ishorani o‘zgartirish', 'Смена знака']
   ],
-  timing: [[10, 'The rule that makes it legal'], [25, 'Building the denominator'], [25, 'The extra factors'], [20, 'Denominators that differ in sign'], [5, 'Homework']],
+  timing: [[9, 'The rule that makes it legal'], [23, 'Building the denominator'], [24, 'The extra factors'], [19, 'Denominators that differ in sign'], [5, 'Homework']],
   sections: [
     {
       h: 'The rule that makes it legal',
@@ -11137,7 +11137,7 @@ G7_MAT.push({
     ['To simplify', 'Soddalashtirish', 'Упростить'],
     ['Excluded value', 'Mumkin bo‘lmagan qiymat', 'Недопустимое значение']
   ],
-  timing: [[10, 'The same denominator'], [25, 'Different denominators'], [25, 'The bracket when subtracting'], [20, 'Finishing the answer'], [5, 'Homework']],
+  timing: [[9, 'The same denominator'], [23, 'Different denominators'], [24, 'The bracket when subtracting'], [19, 'Finishing the answer'], [5, 'Homework']],
   sections: [
     {
       h: 'The same denominator',
@@ -11350,7 +11350,7 @@ G7_MAT.push({
     ['Divisor', 'Bo‘luvchi', 'Делитель'],
     ['Excluded value', 'Mumkin bo‘lmagan qiymat', 'Недопустимое значение']
   ],
-  timing: [[15, 'Multiplying'], [20, 'Cancel first'], [25, 'Dividing'], [20, 'Powers, and all the excluded values'], [5, 'Homework']],
+  timing: [[14, 'Multiplying'], [19, 'Cancel first'], [23, 'Dividing'], [19, 'Powers, and all the excluded values'], [5, 'Homework']],
   sections: [
     {
       h: 'Multiplying',
@@ -11915,7 +11915,7 @@ G7_MAT.push({
     ['Standard form', 'Standart ko‘rinish', 'Стандартный вид'],
     ['Check', 'Tekshirish', 'Проверка']
   ],
-  timing: [[10, 'The standard form'], [25, 'The four steps'], [25, 'Brackets and fractions'], [20, 'The three endings'], [5, 'Homework']],
+  timing: [[9, 'The standard form'], [23, 'The four steps'], [24, 'Brackets and fractions'], [19, 'The three endings'], [5, 'Homework']],
   sections: [
     {
       h: 'The standard form',
@@ -12100,7 +12100,7 @@ G7_MAT.push({
     ['House of Wisdom', 'Bayt ul-hikma', 'Дом мудрости'],
     ['Heritage', 'Meros', 'Наследие']
   ],
-  timing: [[10, 'Who he was'], [20, 'Al-jabr — restoring'], [20, 'Al-muqabala — balancing'], [30, 'A medieval solution, and the modern one beside it'], [5, 'Homework']],
+  timing: [[9, 'Who he was'], [19, 'Al-jabr — restoring'], [19, 'Al-muqabala — balancing'], [28, 'A medieval solution, and the modern one beside it'], [5, 'Homework']],
   sections: [
     {
       h: 'Who he was',
@@ -12292,7 +12292,7 @@ G7_MAT.push({
     ['Impossible answer', 'Mos kelmaydigan javob', 'Посторонний ответ'],
     ['To interpret', 'Talqin qilmoq', 'Истолковать']
   ],
-  timing: [[10, 'The five steps'], [25, 'Choosing the unknown'], [25, 'Three families of problem'], [20, 'Checking against the words'], [5, 'Homework']],
+  timing: [[9, 'The five steps'], [23, 'Choosing the unknown'], [24, 'Three families of problem'], [19, 'Checking against the words'], [5, 'Homework']],
   sections: [
     {
       h: 'The five steps',
@@ -12651,7 +12651,7 @@ G7_MAT.push({
     ['Principal', 'Asosiy summa', 'Основная сумма'],
     ['Original value', 'Boshlang‘ich qiymat', 'Первоначальное значение']
   ],
-  timing: [[15, 'One multiplication, not two steps'], [20, 'Finding the change'], [25, 'Simple interest'], [20, 'The reverse question'], [5, 'Homework']],
+  timing: [[14, 'One multiplication, not two steps'], [19, 'Finding the change'], [23, 'Simple interest'], [19, 'The reverse question'], [5, 'Homework']],
   sections: [
     {
       h: 'One multiplication, not two steps',
@@ -12835,7 +12835,7 @@ G7_MAT.push({
     ['Given data', 'Berilganlar', 'Данные'],
     ['Impossible', 'Yasab bo‘lmaydi', 'Невозможно']
   ],
-  timing: [[10, 'The rules of the game'], [25, 'A triangle from three sides'], [25, 'The other two triangles'], [20, 'Perpendiculars and midpoints'], [5, 'Homework']],
+  timing: [[9, 'The rules of the game'], [23, 'A triangle from three sides'], [24, 'The other two triangles'], [19, 'Perpendiculars and midpoints'], [5, 'Homework']],
   sections: [
     {
       h: 'The rules of the game',
@@ -13020,7 +13020,7 @@ G7_MAT.push({
     ['Disc', 'Doira', 'Круг'],
     ['Revolution', 'Aylanish', 'Оборот']
   ],
-  timing: [[20, 'The measuring experiment'], [20, 'The two formulae'], [20, 'Backwards'], [25, 'Wheels and tracks'], [5, 'Homework']],
+  timing: [[18, 'The measuring experiment'], [18, 'The two formulae'], [18, 'Backwards'], [22, 'Wheels and tracks'], [4, 'Homework']],
   sections: [
     {
       h: 'The measuring experiment',
@@ -13203,7 +13203,7 @@ G7_MAT.push({
     ['Quadrant', 'Chorak', 'Четверть'],
     ['To plot', 'Belgilamoq', 'Отметить']
   ],
-  timing: [[15, 'Two axes and one origin'], [20, 'Plotting and reading'], [25, 'The four quadrants'], [20, 'Lengths and midpoints'], [5, 'Homework']],
+  timing: [[14, 'Two axes and one origin'], [19, 'Plotting and reading'], [23, 'The four quadrants'], [19, 'Lengths and midpoints'], [5, 'Homework']],
   sections: [
     {
       h: 'Two axes and one origin',
@@ -13375,7 +13375,7 @@ G7_MAT.push({
     ['Table of values', 'Qiymatlar jadvali', 'Таблица значений'],
     ['Graph', 'Grafik', 'График']
   ],
-  timing: [[15, 'What a function is'], [20, 'Three ways of giving one'], [25, 'Values, forwards and backwards'], [20, 'The domain'], [5, 'Homework']],
+  timing: [[14, 'What a function is'], [19, 'Three ways of giving one'], [23, 'Values, forwards and backwards'], [19, 'The domain'], [5, 'Homework']],
   sections: [
     {
       h: 'What a function is',
@@ -13558,7 +13558,7 @@ G7_MAT.push({
     ['Direct proportion', 'To‘g‘ri proporsionallik', 'Прямая пропорциональность'],
     ['To lie on a line', 'Chiziqqa tegishli', 'Принадлежать прямой']
   ],
-  timing: [[15, 'Two points are enough'], [25, 'What k and b do'], [20, 'Meeting the axes'], [20, 'Is the point on the line?'], [5, 'Homework']],
+  timing: [[14, 'Two points are enough'], [23, 'What k and b do'], [19, 'Meeting the axes'], [19, 'Is the point on the line?'], [5, 'Homework']],
   sections: [
     {
       h: 'Two points are enough',
@@ -13918,7 +13918,7 @@ G7_MAT.push({
     ['Parallel', 'Parallel', 'Параллельные'],
     ['Coincident', 'Ustma-ust tushuvchi', 'Совпадающие']
   ],
-  timing: [[15, 'One equation, two unknowns'], [20, 'What a system is'], [25, 'Solving by drawing'], [20, 'One, none, or infinitely many'], [5, 'Homework']],
+  timing: [[14, 'One equation, two unknowns'], [19, 'What a system is'], [23, 'Solving by drawing'], [19, 'One, none, or infinitely many'], [5, 'Homework']],
   sections: [
     {
       h: 'One equation, two unknowns',

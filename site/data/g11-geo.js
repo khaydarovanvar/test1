@@ -26,7 +26,7 @@ G11_GEO.push({
     ['Projection onto a plane', 'Tekislikka proyeksiya', 'Проекция на плоскость'],
     ['Origin', 'Koordinatalar boshi', 'Начало координат']
   ],
-  timing: [[14, 'The third axis'], [22, 'Plotting and reading points'], [30, 'The distance formula'], [24, 'The midpoint formula'], [24, 'The sphere'], [21, 'Practice and homework']],
+  timing: [[12, 'The third axis'], [20, 'Plotting and reading points'], [27, 'The distance formula'], [21, 'The midpoint formula'], [21, 'The sphere'], [19, 'Practice and homework']],
   sections: [
     {
       h: 'A third axis',
@@ -185,7 +185,7 @@ G11_GEO.push({
     ['Equal vectors', 'Teng vektorlar', 'Равные векторы'],
     ['Basis vectors i, j, k', 'Bazis vektorlar', 'Базисные векторы']
   ],
-  timing: [[10, 'What carries over from the plane'], [20, 'Components and the basis'], [22, 'The three operations'], [20, 'Magnitude and unit vectors'], [18, 'Position vectors'], [10, 'Homework']],
+  timing: [[8, 'What carries over from the plane'], [16, 'Components and the basis'], [18, 'The three operations'], [16, 'Magnitude and unit vectors'], [14, 'Position vectors'], [8, 'Homework']],
   sections: [
     {
       h: 'One extra component, nothing else new',
@@ -343,7 +343,7 @@ G11_GEO.push({
     ['Scalar coefficient', 'Skalyar koeffitsient', 'Скалярный коэффициент'],
     ['Common point', 'Umumiy nuqta', 'Общая точка']
   ],
-  timing: [[8, 'Collinearity'], [12, 'Proving three points collinear'], [14, 'Coplanarity'], [8, 'Practice'], [3, 'Homework']],
+  timing: [[7, 'Collinearity'], [11, 'Proving three points collinear'], [12, 'Coplanarity'], [7, 'Practice'], [3, 'Homework']],
   sections: [
     {
       h: 'Collinear vectors',
@@ -482,7 +482,7 @@ G11_GEO.push({
     ['Direction cosines', 'Yo‘naltiruvchi kosinuslar', 'Направляющие косинусы'],
     ['Work done', 'Bajarilgan ish', 'Работа силы']
   ],
-  timing: [[12, 'Two formulas for one product'], [20, 'The angle formula'], [20, 'Perpendicularity'], [18, 'Projections'], [20, 'Practice'], [10, 'Homework']],
+  timing: [[10, 'Two formulas for one product'], [16, 'The angle formula'], [16, 'Perpendicularity'], [14, 'Projections'], [16, 'Practice'], [8, 'Homework']],
   sections: [
     {
       h: 'Two formulas, one number',
@@ -638,7 +638,7 @@ G11_GEO.push({
     ['Invariant point', 'O‘zgarmas nuqta', 'Неподвижная точка'],
     ['Image', 'Tasvir', 'Образ']
   ],
-  timing: [[8, 'Four transformations'], [14, 'Coordinate rules'], [12, 'Isometries'], [8, 'Composition'], [3, 'Homework']],
+  timing: [[7, 'Four transformations'], [12, 'Coordinate rules'], [11, 'Isometries'], [7, 'Composition'], [3, 'Homework']],
   sections: [
     {
       h: 'Four transformations, four rules',
@@ -780,7 +780,7 @@ G11_GEO.push({
     ['Symmetric figure', 'Simmetrik shakl', 'Симметричная фигура'],
     ['Symmetry group', 'Simmetriya guruhi', 'Группа симметрии']
   ],
-  timing: [[10, 'Three kinds'], [20, 'Coordinate rules'], [24, 'Counting on solids'], [20, 'Symmetry as a shortcut'], [14, 'Practice'], [2, 'Homework']],
+  timing: [[9, 'Three kinds'], [18, 'Coordinate rules'], [21, 'Counting on solids'], [18, 'Symmetry as a shortcut'], [12, 'Practice'], [2, 'Homework']],
   sections: [
     {
       h: 'Three kinds of symmetry',
@@ -935,7 +935,7 @@ G11_GEO.push({
     ['Girih pattern', 'Girih naqshi', 'Гирих'],
     ['Chirality', 'Xirallik', 'Хиральность']
   ],
-  timing: [[8, 'Symmetry in living things'], [12, 'Crystals'], [12, 'Engineering and architecture'], [10, 'Uzbek ornament'], [3, 'Homework']],
+  timing: [[7, 'Symmetry in living things'], [10, 'Crystals'], [11, 'Engineering and architecture'], [9, 'Uzbek ornament'], [3, 'Homework']],
   sections: [
     {
       h: 'Living things',
@@ -1097,7 +1097,7 @@ G11_GEO.push({
     ['Enlargement', 'Gomotetiya', 'Гомотетия'],
     ['Linear dimension', 'Chiziqli o‘lcham', 'Линейный размер']
   ],
-  timing: [[8, 'What similarity means for solids'], [14, 'The three rules'], [12, 'Working backwards'], [8, 'Applications'], [3, 'Homework']],
+  timing: [[7, 'What similarity means for solids'], [12, 'The three rules'], [11, 'Working backwards'], [7, 'Applications'], [3, 'Homework']],
   sections: [
     {
       h: 'Similar solids',
@@ -1249,7 +1249,7 @@ G11_GEO.push({
     ['Consistent system', 'Birgalikdagi sistema', 'Совместная система'],
     ['Angle between lines', 'Chiziqlar orasidagi burchak', 'Угол между прямыми']
   ],
-  timing: [[14, 'A point and a direction'], [22, 'From two points'], [24, 'Do two lines meet?'], [26, 'Parallel, intersecting or skew'], [30, 'The angle'], [19, 'Practice and homework']],
+  timing: [[12, 'A point and a direction'], [20, 'From two points'], [21, 'Do two lines meet?'], [23, 'Parallel, intersecting or skew'], [27, 'The angle'], [17, 'Practice and homework']],
   sections: [
     {
       h: 'A point and a direction',
@@ -1413,7 +1413,7 @@ G11_GEO.push({
     ['Target', 'Maqsad', 'Цель'],
     ['Command word', 'Topshiriq so‘zi', 'Командное слово']
   ],
-  timing: [[3, 'Instructions'], [42, 'The paper'], [12, 'Answers'], [20, 'Rewrite'], [10, 'Concept map'], [3, 'Targets']],
+  timing: [[3, 'Instructions'], [36, 'The paper'], [11, 'Answers'], [18, 'Rewrite'], [9, 'Concept map'], [3, 'Targets']],
   sections: [
     {
       h: 'The paper — 30 marks, 42 minutes',
@@ -1576,7 +1576,7 @@ G11_GEO.push({
     ['Euler’s formula', 'Eyler formulasi', 'Формула Эйлера'],
     ['Lateral face', 'Yon yoq', 'Боковая грань']
   ],
-  timing: [[12, 'What a polyhedral angle is'], [22, 'The angle inequality'], [22, 'Convexity'], [20, 'Euler again'], [18, 'Practice'], [6, 'Homework']],
+  timing: [[10, 'What a polyhedral angle is'], [17, 'The angle inequality'], [18, 'Convexity'], [16, 'Euler again'], [14, 'Practice'], [5, 'Homework']],
   sections: [
     {
       h: 'The corner of a solid',
@@ -1732,7 +1732,7 @@ G11_GEO.push({
     ['Space diagonal', 'Fazoviy diagonal', 'Пространственная диагональ'],
     ['Perpendicular section', 'Perpendikulyar kesim', 'Перпендикулярное сечение']
   ],
-  timing: [[12, 'The family'], [22, 'Sections'], [24, 'The parallelepiped'], [22, 'The diagonal formula'], [16, 'Practice'], [4, 'Homework']],
+  timing: [[10, 'The family'], [18, 'Sections'], [18, 'The parallelepiped'], [18, 'The diagonal formula'], [13, 'Practice'], [3, 'Homework']],
   sections: [
     {
       h: 'The family',
@@ -1902,7 +1902,7 @@ G11_GEO.push({
     ['Lateral edge', 'Yon qirra', 'Боковое ребро'],
     ['Apothem of a polygon', 'Ko‘pburchak apofemasi', 'Апофема многоугольника']
   ],
-  timing: [[8, 'The net'], [12, 'The formula'], [10, 'Oblique prisms'], [10, 'Working backwards'], [5, 'Homework']],
+  timing: [[7, 'The net'], [11, 'The formula'], [9, 'Oblique prisms'], [9, 'Working backwards'], [4, 'Homework']],
   sections: [
     {
       h: 'The net',
@@ -2042,7 +2042,7 @@ G11_GEO.push({
     ['Minimum value', 'Eng kichik qiymat', 'Минимальное значение'],
     ['Significant figures', 'Muhim raqamlar', 'Значащие цифры']
   ],
-  timing: [[8, 'A measurement is an interval'], [12, 'The four operations'], [14, 'Areas and volumes'], [8, 'How many figures'], [3, 'Homework']],
+  timing: [[7, 'A measurement is an interval'], [11, 'The four operations'], [12, 'Areas and volumes'], [7, 'How many figures'], [3, 'Homework']],
   sections: [
     {
       h: 'A measurement is an interval',
@@ -2197,7 +2197,7 @@ G11_GEO.push({
     ['Height of a solid', 'Jism balandligi', 'Высота тела'],
     ['Capacity', 'Sig‘im', 'Вместимость']
   ],
-  timing: [[10, 'What volume is'], [12, 'The cuboid'], [12, 'The parallelepiped'], [8, 'Units'], [3, 'Homework']],
+  timing: [[9, 'What volume is'], [10, 'The cuboid'], [11, 'The parallelepiped'], [7, 'Units'], [3, 'Homework']],
   sections: [
     {
       h: 'The three properties',
@@ -2348,7 +2348,7 @@ G11_GEO.push({
     ['Uniform cross-section', 'O‘zgarmas kesim', 'Постоянное сечение'],
     ['Capacity', 'Sig‘im', 'Вместимость']
   ],
-  timing: [[14, 'From the cuboid to any prism'], [20, 'Applying the formula'], [20, 'Working backwards'], [22, 'Compound solids'], [16, 'Practice'], [8, 'Homework']],
+  timing: [[11, 'From the cuboid to any prism'], [16, 'Applying the formula'], [16, 'Working backwards'], [18, 'Compound solids'], [13, 'Practice'], [6, 'Homework']],
   sections: [
     {
       h: 'From the cuboid to any prism',
@@ -2495,7 +2495,7 @@ G11_GEO.push({
     ['Capacity', 'Sig‘im', 'Вместимость'],
     ['Solid of revolution', 'Aylanish jismi', 'Тело вращения']
   ],
-  timing: [[12, 'A prism with a circular base'], [22, 'The net and the area'], [22, 'The volume'], [22, 'Working backwards'], [20, 'Compound solids'], [8, 'Homework']],
+  timing: [[9, 'A prism with a circular base'], [16, 'The net and the area'], [17, 'The volume'], [17, 'Working backwards'], [15, 'Compound solids'], [6, 'Homework']],
   sections: [
     {
       h: 'A prism with a circular base',
@@ -2648,7 +2648,7 @@ G11_GEO.push({
     ['Mass', 'Massa', 'Масса'],
     ['Appropriate unit', 'Mos birlik', 'Подходящая единица']
   ],
-  timing: [[10, 'Cubing the factor'], [12, 'Litres'], [12, 'Choosing a unit'], [8, 'Density'], [3, 'Homework']],
+  timing: [[9, 'Cubing the factor'], [10, 'Litres'], [11, 'Choosing a unit'], [7, 'Density'], [3, 'Homework']],
   sections: [
     {
       h: 'Cube the length factor',
@@ -2805,7 +2805,7 @@ G11_GEO.push({
     ['Self-assessment', 'O‘z-o‘zini baholash', 'Самооценка'],
     ['Target', 'Maqsad', 'Цель']
   ],
-  timing: [[3, 'Instructions'], [42, 'The paper'], [12, 'Answers'], [20, 'Rewrite'], [10, 'Concept map'], [3, 'Targets']],
+  timing: [[3, 'Instructions'], [36, 'The paper'], [11, 'Answers'], [18, 'Rewrite'], [9, 'Concept map'], [3, 'Targets']],
   sections: [
     {
       h: 'The paper — 30 marks, 42 minutes',
@@ -2967,7 +2967,7 @@ G11_GEO.push({
     ['Lateral surface area', 'Yon sirt yuzasi', 'Площадь боковой поверхности'],
     ['Base perimeter', 'Asos perimetri', 'Периметр основания']
   ],
-  timing: [[14, 'The elements'], [24, 'The two right triangles'], [24, 'Surface area'], [20, 'Working backwards'], [16, 'Practice'], [4, 'Homework']],
+  timing: [[11, 'The elements'], [18, 'The two right triangles'], [19, 'Surface area'], [16, 'Working backwards'], [13, 'Practice'], [3, 'Homework']],
   sections: [
     {
       h: 'The elements',
@@ -3121,7 +3121,7 @@ G11_GEO.push({
     ['Scale factor', 'O‘xshashlik koeffitsienti', 'Коэффициент подобия'],
     ['Complementary cone', 'To‘ldiruvchi piramida', 'Дополняющая пирамида']
   ],
-  timing: [[8, 'What a frustum is'], [14, 'Surface area'], [14, 'Volume'], [6, 'Recovering the pyramid'], [3, 'Homework']],
+  timing: [[7, 'What a frustum is'], [13, 'Surface area'], [12, 'Volume'], [5, 'Recovering the pyramid'], [3, 'Homework']],
   sections: [
     {
       h: 'What a frustum is',
@@ -3271,7 +3271,7 @@ G11_GEO.push({
     ['Right circular cone', 'To‘g‘ri doiraviy konus', 'Прямой круговой конус'],
     ['Solid of revolution', 'Aylanish jismi', 'Тело вращения']
   ],
-  timing: [[14, 'The elements'], [24, 'The net and the curved area'], [24, 'The volume'], [22, 'Working backwards'], [20, 'Practice'], [6, 'Homework']],
+  timing: [[10, 'The elements'], [18, 'The net and the curved area'], [17, 'The volume'], [16, 'Working backwards'], [15, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The elements',
@@ -3426,7 +3426,7 @@ G11_GEO.push({
     ['Circumference', 'Aylana uzunligi', 'Длина окружности'],
     ['Design specification', 'Loyiha talabi', 'Техническое задание']
   ],
-  timing: [[10, 'The link between the two circles'], [14, 'Finding the angle'], [12, 'Waste'], [6, 'A design task'], [3, 'Homework']],
+  timing: [[9, 'The link between the two circles'], [12, 'Finding the angle'], [11, 'Waste'], [5, 'A design task'], [3, 'Homework']],
   sections: [
     {
       h: 'The link between the two circles',
@@ -3572,7 +3572,7 @@ G11_GEO.push({
     ['Complementary cone', 'To‘ldiruvchi konus', 'Дополняющий конус'],
     ['Axial section', 'O‘qli kesim', 'Осевое сечение']
   ],
-  timing: [[8, 'The solid'], [14, 'Surface area'], [14, 'Volume'], [6, 'Practical problems'], [3, 'Homework']],
+  timing: [[7, 'The solid'], [13, 'Surface area'], [12, 'Volume'], [5, 'Practical problems'], [3, 'Homework']],
   sections: [
     {
       h: 'The solid',
@@ -3724,7 +3724,7 @@ G11_GEO.push({
     ['Cube root', 'Kub ildiz', 'Кубический корень'],
     ['Surface-area-to-volume ratio', 'Sirt va hajm nisbati', 'Отношение поверхности к объёму']
   ],
-  timing: [[8, 'The three rules'], [14, 'Working backwards'], [12, 'Applications'], [8, 'Why size matters'], [3, 'Homework']],
+  timing: [[7, 'The three rules'], [12, 'Working backwards'], [11, 'Applications'], [7, 'Why size matters'], [3, 'Homework']],
   sections: [
     {
       h: 'The three rules',
@@ -3880,7 +3880,7 @@ G11_GEO.push({
     ['Circumscribed sphere', 'Tashqi chizilgan sfera', 'Описанная сфера'],
     ['Diameter', 'Diametr', 'Диаметр']
   ],
-  timing: [[12, 'Sphere and ball'], [24, 'Plane sections'], [24, 'Tangent planes'], [24, 'Inscribed and circumscribed'], [20, 'Practice'], [6, 'Homework']],
+  timing: [[9, 'Sphere and ball'], [18, 'Plane sections'], [17, 'Tangent planes'], [17, 'Inscribed and circumscribed'], [15, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'Sphere and ball',
@@ -4041,7 +4041,7 @@ G11_GEO.push({
     ['Sine rule', 'Sinuslar teoremasi', 'Теорема синусов'],
     ['Cosine rule', 'Kosinuslar teoremasi', 'Теорема косинусов']
   ],
-  timing: [[14, 'The axial section'], [24, 'The semi-vertical angle'], [24, 'Frustums and inscribed solids'], [22, 'Combined problems'], [20, 'Practice'], [6, 'Homework']],
+  timing: [[10, 'The axial section'], [18, 'The semi-vertical angle'], [17, 'Frustums and inscribed solids'], [16, 'Combined problems'], [15, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The axial section',
@@ -4196,7 +4196,7 @@ G11_GEO.push({
     ['Height of a cap', 'Segment balandligi', 'Высота сегмента'],
     ['Archimedes’ theorem', 'Arximed teoremasi', 'Теорема Архимеда']
   ],
-  timing: [[14, 'The formula'], [24, 'Where it comes from'], [24, 'Caps and hemispheres'], [22, 'Displacement'], [20, 'Practice'], [6, 'Homework']],
+  timing: [[10, 'The formula'], [18, 'Where it comes from'], [17, 'Caps and hemispheres'], [16, 'Displacement'], [15, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The formula',
@@ -4356,7 +4356,7 @@ G11_GEO.push({
     ['Enclosing cylinder', 'Tashqi silindr', 'Описанный цилиндр'],
     ['Cap', 'Segment', 'Сегмент']
   ],
-  timing: [[10, 'The formula'], [12, 'Archimedes’ theorem'], [12, 'Hemispheres and caps'], [8, 'Combined problems'], [3, 'Homework']],
+  timing: [[9, 'The formula'], [10, 'Archimedes’ theorem'], [11, 'Hemispheres and caps'], [7, 'Combined problems'], [3, 'Homework']],
   sections: [
     {
       h: 'The formula',
@@ -4520,7 +4520,7 @@ G11_GEO.push({
     ['Wetted surface', 'Ho‘llanadigan sirt', 'Смачиваемая поверхность'],
     ['Silo', 'Silos minorasi', 'Силосная башня']
   ],
-  timing: [[12, 'Reading an object as solids'], [25, 'Adding and subtracting volume'], [25, 'Which faces survive'], [30, 'Bounds through a compound'], [30, 'Measuring the classroom'], [13, 'Homework']],
+  timing: [[11, 'Reading an object as solids'], [22, 'Adding and subtracting volume'], [22, 'Which faces survive'], [26, 'Bounds through a compound'], [27, 'Measuring the classroom'], [12, 'Homework']],
   sections: [
     {
       h: 'Reading an object as solids',
@@ -4753,7 +4753,7 @@ G11_GEO.push({
     ['Concept map', 'Tushunchalar xaritasi', 'Карта понятий'],
     ['Target', 'Maqsad', 'Цель']
   ],
-  timing: [[3, 'Instructions'], [42, 'The paper'], [12, 'Answers'], [20, 'Rewrite'], [10, 'The map'], [3, 'Targets']],
+  timing: [[3, 'Instructions'], [36, 'The paper'], [11, 'Answers'], [18, 'Rewrite'], [9, 'The map'], [3, 'Targets']],
   sections: [
     {
       h: 'The paper — 35 marks, 42 minutes',
@@ -4947,7 +4947,7 @@ G11_GEO.push({
     ['Unit conversion', 'Birliklarni almashtirish', 'Перевод единиц'],
     ['Degree of accuracy', 'Aniqlik darajasi', 'Степень точности']
   ],
-  timing: [[15, 'Reading the question'], [25, 'Units'], [25, 'Density and rate'], [25, 'Which faces'], [10, 'Homework']],
+  timing: [[12, 'Reading the question'], [20, 'Units'], [20, 'Density and rate'], [20, 'Which faces'], [8, 'Homework']],
   sections: [
     {
       h: 'Reading the question',
@@ -5157,7 +5157,7 @@ G11_GEO.push({
     ['Cost function', 'Narx funksiyasi', 'Функция стоимости'],
     ['Aspect ratio', 'Nisbat', 'Отношение']
   ],
-  timing: [[15, 'The four steps'], [30, 'The closed cylinder'], [25, 'Open containers'], [25, 'Cost, not area'], [10, 'Homework']],
+  timing: [[11, 'The four steps'], [23, 'The closed cylinder'], [19, 'Open containers'], [19, 'Cost, not area'], [8, 'Homework']],
   sections: [
     {
       h: 'The four steps',
@@ -5351,7 +5351,7 @@ G11_GEO.push({
     ['Time per question', 'Savolga vaqt', 'Время на вопрос'],
     ['Answer sheet', 'Javoblar varaqasi', 'Бланк ответов']
   ],
-  timing: [[10, 'The format'], [40, 'A practice block of 20'], [20, 'Marking and analysis'], [20, 'The four fast techniques'], [10, 'Homework']],
+  timing: [[8, 'The format'], [32, 'A practice block of 20'], [16, 'Marking and analysis'], [16, 'The four fast techniques'], [8, 'Homework']],
   sections: [
     {
       h: 'The format',
@@ -5578,7 +5578,7 @@ G11_GEO.push({
     ['Compound solid', 'Murakkab jism', 'Составное тело'],
     ['Optimisation', 'Optimallashtirish', 'Оптимизация']
   ],
-  timing: [[3, 'Instructions'], [45, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The map']],
+  timing: [[3, 'Instructions'], [42, 'The paper'], [11, 'Answers'], [19, 'Diagnosis and rewrite'], [5, 'The map']],
   sections: [
     {
       h: 'The paper — 40 marks, 45 minutes',
@@ -5775,7 +5775,7 @@ G11_GEO.push({
     ['Skew lines', 'Ayqash chiziqlar', 'Скрещивающиеся прямые'],
     ['Parameter', 'Parametr', 'Параметр']
   ],
-  timing: [[15, 'Points and distances'], [25, 'The scalar product'], [25, 'Lines in space'], [20, 'Planes and normals'], [15, 'Homework']],
+  timing: [[12, 'Points and distances'], [20, 'The scalar product'], [20, 'Lines in space'], [16, 'Planes and normals'], [12, 'Homework']],
   sections: [
     {
       h: 'Points and distances',
@@ -5973,7 +5973,7 @@ G11_GEO.push({
     ['Vector method', 'Vektor usuli', 'Векторный метод'],
     ['Common perpendicular', 'Umumiy perpendikulyar', 'Общий перпендикуляр']
   ],
-  timing: [[15, 'The statements'], [25, 'Angles, both ways'], [25, 'Distances'], [20, 'Choosing a method'], [15, 'Homework']],
+  timing: [[12, 'The statements'], [20, 'Angles, both ways'], [20, 'Distances'], [16, 'Choosing a method'], [12, 'Homework']],
   sections: [
     {
       h: 'The statements',
@@ -6180,7 +6180,7 @@ G11_GEO.push({
     ['Scale factor', 'O‘xshashlik koeffitsiyenti', 'Коэффициент подобия'],
     ['Compound solid', 'Murakkab jism', 'Составное тело']
   ],
-  timing: [[15, 'The nine formulas'], [20, 'The three questions'], [25, 'Compound and hollow'], [25, 'Scale factors'], [15, 'A mixed set']],
+  timing: [[12, 'The nine formulas'], [16, 'The three questions'], [20, 'Compound and hollow'], [20, 'Scale factors'], [12, 'A mixed set']],
   sections: [
     {
       h: 'The nine formulas',
@@ -6385,7 +6385,7 @@ G11_GEO.push({
     ['Error type', 'Xato turi', 'Тип ошибки'],
     ['Summary sheet', 'Xulosa varaqasi', 'Итоговый лист']
   ],
-  timing: [[15, 'The seven types'], [30, 'A timed mixed set'], [20, 'Diagnosis by type'], [20, 'The two years in one page'], [15, 'The plan']],
+  timing: [[12, 'The seven types'], [24, 'A timed mixed set'], [16, 'Diagnosis by type'], [16, 'The two years in one page'], [12, 'The plan']],
   sections: [
     {
       h: 'The seven types',

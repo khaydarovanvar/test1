@@ -26,7 +26,7 @@ G11_ALG.push({
     ['Gradient', 'Burchak koeffitsienti', 'Угловой коэффициент'],
     ['Limiting position', 'Limit holat', 'Предельное положение']
   ],
-  timing: [[8, 'Two problems, one answer'], [16, 'Δx and Δy'], [18, 'The difference quotient'], [20, 'Secant to tangent'], [20, 'Practice'], [8, 'Homework']],
+  timing: [[7, 'Two problems, one answer'], [14, 'Δx and Δy'], [16, 'The difference quotient'], [18, 'Secant to tangent'], [18, 'Practice'], [7, 'Homework']],
   sections: [
     {
       h: 'Two old problems',
@@ -189,7 +189,7 @@ G11_ALG.push({
     ['Conjugate expression', 'Qo‘shma ifoda', 'Сопряжённое выражение'],
     ['Infinity', 'Cheksizlik', 'Бесконечность']
   ],
-  timing: [[10, 'What a limit says'], [14, 'Substitution, when it works'], [22, 'The 0/0 form'], [18, 'Algebra of limits'], [20, 'Practice'], [6, 'Homework']],
+  timing: [[9, 'What a limit says'], [12, 'Substitution, when it works'], [20, 'The 0/0 form'], [16, 'Algebra of limits'], [18, 'Practice'], [5, 'Homework']],
   sections: [
     {
       h: 'What the notation says',
@@ -344,7 +344,7 @@ G11_ALG.push({
     ['Corner point', 'Sinish nuqtasi', 'Угловая точка'],
     ['Rate of change', 'O‘zgarish tezligi', 'Скорость изменения']
   ],
-  timing: [[10, 'The definition'], [22, 'First principles, three times'], [16, 'Two interpretations'], [12, 'Notation, and where it fails'], [22, 'Practice'], [8, 'Homework']],
+  timing: [[9, 'The definition'], [19, 'First principles, three times'], [14, 'Two interpretations'], [11, 'Notation, and where it fails'], [20, 'Practice'], [7, 'Homework']],
   sections: [
     {
       h: 'The definition',
@@ -502,7 +502,7 @@ G11_ALG.push({
     ['Simplify first', 'Avval soddalashtirish', 'Сначала упростить'],
     ['Second derivative', 'Ikkinchi tartibli hosila', 'Вторая производная']
   ],
-  timing: [[14, 'The power rule'], [16, 'Sums and multiples'], [26, 'The product rule'], [26, 'The quotient rule'], [32, 'Practice'], [21, 'Homework and consolidation']],
+  timing: [[12, 'The power rule'], [14, 'Sums and multiples'], [23, 'The product rule'], [23, 'The quotient rule'], [29, 'Practice'], [19, 'Homework and consolidation']],
   sections: [
     {
       h: 'The power rule',
@@ -669,7 +669,7 @@ G11_ALG.push({
     ['Bracket power', 'Qavs darajasi', 'Степень скобки'],
     ['Intermediate variable', 'Oraliq o‘zgaruvchi', 'Промежуточная переменная']
   ],
-  timing: [[14, 'Why a new rule is needed'], [22, 'The chain rule'], [26, 'Practising it'], [26, 'Mixing with product and quotient'], [30, 'Related rates'], [17, 'Homework']],
+  timing: [[12, 'Why a new rule is needed'], [20, 'The chain rule'], [23, 'Practising it'], [23, 'Mixing with product and quotient'], [27, 'Related rates'], [15, 'Homework']],
   sections: [
     {
       h: 'Why the power rule is not enough',
@@ -837,7 +837,7 @@ G11_ALG.push({
     ['Correction', 'Tuzatish', 'Исправление'],
     ['Rule selection', 'Qoidani tanlash', 'Выбор правила']
   ],
-  timing: [[3, 'Instructions'], [40, 'The paper'], [10, 'Self-mark'], [25, 'Rewrite and classify'], [12, 'Rule-selection drill']],
+  timing: [[3, 'Instructions'], [35, 'The paper'], [9, 'Self-mark'], [22, 'Rewrite and classify'], [11, 'Rule-selection drill']],
   sections: [
     {
       h: 'The paper — 25 marks, 40 minutes',
@@ -1001,7 +1001,7 @@ G11_ALG.push({
     ['Corner (cusp)', 'Sinish nuqtasi', 'Угловая точка'],
     ['One-sided derivative', 'Bir tomonlama hosila', 'Односторонняя производная']
   ],
-  timing: [[10, 'Three ways to read |x|'], [18, 'Graphs'], [22, 'Equations'], [22, 'Inequalities'], [16, 'The corner'], [12, 'Homework']],
+  timing: [[8, 'Three ways to read |x|'], [14, 'Graphs'], [17, 'Equations'], [18, 'Inequalities'], [13, 'The corner'], [10, 'Homework']],
   sections: [
     {
       h: 'Three ways to read the same symbol',
@@ -1162,7 +1162,7 @@ G11_ALG.push({
     ['Horizontal tangent', 'Gorizontal urinma', 'Горизонтальная касательная'],
     ['Intercept', 'Kesim', 'Отрезок на оси']
   ],
-  timing: [[10, 'The three numbers you need'], [20, 'The tangent'], [20, 'The normal'], [22, 'Working backwards'], [16, 'Practice'], [12, 'Homework']],
+  timing: [[8, 'The three numbers you need'], [16, 'The tangent'], [16, 'The normal'], [17, 'Working backwards'], [13, 'Practice'], [10, 'Homework']],
   sections: [
     {
       h: 'Three numbers, then one formula',
@@ -1320,7 +1320,7 @@ G11_ALG.push({
     ['Sign chart', 'Ishoralar jadvali', 'Таблица знаков'],
     ['Curve sketching', 'Grafik chizish', 'Построение графика']
   ],
-  timing: [[16, 'The sign of the derivative'], [24, 'Stationary points'], [30, 'Classifying them'], [30, 'The second derivative test'], [40, 'Full sketches'], [40, 'Practice and homework']],
+  timing: [[14, 'The sign of the derivative'], [21, 'Stationary points'], [27, 'Classifying them'], [27, 'The second derivative test'], [35, 'Full sketches'], [36, 'Practice and homework']],
   sections: [
     {
       h: 'The sign of the derivative',
@@ -1486,7 +1486,7 @@ G11_ALG.push({
     ['Optimisation', 'Optimallashtirish', 'Оптимизация'],
     ['Justification', 'Asoslash', 'Обоснование']
   ],
-  timing: [[14, 'The five-step method'], [26, 'Geometric problems'], [30, 'Boxes and cans'], [26, 'Cost and time problems'], [40, 'Practice'], [14, 'Homework']],
+  timing: [[11, 'The five-step method'], [21, 'Geometric problems'], [24, 'Boxes and cans'], [21, 'Cost and time problems'], [32, 'Practice'], [11, 'Homework']],
   sections: [
     {
       h: 'Five steps',
@@ -1646,7 +1646,7 @@ G11_ALG.push({
     ['Revision', 'Takrorlash', 'Повторение'],
     ['Summative assessment', 'Yakuniy baholash', 'Итоговое оценивание']
   ],
-  timing: [[3, 'Instructions'], [42, 'The paper'], [10, 'Answers on the board'], [20, 'Rewrite'], [12, 'Concept map'], [3, 'Targets']],
+  timing: [[3, 'Instructions'], [36, 'The paper'], [9, 'Answers on the board'], [18, 'Rewrite'], [11, 'Concept map'], [3, 'Targets']],
   sections: [
     {
       h: 'The paper — 30 marks, 42 minutes',
@@ -1808,7 +1808,7 @@ G11_ALG.push({
     ['Convenient point', 'Qulay nuqta', 'Удобная точка'],
     ['Order of accuracy', 'Aniqlik tartibi', 'Порядок точности']
   ],
-  timing: [[16, 'Where the formula comes from'], [24, 'Roots and powers'], [24, 'Changes in a quantity'], [24, 'Error estimates'], [36, 'Practice'], [11, 'Homework']],
+  timing: [[14, 'Where the formula comes from'], [21, 'Roots and powers'], [21, 'Changes in a quantity'], [21, 'Error estimates'], [33, 'Practice'], [10, 'Homework']],
   sections: [
     {
       h: 'Where the formula comes from',
@@ -1971,7 +1971,7 @@ G11_ALG.push({
     ['Units of a rate', 'Tezlik birligi', 'Единицы скорости'],
     ['Instant of rest', 'To‘xtash payti', 'Момент остановки']
   ],
-  timing: [[16, 'The derivative has units'], [30, 'Motion'], [30, 'Connected rates'], [30, 'Cost and revenue'], [50, 'Practice'], [24, 'Homework and consolidation']],
+  timing: [[14, 'The derivative has units'], [27, 'Motion'], [27, 'Connected rates'], [27, 'Cost and revenue'], [44, 'Practice'], [21, 'Homework and consolidation']],
   sections: [
     {
       h: 'The derivative has units',
@@ -2136,7 +2136,7 @@ G11_ALG.push({
     ['Method error', 'Usul xatosi', 'Ошибка в методе'],
     ['Knowledge gap', 'Bilim bo‘shlig‘i', 'Пробел в знаниях']
   ],
-  timing: [[3, 'Instructions'], [40, 'The paper'], [10, 'Self-mark'], [25, 'Rewrite'], [12, 'Units drill']],
+  timing: [[3, 'Instructions'], [35, 'The paper'], [9, 'Self-mark'], [22, 'Rewrite'], [11, 'Units drill']],
   sections: [
     {
       h: 'The paper — 25 marks, 40 minutes',
@@ -2296,7 +2296,7 @@ G11_ALG.push({
     ['Integration', 'Integrallash', 'Интегрирование'],
     ['Inverse operation', 'Teskari amal', 'Обратная операция']
   ],
-  timing: [[16, 'The definition'], [24, 'Why the constant'], [26, 'Notation'], [30, 'Particular antiderivatives'], [46, 'Practice'], [38, 'Homework and consolidation']],
+  timing: [[14, 'The definition'], [21, 'Why the constant'], [23, 'Notation'], [27, 'Particular antiderivatives'], [41, 'Practice'], [34, 'Homework and consolidation']],
   sections: [
     {
       h: 'The definition',
@@ -2461,7 +2461,7 @@ G11_ALG.push({
     ['Exceptional case', 'Istisno hol', 'Особый случай'],
     ['Term by term', 'Hadma-had', 'Почленно']
   ],
-  timing: [[20, 'The power rule'], [20, 'The exceptional case'], [30, 'Linearity'], [40, 'Rewriting first'], [40, 'The linear bracket'], [66, 'Practice and homework'], [54, 'Consolidation']],
+  timing: [[18, 'The power rule'], [18, 'The exceptional case'], [27, 'Linearity'], [36, 'Rewriting first'], [36, 'The linear bracket'], [57, 'Practice and homework'], [48, 'Consolidation']],
   sections: [
     {
       h: 'The power rule',
@@ -2641,7 +2641,7 @@ G11_ALG.push({
     ['Target', 'Maqsad', 'Цель'],
     ['Revision', 'Takrorlash', 'Повторение']
   ],
-  timing: [[3, 'Instructions'], [42, 'The paper'], [10, 'Answers'], [20, 'Rewrite'], [10, 'Concept map'], [5, 'Targets']],
+  timing: [[3, 'Instructions'], [37, 'The paper'], [9, 'Answers'], [18, 'Rewrite'], [9, 'Concept map'], [4, 'Targets']],
   sections: [
     {
       h: 'The paper — 30 marks, 42 minutes',
@@ -2802,7 +2802,7 @@ G11_ALG.push({
     ['Additivity', 'Additivlik', 'Аддитивность'],
     ['Sign of the integral', 'Integral ishorasi', 'Знак интеграла']
   ],
-  timing: [[18, 'Area as a limit of rectangles'], [26, 'The Newton–Leibniz formula'], [26, 'Properties'], [26, 'Signed area'], [30, 'Practice'], [9, 'Homework']],
+  timing: [[16, 'Area as a limit of rectangles'], [23, 'The Newton–Leibniz formula'], [23, 'Properties'], [23, 'Signed area'], [27, 'Practice'], [8, 'Homework']],
   sections: [
     {
       h: 'Area as a limit of rectangles',
@@ -2964,7 +2964,7 @@ G11_ALG.push({
     ['Signed area', 'Ishorali yuza', 'Площадь со знаком'],
     ['Integrand', 'Integral ostidagi funksiya', 'Подынтегральная функция']
   ],
-  timing: [[20, 'Area with the axis'], [30, 'Area between two curves'], [30, 'Volumes of revolution'], [26, 'Motion'], [30, 'Practice'], [9, 'Homework']],
+  timing: [[17, 'Area with the axis'], [24, 'Area between two curves'], [25, 'Volumes of revolution'], [22, 'Motion'], [25, 'Practice'], [7, 'Homework']],
   sections: [
     {
       h: 'Area with the axis',
@@ -3126,7 +3126,7 @@ G11_ALG.push({
     ['Numerical integration', 'Sonli integrallash', 'Численное интегрирование'],
     ['Accuracy', 'Aniqlik', 'Точность']
   ],
-  timing: [[18, 'Why a numerical method'], [28, 'The rule'], [28, 'Over or under?'], [26, 'Improving the estimate'], [30, 'Practice'], [5, 'Homework']],
+  timing: [[16, 'Why a numerical method'], [25, 'The rule'], [25, 'Over or under?'], [23, 'Improving the estimate'], [27, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'Why a numerical method',
@@ -3296,7 +3296,7 @@ G11_ALG.push({
     ['Method error', 'Usul xatosi', 'Ошибка в методе'],
     ['Sketch', 'Chizma', 'Эскиз']
   ],
-  timing: [[3, 'Instructions'], [40, 'The paper'], [10, 'Answers'], [25, 'Rewrite'], [12, 'The limits drill']],
+  timing: [[3, 'Instructions'], [35, 'The paper'], [9, 'Answers'], [22, 'Rewrite'], [11, 'The limits drill']],
   sections: [
     {
       h: 'The paper — 25 marks, 40 minutes',
@@ -3458,7 +3458,7 @@ G11_ALG.push({
     ['With repetition', 'Takrorlanish bilan', 'С повторениями'],
     ['Order matters', 'Tartib muhim', 'Порядок важен']
   ],
-  timing: [[18, 'The two rules'], [26, 'Permutations'], [30, 'Combinations'], [28, 'Does order matter?'], [30, 'Practice'], [8, 'Homework']],
+  timing: [[15, 'The two rules'], [22, 'Permutations'], [26, 'Combinations'], [24, 'Does order matter?'], [26, 'Practice'], [7, 'Homework']],
   sections: [
     {
       h: 'The two rules',
@@ -3635,7 +3635,7 @@ G11_ALG.push({
     ['Ascending powers', 'Darajalar o‘sishi bo‘yicha', 'По возрастающим степеням'],
     ['Approximation', 'Taqribiy hisoblash', 'Приближение']
   ],
-  timing: [[14, 'Pascal’s triangle'], [22, 'The theorem'], [24, 'The general term'], [20, 'Approximation'], [20, 'Practice'], [10, 'Homework']],
+  timing: [[10, 'Pascal’s triangle'], [16, 'The theorem'], [17, 'The general term'], [15, 'Approximation'], [15, 'Practice'], [7, 'Homework']],
   sections: [
     {
       h: 'Pascal’s triangle',
@@ -3806,7 +3806,7 @@ G11_ALG.push({
     ['Cumulative frequency', 'To‘plangan chastota', 'Накопленная частота'],
     ['Bias in a sample', 'Tanlanma xatosi', 'Смещение выборки']
   ],
-  timing: [[18, 'Kinds of data'], [26, 'Grouping'], [30, 'Histograms'], [28, 'Cumulative frequency'], [30, 'Practice'], [3, 'Homework']],
+  timing: [[16, 'Kinds of data'], [23, 'Grouping'], [26, 'Histograms'], [25, 'Cumulative frequency'], [27, 'Practice'], [3, 'Homework']],
   sections: [
     {
       h: 'Kinds of data',
@@ -3979,7 +3979,7 @@ G11_ALG.push({
     ['Standard deviation', 'Standart chetlanish', 'Стандартное отклонение'],
     ['Outlier', 'Chetlashgan qiymat', 'Выброс']
   ],
-  timing: [[20, 'Three averages'], [26, 'Grouped data'], [28, 'Measures of spread'], [28, 'Standard deviation'], [30, 'Practice'], [8, 'Homework']],
+  timing: [[17, 'Three averages'], [22, 'Grouped data'], [24, 'Measures of spread'], [24, 'Standard deviation'], [26, 'Practice'], [7, 'Homework']],
   sections: [
     {
       h: 'Three averages, three uses',
@@ -4152,7 +4152,7 @@ G11_ALG.push({
     ['Extrapolation', 'Ekstrapolyatsiya', 'Экстраполяция'],
     ['Causation', 'Sababiy bog‘lanish', 'Причинная связь']
   ],
-  timing: [[18, 'Scatter diagrams'], [26, 'Describing correlation'], [30, 'The line of best fit'], [28, 'Correlation is not causation'], [30, 'Practice'], [3, 'Homework']],
+  timing: [[16, 'Scatter diagrams'], [23, 'Describing correlation'], [26, 'The line of best fit'], [25, 'Correlation is not causation'], [27, 'Practice'], [3, 'Homework']],
   sections: [
     {
       h: 'Scatter diagrams',
@@ -4317,7 +4317,7 @@ G11_ALG.push({
     ['Reduction', 'Kamaytirish', 'Понижение'],
     ['Natural logarithm', 'Natural logarifm', 'Натуральный логарифм']
   ],
-  timing: [[20, 'Why split a fraction'], [30, 'Partial fractions'], [30, 'Integrating them'], [30, 'By parts'], [26, 'Practice'], [4, 'Homework']],
+  timing: [[17, 'Why split a fraction'], [26, 'Partial fractions'], [26, 'Integrating them'], [26, 'By parts'], [22, 'Practice'], [3, 'Homework']],
   sections: [
     {
       h: 'Why split a fraction',
@@ -4504,7 +4504,7 @@ G11_ALG.push({
     ['Self-assessment', 'O‘z-o‘zini baholash', 'Самооценка'],
     ['Target', 'Maqsad', 'Цель']
   ],
-  timing: [[3, 'Instructions'], [42, 'The paper'], [10, 'Answers'], [20, 'Rewrite'], [10, 'Concept map'], [5, 'Targets']],
+  timing: [[3, 'Instructions'], [37, 'The paper'], [9, 'Answers'], [18, 'Rewrite'], [9, 'Concept map'], [4, 'Targets']],
   sections: [
     {
       h: 'The paper — 30 marks, 42 minutes',
@@ -4863,7 +4863,7 @@ G11_ALG.push({
     ['Difference of events', 'Hodisalar ayirmasi', 'Разность событий'],
     ['Partition', 'Bo‘linish', 'Разбиение']
   ],
-  timing: [[15, 'Events as sets'], [25, 'The addition rule'], [25, 'Filling a Venn diagram'], [20, 'De Morgan and three sets'], [5, 'Homework']],
+  timing: [[13, 'Events as sets'], [23, 'The addition rule'], [22, 'Filling a Venn diagram'], [18, 'De Morgan and three sets'], [4, 'Homework']],
   sections: [
     {
       h: 'Events as sets',
@@ -5065,7 +5065,7 @@ G11_ALG.push({
     ['Bayes’ rule', 'Bayes formulasi', 'Формула Байеса'],
     ['Partition', 'To‘liq guruh', 'Полная группа']
   ],
-  timing: [[15, 'One question first'], [30, 'The multiplication rule'], [35, 'Trees'], [35, 'Total probability'], [25, 'Reversing the condition'], [10, 'Homework']],
+  timing: [[12, 'One question first'], [24, 'The multiplication rule'], [28, 'Trees'], [28, 'Total probability'], [20, 'Reversing the condition'], [8, 'Homework']],
   sections: [
     {
       h: 'One question first',
@@ -5499,7 +5499,7 @@ G11_ALG.push({
     ['z-score', 'z-baho', 'z-оценка'],
     ['Target', 'Maqsad', 'Цель']
   ],
-  timing: [[3, 'Instructions'], [45, 'The paper'], [12, 'Answers'], [20, 'Diagnosis and rewrite'], [5, 'The decision tree']],
+  timing: [[3, 'Instructions'], [42, 'The paper'], [11, 'Answers'], [19, 'Diagnosis and rewrite'], [5, 'The decision tree']],
   sections: [
     {
       h: 'The paper — 40 marks, 45 minutes',
@@ -5675,7 +5675,7 @@ G11_ALG.push({
     ['Purely imaginary', 'Sof mavhum', 'Чисто мнимое'],
     ['Equating parts', 'Qismlarni tenglashtirish', 'Приравнивание частей']
   ],
-  timing: [[20, 'The new number'], [30, 'Arithmetic'], [30, 'The conjugate and division'], [30, 'The Argand diagram'], [25, 'Modulus and argument'], [5, 'Homework']],
+  timing: [[17, 'The new number'], [26, 'Arithmetic'], [26, 'The conjugate and division'], [26, 'The Argand diagram'], [21, 'Modulus and argument'], [4, 'Homework']],
   sections: [
     {
       h: 'The new number',
@@ -5898,7 +5898,7 @@ G11_ALG.push({
     ['Least value', 'Eng kichik qiymat', 'Наименьшее значение'],
     ['Triangle inequality', 'Uchburchak tengsizligi', 'Неравенство треугольника']
   ],
-  timing: [[15, 'Distance and direction'], [25, 'The three standard loci'], [25, 'Regions'], [25, 'Greatest and least'], [10, 'Homework']],
+  timing: [[12, 'Distance and direction'], [20, 'The three standard loci'], [20, 'Regions'], [20, 'Greatest and least'], [8, 'Homework']],
   sections: [
     {
       h: 'Distance and direction',

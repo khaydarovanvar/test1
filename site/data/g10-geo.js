@@ -27,7 +27,7 @@ G10_GEO.push({
     ['Consistent system', 'Zid bo‘lmagan sistema', 'Непротиворечивая система'],
     ['Euclidean geometry', 'Evklid geometriyasi', 'Евклидова геометрия']
   ],
-  timing: [[8, 'The three undefined terms'], [12, 'Axiom, definition, theorem'], [12, 'How a proof is built'], [8, 'Converses'], [5, 'Homework']],
+  timing: [[7, 'The three undefined terms'], [11, 'Axiom, definition, theorem'], [11, 'How a proof is built'], [7, 'Converses'], [4, 'Homework']],
   sections: [
     {
       h: 'Three words we refuse to define',
@@ -178,7 +178,7 @@ G10_GEO.push({
     ['Given and required', 'Berilgan va topilishi kerak', 'Дано и найти'],
     ['Diagram', 'Chizma', 'Чертёж']
   ],
-  timing: [[6, 'Four methods'], [14, 'Choosing between them'], [16, 'One problem, three methods'], [6, 'Setting out'], [3, 'Homework']],
+  timing: [[5, 'Four methods'], [12, 'Choosing between them'], [15, 'One problem, three methods'], [5, 'Setting out'], [3, 'Homework']],
   sections: [
     {
       h: 'Four methods',
@@ -327,7 +327,7 @@ G10_GEO.push({
     ['Cross-section', 'Kesim', 'Сечение'],
     ['Regular solid', 'Muntazam jism', 'Правильное тело']
   ],
-  timing: [[8, 'Plane versus axis'], [14, 'Counting the planes of a cuboid'], [12, 'Rotational axes and their order'], [8, 'Using symmetry to save work'], [3, 'Homework']],
+  timing: [[7, 'Plane versus axis'], [12, 'Counting the planes of a cuboid'], [11, 'Rotational axes and their order'], [7, 'Using symmetry to save work'], [3, 'Homework']],
   sections: [
     {
       h: 'Two different things',
@@ -477,7 +477,7 @@ G10_GEO.push({
     ['Half-space', 'Yarim fazo', 'Полупространство'],
     ['Belongs to a plane', 'Tekislikka tegishli', 'Принадлежит плоскости']
   ],
-  timing: [[10, 'From plane to space'], [18, 'The three axioms'], [22, 'Two theorems proved from them'], [24, 'How many planes?'], [12, 'Practice'], [4, 'Homework']],
+  timing: [[9, 'From plane to space'], [16, 'The three axioms'], [20, 'Two theorems proved from them'], [20, 'How many planes?'], [11, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'What changes when you leave the plane',
@@ -633,7 +633,7 @@ G10_GEO.push({
     ['Angle between skew lines', 'Ayqash chiziqlar orasidagi burchak', 'Угол между скрещивающимися прямыми'],
     ['Common perpendicular', 'Umumiy perpendikulyar', 'Общий перпендикуляр']
   ],
-  timing: [[8, 'Two lines — three cases'], [16, 'Line and plane; plane and plane'], [20, 'Finding skew pairs in a cuboid'], [24, 'The angle between skew lines'], [14, 'Practice'], [8, 'Homework']],
+  timing: [[7, 'Two lines — three cases'], [14, 'Line and plane; plane and plane'], [18, 'Finding skew pairs in a cuboid'], [22, 'The angle between skew lines'], [12, 'Practice'], [7, 'Homework']],
   sections: [
     {
       h: 'Two lines: three cases, not two',
@@ -799,7 +799,7 @@ G10_GEO.push({
     ['Lateral face', 'Yon yoq', 'Боковая грань'],
     ['Base', 'Asos', 'Основание']
   ],
-  timing: [[10, 'The three words'], [18, 'Prisms and pyramids'], [22, 'Euler’s formula'], [18, 'The five regular solids'], [20, 'Practice'], [12, 'Homework']],
+  timing: [[8, 'The three words'], [14, 'Prisms and pyramids'], [18, 'Euler’s formula'], [14, 'The five regular solids'], [16, 'Practice'], [10, 'Homework']],
   sections: [
     {
       h: 'Face, edge, vertex',
@@ -978,7 +978,7 @@ G10_GEO.push({
     ['Template', 'Andoza', 'Шаблон'],
     ['Accuracy', 'Aniqlik', 'Точность']
   ],
-  timing: [[8, 'What a net must satisfy'], [16, 'The eleven nets of a cube'], [30, 'Building — prism, pyramid, tetrahedron'], [16, 'Surface area from the net'], [14, 'Checking the models'], [6, 'Homework']],
+  timing: [[7, 'What a net must satisfy'], [14, 'The eleven nets of a cube'], [28, 'Building — prism, pyramid, tetrahedron'], [14, 'Surface area from the net'], [12, 'Checking the models'], [5, 'Homework']],
   sections: [
     {
       h: 'What a net has to satisfy',
@@ -1142,7 +1142,7 @@ G10_GEO.push({
     ['Midpoint of an edge', 'Qirra o‘rtasi', 'Середина ребра'],
     ['Regular hexagon', 'Muntazam olti burchak', 'Правильный шестиугольник']
   ],
-  timing: [[10, 'What a section is'], [20, 'The three construction rules'], [24, 'Sections of a cube'], [18, 'Areas of sections'], [16, 'Practice'], [12, 'Homework']],
+  timing: [[8, 'What a section is'], [16, 'The three construction rules'], [19, 'Sections of a cube'], [14, 'Areas of sections'], [13, 'Practice'], [10, 'Homework']],
   sections: [
     {
       h: 'The three rules',
@@ -1301,7 +1301,7 @@ G10_GEO.push({
     ['Space diagonal', 'Fazoviy diagonal', 'Пространственная диагональ'],
     ['Ambiguous case', 'Ikki yechimli hol', 'Неоднозначный случай']
   ],
-  timing: [[10, 'Recall the two rules'], [20, 'Choosing the right triangle'], [26, 'Angle between a line and a plane'], [26, 'Angle between two planes'], [40, 'Practice'], [13, 'Homework']],
+  timing: [[9, 'Recall the two rules'], [18, 'Choosing the right triangle'], [23, 'Angle between a line and a plane'], [23, 'Angle between two planes'], [35, 'Practice'], [12, 'Homework']],
   sections: [
     {
       h: 'The two rules, recalled',
@@ -1461,7 +1461,7 @@ G10_GEO.push({
     ['Target', 'Maqsad', 'Цель'],
     ['Self-assessment', 'O‘z-o‘zini baholash', 'Самооценка']
   ],
-  timing: [[3, 'Instructions'], [42, 'The paper'], [12, 'Answers and self-marking'], [20, 'Rewrite and classify'], [10, 'Concept map'], [3, 'Homework']],
+  timing: [[3, 'Instructions'], [36, 'The paper'], [11, 'Answers and self-marking'], [18, 'Rewrite and classify'], [9, 'Concept map'], [3, 'Homework']],
   sections: [
     {
       h: 'The paper — 30 marks, 42 minutes',
@@ -1622,7 +1622,7 @@ G10_GEO.push({
     ['Angle between lines', 'Chiziqlar orasidagi burchak', 'Угол между прямыми'],
     ['Auxiliary plane', 'Yordamchi tekislik', 'Вспомогательная плоскость']
   ],
-  timing: [[10, 'The definition, restated'], [20, 'One parallel through a point'], [22, 'Transitivity'], [20, 'Respectively parallel sides'], [16, 'Practice'], [2, 'Homework']],
+  timing: [[9, 'The definition, restated'], [18, 'One parallel through a point'], [19, 'Transitivity'], [18, 'Respectively parallel sides'], [14, 'Practice'], [2, 'Homework']],
   sections: [
     {
       h: 'The definition needs one more word',
@@ -1774,7 +1774,7 @@ G10_GEO.push({
     ['Shortest segment', 'Eng qisqa kesma', 'Кратчайший отрезок'],
     ['Non-coplanar', 'Bir tekislikda yotmaydigan', 'Не лежащие в одной плоскости']
   ],
-  timing: [[10, 'The test'], [22, 'The angle, by translation'], [24, 'The common perpendicular'], [20, 'Distances in a cuboid'], [20, 'Practice'], [4, 'Homework']],
+  timing: [[8, 'The test'], [18, 'The angle, by translation'], [19, 'The common perpendicular'], [16, 'Distances in a cuboid'], [16, 'Practice'], [3, 'Homework']],
   sections: [
     {
       h: 'The test',
@@ -1933,7 +1933,7 @@ G10_GEO.push({
     ['Distance from a line to a plane', 'Chiziqdan tekislikkacha masofa', 'Расстояние от прямой до плоскости'],
     ['Section', 'Kesim', 'Сечение']
   ],
-  timing: [[8, 'The three cases'], [22, 'The test'], [24, 'The converse theorem'], [22, 'Applications in a cube'], [18, 'Practice'], [6, 'Homework']],
+  timing: [[6, 'The three cases'], [18, 'The test'], [19, 'The converse theorem'], [18, 'Applications in a cube'], [14, 'Practice'], [5, 'Homework']],
   sections: [
     {
       h: 'The three cases',
@@ -2090,7 +2090,7 @@ G10_GEO.push({
     ['Equal segments', 'Teng kesmalar', 'Равные отрезки'],
     ['Transversal plane', 'Kesuvchi tekislik', 'Секущая плоскость']
   ],
-  timing: [[8, 'The three cases'], [22, 'The test'], [26, 'Four properties'], [20, 'Applications'], [18, 'Practice'], [6, 'Homework']],
+  timing: [[6, 'The three cases'], [18, 'The test'], [21, 'Four properties'], [16, 'Applications'], [14, 'Practice'], [5, 'Homework']],
   sections: [
     {
       h: 'The three cases',
@@ -2242,7 +2242,7 @@ G10_GEO.push({
     ['Visible and hidden edges', 'Ko‘rinadigan va ko‘rinmaydigan qirralar', 'Видимые и невидимые рёбра'],
     ['Correct picture', 'To‘g‘ri tasvir', 'Правильное изображение']
   ],
-  timing: [[10, 'The construction'], [22, 'What is preserved'], [22, 'What is not'], [24, 'Drawing solids correctly'], [16, 'Practice'], [6, 'Homework']],
+  timing: [[8, 'The construction'], [18, 'What is preserved'], [18, 'What is not'], [18, 'Drawing solids correctly'], [13, 'Practice'], [5, 'Homework']],
   sections: [
     {
       h: 'The construction',
@@ -2406,7 +2406,7 @@ G10_GEO.push({
     ['Three-dimensional problem', 'Fazoviy masala', 'Пространственная задача'],
     ['Extracted triangle', 'Ajratilgan uchburchak', 'Выделенный треугольник']
   ],
-  timing: [[10, 'The area formula'], [16, 'Heron'], [26, 'Sections of solids'], [24, 'Mixed 3-D problems'], [20, 'Practice'], [4, 'Homework']],
+  timing: [[8, 'The area formula'], [13, 'Heron'], [21, 'Sections of solids'], [19, 'Mixed 3-D problems'], [16, 'Practice'], [3, 'Homework']],
   sections: [
     {
       h: 'One formula for every triangle',
@@ -2555,7 +2555,7 @@ G10_GEO.push({
     ['Target', 'Maqsad', 'Цель'],
     ['Counterexample', 'Qarshi misol', 'Контрпример']
   ],
-  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [22, 'Rewrite'], [10, 'Concept map'], [3, 'Targets']],
+  timing: [[3, 'Instructions'], [34, 'The paper'], [11, 'Answers'], [20, 'Rewrite'], [9, 'Concept map'], [3, 'Targets']],
   sections: [
     {
       h: 'The paper — 25 marks, 40 minutes',
@@ -2716,7 +2716,7 @@ G10_GEO.push({
     ['Lemma', 'Lemma', 'Лемма'],
     ['Construction', 'Yasash', 'Построение']
   ],
-  timing: [[12, 'The definition'], [24, 'The test'], [22, 'Two lemmas'], [20, 'Construction and uniqueness'], [16, 'Practice'], [6, 'Homework']],
+  timing: [[10, 'The definition'], [18, 'The test'], [18, 'Two lemmas'], [16, 'Construction and uniqueness'], [13, 'Practice'], [5, 'Homework']],
   sections: [
     {
       h: 'The definition',
@@ -2876,7 +2876,7 @@ G10_GEO.push({
     ['Equal obliques', 'Teng og‘malar', 'Равные наклонные'],
     ['Angle with the plane', 'Tekislik bilan burchak', 'Угол с плоскостью']
   ],
-  timing: [[16, 'Three objects, one picture'], [26, 'The shortest segment'], [26, 'Comparing obliques'], [30, 'Distances'], [30, 'Practice'], [12, 'Homework']],
+  timing: [[14, 'Three objects, one picture'], [22, 'The shortest segment'], [22, 'Comparing obliques'], [26, 'Distances'], [26, 'Practice'], [10, 'Homework']],
   sections: [
     {
       h: 'Three objects, one picture',
@@ -3034,7 +3034,7 @@ G10_GEO.push({
     ['Distance to a line', 'Chiziqqacha masofa', 'Расстояние до прямой'],
     ['Necessary and sufficient', 'Zarur va yetarli', 'Необходимо и достаточно']
   ],
-  timing: [[14, 'The statement'], [22, 'The proof'], [24, 'Applications'], [22, 'Distance to a line'], [16, 'Practice'], [8, 'Homework']],
+  timing: [[11, 'The statement'], [17, 'The proof'], [17, 'Applications'], [17, 'Distance to a line'], [12, 'Practice'], [6, 'Homework']],
   sections: [
     {
       h: 'The statement',
@@ -3191,7 +3191,7 @@ G10_GEO.push({
     ['Right dihedral angle', 'To‘g‘ri ikki yoqli burchak', 'Прямой двугранный угол'],
     ['Bisector plane', 'Bissektor tekislik', 'Биссекторная плоскость']
   ],
-  timing: [[16, 'The dihedral angle'], [26, 'The linear angle'], [26, 'The test'], [30, 'Computing dihedral angles'], [30, 'Practice'], [12, 'Homework']],
+  timing: [[14, 'The dihedral angle'], [22, 'The linear angle'], [22, 'The test'], [26, 'Computing dihedral angles'], [26, 'Practice'], [10, 'Homework']],
   sections: [
     {
       h: 'The dihedral angle',
@@ -3362,7 +3362,7 @@ G10_GEO.push({
     ['Careless error', 'E’tiborsizlik xatosi', 'Ошибка по невнимательности'],
     ['Correction', 'Tuzatish', 'Исправление']
   ],
-  timing: [[3, 'Instructions'], [40, 'The paper'], [12, 'Answers'], [23, 'Rewrite'], [12, 'The test drill']],
+  timing: [[3, 'Instructions'], [35, 'The paper'], [11, 'Answers'], [20, 'Rewrite'], [11, 'The test drill']],
   sections: [
     {
       h: 'The paper — 25 marks, 40 minutes',
@@ -3521,7 +3521,7 @@ G10_GEO.push({
     ['Scale', 'Masshtab', 'Масштаб'],
     ['Isometric drawing', 'Izometrik chizma', 'Изометрия']
   ],
-  timing: [[14, 'Orthogonal versus general'], [26, 'The three views'], [30, 'Reconstructing a solid'], [26, 'The area formula'], [30, 'Practice'], [14, 'Homework']],
+  timing: [[12, 'Orthogonal versus general'], [22, 'The three views'], [26, 'Reconstructing a solid'], [22, 'The area formula'], [26, 'Practice'], [12, 'Homework']],
   sections: [
     {
       h: 'Orthogonal versus general',
@@ -3689,7 +3689,7 @@ G10_GEO.push({
     ['Line of sight', 'Ko‘rish chizig‘i', 'Линия визирования'],
     ['Surveying', 'Geodeziya', 'Геодезия']
   ],
-  timing: [[12, 'Bearings'], [22, 'Elevation and depression'], [26, 'Working in the plan first'], [22, 'Combined problems'], [20, 'Practice'], [8, 'Homework']],
+  timing: [[9, 'Bearings'], [16, 'Elevation and depression'], [18, 'Working in the plan first'], [16, 'Combined problems'], [15, 'Practice'], [6, 'Homework']],
   sections: [
     {
       h: 'Bearings',
@@ -3846,7 +3846,7 @@ G10_GEO.push({
     ['Distance', 'Masofa', 'Расстояние'],
     ['Self-assessment', 'O‘z-o‘zini baholash', 'Самооценка']
   ],
-  timing: [[12, 'The tools, listed'], [14, 'Choosing a tool'], [12, 'The concept map'], [7, 'Setting the project']],
+  timing: [[11, 'The tools, listed'], [12, 'Choosing a tool'], [11, 'The concept map'], [6, 'Setting the project']],
   sections: [
     {
       h: 'The tools, listed',
@@ -4013,7 +4013,7 @@ G10_GEO.push({
     ['Survey', 'O‘lchov ishi', 'Съёмка'],
     ['Conclusion', 'Xulosa', 'Заключение']
   ],
-  timing: [[6, 'The criteria'], [50, 'Presentations, five minutes each'], [16, 'Peer assessment'], [12, 'Whole-class review'], [6, 'The single lesson learned']],
+  timing: [[5, 'The criteria'], [45, 'Presentations, five minutes each'], [14, 'Peer assessment'], [11, 'Whole-class review'], [5, 'The single lesson learned']],
   sections: [
     {
       h: 'The criteria',
@@ -4170,7 +4170,7 @@ G10_GEO.push({
     ['Collinear', 'Bir to‘g‘ri chiziqda', 'Коллинеарные'],
     ['Foot of the perpendicular', 'Perpendikulyar asosi', 'Основание перпендикуляра']
   ],
-  timing: [[15, 'The three formulas'], [25, 'Forms of the equation'], [25, 'Parallel and perpendicular'], [20, 'The perpendicular bisector'], [10, 'Homework']],
+  timing: [[13, 'The three formulas'], [21, 'Forms of the equation'], [21, 'Parallel and perpendicular'], [17, 'The perpendicular bisector'], [8, 'Homework']],
   sections: [
     {
       h: 'The three formulas',
@@ -4358,7 +4358,7 @@ G10_GEO.push({
     ['Diameter', 'Diametr', 'Диаметр'],
     ['Concentric', 'Konsentrik', 'Концентрические']
   ],
-  timing: [[15, 'The standard form'], [25, 'Completing the square'], [20, 'Inside, on or outside'], [25, 'Tangents'], [15, 'Homework']],
+  timing: [[12, 'The standard form'], [20, 'Completing the square'], [16, 'Inside, on or outside'], [20, 'Tangents'], [12, 'Homework']],
   sections: [
     {
       h: 'The standard form',
@@ -4544,7 +4544,7 @@ G10_GEO.push({
     ['Chord length', 'Vatar uzunligi', 'Длина хорды'],
     ['Distance from a point to a line', 'Nuqtadan chiziqqa masofa', 'Расстояние от точки до прямой']
   ],
-  timing: [[15, 'Two lines'], [25, 'A line and a circle'], [25, 'The discriminant decides'], [20, 'The tangent condition'], [15, 'Homework']],
+  timing: [[12, 'Two lines'], [20, 'A line and a circle'], [20, 'The discriminant decides'], [16, 'The tangent condition'], [12, 'Homework']],
   sections: [
     {
       h: 'Two lines',
@@ -4734,7 +4734,7 @@ G10_GEO.push({
     ['Scale factor', 'O‘xshashlik koeffitsiyenti', 'Коэффициент подобия'],
     ['Invariant point', 'O‘zgarmas nuqta', 'Неподвижная точка']
   ],
-  timing: [[20, 'Vectors as journeys'], [25, 'Arithmetic of vectors'], [20, 'Proving with vectors'], [25, 'The four transformations'], [10, 'Homework']],
+  timing: [[16, 'Vectors as journeys'], [20, 'Arithmetic of vectors'], [16, 'Proving with vectors'], [20, 'The four transformations'], [8, 'Homework']],
   sections: [
     {
       h: 'Vectors as journeys',
@@ -4921,7 +4921,7 @@ G10_GEO.push({
     ['Concept map', 'Tushunchalar xaritasi', 'Карта понятий'],
     ['Target', 'Maqsad', 'Цель']
   ],
-  timing: [[3, 'Instructions'], [42, 'The paper'], [12, 'Answers'], [23, 'Diagnosis and rewrite'], [10, 'The map']],
+  timing: [[3, 'Instructions'], [37, 'The paper'], [11, 'Answers'], [20, 'Diagnosis and rewrite'], [9, 'The map']],
   sections: [
     {
       h: 'The paper — 35 marks, 42 minutes',
@@ -5103,7 +5103,7 @@ G10_GEO.push({
     ['Oblique', 'Og‘ma', 'Наклонная'],
     ['Foot of the perpendicular', 'Perpendikulyar asosi', 'Основание перпендикуляра']
   ],
-  timing: [[15, 'Positions'], [25, 'Parallelism'], [25, 'Perpendicularity'], [20, 'Angles'], [15, 'Homework']],
+  timing: [[12, 'Positions'], [20, 'Parallelism'], [20, 'Perpendicularity'], [16, 'Angles'], [12, 'Homework']],
   sections: [
     {
       h: 'Positions',
@@ -5285,7 +5285,7 @@ G10_GEO.push({
     ['Diagonal section', 'Diagonal kesim', 'Диагональное сечение'],
     ['Midpoint section', 'O‘rta kesim', 'Среднее сечение']
   ],
-  timing: [[15, 'Three rules'], [30, 'Building a section'], [20, 'Naming the shape'], [20, 'Areas by projection'], [15, 'Homework']],
+  timing: [[12, 'Three rules'], [24, 'Building a section'], [16, 'Naming the shape'], [16, 'Areas by projection'], [12, 'Homework']],
   sections: [
     {
       h: 'Three rules',

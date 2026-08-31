@@ -166,7 +166,7 @@ G10_ALG.push({
     ['Disguised quadratic', 'Yashirin kvadrat tenglama', 'Уравнение, сводящееся к квадратному'],
     ['Exact value', 'Aniq qiymat', 'Точное значение']
   ],
-  timing: [[6, 'Five equations — which method?'], [14, 'Factorising, including a ≠ 1'], [12, 'The formula'], [6, 'Disguised quadratics'], [4, 'Homework']],
+  timing: [[11, 'Five equations — which method?'], [27, 'Factorising, including a ≠ 1'], [23, 'The formula'], [11, 'Disguised quadratics'], [8, 'Homework']],
   sections: [
     {
       h: 'Two methods, one decision',
@@ -316,7 +316,7 @@ G10_ALG.push({
     ['Tangent to the axis', 'O‘qqa urinma', 'Касается оси'],
     ['Axis of symmetry', 'Simmetriya o‘qi', 'Ось симметрии']
   ],
-  timing: [[5, 'Expand three squares to see the pattern backwards'], [14, 'Completing the square'], [12, 'What the form tells you'], [5, 'The discriminant'], [4, 'Homework']],
+  timing: [[10, 'Expand three squares to see the pattern backwards'], [28, 'Completing the square'], [24, 'What the form tells you'], [10, 'The discriminant'], [8, 'Homework']],
   sections: [
     {
       h: 'Completing the square',
@@ -465,7 +465,7 @@ G10_ALG.push({
     ['Tangent', 'Urinma', 'Касательная'],
     ['Interval', 'Oraliq', 'Промежуток']
   ],
-  timing: [[6, 'Sketch three parabolas and shade where y > 0'], [14, 'Quadratic inequalities'], [12, 'Simultaneous equations'], [4, 'When does the line miss?'], [4, 'Homework']],
+  timing: [[12, 'Sketch three parabolas and shade where y > 0'], [28, 'Quadratic inequalities'], [24, 'Simultaneous equations'], [8, 'When does the line miss?'], [8, 'Homework']],
   sections: [
     {
       h: 'Inequalities: sketch, do not memorise',
@@ -615,7 +615,7 @@ G10_ALG.push({
     ['Ordered pair', 'Tartiblangan juftlik', 'Упорядоченная пара'],
     ['Function', 'Funksiya', 'Функция']
   ],
-  timing: [[5, 'What a mapping is'], [8, 'The four kinds'], [20, 'Pair work — build and classify'], [10, 'Two pairs present'], [2, 'Homework']],
+  timing: [[4, 'What a mapping is'], [7, 'The four kinds'], [18, 'Pair work — build and classify'], [9, 'Two pairs present'], [2, 'Homework']],
   sections: [
     {
       h: 'A mapping is a rule with a direction',
@@ -769,7 +769,7 @@ G10_ALG.push({
     ['Vertical line test', 'Vertikal chiziq sinovi', 'Тест вертикальной прямой'],
     ['Piecewise definition', 'Bo‘lakli berilish', 'Кусочное задание']
   ],
-  timing: [[6, 'Recall — exactly one output'], [12, 'Five ways of writing one function'], [8, 'Function notation'], [12, 'The vertical line test'], [7, 'Practice'], [5, 'Homework']],
+  timing: [[10, 'Recall — exactly one output'], [19, 'Five ways of writing one function'], [13, 'Function notation'], [19, 'The vertical line test'], [11, 'Practice'], [8, 'Homework']],
   sections: [
     {
       h: 'What has to be given',
@@ -930,7 +930,7 @@ G10_ALG.push({
     ['Minimum value', 'Eng kichik qiymat', 'Наименьшее значение'],
     ['Set notation', 'To‘plam belgilanishi', 'Обозначение множеств']
   ],
-  timing: [[6, 'The two questions'], [14, 'Finding a domain — three traps'], [14, 'Finding a range'], [12, 'Restricted domains'], [8, 'Practice'], [6, 'Homework']],
+  timing: [[8, 'The two questions'], [18, 'Finding a domain — three traps'], [19, 'Finding a range'], [16, 'Restricted domains'], [11, 'Practice'], [8, 'Homework']],
   sections: [
     {
       h: 'Domain first, always',
@@ -1094,7 +1094,7 @@ G10_ALG.push({
     ['Zero of a function', 'Funksiya nuli', 'Нуль функции'],
     ['Closed under', 'Yopiq', 'Замкнуто относительно']
   ],
-  timing: [[6, 'Four new functions from two old ones'], [12, 'The domain rule'], [10, 'Division — the extra condition'], [14, 'Worked practice'], [8, 'Consolidation'], [5, 'Homework']],
+  timing: [[9, 'Four new functions from two old ones'], [17, 'The domain rule'], [15, 'Division — the extra condition'], [20, 'Worked practice'], [12, 'Consolidation'], [7, 'Homework']],
   sections: [
     {
       h: 'Four new functions from two',
@@ -1397,7 +1397,7 @@ G10_ALG.push({
     ['One-to-one', 'Biror-birga', 'Взаимно однозначное'],
     ['Reflection in y = x', 'y = x ga nisbatan simmetriya', 'Симметрия относительно y = x']
   ],
-  timing: [[10, 'Composition — inner first'], [12, 'fg is not gf'], [16, 'Inverses'], [14, 'Periodic functions'], [8, 'Practice'], [5, 'Homework']],
+  timing: [[12, 'Composition — inner first'], [15, 'fg is not gf'], [20, 'Inverses'], [17, 'Periodic functions'], [10, 'Practice'], [6, 'Homework']],
   sections: [
     {
       h: 'Composition — the inner function goes first',
@@ -1559,7 +1559,7 @@ G10_ALG.push({
     ['Bounded below', 'Quyidan chegaralangan', 'Ограничена снизу'],
     ['Interval of constant sign', 'Ishora saqlanish oralig‘i', 'Промежуток знакопостоянства']
   ],
-  timing: [[12, 'Zeros and the sign chart'], [20, 'Increasing and decreasing'], [20, 'Even and odd'], [14, 'Boundedness'], [55, 'Practice across all five'], [14, 'Homework']],
+  timing: [[11, 'Zeros and the sign chart'], [18, 'Increasing and decreasing'], [18, 'Even and odd'], [12, 'Boundedness'], [49, 'Practice across all five'], [12, 'Homework']],
   sections: [
     {
       h: 'Zeros and the sign chart',
@@ -1731,7 +1731,7 @@ G10_ALG.push({
     ['Invariant point', 'O‘zgarmas nuqta', 'Неподвижная точка'],
     ['Image of a point', 'Nuqta tasviri', 'Образ точки']
   ],
-  timing: [[10, 'Outside the bracket — what you expect'], [16, 'Inside the bracket — backwards'], [16, 'Stretches'], [16, 'Reflections and combinations'], [22, 'Practice'], [10, 'Homework']],
+  timing: [[9, 'Outside the bracket — what you expect'], [14, 'Inside the bracket — backwards'], [14, 'Stretches'], [14, 'Reflections and combinations'], [20, 'Practice'], [9, 'Homework']],
   sections: [
     {
       h: 'Outside the bracket behaves',
@@ -1888,7 +1888,7 @@ G10_ALG.push({
     ['Assumption', 'Faraz', 'Допущение'],
     ['Limitation of a model', 'Model cheklovi', 'Ограниченность модели']
   ],
-  timing: [[8, 'The four-step cycle'], [16, 'Linear models'], [22, 'Quadratic models and the vertex'], [16, 'Judging a model'], [20, 'Practice'], [8, 'Homework']],
+  timing: [[7, 'The four-step cycle'], [14, 'Linear models'], [20, 'Quadratic models and the vertex'], [14, 'Judging a model'], [18, 'Practice'], [7, 'Homework']],
   sections: [
     {
       h: 'The four-step cycle',
@@ -2050,7 +2050,7 @@ G10_ALG.push({
     ['Command word', 'Topshiriq so‘zi', 'Командное слово'],
     ['Quarter', 'Chorak', 'Четверть']
   ],
-  timing: [[3, 'Instructions'], [42, 'The paper'], [10, 'Answers on the board'], [20, 'Concept map in pairs'], [10, 'Targets for Quarter II'], [5, 'Homework']],
+  timing: [[3, 'Instructions'], [37, 'The paper'], [9, 'Answers on the board'], [18, 'Concept map in pairs'], [9, 'Targets for Quarter II'], [4, 'Homework']],
   sections: [
     {
       h: 'The paper — 30 marks, 42 minutes',
@@ -2213,7 +2213,7 @@ G10_ALG.push({
     ['Check (substitution)', 'Tekshirish', 'Проверка'],
     ['Substitution variable', 'Yordamchi o‘zgaruvchi', 'Вспомогательная переменная']
   ],
-  timing: [[8, 'Why a check is compulsory here'], [16, 'The method'], [16, 'Extraneous roots'], [18, 'Disguised quadratics'], [22, 'Practice'], [10, 'Homework']],
+  timing: [[7, 'Why a check is compulsory here'], [14, 'The method'], [14, 'Extraneous roots'], [16, 'Disguised quadratics'], [20, 'Practice'], [9, 'Homework']],
   sections: [
     {
       h: 'The domain comes first',
@@ -2374,7 +2374,7 @@ G10_ALG.push({
     ['Consistent system', 'Birgalikdagi sistema', 'Совместная система'],
     ['Inconsistent system', 'Birgalikda bo‘lmagan sistema', 'Несовместная система']
   ],
-  timing: [[8, 'What is new'], [20, 'Substitution'], [22, 'Symmetric systems'], [16, 'Graphical meaning'], [20, 'Practice'], [4, 'Homework']],
+  timing: [[7, 'What is new'], [18, 'Substitution'], [19, 'Symmetric systems'], [14, 'Graphical meaning'], [18, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The combined domain',
@@ -2526,7 +2526,7 @@ G10_ALG.push({
     ['Sign of a factor', 'Ko‘paytuvchi ishorasi', 'Знак множителя'],
     ['Multiplicity', 'Karralilik', 'Кратность']
   ],
-  timing: [[14, 'The forbidden step'], [22, 'One fraction, compared with zero'], [26, 'The sign chart'], [22, 'Repeated factors'], [40, 'Practice'], [11, 'Homework']],
+  timing: [[12, 'The forbidden step'], [20, 'One fraction, compared with zero'], [23, 'The sign chart'], [20, 'Repeated factors'], [35, 'Practice'], [10, 'Homework']],
   sections: [
     {
       h: 'The one thing you may not do',
@@ -2687,7 +2687,7 @@ G10_ALG.push({
     ['Double inequality', 'Qo‘sh tengsizlik', 'Двойное неравенство'],
     ['Bounded interval', 'Chegaralangan oraliq', 'Ограниченный промежуток']
   ],
-  timing: [[10, 'And versus or'], [22, 'The method'], [26, 'Worked systems'], [24, 'Empty and unbounded answers'], [38, 'Practice'], [15, 'Homework']],
+  timing: [[9, 'And versus or'], [20, 'The method'], [23, 'Worked systems'], [21, 'Empty and unbounded answers'], [34, 'Practice'], [13, 'Homework']],
   sections: [
     {
       h: '“And” or “or”',
@@ -2842,7 +2842,7 @@ G10_ALG.push({
     ['Mark scheme', 'Baholash sxemasi', 'Схема оценивания'],
     ['Correction', 'Tuzatish', 'Исправление']
   ],
-  timing: [[3, 'Instructions'], [40, 'The paper'], [10, 'Self-mark'], [25, 'Rewrite'], [12, 'Common-error drill']],
+  timing: [[3, 'Instructions'], [35, 'The paper'], [9, 'Self-mark'], [22, 'Rewrite'], [11, 'Common-error drill']],
   sections: [
     {
       h: 'The paper — 25 marks, 40 minutes',
@@ -2997,7 +2997,7 @@ G10_ALG.push({
     ['Equivalent transformation', 'Teng kuchli almashtirish', 'Равносильное преобразование'],
     ['Verification', 'Tekshirish', 'Проверка']
   ],
-  timing: [[14, 'Two conditions, not one'], [24, 'One radical'], [30, 'Two radicals'], [24, 'Substitutions'], [36, 'Practice'], [7, 'Homework']],
+  timing: [[12, 'Two conditions, not one'], [21, 'One radical'], [27, 'Two radicals'], [21, 'Substitutions'], [33, 'Practice'], [6, 'Homework']],
   sections: [
     {
       h: 'Two conditions before you start',
@@ -3156,7 +3156,7 @@ G10_ALG.push({
     ['Symmetric system', 'Simmetrik sistema', 'Симметричная система'],
     ['Verification', 'Tekshirish', 'Проверка']
   ],
-  timing: [[16, 'Where the difficulty is'], [30, 'u = √x, v = √y'], [30, 'Sum and product of roots'], [30, 'Mixed systems'], [50, 'Practice'], [24, 'Homework and consolidation']],
+  timing: [[14, 'Where the difficulty is'], [27, 'u = √x, v = √y'], [27, 'Sum and product of roots'], [27, 'Mixed systems'], [44, 'Practice'], [21, 'Homework and consolidation']],
   sections: [
     {
       h: 'Where the difficulty is',
@@ -3319,7 +3319,7 @@ G10_ALG.push({
     ['Target', 'Maqsad', 'Цель'],
     ['Self-assessment', 'O‘z-o‘zini baholash', 'Самооценка']
   ],
-  timing: [[3, 'Instructions'], [42, 'The paper'], [10, 'Answers'], [20, 'Rewrite'], [10, 'Concept map'], [5, 'Targets']],
+  timing: [[3, 'Instructions'], [37, 'The paper'], [9, 'Answers'], [18, 'Rewrite'], [9, 'Concept map'], [4, 'Targets']],
   sections: [
     {
       h: 'The paper — 30 marks, 42 minutes',
@@ -3481,7 +3481,7 @@ G10_ALG.push({
     ['Doubling time', 'Ikkilanish vaqti', 'Время удвоения'],
     ['Half-life', 'Yarim yemirilish davri', 'Период полураспада']
   ],
-  timing: [[10, 'The definition'], [22, 'Two shapes'], [20, 'The properties'], [22, 'Growth and decay'], [16, 'Practice'], [10, 'Homework']],
+  timing: [[8, 'The definition'], [17, 'Two shapes'], [16, 'The properties'], [18, 'Growth and decay'], [13, 'Practice'], [8, 'Homework']],
   sections: [
     {
       h: 'The definition',
@@ -3643,7 +3643,7 @@ G10_ALG.push({
     ['Positivity condition', 'Musbatlik sharti', 'Условие положительности'],
     ['Rejected root', 'Rad etilgan ildiz', 'Отброшенный корень']
   ],
-  timing: [[10, 'The one-to-one property'], [22, 'A common base'], [24, 'Substitution'], [22, 'Homogeneous equations'], [20, 'Practice'], [12, 'Homework']],
+  timing: [[7, 'The one-to-one property'], [16, 'A common base'], [17, 'Substitution'], [16, 'Homogeneous equations'], [15, 'Practice'], [9, 'Homework']],
   sections: [
     {
       h: 'The method rests on one property',
@@ -3798,7 +3798,7 @@ G10_ALG.push({
     ['Substitution', 'Almashtirish', 'Замена'],
     ['Solution set', 'Yechimlar to‘plami', 'Множество решений']
   ],
-  timing: [[10, 'The one extra question'], [22, 'Base greater than 1'], [22, 'Base less than 1'], [24, 'Substitution'], [20, 'Practice'], [12, 'Homework']],
+  timing: [[7, 'The one extra question'], [16, 'Base greater than 1'], [16, 'Base less than 1'], [17, 'Substitution'], [15, 'Practice'], [9, 'Homework']],
   sections: [
     {
       h: 'The one extra question',
@@ -3950,7 +3950,7 @@ G10_ALG.push({
     ['Knowledge gap', 'Bilim bo‘shlig‘i', 'Пробел в знаниях'],
     ['Correction', 'Tuzatish', 'Исправление']
   ],
-  timing: [[3, 'Instructions'], [40, 'The paper'], [10, 'Self-mark'], [25, 'Rewrite'], [12, 'The base drill']],
+  timing: [[3, 'Instructions'], [35, 'The paper'], [9, 'Self-mark'], [22, 'Rewrite'], [11, 'The base drill']],
   sections: [
     {
       h: 'The paper — 25 marks, 40 minutes',
@@ -4111,7 +4111,7 @@ G10_ALG.push({
     ['Logarithmic identity', 'Logarifmik ayniyat', 'Основное логарифмическое тождество'],
     ['Reflection in y = x', 'y = x ga nisbatan akslantirish', 'Симметрия относительно y = x']
   ],
-  timing: [[12, 'The definition'], [20, 'Evaluating'], [24, 'The graph'], [20, 'Inverse of the exponential'], [18, 'Practice'], [6, 'Homework']],
+  timing: [[10, 'The definition'], [16, 'Evaluating'], [19, 'The graph'], [16, 'Inverse of the exponential'], [14, 'Practice'], [5, 'Homework']],
   sections: [
     {
       h: 'The definition',
@@ -4275,7 +4275,7 @@ G10_ALG.push({
     ['Common logarithm', 'O‘nli logarifm', 'Десятичный логарифм'],
     ['Misapplication', 'Noto‘g‘ri qo‘llash', 'Неверное применение']
   ],
-  timing: [[12, 'The three laws'], [22, 'Expanding and condensing'], [22, 'Change of base'], [22, 'The three traps'], [20, 'Practice'], [12, 'Homework']],
+  timing: [[9, 'The three laws'], [15, 'Expanding and condensing'], [16, 'Change of base'], [16, 'The three traps'], [15, 'Practice'], [9, 'Homework']],
   sections: [
     {
       h: 'The three laws',
@@ -4438,7 +4438,7 @@ G10_ALG.push({
     ['Substitution', 'Almashtirish', 'Замена'],
     ['Verification', 'Tekshirish', 'Проверка']
   ],
-  timing: [[12, 'The domain first'], [22, 'Equating arguments'], [22, 'Exponential form'], [22, 'Substitution'], [20, 'Practice'], [12, 'Homework']],
+  timing: [[9, 'The domain first'], [15, 'Equating arguments'], [16, 'Exponential form'], [16, 'Substitution'], [15, 'Practice'], [9, 'Homework']],
   sections: [
     {
       h: 'The domain first',
@@ -4595,7 +4595,7 @@ G10_ALG.push({
     ['Rejected pair', 'Rad etilgan juftlik', 'Отброшенная пара'],
     ['Verification', 'Tekshirish', 'Проверка']
   ],
-  timing: [[10, 'What is new'], [24, 'Exponential systems'], [24, 'Logarithmic systems'], [22, 'Mixed systems'], [20, 'Practice'], [10, 'Homework']],
+  timing: [[7, 'What is new'], [18, 'Exponential systems'], [17, 'Logarithmic systems'], [16, 'Mixed systems'], [15, 'Practice'], [7, 'Homework']],
   sections: [
     {
       h: 'What is new, and what is not',
@@ -4752,7 +4752,7 @@ G10_ALG.push({
     ['Solution set', 'Yechimlar to‘plami', 'Множество решений'],
     ['Interval notation', 'Oraliq belgilanishi', 'Интервальная запись']
   ],
-  timing: [[12, 'Three steps, in order'], [22, 'Base above 1'], [22, 'Base below 1'], [22, 'Substitution'], [20, 'Practice'], [12, 'Homework']],
+  timing: [[9, 'Three steps, in order'], [15, 'Base above 1'], [16, 'Base below 1'], [16, 'Substitution'], [15, 'Practice'], [9, 'Homework']],
   sections: [
     {
       h: 'Three steps, in order',
@@ -4912,7 +4912,7 @@ G10_ALG.push({
     ['Linearisation', 'Chiziqlashtirish', 'Линеаризация'],
     ['Model parameter', 'Model parametri', 'Параметр модели']
   ],
-  timing: [[16, 'Growth, and solving for the time'], [22, 'Decay and half-life'], [22, 'Logarithmic scales'], [20, 'Linearising'], [18, 'Practice'], [10, 'Homework']],
+  timing: [[12, 'Growth, and solving for the time'], [17, 'Decay and half-life'], [16, 'Logarithmic scales'], [15, 'Linearising'], [13, 'Practice'], [7, 'Homework']],
   sections: [
     {
       h: 'Growth, and solving for the time',
@@ -5076,7 +5076,7 @@ G10_ALG.push({
     ['Knowledge gap', 'Bilim bo‘shlig‘i', 'Пробел в знаниях'],
     ['Correction', 'Tuzatish', 'Исправление']
   ],
-  timing: [[3, 'Instructions'], [40, 'The paper'], [10, 'Self-mark'], [25, 'Rewrite'], [12, 'The domain drill']],
+  timing: [[3, 'Instructions'], [35, 'The paper'], [9, 'Self-mark'], [22, 'Rewrite'], [11, 'The domain drill']],
   sections: [
     {
       h: 'The paper — 25 marks, 40 minutes',
@@ -5240,7 +5240,7 @@ G10_ALG.push({
     ['Asymptote', 'Asimptota', 'Асимптота'],
     ['Periodic process', 'Davriy jarayon', 'Периодический процесс']
   ],
-  timing: [[14, 'The unit-circle definition'], [24, 'The three graphs'], [22, 'Properties'], [20, 'Periodic processes'], [16, 'Practice'], [8, 'Homework']],
+  timing: [[11, 'The unit-circle definition'], [19, 'The three graphs'], [17, 'Properties'], [15, 'Periodic processes'], [12, 'Practice'], [6, 'Homework']],
   sections: [
     {
       h: 'The unit-circle definition',
@@ -5411,7 +5411,7 @@ G10_ALG.push({
     ['One-to-one', 'Biror-birga', 'Взаимно однозначное'],
     ['Standard angle', 'Standart burchak', 'Табличный угол']
   ],
-  timing: [[14, 'Why a restriction is needed'], [22, 'The four ranges'], [24, 'Standard values'], [20, 'One value or many?'], [16, 'Practice'], [8, 'Homework']],
+  timing: [[11, 'Why a restriction is needed'], [17, 'The four ranges'], [19, 'Standard values'], [15, 'One value or many?'], [12, 'Practice'], [6, 'Homework']],
   sections: [
     {
       h: 'Why a restriction is needed',
@@ -5580,7 +5580,7 @@ G10_ALG.push({
     ['Centre of symmetry', 'Simmetriya markazi', 'Центр симметрии'],
     ['Point of inflection', 'Egilish nuqtasi', 'Точка перегиба']
   ],
-  timing: [[12, 'One reflection, four curves'], [24, 'Arcsin and arccos'], [22, 'Arctan and arccot'], [22, 'Transformations'], [16, 'Practice'], [8, 'Homework']],
+  timing: [[9, 'One reflection, four curves'], [19, 'Arcsin and arccos'], [17, 'Arctan and arccot'], [17, 'Transformations'], [12, 'Practice'], [6, 'Homework']],
   sections: [
     {
       h: 'One reflection, four curves',
@@ -5746,7 +5746,7 @@ G10_ALG.push({
     ['Subtend', 'Qarshi turmoq', 'Стягивать'],
     ['Angular measure', 'Burchak o‘lchovi', 'Угловая мера']
   ],
-  timing: [[14, 'What a radian is'], [18, 'Converting'], [24, 'Arc and sector'], [20, 'The segment'], [24, 'The project'], [8, 'Homework']],
+  timing: [[10, 'What a radian is'], [13, 'Converting'], [18, 'Arc and sector'], [15, 'The segment'], [18, 'The project'], [6, 'Homework']],
   sections: [
     {
       h: 'What a radian is',
@@ -5909,7 +5909,7 @@ G10_ALG.push({
     ['Reference angle', 'Tayanch burchak', 'Опорный угол'],
     ['Integer parameter', 'Butun parametr', 'Целый параметр']
   ],
-  timing: [[12, 'When there is a solution at all'], [30, 'The four formulas'], [30, 'Reading them off the circle'], [35, 'Special values'], [22, 'Solutions in an interval'], [6, 'Homework']],
+  timing: [[11, 'When there is a solution at all'], [27, 'The four formulas'], [27, 'Reading them off the circle'], [30, 'Special values'], [20, 'Solutions in an interval'], [5, 'Homework']],
   sections: [
     {
       h: 'When there is a solution at all',
@@ -6125,7 +6125,7 @@ G10_ALG.push({
     ['Quadratic in sin x', 'sin x ga nisbatan kvadrat', 'Квадратное относительно sin x'],
     ['Reduction', 'Keltirish', 'Приведение']
   ],
-  timing: [[20, 'The three moves'], [40, 'Quadratic by substitution'], [40, 'Factorising'], [40, 'Homogeneous equations'], [35, 'Double angle and auxiliary angle'], [5, 'Homework']],
+  timing: [[18, 'The three moves'], [35, 'Quadratic by substitution'], [36, 'Factorising'], [36, 'Homogeneous equations'], [31, 'Double angle and auxiliary angle'], [4, 'Homework']],
   sections: [
     {
       h: 'The three moves',
@@ -6326,7 +6326,7 @@ G10_ALG.push({
     ['Period', 'Davr', 'Период'],
     ['Sign chart', 'Ishoralar jadvali', 'Таблица знаков']
   ],
-  timing: [[15, 'From points to arcs'], [30, 'sin x > a'], [30, 'cos x > a'], [25, 'tangent inequalities'], [30, 'Quadratic and compound'], [5, 'Homework']],
+  timing: [[13, 'From points to arcs'], [27, 'sin x > a'], [27, 'cos x > a'], [22, 'tangent inequalities'], [27, 'Quadratic and compound'], [4, 'Homework']],
   sections: [
     {
       h: 'From points to arcs',
@@ -6526,7 +6526,7 @@ G10_ALG.push({
     ['Diagnosis', 'Tashxis', 'Диагностика'],
     ['Target', 'Maqsad', 'Цель']
   ],
-  timing: [[3, 'Instructions'], [42, 'The paper'], [12, 'Answers'], [25, 'Diagnosis and rewrite'], [8, 'Targets']],
+  timing: [[3, 'Instructions'], [37, 'The paper'], [11, 'Answers'], [22, 'Diagnosis and rewrite'], [7, 'Targets']],
   sections: [
     {
       h: 'The paper — 35 marks, 42 minutes',
@@ -6695,7 +6695,7 @@ G10_ALG.push({
     ['Equally likely', 'Teng imkoniyatli', 'Равновозможные'],
     ['Favourable outcome', 'Qulay natija', 'Благоприятный исход']
   ],
-  timing: [[15, 'Three kinds of event'], [30, 'The sample space'], [30, 'Tables and trees'], [30, 'Combining events'], [25, 'Exclusive and independent'], [5, 'Homework']],
+  timing: [[13, 'Three kinds of event'], [27, 'The sample space'], [27, 'Tables and trees'], [27, 'Combining events'], [22, 'Exclusive and independent'], [4, 'Homework']],
   sections: [
     {
       h: 'Three kinds of event',
@@ -6913,7 +6913,7 @@ G10_ALG.push({
     ['Complement', 'To‘ldiruvchi', 'Дополнение'],
     ['Expected number', 'Kutilayotgan son', 'Ожидаемое число']
   ],
-  timing: [[25, 'The classical definition'], [25, 'Relative frequency'], [25, 'Geometric probability'], [35, 'The two rules'], [20, 'Conditional probability'], [5, 'Homework']],
+  timing: [[22, 'The classical definition'], [22, 'Relative frequency'], [22, 'Geometric probability'], [32, 'The two rules'], [18, 'Conditional probability'], [4, 'Homework']],
   sections: [
     {
       h: 'The classical definition',
@@ -7116,7 +7116,7 @@ G10_ALG.push({
     ['Without replacement', 'Qaytarmasdan', 'Без возвращения'],
     ['Target', 'Maqsad', 'Цель']
   ],
-  timing: [[3, 'Instructions'], [42, 'The paper'], [12, 'Answers'], [25, 'Diagnosis and rewrite'], [8, 'The decision tree']],
+  timing: [[3, 'Instructions'], [37, 'The paper'], [11, 'Answers'], [22, 'Diagnosis and rewrite'], [7, 'The decision tree']],
   sections: [
     {
       h: 'The paper — 30 marks, 42 minutes',
@@ -7285,7 +7285,7 @@ G10_ALG.push({
     ['Sigma notation', 'Sigma belgisi', 'Знак суммы'],
     ['Convergent', 'Yaqinlashuvchi', 'Сходящаяся']
   ],
-  timing: [[15, 'Sequences and recurrences'], [25, 'Arithmetic progressions'], [25, 'Geometric progressions'], [25, 'Sums'], [15, 'Choosing the right pair'], [5, 'Homework']],
+  timing: [[11, 'Sequences and recurrences'], [18, 'Arithmetic progressions'], [18, 'Geometric progressions'], [18, 'Sums'], [11, 'Choosing the right pair'], [4, 'Homework']],
   sections: [
     {
       h: 'Sequences and recurrences',
@@ -7505,7 +7505,7 @@ G10_ALG.push({
     ['Factorial', 'Faktorial', 'Факториал'],
     ['General term', 'Umumiy had', 'Общий член']
   ],
-  timing: [[20, 'When an infinite sum exists'], [20, 'Recurring decimals'], [25, 'Pascal’s triangle'], [25, 'The binomial formula'], [15, 'One term without the rest'], [5, 'Homework']],
+  timing: [[15, 'When an infinite sum exists'], [15, 'Recurring decimals'], [17, 'Pascal’s triangle'], [18, 'The binomial formula'], [11, 'One term without the rest'], [4, 'Homework']],
   sections: [
     {
       h: 'When an infinite sum exists',

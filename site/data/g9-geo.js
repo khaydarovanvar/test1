@@ -2648,7 +2648,7 @@ G9_GEO.push({
     ['Exact value', 'Aniq qiymat', 'Точное значение'],
     ['Extension', 'Kengaytirish', 'Расширение']
   ],
-  timing: [[15, 'Why the right triangle is not enough'], [25, 'The definition on a semicircle'], [22, 'Supplementary angles'], [23, 'The table'], [5, 'Homework']],
+  timing: [[13, 'Why the right triangle is not enough'], [23, 'The definition on a semicircle'], [20, 'Supplementary angles'], [20, 'The table'], [4, 'Homework']],
   sections: [
     {
       h: 'Why the right triangle is not enough',
@@ -3300,7 +3300,7 @@ G9_GEO.push({
     ['Three-figure bearing', 'Uch xonali azimut', 'Трёхзначный азимут'],
     ['Sketch', 'Chizma', 'Чертёж']
   ],
-  timing: [[15, 'Choosing the rule'], [25, 'Bearings'], [25, 'Heights and distances'], [20, 'Accuracy'], [5, 'Homework']],
+  timing: [[13, 'Choosing the rule'], [23, 'Bearings'], [22, 'Heights and distances'], [18, 'Accuracy'], [4, 'Homework']],
   sections: [
     {
       h: 'Choosing the rule',
@@ -3483,7 +3483,7 @@ G9_GEO.push({
     ['Collinear', 'Kollinear', 'Коллинеарные'],
     ['Unit vector', 'Birlik vektor', 'Единичный вектор']
   ],
-  timing: [[15, 'The angle between vectors'], [25, 'The scalar product'], [25, 'Finding an angle'], [20, 'Perpendicularity'], [5, 'Homework']],
+  timing: [[13, 'The angle between vectors'], [23, 'The scalar product'], [22, 'Finding an angle'], [18, 'Perpendicularity'], [4, 'Homework']],
   sections: [
     {
       h: 'The angle between vectors',
@@ -3666,7 +3666,7 @@ G9_GEO.push({
     ['Two solutions', 'Ikkita yechim', 'Два решения'],
     ['No solution', 'Yechimi yo‘q', 'Нет решения']
   ],
-  timing: [[15, 'The four cases'], [25, 'SSS and SAS'], [25, 'ASA and SSA'], [20, 'Checking'], [5, 'Homework']],
+  timing: [[13, 'The four cases'], [23, 'SSS and SAS'], [22, 'ASA and SSA'], [18, 'Checking'], [4, 'Homework']],
   sections: [
     {
       h: 'The four cases',
@@ -4176,7 +4176,7 @@ G9_GEO.push({
     ['Chord', 'Vatar', 'Хорда'],
     ['Concurrent', 'Bir nuqtada kesishuvchi', 'Пересекающиеся в одной точке']
   ],
-  timing: [[15, 'The definition'], [25, 'Every triangle has one'], [25, 'Cyclic quadrilaterals'], [20, 'Deciding'], [5, 'Homework']],
+  timing: [[13, 'The definition'], [23, 'Every triangle has one'], [22, 'Cyclic quadrilaterals'], [18, 'Deciding'], [4, 'Homework']],
   sections: [
     {
       h: 'The definition',
@@ -4361,7 +4361,7 @@ G9_GEO.push({
     ['Semiperimeter', 'Yarim perimetr', 'Полупериметр'],
     ['Tangential quadrilateral', 'Tashqi chizilgan to‘rtburchak', 'Описанный четырёхугольник']
   ],
-  timing: [[15, 'The definition'], [25, 'Every triangle has one'], [25, 'The area formula'], [20, 'Tangential quadrilaterals'], [5, 'Homework']],
+  timing: [[13, 'The definition'], [23, 'Every triangle has one'], [22, 'The area formula'], [18, 'Tangential quadrilaterals'], [4, 'Homework']],
   sections: [
     {
       h: 'The definition',
@@ -4711,7 +4711,7 @@ G9_GEO.push({
     ['Perimeter', 'Perimetr', 'Периметр'],
     ['Area of a polygon', 'Ko‘pburchak yuzi', 'Площадь многоугольника']
   ],
-  timing: [[15, 'One centre, two circles'], [25, 'The central triangle'], [25, 'The area'], [20, 'The standard polygons'], [5, 'Homework']],
+  timing: [[13, 'One centre, two circles'], [23, 'The central triangle'], [22, 'The area'], [18, 'The standard polygons'], [4, 'Homework']],
   sections: [
     {
       h: 'One centre, two circles',
@@ -4892,7 +4892,7 @@ G9_GEO.push({
     ['Limit', 'Limit', 'Предел'],
     ['Archimedes', 'Arximed', 'Архимед']
   ],
-  timing: [[15, 'Three exact sides'], [25, 'The general formula'], [25, 'Doubling n'], [20, 'Towards the circumference'], [5, 'Homework']],
+  timing: [[13, 'Three exact sides'], [23, 'The general formula'], [22, 'Doubling n'], [18, 'Towards the circumference'], [4, 'Homework']],
   sections: [
     {
       h: 'Three exact sides',
@@ -5078,7 +5078,7 @@ G9_GEO.push({
     ['Revolution', 'Aylanish', 'Оборот'],
     ['Exactly', 'Aniq', 'Точно']
   ],
-  timing: [[15, 'What π is'], [25, 'The formula'], [25, 'Wheels and belts'], [20, 'Composite perimeters'], [5, 'Homework']],
+  timing: [[13, 'What π is'], [23, 'The formula'], [22, 'Wheels and belts'], [18, 'Composite perimeters'], [4, 'Homework']],
   sections: [
     {
       h: 'What π is',
@@ -5257,7 +5257,7 @@ G9_GEO.push({
     ['Perimeter of a sector', 'Sektor perimetri', 'Периметр сектора'],
     ['Fraction of a circle', 'Aylananing ulushi', 'Доля окружности']
   ],
-  timing: [[15, 'An arc as a fraction'], [25, 'The radian'], [25, 'l = Rα'], [20, 'Sector perimeters'], [5, 'Homework']],
+  timing: [[13, 'An arc as a fraction'], [23, 'The radian'], [22, 'l = Rα'], [18, 'Sector perimeters'], [4, 'Homework']],
   sections: [
     {
       h: 'An arc as a fraction',
@@ -5436,7 +5436,7 @@ G9_GEO.push({
     ['Semicircle', 'Yarim doira', 'Полукруг'],
     ['Limit', 'Limit', 'Предел']
   ],
-  timing: [[15, 'The proof'], [25, 'Using the formula'], [25, 'Rings'], [20, 'Composite areas'], [5, 'Homework']],
+  timing: [[13, 'The proof'], [23, 'Using the formula'], [22, 'Rings'], [18, 'Composite areas'], [4, 'Homework']],
   sections: [
     {
       h: 'The proof',
@@ -5611,7 +5611,7 @@ G9_GEO.push({
     ['Subtract', 'Ayirmoq', 'Вычесть'],
     ['Exact answer', 'Aniq javob', 'Точный ответ']
   ],
-  timing: [[15, 'The sector'], [25, 'The segment'], [25, 'Shaded regions'], [20, 'Choosing the form'], [5, 'Homework']],
+  timing: [[13, 'The sector'], [23, 'The segment'], [22, 'Shaded regions'], [18, 'Choosing the form'], [4, 'Homework']],
   sections: [
     {
       h: 'The sector',
@@ -6127,7 +6127,7 @@ G9_GEO.push({
     ['Equal segments', 'Teng kesmalar', 'Равные отрезки'],
     ['Converse', 'Teskari teorema', 'Обратная теорема']
   ],
-  timing: [[15, 'Projection'], [25, 'Thales’ theorem'], [25, 'Dividing a segment'], [20, 'The converse'], [5, 'Homework']],
+  timing: [[13, 'Projection'], [23, 'Thales’ theorem'], [22, 'Dividing a segment'], [18, 'The converse'], [4, 'Homework']],
   sections: [
     {
       h: 'Projection',
@@ -6308,7 +6308,7 @@ G9_GEO.push({
     ['Proportional', 'Proporsional', 'Пропорциональный'],
     ['Auxiliary parallel', 'Yordamchi parallel', 'Вспомогательная параллель']
   ],
-  timing: [[15, 'The bisector theorem'], [25, 'Using it'], [25, 'Midlines and medians'], [20, 'Combining relations'], [5, 'Homework']],
+  timing: [[13, 'The bisector theorem'], [23, 'Using it'], [22, 'Midlines and medians'], [18, 'Combining relations'], [4, 'Homework']],
   sections: [
     {
       h: 'The bisector theorem',
@@ -6484,7 +6484,7 @@ G9_GEO.push({
     ['Relation', 'Munosabat', 'Соотношение'],
     ['Derive', 'Keltirib chiqarish', 'Вывести']
   ],
-  timing: [[15, 'The mean proportional'], [25, 'The three relations'], [25, 'Pythagoras from them'], [20, 'Problems'], [5, 'Homework']],
+  timing: [[13, 'The mean proportional'], [23, 'The three relations'], [22, 'Pythagoras from them'], [18, 'Problems'], [4, 'Homework']],
   sections: [
     {
       h: 'The mean proportional',
@@ -6665,7 +6665,7 @@ G9_GEO.push({
     ['Unit segment', 'Birlik kesma', 'Единичный отрезок'],
     ['Quadrature', 'Kvadratura', 'Квадратура']
   ],
-  timing: [[15, 'The construction'], [25, 'Why it works'], [25, 'Constructing surds'], [20, 'Squaring a rectangle'], [5, 'Homework']],
+  timing: [[13, 'The construction'], [23, 'Why it works'], [22, 'Constructing surds'], [18, 'Squaring a rectangle'], [4, 'Homework']],
   sections: [
     {
       h: 'The construction',
@@ -6851,7 +6851,7 @@ G9_GEO.push({
     ['Product of segments', 'Kesmalar ko‘paytmasi', 'Произведение отрезков'],
     ['Tangent–secant', 'Urinma-kesuvchi', 'Касательная–секущая']
   ],
-  timing: [[15, 'Two chords inside'], [25, 'Two secants outside'], [25, 'A tangent and a secant'], [20, 'One theorem'], [5, 'Homework']],
+  timing: [[13, 'Two chords inside'], [23, 'Two secants outside'], [22, 'A tangent and a secant'], [18, 'One theorem'], [4, 'Homework']],
   sections: [
     {
       h: 'Two chords inside',
@@ -7026,7 +7026,7 @@ G9_GEO.push({
     ['Inaccessible', 'Yetib bo‘lmaydigan', 'Недоступный'],
     ['Plan', 'Reja', 'План']
   ],
-  timing: [[15, 'The four constructions'], [25, 'Scale drawing'], [25, 'Measuring the unreachable'], [20, 'Loci'], [5, 'Homework']],
+  timing: [[13, 'The four constructions'], [23, 'Scale drawing'], [22, 'Measuring the unreachable'], [18, 'Loci'], [4, 'Homework']],
   sections: [
     {
       h: 'The four constructions',

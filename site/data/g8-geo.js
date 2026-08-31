@@ -16,7 +16,7 @@ G8_GEO.push({
     'State and use the properties of an isosceles triangle.',
     'Quote the four congruence tests correctly (SSS, SAS, ASA, RHS).'
   ],
-  timing: [[5, 'Warm-up'], [14, 'Explanation'], [7, 'Interactive'], [12, 'Practice'], [2, 'Homework']],
+  timing: [[10, 'Warm-up'], [28, 'Explanation'], [14, 'Interactive'], [24, 'Practice'], [4, 'Homework']],
   terms: [
     ['Angle', 'Burchak', 'Угол'],
     ['Vertex', 'Uchi', 'Вершина'],
@@ -182,6 +182,7 @@ G8_GEO.push({
     ['Pentagon', 'Beshburchak', 'Пятиугольник'],
     ['Hexagon', 'Oltiburchak', 'Шестиугольник'],
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'What a polygon is',
@@ -832,7 +833,7 @@ G8_GEO.push({
     'Use the area formula ' + m('S = ' + f('1', '2') + 'd₁d₂') + ' for a rhombus.',
     'Place every quadrilateral of Chapter I correctly in the family tree.'
   ],
-  timing: [[5, 'Warm-up'], [13, 'Explanation'], [8, 'Interactive'], [12, 'Practice'], [2, 'Homework']],
+  timing: [[10, 'Warm-up'], [26, 'Explanation'], [16, 'Interactive'], [24, 'Practice'], [4, 'Homework']],
   terms: [
     ['Rhombus', 'Romb', 'Ромб'],
     ['Square', 'Kvadrat', 'Квадрат'],
@@ -985,7 +986,7 @@ G8_GEO.push({
     'Prove and use the properties of an isosceles trapezium.',
     'Recognise a right-angled trapezium and solve problems using its height.'
   ],
-  timing: [[5, 'Warm-up'], [13, 'Explanation'], [8, 'Interactive'], [12, 'Practice'], [2, 'Homework']],
+  timing: [[10, 'Warm-up'], [26, 'Explanation'], [16, 'Interactive'], [24, 'Practice'], [4, 'Homework']],
   terms: [
     ['Trapezium', 'Trapetsiya', 'Трапеция'],
     ['Base of a trapezium', 'Trapetsiya asosi', 'Основание трапеции'],
@@ -1294,7 +1295,7 @@ G8_GEO.push({
     'Divide a segment in a given ratio by construction.',
     'Solve practical measuring problems using proportional segments.'
   ],
-  timing: [[5, 'Warm-up'], [12, 'Explanation'], [8, 'Interactive'], [13, 'Practice'], [2, 'Homework']],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   terms: [
     ['Proportion', 'Proporsiya', 'Пропорция'],
     ['Cross-multiply', 'Krest-nakrest ko‘paytirish', 'Умножить крест-накрест'],
@@ -2165,6 +2166,7 @@ G8_GEO.push({
     ['Ratio', 'Nisbat', 'Отношение'],
     ['Acute angle', 'O‘tkir burchak', 'Острый угол']
   ],
+  timing: [[5, 'Warm-up'], [12, 'Explanation'], [8, 'Interactive'], [13, 'Practice'], [2, 'Homework']],
   sections: [
     {
       h: 'Naming the sides',
@@ -2300,6 +2302,7 @@ G8_GEO.push({
     ['Pythagorean triple', 'Pifagor uchligi', 'Пифагорова тройка'],
     ['Right angle', 'To‘g‘ri burchak', 'Прямой угол']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The theorem',
@@ -2445,6 +2448,7 @@ G8_GEO.push({
     ['Distance', 'Masofa', 'Расстояние'],
     ['Apply', 'Qo‘llash', 'Применить']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The converse',
@@ -2592,6 +2596,7 @@ G8_GEO.push({
     ['Positive', 'Musbat', 'Положительный'],
     ['Substitute', 'O‘rniga qo‘yish', 'Подставить']
   ],
+  timing: [[5, 'Warm-up'], [12, 'Explanation'], [8, 'Interactive'], [13, 'Practice'], [2, 'Homework']],
   sections: [
     {
       h: 'The derivation',
@@ -2726,6 +2731,7 @@ G8_GEO.push({
     ['Equal ratios', 'Teng nisbatlar', 'Равные отношения'],
     ['Simplify', 'Soddalashtirish', 'Упростить']
   ],
+  timing: [[5, 'Warm-up'], [12, 'Explanation'], [8, 'Interactive'], [13, 'Practice'], [2, 'Homework']],
   sections: [
     {
       h: 'Why the angles are complementary',
@@ -2859,6 +2865,7 @@ G8_GEO.push({
     ['Derive', 'Keltirib chiqarish', 'Вывести'],
     ['By heart', 'Yoddan', 'Наизусть']
   ],
+  timing: [[5, 'Warm-up'], [12, 'Explanation'], [8, 'Interactive'], [13, 'Practice'], [2, 'Homework']],
   sections: [
     {
       h: 'The two triangles that give everything',
@@ -3000,6 +3007,7 @@ G8_GEO.push({
     ['Round', 'Yaxlitlash', 'Округлить'],
     ['Approximate value', 'Taqribiy qiymat', 'Приближённое значение']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'Reading the table',
@@ -3142,6 +3150,7 @@ G8_GEO.push({
     ['Horizontal distance', 'Gorizontal masofa', 'Горизонтальное расстояние'],
     ['Accuracy', 'Aniqlik', 'Точность']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'What “solving” means',
@@ -3289,6 +3298,7 @@ G8_GEO.push({
     ['Due east', 'Aniq sharq', 'Точно на восток'],
     ['Protractor', 'Transportir', 'Транспортир']
   ],
+  timing: [[5, 'Warm-up'], [12, 'Explanation'], [8, 'Interactive'], [13, 'Practice'], [2, 'Homework']],
   sections: [
     {
       h: 'What a bearing is',
@@ -3648,7 +3658,7 @@ G8_GEO.push({
     ['Axis', 'O‘q', 'Ось'],
     ['Coordinate method', 'Koordinatalar usuli', 'Метод координат']
   ],
-  timing: [[6, 'Plot five points from dictation'], [10, 'Reading the plane'], [12, 'The midpoint formula'], [8, 'Problems both ways'], [4, 'Homework']],
+  timing: [[12, 'Plot five points from dictation'], [20, 'Reading the plane'], [24, 'The midpoint formula'], [16, 'Problems both ways'], [8, 'Homework']],
   sections: [
     {
       h: 'A point is a pair of numbers',
@@ -3800,7 +3810,7 @@ G8_GEO.push({
     ['Inside / outside', 'Ichida / tashqarisida', 'Внутри / снаружи'],
     ['Unit circle', 'Birlik aylana', 'Единичная окружность']
   ],
-  timing: [[6, 'Recall Pythagoras'], [12, 'The distance formula'], [12, 'The equation of a circle'], [6, 'Inside, on or outside'], [4, 'Homework']],
+  timing: [[12, 'Recall Pythagoras'], [24, 'The distance formula'], [24, 'The equation of a circle'], [12, 'Inside, on or outside'], [8, 'Homework']],
   sections: [
     {
       h: 'Distance is Pythagoras in disguise',
@@ -4325,7 +4335,7 @@ G8_GEO.push({
     ['Associative', 'Guruhlanuvchi', 'Ассоциативный'],
     ['Closed polygon', 'Yopiq ko‘pburchak', 'Замкнутый многоугольник']
   ],
-  timing: [[6, 'Two walks, one displacement'], [14, 'The triangle and parallelogram rules'], [12, 'Subtraction'], [4, 'In coordinates'], [4, 'Homework']],
+  timing: [[12, 'Two walks, one displacement'], [28, 'The triangle and parallelogram rules'], [24, 'Subtraction'], [8, 'In coordinates'], [8, 'Homework']],
   sections: [
     {
       h: 'Adding: nose to tail',
@@ -4462,7 +4472,7 @@ G8_GEO.push({
     ['Position vector', 'Radius-vektor', 'Радиус-вектор'],
     ['Parallel', 'Parallel', 'Параллельный']
   ],
-  timing: [[6, 'Double a vector on squared paper'], [12, 'Multiplying by a number'], [12, 'Coordinates of a vector'], [6, 'The collinearity test'], [4, 'Homework']],
+  timing: [[12, 'Double a vector on squared paper'], [24, 'Multiplying by a number'], [24, 'Coordinates of a vector'], [12, 'The collinearity test'], [8, 'Homework']],
   sections: [
     {
       h: 'Multiplying by a number',
@@ -4605,7 +4615,7 @@ G8_GEO.push({
     ['Centroid', 'Medianalar kesishish nuqtasi', 'Центроид (точка пересечения медиан)'],
     ['Bearing', 'Azimut', 'Азимут']
   ],
-  timing: [[6, 'Recall the four operations'], [12, 'Position vectors'], [12, 'Vector proofs'], [6, 'Journeys and velocities'], [4, 'Homework']],
+  timing: [[12, 'Recall the four operations'], [24, 'Position vectors'], [24, 'Vector proofs'], [12, 'Journeys and velocities'], [8, 'Homework']],
   sections: [
     {
       h: 'Position vectors',
@@ -4892,7 +4902,7 @@ G8_GEO.push({
     ['Median', 'Mediana', 'Медиана'],
     ['Between the same parallels', 'Bir xil parallellar orasida', 'Между теми же параллельными']
   ],
-  timing: [[6, 'Cut and slide a paper parallelogram'], [14, 'The parallelogram formula'], [12, 'The triangle formula'], [4, 'Two sides and an angle'], [4, 'Homework']],
+  timing: [[12, 'Cut and slide a paper parallelogram'], [28, 'The parallelogram formula'], [24, 'The triangle formula'], [8, 'Two sides and an angle'], [8, 'Homework']],
   sections: [
     {
       h: 'The parallelogram',
@@ -5594,7 +5604,7 @@ G8_GEO.push({
     ['External point', 'Tashqi nuqta', 'Внешняя точка'],
     ['Equal tangents', 'Teng urinmalar', 'Равные касательные']
   ],
-  timing: [[6, 'Slide a ruler towards a drawn circle'], [12, 'Three positions'], [12, 'The tangent property'], [6, 'Two tangents from a point'], [4, 'Homework']],
+  timing: [[12, 'Slide a ruler towards a drawn circle'], [24, 'Three positions'], [24, 'The tangent property'], [12, 'Two tangents from a point'], [8, 'Homework']],
   sections: [
     {
       h: 'Three positions of a line',
@@ -6707,7 +6717,7 @@ G8_GEO.push({
     ['Congruent', 'Teng (mos)', 'Равные (конгруэнтные)'],
     ['Invariant point', 'O‘zgarmas nuqta', 'Неподвижная точка']
   ],
-  timing: [[6, 'Fold, turn and slide a paper triangle'], [12, 'Reflection'], [12, 'Rotation'], [6, 'Translation and combinations'], [4, 'Homework']],
+  timing: [[12, 'Fold, turn and slide a paper triangle'], [24, 'Reflection'], [24, 'Rotation'], [12, 'Translation and combinations'], [8, 'Homework']],
   sections: [
     {
       h: 'The three isometries',

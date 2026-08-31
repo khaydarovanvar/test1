@@ -16,7 +16,7 @@ G8_ALG.push({
     'Factorise using a common factor, grouping, and the three standard identities.',
     'Solve a linear equation and rearrange a simple formula.'
   ],
-  timing: [[5, 'Warm-up'], [12, 'Explanation'], [6, 'Interactive'], [15, 'Practice'], [2, 'Homework']],
+  timing: [[15, 'Warm-up'], [36, 'Explanation'], [18, 'Interactive'], [45, 'Practice'], [6, 'Homework']],
   terms: [
     ['Power', 'Daraja', 'Степень'],
     ['Base of a power', 'Daraja asosi', 'Основание степени'],
@@ -230,6 +230,7 @@ G8_ALG.push({
     ['Undefined', 'Aniqlanmagan', 'Не определено'],
     ['Reciprocal', 'Teskari son', 'Обратное число'],
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'Two kinds of expression',
@@ -375,6 +376,7 @@ G8_ALG.push({
     ['Bracket', 'Qavs', 'Скобка'],
     ['Simplify', 'Soddalashtirish', 'Упростить'],
   ],
+  timing: [[15, 'Warm-up'], [36, 'Explanation'], [24, 'Interactive'], [39, 'Practice'], [6, 'Homework']],
   sections: [
     {
       h: 'What an algebraic fraction is',
@@ -568,6 +570,7 @@ G8_ALG.push({
     ['Factorised form', 'Ko‘paytma ko‘rinishi', 'Разложенный вид'],
     ['Reversed bracket', 'Teskari qavs', 'Перевёрнутая скобка'],
   ],
+  timing: [[15, 'Warm-up'], [36, 'Explanation'], [24, 'Interactive'], [39, 'Practice'], [6, 'Homework']],
   sections: [
     {
       h: 'Why a common denominator at all',
@@ -743,6 +746,7 @@ G8_ALG.push({
     ['Whole expression', 'Butun ifoda', 'Целое выражение'],
     ['Simplify the result', 'Natijani soddalashtirish', 'Упростить результат'],
   ],
+  timing: [[15, 'Warm-up'], [36, 'Explanation'], [24, 'Interactive'], [39, 'Practice'], [6, 'Homework']],
   sections: [
     {
       h: 'Same denominator',
@@ -918,7 +922,7 @@ G8_ALG.push({
     'Work through the errors the paper reveals, by type rather than by question.',
     'Re-solve every task that was lost, correctly and in full.'
   ],
-  timing: [[2, 'Setting up'], [36, 'The paper'], [2, 'Collect in']],
+  timing: [[4, 'Setting up'], [72, 'The paper'], [4, 'Collect in']],
   terms: [
     ['Control work', 'Nazorat ishi', 'Контрольная работа'],
     ['Work on mistakes', 'Xatolar ustida ishlash', 'Работа над ошибками'],
@@ -1094,6 +1098,7 @@ G8_ALG.push({
     ['Cancel across', 'Krest bo‘ylab qisqartirish', 'Сократить накрест'],
     ['Divisor', 'Bo‘luvchi', 'Делитель'],
   ],
+  timing: [[15, 'Warm-up'], [36, 'Explanation'], [24, 'Interactive'], [39, 'Practice'], [6, 'Homework']],
   sections: [
     {
       h: 'The two rules',
@@ -1281,6 +1286,7 @@ G8_ALG.push({
     ['Order of operations', 'Amallar tartibi', 'Порядок действий'],
     ['Transform', 'Almashtirish', 'Преобразовать'],
   ],
+  timing: [[15, 'Warm-up'], [36, 'Explanation'], [24, 'Interactive'], [39, 'Practice'], [6, 'Homework']],
   sections: [
     {
       h: 'What “identical transformation” means',
@@ -1464,7 +1470,7 @@ G8_ALG.push({
     'Identify which of the four standard errors each lost mark belongs to.',
     'Re-solve every lost task in full.'
   ],
-  timing: [[2, 'Setting up'], [36, 'The paper'], [2, 'Collect in']],
+  timing: [[4, 'Setting up'], [72, 'The paper'], [4, 'Collect in']],
   terms: [
     ['Control work', 'Nazorat ishi', 'Контрольная работа'],
     ['Work on mistakes', 'Xatolar ustida ishlash', 'Работа над ошибками'],
@@ -1641,6 +1647,7 @@ G8_ALG.push({
     ['Quadrant', 'Koordinata choragi', 'Координатная четверть'],
     ['Symmetry', 'Simmetriya', 'Симметрия'],
   ],
+  timing: [[15, 'Warm-up'], [36, 'Explanation'], [24, 'Interactive'], [39, 'Practice'], [6, 'Homework']],
   sections: [
     {
       h: 'Inverse proportion',
@@ -1802,6 +1809,7 @@ G8_ALG.push({
     ['Take a factor out', 'Ko‘paytuvchini ildiz oldiga chiqarish', 'Вынести множитель из-под корня'],
     ['Simplify', 'Soddalashtirish', 'Упростить']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The definition',
@@ -1938,6 +1946,7 @@ G8_ALG.push({
     ['Equivalent form', 'Ekvivalent ko‘rinish', 'Равносильная форма'],
     ['Evaluate', 'Qiymatini topish', 'Вычислить']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The definition',
@@ -2075,6 +2084,7 @@ G8_ALG.push({
     ['Index form', 'Daraja ko‘rinishi', 'Степенная форма'],
     ['Expression', 'Ifoda', 'Выражение']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The routine',
@@ -2206,6 +2216,7 @@ G8_ALG.push({
     ['Irrational number', 'Irratsional son', 'Иррациональное число'],
     ['Convert', 'Aylantirish', 'Преобразовать']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'Standard form',
@@ -2386,7 +2397,7 @@ G8_ALG.push({
     'Sort the errors by type rather than by question.',
     'Re-solve every task that was lost.'
   ],
-  timing: [[2, 'Setting up'], [36, 'The paper'], [2, 'Collect in']],
+  timing: [[4, 'Setting up'], [72, 'The paper'], [4, 'Collect in']],
   terms: [
     ['Control work', 'Nazorat ishi', 'Контрольная работа'],
     ['Work on mistakes', 'Xatolar ustida ishlash', 'Работа над ошибками'],
@@ -2559,6 +2570,7 @@ G8_ALG.push({
     ['Number line', 'Sonlar o‘qi', 'Числовая прямая'],
     ['Compare', 'Taqqoslash', 'Сравнить']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The definition',
@@ -2703,6 +2715,7 @@ G8_ALG.push({
     ['Preserve', 'Saqlanadi', 'Сохраняется'],
     ['Equivalent inequality', 'Teng kuchli tengsizlik', 'Равносильное неравенство']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The four properties',
@@ -2845,6 +2858,7 @@ G8_ALG.push({
     ['Upper bound', 'Yuqori chegara', 'Верхняя граница'],
     ['Term by term', 'Hadma-had', 'Почленно']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'Adding',
@@ -3032,6 +3046,7 @@ G8_ALG.push({
     ['Counter-example', 'Qarshi misol', 'Контрпример'],
     ['Monotonic', 'Monoton', 'Монотонный']
   ],
+  timing: [[15, 'Warm-up'], [36, 'Explanation'], [24, 'Interactive'], [39, 'Practice'], [6, 'Homework']],
   sections: [
     {
       h: 'The two rules',
@@ -3160,7 +3175,7 @@ G8_ALG.push({
     'Sort every lost mark into one of four error types.',
     'Re-solve every task that was lost.'
   ],
-  timing: [[2, 'Setting up'], [36, 'The paper'], [2, 'Collect in']],
+  timing: [[4, 'Setting up'], [72, 'The paper'], [4, 'Collect in']],
   terms: [
     ['Control work', 'Nazorat ishi', 'Контрольная работа'],
     ['Work on mistakes', 'Xatolar ustida ishlash', 'Работа над ошибками'],
@@ -3340,6 +3355,7 @@ G8_ALG.push({
     ['No solutions', 'Yechimga ega emas', 'Нет решений'],
     ['Every number', 'Har qanday son', 'Любое число']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'What a solution is',
@@ -3492,6 +3508,7 @@ G8_ALG.push({
     ['Double inequality', 'Qo‘sh tengsizlik', 'Двойное неравенство'],
     ['Empty set', 'Bo‘sh to‘plam', 'Пустое множество']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The names of the intervals',
@@ -3636,6 +3653,7 @@ G8_ALG.push({
     ['Inequality with a modulus', 'Modulli tengsizlik', 'Неравенство с модулем'],
     ['Solution set', 'Yechimlar to‘plami', 'Множество решений']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The definition',
@@ -3781,6 +3799,7 @@ G8_ALG.push({
     ['Accuracy', 'Aniqlik', 'Точность'],
     ['Measurement', 'O‘lchash', 'Измерение']
   ],
+  timing: [[15, 'Warm-up'], [36, 'Explanation'], [24, 'Interactive'], [39, 'Practice'], [6, 'Homework']],
   sections: [
     {
       h: 'Exact and approximate',
@@ -3972,6 +3991,7 @@ G8_ALG.push({
     ['Product', 'Ko‘paytma', 'Произведение'],
     ['Quotient', 'Bo‘linma', 'Частное']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The bounds of a rounded number',
@@ -4152,7 +4172,7 @@ G8_ALG.push({
     'Sort every lost mark into one of four error types.',
     'Re-solve every task that was lost.'
   ],
-  timing: [[2, 'Setting up'], [36, 'The paper'], [2, 'Collect in']],
+  timing: [[4, 'Setting up'], [72, 'The paper'], [4, 'Collect in']],
   terms: [
     ['Control work', 'Nazorat ishi', 'Контрольная работа'],
     ['Work on mistakes', 'Xatolar ustida ishlash', 'Работа над ошибками'],
@@ -4325,6 +4345,7 @@ G8_ALG.push({
     ['Parabola', 'Parabola', 'Парабола'],
     ['Substitute and check', 'O‘rniga qo‘yib tekshirish', 'Подставить и проверить']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'What a quadratic equation is',
@@ -4478,6 +4499,7 @@ G8_ALG.push({
     ['No real roots', 'Haqiqiy ildizga ega emas', 'Нет действительных корней'],
     ['Zero root', 'Nol ildiz', 'Нулевой корень']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The three forms',
@@ -4617,6 +4639,7 @@ G8_ALG.push({
     ['Simplify the surd', 'Ildizni soddalashtirish', 'Упростить корень'],
     ['Exact answer', 'Aniq javob', 'Точный ответ']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The discriminant',
@@ -4761,6 +4784,7 @@ G8_ALG.push({
     ['Linear factors', 'Chiziqli ko‘paytuvchilar', 'Линейные множители'],
     ['Converse theorem', 'Teskari teorema', 'Обратная теорема']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The theorem',
@@ -4904,6 +4928,7 @@ G8_ALG.push({
     ['Return to x', 'x ga qaytish', 'Вернуться к x'],
     ['Degree of an equation', 'Tenglamaning darajasi', 'Степень уравнения']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'Biquadratic equations',
@@ -5047,6 +5072,7 @@ G8_ALG.push({
     ['Dimensions', 'O‘lchamlar', 'Размеры'],
     ['Interpret the answer', 'Javobni izohlash', 'Истолковать ответ']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The method',
@@ -5194,6 +5220,7 @@ G8_ALG.push({
     ['Vertex of a parabola', 'Parabola uchi', 'Вершина параболы'],
     ['Axis of symmetry', 'Simmetriya o‘qi', 'Ось симметрии']
   ],
+  timing: [[15, 'Warm-up'], [36, 'Explanation'], [24, 'Interactive'], [39, 'Practice'], [6, 'Homework']],
   sections: [
     {
       h: 'Lesson 74 — compound percentage change',
@@ -5331,7 +5358,7 @@ G8_ALG.push({
     'Diagnose each lost mark by error type.',
     'Re-solve every task that was lost.'
   ],
-  timing: [[2, 'Setting up'], [36, 'The paper'], [2, 'Collect in']],
+  timing: [[4, 'Setting up'], [72, 'The paper'], [4, 'Collect in']],
   terms: [
     ['Control work', 'Nazorat ishi', 'Контрольная работа'],
     ['Work on mistakes', 'Xatolar ustida ishlash', 'Работа над ошибками'],
@@ -5514,6 +5541,7 @@ G8_ALG.push({
     ['Bias', 'Nomutanosiblik', 'Смещение (необъективность)'],
     ['Misleading graph', 'Chalg‘ituvchi grafik', 'Вводящий в заблуждение график']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'From raw numbers to a table',
@@ -5659,6 +5687,7 @@ G8_ALG.push({
     ['Midpoint of a class', 'Sinf o‘rtasi', 'Середина интервала'],
     ['Estimate', 'Baholash', 'Оценить']
   ],
+  timing: [[10, 'Warm-up'], [24, 'Explanation'], [16, 'Interactive'], [26, 'Practice'], [4, 'Homework']],
   sections: [
     {
       h: 'The three averages',
@@ -5814,7 +5843,7 @@ G8_ALG.push({
     ['Repetition allowed', 'Takrorlanish bilan', 'С повторением'],
     ['Exhaustive list', 'To‘liq ro‘yxat', 'Полный перечень']
   ],
-  timing: [[6, 'Warm-up: how many two-digit numbers use only 1, 2, 3?'], [12, 'Systematic listing'], [10, 'Tables of outcomes'], [8, 'Tree diagrams'], [4, 'Homework']],
+  timing: [[18, 'Warm-up: how many two-digit numbers use only 1, 2, 3?'], [36, 'Systematic listing'], [30, 'Tables of outcomes'], [24, 'Tree diagrams'], [12, 'Homework']],
   sections: [
     {
       h: 'Listing in an order you can trust',
@@ -6020,7 +6049,7 @@ G8_ALG.push({
     ['At least one', 'Kamida bitta', 'Хотя бы один'],
     ['Total number of ways', 'Usullar soni', 'Число способов']
   ],
-  timing: [[6, 'Recall yesterday’s lists'], [12, 'The multiplication rule'], [8, 'Arrangements and factorials'], [10, 'Addition rule and “at least one”'], [4, 'Homework']],
+  timing: [[18, 'Recall yesterday’s lists'], [36, 'The multiplication rule'], [24, 'Arrangements and factorials'], [30, 'Addition rule and “at least one”'], [12, 'Homework']],
   sections: [
     {
       h: 'The multiplication rule',
@@ -6207,7 +6236,7 @@ G8_ALG.push({
     'Diagnose each lost mark by error type.',
     'Re-solve every task that was lost.'
   ],
-  timing: [[2, 'Setting up'], [36, 'The paper'], [2, 'Collect in']],
+  timing: [[4, 'Setting up'], [72, 'The paper'], [4, 'Collect in']],
   terms: [
     ['Control work', 'Nazorat ishi', 'Контрольная работа'],
     ['Work on mistakes', 'Xatolar ustida ishlash', 'Работа над ошибками'],
@@ -6385,7 +6414,7 @@ G8_ALG.push({
     ['Input / output', 'Kirish / chiqish', 'Вход / выход'],
     ['Table of values', 'Qiymatlar jadvali', 'Таблица значений']
   ],
-  timing: [[6, 'Continue three patterns'], [12, 'The nth term'], [10, 'Quadratic and special sequences'], [8, 'Function notation'], [4, 'Homework']],
+  timing: [[18, 'Continue three patterns'], [36, 'The nth term'], [30, 'Quadratic and special sequences'], [24, 'Function notation'], [12, 'Homework']],
   sections: [
     {
       h: 'Two ways to describe a sequence',
@@ -6544,7 +6573,7 @@ G8_ALG.push({
     ['Rate of change', 'O‘zgarish tezligi', 'Скорость изменения'],
     ['Conversion graph', 'Almashtirish grafigi', 'График перевода единиц']
   ],
-  timing: [[6, 'Sketch three lines from memory'], [12, 'Gradient and intercept'], [10, 'Parallel and perpendicular'], [8, 'Real-life graphs'], [4, 'Homework']],
+  timing: [[18, 'Sketch three lines from memory'], [36, 'Gradient and intercept'], [30, 'Parallel and perpendicular'], [24, 'Real-life graphs'], [12, 'Homework']],
   sections: [
     {
       h: 'y = mx + c, read straight off',
@@ -6701,7 +6730,7 @@ G8_ALG.push({
     ['Share in a ratio', 'Nisbatda taqsimlash', 'Разделить в отношении'],
     ['Constant of proportionality', 'Proporsionallik koeffitsienti', 'Коэффициент пропорциональности']
   ],
-  timing: [[6, 'Simplify five ratios'], [10, 'Sharing in a ratio'], [10, 'Direct proportion'], [10, 'Inverse proportion and rates'], [4, 'Homework']],
+  timing: [[12, 'Simplify five ratios'], [20, 'Sharing in a ratio'], [20, 'Direct proportion'], [20, 'Inverse proportion and rates'], [8, 'Homework']],
   sections: [
     {
       h: 'Ratio and sharing',
@@ -6863,7 +6892,7 @@ G8_ALG.push({
     ['Experimental probability', 'Tajribaviy ehtimollik', 'Опытная (частотная) вероятность'],
     ['Expected frequency', 'Kutilayotgan chastota', 'Ожидаемая частота']
   ],
-  timing: [[6, 'Order five events by likelihood'], [10, 'The basic formula'], [10, 'Complement and mutually exclusive events'], [10, 'Two events'], [4, 'Homework']],
+  timing: [[12, 'Order five events by likelihood'], [20, 'The basic formula'], [20, 'Complement and mutually exclusive events'], [20, 'Two events'], [8, 'Homework']],
   sections: [
     {
       h: 'Putting a number on chance',
@@ -7046,7 +7075,7 @@ G8_ALG.push({
     'Diagnose each lost mark by error type.',
     'Set out the summer work that follows from the result.'
   ],
-  timing: [[2, 'Setting up'], [36, 'The paper'], [2, 'Collect in']],
+  timing: [[4, 'Setting up'], [72, 'The paper'], [4, 'Collect in']],
   terms: [
     ['Annual review', 'Yillik takrorlash', 'Годовое повторение'],
     ['Control work', 'Nazorat ishi', 'Контрольная работа'],

@@ -97,6 +97,16 @@ for (const t of all) {
   if (!t.examples || !t.examples.length) issues.push(`${t.id}: no worked examples`);
   (t.examples || []).forEach((e, i) => { if (!e.ans) issues.push(`${t.id}: example ${i} has no answer`); });
   if (!t.homework || !t.homework.length) issues.push(`${t.id}: no homework`);
+  /* The lesson clock prints the minutes of each phase, so they must add up to
+     the lesson: a 2-hour topic whose clock totals 90 minutes cannot be taught. */
+  if (!t.timing || !t.timing.length) {
+    issues.push(`${t.id}: no lesson clock`);
+  } else {
+    const mins = t.timing.reduce((s, r) => s + r[0], 0);
+    if (mins !== t.hours * 40) {
+      issues.push(`${t.id}: the lesson clock totals ${mins} min, the lesson is ${t.hours * 40}`);
+    }
+  }
   if (!t.subtitle) issues.push(`${t.id}: no subtitle`);
   if (!t.uz || !t.cam) issues.push(`${t.id}: missing a textbook reference`);
 
