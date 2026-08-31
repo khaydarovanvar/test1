@@ -24,42 +24,60 @@ python3 site/build-standalone.py
 site/
   index.html         home — 3D hero, grade tiles, lesson anatomy
   grades.html        grades 5–11 hub and roadmap
-  grade.html?g=8     grade page — streams, quarter tabs, topic list
+  grade.html?g=6     grade page — streams, quarter tabs, topic list
   lesson.html?t=ID   one topic page, rendered from data
+  plans.html         the annual plans, with Excel downloads
+  terminology.html   every term, grade by grade and topic by topic
   about.html         how a lesson is built
   standalone.html    generated: the whole site in one file (hash routing)
   build-standalone.py   builds standalone.html
   build-pdf.mjs         renders every lesson to a printable PDF
+  check-content.js      structural check of the lesson data (run before committing)
   assets/
     styles.css       design tokens, typography, components, print, light + dark
     pages.css        3D hero, page and lesson layouts, mobile rules
     app.js           logo, header, footer, mobile nav, theme, 3D hero engine
     mathfmt.js       inline maths helpers — fractions, roots, powers
-    figures.js       34 SVG figures, themed for light and dark
-    interactive.js   15 interactive models
+    figures.js       146 SVG figures, themed for light and dark
+    interactive.js   29 interactive models
+    solids3d.js      the moving 3D solids in the header
     lesson.js        renders a topic page from its data object
   data/
-    grades.js        the grade 5–11 index
-    g8-alg.js        Grade 8 Algebra — all written quarters
-    g8-geo.js        Grade 8 Geometry — all written quarters
+    grades.js        the grade 5–11 index and the per-grade copy
+    g6-mat.js        Grade 6 Mathematics — 92 topics, 204 hours
+    g7-mat.js        Grade 7 Mathematics — 90 topics, 170 hours
+    g8-alg.js        Grade 8 Algebra — 44 topics, 102 hours
+    g8-geo.js        Grade 8 Geometry — 51 topics, 68 hours
+    g9-alg.js        Grade 9 Algebra — 51 topics, 102 hours
+    g9-geo.js        Grade 9 Geometry — 44 topics, 68 hours
+    g10-alg.js       Grade 10 Algebra — 46 topics, 102 hours
+    g10-geo.js       Grade 10 Geometry — 34 topics, 68 hours
+    g11-alg.js       Grade 11 Algebra — 37 topics, 102 hours
+    g11-geo.js       Grade 11 Geometry — 39 topics, 68 hours
+    glossary.js      the terminology index
+  downloads/         the annual plans as Excel workbooks, one per grade
+  plans/             the annual plans rendered as pages
   pdf/               generated: one PDF per lesson + one booklet per quarter
 ```
 
 ## What is written
 
-All four quarters of Grade 8 are complete — the full 102 hours of algebra and 68 hours of geometry.
+Grades 6 to 11 are complete — every lesson of the national calendar-thematic plan, with the
+Cambridge layer mapped onto it.
 
-| Stream | Quarter | Topics | Lessons | Problems |
+| Grade | Course | Topics | Hours | Problems |
 |---|---|---:|---:|---:|
-| Grade 8 Algebra | I | 10 | 27 | 210 |
-| Grade 8 Geometry | I | 13 | 18 | 273 |
-| Grade 8 Algebra | II | 10 | 21 | 210 |
-| Grade 8 Geometry | II | 10 | 14 | 210 |
-| Grade 8 Algebra | III | 14 | 30 | 294 |
-| Grade 8 Geometry | III | 14 | 20 | 294 |
-| Grade 8 Algebra | IV | 10 | 24 | 210 |
-| Grade 8 Geometry | IV | 14 | 16 | 294 |
-| **Total** | | **95** | **170** | **1995** |
+| Grade 6 | Mathematics (Stage 7) | 92 | 204 | 1932 |
+| Grade 7 | Mathematics (Stage 8) | 90 | 170 | 1890 |
+| Grade 8 | Algebra + Geometry (Stage 9) | 95 | 170 | 1995 |
+| Grade 9 | Algebra + Geometry (IGCSE) | 95 | 170 | 1995 |
+| Grade 10 | Algebra + Geometry (IGCSE · Pure 1) | 80 | 170 | 1680 |
+| Grade 11 | Algebra + Geometry (Pure 1–3) | 76 | 170 | 1596 |
+| **Total** | | **528** | **1054** | **11 088** |
+
+Quarters follow the national calendar throughout: 9, 7, 10 and 8 weeks. Grades 6 and 7 are taught
+as one subject at six and five hours a week; grades 8 to 11 run algebra at three hours a week and
+geometry at two.
 
 Every topic page contains: a 40-minute lesson clock, learning objectives, an explanation with drawn
 figures, worked examples with reasoned steps, one interactive model, an English / Uzbek / Russian
@@ -75,7 +93,7 @@ previous, all topics and next.
 ## The header
 
 - **Grades** opens a drop-down, so any year is one click from any page.
-- **Search** (the magnifier, or press `/`) matches all 95 topics on title,
+- **Search** (the magnifier, or press `/`) matches all 528 topics on title,
   subtitle, textbook reference and the terminology in all three languages — so
   `chord`, `vatar` and `хорда` all find the same lesson. Arrow keys move,
   Enter opens, Esc closes. Title matches rank above passing mentions.
@@ -119,9 +137,20 @@ along, not a substitute for the written Uzbek and Russian terminology.
 
 ```
 node site/build-pdf.mjs      # one A4 PDF per lesson, answers shown, into site/pdf/
+python3 site/build-booklets.py   # merges them into one booklet per grade, stream and quarter
 ```
 
-Booklets (one per stream and quarter) are merged from those with `pypdf`.
+Booklets are merged with `pypdf`. All six written grades are included.
+
+## Checking the data
+
+```
+cd site && node check-content.js
+```
+
+It verifies the lesson numbering and the hours against the annual plans, the practice sets, the
+terminology rows, the figure names, the interactive models and their data, the HTML of every
+section, and the topic counts the homepage prints. Run it before every commit.
 
 ## Adding a topic
 
@@ -147,9 +176,16 @@ Figures are referenced as `{{fig:parallelogram:caption text}}` and resolved from
 
 ## Textbooks referenced
 
+- *Matematika 6* — Ismailov and others. O‘qituvchi, Tashkent.
+- *Algebra 7* and *Geometry 7* — the national Grade 7 course.
 - *Algebra 8* — Sh. A. Alimov, A. R. Xalmuxamedov, M. A. Mirzaxmedov. O‘qituvchi, Tashkent 2019, 4th edition.
 - *Geometry 8* — A. A. Rahimkariev, M. A. Toxtaxodjaeva. Yangiyo‘l Poligraf Servis, 2019, 4th edition.
-- *Cambridge Lower Secondary Mathematics 9* — Learner's Book and Workbook.
+- *Algebra 9* and *Geometry 9* — the national Grade 9 course.
+- *Algebra and Calculus 10* — Zaitov; *Geometry 10* — Xaydarov.
+- *Algebra and Calculus 11* and *Geometry 11* — the national Grade 11 course.
+- *Cambridge Lower Secondary Mathematics 7, 8 and 9* — Learner's Books and Workbooks.
+- *IGCSE Mathematics Core and Extended* — Morrison & Hamshaw.
+- *Pure Mathematics 1* and *Pure Mathematics 2 & 3* — Cambridge International AS & A Level.
 
 Page references point to these editions. All problems on the site are written for the course and are
 not reproduced from the textbooks.
