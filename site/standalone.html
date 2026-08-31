@@ -4386,27 +4386,36 @@ body{top:0!important}                       /* the banner pushes body down */
   };
 
   /* ============ 9. substitute a value / domain check ============ */
+  /* Substitute a value into an expression and read the result. A `den` is
+     optional: supply one for a fraction, and the model shows the denominator
+     and refuses the values that make it zero. Without one it is simply an
+     evaluator, which is what most topics want. */
   INT.substitute = function (host, opt) {
     opt = opt || {};
-    var body = frame(host, opt.title || 'Try a value of x',
-      'Move x. Where the denominator hits zero the fraction has no value at all.');
+    var lab = opt.label || 'x';
+    var body = frame(host, opt.title || 'Try a value of ' + lab,
+      opt.hint || (opt.den
+        ? 'Move ' + lab + '. Where the denominator hits zero the fraction has no value at all.'
+        : 'Move ' + lab + ' and watch the value follow.'));
     var row = ctrlRow(body);
     var out = el('div', {}); body.appendChild(out);
-    var f = opt.f, den = opt.den, bad = opt.bad || [];
+    var f = opt.f || function () { return 0; };
+    var den = opt.den, bad = opt.bad || [];
     var x = opt.start == null ? 2 : opt.start;
     function render() {
-      var dv = den(x);
+      var dv = den ? den(x) : 1;
       var ok = Math.abs(dv) > 1e-9;
-      out.innerHTML = '<div class="eq boxed">' + opt.expr + '</div>' +
+      out.innerHTML = '<div class="eq boxed">' + (opt.expr || '') + '</div>' +
         '<div class="readout">' +
-        '<div class="rd">x <b>' + r2(x) + '</b></div>' +
-        '<div class="rd">denominator <b>' + r2(dv) + '</b></div>' +
+        '<div class="rd">' + lab + ' <b>' + r2(x) + '</b></div>' +
+        (den ? '<div class="rd">denominator <b>' + r2(dv) + '</b></div>' : '') +
         '<div class="rd">value <b style="color:' + (ok ? 'var(--easy)' : 'var(--hard)') + '">' +
         (ok ? r2(f(x)) : 'undefined') + '</b></div></div>' +
-        (ok ? '' : '<div class="warn"><span class="wl">Not allowed</span>The denominator is 0, so the fraction has no value here. That is why we write x ≠ ' + bad.join(', x ≠ ') + '.</div>');
+        (ok ? (opt.note ? '<p class="small" style="margin:8px 0 0">' + opt.note + '</p>' : '')
+            : '<div class="warn"><span class="wl">Not allowed</span>The denominator is 0, so the fraction has no value here. That is why we write ' + lab + ' \u2260 ' + bad.join(', ' + lab + ' \u2260 ') + '.</div>');
     }
-    slider(row, 'x', opt.min == null ? -6 : opt.min, opt.max == null ? 6 : opt.max, x, 0.5,
-      function (v) { x = v; render(); });
+    slider(row, lab, opt.min == null ? -6 : opt.min, opt.max == null ? 6 : opt.max, x,
+      opt.step == null ? 0.5 : opt.step, function (v) { x = v; render(); });
     render();
   };
 
@@ -6900,8 +6909,8 @@ G6_MAT.push({
     hint: 'Slide ' + m('x') + ' and watch the value.',
     expr: m('f(x) = 2x + 1'),
     f: function (x) { return 2 * x + 1; },
-    den: function () { return 1; },
-    start: 2
+    label: 'x', min: -6, max: 6, step: 0.5, start: 2,
+    note: 'Every value of ' + m('x') + ' gives exactly one value of ' + m('2x + 1') + ' — that is all a formula does.'
   },
   quiz: [
     { q: m('3x + 2') + ' at ' + m('x = 4') + ' is:', a: [m('14'), m('18'), m('20'), m('12')], c: 0, why: 'Multiply first.' },
@@ -23181,7 +23190,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Moving the decimal point',
-    hint: 'Multiply and divide by the same small number and watch it return.'
+    hint: 'Multiply and divide by the same small number and watch it return.',
+    expr: m('x × 0.1 = x ÷ 10'),
+    label: 'x', min: 0, max: 100, step: 0.5, start: 25,
+    f: function (x) { return x * 0.1; },
+    note: 'Multiplying by ' + m('0.1') + ' moves the point one place left; dividing by ' + m('0.1') + ' moves it one place right, back again.'
   },
   quiz: [
     { q: m('× 0.1') + ' moves the point:', a: ['one right', 'one left', 'two right', 'two left'], c: 1, why: 'Same as ' + m('÷ 10') + '.' },
@@ -23539,7 +23552,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Decimal products',
-    hint: 'Count the places in both factors.'
+    hint: 'Count the places in both factors.',
+    expr: m('0.4 × x'),
+    label: 'x', min: 0, max: 10, step: 0.1, start: 2.5,
+    f: function (x) { return 0.4 * x; },
+    note: 'One decimal place in ' + m('0.4') + ' and one in ' + m('x') + ' give two in the product — the digits are the same as ' + m('4 × 25') + '.'
   },
   quiz: [
     { q: 'Which is larger, ' + m('0.7') + ' or ' + m('0.65') + '?', a: [m('0.7'), m('0.65'), 'equal', 'cannot tell'], c: 0, why: 'Tenths first.' },
@@ -25143,7 +25160,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Signs in a product',
-    hint: 'Count the negative factors.'
+    hint: 'Count the negative factors.',
+    expr: m('(−4) × x'),
+    label: 'x', min: -6, max: 6, step: 1, start: 3,
+    f: function (x) { return -4 * x; },
+    note: 'Cross zero and the sign of the answer flips: one negative factor gives a negative, two give a positive.'
   },
   quiz: [
     { q: m('(−4)(−5)') + ' equals:', a: [m('20'), m('−20'), m('9'), m('−9')], c: 0, why: 'Alike signs.' },
@@ -25322,7 +25343,12 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Signs in a quotient',
-    hint: 'Same rules as multiplication.'
+    hint: 'Same rules as multiplication.',
+    expr: m('(−24) ÷ x'),
+    label: 'x', min: -6, max: 6, step: 1, start: 4,
+    f: function (x) { return -24 / x; },
+    den: function (x) { return x; }, bad: ['0'],
+    note: 'The sign rule is the same as for a product — but ' + m('x = 0') + ' is not allowed at all.'
   },
   quiz: [
     { q: m('(−20) ÷ (−5)') + ' equals:', a: [m('4'), m('−4'), m('100'), m('−100')], c: 0, why: 'Alike signs.' },
@@ -25495,7 +25521,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Order of operations with signs',
-    hint: 'Brackets, powers, × ÷, then + −.'
+    hint: 'Brackets, powers, × ÷, then + −.',
+    expr: m('(−2) · x − (−6)'),
+    label: 'x', min: -6, max: 6, step: 1, start: 4,
+    f: function (x) { return -2 * x + 6; },
+    note: 'Multiply first, then subtract — and subtracting ' + m('−6') + ' adds ' + m('6') + '.'
   },
   quiz: [
     { q: m('−5 + 3 × (−4)') + ' equals:', a: [m('8'), m('−17'), m('−32'), m('32')], c: 1, why: 'Multiply first.' },
@@ -27980,7 +28010,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Substituting values',
-    hint: 'Put every negative value in brackets.'
+    hint: 'Put every negative value in brackets.',
+    expr: m('3x² − 5x + 2'),
+    label: 'x', min: -4, max: 4, step: 0.5, start: 2,
+    f: function (x) { return 3 * x * x - 5 * x + 2; },
+    note: 'At ' + m('x = 1') + ' the value is zero; everywhere else the letter is just a number waiting to be put in.'
   },
   quiz: [
     { q: '“Five less than ' + m('x') + '” is:', a: [m('5 − x'), m('x − 5'), m('5x'), m(f('x', '5'))], c: 1, why: 'Start from ' + m('x') + '.' },
@@ -28141,7 +28175,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Removing brackets',
-    hint: 'Check your answer numerically.'
+    hint: 'Check your answer numerically.',
+    expr: m('5 − (2x − 3)') + ' = ' + m('8 − 2x'),
+    label: 'x', min: -5, max: 6, step: 0.5, start: 2,
+    f: function (x) { return 8 - 2 * x; },
+    note: 'The minus in front changes both signs inside. Substitute any value into either form and the two agree.'
   },
   quiz: [
     { q: m('5 − (x − 3)') + ' equals:', a: [m('5 − x − 3'), m('5 − x + 3'), m('5 + x − 3'), m('5 + x + 3')], c: 1, why: 'Every sign changes.' },
@@ -28819,7 +28857,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Monomials in standard form',
-    hint: 'Numbers first, then each letter once.'
+    hint: 'Numbers first, then each letter once.',
+    expr: m('(−3x²)(2x³)') + ' = ' + m('−6x⁵'),
+    label: 'x', min: -3, max: 3, step: 0.5, start: 2,
+    f: function (x) { return -6 * Math.pow(x, 5); },
+    note: 'Coefficients multiply, exponents add — and the standard form is the one number followed by the letters.'
   },
   quiz: [
     { q: 'Which is a monomial?', a: [m('a + b'), m('7a²b'), m(f('3', 'x')), m('a − 1')], c: 1, why: 'A product only.' },
@@ -29153,7 +29195,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Evaluating a polynomial',
-    hint: 'Try values that make it zero.'
+    hint: 'Try values that make it zero.',
+    expr: m('2x³ − 5x² + 3x − 7'),
+    label: 'x', min: -3, max: 4, step: 0.5, start: 2,
+    f: function (x) { return 2 * x * x * x - 5 * x * x + 3 * x - 7; },
+    note: 'A polynomial is a machine: put a number in, get a number out. Nothing else about it changes.'
   },
   quiz: [
     { q: 'A polynomial is:', a: ['a product of monomials', 'a sum of monomials', 'a fraction', 'an equation'], c: 1, why: 'Terms added.' },
@@ -29499,7 +29545,11 @@ G7_MAT.push({
   interactive: {
     type: 'substitute',
     title: 'Checking a simplification',
-    hint: 'Substitute x = 1 into both forms.'
+    hint: 'Substitute x = 1 into both forms.',
+    expr: m('(3x² − 2x + 1) − (x² − 5x + 4)') + ' = ' + m('2x² + 3x − 3'),
+    label: 'x', min: -4, max: 4, step: 0.5, start: 2,
+    f: function (x) { return 2 * x * x + 3 * x - 3; },
+    note: 'Both forms give the same value at every ' + m('x') + '. That is what makes the simplification correct — and it is how to check one.'
   },
   quiz: [
     { q: 'A plus before a bracket:', a: ['changes all signs', 'changes none', 'changes the first', 'removes the terms'], c: 1, why: 'Nothing happens.' },
@@ -56762,7 +56812,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'Test a claim, then prove it',
-    hint: 'Testing values can only disprove; the algebra proves.'
+    hint: 'Testing values can only disprove; the algebra proves.',
+    expr: m('x² − 2x + 3'),
+    label: 'x', min: -4, max: 6, step: 0.5, start: 1,
+    f: function (x) { return x * x - 2 * x + 3; },
+    note: 'It never drops below ' + m('2') + ', reached at ' + m('x = 1') + '. Testing values can only disprove; ' + m('(x − 1)² + 2') + ' proves it.'
   },
   quiz: [
     { q: 'To prove ' + m('A ≥ B') + ' you show:', a: [m('A − B ≥ 0'), m('A > 0'), m('B < 0'), 'one value works'], c: 0, why: 'One side, one sign.' },
@@ -58361,7 +58415,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'Test, then prove',
-    hint: 'A value that works is evidence; the algebra is the proof.'
+    hint: 'A value that works is evidence; the algebra is the proof.',
+    expr: m('sin²x + cos²x'),
+    label: 'x°', min: 0, max: 360, step: 15, start: 30,
+    f: function (x) { var r = x * Math.PI / 180; return Math.sin(r) * Math.sin(r) + Math.cos(r) * Math.cos(r); },
+    note: 'Always ' + m('1') + ', at every angle. Testing shows it; Pythagoras on the unit circle proves it.'
   },
   quiz: [
     { q: 'To prove an identity you work:', a: ['on both sides', 'on one side', 'by cross-multiplying', 'by testing values'], c: 1, why: 'A one-way chain is valid.' },
@@ -58878,7 +58936,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'Two tangents, one angle',
-    hint: 'Watch the denominator as the two angles approach 90° together.'
+    hint: 'Watch the denominator as the two angles approach 90° together.',
+    expr: m('tan(45° + x°)'),
+    label: 'x°', min: -40, max: 40, step: 5, start: 15,
+    f: function (x) { return Math.tan((45 + x) * Math.PI / 180); },
+    note: 'Compare it with the addition formula ' + m(f('1 + tan x°', '1 − tan x°')) + ' — that is where this curve comes from.'
   },
   quiz: [
     { q: m('tan(α + β)') + ' equals:', a: [m(f('tan α + tan β', '1 + tan α tan β')), m(f('tan α + tan β', '1 − tan α tan β')), m('tan α + tan β'), m(f('1', 'tan α tan β'))], c: 1, why: 'Signs are crossed.' },
@@ -59948,7 +60010,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'Terms from a formula',
-    hint: 'Change n and watch the term.'
+    hint: 'Change n and watch the term.',
+    expr: m('aₙ = n² − 3n + 4'),
+    label: 'n', min: 1, max: 20, step: 1, start: 1,
+    f: function (n) { return n * n - 3 * n + 4; },
+    note: 'The domain is the counting numbers, so only whole ' + m('n') + ' has a term. The first four are ' + m('2, 2, 4, 8') + '.'
   },
   quiz: [
     { q: m('aₙ') + ' denotes:', a: ['the sum', 'the ' + m('n') + 'th term', 'the number of terms', 'the first term'], c: 1, why: 'The subscript is the position.' },
@@ -60137,7 +60203,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'a₁, d and the nth term',
-    hint: 'Change d and watch the straight line tilt.'
+    hint: 'Change d and watch the straight line tilt.',
+    expr: m('aₙ = 5 + 3(n − 1)'),
+    label: 'n', min: 1, max: 30, step: 1, start: 1,
+    f: function (n) { return 5 + 3 * (n - 1); },
+    note: 'A straight line in ' + m('n') + ': the first term is ' + m('5') + ' and every step adds ' + m('3') + '.'
   },
   quiz: [
     { q: 'In an AP, ' + m('d') + ' equals:', a: [m('aₙ aₙ₊₁'), m('aₙ₊₁ − aₙ'), m(f('aₙ₊₁', 'aₙ')), m('a₁')], c: 1, why: 'The common difference.' },
@@ -60309,7 +60379,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'Sₙ as n grows',
-    hint: 'The sum grows like n², not like n.'
+    hint: 'The sum grows like n², not like n.',
+    expr: m('Sₙ = ' + f('n(7 + 3n)', '2')),
+    label: 'n', min: 1, max: 30, step: 1, start: 1,
+    f: function (n) { return n * (7 + 3 * n) / 2; },
+    note: 'The sum of ' + m('5, 8, 11, …') + '. It grows like ' + m('n²') + ', not like ' + m('n') + ' — doubling ' + m('n') + ' roughly quadruples the sum.'
   },
   quiz: [
     { q: m('Sₙ') + ' equals:', a: [m(f('n(a₁ + aₙ)', '2')), m('n(a₁ + aₙ)'), m(f('a₁ + aₙ', '2')), m('naₙ')], c: 0, why: 'Pair the ends.' },
@@ -60678,7 +60752,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'b₁ and q',
-    hint: 'Make q slightly greater than 1 and watch the tenth term.'
+    hint: 'Make q slightly greater than 1 and watch the tenth term.',
+    expr: m('bₙ = 3 · 2ⁿ⁻¹'),
+    label: 'n', min: 1, max: 15, step: 1, start: 1,
+    f: function (n) { return 3 * Math.pow(2, n - 1); },
+    note: 'By the tenth term it has passed ' + m('1500') + '. That is the difference between adding and multiplying each time.'
   },
   quiz: [
     { q: 'In a GP, ' + m('q') + ' equals:', a: [m('bₙ₊₁ − bₙ'), m(f('bₙ₊₁', 'bₙ')), m('bₙ bₙ₊₁'), m('b₁')], c: 1, why: 'The common ratio.' },
@@ -60849,7 +60927,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'Sₙ of a GP',
-    hint: 'Compare the sum with the last term — for large q they are almost equal.'
+    hint: 'Compare the sum with the last term — for large q they are almost equal.',
+    expr: m('Sₙ = 3(2ⁿ − 1)'),
+    label: 'n', min: 1, max: 15, step: 1, start: 1,
+    f: function (n) { return 3 * (Math.pow(2, n) - 1); },
+    note: 'Always exactly three less than the next term, ' + m('3 · 2ⁿ') + ' — which is what the “multiply by ' + m('q') + ' and subtract” trick leaves behind.'
   },
   quiz: [
     { q: m('Sₙ') + ' of a GP equals:', a: [m(f('b₁(qⁿ − 1)', 'q − 1')), m(f('n(b₁ + bₙ)', '2')), m('b₁ qⁿ'), m('n b₁ q')], c: 0, why: 'Shift and subtract.' },
@@ -61032,7 +61114,11 @@ G9_ALG.push({
   interactive: {
     type: 'substitute',
     title: 'Partial sums approaching a ceiling',
-    hint: 'Increase n and watch the sum settle.'
+    hint: 'Increase n and watch the sum settle.',
+    expr: m('Sₙ = 8(1 − 0.5ⁿ)'),
+    label: 'n', min: 1, max: 30, step: 1, start: 1,
+    f: function (n) { return 8 * (1 - Math.pow(0.5, n)); },
+    note: 'The terms are ' + m('4, 2, 1, ' + f('1', '2') + ', …') + ' and the sum never reaches ' + m('8') + ' — but it gets as close as you like.'
   },
   quiz: [
     { q: 'An infinite GP has a sum when:', a: [m('q > 0'), m('|q| < 1'), m('q > 1'), 'always'], c: 1, why: 'The terms must shrink.' },
@@ -90367,7 +90453,7 @@ G11_GEO.push({
       h: 'Position vectors',
       html: `<div class="keybox"><div class="klabel">The bridge between points and vectors</div>
       The <b>position vector</b> of ${m('A')} is ${m('OA')}, written ${m('a')}, and its components are
-      simply the coordinates of ${m('A')}. Then for any two points:</p>
+      simply the coordinates of ${m('A')}. Then for any two points:
       ${eq(m('AB = b − a'), true)}
       “Head minus tail” — the destination’s position vector minus the start’s.</div>
       <p>So ${m('A(1, 2, 3)')} to ${m('B(4, 6, 15)')} gives ${m('AB = (3, 4, 12)')}, of length ${m('13')} —
