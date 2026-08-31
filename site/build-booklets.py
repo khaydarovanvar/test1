@@ -13,8 +13,8 @@ except ImportError:
     sys.exit("pypdf is not installed:  pip install pypdf")
 
 PDF = Path(__file__).resolve().parent / "pdf"
-STREAMS = {"alg": "algebra", "geo": "geometry"}
-GRADES = (8, 10, 11)
+STREAMS = {"mat": "mathematics", "alg": "algebra", "geo": "geometry"}
+GRADES = (6, 7, 8, 9, 10, 11)
 
 
 def sort_key(path):

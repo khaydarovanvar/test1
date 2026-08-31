@@ -8,7 +8,9 @@ CSS = R('assets/styles.css') + "\n" + R('assets/pages.css')
 JS_LIBS = "\n".join(R(f) for f in [
     'assets/mathfmt.js', 'assets/figures.js', 'assets/interactive.js',
     'assets/lesson.js', 'data/grades.js',
+    'data/g6-mat.js', 'data/g7-mat.js',
     'data/g8-alg.js', 'data/g8-geo.js',
+    'data/g9-alg.js', 'data/g9-geo.js',
     'data/g10-alg.js', 'data/g10-geo.js',
     'data/g11-alg.js', 'data/g11-geo.js', 'data/glossary.js'])
 

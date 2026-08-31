@@ -8,7 +8,7 @@ const SITE = 'file://' + path.resolve('.') + '/';
 const OUT = path.resolve('./pdf');
 fs.mkdirSync(OUT, { recursive: true });
 
-const GRADES = [8, 10, 11];
+const GRADES = [6, 7, 8, 9, 10, 11];
 
 const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
 const ctx = await b.newContext();
@@ -19,7 +19,11 @@ const page = await ctx.newPage();
 await page.goto(SITE + 'lesson.html?t=alg-01', { waitUntil: 'domcontentloaded' });
 const topics = await page.evaluate(gs => {
   let all = [];
-  for (const g of gs) all = all.concat(window['G' + g + '_ALG'] || [], window['G' + g + '_GEO'] || []);
+  for (const g of gs) {
+    all = all.concat(window['G' + g + '_MAT'] || [],
+                     window['G' + g + '_ALG'] || [],
+                     window['G' + g + '_GEO'] || []);
+  }
   return all.map(t => ({ id: t.id, grade: t.grade, stream: t.stream, quarter: t.quarter, title: t.title }));
 }, GRADES);
 
