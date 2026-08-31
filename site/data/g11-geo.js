@@ -228,7 +228,7 @@ G11_GEO.push({
       h: 'Position vectors',
       html: `<div class="keybox"><div class="klabel">The bridge between points and vectors</div>
       The <b>position vector</b> of ${m('A')} is ${m('OA')}, written ${m('a')}, and its components are
-      simply the coordinates of ${m('A')}. Then for any two points:</p>
+      simply the coordinates of ${m('A')}. Then for any two points:
       ${eq(m('AB = b − a'), true)}
       “Head minus tail” — the destination’s position vector minus the start’s.</div>
       <p>So ${m('A(1, 2, 3)')} to ${m('B(4, 6, 15)')} gives ${m('AB = (3, 4, 12)')}, of length ${m('13')} —

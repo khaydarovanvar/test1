@@ -143,7 +143,10 @@ for (const t of all) {
     for (const leak of ['${', "') +", '+ m(', "')}"]) {
       if (s.html.includes(leak)) issues.push(`${t.id}: section ${i} leaks source text "${leak}"`);
     }
-    for (const [open, close] of [['<table', '</table>'], ['<td', '</td>'], ['<tr', '</tr>'], ['<ul', '</ul>'], ['<ol', '</ol>']]) {
+    for (const [open, close] of [['<table', '</table>'], ['<td', '</td>'], ['<tr', '</tr>'],
+                                 ['<ul', '</ul>'], ['<ol', '</ol>'], ['<p>', '</p>'],
+                                 ['<b>', '</b>'], ['<i>', '</i>'], ['<div', '</div>'],
+                                 ['<span', '</span>']]) {
       const a = (s.html.match(new RegExp(open, 'g')) || []).length;
       const b = (s.html.match(new RegExp(close, 'g')) || []).length;
       if (a !== b) issues.push(`${t.id}: section ${i} has ${a} ${open}> against ${b} ${close}`);
