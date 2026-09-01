@@ -1,45 +1,46 @@
-floor,room,eyebrow,title,source
-1,7,GRADE,6B,"floor plan 1 — top-left corner room"
-1,1,LABORATORY,ICT,"floor plan 1"
-1,2,GRADE,6PA,"floor plan 1 — renamed from 6P"
-1,,GRADE,6PB,"new class, no room assigned yet"
-1,3,GRADE,7P,"floor plan 1"
-1,4,GRADE,8P,"floor plan 1"
-1,5,GRADE,5A,"floor plan 1"
-1,6,LABORATORY,CHEMISTRY & BIOLOGY,"floor plan 1 — CHEM BIO"
-1,9,LABORATORY,PHYSICS,"floor plan 1"
-1,10,GRADE,6A,"floor plan 1"
-1,11,GRADE,5PB,"floor plan 1"
-1,12,GRADE,5PA,"floor plan 1"
-1,13,GRADE,4P,"floor plan 1"
-1,14,GRADE,3P,"floor plan 1"
-1,15,GRADE,2P,"floor plan 1"
-1,16,GRADE,1P,"floor plan 1 — matches the sample tag"
-1,17,GRADE,2A,"floor plan 1"
-1,18,GRADE,1A,"floor plan 1"
-1,19,GRADE,1B,"floor plan 1"
-1,20,GRADE,1G,"floor plan 1"
-1,21,GRADE,3B,"floor plan 1"
-1,22,GRADE,3A,"floor plan 1"
-1,27,GRADE,4A,"floor plan 1"
-1,28,GRADE,4B,"floor plan 1"
-1,29,GRADE,2B,"floor plan 1"
-1,30,STAFF,TEACHERS’ ROOM,"floor plan 1 — Uchitel"
-1,8,OFFICE,VICE PRINCIPAL,"floor plan 1 — Zavuch, bottom-left corner room"
-1,,FACILITIES,BOYS’ RESTROOM,"floor plan 1 — BWC (no room number printed on the plan)"
-1,,FACILITIES,GIRLS’ RESTROOM,"floor plan 1 — GWC (no room number printed on the plan)"
-2,1,LABORATORY,ROBOTICS,"floor plan 2"
-2,2,STUDIO,MUSIC,"floor plan 2"
-2,14,OFFICE,VICE PRINCIPAL,"floor plan 2 — Zavuch"
-2,15,GRADE,9A,"floor plan 2"
-2,16,GRADE,9BG,"floor plan 2 — renamed from 9G"
-2,17,GRADE,7BG,"floor plan 2 — renamed from 7B"
-2,18,GRADE,7A,"floor plan 2"
-2,19,GRADE,8A,"floor plan 2"
-2,20,GRADE,11AG,"floor plan 2 — renamed from 11A"
-2,30,GRADE,10BG,"floor plan 2 — renamed from 10G"
-2,31,GRADE,10A,"floor plan 2"
-2,32,LABORATORY,IT,"floor plan 2"
-2,33,WORKSHOP,TECHNOLOGY,"floor plan 2 — Teh"
-2,,FACILITIES,BOYS’ RESTROOM,"floor plan 2 — BWC (no room number printed on the plan)"
-2,,FACILITIES,GIRLS’ RESTROOM,"floor plan 2 — GWC (no room number printed on the plan)"
+floor,room,eyebrow,title,source,no_number
+1,7,GRADE,6B,floor plan 1 — top-left corner room,y
+1,1,LABORATORY,ICT,floor plan 1,
+1,2,GRADE,6PA,floor plan 1 — renamed from 6P,
+1,,GRADE,6PB,"new class, no room assigned yet",
+1,3,GRADE,7P,floor plan 1,
+1,4,GRADE,8P,floor plan 1,
+1,5,GRADE,5A,floor plan 1,
+1,,GRADE,5B,"new class, no room assigned yet",y
+1,6,LABORATORY,CHEMISTRY & BIOLOGY,floor plan 1 — CHEM BIO,
+1,9,LABORATORY,PHYSICS,floor plan 1,
+1,10,GRADE,6A,floor plan 1,
+1,11,GRADE,5PB,floor plan 1,
+1,12,GRADE,5PA,floor plan 1,
+1,13,GRADE,4P,floor plan 1,
+1,14,GRADE,3P,floor plan 1,
+1,15,GRADE,2P,floor plan 1,
+1,16,GRADE,1P,floor plan 1 — matches the sample tag,
+1,17,GRADE,2A,floor plan 1,
+1,18,GRADE,1A,floor plan 1,
+1,19,GRADE,1B,floor plan 1,
+1,20,GRADE,1G,floor plan 1,
+1,21,GRADE,3B,floor plan 1,
+1,22,GRADE,3A,floor plan 1,
+1,27,GRADE,4A,floor plan 1,
+1,28,GRADE,4B,floor plan 1,
+1,29,GRADE,2B,floor plan 1,
+1,30,STAFF,TEACHERS’ ROOM,floor plan 1 — Uchitel,
+1,8,OFFICE,VICE PRINCIPAL,"floor plan 1 — Zavuch, bottom-left corner room",
+1,,FACILITIES,BOYS’ RESTROOM,floor plan 1 — BWC (no room number printed on the plan),
+1,,FACILITIES,GIRLS’ RESTROOM,floor plan 1 — GWC (no room number printed on the plan),
+2,1,LABORATORY,ROBOTICS,floor plan 2,
+2,2,STUDIO,MUSIC,floor plan 2,
+2,14,OFFICE,VICE PRINCIPAL,floor plan 2 — Zavuch,
+2,15,GRADE,9A,floor plan 2,
+2,16,GRADE,9BG,floor plan 2 — renamed from 9G,
+2,17,GRADE,7BG,floor plan 2 — renamed from 7B,
+2,18,GRADE,7A,floor plan 2,
+2,19,GRADE,8A,floor plan 2,
+2,20,GRADE,11AG,floor plan 2 — renamed from 11A,
+2,30,GRADE,10BG,floor plan 2 — renamed from 10G,
+2,31,GRADE,10A,floor plan 2,
+2,32,LABORATORY,IT,floor plan 2,
+2,33,WORKSHOP,TECHNOLOGY,floor plan 2 — Teh,
+2,,FACILITIES,BOYS’ RESTROOM,floor plan 2 — BWC (no room number printed on the plan),
+2,,FACILITIES,GIRLS’ RESTROOM,floor plan 2 — GWC (no room number printed on the plan),

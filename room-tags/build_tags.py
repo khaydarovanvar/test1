@@ -285,7 +285,7 @@ def draw_cut_marks(c, ox, oy, scale=1.0, inner=None, outer=None, holes=True):
     c.restoreState()
 
 
-def build_print_pdf(items, path, title):
+def build_print_pdf(items, path, title, numberless=False):
     pw, ph = TRIM_W + 2 * MARGIN, TRIM_H + 2 * MARGIN
     c = canvas.Canvas(path, pagesize=(pw * MM, ph * MM))
     c.setTitle(title)
@@ -293,19 +293,19 @@ def build_print_pdf(items, path, title):
     for it in items:
         c.saveState()
         c.translate(MARGIN * MM, MARGIN * MM)
-        draw_tag(c, it, bleed=True)
+        draw_tag(c, it, bleed=True, numberless=numberless)
         c.restoreState()
         draw_cut_marks(c, MARGIN, MARGIN)
         c.showPage()
     c.save()
 
 
-def build_exact_pdf(items, path, title):
+def build_exact_pdf(items, path, title, numberless=False):
     c = canvas.Canvas(path, pagesize=(TRIM_W * MM, TRIM_H * MM))
     c.setTitle(title)
     c.setAuthor("Ellipse")
     for it in items:
-        draw_tag(c, it, bleed=False)
+        draw_tag(c, it, bleed=False, numberless=numberless)
         c.showPage()
     c.save()
 
@@ -570,6 +570,7 @@ def load_rooms():
             "room": r["room"].strip(),
             "eyebrow": r["eyebrow"].strip(),
             "title": r["title"].strip(),
+            "no_number": (r.get("no_number") or "").strip().lower() == "y",
         })
     return items
 
@@ -597,6 +598,17 @@ def main():
         build_print_pdf(sub, os.path.join(OUT, "Ellipse_Room_Tags_Floor%s.pdf" % floor),
                         "Ellipse room tags — floor %s" % floor)
 
+    flagged = sorted((i for i in items if i["no_number"]), key=grade_sort_key)
+    if flagged:
+        names = "_".join(i["title"] for i in flagged)
+        exact = os.path.join(OUT, "Ellipse_Room_Tags_NoNumber_%s.pdf" % names)
+        build_exact_pdf(flagged, exact,
+                        "Ellipse room tags — no room number", numberless=True)
+        build_print_pdf(flagged, os.path.join(
+            OUT, "Ellipse_Room_Tags_NoNumber_%s_PRINT.pdf" % names),
+            "Ellipse room tags — no room number, print", numberless=True)
+        print("no-number tags: %s" % ", ".join(i["title"] for i in flagged))
+
     classes = sorted((i for i in items if i["eyebrow"] == "GRADE"), key=grade_sort_key)
     build_tent_pdf(classes, os.path.join(OUT, "Ellipse_Tent_Cards_ALL_CLASSES.pdf"),
                    "Ellipse tent cards — all classes")
@@ -614,6 +626,13 @@ def main():
     names = build_previews(items)
     build_index(items, names)
     build_pngs(items)
+    if flagged:
+        import pymupdf
+        doc = pymupdf.open(exact)
+        for i, it in enumerate(flagged):
+            doc[i].get_pixmap(dpi=300).save(
+                os.path.join(OUT, "png", "nonumber-%s.png" % it["title"].lower()))
+        doc.close()
     print("%d tags -> %s  (A4 at 100%%, A3 scale %.0f%%)" % (len(items), OUT, s3 * 100))
 
 
