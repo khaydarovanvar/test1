@@ -340,6 +340,14 @@ figcaption{font-size:.78rem;color:var(--faint);margin-top:10px}
 #pres .j.now{border-color:var(--acc);color:var(--acc);background:var(--acc-dim)}
 #pres .j b{font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--faint);flex:none}
 .hidden{display:none!important}
+.livedot{width:8px;height:8px;border-radius:50%;background:var(--ok);display:inline-block;margin-right:7px;vertical-align:0}
+@media (prefers-reduced-motion:no-preference){ .livedot{animation:lp 1.8s ease-in-out infinite} }
+@keyframes lp{50%{opacity:.25}}
+.livebar{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:4px}
+.qrbox{background:#fff;padding:7px;border-radius:10px;line-height:0}
+.qrbox img,.qrbox canvas{width:104px;height:104px;display:block}
+.vlive{font-family:"JetBrains Mono",monospace;font-size:.66rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ok);border:1px solid var(--ok);border-radius:999px;padding:3px 8px}
 @media (max-width:640px){
   .sec{padding:74px 16px 96px}
   .top{gap:9px}
@@ -350,11 +358,13 @@ figcaption{font-size:.78rem;color:var(--faint);margin-top:10px}
 <div id="bg"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="grid"></div></div>
 
 <header class="top">
-  <div class="mark">WHY DO WE NEED <span>MATH?</span></div>
+  <div class="mark" data-uz="MATEMATIKA <span>NEGA KERAK?</span>">WHY DO WE NEED <span>MATH?</span></div>
   <div class="chapter" id="chapter">The Question</div>
   <div class="pbar"><i id="pfill"></i></div>
   <div class="counter"><span id="cur">1</span> / <span id="tot">15</span></div>
-  <div class="score-chip">SCORE <b id="score">0</b></div>
+  <div class="score-chip"><span data-uz="OCHKO">SCORE</span> <b id="score">0</b></div>
+  <button class="btn sq ghost" id="langBtn" type="button" title="O‘zbekcha / English">UZ</button>
+  <button class="btn ghost hidden" id="liveChip" type="button" title="Live voting"><span class="livedot"></span><span id="liveRoom" class="mono"></span></button>
   <button class="btn sq ghost" id="presBtn" type="button" title="Presenter panel (P)">⌘</button>
   <button class="btn sq ghost" id="fsBtn" type="button" title="Fullscreen (F)">⛶</button>
 </header>
@@ -362,46 +372,46 @@ figcaption{font-size:.78rem;color:var(--faint);margin-top:10px}
 <main id="deck">
 
 <!-- 01 HOOK -->
-<section class="sec" data-acc="violet" data-chapter="The Question">
-  <div class="kicker">Section 01 · The hook</div>
-  <h1>WHY DO WE<br>NEED MATH?</h1>
-  <p class="lead" style="font-size:clamp(1rem,1.6vw,1.35rem);color:var(--ink)">Seriously… when will I <em>ever</em> use this?</p>
+<section class="sec" data-acc="violet" data-chapter="The Question" data-chapter-uz="Savol">
+  <div class="kicker" data-uz="01-bo‘lim · Boshlanish">Section 01 · The hook</div>
+  <h1 data-uz="MATEMATIKA<br>NEGA KERAK?">WHY DO WE<br>NEED MATH?</h1>
+  <p class="lead" style="font-size:clamp(1rem,1.6vw,1.35rem);color:var(--ink)" data-uz="Rostini ayting… bu menga <em>qachon</em> kerak bo‘ladi?">Seriously… when will I <em>ever</em> use this?</p>
   <div class="quotes">
-    <span class="quote" style="--r:-1.5deg">“Why do I need trigonometry?”</span>
-    <span class="quote" style="--r:1.2deg">“Why do I need derivatives?”</span>
-    <span class="quote" style="--r:-.8deg">“Why do I need integrals?”</span>
+    <span class="quote" style="--r:-1.5deg" data-uz="“Trigonometriya nimaga kerak?”">“Why do I need trigonometry?”</span>
+    <span class="quote" style="--r:1.2deg" data-uz="“Hosila nimaga kerak?”">“Why do I need derivatives?”</span>
+    <span class="quote" style="--r:-.8deg" data-uz="“Integral nimaga kerak?”">“Why do I need integrals?”</span>
   </div>
   <div class="glass stack">
     <div class="row" style="justify-content:space-between">
-      <div class="row"><span class="pill acc">Live vote</span><h3>What do <em>you</em> think?</h3></div>
-      <button class="btn ghost" data-reset="hookVote" type="button">↺ Reset</button>
+      <div class="row"><span class="pill acc" data-uz="Jonli ovoz">Live vote</span><h3 data-uz="<em>Siz</em> nima deb o‘ylaysiz?">What do <em>you</em> think?</h3></div>
+      <button class="btn ghost" data-reset="hookVote" type="button" data-uz="↺ Tozalash">↺ Reset</button>
     </div>
     <div class="stack" id="hookVote"></div>
-    <p class="tiny">Everyone votes. No right answer yet — we come back to this at the end.</p>
+    <p class="tiny" data-uz="Hamma ovoz beradi. Hozircha to‘g‘ri javob yo‘q — bu ovozga dars oxirida qaytamiz.">Everyone votes. No right answer yet — we come back to this at the end.</p>
   </div>
 </section>
 
 <!-- 02 BODY vs BRAIN -->
-<section class="sec" data-acc="violet" data-chapter="Body vs Brain">
-  <div class="kicker">Section 02 · The core idea</div>
-  <h2>Nobody lifts weights because they will lift a barbell in real life.</h2>
-  <p class="lead">You train to become <b style="color:var(--ink)">stronger</b>. The barbell is just the tool. So — drag each result into the column where it belongs. Two of them are traps.</p>
+<section class="sec" data-acc="violet" data-chapter="Body vs Brain" data-chapter-uz="Tana va Miya">
+  <div class="kicker" data-uz="02-bo‘lim · Asosiy g‘oya">Section 02 · The core idea</div>
+  <h2 data-uz="Hech kim hayotda shtanga ko‘taraman deb sport zaliga bormaydi.">Nobody lifts weights because they will lift a barbell in real life.</h2>
+  <p class="lead" data-uz="Siz <b style=&quot;color:var(--ink)&quot;>kuchli</b> bo‘lish uchun mashq qilasiz. Shtanga — shunchaki asbob. Endi har bir natijani o‘z ustuniga tashlang. Ikkitasi — tuzoq.">You train to become <b style="color:var(--ink)">stronger</b>. The barbell is just the tool. So — drag each result into the column where it belongs. Two of them are traps.</p>
   <div class="cols">
     <div class="drop glass" data-col="body">
-      <h3><span class="em">🏋️</span> BODY <span class="pill">training</span></h3>
+      <h3><span class="em">🏋️</span> <span data-uz="TANA">BODY</span> <span class="pill" data-uz="mashq">training</span></h3>
       <div class="bank" data-bank="body"></div>
     </div>
     <div class="drop glass" data-col="brain">
-      <h3><span class="em">🧠</span> BRAIN <span class="pill">mathematics</span></h3>
+      <h3><span class="em">🧠</span> <span data-uz="MIYA">BRAIN</span> <span class="pill" data-uz="matematika">mathematics</span></h3>
       <div class="bank" data-bank="brain"></div>
     </div>
   </div>
   <div class="glass tight stack">
     <div class="row" style="justify-content:space-between">
-      <span class="tiny">Drag a card — or tap it, then tap a column.</span>
+      <span class="tiny" data-uz="Kartani torting — yoki bosing, keyin ustunni bosing.">Drag a card — or tap it, then tap a column.</span>
       <div class="row">
-        <button class="btn" id="bbCheck" type="button">Check the class</button>
-        <button class="btn ghost" data-reset="bb" type="button">↺ Reset</button>
+        <button class="btn" id="bbCheck" type="button" data-uz="Tekshiramiz">Check the class</button>
+        <button class="btn ghost" data-reset="bb" type="button" data-uz="↺ Tozalash">↺ Reset</button>
       </div>
     </div>
     <div class="bank" id="bbBank"></div>
@@ -410,49 +420,49 @@ figcaption{font-size:.78rem;color:var(--faint);margin-top:10px}
 </section>
 
 <!-- 03 WHERE IS IT -->
-<section class="sec" data-acc="cyan" data-chapter="Where It Lives">
-  <div class="kicker">Section 03 · The hidden layer</div>
-  <h2>“But where do we <em>actually</em> use it?”</h2>
-  <p class="lead">Everything on this screen was built by someone who did the math. Tap anything — I will tell you exactly which math is inside it.</p>
+<section class="sec" data-acc="cyan" data-chapter="Where It Lives" data-chapter-uz="U Qayerda Yashaydi">
+  <div class="kicker" data-uz="03-bo‘lim · Ko‘rinmas qatlam">Section 03 · The hidden layer</div>
+  <h2 data-uz="“Xo‘sh, uni <em>aslida</em> qayerda ishlatamiz?”">“But where do we <em>actually</em> use it?”</h2>
+  <p class="lead" data-uz="Ekrandagi hamma narsani matematikani bilgan odam yaratgan. Istalganini bosing — ichida qanday matematika borligini aniq aytaman.">Everything on this screen was built by someone who did the math. Tap anything — I will tell you exactly which math is inside it.</p>
   <div class="nodes" id="nodes"></div>
   <div class="glass detail" id="nodeDetail"></div>
-  <div class="row"><span class="tiny" id="nodeCount">0 of 11 opened</span><button class="btn ghost" data-reset="nodes" type="button">↺ Reset</button></div>
+  <div class="row"><span class="tiny" id="nodeCount">0 of 11 opened</span><button class="btn ghost" data-reset="nodes" type="button" data-uz="↺ Tozalash">↺ Reset</button></div>
 </section>
 
 <!-- 04 TRIGONOMETRY -->
-<section class="sec" data-acc="cyan" data-chapter="Trigonometry">
-  <div class="kicker">Section 04 · Challenge</div>
-  <h2>How tall is that building?</h2>
+<section class="sec" data-acc="cyan" data-chapter="Trigonometry" data-chapter-uz="Trigonometriya">
+  <div class="kicker" data-uz="04-bo‘lim · Sinov">Section 04 · Challenge</div>
+  <h2 data-uz="Ana shu bino qanchalik baland?">How tall is that building?</h2>
   <div class="cols">
     <div class="stack">
-      <p class="lead">You are standing <b style="color:var(--ink)">30 metres</b> from a building. You look up at the top. The angle is <b style="color:var(--ink)">45°</b>. You have no ladder, no drone, no tape measure long enough.</p>
+      <p class="lead" data-uz="Siz binodan <b style=&quot;color:var(--ink)&quot;>30 metr</b> narida turibsiz. Tepasiga qaraysiz. Burchak — <b style=&quot;color:var(--ink)&quot;>45°</b>. Narvon ham, dron ham, yetarli uzun ruletka ham yo‘q.">You are standing <b style="color:var(--ink)">30 metres</b> from a building. You look up at the top. The angle is <b style="color:var(--ink)">45°</b>. You have no ladder, no drone, no tape measure long enough.</p>
       <div class="stack" id="trigVote"></div>
       <div class="reveal" id="trigOut"></div>
     </div>
     <figure class="glass">
       <svg class="chart" id="trigSvg" viewBox="0 0 460 300" role="img" aria-label="A person 30 metres from a building, sighting the top at 45 degrees"></svg>
-      <figcaption>Tap an answer to see the triangle solve itself.</figcaption>
+      <figcaption data-uz="Javobni bosing — uchburchak o‘zini o‘zi yechadi.">Tap an answer to see the triangle solve itself.</figcaption>
     </figure>
   </div>
-  <div class="row" id="trigApps"><button class="btn ghost" data-reset="trig" type="button">↺ Reset</button></div>
-  <p class="lead" id="trigFinal" style="display:none;font-size:clamp(1rem,1.7vw,1.35rem);color:var(--ink);font-family:Syne,sans-serif;font-weight:800;letter-spacing:-.02em">Trigonometry is not really about triangles. It is about <span style="color:var(--acc)">relationships</span> — how one thing you can measure tells you something you cannot.</p>
+  <div class="row" id="trigApps"><button class="btn ghost" data-reset="trig" type="button" data-uz="↺ Tozalash">↺ Reset</button></div>
+  <p class="lead" id="trigFinal" style="display:none;font-size:clamp(1rem,1.7vw,1.35rem);color:var(--ink);font-family:Syne,sans-serif;font-weight:800;letter-spacing:-.02em" data-uz="Trigonometriya aslida uchburchak haqida emas. U <span style=&quot;color:var(--acc)&quot;>bog‘lanishlar</span> haqida — o‘lchay oladigan narsangiz o‘lchay olmaydiganingizni qanday aytib berishi haqida.">Trigonometry is not really about triangles. It is about <span style="color:var(--acc)">relationships</span> — how one thing you can measure tells you something you cannot.</p>
 </section>
 
 <!-- 05 DERIVATIVE -->
-<section class="sec" data-acc="cyan" data-chapter="Change">
-  <div class="kicker">Section 05 · The mathematics of change</div>
-  <h2>The car is moving. Is distance enough?</h2>
+<section class="sec" data-acc="cyan" data-chapter="Change" data-chapter-uz="O‘zgarish">
+  <div class="kicker" data-uz="05-bo‘lim · O‘zgarish matematikasi">Section 05 · The mathematics of change</div>
+  <h2 data-uz="Mashina ketyapti. Masofani bilish yetarlimi?">The car is moving. Is distance enough?</h2>
   <div class="road" id="road"><div class="car" id="car">🚗</div></div>
   <div class="stack" id="derivVote"></div>
   <div class="reveal" id="derivOut"></div>
   <div class="glass stack hidden" id="derivLab">
     <div class="row" style="justify-content:space-between">
-      <h3>Drag time. Watch what changes.</h3>
-      <button class="btn ghost" data-reset="deriv" type="button">↺ Reset</button>
+      <h3 data-uz="Vaqtni suring. Nima o‘zgarishini kuzating.">Drag time. Watch what changes.</h3>
+      <button class="btn ghost" data-reset="deriv" type="button" data-uz="↺ Tozalash">↺ Reset</button>
     </div>
     <div class="cols">
       <div class="stack">
-        <label class="f" for="tR"><span>TIME <span class="v" id="tV">0.0 s</span></span><input type="range" id="tR" min="0" max="100" step="1" value="0"></label>
+        <label class="f" for="tR"><span><span data-uz="VAQT">TIME</span> <span class="v" id="tV">0.0 s</span></span><input type="range" id="tR" min="0" max="100" step="1" value="0"></label>
         <div class="stats" id="derivStats"></div>
         <div class="row" id="derivApps"></div>
       </div>
@@ -462,62 +472,62 @@ figcaption{font-size:.78rem;color:var(--faint);margin-top:10px}
 </section>
 
 <!-- 06 INTEGRAL -->
-<section class="sec" data-acc="cyan" data-chapter="Accumulation">
-  <div class="kicker">Section 06 · From pieces to the whole</div>
-  <h2>How would you find this area?</h2>
+<section class="sec" data-acc="cyan" data-chapter="Accumulation" data-chapter-uz="To‘planish">
+  <div class="kicker" data-uz="06-bo‘lim · Bo‘laklardan butunga">Section 06 · From pieces to the whole</div>
+  <h2 data-uz="Bu yuzani qanday topasiz?">How would you find this area?</h2>
   <div class="cols">
     <div class="stack">
-      <div class="row" style="justify-content:flex-end"><button class="btn ghost" data-reset="int" type="button">↺ Reset</button></div>
+      <div class="row" style="justify-content:flex-end"><button class="btn ghost" data-reset="int" type="button" data-uz="↺ Tozalash">↺ Reset</button></div>
       <div class="stack" id="intVote"></div>
       <div class="reveal" id="intOut"></div>
       <div class="stack hidden" id="intLab">
-        <label class="f" for="nR"><span>RECTANGLES <span class="v" id="nV">10</span></span><input type="range" id="nR" min="1" max="200" step="1" value="10"></label>
+        <label class="f" for="nR"><span><span data-uz="TO‘G‘RI TO‘RTBURCHAKLAR">RECTANGLES</span> <span class="v" id="nV">10</span></span><input type="range" id="nR" min="1" max="200" step="1" value="10"></label>
         <div class="row" id="intJumps"></div>
         <div class="stats" id="intStats"></div>
       </div>
     </div>
     <figure class="glass">
       <svg class="chart" id="intSvg" viewBox="0 0 460 300" role="img" aria-label="Area under a curve approximated by rectangles"></svg>
-      <figcaption>Left-edge rectangles under y = 4x − x², from x = 0 to x = 4.</figcaption>
+      <figcaption data-uz="y = 4x − x² egri chizig‘i ostidagi chap chekkali to‘g‘ri to‘rtburchaklar, x = 0 dan x = 4 gacha.">Left-edge rectangles under y = 4x − x², from x = 0 to x = 4.</figcaption>
     </figure>
   </div>
   <div class="reveal" id="intFinal"></div>
 </section>
 
 <!-- 07 MONEY -->
-<section class="sec" data-acc="amber" data-chapter="Money">
-  <div class="kicker">Section 07 · The surprise</div>
-  <h2>Can mathematics save you money?</h2>
-  <p class="lead">You are 25, the car is <b class="mono" style="color:var(--ink)">$30,000</b>. Cash or finance? Worked example, not advice.</p>
+<section class="sec" data-acc="amber" data-chapter="Money" data-chapter-uz="Pul">
+  <div class="kicker" data-uz="07-bo‘lim · Kutilmagan burilish">Section 07 · The surprise</div>
+  <h2 data-uz="Matematika pulingizni tejay oladimi?">Can mathematics save you money?</h2>
+  <p class="lead" data-uz="Siz 25 yoshdasiz, mashina <b class=&quot;mono&quot; style=&quot;color:var(--ink)&quot;>$30 000</b>. Naqdmi yoki kreditmi? Slayderlarni suring. Bu — o‘quv misoli, moliyaviy maslahat emas.">You are 25, the car is <b class="mono" style="color:var(--ink)">$30,000</b>. Cash or finance? Worked example, not advice.</p>
   <div class="cols">
     <div class="glass stack">
-      <label class="f" for="lP"><span>CAR PRICE <span class="v" id="lPv"></span></span><input type="range" id="lP" min="5000" max="80000" step="1000" value="30000"></label>
-      <label class="f" for="lD"><span>DOWN PAYMENT <span class="v" id="lDv"></span></span><input type="range" id="lD" min="0" max="30000" step="500" value="0"></label>
-      <label class="f" for="lR"><span>ANNUAL INTEREST RATE <span class="v" id="lRv"></span></span><input type="range" id="lR" min="0" max="30" step="0.5" value="10"></label>
-      <label class="f" for="lY"><span>LOAN LENGTH <span class="v" id="lYv"></span></span><input type="range" id="lY" min="1" max="8" step="1" value="5"></label>
-      <button class="btn ghost" data-reset="loan" type="button" style="align-self:flex-start">↺ Reset to the example</button>
+      <label class="f" for="lP"><span><span data-uz="MASHINA NARXI">CAR PRICE</span> <span class="v" id="lPv"></span></span><input type="range" id="lP" min="5000" max="80000" step="1000" value="30000"></label>
+      <label class="f" for="lD"><span><span data-uz="BOSHLANG‘ICH TO‘LOV">DOWN PAYMENT</span> <span class="v" id="lDv"></span></span><input type="range" id="lD" min="0" max="30000" step="500" value="0"></label>
+      <label class="f" for="lR"><span><span data-uz="YILLIK FOIZ STAVKASI">ANNUAL INTEREST RATE</span> <span class="v" id="lRv"></span></span><input type="range" id="lR" min="0" max="30" step="0.5" value="10"></label>
+      <label class="f" for="lY"><span><span data-uz="KREDIT MUDDATI">LOAN LENGTH</span> <span class="v" id="lYv"></span></span><input type="range" id="lY" min="1" max="8" step="1" value="5"></label>
+      <button class="btn ghost" data-reset="loan" type="button" style="align-self:flex-start" data-uz="↺ Misolga qaytarish">↺ Reset to the example</button>
     </div>
     <div class="stack">
       <div class="stats" id="loanStats"></div>
       <div class="glass stack">
         <div class="mbar">
-          <div class="lb"><span>🚗 The car itself</span><span class="mono" id="barCarV"></span></div>
+          <div class="lb"><span data-uz="🚗 Mashinaning o‘zi">🚗 The car itself</span><span class="mono" id="barCarV"></span></div>
           <div class="tr"><i id="barCar" style="background:var(--s1)"></i></div>
         </div>
         <div class="mbar">
-          <div class="lb"><span>💸 What you actually pay</span><span class="mono" id="barTotV"></span></div>
+          <div class="lb"><span data-uz="💸 Aslida to‘laydiganingiz">💸 What you actually pay</span><span class="mono" id="barTotV"></span></div>
           <div class="tr"><i id="barTot1" style="background:var(--s1)"></i><i id="barTot2" style="background:var(--s2)"></i></div>
         </div>
         <div class="legend">
-          <span><i class="sw" style="background:var(--s1)"></i>Price of the car</span>
-          <span><i class="sw" style="background:var(--s2)"></i>Extra paid — interest</span>
+          <span><i class="sw" style="background:var(--s1)"></i><span data-uz="Mashina narxi">Price of the car</span></span>
+          <span><i class="sw" style="background:var(--s2)"></i><span data-uz="Ustiga to‘langan — foiz">Extra paid — interest</span></span>
         </div>
       </div>
     </div>
     <div class="glass stack">
       <div class="row" style="justify-content:space-between">
-        <span class="pill acc">Live vote</span>
-        <button class="btn ghost" data-reset="loanVote" type="button">↺ Reset</button>
+        <span class="pill acc" data-uz="Jonli ovoz">Live vote</span>
+        <button class="btn ghost" data-reset="loanVote" type="button" data-uz="↺ Tozalash">↺ Reset</button>
       </div>
       <h3 id="loanQ">Would you rather pay the cash price, or the financed total?</h3>
       <div class="stack" id="loanVote"></div>
@@ -526,27 +536,27 @@ figcaption{font-size:.78rem;color:var(--faint);margin-top:10px}
 </section>
 
 <!-- 08 THE TRAP -->
-<section class="sec" data-acc="amber" data-chapter="The Trap">
-  <div class="kicker">Section 08 · The small-payment trap</div>
+<section class="sec" data-acc="amber" data-chapter="The Trap" data-chapter-uz="Tuzoq">
+  <div class="kicker" data-uz="08-bo‘lim · Kichik oylik to‘lov tuzog‘i">Section 08 · The small-payment trap</div>
   <div class="ad">
     <div class="shine"></div>
-    <div class="kicker" style="color:var(--ink);opacity:.75">Limited offer · drive today</div>
-    <div style="font-family:Syne,sans-serif;font-weight:800;font-size:clamp(2.2rem,7vw,5rem);letter-spacing:-.03em;line-height:1">🚗 ONLY $650/MONTH</div>
-    <div class="dim">No big payment up front. Easy monthly plan.</div>
+    <div class="kicker" style="color:var(--ink);opacity:.75" data-uz="Cheklangan taklif · bugunoq mining">Limited offer · drive today</div>
+    <div style="font-family:Syne,sans-serif;font-weight:800;font-size:clamp(2.2rem,7vw,5rem);letter-spacing:-.03em;line-height:1" data-uz="🚗 ATIGI OYIGA $650">🚗 ONLY $650/MONTH</div>
+    <div class="dim" data-uz="Boshida katta to‘lov yo‘q. Qulay oylik reja.">No big payment up front. Easy monthly plan.</div>
   </div>
   <div class="glass stack">
     <div class="row" style="justify-content:space-between">
-      <div class="row"><span class="pill acc">Live vote</span><h3>Sounds cheap?</h3></div>
-      <button class="btn ghost" data-reset="trapVote" type="button">↺ Reset</button>
+      <div class="row"><span class="pill acc" data-uz="Jonli ovoz">Live vote</span><h3 data-uz="Arzonga o‘xshaydimi?">Sounds cheap?</h3></div>
+      <button class="btn ghost" data-reset="trapVote" type="button" data-uz="↺ Tozalash">↺ Reset</button>
     </div>
     <div class="stack" id="trapVote"></div>
   </div>
   <div class="glass stack hidden" id="trapCalc">
-    <h3>Then do what the advert hopes you will not do.</h3>
+    <h3 data-uz="Endi reklama qilmasligingizni umid qilgan ishni qiling.">Then do what the advert hopes you will not do.</h3>
     <div class="row">
       <span class="mono dim">$650</span><span class="dim">×</span>
       <input type="number" id="trapN" value="60" min="1" max="120" style="max-width:110px" aria-label="number of payments">
-      <span class="dim">payments =</span>
+      <span class="dim" data-uz="to‘lov =">payments =</span>
       <span class="big" id="trapTot" style="color:var(--acc)">$39,000</span>
     </div>
     <div class="stats" id="trapStats"></div>
@@ -555,52 +565,52 @@ figcaption{font-size:.78rem;color:var(--faint);margin-top:10px}
 </section>
 
 <!-- 09 ISLAMIC FINANCE -->
-<section class="sec" data-acc="amber" data-chapter="Riba & Structure">
-  <div class="kicker">Section 09 · Mathematics, money & Islamic finance</div>
-  <h2>Is interest haram?</h2>
+<section class="sec" data-acc="amber" data-chapter="Riba &amp; Structure" data-chapter-uz="Riba va Tuzilma">
+  <div class="kicker" data-uz="09-bo‘lim · Matematika, pul va islom moliyasi">Section 09 · Mathematics, money &amp; Islamic finance</div>
+  <h2 data-uz="Foiz harommi?">Is interest haram?</h2>
   <div class="cols">
     <div class="stack">
-      <p class="lead">In Islamic finance, <b style="color:var(--ink)">riba</b> (interest / usury) is prohibited, so conventional interest-based lending is generally regarded as impermissible under Islamic principles.</p>
-      <p class="lead">This is not a theological debate, and I am not the one to settle it. What mathematics gives you is separate and still essential: the ability to <b style="color:var(--ink)">read any contract</b>, compare structures, and see the consequences before you sign.</p>
+      <p class="lead" data-uz="Islom moliyasida <b style=&quot;color:var(--ink)&quot;>riba</b> (foiz / sudxo‘rlik) taqiqlangan, shuning uchun an’anaviy foizli qarz berish islom tamoyillari bo‘yicha odatda joiz emas deb qaraladi.">In Islamic finance, <b style="color:var(--ink)">riba</b> (interest / usury) is prohibited, so conventional interest-based lending is generally regarded as impermissible under Islamic principles.</p>
+      <p class="lead" data-uz="Bu — diniy bahs emas, va uni hal qiladigan odam ham men emasman. Matematika beradigan narsa boshqa va baribir zarur: <b style=&quot;color:var(--ink)&quot;>har qanday shartnomani o‘qiy olish</b>, tuzilmalarni solishtirish va imzolashdan oldin oqibatini ko‘rish.">This is not a theological debate, and I am not the one to settle it. What mathematics gives you is separate and still essential: the ability to <b style="color:var(--ink)">read any contract</b>, compare structures, and see the consequences before you sign.</p>
       <div class="glass tight">
-        <div class="kicker">Shariah-compliant structures you may hear about</div>
+        <div class="kicker" data-uz="Eshitishingiz mumkin bo‘lgan shariatga muvofiq tuzilmalar">Shariah-compliant structures you may hear about</div>
         <div class="row" style="margin-top:9px" id="ifStructures"></div>
       </div>
-      <p class="tiny">Disclaimer: specific financial products differ in structure, and rulings can differ between scholars and institutions. For a real financial decision, consult a qualified Islamic finance scholar or adviser.</p>
+      <p class="tiny" data-uz="Ogohlantirish: aniq moliyaviy mahsulotlar tuzilishi bo‘yicha farq qiladi, hukmlar esa olimlar va muassasalarga qarab turlicha bo‘lishi mumkin. Haqiqiy moliyaviy qaror uchun malakali islom moliyasi olimi yoki maslahatchisiga murojaat qiling.">Disclaimer: specific financial products differ in structure, and rulings can differ between scholars and institutions. For a real financial decision, consult a qualified Islamic finance scholar or adviser.</p>
     </div>
     <div class="glass stack">
-      <h3>“Don’t worry — it’s only $500 a month.”</h3>
-      <p class="tiny">What should a mathematically educated person ask? Pick <b>every</b> question worth asking.</p>
+      <h3 data-uz="“Xavotir olmang — oyiga atigi $500-ku.”">“Don’t worry — it’s only $500 a month.”</h3>
+      <p class="tiny" data-uz="Matematikani biladigan odam nima deb so‘rashi kerak? So‘rashga arziydigan <b>har bir</b> savolni tanlang.">What should a mathematically educated person ask? Pick <b>every</b> question worth asking.</p>
       <div class="stack" id="ifQ"></div>
-      <div class="row"><button class="btn solid" id="ifCheck" type="button">Check answers</button><button class="btn ghost" data-reset="ifQ" type="button">↺ Reset</button></div>
+      <div class="row"><button class="btn solid" id="ifCheck" type="button" data-uz="Javoblarni tekshirish">Check answers</button><button class="btn ghost" data-reset="ifQ" type="button" data-uz="↺ Tozalash">↺ Reset</button></div>
       <div class="reveal" id="ifOut"></div>
     </div>
   </div>
 </section>
 
 <!-- 10 COMPOUND GROWTH -->
-<section class="sec" data-acc="amber" data-chapter="Exponential">
-  <div class="kicker">Section 10 · The one your brain gets wrong</div>
-  <h2>Choose one. No changing your mind.</h2>
+<section class="sec" data-acc="amber" data-chapter="Exponential" data-chapter-uz="Ko‘rsatkichli O‘sish">
+  <div class="kicker" data-uz="10-bo‘lim · Miyangiz adashadigan savol">Section 10 · The one your brain gets wrong</div>
+  <h2 data-uz="Bittasini tanlang. Fikringizni o‘zgartira olmaysiz.">Choose one. No changing your mind.</h2>
   <div class="cols" id="dblPicks">
     <button class="glass choice" id="pickCash" style="flex-direction:column;align-items:flex-start;gap:8px;padding:22px">
-      <span class="pill">Option A</span>
+      <span class="pill" data-uz="A varianti">Option A</span>
       <span class="big">$1,000</span>
-      <span class="dim">Right now. Cash in your hand today.</span>
+      <span class="dim" data-uz="Hoziroq. Bugun qo‘lingizda naqd pul.">Right now. Cash in your hand today.</span>
     </button>
     <button class="glass choice" id="pickDouble" style="flex-direction:column;align-items:flex-start;gap:8px;padding:22px">
-      <span class="pill">Option B</span>
-      <span class="big">$1 → ×2 daily</span>
-      <span class="dim">One dollar. It doubles every day. For 30 days.</span>
+      <span class="pill" data-uz="B varianti">Option B</span>
+      <span class="big">$1 → ×2</span>
+      <span class="dim" data-uz="Bir dollar. Har kuni ikki barobar ko‘payadi. 30 kun davomida.">One dollar. It doubles every day. For 30 days.</span>
     </button>
   </div>
   <p class="tiny hidden" id="dblSummary"></p>
   <div class="glass stack hidden" id="dblLab">
     <div class="row" style="justify-content:space-between">
-      <div class="row"><span class="pill acc">Day <span class="mono" id="dayN">1</span></span><h3 id="dayHead">Watch what your intuition missed.</h3></div>
+      <div class="row"><span class="pill acc"><span data-uz="Kun">Day</span> <span class="mono" id="dayN">1</span></span><h3 id="dayHead" data-uz="Sezgingiz ko‘rmagan narsani kuzating.">Watch what your intuition missed.</h3></div>
       <div class="row">
-        <button class="btn solid" id="dayPlay" type="button">▶ Run 30 days</button>
-        <button class="btn ghost" data-reset="dbl" type="button">↺ Reset</button>
+        <button class="btn solid" id="dayPlay" type="button" data-uz="▶ 30 kunni ishga tushirish">▶ Run 30 days</button>
+        <button class="btn ghost" data-reset="dbl" type="button" data-uz="↺ Tozalash">↺ Reset</button>
       </div>
     </div>
     <input type="range" id="dayR" min="1" max="30" step="1" value="1" aria-label="day">
@@ -611,14 +621,14 @@ figcaption{font-size:.78rem;color:var(--faint);margin-top:10px}
 </section>
 
 <!-- 11 DECISIONS -->
-<section class="sec" data-acc="amber" data-chapter="Decisions">
-  <div class="kicker">Section 11 · Mathematics as a decision tool</div>
-  <h2>Someone hands you $10,000.</h2>
+<section class="sec" data-acc="amber" data-chapter="Decisions" data-chapter-uz="Qarorlar">
+  <div class="kicker" data-uz="11-bo‘lim · Matematika — qaror asbobi">Section 11 · Mathematics as a decision tool</div>
+  <h2 data-uz="Kimdir sizga $10 000 berdi.">Someone hands you $10,000.</h2>
   <div class="cols-3" id="tenK"></div>
   <div class="glass stack">
     <div class="row" style="justify-content:space-between">
-      <h3>I am not going to tell you which one is right. Different question: what would you need to <em>know</em> first?</h3>
-      <button class="btn ghost" data-reset="need" type="button">↺ Reset</button>
+      <h3 data-uz="Qaysi biri to‘g‘ri ekanini aytmayman. Boshqa savol: avval nimani <em>bilishingiz</em> kerak edi?">I am not going to tell you which one is right. Different question: what would you need to <em>know</em> first?</h3>
+      <button class="btn ghost" data-reset="need" type="button" data-uz="↺ Tozalash">↺ Reset</button>
     </div>
     <div class="cols-3" id="needList"></div>
     <div class="reveal" id="needOut"></div>
@@ -626,25 +636,25 @@ figcaption{font-size:.78rem;color:var(--faint);margin-top:10px}
 </section>
 
 <!-- 12 DETECTIVE -->
-<section class="sec" data-acc="pink" data-chapter="Detective">
-  <div class="kicker">Section 12 · The math detective</div>
-  <h2>Percentages are where you get robbed.</h2>
+<section class="sec" data-acc="pink" data-chapter="Detective" data-chapter-uz="Detektiv">
+  <div class="kicker" data-uz="12-bo‘lim · Matematik detektiv">Section 12 · The math detective</div>
+  <h2 data-uz="Sizni aynan foizlar bilan aldashadi.">Percentages are where you get robbed.</h2>
   <div class="cols">
     <div class="glass stack">
-      <div class="kicker">Case file</div>
+      <div class="kicker" data-uz="Ish jildi">Case file</div>
       <div class="row" style="gap:18px;align-items:flex-end">
-        <div><div class="tiny">WAS</div><div class="big mono">$500</div></div>
+        <div><div class="tiny" data-uz="EDI">WAS</div><div class="big mono">$500</div></div>
         <div style="color:var(--acc);font-size:1.5rem">→ +50% →</div>
-        <div><div class="tiny">THEN</div><div class="big mono">$750</div></div>
+        <div><div class="tiny" data-uz="KEYIN">THEN</div><div class="big mono">$750</div></div>
         <div style="color:var(--acc);font-size:1.5rem">→ −50% →</div>
-        <div><div class="tiny">NOW</div><div class="big mono" style="color:var(--no)">$375</div></div>
+        <div><div class="tiny" data-uz="HOZIR">NOW</div><div class="big mono" style="color:var(--no)">$375</div></div>
       </div>
-      <p class="lead">Up 50%, then down 50%. Same number, both times. You are <b style="color:var(--no)">$125 poorer</b> than when you started. A percentage is never taken from the same base twice — that is the whole trick.</p>
+      <p class="lead" data-uz="50% oshdi, keyin 50% tushdi. Ikkala safar bir xil son. Siz boshlagan paytdagidan <b style=&quot;color:var(--no)&quot;>$125 kambag‘alroqsiz</b>. Foiz hech qachon bir xil asosdan ikki marta olinmaydi — butun hiyla shunda.">Up 50%, then down 50%. Same number, both times. You are <b style="color:var(--no)">$125 poorer</b> than when you started. A percentage is never taken from the same base twice — that is the whole trick.</p>
     </div>
     <div class="glass stack">
       <div class="row" style="justify-content:space-between">
-        <h3>Four cases. Score counts.</h3>
-        <button class="btn ghost" data-reset="det" type="button">↺ Reset</button>
+        <h3 data-uz="To‘rtta ish. Ochko sanaladi.">Four cases. Score counts.</h3>
+        <button class="btn ghost" data-reset="det" type="button" data-uz="↺ Tozalash">↺ Reset</button>
       </div>
       <div id="detBox"></div>
     </div>
@@ -652,9 +662,9 @@ figcaption{font-size:.78rem;color:var(--faint);margin-top:10px}
 </section>
 
 <!-- 13 RAPID FIRE -->
-<section class="sec" data-acc="pink" data-chapter="Rapid Fire">
-  <div class="kicker">Section 13 · Can you beat the class?</div>
-  <h2 id="rfTitle">Seven questions. Ten seconds each.</h2>
+<section class="sec" data-acc="pink" data-chapter="Rapid Fire" data-chapter-uz="Tezkor Raund">
+  <div class="kicker" data-uz="13-bo‘lim · Sinfni yenga olasizmi?">Section 13 · Can you beat the class?</div>
+  <h2 id="rfTitle" data-uz="Yettita savol. Har biriga o‘n soniya.">Seven questions. Ten seconds each.</h2>
   <div class="glass stack" id="rfCard">
     <div class="row" style="justify-content:space-between">
       <div class="timer">
@@ -668,8 +678,8 @@ figcaption{font-size:.78rem;color:var(--faint);margin-top:10px}
         <div><div class="kicker" id="rfTopic">Ready</div><div class="tiny" id="rfProg">Question 0 of 7</div></div>
       </div>
       <div class="row">
-        <button class="btn solid" id="rfStart" type="button">▶ Start</button>
-        <button class="btn ghost" data-reset="rf" type="button">↺ Reset</button>
+        <button class="btn solid" id="rfStart" type="button" data-uz="▶ Boshlash">▶ Start</button>
+        <button class="btn ghost" data-reset="rf" type="button" data-uz="↺ Tozalash">↺ Reset</button>
       </div>
     </div>
     <h3 id="rfQ" style="font-size:clamp(1.1rem,2.4vw,1.8rem)">Press start when the class is ready.</h3>
@@ -680,38 +690,38 @@ figcaption{font-size:.78rem;color:var(--faint);margin-top:10px}
 </section>
 
 <!-- 14 THE BIG IDEA -->
-<section class="sec" data-acc="ice" data-chapter="The Big Idea">
+<section class="sec" data-acc="ice" data-chapter="The Big Idea" data-chapter-uz="Asosiy Fikr">
   <div class="lines" id="bigLines">
-    <div class="line">You may forget a formula.</div>
-    <div class="line">You may never calculate an integral after school.</div>
-    <div class="line">You may never use the sine rule in your job.</div>
-    <div class="line hot max">BUT YOU WILL ALWAYS NEED TO THINK.</div>
+    <div class="line" data-uz="Formulani unutishingiz mumkin.">You may forget a formula.</div>
+    <div class="line" data-uz="Maktabdan keyin hech qachon integral hisoblamasligingiz mumkin.">You may never calculate an integral after school.</div>
+    <div class="line" data-uz="Ishingizda sinuslar teoremasini hech qachon ishlatmasligingiz mumkin.">You may never use the sine rule in your job.</div>
+    <div class="line hot max" data-uz="LEKIN SIZGA DOIMO O‘YLASH KERAK BO‘LADI.">BUT YOU WILL ALWAYS NEED TO THINK.</div>
   </div>
   <div class="stack" id="bigTail" style="opacity:0;transition:opacity .8s">
-    <div class="kicker">Mathematics trains you to</div>
+    <div class="kicker" data-uz="Matematika sizni shunga o‘rgatadi">Mathematics trains you to</div>
     <div class="verbs" id="verbs"></div>
   </div>
-  <div class="row"><button class="btn solid" id="bigGo" type="button">▶ Reveal, line by line</button><button class="btn ghost" data-reset="big" type="button">↺ Reset</button></div>
+  <div class="row"><button class="btn solid" id="bigGo" type="button" data-uz="▶ Qator-qator ochish">▶ Reveal, line by line</button><button class="btn ghost" data-reset="big" type="button" data-uz="↺ Tozalash">↺ Reset</button></div>
 </section>
 
 <!-- 15 THE CHALLENGE -->
-<section class="sec" data-acc="ice" data-chapter="The Challenge">
+<section class="sec" data-acc="ice" data-chapter="The Challenge" data-chapter-uz="Yakuniy Savol">
   <div class="stack" id="s15q">
-    <div class="kicker">Section 15 · Last question</div>
-    <h2>So — what <em>is</em> mathematics, really?</h2>
+    <div class="kicker" data-uz="15-bo‘lim · Oxirgi savol">Section 15 · Last question</div>
+    <h2 data-uz="Xo‘sh — matematika <em>aslida</em> nima?">So — what <em>is</em> mathematics, really?</h2>
     <div class="stack" id="finalQ" style="max-width:820px"></div>
     <div class="reveal" id="finalOut"></div>
   </div>
-  <div class="row"><button class="btn ghost" data-reset="final" type="button">↺ Reset</button></div>
+  <div class="row"><button class="btn ghost" data-reset="final" type="button" data-uz="↺ Tozalash">↺ Reset</button></div>
   <div class="stack hidden" id="finalEnd">
-    <h2 style="font-size:clamp(1.4rem,3vw,2.4rem);color:var(--acc)">You don’t study mathematics only to solve mathematical problems.<br>You study it so that when life hands you a hard problem, you know how to start.</h2>
+    <h2 style="font-size:clamp(1.4rem,3vw,2.4rem);color:var(--acc)" data-uz="Siz matematikani faqat matematik masalalarni yechish uchun o‘qimaysiz.<br>Siz uni hayot qiyin masala berganda qayerdan boshlashni bilish uchun o‘qiysiz.">You don’t study mathematics only to solve mathematical problems.<br>You study it so that when life hands you a hard problem, you know how to start.</h2>
     <div class="cols-3">
-      <div class="glass tight"><div style="font-size:1.8rem">🧠</div><h3>TRAIN YOUR BRAIN.</h3></div>
-      <div class="glass tight"><div style="font-size:1.8rem">📐</div><h3>UNDERSTAND THE WORLD.</h3></div>
-      <div class="glass tight"><div style="font-size:1.8rem">💡</div><h3>MAKE BETTER DECISIONS.</h3></div>
+      <div class="glass tight"><div style="font-size:1.8rem">🧠</div><h3 data-uz="MIYANGIZNI MASHQ QILDIRING.">TRAIN YOUR BRAIN.</h3></div>
+      <div class="glass tight"><div style="font-size:1.8rem">📐</div><h3 data-uz="DUNYONI TUSHUNING.">UNDERSTAND THE WORLD.</h3></div>
+      <div class="glass tight"><div style="font-size:1.8rem">💡</div><h3 data-uz="YAXSHIROQ QARORLAR QABUL QILING.">MAKE BETTER DECISIONS.</h3></div>
     </div>
-    <div class="big" style="color:var(--ink)">Mathematics is much stronger than you think.</div>
-    <div class="row"><span class="tiny">Now scroll back to Section 01 and look at that first vote again.</span><button class="btn" id="backToVote" type="button">← Back to the first vote</button></div>
+    <div class="big" style="color:var(--ink)" data-uz="Matematika siz o‘ylagandan ancha kuchli.">Mathematics is much stronger than you think.</div>
+    <div class="row"><span class="tiny" data-uz="Endi 01-bo‘limga qayting va o‘sha birinchi ovozga yana qarang.">Now scroll back to Section 01 and look at that first vote again.</span><button class="btn" id="backToVote" type="button" data-uz="← Birinchi ovozga qaytish">← Back to the first vote</button></div>
   </div>
 </section>
 
@@ -736,15 +746,161 @@ figcaption{font-size:.78rem;color:var(--faint);margin-top:10px}
       <button class="btn ghost" id="presClose" type="button">✕</button>
     </div>
   </div>
+  <div class="livebar">
+    <div class="stack" style="gap:8px;min-width:240px;flex:1">
+      <div class="row">
+        <span class="pill acc" data-uz="Jonli ovoz berish">Live voting</span>
+        <button class="btn solid" id="liveGo" type="button" data-uz="Yoqish">Turn on</button>
+        <button class="btn ghost hidden" id="liveOff" type="button" data-uz="O‘chirish">Turn off</button>
+        <button class="btn ghost hidden" id="liveWipe" type="button" data-uz="Barcha ovozlarni o‘chirish">Clear all votes</button>
+      </div>
+      <p class="tiny" id="liveHelp" data-uz="Netlify’ga joylashtirgandan keyin ishlaydi. Yoqing — o‘quvchilar telefonidan ovoz beradi, natijani shu ekranda ko‘rasiz.">Works once this is deployed to Netlify. Turn it on and students vote from their phones; results land on this screen.</p>
+      <div class="row hidden" id="liveInfo">
+        <span class="tiny" data-uz="Kod">Code</span><b class="mono" id="liveCode" style="font-size:1.3rem;letter-spacing:.22em;color:var(--acc)"></b>
+        <span class="tiny" data-uz="Havola">Link</span><b class="mono" id="liveUrl" style="font-size:.85rem"></b>
+        <span class="tiny mono" id="liveCount"></span>
+      </div>
+    </div>
+    <div id="liveQr" class="qrbox hidden" aria-hidden="true"></div>
+  </div>
   <div class="jump" id="presJump"></div>
 </aside>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 (function(){
 "use strict";
 var $ = function(s, r){ return (r || document).querySelector(s); };
 var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 function el(tag, cls, html){ var n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; }
+
+/* ── language ────────────────────────────────────────────────────────────── */
+var LANG = "en";
+try { var _l = localStorage.getItem("wm-lang"); if (_l === "uz" || _l === "en") LANG = _l; } catch (e) {}
+function T(en, uz){ return LANG === "uz" ? uz : en; }
+function L(pair){ return Array.isArray(pair) ? (LANG === "uz" ? pair[1] : pair[0]) : pair; }
+function tx(node, en, uz){
+  node.dataset.en = en; node.dataset.uz = uz;
+  node.innerHTML = LANG === "uz" ? uz : en;
+  return node;
+}
+function paint(root){
+  var scope = root || document;
+  var list = Array.prototype.slice.call(scope.querySelectorAll("[data-uz]"));
+  if (root && root.dataset && root.dataset.uz != null) list.unshift(root);
+  list.forEach(function(n){
+    if (n.dataset.en == null) n.dataset.en = n.innerHTML;
+    var v = LANG === "uz" ? n.dataset.uz : n.dataset.en;
+    if (v != null) n.innerHTML = v;
+  });
+  document.documentElement.lang = LANG;
+  var lb = document.getElementById("langBtn");
+  if (lb) lb.textContent = LANG === "uz" ? "EN" : "UZ";
+}
+var RELABEL = [];
+function setLang(next){
+  LANG = next;
+  try { localStorage.setItem("wm-lang", LANG); } catch (e) {}
+  paint();
+  RELABEL.forEach(function(f){ try { f(); } catch (e) {} });
+  var sec = document.querySelector(".sec.on");
+  if (sec) document.getElementById("chapter").textContent = LANG === "uz" ? sec.dataset.chapterUz : sec.dataset.chapter;
+  if (LIVE.on && LIVE.poll) liveOpen(LIVE.poll);
+}
+
+/* ── live voting client (Netlify Functions + Blobs) ───────────────────────── */
+var LIVE = {
+  on: false, room: "", poll: "", timer: null, ok: false,
+  api: (location.protocol === "http:" || location.protocol === "https:") ? "/api" : null
+};
+function liveCode(){
+  var A = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789", s2 = "";
+  for (var i = 0; i < 4; i++) s2 += A[Math.floor(Math.random() * A.length)];
+  return s2;
+}
+async function liveCall(path, body){
+  if (!LIVE.api) throw new Error("no api");
+  var r = await fetch(LIVE.api + path, body
+    ? { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) }
+    : { cache: "no-store" });
+  var d = await r.json();
+  if (!d.ok) throw new Error(d.error || "error");
+  return d;
+}
+var VOTES = {};              // pollId -> vote block instance
+var SECTION_POLL = {};       // section index -> pollId
+function liveOpen(pollId){
+  var v = VOTES[pollId];
+  if (!LIVE.on || !v) return;
+  LIVE.poll = pollId;
+  liveCall("/open", { room: LIVE.room, poll: pollId, title: v.title(), options: v.labels() })
+    .then(function(){ LIVE.ok = true; }).catch(function(){ LIVE.ok = false; });
+}
+function liveClose(){
+  if (!LIVE.on) return;
+  LIVE.poll = "";
+  liveCall("/close", { room: LIVE.room }).catch(function(){});
+}
+function livePull(){
+  if (!LIVE.on || !LIVE.poll) return;
+  liveCall("/state?room=" + LIVE.room + "&t=" + Date.now())
+    .then(function(d){
+      LIVE.ok = true;
+      var v = VOTES[d.poll];
+      if (v) v.setCounts(d.counts || []);
+      var c = document.getElementById("liveCount");
+      if (c) c.textContent = (d.voters || 0) + " " + T("votes in", "ovoz keldi");
+    })
+    .catch(function(){ LIVE.ok = false; });
+}
+function liveFail(){
+  tx($("#liveHelp"),
+    "Live voting could not reach the server. It only works on the deployed Netlify site — open the presentation from your <b>netlify.app</b> address, not from a local file or a preview.",
+    "Jonli ovoz berish serverga ulana olmadi. U faqat Netlify’ga joylashtirilgan saytda ishlaydi — taqdimotni lokal fayldan emas, <b>netlify.app</b> manzilidan oching.");
+  $("#liveHelp").style.color = "var(--no)";
+}
+async function liveStart(){
+  var btn = $("#liveGo"); btn.disabled = true;
+  LIVE.room = LIVE.room || liveCode();
+  if (!LIVE.api) { liveFail(); btn.disabled = false; return; }
+  try { await liveCall("/state?room=" + LIVE.room); }
+  catch (e) { liveFail(); btn.disabled = false; return; }
+  btn.disabled = false;
+  $("#liveHelp").style.color = "";
+  tx($("#liveHelp"),
+    "Students open the link (or scan the code) and vote from their phones. Results appear on this screen — press “Show the class” when you want the room to see them.",
+    "O‘quvchilar havolani ochadi (yoki kodni skanerlaydi) va telefonidan ovoz beradi. Natija shu ekranda chiqadi — sinf ko‘rishi uchun “Sinfga ko‘rsatish”ni bosing.");
+  LIVE.on = true;
+  var url = location.origin + "/v?room=" + LIVE.room;
+  document.getElementById("liveCode").textContent = LIVE.room;
+  document.getElementById("liveUrl").textContent = url.replace(/^https?:\/\//, "");
+  document.getElementById("liveInfo").classList.remove("hidden");
+  document.getElementById("liveGo").classList.add("hidden");
+  document.getElementById("liveOff").classList.remove("hidden");
+  document.getElementById("liveWipe").classList.remove("hidden");
+  document.getElementById("liveChip").classList.remove("hidden");
+  document.getElementById("liveRoom").textContent = LIVE.room;
+  var qr = document.getElementById("liveQr");
+  qr.innerHTML = "";
+  if (window.QRCode) { try { new window.QRCode(qr, { text: url, width: 104, height: 104, correctLevel: window.QRCode.CorrectLevel.M }); } catch (e) {} }
+  qr.classList.toggle("hidden", !qr.querySelector("img, canvas"));
+  Object.keys(VOTES).forEach(function(k){ VOTES[k].liveMode(true); });
+  clearInterval(LIVE.timer);
+  LIVE.timer = setInterval(function(){ if (document.visibilityState === "visible") livePull(); }, 2500);
+  var here = SECTION_POLL[at];
+  if (here) liveOpen(here); else liveClose();
+}
+function liveStop(){
+  liveClose();
+  LIVE.on = false; clearInterval(LIVE.timer); LIVE.timer = null;
+  document.getElementById("liveGo").classList.remove("hidden");
+  document.getElementById("liveOff").classList.add("hidden");
+  document.getElementById("liveWipe").classList.add("hidden");
+  document.getElementById("liveChip").classList.add("hidden");
+  document.getElementById("liveQr").classList.add("hidden");
+  document.getElementById("liveInfo").classList.add("hidden");
+  Object.keys(VOTES).forEach(function(k){ VOTES[k].liveMode(false); });
+}
 var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 var usd = function(v){ return "$" + Math.round(v).toLocaleString("en-US"); };
 var usd2 = function(v){ return "$" + v.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
@@ -786,70 +942,99 @@ function statTile(k, v){
   n.valueNode = vv; return n;
 }
 
-/* ── vote block (teacher-controlled reveal) ── */
-function voteBlock(box, opts, opt){
-  opt = opt || {};
-  var counts = opts.map(function(){ return 0; }), shown = false, rows = [];
+/* ── vote block: teacher tally offline, student phones when live ────────── */
+function voteBlock(box, opts, cfg){
+  cfg = cfg || {};
+  var counts = opts.map(function(){ return 0; }), shown = false, rows = [], live = false;
+  function labels(){ return opts.map(function(o){ return (o.icon ? o.icon + "  " : "") + L(o.t); }); }
+  function title(){ return L(cfg.title || ["Choose one", "Bittasini tanlang"]); }
   function render(){
-    var total = counts.reduce(function(a, b){ return a + b; }, 0) || 1;
+    var sum = counts.reduce(function(a2, b2){ return a2 + b2; }, 0);
+    var top = Math.max.apply(null, counts.concat([1]));
     rows.forEach(function(r, i){
-      r.fill.style.width = shown ? (counts[i] / Math.max.apply(null, counts.concat([1])) * 100) + "%" : "0%";
-      r.n.textContent = shown ? counts[i] + " · " + Math.round(counts[i] / total * 100) + "%" : "";
+      r.fill.style.width = shown ? (counts[i] / top * 100) + "%" : "0%";
+      r.n.textContent = shown ? counts[i] + " · " + Math.round(counts[i] / (sum || 1) * 100) + "%" : "";
     });
-    showBtn.textContent = shown ? "Hide results" : "Show the class";
-    tot.textContent = counts.reduce(function(a, b){ return a + b; }, 0) + " votes";
+    tx(showBtn, shown ? "Hide results" : "Show the class", shown ? "Natijani yashirish" : "Sinfga ko‘rsatish");
+    tot.textContent = sum + " " + T(sum === 1 ? "vote" : "votes", "ovoz") + (live ? " · " + T("from phones", "telefonlardan") : "");
+    livePill.classList.toggle("hidden", !live);
   }
   opts.forEach(function(o, i){
-    var b = el("button", "choice"); b.type = "button";
-    b.appendChild(el("i", "fill"));
-    b.appendChild(el("span", "tag", o.icon || String.fromCharCode(65 + i)));
-    b.appendChild(el("span", "txt", o.t));
-    var n = el("span", "n", ""); b.appendChild(n);
-    b.addEventListener("click", function(){
+    var b2 = el("button", "choice"); b2.type = "button";
+    b2.appendChild(el("i", "fill"));
+    b2.appendChild(el("span", "tag", o.icon || String.fromCharCode(65 + i)));
+    b2.appendChild(tx(el("span", "txt"), o.t[0], o.t[1]));
+    var n = el("span", "n", ""); b2.appendChild(n);
+    b2.addEventListener("click", function(){
+      if (live) return;
       counts[i]++;
-      b.animate([{ transform: "translateX(4px) scale(1)" }, { transform: "translateX(4px) scale(1.02)" }, { transform: "translateX(0) scale(1)" }], { duration: 260 });
+      b2.animate([{ transform: "translateX(4px)" }, { transform: "translateX(0)" }], { duration: 220 });
       render();
     });
-    rows.push({ fill: b.querySelector(".fill"), n: n });
-    box.appendChild(b);
+    rows.push({ fill: b2.querySelector(".fill"), n: n, btn: b2 });
+    box.appendChild(b2);
   });
   var bar = el("div", "row"); bar.style.justifyContent = "space-between";
-  var showBtn = el("button", "btn solid", "Show the class"); showBtn.type = "button";
-  var tot = el("span", "tiny", "0 votes");
+  var leftBits = el("div", "row");
+  var tot = el("span", "tiny", "0");
+  var livePill = el("span", "vlive hidden", "LIVE");
+  leftBits.appendChild(tot); leftBits.appendChild(livePill);
+  var showBtn = el("button", "btn solid"); showBtn.type = "button";
   showBtn.addEventListener("click", function(){ shown = !shown; render(); });
-  bar.appendChild(tot); bar.appendChild(showBtn);
+  bar.appendChild(leftBits); bar.appendChild(showBtn);
   box.appendChild(bar);
+
+  var inst = {
+    labels: labels,
+    title: title,
+    setCounts: function(c){
+      counts = opts.map(function(_, i){ return c[i] || 0; });
+      render();
+    },
+    liveMode: function(v){
+      live = v;
+      rows.forEach(function(r){ r.btn.style.cursor = v ? "default" : "pointer"; });
+      if (v) { counts = counts.map(function(){ return 0; }); shown = false; }
+      render();
+    },
+    reset: function(){
+      counts = counts.map(function(){ return 0; });
+      shown = false;
+      render();
+      if (live && LIVE.on) liveCall("/reset", { room: LIVE.room, poll: cfg.poll }).catch(function(){});
+    },
+    relabel: render
+  };
+  if (cfg.poll) VOTES[cfg.poll] = inst;
+  RELABEL.push(render);
   render();
-  return { reset: function(){ counts = counts.map(function(){ return 0; }); shown = false; render(); } };
+  return inst;
 }
 
 /* ── quiz block (one right answer, scored) ── */
 function quizBlock(box, opts, right, explain, key, pts){
   var done = false, btns = [];
+  var out = box.dataset.out ? $(box.dataset.out) : null;
   opts.forEach(function(o, i){
     var b = el("button", "choice"); b.type = "button";
     b.appendChild(el("i", "fill"));
     b.appendChild(el("span", "tag", String.fromCharCode(65 + i)));
-    b.appendChild(el("span", "txt", o));
+    b.appendChild(tx(el("span", "txt"), o[0], o[1]));
     b.addEventListener("click", function(){
       if (done) return; done = true;
-      btns.forEach(function(x, k){
-        x.disabled = true;
-        if (k === right) x.classList.add("right");
-      });
+      btns.forEach(function(x, k){ x.disabled = true; if (k === right) x.classList.add("right"); });
       if (i !== right) b.classList.add("wrong");
       else addScore(pts == null ? 10 : pts, key);
-      if (out) { out.innerHTML = explain; out.classList.add("show"); }
+      if (out) { tx(out, explain[0], explain[1]); out.classList.add("show"); }
       if (box.onAnswer) box.onAnswer(i === right, i);
     });
     btns.push(b); box.appendChild(b);
   });
-  var out = box.dataset.out ? $(box.dataset.out) : null;
   return {
     reset: function(){
       done = false;
       btns.forEach(function(b){ b.disabled = false; b.className = "choice"; });
-      if (out) { out.classList.remove("show"); }
+      if (out) out.classList.remove("show");
       delete state.answered[key];
     }
   };
@@ -861,7 +1046,7 @@ function multiBlock(box, opts, correct){
   opts.forEach(function(o, i){
     var b = el("button", "choice multi"); b.type = "button";
     b.appendChild(el("span", "tag", String.fromCharCode(65 + i)));
-    b.appendChild(el("span", "txt", o.t));
+    b.appendChild(tx(el("span", "txt"), o.t[0], o.t[1]));
     b.addEventListener("click", function(){
       if (b.disabled) return;
       picked[i] = !picked[i];
@@ -906,7 +1091,9 @@ secs.forEach(function(s, i){
   d.setAttribute("aria-label", "Section " + (i + 1) + ": " + s.dataset.chapter);
   d.addEventListener("click", function(){ go(i); });
   dots.appendChild(d);
-  var j = el("button", "j", "<b>" + String(i + 1).padStart(2, "0") + "</b> " + s.dataset.chapter); j.type = "button";
+  var j = el("button", "j"); j.type = "button";
+  j.innerHTML = "<b>" + String(i + 1).padStart(2, "0") + "</b> ";
+  j.appendChild(tx(el("span"), s.dataset.chapter, s.dataset.chapterUz));
   j.addEventListener("click", function(){ go(i); });
   jump.appendChild(j);
 });
@@ -915,12 +1102,13 @@ function go(i){
   secs.forEach(function(s, k){ s.classList.toggle("on", k === at); });
   var s = secs[at];
   document.documentElement.dataset.acc = s.dataset.acc;
-  $("#chapter").textContent = s.dataset.chapter;
+  $("#chapter").textContent = LANG === "uz" ? s.dataset.chapterUz : s.dataset.chapter;
   $("#cur").textContent = at + 1;
   $("#pfill").style.width = ((at + 1) / secs.length * 100) + "%";
   $$(".dot", dots).forEach(function(d, k){ d.classList.toggle("now", k === at); d.classList.toggle("seen", k < at); });
   $$(".j", jump).forEach(function(j, k){ j.classList.toggle("now", k === at); });
   window.scrollTo(0, 0);
+  if (LIVE.on) { var pid = SECTION_POLL[at]; if (pid) liveOpen(pid); else liveClose(); }
   if (typeof onEnter[at] === "function") onEnter[at]();
 }
 var onEnter = {};
@@ -940,6 +1128,7 @@ document.addEventListener("keydown", function(e){
   else if (k === "f") toggleFs();
   else if (k === "p") togglePres();
   else if (k === "r") resetSection(at);
+  else if (k === "l") setLang(LANG === "uz" ? "en" : "uz");
 });
 var tx0 = 0, ty0 = 0;
 document.addEventListener("touchstart", function(e){ tx0 = e.changedTouches[0].clientX; ty0 = e.changedTouches[0].clientY; }, { passive: true });
@@ -953,6 +1142,17 @@ function toggleFs(){
   else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
 }
 $("#fsBtn").addEventListener("click", toggleFs);
+$("#langBtn").addEventListener("click", function(){ setLang(LANG === "uz" ? "en" : "uz"); });
+$("#liveGo").addEventListener("click", liveStart);
+$("#liveOff").addEventListener("click", liveStop);
+$("#liveChip").addEventListener("click", function(){ if (!presOn) togglePres(); });
+$("#liveWipe").addEventListener("click", function(){
+  if (!LIVE.on) return;
+  liveCall("/reset", { room: LIVE.room }).then(function(){
+    Object.keys(VOTES).forEach(function(k){ VOTES[k].setCounts([]); });
+    var here = SECTION_POLL[at]; if (here) liveOpen(here);
+  }).catch(function(){});
+});
 
 /* ── presenter panel ── */
 var pres = $("#pres"), presOn = false, tId = null, tSec = 0;
@@ -975,25 +1175,26 @@ $("#presResetAll").addEventListener("click", function(){
 });
 
 /* ═══ 01 · HOOK VOTE ═══ */
+SECTION_POLL[0] = "hook";
 RESET.hookVote = voteBlock($("#hookVote"), [
-  { icon: "🟥", t: "I will never use it" },
-  { icon: "🟨", t: "Maybe sometimes" },
-  { icon: "🟩", t: "Mathematics is everywhere" },
-  { icon: "🤔", t: "I don’t know" }
-]).reset;
+  { icon: "🟥", t: ["I will never use it", "Menga hech qachon kerak bo‘lmaydi"] },
+  { icon: "🟨", t: ["Maybe sometimes", "Balki ba’zan"] },
+  { icon: "🟩", t: ["Mathematics is everywhere", "Matematika hamma joyda"] },
+  { icon: "🤔", t: ["I don’t know", "Bilmayman"] }
+], { poll: "hook", title: ["How useful is math for YOUR future?", "Matematika SIZNING kelajagingizga qanchalik kerak?"] }).reset;
 
 /* ═══ 02 · BODY vs BRAIN ═══ */
 var BB = [
-  { t: "Stronger muscles", home: "body" },
-  { t: "More endurance", home: "body" },
-  { t: "Better coordination", home: "body" },
-  { t: "A healthier heart", home: "body" },
-  { t: "Better problem solving", home: "brain" },
-  { t: "Logical reasoning", home: "brain" },
-  { t: "Pattern recognition", home: "brain" },
-  { t: "Better decision making", home: "brain" },
-  { t: "Concentration", home: "both" },
-  { t: "Discipline", home: "both" }
+  { t: ["Stronger muscles", "Kuchliroq mushaklar"], home: "body" },
+  { t: ["More endurance", "Ko‘proq chidamlilik"], home: "body" },
+  { t: ["Better coordination", "Yaxshiroq muvofiqlik"], home: "body" },
+  { t: ["A healthier heart", "Sog‘lomroq yurak"], home: "body" },
+  { t: ["Better problem solving", "Masala yechish qobiliyati"], home: "brain" },
+  { t: ["Logical reasoning", "Mantiqiy fikrlash"], home: "brain" },
+  { t: ["Pattern recognition", "Naqshni sezish"], home: "brain" },
+  { t: ["Better decision making", "Yaxshiroq qaror qabul qilish"], home: "brain" },
+  { t: ["Concentration", "Diqqat"], home: "both" },
+  { t: ["Discipline", "Intizom"], home: "both" }
 ];
 var bbBank = $("#bbBank"), bbOut = $("#bbOut"), bbSel = null, bbChips = [];
 function bbBuild(){
@@ -1001,8 +1202,8 @@ function bbBuild(){
   $$("[data-bank]").forEach(function(b){ b.innerHTML = ""; });
   bbOut.classList.remove("show");
   BB.slice().sort(function(){ return Math.random() - .5; }).forEach(function(o){
-    var c = el("button", "chip", o.t); c.type = "button"; c.draggable = true; c.dataset.home = o.home; c.dataset.at = "";
-    c.addEventListener("dragstart", function(e){ bbSel = c; c.classList.add("dragging"); try { e.dataTransfer.setData("text/plain", o.t); } catch (x) {} });
+    var c = tx(el("button", "chip"), o.t[0], o.t[1]); c.type = "button"; c.draggable = true; c.dataset.home = o.home; c.dataset.at = "";
+    c.addEventListener("dragstart", function(e){ bbSel = c; c.classList.add("dragging"); try { e.dataTransfer.setData("text/plain", L(o.t)); } catch (x) {} });
     c.addEventListener("dragend", function(){ c.classList.remove("dragging"); });
     c.addEventListener("click", function(){
       if (bbSel === c) { bbSel = null; c.classList.remove("sel"); return; }
@@ -1036,9 +1237,13 @@ $("#bbCheck").addEventListener("click", function(){
     else if (a === h) { c.classList.add("good"); ok++; }
     else c.classList.add("bad");
   });
-  bbOut.innerHTML = "<b>" + ok + " of 10 correct." + (left ? " (" + left + " unplaced.)" : "") + "</b> " +
+  tx(bbOut,
+    "<b>" + ok + " of 10 correct." + (left ? " (" + left + " unplaced.)" : "") + "</b> " +
     "The trap: <b>concentration</b> and <b>discipline</b> were accepted in <em>either</em> column — training a body and training a mind are the same kind of act. You do something hard on purpose, repeatedly, and you get stronger at things you never practised.<br>" +
-    "🏋️ Exercise → a stronger body. &nbsp; 🧠 Mathematics → stronger thinking.";
+    "🏋️ Exercise → a stronger body. &nbsp; 🧠 Mathematics → stronger thinking.",
+    "<b>10 tadan " + ok + " tasi to‘g‘ri." + (left ? " (" + left + " tasi qo‘yilmadi.)" : "") + "</b> " +
+    "Tuzoq: <b>diqqat</b> va <b>intizom</b> <em>ikkala</em> ustunda ham to‘g‘ri hisoblandi — tanani mashq qildirish va miyani mashq qildirish bir xil ish. Siz qiyin narsani ataylab, qayta-qayta qilasiz va hech mashq qilmagan narsalarda ham kuchliroq bo‘lasiz.<br>" +
+    "🏋️ Mashq → kuchliroq tana. &nbsp; 🧠 Matematika → kuchliroq fikrlash.");
   bbOut.classList.add("show");
   addScore(10, "bb");
 });
@@ -1047,56 +1252,88 @@ bbBuild();
 
 /* ═══ 03 · WHERE IT LIVES ═══ */
 var NODES = [
-  { em: "📱", t: "Smartphone", f: ["Fourier analysis", "linear algebra", "probability", "prime numbers"],
-    d: "Every photo you take is squeezed by maths that throws away exactly what your eye cannot see. Every message you send is locked with prime numbers so large that guessing them would outlast the universe." },
-  { em: "🚗", t: "Car", f: ["calculus", "geometry", "statistics", "optimisation"],
-    d: "ABS brakes solve a rate-of-change problem many times per second: how fast is this wheel slowing, and is it about to lock? The engine map behind your accelerator is an optimisation problem someone solved with calculus." },
-  { em: "✈️", t: "Airplane", f: ["trigonometry", "vectors", "calculus", "differential equations"],
-    d: "Lift, drag, fuel burn and flight path are all equations. The autopilot is continuously solving: where am I, where should I be, how hard do I correct — without shaking the passengers." },
-  { em: "🏗️", t: "Building", f: ["geometry", "trigonometry", "optimisation", "structural equations"],
-    d: "Every beam is a calculation about forces you cannot see. Angles, loads, wind, material cost — an architect who guesses builds something that falls down, or something that costs three times what it should." },
-  { em: "🏦", t: "Bank", f: ["percentages", "probability", "statistics", "exponential growth"],
-    d: "A bank is a mathematics company that happens to hold money. Interest, risk, credit scoring, fraud detection — all of it is probability and statistics running on your data." },
-  { em: "🎮", t: "Video game", f: ["vectors", "trigonometry", "geometry", "physics + calculus"],
-    d: "Every time the camera turns, the machine runs trigonometry over a million triangles. Every jump, every bullet, every bouncing ball is calculus pretending to be fun." },
-  { em: "🤖", t: "AI", f: ["linear algebra", "probability", "calculus", "statistics"],
-    d: "A neural network is an enormous stack of matrix multiplications. It learns using derivatives: the gradient tells it which direction reduces the error. Without calculus there is no modern AI at all." },
-  { em: "🛰️", t: "GPS", f: ["trigonometry", "coordinate geometry", "systems of equations", "relativity"],
-    d: "Your phone locates itself by solving equations from at least four satellite distances at once. The satellite clocks even have to be corrected for relativity — skip that and your position drifts by kilometres in a day." },
-  { em: "🏥", t: "Medicine", f: ["statistics", "probability", "calculus", "modelling"],
-    d: "How fast a drug leaves your blood is a calculus problem. Whether a treatment actually works — or just got lucky in a small group — is a statistics problem. A doctor who cannot read those numbers is guessing with your life." },
-  { em: "⚽", t: "Sports", f: ["statistics", "vectors", "geometry", "probability"],
-    d: "The angle of a shot, the arc of a ball, the decision to press or drop — top clubs employ mathematicians. Player value, injury risk and match tactics are now decided by models." },
-  { em: "📈", t: "Business", f: ["percentages", "statistics", "exponential growth", "optimisation"],
-    d: "Margin, break-even, pricing, stock levels, growth rate. Most businesses that close did not fail at their craft. They failed at arithmetic they never checked." }
+  { em: "📱", t: ["Smartphone", "Smartfon"],
+    f: [["Fourier analysis","Furye tahlili"],["linear algebra","chiziqli algebra"],["probability","ehtimollik"],["prime numbers","tub sonlar"]],
+    d: ["Every photo you take is squeezed by maths that throws away exactly what your eye cannot see. Every message you send is locked with prime numbers so large that guessing them would outlast the universe.",
+        "Har bir suratingiz ko‘zingiz sezmaydigan narsani aynan tashlab yuboradigan matematika bilan siqiladi. Har bir xabaringiz shunday katta tub sonlar bilan qulflanadiki, ularni topishga koinot umri ham yetmaydi."] },
+  { em: "🚗", t: ["Car", "Avtomobil"],
+    f: [["calculus","oliy matematika"],["geometry","geometriya"],["statistics","statistika"],["optimisation","optimallashtirish"]],
+    d: ["ABS brakes solve a rate-of-change problem many times per second: how fast is this wheel slowing, and is it about to lock? The engine map behind your accelerator is an optimisation problem someone solved with calculus.",
+        "ABS tormoz sekundiga bir necha marta o‘zgarish tezligi masalasini yechadi: bu g‘ildirak qanchalik tez sekinlashyapti va qulflanib qolmaydimi? Gaz pedali ortidagi dvigatel xaritasi esa kimdir oliy matematika bilan yechgan optimallashtirish masalasi."] },
+  { em: "✈️", t: ["Airplane", "Samolyot"],
+    f: [["trigonometry","trigonometriya"],["vectors","vektorlar"],["calculus","oliy matematika"],["differential equations","differensial tenglamalar"]],
+    d: ["Lift, drag, fuel burn and flight path are all equations. The autopilot is continuously solving: where am I, where should I be, how hard do I correct — without shaking the passengers.",
+        "Ko‘tarish kuchi, qarshilik, yoqilg‘i sarfi va parvoz yo‘li — hammasi tenglama. Avtopilot doimiy ravishda yechadi: qayerdaman, qayerda bo‘lishim kerak, qanchalik kuchli tuzatish kiritay — yo‘lovchilarni silkitmasdan."] },
+  { em: "🏗️", t: ["Building", "Bino"],
+    f: [["geometry","geometriya"],["trigonometry","trigonometriya"],["optimisation","optimallashtirish"],["structural equations","konstruksiya tenglamalari"]],
+    d: ["Every beam is a calculation about forces you cannot see. Angles, loads, wind, material cost — an architect who guesses builds something that falls down, or something that costs three times what it should.",
+        "Har bir to‘sin — ko‘rinmas kuchlar haqidagi hisob-kitob. Burchak, yuklama, shamol, material narxi — taxmin qiladigan arxitektor yo qulaydigan, yo uch barobar qimmat bino quradi."] },
+  { em: "🏦", t: ["Bank", "Bank"],
+    f: [["percentages","foizlar"],["probability","ehtimollik"],["statistics","statistika"],["exponential growth","ko‘rsatkichli o‘sish"]],
+    d: ["A bank is a mathematics company that happens to hold money. Interest, risk, credit scoring, fraud detection — all of it is probability and statistics running on your data.",
+        "Bank — tasodifan pul saqlaydigan matematika kompaniyasi. Foiz, risk, kredit reytingi, firibgarlikni aniqlash — hammasi sizning ma’lumotingiz ustida ishlaydigan ehtimollik va statistika."] },
+  { em: "🎮", t: ["Video game", "Video o‘yin"],
+    f: [["vectors","vektorlar"],["trigonometry","trigonometriya"],["geometry","geometriya"],["physics + calculus","fizika + integral"]],
+    d: ["Every time the camera turns, the machine runs trigonometry over a million triangles. Every jump, every bullet, every bouncing ball is calculus pretending to be fun.",
+        "Kamera har burilganda mashina million uchburchak ustida trigonometriya hisoblaydi. Har sakrash, har o‘q, har sakrab ketgan to‘p — qiziqarli qiyofadagi oliy matematika."] },
+  { em: "🤖", t: ["AI", "Sun’iy intellekt"],
+    f: [["linear algebra","chiziqli algebra"],["probability","ehtimollik"],["calculus","oliy matematika"],["statistics","statistika"]],
+    d: ["A neural network is an enormous stack of matrix multiplications. It learns using derivatives: the gradient tells it which direction reduces the error. Without calculus there is no modern AI at all.",
+        "Neyron tarmoq — matritsalar ko‘paytmasining ulkan uyumi. U hosila yordamida o‘rganadi: gradiyent unga xatoni kamaytiradigan yo‘nalishni aytadi. Oliy matematikasiz zamonaviy sun’iy intellekt umuman yo‘q."] },
+  { em: "🛰️", t: ["GPS", "GPS"],
+    f: [["trigonometry","trigonometriya"],["coordinate geometry","koordinatalar geometriyasi"],["systems of equations","tenglamalar sistemasi"],["relativity","nisbiylik nazariyasi"]],
+    d: ["Your phone locates itself by solving equations from at least four satellite distances at once. The satellite clocks even have to be corrected for relativity — skip that and your position drifts by kilometres in a day.",
+        "Telefoningiz o‘z o‘rnini kamida to‘rtta sun’iy yo‘ldosh masofasidan tuzilgan tenglamalarni bir vaqtda yechib topadi. Yo‘ldosh soatlari hatto nisbiylik nazariyasiga ko‘ra tuzatiladi — buni tashlab qo‘ysangiz, bir kunda joylashuvingiz kilometrlarga siljiydi."] },
+  { em: "🏥", t: ["Medicine", "Tibbiyot"],
+    f: [["statistics","statistika"],["probability","ehtimollik"],["calculus","oliy matematika"],["modelling","modellashtirish"]],
+    d: ["How fast a drug leaves your blood is a calculus problem. Whether a treatment actually works — or just got lucky in a small group — is a statistics problem. A doctor who cannot read those numbers is guessing with your life.",
+        "Dori qonda qanchalik tez kamayishi — oliy matematika masalasi. Davolash haqiqatan ishlaydimi yoki kichik guruhda shunchaki omad kelganmi — statistika masalasi. Bu raqamlarni o‘qiy olmaydigan shifokor sizning hayotingiz bilan taxmin qiladi."] },
+  { em: "⚽", t: ["Sports", "Sport"],
+    f: [["statistics","statistika"],["vectors","vektorlar"],["geometry","geometriya"],["probability","ehtimollik"]],
+    d: ["The angle of a shot, the arc of a ball, the decision to press or drop — top clubs employ mathematicians. Player value, injury risk and match tactics are now decided by models.",
+        "Zarba burchagi, to‘p yoyi, bosim berish yoki orqaga tortilish qarori — yetakchi klublar matematiklarni ishga oladi. O‘yinchi narxi, jarohat xavfi va o‘yin taktikasi endi modellar bilan hal qilinadi."] },
+  { em: "📈", t: ["Business", "Biznes"],
+    f: [["percentages","foizlar"],["statistics","statistika"],["exponential growth","ko‘rsatkichli o‘sish"],["optimisation","optimallashtirish"]],
+    d: ["Margin, break-even, pricing, stock levels, growth rate. Most businesses that close did not fail at their craft. They failed at arithmetic they never checked.",
+        "Ustama, zararsizlik nuqtasi, narx, ombor qoldig‘i, o‘sish sur’ati. Yopilgan bizneslarning ko‘pi o‘z hunarida yiqilmagan — hech tekshirmagan arifmetikasida yiqilgan."] }
 ];
-var nodeBox = $("#nodes"), nodeDetail = $("#nodeDetail"), nodeSeen = {};
+var nodeBox = $("#nodes"), nodeDetail = $("#nodeDetail"), nodeSeen = {}, nodeAt = -1;
+function nodeShow(i){
+  var o = NODES[i];
+  nodeAt = i; nodeSeen[i] = true;
+  $$(".node", nodeBox).forEach(function(x, k){ x.classList.toggle("seen", !!nodeSeen[k]); });
+  nodeDetail.innerHTML = "";
+  nodeDetail.appendChild(tx(el("h3"), o.em + "&nbsp; " + o.t[0], o.em + "&nbsp; " + o.t[1]));
+  var f = el("div", "fields");
+  o.f.forEach(function(x){ f.appendChild(tx(el("span", "pill acc"), x[0], x[1])); });
+  nodeDetail.appendChild(f);
+  nodeDetail.appendChild(tx(el("p", "lead"), o.d[0], o.d[1]));
+  nodeCountLabel();
+  if (Object.keys(nodeSeen).length === NODES.length) addScore(10, "nodes");
+}
+function nodeCountLabel(){
+  var n = Object.keys(nodeSeen).length;
+  tx($("#nodeCount"), n + " of " + NODES.length + " opened", NODES.length + " tadan " + n + " tasi ochildi");
+}
 function nodeBuild(){
-  nodeBox.innerHTML = ""; nodeSeen = {};
+  nodeBox.innerHTML = ""; nodeSeen = {}; nodeAt = -1;
   NODES.forEach(function(o, i){
     var b = el("button", "node"); b.type = "button";
     b.appendChild(el("span", "em", o.em));
-    b.appendChild(el("span", "lbl", o.t));
-    b.addEventListener("click", function(){
-      nodeSeen[i] = true;
-      $$(".node", nodeBox).forEach(function(x, k){ x.classList.toggle("seen", !!nodeSeen[k]); });
-      nodeDetail.innerHTML = "";
-      nodeDetail.appendChild(el("h3", null, o.em + "&nbsp; " + o.t));
-      var f = el("div", "fields");
-      o.f.forEach(function(x){ f.appendChild(el("span", "pill acc", x)); });
-      nodeDetail.appendChild(f);
-      nodeDetail.appendChild(el("p", "lead", o.d));
-      var n = Object.keys(nodeSeen).length;
-      $("#nodeCount").textContent = n + " of " + NODES.length + " opened";
-      if (n === NODES.length) addScore(10, "nodes");
-    });
+    b.appendChild(tx(el("span", "lbl"), o.t[0], o.t[1]));
+    b.addEventListener("click", function(){ nodeShow(i); });
     nodeBox.appendChild(b);
   });
-  nodeDetail.innerHTML = '<h3 class="dim">Pick anything above.</h3><p class="lead">Not one of these things could exist without the topics you are being taught this year.</p>';
-  $("#nodeCount").textContent = "0 of " + NODES.length + " opened";
+  nodeDetail.innerHTML = "";
+  nodeDetail.appendChild(tx(el("h3", "dim"), "Pick anything above.", "Yuqoridan istalganini tanlang."));
+  nodeDetail.appendChild(tx(el("p", "lead"),
+    "Not one of these things could exist without the topics you are being taught this year.",
+    "Bularning birortasi ham shu yil o‘rganayotgan mavzularingizsiz mavjud bo‘la olmasdi."));
+  nodeCountLabel();
 }
 RESET.nodes = nodeBuild;
 nodeBuild();
+RELABEL.push(function(){ nodeCountLabel(); if (nodeAt >= 0) nodeShow(nodeAt); });
 
 /* ═══ 04 · TRIGONOMETRY ═══ */
 var trigSvg = $("#trigSvg");
@@ -1130,25 +1367,30 @@ drawTrig(false);
 var trigBox = $("#trigVote"); trigBox.dataset.out = "#trigOut";
 function trigBuild(){
   trigBox.innerHTML = "";
-  var q = quizBlock(trigBox, ["15 m — half the distance", "30 m — the same as the distance", "60 m — twice the distance"], 1,
+  var q = quizBlock(trigBox, [
+    ["15 m — half the distance", "15 m — masofaning yarmi"],
+    ["30 m — the same as the distance", "30 m — masofa bilan bir xil"],
+    ["60 m — twice the distance", "60 m — masofadan ikki barobar"]
+  ], 1, [
     "<b>30 metres.</b> <span class='mono'>height = distance × tan(angle)</span>, and tan 45° is exactly 1 — so the height equals the distance you stood away. You just measured a building with a protractor. At 30° it would be 30 × 0.577 = 17.3 m. Same method, any building.",
-    "trig", 15);
+    "<b>30 metr.</b> <span class='mono'>balandlik = masofa × tan(burchak)</span>, tan 45° esa aynan 1 — demak balandlik siz turgan masofaga teng. Siz binoni transportir bilan o‘lchadingiz. 30° bo‘lsa, 30 × 0,577 = 17,3 m bo‘lardi. Xuddi shu usul, istalgan bino."
+  ], "trig", 15);
   trigBox.onAnswer = function(){ drawTrig(true); $("#trigFinal").style.display = ""; };
   return q;
 }
 var trigQ = trigBuild();
 RESET.trig = function(){ trigQ.reset(); drawTrig(false); $("#trigFinal").style.display = "none"; };
-["Construction", "Engineering", "GPS", "Robotics", "Navigation", "3D graphics", "Astronomy"].forEach(function(t){
-  $("#trigApps").appendChild(el("span", "pill", t));
+[["Construction","Qurilish"],["Engineering","Muhandislik"],["GPS","GPS"],["Robotics","Robototexnika"],["Navigation","Navigatsiya"],["3D graphics","3D grafika"],["Astronomy","Astronomiya"]].forEach(function(t){
+  $("#trigApps").appendChild(tx(el("span", "pill"), t[0], t[1]));
 });
 
 /* ═══ 05 · DERIVATIVE ═══ */
 var dBox = $("#derivVote"); dBox.dataset.out = "#derivOut";
 var dLab = $("#derivLab"), tR = $("#tR"), car = $("#car"), dSvg = $("#derivSvg");
 var S = function(t){ return t * t * t / 10; }, V = function(t){ return 3 * t * t / 10; }, A = function(t){ return 0.6 * t; };
-var dStats = [
-  statTile("POSITION", "0 m"), statTile("SPEED", "0 m/s"), statTile("SPEED", "0 km/h"), statTile("ACCELERATION", "0 m/s²")
-];
+var DLAB = [["POSITION","MASOFA"],["SPEED","TEZLIK"],["SPEED","TEZLIK"],["ACCELERATION","TEZLANISH"]];
+var dStats = DLAB.map(function(k){ return statTile(k[0], "0"); });
+dStats.forEach(function(t, i){ tx(t.firstChild, DLAB[i][0], DLAB[i][1]); });
 dStats.forEach(function(s){ $("#derivStats").appendChild(s); });
 function drawDeriv(t){
   $("#tV").textContent = t.toFixed(1) + " s";
@@ -1158,43 +1400,47 @@ function drawDeriv(t){
   animNum(dStats[2].valueNode, V(t) * 3.6, function(v){ return Math.round(v) + " km/h"; }, 160);
   animNum(dStats[3].valueNode, A(t), function(v){ return v.toFixed(1) + " m/s²"; }, 160);
   clear(dSvg);
-  var L = 58, R = 14, W = 640, PH = 80, GAP = 14, TOP = 12;
+  var LM = 58, RM = 14, W = 640, PH = 80, GAP = 14, TOP = 12;
   var panels = [
-    { f: S, max: 100, c: "var(--s1)", n: "POSITION  s(t) = t³/10", u: "m" },
-    { f: V, max: 30, c: "var(--s2)", n: "SPEED  s′(t) = 0.3t²", u: "m/s" },
-    { f: A, max: 6, c: "var(--s3)", n: "ACCELERATION  s″(t) = 0.6t", u: "m/s²" }
+    { f: S, max: 100, c: "var(--s1)", n: T("POSITION", "MASOFA") + "  s(t) = t³/10", u: "m" },
+    { f: V, max: 30, c: "var(--s2)", n: T("SPEED", "TEZLIK") + "  s′(t) = 0.3t²", u: "m/s" },
+    { f: A, max: 6, c: "var(--s3)", n: T("ACCELERATION", "TEZLANISH") + "  s″(t) = 0.6t", u: "m/s²" }
   ];
   panels.forEach(function(p, i){
     var y0 = TOP + i * (PH + GAP), y1 = y0 + PH;
-    var X = function(tt){ return L + tt / 10 * (W - L - R); };
+    var X = function(tt){ return LM + tt / 10 * (W - LM - RM); };
     var Y = function(v){ return y1 - v / p.max * PH; };
-    dSvg.appendChild(sv("line", { x1: L, x2: W - R, y1: y1, y2: y1, stroke: "var(--line)" }));
-    dSvg.appendChild(sv("line", { x1: L, x2: W - R, y1: y0, y2: y0, stroke: "var(--line)", "stroke-dasharray": "3 5", opacity: .55 }));
-    dSvg.appendChild(txt(L - 8, y1 + 4, "0", { "text-anchor": "end" }));
-    dSvg.appendChild(txt(L - 8, y0 + 10, p.max + "", { "text-anchor": "end" }));
-    dSvg.appendChild(txt(L, y0 - 3, p.n, { fill: p.c, "font-weight": 700, "font-size": 10.5 }));
+    dSvg.appendChild(sv("line", { x1: LM, x2: W - RM, y1: y1, y2: y1, stroke: "var(--line)" }));
+    dSvg.appendChild(sv("line", { x1: LM, x2: W - RM, y1: y0, y2: y0, stroke: "var(--line)", "stroke-dasharray": "3 5", opacity: .55 }));
+    dSvg.appendChild(txt(LM - 8, y1 + 4, "0", { "text-anchor": "end" }));
+    dSvg.appendChild(txt(LM - 8, y0 + 10, p.max + "", { "text-anchor": "end" }));
+    dSvg.appendChild(txt(LM, y0 - 3, p.n, { fill: p.c, "font-weight": 700, "font-size": 10.5 }));
     var d = "";
     for (var k = 0; k <= 100; k++) { var tt = k / 10; d += (k ? " L" : "M") + X(tt).toFixed(1) + " " + Y(p.f(tt)).toFixed(1); }
     dSvg.appendChild(sv("path", { d: d, fill: "none", stroke: p.c, "stroke-width": 2.2, "stroke-linejoin": "round" }));
     dSvg.appendChild(sv("line", { x1: X(t), x2: X(t), y1: y0 - 2, y2: y1, stroke: "var(--acc)", "stroke-width": 1, opacity: .8 }));
     dSvg.appendChild(sv("circle", { cx: X(t), cy: Y(p.f(t)), r: 5, fill: p.c, stroke: "var(--bg)", "stroke-width": 2 }));
-    dSvg.appendChild(txt(Math.min(W - R - 6, X(t) + 9), Y(p.f(t)) - 8, p.f(t).toFixed(1) + " " + p.u, { fill: "var(--ink)", "font-weight": 700, "font-size": 11 }));
+    dSvg.appendChild(txt(Math.min(W - RM - 6, X(t) + 9), Y(p.f(t)) - 8, p.f(t).toFixed(1) + " " + p.u, { fill: "var(--ink)", "font-weight": 700, "font-size": 11 }));
     if (i === 2) for (var s2 = 0; s2 <= 10; s2 += 2) dSvg.appendChild(txt(X(s2), y1 + 15, s2 + "s", { "text-anchor": "middle" }));
   });
 }
 tR.addEventListener("input", function(){ drawDeriv(+tR.value / 10); });
 function derivBuild(){
   dBox.innerHTML = "";
-  var q = quizBlock(dBox, ["Yes — distance tells me everything I need", "No — I also need to know how it is changing"], 1,
+  var q = quizBlock(dBox, [
+    ["Yes — distance tells me everything I need", "Ha — masofa menga hamma narsani aytadi"],
+    ["No — I also need to know how it is changing", "Yo‘q — u qanday o‘zgarayotganini ham bilishim kerak"]
+  ], 1, [
     "<b>Distance alone tells you almost nothing.</b> Two cars can both be 200 m down the road — one crawling, one about to crash. Position → how fast it changes is <b>speed</b>. Speed → how fast <em>that</em> changes is <b>acceleration</b>. That operation, “how fast is this changing right now?”, is a <b>derivative</b>.",
-    "deriv", 10);
+    "<b>Yolg‘iz masofa deyarli hech nima demaydi.</b> Ikki mashina ham yo‘lda 200 m bo‘lishi mumkin — biri o‘rmalab, biri halokat arafasida. Masofa → u qanchalik tez o‘zgarsa, bu <b>tezlik</b>. Tezlik → <em>u</em> qanchalik tez o‘zgarsa, bu <b>tezlanish</b>. “Bu hozir qanchalik tez o‘zgaryapti?” degan amal — <b>hosila</b>."
+  ], "deriv", 10);
   dBox.onAnswer = function(){ dLab.classList.remove("hidden"); dBox.classList.add("hidden"); drawDeriv(0); };
   return q;
 }
 var derivQ = derivBuild();
 RESET.deriv = function(){ derivQ.reset(); dBox.classList.remove("hidden"); dLab.classList.add("hidden"); tR.value = 0; drawDeriv(0); };
-[["🚗", "Speed of a car"], ["🚀", "Rocket acceleration"], ["📈", "Business growth"], ["🌡️", "Temperature change"], ["🤖", "Robot movement"], ["🏥", "Drug in your blood"]].forEach(function(a){
-  $("#derivApps").appendChild(el("span", "pill", a[0] + " " + a[1]));
+[["🚗","Speed of a car","Mashina tezligi"],["🚀","Rocket acceleration","Raketa tezlanishi"],["📈","Business growth","Biznes o‘sishi"],["🌡️","Temperature change","Harorat o‘zgarishi"],["🤖","Robot movement","Robot harakati"],["🏥","Drug in your blood","Qondagi dori"]].forEach(function(a){
+  $("#derivApps").appendChild(tx(el("span", "pill"), a[0] + " " + a[1], a[0] + " " + a[2]));
 });
 drawDeriv(0);
 
@@ -1202,18 +1448,20 @@ drawDeriv(0);
 var iBox = $("#intVote"); iBox.dataset.out = "#intOut";
 var iSvg = $("#intSvg"), nR = $("#nR"), iLab = $("#intLab");
 var F = function(x){ return 4 * x - x * x; }, EXACT = 32 / 3;
-var iStats = [statTile("RECTANGLES", "10"), statTile("YOUR ESTIMATE", "0"), statTile("TRUE AREA", EXACT.toFixed(4)), statTile("ERROR", "0")];
+var ILAB = [["RECTANGLES","TO‘RTBURCHAKLAR"],["YOUR ESTIMATE","SIZNING TAXMIN"],["TRUE AREA","HAQIQIY YUZA"],["ERROR","XATO"]];
+var iStats = ILAB.map(function(k, i){ return statTile(k[0], i === 2 ? EXACT.toFixed(4) : i === 0 ? "10" : "0"); });
+iStats.forEach(function(t, i){ tx(t.firstChild, ILAB[i][0], ILAB[i][1]); });
 iStats.forEach(function(s){ $("#intStats").appendChild(s); });
 function leftSum(n){ var h = 4 / n, s = 0; for (var i = 0; i < n; i++) s += F(i * h) * h; return s; }
 function drawInt(n, showRects){
   clear(iSvg);
-  var L = 40, R = 16, T = 18, B = 40, W = 460, H = 300;
-  var X = function(x){ return L + x / 4 * (W - L - R); };
-  var Y = function(y){ return H - B - y / 4.6 * (H - T - B); };
-  iSvg.appendChild(sv("line", { x1: L, x2: W - R, y1: Y(0), y2: Y(0), stroke: "var(--line)", "stroke-width": 2 }));
-  iSvg.appendChild(sv("line", { x1: L, x2: L, y1: Y(0), y2: T, stroke: "var(--line)", "stroke-width": 2 }));
+  var LM = 40, RM = 16, TP = 18, BM = 40, W = 460, H = 300;
+  var X = function(x){ return LM + x / 4 * (W - LM - RM); };
+  var Y = function(y){ return H - BM - y / 4.6 * (H - TP - BM); };
+  iSvg.appendChild(sv("line", { x1: LM, x2: W - RM, y1: Y(0), y2: Y(0), stroke: "var(--line)", "stroke-width": 2 }));
+  iSvg.appendChild(sv("line", { x1: LM, x2: LM, y1: Y(0), y2: TP, stroke: "var(--line)", "stroke-width": 2 }));
   [0, 1, 2, 3, 4].forEach(function(x){ iSvg.appendChild(txt(X(x), Y(0) + 16, x + "", { "text-anchor": "middle" })); });
-  [1, 2, 3, 4].forEach(function(y){ iSvg.appendChild(txt(L - 7, Y(y) + 4, y + "", { "text-anchor": "end" })); });
+  [1, 2, 3, 4].forEach(function(y){ iSvg.appendChild(txt(LM - 7, Y(y) + 4, y + "", { "text-anchor": "end" })); });
   var d = "M" + X(0) + " " + Y(0);
   for (var k = 0; k <= 200; k++) { var x = k / 50; d += " L" + X(x).toFixed(1) + " " + Y(F(x)).toFixed(1); }
   if (showRects) {
@@ -1251,13 +1499,20 @@ nR.addEventListener("input", intUpdate);
 });
 function intBuild(){
   iBox.innerHTML = "";
-  var q = quizBlock(iBox, ["Guess it — it looks like about 10", "Measure it with a ruler", "Break it into small pieces and add them up"], 2,
+  var q = quizBlock(iBox, [
+    ["Guess it — it looks like about 10", "Taxmin qilaman — 10 ga o‘xshaydi"],
+    ["Measure it with a ruler", "Chizg‘ich bilan o‘lchayman"],
+    ["Break it into small pieces and add them up", "Mayda bo‘laklarga bo‘lib, qo‘shib chiqaman"]
+  ], 2, [
     "<b>Break it into pieces.</b> A curve is impossible to measure directly — but a rectangle is easy. So chop the shape into thin rectangles, add them up, and then make the rectangles thinner. Watch the error.",
-    "int", 15);
+    "<b>Bo‘laklarga bo‘ling.</b> Egri chiziqni to‘g‘ridan-to‘g‘ri o‘lchab bo‘lmaydi — lekin to‘g‘ri to‘rtburchakni oson. Shaklni ingichka to‘rtburchaklarga bo‘lib, qo‘shib chiqing, keyin ularni yanada ingichkalashtiring. Xatoni kuzating."
+  ], "int", 15);
   iBox.onAnswer = function(){
     iLab.classList.remove("hidden"); iBox.classList.add("hidden");
     nR.value = 10; intUpdate();
-    $("#intFinal").innerHTML = "Thinner strips, and the answer stops moving — it settles on <b class='mono'>10.6667</b>. That limit is the <b>integral</b>. Pay-off: your speedometer knows your speed at every instant; add speed × a tiny slice of time and you get <b>total distance</b>. <span class='mono'>Speed → integral → distance.</span> <b>Derivatives study change; integrals study accumulation</b> — one idea, run in opposite directions.";
+    tx($("#intFinal"),
+      "Thinner strips, and the answer stops moving — it settles on <b class='mono'>10.6667</b>. That limit is the <b>integral</b>. Pay-off: your speedometer knows your speed at every instant; add speed × a tiny slice of time and you get <b>total distance</b>. <span class='mono'>Speed → integral → distance.</span> <b>Derivatives study change; integrals study accumulation</b> — one idea, run in opposite directions.",
+      "Chiziqlar ingichkalashgani sari javob qimirlamay qoladi — u <b class='mono'>10,6667</b> da to‘xtaydi. Bu limit — <b>integral</b>. Foydasi: spidometr har lahzadagi tezligingizni biladi; tezlik × juda kichik vaqt bo‘lagini qo‘shib chiqsangiz, <b>umumiy masofa</b> chiqadi. <span class='mono'>Tezlik → integral → masofa.</span> <b>Hosila o‘zgarishni, integral to‘planishni o‘rganadi</b> — bitta g‘oya, qarama-qarshi yo‘nalishda.");
     $("#intFinal").classList.add("show");
   };
   return q;
@@ -1268,8 +1523,11 @@ drawInt(10, false);
 
 /* ═══ 07 · LOAN ═══ */
 var lP = $("#lP"), lD = $("#lD"), lR = $("#lR"), lY = $("#lY");
-var lStats = [statTile("MONTHLY PAYMENT", "$0"), statTile("TOTAL YOU PAY", "$0"), statTile("EXTRA — INTEREST", "$0"), statTile("EXTRA AS % OF CAR", "0%")];
+var LLAB = [["MONTHLY PAYMENT","OYLIK TO‘LOV"],["TOTAL YOU PAY","JAMI TO‘LAYSIZ"],["EXTRA — INTEREST","USTIGA — FOIZ"],["EXTRA AS % OF CAR","MASHINA NARXIGA NISBATAN"]];
+var lStats = LLAB.map(function(k){ return statTile(k[0], "$0"); });
+lStats.forEach(function(t, i){ tx(t.firstChild, LLAB[i][0], LLAB[i][1]); });
 lStats.forEach(function(s){ $("#loanStats").appendChild(s); });
+var loanPush = null;
 function loanCalc(){
   var P = +lP.value, D = Math.min(+lD.value, P), r = +lR.value, y = +lY.value;
   var fin = P - D, i = r / 1200, n = y * 12;
@@ -1277,7 +1535,7 @@ function loanCalc(){
   if (!isFinite(m)) m = 0;
   var total = D + m * n, extra = total - P;
   $("#lPv").textContent = usd(P); $("#lDv").textContent = usd(D);
-  $("#lRv").textContent = r.toFixed(1) + "%"; $("#lYv").textContent = y + (y === 1 ? " year" : " years");
+  $("#lRv").textContent = r.toFixed(1) + "%"; $("#lYv").textContent = y + " " + T(y === 1 ? "year" : "years", "yil");
   animNum(lStats[0].valueNode, m, function(v){ return usd2(v); }, 300);
   animNum(lStats[1].valueNode, total, usd, 300);
   animNum(lStats[2].valueNode, extra, usd, 300);
@@ -1288,20 +1546,27 @@ function loanCalc(){
   $("#barTot2").style.width = (Math.max(0, extra) / max * 100) + "%";
   $("#barCarV").textContent = usd(P);
   $("#barTotV").textContent = usd(total);
-  $("#loanQ").textContent = usd(P) + " — or " + usd(total) + " for the same car?";
+  tx($("#loanQ"), usd(P) + " — or " + usd(total) + " for the same car?", usd(P) + " — yoki o‘sha mashina uchun " + usd(total) + "?");
+  if (LIVE.on && LIVE.poll === "loan") {
+    clearTimeout(loanPush);
+    loanPush = setTimeout(function(){ liveOpen("loan"); }, 900);
+  }
 }
 [lP, lD, lR, lY].forEach(function(s){ s.addEventListener("input", loanCalc); });
 RESET.loan = function(){ lP.value = 30000; lD.value = 0; lR.value = 10; lY.value = 5; loanCalc(); };
 loanCalc();
+SECTION_POLL[6] = "loan";
 RESET.loanVote = voteBlock($("#loanVote"), [
-  { icon: "💵", t: "Pay cash — no extra for the same car." },
-  { icon: "🏦", t: "Take the loan. I need a car now." },
-  { icon: "⏳", t: "Buy cheaper, save the difference." }
-]).reset;
+  { icon: "💵", t: ["Pay cash — no extra for the same car.", "Naqd to‘layman — o‘sha mashinaga ortiqcha pul yo‘q."] },
+  { icon: "🏦", t: ["Take the loan. I need a car now.", "Kredit olaman. Mashina hozir kerak."] },
+  { icon: "⏳", t: ["Buy cheaper, save the difference.", "Arzonrog‘ini olib, farqini jamg‘araman."] }
+], { poll: "loan", title: ["Cash price, or the financed total?", "Naqd narxmi yoki kredit bilan jami summami?"] }).reset;
 
 /* ═══ 08 · THE TRAP ═══ */
 var trapCalc = $("#trapCalc"), trapN = $("#trapN");
-var tStats = [statTile("STICKER PRICE", "$30,000"), statTile("YOU ACTUALLY PAY", "$39,000"), statTile("EXTRA", "$9,000"), statTile("EXTRA PER YEAR", "$1,800")];
+var TLAB = [["STICKER PRICE","E’LON QILINGAN NARX"],["YOU ACTUALLY PAY","ASLIDA TO‘LAYSIZ"],["EXTRA","USTIGA"],["EXTRA PER YEAR","YILIGA USTIGA"]];
+var tStats = TLAB.map(function(k, i){ return statTile(k[0], ["$30,000","$39,000","$9,000","$1,800"][i]); });
+tStats.forEach(function(t, i){ tx(t.firstChild, TLAB[i][0], TLAB[i][1]); });
 tStats.forEach(function(s){ $("#trapStats").appendChild(s); });
 function trapUpdate(){
   var n = Math.max(1, Math.min(120, +trapN.value || 60)), tot = 650 * n, extra = tot - 30000;
@@ -1309,17 +1574,22 @@ function trapUpdate(){
   animNum(tStats[1].valueNode, tot, usd, 300);
   animNum(tStats[2].valueNode, extra, usd, 300);
   animNum(tStats[3].valueNode, extra / (n / 12), usd, 300);
-  $("#trapMoral").innerHTML = "The advert showed you <b>$650</b>. The real number was <b class='mono' style='color:var(--acc)'>" + usd(tot) +
-    "</b> — about <b>" + usd(extra) + "</b> more than the car is worth, handed over quietly, one comfortable month at a time.<br><br>" +
-    "<b>Never judge a loan by the monthly payment.</b> Monthly payment × number of payments, then compare with the price. It takes ten seconds and it is the single most profitable piece of arithmetic you will ever do.";
+  tx($("#trapMoral"),
+    "The advert showed you <b>$650</b>. The real number was <b class='mono' style='color:var(--acc)'>" + usd(tot) +
+    "</b> — about <b>" + usd(extra) + "</b> more than the car is worth, handed over quietly, one comfortable month at a time. " +
+    "<b>Never judge a loan by the monthly payment.</b> Monthly payment × number of payments, then compare with the price. Ten seconds — and the most profitable arithmetic you will ever do.",
+    "Reklama sizga <b>$650</b> ni ko‘rsatdi. Haqiqiy raqam esa <b class='mono' style='color:var(--acc)'>" + usd(tot) +
+    "</b> — mashina qiymatidan taxminan <b>" + usd(extra) + "</b> ko‘p, har oy sekin-asta, bildirmay to‘lanadi. " +
+    "<b>Kreditga hech qachon oylik to‘lovga qarab baho bermang.</b> Oylik to‘lov × to‘lovlar soni, keyin narx bilan solishtiring. O‘n soniya — va umringizdagi eng foydali arifmetika.");
 }
 trapN.addEventListener("input", trapUpdate);
+SECTION_POLL[7] = "trap";
 var trapVote = voteBlock($("#trapVote"), [
-  { icon: "✅", t: "YES — that sounds affordable" },
-  { icon: "❌", t: "NO — that is more expensive than it looks" },
-  { icon: "❓", t: "I need more information" }
-]);
-var trapGo = el("button", "btn solid", "Now do the arithmetic the advert avoided →"); trapGo.type = "button";
+  { icon: "✅", t: ["YES — that sounds affordable", "HA — arzonga o‘xshaydi"] },
+  { icon: "❌", t: ["NO — that is more expensive than it looks", "YO‘Q — ko‘ringanidan qimmatroq"] },
+  { icon: "❓", t: ["I need more information", "Menga ko‘proq ma’lumot kerak"] }
+], { poll: "trap", title: ["“Only $650 a month” — sounds cheap?", "“Oyiga atigi $650” — arzonmi?"] });
+var trapGo = tx(el("button", "btn solid"), "Now do the arithmetic the advert avoided →", "Endi reklama qochgan arifmetikani qiling →"); trapGo.type = "button";
 trapGo.addEventListener("click", function(){ trapCalc.classList.remove("hidden"); trapUpdate(); addScore(10, "trap"); });
 $("#trapVote").appendChild(trapGo);
 RESET.trapVote = function(){ trapVote.reset(); trapCalc.classList.add("hidden"); trapN.value = 60; delete state.answered.trap; };
@@ -1327,30 +1597,40 @@ trapUpdate();
 
 /* ═══ 09 · ISLAMIC FINANCE ═══ */
 var IF = [
-  { t: "Murabaha", d: "Cost-plus sale. The institution buys the asset and resells it to you at a disclosed mark-up, paid in instalments." },
-  { t: "Ijarah", d: "Lease. The institution owns the asset and leases it to you for an agreed rental." },
-  { t: "Musharakah", d: "Partnership. Both sides put in capital and share profit — and loss — by an agreed arrangement." },
-  { t: "Mudarabah", d: "One side provides capital, the other provides the work; profit is shared on agreed terms." },
-  { t: "Sukuk", d: "Certificates representing a share in an asset or project, rather than a debt that pays interest." }
+  { t: "Murabaha", d: ["Cost-plus sale. The institution buys the asset and resells it to you at a disclosed mark-up, paid in instalments.",
+      "Ustama bilan sotuv. Muassasa aktivni sotib oladi va sizga oshkor qilingan ustama bilan qayta sotadi, to‘lov bo‘lib-bo‘lib amalga oshiriladi."] },
+  { t: "Ijarah", d: ["Lease. The institution owns the asset and leases it to you for an agreed rental.",
+      "Ijara. Aktiv muassasaga tegishli bo‘lib, u sizga kelishilgan haq evaziga ijaraga beriladi."] },
+  { t: "Musharakah", d: ["Partnership. Both sides put in capital and share profit — and loss — by an agreed arrangement.",
+      "Sheriklik. Ikkala tomon ham sarmoya qo‘shadi va foydani — hamda zararni — kelishuvga muvofiq bo‘lishadi."] },
+  { t: "Mudarabah", d: ["One side provides capital, the other provides the work; profit is shared on agreed terms.",
+      "Bir tomon sarmoya, ikkinchisi mehnat qo‘shadi; foyda kelishilgan shartlar asosida bo‘linadi."] },
+  { t: "Sukuk", d: ["Certificates representing a share in an asset or project, rather than a debt that pays interest.",
+      "Foiz to‘laydigan qarz emas, balki aktiv yoki loyihadagi ulushni ifodalovchi sertifikatlar."] }
 ];
-var ifDet = el("p", "tiny"); ifDet.style.marginTop = "10px";
-ifDet.textContent = "Tap a name for a one-line description.";
+var ifDet = tx(el("p", "tiny"), "Tap a name for a one-line description.", "Qisqacha izoh uchun nomni bosing.");
+ifDet.style.marginTop = "10px";
 IF.forEach(function(o){
   var b = el("button", "pill acc", o.t); b.type = "button"; b.style.cursor = "pointer";
-  b.addEventListener("click", function(){ ifDet.innerHTML = "<b style='color:var(--ink)'>" + o.t + "</b> — " + o.d; });
+  b.addEventListener("click", function(){
+    tx(ifDet, "<b style='color:var(--ink)'>" + o.t + "</b> — " + o.d[0], "<b style='color:var(--ink)'>" + o.t + "</b> — " + o.d[1]);
+  });
   $("#ifStructures").appendChild(b);
 });
 $("#ifStructures").parentNode.appendChild(ifDet);
 var ifM = multiBlock($("#ifQ"), [
-  { t: "What colour is the car?" },
-  { t: "How much is the total repayment?" },
-  { t: "What is the interest rate or mark-up?" },
-  { t: "How long is the contract?" }
+  { t: ["What colour is the car?", "Mashinaning rangi qanday?"] },
+  { t: ["How much is the total repayment?", "Jami qaytariladigan summa qancha?"] },
+  { t: ["What is the interest rate or mark-up?", "Foiz stavkasi yoki ustama qancha?"] },
+  { t: ["How long is the contract?", "Shartnoma muddati qancha?"] }
 ], [1, 2, 3]);
 $("#ifCheck").addEventListener("click", function(){
   var r = ifM.check();
-  $("#ifOut").innerHTML = "<b>" + r.hit + " of 3 — the answer is B + C + D.</b> " +
-    "Total repayment is the real price, the rate shows how it was built, the length shows how long you are locked in. Whatever you believe about the contract, that arithmetic is what stops anyone taking advantage of you.";
+  tx($("#ifOut"),
+    "<b>" + r.hit + " of 3 — the answer is B + C + D.</b> " +
+    "Total repayment is the real price, the rate shows how it was built, the length shows how long you are locked in. Whatever you believe about the contract, that arithmetic is what stops anyone taking advantage of you.",
+    "<b>3 tadan " + r.hit + " tasi — javob: B + C + D.</b> " +
+    "Jami qaytarim — haqiqiy narx, stavka bu narx qanday tuzilganini, muddat esa qancha vaqt bog‘lanib qolishingizni ko‘rsatadi. Shartnoma haqida nima deb ishonsangiz ham, sizni aldashdan aynan shu arifmetika saqlaydi.");
   $("#ifOut").classList.add("show");
   if (r.hit === 3 && r.miss === 0) addScore(15, "if");
 });
@@ -1358,38 +1638,42 @@ RESET.ifQ = function(){ ifM.reset(); $("#ifOut").classList.remove("show"); delet
 
 /* ═══ 10 · COMPOUND GROWTH ═══ */
 var dblLab = $("#dblLab"), dayR = $("#dayR"), dblSvg = $("#dblSvg"), dblLog = false, dblCounts = [0, 0];
-var dblStats = [statTile("THAT DAY’S AMOUNT", "$1"), statTile("OPTION A", "$1,000"), statTile("B ÷ A", "0.001×")];
+var BLAB = [["THAT DAY’S AMOUNT","O‘SHA KUNGI SUMMA"],["OPTION A","A VARIANTI"],["B ÷ A","B ÷ A"]];
+var dblStats = BLAB.map(function(k, i){ return statTile(k[0], ["$1","$1,000","0.001×"][i]); });
+dblStats.forEach(function(t, i){ tx(t.firstChild, BLAB[i][0], BLAB[i][1]); });
 dblStats.forEach(function(s){ $("#dblStats").appendChild(s); });
 function val(d){ return Math.pow(2, d - 1); }
 function drawDbl(day){
   $("#dayN").textContent = day;
   animNum(dblStats[0].valueNode, val(day), usd, 260);
   animNum(dblStats[2].valueNode, val(day) / 1000, function(v){ return (v < 10 ? v.toFixed(3) : Math.round(v).toLocaleString("en-US")) + "×"; }, 260);
-  $("#dayHead").textContent = day < 15 ? "Still looks like a joke, doesn’t it?" : day < 22 ? "Now it is catching up…" : "This is what your intuition could not see.";
+  tx($("#dayHead"),
+    day < 15 ? "Still looks like a joke, doesn’t it?" : day < 22 ? "Now it is catching up…" : "This is what your intuition could not see.",
+    day < 15 ? "Hali ham hazilga o‘xshaydi, shundaymi?" : day < 22 ? "Endi quvib yetyapti…" : "Sezgingiz ko‘ra olmagan narsa — mana shu.");
   clear(dblSvg);
-  var L = 74, R = 16, T = 16, B = 32, W = 640, H = 260;
+  var LM = 74, RM = 16, TP = 16, BM = 32, W = 640, H = 260;
   var maxV = val(30);
-  var X = function(d){ return L + (d - 1) / 29 * (W - L - R); };
+  var X = function(d){ return LM + (d - 1) / 29 * (W - LM - RM); };
   var Y = function(v){
-    if (dblLog) { var lo = 0, hi = Math.log10(maxV); return H - B - (Math.log10(Math.max(v, 1)) - lo) / (hi - lo) * (H - T - B); }
-    return H - B - v / maxV * (H - T - B);
+    if (dblLog) { var lo = 0, hi = Math.log10(maxV); return H - BM - (Math.log10(Math.max(v, 1)) - lo) / (hi - lo) * (H - TP - BM); }
+    return H - BM - v / maxV * (H - TP - BM);
   };
   [0, .25, .5, .75, 1].forEach(function(k){
-    var y = T + (1 - k) * (H - T - B), v = dblLog ? Math.pow(10, k * Math.log10(maxV)) : k * maxV;
-    dblSvg.appendChild(sv("line", { x1: L, x2: W - R, y1: y, y2: y, stroke: "var(--line)" }));
-    dblSvg.appendChild(txt(L - 8, y + 4, v >= 1e6 ? "$" + (v / 1e6).toFixed(v < 1e7 ? 1 : 0) + "M" : v >= 1e3 ? "$" + Math.round(v / 1e3) + "K" : "$" + Math.round(v), { "text-anchor": "end" }));
+    var y = TP + (1 - k) * (H - TP - BM), v = dblLog ? Math.pow(10, k * Math.log10(maxV)) : k * maxV;
+    dblSvg.appendChild(sv("line", { x1: LM, x2: W - RM, y1: y, y2: y, stroke: "var(--line)" }));
+    dblSvg.appendChild(txt(LM - 8, y + 4, v >= 1e6 ? "$" + (v / 1e6).toFixed(v < 1e7 ? 1 : 0) + "M" : v >= 1e3 ? "$" + Math.round(v / 1e3) + "K" : "$" + Math.round(v), { "text-anchor": "end" }));
   });
-  [1, 10, 20, 30].forEach(function(d){ dblSvg.appendChild(txt(X(d), H - 12, "day " + d, { "text-anchor": "middle" })); });
+  [1, 10, 20, 30].forEach(function(d){ dblSvg.appendChild(txt(X(d), H - 12, T("day " + d, d + "-kun"), { "text-anchor": "middle" })); });
   var yk = Y(1000);
-  dblSvg.appendChild(sv("line", { x1: L, x2: W - R, y1: yk, y2: yk, stroke: "var(--s3)", "stroke-width": 1.5, "stroke-dasharray": "5 4" }));
-  dblSvg.appendChild(txt(W - R, yk - 7, "$1,000 — option A", { "text-anchor": "end", fill: "var(--s3)", "font-weight": 700 }));
-  var d = "", ar = "M" + X(1) + " " + (H - B);
+  dblSvg.appendChild(sv("line", { x1: LM, x2: W - RM, y1: yk, y2: yk, stroke: "var(--s3)", "stroke-width": 1.5, "stroke-dasharray": "5 4" }));
+  dblSvg.appendChild(txt(W - RM, yk - 7, T("$1,000 — option A", "$1 000 — A varianti"), { "text-anchor": "end", fill: "var(--s3)", "font-weight": 700 }));
+  var d = "", ar = "M" + X(1) + " " + (H - BM);
   for (var k2 = 1; k2 <= day; k2++) { d += (k2 === 1 ? "M" : " L") + X(k2).toFixed(1) + " " + Y(val(k2)).toFixed(1); ar += " L" + X(k2).toFixed(1) + " " + Y(val(k2)).toFixed(1); }
-  ar += " L" + X(day) + " " + (H - B) + " Z";
+  ar += " L" + X(day) + " " + (H - BM) + " Z";
   dblSvg.appendChild(sv("path", { d: ar, fill: "var(--s2)", "fill-opacity": .16 }));
   dblSvg.appendChild(sv("path", { d: d, fill: "none", stroke: "var(--s2)", "stroke-width": 2.4, "stroke-linejoin": "round" }));
   dblSvg.appendChild(sv("circle", { cx: X(day), cy: Y(val(day)), r: 6, fill: "var(--s2)", stroke: "var(--bg)", "stroke-width": 2 }));
-  dblSvg.appendChild(txt(Math.min(W - R, X(day) + 10), Math.max(T + 10, Y(val(day)) - 10), usd(val(day)), { fill: "var(--ink)", "font-weight": 700, "font-size": 13, "text-anchor": X(day) > W - 140 ? "end" : "start" }));
+  dblSvg.appendChild(txt(Math.min(W - RM, X(day) + 10), Math.max(TP + 10, Y(val(day)) - 10), usd(val(day)), { fill: "var(--ink)", "font-weight": 700, "font-size": 13, "text-anchor": X(day) > W - 140 ? "end" : "start" }));
 }
 dayR.addEventListener("input", function(){ drawDbl(+dayR.value); });
 var playId = null;
@@ -1403,27 +1687,55 @@ $("#dayPlay").addEventListener("click", function(){
     dayR.value = d; drawDbl(d);
   }, REDUCED ? 40 : 190);
 });
-var logBtn = el("button", "btn ghost", "Log scale"); logBtn.type = "button";
-logBtn.addEventListener("click", function(){ dblLog = !dblLog; logBtn.textContent = dblLog ? "Linear scale" : "Log scale"; drawDbl(+dayR.value); });
-$("#dblApps").appendChild(logBtn);
-[["💳", "Debt"], ["🏦", "Savings"], ["📈", "Investing"], ["🌍", "Population"], ["🦠", "Viral growth"]].forEach(function(a){
-  $("#dblApps").appendChild(el("span", "pill", a[0] + " " + a[1]));
+var logBtn = tx(el("button", "btn ghost"), "Log scale", "Logarifmik o‘lchov"); logBtn.type = "button";
+logBtn.addEventListener("click", function(){
+  dblLog = !dblLog;
+  tx(logBtn, dblLog ? "Linear scale" : "Log scale", dblLog ? "Chiziqli o‘lchov" : "Logarifmik o‘lchov");
+  drawDbl(+dayR.value);
 });
+$("#dblApps").appendChild(logBtn);
+[["💳","Debt","Qarz"],["🏦","Savings","Jamg‘arma"],["📈","Investing","Investitsiya"],["🌍","Population","Aholi"],["🦠","Viral growth","Viral o‘sish"]].forEach(function(a){
+  $("#dblApps").appendChild(tx(el("span", "pill"), a[0] + " " + a[1], a[0] + " " + a[2]));
+});
+var dblLive = false;
+function dblTag(i){
+  var b = i === 0 ? $("#pickCash") : $("#pickDouble");
+  var n = b.querySelector(".n");
+  if (!n) { n = el("span", "n mono"); n.style.marginTop = "6px"; n.style.color = "var(--acc)"; b.appendChild(n); }
+  return n;
+}
+function dblPaintCounts(){
+  [0, 1].forEach(function(i){
+    var n = dblTag(i), c = dblCounts[i];
+    n.textContent = c ? c + " " + T(c === 1 ? "vote" : "votes", "ovoz") : "";
+    (i === 0 ? $("#pickCash") : $("#pickDouble")).classList.toggle("picked", c > 0);
+  });
+}
 function dblPick(which){
+  if (dblLive) return;
   dblCounts[which]++;
-  var b = which === 0 ? $("#pickCash") : $("#pickDouble");
-  var n = $(".n", b) || (function(){ var s = el("span", "n mono"); s.style.marginTop = "6px"; b.appendChild(s); return s; })();
-  n.textContent = dblCounts[which] + " vote" + (dblCounts[which] === 1 ? "" : "s");
-  b.classList.add("picked");
+  dblPaintCounts();
 }
 $("#pickCash").addEventListener("click", function(){ dblPick(0); });
 $("#pickDouble").addEventListener("click", function(){ dblPick(1); });
-var dblGo = el("button", "btn solid", "Everyone voted? Reveal the 30 days →"); dblGo.type = "button";
+SECTION_POLL[9] = "double";
+VOTES.double = {
+  labels: function(){ return [T("$1,000 today", "Bugun $1 000"), T("$1 doubling every day for 30 days", "$1 — 30 kun davomida har kuni ikkilanadi")]; },
+  title: function(){ return T("Which would you take?", "Qaysi birini olasiz?"); },
+  setCounts: function(c){ dblCounts = [c[0] || 0, c[1] || 0]; dblPaintCounts(); },
+  liveMode: function(v){ dblLive = v; if (v) { dblCounts = [0, 0]; dblPaintCounts(); } },
+  reset: function(){ dblCounts = [0, 0]; dblPaintCounts(); if (dblLive && LIVE.on) liveCall("/reset", { room: LIVE.room, poll: "double" }).catch(function(){}); },
+  relabel: dblPaintCounts
+};
+RELABEL.push(dblPaintCounts);
+var dblGo = tx(el("button", "btn solid"), "Everyone voted? Reveal the 30 days →", "Hamma ovoz berdimi? 30 kunni ochamiz →"); dblGo.type = "button";
 dblGo.addEventListener("click", function(){
   dblLab.classList.remove("hidden"); drawDbl(+dayR.value); addScore(10, "dbl");
   dblGo.classList.add("hidden");
   $("#dblPicks").classList.add("hidden");
-  $("#dblSummary").textContent = "The class voted — $1,000 now: " + dblCounts[0] + " · doubling penny: " + dblCounts[1] + ". Here is what actually happens.";
+  tx($("#dblSummary"),
+    "The class voted — $1,000 now: " + dblCounts[0] + " · the doubling dollar: " + dblCounts[1] + ". Here is what actually happens.",
+    "Sinf ovoz berdi — hozir $1 000: " + dblCounts[0] + " · ikkilanuvchi dollar: " + dblCounts[1] + ". Endi aslida nima bo‘lishini ko‘ramiz.");
   $("#dblSummary").classList.remove("hidden");
 });
 dblLab.parentNode.insertBefore(dblGo, dblLab);
@@ -1431,39 +1743,47 @@ RESET.dbl = function(){
   clearInterval(playId); playId = null; $("#dayPlay").textContent = "▶ Run 30 days";
   dblLab.classList.add("hidden"); $("#dblPicks").classList.remove("hidden"); $("#dblSummary").classList.add("hidden");
   dayR.value = 1; dblLog = false; logBtn.textContent = "Log scale";
-  dblCounts = [0, 0]; dblGo.classList.remove("hidden");
-  [$("#pickCash"), $("#pickDouble")].forEach(function(b){ b.classList.remove("picked"); var n = $(".n", b); if (n) n.textContent = ""; });
+  dblCounts = [0, 0]; dblGo.classList.remove("hidden"); dblPaintCounts();
+  if (dblLive && LIVE.on) liveCall("/reset", { room: LIVE.room, poll: "double" }).catch(function(){});
   delete state.answered.dbl; drawDbl(1);
 };
 drawDbl(1);
 
 /* ═══ 11 · DECISIONS ═══ */
-[["A", "💸", "Spend it all now", "New phone, clothes, a trip. Today is good."],
- ["B", "🏦", "Save it", "Put it away. Touch nothing."],
- ["C", "🎓", "Invest it", "A course, a skill, a small business."]].forEach(function(o){
+[["A", "💸", ["Spend it all now", "Hammasini hozir sarflayman"], ["New phone, clothes, a trip. Today is good.", "Yangi telefon, kiyim, sayohat. Bugun zo‘r."]],
+ ["B", "🏦", ["Save it", "Jamg‘araman"], ["Put it away. Touch nothing.", "Yig‘ib qo‘yaman. Tegmayman."]],
+ ["C", "🎓", ["Invest it", "Investitsiya qilaman"], ["A course, a skill, a small business.", "Kurs, ko‘nikma, kichik biznes."]]].forEach(function(o){
   var c = el("div", "glass tight stack");
-  c.innerHTML = '<div class="row"><span class="pill">' + o[0] + '</span><span style="font-size:1.4rem">' + o[1] + '</span><h3>' + o[2] + '</h3></div><p class="tiny">' + o[3] + '</p>';
+  var row = el("div", "row");
+  row.appendChild(el("span", "pill", o[0]));
+  row.appendChild(el("span", null, o[1])).style.fontSize = "1.4rem";
+  row.appendChild(tx(el("h3"), o[2][0], o[2][1]));
+  c.appendChild(row);
+  c.appendChild(tx(el("p", "tiny"), o[3][0], o[3][1]));
   $("#tenK").appendChild(c);
 });
 var NEED = [
-  { t: "Expected return", d: "How much could it grow — measured, or guessed?" },
-  { t: "Risk", d: "How much could it lose? Return quoted with no risk is marketing." },
-  { t: "Inflation", d: "Money sitting still quietly loses value." },
-  { t: "Time", d: "Ten years changes every answer here." },
-  { t: "Opportunity cost", d: "Choosing one option cancels the others." },
-  { t: "Probability", d: "Not “could this work?” but “how often does it?”" }
+  { t: ["Expected return", "Kutilayotgan daromad"], d: ["How much could it grow — measured, or guessed?", "Qancha o‘sishi mumkin — o‘lchanganmi yoki taxminmi?"] },
+  { t: ["Risk", "Risk"], d: ["How much could it lose? Return quoted with no risk is marketing.", "Qancha yo‘qotishi mumkin? Riski aytilmagan daromad — reklama."] },
+  { t: ["Inflation", "Inflyatsiya"], d: ["Money sitting still quietly loses value.", "Qimirlamay turgan pul sekin qadrsizlanadi."] },
+  { t: ["Time", "Vaqt"], d: ["Ten years changes every answer here.", "O‘n yil bu yerdagi har bir javobni o‘zgartiradi."] },
+  { t: ["Opportunity cost", "Muqobil xarajat"], d: ["Choosing one option cancels the others.", "Bir variantni tanlash qolganlarini bekor qiladi."] },
+  { t: ["Probability", "Ehtimollik"], d: ["Not “could this work?” but “how often does it?”", "“Bu ishlashi mumkinmi?” emas, “qanchalik tez-tez ishlaydi?”"] }
 ];
 var needM = multiBlock($("#needList"), NEED, [0, 1, 2, 3, 4, 5]);
-var needBtn = el("button", "btn solid", "Check the class"); needBtn.type = "button";
+var needBtn = tx(el("button", "btn solid"), "Check the class", "Sinfni tekshirish"); needBtn.type = "button";
 needBtn.style.alignSelf = "flex-start";
 needBtn.addEventListener("click", function(){
   var r = needM.check();
   $$("#needList .choice").forEach(function(c, i){
-    if ($(".why", c)) return;
-    var w = el("span", "why tiny"); w.style.display = "block"; w.style.marginTop = "5px"; w.textContent = NEED[i].d;
-    $(".txt", c).appendChild(w);
+    if (c.querySelector(".why")) return;
+    var w = tx(el("span", "why tiny"), NEED[i].d[0], NEED[i].d[1]);
+    w.style.display = "block"; w.style.marginTop = "5px";
+    c.querySelector(".txt").appendChild(w);
   });
-  $("#needOut").innerHTML = "<b>All six — you found " + r.hit + ".</b> Notice what just happened: mathematics did <em>not</em> tell you which option to pick. It never does. It turned a feeling into questions with answers you can compare. That is the difference between a decision and a guess.";
+  tx($("#needOut"),
+    "<b>All six — you found " + r.hit + ".</b> Notice what just happened: mathematics did <em>not</em> tell you which option to pick. It never does. It turned a feeling into questions with answers you can compare. That is the difference between a decision and a guess.",
+    "<b>Oltalasi ham — siz " + r.hit + " tasini topdingiz.</b> Nima bo‘lganiga e’tibor bering: matematika sizga qaysi variantni tanlashni <em>aytmadi</em>. U hech qachon aytmaydi. U tuyg‘uni solishtirsa bo‘ladigan javoblari bor savollarga aylantirdi. Qaror bilan taxmin orasidagi farq — shu.");
   $("#needOut").classList.add("show");
   if (r.hit === 6) addScore(10, "need");
 });
@@ -1472,55 +1792,70 @@ RESET.need = function(){ needM.reset(); $("#needOut").classList.remove("show"); 
 
 /* ═══ 12 · DETECTIVE ═══ */
 var DET = [
-  { q: "A shop offers 40% off — then an extra 20% off at the till. What is the total discount?",
-    o: ["60% off", "52% off", "48% off"], a: 1,
-    w: "0.60 × 0.80 = 0.48, so you pay 48% of the price — a <b>52%</b> discount, not 60%. The second cut is taken from the already-reduced price." },
-  { q: "A price goes UP by 25%. What percentage cut brings it back to where it started?",
-    o: ["25% off", "20% off", "30% off"], a: 1,
-    w: "$100 → $125. To get back to $100 you must remove $25 from $125, and 25/125 = <b>20%</b>. Up 25% and down 25% never cancel." },
-  { q: "Which is bigger: 20% of 50, or 50% of 20?",
-    o: ["20% of 50", "50% of 20", "They are exactly equal"], a: 2,
-    w: "Both are <b>10</b>. Percentages multiply, and multiplication does not care about order — which is a genuinely useful shortcut for doing them in your head." },
-  { q: "A phone drops from $1,000 to $500. The advert says “50% cheaper.” Is the advert lying?",
-    o: ["Yes — it is 100% cheaper", "No — the advert is correct", "Yes — it is 200% cheaper"], a: 1,
-    w: "This one is <b>honest</b>. Half of $1,000 is $500, so 50% off is exactly right. Being a detective means catching the lies — not assuming everything is one." },
-  { q: "A jacket is marked “$80, was $100 — save 25%!” Is that right?",
-    o: ["Yes, 25% off", "No — it is 20% off", "No — it is 15% off"], a: 1,
-    w: "You saved $20 out of $100, which is <b>20%</b>. They calculated the discount from the <em>new</em> price ($20 out of $80) — a very common and very profitable “mistake”." }
+  { q: ["A shop offers 40% off — then an extra 20% off at the till. What is the total discount?",
+        "Do‘kon 40% chegirma beradi — keyin kassada yana 20%. Umumiy chegirma qancha?"],
+    o: [["60% off","60% chegirma"],["52% off","52% chegirma"],["48% off","48% chegirma"]], a: 1,
+    w: ["0.60 × 0.80 = 0.48, so you pay 48% of the price — a <b>52%</b> discount, not 60%. The second cut is taken from the already-reduced price.",
+        "0,60 × 0,80 = 0,48, ya’ni siz narxning 48% ini to‘laysiz — bu <b>52%</b> chegirma, 60% emas. Ikkinchi chegirma allaqachon tushirilgan narxdan olinadi."] },
+  { q: ["A price goes UP by 25%. What percentage cut brings it back to where it started?",
+        "Narx 25% ga OSHDI. Uni boshlang‘ich holatga qaytarish uchun necha foiz tushirish kerak?"],
+    o: [["25% off","25% tushirish"],["20% off","20% tushirish"],["30% off","30% tushirish"]], a: 1,
+    w: ["$100 → $125. To get back to $100 you must remove $25 from $125, and 25/125 = <b>20%</b>. Up 25% and down 25% never cancel.",
+        "$100 → $125. $100 ga qaytish uchun $125 dan $25 ni olib tashlash kerak, 25/125 = <b>20%</b>. 25% oshish va 25% tushish hech qachon bir-birini yo‘qotmaydi."] },
+  { q: ["Which is bigger: 20% of 50, or 50% of 20?", "Qaysi biri katta: 50 ning 20% imi yoki 20 ning 50% imi?"],
+    o: [["20% of 50","50 ning 20%"],["50% of 20","20 ning 50%"],["They are exactly equal","Ular aynan teng"]], a: 2,
+    w: ["Both are <b>10</b>. Percentages multiply, and multiplication does not care about order — which is a genuinely useful shortcut for doing them in your head.",
+        "Ikkalasi ham <b>10</b>. Foiz — ko‘paytirish, ko‘paytirishda esa tartib ahamiyatsiz — bu og‘zaki hisoblashda haqiqatan foydali qisqa yo‘l."] },
+  { q: ["A phone drops from $1,000 to $500. The advert says “50% cheaper.” Is the advert lying?",
+        "Telefon $1 000 dan $500 ga tushdi. Reklama “50% arzon” deydi. Reklama yolg‘on gapiryaptimi?"],
+    o: [["Yes — it is 100% cheaper","Ha — bu 100% arzon"],["No — the advert is correct","Yo‘q — reklama to‘g‘ri"],["Yes — it is 200% cheaper","Ha — bu 200% arzon"]], a: 1,
+    w: ["This one is <b>honest</b>. Half of $1,000 is $500, so 50% off is exactly right. Being a detective means catching the lies — not assuming everything is one.",
+        "Bu safar reklama <b>halol</b>. $1 000 ning yarmi $500, demak 50% chegirma to‘g‘ri. Detektiv bo‘lish — yolg‘onni ushlash, hamma narsani yolg‘on deb o‘ylash emas."] },
+  { q: ["A jacket is marked “$80, was $100 — save 25%!” Is that right?",
+        "Kurtkada “$80, avval $100 edi — 25% tejang!” deb yozilgan. To‘g‘rimi?"],
+    o: [["Yes, 25% off","Ha, 25% chegirma"],["No — it is 20% off","Yo‘q — bu 20% chegirma"],["No — it is 15% off","Yo‘q — bu 15% chegirma"]], a: 1,
+    w: ["You saved $20 out of $100, which is <b>20%</b>. They calculated the discount from the <em>new</em> price ($20 out of $80) — a very common and very profitable “mistake”.",
+        "Siz $100 dan $20 tejadingiz, bu <b>20%</b>. Ular chegirmani <em>yangi</em> narxdan hisoblashgan ($80 dan $20) — juda keng tarqalgan va juda foydali “xato”."] }
 ];
 var detBox = $("#detBox"), detAt = 0, detOk = 0;
 function detRender(){
   detBox.innerHTML = "";
   if (detAt >= DET.length) {
-    detBox.appendChild(el("div", "kicker", "Case closed"));
+    detBox.appendChild(tx(el("div", "kicker"), "Case closed", "Ish yopildi"));
     detBox.appendChild(el("div", "big", detOk + " / " + DET.length));
-    detBox.appendChild(el("p", "lead", detOk === DET.length
-      ? "Perfect. Nobody is selling you anything today."
-      : "Every one you missed is a shop, a bank or an advert that would have made money from it. That is not an exam mark — that is your wallet."));
+    detBox.appendChild(tx(el("p", "lead"),
+      detOk === DET.length ? "Perfect. Nobody is selling you anything today."
+        : "Every one you missed is a shop, a bank or an advert that would have made money from it. That is not an exam mark — that is your wallet.",
+      detOk === DET.length ? "A’lo. Bugun sizga hech kim hech narsa “sotib” ketolmaydi."
+        : "Har bir xatoyingiz — bundan pul ishlab qoladigan do‘kon, bank yoki reklama. Bu imtihon bahosi emas — bu sizning hamyoningiz."));
     if (detOk === DET.length) addScore(20, "det"); else addScore(detOk * 3, "det");
     return;
   }
   var c = DET[detAt];
-  detBox.appendChild(el("div", "kicker", "Case " + (detAt + 1) + " of " + DET.length + " · score " + detOk));
-  detBox.appendChild(el("h3", null, c.q));
+  detBox.appendChild(tx(el("div", "kicker"),
+    "Case " + (detAt + 1) + " of " + DET.length + " · score " + detOk,
+    DET.length + " tadan " + (detAt + 1) + "-ish · ochko " + detOk));
+  detBox.appendChild(tx(el("h3"), c.q[0], c.q[1]));
   var wrap = el("div", "stack"); wrap.style.marginTop = "10px";
   var out = el("div", "reveal");
   var btns = [];
   c.o.forEach(function(t, i){
     var b = el("button", "choice"); b.type = "button";
     b.appendChild(el("span", "tag", String.fromCharCode(65 + i)));
-    b.appendChild(el("span", "txt", t));
+    b.appendChild(tx(el("span", "txt"), t[0], t[1]));
     b.addEventListener("click", function(){
       btns.forEach(function(x, k){ x.disabled = true; if (k === c.a) x.classList.add("right"); });
       if (i !== c.a) b.classList.add("wrong"); else detOk++;
-      out.innerHTML = c.w; out.classList.add("show");
+      tx(out, c.w[0], c.w[1]); out.classList.add("show");
       nextBtn.classList.remove("hidden");
     });
     btns.push(b); wrap.appendChild(b);
   });
   detBox.appendChild(wrap);
   detBox.appendChild(out);
-  var nextBtn = el("button", "btn solid hidden", detAt === DET.length - 1 ? "See the result →" : "Next case →");
+  var nextBtn = tx(el("button", "btn solid hidden"),
+    detAt === DET.length - 1 ? "See the result →" : "Next case →",
+    detAt === DET.length - 1 ? "Natijani ko‘rish →" : "Keyingi ish →");
   nextBtn.type = "button"; nextBtn.style.alignSelf = "flex-start";
   nextBtn.addEventListener("click", function(){ detAt++; detRender(); });
   detBox.appendChild(nextBtn);
@@ -1528,23 +1863,38 @@ function detRender(){
 detBox.style.display = "flex"; detBox.style.flexDirection = "column"; detBox.style.gap = "10px";
 RESET.det = function(){ detAt = 0; detOk = 0; delete state.answered.det; detRender(); };
 detRender();
+RELABEL.push(detRender);
 
 /* ═══ 13 · RAPID FIRE ═══ */
 var RF = [
-  { topic: "Percentage", q: "A jacket costs $80 after a 20% discount. What was the original price?",
-    o: ["$96", "$100", "$120"], a: 1, w: "$80 is 80% of the original, so original = 80 ÷ 0.8 = <b>$100</b>. Adding 20% back to $80 gives $96 — the classic trap." },
-  { topic: "Probability", q: "You flip a fair coin three times. Chance of getting at least one head?",
-    o: ["1/2", "3/4", "7/8"], a: 2, w: "Easier backwards: the only losing case is TTT, which is 1/8. So at least one head = 1 − 1/8 = <b>7/8</b>." },
-  { topic: "Trigonometry", q: "A ramp rises 3 m for every 5 m along the slope. sin(angle) = ?",
-    o: ["0.6", "0.75", "1.67"], a: 0, w: "sin = opposite ÷ hypotenuse = 3/5 = <b>0.6</b>. The rise over the slope — not over the ground." },
-  { topic: "Reading a graph", q: "On a distance–time graph, the line is completely flat. What is happening?",
-    o: ["Moving at a steady speed", "Not moving at all", "Speeding up"], a: 1, w: "Flat means distance is not changing, so the object is <b>stationary</b>. A straight sloped line would be steady speed." },
-  { topic: "Compound growth", q: "$100 grows by 100% every year. After 3 years you have…",
-    o: ["$300", "$400", "$800"], a: 2, w: "It doubles each year: 100 → 200 → 400 → <b>800</b>. Growth multiplies; it does not add." },
-  { topic: "Logic", q: "All cats are animals. Some animals are black. So — some cats are black?",
-    o: ["True, it follows", "Not necessarily", "False, never"], a: 1, w: "It might be true in the real world, but it does <b>not follow</b> from those two statements. The black animals could all be horses. This is exactly how bad arguments get past people." },
-  { topic: "Optimisation", q: "You have 40 m of fence for a rectangular pen. The biggest area you can enclose?",
-    o: ["75 m²", "100 m²", "120 m²"], a: 1, w: "A square wins: 10 × 10 = <b>100 m²</b>. Of all rectangles with the same perimeter, the square always has the largest area." }
+  { topic: ["Percentage","Foiz"], q: ["A jacket costs $80 after a 20% discount. What was the original price?","20% chegirmadan keyin kurtka $80 turadi. Dastlabki narx qancha edi?"],
+    o: [["$96","$96"],["$100","$100"],["$120","$120"]], a: 1,
+    w: ["$80 is 80% of the original, so original = 80 ÷ 0.8 = <b>$100</b>. Adding 20% back to $80 gives $96 — the classic trap.",
+        "$80 — dastlabki narxning 80% i, demak narx = 80 ÷ 0,8 = <b>$100</b>. $80 ga 20% qo‘shsangiz $96 chiqadi — klassik tuzoq."] },
+  { topic: ["Probability","Ehtimollik"], q: ["You flip a fair coin three times. Chance of getting at least one head?","Tangani uch marta tashladingiz. Kamida bitta “gerb” tushishi ehtimoli?"],
+    o: [["1/2","1/2"],["3/4","3/4"],["7/8","7/8"]], a: 2,
+    w: ["Easier backwards: the only losing case is TTT, which is 1/8. So at least one head = 1 − 1/8 = <b>7/8</b>.",
+        "Teskarisidan oson: yagona yutqazish holati — uchalasi ham “raqam”, ya’ni 1/8. Demak kamida bitta gerb = 1 − 1/8 = <b>7/8</b>."] },
+  { topic: ["Trigonometry","Trigonometriya"], q: ["A ramp rises 3 m for every 5 m along the slope. sin(angle) = ?","Pandus qiyalik bo‘ylab har 5 m da 3 m ko‘tariladi. sin(burchak) = ?"],
+    o: [["0.6","0,6"],["0.75","0,75"],["1.67","1,67"]], a: 0,
+    w: ["sin = opposite ÷ hypotenuse = 3/5 = <b>0.6</b>. The rise over the slope — not over the ground.",
+        "sin = qarshi katet ÷ gipotenuza = 3/5 = <b>0,6</b>. Ko‘tarilish qiyalikka bo‘linadi — yerga emas."] },
+  { topic: ["Reading a graph","Grafikni o‘qish"], q: ["On a distance–time graph, the line is completely flat. What is happening?","Masofa–vaqt grafigida chiziq mutlaqo tekis. Nima sodir bo‘lyapti?"],
+    o: [["Moving at a steady speed","Bir tekis tezlikda ketyapti"],["Not moving at all","Umuman qimirlamayapti"],["Speeding up","Tezlashyapti"]], a: 1,
+    w: ["Flat means distance is not changing, so the object is <b>stationary</b>. A straight sloped line would be steady speed.",
+        "Tekis chiziq — masofa o‘zgarmayapti degani, demak jism <b>joyida turibdi</b>. Qiya to‘g‘ri chiziq bir tekis tezlik bo‘lardi."] },
+  { topic: ["Compound growth","Murakkab o‘sish"], q: ["$100 grows by 100% every year. After 3 years you have…","$100 har yili 100% ga o‘sadi. 3 yildan keyin sizda…"],
+    o: [["$300","$300"],["$400","$400"],["$800","$800"]], a: 2,
+    w: ["It doubles each year: 100 → 200 → 400 → <b>800</b>. Growth multiplies; it does not add.",
+        "Har yili ikkilanadi: 100 → 200 → 400 → <b>800</b>. O‘sish ko‘payadi, qo‘shilmaydi."] },
+  { topic: ["Logic","Mantiq"], q: ["All cats are animals. Some animals are black. So — some cats are black?","Hamma mushuklar — hayvon. Ba’zi hayvonlar qora. Demak, ba’zi mushuklar qorami?"],
+    o: [["True, it follows","To‘g‘ri, kelib chiqadi"],["Not necessarily","Shart emas"],["False, never","Yo‘q, hech qachon"]], a: 1,
+    w: ["It might be true in the real world, but it does <b>not follow</b> from those two statements. The black animals could all be horses. This is exactly how bad arguments get past people.",
+        "Hayotda to‘g‘ri bo‘lishi mumkin, lekin bu ikki gapdan <b>kelib chiqmaydi</b>. Qora hayvonlarning hammasi ot bo‘lishi mumkin. Yomon dalillar odamlarni aynan shunday chalg‘itadi."] },
+  { topic: ["Optimisation","Optimallashtirish"], q: ["You have 40 m of fence for a rectangular pen. The biggest area you can enclose?","To‘g‘ri to‘rtburchak qo‘ra uchun 40 m panjara bor. Eng katta yuza qancha?"],
+    o: [["75 m²","75 m²"],["100 m²","100 m²"],["120 m²","120 m²"]], a: 1,
+    w: ["A square wins: 10 × 10 = <b>100 m²</b>. Of all rectangles with the same perimeter, the square always has the largest area.",
+        "Kvadrat yutadi: 10 × 10 = <b>100 m²</b>. Perimetri bir xil to‘g‘ri to‘rtburchaklar ichida yuzasi eng kattasi — doim kvadrat."] }
 ];
 var rfAt = -1, rfOk = 0, rfLeft = 10, rfId = null, rfPicks = [];
 var CIRC = 2 * Math.PI * 22;
@@ -1552,18 +1902,23 @@ function rfSet(sec){
   $("#rfClock").textContent = sec;
   $("#rfArc").setAttribute("stroke-dashoffset", (1 - sec / 10) * CIRC);
 }
+function rfProgress(){
+  tx($("#rfProg"),
+    "Question " + (rfAt + 1) + " of " + RF.length + " · " + rfOk + " correct",
+    RF.length + " tadan " + (rfAt + 1) + "-savol · " + rfOk + " ta to‘g‘ri");
+}
 function rfShow(){
   var c = RF[rfAt];
-  $("#rfTopic").textContent = c.topic;
-  $("#rfProg").textContent = "Question " + (rfAt + 1) + " of " + RF.length + " · " + rfOk + " correct";
-  $("#rfQ").textContent = c.q;
+  tx($("#rfTopic"), c.topic[0], c.topic[1]);
+  rfProgress();
+  tx($("#rfQ"), c.q[0], c.q[1]);
   $("#rfOut").classList.remove("show");
   var box = $("#rfOpts"); box.innerHTML = "";
   var btns = [];
   c.o.forEach(function(t, i){
     var b = el("button", "choice"); b.type = "button";
     b.appendChild(el("span", "tag", String.fromCharCode(65 + i)));
-    b.appendChild(el("span", "txt", t));
+    b.appendChild(tx(el("span", "txt"), t[0], t[1]));
     b.addEventListener("click", function(){ rfLock(i, btns); });
     btns.push(b); box.appendChild(b);
   });
@@ -1581,30 +1936,45 @@ function rfLock(pick, btns){
   if (pick >= 0 && pick !== c.a) btns[pick].classList.add("wrong");
   if (pick === c.a) rfOk++;
   rfPicks[rfAt] = pick;
-  $("#rfOut").innerHTML = (pick === c.a ? "✅ <b>Correct.</b> " : pick < 0 ? "⏱ <b>Time.</b> " : "❌ <b>Not this time.</b> ") + c.w;
+  var head = pick === c.a ? ["✅ <b>Correct.</b> ", "✅ <b>To‘g‘ri.</b> "]
+    : pick < 0 ? ["⏱ <b>Time.</b> ", "⏱ <b>Vaqt tugadi.</b> "] : ["❌ <b>Not this time.</b> ", "❌ <b>Bu safar emas.</b> "];
+  tx($("#rfOut"), head[0] + c.w[0], head[1] + c.w[1]);
   $("#rfOut").classList.add("show");
-  $("#rfProg").textContent = "Question " + (rfAt + 1) + " of " + RF.length + " · " + rfOk + " correct";
+  rfProgress();
   setTimeout(function(){
     rfAt++;
     if (rfAt >= RF.length) rfEnd(); else rfShow();
   }, 3400);
 }
 function rfEnd(){
-  $("#rfQ").textContent = "That is the whole class in 70 seconds.";
+  tx($("#rfQ"), "That is the whole class in 70 seconds.", "Mana, 70 soniyada butun sinf.");
   $("#rfOpts").innerHTML = ""; $("#rfOut").classList.remove("show");
-  $("#rfTopic").textContent = "Result"; $("#rfProg").textContent = "Finished";
-  rfSet(0); $("#rfStart").disabled = false; $("#rfStart").textContent = "▶ Run it again";
+  tx($("#rfTopic"), "Result", "Natija");
+  tx($("#rfProg"), "Finished", "Tugadi");
+  rfSet(0);
+  $("#rfStart").disabled = false;
+  tx($("#rfStart"), "▶ Run it again", "▶ Yana bir bor");
   var b = $("#rfBoard"); b.innerHTML = ""; b.classList.remove("hidden");
   var head = el("div", "glass tight stack");
-  head.innerHTML = '<div class="kicker">🏆 Class score</div><div class="big" style="color:var(--acc)">' + rfOk + " / " + RF.length + "</div>";
+  head.appendChild(tx(el("div", "kicker"), "🏆 Class score", "🏆 Sinf natijasi"));
+  var big = el("div", "big", rfOk + " / " + RF.length); big.style.color = "var(--acc)";
+  head.appendChild(big);
   b.appendChild(head);
   RF.forEach(function(c, i){
     var ok = rfPicks[i] === c.a;
     var card = el("div", "glass tight stack");
-    card.innerHTML = '<div class="kicker" style="color:' + (ok ? "var(--ok)" : "var(--no)") + '">' + (ok ? "✅ " : "❌ ") + c.topic + "</div>" +
-      '<div class="tiny">' + c.q + "</div>" +
-      '<div class="tiny"><b style="color:var(--ok)">💡 ' + c.o[c.a] + "</b></div>" +
-      (ok ? "" : '<div class="tiny" style="color:var(--no)">Chosen: ' + (rfPicks[i] >= 0 ? c.o[rfPicks[i]] : "ran out of time") + "</div>");
+    var k = tx(el("div", "kicker"), (ok ? "✅ " : "❌ ") + c.topic[0], (ok ? "✅ " : "❌ ") + c.topic[1]);
+    k.style.color = ok ? "var(--ok)" : "var(--no)";
+    card.appendChild(k);
+    card.appendChild(tx(el("div", "tiny"), c.q[0], c.q[1]));
+    card.appendChild(tx(el("div", "tiny"), "<b style='color:var(--ok)'>💡 " + c.o[c.a][0] + "</b>", "<b style='color:var(--ok)'>💡 " + c.o[c.a][1] + "</b>"));
+    if (!ok) {
+      var miss = tx(el("div", "tiny"),
+        "Chosen: " + (rfPicks[i] >= 0 ? c.o[rfPicks[i]][0] : "ran out of time"),
+        "Tanlandi: " + (rfPicks[i] >= 0 ? c.o[rfPicks[i]][1] : "vaqt tugadi"));
+      miss.style.color = "var(--no)";
+      card.appendChild(miss);
+    }
     b.appendChild(card);
   });
   addScore(rfOk * 5, "rf");
@@ -1617,18 +1987,21 @@ $("#rfStart").addEventListener("click", function(){
 });
 RESET.rf = function(){
   clearInterval(rfId); rfAt = -1; rfOk = 0; rfPicks = [];
-  $("#rfStart").disabled = false; $("#rfStart").textContent = "▶ Start";
-  $("#rfQ").textContent = "Press start when the class is ready.";
+  $("#rfStart").disabled = false;
+  tx($("#rfStart"), "▶ Start", "▶ Boshlash");
+  tx($("#rfQ"), "Press start when the class is ready.", "Sinf tayyor bo‘lganda “Boshlash”ni bosing.");
   $("#rfOpts").innerHTML = ""; $("#rfOut").classList.remove("show");
-  $("#rfTopic").textContent = "Ready"; $("#rfProg").textContent = "Question 0 of " + RF.length;
+  tx($("#rfTopic"), "Ready", "Tayyor");
+  tx($("#rfProg"), "Question 0 of " + RF.length, RF.length + " tadan 0-savol");
   $("#rfBoard").classList.add("hidden"); rfSet(10); delete state.answered.rf;
 };
-rfSet(10);
+RESET.rf();
 
 /* ═══ 14 · THE BIG IDEA ═══ */
-var VERBS = ["Analyse.", "Question.", "Calculate.", "Predict.", "Compare.", "Optimise.", "Solve.", "Decide."];
+var VERBS = [["Analyse.","Tahlil qiling."],["Question.","Shubhalaning."],["Calculate.","Hisoblang."],["Predict.","Bashorat qiling."],
+             ["Compare.","Solishtiring."],["Optimise.","Optimallashtiring."],["Solve.","Yeching."],["Decide.","Qaror qiling."]];
 var verbBox = $("#verbs");
-VERBS.forEach(function(v){ verbBox.appendChild(el("span", "verb", v)); });
+VERBS.forEach(function(v){ verbBox.appendChild(tx(el("span", "verb"), v[0], v[1])); });
 var bigT = [];
 $("#bigGo").addEventListener("click", function(){
   var lines = $$(".line"), self = this;
@@ -1640,7 +2013,7 @@ $("#bigGo").addEventListener("click", function(){
   bigT.push(setTimeout(function(){
     $("#bigTail").style.opacity = "1";
     $$(".verb").forEach(function(v, i){ bigT.push(setTimeout(function(){ v.classList.add("up"); }, i * 130)); });
-    self.disabled = false; self.textContent = "▶ Play again";
+    self.disabled = false; tx(self, "▶ Play again", "▶ Yana ijro etish");
     addScore(5, "big");
   }, REDUCED ? 400 : lines.length * 1700 + 400));
 });
@@ -1649,7 +2022,7 @@ RESET.big = function(){
   $$(".line").forEach(function(l){ l.classList.remove("up"); });
   $$(".verb").forEach(function(v){ v.classList.remove("up"); });
   $("#bigTail").style.opacity = "0";
-  $("#bigGo").disabled = false; $("#bigGo").textContent = "▶ Reveal, line by line";
+  $("#bigGo").disabled = false; tx($("#bigGo"), "▶ Reveal, line by line", "▶ Qator-qator ochish");
   delete state.answered.big;
 };
 
@@ -1658,13 +2031,14 @@ var fBox = $("#finalQ"); fBox.dataset.out = "#finalOut";
 function finalBuild(){
   fBox.innerHTML = "";
   var q = quizBlock(fBox, [
-    "Numbers",
-    "Formulas",
-    "Exams",
-    "A language for understanding patterns, relationships and change"
-  ], 3,
+    ["Numbers", "Sonlar"],
+    ["Formulas", "Formulalar"],
+    ["Exams", "Imtihonlar"],
+    ["A language for understanding patterns, relationships and change", "Naqsh, bog‘lanish va o‘zgarishni tushunish tili"]
+  ], 3, [
     "<b>D.</b> Numbers are the alphabet. Formulas are the sentences. The exam is just someone checking whether you can read.<br><br>Mathematics itself is the <b>language</b> — the one humans invented to describe patterns, relationships and change precisely enough to build on.",
-    "final", 20);
+    "<b>D.</b> Sonlar — alifbo. Formulalar — gaplar. Imtihon esa shunchaki kimdir sizning o‘qiy olishingizni tekshirishi.<br><br>Matematikaning o‘zi — <b>til</b>. Insoniyat naqsh, bog‘lanish va o‘zgarishni ustiga qurish mumkin bo‘ladigan darajada aniq tasvirlash uchun o‘ylab topgan til."
+  ], "final", 20);
   fBox.onAnswer = function(){
     $("#finalEnd").classList.remove("hidden");
     setTimeout(function(){ $("#s15q").classList.add("hidden"); }, 4200);
@@ -1676,6 +2050,8 @@ RESET.final = function(){ finalQ.reset(); $("#finalEnd").classList.add("hidden")
 $("#backToVote").addEventListener("click", function(){ go(0); });
 
 /* ── boot ── */
+paint();
+RELABEL.forEach(function(f){ try { f(); } catch (e) {} });
 go(0);
 })();
 </script>

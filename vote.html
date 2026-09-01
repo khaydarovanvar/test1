@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Vote · Why do we need math?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Manrope:wght@400;700;800&family=Syne:wght@800&display=swap">
+<style>
+:root{
+  --bg:#080A16;--panel:rgba(255,255,255,.055);--line:rgba(255,255,255,.12);
+  --ink:#F2F4FF;--muted:#A6ADCB;--faint:#6E769B;--acc:#9B8CFF;--ok:#5BE49B;--no:#FF7A93;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100svh;background:var(--bg);color:var(--ink);
+  font-family:Manrope,system-ui,sans-serif;font-size:17px;line-height:1.45;
+  padding:max(14px,env(safe-area-inset-top)) 16px max(20px,env(safe-area-inset-bottom));
+  display:flex;flex-direction:column;gap:16px;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(60vw 60vw at 80% -10%,rgba(155,140,255,.16),transparent 70%);
+}
+h1{font-family:Syne,sans-serif;font-size:1.5rem;margin:0;letter-spacing:-.02em}
+h2{font-family:Syne,sans-serif;font-size:1.35rem;margin:0;letter-spacing:-.02em;text-wrap:balance}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.tag{font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--acc);border:1px solid var(--acc);background:rgba(155,140,255,.14);border-radius:999px;padding:5px 11px}
+.mini{font:inherit;font-size:.78rem;font-weight:700;color:var(--muted);background:var(--panel);
+  border:1px solid var(--line);border-radius:10px;padding:7px 11px;cursor:pointer}
+.mini:hover{border-color:var(--acc);color:var(--ink)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.opts{display:flex;flex-direction:column;gap:11px;margin-top:6px}
+.opt{
+  display:flex;align-items:center;gap:13px;width:100%;text-align:left;font:inherit;font-weight:700;
+  color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:16px;
+  padding:18px 17px;cursor:pointer;min-height:64px;transition:transform .14s,border-color .14s,background .14s;
+}
+.opt:active{transform:scale(.985)}
+.opt .k{font-family:"JetBrains Mono",monospace;color:var(--faint);flex:none;width:22px}
+.opt.mine{border-color:var(--ok);background:rgba(91,228,155,.13)}
+.opt.mine .k{color:var(--ok)}
+.opt[disabled]{opacity:.55}
+input{
+  font-family:"JetBrains Mono",monospace;font-size:1.6rem;font-weight:700;letter-spacing:.3em;text-align:center;
+  text-transform:uppercase;width:100%;padding:15px 12px;border-radius:14px;border:1px solid var(--line);
+  background:rgba(0,0,0,.3);color:var(--ink);
+}
+.go{
+  font:inherit;font-weight:800;font-size:1rem;width:100%;padding:16px;border-radius:14px;border:0;
+  background:var(--acc);color:#0A0C18;cursor:pointer;margin-top:11px;
+}
+.muted{color:var(--muted);font-size:.92rem;margin:0}
+.tiny{color:var(--faint);font-size:.8rem;margin:0}
+.dotpulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ok);margin-right:7px;vertical-align:0}
+@media (prefers-reduced-motion:no-preference){ .dotpulse{animation:pulse 1.8s ease-in-out infinite} }
+@keyframes pulse{50%{opacity:.25}}
+.wait{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:34px 12px}
+.spin{width:34px;height:34px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--acc)}
+@media (prefers-reduced-motion:no-preference){ .spin{animation:sp 1s linear infinite} }
+@keyframes sp{to{transform:rotate(360deg)}}
+.err{color:var(--no);font-size:.88rem}
+.hidden{display:none!important}
+footer{margin-top:auto;display:flex;justify-content:space-between;gap:10px;align-items:center}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>Why do we need <span style="color:var(--acc)">math?</span></h1>
+  <button class="mini" id="lang" type="button">O‘ZBEKCHA</button>
+</div>
+
+<!-- join -->
+<section class="card" id="join">
+  <h2 data-uz="Sinf kodini kiriting">Enter the class code</h2>
+  <p class="muted" data-uz="Kod o‘qituvchining ekranida turibdi.">Your teacher has it on the screen.</p>
+  <input id="code" inputmode="latin" autocomplete="off" maxlength="6" placeholder="ABCD" aria-label="class code">
+  <button class="go" id="joinGo" type="button" data-uz="QO‘SHILISH">JOIN</button>
+  <p class="err hidden" id="joinErr"></p>
+</section>
+
+<!-- live -->
+<section class="hidden" id="live">
+  <div class="card">
+    <div class="top" style="margin-bottom:10px">
+      <span class="tag"><span class="dotpulse"></span><span id="roomTag"></span></span>
+      <span class="tiny" id="status"></span>
+    </div>
+    <div id="waiting" class="wait">
+      <div class="spin"></div>
+      <p class="muted" data-uz="O‘qituvchi savolni ochishini kuting…">Waiting for your teacher to open a question…</p>
+    </div>
+    <div id="poll" class="hidden">
+      <h2 id="q"></h2>
+      <div class="opts" id="opts"></div>
+      <p class="tiny" id="hint" style="margin-top:12px"></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="tiny" id="foot"></span>
+  <button class="mini hidden" id="leave" type="button" data-uz="Chiqish">Leave</button>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var API = "/api";
+var LANG = "en";
+var $ = function(s){ return document.querySelector(s); };
+
+function paint(){
+  document.querySelectorAll("[data-uz]").forEach(function(n){
+    if (n.dataset.en == null) n.dataset.en = n.innerHTML;
+    n.innerHTML = LANG === "uz" ? n.dataset.uz : n.dataset.en;
+  });
+  $("#lang").textContent = LANG === "uz" ? "ENGLISH" : "O‘ZBEKCHA";
+  document.documentElement.lang = LANG;
+  render();
+}
+function T(en, uz){ return LANG === "uz" ? uz : en; }
+$("#lang").addEventListener("click", function(){
+  LANG = LANG === "uz" ? "en" : "uz";
+  try { localStorage.setItem("mv-lang", LANG); } catch (e) {}
+  paint();
+});
+try { var sl = localStorage.getItem("mv-lang"); if (sl === "uz" || sl === "en") LANG = sl; } catch (e) {}
+
+var voter = "";
+try {
+  voter = localStorage.getItem("mv-voter") || "";
+  if (!/^[a-z0-9]{6,24}$/.test(voter)) { voter = Math.random().toString(36).slice(2, 12); localStorage.setItem("mv-voter", voter); }
+} catch (e) { voter = Math.random().toString(36).slice(2, 12); }
+
+var room = "", state = { poll: "", options: [], counts: [] }, mine = {}, timer = null, fails = 0;
+try { mine = JSON.parse(localStorage.getItem("mv-mine") || "{}"); } catch (e) { mine = {}; }
+
+function saveMine(){ try { localStorage.setItem("mv-mine", JSON.stringify(mine)); } catch (e) {} }
+
+function render(){
+  if (!room) return;
+  $("#roomTag").textContent = room;
+  var has = !!state.poll;
+  $("#waiting").classList.toggle("hidden", has);
+  $("#poll").classList.toggle("hidden", !has);
+  $("#foot").textContent = T("Your answers stay anonymous. Only totals are shown.", "Javoblaringiz anonim. Faqat umumiy son ko‘rsatiladi.");
+  if (!has) { $("#opts").innerHTML = ""; return; }
+  $("#q").textContent = state.title || T("Choose one", "Bittasini tanlang");
+  var box = $("#opts");
+  if (box.dataset.poll !== state.poll || box.childElementCount !== state.options.length) {
+    box.innerHTML = ""; box.dataset.poll = state.poll;
+    state.options.forEach(function(t, i){
+      var b = document.createElement("button");
+      b.className = "opt"; b.type = "button";
+      var k = document.createElement("span"); k.className = "k"; k.textContent = String.fromCharCode(65 + i);
+      var s = document.createElement("span"); s.textContent = t;
+      b.appendChild(k); b.appendChild(s);
+      b.addEventListener("click", function(){ vote(i); });
+      box.appendChild(b);
+    });
+  } else {
+    Array.prototype.forEach.call(box.children, function(b, i){ b.lastChild.textContent = state.options[i]; });
+  }
+  Array.prototype.forEach.call(box.children, function(b, i){ b.classList.toggle("mine", mine[state.poll] === i); });
+  $("#hint").textContent = mine[state.poll] === undefined
+    ? T("Tap your answer.", "Javobingizni bosing.")
+    : T("Saved. You can change it while voting is open.", "Saqlandi. Ovoz berish ochiq ekan, o‘zgartirsangiz bo‘ladi.");
+}
+
+function setStatus(txt, bad){
+  var n = $("#status"); n.textContent = txt; n.className = bad ? "tiny err" : "tiny";
+}
+
+async function poll(){
+  try {
+    var r = await fetch(API + "/state?room=" + encodeURIComponent(room) + "&t=" + Date.now(), { cache: "no-store" });
+    var d = await r.json();
+    if (!d.ok) throw new Error(d.error || "error");
+    fails = 0;
+    state = { poll: d.poll, options: d.options || [], counts: d.counts || [], title: d.title || "" };
+    setStatus(T("connected", "ulangan"));
+    render();
+  } catch (e) {
+    fails++;
+    setStatus(T("reconnecting…", "qayta ulanmoqda…"), fails > 2);
+  }
+}
+
+async function vote(i){
+  mine[state.poll] = i; saveMine(); render();
+  try {
+    await fetch(API + "/vote", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ room: room, poll: state.poll, option: i, voter: voter })
+    });
+    poll();
+  } catch (e) { setStatus(T("vote not sent — check signal", "ovoz yuborilmadi — aloqani tekshiring"), true); }
+}
+
+function start(code){
+  room = code;
+  try { localStorage.setItem("mv-room", room); } catch (e) {}
+  $("#join").classList.add("hidden");
+  $("#live").classList.remove("hidden");
+  $("#leave").classList.remove("hidden");
+  poll();
+  clearInterval(timer);
+  timer = setInterval(function(){ if (document.visibilityState === "visible") poll(); }, 5000);
+}
+document.addEventListener("visibilitychange", function(){ if (document.visibilityState === "visible" && room) poll(); });
+
+$("#joinGo").addEventListener("click", function(){
+  var v = ($("#code").value || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+  if (!/^[A-Z0-9]{4,6}$/.test(v)) {
+    $("#joinErr").textContent = T("That code looks wrong — 4 to 6 letters or digits.", "Kod noto‘g‘ri — 4–6 ta harf yoki raqam.");
+    $("#joinErr").classList.remove("hidden");
+    return;
+  }
+  $("#joinErr").classList.add("hidden");
+  start(v);
+});
+$("#code").addEventListener("keydown", function(e){ if (e.key === "Enter") $("#joinGo").click(); });
+$("#leave").addEventListener("click", function(){
+  clearInterval(timer); room = "";
+  try { localStorage.removeItem("mv-room"); } catch (e) {}
+  $("#live").classList.add("hidden"); $("#leave").classList.add("hidden");
+  $("#join").classList.remove("hidden");
+});
+
+paint();
+var qs = new URLSearchParams(location.search);
+var pre = (qs.get("room") || "").toUpperCase();
+if (!pre) { try { pre = (localStorage.getItem("mv-room") || "").toUpperCase(); } catch (e) {} }
+if (/^[A-Z0-9]{4,6}$/.test(pre)) start(pre); else $("#code").focus();
+})();
+</script>
+</body>
+</html>

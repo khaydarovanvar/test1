@@ -1,0 +1,29 @@
+# ── Netlify config for the "Why do we need mathematics?" lesson ──────────────
+# Deploy: drag this folder onto app.netlify.com, or connect the GitHub repo.
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# The presentation is the home page.
+[[redirects]]
+  from = "/"
+  to = "/why-do-we-need-mathematics.html"
+  status = 200
+
+# Short, dictate-able link for students: yoursite.netlify.app/v
+[[redirects]]
+  from = "/v"
+  to = "/vote.html"
+  status = 200
+
+# Friendly API path in front of the function.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/vote/:splat"
+  status = 200
+
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Cache-Control = "no-store"
