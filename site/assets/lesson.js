@@ -204,5 +204,8 @@
       }, { rootMargin: '-90px 0px -70% 0px' });
       secs.forEach(function (s) { io.observe(s); });
     }
+
+    /* the page was empty when the motion layer first ran */
+    if (w.AKM_MOTION) w.AKM_MOTION.refresh();
   };
 })(window, document);

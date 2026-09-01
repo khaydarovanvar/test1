@@ -1,6 +1,15 @@
-/* ---------- 3D hero ---------- */
-.hero{position:relative;overflow:hidden;isolation:isolate;
+/* ---------- 3D hero ----------
+   The scene is a canvas painted behind the whole hero (assets/hero3d.js). The
+   copy sits over it and a radial wash keeps the words legible where the two
+   overlap. */
+.hero{position:relative;overflow:hidden;isolation:isolate;min-height:min(88svh,760px);
+  display:flex;align-items:center;
   background:radial-gradient(120% 90% at 78% 8%,var(--glow),transparent 62%)}
+.hero3d{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero3d canvas{display:block;width:100%;height:100%}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(68% 62% at 20% 48%,var(--paper) 0%,
+    color-mix(in srgb,var(--paper) 84%,transparent) 40%,transparent 74%)}
 .hero .grid3d{position:absolute;inset:auto 0 -8% 0;height:52%;pointer-events:none;z-index:0;
   perspective:520px;perspective-origin:50% 0;opacity:.55}
 .hero .grid3d i{position:absolute;inset:0;display:block;
@@ -8,15 +17,24 @@
                    linear-gradient(90deg,var(--rule) 1px,transparent 1px);
   background-size:46px 46px;
   transform:rotateX(74deg) translateZ(-40px) scale(2.2);transform-origin:50% 0;
+  animation:gridDrift 26s linear infinite;
   -webkit-mask-image:linear-gradient(to bottom,transparent,#000 22%,transparent 92%);
   mask-image:linear-gradient(to bottom,transparent,#000 22%,transparent 92%)}
-.hero .inner{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
-  padding:88px 28px 84px;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+@keyframes gridDrift{to{background-position:0 46px,46px 0}}
+.hero .inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%;
+  padding:96px 28px 88px;display:grid;grid-template-columns:minmax(0,1fr);
   gap:48px;align-items:center}
-.hero h1{margin:20px 0 22px;max-width:15ch;letter-spacing:-.028em}
+.hero .inner>div{max-width:44rem}
+.hero h1{margin:20px 0 22px;max-width:16ch;letter-spacing:-.028em}
 .hero h1 em{font-style:italic;color:var(--brand)}
 .hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:38px;
+.hero .lede{max-width:56ch}
+.stats-wrap{position:relative;overflow:hidden;margin-top:38px}
+.stats-ghost{position:absolute;top:50%;left:0;transform:translateY(-50%);white-space:nowrap;
+  display:flex;gap:2.6rem;pointer-events:none;user-select:none;z-index:0;
+  font-family:var(--serif);font-weight:600;font-size:clamp(4rem,13vw,9rem);line-height:1;
+  color:var(--rule-soft);animation:marquee 46s linear infinite}
+.stats{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
   border-top:1px solid var(--rule)}
 .stat{padding:16px 14px 4px 0;border-right:1px solid var(--rule)}
 .stat:last-child{border-right:0;padding-right:0}
@@ -25,38 +43,86 @@
 .stat span{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;
   text-transform:uppercase;color:var(--muted);line-height:1.45;margin-top:4px}
 
-/* the extruded monogram scene */
-.scene{position:relative;display:grid;place-items:center;perspective:1100px;
-  perspective-origin:50% 45%;min-height:340px}
-.stage3d{position:relative;width:min(320px,64vw);aspect-ratio:1;transform-style:preserve-3d;
-  transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
-  animation:heroFloat 14s ease-in-out infinite}
-.extrude{position:absolute;inset:0;transform-style:preserve-3d}
-.extrude .layer{position:absolute;inset:0;display:grid;place-items:center;
-  backface-visibility:hidden}
-.extrude .layer svg{width:100%;height:100%;display:block}
-.orb{position:absolute;border:1.5px solid var(--brass);border-radius:50%;opacity:.5;
-  transform-style:preserve-3d}
-.orb.o1{inset:-9%;transform:rotateX(72deg) translateZ(26px)}
-.orb.o2{inset:-9%;transform:rotateY(74deg) translateZ(-18px);border-color:var(--brand)}
-.chip3d{position:absolute;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--brand);background:var(--surface);
-  border:1px solid var(--rule);border-radius:999px;padding:6px 13px;
-  box-shadow:var(--shadow-m);white-space:nowrap}
-.chip3d.c1{top:2%;left:-6%;transform:translateZ(78px)}
-.chip3d.c2{bottom:8%;right:-8%;transform:translateZ(58px);color:var(--brass)}
-.chip3d.c3{bottom:-2%;left:2%;transform:translateZ(96px);color:var(--easy)}
-@keyframes heroFloat{
-  0%,100%{transform:rotateX(calc(var(--rx,0deg) + 2deg)) rotateY(calc(var(--ry,0deg) - 6deg)) translateY(0)}
-  50%    {transform:rotateX(calc(var(--rx,0deg) - 2deg)) rotateY(calc(var(--ry,0deg) + 6deg)) translateY(-12px)}
+/* The quiet band variant: a strip across the top of an inner page, behind its
+   heading only. It is given a fixed height rather than the whole section, so
+   the scene stays the same size whether the page holds six cards or sixty. */
+.headband{position:relative;isolation:isolate;overflow:hidden;--band-h:min(330px,44vh)}
+.headband>.wrap{position:relative;z-index:2}
+.hero3d--band{position:absolute;top:0;left:0;right:0;height:var(--band-h);
+  bottom:auto;z-index:0}
+.headband::after{content:"";position:absolute;top:0;left:0;right:0;height:var(--band-h);
+  z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,var(--paper) 0%,
+      color-mix(in srgb,var(--paper) 82%,transparent) 44%,transparent 78%),
+    linear-gradient(180deg,transparent 46%,var(--paper) 100%)}
+
+/* ---------- marquee ----------
+   One band of text, doubled in script, translated by half its width for ever. */
+.marquee{overflow:hidden;white-space:nowrap;padding:14px 0;position:relative;z-index:3;
+  background:var(--brand);color:#fff}
+.marquee--tilt{transform:rotate(-1.1deg) scale(1.035);margin-block:6px}
+.marquee--flat{background:transparent;color:var(--ink);transform:none;
+  border-block:1px solid var(--rule);padding:18px 0}
+.marquee--brass{background:var(--brass);color:#fff}
+.marquee-track{display:inline-flex;gap:2.4rem;padding-right:2.4rem;will-change:transform;
+  animation:marquee 34s linear infinite}
+.marquee--slow .marquee-track{animation-duration:58s}
+.marquee--rev .marquee-track{animation-direction:reverse}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track>span{display:inline-flex;align-items:center;gap:2.4rem;
+  font-family:var(--serif);font-weight:600;font-size:1rem;letter-spacing:.005em}
+.marquee-track b{font-weight:600}
+.marquee-track em{font-style:normal;opacity:.62;font-family:var(--mono);
+  font-size:.78em;letter-spacing:.12em;text-transform:uppercase}
+.marquee--flat .marquee-track em{opacity:.5;color:var(--muted)}
+.marquee-track i.dot{font-style:normal;opacity:.45}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ---------- split heading ----------
+   Each word sits in a clipping box and rises out of it, one after the next. */
+[data-split] .w{display:inline-block;overflow:hidden;vertical-align:top}
+[data-split] .w>i{display:inline-block;font-style:inherit;transform:translateY(108%);
+  transition:transform .85s cubic-bezier(.16,.84,.32,1);
+  transition-delay:calc(var(--wi,0) * 52ms)}
+[data-split].in .w>i{transform:none}
+
+/* ---------- reveal ---------- */
+[data-reveal]{opacity:0;transform:translateY(20px);
+  transition:opacity .7s cubic-bezier(.16,.84,.32,1) var(--rd,0ms),
+             transform .7s cubic-bezier(.16,.84,.32,1) var(--rd,0ms)}
+[data-reveal].in{opacity:1;transform:none}
+
+/* ---------- tilt ---------- */
+.tilty{transform:perspective(760px) rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));
+  transition:transform .45s cubic-bezier(.16,.84,.32,1),box-shadow .45s ease}
+.tilty:hover{box-shadow:var(--shadow-l)}
+[data-reveal].tilty{transform:translateY(20px)}
+[data-reveal].tilty.in{transform:perspective(760px) rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg))}
+
+@media (prefers-reduced-motion:reduce){
+  .marquee-track,.stats-ghost,.hero .grid3d i{animation:none}
+  [data-split] .w>i,[data-reveal]{transition:none}
+  [data-split] .w>i{transform:none}
+  [data-reveal]{opacity:1;transform:none}
+  .tilty{transform:none}
 }
-@media (prefers-reduced-motion:reduce){.stage3d{animation:none}}
 @media (max-width:900px){
-  .hero .inner{grid-template-columns:1fr;padding:44px 24px 52px;gap:26px}
-  .scene{order:-1;min-height:196px;justify-items:start}
-  .stage3d{width:150px}
-  .chip3d{display:none}
+  .hero{min-height:0}
+  .hero .inner{padding:44px 24px 52px;gap:26px}
+  /* the wash never reaches full transparency on a phone: the scene has to stay
+     behind the words all the way down, including under the stats */
+  .hero::after{background:linear-gradient(to bottom,var(--paper) 0%,
+    color-mix(in srgb,var(--paper) 88%,transparent) 46%,
+    color-mix(in srgb,var(--paper) 74%,transparent) 100%)}
   .hero .grid3d{height:38%;opacity:.4}
+  .stats-ghost{display:none}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat:nth-child(2){border-right:0;padding-right:0}
+  .marquee-track>span{font-size:.9rem;gap:1.7rem}
+  .marquee-track{gap:1.7rem;padding-right:1.7rem}
+  .headband{--band-h:min(220px,30vh)}
+  .headband::after{background:linear-gradient(180deg,
+    color-mix(in srgb,var(--paper) 62%,transparent) 0%,var(--paper) 100%)}
 }
 @media (max-width:560px){
   .stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:6px}

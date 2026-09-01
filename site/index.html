@@ -30,11 +30,12 @@
 <div id="site-header"></div>
 
 <section class="hero">
+  <div class="hero3d" id="hero3d" aria-hidden="true"></div>
   <div class="grid3d" aria-hidden="true"><i></i></div>
   <div class="inner">
     <div>
       <p class="eyebrow">Mathematics teacher · Uzbekistan</p>
-      <h1>Every lesson, <em>built to be taught</em> in forty minutes.</h1>
+      <h1 data-split>Every lesson, <em>built to be taught</em> in forty minutes.</h1>
       <p class="lede">Resources for grades 5 to 11 that follow the Uzbekistan national programme and
       Cambridge Lower Secondary side by side. Each topic gives you the explanation, the figures, an
       interactive model to show on the board, twenty-one graded problems, three-language terminology
@@ -44,25 +45,32 @@
         <a class="btn" href="grades.html">All grades 5–11</a>
         <a class="btn" href="about.html">How a lesson is built</a>
       </div>
-      <div class="stats">
-        <div class="stat"><b>40</b><span>minute lessons</span></div>
-        <div class="stat"><b>21</b><span>graded problems</span></div>
-        <div class="stat" id="stat-topics"><b>—</b><span>written topics</span></div>
-        <div class="stat"><b>3</b><span>term languages</span></div>
-      </div>
-    </div>
-    <div class="scene" id="scene">
-      <div class="stage3d">
-        <div class="orb o1"></div>
-        <div class="orb o2"></div>
-        <div class="extrude"></div>
-        <span class="chip3d c1">180°(n − 2)</span>
-        <span class="chip3d c2">y = k ⁄ x</span>
-        <span class="chip3d c3">MN = ½ · BC</span>
+      <div class="stats-wrap">
+        <div class="stats-ghost" aria-hidden="true">
+          <span>ALGEBRA · GEOMETRY · GRADES 5–11 ·</span>
+          <span>ALGEBRA · GEOMETRY · GRADES 5–11 ·</span>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>40</b><span>minute lessons</span></div>
+          <div class="stat"><b>21</b><span>graded problems</span></div>
+          <div class="stat" id="stat-topics"><b>—</b><span>written topics</span></div>
+          <div class="stat"><b>3</b><span>term languages</span></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<div class="marquee marquee--tilt" aria-hidden="true">
+  <div class="marquee-track"><span>
+    <b>Explanation</b><i class="dot">◆</i>
+    <b>Figures</b><i class="dot">◆</i>
+    <b>Interactive model</b><i class="dot">◆</i>
+    <b>21 graded problems</b><i class="dot">◆</i>
+    <b>Terminology in three languages</b><i class="dot">◆</i>
+    <b>Homework</b><i class="dot">◆</i>
+  </span></div>
+</div>
 
 <section class="section">
   <div class="wrap">
@@ -135,6 +143,8 @@
 </section>
 
 <div id="site-footer"></div>
+<script src="assets/hero3d.js"></script>
+<script src="assets/motion.js"></script>
 <script src="assets/solids3d.js"></script>
 <script src="assets/app.js" data-root="./"></script>
 <script src="assets/mathfmt.js"></script>

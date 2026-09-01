@@ -75,7 +75,12 @@
       '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">' +
       '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>' +
       '<button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false">' +
-      '<span></span><span></span><span></span></button></div></div></header>';
+      '<span></span><span></span><span></span></button></div></div>' +
+      /* A slim strip of moving text under the bar. It folds away as soon as the
+         page scrolls, so it greets a reader without following them down. */
+      '<div class="headtick" aria-hidden="true"><div class="marquee-track"><span>' +
+      SLOGAN + '</span></div></div>' +
+      '<i class="readbar" id="readbar" aria-hidden="true"></i></header>';
   }
 
   function navBehaviour() {
@@ -307,46 +312,34 @@
     document.head.appendChild(sc);
   }
 
-  /* ---------- 3D hero ---------- */
-  function initHero() {
-    var scene = document.getElementById('scene');
-    if (!scene) return;
-    var stage = scene.querySelector('.stage3d');
-    var ext = scene.querySelector('.extrude');
-    if (ext && !ext.childElementCount) {
-      var N = 18, i, html = '';
-      for (i = N - 1; i >= 0; i--) {
-        var t = i / (N - 1);
-        html += '<div class="layer" style="transform:translateZ(' + (-i * 2.1).toFixed(1) + 'px);' +
-          'opacity:' + (i === 0 ? 1 : 1) + ';color:' + (i === 0 ? 'var(--ink)' : 'var(--extrude)') + ';' +
-          'filter:brightness(' + (1 - t * 0.42).toFixed(2) + ')">' + LOGO + '</div>';
-      }
-      ext.innerHTML = html;
-    }
-    var reduce = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce || !stage) return;
-    var rx = 0, ry = 0, tx = 0, ty = 0, raf = null;
-    function loop() {
-      rx += (tx - rx) * 0.08; ry += (ty - ry) * 0.08;
-      stage.style.setProperty('--rx', rx.toFixed(2) + 'deg');
-      stage.style.setProperty('--ry', ry.toFixed(2) + 'deg');
-      raf = (Math.abs(tx - rx) > 0.01 || Math.abs(ty - ry) > 0.01) ? requestAnimationFrame(loop) : null;
-    }
-    function kick() { if (!raf) raf = requestAnimationFrame(loop); }
-    var host = scene.closest('.hero') || scene;
-    host.addEventListener('pointermove', function (e) {
-      var r = host.getBoundingClientRect();
-      ty = ((e.clientX - r.left) / r.width - 0.5) * 26;
-      tx = -((e.clientY - r.top) / r.height - 0.5) * 18;
-      kick();
-    });
-    host.addEventListener('pointerleave', function () { tx = 0; ty = 0; kick(); });
+  /* The phrases the two marquees cycle. Written once, used by the strip above
+     the footer and by the tilted band on the front page. */
+  var SLOGAN = '<b>Forty minutes, five moves</b><i class="dot">◆</i>' +
+    '<em>warm-up</em><i class="dot">·</i><em>explanation</em><i class="dot">·</i>' +
+    '<em>interactive model</em><i class="dot">·</i><em>practice</em><i class="dot">·</i>' +
+    '<em>homework</em><i class="dot">◆</i>' +
+    '<b>Uzbekistan national programme &amp; Cambridge Lower Secondary</b>' +
+    '<i class="dot">◆</i>';
+  var TICKER = [
+    ['Grades 5 – 11', 'national programme'],
+    ['Cambridge Lower Secondary', 'stages 6 – 9'],
+    ['21 graded problems', 'every topic'],
+    ['Interactive models', 'built for the board'],
+    ['Three languages', 'uz · ru · en'],
+    ['Printable booklets', 'one per quarter']
+  ];
+
+  function ticker(cls) {
+    var items = TICKER.map(function (t) {
+      return '<b>' + t[0] + '</b><em>' + t[1] + '</em><i class="dot">◆</i>';
+    }).join('');
+    return '<div class="marquee ' + cls + '" aria-hidden="true">' +
+      '<div class="marquee-track"><span>' + items + '</span></div></div>';
   }
 
-  w.AKM_initHero = initHero;
-
   function footer() {
-    return '<footer class="site-foot"><div class="inner">' +
+    return ticker('marquee--flat marquee--slow') +
+      '<footer class="site-foot"><div class="inner">' +
       '<div>' + brandmark('Grades 5–11 · Uzbekistan &amp; Cambridge') + '</div>' +
       '<p class="fnote">Lesson resources for the Uzbekistan national programme and Cambridge Lower ' +
       'Secondary Mathematics. Built around 40-minute lessons: explanation, guided practice, ' +
@@ -369,6 +362,8 @@
       var next = cur === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
       try { localStorage.setItem(KEY, next); } catch (e) { }
+      /* the canvas scene sampled the old palette, so hand it the new one */
+      if (w.HERO3D && w.HERO3D.retone) w.HERO3D.retone();
     });
   }
 
@@ -405,9 +400,15 @@
     preloader();
     navBehaviour();
     searchBehaviour();
-    initHero();
     initTranslate();
     mountSolids();
+    /* Deferred by one frame on purpose. A page builds its card grids in the
+       same inline script that called mount(), so the motion layer has to look
+       at the finished document rather than this half of it. */
+    if (w.AKM_MOTION) {
+      if (w.requestAnimationFrame) w.requestAnimationFrame(w.AKM_MOTION.init);
+      else w.AKM_MOTION.init();
+    }
   }
 
   /* Every topic the page has loaded, whatever grade. Data files register

@@ -73,7 +73,8 @@ a:hover{text-decoration-color:var(--brand)}
 .narrow{max-width:760px}
 
 /* ---------- brand ---------- */
-.brandmark{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit}
+.brandmark{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;
+  flex:0 0 auto;white-space:nowrap}
 .brandmark svg{width:38px;height:38px;flex:none}
 .brandmark>span{display:block}
 .brandmark .bn{display:block;font-family:var(--serif);font-weight:600;font-size:16px;
@@ -91,8 +92,8 @@ a:hover{text-decoration-color:var(--brand)}
 .site-head.scrolled{box-shadow:0 1px 0 var(--rule),0 10px 30px -22px rgba(0,0,0,.5)}
 .site-head .bar{display:flex;align-items:center;justify-content:space-between;gap:20px;
   height:68px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
-.navwrap{display:flex;align-items:center;gap:8px}
-.nav{display:flex;align-items:center;gap:4px}
+.navwrap{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.nav{display:flex;align-items:center;gap:4px;white-space:nowrap}
 .menubtn{display:none;appearance:none;background:none;border:1px solid var(--rule);
   width:36px;height:36px;border-radius:var(--r);cursor:pointer;flex-direction:column;
   justify-content:center;align-items:center;gap:4px;padding:0}
@@ -109,6 +110,37 @@ a:hover{text-decoration-color:var(--brand)}
   width:34px;height:34px;border-radius:var(--r);cursor:pointer;display:grid;place-items:center;
   transition:.15s;flex:none}
 .themebtn:hover{color:var(--ink);border-color:var(--muted)}
+
+/* A slim strip of moving text below the bar. It carries no link, so it is
+   hidden from assistive tech, and it folds away the moment the page scrolls —
+   a greeting, not a permanent fixture. The track is doubled by
+   assets/motion.js, which is what makes the loop seamless. */
+.headtick{height:30px;overflow:hidden;white-space:nowrap;
+  border-top:1px solid var(--rule-soft);background:var(--surface-2);
+  transition:height .32s ease,opacity .32s ease}
+.site-head.scrolled .headtick{height:0;opacity:0}
+.headtick .marquee-track{display:inline-flex;align-items:center;gap:1.5rem;height:30px;
+  padding-right:1.5rem;will-change:transform;animation:marquee 40s linear infinite}
+.headtick .marquee-track>span{display:inline-flex;align-items:center;gap:1.5rem;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--muted)}
+.headtick b{font-weight:500;color:var(--brand)}
+.headtick em{font-style:normal;opacity:.85}
+.headtick i.dot{font-style:normal;opacity:.4;color:var(--brass)}
+.headtick:hover .marquee-track{animation-play-state:paused}
+
+/* Reading progress, along the bottom edge of the header. */
+.readbar{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--brand);
+  transform:scaleX(0);transform-origin:left;z-index:1;pointer-events:none}
+
+/* The strip survives on a phone — it is the only moving text in the chrome
+   there — but it gives up a little size and its wider spacing. */
+@media (max-width:700px){
+  .headtick{height:26px}
+  .headtick .marquee-track{height:26px;gap:1rem;padding-right:1rem;animation-duration:30s}
+  .headtick .marquee-track>span{gap:1rem;font-size:9.5px;letter-spacing:.09em}
+}
+@media (prefers-reduced-motion:reduce){ .headtick .marquee-track{animation:none} }
 
 /* ---------- typography ---------- */
 h1,h2,h3,h4{font-family:var(--serif);font-weight:600;letter-spacing:-.015em;
@@ -398,9 +430,18 @@ body{top:0!important}                       /* the banner pushes body down */
 @media (max-width:1020px){ .solidstrip{display:none} }
 @media (prefers-reduced-motion:reduce){ .solidcell{transition:none} }
 
-/* ---------- 3D hero ---------- */
-.hero{position:relative;overflow:hidden;isolation:isolate;
+/* ---------- 3D hero ----------
+   The scene is a canvas painted behind the whole hero (assets/hero3d.js). The
+   copy sits over it and a radial wash keeps the words legible where the two
+   overlap. */
+.hero{position:relative;overflow:hidden;isolation:isolate;min-height:min(88svh,760px);
+  display:flex;align-items:center;
   background:radial-gradient(120% 90% at 78% 8%,var(--glow),transparent 62%)}
+.hero3d{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero3d canvas{display:block;width:100%;height:100%}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(68% 62% at 20% 48%,var(--paper) 0%,
+    color-mix(in srgb,var(--paper) 84%,transparent) 40%,transparent 74%)}
 .hero .grid3d{position:absolute;inset:auto 0 -8% 0;height:52%;pointer-events:none;z-index:0;
   perspective:520px;perspective-origin:50% 0;opacity:.55}
 .hero .grid3d i{position:absolute;inset:0;display:block;
@@ -408,15 +449,24 @@ body{top:0!important}                       /* the banner pushes body down */
                    linear-gradient(90deg,var(--rule) 1px,transparent 1px);
   background-size:46px 46px;
   transform:rotateX(74deg) translateZ(-40px) scale(2.2);transform-origin:50% 0;
+  animation:gridDrift 26s linear infinite;
   -webkit-mask-image:linear-gradient(to bottom,transparent,#000 22%,transparent 92%);
   mask-image:linear-gradient(to bottom,transparent,#000 22%,transparent 92%)}
-.hero .inner{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
-  padding:88px 28px 84px;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+@keyframes gridDrift{to{background-position:0 46px,46px 0}}
+.hero .inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%;
+  padding:96px 28px 88px;display:grid;grid-template-columns:minmax(0,1fr);
   gap:48px;align-items:center}
-.hero h1{margin:20px 0 22px;max-width:15ch;letter-spacing:-.028em}
+.hero .inner>div{max-width:44rem}
+.hero h1{margin:20px 0 22px;max-width:16ch;letter-spacing:-.028em}
 .hero h1 em{font-style:italic;color:var(--brand)}
 .hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:38px;
+.hero .lede{max-width:56ch}
+.stats-wrap{position:relative;overflow:hidden;margin-top:38px}
+.stats-ghost{position:absolute;top:50%;left:0;transform:translateY(-50%);white-space:nowrap;
+  display:flex;gap:2.6rem;pointer-events:none;user-select:none;z-index:0;
+  font-family:var(--serif);font-weight:600;font-size:clamp(4rem,13vw,9rem);line-height:1;
+  color:var(--rule-soft);animation:marquee 46s linear infinite}
+.stats{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
   border-top:1px solid var(--rule)}
 .stat{padding:16px 14px 4px 0;border-right:1px solid var(--rule)}
 .stat:last-child{border-right:0;padding-right:0}
@@ -425,38 +475,86 @@ body{top:0!important}                       /* the banner pushes body down */
 .stat span{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;
   text-transform:uppercase;color:var(--muted);line-height:1.45;margin-top:4px}
 
-/* the extruded monogram scene */
-.scene{position:relative;display:grid;place-items:center;perspective:1100px;
-  perspective-origin:50% 45%;min-height:340px}
-.stage3d{position:relative;width:min(320px,64vw);aspect-ratio:1;transform-style:preserve-3d;
-  transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
-  animation:heroFloat 14s ease-in-out infinite}
-.extrude{position:absolute;inset:0;transform-style:preserve-3d}
-.extrude .layer{position:absolute;inset:0;display:grid;place-items:center;
-  backface-visibility:hidden}
-.extrude .layer svg{width:100%;height:100%;display:block}
-.orb{position:absolute;border:1.5px solid var(--brass);border-radius:50%;opacity:.5;
-  transform-style:preserve-3d}
-.orb.o1{inset:-9%;transform:rotateX(72deg) translateZ(26px)}
-.orb.o2{inset:-9%;transform:rotateY(74deg) translateZ(-18px);border-color:var(--brand)}
-.chip3d{position:absolute;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--brand);background:var(--surface);
-  border:1px solid var(--rule);border-radius:999px;padding:6px 13px;
-  box-shadow:var(--shadow-m);white-space:nowrap}
-.chip3d.c1{top:2%;left:-6%;transform:translateZ(78px)}
-.chip3d.c2{bottom:8%;right:-8%;transform:translateZ(58px);color:var(--brass)}
-.chip3d.c3{bottom:-2%;left:2%;transform:translateZ(96px);color:var(--easy)}
-@keyframes heroFloat{
-  0%,100%{transform:rotateX(calc(var(--rx,0deg) + 2deg)) rotateY(calc(var(--ry,0deg) - 6deg)) translateY(0)}
-  50%    {transform:rotateX(calc(var(--rx,0deg) - 2deg)) rotateY(calc(var(--ry,0deg) + 6deg)) translateY(-12px)}
+/* The quiet band variant: a strip across the top of an inner page, behind its
+   heading only. It is given a fixed height rather than the whole section, so
+   the scene stays the same size whether the page holds six cards or sixty. */
+.headband{position:relative;isolation:isolate;overflow:hidden;--band-h:min(330px,44vh)}
+.headband>.wrap{position:relative;z-index:2}
+.hero3d--band{position:absolute;top:0;left:0;right:0;height:var(--band-h);
+  bottom:auto;z-index:0}
+.headband::after{content:"";position:absolute;top:0;left:0;right:0;height:var(--band-h);
+  z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,var(--paper) 0%,
+      color-mix(in srgb,var(--paper) 82%,transparent) 44%,transparent 78%),
+    linear-gradient(180deg,transparent 46%,var(--paper) 100%)}
+
+/* ---------- marquee ----------
+   One band of text, doubled in script, translated by half its width for ever. */
+.marquee{overflow:hidden;white-space:nowrap;padding:14px 0;position:relative;z-index:3;
+  background:var(--brand);color:#fff}
+.marquee--tilt{transform:rotate(-1.1deg) scale(1.035);margin-block:6px}
+.marquee--flat{background:transparent;color:var(--ink);transform:none;
+  border-block:1px solid var(--rule);padding:18px 0}
+.marquee--brass{background:var(--brass);color:#fff}
+.marquee-track{display:inline-flex;gap:2.4rem;padding-right:2.4rem;will-change:transform;
+  animation:marquee 34s linear infinite}
+.marquee--slow .marquee-track{animation-duration:58s}
+.marquee--rev .marquee-track{animation-direction:reverse}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track>span{display:inline-flex;align-items:center;gap:2.4rem;
+  font-family:var(--serif);font-weight:600;font-size:1rem;letter-spacing:.005em}
+.marquee-track b{font-weight:600}
+.marquee-track em{font-style:normal;opacity:.62;font-family:var(--mono);
+  font-size:.78em;letter-spacing:.12em;text-transform:uppercase}
+.marquee--flat .marquee-track em{opacity:.5;color:var(--muted)}
+.marquee-track i.dot{font-style:normal;opacity:.45}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ---------- split heading ----------
+   Each word sits in a clipping box and rises out of it, one after the next. */
+[data-split] .w{display:inline-block;overflow:hidden;vertical-align:top}
+[data-split] .w>i{display:inline-block;font-style:inherit;transform:translateY(108%);
+  transition:transform .85s cubic-bezier(.16,.84,.32,1);
+  transition-delay:calc(var(--wi,0) * 52ms)}
+[data-split].in .w>i{transform:none}
+
+/* ---------- reveal ---------- */
+[data-reveal]{opacity:0;transform:translateY(20px);
+  transition:opacity .7s cubic-bezier(.16,.84,.32,1) var(--rd,0ms),
+             transform .7s cubic-bezier(.16,.84,.32,1) var(--rd,0ms)}
+[data-reveal].in{opacity:1;transform:none}
+
+/* ---------- tilt ---------- */
+.tilty{transform:perspective(760px) rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));
+  transition:transform .45s cubic-bezier(.16,.84,.32,1),box-shadow .45s ease}
+.tilty:hover{box-shadow:var(--shadow-l)}
+[data-reveal].tilty{transform:translateY(20px)}
+[data-reveal].tilty.in{transform:perspective(760px) rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg))}
+
+@media (prefers-reduced-motion:reduce){
+  .marquee-track,.stats-ghost,.hero .grid3d i{animation:none}
+  [data-split] .w>i,[data-reveal]{transition:none}
+  [data-split] .w>i{transform:none}
+  [data-reveal]{opacity:1;transform:none}
+  .tilty{transform:none}
 }
-@media (prefers-reduced-motion:reduce){.stage3d{animation:none}}
 @media (max-width:900px){
-  .hero .inner{grid-template-columns:1fr;padding:44px 24px 52px;gap:26px}
-  .scene{order:-1;min-height:196px;justify-items:start}
-  .stage3d{width:150px}
-  .chip3d{display:none}
+  .hero{min-height:0}
+  .hero .inner{padding:44px 24px 52px;gap:26px}
+  /* the wash never reaches full transparency on a phone: the scene has to stay
+     behind the words all the way down, including under the stats */
+  .hero::after{background:linear-gradient(to bottom,var(--paper) 0%,
+    color-mix(in srgb,var(--paper) 88%,transparent) 46%,
+    color-mix(in srgb,var(--paper) 74%,transparent) 100%)}
   .hero .grid3d{height:38%;opacity:.4}
+  .stats-ghost{display:none}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat:nth-child(2){border-right:0;padding-right:0}
+  .marquee-track>span{font-size:.9rem;gap:1.7rem}
+  .marquee-track{gap:1.7rem;padding-right:1.7rem}
+  .headband{--band-h:min(220px,30vh)}
+  .headband::after{background:linear-gradient(180deg,
+    color-mix(in srgb,var(--paper) 62%,transparent) 0%,var(--paper) 100%)}
 }
 @media (max-width:560px){
   .stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:6px}
@@ -948,6 +1046,803 @@ body{top:0!important}                       /* the banner pushes body down */
 <div id="chrome-foot"></div>
 
 <script>
+/* Small rotating wireframe polyhedra, drawn as SVG.
+
+   The site already draws its figures as inline SVG themed through currentColor
+   and the CSS custom properties, so these use the same trick rather than a
+   canvas or a 3-D library: vertices are rotated in JavaScript, projected
+   orthographically, and written straight into <line> elements. One animation
+   frame drives every solid on the page.
+
+   Edges are depth-cued — an edge whose midpoint is at the back is drawn
+   thinner and fainter — which is what makes a wireframe read as solid without
+   any hidden-line removal.
+
+   Mount with:  SOLIDS.mount(element, { shape: 'cube', size: 26 })            */
+(function (w, d) {
+  'use strict';
+
+  var TAU = Math.PI * 2;
+
+  /* ---- the five shapes, as unit-ish vertex lists and edge index pairs ---- */
+  function cube() {
+    var v = [], e = [], i, j;
+    for (i = 0; i < 8; i++) v.push([(i & 1 ? 1 : -1), (i & 2 ? 1 : -1), (i & 4 ? 1 : -1)]);
+    for (i = 0; i < 8; i++) {
+      for (j = i + 1; j < 8; j++) {
+        /* an edge joins two vertices differing in exactly one coordinate */
+        var dif = 0, k;
+        for (k = 0; k < 3; k++) if (v[i][k] !== v[j][k]) dif++;
+        if (dif === 1) e.push([i, j]);
+      }
+    }
+    return { v: v, e: e };
+  }
+
+  function tetra() {
+    return {
+      v: [[1, 1, 1], [1, -1, -1], [-1, 1, -1], [-1, -1, 1]],
+      e: [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3]]
+    };
+  }
+
+  function octa() {
+    return {
+      v: [[1.35, 0, 0], [-1.35, 0, 0], [0, 1.35, 0], [0, -1.35, 0], [0, 0, 1.35], [0, 0, -1.35]],
+      e: [[0, 2], [0, 3], [0, 4], [0, 5], [1, 2], [1, 3], [1, 4], [1, 5],
+          [2, 4], [2, 5], [3, 4], [3, 5]]
+    };
+  }
+
+  /* a prism on a regular n-gon — the solid the mensuration lessons live on */
+  function prism(n) {
+    var v = [], e = [], i, a;
+    for (i = 0; i < n; i++) {
+      a = TAU * i / n;
+      v.push([Math.cos(a), -0.9, Math.sin(a)]);
+      v.push([Math.cos(a), 0.9, Math.sin(a)]);
+    }
+    for (i = 0; i < n; i++) {
+      e.push([2 * i, 2 * i + 1]);                                  /* the upright */
+      e.push([2 * i, 2 * ((i + 1) % n)]);                          /* base */
+      e.push([2 * i + 1, 2 * ((i + 1) % n) + 1]);                  /* top */
+    }
+    return { v: v, e: e };
+  }
+
+  /* a cone drawn as its rim plus the slant lines to the apex */
+  function cone(n) {
+    var v = [[0, -1.15, 0]], e = [], i, a;
+    for (i = 0; i < n; i++) {
+      a = TAU * i / n;
+      v.push([Math.cos(a), 0.85, Math.sin(a)]);
+    }
+    for (i = 0; i < n; i++) {
+      e.push([1 + i, 1 + (i + 1) % n]);
+      if (i % 3 === 0) e.push([0, 1 + i]);
+    }
+    return { v: v, e: e };
+  }
+
+  /* a sphere as three great circles — the least noisy way to say "sphere" */
+  function sphere(n) {
+    var v = [], e = [], ring, i, a;
+    for (ring = 0; ring < 3; ring++) {
+      var base = v.length;
+      for (i = 0; i < n; i++) {
+        a = TAU * i / n;
+        var c = Math.cos(a), s = Math.sin(a);
+        if (ring === 0) v.push([c, s, 0]);
+        else if (ring === 1) v.push([c, 0, s]);
+        else v.push([0, c, s]);
+      }
+      for (i = 0; i < n; i++) e.push([base + i, base + (i + 1) % n]);
+    }
+    return { v: v, e: e };
+  }
+
+  var SHAPES = {
+    cube: cube, tetra: tetra, octa: octa,
+    prism: function () { return prism(6); },
+    cone: function () { return cone(12); },
+    sphere: function () { return sphere(18); }
+  };
+
+  var NS = 'http://www.w3.org/2000/svg';
+  var items = [];
+  var running = false;
+
+  function el(tag, attrs) {
+    var n = d.createElementNS(NS, tag), k;
+    for (k in attrs) if (Object.prototype.hasOwnProperty.call(attrs, k)) n.setAttribute(k, attrs[k]);
+    return n;
+  }
+
+  function mount(host, opt) {
+    opt = opt || {};
+    var shape = SHAPES[opt.shape] ? opt.shape : 'cube';
+    var geo = SHAPES[shape]();
+    var size = opt.size || 26;
+    var svg = el('svg', {
+      viewBox: '-2 -2 4 4', width: size, height: size,
+      class: 'solid3d', 'aria-hidden': 'true', focusable: 'false'
+    });
+    var lines = geo.e.map(function () {
+      var ln = el('line', { 'stroke-linecap': 'round' });
+      svg.appendChild(ln);
+      return ln;
+    });
+    host.appendChild(svg);
+    var it = {
+      geo: geo, lines: lines, svg: svg,
+      phase: opt.phase || 0,
+      speed: opt.speed == null ? 1 : opt.speed,
+      colour: opt.colour || 'currentColor'
+    };
+    items.push(it);
+    draw(it, 0);
+    start();
+    return it;
+  }
+
+  /* Rotate about Oy, then tip forward a little so the solid is seen from
+     slightly above — the same viewpoint the figure library uses. */
+  function draw(it, t) {
+    var a = it.phase + t * it.speed;
+    var ca = Math.cos(a), sa = Math.sin(a);
+    var tilt = 0.42, ct = Math.cos(tilt), st = Math.sin(tilt);
+    var g = it.geo, p = [], i;
+    for (i = 0; i < g.v.length; i++) {
+      var x = g.v[i][0], y = g.v[i][1], z = g.v[i][2];
+      var x1 = x * ca + z * sa, z1 = z * ca - x * sa;
+      var y1 = y * ct - z1 * st, z2 = z1 * ct + y * st;
+      p.push([x1, y1, z2]);
+    }
+    for (i = 0; i < g.e.length; i++) {
+      var A = p[g.e[i][0]], B = p[g.e[i][1]];
+      var depth = (A[2] + B[2]) / 2;                 /* −1.7 back … +1.7 front */
+      var near = (depth + 1.8) / 3.6;                /* 0 … 1 */
+      if (near < 0) near = 0; else if (near > 1) near = 1;
+      var ln = it.lines[i];
+      ln.setAttribute('x1', A[0].toFixed(3));
+      ln.setAttribute('y1', A[1].toFixed(3));
+      ln.setAttribute('x2', B[0].toFixed(3));
+      ln.setAttribute('y2', B[1].toFixed(3));
+      ln.setAttribute('stroke', it.colour);
+      ln.setAttribute('stroke-width', (0.055 + near * 0.075).toFixed(3));
+      ln.setAttribute('stroke-opacity', (0.2 + near * 0.72).toFixed(3));
+    }
+  }
+
+  var t0 = null;
+  function frame(now) {
+    if (t0 === null) t0 = now;
+    var t = (now - t0) / 3400;                       /* one turn ≈ 21 s */
+    for (var i = 0; i < items.length; i++) draw(items[i], t);
+    if (running) w.requestAnimationFrame(frame);
+  }
+
+  function reduced() {
+    return w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  function start() {
+    if (running || !items.length) return;
+    if (reduced()) return;                           /* one static frame only */
+    if (d.hidden) return;
+    running = true;
+    w.requestAnimationFrame(frame);
+  }
+  function stop() { running = false; t0 = null; }
+
+  d.addEventListener('visibilitychange', function () {
+    if (d.hidden) stop(); else start();
+  });
+
+  w.SOLIDS = { mount: mount, start: start, stop: stop, shapes: Object.keys(SHAPES) };
+})(window, document);
+
+/* Anvarbek Khaydarov · Mathematics — the 3-D hero scene.
+
+   Written directly against a 2-D canvas rather than a 3-D library: the whole
+   scene is a few hundred points, so rotating them in JavaScript and projecting
+   them by hand costs nothing and saves the site a 600 KB dependency.
+
+   What is in the scene:
+     · a large wireframe icosahedron, slowly tumbling
+     · four Platonic solids orbiting it on a tilted ring
+     · a field of depth-sorted particles
+     · mathematical glyphs drifting in 3-D
+
+   Everything is depth-cued — further away means smaller, fainter and thinner —
+   which is what makes a wireframe read as solid without hidden-line removal.
+
+   Two sizes: the full hero scene, and a quieter `band` variant that sits
+   behind the heading strip of an inner page.
+
+   Mount:  HERO3D.mount(element, { band: true })
+   Theme:  the returned handle exposes retone(), because the colours are read
+           once from the CSS custom properties and the site can switch theme
+           under the scene.                                                   */
+(function (w, d) {
+  'use strict';
+
+  var TAU = Math.PI * 2;
+  var reduced = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------------- geometry ---------------- */
+
+  function icosa() {
+    var t = (1 + Math.sqrt(5)) / 2, v = [], e = [], i, j;
+    [[-1, t, 0], [1, t, 0], [-1, -t, 0], [1, -t, 0],
+     [0, -1, t], [0, 1, t], [0, -1, -t], [0, 1, -t],
+     [t, 0, -1], [t, 0, 1], [-t, 0, -1], [-t, 0, 1]].forEach(function (p) {
+      var L = Math.hypot(p[0], p[1], p[2]);
+      v.push([p[0] / L, p[1] / L, p[2] / L]);
+    });
+    /* an edge joins the pairs at the minimum distance */
+    var best = Infinity;
+    for (i = 0; i < v.length; i++) {
+      for (j = i + 1; j < v.length; j++) {
+        var dd = dist(v[i], v[j]);
+        if (dd < best - 1e-6) best = dd;
+      }
+    }
+    for (i = 0; i < v.length; i++) {
+      for (j = i + 1; j < v.length; j++) {
+        if (Math.abs(dist(v[i], v[j]) - best) < 1e-6) e.push([i, j]);
+      }
+    }
+    return { v: v, e: e };
+  }
+
+  function dist(a, b) { return Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]); }
+
+  function cube() {
+    var v = [], e = [], i, j, k, dif;
+    for (i = 0; i < 8; i++) v.push([(i & 1 ? .58 : -.58), (i & 2 ? .58 : -.58), (i & 4 ? .58 : -.58)]);
+    for (i = 0; i < 8; i++) {
+      for (j = i + 1; j < 8; j++) {
+        dif = 0;
+        for (k = 0; k < 3; k++) if (v[i][k] !== v[j][k]) dif++;
+        if (dif === 1) e.push([i, j]);
+      }
+    }
+    return { v: v, e: e };
+  }
+
+  function tetra() {
+    return {
+      v: [[.58, .58, .58], [.58, -.58, -.58], [-.58, .58, -.58], [-.58, -.58, .58]],
+      e: [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3]]
+    };
+  }
+
+  function octa() {
+    return {
+      v: [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]],
+      e: [[0, 2], [0, 3], [0, 4], [0, 5], [1, 2], [1, 3], [1, 4], [1, 5],
+          [2, 4], [2, 5], [3, 4], [3, 5]]
+    };
+  }
+
+  /* a ring of n points in the xz-plane, used for the orbit path */
+  function ring(n, r) {
+    var v = [], e = [], i;
+    for (i = 0; i < n; i++) v.push([Math.cos(i / n * TAU) * r, 0, Math.sin(i / n * TAU) * r]);
+    for (i = 0; i < n; i++) e.push([i, (i + 1) % n]);
+    return { v: v, e: e };
+  }
+
+  /* ---------------- maths ---------------- */
+
+  function rotate(p, rx, ry, rz) {
+    var x = p[0], y = p[1], z = p[2], c, s, t;
+    c = Math.cos(rx); s = Math.sin(rx); t = y * c - z * s; z = y * s + z * c; y = t;
+    c = Math.cos(ry); s = Math.sin(ry); t = x * c + z * s; z = -x * s + z * c; x = t;
+    if (rz) { c = Math.cos(rz); s = Math.sin(rz); t = x * c - y * s; y = x * s + y * c; x = t; }
+    return [x, y, z];
+  }
+
+  /* ---------------- the scene ---------------- */
+
+  var GLYPHS = ['∑', 'π', '√', '∞', '△', '∠',
+                '≅', '∈', '°', '½', 'x²', '∅'];
+
+  function mount(host, opt) {
+    if (!host) return null;
+    opt = opt || {};
+
+    var band = !!opt.band;
+
+    var cv = d.createElement('canvas');
+    cv.setAttribute('aria-hidden', 'true');
+    host.appendChild(cv);
+    var ctx = cv.getContext && cv.getContext('2d');
+    if (!ctx) { host.removeChild(cv); return null; }
+
+    /* Colours come from the design system, so the scene follows the theme.
+       They are read into locals rather than used live, because the render loop
+       reads them a few thousand times a second; retone() refreshes them when
+       the theme changes. */
+    var INK, GOLD, CATS;
+    function tones() {
+      var css = getComputedStyle(d.body);
+      function tone(name, fallback) {
+        var v = css.getPropertyValue(name).trim();
+        return v || fallback;
+      }
+      INK = tone('--ink', '#12262C');
+      GOLD = tone('--brass', '#B0801F');
+      CATS = [tone('--brand', '#0E5C63'), tone('--uz', '#2B4C7E'),
+              tone('--cam', '#3D6B4C'), tone('--hard', '#A34430')];
+    }
+    tones();
+
+    /* Scene objects store a palette index, not a colour string, so retone()
+       can repaint the whole scene without rebuilding any geometry. */
+    var INK_I = 0, GOLD_I = 1;
+    function hue(i) { return i === 0 ? INK : i === 1 ? GOLD : CATS[i - 2]; }
+
+    var W = 0, H = 0, cx = 0, cy = 0, unit = 1, dpr = 1, dim = 1;
+    var FOCUS = 7.2, DIST = 8.4;
+
+    /* --- objects --- */
+    var core = icosa();
+    var orbitPath = ring(96, 3.35);
+    var moons = [
+      { g: cube(), a: 0, s: .46, spin: .0042, tilt: .5, c: 2 },
+      { g: tetra(), a: TAU * .25, s: .5, spin: -.0055, tilt: -.3, c: 3 },
+      { g: octa(), a: TAU * .5, s: .42, spin: .0048, tilt: .8, c: 4 },
+      { g: cube(), a: TAU * .75, s: .34, spin: -.0037, tilt: -.7, c: 5 }
+    ];
+
+    var dust = [], i;
+    for (i = 0; i < 170; i++) {
+      var th = Math.random() * TAU, ph = Math.acos(Math.random() * 2 - 1);
+      var rr = 4.4 + Math.random() * 3.6;
+      dust.push({
+        p: [rr * Math.sin(ph) * Math.cos(th), rr * Math.cos(ph) * .62, rr * Math.sin(ph) * Math.sin(th)],
+        r: .8 + Math.random() * 1.5,
+        c: Math.random() < .22 ? GOLD_I : INK_I,
+        o: .16 + Math.random() * .34
+      });
+    }
+
+    var glyphs = GLYPHS.map(function (ch, k) {
+      var th = (k / GLYPHS.length) * TAU + Math.random() * .5;
+      var rr = 3.6 + Math.random() * 2.2;
+      return {
+        ch: ch,
+        p: [Math.cos(th) * rr, (Math.random() * 2 - 1) * 2.3, Math.sin(th) * rr],
+        size: .2 + Math.random() * .16,
+        c: k % 4 === 0 ? GOLD_I : INK_I,
+        o: .13 + Math.random() * .15,
+        bob: Math.random() * TAU
+      };
+    });
+
+    /* --- projection --- */
+    function project(p) {
+      var z = p[2] + DIST;
+      if (z < .4) z = .4;
+      var k = FOCUS / z;
+      return { x: cx + p[0] * k * unit, y: cy - p[1] * k * unit, k: k, z: z };
+    }
+
+    /* On wide screens the copy sits on the left, so anything drifting over it
+       fades out rather than competing with the text. */
+    function clear(x, y) {
+      var t2;
+      if (W < 900) {
+        /* fade anything that drifts up into the copy */
+        t2 = (y / H - .62) / .11;
+      } else {
+        t2 = (x / W - .30) / .18;
+      }
+      return t2 < 0 ? 0 : t2 > 1 ? 1 : t2;
+    }
+
+    /* depth 0 (far) .. 1 (near) */
+    function depth(z) {
+      var t = 1 - (z - (DIST - 5)) / 10;
+      return t < 0 ? 0 : t > 1 ? 1 : t;
+    }
+
+    function rgba(hex, a) {
+      var h = hex.replace('#', '');
+      if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+      var n = parseInt(h, 16);
+      return 'rgba(' + ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255) + ',' + a + ')';
+    }
+
+    /* the same clearance rule as the dust, applied to an edge's midpoint */
+    function clearY(pts, e) {
+      var a = pts[e[0]], b = pts[e[1]];
+      return clear((a.x + b.x) / 2, (a.y + b.y) / 2);
+    }
+
+    function drawShape(g, rx, ry, rz, scale, off, colour, alpha, width) {
+      var pts = g.v.map(function (p) {
+        var q = rotate(p, rx, ry, rz);
+        return project([q[0] * scale + off[0], q[1] * scale + off[1], q[2] * scale + off[2]]);
+      });
+      /* far edges first so near ones sit on top */
+      var edges = g.e.map(function (e) {
+        return { e: e, z: (pts[e[0]].z + pts[e[1]].z) / 2 };
+      }).sort(function (a, b) { return b.z - a.z; });
+
+      edges.forEach(function (item) {
+        var a = pts[item.e[0]], b = pts[item.e[1]];
+        var t = depth(item.z);
+        ctx.strokeStyle = rgba(hue(colour), alpha * dim * (.2 + t * .8) * clearY(pts, item.e));
+        ctx.lineWidth = width * (.45 + t * .75);
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      });
+      return pts;
+    }
+
+    /* --- state --- */
+    var t = 0, mx = 0, my = 0, tmx = 0, tmy = 0, raf = 0, live = true;
+
+    function resize() {
+      var r = host.getBoundingClientRect();
+      W = Math.max(1, r.width); H = Math.max(1, r.height);
+      dpr = Math.min(w.devicePixelRatio || 1, 2);
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      cv.style.width = W + 'px'; cv.style.height = H + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      /* Wide: the scene sits to the right of the copy. Narrow: there is no room
+         beside the text, so it drops below it instead of sitting behind it. */
+      var narrow = W < 900;
+      if (band) {
+        /* An inner page gives the scene a short strip behind its heading, so
+           it sits to the right of the words and stays a texture, not a
+           picture. The strip is wide and shallow, hence sizing off the
+           height alone. */
+        cx = narrow ? W * .78 : W * .8;
+        cy = H * .5;
+        unit = H * (narrow ? .2 : .26);
+        dim = narrow ? .34 : .5;
+        return;
+      }
+      cx = narrow ? W * .5 : W * .68;
+      cy = narrow ? H * .82 : H * .5;
+      unit = Math.min(W, H) * (narrow ? .078 : .112);
+      /* On a phone there is no room beside the copy: the scene drops to a
+         watermark under the whole hero, faint enough that the stats sitting
+         over it stay the first thing read. */
+      dim = narrow ? .26 : 1;
+    }
+
+    function frame() {
+      raf = 0;
+      if (!live) return;
+      t += 1;
+      mx += (tmx - mx) * .045;
+      my += (tmy - my) * .045;
+
+      ctx.clearRect(0, 0, W, H);
+
+      var ry = t * .0028 + mx * .5;
+      var rx = Math.sin(t * .0016) * .22 + my * .38;
+
+      /* dust behind everything */
+      dust.forEach(function (p) {
+        var q = rotate(p.p, rx * .35, ry * .5, 0);
+        var s = project(q);
+        var dd = depth(s.z);
+        var a = p.o * dim * (.15 + dd * .85) * (.35 + clear(s.x, s.y) * .65);
+        if (a < .01) return;
+        ctx.fillStyle = rgba(hue(p.c), a);
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, p.r * s.k * .34, 0, TAU);
+        ctx.fill();
+      });
+
+      /* orbit path */
+      drawShape(orbitPath, rx + .48, ry * .6, 0, 1, [0, 0, 0], INK_I, .16, 1);
+
+      /* the core solid */
+      drawShape(core, rx, ry, t * .0007, 1.85, [0, 0, 0], INK_I, .55, 1.5);
+      drawShape(core, rx, ry, t * .0007, 1.85 * .52, [0, 0, 0], GOLD_I, .5, 1.2);
+
+      /* orbiting solids, sorted so the far ones draw first */
+      moons.map(function (m) {
+        var a = m.a + t * .0031;
+        var p = rotate([Math.cos(a) * 3.35, 0, Math.sin(a) * 3.35], rx + .48, ry * .6, 0);
+        return { m: m, p: p };
+      }).sort(function (u, v2) { return u.p[2] - v2.p[2]; })
+        .forEach(function (item) {
+          drawShape(item.m.g, t * item.m.spin + item.m.tilt, t * item.m.spin * 1.6, 0,
+                    item.m.s * 1.5, item.p, item.m.c, .85, 1.4);
+        });
+
+      /* glyphs on top, faded by depth */
+      glyphs.map(function (g) {
+        var q = rotate(g.p, rx * .5, ry * .8, 0);
+        return { g: g, s: project(q) };
+      }).sort(function (u, v2) { return v2.s.z - u.s.z; })
+        .forEach(function (item) {
+          var dd = depth(item.s.z);
+          /* clamped, or a glyph that swings near the camera fills the screen */
+          var size = Math.min(item.g.size * item.s.k * unit, unit * .46);
+          var a = item.g.o * dim * (.1 + dd * .9) * clear(item.s.x, item.s.y);
+          if (size < 5 || a < .012) return;
+          ctx.font = '600 ' + size.toFixed(1) + 'px "Spectral",Georgia,serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillStyle = rgba(hue(item.g.c), a);
+          ctx.fillText(item.g.ch, item.s.x,
+            item.s.y + Math.sin(t * .01 + item.g.bob) * 4);
+        });
+
+      if (!reduced) raf = w.requestAnimationFrame(frame);
+    }
+
+    function kick() { if (!raf && live) raf = w.requestAnimationFrame(frame); }
+
+    /* --- events --- */
+    var ro = w.ResizeObserver ? new ResizeObserver(function () { resize(); kick(); }) : null;
+    if (ro) ro.observe(host); else w.addEventListener('resize', function () { resize(); kick(); });
+
+    if (!reduced) {
+      w.addEventListener('pointermove', function (e) {
+        tmx = (e.clientX / w.innerWidth - .5) * .55;
+        tmy = (e.clientY / w.innerHeight - .5) * .4;
+      }, { passive: true });
+    }
+
+    /* stop drawing when the hero has scrolled away or the tab is hidden */
+    if (w.IntersectionObserver) {
+      new IntersectionObserver(function (es) {
+        live = es[0].isIntersecting;
+        if (live) kick();
+      }, { threshold: 0 }).observe(host);
+    }
+    d.addEventListener('visibilitychange', function () {
+      live = !d.hidden;
+      if (live) kick();
+    });
+
+    resize();
+    frame();
+    return {
+      resize: resize,
+      /* the theme switch changes every custom property under our feet */
+      retone: function () { tones(); kick(); if (reduced) frame(); }
+    };
+  }
+
+  /* Every mounted scene, so a theme switch can repaint all of them. */
+  var live = [];
+  w.HERO3D = {
+    mount: function (host, opt) {
+      var h = mount(host, opt);
+      if (h) live.push(h);
+      return h;
+    },
+    retone: function () { live.forEach(function (h) { h.retone(); }); }
+  };
+})(window, document);
+
+/* Anvarbek Khaydarov · Mathematics — the motion layer.
+
+   Everything here is progressive: the page is complete and readable with this
+   file removed, and every effect is skipped outright when the visitor asks for
+   reduced motion.
+
+     · marquee      — a strip of text that scrolls forever
+     · split        — a heading whose words rise into place
+     · reveal       — anything that fades up as it enters the viewport
+     · count        — a number that runs up to its value once
+     · tilt         — a card that leans towards the pointer
+     · progress     — the reading bar along the bottom of the header
+
+   Reveal and tilt are applied by rule rather than by hand, so a new card in
+   the mark-up joins in without another attribute.                           */
+(function (w, d) {
+  'use strict';
+
+  var reduced = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function all(sel, root) {
+    return Array.prototype.slice.call((root || d).querySelectorAll(sel));
+  }
+
+  /* ---------------- 1. marquee ----------------
+     The track holds its content twice, so translating it by -50% lands on an
+     identical frame and the loop is seamless. Duplicating in script keeps the
+     mark-up to one copy. */
+  function marquees() {
+    all('.marquee-track').forEach(function (track) {
+      if (track.dataset.doubled) return;
+      track.dataset.doubled = '1';
+      var copy = track.firstElementChild;
+      if (!copy) return;
+      var clone = copy.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+  }
+
+  /* ---------------- 2. split headings ----------------
+     Each word gets a clipping box and an inner span that starts below it. The
+     stagger is a custom property so the CSS owns the timing. */
+  function split(el) {
+    if (el.dataset.splitDone) return;
+    el.dataset.splitDone = '1';
+    var out = [], wi = 0;
+    Array.prototype.forEach.call(el.childNodes, function (node) {
+      if (node.nodeType === 3) {
+        node.nodeValue.split(/(\s+)/).forEach(function (part) {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { out.push(' '); return; }
+          out.push('<span class="w" style="--wi:' + (wi++) + '"><i>' + esc(part) + '</i></span>');
+        });
+      } else if (node.nodeType === 1) {
+        /* an <em> inside the heading keeps its own styling, one box per word */
+        var tag = node.tagName.toLowerCase();
+        var open = '<' + tag + (node.className ? ' class="' + node.className + '"' : '') + '>';
+        var inner = node.textContent.split(/(\s+)/).map(function (part) {
+          if (!part) return '';
+          if (/^\s+$/.test(part)) return ' ';
+          return '<span class="w" style="--wi:' + (wi++) + '"><i>' + esc(part) + '</i></span>';
+        }).join('');
+        out.push(open + inner + '</' + tag + '>');
+      }
+    });
+    el.innerHTML = out.join('');
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  /* ---------------- 3. reveal on scroll ----------------
+     One observer for the whole page. Elements leave the observer once shown,
+     so nothing re-animates on the way back up. */
+  var io = null;
+  function observer() {
+    if (io || !w.IntersectionObserver) return io;
+    io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        if (e.target.hasAttribute('data-count')) run(e.target);
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    return io;
+  }
+
+  function watch(el) {
+    var ob = observer();
+    if (ob) ob.observe(el); else el.classList.add('in');
+  }
+
+  /* Reveal is applied by rule: the cards and headings a page already has, in
+     document order, with a short stagger inside each group. */
+  var REVEAL = ['.sechead', '.gtile', '.acard', '.scard', '.qcard', '.pcard',
+                '.tcard', '.dcard', '.card', '.stat', '.clock .cseg', '.figbox'];
+  function reveals() {
+    REVEAL.forEach(function (sel) {
+      all(sel).forEach(function (el, i) {
+        if (el.hasAttribute('data-reveal') || el.closest('.hero')) return;
+        el.setAttribute('data-reveal', '');
+        el.style.setProperty('--rd', (i % 6) * 70 + 'ms');
+      });
+    });
+    all('[data-reveal]').forEach(watch);
+  }
+
+  /* ---------------- 4. counters ---------------- */
+  function run(el) {
+    var target = parseFloat(el.getAttribute('data-count'));
+    if (!isFinite(target)) return;
+    var suffix = el.getAttribute('data-count-suffix') || '';
+    if (reduced) { el.textContent = target + suffix; return; }
+    var t0 = 0, dur = 1100;
+    function step(now) {
+      if (!t0) t0 = now;
+      var k = Math.min(1, (now - t0) / dur);
+      /* ease-out cubic: fast first, so the number reads early */
+      var e = 1 - Math.pow(1 - k, 3);
+      el.textContent = Math.round(target * e) + suffix;
+      if (k < 1) w.requestAnimationFrame(step);
+    }
+    w.requestAnimationFrame(step);
+  }
+
+  /* Any stat whose value is a plain number counts up. Written as an attribute
+     at run time so the mark-up keeps the real number for a reader with no
+     JavaScript. */
+  function counters() {
+    all('.stat b, .kfig b, [data-countable]').forEach(function (el) {
+      var txt = el.textContent.trim();
+      if (el.hasAttribute('data-count') || !/^\d+$/.test(txt)) return;
+      el.setAttribute('data-count', txt);
+      el.textContent = reduced ? txt : '0';
+      watch(el);
+    });
+  }
+
+  /* ---------------- 5. tilt ----------------
+     A few degrees, damped, and only where a pointer can actually hover. */
+  function tilt() {
+    if (reduced || !w.matchMedia || !w.matchMedia('(hover: hover)').matches) return;
+    all('.gtile, .acard, .scard, .stat').forEach(function (el) {
+      if (el.classList.contains('tilty')) return;
+      el.classList.add('tilty');
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - .5;
+        var py = (e.clientY - r.top) / r.height - .5;
+        el.style.setProperty('--tx', (-py * 4.5).toFixed(2) + 'deg');
+        el.style.setProperty('--ty', (px * 5.5).toFixed(2) + 'deg');
+      });
+      el.addEventListener('pointerleave', function () {
+        el.style.setProperty('--tx', '0deg');
+        el.style.setProperty('--ty', '0deg');
+      });
+    });
+  }
+
+  /* ---------------- 6. reading progress ---------------- */
+  function progress() {
+    var bar = d.getElementById('readbar');
+    if (!bar) return;
+    var tick = function () {
+      var h = d.documentElement.scrollHeight - w.innerHeight;
+      var k = h > 0 ? w.scrollY / h : 0;
+      bar.style.transform = 'scaleX(' + (k < 0 ? 0 : k > 1 ? 1 : k).toFixed(4) + ')';
+    };
+    w.addEventListener('scroll', tick, { passive: true });
+    w.addEventListener('resize', tick, { passive: true });
+    tick();
+  }
+
+  /* ---------------- 7. the 3-D scene ----------------
+     index.html carries a full-height hero and names its own host. Every other
+     page gets the quiet band variant, inserted behind the first heading so no
+     page has to ask for it. */
+  function scene() {
+    if (!w.HERO3D) return;
+    var full = d.getElementById('hero3d');
+    if (full) { w.HERO3D.mount(full); return; }
+    var first = d.querySelector('main .section, body > .section');
+    if (!first) return;
+    /* A page heads its first section either with a .sechead block or, on the
+       prose pages, with a plain h1. Either one earns the band. */
+    var head = first.querySelector('.sechead, .prose > h1');
+    if (!head || first.querySelector('.hero3d')) return;
+    first.classList.add('headband');
+    var host = d.createElement('div');
+    host.className = 'hero3d hero3d--band';
+    host.setAttribute('aria-hidden', 'true');
+    first.insertBefore(host, first.firstChild);
+    w.HERO3D.mount(host, { band: true });
+  }
+
+  /* ---------------- start ---------------- */
+  function init() {
+    marquees();
+    all('[data-split]').forEach(function (el) { split(el); watch(el); });
+    reveals();
+    counters();
+    tilt();
+    progress();
+    scene();
+  }
+
+  /* Every step above is guarded, so init() may be called again after a page
+     has built its content from data. That is what refresh() is for. */
+  w.AKM_MOTION = { init: init, refresh: init, split: split, watch: watch };
+})(window, document);
+
 /* Tiny math-formatting helpers used by the lesson data files. */
 (function (w) {
   w.m  = function (s) { return '<span class="m">' + s + '</span>'; };
@@ -5678,6 +6573,9 @@ body{top:0!important}                       /* the banner pushes body down */
       }, { rootMargin: '-90px 0px -70% 0px' });
       secs.forEach(function (s) { io.observe(s); });
     }
+
+    /* the page was empty when the motion layer first ran */
+    if (w.AKM_MOTION) w.AKM_MOTION.refresh();
   };
 })(window, document);
 
@@ -97207,11 +98105,12 @@ var GLOSSARY = [
   window.AKM_lessonHref = function (id) { return '#/lesson/' + id; };
   var VIEWS = {
     home:   `<section class="hero">
+  <div class="hero3d" id="hero3d" aria-hidden="true"></div>
   <div class="grid3d" aria-hidden="true"><i></i></div>
   <div class="inner">
     <div>
       <p class="eyebrow">Mathematics teacher · Uzbekistan</p>
-      <h1>Every lesson, <em>built to be taught</em> in forty minutes.</h1>
+      <h1 data-split>Every lesson, <em>built to be taught</em> in forty minutes.</h1>
       <p class="lede">Resources for grades 5 to 11 that follow the Uzbekistan national programme and
       Cambridge Lower Secondary side by side. Each topic gives you the explanation, the figures, an
       interactive model to show on the board, twenty-one graded problems, three-language terminology
@@ -97221,25 +98120,32 @@ var GLOSSARY = [
         <a class="btn" href="grades.html">All grades 5–11</a>
         <a class="btn" href="about.html">How a lesson is built</a>
       </div>
-      <div class="stats">
-        <div class="stat"><b>40</b><span>minute lessons</span></div>
-        <div class="stat"><b>21</b><span>graded problems</span></div>
-        <div class="stat" id="stat-topics"><b>—</b><span>written topics</span></div>
-        <div class="stat"><b>3</b><span>term languages</span></div>
-      </div>
-    </div>
-    <div class="scene" id="scene">
-      <div class="stage3d">
-        <div class="orb o1"></div>
-        <div class="orb o2"></div>
-        <div class="extrude"></div>
-        <span class="chip3d c1">180°(n − 2)</span>
-        <span class="chip3d c2">y = k ⁄ x</span>
-        <span class="chip3d c3">MN = ½ · BC</span>
+      <div class="stats-wrap">
+        <div class="stats-ghost" aria-hidden="true">
+          <span>ALGEBRA · GEOMETRY · GRADES 5–11 ·</span>
+          <span>ALGEBRA · GEOMETRY · GRADES 5–11 ·</span>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>40</b><span>minute lessons</span></div>
+          <div class="stat"><b>21</b><span>graded problems</span></div>
+          <div class="stat" id="stat-topics"><b>—</b><span>written topics</span></div>
+          <div class="stat"><b>3</b><span>term languages</span></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<div class="marquee marquee--tilt" aria-hidden="true">
+  <div class="marquee-track"><span>
+    <b>Explanation</b><i class="dot">◆</i>
+    <b>Figures</b><i class="dot">◆</i>
+    <b>Interactive model</b><i class="dot">◆</i>
+    <b>21 graded problems</b><i class="dot">◆</i>
+    <b>Terminology in three languages</b><i class="dot">◆</i>
+    <b>Homework</b><i class="dot">◆</i>
+  </span></div>
+</div>
 
 <section class="section">
   <div class="wrap">
@@ -97314,7 +98220,7 @@ var GLOSSARY = [
   <div class="wrap">
     <div class="sechead">
       <span class="eyebrow">The whole school</span>
-      <h2>Grades 5 – 11</h2>
+      <h2 data-split>Grades 5 – 11</h2>
       <p>Each grade follows the same shape: the national calendar-thematic plan as the backbone, the
       matching Cambridge stage alongside it, and one page per topic containing everything the lesson
       needs. Grades 6 to 11 are written in full &mdash; 528 topics; Grade 5 follows.</p>
@@ -97339,7 +98245,7 @@ var GLOSSARY = [
   <div class="wrap">
     <div class="streamgrid" id="streamgrid" style="margin-bottom:44px"></div>
 
-    <div class="sechead"><span class="eyebrow">Choose a quarter</span><h2>The teaching year</h2>
+    <div class="sechead"><span class="eyebrow">Choose a quarter</span><h2 data-split>The teaching year</h2>
       <p id="qlede"></p></div>
     <div class="qtabs" id="qtabs"></div>
 
@@ -97357,7 +98263,7 @@ var GLOSSARY = [
     about:  `<section class="section">
   <div class="wrap narrow prose">
     <span class="eyebrow">About the course</span>
-    <h1 style="margin:14px 0 20px">How a lesson is built</h1>
+    <h1 data-split style="margin:14px 0 20px">How a lesson is built</h1>
     <p class="lede">Every topic page on this site is written to be taught, not read. It follows the
     forty-minute lesson exactly as it runs in class, and everything a teacher needs is on the one page.</p>
 
@@ -97406,7 +98312,7 @@ var GLOSSARY = [
   <div class="wrap">
     <div class="sechead">
       <span class="eyebrow">Three languages</span>
-      <h2>Terminology</h2>
+      <h2 data-split>Terminology</h2>
       <p>Every term the course uses, in English, O&#8216;zbekcha and Русский. Browse it grade by grade
       and topic by topic, look a word up in the A&#8211;Z index, or work through the themed vocabulary
       below. Nothing here is machine-translated &mdash; the three columns are the content.</p>
@@ -97583,6 +98489,7 @@ var GLOSSARY = [
   function chrome() {
     document.getElementById('chrome-head').innerHTML =
       '<header class="site-head"><div class="bar">' + brandmark() +
+      '<div class="solidstrip" id="solidstrip" aria-hidden="true"></div>' +
       '<div class="navwrap"><nav class="nav" id="navlinks">' +
       NAV.map(function (n) {
         if (n[0] !== '#/grades') return '<a href="' + n[0] + '" data-h="' + n[0] + '">' + n[1] + '</a>';
@@ -97603,8 +98510,26 @@ var GLOSSARY = [
       '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
       'stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>' +
       '<button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false">' +
-      '<span></span><span></span><span></span></button></div></div></header>';
+      '<span></span><span></span><span></span></button></div></div>' +
+      '<div class="headtick" aria-hidden="true"><div class="marquee-track"><span>' +
+      '<b>Forty minutes, five moves</b><i class="dot">◆</i>' +
+      '<em>warm-up</em><i class="dot">·</i><em>explanation</em><i class="dot">·</i>' +
+      '<em>interactive model</em><i class="dot">·</i><em>practice</em><i class="dot">·</i>' +
+      '<em>homework</em><i class="dot">◆</i>' +
+      '<b>Uzbekistan national programme &amp; Cambridge Lower Secondary</b>' +
+      '<i class="dot">◆</i></span></div></div>' +
+      '<i class="readbar" id="readbar" aria-hidden="true"></i></header>';
+    var TICK = [['Grades 5 – 11', 'national programme'],
+                ['Cambridge Lower Secondary', 'stages 6 – 9'],
+                ['21 graded problems', 'every topic'],
+                ['Interactive models', 'built for the board'],
+                ['Three languages', 'uz · ru · en'],
+                ['Printable booklets', 'one per quarter']];
     document.getElementById('chrome-foot').innerHTML =
+      '<div class="marquee marquee--flat marquee--slow" aria-hidden="true">' +
+      '<div class="marquee-track"><span>' + TICK.map(function (t) {
+        return '<b>' + t[0] + '</b><em>' + t[1] + '</em><i class="dot">◆</i>';
+      }).join('') + '</span></div></div>' +
       '<footer class="site-foot"><div class="inner"><div>' + brandmark('Grades 5–11 · Uzbekistan &amp; Cambridge') + '</div>' +
       '<p class="fnote">Lesson resources for the Uzbekistan national programme and Cambridge Lower Secondary ' +
       'Mathematics. Built around 40-minute lessons: explanation, guided practice, 21 graded problems and short homework.</p>' +
@@ -97765,7 +98690,8 @@ var GLOSSARY = [
       q('#gradegrid').innerHTML = GRADES.map(tile).join('');
     }
     fixLinks(view);
-    if (window.AKM_initHero) window.AKM_initHero();
+    /* the view was just replaced wholesale, so the motion layer re-scans it */
+    if (window.AKM_MOTION) window.AKM_MOTION.refresh();
     var cur = '#/' + (page === 'home' ? '' : parts.join('/'));
     [].forEach.call(document.querySelectorAll('#navlinks a'), function (a) {
       a.classList.toggle('on', a.getAttribute('data-h') === cur ||
@@ -97775,6 +98701,22 @@ var GLOSSARY = [
   }
 
   chrome();
+
+  /* the rotating polyhedra beside the brandmark, as on the multi-page site */
+  (function () {
+    var host = document.getElementById('solidstrip');
+    if (!host || !window.SOLIDS) return;
+    [['cube', 'var(--brand)', 1.00], ['octa', 'var(--brass)', -0.82],
+     ['sphere', 'var(--brand)', 0.64], ['prism', 'var(--brass)', -0.55],
+     ['cone', 'var(--brand)', 0.73], ['tetra', 'var(--brass)', -0.9]
+    ].forEach(function (s2, i) {
+      var cell = document.createElement('span');
+      cell.className = 'solidcell';
+      host.appendChild(cell);
+      window.SOLIDS.mount(cell, { shape: s2[0], size: 26, colour: s2[1], speed: s2[2], phase: i * 1.05 });
+    });
+  })();
+
   window.addEventListener('hashchange', render);
   render();
 })();

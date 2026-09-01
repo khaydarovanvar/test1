@@ -6,6 +6,7 @@ R = lambda p: (root / p).read_text()
 
 CSS = R('assets/styles.css') + "\n" + R('assets/pages.css')
 JS_LIBS = "\n".join(R(f) for f in [
+    'assets/solids3d.js', 'assets/hero3d.js', 'assets/motion.js',
     'assets/mathfmt.js', 'assets/figures.js', 'assets/interactive.js',
     'assets/lesson.js', 'data/grades.js',
     'data/g6-mat.js', 'data/g7-mat.js',
@@ -233,6 +234,7 @@ OUT = f"""<meta charset="utf-8">
   function chrome() {{
     document.getElementById('chrome-head').innerHTML =
       '<header class="site-head"><div class="bar">' + brandmark() +
+      '<div class="solidstrip" id="solidstrip" aria-hidden="true"></div>' +
       '<div class="navwrap"><nav class="nav" id="navlinks">' +
       NAV.map(function (n) {{
         if (n[0] !== '#/grades') return '<a href="' + n[0] + '" data-h="' + n[0] + '">' + n[1] + '</a>';
@@ -253,8 +255,26 @@ OUT = f"""<meta charset="utf-8">
       '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
       'stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>' +
       '<button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false">' +
-      '<span></span><span></span><span></span></button></div></div></header>';
+      '<span></span><span></span><span></span></button></div></div>' +
+      '<div class="headtick" aria-hidden="true"><div class="marquee-track"><span>' +
+      '<b>Forty minutes, five moves</b><i class="dot">\u25C6</i>' +
+      '<em>warm-up</em><i class="dot">\u00B7</i><em>explanation</em><i class="dot">\u00B7</i>' +
+      '<em>interactive model</em><i class="dot">\u00B7</i><em>practice</em><i class="dot">\u00B7</i>' +
+      '<em>homework</em><i class="dot">\u25C6</i>' +
+      '<b>Uzbekistan national programme &amp; Cambridge Lower Secondary</b>' +
+      '<i class="dot">\u25C6</i></span></div></div>' +
+      '<i class="readbar" id="readbar" aria-hidden="true"></i></header>';
+    var TICK = [['Grades 5 \u2013 11', 'national programme'],
+                ['Cambridge Lower Secondary', 'stages 6 \u2013 9'],
+                ['21 graded problems', 'every topic'],
+                ['Interactive models', 'built for the board'],
+                ['Three languages', 'uz \u00B7 ru \u00B7 en'],
+                ['Printable booklets', 'one per quarter']];
     document.getElementById('chrome-foot').innerHTML =
+      '<div class="marquee marquee--flat marquee--slow" aria-hidden="true">' +
+      '<div class="marquee-track"><span>' + TICK.map(function (t) {{
+        return '<b>' + t[0] + '</b><em>' + t[1] + '</em><i class="dot">\u25C6</i>';
+      }}).join('') + '</span></div></div>' +
       '<footer class="site-foot"><div class="inner"><div>' + brandmark('Grades 5–11 · Uzbekistan &amp; Cambridge') + '</div>' +
       '<p class="fnote">Lesson resources for the Uzbekistan national programme and Cambridge Lower Secondary ' +
       'Mathematics. Built around 40-minute lessons: explanation, guided practice, 21 graded problems and short homework.</p>' +
@@ -415,7 +435,8 @@ OUT = f"""<meta charset="utf-8">
       q('#gradegrid').innerHTML = GRADES.map(tile).join('');
     }}
     fixLinks(view);
-    if (window.AKM_initHero) window.AKM_initHero();
+    /* the view was just replaced wholesale, so the motion layer re-scans it */
+    if (window.AKM_MOTION) window.AKM_MOTION.refresh();
     var cur = '#/' + (page === 'home' ? '' : parts.join('/'));
     [].forEach.call(document.querySelectorAll('#navlinks a'), function (a) {{
       a.classList.toggle('on', a.getAttribute('data-h') === cur ||
@@ -425,6 +446,22 @@ OUT = f"""<meta charset="utf-8">
   }}
 
   chrome();
+
+  /* the rotating polyhedra beside the brandmark, as on the multi-page site */
+  (function () {{
+    var host = document.getElementById('solidstrip');
+    if (!host || !window.SOLIDS) return;
+    [['cube', 'var(--brand)', 1.00], ['octa', 'var(--brass)', -0.82],
+     ['sphere', 'var(--brand)', 0.64], ['prism', 'var(--brass)', -0.55],
+     ['cone', 'var(--brand)', 0.73], ['tetra', 'var(--brass)', -0.9]
+    ].forEach(function (s2, i) {{
+      var cell = document.createElement('span');
+      cell.className = 'solidcell';
+      host.appendChild(cell);
+      window.SOLIDS.mount(cell, {{ shape: s2[0], size: 26, colour: s2[1], speed: s2[2], phase: i * 1.05 }});
+    }});
+  }})();
+
   window.addEventListener('hashchange', render);
   render();
 }})();

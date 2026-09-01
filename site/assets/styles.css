@@ -66,7 +66,8 @@ a:hover{text-decoration-color:var(--brand)}
 .narrow{max-width:760px}
 
 /* ---------- brand ---------- */
-.brandmark{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit}
+.brandmark{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;
+  flex:0 0 auto;white-space:nowrap}
 .brandmark svg{width:38px;height:38px;flex:none}
 .brandmark>span{display:block}
 .brandmark .bn{display:block;font-family:var(--serif);font-weight:600;font-size:16px;
@@ -84,8 +85,8 @@ a:hover{text-decoration-color:var(--brand)}
 .site-head.scrolled{box-shadow:0 1px 0 var(--rule),0 10px 30px -22px rgba(0,0,0,.5)}
 .site-head .bar{display:flex;align-items:center;justify-content:space-between;gap:20px;
   height:68px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
-.navwrap{display:flex;align-items:center;gap:8px}
-.nav{display:flex;align-items:center;gap:4px}
+.navwrap{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.nav{display:flex;align-items:center;gap:4px;white-space:nowrap}
 .menubtn{display:none;appearance:none;background:none;border:1px solid var(--rule);
   width:36px;height:36px;border-radius:var(--r);cursor:pointer;flex-direction:column;
   justify-content:center;align-items:center;gap:4px;padding:0}
@@ -102,6 +103,37 @@ a:hover{text-decoration-color:var(--brand)}
   width:34px;height:34px;border-radius:var(--r);cursor:pointer;display:grid;place-items:center;
   transition:.15s;flex:none}
 .themebtn:hover{color:var(--ink);border-color:var(--muted)}
+
+/* A slim strip of moving text below the bar. It carries no link, so it is
+   hidden from assistive tech, and it folds away the moment the page scrolls —
+   a greeting, not a permanent fixture. The track is doubled by
+   assets/motion.js, which is what makes the loop seamless. */
+.headtick{height:30px;overflow:hidden;white-space:nowrap;
+  border-top:1px solid var(--rule-soft);background:var(--surface-2);
+  transition:height .32s ease,opacity .32s ease}
+.site-head.scrolled .headtick{height:0;opacity:0}
+.headtick .marquee-track{display:inline-flex;align-items:center;gap:1.5rem;height:30px;
+  padding-right:1.5rem;will-change:transform;animation:marquee 40s linear infinite}
+.headtick .marquee-track>span{display:inline-flex;align-items:center;gap:1.5rem;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--muted)}
+.headtick b{font-weight:500;color:var(--brand)}
+.headtick em{font-style:normal;opacity:.85}
+.headtick i.dot{font-style:normal;opacity:.4;color:var(--brass)}
+.headtick:hover .marquee-track{animation-play-state:paused}
+
+/* Reading progress, along the bottom edge of the header. */
+.readbar{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--brand);
+  transform:scaleX(0);transform-origin:left;z-index:1;pointer-events:none}
+
+/* The strip survives on a phone — it is the only moving text in the chrome
+   there — but it gives up a little size and its wider spacing. */
+@media (max-width:700px){
+  .headtick{height:26px}
+  .headtick .marquee-track{height:26px;gap:1rem;padding-right:1rem;animation-duration:30s}
+  .headtick .marquee-track>span{gap:1rem;font-size:9.5px;letter-spacing:.09em}
+}
+@media (prefers-reduced-motion:reduce){ .headtick .marquee-track{animation:none} }
 
 /* ---------- typography ---------- */
 h1,h2,h3,h4{font-family:var(--serif);font-weight:600;letter-spacing:-.015em;
