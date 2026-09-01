@@ -173,8 +173,17 @@ def fit_title(text, max_w, band):
 
 
 # ------------------------------------------------------------- the tag -----
-def draw_tag(c, item, bleed=True):
-    """Draw one tag with its trim-box origin at the current (0, 0)."""
+def draw_tag(c, item, bleed=True, numberless=False):
+    """Draw one tag with its trim-box origin at the current (0, 0).
+
+    numberless=True drops the room-number panel: matching 16 mm yellow
+    bookends on both ends and the grade lockup centred on the whole tag
+    (used for the folding table-tents).
+    """
+    left_w = RIGHT_YW if numberless else YELLOW_W
+    green_l = left_w + ACCENT_GAP + ACCENT_W
+    cx = (green_l + GREEN_R) / 2.0
+    max_w = GREEN_R - green_l - 22.0
     c.saveState()
     over = BLEED if bleed else 0.0
     p = c.beginPath()
@@ -190,24 +199,26 @@ def draw_tag(c, item, bleed=True):
     wm = SWOOSH_WATERMARK
     wm_w = 176.0
     wm_h = wm_w * wm.size[1] / wm.size[0]
-    c.drawImage(ImageReader(wm), (TEXT_CX - wm_w / 2) * MM, (TRIM_H / 2 - wm_h / 2) * MM,
+    c.drawImage(ImageReader(wm), (cx - wm_w / 2) * MM, (TRIM_H / 2 - wm_h / 2) * MM,
                 wm_w * MM, wm_h * MM, mask="auto")
 
     # straight yellow fields: number panel left, bookend right (holes sit in them)
     c.setFillColor(YELLOW)
-    c.rect(-BLEED * MM, -BLEED * MM, (YELLOW_W + BLEED) * MM, (TRIM_H + 2 * BLEED) * MM,
+    c.rect(-BLEED * MM, -BLEED * MM, (left_w + BLEED) * MM, (TRIM_H + 2 * BLEED) * MM,
            stroke=0, fill=1)
     c.rect((TRIM_W - RIGHT_YW) * MM, -BLEED * MM, (RIGHT_YW + BLEED) * MM,
            (TRIM_H + 2 * BLEED) * MM, stroke=0, fill=1)
     # accent lines echoing the two splits
-    c.rect((YELLOW_W + ACCENT_GAP) * MM, -BLEED * MM, ACCENT_W * MM,
+    c.rect((left_w + ACCENT_GAP) * MM, -BLEED * MM, ACCENT_W * MM,
            (TRIM_H + 2 * BLEED) * MM, stroke=0, fill=1)
     c.rect((TRIM_W - RIGHT_YW - ACCENT_GAP - ACCENT_W) * MM, -BLEED * MM, ACCENT_W * MM,
            (TRIM_H + 2 * BLEED) * MM, stroke=0, fill=1)
 
     # ---- yellow panel: room number ("WC" for the restrooms), or the logo
-    num = item["room"]
-    if not num and "RESTROOM" in item["title"].upper():
+    num = None if numberless else item["room"]
+    if numberless:
+        num, eyebrow = None, None
+    elif not num and "RESTROOM" in item["title"].upper():
         num = "WC"
         eyebrow = None
     else:
@@ -219,7 +230,7 @@ def draw_tag(c, item, bleed=True):
         cap = min(NUM_MAX_W / text_width(num, FONT_HEAVY, 1.0), NUM_MAX_CAP)
         base = (NUM_BAND[0] + NUM_BAND[1]) / 2.0 - cap / 2.0
         draw_text(c, num, FONT_HEAVY, cap, NUM_CX, base, GREEN_DEEP, align="center")
-    else:
+    elif not numberless:
         mark = LOGO_MARK
         mw = 48.0
         mh = mw * mark.size[1] / mark.size[0]
@@ -228,19 +239,19 @@ def draw_tag(c, item, bleed=True):
 
     # ---- green panel: centred lockup
     c.setFillColor(YELLOW)
-    c.rect((TEXT_CX - RULE_W / 2) * MM, RULE_Y * MM, RULE_W * MM, RULE_H * MM,
+    c.rect((cx - RULE_W / 2) * MM, RULE_Y * MM, RULE_W * MM, RULE_H * MM,
            stroke=0, fill=1)
-    draw_text(c, item["eyebrow"], FONT_HEAVY, EYEBROW_CAP, TEXT_CX, EYEBROW_Y, CREAM,
+    draw_text(c, item["eyebrow"], FONT_HEAVY, EYEBROW_CAP, cx, EYEBROW_Y, CREAM,
               track=EYEBROW_TRACK, align="center")
 
-    cap, lines = fit_title(item["title"], TEXT_MAX_W, TITLE_BAND)
+    cap, lines = fit_title(item["title"], max_w, TITLE_BAND)
     block_h = cap * (1.0 + (len(lines) - 1) * TITLE_LEADING)
     top_base = (TITLE_BAND[0] + TITLE_BAND[1]) / 2.0 + block_h / 2.0 - cap
     for i, line in enumerate(lines):
-        draw_text(c, line, FONT_HEAVY, cap, TEXT_CX, top_base - i * cap * TITLE_LEADING,
+        draw_text(c, line, FONT_HEAVY, cap, cx, top_base - i * cap * TITLE_LEADING,
                   YELLOW, align="center")
 
-    draw_text(c, "ELLIPSE", FONT_HEAVY, WORDMARK_CAP, TEXT_CX, WORDMARK_Y, YELLOW,
+    draw_text(c, "ELLIPSE", FONT_HEAVY, WORDMARK_CAP, cx, WORDMARK_Y, YELLOW,
               track=WORDMARK_TRACK, align="center", alpha=0.75)
 
     c.restoreState()
@@ -374,13 +385,13 @@ def build_tent_pdf(items, path, title):
         # bottom half, upright, top edge on the fold
         c.saveState()
         c.translate(0, (fold - TRIM_H) * MM)
-        draw_tag(c, it, bleed=False)
+        draw_tag(c, it, bleed=False, numberless=True)
         c.restoreState()
         # top half, rotated 180 degrees, top edge on the fold
         c.saveState()
         c.translate(TRIM_W * MM, (fold + TRIM_H) * MM)
         c.rotate(180)
-        draw_tag(c, it, bleed=False)
+        draw_tag(c, it, bleed=False, numberless=True)
         c.restoreState()
         # fold ticks at the page edges only, so the faces stay clean
         c.saveState()
