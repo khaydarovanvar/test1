@@ -1,0 +1,1681 @@
+<title>Why Do We Need Math?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;500;700;800&family=Syne:wght@700;800&display=swap">
+<style>
+:root{
+  --bg:#080A16;
+  --bg-2:#0D1024;
+  --ink:#F2F4FF;
+  --muted:#A6ADCB;
+  --faint:#6E769B;
+  --line:rgba(255,255,255,.11);
+  --glass:rgba(255,255,255,.055);
+  --glass-2:rgba(255,255,255,.10);
+  --ok:#5BE49B;
+  --no:#FF7A93;
+  --s1:#2E8FD6;
+  --s2:#D25A73;
+  --s3:#B08A2E;
+  --acc:#9B8CFF;
+  --acc-dim:rgba(155,140,255,.16);
+  color-scheme:dark;
+}
+[data-acc="violet"]{--acc:#9B8CFF;--acc-dim:rgba(155,140,255,.16)}
+[data-acc="cyan"]  {--acc:#35E3F5;--acc-dim:rgba(53,227,245,.14)}
+[data-acc="amber"] {--acc:#FFC13D;--acc-dim:rgba(255,193,61,.14)}
+[data-acc="pink"]  {--acc:#F472D0;--acc-dim:rgba(244,114,208,.14)}
+[data-acc="ice"]   {--acc:#DCE6FF;--acc-dim:rgba(220,230,255,.12)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:Manrope,"Segoe UI",system-ui,sans-serif;
+  font-size:clamp(15px,.55vw + 11px,18px);line-height:1.5;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;
+}
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:var(--bg)}
+#bg .grid{
+  position:absolute;inset:-2px;
+  background-image:linear-gradient(rgba(255,255,255,.032) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.032) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:radial-gradient(ellipse 90% 70% at 50% 45%,#000 30%,transparent 100%);
+}
+#bg .orb{position:absolute;border-radius:50%;filter:blur(110px);opacity:.20;transition:background 1.2s ease}
+#bg .o1{width:52vw;height:52vw;left:-14vw;top:-18vw;background:var(--acc)}
+#bg .o2{width:44vw;height:44vw;right:-12vw;bottom:-16vw;background:var(--acc);opacity:.13}
+#bg .o3{width:30vw;height:30vw;left:52vw;top:38vh;background:#1B2660;opacity:.42}
+@media (prefers-reduced-motion:no-preference){
+  #bg .o1{animation:float1 26s ease-in-out infinite alternate}
+  #bg .o2{animation:float2 32s ease-in-out infinite alternate}
+}
+@keyframes float1{to{transform:translate3d(8vw,6vh,0) scale(1.12)}}
+@keyframes float2{to{transform:translate3d(-7vw,-5vh,0) scale(1.08)}}
+
+/* ── chrome ── */
+.top{
+  position:fixed;top:0;left:0;right:0;z-index:40;
+  display:flex;align-items:center;gap:14px;padding:12px clamp(14px,3vw,30px);
+  background:linear-gradient(180deg,rgba(8,10,22,.92),rgba(8,10,22,0));
+  pointer-events:none;
+}
+.top > *{pointer-events:auto}
+.mark{font-family:Syne,sans-serif;font-weight:800;letter-spacing:-.02em;font-size:.95rem;white-space:nowrap}
+.mark span{color:var(--acc)}
+.chapter{
+  font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--acc);border:1px solid var(--acc);border-radius:999px;padding:4px 10px;white-space:nowrap;
+  background:var(--acc-dim);
+}
+.pbar{flex:1;height:4px;border-radius:99px;background:rgba(255,255,255,.09);overflow:hidden;min-width:60px}
+.pbar i{display:block;height:100%;width:0;border-radius:99px;background:var(--acc);transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.counter{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--faint);white-space:nowrap}
+.score-chip{
+  font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:700;
+  border:1px solid var(--line);border-radius:999px;padding:5px 11px;background:var(--glass);white-space:nowrap;
+}
+.score-chip b{color:var(--ok)}
+
+.bot{
+  position:fixed;left:0;right:0;bottom:0;z-index:40;
+  display:flex;align-items:center;gap:10px;padding:12px clamp(14px,3vw,30px);
+  background:linear-gradient(0deg,rgba(8,10,22,.92),rgba(8,10,22,0));pointer-events:none;
+}
+.bot > *{pointer-events:auto}
+.dots{display:flex;gap:5px;flex:1;flex-wrap:wrap}
+.dot{width:20px;height:5px;border-radius:99px;border:0;padding:0;background:rgba(255,255,255,.16);cursor:pointer;transition:background .25s,transform .25s}
+.dot:hover{transform:scaleY(1.8)}
+.dot.seen{background:rgba(255,255,255,.4)}
+.dot.now{background:var(--acc);width:30px}
+
+/* ── buttons ── */
+.btn{
+  font:inherit;font-weight:700;font-size:.82rem;
+  border:1px solid var(--line);background:var(--glass);color:var(--ink);
+  border-radius:12px;padding:9px 14px;cursor:pointer;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  transition:transform .16s,border-color .16s,background .16s,box-shadow .16s;
+}
+.btn:hover{border-color:var(--acc);transform:translateY(-2px);box-shadow:0 10px 26px -14px var(--acc)}
+.btn:active{transform:translateY(0)}
+.btn.solid{background:var(--acc);border-color:var(--acc);color:#0A0C18}
+.btn.solid:hover{filter:brightness(1.1)}
+.btn.ghost{background:transparent}
+.btn.sq{width:40px;height:38px;padding:0;display:grid;place-items:center;font-size:1rem}
+.btn[disabled]{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+
+/* ── sections ── */
+#deck{position:relative;z-index:1}
+.sec{
+  display:none;min-height:100svh;
+  flex-direction:column;justify-content:center;gap:clamp(12px,2vh,22px);
+  max-width:1200px;margin-inline:auto;
+  padding:clamp(66px,8vh,92px) clamp(18px,4vw,44px) clamp(78px,9vh,96px);
+}
+.sec.on{display:flex}
+.sec.on > *{animation:in .5s cubic-bezier(.2,.8,.2,1) both}
+.sec.on > *:nth-child(2){animation-delay:.05s}
+.sec.on > *:nth-child(3){animation-delay:.1s}
+.sec.on > *:nth-child(4){animation-delay:.15s}
+.sec.on > *:nth-child(5){animation-delay:.2s}
+.sec.on > *:nth-child(n+6){animation-delay:.25s}
+@keyframes in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .sec.on > *{animation:none}
+  *{animation-duration:.001s!important;transition-duration:.001s!important}
+}
+
+h1,h2{font-family:Syne,sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1;margin:0;text-wrap:balance}
+h1{font-size:clamp(2.1rem,5.7vw,4.4rem)}
+h2{font-size:clamp(1.9rem,4.4vw,3.6rem)}
+h3{font-family:Syne,sans-serif;font-weight:700;font-size:clamp(1.05rem,1.6vw,1.35rem);margin:0;letter-spacing:-.01em}
+p{margin:0;max-width:70ch}
+.lead{font-size:clamp(1rem,1.35vw,1.22rem);color:var(--muted);max-width:62ch}
+.kicker{
+  font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--acc);
+}
+.big{font-family:Syne,sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.6rem);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.mono{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+.dim{color:var(--muted)}
+.tiny{font-size:.8rem;color:var(--faint)}
+
+/* ── glass ── */
+.glass{
+  background:var(--glass);border:1px solid var(--line);border-radius:18px;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  padding:clamp(14px,1.8vw,22px);
+}
+.glass.tight{padding:clamp(11px,1.2vw,15px);border-radius:14px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.stack{display:flex;flex-direction:column;gap:clamp(10px,1.6vh,16px)}
+.cols{display:grid;gap:clamp(12px,1.6vw,20px);grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.cols-3{display:grid;gap:clamp(8px,1vw,13px);grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))}
+.scrollx{overflow-x:auto}
+
+/* ── choices / votes ── */
+.choice{
+  display:flex;align-items:center;gap:12px;width:100%;text-align:left;font:inherit;color:inherit;
+  background:var(--glass);border:1px solid var(--line);border-radius:14px;padding:13px 15px;cursor:pointer;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);position:relative;overflow:hidden;
+  transition:transform .16s,border-color .16s,background .16s;
+}
+.choice:hover{transform:translateX(4px);border-color:var(--acc);background:var(--glass-2)}
+.choice .tag{
+  font-family:"JetBrains Mono",monospace;font-weight:700;font-size:.78rem;color:var(--faint);
+  width:24px;flex:none;text-align:center;
+}
+.choice .txt{flex:1;font-weight:600}
+.choice .n{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--muted);font-size:.85rem}
+.choice .fill{position:absolute;inset:0 auto 0 0;width:0;background:var(--acc-dim);transition:width .6s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.choice > *:not(.fill){position:relative}
+.choice.right{border-color:var(--ok);background:rgba(91,228,155,.10)}
+.choice.right .tag{color:var(--ok)}
+.choice.wrong{border-color:var(--no);background:rgba(255,122,147,.09)}
+.choice.wrong .tag{color:var(--no)}
+.choice.picked{border-color:var(--acc)}
+.choice[disabled]{cursor:default;transform:none}
+.choice.multi.sel{border-color:var(--acc);background:var(--acc-dim)}
+.choice.multi.right{border-color:var(--ok);background:rgba(91,228,155,.10)}
+.choice.multi.wrong{border-color:var(--no);background:rgba(255,122,147,.09)}
+
+.reveal{display:none;border-left:3px solid var(--acc);padding:4px 0 4px 15px;color:var(--muted);max-width:74ch}
+.reveal.show{display:block;animation:in .4s both}
+.reveal b,.reveal strong{color:var(--ink)}
+
+.pill{
+  font-family:"JetBrains Mono",monospace;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  border:1px solid var(--line);border-radius:999px;padding:5px 10px;color:var(--muted);white-space:nowrap;
+}
+.pill.acc{border-color:var(--acc);color:var(--acc);background:var(--acc-dim)}
+
+label.f{display:flex;flex-direction:column;gap:7px;font-size:.78rem;font-weight:700;color:var(--muted)}
+label.f .v{font-family:"JetBrains Mono",monospace;color:var(--ink);font-size:1.05rem}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:99px;
+  background:rgba(255,255,255,.14);cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--acc);
+  border:3px solid var(--bg);box-shadow:0 0 0 1px var(--acc),0 6px 18px -6px var(--acc);cursor:grab;
+}
+input[type=range]::-moz-range-thumb{
+  width:16px;height:16px;border-radius:50%;background:var(--acc);border:3px solid var(--bg);cursor:grab;
+}
+input[type=number],input[type=text]{
+  font-family:"JetBrains Mono",monospace;font-size:1.05rem;padding:10px 13px;border-radius:12px;
+  border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--ink);width:100%;max-width:200px;
+}
+svg.chart{width:100%;height:auto;max-height:min(36vh,290px);display:block;overflow:visible}
+#derivSvg{max-height:min(30vh,215px)}
+#dblSvg{max-height:min(34vh,275px);max-width:700px;margin-inline:auto}
+#intSvg{max-height:min(34vh,265px)}
+#trigSvg{max-height:min(34vh,265px)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);font-weight:600}
+.sw{width:10px;height:10px;border-radius:3px;display:inline-block;margin-right:7px;vertical-align:0}
+figcaption{font-size:.78rem;color:var(--faint);margin-top:10px}
+</style>
+<style>
+/* ── section 1: complaints ── */
+.quotes{display:flex;flex-wrap:wrap;gap:10px}
+.quote{
+  font-family:Syne,sans-serif;font-weight:700;font-size:clamp(.9rem,1.3vw,1.1rem);
+  border:1px dashed var(--line);border-radius:999px;padding:8px 15px;color:var(--muted);
+  transform:rotate(var(--r,0deg));background:rgba(255,255,255,.03);
+}
+@media (prefers-reduced-motion:no-preference){ .sec.on .quote{animation:wob 6s ease-in-out infinite alternate} }
+@keyframes wob{to{transform:rotate(calc(var(--r,0deg) * -1)) translateY(-4px)}}
+
+/* ── section 2: drag sort ── */
+.bank{display:flex;flex-wrap:wrap;gap:9px;min-height:52px}
+.chip{
+  font:inherit;font-weight:700;font-size:.86rem;color:var(--ink);
+  border:1px solid var(--line);background:var(--glass);border-radius:999px;padding:9px 15px;cursor:grab;
+  transition:transform .15s,border-color .15s,opacity .15s,background .15s;user-select:none;
+}
+.chip:hover{transform:translateY(-2px);border-color:var(--acc)}
+.chip.sel{border-color:var(--acc);background:var(--acc-dim);transform:translateY(-2px)}
+.chip.dragging{opacity:.35}
+.chip.good{border-color:var(--ok);background:rgba(91,228,155,.12)}
+.chip.bad{border-color:var(--no);background:rgba(255,122,147,.10)}
+.drop{min-height:130px;border:1.5px dashed var(--line);border-radius:18px;padding:14px;transition:border-color .18s,background .18s}
+.drop.over{border-color:var(--acc);background:var(--acc-dim)}
+.drop h3{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+.drop .em{font-size:1.5rem}
+
+/* ── section 3: ecosystem ── */
+.nodes{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,124px),1fr))}
+.node{
+  font:inherit;color:inherit;cursor:pointer;border:1px solid var(--line);background:var(--glass);
+  border-radius:16px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;gap:7px;
+  transition:transform .18s,border-color .18s,background .18s,box-shadow .18s;
+}
+.node .em{font-size:1.9rem;line-height:1;transition:transform .22s}
+.node:hover{transform:translateY(-4px);border-color:var(--acc);box-shadow:0 14px 34px -20px var(--acc)}
+.node:hover .em{transform:scale(1.16) rotate(-5deg)}
+.node .lbl{font-size:.78rem;font-weight:700;text-align:center;line-height:1.2}
+.node.seen{border-color:var(--acc);background:var(--acc-dim)}
+.detail{min-height:118px}
+.detail .fields{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}
+
+/* ── section 5: car ── */
+.road{
+  position:relative;height:66px;border-radius:14px;overflow:hidden;
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+  border:1px solid var(--line);
+}
+.road::after{
+  content:"";position:absolute;left:0;right:0;top:50%;height:2px;
+  background:repeating-linear-gradient(90deg,var(--line) 0 22px,transparent 22px 46px);
+}
+.car{position:absolute;top:50%;transform:translate(-50%,-58%);font-size:2.1rem;transition:left .1s linear;z-index:2}
+.marker{position:absolute;top:6px;bottom:6px;width:2px;background:var(--acc);opacity:.5}
+
+/* ── stats ── */
+.stats{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr))}
+.stat{border:1px solid var(--line);background:var(--glass);border-radius:14px;padding:12px 14px}
+.stat .k{font-family:"JetBrains Mono",monospace;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.stat .v{font-family:Syne,sans-serif;font-weight:800;font-size:clamp(1.2rem,2.4vw,1.9rem);font-variant-numeric:tabular-nums;line-height:1.15}
+
+/* ── section 7/8: money bars ── */
+.mbar{display:flex;flex-direction:column;gap:6px}
+.mbar .lb{display:flex;justify-content:space-between;font-size:.8rem;font-weight:700;color:var(--muted)}
+.mbar .tr{height:22px;border-radius:8px;background:rgba(255,255,255,.07);overflow:hidden;display:flex}
+.mbar .tr i{height:100%;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.ad{
+  border:1px solid var(--line);border-radius:18px;padding:clamp(16px,2.4vw,26px);text-align:center;
+  background:linear-gradient(135deg,rgba(255,193,61,.16),rgba(255,122,147,.10));
+  position:relative;overflow:hidden;
+}
+.ad .shine{position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.16) 50%,transparent 60%);transform:translateX(-100%)}
+@media (prefers-reduced-motion:no-preference){ .sec.on .ad .shine{animation:shine 3.6s ease-in-out infinite} }
+@keyframes shine{0%,60%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+/* ── section 13: timer ── */
+.timer{display:flex;align-items:center;gap:12px}
+.tring{width:52px;height:52px;flex:none;position:relative}
+.tring svg{transform:rotate(-90deg)}
+.tring .num{
+  position:absolute;inset:0;display:grid;place-items:center;
+  font-family:"JetBrains Mono",monospace;font-weight:700;font-size:1rem;
+}
+.board{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}
+
+/* ── section 14: reveal lines ── */
+.lines{display:flex;flex-direction:column;gap:clamp(10px,2.4vh,26px)}
+.line{
+  font-family:Syne,sans-serif;font-weight:800;letter-spacing:-.025em;line-height:1.05;
+  font-size:clamp(1.5rem,4vw,3.2rem);opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s;
+  color:var(--muted);
+}
+.line.up{opacity:1;transform:none}
+.line.hot{color:var(--ink)}
+.line.max{font-size:clamp(1.9rem,5.6vw,4.4rem);color:var(--acc)}
+.verbs{display:flex;flex-wrap:wrap;gap:8px}
+.verb{
+  font-family:Syne,sans-serif;font-weight:800;font-size:clamp(1rem,2vw,1.6rem);
+  border:1px solid var(--line);border-radius:12px;padding:7px 14px;opacity:0;transform:scale(.9);
+  transition:opacity .4s,transform .4s;
+}
+.verb.up{opacity:1;transform:none;border-color:var(--acc);color:var(--acc)}
+
+/* ── presenter ── */
+#pres{
+  position:fixed;inset:auto 0 0 0;z-index:60;transform:translateY(101%);transition:transform .34s cubic-bezier(.2,.8,.2,1);
+  background:rgba(10,12,26,.96);border-top:1px solid var(--line);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  padding:14px clamp(14px,3vw,30px) 18px;max-height:64vh;overflow:auto;
+}
+#pres.open{transform:none}
+#pres .jump{display:grid;gap:6px;grid-template-columns:repeat(auto-fill,minmax(min(100%,178px),1fr));margin-top:10px}
+#pres .j{
+  font:inherit;text-align:left;font-size:.78rem;font-weight:700;color:var(--muted);cursor:pointer;
+  border:1px solid var(--line);background:var(--glass);border-radius:10px;padding:8px 10px;
+  display:flex;gap:8px;align-items:baseline;transition:border-color .15s,color .15s;
+}
+#pres .j:hover{border-color:var(--acc);color:var(--ink)}
+#pres .j.now{border-color:var(--acc);color:var(--acc);background:var(--acc-dim)}
+#pres .j b{font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--faint);flex:none}
+.hidden{display:none!important}
+@media (max-width:640px){
+  .sec{padding:74px 16px 96px}
+  .top{gap:9px}
+  .mark{display:none}
+}
+</style>
+
+<div id="bg"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="grid"></div></div>
+
+<header class="top">
+  <div class="mark">WHY DO WE NEED <span>MATH?</span></div>
+  <div class="chapter" id="chapter">The Question</div>
+  <div class="pbar"><i id="pfill"></i></div>
+  <div class="counter"><span id="cur">1</span> / <span id="tot">15</span></div>
+  <div class="score-chip">SCORE <b id="score">0</b></div>
+  <button class="btn sq ghost" id="presBtn" type="button" title="Presenter panel (P)">⌘</button>
+  <button class="btn sq ghost" id="fsBtn" type="button" title="Fullscreen (F)">⛶</button>
+</header>
+
+<main id="deck">
+
+<!-- 01 HOOK -->
+<section class="sec" data-acc="violet" data-chapter="The Question">
+  <div class="kicker">Section 01 · The hook</div>
+  <h1>WHY DO WE<br>NEED MATH?</h1>
+  <p class="lead" style="font-size:clamp(1rem,1.6vw,1.35rem);color:var(--ink)">Seriously… when will I <em>ever</em> use this?</p>
+  <div class="quotes">
+    <span class="quote" style="--r:-1.5deg">“Why do I need trigonometry?”</span>
+    <span class="quote" style="--r:1.2deg">“Why do I need derivatives?”</span>
+    <span class="quote" style="--r:-.8deg">“Why do I need integrals?”</span>
+  </div>
+  <div class="glass stack">
+    <div class="row" style="justify-content:space-between">
+      <div class="row"><span class="pill acc">Live vote</span><h3>What do <em>you</em> think?</h3></div>
+      <button class="btn ghost" data-reset="hookVote" type="button">↺ Reset</button>
+    </div>
+    <div class="stack" id="hookVote"></div>
+    <p class="tiny">Everyone votes. No right answer yet — we come back to this at the end.</p>
+  </div>
+</section>
+
+<!-- 02 BODY vs BRAIN -->
+<section class="sec" data-acc="violet" data-chapter="Body vs Brain">
+  <div class="kicker">Section 02 · The core idea</div>
+  <h2>Nobody lifts weights because they will lift a barbell in real life.</h2>
+  <p class="lead">You train to become <b style="color:var(--ink)">stronger</b>. The barbell is just the tool. So — drag each result into the column where it belongs. Two of them are traps.</p>
+  <div class="cols">
+    <div class="drop glass" data-col="body">
+      <h3><span class="em">🏋️</span> BODY <span class="pill">training</span></h3>
+      <div class="bank" data-bank="body"></div>
+    </div>
+    <div class="drop glass" data-col="brain">
+      <h3><span class="em">🧠</span> BRAIN <span class="pill">mathematics</span></h3>
+      <div class="bank" data-bank="brain"></div>
+    </div>
+  </div>
+  <div class="glass tight stack">
+    <div class="row" style="justify-content:space-between">
+      <span class="tiny">Drag a card — or tap it, then tap a column.</span>
+      <div class="row">
+        <button class="btn" id="bbCheck" type="button">Check the class</button>
+        <button class="btn ghost" data-reset="bb" type="button">↺ Reset</button>
+      </div>
+    </div>
+    <div class="bank" id="bbBank"></div>
+  </div>
+  <div class="reveal" id="bbOut"></div>
+</section>
+
+<!-- 03 WHERE IS IT -->
+<section class="sec" data-acc="cyan" data-chapter="Where It Lives">
+  <div class="kicker">Section 03 · The hidden layer</div>
+  <h2>“But where do we <em>actually</em> use it?”</h2>
+  <p class="lead">Everything on this screen was built by someone who did the math. Tap anything — I will tell you exactly which math is inside it.</p>
+  <div class="nodes" id="nodes"></div>
+  <div class="glass detail" id="nodeDetail"></div>
+  <div class="row"><span class="tiny" id="nodeCount">0 of 11 opened</span><button class="btn ghost" data-reset="nodes" type="button">↺ Reset</button></div>
+</section>
+
+<!-- 04 TRIGONOMETRY -->
+<section class="sec" data-acc="cyan" data-chapter="Trigonometry">
+  <div class="kicker">Section 04 · Challenge</div>
+  <h2>How tall is that building?</h2>
+  <div class="cols">
+    <div class="stack">
+      <p class="lead">You are standing <b style="color:var(--ink)">30 metres</b> from a building. You look up at the top. The angle is <b style="color:var(--ink)">45°</b>. You have no ladder, no drone, no tape measure long enough.</p>
+      <div class="stack" id="trigVote"></div>
+      <div class="reveal" id="trigOut"></div>
+    </div>
+    <figure class="glass">
+      <svg class="chart" id="trigSvg" viewBox="0 0 460 300" role="img" aria-label="A person 30 metres from a building, sighting the top at 45 degrees"></svg>
+      <figcaption>Tap an answer to see the triangle solve itself.</figcaption>
+    </figure>
+  </div>
+  <div class="row" id="trigApps"><button class="btn ghost" data-reset="trig" type="button">↺ Reset</button></div>
+  <p class="lead" id="trigFinal" style="display:none;font-size:clamp(1rem,1.7vw,1.35rem);color:var(--ink);font-family:Syne,sans-serif;font-weight:800;letter-spacing:-.02em">Trigonometry is not really about triangles. It is about <span style="color:var(--acc)">relationships</span> — how one thing you can measure tells you something you cannot.</p>
+</section>
+
+<!-- 05 DERIVATIVE -->
+<section class="sec" data-acc="cyan" data-chapter="Change">
+  <div class="kicker">Section 05 · The mathematics of change</div>
+  <h2>The car is moving. Is distance enough?</h2>
+  <div class="road" id="road"><div class="car" id="car">🚗</div></div>
+  <div class="stack" id="derivVote"></div>
+  <div class="reveal" id="derivOut"></div>
+  <div class="glass stack hidden" id="derivLab">
+    <div class="row" style="justify-content:space-between">
+      <h3>Drag time. Watch what changes.</h3>
+      <button class="btn ghost" data-reset="deriv" type="button">↺ Reset</button>
+    </div>
+    <div class="cols">
+      <div class="stack">
+        <label class="f" for="tR"><span>TIME <span class="v" id="tV">0.0 s</span></span><input type="range" id="tR" min="0" max="100" step="1" value="0"></label>
+        <div class="stats" id="derivStats"></div>
+        <div class="row" id="derivApps"></div>
+      </div>
+      <svg class="chart" id="derivSvg" viewBox="0 0 640 300" role="img" aria-label="Position, speed and acceleration against time"></svg>
+    </div>
+  </div>
+</section>
+
+<!-- 06 INTEGRAL -->
+<section class="sec" data-acc="cyan" data-chapter="Accumulation">
+  <div class="kicker">Section 06 · From pieces to the whole</div>
+  <h2>How would you find this area?</h2>
+  <div class="cols">
+    <div class="stack">
+      <div class="row" style="justify-content:flex-end"><button class="btn ghost" data-reset="int" type="button">↺ Reset</button></div>
+      <div class="stack" id="intVote"></div>
+      <div class="reveal" id="intOut"></div>
+      <div class="stack hidden" id="intLab">
+        <label class="f" for="nR"><span>RECTANGLES <span class="v" id="nV">10</span></span><input type="range" id="nR" min="1" max="200" step="1" value="10"></label>
+        <div class="row" id="intJumps"></div>
+        <div class="stats" id="intStats"></div>
+      </div>
+    </div>
+    <figure class="glass">
+      <svg class="chart" id="intSvg" viewBox="0 0 460 300" role="img" aria-label="Area under a curve approximated by rectangles"></svg>
+      <figcaption>Left-edge rectangles under y = 4x − x², from x = 0 to x = 4.</figcaption>
+    </figure>
+  </div>
+  <div class="reveal" id="intFinal"></div>
+</section>
+
+<!-- 07 MONEY -->
+<section class="sec" data-acc="amber" data-chapter="Money">
+  <div class="kicker">Section 07 · The surprise</div>
+  <h2>Can mathematics save you money?</h2>
+  <p class="lead">You are 25, the car is <b class="mono" style="color:var(--ink)">$30,000</b>. Cash or finance? Worked example, not advice.</p>
+  <div class="cols">
+    <div class="glass stack">
+      <label class="f" for="lP"><span>CAR PRICE <span class="v" id="lPv"></span></span><input type="range" id="lP" min="5000" max="80000" step="1000" value="30000"></label>
+      <label class="f" for="lD"><span>DOWN PAYMENT <span class="v" id="lDv"></span></span><input type="range" id="lD" min="0" max="30000" step="500" value="0"></label>
+      <label class="f" for="lR"><span>ANNUAL INTEREST RATE <span class="v" id="lRv"></span></span><input type="range" id="lR" min="0" max="30" step="0.5" value="10"></label>
+      <label class="f" for="lY"><span>LOAN LENGTH <span class="v" id="lYv"></span></span><input type="range" id="lY" min="1" max="8" step="1" value="5"></label>
+      <button class="btn ghost" data-reset="loan" type="button" style="align-self:flex-start">↺ Reset to the example</button>
+    </div>
+    <div class="stack">
+      <div class="stats" id="loanStats"></div>
+      <div class="glass stack">
+        <div class="mbar">
+          <div class="lb"><span>🚗 The car itself</span><span class="mono" id="barCarV"></span></div>
+          <div class="tr"><i id="barCar" style="background:var(--s1)"></i></div>
+        </div>
+        <div class="mbar">
+          <div class="lb"><span>💸 What you actually pay</span><span class="mono" id="barTotV"></span></div>
+          <div class="tr"><i id="barTot1" style="background:var(--s1)"></i><i id="barTot2" style="background:var(--s2)"></i></div>
+        </div>
+        <div class="legend">
+          <span><i class="sw" style="background:var(--s1)"></i>Price of the car</span>
+          <span><i class="sw" style="background:var(--s2)"></i>Extra paid — interest</span>
+        </div>
+      </div>
+    </div>
+    <div class="glass stack">
+      <div class="row" style="justify-content:space-between">
+        <span class="pill acc">Live vote</span>
+        <button class="btn ghost" data-reset="loanVote" type="button">↺ Reset</button>
+      </div>
+      <h3 id="loanQ">Would you rather pay the cash price, or the financed total?</h3>
+      <div class="stack" id="loanVote"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 THE TRAP -->
+<section class="sec" data-acc="amber" data-chapter="The Trap">
+  <div class="kicker">Section 08 · The small-payment trap</div>
+  <div class="ad">
+    <div class="shine"></div>
+    <div class="kicker" style="color:var(--ink);opacity:.75">Limited offer · drive today</div>
+    <div style="font-family:Syne,sans-serif;font-weight:800;font-size:clamp(2.2rem,7vw,5rem);letter-spacing:-.03em;line-height:1">🚗 ONLY $650/MONTH</div>
+    <div class="dim">No big payment up front. Easy monthly plan.</div>
+  </div>
+  <div class="glass stack">
+    <div class="row" style="justify-content:space-between">
+      <div class="row"><span class="pill acc">Live vote</span><h3>Sounds cheap?</h3></div>
+      <button class="btn ghost" data-reset="trapVote" type="button">↺ Reset</button>
+    </div>
+    <div class="stack" id="trapVote"></div>
+  </div>
+  <div class="glass stack hidden" id="trapCalc">
+    <h3>Then do what the advert hopes you will not do.</h3>
+    <div class="row">
+      <span class="mono dim">$650</span><span class="dim">×</span>
+      <input type="number" id="trapN" value="60" min="1" max="120" style="max-width:110px" aria-label="number of payments">
+      <span class="dim">payments =</span>
+      <span class="big" id="trapTot" style="color:var(--acc)">$39,000</span>
+    </div>
+    <div class="stats" id="trapStats"></div>
+    <p class="lead" id="trapMoral"></p>
+  </div>
+</section>
+
+<!-- 09 ISLAMIC FINANCE -->
+<section class="sec" data-acc="amber" data-chapter="Riba & Structure">
+  <div class="kicker">Section 09 · Mathematics, money & Islamic finance</div>
+  <h2>Is interest haram?</h2>
+  <div class="cols">
+    <div class="stack">
+      <p class="lead">In Islamic finance, <b style="color:var(--ink)">riba</b> (interest / usury) is prohibited, so conventional interest-based lending is generally regarded as impermissible under Islamic principles.</p>
+      <p class="lead">This is not a theological debate, and I am not the one to settle it. What mathematics gives you is separate and still essential: the ability to <b style="color:var(--ink)">read any contract</b>, compare structures, and see the consequences before you sign.</p>
+      <div class="glass tight">
+        <div class="kicker">Shariah-compliant structures you may hear about</div>
+        <div class="row" style="margin-top:9px" id="ifStructures"></div>
+      </div>
+      <p class="tiny">Disclaimer: specific financial products differ in structure, and rulings can differ between scholars and institutions. For a real financial decision, consult a qualified Islamic finance scholar or adviser.</p>
+    </div>
+    <div class="glass stack">
+      <h3>“Don’t worry — it’s only $500 a month.”</h3>
+      <p class="tiny">What should a mathematically educated person ask? Pick <b>every</b> question worth asking.</p>
+      <div class="stack" id="ifQ"></div>
+      <div class="row"><button class="btn solid" id="ifCheck" type="button">Check answers</button><button class="btn ghost" data-reset="ifQ" type="button">↺ Reset</button></div>
+      <div class="reveal" id="ifOut"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 COMPOUND GROWTH -->
+<section class="sec" data-acc="amber" data-chapter="Exponential">
+  <div class="kicker">Section 10 · The one your brain gets wrong</div>
+  <h2>Choose one. No changing your mind.</h2>
+  <div class="cols" id="dblPicks">
+    <button class="glass choice" id="pickCash" style="flex-direction:column;align-items:flex-start;gap:8px;padding:22px">
+      <span class="pill">Option A</span>
+      <span class="big">$1,000</span>
+      <span class="dim">Right now. Cash in your hand today.</span>
+    </button>
+    <button class="glass choice" id="pickDouble" style="flex-direction:column;align-items:flex-start;gap:8px;padding:22px">
+      <span class="pill">Option B</span>
+      <span class="big">$1 → ×2 daily</span>
+      <span class="dim">One dollar. It doubles every day. For 30 days.</span>
+    </button>
+  </div>
+  <p class="tiny hidden" id="dblSummary"></p>
+  <div class="glass stack hidden" id="dblLab">
+    <div class="row" style="justify-content:space-between">
+      <div class="row"><span class="pill acc">Day <span class="mono" id="dayN">1</span></span><h3 id="dayHead">Watch what your intuition missed.</h3></div>
+      <div class="row">
+        <button class="btn solid" id="dayPlay" type="button">▶ Run 30 days</button>
+        <button class="btn ghost" data-reset="dbl" type="button">↺ Reset</button>
+      </div>
+    </div>
+    <input type="range" id="dayR" min="1" max="30" step="1" value="1" aria-label="day">
+    <div class="stats" id="dblStats"></div>
+    <svg class="chart" id="dblSvg" viewBox="0 0 640 260" role="img" aria-label="Value of one dollar doubled every day for thirty days"></svg>
+    <div class="row" id="dblApps"></div>
+  </div>
+</section>
+
+<!-- 11 DECISIONS -->
+<section class="sec" data-acc="amber" data-chapter="Decisions">
+  <div class="kicker">Section 11 · Mathematics as a decision tool</div>
+  <h2>Someone hands you $10,000.</h2>
+  <div class="cols-3" id="tenK"></div>
+  <div class="glass stack">
+    <div class="row" style="justify-content:space-between">
+      <h3>I am not going to tell you which one is right. Different question: what would you need to <em>know</em> first?</h3>
+      <button class="btn ghost" data-reset="need" type="button">↺ Reset</button>
+    </div>
+    <div class="cols-3" id="needList"></div>
+    <div class="reveal" id="needOut"></div>
+  </div>
+</section>
+
+<!-- 12 DETECTIVE -->
+<section class="sec" data-acc="pink" data-chapter="Detective">
+  <div class="kicker">Section 12 · The math detective</div>
+  <h2>Percentages are where you get robbed.</h2>
+  <div class="cols">
+    <div class="glass stack">
+      <div class="kicker">Case file</div>
+      <div class="row" style="gap:18px;align-items:flex-end">
+        <div><div class="tiny">WAS</div><div class="big mono">$500</div></div>
+        <div style="color:var(--acc);font-size:1.5rem">→ +50% →</div>
+        <div><div class="tiny">THEN</div><div class="big mono">$750</div></div>
+        <div style="color:var(--acc);font-size:1.5rem">→ −50% →</div>
+        <div><div class="tiny">NOW</div><div class="big mono" style="color:var(--no)">$375</div></div>
+      </div>
+      <p class="lead">Up 50%, then down 50%. Same number, both times. You are <b style="color:var(--no)">$125 poorer</b> than when you started. A percentage is never taken from the same base twice — that is the whole trick.</p>
+    </div>
+    <div class="glass stack">
+      <div class="row" style="justify-content:space-between">
+        <h3>Four cases. Score counts.</h3>
+        <button class="btn ghost" data-reset="det" type="button">↺ Reset</button>
+      </div>
+      <div id="detBox"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 RAPID FIRE -->
+<section class="sec" data-acc="pink" data-chapter="Rapid Fire">
+  <div class="kicker">Section 13 · Can you beat the class?</div>
+  <h2 id="rfTitle">Seven questions. Ten seconds each.</h2>
+  <div class="glass stack" id="rfCard">
+    <div class="row" style="justify-content:space-between">
+      <div class="timer">
+        <div class="tring">
+          <svg viewBox="0 0 52 52" width="52" height="52" aria-hidden="true">
+            <circle cx="26" cy="26" r="22" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="5"></circle>
+            <circle id="rfArc" cx="26" cy="26" r="22" fill="none" stroke="var(--acc)" stroke-width="5" stroke-linecap="round" stroke-dasharray="138.2" stroke-dashoffset="0"></circle>
+          </svg>
+          <div class="num" id="rfClock">10</div>
+        </div>
+        <div><div class="kicker" id="rfTopic">Ready</div><div class="tiny" id="rfProg">Question 0 of 7</div></div>
+      </div>
+      <div class="row">
+        <button class="btn solid" id="rfStart" type="button">▶ Start</button>
+        <button class="btn ghost" data-reset="rf" type="button">↺ Reset</button>
+      </div>
+    </div>
+    <h3 id="rfQ" style="font-size:clamp(1.1rem,2.4vw,1.8rem)">Press start when the class is ready.</h3>
+    <div class="cols" id="rfOpts"></div>
+    <div class="reveal" id="rfOut"></div>
+  </div>
+  <div class="board hidden" id="rfBoard"></div>
+</section>
+
+<!-- 14 THE BIG IDEA -->
+<section class="sec" data-acc="ice" data-chapter="The Big Idea">
+  <div class="lines" id="bigLines">
+    <div class="line">You may forget a formula.</div>
+    <div class="line">You may never calculate an integral after school.</div>
+    <div class="line">You may never use the sine rule in your job.</div>
+    <div class="line hot max">BUT YOU WILL ALWAYS NEED TO THINK.</div>
+  </div>
+  <div class="stack" id="bigTail" style="opacity:0;transition:opacity .8s">
+    <div class="kicker">Mathematics trains you to</div>
+    <div class="verbs" id="verbs"></div>
+  </div>
+  <div class="row"><button class="btn solid" id="bigGo" type="button">▶ Reveal, line by line</button><button class="btn ghost" data-reset="big" type="button">↺ Reset</button></div>
+</section>
+
+<!-- 15 THE CHALLENGE -->
+<section class="sec" data-acc="ice" data-chapter="The Challenge">
+  <div class="stack" id="s15q">
+    <div class="kicker">Section 15 · Last question</div>
+    <h2>So — what <em>is</em> mathematics, really?</h2>
+    <div class="stack" id="finalQ" style="max-width:820px"></div>
+    <div class="reveal" id="finalOut"></div>
+  </div>
+  <div class="row"><button class="btn ghost" data-reset="final" type="button">↺ Reset</button></div>
+  <div class="stack hidden" id="finalEnd">
+    <h2 style="font-size:clamp(1.4rem,3vw,2.4rem);color:var(--acc)">You don’t study mathematics only to solve mathematical problems.<br>You study it so that when life hands you a hard problem, you know how to start.</h2>
+    <div class="cols-3">
+      <div class="glass tight"><div style="font-size:1.8rem">🧠</div><h3>TRAIN YOUR BRAIN.</h3></div>
+      <div class="glass tight"><div style="font-size:1.8rem">📐</div><h3>UNDERSTAND THE WORLD.</h3></div>
+      <div class="glass tight"><div style="font-size:1.8rem">💡</div><h3>MAKE BETTER DECISIONS.</h3></div>
+    </div>
+    <div class="big" style="color:var(--ink)">Mathematics is much stronger than you think.</div>
+    <div class="row"><span class="tiny">Now scroll back to Section 01 and look at that first vote again.</span><button class="btn" id="backToVote" type="button">← Back to the first vote</button></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="bot">
+  <div class="dots" id="dots"></div>
+  <button class="btn sq" id="prev" type="button" aria-label="Previous section">←</button>
+  <button class="btn sq solid" id="next" type="button" aria-label="Next section">→</button>
+</footer>
+
+<aside id="pres" aria-label="Presenter panel">
+  <div class="row" style="justify-content:space-between">
+    <div class="row">
+      <span class="pill acc">Presenter</span>
+      <span class="mono" id="presClock">00:00</span>
+      <span class="tiny">← → move · F fullscreen · P this panel · R reset section</span>
+    </div>
+    <div class="row">
+      <button class="btn" id="presTimer" type="button">▶ Timer</button>
+      <button class="btn ghost" id="presResetAll" type="button">↺ Reset everything</button>
+      <button class="btn ghost" id="presClose" type="button">✕</button>
+    </div>
+  </div>
+  <div class="jump" id="presJump"></div>
+</aside>
+
+<script>
+(function(){
+"use strict";
+var $ = function(s, r){ return (r || document).querySelector(s); };
+var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+function el(tag, cls, html){ var n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; }
+var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var usd = function(v){ return "$" + Math.round(v).toLocaleString("en-US"); };
+var usd2 = function(v){ return "$" + v.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
+
+/* ── score ── */
+var state = { score: 0, answered: {} };
+function addScore(pts, key){
+  if (state.answered[key]) return;
+  state.answered[key] = true;
+  state.score += pts;
+  var n = $("#score"); n.textContent = state.score;
+  n.animate([{ transform: "scale(1)" }, { transform: "scale(1.6)" }, { transform: "scale(1)" }], { duration: 420 });
+}
+function resetScore(){ state.score = 0; state.answered = {}; $("#score").textContent = "0"; }
+
+/* ── reset registry ── */
+var RESET = {};
+document.addEventListener("click", function(e){
+  var b = e.target.closest("[data-reset]");
+  if (b && RESET[b.dataset.reset]) RESET[b.dataset.reset]();
+});
+
+/* ── animated number ── */
+function animNum(node, to, fmt, ms){
+  var from = parseFloat(node.dataset.v || "0");
+  node.dataset.v = to;
+  if (REDUCED) { node.textContent = fmt(to); return; }
+  var t0 = performance.now(), dur = ms || 520;
+  (function step(t){
+    var k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+    node.textContent = fmt(from + (to - from) * e);
+    if (k < 1) requestAnimationFrame(step);
+  })(t0);
+}
+function statTile(k, v){
+  var n = el("div", "stat");
+  n.appendChild(el("div", "k", k));
+  var vv = el("div", "v", v); n.appendChild(vv);
+  n.valueNode = vv; return n;
+}
+
+/* ── vote block (teacher-controlled reveal) ── */
+function voteBlock(box, opts, opt){
+  opt = opt || {};
+  var counts = opts.map(function(){ return 0; }), shown = false, rows = [];
+  function render(){
+    var total = counts.reduce(function(a, b){ return a + b; }, 0) || 1;
+    rows.forEach(function(r, i){
+      r.fill.style.width = shown ? (counts[i] / Math.max.apply(null, counts.concat([1])) * 100) + "%" : "0%";
+      r.n.textContent = shown ? counts[i] + " · " + Math.round(counts[i] / total * 100) + "%" : "";
+    });
+    showBtn.textContent = shown ? "Hide results" : "Show the class";
+    tot.textContent = counts.reduce(function(a, b){ return a + b; }, 0) + " votes";
+  }
+  opts.forEach(function(o, i){
+    var b = el("button", "choice"); b.type = "button";
+    b.appendChild(el("i", "fill"));
+    b.appendChild(el("span", "tag", o.icon || String.fromCharCode(65 + i)));
+    b.appendChild(el("span", "txt", o.t));
+    var n = el("span", "n", ""); b.appendChild(n);
+    b.addEventListener("click", function(){
+      counts[i]++;
+      b.animate([{ transform: "translateX(4px) scale(1)" }, { transform: "translateX(4px) scale(1.02)" }, { transform: "translateX(0) scale(1)" }], { duration: 260 });
+      render();
+    });
+    rows.push({ fill: b.querySelector(".fill"), n: n });
+    box.appendChild(b);
+  });
+  var bar = el("div", "row"); bar.style.justifyContent = "space-between";
+  var showBtn = el("button", "btn solid", "Show the class"); showBtn.type = "button";
+  var tot = el("span", "tiny", "0 votes");
+  showBtn.addEventListener("click", function(){ shown = !shown; render(); });
+  bar.appendChild(tot); bar.appendChild(showBtn);
+  box.appendChild(bar);
+  render();
+  return { reset: function(){ counts = counts.map(function(){ return 0; }); shown = false; render(); } };
+}
+
+/* ── quiz block (one right answer, scored) ── */
+function quizBlock(box, opts, right, explain, key, pts){
+  var done = false, btns = [];
+  opts.forEach(function(o, i){
+    var b = el("button", "choice"); b.type = "button";
+    b.appendChild(el("i", "fill"));
+    b.appendChild(el("span", "tag", String.fromCharCode(65 + i)));
+    b.appendChild(el("span", "txt", o));
+    b.addEventListener("click", function(){
+      if (done) return; done = true;
+      btns.forEach(function(x, k){
+        x.disabled = true;
+        if (k === right) x.classList.add("right");
+      });
+      if (i !== right) b.classList.add("wrong");
+      else addScore(pts == null ? 10 : pts, key);
+      if (out) { out.innerHTML = explain; out.classList.add("show"); }
+      if (box.onAnswer) box.onAnswer(i === right, i);
+    });
+    btns.push(b); box.appendChild(b);
+  });
+  var out = box.dataset.out ? $(box.dataset.out) : null;
+  return {
+    reset: function(){
+      done = false;
+      btns.forEach(function(b){ b.disabled = false; b.className = "choice"; });
+      if (out) { out.classList.remove("show"); }
+      delete state.answered[key];
+    }
+  };
+}
+
+/* ── multi-select block ── */
+function multiBlock(box, opts, correct){
+  var picked = {}, btns = [];
+  opts.forEach(function(o, i){
+    var b = el("button", "choice multi"); b.type = "button";
+    b.appendChild(el("span", "tag", String.fromCharCode(65 + i)));
+    b.appendChild(el("span", "txt", o.t));
+    b.addEventListener("click", function(){
+      if (b.disabled) return;
+      picked[i] = !picked[i];
+      b.classList.toggle("sel", !!picked[i]);
+    });
+    btns.push(b); box.appendChild(b);
+  });
+  return {
+    check: function(){
+      var hit = 0, miss = 0;
+      btns.forEach(function(b, i){
+        b.disabled = true;
+        var isRight = correct.indexOf(i) >= 0;
+        if (isRight) { b.classList.add("right"); if (picked[i]) hit++; }
+        else if (picked[i]) { b.classList.add("wrong"); miss++; }
+      });
+      return { hit: hit, miss: miss, need: correct.length };
+    },
+    reset: function(){
+      picked = {};
+      btns.forEach(function(b){ b.disabled = false; b.className = "choice multi"; });
+    }
+  };
+}
+
+/* ── svg helpers ── */
+var NS = "http://www.w3.org/2000/svg";
+function sv(name, a){ var n = document.createElementNS(NS, name); for (var k in a) n.setAttribute(k, a[k]); return n; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function txt(x, y, s, a){
+  var o = { x: x, y: y, fill: "var(--faint)", "font-size": 11, "font-family": "JetBrains Mono, monospace" };
+  for (var k in (a || {})) o[k] = a[k];
+  var n = sv("text", o); n.textContent = s; return n;
+}
+
+/* ── deck navigation ── */
+var secs = $$(".sec"), at = 0;
+$("#tot").textContent = secs.length;
+var dots = $("#dots"), jump = $("#presJump");
+secs.forEach(function(s, i){
+  var d = el("button", "dot"); d.type = "button";
+  d.setAttribute("aria-label", "Section " + (i + 1) + ": " + s.dataset.chapter);
+  d.addEventListener("click", function(){ go(i); });
+  dots.appendChild(d);
+  var j = el("button", "j", "<b>" + String(i + 1).padStart(2, "0") + "</b> " + s.dataset.chapter); j.type = "button";
+  j.addEventListener("click", function(){ go(i); });
+  jump.appendChild(j);
+});
+function go(i){
+  at = Math.max(0, Math.min(secs.length - 1, i));
+  secs.forEach(function(s, k){ s.classList.toggle("on", k === at); });
+  var s = secs[at];
+  document.documentElement.dataset.acc = s.dataset.acc;
+  $("#chapter").textContent = s.dataset.chapter;
+  $("#cur").textContent = at + 1;
+  $("#pfill").style.width = ((at + 1) / secs.length * 100) + "%";
+  $$(".dot", dots).forEach(function(d, k){ d.classList.toggle("now", k === at); d.classList.toggle("seen", k < at); });
+  $$(".j", jump).forEach(function(j, k){ j.classList.toggle("now", k === at); });
+  window.scrollTo(0, 0);
+  if (typeof onEnter[at] === "function") onEnter[at]();
+}
+var onEnter = {};
+$("#next").addEventListener("click", function(){ go(at + 1); });
+$("#prev").addEventListener("click", function(){ go(at - 1); });
+function resetSection(i){
+  $$("[data-reset]", secs[i]).forEach(function(b){ if (RESET[b.dataset.reset]) RESET[b.dataset.reset](); });
+}
+document.addEventListener("keydown", function(e){
+  var t = e.target.tagName;
+  if (t === "INPUT" || t === "TEXTAREA") return;
+  var k = e.key.toLowerCase();
+  if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); go(at + 1); }
+  else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); go(at - 1); }
+  else if (e.key === "Home") go(0);
+  else if (e.key === "End") go(secs.length - 1);
+  else if (k === "f") toggleFs();
+  else if (k === "p") togglePres();
+  else if (k === "r") resetSection(at);
+});
+var tx0 = 0, ty0 = 0;
+document.addEventListener("touchstart", function(e){ tx0 = e.changedTouches[0].clientX; ty0 = e.changedTouches[0].clientY; }, { passive: true });
+document.addEventListener("touchend", function(e){
+  var dx = e.changedTouches[0].clientX - tx0, dy = e.changedTouches[0].clientY - ty0;
+  if (Math.abs(dx) > 72 && Math.abs(dx) > Math.abs(dy) * 1.8) go(at + (dx < 0 ? 1 : -1));
+}, { passive: true });
+
+function toggleFs(){
+  if (document.fullscreenElement) document.exitFullscreen();
+  else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+}
+$("#fsBtn").addEventListener("click", toggleFs);
+
+/* ── presenter panel ── */
+var pres = $("#pres"), presOn = false, tId = null, tSec = 0;
+function togglePres(){ presOn = !presOn; pres.classList.toggle("open", presOn); }
+$("#presBtn").addEventListener("click", togglePres);
+$("#presClose").addEventListener("click", togglePres);
+$("#presTimer").addEventListener("click", function(){
+  if (tId) { clearInterval(tId); tId = null; this.textContent = "▶ Timer"; return; }
+  this.textContent = "❚❚ Pause";
+  tId = setInterval(function(){
+    tSec++;
+    $("#presClock").textContent = String(Math.floor(tSec / 60)).padStart(2, "0") + ":" + String(tSec % 60).padStart(2, "0");
+  }, 1000);
+});
+$("#presResetAll").addEventListener("click", function(){
+  Object.keys(RESET).forEach(function(k){ RESET[k](); });
+  resetScore();
+  clearInterval(tId); tId = null; tSec = 0;
+  $("#presClock").textContent = "00:00"; $("#presTimer").textContent = "▶ Timer";
+});
+
+/* ═══ 01 · HOOK VOTE ═══ */
+RESET.hookVote = voteBlock($("#hookVote"), [
+  { icon: "🟥", t: "I will never use it" },
+  { icon: "🟨", t: "Maybe sometimes" },
+  { icon: "🟩", t: "Mathematics is everywhere" },
+  { icon: "🤔", t: "I don’t know" }
+]).reset;
+
+/* ═══ 02 · BODY vs BRAIN ═══ */
+var BB = [
+  { t: "Stronger muscles", home: "body" },
+  { t: "More endurance", home: "body" },
+  { t: "Better coordination", home: "body" },
+  { t: "A healthier heart", home: "body" },
+  { t: "Better problem solving", home: "brain" },
+  { t: "Logical reasoning", home: "brain" },
+  { t: "Pattern recognition", home: "brain" },
+  { t: "Better decision making", home: "brain" },
+  { t: "Concentration", home: "both" },
+  { t: "Discipline", home: "both" }
+];
+var bbBank = $("#bbBank"), bbOut = $("#bbOut"), bbSel = null, bbChips = [];
+function bbBuild(){
+  bbBank.innerHTML = ""; bbChips = [];
+  $$("[data-bank]").forEach(function(b){ b.innerHTML = ""; });
+  bbOut.classList.remove("show");
+  BB.slice().sort(function(){ return Math.random() - .5; }).forEach(function(o){
+    var c = el("button", "chip", o.t); c.type = "button"; c.draggable = true; c.dataset.home = o.home; c.dataset.at = "";
+    c.addEventListener("dragstart", function(e){ bbSel = c; c.classList.add("dragging"); try { e.dataTransfer.setData("text/plain", o.t); } catch (x) {} });
+    c.addEventListener("dragend", function(){ c.classList.remove("dragging"); });
+    c.addEventListener("click", function(){
+      if (bbSel === c) { bbSel = null; c.classList.remove("sel"); return; }
+      bbChips.forEach(function(x){ x.classList.remove("sel"); });
+      bbSel = c; c.classList.add("sel");
+    });
+    bbChips.push(c); bbBank.appendChild(c);
+  });
+}
+function bbPlace(chip, col){
+  if (!chip) return;
+  chip.dataset.at = col || "";
+  chip.classList.remove("sel", "dragging");
+  (col ? $('[data-bank="' + col + '"]') : bbBank).appendChild(chip);
+  bbSel = null;
+}
+$$(".drop").forEach(function(d){
+  d.addEventListener("dragover", function(e){ e.preventDefault(); d.classList.add("over"); });
+  d.addEventListener("dragleave", function(){ d.classList.remove("over"); });
+  d.addEventListener("drop", function(e){ e.preventDefault(); d.classList.remove("over"); bbPlace(bbSel, d.dataset.col); });
+  d.addEventListener("click", function(e){ if (!e.target.closest(".chip") && bbSel) bbPlace(bbSel, d.dataset.col); });
+});
+bbBank.addEventListener("dragover", function(e){ e.preventDefault(); });
+bbBank.addEventListener("drop", function(e){ e.preventDefault(); bbPlace(bbSel, ""); });
+$("#bbCheck").addEventListener("click", function(){
+  var ok = 0, left = 0, bothPlaced = 0;
+  bbChips.forEach(function(c){
+    var a = c.dataset.at, h = c.dataset.home;
+    if (!a) { left++; return; }
+    if (h === "both") { c.classList.add("good"); ok++; bothPlaced++; }
+    else if (a === h) { c.classList.add("good"); ok++; }
+    else c.classList.add("bad");
+  });
+  bbOut.innerHTML = "<b>" + ok + " of 10 correct." + (left ? " (" + left + " unplaced.)" : "") + "</b> " +
+    "The trap: <b>concentration</b> and <b>discipline</b> were accepted in <em>either</em> column — training a body and training a mind are the same kind of act. You do something hard on purpose, repeatedly, and you get stronger at things you never practised.<br>" +
+    "🏋️ Exercise → a stronger body. &nbsp; 🧠 Mathematics → stronger thinking.";
+  bbOut.classList.add("show");
+  addScore(10, "bb");
+});
+RESET.bb = bbBuild;
+bbBuild();
+
+/* ═══ 03 · WHERE IT LIVES ═══ */
+var NODES = [
+  { em: "📱", t: "Smartphone", f: ["Fourier analysis", "linear algebra", "probability", "prime numbers"],
+    d: "Every photo you take is squeezed by maths that throws away exactly what your eye cannot see. Every message you send is locked with prime numbers so large that guessing them would outlast the universe." },
+  { em: "🚗", t: "Car", f: ["calculus", "geometry", "statistics", "optimisation"],
+    d: "ABS brakes solve a rate-of-change problem many times per second: how fast is this wheel slowing, and is it about to lock? The engine map behind your accelerator is an optimisation problem someone solved with calculus." },
+  { em: "✈️", t: "Airplane", f: ["trigonometry", "vectors", "calculus", "differential equations"],
+    d: "Lift, drag, fuel burn and flight path are all equations. The autopilot is continuously solving: where am I, where should I be, how hard do I correct — without shaking the passengers." },
+  { em: "🏗️", t: "Building", f: ["geometry", "trigonometry", "optimisation", "structural equations"],
+    d: "Every beam is a calculation about forces you cannot see. Angles, loads, wind, material cost — an architect who guesses builds something that falls down, or something that costs three times what it should." },
+  { em: "🏦", t: "Bank", f: ["percentages", "probability", "statistics", "exponential growth"],
+    d: "A bank is a mathematics company that happens to hold money. Interest, risk, credit scoring, fraud detection — all of it is probability and statistics running on your data." },
+  { em: "🎮", t: "Video game", f: ["vectors", "trigonometry", "geometry", "physics + calculus"],
+    d: "Every time the camera turns, the machine runs trigonometry over a million triangles. Every jump, every bullet, every bouncing ball is calculus pretending to be fun." },
+  { em: "🤖", t: "AI", f: ["linear algebra", "probability", "calculus", "statistics"],
+    d: "A neural network is an enormous stack of matrix multiplications. It learns using derivatives: the gradient tells it which direction reduces the error. Without calculus there is no modern AI at all." },
+  { em: "🛰️", t: "GPS", f: ["trigonometry", "coordinate geometry", "systems of equations", "relativity"],
+    d: "Your phone locates itself by solving equations from at least four satellite distances at once. The satellite clocks even have to be corrected for relativity — skip that and your position drifts by kilometres in a day." },
+  { em: "🏥", t: "Medicine", f: ["statistics", "probability", "calculus", "modelling"],
+    d: "How fast a drug leaves your blood is a calculus problem. Whether a treatment actually works — or just got lucky in a small group — is a statistics problem. A doctor who cannot read those numbers is guessing with your life." },
+  { em: "⚽", t: "Sports", f: ["statistics", "vectors", "geometry", "probability"],
+    d: "The angle of a shot, the arc of a ball, the decision to press or drop — top clubs employ mathematicians. Player value, injury risk and match tactics are now decided by models." },
+  { em: "📈", t: "Business", f: ["percentages", "statistics", "exponential growth", "optimisation"],
+    d: "Margin, break-even, pricing, stock levels, growth rate. Most businesses that close did not fail at their craft. They failed at arithmetic they never checked." }
+];
+var nodeBox = $("#nodes"), nodeDetail = $("#nodeDetail"), nodeSeen = {};
+function nodeBuild(){
+  nodeBox.innerHTML = ""; nodeSeen = {};
+  NODES.forEach(function(o, i){
+    var b = el("button", "node"); b.type = "button";
+    b.appendChild(el("span", "em", o.em));
+    b.appendChild(el("span", "lbl", o.t));
+    b.addEventListener("click", function(){
+      nodeSeen[i] = true;
+      $$(".node", nodeBox).forEach(function(x, k){ x.classList.toggle("seen", !!nodeSeen[k]); });
+      nodeDetail.innerHTML = "";
+      nodeDetail.appendChild(el("h3", null, o.em + "&nbsp; " + o.t));
+      var f = el("div", "fields");
+      o.f.forEach(function(x){ f.appendChild(el("span", "pill acc", x)); });
+      nodeDetail.appendChild(f);
+      nodeDetail.appendChild(el("p", "lead", o.d));
+      var n = Object.keys(nodeSeen).length;
+      $("#nodeCount").textContent = n + " of " + NODES.length + " opened";
+      if (n === NODES.length) addScore(10, "nodes");
+    });
+    nodeBox.appendChild(b);
+  });
+  nodeDetail.innerHTML = '<h3 class="dim">Pick anything above.</h3><p class="lead">Not one of these things could exist without the topics you are being taught this year.</p>';
+  $("#nodeCount").textContent = "0 of " + NODES.length + " opened";
+}
+RESET.nodes = nodeBuild;
+nodeBuild();
+
+/* ═══ 04 · TRIGONOMETRY ═══ */
+var trigSvg = $("#trigSvg");
+function drawTrig(solved){
+  clear(trigSvg);
+  var x0 = 70, y0 = 240, w = 250, h = 250;
+  trigSvg.appendChild(sv("line", { x1: 20, y1: y0, x2: 440, y2: y0, stroke: "var(--line)", "stroke-width": 2 }));
+  trigSvg.appendChild(sv("line", { x1: x0, y1: y0, x2: x0 + w, y2: y0, stroke: "var(--acc)", "stroke-width": 2 }));
+  trigSvg.appendChild(txt(x0 + w / 2, y0 + 20, "30 m", { "text-anchor": "middle", fill: "var(--acc)", "font-weight": 700, "font-size": 13 }));
+  var eye = txt(x0, y0 - 6, "🧍", { "font-size": 26, "text-anchor": "middle", fill: "var(--ink)", "font-family": "sans-serif" });
+  trigSvg.appendChild(eye);
+  trigSvg.appendChild(sv("path", { d: "M" + (x0 + 42) + " " + y0 + " A 42 42 0 0 0 " + (x0 + 29.7) + " " + (y0 - 29.7), fill: "none", stroke: "var(--acc)", "stroke-width": 2 }));
+  trigSvg.appendChild(txt(x0 + 52, y0 - 12, "45°", { fill: "var(--acc)", "font-weight": 700, "font-size": 13 }));
+  var bx = x0 + w, by = y0 - h;
+  var b = sv("rect", { x: bx - 4, y: by, width: 78, height: h, rx: 4, fill: "rgba(255,255,255,.07)", stroke: "var(--line)" });
+  trigSvg.appendChild(b);
+  var hyp = sv("line", { x1: x0, y1: y0 - 10, x2: bx, y2: by, stroke: "var(--s2)", "stroke-width": 2, "stroke-dasharray": "6 5" });
+  trigSvg.appendChild(hyp);
+  var vt = sv("line", { x1: bx, y1: y0, x2: bx, y2: solved ? by : y0, stroke: "var(--ok)", "stroke-width": 3 });
+  trigSvg.appendChild(vt);
+  if (solved) {
+    if (!REDUCED) vt.animate([{ y2: y0 }, { y2: by }], { duration: 900, easing: "cubic-bezier(.2,.8,.2,1)" });
+    var lab = txt(bx + 88, by + h / 2, "h = 30 m", { fill: "var(--ok)", "font-weight": 700, "font-size": 15 });
+    trigSvg.appendChild(lab);
+    trigSvg.appendChild(txt(bx + 88, by + h / 2 + 20, "tan45° = 1", { fill: "var(--muted)" }));
+  } else {
+    trigSvg.appendChild(txt(bx + 88, y0 - h / 2, "h = ?", { fill: "var(--muted)", "font-weight": 700, "font-size": 16 }));
+  }
+}
+drawTrig(false);
+var trigBox = $("#trigVote"); trigBox.dataset.out = "#trigOut";
+function trigBuild(){
+  trigBox.innerHTML = "";
+  var q = quizBlock(trigBox, ["15 m — half the distance", "30 m — the same as the distance", "60 m — twice the distance"], 1,
+    "<b>30 metres.</b> <span class='mono'>height = distance × tan(angle)</span>, and tan 45° is exactly 1 — so the height equals the distance you stood away. You just measured a building with a protractor. At 30° it would be 30 × 0.577 = 17.3 m. Same method, any building.",
+    "trig", 15);
+  trigBox.onAnswer = function(){ drawTrig(true); $("#trigFinal").style.display = ""; };
+  return q;
+}
+var trigQ = trigBuild();
+RESET.trig = function(){ trigQ.reset(); drawTrig(false); $("#trigFinal").style.display = "none"; };
+["Construction", "Engineering", "GPS", "Robotics", "Navigation", "3D graphics", "Astronomy"].forEach(function(t){
+  $("#trigApps").appendChild(el("span", "pill", t));
+});
+
+/* ═══ 05 · DERIVATIVE ═══ */
+var dBox = $("#derivVote"); dBox.dataset.out = "#derivOut";
+var dLab = $("#derivLab"), tR = $("#tR"), car = $("#car"), dSvg = $("#derivSvg");
+var S = function(t){ return t * t * t / 10; }, V = function(t){ return 3 * t * t / 10; }, A = function(t){ return 0.6 * t; };
+var dStats = [
+  statTile("POSITION", "0 m"), statTile("SPEED", "0 m/s"), statTile("SPEED", "0 km/h"), statTile("ACCELERATION", "0 m/s²")
+];
+dStats.forEach(function(s){ $("#derivStats").appendChild(s); });
+function drawDeriv(t){
+  $("#tV").textContent = t.toFixed(1) + " s";
+  car.style.left = Math.min(97, Math.max(3, S(t))) + "%";
+  animNum(dStats[0].valueNode, S(t), function(v){ return v.toFixed(1) + " m"; }, 160);
+  animNum(dStats[1].valueNode, V(t), function(v){ return v.toFixed(1) + " m/s"; }, 160);
+  animNum(dStats[2].valueNode, V(t) * 3.6, function(v){ return Math.round(v) + " km/h"; }, 160);
+  animNum(dStats[3].valueNode, A(t), function(v){ return v.toFixed(1) + " m/s²"; }, 160);
+  clear(dSvg);
+  var L = 58, R = 14, W = 640, PH = 80, GAP = 14, TOP = 12;
+  var panels = [
+    { f: S, max: 100, c: "var(--s1)", n: "POSITION  s(t) = t³/10", u: "m" },
+    { f: V, max: 30, c: "var(--s2)", n: "SPEED  s′(t) = 0.3t²", u: "m/s" },
+    { f: A, max: 6, c: "var(--s3)", n: "ACCELERATION  s″(t) = 0.6t", u: "m/s²" }
+  ];
+  panels.forEach(function(p, i){
+    var y0 = TOP + i * (PH + GAP), y1 = y0 + PH;
+    var X = function(tt){ return L + tt / 10 * (W - L - R); };
+    var Y = function(v){ return y1 - v / p.max * PH; };
+    dSvg.appendChild(sv("line", { x1: L, x2: W - R, y1: y1, y2: y1, stroke: "var(--line)" }));
+    dSvg.appendChild(sv("line", { x1: L, x2: W - R, y1: y0, y2: y0, stroke: "var(--line)", "stroke-dasharray": "3 5", opacity: .55 }));
+    dSvg.appendChild(txt(L - 8, y1 + 4, "0", { "text-anchor": "end" }));
+    dSvg.appendChild(txt(L - 8, y0 + 10, p.max + "", { "text-anchor": "end" }));
+    dSvg.appendChild(txt(L, y0 - 3, p.n, { fill: p.c, "font-weight": 700, "font-size": 10.5 }));
+    var d = "";
+    for (var k = 0; k <= 100; k++) { var tt = k / 10; d += (k ? " L" : "M") + X(tt).toFixed(1) + " " + Y(p.f(tt)).toFixed(1); }
+    dSvg.appendChild(sv("path", { d: d, fill: "none", stroke: p.c, "stroke-width": 2.2, "stroke-linejoin": "round" }));
+    dSvg.appendChild(sv("line", { x1: X(t), x2: X(t), y1: y0 - 2, y2: y1, stroke: "var(--acc)", "stroke-width": 1, opacity: .8 }));
+    dSvg.appendChild(sv("circle", { cx: X(t), cy: Y(p.f(t)), r: 5, fill: p.c, stroke: "var(--bg)", "stroke-width": 2 }));
+    dSvg.appendChild(txt(Math.min(W - R - 6, X(t) + 9), Y(p.f(t)) - 8, p.f(t).toFixed(1) + " " + p.u, { fill: "var(--ink)", "font-weight": 700, "font-size": 11 }));
+    if (i === 2) for (var s2 = 0; s2 <= 10; s2 += 2) dSvg.appendChild(txt(X(s2), y1 + 15, s2 + "s", { "text-anchor": "middle" }));
+  });
+}
+tR.addEventListener("input", function(){ drawDeriv(+tR.value / 10); });
+function derivBuild(){
+  dBox.innerHTML = "";
+  var q = quizBlock(dBox, ["Yes — distance tells me everything I need", "No — I also need to know how it is changing"], 1,
+    "<b>Distance alone tells you almost nothing.</b> Two cars can both be 200 m down the road — one crawling, one about to crash. Position → how fast it changes is <b>speed</b>. Speed → how fast <em>that</em> changes is <b>acceleration</b>. That operation, “how fast is this changing right now?”, is a <b>derivative</b>.",
+    "deriv", 10);
+  dBox.onAnswer = function(){ dLab.classList.remove("hidden"); dBox.classList.add("hidden"); drawDeriv(0); };
+  return q;
+}
+var derivQ = derivBuild();
+RESET.deriv = function(){ derivQ.reset(); dBox.classList.remove("hidden"); dLab.classList.add("hidden"); tR.value = 0; drawDeriv(0); };
+[["🚗", "Speed of a car"], ["🚀", "Rocket acceleration"], ["📈", "Business growth"], ["🌡️", "Temperature change"], ["🤖", "Robot movement"], ["🏥", "Drug in your blood"]].forEach(function(a){
+  $("#derivApps").appendChild(el("span", "pill", a[0] + " " + a[1]));
+});
+drawDeriv(0);
+
+/* ═══ 06 · INTEGRAL ═══ */
+var iBox = $("#intVote"); iBox.dataset.out = "#intOut";
+var iSvg = $("#intSvg"), nR = $("#nR"), iLab = $("#intLab");
+var F = function(x){ return 4 * x - x * x; }, EXACT = 32 / 3;
+var iStats = [statTile("RECTANGLES", "10"), statTile("YOUR ESTIMATE", "0"), statTile("TRUE AREA", EXACT.toFixed(4)), statTile("ERROR", "0")];
+iStats.forEach(function(s){ $("#intStats").appendChild(s); });
+function leftSum(n){ var h = 4 / n, s = 0; for (var i = 0; i < n; i++) s += F(i * h) * h; return s; }
+function drawInt(n, showRects){
+  clear(iSvg);
+  var L = 40, R = 16, T = 18, B = 40, W = 460, H = 300;
+  var X = function(x){ return L + x / 4 * (W - L - R); };
+  var Y = function(y){ return H - B - y / 4.6 * (H - T - B); };
+  iSvg.appendChild(sv("line", { x1: L, x2: W - R, y1: Y(0), y2: Y(0), stroke: "var(--line)", "stroke-width": 2 }));
+  iSvg.appendChild(sv("line", { x1: L, x2: L, y1: Y(0), y2: T, stroke: "var(--line)", "stroke-width": 2 }));
+  [0, 1, 2, 3, 4].forEach(function(x){ iSvg.appendChild(txt(X(x), Y(0) + 16, x + "", { "text-anchor": "middle" })); });
+  [1, 2, 3, 4].forEach(function(y){ iSvg.appendChild(txt(L - 7, Y(y) + 4, y + "", { "text-anchor": "end" })); });
+  var d = "M" + X(0) + " " + Y(0);
+  for (var k = 0; k <= 200; k++) { var x = k / 50; d += " L" + X(x).toFixed(1) + " " + Y(F(x)).toFixed(1); }
+  if (showRects) {
+    var h = 4 / n;
+    if (n <= 120) {
+      for (var i = 0; i < n; i++) {
+        var xv = i * h, hv = F(xv);
+        iSvg.appendChild(sv("rect", { x: X(xv), y: Y(hv), width: X(h) - X(0), height: Y(0) - Y(hv), fill: "var(--acc)", "fill-opacity": .3, stroke: "var(--acc)", "stroke-width": n > 40 ? .4 : 1, "stroke-opacity": .8 }));
+      }
+    } else {
+      var st = "M" + X(0) + " " + Y(0);
+      for (var j = 0; j < n; j++) { var xj = j * h, hj = F(xj); st += " L" + X(xj).toFixed(2) + " " + Y(hj).toFixed(2) + " L" + X(xj + h).toFixed(2) + " " + Y(hj).toFixed(2); }
+      st += " L" + X(4) + " " + Y(0) + " Z";
+      iSvg.appendChild(sv("path", { d: st, fill: "var(--acc)", "fill-opacity": .32, stroke: "var(--acc)", "stroke-width": .5 }));
+    }
+  } else {
+    iSvg.appendChild(sv("path", { d: d + " L" + X(4) + " " + Y(0) + " Z", fill: "var(--acc)", "fill-opacity": .16 }));
+  }
+  iSvg.appendChild(sv("path", { d: d.replace("M" + X(0) + " " + Y(0), "M" + X(0) + " " + Y(F(0))), fill: "none", stroke: "var(--ink)", "stroke-width": 2.4 }));
+  iSvg.appendChild(txt(X(2), Y(4.35), "y = 4x − x²", { "text-anchor": "middle", fill: "var(--ink)", "font-weight": 700, "font-size": 12 }));
+}
+function intUpdate(){
+  var n = +nR.value, est = leftSum(n);
+  $("#nV").textContent = n;
+  iStats[0].valueNode.textContent = n;
+  animNum(iStats[1].valueNode, est, function(v){ return v.toFixed(4); }, 200);
+  animNum(iStats[3].valueNode, Math.abs(est - EXACT), function(v){ return v.toFixed(4); }, 200);
+  drawInt(n, true);
+}
+nR.addEventListener("input", intUpdate);
+[10, 50, 100, 1000].forEach(function(n){
+  var b = el("button", "btn", n + " →"); b.type = "button";
+  b.addEventListener("click", function(){ nR.value = n; intUpdate(); });
+  $("#intJumps").appendChild(b);
+});
+function intBuild(){
+  iBox.innerHTML = "";
+  var q = quizBlock(iBox, ["Guess it — it looks like about 10", "Measure it with a ruler", "Break it into small pieces and add them up"], 2,
+    "<b>Break it into pieces.</b> A curve is impossible to measure directly — but a rectangle is easy. So chop the shape into thin rectangles, add them up, and then make the rectangles thinner. Watch the error.",
+    "int", 15);
+  iBox.onAnswer = function(){
+    iLab.classList.remove("hidden"); iBox.classList.add("hidden");
+    nR.value = 10; intUpdate();
+    $("#intFinal").innerHTML = "Thinner strips, and the answer stops moving — it settles on <b class='mono'>10.6667</b>. That limit is the <b>integral</b>. Pay-off: your speedometer knows your speed at every instant; add speed × a tiny slice of time and you get <b>total distance</b>. <span class='mono'>Speed → integral → distance.</span> <b>Derivatives study change; integrals study accumulation</b> — one idea, run in opposite directions.";
+    $("#intFinal").classList.add("show");
+  };
+  return q;
+}
+var intQ = intBuild();
+RESET.int = function(){ intQ.reset(); iBox.classList.remove("hidden"); iLab.classList.add("hidden"); $("#intFinal").classList.remove("show"); nR.value = 10; drawInt(10, false); };
+drawInt(10, false);
+
+/* ═══ 07 · LOAN ═══ */
+var lP = $("#lP"), lD = $("#lD"), lR = $("#lR"), lY = $("#lY");
+var lStats = [statTile("MONTHLY PAYMENT", "$0"), statTile("TOTAL YOU PAY", "$0"), statTile("EXTRA — INTEREST", "$0"), statTile("EXTRA AS % OF CAR", "0%")];
+lStats.forEach(function(s){ $("#loanStats").appendChild(s); });
+function loanCalc(){
+  var P = +lP.value, D = Math.min(+lD.value, P), r = +lR.value, y = +lY.value;
+  var fin = P - D, i = r / 1200, n = y * 12;
+  var m = i === 0 ? fin / n : fin * i / (1 - Math.pow(1 + i, -n));
+  if (!isFinite(m)) m = 0;
+  var total = D + m * n, extra = total - P;
+  $("#lPv").textContent = usd(P); $("#lDv").textContent = usd(D);
+  $("#lRv").textContent = r.toFixed(1) + "%"; $("#lYv").textContent = y + (y === 1 ? " year" : " years");
+  animNum(lStats[0].valueNode, m, function(v){ return usd2(v); }, 300);
+  animNum(lStats[1].valueNode, total, usd, 300);
+  animNum(lStats[2].valueNode, extra, usd, 300);
+  animNum(lStats[3].valueNode, P ? extra / P * 100 : 0, function(v){ return v.toFixed(1) + "%"; }, 300);
+  var max = Math.max(total, P) || 1;
+  $("#barCar").style.width = (P / max * 100) + "%";
+  $("#barTot1").style.width = (P / max * 100) + "%";
+  $("#barTot2").style.width = (Math.max(0, extra) / max * 100) + "%";
+  $("#barCarV").textContent = usd(P);
+  $("#barTotV").textContent = usd(total);
+  $("#loanQ").textContent = usd(P) + " — or " + usd(total) + " for the same car?";
+}
+[lP, lD, lR, lY].forEach(function(s){ s.addEventListener("input", loanCalc); });
+RESET.loan = function(){ lP.value = 30000; lD.value = 0; lR.value = 10; lY.value = 5; loanCalc(); };
+loanCalc();
+RESET.loanVote = voteBlock($("#loanVote"), [
+  { icon: "💵", t: "Pay cash — no extra for the same car." },
+  { icon: "🏦", t: "Take the loan. I need a car now." },
+  { icon: "⏳", t: "Buy cheaper, save the difference." }
+]).reset;
+
+/* ═══ 08 · THE TRAP ═══ */
+var trapCalc = $("#trapCalc"), trapN = $("#trapN");
+var tStats = [statTile("STICKER PRICE", "$30,000"), statTile("YOU ACTUALLY PAY", "$39,000"), statTile("EXTRA", "$9,000"), statTile("EXTRA PER YEAR", "$1,800")];
+tStats.forEach(function(s){ $("#trapStats").appendChild(s); });
+function trapUpdate(){
+  var n = Math.max(1, Math.min(120, +trapN.value || 60)), tot = 650 * n, extra = tot - 30000;
+  $("#trapTot").textContent = usd(tot);
+  animNum(tStats[1].valueNode, tot, usd, 300);
+  animNum(tStats[2].valueNode, extra, usd, 300);
+  animNum(tStats[3].valueNode, extra / (n / 12), usd, 300);
+  $("#trapMoral").innerHTML = "The advert showed you <b>$650</b>. The real number was <b class='mono' style='color:var(--acc)'>" + usd(tot) +
+    "</b> — about <b>" + usd(extra) + "</b> more than the car is worth, handed over quietly, one comfortable month at a time.<br><br>" +
+    "<b>Never judge a loan by the monthly payment.</b> Monthly payment × number of payments, then compare with the price. It takes ten seconds and it is the single most profitable piece of arithmetic you will ever do.";
+}
+trapN.addEventListener("input", trapUpdate);
+var trapVote = voteBlock($("#trapVote"), [
+  { icon: "✅", t: "YES — that sounds affordable" },
+  { icon: "❌", t: "NO — that is more expensive than it looks" },
+  { icon: "❓", t: "I need more information" }
+]);
+var trapGo = el("button", "btn solid", "Now do the arithmetic the advert avoided →"); trapGo.type = "button";
+trapGo.addEventListener("click", function(){ trapCalc.classList.remove("hidden"); trapUpdate(); addScore(10, "trap"); });
+$("#trapVote").appendChild(trapGo);
+RESET.trapVote = function(){ trapVote.reset(); trapCalc.classList.add("hidden"); trapN.value = 60; delete state.answered.trap; };
+trapUpdate();
+
+/* ═══ 09 · ISLAMIC FINANCE ═══ */
+var IF = [
+  { t: "Murabaha", d: "Cost-plus sale. The institution buys the asset and resells it to you at a disclosed mark-up, paid in instalments." },
+  { t: "Ijarah", d: "Lease. The institution owns the asset and leases it to you for an agreed rental." },
+  { t: "Musharakah", d: "Partnership. Both sides put in capital and share profit — and loss — by an agreed arrangement." },
+  { t: "Mudarabah", d: "One side provides capital, the other provides the work; profit is shared on agreed terms." },
+  { t: "Sukuk", d: "Certificates representing a share in an asset or project, rather than a debt that pays interest." }
+];
+var ifDet = el("p", "tiny"); ifDet.style.marginTop = "10px";
+ifDet.textContent = "Tap a name for a one-line description.";
+IF.forEach(function(o){
+  var b = el("button", "pill acc", o.t); b.type = "button"; b.style.cursor = "pointer";
+  b.addEventListener("click", function(){ ifDet.innerHTML = "<b style='color:var(--ink)'>" + o.t + "</b> — " + o.d; });
+  $("#ifStructures").appendChild(b);
+});
+$("#ifStructures").parentNode.appendChild(ifDet);
+var ifM = multiBlock($("#ifQ"), [
+  { t: "What colour is the car?" },
+  { t: "How much is the total repayment?" },
+  { t: "What is the interest rate or mark-up?" },
+  { t: "How long is the contract?" }
+], [1, 2, 3]);
+$("#ifCheck").addEventListener("click", function(){
+  var r = ifM.check();
+  $("#ifOut").innerHTML = "<b>" + r.hit + " of 3 — the answer is B + C + D.</b> " +
+    "Total repayment is the real price, the rate shows how it was built, the length shows how long you are locked in. Whatever you believe about the contract, that arithmetic is what stops anyone taking advantage of you.";
+  $("#ifOut").classList.add("show");
+  if (r.hit === 3 && r.miss === 0) addScore(15, "if");
+});
+RESET.ifQ = function(){ ifM.reset(); $("#ifOut").classList.remove("show"); delete state.answered.if; };
+
+/* ═══ 10 · COMPOUND GROWTH ═══ */
+var dblLab = $("#dblLab"), dayR = $("#dayR"), dblSvg = $("#dblSvg"), dblLog = false, dblCounts = [0, 0];
+var dblStats = [statTile("THAT DAY’S AMOUNT", "$1"), statTile("OPTION A", "$1,000"), statTile("B ÷ A", "0.001×")];
+dblStats.forEach(function(s){ $("#dblStats").appendChild(s); });
+function val(d){ return Math.pow(2, d - 1); }
+function drawDbl(day){
+  $("#dayN").textContent = day;
+  animNum(dblStats[0].valueNode, val(day), usd, 260);
+  animNum(dblStats[2].valueNode, val(day) / 1000, function(v){ return (v < 10 ? v.toFixed(3) : Math.round(v).toLocaleString("en-US")) + "×"; }, 260);
+  $("#dayHead").textContent = day < 15 ? "Still looks like a joke, doesn’t it?" : day < 22 ? "Now it is catching up…" : "This is what your intuition could not see.";
+  clear(dblSvg);
+  var L = 74, R = 16, T = 16, B = 32, W = 640, H = 260;
+  var maxV = val(30);
+  var X = function(d){ return L + (d - 1) / 29 * (W - L - R); };
+  var Y = function(v){
+    if (dblLog) { var lo = 0, hi = Math.log10(maxV); return H - B - (Math.log10(Math.max(v, 1)) - lo) / (hi - lo) * (H - T - B); }
+    return H - B - v / maxV * (H - T - B);
+  };
+  [0, .25, .5, .75, 1].forEach(function(k){
+    var y = T + (1 - k) * (H - T - B), v = dblLog ? Math.pow(10, k * Math.log10(maxV)) : k * maxV;
+    dblSvg.appendChild(sv("line", { x1: L, x2: W - R, y1: y, y2: y, stroke: "var(--line)" }));
+    dblSvg.appendChild(txt(L - 8, y + 4, v >= 1e6 ? "$" + (v / 1e6).toFixed(v < 1e7 ? 1 : 0) + "M" : v >= 1e3 ? "$" + Math.round(v / 1e3) + "K" : "$" + Math.round(v), { "text-anchor": "end" }));
+  });
+  [1, 10, 20, 30].forEach(function(d){ dblSvg.appendChild(txt(X(d), H - 12, "day " + d, { "text-anchor": "middle" })); });
+  var yk = Y(1000);
+  dblSvg.appendChild(sv("line", { x1: L, x2: W - R, y1: yk, y2: yk, stroke: "var(--s3)", "stroke-width": 1.5, "stroke-dasharray": "5 4" }));
+  dblSvg.appendChild(txt(W - R, yk - 7, "$1,000 — option A", { "text-anchor": "end", fill: "var(--s3)", "font-weight": 700 }));
+  var d = "", ar = "M" + X(1) + " " + (H - B);
+  for (var k2 = 1; k2 <= day; k2++) { d += (k2 === 1 ? "M" : " L") + X(k2).toFixed(1) + " " + Y(val(k2)).toFixed(1); ar += " L" + X(k2).toFixed(1) + " " + Y(val(k2)).toFixed(1); }
+  ar += " L" + X(day) + " " + (H - B) + " Z";
+  dblSvg.appendChild(sv("path", { d: ar, fill: "var(--s2)", "fill-opacity": .16 }));
+  dblSvg.appendChild(sv("path", { d: d, fill: "none", stroke: "var(--s2)", "stroke-width": 2.4, "stroke-linejoin": "round" }));
+  dblSvg.appendChild(sv("circle", { cx: X(day), cy: Y(val(day)), r: 6, fill: "var(--s2)", stroke: "var(--bg)", "stroke-width": 2 }));
+  dblSvg.appendChild(txt(Math.min(W - R, X(day) + 10), Math.max(T + 10, Y(val(day)) - 10), usd(val(day)), { fill: "var(--ink)", "font-weight": 700, "font-size": 13, "text-anchor": X(day) > W - 140 ? "end" : "start" }));
+}
+dayR.addEventListener("input", function(){ drawDbl(+dayR.value); });
+var playId = null;
+$("#dayPlay").addEventListener("click", function(){
+  if (playId) { clearInterval(playId); playId = null; this.textContent = "▶ Run 30 days"; return; }
+  var self = this; self.textContent = "❚❚ Pause";
+  dayR.value = 1; drawDbl(1);
+  playId = setInterval(function(){
+    var d = +dayR.value + 1;
+    if (d > 30) { clearInterval(playId); playId = null; self.textContent = "▶ Run 30 days"; return; }
+    dayR.value = d; drawDbl(d);
+  }, REDUCED ? 40 : 190);
+});
+var logBtn = el("button", "btn ghost", "Log scale"); logBtn.type = "button";
+logBtn.addEventListener("click", function(){ dblLog = !dblLog; logBtn.textContent = dblLog ? "Linear scale" : "Log scale"; drawDbl(+dayR.value); });
+$("#dblApps").appendChild(logBtn);
+[["💳", "Debt"], ["🏦", "Savings"], ["📈", "Investing"], ["🌍", "Population"], ["🦠", "Viral growth"]].forEach(function(a){
+  $("#dblApps").appendChild(el("span", "pill", a[0] + " " + a[1]));
+});
+function dblPick(which){
+  dblCounts[which]++;
+  var b = which === 0 ? $("#pickCash") : $("#pickDouble");
+  var n = $(".n", b) || (function(){ var s = el("span", "n mono"); s.style.marginTop = "6px"; b.appendChild(s); return s; })();
+  n.textContent = dblCounts[which] + " vote" + (dblCounts[which] === 1 ? "" : "s");
+  b.classList.add("picked");
+}
+$("#pickCash").addEventListener("click", function(){ dblPick(0); });
+$("#pickDouble").addEventListener("click", function(){ dblPick(1); });
+var dblGo = el("button", "btn solid", "Everyone voted? Reveal the 30 days →"); dblGo.type = "button";
+dblGo.addEventListener("click", function(){
+  dblLab.classList.remove("hidden"); drawDbl(+dayR.value); addScore(10, "dbl");
+  dblGo.classList.add("hidden");
+  $("#dblPicks").classList.add("hidden");
+  $("#dblSummary").textContent = "The class voted — $1,000 now: " + dblCounts[0] + " · doubling penny: " + dblCounts[1] + ". Here is what actually happens.";
+  $("#dblSummary").classList.remove("hidden");
+});
+dblLab.parentNode.insertBefore(dblGo, dblLab);
+RESET.dbl = function(){
+  clearInterval(playId); playId = null; $("#dayPlay").textContent = "▶ Run 30 days";
+  dblLab.classList.add("hidden"); $("#dblPicks").classList.remove("hidden"); $("#dblSummary").classList.add("hidden");
+  dayR.value = 1; dblLog = false; logBtn.textContent = "Log scale";
+  dblCounts = [0, 0]; dblGo.classList.remove("hidden");
+  [$("#pickCash"), $("#pickDouble")].forEach(function(b){ b.classList.remove("picked"); var n = $(".n", b); if (n) n.textContent = ""; });
+  delete state.answered.dbl; drawDbl(1);
+};
+drawDbl(1);
+
+/* ═══ 11 · DECISIONS ═══ */
+[["A", "💸", "Spend it all now", "New phone, clothes, a trip. Today is good."],
+ ["B", "🏦", "Save it", "Put it away. Touch nothing."],
+ ["C", "🎓", "Invest it", "A course, a skill, a small business."]].forEach(function(o){
+  var c = el("div", "glass tight stack");
+  c.innerHTML = '<div class="row"><span class="pill">' + o[0] + '</span><span style="font-size:1.4rem">' + o[1] + '</span><h3>' + o[2] + '</h3></div><p class="tiny">' + o[3] + '</p>';
+  $("#tenK").appendChild(c);
+});
+var NEED = [
+  { t: "Expected return", d: "How much could it grow — measured, or guessed?" },
+  { t: "Risk", d: "How much could it lose? Return quoted with no risk is marketing." },
+  { t: "Inflation", d: "Money sitting still quietly loses value." },
+  { t: "Time", d: "Ten years changes every answer here." },
+  { t: "Opportunity cost", d: "Choosing one option cancels the others." },
+  { t: "Probability", d: "Not “could this work?” but “how often does it?”" }
+];
+var needM = multiBlock($("#needList"), NEED, [0, 1, 2, 3, 4, 5]);
+var needBtn = el("button", "btn solid", "Check the class"); needBtn.type = "button";
+needBtn.style.alignSelf = "flex-start";
+needBtn.addEventListener("click", function(){
+  var r = needM.check();
+  $$("#needList .choice").forEach(function(c, i){
+    if ($(".why", c)) return;
+    var w = el("span", "why tiny"); w.style.display = "block"; w.style.marginTop = "5px"; w.textContent = NEED[i].d;
+    $(".txt", c).appendChild(w);
+  });
+  $("#needOut").innerHTML = "<b>All six — you found " + r.hit + ".</b> Notice what just happened: mathematics did <em>not</em> tell you which option to pick. It never does. It turned a feeling into questions with answers you can compare. That is the difference between a decision and a guess.";
+  $("#needOut").classList.add("show");
+  if (r.hit === 6) addScore(10, "need");
+});
+$("#needOut").parentNode.insertBefore(needBtn, $("#needOut"));
+RESET.need = function(){ needM.reset(); $("#needOut").classList.remove("show"); delete state.answered.need; };
+
+/* ═══ 12 · DETECTIVE ═══ */
+var DET = [
+  { q: "A shop offers 40% off — then an extra 20% off at the till. What is the total discount?",
+    o: ["60% off", "52% off", "48% off"], a: 1,
+    w: "0.60 × 0.80 = 0.48, so you pay 48% of the price — a <b>52%</b> discount, not 60%. The second cut is taken from the already-reduced price." },
+  { q: "A price goes UP by 25%. What percentage cut brings it back to where it started?",
+    o: ["25% off", "20% off", "30% off"], a: 1,
+    w: "$100 → $125. To get back to $100 you must remove $25 from $125, and 25/125 = <b>20%</b>. Up 25% and down 25% never cancel." },
+  { q: "Which is bigger: 20% of 50, or 50% of 20?",
+    o: ["20% of 50", "50% of 20", "They are exactly equal"], a: 2,
+    w: "Both are <b>10</b>. Percentages multiply, and multiplication does not care about order — which is a genuinely useful shortcut for doing them in your head." },
+  { q: "A phone drops from $1,000 to $500. The advert says “50% cheaper.” Is the advert lying?",
+    o: ["Yes — it is 100% cheaper", "No — the advert is correct", "Yes — it is 200% cheaper"], a: 1,
+    w: "This one is <b>honest</b>. Half of $1,000 is $500, so 50% off is exactly right. Being a detective means catching the lies — not assuming everything is one." },
+  { q: "A jacket is marked “$80, was $100 — save 25%!” Is that right?",
+    o: ["Yes, 25% off", "No — it is 20% off", "No — it is 15% off"], a: 1,
+    w: "You saved $20 out of $100, which is <b>20%</b>. They calculated the discount from the <em>new</em> price ($20 out of $80) — a very common and very profitable “mistake”." }
+];
+var detBox = $("#detBox"), detAt = 0, detOk = 0;
+function detRender(){
+  detBox.innerHTML = "";
+  if (detAt >= DET.length) {
+    detBox.appendChild(el("div", "kicker", "Case closed"));
+    detBox.appendChild(el("div", "big", detOk + " / " + DET.length));
+    detBox.appendChild(el("p", "lead", detOk === DET.length
+      ? "Perfect. Nobody is selling you anything today."
+      : "Every one you missed is a shop, a bank or an advert that would have made money from it. That is not an exam mark — that is your wallet."));
+    if (detOk === DET.length) addScore(20, "det"); else addScore(detOk * 3, "det");
+    return;
+  }
+  var c = DET[detAt];
+  detBox.appendChild(el("div", "kicker", "Case " + (detAt + 1) + " of " + DET.length + " · score " + detOk));
+  detBox.appendChild(el("h3", null, c.q));
+  var wrap = el("div", "stack"); wrap.style.marginTop = "10px";
+  var out = el("div", "reveal");
+  var btns = [];
+  c.o.forEach(function(t, i){
+    var b = el("button", "choice"); b.type = "button";
+    b.appendChild(el("span", "tag", String.fromCharCode(65 + i)));
+    b.appendChild(el("span", "txt", t));
+    b.addEventListener("click", function(){
+      btns.forEach(function(x, k){ x.disabled = true; if (k === c.a) x.classList.add("right"); });
+      if (i !== c.a) b.classList.add("wrong"); else detOk++;
+      out.innerHTML = c.w; out.classList.add("show");
+      nextBtn.classList.remove("hidden");
+    });
+    btns.push(b); wrap.appendChild(b);
+  });
+  detBox.appendChild(wrap);
+  detBox.appendChild(out);
+  var nextBtn = el("button", "btn solid hidden", detAt === DET.length - 1 ? "See the result →" : "Next case →");
+  nextBtn.type = "button"; nextBtn.style.alignSelf = "flex-start";
+  nextBtn.addEventListener("click", function(){ detAt++; detRender(); });
+  detBox.appendChild(nextBtn);
+}
+detBox.style.display = "flex"; detBox.style.flexDirection = "column"; detBox.style.gap = "10px";
+RESET.det = function(){ detAt = 0; detOk = 0; delete state.answered.det; detRender(); };
+detRender();
+
+/* ═══ 13 · RAPID FIRE ═══ */
+var RF = [
+  { topic: "Percentage", q: "A jacket costs $80 after a 20% discount. What was the original price?",
+    o: ["$96", "$100", "$120"], a: 1, w: "$80 is 80% of the original, so original = 80 ÷ 0.8 = <b>$100</b>. Adding 20% back to $80 gives $96 — the classic trap." },
+  { topic: "Probability", q: "You flip a fair coin three times. Chance of getting at least one head?",
+    o: ["1/2", "3/4", "7/8"], a: 2, w: "Easier backwards: the only losing case is TTT, which is 1/8. So at least one head = 1 − 1/8 = <b>7/8</b>." },
+  { topic: "Trigonometry", q: "A ramp rises 3 m for every 5 m along the slope. sin(angle) = ?",
+    o: ["0.6", "0.75", "1.67"], a: 0, w: "sin = opposite ÷ hypotenuse = 3/5 = <b>0.6</b>. The rise over the slope — not over the ground." },
+  { topic: "Reading a graph", q: "On a distance–time graph, the line is completely flat. What is happening?",
+    o: ["Moving at a steady speed", "Not moving at all", "Speeding up"], a: 1, w: "Flat means distance is not changing, so the object is <b>stationary</b>. A straight sloped line would be steady speed." },
+  { topic: "Compound growth", q: "$100 grows by 100% every year. After 3 years you have…",
+    o: ["$300", "$400", "$800"], a: 2, w: "It doubles each year: 100 → 200 → 400 → <b>800</b>. Growth multiplies; it does not add." },
+  { topic: "Logic", q: "All cats are animals. Some animals are black. So — some cats are black?",
+    o: ["True, it follows", "Not necessarily", "False, never"], a: 1, w: "It might be true in the real world, but it does <b>not follow</b> from those two statements. The black animals could all be horses. This is exactly how bad arguments get past people." },
+  { topic: "Optimisation", q: "You have 40 m of fence for a rectangular pen. The biggest area you can enclose?",
+    o: ["75 m²", "100 m²", "120 m²"], a: 1, w: "A square wins: 10 × 10 = <b>100 m²</b>. Of all rectangles with the same perimeter, the square always has the largest area." }
+];
+var rfAt = -1, rfOk = 0, rfLeft = 10, rfId = null, rfPicks = [];
+var CIRC = 2 * Math.PI * 22;
+function rfSet(sec){
+  $("#rfClock").textContent = sec;
+  $("#rfArc").setAttribute("stroke-dashoffset", (1 - sec / 10) * CIRC);
+}
+function rfShow(){
+  var c = RF[rfAt];
+  $("#rfTopic").textContent = c.topic;
+  $("#rfProg").textContent = "Question " + (rfAt + 1) + " of " + RF.length + " · " + rfOk + " correct";
+  $("#rfQ").textContent = c.q;
+  $("#rfOut").classList.remove("show");
+  var box = $("#rfOpts"); box.innerHTML = "";
+  var btns = [];
+  c.o.forEach(function(t, i){
+    var b = el("button", "choice"); b.type = "button";
+    b.appendChild(el("span", "tag", String.fromCharCode(65 + i)));
+    b.appendChild(el("span", "txt", t));
+    b.addEventListener("click", function(){ rfLock(i, btns); });
+    btns.push(b); box.appendChild(b);
+  });
+  rfLeft = 10; rfSet(rfLeft);
+  clearInterval(rfId);
+  rfId = setInterval(function(){
+    rfLeft--; rfSet(Math.max(0, rfLeft));
+    if (rfLeft <= 0) { clearInterval(rfId); rfLock(-1, btns); }
+  }, 1000);
+}
+function rfLock(pick, btns){
+  clearInterval(rfId);
+  var c = RF[rfAt];
+  btns.forEach(function(x, k){ x.disabled = true; if (k === c.a) x.classList.add("right"); });
+  if (pick >= 0 && pick !== c.a) btns[pick].classList.add("wrong");
+  if (pick === c.a) rfOk++;
+  rfPicks[rfAt] = pick;
+  $("#rfOut").innerHTML = (pick === c.a ? "✅ <b>Correct.</b> " : pick < 0 ? "⏱ <b>Time.</b> " : "❌ <b>Not this time.</b> ") + c.w;
+  $("#rfOut").classList.add("show");
+  $("#rfProg").textContent = "Question " + (rfAt + 1) + " of " + RF.length + " · " + rfOk + " correct";
+  setTimeout(function(){
+    rfAt++;
+    if (rfAt >= RF.length) rfEnd(); else rfShow();
+  }, 3400);
+}
+function rfEnd(){
+  $("#rfQ").textContent = "That is the whole class in 70 seconds.";
+  $("#rfOpts").innerHTML = ""; $("#rfOut").classList.remove("show");
+  $("#rfTopic").textContent = "Result"; $("#rfProg").textContent = "Finished";
+  rfSet(0); $("#rfStart").disabled = false; $("#rfStart").textContent = "▶ Run it again";
+  var b = $("#rfBoard"); b.innerHTML = ""; b.classList.remove("hidden");
+  var head = el("div", "glass tight stack");
+  head.innerHTML = '<div class="kicker">🏆 Class score</div><div class="big" style="color:var(--acc)">' + rfOk + " / " + RF.length + "</div>";
+  b.appendChild(head);
+  RF.forEach(function(c, i){
+    var ok = rfPicks[i] === c.a;
+    var card = el("div", "glass tight stack");
+    card.innerHTML = '<div class="kicker" style="color:' + (ok ? "var(--ok)" : "var(--no)") + '">' + (ok ? "✅ " : "❌ ") + c.topic + "</div>" +
+      '<div class="tiny">' + c.q + "</div>" +
+      '<div class="tiny"><b style="color:var(--ok)">💡 ' + c.o[c.a] + "</b></div>" +
+      (ok ? "" : '<div class="tiny" style="color:var(--no)">Chosen: ' + (rfPicks[i] >= 0 ? c.o[rfPicks[i]] : "ran out of time") + "</div>");
+    b.appendChild(card);
+  });
+  addScore(rfOk * 5, "rf");
+}
+$("#rfStart").addEventListener("click", function(){
+  rfAt = 0; rfOk = 0; rfPicks = []; this.disabled = true;
+  $("#rfBoard").classList.add("hidden");
+  delete state.answered.rf;
+  rfShow();
+});
+RESET.rf = function(){
+  clearInterval(rfId); rfAt = -1; rfOk = 0; rfPicks = [];
+  $("#rfStart").disabled = false; $("#rfStart").textContent = "▶ Start";
+  $("#rfQ").textContent = "Press start when the class is ready.";
+  $("#rfOpts").innerHTML = ""; $("#rfOut").classList.remove("show");
+  $("#rfTopic").textContent = "Ready"; $("#rfProg").textContent = "Question 0 of " + RF.length;
+  $("#rfBoard").classList.add("hidden"); rfSet(10); delete state.answered.rf;
+};
+rfSet(10);
+
+/* ═══ 14 · THE BIG IDEA ═══ */
+var VERBS = ["Analyse.", "Question.", "Calculate.", "Predict.", "Compare.", "Optimise.", "Solve.", "Decide."];
+var verbBox = $("#verbs");
+VERBS.forEach(function(v){ verbBox.appendChild(el("span", "verb", v)); });
+var bigT = [];
+$("#bigGo").addEventListener("click", function(){
+  var lines = $$(".line"), self = this;
+  self.disabled = true;
+  bigT.forEach(clearTimeout); bigT = [];
+  lines.forEach(function(l, i){
+    bigT.push(setTimeout(function(){ l.classList.add("up"); }, REDUCED ? i * 60 : i * 1700));
+  });
+  bigT.push(setTimeout(function(){
+    $("#bigTail").style.opacity = "1";
+    $$(".verb").forEach(function(v, i){ bigT.push(setTimeout(function(){ v.classList.add("up"); }, i * 130)); });
+    self.disabled = false; self.textContent = "▶ Play again";
+    addScore(5, "big");
+  }, REDUCED ? 400 : lines.length * 1700 + 400));
+});
+RESET.big = function(){
+  bigT.forEach(clearTimeout); bigT = [];
+  $$(".line").forEach(function(l){ l.classList.remove("up"); });
+  $$(".verb").forEach(function(v){ v.classList.remove("up"); });
+  $("#bigTail").style.opacity = "0";
+  $("#bigGo").disabled = false; $("#bigGo").textContent = "▶ Reveal, line by line";
+  delete state.answered.big;
+};
+
+/* ═══ 15 · THE CHALLENGE ═══ */
+var fBox = $("#finalQ"); fBox.dataset.out = "#finalOut";
+function finalBuild(){
+  fBox.innerHTML = "";
+  var q = quizBlock(fBox, [
+    "Numbers",
+    "Formulas",
+    "Exams",
+    "A language for understanding patterns, relationships and change"
+  ], 3,
+    "<b>D.</b> Numbers are the alphabet. Formulas are the sentences. The exam is just someone checking whether you can read.<br><br>Mathematics itself is the <b>language</b> — the one humans invented to describe patterns, relationships and change precisely enough to build on.",
+    "final", 20);
+  fBox.onAnswer = function(){
+    $("#finalEnd").classList.remove("hidden");
+    setTimeout(function(){ $("#s15q").classList.add("hidden"); }, 4200);
+  };
+  return q;
+}
+var finalQ = finalBuild();
+RESET.final = function(){ finalQ.reset(); $("#finalEnd").classList.add("hidden"); $("#s15q").classList.remove("hidden"); };
+$("#backToVote").addEventListener("click", function(){ go(0); });
+
+/* ── boot ── */
+go(0);
+})();
+</script>
