@@ -1,5 +1,5 @@
 floor,room,eyebrow,title,source
-1,,GRADE,6B,"floor plan 1 — top-left corner room (no room number printed on the plan)"
+1,7,GRADE,6B,"floor plan 1 — top-left corner room"
 1,1,LABORATORY,ICT,"floor plan 1"
 1,2,GRADE,6P,"floor plan 1"
 1,3,GRADE,7P,"floor plan 1"
@@ -24,7 +24,7 @@ floor,room,eyebrow,title,source
 1,28,GRADE,4B,"floor plan 1"
 1,29,GRADE,2B,"floor plan 1"
 1,30,STAFF,TEACHERS’ ROOM,"floor plan 1 — Uchitel"
-1,,OFFICE,VICE PRINCIPAL,"floor plan 1 — Zavuch, bottom-left corner room (no room number printed on the plan)"
+1,8,OFFICE,VICE PRINCIPAL,"floor plan 1 — Zavuch, bottom-left corner room"
 1,,FACILITIES,BOYS’ RESTROOM,"floor plan 1 — BWC (no room number printed on the plan)"
 1,,FACILITIES,GIRLS’ RESTROOM,"floor plan 1 — GWC (no room number printed on the plan)"
 2,1,LABORATORY,ROBOTICS,"floor plan 2"
