@@ -357,6 +357,43 @@ def build_pngs(items, dpi=300):
     os.remove(tmp)
 
 
+def build_tent_pdf(items, path, title):
+    """Folding table-tent: one A4 landscape sheet per class, the same tag on
+    both halves. Fold along the middle — the top copy is printed upside-down
+    so both faces read upright when the sheet stands like a tent. Each tag's
+    top edge sits on the fold; the spare 14 mm of paper lands at the base,
+    like the school's existing tents.
+    """
+    pw, ph = landscape(A4)
+    ph_mm = ph / MM
+    fold = ph_mm / 2.0
+    c = canvas.Canvas(path, pagesize=(pw, ph))
+    c.setTitle(title)
+    c.setAuthor("Ellipse")
+    for it in items:
+        # bottom half, upright, top edge on the fold
+        c.saveState()
+        c.translate(0, (fold - TRIM_H) * MM)
+        draw_tag(c, it, bleed=False)
+        c.restoreState()
+        # top half, rotated 180 degrees, top edge on the fold
+        c.saveState()
+        c.translate(TRIM_W * MM, (fold + TRIM_H) * MM)
+        c.rotate(180)
+        draw_tag(c, it, bleed=False)
+        c.restoreState()
+        # fold ticks at the page edges only, so the faces stay clean
+        c.saveState()
+        c.setStrokeColor(Color(0.6, 0.6, 0.6))
+        c.setLineWidth(0.2)
+        c.setDash(2, 2)
+        c.line(0, fold * MM, 6 * MM, fold * MM)
+        c.line((TRIM_W - 6) * MM, fold * MM, TRIM_W * MM, fold * MM)
+        c.restoreState()
+        c.showPage()
+    c.save()
+
+
 def build_nup_pdf(items, path, title, pagesize, per, page_margin, gap):
     """N tags per sheet. Tags are scaled down only if the sheet is too narrow."""
     pw, ph = pagesize
