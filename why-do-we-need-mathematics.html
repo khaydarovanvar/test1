@@ -1,3 +1,5 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Why Do We Need Math?</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +30,8 @@
 [data-acc="ice"]   {--acc:#DCE6FF;--acc-dim:rgba(220,230,255,.12)}
 
 *{box-sizing:border-box}
-html{scroll-behavior:auto}
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+button,input{touch-action:manipulation}
 body{
   margin:0;background:var(--bg);color:var(--ink);
   font-family:Manrope,"Segoe UI",system-ui,sans-serif;
@@ -110,7 +113,7 @@ body{
 /* ── sections ── */
 #deck{position:relative;z-index:1}
 .sec{
-  display:none;min-height:100svh;
+  display:none;min-height:100vh;min-height:100svh;
   flex-direction:column;justify-content:center;gap:clamp(12px,2vh,22px);
   max-width:1200px;margin-inline:auto;
   padding:clamp(66px,8vh,92px) clamp(18px,4vw,44px) clamp(78px,9vh,96px);
@@ -348,10 +351,54 @@ figcaption{font-size:.78rem;color:var(--faint);margin-top:10px}
 .qrbox img,.qrbox canvas{width:104px;height:104px;display:block}
 .vlive{font-family:"JetBrains Mono",monospace;font-size:.66rem;font-weight:700;letter-spacing:.08em;
   text-transform:uppercase;color:var(--ok);border:1px solid var(--ok);border-radius:999px;padding:3px 8px}
-@media (max-width:640px){
-  .sec{padding:74px 16px 96px}
-  .top{gap:9px}
-  .mark{display:none}
+#joinScr{
+  position:fixed;inset:0;z-index:70;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(14px,3vh,28px);padding:24px;text-align:center;
+  background:radial-gradient(80vw 80vw at 50% -20%,rgba(155,140,255,.18),transparent 60%),var(--bg);
+}
+#joinScr h2{font-size:clamp(1.7rem,4.5vw,3.4rem)}
+.join-grid{display:flex;gap:clamp(18px,4vw,54px);align-items:center;justify-content:center;flex-wrap:wrap}
+.qrbig{background:#fff;padding:14px;border-radius:18px;line-height:0}
+.qrbig img,.qrbig canvas{width:min(46vw,236px);height:min(46vw,236px);display:block}
+.join-steps{display:flex;flex-direction:column;gap:12px;text-align:left;max-width:420px}
+.join-step{display:flex;gap:12px;align-items:baseline;font-size:clamp(.95rem,1.4vw,1.15rem);font-weight:600}
+.join-step b{
+  font-family:"JetBrains Mono",monospace;color:var(--acc);border:1px solid var(--acc);border-radius:8px;
+  width:26px;height:26px;display:inline-grid;place-items:center;flex:none;font-size:.8rem;
+}
+.join-code{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:clamp(2.6rem,9vw,5rem);
+  letter-spacing:.24em;color:var(--acc);line-height:1;text-indent:.24em}
+.join-url{font-family:"JetBrains Mono",monospace;font-size:clamp(1rem,2.4vw,1.6rem);color:var(--ink);
+  background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:10px 16px}
+.join-live{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:.9rem;font-weight:700}
+@media (max-width:720px){
+  .sec{padding:66px 16px 150px;justify-content:flex-start}
+  .top{gap:7px;padding:10px 12px}
+  .mark,.pbar{display:none}
+  .chapter{font-size:.58rem;padding:3px 7px;letter-spacing:.1em}
+  .score-chip{font-size:.66rem;padding:4px 9px}
+  .counter{font-size:.66rem;min-width:0}
+  .btn.sq{width:36px;height:36px}
+  .dots{display:none}
+  .bot{padding:10px 14px}
+  .bot{display:grid;grid-template-columns:1fr 2fr;gap:8px}
+  .bot .btn.sq{width:100%;height:50px;font-size:1.2rem;border-radius:14px}
+  h1{font-size:clamp(2rem,10vw,2.6rem)}
+  h2{font-size:clamp(1.45rem,6.4vw,1.9rem)}
+  .quote{font-size:.85rem;padding:7px 12px}
+  .btn{min-height:42px}
+  .choice{padding:14px;min-height:52px}
+  .node{padding:11px 8px}
+  .node .em{font-size:1.6rem}
+  input[type=range]{height:8px}
+  input[type=range]::-webkit-slider-thumb{width:26px;height:26px}
+  input[type=range]::-moz-range-thumb{width:22px;height:22px}
+  .chip{padding:11px 16px;min-height:44px}
+  #pres{max-height:78vh}
+  .glass{border-radius:15px}
+  .big{font-size:clamp(1.5rem,7.5vw,2.2rem)}
+  .hero-num{font-size:clamp(1.5rem,7.5vw,2.2rem)}
+  .ad div[style*="font-family"]{font-size:clamp(1.7rem,9vw,2.6rem)!important}
 }
 </style>
 
@@ -733,6 +780,23 @@ figcaption{font-size:.78rem;color:var(--faint);margin-top:10px}
   <button class="btn sq solid" id="next" type="button" aria-label="Next section">→</button>
 </footer>
 
+<div id="joinScr" class="hidden">
+  <div class="kicker" data-uz="Jonli ovoz berish">Live voting</div>
+  <h2 data-uz="Telefoningizdan ovoz bering">Vote from your phone</h2>
+  <div class="join-grid">
+    <div class="qrbig hidden" id="joinQr"></div>
+    <div class="join-steps">
+      <div class="join-step"><b>1</b><span data-uz="Kamerani oching va QR kodni skanerlang — yoki havolani yozing:">Open your camera and scan the QR code — or type the link:</span></div>
+      <div class="join-url" id="joinUrl"></div>
+      <div class="join-step"><b>2</b><span data-uz="So‘ralsa, mana bu kodni kiriting:">If it asks, enter this code:</span></div>
+      <div class="join-code" id="joinCode"></div>
+      <div class="join-step"><b>3</b><span data-uz="Savol ekraningizda o‘zi paydo bo‘ladi. Javobingizni bosing — xohlasangiz keyin o‘zgartirsangiz ham bo‘ladi.">The question appears on your screen by itself. Tap your answer — you can change it while voting is open.</span></div>
+      <div class="join-live"><span class="livedot"></span><span id="joinCount" class="mono">0</span><span data-uz="ovoz keldi">votes in</span></div>
+    </div>
+  </div>
+  <button class="btn solid" id="joinClose" type="button" data-uz="Darsga qaytish (J)">Back to the lesson (J)</button>
+</div>
+
 <aside id="pres" aria-label="Presenter panel">
   <div class="row" style="justify-content:space-between">
     <div class="row">
@@ -752,6 +816,7 @@ figcaption{font-size:.78rem;color:var(--faint);margin-top:10px}
         <span class="pill acc" data-uz="Jonli ovoz berish">Live voting</span>
         <button class="btn solid" id="liveGo" type="button" data-uz="Yoqish">Turn on</button>
         <button class="btn ghost hidden" id="liveOff" type="button" data-uz="O‘chirish">Turn off</button>
+        <button class="btn hidden" id="liveJoinBtn" type="button" data-uz="Qo‘shilish ekranini ko‘rsatish (J)">Show the join screen (J)</button>
         <button class="btn ghost hidden" id="liveWipe" type="button" data-uz="Barcha ovozlarni o‘chirish">Clear all votes</button>
       </div>
       <p class="tiny" id="liveHelp" data-uz="Netlify’ga joylashtirgandan keyin ishlaydi. Yoqing — o‘quvchilar telefonidan ovoz beradi, natijani shu ekranda ko‘rasiz.">Works once this is deployed to Netlify. Turn it on and students vote from their phones; results land on this screen.</p>
@@ -850,6 +915,8 @@ function livePull(){
       if (v) v.setCounts(d.counts || []);
       var c = document.getElementById("liveCount");
       if (c) c.textContent = (d.voters || 0) + " " + T("votes in", "ovoz keldi");
+      var jc = document.getElementById("joinCount");
+      if (jc) jc.textContent = d.voters || 0;
     })
     .catch(function(){ LIVE.ok = false; });
 }
@@ -885,17 +952,33 @@ async function liveStart(){
   if (window.QRCode) { try { new window.QRCode(qr, { text: url, width: 104, height: 104, correctLevel: window.QRCode.CorrectLevel.M }); } catch (e) {} }
   qr.classList.toggle("hidden", !qr.querySelector("img, canvas"));
   Object.keys(VOTES).forEach(function(k){ VOTES[k].liveMode(true); });
+  document.getElementById("liveJoinBtn").classList.remove("hidden");
   clearInterval(LIVE.timer);
   LIVE.timer = setInterval(function(){ if (document.visibilityState === "visible") livePull(); }, 2500);
   var here = SECTION_POLL[at];
   if (here) liveOpen(here); else liveClose();
+  joinShow(true);
+}
+function joinShow(on){
+  if (on && !LIVE.on) return;
+  $("#joinScr").classList.toggle("hidden", !on);
+  if (on) {
+    var url = location.origin + "/v?room=" + LIVE.room;
+    $("#joinUrl").textContent = url.replace(/^https?:\/\//, "");
+    $("#joinCode").textContent = LIVE.room;
+    var q = $("#joinQr"); q.innerHTML = "";
+    if (window.QRCode) { try { new window.QRCode(q, { text: url, width: 236, height: 236, correctLevel: window.QRCode.CorrectLevel.M }); } catch (e) {} }
+    q.classList.toggle("hidden", !q.querySelector("img, canvas"));
+  }
 }
 function liveStop(){
+  joinShow(false);
   liveClose();
   LIVE.on = false; clearInterval(LIVE.timer); LIVE.timer = null;
   document.getElementById("liveGo").classList.remove("hidden");
   document.getElementById("liveOff").classList.add("hidden");
   document.getElementById("liveWipe").classList.add("hidden");
+  document.getElementById("liveJoinBtn").classList.add("hidden");
   document.getElementById("liveChip").classList.add("hidden");
   document.getElementById("liveQr").classList.add("hidden");
   document.getElementById("liveInfo").classList.add("hidden");
@@ -1129,6 +1212,8 @@ document.addEventListener("keydown", function(e){
   else if (k === "p") togglePres();
   else if (k === "r") resetSection(at);
   else if (k === "l") setLang(LANG === "uz" ? "en" : "uz");
+  else if (k === "j") joinShow($("#joinScr").classList.contains("hidden"));
+  else if (e.key === "Escape") { joinShow(false); if (presOn) togglePres(); }
 });
 var tx0 = 0, ty0 = 0;
 document.addEventListener("touchstart", function(e){ tx0 = e.changedTouches[0].clientX; ty0 = e.changedTouches[0].clientY; }, { passive: true });
@@ -1145,7 +1230,9 @@ $("#fsBtn").addEventListener("click", toggleFs);
 $("#langBtn").addEventListener("click", function(){ setLang(LANG === "uz" ? "en" : "uz"); });
 $("#liveGo").addEventListener("click", liveStart);
 $("#liveOff").addEventListener("click", liveStop);
-$("#liveChip").addEventListener("click", function(){ if (!presOn) togglePres(); });
+$("#liveChip").addEventListener("click", function(){ if (LIVE.on) joinShow(true); else if (!presOn) togglePres(); });
+$("#liveJoinBtn").addEventListener("click", function(){ togglePres(); joinShow(true); });
+$("#joinClose").addEventListener("click", function(){ joinShow(false); });
 $("#liveWipe").addEventListener("click", function(){
   if (!LIVE.on) return;
   liveCall("/reset", { room: LIVE.room }).then(function(){

@@ -38,9 +38,13 @@ deployed sites by default, with no account keys and no database to set up.
 
 1. Open your `netlify.app` address on the projector.
 2. Press **P** for the presenter panel → **Turn on** next to *Live voting*.
-3. The panel shows a **4-character code**, a **link** (`yoursite.netlify.app/v`) and a
-   **QR code**. Students scan the QR or type the link and the code once.
-4. Walk to a voting section. The question appears on every phone automatically.
+3. A full-screen **join screen** appears automatically: a big QR code, the link
+   (`yoursite.netlify.app/v`) and a 4-character class code, with the three steps
+   written on screen for the students. Leave it up until the "votes in" counter
+   stops climbing, then press **J** (or the button) to return to the lesson.
+   Press **J** any time to bring the join screen back for latecomers.
+4. Walk to a voting section. The question appears on every phone automatically —
+   in whichever language your screen is set to.
 5. Say *"everyone vote now"*, wait, then press **Show the class** to reveal the bars.
    Until you press it the class sees nothing — only the running "N votes" count, so
    nobody copies the crowd.
@@ -75,4 +79,5 @@ when you are not using it and nothing is consumed.
 | `F` | Fullscreen |
 | `P` | Presenter panel (jump list, timer, live voting) |
 | `R` | Reset the interactive parts of the current section |
+| `J` | Show / hide the student join screen (when live voting is on) |
 | `L` | Switch English ⇄ O‘zbekcha |
