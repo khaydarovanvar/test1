@@ -154,9 +154,10 @@ def split_lines(text, n):
     return best
 
 
-def fit_title(text, max_w, band):
+def fit_title(text, max_w, band, max_cap=None):
     """Pick the line break and cap height that fill `band` as generously as possible."""
     band_h = band[1] - band[0]
+    max_cap = TITLE_MAX_CAP if max_cap is None else max_cap
     best = None
     for n in (1, 2, 3):
         lines = split_lines(text, n)
@@ -166,7 +167,7 @@ def fit_title(text, max_w, band):
             max_w / max(text_width(ln, FONT_HEAVY, 1.0), 1e-6) for ln in lines
         )
         by_height = band_h / (1.0 + (n - 1) * TITLE_LEADING)
-        cap = min(by_width, by_height, TITLE_MAX_CAP)
+        cap = min(by_width, by_height, max_cap)
         if best is None or cap > best[0] + 0.01:
             best = (cap, lines)
     return best
@@ -368,38 +369,91 @@ def build_pngs(items, dpi=300):
     os.remove(tmp)
 
 
+# --------------------------------------------------- folding table tent ----
+# One portrait A4 sheet folded across the middle: each face is half the sheet.
+TENT_W, TENT_H = 210.0, 148.5
+TENT_BOOK_W = 15.0          # yellow bookend down each side
+TENT_ACCENT_GAP = 3.2
+TENT_ACCENT_W = 1.7
+TENT_WORDMARK_Y = 128.0
+TENT_RULE_Y, TENT_RULE_W, TENT_RULE_H = 118.0, 34.0, 1.8
+TENT_EYEBROW_Y, TENT_EYEBROW_CAP = 101.0, 6.5
+TENT_TITLE_BAND = (22.0, 90.0)
+TENT_TITLE_MAX_CAP = 52.0
+
+
+def draw_tent_face(c, item):
+    """One face of the tent, trim origin at (0, 0), no room number."""
+    green_l = TENT_BOOK_W + TENT_ACCENT_GAP + TENT_ACCENT_W
+    green_r = TENT_W - green_l
+    cx = TENT_W / 2.0
+    max_w = green_r - green_l - 20.0
+
+    c.saveState()
+    p = c.beginPath()
+    p.rect(0, 0, TENT_W * MM, TENT_H * MM)
+    c.clipPath(p, stroke=0, fill=0)
+
+    c.setFillColor(GREEN)
+    c.rect(0, 0, TENT_W * MM, TENT_H * MM, stroke=0, fill=1)
+
+    wm = SWOOSH_WATERMARK
+    wm_w = 196.0
+    wm_h = wm_w * wm.size[1] / wm.size[0]
+    c.drawImage(ImageReader(wm), (cx - wm_w / 2) * MM, (TENT_H / 2 - wm_h / 2) * MM,
+                wm_w * MM, wm_h * MM, mask="auto")
+
+    # matching yellow bookends down both sides, with their accent lines
+    c.setFillColor(YELLOW)
+    c.rect(0, 0, TENT_BOOK_W * MM, TENT_H * MM, stroke=0, fill=1)
+    c.rect((TENT_W - TENT_BOOK_W) * MM, 0, TENT_BOOK_W * MM, TENT_H * MM, stroke=0, fill=1)
+    c.rect((TENT_BOOK_W + TENT_ACCENT_GAP) * MM, 0, TENT_ACCENT_W * MM, TENT_H * MM,
+           stroke=0, fill=1)
+    c.rect((TENT_W - TENT_BOOK_W - TENT_ACCENT_GAP - TENT_ACCENT_W) * MM, 0,
+           TENT_ACCENT_W * MM, TENT_H * MM, stroke=0, fill=1)
+
+    draw_text(c, "ELLIPSE", FONT_HEAVY, 5.0, cx, TENT_WORDMARK_Y, YELLOW,
+              track=0.42, align="center", alpha=0.75)
+    c.setFillColor(YELLOW)
+    c.rect((cx - TENT_RULE_W / 2) * MM, TENT_RULE_Y * MM, TENT_RULE_W * MM,
+           TENT_RULE_H * MM, stroke=0, fill=1)
+    draw_text(c, item["eyebrow"], FONT_HEAVY, TENT_EYEBROW_CAP, cx, TENT_EYEBROW_Y,
+              CREAM, track=EYEBROW_TRACK, align="center")
+
+    cap, lines = fit_title(item["title"], max_w, TENT_TITLE_BAND, TENT_TITLE_MAX_CAP)
+    block_h = cap * (1.0 + (len(lines) - 1) * TITLE_LEADING)
+    top_base = (TENT_TITLE_BAND[0] + TENT_TITLE_BAND[1]) / 2.0 + block_h / 2.0 - cap
+    for i, line in enumerate(lines):
+        draw_text(c, line, FONT_HEAVY, cap, cx, top_base - i * cap * TITLE_LEADING,
+                  YELLOW, align="center")
+    c.restoreState()
+
+
 def build_tent_pdf(items, path, title):
-    """Folding table-tent: one A4 landscape sheet per class, the same tag on
-    both halves. Fold along the middle — the top copy is printed upside-down
-    so both faces read upright when the sheet stands like a tent. Each tag's
-    top edge sits on the fold; the spare 14 mm of paper lands at the base,
-    like the school's existing tents.
+    """Folding table tent: one portrait A4 sheet per class, folded across the
+    middle so each half is one face. The upper half is printed upside-down so
+    both faces read upright once the sheet is stood up like a tent.
     """
-    pw, ph = landscape(A4)
-    ph_mm = ph / MM
-    fold = ph_mm / 2.0
+    pw, ph = A4  # portrait
+    fold = TENT_H  # 148.5 mm — exactly half the sheet
     c = canvas.Canvas(path, pagesize=(pw, ph))
     c.setTitle(title)
     c.setAuthor("Ellipse")
     for it in items:
-        # bottom half, upright, top edge on the fold
-        c.saveState()
-        c.translate(0, (fold - TRIM_H) * MM)
-        draw_tag(c, it, bleed=False, numberless=True)
+        c.saveState()          # lower face, upright
+        draw_tent_face(c, it)
         c.restoreState()
-        # top half, rotated 180 degrees, top edge on the fold
-        c.saveState()
-        c.translate(TRIM_W * MM, (fold + TRIM_H) * MM)
+        c.saveState()          # upper face, rotated 180 degrees
+        c.translate(TENT_W * MM, ph)
         c.rotate(180)
-        draw_tag(c, it, bleed=False, numberless=True)
+        draw_tent_face(c, it)
         c.restoreState()
-        # fold ticks at the page edges only, so the faces stay clean
-        c.saveState()
-        c.setStrokeColor(Color(0.6, 0.6, 0.6))
-        c.setLineWidth(0.2)
+        c.saveState()          # fold ticks at the sheet edges only
+        c.setStrokeColor(Color(1, 1, 1))
+        c.setLineWidth(0.3)
         c.setDash(2, 2)
-        c.line(0, fold * MM, 6 * MM, fold * MM)
-        c.line((TRIM_W - 6) * MM, fold * MM, TRIM_W * MM, fold * MM)
+        c.line(0, fold * MM, 7 * MM, fold * MM)
+        c.line((TENT_W - 7) * MM, fold * MM, TENT_W * MM, fold * MM)
         c.restoreState()
         c.showPage()
     c.save()
