@@ -351,6 +351,20 @@ def build_a4_full_pdf(items, path, title):
     c.save()
 
 
+def build_tent_pngs(classes, outdir, dpi=300):
+    """300 dpi PNG of each class tent sheet (2480 x 3508 px)."""
+    import pymupdf
+
+    tmp = os.path.join(outdir, "_tmp.pdf")
+    build_tent_pdf(classes, tmp, "tent png export")
+    doc = pymupdf.open(tmp)
+    for i, it in enumerate(classes):
+        base = re.sub(r"[^A-Za-z0-9]+", "-", it["title"]).strip("-")
+        doc[i].get_pixmap(dpi=dpi).save(os.path.join(outdir, "Tent_%s.png" % base))
+    doc.close()
+    os.remove(tmp)
+
+
 def build_pngs(items, dpi=300):
     """High-resolution PNG of every tag (300 dpi = 3508 x 1075 px)."""
     import pymupdf
@@ -486,6 +500,12 @@ def build_nup_pdf(items, path, title, pagesize, per, page_margin, gap):
     return scale
 
 
+def grade_sort_key(it):
+    """1A, 1B, 1G, 1P, 2A, ... 9BG, 10A, 10BG, 11AG."""
+    m = re.match(r"^(\d+)(.*)$", it["title"])
+    return (int(m.group(1)), m.group(2)) if m else (999, it["title"])
+
+
 def slug(it):
     base = "%s-%s" % (it["room"] or "x", it["title"])
     base = re.sub(r"[^A-Za-z0-9]+", "-", base).strip("-").lower()
@@ -576,6 +596,20 @@ def main():
         sub = [i for i in items if i["floor"] == floor]
         build_print_pdf(sub, os.path.join(OUT, "Ellipse_Room_Tags_Floor%s.pdf" % floor),
                         "Ellipse room tags — floor %s" % floor)
+
+    classes = sorted((i for i in items if i["eyebrow"] == "GRADE"), key=grade_sort_key)
+    build_tent_pdf(classes, os.path.join(OUT, "Ellipse_Tent_Cards_ALL_CLASSES.pdf"),
+                   "Ellipse tent cards — all classes")
+    tents = os.path.join(OUT, "tents")
+    os.makedirs(tents, exist_ok=True)
+    for stale in os.listdir(tents):
+        os.remove(os.path.join(tents, stale))
+    for it in classes:
+        base = re.sub(r"[^A-Za-z0-9]+", "-", it["title"]).strip("-")
+        build_tent_pdf([it], os.path.join(tents, "Tent_%s.pdf" % base),
+                       "Ellipse tent card — %s" % it["title"])
+    build_tent_pngs(classes, tents)
+    print("%d class tent cards -> %s" % (len(classes), tents))
 
     names = build_previews(items)
     build_index(items, names)
