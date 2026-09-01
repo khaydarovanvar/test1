@@ -1,0 +1,8 @@
+{
+  "name": "why-do-we-need-mathematics",
+  "private": true,
+  "description": "Interactive first-lesson presentation with live classroom voting (Netlify Functions + Blobs).",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

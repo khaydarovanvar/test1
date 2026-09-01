@@ -870,7 +870,7 @@ function setLang(next){
   RELABEL.forEach(function(f){ try { f(); } catch (e) {} });
   var sec = document.querySelector(".sec.on");
   if (sec) document.getElementById("chapter").textContent = LANG === "uz" ? sec.dataset.chapterUz : sec.dataset.chapter;
-  if (LIVE.on && LIVE.poll) liveOpen(LIVE.poll);
+  if (LIVE.on) liveIntent(LIVE.want || LIVE.poll || "");
 }
 
 /* ── live voting client (Netlify Functions + Blobs) ───────────────────────── */
@@ -894,18 +894,35 @@ async function liveCall(path, body){
 }
 var VOTES = {};              // pollId -> vote block instance
 var SECTION_POLL = {};       // section index -> pollId
-function liveOpen(pollId){
-  var v = VOTES[pollId];
-  if (!LIVE.on || !v) return;
-  LIVE.poll = pollId;
-  liveCall("/open", { room: LIVE.room, poll: pollId, title: v.title(), options: v.labels() })
-    .then(function(){ LIVE.ok = true; }).catch(function(){ LIVE.ok = false; });
-}
-function liveClose(){
+/* open/close requests are sequenced: only the teacher's LAST intent reaches
+   the room, however fast they flip through sections */
+var syncT = null, syncBusy = false;
+function liveIntent(pollId){
   if (!LIVE.on) return;
-  LIVE.poll = "";
-  liveCall("/close", { room: LIVE.room }).catch(function(){});
+  LIVE.want = pollId || "";
+  clearTimeout(syncT);
+  syncT = setTimeout(liveSync, 280);
 }
+async function liveSync(){
+  if (!LIVE.on || syncBusy) return;
+  syncBusy = true;
+  var want = LIVE.want || "";
+  try {
+    if (want && VOTES[want]) {
+      var v = VOTES[want];
+      await liveCall("/open", { room: LIVE.room, poll: want, title: v.title(), options: v.labels() });
+      LIVE.poll = want;
+    } else {
+      await liveCall("/close", { room: LIVE.room });
+      LIVE.poll = "";
+    }
+    LIVE.ok = true;
+  } catch (e) { LIVE.ok = false; }
+  syncBusy = false;
+  if ((LIVE.want || "") !== want) { clearTimeout(syncT); syncT = setTimeout(liveSync, 60); }
+}
+function liveOpen(pollId){ liveIntent(pollId); }
+function liveClose(){ liveIntent(""); }
 function livePull(){
   if (!LIVE.on || !LIVE.poll) return;
   liveCall("/state?room=" + LIVE.room + "&t=" + Date.now())
@@ -920,18 +937,33 @@ function livePull(){
     })
     .catch(function(){ LIVE.ok = false; });
 }
-function liveFail(){
-  tx($("#liveHelp"),
-    "Live voting could not reach the server. It only works on the deployed Netlify site — open the presentation from your <b>netlify.app</b> address, not from a local file or a preview.",
-    "Jonli ovoz berish serverga ulana olmadi. U faqat Netlify’ga joylashtirilgan saytda ishlaydi — taqdimotni lokal fayldan emas, <b>netlify.app</b> manzilidan oching.");
+function liveFail(en, uz){
+  tx($("#liveHelp"), en, uz);
   $("#liveHelp").style.color = "var(--no)";
 }
 async function liveStart(){
   var btn = $("#liveGo"); btn.disabled = true;
   LIVE.room = LIVE.room || liveCode();
-  if (!LIVE.api) { liveFail(); btn.disabled = false; return; }
-  try { await liveCall("/state?room=" + LIVE.room); }
-  catch (e) { liveFail(); btn.disabled = false; return; }
+  if (!LIVE.api) {
+    liveFail(
+      "This copy is running from a local file, so there is no server behind it. Open the presentation from your <b>netlify.app</b> address to use live voting.",
+      "Bu nusxa lokal fayldan ochilgan, orqasida server yo‘q. Jonli ovoz berish uchun taqdimotni <b>netlify.app</b> manzilingizdan oching.");
+    btn.disabled = false; return;
+  }
+  var h = null;
+  try { h = await liveCall("/health"); }
+  catch (e) {
+    liveFail(
+      "The voting server is not answering on this site (<span class='mono'>/api/health</span> failed). Redeploy the site with the latest files — the deploy must include <b>netlify.toml</b> and the <b>netlify/functions</b> folder. If the site is connected to GitHub, trigger a new deploy; if you deployed by drag-and-drop, drag the updated folder in again.",
+      "Bu saytda ovoz berish serveri javob bermayapti (<span class='mono'>/api/health</span> ishlamadi). Saytni yangi fayllar bilan qayta joylashtiring — deploy ichida <b>netlify.toml</b> va <b>netlify/functions</b> papkasi bo‘lishi shart. Sayt GitHub’ga ulangan bo‘lsa, yangi deploy qiling; drag-and-drop bo‘lsa, yangilangan papkani qaytadan tashlang.");
+    btn.disabled = false; return;
+  }
+  if (!h.blobs) {
+    liveFail(
+      "The voting server is running but its storage is not available" + (h.detail ? " (<span class='mono'>" + String(h.detail).replace(/[<>]/g, "") + "</span>)" : "") + ". Redeploy the site once — Netlify Blobs switches on during a fresh deploy.",
+      "Ovoz berish serveri ishlayapti, lekin xotira ulanmadi" + (h.detail ? " (<span class='mono'>" + String(h.detail).replace(/[<>]/g, "") + "</span>)" : "") + ". Saytni bir marta qayta joylashtiring — Netlify Blobs yangi deployda o‘zi yoqiladi.");
+    btn.disabled = false; return;
+  }
   btn.disabled = false;
   $("#liveHelp").style.color = "";
   tx($("#liveHelp"),
@@ -955,8 +987,7 @@ async function liveStart(){
   document.getElementById("liveJoinBtn").classList.remove("hidden");
   clearInterval(LIVE.timer);
   LIVE.timer = setInterval(function(){ if (document.visibilityState === "visible") livePull(); }, 2500);
-  var here = SECTION_POLL[at];
-  if (here) liveOpen(here); else liveClose();
+  liveIntent(SECTION_POLL[at] || "");
   joinShow(true);
 }
 function joinShow(on){
@@ -973,7 +1004,8 @@ function joinShow(on){
 }
 function liveStop(){
   joinShow(false);
-  liveClose();
+  clearTimeout(syncT);
+  if (LIVE.on) liveCall("/close", { room: LIVE.room }).catch(function(){});
   LIVE.on = false; clearInterval(LIVE.timer); LIVE.timer = null;
   document.getElementById("liveGo").classList.remove("hidden");
   document.getElementById("liveOff").classList.add("hidden");
@@ -1191,7 +1223,7 @@ function go(i){
   $$(".dot", dots).forEach(function(d, k){ d.classList.toggle("now", k === at); d.classList.toggle("seen", k < at); });
   $$(".j", jump).forEach(function(j, k){ j.classList.toggle("now", k === at); });
   window.scrollTo(0, 0);
-  if (LIVE.on) { var pid = SECTION_POLL[at]; if (pid) liveOpen(pid); else liveClose(); }
+  if (LIVE.on) liveIntent(SECTION_POLL[at] || "");
   if (typeof onEnter[at] === "function") onEnter[at]();
 }
 var onEnter = {};
@@ -1237,7 +1269,7 @@ $("#liveWipe").addEventListener("click", function(){
   if (!LIVE.on) return;
   liveCall("/reset", { room: LIVE.room }).then(function(){
     Object.keys(VOTES).forEach(function(k){ VOTES[k].setCounts([]); });
-    var here = SECTION_POLL[at]; if (here) liveOpen(here);
+    liveIntent(SECTION_POLL[at] || "");
   }).catch(function(){});
 });
 
@@ -1634,9 +1666,9 @@ function loanCalc(){
   $("#barCarV").textContent = usd(P);
   $("#barTotV").textContent = usd(total);
   tx($("#loanQ"), usd(P) + " — or " + usd(total) + " for the same car?", usd(P) + " — yoki o‘sha mashina uchun " + usd(total) + "?");
-  if (LIVE.on && LIVE.poll === "loan") {
+  if (LIVE.on && (LIVE.want || LIVE.poll) === "loan") {
     clearTimeout(loanPush);
-    loanPush = setTimeout(function(){ liveOpen("loan"); }, 900);
+    loanPush = setTimeout(function(){ liveIntent("loan"); }, 900);
   }
 }
 [lP, lD, lR, lY].forEach(function(s){ s.addEventListener("input", loanCalc); });
