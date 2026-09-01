@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teacher Script · Why Do We Need Math?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Manrope:wght@400;600;800&family=Syne:wght@800&display=swap">
+<style>
+:root{
+  --bg:#0B0D1A;--panel:rgba(255,255,255,.05);--line:rgba(255,255,255,.12);
+  --ink:#F0F2FC;--muted:#A8AFCB;--faint:#6E769B;--acc:#9B8CFF;--gold:#FFC13D;--ok:#5BE49B;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:Manrope,system-ui,sans-serif;font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:780px;margin-inline:auto;padding:20px 18px 90px}
+.top{
+  position:sticky;top:0;z-index:10;display:flex;gap:10px;align-items:center;justify-content:space-between;
+  background:linear-gradient(180deg,var(--bg) 78%,transparent);padding:14px 0 18px;
+}
+h1{font-family:Syne,sans-serif;font-size:clamp(1.5rem,5vw,2.2rem);margin:0;letter-spacing:-.02em;line-height:1.05}
+h1 span{color:var(--acc)}
+.btn{
+  font:inherit;font-weight:800;font-size:.8rem;color:var(--ink);cursor:pointer;
+  background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:9px 13px;white-space:nowrap;
+}
+.btn:hover{border-color:var(--acc)}
+.meta{color:var(--muted);max-width:64ch}
+.meta b{color:var(--ink)}
+.note{
+  border:1px solid rgba(255,193,61,.4);background:rgba(255,193,61,.08);border-radius:14px;
+  padding:13px 16px;color:var(--muted);font-size:.92rem;margin:18px 0 6px;
+}
+.note b{color:var(--gold)}
+article{border-top:1px solid var(--line);margin-top:30px;padding-top:26px}
+article > header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.num{
+  font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--acc);
+  border:1px solid var(--acc);border-radius:8px;padding:2px 8px;font-size:.8rem;
+}
+h2{font-family:Syne,sans-serif;font-size:clamp(1.2rem,3.6vw,1.6rem);margin:0;letter-spacing:-.015em;flex:1}
+.time{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--faint);white-space:nowrap}
+.cue{
+  font-size:.85rem;color:var(--muted);background:var(--panel);border:1px dashed var(--line);
+  border-radius:12px;padding:10px 14px;margin:0 0 14px;
+}
+.cue b{color:var(--ink)}
+.say{
+  border-left:3px solid var(--acc);padding:2px 0 2px 16px;margin:0 0 14px;
+  font-size:1.02rem;color:var(--ink);
+}
+.say em{color:var(--acc);font-style:normal;font-weight:800}
+.do{
+  font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--ok);
+  margin:0 0 14px;padding-left:19px;
+}
+.tip{font-size:.85rem;color:var(--faint);padding-left:19px;margin:0 0 6px}
+@media print{
+  :root{--bg:#fff;--ink:#111;--muted:#444;--faint:#777;--panel:#f4f4f6;--line:#ccc;--acc:#5b47c9;--ok:#0a7d4f;--gold:#8a6410}
+  body{font-size:12.5px}
+  .top button{display:none}
+  article{break-inside:avoid-page}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="top">
+  <h1 data-uz="O‘qituvchi <span>matni</span>">Teacher <span>script</span></h1>
+  <button class="btn" id="lang" type="button">O‘ZBEKCHA</button>
+</div>
+
+<p class="meta" data-uz="<b>“Matematika nega kerak?”</b> darsi uchun gapiriladigan matn — har bir sahifa uchun. Buni taqdimot proyektorda ochiq turganda telefoningizdan o‘qing. <b>Yashil qatorlar</b> — nima bosish yoki kutish kerakligi. So‘zma-so‘z o‘qish shart emas: bu tayanch, ssenariy emas, qolip.">The spoken script for the <b>“Why do we need math?”</b> lesson — one part per page. Read it from your phone while the projector shows the deck. <b>Green lines</b> tell you what to press or wait for. Don’t read it word for word — it is a support, not a cage.</p>
+
+<div class="note" data-uz="<b>Vaqt haqida.</b> To‘liq material — 60–70 daqiqa. 45 daqiqalik dars uchun: 03-bo‘limda 3–4 ta kartani oching (hammasini emas), 12-bo‘limda 2 ta ishni tanlang, 13-bo‘limni esa keyingi darsga qoldiring — u a’lo darajali takrorlash bo‘ladi. 09-bo‘limni shoshilmasdan o‘ting.">
+<b>About timing.</b> The full material runs 60–70 minutes. For a 45-minute lesson: open only 3–4 cards in section 03, pick 2 cases in section 12, and save section 13 for the next lesson — it makes a perfect warm-up recap. Never rush section 09.</div>
+
+<!-- ══════════ 00 ══════════ -->
+<article>
+  <header><span class="num">00</span><h2 data-uz="Qo‘ng‘iroqdan oldin">Before the bell</h2><span class="time">−5 min</span></header>
+  <div class="cue" data-uz="💻 Netlify manzilingizni oching → <b>F</b> (butun ekran) → <b>P</b> → <b>Jonli ovoz berish: Yoqish</b>. QR kodli qo‘shilish ekranini qoldiring. Tilni <b>L</b> bilan tanlang.">💻 Open your netlify.app address → <b>F</b> (fullscreen) → <b>P</b> → <b>Live voting: Turn on</b>. Leave the QR join screen up. Pick the language with <b>L</b>.</div>
+  <p class="say" data-uz="— Ha, to‘g‘ri eshitdingiz: telefonlarni <em>chiqaring</em>. Ekrandagi kodni skanerlang. Bu — yil davomida men sizdan telefonni qo‘lda ushlab turishingizni so‘raydigan yagona dars bo‘lishi mumkin. Foydalanib qoling.">— Yes, you heard me correctly: phones <em>out</em>. Scan the code on the screen. This may be the only lesson all year where I ask you to keep your phone in your hand. Enjoy it.</p>
+  <div class="do" data-uz="[“ovoz keldi” hisoblagichi sinf soniga yaqinlashguncha kuting → J — darsga qaytish]">[wait until the “votes in” counter is close to the class size → press J to return to the lesson]</div>
+  <p class="tip" data-uz="Wi-Fi yo‘qmi? Hech nima o‘zgarmaydi: ovozlar o‘rniga qo‘l ko‘tartirasiz va javob tugmalarini o‘zingiz bosasiz.">No Wi-Fi? Nothing changes: students raise hands and you tap the answer buttons yourself.</p>
+</article>
+
+<!-- ══════════ 01 ══════════ -->
+<article>
+  <header><span class="num">01</span><h2 data-uz="Boshlanish va birinchi ovoz">The hook &amp; the first vote</h2><span class="time">≈4 min</span></header>
+  <div class="cue" data-uz="📺 Sarlavha sahifasi. Ovoz blokini ochiq qoldiring.">📺 The title page. Keep the vote block in view.</div>
+  <p class="say" data-uz="— Har yili, birinchi haftada, kimdir mendan mana shu uchta savolni so‘raydi. <em>[shilqim savollarga ishora qiling]</em> Trigonometriya nimaga kerak? Hosila nimaga kerak? Integral nimaga kerak? Odatda buni oktabr atrofida, sekinroq ohangda so‘rashadi. Bu yil oktabrni kutmaymiz. Bugun, birinchi darsda, ochiq gaplashamiz.">— Every year, in the first week, somebody asks me these three questions. <em>[gesture at the bubbles]</em> Why do I need trigonometry? Why derivatives? Why integrals? Usually it gets asked around October, in a quieter voice. This year we are not waiting for October. We do it today, in the open, lesson one.</p>
+  <p class="say" data-uz="— Ovoz berishdan boshlaymiz. Halol bo‘ling — chin dildan halol. Javobingizni hech kim ko‘rmaydi, faqat umumiy son ko‘rinadi, va men bunga baho qo‘ymayman. Matematika <em>sizning</em> kelajagingizga qanchalik kerak?">— We start by voting. Be honest — properly honest. Nobody can see your answer, only the totals, and I am not grading this. How useful is math for <em>your</em> future?</p>
+  <div class="do" data-uz="[kuting; “ovoz keldi” to‘xtaganda:] → “Sinfga ko‘rsatish”">[wait; when “votes in” stops climbing:] → press “Show the class”</div>
+  <p class="say" data-uz="— Qiziq rasm. Bu rasmni esda saqlang: dars oxirida xuddi shu ovozni yana ochamiz, va kim javobini ko‘chirishini ko‘ramiz. Kim haq — hozircha aytmayman.">— Interesting picture. Remember it: at the end of the lesson we open this same vote again, and we see who would move their answer. Who is right — I am not saying yet.</p>
+</article>
+
+<!-- ══════════ 02 ══════════ -->
+<article>
+  <header><span class="num">02</span><h2 data-uz="Tana va miya">Body vs brain</h2><span class="time">≈5 min</span></header>
+  <div class="cue" data-uz="📺 Kartalarni sudrab qo‘yish. 1–2 o‘quvchini doskaga chaqirsangiz ham bo‘ladi.">📺 The drag-and-drop cards. You can invite one or two students up to sort them.</div>
+  <p class="say" data-uz="— G‘alati savol beraman. Kim sport bilan shug‘ullanadi? <em>[qo‘llar]</em> Endi ayting: hayotda og‘ir temir shtangani bosh uzra ko‘tarishingiz <em>shart</em> bo‘lgan bitta holatni ayting. ... Yo‘q bunday holat. Hech kimning buvisi undan mebelni shtanga qilib ko‘tarishni so‘ramaydi.">— Strange question. Who here does sport? <em>[hands]</em> Now tell me: name one moment in real life where you <em>must</em> lift a heavy metal bar above your head. … There isn’t one. Nobody’s grandmother asks them to bench-press the furniture.</p>
+  <p class="say" data-uz="— Lekin hech kim sport zaliga kirib “bu shtanga menga qachon kerak bo‘ladi?” demaydi. Chunki hamma tushunadi: gap shtangada emas. Gap u <em>quradigan narsada</em>. Keling, kartalarni joyiga qo‘yamiz: qaysi natija tanani mashq qilishdan, qaysi biri miyani mashq qilishdan?">— And yet nobody walks into a gym and says “when will I ever use this barbell?” Because everyone understands: the barbell is not the point. What it <em>builds</em> is the point. Let’s sort these cards: which results come from training the body, which from training the mind?</p>
+  <div class="do" data-uz="[kartalar joylashgach] → “Tekshiramiz”">[when the cards are placed] → press “Check the class”</div>
+  <p class="say" data-uz="— Ikkita tuzoqqa qarang: <em>diqqat</em> va <em>intizom</em>. Ular ikkala ustunga ham to‘g‘ri keldi. Butun kursimizning siri mana shu ikki so‘zda. Matematika — sport zali. Integral — shtanga. Imtihondan keyin uni qo‘yasiz. Ko‘tarayotganda qurganingiz esa — qoladi.">— Look at the two traps: <em>concentration</em> and <em>discipline</em>. They fit both columns. The whole secret of this course is in those two words. Math is the gym. The integral is a barbell. You will put it down after the exam. What you built lifting it — stays.</p>
+</article>
+
+<!-- ══════════ 03 ══════════ -->
+<article>
+  <header><span class="num">03</span><h2 data-uz="U qayerda yashaydi">Where it lives</h2><span class="time">≈4 min</span></header>
+  <div class="cue" data-uz="📺 11 ta karta. Hammasini ochmang — sinf aytganidan 3–4 tasini oching. GPS va Sun’iy intellekt eng kuchli ta’sir qiladi.">📺 The 11 tiles. Don’t open them all — take 3–4 the class calls out. GPS and AI land hardest.</div>
+  <p class="say" data-uz="— “Mashq” degani mavhum eshitiladi. Boshqa o‘yin o‘ynaymiz. Ekrandagi hamma narsadan siz bugun ertalab foydalangansiz yoki bugun kechqurun foydalanasiz. Bittasini ayting — ochamiz.">— “Training” sounds abstract. Different game. Everything on this screen is something you used this morning or will use tonight. Call one out — I’ll open it.</p>
+  <div class="do" data-uz="[sinf aytgan kartalarni bosing; izohni ovoz chiqarib o‘qing]">[tap the tiles they call; read the explanation aloud]</div>
+  <p class="say" data-uz="— Endi noqulay qismi: bularning birortasi ham aynan shu yilgi dasturimizdagi mavzularsiz mavjud bo‘lolmasdi. Matematika dunyodan yo‘qolgani yo‘q. U shunchaki mashinalarning ichiga ko‘chib o‘tdi — va kimdir uning tilida gapirishi kerak.">— Now the uncomfortable part: not one of these could exist without the exact topics on this year’s program. The math has not disappeared from the world. It moved inside the machines — and somebody has to speak its language.</p>
+</article>
+
+<!-- ══════════ 04 ══════════ -->
+<article>
+  <header><span class="num">04</span><h2 data-uz="Trigonometriya sinovi">The trigonometry challenge</h2><span class="time">≈5 min</span></header>
+  <div class="cue" data-uz="📺 Bino masalasi. Javob bosilganda uchburchak o‘zi yechiladi.">📺 The building problem. The triangle animates when an answer is tapped.</div>
+  <p class="say" data-uz="— Haqiqiy masala. Siz binodan 30 metr naridasiz. Tepasiga qaraysiz — burchak 45 daraja. Narvon yo‘q, dron yo‘q, ruletka yetmaydi. Bino qancha baland? A, B yoki C — qo‘l ko‘taring.">— A real one. You are 30 metres from a building. You look at the top — the angle is 45 degrees. No ladder, no drone, the tape measure is too short. How tall is the building? A, B or C — hands up.</p>
+  <div class="do" data-uz="[har variant uchun qo‘llarni sanang, keyin to‘g‘ri javobni bosing]">[count hands for each option, then tap the correct answer]</div>
+  <p class="say" data-uz="— 30 metr. Chunki tan 45° aynan birga teng — balandlik masofaga teng bo‘lib qoladi. Siz hozir binoni transportir bilan o‘lchadingiz. Trigonometriya aslida shu: u uchburchaklar haqida emas, <em>bog‘lanishlar</em> haqida. O‘lchay oladigan narsangiz — o‘lchay olmaydiganingizni aytib beradi. Quruvchi, uchuvchi, o‘yin dizayneri, GPS — hammasi har kuni shu bitta hiyladan foydalanadi.">— 30 metres. Because tan 45° is exactly one — the height equals the distance. You just measured a building with a protractor. That is what trigonometry really is: not triangles, <em>relationships</em>. The thing you can measure tells you the thing you cannot. Builders, pilots, game designers, GPS — the same trick, every single day.</p>
+</article>
+
+<!-- ══════════ 05 ══════════ -->
+<article>
+  <header><span class="num">05</span><h2 data-uz="Hosila — o‘zgarish matematikasi">The derivative — mathematics of change</h2><span class="time">≈5 min</span></header>
+  <div class="cue" data-uz="📺 Mashina va savol. Javobdan keyin slayder ochiladi — uni SEKIN suring.">📺 The car and the question. The slider appears after the answer — drag it SLOWLY.</div>
+  <p class="say" data-uz="— Mashina ketyapti. Men sizga aytaman: u 200 metr yurdi. Bu bilishga yetarlimi? <em>[ovoz]</em> Yo‘q. Chunki o‘rmalab yurgan 200 metr bilan halokat arafasidagi 200 metr — butunlay boshqa vaziyatlar. Aslida bilmoqchi bo‘lganingiz: <em>hozir</em> u qanchalik tez o‘zgaryapti?">— The car is moving. I tell you: it has gone 200 metres. Is that enough to know? <em>[vote]</em> No. Because 200 metres crawling and 200 metres about to crash are completely different situations. What you actually want to know is: how fast is it changing, <em>right now</em>?</p>
+  <div class="do" data-uz="[vaqt slayderini sekin suring; uchala grafikka ishora qiling]">[drag the time slider slowly; point at the three panels]</div>
+  <p class="say" data-uz="— Qarang. Masofa. Tezlik — masofaning qanchalik tez o‘zgarishi. Tezlanish — tezlikning qanchalik tez o‘zgarishi. Mana shu bitta amal — “bu hozir qanchalik tez o‘zgaryapti?” — ning nomi bor: <em>hosila</em>. Tamom. Butun qo‘rqinchli so‘z shu. Spidometringiz uni har soniyada hisoblaydi.">— Watch. Position. Speed — how fast position changes. Acceleration — how fast speed changes. That single operation — “how fast is this changing right now?” — has a name: the <em>derivative</em>. That’s it. That is the entire scary word. Your speedometer computes one every second.</p>
+</article>
+
+<!-- ══════════ 06 ══════════ -->
+<article>
+  <header><span class="num">06</span><h2 data-uz="Integral — bo‘laklardan butunga">The integral — pieces to the whole</h2><span class="time">≈5 min</span></header>
+  <div class="cue" data-uz="📺 Egri chiziq ostidagi yuza. Javobdan keyin: 10 → 50 → 100 → 1000 tugmalarini ketma-ket bosing va XATO katagiga qarang.">📺 The area under the curve. After the answer: press 10 → 50 → 100 → 1000 in order and watch the ERROR tile.</div>
+  <p class="say" data-uz="— Endi teskari savol. Mana egri shakl. Yuzasini qanday topamiz — taxmin, chizg‘ich, yoki...? <em>[C ni tanlashadi]</em> To‘g‘ri to‘rtburchaklar. Endi xatoni kuzating. O‘nta — xato 0,1. Ellikta — 0,004. Mingta — deyarli nol. Chiziqlar cheksiz ingichka bo‘lganda javob qimirlamay qoladi. Integral — shu: cheksiz ko‘p, cheksiz kichik bo‘laklarni qo‘shish.">— Now the opposite question. Here is a curved shape. How do we find its area — guess, ruler, or…? <em>[they pick C]</em> Rectangles. Now watch the error. Ten — error 0.1. Fifty — 0.004. A thousand — almost nothing. When the strips get infinitely thin, the answer stops moving. That is the integral: adding infinitely many, infinitely small pieces.</p>
+  <p class="say" data-uz="— Eng chiroyli joyi: hosila bilan integral — bitta g‘oya, qarama-qarshi yo‘nalishda. O‘zgarish va to‘planish. Tezlikdan — masofa. Mana shu juftlik yer yuzidagi har bir dvigatel, raketa, multfilm va sun’iy intellektni yuritadi.">— The most beautiful part: derivative and integral are one idea, run in opposite directions. Change, and accumulation. Speed becomes distance. That pair runs every engine, rocket, animation and AI model on earth.</p>
+</article>
+
+<!-- ══════════ 07 ══════════ -->
+<article>
+  <header><span class="num">07</span><h2 data-uz="Pul: naqd yoki kredit">Money: cash or credit</h2><span class="time">≈5 min</span></header>
+  <div class="cue" data-uz="📺 Kredit kalkulyatori. Slayderlarni sinf ko‘z o‘ngida suring. Keyin telefonlarda ovoz.">📺 The loan calculator. Move the sliders in front of the class. Then the phone vote.</div>
+  <p class="say" data-uz="— Endi — pulingizga tushmaguncha hech kim o‘rgatmaydigan qism. Siz 25 yoshdasiz. Mashina — o‘ttiz ming dollar. Naqdmi, kreditmi? Ochiq ko‘z bilan qaraymiz. <em>[slayderlar]</em> Oyiga 637 dollar. Yomon eshitilmaydi-a? Jami: 38 245. O‘sha mashina. Sakkiz ming dollar ustiga — mashinaning choragi — faqat to‘lovning <em>tartibi</em> uchun.">— Now the part nobody teaches you until it costs you money. You are 25. The car is thirty thousand dollars. Cash, or credit? Let’s look with open eyes. <em>[sliders]</em> 637 a month. Doesn’t sound bad, does it? Total: 38,245. The same car. Eight thousand dollars extra — a quarter of the car — just for the <em>arrangement</em> of the payment.</p>
+  <div class="do" data-uz="[telefonlarda ovoz → “Sinfga ko‘rsatish”]">[phone vote → “Show the class”]</div>
+  <p class="say" data-uz="— Bu yerda yagona to‘g‘ri javob yo‘q — mashina hoziroq kerak bo‘lishi mumkin. Lekin to‘g‘ri <em>qaror qilish yo‘li</em> bor: jami summa ko‘z o‘ngingizda turganda qaror qilish. Farqi shu.">— There is no single right answer here — sometimes you need the car now. But there is a right <em>way to decide</em>: with the total in front of your eyes. That is the difference.</p>
+</article>
+
+<!-- ══════════ 08 ══════════ -->
+<article>
+  <header><span class="num">08</span><h2 data-uz="“Atigi oyiga $650” tuzog‘i">The “only $650 a month” trap</h2><span class="time">≈4 min</span></header>
+  <div class="cue" data-uz="📺 Reklama banneri. Uni aktyorlik bilan, reklama ovozida o‘qing.">📺 The advert banner. Read it out loud, in your best advertising voice.</div>
+  <p class="say" data-uz="— <em>[reklama ohangida]</em> “Atigi oyiga 650 dollar! Boshlang‘ich to‘lovsiz! Bugunoq haydab keting!” ... Arzonga o‘xshaydimi? Ovoz bering.">— <em>[advertising voice]</em> “Only 650 a month! Nothing up front! Drive it today!” … Sounds cheap? Vote.</p>
+  <div class="do" data-uz="[ovoz → “Endi reklama qochgan arifmetikani qiling”]">[vote → press “Now do the arithmetic the advert avoided”]</div>
+  <p class="say" data-uz="— Reklama sizga bitta raqamni ko‘rsatadi. Siz esa u yashirgan amalni bajarasiz: 650 karra 60 — 39 000. Kredit haqida hech qachon oylik to‘loviga qarab hukm chiqarmang. O‘n soniyalik ko‘paytirish — umringizdagi eng daromadli arifmetika.">— The advert shows you one number. You do the operation it is hiding: 650 times 60 — 39,000. Never judge a loan by its monthly payment. Ten seconds of multiplication — the most profitable arithmetic of your life.</p>
+</article>
+
+<!-- ══════════ 09 ══════════ -->
+<article>
+  <header><span class="num">09</span><h2 data-uz="Riba va tuzilma">Riba &amp; structure</h2><span class="time">≈4 min</span></header>
+  <div class="cue" data-uz="📺 Islom moliyasi bo‘limi. Shoshilmang. Ohang — hurmatli va xotirjam.">📺 The Islamic finance section. Do not rush it. Tone — respectful and calm.</div>
+  <p class="say" data-uz="— Endi ba’zilaringiz allaqachon o‘ylab turgan savol. Islom moliyasida riba — foiz — taqiqlangan, shuning uchun oddiy foizli kredit odatda joiz emas deb qaraladi. Men matematika o‘qituvchisiman, olim emasman, va bu dars — fatvo emas. Lekin bir narsani ko‘rishingizni istayman: sizga qanday shartnoma taklif qilinmasin — oddiy kredit, murobaha, ijara — uni <em>o‘qishning</em> yo‘li matematikadir.">— Now a question some of you are already thinking about. In Islamic finance, riba — interest — is prohibited, so a conventional loan is generally regarded as impermissible. I am a mathematics teacher, not a scholar, and this lesson is not a fatwa. But I want you to see one thing: whatever contract you are offered — conventional, murabaha, ijarah — mathematics is how you <em>read</em> it.</p>
+  <p class="say" data-uz="— “Xavotir olmang, oyiga atigi 500 dollar.” Matematikani biladigan odam nima deb so‘raydi? Belgilang.">— “Don’t worry, it’s only 500 a month.” What does a mathematically educated person ask? Mark them.</p>
+  <div class="do" data-uz="[belgilashsin → “Javoblarni tekshirish”]">[let them pick → press “Check answers”]</div>
+  <p class="say" data-uz="— Jami qancha. Qanday hisoblangan. Qancha muddatga. Mana shu uch savol sizni <em>har qanday</em> tizimda himoya qiladi. Haqiqiy qaror uchun esa — malakali olimdan so‘rang <em>va</em> arifmetikani qiling. Bittasi ikkinchisining o‘rnini bosmaydi.">— How much in total. How it was calculated. For how long. Those three questions protect you in <em>any</em> system. And for a real decision — ask a qualified scholar <em>and</em> do the arithmetic. Neither replaces the other.</p>
+</article>
+
+<!-- ══════════ 10 ══════════ -->
+<article>
+  <header><span class="num">10</span><h2 data-uz="Ikkilanuvchi dollar">The doubling dollar</h2><span class="time">≈5 min</span></header>
+  <div class="cue" data-uz="📺 Ikki katta karta. Ovozdan keyin: “30 kunni ishga tushirish” — va jim turing, chart o‘zi gapiradi.">📺 The two big cards. After the vote: press “Run 30 days” — then stay quiet and let the chart speak.</div>
+  <p class="say" data-uz="— Tanlov vaqti, va fikringizni o‘zgartira olmaysiz. Bugun ming dollar naqd — yoki bir dollar, u bir oy davomida har kuni ikki barobar ko‘payadi. Telefonlarda ovoz bering. Yaxshilab o‘ylang.">— Choice time, and you cannot change your mind. A thousand dollars today — or one dollar that doubles every day for a month. Vote on your phones. Think carefully.</p>
+  <div class="do" data-uz="[ovoz → “Hamma ovoz berdimi? 30 kunni ochamiz” → ▶ ijro]">[vote → “Everyone voted? Reveal the 30 days” → ▶ play]</div>
+  <p class="say" data-uz="— O‘ninchi kun: 512 dollar. Hali ham yutqazyapti. Yigirmanchi kun: yarim million. O‘ttizinchi kun: <em>536 million dollar</em>. Sizning sezgingiz to‘g‘ri chiziq bilan o‘ylaydi. Dunyoning puli, qarzlari, viruslari va obunachilari esa — ko‘rsatkichli o‘sadi. Bu miyangizga haqorat emas. Bu — matematika nima uchun kerakligining o‘zi: sezgi ko‘ra olmagan narsani ko‘rish.">— Day ten: 512 dollars. Still losing. Day twenty: half a million. Day thirty: <em>536 million dollars</em>. Your intuition thinks in straight lines. The world’s money, debts, viruses and followers grow exponentially. That is not an insult to your brain. It is the reason mathematics exists: to see what intuition cannot.</p>
+</article>
+
+<!-- ══════════ 11 ══════════ -->
+<article>
+  <header><span class="num">11</span><h2 data-uz="Qaror asbobi">The decision tool</h2><span class="time">≈3 min</span></header>
+  <div class="cue" data-uz="📺 $10 000 va oltita savol kartasi.">📺 The $10,000 and the six information cards.</div>
+  <p class="say" data-uz="— Kimdir sizga o‘n ming dollar berdi. Sarflash, jamg‘arish, investitsiya? Qaysi biri to‘g‘ri — aytmayman. Boshqa savol: qaror qilishdan <em>oldin</em> nimani bilishingiz kerak edi? Keraklilarini belgilang.">— Someone hands you ten thousand dollars. Spend, save, invest? Which is right — I won’t say. Different question: what would you need to <em>know</em> before deciding? Mark everything you would want.</p>
+  <div class="do" data-uz="[belgilashsin → “Sinfni tekshirish”]">[let them pick → press “Check the class”]</div>
+  <p class="say" data-uz="— Oltalasi ham. Va nima bo‘lganiga e’tibor bering: matematika sizga qaror aytib bermadi. U hech qachon aytmaydi. U tuyg‘uni — solishtirib bo‘ladigan javoblari bor savollarga aylantirdi. Qaror bilan taxmin orasidagi farq — shu.">— All six. And notice what happened: mathematics did not hand you the decision. It never does. It turned a feeling into questions with comparable answers. That is the difference between a decision and a guess.</p>
+</article>
+
+<!-- ══════════ 12 ══════════ -->
+<article>
+  <header><span class="num">12</span><h2 data-uz="Matematik detektiv">The math detective</h2><span class="time">≈5 min</span></header>
+  <div class="cue" data-uz="📺 +50% / −50% ishi va 5 ta tezkor ish. Vaqt tig‘iz bo‘lsa — 2 tasini tanlang (2- va 5-ishlar eng zo‘ri).">📺 The +50% / −50% case and 5 quick cases. Short on time — pick two (cases 2 and 5 are the best).</div>
+  <p class="say" data-uz="— Sizga unvon beramiz: detektiv. Foizlar — oddiy odamlarni muloyimlik bilan, qonuniy ravishda, har kuni shilib ketadigan joy. Birinchi ishga birga qaraymiz: narx 50 foiz oshdi, keyin 50 foiz tushdi. Qaytdikmi? Yo‘q — 125 dollar kamsiz. Foiz hech qachon bir asosdan ikki marta olinmaydi. Endi o‘zingiz: ochko sanaladi.">— You get a promotion: detective. Percentages are where ordinary people get robbed — politely, legally, daily. First case together: the price goes up 50 percent, then down 50 percent. Are we back? No — you are 125 dollars short. A percentage is never taken from the same base twice. Now on your own: the score counts.</p>
+  <div class="do" data-uz="[ishlarni birma-bir yeching; har javobdan keyin izohni ovoz chiqarib o‘qing]">[work the cases one by one; read the explanation aloud after each answer]</div>
+</article>
+
+<!-- ══════════ 13 ══════════ -->
+<article>
+  <header><span class="num">13</span><h2 data-uz="Tezkor raund">Rapid fire</h2><span class="time">≈7 min</span></header>
+  <div class="cue" data-uz="📺 7 savol, har biriga 10 soniya. Sinf javobni baqiradi — siz bosasiz. 45 daqiqalik darsda: keyingi darsga qoldiring.">📺 7 questions, 10 seconds each. The class shouts, you tap. In a 45-minute lesson: save this for next time.</div>
+  <p class="say" data-uz="— Yakuniy o‘yin. Yettita savol, har biriga o‘n soniya, hammasi bugun ko‘rganlarimizdan. Qoida oddiy: sinf baqiradi, men bosaman. Ko‘pchilik qaysi javobni baqirsa — o‘shani bosaman, demak bir-biringizni ishontirishga ulguring. Tayyormisiz?">— The final game. Seven questions, ten seconds each, all from what we touched today. Simple rule: the class shouts, I tap. I press whatever most of you shout — so you have ten seconds to convince each other. Ready?</p>
+  <div class="do" data-uz="[▶ Boshlash; oxirida natijalar taxtasini o‘qing: qayerda yiqildik va nega]">[▶ Start; at the end read the board: where did we fall, and why]</div>
+</article>
+
+<!-- ══════════ 14 ══════════ -->
+<article>
+  <header><span class="num">14</span><h2 data-uz="Asosiy fikr">The big idea</h2><span class="time">≈2 min</span></header>
+  <div class="cue" data-uz="📺 Qorong‘i ekran. ▶ ni bosing va JIM turing. Qatorlar o‘zi chiqadi — ularni sekin, ovoz chiqarib o‘qing. Bu darsdagi eng jim daqiqa bo‘lsin.">📺 The dark screen. Press ▶ and be QUIET. The lines appear by themselves — read them slowly, out loud. Let this be the quietest minute of the lesson.</div>
+  <p class="say" data-uz="— Bir daqiqa jim o‘tiramiz. Faqat men bilan o‘qing. <em>[qatorlar chiqqach]</em> Formulani unutishingiz mumkin. Maktabdan keyin birorta integral hisoblamasligingiz mumkin. Ishingizda sinuslar teoremasi hech qachon kerak bo‘lmasligi mumkin. <em>[pauza]</em> Lekin sizga doimo o‘ylash kerak bo‘ladi.">— Quiet for a minute. Just read with me. <em>[as the lines land]</em> You may forget a formula. You may never calculate an integral after school. You may never use the sine rule in your job. <em>[pause]</em> But you will always need to think.</p>
+</article>
+
+<!-- ══════════ 15 ══════════ -->
+<article>
+  <header><span class="num">15</span><h2 data-uz="Yakuniy savol va xayrlashuv">The last question &amp; the close</h2><span class="time">≈3 min</span></header>
+  <div class="cue" data-uz="📺 Yakuniy test → final ekrani → “← Birinchi ovozga qaytish”.">📺 The final quiz → the closing screen → “← Back to the first vote”.</div>
+  <p class="say" data-uz="— Kunning oxirgi savoli. Matematika <em>aslida</em> nima? <em>[D ni tanlashadi]</em> Sonlar — alifbo. Formulalar — gaplar. Imtihon — kimdir o‘qiy olishingizni tekshirishi, xolos. Matematikaning o‘zi — til. Naqsh, bog‘lanish va o‘zgarishlarni tasvirlash uchun insoniyat o‘ylab topgan til.">— Last question of the day. What <em>is</em> mathematics, really? <em>[they pick D]</em> Numbers are the alphabet. Formulas are the sentences. The exam is just someone checking you can read. Mathematics itself is a language — the one humanity invented to describe patterns, relationships and change.</p>
+  <div class="do" data-uz="[“← Birinchi ovozga qaytish” → o‘sha birinchi diagramma]">[“← Back to the first vote” → the first bars again]</div>
+  <p class="say" data-uz="— Darsning boshida shunday ovoz bergan edingiz. Endi ayting: kim javobini ko‘chirgan bo‘lardi? Qayoqqa — va nega? <em>[2–3 o‘quvchini tinglang]</em> Uyga vazifa: yechiladigan hech nima yo‘q. Faqat bitta ish: ertaga hayotdan bitta raqamni tutib keling — chegirma, kredit reklamasi, statistika. Birga so‘roq qilamiz. Dars tugadi. Rahmat.">— This is how you voted at the start of the lesson. Now tell me: who would move their answer? Which way — and why? <em>[hear two or three students]</em> Homework: nothing to solve. Just one job: tomorrow, catch one number in the wild — a discount, a loan advert, a statistic — and bring it here. We will interrogate it together. Lesson over. Thank you.</p>
+</article>
+
+</div>
+<script>
+(function(){
+"use strict";
+var LANG = "en";
+try { var l = localStorage.getItem("wm-lang"); if (l === "uz" || l === "en") LANG = l; } catch (e) {}
+function paint(){
+  document.querySelectorAll("[data-uz]").forEach(function(n){
+    if (n.dataset.en == null) n.dataset.en = n.innerHTML;
+    n.innerHTML = LANG === "uz" ? n.dataset.uz : n.dataset.en;
+  });
+  document.getElementById("lang").textContent = LANG === "uz" ? "ENGLISH" : "O‘ZBEKCHA";
+  document.documentElement.lang = LANG;
+}
+document.getElementById("lang").addEventListener("click", function(){
+  LANG = LANG === "uz" ? "en" : "uz";
+  try { localStorage.setItem("wm-lang", LANG); } catch (e) {}
+  paint();
+});
+paint();
+})();
+</script>
+</body>
+</html>

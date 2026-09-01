@@ -17,6 +17,12 @@
   to = "/vote.html"
   status = 200
 
+# The teacher's spoken script: yoursite.netlify.app/notes
+[[redirects]]
+  from = "/notes"
+  to = "/teacher-script.html"
+  status = 200
+
 # Friendly API path in front of the function.
 [[redirects]]
   from = "/api/*"
