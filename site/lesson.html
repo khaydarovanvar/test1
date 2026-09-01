@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/pages.css">
+<title>Lesson · Anvarbek Khaydarov</title>
+</head>
+<body>
+<div class="preload" id="preload" role="status" aria-live="polite">
+  <div class="pl-in">
+    <svg class="pl-mark" viewBox="0 0 64 64" aria-hidden="true">
+      <path class="pl-arc" d="M40.03 56.73 A26 26 0 1 1 54.96 44.21" fill="none"
+            stroke="var(--brass)" stroke-width="2.6" stroke-linecap="round"/>
+      <circle class="pl-nib" cx="54.96" cy="44.21" r="2.9" fill="var(--brass)"/>
+      <path class="pl-a" d="M32 15 L20 47 M32 15 L44 47 M24.2 36 H39.8" fill="none"
+            stroke="currentColor" stroke-width="3.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <p class="pl-name">Anvarbek Khaydarov</p>
+    <p class="pl-sub">Mathematics · Grades 5&#8211;11</p>
+    <div class="pl-bar"><i></i></div>
+  </div>
+</div>
+<div id="site-header"></div>
+<div class="lhead" id="lhead"></div>
+<div class="lbody">
+  <main class="lmain" id="lmain"></main>
+  <aside class="lside" id="lside"></aside>
+</div>
+<div id="site-footer"></div>
+<script src="assets/solids3d.js"></script>
+<script src="assets/app.js" data-root="./"></script>
+<script src="assets/mathfmt.js"></script>
+<script src="assets/figures.js"></script>
+<script src="assets/interactive.js"></script>
+<script src="assets/lesson.js"></script>
+<script src="data/grades.js"></script>
+<script src="data/g6-mat.js"></script>
+<script src="data/g7-mat.js"></script>
+<script src="data/g8-alg.js"></script>
+<script src="data/g8-geo.js"></script>
+<script src="data/g9-alg.js"></script>
+<script src="data/g9-geo.js"></script>
+<script src="data/g10-alg.js"></script>
+<script src="data/g10-geo.js"></script>
+<script src="data/g11-alg.js"></script>
+<script src="data/g11-geo.js"></script>
+<script>
+AKM.mount('');
+(function(){
+  var all = window.AKM_allTopics();
+  var id = AKM.qs('t') || (all[0] && all[0].id);
+  var T = all.filter(function(x){return x.id===id;})[0];
+  /* the topic switcher lists the same stream and quarter, in teaching order */
+  var index = (T ? all.filter(function(x){ return x.grade===T.grade && x.stream===T.stream && x.quarter===T.quarter; }) : all)
+    .map(function(x){return {id:x.id,title:x.title,group:'L '+x.lessons};});
+  if (!T) {
+    document.getElementById('lmain').innerHTML =
+      '<div style="padding:60px 0"><h2>Lesson not found</h2>' +
+      '<p class="small">Pick a topic from the <a href="grade.html?g=8">Grade 8 page</a>.</p></div>';
+    return;
+  }
+  renderTopic(T, index);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,781 @@
+<title>Grade 8 Maths Annual Plans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#F4F3EF; --surface:#FFFFFF; --surface-2:#FAF9F6;
+  --ink:#1C2028; --muted:#6A6E77; --rule:#DEDCD4; --rule-soft:#EAE8E1;
+  --uz:#2B4C7E; --cam:#3D6B4C; --test:#A4522C; --res:#8E6F1E;
+  --uz-bg:#EAF0F8; --cam-bg:#EAF2EC; --test-bg:#F8EDE6; --res-bg:#F7F1DF;
+  --shadow:0 1px 2px rgba(28,32,40,.05),0 8px 24px -14px rgba(28,32,40,.18);
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#15171B; --surface:#1C1F25; --surface-2:#20242B;
+  --ink:#E9E8E3; --muted:#989DA6; --rule:#2E323A; --rule-soft:#262A31;
+  --uz:#8DACD9; --cam:#87BB97; --test:#DE9067; --res:#CFAA4C;
+  --uz-bg:#1E2733; --cam-bg:#1D2822; --test-bg:#2C2119; --res-bg:#2A2517;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -16px rgba(0,0,0,.7);
+}}
+:root[data-theme="dark"]{
+  --paper:#15171B; --surface:#1C1F25; --surface-2:#20242B;
+  --ink:#E9E8E3; --muted:#989DA6; --rule:#2E323A; --rule-soft:#262A31;
+  --uz:#8DACD9; --cam:#87BB97; --test:#DE9067; --res:#CFAA4C;
+  --uz-bg:#1E2733; --cam-bg:#1D2822; --test-bg:#2C2119; --res-bg:#2A2517;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -16px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 96px}
+
+/* masthead */
+.mast{padding:56px 0 32px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 18px}
+.mast h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.1rem,5.2vw,3.4rem);
+  line-height:1.08;letter-spacing:-.015em;margin:0 0 16px;text-wrap:balance;max-width:19ch}
+.mast h1 em{font-style:italic;color:var(--uz)}
+.lede{font-size:1.03rem;color:var(--muted);max-width:63ch;margin:0}
+.streams{display:grid;grid-template-columns:repeat(auto-fit,minmax(224px,1fr));gap:14px;margin-top:32px}
+.stream{background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  padding:16px 18px;border-top:2px solid var(--sc,var(--uz))}
+.stream .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--sc,var(--uz));margin-bottom:8px}
+.stream .ttl{font-family:var(--serif);font-size:1.16rem;line-height:1.25;margin-bottom:10px}
+.stream .fig{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.stream .fig b{color:var(--ink);font-weight:600}
+
+/* tabs */
+.tabbar{position:sticky;top:0;z-index:20;background:var(--paper);
+  border-bottom:1px solid var(--rule);margin-bottom:40px}
+.tabs{display:flex;gap:2px;overflow-x:auto;max-width:1080px;margin:0 auto;padding:0 24px}
+.tab{appearance:none;background:none;border:0;border-bottom:2px solid transparent;
+  font-family:var(--sans);font-size:13.5px;font-weight:500;color:var(--muted);
+  padding:15px 14px;cursor:pointer;white-space:nowrap;transition:color .15s,border-color .15s}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--uz)}
+.tab:focus-visible{outline:2px solid var(--uz);outline-offset:-3px;border-radius:2px}
+
+/* view */
+.view[hidden]{display:none}
+.viewhead{margin-bottom:26px}
+.viewhead h2{font-family:var(--serif);font-weight:500;font-size:1.85rem;letter-spacing:-.01em;
+  margin:0 0 8px;text-wrap:balance}
+.viewhead p{color:var(--muted);max-width:66ch;margin:0 0 8px}
+.meta{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);
+  text-transform:uppercase;margin-bottom:14px}
+
+/* filters */
+.filters{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:18px 0 30px;
+  padding-bottom:20px;border-bottom:1px solid var(--rule-soft)}
+.filters .flabel{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-right:4px}
+.chip{appearance:none;font-family:var(--sans);font-size:12.5px;cursor:pointer;
+  background:var(--surface);color:var(--muted);border:1px solid var(--rule);
+  border-radius:999px;padding:5px 13px;transition:all .15s}
+.chip:hover{color:var(--ink);border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip:focus-visible{outline:2px solid var(--uz);outline-offset:2px}
+
+/* quarters + tables */
+.quarter{margin-bottom:44px}
+.qhead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  padding-bottom:9px;margin-bottom:0;border-bottom:2px solid var(--ink)}
+.qhead h3{font-family:var(--serif);font-weight:500;font-size:1.2rem;letter-spacing:.01em;margin:0}
+.qhrs{font-family:var(--mono);font-size:11.5px;color:var(--muted);
+  letter-spacing:.06em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tablewrap{overflow-x:auto;background:var(--surface);border:1px solid var(--rule);border-top:0}
+table{border-collapse:collapse;width:100%;min-width:600px}
+thead th{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;text-align:left;padding:10px 14px;
+  border-bottom:1px solid var(--rule);background:var(--surface-2);white-space:nowrap}
+td{padding:9px 14px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+.cnum{text-align:center;width:1%;white-space:nowrap}
+.num{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.topic{font-size:14px;line-height:1.45;min-width:290px}
+.link{font-size:12.5px;color:var(--muted);line-height:1.45;min-width:200px}
+tbody tr{border-left:3px solid transparent}
+tbody tr.cam{background:var(--cam-bg);border-left-color:var(--cam)}
+tbody tr.test{background:var(--test-bg);border-left-color:var(--test)}
+tbody tr.reserve{background:var(--res-bg);border-left-color:var(--res)}
+tbody tr.cam.reserve{background:var(--cam-bg);
+  border-left-color:var(--cam);box-shadow:inset 3px 0 0 var(--res)}
+tbody tr[hidden]{display:none}
+.badge{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;
+  text-transform:uppercase;padding:1px 6px;border-radius:2px;margin-left:9px;
+  vertical-align:1.5px;white-space:nowrap}
+.b-cam{color:var(--cam);border:1px solid var(--cam)}
+.b-test{color:var(--test);border:1px solid var(--test)}
+.b-reserve{color:var(--res);border:1px solid var(--res)}
+
+/* prose + cards */
+.prose p{max-width:66ch}
+.prose h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;margin:38px 0 12px}
+.prose ul{max-width:66ch;padding-left:1.15em;color:var(--ink)}
+.prose li{margin-bottom:7px}
+.prose li::marker{color:var(--muted)}
+.note{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--uz);
+  border-radius:0 3px 3px 0;padding:16px 20px;margin:26px 0;font-size:14px}
+.note strong{font-weight:600}
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:26px 0}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:3px;padding:20px 22px}
+.card h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--cc,var(--uz));margin:0 0 12px;font-weight:500}
+.card p{margin:0 0 10px;font-size:14px}
+.card p:last-child{margin-bottom:0}
+.small{font-size:13px;color:var(--muted)}
+.ref{font-family:var(--mono);font-size:12px;color:var(--muted);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.unit{font-size:13.5px}
+.hdate{font-family:var(--mono);font-size:12px;white-space:nowrap}
+.heff{font-size:13px;color:var(--muted)}
+ol.proto{max-width:66ch;padding-left:1.3em;font-size:14px}
+ol.proto li{margin-bottom:9px}
+ol.proto li::marker{font-family:var(--mono);font-size:12px;color:var(--muted)}
+footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--muted)}
+@media (max-width:640px){
+  .mast{padding:36px 0 26px}
+  .wrap{padding:0 16px 64px}
+  .tabs{padding:0 16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+<header class="mast">
+  <p class="eyebrow">Academic year 2026–2027 · Grade 8</p>
+  <h1>Two streams, <em>one standard</em> in mathematics</h1>
+  <p class="lede">Three annual plans built from the Uzbekistan Grade 8 calendar-thematic plan and Cambridge Lower Secondary Mathematics Stage 9. The special class keeps the national programme and absorbs Cambridge; the Cambridge class keeps Stage 9 and absorbs the national depth. Both finish Grade 8 at the same level. <a href="plans-10-11.html">Grade 10 and 11 plans &rarr;</a></p>
+  <div class="streams">
+    <div class="stream" style="--sc:var(--uz)">
+      <div class="lbl">Special class</div>
+      <div class="ttl">Algebra</div>
+      <div class="fig"><b>3 h</b> / week · <b>102 h</b> / year · 27 · 21 · 30 · 24</div>
+    </div>
+    <div class="stream" style="--sc:var(--uz)">
+      <div class="lbl">Special class</div>
+      <div class="ttl">Geometry</div>
+      <div class="fig"><b>2 h</b> / week · <b>68 h</b> / year · 18 · 14 · 20 · 16</div>
+    </div>
+    <div class="stream" style="--sc:var(--cam)">
+      <div class="lbl">Cambridge class</div>
+      <div class="ttl">Mathematics</div>
+      <div class="fig"><b>6 h</b> / week · <b>204 h</b> / year · 54 · 42 · 60 · 48</div>
+    </div>
+  </div>
+</header>
+</div>
+
+<nav class="tabbar"><div class="tabs" role="tablist">
+  <button class="tab" role="tab" aria-selected="true"  aria-controls="v-over" id="t-over">How the plans fit together</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="v-alg"  id="t-alg">Algebra · 102 h</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="v-geo"  id="t-geo">Geometry · 68 h</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="v-cam"  id="t-cam">Cambridge · 204 h</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="v-red"  id="t-red">Red days</button>
+</div></nav>
+
+<div class="wrap">
+
+<!-- OVERVIEW -->
+<section class="view prose" id="v-over" role="tabpanel" aria-labelledby="t-over">
+  <div class="viewhead">
+    <h2>Why the two plans are mixed in opposite directions</h2>
+    <p>Cambridge Stage 9 is lighter than the Uzbekistan Grade 8 programme. Stage 9 has no quadratic equations, no trigonometry, no circle theorems, no vectors, no coordinate geometry and no algebraic fractions. A 6-hour Cambridge course taught on its own would finish the year <em>behind</em> the 5-hour special class.</p>
+  </div>
+  <div class="cmp">
+    <div class="card" style="--cc:var(--uz)">
+      <h4>Special class · national backbone</h4>
+      <p>The national plan is kept lesson-for-lesson — same topics, same order, same quarter totals — so it stays compliant with the Ministry programme and the state control works.</p>
+      <p>Its 31 flexible lessons (“Practical and interdisciplinary problems”, “Chapter revision problems”, and the Quarter&nbsp;IV revision blocks) are filled with the Cambridge Stage 9 topics the national programme never touches. <strong>Stage 9 is covered in full without adding a single hour.</strong></p>
+    </div>
+    <div class="card" style="--cc:var(--cam)">
+      <h4>Cambridge class · Stage 9 backbone</h4>
+      <p>All 15 Stage 9 units and all 6 Stage 9 projects are taught in sequence.</p>
+      <p>The national depth topics are built in as full teaching blocks: quadratic equations (18 h), right-triangle trigonometry (10 h), circle theorems (7 h), vectors and the coordinate method (9 h), algebraic fractions (11 h), roots and rational exponents (8 h), inequalities and modulus (6 h).</p>
+    </div>
+  </div>
+  <div class="note">
+    <strong>Same calendar.</strong> The Cambridge quarter totals (54 / 42 / 60 / 48) are the standard Uzbek quarter lengths — 9, 7, 10 and 8 weeks — multiplied by 6 hours. Both streams run on the same quarters, the same holidays and the same reporting dates.
+  </div>
+
+  <h3>Cambridge Stage 9 coverage</h3>
+  <p class="small">Where every Stage 9 unit is taught in each stream. Numbers are lesson numbers in the plans.</p>
+  <div class="tablewrap" style="border-top:1px solid var(--rule);margin-top:14px">
+    <table><thead><tr><th>Stage 9 unit</th><th>Special class</th><th>Cambridge class</th></tr></thead>
+    <tbody><tr><td class="unit">1 Number and calculation</td><td class="ref">Alg 28–31, 34–35</td><td class="ref">4–15</td></tr>
+<tr><td class="unit">2 Expressions and formulae</td><td class="ref">Alg 4–8, 20–22</td><td class="ref">19–37</td></tr>
+<tr><td class="unit">3 Decimals, percentages, rounding</td><td class="ref">Alg 55–59, 74</td><td class="ref">41–51</td></tr>
+<tr><td class="unit">4 Equations and inequalities</td><td class="ref">Alg 38–52, 72–75</td><td class="ref">55–70</td></tr>
+<tr><td class="unit">5 Angles</td><td class="ref">Geo 3–4, 16–17, 20–23</td><td class="ref">115–138</td></tr>
+<tr><td class="unit">6 Statistical investigations</td><td class="ref">Alg 79–80</td><td class="ref">190–191</td></tr>
+<tr><td class="unit">7 Shapes and measurements</td><td class="ref">Geo 42–51, 59</td><td class="ref">149–154</td></tr>
+<tr><td class="unit">8 Fractions</td><td class="ref">Alg 35</td><td class="ref">4–5, 26–35</td></tr>
+<tr><td class="unit">9 Sequences and functions</td><td class="ref">Alg 91–93</td><td class="ref">73–77</td></tr>
+<tr><td class="unit">10 Graphs</td><td class="ref">Alg 25–27, 76, 94–96</td><td class="ref">78–88</td></tr>
+<tr><td class="unit">11 Ratio and proportion</td><td class="ref">Alg 97–98</td><td class="ref">89–94</td></tr>
+<tr><td class="unit">12 Probability</td><td class="ref">Alg 83–88, 99–100</td><td class="ref">198–202</td></tr>
+<tr><td class="unit">13 Position and transformation</td><td class="ref">Geo 15, 31, 33, 62–64</td><td class="ref">165, 171–176</td></tr>
+<tr><td class="unit">14 Volume, surface area, symmetry</td><td class="ref">Geo 65–67</td><td class="ref">178–181</td></tr>
+<tr><td class="unit">15 Interpreting and discussing results</td><td class="ref">Alg 79–82</td><td class="ref">192–197</td></tr>
+<tr><td class="unit">Projects 1–6</td><td class="ref">Geo 17, 67</td><td class="ref">53, 95, 136, 155, 177, 203</td></tr></tbody></table>
+  </div>
+
+  <h3>National topics that Stage 9 does not contain</h3>
+  <p class="small">These are the reason the Cambridge class needs the depth layer — without them it would sit a level below the special class.</p>
+  <div class="tablewrap" style="border-top:1px solid var(--rule);margin-top:14px">
+    <table><thead><tr><th>Topic</th><th>Special class</th><th>Cambridge class</th></tr></thead>
+    <tbody><tr><td class="unit">Algebraic fractions &amp; rational expressions</td><td class="ref">Alg 6–22</td><td class="ref">26–35</td></tr>
+<tr><td class="unit">Roots of degree <em>n</em>, rational exponents</td><td class="ref">Alg 28–33</td><td class="ref">6–13</td></tr>
+<tr><td class="unit">Systems of inequalities, modulus</td><td class="ref">Alg 49–54</td><td class="ref">60–69</td></tr>
+<tr><td class="unit">Absolute and relative error</td><td class="ref">Alg 55–57</td><td class="ref">46–48</td></tr>
+<tr><td class="unit">Quadratic equations, Vieta's theorem</td><td class="ref">Alg 62–76</td><td class="ref">97–114</td></tr>
+<tr><td class="unit">Quadrilaterals, Thales' theorem</td><td class="ref">Geo 5–15</td><td class="ref">119–128</td></tr>
+<tr><td class="unit">Right-triangle trigonometry</td><td class="ref">Geo 19, 24–30</td><td class="ref">139–148</td></tr>
+<tr><td class="unit">Coordinate method, equation of a circle</td><td class="ref">Geo 33–35</td><td class="ref">162–164</td></tr>
+<tr><td class="unit">Vectors</td><td class="ref">Geo 36–41</td><td class="ref">166–170</td></tr>
+<tr><td class="unit">Circle theorems</td><td class="ref">Geo 53–58</td><td class="ref">183–189</td></tr>
+<tr><td class="unit">Combinatorics</td><td class="ref">Alg 83–88</td><td class="ref">198–199</td></tr></tbody></table>
+  </div>
+</section>
+
+<!-- ALGEBRA -->
+<section class="view" id="v-alg" role="tabpanel" aria-labelledby="t-alg" hidden>
+  <div class="viewhead">
+    <h2>Algebra — Grade 8 special class</h2>
+    <p class="meta">3 hours per week · 102 hours · national KTP + Cambridge Stage 9 inserts</p>
+    <p>The Republic of Uzbekistan Grade 8 Algebra plan, unchanged. Every lesson carries the Cambridge Stage 9 sub-unit it corresponds to; where the national topic goes deeper, the note reads <em>Extension beyond Stage 9</em>. The 20 flexible lessons carry Cambridge content the national programme omits.</p>
+  </div>
+  <div class="filters" data-for="v-alg">
+    <span class="flabel">Show</span>
+    <button class="chip" aria-pressed="true" data-filter="all">All 102 lessons</button>
+    <button class="chip" aria-pressed="false" data-filter="cam">Cambridge inserts</button>
+    <button class="chip" aria-pressed="false" data-filter="test">Assessments</button>
+    <button class="chip" aria-pressed="false" data-filter="reserve">Reserve lessons</button>
+  </div>
+  <section class="quarter"><header class="qhead"><h3>I QUARTER</h3><span class="qhrs">27 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge Stage 9 link / note</th></tr></thead><tbody>
+<tr class="reserve" data-f="reserve"><td class="cnum num">1</td><td class="topic">Revision of the Grade 7 course<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Stage 8 Number &amp; Algebra review</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">2</td><td class="topic">Revision of the Grade 7 course<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Stage 8 Number &amp; Algebra review</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">3</td><td class="topic">Revision of the Grade 7 course. Entry diagnostic test<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Stage 8 Number &amp; Algebra review</td></tr>
+<tr class="" data-f=""><td class="cnum num">4</td><td class="topic">Algebraic expressions</td><td class="cnum num">1</td><td class="link">2.1 Substituting into expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">5</td><td class="topic">Algebraic expressions</td><td class="cnum num">1</td><td class="link">2.2 Constructing expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">6</td><td class="topic">Algebraic fraction. Cancelling fractions</td><td class="cnum num">1</td><td class="link">2.5 Simplifying algebraic fractions</td></tr>
+<tr class="" data-f=""><td class="cnum num">7</td><td class="topic">Algebraic fraction. Cancelling fractions</td><td class="cnum num">1</td><td class="link">2.5 Simplifying algebraic fractions</td></tr>
+<tr class="" data-f=""><td class="cnum num">8</td><td class="topic">Algebraic fraction. Cancelling fractions</td><td class="cnum num">1</td><td class="link">2.5 Simplifying algebraic fractions</td></tr>
+<tr class="" data-f=""><td class="cnum num">9</td><td class="topic">Reducing fractions to a common denominator</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">10</td><td class="topic">Reducing fractions to a common denominator</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">11</td><td class="topic">Reducing fractions to a common denominator</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">12</td><td class="topic">Addition and subtraction of algebraic fractions</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">13</td><td class="topic">Addition and subtraction of algebraic fractions</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">14</td><td class="topic">Addition and subtraction of algebraic fractions</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">15</td><td class="topic">Control work No. 1 (algebraic fractions)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">16</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="" data-f=""><td class="cnum num">17</td><td class="topic">Multiplication and division of algebraic fractions</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">18</td><td class="topic">Multiplication and division of algebraic fractions</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">19</td><td class="topic">Multiplication and division of algebraic fractions</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">20</td><td class="topic">Identical transformation of fractional-rational expressions</td><td class="cnum num">1</td><td class="link">2.3 Expressions and indices</td></tr>
+<tr class="" data-f=""><td class="cnum num">21</td><td class="topic">Identical transformation of fractional-rational expressions</td><td class="cnum num">1</td><td class="link">2.6 Deriving and using formulae</td></tr>
+<tr class="" data-f=""><td class="cnum num">22</td><td class="topic">Identical transformation of fractional-rational expressions</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">23</td><td class="topic">Control work No. 2 (rational expressions)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">24</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="" data-f=""><td class="cnum num">25</td><td class="topic">Properties of the function y = k/x, k ≠ 0</td><td class="cnum num">1</td><td class="link">10.1 Functions</td></tr>
+<tr class="" data-f=""><td class="cnum num">26</td><td class="topic">Graph of the function y = k/x — the hyperbola</td><td class="cnum num">1</td><td class="link">10.2 Plotting graphs</td></tr>
+<tr class="" data-f=""><td class="cnum num">27</td><td class="topic">Applications of y = k/x; inverse proportion</td><td class="cnum num">1</td><td class="link">11.2 Direct and inverse proportion</td></tr>
+</tbody></table></div></section>
+<section class="quarter"><header class="qhead"><h3>II QUARTER</h3><span class="qhrs">21 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge Stage 9 link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">28</td><td class="topic">Arithmetic root of natural degree n</td><td class="cnum num">1</td><td class="link">1.1 Irrational numbers (extension)</td></tr>
+<tr class="" data-f=""><td class="cnum num">29</td><td class="topic">Properties of the arithmetic root of degree n</td><td class="cnum num">1</td><td class="link">1.1 Irrational numbers (extension)</td></tr>
+<tr class="" data-f=""><td class="cnum num">30</td><td class="topic">Power with a rational exponent</td><td class="cnum num">1</td><td class="link">1.3 Indices (extension)</td></tr>
+<tr class="" data-f=""><td class="cnum num">31</td><td class="topic">Properties of powers with a rational exponent</td><td class="cnum num">1</td><td class="link">1.3 Indices (extension)</td></tr>
+<tr class="" data-f=""><td class="cnum num">32</td><td class="topic">Simplifying algebraic expressions containing powers with rational exponents</td><td class="cnum num">1</td><td class="link">2.3 Expressions and indices</td></tr>
+<tr class="" data-f=""><td class="cnum num">33</td><td class="topic">Simplifying algebraic expressions containing powers with rational exponents</td><td class="cnum num">1</td><td class="link">2.3 Expressions and indices</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">34</td><td class="topic">Practical and interdisciplinary problems — standard form of a number<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">1.2 Standard form  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">35</td><td class="topic">Practical and interdisciplinary problems — fractions and recurring decimals<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">8.1 Fractions and recurring decimals; 1.1  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">36</td><td class="topic">Control work No. 3 (roots and indices)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">37</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="" data-f=""><td class="cnum num">38</td><td class="topic">Numerical inequalities</td><td class="cnum num">1</td><td class="link">4.3 Inequalities</td></tr>
+<tr class="" data-f=""><td class="cnum num">39</td><td class="topic">Numerical inequalities</td><td class="cnum num">1</td><td class="link">4.3 Inequalities</td></tr>
+<tr class="" data-f=""><td class="cnum num">40</td><td class="topic">Basic properties of numerical inequalities</td><td class="cnum num">1</td><td class="link">4.3 Inequalities (extension)</td></tr>
+<tr class="" data-f=""><td class="cnum num">41</td><td class="topic">Basic properties of numerical inequalities</td><td class="cnum num">1</td><td class="link">4.3 Inequalities (extension)</td></tr>
+<tr class="" data-f=""><td class="cnum num">42</td><td class="topic">Addition and multiplication of inequalities</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">43</td><td class="topic">Addition and multiplication of inequalities</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">44</td><td class="topic">Raising numerical inequalities to a power</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">45</td><td class="topic">Raising numerical inequalities to a power</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">46</td><td class="topic">Raising numerical inequalities to a power<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">47</td><td class="topic">Control work No. 4 (numerical inequalities)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">48</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+</tbody></table></div></section>
+<section class="quarter"><header class="qhead"><h3>III QUARTER</h3><span class="qhrs">30 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge Stage 9 link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">49</td><td class="topic">Inequalities with one unknown</td><td class="cnum num">1</td><td class="link">4.3 Inequalities</td></tr>
+<tr class="" data-f=""><td class="cnum num">50</td><td class="topic">Inequalities with one unknown</td><td class="cnum num">1</td><td class="link">4.3 Inequalities</td></tr>
+<tr class="" data-f=""><td class="cnum num">51</td><td class="topic">Systems of inequalities with one unknown. Number intervals</td><td class="cnum num">1</td><td class="link">4.3 Inequalities (extension)</td></tr>
+<tr class="" data-f=""><td class="cnum num">52</td><td class="topic">Systems of inequalities with one unknown. Number intervals</td><td class="cnum num">1</td><td class="link">4.3 Inequalities (extension)</td></tr>
+<tr class="" data-f=""><td class="cnum num">53</td><td class="topic">Modulus of a number. Equations containing a modulus</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">54</td><td class="topic">Inequalities containing a modulus</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">55</td><td class="topic">Approximate calculations and approximate values of quantities. Error of an approximation</td><td class="cnum num">1</td><td class="link">3.4 Upper and lower bounds</td></tr>
+<tr class="" data-f=""><td class="cnum num">56</td><td class="topic">Estimating errors</td><td class="cnum num">1</td><td class="link">3.4 Upper and lower bounds</td></tr>
+<tr class="" data-f=""><td class="cnum num">57</td><td class="topic">Rounding numbers. Relative error</td><td class="cnum num">1</td><td class="link">3.1 Multiplying and dividing by powers of 10; 3.4</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">58</td><td class="topic">Chapter revision problems — upper and lower bounds<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">3.4 Upper and lower bounds  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">59</td><td class="topic">Practical and interdisciplinary problems — accuracy in measurement<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">3.2 Multiplying and dividing decimals; 3.4  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">60</td><td class="topic">Control work No. 5 (inequalities, modulus, approximation)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">61</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="" data-f=""><td class="cnum num">62</td><td class="topic">Quadratic equation and its roots</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">63</td><td class="topic">Quadratic equation and its roots</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">64</td><td class="topic">Incomplete quadratic equations and their solution</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">65</td><td class="topic">Incomplete quadratic equations and their solution</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">66</td><td class="topic">Formula for the roots of a quadratic equation. Discriminant</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">67</td><td class="topic">Formula for the roots of a quadratic equation. Discriminant</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">68</td><td class="topic">Vieta&#x27;s theorem. Factorising a quadratic trinomial into linear factors</td><td class="cnum num">1</td><td class="link">2.4 Expanding the product of two linear expressions (reverse)</td></tr>
+<tr class="" data-f=""><td class="cnum num">69</td><td class="topic">Vieta&#x27;s theorem. Factorising a quadratic trinomial into linear factors</td><td class="cnum num">1</td><td class="link">2.4 Expanding the product of two linear expressions (reverse)</td></tr>
+<tr class="" data-f=""><td class="cnum num">70</td><td class="topic">Biquadratic equations. Equations reducible to quadratic equations</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">71</td><td class="topic">Biquadratic equations. Equations reducible to quadratic equations</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">72</td><td class="topic">Solving problems using quadratic equations</td><td class="cnum num">1</td><td class="link">4.1 Constructing and solving equations</td></tr>
+<tr class="" data-f=""><td class="cnum num">73</td><td class="topic">Solving problems using quadratic equations</td><td class="cnum num">1</td><td class="link">4.1 Constructing and solving equations</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">74</td><td class="topic">Practical and interdisciplinary problems — compound percentage change<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">3.3 Understanding compound percentages  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">75</td><td class="topic">Practical and interdisciplinary problems — simultaneous equations<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">4.2 Simultaneous equations  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">76</td><td class="topic">Practical and interdisciplinary problems — graphs of quadratic functions<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">10.2 Plotting graphs  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">77</td><td class="topic">Control work No. 6 (quadratic equations)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">78</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+</tbody></table></div></section>
+<section class="quarter"><header class="qhead"><h3>IV QUARTER</h3><span class="qhrs">24 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge Stage 9 link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">79</td><td class="topic">Data analysis. Representation of data</td><td class="cnum num">1</td><td class="link">6.1 Data collection and sampling</td></tr>
+<tr class="" data-f=""><td class="cnum num">80</td><td class="topic">Data analysis. Representation of data</td><td class="cnum num">1</td><td class="link">15.5 Representing data</td></tr>
+<tr class="" data-f=""><td class="cnum num">81</td><td class="topic">Average value. Mode. Median</td><td class="cnum num">1</td><td class="link">15.4 Calculating statistics for grouped data</td></tr>
+<tr class="" data-f=""><td class="cnum num">82</td><td class="topic">Average value. Mode. Median</td><td class="cnum num">1</td><td class="link">15.4 Calculating statistics for grouped data</td></tr>
+<tr class="" data-f=""><td class="cnum num">83</td><td class="topic">Elements of combinatorics. Solving combinatorial problems by listing</td><td class="cnum num">1</td><td class="link">12.3 Combined events (sample space)</td></tr>
+<tr class="" data-f=""><td class="cnum num">84</td><td class="topic">Elements of combinatorics. Solving combinatorial problems by listing</td><td class="cnum num">1</td><td class="link">12.3 Combined events (sample space)</td></tr>
+<tr class="" data-f=""><td class="cnum num">85</td><td class="topic">Elements of combinatorics. Solving combinatorial problems by listing</td><td class="cnum num">1</td><td class="link">12.3 Combined events (sample space)</td></tr>
+<tr class="" data-f=""><td class="cnum num">86</td><td class="topic">The basic law of combinatorics and its use in solving problems</td><td class="cnum num">1</td><td class="link">12.2 Independent events (product rule)</td></tr>
+<tr class="" data-f=""><td class="cnum num">87</td><td class="topic">The basic law of combinatorics and its use in solving problems</td><td class="cnum num">1</td><td class="link">12.2 Independent events (product rule)</td></tr>
+<tr class="" data-f=""><td class="cnum num">88</td><td class="topic">The basic law of combinatorics and its use in solving problems</td><td class="cnum num">1</td><td class="link">12.2 Independent events (product rule)</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">89</td><td class="topic">Control work No. 7 (statistics and combinatorics)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">90</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">91</td><td class="topic">Revision of the Grade 8 Algebra course — generating sequences<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">9.1 Generating sequences  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">92</td><td class="topic">Revision of the Grade 8 Algebra course — the nth term<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">9.2 Using the nth term  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">93</td><td class="topic">Revision of the Grade 8 Algebra course — representing functions<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">9.3 Representing functions  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">94</td><td class="topic">Revision of the Grade 8 Algebra course — functions and plotting graphs<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">10.1–10.2 Functions and graphs  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">95</td><td class="topic">Revision of the Grade 8 Algebra course — gradient and intercept<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">10.3 Gradient and intercept  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">96</td><td class="topic">Revision of the Grade 8 Algebra course — interpreting real-life graphs<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">10.4 Interpreting graphs  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">97</td><td class="topic">Revision of the Grade 8 Algebra course — using ratios<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">11.1 Using ratios  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">98</td><td class="topic">Revision of the Grade 8 Algebra course — direct and inverse proportion<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">11.2 Direct and inverse proportion  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">99</td><td class="topic">Revision of the Grade 8 Algebra course — mutually exclusive and independent events<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">12.1–12.2 Probability  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam reserve" data-f="cam reserve"><td class="cnum num">100</td><td class="topic">Revision of the Grade 8 Algebra course — combined events and chance experiments<span class="badge b-cam">Cambridge insert · Reserve</span></td><td class="cnum num">1</td><td class="link">12.3–12.4 Probability  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">101</td><td class="topic">Control work No. 8 — annual assessment (Checkpoint-style paper)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">102</td><td class="topic">Work on mistakes. Course summary<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+</tbody></table></div></section>
+</section>
+
+<!-- GEOMETRY -->
+<section class="view" id="v-geo" role="tabpanel" aria-labelledby="t-geo" hidden>
+  <div class="viewhead">
+    <h2>Geometry — Grade 8 special class</h2>
+    <p class="meta">2 hours per week · 68 hours · national KTP + Cambridge Stage 9 inserts</p>
+    <p>The national geometry course is markedly harder than Stage 9 Geometry and Measure. What Stage 9 has and the national plan does not — constructions, circumference and area of a circle, units, bearings, transformations, enlargement, volume, surface area, 3-D symmetry — is inserted into the 11 flexible lessons.</p>
+  </div>
+  <div class="filters" data-for="v-geo">
+    <span class="flabel">Show</span>
+    <button class="chip" aria-pressed="true" data-filter="all">All 68 lessons</button>
+    <button class="chip" aria-pressed="false" data-filter="cam">Cambridge inserts</button>
+    <button class="chip" aria-pressed="false" data-filter="test">Assessments</button>
+    <button class="chip" aria-pressed="false" data-filter="reserve">Reserve lessons</button>
+  </div>
+  <section class="quarter"><header class="qhead"><h3>I QUARTER</h3><span class="qhrs">18 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge Stage 9 link / note</th></tr></thead><tbody>
+<tr class="reserve" data-f="reserve"><td class="cnum num">1</td><td class="topic">Revision of the Grade 7 course<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">5.1 Calculating angles (Stage 8 review)</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">2</td><td class="topic">Revision of the Grade 7 course<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">5.1 Calculating angles (Stage 8 review)</td></tr>
+<tr class="" data-f=""><td class="cnum num">3</td><td class="topic">Polygon</td><td class="cnum num">1</td><td class="link">5.2 Interior angles of polygons</td></tr>
+<tr class="" data-f=""><td class="cnum num">4</td><td class="topic">Properties of interior and exterior angles of a convex polygon</td><td class="cnum num">1</td><td class="link">5.2–5.3 Interior and exterior angles of polygons</td></tr>
+<tr class="" data-f=""><td class="cnum num">5</td><td class="topic">Parallelogram and its properties</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">6</td><td class="topic">Tests (criteria) for a parallelogram</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">7</td><td class="topic">Rectangle and its properties</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">8</td><td class="topic">Rhombus and its properties</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">9</td><td class="topic">Square and its properties</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">10</td><td class="topic">Trapezium and its properties</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">11</td><td class="topic">Properties of an isosceles trapezium</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">12</td><td class="topic">Thales&#x27; theorem</td><td class="cnum num">1</td><td class="link">13.4 Enlarging shapes (similarity link)</td></tr>
+<tr class="" data-f=""><td class="cnum num">13</td><td class="topic">Applications of Thales&#x27; theorem</td><td class="cnum num">1</td><td class="link">13.4 Enlarging shapes (similarity link)</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">14</td><td class="topic">Applications of Thales&#x27; theorem<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">13.4 Enlarging shapes (similarity link)</td></tr>
+<tr class="" data-f=""><td class="cnum num">15</td><td class="topic">Properties of the midline of a triangle and of a trapezium</td><td class="cnum num">1</td><td class="link">13.2 Points on a line segment</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">16</td><td class="topic">Practical tasks — ruler-and-compass constructions<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">5.4 Constructions  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam reserve" data-f="cam reserve"><td class="cnum num">17</td><td class="topic">Chapter revision problems — angle problems in polygons (Project 2: Angle tangle)<span class="badge b-cam">Cambridge insert · Reserve</span></td><td class="cnum num">1</td><td class="link">5.2–5.3 + Project 2  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">18</td><td class="topic">Control work No. 1 (quadrilaterals)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+</tbody></table></div></section>
+<section class="quarter"><header class="qhead"><h3>II QUARTER</h3><span class="qhrs">14 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge Stage 9 link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">19</td><td class="topic">Sine, cosine, tangent and cotangent of an acute angle</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">20</td><td class="topic">Pythagoras&#x27; theorem</td><td class="cnum num">1</td><td class="link">5.5 Pythagoras&#x27; theorem</td></tr>
+<tr class="" data-f=""><td class="cnum num">21</td><td class="topic">Different proofs of Pythagoras&#x27; theorem</td><td class="cnum num">1</td><td class="link">5.5 Pythagoras&#x27; theorem</td></tr>
+<tr class="" data-f=""><td class="cnum num">22</td><td class="topic">The converse of Pythagoras&#x27; theorem</td><td class="cnum num">1</td><td class="link">5.5 Pythagoras&#x27; theorem</td></tr>
+<tr class="" data-f=""><td class="cnum num">23</td><td class="topic">Applications of Pythagoras&#x27; theorem</td><td class="cnum num">1</td><td class="link">5.5 Pythagoras&#x27; theorem</td></tr>
+<tr class="" data-f=""><td class="cnum num">24</td><td class="topic">The basic trigonometric identity and its corollary</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">25</td><td class="topic">Formulae for trigonometric functions of complementary angles</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">26</td><td class="topic">Values of sine, cosine, tangent and cotangent of 30°, 45°, 60°</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">27</td><td class="topic">Table of values of the trigonometric functions</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">28</td><td class="topic">Table of values of the trigonometric functions; using a calculator<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">29</td><td class="topic">Solving right-angled triangles</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">30</td><td class="topic">Solving right-angled triangles</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">31</td><td class="topic">Practical tasks — bearings and scale drawings<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">13.1 Bearings and scale drawings  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">32</td><td class="topic">Control work No. 2 (Pythagoras and trigonometry)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+</tbody></table></div></section>
+<section class="quarter"><header class="qhead"><h3>III QUARTER</h3><span class="qhrs">20 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge Stage 9 link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">33</td><td class="topic">Coordinates of a point in the plane</td><td class="cnum num">1</td><td class="link">13.2 Points on a line segment</td></tr>
+<tr class="" data-f=""><td class="cnum num">34</td><td class="topic">Distance between two points. Equation of a circle</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">35</td><td class="topic">Equation of a straight line. The coordinate method in geometric problems</td><td class="cnum num">1</td><td class="link">10.3 Gradient and intercept (link)</td></tr>
+<tr class="" data-f=""><td class="cnum num">36</td><td class="topic">The concept of a vector. Length and direction of a vector</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">37</td><td class="topic">Addition and subtraction of vectors</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">38</td><td class="topic">Multiplication of a vector by a number</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">39</td><td class="topic">Coordinates of a vector</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">40</td><td class="topic">Operations on vectors given by their coordinates</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">41</td><td class="topic">Physical and geometrical interpretations of vectors. Solving problems by the coordinate method<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">42</td><td class="topic">The concept of area</td><td class="cnum num">1</td><td class="link">7.2 Areas of compound shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">43</td><td class="topic">Area of a rectangle and a parallelogram</td><td class="cnum num">1</td><td class="link">7.2 Areas of compound shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">44</td><td class="topic">Area of a triangle</td><td class="cnum num">1</td><td class="link">7.2 Areas of compound shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">45</td><td class="topic">Area of a triangle</td><td class="cnum num">1</td><td class="link">7.2 Areas of compound shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">46</td><td class="topic">Area of a rhombus and a trapezium</td><td class="cnum num">1</td><td class="link">7.2 Areas of compound shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">47</td><td class="topic">Area of a rhombus and a trapezium</td><td class="cnum num">1</td><td class="link">7.2 Areas of compound shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">48</td><td class="topic">Area of a polygon</td><td class="cnum num">1</td><td class="link">7.2 Areas of compound shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">49</td><td class="topic">Area of a polygon</td><td class="cnum num">1</td><td class="link">7.2 Areas of compound shapes</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">50</td><td class="topic">Practical tasks — circumference and area of a circle<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">7.1 Circumference and area of a circle  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam reserve" data-f="cam reserve"><td class="cnum num">51</td><td class="topic">Chapter revision problems — compound shapes including circles<span class="badge b-cam">Cambridge insert · Reserve</span></td><td class="cnum num">1</td><td class="link">7.2 Areas of compound shapes  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">52</td><td class="topic">Control work No. 3 (coordinates, vectors, area)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+</tbody></table></div></section>
+<section class="quarter"><header class="qhead"><h3>IV QUARTER</h3><span class="qhrs">16 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge Stage 9 link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">53</td><td class="topic">Relative position of a line and a circle</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">54</td><td class="topic">Tangent to a circle and its properties</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">55</td><td class="topic">Relative position of two circles. Central angle and angular measure of an arc</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">56</td><td class="topic">Angle inscribed in a circle</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">57</td><td class="topic">Measuring angles formed by secants of a circle</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="" data-f=""><td class="cnum num">58</td><td class="topic">Properties of chords and diameters of a circle</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 9</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">59</td><td class="topic">Practical tasks — large and small units of measure<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">7.3 Large and small units  [CAMBRIDGE INSERT]</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">60</td><td class="topic">Chapter revision problems — circle geometry<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Consolidation</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">61</td><td class="topic">Control work No. 4 (circle)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">62</td><td class="topic">Revision of Grade 8 material — reflection and rotation<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">13.3 Transformations  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">63</td><td class="topic">Revision of Grade 8 material — translation and combined transformations<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">13.3 Transformations  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">64</td><td class="topic">Revision of Grade 8 material — enlargement and scale factor<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">13.4 Enlarging shapes  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">65</td><td class="topic">Revision of Grade 8 material — volume of prisms<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">14.1 Calculating the volume of prisms  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">66</td><td class="topic">Revision of Grade 8 material — surface area of prisms, pyramids and cylinders<span class="badge b-cam">Cambridge insert</span></td><td class="cnum num">1</td><td class="link">14.2 Surface area  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam reserve" data-f="cam reserve"><td class="cnum num">67</td><td class="topic">Revision of Grade 8 material — symmetry in 3-D shapes (Project 5: Triangle transformations)<span class="badge b-cam">Cambridge insert · Reserve</span></td><td class="cnum num">1</td><td class="link">14.3 Symmetry in 3-D shapes  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">68</td><td class="topic">Annual review. Checkpoint-style geometry paper<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+</tbody></table></div></section>
+</section>
+
+<!-- CAMBRIDGE -->
+<section class="view" id="v-cam" role="tabpanel" aria-labelledby="t-cam" hidden>
+  <div class="viewhead">
+    <h2>Mathematics — Grade 8 Cambridge class</h2>
+    <p class="meta">6 hours per week · 204 hours · algebra and geometry together</p>
+    <p>Cambridge Stage 9 as the backbone, the Uzbekistan Grade 8 programme as the depth layer. Eight topic tests plus a quarter assessment at the end of each quarter, in Checkpoint format — Paper 1 non-calculator, Paper 2 calculator.</p>
+  </div>
+  <div class="filters" data-for="v-cam">
+    <span class="flabel">Show</span>
+    <button class="chip" aria-pressed="true" data-filter="all">All 204 lessons</button>
+    <button class="chip" aria-pressed="false" data-filter="test">Assessments</button>
+    <button class="chip" aria-pressed="false" data-filter="reserve">Reserve lessons</button>
+  </div>
+  <section class="quarter"><header class="qhead"><h3>I QUARTER</h3><span class="qhrs">54 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge Stage 9 link / note</th></tr></thead><tbody>
+<tr class="test" data-f="test"><td class="cnum num">1</td><td class="topic">Course introduction. Entry diagnostic test (Stage 8 / Grade 7 core skills)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Diagnostic</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">2</td><td class="topic">Review of the diagnostic. Individual target setting<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Diagnostic</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">3</td><td class="topic">Revision: integers, fractions, order of operations<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Stage 8 review</td></tr>
+<tr class="" data-f=""><td class="cnum num">4</td><td class="topic">Rational and irrational numbers</td><td class="cnum num">1</td><td class="link">1.1 Irrational numbers</td></tr>
+<tr class="" data-f=""><td class="cnum num">5</td><td class="topic">Surds: simplifying and estimating irrational numbers</td><td class="cnum num">1</td><td class="link">1.1 Irrational numbers</td></tr>
+<tr class="" data-f=""><td class="cnum num">6</td><td class="topic">Arithmetic root of natural degree n — definition</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">7</td><td class="topic">Properties of the arithmetic root of degree n</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">8</td><td class="topic">Operations with roots. Rationalising the denominator</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">9</td><td class="topic">Indices: positive and zero indices</td><td class="cnum num">1</td><td class="link">1.3 Indices</td></tr>
+<tr class="" data-f=""><td class="cnum num">10</td><td class="topic">Negative indices</td><td class="cnum num">1</td><td class="link">1.3 Indices</td></tr>
+<tr class="" data-f=""><td class="cnum num">11</td><td class="topic">Powers with a rational exponent — definition</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">12</td><td class="topic">Properties of powers with a rational exponent</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">13</td><td class="topic">Simplifying expressions containing rational exponents</td><td class="cnum num">1</td><td class="link">UZ extension / 2.3</td></tr>
+<tr class="" data-f=""><td class="cnum num">14</td><td class="topic">Standard form: writing large and small numbers</td><td class="cnum num">1</td><td class="link">1.2 Standard form</td></tr>
+<tr class="" data-f=""><td class="cnum num">15</td><td class="topic">Calculating with numbers in standard form</td><td class="cnum num">1</td><td class="link">1.2 Standard form</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">16</td><td class="topic">Consolidation: roots, indices and standard form<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Unit 1 consolidation</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">17</td><td class="topic">Topic test 1 — Number, roots and indices<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">18</td><td class="topic">Feedback and error correction<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback</td></tr>
+<tr class="" data-f=""><td class="cnum num">19</td><td class="topic">Substituting into expressions</td><td class="cnum num">1</td><td class="link">2.1 Substituting into expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">20</td><td class="topic">Constructing expressions from word descriptions</td><td class="cnum num">1</td><td class="link">2.2 Constructing expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">21</td><td class="topic">Expressions and indices</td><td class="cnum num">1</td><td class="link">2.3 Expressions and indices</td></tr>
+<tr class="" data-f=""><td class="cnum num">22</td><td class="topic">Expanding the product of two linear expressions</td><td class="cnum num">1</td><td class="link">2.4 Expanding products</td></tr>
+<tr class="" data-f=""><td class="cnum num">23</td><td class="topic">Expanding and simplifying. Special products</td><td class="cnum num">1</td><td class="link">2.4 Expanding products</td></tr>
+<tr class="" data-f=""><td class="cnum num">24</td><td class="topic">Factorising: common factor, grouping, standard formulae</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">25</td><td class="topic">Factorising quadratic trinomials</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">26</td><td class="topic">Simplifying algebraic fractions by cancelling</td><td class="cnum num">1</td><td class="link">2.5 Simplifying algebraic fractions</td></tr>
+<tr class="" data-f=""><td class="cnum num">27</td><td class="topic">Algebraic fractions: domain of definition; harder cancelling</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">28</td><td class="topic">Reducing algebraic fractions to a common denominator</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">29</td><td class="topic">Common denominator — practice</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">30</td><td class="topic">Addition and subtraction of algebraic fractions</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">31</td><td class="topic">Addition and subtraction of algebraic fractions — harder cases</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">32</td><td class="topic">Multiplication and division of algebraic fractions</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">33</td><td class="topic">Multiplication and division — practice</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">34</td><td class="topic">Identical transformation of fractional-rational expressions</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">35</td><td class="topic">Fractional-rational expressions — mixed practice</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">36</td><td class="topic">Deriving and using formulae</td><td class="cnum num">1</td><td class="link">2.6 Deriving and using formulae</td></tr>
+<tr class="" data-f=""><td class="cnum num">37</td><td class="topic">Rearranging formulae (changing the subject)</td><td class="cnum num">1</td><td class="link">2.6 Deriving and using formulae</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">38</td><td class="topic">Consolidation: expressions and algebraic fractions<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Unit 2 consolidation</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">39</td><td class="topic">Topic test 2 — Expressions and algebraic fractions<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">40</td><td class="topic">Feedback and error correction<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback</td></tr>
+<tr class="" data-f=""><td class="cnum num">41</td><td class="topic">Multiplying and dividing by powers of 10</td><td class="cnum num">1</td><td class="link">3.1 Powers of 10</td></tr>
+<tr class="" data-f=""><td class="cnum num">42</td><td class="topic">Multiplying and dividing decimals</td><td class="cnum num">1</td><td class="link">3.2 Multiplying and dividing decimals</td></tr>
+<tr class="" data-f=""><td class="cnum num">43</td><td class="topic">Percentage increase and decrease — revision</td><td class="cnum num">1</td><td class="link">3.3 Compound percentages</td></tr>
+<tr class="" data-f=""><td class="cnum num">44</td><td class="topic">Compound percentages and repeated change</td><td class="cnum num">1</td><td class="link">3.3 Compound percentages</td></tr>
+<tr class="" data-f=""><td class="cnum num">45</td><td class="topic">Compound interest and reverse percentages — problem solving</td><td class="cnum num">1</td><td class="link">3.3 Compound percentages</td></tr>
+<tr class="" data-f=""><td class="cnum num">46</td><td class="topic">Approximate calculations and approximate values of quantities</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">47</td><td class="topic">Absolute error of an approximation</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">48</td><td class="topic">Estimating errors. Relative error</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">49</td><td class="topic">Rounding numbers. Significant figures</td><td class="cnum num">1</td><td class="link">3.4 / UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">50</td><td class="topic">Upper and lower bounds</td><td class="cnum num">1</td><td class="link">3.4 Upper and lower bounds</td></tr>
+<tr class="" data-f=""><td class="cnum num">51</td><td class="topic">Calculating with upper and lower bounds</td><td class="cnum num">1</td><td class="link">3.4 Upper and lower bounds</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">52</td><td class="topic">Consolidation: decimals, percentages and accuracy<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Unit 3 consolidation</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">53</td><td class="topic">Project 1: Cutting tablecloths (investigation)<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Project 1</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">54</td><td class="topic">Quarter 1 summative assessment and review<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+</tbody></table></div></section>
+<section class="quarter"><header class="qhead"><h3>II QUARTER</h3><span class="qhrs">42 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge Stage 9 link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">55</td><td class="topic">Constructing and solving linear equations</td><td class="cnum num">1</td><td class="link">4.1 Constructing and solving equations</td></tr>
+<tr class="" data-f=""><td class="cnum num">56</td><td class="topic">Equations with brackets and fractions</td><td class="cnum num">1</td><td class="link">4.1 Constructing and solving equations</td></tr>
+<tr class="" data-f=""><td class="cnum num">57</td><td class="topic">Simultaneous equations — substitution method</td><td class="cnum num">1</td><td class="link">4.2 Simultaneous equations</td></tr>
+<tr class="" data-f=""><td class="cnum num">58</td><td class="topic">Simultaneous equations — elimination method</td><td class="cnum num">1</td><td class="link">4.2 Simultaneous equations</td></tr>
+<tr class="" data-f=""><td class="cnum num">59</td><td class="topic">Simultaneous equations — graphical method and word problems</td><td class="cnum num">1</td><td class="link">4.2 Simultaneous equations</td></tr>
+<tr class="" data-f=""><td class="cnum num">60</td><td class="topic">Numerical inequalities — definition and comparison</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">61</td><td class="topic">Basic properties of numerical inequalities</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">62</td><td class="topic">Addition and multiplication of inequalities</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">63</td><td class="topic">Raising numerical inequalities to a power</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">64</td><td class="topic">Inequalities in one unknown; representing solutions on a number line</td><td class="cnum num">1</td><td class="link">4.3 Inequalities</td></tr>
+<tr class="" data-f=""><td class="cnum num">65</td><td class="topic">Linear inequalities with one unknown — harder cases</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">66</td><td class="topic">Systems of inequalities with one unknown. Number intervals</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">67</td><td class="topic">Systems of inequalities — practice</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">68</td><td class="topic">Modulus of a number. Equations containing a modulus</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">69</td><td class="topic">Inequalities containing a modulus</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">70</td><td class="topic">Consolidation: equations, systems and inequalities<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Unit 4 consolidation</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">71</td><td class="topic">Topic test 3 — Equations and inequalities<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">72</td><td class="topic">Feedback and error correction<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback</td></tr>
+<tr class="" data-f=""><td class="cnum num">73</td><td class="topic">Generating sequences from term-to-term rules</td><td class="cnum num">1</td><td class="link">9.1 Generating sequences</td></tr>
+<tr class="" data-f=""><td class="cnum num">74</td><td class="topic">Generating sequences from position-to-term rules</td><td class="cnum num">1</td><td class="link">9.1 Generating sequences</td></tr>
+<tr class="" data-f=""><td class="cnum num">75</td><td class="topic">Finding and using the nth term of a linear sequence</td><td class="cnum num">1</td><td class="link">9.2 Using the nth term</td></tr>
+<tr class="" data-f=""><td class="cnum num">76</td><td class="topic">The nth term of quadratic and other sequences</td><td class="cnum num">1</td><td class="link">9.2 Using the nth term</td></tr>
+<tr class="" data-f=""><td class="cnum num">77</td><td class="topic">Representing functions: mapping diagrams and function machines</td><td class="cnum num">1</td><td class="link">9.3 Representing functions</td></tr>
+<tr class="" data-f=""><td class="cnum num">78</td><td class="topic">Functions and function notation</td><td class="cnum num">1</td><td class="link">10.1 Functions</td></tr>
+<tr class="" data-f=""><td class="cnum num">79</td><td class="topic">Plotting graphs of linear functions</td><td class="cnum num">1</td><td class="link">10.2 Plotting graphs</td></tr>
+<tr class="" data-f=""><td class="cnum num">80</td><td class="topic">Plotting graphs of quadratic and other functions</td><td class="cnum num">1</td><td class="link">10.2 Plotting graphs</td></tr>
+<tr class="" data-f=""><td class="cnum num">81</td><td class="topic">Gradient of a straight line</td><td class="cnum num">1</td><td class="link">10.3 Gradient and intercept</td></tr>
+<tr class="" data-f=""><td class="cnum num">82</td><td class="topic">y = mx + c: gradient and intercept</td><td class="cnum num">1</td><td class="link">10.3 Gradient and intercept</td></tr>
+<tr class="" data-f=""><td class="cnum num">83</td><td class="topic">Finding the equation of a straight line</td><td class="cnum num">1</td><td class="link">10.3 Gradient and intercept</td></tr>
+<tr class="" data-f=""><td class="cnum num">84</td><td class="topic">The function y = k/x (k ≠ 0) and its properties</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">85</td><td class="topic">The graph of y = k/x — the hyperbola; inverse proportion</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">86</td><td class="topic">Interpreting real-life graphs (distance–time, conversion)</td><td class="cnum num">1</td><td class="link">10.4 Interpreting graphs</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">87</td><td class="topic">Consolidation: sequences, functions and graphs<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Units 9–10 consolidation</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">88</td><td class="topic">Topic test 4 — Sequences, functions and graphs<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="" data-f=""><td class="cnum num">89</td><td class="topic">Using ratios: simplifying and dividing in a given ratio</td><td class="cnum num">1</td><td class="link">11.1 Using ratios</td></tr>
+<tr class="" data-f=""><td class="cnum num">90</td><td class="topic">Ratio problems and scale</td><td class="cnum num">1</td><td class="link">11.1 Using ratios</td></tr>
+<tr class="" data-f=""><td class="cnum num">91</td><td class="topic">Direct proportion</td><td class="cnum num">1</td><td class="link">11.2 Direct and inverse proportion</td></tr>
+<tr class="" data-f=""><td class="cnum num">92</td><td class="topic">Inverse proportion</td><td class="cnum num">1</td><td class="link">11.2 Direct and inverse proportion</td></tr>
+<tr class="" data-f=""><td class="cnum num">93</td><td class="topic">Proportion in real-life and interdisciplinary problems</td><td class="cnum num">1</td><td class="link">11.2 Direct and inverse proportion</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">94</td><td class="topic">Consolidation: ratio and proportion<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Unit 11 consolidation</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">95</td><td class="topic">Project 4: Cinema membership (investigation)<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Project 4</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">96</td><td class="topic">Quarter 2 summative assessment and review<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+</tbody></table></div></section>
+<section class="quarter"><header class="qhead"><h3>III QUARTER</h3><span class="qhrs">60 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge Stage 9 link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">97</td><td class="topic">Quadratic equation and its roots</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">98</td><td class="topic">Solving quadratic equations by factorising</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">99</td><td class="topic">Incomplete quadratic equations and their solution</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">100</td><td class="topic">Incomplete quadratic equations — practice</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">101</td><td class="topic">Completing the square</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">102</td><td class="topic">The quadratic formula and the discriminant</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">103</td><td class="topic">Using the discriminant to determine the number of roots</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">104</td><td class="topic">The quadratic formula — practice</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">105</td><td class="topic">Vieta&#x27;s theorem</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">106</td><td class="topic">Factorising a quadratic trinomial into linear factors</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">107</td><td class="topic">Biquadratic equations</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">108</td><td class="topic">Equations reducible to quadratic equations</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">109</td><td class="topic">Fractional-rational equations reducible to quadratics</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">110</td><td class="topic">Solving problems using quadratic equations</td><td class="cnum num">1</td><td class="link">UZ extension / 4.1</td></tr>
+<tr class="" data-f=""><td class="cnum num">111</td><td class="topic">Solving problems using quadratic equations — practice</td><td class="cnum num">1</td><td class="link">UZ extension / 4.1</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">112</td><td class="topic">The graph of y = ax² + bx + c. The parabola and its roots<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">UZ extension / 10.2</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">113</td><td class="topic">Topic test 5 — Quadratic equations<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">114</td><td class="topic">Feedback and error correction<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback</td></tr>
+<tr class="" data-f=""><td class="cnum num">115</td><td class="topic">Calculating angles: parallel lines and triangles (revision)</td><td class="cnum num">1</td><td class="link">5.1 Calculating angles</td></tr>
+<tr class="" data-f=""><td class="cnum num">116</td><td class="topic">Polygons. Convex polygons</td><td class="cnum num">1</td><td class="link">5.2 / UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">117</td><td class="topic">Interior angles of polygons</td><td class="cnum num">1</td><td class="link">5.2 Interior angles of polygons</td></tr>
+<tr class="" data-f=""><td class="cnum num">118</td><td class="topic">Exterior angles of polygons</td><td class="cnum num">1</td><td class="link">5.3 Exterior angles of polygons</td></tr>
+<tr class="" data-f=""><td class="cnum num">119</td><td class="topic">Parallelogram and its properties</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">120</td><td class="topic">Tests (criteria) for a parallelogram</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">121</td><td class="topic">Rectangle and its properties</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">122</td><td class="topic">Rhombus and its properties</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">123</td><td class="topic">Square and its properties</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">124</td><td class="topic">Trapezium and its properties</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">125</td><td class="topic">Properties of an isosceles trapezium</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">126</td><td class="topic">Thales&#x27; theorem</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">127</td><td class="topic">Applications of Thales&#x27; theorem</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">128</td><td class="topic">Midline of a triangle and of a trapezium</td><td class="cnum num">1</td><td class="link">13.2 / UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">129</td><td class="topic">Ruler-and-compass constructions</td><td class="cnum num">1</td><td class="link">5.4 Constructions</td></tr>
+<tr class="" data-f=""><td class="cnum num">130</td><td class="topic">Constructions: loci and applications</td><td class="cnum num">1</td><td class="link">5.4 Constructions</td></tr>
+<tr class="" data-f=""><td class="cnum num">131</td><td class="topic">Pythagoras&#x27; theorem</td><td class="cnum num">1</td><td class="link">5.5 Pythagoras&#x27; theorem</td></tr>
+<tr class="" data-f=""><td class="cnum num">132</td><td class="topic">Different proofs of Pythagoras&#x27; theorem</td><td class="cnum num">1</td><td class="link">5.5 / UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">133</td><td class="topic">The converse of Pythagoras&#x27; theorem</td><td class="cnum num">1</td><td class="link">5.5 / UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">134</td><td class="topic">Applications of Pythagoras&#x27; theorem</td><td class="cnum num">1</td><td class="link">5.5 Pythagoras&#x27; theorem</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">135</td><td class="topic">Consolidation: quadrilaterals and Pythagoras — problem solving<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Units 5 consolidation</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">136</td><td class="topic">Project 2: Angle tangle (investigation)<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Project 2</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">137</td><td class="topic">Topic test 6 — Angles, quadrilaterals and Pythagoras<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">138</td><td class="topic">Feedback and error correction<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback</td></tr>
+<tr class="" data-f=""><td class="cnum num">139</td><td class="topic">Sine, cosine, tangent and cotangent of an acute angle</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">140</td><td class="topic">Trigonometric ratios — practice</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">141</td><td class="topic">The basic trigonometric identity and its corollaries</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">142</td><td class="topic">Trigonometric functions of complementary angles</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">143</td><td class="topic">Values of sin, cos, tan and cot for 30°, 45°, 60°</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">144</td><td class="topic">Table of values of the trigonometric functions; using a calculator</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">145</td><td class="topic">Solving right-angled triangles</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">146</td><td class="topic">Solving right-angled triangles — practice</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">147</td><td class="topic">Practical and interdisciplinary problems: heights, distances and slopes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">UZ extension / 13.1</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">148</td><td class="topic">Topic test 7 — Trigonometry<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="" data-f=""><td class="cnum num">149</td><td class="topic">Circumference of a circle</td><td class="cnum num">1</td><td class="link">7.1 Circumference and area of a circle</td></tr>
+<tr class="" data-f=""><td class="cnum num">150</td><td class="topic">Area of a circle. Arcs and sectors</td><td class="cnum num">1</td><td class="link">7.1 Circumference and area of a circle</td></tr>
+<tr class="" data-f=""><td class="cnum num">151</td><td class="topic">Areas of compound shapes</td><td class="cnum num">1</td><td class="link">7.2 Areas of compound shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">152</td><td class="topic">Compound shapes — problem solving</td><td class="cnum num">1</td><td class="link">7.2 Areas of compound shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">153</td><td class="topic">Large and small units of length, area and volume</td><td class="cnum num">1</td><td class="link">7.3 Large and small units</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">154</td><td class="topic">Consolidation: measurement and area<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Unit 7 consolidation</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">155</td><td class="topic">Project 3: Selling apples (investigation)<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Project 3</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">156</td><td class="topic">Quarter 3 summative assessment and review<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+</tbody></table></div></section>
+<section class="quarter"><header class="qhead"><h3>IV QUARTER</h3><span class="qhrs">48 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge Stage 9 link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">157</td><td class="topic">The concept of area. Properties of area</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">158</td><td class="topic">Area of a rectangle and a parallelogram</td><td class="cnum num">1</td><td class="link">UZ extension / 7.2</td></tr>
+<tr class="" data-f=""><td class="cnum num">159</td><td class="topic">Area of a triangle</td><td class="cnum num">1</td><td class="link">UZ extension / 7.2</td></tr>
+<tr class="" data-f=""><td class="cnum num">160</td><td class="topic">Area of a rhombus and a trapezium</td><td class="cnum num">1</td><td class="link">UZ extension / 7.2</td></tr>
+<tr class="" data-f=""><td class="cnum num">161</td><td class="topic">Area of a polygon — mixed problems</td><td class="cnum num">1</td><td class="link">UZ extension / 7.2</td></tr>
+<tr class="" data-f=""><td class="cnum num">162</td><td class="topic">Coordinates of a point in the plane. Distance between two points</td><td class="cnum num">1</td><td class="link">13.2 / UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">163</td><td class="topic">Equation of a circle</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">164</td><td class="topic">Equation of a straight line. The coordinate method</td><td class="cnum num">1</td><td class="link">UZ extension / 10.3</td></tr>
+<tr class="" data-f=""><td class="cnum num">165</td><td class="topic">Points on a line segment: midpoint and division of a segment</td><td class="cnum num">1</td><td class="link">13.2 Points on a line segment</td></tr>
+<tr class="" data-f=""><td class="cnum num">166</td><td class="topic">The concept of a vector. Length and direction</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">167</td><td class="topic">Addition and subtraction of vectors</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">168</td><td class="topic">Multiplication of a vector by a number</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">169</td><td class="topic">Coordinates of a vector. Operations in coordinates</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">170</td><td class="topic">Physical and geometrical applications of vectors<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">171</td><td class="topic">Bearings</td><td class="cnum num">1</td><td class="link">13.1 Bearings and scale drawings</td></tr>
+<tr class="" data-f=""><td class="cnum num">172</td><td class="topic">Scale drawings</td><td class="cnum num">1</td><td class="link">13.1 Bearings and scale drawings</td></tr>
+<tr class="" data-f=""><td class="cnum num">173</td><td class="topic">Transformations: reflection and rotation</td><td class="cnum num">1</td><td class="link">13.3 Transformations</td></tr>
+<tr class="" data-f=""><td class="cnum num">174</td><td class="topic">Transformations: translation and combined transformations</td><td class="cnum num">1</td><td class="link">13.3 Transformations</td></tr>
+<tr class="" data-f=""><td class="cnum num">175</td><td class="topic">Enlarging shapes: scale factor and centre of enlargement</td><td class="cnum num">1</td><td class="link">13.4 Enlarging shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">176</td><td class="topic">Enlargement and similar figures</td><td class="cnum num">1</td><td class="link">13.4 Enlarging shapes</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">177</td><td class="topic">Project 5: Triangle transformations (investigation)<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Project 5</td></tr>
+<tr class="" data-f=""><td class="cnum num">178</td><td class="topic">Calculating the volume of prisms</td><td class="cnum num">1</td><td class="link">14.1 Volume of prisms</td></tr>
+<tr class="" data-f=""><td class="cnum num">179</td><td class="topic">Surface area of triangular prisms and pyramids</td><td class="cnum num">1</td><td class="link">14.2 Surface area</td></tr>
+<tr class="" data-f=""><td class="cnum num">180</td><td class="topic">Surface area of cylinders</td><td class="cnum num">1</td><td class="link">14.2 Surface area</td></tr>
+<tr class="" data-f=""><td class="cnum num">181</td><td class="topic">Symmetry in three-dimensional shapes</td><td class="cnum num">1</td><td class="link">14.3 Symmetry in 3-D shapes</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">182</td><td class="topic">Topic test 8 — Coordinates, vectors, transformations and solids<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="" data-f=""><td class="cnum num">183</td><td class="topic">Relative position of a line and a circle</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">184</td><td class="topic">Tangent to a circle and its properties</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">185</td><td class="topic">Relative position of two circles. Central angle and arc measure</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">186</td><td class="topic">Angle inscribed in a circle</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">187</td><td class="topic">Measuring angles formed by secants of a circle</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">188</td><td class="topic">Properties of chords and diameters of a circle</td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">189</td><td class="topic">Circle geometry — practical problems and consolidation<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">UZ extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">190</td><td class="topic">Data collection and sampling methods</td><td class="cnum num">1</td><td class="link">6.1 Data collection and sampling</td></tr>
+<tr class="" data-f=""><td class="cnum num">191</td><td class="topic">Bias in data collection. Planning a statistical investigation</td><td class="cnum num">1</td><td class="link">6.2 Bias</td></tr>
+<tr class="" data-f=""><td class="cnum num">192</td><td class="topic">Interpreting and drawing frequency polygons</td><td class="cnum num">1</td><td class="link">15.1 Frequency polygons</td></tr>
+<tr class="" data-f=""><td class="cnum num">193</td><td class="topic">Mean, mode and median. Comparing averages</td><td class="cnum num">1</td><td class="link">UZ extension / 15.4</td></tr>
+<tr class="" data-f=""><td class="cnum num">194</td><td class="topic">Calculating statistics for grouped data</td><td class="cnum num">1</td><td class="link">15.4 Statistics for grouped data</td></tr>
+<tr class="" data-f=""><td class="cnum num">195</td><td class="topic">Back-to-back stem-and-leaf diagrams</td><td class="cnum num">1</td><td class="link">15.3 Stem-and-leaf diagrams</td></tr>
+<tr class="" data-f=""><td class="cnum num">196</td><td class="topic">Scatter graphs and correlation</td><td class="cnum num">1</td><td class="link">15.2 Scatter graphs</td></tr>
+<tr class="" data-f=""><td class="cnum num">197</td><td class="topic">Representing data — choosing and criticising charts</td><td class="cnum num">1</td><td class="link">15.5 Representing data</td></tr>
+<tr class="" data-f=""><td class="cnum num">198</td><td class="topic">Elements of combinatorics. Counting by systematic listing</td><td class="cnum num">1</td><td class="link">UZ extension / 12.3</td></tr>
+<tr class="" data-f=""><td class="cnum num">199</td><td class="topic">The basic counting principle and its applications</td><td class="cnum num">1</td><td class="link">UZ extension / 12.2</td></tr>
+<tr class="" data-f=""><td class="cnum num">200</td><td class="topic">Mutually exclusive events</td><td class="cnum num">1</td><td class="link">12.1 Mutually exclusive events</td></tr>
+<tr class="" data-f=""><td class="cnum num">201</td><td class="topic">Independent events</td><td class="cnum num">1</td><td class="link">12.2 Independent events</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">202</td><td class="topic">Combined events. Sample space and tree diagrams. Chance experiments<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">12.3–12.4 Probability</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">203</td><td class="topic">Project 6: Cycle training (investigation)<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Project 6</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">204</td><td class="topic">Final annual assessment and course review<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+</tbody></table></div></section>
+</section>
+
+<!-- RED DAYS -->
+<section class="view prose" id="v-red" role="tabpanel" aria-labelledby="t-red" hidden>
+  <div class="viewhead">
+    <h2>Public holidays and the reserve-lesson protocol</h2>
+    <p>Holidays that fall on a working school day remove real lessons. The plans keep the official hour totals unchanged and absorb the loss through lessons marked <span class="badge b-reserve">Reserve</span> — so a lost lesson never costs new content.</p>
+  </div>
+  <div class="tablewrap" style="border-top:1px solid var(--rule)">
+    <table><thead><tr><th>Date</th><th>Holiday</th><th class="cnum">Weekday</th><th>Effect on the plan</th></tr></thead>
+    <tbody><tr><td class="hdate">1 September</td><td>Independence Day</td><td class="cnum">Tue</td><td class="heff">Falls before the first school day (2 September) — no lesson lost.</td></tr>
+<tr><td class="hdate">1 October</td><td>Day of Teachers and Mentors</td><td class="cnum">Thu</td><td class="heff">1 school day lost — Quarter I.</td></tr>
+<tr><td class="hdate">8 December</td><td>Constitution Day</td><td class="cnum">Tue</td><td class="heff">1 school day lost — Quarter II.</td></tr>
+<tr><td class="hdate">1 January</td><td>New Year</td><td class="cnum">Fri</td><td class="heff">Falls inside the winter holiday — no lesson lost.</td></tr>
+<tr><td class="hdate">14 January</td><td>Day of Defenders of the Motherland</td><td class="cnum">Thu</td><td class="heff">1 school day lost — Quarter III.</td></tr>
+<tr><td class="hdate">8 March</td><td>International Women&#x27;s Day</td><td class="cnum">Mon</td><td class="heff">1 school day lost — Quarter III.</td></tr>
+<tr><td class="hdate">21 March</td><td>Navruz</td><td class="cnum">Sun</td><td class="heff">Normally inside the spring holiday; the day off in lieu may cost 1 school day.</td></tr>
+<tr><td class="hdate">Ramazon Hayit (movable)</td><td>Eid al-Fitr</td><td class="cnum">—</td><td class="heff">Approx. late March 2027; usually adjoins the spring holiday. Confirm annually.</td></tr>
+<tr><td class="hdate">9 May</td><td>Day of Remembrance and Honour</td><td class="cnum">Sun</td><td class="heff">Day off in lieu on Monday 10 May — 1 school day lost, Quarter IV.</td></tr>
+<tr><td class="hdate">Qurbon Hayit (movable)</td><td>Eid al-Adha</td><td class="cnum">—</td><td class="heff">Approx. late May 2027; may fall after the last lesson. Confirm annually.</td></tr></tbody></table>
+  </div>
+  <div class="note">
+    <strong>Expected loss.</strong> Four to six public holidays a year fall on a working school day. At 3 hours a week that costs 2–3 lessons; at 2 hours a week, 1–2; on the 6-hour Cambridge course, 4–6.
+  </div>
+  <h3>Absorption protocol</h3>
+  <ol class="proto">
+    <li>At the start of each quarter, count the red days falling on the days this class has mathematics.</li>
+    <li>Remove exactly that many reserve lessons from the same quarter, working backwards from the end of the quarter.</li>
+    <li>Never remove an assessment, and never remove a lesson that introduces new content.</li>
+    <li>If a quarter has fewer reserve lessons than lessons lost, merge two consecutive lessons carrying the same topic title — the national plan repeats titles across 2–3 lessons for exactly this purpose.</li>
+    <li>Record every adjustment in the register so the quarter still shows the official hour total.</li>
+  </ol>
+  <h3>School holidays</h3>
+  <p>Autumn ≈ 1–7 November · Winter ≈ 30 December – 10 January · Spring ≈ 20–30 March. These are already excluded from the quarter hour totals and need no adjustment.</p>
+  <div class="note">
+    <strong>Confirm annually.</strong> Weekdays are calculated for 2026–2027. The two movable Islamic holidays and any transferred working days must be checked against the Cabinet of Ministers resolution published each year, then this protocol re-applied.
+  </div>
+</section>
+
+<footer>Sources — Uzbekistan Grade 8 Algebra and Geometry calendar-thematic plans · Cambridge Lower Secondary Mathematics Learner's Book 9 contents</footer>
+</div>
+
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function show(id){
+    tabs.forEach(function(t){
+      var on=t.getAttribute('aria-controls')===id;
+      t.setAttribute('aria-selected',on?'true':'false');
+      document.getElementById(t.getAttribute('aria-controls')).hidden=!on;
+    });
+    window.scrollTo({top:0,behavior:'instant'});
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){show(t.getAttribute('aria-controls'))});
+    t.addEventListener('keydown',function(ev){
+      var d=ev.key==='ArrowRight'?1:ev.key==='ArrowLeft'?-1:0;
+      if(!d)return; ev.preventDefault();
+      var n=tabs[(i+d+tabs.length)%tabs.length]; n.focus(); show(n.getAttribute('aria-controls'));
+    });
+  });
+  [].forEach.call(document.querySelectorAll('.filters'),function(bar){
+    var view=document.getElementById(bar.getAttribute('data-for'));
+    var chips=[].slice.call(bar.querySelectorAll('.chip'));
+    chips.forEach(function(c){
+      c.addEventListener('click',function(){
+        var f=c.getAttribute('data-filter');
+        chips.forEach(function(o){o.setAttribute('aria-pressed',o===c?'true':'false')});
+        [].forEach.call(view.querySelectorAll('tbody tr'),function(r){
+          r.hidden = (f!=='all') && (' '+r.getAttribute('data-f')+' ').indexOf(' '+f+' ')<0;
+        });
+        [].forEach.call(view.querySelectorAll('.quarter'),function(q){
+          q.hidden = !q.querySelector('tbody tr:not([hidden])');
+        });
+      });
+    });
+  });
+})();
+</script>

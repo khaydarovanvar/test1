@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/pages.css">
+<title>Annual plans · Anvarbek Khaydarov</title>
+<meta name="description" content="Calendar-thematic annual plans for grades 6 to 11 — the Uzbekistan national programme mapped onto Cambridge, with the hour totals of every quarter. Downloadable as Excel.">
+</head>
+<body>
+<div class="preload" id="preload" role="status" aria-live="polite">
+  <div class="pl-in">
+    <svg class="pl-mark" viewBox="0 0 64 64" aria-hidden="true">
+      <path class="pl-arc" d="M40.03 56.73 A26 26 0 1 1 54.96 44.21" fill="none"
+            stroke="var(--brass)" stroke-width="2.6" stroke-linecap="round"/>
+      <circle class="pl-nib" cx="54.96" cy="44.21" r="2.9" fill="var(--brass)"/>
+      <path class="pl-a" d="M32 15 L20 47 M32 15 L44 47 M24.2 36 H39.8" fill="none"
+            stroke="currentColor" stroke-width="3.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <p class="pl-name">Anvarbek Khaydarov</p>
+    <p class="pl-sub">Mathematics · Grades 5&#8211;11</p>
+    <div class="pl-bar"><i></i></div>
+  </div>
+</div>
+<div id="site-header"></div>
+<div class="lhead">
+  <div class="inner">
+    <p class="crumb"><a href="index.html">Home</a> / <span>Annual plans</span></p>
+    <h1>Annual plans, 2026&#8211;2027</h1>
+    <p class="lede" style="margin-top:12px">The Uzbekistan calendar-thematic plan for every grade,
+    kept lesson for lesson, with each national lesson mapped to the Cambridge sub-unit it answers to.
+    Eleven plans, 1&nbsp;258 lessons, all on the same school calendar &mdash; quarters of
+    9&nbsp;/&nbsp;7&nbsp;/&nbsp;10&nbsp;/&nbsp;8 weeks.</p>
+  </div>
+</div>
+
+<section class="section tight">
+  <div class="wrap">
+    <div class="sechead"><span class="eyebrow">Download</span><h2>One workbook per grade</h2>
+      <p>Every plan for the year, colour-coded by lesson type, with the red-day sheet and the
+      absorption protocol. Open in Excel, Google Sheets or LibreOffice.</p></div>
+    <div class="dlgrid" id="dlgrid"></div>
+
+    <div class="sechead" style="margin-top:56px"><span class="eyebrow">Read online</span>
+      <h2>The plans, quarter by quarter</h2>
+      <p>Filterable views of every lesson &mdash; show only the Cambridge inserts, only the
+      assessments, or only the reserve lessons that absorb a lost day.</p></div>
+    <div class="dlgrid" id="viewgrid"></div>
+
+    <div class="sechead" style="margin-top:56px"><span class="eyebrow">How they are built</span>
+      <h2>The same method in every year</h2></div>
+    <div class="prose narrow" style="margin:0 auto">
+      <p>Each plan starts from the official KTP workbook and keeps it exactly: the same topics, the
+      same order, the same hours per quarter. A generator script asserts both, so a plan cannot drift
+      out of compliance by accident, and a second script checks the generated plan back against the
+      source workbook lesson by lesson.</p>
+      <p>Cambridge coverage is then added in two ways. Every national lesson carries the Cambridge
+      sub-unit it corresponds to; where the national topic goes further, the note reads
+      <em>Extension beyond</em>. And the lessons the national plan leaves flexible &mdash; the
+      chapter-exercise lessons, the &ldquo;practical and cross-curricular problems&rdquo;, the
+      revision blocks &mdash; are filled with the Cambridge content the national programme does not
+      reach at all. Those are flagged <span class="chip c-cam">CAM</span>.</p>
+      <p>Grade&nbsp;6 is the one exception, because it is taught six hours a week against a five-hour
+      national plan. Its 34 spare lessons carry Stage&nbsp;7 content outright &mdash; above all
+      directed numbers, which the national programme does not reach until Grade&nbsp;7.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Flag</th><th>Means</th><th>May it be dropped?</th></tr></thead>
+        <tbody>
+          <tr><td><span class="chip c-cam">CAM</span></td><td>Cambridge content in a flexible lesson</td><td>No &mdash; it is the Cambridge layer</td></tr>
+          <tr><td><span class="chip c-hard">Test</span></td><td>Control work or assessment</td><td>Never</td></tr>
+          <tr><td><span class="chip c-med">R</span></td><td>Reserve, revision or feedback</td><td>Yes &mdash; this is what absorbs a red day</td></tr>
+          <tr><td>&mdash;</td><td>New teaching</td><td>Never</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="assets/solids3d.js"></script>
+<script src="assets/app.js" data-root="./"></script>
+<script>
+AKM.mount('plans.html');
+
+/* One card per grade: what it covers, and the workbook to download. */
+var DOWNLOADS = [
+  [6,  'Mathematics',            '6 h / week', 204, '54 · 42 · 60 · 48', 'Stage 7',  'Grade06_Mathematics_Annual_Plan_2026-2027.xlsx'],
+  [7,  'Mathematics',            '5 h / week', 170, '45 · 35 · 50 · 40', 'Stage 8',  'Grade07_Mathematics_Annual_Plan_2026-2027.xlsx'],
+  [8,  'Algebra · Geometry · Cambridge class', '3 + 2 and 6 h / week', 374, '3 plans', 'Stage 9', 'Grade08_Annual_Plans_2026-2027.xlsx'],
+  [9,  'Algebra · Geometry',     '3 + 2 h / week', 170, '27 · 21 · 30 · 24 and 18 · 14 · 20 · 16', 'IGCSE ch. 1–12', 'Grade09_Annual_Plans_2026-2027.xlsx'],
+  [10, 'Algebra · Geometry',     '3 + 2 h / week', 170, '27 · 21 · 30 · 24 and 18 · 14 · 20 · 16', 'IGCSE ch. 13–24 · P1', 'Grade10_Annual_Plans_2026-2027.xlsx'],
+  [11, 'Algebra · Geometry',     '3 + 2 h / week', 170, '27 · 21 · 30 · 24 and 18 · 14 · 20 · 16', 'P1 · P2 · P3', 'Grade11_Annual_Plans_2026-2027.xlsx']
+];
+document.getElementById('dlgrid').innerHTML = DOWNLOADS.map(function (d) {
+  return '<a class="dlcard" href="downloads/' + d[6] + '" download>' +
+    '<span class="dlnum">' + d[0] + '</span>' +
+    '<span class="dlbody"><span class="dlt">' + d[1] + '</span>' +
+    '<span class="dlm">' + d[2] + ' · ' + d[3] + ' hours · ' + d[4] + '</span>' +
+    '<span class="dlc">Cambridge ' + d[5] + '</span></span>' +
+    '<svg class="dlgo" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+    '<path d="M12 3v12M7 11l5 5 5-5M4 21h16"/></svg></a>';
+}).join('');
+
+var VIEWS = [
+  ['grades6-7-9.html', 'Grades 6, 7 and 9', 'Stage 7, Stage 8 and IGCSE chapters 1–12 · 544 lessons'],
+  ['grade8.html', 'Grade 8', 'Stage 9, in both the special and the Cambridge class · 374 lessons'],
+  ['grades10-11.html', 'Grades 10 and 11', 'IGCSE chapters 13–24 and AS &amp; A Level Pure 1–3 · 340 lessons']
+];
+document.getElementById('viewgrid').innerHTML = VIEWS.map(function (v) {
+  return '<a class="dlcard" href="plans/' + v[0] + '">' +
+    '<span class="dlnum sm">KTP</span>' +
+    '<span class="dlbody"><span class="dlt">' + v[1] + '</span>' +
+    '<span class="dlm">' + v[2] + '</span></span>' +
+    '<svg class="dlgo" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+    '<path d="M5 12h14M13 6l6 6-6 6"/></svg></a>';
+}).join('');
+</script>
+</body>
+</html>

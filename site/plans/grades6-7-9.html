@@ -1,0 +1,970 @@
+<title>Grade 6, 7 &amp; 9 Maths Annual Plans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#F4F3EF; --surface:#FFFFFF; --surface-2:#FAF9F6;
+  --ink:#1C2028; --muted:#6A6E77; --rule:#DEDCD4; --rule-soft:#EAE8E1;
+  --uz:#2B4C7E; --cam:#3D6B4C; --test:#A4522C; --res:#8E6F1E;
+  --uz-bg:#EAF0F8; --cam-bg:#EAF2EC; --test-bg:#F8EDE6; --res-bg:#F7F1DF;
+  --shadow:0 1px 2px rgba(28,32,40,.05),0 8px 24px -14px rgba(28,32,40,.18);
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#15171B; --surface:#1C1F25; --surface-2:#20242B;
+  --ink:#E9E8E3; --muted:#989DA6; --rule:#2E323A; --rule-soft:#262A31;
+  --uz:#8DACD9; --cam:#87BB97; --test:#DE9067; --res:#CFAA4C;
+  --uz-bg:#1E2733; --cam-bg:#1D2822; --test-bg:#2C2119; --res-bg:#2A2517;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -16px rgba(0,0,0,.7);
+}}
+:root[data-theme="dark"]{
+  --paper:#15171B; --surface:#1C1F25; --surface-2:#20242B;
+  --ink:#E9E8E3; --muted:#989DA6; --rule:#2E323A; --rule-soft:#262A31;
+  --uz:#8DACD9; --cam:#87BB97; --test:#DE9067; --res:#CFAA4C;
+  --uz-bg:#1E2733; --cam-bg:#1D2822; --test-bg:#2C2119; --res-bg:#2A2517;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -16px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 96px}
+
+/* masthead */
+.mast{padding:56px 0 32px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 18px}
+.mast h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.1rem,5.2vw,3.4rem);
+  line-height:1.08;letter-spacing:-.015em;margin:0 0 16px;text-wrap:balance;max-width:19ch}
+.mast h1 em{font-style:italic;color:var(--uz)}
+.lede{font-size:1.03rem;color:var(--muted);max-width:63ch;margin:0}
+.streams{display:grid;grid-template-columns:repeat(auto-fit,minmax(224px,1fr));gap:14px;margin-top:32px}
+.stream{background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  padding:16px 18px;border-top:2px solid var(--sc,var(--uz))}
+.stream .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--sc,var(--uz));margin-bottom:8px}
+.stream .ttl{font-family:var(--serif);font-size:1.16rem;line-height:1.25;margin-bottom:10px}
+.stream .fig{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.stream .fig b{color:var(--ink);font-weight:600}
+
+/* tabs */
+.tabbar{position:sticky;top:0;z-index:20;background:var(--paper);
+  border-bottom:1px solid var(--rule);margin-bottom:40px}
+.tabs{display:flex;gap:2px;overflow-x:auto;max-width:1080px;margin:0 auto;padding:0 24px}
+.tab{appearance:none;background:none;border:0;border-bottom:2px solid transparent;
+  font-family:var(--sans);font-size:13.5px;font-weight:500;color:var(--muted);
+  padding:15px 14px;cursor:pointer;white-space:nowrap;transition:color .15s,border-color .15s}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--uz)}
+.tab:focus-visible{outline:2px solid var(--uz);outline-offset:-3px;border-radius:2px}
+
+/* view */
+.view[hidden]{display:none}
+.viewhead{margin-bottom:26px}
+.viewhead h2{font-family:var(--serif);font-weight:500;font-size:1.85rem;letter-spacing:-.01em;
+  margin:0 0 8px;text-wrap:balance}
+.viewhead p{color:var(--muted);max-width:66ch;margin:0 0 8px}
+.meta{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);
+  text-transform:uppercase;margin-bottom:14px}
+
+/* filters */
+.filters{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:18px 0 30px;
+  padding-bottom:20px;border-bottom:1px solid var(--rule-soft)}
+.filters .flabel{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-right:4px}
+.chip{appearance:none;font-family:var(--sans);font-size:12.5px;cursor:pointer;
+  background:var(--surface);color:var(--muted);border:1px solid var(--rule);
+  border-radius:999px;padding:5px 13px;transition:all .15s}
+.chip:hover{color:var(--ink);border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip:focus-visible{outline:2px solid var(--uz);outline-offset:2px}
+
+/* quarters + tables */
+.quarter{margin-bottom:44px}
+.qhead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  padding-bottom:9px;margin-bottom:0;border-bottom:2px solid var(--ink)}
+.qhead h3{font-family:var(--serif);font-weight:500;font-size:1.2rem;letter-spacing:.01em;margin:0}
+.qhrs{font-family:var(--mono);font-size:11.5px;color:var(--muted);
+  letter-spacing:.06em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tablewrap{overflow-x:auto;background:var(--surface);border:1px solid var(--rule);border-top:0}
+table{border-collapse:collapse;width:100%;min-width:600px}
+thead th{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;text-align:left;padding:10px 14px;
+  border-bottom:1px solid var(--rule);background:var(--surface-2);white-space:nowrap}
+td{padding:9px 14px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+.cnum{text-align:center;width:1%;white-space:nowrap}
+.num{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.topic{font-size:14px;line-height:1.45;min-width:290px}
+.link{font-size:12.5px;color:var(--muted);line-height:1.45;min-width:200px}
+tbody tr{border-left:3px solid transparent}
+tbody tr.cam{background:var(--cam-bg);border-left-color:var(--cam)}
+tbody tr.test{background:var(--test-bg);border-left-color:var(--test)}
+tbody tr.reserve{background:var(--res-bg);border-left-color:var(--res)}
+tbody tr.cam.reserve{background:var(--cam-bg);
+  border-left-color:var(--cam);box-shadow:inset 3px 0 0 var(--res)}
+tbody tr[hidden]{display:none}
+.badge{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;
+  text-transform:uppercase;padding:1px 6px;border-radius:2px;margin-left:9px;
+  vertical-align:1.5px;white-space:nowrap}
+.b-cam{color:var(--cam);border:1px solid var(--cam)}
+.b-test{color:var(--test);border:1px solid var(--test)}
+.b-reserve{color:var(--res);border:1px solid var(--res)}
+
+/* prose + cards */
+.prose p{max-width:66ch}
+.prose h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;margin:38px 0 12px}
+.prose ul{max-width:66ch;padding-left:1.15em;color:var(--ink)}
+.prose li{margin-bottom:7px}
+.prose li::marker{color:var(--muted)}
+.note{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--uz);
+  border-radius:0 3px 3px 0;padding:16px 20px;margin:26px 0;font-size:14px}
+.note strong{font-weight:600}
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:26px 0}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:3px;padding:20px 22px}
+.card h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--cc,var(--uz));margin:0 0 12px;font-weight:500}
+.card p{margin:0 0 10px;font-size:14px}
+.card p:last-child{margin-bottom:0}
+.small{font-size:13px;color:var(--muted)}
+.ref{font-family:var(--mono);font-size:12px;color:var(--muted);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.unit{font-size:13.5px}
+.hdate{font-family:var(--mono);font-size:12px;white-space:nowrap}
+.heff{font-size:13px;color:var(--muted)}
+ol.proto{max-width:66ch;padding-left:1.3em;font-size:14px}
+ol.proto li{margin-bottom:9px}
+ol.proto li::marker{font-family:var(--mono);font-size:12px;color:var(--muted)}
+footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--muted)}
+@media (max-width:640px){
+  .mast{padding:36px 0 26px}
+  .wrap{padding:0 16px 64px}
+  .tabs{padding:0 16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<style>.lede a{color:var(--brand,#0E5C63);text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:1px;font-weight:500}.lede a:hover{opacity:.72}</style>
+
+<div class="wrap">
+<header class="mast">
+  <p class="eyebrow">Uzbekistan national programme · Cambridge Lower Secondary Stages 7–8 and IGCSE Extended</p>
+  <h1>Annual plans — grades 6, 7 and 9</h1>
+  <p class="lede">Built from the official 2025–2026 calendar-thematic plans, lesson for lesson.
+  Grade 6 runs an hour a week ahead of the national plan, so it carries a 34-lesson Cambridge
+  Stage 7 layer; grades 7 and 9 match the national load exactly and take their Cambridge content
+  in the lessons the plan leaves open.
+  <a href="grade8.html">Grade 8 plans &rarr;</a> &nbsp; <a href="grades10-11.html">Grades 10–11 &rarr;</a></p>
+  <div class="streams">
+    <div class="stream" style="--sc:var(--cam)">
+      <div class="lbl">Grade 6</div>
+      <div class="ttl">Mathematics</div>
+      <div class="fig"><b>6 h / week</b> · <b>204 h</b> / year · 54 · 42 · 60 · 48</div>
+    </div>
+    <div class="stream" style="--sc:var(--uz)">
+      <div class="lbl">Grade 7</div>
+      <div class="ttl">Mathematics</div>
+      <div class="fig"><b>5 h / week</b> · <b>170 h</b> / year · 45 · 35 · 50 · 40</div>
+    </div>
+    <div class="stream" style="--sc:var(--uz)">
+      <div class="lbl">Grade 9</div>
+      <div class="ttl">Algebra</div>
+      <div class="fig"><b>3 h / week</b> · <b>102 h</b> / year · 27 · 21 · 30 · 24</div>
+    </div>
+    <div class="stream" style="--sc:var(--uz)">
+      <div class="lbl">Grade 9</div>
+      <div class="ttl">Geometry</div>
+      <div class="fig"><b>2 h / week</b> · <b>68 h</b> / year · 18 · 14 · 20 · 16</div>
+    </div>
+  </div>
+</header>
+</div>
+
+<nav class="tabbar"><div class="tabs" role="tablist">
+  <button class="tab" role="tab" aria-selected="true" aria-controls="v-over" id="t-over">How the plans fit together</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="v-m6" id="t-m6">G6 Mathematics · 204 h</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="v-m7" id="t-m7">G7 Mathematics · 170 h</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="v-alg9" id="t-alg9">G9 Algebra · 102 h</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="v-geo9" id="t-geo9">G9 Geometry · 68 h</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="v-red" id="t-red">Red days</button>
+</div></nav>
+
+<div class="wrap">
+
+<section class="view prose" id="v-over" role="tabpanel" aria-labelledby="t-over">
+  <div class="viewhead">
+    <h2>Two different problems, two different solutions</h2>
+    <p>Grades 6 and 7 sit on the same national plan — 170 lessons, 45 / 35 / 50 / 40 by quarter.
+    What differs is the time available. Grade 6 is taught <strong>six</strong> hours a week against a
+    five-hour plan, and grade 7 is taught <strong>five</strong>. So grade 6 gains 34 lessons and
+    grade 7 gains none.</p>
+    <p>That single fact decides everything. In grade 6 the spare hour a week is spent on the Stage 7
+    content the national plan genuinely lacks — above all <strong>directed numbers</strong>, which the
+    national programme does not reach until grade 7. In grade 7 and in grade 9 there is no spare hour,
+    so Cambridge content goes into the lessons the national plan already leaves open: the twenty-one
+    &ldquo;practical exercises and applications&rdquo; lessons in grade 7, and the chapter-exercise and
+    cross-curricular lessons in grade 9.</p>
+  </div>
+  <div class="cmp">
+    <div class="card" style="--cc:var(--cam)">
+      <h4>Grade 6 · 38 Cambridge lessons added</h4>
+      <p><strong>Stage 7 as a layer on top.</strong> Directed numbers; place value, rounding and
+      decimal arithmetic; LCM, HCF and divisibility tests; square and cube roots; angle facts and
+      constructions; symmetry and congruence; data collection and sampling; graphs; probability;
+      position and transformation; the Stage 7 projects.</p>
+      <p>Every other lesson is national, in the national order, carrying the Stage 7 sub-unit it
+      answers to — so the class can sit Checkpoint papers without separate preparation.</p>
+    </div>
+    <div class="card" style="--cc:var(--uz)">
+      <h4>Grade 7 · 16 Cambridge inserts</h4>
+      <p><strong>Stage 8 into the open lessons.</strong> Rounding and decimal arithmetic; percentage
+      change; the circumference of a circle; ratio and proportion; area and volume of prisms;
+      probability; data collection and sampling; interpreting results; congruence on a grid.</p>
+      <p>The national plan is the harder of the two here — it reaches polynomial division, the
+      abridged multiplication formulae, algebraic fractions and combinatorics, none of which Stage 8
+      contains.</p>
+    </div>
+    <div class="card" style="--cc:var(--uz)">
+      <h4>Grade 9 · 9 + 5 Cambridge inserts</h4>
+      <p><strong>Algebra</strong> — sets and Venn diagrams, rational and irrational numbers,
+      recurring decimals, standard form, rearranging formulae, complementary and mutually exclusive
+      events, percentiles and box-and-whisker plots.</p>
+      <p><strong>Geometry</strong> — congruence, triangle properties, three-dimensional objects,
+      surface area and volume, construction and scale drawing.</p>
+      <p>The national plan goes well past IGCSE here: radian measure, the addition and double-angle
+      formulae, the sine and cosine rules and the scalar product are all <em>Extension beyond</em>.</p>
+    </div>
+  </div>
+  <div class="viewhead" style="margin-top:26px">
+    <h2>Reference editions</h2>
+    <p><code>S7</code> Cambridge Lower Secondary Mathematics Stage 7 ·
+    <code>S8</code> Stage 8 ·
+    <code>IGX</code> Cambridge IGCSE Mathematics Core &amp; Extended, units 1–3 (chapters 1–12).</p>
+    <p>Grades 10 and 11 take the other half of the IGCSE book — units 4–6, chapters 13–24 — so the
+    two plans together cover it once, with no overlap and no gap.</p>
+    <p>Every quarter totals 54 / 42 / 60 / 48 hours in grade 6, 45 / 35 / 50 / 40 in grade 7,
+    27 / 21 / 30 / 24 for grade 9 algebra and 18 / 14 / 20 / 16 for grade 9 geometry, and every
+    national topic keeps its exact hour count — the generator asserts both, so a plan cannot drift
+    out of compliance by accident.</p>
+  </div>
+</section>
+
+<section class="view" id="v-m6" role="tabpanel" aria-labelledby="t-m6" hidden>
+  <div class="viewhead">
+    <h2>Mathematics, Grade 6</h2>
+    <p>6 h / week · 204 hours · quarters 54 · 42 · 60 · 48</p>
+  </div>
+  <div class="filters" data-for="v-m6">
+    <span class="flabel">Show</span>
+    <button class="chip" aria-pressed="true" data-filter="all">All 204 lessons</button>
+    <button class="chip" aria-pressed="false" data-filter="cam">Cambridge inserts</button>
+    <button class="chip" aria-pressed="false" data-filter="test">Assessments</button>
+    <button class="chip" aria-pressed="false" data-filter="reserve">Reserve lessons</button>
+  </div>
+  <section class="quarter"><header class="qhead"><h3>I QUARTER</h3><span class="qhrs">54 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge link / note</th></tr></thead><tbody>
+<tr class="test" data-f="test"><td class="cnum num">1</td><td class="topic">Discuss and recall — the Grade 5 course. Entry diagnostic<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Diagnostic against Stage 6</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">2</td><td class="topic">Directed numbers: adding and subtracting integers<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 1.1 Adding and subtracting integers  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">3</td><td class="topic">Directed numbers: adding and subtracting integers<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 1.1 Adding and subtracting integers  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">4</td><td class="topic">Directed numbers: adding and subtracting integers<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 1.1 Adding and subtracting integers  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">5</td><td class="topic">Directed numbers: multiplying and dividing integers<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 1.2 Multiplying and dividing integers  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">6</td><td class="topic">Directed numbers: multiplying and dividing integers<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 1.2 Multiplying and dividing integers  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">7</td><td class="topic">Directed numbers: multiplying and dividing integers<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 1.2 Multiplying and dividing integers  [CAMBRIDGE INSERT]</td></tr>
+<tr class="" data-f=""><td class="cnum num">8</td><td class="topic">Algebraic expressions</td><td class="cnum num">1</td><td class="link">S7 2.1 Constructing expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">9</td><td class="topic">Algebraic expressions</td><td class="cnum num">1</td><td class="link">S7 2.1 Constructing expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">10</td><td class="topic">Algebraic expressions</td><td class="cnum num">1</td><td class="link">S7 2.1 Constructing expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">11</td><td class="topic">Simplifying algebraic expressions</td><td class="cnum num">1</td><td class="link">S7 2.3 Collecting like terms</td></tr>
+<tr class="" data-f=""><td class="cnum num">12</td><td class="topic">Simplifying algebraic expressions</td><td class="cnum num">1</td><td class="link">S7 2.3 Collecting like terms</td></tr>
+<tr class="" data-f=""><td class="cnum num">13</td><td class="topic">Finding the value of an algebraic expression</td><td class="cnum num">1</td><td class="link">S7 2.2 Using expressions and formulae</td></tr>
+<tr class="" data-f=""><td class="cnum num">14</td><td class="topic">Finding the value of an algebraic expression</td><td class="cnum num">1</td><td class="link">S7 2.2 Using expressions and formulae</td></tr>
+<tr class="" data-f=""><td class="cnum num">15</td><td class="topic">Finding the value of an algebraic expression</td><td class="cnum num">1</td><td class="link">S7 2.2 Using expressions and formulae</td></tr>
+<tr class="" data-f=""><td class="cnum num">16</td><td class="topic">Solving equations</td><td class="cnum num">1</td><td class="link">S7 2.5 Constructing and solving equations</td></tr>
+<tr class="" data-f=""><td class="cnum num">17</td><td class="topic">Solving equations</td><td class="cnum num">1</td><td class="link">S7 2.5 Constructing and solving equations</td></tr>
+<tr class="" data-f=""><td class="cnum num">18</td><td class="topic">Solving equations</td><td class="cnum num">1</td><td class="link">S7 2.5 Constructing and solving equations</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">19</td><td class="topic">Control work No. 1 (expressions and equations)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">20</td><td class="topic">Think — problem task: inequalities<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 2.6 Inequalities  [CAMBRIDGE INSERT]</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">21</td><td class="topic">Discuss and recall — fractions<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 7 Fractions — entry</td></tr>
+<tr class="" data-f=""><td class="cnum num">22</td><td class="topic">Dividing a proper fraction by a natural number</td><td class="cnum num">1</td><td class="link">S7 7.4 Dividing fractions</td></tr>
+<tr class="" data-f=""><td class="cnum num">23</td><td class="topic">Dividing a proper fraction by a natural number</td><td class="cnum num">1</td><td class="link">S7 7.4 Dividing fractions</td></tr>
+<tr class="" data-f=""><td class="cnum num">24</td><td class="topic">Dividing a natural number by a proper fraction</td><td class="cnum num">1</td><td class="link">S7 7.4 Dividing fractions</td></tr>
+<tr class="" data-f=""><td class="cnum num">25</td><td class="topic">Dividing a natural number by a proper fraction</td><td class="cnum num">1</td><td class="link">S7 7.4 Dividing fractions</td></tr>
+<tr class="" data-f=""><td class="cnum num">26</td><td class="topic">Dividing a natural number by a proper fraction</td><td class="cnum num">1</td><td class="link">S7 7.4 Dividing fractions</td></tr>
+<tr class="" data-f=""><td class="cnum num">27</td><td class="topic">Dividing a proper fraction by a proper fraction</td><td class="cnum num">1</td><td class="link">S7 7.4 Dividing fractions</td></tr>
+<tr class="" data-f=""><td class="cnum num">28</td><td class="topic">Dividing a proper fraction by a proper fraction</td><td class="cnum num">1</td><td class="link">S7 7.4 Dividing fractions</td></tr>
+<tr class="" data-f=""><td class="cnum num">29</td><td class="topic">Dividing a proper fraction by a proper fraction</td><td class="cnum num">1</td><td class="link">S7 7.4 Dividing fractions</td></tr>
+<tr class="" data-f=""><td class="cnum num">30</td><td class="topic">Word problems on the division of fractions</td><td class="cnum num">1</td><td class="link">S7 7.5 Making fraction calculations easier</td></tr>
+<tr class="" data-f=""><td class="cnum num">31</td><td class="topic">Word problems on the division of fractions</td><td class="cnum num">1</td><td class="link">S7 7.5 Making fraction calculations easier</td></tr>
+<tr class="" data-f=""><td class="cnum num">32</td><td class="topic">Word problems on the division of fractions</td><td class="cnum num">1</td><td class="link">S7 7.5 Making fraction calculations easier</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">33</td><td class="topic">Think — problem task<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">Project 1 — Mixed-up properties  [CAMBRIDGE INSERT]</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">34</td><td class="topic">Revision — fractions and their division<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 7 consolidation</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">35</td><td class="topic">Revision — fractions and their division<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 7 consolidation</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">36</td><td class="topic">Control work No. 2 (division of fractions)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">37</td><td class="topic">Revision and work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">38</td><td class="topic">Lowest common multiples and highest common factors<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 1.3-1.4 LCM and HCF  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">39</td><td class="topic">Tests for divisibility<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 1.5 Tests for divisibility  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">40</td><td class="topic">Square roots and cube roots<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 1.6 Square roots and cube roots  [CAMBRIDGE INSERT]</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">41</td><td class="topic">Recall — ratio<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — entry</td></tr>
+<tr class="" data-f=""><td class="cnum num">42</td><td class="topic">Ratio and fraction</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion</td></tr>
+<tr class="" data-f=""><td class="cnum num">43</td><td class="topic">Ratio and fraction</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion</td></tr>
+<tr class="" data-f=""><td class="cnum num">44</td><td class="topic">Word problems on ratio</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion</td></tr>
+<tr class="" data-f=""><td class="cnum num">45</td><td class="topic">Word problems on ratio</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion</td></tr>
+<tr class="" data-f=""><td class="cnum num">46</td><td class="topic">Word problems on ratio</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion</td></tr>
+<tr class="" data-f=""><td class="cnum num">47</td><td class="topic">The ratio of three quantities</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion</td></tr>
+<tr class="" data-f=""><td class="cnum num">48</td><td class="topic">The ratio of three quantities</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion</td></tr>
+<tr class="" data-f=""><td class="cnum num">49</td><td class="topic">The ratio of three quantities</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion</td></tr>
+<tr class="" data-f=""><td class="cnum num">50</td><td class="topic">Variable ratios — direct and inverse proportion</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion</td></tr>
+<tr class="" data-f=""><td class="cnum num">51</td><td class="topic">Variable ratios — direct and inverse proportion</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion</td></tr>
+<tr class="" data-f=""><td class="cnum num">52</td><td class="topic">Variable ratios — direct and inverse proportion</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">53</td><td class="topic">Control work No. 3 (ratio and proportion)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">54</td><td class="topic">Think — problem task: ratio in context<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — application</td></tr>
+</tbody></table></div></section>
+  <section class="quarter"><header class="qhead"><h3>II QUARTER</h3><span class="qhrs">42 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge link / note</th></tr></thead><tbody>
+<tr class="reserve" data-f="reserve"><td class="cnum num">55</td><td class="topic">Recall — percentages<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 10 Percentages — entry</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">56</td><td class="topic">Multiplying and dividing by powers of 10<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 3.1 Multiplying and dividing by powers of 10  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">57</td><td class="topic">Multiplying and dividing by powers of 10<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 3.1 Multiplying and dividing by powers of 10  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">58</td><td class="topic">Rounding to a given accuracy<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 3.2 Rounding  [CAMBRIDGE INSERT]</td></tr>
+<tr class="" data-f=""><td class="cnum num">59</td><td class="topic">Finding a number from its percentage and from a part of it</td><td class="cnum num">1</td><td class="link">S7 10 Percentages</td></tr>
+<tr class="" data-f=""><td class="cnum num">60</td><td class="topic">Finding a number from its percentage and from a part of it</td><td class="cnum num">1</td><td class="link">S7 10 Percentages</td></tr>
+<tr class="" data-f=""><td class="cnum num">61</td><td class="topic">Finding a number from its percentage and from a part of it</td><td class="cnum num">1</td><td class="link">S7 10 Percentages</td></tr>
+<tr class="" data-f=""><td class="cnum num">62</td><td class="topic">Finding a number from its percentage and from a part of it</td><td class="cnum num">1</td><td class="link">S7 10 Percentages</td></tr>
+<tr class="" data-f=""><td class="cnum num">63</td><td class="topic">Finding a percentage increase or decrease</td><td class="cnum num">1</td><td class="link">S7 10 Percentages</td></tr>
+<tr class="" data-f=""><td class="cnum num">64</td><td class="topic">Finding a percentage increase or decrease</td><td class="cnum num">1</td><td class="link">S7 10 Percentages</td></tr>
+<tr class="" data-f=""><td class="cnum num">65</td><td class="topic">Finding a percentage increase or decrease</td><td class="cnum num">1</td><td class="link">S7 10 Percentages</td></tr>
+<tr class="" data-f=""><td class="cnum num">66</td><td class="topic">Finding a percentage increase or decrease</td><td class="cnum num">1</td><td class="link">S7 10 Percentages</td></tr>
+<tr class="" data-f=""><td class="cnum num">67</td><td class="topic">Word problems on percentages</td><td class="cnum num">1</td><td class="link">S7 10 Percentages — problem solving</td></tr>
+<tr class="" data-f=""><td class="cnum num">68</td><td class="topic">Word problems on percentages</td><td class="cnum num">1</td><td class="link">S7 10 Percentages — problem solving</td></tr>
+<tr class="" data-f=""><td class="cnum num">69</td><td class="topic">Word problems on percentages</td><td class="cnum num">1</td><td class="link">S7 10 Percentages — problem solving</td></tr>
+<tr class="" data-f=""><td class="cnum num">70</td><td class="topic">Word problems on percentages</td><td class="cnum num">1</td><td class="link">S7 10 Percentages — problem solving</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">71</td><td class="topic">Think — problem task<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">Project 2 — Clock rectangles  [CAMBRIDGE INSERT]</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">72</td><td class="topic">Revision — percentages<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 10 consolidation</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">73</td><td class="topic">Revision — percentages<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 10 consolidation</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">74</td><td class="topic">Control work No. 4 (percentages)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">75</td><td class="topic">Revision and work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">76</td><td class="topic">Ordering decimals; adding and subtracting decimals<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 4.1-4.2 Ordering, adding and subtracting decimals  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">77</td><td class="topic">Ordering decimals; adding and subtracting decimals<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 4.1-4.2 Ordering, adding and subtracting decimals  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">78</td><td class="topic">Multiplying and dividing decimals<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 4.3-4.4 Multiplying and dividing decimals  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">79</td><td class="topic">Multiplying and dividing decimals<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 4.3-4.4 Multiplying and dividing decimals  [CAMBRIDGE INSERT]</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">80</td><td class="topic">Recall — angles<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 5 Angles and constructions — entry</td></tr>
+<tr class="" data-f=""><td class="cnum num">81</td><td class="topic">Finding unknown angles in geometric figures</td><td class="cnum num">1</td><td class="link">S7 5.1-5.2 A sum of 360°; intersecting lines</td></tr>
+<tr class="" data-f=""><td class="cnum num">82</td><td class="topic">Finding unknown angles in geometric figures</td><td class="cnum num">1</td><td class="link">S7 5.1-5.2 A sum of 360°; intersecting lines</td></tr>
+<tr class="" data-f=""><td class="cnum num">83</td><td class="topic">Finding unknown angles in geometric figures</td><td class="cnum num">1</td><td class="link">S7 5.1-5.2 A sum of 360°; intersecting lines</td></tr>
+<tr class="" data-f=""><td class="cnum num">84</td><td class="topic">Finding unknown angles in geometric figures</td><td class="cnum num">1</td><td class="link">S7 5.1-5.2 A sum of 360°; intersecting lines</td></tr>
+<tr class="" data-f=""><td class="cnum num">85</td><td class="topic">Finding unknown angles in geometric figures</td><td class="cnum num">1</td><td class="link">S7 5.1-5.2 A sum of 360°; intersecting lines</td></tr>
+<tr class="" data-f=""><td class="cnum num">86</td><td class="topic">Finding unknown angles in geometric figures</td><td class="cnum num">1</td><td class="link">S7 5.1-5.2 A sum of 360°; intersecting lines</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">87</td><td class="topic">Control work No. 5 (angles)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">88</td><td class="topic">Think — problem task: angles in design<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 5.3 Drawing lines and quadrilaterals</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">89</td><td class="topic">Recall. The elements of a circle and of a disc<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 8.2 Circles and polygons</td></tr>
+<tr class="" data-f=""><td class="cnum num">90</td><td class="topic">The elements of a circle and of a disc</td><td class="cnum num">1</td><td class="link">S7 8.2 Circles and polygons</td></tr>
+<tr class="" data-f=""><td class="cnum num">91</td><td class="topic">The elements of a circle and of a disc</td><td class="cnum num">1</td><td class="link">S7 8.2 Circles and polygons</td></tr>
+<tr class="" data-f=""><td class="cnum num">92</td><td class="topic">The circumference of a circle</td><td class="cnum num">1</td><td class="link">S7 8.2 Circles and polygons</td></tr>
+<tr class="" data-f=""><td class="cnum num">93</td><td class="topic">The circumference of a circle</td><td class="cnum num">1</td><td class="link">S7 8.2 Circles and polygons</td></tr>
+<tr class="" data-f=""><td class="cnum num">94</td><td class="topic">The circumference of a circle</td><td class="cnum num">1</td><td class="link">S7 8.2 Circles and polygons</td></tr>
+<tr class="" data-f=""><td class="cnum num">95</td><td class="topic">The perimeter of a semicircle and of a quarter circle</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">96</td><td class="topic">The perimeter of a semicircle and of a quarter circle</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+</tbody></table></div></section>
+  <section class="quarter"><header class="qhead"><h3>III QUARTER</h3><span class="qhrs">60 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">97</td><td class="topic">The area of a circle</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">98</td><td class="topic">The area of a circle</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">99</td><td class="topic">The area of a circle</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">100</td><td class="topic">The area of a semicircle and of a quarter circle</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">101</td><td class="topic">The area of a semicircle and of a quarter circle</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">102</td><td class="topic">The area of a semicircle and of a quarter circle</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">103</td><td class="topic">The area and perimeter of compound figures</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">104</td><td class="topic">The area and perimeter of compound figures</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">105</td><td class="topic">The area and perimeter of compound figures</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">106</td><td class="topic">Think — problem task: compound figures<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 15 in context</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">107</td><td class="topic">Revision — the circle and its measures<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 8 and 15 consolidation</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">108</td><td class="topic">Revision — the circle and its measures<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 8 and 15 consolidation</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">109</td><td class="topic">Control work No. 6 (the circle)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">110</td><td class="topic">Revision and work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">111</td><td class="topic">Angles and constructions: intersecting lines and quadrilaterals<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 5.2-5.3 Intersecting lines; drawing lines and quadrilaterals  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">112</td><td class="topic">Angles and constructions: intersecting lines and quadrilaterals<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 5.2-5.3 Intersecting lines; drawing lines and quadrilaterals  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">113</td><td class="topic">Angles and constructions: intersecting lines and quadrilaterals<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 5.2-5.3 Intersecting lines; drawing lines and quadrilaterals  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">114</td><td class="topic">The symmetry of 2D shapes; congruent shapes<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 8.1, 8.3 Symmetry; recognising congruent shapes  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">115</td><td class="topic">The symmetry of 2D shapes; congruent shapes<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 8.1, 8.3 Symmetry; recognising congruent shapes  [CAMBRIDGE INSERT]</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">116</td><td class="topic">Recall — speed, distance and time<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — rates</td></tr>
+<tr class="" data-f=""><td class="cnum num">117</td><td class="topic">Speed</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — rates</td></tr>
+<tr class="" data-f=""><td class="cnum num">118</td><td class="topic">Speed</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — rates</td></tr>
+<tr class="" data-f=""><td class="cnum num">119</td><td class="topic">Speed</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — rates</td></tr>
+<tr class="" data-f=""><td class="cnum num">120</td><td class="topic">Finding speed, distance and time</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — rates</td></tr>
+<tr class="" data-f=""><td class="cnum num">121</td><td class="topic">Finding speed, distance and time</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — rates</td></tr>
+<tr class="" data-f=""><td class="cnum num">122</td><td class="topic">Finding speed, distance and time</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — rates</td></tr>
+<tr class="" data-f=""><td class="cnum num">123</td><td class="topic">Word problems on motion with two speeds</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — rates</td></tr>
+<tr class="" data-f=""><td class="cnum num">124</td><td class="topic">Word problems on motion with two speeds</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — rates</td></tr>
+<tr class="" data-f=""><td class="cnum num">125</td><td class="topic">Word problems on motion with two speeds</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — rates</td></tr>
+<tr class="" data-f=""><td class="cnum num">126</td><td class="topic">Average speed</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — rates</td></tr>
+<tr class="" data-f=""><td class="cnum num">127</td><td class="topic">Average speed</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — rates</td></tr>
+<tr class="" data-f=""><td class="cnum num">128</td><td class="topic">Average speed</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — rates</td></tr>
+<tr class="" data-f=""><td class="cnum num">129</td><td class="topic">Word problems on the motion of two bodies</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — rates</td></tr>
+<tr class="" data-f=""><td class="cnum num">130</td><td class="topic">Word problems on the motion of two bodies</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — rates</td></tr>
+<tr class="" data-f=""><td class="cnum num">131</td><td class="topic">Word problems on the motion of two bodies</td><td class="cnum num">1</td><td class="link">S7 12 Ratio and proportion — rates</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">132</td><td class="topic">Control work No. 7 (speed and motion)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">133</td><td class="topic">Think — problem task<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">Project 3 — Fraction averages  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">134</td><td class="topic">Ordering fractions; adding mixed numbers<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 7.1-7.2 Ordering fractions; adding mixed numbers  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">135</td><td class="topic">Ordering fractions; adding mixed numbers<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 7.1-7.2 Ordering fractions; adding mixed numbers  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">136</td><td class="topic">Ordering fractions; adding mixed numbers<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 7.1-7.2 Ordering fractions; adding mixed numbers  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">137</td><td class="topic">Generating sequences and finding the nth term<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 9 Sequences and functions  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">138</td><td class="topic">Generating sequences and finding the nth term<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 9 Sequences and functions  [CAMBRIDGE INSERT]</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">139</td><td class="topic">Recall — the cube and the cuboid<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume — entry</td></tr>
+<tr class="" data-f=""><td class="cnum num">140</td><td class="topic">Finding an edge of a cuboid</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">141</td><td class="topic">Finding an edge of a cuboid</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">142</td><td class="topic">Finding an edge of a cuboid</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">143</td><td class="topic">Finding the area of one face of a cube and of a cuboid</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">144</td><td class="topic">Finding the area of one face of a cube and of a cuboid</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">145</td><td class="topic">Finding the area of one face of a cube and of a cuboid</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">146</td><td class="topic">Word problems on volume</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">147</td><td class="topic">Word problems on volume</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">148</td><td class="topic">Word problems on volume</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="" data-f=""><td class="cnum num">149</td><td class="topic">Word problems on volume</td><td class="cnum num">1</td><td class="link">S7 15 Distance, area and volume</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">150</td><td class="topic">Think — problem task: volume in context<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 15 in context</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">151</td><td class="topic">Revision — mensuration of solids<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 15 consolidation</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">152</td><td class="topic">Revision — mensuration of solids<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 15 consolidation</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">153</td><td class="topic">Revision — mensuration of solids<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 15 consolidation</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">154</td><td class="topic">Revision — mensuration of solids<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 15 consolidation</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">155</td><td class="topic">Control work No. 8 (volume and surface)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">156</td><td class="topic">Revision and work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+</tbody></table></div></section>
+  <section class="quarter"><header class="qhead"><h3>IV QUARTER</h3><span class="qhrs">48 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge link / note</th></tr></thead><tbody>
+<tr class="reserve" data-f="reserve"><td class="cnum num">157</td><td class="topic">Recall — data handling. Announcement of the project topic<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 6 Collecting data — entry</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">158</td><td class="topic">Conducting an investigation; taking a sample<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 6.1-6.2 Conducting an investigation; taking a sample  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">159</td><td class="topic">Conducting an investigation; taking a sample<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 6.1-6.2 Conducting an investigation; taking a sample  [CAMBRIDGE INSERT]</td></tr>
+<tr class="" data-f=""><td class="cnum num">160</td><td class="topic">Representing data on a pie chart. Announcement of the project topic</td><td class="cnum num">1</td><td class="link">S7 16 Interpreting and discussing results</td></tr>
+<tr class="" data-f=""><td class="cnum num">161</td><td class="topic">Representing data on a pie chart</td><td class="cnum num">1</td><td class="link">S7 16 Interpreting and discussing results</td></tr>
+<tr class="" data-f=""><td class="cnum num">162</td><td class="topic">Representing data on a pie chart</td><td class="cnum num">1</td><td class="link">S7 16 Interpreting and discussing results</td></tr>
+<tr class="" data-f=""><td class="cnum num">163</td><td class="topic">Representing data on a pie chart</td><td class="cnum num">1</td><td class="link">S7 16 Interpreting and discussing results</td></tr>
+<tr class="" data-f=""><td class="cnum num">164</td><td class="topic">Reading and interpreting data from pie charts</td><td class="cnum num">1</td><td class="link">S7 16 Interpreting and discussing results</td></tr>
+<tr class="" data-f=""><td class="cnum num">165</td><td class="topic">Reading and interpreting data from pie charts</td><td class="cnum num">1</td><td class="link">S7 16 Interpreting and discussing results</td></tr>
+<tr class="" data-f=""><td class="cnum num">166</td><td class="topic">Reading and interpreting data from pie charts</td><td class="cnum num">1</td><td class="link">S7 16 Interpreting and discussing results</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">167</td><td class="topic">Control work No. 9 (data handling)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">168</td><td class="topic">Think — problem task: choosing a chart<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 16 Interpreting and discussing results</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">169</td><td class="topic">Plotting points and drawing graphs of relationships<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 11 Graphs  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">170</td><td class="topic">Plotting points and drawing graphs of relationships<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 11 Graphs  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">171</td><td class="topic">The probability scale; calculating and estimating probability<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 13 Probability  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">172</td><td class="topic">The probability scale; calculating and estimating probability<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 13 Probability  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">173</td><td class="topic">Reflection, rotation and translation on a grid<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 14 Position and transformation  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">174</td><td class="topic">Reflection, rotation and translation on a grid<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S7 14 Position and transformation  [CAMBRIDGE INSERT]</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">175</td><td class="topic">Recall — three-dimensional shapes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 8.4 3D shapes — entry</td></tr>
+<tr class="" data-f=""><td class="cnum num">176</td><td class="topic">The cone, the cylinder, the prism and the pyramid</td><td class="cnum num">1</td><td class="link">S7 8.4 3D shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">177</td><td class="topic">The cone, the cylinder, the prism and the pyramid</td><td class="cnum num">1</td><td class="link">S7 8.4 3D shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">178</td><td class="topic">The cone, the cylinder, the prism and the pyramid</td><td class="cnum num">1</td><td class="link">S7 8.4 3D shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">179</td><td class="topic">Building three-dimensional figures on an isometric grid</td><td class="cnum num">1</td><td class="link">S7 8.4 3D shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">180</td><td class="topic">Building three-dimensional figures on an isometric grid</td><td class="cnum num">1</td><td class="link">S7 8.4 3D shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">181</td><td class="topic">Building three-dimensional figures on an isometric grid</td><td class="cnum num">1</td><td class="link">S7 8.4 3D shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">182</td><td class="topic">Nets of three-dimensional figures</td><td class="cnum num">1</td><td class="link">S7 8.4 3D shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">183</td><td class="topic">Nets of three-dimensional figures</td><td class="cnum num">1</td><td class="link">S7 8.4 3D shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">184</td><td class="topic">Nets of three-dimensional figures</td><td class="cnum num">1</td><td class="link">S7 8.4 3D shapes</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">185</td><td class="topic">Revision — three-dimensional shapes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 8 consolidation</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">186</td><td class="topic">Revision — three-dimensional shapes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 8 consolidation</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">187</td><td class="topic">Revision — three-dimensional shapes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 8 consolidation</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">188</td><td class="topic">Revision — three-dimensional shapes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 8 consolidation</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">189</td><td class="topic">Control work No. 10 (three-dimensional shapes)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">190</td><td class="topic">Think — problem task: nets in context<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">S7 8.4 in context</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">191</td><td class="topic">General revision of the Grade 6 course<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Stage 7 whole-course review; Checkpoint practice papers</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">192</td><td class="topic">General revision of the Grade 6 course<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Stage 7 whole-course review; Checkpoint practice papers</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">193</td><td class="topic">General revision of the Grade 6 course<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Stage 7 whole-course review; Checkpoint practice papers</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">194</td><td class="topic">General revision of the Grade 6 course<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Stage 7 whole-course review; Checkpoint practice papers</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">195</td><td class="topic">General revision of the Grade 6 course<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Stage 7 whole-course review; Checkpoint practice papers</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">196</td><td class="topic">General revision of the Grade 6 course<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Stage 7 whole-course review; Checkpoint practice papers</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">197</td><td class="topic">General revision of the Grade 6 course<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Stage 7 whole-course review; Checkpoint practice papers</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">198</td><td class="topic">General revision of the Grade 6 course<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Stage 7 whole-course review; Checkpoint practice papers</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">199</td><td class="topic">General revision of the Grade 6 course<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Stage 7 whole-course review; Checkpoint practice papers</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">200</td><td class="topic">General revision of the Grade 6 course<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Stage 7 whole-course review; Checkpoint practice papers</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">201</td><td class="topic">General revision of the Grade 6 course<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Stage 7 whole-course review; Checkpoint practice papers</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">202</td><td class="topic">General revision of the Grade 6 course<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Stage 7 whole-course review; Checkpoint practice papers</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">203</td><td class="topic">Presentation and assessment of the project work<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Stage 7 project presentation</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">204</td><td class="topic">Presentation and assessment of the project work<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Stage 7 project presentation</td></tr>
+</tbody></table></div></section>
+</section>
+
+<section class="view" id="v-m7" role="tabpanel" aria-labelledby="t-m7" hidden>
+  <div class="viewhead">
+    <h2>Mathematics, Grade 7</h2>
+    <p>5 h / week · 170 hours · quarters 45 · 35 · 50 · 40</p>
+  </div>
+  <div class="filters" data-for="v-m7">
+    <span class="flabel">Show</span>
+    <button class="chip" aria-pressed="true" data-filter="all">All 170 lessons</button>
+    <button class="chip" aria-pressed="false" data-filter="cam">Cambridge inserts</button>
+    <button class="chip" aria-pressed="false" data-filter="test">Assessments</button>
+    <button class="chip" aria-pressed="false" data-filter="reserve">Reserve lessons</button>
+  </div>
+  <section class="quarter"><header class="qhead"><h3>I QUARTER</h3><span class="qhrs">45 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">1</td><td class="topic">The simplest geometric figures</td><td class="cnum num">1</td><td class="link">S8 5 Angles and constructions — points, lines and planes</td></tr>
+<tr class="" data-f=""><td class="cnum num">2</td><td class="topic">The simplest geometric figures</td><td class="cnum num">1</td><td class="link">S8 5 Angles and constructions — points, lines and planes</td></tr>
+<tr class="" data-f=""><td class="cnum num">3</td><td class="topic">The segment. Comparing and measuring segments</td><td class="cnum num">1</td><td class="link">S8 5 Angles and constructions</td></tr>
+<tr class="" data-f=""><td class="cnum num">4</td><td class="topic">The segment. Comparing and measuring segments</td><td class="cnum num">1</td><td class="link">S8 5 Angles and constructions</td></tr>
+<tr class="" data-f=""><td class="cnum num">5</td><td class="topic">The angle. Comparing and measuring angles</td><td class="cnum num">1</td><td class="link">S8 5 Angles and constructions</td></tr>
+<tr class="" data-f=""><td class="cnum num">6</td><td class="topic">The angle. Comparing and measuring angles</td><td class="cnum num">1</td><td class="link">S8 5 Angles and constructions</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">7</td><td class="topic">Practical exercises and applications. Check your knowledge<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S8 3.1-3.2 Multiplying and dividing by 0.1 and 0.01; rounding  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">8</td><td class="topic">Practical exercises and applications. Check your knowledge<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S8 3.1-3.2 Multiplying and dividing by 0.1 and 0.01; rounding  [CAMBRIDGE INSERT]</td></tr>
+<tr class="" data-f=""><td class="cnum num">9</td><td class="topic">Perpendicular lines</td><td class="cnum num">1</td><td class="link">S8 5.3 Constructions</td></tr>
+<tr class="" data-f=""><td class="cnum num">10</td><td class="topic">Perpendicular lines</td><td class="cnum num">1</td><td class="link">S8 5.3 Constructions</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">11</td><td class="topic">Practical exercises and applications. Check your knowledge<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S8 4.1-4.2 Ordering and multiplying decimals  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">12</td><td class="topic">Practical exercises and applications. Check your knowledge<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S8 4.1-4.2 Ordering and multiplying decimals  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">13</td><td class="topic">Control work No. 1 (basic geometric figures)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">14</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="" data-f=""><td class="cnum num">15</td><td class="topic">The idea of positive and negative numbers</td><td class="cnum num">1</td><td class="link">S8 1 Integers</td></tr>
+<tr class="" data-f=""><td class="cnum num">16</td><td class="topic">The idea of positive and negative numbers</td><td class="cnum num">1</td><td class="link">S8 1 Integers</td></tr>
+<tr class="" data-f=""><td class="cnum num">17</td><td class="topic">The idea of the integers</td><td class="cnum num">1</td><td class="link">S8 1.1 Factors, multiples and primes</td></tr>
+<tr class="" data-f=""><td class="cnum num">18</td><td class="topic">The idea of the integers</td><td class="cnum num">1</td><td class="link">S8 1.1 Factors, multiples and primes</td></tr>
+<tr class="" data-f=""><td class="cnum num">19</td><td class="topic">Positive and negative numbers on the coordinate line</td><td class="cnum num">1</td><td class="link">S8 1 Integers</td></tr>
+<tr class="" data-f=""><td class="cnum num">20</td><td class="topic">Positive and negative numbers on the coordinate line</td><td class="cnum num">1</td><td class="link">S8 1 Integers</td></tr>
+<tr class="" data-f=""><td class="cnum num">21</td><td class="topic">Opposite numbers. The modulus of a number</td><td class="cnum num">1</td><td class="link">S8 1 Integers</td></tr>
+<tr class="" data-f=""><td class="cnum num">22</td><td class="topic">Opposite numbers. The modulus of a number</td><td class="cnum num">1</td><td class="link">S8 1 Integers</td></tr>
+<tr class="" data-f=""><td class="cnum num">23</td><td class="topic">Comparing integers</td><td class="cnum num">1</td><td class="link">S8 1 Integers</td></tr>
+<tr class="" data-f=""><td class="cnum num">24</td><td class="topic">Comparing integers</td><td class="cnum num">1</td><td class="link">S8 1 Integers</td></tr>
+<tr class="" data-f=""><td class="cnum num">25</td><td class="topic">Addition of integers</td><td class="cnum num">1</td><td class="link">S8 1.2 Multiplying and dividing integers</td></tr>
+<tr class="" data-f=""><td class="cnum num">26</td><td class="topic">Addition of integers</td><td class="cnum num">1</td><td class="link">S8 1.2 Multiplying and dividing integers</td></tr>
+<tr class="" data-f=""><td class="cnum num">27</td><td class="topic">Subtraction of integers</td><td class="cnum num">1</td><td class="link">S8 1.2 Multiplying and dividing integers</td></tr>
+<tr class="" data-f=""><td class="cnum num">28</td><td class="topic">Subtraction of integers</td><td class="cnum num">1</td><td class="link">S8 1.2 Multiplying and dividing integers</td></tr>
+<tr class="" data-f=""><td class="cnum num">29</td><td class="topic">Multiplication of integers</td><td class="cnum num">1</td><td class="link">S8 1.2 Multiplying and dividing integers</td></tr>
+<tr class="" data-f=""><td class="cnum num">30</td><td class="topic">Multiplication of integers</td><td class="cnum num">1</td><td class="link">S8 1.2 Multiplying and dividing integers</td></tr>
+<tr class="" data-f=""><td class="cnum num">31</td><td class="topic">Division of integers</td><td class="cnum num">1</td><td class="link">S8 1.2 Multiplying and dividing integers</td></tr>
+<tr class="" data-f=""><td class="cnum num">32</td><td class="topic">Division of integers</td><td class="cnum num">1</td><td class="link">S8 1.2 Multiplying and dividing integers</td></tr>
+<tr class="" data-f=""><td class="cnum num">33</td><td class="topic">Problems on the four operations</td><td class="cnum num">1</td><td class="link">S8 1 Integers — problem solving</td></tr>
+<tr class="" data-f=""><td class="cnum num">34</td><td class="topic">Problems on the four operations</td><td class="cnum num">1</td><td class="link">S8 1 Integers — problem solving</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">35</td><td class="topic">Control work No. 2 (integers)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">36</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="" data-f=""><td class="cnum num">37</td><td class="topic">The idea of the rational numbers</td><td class="cnum num">1</td><td class="link">S8 7.1 Fractions and recurring decimals</td></tr>
+<tr class="" data-f=""><td class="cnum num">38</td><td class="topic">The idea of the rational numbers</td><td class="cnum num">1</td><td class="link">S8 7.1 Fractions and recurring decimals</td></tr>
+<tr class="" data-f=""><td class="cnum num">39</td><td class="topic">Addition of rational numbers</td><td class="cnum num">1</td><td class="link">S8 7 Fractions</td></tr>
+<tr class="" data-f=""><td class="cnum num">40</td><td class="topic">Addition of rational numbers</td><td class="cnum num">1</td><td class="link">S8 7 Fractions</td></tr>
+<tr class="" data-f=""><td class="cnum num">41</td><td class="topic">Subtraction of rational numbers</td><td class="cnum num">1</td><td class="link">S8 7.3 Subtracting mixed numbers</td></tr>
+<tr class="" data-f=""><td class="cnum num">42</td><td class="topic">Subtraction of rational numbers</td><td class="cnum num">1</td><td class="link">S8 7.3 Subtracting mixed numbers</td></tr>
+<tr class="" data-f=""><td class="cnum num">43</td><td class="topic">Addition and subtraction of rational numbers</td><td class="cnum num">1</td><td class="link">S8 7 Fractions — consolidation</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">44</td><td class="topic">Control work No. 3 (rational numbers)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">45</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+</tbody></table></div></section>
+  <section class="quarter"><header class="qhead"><h3>II QUARTER</h3><span class="qhrs">35 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">46</td><td class="topic">Triangles, their kinds and their elements</td><td class="cnum num">1</td><td class="link">S8 8.1 Quadrilaterals and polygons</td></tr>
+<tr class="" data-f=""><td class="cnum num">47</td><td class="topic">The first criterion of congruence of triangles</td><td class="cnum num">1</td><td class="link">S8 5 Angles and constructions</td></tr>
+<tr class="" data-f=""><td class="cnum num">48</td><td class="topic">The first criterion of congruence of triangles</td><td class="cnum num">1</td><td class="link">S8 5 Angles and constructions</td></tr>
+<tr class="" data-f=""><td class="cnum num">49</td><td class="topic">Properties of isosceles triangles</td><td class="cnum num">1</td><td class="link">S8 5.2 The exterior angle of a triangle</td></tr>
+<tr class="" data-f=""><td class="cnum num">50</td><td class="topic">Properties of isosceles triangles</td><td class="cnum num">1</td><td class="link">S8 5.2 The exterior angle of a triangle</td></tr>
+<tr class="" data-f=""><td class="cnum num">51</td><td class="topic">The second criterion of congruence of triangles</td><td class="cnum num">1</td><td class="link">S8 5 Angles and constructions</td></tr>
+<tr class="" data-f=""><td class="cnum num">52</td><td class="topic">The second criterion of congruence of triangles</td><td class="cnum num">1</td><td class="link">S8 5 Angles and constructions</td></tr>
+<tr class="" data-f=""><td class="cnum num">53</td><td class="topic">The third criterion of congruence of triangles</td><td class="cnum num">1</td><td class="link">S8 5 Angles and constructions</td></tr>
+<tr class="" data-f=""><td class="cnum num">54</td><td class="topic">The third criterion of congruence of triangles</td><td class="cnum num">1</td><td class="link">S8 5 Angles and constructions</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">55</td><td class="topic">Practical exercises and applications. Check your knowledge<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S8 14 Position and transformation — congruence on a grid  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">56</td><td class="topic">Control work No. 4 (congruence of triangles)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">57</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="" data-f=""><td class="cnum num">58</td><td class="topic">Algebraic expressions</td><td class="cnum num">1</td><td class="link">S8 2.1 Constructing expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">59</td><td class="topic">Rules for removing brackets. The coefficient</td><td class="cnum num">1</td><td class="link">S8 2.3 Expanding brackets</td></tr>
+<tr class="" data-f=""><td class="cnum num">60</td><td class="topic">Properties of the arithmetic operations</td><td class="cnum num">1</td><td class="link">S8 2.2 Using expressions and formulae</td></tr>
+<tr class="" data-f=""><td class="cnum num">61</td><td class="topic">Powers with a natural exponent</td><td class="cnum num">1</td><td class="link">S8 1.4 Indices</td></tr>
+<tr class="" data-f=""><td class="cnum num">62</td><td class="topic">Powers with a natural exponent</td><td class="cnum num">1</td><td class="link">S8 1.4 Indices</td></tr>
+<tr class="" data-f=""><td class="cnum num">63</td><td class="topic">Properties of powers with a natural exponent</td><td class="cnum num">1</td><td class="link">S8 1.4 Indices</td></tr>
+<tr class="" data-f=""><td class="cnum num">64</td><td class="topic">Properties of powers with a natural exponent</td><td class="cnum num">1</td><td class="link">S8 1.4 Indices</td></tr>
+<tr class="" data-f=""><td class="cnum num">65</td><td class="topic">The monomial and its standard form</td><td class="cnum num">1</td><td class="link">S8 2.1 Constructing expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">66</td><td class="topic">Multiplication and division of monomials</td><td class="cnum num">1</td><td class="link">S8 1.4 Indices; 2.3 Expanding brackets</td></tr>
+<tr class="" data-f=""><td class="cnum num">67</td><td class="topic">Multiplication and division of monomials</td><td class="cnum num">1</td><td class="link">S8 1.4 Indices; 2.3 Expanding brackets</td></tr>
+<tr class="" data-f=""><td class="cnum num">68</td><td class="topic">Polynomials</td><td class="cnum num">1</td><td class="link">S8 2.1 Constructing expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">69</td><td class="topic">Like terms and their collection</td><td class="cnum num">1</td><td class="link">S8 2.1 Constructing expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">70</td><td class="topic">Like terms and their collection</td><td class="cnum num">1</td><td class="link">S8 2.1 Constructing expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">71</td><td class="topic">Addition and subtraction of polynomials</td><td class="cnum num">1</td><td class="link">S8 2.3 Expanding brackets</td></tr>
+<tr class="" data-f=""><td class="cnum num">72</td><td class="topic">Addition and subtraction of polynomials</td><td class="cnum num">1</td><td class="link">S8 2.3 Expanding brackets</td></tr>
+<tr class="" data-f=""><td class="cnum num">73</td><td class="topic">Multiplication of polynomials</td><td class="cnum num">1</td><td class="link">S8 2.3 Expanding brackets</td></tr>
+<tr class="" data-f=""><td class="cnum num">74</td><td class="topic">Multiplication of polynomials</td><td class="cnum num">1</td><td class="link">S8 2.3 Expanding brackets</td></tr>
+<tr class="" data-f=""><td class="cnum num">75</td><td class="topic">Division of polynomials</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 8</td></tr>
+<tr class="" data-f=""><td class="cnum num">76</td><td class="topic">Division of polynomials</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 8</td></tr>
+<tr class="" data-f=""><td class="cnum num">77</td><td class="topic">Factorising polynomials</td><td class="cnum num">1</td><td class="link">S8 2.4 Factorising</td></tr>
+<tr class="" data-f=""><td class="cnum num">78</td><td class="topic">Factorising polynomials</td><td class="cnum num">1</td><td class="link">S8 2.4 Factorising</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">79</td><td class="topic">Control work No. 5 (polynomials)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">80</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+</tbody></table></div></section>
+  <section class="quarter"><header class="qhead"><h3>III QUARTER</h3><span class="qhrs">50 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">81</td><td class="topic">Parallel lines</td><td class="cnum num">1</td><td class="link">S8 5.1 Parallel lines</td></tr>
+<tr class="" data-f=""><td class="cnum num">82</td><td class="topic">The criterion for two lines to be parallel</td><td class="cnum num">1</td><td class="link">S8 5.1 Parallel lines</td></tr>
+<tr class="" data-f=""><td class="cnum num">83</td><td class="topic">The criterion for two lines to be parallel</td><td class="cnum num">1</td><td class="link">S8 5.1 Parallel lines</td></tr>
+<tr class="" data-f=""><td class="cnum num">84</td><td class="topic">Angles formed when two lines are cut by a transversal</td><td class="cnum num">1</td><td class="link">S8 5.1 Parallel lines</td></tr>
+<tr class="" data-f=""><td class="cnum num">85</td><td class="topic">Angles formed when two lines are cut by a transversal</td><td class="cnum num">1</td><td class="link">S8 5.1 Parallel lines</td></tr>
+<tr class="" data-f=""><td class="cnum num">86</td><td class="topic">The sum of the interior angles of a triangle</td><td class="cnum num">1</td><td class="link">S8 5.2 The exterior angle of a triangle</td></tr>
+<tr class="" data-f=""><td class="cnum num">87</td><td class="topic">The sum of the interior angles of a triangle</td><td class="cnum num">1</td><td class="link">S8 5.2 The exterior angle of a triangle</td></tr>
+<tr class="" data-f=""><td class="cnum num">88</td><td class="topic">Right-angled triangles</td><td class="cnum num">1</td><td class="link">S8 5.2 The exterior angle of a triangle</td></tr>
+<tr class="" data-f=""><td class="cnum num">89</td><td class="topic">Right-angled triangles</td><td class="cnum num">1</td><td class="link">S8 5.2 The exterior angle of a triangle</td></tr>
+<tr class="" data-f=""><td class="cnum num">90</td><td class="topic">The property of the bisector of an angle</td><td class="cnum num">1</td><td class="link">S8 5.3 Constructions</td></tr>
+<tr class="" data-f=""><td class="cnum num">91</td><td class="topic">The property of the bisector of an angle</td><td class="cnum num">1</td><td class="link">S8 5.3 Constructions</td></tr>
+<tr class="" data-f=""><td class="cnum num">92</td><td class="topic">Relations between the sides and the angles of a triangle</td><td class="cnum num">1</td><td class="link">S8 5 Angles and constructions</td></tr>
+<tr class="" data-f=""><td class="cnum num">93</td><td class="topic">Relations between the sides and the angles of a triangle</td><td class="cnum num">1</td><td class="link">S8 5 Angles and constructions</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">94</td><td class="topic">Practical exercises and applications. Check your knowledge<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S8 15 Distance, area and volume — area of triangles and quadrilaterals  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">95</td><td class="topic">Practical exercises and applications. Check your knowledge<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S8 15 Distance, area and volume — area of triangles and quadrilaterals  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">96</td><td class="topic">Control work No. 6 (parallel lines and angles of a triangle)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">97</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="" data-f=""><td class="cnum num">98</td><td class="topic">The square of a sum and of a difference</td><td class="cnum num">1</td><td class="link">S8 2.3 Expanding brackets</td></tr>
+<tr class="" data-f=""><td class="cnum num">99</td><td class="topic">The square of a sum and of a difference</td><td class="cnum num">1</td><td class="link">S8 2.3 Expanding brackets</td></tr>
+<tr class="" data-f=""><td class="cnum num">100</td><td class="topic">The difference of two squares</td><td class="cnum num">1</td><td class="link">S8 2.4 Factorising</td></tr>
+<tr class="" data-f=""><td class="cnum num">101</td><td class="topic">The difference of two squares</td><td class="cnum num">1</td><td class="link">S8 2.4 Factorising</td></tr>
+<tr class="" data-f=""><td class="cnum num">102</td><td class="topic">The cube of a sum. The cube of a difference</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 8</td></tr>
+<tr class="" data-f=""><td class="cnum num">103</td><td class="topic">The cube of a sum. The cube of a difference</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 8</td></tr>
+<tr class="" data-f=""><td class="cnum num">104</td><td class="topic">The difference and the sum of two cubes</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 8</td></tr>
+<tr class="" data-f=""><td class="cnum num">105</td><td class="topic">The difference and the sum of two cubes</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 8</td></tr>
+<tr class="" data-f=""><td class="cnum num">106</td><td class="topic">Methods of factorising</td><td class="cnum num">1</td><td class="link">S8 2.4 Factorising</td></tr>
+<tr class="" data-f=""><td class="cnum num">107</td><td class="topic">Methods of factorising</td><td class="cnum num">1</td><td class="link">S8 2.4 Factorising</td></tr>
+<tr class="" data-f=""><td class="cnum num">108</td><td class="topic">Applying the abridged multiplication formulae</td><td class="cnum num">1</td><td class="link">S8 2.4 Factorising</td></tr>
+<tr class="" data-f=""><td class="cnum num">109</td><td class="topic">Applying the abridged multiplication formulae</td><td class="cnum num">1</td><td class="link">S8 2.4 Factorising</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">110</td><td class="topic">Control work No. 7 (abridged multiplication formulae)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">111</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="" data-f=""><td class="cnum num">112</td><td class="topic">The algebraic fraction. Cancelling fractions</td><td class="cnum num">1</td><td class="link">S8 7 Fractions — algebraic extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">113</td><td class="topic">The algebraic fraction. Cancelling fractions</td><td class="cnum num">1</td><td class="link">S8 7 Fractions — algebraic extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">114</td><td class="topic">Reducing algebraic fractions to a common denominator</td><td class="cnum num">1</td><td class="link">S8 7 Fractions — algebraic extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">115</td><td class="topic">Reducing algebraic fractions to a common denominator</td><td class="cnum num">1</td><td class="link">S8 7 Fractions — algebraic extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">116</td><td class="topic">Addition and subtraction of algebraic fractions</td><td class="cnum num">1</td><td class="link">S8 7 Fractions — algebraic extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">117</td><td class="topic">Addition and subtraction of algebraic fractions</td><td class="cnum num">1</td><td class="link">S8 7 Fractions — algebraic extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">118</td><td class="topic">Multiplication and division of algebraic fractions</td><td class="cnum num">1</td><td class="link">S8 7.4-7.5 Multiplying and dividing with fractions</td></tr>
+<tr class="" data-f=""><td class="cnum num">119</td><td class="topic">Multiplication and division of algebraic fractions</td><td class="cnum num">1</td><td class="link">S8 7.4-7.5 Multiplying and dividing with fractions</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">120</td><td class="topic">Control work No. 8 (algebraic fractions)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">121</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="" data-f=""><td class="cnum num">122</td><td class="topic">The equation and its root</td><td class="cnum num">1</td><td class="link">S8 2.5 Constructing and solving equations</td></tr>
+<tr class="" data-f=""><td class="cnum num">123</td><td class="topic">Linear equations with one unknown</td><td class="cnum num">1</td><td class="link">S8 2.5 Constructing and solving equations</td></tr>
+<tr class="" data-f=""><td class="cnum num">124</td><td class="topic">Linear equations with one unknown</td><td class="cnum num">1</td><td class="link">S8 2.5 Constructing and solving equations</td></tr>
+<tr class="" data-f=""><td class="cnum num">125</td><td class="topic">Al-Khwarizmi’s method of solving equations</td><td class="cnum num">1</td><td class="link">S8 2.5 Constructing and solving equations — historical</td></tr>
+<tr class="" data-f=""><td class="cnum num">126</td><td class="topic">Al-Khwarizmi’s method of solving equations</td><td class="cnum num">1</td><td class="link">S8 2.5 Constructing and solving equations — historical</td></tr>
+<tr class="" data-f=""><td class="cnum num">127</td><td class="topic">Solving problems with the help of equations</td><td class="cnum num">1</td><td class="link">S8 2.5 Constructing and solving equations</td></tr>
+<tr class="" data-f=""><td class="cnum num">128</td><td class="topic">Solving problems with the help of equations</td><td class="cnum num">1</td><td class="link">S8 2.5 Constructing and solving equations</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">129</td><td class="topic">Control work No. 9 (linear equations)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">130</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+</tbody></table></div></section>
+  <section class="quarter"><header class="qhead"><h3>IV QUARTER</h3><span class="qhrs">40 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge link / note</th></tr></thead><tbody>
+<tr class="cam" data-f="cam"><td class="cnum num">131</td><td class="topic">Practical exercises and applications. Check your knowledge<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S8 10 Percentages — percentage change and simple interest  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">132</td><td class="topic">Practical exercises and applications. Check your knowledge<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S8 10 Percentages — percentage change and simple interest  [CAMBRIDGE INSERT]</td></tr>
+<tr class="" data-f=""><td class="cnum num">133</td><td class="topic">Construction problems with compasses and a straightedge</td><td class="cnum num">1</td><td class="link">S8 5.3 Constructions</td></tr>
+<tr class="" data-f=""><td class="cnum num">134</td><td class="topic">Construction problems with compasses and a straightedge</td><td class="cnum num">1</td><td class="link">S8 5.3 Constructions</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">135</td><td class="topic">Practical exercises and applications. Check your knowledge<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S8 8.2 The circumference of a circle  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">136</td><td class="topic">Practical exercises and applications. Check your knowledge<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S8 8.2 The circumference of a circle  [CAMBRIDGE INSERT]</td></tr>
+<tr class="" data-f=""><td class="cnum num">137</td><td class="topic">The Cartesian coordinate system</td><td class="cnum num">1</td><td class="link">S8 11 Graphs</td></tr>
+<tr class="" data-f=""><td class="cnum num">138</td><td class="topic">The Cartesian coordinate system</td><td class="cnum num">1</td><td class="link">S8 11 Graphs</td></tr>
+<tr class="" data-f=""><td class="cnum num">139</td><td class="topic">The idea of a function</td><td class="cnum num">1</td><td class="link">S8 9.4 Representing simple functions</td></tr>
+<tr class="" data-f=""><td class="cnum num">140</td><td class="topic">The idea of a function</td><td class="cnum num">1</td><td class="link">S8 9.4 Representing simple functions</td></tr>
+<tr class="" data-f=""><td class="cnum num">141</td><td class="topic">The linear function</td><td class="cnum num">1</td><td class="link">S8 9.2-9.3 Finding rules for sequences; using the nth term</td></tr>
+<tr class="" data-f=""><td class="cnum num">142</td><td class="topic">The linear function</td><td class="cnum num">1</td><td class="link">S8 9.2-9.3 Finding rules for sequences; using the nth term</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">143</td><td class="topic">Control work No. 10 (functions and graphs)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">144</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="" data-f=""><td class="cnum num">145</td><td class="topic">Systems of linear equations</td><td class="cnum num">1</td><td class="link">S8 2.5 Constructing and solving equations — extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">146</td><td class="topic">Systems of linear equations</td><td class="cnum num">1</td><td class="link">S8 2.5 Constructing and solving equations — extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">147</td><td class="topic">Methods of solving a system of linear equations</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 8</td></tr>
+<tr class="" data-f=""><td class="cnum num">148</td><td class="topic">Methods of solving a system of linear equations</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 8</td></tr>
+<tr class="" data-f=""><td class="cnum num">149</td><td class="topic">Methods of solving a system of linear equations</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 8</td></tr>
+<tr class="" data-f=""><td class="cnum num">150</td><td class="topic">Solving problems with the help of systems of linear equations</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 8</td></tr>
+<tr class="" data-f=""><td class="cnum num">151</td><td class="topic">Solving problems with the help of systems of linear equations</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 8</td></tr>
+<tr class="" data-f=""><td class="cnum num">152</td><td class="topic">Solving problems with the help of systems of linear equations</td><td class="cnum num">1</td><td class="link">Extension beyond Stage 8</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">153</td><td class="topic">Control work No. 11 (systems of linear equations)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">154</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="" data-f=""><td class="cnum num">155</td><td class="topic">The basic rules of combinatorics</td><td class="cnum num">1</td><td class="link">S8 13 Probability — counting outcomes</td></tr>
+<tr class="" data-f=""><td class="cnum num">156</td><td class="topic">The basic rules of combinatorics</td><td class="cnum num">1</td><td class="link">S8 13 Probability — counting outcomes</td></tr>
+<tr class="" data-f=""><td class="cnum num">157</td><td class="topic">The basic rules of combinatorics</td><td class="cnum num">1</td><td class="link">S8 13 Probability — counting outcomes</td></tr>
+<tr class="" data-f=""><td class="cnum num">158</td><td class="topic">Kinds of combinatorial problem</td><td class="cnum num">1</td><td class="link">S8 13 Probability — counting outcomes</td></tr>
+<tr class="" data-f=""><td class="cnum num">159</td><td class="topic">Kinds of combinatorial problem</td><td class="cnum num">1</td><td class="link">S8 13 Probability — counting outcomes</td></tr>
+<tr class="" data-f=""><td class="cnum num">160</td><td class="topic">Kinds of combinatorial problem</td><td class="cnum num">1</td><td class="link">S8 13 Probability — counting outcomes</td></tr>
+<tr class="" data-f=""><td class="cnum num">161</td><td class="topic">Methods of solving combinatorial problems</td><td class="cnum num">1</td><td class="link">S8 13 Probability — counting outcomes</td></tr>
+<tr class="" data-f=""><td class="cnum num">162</td><td class="topic">Methods of solving combinatorial problems</td><td class="cnum num">1</td><td class="link">S8 13 Probability — counting outcomes</td></tr>
+<tr class="" data-f=""><td class="cnum num">163</td><td class="topic">Methods of solving combinatorial problems</td><td class="cnum num">1</td><td class="link">S8 13 Probability — counting outcomes</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">164</td><td class="topic">Practical exercises and applications. Check your knowledge<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S8 13 Probability — experimental and theoretical  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">165</td><td class="topic">Practical exercises and applications. Check your knowledge<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S8 6.1-6.2 Data collection and sampling  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">166</td><td class="topic">Practical exercises and applications. Check your knowledge<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S8 16 Interpreting and discussing results  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">167</td><td class="topic">Practical exercises and applications. Check your knowledge<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S8 12 Ratio and proportion  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">168</td><td class="topic">Practical exercises and applications. Check your knowledge<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">S8 15 Distance, area and volume — surface area and volume of prisms  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">169</td><td class="topic">Annual control work<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">170</td><td class="topic">Work on mistakes; the Grade 8 preview<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+</tbody></table></div></section>
+</section>
+
+<section class="view" id="v-alg9" role="tabpanel" aria-labelledby="t-alg9" hidden>
+  <div class="viewhead">
+    <h2>Algebra, Grade 9</h2>
+    <p>3 h / week · 102 hours · quarters 27 · 21 · 30 · 24</p>
+  </div>
+  <div class="filters" data-for="v-alg9">
+    <span class="flabel">Show</span>
+    <button class="chip" aria-pressed="true" data-filter="all">All 102 lessons</button>
+    <button class="chip" aria-pressed="false" data-filter="cam">Cambridge inserts</button>
+    <button class="chip" aria-pressed="false" data-filter="test">Assessments</button>
+    <button class="chip" aria-pressed="false" data-filter="reserve">Reserve lessons</button>
+  </div>
+  <section class="quarter"><header class="qhead"><h3>I QUARTER</h3><span class="qhrs">27 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge link / note</th></tr></thead><tbody>
+<tr class="test" data-f="test"><td class="cnum num">1</td><td class="topic">Revision of the Grade 8 course. Entry diagnostic test<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">IGX 1-6 audit of prior knowledge</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">2</td><td class="topic">Revision of the Grade 8 course. Entry diagnostic test<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">IGX 1-6 audit of prior knowledge</td></tr>
+<tr class="" data-f=""><td class="cnum num">3</td><td class="topic">Definition of the quadratic function</td><td class="cnum num">1</td><td class="link">IGX 10.2 Quadratic (and other) expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">4</td><td class="topic">The function y = x²</td><td class="cnum num">1</td><td class="link">IGX 10.2 Quadratic (and other) expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">5</td><td class="topic">The function y = ax²</td><td class="cnum num">1</td><td class="link">IGX 10.2 Quadratic (and other) expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">6</td><td class="topic">The function y = ax² + bx + c</td><td class="cnum num">1</td><td class="link">IGX 10.2 Quadratic (and other) expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">7</td><td class="topic">Drawing the graph of a quadratic function</td><td class="cnum num">1</td><td class="link">IGX 10.2 Quadratic (and other) expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">8</td><td class="topic">Drawing the graph of a quadratic function</td><td class="cnum num">1</td><td class="link">IGX 10.2 Quadratic (and other) expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">9</td><td class="topic">The quadratic inequality and its solution</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">10</td><td class="topic">The quadratic inequality and its solution</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">11</td><td class="topic">Solving a quadratic inequality from the graph of the quadratic function</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">12</td><td class="topic">Solving a quadratic inequality from the graph of the quadratic function</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">13</td><td class="topic">The method of intervals</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">14</td><td class="topic">The method of intervals</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">15</td><td class="topic">Control work No. 1 (the quadratic function)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">16</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="" data-f=""><td class="cnum num">17</td><td class="topic">The domain of a function</td><td class="cnum num">1</td><td class="link">IGX 10.1 Straight lines — domain and range</td></tr>
+<tr class="" data-f=""><td class="cnum num">18</td><td class="topic">The domain of a function</td><td class="cnum num">1</td><td class="link">IGX 10.1 Straight lines — domain and range</td></tr>
+<tr class="" data-f=""><td class="cnum num">19</td><td class="topic">Increasing and decreasing functions</td><td class="cnum num">1</td><td class="link">IGX 10.1 Straight lines</td></tr>
+<tr class="" data-f=""><td class="cnum num">20</td><td class="topic">Even and odd functions</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">21</td><td class="topic">Even and odd functions</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">22</td><td class="topic">Inequalities and equations containing a power</td><td class="cnum num">1</td><td class="link">IGX 2.5 Indices</td></tr>
+<tr class="" data-f=""><td class="cnum num">23</td><td class="topic">Inequalities and equations containing a power</td><td class="cnum num">1</td><td class="link">IGX 2.5 Indices</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">24</td><td class="topic">Exercises to the chapter<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">IGX 9.2 Rational and irrational numbers  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">25</td><td class="topic">Exercises to the chapter<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">IGX 9.2 Rational and irrational numbers  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">26</td><td class="topic">Control work No. 2 (properties of functions)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">27</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+</tbody></table></div></section>
+  <section class="quarter"><header class="qhead"><h3>II QUARTER</h3><span class="qhrs">21 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">28</td><td class="topic">Solving the simplest systems containing an equation of the second degree</td><td class="cnum num">1</td><td class="link">IGX 10.2 Quadratic (and other) expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">29</td><td class="topic">Solving the simplest systems containing an equation of the second degree</td><td class="cnum num">1</td><td class="link">IGX 10.2 Quadratic (and other) expressions</td></tr>
+<tr class="" data-f=""><td class="cnum num">30</td><td class="topic">Various methods of solving systems of equations</td><td class="cnum num">1</td><td class="link">IGX 6.2 Solving linear equations — extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">31</td><td class="topic">Various methods of solving systems of equations</td><td class="cnum num">1</td><td class="link">IGX 6.2 Solving linear equations — extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">32</td><td class="topic">Systems of second-degree inequalities with one unknown</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">33</td><td class="topic">Systems of second-degree inequalities with one unknown</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">34</td><td class="topic">Proving the simplest inequalities</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">35</td><td class="topic">Proving the simplest inequalities</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">36</td><td class="topic">Exercises to the chapter<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">IGX 9.3 Sets and Venn diagrams  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">37</td><td class="topic">Control work No. 3 (systems of equations and inequalities)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">38</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="" data-f=""><td class="cnum num">39</td><td class="topic">The radian measure of an angle</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">40</td><td class="topic">The radian measure of an angle</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">41</td><td class="topic">Rotation of a point about the origin</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">42</td><td class="topic">Rotation of a point about the origin</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">43</td><td class="topic">Definition of the sine, cosine, tangent and cotangent of an angle</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">44</td><td class="topic">Definition of the sine, cosine, tangent and cotangent of an angle</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">45</td><td class="topic">The signs of the sine, cosine, tangent and cotangent</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">46</td><td class="topic">The signs of the sine, cosine, tangent and cotangent</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">47</td><td class="topic">Control work No. 4 (introduction to trigonometry)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">48</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+</tbody></table></div></section>
+  <section class="quarter"><header class="qhead"><h3>III QUARTER</h3><span class="qhrs">30 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">49</td><td class="topic">The relation between the sine, cosine, tangent and cotangent of one angle</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">50</td><td class="topic">The relation between the sine, cosine, tangent and cotangent of one angle</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">51</td><td class="topic">Trigonometric identities</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">52</td><td class="topic">Trigonometric identities</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">53</td><td class="topic">Trigonometric identities</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">54</td><td class="topic">The sine, cosine, tangent and cotangent of the angles α and −α</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">55</td><td class="topic">The sine, cosine, tangent and cotangent of the angles α and −α</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">56</td><td class="topic">The addition formulae</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">57</td><td class="topic">The addition formulae</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">58</td><td class="topic">The sine and the cosine of a double angle</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">59</td><td class="topic">The sine and the cosine of a double angle</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">60</td><td class="topic">The reduction formulae</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">61</td><td class="topic">The reduction formulae</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">62</td><td class="topic">The sum and difference of sines. The sum and difference of cosines</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">63</td><td class="topic">The sum and difference of sines. The sum and difference of cosines</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">64</td><td class="topic">Exercises to the chapter<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">IGX 5.4-5.5 Standard form and the calculator  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">65</td><td class="topic">Practical and cross-curricular problems<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">IGX 7.3 Surface areas and volumes of solids  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">66</td><td class="topic">Control work No. 5 (trigonometric identities)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">67</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="" data-f=""><td class="cnum num">68</td><td class="topic">Numerical sequences and the ways of defining them</td><td class="cnum num">1</td><td class="link">IGX 9.1 Sequences</td></tr>
+<tr class="" data-f=""><td class="cnum num">69</td><td class="topic">Numerical sequences and the ways of defining them</td><td class="cnum num">1</td><td class="link">IGX 9.1 Sequences</td></tr>
+<tr class="" data-f=""><td class="cnum num">70</td><td class="topic">The arithmetic progression</td><td class="cnum num">1</td><td class="link">IGX 9.1 Sequences</td></tr>
+<tr class="" data-f=""><td class="cnum num">71</td><td class="topic">The arithmetic progression</td><td class="cnum num">1</td><td class="link">IGX 9.1 Sequences</td></tr>
+<tr class="" data-f=""><td class="cnum num">72</td><td class="topic">The arithmetic progression</td><td class="cnum num">1</td><td class="link">IGX 9.1 Sequences</td></tr>
+<tr class="" data-f=""><td class="cnum num">73</td><td class="topic">The sum of the first n terms of an arithmetic progression</td><td class="cnum num">1</td><td class="link">IGX 9.1 Sequences</td></tr>
+<tr class="" data-f=""><td class="cnum num">74</td><td class="topic">The sum of the first n terms of an arithmetic progression</td><td class="cnum num">1</td><td class="link">IGX 9.1 Sequences</td></tr>
+<tr class="" data-f=""><td class="cnum num">75</td><td class="topic">The sum of the first n terms of an arithmetic progression</td><td class="cnum num">1</td><td class="link">IGX 9.1 Sequences</td></tr>
+<tr class="" data-f=""><td class="cnum num">76</td><td class="topic">The sum of the first n terms of an arithmetic progression</td><td class="cnum num">1</td><td class="link">IGX 9.1 Sequences</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">77</td><td class="topic">Control work No. 6 (arithmetic progression)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">78</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+</tbody></table></div></section>
+  <section class="quarter"><header class="qhead"><h3>IV QUARTER</h3><span class="qhrs">24 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">79</td><td class="topic">The geometric progression</td><td class="cnum num">1</td><td class="link">IGX 9.1 Sequences</td></tr>
+<tr class="" data-f=""><td class="cnum num">80</td><td class="topic">The geometric progression</td><td class="cnum num">1</td><td class="link">IGX 9.1 Sequences</td></tr>
+<tr class="" data-f=""><td class="cnum num">81</td><td class="topic">The sum of the first n terms of a geometric progression</td><td class="cnum num">1</td><td class="link">IGX 9.1 Sequences</td></tr>
+<tr class="" data-f=""><td class="cnum num">82</td><td class="topic">The sum of the first n terms of a geometric progression</td><td class="cnum num">1</td><td class="link">IGX 9.1 Sequences</td></tr>
+<tr class="" data-f=""><td class="cnum num">83</td><td class="topic">The infinite decreasing geometric progression</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">84</td><td class="topic">The infinite decreasing geometric progression</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">85</td><td class="topic">Exercises to the chapter<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">IGX 9.2 Rational and irrational numbers — recurring decimals  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">86</td><td class="topic">Practical and cross-curricular problems<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">IGX 6.4 Rearrangement of a formula  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">87</td><td class="topic">Control work No. 7 (geometric progression)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">88</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="" data-f=""><td class="cnum num">89</td><td class="topic">Events</td><td class="cnum num">1</td><td class="link">IGX 8.1 Basic probability</td></tr>
+<tr class="" data-f=""><td class="cnum num">90</td><td class="topic">Events</td><td class="cnum num">1</td><td class="link">IGX 8.1 Basic probability</td></tr>
+<tr class="" data-f=""><td class="cnum num">91</td><td class="topic">The probability of an event</td><td class="cnum num">1</td><td class="link">IGX 8.2 Theoretical probability</td></tr>
+<tr class="" data-f=""><td class="cnum num">92</td><td class="topic">The probability of an event</td><td class="cnum num">1</td><td class="link">IGX 8.2 Theoretical probability</td></tr>
+<tr class="" data-f=""><td class="cnum num">93</td><td class="topic">The relative frequency of a random event</td><td class="cnum num">1</td><td class="link">IGX 8.1 Basic probability</td></tr>
+<tr class="" data-f=""><td class="cnum num">94</td><td class="topic">Random variables</td><td class="cnum num">1</td><td class="link">IGX 8.4 Possibility diagrams</td></tr>
+<tr class="" data-f=""><td class="cnum num">95</td><td class="topic">Random variables</td><td class="cnum num">1</td><td class="link">IGX 8.4 Possibility diagrams</td></tr>
+<tr class="" data-f=""><td class="cnum num">96</td><td class="topic">Numerical characteristics of random variables</td><td class="cnum num">1</td><td class="link">IGX 12.1 Different types of average</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">97</td><td class="topic">Exercises to the chapter<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">IGX 8.3, 8.5 Complementary events; independent and mutually exclusive events  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">98</td><td class="topic">Practical and cross-curricular problems<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">IGX 12.5-12.6 Percentiles, quartiles and box-and-whisker plots  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">99</td><td class="topic">Annual control work<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">100</td><td class="topic">Work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">101</td><td class="topic">Annual revision; the Grade 10 preview<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">IGX 1-12 review; Pure Mathematics 1 preview</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">102</td><td class="topic">Annual revision; the Grade 10 preview<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">IGX 1-12 review; Pure Mathematics 1 preview</td></tr>
+</tbody></table></div></section>
+</section>
+
+<section class="view" id="v-geo9" role="tabpanel" aria-labelledby="t-geo9" hidden>
+  <div class="viewhead">
+    <h2>Geometry, Grade 9</h2>
+    <p>2 h / week · 68 hours · quarters 18 · 14 · 20 · 16</p>
+  </div>
+  <div class="filters" data-for="v-geo9">
+    <span class="flabel">Show</span>
+    <button class="chip" aria-pressed="true" data-filter="all">All 68 lessons</button>
+    <button class="chip" aria-pressed="false" data-filter="cam">Cambridge inserts</button>
+    <button class="chip" aria-pressed="false" data-filter="test">Assessments</button>
+    <button class="chip" aria-pressed="false" data-filter="reserve">Reserve lessons</button>
+  </div>
+  <section class="quarter"><header class="qhead"><h3>I QUARTER</h3><span class="qhrs">18 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge link / note</th></tr></thead><tbody>
+<tr class="test" data-f="test"><td class="cnum num">1</td><td class="topic">Revision of the Grade 8 course. Entry diagnostic test<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">IGX 3, 11 audit of prior knowledge</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">2</td><td class="topic">Revision of the Grade 8 course. Entry diagnostic test<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">IGX 3, 11 audit of prior knowledge</td></tr>
+<tr class="" data-f=""><td class="cnum num">3</td><td class="topic">Similarity of polygons</td><td class="cnum num">1</td><td class="link">IGX 11.3 Understanding similar shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">4</td><td class="topic">Similar triangles and their properties</td><td class="cnum num">1</td><td class="link">IGX 11.2 Understanding similar triangles</td></tr>
+<tr class="" data-f=""><td class="cnum num">5</td><td class="topic">The first criterion of similarity of triangles</td><td class="cnum num">1</td><td class="link">IGX 11.2 Understanding similar triangles</td></tr>
+<tr class="" data-f=""><td class="cnum num">6</td><td class="topic">The second criterion of similarity of triangles</td><td class="cnum num">1</td><td class="link">IGX 11.2 Understanding similar triangles</td></tr>
+<tr class="" data-f=""><td class="cnum num">7</td><td class="topic">The third criterion of similarity of triangles</td><td class="cnum num">1</td><td class="link">IGX 11.2 Understanding similar triangles</td></tr>
+<tr class="" data-f=""><td class="cnum num">8</td><td class="topic">Criteria of similarity of right-angled triangles</td><td class="cnum num">1</td><td class="link">IGX 11.1-11.2 Pythagoras’ theorem; similar triangles</td></tr>
+<tr class="" data-f=""><td class="cnum num">9</td><td class="topic">Applying the criteria of similarity to problems on proof</td><td class="cnum num">1</td><td class="link">IGX 11.4 Understanding congruence</td></tr>
+<tr class="" data-f=""><td class="cnum num">10</td><td class="topic">Transformations of the plane. Movement and translation</td><td class="cnum num">1</td><td class="link">IGX 3.1 Lines and angles — extension</td></tr>
+<tr class="" data-f=""><td class="cnum num">11</td><td class="topic">Axial symmetry</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">12</td><td class="topic">Central symmetry and rotation</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">13</td><td class="topic">Similarity of geometric figures</td><td class="cnum num">1</td><td class="link">IGX 11.3 Understanding similar shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">14</td><td class="topic">Properties of similar polygons</td><td class="cnum num">1</td><td class="link">IGX 11.3 Understanding similar shapes</td></tr>
+<tr class="" data-f=""><td class="cnum num">15</td><td class="topic">Homothety and similarity</td><td class="cnum num">1</td><td class="link">IGX 11.3 Understanding similar shapes</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">16</td><td class="topic">Problems on the revision of the chapter<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">IGX 11.4 Understanding congruence  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">17</td><td class="topic">Control work No. 1 (similarity)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">18</td><td class="topic">Revision and work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+</tbody></table></div></section>
+  <section class="quarter"><header class="qhead"><h3>II QUARTER</h3><span class="qhrs">14 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">19</td><td class="topic">The sine, cosine, tangent and cotangent of angles from 0° to 180°</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">20</td><td class="topic">The sine, cosine, tangent and cotangent of angles from 0° to 180°</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">21</td><td class="topic">Computing the area of a triangle using the sine of an angle</td><td class="cnum num">1</td><td class="link">IGX 7.1 Perimeter and area in two dimensions</td></tr>
+<tr class="" data-f=""><td class="cnum num">22</td><td class="topic">The sine rule</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">23</td><td class="topic">The cosine rule</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">24</td><td class="topic">Some applications of the sine rule and the cosine rule</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">25</td><td class="topic">Some applications of the sine rule and the cosine rule</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">26</td><td class="topic">The angle between two vectors and the scalar product of two vectors</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">27</td><td class="topic">The angle between two vectors and the scalar product of two vectors</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">28</td><td class="topic">Solving triangles</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="" data-f=""><td class="cnum num">29</td><td class="topic">Solving triangles</td><td class="cnum num">1</td><td class="link">Extension beyond IGX</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">30</td><td class="topic">Problems on the revision of the chapter<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">IGX 3.2 Triangles  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">31</td><td class="topic">Control work No. 2 (solving triangles)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">32</td><td class="topic">Revision and work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+</tbody></table></div></section>
+  <section class="quarter"><header class="qhead"><h3>III QUARTER</h3><span class="qhrs">20 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">33</td><td class="topic">The inscribed polygon</td><td class="cnum num">1</td><td class="link">IGX 3.5 Circles</td></tr>
+<tr class="" data-f=""><td class="cnum num">34</td><td class="topic">The inscribed polygon</td><td class="cnum num">1</td><td class="link">IGX 3.5 Circles</td></tr>
+<tr class="" data-f=""><td class="cnum num">35</td><td class="topic">The circumscribed polygon</td><td class="cnum num">1</td><td class="link">IGX 3.5 Circles</td></tr>
+<tr class="" data-f=""><td class="cnum num">36</td><td class="topic">The circumscribed polygon</td><td class="cnum num">1</td><td class="link">IGX 3.5 Circles</td></tr>
+<tr class="" data-f=""><td class="cnum num">37</td><td class="topic">Regular polygons</td><td class="cnum num">1</td><td class="link">IGX 3.4 Polygons</td></tr>
+<tr class="" data-f=""><td class="cnum num">38</td><td class="topic">Circles inscribed in and circumscribed about a regular polygon</td><td class="cnum num">1</td><td class="link">IGX 3.4-3.5 Polygons; circles</td></tr>
+<tr class="" data-f=""><td class="cnum num">39</td><td class="topic">Circles inscribed in and circumscribed about a regular polygon</td><td class="cnum num">1</td><td class="link">IGX 3.4-3.5 Polygons; circles</td></tr>
+<tr class="" data-f=""><td class="cnum num">40</td><td class="topic">The relation between the side of a regular polygon and the radii of the inscribed and circumscribed circles</td><td class="cnum num">1</td><td class="link">IGX 3.4 Polygons</td></tr>
+<tr class="" data-f=""><td class="cnum num">41</td><td class="topic">The relation between the side of a regular polygon and the radii of the inscribed and circumscribed circles</td><td class="cnum num">1</td><td class="link">IGX 3.4 Polygons</td></tr>
+<tr class="" data-f=""><td class="cnum num">42</td><td class="topic">The circumference of a circle</td><td class="cnum num">1</td><td class="link">IGX 7.1 Perimeter and area in two dimensions</td></tr>
+<tr class="" data-f=""><td class="cnum num">43</td><td class="topic">The circumference of a circle</td><td class="cnum num">1</td><td class="link">IGX 7.1 Perimeter and area in two dimensions</td></tr>
+<tr class="" data-f=""><td class="cnum num">44</td><td class="topic">The length of an arc. The radian measure of an angle</td><td class="cnum num">1</td><td class="link">IGX 7.1 Perimeter and area in two dimensions</td></tr>
+<tr class="" data-f=""><td class="cnum num">45</td><td class="topic">The length of an arc. The radian measure of an angle</td><td class="cnum num">1</td><td class="link">IGX 7.1 Perimeter and area in two dimensions</td></tr>
+<tr class="" data-f=""><td class="cnum num">46</td><td class="topic">The area of a disc</td><td class="cnum num">1</td><td class="link">IGX 7.1 Perimeter and area in two dimensions</td></tr>
+<tr class="" data-f=""><td class="cnum num">47</td><td class="topic">The area of a disc</td><td class="cnum num">1</td><td class="link">IGX 7.1 Perimeter and area in two dimensions</td></tr>
+<tr class="" data-f=""><td class="cnum num">48</td><td class="topic">The areas of the parts of a disc</td><td class="cnum num">1</td><td class="link">IGX 7.1 Perimeter and area in two dimensions</td></tr>
+<tr class="" data-f=""><td class="cnum num">49</td><td class="topic">The areas of the parts of a disc</td><td class="cnum num">1</td><td class="link">IGX 7.1 Perimeter and area in two dimensions</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">50</td><td class="topic">Problems on the revision of the chapter<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">IGX 7.2-7.3 Three-dimensional objects; surface areas and volumes  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">51</td><td class="topic">Control work No. 3 (regular polygons and the circle)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">52</td><td class="topic">Revision and work on mistakes<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">Feedback and correction</td></tr>
+</tbody></table></div></section>
+  <section class="quarter"><header class="qhead"><h3>IV QUARTER</h3><span class="qhrs">16 hours</span></header>
+<div class="tablewrap"><table><thead><tr><th class="cnum">No.</th><th>Lesson topic</th><th class="cnum">h</th><th>Cambridge link / note</th></tr></thead><tbody>
+<tr class="" data-f=""><td class="cnum num">53</td><td class="topic">The projection of segments and proportionality</td><td class="cnum num">1</td><td class="link">IGX 11.2 Understanding similar triangles</td></tr>
+<tr class="" data-f=""><td class="cnum num">54</td><td class="topic">The projection of segments and proportionality</td><td class="cnum num">1</td><td class="link">IGX 11.2 Understanding similar triangles</td></tr>
+<tr class="" data-f=""><td class="cnum num">55</td><td class="topic">Properties of proportional segments</td><td class="cnum num">1</td><td class="link">IGX 11.2 Understanding similar triangles</td></tr>
+<tr class="" data-f=""><td class="cnum num">56</td><td class="topic">Properties of proportional segments</td><td class="cnum num">1</td><td class="link">IGX 11.2 Understanding similar triangles</td></tr>
+<tr class="" data-f=""><td class="cnum num">57</td><td class="topic">Proportional segments in a right-angled triangle</td><td class="cnum num">1</td><td class="link">IGX 11.1 Pythagoras’ theorem</td></tr>
+<tr class="" data-f=""><td class="cnum num">58</td><td class="topic">Proportional segments in a right-angled triangle</td><td class="cnum num">1</td><td class="link">IGX 11.1 Pythagoras’ theorem</td></tr>
+<tr class="" data-f=""><td class="cnum num">59</td><td class="topic">Construction of the mean proportional of two given segments</td><td class="cnum num">1</td><td class="link">IGX 3.6 Construction</td></tr>
+<tr class="" data-f=""><td class="cnum num">60</td><td class="topic">Construction of the mean proportional of two given segments</td><td class="cnum num">1</td><td class="link">IGX 3.6 Construction</td></tr>
+<tr class="" data-f=""><td class="cnum num">61</td><td class="topic">Proportional segments in a circle</td><td class="cnum num">1</td><td class="link">IGX 3.5 Circles</td></tr>
+<tr class="" data-f=""><td class="cnum num">62</td><td class="topic">Proportional segments in a circle</td><td class="cnum num">1</td><td class="link">IGX 3.5 Circles</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">63</td><td class="topic">Practical exercises on the revision of the chapter<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">IGX 3.6 Construction; scale drawing  [CAMBRIDGE INSERT]</td></tr>
+<tr class="cam" data-f="cam"><td class="cnum num">64</td><td class="topic">Practical exercises on the revision of the chapter<span class="badge b-cam">Cambridge</span></td><td class="cnum num">1</td><td class="link">IGX 3.6 Construction; scale drawing  [CAMBRIDGE INSERT]</td></tr>
+<tr class="test" data-f="test"><td class="cnum num">65</td><td class="topic">Control work No. 4 (proportional segments)<span class="badge b-test">Assessment</span></td><td class="cnum num">1</td><td class="link">Summative assessment</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">66</td><td class="topic">Annual revision; the Grade 10 preview<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">IGX 1-12 review; Geometry 10 preview</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">67</td><td class="topic">Annual revision; the Grade 10 preview<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">IGX 1-12 review; Geometry 10 preview</td></tr>
+<tr class="reserve" data-f="reserve"><td class="cnum num">68</td><td class="topic">Annual revision; the Grade 10 preview<span class="badge b-reserve">Reserve</span></td><td class="cnum num">1</td><td class="link">IGX 1-12 review; Geometry 10 preview</td></tr>
+</tbody></table></div></section>
+</section>
+
+<section class="view prose" id="v-red" role="tabpanel" aria-labelledby="t-red" hidden>
+  <div class="viewhead">
+    <h2>Red days and how the plan absorbs them</h2>
+    <p>Calculated for the 2026–2027 academic year. Four to six public holidays fall on a working
+    day; for a subject taught six hours a week that costs four to six lessons, five hours a week
+    three to five, three hours a week two or three, and two hours a week one or two.</p>
+  </div>
+  <div class="tablewrap"><table><thead><tr><th>Date</th><th>Holiday</th>
+  <th class="cnum">Weekday</th><th>Effect on the plan</th></tr></thead><tbody>
+  <tr><td class="topic">1 September</td><td class="topic">Independence Day</td><td class="cnum num">Tue</td><td class="link">Falls before the first school day — no lesson lost.</td></tr>
+  <tr><td class="topic">1 October</td><td class="topic">Day of Teachers and Mentors</td><td class="cnum num">Thu</td><td class="link">1 school day lost — Quarter I.</td></tr>
+  <tr><td class="topic">8 December</td><td class="topic">Constitution Day</td><td class="cnum num">Tue</td><td class="link">1 school day lost — Quarter II.</td></tr>
+  <tr><td class="topic">1 January</td><td class="topic">New Year</td><td class="cnum num">Fri</td><td class="link">Inside the winter holiday — no lesson lost.</td></tr>
+  <tr><td class="topic">14 January</td><td class="topic">Day of Defenders of the Motherland</td><td class="cnum num">Thu</td><td class="link">1 school day lost — Quarter III.</td></tr>
+  <tr><td class="topic">8 March</td><td class="topic">International Women’s Day</td><td class="cnum num">Mon</td><td class="link">1 school day lost — Quarter III.</td></tr>
+  <tr><td class="topic">21 March</td><td class="topic">Navruz</td><td class="cnum num">Sun</td><td class="link">Normally inside the spring holiday; the day in lieu may cost 1 school day.</td></tr>
+  <tr><td class="topic">Ramazon Hayit</td><td class="topic">Eid al-Fitr (movable)</td><td class="cnum num">—</td><td class="link">Approx. late March 2027; usually adjoins the spring holiday. Confirm annually.</td></tr>
+  <tr><td class="topic">9 May</td><td class="topic">Day of Remembrance and Honour</td><td class="cnum num">Sun</td><td class="link">Day in lieu on Monday 10 May — 1 school day lost, Quarter IV.</td></tr>
+  <tr><td class="topic">Qurbon Hayit</td><td class="topic">Eid al-Adha (movable)</td><td class="cnum num">—</td><td class="link">Approx. late May 2027; may fall after the last lesson. Confirm annually.</td></tr>
+  </tbody></table></div>
+  <div class="viewhead" style="margin-top:26px">
+    <h2>Absorption protocol</h2>
+    <ol>
+      <li>At the start of each quarter, count the red days falling on this class’s mathematics days.</li>
+      <li>Remove exactly that many <b>Reserve</b> lessons from the same quarter, working from the end backwards.</li>
+      <li>Never remove an assessment, and never remove a lesson that introduces new content.</li>
+      <li>If a quarter has too few reserve lessons, merge two consecutive lessons with the same title —
+      the national plan repeats topic titles across two or three lessons for exactly this purpose.</li>
+      <li>Record every adjustment so the quarter still shows the official hour total.</li>
+    </ol>
+    <p>School holidays (autumn ~1–7 November, winter ~30 December – 10 January, spring ~20–30 March)
+    are already excluded from the quarter totals and need no adjustment.</p>
+  </div>
+</section>
+
+</div>
+
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){
+      tabs.forEach(function(o){
+        var on=o===t;
+        o.setAttribute('aria-selected',on?'true':'false');
+        document.getElementById(o.getAttribute('aria-controls')).hidden=!on;
+      });
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  });
+  [].forEach.call(document.querySelectorAll('.filters'),function(bar){
+    var view=document.getElementById(bar.getAttribute('data-for'));
+    var chips=[].slice.call(bar.querySelectorAll('.chip'));
+    chips.forEach(function(c){
+      c.addEventListener('click',function(){
+        var f=c.getAttribute('data-filter');
+        chips.forEach(function(o){o.setAttribute('aria-pressed',o===c?'true':'false')});
+        [].forEach.call(view.querySelectorAll('tbody tr'),function(r){
+          r.hidden = (f!=='all') && (' '+r.getAttribute('data-f')+' ').indexOf(' '+f+' ')<0;
+        });
+        [].forEach.call(view.querySelectorAll('.quarter'),function(q){
+          q.hidden = !q.querySelector('tbody tr:not([hidden])');
+        });
+      });
+    });
+  });
+})();
+</script>
