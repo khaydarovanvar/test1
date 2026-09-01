@@ -6,7 +6,8 @@ Straight-cut edges throughout: a yellow number panel on the left, the grade
 on green in the middle, and a yellow bookend strip on the right, so both
 punch holes sit in yellow like the sample.
 
-- **Size:** 300 × 92 mm per tag (width × height), landscape strip
+- **Size:** 297 × 91 mm per tag (width × height) — exactly the full width
+  of a landscape A4 sheet
 - **Colours:** green `#008E52`, yellow `#FFC200`, deep green `#00603A` —
   sampled from `assets/ellipse-logo.jpg`
 - **Type:** Montserrat (SIL Open Font License, see `fonts/OFL.txt`)
@@ -18,10 +19,11 @@ punch holes sit in yellow like the sample.
 
 | File | Use it for |
 | --- | --- |
-| `out/Ellipse_Room_Tags_PRINT.pdf` | professional printing — 3 mm bleed + crop marks (316 × 108 mm pages) |
-| `out/Ellipse_Room_Tags_EXACT.pdf` | exact 300 × 92 mm pages, no marks |
-| `out/Ellipse_Room_Tags_A4_2up.pdf` | 2 tags per A4 landscape sheet — printed at 95.7 % (287 × 88 mm per tag) because A4 is 297 mm wide; print at “Actual size”, not “Fit to page” |
+| `out/Ellipse_Room_Tags_PRINT.pdf` | professional printing — 3 mm bleed + crop marks (313 × 107 mm pages) |
+| `out/Ellipse_Room_Tags_EXACT.pdf` | exact 297 × 91 mm pages, no marks |
+| `out/Ellipse_Room_Tags_A4_2up.pdf` | 2 full-width tags per A4 landscape sheet at 100 % — print at “Actual size” (never “Fit to page”) with borderless printing if the printer offers it |
 | `out/Ellipse_Room_Tags_A3_3up.pdf` | 3 tags per A3 sheet at 100 % size, with cut guides |
+| `out/png/` | 300 dpi print-resolution PNG of every tag (3508 × 1075 px) |
 | `out/Ellipse_Room_Tags_Floor1.pdf` / `_Floor2.pdf` | one floor at a time (print style) |
 | `out/preview/` | PNG previews of every tag + `index.html` contact sheet |
 

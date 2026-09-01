@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 """Build the Ellipse school door tags.
 
-Trim size: 300 mm wide x 92 mm high (landscape strip, punched at both ends),
+Trim size: 297 mm wide x 91 mm high (the full width of a landscape A4 sheet,
+punched at both ends),
 matching the sample tag "16 / GRADE 1P": straight-cut corners and a straight
 split between the yellow and green fields.
 
 Outputs (into out/):
-  Ellipse_Room_Tags_PRINT.pdf      316x108 mm pages: 300x92 trim + 3 mm bleed + crop marks
-  Ellipse_Room_Tags_EXACT.pdf      300x92 mm pages, no marks (cut straight to the page edge)
-  Ellipse_Room_Tags_A4_2up.pdf     A4 landscape, 2 tags per sheet (printed at 95.7%)
+  Ellipse_Room_Tags_PRINT.pdf      313x107 mm pages: 297x91 trim + 3 mm bleed + crop marks
+  Ellipse_Room_Tags_EXACT.pdf      297x91 mm pages, no marks (cut straight to the page edge)
+  Ellipse_Room_Tags_A4_2up.pdf     A4 landscape, 2 full-width tags per sheet at 100%
   Ellipse_Room_Tags_A3_3up.pdf     A3 landscape, 3 tags per sheet at 100%
+  png/*.png                        300 dpi print-resolution PNG of every tag
   Ellipse_Room_Tags_Floor{1,2}.pdf per-floor PRINT-style files
   preview/*.png                    150 dpi previews of every tag
   preview/index.html               contact sheet of the whole set
@@ -47,7 +49,7 @@ FONT_BOLD = "Ellipse-Bold"
 CAP_RATIO = 0.700  # Montserrat sCapHeight / unitsPerEm
 
 # ------------------------------------------------------------- geometry ----
-TRIM_W, TRIM_H = 300.0, 92.0
+TRIM_W, TRIM_H = 297.0, 91.0
 BLEED = 3.0
 MARGIN = 8.0  # page margin around the trim on the PRINT file (holds crop marks)
 
@@ -59,25 +61,25 @@ ACCENT_W = 1.6  # thickness of the accent lines
 NUM_CX = 47.0  # centre of the room number inside the yellow panel
 NUM_MAX_W = 52.0
 NUM_MAX_CAP = 34.0
-NUM_BAND = (14.0, 60.0)  # vertical band the number cap box is centred in
-EYEBROW_Y_YELLOW = 71.0  # baseline of "ROOM"
+NUM_BAND = (13.5, 59.5)  # vertical band the number cap box is centred in
+EYEBROW_Y_YELLOW = 70.5  # baseline of "ROOM"
 
 # green panel: everything sits on the centre axis between the accent lines
 GREEN_L = YELLOW_W + ACCENT_GAP + ACCENT_W  # 91.0
 GREEN_R = TRIM_W - RIGHT_YW - ACCENT_GAP - ACCENT_W  # 279.0
 TEXT_CX = (GREEN_L + GREEN_R) / 2.0
 TEXT_MAX_W = GREEN_R - GREEN_L - 22.0  # breathing room to both accent lines
-RULE_Y, RULE_W, RULE_H = 74.0, 28.0, 1.5
-EYEBROW_Y = 63.0
+RULE_Y, RULE_W, RULE_H = 73.5, 28.0, 1.5
+EYEBROW_Y = 62.5
 EYEBROW_CAP = 5.2
 EYEBROW_TRACK = 0.30
-TITLE_BAND = (13.0, 55.0)  # vertical band for the main title block
+TITLE_BAND = (12.5, 54.5)  # vertical band for the main title block
 TITLE_MAX_CAP = 32.0
 TITLE_LEADING = 1.30  # baseline-to-baseline, in cap heights
 
 WORDMARK_CAP = 4.0
 WORDMARK_TRACK = 0.42
-WORDMARK_Y = 81.0
+WORDMARK_Y = 80.5
 
 HOLE_Y = TRIM_H / 2.0
 HOLE_X = (12.0, TRIM_W - 12.0)  # both holes sit in yellow, like the sample
@@ -296,6 +298,65 @@ def build_exact_pdf(items, path, title):
     c.save()
 
 
+def build_a4_full_pdf(items, path, title):
+    """Two full-width tags per landscape A4 sheet at 100% — no side margins.
+
+    The tag is exactly as wide as the sheet, so print at "Actual size"
+    (100%), with borderless printing if the printer supports it.
+    """
+    pw, ph = landscape(A4)
+    ph_mm = ph / MM
+    per, gap = 2, 8.0
+    block = per * TRIM_H + (per - 1) * gap
+    oy0 = (ph_mm - block) / 2.0
+    c = canvas.Canvas(path, pagesize=(pw, ph))
+    c.setTitle(title)
+    c.setAuthor("Ellipse")
+    grey = Color(0.6, 0.6, 0.6)
+    for i in range(0, len(items), per):
+        chunk = items[i:i + per]
+        for j, it in enumerate(chunk):
+            oy = oy0 + (len(chunk) - 1 - j) * (TRIM_H + gap)
+            c.saveState()
+            c.translate(0, oy * MM)
+            draw_tag(c, it, bleed=False)
+            c.restoreState()
+            # full-width cut lines 1 mm outside the tag's top and bottom edges
+            c.saveState()
+            c.setStrokeColor(grey)
+            c.setLineWidth(0.2)
+            c.setDash(2, 2)
+            for y in (oy - 1.0, oy + TRIM_H + 1.0):
+                c.line(0, y * MM, pw, y * MM)
+            c.setDash()
+            # punch-hole ticks just outside the tag
+            for hx in HOLE_X:
+                c.line(hx * MM, (oy - 1.0) * MM, hx * MM, (oy - 4.0) * MM)
+                c.line(hx * MM, (oy + TRIM_H + 1.0) * MM,
+                       hx * MM, (oy + TRIM_H + 4.0) * MM)
+            c.restoreState()
+        c.showPage()
+    c.save()
+
+
+def build_pngs(items, dpi=300):
+    """High-resolution PNG of every tag (300 dpi = 3508 x 1075 px)."""
+    import pymupdf
+
+    outdir = os.path.join(OUT, "png")
+    os.makedirs(outdir, exist_ok=True)
+    for stale in os.listdir(outdir):
+        if stale.endswith(".png"):
+            os.remove(os.path.join(outdir, stale))
+    tmp = os.path.join(outdir, "_tmp.pdf")
+    build_exact_pdf(items, tmp, "png export")
+    doc = pymupdf.open(tmp)
+    for i, it in enumerate(items):
+        doc[i].get_pixmap(dpi=dpi).save(os.path.join(outdir, slug(it) + ".png"))
+    doc.close()
+    os.remove(tmp)
+
+
 def build_nup_pdf(items, path, title, pagesize, per, page_margin, gap):
     """N tags per sheet. Tags are scaled down only if the sheet is too narrow."""
     pw, ph = pagesize
@@ -404,9 +465,8 @@ def main():
                     "Ellipse room tags — print, 3 mm bleed")
     build_exact_pdf(items, os.path.join(OUT, "Ellipse_Room_Tags_EXACT.pdf"),
                     "Ellipse room tags — exact 300x92 mm")
-    s4 = build_nup_pdf(items, os.path.join(OUT, "Ellipse_Room_Tags_A4_2up.pdf"),
-                       "Ellipse room tags — A4 landscape, 2 up",
-                       landscape(A4), per=2, page_margin=5.0, gap=8.0)
+    build_a4_full_pdf(items, os.path.join(OUT, "Ellipse_Room_Tags_A4_2up.pdf"),
+                      "Ellipse room tags — A4 landscape, 2 up, full width")
     s3 = build_nup_pdf(items, os.path.join(OUT, "Ellipse_Room_Tags_A3_3up.pdf"),
                        "Ellipse room tags — A3 landscape, 3 up",
                        landscape(A3), per=3, page_margin=5.0, gap=6.0)
@@ -417,8 +477,8 @@ def main():
 
     names = build_previews(items)
     build_index(items, names)
-    print("%d tags -> %s  (A4 scale %.1f%%, A3 scale %.0f%%)"
-          % (len(items), OUT, s4 * 100, s3 * 100))
+    build_pngs(items)
+    print("%d tags -> %s  (A4 at 100%%, A3 scale %.0f%%)" % (len(items), OUT, s3 * 100))
 
 
 if __name__ == "__main__":
