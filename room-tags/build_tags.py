@@ -623,6 +623,21 @@ def main():
     build_tent_pngs(classes, tents)
     print("%d class tent cards -> %s" % (len(classes), tents))
 
+    # one PDF + 300 dpi PNG per tag, so a single room can be reprinted alone
+    single = os.path.join(OUT, "tags")
+    os.makedirs(single, exist_ok=True)
+    for stale in os.listdir(single):
+        os.remove(os.path.join(single, stale))
+    import pymupdf
+    for it in items:
+        base = slug(it)
+        pdf = os.path.join(single, base + ".pdf")
+        build_exact_pdf([it], pdf, "Ellipse room tag — %s" % it["title"])
+        doc = pymupdf.open(pdf)
+        doc[0].get_pixmap(dpi=300).save(os.path.join(single, base + ".png"))
+        doc.close()
+    print("%d single tags -> %s" % (len(items), single))
+
     names = build_previews(items)
     build_index(items, names)
     build_pngs(items)
