@@ -1,0 +1,493 @@
+<title>Limits Problem Set A</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap">
+<style>
+  :root{
+    --paper:#fcfdfe;
+    --board:#eef2f5;
+    --ink:#16222e;
+    --ink-soft:#556676;
+    --rule:#c4d2dc;
+    --rule-soft:#dde6ec;
+    --accent:#1c6e8c;
+    --challenge:#9a6314;
+    --grid:rgba(28,110,140,.11);
+    --shadow:0 1px 2px rgba(22,34,46,.06), 0 10px 28px rgba(22,34,46,.07);
+    --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --serif:"Source Serif 4", "Iowan Old Style", Georgia, serif;
+    --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141a20;
+      --board:#0d1116;
+      --ink:#e6edf3;
+      --ink-soft:#9bacba;
+      --rule:#39474f;
+      --rule-soft:#26313a;
+      --accent:#63b6d1;
+      --challenge:#d9a25a;
+      --grid:rgba(99,182,209,.13);
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141a20;
+    --board:#0d1116;
+    --ink:#e6edf3;
+    --ink-soft:#9bacba;
+    --rule:#39474f;
+    --rule-soft:#26313a;
+    --accent:#63b6d1;
+    --challenge:#d9a25a;
+    --grid:rgba(99,182,209,.13);
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.45);
+  }
+
+  body{
+    background:var(--board);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:15px;
+    line-height:1.5;
+    padding:28px 16px 56px;
+  }
+
+  /* ---------- screen toolbar ---------- */
+  .bar{
+    max-width:210mm;
+    margin:0 auto 18px;
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .bar h1{
+    font-size:1.05rem;
+    font-weight:600;
+    letter-spacing:-.005em;
+    margin:0;
+  }
+  .bar p{margin:0;color:var(--ink-soft);font-size:.82rem;}
+  .print{
+    margin-left:auto;
+    font:500 .8rem/1 var(--sans);
+    color:var(--paper);
+    background:var(--accent);
+    border:none;
+    border-radius:3px;
+    padding:9px 15px;
+    cursor:pointer;
+  }
+  .print:hover{filter:brightness(1.08);}
+  .print:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+
+  /* ---------- the sheet ---------- */
+  .sheet{
+    width:210mm;
+    min-height:297mm;
+    margin:0 auto 22px;
+    padding:16mm 17mm 14mm;
+    background:var(--paper);
+    box-shadow:var(--shadow);
+    box-sizing:border-box;
+  }
+
+  .masthead{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:16px;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:7px;
+  }
+  .masthead .title{
+    font-size:1.42rem;
+    font-weight:600;
+    letter-spacing:-.015em;
+    margin:0;
+    text-wrap:balance;
+  }
+  .masthead .sub{
+    font-family:var(--mono);
+    font-size:.68rem;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:0 0 3px;
+  }
+  .copy{
+    font-family:var(--mono);
+    font-size:.7rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    white-space:nowrap;
+  }
+
+  .fields{
+    display:grid;
+    grid-template-columns:2.1fr 1fr 1fr;
+    gap:0 18px;
+    margin-top:11px;
+  }
+  .field{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:5px;
+  }
+  .field span{
+    font-family:var(--mono);
+    font-size:.66rem;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  .rubric{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    margin-top:9px;
+    font-size:.79rem;
+    color:var(--ink-soft);
+  }
+  .rubric strong{color:var(--ink);font-weight:500;}
+
+  ol.questions{
+    list-style:none;
+    margin:11px 0 0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .q{break-inside:avoid;}
+  .qhead{
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    align-items:center;
+    gap:12px;
+    padding:2px 0 4px;
+  }
+  .num{
+    font-family:var(--mono);
+    font-size:.78rem;
+    font-weight:500;
+    color:var(--accent);
+    border:1px solid var(--rule);
+    border-radius:2px;
+    width:22px;
+    height:22px;
+    display:grid;
+    place-items:center;
+  }
+  .marks{
+    font-family:var(--mono);
+    font-size:.68rem;
+    letter-spacing:.05em;
+    color:var(--ink-soft);
+    white-space:nowrap;
+  }
+  .prompt{
+    font-family:var(--serif);
+    font-size:1.02rem;
+  }
+  .work{
+    border:1px solid var(--rule-soft);
+    border-radius:2px;
+    height:28mm;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size:5mm 5mm;
+    background-position:-1px -1px;
+  }
+
+  /* challenge pair */
+  .q.hard .num{color:var(--challenge);border-color:var(--challenge);}
+  .q.hard .work{height:38mm;}
+  .tag{
+    font-family:var(--mono);
+    font-size:.62rem;
+    letter-spacing:.11em;
+    text-transform:uppercase;
+    color:var(--challenge);
+    border:1px solid var(--challenge);
+    border-radius:2px;
+    padding:1px 5px;
+    margin-left:9px;
+    vertical-align:2px;
+  }
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:12px 0 4px;
+    font-family:var(--mono);
+    font-size:.66rem;
+    letter-spacing:.11em;
+    text-transform:uppercase;
+    color:var(--challenge);
+  }
+  .divider::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--rule);
+  }
+
+  .footline{
+    margin-top:12px;
+    padding-top:7px;
+    border-top:1px solid var(--rule);
+    display:flex;
+    justify-content:space-between;
+    font-family:var(--mono);
+    font-size:.66rem;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- hand-set mathematics ---------- */
+  .m{font-family:var(--serif);white-space:nowrap;}
+  .m i{font-style:italic;}
+  .m sup{font-size:.62em;line-height:0;position:relative;top:-.4em;padding-left:.04em;}
+  .lim{
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    vertical-align:middle;
+    margin-right:.28em;
+  }
+  .lim .op{font-style:normal;line-height:1;}
+  .lim .to{font-size:.62em;line-height:1.25;margin-top:.05em;}
+  .frac{
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    vertical-align:middle;
+    margin:0 .12em;
+  }
+  .frac .num-t{
+    border-bottom:1.1px solid currentColor;
+    padding:.14em .42em .16em;
+    line-height:1.5;
+  }
+  .frac .den-t{padding:.16em .42em .04em;line-height:1.5;}
+  .rad{display:inline-flex;align-items:flex-start;}
+  .rad .sign{font-size:1.18em;line-height:.95;}
+  .rad .rand{
+    border-top:1.1px solid currentColor;
+    padding:.1em .18em 0 .06em;
+    margin-top:.16em;
+  }
+  .paren{font-size:1.25em;vertical-align:-.1em;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;animation:none !important;}
+  }
+
+  /* ---------- print ---------- */
+  @page{size:A4;margin:0;}
+  @media print{
+    :root{
+      --paper:#fff;--board:#fff;--ink:#000;--ink-soft:#444;
+      --rule:#8b8b8b;--rule-soft:#bdbdbd;--accent:#1c6e8c;
+      --challenge:#8a5410;--grid:rgba(0,0,0,.09);--shadow:none;
+    }
+    body{background:#fff;padding:0;}
+    .bar{display:none;}
+    .sheet{
+      width:auto;
+      min-height:auto;
+      margin:0;
+      box-shadow:none;
+      padding:14mm 15mm;
+      break-after:page;
+    }
+    .sheet:last-of-type{break-after:auto;}
+    .work{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+
+  @media (max-width:230mm){
+    .sheet{width:100%;padding:20px;min-height:auto;}
+    .fields{grid-template-columns:1fr;gap:10px;}
+    .prompt{font-size:.98rem;}
+    ol.questions{overflow-x:auto;}
+  }
+</style>
+
+<div class="bar">
+  <h1>Limits Problem Set A</h1>
+  <p>Two copies — one sheet per student. Print at A4, 100% scale.</p>
+  <button class="print" type="button" onclick="window.print()">Print both copies</button>
+</div>
+
+<template id="sheet-body">
+  <div class="fields">
+    <div class="field"><span>Name</span></div>
+    <div class="field"><span>Class</span></div>
+    <div class="field"><span>Date</span></div>
+  </div>
+
+  <div class="rubric">
+    <p style="margin:0">Evaluate each limit. <strong>Show every algebraic step</strong> — an unsupported answer scores nothing.</p>
+    <p style="margin:0;white-space:nowrap"><strong>Time 40 min · Total 28 marks</strong></p>
+  </div>
+
+  <ol class="questions">
+    <li class="q">
+      <div class="qhead">
+        <div class="num">1</div>
+        <div class="prompt m">
+          Evaluate
+          <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→4</span></span>
+          <span class="frac"><span class="num-t"><i>x</i><sup>2</sup> − 16</span><span class="den-t"><i>x</i> − 4</span></span>
+        </div>
+        <div class="marks">3 marks</div>
+      </div>
+      <div class="work"></div>
+    </li>
+
+    <li class="q">
+      <div class="qhead">
+        <div class="num">2</div>
+        <div class="prompt m">
+          Evaluate
+          <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→0</span></span>
+          <span class="frac"><span class="num-t"><span class="rad"><span class="sign">√</span><span class="rand"><i>x</i> + 16</span></span> − 4</span><span class="den-t"><i>x</i></span></span>
+        </div>
+        <div class="marks">3 marks</div>
+      </div>
+      <div class="work"></div>
+    </li>
+
+    <li class="q">
+      <div class="qhead">
+        <div class="num">3</div>
+        <div class="prompt m">
+          Evaluate
+          <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→3</span></span>
+          <span class="frac"><span class="num-t"><i>x</i><sup>3</sup> − 27</span><span class="den-t"><i>x</i><sup>2</sup> − 9</span></span>
+        </div>
+        <div class="marks">3 marks</div>
+      </div>
+      <div class="work"></div>
+    </li>
+
+    <li class="q">
+      <div class="qhead">
+        <div class="num">4</div>
+        <div class="prompt m">
+          Evaluate
+          <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→2</span></span>
+          <span class="frac"><span class="num-t"><i>x</i><sup>3</sup> − 8</span><span class="den-t"><i>x</i><sup>2</sup> − 5<i>x</i> + 6</span></span>
+        </div>
+        <div class="marks">3 marks</div>
+      </div>
+      <div class="work"></div>
+    </li>
+
+    <li class="q">
+      <div class="qhead">
+        <div class="num">5</div>
+        <div class="prompt m">
+          Evaluate
+          <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→∞</span></span>
+          <span class="frac"><span class="num-t">3<i>x</i><sup>2</sup> − 5<i>x</i> + 2</span><span class="den-t">4<i>x</i><sup>2</sup> + 7<i>x</i> − 1</span></span>
+        </div>
+        <div class="marks">3 marks</div>
+      </div>
+      <div class="work"></div>
+    </li>
+
+    <li class="q">
+      <div class="qhead">
+        <div class="num">6</div>
+        <div class="prompt m">
+          Evaluate
+          <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→∞</span></span>
+          <span class="frac"><span class="num-t"><span class="rad"><span class="sign">√</span><span class="rand">4<i>x</i><sup>2</sup> + 1</span></span></span><span class="den-t"><i>x</i> + 3</span></span>
+        </div>
+        <div class="marks">4 marks</div>
+      </div>
+      <div class="work"></div>
+    </li>
+
+    <li class="divider">Challenge section</li>
+
+    <li class="q hard">
+      <div class="qhead">
+        <div class="num">7</div>
+        <div class="prompt m">
+          Evaluate
+          <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→1</span></span>
+          <span class="paren">(</span>
+          <span class="frac"><span class="num-t">1</span><span class="den-t">1 − <i>x</i></span></span>
+          −
+          <span class="frac"><span class="num-t">3</span><span class="den-t">1 − <i>x</i><sup>3</sup></span></span>
+          <span class="paren">)</span>
+          <span class="tag">hard</span>
+        </div>
+        <div class="marks">4 marks</div>
+      </div>
+      <div class="work"></div>
+    </li>
+
+    <li class="q hard">
+      <div class="qhead">
+        <div class="num">8</div>
+        <div class="prompt m">
+          Evaluate
+          <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→∞</span></span>
+          <span class="paren">(</span>
+          <span class="rad"><span class="sign">√</span><span class="rand"><i>x</i><sup>2</sup> + 3<i>x</i></span></span>
+          −
+          <span class="rad"><span class="sign">√</span><span class="rand"><i>x</i><sup>2</sup> − <i>x</i></span></span>
+          <span class="paren">)</span>
+          <span class="tag">hard</span>
+        </div>
+        <div class="marks">5 marks</div>
+      </div>
+      <div class="work"></div>
+    </li>
+  </ol>
+
+  <div class="footline">
+    <span>Limits Problem Set A</span>
+    <span>Marks earned ______ / 28</span>
+  </div>
+</template>
+
+<section class="sheet">
+  <div class="masthead">
+    <div>
+      <p class="sub">Calculus · Limits of algebraic functions</p>
+      <h2 class="title">Limits Problem Set A</h2>
+    </div>
+    <div class="copy">Copy 1 of 2</div>
+  </div>
+  <div class="body" data-body></div>
+</section>
+
+<section class="sheet">
+  <div class="masthead">
+    <div>
+      <p class="sub">Calculus · Limits of algebraic functions</p>
+      <h2 class="title">Limits Problem Set A</h2>
+    </div>
+    <div class="copy">Copy 2 of 2</div>
+  </div>
+  <div class="body" data-body></div>
+</section>
+
+<script>
+  var tpl = document.getElementById('sheet-body');
+  document.querySelectorAll('[data-body]').forEach(function (slot) {
+    slot.appendChild(tpl.content.cloneNode(true));
+  });
+</script>
