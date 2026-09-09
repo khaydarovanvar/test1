@@ -292,7 +292,7 @@
   }
 
   /* ---------- print ---------- */
-  @page{size:A4;margin:0;}
+  @page{size:A4;margin:14mm 15mm;}
   @media print{
     :root{
       --paper:#fff;--board:#fff;--ink:#000;--ink-soft:#444;
@@ -305,8 +305,8 @@
       width:auto;
       min-height:auto;
       margin:0;
+      padding:0;
       box-shadow:none;
-      padding:14mm 15mm;
       break-after:page;
     }
     .sheet:last-of-type{break-after:auto;}
