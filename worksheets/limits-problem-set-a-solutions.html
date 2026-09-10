@@ -1,0 +1,530 @@
+<title>Limits Mark Scheme A</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap">
+<style>
+  :root{
+    --paper:#fcfdfe;
+    --board:#eef2f5;
+    --ink:#16222e;
+    --ink-soft:#556676;
+    --rule:#c4d2dc;
+    --rule-soft:#dde6ec;
+    --accent:#1c6e8c;
+    --challenge:#9a6314;
+    --wash:rgba(28,110,140,.05);
+    --shadow:0 1px 2px rgba(22,34,46,.06), 0 10px 28px rgba(22,34,46,.07);
+    --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --serif:"Source Serif 4", "Iowan Old Style", Georgia, serif;
+    --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141a20; --board:#0d1116; --ink:#e6edf3; --ink-soft:#9bacba;
+      --rule:#39474f; --rule-soft:#26313a; --accent:#63b6d1; --challenge:#d9a25a;
+      --wash:rgba(99,182,209,.07);
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141a20; --board:#0d1116; --ink:#e6edf3; --ink-soft:#9bacba;
+    --rule:#39474f; --rule-soft:#26313a; --accent:#63b6d1; --challenge:#d9a25a;
+    --wash:rgba(99,182,209,.07);
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.45);
+  }
+
+  body{
+    background:var(--board);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:15px;
+    line-height:1.5;
+    padding:28px 16px 56px;
+  }
+
+  .bar{max-width:210mm;margin:0 auto 18px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+  .bar h1{font-size:1.05rem;font-weight:600;letter-spacing:-.005em;margin:0;}
+  .bar p{margin:0;color:var(--ink-soft);font-size:.82rem;}
+  .print{
+    margin-left:auto;font:500 .8rem/1 var(--sans);color:var(--paper);
+    background:var(--accent);border:none;border-radius:3px;padding:9px 15px;cursor:pointer;
+  }
+  .print:hover{filter:brightness(1.08);}
+  .print:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+
+  .sheet{
+    width:210mm;min-height:297mm;margin:0 auto 22px;padding:16mm 17mm 14mm;
+    background:var(--paper);box-shadow:var(--shadow);box-sizing:border-box;
+  }
+
+  .masthead{
+    display:flex;justify-content:space-between;align-items:flex-end;gap:16px;
+    border-bottom:2px solid var(--ink);padding-bottom:7px;
+  }
+  .masthead .title{font-size:1.42rem;font-weight:600;letter-spacing:-.015em;margin:0;text-wrap:balance;}
+  .masthead .sub{
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 3px;
+  }
+  .stamp{
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--paper);background:var(--ink);border-radius:2px;padding:4px 9px;white-space:nowrap;
+  }
+
+  .lede{
+    display:flex;justify-content:space-between;gap:16px;
+    margin-top:9px;font-size:.79rem;color:var(--ink-soft);
+  }
+  .lede strong{color:var(--ink);font-weight:500;}
+  .lede p{margin:0;}
+
+  .key{
+    display:grid;grid-template-columns:repeat(8,1fr);
+    margin-top:11px;border:1px solid var(--rule);border-radius:2px;overflow:hidden;
+  }
+  .key div{
+    padding:6px 4px;display:grid;place-items:center;border-right:1px solid var(--rule-soft);
+  }
+  .key div:last-child{border-right:none;}
+  .key .q{
+    font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;
+    color:var(--ink-soft);text-transform:uppercase;background:var(--wash);
+    border-bottom:1px solid var(--rule-soft);padding:3px 4px;
+  }
+  .key .v{font-family:var(--serif);font-size:1.02rem;}
+
+  .solutions{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:13px;}
+  .sol{break-inside:avoid;}
+  .solhead{
+    display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;
+    padding-bottom:6px;border-bottom:1px solid var(--rule-soft);
+  }
+  .num{
+    font-family:var(--mono);font-size:.78rem;font-weight:500;color:var(--accent);
+    border:1px solid var(--rule);border-radius:2px;width:22px;height:22px;display:grid;place-items:center;
+  }
+  .ans{
+    font-family:var(--serif);font-size:1.02rem;color:var(--accent);
+    border:1px solid var(--accent);border-radius:2px;padding:1px 9px;white-space:nowrap;
+  }
+  .sol.hard .num{color:var(--challenge);border-color:var(--challenge);}
+  .sol.hard .ans{color:var(--challenge);border-color:var(--challenge);}
+  .prompt{font-family:var(--serif);font-size:1rem;}
+
+  .steps{display:flex;flex-direction:column;gap:2px;padding:7px 0 0 34px;}
+  .step{display:grid;grid-template-columns:1fr auto;gap:0 16px;align-items:baseline;}
+  .stepmath{font-family:var(--serif);font-size:.99rem;}
+  .code{
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;
+    color:var(--accent);grid-column:2;white-space:nowrap;
+  }
+  .sol.hard .code{color:var(--challenge);}
+  .why{grid-column:1;font-size:.74rem;color:var(--ink-soft);padding:1px 0 3px;}
+  .flag{
+    grid-column:1 / -1;font-size:.74rem;color:var(--ink-soft);
+    border-left:2px solid var(--challenge);padding:2px 0 2px 9px;margin-top:5px;
+  }
+  .flag b{
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--challenge);font-weight:400;margin-right:7px;
+  }
+
+  .footline{
+    margin-top:14px;padding-top:7px;border-top:1px solid var(--rule);
+    display:flex;justify-content:space-between;
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft);
+  }
+
+  /* ---------- hand-set mathematics ---------- */
+  .m{font-family:var(--serif);white-space:nowrap;}
+  .m i{font-style:italic;}
+  .m sup{font-size:.62em;line-height:0;position:relative;top:-.4em;padding-left:.04em;}
+  .lim{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin-right:.28em;}
+  .lim .op{font-style:normal;line-height:1;}
+  .lim .to{font-size:.62em;line-height:1.25;margin-top:.05em;}
+  .frac{display:inline-flex;flex-direction:column;align-items:stretch;text-align:center;vertical-align:middle;margin:0 .12em;}
+  .frac .num-t{border-bottom:1.1px solid currentColor;padding:.14em .42em .16em;line-height:1.5;}
+  .frac .den-t{padding:.16em .42em .04em;line-height:1.5;}
+  .rad{display:inline-flex;align-items:flex-start;}
+  .rad .sign{font-size:1.18em;line-height:.95;}
+  .rad .rand{border-top:1.1px solid currentColor;padding:.1em .18em 0 .06em;margin-top:.16em;}
+  .paren{font-size:1.25em;vertical-align:-.1em;}
+  .eq{color:var(--ink-soft);margin-right:.3em;}
+
+  @media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important;}}
+
+  @page{size:A4;margin:14mm 15mm;}
+  @media print{
+    :root{
+      --paper:#fff;--board:#fff;--ink:#000;--ink-soft:#444;
+      --rule:#8b8b8b;--rule-soft:#bdbdbd;--accent:#1c6e8c;--challenge:#8a5410;
+      --wash:rgba(0,0,0,.04);--shadow:none;
+    }
+    body{background:#fff;padding:0;}
+    .bar{display:none;}
+    .sheet{width:auto;min-height:auto;margin:0;padding:0;box-shadow:none;}
+    .key,.stamp{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+
+  @media (max-width:230mm){
+    .sheet{width:100%;padding:20px;min-height:auto;}
+    .key{grid-template-columns:repeat(4,1fr);}
+    .steps{padding-left:0;overflow-x:auto;}
+    .lede{flex-direction:column;gap:6px;}
+  }
+</style>
+
+<div class="bar">
+  <h1>Limits Mark Scheme A</h1>
+  <p>Full worked solutions for Limits Problem Set A. Teacher copy — do not hand out.</p>
+  <button class="print" type="button" onclick="window.print()">Print</button>
+</div>
+
+<section class="sheet">
+  <div class="masthead">
+    <div>
+      <p class="sub">Calculus · Limits of algebraic functions</p>
+      <h2 class="title">Limits Mark Scheme A</h2>
+    </div>
+    <div class="stamp">Teacher copy</div>
+  </div>
+
+  <div class="lede">
+    <p>Award <strong>M</strong> marks for a correct method, <strong>A</strong> marks for the accurate result that follows. A correct answer with no working scores <strong>0</strong>.</p>
+    <p style="white-space:nowrap"><strong>26 marks · 30 min</strong></p>
+  </div>
+
+  <div class="key">
+    <div class="q">Q1</div><div class="q">Q2</div><div class="q">Q3</div><div class="q">Q4</div>
+    <div class="q">Q5</div><div class="q">Q6</div><div class="q">Q7</div><div class="q">Q8</div>
+    <div class="v m">8</div>
+    <div class="v m"><span class="frac"><span class="num-t">1</span><span class="den-t">8</span></span></div>
+    <div class="v m"><span class="frac"><span class="num-t">9</span><span class="den-t">2</span></span></div>
+    <div class="v m">−12</div>
+    <div class="v m"><span class="frac"><span class="num-t">3</span><span class="den-t">4</span></span></div>
+    <div class="v m">2</div>
+    <div class="v m">1</div>
+    <div class="v m"><span class="frac"><span class="num-t">1</span><span class="den-t">2</span></span></div>
+  </div>
+
+  <ol class="solutions">
+
+    <li class="sol">
+      <div class="solhead">
+        <div class="num">1</div>
+        <div class="prompt m">
+          <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→4</span></span>
+          <span class="frac"><span class="num-t"><i>x</i><sup>2</sup> − 16</span><span class="den-t"><i>x</i> − 4</span></span>
+        </div>
+        <div class="ans m">= 8</div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→4</span></span>
+            <span class="frac"><span class="num-t">(<i>x</i> − 4)(<i>x</i> + 4)</span><span class="den-t"><i>x</i> − 4</span></span>
+          </div>
+          <div class="code">M1</div>
+        </div>
+        <div class="why">Substitution gives 0/0, so factorise the difference of two squares.</div>
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→4</span></span>
+            (<i>x</i> + 4),&nbsp;&nbsp;<i>x</i> ≠ 4
+          </div>
+          <div class="code">A1</div>
+        </div>
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span> 4 + 4 = <b>8</b></div>
+          <div class="code">A1</div>
+        </div>
+      </div>
+    </li>
+
+    <li class="sol">
+      <div class="solhead">
+        <div class="num">2</div>
+        <div class="prompt m">
+          <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→0</span></span>
+          <span class="frac"><span class="num-t"><span class="rad"><span class="sign">√</span><span class="rand"><i>x</i> + 16</span></span> − 4</span><span class="den-t"><i>x</i></span></span>
+        </div>
+        <div class="ans m">= <span class="frac"><span class="num-t">1</span><span class="den-t">8</span></span></div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→0</span></span>
+            <span class="frac"><span class="num-t">(<span class="rad"><span class="sign">√</span><span class="rand"><i>x</i>+16</span></span> − 4)(<span class="rad"><span class="sign">√</span><span class="rand"><i>x</i>+16</span></span> + 4)</span><span class="den-t"><i>x</i> (<span class="rad"><span class="sign">√</span><span class="rand"><i>x</i>+16</span></span> + 4)</span></span>
+          </div>
+          <div class="code">M1</div>
+        </div>
+        <div class="why">Multiply above and below by the conjugate of the numerator.</div>
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→0</span></span>
+            <span class="frac"><span class="num-t">(<i>x</i> + 16) − 16</span><span class="den-t"><i>x</i> (<span class="rad"><span class="sign">√</span><span class="rand"><i>x</i>+16</span></span> + 4)</span></span>
+            <span class="eq" style="margin:0 .5em">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→0</span></span>
+            <span class="frac"><span class="num-t">1</span><span class="den-t"><span class="rad"><span class="sign">√</span><span class="rand"><i>x</i>+16</span></span> + 4</span></span>
+          </div>
+          <div class="code">A1</div>
+        </div>
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="frac"><span class="num-t">1</span><span class="den-t">4 + 4</span></span>
+            <span class="eq" style="margin:0 .5em">=</span> <b><span class="frac"><span class="num-t">1</span><span class="den-t">8</span></span></b>
+          </div>
+          <div class="code">A1</div>
+        </div>
+      </div>
+    </li>
+
+    <li class="sol">
+      <div class="solhead">
+        <div class="num">3</div>
+        <div class="prompt m">
+          <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→3</span></span>
+          <span class="frac"><span class="num-t"><i>x</i><sup>3</sup> − 27</span><span class="den-t"><i>x</i><sup>2</sup> − 9</span></span>
+        </div>
+        <div class="ans m">= <span class="frac"><span class="num-t">9</span><span class="den-t">2</span></span></div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→3</span></span>
+            <span class="frac"><span class="num-t">(<i>x</i> − 3)(<i>x</i><sup>2</sup> + 3<i>x</i> + 9)</span><span class="den-t">(<i>x</i> − 3)(<i>x</i> + 3)</span></span>
+          </div>
+          <div class="code">M1</div>
+        </div>
+        <div class="why">Difference of two cubes above, difference of two squares below.</div>
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→3</span></span>
+            <span class="frac"><span class="num-t"><i>x</i><sup>2</sup> + 3<i>x</i> + 9</span><span class="den-t"><i>x</i> + 3</span></span>
+          </div>
+          <div class="code">A1</div>
+        </div>
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="frac"><span class="num-t">9 + 9 + 9</span><span class="den-t">6</span></span>
+            <span class="eq" style="margin:0 .5em">=</span> <b><span class="frac"><span class="num-t">9</span><span class="den-t">2</span></span></b>
+          </div>
+          <div class="code">A1</div>
+        </div>
+      </div>
+    </li>
+
+    <li class="sol">
+      <div class="solhead">
+        <div class="num">4</div>
+        <div class="prompt m">
+          <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→2</span></span>
+          <span class="frac"><span class="num-t"><i>x</i><sup>3</sup> − 8</span><span class="den-t"><i>x</i><sup>2</sup> − 5<i>x</i> + 6</span></span>
+        </div>
+        <div class="ans m">= −12</div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→2</span></span>
+            <span class="frac"><span class="num-t">(<i>x</i> − 2)(<i>x</i><sup>2</sup> + 2<i>x</i> + 4)</span><span class="den-t">(<i>x</i> − 2)(<i>x</i> − 3)</span></span>
+          </div>
+          <div class="code">M1</div>
+        </div>
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→2</span></span>
+            <span class="frac"><span class="num-t"><i>x</i><sup>2</sup> + 2<i>x</i> + 4</span><span class="den-t"><i>x</i> − 3</span></span>
+          </div>
+          <div class="code">A1</div>
+        </div>
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="frac"><span class="num-t">4 + 4 + 4</span><span class="den-t">2 − 3</span></span>
+            <span class="eq" style="margin:0 .5em">=</span>
+            <span class="frac"><span class="num-t">12</span><span class="den-t">−1</span></span>
+            <span class="eq" style="margin:0 .5em">=</span> <b>−12</b>
+          </div>
+          <div class="code">A1</div>
+        </div>
+        <div class="flag"><b>Watch for</b>the denominator 2 − 3 = −1. Answers of +12 lose the final A mark.</div>
+      </div>
+    </li>
+
+    <li class="sol">
+      <div class="solhead">
+        <div class="num">5</div>
+        <div class="prompt m">
+          <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→∞</span></span>
+          <span class="frac"><span class="num-t">3<i>x</i><sup>2</sup> − 5<i>x</i> + 2</span><span class="den-t">4<i>x</i><sup>2</sup> + 7<i>x</i> − 1</span></span>
+        </div>
+        <div class="ans m">= <span class="frac"><span class="num-t">3</span><span class="den-t">4</span></span></div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→∞</span></span>
+            <span class="frac"><span class="num-t">3 − 5/<i>x</i> + 2/<i>x</i><sup>2</sup></span><span class="den-t">4 + 7/<i>x</i> − 1/<i>x</i><sup>2</sup></span></span>
+          </div>
+          <div class="code">M1</div>
+        </div>
+        <div class="why">Divide every term above and below by <span class="m"><i>x</i><sup>2</sup></span>, the highest power present.</div>
+        <div class="step">
+          <div class="stepmath m">
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→∞</span></span>
+            <span class="frac"><span class="num-t">1</span><span class="den-t"><i>x</i></span></span> = 0
+            <span style="margin-left:.6em">and</span>
+            <span class="lim" style="margin-left:.5em"><span class="op">lim</span><span class="to"><i>x</i>→∞</span></span>
+            <span class="frac"><span class="num-t">1</span><span class="den-t"><i>x</i><sup>2</sup></span></span> = 0
+          </div>
+          <div class="code">A1</div>
+        </div>
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="frac"><span class="num-t">3 − 0 + 0</span><span class="den-t">4 + 0 − 0</span></span>
+            <span class="eq" style="margin:0 .5em">=</span> <b><span class="frac"><span class="num-t">3</span><span class="den-t">4</span></span></b>
+          </div>
+          <div class="code">A1</div>
+        </div>
+      </div>
+    </li>
+
+    <li class="sol">
+      <div class="solhead">
+        <div class="num">6</div>
+        <div class="prompt m">
+          <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→∞</span></span>
+          <span class="frac"><span class="num-t"><span class="rad"><span class="sign">√</span><span class="rand">4<i>x</i><sup>2</sup> + 1</span></span></span><span class="den-t"><i>x</i> + 3</span></span>
+        </div>
+        <div class="ans m">= 2</div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="stepmath m">
+            <span class="rad"><span class="sign">√</span><span class="rand">4<i>x</i><sup>2</sup> + 1</span></span>
+            <span class="eq" style="margin:0 .5em">=</span>
+            <i>x</i> <span class="rad"><span class="sign">√</span><span class="rand">4 + 1/<i>x</i><sup>2</sup></span></span>
+            <span style="margin-left:.6em">for <i>x</i> &gt; 0</span>
+          </div>
+          <div class="code">M1</div>
+        </div>
+        <div class="why">Take <span class="m"><i>x</i><sup>2</sup></span> out of the root: <span class="m"><span class="rad"><span class="sign">√</span><span class="rand"><i>x</i><sup>2</sup></span></span> = |<i>x</i>| = <i>x</i></span> as <span class="m"><i>x</i> → ∞</span>.</div>
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→∞</span></span>
+            <span class="frac"><span class="num-t"><span class="rad"><span class="sign">√</span><span class="rand">4 + 1/<i>x</i><sup>2</sup></span></span></span><span class="den-t">1 + 3/<i>x</i></span></span>
+          </div>
+          <div class="code">A1</div>
+        </div>
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="frac"><span class="num-t"><span class="rad"><span class="sign">√</span><span class="rand">4</span></span></span><span class="den-t">1</span></span>
+            <span class="eq" style="margin:0 .5em">=</span> <b>2</b>
+          </div>
+          <div class="code">A1</div>
+        </div>
+        <div class="flag"><b>Watch for</b>as <span class="m"><i>x</i> → −∞</span> the same limit is −2, because <span class="m"><span class="rad"><span class="sign">√</span><span class="rand"><i>x</i><sup>2</sup></span></span> = −<i>x</i></span> there. Worth a minute at the board.</div>
+      </div>
+    </li>
+
+    <li class="sol hard">
+      <div class="solhead">
+        <div class="num">7</div>
+        <div class="prompt m">
+          <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→0</span></span>
+          <span class="frac"><span class="num-t"><span class="rad"><span class="sign">√</span><span class="rand">1 + <i>x</i></span></span> − <span class="rad"><span class="sign">√</span><span class="rand">1 − <i>x</i></span></span></span><span class="den-t"><i>x</i></span></span>
+        </div>
+        <div class="ans m">= 1</div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→0</span></span>
+            <span class="frac"><span class="num-t">(<span class="rad"><span class="sign">√</span><span class="rand">1+<i>x</i></span></span> − <span class="rad"><span class="sign">√</span><span class="rand">1−<i>x</i></span></span>)(<span class="rad"><span class="sign">√</span><span class="rand">1+<i>x</i></span></span> + <span class="rad"><span class="sign">√</span><span class="rand">1−<i>x</i></span></span>)</span><span class="den-t"><i>x</i> (<span class="rad"><span class="sign">√</span><span class="rand">1+<i>x</i></span></span> + <span class="rad"><span class="sign">√</span><span class="rand">1−<i>x</i></span></span>)</span></span>
+          </div>
+          <div class="code">M1</div>
+        </div>
+        <div class="why">Multiply above and below by the conjugate.</div>
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→0</span></span>
+            <span class="frac"><span class="num-t">(1 + <i>x</i>) − (1 − <i>x</i>)</span><span class="den-t"><i>x</i> (<span class="rad"><span class="sign">√</span><span class="rand">1+<i>x</i></span></span> + <span class="rad"><span class="sign">√</span><span class="rand">1−<i>x</i></span></span>)</span></span>
+            <span class="eq" style="margin:0 .5em">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→0</span></span>
+            <span class="frac"><span class="num-t">2<i>x</i></span><span class="den-t"><i>x</i> (<span class="rad"><span class="sign">√</span><span class="rand">1+<i>x</i></span></span> + <span class="rad"><span class="sign">√</span><span class="rand">1−<i>x</i></span></span>)</span></span>
+          </div>
+          <div class="code">A1</div>
+        </div>
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→0</span></span>
+            <span class="frac"><span class="num-t">2</span><span class="den-t"><span class="rad"><span class="sign">√</span><span class="rand">1+<i>x</i></span></span> + <span class="rad"><span class="sign">√</span><span class="rand">1−<i>x</i></span></span></span></span>
+            <span style="margin-left:.6em">(cancel <i>x</i> ≠ 0)</span>
+          </div>
+          <div class="code">A1</div>
+        </div>
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="frac"><span class="num-t">2</span><span class="den-t">1 + 1</span></span>
+            <span class="eq" style="margin:0 .5em">=</span> <b>1</b>
+          </div>
+          <div class="code">A1</div>
+        </div>
+      </div>
+    </li>
+
+    <li class="sol hard">
+      <div class="solhead">
+        <div class="num">8</div>
+        <div class="prompt m">
+          <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→∞</span></span>
+          <span class="paren">(</span>
+          <span class="rad"><span class="sign">√</span><span class="rand"><i>x</i><sup>2</sup> + <i>x</i></span></span> − <i>x</i>
+          <span class="paren">)</span>
+        </div>
+        <div class="ans m">= <span class="frac"><span class="num-t">1</span><span class="den-t">2</span></span></div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→∞</span></span>
+            <span class="frac"><span class="num-t">(<span class="rad"><span class="sign">√</span><span class="rand"><i>x</i><sup>2</sup>+<i>x</i></span></span> − <i>x</i>)(<span class="rad"><span class="sign">√</span><span class="rand"><i>x</i><sup>2</sup>+<i>x</i></span></span> + <i>x</i>)</span><span class="den-t"><span class="rad"><span class="sign">√</span><span class="rand"><i>x</i><sup>2</sup>+<i>x</i></span></span> + <i>x</i></span></span>
+          </div>
+          <div class="code">M1</div>
+        </div>
+        <div class="why">The form is ∞ − ∞, so rationalise: multiply and divide by the conjugate.</div>
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→∞</span></span>
+            <span class="frac"><span class="num-t">(<i>x</i><sup>2</sup> + <i>x</i>) − <i>x</i><sup>2</sup></span><span class="den-t"><span class="rad"><span class="sign">√</span><span class="rand"><i>x</i><sup>2</sup>+<i>x</i></span></span> + <i>x</i></span></span>
+            <span class="eq" style="margin:0 .5em">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→∞</span></span>
+            <span class="frac"><span class="num-t"><i>x</i></span><span class="den-t"><span class="rad"><span class="sign">√</span><span class="rand"><i>x</i><sup>2</sup>+<i>x</i></span></span> + <i>x</i></span></span>
+          </div>
+          <div class="code">A1</div>
+        </div>
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="lim"><span class="op">lim</span><span class="to"><i>x</i>→∞</span></span>
+            <span class="frac"><span class="num-t">1</span><span class="den-t"><span class="rad"><span class="sign">√</span><span class="rand">1 + 1/<i>x</i></span></span> + 1</span></span>
+            <span style="margin-left:.6em">(divide by <i>x</i> &gt; 0)</span>
+          </div>
+          <div class="code">A1</div>
+        </div>
+        <div class="step">
+          <div class="stepmath m"><span class="eq">=</span>
+            <span class="frac"><span class="num-t">1</span><span class="den-t">1 + 1</span></span>
+            <span class="eq" style="margin:0 .5em">=</span> <b><span class="frac"><span class="num-t">1</span><span class="den-t">2</span></span></b>
+          </div>
+          <div class="code">A1</div>
+        </div>
+        <div class="flag"><b>Watch for</b>students who write ∞ − ∞ = 0. State the indeterminate form before rationalising.</div>
+      </div>
+    </li>
+
+  </ol>
+
+  <div class="footline">
+    <span>Limits Mark Scheme A</span>
+    <span>26 marks total</span>
+  </div>
+</section>
