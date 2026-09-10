@@ -1,0 +1,443 @@
+<title>From Slope to Derivative</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap">
+<style>
+  :root{
+    --paper:#fcfdfe; --board:#eef2f5; --ink:#16222e; --ink-soft:#556676;
+    --rule:#c4d2dc; --rule-soft:#dde6ec; --accent:#1c6e8c; --warm:#9a6314;
+    --wash:rgba(28,110,140,.055); --warmwash:rgba(154,99,20,.07);
+    --shadow:0 1px 2px rgba(22,34,46,.06), 0 10px 28px rgba(22,34,46,.07);
+    --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --serif:"Source Serif 4", "Iowan Old Style", Georgia, serif;
+    --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141a20; --board:#0d1116; --ink:#e6edf3; --ink-soft:#9bacba;
+      --rule:#39474f; --rule-soft:#26313a; --accent:#63b6d1; --warm:#d9a25a;
+      --wash:rgba(99,182,209,.08); --warmwash:rgba(217,162,90,.10);
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141a20; --board:#0d1116; --ink:#e6edf3; --ink-soft:#9bacba;
+    --rule:#39474f; --rule-soft:#26313a; --accent:#63b6d1; --warm:#d9a25a;
+    --wash:rgba(99,182,209,.08); --warmwash:rgba(217,162,90,.10);
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.45);
+  }
+
+  body{background:var(--board);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;padding:28px 16px 56px;}
+  .bar{max-width:210mm;margin:0 auto 18px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+  .bar h1{font-size:1.05rem;font-weight:600;margin:0;}
+  .bar p{margin:0;color:var(--ink-soft);font-size:.82rem;}
+  .print{margin-left:auto;font:500 .8rem/1 var(--sans);color:var(--paper);background:var(--accent);
+    border:none;border-radius:3px;padding:9px 15px;cursor:pointer;}
+  .print:hover{filter:brightness(1.08);}
+  .print:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+
+  .sheet{width:210mm;min-height:297mm;margin:0 auto 22px;padding:16mm 17mm 14mm;
+    background:var(--paper);box-shadow:var(--shadow);box-sizing:border-box;}
+
+  .masthead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;
+    border-bottom:2px solid var(--ink);padding-bottom:7px;}
+  .masthead .title{font-size:1.6rem;font-weight:600;letter-spacing:-.018em;margin:0;text-wrap:balance;}
+  .masthead .sub{font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 3px;}
+  .stamp{font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--ink-soft);white-space:nowrap;}
+
+  .opener{margin:12px 0 0;font-size:1.02rem;max-width:62ch;}
+  .opener b{font-weight:600;}
+  .tri{margin:9px 0 0;padding-left:11px;border-left:2px solid var(--rule);
+    font-size:.86rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:2px;}
+  .tri span b{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--accent);font-weight:400;margin-right:8px;}
+
+  /* the five-stage chain */
+  .chain{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:15px 0 0;
+    border:1px solid var(--rule);border-radius:2px;overflow:hidden;}
+  .link{padding:9px 10px;border-right:1px solid var(--rule-soft);display:flex;flex-direction:column;gap:3px;}
+  .link:last-child{border-right:none;}
+  .link.end{background:var(--wash);}
+  .link .n{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;color:var(--ink-soft);}
+  .link .w{font-weight:600;font-size:.92rem;line-height:1.2;}
+  .link .d{font-size:.72rem;color:var(--ink-soft);line-height:1.35;}
+  .link .t{font-size:.68rem;color:var(--warm);line-height:1.35;}
+
+  h3.stage{display:flex;align-items:baseline;gap:10px;margin:22px 0 0;font-size:1.14rem;font-weight:600;
+    letter-spacing:-.01em;padding-bottom:5px;border-bottom:1px solid var(--rule-soft);}
+  h3.stage .step{font-family:var(--mono);font-size:.72rem;font-weight:500;color:var(--accent);
+    border:1px solid var(--rule);border-radius:2px;padding:1px 6px;}
+  h3.stage .native{margin-left:auto;font-family:var(--sans);font-size:.74rem;font-weight:400;color:var(--ink-soft);}
+  .stage-body{display:grid;grid-template-columns:1fr 300px;gap:16px 22px;align-items:start;margin-top:9px;}
+  .stage-body.wide{grid-template-columns:1fr;}
+  .stage-body p{margin:0 0 8px;max-width:58ch;}
+  .stage-body p:last-child{margin-bottom:0;}
+
+  figure{margin:0;}
+  .fig{width:100%;height:auto;display:block;color:var(--ink);}
+  figcaption{font-size:.72rem;color:var(--ink-soft);margin-top:4px;line-height:1.4;}
+  .axis{font-family:var(--serif);font-style:italic;font-size:11px;fill:currentColor;opacity:.75;}
+  .pt{font-family:var(--serif);font-size:11.5px;fill:currentColor;}
+  .lab{font-family:var(--sans);font-size:10.5px;fill:currentColor;}
+  .lab.warm,text.warm{fill:var(--warm);}
+  .lab.acc{fill:var(--accent);}
+
+  .formula{font-family:var(--serif);font-size:1.06rem;text-align:center;
+    padding:9px 12px;margin:9px 0;background:var(--wash);border-radius:2px;}
+  .formula.big{font-size:1.2rem;}
+  .m{font-family:var(--serif);}
+  .m i{font-style:italic;}
+  .m sup{font-size:.62em;line-height:0;position:relative;top:-.4em;padding-left:.04em;}
+  .frac{display:inline-flex;flex-direction:column;align-items:stretch;text-align:center;vertical-align:middle;margin:0 .14em;}
+  .frac .num-t{border-bottom:1.1px solid currentColor;padding:.12em .42em .14em;line-height:1.45;}
+  .frac .den-t{padding:.14em .42em .02em;line-height:1.45;}
+  .lim{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin-right:.3em;}
+  .lim .op{font-style:normal;line-height:1;}
+  .lim .to{font-size:.62em;line-height:1.25;margin-top:.05em;}
+
+  table.vals{border-collapse:collapse;width:100%;font-size:.84rem;margin:4px 0 0;}
+  table.vals th,table.vals td{border:1px solid var(--rule-soft);padding:4px 8px;text-align:center;
+    font-variant-numeric:tabular-nums;}
+  table.vals th{font-family:var(--mono);font-size:.64rem;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--ink-soft);font-weight:400;background:var(--wash);}
+  table.vals td.arrow{color:var(--accent);font-weight:600;}
+
+  .note{border-left:2px solid var(--warm);background:var(--warmwash);padding:7px 11px;margin:10px 0 0;
+    font-size:.84rem;border-radius:0 2px 2px 0;}
+  .note b{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--warm);font-weight:400;margin-right:8px;}
+
+  .work{font-family:var(--serif);font-size:1rem;display:flex;flex-direction:column;gap:5px;
+    padding:10px 12px;border:1px solid var(--rule-soft);border-radius:2px;margin-top:9px;}
+  .work .why{font-family:var(--sans);font-size:.76rem;color:var(--ink-soft);}
+
+  .big-idea{border:1.5px solid var(--accent);border-radius:2px;padding:12px 14px;margin:20px 0 0;
+    display:flex;flex-direction:column;gap:7px;}
+  .big-idea .h{font-family:var(--mono);font-size:.64rem;letter-spacing:.11em;text-transform:uppercase;color:var(--accent);}
+  .big-idea .en{font-size:1.04rem;font-weight:500;max-width:64ch;}
+  .big-idea .x{font-size:.87rem;color:var(--ink-soft);}
+  .big-idea .x b{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--accent);font-weight:400;margin-right:8px;}
+
+  h4.block{font-size:.98rem;font-weight:600;margin:22px 0 7px;padding-bottom:4px;border-bottom:1px solid var(--rule);}
+  table.gloss{border-collapse:collapse;width:100%;font-size:.85rem;}
+  table.gloss th{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink-soft);font-weight:400;text-align:left;padding:5px 9px;background:var(--wash);
+    border:1px solid var(--rule-soft);}
+  table.gloss td{border:1px solid var(--rule-soft);padding:4px 9px;vertical-align:top;}
+  table.gloss td:first-child{font-weight:500;}
+  table.gloss tr.key td{background:var(--wash);}
+
+  ol.check{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px;font-size:.92rem;}
+  ol.check li::marker{font-family:var(--mono);font-size:.8rem;color:var(--accent);}
+  .answers{margin-top:10px;font-size:.8rem;color:var(--ink-soft);
+    border-top:1px dashed var(--rule);padding-top:7px;}
+  .answers b{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-soft);font-weight:400;margin-right:8px;}
+
+  .footline{margin-top:16px;padding-top:7px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft);}
+
+  @media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important;}}
+
+  @page{size:A4;margin:14mm 15mm;}
+  @media print{
+    :root{--paper:#fff;--board:#fff;--ink:#000;--ink-soft:#3f3f3f;--rule:#8b8b8b;--rule-soft:#bdbdbd;
+      --accent:#1c6e8c;--warm:#8a5410;--wash:rgba(0,0,0,.045);--warmwash:rgba(0,0,0,.05);--shadow:none;}
+    body{background:#fff;padding:0;}
+    .bar{display:none;}
+    .sheet{width:auto;min-height:auto;margin:0;padding:0;box-shadow:none;}
+    .chain,.formula,.note,.big-idea,table.vals th,table.gloss th,table.gloss tr.key td,.link.end{
+      -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    h3.stage,figure,.big-idea,.work,table.gloss,ol.check{break-inside:avoid;}
+    h3.stage{break-after:avoid;}
+  }
+
+  @media screen and (max-width:230mm){
+    .sheet{width:100%;padding:20px;min-height:auto;}
+    .chain{grid-template-columns:1fr 1fr;}
+    .stage-body{grid-template-columns:1fr;}
+    h3.stage{flex-wrap:wrap;}
+    h3.stage .native{margin-left:0;flex-basis:100%;}
+    table.gloss,table.vals{display:block;overflow-x:auto;}
+  }
+</style>
+
+<div class="bar">
+  <h1>From Slope to Derivative</h1>
+  <p>Grade 11 lesson notes · English · Oʻzbekcha · Русский</p>
+  <button class="print" type="button" onclick="window.print()">Print</button>
+</div>
+
+<section class="sheet">
+  <div class="masthead">
+    <div>
+      <p class="sub">Calculus · Before the rules of differentiation</p>
+      <h2 class="title">From Slope to Derivative</h2>
+    </div>
+    <div class="stamp">Grade 11 · Lesson notes</div>
+  </div>
+
+  <p class="opener">These five words look like five topics. They are <b>one story</b>, and they all answer
+  the same question: <b>how steep is the graph here?</b> Read the chain below, then follow it one step at a time.</p>
+
+  <div class="tri">
+    <span><b>Oʻzb</b>Bu beshta soʻz bitta savolga javob beradi: grafik shu nuqtada qanchalik tik?</span>
+    <span><b>Рус</b>Все пять слов отвечают на один вопрос: насколько круто идёт график в этой точке?</span>
+  </div>
+
+  <div class="chain">
+    <div class="link">
+      <div class="n">01</div><div class="w">Slope</div>
+      <div class="d">Steepness of a straight line.</div>
+      <div class="t">burchak koeffitsiyenti · наклон</div>
+    </div>
+    <div class="link">
+      <div class="n">02</div><div class="w">Gradient</div>
+      <div class="d">The same number — but a curve needs it <i>at a point</i>.</div>
+      <div class="t">burchak koeffitsiyenti · угловой коэффициент</div>
+    </div>
+    <div class="link">
+      <div class="n">03</div><div class="w">Secant line</div>
+      <div class="d">Cuts the curve twice. Gives average steepness.</div>
+      <div class="t">kesuvchi · секущая</div>
+    </div>
+    <div class="link">
+      <div class="n">04</div><div class="w">Tangent line</div>
+      <div class="d">Touches at one point. Gives steepness there.</div>
+      <div class="t">urinma · касательная</div>
+    </div>
+    <div class="link end">
+      <div class="n">05</div><div class="w">Derivative</div>
+      <div class="d">The number that is the gradient of that tangent.</div>
+      <div class="t">hosila · производная</div>
+    </div>
+  </div>
+
+  <h3 class="stage"><span class="step">01</span> Slope of a straight line
+    <span class="native">toʻgʻri chiziqning burchak koeffitsiyenti · наклон прямой</span></h3>
+  <div class="stage-body">
+    <div>
+      <p>Take any two points on a straight line. Go <b>across</b>, then go <b>up</b>. Divide.</p>
+      <div class="formula m">slope =
+        <span class="frac"><span class="num-t">rise</span><span class="den-t">run</span></span>
+        =
+        <span class="frac"><span class="num-t"><i>y</i><sub>2</sub> − <i>y</i><sub>1</sub></span><span class="den-t"><i>x</i><sub>2</sub> − <i>x</i><sub>1</sub></span></span>
+        =
+        <span class="frac"><span class="num-t">6</span><span class="den-t">3</span></span> = 2
+      </div>
+      <p>Slope 2 means: every 1 step to the right, the line climbs 2 steps up.</p>
+      <p>A straight line is equally steep everywhere. Pick <i>any</i> two points on it and you get the same
+      answer — this is exactly what makes a line straight.</p>
+    </div>
+    <figure>
+      <svg viewBox="0 0 300 220" role="img" aria-label="A straight line through two points, with a right triangle showing rise 6 over run 3, giving slope 2." class="fig">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <line x1="20" y1="196" x2="292" y2="196" stroke="currentColor" stroke-width="1" marker-end="url(#ar)" opacity=".55"/>
+  <line x1="34" y1="208" x2="34" y2="26" stroke="currentColor" stroke-width="1" marker-end="url(#ar)" opacity=".55"/>
+  <text x="286" y="210" class="axis">x</text>
+  <text x="22" y="30" class="axis">y</text>
+  <line x1="49.0" y1="196.0" x2="169.0" y2="44.0" stroke="var(--accent)" stroke-width="2"/>
+  <polyline points="64.0,177.0 154.0,177.0 154.0,63.0" fill="none"
+            stroke="var(--warm)" stroke-width="1.6" stroke-dasharray="5 3"/>
+  <circle cx="64.0" cy="177.0" r="3.5" fill="var(--accent)"/>
+  <circle cx="154.0" cy="63.0" r="3.5" fill="var(--accent)"/>
+  <text x="57.0" y="170.0" class="pt" text-anchor="end">A(1, 1)</text>
+  <text x="146.0" y="56.0" class="pt" text-anchor="end">B(4, 7)</text>
+  <text x="109.0" y="192.0" class="lab warm" text-anchor="middle">run = 3</text>
+  <text x="162.0" y="120.0" class="lab warm">rise = 6</text>
+</svg>
+      <figcaption>Slope of the line through A and B: rise 6 divided by run 3.</figcaption>
+    </figure>
+  </div>
+
+  <h3 class="stage"><span class="step">02</span> Gradient — same number, harder question
+    <span class="native">egri chiziqning qiyaligi · крутизна кривой</span></h3>
+  <div class="stage-body">
+    <div>
+      <p><b>Gradient</b> is another word for slope. In your textbook it is the
+      <i>burchak koeffitsiyenti</i> / <i>угловой коэффициент</i>.</p>
+      <p>Now look at a curve. It is gentle near the bottom and steep further along. So this question
+      has no answer: “What is the gradient of <span class="m"><i>y</i> = <i>x</i><sup>2</sup></span>?”</p>
+      <p>Only this one does: <b>“What is the gradient of the curve <i>at this point</i>?”</b>
+      Everything that follows exists to answer it.</p>
+    </div>
+    <figure>
+      <svg viewBox="0 0 300 220" role="img" aria-label="The curve y equals x squared with three points marked; the curve is gently sloped at the first and steep at the third." class="fig">
+  <line x1="20" y1="196" x2="292" y2="196" stroke="currentColor" stroke-width="1" opacity=".55"/>
+  <line x1="34" y1="208" x2="34" y2="26" stroke="currentColor" stroke-width="1" opacity=".55"/>
+  <text x="286" y="210" class="axis">x</text>
+  <text x="22" y="30" class="axis">y</text>
+  <polyline points="34.0,196.0 41.2,195.8 48.4,195.4 55.6,194.6 62.8,193.5 70.0,192.1 77.2,190.4 84.4,188.4 91.6,186.1 98.8,183.4 106.0,180.5 113.2,177.2 120.4,173.7 127.6,169.8 134.8,165.6 142.0,161.1 149.2,156.3 156.4,151.2 163.6,145.8 170.8,140.0 178.0,134.0 185.2,127.6 192.4,121.0 199.6,114.0 206.8,106.7 214.0,99.1 221.2,91.2 228.4,83.0 235.6,74.5 242.8,65.6 250.0,56.5 257.2,47.0 264.4,37.3" fill="none" stroke="currentColor" stroke-width="2" opacity=".85"/>
+  <line x1="52.0" y1="196.0" x2="88.0" y2="188.2" stroke="var(--accent)" stroke-width="2"/><circle cx="70.0" cy="192.1" r="3.2" fill="var(--accent)"/><text x="62.0" y="184.1" class="lab" text-anchor="end">gradient 1</text><line x1="116.8" y1="177.4" x2="167.2" y2="144.8" stroke="var(--accent)" stroke-width="2"/><circle cx="142.0" cy="161.1" r="3.2" fill="var(--accent)"/><text x="149.0" y="174.1" class="lab">gradient 3</text><line x1="192.4" y1="122.4" x2="235.6" y2="75.9" stroke="var(--accent)" stroke-width="2"/><circle cx="214.0" cy="99.1" r="3.2" fill="var(--accent)"/><text x="221.0" y="112.1" class="lab">gradient 5</text>
+</svg>
+      <figcaption>One curve, three points, three different gradients: 1, 3 and 5.</figcaption>
+    </figure>
+  </div>
+
+  <h3 class="stage"><span class="step">03</span> Secant line — steepness between two points
+    <span class="native">kesuvchi · секущая</span></h3>
+  <div class="stage-body">
+    <div>
+      <p>We only know how to find the slope of a <i>straight</i> line. So draw one: take two points on the
+      curve, <span class="m">P</span> and <span class="m">Q</span>, and join them. That line is the
+      <b>secant</b>.</p>
+      <p>Call the step across <span class="m"><i>h</i></span>. Then <span class="m">P</span> is
+      <span class="m">(<i>x</i>, <i>f</i>(<i>x</i>))</span> and <span class="m">Q</span> is
+      <span class="m">(<i>x</i>+<i>h</i>, <i>f</i>(<i>x</i>+<i>h</i>))</span>, and the slope is:</p>
+      <div class="formula m">
+        <span class="frac"><span class="num-t"><i>f</i>(<i>x</i>+<i>h</i>) − <i>f</i>(<i>x</i>)</span><span class="den-t"><i>h</i></span></span>
+      </div>
+      <p>For <span class="m"><i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup></span> with
+      <span class="m">P(1, 1)</span> and <span class="m">Q(3, 9)</span>:
+      <span class="m">(9 − 1) / (3 − 1) = 4</span>.</p>
+      <p>What does 4 mean? It is the <b>average</b> steepness from <span class="m"><i>x</i> = 1</span> to
+      <span class="m"><i>x</i> = 3</span> — like average speed on a journey: total distance over total time.
+      It says nothing about one single moment.</p>
+    </div>
+    <figure>
+      <svg viewBox="0 0 360 220" role="img" aria-label="A secant line cutting the curve at P(1,1) and Q(3,9); the step across is h and the step up is f of x plus h minus f of x." class="fig">
+  <line x1="20" y1="196" x2="322" y2="196" stroke="currentColor" stroke-width="1" opacity=".55"/>
+  <line x1="34" y1="208" x2="34" y2="26" stroke="currentColor" stroke-width="1" opacity=".55"/>
+  <text x="316" y="210" class="axis">x</text>
+  <text x="22" y="30" class="axis">y</text>
+  <polyline points="34.0,196.0 41.2,195.8 48.4,195.4 55.6,194.6 62.8,193.5 70.0,192.1 77.2,190.4 84.4,188.4 91.6,186.1 98.8,183.4 106.0,180.5 113.2,177.2 120.4,173.7 127.6,169.8 134.8,165.6 142.0,161.1 149.2,156.3 156.4,151.2 163.6,145.8 170.8,140.0 178.0,134.0 185.2,127.6 192.4,121.0 199.6,114.0 206.8,106.7 214.0,99.1 221.2,91.2 228.4,83.0 235.6,74.5 242.8,65.6 250.0,56.5 257.2,47.0 264.4,37.3" fill="none" stroke="currentColor" stroke-width="2" opacity=".85"/>
+  <line x1="88.0" y1="196.0" x2="260.8" y2="47.2" stroke="var(--warm)" stroke-width="2"/>
+  <polyline points="106.0,180.5 250.0,180.5 250.0,56.5"
+            fill="none" stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 3" opacity=".6"/>
+  <circle cx="106.0" cy="180.5" r="3.5" fill="currentColor"/>
+  <circle cx="250.0" cy="56.5" r="3.5" fill="var(--warm)"/>
+  <text x="98.0" y="172.5" class="pt" text-anchor="end">P(x, f(x))</text>
+  <text x="242.0" y="48.5" class="pt" text-anchor="end">Q(x+h, f(x+h))</text>
+  <text x="178.0" y="174.5" class="lab" text-anchor="middle">h</text>
+  <text x="257.0" y="118.5" class="lab">f(x+h) − f(x)</text>
+</svg>
+      <figcaption>The secant through P and Q. Its slope is the step up divided by the step across, h.</figcaption>
+    </figure>
+  </div>
+
+  <h3 class="stage"><span class="step">04</span> Tangent line — steepness at one point
+    <span class="native">urinma · касательная</span></h3>
+  <div class="stage-body">
+    <div>
+      <p>Now we want the steepness <i>exactly at</i> <span class="m">P</span>. One point is not enough:
+      the rise is 0 and the run is 0, and <span class="m">0/0</span> is meaningless.</p>
+      <p>So keep two points — but slide <span class="m">Q</span> down the curve towards
+      <span class="m">P</span>, and watch the secant slopes. For
+      <span class="m"><i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup></span> at <span class="m"><i>x</i> = 1</span>:</p>
+      <table class="vals">
+        <tr><th>h</th><th>1</th><th>0.5</th><th>0.1</th><th>0.01</th><th>0.001</th><th>→ 0</th></tr>
+        <tr><th>secant slope</th><td>3</td><td>2.5</td><td>2.1</td><td>2.01</td><td>2.001</td><td class="arrow">2</td></tr>
+      </table>
+      <p>The numbers do not jump around. They walk steadily towards <b>2</b>. And the secant lines
+      themselves settle onto one line: the <b>tangent</b> at <span class="m">P</span>. It touches the curve
+      at <span class="m">P</span> and points in the same direction the curve is going there.</p>
+      <div class="note"><b>Careful</b>“Touches at one point” describes the direction near P. A tangent is
+      still allowed to cross the curve somewhere far away — that does not stop it being a tangent at P.</div>
+    </div>
+    <figure>
+      <svg viewBox="0 0 300 220" role="img" aria-label="Three secant lines from P to points sliding down the curve; as the second point approaches P the secants close on the tangent line at P." class="fig">
+  <defs>
+    <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--warm)"/>
+    </marker>
+  </defs>
+  <line x1="20" y1="196" x2="292" y2="196" stroke="currentColor" stroke-width="1" opacity=".55"/>
+  <line x1="34" y1="208" x2="34" y2="26" stroke="currentColor" stroke-width="1" opacity=".55"/>
+  <text x="286" y="210" class="axis">x</text>
+  <text x="22" y="30" class="axis">y</text>
+  <polyline points="34.0,196.0 41.2,195.8 48.4,195.4 55.6,194.6 62.8,193.5 70.0,192.1 77.2,190.4 84.4,188.4 91.6,186.1 98.8,183.4 106.0,180.5 113.2,177.2 120.4,173.7 127.6,169.8 134.8,165.6 142.0,161.1 149.2,156.3 156.4,151.2 163.6,145.8 170.8,140.0 178.0,134.0 185.2,127.6 192.4,121.0 199.6,114.0 206.8,106.7 214.0,99.1 221.2,91.2 228.4,83.0 235.6,74.5 242.8,65.6 250.0,56.5 257.2,47.0 264.4,37.3" fill="none" stroke="currentColor" stroke-width="2" opacity=".85"/>
+  <line x1="88.0" y1="196.0" x2="258.6" y2="49.1" stroke="var(--warm)" stroke-width="1.5" stroke-dasharray="5 3" opacity=".9"/><circle cx="250.0" cy="56.5" r="3" fill="var(--warm)"/><line x1="82.0" y1="196.0" x2="186.6" y2="128.4" stroke="var(--warm)" stroke-width="1.5" stroke-dasharray="4 3" opacity=".9"/><circle cx="178.0" cy="134.0" r="3" fill="var(--warm)"/><line x1="77.2" y1="196.0" x2="150.6" y2="156.5" stroke="var(--warm)" stroke-width="1.5" stroke-dasharray="3 3" opacity=".9"/><circle cx="142.0" cy="161.1" r="3" fill="var(--warm)"/>
+  <line x1="70.0" y1="196.0" x2="250.0" y2="118.5" stroke="var(--accent)" stroke-width="2.4"/>
+  <path d="M 244.0 62.5 Q 186.0 122.8 144.0 170.1"
+        fill="none" stroke="var(--warm)" stroke-width="1.4" marker-end="url(#ar2)"/>
+  <circle cx="106.0" cy="180.5" r="4" fill="var(--accent)"/>
+  <text x="115.0" y="194.5" class="pt">P</text>
+  <text x="234.0" y="47.5" class="lab warm">Q</text>
+  <text x="204.0" y="152.5" class="lab acc">tangent at P</text>
+</svg>
+      <figcaption>Three secants (brown, dashed) as Q slides towards P. They close on the tangent (blue).</figcaption>
+    </figure>
+  </div>
+
+  <h3 class="stage"><span class="step">05</span> Derivative — the limit gets a name
+    <span class="native">hosila · производная</span></h3>
+  <div class="stage-body wide">
+    <div>
+      <p>“The number the secant slopes walk towards” is a mouthful. Mathematics gives it a name and a
+      symbol — the <b>derivative</b>:</p>
+      <div class="formula big m">
+        <i>f</i>′(<i>x</i>) =
+        <span class="lim"><span class="op">lim</span><span class="to"><i>h</i>→0</span></span>
+        <span class="frac"><span class="num-t"><i>f</i>(<i>x</i>+<i>h</i>) − <i>f</i>(<i>x</i>)</span><span class="den-t"><i>h</i></span></span>
+      </div>
+      <p>Do it once by hand for <span class="m"><i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup></span>, so the
+      table above stops being magic:</p>
+      <div class="work">
+        <div class="m"><span class="frac"><span class="num-t">(<i>x</i>+<i>h</i>)<sup>2</sup> − <i>x</i><sup>2</sup></span><span class="den-t"><i>h</i></span></span>
+          =
+          <span class="frac"><span class="num-t"><i>x</i><sup>2</sup> + 2<i>xh</i> + <i>h</i><sup>2</sup> − <i>x</i><sup>2</sup></span><span class="den-t"><i>h</i></span></span>
+          =
+          <span class="frac"><span class="num-t">2<i>xh</i> + <i>h</i><sup>2</sup></span><span class="den-t"><i>h</i></span></span>
+          = 2<i>x</i> + <i>h</i></div>
+        <div class="why">We may cancel h because h ≠ 0 — Q has not reached P yet, it is only close.</div>
+        <div class="m">Now let <i>h</i> → 0:&nbsp;&nbsp; <i>f</i>′(<i>x</i>) = 2<i>x</i>,&nbsp;&nbsp; so
+          <i>f</i>′(1) = 2.</div>
+        <div class="why">The same 2 the table was walking towards — found exactly, not guessed.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="big-idea">
+    <div class="h">The whole chain in one sentence</div>
+    <div class="en">The derivative is the gradient of the tangent — and the tangent is what the secant
+    becomes when the two points meet.</div>
+    <div class="x"><b>Oʻzb</b>Hosila — urinmaning burchak koeffitsiyenti; urinma esa ikki nuqta
+    birlashganda kesuvchidan hosil boʻladi.</div>
+    <div class="x"><b>Рус</b>Производная — угловой коэффициент касательной; а касательная — это то, во что
+    превращается секущая, когда две точки сливаются.</div>
+  </div>
+
+  <h4 class="block">Words you will hear in three languages</h4>
+  <table class="gloss">
+    <tr><th>English</th><th>Oʻzbekcha</th><th>Русский</th></tr>
+    <tr><td>straight line</td><td>toʻgʻri chiziq</td><td>прямая</td></tr>
+    <tr><td>curve</td><td>egri chiziq</td><td>кривая</td></tr>
+    <tr class="key"><td>slope / gradient</td><td>burchak koeffitsiyenti, qiyalik</td><td>угловой коэффициент, наклон</td></tr>
+    <tr><td>rise (step up), Δy</td><td>funksiya orttirmasi, Δy</td><td>приращение функции, Δy</td></tr>
+    <tr><td>run (step across), Δx</td><td>argument orttirmasi, Δx</td><td>приращение аргумента, Δx</td></tr>
+    <tr class="key"><td>secant line</td><td>kesuvchi</td><td>секущая</td></tr>
+    <tr class="key"><td>tangent line</td><td>urinma</td><td>касательная</td></tr>
+    <tr><td>point of tangency</td><td>urinish nuqtasi</td><td>точка касания</td></tr>
+    <tr><td>difference quotient</td><td>ayirmali nisbat</td><td>разностное отношение</td></tr>
+    <tr><td>limit</td><td>limit</td><td>предел</td></tr>
+    <tr class="key"><td>derivative</td><td>hosila</td><td>производная</td></tr>
+    <tr><td>average rate of change</td><td>oʻrtacha oʻzgarish tezligi</td><td>средняя скорость изменения</td></tr>
+    <tr><td>instantaneous rate of change</td><td>oniy oʻzgarish tezligi</td><td>мгновенная скорость изменения</td></tr>
+  </table>
+
+  <h4 class="block">Check yourself · Oʻzingizni tekshiring · Проверьте себя</h4>
+  <ol class="check">
+    <li>A straight line passes through <span class="m">(2, 3)</span> and <span class="m">(6, 11)</span>.
+      Find its slope. Then find it again using two <i>different</i> points on the same line — what do you notice?</li>
+    <li>For <span class="m"><i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup></span>, find the slope of the secant
+      between <span class="m"><i>x</i> = 2</span> and <span class="m"><i>x</i> = 2.1</span>.</li>
+    <li>Using <span class="m"><i>f</i>′(<i>x</i>) = 2<i>x</i></span>, write down the gradient of the tangent
+      at <span class="m"><i>x</i> = 2</span>. Compare it with your answer to question 2. Why are they close
+      but not equal?</li>
+  </ol>
+  <p class="answers"><b>Answers</b>1 — slope 2, and any two points give 2, because the line is equally steep
+  everywhere. &nbsp;2 — (4.41 − 4) / 0.1 = 4.1. &nbsp;3 — the tangent gradient is 4. The secant used a step of
+  h = 0.1, so it gives the average over that step, slightly steeper than the value at the point itself.
+  Shrink h and 4.1 walks towards 4.</p>
+
+  <div class="footline">
+    <span>From Slope to Derivative · Grade 11</span>
+    <span>Blue = at a point (tangent, derivative) · Brown = between two points (secant)</span>
+  </div>
+</section>
