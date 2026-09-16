@@ -1,0 +1,267 @@
+<title>Slope to Derivative Practice</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap">
+<style>
+  :root{
+    --paper:#fcfdfe; --board:#eef2f5; --ink:#16222e; --ink-soft:#556676;
+    --rule:#c4d2dc; --rule-soft:#dde6ec; --accent:#1c6e8c; --warm:#9a6314;
+    --wash:rgba(28,110,140,.055); --warmwash:rgba(154,99,20,.07);
+    --shadow:0 1px 2px rgba(22,34,46,.06), 0 10px 28px rgba(22,34,46,.07);
+    --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --serif:"Source Serif 4", "Iowan Old Style", Georgia, serif;
+    --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141a20; --board:#0d1116; --ink:#e6edf3; --ink-soft:#9bacba;
+      --rule:#39474f; --rule-soft:#26313a; --accent:#63b6d1; --warm:#d9a25a;
+      --wash:rgba(99,182,209,.08); --warmwash:rgba(217,162,90,.10);
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141a20; --board:#0d1116; --ink:#e6edf3; --ink-soft:#9bacba;
+    --rule:#39474f; --rule-soft:#26313a; --accent:#63b6d1; --warm:#d9a25a;
+    --wash:rgba(99,182,209,.08); --warmwash:rgba(217,162,90,.10);
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.45);
+  }
+
+  body{background:var(--board);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;padding:28px 16px 56px;}
+  .bar{max-width:210mm;margin:0 auto 18px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+  .bar h1{font-size:1.05rem;font-weight:600;margin:0;}
+  .bar p{margin:0;color:var(--ink-soft);font-size:.82rem;}
+  .print{margin-left:auto;font:500 .8rem/1 var(--sans);color:var(--paper);background:var(--accent);
+    border:none;border-radius:3px;padding:9px 15px;cursor:pointer;}
+  .print:hover{filter:brightness(1.08);}
+  .print:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+
+  .sheet{width:210mm;min-height:297mm;margin:0 auto 22px;padding:16mm 17mm 14mm;
+    background:var(--paper);box-shadow:var(--shadow);box-sizing:border-box;}
+
+  .masthead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;
+    border-bottom:2px solid var(--ink);padding-bottom:7px;}
+  .masthead .title{font-size:1.32rem;font-weight:600;letter-spacing:-.018em;margin:0;text-wrap:balance;}
+  .masthead .sub{font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 3px;}
+  .stamp{font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--ink-soft);white-space:nowrap;}
+
+  .lede{margin:7px 0 0;font-size:.78rem;color:var(--ink-soft);max-width:none;}
+  .lede b{color:var(--ink);font-weight:500;}
+
+  .recall{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:8px 0 0;
+    border:1px solid var(--rule);border-radius:2px;overflow:hidden;}
+  .recall div{padding:6px 10px;border-right:1px solid var(--rule-soft);}
+  .recall div:last-child{border-right:none;}
+  .recall .k{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-soft);display:block;margin-bottom:4px;}
+  .recall .v{font-family:var(--serif);font-size:.9rem;}
+
+  h3.band{display:flex;align-items:center;gap:9px;margin:11px 0 0;padding-bottom:3px;
+    border-bottom:1.5px solid var(--ink);}
+  h3.band .bname{font-size:.95rem;font-weight:600;letter-spacing:-.01em;}
+  h3.band .bnative{margin-left:auto;font-size:.68rem;font-weight:400;color:var(--ink-soft);}
+  .pips{display:inline-flex;gap:3px;align-items:center;}
+  .pip{width:6px;height:6px;border-radius:50%;border:1px solid var(--accent);display:block;}
+  .pip.on{background:var(--accent);}
+  .blurb{margin:4px 0 0;font-size:.71rem;color:var(--ink-soft);}
+
+  ol.qs{list-style:none;margin:5px 0 0;padding:0;columns:2;column-gap:20px;
+    column-rule:1px solid var(--rule-soft);}
+  ol.qs li{display:grid;grid-template-columns:22px 1fr;gap:7px;align-items:baseline;
+    break-inside:avoid;margin-bottom:4px;}
+  .qn{font-family:var(--mono);font-size:.64rem;font-weight:500;color:var(--accent);}
+  .qt{font-size:.745rem;line-height:1.38;}
+
+  h3.part{margin:14px 0 0;padding:7px 11px;background:var(--ink);color:var(--paper);
+    font-size:.95rem;font-weight:600;border-radius:2px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  h3.part span{font-family:var(--mono);font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;opacity:.75;font-weight:400;}
+  h4.sband{display:flex;align-items:center;gap:8px;margin:7px 0 0;padding-bottom:2px;
+    border-bottom:1px solid var(--rule);font-size:.85rem;font-weight:600;}
+
+  ol.sols{list-style:none;margin:5px 0 0;padding:0;columns:2;column-gap:20px;
+    column-rule:1px solid var(--rule-soft);}
+  .sol{break-inside:avoid;display:grid;grid-template-columns:20px 1fr;gap:6px;
+    align-items:baseline;margin-bottom:3px;}
+  .sbody{font-family:var(--serif);font-size:.70rem;line-height:1.44;}
+  .ans{font-family:var(--serif);font-size:.70rem;color:var(--accent);
+    border:1px solid var(--accent);border-radius:2px;padding:1px 5px 0;white-space:nowrap;}
+  .sep{color:var(--ink-soft);opacity:.65;padding:0 .1em;}
+  .why{display:block;font-family:var(--sans);font-size:.62rem;color:var(--ink-soft);line-height:1.3;}
+  .minifig{width:190px;height:auto;margin-top:5px;color:var(--ink);}
+  .lab{font-family:var(--sans);font-size:9.5px;fill:currentColor;}
+  .lab.warm{fill:var(--warm);}
+  .lab.acc{fill:var(--accent);}
+
+  .m{font-family:var(--serif);white-space:nowrap;}
+  .m i{font-style:italic;}
+  .m sup{font-size:.62em;line-height:0;position:relative;top:-.4em;padding-left:.04em;}
+  .frac{display:inline-flex;flex-direction:column;align-items:stretch;text-align:center;vertical-align:middle;margin:0 .14em;}
+  .frac .num-t{border-bottom:1px solid currentColor;padding:.06em .32em .08em;line-height:1.3;}
+  .frac .den-t{padding:.08em .32em .02em;line-height:1.3;}
+  .lim{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin-right:.3em;}
+  .lim .op{font-style:normal;line-height:1;}
+  .lim .to{font-size:.62em;line-height:1.25;margin-top:.05em;}
+  .rad{display:inline-flex;align-items:flex-start;}
+  .rad .sign{font-size:1.14em;line-height:.95;}
+  .rad .rand{border-top:1.1px solid currentColor;padding:.08em .16em 0 .06em;margin-top:.15em;}
+
+  .footline{margin-top:10px;padding-top:7px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft);}
+
+  @media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important;}}
+
+  @page{size:A4;margin:14mm 15mm;}
+  @media print{
+    :root{--paper:#fff;--board:#fff;--ink:#000;--ink-soft:#3f3f3f;--rule:#8b8b8b;--rule-soft:#bdbdbd;
+      --accent:#1c6e8c;--warm:#8a5410;--wash:rgba(0,0,0,.045);--warmwash:rgba(0,0,0,.05);--shadow:none;}
+    body{background:#fff;padding:0;}
+    .bar{display:none;}
+    .sheet{width:auto;min-height:auto;margin:0;padding:0;box-shadow:none;}
+    .recall,h3.part,.pip.on{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    h3.part{break-before:page;}
+    h3.band,h4.sband{break-after:avoid;}
+  }
+
+  @media screen and (max-width:230mm){
+    .sheet{width:100%;padding:20px;min-height:auto;}
+    .recall{grid-template-columns:1fr;}
+    h3.band{flex-wrap:wrap;}
+    h3.band .bnative{margin-left:0;flex-basis:100%;}
+  }
+</style>
+
+<div class="bar">
+  <h1>Slope to Derivative Practice</h1>
+  <p>Two pages: 30 questions on page 1, worked solutions on page 2.</p>
+  <button class="print" type="button" onclick="window.print()">Print</button>
+</div>
+
+<section class="sheet">
+  <div class="masthead">
+    <div>
+      <p class="sub">Calculus · Slope · Gradient · Secant · Tangent · Derivative</p>
+      <h2 class="title">Slope to Derivative Practice</h2>
+    </div>
+    <div class="stamp">Grade 11 · 30 questions</div>
+  </div>
+
+  <p class="lede">Ten questions at each level; work up through the levels. <b>Page 2 holds the
+  solutions</b>, so page 1 can be printed alone for students. Mashqlar uch darajada · Задания трёх уровней.</p>
+
+  <div class="recall">
+    <div><span class="k">Slope of a line</span>
+      <span class="v m"><span class="frac"><span class="num-t">rise</span><span class="den-t">run</span></span>
+      = <span class="frac"><span class="num-t"><i>y</i><sub>2</sub> − <i>y</i><sub>1</sub></span><span class="den-t"><i>x</i><sub>2</sub> − <i>x</i><sub>1</sub></span></span></span></div>
+    <div><span class="k">Secant slope</span>
+      <span class="v m"><span class="frac"><span class="num-t"><i>f</i>(<i>x</i>+<i>h</i>) − <i>f</i>(<i>x</i>)</span><span class="den-t"><i>h</i></span></span></span></div>
+    <div><span class="k">Derivative</span>
+      <span class="v m"><i>f</i>′(<i>x</i>) = <span class="lim"><span class="op">lim</span><span class="to"><i>h</i>→0</span></span><span class="frac"><span class="num-t"><i>f</i>(<i>x</i>+<i>h</i>) − <i>f</i>(<i>x</i>)</span><span class="den-t"><i>h</i></span></span></span></div>
+  </div>
+
+  <h3 class="band">
+    <span class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span></span>
+    <span class="bname">Section A · Easy</span>
+    <span class="bnative">Oson · Лёгкие</span>
+  </h3>
+  <p class="blurb">One step each — read the numbers straight off the formula.</p>
+  <ol class="qs">
+      <li><span class="qn">A1</span><span class="qt">Find the slope of the line through <span class="m">A(1, 2)</span> and <span class="m">B(5, 10)</span>.</span></li>
+      <li><span class="qn">A2</span><span class="qt">A line has slope 3 and passes through <span class="m">(0, −1)</span>. What is <span class="m"><i>y</i></span> when <span class="m"><i>x</i> = 4</span>?</span></li>
+      <li><span class="qn">A3</span><span class="qt">Find the gradient of the line through <span class="m">(−2, 5)</span> and <span class="m">(4, 5)</span>.</span></li>
+      <li><span class="qn">A4</span><span class="qt">For <span class="m"><i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup></span>, find the slope of the secant joining <span class="m"><i>x</i> = 1</span> and <span class="m"><i>x</i> = 4</span>.</span></li>
+      <li><span class="qn">A5</span><span class="qt">For <span class="m"><i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup></span>, find the slope of the secant joining <span class="m"><i>x</i> = 2</span> and <span class="m"><i>x</i> = 5</span>.</span></li>
+      <li><span class="qn">A6</span><span class="qt">For <span class="m"><i>f</i>(<i>x</i>) = 3<i>x</i> + 1</span>, find the secant slope between <span class="m"><i>x</i> = 1</span> and <span class="m"><i>x</i> = 6</span>. What do you notice?</span></li>
+      <li><span class="qn">A7</span><span class="qt">Given <span class="m"><i>f</i>′(<i>x</i>) = 2<i>x</i></span>, find the gradient of the tangent to <span class="m"><i>y</i> = <i>x</i><sup>2</sup></span> at <span class="m"><i>x</i> = 3</span>.</span></li>
+      <li><span class="qn">A8</span><span class="qt">Given <span class="m"><i>f</i>′(<i>x</i>) = 2<i>x</i></span>, where is the tangent to <span class="m"><i>y</i> = <i>x</i><sup>2</sup></span> horizontal?</span></li>
+      <li><span class="qn">A9</span><span class="qt">For <span class="m"><i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup></span>, simplify <span class="m"><span class="frac"><span class="num-t"><i>f</i>(2+<i>h</i>) − <i>f</i>(2)</span><span class="den-t"><i>h</i></span></span></span>.</span></li>
+      <li><span class="qn">A10</span><span class="qt">A curve has <span class="m"><i>f</i>′(4) = 7</span>. Say in words what this means.</span></li>
+  </ol>
+
+  <h3 class="band">
+    <span class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></span>
+    <span class="bname">Section B · Medium</span>
+    <span class="bnative">Oʻrta · Средние</span>
+  </h3>
+  <p class="blurb">Two or three steps: set it up, simplify, then let h → 0.</p>
+  <ol class="qs">
+      <li><span class="qn">B1</span><span class="qt">Find the equation of the line through <span class="m">(2, 3)</span> and <span class="m">(6, 11)</span>.</span></li>
+      <li><span class="qn">B2</span><span class="qt">For <span class="m"><i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup></span>, find the secant slope between <span class="m"><i>x</i> = 3</span> and <span class="m"><i>x</i> = 3 + <i>h</i></span>.</span></li>
+      <li><span class="qn">B3</span><span class="qt">Use the definition of the derivative to find <span class="m"><i>f</i>′(<i>x</i>)</span> for <span class="m"><i>f</i>(<i>x</i>) = 5<i>x</i> − 4</span>.</span></li>
+      <li><span class="qn">B4</span><span class="qt">Use the definition to find <span class="m"><i>f</i>′(<i>x</i>)</span> for <span class="m"><i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup> + 3<i>x</i></span>.</span></li>
+      <li><span class="qn">B5</span><span class="qt">Find the equation of the tangent to <span class="m"><i>y</i> = <i>x</i><sup>2</sup></span> at <span class="m"><i>x</i> = 2</span>. Use <span class="m"><i>f</i>′(<i>x</i>) = 2<i>x</i></span>.</span></li>
+      <li><span class="qn">B6</span><span class="qt">For <span class="m"><i>f</i>(<i>x</i>) = <i>x</i><sup>3</sup></span>, find the secant slope between <span class="m"><i>x</i> = 1</span> and <span class="m"><i>x</i> = 2</span>. Compare it with <span class="m"><i>f</i>′(1) = 3</span>.</span></li>
+      <li><span class="qn">B7</span><span class="qt">For <span class="m"><i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup></span> at <span class="m"><i>x</i> = 2</span>, find the secant slopes for <span class="m"><i>h</i> = 0.1, 0.01, 0.001</span>. What number are they approaching?</span></li>
+      <li><span class="qn">B8</span><span class="qt">Use the definition to find <span class="m"><i>f</i>′(<i>x</i>)</span> for <span class="m"><i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup> − 4<i>x</i> + 1</span>.</span></li>
+      <li><span class="qn">B9</span><span class="qt">At which point on <span class="m"><i>y</i> = <i>x</i><sup>2</sup></span> is the gradient equal to 10?</span></li>
+      <li><span class="qn">B10</span><span class="qt">A car travels <span class="m"><i>s</i>(<i>t</i>) = <i>t</i><sup>2</sup></span> metres in <span class="m"><i>t</i></span> seconds. Find its average speed from <span class="m"><i>t</i> = 2</span> to <span class="m"><i>t</i> = 5</span>, and its speed at <span class="m"><i>t</i> = 2</span> given <span class="m"><i>s</i>′(<i>t</i>) = 2<i>t</i></span>.</span></li>
+  </ol>
+
+  <h3 class="band">
+    <span class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></span>
+    <span class="bname">Section C · Hard</span>
+    <span class="bnative">Qiyin · Трудные</span>
+  </h3>
+  <p class="blurb">Algebra with letters, and questions that ask you to explain.</p>
+  <ol class="qs">
+      <li><span class="qn">C1</span><span class="qt">Use first principles to find <span class="m"><i>f</i>′(<i>x</i>)</span> for <span class="m"><i>f</i>(<i>x</i>) = <span class="frac"><span class="num-t">1</span><span class="den-t"><i>x</i></span></span></span>.</span></li>
+      <li><span class="qn">C2</span><span class="qt">Use first principles to find <span class="m"><i>f</i>′(<i>x</i>)</span> for <span class="m"><i>f</i>(<i>x</i>) = <span class="rad"><span class="sign">√</span><span class="rand"><i>x</i></span></span></span>.</span></li>
+      <li><span class="qn">C3</span><span class="qt">Use first principles to find <span class="m"><i>f</i>′(<i>x</i>)</span> for <span class="m"><i>f</i>(<i>x</i>) = <i>x</i><sup>3</sup></span>.</span></li>
+      <li><span class="qn">C4</span><span class="qt">Find the equation of the tangent to <span class="m"><i>y</i> = <i>x</i><sup>2</sup> − 2<i>x</i></span> at the point where the gradient is 4. Use <span class="m"><i>y</i>′ = 2<i>x</i> − 2</span>.</span></li>
+      <li><span class="qn">C5</span><span class="qt">Show that the tangent to <span class="m"><i>y</i> = <i>x</i><sup>2</sup></span> at <span class="m"><i>x</i> = <i>a</i></span> has equation <span class="m"><i>y</i> = 2<i>ax</i> − <i>a</i><sup>2</sup></span>.</span></li>
+      <li><span class="qn">C6</span><span class="qt">The tangent to <span class="m"><i>y</i> = <i>x</i><sup>2</sup></span> at <span class="m"><i>x</i> = <i>a</i></span> passes through <span class="m">(0, −4)</span>. Find <span class="m"><i>a</i></span>.</span></li>
+      <li><span class="qn">C7</span><span class="qt">Find the points on <span class="m"><i>y</i> = <i>x</i><sup>3</sup> − 3<i>x</i></span> where the tangent is horizontal. Use <span class="m"><i>y</i>′ = 3<i>x</i><sup>2</sup> − 3</span>.</span></li>
+      <li><span class="qn">C8</span><span class="qt">For <span class="m"><i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup></span>, show that the secant slope between <span class="m"><i>x</i> = <i>a</i></span> and <span class="m"><i>x</i> = <i>b</i></span> is <span class="m"><i>a</i> + <i>b</i></span>. What happens as <span class="m"><i>b</i> → <i>a</i></span>?</span></li>
+      <li><span class="qn">C9</span><span class="qt">A ball has height <span class="m"><i>h</i>(<i>t</i>) = 20<i>t</i> − 5<i>t</i><sup>2</sup></span> metres after <span class="m"><i>t</i></span> seconds. (a) Find its average velocity from <span class="m"><i>t</i> = 1</span> to <span class="m"><i>t</i> = 3</span>. (b) Use first principles to find <span class="m"><i>h</i>′(<i>t</i>)</span>. (c) When is the ball momentarily at rest?</span></li>
+      <li><span class="qn">C10</span><span class="qt">For <span class="m"><i>f</i>(<i>x</i>) = |<i>x</i>|</span>: the secant between <span class="m"><i>x</i> = −1</span> and <span class="m"><i>x</i> = 1</span> has slope 0. Explain why the graph still has no tangent at <span class="m"><i>x</i> = 0</span>.</span></li>
+  </ol>
+
+  <h3 class="part">Solutions <span>Yechimlar · Решения</span></h3>
+
+  <h4 class="sband"><span class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span></span> Section A · Easy</h4>
+  <ol class="sols">
+      <li class="sol"><span class="qn">A1</span><span class="sbody">slope = <span class="m"><span class="frac"><span class="num-t">10 − 2</span><span class="den-t">5 − 1</span></span></span> = <span class="m"><span class="frac"><span class="num-t">8</span><span class="den-t">4</span></span></span> = 2 <span class="ans">2</span></span></li>
+      <li class="sol"><span class="qn">A2</span><span class="sbody"><span class="m"><i>y</i> = 3<i>x</i> − 1</span> <span class="sep">›</span> <span class="m"><i>y</i> = 3(4) − 1 = 11</span> <span class="ans">11</span></span></li>
+      <li class="sol"><span class="qn">A3</span><span class="sbody"><span class="m"><span class="frac"><span class="num-t">5 − 5</span><span class="den-t">4 − (−2)</span></span></span> = <span class="m"><span class="frac"><span class="num-t">0</span><span class="den-t">6</span></span></span> = 0 <span class="ans">0</span></span></li>
+      <li class="sol"><span class="qn">A4</span><span class="sbody"><span class="m"><span class="frac"><span class="num-t">16 − 1</span><span class="den-t">4 − 1</span></span></span> = <span class="m"><span class="frac"><span class="num-t">15</span><span class="den-t">3</span></span></span> = 5 <span class="ans">5</span></span></li>
+      <li class="sol"><span class="qn">A5</span><span class="sbody"><span class="m"><span class="frac"><span class="num-t">25 − 4</span><span class="den-t">5 − 2</span></span></span> = <span class="m"><span class="frac"><span class="num-t">21</span><span class="den-t">3</span></span></span> = 7 <span class="ans">7</span></span></li>
+      <li class="sol"><span class="qn">A6</span><span class="sbody"><span class="m"><span class="frac"><span class="num-t">19 − 4</span><span class="den-t">6 − 1</span></span></span> = <span class="m"><span class="frac"><span class="num-t">15</span><span class="den-t">5</span></span></span> = 3 <span class="sep">›</span> It equals the slope of the line itself. <span class="ans">3</span><span class="why">Every secant of a straight line has the same slope — that is what "straight" means.</span></span></li>
+      <li class="sol"><span class="qn">A7</span><span class="sbody"><span class="m"><i>f</i>′(3) = 2(3) = 6</span> <span class="ans">6</span></span></li>
+      <li class="sol"><span class="qn">A8</span><span class="sbody"><span class="m">2<i>x</i> = 0</span>, so <span class="m"><i>x</i> = 0</span> <span class="sep">›</span> At the point <span class="m">(0, 0)</span> <span class="ans">(0, 0)</span></span></li>
+      <li class="sol"><span class="qn">A9</span><span class="sbody"><span class="m"><span class="frac"><span class="num-t">(2+<i>h</i>)<sup>2</sup> − 4</span><span class="den-t"><i>h</i></span></span></span> = <span class="m"><span class="frac"><span class="num-t">4 + 4<i>h</i> + <i>h</i><sup>2</sup> − 4</span><span class="den-t"><i>h</i></span></span></span> <span class="sep">›</span> = <span class="m"><span class="frac"><span class="num-t">4<i>h</i> + <i>h</i><sup>2</sup></span><span class="den-t"><i>h</i></span></span></span> = <span class="m">4 + <i>h</i></span> <span class="ans">4 + <i>h</i></span></span></li>
+      <li class="sol"><span class="qn">A10</span><span class="sbody">The gradient of the tangent to the curve at <span class="m"><i>x</i> = 4</span> is 7. <span class="sep">›</span> Near that point the curve rises about 7 units of y for every 1 unit of x. <span class="ans">gradient 7 at x = 4</span><span class="why">It is the steepness at one point, not an average over an interval.</span></span></li>
+  </ol>
+
+  <h4 class="sband"><span class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></span> Section B · Medium</h4>
+  <ol class="sols">
+      <li class="sol"><span class="qn">B1</span><span class="sbody">slope = <span class="m"><span class="frac"><span class="num-t">11 − 3</span><span class="den-t">6 − 2</span></span></span> = 2 <span class="sep">›</span> <span class="m"><i>y</i> − 3 = 2(<i>x</i> − 2)</span> <span class="sep">›</span> <span class="m"><i>y</i> = 2<i>x</i> − 1</span> <span class="ans"><span class="m"><i>y</i> = 2<i>x</i> − 1</span></span></span></li>
+      <li class="sol"><span class="qn">B2</span><span class="sbody"><span class="m"><span class="frac"><span class="num-t">(3+<i>h</i>)<sup>2</sup> − 9</span><span class="den-t"><i>h</i></span></span></span> = <span class="m"><span class="frac"><span class="num-t">9 + 6<i>h</i> + <i>h</i><sup>2</sup> − 9</span><span class="den-t"><i>h</i></span></span></span> = <span class="m"><span class="frac"><span class="num-t">6<i>h</i> + <i>h</i><sup>2</sup></span><span class="den-t"><i>h</i></span></span></span> <span class="sep">›</span> = <span class="m">6 + <i>h</i></span> <span class="ans">6 + <i>h</i></span></span></li>
+      <li class="sol"><span class="qn">B3</span><span class="sbody"><span class="m"><span class="frac"><span class="num-t">5(<i>x</i>+<i>h</i>) − 4 − (5<i>x</i> − 4)</span><span class="den-t"><i>h</i></span></span></span> = <span class="m"><span class="frac"><span class="num-t">5<i>h</i></span><span class="den-t"><i>h</i></span></span></span> = 5 <span class="sep">›</span> <span class="m"><i>f</i>′(<i>x</i>) = 5</span> <span class="ans">5</span></span></li>
+      <li class="sol"><span class="qn">B4</span><span class="sbody"><span class="m"><span class="frac"><span class="num-t">(<i>x</i>+<i>h</i>)<sup>2</sup> + 3(<i>x</i>+<i>h</i>) − <i>x</i><sup>2</sup> − 3<i>x</i></span><span class="den-t"><i>h</i></span></span></span> = <span class="m"><span class="frac"><span class="num-t">2<i>x</i><i>h</i> + <i>h</i><sup>2</sup> + 3<i>h</i></span><span class="den-t"><i>h</i></span></span></span> <span class="sep">›</span> = <span class="m">2<i>x</i> + <i>h</i> + 3</span> <span class="sep">›</span> <span class="m"><i>f</i>′(<i>x</i>) = 2<i>x</i> + 3</span> <span class="ans">2<i>x</i> + 3</span></span></li>
+      <li class="sol"><span class="qn">B5</span><span class="sbody">gradient <span class="m">= <i>f</i>′(2) = 4</span>, point <span class="m">(2, 4)</span> <span class="sep">›</span> <span class="m"><i>y</i> − 4 = 4(<i>x</i> − 2)</span> <span class="sep">›</span> <span class="m"><i>y</i> = 4<i>x</i> − 4</span> <span class="ans"><span class="m"><i>y</i> = 4<i>x</i> − 4</span></span></span></li>
+      <li class="sol"><span class="qn">B6</span><span class="sbody"><span class="m"><span class="frac"><span class="num-t">8 − 1</span><span class="den-t">2 − 1</span></span></span> = 7 <span class="sep">›</span> The average gradient over the interval is 7, but the gradient at the left end is only 3. <span class="ans">7 (against 3)</span><span class="why">The curve gets steeper as x grows, so the average over [1, 2] is much bigger than the value at x = 1.</span></span></li>
+      <li class="sol"><span class="qn">B7</span><span class="sbody">secant slope <span class="m">= 4 + <i>h</i></span> <span class="sep">›</span> 4.1,&nbsp; 4.01,&nbsp; 4.001 <span class="sep">›</span> They approach 4, and <span class="m"><i>f</i>′(2) = 4</span>. <span class="ans">4</span></span></li>
+      <li class="sol"><span class="qn">B8</span><span class="sbody"><span class="m"><span class="frac"><span class="num-t">(<i>x</i>+<i>h</i>)<sup>2</sup> − 4(<i>x</i>+<i>h</i>) + 1 − (<i>x</i><sup>2</sup> − 4<i>x</i> + 1)</span><span class="den-t"><i>h</i></span></span></span> = <span class="m"><span class="frac"><span class="num-t">2<i>x</i><i>h</i> + <i>h</i><sup>2</sup> − 4<i>h</i></span><span class="den-t"><i>h</i></span></span></span> <span class="sep">›</span> = <span class="m">2<i>x</i> + <i>h</i> − 4</span> → <span class="m"><i>f</i>′(<i>x</i>) = 2<i>x</i> − 4</span> <span class="ans">2<i>x</i> − 4</span></span></li>
+      <li class="sol"><span class="qn">B9</span><span class="sbody"><span class="m">2<i>x</i> = 10</span>, so <span class="m"><i>x</i> = 5</span> <span class="sep">›</span> <span class="m"><i>y</i> = 5<sup>2</sup> = 25</span>, so the point is <span class="m">(5, 25)</span> <span class="ans">(5, 25)</span></span></li>
+      <li class="sol"><span class="qn">B10</span><span class="sbody">average = <span class="m"><span class="frac"><span class="num-t">25 − 4</span><span class="den-t">5 − 2</span></span></span> = 7 m/s <span class="sep">›</span> at <span class="m"><i>t</i> = 2</span>: <span class="m"><i>s</i>′(2) = 4</span> m/s <span class="sep">›</span> The car is speeding up, so the average over the interval is faster than the speed at the start. <span class="ans">7 m/s; 4 m/s</span></span></li>
+  </ol>
+
+  <h4 class="sband"><span class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></span> Section C · Hard</h4>
+  <ol class="sols">
+      <li class="sol"><span class="qn">C1</span><span class="sbody"><span class="m"><span class="frac"><span class="num-t"><span class="frac"><span class="num-t">1</span><span class="den-t"><i>x</i>+<i>h</i></span></span> − <span class="frac"><span class="num-t">1</span><span class="den-t"><i>x</i></span></span></span><span class="den-t"><i>h</i></span></span></span> = <span class="m"><span class="frac"><span class="num-t"><i>x</i> − (<i>x</i>+<i>h</i>)</span><span class="den-t"><i>h</i> · <i>x</i>(<i>x</i>+<i>h</i>)</span></span></span> <span class="sep">›</span> = <span class="m"><span class="frac"><span class="num-t">−<i>h</i></span><span class="den-t"><i>h</i> · <i>x</i>(<i>x</i>+<i>h</i>)</span></span></span> = <span class="m"><span class="frac"><span class="num-t">−1</span><span class="den-t"><i>x</i>(<i>x</i>+<i>h</i>)</span></span></span> <span class="sep">›</span> Let <span class="m"><i>h</i> → 0</span>: <span class="m"><i>f</i>′(<i>x</i>) = −<span class="frac"><span class="num-t">1</span><span class="den-t"><i>x</i><sup>2</sup></span></span></span> <span class="ans"><span class="m">−1 / <i>x</i><sup>2</sup></span></span></span></li>
+      <li class="sol"><span class="qn">C2</span><span class="sbody">Multiply above and below by <span class="m"><span class="rad"><span class="sign">√</span><span class="rand"><i>x</i>+<i>h</i></span></span> + <span class="rad"><span class="sign">√</span><span class="rand"><i>x</i></span></span></span> <span class="sep">›</span> <span class="m"><span class="frac"><span class="num-t">(<i>x</i>+<i>h</i>) − <i>x</i></span><span class="den-t"><i>h</i>(<span class="rad"><span class="sign">√</span><span class="rand"><i>x</i>+<i>h</i></span></span> + <span class="rad"><span class="sign">√</span><span class="rand"><i>x</i></span></span>)</span></span></span> = <span class="m"><span class="frac"><span class="num-t">1</span><span class="den-t"><span class="rad"><span class="sign">√</span><span class="rand"><i>x</i>+<i>h</i></span></span> + <span class="rad"><span class="sign">√</span><span class="rand"><i>x</i></span></span></span></span></span> <span class="sep">›</span> Let <span class="m"><i>h</i> → 0</span>: <span class="m"><i>f</i>′(<i>x</i>) = <span class="frac"><span class="num-t">1</span><span class="den-t">2<span class="rad"><span class="sign">√</span><span class="rand"><i>x</i></span></span></span></span></span> <span class="ans"><span class="m">1 / (2√<i>x</i>)</span></span></span></li>
+      <li class="sol"><span class="qn">C3</span><span class="sbody"><span class="m"><span class="frac"><span class="num-t">(<i>x</i>+<i>h</i>)<sup>3</sup> − <i>x</i><sup>3</sup></span><span class="den-t"><i>h</i></span></span></span> = <span class="m"><span class="frac"><span class="num-t">3<i>x</i><sup>2</sup><i>h</i> + 3<i>x</i><i>h</i><sup>2</sup> + <i>h</i><sup>3</sup></span><span class="den-t"><i>h</i></span></span></span> <span class="sep">›</span> = <span class="m">3<i>x</i><sup>2</sup> + 3<i>x</i><i>h</i> + <i>h</i><sup>2</sup></span> <span class="sep">›</span> Let <span class="m"><i>h</i> → 0</span>: <span class="m"><i>f</i>′(<i>x</i>) = 3<i>x</i><sup>2</sup></span> <span class="ans"><span class="m">3<i>x</i><sup>2</sup></span></span></span></li>
+      <li class="sol"><span class="qn">C4</span><span class="sbody"><span class="m">2<i>x</i> − 2 = 4</span>, so <span class="m"><i>x</i> = 3</span> <span class="sep">›</span> <span class="m"><i>y</i> = 9 − 6 = 3</span>, so the point is <span class="m">(3, 3)</span> <span class="sep">›</span> <span class="m"><i>y</i> − 3 = 4(<i>x</i> − 3)</span> → <span class="m"><i>y</i> = 4<i>x</i> − 9</span> <span class="ans"><span class="m"><i>y</i> = 4<i>x</i> − 9</span></span></span></li>
+      <li class="sol"><span class="qn">C5</span><span class="sbody">gradient <span class="m">= 2<i>a</i></span>, point <span class="m">(<i>a</i>, <i>a</i><sup>2</sup>)</span> <span class="sep">›</span> <span class="m"><i>y</i> − <i>a</i><sup>2</sup> = 2<i>a</i>(<i>x</i> − <i>a</i>)</span> <span class="sep">›</span> <span class="m"><i>y</i> = 2<i>ax</i> − 2<i>a</i><sup>2</sup> + <i>a</i><sup>2</sup> = 2<i>ax</i> − <i>a</i><sup>2</sup></span> <span class="ans">shown</span></span></li>
+      <li class="sol"><span class="qn">C6</span><span class="sbody">Use question C5: <span class="m"><i>y</i> = 2<i>ax</i> − <i>a</i><sup>2</sup></span> <span class="sep">›</span> Put <span class="m"><i>x</i> = 0</span>: <span class="m">−<i>a</i><sup>2</sup> = −4</span>, so <span class="m"><i>a</i><sup>2</sup> = 4</span> <span class="sep">›</span> <span class="m"><i>a</i> = 2</span> or <span class="m"><i>a</i> = −2</span> <span class="ans"><span class="m"><i>a</i> = ±2</span></span></span></li>
+      <li class="sol"><span class="qn">C7</span><span class="sbody"><span class="m">3<i>x</i><sup>2</sup> − 3 = 0</span> → <span class="m"><i>x</i><sup>2</sup> = 1</span> → <span class="m"><i>x</i> = ±1</span> <span class="sep">›</span> <span class="m"><i>x</i> = 1</span>: <span class="m"><i>y</i> = 1 − 3 = −2</span> → <span class="m">(1, −2)</span> <span class="sep">›</span> <span class="m"><i>x</i> = −1</span>: <span class="m"><i>y</i> = −1 + 3 = 2</span> → <span class="m">(−1, 2)</span> <span class="ans">(1, −2) and (−1, 2)</span></span></li>
+      <li class="sol"><span class="qn">C8</span><span class="sbody"><span class="m"><span class="frac"><span class="num-t"><i>b</i><sup>2</sup> − <i>a</i><sup>2</sup></span><span class="den-t"><i>b</i> − <i>a</i></span></span></span> = <span class="m"><span class="frac"><span class="num-t">(<i>b</i> − <i>a</i>)(<i>b</i> + <i>a</i>)</span><span class="den-t"><i>b</i> − <i>a</i></span></span></span> = <span class="m"><i>a</i> + <i>b</i></span> <span class="sep">›</span> As <span class="m"><i>b</i> → <i>a</i></span>, the slope → <span class="m">2<i>a</i></span> <span class="sep">›</span> So <span class="m"><i>f</i>′(<i>a</i>) = 2<i>a</i></span> <span class="ans"><span class="m"><i>a</i> + <i>b</i></span> → <span class="m">2<i>a</i></span></span><span class="why">The whole chain in one line: secant → tangent → derivative.</span></span></li>
+      <li class="sol"><span class="qn">C9</span><span class="sbody">(a) <span class="m"><i>h</i>(1) = 15</span>, <span class="m"><i>h</i>(3) = 60 − 45 = 15</span> → average = <span class="m"><span class="frac"><span class="num-t">15 − 15</span><span class="den-t">3 − 1</span></span></span> = 0 m/s <span class="sep">›</span> (b) <span class="m"><span class="frac"><span class="num-t">20(<i>t</i>+<i>k</i>) − 5(<i>t</i>+<i>k</i>)<sup>2</sup> − (20<i>t</i> − 5<i>t</i><sup>2</sup>)</span><span class="den-t"><i>k</i></span></span></span> = <span class="m">20 − 10<i>t</i> − 5<i>k</i></span> <span class="sep">›</span> Let <span class="m"><i>k</i> → 0</span>: <span class="m"><i>h</i>′(<i>t</i>) = 20 − 10<i>t</i></span> <span class="sep">›</span> (c) <span class="m">20 − 10<i>t</i> = 0</span> → <span class="m"><i>t</i> = 2</span> s <span class="ans">0 m/s; 20 − 10t; t = 2 s</span><span class="why">At the top of the flight the velocity is 0.</span></span></li>
+      <li class="sol"><span class="qn">C10</span><span class="sbody">secant slope = <span class="m"><span class="frac"><span class="num-t">1 − 1</span><span class="den-t">1 − (−1)</span></span></span> = 0 <span class="sep">›</span> From the right (<span class="m"><i>h</i> > 0</span>): <span class="m"><span class="frac"><span class="num-t">|<i>h</i>|</span><span class="den-t"><i>h</i></span></span></span> = 1.&nbsp;&nbsp; From the left (<span class="m"><i>h</i> < 0</span>): <span class="m"><span class="frac"><span class="num-t">|<i>h</i>|</span><span class="den-t"><i>h</i></span></span></span> = −1. <span class="sep">›</span> The two one-sided limits are different, so the limit does not exist. <span class="ans">no tangent — a corner</span><span class="why">No single gradient at x = 0 — the graph has a sharp corner, and a corner has no tangent.</span></span></li>
+  </ol>
+
+  <div class="footline">
+    <span>Slope to Derivative Practice · Grade 11</span>
+    <span>30 questions · 10 easy · 10 medium · 10 hard</span>
+  </div>
+</section>
