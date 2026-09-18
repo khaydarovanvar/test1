@@ -3,172 +3,240 @@ from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
 
 wb = openpyxl.Workbook()
 
-# Data organized by grade
-data = {
-    "Grade 7": [
-        {"#": 1, "Name": "Abduraxlov Abduvosit", "Class": "7-D", "Subject 1": "Matematika", "Subject 2": "English", "Subject 3": "Fizika", "Subject 4": "", "Subject 5": ""},
-        {"#": 2, "Name": "Anarbek Mirzaalizov", "Class": "7-A", "Subject 1": "Physics & Astronomy", "Subject 2": "Maths", "Subject 3": "Biology", "Subject 4": "English", "Subject 5": "Chemistry"},
-        {"#": 3, "Name": "Ilyosxonov", "Class": "7-A", "Subject 1": "Math", "Subject 2": "Fizika", "Subject 3": "Biologiya", "Subject 4": "", "Subject 5": ""},
-        {"#": 4, "Name": "Uzarboydi Imon", "Class": "7-B", "Subject 1": "English", "Subject 2": "Mathematics", "Subject 3": "ICT", "Subject 4": "Biology", "Subject 5": ""},
-        {"#": 5, "Name": "Xosin Muhammadov", "Class": "7-D", "Subject 1": "Matematika", "Subject 2": "Fizika", "Subject 3": "English", "Subject 4": "", "Subject 5": ""},
-        {"#": 6, "Name": "Kulboeva Medina-Aisha", "Class": "7-D", "Subject 1": "Math", "Subject 2": "English", "Subject 3": "", "Subject 4": "", "Subject 5": ""},
-        {"#": 7, "Name": "Dexkanova Bibixonim", "Class": "7-D", "Subject 1": "Matematika", "Subject 2": "English", "Subject 3": "", "Subject 4": "", "Subject 5": ""},
-        {"#": 8, "Name": "Parviz", "Class": "7 (?)", "Subject 1": "English", "Subject 2": "Matematika", "Subject 3": "Informatika", "Subject 4": "", "Subject 5": ""},
-        {"#": 9, "Name": "Sharipov A.", "Class": "7 (?)", "Subject 1": "IT", "Subject 2": "English", "Subject 3": "Biology", "Subject 4": "", "Subject 5": ""},
+# Subject name standardization map
+SUBJECT_MAP = {
+    "matematika": "Mathematics",
+    "math": "Mathematics",
+    "maths": "Mathematics",
+    "mathematics": "Mathematics",
+    "fizika": "Physics",
+    "fizik (physics)": "Physics",
+    "physics": "Physics",
+    "english": "English",
+    "ingliz tili (english)": "English",
+    "biologiya": "Biology",
+    "biology": "Biology",
+    "ximiya (chemistry)": "Chemistry",
+    "kimiya (chemistry)": "Chemistry",
+    "kimyo (chemistry)": "Chemistry",
+    "chemistry": "Chemistry",
+    "tarix (history)": "History",
+    "history": "History",
+    "geografiya": "Geography",
+    "geography": "Geography",
+    "adabiyot (literature)": "Literature",
+    "informatika": "IT",
+    "it": "IT",
+    "ict": "ICT",
+    "global perspective": "Global Perspective",
+    "russian": "Russian",
+    "uzbek / russian": "Uzbek / Russian",
+    "uzbek language": "Uzbek",
+    "robota texnika (robotics)": "Robotics",
+    "huquq (law)": "Law",
+    "ozi": "National Defense (OZI)",
+    "ona tili (native lang.)": "Native Language",
+    "ona tili (uzbek)": "Native Language (Uzbek)",
+    "p.e.": "Physical Education",
+}
+
+def standardize(subj):
+    return SUBJECT_MAP.get(subj.strip().lower(), subj.strip())
+
+# Data from user's corrected file with standardized subjects
+students_raw = {
+    7: [
+        ("Abdurasulov Abdulaziz", "7-P", ["Matematika", "English", "Fizika"]),
+        ("Avazbek Mirzaazizov", "7-A", ["Physics", "Maths", "Biology", "English", "Chemistry"]),
+        ("Ziyo", "7-A", ["Math", "Fizika", "Biologiya"]),
+        ("Uzakbaev Imon", "7-B", ["English", "Mathematics", "ICT", "Biology"]),
+        ("Muhammad Yosin", "7-P", ["Matematika", "Fizika", "English"]),
+        ("Kulboeva Medina-Aisha", "7-P", ["Math", "English"]),
+        ("Dexkanova Bibixonim", "7-P", ["Matematika", "English"]),
     ],
-    "Grade 8": [
-        {"#": 1, "Name": "Tojiddinova Hadicha", "Class": "8-B", "Subject 1": "Math", "Subject 2": "English", "Subject 3": "History", "Subject 4": "Geography", "Subject 5": "Physics"},
-        {"#": 2, "Name": "Boborova Gavxor", "Class": "8-B", "Subject 1": "Biologiya", "Subject 2": "English", "Subject 3": "Ximiya (Chemistry)", "Subject 4": "Matematika", "Subject 5": "Fizika"},
-        {"#": 3, "Name": "Ziyodulla", "Class": "8-G", "Subject 1": "Tarix (History)", "Subject 2": "Matematika", "Subject 3": "Geografiya", "Subject 4": "Adabiyot (Literature)", "Subject 5": "Ingliz tili (English)"},
-        {"#": 4, "Name": "Abdujabborov Behruz", "Class": "8-P", "Subject 1": "English", "Subject 2": "Biology", "Subject 3": "Chemistry", "Subject 4": "Global Perspective", "Subject 5": "Physics"},
-        {"#": 5, "Name": "Xasanova Latofat", "Class": "8-P", "Subject 1": "Math", "Subject 2": "English", "Subject 3": "Physics", "Subject 4": "Biology", "Subject 5": "Russian"},
-        {"#": 6, "Name": "Abdurashidova Mavludaxon", "Class": "8-P", "Subject 1": "Math", "Subject 2": "English", "Subject 3": "Physics", "Subject 4": "Biology", "Subject 5": "Russian"},
-        {"#": 7, "Name": "Rashidov Ayyubxon", "Class": "8-P", "Subject 1": "Math", "Subject 2": "Physics", "Subject 3": "Chemistry", "Subject 4": "English", "Subject 5": "Uzbek / Russian"},
-        {"#": 8, "Name": "Muhammad Sanan", "Class": "8-P", "Subject 1": "English", "Subject 2": "Biology", "Subject 3": "Chemistry", "Subject 4": "Global Perspective", "Subject 5": "Physics"},
-        {"#": 9, "Name": "J. Umar", "Class": "8-P", "Subject 1": "Matematika", "Subject 2": "Robota texnika (Robotics)", "Subject 3": "English", "Subject 4": "Fizika", "Subject 5": "IT"},
-        {"#": 10, "Name": "Ismailov Yusufxon", "Class": "8-G", "Subject 1": "English", "Subject 2": "Math", "Subject 3": "Tarix (History)", "Subject 4": "Kimyo (Chemistry)", "Subject 5": "Fizik (Physics)"},
-        {"#": 11, "Name": "Shuhratov Johongir", "Class": "8-A", "Subject 1": "Mathematics", "Subject 2": "Physics", "Subject 3": "English", "Subject 4": "", "Subject 5": ""},
-        {"#": 12, "Name": "Baxtiyorov Imron", "Class": "8-P", "Subject 1": "Math", "Subject 2": "English", "Subject 3": "Biology", "Subject 4": "Global Perspective", "Subject 5": "Uzbek language"},
-        {"#": 13, "Name": "Muhammadali Kasimov", "Class": "8-G", "Subject 1": "English", "Subject 2": "Chemistry", "Subject 3": "Math", "Subject 4": "Geografiya", "Subject 5": ""},
+    8: [
+        ("Boborova Gavxor", "8-B", ["Biologiya", "English", "Ximiya (Chemistry)", "Matematika", "Fizika"]),
+        ("Ziyodulla", "8-G", ["Tarix (History)", "Matematika", "Geografiya", "Adabiyot (Literature)", "Ingliz tili (English)"]),
+        ("Abdujabborov Behruz", "8-P", ["English", "Biology", "Chemistry", "Global Perspective", "Physics"]),
+        ("Xasanova Latofat", "8-P", ["Math", "English", "Physics", "Biology", "Russian"]),
+        ("Abdurashidova Mavludaxon", "8-P", ["Math", "English", "Physics", "Biology", "Russian"]),
+        ("Rashidov Ayyubxon", "8-P", ["Math", "Physics", "Chemistry", "English", "Uzbek / Russian"]),
+        ("Muhammad Sanan", "8-P", ["English", "Biology", "Chemistry", "Global Perspective", "Physics"]),
+        ("J. Umar", "8-P", ["Matematika", "Robota texnika (Robotics)", "English", "Fizika", "IT"]),
+        ("Ismailov Yusufxon", "8-G", ["English", "Math", "Tarix (History)", "Kimyo (Chemistry)", "Fizik (Physics)"]),
+        ("Shuhratov Johongir", "8-A", ["Mathematics", "Physics", "English"]),
+        ("Baxtiyorov Imron", "8-P", ["Math", "English", "Biology", "Global Perspective", "Uzbek language"]),
+        ("Muhammadali Kasimov", "8-G", ["English", "Chemistry", "Math", "Geografiya"]),
     ],
-    "Grade 9": [
-        {"#": 1, "Name": "Isroilov Otabek", "Class": "9", "Subject 1": "Math", "Subject 2": "Tarix (History)", "Subject 3": "IT", "Subject 4": "Physics", "Subject 5": "English"},
-        {"#": 2, "Name": "Anvar Maksumov", "Class": "9-B", "Subject 1": "Matematika", "Subject 2": "English", "Subject 3": "Russian", "Subject 4": "", "Subject 5": ""},
-        {"#": 3, "Name": "Minkobilova Rayyona", "Class": "9-A", "Subject 1": "English", "Subject 2": "Geography", "Subject 3": "History", "Subject 4": "Biology", "Subject 5": "Chemistry"},
-        {"#": 4, "Name": "Muxtarova Nurayyona", "Class": "9-A", "Subject 1": "English", "Subject 2": "Geography", "Subject 3": "History", "Subject 4": "Math", "Subject 5": ""},
-        {"#": 5, "Name": "Oxtambaeva Noima", "Class": "9-G", "Subject 1": "Huquq (Law)", "Subject 2": "Fizika", "Subject 3": "History", "Subject 4": "Geography", "Subject 5": ""},
+    9: [
+        ("Ismoilov Otabek", "9-G", ["Math", "Tarix (History)", "IT", "Physics", "English"]),
+        ("Anvar Maksumov", "9-B", ["Matematika", "English", "Russian"]),
+        ("Mirkobilova Rayyona", "9-A", ["English", "Geography", "History", "Biology", "Chemistry"]),
+        ("Murtazaeva Muzayyana", "9-A", ["English", "Geography", "History", "Math"]),
+        ("Oktambaeva Nozima", "9-G", ["Huquq (Law)", "Fizika", "History", "Geography"]),
+        ("Parviz", "9-A", ["English", "Matematika", "Informatika"]),
+        ("Sharipov Abdulaziz", "9-A", ["IT", "English", "Biology"]),
+        ("Tojiddinova Hadicha", "9-G", ["Math", "English", "History", "Geography", "Physics"]),
+        ("Abdusamadov Javokhir", "9", ["Biology", "English", "Chemistry", "Math", "Physics"]),
     ],
-    "Grade 10": [
-        {"#": 1, "Name": "Babosortaev Abdulla", "Class": "10-A", "Subject 1": "Fizika", "Subject 2": "Kimiya (Chemistry)", "Subject 3": "English", "Subject 4": "", "Subject 5": ""},
-        {"#": 2, "Name": "Islomov Tongerin", "Class": "10-A", "Subject 1": "Huquq (Law)", "Subject 2": "OZI", "Subject 3": "", "Subject 4": "", "Subject 5": ""},
-        {"#": 3, "Name": "Gulimov Bahodir", "Class": "10-A", "Subject 1": "Matematika", "Subject 2": "Fizika", "Subject 3": "English", "Subject 4": "", "Subject 5": ""},
-        {"#": 4, "Name": "Mirinov Ahmad", "Class": "10 (?)", "Subject 1": "English", "Subject 2": "Chemistry", "Subject 3": "Biology", "Subject 4": "ICT", "Subject 5": "History"},
-        {"#": 5, "Name": "Turaev Sardor", "Class": "10-G", "Subject 1": "Matematika", "Subject 2": "Math", "Subject 3": "", "Subject 4": "", "Subject 5": ""},
-        {"#": 6, "Name": "Xudoynazarova Nodira", "Class": "10-B", "Subject 1": "Informatika", "Subject 2": "Matematika", "Subject 3": "Fizika", "Subject 4": "Biologiya", "Subject 5": ""},
-        {"#": 7, "Name": "Bonijonova Bilboldolu", "Class": "10 (?)", "Subject 1": "English", "Subject 2": "Matematika", "Subject 3": "Biologiya", "Subject 4": "IT", "Subject 5": ""},
-        {"#": 8, "Name": "Abdulboriy", "Class": "10-A", "Subject 1": "ICT", "Subject 2": "Biology", "Subject 3": "Geography", "Subject 4": "English", "Subject 5": "Chemistry"},
+    10: [
+        ("Baboxodjaev Abdulla", "10-A", ["Fizika", "Kimiya (Chemistry)", "English"]),
+        ("Islomov Xondamir", "10-A", ["Huquq (Law)", "OZI"]),
+        ("Sulaimon Saidakbar", "10-A", ["Matematika", "Fizika", "English"]),
+        ("Baxtiyorov Biloliddin", "10", ["English", "Math", "Fizika", "ICT"]),
+        ("Turaev Sardor", "10-G", ["Matematika"]),
+        ("Xudoynazarova Nodira", "10-B", ["Informatika", "Matematika", "Fizika", "Biologiya"]),
+        ("Kurbonalieva Madina", "10", ["English", "Math", "Russian", "Biologiya"]),
     ],
-    "Grade 11": [
-        {"#": 1, "Name": "Shukurullaeva Madinobonu", "Class": "11-A", "Subject 1": "English", "Subject 2": "Matematika", "Subject 3": "P.E.", "Subject 4": "Chemistry", "Subject 5": "Physics"},
-        {"#": 2, "Name": "Kosimova Shofura", "Class": "11-G", "Subject 1": "Matematika", "Subject 2": "Ona tili (Native lang.)", "Subject 3": "P.E.", "Subject 4": "", "Subject 5": ""},
-        {"#": 3, "Name": "Abdunazarova Xosiyat", "Class": "11-A", "Subject 1": "English", "Subject 2": "Tarix (History)", "Subject 3": "Matematika", "Subject 4": "Fizika", "Subject 5": "P.E."},
-        {"#": 4, "Name": "Soliqbonu", "Class": "11-B", "Subject 1": "Matematika", "Subject 2": "Ona tili (Uzbek)", "Subject 3": "Ingliz tili (English)", "Subject 4": "Tarix (History)", "Subject 5": "ICT"},
-        {"#": 5, "Name": "Anvarxonov Sardaloxon", "Class": "11-G", "Subject 1": "English", "Subject 2": "", "Subject 3": "", "Subject 4": "", "Subject 5": ""},
-        {"#": 6, "Name": "Sherzixon Buxorov", "Class": "11-G", "Subject 1": "English", "Subject 2": "Fizika", "Subject 3": "Matematika", "Subject 4": "Kimyo (Chemistry)", "Subject 5": "Ingliz tili (English)"},
-        {"#": 7, "Name": "Buzodirov Usmon", "Class": "11-A", "Subject 1": "Mathematics", "Subject 2": "Physics", "Subject 3": "English", "Subject 4": "Chemistry", "Subject 5": "Russian"},
+    11: [
+        ("Shukurullaeva Madinobonu", "11-A", ["English", "Matematika", "P.E.", "Chemistry", "Physics"]),
+        ("Karimova Shahina", "11-G", ["Matematika", "Ona tili (Native lang.)", "P.E."]),
+        ("Abdulxajieva Zaxro", "11-A", ["English", "Russian", "Matematika", "Fizika", "P.E."]),
+        ("Solihabonu", "11-G", ["Matematika", "Ona tili (Uzbek)", "Ingliz tili (English)", "Tarix (History)", "ICT"]),
+        ("Anvarxonov Saidalo", "11-G", ["English"]),
+        ("Shohjahon Qahhorov", "11-G", ["English", "Fizika", "Matematika", "Kimyo (Chemistry)"]),
+        ("Baxodirov Usmon", "11-A", ["Mathematics", "Physics", "English", "Chemistry", "Russian"]),
     ],
 }
 
-# Styling
-header_font = Font(name="Calibri", bold=True, size=12, color="FFFFFF")
+# Standardize all subjects
+students = {}
+for grade, entries in students_raw.items():
+    students[grade] = []
+    for name, cls, subjects in entries:
+        std_subjects = []
+        seen = set()
+        for s in subjects:
+            eng = standardize(s)
+            if eng.lower() not in seen:
+                std_subjects.append(eng)
+                seen.add(eng.lower())
+        students[grade].append((name, cls, std_subjects))
+
+# Styles
+title_font = Font(name="Calibri", bold=True, size=14, color="1F4E79")
+header_font = Font(name="Calibri", bold=True, size=11, color="FFFFFF")
 header_fill = PatternFill(start_color="2E75B6", end_color="2E75B6", fill_type="solid")
-title_font = Font(name="Calibri", bold=True, size=14, color="2E75B6")
 data_font = Font(name="Calibri", size=11)
+num_font = Font(name="Calibri", size=11, color="333333")
 thin_border = Border(
-    left=Side(style="thin"),
-    right=Side(style="thin"),
-    top=Side(style="thin"),
-    bottom=Side(style="thin"),
+    left=Side(style="thin", color="B4C6E7"),
+    right=Side(style="thin", color="B4C6E7"),
+    top=Side(style="thin", color="B4C6E7"),
+    bottom=Side(style="thin", color="B4C6E7"),
 )
-center_align = Alignment(horizontal="center", vertical="center")
-left_align = Alignment(horizontal="left", vertical="center", wrap_text=True)
+alt_fill = PatternFill(start_color="D6E4F0", end_color="D6E4F0", fill_type="solid")
+total_fill = PatternFill(start_color="FFF2CC", end_color="FFF2CC", fill_type="solid")
 
-headers = ["#", "Student Name", "Class", "Subject 1", "Subject 2", "Subject 3", "Subject 4", "Subject 5"]
+# Summary sheet
+ws_summary = wb.active
+ws_summary.title = "Summary"
+ws_summary.merge_cells("A1:C1")
+ws_summary["A1"] = "Ellipse International School - Olympiad Summary"
+ws_summary["A1"].font = title_font
 
-first_sheet = True
-for grade_name, students in data.items():
-    if first_sheet:
-        ws = wb.active
-        ws.title = grade_name
-        first_sheet = False
-    else:
-        ws = wb.create_sheet(title=grade_name)
+for col, h in zip(["A", "B", "C"], ["Grade", "Number of Students", "Subjects Count"]):
+    cell = ws_summary[f"{col}3"]
+    cell.value = h
+    cell.font = header_font
+    cell.fill = header_fill
+    cell.alignment = Alignment(horizontal="center")
+    cell.border = thin_border
 
-    # Title row
+total = 0
+total_subjects = 0
+for i, grade in enumerate([7, 8, 9, 10, 11]):
+    row = 4 + i
+    count = len(students[grade])
+    subj_count = sum(len(s[2]) for s in students[grade])
+    total += count
+    total_subjects += subj_count
+    ws_summary[f"A{row}"] = f"Grade {grade}"
+    ws_summary[f"B{row}"] = count
+    ws_summary[f"C{row}"] = subj_count
+    for col in ["A", "B", "C"]:
+        cell = ws_summary[f"{col}{row}"]
+        cell.font = data_font
+        cell.alignment = Alignment(horizontal="center")
+        cell.border = thin_border
+        if i % 2 == 1:
+            cell.fill = alt_fill
+
+row = 9
+ws_summary[f"A{row}"] = "TOTAL"
+ws_summary[f"B{row}"] = total
+ws_summary[f"C{row}"] = total_subjects
+for col in ["A", "B", "C"]:
+    cell = ws_summary[f"{col}{row}"]
+    cell.font = Font(name="Calibri", bold=True, size=11)
+    cell.alignment = Alignment(horizontal="center")
+    cell.border = thin_border
+    cell.fill = total_fill
+
+ws_summary.column_dimensions["A"].width = 14
+ws_summary.column_dimensions["B"].width = 20
+ws_summary.column_dimensions["C"].width = 16
+
+# Grade sheets
+for grade in [7, 8, 9, 10, 11]:
+    ws = wb.create_sheet(title=f"Grade {grade}")
     ws.merge_cells("A1:H1")
-    cell = ws["A1"]
-    cell.value = f"Ellipse International School - Olympiad Students ({grade_name})"
-    cell.font = title_font
-    cell.alignment = Alignment(horizontal="center", vertical="center")
-    ws.row_dimensions[1].height = 30
+    ws["A1"] = f"Ellipse International School - Olympiad Students (Grade {grade})"
+    ws["A1"].font = title_font
 
-    # Headers
-    for col_idx, header in enumerate(headers, 1):
-        cell = ws.cell(row=3, column=col_idx)
-        cell.value = header
+    headers = ["#", "Student Name", "Class", "Subject 1", "Subject 2", "Subject 3", "Subject 4", "Subject 5"]
+    for col_idx, h in enumerate(headers, 1):
+        cell = ws.cell(row=3, column=col_idx, value=h)
         cell.font = header_font
         cell.fill = header_fill
-        cell.alignment = center_align
+        cell.alignment = Alignment(horizontal="center", wrap_text=True)
         cell.border = thin_border
 
-    # Data rows
-    for row_idx, student in enumerate(students, 4):
-        values = [
-            student["#"],
-            student["Name"],
-            student["Class"],
-            student["Subject 1"],
-            student["Subject 2"],
-            student["Subject 3"],
-            student["Subject 4"],
-            student["Subject 5"],
-        ]
-        for col_idx, val in enumerate(values, 1):
-            cell = ws.cell(row=row_idx, column=col_idx)
-            cell.value = val
+    for row_idx, (name, cls, subjects) in enumerate(students[grade]):
+        r = 4 + row_idx
+        ws.cell(row=r, column=1, value=row_idx + 1).font = num_font
+        ws.cell(row=r, column=1).alignment = Alignment(horizontal="center")
+        ws.cell(row=r, column=1).border = thin_border
+
+        ws.cell(row=r, column=2, value=name).font = data_font
+        ws.cell(row=r, column=2).border = thin_border
+
+        cell_cls = ws.cell(row=r, column=3, value=cls)
+        cell_cls.font = data_font
+        cell_cls.alignment = Alignment(horizontal="center")
+        cell_cls.border = thin_border
+        cell_cls.number_format = "@"
+
+        for s_idx, subj in enumerate(subjects):
+            cell = ws.cell(row=r, column=4 + s_idx, value=subj)
             cell.font = data_font
             cell.border = thin_border
-            if col_idx in (1, 3):
-                cell.alignment = center_align
-            else:
-                cell.alignment = left_align
 
-    # Column widths
+        for s_idx in range(len(subjects), 5):
+            cell = ws.cell(row=r, column=4 + s_idx)
+            cell.border = thin_border
+
+        if row_idx % 2 == 1:
+            for c in range(1, 9):
+                ws.cell(row=r, column=c).fill = alt_fill
+
     ws.column_dimensions["A"].width = 5
     ws.column_dimensions["B"].width = 30
     ws.column_dimensions["C"].width = 10
     for col_letter in ["D", "E", "F", "G", "H"]:
         ws.column_dimensions[col_letter].width = 22
 
-# Summary sheet
-ws_summary = wb.create_sheet(title="Summary", index=0)
-ws_summary.merge_cells("A1:C1")
-cell = ws_summary["A1"]
-cell.value = "Ellipse International School - Olympiad Summary"
-cell.font = title_font
-cell.alignment = Alignment(horizontal="center")
-ws_summary.row_dimensions[1].height = 30
+output = "/home/user/test1/Ellipse_Olympiad_Students.xlsx"
+wb.save(output)
+print(f"Saved to {output}")
+print(f"\nTotal students: {total}")
+for grade in [7, 8, 9, 10, 11]:
+    print(f"  Grade {grade}: {len(students[grade])} students")
 
-summary_headers = ["Grade", "Number of Students", "Note"]
-for col_idx, header in enumerate(summary_headers, 1):
-    cell = ws_summary.cell(row=3, column=col_idx)
-    cell.value = header
-    cell.font = header_font
-    cell.fill = header_fill
-    cell.alignment = center_align
-    cell.border = thin_border
-
-summary_data = [
-    ("Grade 7", 9, "Some students missing grade/class info"),
-    ("Grade 8", 13, ""),
-    ("Grade 9", 5, ""),
-    ("Grade 10", 8, "Some students missing grade/class info"),
-    ("Grade 11", 7, ""),
-    ("TOTAL", 42, ""),
-]
-
-for row_idx, (grade, count, note) in enumerate(summary_data, 4):
-    for col_idx, val in enumerate([grade, count, note], 1):
-        cell = ws_summary.cell(row=row_idx, column=col_idx)
-        cell.value = val
-        cell.font = data_font if grade != "TOTAL" else Font(name="Calibri", bold=True, size=11)
-        cell.border = thin_border
-        cell.alignment = center_align if col_idx != 3 else left_align
-
-ws_summary.column_dimensions["A"].width = 15
-ws_summary.column_dimensions["B"].width = 22
-ws_summary.column_dimensions["C"].width = 40
-
-output_path = "/home/user/test1/Ellipse_Olympiad_Students.xlsx"
-wb.save(output_path)
-print(f"Excel file saved to: {output_path}")
+# Print all standardized subjects per grade
+print("\nSubjects (all in English):")
+for grade in [7, 8, 9, 10, 11]:
+    all_subj = set()
+    for name, cls, subjects in students[grade]:
+        all_subj.update(subjects)
+    print(f"  Grade {grade}: {sorted(all_subj)}")
