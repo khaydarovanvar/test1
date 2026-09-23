@@ -14,19 +14,26 @@ printed without the answers going with it.
 
 ## Grade 8 · Test 1 · Algebra
 
-40 minutes, 40 marks, 21 questions, no calculator. Covers the first three
-topics of Quarter I:
+40 minutes, **100 marks**, 14 questions and a bonus, no calculator. Two pages.
+Covers the first three topics of Quarter I:
 
 | Lessons | Topic | Marks |
 |---|---|---|
-| 1–3 | Revision of the Grade 7 course | 14 |
-| 4–5 | Algebraic expressions | 9 |
-| 6–8 | Algebraic fraction. Cancelling fractions | 17 |
+| 1–3 | Revision of the Grade 7 course | 31 |
+| 4–5 | Algebraic expressions | 26 |
+| 6–8 | Algebraic fraction. Cancelling fractions | 43 |
 
-Section A is ten one-mark questions, Section B seven at two marks, Section C
-four at four marks — easy, medium and hard, matching the three practice bands
-in the lesson pages. Every question is the same *type* the class practised,
-with different numbers.
+| Section | Level | Questions | Marks |
+|---|---|---|---|
+| A | Easy | 6 × 5 | 30 |
+| B | Medium | 5 × 8 | 40 |
+| C | Hard | 3 × 10 | 30 |
+| ★ | Bonus | 1 × 10 | +10, outside the 100 |
+
+Easy, medium and hard match the three practice bands in the lesson pages, and
+every question is the same *type* the class practised, with different numbers.
+The bonus can make up marks lost elsewhere; the recorded mark is still out of
+100.
 
 ## Rebuilding
 

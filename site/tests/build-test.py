@@ -43,28 +43,41 @@ def head(title):
             '<title>%s</title><style>%s</style><style>%s</style></head><body>'
             % (H.escape(title), FONTS, CSS))
 
+NQ = sum(len(s['items']) for s in D.SECTIONS)
+
 def masthead(kind):
-    covers = ''.join(
-        '<li><span class="ls">%s</span><span class="tt">%s</span>'
-        '<span class="rf">%s</span></li>' % c for c in D.COVERS)
+    """The paper keeps this to four lines; the textbook references are of use to
+    whoever is marking, not to a student with 40 minutes, so they go on the
+    mark scheme instead."""
+    ms = kind == 'Mark scheme'
     rules = ''.join('<li>%s</li>' % rich(r) for r in D.RULES)
+    covers = ('<ul class="covers">%s</ul>' % ''.join(
+        '<li><span class="ls">%s</span><span class="tt">%s</span>'
+        '<span class="rf">%s</span></li>' % c for c in D.COVERS)) if ms else (
+        '<p class="covers-line">%s</p>' % D.COVERS_SHORT)
     return ('<header class="mast">'
             '<div class="topline"><p class="who">Anvarbek Khaydarov · Mathematics</p>'
             '<p class="kind %s">%s</p></div>'
             '<h1>%s <span class="grade">%s</span></h1>'
             '<div class="meta"><span><b>%d</b> minutes</span>'
-            '<span><b>%d</b> marks</span><span>%d questions</span>'
-            '<span>No calculator</span></div>'
-            '<ul class="covers">%s</ul>'
-            '<ul class="rules">%s</ul>'
+            '<span><b>%d</b> marks</span>'
+            '<span>%d questions + bonus</span><span>No calculator</span></div>'
+            '%s<ul class="rules">%s</ul>'
             '</header>'
-            % ('ms' if kind == 'Mark scheme' else 'qp', kind,
-               D.TITLE, D.GRADE, D.DURATION, D.TOTAL,
-               sum(len(s['items']) for s in D.SECTIONS), covers, rules))
+            % ('ms' if ms else 'qp', kind, D.TITLE, D.GRADE,
+               D.DURATION, D.TOTAL, NQ, covers, rules))
 
 NAMEBAR = ('<div class="namebar"><span>Name <i></i></span><span>Class <i></i></span>'
            '<span>Date <i></i></span><span class="score">Mark <i></i> / %d</span></div>'
            % D.TOTAL)
+
+
+def mark_tag(it):
+    """A question split into parts already carries a mark per part; repeating
+    the total beside them reads like a contradiction."""
+    if 'class="mk"' in it['q']:
+        return ''
+    return '<span class="mk">[%d]</span>' % it['marks']
 
 
 def section_head(s):
@@ -86,16 +99,22 @@ def question_paper():
                    % (' two' if s['cols'] == 2 else '', s['space']))
         for it in s['items']:
             n += 1
-            # a question split into parts already carries a mark per part;
-            # repeating the total beside them reads like a contradiction
-            parts = 'class="mk"' in it['q']
-            mark = ('' if s['cols'] == 2 or parts else
-                    '<span class="mk">[%d]</span>' % it['marks'])
+            mark = ('' if s['cols'] == 2 else mark_tag(it))
             out.append('<li><span class="qn">%d</span><div class="qb">%s %s%s</div></li>'
                        % (n, rich(it['q']), mark,
                           '<span class="ansline"></span>' if s['cols'] == 2 else ''))
         out.append('</ol></section>')
-    out.append('<p class="foot">End of paper · %d marks</p></body></html>' % D.TOTAL)
+    b = D.BONUS
+    out.append('<section class="sec bonus"><div class="sh">'
+               '<span class="letter">\u2605</span><div><h2>Bonus</h2>'
+               '<p class="lead">%s</p></div>'
+               '<span class="chip c-bonus">Bonus</span>'
+               '<span class="tot">+%d marks</span></div>'
+               '<ol class="qs" style="--space:%dpx"><li><span class="qn">%d</span>'
+               '<div class="qb">%s</div></li></ol></section>'
+               % (rich(b['lead']), b['marks'], 76, NQ + 1, rich(b['item']['q'])))
+    out.append('<p class="foot">End of paper · %d marks, plus %d bonus</p>'
+               '</body></html>' % (D.TOTAL, b['marks']))
     return ''.join(out)
 
 
@@ -125,13 +144,27 @@ def mark_scheme():
             n += 1
             note = ('<p class="note">%s</p>' % rich(it['note'])) if it['note'] else ''
             out.append('<li><span class="qn">%d</span><div class="qb">'
-                       '<p class="qtext">%s <span class="mk">[%d]</span></p>'
+                       '<p class="qtext">%s %s</p>'
                        '<p class="ans"><span class="lab">Answer</span>%s</p>'
                        '<div class="work"><span class="lab">Working</span>%s</div>%s'
                        '</div></li>'
-                       % (n, rich(it['q']), it['marks'], rich(it['ans']),
+                       % (n, rich(it['q']), mark_tag(it), rich(it['ans']),
                           rich(it['work']), note))
         out.append('</ol></section>')
+    b, it = D.BONUS, D.BONUS['item']
+    note = ('<p class="note">%s</p>' % rich(it['note'])) if it['note'] else ''
+    out.append('<section class="sec bonus"><div class="sh">'
+               '<span class="letter">\u2605</span><div><h2>Bonus</h2>'
+               '<p class="lead">%s</p></div>'
+               '<span class="chip c-bonus">Bonus</span>'
+               '<span class="tot">+%d marks</span></div>'
+               '<ol class="ms"><li><span class="qn">%d</span><div class="qb">'
+               '<p class="qtext">%s %s</p>'
+               '<p class="ans"><span class="lab">Answer</span>%s</p>'
+               '<div class="work"><span class="lab">Working</span>%s</div>%s'
+               '</div></li></ol></section>'
+               % (rich(b['lead']), b['marks'], NQ + 1, rich(it['q']), mark_tag(it),
+                  rich(it['ans']), rich(it['work']), note))
     out.append('<p class="foot">End of mark scheme</p></body></html>')
     return ''.join(out)
 
@@ -177,6 +210,7 @@ h1 .grade{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--mut
 .meta{display:flex;flex-wrap:wrap;gap:16px;margin-top:7px;font-family:var(--mono);
   font-size:10.5px;color:var(--muted)}
 .meta b{color:var(--ink);font-weight:500}
+.covers-line{margin:9px 0 0;font-size:11.5px;color:var(--muted)}
 .covers{list-style:none;padding:0;margin:11px 0 0;display:grid;gap:3px}
 .covers li{display:grid;grid-template-columns:34px 1fr auto;gap:9px;align-items:baseline;
   font-size:11.5px}
@@ -208,6 +242,9 @@ h1 .grade{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--mut
 .c-easy{color:var(--easy);background:var(--easy-tint)}
 .c-med{color:var(--med);background:var(--med-tint)}
 .c-hard{color:var(--hard);background:var(--hard-tint)}
+.c-bonus{color:var(--brand);background:var(--brand-tint)}
+.bonus .letter{color:var(--brass);font-size:19px}
+.bonus .sh{border-bottom-color:var(--brass)}
 .tot{font-family:var(--mono);font-size:10px;color:var(--muted);white-space:nowrap}
 
 /* questions */
