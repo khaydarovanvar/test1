@@ -53,3 +53,22 @@ without anyone counting by hand.
 
 **Check every answer with a CAS before writing it down.** The answers in
 `test-g8-01-data.py` were all verified this way.
+
+## Grade 11 · Practice · The rules of differentiation
+
+28 problems across four bands — easy, medium, hard, very hard — written for the
+sheet. **None of them appears in the lesson's own practice bank**, so the sheet
+follows lesson 7–9 without repeating it, and nothing on it needs the chain rule.
+
+| File | Pages | What it is |
+|---|---|---|
+| `Differentiation-practice.pdf` | 2 | questions only, for handing out |
+| `Differentiation-practice-teacher.pdf` | 3 | the same questions with answers and full working |
+
+```
+python3 build-worksheet.py ws-differentiation-data.py Differentiation-practice
+```
+
+Questions, answers and working all live in `ws-differentiation-data.py`, one
+entry per problem. Every answer and every intermediate step was checked with a
+CAS.
