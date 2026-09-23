@@ -632,6 +632,25 @@ G11_ALG.push({
       [m('(x²(x − 1)(x + 1))′'), m('4x³ − 2x')],
       ['Find ' + m("y″") + ' for ' + m('y = x⁴ − 3x²'), m('12x² − 6')],
       ['Find ' + m('x') + ' where ' + m('y = x³ − 3x') + ' has gradient ' + m('9'), m('x = ±2')]
+    ],
+    /* Nothing here needs the chain rule — that is the next lesson. What makes
+       these hard is choosing the form to differentiate, or working backwards
+       from a gradient to the function. */
+    vhard: [
+      [m('(x(x + 1)(x + 2))′'), m('3x² + 6x + 2')],
+      [m('(' + f('(x² + 1)(x − 2)', 'x') + ')′') + ' — rewrite before you differentiate',
+       m('2x − 2 + ' + f('2', 'x²'))],
+      ['Find the gradient of ' + m('y = ' + f('x² − 1', 'x² + 1')) + ' at ' + m('x = 1'),
+       m(f('4x', '(x² + 1)²')) + ', so the gradient is ' + m('1')],
+      ['Find ' + m('y‴') + ' for ' + m('y = ' + f('1', 'x')), m('−' + f('6', 'x⁴'))],
+      ['Find every ' + m('x') + ' at which ' + m('y = x + ' + f('1', 'x')) +
+       ' has gradient ' + m('0'), m('x = ±1')],
+      [m('y = ax³ + bx') + ' has gradient ' + m('0') + ' at ' + m('x = 1') +
+       ' and passes through ' + m('(1, −2)') + '. Find ' + m('a') + ' and ' + m('b') + '.',
+       m('a = 1') + ', ' + m('b = −3')],
+      ['Show that ' + m('y = x³ + 3x') + ' has no point of zero gradient, and state its ' +
+       'least gradient.', m('y′ = 3x² + 3 ≥ 3 > 0') + '; least gradient ' + m('3') +
+       ', at ' + m('x = 0')]
     ]
   },
   hwTitle: 'Homework — 6 tasks',

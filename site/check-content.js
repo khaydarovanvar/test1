@@ -74,17 +74,25 @@ for (const [key, grade, stream, hourKey] of STREAMS) {
 }
 
 const seen = new Set();
+let problems = 0;
 for (const t of all) {
   if (seen.has(t.id)) issues.push(`duplicate id ${t.id}`);
   seen.add(t.id);
 
-  for (const k of ['easy', 'med', 'hard']) {
+  /* Three bands are required; 'vhard' is optional, and checked the same way
+     wherever a lesson carries one. */
+  for (const k of ['easy', 'med', 'hard', 'vhard']) {
     const set = (t.practice || {})[k];
-    if (!set || set.length !== 7) { issues.push(`${t.id}: practice.${k} has ${set ? set.length : 'no'} items, want 7`); continue; }
+    if (!set) {
+      if (k !== 'vhard') issues.push(`${t.id}: practice.${k} is missing`);
+      continue;
+    }
+    if (set.length !== 7) { issues.push(`${t.id}: practice.${k} has ${set.length} items, want 7`); continue; }
     set.forEach((row, i) => {
       if (!Array.isArray(row) || row.length !== 2) issues.push(`${t.id}: practice.${k}[${i}] is not a [question, answer] pair`);
       else if (!String(row[1]).trim()) issues.push(`${t.id}: practice.${k}[${i}] has an empty answer`);
     });
+    problems += set.length;
   }
   if (!t.terms || t.terms.length < 4) issues.push(`${t.id}: only ${(t.terms || []).length} terminology rows`);
   (t.terms || []).forEach((r, i) => {
@@ -221,8 +229,9 @@ vm.runInContext(fs.readFileSync(path.join(here, 'data/grades.js'), 'utf8'), ctx,
 for (const [g, n] of Object.entries(ctx.TOPIC_COUNTS || {})) {
   if (byGrade[g] !== n) issues.push(`TOPIC_COUNTS says grade ${g} has ${n} topics, the data has ${byGrade[g] || 0}`);
 }
+const vh = all.filter(t => (t.practice || {}).vhard).length;
 console.log(`${all.length} topics · ${Object.keys(ctx.FIG).length} figures · ` +
-  `${all.length * 21} practice problems`);
+  `${problems} practice problems` + (vh ? ` (${vh} with a very hard band)` : ''));
 console.log('  by grade: ' + Object.keys(byGrade).sort((a, b) => a - b)
   .map(g => `grade ${g} ${byGrade[g]}`).join(' · '));
 if (progress.length) console.log('  in progress: ' + progress.join(' · '));

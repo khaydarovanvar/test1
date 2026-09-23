@@ -320,6 +320,7 @@
 .lv-easy{--lv:var(--easy);--lvt:var(--easy-tint)}
 .lv-med{--lv:var(--med);--lvt:var(--med-tint)}
 .lv-hard{--lv:var(--hard);--lvt:var(--hard-tint)}
+.lv-vhard{--lv:var(--vhard);--lvt:var(--vhard-tint)}
 .plevel .probs{border-left:3px solid var(--lv)}
 .probs .pa{color:var(--lv);background:var(--lvt)}
 
@@ -476,6 +477,11 @@
   .lhead .inner{padding:0 0 10px}
   .lsec{margin-bottom:16pt}
   .fig{margin:16px auto}
+  /* a band's heading must not be left stranded at the foot of a page, and a
+     question must not be split from its answer */
+  .plevel>.ph{break-after:avoid}
+  .probs>li{break-inside:avoid}
+  h2,h3{break-after:avoid}
 }
 
 /* ============================================================

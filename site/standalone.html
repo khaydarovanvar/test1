@@ -17,6 +17,7 @@
   --easy:#3C7A50; --easy-tint:#E6F1E8;
   --med:#B0801F;  --med-tint:#F7EEDA;
   --hard:#A34430; --hard-tint:#F8E9E4;
+  --vhard:#6B3E8F; --vhard-tint:#F0E9F6;
   --cam:#3D6B4C; --uz:#2B4C7E;
   --extrude:#0A3F45; --glow:rgba(14,92,99,.16);
   --shadow-s:0 1px 2px rgba(18,38,44,.06);
@@ -37,6 +38,7 @@
   --easy:#6FBB84; --easy-tint:#16281B;
   --med:#D9A946;  --med-tint:#2C2415;
   --hard:#DE8168; --hard-tint:#2E1B15;
+  --vhard:#B492D9; --vhard-tint:#241A31;
   --cam:#87BB97; --uz:#8DACD9;
   --extrude:#0B3B40; --glow:rgba(79,176,180,.2);
   --shadow-s:0 1px 2px rgba(0,0,0,.4);
@@ -52,6 +54,7 @@
   --easy:#6FBB84; --easy-tint:#16281B;
   --med:#D9A946;  --med-tint:#2C2415;
   --hard:#DE8168; --hard-tint:#2E1B15;
+  --vhard:#B492D9; --vhard-tint:#241A31;
   --cam:#87BB97; --uz:#8DACD9;
   --extrude:#0B3B40; --glow:rgba(79,176,180,.2);
   --shadow-s:0 1px 2px rgba(0,0,0,.4);
@@ -204,6 +207,7 @@ sup,sub{font-size:.72em;line-height:0}
   border:1px solid currentColor;white-space:nowrap}
 .chip.c-uz{color:var(--uz)} .chip.c-cam{color:var(--cam)}
 .chip.c-easy{color:var(--easy)} .chip.c-med{color:var(--med)} .chip.c-hard{color:var(--hard)}
+.chip.c-vhard{color:var(--vhard)}
 .chip.solid{border:0;background:var(--brand);color:#fff}
 .btn{appearance:none;font-family:var(--sans);font-size:13.5px;font-weight:500;cursor:pointer;
   border-radius:var(--r);padding:8px 16px;border:1px solid var(--rule);
@@ -752,6 +756,7 @@ body{top:0!important}                       /* the banner pushes body down */
 .lv-easy{--lv:var(--easy);--lvt:var(--easy-tint)}
 .lv-med{--lv:var(--med);--lvt:var(--med-tint)}
 .lv-hard{--lv:var(--hard);--lvt:var(--hard-tint)}
+.lv-vhard{--lv:var(--vhard);--lvt:var(--vhard-tint)}
 .plevel .probs{border-left:3px solid var(--lv)}
 .probs .pa{color:var(--lv);background:var(--lvt)}
 
@@ -908,6 +913,11 @@ body{top:0!important}                       /* the banner pushes body down */
   .lhead .inner{padding:0 0 10px}
   .lsec{margin-bottom:16pt}
   .fig{margin:16px auto}
+  /* a band's heading must not be left stranded at the foot of a page, and a
+     question must not be split from its answer */
+  .plevel>.ph{break-after:avoid}
+  .probs>li{break-inside:avoid}
+  h2,h3{break-after:avoid}
 }
 
 /* ============================================================
@@ -6382,6 +6392,25 @@ body{top:0!important}                       /* the banner pushes body down */
     });
   }
 
+  /* The bands a lesson may carry, in order. A lesson that has no 'vhard' key
+     simply renders three; nothing else needs to know the difference. */
+  var LEVELS = [
+    ['easy',  'Easy · warm the idea up',        'lv-easy',  'c-easy'],
+    ['med',   'Medium · the standard question', 'lv-med',   'c-med'],
+    ['hard',  'Hard · stretch and reason',      'lv-hard',  'c-hard'],
+    ['vhard', 'Very hard · for the fastest',    'lv-vhard', 'c-vhard']
+  ];
+
+  function bands(practice) {
+    return LEVELS.filter(function (l) {
+      return practice && practice[l[0]] && practice[l[0]].length;
+    });
+  }
+
+  function problemCount(practice) {
+    return bands(practice).reduce(function (n, l) { return n + practice[l[0]].length; }, 0);
+  }
+
   function levelBlock(title, cls, chip, items) {
     var id = 'pl' + Math.random().toString(36).slice(2, 7);
     return '<div class="plevel ' + cls + '">' +
@@ -6472,7 +6501,8 @@ body{top:0!important}                       /* the banner pushes body down */
       '<a href="#explain">Explanation</a><a href="#examples">Worked examples</a>' +
       '<a href="#model">Interactive model</a><a href="#terms">Terminology</a>' +
       '<a href="#check">Quick check</a>' +
-      '<a href="#practice">Practice · 21</a><a href="#homework">Homework</a></nav></div>' +
+      '<a href="#practice">Practice · ' + problemCount(T.practice) + '</a>' +
+      '<a href="#homework">Homework</a></nav></div>' +
       '<div class="sbox no-print"><button class="btn sm" type="button" onclick="window.print()">Print this lesson</button></div>';
 
     /* ---- main ---- */
@@ -6517,12 +6547,16 @@ body{top:0!important}                       /* the banner pushes body down */
         '<div id="quizlab"></div></section>';
     }
 
-    html += '<section class="lsec" id="practice"><h2><span class="sn">06</span>Practice · 21 problems</h2>' +
+    var lv = bands(T.practice);
+    html += '<section class="lsec" id="practice"><h2><span class="sn">06</span>Practice · ' +
+      problemCount(T.practice) + ' problems</h2>' +
       '<p class="small">Seven at each level. Set the easy row for everyone, the medium row for the ' +
-      'main body of the class, and the hard row for those who finish early.</p>' +
-      levelBlock('Easy · warm the idea up', 'lv-easy', 'c-easy', T.practice.easy) +
-      levelBlock('Medium · the standard question', 'lv-med', 'c-med', T.practice.med) +
-      levelBlock('Hard · stretch and reason', 'lv-hard', 'c-hard', T.practice.hard) +
+      'main body of the class, and the hard row for those who finish early' +
+      (lv.length > 3 ? ' — the very hard row is there for the ones who finish early twice' : '') +
+      '.</p>' +
+      lv.map(function (l) {
+        return levelBlock(l[1], l[2], l[3], T.practice[l[0]]);
+      }).join('') +
       '</section>';
 
     html += '<section class="lsec" id="homework"><h2><span class="sn">07</span>Homework</h2>' +
@@ -85260,6 +85294,25 @@ G11_ALG.push({
       [m('(x²(x − 1)(x + 1))′'), m('4x³ − 2x')],
       ['Find ' + m("y″") + ' for ' + m('y = x⁴ − 3x²'), m('12x² − 6')],
       ['Find ' + m('x') + ' where ' + m('y = x³ − 3x') + ' has gradient ' + m('9'), m('x = ±2')]
+    ],
+    /* Nothing here needs the chain rule — that is the next lesson. What makes
+       these hard is choosing the form to differentiate, or working backwards
+       from a gradient to the function. */
+    vhard: [
+      [m('(x(x + 1)(x + 2))′'), m('3x² + 6x + 2')],
+      [m('(' + f('(x² + 1)(x − 2)', 'x') + ')′') + ' — rewrite before you differentiate',
+       m('2x − 2 + ' + f('2', 'x²'))],
+      ['Find the gradient of ' + m('y = ' + f('x² − 1', 'x² + 1')) + ' at ' + m('x = 1'),
+       m(f('4x', '(x² + 1)²')) + ', so the gradient is ' + m('1')],
+      ['Find ' + m('y‴') + ' for ' + m('y = ' + f('1', 'x')), m('−' + f('6', 'x⁴'))],
+      ['Find every ' + m('x') + ' at which ' + m('y = x + ' + f('1', 'x')) +
+       ' has gradient ' + m('0'), m('x = ±1')],
+      [m('y = ax³ + bx') + ' has gradient ' + m('0') + ' at ' + m('x = 1') +
+       ' and passes through ' + m('(1, −2)') + '. Find ' + m('a') + ' and ' + m('b') + '.',
+       m('a = 1') + ', ' + m('b = −3')],
+      ['Show that ' + m('y = x³ + 3x') + ' has no point of zero gradient, and state its ' +
+       'least gradient.', m('y′ = 3x² + 3 ≥ 3 > 0') + '; least gradient ' + m('3') +
+       ', at ' + m('x = 0')]
     ]
   },
   hwTitle: 'Homework — 6 tasks',

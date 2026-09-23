@@ -13,6 +13,25 @@
     });
   }
 
+  /* The bands a lesson may carry, in order. A lesson that has no 'vhard' key
+     simply renders three; nothing else needs to know the difference. */
+  var LEVELS = [
+    ['easy',  'Easy · warm the idea up',        'lv-easy',  'c-easy'],
+    ['med',   'Medium · the standard question', 'lv-med',   'c-med'],
+    ['hard',  'Hard · stretch and reason',      'lv-hard',  'c-hard'],
+    ['vhard', 'Very hard · for the fastest',    'lv-vhard', 'c-vhard']
+  ];
+
+  function bands(practice) {
+    return LEVELS.filter(function (l) {
+      return practice && practice[l[0]] && practice[l[0]].length;
+    });
+  }
+
+  function problemCount(practice) {
+    return bands(practice).reduce(function (n, l) { return n + practice[l[0]].length; }, 0);
+  }
+
   function levelBlock(title, cls, chip, items) {
     var id = 'pl' + Math.random().toString(36).slice(2, 7);
     return '<div class="plevel ' + cls + '">' +
@@ -103,7 +122,8 @@
       '<a href="#explain">Explanation</a><a href="#examples">Worked examples</a>' +
       '<a href="#model">Interactive model</a><a href="#terms">Terminology</a>' +
       '<a href="#check">Quick check</a>' +
-      '<a href="#practice">Practice · 21</a><a href="#homework">Homework</a></nav></div>' +
+      '<a href="#practice">Practice · ' + problemCount(T.practice) + '</a>' +
+      '<a href="#homework">Homework</a></nav></div>' +
       '<div class="sbox no-print"><button class="btn sm" type="button" onclick="window.print()">Print this lesson</button></div>';
 
     /* ---- main ---- */
@@ -148,12 +168,16 @@
         '<div id="quizlab"></div></section>';
     }
 
-    html += '<section class="lsec" id="practice"><h2><span class="sn">06</span>Practice · 21 problems</h2>' +
+    var lv = bands(T.practice);
+    html += '<section class="lsec" id="practice"><h2><span class="sn">06</span>Practice · ' +
+      problemCount(T.practice) + ' problems</h2>' +
       '<p class="small">Seven at each level. Set the easy row for everyone, the medium row for the ' +
-      'main body of the class, and the hard row for those who finish early.</p>' +
-      levelBlock('Easy · warm the idea up', 'lv-easy', 'c-easy', T.practice.easy) +
-      levelBlock('Medium · the standard question', 'lv-med', 'c-med', T.practice.med) +
-      levelBlock('Hard · stretch and reason', 'lv-hard', 'c-hard', T.practice.hard) +
+      'main body of the class, and the hard row for those who finish early' +
+      (lv.length > 3 ? ' — the very hard row is there for the ones who finish early twice' : '') +
+      '.</p>' +
+      lv.map(function (l) {
+        return levelBlock(l[1], l[2], l[3], T.practice[l[0]]);
+      }).join('') +
       '</section>';
 
     html += '<section class="lsec" id="homework"><h2><span class="sn">07</span>Homework</h2>' +
