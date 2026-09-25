@@ -35,6 +35,28 @@ every question is the same *type* the class practised, with different numbers.
 The bonus can make up marks lost elsewhere; the recorded mark is still out of
 100.
 
+## Grade 8 · Test 1 · Geometry
+
+40 minutes, **100 marks**, 11 questions, no calculator. Two pages, with drawing
+space under every question — geometry is answered with a sketch, so there are
+no single answer lines. Covers the first four topics of Quarter I:
+
+| Lessons | Topic | Marks |
+|---|---|---|
+| 1–2 | Revision of the Grade 7 course | 22 |
+| 3–4 | Polygons. Interior and exterior angles | 31 |
+| 5 | Parallelogram and its properties | 16 |
+| 6 | Tests for a parallelogram | 31 |
+
+| Section | Level | Questions | Marks |
+|---|---|---|---|
+| A | Easy | 5 × 6 | 30 |
+| B | Medium | 4 × 10 | 40 |
+| C | Hard | 2 × 15 | 30 |
+
+Fewer, larger questions than the algebra paper, because each one needs room
+for a labelled diagram.
+
 ## Rebuilding
 
 ```

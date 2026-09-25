@@ -61,11 +61,13 @@ def masthead(kind):
             '<h1>%s <span class="grade">%s</span></h1>'
             '<div class="meta"><span><b>%d</b> minutes</span>'
             '<span><b>%d</b> marks</span>'
-            '<span>%d questions + bonus</span><span>No calculator</span></div>'
+            '<span>%d questions%s</span><span>%s</span></div>'
             '%s<ul class="rules">%s</ul>'
             '</header>'
             % ('ms' if ms else 'qp', kind, D.TITLE, D.GRADE,
-               D.DURATION, D.TOTAL, NQ, covers, rules))
+               D.DURATION, D.TOTAL, NQ,
+               ' + bonus' if getattr(D, 'BONUS', None) else '',
+               getattr(D, 'TOOLS', 'No calculator'), covers, rules))
 
 NAMEBAR = ('<div class="namebar"><span>Name <i></i></span><span>Class <i></i></span>'
            '<span>Date <i></i></span><span class="score">Mark <i></i> / %d</span></div>'
@@ -97,14 +99,19 @@ def question_paper():
         out.append('<section class="sec">' + section_head(s))
         out.append('<ol class="qs%s" style="--space:%dpx">'
                    % (' two' if s['cols'] == 2 else '', s['space']))
+        # A section can ask for an answer line instead of blank working space —
+        # a one-mark question needs a line, a geometry question needs room.
+        line = s.get('line', s['cols'] == 2 and not s.get('space'))
         for it in s['items']:
             n += 1
-            mark = ('' if s['cols'] == 2 else mark_tag(it))
             out.append('<li><span class="qn">%d</span><div class="qb">%s %s%s</div></li>'
-                       % (n, rich(it['q']), mark,
-                          '<span class="ansline"></span>' if s['cols'] == 2 else ''))
+                       % (n, rich(it['q']), mark_tag(it),
+                          '<span class="ansline"></span>' if line else ''))
         out.append('</ol></section>')
-    b = D.BONUS
+    b = getattr(D, 'BONUS', None)
+    if not b:
+        out.append('<p class="foot">End of paper · %d marks</p></body></html>' % D.TOTAL)
+        return ''.join(out)
     out.append('<section class="sec bonus"><div class="sh">'
                '<span class="letter">\u2605</span><div><h2>Bonus</h2>'
                '<p class="lead">%s</p></div>'
@@ -151,7 +158,11 @@ def mark_scheme():
                        % (n, rich(it['q']), mark_tag(it), rich(it['ans']),
                           rich(it['work']), note))
         out.append('</ol></section>')
-    b, it = D.BONUS, D.BONUS['item']
+    b = getattr(D, 'BONUS', None)
+    if not b:
+        out.append('<p class="foot">End of mark scheme</p></body></html>')
+        return ''.join(out)
+    it = b['item']
     note = ('<p class="note">%s</p>' % rich(it['note'])) if it['note'] else ''
     out.append('<section class="sec bonus"><div class="sh">'
                '<span class="letter">\u2605</span><div><h2>Bonus</h2>'
