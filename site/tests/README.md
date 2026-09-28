@@ -76,21 +76,47 @@ without anyone counting by hand.
 **Check every answer with a CAS before writing it down.** The answers in
 `test-g8-01-data.py` were all verified this way.
 
-## Grade 11 · Practice · The rules of differentiation
+## Grade 11 · Practice · Quarter 1
 
-28 problems across four bands — easy, medium, hard, very hard — written for the
-sheet. **None of them appears in the lesson's own practice bank**, so the sheet
-follows lesson 7–9 without repeating it, and nothing on it needs the chain rule.
+One sheet per teaching topic of the quarter, 28 problems each across four
+bands — easy, medium, hard, very hard. **No problem on any sheet appears in
+that lesson's own practice bank**, so a sheet follows its lesson without
+repeating it, and nothing on a sheet needs a technique from a later lesson.
+
+| Lessons | Topic | Data file | Stem |
+|---|---|---|---|
+| 7–9 | The rules of differentiation | `ws-differentiation-data.py` | `Differentiation-practice` |
+| 10–12 | The derivative of a composite function | `ws-chainrule-data.py` | `Chain-rule-practice` |
+| 15–16 | The modulus function | `ws-modulus-data.py` | `Modulus-practice` |
+| 17–18 | The equations of the tangent and the normal | `ws-tangent-normal-data.py` | `Tangent-normal-practice` |
+| 19–22 | Investigating a function with the derivative | `ws-investigating-data.py` | `Investigating-practice` |
+| 23–25 | Extremum problems | `ws-extremum-data.py` | `Extremum-practice` |
+
+Lessons 13–14 and 26–27 are control works, so they get a test rather than a
+practice sheet.
+
+Each sheet produces two PDFs:
 
 | File | Pages | What it is |
 |---|---|---|
-| `Differentiation-practice.pdf` | 2 | questions only, for handing out |
-| `Differentiation-practice-teacher.pdf` | 3 | the same questions with answers and full working |
+| `<stem>.pdf` | 2 | questions only, for handing out |
+| `<stem>-teacher.pdf` | 3–4 | the same questions with answers and full working |
 
 ```
-python3 build-worksheet.py ws-differentiation-data.py Differentiation-practice
+python3 build-worksheet.py ws-chainrule-data.py Chain-rule-practice
 ```
 
-Questions, answers and working all live in `ws-differentiation-data.py`, one
-entry per problem. Every answer and every intermediate step was checked with a
-CAS.
+Questions, answers and working all live in the data file, one entry per
+problem. Every answer and every intermediate step was checked with a CAS.
+
+Each band carries a `note` that prints on the teacher copy only, saying what
+that band is actually testing — usually the step the class will skip.
+
+### Writing another sheet
+
+Copy any `ws-*-data.py` and edit it. The header fields (`TITLE`, `GRADE`,
+`LESSONS`, `REFS`, `NOTE`) print in the masthead; `BANDS` is the question bank.
+Inside question text, `{...}` is a maths span, `a^b` raises, and `[num]/[den]`
+stacks into a real fraction. Anything outside `{...}` is authored HTML, and
+plain HTML such as `<sup>` or `<sub>` also survives inside a maths span — use
+it for an exponent the `^` notation cannot reach, such as `x<sup>n − 1</sup>`.
