@@ -120,3 +120,36 @@ Inside question text, `{...}` is a maths span, `a^b` raises, and `[num]/[den]`
 stacks into a real fraction. Anything outside `{...}` is authored HTML, and
 plain HTML such as `<sup>` or `<sub>` also survives inside a maths span — use
 it for an exponent the `^` notation cannot reach, such as `x<sup>n − 1</sup>`.
+
+## Grade 8 · Revision drills after Test 1
+
+Written for students who did badly in Test 1 and need the same ground covered
+again before a retake. A drill is not a test: many short questions, no marks,
+no time limit, and **only the topics that test examined** — nothing from a
+later lesson appears.
+
+| Subject | Questions | Data file | Stem |
+|---|---|---|---|
+| Algebra, lessons 1–8 | 60 | `drill-g8-alg-data.py` | `Grade8-Algebra-Revision` |
+| Geometry, lessons 1–6 | 35 | `drill-g8geo-data.py` | `Grade8-Geometry-Revision` |
+
+Each drill produces two files:
+
+| File | Pages | What it is |
+|---|---|---|
+| `<stem>.pdf` | 2 | the questions, with a ruled line under each to work on |
+| `<stem>-answers.pdf` | 2 | the same questions with the answer and a one-line reason |
+
+```
+python3 build-drill.py drill-g8-alg-data.py Grade8-Algebra-Revision
+```
+
+The student sheet may not exceed two pages, and `build-drill.py` fails the
+build if it does — so adding questions forces a decision rather than quietly
+producing a third page. Column count is set per data file (`COLS`, `COLS_KEY`):
+algebra runs three columns because its questions are short, geometry two
+because its wording is longer.
+
+The question blocks follow the taught topics one for one, so a student who got
+a whole block wrong in the test can be pointed at that block alone. Every
+answer was checked with a CAS before it was written down.
