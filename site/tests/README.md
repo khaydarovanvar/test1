@@ -131,7 +131,7 @@ later lesson appears.
 | Subject | Questions | Data file | Stem |
 |---|---|---|---|
 | Algebra, lessons 1–8 | 60 | `drill-g8-alg-data.py` | `Grade8-Algebra-Revision` |
-| Geometry, lessons 1–6 | 35 | `drill-g8geo-data.py` | `Grade8-Geometry-Revision` |
+| Geometry, lessons 1–6 | 40 | `drill-g8geo-data.py` | `Grade8-Geometry-Revision` |
 
 Each drill produces two files:
 

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Grade 8 Geometry — revision drill on the Test 1 topics (lessons 1–6).
 
-Thirty-five short questions on exactly the four topics Test 1 examined, for
+Forty short questions on exactly the four topics Test 1 examined, for
 students who need the practice repeated before a retake. Nothing here needs
 anything from lesson 7 onwards.
 
@@ -43,6 +43,8 @@ BLOCKS = [
     '{62°}', 'Angles on a straight line add to {180°}.'),
   Q('Two straight lines cross. One angle is {74°}. Find the angle vertically '
     'opposite it.', '{74°}', 'Vertically opposite angles are equal.'),
+  Q('The angles of a triangle are in the ratio {2 : 3 : 4}. Find them.',
+    '{40°}, {60°}, {80°}', 'Nine parts make {180°}, so one part is {20°}.'),
  ]),
 
  dict(key='t2', nom='Lessons 3–4 · Polygons. Interior and exterior angles',
@@ -69,6 +71,10 @@ BLOCKS = [
   Q('A regular polygon has {20} sides. Find each exterior angle.', '{18°}'),
   Q('Four angles of a pentagon are {100°}, {110°}, {120°} and {95°}. Find the '
     'fifth.', '{115°}', 'The five add to {540°}.'),
+  Q('The interior angles of a convex polygon add to {1260°}. How many sides?',
+    '{9}'),
+  Q('Can a regular polygon have an exterior angle of {50°}? Explain.',
+    'no', '{360° ÷ 50° = 7.2}, and the number of sides must be a whole number.'),
  ]),
 
  dict(key='t3', nom='Lesson 5 · Parallelogram and its properties',
@@ -92,6 +98,8 @@ BLOCKS = [
     'The three angles of {△ABD} add to {180°}.'),
   Q('What do two neighbouring angles of a parallelogram add to?', '{180°}',
     'They are co-interior angles between the parallel sides.'),
+  Q('In parallelogram {ABCD}, {∠A = 3∠B}. Find both angles.',
+    '{∠A = 135°}, {∠B = 45°}', 'They are supplementary: {3B + B = 180°}.'),
  ]),
 
  dict(key='t4', nom='Lesson 6 · Tests for a parallelogram',
@@ -112,5 +120,9 @@ BLOCKS = [
   Q('The diagonals of {ABCD} meet at {O} with {AO = OC = 5} cm and '
     '{BO = OD = 7} cm. Is it a parallelogram? Name the test.',
     'yes — each diagonal is bisected by the other'),
+  Q('In {ABCD}, {∠A = ∠B} and {∠C = ∠D}. Must it be a parallelogram?',
+    'no', 'Those are <em>neighbouring</em> pairs. An isosceles trapezium has '
+    'equal base angles and is not a parallelogram — the test needs the '
+    '<em>opposite</em> pairs equal.'),
  ]),
 ]
