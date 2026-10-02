@@ -156,26 +156,39 @@ answer was checked with a CAS before it was written down.
 
 ## Grade 11 · Group activity · Derivatives
 
-A single 40-minute lesson run as four timed rounds, for groups of 3–4. Sixteen
-questions over the five topics of lessons 1–12: increments and the tangent,
-limits, the derivative, the five rules, and the chain rule. Nothing needs a
-technique from lesson 13 onwards.
+A single 40-minute lesson run as four timed rounds, for groups of 3–4. Twenty
+questions over four taught topics. **Lessons 5–6, "The derivative of a
+function", are deliberately excluded**, so nothing asks for a derivative from
+first principles or for the definition itself.
 
 | Round | Minutes | Questions | Points each | Round total |
 |---|---|---|---|---|
-| A · Easy | 5 | 6 | 2 | 12 |
-| B · Medium | 7 | 5 | 4 | 20 |
-| C · Hard | 8 | 3 | 6 | 18 |
-| D · Very hard | 8 | 2 | 15 | 30 |
-| | **28** | **16** | | **80** |
+| A · Easy | 5 | 8 | 2 | 16 |
+| B · Medium | 8 | 6 | 4 | 24 |
+| C · Hard | 9 | 4 | 7 | 28 |
+| D · Very hard | 8 | 2 | 16 | 32 |
+| | **30** | **20** | | **100** |
 
-The remaining 12 minutes are 4 to form groups and read the rules, and 8 to put
+The remaining 10 minutes are 4 to form groups and read the rules, and 6 to put
 the answers on the board and total the scores.
+
+Every question carries a topic tag, printed on both sheets, and the teacher
+sheet ends with a coverage table listing which questions draw on each topic —
+so a round cannot quietly drift onto one topic.
+
+| Topic | Lessons | Questions |
+|---|---|---|
+| T1 · Increments and the problem of the tangent | 1–2 | 5 |
+| T2 · The limit of a function | 3–4 | 6 |
+| T3 · The rules of differentiation | 7–9 | 7 |
+| T4 · The derivative of a composite function | 10–12 | 5 |
+
+Questions 15, 19 and 20 carry two tags because they genuinely span two topics.
 
 | File | Pages | What it is |
 |---|---|---|
-| `Grade11-Derivatives-Groupwork.pdf` | 1 | one sheet per group |
-| `Grade11-Derivatives-Groupwork-teacher.pdf` | 2 | lesson clock, rules, worked solutions, score table |
+| `Grade11-Derivatives-Groupwork.pdf` | 2 | one sheet per group |
+| `Grade11-Derivatives-Groupwork-teacher.pdf` | 2 | lesson clock, rules, worked solutions, coverage and score tables |
 
 ```
 python3 build-groupwork.py group-g11-deriv-data.py Grade11-Derivatives-Groupwork

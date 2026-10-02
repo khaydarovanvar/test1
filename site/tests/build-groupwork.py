@@ -74,6 +74,21 @@ def clock():
                ''.join('<li>%s</li>' % rich(r) for r in D.RULES)))
 
 
+def coverage():
+    """Which taught topic each question draws on — so a round cannot quietly
+    drift onto one topic."""
+    rows = ''
+    for code, name in D.TOPICS:
+        qs = [str(i) for i, it in enumerate(
+            (it for r in D.ROUNDS for it in r['items']), 1) if code in (it.get('topic') or '')]
+        rows += ('<tr><td class="nm"><span class="tp t%s">%s</span> %s</td>'
+                 '<td>%d</td><td class="nm qq">%s</td></tr>'
+                 % (code, code, H.escape(name), len(qs), ', '.join(qs)))
+    return ('<section class="plan"><h2>Topic coverage</h2><table class="sc">'
+            '<thead><tr><th>Topic</th><th>Questions</th><th>Which</th></tr></thead>'
+            '<tbody>%s</tbody></table></section>' % rows)
+
+
 def scoretable():
     rows = ''.join(
       '<tr><td class="nm">%s</td><td>%d</td><td>%d</td><td>%d</td></tr>'
@@ -105,13 +120,17 @@ def sheet(teacher):
                       H.escape(r.get('lead', '')), 2 if teacher else r['cols']))
         for it in r['items']:
             n += 1
-            body = '<span class="n">%d</span><span class="q">%s</span>' % (n, rich(it['q']))
+            tag = ('<span class="tp t%s">%s</span>' % (it['topic'], it['topic'])
+                   if it.get('topic') else '')
+            body = ('<span class="n">%d</span><span class="q">%s%s</span>'
+                    % (n, tag, rich(it['q'])))
             if teacher:
                 body += '<span class="a">%s</span>' % rich(it['a'])
                 body += '<span class="why">%s</span>' % rich(it['work'])
             out.append('<li>%s</li>' % body)
         out.append('</ol></section>')
     if teacher:
+        out.append(coverage())
         out.append(scoretable())
     out.append('</body></html>')
     return ''.join(out)
@@ -174,14 +193,16 @@ table.sc td.nm{text-align:left}
 table.sc tfoot td{font-weight:600;border-top:1px solid var(--ink);border-bottom:0}
 
 .rnd{margin-top:10px}
-.bh{display:flex;align-items:baseline;gap:7px;padding-bottom:3px;
+.bh{display:flex;align-items:baseline;gap:7px;padding:0 2px 3px 0;
   border-bottom:1px solid var(--lv);break-after:avoid}
 .bh h2{font-family:var(--serif);font-size:12.5px;font-weight:600;margin:0;color:var(--lv)}
 .chip{font-family:var(--mono);font-size:8px;padding:1px 5px;border-radius:3px;
   color:var(--lv);background:var(--lvt);white-space:nowrap}
 /* the description must share the header row, not run off the page edge */
 .bh h2,.chip{flex:0 0 auto}
-.lead{margin-left:auto;flex:0 1 auto;min-width:0;font-size:9px;color:var(--muted);
+/* basis 0 so the description sizes from the space actually left over and can
+   never push past the right margin */
+.lead{flex:1 1 0;min-width:0;max-width:44%;font-size:9px;color:var(--muted);
   font-style:italic;text-align:right}
 .lv-r1{--lv:var(--r1);--lvt:var(--r1-t)}
 .lv-r2{--lv:var(--r2);--lvt:var(--r2-t)}
@@ -195,6 +216,13 @@ ol.qs>li{break-inside:avoid;padding:3px 0 var(--gap,3px);display:grid;
   grid-template-columns:17px 1fr;column-gap:5px;border-bottom:1px dotted var(--rule)}
 ol.qs.work>li{--gap:26px}
 .n{font-family:var(--mono);font-size:8px;color:var(--lv);padding-top:.15em}
+.tp{font-family:var(--mono);font-size:7.2px;letter-spacing:.06em;padding:1px 4px;
+  border-radius:3px;margin-right:5px;vertical-align:1px;white-space:nowrap}
+.tT1{color:#0E5C63;background:#E0EDF1}
+.tT2{color:#B0801F;background:#F7EEDA}
+.tT3{color:#3C7A50;background:#E6F1E8}
+.tT4{color:#6B3E8F;background:#F0E9F6}
+table.sc td.qq{font-family:var(--mono);font-size:8.6px;color:var(--muted)}
 .q{min-width:0}
 .a{grid-column:2;color:var(--lv);font-weight:500;margin-top:1px}
 .why{grid-column:2;color:var(--muted);font-size:9.2px;margin-top:1px}
