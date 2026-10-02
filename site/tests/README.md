@@ -153,3 +153,40 @@ because its wording is longer.
 The question blocks follow the taught topics one for one, so a student who got
 a whole block wrong in the test can be pointed at that block alone. Every
 answer was checked with a CAS before it was written down.
+
+## Grade 11 · Group activity · Derivatives
+
+A single 40-minute lesson run as four timed rounds, for groups of 3–4. Sixteen
+questions over the five topics of lessons 1–12: increments and the tangent,
+limits, the derivative, the five rules, and the chain rule. Nothing needs a
+technique from lesson 13 onwards.
+
+| Round | Minutes | Questions | Points each | Round total |
+|---|---|---|---|---|
+| A · Easy | 5 | 6 | 2 | 12 |
+| B · Medium | 7 | 5 | 4 | 20 |
+| C · Hard | 8 | 3 | 6 | 18 |
+| D · Very hard | 8 | 2 | 15 | 30 |
+| | **28** | **16** | | **80** |
+
+The remaining 12 minutes are 4 to form groups and read the rules, and 8 to put
+the answers on the board and total the scores.
+
+| File | Pages | What it is |
+|---|---|---|
+| `Grade11-Derivatives-Groupwork.pdf` | 1 | one sheet per group |
+| `Grade11-Derivatives-Groupwork-teacher.pdf` | 2 | lesson clock, rules, worked solutions, score table |
+
+```
+python3 build-groupwork.py group-g11-deriv-data.py Grade11-Derivatives-Groupwork
+```
+
+The group sheet may not exceed two pages and the build fails if it does: a
+group turning over three pages in a timed round loses the round to paperwork.
+Round minutes live in the data file and the build prints their sum against the
+lesson length, so a round cannot be lengthened without the clock being checked.
+
+Each round's `points` rise faster than its difficulty, so a group that only
+reaches round B cannot finish ahead of one that attempted D. Rounds C and D
+carry the rule that any member may be asked to explain the method — without it
+one strong student does the work and the group learns nothing.
