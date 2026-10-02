@@ -85,7 +85,9 @@ h1,h2,h3,h4{font-family:var(--serif);margin:0;line-height:1.2}
 .ph .bar{height:2.5px;width:52px;background:var(--brand);border-radius:2px;margin-top:9px}
 
 .topichead{display:flex;gap:14px;align-items:flex-start;border-bottom:2px solid var(--brand);
-  padding-bottom:11px;margin-bottom:14px;break-after:avoid}
+  padding-bottom:11px;margin-bottom:14px;margin-top:22px;
+  break-after:avoid;break-inside:avoid}
+section:first-of-type .topichead,.page>.topichead:first-child{margin-top:0}
 .topichead .no{font-family:var(--serif);font-size:40px;font-weight:700;color:var(--brand);
   line-height:.85;min-width:52px}
 .topichead h2{font-size:22px;color:var(--brand-deep)}
@@ -103,6 +105,12 @@ p.lead{margin:0 0 10px;color:var(--ink-soft);font-size:10.5px;break-after:avoid}
 .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
 .vgrid.two{grid-template-columns:repeat(2,1fr)}
 .vgrid.one{grid-template-columns:1fr}
+.vgrid.four{grid-template-columns:repeat(4,1fr)}
+.vgrid.four .vcard{padding:6px 7px;gap:7px}
+.vgrid.four .vcard .em{font-size:20px;width:23px}
+.vgrid.four .vcard .en{font-size:11px}
+.vgrid.four .vcard .pr{font-size:9.5px}
+.vgrid.four .vcard .uz{font-size:9px}
 .vcard{display:flex;gap:9px;align-items:center;border:1px solid var(--rule);
   border-radius:6px;padding:7px 9px;background:var(--surface);break-inside:avoid}
 .vcard .em{font-size:25px;flex:none;width:30px;text-align:center}
@@ -220,7 +228,7 @@ td.num{font-family:var(--serif);font-weight:700;color:var(--brass);width:46px;fo
 
 # ====================================================== building blocks =====
 def vcards(rows, cols=3):
-    cls = {1: "one", 2: "two", 3: ""}[cols]
+    cls = {1: "one", 2: "two", 3: "", 4: "four"}[cols]
     out = ['<div class="vgrid %s">' % cls]
     for em, en, pr, uz in rows:
         out.append(
