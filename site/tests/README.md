@@ -156,18 +156,22 @@ answer was checked with a CAS before it was written down.
 
 ## Grade 11 · Group activity · Derivatives
 
-A single 40-minute lesson run as four timed rounds, for groups of 3–4. Twenty
-questions over four taught topics. **Lessons 5–6, "The derivative of a
-function", are deliberately excluded**, so nothing asks for a derivative from
-first principles or for the definition itself.
+A single 40-minute lesson run as four timed rounds, for groups of 3–4.
+Nineteen questions over three taught topics.
+
+**Two taught topics are deliberately excluded**: lessons 1–2, "Increments and
+the problem of the tangent", and lessons 5–6, "The derivative of a function".
+So no question asks for a secant slope, an increment, a derivative from first
+principles, or the definition itself — every derivative here is found with the
+rules.
 
 | Round | Minutes | Questions | Points each | Round total |
 |---|---|---|---|---|
 | A · Easy | 5 | 8 | 2 | 16 |
 | B · Medium | 8 | 6 | 4 | 24 |
 | C · Hard | 9 | 4 | 7 | 28 |
-| D · Very hard | 8 | 2 | 16 | 32 |
-| | **30** | **20** | | **100** |
+| D · Very hard | 8 | 1 | 16 | 16 |
+| | **30** | **19** | | **84** |
 
 The remaining 10 minutes are 4 to form groups and read the rules, and 6 to put
 the answers on the board and total the scores.
@@ -178,16 +182,15 @@ so a round cannot quietly drift onto one topic.
 
 | Topic | Lessons | Questions |
 |---|---|---|
-| T1 · Increments and the problem of the tangent | 1–2 | 5 |
 | T2 · The limit of a function | 3–4 | 6 |
-| T3 · The rules of differentiation | 7–9 | 7 |
-| T4 · The derivative of a composite function | 10–12 | 5 |
+| T3 · The rules of differentiation | 7–9 | 8 |
+| T4 · The derivative of a composite function | 10–12 | 6 |
 
-Questions 15, 19 and 20 carry two tags because they genuinely span two topics.
+Question 19 carries two tags because it genuinely spans two topics.
 
 | File | Pages | What it is |
 |---|---|---|
-| `Grade11-Derivatives-Groupwork.pdf` | 2 | one sheet per group |
+| `Grade11-Derivatives-Groupwork.pdf` | 1 | one sheet per group |
 | `Grade11-Derivatives-Groupwork-teacher.pdf` | 2 | lesson clock, rules, worked solutions, coverage and score tables |
 
 ```
