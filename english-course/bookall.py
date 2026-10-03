@@ -7,18 +7,12 @@ each topic heading, reading the markers back out of the PDF, and rendering a
 second time with the numbers filled in. If any marker is not found exactly
 once the contents is emitted without numbers rather than with wrong ones.
 """
-import re
-import subprocess
-import sys
-
 import build, book2, book3
-import content as C1
+import volume
 
 RENDER = ["node", "render.mjs", "bookall.html", "English-for-Maths-Teachers-Complete.pdf"]
 
-MARK_CSS = """
-/* Invisible anchors, read back from the PDF to number the contents. */
-.pgmark{font-size:2px;color:#FFFFFF;line-height:0;letter-spacing:0}
+MARK_CSS = volume.MARK_CSS + """
 .vcover{height:240mm;display:flex;flex-direction:column;justify-content:space-between;
   text-align:center;padding:4mm 0 0}
 .vcover .mark{font-family:var(--emoji);font-size:46px;letter-spacing:5px}
@@ -79,19 +73,10 @@ PLAN = [
     ("A3", "back",  "",          "Жавоблар ва режа",            "3-китоб"),
 ]
 
-def mark(tag):
-    return '<span class="pgmark">%s</span>' % tag
-
 MARKERS = True        # pass 3 renders the shipped file without them
 
 def at_head(html, tag):
-    """Put the anchor inside the heading block, which never splits across pages."""
-    if not MARKERS:
-        return html
-    for anchor in ('<div class="topichead">', '<div class="ph">', '<div>'):
-        if anchor in html:
-            return html.replace(anchor, anchor + mark(tag), 1)
-    return mark(tag) + html
+    return volume.at_head(html, tag, MARKERS)
 
 def volume_cover():
     return """<section class="page vcover">
@@ -199,63 +184,20 @@ def read_marks(pdf, n_pages):
                 found.setdefault(tag, []).append(p)
     return found
 
-# What to look for on a page once the anchors are gone, to prove the pagination
-# did not move. Topic titles also appear in the contents and the roadmap, but
-# never on the page a topic itself starts on, so matching by page is safe.
 NEEDLE = {"B1": "Book 1: From Zero", "B2": "Book 2: Grammar for the Lesson",
           "B3": "Book 3: Mathematics in English",
           "F1": "Бу китоб қандай тузилган", "F2": "олтита товуш",
           "F3": "Бутун курс", "A1": "Машқларнинг жавоблари",
           "A2": "Машқларнинг жавоблари", "A3": "Машқларнинг жавоблари"}
 
-def page_text(pdf, p):
-    t = subprocess.run(["pdftotext", "-f", str(p), "-l", str(p), pdf, "-"],
-                       capture_output=True, text=True).stdout
-    return re.sub(r"\s+", " ", t)
-
-def verify(pdf, pages):
-    """Every section must still be found on the page the contents claims."""
-    wrong = []
-    for tag, kind, no, en, uz in PLAN:
-        needle = re.sub(r"\s+", " ", NEEDLE.get(tag, en))[:26]
-        if needle not in page_text(pdf, pages[tag]):
-            wrong.append((tag, pages[tag], needle))
-    return wrong
-
 def main():
-    size = write(None)
-    print("pass 1: bookall.html %.1f KB" % (size / 1024))
-    subprocess.run(RENDER, check=True)
-    n = int(re.search(r"Pages:\s+(\d+)",
-            subprocess.run(["pdfinfo", RENDER[-1]], capture_output=True,
-                           text=True).stdout).group(1))
-    found = read_marks(RENDER[-1], n)
-    dupes = {t: v for t, v in found.items() if len(v) != 1}
-    missing = [t for t, *_ in PLAN if t not in found]
-    if dupes or missing:
-        print("anchors not unique -> contents stays without page numbers",
-              "missing:", missing, "dupes:", dupes, file=sys.stderr)
-        return
-    pages = {t: v[0] for t, v in found.items()}
-    write(pages)
-    print("pass 2: page numbers for all %d entries" % len(pages))
-    subprocess.run(RENDER, check=True)
-
-    # Pass 3 drops the anchors so they cannot be selected or extracted from the
-    # shipped file; if that moved anything, keep the pass-2 file instead.
     global MARKERS
-    MARKERS = False
-    write(pages)
-    subprocess.run(RENDER, check=True)
-    wrong = verify(RENDER[-1], pages)
-    if wrong:
-        print("pass 3 shifted the pagination -> re-rendering with anchors:", wrong,
-              file=sys.stderr)
-        MARKERS = True
+    def emit(pages, markers):
+        global MARKERS
+        MARKERS = markers
         write(pages)
-        subprocess.run(RENDER, check=True)
-    else:
-        print("pass 3: anchors removed, all %d entries verified in place" % len(pages))
+    needles = {t: NEEDLE.get(t, en) for t, kind, no, en, uz in PLAN}
+    volume.build(emit, RENDER, [t for t, *_ in PLAN], needles)
 
 if __name__ == "__main__":
     main()
