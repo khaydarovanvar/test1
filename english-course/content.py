@@ -152,7 +152,9 @@ SPELLING_TRAPS = [
     ("five → fifty",    "«ve» → «f»: fi<b>ve</b>, лекин fi<b>f</b>ty."),
     ("eight → eighty",  "битта «t»: eigh<b>t</b>y, «eightty» эмас."),
     ("nine → ninety",   "«e» сақланади: nin<b>e</b>ty."),
-    ("two → twelve, twenty", "«tw» ҳаммасида бор, лекин «w» ўқилмайди: ту:, туэлв."),
+    ("two → twelve, twenty", "Учаласида ҳам «tw» бор, лекин «w» фақат <b>two</b> да "
+                             "ўқилмайди: ту:. <b>twelve</b> ва <b>twenty</b> да эса "
+                             "ўқилади: т<i class=\"hd\">у</i>элв, т<i class=\"hd\">у</i>энти."),
 ]
 
 NUM_21_99 = [
