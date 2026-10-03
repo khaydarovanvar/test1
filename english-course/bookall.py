@@ -180,6 +180,7 @@ def body(pages=None):
 
 def write(pages=None):
     doc = ("<!doctype html><html lang='uz'><head><meta charset='utf-8'>"
+           "<meta name='running-footer' content='Инглиз тили — бошланғич синф математика ўқитувчилари учун'>"
            "<title>English for Teaching Mathematics — Complete Course</title>"
            "<style>%s%s%s%s</style></head><body>%s</body></html>"
            % (build.CSS, book2.EXTRA_CSS, book3.EXTRA_CSS, MARK_CSS, body(pages)))

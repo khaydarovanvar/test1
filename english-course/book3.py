@@ -626,6 +626,7 @@ def closing():
 
 def main():
     doc = ("<!doctype html><html lang='uz'><head><meta charset='utf-8'>"
+           "<meta name='running-footer' content='Инглиз тили — бошланғич синф математика ўқитувчилари учун'>"
            "<title>English for Teaching Mathematics — Book 3</title>"
            "<style>%s%s</style></head><body>%s</body></html>"
            % (CSS, EXTRA_CSS,

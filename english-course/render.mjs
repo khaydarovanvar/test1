@@ -77,9 +77,14 @@ await loaded;
 await S('Emulation.setEmulatedMedia', { media: 'print' });
 await sleep(900);
 
+/* Each book names its own running footer with
+   <meta name="running-footer" content="..."> so one renderer serves them all. */
+const html = fs.readFileSync(IN, 'utf8');
+const m = html.match(/<meta\s+name=["']running-footer["']\s+content=["']([^"']*)["']/i);
+const footText = m ? m[1] : 'Инглиз тили';
 const foot = `<div style="font:8.5px 'DejaVu Sans',sans-serif;color:#8B9A9F;width:100%;
   padding:0 16mm;display:flex;justify-content:space-between;">
-  <span>Инглиз тили — бошланғич синф математика ўқитувчилари учун</span>
+  <span>${footText}</span>
   <span class="pageNumber"></span></div>`;
 const head = `<div style="font:8.5px 'DejaVu Sans',sans-serif;color:#C8D2D4;width:100%;
   padding:0 16mm;text-align:right;"><span class="title"></span></div>`;

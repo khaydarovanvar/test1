@@ -90,16 +90,6 @@ svg.fig{width:74%;max-width:380px}
 .qwc .pr{font-size:10.5px;color:var(--brand)}
 .qwc .uz{font-size:10px;color:var(--muted)}
 .qwc .ex{font-size:10px;color:var(--ink-soft);margin-top:2px;font-style:italic}
-.rule{display:grid;grid-template-columns:72px 1fr;gap:9px;border:1px solid var(--rule);
-  border-radius:6px;margin:7px 0;overflow:hidden;break-inside:avoid}
-.rule .k{background:var(--brand);color:#fff;font-weight:700;font-size:13px;
-  display:flex;align-items:center;justify-content:center;padding:8px 4px;text-align:center}
-.rule .b{padding:7px 9px}
-.rule .b .n{font-size:9.5px;color:var(--muted);text-transform:uppercase;
-  letter-spacing:.08em;margin-bottom:3px}
-.rule .b .p{font-size:11px}
-.rule .b .p b{color:var(--brand-deep)}
-.rule .b .p span{color:var(--brand);font-size:10px}
 """
 
 # ----------------------------------------------------------------- pages ----
@@ -421,6 +411,7 @@ def closing():
 
 def main():
     doc = ("<!doctype html><html lang='uz'><head><meta charset='utf-8'>"
+           "<meta name='running-footer' content='Инглиз тили — бошланғич синф математика ўқитувчилари учун'>"
            "<title>English for Teaching Mathematics — Book 2</title>"
            "<style>%s%s</style></head><body>%s</body></html>"
            % (CSS, EXTRA_CSS,
