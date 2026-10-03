@@ -82,8 +82,6 @@ svg.sh{flex:none;fill:var(--brand-tint);stroke:var(--brand);stroke-width:2.2;
 .shc .sd{font-size:9px;color:var(--brass);margin-top:1px}
 .figwrap{text-align:center;margin:10px 0}
 svg.fig{width:74%;max-width:380px}
-.gtab td.f{font-weight:700;width:26%}
-.gtab td.n{color:var(--muted);width:30%}
 .qw{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
 .qwc{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--rule);
   border-radius:6px;padding:7px 9px;background:var(--surface);break-inside:avoid}

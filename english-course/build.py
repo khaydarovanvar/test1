@@ -68,9 +68,13 @@ h1,h2,h3,h4{font-family:var(--serif);margin:0;line-height:1.2}
 .cvprev .pv{border:1px solid var(--rule);border-radius:7px;padding:9px 13px;
   background:var(--surface-2);min-width:94px}
 .cvprev .pv .em{font-size:27px;display:block}
-.cvprev .pv b{display:block;font-size:12px;margin-top:4px}
-.cvprev .pv i{display:block;font-style:normal;font-size:11px;color:var(--brand)}
-.cvprev .pv u{display:block;text-decoration:none;font-size:10px;color:var(--muted)}
+/* direct children only: fmt() nests <b>/<i> inside these for stress and the
+   hard sounds, and those must stay inline or the pronunciation breaks apart */
+.cvprev .pv>b{display:block;font-size:12px;margin-top:4px}
+.cvprev .pv>i{display:block;font-style:normal;font-size:11px;color:var(--brand);
+  white-space:nowrap}
+.cvprev .pv>u{display:block;text-decoration:none;font-size:10px;color:var(--muted)}
+.cvprev .pv>i b,.cvprev .pv>i i{display:inline}
 .cover .rulebar{height:3px;background:linear-gradient(90deg,var(--brand),var(--brass));
   border-radius:2px;margin:26px auto 0;width:120px}
 .cover .foot{font-size:10px;color:var(--faint);padding-bottom:4mm;line-height:1.8}
@@ -184,6 +188,9 @@ td.num{font-family:var(--serif);font-weight:700;color:var(--brass);width:46px;fo
 .badge.later{background:var(--surface-2);color:var(--muted);border:1px solid var(--rule)}
 .parthead{background:var(--brand-deep);color:#fff;padding:6px 11px;border-radius:5px;
   margin:12px 0 6px;break-inside:avoid;break-after:avoid}
+/* shared: the 'what is in this book' table */
+.gtab td.f{font-weight:700;width:26%}
+.gtab td.n{color:var(--muted);width:30%}
 .parthead b{font-size:12.5px;letter-spacing:.02em}
 .parthead span{display:block;font-size:10px;opacity:.82;margin-top:1px}
 
