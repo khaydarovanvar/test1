@@ -4,3 +4,11 @@ site/node_modules
 # Only the merged booklets are kept in the repository — they hold the same
 # pages, one file per grade, stream and quarter.
 site/pdf/g*-*-q*-*.pdf
+
+# The student login lists extract-edupage-logins.py writes out of the EduPage
+# parent-letter PDFs. They hold usernames and passwords, so they are generated
+# when needed and kept out of the repository:
+#   python3 extract-edupage-logins.py "Ellipse International School edupage3.pdf" \
+#       --grade 8 --xlsx Grade8_EduPage_Logins.xlsx
+*_EduPage_Logins.csv
+*_EduPage_Logins.xlsx
