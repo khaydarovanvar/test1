@@ -12,3 +12,8 @@ site/pdf/g*-*-q*-*.pdf
 #       --grade 8 --xlsx Grade8_EduPage_Logins.xlsx
 *_EduPage_Logins.csv
 *_EduPage_Logins.xlsx
+
+# The printable mark sheets make-mark-sheets.py writes. They carry the class
+# rolls, and they are generated, so they stay out of the repository:
+#   python3 make-mark-sheets.py "Ellipse International School edupage3.pdf" --grade 8
+mark-sheets/
