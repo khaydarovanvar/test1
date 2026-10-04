@@ -17,3 +17,6 @@ site/pdf/g*-*-q*-*.pdf
 # rolls, and they are generated, so they stay out of the repository:
 #   python3 make-mark-sheets.py "Ellipse International School edupage3.pdf" --grade 8
 mark-sheets/
+
+# Byte-code left behind when make-mark-sheets.py imports the extractor.
+__pycache__/
