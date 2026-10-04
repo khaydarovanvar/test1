@@ -123,46 +123,46 @@ it for an exponent the `^` notation cannot reach, such as `x<sup>n − 1</sup>`.
 
 ## Grade 11 · Differentiation test · Algebra
 
-40 minutes, **100 marks**, 17 questions and a bonus, no calculator. **Two
+40 minutes, **100 marks**, 15 questions and a bonus, no calculator. **Two
 pages**, so students answer on separate paper — the rules say so, and the gaps
 under the questions are for notes.
 
-The two topics the class needs most carry **78 of the 100 marks**:
+The two topics the class needs most carry **82 of the 100 marks**:
 
 | Lessons | Topic | Marks |
 |---|---|---|
 | 7–9 | **The rules of differentiation** | 46 |
-| 10–12 | **The derivative of a composite function** | 32 |
+| 10–12 | **The derivative of a composite function** | 36 |
 | 17–18 | The equations of the tangent and the normal | 10 |
-| 3–4 ext | Limits at infinity | 12 |
+| 3–4 | The limit of a function — the 0/0 form | 8 |
 
 The last two are there so a derivative is used for something and not only
-performed. Limits at infinity are not taught in §1.2 — it stops at limits at a
-point — so the mark scheme lists them as their own row, `3–4 ext`.
+performed.
 
 | Section | Level | Questions | Marks |
 |---|---|---|---|
-| A | Easy | 10 × 4 | 40 |
+| A | Easy | 8 × 5 | 40 |
 | B | Medium | 5 × 8 | 40 |
 | C | Hard | 2 × 10 | 20 |
 | ★ | Bonus | 1 × 10 | +10, outside the 100 |
 
-Section A is ten short derivatives in two columns — four on the rules, four on
-the chain rule, one on dividing before differentiating, one limit. Four of the
-ten cannot be started without first rewriting the expression as a power, which
-is the step the class skips. Section B is the quotient rule, a gradient
-equation, two chain-rule derivatives and the three degree cases of a limit at
-infinity. Section C is the product rule and the chain rule in one question,
-then one composite function taken through its derivative, its tangent and its
-normal, so a dropped chain-rule factor costs marks three times. The bonus is
-{(x + 1)/√x}, which the quotient rule can do but splitting the fraction does
-twice as fast.
+Section A is eight short derivatives in two columns, four on the rules and
+four on the chain rule. Five of the eight cannot be started without first
+rewriting the expression as a power or dividing it out, which is the step the
+class skips. Section B is the quotient rule, a gradient equation, two
+chain-rule derivatives, and the two {0/0} techniques — factorise and cancel,
+then multiply by the conjugate. Section C is the product rule and the chain
+rule in one question, then a curve {y = ax² + bx} given by one point and one
+gradient, which is two equations to set up before anything can be solved. The
+bonus is {(x + 1)/√x}, which the quotient rule can do but splitting the
+fraction does twice as fast.
 
 Six topics are deliberately left out, and nothing on the paper needs them:
-increments and the problem of the tangent (1–2), the limit of a function (3–4),
-the derivative of a function from first principles (5–6), the modulus function
-(15–16), investigating a function with the derivative (19–22), and extremum
-problems (23–25).
+increments and the problem of the tangent (1–2), the derivative of a function
+from first principles (5–6), the modulus function (15–16), investigating a
+function with the derivative (19–22), and extremum problems (23–25). **No
+question anywhere on the paper asks for a stationary point**, including the
+bonus — "where is the gradient zero" is exactly the skill that is out.
 
 ```
 python3 build-test.py test-g11-01-data.py Grade11-Algebra-Quarter1-Test
