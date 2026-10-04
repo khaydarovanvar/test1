@@ -121,6 +121,66 @@ stacks into a real fraction. Anything outside `{...}` is authored HTML, and
 plain HTML such as `<sup>` or `<sub>` also survives inside a maths span — use
 it for an exponent the `^` notation cannot reach, such as `x<sup>n − 1</sup>`.
 
+## Grade 11 · Quarter I review paper · Algebra
+
+40 minutes, **100 marks**, 14 questions and a bonus, no calculator. Three pages.
+This is the paper for lessons 26–27, "Control work 2 and the quarter review":
+it covers the whole of Quarter I, and it adds **limits at infinity**, which the
+lesson pages do not teach — §1.2 stops at limits at a point.
+
+The paper says so on its face. The mark scheme lists limits at infinity as its
+own row, `3–4 ext`, so nobody has to work out afterwards which marks were for
+new material.
+
+| Lessons | Topic | Marks |
+|---|---|---|
+| 1–2 | Increments, and the problem of the tangent | 5 |
+| 3–4 | The limit of a function | 5 |
+| 3–4 ext | **Limits at infinity** | 23 |
+| 5–6 | The derivative of a function | 8 |
+| 7–9 | The rules of differentiation | 13 |
+| 10–12 | The derivative of a composite function | 13 |
+| 15–16 | The modulus function | 5 |
+| 17–18 | The equations of the tangent and the normal | 8 |
+| 19–22 | Investigating a function with the derivative | 10 |
+| 23–25 | Extremum problems | 10 |
+
+| Section | Level | Questions | Marks |
+|---|---|---|---|
+| A | Easy | 6 × 5 | 30 |
+| B | Medium | 5 × 8 | 40 |
+| C | Hard | 3 × 10 | 30 |
+| ★ | Bonus | 1 × 10 | +10, outside the 100 |
+
+The three limits-at-infinity questions are the three cases in order: Q2 is
+equal degrees, Q7 asks for all three cases with the division shown, and Q14
+puts a square root under the limit and then an ∞ − ∞ difference that needs the
+conjugate. The bonus is the quarter in one question — a quotient-rule
+derivative, a stationary point with its nature, and a limit at infinity read
+off as a horizontal asymptote.
+
+```
+python3 build-test.py test-g11-01-data.py Grade11-Algebra-Quarter1-Test
+```
+
+`LIM(to, expr)` in the data file builds the limit operator with its subscript,
+upright, the way the lesson pages set it. Every answer and every intermediate
+step was checked against a CAS before it was written down.
+
+### Two fixes this paper needed
+
+`ol.qs.two > li` set `padding` with the shorthand, which threw away the
+`--space` the section had asked for — so a two-column section got no working
+space at all, however much it requested. That is now fixed, and it has one
+consequence worth knowing before you rebuild anything: **Grade 8 Geometry
+Test 1 asked for 56px of drawing space in Section A and never got it**, so
+rebuilding that paper now gives three pages instead of two. Its committed PDFs
+are untouched; lower its Section A `space` if you want it back on two pages.
+
+The weighting note under the mark scheme's table used to be hard-coded to the
+Grade 8 algebra paper's wording. It is now `TIP` in the data file, with that
+wording as the default, so the Grade 8 algebra paper is unchanged.
+
 ## Grade 8 · Revision drills after Test 1
 
 Written for students who did badly in Test 1 and need the same ground covered

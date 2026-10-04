@@ -119,7 +119,8 @@ def question_paper():
                '<span class="tot">+%d marks</span></div>'
                '<ol class="qs" style="--space:%dpx"><li><span class="qn">%d</span>'
                '<div class="qb">%s</div></li></ol></section>'
-               % (rich(b['lead']), b['marks'], 76, NQ + 1, rich(b['item']['q'])))
+               % (rich(b['lead']), b['marks'], b.get('space', 76), NQ + 1,
+                  rich(b['item']['q'])))
     out.append('<p class="foot">End of paper · %d marks, plus %d bonus</p>'
                '</body></html>' % (D.TOTAL, b['marks']))
     return ''.join(out)
@@ -136,12 +137,14 @@ def mark_scheme():
     rows = ''.join('<tr><td>%s</td><td class="num">%d</td><td class="num">%d%%</td></tr>'
                    % (D.LESSON_OF[k], per[k], round(100 * per[k] / D.TOTAL))
                    for k in sorted(per))
+    # The default is the Grade 8 algebra paper's own line, kept so that paper
+    # renders unchanged; every later paper states its own weighting in TIP.
+    tip = getattr(D, 'TIP', 'Cancelling carries the largest share because every '
+                  'question in Section C also exercises the factorising from lessons 1–3.')
     out.append('<div class="cover"><h3>What the paper weighs</h3>'
                '<table><thead><tr><th>Topic</th><th class="num">Marks</th>'
                '<th class="num">Share</th></tr></thead><tbody>%s</tbody></table>'
-               '<p class="tip">Cancelling carries the largest share because every '
-               'question in Section C also exercises the factorising from lessons 1–3.'
-               '</p></div>' % rows)
+               '%s</div>' % (rows, ('<p class="tip">%s</p>' % rich(tip)) if tip else ''))
 
     n = 0
     for s in D.SECTIONS:
@@ -206,6 +209,9 @@ body{margin:0;background:#fff;color:var(--ink);font-family:var(--sans);
 .frac>span:first-child{padding:0 .34em .06em;border-bottom:1.2px solid currentColor;line-height:1.3}
 .frac>span:last-child{padding:.06em .34em 0;line-height:1.3}
 sup{font-size:.72em;line-height:0}
+sub{font-size:.72em;line-height:0}
+/* an operator name inside a maths span stays upright: lim, not l·i·m */
+.m .op{font-style:normal;letter-spacing:.02em}
 
 /* masthead */
 .mast{border-bottom:2px solid var(--ink);padding-bottom:11px}
@@ -223,9 +229,10 @@ h1 .grade{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--mut
 .meta b{color:var(--ink);font-weight:500}
 .covers-line{margin:9px 0 0;font-size:11.5px;color:var(--muted)}
 .covers{list-style:none;padding:0;margin:11px 0 0;display:grid;gap:3px}
-.covers li{display:grid;grid-template-columns:34px 1fr auto;gap:9px;align-items:baseline;
+.covers li{display:grid;grid-template-columns:46px 1fr auto;gap:9px;align-items:baseline;
   font-size:11.5px}
-.covers .ls{font-family:var(--mono);font-size:10px;color:var(--brand);
+/* a two-digit lesson range such as 10–12 must not wrap inside its chip */
+.covers .ls{font-family:var(--mono);font-size:10px;color:var(--brand);white-space:nowrap;
   background:var(--brand-tint);border-radius:2px;padding:1px 5px;text-align:center}
 .covers .tt{color:var(--ink)}
 .covers .rf{font-family:var(--mono);font-size:9.5px;color:var(--faint)}
@@ -264,7 +271,9 @@ ol.qs>li{display:grid;grid-template-columns:24px 1fr;gap:7px;padding:9px 0;
   border-bottom:1px solid var(--rule-soft);break-inside:avoid;
   padding-bottom:calc(9px + var(--space))}
 ol.qs.two{display:grid;grid-template-columns:1fr 1fr;column-gap:22px}
-ol.qs.two>li{padding:7px 0}
+/* the two-column rows need their own padding-bottom: a bare `padding`
+   shorthand here silently threw away the --space the section asked for */
+ol.qs.two>li{padding:7px 0;padding-bottom:calc(7px + var(--space))}
 .qn{font-family:var(--mono);font-size:11px;color:var(--brand);padding-top:2px}
 .qb{min-width:0}
 .mk{font-family:var(--mono);font-size:10px;color:var(--muted);white-space:nowrap}
