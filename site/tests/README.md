@@ -123,41 +123,48 @@ it for an exponent the `^` notation cannot reach, such as `x<sup>n − 1</sup>`.
 
 ## Grade 11 · Quarter I review paper · Algebra
 
-40 minutes, **100 marks**, 14 questions and a bonus, no calculator. Three pages.
-This is the paper for lessons 26–27, "Control work 2 and the quarter review":
-it covers the whole of Quarter I, and it adds **limits at infinity**, which the
-lesson pages do not teach — §1.2 stops at limits at a point.
+40 minutes, **100 marks**, 13 questions and a bonus, no calculator. **Two
+pages**, so students answer on separate paper — the rules say so, and the space
+under each question is for notes rather than for the full working.
 
-The paper says so on its face. The mark scheme lists limits at infinity as its
-own row, `3–4 ext`, so nobody has to work out afterwards which marks were for
-new material.
+Three topics are deliberately left out, and nothing on the paper needs them:
+
+| Lessons | Topic left out |
+|---|---|
+| 1–2 | Increments, and the problem of the tangent |
+| 3–4 | The limit of a function |
+| 23–25 | Extremum problems |
+
+**Limits at infinity** are not taught in §1.2 — it stops at limits at a point —
+so they are examined as the extension to lessons 3–4, at 13 marks: one short
+question on equal degrees, and one that asks for all three degree cases with
+the division shown. The mark scheme lists them as their own row, `3–4 ext`, so
+nobody has to work out afterwards which marks were for new material.
 
 | Lessons | Topic | Marks |
 |---|---|---|
-| 1–2 | Increments, and the problem of the tangent | 5 |
-| 3–4 | The limit of a function | 5 |
-| 3–4 ext | **Limits at infinity** | 23 |
+| 3–4 ext | **Limits at infinity** | 13 |
 | 5–6 | The derivative of a function | 8 |
 | 7–9 | The rules of differentiation | 13 |
 | 10–12 | The derivative of a composite function | 13 |
-| 15–16 | The modulus function | 5 |
-| 17–18 | The equations of the tangent and the normal | 8 |
-| 19–22 | Investigating a function with the derivative | 10 |
-| 23–25 | Extremum problems | 10 |
+| 15–16 | The modulus function | 10 |
+| 17–18 | The equations of the tangent and the normal | 23 |
+| 19–22 | Investigating a function with the derivative | 20 |
 
 | Section | Level | Questions | Marks |
 |---|---|---|---|
 | A | Easy | 6 × 5 | 30 |
 | B | Medium | 5 × 8 | 40 |
-| C | Hard | 3 × 10 | 30 |
+| C | Hard | 2 × 15 | 30 |
 | ★ | Bonus | 1 × 10 | +10, outside the 100 |
 
-The three limits-at-infinity questions are the three cases in order: Q2 is
-equal degrees, Q7 asks for all three cases with the division shown, and Q14
-puts a square root under the limit and then an ∞ − ∞ difference that needs the
-conjugate. The bonus is the quarter in one question — a quotient-rule
-derivative, a stationary point with its nature, and a limit at infinity read
-off as a horizontal asymptote.
+Section C is two long questions rather than three short ones, because both are
+built in parts that lead on from each other: Q12 ends by reading the number of
+solutions of {x³ − 6x² + 9x = k} off the sketch made in the part before, and
+Q13 takes one composite function through its derivative, its tangent and its
+normal, so a dropped chain-rule factor costs marks in all three parts. The
+bonus asks for the two tangents to {y = x²} through a point that is not on the
+curve, so the point of contact has to be carried as an unknown.
 
 ```
 python3 build-test.py test-g11-01-data.py Grade11-Algebra-Quarter1-Test
@@ -180,6 +187,10 @@ are untouched; lower its Section A `space` if you want it back on two pages.
 The weighting note under the mark scheme's table used to be hard-coded to the
 Grade 8 algebra paper's wording. It is now `TIP` in the data file, with that
 wording as the default, so the Grade 8 algebra paper is unchanged.
+
+Note that `a^b` only raises a run of digits or a single letter, so a fractional
+index needs an explicit `<sup>`: write `(2x + 7)<sup>1/2</sup>`, not
+`(2x + 7)^(1/2)`, which prints literally.
 
 ## Grade 8 · Revision drills after Test 1
 

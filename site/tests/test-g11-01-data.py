@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
-"""Grade 11 Algebra, Quarter I review paper — lessons 1–25, plus limits at
+"""Grade 11 Algebra, Quarter I review paper — lessons 5–22, plus limits at
 infinity.
 
-Fourteen questions and a bonus, out of 100 marks, in 40 minutes. Limits at
-infinity are not in §1.2 as it is taught; they are examined here as the
-extension to lessons 3–4, and the paper says so on its face so nobody meets
-the ∞/∞ form for the first time in silence.
+Thirteen questions and a bonus, out of 100 marks, in 40 minutes, on two pages.
+
+Three topics are deliberately left out: lessons 1–2 "Increments, and the
+problem of the tangent", lessons 3–4 "The limit of a function", and lessons
+23–25 "Extremum problems". Nothing on this paper needs them.
+
+Limits at infinity are not in §1.2 as it is taught; they are examined here as
+the extension to lessons 3–4, at 13 marks — one short question and one that
+asks for the three degree cases.
 
 Every answer and every intermediate step here was checked against a CAS before
 it was written down.
@@ -29,50 +34,42 @@ def LIM(to, expr):
 
 INF = 'x→∞'
 
-# Printed on the question paper as one compact line.
-COVERS_SHORT = ('Lessons 1–25 · Limits, including limits at infinity · The derivative '
-                'and the five rules · The chain rule · Modulus · Tangent and normal · '
-                'Investigating a function · Extremum problems')
+# One short line on the question paper. The full references are of use to
+# whoever is marking, not to a student with 40 minutes, so they go on the
+# mark scheme instead.
+COVERS_SHORT = 'Lessons 5–22, and limits at infinity'
 
-# The full references belong on the mark scheme, where the teacher wants them.
 COVERS = [
-    ('1–2',   'Increments, and the problem of the tangent', 'Algebra 11, §1.1 · P1 · 7.1'),
-    ('3–4',   'The limit of a function', 'Algebra 11, §1.2 · P1 · 7.1'),
     ('3–4 ext', 'Limits at infinity — extension', 'Algebra 11, §1.2 · P1 · 7.1 · new on this paper'),
-    ('5–6',   'The derivative of a function', 'Algebra 11, §1.3 · P1 · 7.1–7.2'),
-    ('7–9',   'The rules of differentiation', 'Algebra 11, §1.4 · P1 · 7.2–7.4'),
-    ('10–12', 'The derivative of a composite function', 'Algebra 11, §1.5 · P1 · 7.5'),
-    ('15–16', 'The modulus function', 'P1 · 1.6 · P2 · 1.1–1.3'),
-    ('17–18', 'The equations of the tangent and the normal', 'Algebra 11, §1.6 · P1 · 7.6'),
-    ('19–22', 'Investigating a function with the derivative', 'Algebra 11, §1.7 · P1 · 7.7–7.8'),
-    ('23–25', 'Extremum problems', 'Algebra 11, §1.8 · P1 · 7.8'),
+    ('5–6',     'The derivative of a function', 'Algebra 11, §1.3 · P1 · 7.1–7.2'),
+    ('7–9',     'The rules of differentiation', 'Algebra 11, §1.4 · P1 · 7.2–7.4'),
+    ('10–12',   'The derivative of a composite function', 'Algebra 11, §1.5 · P1 · 7.5'),
+    ('15–16',   'The modulus function', 'P1 · 1.6 · P2 · 1.1–1.3'),
+    ('17–18',   'The equations of the tangent and the normal', 'Algebra 11, §1.6 · P1 · 7.6'),
+    ('19–22',   'Investigating a function with the derivative', 'Algebra 11, §1.7 · P1 · 7.7–7.8'),
 ]
 
 RULES = [
-    'Show your working — method carries marks. A limit or a derivative written '
-    'down with no working scores nothing.',
-    'For a limit at infinity, divide numerator and denominator by the highest '
-    'power of {x} and say which terms you are sending to zero.',
-    'For a stationary point, state its nature and the test you used.',
+    'Answer on separate paper, and show your working — method carries marks.',
+    'State the nature of every stationary point, and the test you used.',
 ]
 
-TIP = ('Limits at infinity carry 23 % because the paper introduces them. The derivative '
-       'block — the five rules, the chain rule, the tangent, the investigation and the '
-       'extremum — carries 54 % together, which is the share of the quarter it occupied. '
-       'The modulus is examined once, at five marks: it is a Cambridge insert, not part '
-       'of the derivative thread.')
+TIP = ('Nothing on this paper needs lessons 1–2, 3–4 or 23–25. Limits at infinity are '
+       'new, and carry 13 marks. The tangent and the normal carry the largest share '
+       'because question 13 asks for both from a composite function, so it also '
+       'examines the chain rule.')
 
 
 def Q(q, marks, ans, work, lesson, note=''):
-    """One question: text, marks, answer, worked solution, and which of the ten
-    taught topics it belongs to."""
+    """One question: text, marks, answer, worked solution, and which of the
+    seven examined topics it belongs to."""
     return dict(q=q, marks=marks, ans=ans, work=work, lesson=lesson, note=note)
 
 
 SECTIONS = [
  dict(letter='A', level='easy', title='Five marks each',
-      lead='One or two lines of working is enough.',
-      cols=2, space=56, items=[
+      lead='Short answers — one or two lines each.',
+      cols=2, space=24, items=[
 
   Q('Differentiate: {y = 4x^3 − 5x + 7}', 5, '{[dy]/[dx] = 12x^2 − 5}',
     'Power rule term by term; the derivative of the constant {7} is zero.', 4),
@@ -83,30 +80,26 @@ SECTIONS = [
     'Equal degrees, so the answer is the ratio of the leading coefficients — but the '
     'division has to be shown, not quoted.'),
 
-  Q('Evaluate: ' + LIM('x→4', '[x^2 − 16]/[x − 4]'), 5, '{8}',
-    'Substitution gives {[0]/[0]}. Factorise: {[(x − 4)(x + 4)]/[x − 4] = x + 4} for '
-    '{x ≠ 4}, which tends to {8}.', 2),
-
-  Q('For {y = x^2}, the value of {x} changes from {3} to {3.1}. Find {Δy}, and the '
-    'gradient of the secant through the two points.',
-    5, '{Δy = 0.61}; &nbsp;gradient {= 6.1}',
-    '{Δy = 3.1^2 − 3^2 = 9.61 − 9 = 0.61} and {Δx = 0.1}, so '
-    '{[Δy]/[Δx] = [0.61]/[0.1] = 6.1}.', 1,
-    'The tangent gradient at {x = 3} is {6}; the secant is close but not equal, which is '
-    'the whole point of lessons 1–2.'),
-
   Q('Differentiate: {y = (3x + 1)^5}', 5, '{[dy]/[dx] = 15(3x + 1)^4}',
     'Chain rule: {5(3x + 1)^4} times the derivative of the inside, which is {3}.', 5),
 
   Q('Solve: {|2x − 6| = 10}', 5, '{x = 8} &nbsp;or&nbsp; {x = −2}',
-    '{2x − 6 = 10} gives {x = 8}; {2x − 6 = −10} gives {x = −2}. Both satisfy the '
-    'original equation.', 7,
+    '{2x − 6 = 10} gives {x = 8}; {2x − 6 = −10} gives {x = −2}.', 7,
     'One answer only means the negative branch was forgotten.'),
+
+  Q('Find the stationary point of {y = x^2 − 6x + 5} and state its nature.',
+    5, '{(3, −4)}, a minimum',
+    '{[dy]/[dx] = 2x − 6 = 0} gives {x = 3}, and {y = 9 − 18 + 5 = −4}. '
+    '{[d^2y]/[dx^2] = 2 > 0}, so it is a minimum.', 9),
+
+  Q('Solve: {|x − 3| < 5}', 5, '{−2 < x < 8}',
+    'The distance from {x} to {3} is less than {5}, so {−5 < x − 3 < 5}. '
+    'Adding {3} throughout gives {−2 < x < 8}.', 7),
  ]),
 
  dict(letter='B', level='med', title='Eight marks each',
       lead='Method marks are available even when the final answer is wrong.',
-      cols=1, space=96, items=[
+      cols=1, space=38, items=[
 
   Q('Evaluate, showing the division in each case:<br>'
     '<b>(a)</b> ' + LIM(INF, '[2x^2 − 3x + 1]/[5x^2 + 4]') + ' &nbsp;<span class="mk">[3]</span><br>'
@@ -156,100 +149,86 @@ SECTIONS = [
 
   Q('{y = √(x^2 + 9)}. Find {[dy]/[dx]} and its value at {x = 4}.',
     8, '{[dy]/[dx] = [x]/[√(x^2 + 9)]}; &nbsp;at {x = 4} it is {[4]/[5]}',
-    'Write {y = (x^2 + 9)^(1/2)}. Chain rule: '
-    '{[dy]/[dx] = [1]/[2](x^2 + 9)^(−1/2) · 2x = [x]/[√(x^2 + 9)]}.<br>'
+    'Write {y = (x^2 + 9)<sup>1/2</sup>}. Chain rule: '
+    '{[dy]/[dx] = [1]/[2](x^2 + 9)<sup>−1/2</sup> · 2x = [x]/[√(x^2 + 9)]}.<br>'
     'At {x = 4}: {√(16 + 9) = 5}, so the value is {[4]/[5]}.', 5,
     'The factor {2x} from the inside function is the mark most often dropped.'),
  ]),
 
- dict(letter='C', level='hard', title='Ten marks each',
-      lead='Full method required. Define your variable before you differentiate.',
-      cols=1, space=150, items=[
+ dict(letter='C', level='hard', title='Fifteen marks each',
+      lead='Full method required.',
+      cols=1, space=70, items=[
 
   Q('{y = x^3 − 6x^2 + 9x}.<br>'
     '<b>(a)</b> Find the stationary points and determine the nature of each. '
     '&nbsp;<span class="mk">[6]</span><br>'
     '<b>(b)</b> State the intervals on which the function is increasing and decreasing, '
-    'and sketch the curve. &nbsp;<span class="mk">[4]</span>',
-    10, '<b>(a)</b> {(1, 4)} maximum, {(3, 0)} minimum &nbsp;&nbsp; '
-        '<b>(b)</b> increasing for {x < 1} and {x > 3}, decreasing for {1 < x < 3}',
+    'and sketch the curve. &nbsp;<span class="mk">[5]</span><br>'
+    '<b>(c)</b> Find the values of {k} for which {x^3 − 6x^2 + 9x = k} has three distinct '
+    'solutions. &nbsp;<span class="mk">[4]</span>',
+    15, '<b>(a)</b> {(1, 4)} maximum, {(3, 0)} minimum &nbsp;&nbsp; '
+        '<b>(b)</b> increasing for {x < 1} and {x > 3}, decreasing for {1 < x < 3} '
+        '&nbsp;&nbsp; <b>(c)</b> {0 < k < 4}',
     '<b>(a)</b> {[dy]/[dx] = 3x^2 − 12x + 9 = 3(x − 1)(x − 3)}, zero at {x = 1} and '
     '{x = 3}. Then {y(1) = 1 − 6 + 9 = 4} and {y(3) = 27 − 54 + 27 = 0}.<br>'
     'Second derivative {[d^2y]/[dx^2] = 6x − 12}: at {x = 1} it is {−6 < 0}, a maximum; '
     'at {x = 3} it is {6 > 0}, a minimum.<br>'
     '<b>(b)</b> {3(x − 1)(x − 3) > 0} for {x < 1} and for {x > 3}, so the function '
     'increases there, and {< 0} for {1 < x < 3}, so it decreases between the two '
-    'stationary points. The curve also passes through the origin, since '
-    '{y = x(x − 3)^2}, and rises without bound on the right.', 9,
-    'A sign chart earns the nature marks just as well as the second derivative. The sketch '
-    'must show the maximum to the <em>left</em> of the minimum — the commonest sketch error '
-    'is drawing them the other way round.'),
+    'stationary points. The curve passes through the origin, since {y = x(x − 3)^2}, '
+    'and rises without bound on the right.<br>'
+    '<b>(c)</b> The solutions of {y = k} are where the horizontal line {y = k} cuts the '
+    'curve. It cuts three times exactly when {k} lies strictly between the minimum value '
+    '{0} and the maximum value {4}, so {0 < k < 4}.', 9,
+    'A sign chart earns the nature marks just as well as the second derivative. Part (c) '
+    'is the sketch being used, not a new technique — a student who drew the curve in (b) '
+    'can read the answer off it. The inequalities must be strict: at {k = 0} and {k = 4} '
+    'the line passes through a stationary point and there are only two distinct solutions.'),
 
-  Q('A closed cylinder is to hold {128π} cm<sup>3</sup>. Find the radius that makes its total '
-    'surface area least, and state that least area in terms of {π}. Show that your value '
-    'gives a minimum.',
-    10, '{r = 4} cm, {h = 8} cm, least area {96π} cm<sup>2</sup>',
-    'Volume: {πr^2h = 128π}, so {h = [128]/[r^2]}.<br>'
-    'Surface area: {S = 2πr^2 + 2πrh = 2πr^2 + 2πr · [128]/[r^2] = 2πr^2 + [256π]/[r]}.<br>'
-    '{[dS]/[dr] = 4πr − [256π]/[r^2] = 0} gives {4πr^3 = 256π}, so {r^3 = 64} and {r = 4}.<br>'
-    'Then {h = [128]/[16] = 8} and {S = 2π(16) + [256π]/[4] = 32π + 64π = 96π}.<br>'
-    '{[d^2S]/[dr^2] = 4π + [512π]/[r^3]}, which is {12π > 0} at {r = 4}, so the area is a '
-    'minimum.', 10,
-    'The marks are in the modelling: eliminating {h} with the volume before differentiating. '
-    'A student who differentiates {S} with both {r} and {h} in it cannot finish.'),
-
-  Q('<b>(a)</b> Evaluate ' + LIM(INF, '[√(9x^2 + 1)]/[2x + 5]') + '. '
-    '&nbsp;<span class="mk">[4]</span><br>'
-    '<b>(b)</b> Evaluate ' + LIM(INF, '(√(4x^2 + 3x) − 2x)') + '. '
-    '&nbsp;<span class="mk">[6]</span>',
-    10, '<b>(a)</b> {[3]/[2]} &nbsp;&nbsp; <b>(b)</b> {[3]/[4]}',
-    '<b>(a)</b> Divide by {x}, taking {x > 0} so that {x = √(x^2)}:<br>'
-    '{[√(9x^2 + 1)]/[2x + 5] = [√(9 + 1/x^2)]/[2 + 5/x] → [√9]/[2] = [3]/[2]}.<br>'
-    '<b>(b)</b> The difference is an {∞ − ∞} form, so multiply by the conjugate:<br>'
-    '{√(4x^2 + 3x) − 2x = [(4x^2 + 3x) − 4x^2]/[√(4x^2 + 3x) + 2x] = '
-    '[3x]/[√(4x^2 + 3x) + 2x]}.<br>'
-    'Now divide by {x}: {[3]/[√(4 + 3/x) + 2] → [3]/[2 + 2] = [3]/[4]}.', 2.5,
-    'Part (b) is the conjugate trick from lesson 3–4 used at infinity instead of at a point. '
-    'Answering {0} means the subtraction was done term by term, which {∞ − ∞} does not allow.'),
+  Q('The curve {y = √(2x + 7)}.<br>'
+    '<b>(a)</b> Find {[dy]/[dx]}. &nbsp;<span class="mk">[4]</span><br>'
+    '<b>(b)</b> Find the equation of the tangent at the point where {x = 1}. '
+    '&nbsp;<span class="mk">[6]</span><br>'
+    '<b>(c)</b> Find the equation of the normal at that point, and the coordinates of the '
+    'point where it crosses the {x}-axis. &nbsp;<span class="mk">[5]</span>',
+    15, '<b>(a)</b> {[dy]/[dx] = [1]/[√(2x + 7)]} &nbsp;&nbsp; '
+        '<b>(b)</b> {3y = x + 8} &nbsp;&nbsp; <b>(c)</b> {y = 6 − 3x}, crossing at {(2, 0)}',
+    '<b>(a)</b> {y = (2x + 7)<sup>1/2</sup>}, so {[dy]/[dx] = [1]/[2](2x + 7)<sup>−1/2</sup> · 2 = '
+    '[1]/[√(2x + 7)]}.<br>'
+    '<b>(b)</b> At {x = 1}: {y = √9 = 3} and {[dy]/[dx] = [1]/[3]}. '
+    'So {y − 3 = [1]/[3](x − 1)}, which tidies to {3y = x + 8}.<br>'
+    '<b>(c)</b> The normal gradient is {−3}, so {y − 3 = −3(x − 1)}, that is {y = 6 − 3x}. '
+    'It meets the {x}-axis where {y = 0}, so {x = 2} and the point is {(2, 0)}.', 8,
+    'The {· 2} from the inside function in (a) is the mark most often dropped, and it '
+    'carries through both later parts. Leaving the tangent as {y = [1]/[3]x + [8]/[3]} is '
+    'not penalised.'),
  ]),
 ]
 
 BONUS = dict(
   marks=10,
-  space=180,
+  space=60,
   lead='Attempt this only when the rest is finished. It can make up marks lost '
        'elsewhere, but your total is still recorded out of 100.',
-  item=Q('{y = [8x]/[x^2 + 4]} for {x ≥ 0}.<br>'
-         '<b>(a)</b> Show that the curve has a maximum at {x = 2} and find its value. '
-         '&nbsp;<span class="mk">[6]</span><br>'
-         '<b>(b)</b> Find ' + LIM(INF, 'y') + ' and say what it tells you about the shape '
-         'of the curve. &nbsp;<span class="mk">[4]</span>',
+  item=Q('Find the equations of the two tangents to {y = x^2} that pass through the point '
+         '{(0, −4)}.',
          10,
-         '<b>(a)</b> maximum {(2, 2)} &nbsp;&nbsp; <b>(b)</b> {0}; the curve falls back '
-         'towards the {x}-axis, which is a horizontal asymptote',
-         '<b>(a)</b> Quotient rule: '
-         '{[dy]/[dx] = [8(x^2 + 4) − 8x(2x)]/[(x^2 + 4)^2] = [32 − 8x^2]/[(x^2 + 4)^2] = '
-         '[−8(x − 2)(x + 2)]/[(x^2 + 4)^2]}.<br>'
-         'The denominator is always positive, so the sign is that of {−8(x − 2)(x + 2)}: '
-         'positive for {0 ≤ x < 2} and negative for {x > 2}. The function rises then falls, '
-         'so {x = 2} is a maximum, and {y(2) = [16]/[8] = 2}.<br>'
-         '<b>(b)</b> Divide by {x^2}: {[8/x]/[1 + 4/x^2] → [0]/[1] = 0}. So after the '
-         'maximum the curve decreases towards the {x}-axis without ever reaching it — '
-         '{y = 0} is a horizontal asymptote.', 10,
-         'This is the quarter in one question: a quotient-rule derivative, a stationary point '
-         'with its nature, and a limit at infinity read as the shape of the curve. The sign '
-         'argument is cleaner here than the second derivative, which is why it is the working '
-         'given — but {[d^2y]/[dx^2] = −[1]/[2]} at {x = 2} earns the same marks.'))
+         '{y = 4x − 4} &nbsp;and&nbsp; {y = −4x − 4}',
+         'Let the point of contact be {(t, t^2)}. Since {[dy]/[dx] = 2x}, the tangent '
+         'there has gradient {2t}, so its equation is {y − t^2 = 2t(x − t)}, that is '
+         '{y = 2tx − t^2}.<br>'
+         'It passes through {(0, −4)}, so {−4 = −t^2}, giving {t = 2} or {t = −2}.<br>'
+         'The two tangents are {y = 4x − 4} and {y = −4x − 4}.', 8,
+         'The point {(0, −4)} is <em>not</em> on the curve, so there is no single point to '
+         'differentiate at — the contact point has to be carried as an unknown. That is the '
+         'whole difficulty, and it is why this is the bonus.'))
 
 LESSON_OF = {
-  1:  'Lessons 1–2 · Increments, and the problem of the tangent',
-  2:  'Lessons 3–4 · The limit of a function',
   2.5: 'Lessons 3–4, extension · Limits at infinity',
-  3:  'Lessons 5–6 · The derivative of a function',
-  4:  'Lessons 7–9 · The rules of differentiation',
-  5:  'Lessons 10–12 · The derivative of a composite function',
-  7:  'Lessons 15–16 · The modulus function',
-  8:  'Lessons 17–18 · The equations of the tangent and the normal',
-  9:  'Lessons 19–22 · Investigating a function with the derivative',
-  10: 'Lessons 23–25 · Extremum problems',
+  3:   'Lessons 5–6 · The derivative of a function',
+  4:   'Lessons 7–9 · The rules of differentiation',
+  5:   'Lessons 10–12 · The derivative of a composite function',
+  7:   'Lessons 15–16 · The modulus function',
+  8:   'Lessons 17–18 · The equations of the tangent and the normal',
+  9:   'Lessons 19–22 · Investigating a function with the derivative',
 }
