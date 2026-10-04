@@ -1,0 +1,30 @@
+/* Renders workbook-g8-algebra.html to A4 PDF with Chromium.
+   The page is local and asks for no web fonts, so nothing goes out to the network. */
+import pw from '/opt/node-tools/node_modules/playwright/index.js';
+const { chromium } = pw;
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const src = 'file://' + path.join(here, 'workbook-g8-algebra.html');
+const out = path.join(here, 'Grade8_Algebra_Workbook_Fractions.pdf');
+
+const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
+const page = await browser.newPage();
+await page.route('**/*', r => (r.request().url().startsWith('file:') ? r.continue() : r.abort()));
+await page.goto(src, { waitUntil: 'load' });
+await page.pdf({
+  path: out,
+  format: 'A4',
+  printBackground: true,
+  margin: { top: '13mm', bottom: '15mm', left: '14mm', right: '14mm' },
+  displayHeaderFooter: true,
+  headerTemplate: '<div></div>',
+  footerTemplate:
+    '<div style="font:8pt -apple-system,sans-serif;color:#7A8792;width:100%;padding:0 14mm;">' +
+    '<span style="float:left">Grade 8 Algebra · Algebraic fractions · workbook</span>' +
+    '<span style="float:right">Page <span class="pageNumber"></span> of <span class="totalPages"></span></span>' +
+    '</div>'
+});
+await browser.close();
+console.log('wrote ' + out);

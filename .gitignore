@@ -20,3 +20,9 @@ mark-sheets/
 
 # Byte-code left behind when make-mark-sheets.py imports the extractor.
 __pycache__/
+
+# The workbook build output. The question bank and the builders are tracked;
+# the rendered book is generated:
+#   python3 workbooks/build-workbook.py && node workbooks/render-workbook.mjs
+workbooks/workbook-*.html
+workbooks/*.pdf
