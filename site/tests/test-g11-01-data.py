@@ -1,26 +1,32 @@
 # -*- coding: utf-8 -*-
-"""Grade 11 Algebra, Quarter I review paper — lessons 5–22, plus limits at
-infinity.
+"""Grade 11 Algebra — the rules of differentiation and the chain rule.
 
-Thirteen questions and a bonus, out of 100 marks, in 40 minutes, on two pages.
+Seventeen questions and a bonus, out of 100 marks, in 40 minutes, on two pages.
 
-Three topics are deliberately left out: lessons 1–2 "Increments, and the
-problem of the tangent", lessons 3–4 "The limit of a function", and lessons
-23–25 "Extremum problems". Nothing on this paper needs them.
+The two topics the class needs most carry 78 of the 100 marks:
 
-Limits at infinity are not in §1.2 as it is taught; they are examined here as
-the extension to lessons 3–4, at 13 marks — one short question and one that
-asks for the three degree cases.
+    lessons 7–9    the rules of differentiation        46
+    lessons 10–12  the derivative of a composite fn    32
+
+The rest is the tangent and the normal (10) and limits at infinity (12), which
+are there so the differentiation is used for something and not only performed.
+
+Left out on purpose, and not needed anywhere on the paper: increments and the
+problem of the tangent (1–2), the limit of a function (3–4), the derivative of
+a function from first principles (5–6), the modulus function (15–16),
+investigating a function with the derivative (19–22), and extremum problems
+(23–25).
 
 Every answer and every intermediate step here was checked against a CAS before
 it was written down.
 
 Notation inside the text: {...} is a maths span, a^b raises, and [num]/[den]
-stacks into a real fraction. LIM() builds the limit operator with its own
-subscript, upright, the way the lesson pages set it.
+stacks into a real fraction. The ^ notation only raises digits or a single
+letter, so a fractional index needs an explicit <sup>. LIM() builds the limit
+operator with its own subscript, upright, the way the lesson pages set it.
 """
 
-TITLE = 'Quarter I review paper · Algebra'
+TITLE = 'Differentiation test · Algebra'
 GRADE = 'Grade 11'
 DURATION = 40          # minutes
 TOTAL = 100            # marks, excluding the bonus
@@ -37,69 +43,113 @@ INF = 'x→∞'
 # One short line on the question paper. The full references are of use to
 # whoever is marking, not to a student with 40 minutes, so they go on the
 # mark scheme instead.
-COVERS_SHORT = 'Lessons 5–22, and limits at infinity'
+COVERS_SHORT = 'Lessons 7–12 and 17–18, with limits at infinity'
 
 COVERS = [
-    ('3–4 ext', 'Limits at infinity — extension', 'Algebra 11, §1.2 · P1 · 7.1 · new on this paper'),
-    ('5–6',     'The derivative of a function', 'Algebra 11, §1.3 · P1 · 7.1–7.2'),
     ('7–9',     'The rules of differentiation', 'Algebra 11, §1.4 · P1 · 7.2–7.4'),
     ('10–12',   'The derivative of a composite function', 'Algebra 11, §1.5 · P1 · 7.5'),
-    ('15–16',   'The modulus function', 'P1 · 1.6 · P2 · 1.1–1.3'),
     ('17–18',   'The equations of the tangent and the normal', 'Algebra 11, §1.6 · P1 · 7.6'),
-    ('19–22',   'Investigating a function with the derivative', 'Algebra 11, §1.7 · P1 · 7.7–7.8'),
+    ('3–4 ext', 'Limits at infinity — extension', 'Algebra 11, §1.2 · P1 · 7.1 · new on this paper'),
 ]
 
 RULES = [
     'Answer on separate paper, and show your working — method carries marks.',
-    'State the nature of every stationary point, and the test you used.',
+    'Simplify every derivative. Leave no negative or fractional index in a final answer.',
 ]
 
-TIP = ('Nothing on this paper needs lessons 1–2, 3–4 or 23–25. Limits at infinity are '
-       'new, and carry 13 marks. The tangent and the normal carry the largest share '
-       'because question 13 asks for both from a composite function, so it also '
-       'examines the chain rule.')
+TIP = ('The rules and the chain rule carry 78 of the 100 marks between them, which is what '
+       'this paper is for. The tangent and the normal, and the limits at infinity, are there '
+       'so that a derivative is used for something and not only performed. Nothing on the '
+       'paper needs lessons 1–6, 15–16, 19–22 or 23–25.')
 
 
 def Q(q, marks, ans, work, lesson, note=''):
     """One question: text, marks, answer, worked solution, and which of the
-    seven examined topics it belongs to."""
+    four examined topics it belongs to."""
     return dict(q=q, marks=marks, ans=ans, work=work, lesson=lesson, note=note)
 
 
 SECTIONS = [
- dict(letter='A', level='easy', title='Five marks each',
-      lead='Short answers — one or two lines each.',
-      cols=2, space=24, items=[
+ dict(letter='A', level='easy', title='Four marks each',
+      lead='Differentiate and simplify. One line of working is enough.',
+      cols=2, space=20, items=[
 
-  Q('Differentiate: {y = 4x^3 − 5x + 7}', 5, '{[dy]/[dx] = 12x^2 − 5}',
+  Q('{y = 4x^3 − 5x + 7}', 4, '{[dy]/[dx] = 12x^2 − 5}',
     'Power rule term by term; the derivative of the constant {7} is zero.', 4),
 
-  Q('Evaluate: ' + LIM(INF, '[3x^2 + 2x]/[x^2 − 5]'), 5, '{3}',
-    'Divide top and bottom by {x^2}: {[3 + 2/x]/[1 − 5/x^2]}. Both '
-    '{[2]/[x]} and {[5]/[x^2]} tend to {0}, leaving {[3]/[1] = 3}.', 2.5,
-    'Equal degrees, so the answer is the ratio of the leading coefficients — but the '
-    'division has to be shown, not quoted.'),
+  Q('{y = [3]/[x^2]}', 4, '{[dy]/[dx] = −[6]/[x^3]}',
+    'Rewrite as {y = 3x<sup>−2</sup>}, so {[dy]/[dx] = −6x<sup>−3</sup> = −[6]/[x^3]}.', 4,
+    'The rewrite is the whole question. A student who cannot turn {[3]/[x^2]} into a power '
+    'cannot start.'),
 
-  Q('Differentiate: {y = (3x + 1)^5}', 5, '{[dy]/[dx] = 15(3x + 1)^4}',
+  Q('{y = 5√x}', 4, '{[dy]/[dx] = [5]/[2√x]}',
+    'Rewrite as {y = 5x<sup>1/2</sup>}, so '
+    '{[dy]/[dx] = [5]/[2]x<sup>−1/2</sup> = [5]/[2√x]}.', 4),
+
+  Q('{y = (2x + 1)(x − 4)}', 4, '{[dy]/[dx] = 4x − 7}',
+    'Expand first: {y = 2x^2 − 7x − 4}, so {[dy]/[dx] = 4x − 7}. The product rule gives '
+    'the same: {2(x − 4) + (2x + 1) = 4x − 7}.', 4),
+
+  Q('{y = [x^3 − 2x]/[x]}', 4, '{[dy]/[dx] = 2x}',
+    'Divide first: {y = x^2 − 2} for {x ≠ 0}, so {[dy]/[dx] = 2x}.', 4,
+    'The quotient rule works but wastes two minutes. Looking at the expression before '
+    'reaching for a rule is the point.'),
+
+  Q('{y = (3x + 1)^5}', 4, '{[dy]/[dx] = 15(3x + 1)^4}',
     'Chain rule: {5(3x + 1)^4} times the derivative of the inside, which is {3}.', 5),
 
-  Q('Solve: {|2x − 6| = 10}', 5, '{x = 8} &nbsp;or&nbsp; {x = −2}',
-    '{2x − 6 = 10} gives {x = 8}; {2x − 6 = −10} gives {x = −2}.', 7,
-    'One answer only means the negative branch was forgotten.'),
+  Q('{y = (x^2 − 4)^3}', 4, '{[dy]/[dx] = 6x(x^2 − 4)^2}',
+    'Chain rule: {3(x^2 − 4)^2} times the derivative of the inside, which is {2x}.', 5),
 
-  Q('Find the stationary point of {y = x^2 − 6x + 5} and state its nature.',
-    5, '{(3, −4)}, a minimum',
-    '{[dy]/[dx] = 2x − 6 = 0} gives {x = 3}, and {y = 9 − 18 + 5 = −4}. '
-    '{[d^2y]/[dx^2] = 2 > 0}, so it is a minimum.', 9),
+  Q('{y = [1]/[2x − 5]}', 4, '{[dy]/[dx] = −[2]/[(2x − 5)^2]}',
+    'Rewrite as {y = (2x − 5)<sup>−1</sup>}, so '
+    '{[dy]/[dx] = −(2x − 5)<sup>−2</sup> · 2 = −[2]/[(2x − 5)^2]}.', 5),
 
-  Q('Solve: {|x − 3| < 5}', 5, '{−2 < x < 8}',
-    'The distance from {x} to {3} is less than {5}, so {−5 < x − 3 < 5}. '
-    'Adding {3} throughout gives {−2 < x < 8}.', 7),
+  Q('{y = √(4x + 1)}', 4, '{[dy]/[dx] = [2]/[√(4x + 1)]}',
+    'Rewrite as {y = (4x + 1)<sup>1/2</sup>}, so '
+    '{[dy]/[dx] = [1]/[2](4x + 1)<sup>−1/2</sup> · 4 = [2]/[√(4x + 1)]}.', 5),
+
+  Q('Evaluate: ' + LIM(INF, '[3x^2 + 2x]/[x^2 − 5]'), 4, '{3}',
+    'Divide top and bottom by {x^2}: {[3 + 2/x]/[1 − 5/x^2]}. Both {[2]/[x]} and '
+    '{[5]/[x^2]} tend to {0}, leaving {[3]/[1] = 3}.', 2.5,
+    'Equal degrees, so the answer is the ratio of the leading coefficients — but the '
+    'division has to be shown, not quoted.'),
  ]),
 
  dict(letter='B', level='med', title='Eight marks each',
       lead='Method marks are available even when the final answer is wrong.',
-      cols=1, space=38, items=[
+      cols=1, space=28, items=[
+
+  Q('Differentiate {y = [2x − 1]/[x^2 + 3]} and find the gradient of the curve at {x = 1}.',
+    8, '{[dy]/[dx] = [−2x^2 + 2x + 6]/[(x^2 + 3)^2]}; &nbsp;gradient {= [3]/[8]}',
+    'Quotient rule with {u = 2x − 1}, {v = x^2 + 3}, so {u′ = 2} and {v′ = 2x}:<br>'
+    '{[dy]/[dx] = [2(x^2 + 3) − (2x − 1)(2x)]/[(x^2 + 3)^2] = '
+    '[2x^2 + 6 − 4x^2 + 2x]/[(x^2 + 3)^2] = [−2x^2 + 2x + 6]/[(x^2 + 3)^2]}.<br>'
+    'At {x = 1}: {[−2 + 2 + 6]/[4^2] = [6]/[16] = [3]/[8]}.', 4,
+    'The expansion {−(2x − 1)(2x) = −4x^2 + 2x} is where the sign is usually lost.'),
+
+  Q('{y = x^3 − 3x^2 + 4}. Find the values of {x} at which the gradient of the curve '
+    'is {9}.',
+    8, '{x = 3} &nbsp;and&nbsp; {x = −1}',
+    '{[dy]/[dx] = 3x^2 − 6x}. Set it equal to {9}: {3x^2 − 6x = 9}, so '
+    '{3x^2 − 6x − 9 = 0} and {x^2 − 2x − 3 = 0}.<br>'
+    'That factorises as {(x − 3)(x + 1) = 0}, giving {x = 3} and {x = −1}.', 4,
+    'Two answers, not one. Dividing by {3} before factorising saves the arithmetic.'),
+
+  Q('{y = √(x^2 + 9)}. Find {[dy]/[dx]} and its value at {x = 4}.',
+    8, '{[dy]/[dx] = [x]/[√(x^2 + 9)]}; &nbsp;at {x = 4} it is {[4]/[5]}',
+    'Write {y = (x^2 + 9)<sup>1/2</sup>}. Chain rule: '
+    '{[dy]/[dx] = [1]/[2](x^2 + 9)<sup>−1/2</sup> · 2x = [x]/[√(x^2 + 9)]}.<br>'
+    'At {x = 4}: {√(16 + 9) = 5}, so the value is {[4]/[5]}.', 5,
+    'The factor {2x} from the inside function is the mark most often dropped.'),
+
+  Q('Differentiate {y = [5]/[(1 − 2x)^3]}.',
+    8, '{[dy]/[dx] = [30]/[(1 − 2x)^4]}',
+    'Rewrite as {y = 5(1 − 2x)<sup>−3</sup>}. Chain rule:<br>'
+    '{[dy]/[dx] = 5 · (−3)(1 − 2x)<sup>−4</sup> · (−2) = 30(1 − 2x)<sup>−4</sup> = '
+    '[30]/[(1 − 2x)^4]}.', 5,
+    'Two minus signs, and they cancel: the {−3} from the power and the {−2} from the '
+    'inside. An answer of {−[30]/[(1 − 2x)^4]} means only one of them was used.'),
 
   Q('Evaluate, showing the division in each case:<br>'
     '<b>(a)</b> ' + LIM(INF, '[2x^2 − 3x + 1]/[5x^2 + 4]') + ' &nbsp;<span class="mk">[3]</span><br>'
@@ -116,85 +166,39 @@ SECTIONS = [
     'The three parts are the three degree cases: top {=} bottom, top {<} bottom, '
     'top {>} bottom. A student who has only learnt “compare the degrees” can state the '
     'answers but cannot earn the method marks.'),
-
-  Q('{f(x) = x^2 − 3x}.<br>'
-    '<b>(a)</b> Show that {[f(2 + h) − f(2)]/[h] = h + 1}. &nbsp;<span class="mk">[5]</span><br>'
-    '<b>(b)</b> Hence write down {f ′(2)}. &nbsp;<span class="mk">[3]</span>',
-    8, '<b>(a)</b> shown below &nbsp;&nbsp; <b>(b)</b> {f ′(2) = 1}',
-    '<b>(a)</b> {f(2 + h) = (2 + h)^2 − 3(2 + h) = 4 + 4h + h^2 − 6 − 3h = h^2 + h − 2}, '
-    'and {f(2) = 4 − 6 = −2}. So the numerator is {h^2 + h}, and dividing by {h} gives '
-    '{h + 1} — legal because {h ≠ 0} throughout.<br>'
-    '<b>(b)</b> As {h → 0}, {h + 1 → 1}, so {f ′(2) = 1}.', 3,
-    'Cancelling the {h} before noting {h ≠ 0} is the slip to look for. Checking with the '
-    'rules, {f ′(x) = 2x − 3} and {f ′(2) = 1}, is worth a mark but is not the method asked for.'),
-
-  Q('Differentiate {y = [2x − 1]/[x^2 + 3]} and find the gradient of the curve at {x = 1}.',
-    8, '{[dy]/[dx] = [−2x^2 + 2x + 6]/[(x^2 + 3)^2]}; &nbsp;gradient {= [3]/[8]}',
-    'Quotient rule with {u = 2x − 1}, {v = x^2 + 3}, so {u′ = 2} and {v′ = 2x}:<br>'
-    '{[dy]/[dx] = [2(x^2 + 3) − (2x − 1)(2x)]/[(x^2 + 3)^2] = '
-    '[2x^2 + 6 − 4x^2 + 2x]/[(x^2 + 3)^2] = [−2x^2 + 2x + 6]/[(x^2 + 3)^2]}.<br>'
-    'At {x = 1}: {[−2 + 2 + 6]/[4^2] = [6]/[16] = [3]/[8]}.', 4,
-    'The expansion {−(2x − 1)(2x) = −4x^2 + 2x} is where the sign is usually lost.'),
-
-  Q('The curve {y = x^3 − 4x}. Find the equation of the tangent and the equation of the '
-    'normal at the point where {x = 2}.',
-    8, 'tangent {y = 8x − 16}; &nbsp;normal {x + 8y = 2}',
-    'At {x = 2}, {y = 8 − 8 = 0}, so the point is {(2, 0)}. '
-    '{[dy]/[dx] = 3x^2 − 4}, which is {8} at {x = 2}.<br>'
-    'Tangent: {y − 0 = 8(x − 2)}, so {y = 8x − 16}.<br>'
-    'Normal gradient {= −[1]/[8]}: {y − 0 = −[1]/[8](x − 2)}, so {8y = −x + 2}, '
-    'that is {x + 8y = 2}.', 8,
-    'Using {−8} rather than {−[1]/[8]} for the normal is the standard error; the product '
-    'of the two gradients must be {−1}.'),
-
-  Q('{y = √(x^2 + 9)}. Find {[dy]/[dx]} and its value at {x = 4}.',
-    8, '{[dy]/[dx] = [x]/[√(x^2 + 9)]}; &nbsp;at {x = 4} it is {[4]/[5]}',
-    'Write {y = (x^2 + 9)<sup>1/2</sup>}. Chain rule: '
-    '{[dy]/[dx] = [1]/[2](x^2 + 9)<sup>−1/2</sup> · 2x = [x]/[√(x^2 + 9)]}.<br>'
-    'At {x = 4}: {√(16 + 9) = 5}, so the value is {[4]/[5]}.', 5,
-    'The factor {2x} from the inside function is the mark most often dropped.'),
  ]),
 
- dict(letter='C', level='hard', title='Fifteen marks each',
+ dict(letter='C', level='hard', title='Ten marks each',
       lead='Full method required.',
-      cols=1, space=70, items=[
+      cols=1, space=40, items=[
 
-  Q('{y = x^3 − 6x^2 + 9x}.<br>'
-    '<b>(a)</b> Find the stationary points and determine the nature of each. '
+  Q('{y = x^2√(2x − 1)}.<br>'
+    '<b>(a)</b> Show that {[dy]/[dx] = [x(5x − 2)]/[√(2x − 1)]}. '
     '&nbsp;<span class="mk">[6]</span><br>'
-    '<b>(b)</b> State the intervals on which the function is increasing and decreasing, '
-    'and sketch the curve. &nbsp;<span class="mk">[5]</span><br>'
-    '<b>(c)</b> Find the values of {k} for which {x^3 − 6x^2 + 9x = k} has three distinct '
-    'solutions. &nbsp;<span class="mk">[4]</span>',
-    15, '<b>(a)</b> {(1, 4)} maximum, {(3, 0)} minimum &nbsp;&nbsp; '
-        '<b>(b)</b> increasing for {x < 1} and {x > 3}, decreasing for {1 < x < 3} '
-        '&nbsp;&nbsp; <b>(c)</b> {0 < k < 4}',
-    '<b>(a)</b> {[dy]/[dx] = 3x^2 − 12x + 9 = 3(x − 1)(x − 3)}, zero at {x = 1} and '
-    '{x = 3}. Then {y(1) = 1 − 6 + 9 = 4} and {y(3) = 27 − 54 + 27 = 0}.<br>'
-    'Second derivative {[d^2y]/[dx^2] = 6x − 12}: at {x = 1} it is {−6 < 0}, a maximum; '
-    'at {x = 3} it is {6 > 0}, a minimum.<br>'
-    '<b>(b)</b> {3(x − 1)(x − 3) > 0} for {x < 1} and for {x > 3}, so the function '
-    'increases there, and {< 0} for {1 < x < 3}, so it decreases between the two '
-    'stationary points. The curve passes through the origin, since {y = x(x − 3)^2}, '
-    'and rises without bound on the right.<br>'
-    '<b>(c)</b> The solutions of {y = k} are where the horizontal line {y = k} cuts the '
-    'curve. It cuts three times exactly when {k} lies strictly between the minimum value '
-    '{0} and the maximum value {4}, so {0 < k < 4}.', 9,
-    'A sign chart earns the nature marks just as well as the second derivative. Part (c) '
-    'is the sketch being used, not a new technique — a student who drew the curve in (b) '
-    'can read the answer off it. The inequalities must be strict: at {k = 0} and {k = 4} '
-    'the line passes through a stationary point and there are only two distinct solutions.'),
+    '<b>(b)</b> Hence find the gradient of the curve at {x = 5}. '
+    '&nbsp;<span class="mk">[4]</span>',
+    10, '<b>(a)</b> shown below &nbsp;&nbsp; <b>(b)</b> {[115]/[3]}',
+    '<b>(a)</b> Product rule with {u = x^2} and {v = (2x − 1)<sup>1/2</sup>}. '
+    'By the chain rule {v′ = [1]/[2](2x − 1)<sup>−1/2</sup> · 2 = [1]/[√(2x − 1)]}, so<br>'
+    '{[dy]/[dx] = 2x√(2x − 1) + [x^2]/[√(2x − 1)]}.<br>'
+    'Over the common denominator {√(2x − 1)}: '
+    '{[2x(2x − 1) + x^2]/[√(2x − 1)] = [4x^2 − 2x + x^2]/[√(2x − 1)] = '
+    '[5x^2 − 2x]/[√(2x − 1)] = [x(5x − 2)]/[√(2x − 1)]}.<br>'
+    '<b>(b)</b> At {x = 5}: {√(10 − 1) = 3} and {x(5x − 2) = 5 · 23 = 115}, so the '
+    'gradient is {[115]/[3]}.', 4,
+    'The product rule and the chain rule in one question, and then the algebra that puts '
+    'the two terms over one denominator — which is where the “show that” is won or lost.'),
 
   Q('The curve {y = √(2x + 7)}.<br>'
-    '<b>(a)</b> Find {[dy]/[dx]}. &nbsp;<span class="mk">[4]</span><br>'
+    '<b>(a)</b> Find {[dy]/[dx]}. &nbsp;<span class="mk">[3]</span><br>'
     '<b>(b)</b> Find the equation of the tangent at the point where {x = 1}. '
-    '&nbsp;<span class="mk">[6]</span><br>'
+    '&nbsp;<span class="mk">[4]</span><br>'
     '<b>(c)</b> Find the equation of the normal at that point, and the coordinates of the '
-    'point where it crosses the {x}-axis. &nbsp;<span class="mk">[5]</span>',
-    15, '<b>(a)</b> {[dy]/[dx] = [1]/[√(2x + 7)]} &nbsp;&nbsp; '
+    'point where it crosses the {x}-axis. &nbsp;<span class="mk">[3]</span>',
+    10, '<b>(a)</b> {[dy]/[dx] = [1]/[√(2x + 7)]} &nbsp;&nbsp; '
         '<b>(b)</b> {3y = x + 8} &nbsp;&nbsp; <b>(c)</b> {y = 6 − 3x}, crossing at {(2, 0)}',
-    '<b>(a)</b> {y = (2x + 7)<sup>1/2</sup>}, so {[dy]/[dx] = [1]/[2](2x + 7)<sup>−1/2</sup> · 2 = '
-    '[1]/[√(2x + 7)]}.<br>'
+    '<b>(a)</b> {y = (2x + 7)<sup>1/2</sup>}, so {[dy]/[dx] = [1]/[2](2x + 7)<sup>−1/2</sup> '
+    '· 2 = [1]/[√(2x + 7)]}.<br>'
     '<b>(b)</b> At {x = 1}: {y = √9 = 3} and {[dy]/[dx] = [1]/[3]}. '
     'So {y − 3 = [1]/[3](x − 1)}, which tidies to {3y = x + 8}.<br>'
     '<b>(c)</b> The normal gradient is {−3}, so {y − 3 = −3(x − 1)}, that is {y = 6 − 3x}. '
@@ -207,28 +211,29 @@ SECTIONS = [
 
 BONUS = dict(
   marks=10,
-  space=60,
+  space=32,
   lead='Attempt this only when the rest is finished. It can make up marks lost '
        'elsewhere, but your total is still recorded out of 100.',
-  item=Q('Find the equations of the two tangents to {y = x^2} that pass through the point '
-         '{(0, −4)}.',
+  item=Q('{y = [x + 1]/[√x]} for {x > 0}.<br>'
+         '<b>(a)</b> Show that {[dy]/[dx] = [x − 1]/[2x√x]}. '
+         '&nbsp;<span class="mk">[7]</span><br>'
+         '<b>(b)</b> Hence find the point at which the tangent to the curve is horizontal. '
+         '&nbsp;<span class="mk">[3]</span>',
          10,
-         '{y = 4x − 4} &nbsp;and&nbsp; {y = −4x − 4}',
-         'Let the point of contact be {(t, t^2)}. Since {[dy]/[dx] = 2x}, the tangent '
-         'there has gradient {2t}, so its equation is {y − t^2 = 2t(x − t)}, that is '
-         '{y = 2tx − t^2}.<br>'
-         'It passes through {(0, −4)}, so {−4 = −t^2}, giving {t = 2} or {t = −2}.<br>'
-         'The two tangents are {y = 4x − 4} and {y = −4x − 4}.', 8,
-         'The point {(0, −4)} is <em>not</em> on the curve, so there is no single point to '
-         'differentiate at — the contact point has to be carried as an unknown. That is the '
-         'whole difficulty, and it is why this is the bonus.'))
+         '<b>(a)</b> shown below &nbsp;&nbsp; <b>(b)</b> {(1, 2)}',
+         '<b>(a)</b> Split the fraction before differentiating:<br>'
+         '{y = [x]/[√x] + [1]/[√x] = x<sup>1/2</sup> + x<sup>−1/2</sup>}.<br>'
+         'Then {[dy]/[dx] = [1]/[2]x<sup>−1/2</sup> − [1]/[2]x<sup>−3/2</sup> = '
+         '[1]/[2]x<sup>−3/2</sup>(x − 1) = [x − 1]/[2x√x]}, '
+         'since {x<sup>3/2</sup> = x√x}.<br>'
+         '<b>(b)</b> The tangent is horizontal where {[dy]/[dx] = 0}, so {x = 1}. '
+         'Then {y = [1 + 1]/[√1] = 2}, and the point is {(1, 2)}.', 4,
+         'The quotient rule also works, but it takes twice as long and the simplification '
+         'at the end is harder. Splitting the fraction first is the skill being tested.'))
 
 LESSON_OF = {
   2.5: 'Lessons 3–4, extension · Limits at infinity',
-  3:   'Lessons 5–6 · The derivative of a function',
   4:   'Lessons 7–9 · The rules of differentiation',
   5:   'Lessons 10–12 · The derivative of a composite function',
-  7:   'Lessons 15–16 · The modulus function',
   8:   'Lessons 17–18 · The equations of the tangent and the normal',
-  9:   'Lessons 19–22 · Investigating a function with the derivative',
 }

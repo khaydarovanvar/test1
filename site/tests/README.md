@@ -121,50 +121,48 @@ stacks into a real fraction. Anything outside `{...}` is authored HTML, and
 plain HTML such as `<sup>` or `<sub>` also survives inside a maths span — use
 it for an exponent the `^` notation cannot reach, such as `x<sup>n − 1</sup>`.
 
-## Grade 11 · Quarter I review paper · Algebra
+## Grade 11 · Differentiation test · Algebra
 
-40 minutes, **100 marks**, 13 questions and a bonus, no calculator. **Two
-pages**, so students answer on separate paper — the rules say so, and the space
-under each question is for notes rather than for the full working.
+40 minutes, **100 marks**, 17 questions and a bonus, no calculator. **Two
+pages**, so students answer on separate paper — the rules say so, and the gaps
+under the questions are for notes.
 
-Three topics are deliberately left out, and nothing on the paper needs them:
-
-| Lessons | Topic left out |
-|---|---|
-| 1–2 | Increments, and the problem of the tangent |
-| 3–4 | The limit of a function |
-| 23–25 | Extremum problems |
-
-**Limits at infinity** are not taught in §1.2 — it stops at limits at a point —
-so they are examined as the extension to lessons 3–4, at 13 marks: one short
-question on equal degrees, and one that asks for all three degree cases with
-the division shown. The mark scheme lists them as their own row, `3–4 ext`, so
-nobody has to work out afterwards which marks were for new material.
+The two topics the class needs most carry **78 of the 100 marks**:
 
 | Lessons | Topic | Marks |
 |---|---|---|
-| 3–4 ext | **Limits at infinity** | 13 |
-| 5–6 | The derivative of a function | 8 |
-| 7–9 | The rules of differentiation | 13 |
-| 10–12 | The derivative of a composite function | 13 |
-| 15–16 | The modulus function | 10 |
-| 17–18 | The equations of the tangent and the normal | 23 |
-| 19–22 | Investigating a function with the derivative | 20 |
+| 7–9 | **The rules of differentiation** | 46 |
+| 10–12 | **The derivative of a composite function** | 32 |
+| 17–18 | The equations of the tangent and the normal | 10 |
+| 3–4 ext | Limits at infinity | 12 |
+
+The last two are there so a derivative is used for something and not only
+performed. Limits at infinity are not taught in §1.2 — it stops at limits at a
+point — so the mark scheme lists them as their own row, `3–4 ext`.
 
 | Section | Level | Questions | Marks |
 |---|---|---|---|
-| A | Easy | 6 × 5 | 30 |
+| A | Easy | 10 × 4 | 40 |
 | B | Medium | 5 × 8 | 40 |
-| C | Hard | 2 × 15 | 30 |
+| C | Hard | 2 × 10 | 20 |
 | ★ | Bonus | 1 × 10 | +10, outside the 100 |
 
-Section C is two long questions rather than three short ones, because both are
-built in parts that lead on from each other: Q12 ends by reading the number of
-solutions of {x³ − 6x² + 9x = k} off the sketch made in the part before, and
-Q13 takes one composite function through its derivative, its tangent and its
-normal, so a dropped chain-rule factor costs marks in all three parts. The
-bonus asks for the two tangents to {y = x²} through a point that is not on the
-curve, so the point of contact has to be carried as an unknown.
+Section A is ten short derivatives in two columns — four on the rules, four on
+the chain rule, one on dividing before differentiating, one limit. Four of the
+ten cannot be started without first rewriting the expression as a power, which
+is the step the class skips. Section B is the quotient rule, a gradient
+equation, two chain-rule derivatives and the three degree cases of a limit at
+infinity. Section C is the product rule and the chain rule in one question,
+then one composite function taken through its derivative, its tangent and its
+normal, so a dropped chain-rule factor costs marks three times. The bonus is
+{(x + 1)/√x}, which the quotient rule can do but splitting the fraction does
+twice as fast.
+
+Six topics are deliberately left out, and nothing on the paper needs them:
+increments and the problem of the tangent (1–2), the limit of a function (3–4),
+the derivative of a function from first principles (5–6), the modulus function
+(15–16), investigating a function with the derivative (19–22), and extremum
+problems (23–25).
 
 ```
 python3 build-test.py test-g11-01-data.py Grade11-Algebra-Quarter1-Test
