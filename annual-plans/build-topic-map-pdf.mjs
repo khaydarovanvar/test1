@@ -1,8 +1,17 @@
-/* Renders calculus-topic-map.md to a printable A4 PDF.
-   Every line of the markdown appears in the PDF — the script counts them
-   both and refuses to write a file that has lost any.
+/* Renders a topic-map markdown file to a printable A4 PDF.
 
-   node build-calculus-pdf.mjs   */
+     node build-topic-map-pdf.mjs calculus-topic-map.md
+     node build-topic-map-pdf.mjs cambridge-9709-topic-map.md
+
+   The markdown is a bare list, nothing else:
+     # Document title
+     > optional subtitle line
+     # PART HEADING          one per printed section break
+     ## Section heading
+     1.2.3 Subtopic                  (any other non-blank line)
+
+   The script counts the subtopics it parsed against the list items that
+   reached the page and refuses to write a file that has lost any.          */
 import fs from 'fs';
 import path from 'path';
 
@@ -13,20 +22,23 @@ const pw = await import('playwright')
 const chromium = pw.chromium ?? pw.default?.chromium;
 if (!chromium) throw new Error('playwright is not installed');
 
-const SRC = path.resolve('calculus-topic-map.md');
-const OUT = path.resolve('calculus-topic-map.pdf');
+const SRC = path.resolve(process.argv[2] || 'calculus-topic-map.md');
+const OUT = SRC.replace(/\.md$/, '.pdf');
+if (!fs.existsSync(SRC)) throw new Error(`no such file: ${SRC}`);
 
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+/* "A.1.2" or "1.2.3" set apart from the text that follows it. */
+const NUM = /^((?:[A-Z]|\d+)\.\d+(?:\.\d+)?)\s+(.*)$/;
 
 /* ---- parse ------------------------------------------------------------ */
-const lines = fs.readFileSync(SRC, 'utf8').split('\n');
-let docTitle = '';
+let docTitle = '', subtitle = '';
 const parts = [];          // [{ title, sections: [{ title, items: [] }] }]
 let items = 0;
 
-for (const raw of lines) {
+for (const raw of fs.readFileSync(SRC, 'utf8').split('\n')) {
   const line = raw.trim();
   if (!line) continue;
+  if (line.startsWith('> ')) { subtitle ||= line.slice(2); continue; }
   if (line.startsWith('## ')) {
     parts[parts.length - 1].sections.push({ title: line.slice(3), items: [] });
   } else if (line.startsWith('# ')) {
@@ -35,7 +47,7 @@ for (const raw of lines) {
     parts.push({ title: t, sections: [] });
   } else {
     const p = parts[parts.length - 1];
-    /* Part C has its lines directly under the part heading. */
+    /* A part may carry its lines directly, with no section heading. */
     if (!p.sections.length) p.sections.push({ title: '', items: [] });
     p.sections[p.sections.length - 1].items.push(line);
     items++;
@@ -50,7 +62,7 @@ const body = parts.map((p, i) => `
     ${p.sections.map(s => `<div class="sec">
       ${s.title ? `<h2>${esc(s.title)}</h2>` : ''}
       <ul>${s.items.map(it => {
-        const m = it.match(/^([A-C]\.\d+\.\d+)\s+(.*)$/);
+        const m = it.match(NUM);
         return m ? `<li><span class="n">${m[1]}</span>${esc(m[2])}</li>`
                  : `<li>${esc(it)}</li>`;
       }).join('')}</ul>
@@ -58,8 +70,9 @@ const body = parts.map((p, i) => `
   </div>
 </section>`).join('');
 
-const counts = parts.map(p =>
-  `${p.title.replace(/^PART [A-C] — /, '')} ${p.sections.reduce((a, s) => a + s.items.length, 0)}`
+const tally = parts.map(p =>
+  `${p.title.replace(/^(PART|PAPERS?) [A-Z0-9]+( AND \d+)? — /, '')} ` +
+  `${p.sections.reduce((a, s) => a + s.items.length, 0)}`
 ).join(' · ');
 
 const html = `<!doctype html><html lang="en"><head><meta charset="utf-8">
@@ -95,8 +108,8 @@ const html = `<!doctype html><html lang="en"><head><meta charset="utf-8">
 </style></head><body>
 <div class="title">
   <h1>${esc(docTitle)}</h1>
-  <div class="sub">Grade 11 · Algebra and Calculus · complete index of topics and subtopics</div>
-  <div class="tally">${items} subtopics — ${esc(counts)}</div>
+  ${subtitle ? `<div class="sub">${esc(subtitle)}</div>` : ''}
+  <div class="tally">${items} subtopics — ${esc(tally)}</div>
 </div>
 ${body}
 </body></html>`;
@@ -104,11 +117,9 @@ ${body}
 /* ---- print ------------------------------------------------------------ */
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
 const page = await browser.newPage();
-await page.route('**/*', r => (r.request().url().startsWith('file:') || r.request().url().startsWith('data:')
-  ? r.continue() : r.abort()));
+await page.route('**/*', r => (/^(file|data):/.test(r.request().url()) ? r.continue() : r.abort()));
 await page.setContent(html, { waitUntil: 'load' });
 
-/* Every list item must have reached the page. */
 const rendered = await page.evaluate(() => document.querySelectorAll('li').length);
 if (rendered !== items) {
   await browser.close();
@@ -128,6 +139,6 @@ await page.pdf({
 });
 await browser.close();
 
-console.log(`${items} subtopics · ${parts.length} parts · ` +
-  `${parts.reduce((a, p) => a + p.sections.filter(s => s.title).length, 0)} sections`);
-console.log(`wrote ${path.relative(process.cwd(), OUT)}`);
+console.log(`${path.basename(SRC)}: ${items} subtopics · ${parts.length} parts · ` +
+  `${parts.reduce((a, p) => a + p.sections.filter(s => s.title).length, 0)} sections ` +
+  `-> ${path.basename(OUT)}`);
