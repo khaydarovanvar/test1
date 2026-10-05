@@ -3,11 +3,16 @@
 import pw from '/opt/node-tools/node_modules/playwright/index.js';
 const { chromium } = pw;
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const src = 'file://' + path.join(here, 'workbook-g8-algebra.html');
-const out = path.join(here, 'Grade8_Algebra_Workbook_Fractions.pdf');
+const name = process.argv[2] || 'workbook-g8-algebra';
+const src = 'file://' + path.join(here, name + '.html');
+const out = path.join(here, (process.argv[3] || 'Grade8_Algebra_Workbook') + '.pdf');
+const titleFile = path.join(here, name + '.title');
+const title = fs.existsSync(titleFile) ? fs.readFileSync(titleFile, 'utf8').trim()
+                                       : 'Algebraic fractions';
 
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
 const page = await browser.newPage();
@@ -22,7 +27,7 @@ await page.pdf({
   headerTemplate: '<div></div>',
   footerTemplate:
     '<div style="font:8pt -apple-system,sans-serif;color:#7A8792;width:100%;padding:0 14mm;">' +
-    '<span style="float:left">Grade 8 Algebra · Algebraic fractions · workbook</span>' +
+    '<span style="float:left">Grade 8 Algebra · ' + title + ' · workbook</span>' +
     '<span style="float:right">Page <span class="pageNumber"></span> of <span class="totalPages"></span></span>' +
     '</div>'
 });

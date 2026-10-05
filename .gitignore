@@ -26,3 +26,6 @@ __pycache__/
 #   python3 workbooks/build-workbook.py && node workbooks/render-workbook.mjs
 workbooks/workbook-*.html
 workbooks/*.pdf
+
+# The title sidecar the workbook builder writes for the PDF footer.
+workbooks/*.title

@@ -15,7 +15,7 @@ import sys
 from datetime import date
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import questions as bank
+import bank
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -93,10 +93,11 @@ h2 { font-size:13pt; margin:0; }
 
 /* ---------- answers ---------- */
 .answers { page-break-before:always; }
-.answers h2 { margin:0 0 3mm; }
-.anssec { margin:0 0 4mm; page-break-inside:avoid; }
+.answers h2 { margin:0 0 3mm; page-break-after:avoid; break-after:avoid; }
+.anssec { margin:0 0 4mm; }
 .anssec .ah { font-weight:700; font-size:10pt; margin:3mm 0 1.5mm;
-  padding-bottom:1mm; border-bottom:1px solid var(--rule); }
+  padding-bottom:1mm; border-bottom:1px solid var(--rule);
+  page-break-after:avoid; break-after:avoid; }
 .alist { columns:2; column-gap:7mm; }
 .alist .a { break-inside:avoid; margin:0 0 1.6mm; font-size:9.6pt; display:flex; gap:2mm; }
 .alist .a .n { color:var(--soft); font-weight:700; min-width:5mm; }
@@ -105,6 +106,15 @@ h2 { font-size:13pt; margin:0; }
 .sols .sol { color:var(--soft); margin-top:.8mm; }
 .sols { columns:1; }
 
+.cover { page-break-after:always; }
+.covertitle { font-size:26pt; line-height:1.15; margin:2mm 0 3mm; }
+.covernote { color:var(--soft); font-size:9pt; margin-top:4mm; }
+.contents { width:100%; border-collapse:collapse; margin-top:6mm; font-size:10pt; }
+.contents td { padding:2mm 0; border-bottom:1px solid var(--rule); vertical-align:baseline; }
+.contents .tnum { width:22mm; color:var(--soft); font-weight:700; white-space:nowrap; }
+.contents .tles { width:28mm; color:var(--soft); font-size:9pt; white-space:nowrap; }
+.contents .tq { width:26mm; color:var(--soft); font-size:9pt; text-align:right;
+  white-space:nowrap; }
 .footnote { color:var(--soft); font-size:8.6pt; margin-top:4mm;
   border-top:1px solid var(--rule); padding-top:2mm; }
 """
@@ -152,9 +162,9 @@ def render_topic(topic):
 </section>"""
 
 
-def render_answers():
+def render_answers(topics):
     out = ['<section class="answers"><h2>Answers</h2>']
-    for topic in bank.TOPICS:
+    for topic in topics:
         out.append(f'<div class="anssec"><div class="ah">Topic {topic["number"]} · '
                    f'{topic["title"]}</div>')
         for section, items in topic['sections']:
@@ -177,21 +187,56 @@ def render_answers():
     return '\n'.join(out)
 
 
+def render_contents(topics, title):
+    rows = ''.join(
+        f'<tr><td class="tnum">Topic {t["number"]}</td><td>{t["title"]}</td>'
+        f'<td class="tles">lessons {t["lessons"]}</td>'
+        f'<td class="tq">{sum(len(i) for _, i in t["sections"])} questions</td></tr>'
+        for t in topics)
+    total = bank.count(topics)
+    return f"""
+<section class="cover">
+  <div class="eyebrow">Grade 8 · Algebra · Quarter I</div>
+  <h1 class="covertitle">{title}</h1>
+  <p class="sub">A workbook to be written in. Each topic runs Focus (easy),
+     Practice (medium), Challenge (hard) and Beyond (very hard, olympiad).
+     Answers, with solutions for the Beyond questions, are at the back.</p>
+  <table class="contents">{rows}</table>
+  <p class="covernote">{len(topics)} topics · {total} questions ·
+     {total // len(topics)} per topic</p>
+</section>"""
+
+
 def main():
-    topics = '\n'.join(render_topic(t) for t in bank.TOPICS)
+    import argparse
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument('--topics', nargs='*', help='topic keys, e.g. alg-04 alg-05')
+    ap.add_argument('--title', default='Algebraic fractions and rational expressions')
+    ap.add_argument('--out', default='workbook-g8-algebra',
+                    help='basename for the .html (and so the .pdf)')
+    ap.add_argument('--no-contents', action='store_true')
+    opt = ap.parse_args()
+
+    chosen = bank.select(opt.topics)
+    topics = '\n'.join(render_topic(t) for t in chosen)
+    contents = ('' if opt.no_contents or len(chosen) < 3
+                else render_contents(chosen, opt.title))
     html = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
-<title>Grade 8 Algebra Workbook — Algebraic fractions</title>
+<title>Grade 8 Algebra Workbook — {opt.title}</title>
 <style>{CSS}</style></head>
 <body><div class="sheet">
+{contents}
 {topics}
-{render_answers()}
+{render_answers(chosen)}
 </div></body></html>"""
-    out = os.path.join(HERE, 'workbook-g8-algebra.html')
+    with open(os.path.join(HERE, opt.out + '.title'), 'w', encoding='utf-8') as fh:
+        fh.write(opt.title)
+    out = os.path.join(HERE, opt.out + '.html')
     with open(out, 'w', encoding='utf-8') as fh:
         fh.write(html)
-    n = sum(len(i) for t in bank.TOPICS for _, i in t['sections'])
-    print(f'wrote {out} — {len(bank.TOPICS)} topics, {n} questions')
+    print(f'wrote {out} — {len(chosen)} topics, {bank.count(chosen)} questions')
 
 
 if __name__ == '__main__':
