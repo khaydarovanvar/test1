@@ -140,11 +140,16 @@ def render_questions(section, items):
     return '\n'.join(out)
 
 
-def render_topic(topic):
+def render_topic(topic, boxes=True):
     kw = ''.join(f'<li>{w}</li>' for w in topic['keywords'])
     rem = ''.join(f'<li>{r}</li>' for r in topic['remember'])
     body = '\n'.join(render_questions(name, items) for name, items in topic['sections'])
     total = sum(len(items) for _, items in topic['sections'])
+    boxes_html = ('<div class="boxes">'
+                  f'<div class="box keywords"><div class="blabel">Key words</div>'
+                  f'<ul>{kw}</ul></div>'
+                  f'<div class="box remember"><div class="blabel">Remember</div>'
+                  f'<ol>{rem}</ol></div></div>') if boxes else ''
     return f"""
 <section class="topic">
   <div class="topichead">
@@ -154,10 +159,7 @@ def render_topic(topic):
     <p class="refs">Lessons {topic['lessons']} · {topic['uz']} · {topic['cam']}
        · {total} questions</p>
   </div>
-  <div class="boxes">
-    <div class="box keywords"><div class="blabel">Key words</div><ul>{kw}</ul></div>
-    <div class="box remember"><div class="blabel">Remember</div><ol>{rem}</ol></div>
-  </div>
+  {boxes_html}
   {body}
 </section>"""
 
@@ -187,7 +189,7 @@ def render_answers(topics):
     return '\n'.join(out)
 
 
-def render_contents(topics, title):
+def render_contents(topics, title, blurb):
     rows = ''.join(
         f'<tr><td class="tnum">Topic {t["number"]}</td><td>{t["title"]}</td>'
         f'<td class="tles">lessons {t["lessons"]}</td>'
@@ -198,9 +200,7 @@ def render_contents(topics, title):
 <section class="cover">
   <div class="eyebrow">Grade 8 · Algebra · Quarter I</div>
   <h1 class="covertitle">{title}</h1>
-  <p class="sub">A workbook to be written in. Each topic runs Focus (easy),
-     Practice (medium), Challenge (hard) and Beyond (very hard, olympiad).
-     Answers, with solutions for the Beyond questions, are at the back.</p>
+  <p class="sub">{blurb}</p>
   <table class="contents">{rows}</table>
   <p class="covernote">{len(topics)} topics · {total} questions ·
      {total // len(topics)} per topic</p>
@@ -215,13 +215,36 @@ def main():
     ap.add_argument('--title', default='Algebraic fractions and rational expressions')
     ap.add_argument('--out', default='workbook-g8-algebra',
                     help='basename for the .html (and so the .pdf)')
+    ap.add_argument('--sections', nargs='*',
+                    choices=['Focus', 'Practice', 'Challenge', 'Beyond'],
+                    help='keep only these sections (default: all four)')
+    ap.add_argument('--no-boxes', action='store_true',
+                    help='leave out the key-words and remember boxes')
     ap.add_argument('--no-contents', action='store_true')
     opt = ap.parse_args()
 
     chosen = bank.select(opt.topics)
-    topics = '\n'.join(render_topic(t) for t in chosen)
+    if opt.sections:
+        keep = set(opt.sections)
+        chosen = [dict(t, sections=[(n, i) for n, i in t['sections'] if n in keep])
+                  for t in chosen]
+        bare = [t['key'] for t in chosen if not t['sections']]
+        if bare:
+            sys.exit('no such section in ' + ', '.join(bare))
+
+    if opt.sections and len(opt.sections) == 1:
+        only = opt.sections[0]
+        blurb = (f'{bank.SECTION_BLURB[only]} These are the {TIER[only]} questions '
+                 f'({only}) of each topic, taken out of the full workbook and set '
+                 f'together. Full worked solutions are at the back.')
+    else:
+        blurb = ('A workbook to be written in. Each topic runs Focus (easy), '
+                 'Practice (medium), Challenge (hard) and Beyond (very hard, olympiad). '
+                 'Answers, with solutions for the Beyond questions, are at the back.')
+
+    topics = '\n'.join(render_topic(t, boxes=not opt.no_boxes) for t in chosen)
     contents = ('' if opt.no_contents or len(chosen) < 3
-                else render_contents(chosen, opt.title))
+                else render_contents(chosen, opt.title, blurb))
     html = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <title>Grade 8 Algebra Workbook — {opt.title}</title>
