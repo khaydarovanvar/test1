@@ -45,6 +45,7 @@ official national calendar-thematic plan, lesson for lesson.
 | `verify-against-ktp.py` | Checks the Grade 6, 7 and 9 plans against the official KTP workbooks |
 | `ktp-source/` | The four official 2025–2026 KTP workbooks and the three Cambridge contents pages |
 | `ap-mathematics-topics.md` | Reference — the four AP mathematics courses unit by unit, and what grades 10–11 already cover |
+| `sat-2026-27.md` | Reference — the digital SAT as it runs in 2026–27: format, maths content, dates and deadlines |
 
 ## Grades 6, 7 and 9
 
