@@ -1,7 +1,11 @@
 /* Renders a topic-map markdown file to a printable A4 PDF.
 
      node build-topic-map-pdf.mjs calculus-topic-map.md
-     node build-topic-map-pdf.mjs cambridge-9709-topic-map.md
+     node build-topic-map-pdf.mjs cambridge-9709-topic-map.md --flow
+
+   Each part starts on a fresh page when the map is big enough for a part to
+   fill one; below that the parts flow on, so a short map does not print as a
+   run of quarter-empty pages. --pages and --flow force the choice.
 
    The markdown is a bare list, nothing else:
      # Document title
@@ -22,7 +26,9 @@ const pw = await import('playwright')
 const chromium = pw.chromium ?? pw.default?.chromium;
 if (!chromium) throw new Error('playwright is not installed');
 
-const SRC = path.resolve(process.argv[2] || 'calculus-topic-map.md');
+const args = process.argv.slice(2);
+const flags = new Set(args.filter(a => a.startsWith('--')));
+const SRC = path.resolve(args.find(a => !a.startsWith('--')) || 'calculus-topic-map.md');
 const OUT = SRC.replace(/\.md$/, '.pdf');
 if (!fs.existsSync(SRC)) throw new Error(`no such file: ${SRC}`);
 
@@ -55,8 +61,11 @@ for (const raw of fs.readFileSync(SRC, 'utf8').split('\n')) {
 }
 
 /* ---- render ----------------------------------------------------------- */
+/* A part earns its own page only once there is enough of it to fill one. */
+const pageBreaks = flags.has('--pages') || (!flags.has('--flow') && items > 250);
+
 const body = parts.map((p, i) => `
-<section class="part${i ? ' brk' : ''}">
+<section class="part${i && pageBreaks ? ' brk' : ''}">
   <h1>${esc(p.title)}</h1>
   <div class="cols">
     ${p.sections.map(s => `<div class="sec">
@@ -90,6 +99,7 @@ const html = `<!doctype html><html lang="en"><head><meta charset="utf-8">
 
   .part { break-inside: auto; }
   .part.brk { break-before: page; }
+  .part + .part > h1 { margin-top: 7mm; }
   .part > h1 { font-family: "DejaVu Serif", serif; font-size: 13pt; margin: 0 0 5mm;
                padding-bottom: 2mm; border-bottom: 0.9pt solid #15181d; letter-spacing: 0.3pt; }
 
@@ -140,5 +150,5 @@ await page.pdf({
 await browser.close();
 
 console.log(`${path.basename(SRC)}: ${items} subtopics · ${parts.length} parts · ` +
-  `${parts.reduce((a, p) => a + p.sections.filter(s => s.title).length, 0)} sections ` +
-  `-> ${path.basename(OUT)}`);
+  `${parts.reduce((a, p) => a + p.sections.filter(s => s.title).length, 0)} sections · ` +
+  `${pageBreaks ? 'a page per part' : 'parts flow'} -> ${path.basename(OUT)}`);
