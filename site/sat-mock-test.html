@@ -1,246 +1,277 @@
 <title>SAT Practice Test 1</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
+/* Bluebook-style: institutional, single-theme (light), clean */
 :root {
-  --bg: #FAFAF8; --surface: #FFFFFF; --surface-2: #F3F4F6; --surface-3: #E8EAED;
-  --ink: #1A1D23; --ink-soft: #3D4250; --muted: #6B7280; --faint: #9CA3AF;
-  --rule: #E5E7EB; --rule-soft: #F0F1F3;
-  --navy: #1B2A4A; --navy-deep: #0F1B33; --navy-tint: #E8EDF5;
-  --teal: #2B7A78; --teal-tint: #E0F2F1;
-  --coral: #D4594E; --coral-tint: #FDECEA;
-  --gold: #C4900C; --gold-tint: #FDF6E3;
-  --green: #2E7D32; --green-tint: #E8F5E9;
-  --serif: "Merriweather", Georgia, serif;
-  --sans: "Inter", -apple-system, sans-serif;
+  --hdr: #0a2240; --hdr-text: #ffffff; --hdr-accent: #4a90d9;
+  --bg: #f5f5f5; --surface: #ffffff; --surface-alt: #f0f2f5;
+  --ink: #1a1a1a; --ink-soft: #4a4a4a; --muted: #6b7280; --faint: #9ca3af;
+  --rule: #d1d5db; --rule-soft: #e5e7eb;
+  --blue: #1a5276; --blue-light: #d4e6f1; --blue-dark: #0a2240;
+  --green: #27ae60; --green-bg: #d5f5e3;
+  --red: #e74c3c; --red-bg: #fadbd8;
+  --orange: #f39c12; --orange-bg: #fef3cd;
+  --sans: "Inter", -apple-system, system-ui, sans-serif;
   --mono: "JetBrains Mono", monospace;
-  --r: 6px; --r-l: 10px;
 }
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#101318;--surface:#181C24;--surface-2:#1E2330;--surface-3:#262C3A;
-  --ink:#E4E6EB;--ink-soft:#B8BCC8;--muted:#8890A0;--faint:#5C6478;
-  --rule:#2A3040;--rule-soft:#1E2330;
-  --navy:#8EAAD4;--navy-deep:#A8BFE0;--navy-tint:#1A2238;
-  --teal:#5EC4C0;--teal-tint:#152A2A;
-  --coral:#F08A82;--coral-tint:#2E1816;
-  --gold:#E8B84C;--gold-tint:#2A2210;
-  --green:#66BB6A;--green-tint:#162418;
+  --bg:#1a1d23;--surface:#22262e;--surface-alt:#2a2e38;
+  --ink:#e4e6eb;--ink-soft:#b8bcc8;--muted:#8890a0;--faint:#5c6478;
+  --rule:#3a3f4a;--rule-soft:#2e323c;
+  --blue-light:#1a2d42;--green-bg:#1a3028;--red-bg:#3a1a18;--orange-bg:#3a2e10;
   color-scheme:dark
 }}
 :root[data-theme="dark"]{
-  --bg:#101318;--surface:#181C24;--surface-2:#1E2330;--surface-3:#262C3A;
-  --ink:#E4E6EB;--ink-soft:#B8BCC8;--muted:#8890A0;--faint:#5C6478;
-  --rule:#2A3040;--rule-soft:#1E2330;
-  --navy:#8EAAD4;--navy-deep:#A8BFE0;--navy-tint:#1A2238;
-  --teal:#5EC4C0;--teal-tint:#152A2A;
-  --coral:#F08A82;--coral-tint:#2E1816;
-  --gold:#E8B84C;--gold-tint:#2A2210;
-  --green:#66BB6A;--green-tint:#162418;
+  --bg:#1a1d23;--surface:#22262e;--surface-alt:#2a2e38;
+  --ink:#e4e6eb;--ink-soft:#b8bcc8;--muted:#8890a0;--faint:#5c6478;
+  --rule:#3a3f4a;--rule-soft:#2e323c;
+  --blue-light:#1a2d42;--green-bg:#1a3028;--red-bg:#3a1a18;--orange-bg:#3a2e10;
   color-scheme:dark
 }
 *{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;padding:0 16px}
-.wrap{max-width:820px;margin:0 auto}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;padding:0}
 
-/* ---- Landing ---- */
-.landing{min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 0}
-.landing h1{font-family:var(--serif);font-size:clamp(28px,5vw,42px);font-weight:700;color:var(--navy);letter-spacing:-.02em;text-wrap:balance;margin-bottom:8px}
-.landing .sub{font-size:15px;color:var(--muted);margin-bottom:32px}
-.landing .grade-badge{display:inline-block;background:var(--teal-tint);color:var(--teal);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:20px}
-.overview{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;width:100%;max-width:600px;margin:0 auto 36px}
-.ov-card{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r-l);padding:18px 16px;text-align:left}
-.ov-card .ov-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-.ov-card .ov-val{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--navy)}
-.ov-card .ov-detail{font-size:13px;color:var(--faint);margin-top:2px}
-.btn-start{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;font-family:var(--sans);font-weight:600;font-size:16px;border:none;border-radius:var(--r-l);padding:14px 36px;cursor:pointer;transition:background .2s,transform .15s}
-.btn-start:hover{background:var(--navy-deep);transform:translateY(-1px)}
+/* Header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--hdr);color:var(--hdr-text);display:none;height:52px}
+.hdr.show{display:flex}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 20px;height:100%}
+.hdr-left{display:flex;align-items:center;gap:16px}
+.hdr-logo{font-weight:700;font-size:16px;letter-spacing:.5px}
+.hdr-logo span{color:var(--hdr-accent)}
+.hdr-section{font-size:13px;font-weight:500;opacity:.85;max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hdr-center{display:flex;align-items:center;gap:12px}
+.hdr-timer{font-family:var(--mono);font-size:18px;font-weight:600;background:rgba(255,255,255,.12);padding:4px 14px;border-radius:4px;min-width:70px;text-align:center}
+.hdr-timer.warn{background:rgba(231,76,60,.3);color:#fca5a5}
+.hdr-hide-timer{font-size:11px;opacity:.7;cursor:pointer;text-decoration:underline}
+.hdr-right{display:flex;align-items:center;gap:16px;font-size:13px}
+.hdr-more{background:rgba(255,255,255,.15);border:none;color:#fff;font-family:var(--sans);font-size:12px;font-weight:500;padding:6px 14px;border-radius:4px;cursor:pointer}
+.hdr-more:hover{background:rgba(255,255,255,.25)}
 
-/* ---- Top bar ---- */
-.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);padding:0 0;display:none}
-.topbar.show{display:block}
-.topbar .bar{display:flex;align-items:center;justify-content:space-between;max-width:820px;margin:0 auto;padding:10px 0;gap:12px;flex-wrap:wrap}
-.topbar .sec-label{font-weight:600;font-size:13px;color:var(--navy);white-space:nowrap}
-.topbar .timer{font-family:var(--mono);font-size:15px;font-weight:500;color:var(--teal);background:var(--teal-tint);padding:4px 12px;border-radius:var(--r)}
-.topbar .timer.warn{color:var(--coral);background:var(--coral-tint)}
-.topbar .progress{font-size:12px;color:var(--muted)}
+/* Landing */
+.landing{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:var(--surface)}
+.landing-logo{font-size:14px;font-weight:700;color:var(--blue);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.landing h1{font-size:clamp(26px,4.5vw,38px);font-weight:700;color:var(--ink);margin-bottom:6px;text-wrap:balance}
+.landing .sub{color:var(--muted);font-size:14px;margin-bottom:32px}
+.landing-info{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;max-width:560px;width:100%;margin-bottom:36px}
+.info-card{background:var(--surface-alt);border:1px solid var(--rule-soft);border-radius:6px;padding:14px 12px;text-align:left}
+.info-card .label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.info-card .val{font-size:20px;font-weight:700;color:var(--blue)}
+.info-card .detail{font-size:12px;color:var(--faint);margin-top:1px}
+.btn-begin{background:var(--blue);color:#fff;border:none;font-family:var(--sans);font-weight:600;font-size:15px;padding:12px 40px;border-radius:6px;cursor:pointer;transition:background .15s}
+.btn-begin:hover{background:var(--blue-dark)}
 
-/* ---- Module view ---- */
-.module-view{display:none;padding-block:24px 80px}
-.module-view.active{display:block}
-.mod-header{margin-bottom:28px;padding-bottom:20px;border-bottom:2px solid var(--navy)}
-.mod-header h2{font-family:var(--serif);font-size:clamp(20px,3.5vw,26px);font-weight:700;color:var(--navy);margin-bottom:4px}
-.mod-header .mod-info{font-size:13px;color:var(--muted)}
-.directions{background:var(--surface-2);border-radius:var(--r-l);padding:16px 20px;margin-bottom:28px;font-size:13px;color:var(--ink-soft);line-height:1.6}
-.directions strong{color:var(--ink);font-weight:600;display:block;margin-bottom:4px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+/* Main content area */
+.main{display:none;padding-top:52px;height:100vh;overflow:hidden}
+.main.show{display:flex;flex-direction:column}
 
-/* ---- Question ---- */
-.question{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r-l);padding:24px;margin-bottom:20px;transition:border-color .2s}
-.question.answered{border-color:var(--teal)}
-.question.answered.wrong{border-color:var(--coral)}
-.question.answered.correct{border-color:var(--green)}
-.q-num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;background:var(--navy);color:#fff;font-family:var(--mono);font-weight:600;font-size:13px;border-radius:50%;margin-bottom:12px;flex-shrink:0}
-.q-passage{font-family:var(--serif);font-size:14px;line-height:1.75;color:var(--ink-soft);margin-bottom:16px;padding:14px 18px;background:var(--surface-2);border-radius:var(--r);border-left:3px solid var(--navy-tint)}
-.q-passage em{font-style:italic}
-.q-text{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:14px}
-.q-diagram{margin:16px 0;text-align:center}
+/* Directions overlay */
+.dir-overlay{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;padding:20px}
+.dir-overlay.show{display:flex}
+.dir-box{background:var(--surface);border-radius:8px;padding:32px;max-width:560px;width:100%;max-height:80vh;overflow-y:auto}
+.dir-box h2{font-size:18px;font-weight:700;color:var(--blue);margin-bottom:4px}
+.dir-box .dir-sub{font-size:13px;color:var(--muted);margin-bottom:16px}
+.dir-box p{font-size:14px;line-height:1.7;color:var(--ink-soft);margin-bottom:20px}
+.dir-box .btn-begin{width:100%}
+
+/* Split pane */
+.content-area{flex:1;display:flex;overflow:hidden}
+.pane-left{flex:1;overflow-y:auto;padding:24px;border-right:1px solid var(--rule-soft);background:var(--surface)}
+.pane-right{flex:1;overflow-y:auto;padding:24px;background:var(--surface)}
+.single-pane .pane-left{display:none}
+.single-pane .pane-right{border:none}
+
+.passage-text{font-size:14px;line-height:1.8;color:var(--ink-soft)}
+.passage-text em{font-style:italic}
+.passage-text strong{font-weight:600;color:var(--ink)}
+
+/* Question */
+.q-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.q-number{font-size:14px;font-weight:700;color:var(--ink)}
+.q-flag{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--muted);cursor:pointer;padding:4px 10px;border:1px solid var(--rule);border-radius:4px;background:transparent}
+.q-flag:hover{border-color:var(--orange);color:var(--orange)}
+.q-flag.flagged{border-color:var(--orange);background:var(--orange-bg);color:var(--orange)}
+.q-flag svg{width:14px;height:14px}
+.q-text{font-size:15px;line-height:1.7;color:var(--ink);margin-bottom:16px}
+.q-diagram{margin:12px 0 16px;overflow-x:auto}
 .q-diagram svg{max-width:100%;height:auto}
-.q-diagram table{margin:0 auto;border-collapse:collapse;font-size:13px}
+.q-diagram table{border-collapse:collapse;font-size:13px}
 .q-diagram table th,.q-diagram table td{border:1px solid var(--rule);padding:6px 14px;text-align:center}
-.q-diagram table th{background:var(--navy);color:#fff;font-weight:600;font-size:11px;letter-spacing:.05em;text-transform:uppercase}
+.q-diagram table th{background:var(--blue);color:#fff;font-weight:600;font-size:11px;letter-spacing:.04em;text-transform:uppercase}
 .q-diagram table td{background:var(--surface)}
+
+/* Options */
 .options{display:grid;gap:8px}
-.opt{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border:1.5px solid var(--rule);border-radius:var(--r);cursor:pointer;transition:all .15s;font-size:14px;line-height:1.5}
-.opt:hover{border-color:var(--teal);background:var(--teal-tint)}
-.opt.selected{border-color:var(--teal);background:var(--teal-tint);font-weight:500}
-.opt.correct-reveal{border-color:var(--green);background:var(--green-tint)}
-.opt.wrong-reveal{border-color:var(--coral);background:var(--coral-tint)}
-.opt .bubble{width:22px;height:22px;border:2px solid var(--faint);border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:600;color:var(--faint);transition:all .15s;margin-top:1px}
-.opt.selected .bubble{background:var(--teal);border-color:var(--teal);color:#fff}
-.opt.correct-reveal .bubble{background:var(--green);border-color:var(--green);color:#fff}
-.opt.wrong-reveal .bubble{background:var(--coral);border-color:var(--coral);color:#fff}
-.spr-input{width:120px;padding:8px 12px;border:2px solid var(--rule);border-radius:var(--r);font-family:var(--mono);font-size:15px;background:var(--surface);color:var(--ink);text-align:center}
-.spr-input:focus{border-color:var(--teal);outline:none}
-.spr-label{font-size:12px;color:var(--muted);margin-top:6px}
-.explanation{display:none;margin-top:12px;padding:12px 16px;background:var(--green-tint);border-radius:var(--r);font-size:13px;color:var(--ink-soft)}
-.explanation.show{display:block}
+.opt{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border:1.5px solid var(--rule);border-radius:6px;cursor:pointer;transition:all .12s;font-size:14px;line-height:1.5;background:var(--surface)}
+.opt:hover{border-color:var(--blue);background:var(--blue-light)}
+.opt.selected{border-color:var(--blue);background:var(--blue-light);font-weight:500}
+.opt.correct-reveal{border-color:var(--green);background:var(--green-bg)}
+.opt.wrong-reveal{border-color:var(--red);background:var(--red-bg)}
+.opt .letter{width:28px;height:28px;border:2px solid var(--rule);border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--muted);transition:all .12s}
+.opt.selected .letter{background:var(--blue);border-color:var(--blue);color:#fff}
+.opt.correct-reveal .letter{background:var(--green);border-color:var(--green);color:#fff}
+.opt.wrong-reveal .letter{background:var(--red);border-color:var(--red);color:#fff}
+.opt .opt-text{padding-top:3px;min-width:0}
+.spr-wrap{margin-top:4px}
+.spr-input{font-family:var(--mono);font-size:16px;border:2px solid var(--rule);border-radius:6px;padding:10px 14px;width:200px;max-width:100%;background:var(--surface);color:var(--ink)}
+.spr-input:focus{outline:none;border-color:var(--blue)}
+.spr-label{font-size:11px;color:var(--muted);margin-top:4px;font-weight:500}
+.explanation{font-size:13px;padding:10px 14px;margin-top:12px;border-radius:6px;background:var(--surface-alt);color:var(--ink-soft)}
 
-/* ---- Navigation ---- */
-.nav-bottom{position:fixed;bottom:0;left:0;right:0;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--rule);padding:12px 16px env(safe-area-inset-bottom,12px);display:none;z-index:40}
-.nav-bottom.show{display:block}
-.nav-inner{max-width:820px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-weight:600;font-size:14px;border:none;border-radius:var(--r);padding:10px 20px;cursor:pointer;transition:all .15s}
-.btn-primary{background:var(--navy);color:#fff}
-.btn-primary:hover{background:var(--navy-deep)}
-.btn-secondary{background:var(--surface-2);color:var(--ink);border:1px solid var(--rule)}
-.btn-secondary:hover{background:var(--surface-3)}
-.btn-submit{background:var(--teal);color:#fff}
-.btn-submit:hover{background:#237371}
-.btn:disabled{opacity:.4;cursor:not-allowed}
+/* Ref sheet */
+.ref-sheet{margin-bottom:16px}
+.ref-toggle{font-size:12px;font-weight:600;color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:4px;padding:8px 12px;background:var(--blue-light);border-radius:4px;border:none;font-family:var(--sans)}
+.ref-content{display:none;margin-top:8px;padding:12px;background:var(--surface-alt);border-radius:6px;border:1px solid var(--rule-soft)}
+.ref-content.show{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.ref-item{text-align:center;padding:6px}
+.ref-item svg{margin-bottom:4px}
+.ref-item .formula{font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
 
-/* ---- Results ---- */
-.results{display:none;padding:40px 0}
-.results.active{display:block}
-.results h2{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--navy);text-align:center;margin-bottom:8px}
-.results .score-summary{text-align:center;margin-bottom:32px}
-.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px}
-.score-card{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r-l);padding:20px;text-align:center}
-.score-card .sc-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-.score-card .sc-val{font-family:var(--serif);font-size:36px;font-weight:700;color:var(--navy)}
-.score-card .sc-sub{font-size:13px;color:var(--faint);margin-top:4px}
-.score-bar{height:8px;background:var(--surface-3);border-radius:4px;margin-top:10px;overflow:hidden}
-.score-bar .fill{height:100%;border-radius:4px;transition:width .6s ease}
-.review-btn{display:block;text-align:center;margin:24px auto}
+/* Bottom bar */
+.bottom-bar{background:var(--surface);border-top:1px solid var(--rule);padding:8px 16px;display:none;align-items:center;justify-content:space-between;gap:8px;flex-shrink:0}
+.bottom-bar.show{display:flex}
+.nav-btn{background:var(--surface-alt);border:1px solid var(--rule);color:var(--ink);font-family:var(--sans);font-weight:600;font-size:13px;padding:8px 20px;border-radius:4px;cursor:pointer}
+.nav-btn:hover{background:var(--blue-light);border-color:var(--blue)}
+.nav-btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+.nav-btn.primary:hover{background:var(--blue-dark)}
+.nav-btn:disabled{opacity:.4;cursor:default}
 
-/* ---- Answer Sheet ---- */
-.answer-sheet{display:none}
-.answer-sheet.active{display:block;padding:20px 0}
-.as-title{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--navy);text-align:center;margin-bottom:4px}
-.as-sub{text-align:center;color:var(--muted);font-size:13px;margin-bottom:24px}
-.as-page{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r-l);padding:28px 24px;margin-bottom:20px}
-.as-page h3{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--navy);margin-bottom:4px}
-.as-page .as-info{font-size:12px;color:var(--muted);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
-.as-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px 20px}
-.as-row{display:flex;align-items:center;gap:8px;padding:4px 0}
-.as-row .as-num{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--muted);width:24px;text-align:right}
-.as-bubbles{display:flex;gap:6px}
-.as-bubble{width:22px;height:22px;border:1.5px solid var(--faint);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:var(--faint);cursor:pointer;transition:all .12s}
-.as-bubble:hover{border-color:var(--navy)}
-.as-bubble.filled{background:var(--navy);border-color:var(--navy);color:#fff}
-.as-spr{width:50px;border:none;border-bottom:1.5px solid var(--faint);font-family:var(--mono);font-size:12px;text-align:center;padding:2px;background:transparent;color:var(--ink)}
-.print-btn{display:block;margin:20px auto;background:var(--navy);color:#fff;border:none;font-family:var(--sans);font-weight:600;font-size:14px;padding:10px 28px;border-radius:var(--r);cursor:pointer}
+/* Question navigator */
+.q-nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:center;max-width:500px}
+.q-dot{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:var(--muted);cursor:pointer;background:var(--surface);transition:all .1s;font-family:var(--mono)}
+.q-dot:hover{border-color:var(--blue)}
+.q-dot.current{border-color:var(--blue);background:var(--blue);color:#fff}
+.q-dot.answered{background:var(--blue-light);border-color:var(--blue);color:var(--blue)}
+.q-dot.flagged{border-color:var(--orange);position:relative}
+.q-dot.flagged::after{content:"";position:absolute;top:-2px;right:-2px;width:7px;height:7px;background:var(--orange);border-radius:50%}
 
-/* ---- Reference Sheet ---- */
-.ref-sheet{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r-l);padding:20px;margin-bottom:24px}
-.ref-sheet summary{font-weight:600;font-size:13px;color:var(--navy);cursor:pointer;letter-spacing:.03em}
-.ref-sheet .ref-content{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-.ref-item{text-align:center;padding:10px}
-.ref-item svg{margin-bottom:6px}
-.ref-item .formula{font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
+/* Results */
+.results{display:none;padding:40px 20px;text-align:center;overflow-y:auto;flex:1}
+.results.show{display:block}
+.results h2{font-size:24px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.results .sub{font-size:14px;color:var(--muted);margin-bottom:28px}
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;max-width:700px;margin:0 auto 28px}
+.score-card{background:var(--surface);border:1px solid var(--rule-soft);border-radius:8px;padding:18px 16px;text-align:left}
+.sc-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.sc-val{font-size:32px;font-weight:700;color:var(--ink)}
+.sc-sub{font-size:13px;color:var(--faint);margin-bottom:6px}
+.score-bar{height:6px;background:var(--surface-alt);border-radius:3px;overflow:hidden}
+.score-bar .fill{height:100%;border-radius:3px;transition:width .6s}
+.results-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 
-/* ---- Math expressions ---- */
-.math{font-family:var(--serif);font-style:italic}
-.math sup{font-size:.7em}
-.math sub{font-size:.7em}
+/* Math expressions */
+.math{font-family:var(--sans);font-style:italic}
+.math sup{font-size:.7em}.math sub{font-size:.7em}
 .frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 2px}
 .frac .num,.frac .den{font-size:.85em;line-height:1.1}
 .frac .num{border-bottom:1px solid currentColor;padding-bottom:1px}
 .frac .den{padding-top:1px}
 
-@media(max-width:600px){
-  .overview{grid-template-columns:1fr 1fr}
-  .topbar .bar{padding:8px 0}
-  .question{padding:18px 16px}
-  .as-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+/* Answer sheet */
+.answer-sheet{display:none;padding:20px;overflow-y:auto;flex:1}
+.answer-sheet.show{display:block}
+.as-title{font-size:20px;font-weight:700;color:var(--ink);text-align:center;margin-bottom:4px}
+.as-sub{text-align:center;color:var(--muted);font-size:13px;margin-bottom:20px}
+.as-page{background:var(--surface);border:1px solid var(--rule-soft);border-radius:8px;padding:20px;margin-bottom:16px}
+.as-page h3{font-size:15px;font-weight:700;color:var(--blue);margin-bottom:4px}
+.as-info{font-size:12px;color:var(--muted);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--rule-soft)}
+.as-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px 16px}
+.as-row{display:flex;align-items:center;gap:6px;padding:3px 0}
+.as-num{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--muted);width:22px;text-align:right}
+.as-bubbles{display:flex;gap:4px}
+.as-bubble{width:20px;height:20px;border:1.5px solid var(--faint);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:var(--faint);cursor:pointer;transition:all .1s}
+.as-bubble:hover{border-color:var(--blue)}
+.as-bubble.filled{background:var(--blue);border-color:var(--blue);color:#fff}
+.as-spr{width:48px;border:none;border-bottom:1.5px solid var(--faint);font-family:var(--mono);font-size:11px;text-align:center;padding:2px;background:transparent;color:var(--ink)}
+
+@media(max-width:700px){
+  .content-area{flex-direction:column}
+  .pane-left{border-right:none;border-bottom:1px solid var(--rule-soft);max-height:40vh;flex:none}
+  .pane-right{flex:1}
+  .hdr-section{display:none}
+  .q-nav{max-width:100%}
+  .hdr-inner{padding:0 12px}
 }
 @media print{
-  body{background:#fff;color:#000;font-size:11px}
-  .topbar,.nav-bottom,.landing,.module-view,.results,.btn,.print-btn,.directions{display:none!important}
+  .hdr,.bottom-bar,.main{display:none!important}
   .answer-sheet{display:block!important}
-  .answer-sheet.active{display:block!important}
-  .as-page{border:1px solid #ccc;page-break-inside:avoid;padding:20px;margin-bottom:16px;box-shadow:none;border-radius:0}
-  .as-page h3{font-size:14px}
-  .as-bubble{border-color:#888}
-  .as-bubble.filled{background:#333;border-color:#333}
+  .as-page{border:1px solid #ccc;page-break-inside:avoid;box-shadow:none;border-radius:0}
+  body{background:#fff;color:#000;font-size:11px}
   @page{margin:1.5cm}
 }
 </style>
 
-<div class="wrap" id="app">
-  <!-- Landing -->
-  <div class="landing" id="landing">
-    <div class="grade-badge">Grades 10 &amp; 11</div>
-    <h1>SAT Practice Test 1</h1>
-    <p class="sub">Full-length mock exam &middot; Reading, Writing &amp; Math</p>
-    <div class="overview">
-      <div class="ov-card"><div class="ov-label">Section 1</div><div class="ov-val">R &amp; W</div><div class="ov-detail">54 questions &middot; 64 min</div></div>
-      <div class="ov-card"><div class="ov-label">Section 2</div><div class="ov-val">Math</div><div class="ov-detail">44 questions &middot; 70 min</div></div>
-      <div class="ov-card"><div class="ov-label">Total Time</div><div class="ov-val">2h 14m</div><div class="ov-detail">4 modules</div></div>
-      <div class="ov-card"><div class="ov-label">Questions</div><div class="ov-val">98</div><div class="ov-detail">Multiple choice + SPR</div></div>
+<!-- Landing -->
+<div id="landing" class="landing">
+  <div class="landing-logo">College Board</div>
+  <h1>SAT Practice Test 1</h1>
+  <p class="sub">Full-length digital SAT mock exam &middot; Grades 10 &amp; 11</p>
+  <div class="landing-info">
+    <div class="info-card"><div class="label">Section 1</div><div class="val">Reading &amp; Writing</div><div class="detail">2 modules &middot; 54 questions &middot; 64 min</div></div>
+    <div class="info-card"><div class="label">Section 2</div><div class="val">Math</div><div class="detail">2 modules &middot; 44 questions &middot; 70 min</div></div>
+    <div class="info-card"><div class="label">Total Time</div><div class="val">2 hr 14 min</div><div class="detail">Timed per module</div></div>
+    <div class="info-card"><div class="label">Questions</div><div class="val">98</div><div class="detail">Multiple choice &amp; SPR</div></div>
+  </div>
+  <button class="btn-begin" onclick="beginTest()">Begin Test</button>
+</div>
+
+<!-- Header -->
+<div class="hdr" id="hdr">
+  <div class="hdr-inner">
+    <div class="hdr-left">
+      <div class="hdr-logo"><span>SAT</span> Practice</div>
+      <div class="hdr-section" id="hdrSection"></div>
     </div>
-    <button class="btn-start" onclick="startTest()">Begin Test</button>
-    <p style="margin-top:16px"><button class="btn btn-secondary" onclick="showAnswerSheet()" style="font-size:13px">View Answer Sheet</button></p>
+    <div class="hdr-center">
+      <div class="hdr-timer" id="hdrTimer">32:00</div>
+      <span class="hdr-hide-timer" id="hdrHideTimer" onclick="toggleTimer()">Hide</span>
+    </div>
+    <div class="hdr-right">
+      <span id="hdrProgress"></span>
+      <button class="hdr-more" onclick="showAnswerSheet()">Answer Sheet</button>
+    </div>
+  </div>
+</div>
+
+<!-- Main test area -->
+<div class="main" id="main">
+  <!-- Directions overlay -->
+  <div class="dir-overlay" id="dirOverlay">
+    <div class="dir-box">
+      <h2 id="dirTitle"></h2>
+      <div class="dir-sub" id="dirSub"></div>
+      <p id="dirText"></p>
+      <button class="btn-begin" onclick="closeDirections()">Start Module</button>
+    </div>
   </div>
 
-  <!-- Top Bar -->
-  <div class="topbar" id="topbar">
-    <div class="bar">
-      <span class="sec-label" id="secLabel">Section 1, Module 1</span>
-      <span class="timer" id="timer">32:00</span>
-      <span class="progress" id="progress">0 / 27</span>
-    </div>
+  <div class="content-area" id="contentArea">
+    <div class="pane-left" id="paneLeft"></div>
+    <div class="pane-right" id="paneRight"></div>
   </div>
 
-  <!-- Module containers rendered by JS -->
-  <div id="modules"></div>
-
-  <!-- Results -->
   <div class="results" id="results">
     <h2>Test Complete</h2>
-    <div class="score-summary"><p style="color:var(--muted);font-size:14px">Here are your results for SAT Practice Test 1</p></div>
+    <p class="sub">Here are your results</p>
     <div class="score-grid" id="scoreGrid"></div>
-    <div style="text-align:center;margin-top:24px">
-      <button class="btn btn-primary" onclick="reviewAnswers()">Review Answers</button>
-      <button class="btn btn-secondary" style="margin-left:8px" onclick="showAnswerSheet()">Answer Sheet</button>
-      <button class="btn btn-secondary" style="margin-left:8px" onclick="location.reload()">Retake</button>
+    <div class="results-btns">
+      <button class="nav-btn" onclick="reviewAnswers()">Review Answers</button>
+      <button class="nav-btn" onclick="showAnswerSheet()">Answer Sheet</button>
+      <button class="nav-btn primary" onclick="sendResults()">Email Results</button>
     </div>
+    <div id="emailStatus" style="margin-top:12px;font-size:13px;color:var(--muted);display:none"></div>
   </div>
 
-  <!-- Answer Sheet -->
   <div class="answer-sheet" id="answerSheet">
     <div class="as-title">SAT Practice Test 1 &mdash; Answer Sheet</div>
     <div class="as-sub">Name: _________________________ &nbsp;&nbsp; Date: _____________ &nbsp;&nbsp; Grade: _____</div>
     <div id="asPages"></div>
-    <button class="btn btn-secondary" onclick="hideAnswerSheet()" style="display:block;margin:16px auto">Back to Test</button>
+    <div style="text-align:center;margin:16px 0"><button class="nav-btn" onclick="hideAnswerSheet()">Back</button></div>
   </div>
 
-  <!-- Bottom Nav -->
-  <div class="nav-bottom" id="navBottom">
-    <div class="nav-inner">
-      <button class="btn btn-secondary" id="btnPrev" onclick="prevQuestion()">Previous</button>
-      <span id="qIndicator" style="font-size:13px;color:var(--muted)"></span>
-      <button class="btn btn-primary" id="btnNext" onclick="nextQuestion()">Next</button>
-    </div>
+  <div class="bottom-bar" id="bottomBar">
+    <button class="nav-btn" id="btnPrev" onclick="goQ(-1)">Back</button>
+    <div class="q-nav" id="qNav"></div>
+    <button class="nav-btn primary" id="btnNext" onclick="goQ(1)">Next</button>
   </div>
 </div>
 
@@ -259,9 +290,7 @@ var MODULES = [
       {n:7,passage:'The following text is from Walt Whitman\'s 1891 poem "A Promise to California." The poem was written in the aftermath of the U.S. Civil War, when the country was trying to heal its emotional wounds.\n\n<em>A promise to California,\nAlso to the great Pastoral Plains, and for Oregon:\nSojourning east a while longer, soon I travel toward you, to remain, to teach robust\nAmerican love,\nFor I know very well that I and robust love belong among you, inland and along the coast,\nFor These States tend inland, and toward the\nWestern Sea—and I will also.</em>',text:'Which choice best states the main purpose of the text?',opts:['It describes how the United States has endured tensions between its northern and southern territories.','It frames a complaint between several U.S. states about unequal treatment.','It features several perspectives and economic analyses of westward expansion.','It describes a plan for national harmony by expressing love for the entire country.'],ans:3},
       {n:8,passage:'The following text is adapted from F. Scott Fitzgerald\'s 1920 novel <em>This Side of Paradise</em>. The novel opens with the following semi-autobiographical character introduction of Fitzgerald\'s protagonist, Amory Blaine:\n\n"Amory," his mother always encouraged gently.\n"Dear, don\'t think of getting out of bed. I\'ve always suspected that, early in life, this makes one nervous. Childhood is having your breakfast brought up."',text:'Amory\'s relationship with his mother is best described as:',opts:['traditionally pleasant','mutually disrespectful','blandly overprotected','cold and distant'],ans:2},
       {n:9,passage:'An English professor analyzes the 1917 poem titled "The River Merchant\'s Wife: A Letter" by Ezra Pound. The professor claims the poem contrasts the narrator\'s childhood innocence with her desperation and loneliness as an adult. She mentions that the poem combines vivid descriptions of the natural world in conjunction with her departed husband.',text:'Which quotation from the poem most effectively illustrates the claim?',opts:['"While my hair was still cut straight across my forehead / I played about the front gate, pulling flowers. / Covering my head, I looked at the wall, / Called to a thousand times, I never looked back."','"You went into far Ku-to-en, by the river of swirling eddies, / And you have been gone five months."','"If you are coming down through the narrows of the river Kiang, / Please let me know beforehand, / And I will come out to meet you."','"The leaves fall early this autumn, / The paired butterflies are already yellow with August / Over the grass in the West garden."'],ans:0},
-      {n:10,passage:'',text:'Which choice most effectively uses data from the table to complete the example?',
-      diagram:'<table><tr><th>Crop</th><th>Yield (Unit/<br>Acre)</th><th>Nitrogen Removal<br>(Pounds/Acre)</th></tr><tr><td>Barley</td><td>50</td><td>30</td></tr><tr><td>Corn</td><td>150</td><td>135</td></tr><tr><td>Soybeans</td><td>40</td><td>116</td></tr><tr><td>Wheat</td><td>30</td><td>42</td></tr><tr><td>Corn Silage</td><td>15</td><td>87</td></tr></table>',
-      opts:['Barley, because it has a relatively low rate of nitrogen removal.','Corn, because it has the highest yield per acre among the crops listed.','Wheat, because it has a relatively low rate of nitrogen removal.','Soybeans, because they remove a moderate amount of nitrogen.'],ans:0},
+      {n:10,text:'Which choice most effectively uses data from the table to complete the example?',diagram:'<table><tr><th>Crop</th><th>Yield (Unit/<br>Acre)</th><th>Nitrogen Removal<br>(Pounds/Acre)</th></tr><tr><td>Barley</td><td>50</td><td>30</td></tr><tr><td>Corn</td><td>150</td><td>135</td></tr><tr><td>Soybeans</td><td>40</td><td>116</td></tr><tr><td>Wheat</td><td>30</td><td>42</td></tr><tr><td>Corn Silage</td><td>15</td><td>87</td></tr></table>',opts:['Barley, because it has a relatively low rate of nitrogen removal.','Corn, because it has the highest yield per acre among the crops listed.','Wheat, because it has a relatively low rate of nitrogen removal.','Soybeans, because they remove a moderate amount of nitrogen.'],ans:0},
       {n:11,passage:'A survey of medical doctors indicated that 35% of them prefer to work close to the community of patients they treat. Cities with unlimited exposure to business generate life satisfaction among residents greater than areas with limited resources. States with tort reforms in place saw 20% more medical practices relocate to their remote areas than states without such reforms.',text:'Which of the following findings, if true, would best support Erica\'s overall argument as presented in the text?',opts:['A survey of medical doctors indicated that 35% of them prefer to work close to the community of patients they treat.','Mortgage payments for the average American homebuyer increased in the immediate aftermath of the recession.','States with tort reforms in place saw 20% more practices relocate to their territories.','The higher physical wall spaces make them more viable than land-based cores.'],ans:2},
       {n:12,passage:'"An Encounter" is part of James Joyce\'s 1914 short story collection <em>Dubliners</em>. A young, unnamed narrator searches for excitement beyond the constraints of daily routine. As English teachers who follow the intellectual requirements of his school could best be described as "half-hearted"—',text:'Which choice most logically completes the text?',opts:['the narrator concludes that routine is comforting and resolves never to leave home.','the narrator’s desire for adventure is contrasted with his realization that true experience is difficult to find.','the narrator expresses gratitude toward his English teachers for their structured approach.','the story implies that rebellion against convention always leads to personal growth.'],ans:1},
       {n:13,passage:'Many studies suggest that while exercising and having a healthy diet can drastically reduce the concentration of cholesterol in our blood, genes play a crucial role in an individual\'s risk of cardiovascular disease. The strong role of genetics is seen in polar bears. Polar bears are among the most fat-obsessed members of the animal kingdom, yet they do not experience any cardiovascular complications. About half of a polar bear\'s weight is fat and its blood cholesterol levels are high enough that they would cause serious cardiovascular disease in humans; even so,',text:'Which choice most logically completes the text?',opts:['polar bears have a varied diet despite the harsh environments in which they live.','heart attacks are not a concern for polar bears.','diet issues can explain cardiovascular disease.','polar bears are equally susceptible to serious cardiovascular disease.'],ans:1},
@@ -273,9 +302,9 @@ var MODULES = [
       {n:19,passage:'Rodents only make up a portion of a bat\'s diet. Servals will also use their large ears to listen carefully for the hum of bird wings overhead or the buzz of an insect nearby.',text:'Which choice completes the text so that it conforms to the conventions of Standard English?',opts:['served, did.','served did.','serves, did.','served’s diet.'],ans:0},
       {n:20,passage:'George Balanchine, the first artistic director of the New York City Ballet, was the prolific choreographer of many _______ them the ballets "Jewels" and "Cabin in the Sky."',text:'Which choice completes the text so that it conforms to the conventions of Standard English?',opts:['works among','works, among','work, among','works. Among'],ans:1},
       {n:21,passage:'Even in this short life, Comaneci managed to make an enduring difference. In his wake, Native Americans are revising, moving away from strict rules that had governed traditional forms and into a new space where traditional styles and concepts could be more expressive by incorporating modern ideas and implications.',text:'Which choice completes the text so that it conforms to the conventions of Standard English?',opts:['Art historians that started with Cezanne and the resurgence and change in Native American art to a movement—this started with Cannon.','Art historians that traced the resurgence and change in Native American art to a movement that started with Cannon.','Art historians have traced the resurgence and change in Native American art to a movement that started with Cannon.','Art historians traced, the resurgence and change in Native American art.'],ans:2},
-      {n:22,passage:'Melodies are so loved that people will listen to them even when they are not trying to concentrate on other things. Because melodies are so universally loved, they attract people who will dance to them, and besides these things, will seek out their vibrations. Humans, since the very beginning of our species, have used them to express joy, sadness, laughter, love, and pain. In music, _______ the melodical notes and the beats, come together.',text:'Which choice completes the text so that it conforms to the conventions of Standard English?',opts:['These two things (the melodical notes and the beats), come together.','These two things, (the melodical notes and the beats) come together.','These two things (the melodical notes and the beats) come together.','These two things, the melodical notes and the beats come together.'],ans:2},
+      {n:22,passage:'Melodies are so loved that people will listen to them even when they are not trying to concentrate on other things. Because melodies are so universally loved, they attract people who will dance to them, and besides these things, will seek out their vibrations.',text:'Which choice completes the text so that it conforms to the conventions of Standard English?',opts:['These two things (the melodical notes and the beats), come together.','These two things, (the melodical notes and the beats) come together.','These two things (the melodical notes and the beats) come together.','These two things, the melodical notes and the beats come together.'],ans:2},
       {n:23,passage:'Technology has transformed how job seekers should present their qualifications to prospective employers. _______ the old paper resume would be one or two pages, your online career profile can be much more thorough.',text:'Which choice completes the text with the most logical transition?',opts:['Whereas','Since','Moreover','Because'],ans:0},
-      {n:24,passage:'',text:'Which choice completes the text with the most logical transition?',opts:['Unexpectedly','Paradoxically','In contrast','Ironically'],ans:1},
+      {n:24,text:'Which choice completes the text with the most logical transition?',opts:['Unexpectedly','Paradoxically','In contrast','Ironically'],ans:1},
       {n:25,passage:'While conducting research, a student took these notes:\n• Gojya monks, also known as Marathon monks, are a Buddhist group in Japan.\n• Each monk, over seven years, walks around 27,000 miles.\n• Toward the end of the seven years, the monks will walk up to 52 miles per day.\n• The grueling physical demands of completing this task on little food or sleep have proved to be an extremely challenging discipline.',text:'The student wants to emphasize the physical demands of being a Gojya monk. Which choice most effectively uses relevant information from the notes to accomplish this goal?',opts:['Gojya monks sometimes walk up to 25 miles per day, a task that many people might find challenging.','Gojya monks walk up to an incredible 52 miles per day on very little food and sleep.','Those who want to be monks must dedicate straight years of their lives to this challenge.','While the spiritual introspection might be psychologically burdensome, the public recognition makes the work worthwhile.'],ans:1},
       {n:26,passage:'While researching a topic, a student has taken the following notes:\n• There are many high- and low-tech ways of implementing sustainable agriculture.\n• Silt traps prevent agricultural run-off from reaching the soil.\n• Selective planting of plants like rice can regenerate the soil and reduce waste run-off.\n• Companion planting involves planting varieties closer together to increase the efficiency with which the plant uses nutrients in the soil.\n• Slower mulching uses fewer plant materials to reduce waste.',text:'The student wants to suggest a low-tech way of implementing a sustainable agricultural practice. Which choice most effectively uses relevant information from the notes to accomplish this goal?',opts:['Factory manufacturing of salt traps can prevent river pollution.','When two companion plants are grown both become healthier.','Silt traps should utilize gene editing to detect the presence of mites.','Slower mulching uses fewer plant materials to reduce waste run-off.'],ans:3},
       {n:27,passage:'While researching a topic, a student has taken the following notes:\n• Offshore wind farms are an increasingly viable source of renewable energy.\n• The average wind speed offshore is typically greater than on land since there are fewer geographical obstacles.\n• Wind farms can often be placed relatively close to urban coastal areas, reducing the distance needed for electricity transmission.\n• While initially more expensive than land-based farms, offshore farms provide stability.',text:'The student wants to point out a reason why offshore wind farms are viable. Which choice most effectively uses relevant information from the notes?',opts:['Stability of offshore wind farms provides the greatest technical advantage over land-based ones.','The average offshore typically physical wall spaces make them more viable.','Wind farms are more expensive than land-based cores.','The higher average wind speeds offshore, combined with fewer geographical obstacles, make them viable for consistent energy production.'],ans:3}
@@ -290,32 +319,28 @@ var MODULES = [
       {n:3,passage:'Tests should operate as an assessment of what is practiced daily inside the classroom. Classroom teachers who teach to well-written standards _______ that students are prepared for the next grade level.',text:'Which choice completes the text with the most logical and precise word or phrase?',opts:['assure','ensure','resource','measure'],ans:1},
       {n:4,passage:'A folktale may enter a city or village\'s population\'s day-to-day life. Possibly, they may end up predicting a story: a fable, a dance, a club, or even a rally. When looked at closely, it generally turns out to practice what was _______ to them.',text:'Which choice completes the text with the most logical and precise word or phrase?',opts:['exuberant','insignificant','substantive','enthusiastic'],ans:2},
       {n:5,passage:'In the 1800s, DDF was banned from being used because of its effects on wildlife. Once its comeback by 2010, those bans were already beginning their comeback. Because the use of it had begun before, its _______ was slow.',text:'Which choice completes the text with the most logical and precise word or phrase?',opts:['rigors','excursions','hygienics','resurgence'],ans:3},
-      {n:6,passage:'Studies also show that young children who learn multiple languages at one time, with the critical teaching available in schools, would be more likely to reach an intermediate level of communicative competence in multiple languages. Study after study at the early-age child centers demonstrate language learning at an early age creates more clinically aware children. An English-study setting is the incorporation of multiple language teaching, from advanced to beginning acquisition.',text:'Which choice best states the main purpose of the text?',opts:['To contribute to the reader\'s study of a specific world language to become more culturally aware.','To provide an evidence-based argument in favor of early learning of multiple languages.','To suggest a curriculum for graduate-level studies in multiple-language cognition.','To argue that the biological obstacles to learning language at an early age are difficult to overcome.'],ans:1},
-      {n:7,passage:'<strong>Text 1:</strong> Film star Charlie Chaplin was much more than a movie entertainer. In his 1926 film <em>The Great Dictator</em>, Chaplin delivers a heartfelt, impassioned speech in the historical context in which the dictator was finally making a commentary on human kindness. Chaplin is widely regarded in film history as a brilliant film star.\n\n<strong>Text 2:</strong> Stephen Spielberg is a master of cinematic technique: the close-up on a wide range of terms. Sound. Special-effects manipulation, alleging that this technique suggests the audience had a response to it.\n\nBased on the texts, what would the critics in Text 2 most likely say about Chaplin\'s speech as described in Text 1?',text:'',opts:['The emotional response it evokes is well-earned.','It is overly focused on political matters and ignores artistic technique.','Without a vocal accompaniment, a silent film cannot be judged.','Attempts to prompt a visceral reaction to what is on the screen are unwarranted.'],ans:0},
-      {n:8,passage:'The following text is from Willa Cather\'s 1918 novel <em>My Antonia</em>.\n\nWhen Jim was still a boy obscure around New York, life for him was particularly interesting, especially with the daughter of a distinguished man. Her marriage came with a price tag that was not particularly becoming of the woman.',text:'Based on the text, the narrator most likely believes that Jim married his wife:',opts:['out of a love for her intellect.','because of professional ambition.','due to his sincere love for her.','given her sympathy for his poverty.'],ans:1},
-      {n:9,passage:'The following text is adapted from Oscar Keane\'s 1894 work. "The art of books. In this story, a group of gentlemen gather after dinner to discuss what they think the future holds. Eventually they come to one consensus: Printing ... which has changed the destiny of Europe, and which, especially during the last two centuries, has governed opinion through the book, the pamphlet, and the newspaper—printing, which since 1436 has reigned despotically over the mind of man, is, in my opinion, threatened with death by the various devices for registering sound which have lately been invented and which little by little will go to perfection."',text:'Based on the text, the narrator believes that the impact of printing on history to the time period when the article was written could be described as:',opts:['extremely significant.','largely irrelevant.','antiquously progressive.','uniformly multiplistic.'],ans:0},
-      {n:10,passage:'Author Mary Shelley composed a novel called <em>The Last Man</em> in 1826. The narrator of this story suggests that the greatest obstacle to his father\'s success is an inability to follow through on his commitments.',text:'Which quotation from <em>The Last Man</em> most effectively illustrates the claim?',opts:['"During the short years of droughtless youth, he was ached by the high, hired millers of the day, not least by the youth."','"The king marched; and the hungry princes of Austria, who became a queen of England, floated with haste eyes on his delicacies, and waited with contempt on the arrogant, her royal husband entertained for him."','"With the quick sensibility peculiar to his temperament, he perceived his power fit; the brilliant circle, and the hungry princes; his good resolution, most romantic; his promises, vast."','"The fond habit of gambling, which fully possessed him, falsely, in all his good resolutions, his sovereign."'],ans:2},
-      {n:11,passage:'Meteorologists in the Northern Hemisphere have summarized typical tornado data by observing where tornadoes most commonly form. They have plotted tornado data in Figure 1 and Figure 2.',text:'Which choice most effectively uses data from the table to complete the statement?',
-      diagram:'<svg viewBox="0 0 400 220" width="400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="220" fill="var(--surface-2)" rx="6"/><text x="200" y="18" text-anchor="middle" font-size="11" font-weight="600" fill="var(--ink)">U.S. Tornado Averages by Month (1991–2010)</text><g transform="translate(50,30)"><line x1="0" y1="160" x2="310" y2="160" stroke="var(--rule)" stroke-width="1"/><line x1="0" y1="0" x2="0" y2="160" stroke="var(--rule)" stroke-width="1"/><text x="-8" y="164" text-anchor="end" font-size="8" fill="var(--muted)">0</text><text x="-8" y="124" text-anchor="end" font-size="8" fill="var(--muted)">100</text><text x="-8" y="84" text-anchor="end" font-size="8" fill="var(--muted)">200</text><text x="-8" y="44" text-anchor="end" font-size="8" fill="var(--muted)">300</text><line x1="0" y1="120" x2="310" y2="120" stroke="var(--rule-soft)" stroke-width=".5"/><line x1="0" y1="80" x2="310" y2="80" stroke="var(--rule-soft)" stroke-width=".5"/><line x1="0" y1="40" x2="310" y2="40" stroke="var(--rule-soft)" stroke-width=".5"/><rect x="5" y="148" width="20" height="12" fill="var(--navy)" rx="1"/><rect x="30" y="144" width="20" height="16" fill="var(--navy)" rx="1"/><rect x="55" y="128" width="20" height="32" fill="var(--navy)" rx="1"/><rect x="80" y="100" width="20" height="60" fill="var(--navy)" rx="1"/><rect x="105" y="50" width="20" height="110" fill="var(--teal)" rx="1"/><rect x="130" y="30" width="20" height="130" fill="var(--teal)" rx="1"/><rect x="155" y="100" width="20" height="60" fill="var(--navy)" rx="1"/><rect x="180" y="112" width="20" height="48" fill="var(--navy)" rx="1"/><rect x="205" y="120" width="20" height="40" fill="var(--navy)" rx="1"/><rect x="230" y="130" width="20" height="30" fill="var(--navy)" rx="1"/><rect x="255" y="136" width="20" height="24" fill="var(--navy)" rx="1"/><rect x="280" y="144" width="20" height="16" fill="var(--navy)" rx="1"/><text x="15" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Jan</text><text x="40" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Feb</text><text x="65" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Mar</text><text x="90" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Apr</text><text x="115" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">May</text><text x="140" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Jun</text><text x="165" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Jul</text><text x="190" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Aug</text><text x="215" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Sep</text><text x="240" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Oct</text><text x="265" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Nov</text><text x="290" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Dec</text></g></svg>',
-      opts:['middays in the summer.','eighteens in the springtime.','fall and winter months.','most common in the summer.'],ans:3},
-      {n:12,passage:'"The Social Contract" is a 1762 treatise of political philosophy by Jean-Jacques Rousseau. Despite the unselfish desire in which the work was written, Rousseau advocated a social cohesion. In fact, the central tenet of the social contract is that each must give himself entirely to the state to ensure social order.',text:'Which quotation from "The Social Contract" most effectively illustrates the claim?',opts:['"Man was born free, but everywhere he is in chains; this man believes that he is the master of others, and still he is more of a slave than they are."','"And so it follows that each individual, in contracting, also recovers all that he has given: the social contract offers a solution to the fundamental problem."','"The individual member alienates himself totally to the whole community together with all his rights."','"Each individual directly loses the contractual freedom, for which he renounced them."'],ans:2},
-      {n:13,passage:'Economists have observed that during times of economic recession, central banks tend to lower interest rates to help make the cost of borrowing loans less expensive. Since the cost of any loan (lowering interest rates) will help consumers save money, they have more money available to purchase goods and services, thereby stimulating the economy and helping the country emerge successfully from a recession.',text:'Which choice most effectively uses data from the chart to support the economists\' hypothesis?',
-      diagram:'<svg viewBox="0 0 380 200" width="380" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="200" fill="var(--surface-2)" rx="6"/><text x="190" y="18" text-anchor="middle" font-size="10" font-weight="600" fill="var(--ink)">30-Year Fixed Rate Mortgage Average in the U.S.</text><g transform="translate(45,30)"><text x="-5" y="10" text-anchor="end" font-size="8" fill="var(--muted)">5.0</text><text x="-5" y="40" text-anchor="end" font-size="8" fill="var(--muted)">4.5</text><text x="-5" y="70" text-anchor="end" font-size="8" fill="var(--muted)">4.0</text><text x="-5" y="100" text-anchor="end" font-size="8" fill="var(--muted)">3.5</text><text x="-5" y="130" text-anchor="end" font-size="8" fill="var(--muted)">3.0</text><text x="-5" y="155" text-anchor="end" font-size="8" fill="var(--muted)">2.5</text><line x1="0" y1="7" x2="300" y2="7" stroke="var(--rule-soft)" stroke-width=".5"/><line x1="0" y1="37" x2="300" y2="37" stroke="var(--rule-soft)" stroke-width=".5"/><line x1="0" y1="67" x2="300" y2="67" stroke="var(--rule-soft)" stroke-width=".5"/><line x1="0" y1="97" x2="300" y2="97" stroke="var(--rule-soft)" stroke-width=".5"/><line x1="0" y1="127" x2="300" y2="127" stroke="var(--rule-soft)" stroke-width=".5"/><line x1="0" y1="155" x2="300" y2="155" stroke="var(--rule-soft)" stroke-width=".5"/><polyline points="0,37 30,30 60,25 90,7 120,37 150,67 180,97 210,67 240,37 270,127 300,155" fill="none" stroke="var(--teal)" stroke-width="2"/><circle cx="270" cy="127" r="3" fill="var(--coral)"/><text x="0" y="170" text-anchor="start" font-size="8" fill="var(--muted)">2017</text><text x="75" y="170" text-anchor="middle" font-size="8" fill="var(--muted)">2018</text><text x="150" y="170" text-anchor="middle" font-size="8" fill="var(--muted)">2019</text><text x="225" y="170" text-anchor="middle" font-size="8" fill="var(--muted)">2020</text><text x="300" y="170" text-anchor="end" font-size="8" fill="var(--muted)">2021</text><text x="150" y="185" text-anchor="middle" font-size="8" fill="var(--muted)" font-style="italic">Percent</text></g></svg>',
-      opts:['While the U.S. mortgage rate is relatively low by historical standards, it stayed fairly constant during the duration of the recession.','The interest rate on U.S. 30-year fixed mortgages decreased to approximately 3% by 2021 in the aftermath of the recent recession.','Mortgage payments for the average American homebuyer increased in the immediate aftermath of the recession.','U.S. 30-year fixed mortgage rates, for example, generally decreased through our 2022, to a low of less than 3 percent.'],ans:1},
-      {n:14,passage:'An area in southern Ohio has been undergoing widespread land-use change over the past two decades. New apartment construction complexes are replacing the forests that used to cover their area. Surprisingly, researchers have found that a type of bird, Species X, has found a niche. Group 1 hypothesizes that the growth is due to environmental changes. Group 2 hypothesizes that the growth has been propelled by population shift from another area, causing Species X to move into the southern Ohio region.',text:'Which finding, if true, would most directly support Group 2\'s hypothesis?',opts:['Areas in northern Ohio have undergone widespread use changes making it necessary for Species X to relocate.','Over the past two decades there has been an increase in insect-based pollutants throughout the southern Ohio region.','Some predators to the wild Species X in southern Ohio has increased in recent years due to reintroduction of some predators to the wild.','The number of natural predators of Species X in southern Ohio has increased.'],ans:0},
-      {n:15,passage:'The mite reproductive process causes sterile worker bees and beekeepers alike to treat mite infections. A beekeeper can utilize thermal imagery to detect the presence of mites in cells that mite treatments may not reach. Since worker bees and beekeepers alike start treating the issue, there are more mites breeding in capped cells. The queen has laid an egg, is sealed as it hatches and the honeycomb where the queen has laid an egg, is sealed as "egg" hatches and the cell is sealed. The mite reproduces within a bee colony.',text:'Which choice most logically completes the text?',opts:['the queen bee will have the resilience to overcome any infestation that initially enters the colony.','exceeds the number of drone bees in the colony.','the number of worker bees in a colony exceeds the number of drone bees, hence the mites themselves reproduce within a bee colony.','the mites reproduce at a rate that makes them very difficult to get rid of, at any given time.'],ans:3},
-      {n:16,passage:'Someone with a mastery of problem-solving approaches and multiple avenues for fresh applications of their critical thinking skills was an expert in particle physics and contributed to the construction of the Challenger space shuttle disaster: _______ theoretical physicist, Richard Feynman.',text:'Which choice completes the text so that it conforms to the conventions of Standard English?',opts:['American theoretical physicist, Richard Feynman,','American, theoretical physicist, Richard Feynman','American theoretical physicist Richard, Feynman,','American, theoretical physicist Richard Feynman.'],ans:0},
+      {n:6,passage:'Studies also show that young children who learn multiple languages at one time, with the critical teaching available in schools, would be more likely to reach an intermediate level of communicative competence in multiple languages.',text:'Which choice best states the main purpose of the text?',opts:['To contribute to the reader\'s study of a specific world language to become more culturally aware.','To provide an evidence-based argument in favor of early learning of multiple languages.','To suggest a curriculum for graduate-level studies in multiple-language cognition.','To argue that the biological obstacles to learning language at an early age are difficult to overcome.'],ans:1},
+      {n:7,passage:'<strong>Text 1:</strong> Film star Charlie Chaplin was much more than a movie entertainer. In his 1926 film <em>The Great Dictator</em>, Chaplin delivers a heartfelt, impassioned speech in the historical context in which the dictator was finally making a commentary on human kindness.\n\n<strong>Text 2:</strong> Stephen Spielberg is a master of cinematic technique: the close-up on a wide range of terms.',text:'Based on the texts, what would the critics in Text 2 most likely say about Chaplin\'s speech as described in Text 1?',opts:['The emotional response it evokes is well-earned.','It is overly focused on political matters and ignores artistic technique.','Without a vocal accompaniment, a silent film cannot be judged.','Attempts to prompt a visceral reaction to what is on the screen are unwarranted.'],ans:0},
+      {n:8,passage:'The following text is from Willa Cather\'s 1918 novel <em>My Antonia</em>.\n\nWhen Jim was still a boy obscure around New York, life for him was particularly interesting, especially with the daughter of a distinguished man.',text:'Based on the text, the narrator most likely believes that Jim married his wife:',opts:['out of a love for her intellect.','because of professional ambition.','due to his sincere love for her.','given her sympathy for his poverty.'],ans:1},
+      {n:9,passage:'The following text is adapted from Oscar Keane\'s 1894 work. "The art of books. In this story, a group of gentlemen gather after dinner to discuss what they think the future holds."',text:'Based on the text, the narrator believes that the impact of printing on history to the time period when the article was written could be described as:',opts:['extremely significant.','largely irrelevant.','antiquously progressive.','uniformly multiplistic.'],ans:0},
+      {n:10,passage:'Author Mary Shelley composed a novel called <em>The Last Man</em> in 1826. The narrator of this story suggests that the greatest obstacle to his father\'s success is an inability to follow through on his commitments.',text:'Which quotation from <em>The Last Man</em> most effectively illustrates the claim?',opts:['"During the short years of droughtless youth, he was ached by the high, hired millers of the day."','"The king marched; and the hungry princes of Austria floated with haste eyes on his delicacies."','"With the quick sensibility peculiar to his temperament, he perceived his power fit; his good resolution, most romantic; his promises, vast."','"The fond habit of gambling, which fully possessed him, falsely, in all his good resolutions, his sovereign."'],ans:2},
+      {n:11,passage:'Meteorologists in the Northern Hemisphere have summarized typical tornado data by observing where tornadoes most commonly form.',text:'Which choice most effectively uses data from the table to complete the statement?',diagram:'<svg viewBox="0 0 400 220" width="400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="220" fill="var(--surface-alt)" rx="6"/><text x="200" y="18" text-anchor="middle" font-size="11" font-weight="600" fill="var(--ink)">U.S. Tornado Averages by Month (1991–2010)</text><g transform="translate(50,30)"><line x1="0" y1="160" x2="310" y2="160" stroke="var(--rule)" stroke-width="1"/><line x1="0" y1="0" x2="0" y2="160" stroke="var(--rule)" stroke-width="1"/><text x="-8" y="164" text-anchor="end" font-size="8" fill="var(--muted)">0</text><text x="-8" y="124" text-anchor="end" font-size="8" fill="var(--muted)">100</text><text x="-8" y="84" text-anchor="end" font-size="8" fill="var(--muted)">200</text><text x="-8" y="44" text-anchor="end" font-size="8" fill="var(--muted)">300</text><line x1="0" y1="120" x2="310" y2="120" stroke="var(--rule-soft)" stroke-width=".5"/><line x1="0" y1="80" x2="310" y2="80" stroke="var(--rule-soft)" stroke-width=".5"/><line x1="0" y1="40" x2="310" y2="40" stroke="var(--rule-soft)" stroke-width=".5"/><rect x="5" y="148" width="20" height="12" fill="var(--blue)" rx="1"/><rect x="30" y="144" width="20" height="16" fill="var(--blue)" rx="1"/><rect x="55" y="128" width="20" height="32" fill="var(--blue)" rx="1"/><rect x="80" y="100" width="20" height="60" fill="var(--blue)" rx="1"/><rect x="105" y="50" width="20" height="110" fill="#27ae60" rx="1"/><rect x="130" y="30" width="20" height="130" fill="#27ae60" rx="1"/><rect x="155" y="100" width="20" height="60" fill="var(--blue)" rx="1"/><rect x="180" y="112" width="20" height="48" fill="var(--blue)" rx="1"/><rect x="205" y="120" width="20" height="40" fill="var(--blue)" rx="1"/><rect x="230" y="130" width="20" height="30" fill="var(--blue)" rx="1"/><rect x="255" y="136" width="20" height="24" fill="var(--blue)" rx="1"/><rect x="280" y="144" width="20" height="16" fill="var(--blue)" rx="1"/><text x="15" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Jan</text><text x="40" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Feb</text><text x="65" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Mar</text><text x="90" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Apr</text><text x="115" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">May</text><text x="140" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Jun</text><text x="165" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Jul</text><text x="190" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Aug</text><text x="215" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Sep</text><text x="240" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Oct</text><text x="265" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Nov</text><text x="290" y="174" text-anchor="middle" font-size="7" fill="var(--muted)">Dec</text></g></svg>',opts:['middays in the summer.','eighteens in the springtime.','fall and winter months.','most common in the summer.'],ans:3},
+      {n:12,passage:'"The Social Contract" is a 1762 treatise of political philosophy by Jean-Jacques Rousseau. Despite the unselfish desire in which the work was written, Rousseau advocated a social cohesion.',text:'Which quotation from "The Social Contract" most effectively illustrates the claim?',opts:['"Man was born free, but everywhere he is in chains."','"Each individual, in contracting, also recovers all that he has given."','"The individual member alienates himself totally to the whole community together with all his rights."','"Each individual directly loses the contractual freedom."'],ans:2},
+      {n:13,passage:'Economists have observed that during times of economic recession, central banks tend to lower interest rates to help make the cost of borrowing loans less expensive.',text:'Which choice most effectively uses data from the chart to support the economists\' hypothesis?',diagram:'<svg viewBox="0 0 380 200" width="380" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="200" fill="var(--surface-alt)" rx="6"/><text x="190" y="18" text-anchor="middle" font-size="10" font-weight="600" fill="var(--ink)">30-Year Fixed Rate Mortgage Average in the U.S.</text><g transform="translate(45,30)"><text x="-5" y="10" text-anchor="end" font-size="8" fill="var(--muted)">5.0</text><text x="-5" y="40" text-anchor="end" font-size="8" fill="var(--muted)">4.5</text><text x="-5" y="70" text-anchor="end" font-size="8" fill="var(--muted)">4.0</text><text x="-5" y="100" text-anchor="end" font-size="8" fill="var(--muted)">3.5</text><text x="-5" y="130" text-anchor="end" font-size="8" fill="var(--muted)">3.0</text><text x="-5" y="155" text-anchor="end" font-size="8" fill="var(--muted)">2.5</text><polyline points="0,37 30,30 60,25 90,7 120,37 150,67 180,97 210,67 240,37 270,127 300,155" fill="none" stroke="var(--blue)" stroke-width="2"/><circle cx="270" cy="127" r="3" fill="var(--red)"/><text x="0" y="170" font-size="8" fill="var(--muted)">2017</text><text x="150" y="170" text-anchor="middle" font-size="8" fill="var(--muted)">2019</text><text x="300" y="170" text-anchor="end" font-size="8" fill="var(--muted)">2021</text></g></svg>',opts:['The rate stayed fairly constant during the recession.','The rate decreased to approximately 3% by 2021 in the aftermath of the recent recession.','Mortgage payments for the average homebuyer increased immediately after the recession.','U.S. 30-year fixed mortgage rates generally decreased through 2022 to below 3 percent.'],ans:1},
+      {n:14,passage:'An area in southern Ohio has been undergoing widespread land-use change over the past two decades. New apartment construction complexes are replacing the forests.',text:'Which finding, if true, would most directly support Group 2\'s hypothesis?',opts:['Areas in northern Ohio have undergone widespread use changes making it necessary for Species X to relocate.','Over the past two decades there has been an increase in insect-based pollutants throughout the southern Ohio region.','Some predators to the wild Species X in southern Ohio has increased in recent years.','The number of natural predators of Species X in southern Ohio has increased.'],ans:0},
+      {n:15,passage:'The mite reproductive process causes sterile worker bees and beekeepers alike to treat mite infections.',text:'Which choice most logically completes the text?',opts:['the queen bee will have the resilience to overcome any infestation.','exceeds the number of drone bees in the colony.','the number of worker bees in a colony exceeds the number of drone bees.','the mites reproduce at a rate that makes them very difficult to get rid of.'],ans:3},
+      {n:16,passage:'Someone with a mastery of problem-solving approaches was an expert in particle physics and contributed to the Challenger investigation: _______ theoretical physicist, Richard Feynman.',text:'Which choice completes the text so that it conforms to the conventions of Standard English?',opts:['American theoretical physicist, Richard Feynman,','American, theoretical physicist, Richard Feynman','American theoretical physicist Richard, Feynman,','American, theoretical physicist Richard Feynman.'],ans:0},
       {n:17,passage:'When taking out a loan, the rate paid is key. It is important to understand the differences between fixed and adjustable interest rates, which can change over time.',text:'Which choice completes the text so that it conforms to the conventions of Standard English?',opts:['interest rates, that remain constant.','interest rates, which remain constant.','interest rates which remain constant.','interest rates; which remain constant.'],ans:1},
-      {n:18,passage:'This method _______ for the old painting to be preserved under the varnish, but for the painting to have a "face lift" and look like new on closer inspection. After the varnish is removed, repair can finally begin. New varnish can be applied and, before it dries, new paint can be matched to the existing art to replace damaged parts.',text:'Which choice completes the text so that it conforms to the conventions of Standard English?',opts:['allowed','would of allowed','would have allowed','will have allowed'],ans:2},
-      {n:19,passage:'For most students, social media is just a part of their everyday experience. They view and post content on their mobile devices, whether to share or receive updates from friends. _______ compose, share on, they are active participants in a digital world.',text:'Which choice completes the text so that it conforms to the conventions of Standard English?',opts:['Regardless of what platform they\'re on,','Regardless of what platform their on, they','Regardless, of what platform they\'re on they','Regardless of what platform they are on; they'],ans:0},
-      {n:20,passage:'For the duration of the expedition, Commerson and Baret were aboard two different ships called the Boudeuse and the Zélie. During their trip, they went to the city of Montevideo, Uruguay, and New Ireland, in present-day Papua New Guinea.',text:'Which choice completes the text so that it conforms to the conventions of Standard English?',opts:['either scientists\'','elder scientists\'','each scientists\'','exact scientists\''],ans:0},
-      {n:21,passage:'Sweden\'s suggested new policies during the Great Depression came with a price tag: particularly from its massive investment in public works projects, creating a large federal deficit. In 1934, Sweden became the first country to fully recover from the Depression, and foreign creditors were quickly recompensated.',text:'Which choice completes the text so that it conforms to the conventions of Standard English?',opts:['the city of Rio de Janeiro, Brazil.','the city of Rio de Janeiro Brazil.','the city, of Rio de Janeiro Brazil.','the city of Rio de Janeiro, Brazil'],ans:0},
-      {n:22,passage:'',text:'Which choice completes the text with the most logical transition?',opts:['Despite','By','For','With'],ans:0},
-      {n:23,passage:'',text:'Which choice completes the text with the most logical transition?',opts:['Whereas','Since','Moreover','Because'],ans:2},
-      {n:24,passage:'',text:'Which choice completes the text with the most logical transition?',opts:['thus','so','once','while'],ans:0},
-      {n:25,passage:'While conducting research, a student took these notes:\n• In addition to the well-known IQ (Intelligence Quotient), each person also has an AQ (Adversity Quotient).\n• People with high AQ develop socially quickly and may succeed even if they are not incredibly smart.\n• AQ is a measure of how well people bounce back from setbacks.\n• IQ is focused on intelligence and may not give as complete a picture.\n• Between IQ and AQ, the latter is more important to academic achievement.',text:'The student wants to introduce the concept of AQ to an audience already familiar with the concept of IQ. Which choice most effectively uses relevant information from the notes to accomplish this goal?',opts:['In contrast to IQ, which focuses on intelligence, AQ examines personal and social characteristics most important to navigating difficulty.','People with higher AQ are more resilient to setbacks, which also goes along with having a high IQ.','Unlike IQ, AQ is less focused on intellectual metrics and more on personal success.','Between IQ and AQ, the latter is more important to academic achievement.'],ans:2},
-      {n:26,passage:'While researching a topic, a student has taken the following notes:\n• How to determine the morality of different actions.\n• Deontologists argue that people should follow universal moral laws.\n• Deontologists argue that people\'s actions should be dictated by moral laws (like "do not kill" or "do not steal") even if the costs to humanity outweigh the benefits. They believe following duty is more important than a cost-benefit analysis.',text:'The student wants to give an example of an argument that would be disproved by a deontologist. Which choice most effectively uses relevant information from the notes to accomplish this goal?',opts:['A politician lies to secure higher office but implements popular policies when elected.','A teacher strongly promotes character education in their classroom.','A computer programmer creates a new programming language to enable near-real-time improved virtual reality.','A mathematician makes a calculator error resulting in a bridge collapse.'],ans:0},
-      {n:27,passage:'While researching a topic, a student has taken the following notes:\n• Working-class families will continue to buy only in neighborhoods where they can afford homes.\n• The privileged few who can afford to purchase high-priced homes will live further from the city core.\n• As home prices rise, the gap between high- and low-income families expands.',text:'Which choice most effectively uses relevant information from the notes to accomplish this goal?',opts:['Sewer match can potentially be turned into renewable biofuels for transportation.','Decrease fertilizer waste by using a companion planting method.','When two companion plants are grown near each other, they both become healthier.','As home prices increase, working-class families will only be able to buy in more affordable neighborhoods, widening the gap.'],ans:3}
+      {n:18,passage:'This method _______ for the old painting to be preserved under the varnish, but for the painting to have a "face lift."',text:'Which choice completes the text so that it conforms to the conventions of Standard English?',opts:['allowed','would of allowed','would have allowed','will have allowed'],ans:2},
+      {n:19,passage:'For most students, social media is just a part of their everyday experience. They view and post content on their mobile devices.',text:'Which choice completes the text so that it conforms to the conventions of Standard English?',opts:['Regardless of what platform they\'re on,','Regardless of what platform their on, they','Regardless, of what platform they\'re on they','Regardless of what platform they are on; they'],ans:0},
+      {n:20,passage:'For the duration of the expedition, Commerson and Baret were aboard two different ships called the Boudeuse and the Zélie.',text:'Which choice completes the text so that it conforms to the conventions of Standard English?',opts:['either scientists\'','elder scientists\'','each scientists\'','exact scientists\''],ans:0},
+      {n:21,passage:'Sweden\'s suggested new policies during the Great Depression came with a price tag. In 1934, Sweden became the first country to fully recover from the Depression.',text:'Which choice completes the text so that it conforms to the conventions of Standard English?',opts:['the city of Rio de Janeiro, Brazil.','the city of Rio de Janeiro Brazil.','the city, of Rio de Janeiro Brazil.','the city of Rio de Janeiro, Brazil'],ans:0},
+      {n:22,text:'Which choice completes the text with the most logical transition?',opts:['Despite','By','For','With'],ans:0},
+      {n:23,text:'Which choice completes the text with the most logical transition?',opts:['Whereas','Since','Moreover','Because'],ans:2},
+      {n:24,text:'Which choice completes the text with the most logical transition?',opts:['thus','so','once','while'],ans:0},
+      {n:25,passage:'While conducting research, a student took these notes:\n• In addition to the well-known IQ (Intelligence Quotient), each person also has an AQ (Adversity Quotient).\n• AQ is a measure of how well people bounce back from setbacks.\n• IQ is focused on intelligence and may not give as complete a picture.',text:'The student wants to introduce the concept of AQ to an audience already familiar with IQ. Which choice most effectively uses relevant information from the notes?',opts:['In contrast to IQ, which focuses on intelligence, AQ examines personal and social characteristics most important to navigating difficulty.','People with higher AQ are more resilient to setbacks, which also goes along with having a high IQ.','Unlike IQ, AQ is less focused on intellectual metrics and more on personal success.','Between IQ and AQ, the latter is more important to academic achievement.'],ans:2},
+      {n:26,passage:'While researching a topic, a student has taken the following notes:\n• Deontologists argue that people should follow universal moral laws.\n• Deontologists argue that people\'s actions should be dictated by moral laws even if the costs to humanity outweigh the benefits.',text:'The student wants to give an example of an argument that would be disproved by a deontologist. Which choice most effectively uses relevant information from the notes?',opts:['A politician lies to secure higher office but implements popular policies when elected.','A teacher strongly promotes character education in their classroom.','A computer programmer creates a new programming language.','A mathematician makes a calculator error resulting in a bridge collapse.'],ans:0},
+      {n:27,passage:'While researching a topic, a student has taken the following notes:\n• Working-class families will continue to buy only in neighborhoods where they can afford homes.\n• As home prices rise, the gap between high- and low-income families expands.',text:'Which choice most effectively uses relevant information from the notes?',opts:['Sewer match can potentially be turned into renewable biofuels.','Decrease fertilizer waste by using a companion planting method.','When two companion plants are grown near each other, they both become healthier.','As home prices increase, working-class families will only be able to buy in more affordable neighborhoods, widening the gap.'],ans:3}
     ]
   },
   {
@@ -325,36 +350,26 @@ var MODULES = [
     questions:[
       {n:1,text:'If <i>c</i> = 5, what is 3(<i>c</i> + 4) − (<i>c</i> + 2)?',opts:['5','9','20','22'],ans:2},
       {n:2,text:'−2(<i>x</i><sup>2</sup> − 6<i>x</i> + 4) is equivalent to which of the following expressions?',opts:['−3<i>x</i><sup>2</sup> − 6<i>x</i> + 12','−2<i>x</i><sup>2</sup> + 12<i>x</i> − 8','−<i>x</i><sup>2</sup> − 6<i>x</i> + 12','−3<i>x</i><sup>2</sup> + 6<i>x</i> + 12'],ans:1},
-      {n:3,text:'The table shows the percentage of students in a class who received each letter grade on a test. What letter grade is the median grade for the class?',
-      diagram:'<table><tr><th>Letter Grade</th><th>Percentage of Students</th></tr><tr><td>A (90–100%)</td><td>25</td></tr><tr><td>B (80–89%)</td><td>33</td></tr><tr><td>C (70–79%)</td><td>21</td></tr><tr><td>D (60–69%)</td><td>13</td></tr><tr><td>F (&lt;60%)</td><td>8</td></tr></table>',
-      opts:['A','B','C','D'],ans:1},
-      {n:4,text:'What is the slope of the line in the graph shown below in the <i>xy</i>-coordinate plane?',
-      diagram:'<svg viewBox="0 0 280 280" width="280" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="280" fill="var(--surface-2)" rx="6"/><g transform="translate(140,140)"><line x1="-120" y1="0" x2="120" y2="0" stroke="var(--rule)" stroke-width="1"/><line x1="0" y1="-120" x2="0" y2="120" stroke="var(--rule)" stroke-width="1"/><text x="125" y="4" font-size="10" fill="var(--muted)"><tspan font-style="italic">x</tspan></text><text x="4" y="-122" font-size="10" fill="var(--muted)"><tspan font-style="italic">y</tspan></text><line x1="-30" y1="0" x2="-30" y2="3" stroke="var(--faint)" stroke-width=".5"/><line x1="-60" y1="0" x2="-60" y2="3" stroke="var(--faint)" stroke-width=".5"/><line x1="-90" y1="0" x2="-90" y2="3" stroke="var(--faint)" stroke-width=".5"/><line x1="30" y1="0" x2="30" y2="3" stroke="var(--faint)" stroke-width=".5"/><line x1="60" y1="0" x2="60" y2="3" stroke="var(--faint)" stroke-width=".5"/><line x1="90" y1="0" x2="90" y2="3" stroke="var(--faint)" stroke-width=".5"/><line x1="0" y1="-30" x2="-3" y2="-30" stroke="var(--faint)" stroke-width=".5"/><line x1="0" y1="-60" x2="-3" y2="-60" stroke="var(--faint)" stroke-width=".5"/><line x1="0" y1="-90" x2="-3" y2="-90" stroke="var(--faint)" stroke-width=".5"/><line x1="0" y1="30" x2="-3" y2="30" stroke="var(--faint)" stroke-width=".5"/><line x1="0" y1="60" x2="-3" y2="60" stroke="var(--faint)" stroke-width=".5"/><line x1="0" y1="90" x2="-3" y2="90" stroke="var(--faint)" stroke-width=".5"/><text x="-38" y="14" font-size="8" fill="var(--muted)">−1</text><text x="-68" y="14" font-size="8" fill="var(--muted)">−2</text><text x="25" y="14" font-size="8" fill="var(--muted)">1</text><text x="55" y="14" font-size="8" fill="var(--muted)">2</text><text x="85" y="14" font-size="8" fill="var(--muted)">3</text><text x="-16" y="-27" font-size="8" fill="var(--muted)">1</text><text x="-16" y="-57" font-size="8" fill="var(--muted)">2</text><text x="-20" y="35" font-size="8" fill="var(--muted)">−1</text><text x="-20" y="65" font-size="8" fill="var(--muted)">−2</text><line x1="-60" y1="90" x2="90" y2="-60" stroke="var(--teal)" stroke-width="2"/><circle cx="0" cy="30" r="4" fill="var(--teal)"/><text x="6" y="42" font-size="9" fill="var(--teal)">(0, −1)</text></g></svg>',
-      opts:['13/4','−10/13','−1','7/4'],ans:2},
+      {n:3,text:'The table shows the percentage of students in a class who received each letter grade on a test. What letter grade is the median grade for the class?',diagram:'<table><tr><th>Letter Grade</th><th>Percentage of Students</th></tr><tr><td>A (90–100%)</td><td>25</td></tr><tr><td>B (80–89%)</td><td>33</td></tr><tr><td>C (70–79%)</td><td>21</td></tr><tr><td>D (60–69%)</td><td>13</td></tr><tr><td>F (&lt;60%)</td><td>8</td></tr></table>',opts:['A','B','C','D'],ans:1},
+      {n:4,text:'What is the slope of the line in the graph shown below?',diagram:'<svg viewBox="0 0 280 280" width="260" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="280" fill="var(--surface-alt)" rx="6"/><g transform="translate(140,140)"><line x1="-120" y1="0" x2="120" y2="0" stroke="var(--rule)" stroke-width="1"/><line x1="0" y1="-120" x2="0" y2="120" stroke="var(--rule)" stroke-width="1"/><text x="125" y="4" font-size="10" fill="var(--muted)"><tspan font-style="italic">x</tspan></text><text x="4" y="-122" font-size="10" fill="var(--muted)"><tspan font-style="italic">y</tspan></text><line x1="-60" y1="90" x2="90" y2="-60" stroke="var(--blue)" stroke-width="2"/><circle cx="0" cy="30" r="4" fill="var(--blue)"/><text x="6" y="42" font-size="9" fill="var(--blue)">(0, −1)</text></g></svg>',opts:['13/4','−10/13','−1','7/4'],ans:2},
       {n:5,text:'What is the product of the solutions to the equation 0 = (<i>x</i> + ¼)(<i>x</i> − ⅔)?',opts:['−1/6','1/6','−5/12','5/12'],ans:0},
-      {n:6,text:'At a certain college, 27% of all 4,000 students at the college major in science or mathematics. How many of the students would have a science or mathematics major?',opts:['1,080','2,920','14,815','108,000'],ans:0},
+      {n:6,text:'At a certain college, 27% of all 4,000 students major in science or mathematics. How many students would have a science or mathematics major?',opts:['1,080','2,920','14,815','108,000'],ans:0},
       {n:7,text:'Mark consistently sleeps for 8 hours per day. Which expression gives the number of hours that Mark would sleep in <i>W</i> weeks?',opts:['56 × <i>W</i>','8 × <i>W</i>','8 + <i>W</i>','56 − <i>W</i>'],ans:0},
       {n:8,text:'If <span class="frac"><span class="num"><i>x</i></span><span class="den">2</span></span> = <span class="frac"><span class="num">27</span><span class="den">8</span></span>, what is the value of <i>x</i>?',opts:['3/3','3/2','27/4','27/2'],ans:2},
-      {n:9,text:'A bagel store charges $2 for each plain bagel, <i>P</i>, and $3 for each everything bagel, <i>E</i>. The equation below represents the total amount, <i>B</i>, that Samantha paid for a box of bagels:\n\n<i>B</i> = 2<i>P</i> + 3<i>E</i>\n\nIf the box cost a total of $40 and Samantha purchased 4 everything bagels, how many plain bagels did she purchase?',spr:true,ans:'14'},
+      {n:9,text:'A bagel store charges $2 for each plain bagel, <i>P</i>, and $3 for each everything bagel, <i>E</i>.\n\n<i>B</i> = 2<i>P</i> + 3<i>E</i>\n\nIf the box cost $40 and Samantha purchased 4 everything bagels, how many plain bagels did she purchase?',spr:true,ans:'14'},
       {n:10,text:'A circle with an original area of 16π units increases in area by 56.25%. What is the radius of the new circle?',opts:['5 units','6 units','10 units','25 units'],ans:0},
-      {n:11,text:'Given that (<i>x</i>, <i>y</i>) is a solution to the system of equations below, what is the value of <i>x</i>?\n\n3<i>x</i> − 4<i>y</i> = −2\n<i>x</i> + <i>y</i> = 11',spr:true,ans:'6'},
-      {n:12,text:'If the city of Dotonghan has a population of 4,500 persons per square mile, and there are 139 square miles of land within the city, what would most closely approximate the total population of the city?',opts:['35,000','47,000','625,500','1,240,000'],ans:2},
+      {n:11,text:'Given that (<i>x</i>, <i>y</i>) is a solution to the system:\n\n3<i>x</i> − 4<i>y</i> = −2\n<i>x</i> + <i>y</i> = 11\n\nWhat is the value of <i>x</i>?',spr:true,ans:'6'},
+      {n:12,text:'If the city of Dotonghan has a population of 4,500 persons per square mile, and there are 139 square miles of land, what would most closely approximate the total population?',opts:['35,000','47,000','625,500','1,240,000'],ans:2},
       {n:13,text:'If <span class="frac"><span class="num"><i>x</i><sup>2</sup> − 4</span><span class="den">3</span></span> = 7 and <i>x</i> − 2 = 3, what is the value of <i>x</i> + 2?',spr:true,ans:'7'},
-      {n:14,text:'The height in inches and weight in pounds for several female employees is graphed in the scatterplot above. Based on the data in the graph, which of these statements best summarizes the overall trend in the data?',
-      diagram:'<svg viewBox="0 0 300 260" width="300" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="260" fill="var(--surface-2)" rx="6"/><text x="150" y="18" text-anchor="middle" font-size="10" font-weight="600" fill="var(--ink)">Height vs Weight</text><g transform="translate(50,30)"><text x="-10" y="200" text-anchor="middle" font-size="8" fill="var(--muted)">40</text><text x="-10" y="170" text-anchor="middle" font-size="8" fill="var(--muted)">42</text><text x="-10" y="140" text-anchor="middle" font-size="8" fill="var(--muted)">44</text><text x="-10" y="110" text-anchor="middle" font-size="8" fill="var(--muted)">46</text><text x="-10" y="80" text-anchor="middle" font-size="8" fill="var(--muted)">48</text><text x="-10" y="50" text-anchor="middle" font-size="8" fill="var(--muted)">50</text><text x="-28" y="120" text-anchor="middle" font-size="8" fill="var(--muted)" transform="rotate(-90,-28,120)">Height in Inches</text><line x1="0" y1="200" x2="220" y2="200" stroke="var(--rule)" stroke-width="1"/><line x1="0" y1="0" x2="0" y2="200" stroke="var(--rule)" stroke-width="1"/><text x="0" y="218" text-anchor="middle" font-size="8" fill="var(--muted)">74</text><text x="44" y="218" text-anchor="middle" font-size="8" fill="var(--muted)">78</text><text x="88" y="218" text-anchor="middle" font-size="8" fill="var(--muted)">82</text><text x="132" y="218" text-anchor="middle" font-size="8" fill="var(--muted)">86</text><text x="176" y="218" text-anchor="middle" font-size="8" fill="var(--muted)">90</text><text x="220" y="218" text-anchor="middle" font-size="8" fill="var(--muted)">94</text><text x="110" y="233" text-anchor="middle" font-size="8" fill="var(--muted)">Weight in Pounds</text><circle cx="22" cy="80" r="4" fill="var(--navy)"/><circle cx="44" cy="95" r="4" fill="var(--navy)"/><circle cx="55" cy="110" r="4" fill="var(--navy)"/><circle cx="66" cy="120" r="4" fill="var(--navy)"/><circle cx="88" cy="130" r="4" fill="var(--navy)"/><circle cx="99" cy="140" r="4" fill="var(--navy)"/><circle cx="110" cy="145" r="4" fill="var(--navy)"/><circle cx="132" cy="155" r="4" fill="var(--navy)"/><circle cx="154" cy="165" r="4" fill="var(--navy)"/><circle cx="176" cy="180" r="4" fill="var(--navy)"/><circle cx="198" cy="190" r="4" fill="var(--navy)"/><line x1="10" y1="70" x2="210" y2="195" stroke="var(--coral)" stroke-width="1.5" stroke-dasharray="4 3"/></g></svg>',
-      opts:['The greater the height of the employee, the greater the weight.','The lower the height of the employee, the greater the weight.','The height and the weight of the employees are approximately the same throughout the set of data.','There is no apparent relationship between height and weight.'],ans:0},
+      {n:14,text:'The scatterplot shows height vs weight. Which statement best summarizes the overall trend in the data?',diagram:'<svg viewBox="0 0 300 260" width="280" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="260" fill="var(--surface-alt)" rx="6"/><text x="150" y="18" text-anchor="middle" font-size="10" font-weight="600" fill="var(--ink)">Height vs Weight</text><g transform="translate(50,30)"><text x="-28" y="120" text-anchor="middle" font-size="8" fill="var(--muted)" transform="rotate(-90,-28,120)">Height (in)</text><text x="110" y="233" text-anchor="middle" font-size="8" fill="var(--muted)">Weight (lbs)</text><line x1="0" y1="200" x2="220" y2="200" stroke="var(--rule)" stroke-width="1"/><line x1="0" y1="0" x2="0" y2="200" stroke="var(--rule)" stroke-width="1"/><circle cx="22" cy="80" r="4" fill="var(--blue)"/><circle cx="44" cy="95" r="4" fill="var(--blue)"/><circle cx="55" cy="110" r="4" fill="var(--blue)"/><circle cx="66" cy="120" r="4" fill="var(--blue)"/><circle cx="88" cy="130" r="4" fill="var(--blue)"/><circle cx="99" cy="140" r="4" fill="var(--blue)"/><circle cx="110" cy="145" r="4" fill="var(--blue)"/><circle cx="132" cy="155" r="4" fill="var(--blue)"/><circle cx="154" cy="165" r="4" fill="var(--blue)"/><circle cx="176" cy="180" r="4" fill="var(--blue)"/><circle cx="198" cy="190" r="4" fill="var(--blue)"/><line x1="10" y1="70" x2="210" y2="195" stroke="var(--red)" stroke-width="1.5" stroke-dasharray="4 3"/></g></svg>',opts:['The greater the height, the greater the weight.','The lower the height, the greater the weight.','Height and weight are approximately the same throughout.','There is no apparent relationship between height and weight.'],ans:0},
       {n:15,text:'A cylindrical tank has a base with a diameter of 10 feet and a volume of 200π cubic feet. What is the height of this tank in feet?',opts:['8','10','12','16'],ans:0},
-      {n:16,text:'If the function <i>f</i>(<i>x</i>) = <span class="frac"><span class="num"><i>x</i><sup>2</sup> + 3</span><span class="den">2<i>x</i></span></span>, when <i>x</i> ≠ 0, what is the value of <i>f</i>(6)?',opts:['−7/3','2/9','1','13/4'],ans:3},
-      {n:17,text:'After a presidential debate, viewers could go to an online poll and vote for which of the two candidates they thought won the debate. Approximately 2,500 viewers chose to fill out responses. Would the results from the online poll provide an accurate representation of opinions of all likely voters as to whom they thought won the debate?',opts:['Yes, because the sample of viewers was random.','Yes, because the number of respondents was sufficiently large.','No, because the respondents were self-selected instead of randomly selected.','No, because the number of respondents was insufficient.'],ans:2},
-      {n:18,text:'The relationship between the values in the table above can be expressed as the function <i>y</i> = <i>kx</i>, where <i>k</i> is a constant. What is the value of <i>k</i>?',
-      diagram:'<table><tr><th><i>x</i></th><th><i>y</i></th></tr><tr><td>2</td><td>10</td></tr><tr><td>5</td><td>25</td></tr><tr><td>6</td><td>30</td></tr><tr><td>15</td><td>75</td></tr></table>',
-      spr:true,ans:'5'},
-      {n:19,text:'In the <i>xy</i>-plane, which of these equations would represent the graph of <i>y</i> = <i>x</i><sup>2</sup> − 4, shifted upward five units?',opts:['<i>y</i> = <i>x</i><sup>2</sup> − 5','<i>y</i> = <i>x</i><sup>2</sup> + 1','<i>y</i> = 5<i>x</i><sup>2</sup> − 4','<i>y</i> = <i>x</i><sup>2</sup> − 1'],ans:1},
-      {n:20,text:'In the <i>xy</i>-plane, line <i>l</i> has an <i>x</i>-intercept of 10 and is perpendicular to the line represented by <i>y</i> = <span class="frac"><span class="num">5</span><span class="den">2</span></span><i>x</i> + 4. If line <i>l</i> passes through the point (0, <i>a</i>), what is the value of <i>a</i>?',opts:['2','−4','−1','−8'],ans:1},
-      {n:21,text:'A medical test was administered. The results are shown in the table below. If a randomly selected person tested positive (i.e., the test result showed the person has the disease), what is the probability that the result is a true positive?',
-      diagram:'<table><tr><th></th><th>Actually Has<br>Disease</th><th>Actually Does<br>Not Have Disease</th></tr><tr><td style="font-weight:600">Positive Test</td><td>5</td><td>1</td></tr><tr><td style="font-weight:600">Negative Test</td><td>0</td><td>800</td></tr></table>',
-      opts:['0.5','5/6','0.9','1.2'],ans:1},
-      {n:22,text:'In the <i>xy</i>-plane, line <i>l</i> passes through the point (5, 0) and is perpendicular to the line represented by <i>y</i> = −2<i>x</i> + 8. What is the <i>y</i>-intercept of line <i>l</i>?',spr:true,ans:'-5/2'}
+      {n:16,text:'If <i>f</i>(<i>x</i>) = <span class="frac"><span class="num"><i>x</i><sup>2</sup> + 3</span><span class="den">2<i>x</i></span></span>, when <i>x</i> ≠ 0, what is <i>f</i>(6)?',opts:['−7/3','2/9','1','13/4'],ans:3},
+      {n:17,text:'After a presidential debate, approximately 2,500 viewers chose to fill out an online poll. Would the results provide an accurate representation of all likely voters?',opts:['Yes, because the sample was random.','Yes, because the number was sufficiently large.','No, because the respondents were self-selected instead of randomly selected.','No, because the number was insufficient.'],ans:2},
+      {n:18,text:'The relationship between the values in the table can be expressed as <i>y</i> = <i>kx</i>. What is the value of <i>k</i>?',diagram:'<table><tr><th><i>x</i></th><th><i>y</i></th></tr><tr><td>2</td><td>10</td></tr><tr><td>5</td><td>25</td></tr><tr><td>6</td><td>30</td></tr><tr><td>15</td><td>75</td></tr></table>',spr:true,ans:'5'},
+      {n:19,text:'Which equation represents <i>y</i> = <i>x</i><sup>2</sup> − 4, shifted upward five units?',opts:['<i>y</i> = <i>x</i><sup>2</sup> − 5','<i>y</i> = <i>x</i><sup>2</sup> + 1','<i>y</i> = 5<i>x</i><sup>2</sup> − 4','<i>y</i> = <i>x</i><sup>2</sup> − 1'],ans:1},
+      {n:20,text:'Line <i>l</i> has an <i>x</i>-intercept of 10 and is perpendicular to <i>y</i> = <span class="frac"><span class="num">5</span><span class="den">2</span></span><i>x</i> + 4. If line <i>l</i> passes through (0, <i>a</i>), what is <i>a</i>?',opts:['2','−4','−1','−8'],ans:1},
+      {n:21,text:'A medical test was administered. If a randomly selected person tested positive, what is the probability that the result is a true positive?',diagram:'<table><tr><th></th><th>Actually Has Disease</th><th>Does Not Have Disease</th></tr><tr><td style="font-weight:600">Positive Test</td><td>5</td><td>1</td></tr><tr><td style="font-weight:600">Negative Test</td><td>0</td><td>800</td></tr></table>',opts:['0.5','5/6','0.9','1.2'],ans:1},
+      {n:22,text:'Line <i>l</i> passes through (5, 0) and is perpendicular to <i>y</i> = −2<i>x</i> + 8. What is the <i>y</i>-intercept of line <i>l</i>?',spr:true,ans:'-5/2'}
     ]
   },
   {
@@ -362,383 +377,329 @@ var MODULES = [
     directions:'The questions in this section address a number of important math skills. Use of a calculator is permitted for all questions.',
     ref:true,
     questions:[
-      {n:1,text:'If 5<i>x</i> + 2 = 4(<i>x</i> − 3), what is the value of <i>x</i>?',opts:['−14','−11','−7','3'],ans:0},
-      {n:2,text:'Tyrese takes a walk around his neighborhood. The distance he is in miles from his house at a particular number of minutes after beginning his walk is represented in the graph. At what interval of time in his walk did the distance he is from his house decrease most rapidly?',
-      diagram:'<svg viewBox="0 0 350 230" width="350" xmlns="http://www.w3.org/2000/svg"><rect width="350" height="230" fill="var(--surface-2)" rx="6"/><g transform="translate(55,20)"><text x="130" y="-4" text-anchor="middle" font-size="10" font-weight="600" fill="var(--ink)">Distance from House</text><text x="-30" y="100" text-anchor="middle" font-size="8" fill="var(--muted)" transform="rotate(-90,-30,100)">Distance (miles)</text><text x="130" y="200" text-anchor="middle" font-size="8" fill="var(--muted)">Minutes After Start of Walk</text><line x1="0" y1="180" x2="270" y2="180" stroke="var(--rule)" stroke-width="1"/><line x1="0" y1="0" x2="0" y2="180" stroke="var(--rule)" stroke-width="1"/><text x="-8" y="184" text-anchor="end" font-size="8" fill="var(--muted)">0</text><text x="-8" y="166" text-anchor="end" font-size="8" fill="var(--muted)">0.1</text><text x="-8" y="148" text-anchor="end" font-size="8" fill="var(--muted)">0.2</text><text x="-8" y="130" text-anchor="end" font-size="8" fill="var(--muted)">0.3</text><text x="-8" y="112" text-anchor="end" font-size="8" fill="var(--muted)">0.4</text><text x="-8" y="94" text-anchor="end" font-size="8" fill="var(--muted)">0.5</text><text x="-8" y="76" text-anchor="end" font-size="8" fill="var(--muted)">0.6</text><text x="-8" y="58" text-anchor="end" font-size="8" fill="var(--muted)">0.7</text><text x="-8" y="40" text-anchor="end" font-size="8" fill="var(--muted)">0.8</text><text x="-8" y="22" text-anchor="end" font-size="8" fill="var(--muted)">0.9</text><text x="-8" y="4" text-anchor="end" font-size="8" fill="var(--muted)">1.0</text><text x="0" y="194" text-anchor="middle" font-size="8" fill="var(--muted)">0</text><text x="39" y="194" text-anchor="middle" font-size="8" fill="var(--muted)">5</text><text x="77" y="194" text-anchor="middle" font-size="8" fill="var(--muted)">10</text><text x="116" y="194" text-anchor="middle" font-size="8" fill="var(--muted)">15</text><text x="154" y="194" text-anchor="middle" font-size="8" fill="var(--muted)">20</text><text x="193" y="194" text-anchor="middle" font-size="8" fill="var(--muted)">25</text><text x="231" y="194" text-anchor="middle" font-size="8" fill="var(--muted)">30</text><text x="270" y="194" text-anchor="middle" font-size="8" fill="var(--muted)">35</text><polyline points="0,180 39,72 77,18 116,18 154,90 193,144 231,162 270,180" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linejoin="round"/><circle cx="0" cy="180" r="3" fill="var(--teal)"/><circle cx="77" cy="18" r="3" fill="var(--teal)"/><circle cx="270" cy="180" r="3" fill="var(--teal)"/></g></svg>',
-      opts:['0–5 minutes','15–20 minutes','25–30 minutes','30–35 minutes'],ans:1},
-      {n:3,text:'If <span class="frac"><span class="num">1</span><span class="den">3</span></span>(<i>x</i> − 2) = <i>y</i> and <i>x</i> = 5, what is the value of <i>y</i>?',spr:true,ans:'1'},
-      {n:4,text:'If a line has a slope of <span class="frac"><span class="num">5</span><span class="den">3</span></span> and the points (0, <i>k</i>) and (3, 10) are on the line, what is the value of <i>k</i>?',opts:['3','5','9','24'],ans:1},
-      {n:5,text:'Which of the following is equivalent to <span class="frac"><span class="num"><i>x</i><sup>2</sup> − 9</span><span class="den"><i>x</i> − 3</span></span>, when <i>x</i> ≠ 3?',opts:['<i>x</i> − 2','<i>x</i> − 1','<i>x</i> + 3','<i>x</i> + 9'],ans:2},
-      {n:6,text:'How many units is the perimeter of the trapezoid shown?',
-      diagram:'<svg viewBox="0 0 280 180" width="280" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="180" fill="var(--surface-2)" rx="6"/><g transform="translate(30,20)"><polygon points="20,130 60,20 160,20 220,130" fill="none" stroke="var(--navy)" stroke-width="2"/><line x1="60" y1="20" x2="60" y2="130" stroke="var(--faint)" stroke-width="1" stroke-dasharray="4 3"/><text x="140" y="15" text-anchor="end" font-size="12" fill="var(--ink)" font-weight="600">18</text><text x="110" y="148" text-anchor="middle" font-size="12" fill="var(--ink)" font-weight="600">6</text><text x="25" y="80" text-anchor="end" font-size="12" fill="var(--ink)" font-weight="600">10</text><text x="200" y="80" text-anchor="start" font-size="12" fill="var(--ink)" font-weight="600">10</text><text x="47" y="148" font-size="9" fill="var(--muted)">6</text></g></svg>',
-      spr:true,ans:'44'},
-      {n:7,text:'A fruit stand charges a different amount depending on the number of pieces of fruit in a box.',
-      diagram:'<table><tr><th>Number of Pieces<br>of Fruit in the Box</th><th>Cost of Box</th></tr><tr><td>6</td><td>$13.40</td></tr><tr><td>12</td><td>$25.40</td></tr><tr><td>20</td><td>$41.40</td></tr><tr><td>32</td><td>$65.40</td></tr></table>',
-      text2:'What function could be used to determine the total cost, <i>C</i>, of a box that has <i>x</i> pieces of fruit?',
-      opts:['<i>C</i>(<i>x</i>) = <i>x</i> − 1.40','<i>C</i>(<i>x</i>) = 2<i>x</i> + 1.40','<i>C</i>(<i>x</i>) = 1.4<i>x</i> + 3','<i>C</i>(<i>x</i>) = 2.8<i>x</i> + 1'],ans:1},
-      {n:8,text:'Kinetic energy, <i>K</i>, is calculated using the following formula, in which <i>m</i> = mass, and <i>v</i> = velocity.\n\n<i>K</i> = <span class="frac"><span class="num">1</span><span class="den">2</span></span><i>mv</i><sup>2</sup>\n\nWhat is the velocity in terms of the other variables?',opts:['<i>v</i> = 2<i>Km</i>','<i>v</i> = √(2<i>K</i>/<i>m</i>)','<i>v</i> = √(<i>K</i>)','<i>v</i> = 2<i>m</i><sup>2</sup>√<i>K</i>'],ans:1},
-      {n:9,text:'A data set of 15 different numbers has a median of 25 and a mean of 30. If the smallest member of the set is subtracted from it and the largest member has 20 added to it, which of these is a correct statement?',opts:['The standard deviation of the set changes more than the standard deviation of the other set.','The range of the set changes in more than the range of the other set.','The range of the set remains the same.','The standard deviation of the set remains the same.'],ans:1},
-      {n:10,text:'Consider the sum of the expressions −<i>x</i><sup>2</sup> + 4<i>x</i> − 3 and 5<i>x</i><sup>2</sup> − 2<i>x</i> + 6. If the sum is written in the form <i>gx</i><sup>2</sup> + <i>bx</i> + <i>k</i>, where <i>g</i>, <i>b</i>, and <i>k</i> are constants, what is the value of <i>k</i>?',opts:['1','3','4','5'],ans:1},
-      {n:11,text:'In the <i>xy</i>-plane, a line passes through the points (3, 0) and (0, 3). Another line is perpendicular to this line. What is the perpendicular line\'s slope?',opts:['−1','1','3','5'],ans:1},
-      {n:12,text:'Triangle <i>EFG</i> is equilateral. <i>EF</i> is 10 units long, and ∠<i>EFZ</i> is 30°. What is the length of <i>EZ</i>?',
-      diagram:'<svg viewBox="0 0 240 200" width="240" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="200" fill="var(--surface-2)" rx="6"/><g transform="translate(40,15)"><polygon points="80,10 10,170 150,170" fill="none" stroke="var(--navy)" stroke-width="2"/><line x1="80" y1="10" x2="80" y2="170" stroke="var(--faint)" stroke-width="1" stroke-dasharray="4 3"/><text x="80" y="6" text-anchor="middle" font-size="12" fill="var(--ink)" font-weight="600">E</text><text x="0" y="180" text-anchor="middle" font-size="12" fill="var(--ink)" font-weight="600">F</text><text x="160" y="180" text-anchor="middle" font-size="12" fill="var(--ink)" font-weight="600">G</text><text x="83" y="180" text-anchor="start" font-size="12" fill="var(--ink)" font-weight="600">Z</text><text x="35" y="90" text-anchor="end" font-size="11" fill="var(--teal)" font-weight="600">10</text><text x="18" y="156" font-size="9" fill="var(--muted)">30°</text></g></svg>',
-      opts:['5√3','5√2','10','10√2'],ans:0},
-      {n:13,text:'A particular multivitamin provides 300 mg of calcium, giving 23% of the recommended daily value of calcium for an adult. If another supplement provides 210 mg of calcium, approximately what percentage of the recommended daily value of calcium for an adult would it provide?',opts:['9%','16%','20%','44%'],ans:1},
-      {n:14,text:'The measure of an angle is <span class="frac"><span class="num">3</span><span class="den">4</span></span>π radians. How many degrees is this measure equivalent to?',spr:true,ans:'135'},
-      {n:15,text:'For the system of inequalities <i>y</i> ≥ <i>x</i> + 4 and <i>y</i> ≤ −4<i>x</i> + 6, when <i>x</i> is at the greatest possible value, what is the corresponding value of <i>y</i>?',spr:true,ans:'4.4'},
-      {n:16,text:'If the function <i>f</i>(<i>x</i>) = <span class="frac"><span class="num"><i>x</i><sup>2</sup> + 3</span><span class="den">2<i>x</i></span></span>, when <i>x</i> ≠ 0, what is the value of <i>f</i>(3)?',opts:['1','2','3/2','2'],ans:1},
-      {n:17,text:'After a large storm, a city recorded rainfall amounts at 12 weather stations. The results, in inches, were:\n2.1, 2.3, 2.5, 2.5, 2.7, 2.8, 2.8, 3.0, 3.1, 3.2, 4.5, 5.2\n\nWhich measure of center would best represent the typical rainfall amount?',opts:['Mean, because it accounts for all values.','Median, because the data has outliers that skew the mean.','Mode, because the most common value is most representative.','Range, because it shows the spread of data.'],ans:1},
-      {n:18,text:'The relationship between the values in the table can be expressed as <i>y</i> = <i>ax</i><sup>2</sup> + <i>b</i>.',
-      diagram:'<table><tr><th><i>x</i></th><th><i>y</i></th></tr><tr><td>0</td><td>3</td></tr><tr><td>1</td><td>5</td></tr><tr><td>2</td><td>11</td></tr><tr><td>3</td><td>21</td></tr></table>',
-      text2:'What is the value of <i>a</i>?',
-      spr:true,ans:'2'},
-      {n:19,text:'In the <i>xy</i>-plane, which of these equations represents a line that is parallel to the line <i>y</i> = 3<i>x</i> − 7?',opts:['<i>y</i> = −⅓<i>x</i> + 2','<i>y</i> = 3<i>x</i> + 4','<i>y</i> = −3<i>x</i> − 1','<i>y</i> = ⅓<i>x</i> + 5'],ans:1},
-      {n:20,text:'A rectangular garden has a length that is 3 meters more than twice its width. If the perimeter of the garden is 42 meters, what is the width of the garden?',opts:['6 meters','7 meters','9 meters','12 meters'],ans:0},
-      {n:21,text:'If <i>g</i>(<i>x</i>) = 2<i>x</i><sup>2</sup> − 3<i>x</i> + 1, what is the value of <i>g</i>(−1)?',opts:['0','2','4','6'],ans:3},
-      {n:22,text:'A survey found that 60% of 250 students prefer online learning. If 50 more students who all prefer in-person learning are added to the survey, what percentage of all students now prefer online learning?',opts:['40%','45%','50%','55%'],ans:2}
+      {n:1,text:'If 5<i>x</i> + 2 = 4(<i>x</i> − 3), what is <i>x</i>?',opts:['−14','−11','−7','3'],ans:0},
+      {n:2,text:'Tyrese takes a walk. At what interval did the distance from his house decrease most rapidly?',diagram:'<svg viewBox="0 0 350 230" width="340" xmlns="http://www.w3.org/2000/svg"><rect width="350" height="230" fill="var(--surface-alt)" rx="6"/><g transform="translate(55,20)"><text x="130" y="-4" text-anchor="middle" font-size="10" font-weight="600" fill="var(--ink)">Distance from House</text><text x="-30" y="100" text-anchor="middle" font-size="8" fill="var(--muted)" transform="rotate(-90,-30,100)">Distance (mi)</text><text x="130" y="200" text-anchor="middle" font-size="8" fill="var(--muted)">Minutes</text><line x1="0" y1="180" x2="270" y2="180" stroke="var(--rule)" stroke-width="1"/><line x1="0" y1="0" x2="0" y2="180" stroke="var(--rule)" stroke-width="1"/><polyline points="0,180 39,72 77,18 116,18 154,90 193,144 231,162 270,180" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linejoin="round"/><circle cx="0" cy="180" r="3" fill="var(--blue)"/><circle cx="77" cy="18" r="3" fill="var(--blue)"/><circle cx="270" cy="180" r="3" fill="var(--blue)"/><text x="0" y="194" font-size="8" fill="var(--muted)">0</text><text x="77" y="194" text-anchor="middle" font-size="8" fill="var(--muted)">10</text><text x="154" y="194" text-anchor="middle" font-size="8" fill="var(--muted)">20</text><text x="270" y="194" text-anchor="end" font-size="8" fill="var(--muted)">35</text></g></svg>',opts:['0–5 minutes','15–20 minutes','25–30 minutes','30–35 minutes'],ans:1},
+      {n:3,text:'If <span class="frac"><span class="num">1</span><span class="den">3</span></span>(<i>x</i> − 2) = <i>y</i> and <i>x</i> = 5, what is <i>y</i>?',spr:true,ans:'1'},
+      {n:4,text:'If a line has slope <span class="frac"><span class="num">5</span><span class="den">3</span></span> and passes through (0, <i>k</i>) and (3, 10), what is <i>k</i>?',opts:['3','5','9','24'],ans:1},
+      {n:5,text:'Which is equivalent to <span class="frac"><span class="num"><i>x</i><sup>2</sup> − 9</span><span class="den"><i>x</i> − 3</span></span> when <i>x</i> ≠ 3?',opts:['<i>x</i> − 2','<i>x</i> − 1','<i>x</i> + 3','<i>x</i> + 9'],ans:2},
+      {n:6,text:'How many units is the perimeter of the trapezoid shown?',diagram:'<svg viewBox="0 0 280 180" width="260" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="180" fill="var(--surface-alt)" rx="6"/><g transform="translate(30,20)"><polygon points="20,130 60,20 160,20 220,130" fill="none" stroke="var(--blue)" stroke-width="2"/><line x1="60" y1="20" x2="60" y2="130" stroke="var(--faint)" stroke-width="1" stroke-dasharray="4 3"/><text x="110" y="15" text-anchor="middle" font-size="12" fill="var(--ink)" font-weight="600">18</text><text x="120" y="148" text-anchor="middle" font-size="12" fill="var(--ink)" font-weight="600">6</text><text x="25" y="80" text-anchor="end" font-size="12" fill="var(--ink)" font-weight="600">10</text><text x="200" y="80" font-size="12" fill="var(--ink)" font-weight="600">10</text></g></svg>',spr:true,ans:'44'},
+      {n:7,text:'A fruit stand charges different amounts depending on the number of pieces of fruit.',diagram:'<table><tr><th>Pieces of Fruit</th><th>Cost of Box</th></tr><tr><td>6</td><td>$13.40</td></tr><tr><td>12</td><td>$25.40</td></tr><tr><td>20</td><td>$41.40</td></tr><tr><td>32</td><td>$65.40</td></tr></table>',text2:'What function determines the total cost <i>C</i> for <i>x</i> pieces of fruit?',opts:['<i>C</i>(<i>x</i>) = <i>x</i> − 1.40','<i>C</i>(<i>x</i>) = 2<i>x</i> + 1.40','<i>C</i>(<i>x</i>) = 1.4<i>x</i> + 3','<i>C</i>(<i>x</i>) = 2.8<i>x</i> + 1'],ans:1},
+      {n:8,text:'Kinetic energy: <i>K</i> = ½<i>mv</i><sup>2</sup>. What is <i>v</i> in terms of the other variables?',opts:['<i>v</i> = 2<i>Km</i>','<i>v</i> = √(2<i>K</i>/<i>m</i>)','<i>v</i> = √(<i>K</i>)','<i>v</i> = 2<i>m</i><sup>2</sup>√<i>K</i>'],ans:1},
+      {n:9,text:'A data set of 15 different numbers has a median of 25 and a mean of 30. If the smallest member is subtracted and the largest has 20 added, which is correct?',opts:['The standard deviation changes more than the other set.','The range of the set changes.','The range remains the same.','The standard deviation remains the same.'],ans:1},
+      {n:10,text:'Consider the sum of −<i>x</i><sup>2</sup> + 4<i>x</i> − 3 and 5<i>x</i><sup>2</sup> − 2<i>x</i> + 6. In the form <i>gx</i><sup>2</sup> + <i>bx</i> + <i>k</i>, what is <i>k</i>?',opts:['1','3','4','5'],ans:1},
+      {n:11,text:'A line passes through (3, 0) and (0, 3). What is the slope of a perpendicular line?',opts:['−1','1','3','5'],ans:1},
+      {n:12,text:'Triangle <i>EFG</i> is equilateral. <i>EF</i> is 10 units, ∠<i>EFZ</i> is 30°. What is the length of <i>EZ</i>?',diagram:'<svg viewBox="0 0 240 200" width="220" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="200" fill="var(--surface-alt)" rx="6"/><g transform="translate(40,15)"><polygon points="80,10 10,170 150,170" fill="none" stroke="var(--blue)" stroke-width="2"/><line x1="80" y1="10" x2="80" y2="170" stroke="var(--faint)" stroke-width="1" stroke-dasharray="4 3"/><text x="80" y="6" text-anchor="middle" font-size="12" fill="var(--ink)" font-weight="600">E</text><text x="0" y="182" font-size="12" fill="var(--ink)" font-weight="600">F</text><text x="160" y="182" font-size="12" fill="var(--ink)" font-weight="600">G</text><text x="83" y="182" font-size="12" fill="var(--ink)" font-weight="600">Z</text><text x="35" y="90" text-anchor="end" font-size="11" fill="var(--blue)" font-weight="600">10</text><text x="18" y="158" font-size="9" fill="var(--muted)">30°</text></g></svg>',opts:['5√3','5√2','10','10√2'],ans:0},
+      {n:13,text:'A multivitamin provides 300 mg of calcium, giving 23% of the recommended daily value. If another supplement provides 210 mg, approximately what percentage of the daily value would it provide?',opts:['9%','16%','20%','44%'],ans:1},
+      {n:14,text:'The measure of an angle is <span class="frac"><span class="num">3</span><span class="den">4</span></span>π radians. How many degrees is this?',spr:true,ans:'135'},
+      {n:15,text:'For <i>y</i> ≥ <i>x</i> + 4 and <i>y</i> ≤ −4<i>x</i> + 6, when <i>x</i> is at the greatest possible value, what is <i>y</i>?',spr:true,ans:'4.4'},
+      {n:16,text:'If <i>f</i>(<i>x</i>) = <span class="frac"><span class="num"><i>x</i><sup>2</sup> + 3</span><span class="den">2<i>x</i></span></span>, when <i>x</i> ≠ 0, what is <i>f</i>(3)?',opts:['1','2','3/2','2'],ans:1},
+      {n:17,text:'After a large storm, a city recorded rainfall: 2.1, 2.3, 2.5, 2.5, 2.7, 2.8, 2.8, 3.0, 3.1, 3.2, 4.5, 5.2. Which measure of center best represents the typical rainfall?',opts:['Mean, because it accounts for all values.','Median, because the data has outliers that skew the mean.','Mode, because the most common value is most representative.','Range, because it shows the spread of data.'],ans:1},
+      {n:18,text:'The relationship <i>y</i> = <i>ax</i><sup>2</sup> + <i>b</i> fits the table. What is <i>a</i>?',diagram:'<table><tr><th><i>x</i></th><th><i>y</i></th></tr><tr><td>0</td><td>3</td></tr><tr><td>1</td><td>5</td></tr><tr><td>2</td><td>11</td></tr><tr><td>3</td><td>21</td></tr></table>',spr:true,ans:'2'},
+      {n:19,text:'Which equation represents a line parallel to <i>y</i> = 3<i>x</i> − 7?',opts:['<i>y</i> = −⅓<i>x</i> + 2','<i>y</i> = 3<i>x</i> + 4','<i>y</i> = −3<i>x</i> − 1','<i>y</i> = ⅓<i>x</i> + 5'],ans:1},
+      {n:20,text:'A rectangular garden has a length 3 meters more than twice its width. If the perimeter is 42 meters, what is the width?',opts:['6 meters','7 meters','9 meters','12 meters'],ans:0},
+      {n:21,text:'If <i>g</i>(<i>x</i>) = 2<i>x</i><sup>2</sup> − 3<i>x</i> + 1, what is <i>g</i>(−1)?',opts:['0','2','4','6'],ans:3},
+      {n:22,text:'A survey found 60% of 250 students prefer online learning. If 50 more students who all prefer in-person learning are added, what percentage now prefer online learning?',opts:['40%','45%','50%','55%'],ans:2}
     ]
   }
 ];
 
-var state = {
-  currentModule: 0,
-  currentQ: 0,
-  answers: {},
-  timers: {},
-  timerInterval: null,
-  submitted: false,
-  reviewing: false
-};
+var S = { mod:0, qi:0, answers:{}, flags:{}, timers:{}, timerInt:null, timerHidden:false, submitted:false, reviewing:false };
 
-function startTest() {
+function beginTest() {
   document.getElementById('landing').style.display = 'none';
-  document.getElementById('topbar').classList.add('show');
-  document.getElementById('navBottom').classList.add('show');
-  renderModule(0);
-  startTimer(0);
+  document.getElementById('hdr').classList.add('show');
+  document.getElementById('main').classList.add('show');
+  document.getElementById('bottomBar').classList.add('show');
+  showDirections(0);
 }
 
-function renderModule(idx) {
-  var m = MODULES[idx];
-  state.currentModule = idx;
-  state.currentQ = 0;
+function showDirections(mi) {
+  var m = MODULES[mi];
+  document.getElementById('dirTitle').textContent = m.section;
+  document.getElementById('dirSub').textContent = m.count + ' Questions · ' + m.time + ' Minutes';
+  document.getElementById('dirText').innerHTML = m.directions.replace(/\n/g,'<br>');
+  document.getElementById('dirOverlay').classList.add('show');
+}
 
-  var html = '<div class="module-view active" id="mod_' + idx + '">';
-  html += '<div class="mod-header"><h2>' + m.section + '</h2>';
-  html += '<div class="mod-info">' + m.time + ' minutes · ' + m.count + ' questions</div></div>';
-  html += '<div class="directions"><strong>Directions</strong>' + m.directions + '</div>';
+function closeDirections() {
+  document.getElementById('dirOverlay').classList.remove('show');
+  loadQuestion();
+  startTimer(S.mod);
+}
 
-  if (m.ref) {
-    html += '<details class="ref-sheet"><summary>Reference Sheet (click to expand)</summary><div class="ref-content">';
-    html += '<div class="ref-item"><svg viewBox="0 0 120 80" width="100" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="35" r="28" fill="none" stroke="var(--navy)" stroke-width="1.5"/><line x1="60" y1="35" x2="88" y2="35" stroke="var(--teal)" stroke-width="1"/><text x="74" y="32" font-size="9" fill="var(--teal)" font-style="italic">r</text></svg><div class="formula">A = πr² &nbsp; C = 2πr</div></div>';
-    html += '<div class="ref-item"><svg viewBox="0 0 120 80" width="100" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="15" width="80" height="50" fill="none" stroke="var(--navy)" stroke-width="1.5"/><text x="60" y="72" font-size="9" fill="var(--teal)" text-anchor="middle" font-style="italic">l</text><text x="105" y="42" font-size="9" fill="var(--teal)" font-style="italic">w</text></svg><div class="formula">A = lw</div></div>';
-    html += '<div class="ref-item"><svg viewBox="0 0 120 80" width="100" xmlns="http://www.w3.org/2000/svg"><polygon points="20,65 100,65 60,15" fill="none" stroke="var(--navy)" stroke-width="1.5"/><line x1="60" y1="15" x2="60" y2="65" stroke="var(--teal)" stroke-width="1" stroke-dasharray="3 2"/><text x="60" y="74" font-size="9" fill="var(--teal)" text-anchor="middle" font-style="italic">b</text><text x="64" y="42" font-size="9" fill="var(--teal)" font-style="italic">h</text></svg><div class="formula">A = ½bh</div></div>';
-    html += '<div class="ref-item"><svg viewBox="0 0 120 90" width="100" xmlns="http://www.w3.org/2000/svg"><polygon points="15,75 55,15 55,75" fill="none" stroke="var(--navy)" stroke-width="1.5"/><text x="35" y="84" font-size="8" fill="var(--teal)" text-anchor="middle">45°</text><text x="8" y="75" font-size="8" fill="var(--teal)">45°</text><text x="35" y="50" font-size="8" fill="var(--teal)" font-style="italic">s√2</text><text x="58" y="50" font-size="8" fill="var(--teal)" font-style="italic">s</text><text x="35" y="72" font-size="8" fill="var(--teal)" font-style="italic">s</text></svg><div class="formula">45-45-90 Triangle</div></div>';
-    html += '<div class="ref-item"><svg viewBox="0 0 120 90" width="100" xmlns="http://www.w3.org/2000/svg"><polygon points="15,75 95,75 95,15" fill="none" stroke="var(--navy)" stroke-width="1.5"/><text x="55" y="84" font-size="8" fill="var(--teal)" text-anchor="middle" font-style="italic">s√3</text><text x="100" y="50" font-size="8" fill="var(--teal)" font-style="italic">s</text><text x="50" y="42" font-size="8" fill="var(--teal)" font-style="italic">2s</text><text x="25" y="72" font-size="8" fill="var(--teal)">60°</text><text x="85" y="25" font-size="8" fill="var(--teal)">30°</text></svg><div class="formula">30-60-90 Triangle</div></div>';
-    html += '<div class="ref-item"><svg viewBox="0 0 120 80" width="100" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="10" width="80" height="40" fill="none" stroke="var(--navy)" stroke-width="1.5" transform="skewX(-10)"/><text x="70" y="58" font-size="9" fill="var(--teal)" font-style="italic">l</text><text x="105" y="32" font-size="9" fill="var(--teal)" font-style="italic">h</text><text x="40" y="18" font-size="9" fill="var(--teal)" font-style="italic">w</text></svg><div class="formula">V = lwh</div></div>';
-    html += '</div></details>';
+function loadQuestion() {
+  var m = MODULES[S.mod], q = m.questions[S.qi], key = S.mod+'_'+S.qi;
+  var isMath = S.mod >= 2;
+  var ca = document.getElementById('contentArea');
+  ca.className = 'content-area' + ((!q.passage && !q.diagram) || isMath ? '' : '');
+
+  // Left pane (passage)
+  var left = document.getElementById('paneLeft');
+  if (q.passage) {
+    left.style.display = '';
+    left.innerHTML = '<div class="passage-text">' + q.passage.replace(/\n/g,'<br>') + '</div>';
+  } else {
+    left.style.display = 'none';
   }
 
-  m.questions.forEach(function(q, i) {
-    var key = idx + '_' + i;
-    html += '<div class="question" id="q_' + key + '">';
-    html += '<div class="q-num">' + q.n + '</div>';
-    if (q.passage) html += '<div class="q-passage">' + q.passage + '</div>';
-    html += '<div class="q-text">' + (q.text2 ? q.text + '<br><br>' + q.text2 : q.text) + '</div>';
-    if (q.diagram) html += '<div class="q-diagram">' + q.diagram + '</div>';
+  // Right pane (question)
+  var html = '<div class="q-header"><span class="q-number">Question ' + q.n + ' of ' + m.count + '</span>';
+  html += '<button class="q-flag' + (S.flags[key] ? ' flagged' : '') + '" onclick="toggleFlag()"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2v12M3 2l9 4-9 4"/></svg>Mark for Review</button></div>';
 
-    if (q.spr) {
-      html += '<div style="margin-top:8px"><input type="text" class="spr-input" data-key="' + key + '" placeholder="Your answer" oninput="saveSPR(this)"><div class="spr-label">Student-Produced Response</div></div>';
-    } else {
-      html += '<div class="options">';
-      var letters = ['A','B','C','D'];
-      q.opts.forEach(function(o, j) {
-        html += '<div class="opt" data-key="' + key + '" data-val="' + j + '" onclick="selectOpt(this)">';
-        html += '<span class="bubble">' + letters[j] + '</span>';
-        html += '<span>' + o + '</span></div>';
-      });
-      html += '</div>';
-    }
-    html += '</div>';
-  });
+  if (q.diagram) html += '<div class="q-diagram">' + q.diagram + '</div>';
+  html += '<div class="q-text">' + (q.text2 ? q.text + '<br><br>' + q.text2 : q.text) + '</div>';
 
-  html += '</div>';
-  document.getElementById('modules').innerHTML = html;
-  updateTopbar();
-  updateNav();
-
-  Object.keys(state.answers).forEach(function(k) {
-    if (k.indexOf(idx + '_') === 0) {
-      var val = state.answers[k];
-      if (typeof val === 'string') {
-        var inp = document.querySelector('.spr-input[data-key="' + k + '"]');
-        if (inp) inp.value = val;
-      } else {
-        var opts = document.querySelectorAll('.opt[data-key="' + k + '"]');
-        opts.forEach(function(o) {
-          if (parseInt(o.dataset.val) === val) o.classList.add('selected');
-        });
+  if (q.spr) {
+    var val = typeof S.answers[key] === 'string' ? S.answers[key] : '';
+    html += '<div class="spr-wrap"><input type="text" class="spr-input" value="' + val + '" placeholder="Your answer" oninput="saveSPR(this.value)"><div class="spr-label">Student-Produced Response</div></div>';
+  } else {
+    html += '<div class="options">';
+    ['A','B','C','D'].forEach(function(l,j) {
+      var sel = S.answers[key] === j;
+      var cls = 'opt' + (sel ? ' selected' : '');
+      if (S.reviewing) {
+        if (j === q.ans) cls += ' correct-reveal';
+        else if (sel && j !== q.ans) cls += ' wrong-reveal';
       }
-    }
-  });
-  window.scrollTo(0, 0);
-}
-
-function selectOpt(el) {
-  if (state.reviewing) return;
-  var key = el.dataset.key;
-  document.querySelectorAll('.opt[data-key="' + key + '"]').forEach(function(o) {
-    o.classList.remove('selected');
-  });
-  el.classList.add('selected');
-  state.answers[key] = parseInt(el.dataset.val);
-  document.getElementById('q_' + key).classList.add('answered');
-  updateTopbar();
-}
-
-function saveSPR(el) {
-  state.answers[el.dataset.key] = el.value.trim();
-  if (el.value.trim()) {
-    document.getElementById('q_' + el.dataset.key).classList.add('answered');
+      html += '<div class="' + cls + '" onclick="pickOpt(' + j + ')"><span class="letter">' + l + '</span><span class="opt-text">' + q.opts[j] + '</span></div>';
+    });
+    html += '</div>';
   }
-  updateTopbar();
+
+  if (S.reviewing && !q.spr) {
+    var userAns = S.answers[key];
+    var correct = userAns === q.ans;
+    html += '<div class="explanation" style="background:' + (correct ? 'var(--green-bg)' : 'var(--red-bg)') + '">' + (correct ? 'Correct!' : 'Incorrect. The correct answer is ' + ['A','B','C','D'][q.ans] + '.') + '</div>';
+  }
+  if (S.reviewing && q.spr) {
+    var userVal = S.answers[key] || '';
+    var isRight = String(userVal).replace(/\s/g,'') === String(q.ans).replace(/\s/g,'');
+    html += '<div class="explanation" style="background:' + (isRight ? 'var(--green-bg)' : 'var(--red-bg)') + '">Correct answer: ' + q.ans + (isRight ? ' ✔' : ' (you answered: ' + (userVal || 'blank') + ')') + '</div>';
+  }
+
+  // Ref sheet for math
+  if (m.ref && S.qi === 0) {
+    html = '<div class="ref-sheet"><button class="ref-toggle" onclick="this.nextElementSibling.classList.toggle(\'show\')">Reference Sheet ▼</button><div class="ref-content"><div class="ref-item"><svg viewBox="0 0 100 70" width="80" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="30" r="24" fill="none" stroke="var(--blue)" stroke-width="1.5"/><line x1="50" y1="30" x2="74" y2="30" stroke="var(--red)" stroke-width="1"/><text x="62" y="27" font-size="8" fill="var(--red)" font-style="italic">r</text></svg><div class="formula">A = πr² &nbsp; C = 2πr</div></div><div class="ref-item"><svg viewBox="0 0 100 70" width="80" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="12" width="70" height="45" fill="none" stroke="var(--blue)" stroke-width="1.5"/><text x="50" y="64" font-size="8" fill="var(--red)" text-anchor="middle" font-style="italic">l</text><text x="90" y="38" font-size="8" fill="var(--red)" font-style="italic">w</text></svg><div class="formula">A = lw</div></div><div class="ref-item"><svg viewBox="0 0 100 70" width="80" xmlns="http://www.w3.org/2000/svg"><polygon points="15,60 85,60 50,12" fill="none" stroke="var(--blue)" stroke-width="1.5"/><line x1="50" y1="12" x2="50" y2="60" stroke="var(--red)" stroke-width="1" stroke-dasharray="3 2"/><text x="50" y="68" font-size="8" fill="var(--red)" text-anchor="middle" font-style="italic">b</text><text x="53" y="38" font-size="8" fill="var(--red)" font-style="italic">h</text></svg><div class="formula">A = ½bh</div></div><div class="ref-item"><div class="formula">V = lwh</div><div class="formula" style="margin-top:4px">V = πr²h</div></div></div></div>' + html;
+  }
+
+  document.getElementById('paneRight').innerHTML = html;
+  updateHdr();
+  buildNav();
 }
 
-function startTimer(idx) {
-  if (state.timerInterval) clearInterval(state.timerInterval);
-  if (!state.timers[idx]) state.timers[idx] = MODULES[idx].time * 60;
-  state.timerInterval = setInterval(function() {
-    state.timers[idx]--;
-    if (state.timers[idx] <= 0) {
-      clearInterval(state.timerInterval);
-      state.timers[idx] = 0;
-      nextModule();
+function pickOpt(j) {
+  if (S.reviewing) return;
+  S.answers[S.mod + '_' + S.qi] = j;
+  loadQuestion();
+}
+
+function saveSPR(v) {
+  var key = S.mod + '_' + S.qi;
+  S.answers[key] = v.trim();
+  updateHdr();
+  buildNav();
+}
+
+function toggleFlag() {
+  var key = S.mod + '_' + S.qi;
+  S.flags[key] = !S.flags[key];
+  loadQuestion();
+}
+
+function goQ(dir) {
+  var m = MODULES[S.mod];
+  var next = S.qi + dir;
+  if (next >= 0 && next < m.count) {
+    S.qi = next;
+    loadQuestion();
+  } else if (dir > 0 && S.qi === m.count - 1) {
+    if (S.mod < MODULES.length - 1) {
+      S.mod++;
+      S.qi = 0;
+      showDirections(S.mod);
+      startTimer(S.mod);
+    } else {
+      submitTest();
     }
-    updateTimerDisplay(idx);
-  }, 1000);
-  updateTimerDisplay(idx);
+  }
 }
 
-function updateTimerDisplay(idx) {
-  var s = state.timers[idx] || 0;
-  var m = Math.floor(s / 60);
-  var sec = s % 60;
-  var el = document.getElementById('timer');
+function jumpQ(i) { S.qi = i; loadQuestion(); }
+
+function updateHdr() {
+  var m = MODULES[S.mod];
+  document.getElementById('hdrSection').textContent = m.section;
+  var answered = 0;
+  for (var i = 0; i < m.count; i++) if (S.answers[S.mod + '_' + i] !== undefined) answered++;
+  document.getElementById('hdrProgress').textContent = (S.qi + 1) + ' / ' + m.count;
+  document.getElementById('btnPrev').disabled = S.qi === 0;
+  var isLast = S.mod === MODULES.length - 1 && S.qi === m.count - 1;
+  var btn = document.getElementById('btnNext');
+  btn.textContent = isLast ? 'Submit' : (S.qi === m.count - 1 ? 'Next Module' : 'Next');
+}
+
+function buildNav() {
+  var m = MODULES[S.mod], html = '';
+  for (var i = 0; i < m.count; i++) {
+    var key = S.mod + '_' + i;
+    var cls = 'q-dot';
+    if (i === S.qi) cls += ' current';
+    else if (S.answers[key] !== undefined) cls += ' answered';
+    if (S.flags[key]) cls += ' flagged';
+    html += '<span class="' + cls + '" onclick="jumpQ(' + i + ')">' + (i + 1) + '</span>';
+  }
+  document.getElementById('qNav').innerHTML = html;
+}
+
+function startTimer(mi) {
+  if (S.timerInt) clearInterval(S.timerInt);
+  if (!S.timers[mi]) S.timers[mi] = MODULES[mi].time * 60;
+  S.timerInt = setInterval(function() {
+    S.timers[mi]--;
+    if (S.timers[mi] <= 0) { clearInterval(S.timerInt); S.timers[mi] = 0; goQ(1); }
+    showTime(mi);
+  }, 1000);
+  showTime(mi);
+}
+
+function showTime(mi) {
+  if (S.timerHidden) { document.getElementById('hdrTimer').textContent = '––:––'; return; }
+  var s = S.timers[mi] || 0, m = Math.floor(s / 60), sec = s % 60;
+  var el = document.getElementById('hdrTimer');
   el.textContent = m + ':' + (sec < 10 ? '0' : '') + sec;
   el.classList.toggle('warn', s < 120);
 }
 
-function updateTopbar() {
-  var m = MODULES[state.currentModule];
-  document.getElementById('secLabel').textContent = m.section;
-  var answered = 0;
-  for (var i = 0; i < m.count; i++) {
-    if (state.answers[state.currentModule + '_' + i] !== undefined) answered++;
-  }
-  document.getElementById('progress').textContent = answered + ' / ' + m.count;
-}
-
-function updateNav() {
-  var m = MODULES[state.currentModule];
-  document.getElementById('qIndicator').textContent = 'Module ' + (state.currentModule + 1) + ' of 4';
-  var isLast = state.currentModule === MODULES.length - 1;
-  var btnNext = document.getElementById('btnNext');
-  btnNext.textContent = isLast ? 'Submit Test' : 'Next Module';
-  btnNext.className = isLast ? 'btn btn-submit' : 'btn btn-primary';
-}
-
-function nextQuestion() {
-  if (state.currentModule < MODULES.length - 1) {
-    nextModule();
-  } else {
-    submitTest();
-  }
-}
-
-function prevQuestion() {
-  if (state.currentModule > 0) {
-    state.currentModule--;
-    renderModule(state.currentModule);
-    startTimer(state.currentModule);
-  }
-}
-
-function nextModule() {
-  if (state.currentModule < MODULES.length - 1) {
-    state.currentModule++;
-    renderModule(state.currentModule);
-    startTimer(state.currentModule);
-  }
+function toggleTimer() {
+  S.timerHidden = !S.timerHidden;
+  document.getElementById('hdrHideTimer').textContent = S.timerHidden ? 'Show' : 'Hide';
+  showTime(S.mod);
 }
 
 function submitTest() {
-  if (state.timerInterval) clearInterval(state.timerInterval);
-  document.getElementById('topbar').classList.remove('show');
-  document.getElementById('navBottom').classList.remove('show');
-  document.querySelectorAll('.module-view').forEach(function(v) { v.classList.remove('active'); });
-
+  if (S.timerInt) clearInterval(S.timerInt);
+  document.getElementById('bottomBar').classList.remove('show');
+  document.getElementById('contentArea').style.display = 'none';
   var results = document.getElementById('results');
-  results.classList.add('active');
-
-  var grid = document.getElementById('scoreGrid');
-  var totalRight = 0, totalQ = 0;
-  var html = '';
-
+  results.classList.add('show');
+  var totalRight = 0, totalQ = 0, html = '';
+  var summary = 'SAT Practice Test 1 — Results\n' + new Date().toLocaleString() + '\n\n';
   MODULES.forEach(function(m, mi) {
-    var right = 0;
+    var right = 0, details = '';
     m.questions.forEach(function(q, qi) {
-      var key = mi + '_' + qi;
-      var userAns = state.answers[key];
-      if (q.spr) {
-        if (userAns !== undefined && String(userAns).replace(/\s/g,'') === String(q.ans).replace(/\s/g,'')) right++;
-      } else {
-        if (userAns === q.ans) right++;
-      }
+      var key = mi + '_' + qi, a = S.answers[key];
+      var correct = false;
+      if (q.spr) { correct = a !== undefined && String(a).replace(/\s/g,'') === String(q.ans).replace(/\s/g,''); }
+      else { correct = a === q.ans; }
+      if (correct) right++;
+      var studentAns = a === undefined ? 'No answer' : (q.spr ? a : ['A','B','C','D'][a]);
+      var correctAns = q.spr ? q.ans : ['A','B','C','D'][q.ans];
+      details += '  Q' + q.n + ': ' + (correct ? 'Correct' : 'Wrong') + ' (answered: ' + studentAns + ', correct: ' + correctAns + ')\n';
     });
-    totalRight += right;
-    totalQ += m.count;
+    totalRight += right; totalQ += m.count;
     var pct = Math.round((right / m.count) * 100);
-    var color = pct >= 70 ? 'var(--green)' : pct >= 50 ? 'var(--gold)' : 'var(--coral)';
-    html += '<div class="score-card"><div class="sc-label">' + m.section.split(':')[0].replace('Section','Sec.') + '</div>';
-    html += '<div class="sc-val">' + right + '<span style="font-size:16px;color:var(--muted)">/' + m.count + '</span></div>';
-    html += '<div class="sc-sub">' + pct + '% correct</div>';
-    html += '<div class="score-bar"><div class="fill" style="width:' + pct + '%;background:' + color + '"></div></div></div>';
+    summary += m.section + ': ' + right + '/' + m.count + ' (' + pct + '%)\n' + details + '\n';
+    var color = pct >= 70 ? 'var(--green)' : pct >= 50 ? 'var(--orange)' : 'var(--red)';
+    html += '<div class="score-card"><div class="sc-label">' + m.section.split(':')[0] + '</div><div class="sc-val">' + right + '<span style="font-size:16px;color:var(--muted)">/' + m.count + '</span></div><div class="sc-sub">' + pct + '%</div><div class="score-bar"><div class="fill" style="width:' + pct + '%;background:' + color + '"></div></div></div>';
   });
+  var tp = Math.round((totalRight / totalQ) * 100);
+  summary = 'Overall: ' + totalRight + '/' + totalQ + ' (' + tp + '%)\n\n' + summary;
+  S.resultsSummary = summary;
+  html = '<div class="score-card" style="grid-column:1/-1"><div class="sc-label">Overall</div><div class="sc-val" style="font-size:44px">' + totalRight + '<span style="font-size:20px;color:var(--muted)">/' + totalQ + '</span></div><div class="sc-sub">' + tp + '% correct</div><div class="score-bar"><div class="fill" style="width:' + tp + '%;background:var(--blue)"></div></div></div>' + html;
+  document.getElementById('scoreGrid').innerHTML = html;
+  S.submitted = true;
+  sendResults();
+}
 
-  var totalPct = Math.round((totalRight / totalQ) * 100);
-  html = '<div class="score-card" style="grid-column:1/-1"><div class="sc-label">Overall Score</div><div class="sc-val" style="font-size:48px">' + totalRight + '<span style="font-size:20px;color:var(--muted)">/' + totalQ + '</span></div><div class="sc-sub">' + totalPct + '% correct</div><div class="score-bar"><div class="fill" style="width:' + totalPct + '%;background:var(--teal)"></div></div></div>' + html;
+function sendResults() {
+  var email = 'khaydarov.anvar@gmail.com';
+  var subject = encodeURIComponent('SAT Practice Test 1 — Student Results');
+  var body = encodeURIComponent(S.resultsSummary || 'No results available');
+  var mailto = 'mailto:' + email + '?subject=' + subject + '&body=' + body;
+  var status = document.getElementById('emailStatus');
+  try {
+    var link = document.createElement('a');
+    link.href = mailto;
+    link.target = '_blank';
+    link.click();
+    status.style.display = 'block';
+    status.innerHTML = 'Email client opened. If it did not open, <button style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:13px;text-decoration:underline;padding:0" onclick="copyResults()">copy results to clipboard</button> and email them to ' + email;
+  } catch(e) {
+    status.style.display = 'block';
+    status.innerHTML = 'Could not open email. <button style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:13px;text-decoration:underline;padding:0" onclick="copyResults()">Copy results to clipboard</button> and email them to ' + email;
+  }
+}
 
-  grid.innerHTML = html;
-  state.submitted = true;
-  window.scrollTo(0, 0);
+function copyResults() {
+  var status = document.getElementById('emailStatus');
+  try {
+    navigator.clipboard.writeText(S.resultsSummary).then(function() {
+      status.innerHTML = 'Results copied! Paste into an email to khaydarov.anvar@gmail.com';
+    }).catch(function() { fallbackCopy(); });
+  } catch(e) { fallbackCopy(); }
+  function fallbackCopy() {
+    var ta = document.createElement('textarea');
+    ta.value = S.resultsSummary;
+    ta.style.position = 'fixed'; ta.style.left = '-9999px';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); status.innerHTML = 'Results copied! Paste into an email to khaydarov.anvar@gmail.com'; }
+    catch(e2) { status.innerHTML = 'Could not copy. Please manually select and copy from the Review Answers page.'; }
+    document.body.removeChild(ta);
+  }
 }
 
 function reviewAnswers() {
-  state.reviewing = true;
-  document.getElementById('results').classList.remove('active');
-  document.getElementById('topbar').classList.add('show');
-  document.getElementById('navBottom').classList.add('show');
-  if (state.timerInterval) clearInterval(state.timerInterval);
-  document.getElementById('timer').textContent = 'Review';
-  document.getElementById('timer').classList.remove('warn');
-
-  renderModule(0);
-  revealAnswers(0);
-  updateNav();
-}
-
-function revealAnswers(idx) {
-  var m = MODULES[idx];
-  m.questions.forEach(function(q, qi) {
-    var key = idx + '_' + qi;
-    var userAns = state.answers[key];
-    var qEl = document.getElementById('q_' + key);
-
-    if (q.spr) {
-      var correct = String(userAns || '').replace(/\s/g,'') === String(q.ans).replace(/\s/g,'');
-      qEl.classList.add('answered', correct ? 'correct' : 'wrong');
-      var exp = document.createElement('div');
-      exp.className = 'explanation show';
-      exp.innerHTML = '<strong>Correct answer:</strong> ' + q.ans + (correct ? ' ✔' : ' (you answered: ' + (userAns || 'blank') + ')');
-      qEl.appendChild(exp);
-    } else {
-      var opts = qEl.querySelectorAll('.opt');
-      opts.forEach(function(o) {
-        var val = parseInt(o.dataset.val);
-        if (val === q.ans) o.classList.add('correct-reveal');
-        if (val === userAns && val !== q.ans) o.classList.add('wrong-reveal');
-        o.style.cursor = 'default';
-      });
-      qEl.classList.add('answered', userAns === q.ans ? 'correct' : 'wrong');
-    }
-  });
+  S.reviewing = true; S.mod = 0; S.qi = 0;
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('contentArea').style.display = '';
+  document.getElementById('bottomBar').classList.add('show');
+  if (S.timerInt) clearInterval(S.timerInt);
+  document.getElementById('hdrTimer').textContent = 'Review';
+  document.getElementById('hdrTimer').classList.remove('warn');
+  document.getElementById('hdrHideTimer').style.display = 'none';
+  loadQuestion();
 }
 
 function showAnswerSheet() {
-  document.getElementById('landing').style.display = 'none';
-  document.getElementById('results').classList.remove('active');
-  document.querySelectorAll('.module-view').forEach(function(v) { v.classList.remove('active'); });
-  document.getElementById('topbar').classList.remove('show');
-  document.getElementById('navBottom').classList.remove('show');
-
+  document.getElementById('contentArea').style.display = 'none';
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('bottomBar').classList.remove('show');
+  document.getElementById('hdr').classList.add('show');
+  document.getElementById('main').classList.add('show');
   var as = document.getElementById('answerSheet');
-  as.classList.add('active');
-
-  var pages = document.getElementById('asPages');
+  as.classList.add('show');
   var html = '';
-
-  // Page 1: Reading & Writing
-  html += '<div class="as-page"><h3>Page 1: Section 1 — Reading and Writing</h3><div class="as-info">Modules 1 &amp; 2 &middot; 54 Questions Total</div>';
-  for (var mi = 0; mi < 2; mi++) {
-    var m = MODULES[mi];
-    html += '<div style="margin-bottom:16px"><div style="font-weight:600;font-size:13px;color:var(--navy);margin-bottom:8px">Module ' + (mi + 1) + ' (' + m.count + ' questions)</div>';
-    html += '<div class="as-grid">';
-    m.questions.forEach(function(q, qi) {
-      var key = mi + '_' + qi;
-      html += '<div class="as-row"><span class="as-num">' + q.n + '.</span>';
-      if (q.spr) {
-        html += '<input type="text" class="as-spr" data-key="' + key + '" oninput="asInput(this)">';
-      } else {
-        html += '<div class="as-bubbles">';
-        ['A','B','C','D'].forEach(function(l, j) {
-          var filled = state.answers[key] === j;
-          html += '<span class="as-bubble' + (filled ? ' filled' : '') + '" data-key="' + key + '" data-val="' + j + '" onclick="asBubble(this)">' + l + '</span>';
-        });
+  var sections = [{title:'Page 1: Section 1 — Reading and Writing',info:'Modules 1 & 2 · 54 Questions',mods:[0,1]},{title:'Page 2: Section 2 — Math',info:'Modules 1 & 2 · 44 Questions',mods:[2,3]}];
+  sections.forEach(function(sec) {
+    html += '<div class="as-page"><h3>' + sec.title + '</h3><div class="as-info">' + sec.info + '</div>';
+    sec.mods.forEach(function(mi) {
+      var m = MODULES[mi];
+      html += '<div style="margin-bottom:14px"><div style="font-weight:600;font-size:12px;color:var(--blue);margin-bottom:6px">Module ' + (mi < 2 ? mi + 1 : mi - 1) + ' (' + m.count + ' questions)</div><div class="as-grid">';
+      m.questions.forEach(function(q, qi) {
+        var key = mi + '_' + qi;
+        html += '<div class="as-row"><span class="as-num">' + q.n + '.</span>';
+        if (q.spr) html += '<input type="text" class="as-spr" value="' + (S.answers[key] || '') + '" oninput="S.answers[\'' + key + '\']=this.value.trim()">';
+        else {
+          html += '<div class="as-bubbles">';
+          ['A','B','C','D'].forEach(function(l, j) {
+            html += '<span class="as-bubble' + (S.answers[key] === j ? ' filled' : '') + '" onclick="S.answers[\'' + key + '\']=' + j + ';showAnswerSheet()">' + l + '</span>';
+          });
+          html += '</div>';
+        }
         html += '</div>';
-      }
-      html += '</div>';
+      });
+      html += '</div></div>';
     });
-    html += '</div></div>';
-  }
-  html += '</div>';
-
-  // Page 2: Math
-  html += '<div class="as-page"><h3>Page 2: Section 2 — Math</h3><div class="as-info">Modules 1 &amp; 2 &middot; 44 Questions Total</div>';
-  for (var mi2 = 2; mi2 < 4; mi2++) {
-    var m2 = MODULES[mi2];
-    html += '<div style="margin-bottom:16px"><div style="font-weight:600;font-size:13px;color:var(--navy);margin-bottom:8px">Module ' + (mi2 - 1) + ' (' + m2.count + ' questions)</div>';
-    html += '<div class="as-grid">';
-    m2.questions.forEach(function(q, qi) {
-      var key = mi2 + '_' + qi;
-      html += '<div class="as-row"><span class="as-num">' + q.n + '.</span>';
-      if (q.spr) {
-        html += '<input type="text" class="as-spr" data-key="' + key + '" oninput="asInput(this)">';
-      } else {
-        html += '<div class="as-bubbles">';
-        ['A','B','C','D'].forEach(function(l, j) {
-          var filled = state.answers[key] === j;
-          html += '<span class="as-bubble' + (filled ? ' filled' : '') + '" data-key="' + key + '" data-val="' + j + '" onclick="asBubble(this)">' + l + '</span>';
-        });
-        html += '</div>';
-      }
-      html += '</div>';
-    });
-    html += '</div></div>';
-  }
-  html += '</div>';
-
-  pages.innerHTML = html;
-  window.scrollTo(0, 0);
-}
-
-function asBubble(el) {
-  var key = el.dataset.key;
-  document.querySelectorAll('.as-bubble[data-key="' + key + '"]').forEach(function(b) { b.classList.remove('filled'); });
-  el.classList.add('filled');
-  state.answers[key] = parseInt(el.dataset.val);
-}
-
-function asInput(el) {
-  state.answers[el.dataset.key] = el.value.trim();
+    html += '</div>';
+  });
+  document.getElementById('asPages').innerHTML = html;
 }
 
 function hideAnswerSheet() {
-  document.getElementById('answerSheet').classList.remove('active');
-  if (state.submitted) {
-    document.getElementById('results').classList.add('active');
-  } else {
-    document.getElementById('landing').style.display = '';
-  }
-  window.scrollTo(0, 0);
+  document.getElementById('answerSheet').classList.remove('show');
+  document.getElementById('contentArea').style.display = '';
+  document.getElementById('bottomBar').classList.add('show');
+  if (S.submitted) { document.getElementById('results').classList.add('show'); document.getElementById('contentArea').style.display = 'none'; document.getElementById('bottomBar').classList.remove('show'); }
+  else loadQuestion();
 }
 </script>
