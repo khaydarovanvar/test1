@@ -198,6 +198,29 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
   body{background:#fff;color:#000;font-size:11px}
   @page{margin:1.5cm}
 }
+.name-input{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:28px;width:100%;max-width:360px}
+.name-input label{font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.name-input input{width:100%;padding:10px 14px;border:2px solid var(--rule);border-radius:6px;font-family:var(--sans);font-size:15px;color:var(--ink);background:var(--surface);outline:none;text-align:center}
+.name-input input:focus{border-color:var(--blue)}
+.name-input .name-err{font-size:12px;color:var(--red);display:none}
+.landing-footer{margin-top:16px;display:flex;gap:12px;align-items:center}
+.btn-teacher{background:transparent;border:1px solid var(--rule);color:var(--muted);font-family:var(--sans);font-weight:500;font-size:13px;padding:8px 20px;border-radius:6px;cursor:pointer}
+.btn-teacher:hover{border-color:var(--blue);color:var(--blue)}
+.dashboard{display:none;min-height:100vh;padding:40px 20px;background:var(--surface)}
+.dashboard.show{display:block}
+.dashboard h2{font-size:22px;font-weight:700;color:var(--ink);margin-bottom:4px;text-align:center}
+.dashboard .sub{font-size:13px;color:var(--muted);margin-bottom:24px;text-align:center}
+.dash-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;max-width:600px;margin:0 auto 24px}
+.dash-stat{background:var(--surface-alt);border:1px solid var(--rule-soft);border-radius:6px;padding:12px;text-align:center}
+.dash-stat .ds-val{font-size:24px;font-weight:700;color:var(--blue)}
+.dash-stat .ds-lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.dash-table{width:100%;max-width:800px;margin:0 auto;border-collapse:collapse;font-size:13px}
+.dash-table th{background:var(--blue);color:#fff;font-weight:600;font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:8px 10px;text-align:left}
+.dash-table td{padding:8px 10px;border-bottom:1px solid var(--rule-soft);color:var(--ink-soft)}
+.dash-table tr:hover td{background:var(--surface-alt)}
+.dash-table .pct-bar{display:inline-block;height:6px;border-radius:3px;vertical-align:middle;margin-left:6px}
+.dash-empty{text-align:center;padding:40px 20px;color:var(--muted);font-size:14px}
+.dash-back{display:block;margin:20px auto 0;background:var(--blue);color:#fff;border:none;font-family:var(--sans);font-weight:600;font-size:14px;padding:10px 28px;border-radius:6px;cursor:pointer}
 </style>
 
 <!-- Landing -->
@@ -211,7 +234,23 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
     <div class="info-card"><div class="label">Total Time</div><div class="val">2 hr 14 min</div><div class="detail">Timed per module</div></div>
     <div class="info-card"><div class="label">Questions</div><div class="val">98</div><div class="detail">Multiple choice &amp; SPR</div></div>
   </div>
+  <div class="name-input">
+    <label>Student Name</label>
+    <input type="text" id="studentName" placeholder="Enter your full name" autocomplete="name">
+    <div class="name-err" id="nameErr">Please enter your name to begin</div>
+  </div>
   <button class="btn-begin" onclick="beginTest()">Begin Test</button>
+  <div class="landing-footer">
+    <button class="btn-teacher" id="btnTeacher" onclick="showDashboard()" style="display:none">View Student Results</button>
+  </div>
+</div>
+
+<div class="dashboard" id="dashboard">
+  <h2>Student Results Dashboard</h2>
+  <p class="sub" id="dashSub">Loading results...</p>
+  <div class="dash-stats" id="dashStats"></div>
+  <div id="dashBody"></div>
+  <button class="dash-back" onclick="hideDashboard()">Back to Test</button>
 </div>
 
 <!-- Header -->
@@ -256,9 +295,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
     <div class="results-btns">
       <button class="nav-btn" onclick="reviewAnswers()">Review Answers</button>
       <button class="nav-btn" onclick="showAnswerSheet()">Answer Sheet</button>
-      <button class="nav-btn primary" onclick="sendResults()">Email Results</button>
     </div>
-    <div id="emailStatus" style="margin-top:12px;font-size:13px;color:var(--muted);display:none"></div>
+    <div id="saveStatus" style="margin-top:12px;font-size:13px;color:var(--green);display:none"></div>
   </div>
 
   <div class="answer-sheet" id="answerSheet">
@@ -403,9 +441,29 @@ var MODULES = [
   }
 ];
 
-var S = { mod:0, qi:0, answers:{}, flags:{}, timers:{}, timerInt:null, timerHidden:false, submitted:false, reviewing:false };
+var S = { mod:0, qi:0, answers:{}, flags:{}, timers:{}, timerInt:null, timerHidden:false, submitted:false, reviewing:false, studentName:'' };
+var DB = null, USER = null;
+
+(async function initCapabilities() {
+  try {
+    DB = await window.claude.use('db');
+    USER = await window.claude.use('user');
+    if (USER) {
+      var isOwner = await USER.isOwner();
+      if (isOwner) document.getElementById('btnTeacher').style.display = '';
+    }
+  } catch(e) {}
+})();
 
 function beginTest() {
+  var name = document.getElementById('studentName').value.trim();
+  if (!name) {
+    document.getElementById('nameErr').style.display = 'block';
+    document.getElementById('studentName').focus();
+    return;
+  }
+  S.studentName = name;
+  document.getElementById('nameErr').style.display = 'none';
   document.getElementById('landing').style.display = 'none';
   document.getElementById('hdr').classList.add('show');
   document.getElementById('main').classList.add('show');
@@ -583,69 +641,96 @@ function submitTest() {
   var results = document.getElementById('results');
   results.classList.add('show');
   var totalRight = 0, totalQ = 0, html = '';
-  var summary = 'SAT Practice Test 1 — Results\n' + new Date().toLocaleString() + '\n\n';
+  var moduleResults = [];
   MODULES.forEach(function(m, mi) {
-    var right = 0, details = '';
+    var right = 0, qDetails = [];
     m.questions.forEach(function(q, qi) {
       var key = mi + '_' + qi, a = S.answers[key];
       var correct = false;
       if (q.spr) { correct = a !== undefined && String(a).replace(/\s/g,'') === String(q.ans).replace(/\s/g,''); }
       else { correct = a === q.ans; }
       if (correct) right++;
-      var studentAns = a === undefined ? 'No answer' : (q.spr ? a : ['A','B','C','D'][a]);
-      var correctAns = q.spr ? q.ans : ['A','B','C','D'][q.ans];
-      details += '  Q' + q.n + ': ' + (correct ? 'Correct' : 'Wrong') + ' (answered: ' + studentAns + ', correct: ' + correctAns + ')\n';
+      qDetails.push({n:q.n, correct:correct, student: a === undefined ? null : (q.spr ? String(a) : a), answer: q.spr ? String(q.ans) : q.ans});
     });
     totalRight += right; totalQ += m.count;
     var pct = Math.round((right / m.count) * 100);
-    summary += m.section + ': ' + right + '/' + m.count + ' (' + pct + '%)\n' + details + '\n';
+    moduleResults.push({section:m.section, right:right, count:m.count, pct:pct, questions:qDetails});
     var color = pct >= 70 ? 'var(--green)' : pct >= 50 ? 'var(--orange)' : 'var(--red)';
     html += '<div class="score-card"><div class="sc-label">' + m.section.split(':')[0] + '</div><div class="sc-val">' + right + '<span style="font-size:16px;color:var(--muted)">/' + m.count + '</span></div><div class="sc-sub">' + pct + '%</div><div class="score-bar"><div class="fill" style="width:' + pct + '%;background:' + color + '"></div></div></div>';
   });
   var tp = Math.round((totalRight / totalQ) * 100);
-  summary = 'Overall: ' + totalRight + '/' + totalQ + ' (' + tp + '%)\n\n' + summary;
-  S.resultsSummary = summary;
   html = '<div class="score-card" style="grid-column:1/-1"><div class="sc-label">Overall</div><div class="sc-val" style="font-size:44px">' + totalRight + '<span style="font-size:20px;color:var(--muted)">/' + totalQ + '</span></div><div class="sc-sub">' + tp + '% correct</div><div class="score-bar"><div class="fill" style="width:' + tp + '%;background:var(--blue)"></div></div></div>' + html;
   document.getElementById('scoreGrid').innerHTML = html;
   S.submitted = true;
-  sendResults();
+  saveResultsToDb(totalRight, totalQ, tp, moduleResults);
 }
 
-function sendResults() {
-  var email = 'khaydarov.anvar@gmail.com';
-  var subject = encodeURIComponent('SAT Practice Test 1 — Student Results');
-  var body = encodeURIComponent(S.resultsSummary || 'No results available');
-  var mailto = 'mailto:' + email + '?subject=' + subject + '&body=' + body;
-  var status = document.getElementById('emailStatus');
+async function saveResultsToDb(totalRight, totalQ, pct, moduleResults) {
+  var status = document.getElementById('saveStatus');
+  if (!DB) { status.style.display = 'block'; status.textContent = 'Results shown above (offline mode).'; return; }
   try {
-    var link = document.createElement('a');
-    link.href = mailto;
-    link.target = '_blank';
-    link.click();
+    var id = Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+    await DB.collection('results').doc(id).set({
+      name: S.studentName,
+      date: new Date().toISOString(),
+      totalRight: totalRight,
+      totalQ: totalQ,
+      pct: pct,
+      modules: moduleResults.map(function(m) { return {section:m.section, right:m.right, count:m.count, pct:m.pct}; }),
+      answers: S.answers
+    });
     status.style.display = 'block';
-    status.innerHTML = 'Email client opened. If it did not open, <button style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:13px;text-decoration:underline;padding:0" onclick="copyResults()">copy results to clipboard</button> and email them to ' + email;
+    status.textContent = 'Results saved successfully.';
   } catch(e) {
     status.style.display = 'block';
-    status.innerHTML = 'Could not open email. <button style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:13px;text-decoration:underline;padding:0" onclick="copyResults()">Copy results to clipboard</button> and email them to ' + email;
+    status.style.color = 'var(--orange)';
+    status.textContent = 'Could not save results to server.';
   }
 }
 
-function copyResults() {
-  var status = document.getElementById('emailStatus');
+async function showDashboard() {
+  document.getElementById('landing').style.display = 'none';
+  var dash = document.getElementById('dashboard');
+  dash.classList.add('show');
+  if (!DB) { document.getElementById('dashBody').innerHTML = '<div class="dash-empty">Database not available.</div>'; return; }
   try {
-    navigator.clipboard.writeText(S.resultsSummary).then(function() {
-      status.innerHTML = 'Results copied! Paste into an email to khaydarov.anvar@gmail.com';
-    }).catch(function() { fallbackCopy(); });
-  } catch(e) { fallbackCopy(); }
-  function fallbackCopy() {
-    var ta = document.createElement('textarea');
-    ta.value = S.resultsSummary;
-    ta.style.position = 'fixed'; ta.style.left = '-9999px';
-    document.body.appendChild(ta); ta.select();
-    try { document.execCommand('copy'); status.innerHTML = 'Results copied! Paste into an email to khaydarov.anvar@gmail.com'; }
-    catch(e2) { status.innerHTML = 'Could not copy. Please manually select and copy from the Review Answers page.'; }
-    document.body.removeChild(ta);
+    var snap = await DB.collection('results').orderBy('date','desc').limit(200).get();
+    if (snap.empty) {
+      document.getElementById('dashSub').textContent = 'No results yet';
+      document.getElementById('dashBody').innerHTML = '<div class="dash-empty">No students have completed the test yet.</div>';
+      return;
+    }
+    var rows = [];
+    snap.docs.forEach(function(d) { if (d.exists) rows.push(d.data()); });
+    var totalStudents = rows.length;
+    var avgPct = Math.round(rows.reduce(function(s,r){return s+(r.pct||0)},0) / totalStudents);
+    var highest = rows.reduce(function(h,r){return (r.pct||0)>h?r.pct:h},0);
+    document.getElementById('dashSub').textContent = totalStudents + ' submission' + (totalStudents!==1?'s':'');
+    document.getElementById('dashStats').innerHTML =
+      '<div class="dash-stat"><div class="ds-val">' + totalStudents + '</div><div class="ds-lbl">Students</div></div>' +
+      '<div class="dash-stat"><div class="ds-val">' + avgPct + '%</div><div class="ds-lbl">Average</div></div>' +
+      '<div class="dash-stat"><div class="ds-val">' + highest + '%</div><div class="ds-lbl">Highest</div></div>';
+    var thtml = '<table class="dash-table"><thead><tr><th>Student</th><th>Date</th><th>RW 1</th><th>RW 2</th><th>Math 1</th><th>Math 2</th><th>Total</th><th>Score</th></tr></thead><tbody>';
+    rows.forEach(function(r) {
+      var d = new Date(r.date);
+      var dateStr = (d.getMonth()+1)+'/'+d.getDate()+'/'+d.getFullYear()+' '+d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');
+      var mods = r.modules || [];
+      var color = (r.pct||0) >= 70 ? 'var(--green)' : (r.pct||0) >= 50 ? 'var(--orange)' : 'var(--red)';
+      thtml += '<tr><td style="font-weight:600;color:var(--ink)">' + (r.name||'Unknown') + '</td><td>' + dateStr + '</td>';
+      for (var i=0;i<4;i++) thtml += '<td>' + (mods[i] ? mods[i].right+'/'+mods[i].count : '-') + '</td>';
+      thtml += '<td style="font-weight:600">' + (r.totalRight||0) + '/' + (r.totalQ||0) + '</td>';
+      thtml += '<td style="font-weight:600">' + (r.pct||0) + '%<span class="pct-bar" style="width:' + Math.min(r.pct||0,100)*0.6 + 'px;background:' + color + '"></span></td></tr>';
+    });
+    thtml += '</tbody></table>';
+    document.getElementById('dashBody').innerHTML = thtml;
+  } catch(e) {
+    document.getElementById('dashBody').innerHTML = '<div class="dash-empty">Error loading results.</div>';
   }
+}
+
+function hideDashboard() {
+  document.getElementById('dashboard').classList.remove('show');
+  document.getElementById('landing').style.display = '';
 }
 
 function reviewAnswers() {
