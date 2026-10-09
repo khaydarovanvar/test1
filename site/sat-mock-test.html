@@ -203,24 +203,6 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
 .name-input input{width:100%;padding:10px 14px;border:2px solid var(--rule);border-radius:6px;font-family:var(--sans);font-size:15px;color:var(--ink);background:var(--surface);outline:none;text-align:center}
 .name-input input:focus{border-color:var(--blue)}
 .name-input .name-err{font-size:12px;color:var(--red);display:none}
-.landing-footer{margin-top:16px;display:flex;gap:12px;align-items:center}
-.btn-teacher{background:transparent;border:1px solid var(--rule);color:var(--muted);font-family:var(--sans);font-weight:500;font-size:13px;padding:8px 20px;border-radius:6px;cursor:pointer}
-.btn-teacher:hover{border-color:var(--blue);color:var(--blue)}
-.dashboard{display:none;min-height:100vh;padding:40px 20px;background:var(--surface)}
-.dashboard.show{display:block}
-.dashboard h2{font-size:22px;font-weight:700;color:var(--ink);margin-bottom:4px;text-align:center}
-.dashboard .sub{font-size:13px;color:var(--muted);margin-bottom:24px;text-align:center}
-.dash-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;max-width:600px;margin:0 auto 24px}
-.dash-stat{background:var(--surface-alt);border:1px solid var(--rule-soft);border-radius:6px;padding:12px;text-align:center}
-.dash-stat .ds-val{font-size:24px;font-weight:700;color:var(--blue)}
-.dash-stat .ds-lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-.dash-table{width:100%;max-width:800px;margin:0 auto;border-collapse:collapse;font-size:13px}
-.dash-table th{background:var(--blue);color:#fff;font-weight:600;font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:8px 10px;text-align:left}
-.dash-table td{padding:8px 10px;border-bottom:1px solid var(--rule-soft);color:var(--ink-soft)}
-.dash-table tr:hover td{background:var(--surface-alt)}
-.dash-table .pct-bar{display:inline-block;height:6px;border-radius:3px;vertical-align:middle;margin-left:6px}
-.dash-empty{text-align:center;padding:40px 20px;color:var(--muted);font-size:14px}
-.dash-back{display:block;margin:20px auto 0;background:var(--blue);color:#fff;border:none;font-family:var(--sans);font-weight:600;font-size:14px;padding:10px 28px;border-radius:6px;cursor:pointer}
 </style>
 
 <!-- Landing -->
@@ -240,18 +222,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
     <div class="name-err" id="nameErr">Please enter your name to begin</div>
   </div>
   <button class="btn-begin" onclick="beginTest()">Begin Test</button>
-  <div class="landing-footer">
-    <button class="btn-teacher" id="btnTeacher" onclick="showDashboard()" style="display:none">View Student Results</button>
   </div>
-</div>
-
-<div class="dashboard" id="dashboard">
-  <h2>Student Results Dashboard</h2>
-  <p class="sub" id="dashSub">Loading results...</p>
-  <div class="dash-stats" id="dashStats"></div>
-  <div id="dashBody"></div>
-  <button class="dash-back" onclick="hideDashboard()">Back to Test</button>
-</div>
 
 <!-- Header -->
 <div class="hdr" id="hdr">
@@ -442,18 +413,8 @@ var MODULES = [
 ];
 
 var S = { mod:0, qi:0, answers:{}, flags:{}, timers:{}, timerInt:null, timerHidden:false, submitted:false, reviewing:false, studentName:'' };
-var DB = null, USER = null;
-
-(async function initCapabilities() {
-  try {
-    DB = await window.claude.use('db');
-    USER = await window.claude.use('user');
-    if (USER) {
-      var isOwner = await USER.isOwner();
-      if (isOwner) document.getElementById('btnTeacher').style.display = '';
-    }
-  } catch(e) {}
-})();
+// PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW (see google-apps-script.js for setup)
+var GOOGLE_SCRIPT_URL = '';
 
 function beginTest() {
   var name = document.getElementById('studentName').value.trim();
@@ -662,75 +623,38 @@ function submitTest() {
   html = '<div class="score-card" style="grid-column:1/-1"><div class="sc-label">Overall</div><div class="sc-val" style="font-size:44px">' + totalRight + '<span style="font-size:20px;color:var(--muted)">/' + totalQ + '</span></div><div class="sc-sub">' + tp + '% correct</div><div class="score-bar"><div class="fill" style="width:' + tp + '%;background:var(--blue)"></div></div></div>' + html;
   document.getElementById('scoreGrid').innerHTML = html;
   S.submitted = true;
-  saveResultsToDb(totalRight, totalQ, tp, moduleResults);
+  sendToGoogleSheets(totalRight, totalQ, tp, moduleResults);
 }
 
-async function saveResultsToDb(totalRight, totalQ, pct, moduleResults) {
+function sendToGoogleSheets(totalRight, totalQ, pct, moduleResults) {
   var status = document.getElementById('saveStatus');
-  if (!DB) { status.style.display = 'block'; status.textContent = 'Results shown above (offline mode).'; return; }
-  try {
-    var id = Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
-    await DB.collection('results').doc(id).set({
+  if (!GOOGLE_SCRIPT_URL) {
+    status.style.display = 'block';
+    status.style.color = 'var(--muted)';
+    status.textContent = 'Results shown above. (Google Sheets URL not configured)';
+    return;
+  }
+  status.style.display = 'block';
+  status.textContent = 'Sending results...';
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify({
       name: S.studentName,
-      date: new Date().toISOString(),
       totalRight: totalRight,
       totalQ: totalQ,
       pct: pct,
       modules: moduleResults.map(function(m) { return {section:m.section, right:m.right, count:m.count, pct:m.pct}; }),
       answers: S.answers
-    });
-    status.style.display = 'block';
-    status.textContent = 'Results saved successfully.';
-  } catch(e) {
-    status.style.display = 'block';
+    })
+  }).then(function() {
+    status.textContent = 'Results sent to teacher.';
+    status.style.color = 'var(--green)';
+  }).catch(function() {
+    status.textContent = 'Could not send results. Your scores are shown above.';
     status.style.color = 'var(--orange)';
-    status.textContent = 'Could not save results to server.';
-  }
-}
-
-async function showDashboard() {
-  document.getElementById('landing').style.display = 'none';
-  var dash = document.getElementById('dashboard');
-  dash.classList.add('show');
-  if (!DB) { document.getElementById('dashBody').innerHTML = '<div class="dash-empty">Database not available.</div>'; return; }
-  try {
-    var snap = await DB.collection('results').orderBy('date','desc').limit(200).get();
-    if (snap.empty) {
-      document.getElementById('dashSub').textContent = 'No results yet';
-      document.getElementById('dashBody').innerHTML = '<div class="dash-empty">No students have completed the test yet.</div>';
-      return;
-    }
-    var rows = [];
-    snap.docs.forEach(function(d) { if (d.exists) rows.push(d.data()); });
-    var totalStudents = rows.length;
-    var avgPct = Math.round(rows.reduce(function(s,r){return s+(r.pct||0)},0) / totalStudents);
-    var highest = rows.reduce(function(h,r){return (r.pct||0)>h?r.pct:h},0);
-    document.getElementById('dashSub').textContent = totalStudents + ' submission' + (totalStudents!==1?'s':'');
-    document.getElementById('dashStats').innerHTML =
-      '<div class="dash-stat"><div class="ds-val">' + totalStudents + '</div><div class="ds-lbl">Students</div></div>' +
-      '<div class="dash-stat"><div class="ds-val">' + avgPct + '%</div><div class="ds-lbl">Average</div></div>' +
-      '<div class="dash-stat"><div class="ds-val">' + highest + '%</div><div class="ds-lbl">Highest</div></div>';
-    var thtml = '<table class="dash-table"><thead><tr><th>Student</th><th>Date</th><th>RW 1</th><th>RW 2</th><th>Math 1</th><th>Math 2</th><th>Total</th><th>Score</th></tr></thead><tbody>';
-    rows.forEach(function(r) {
-      var d = new Date(r.date);
-      var dateStr = (d.getMonth()+1)+'/'+d.getDate()+'/'+d.getFullYear()+' '+d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');
-      var mods = r.modules || [];
-      var color = (r.pct||0) >= 70 ? 'var(--green)' : (r.pct||0) >= 50 ? 'var(--orange)' : 'var(--red)';
-      thtml += '<tr><td style="font-weight:600;color:var(--ink)">' + (r.name||'Unknown') + '</td><td>' + dateStr + '</td>';
-      for (var i=0;i<4;i++) thtml += '<td>' + (mods[i] ? mods[i].right+'/'+mods[i].count : '-') + '</td>';
-      thtml += '<td style="font-weight:600">' + (r.totalRight||0) + '/' + (r.totalQ||0) + '</td>';
-      thtml += '<td style="font-weight:600">' + (r.pct||0) + '%<span class="pct-bar" style="width:' + Math.min(r.pct||0,100)*0.6 + 'px;background:' + color + '"></span></td></tr>';
-    });
-    thtml += '</tbody></table>';
-    document.getElementById('dashBody').innerHTML = thtml;
-  } catch(e) {
-    document.getElementById('dashBody').innerHTML = '<div class="dash-empty">Error loading results.</div>';
-  }
-}
-
-function hideDashboard() {
-  document.getElementById('dashboard').classList.remove('show');
-  document.getElementById('landing').style.display = '';
+  });
 }
 
 function reviewAnswers() {
