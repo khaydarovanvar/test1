@@ -157,6 +157,20 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
 .score-bar{height:6px;background:var(--surface-alt);border-radius:3px;overflow:hidden}
 .score-bar .fill{height:100%;border-radius:3px;transition:width .6s}
 .results-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.sat-score-hero{margin:0 auto 28px;max-width:700px;background:linear-gradient(135deg,#1e3a5f,#2c5282);border-radius:12px;padding:32px 24px;color:#fff}
+.sat-score-hero .sat-total{font-size:64px;font-weight:800;line-height:1}
+.sat-score-hero .sat-max{font-size:22px;font-weight:400;opacity:.7}
+.sat-section-scores{display:flex;justify-content:center;gap:32px;margin-top:16px}
+.sat-section-scores .sec{text-align:center}
+.sat-section-scores .sec-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin-bottom:2px}
+.sat-section-scores .sec-val{font-size:28px;font-weight:700}
+.q-breakdown{max-width:700px;margin:0 auto 24px;text-align:left}
+.q-breakdown h3{font-size:14px;font-weight:700;color:var(--ink);margin:18px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--rule-soft)}
+.q-grid{display:flex;flex-wrap:wrap;gap:5px}
+.q-cell{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:var(--mono);cursor:default}
+.q-cell.right{background:var(--green-bg);color:var(--green)}
+.q-cell.wrong{background:var(--red-bg);color:var(--red)}
+.q-cell.skip{background:var(--surface-alt);color:var(--muted)}
 
 /* Math expressions */
 .math{font-family:var(--sans);font-style:italic}
@@ -262,7 +276,9 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
   <div class="results" id="results">
     <h2>Test Complete</h2>
     <p class="sub">Here are your results</p>
+    <div id="satScoreHero"></div>
     <div class="score-grid" id="scoreGrid"></div>
+    <div id="qBreakdown"></div>
     <div class="results-btns">
       <button class="nav-btn" onclick="reviewAnswers()">Review Answers</button>
       <button class="nav-btn" onclick="showAnswerSheet()">Answer Sheet</button>
@@ -603,6 +619,7 @@ function submitTest() {
   results.classList.add('show');
   var totalRight = 0, totalQ = 0, html = '';
   var moduleResults = [];
+  var rwRight = 0, rwTotal = 0, mathRight = 0, mathTotal = 0;
   MODULES.forEach(function(m, mi) {
     var right = 0, qDetails = [];
     m.questions.forEach(function(q, qi) {
@@ -611,18 +628,44 @@ function submitTest() {
       if (q.spr) { correct = a !== undefined && String(a).replace(/\s/g,'') === String(q.ans).replace(/\s/g,''); }
       else { correct = a === q.ans; }
       if (correct) right++;
-      qDetails.push({n:q.n, correct:correct, student: a === undefined ? null : (q.spr ? String(a) : a), answer: q.spr ? String(q.ans) : q.ans});
+      qDetails.push({n:q.n, correct:correct, student: a === undefined ? null : (q.spr ? String(a) : a), answer: q.spr ? String(q.ans) : q.ans, skipped: a === undefined});
     });
     totalRight += right; totalQ += m.count;
+    if (mi < 2) { rwRight += right; rwTotal += m.count; }
+    else { mathRight += right; mathTotal += m.count; }
     var pct = Math.round((right / m.count) * 100);
     moduleResults.push({section:m.section, right:right, count:m.count, pct:pct, questions:qDetails});
     var color = pct >= 70 ? 'var(--green)' : pct >= 50 ? 'var(--orange)' : 'var(--red)';
     html += '<div class="score-card"><div class="sc-label">' + m.section.split(':')[0] + '</div><div class="sc-val">' + right + '<span style="font-size:16px;color:var(--muted)">/' + m.count + '</span></div><div class="sc-sub">' + pct + '%</div><div class="score-bar"><div class="fill" style="width:' + pct + '%;background:' + color + '"></div></div></div>';
   });
-  var tp = Math.round((totalRight / totalQ) * 100);
-  html = '<div class="score-card" style="grid-column:1/-1"><div class="sc-label">Overall</div><div class="sc-val" style="font-size:44px">' + totalRight + '<span style="font-size:20px;color:var(--muted)">/' + totalQ + '</span></div><div class="sc-sub">' + tp + '% correct</div><div class="score-bar"><div class="fill" style="width:' + tp + '%;background:var(--blue)"></div></div></div>' + html;
   document.getElementById('scoreGrid').innerHTML = html;
+
+  var rwScore = Math.round(200 + (rwRight / rwTotal) * 600);
+  var mathScore = Math.round(200 + (mathRight / mathTotal) * 600);
+  var satTotal = rwScore + mathScore;
+  document.getElementById('satScoreHero').innerHTML =
+    '<div class="sat-score-hero"><div class="sat-total">' + satTotal + '<span class="sat-max"> / 1600</span></div>' +
+    '<div class="sat-section-scores"><div class="sec"><div class="sec-label">Reading & Writing</div><div class="sec-val">' + rwScore + '</div></div>' +
+    '<div class="sec"><div class="sec-label">Math</div><div class="sec-val">' + mathScore + '</div></div></div></div>';
+
+  var bhtml = '';
+  moduleResults.forEach(function(mr) {
+    bhtml += '<h3>' + mr.section + ' — ' + mr.right + '/' + mr.count + '</h3><div class="q-grid">';
+    mr.questions.forEach(function(qd) {
+      var cls = qd.skipped ? 'skip' : (qd.correct ? 'right' : 'wrong');
+      var tip = qd.skipped ? 'Skipped' : (qd.correct ? 'Correct' : 'Incorrect');
+      bhtml += '<div class="q-cell ' + cls + '" title="Q' + qd.n + ': ' + tip + '">' + qd.n + '</div>';
+    });
+    bhtml += '</div>';
+  });
+  bhtml += '<div style="display:flex;gap:16px;justify-content:center;margin:16px 0;font-size:12px;color:var(--muted)">' +
+    '<span><span class="q-cell right" style="display:inline-flex;width:16px;height:16px;font-size:8px;vertical-align:middle;margin-right:3px">✓</span>Correct</span>' +
+    '<span><span class="q-cell wrong" style="display:inline-flex;width:16px;height:16px;font-size:8px;vertical-align:middle;margin-right:3px">✗</span>Wrong</span>' +
+    '<span><span class="q-cell skip" style="display:inline-flex;width:16px;height:16px;font-size:8px;vertical-align:middle;margin-right:3px">–</span>Skipped</span></div>';
+  document.getElementById('qBreakdown').innerHTML = '<div class="q-breakdown">' + bhtml + '</div>';
+
   S.submitted = true;
+  var tp = Math.round((totalRight / totalQ) * 100);
   sendToGoogleSheets(totalRight, totalQ, tp, moduleResults);
 }
 
