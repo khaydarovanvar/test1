@@ -666,10 +666,10 @@ function submitTest() {
 
   S.submitted = true;
   var tp = Math.round((totalRight / totalQ) * 100);
-  sendToGoogleSheets(totalRight, totalQ, tp, moduleResults);
+  sendToGoogleSheets(totalRight, totalQ, tp, moduleResults, satTotal, rwScore, mathScore);
 }
 
-function sendToGoogleSheets(totalRight, totalQ, pct, moduleResults) {
+function sendToGoogleSheets(totalRight, totalQ, pct, moduleResults, satTotal, rwScore, mathScore) {
   var status = document.getElementById('saveStatus');
   if (!GOOGLE_SCRIPT_URL) {
     status.style.display = 'block';
@@ -679,6 +679,13 @@ function sendToGoogleSheets(totalRight, totalQ, pct, moduleResults) {
   }
   status.style.display = 'block';
   status.textContent = 'Sending results...';
+  var qMap = {};
+  moduleResults.forEach(function(m) {
+    m.questions.forEach(function(qd) {
+      var label = m.section.split(':')[0].replace('Section 1, ','').replace('Section 2, ','');
+      qMap[label + ' Q' + qd.n] = qd.skipped ? 'skipped' : (qd.correct ? 'correct' : 'wrong');
+    });
+  });
   fetch(GOOGLE_SCRIPT_URL, {
     method: 'POST',
     mode: 'no-cors',
@@ -688,8 +695,11 @@ function sendToGoogleSheets(totalRight, totalQ, pct, moduleResults) {
       totalRight: totalRight,
       totalQ: totalQ,
       pct: pct,
+      satTotal: satTotal,
+      rwScore: rwScore,
+      mathScore: mathScore,
       modules: moduleResults.map(function(m) { return {section:m.section, right:m.right, count:m.count, pct:m.pct}; }),
-      answers: S.answers
+      questions: qMap
     })
   }).then(function() {
     status.textContent = 'Results sent to teacher.';
