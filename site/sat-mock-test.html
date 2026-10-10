@@ -136,8 +136,9 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
 .nav-btn:disabled{opacity:.4;cursor:default}
 
 /* Question navigator */
-.q-nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:center;max-width:500px}
-.q-dot{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:var(--muted);cursor:pointer;background:var(--surface);transition:all .1s;font-family:var(--mono)}
+.q-nav{display:flex;align-items:center;gap:4px;flex-wrap:nowrap;justify-content:center;overflow-x:auto;max-width:calc(100vw - 180px);-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.q-nav::-webkit-scrollbar{display:none}
+.q-dot{min-width:28px;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:var(--muted);cursor:pointer;background:var(--surface);transition:all .1s;font-family:var(--mono);flex-shrink:0}
 .q-dot:hover{border-color:var(--blue)}
 .q-dot.current{border-color:var(--blue);background:var(--blue);color:#fff}
 .q-dot.answered{background:var(--blue-light);border-color:var(--blue);color:var(--blue)}
@@ -188,7 +189,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
   .pane-left{border-right:none;border-bottom:1px solid var(--rule-soft);max-height:40vh;flex:none}
   .pane-right{flex:1}
   .hdr-section{display:none}
-  .q-nav{max-width:100%}
+  .q-nav{max-width:calc(100vw - 140px)}
   .hdr-inner{padding:0 12px}
 }
 @media print{
