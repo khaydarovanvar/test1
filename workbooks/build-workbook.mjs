@@ -89,13 +89,13 @@ const total = topics.reduce((a, t) => a + 45, 0);
 
 /* ---- contents --------------------------------------------------------- */
 const contents = `
-<section class="sheet contents">
+<section class="sheet contents" id="contents">
   <div class="eyebrow">${esc(meta.eyebrow)}</div>
   <h1 class="big">${tx(meta.title)}</h1>
   <p class="lead">${tx(meta.lead)}</p>
   <table class="toc">${topics.map(t => `<tr>
-    <td class="tn">Topic ${t.n}</td>
-    <td class="tt">${tx(t.title)}</td>
+    <td class="tn"><a href="#t${t.n}">Topic ${t.n}</a></td>
+    <td class="tt"><a href="#t${t.n}">${tx(t.title)}</a></td>
     <td class="tl">lessons ${esc(t.lessons)}</td>
     <td class="tq">45 questions</td></tr>`).join('')}
   </table>
@@ -104,7 +104,7 @@ const contents = `
 
 /* ---- topic pages ------------------------------------------------------ */
 const topicPages = topics.map(t => `
-<section class="sheet topic">
+<section class="sheet topic" id="t${t.n}">
   <div class="rule"></div>
   <div class="eyebrow">${esc(t.unit)} · TOPIC ${t.n}</div>
   <h1>${tx(t.title)}</h1>
@@ -138,10 +138,10 @@ const topicPages = topics.map(t => `
 /* ---- answers ---------------------------------------------------------- */
 const half = a => [a.slice(0, Math.ceil(a.length / 2)), a.slice(Math.ceil(a.length / 2))];
 const answers = `
-<section class="sheet answers">
+<section class="sheet answers" id="answers">
   <h1 class="big">Answers</h1>
   ${topics.map(t => `
-  <div class="atopic">
+  <div class="atopic" id="a${t.n}">
     <h2>Topic ${t.n} · ${tx(t.title)}</h2>
     ${BANDS.filter(b => b[0] !== 'beyond').map(([key, name, word]) => {
       const [L, R] = half(t[key]);
@@ -160,6 +160,7 @@ const answers = `
 /* ---- page ------------------------------------------------------------- */
 const html = `<!doctype html><html lang="en"><head><meta charset="utf-8">
 <title>${esc(meta.title)}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   @page { size: A4; margin: 16mm 14mm 18mm; }
   * { box-sizing: border-box; }
@@ -239,9 +240,67 @@ const html = `<!doctype html><html lang="en"><head><meta charset="utf-8">
   .sol { margin-bottom: 2.2mm; break-inside: avoid; }
   .sh { margin: 0; }
   .sb { margin: 0; color: #3e4c59; font-size: 9.2pt; }
+
+  /* The PDF is rendered with print media, so everything below shapes only the
+     browser view; Ctrl+P still produces exactly the pages of the PDF. */
+  @media screen {
+    body { background: #eef1f4; padding: 0 0 18mm; }
+    .bar { position: sticky; top: 0; z-index: 9; display: flex; align-items: center; gap: 4mm;
+           padding: 3mm 5mm; background: #16202b; color: #e8edf2; font-size: 9pt; }
+    /* A select sizes itself to its longest option — here a full topic title —
+       so it must be told it may shrink, or it pushes the bar off a phone. */
+    .bar select { flex: 0 1 auto; min-width: 0; max-width: 46vw; }
+    .bar b { font-weight: 700; }
+    .bar .sp { margin-left: auto; }
+    .bar a { color: #9fc4e8; text-decoration: none; }
+    .bar a:hover { text-decoration: underline; }
+    .bar select, .bar button { font: inherit; font-size: 8.6pt; color: #16202b; background: #e8edf2;
+      border: 0; border-radius: 1.4mm; padding: 1.2mm 2.4mm; cursor: pointer; }
+    .bar button[aria-pressed="true"] { background: #9fc4e8; }
+    .sheet { background: #fff; max-width: 190mm; margin: 7mm auto; padding: 14mm 13mm;
+             border-radius: 1.5mm; box-shadow: 0 1px 3px rgba(22,32,43,.14); }
+    .toc a { color: inherit; text-decoration: none; }
+    .toc tr:hover .tt a { text-decoration: underline; }
+    body.hide-answers .answers { display: none; }
+    @media (max-width: 760px) {
+      .bar > b { display: none; }
+      .sheet { padding: 8mm 6mm; margin: 4mm; }
+      .boxes { display: block; }
+      .box.kw { margin-bottom: 4mm; }
+      .band { flex-wrap: wrap; }
+      .desc { margin-left: 0; text-align: left; max-width: none; }
+      .agrid { display: block; }
+    }
+  }
+  @media print { .bar { display: none; } }
 </style></head><body>
+<div class="bar">
+  <b>${esc(meta.eyebrow)}</b>
+  <select id="jump" aria-label="Go to a topic">
+    <option value="#contents">Contents</option>
+    ${topics.map(t => `<option value="#t${t.n}">Topic ${t.n} — ${esc(t.title)}</option>`).join('')}
+    <option value="#answers">Answers</option>
+  </select>
+  <span class="sp"></span>
+  <button id="toggle" type="button" aria-pressed="false">Hide answers</button>
+  <a href="#contents">Top</a>
+</div>
 ${contents}${topicPages}${answers}
+<script>
+  var jump = document.getElementById('jump');
+  jump.addEventListener('change', function () { location.hash = this.value; });
+  var btn = document.getElementById('toggle');
+  btn.addEventListener('click', function () {
+    var hidden = document.body.classList.toggle('hide-answers');
+    this.setAttribute('aria-pressed', String(hidden));
+    this.textContent = hidden ? 'Show answers' : 'Hide answers';
+  });
+<\/script>
 </body></html>`;
+
+/* ---- write ------------------------------------------------------------ */
+const HTML_OUT = OUT.replace(/\.pdf$/, '.html');
+fs.writeFileSync(HTML_OUT, html);
 
 /* ---- print ------------------------------------------------------------ */
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
@@ -262,4 +321,5 @@ await page.pdf({
 });
 await browser.close();
 console.log(`${topics.length} topics · ${total} questions · ` +
-  `${topics.length * 15} worked solutions -> ${path.basename(OUT)}`);
+  `${topics.length * 15} worked solutions -> ` +
+  `${path.basename(HTML_OUT)}, ${path.basename(OUT)}`);

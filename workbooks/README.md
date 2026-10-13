@@ -10,6 +10,7 @@ worked solution for every Beyond question.
 |---|---|
 | `g11-alg-q1.mjs` | Grade 11 Algebra and Calculus, Quarter I — 11 topics, lessons 1–27, 495 questions |
 | `g11-alg-q1.pdf` | the same, rendered to A4 |
+| `g11-alg-q1.html` | the same again, one self-contained file to open in a browser |
 | `build-workbook.mjs` | the renderer |
 
 ## Building
@@ -17,6 +18,17 @@ worked solution for every Beyond question.
 ```sh
 node build-workbook.mjs g11-alg-q1.mjs
 ```
+
+One run writes both the `.html` and the `.pdf` from the same markup.
+
+## The HTML
+
+One file, no assets and no internet connection — open it, or copy it to a school
+machine. It carries a sticky bar with a topic jump menu and a **Hide answers**
+button, and the contents page links to each topic.
+
+Printing it from the browser gives exactly the pages of the PDF: the screen
+styling all sits inside `@media screen`, so print media sees only the A4 rules.
 
 The builder refuses to print a workbook whose tiers do not hold 10 / 10 / 10 / 15
 questions, whose questions lack answers, or whose Beyond questions lack solutions —
