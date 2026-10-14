@@ -1,0 +1,424 @@
+# -*- coding: utf-8 -*-
+"""The methods briefing that stands in front of each Beyond section.
+
+Beyond questions need an idea, not a procedure, and the ideas repeat: a square
+completed inside a quartic, a sum that telescopes, a difference written as a sum
+of squares. Each topic gets a short page of them, with the smallest worked line
+that shows the move. The same material prints on its own as a methods booklet.
+"""
+
+from .common import F, M, rt, sq
+
+
+def p(base, exp):
+    return f'{base}<sup>{exp}</sup>'
+
+
+def h(n, d):
+    return F(n, d)
+
+
+X12 = p('x', h(1, 2))
+
+NOTES = {
+ 'alg-01': [
+  ('Add and subtract the same thing',
+   'A quartic with no obvious factors often hides a difference of two squares. '
+   'Add the term that completes a square, then take it away again: '
+   + M(p('x', 4) + ' + 4 = ' + p('x', 4) + ' + 4' + sq('x') + ' + 4 − 4' + sq('x')
+       + ' = (' + sq('x') + ' + 2)<sup>2</sup> − (2x)<sup>2</sup>') + '.'),
+  ('Symmetric sums',
+   'When only ' + M('s = x + y') + ' and ' + M('p = xy') + ' are known, every '
+   'symmetric expression follows: ' + M(sq('x') + ' + ' + sq('y') + ' = ' + sq('s') + ' − 2p')
+   + ' and ' + M(p('x', 3) + ' + ' + p('y', 3) + ' = ' + p('s', 3) + ' − 3ps') + '.'),
+  ('Factorise to solve in whole numbers',
+   'An equation in two unknowns with a product term rearranges into a product '
+   'equal to a constant. Then list the factor pairs: '
+   + M('xy − 2x + 3y = 11') + ' becomes ' + M('(x + 3)(y − 2) = 5') + '.'),
+  ('Three consecutive integers',
+   M(p('n', 3) + ' − n = (n − 1)n(n + 1)') + '. Among any three consecutive numbers '
+   'one is a multiple of 3 and at least one is even, so the product is a multiple '
+   'of 6 — a divisibility proof with no induction.'),
+  ('When the sum is zero',
+   M('a + b + c = 0') + ' is never just a condition; it is a factor. From '
+   + M(p('a', 3) + ' + ' + p('b', 3) + ' + ' + p('c', 3) + ' − 3abc = (a + b + c)(…)')
+   + ', the whole left side vanishes at once.'),
+ ],
+ 'alg-02': [
+  ('Divide before you judge',
+   'To ask when a fraction of whole numbers is an integer, split off the whole part '
+   'first: ' + M(F('n + 3', 'n − 1') + ' = 1 + ' + F(4, 'n − 1')) + '. '
+   'Now the question is only which numbers divide 4.'),
+  ('Every denominator counts',
+   'In a stacked fraction the inner denominators are forbidden values too. '
+   + M(F(1, '1 + ' + F(1, 'x'))) + ' rules out both ' + M('x = 0') + ' and '
+   + M('x = −1') + ', though only one is visible after simplifying.'),
+  ('The square that proves an inequality',
+   M('x + ' + F(1, 'x') + ' − 2 = ' + F('(x − 1)<sup>2</sup>', 'x')) + '. '
+   'Writing a difference over a common denominator usually exposes a square, and a '
+   'square settles the sign.'),
+  ('Egyptian equations',
+   M(F(1, 'a') + ' + ' + F(1, 'b') + ' = ' + F(1, 'n')) + ' clears to '
+   + M('(a − n)(b − n) = ' + sq('n')) + '. Counting the factor pairs of '
+   + M(sq('n')) + ' counts the solutions.'),
+  ('A denominator that never vanishes',
+   'A quadratic denominator is safe exactly when its discriminant is negative: '
+   + M(sq('x') + ' + x + 1 = (x + ' + h(1, 2) + ')<sup>2</sup> + ' + h(3, 4))
+   + ', never zero, so the fraction is defined everywhere.'),
+ ],
+ 'alg-03': [
+  ('Know the standard factorisations',
+   M(sq('a') + ' − ' + sq('b')) + ', ' + M(p('a', 3) + ' ± ' + p('b', 3)) + ', '
+   + M(p('x', 4) + ' + ' + sq('x') + ' + 1 = (' + sq('x') + ' + x + 1)(' + sq('x')
+       + ' − x + 1)') + ' and ' + M(p('x', 4) + ' + 4') + '. Most "impossible" '
+   'cancellations are one of these in disguise.'),
+  ('A reversed bracket costs a sign',
+   M('(b − a)<sup>n</sup> = (−1)<sup>n</sup>(a − b)<sup>n</sup>') + '. '
+   'An even power hides the swap; an odd one leaves a minus behind.'),
+  ('Cancelling narrows the domain',
+   M(F(sq('x') + ' − 4', 'x − 2')) + ' and ' + M('x + 2') + ' agree everywhere except '
+   'at ' + M('x = 2') + ', where the first is undefined. Say so in the answer.'),
+  ('The difference quotient',
+   M(F('(x + h)<sup>2</sup> − ' + sq('x'), 'h') + ' = 2x + h') + '. '
+   'The numerator is built to lose its constant term so the ' + M('h') + ' cancels — '
+   'the first step of calculus, four years early.'),
+  ('Exact division',
+   M(F(sq('x') + ' + ax + b', 'x + 2')) + ' divides exactly only if ' + M('x = −2')
+   + ' makes the numerator zero. Substituting the root is faster than dividing.'),
+ ],
+ 'alg-04': [
+  ('Build the LCD from the factors',
+   'Factorise every denominator, then take each distinct factor to its highest '
+   'power. Multiplying the denominators together always works but often gives '
+   'far more than is needed.'),
+  ('The ' + M(p('x', 'n') + ' − 1') + ' family',
+   M(p('x', 2) + ' − 1 = (x − 1)(x + 1)') + ', '
+   + M(p('x', 3) + ' − 1 = (x − 1)(' + sq('x') + ' + x + 1)') + ', '
+   + M(p('x', 6) + ' − 1 = (' + p('x', 3) + ' − 1)(' + p('x', 3) + ' + 1)') + '. '
+   'In general ' + M('gcd(' + p('x', 'n') + ' − 1, ' + p('x', 'm') + ' − 1) = '
+                     + p('x', 'gcd(n,m)') + ' − 1') + '.'),
+  ('Reversed brackets again',
+   'Before declaring two denominators different, try multiplying one by '
+   + M('−1') + '. ' + M('y − x') + ' and ' + M('x − y') + ' are the same factor '
+   'wearing a sign.'),
+  ('Divisor arguments',
+   'Questions asking for which integers a fraction is whole are divisor questions. '
+   'Split off the whole part, then list the divisors of what is left.'),
+  ('Lowest common multiple of numbers and letters',
+   'Numbers by LCM, letters by highest power — the same rule applied twice. '
+   + M('LCD(' + F(2, '3' + sq('a') + 'b') + ', ' + F(5, '6a' + p('b', 3)) + ') = 6'
+       + sq('a') + p('b', 3)) + '.'),
+ ],
+ 'alg-05': [
+  ('Telescoping',
+   M(F(1, 'k(k + 1)') + ' = ' + F(1, 'k') + ' − ' + F(1, 'k + 1')) + ' and '
+   + M(F(1, 'n(n + 2)') + ' = ' + h(1, 2) + '(' + F(1, 'n') + ' − ' + F(1, 'n + 2') + ')')
+   + '. Split, then watch the middle terms cancel in pairs.'),
+  ('Symmetric three-variable sums',
+   'Sums over ' + M('(a − b)(a − c)') + ' and its cyclic partners share the common '
+   'denominator ' + M('(a − b)(b − c)(a − c)') + '. The numerators collapse: the '
+   'constant version gives 0, the ' + M(sq('a')) + ' version gives 1.'),
+  ('A quadratic agreeing at three points',
+   'If an expression is a quadratic in ' + M('x') + ' and equals 1 at three '
+   'different values, it is the constant 1. That proves the Lagrange identity '
+   'without expanding anything.'),
+  ('Turn a condition into a factorisation',
+   'From ' + M(F(1, 'a') + ' + ' + F(1, 'b') + ' + ' + F(1, 'c') + ' = ' + F(1, 'a + b + c'))
+   + ', clearing denominators and collecting gives ' + M('(a + b)(b + c)(c + a) = 0')
+   + ' — so two of the three are opposites.'),
+  ('The ' + M('x + ' + F(1, 'x')) + ' ladder',
+   'Squaring gives ' + M(sq('x') + ' + ' + F(1, sq('x'))) + ', cubing gives the '
+   'cubes, and multiplying two rungs climbs higher: '
+   + M('(' + sq('x') + ' + ' + F(1, sq('x')) + ')(' + p('x', 3) + ' + ' + F(1, p('x', 3))
+       + ') = ' + p('x', 5) + ' + ' + F(1, p('x', 5)) + ' + x + ' + F(1, 'x')) + '.'),
+ ],
+ 'alg-06': [
+  ('The four costly errors',
+   'Cancelling a term instead of a factor; losing the sign on a reversed bracket; '
+   'forgetting the bracket when subtracting a numerator; keeping a root that makes '
+   'a denominator zero.'),
+  ('Test a doubtful step with one number',
+   'Put ' + M('x = 2') + ' into both sides. A wrong cancellation shows itself at '
+   'once, and it costs five seconds.'),
+  ('Reject roots that kill a denominator',
+   'Clearing fractions can invent solutions. Every candidate must be checked '
+   'against the original denominators before it is written down.'),
+  ('Telescoping sums',
+   'Splitting ' + M(F(1, 'k(k + 1)')) + ' turns a long sum into two surviving terms. '
+   'Recognise the shape: a product of two consecutive factors below the line.'),
+  ('State the permissible values',
+   'They are part of the answer, not a footnote. An expression that simplifies to '
+   + M('1') + ' still carries the values it was never defined at.'),
+ ],
+ 'alg-07': [
+  ('Factorise, then cancel across',
+   'Multiplication lets a factor from one numerator cancel a factor of the other '
+   'denominator. Multiplying out first only creates work to undo.'),
+  ('Telescoping products',
+   M(F('x', 'x + 1') + ' · ' + F('x + 1', 'x + 2') + ' · ' + F('x + 2', 'x + 3')
+       + ' = ' + F('x', 'x + 3')) + '. Each numerator meets the previous denominator.'),
+  ('A power reaches every factor',
+   M('(' + F('2a', 'b') + ')<sup>3</sup> = ' + F('8' + p('a', 3), p('b', 3)))
+   + ' — the 2 is cubed too. The commonest slip in this topic.'),
+  ('Only the ratio matters',
+   'Given ' + M(F('x', 'y') + ' = ' + h(2, 3)) + ', put ' + M('x = 2k') + ' and '
+   + M('y = 3k') + '. Every ' + M('k') + ' cancels, and the answer is a number.'),
+  ('Dividing and componendo',
+   M(F('a', 'b') + ' ÷ ' + F('c', 'd') + ' = ' + F('ad', 'bc')) + '; and adding 1 to '
+   'both sides of a proportion gives ' + M(F('a + b', 'b') + ' = ' + F('c + d', 'd')) + '.'),
+ ],
+ 'alg-08': [
+  ('A compound fraction is a division',
+   'Tidy the top into one fraction, tidy the bottom into one fraction, then '
+   'multiply by the reciprocal. Never cancel across the main bar before that.'),
+  ('Continued fractions build outwards',
+   M('1 + ' + F(1, '1 + ' + F(1, '1 + ' + F(1, 'x')))) + ' is worked from the '
+   'innermost ' + M('1 + ' + F(1, 'x')) + ' outwards. The coefficients that appear '
+   'are Fibonacci numbers.'),
+  ('Use the condition, do not fight it',
+   'With ' + M('a + b + c = 0') + ', substitute ' + M('c = −(a + b)') + ' or square '
+   'the condition to get ' + M(sq('a') + ' + ' + sq('b') + ' + ' + sq('c')
+                               + ' = −2(ab + bc + ca)') + '.'),
+  ('The S · T trick',
+   'For sums with squared denominators, multiply the plain sum by '
+   + M('T = ' + F(1, 'b − c') + ' + ' + F(1, 'c − a') + ' + ' + F(1, 'a − b'))
+   + '. The cross terms cancel and the squared sum appears.'),
+  ('Check the long chain at a value',
+   'Before writing the final line, test the start and the end at '
+   + M('x = 2') + '. A dropped sign in the middle shows up immediately.'),
+ ],
+ 'alg-09': [
+  ('The four costly errors',
+   'Multiplying by the divisor instead of its reciprocal; cubing only the letter '
+   'and not the coefficient; cancelling both powers of ' + M('x') + ' instead of one; '
+   'losing the bracket in a compound numerator.'),
+  ('Work a compound fraction in three moves',
+   'One fraction on top, one underneath, then invert and multiply. '
+   'Trying to shortcut is where the marks go.'),
+  ('Collapsing to a constant is normal',
+   'Many well-built chains end at ' + M('1') + ' or ' + M('−1') + '. '
+   'A surprising answer is not a sign of error — but check it at one value.'),
+  ('Power ladders',
+   'From ' + M('x + ' + F(1, 'x') + ' = 3') + ' every higher combination follows by '
+   'squaring, cubing and multiplying rungs together.'),
+  ('Proportion by substitution',
+   'For ' + M(F('a', 'b') + ' = ' + F('c', 'd')) + ', set both equal to '
+   + M('t') + ' and write ' + M('a = bt') + ', ' + M('c = dt') + '. '
+   'The claim usually becomes an identity in ' + M('t') + '.'),
+ ],
+ 'alg-10': [
+  ('The product is the whole story',
+   'On ' + M('y = ' + F('k', 'x')) + ' every point satisfies ' + M('xy = k') + '. '
+   'One known point gives ' + M('k') + ' by multiplication, and the rectangle under '
+   'any point has area ' + M('|k|') + '.'),
+  ('Whole-number points are divisors',
+   M('xy = 12') + ' has as many integer solutions as 12 has divisors, positive and '
+   'negative — twelve points in all.'),
+  ('A moved hyperbola',
+   M('y = ' + F('3x − 1', 'x − 2') + ' = 3 + ' + F(5, 'x − 2')) + '. '
+   'Dividing out shows the asymptotes at once: ' + M('x = 2') + ' and ' + M('y = 3') + '.'),
+  ('Least value of ' + M('x + ' + F('k', 'x')),
+   M('x + ' + F('k', 'x') + ' − 2' + rt('k') + ' = ' + F('(x − ' + rt('k') + ')<sup>2</sup>', 'x'))
+   + ', so the minimum is ' + M('2' + rt('k')) + ' at ' + M('x = ' + rt('k')) + '.'),
+  ('Rate problems are inverse proportion',
+   'Work done in one hour adds: ' + M(F(1, 't') + ' + ' + F(1, 't + 5') + ' = ' + F(1, 6))
+   + '. Clearing the fractions gives a quadratic with one sensible root.'),
+ ],
+'alg-11': [
+  ('Denesting a double root',
+   M(rt('a + 2' + rt('b'))) + ' simplifies when two numbers add to ' + M('a') + ' and '
+   'multiply to ' + M('b') + ': then ' + M('a + 2' + rt('b') + ' = (' + rt('x') + ' + '
+   + rt('y') + ')<sup>2</sup>') + '. So ' + M('3 + 2' + rt(2) + ' = (1 + ' + rt(2)
+   + ')<sup>2</sup>') + '.'),
+  ('Conjugates',
+   'Multiply by the conjugate to clear a root below the line. For cube roots use '
+   + M(p('a', 3) + ' − ' + p('b', 3) + ' = (a − b)(' + sq('a') + ' + ab + ' + sq('b') + ')')
+   + ', so ' + M(F(1, rt(2, 3) + ' − 1')) + ' needs ' + M(rt(4, 3) + ' + ' + rt(2, 3) + ' + 1')
+   + '.'),
+  ('Telescoping surds',
+   M(F(1, rt('k') + ' + ' + rt('k + 1')) + ' = ' + rt('k + 1') + ' − ' + rt('k'))
+   + ' — rationalising turns a sum of fractions into a collapsing chain.'),
+  ('Compare by squaring',
+   'Both sides positive, so squaring decides. ' + M(rt(7) + ' + ' + rt(5)) + ' beats '
+   + M(rt(10) + ' + ' + rt(2)) + ' because ' + M('2' + rt(35) + ' &gt; 2' + rt(20)) + '.'),
+  ('Trap the value between squares',
+   M(sq('n') + ' &lt; ' + sq('n') + ' + n &lt; (n + 1)<sup>2</sup>') + ', so '
+   + M(rt(sq('n') + ' + n')) + ' lies strictly between two consecutive whole numbers '
+   'and is never one itself.'),
+ ],
+ 'alg-12': [
+  ('Compare by a common power',
+   'To rank ' + M(p(2, h(1, 2))) + ', ' + M(p(3, h(1, 3))) + ' and ' + M(p(6, h(1, 6)))
+   + ', raise all three to the sixth: 8, 9 and 6. Raising to a power preserves order '
+   'among positives.'),
+  ('Substitute to get a quadratic',
+   'With ' + M('t = ' + p(3, 'x')) + ', the equation ' + M(p(9, 'x') + ' − 4 · '
+   + p(3, 'x') + ' + 3 = 0') + ' becomes ' + M(sq('t') + ' − 4t + 3 = 0') + '. '
+   'The same trick handles ' + M('t = ' + X12) + ' and ' + M('t = ' + p('x', h(1, 4))) + '.'),
+  ('Reciprocal pairs',
+   M(p('a', h(1, 2))) + ' and ' + M(p('a', '−' + h(1, 2))) + ' multiply to 1, so in '
+   + M('(' + p('a', h(1, 2)) + ' + ' + p('a', '−' + h(1, 2)) + ')<sup>2</sup>')
+   + ' the middle term is simply 2.'),
+  ('Work the root first',
+   M(p(27, h(2, 3)) + ' = (' + rt(27, 3) + ')<sup>2</sup> = 9') + '. '
+   'Taking the root before the power keeps the numbers small enough to do by hand.'),
+  ('A negative index turns a fraction over',
+   M('(' + F(8, 27) + ')<sup>−' + h(2, 3) + '</sup> = (' + F(27, 8) + ')<sup>'
+     + h(2, 3) + '</sup> = ' + F(9, 4)) + '.'),
+ ],
+ 'alg-13': [
+  ('One substitution does most of the work',
+   'Put ' + M('u = ' + X12) + '. Then ' + M('x − 5' + X12 + ' + 6') + ' is '
+   + M(sq('u') + ' − 5u + 6') + ', an ordinary quadratic, and the factors translate '
+   'straight back.'),
+  ('A difference of squares in disguise',
+   M('x − y = (' + X12 + ' − ' + p('y', h(1, 2)) + ')(' + X12 + ' + ' + p('y', h(1, 2))
+     + ')') + '. The cube-root version uses '
+   + M('a − b = (' + p('a', h(1, 3)) + ' − ' + p('b', h(1, 3)) + ')(' + p('a', h(2, 3))
+       + ' + ' + p('(ab)', h(1, 3)) + ' + ' + p('b', h(2, 3)) + ')') + '.'),
+  ('Take out the lowest power',
+   'Negative indices included: ' + M(X12 + ' − ' + p('x', '−' + h(1, 2)) + ' = '
+                                     + p('x', '−' + h(1, 2)) + '(x − 1)') + '.'),
+  ('Rationalise the numerator',
+   M(F(X12 + ' − 3', 'x − 9') + ' = ' + F(1, X12 + ' + 3')) + '. '
+   'The new form is defined at ' + M('x = 9') + ', where the old one was not.'),
+  ('State the condition',
+   'All of this assumes the bases are positive. Say so — it is where the marks are, '
+   'and where the mathematics is honest.'),
+ ],
+ 'alg-14': [
+  ('The subtraction trick',
+   'For a block of ' + M('k') + ' digits, multiply by ' + M(p(10, 'k')) + ' and '
+   'subtract: ' + M('0.(abc) = ' + F('100a + 10b + c', 999)) + '. '
+   'Nines below the line, one for each digit of the block.'),
+  ('Which fractions terminate',
+   'In lowest terms, exactly those whose denominator is built only from '
+   + M('2') + 's and ' + M('5') + 's — because a terminating decimal is '
+   + M(F('k', p(10, 'm'))) + '.'),
+  ('How long the block is',
+   'For ' + M('q') + ' coprime to 10, the period of ' + M(F(1, 'q')) + ' is the '
+   'smallest ' + M('k') + ' with ' + M(p(10, 'k') + ' ≡ 1 (mod q)') + '. '
+   'For 7 and for 13 that is 6.'),
+  ('Standard form arithmetic',
+   'Multiply the numbers and add the powers; divide and subtract. '
+   'To <b>add</b>, make the powers equal first.'),
+  ('Counting digits',
+   'A number between ' + M(p(10, 19)) + ' and ' + M(p(10, 20)) + ' has 20 digits. '
+   'Putting a power into standard form answers "how many digits" at a glance.'),
+ ],
+ 'alg-15': [
+  ('The four costly errors',
+   M(rt(sq('x')) + ' = x') + ' instead of ' + M('|x|') + '; halving an index instead '
+   'of multiplying; ' + M(p(4, h(3, 2))) + ' read as ' + M('4 · ' + h(3, 2)) + '; '
+   'and ' + M(rt(sq('a') + ' + ' + sq('b')) + ' = a + b') + ', which one example kills.'),
+  ('Denesting',
+   'Look for a square: ' + M('9 + 4' + rt(5) + ' = (2 + ' + rt(5) + ')<sup>2</sup>')
+   + '. Match the rational parts and the root parts separately.'),
+  ('Compare by a common power',
+   'Raise both to the lowest common multiple of the index denominators. '
+   + M(p(3, h(1, 2))) + ' against ' + M(p(2, h(2, 3))) + ' becomes 27 against 16.'),
+  ('Conjugate pairs that multiply to 1',
+   M('(2 + ' + rt(3) + ')(2 − ' + rt(3) + ') = 1') + ', so each is the reciprocal of '
+   'the other and rationalising needs no division at all.'),
+  ('Estimate with standard form',
+   'Keep one significant figure through the calculation and the power of ten does '
+   'the rest. It is the fastest check on an answer that looks wrong.'),
+ ],
+ 'alg-16': [
+  ('The definition does the work',
+   M('a &gt; b') + ' means ' + M('a − b &gt; 0') + '. Every comparison, however '
+   'awkward, is the sign of one difference.'),
+  ('Sum of squares',
+   'Write the difference as a sum of squares and the sign is settled: '
+   + M('2(' + sq('a') + ' + ' + sq('b') + ' + ' + sq('c') + ' − ab − bc − ca) = '
+       + '(a − b)<sup>2</sup> + (b − c)<sup>2</sup> + (c − a)<sup>2</sup>') + '.'),
+  ('AM ≥ GM',
+   M(F('a + b', 2) + ' ≥ ' + rt('ab')) + ' because the difference is '
+   + M(F('(' + rt('a') + ' − ' + rt('b') + ')<sup>2</sup>', 2)) + '. '
+   'For three numbers the same follows from '
+   + M(p('a', 3) + ' + ' + p('b', 3) + ' + ' + p('c', 3) + ' ≥ 3abc') + '.'),
+  ('Compare by squaring',
+   'Only when both sides are non-negative. Then squaring clears roots without '
+   'disturbing the order.'),
+  ('The workhorse',
+   M(sq('a') + ' + ' + sq('b') + ' + ' + sq('c') + ' ≥ ab + bc + ca')
+   + ' and its cousin ' + M('(a + b + c)<sup>2</sup> ≥ 3(ab + bc + ca)')
+   + ' settle a surprising share of competition inequalities.'),
+ ],
+ 'alg-17': [
+  ('What is safe',
+   'Add or subtract anything from both sides; multiply or divide by a positive. '
+   'A <b>negative</b> multiplier reverses the sign — the single most expensive slip.'),
+  ('Squaring is not order-preserving',
+   M('1 &gt; −2') + ' but ' + M('1 &lt; 4') + '. Cubing always is, because '
+   + M(p('a', 3) + ' − ' + p('b', 3) + ' = (a − b)(' + sq('a') + ' + ab + ' + sq('b') + ')')
+   + ' and the second bracket is never negative.'),
+  ('Reciprocals need one sign',
+   M('a &gt; b') + ' gives ' + M(F(1, 'a') + ' &lt; ' + F(1, 'b')) + ' only when '
+   + M('a') + ' and ' + M('b') + ' have the same sign. ' + M('1 &gt; −1') + ' is the '
+   'counter-example to remember.'),
+  ('Rewrite to see the direction',
+   M(F('x', 'x + 1') + ' = 1 − ' + F(1, 'x + 1')) + '. As ' + M('x') + ' grows the '
+   'subtracted part shrinks, so the whole climbs — monotonicity with no calculus.'),
+  ('The mediant',
+   'If ' + M(F('a', 'b') + ' &lt; ' + F('c', 'd')) + ' with positive denominators, '
+   'then ' + M(F('a + c', 'b + d')) + ' lies strictly between them.'),
+ ],
+ 'alg-18': [
+  ('What may be combined',
+   'Same-direction inequalities may always be <b>added</b>; they may be '
+   '<b>multiplied</b> only when every number is positive; they may '
+   '<b>never</b> be subtracted or divided term by term.'),
+  ('Differences as sums',
+   'To bound ' + M('a − b') + ', bound ' + M('−b') + ' first by reversing the ends of '
+   + M('b') + ', then add. The same for division: bound ' + M(F(1, 'b')) + ' and '
+   'multiply.'),
+  ('Corners, then the inside',
+   'For an expression monotone in each variable the extremes sit at the corners of '
+   'the box. When it is not — ' + M(sq('x')) + ' across zero — the extreme is '
+   '<b>inside</b>, and the corners lie.'),
+  ('Fixed sum, biggest product',
+   'If ' + M('a + b') + ' is fixed, ' + M('ab') + ' is largest when '
+   + M('a = b') + ': ' + M('ab = ' + F('(a+b)<sup>2</sup>', 4) + ' − '
+                           + F('(a−b)<sup>2</sup>', 4)) + '.'),
+  ('Check the denominator can\'t vanish',
+   'Before trusting a corner of a range for a fraction, make sure no point of the '
+   'box makes the denominator zero.'),
+ ],
+ 'alg-19': [
+  ('Positives are easy',
+   'If ' + M('0 &lt; a &lt; b') + ' then ' + M(p('a', 'n') + ' &lt; ' + p('b', 'n'))
+   + ' for every ' + M('n ≥ 1') + ', and roots behave the same way.'),
+  ('Odd and even',
+   'An odd power keeps the order for every real number. An even power keeps it only '
+   'for non-negatives: ' + M('−3 &lt; 2') + ' but ' + M('9 &gt; 4') + '.'),
+  ('Below one, powers shrink',
+   'For ' + M('0 &lt; x &lt; 1') + ', ' + M(p('x', 3) + ' &lt; ' + sq('x') + ' &lt; x &lt; '
+                                            + rt('x')) + '. Above 1 the order reverses.'),
+  ('An even power across zero',
+   'If the range contains 0, the least value of ' + M(sq('x')) + ' is 0, reached '
+   'inside the range. The largest comes from whichever end is further from zero.'),
+  ('Bernoulli',
+   M('(1 + h)<sup>n</sup> ≥ 1 + nh') + ' for ' + M('h ≥ −1') + '. '
+   'It is the quickest way to show a power with base above 1 grows past any bound.'),
+ ],
+ 'alg-20': [
+  ('The four costly errors',
+   'Keeping the direction after multiplying by a negative; subtracting inequalities '
+   'term by term; squaring a range that crosses zero and trusting the corners; '
+   'taking reciprocals across a change of sign.'),
+  ('Sum of squares, again',
+   'Nearly every proof in this chapter is "the difference is a square, or a sum of '
+   'squares". Write the difference first and look for the pattern.'),
+  ('A checklist for estimating a range',
+   'Is each variable\'s range right? Is the expression monotone in each? Does any '
+   'denominator vanish inside? Only then do the corners decide.'),
+  ('The mean family',
+   M(F('a + b', 2) + ' ≥ ' + rt('ab') + ' ≥ ' + F('2ab', 'a + b')) + ' for positive '
+   + M('a, b') + ' — arithmetic, geometric and harmonic, with equality only when '
+   + M('a = b') + '.'),
+  ('The triangle inequality',
+   M('|a + b| ≤ |a| + |b|') + ', proved by squaring both sides and using '
+   + M('ab ≤ |ab|') + '. Equality when the two have the same sign.'),
+ ],
+}

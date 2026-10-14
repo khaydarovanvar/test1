@@ -110,6 +110,15 @@ h2 { font-size:13pt; margin:0; }
 .sols .sol { color:var(--soft); margin-top:.8mm; }
 .sols { columns:1; }
 
+.notes { border:1px solid var(--rule); border-left:3px solid #9B2C2C;
+  border-radius:1.5mm; padding:3mm 4mm 2mm; margin:6mm 0 3mm; background:#FDFBFB;
+  page-break-inside:avoid; }
+.notes .nhead { font-size:8.6pt; letter-spacing:.1em; text-transform:uppercase;
+  color:#9B2C2C; font-weight:700; margin-bottom:2mm; }
+.note { margin:0 0 2.2mm; page-break-inside:avoid; }
+.note .nname { font-weight:700; font-size:9.6pt; }
+.note .nbody { font-size:9.6pt; color:#2C3742; }
+.notesonly .notes { margin-top:3mm; }
 .cover { page-break-after:always; }
 .covertitle { font-size:26pt; line-height:1.15; margin:2mm 0 3mm; }
 .covernote { color:var(--soft); font-size:9pt; margin-top:4mm; }
@@ -144,10 +153,27 @@ def render_questions(section, items):
     return '\n'.join(out)
 
 
+def render_notes(topic, standalone=False):
+    """The methods briefing: named ideas with the smallest line that shows each."""
+    notes = topic.get('notes') or []
+    if not notes:
+        return ''
+    items = ''.join(f'<div class="note"><div class="nname">{name}</div>'
+                    f'<div class="nbody">{body}</div></div>' for name, body in notes)
+    label = ('The ideas behind the hard problems' if standalone
+             else 'Before you start — the ideas behind the Beyond problems')
+    return (f'<div class="notes"><div class="nhead">{label}</div>{items}</div>')
+
+
 def render_topic(topic, boxes=True):
     kw = ''.join(f'<li>{w}</li>' for w in topic['keywords'])
     rem = ''.join(f'<li>{r}</li>' for r in topic['remember'])
-    body = '\n'.join(render_questions(name, items) for name, items in topic['sections'])
+    pieces = []
+    for name, items in topic['sections']:
+        if name == 'Beyond':
+            pieces.append(render_notes(topic))
+        pieces.append(render_questions(name, items))
+    body = '\n'.join(pieces)
     total = sum(len(items) for _, items in topic['sections'])
     boxes_html = ('<div class="boxes">'
                   f'<div class="box keywords"><div class="blabel">Key words</div>'
@@ -165,6 +191,19 @@ def render_topic(topic, boxes=True):
   </div>
   {boxes_html}
   {body}
+</section>"""
+
+
+def render_topic_notes(topic):
+    """A topic reduced to its heading and its methods briefing."""
+    return f"""
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">{topic.get('unit', 'Grade 8 Algebra')} · Topic {topic['number']}</div>
+    <h1>{topic['title']}</h1>
+    <p class="refs">Lessons {topic['lessons']} · {topic['uz']} · {topic['cam']}</p>
+  </div>
+  {render_notes(topic, standalone=True)}
 </section>"""
 
 
@@ -193,21 +232,25 @@ def render_answers(topics):
     return '\n'.join(out)
 
 
-def render_contents(topics, title, blurb, eyebrow):
+def render_contents(topics, title, blurb, eyebrow, counter=None):
+    counter = counter or (lambda t: f'{sum(len(i) for _, i in t["sections"])} questions')
     rows = ''.join(
         f'<tr><td class="tnum">Topic {t["number"]}</td><td>{t["title"]}</td>'
         f'<td class="tles">lessons {t["lessons"]}</td>'
-        f'<td class="tq">{sum(len(i) for _, i in t["sections"])} questions</td></tr>'
+        f'<td class="tq">{counter(t)}</td></tr>'
         for t in topics)
     total = bank.count(topics)
+    tail = (f'{len(topics)} topics · {total} questions · {total // len(topics)} per topic'
+            if counter is None or 'question' in counter(topics[0])
+            else f'{len(topics)} topics · '
+                 f'{sum(len(t["notes"]) for t in topics)} methods')
     return f"""
 <section class="cover">
   <div class="eyebrow">{eyebrow}</div>
   <h1 class="covertitle">{title}</h1>
   <p class="sub">{blurb}</p>
   <table class="contents">{rows}</table>
-  <p class="covernote">{len(topics)} topics · {total} questions ·
-     {total // len(topics)} per topic</p>
+  <p class="covernote">{tail}</p>
 </section>"""
 
 
@@ -224,6 +267,8 @@ def main():
                     help='keep only these sections (default: all four)')
     ap.add_argument('--no-boxes', action='store_true',
                     help='leave out the key-words and remember boxes')
+    ap.add_argument('--notes-only', action='store_true',
+                    help='print only the methods briefings, with no questions')
     ap.add_argument('--eyebrow', default='Grade 8 · Algebra · Quarter I',
                     help='the small line above the title on the contents page')
     ap.add_argument('--no-contents', action='store_true')
@@ -248,9 +293,17 @@ def main():
                  'Practice (medium), Challenge (hard) and Beyond (very hard, olympiad). '
                  'Answers, with solutions for the Beyond questions, are at the back.')
 
-    topics = '\n'.join(render_topic(t, boxes=not opt.no_boxes) for t in chosen)
+    if opt.notes_only:
+        bare = [t for t in chosen if not t.get('notes')]
+        if bare:
+            sys.exit('no methods briefing for ' + ', '.join(t['key'] for t in bare))
+        topics = '\n'.join(render_topic_notes(t) for t in chosen)
+    else:
+        topics = '\n'.join(render_topic(t, boxes=not opt.no_boxes) for t in chosen)
     contents = ('' if opt.no_contents or len(chosen) < 3
-                else render_contents(chosen, opt.title, blurb, opt.eyebrow))
+                else render_contents(
+                    chosen, opt.title, blurb, opt.eyebrow,
+                    (lambda t: f'{len(t["notes"])} ideas') if opt.notes_only else None))
     html = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <title>Grade 8 Algebra Workbook — {opt.title}</title>
@@ -258,7 +311,7 @@ def main():
 <body><div class="sheet">
 {contents}
 {topics}
-{render_answers(chosen)}
+{'' if opt.notes_only else render_answers(chosen)}
 </div></body></html>"""
     with open(os.path.join(HERE, opt.out + '.title'), 'w', encoding='utf-8') as fh:
         fh.write(opt.title)
