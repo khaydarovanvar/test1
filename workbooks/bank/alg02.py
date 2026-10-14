@@ -176,6 +176,7 @@ Q_BEYOND = [
 
 TOPIC = dict(
     key='alg-02', number=2, lessons='4–5',
+    unit='Unit 1 · Algebraic fractions',
     title='Algebraic expressions',
     subtitle='Whole expressions, fractional expressions, and the values of the '
              'variable that are simply not allowed.',

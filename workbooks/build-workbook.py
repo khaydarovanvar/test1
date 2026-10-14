@@ -42,6 +42,10 @@ html, body { margin:0; padding:0; background:var(--page); color:var(--ink);
 h1 { font-size:20pt; margin:0 0 2mm; letter-spacing:-.01em; }
 h2 { font-size:13pt; margin:0; }
 .m { font-family:"Cambria","Georgia",serif; white-space:nowrap; }
+/* radicals: the bar is drawn over the radicand so √2x reads unambiguously */
+.rsign { font-family:"Cambria","Georgia",serif; }
+.rbar { border-top:1px solid currentColor; padding:0 .12em 0 .06em; margin-left:-.02em; }
+.ridx { font-size:.62em; vertical-align:.55em; margin-right:-.22em; }
 
 /* stacked fractions */
 .frac { display:inline-block; vertical-align:-0.55em; text-align:center;
@@ -153,7 +157,7 @@ def render_topic(topic, boxes=True):
     return f"""
 <section class="topic">
   <div class="topichead">
-    <div class="eyebrow">Unit 1 · Algebraic fractions · Topic {topic['number']}</div>
+    <div class="eyebrow">{topic.get('unit', 'Grade 8 Algebra')} · Topic {topic['number']}</div>
     <h1>{topic['title']}</h1>
     <p class="sub">{topic['subtitle']}</p>
     <p class="refs">Lessons {topic['lessons']} · {topic['uz']} · {topic['cam']}
@@ -189,7 +193,7 @@ def render_answers(topics):
     return '\n'.join(out)
 
 
-def render_contents(topics, title, blurb):
+def render_contents(topics, title, blurb, eyebrow):
     rows = ''.join(
         f'<tr><td class="tnum">Topic {t["number"]}</td><td>{t["title"]}</td>'
         f'<td class="tles">lessons {t["lessons"]}</td>'
@@ -198,7 +202,7 @@ def render_contents(topics, title, blurb):
     total = bank.count(topics)
     return f"""
 <section class="cover">
-  <div class="eyebrow">Grade 8 · Algebra · Quarter I</div>
+  <div class="eyebrow">{eyebrow}</div>
   <h1 class="covertitle">{title}</h1>
   <p class="sub">{blurb}</p>
   <table class="contents">{rows}</table>
@@ -220,6 +224,8 @@ def main():
                     help='keep only these sections (default: all four)')
     ap.add_argument('--no-boxes', action='store_true',
                     help='leave out the key-words and remember boxes')
+    ap.add_argument('--eyebrow', default='Grade 8 · Algebra · Quarter I',
+                    help='the small line above the title on the contents page')
     ap.add_argument('--no-contents', action='store_true')
     opt = ap.parse_args()
 
@@ -244,7 +250,7 @@ def main():
 
     topics = '\n'.join(render_topic(t, boxes=not opt.no_boxes) for t in chosen)
     contents = ('' if opt.no_contents or len(chosen) < 3
-                else render_contents(chosen, opt.title, blurb))
+                else render_contents(chosen, opt.title, blurb, opt.eyebrow))
     html = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <title>Grade 8 Algebra Workbook — {opt.title}</title>

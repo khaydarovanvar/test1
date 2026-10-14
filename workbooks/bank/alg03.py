@@ -159,6 +159,7 @@ Q_BEYOND = [
 
 TOPIC = dict(
     key='alg-03', number=3, lessons='6–8',
+    unit='Unit 1 · Algebraic fractions',
     title='Algebraic fraction. Cancelling fractions',
     subtitle='The fundamental property of a fraction, and the one rule that governs '
              'every simplification: factorise first, cancel second.',

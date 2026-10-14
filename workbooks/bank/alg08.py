@@ -183,6 +183,7 @@ Q_BEYOND = [
 
 TOPIC = dict(
     key='alg-08', number=8, lessons='20–22',
+    unit='Unit 1 · Algebraic fractions',
     title='Identical transformation of fractional-rational expressions',
     subtitle='Everything from §§2–5 in one question: the long chains where the order of '
              'work decides whether it takes three lines or thirteen.',

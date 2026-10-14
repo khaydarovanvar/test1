@@ -178,6 +178,7 @@ Q_BEYOND = [
 
 TOPIC = dict(
     key='alg-06', number=6, lessons='15–16',
+    unit='Unit 1 · Algebraic fractions',
     title='Revision · Control work 1 — algebraic fractions',
     subtitle='Everything from §§1–4 mixed together, with the four errors that cost the '
              'most marks set as questions of their own.',

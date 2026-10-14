@@ -181,6 +181,7 @@ Q_BEYOND = [
 
 TOPIC = dict(
     key='alg-07', number=7, lessons='17–19',
+    unit='Unit 1 · Algebraic fractions',
     title='Multiplication and division of algebraic fractions',
     subtitle='No common denominator needed — but factorise before you multiply, or you '
              'will multiply out work you are about to cancel.',

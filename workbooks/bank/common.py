@@ -12,6 +12,12 @@ def F(num, den):
             f'<span class="den">{den}</span></span>')
 
 
+def rt(radicand, index=None):
+    """A radical. index=3 draws a cube root; the bar covers the radicand."""
+    idx = f'<span class="ridx">{index}</span>' if index else ''
+    return f'{idx}<span class="rsign">√</span><span class="rbar">{radicand}</span>'
+
+
 def M(text):
     return f'<span class="m">{text}</span>'
 

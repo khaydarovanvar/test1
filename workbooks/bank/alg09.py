@@ -189,6 +189,7 @@ Q_BEYOND = [
 
 TOPIC = dict(
     key='alg-09', number=9, lessons='23–24',
+    unit='Unit 1 · Algebraic fractions',
     title='Revision · Control work 2 — rational expressions',
     subtitle='Multiplication, division, powers and the long chains, with the errors that '
              'cost the most marks set as questions of their own.',

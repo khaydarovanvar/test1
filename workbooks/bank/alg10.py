@@ -174,6 +174,7 @@ Q_BEYOND = [
 
 TOPIC = dict(
     key='alg-10', number=10, lessons='25–27',
+    unit='Unit 1 · Algebraic fractions',
     title='The function y = k / x — properties and graph',
     subtitle='Inverse proportion: the first function of the course whose graph is not a '
              'straight line, and whose defining feature is a product that never changes.',

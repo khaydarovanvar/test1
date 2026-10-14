@@ -163,6 +163,7 @@ Q_BEYOND = [
 
 TOPIC = dict(
     key='alg-01', number=1, lessons='1–3',
+    unit='Unit 1 · Algebraic fractions',
     title='Revision of the Grade 7 course',
     subtitle='Powers, brackets, factorising and linear equations — the four tools '
              'every fraction question this term will need.',
