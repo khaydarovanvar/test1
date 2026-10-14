@@ -21,6 +21,7 @@ That is 235 diagrams across the 63 pages.
 | `booklet.css` | print styling for A4 |
 | `render.mjs` | renders the HTML to PDF with the pre-installed Chromium |
 | `verify.py` | recomputes every answer in the booklet and compares it with what is printed |
+| `gallery.py` | renders every generator onto one contact sheet, for checking figures after an edit |
 
 ## Rebuilding
 
