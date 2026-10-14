@@ -1,0 +1,97 @@
+/* SAT D4 teacher booklet — print styling for A4 */
+/* The renderer reserves a 10mm strip at the foot of the sheet for the page
+   footer; these margins sit inside it, so content can never run into it. */
+@page { size: A4; margin: 13mm 14mm 6mm; }
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font: 10.5pt/1.45 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #1b2430;
+  background: #fff;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.lesson { break-after: page; padding-top: 2mm; }
+.lesson:last-child { break-after: auto; }
+
+/* ---------- heading ---------- */
+.head { border-bottom: 2.5px solid #1f4e79; padding-bottom: 7px; margin-bottom: 16px; }
+h1 { font-size: 21pt; color: #1f4e79; margin: 0 0 4px; letter-spacing: -0.2px; }
+.byline { margin: 0; font-size: 9pt; color: #44525f; }
+
+/* ---------- section ---------- */
+.sec { margin-bottom: 15px; }
+.sec-top { break-inside: avoid; break-after: avoid; }
+h2 { font-size: 12.5pt; color: #1f4e79; margin: 0 0 7px; display: flex; align-items: center; }
+h2 .num {
+  display: inline-block; width: 20px; height: 20px; line-height: 20px; text-align: center;
+  background: #1f4e79; color: #fff; font-size: 10pt; margin-right: 10px; border-radius: 2px;
+}
+.fact {
+  margin: 0 0 8px; padding: 6px 10px; background: #e8f0f9; border: 1px solid #c3d6ea;
+  color: #1f4e79; font-weight: 700; font-size: 10pt; text-align: center; border-radius: 2px;
+}
+.lead { margin: 0 0 9px; color: #27323e; }
+
+/* ---------- figures ---------- */
+.figbox { margin: 4px 0 11px; break-inside: avoid; }
+.figrow { display: flex; gap: 10px; align-items: flex-end; justify-content: center; flex-wrap: nowrap; }
+.figrow svg.fig { flex: 0 1 auto; min-width: 0; height: auto; max-width: 84mm; display: block; }
+.figrow.one svg.fig { max-width: 94mm; }
+.figcap {
+  margin: 5px auto 0; max-width: 150mm; text-align: center; font-size: 8.4pt;
+  line-height: 1.4; color: #55606b;
+}
+.figbox.tiny { margin: 5px 0 1px; }
+.figbox.tiny .figcap { display: none; }
+
+/* ---------- worked examples ---------- */
+.eg { border: 1px solid #cfe0d3; margin-bottom: 7px; break-inside: avoid; border-radius: 2px; }
+.eg-q { background: #eaf4ec; padding: 5px 9px; font-weight: 700; font-size: 9.7pt; }
+.eg-n { color: #1e7a4d; }
+.eg-s { padding: 6px 9px; background: #f5fbf6; font-size: 9.7pt; }
+.eg-s p { margin: 0 0 2px; }
+.eg-s p:last-child { margin-bottom: 0; }
+.eg-s .lab { color: #1e7a4d; font-weight: 700; margin-right: 4px; }
+.eg-s.split { display: flex; gap: 10px; align-items: center; }
+.eg-s.split .eg-t { flex: 1 1 auto; }
+.eg-s.split .eg-f { flex: 0 0 56mm; }
+.eg-s.split .eg-f svg.fig { width: 100%; height: auto; display: block; }
+
+/* ---------- tables ---------- */
+.part { margin-top: 16px; }
+.part.first { break-before: page; margin-top: 0; }
+.part table { break-inside: auto; }
+.part tr, .part td { break-inside: avoid-page; }
+.part tbody tr { page-break-inside: avoid; }
+thead { display: table-header-group; }
+h3 { font-size: 13pt; color: #1f4e79; margin: 0 0 6px; }
+h3 .sub { font-size: 9pt; font-weight: 400; color: #55606b; }
+table { width: 100%; border-collapse: collapse; font-size: 9pt; }
+th, td { border: 1px solid #cdd6df; padding: 4px 6px; vertical-align: middle; text-align: left; }
+thead th { color: #fff; font-size: 9pt; text-align: center; }
+.desmos thead th { background: #5b3f93; }
+.desmos tbody tr:nth-child(even) { background: #f4f1fa; }
+.tests thead th { background: #0f6b63; }
+table .id { text-align: center; font-weight: 700; color: #44525f; width: 6%; }
+table .ans { text-align: center; font-weight: 700; color: #1e7a4d; width: 9%; }
+.desmos .code {
+  font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 8.6pt; color: #5b3f93;
+  font-weight: 700; width: 20%;
+}
+.tests .lvl { text-align: center; font-weight: 700; font-size: 8.4pt; width: 7%; }
+.tests .lvl.hd { color: #b9770e; }
+.tests .lvl.vh { color: #c0392b; }
+.tests .sol { width: 38%; }
+.tests .sol p { margin: 0 0 2px; }
+.tests td .pq { margin-bottom: 0; }
+.tests td .figrow { justify-content: flex-start; }
+.tests td svg.fig { max-width: 62mm; }
+
+/* ---------- footers ---------- */
+.habit {
+  margin-top: 14px; padding: 8px 11px; background: #fdf6e3; border: 1px solid #e3cf95;
+  border-left: 4px solid #b9770e; font-size: 9.6pt; border-radius: 2px; break-inside: avoid;
+}
+.verified { margin: 7px 0 0; font-size: 8.2pt; font-style: italic; color: #76828e; }
