@@ -11,6 +11,8 @@ worked solution for every Beyond question.
 | `g11-alg-q1.mjs` | Grade 11 Algebra and Calculus, Quarter I — 11 topics, lessons 1–27, 495 questions |
 | `g11-alg-q1.pdf` | the same, rendered to A4 |
 | `g11-alg-q1.html` | the same again, one self-contained file to open in a browser |
+| `trig-exp-log-derivatives.mjs` | Differentiating sin, cos, tan, eˣ and ln x — explanations and 30 questions |
+| `trig-exp-log-derivatives.pdf` / `.html` | the same, rendered |
 | `build-workbook.mjs` | the renderer |
 
 ## Building
@@ -33,6 +35,31 @@ styling all sits inside `@media screen`, so print media sees only the A4 rules.
 The builder refuses to print a workbook whose tiers do not hold 10 / 10 / 10 / 15
 questions, whose questions lack answers, or whose Beyond questions lack solutions —
 and it counts the questions it parsed against the ones that reached the page.
+
+## Tiers
+
+A document sets its own tiers in `meta.tiers`; leaving it out gives the workbook's
+four — Focus 10, Practice 10, Challenge 10, Beyond 15. Each tier names how many
+questions it holds, how many ruled lines a question gets, which band colour it
+uses, and whether its answers must carry a worked solution:
+
+```js
+tiers: [
+  { key: 'easy',   name: 'Easy',   word: 'easy',   pill: 'EASY',   lines: 1, colour: 'focus',     count: 10 },
+  { key: 'medium', name: 'Medium', word: 'medium', pill: 'MEDIUM', lines: 3, colour: 'practice',  count: 10, solutions: true },
+  { key: 'hard',   name: 'Hard',   word: 'hard',   pill: 'HARD',   lines: 5, colour: 'challenge', count: 10, solutions: true }
+]
+```
+
+Setting `meta.contents: false` drops the contents sheet, which a single-topic
+document does not need.
+
+## Explanations
+
+A topic may carry a `lesson` array, rendered between the boxes and the first band.
+Each block is `{ h, p, table, head, steps }` — a heading, paragraphs, a table with
+an optional header row, and a numbered list of `[step, why]` pairs for a worked
+example. A table splits across a page with its header row repeated.
 
 ## Writing the content
 

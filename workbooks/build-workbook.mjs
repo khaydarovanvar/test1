@@ -56,28 +56,35 @@ function mathBody(s) {
 const tx = s => String(s).split('$').map((part, k) =>
   k % 2 ? `<span class="m">${mathBody(part)}</span>` : esc(part)).join('');
 
-/* ---- bands ------------------------------------------------------------ */
-const BANDS = [
-  ['focus',     'Focus',     'easy',      'EASY',      1],
-  ['practice',  'Practice',  'medium',    'MEDIUM',    2],
-  ['challenge', 'Challenge', 'hard',      'HARD',      3],
-  ['beyond',    'Beyond',    'very hard', 'VERY HARD', 5]
+/* ---- bands ------------------------------------------------------------
+   A document may set its own tiers in meta.tiers. `lines` is how many ruled
+   lines a question of that tier gets, `colour` names the band's CSS class,
+   and `solutions` demands a worked solution, not just an answer.         */
+const DEFAULT_TIERS = [
+  { key: 'focus',     name: 'Focus',     word: 'easy',      pill: 'EASY',      lines: 1, colour: 'focus',     count: 10 },
+  { key: 'practice',  name: 'Practice',  word: 'medium',    pill: 'MEDIUM',    lines: 2, colour: 'practice',  count: 10 },
+  { key: 'challenge', name: 'Challenge', word: 'hard',      pill: 'HARD',      lines: 3, colour: 'challenge', count: 10 },
+  { key: 'beyond',    name: 'Beyond',    word: 'very hard', pill: 'VERY HARD', lines: 5, colour: 'beyond',    count: 15, solutions: true }
 ];
+const TIERS = meta.tiers || DEFAULT_TIERS;
+const PER_TOPIC = TIERS.reduce((a, t) => a + t.count, 0);
 
 /* ---- check ------------------------------------------------------------ */
 const problems = [];
 for (const t of topics) {
   let n = 0;
-  for (const [key] of BANDS) {
-    const set = t[key] || [];
+  for (const tier of TIERS) {
+    const set = t[tier.key] || [];
     n += set.length;
+    if (set.length !== tier.count) problems.push(`topic ${t.n} ${tier.key} has ${set.length} questions, want ${tier.count}`);
     set.forEach((row, i) => {
-      if (!row[0] || !String(row[0]).trim()) problems.push(`topic ${t.n} ${key}[${i}] has no question`);
-      if (row[1] === undefined || !String(row[1]).trim()) problems.push(`topic ${t.n} ${key}[${i}] has no answer`);
-      if (key === 'beyond' && (!row[2] || !String(row[2]).trim())) problems.push(`topic ${t.n} beyond[${i}] has no solution`);
+      if (!row[0] || !String(row[0]).trim()) problems.push(`topic ${t.n} ${tier.key}[${i}] has no question`);
+      if (row[1] === undefined || !String(row[1]).trim()) problems.push(`topic ${t.n} ${tier.key}[${i}] has no answer`);
+      if (tier.solutions && (!row[2] || !String(row[2]).trim())) problems.push(`topic ${t.n} ${tier.key}[${i}] has no solution`);
     });
+    if (!t.descs?.[tier.key]) problems.push(`topic ${t.n} has no description for ${tier.key}`);
   }
-  if (n !== 45) problems.push(`topic ${t.n} has ${n} questions, want 45`);
+  if (n !== PER_TOPIC) problems.push(`topic ${t.n} has ${n} questions, want ${PER_TOPIC}`);
   if (!t.keywords?.length) problems.push(`topic ${t.n} has no key words`);
   if (!t.remember?.length) problems.push(`topic ${t.n} has no remember list`);
 }
@@ -85,10 +92,10 @@ if (problems.length) {
   console.error(`ISSUES (${problems.length}):\n  ` + problems.join('\n  '));
   process.exit(1);
 }
-const total = topics.reduce((a, t) => a + 45, 0);
+const total = topics.length * PER_TOPIC;
 
 /* ---- contents --------------------------------------------------------- */
-const contents = `
+const contents = meta.contents === false ? '' : `
 <section class="sheet contents" id="contents">
   <div class="eyebrow">${esc(meta.eyebrow)}</div>
   <h1 class="big">${tx(meta.title)}</h1>
@@ -97,9 +104,9 @@ const contents = `
     <td class="tn"><a href="#t${t.n}">Topic ${t.n}</a></td>
     <td class="tt"><a href="#t${t.n}">${tx(t.title)}</a></td>
     <td class="tl">lessons ${esc(t.lessons)}</td>
-    <td class="tq">45 questions</td></tr>`).join('')}
+    <td class="tq">${PER_TOPIC} questions</td></tr>`).join('')}
   </table>
-  <p class="tally">${topics.length} topics · ${total} questions · 45 per topic</p>
+  <p class="tally">${topics.length} topics · ${total} questions · ${PER_TOPIC} per topic</p>
 </section>`;
 
 /* ---- topic pages ------------------------------------------------------ */
@@ -122,16 +129,26 @@ const topicPages = topics.map(t => `
     </div>
   </div>
 
-  ${BANDS.map(([key, name, word, pill, lines]) => `
-  <div class="band ${key}">
-    <span class="bn">${name}</span><span class="pill">${pill}</span>
-    <span class="cnt">${t[key].length} questions</span>
-    <span class="desc">${tx(t.descs[key])}</span>
+  ${(t.lesson || []).map(b => `<div class="lb">
+    <h3>${tx(b.h)}</h3>
+    ${(b.p || []).map(x => `<p>${tx(x)}</p>`).join('')}
+    ${b.table ? `<table class="dt">${b.head ? `<thead><tr>${b.head.map(c =>
+        `<th>${tx(c)}</th>`).join('')}</tr></thead>` : ''}${b.table.map(r =>
+        `<tr>${r.map(c => `<td>${tx(c)}</td>`).join('')}</tr>`).join('')}</table>` : ''}
+    ${b.steps ? `<ol class="st">${b.steps.map(([a, why]) =>
+        `<li><span class="sa">${tx(a)}</span><span class="sw">${tx(why)}</span></li>`).join('')}</ol>` : ''}
+  </div>`).join('')}
+
+  ${TIERS.map(tier => `
+  <div class="band ${tier.colour}">
+    <span class="bn">${tier.name}</span><span class="pill">${tier.pill}</span>
+    <span class="cnt">${t[tier.key].length} questions</span>
+    <span class="desc">${tx(t.descs[tier.key])}</span>
   </div>
-  ${t[key].map((row, i) => `<div class="q">
+  ${t[tier.key].map((row, i) => `<div class="q">
     <span class="num">${i + 1}</span>
     <div class="qt">${tx(row[0])}</div>
-    <div class="lines">${'<div class="ln"></div>'.repeat(lines)}</div>
+    <div class="lines">${'<div class="ln"></div>'.repeat(tier.lines)}</div>
   </div>`).join('')}`).join('')}
 </section>`).join('');
 
@@ -143,17 +160,18 @@ const answers = `
   ${topics.map(t => `
   <div class="atopic" id="a${t.n}">
     <h2>Topic ${t.n} · ${tx(t.title)}</h2>
-    ${BANDS.filter(b => b[0] !== 'beyond').map(([key, name, word]) => {
-      const [L, R] = half(t[key]);
+    ${TIERS.map(tier => {
+      const head = `<div class="ah ${tier.colour}">${tier.name} <span class="aw">· ${tier.word}</span></div>`;
+      if (tier.solutions) {
+        return head + t[tier.key].map((row, i) => `<div class="sol">
+          <p class="sh"><b>${i + 1}</b> ${tx(row[1])}</p>
+          <p class="sb">${tx(row[2])}</p></div>`).join('');
+      }
+      const [L, R] = half(t[tier.key]);
       const col = (rows, from) => `<div class="acol">${rows.map((row, i) =>
         `<div class="a"><span class="an">${from + i + 1}</span><span class="av">${tx(row[1])}</span></div>`).join('')}</div>`;
-      return `<div class="ah ${key}">${name} <span class="aw">· ${word}</span></div>
-        <div class="agrid">${col(L, 0)}${col(R, L.length)}</div>`;
+      return head + `<div class="agrid">${col(L, 0)}${col(R, L.length)}</div>`;
     }).join('')}
-    <div class="ah beyond">Beyond <span class="aw">· very hard</span></div>
-    ${t.beyond.map((row, i) => `<div class="sol">
-      <p class="sh"><b>${i + 1}</b> ${tx(row[1])}</p>
-      <p class="sb">${tx(row[2])}</p></div>`).join('')}
   </div>`).join('')}
 </section>`;
 
@@ -199,6 +217,23 @@ const html = `<!doctype html><html lang="en"><head><meta charset="utf-8">
   .box ul, .box ol { margin: 0; padding-left: 5mm; }
   .box li { margin-bottom: 1.3mm; }
   .box.kw li { list-style: disc; }
+
+  /* lesson blocks */
+  .lb { margin: 0 0 5mm; }
+  .lb h3 { font-size: 10.4pt; margin: 0 0 1.6mm; color: #16202b; break-after: avoid; }
+  .lb p { margin: 0 0 1.8mm; }
+  /* Long tables may split across a page; the header row repeats, so the
+     halves stay readable, and a heading is never stranded alone at the foot. */
+  table.dt { width: 100%; border-collapse: collapse; margin: 2mm 0 0; }
+  table.dt thead { display: table-header-group; }
+  table.dt tr { break-inside: avoid; }
+  table.dt th { text-align: left; font-size: 8pt; letter-spacing: 0.6pt; text-transform: uppercase;
+                color: #7b8794; padding: 1.4mm 3mm 1.4mm 0; border-bottom: 0.6pt solid #cbd2d9; }
+  table.dt td { padding: 1.3mm 3mm 1.3mm 0; border-bottom: 0.5pt solid #e4e7eb; vertical-align: top; }
+  ol.st { margin: 1mm 0 0; padding-left: 5.5mm; }
+  ol.st li { margin-bottom: 1.4mm; }
+  .sa { display: inline-block; margin-right: 3mm; }
+  .sw { color: #7b8794; font-size: 8.8pt; }
 
   /* bands */
   .band { border-radius: 2mm; padding: 2.6mm 4mm; margin: 6mm 0 3mm; break-after: avoid;
@@ -320,6 +355,7 @@ await page.pdf({
     <span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span></div>`
 });
 await browser.close();
-console.log(`${topics.length} topics · ${total} questions · ` +
-  `${topics.length * 15} worked solutions -> ` +
+const solved = topics.length * TIERS.filter(t => t.solutions).reduce((a, t) => a + t.count, 0);
+console.log(`${topics.length} topic${topics.length > 1 ? 's' : ''} · ${total} questions · ` +
+  `${solved} worked solutions -> ` +
   `${path.basename(HTML_OUT)}, ${path.basename(OUT)}`);
