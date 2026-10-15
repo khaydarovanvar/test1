@@ -13,6 +13,8 @@ worked solution for every Beyond question.
 | `g11-alg-q1.html` | the same again, one self-contained file to open in a browser |
 | `g11-alg-q2.mjs` | Grade 11 Algebra and Calculus, Quarter II — 6 topics, lessons 28–48, 270 questions |
 | `g11-alg-q2.pdf` / `.html` | the same, rendered |
+| `g11-alg-h1.mjs` | Quarters I and II in one volume — 17 topics, lessons 1–48, 765 questions |
+| `g11-alg-h1.pdf` / `.html` | the same, rendered |
 | `trig-exp-log-derivatives.mjs` | Differentiating sin, cos, tan, eˣ and ln x — explanations and 30 questions |
 | `trig-exp-log-derivatives.pdf` / `.html` | the same, rendered |
 | `build-workbook.mjs` | the renderer |
@@ -24,6 +26,12 @@ node build-workbook.mjs g11-alg-q1.mjs
 ```
 
 One run writes both the `.html` and the `.pdf` from the same markup.
+
+`g11-alg-h1.mjs` holds no content of its own: it imports the two quarter modules
+and renumbers their topics 1–17, so the combined book is always rebuilt from the
+same source as the separate ones and a correction to either flows straight into
+it. Merging the two finished PDFs would instead give two contents pages, two
+answer sections and page numbering that restarts.
 
 ## The HTML
 
