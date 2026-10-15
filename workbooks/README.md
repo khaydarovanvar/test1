@@ -11,6 +11,8 @@ worked solution for every Beyond question.
 | `g11-alg-q1.mjs` | Grade 11 Algebra and Calculus, Quarter I — 11 topics, lessons 1–27, 495 questions |
 | `g11-alg-q1.pdf` | the same, rendered to A4 |
 | `g11-alg-q1.html` | the same again, one self-contained file to open in a browser |
+| `g11-alg-q2.mjs` | Grade 11 Algebra and Calculus, Quarter II — 6 topics, lessons 28–48, 270 questions |
+| `g11-alg-q2.pdf` / `.html` | the same, rendered |
 | `trig-exp-log-derivatives.mjs` | Differentiating sin, cos, tan, eˣ and ln x — explanations and 30 questions |
 | `trig-exp-log-derivatives.pdf` / `.html` | the same, rendered |
 | `build-workbook.mjs` | the renderer |

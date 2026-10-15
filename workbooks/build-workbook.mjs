@@ -208,6 +208,9 @@ const html = `<!doctype html><html lang="en"><head><meta charset="utf-8">
   .toc .tl { width: 26mm; font-size: 8.4pt; color: #7b8794; text-align: right; }
   .toc .tq { width: 28mm; font-size: 8.4pt; color: #7b8794; text-align: right; }
   .tally { margin-top: 4mm; font-size: 8.6pt; color: #7b8794; }
+  /* The contents rows are anchors for the browser build; without this they
+     would print as blue underlined links. */
+  .toc a { color: inherit; text-decoration: none; }
 
   /* boxes */
   .boxes { display: flex; gap: 5mm; margin: 6mm 0 7mm; break-inside: avoid; }
@@ -294,7 +297,6 @@ const html = `<!doctype html><html lang="en"><head><meta charset="utf-8">
     .bar button[aria-pressed="true"] { background: #9fc4e8; }
     .sheet { background: #fff; max-width: 190mm; margin: 7mm auto; padding: 14mm 13mm;
              border-radius: 1.5mm; box-shadow: 0 1px 3px rgba(22,32,43,.14); }
-    .toc a { color: inherit; text-decoration: none; }
     .toc tr:hover .tt a { text-decoration: underline; }
     body.hide-answers .answers { display: none; }
     @media (max-width: 760px) {
