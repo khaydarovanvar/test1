@@ -14,12 +14,25 @@ sys.path.insert(0, '.')
 
 import importlib
 
+# Domain order is the College Board's own: Algebra, Advanced Math,
+# Problem-Solving & Data Analysis, Geometry & Trigonometry. A domain whose
+# content modules are not present yet is simply skipped.
 BOOKS = {
-    'd4': ('SAT Math 4 \u2014 Geometry & Trigonometry',
-           ('content41', 'content42', 'content43', 'content44', 'content45', 'content46')),
+    'd1': ('SAT Math 1 \u2014 Algebra',
+           tuple('content1%d' % i for i in range(1, 9))),
     'd2': ('SAT Math 2 \u2014 Advanced Math',
-           ('content21', 'content22', 'content23', 'content24', 'content25', 'content26',
-            'content27', 'content28')),
+           tuple('content2%d' % i for i in range(1, 9))),
+    'd3': ('SAT Math 3 \u2014 Problem-Solving & Data Analysis',
+           tuple('content3%d' % i for i in range(1, 9))),
+    'd4': ('SAT Math 4 \u2014 Geometry & Trigonometry',
+           tuple('content4%d' % i for i in range(1, 9))),
+}
+ORDER = ('d1', 'd2', 'd3', 'd4')
+FILES = {
+    'd1': 'SAT_D1_ALGEBRA_teacher',
+    'd2': 'SAT_D2_ADVANCED_MATH_teacher',
+    'd3': 'SAT_D3_PROBLEM_SOLVING_DATA_teacher',
+    'd4': 'SAT_D4_GEOMETRY_TRIGONOMETRY_teacher',
 }
 
 
@@ -147,6 +160,72 @@ def lesson_html(lesson, checker='verify.py'):
     return ''.join(h)
 
 
+def counts(lessons):
+    """How many sections, examples, questions and figures a domain holds."""
+    figs = sum(len(s.get('figs') or []) for L in lessons for s in L['sections'])
+    figs += sum(1 for L in lessons for s in L['sections']
+                for e in s['examples'] if e.get('fig'))
+    figs += sum(1 for L in lessons for row in L['part2'] if row[5])
+    return {
+        'lessons': len(lessons),
+        'sections': sum(len(L['sections']) for L in lessons),
+        'examples': sum(len(s['examples']) for L in lessons for s in L['sections']),
+        'questions': sum(len(L['desmos']) + len(L['part2']) for L in lessons),
+        'figures': figs,
+    }
+
+
+def cover_html(books):
+    """Title page and contents for the merged booklet."""
+    rows, toc, total = '', '', {'lessons': 0, 'figures': 0, 'examples': 0, 'questions': 0}
+    for key in books:
+        ls = load(key)
+        if not ls:
+            continue
+        c = counts(ls)
+        for k in total:
+            total[k] += c[k]
+        rows += ('<tr><td class="dom">%s</td><td>%d</td><td>%d</td><td>%d</td>'
+                 '<td class="fg">%d</td></tr>'
+                 % (BOOKS[key][0], c['lessons'], c['examples'], c['questions'], c['figures']))
+        toc += ('<div class="toc-block"><h3 class="toc-h">%s</h3><ol class="toc">'
+                % BOOKS[key][0])
+        for L in ls:
+            toc += '<li><b>%s</b> %s</li>' % (L['code'], L['title'])
+        toc += '</ol></div>'
+    rows += ('<tr class="tot"><td class="dom">All domains</td><td>%d</td><td>%d</td>'
+             '<td>%d</td><td class="fg">%d</td></tr>'
+             % (total['lessons'], total['examples'], total['questions'], total['figures']))
+    return ('<section class="cover">'
+            '<h1 class="cov">SAT Math \u2014 Teacher Copies</h1>'
+            '<p class="cov-sub">Explanations with worked examples \u00b7 a labelled figure '
+            'for every rule, every example and every question \u00b7 Desmos questions '
+            '\u00b7 %s</p>'
+            '<table class="cover-t"><thead><tr><th>Domain</th><th>Lessons</th>'
+            '<th>Worked examples</th><th>Questions</th><th>Figures</th></tr></thead>'
+            '<tbody>%s</tbody></table>'
+            '<div class="toc-wrap">%s</div>'
+            '<p class="cov-foot">Each domain is also supplied as its own file. Every numeric '
+            'answer in this booklet is recomputed by the checkers in the source folder; every '
+            'figure is drawn to the numbers in its own question.</p>'
+            '</section>' % (SCHOOL, rows, toc))
+
+
+def build_all(path='SAT_Math_ALL_DOMAINS_teacher.html', books=ORDER):
+    """One file holding every domain, with a cover and contents."""
+    css = open('booklet.css').read()
+    body = cover_html(books)
+    for key in books:
+        ls = load(key)
+        if ls:
+            body += ''.join(lesson_html(l, 'the checkers in the source folder') for l in ls)
+    html = ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
+            '<title>SAT Math \u00b7 Teacher copies \u00b7 all domains</title>'
+            '<style>%s</style></head><body>%s</body></html>' % (css, body))
+    open(path, 'w').write(html)
+    return path
+
+
 def build(path='SAT_D4_GEOMETRY_TRIGONOMETRY_teacher.html', lessons=None, book='d4'):
     css = open('booklet.css').read()
     checker = 'verify2.py' if book == 'd2' else 'verify.py'
@@ -163,4 +242,4 @@ def build(path='SAT_D4_GEOMETRY_TRIGONOMETRY_teacher.html', lessons=None, book='
 if __name__ == '__main__':
     out = sys.argv[1] if len(sys.argv) > 1 else 'SAT_D4_GEOMETRY_TRIGONOMETRY_teacher.html'
     which = sys.argv[2] if len(sys.argv) > 2 else 'd4'
-    print(build(out, book=which))
+    print(build_all(out) if which == 'all' else build(out, book=which))

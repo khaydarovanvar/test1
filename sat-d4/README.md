@@ -25,13 +25,20 @@ panels across 48 sections, 144 example figures and 96 question figures.
 | `algebra.py` | the non-graph algebra pictures: area models, factor-pair tables, rule panels, step chains, check tables, number lines |
 | `content41.py` … `content46.py` | the six Geometry & Trigonometry lessons |
 | `content21.py` … `content28.py` | the eight Advanced Math lessons |
-| `build.py` | assembles either booklet's HTML (`d4` or `d2`) |
+| `build.py` | assembles one domain's HTML (`d1`…`d4`) or the merged file (`all`) |
+| `package.py` | builds every domain present, renders each to PDF, writes the merged file and zips the lot |
 | `booklet.css` | print styling for A4 |
 | `render.mjs` | renders the HTML to PDF with the pre-installed Chromium |
 | `verify.py`, `verify2.py` | recompute every numeric answer and compare it with what is printed |
 | `gallery.py` | renders every generator onto one contact sheet, for checking figures after an edit |
 
 ## Rebuilding
+
+```sh
+python3 package.py                                   # everything: PDFs, merged file, zip
+```
+
+or one booklet at a time:
 
 ```sh
 python3 verify.py && python3 verify2.py              # check every printed answer
@@ -78,3 +85,13 @@ answers: 107 values machine-checked, all agreeing. The 23 it leaves alone are
 graph reads ("click the vertex"), symbolic answers (a factorisation, an
 equation) and counts of intersections, which were checked by hand against the
 source booklet.
+
+## Adding a domain
+
+Each domain is a set of `contentNM.py` modules listed in `BOOKS` in `build.py`
+(`content11`…`content18` for Algebra, `content31`…`content38` for
+Problem-Solving & Data Analysis). A module that does not exist is skipped, so
+the merged booklet and the zip grow as domains are written — nothing else
+needs changing. Each module holds the lesson's text, its worked examples with
+the figure each one gets, the Desmos table and the twelve test-style questions,
+in the shape the existing ones show.

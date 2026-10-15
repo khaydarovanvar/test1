@@ -98,3 +98,22 @@ table .ans { text-align: center; font-weight: 700; color: #1e7a4d; width: 9%; }
   border-left: 4px solid #b9770e; font-size: 9.6pt; border-radius: 2px; break-inside: avoid;
 }
 .verified { margin: 7px 0 0; font-size: 8.2pt; font-style: italic; color: #76828e; }
+
+/* ---------- cover and contents (merged booklet only) ---------- */
+.cover { break-after: page; padding-top: 14mm; }
+h1.cov { font-size: 30pt; color: #1f4e79; margin: 0 0 8px; letter-spacing: -0.5px; }
+.cov-sub { margin: 0 0 20px; font-size: 10.5pt; color: #44525f; max-width: 150mm;
+  border-bottom: 2.5px solid #1f4e79; padding-bottom: 12px; }
+.cover-t { width: 100%; border-collapse: collapse; font-size: 10pt; margin-bottom: 18px; }
+.cover-t th { background: #1f4e79; color: #fff; padding: 6px 8px; text-align: center; }
+.cover-t td { border: 1px solid #cdd6df; padding: 5px 8px; text-align: center; }
+.cover-t td.dom { text-align: left; font-weight: 700; color: #1f4e79; }
+.cover-t td.fg { font-weight: 700; color: #1e7a4d; }
+.cover-t tr.tot td { background: #eef3fa; font-weight: 700; }
+.toc-wrap { column-count: 2; column-gap: 12mm; }
+.toc-block { break-inside: avoid; margin-bottom: 6px; }
+.toc-h { font-size: 11pt; margin: 10px 0 4px; break-after: avoid; }
+ol.toc { margin: 0 0 10px; padding-left: 18px; font-size: 9.6pt; color: #27323e; }
+ol.toc li { margin-bottom: 2px; break-inside: avoid; }
+ol.toc b { color: #1f4e79; }
+.cov-foot { margin-top: 14px; font-size: 9pt; color: #55606b; font-style: italic; }
