@@ -16,6 +16,11 @@ GREY  = '#5d6b78'   # ordinary labels
 FAINT = '#9aa7b4'   # construction lines
 
 
+def fmt(v):
+    """A number with a real minus sign, not a hyphen."""
+    return ('%g' % v).replace('-', '\u2212')
+
+
 def esc(s):
     return (str(s).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;'))
 
@@ -223,14 +228,19 @@ class Axes:
     """A small set of coordinate axes with a square grid."""
 
     def __init__(self, x0, y0, w, h, xmin, xmax, ymin, ymax, step=1,
-                 labels=True, tick_every=1):
+                 labels=True, tick_every=1, xstep=None, ystep=None,
+                 xtick_every=None, ytick_every=None):
         self.x0, self.y0, self.w, self.h = x0, y0, w, h
         self.xmin, self.xmax, self.ymin, self.ymax = xmin, xmax, ymin, ymax
         self.sx = w / float(xmax - xmin)
         self.sy = h / float(ymax - ymin)
         self.step = step
+        self.xstep = xstep or step
+        self.ystep = ystep or step
         self.labels = labels
         self.tick_every = tick_every
+        self.xtick_every = xtick_every or tick_every
+        self.ytick_every = ytick_every or tick_every
 
     def P(self, x, y):
         return (self.x0 + (x - self.xmin) * self.sx,
@@ -242,12 +252,12 @@ class Axes:
         while x <= self.xmax + 1e-9:
             out += line(self.P(x, self.ymin), self.P(x, self.ymax),
                         stroke=gridcolor, w=0.9, cap='butt')
-            x += self.step
+            x += self.xstep
         y = self.ymin
         while y <= self.ymax + 1e-9:
             out += line(self.P(self.xmin, y), self.P(self.xmax, y),
                         stroke=gridcolor, w=0.9, cap='butt')
-            y += self.step
+            y += self.ystep
         if self.ymin <= 0 <= self.ymax:
             out += line(self.P(self.xmin, 0), self.P(self.xmax, 0), stroke='#6b7884', w=1.4)
             out += txt(self.P(self.xmax, 0)[0] + 9, self.P(self.xmax, 0)[1], 'x',
@@ -259,16 +269,16 @@ class Axes:
         if self.labels:
             x = self.xmin
             while x <= self.xmax + 1e-9:
-                if x and x % self.tick_every == 0:
-                    p = self.P(x, 0)
+                if x and abs(x % self.xtick_every) < 1e-9:
+                    p = self.P(x, max(self.ymin, min(0, self.ymax)))
                     out += txt(p[0], p[1] + 10, '%g' % x, size=8.5, color=FAINT)
-                x += self.step
+                x += self.xstep
             y = self.ymin
             while y <= self.ymax + 1e-9:
-                if y and y % self.tick_every == 0:
-                    p = self.P(0, y)
+                if y and abs(y % self.ytick_every) < 1e-9:
+                    p = self.P(max(self.xmin, min(0, self.xmax)), y)
                     out += txt(p[0] - 10, p[1], '%g' % y, size=8.5, color=FAINT)
-                y += self.step
+                y += self.ystep
         return out
 
 

@@ -57,6 +57,8 @@ h2 .num {
 .eg-s.split { display: flex; gap: 10px; align-items: center; }
 .eg-s.split .eg-t { flex: 1 1 auto; }
 .eg-s.split .eg-f { flex: 0 0 56mm; }
+.eg-wide { margin: 5px 0 1px; }
+.eg-wide svg.fig { display: block; width: 100%; max-width: 95mm; height: auto; }
 .eg-s.split .eg-f svg.fig { width: 100%; height: auto; display: block; }
 
 /* ---------- tables ---------- */
@@ -88,6 +90,7 @@ table .ans { text-align: center; font-weight: 700; color: #1e7a4d; width: 9%; }
 .tests td .pq { margin-bottom: 0; }
 .tests td .figrow { justify-content: flex-start; }
 .tests td svg.fig { max-width: 62mm; }
+.tests td .figbox.wide svg.fig { max-width: 78mm; }
 
 /* ---------- footers ---------- */
 .habit {

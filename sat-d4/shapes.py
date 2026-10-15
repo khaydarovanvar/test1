@@ -209,7 +209,7 @@ def hinge(a=7, b=10, w=320, h=180):
     body += val(mid(O2, H2)[0] + 10, y2 + 15, str(a), color=INK)
     body += val(mid(H2, T2)[0], y2 - 26, str(b), color=GREEN)
     body += line(T2, O2, stroke=RED, w=1.6, dash='4 3')
-    body += val(mid(T2, O2)[0] - 40, y2 + 32, 'folded back: it shrinks towards %g' % (b - a),
+    body += val(w / 2, y2 + 32, 'folded back: it shrinks towards %g' % (b - a),
                 color=RED, size=9.5)
     return svg(w, h, body)
 
