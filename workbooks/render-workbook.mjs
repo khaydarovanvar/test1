@@ -22,7 +22,7 @@ await page.pdf({
   path: out,
   format: 'A4',
   printBackground: true,
-  margin: { top: '13mm', bottom: '15mm', left: '14mm', right: '14mm' },
+  margin: { top: '11mm', bottom: '12mm', left: '12mm', right: '12mm' },
   displayHeaderFooter: true,
   headerTemplate: '<div></div>',
   footerTemplate:

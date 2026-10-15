@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Grade 8 Algebra Workbook — Methods for the hard problems</title>
+<style>
+:root { --ink:#17202A; --soft:#5A6775; --rule:#C9D2DA; --page:#FFFFFF; }
+* { box-sizing:border-box; }
+html, body { margin:0; padding:0; background:var(--page); color:var(--ink);
+  font-family:"Source Sans 3","Segoe UI",system-ui,-apple-system,sans-serif;
+  font-size:9.6pt; line-height:1.34; }
+.sheet { padding:0; }
+
+h1 { font-size:17pt; margin:0 0 1.2mm; letter-spacing:-.01em; }
+h2 { font-size:13pt; margin:0; }
+.m { font-family:"Cambria","Georgia",serif; white-space:nowrap; }
+/* radicals: the bar is drawn over the radicand so √2x reads unambiguously */
+.rsign { font-family:"Cambria","Georgia",serif; }
+.rbar { border-top:1px solid currentColor; padding:0 .12em 0 .06em; margin-left:-.02em; }
+.ridx { font-size:.62em; vertical-align:.55em; margin-right:-.22em; }
+
+/* stacked fractions */
+.frac { display:inline-block; vertical-align:-0.55em; text-align:center;
+  margin:0 .18em; font-family:"Cambria","Georgia",serif; }
+.frac .num { display:block; border-bottom:1.2px solid currentColor; padding:0 .34em .05em; }
+.frac .den { display:block; padding:.05em .34em 0; }
+.frac .frac { font-size:.92em; }
+
+/* ---------- topic opener ---------- */
+.topic { page-break-before:always; }
+.topic:first-of-type { page-break-before:avoid; }
+.topichead { border-top:2.5px solid var(--ink); padding-top:2mm; margin-bottom:2.5mm; }
+.eyebrow { font-size:8.6pt; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--soft); margin-bottom:1.5mm; }
+.sub { color:var(--soft); font-size:10pt; margin:1mm 0 0; }
+.refs { font-size:8.8pt; color:var(--soft); margin-top:1.5mm; }
+
+.boxes { display:flex; gap:3mm; margin:2.5mm 0 3mm; }
+.box { border:1px solid var(--rule); border-radius:2mm; padding:2mm 2.5mm; }
+.box .blabel { font-size:8.4pt; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--soft); margin-bottom:1.5mm; }
+.keywords { flex:0 0 46%; background:#F7F9FB; }
+.keywords ul { margin:0; padding-left:4.5mm; }
+.keywords li { margin:.6mm 0; }
+.remember { flex:1; }
+.remember ol { margin:0; padding-left:4.5mm; }
+.remember li { margin:1mm 0; }
+
+/* ---------- exercise sections ---------- */
+.section { margin:0 0 3mm; page-break-inside:avoid; }
+.twocol { column-count:2; column-gap:6mm; }
+.twocol .q { break-inside:avoid; }
+.sechead { display:flex; align-items:baseline; gap:3mm; padding:1.4mm 3mm;
+  border-radius:1.5mm; margin:3.5mm 0 2mm; page-break-after:avoid; break-after:avoid; }
+.sechead .name { font-size:12pt; font-weight:700; }
+.sechead .tier { font-size:8.4pt; letter-spacing:.1em; text-transform:uppercase;
+  border:1px solid currentColor; border-radius:1mm; padding:.3mm 1.5mm; opacity:.75;
+  white-space:nowrap; }
+.sechead .count { font-size:9pt; opacity:.8; white-space:nowrap; }
+.sechead .blurb { font-size:9pt; margin-left:auto; opacity:.85; text-align:right; }
+
+.q { display:flex; gap:2.4mm; page-break-inside:avoid; margin:0 0 1.6mm; }
+.qn { flex:0 0 6mm; height:6mm; border-radius:50%; border:1.2px solid var(--rule);
+  display:flex; align-items:center; justify-content:center;
+  font-size:9pt; font-weight:700; color:var(--soft); }
+.qbody { flex:1; padding-top:.7mm; }
+.qtext { }
+.lines { margin-top:1mm; }
+.lines div { border-bottom:1px dotted #AEB9C4; height:5.9mm; }
+.beyond .lines div { height:6.4mm; }
+
+/* ---------- answers ---------- */
+.answers { page-break-before:always; }
+.answers h2 { margin:0 0 3mm; page-break-after:avoid; break-after:avoid; }
+.anssec { margin:0 0 4mm; }
+.anssec .ah { font-weight:700; font-size:10pt; margin:3mm 0 1.5mm;
+  padding-bottom:1mm; border-bottom:1px solid var(--rule);
+  page-break-after:avoid; break-after:avoid; }
+.alist { columns:2; column-gap:7mm; }
+.alist .a { break-inside:avoid; margin:0 0 1.6mm; font-size:9.6pt; display:flex; gap:2mm; }
+.alist .a .n { color:var(--soft); font-weight:700; min-width:5mm; }
+.sols .a { display:block; margin:0 0 2.6mm; font-size:9.6pt; }
+.sols .a .n { color:var(--soft); font-weight:700; }
+.sols .sol { color:var(--soft); margin-top:.8mm; }
+.sols { columns:1; }
+
+.notes { border:1px solid var(--rule); border-left:3px solid #9B2C2C;
+  border-radius:1.5mm; padding:2mm 3mm 1.2mm; margin:3.5mm 0 2mm; background:#FDFBFB;
+  page-break-inside:avoid; }
+.notes .nhead { font-size:8.6pt; letter-spacing:.1em; text-transform:uppercase;
+  color:#9B2C2C; font-weight:700; margin-bottom:2mm; }
+.note { margin:0 0 1.4mm; page-break-inside:avoid; }
+.note .nname { font-weight:700; font-size:9.6pt; }
+.note .nbody { font-size:9.6pt; color:#2C3742; }
+.notesonly .notes { margin-top:3mm; }
+.cover { page-break-after:always; }
+.covertitle { font-size:26pt; line-height:1.15; margin:2mm 0 3mm; }
+.covernote { color:var(--soft); font-size:9pt; margin-top:4mm; }
+.contents { width:100%; border-collapse:collapse; margin-top:6mm; font-size:10pt; }
+.contents td { padding:2mm 0; border-bottom:1px solid var(--rule); vertical-align:baseline; }
+.contents .tnum { width:22mm; color:var(--soft); font-weight:700; white-space:nowrap; }
+.contents .tles { width:28mm; color:var(--soft); font-size:9pt; white-space:nowrap; }
+.contents .tq { width:26mm; color:var(--soft); font-size:9pt; text-align:right;
+  white-space:nowrap; }
+.footnote { color:var(--soft); font-size:8.6pt; margin-top:4mm;
+  border-top:1px solid var(--rule); padding-top:2mm; }
+</style></head>
+<body><div class="sheet">
+
+<section class="cover">
+  <div class="eyebrow">Grade 8 · Algebra · Quarters I–III</div>
+  <h1 class="covertitle">Methods for the hard problems</h1>
+  <p class="sub">A workbook to be written in. Each topic runs Focus (easy), Practice (medium), Challenge (hard) and Beyond (very hard, olympiad). Answers, with solutions for the Beyond questions, are at the back.</p>
+  <table class="contents"><tr><td class="tnum">Topic 1</td><td>Revision of the Grade 7 course</td><td class="tles">lessons 1–3</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 2</td><td>Algebraic expressions</td><td class="tles">lessons 4–5</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 3</td><td>Algebraic fraction. Cancelling fractions</td><td class="tles">lessons 6–8</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 4</td><td>Reducing fractions to a common denominator</td><td class="tles">lessons 9–11</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 5</td><td>Addition and subtraction of algebraic fractions</td><td class="tles">lessons 12–14</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 6</td><td>Revision · Control work 1 — algebraic fractions</td><td class="tles">lessons 15–16</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 7</td><td>Multiplication and division of algebraic fractions</td><td class="tles">lessons 17–19</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 8</td><td>Identical transformation of fractional-rational expressions</td><td class="tles">lessons 20–22</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 9</td><td>Revision · Control work 2 — rational expressions</td><td class="tles">lessons 23–24</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 10</td><td>The function y = k / x — properties and graph</td><td class="tles">lessons 25–27</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 11</td><td>The arithmetic root of degree n</td><td class="tles">lessons 28–29</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 12</td><td>Powers with a rational exponent</td><td class="tles">lessons 30–31</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 13</td><td>Simplifying expressions with rational exponents</td><td class="tles">lessons 32–33</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 14</td><td>Standard form, and fractions as decimals</td><td class="tles">lessons 34–35</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 15</td><td>Revision · Control work 3 — roots and rational exponents</td><td class="tles">lessons 36–37</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 16</td><td>Numerical inequalities</td><td class="tles">lessons 38–39</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 17</td><td>Basic properties of numerical inequalities</td><td class="tles">lessons 40–41</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 18</td><td>Adding and multiplying inequalities</td><td class="tles">lessons 42–43</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 19</td><td>Raising a numerical inequality to a power</td><td class="tles">lessons 44–46</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 20</td><td>Revision · Control work 4 — numerical inequalities</td><td class="tles">lessons 47–48</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 21</td><td>Inequalities with one unknown</td><td class="tles">lessons 49–50</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 22</td><td>Systems of inequalities. Number intervals</td><td class="tles">lessons 51–52</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 23</td><td>The modulus of a number</td><td class="tles">lessons 53–54</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 24</td><td>Approximate values and error</td><td class="tles">lessons 55–57</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 25</td><td>Upper and lower bounds</td><td class="tles">lessons 58–59</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 26</td><td>Revision · Control work 5 — inequalities, modulus and accuracy</td><td class="tles">lessons 60–61</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 27</td><td>The quadratic equation and its roots</td><td class="tles">lessons 62–63</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 28</td><td>Incomplete quadratic equations</td><td class="tles">lessons 64–65</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 29</td><td>The quadratic formula and the discriminant</td><td class="tles">lessons 66–67</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 30</td><td>Vieta’s theorem and factorising a quadratic trinomial</td><td class="tles">lessons 68–69</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 31</td><td>Biquadratic equations and equations reducible to quadratics</td><td class="tles">lessons 70–71</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 32</td><td>Solving problems with quadratic equations</td><td class="tles">lessons 72–73</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 33</td><td>Compound percentages, simultaneous equations and quadratic graphs</td><td class="tles">lessons 74–76</td><td class="tq">5 ideas</td></tr><tr><td class="tnum">Topic 34</td><td>Revision · Control work 6 — quadratic equations</td><td class="tles">lessons 77–78</td><td class="tq">5 ideas</td></tr></table>
+  <p class="covernote">34 topics · 170 methods</p>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 1 · Algebraic fractions · Topic 1</div>
+    <h1>Revision of the Grade 7 course</h1>
+    <p class="refs">Lessons 1–3 · Algebra 8, pp. 3–6 · Cambridge Stage 8 review</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Add and subtract the same thing</div><div class="nbody">A quartic with no obvious factors often hides a difference of two squares. Add the term that completes a square, then take it away again: <span class="m">x<sup>4</sup> + 4 = x<sup>4</sup> + 4x<sup>2</sup> + 4 − 4x<sup>2</sup> = (x<sup>2</sup> + 2)<sup>2</sup> − (2x)<sup>2</sup></span>.</div></div><div class="note"><div class="nname">Symmetric sums</div><div class="nbody">When only <span class="m">s = x + y</span> and <span class="m">p = xy</span> are known, every symmetric expression follows: <span class="m">x<sup>2</sup> + y<sup>2</sup> = s<sup>2</sup> − 2p</span> and <span class="m">x<sup>3</sup> + y<sup>3</sup> = s<sup>3</sup> − 3ps</span>.</div></div><div class="note"><div class="nname">Factorise to solve in whole numbers</div><div class="nbody">An equation in two unknowns with a product term rearranges into a product equal to a constant. Then list the factor pairs: <span class="m">xy − 2x + 3y = 11</span> becomes <span class="m">(x + 3)(y − 2) = 5</span>.</div></div><div class="note"><div class="nname">Three consecutive integers</div><div class="nbody"><span class="m">n<sup>3</sup> − n = (n − 1)n(n + 1)</span>. Among any three consecutive numbers one is a multiple of 3 and at least one is even, so the product is a multiple of 6 — a divisibility proof with no induction.</div></div><div class="note"><div class="nname">When the sum is zero</div><div class="nbody"><span class="m">a + b + c = 0</span> is never just a condition; it is a factor. From <span class="m">a<sup>3</sup> + b<sup>3</sup> + c<sup>3</sup> − 3abc = (a + b + c)(…)</span>, the whole left side vanishes at once.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 1 · Algebraic fractions · Topic 2</div>
+    <h1>Algebraic expressions</h1>
+    <p class="refs">Lessons 4–5 · Algebra 8, §1, pp. 7–11 · Cambridge Stage 9 · 2.1–2.2</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Divide before you judge</div><div class="nbody">To ask when a fraction of whole numbers is an integer, split off the whole part first: <span class="m"><span class="frac"><span class="num">n + 3</span><span class="den">n − 1</span></span> = 1 + <span class="frac"><span class="num">4</span><span class="den">n − 1</span></span></span>. Now the question is only which numbers divide 4.</div></div><div class="note"><div class="nname">Every denominator counts</div><div class="nbody">In a stacked fraction the inner denominators are forbidden values too. <span class="m"><span class="frac"><span class="num">1</span><span class="den">1 + <span class="frac"><span class="num">1</span><span class="den">x</span></span></span></span></span> rules out both <span class="m">x = 0</span> and <span class="m">x = −1</span>, though only one is visible after simplifying.</div></div><div class="note"><div class="nname">The square that proves an inequality</div><div class="nbody"><span class="m">x + <span class="frac"><span class="num">1</span><span class="den">x</span></span> − 2 = <span class="frac"><span class="num">(x − 1)<sup>2</sup></span><span class="den">x</span></span></span>. Writing a difference over a common denominator usually exposes a square, and a square settles the sign.</div></div><div class="note"><div class="nname">Egyptian equations</div><div class="nbody"><span class="m"><span class="frac"><span class="num">1</span><span class="den">a</span></span> + <span class="frac"><span class="num">1</span><span class="den">b</span></span> = <span class="frac"><span class="num">1</span><span class="den">n</span></span></span> clears to <span class="m">(a − n)(b − n) = n<sup>2</sup></span>. Counting the factor pairs of <span class="m">n<sup>2</sup></span> counts the solutions.</div></div><div class="note"><div class="nname">A denominator that never vanishes</div><div class="nbody">A quadratic denominator is safe exactly when its discriminant is negative: <span class="m">x<sup>2</sup> + x + 1 = (x + <span class="frac"><span class="num">1</span><span class="den">2</span></span>)<sup>2</sup> + <span class="frac"><span class="num">3</span><span class="den">4</span></span></span>, never zero, so the fraction is defined everywhere.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 1 · Algebraic fractions · Topic 3</div>
+    <h1>Algebraic fraction. Cancelling fractions</h1>
+    <p class="refs">Lessons 6–8 · Algebra 8, §2, pp. 12–17 · Cambridge Stage 9 · 2.5</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Know the standard factorisations</div><div class="nbody"><span class="m">a<sup>2</sup> − b<sup>2</sup></span>, <span class="m">a<sup>3</sup> ± b<sup>3</sup></span>, <span class="m">x<sup>4</sup> + x<sup>2</sup> + 1 = (x<sup>2</sup> + x + 1)(x<sup>2</sup> − x + 1)</span> and <span class="m">x<sup>4</sup> + 4</span>. Most "impossible" cancellations are one of these in disguise.</div></div><div class="note"><div class="nname">A reversed bracket costs a sign</div><div class="nbody"><span class="m">(b − a)<sup>n</sup> = (−1)<sup>n</sup>(a − b)<sup>n</sup></span>. An even power hides the swap; an odd one leaves a minus behind.</div></div><div class="note"><div class="nname">Cancelling narrows the domain</div><div class="nbody"><span class="m"><span class="frac"><span class="num">x<sup>2</sup> − 4</span><span class="den">x − 2</span></span></span> and <span class="m">x + 2</span> agree everywhere except at <span class="m">x = 2</span>, where the first is undefined. Say so in the answer.</div></div><div class="note"><div class="nname">The difference quotient</div><div class="nbody"><span class="m"><span class="frac"><span class="num">(x + h)<sup>2</sup> − x<sup>2</sup></span><span class="den">h</span></span> = 2x + h</span>. The numerator is built to lose its constant term so the <span class="m">h</span> cancels — the first step of calculus, four years early.</div></div><div class="note"><div class="nname">Exact division</div><div class="nbody"><span class="m"><span class="frac"><span class="num">x<sup>2</sup> + ax + b</span><span class="den">x + 2</span></span></span> divides exactly only if <span class="m">x = −2</span> makes the numerator zero. Substituting the root is faster than dividing.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Grade 8 Algebra · Topic 4</div>
+    <h1>Reducing fractions to a common denominator</h1>
+    <p class="refs">Lessons 9–11 · Algebra 8, §3, pp. 18–21 · Cambridge Stage 9 · 2.5</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Build the LCD from the factors</div><div class="nbody">Factorise every denominator, then take each distinct factor to its highest power. Multiplying the denominators together always works but often gives far more than is needed.</div></div><div class="note"><div class="nname">The <span class="m">x<sup>n</sup> − 1</span> family</div><div class="nbody"><span class="m">x<sup>2</sup> − 1 = (x − 1)(x + 1)</span>, <span class="m">x<sup>3</sup> − 1 = (x − 1)(x<sup>2</sup> + x + 1)</span>, <span class="m">x<sup>6</sup> − 1 = (x<sup>3</sup> − 1)(x<sup>3</sup> + 1)</span>. In general <span class="m">gcd(x<sup>n</sup> − 1, x<sup>m</sup> − 1) = x<sup>gcd(n,m)</sup> − 1</span>.</div></div><div class="note"><div class="nname">Reversed brackets again</div><div class="nbody">Before declaring two denominators different, try multiplying one by <span class="m">−1</span>. <span class="m">y − x</span> and <span class="m">x − y</span> are the same factor wearing a sign.</div></div><div class="note"><div class="nname">Divisor arguments</div><div class="nbody">Questions asking for which integers a fraction is whole are divisor questions. Split off the whole part, then list the divisors of what is left.</div></div><div class="note"><div class="nname">Lowest common multiple of numbers and letters</div><div class="nbody">Numbers by LCM, letters by highest power — the same rule applied twice. <span class="m">LCD(<span class="frac"><span class="num">2</span><span class="den">3a<sup>2</sup>b</span></span>, <span class="frac"><span class="num">5</span><span class="den">6ab<sup>3</sup></span></span>) = 6a<sup>2</sup>b<sup>3</sup></span>.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Grade 8 Algebra · Topic 5</div>
+    <h1>Addition and subtraction of algebraic fractions</h1>
+    <p class="refs">Lessons 12–14 · Algebra 8, §4, pp. 22–26 · Cambridge Stage 9 · 2.5</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Telescoping</div><div class="nbody"><span class="m"><span class="frac"><span class="num">1</span><span class="den">k(k + 1)</span></span> = <span class="frac"><span class="num">1</span><span class="den">k</span></span> − <span class="frac"><span class="num">1</span><span class="den">k + 1</span></span></span> and <span class="m"><span class="frac"><span class="num">1</span><span class="den">n(n + 2)</span></span> = <span class="frac"><span class="num">1</span><span class="den">2</span></span>(<span class="frac"><span class="num">1</span><span class="den">n</span></span> − <span class="frac"><span class="num">1</span><span class="den">n + 2</span></span>)</span>. Split, then watch the middle terms cancel in pairs.</div></div><div class="note"><div class="nname">Symmetric three-variable sums</div><div class="nbody">Sums over <span class="m">(a − b)(a − c)</span> and its cyclic partners share the common denominator <span class="m">(a − b)(b − c)(a − c)</span>. The numerators collapse: the constant version gives 0, the <span class="m">a<sup>2</sup></span> version gives 1.</div></div><div class="note"><div class="nname">A quadratic agreeing at three points</div><div class="nbody">If an expression is a quadratic in <span class="m">x</span> and equals 1 at three different values, it is the constant 1. That proves the Lagrange identity without expanding anything.</div></div><div class="note"><div class="nname">Turn a condition into a factorisation</div><div class="nbody">From <span class="m"><span class="frac"><span class="num">1</span><span class="den">a</span></span> + <span class="frac"><span class="num">1</span><span class="den">b</span></span> + <span class="frac"><span class="num">1</span><span class="den">c</span></span> = <span class="frac"><span class="num">1</span><span class="den">a + b + c</span></span></span>, clearing denominators and collecting gives <span class="m">(a + b)(b + c)(c + a) = 0</span> — so two of the three are opposites.</div></div><div class="note"><div class="nname">The <span class="m">x + <span class="frac"><span class="num">1</span><span class="den">x</span></span></span> ladder</div><div class="nbody">Squaring gives <span class="m">x<sup>2</sup> + <span class="frac"><span class="num">1</span><span class="den">x<sup>2</sup></span></span></span>, cubing gives the cubes, and multiplying two rungs climbs higher: <span class="m">(x<sup>2</sup> + <span class="frac"><span class="num">1</span><span class="den">x<sup>2</sup></span></span>)(x<sup>3</sup> + <span class="frac"><span class="num">1</span><span class="den">x<sup>3</sup></span></span>) = x<sup>5</sup> + <span class="frac"><span class="num">1</span><span class="den">x<sup>5</sup></span></span> + x + <span class="frac"><span class="num">1</span><span class="den">x</span></span></span>.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 1 · Algebraic fractions · Topic 6</div>
+    <h1>Revision · Control work 1 — algebraic fractions</h1>
+    <p class="refs">Lessons 15–16 · Algebra 8, revision of §§1–4 · Cambridge Stage 9 · Unit 2 check</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">The four costly errors</div><div class="nbody">Cancelling a term instead of a factor; losing the sign on a reversed bracket; forgetting the bracket when subtracting a numerator; keeping a root that makes a denominator zero.</div></div><div class="note"><div class="nname">Test a doubtful step with one number</div><div class="nbody">Put <span class="m">x = 2</span> into both sides. A wrong cancellation shows itself at once, and it costs five seconds.</div></div><div class="note"><div class="nname">Reject roots that kill a denominator</div><div class="nbody">Clearing fractions can invent solutions. Every candidate must be checked against the original denominators before it is written down.</div></div><div class="note"><div class="nname">Telescoping sums</div><div class="nbody">Splitting <span class="m"><span class="frac"><span class="num">1</span><span class="den">k(k + 1)</span></span></span> turns a long sum into two surviving terms. Recognise the shape: a product of two consecutive factors below the line.</div></div><div class="note"><div class="nname">State the permissible values</div><div class="nbody">They are part of the answer, not a footnote. An expression that simplifies to <span class="m">1</span> still carries the values it was never defined at.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 1 · Algebraic fractions · Topic 7</div>
+    <h1>Multiplication and division of algebraic fractions</h1>
+    <p class="refs">Lessons 17–19 · Algebra 8, §5, pp. 27–29 · Cambridge Stage 9 · 8.3–8.4</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Factorise, then cancel across</div><div class="nbody">Multiplication lets a factor from one numerator cancel a factor of the other denominator. Multiplying out first only creates work to undo.</div></div><div class="note"><div class="nname">Telescoping products</div><div class="nbody"><span class="m"><span class="frac"><span class="num">x</span><span class="den">x + 1</span></span> · <span class="frac"><span class="num">x + 1</span><span class="den">x + 2</span></span> · <span class="frac"><span class="num">x + 2</span><span class="den">x + 3</span></span> = <span class="frac"><span class="num">x</span><span class="den">x + 3</span></span></span>. Each numerator meets the previous denominator.</div></div><div class="note"><div class="nname">A power reaches every factor</div><div class="nbody"><span class="m">(<span class="frac"><span class="num">2a</span><span class="den">b</span></span>)<sup>3</sup> = <span class="frac"><span class="num">8a<sup>3</sup></span><span class="den">b<sup>3</sup></span></span></span> — the 2 is cubed too. The commonest slip in this topic.</div></div><div class="note"><div class="nname">Only the ratio matters</div><div class="nbody">Given <span class="m"><span class="frac"><span class="num">x</span><span class="den">y</span></span> = <span class="frac"><span class="num">2</span><span class="den">3</span></span></span>, put <span class="m">x = 2k</span> and <span class="m">y = 3k</span>. Every <span class="m">k</span> cancels, and the answer is a number.</div></div><div class="note"><div class="nname">Dividing and componendo</div><div class="nbody"><span class="m"><span class="frac"><span class="num">a</span><span class="den">b</span></span> ÷ <span class="frac"><span class="num">c</span><span class="den">d</span></span> = <span class="frac"><span class="num">ad</span><span class="den">bc</span></span></span>; and adding 1 to both sides of a proportion gives <span class="m"><span class="frac"><span class="num">a + b</span><span class="den">b</span></span> = <span class="frac"><span class="num">c + d</span><span class="den">d</span></span></span>.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 1 · Algebraic fractions · Topic 8</div>
+    <h1>Identical transformation of fractional-rational expressions</h1>
+    <p class="refs">Lessons 20–22 · Algebra 8, §6, pp. 30–33 · Cambridge Stage 9 · 2.3, 2.6</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">A compound fraction is a division</div><div class="nbody">Tidy the top into one fraction, tidy the bottom into one fraction, then multiply by the reciprocal. Never cancel across the main bar before that.</div></div><div class="note"><div class="nname">Continued fractions build outwards</div><div class="nbody"><span class="m">1 + <span class="frac"><span class="num">1</span><span class="den">1 + <span class="frac"><span class="num">1</span><span class="den">1 + <span class="frac"><span class="num">1</span><span class="den">x</span></span></span></span></span></span></span> is worked from the innermost <span class="m">1 + <span class="frac"><span class="num">1</span><span class="den">x</span></span></span> outwards. The coefficients that appear are Fibonacci numbers.</div></div><div class="note"><div class="nname">Use the condition, do not fight it</div><div class="nbody">With <span class="m">a + b + c = 0</span>, substitute <span class="m">c = −(a + b)</span> or square the condition to get <span class="m">a<sup>2</sup> + b<sup>2</sup> + c<sup>2</sup> = −2(ab + bc + ca)</span>.</div></div><div class="note"><div class="nname">The S · T trick</div><div class="nbody">For sums with squared denominators, multiply the plain sum by <span class="m">T = <span class="frac"><span class="num">1</span><span class="den">b − c</span></span> + <span class="frac"><span class="num">1</span><span class="den">c − a</span></span> + <span class="frac"><span class="num">1</span><span class="den">a − b</span></span></span>. The cross terms cancel and the squared sum appears.</div></div><div class="note"><div class="nname">Check the long chain at a value</div><div class="nbody">Before writing the final line, test the start and the end at <span class="m">x = 2</span>. A dropped sign in the middle shows up immediately.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 1 · Algebraic fractions · Topic 9</div>
+    <h1>Revision · Control work 2 — rational expressions</h1>
+    <p class="refs">Lessons 23–24 · Algebra 8, revision of §§5–6 · Cambridge Stage 9 · Units 2, 8</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">The four costly errors</div><div class="nbody">Multiplying by the divisor instead of its reciprocal; cubing only the letter and not the coefficient; cancelling both powers of <span class="m">x</span> instead of one; losing the bracket in a compound numerator.</div></div><div class="note"><div class="nname">Work a compound fraction in three moves</div><div class="nbody">One fraction on top, one underneath, then invert and multiply. Trying to shortcut is where the marks go.</div></div><div class="note"><div class="nname">Collapsing to a constant is normal</div><div class="nbody">Many well-built chains end at <span class="m">1</span> or <span class="m">−1</span>. A surprising answer is not a sign of error — but check it at one value.</div></div><div class="note"><div class="nname">Power ladders</div><div class="nbody">From <span class="m">x + <span class="frac"><span class="num">1</span><span class="den">x</span></span> = 3</span> every higher combination follows by squaring, cubing and multiplying rungs together.</div></div><div class="note"><div class="nname">Proportion by substitution</div><div class="nbody">For <span class="m"><span class="frac"><span class="num">a</span><span class="den">b</span></span> = <span class="frac"><span class="num">c</span><span class="den">d</span></span></span>, set both equal to <span class="m">t</span> and write <span class="m">a = bt</span>, <span class="m">c = dt</span>. The claim usually becomes an identity in <span class="m">t</span>.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 1 · Algebraic fractions · Topic 10</div>
+    <h1>The function y = k / x — properties and graph</h1>
+    <p class="refs">Lessons 25–27 · Algebra 8, §7, pp. 34–38 · Cambridge Stage 9 · 10.1–10.2, 11.2</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">The product is the whole story</div><div class="nbody">On <span class="m">y = <span class="frac"><span class="num">k</span><span class="den">x</span></span></span> every point satisfies <span class="m">xy = k</span>. One known point gives <span class="m">k</span> by multiplication, and the rectangle under any point has area <span class="m">|k|</span>.</div></div><div class="note"><div class="nname">Whole-number points are divisors</div><div class="nbody"><span class="m">xy = 12</span> has as many integer solutions as 12 has divisors, positive and negative — twelve points in all.</div></div><div class="note"><div class="nname">A moved hyperbola</div><div class="nbody"><span class="m">y = <span class="frac"><span class="num">3x − 1</span><span class="den">x − 2</span></span> = 3 + <span class="frac"><span class="num">5</span><span class="den">x − 2</span></span></span>. Dividing out shows the asymptotes at once: <span class="m">x = 2</span> and <span class="m">y = 3</span>.</div></div><div class="note"><div class="nname">Least value of <span class="m">x + <span class="frac"><span class="num">k</span><span class="den">x</span></span></span></div><div class="nbody"><span class="m">x + <span class="frac"><span class="num">k</span><span class="den">x</span></span> − 2<span class="rsign">√</span><span class="rbar">k</span> = <span class="frac"><span class="num">(x − <span class="rsign">√</span><span class="rbar">k</span>)<sup>2</sup></span><span class="den">x</span></span></span>, so the minimum is <span class="m">2<span class="rsign">√</span><span class="rbar">k</span></span> at <span class="m">x = <span class="rsign">√</span><span class="rbar">k</span></span>.</div></div><div class="note"><div class="nname">Rate problems are inverse proportion</div><div class="nbody">Work done in one hour adds: <span class="m"><span class="frac"><span class="num">1</span><span class="den">t</span></span> + <span class="frac"><span class="num">1</span><span class="den">t + 5</span></span> = <span class="frac"><span class="num">1</span><span class="den">6</span></span></span>. Clearing the fractions gives a quadratic with one sensible root.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 2 · Roots and rational exponents · Topic 11</div>
+    <h1>The arithmetic root of degree n</h1>
+    <p class="refs">Lessons 28–29 · Algebra 8, §8, pp. 39–41 · Cambridge Stage 9 · 1.1</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Denesting a double root</div><div class="nbody"><span class="m"><span class="rsign">√</span><span class="rbar">a + 2<span class="rsign">√</span><span class="rbar">b</span></span></span> simplifies when two numbers add to <span class="m">a</span> and multiply to <span class="m">b</span>: then <span class="m">a + 2<span class="rsign">√</span><span class="rbar">b</span> = (<span class="rsign">√</span><span class="rbar">x</span> + <span class="rsign">√</span><span class="rbar">y</span>)<sup>2</sup></span>. So <span class="m">3 + 2<span class="rsign">√</span><span class="rbar">2</span> = (1 + <span class="rsign">√</span><span class="rbar">2</span>)<sup>2</sup></span>.</div></div><div class="note"><div class="nname">Conjugates</div><div class="nbody">Multiply by the conjugate to clear a root below the line. For cube roots use <span class="m">a<sup>3</sup> − b<sup>3</sup> = (a − b)(a<sup>2</sup> + ab + b<sup>2</sup>)</span>, so <span class="m"><span class="frac"><span class="num">1</span><span class="den"><span class="ridx">3</span><span class="rsign">√</span><span class="rbar">2</span> − 1</span></span></span> needs <span class="m"><span class="ridx">3</span><span class="rsign">√</span><span class="rbar">4</span> + <span class="ridx">3</span><span class="rsign">√</span><span class="rbar">2</span> + 1</span>.</div></div><div class="note"><div class="nname">Telescoping surds</div><div class="nbody"><span class="m"><span class="frac"><span class="num">1</span><span class="den"><span class="rsign">√</span><span class="rbar">k</span> + <span class="rsign">√</span><span class="rbar">k + 1</span></span></span> = <span class="rsign">√</span><span class="rbar">k + 1</span> − <span class="rsign">√</span><span class="rbar">k</span></span> — rationalising turns a sum of fractions into a collapsing chain.</div></div><div class="note"><div class="nname">Compare by squaring</div><div class="nbody">Both sides positive, so squaring decides. <span class="m"><span class="rsign">√</span><span class="rbar">7</span> + <span class="rsign">√</span><span class="rbar">5</span></span> beats <span class="m"><span class="rsign">√</span><span class="rbar">10</span> + <span class="rsign">√</span><span class="rbar">2</span></span> because <span class="m">2<span class="rsign">√</span><span class="rbar">35</span> &gt; 2<span class="rsign">√</span><span class="rbar">20</span></span>.</div></div><div class="note"><div class="nname">Trap the value between squares</div><div class="nbody"><span class="m">n<sup>2</sup> &lt; n<sup>2</sup> + n &lt; (n + 1)<sup>2</sup></span>, so <span class="m"><span class="rsign">√</span><span class="rbar">n<sup>2</sup> + n</span></span> lies strictly between two consecutive whole numbers and is never one itself.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 2 · Roots and rational exponents · Topic 12</div>
+    <h1>Powers with a rational exponent</h1>
+    <p class="refs">Lessons 30–31 · Algebra 8, §9, pp. 42–48 · Cambridge Stage 9 · 1.3</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Compare by a common power</div><div class="nbody">To rank <span class="m">2<sup><span class="frac"><span class="num">1</span><span class="den">2</span></span></sup></span>, <span class="m">3<sup><span class="frac"><span class="num">1</span><span class="den">3</span></span></sup></span> and <span class="m">6<sup><span class="frac"><span class="num">1</span><span class="den">6</span></span></sup></span>, raise all three to the sixth: 8, 9 and 6. Raising to a power preserves order among positives.</div></div><div class="note"><div class="nname">Substitute to get a quadratic</div><div class="nbody">With <span class="m">t = 3<sup>x</sup></span>, the equation <span class="m">9<sup>x</sup> − 4 · 3<sup>x</sup> + 3 = 0</span> becomes <span class="m">t<sup>2</sup> − 4t + 3 = 0</span>. The same trick handles <span class="m">t = x<sup><span class="frac"><span class="num">1</span><span class="den">2</span></span></sup></span> and <span class="m">t = x<sup><span class="frac"><span class="num">1</span><span class="den">4</span></span></sup></span>.</div></div><div class="note"><div class="nname">Reciprocal pairs</div><div class="nbody"><span class="m">a<sup><span class="frac"><span class="num">1</span><span class="den">2</span></span></sup></span> and <span class="m">a<sup>−<span class="frac"><span class="num">1</span><span class="den">2</span></span></sup></span> multiply to 1, so in <span class="m">(a<sup><span class="frac"><span class="num">1</span><span class="den">2</span></span></sup> + a<sup>−<span class="frac"><span class="num">1</span><span class="den">2</span></span></sup>)<sup>2</sup></span> the middle term is simply 2.</div></div><div class="note"><div class="nname">Work the root first</div><div class="nbody"><span class="m">27<sup><span class="frac"><span class="num">2</span><span class="den">3</span></span></sup> = (<span class="ridx">3</span><span class="rsign">√</span><span class="rbar">27</span>)<sup>2</sup> = 9</span>. Taking the root before the power keeps the numbers small enough to do by hand.</div></div><div class="note"><div class="nname">A negative index turns a fraction over</div><div class="nbody"><span class="m">(<span class="frac"><span class="num">8</span><span class="den">27</span></span>)<sup>−<span class="frac"><span class="num">2</span><span class="den">3</span></span></sup> = (<span class="frac"><span class="num">27</span><span class="den">8</span></span>)<sup><span class="frac"><span class="num">2</span><span class="den">3</span></span></sup> = <span class="frac"><span class="num">9</span><span class="den">4</span></span></span>.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 2 · Roots and rational exponents · Topic 13</div>
+    <h1>Simplifying expressions with rational exponents</h1>
+    <p class="refs">Lessons 32–33 · Algebra 8, §10, pp. 49–52 · Cambridge Stage 9 · 2.3</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">One substitution does most of the work</div><div class="nbody">Put <span class="m">u = x<sup><span class="frac"><span class="num">1</span><span class="den">2</span></span></sup></span>. Then <span class="m">x − 5x<sup><span class="frac"><span class="num">1</span><span class="den">2</span></span></sup> + 6</span> is <span class="m">u<sup>2</sup> − 5u + 6</span>, an ordinary quadratic, and the factors translate straight back.</div></div><div class="note"><div class="nname">A difference of squares in disguise</div><div class="nbody"><span class="m">x − y = (x<sup><span class="frac"><span class="num">1</span><span class="den">2</span></span></sup> − y<sup><span class="frac"><span class="num">1</span><span class="den">2</span></span></sup>)(x<sup><span class="frac"><span class="num">1</span><span class="den">2</span></span></sup> + y<sup><span class="frac"><span class="num">1</span><span class="den">2</span></span></sup>)</span>. The cube-root version uses <span class="m">a − b = (a<sup><span class="frac"><span class="num">1</span><span class="den">3</span></span></sup> − b<sup><span class="frac"><span class="num">1</span><span class="den">3</span></span></sup>)(a<sup><span class="frac"><span class="num">2</span><span class="den">3</span></span></sup> + (ab)<sup><span class="frac"><span class="num">1</span><span class="den">3</span></span></sup> + b<sup><span class="frac"><span class="num">2</span><span class="den">3</span></span></sup>)</span>.</div></div><div class="note"><div class="nname">Take out the lowest power</div><div class="nbody">Negative indices included: <span class="m">x<sup><span class="frac"><span class="num">1</span><span class="den">2</span></span></sup> − x<sup>−<span class="frac"><span class="num">1</span><span class="den">2</span></span></sup> = x<sup>−<span class="frac"><span class="num">1</span><span class="den">2</span></span></sup>(x − 1)</span>.</div></div><div class="note"><div class="nname">Rationalise the numerator</div><div class="nbody"><span class="m"><span class="frac"><span class="num">x<sup><span class="frac"><span class="num">1</span><span class="den">2</span></span></sup> − 3</span><span class="den">x − 9</span></span> = <span class="frac"><span class="num">1</span><span class="den">x<sup><span class="frac"><span class="num">1</span><span class="den">2</span></span></sup> + 3</span></span></span>. The new form is defined at <span class="m">x = 9</span>, where the old one was not.</div></div><div class="note"><div class="nname">State the condition</div><div class="nbody">All of this assumes the bases are positive. Say so — it is where the marks are, and where the mathematics is honest.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 2 · Roots and rational exponents · Topic 14</div>
+    <h1>Standard form, and fractions as decimals</h1>
+    <p class="refs">Lessons 34–35 · Algebra 8, Chapter I practical, pp. 62–67 · Cambridge Stage 9 · 1.2, 8.1</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">The subtraction trick</div><div class="nbody">For a block of <span class="m">k</span> digits, multiply by <span class="m">10<sup>k</sup></span> and subtract: <span class="m">0.(abc) = <span class="frac"><span class="num">100a + 10b + c</span><span class="den">999</span></span></span>. Nines below the line, one for each digit of the block.</div></div><div class="note"><div class="nname">Which fractions terminate</div><div class="nbody">In lowest terms, exactly those whose denominator is built only from <span class="m">2</span>s and <span class="m">5</span>s — because a terminating decimal is <span class="m"><span class="frac"><span class="num">k</span><span class="den">10<sup>m</sup></span></span></span>.</div></div><div class="note"><div class="nname">How long the block is</div><div class="nbody">For <span class="m">q</span> coprime to 10, the period of <span class="m"><span class="frac"><span class="num">1</span><span class="den">q</span></span></span> is the smallest <span class="m">k</span> with <span class="m">10<sup>k</sup> ≡ 1 (mod q)</span>. For 7 and for 13 that is 6.</div></div><div class="note"><div class="nname">Standard form arithmetic</div><div class="nbody">Multiply the numbers and add the powers; divide and subtract. To <b>add</b>, make the powers equal first.</div></div><div class="note"><div class="nname">Counting digits</div><div class="nbody">A number between <span class="m">10<sup>19</sup></span> and <span class="m">10<sup>20</sup></span> has 20 digits. Putting a power into standard form answers "how many digits" at a glance.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 2 · Roots and rational exponents · Topic 15</div>
+    <h1>Revision · Control work 3 — roots and rational exponents</h1>
+    <p class="refs">Lessons 36–37 · Algebra 8, revision of §§8–10 · Cambridge Stage 9 · Unit 1 check</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">The four costly errors</div><div class="nbody"><span class="m"><span class="rsign">√</span><span class="rbar">x<sup>2</sup></span> = x</span> instead of <span class="m">|x|</span>; halving an index instead of multiplying; <span class="m">4<sup><span class="frac"><span class="num">3</span><span class="den">2</span></span></sup></span> read as <span class="m">4 · <span class="frac"><span class="num">3</span><span class="den">2</span></span></span>; and <span class="m"><span class="rsign">√</span><span class="rbar">a<sup>2</sup> + b<sup>2</sup></span> = a + b</span>, which one example kills.</div></div><div class="note"><div class="nname">Denesting</div><div class="nbody">Look for a square: <span class="m">9 + 4<span class="rsign">√</span><span class="rbar">5</span> = (2 + <span class="rsign">√</span><span class="rbar">5</span>)<sup>2</sup></span>. Match the rational parts and the root parts separately.</div></div><div class="note"><div class="nname">Compare by a common power</div><div class="nbody">Raise both to the lowest common multiple of the index denominators. <span class="m">3<sup><span class="frac"><span class="num">1</span><span class="den">2</span></span></sup></span> against <span class="m">2<sup><span class="frac"><span class="num">2</span><span class="den">3</span></span></sup></span> becomes 27 against 16.</div></div><div class="note"><div class="nname">Conjugate pairs that multiply to 1</div><div class="nbody"><span class="m">(2 + <span class="rsign">√</span><span class="rbar">3</span>)(2 − <span class="rsign">√</span><span class="rbar">3</span>) = 1</span>, so each is the reciprocal of the other and rationalising needs no division at all.</div></div><div class="note"><div class="nname">Estimate with standard form</div><div class="nbody">Keep one significant figure through the calculation and the power of ten does the rest. It is the fastest check on an answer that looks wrong.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 3 · Numerical inequalities · Topic 16</div>
+    <h1>Numerical inequalities</h1>
+    <p class="refs">Lessons 38–39 · Algebra 8, §11, pp. 68–70 · Cambridge Stage 9 · 4.3</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">The definition does the work</div><div class="nbody"><span class="m">a &gt; b</span> means <span class="m">a − b &gt; 0</span>. Every comparison, however awkward, is the sign of one difference.</div></div><div class="note"><div class="nname">Sum of squares</div><div class="nbody">Write the difference as a sum of squares and the sign is settled: <span class="m">2(a<sup>2</sup> + b<sup>2</sup> + c<sup>2</sup> − ab − bc − ca) = (a − b)<sup>2</sup> + (b − c)<sup>2</sup> + (c − a)<sup>2</sup></span>.</div></div><div class="note"><div class="nname">AM ≥ GM</div><div class="nbody"><span class="m"><span class="frac"><span class="num">a + b</span><span class="den">2</span></span> ≥ <span class="rsign">√</span><span class="rbar">ab</span></span> because the difference is <span class="m"><span class="frac"><span class="num">(<span class="rsign">√</span><span class="rbar">a</span> − <span class="rsign">√</span><span class="rbar">b</span>)<sup>2</sup></span><span class="den">2</span></span></span>. For three numbers the same follows from <span class="m">a<sup>3</sup> + b<sup>3</sup> + c<sup>3</sup> ≥ 3abc</span>.</div></div><div class="note"><div class="nname">Compare by squaring</div><div class="nbody">Only when both sides are non-negative. Then squaring clears roots without disturbing the order.</div></div><div class="note"><div class="nname">The workhorse</div><div class="nbody"><span class="m">a<sup>2</sup> + b<sup>2</sup> + c<sup>2</sup> ≥ ab + bc + ca</span> and its cousin <span class="m">(a + b + c)<sup>2</sup> ≥ 3(ab + bc + ca)</span> settle a surprising share of competition inequalities.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 3 · Numerical inequalities · Topic 17</div>
+    <h1>Basic properties of numerical inequalities</h1>
+    <p class="refs">Lessons 40–41 · Algebra 8, §12, pp. 71–74 · Cambridge Stage 9 · 4.3</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">What is safe</div><div class="nbody">Add or subtract anything from both sides; multiply or divide by a positive. A <b>negative</b> multiplier reverses the sign — the single most expensive slip.</div></div><div class="note"><div class="nname">Squaring is not order-preserving</div><div class="nbody"><span class="m">1 &gt; −2</span> but <span class="m">1 &lt; 4</span>. Cubing always is, because <span class="m">a<sup>3</sup> − b<sup>3</sup> = (a − b)(a<sup>2</sup> + ab + b<sup>2</sup>)</span> and the second bracket is never negative.</div></div><div class="note"><div class="nname">Reciprocals need one sign</div><div class="nbody"><span class="m">a &gt; b</span> gives <span class="m"><span class="frac"><span class="num">1</span><span class="den">a</span></span> &lt; <span class="frac"><span class="num">1</span><span class="den">b</span></span></span> only when <span class="m">a</span> and <span class="m">b</span> have the same sign. <span class="m">1 &gt; −1</span> is the counter-example to remember.</div></div><div class="note"><div class="nname">Rewrite to see the direction</div><div class="nbody"><span class="m"><span class="frac"><span class="num">x</span><span class="den">x + 1</span></span> = 1 − <span class="frac"><span class="num">1</span><span class="den">x + 1</span></span></span>. As <span class="m">x</span> grows the subtracted part shrinks, so the whole climbs — monotonicity with no calculus.</div></div><div class="note"><div class="nname">The mediant</div><div class="nbody">If <span class="m"><span class="frac"><span class="num">a</span><span class="den">b</span></span> &lt; <span class="frac"><span class="num">c</span><span class="den">d</span></span></span> with positive denominators, then <span class="m"><span class="frac"><span class="num">a + c</span><span class="den">b + d</span></span></span> lies strictly between them.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 3 · Numerical inequalities · Topic 18</div>
+    <h1>Adding and multiplying inequalities</h1>
+    <p class="refs">Lessons 42–43 · Algebra 8, §13, pp. 75–79 · Cambridge Stage 9 · beyond</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">What may be combined</div><div class="nbody">Same-direction inequalities may always be <b>added</b>; they may be <b>multiplied</b> only when every number is positive; they may <b>never</b> be subtracted or divided term by term.</div></div><div class="note"><div class="nname">Differences as sums</div><div class="nbody">To bound <span class="m">a − b</span>, bound <span class="m">−b</span> first by reversing the ends of <span class="m">b</span>, then add. The same for division: bound <span class="m"><span class="frac"><span class="num">1</span><span class="den">b</span></span></span> and multiply.</div></div><div class="note"><div class="nname">Corners, then the inside</div><div class="nbody">For an expression monotone in each variable the extremes sit at the corners of the box. When it is not — <span class="m">x<sup>2</sup></span> across zero — the extreme is <b>inside</b>, and the corners lie.</div></div><div class="note"><div class="nname">Fixed sum, biggest product</div><div class="nbody">If <span class="m">a + b</span> is fixed, <span class="m">ab</span> is largest when <span class="m">a = b</span>: <span class="m">ab = <span class="frac"><span class="num">(a+b)<sup>2</sup></span><span class="den">4</span></span> − <span class="frac"><span class="num">(a−b)<sup>2</sup></span><span class="den">4</span></span></span>.</div></div><div class="note"><div class="nname">Check the denominator can't vanish</div><div class="nbody">Before trusting a corner of a range for a fraction, make sure no point of the box makes the denominator zero.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 3 · Numerical inequalities · Topic 19</div>
+    <h1>Raising a numerical inequality to a power</h1>
+    <p class="refs">Lessons 44–46 · Algebra 8, §14, pp. 80–84 · Cambridge Stage 9 · beyond</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Positives are easy</div><div class="nbody">If <span class="m">0 &lt; a &lt; b</span> then <span class="m">a<sup>n</sup> &lt; b<sup>n</sup></span> for every <span class="m">n ≥ 1</span>, and roots behave the same way.</div></div><div class="note"><div class="nname">Odd and even</div><div class="nbody">An odd power keeps the order for every real number. An even power keeps it only for non-negatives: <span class="m">−3 &lt; 2</span> but <span class="m">9 &gt; 4</span>.</div></div><div class="note"><div class="nname">Below one, powers shrink</div><div class="nbody">For <span class="m">0 &lt; x &lt; 1</span>, <span class="m">x<sup>3</sup> &lt; x<sup>2</sup> &lt; x &lt; <span class="rsign">√</span><span class="rbar">x</span></span>. Above 1 the order reverses.</div></div><div class="note"><div class="nname">An even power across zero</div><div class="nbody">If the range contains 0, the least value of <span class="m">x<sup>2</sup></span> is 0, reached inside the range. The largest comes from whichever end is further from zero.</div></div><div class="note"><div class="nname">Bernoulli</div><div class="nbody"><span class="m">(1 + h)<sup>n</sup> ≥ 1 + nh</span> for <span class="m">h ≥ −1</span>. It is the quickest way to show a power with base above 1 grows past any bound.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 3 · Numerical inequalities · Topic 20</div>
+    <h1>Revision · Control work 4 — numerical inequalities</h1>
+    <p class="refs">Lessons 47–48 · Algebra 8, revision of §§11–14 · Cambridge Stage 9 · 4.3</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">The four costly errors</div><div class="nbody">Keeping the direction after multiplying by a negative; subtracting inequalities term by term; squaring a range that crosses zero and trusting the corners; taking reciprocals across a change of sign.</div></div><div class="note"><div class="nname">Sum of squares, again</div><div class="nbody">Nearly every proof in this chapter is "the difference is a square, or a sum of squares". Write the difference first and look for the pattern.</div></div><div class="note"><div class="nname">A checklist for estimating a range</div><div class="nbody">Is each variable's range right? Is the expression monotone in each? Does any denominator vanish inside? Only then do the corners decide.</div></div><div class="note"><div class="nname">The mean family</div><div class="nbody"><span class="m"><span class="frac"><span class="num">a + b</span><span class="den">2</span></span> ≥ <span class="rsign">√</span><span class="rbar">ab</span> ≥ <span class="frac"><span class="num">2ab</span><span class="den">a + b</span></span></span> for positive <span class="m">a, b</span> — arithmetic, geometric and harmonic, with equality only when <span class="m">a = b</span>.</div></div><div class="note"><div class="nname">The triangle inequality</div><div class="nbody"><span class="m">|a + b| ≤ |a| + |b|</span>, proved by squaring both sides and using <span class="m">ab ≤ |ab|</span>. Equality when the two have the same sign.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 4 · Inequalities, modulus and accuracy · Topic 21</div>
+    <h1>Inequalities with one unknown</h1>
+    <p class="refs">Lessons 49–50 · Algebra 8, §15, pp. 85–93 · Cambridge Stage 9 · 4.3</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Only one rule differs from equations</div><div class="nbody">Every step that solves an equation is allowed, except that multiplying or dividing by a negative <b>reverses</b> the sign. Test one value from your answer to catch it.</div></div><div class="note"><div class="nname">Never multiply by an unknown sign</div><div class="nbody">From <span class="m"><span class="frac"><span class="num">1</span><span class="den">x</span></span> &gt; 2</span> you may not multiply by <span class="m">x</span>: it could be negative. Split into cases, or move everything to one side.</div></div><div class="note"><div class="nname">Critical values and regions</div><div class="nbody">For a product or a fraction, mark where each factor is zero or undefined, then test one point in each region. The sign alternates between consecutive critical values.</div></div><div class="note"><div class="nname">When the unknown cancels</div><div class="nbody">A true statement left behind means every number works; a false one means none do. <span class="m">3x + 1 &gt; 3x</span> is the first, <span class="m">2x + 5 &lt; 2x + 3</span> the second.</div></div><div class="note"><div class="nname">Counting integer solutions</div><div class="nbody">Solve first, then count. Watch which ends are included: <span class="m">−2 ≤ x &lt; 4</span> holds for six integers, not seven or five.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 4 · Inequalities, modulus and accuracy · Topic 22</div>
+    <h1>Systems of inequalities. Number intervals</h1>
+    <p class="refs">Lessons 51–52 · Algebra 8, §16, pp. 94–104 · Cambridge Stage 9 · 4.3</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Overlap, not union</div><div class="nbody">A system asks for both conditions at once, so the answer is the <b>intersection</b>. Draw both on one number line and read off where they overlap.</div></div><div class="note"><div class="nname">Interval notation</div><div class="nbody"><span class="m">[a, b]</span> includes its ends, <span class="m">(a, b)</span> excludes them. A square bracket pairs with <span class="m">≤</span>, a round one with <span class="m">&lt;</span>.</div></div><div class="note"><div class="nname">Double inequalities</div><div class="nbody"><span class="m">1 ≤ 2x + 3 ≤ 9</span> is one system: do the same thing to all three parts, and reverse all of it if you multiply by a negative.</div></div><div class="note"><div class="nname">Quadratic inequalities</div><div class="nbody">Factorise, find the roots, then decide between or outside: a positive-leading quadratic is below the axis <b>between</b> its roots.</div></div><div class="note"><div class="nname">Empty is an answer</div><div class="nbody">If the two sets do not overlap, say so. <span class="m">x &gt; 3</span> with <span class="m">x &lt; 1</span> has no solution, and writing nothing is not the same as writing that.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 4 · Inequalities, modulus and accuracy · Topic 23</div>
+    <h1>The modulus of a number</h1>
+    <p class="refs">Lessons 53–54 · Algebra 8, §17, pp. 105–110 · Cambridge Stage 9 · beyond</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Modulus is distance</div><div class="nbody"><span class="m">|x − a|</span> is the distance from <span class="m">x</span> to <span class="m">a</span>. Read every modulus question that way and most of them stop needing algebra.</div></div><div class="note"><div class="nname">Less gives one interval, greater gives two</div><div class="nbody"><span class="m">|x| &lt; a</span> is <span class="m">−a &lt; x &lt; a</span>; <span class="m">|x| &gt; a</span> is two rays. Mixing these up is the commonest error in the topic.</div></div><div class="note"><div class="nname">Two cases, or square</div><div class="nbody">With a modulus on one side, split into the two cases and check each answer. With a modulus on <b>both</b> sides, squaring is safe — both sides are non-negative.</div></div><div class="note"><div class="nname">Sums of distances</div><div class="nbody"><span class="m">|x − 1| + |x − 3|</span> is the total distance to 1 and 3. It equals the gap between them on the whole segment, and exceeds it outside.</div></div><div class="note"><div class="nname">The right side must be non-negative</div><div class="nbody">In <span class="m">|x − 2| = 2x</span> the right side forces <span class="m">x ≥ 0</span> before any case work begins — that is what rejects the spurious root.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 4 · Inequalities, modulus and accuracy · Topic 24</div>
+    <h1>Approximate values and error</h1>
+    <p class="refs">Lessons 55–57 · Algebra 8, §§18–19, pp. 111–117 · Cambridge Stage 9 · 3.4</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Half a unit</div><div class="nbody">Rounding to the nearest unit gives an absolute error of at most half a unit. That single sentence generates every bound in this topic.</div></div><div class="note"><div class="nname">Absolute against relative</div><div class="nbody">Absolute error is a size; relative error is that divided by the value. An error of 1 is nothing in 500 and ruinous in 5.</div></div><div class="note"><div class="nname">Round once</div><div class="nbody">Rounding to 2 d.p. and then to 1 can lift a value over the halfway line. <span class="m">2.449 → 2.45 → 2.5</span>, but directly it is <span class="m">2.4</span>.</div></div><div class="note"><div class="nname">Errors add for products</div><div class="nbody">Relative errors add when quantities multiply, so three measurements each good to <span class="m">1%</span> give a product good to about <span class="m">3%</span>.</div></div><div class="note"><div class="nname">Powers multiply the error</div><div class="nbody">Squaring doubles the relative error, cubing triples it. A side known to <span class="m">1%</span> gives an area known to about <span class="m">2%</span>.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 4 · Inequalities, modulus and accuracy · Topic 25</div>
+    <h1>Upper and lower bounds</h1>
+    <p class="refs">Lessons 58–59 · Algebra 8, Chapter II revision, pp. 118–121 · Cambridge Stage 9 · 3.4</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">A measurement is an interval</div><div class="nbody"><span class="m">8</span> to the nearest whole means <span class="m">7.5 ≤ x &lt; 8.5</span>. Write both bounds before calculating anything.</div></div><div class="note"><div class="nname">Which end for which answer</div><div class="nbody">Sum: low with low. Difference: <b>low minus high</b>. Product: low times low. Quotient: low over <b>high</b>. Pairing the wrong ends is the usual slip.</div></div><div class="note"><div class="nname">Check the denominator</div><div class="nbody">Before trusting a corner of a range for a fraction, make sure no point of the box makes the denominator zero.</div></div><div class="note"><div class="nname">Subtracting near-equal numbers</div><div class="nbody">Two masses of <span class="m">1.0</span> kg each to 1 d.p. have a difference somewhere in <span class="m">(−0.1, 0.1)</span> — as wide as the whole uncertainty. Precision is destroyed.</div></div><div class="note"><div class="nname">Keep bounds unrounded</div><div class="nbody">Round only the final answer. Rounding a bound first both shifts and shrinks the interval, so it may no longer contain the true value.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 4 · Inequalities, modulus and accuracy · Topic 26</div>
+    <h1>Revision · Control work 5 — inequalities, modulus and accuracy</h1>
+    <p class="refs">Lessons 60–61 · Algebra 8, revision of §§15–19 · Cambridge Stage 9 · 3.4, 4.3</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">The four costly errors</div><div class="nbody">Keeping the direction after multiplying by a negative; writing one interval for <span class="m">|x| &gt; a</span>; pairing the wrong ends for a difference of bounds; rounding twice.</div></div><div class="note"><div class="nname">Test one value</div><div class="nbody">Put a number from your answer back into the original. A reversed sign shows immediately, and it costs five seconds.</div></div><div class="note"><div class="nname">Distance reading</div><div class="nbody">Modulus questions are about distance. Sketching a number line answers most of them faster than algebra.</div></div><div class="note"><div class="nname">Squaring loses information</div><div class="nbody"><span class="m">{sq("x")} &lt; 4</span> is not <span class="m">x &lt; 2</span>: it is <span class="m">−2 &lt; x &lt; 2</span>. Take the modulus, not just the positive root.</div></div><div class="note"><div class="nname">State the set</div><div class="nbody">An answer to an inequality is a set. Write it as an interval or an inequality, and say when it is empty.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 5 · Quadratic equations · Topic 27</div>
+    <h1>The quadratic equation and its roots</h1>
+    <p class="refs">Lessons 62–63 · Algebra 8, Chapter III §20, pp. 122–128 · Cambridge Stage 9 · beyond</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Standard form first</div><div class="nbody">Everything to one side, zero on the other. The zero product rule needs the zero: <span class="m">AB = 0</span> tells you something, <span class="m">AB = 6</span> does not.</div></div><div class="note"><div class="nname">Never divide by x</div><div class="nbody"><span class="m">x<sup>2</sup> = 5x</span> has roots 0 and 5. Dividing by <span class="m">x</span> throws the first away — factorise instead.</div></div><div class="note"><div class="nname">At most two roots</div><div class="nbody">Two different roots already fix the factorisation <span class="m">a(x − p)(x − q)</span>, so a third is impossible. A repeated root counts once.</div></div><div class="note"><div class="nname">Build from roots</div><div class="nbody">Roots <span class="m">p</span> and <span class="m">q</span> give <span class="m">(x − p)(x − q) = 0</span> — and any non-zero multiple of it, so the equation is not unique.</div></div><div class="note"><div class="nname">Coefficients that give a root free</div><div class="nbody">If <span class="m">a + b + c = 0</span> then <span class="m">x = 1</span> is a root; if <span class="m">a − b + c = 0</span> then <span class="m">x = −1</span> is. Check both by eye first.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 5 · Quadratic equations · Topic 28</div>
+    <h1>Incomplete quadratic equations</h1>
+    <p class="refs">Lessons 64–65 · Algebra 8, Chapter III §21, pp. 129–133 · Cambridge Stage 9 · beyond</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Three short methods</div><div class="nbody">No <span class="m">x</span> term: make <span class="m">x<sup>2</sup></span> the subject. No constant: take out <span class="m">x</span>. Both: the root is 0.</div></div><div class="note"><div class="nname">Both signs</div><div class="nbody"><span class="m">x<sup>2</sup> = a</span> gives <span class="m">±<span class="rsign">√</span><span class="rbar">a</span></span>. Writing only the positive root loses half the answer.</div></div><div class="note"><div class="nname">A perfect square on one side</div><div class="nbody"><span class="m">(x − 1)<sup>2</sup> = 9</span> gives <span class="m">x − 1 = ±3</span> directly — no expanding and no formula.</div></div><div class="note"><div class="nname">Negative is impossible</div><div class="nbody"><span class="m">x<sup>2</sup> + 4 = 0</span> has no real root, because no real square is negative.</div></div><div class="note"><div class="nname">The same trick at higher powers</div><div class="nbody"><span class="m">x<sup>3</sup> = 4x</span> and <span class="m">x<sup>6</sup> = x<sup>4</sup></span> factorise the same way — and lose the root 0 the same way if you divide.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 5 · Quadratic equations · Topic 29</div>
+    <h1>The quadratic formula and the discriminant</h1>
+    <p class="refs">Lessons 66–67 · Algebra 8, Chapter III §22, pp. 134–140 · Cambridge Stage 9 · beyond</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Work out D first</div><div class="nbody">The discriminant says how many roots to expect and checks the arithmetic before you commit to the formula.</div></div><div class="note"><div class="nname">√D, not D</div><div class="nbody">The formula is <span class="m">x = <span class="frac"><span class="num">−b ± <span class="rsign">√</span><span class="rbar">b<sup>2</sup> − 4ac</span></span><span class="den">2a</span></span></span>. Forgetting the root sign is the single commonest slip.</div></div><div class="note"><div class="nname">Watch the signs</div><div class="nbody"><span class="m">−4ac</span> is <b>positive</b> when <span class="m">c</span> is negative, so a negative constant always gives two real roots.</div></div><div class="note"><div class="nname">Conditions on a parameter</div><div class="nbody">Two distinct roots means <span class="m">D &gt; 0</span>, a repeated root <span class="m">D = 0</span>, none <span class="m">D &lt; 0</span>. Each is an inequality in the parameter.</div></div><div class="note"><div class="nname">Substitute to simplify</div><div class="nbody">An equation in <span class="m">(x − 1)</span> or <span class="m">x<sup>2</sup></span> is a quadratic in disguise. Name the block <span class="m">t</span> before reaching for the formula.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 5 · Quadratic equations · Topic 30</div>
+    <h1>Vieta’s theorem and factorising a quadratic trinomial</h1>
+    <p class="refs">Lessons 68–69 · Algebra 8, Chapter III §23, pp. 141–146 · Cambridge Stage 9 · 2.4</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Read the roots off the coefficients</div><div class="nbody"><span class="m">α + β = −<span class="frac"><span class="num">b</span><span class="den">a</span></span></span> and <span class="m">αβ = <span class="frac"><span class="num">c</span><span class="den">a</span></span></span>. For a monic equation that is simply <span class="m">−b</span> and <span class="m">c</span>.</div></div><div class="note"><div class="nname">Symmetric expressions</div><div class="nbody">Anything symmetric in the roots reduces to the sum and the product: <span class="m">α<sup>2</sup> + β<sup>2</sup> = (α+β)<sup>2</sup> − 2αβ</span>, and cubes follow the same way.</div></div><div class="note"><div class="nname">Build a new equation</div><div class="nbody">For roots <span class="m">2α, 2β</span> or <span class="m">α+1, β+1</span>, work out the new sum and product and write <span class="m">x<sup>2</sup> − (sum)x + (product) = 0</span>.</div></div><div class="note"><div class="nname">Use it as a check</div><div class="nbody">After solving, add and multiply your roots. If they do not match the coefficients, something is wrong — and you know it before the marker does.</div></div><div class="note"><div class="nname">Conditions on the roots</div><div class="nbody">Reciprocal roots mean <span class="m">c = a</span>; opposite roots mean <span class="m">b = 0</span>; a given ratio or difference turns into two equations in the roots.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 5 · Quadratic equations · Topic 31</div>
+    <h1>Biquadratic equations and equations reducible to quadratics</h1>
+    <p class="refs">Lessons 70–71 · Algebra 8, Chapter III §24, pp. 147–152 · Cambridge Stage 9 · beyond</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Name the repeated block</div><div class="nbody">If the same expression appears squared and plain, call it <span class="m">t</span>. <span class="m">x<sup>2</sup></span>, <span class="m">|x|</span>, <span class="m">x<sup>3</sup></span> and <span class="m">x + <span class="frac"><span class="num">1</span><span class="den">x</span></span></span> all work.</div></div><div class="note"><div class="nname">Reject impossible values</div><div class="nbody">With <span class="m">t = x<sup>2</sup></span>, a negative <span class="m">t</span> gives nothing. Each positive <span class="m">t</span> gives two roots, <span class="m">t = 0</span> gives one.</div></div><div class="note"><div class="nname">Return to x</div><div class="nbody">The commonest lost mark is answering in <span class="m">t</span>. The question asked for <span class="m">x</span>.</div></div><div class="note"><div class="nname">Clear denominators, then check</div><div class="nbody">Multiplying by a denominator can invent roots. Every candidate must be tested against the original denominators before it is kept.</div></div><div class="note"><div class="nname">Pair the factors cleverly</div><div class="nbody">In <span class="m">(x−1)(x−2)(x−3)(x−4) = 24</span>, pairing outer with inner gives two expressions differing by a constant — and one substitution finishes it.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 5 · Quadratic equations · Topic 32</div>
+    <h1>Solving problems with quadratic equations</h1>
+    <p class="refs">Lessons 72–73 · Algebra 8, Chapter III §25, pp. 153–158 · Cambridge Stage 9 · 4.1</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Say what x is</div><div class="nbody">Name the unknown with its unit before writing an equation. Half the marks in a word problem are for setting it up.</div></div><div class="note"><div class="nname">Standard shapes</div><div class="nbody">Consecutive: <span class="m">x, x+1</span>. Consecutive even or odd: <span class="m">x, x+2</span>. Rate problems: <span class="m">t = <span class="frac"><span class="num">d</span><span class="den">v</span></span></span> and work adds as <span class="m"><span class="frac"><span class="num">1</span><span class="den">t</span></span></span>.</div></div><div class="note"><div class="nname">Reject by meaning</div><div class="nbody">The algebra gives both roots; the words reject one. A length, a time and a count cannot be negative.</div></div><div class="note"><div class="nname">Sum and product shortcuts</div><div class="nbody">Two numbers with known sum and product are the roots of <span class="m">t<sup>2</sup> − (sum)t + (product) = 0</span> — no substitution needed.</div></div><div class="note"><div class="nname">Check against the words</div><div class="nbody">Put the answer back into the <b>problem</b>, not into your own equation. That catches a mis-set-up as well as an arithmetic slip.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 5 · Quadratic equations · Topic 33</div>
+    <h1>Compound percentages, simultaneous equations and quadratic graphs</h1>
+    <p class="refs">Lessons 74–76 · Algebra 8, practical problems, pp. 159–164 · Cambridge Stage 9 · 3.3, 4.2, 10.2</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">Multipliers, not additions</div><div class="nbody">A rise of <span class="m">r%</span> multiplies by <span class="m">1 + <span class="frac"><span class="num">r</span><span class="den">100</span></span></span>. Repeating it <span class="m">n</span> times raises that factor to the <span class="m">n</span>th power.</div></div><div class="note"><div class="nname">A rise then an equal fall loses</div><div class="nbody"><span class="m">(1 + <span class="frac"><span class="num">x</span><span class="den">100</span></span>)(1 − <span class="frac"><span class="num">x</span><span class="den">100</span></span>) = 1 − <span class="frac"><span class="num">x<sup>2</sup></span><span class="den">10000</span></span></span>, always below 1. The order makes no difference.</div></div><div class="note"><div class="nname">Choose the method</div><div class="nbody">Two linear equations: eliminate or substitute. One linear and one quadratic: always substitute. Symmetric sum-and-product: use Vieta.</div></div><div class="note"><div class="nname">The vertex</div><div class="nbody">The axis of symmetry is <span class="m">x = −<span class="frac"><span class="num">b</span><span class="den">2a</span></span></span>. Substitute it back for the vertex, and complete the square to see why.</div></div><div class="note"><div class="nname">What the discriminant says about the graph</div><div class="nbody"><span class="m">D &gt; 0</span> cuts the axis twice, <span class="m">D = 0</span> touches it once, <span class="m">D &lt; 0</span> misses it — so a tangent line means a repeated root.</div></div></div>
+</section>
+
+<section class="topic notesonly">
+  <div class="topichead">
+    <div class="eyebrow">Unit 5 · Quadratic equations · Topic 34</div>
+    <h1>Revision · Control work 6 — quadratic equations</h1>
+    <p class="refs">Lessons 77–78 · Algebra 8, revision of Chapter III · Cambridge Stage 9 · 4.1</p>
+  </div>
+  <div class="notes"><div class="nhead">The ideas behind the hard problems</div><div class="note"><div class="nname">The four costly errors</div><div class="nbody">Dividing by <span class="m">x</span>; writing <span class="m"><span class="rsign">√</span><span class="rbar">a</span></span> instead of <span class="m">±<span class="rsign">√</span><span class="rbar">a</span></span>; using <span class="m">D</span> where <span class="m"><span class="rsign">√</span><span class="rbar">D</span></span> belongs; keeping a root that a denominator or the words forbid.</div></div><div class="note"><div class="nname">Look before you formula</div><div class="nbody">A common factor, a difference of squares or an obvious pair of factors is faster and safer than the formula.</div></div><div class="note"><div class="nname">Vieta as a check</div><div class="nbody">Add and multiply your roots and compare with the coefficients. It takes seconds and catches a sign error reliably.</div></div><div class="note"><div class="nname">Parameters need cases</div><div class="nbody">With a letter as the leading coefficient, treat <span class="m">a = 0</span> separately: the equation is then linear and the discriminant does not apply.</div></div><div class="note"><div class="nname">Integer-root questions are divisor questions</div><div class="nbody">If the roots are integers, their product is the constant term. List the factor pairs and read off the possible sums.</div></div></div>
+</section>
+
+</div></body></html>

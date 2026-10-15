@@ -26,7 +26,7 @@ SECTION_COLOUR = {
     'Beyond': ('#9B2C2C', '#FBEDED'),
 }
 # how much blank space a question of each kind needs
-LINES = {'Focus': 1, 'Practice': 2, 'Challenge': 3, 'Beyond': 6}
+LINES = {'Focus': 1, 'Practice': 2, 'Challenge': 3, 'Beyond': 5}
 # the Cambridge section names, against the plain difficulty they stand for
 TIER = {'Focus': 'easy', 'Practice': 'medium', 'Challenge': 'hard',
         'Beyond': 'very hard'}
@@ -36,10 +36,10 @@ CSS = """
 * { box-sizing:border-box; }
 html, body { margin:0; padding:0; background:var(--page); color:var(--ink);
   font-family:"Source Sans 3","Segoe UI",system-ui,-apple-system,sans-serif;
-  font-size:10.6pt; line-height:1.45; }
+  font-size:9.6pt; line-height:1.34; }
 .sheet { padding:0; }
 
-h1 { font-size:20pt; margin:0 0 2mm; letter-spacing:-.01em; }
+h1 { font-size:17pt; margin:0 0 1.2mm; letter-spacing:-.01em; }
 h2 { font-size:13pt; margin:0; }
 .m { font-family:"Cambria","Georgia",serif; white-space:nowrap; }
 /* radicals: the bar is drawn over the radicand so √2x reads unambiguously */
@@ -57,14 +57,14 @@ h2 { font-size:13pt; margin:0; }
 /* ---------- topic opener ---------- */
 .topic { page-break-before:always; }
 .topic:first-of-type { page-break-before:avoid; }
-.topichead { border-top:3px solid var(--ink); padding-top:3mm; margin-bottom:4mm; }
+.topichead { border-top:2.5px solid var(--ink); padding-top:2mm; margin-bottom:2.5mm; }
 .eyebrow { font-size:8.6pt; letter-spacing:.14em; text-transform:uppercase;
   color:var(--soft); margin-bottom:1.5mm; }
 .sub { color:var(--soft); font-size:10pt; margin:1mm 0 0; }
 .refs { font-size:8.8pt; color:var(--soft); margin-top:1.5mm; }
 
-.boxes { display:flex; gap:4mm; margin:4mm 0 5mm; }
-.box { border:1px solid var(--rule); border-radius:2mm; padding:3mm 3.5mm; }
+.boxes { display:flex; gap:3mm; margin:2.5mm 0 3mm; }
+.box { border:1px solid var(--rule); border-radius:2mm; padding:2mm 2.5mm; }
 .box .blabel { font-size:8.4pt; letter-spacing:.12em; text-transform:uppercase;
   color:var(--soft); margin-bottom:1.5mm; }
 .keywords { flex:0 0 46%; background:#F7F9FB; }
@@ -76,8 +76,10 @@ h2 { font-size:13pt; margin:0; }
 
 /* ---------- exercise sections ---------- */
 .section { margin:0 0 3mm; page-break-inside:avoid; }
-.sechead { display:flex; align-items:baseline; gap:3mm; padding:2mm 3mm;
-  border-radius:1.5mm; margin:5mm 0 3mm; page-break-after:avoid; break-after:avoid; }
+.twocol { column-count:2; column-gap:6mm; }
+.twocol .q { break-inside:avoid; }
+.sechead { display:flex; align-items:baseline; gap:3mm; padding:1.4mm 3mm;
+  border-radius:1.5mm; margin:3.5mm 0 2mm; page-break-after:avoid; break-after:avoid; }
 .sechead .name { font-size:12pt; font-weight:700; }
 .sechead .tier { font-size:8.4pt; letter-spacing:.1em; text-transform:uppercase;
   border:1px solid currentColor; border-radius:1mm; padding:.3mm 1.5mm; opacity:.75;
@@ -85,15 +87,15 @@ h2 { font-size:13pt; margin:0; }
 .sechead .count { font-size:9pt; opacity:.8; white-space:nowrap; }
 .sechead .blurb { font-size:9pt; margin-left:auto; opacity:.85; text-align:right; }
 
-.q { display:flex; gap:3mm; page-break-inside:avoid; margin:0 0 2.5mm; }
-.qn { flex:0 0 7mm; height:7mm; border-radius:50%; border:1.2px solid var(--rule);
+.q { display:flex; gap:2.4mm; page-break-inside:avoid; margin:0 0 1.6mm; }
+.qn { flex:0 0 6mm; height:6mm; border-radius:50%; border:1.2px solid var(--rule);
   display:flex; align-items:center; justify-content:center;
   font-size:9pt; font-weight:700; color:var(--soft); }
 .qbody { flex:1; padding-top:.7mm; }
 .qtext { }
-.lines { margin-top:1.5mm; }
-.lines div { border-bottom:1px dotted #AEB9C4; height:6.4mm; }
-.beyond .lines div { height:7.2mm; }
+.lines { margin-top:1mm; }
+.lines div { border-bottom:1px dotted #AEB9C4; height:5.9mm; }
+.beyond .lines div { height:6.4mm; }
 
 /* ---------- answers ---------- */
 .answers { page-break-before:always; }
@@ -111,11 +113,11 @@ h2 { font-size:13pt; margin:0; }
 .sols { columns:1; }
 
 .notes { border:1px solid var(--rule); border-left:3px solid #9B2C2C;
-  border-radius:1.5mm; padding:3mm 4mm 2mm; margin:6mm 0 3mm; background:#FDFBFB;
+  border-radius:1.5mm; padding:2mm 3mm 1.2mm; margin:3.5mm 0 2mm; background:#FDFBFB;
   page-break-inside:avoid; }
 .notes .nhead { font-size:8.6pt; letter-spacing:.1em; text-transform:uppercase;
   color:#9B2C2C; font-weight:700; margin-bottom:2mm; }
-.note { margin:0 0 2.2mm; page-break-inside:avoid; }
+.note { margin:0 0 1.4mm; page-break-inside:avoid; }
 .note .nname { font-weight:700; font-size:9.6pt; }
 .note .nbody { font-size:9.6pt; color:#2C3742; }
 .notesonly .notes { margin-top:3mm; }
@@ -145,11 +147,15 @@ def render_questions(section, items):
            f'<span class="count">{len(items)} questions</span>'
            f'<span class="blurb">{bank.SECTION_BLURB[section]}</span></div>']
     klass = ' beyond' if section == 'Beyond' else ''
+    if section == 'Focus':
+        out.append('<div class="twocol">')
     for i, item in enumerate(items, start=1):
         out.append(
             f'<div class="q{klass}"><div class="qn">{i}</div>'
             f'<div class="qbody"><div class="qtext">{item["q"]}</div>'
             f'{lines(LINES[section])}</div></div>')
+    if section == 'Focus':
+        out.append('</div>')
     return '\n'.join(out)
 
 

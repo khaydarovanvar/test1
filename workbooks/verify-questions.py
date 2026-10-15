@@ -10,8 +10,9 @@ numbers are checked by their own routine below.
 import sys
 import os
 
-from sympy import (Abs, Integer, Rational, Symbol, cancel, expand, lambdify, lcm,
-                   nsimplify,
+from sympy import (Abs, FiniteSet, Integer, Interval, Rational, Reals, S, Symbol,
+                   Union, binomial, cancel, expand, factorial, lambdify, lcm,
+                   floor, nsimplify, oo, solveset,
                    pi, preorder_traversal, radsimp, sign, simplify, solve, sqrt,
                    sympify, together)
 
@@ -33,7 +34,9 @@ def cbrt_real(v):
 A, d = Symbol('A'), Symbol('d')
 SYMS = dict(a=a, b=b, c=c, d=d, h=h, k=k, m=m, n=n, r=r, x=x, y=y, z=z, A=A,
             apos=apos, bpos=bpos, xpos=xpos, ypos=ypos, tnn=tnn,
-            cbrt_real=cbrt_real,
+            cbrt_real=cbrt_real, Interval=Interval, Union=Union, S=S,
+            FiniteSet=FiniteSet, oo=oo, Abs=Abs, factorial=factorial,
+            binomial=binomial, floor=floor,
             Rational=Rational, pi=pi, sqrt=sqrt)
 
 
@@ -992,6 +995,923 @@ def check_bound(expr, ranges, lo, hi):
     return min(values) == low and max(values) == high
 
 
+def linear_ineq_cases():
+    """ax > b: the direction follows the sign of a, and a = 0 removes x entirely."""
+    for av in (-3, -1, 1, 3):
+        for bv in (-2, 0, 5):
+            want = (Interval.open(Rational(bv, av), oo) if av > 0
+                    else Interval.open(-oo, Rational(bv, av)))
+            if solveset(av * x > bv, x, Reals) != want:
+                return False
+    return (solveset(0 * x > -1, x, Reals) == Reals
+            and solveset(0 * x > 1, x, Reals) == S.EmptySet)
+
+
+def k_positive_only():
+    for kv in (-3, -1, 1, 3):
+        got = solveset(kv * x > 3, x, Reals)
+        want = Interval.open(Rational(3, kv), oo)
+        if (got == want) != (kv > 0):
+            return False
+    return True
+
+
+def smallest_integer_solution():
+    sols = [i for i in range(-50, 50) if 5 * i - 7 > 2 * i + 8]
+    return min(sols) == 6
+
+
+def count_integer_solutions():
+    return len([i for i in range(-50, 50) if -3 <= 2 * i + 1 < 9]) == 6
+
+
+def always_true_linear():
+    for av in (-2, -1, 0, 1, 2):
+        holds = solveset(av * x + 2 > 0, x, Reals) == Reals
+        if holds != (av == 0):
+            return False
+    return True
+
+
+def equivalent_linear():
+    for av in (1, 2, 5):
+        for bv in (-4, 0, 3):
+            if solveset(av * x + bv > 0, x, Reals) != \
+                    Interval.open(Rational(-bv, av), oo):
+                return False
+    return True
+
+
+def integers_minus_two_three():
+    return [i for i in range(-10, 10) if -2 < i < 3] == [-1, 0, 1, 2]
+
+
+def count_integers_3x():
+    return len([i for i in range(-50, 50) if -2 < 3 * i + 1 <= 10]) == 4
+
+
+def system_a_two_a():
+    """Intersect the two solution sets rather than conjoining the relations:
+    for a ≤ 0 sympy collapses the And to False, which solveset cannot take."""
+    from sympy import Intersection
+    for av in [Rational(i, 2) for i in range(-6, 7)]:
+        got = Intersection(solveset(x > av, x, Reals),
+                           solveset(x < 2 * av, x, Reals))
+        if (got != S.EmptySet) != (av > 0):
+            return False
+    return True
+
+
+def count_integers_modulus():
+    return len([i for i in range(-20, 20) if abs(i - 5) <= 3]) == 7
+
+
+def no_solution_square():
+    for mv in [Rational(i, 2) for i in range(-6, 7)]:
+        empty = solveset(x ** 2 < mv, x, Reals) == S.EmptySet
+        if empty != (mv <= 0):
+            return False
+    return True
+
+
+def abs_negative_branch():
+    neg = Symbol('neg', negative=True)
+    return simplify(Abs(neg) + neg) == 0
+
+
+def abs_branch_ge():
+    return all(abs(Rational(i, 4) - 3) == Rational(i, 4) - 3
+               for i in range(12, 60))
+
+
+def abs_branch_lt():
+    return all(abs(Rational(i, 4) - 3) == 3 - Rational(i, 4)
+               for i in range(-20, 12))
+
+
+def abs_product():
+    return all(abs(av * bv) == abs(av) * abs(bv)
+               for av in range(-6, 7) for bv in range(-6, 7))
+
+
+def min_two_distances():
+    vals = [Rational(i, 4) for i in range(-20, 40)]
+    got = [abs(v - 1) + abs(v - 5) for v in vals]
+    return min(got) == 4 and all(abs(v - 1) + abs(v - 5) == 4
+                                 for v in vals if 1 <= v <= 5)
+
+
+def reverse_triangle():
+    return all(abs(av) - abs(bv) <= abs(av - bv)
+               for av in range(-8, 9) for bv in range(-8, 9))
+
+
+def one_solution_modulus():
+    for av in range(-4, 5):
+        got = solveset(Abs(x) - av, x, Reals)
+        count = len(got) if got.is_FiniteSet else 0
+        if (count == 1) != (av == 0):
+            return False
+    return True
+
+
+def sig_figs_three():
+    return len('420') == 3
+
+
+def relative_error_728():
+    rel = Rational(2, 100) / Rational(728, 100) * 100
+    return abs(float(rel) - 0.2747) < 0.001
+
+
+def _bounds(value, unit):
+    half = Rational(unit, 2)
+    return value - half, value + half
+
+
+def bounds_24():
+    return _bounds(Integer(24), 1) == (Rational(47, 2), Rational(49, 2))
+
+
+def bounds_42():
+    return _bounds(Rational(42, 10), Rational(1, 10)) == \
+        (Rational(415, 100), Rational(425, 100))
+
+
+def bounds_70():
+    return _bounds(Integer(7), Rational(1, 10)) == \
+        (Rational(695, 100), Rational(705, 100))
+
+
+def bounds_500():
+    return _bounds(Integer(500), 10) == (495, 505)
+
+
+def bounds_36():
+    return _bounds(Rational(36, 10), Rational(1, 10)) == \
+        (Rational(355, 100), Rational(365, 100))
+
+
+def round_half_up():
+    return floor(Rational(5, 2) + Rational(1, 2)) == 3 and \
+        floor(Rational(7, 2) + Rational(1, 2)) == 4
+
+
+def relative_error_product():
+    e1, e2 = Symbol('e1'), Symbol('e2')
+    return expand((1 + e1) * (1 + e2)) == 1 + e1 + e2 + e1 * e2
+
+
+def double_rounding():
+    v = Rational(2449, 1000)
+    twice = floor(v * 100 + Rational(1, 2)) / 100          # 2.45
+    twice = floor(twice * 10 + Rational(1, 2)) / 10        # 2.5
+    once = floor(v * 10 + Rational(1, 2)) / 10             # 2.4
+    return twice == Rational(5, 2) and once == Rational(12, 5)
+
+
+def pi_approximation():
+    err = abs(float(Rational(22, 7)) - 3.141592653589793) / 3.141592653589793 * 100
+    return abs(err - 0.0402) < 0.001
+
+
+def sig_fig_relative():
+    """Half a unit in the last place, over a value with that many figures."""
+    worst = 0.0
+    for lead in range(1, 10):
+        for n in (2, 3, 4):
+            value = lead * 10 ** (n - 1)
+            worst = max(worst, 0.5 / value * 10 ** (n - 1) / 10 ** (n - 1))
+    return worst <= 0.5
+
+
+def sqrt_50_bound():
+    return 7.05 ** 2 < 50 < 7.1 ** 2 and round(50 ** 0.5, 1) == 7.1
+
+
+def three_percent():
+    return abs(1.01 ** 3 - 1.0303) < 1e-4
+
+
+def square_relative():
+    return abs(1.01 ** 2 - 1.0201) < 1e-9 and abs(0.99 ** 2 - 0.9801) < 1e-9
+
+
+def sum_span_two():
+    av, bv = Symbol('av'), Symbol('bv')
+    lower = (av - Rational(1, 2)) + (bv - Rational(1, 2))
+    upper = (av + Rational(1, 2)) + (bv + Rational(1, 2))
+    return simplify(upper - lower - 2) == 0
+
+
+def count_integers_mod_four():
+    return len([i for i in range(-20, 20) if abs(i - 4) < 3]) == 5
+
+
+def modulus_no_solution():
+    for av in [Rational(i, 2) for i in range(-4, 5)]:
+        empty = solveset(Abs(x - 3) < av, x, Reals) == S.EmptySet
+        if empty != (av <= 0):
+            return False
+    return True
+
+
+def integers_band_modulus():
+    return sorted(i for i in range(-20, 21) if 3 < abs(i) <= 6) == \
+        [-6, -5, -4, 4, 5, 6]
+
+
+def area_vs_perimeter_spread():
+    lo, hi = Rational(9, 2), Rational(11, 2)
+    per = (4 * hi - 4 * lo) / (4 * 5)
+    area = (hi ** 2 - lo ** 2) / 25
+    return area > per
+
+
+def c_root_one():
+    cc = Symbol('cc')
+    return solve(1 - 4 + cc, cc) == [Integer(3)]
+
+
+def at_most_two_roots():
+    pp, qq = Symbol('pp'), Symbol('qq')
+    return expand((x - pp) * (x - qq) - (x ** 2 - (pp + qq) * x + pp * qq)) == 0
+
+
+def repeated_root_k():
+    kk = Symbol('kk')
+    return set(solve(kk ** 2 - 4 * 9, kk)) == {Integer(6), Integer(-6)}
+
+
+def roots_three_minus_three():
+    return expand((x - 3) * (x + 3)) == x ** 2 - 9
+
+
+def roots_a_b():
+    return expand((x - a) * (x - b) - (x ** 2 - (a + b) * x + a * b)) == 0
+
+
+def sum_coeffs_root_one():
+    expr = a * x ** 2 + b * x + c
+    return simplify(expr.subs(x, 1) - (a + b + c)) == 0
+
+
+def alt_coeffs_root_minus_one():
+    expr = a * x ** 2 + b * x + c
+    return simplify(expr.subs(x, -1) - (a - b + c)) == 0
+
+
+def family_roots_zero_four():
+    for kv in (1, 2, -3, Rational(1, 2)):
+        if solveset(kv * x * (x - 4), x, Reals) != FiniteSet(0, 4):
+            return False
+    return True
+
+
+def common_root_minus_five():
+    from sympy import Intersection
+    return Intersection(solveset(x ** 2 + 5 * x, x, Reals),
+                        solveset(x ** 2 - 25, x, Reals)) == FiniteSet(-5)
+
+
+def common_root_minus_three():
+    from sympy import Intersection
+    return Intersection(solveset(x ** 2 - 9, x, Reals),
+                        solveset(x ** 2 + 2 * x - 3, x, Reals)) == FiniteSet(-3)
+
+
+def square_equals_a():
+    for av in (-4, 0, 9):
+        got = solveset(x ** 2 - av, x, Reals)
+        want = {-4: 0, 0: 1, 9: 2}[av]
+        if (len(got) if got.is_FiniteSet else 0) != want:
+            return False
+    return True
+
+
+def always_root_zero():
+    return simplify((a * x ** 2 + b * x).subs(x, 0)) == 0
+
+
+def find_a_roots_two():
+    av = Symbol('av')
+    return solve(av * 4 - 12, av) == [Integer(3)]
+
+
+def find_k_roots_four():
+    kk = Symbol('kk')
+    return solve(kk * 16 - 16, kk) == [Integer(1)]
+
+
+def solve_shifted_square():
+    av, bv = Symbol('av'), Symbol('bv')
+    return set(solve((x - av) ** 2 - bv ** 2, x)) == {av + bv, av - bv}
+
+
+def no_root_positive_c():
+    for cv in (1, 4, 9):
+        if solveset(x ** 2 + cv, x, Reals) != S.EmptySet:
+            return False
+    return True
+
+
+def repeated_root_m():
+    mm = Symbol('mm')
+    return solve(16 - 4 * mm, mm) == [Integer(4)]
+
+
+def perfect_square_discriminant():
+    return simplify((2 * b) ** 2 - 4 * 1 * b ** 2) == 0
+
+
+def derive_formula():
+    av, bv, cv = Symbol('av', nonzero=True), Symbol('bv'), Symbol('cv')
+    roots = solve(av * x ** 2 + bv * x + cv, x)
+    want = {(-bv + sqrt(bv ** 2 - 4 * av * cv)) / (2 * av),
+            (-bv - sqrt(bv ** 2 - 4 * av * cv)) / (2 * av)}
+    return all(any(simplify(r - w) == 0 for w in want) for r in roots)
+
+
+def exactly_one_root_k():
+    good = set()
+    for kv in [Rational(i, 2) for i in range(-6, 7)]:
+        got = solveset(kv * x ** 2 + 2 * x + 1, x, Reals)
+        if got.is_FiniteSet and len(got) == 1:
+            good.add(kv)
+    return good == {Integer(0), Integer(1)}
+
+
+def rational_roots_square():
+    from sympy import integer_nthroot
+    for av, bv, cv in ((1, -5, 6), (1, 1, -1), (2, -3, -2), (1, 0, -2)):
+        disc = bv ** 2 - 4 * av * cv
+        square = disc >= 0 and integer_nthroot(disc, 2)[1]
+        roots = solve(av * x ** 2 + bv * x + cv, x)
+        rational = all(r.is_rational for r in roots)
+        if rational != bool(square):
+            return False
+    return True
+
+
+def solve_a_b_square():
+    av, bv = Symbol('av'), Symbol('bv')
+    return set(solve(x ** 2 - 2 * av * x + av ** 2 - bv ** 2, x)) == {av + bv, av - bv}
+
+
+def sum_of_roots():
+    av, bv, cv = Symbol('av', nonzero=True), Symbol('bv'), Symbol('cv')
+    roots = solve(av * x ** 2 + bv * x + cv, x)
+    return simplify(sum(roots) + bv / av) == 0
+
+
+def product_of_roots():
+    av, bv, cv = Symbol('av', nonzero=True), Symbol('bv'), Symbol('cv')
+    roots = solve(av * x ** 2 + bv * x + cv, x)
+    return simplify(roots[0] * roots[1] - cv / av) == 0
+
+
+def root_twice_other():
+    pp, qq, rr = Symbol('pp'), Symbol('qq'), Symbol('rr')
+    # roots r and 2r: sum 3r = -p, product 2r^2 = q
+    sol = solve([3 * rr + pp, 2 * rr ** 2 - qq], [rr, qq])
+    return any(simplify(2 * pp ** 2 - 9 * s[1]) == 0 for s in sol)
+
+
+def repeated_root_value():
+    av, bv = Symbol('av', nonzero=True), Symbol('bv')
+    cv = bv ** 2 / (4 * av)
+    roots = solve(av * x ** 2 + bv * x + cv, x)
+    return all(simplify(r + bv / (2 * av)) == 0 for r in roots)
+
+
+def roots_differ_by_four():
+    cc = Symbol('cc')
+    return solve(36 - 4 * cc - 16, cc) == [Integer(5)]
+
+
+def _roots(poly):
+    return solve(poly, x)
+
+
+def vieta_k_minus_seven():
+    kk = Symbol('kk')
+    return solve(3 + 4 + kk, kk) == [Integer(-7)]
+
+
+def other_root_four():
+    return set(_roots(x ** 2 - 6 * x + 8)) == {Integer(2), Integer(4)}
+
+
+def vieta_five_three():
+    r = _roots(x ** 2 - 5 * x + 3)
+    return simplify(sum(r) - 5) == 0 and simplify(r[0] * r[1] - 3) == 0
+
+
+def alpha_sq_plus_beta_sq():
+    r = _roots(x ** 2 - 5 * x + 3)
+    return simplify(r[0] ** 2 + r[1] ** 2 - 19) == 0
+
+
+def reciprocal_sum_roots():
+    r = _roots(x ** 2 - 5 * x + 3)
+    return simplify(1 / r[0] + 1 / r[1] - Rational(5, 3)) == 0
+
+
+def root_difference_squared():
+    r = _roots(x ** 2 - 5 * x + 3)
+    return simplify((r[0] - r[1]) ** 2 - 13) == 0
+
+
+def alpha_cubed_sum():
+    r = _roots(x ** 2 - 5 * x + 3)
+    return simplify(r[0] ** 3 + r[1] ** 3 - 80) == 0
+
+
+def sum_squares_pq():
+    pp, qq = Symbol('pp'), Symbol('qq')
+    r = solve(x ** 2 + pp * x + qq, x)
+    return simplify(r[0] ** 2 + r[1] ** 2 - (pp ** 2 - 2 * qq)) == 0
+
+
+def doubled_roots():
+    r = _roots(x ** 2 - 3 * x + 1)
+    return simplify(2 * r[0] + 2 * r[1] - 6) == 0 and \
+        simplify(4 * r[0] * r[1] - 4) == 0
+
+
+def shifted_roots():
+    r = _roots(x ** 2 - 3 * x + 1)
+    return simplify((r[0] + 1) + (r[1] + 1) - 5) == 0 and \
+        simplify((r[0] + 1) * (r[1] + 1) - 5) == 0
+
+
+def k_root_two():
+    kk = Symbol('kk')
+    return solve((x ** 2 - kk * x + 6).subs(x, 2), kk) == [Integer(5)]
+
+
+def reciprocal_roots_equation():
+    pp, qq = Symbol('pp'), Symbol('qq', nonzero=True)
+    r = solve(x ** 2 + pp * x + qq, x)
+    s_, p_ = 1 / r[0] + 1 / r[1], 1 / (r[0] * r[1])
+    return simplify(s_ + pp / qq) == 0 and simplify(p_ - 1 / qq) == 0
+
+
+def golden_power():
+    r = _roots(x ** 2 - x - 1)
+    return all(simplify(v ** 2 - (v + 1)) == 0 and
+               simplify(v ** 3 - (2 * v + 1)) == 0 for v in r)
+
+
+def fourth_power_sum():
+    r = _roots(x ** 2 - 3 * x + 1)
+    return simplify(r[0] ** 4 + r[1] ** 4 - 47) == 0
+
+
+def roots_differ_one():
+    cc = Symbol('cc')
+    return solve(25 - 4 * cc - 1, cc) == [Integer(6)]
+
+
+def squared_roots_equation():
+    r = _roots(x ** 2 - 3 * x + 2)
+    sq_ = [v ** 2 for v in r]
+    return sum(sq_) == 5 and sq_[0] * sq_[1] == 4
+
+
+def monic_integer_roots():
+    for bv in range(-6, 7):
+        for cv in range(-6, 7):
+            rr = solve(x ** 2 + bv * x + cv, x)
+            if all(v.is_rational for v in rr) and not all(v.is_integer for v in rr):
+                return False
+    return True
+
+
+def consecutive_roots():
+    pp, qq = Symbol('pp'), Symbol('qq')
+    r = solve(x ** 2 + pp * x + qq, x)
+    return simplify((r[0] - r[1]) ** 2 - (pp ** 2 - 4 * qq)) == 0
+
+
+def b_c_two_minus_three():
+    return expand((x - 2) * (x + 3)) == x ** 2 + x - 6
+
+
+def ratio_sum_roots():
+    r = _roots(x ** 2 - 5 * x + 3)
+    return simplify(r[0] / r[1] + r[1] / r[0] - Rational(19, 3)) == 0
+
+
+def general_squared_roots():
+    pp, qq = Symbol('pp'), Symbol('qq')
+    r = solve(x ** 2 - pp * x + qq, x)
+    return simplify(r[0] ** 2 + r[1] ** 2 - (pp ** 2 - 2 * qq)) == 0 and \
+        simplify((r[0] * r[1]) ** 2 - qq ** 2) == 0
+
+
+def reciprocal_roots_condition():
+    av, cv = Symbol('av', nonzero=True), Symbol('cv')
+    return simplify(cv / av - 1).subs(cv, av) == 0
+
+
+def opposite_roots_condition():
+    av, bv = Symbol('av', nonzero=True), Symbol('bv')
+    return simplify((-bv / av).subs(bv, 0)) == 0
+
+
+def ratio_two_one():
+    rr, kk = Symbol('rr'), Symbol('kk')
+    sol = solve([3 * rr - 6, 2 * rr ** 2 - kk], [rr, kk])
+    return any(s[1] == 8 for s in sol)
+
+
+def least_sum_squares():
+    vals = [Rational(i, 4) for i in range(-40, 41)]
+    best = min((v ** 2 - 2 for v in vals if v ** 2 >= 4), default=None)
+    return best == 2
+
+
+def biquadratic_root_counts():
+    cases = {0: x ** 4 + 1, 1: x ** 4, 2: x ** 4 - 1,
+             3: x ** 4 - x ** 2, 4: x ** 4 - 5 * x ** 2 + 4}
+    for want, poly in cases.items():
+        got = solveset(poly, x, Reals)
+        n = len(got) if got.is_FiniteSet else -1
+        if n != want:
+            return False
+    return True
+
+
+def biquadratic_general():
+    av, bv = Symbol('av', positive=True), Symbol('bv', positive=True)
+    got = solveset(x ** 4 - (av + bv) * x ** 2 + av * bv, x, Reals)
+    return got == FiniteSet(sqrt(av), -sqrt(av), sqrt(bv), -sqrt(bv))
+
+
+def four_factor_product():
+    return solveset((x - 1) * (x - 2) * (x - 3) * (x - 4) - 24, x, Reals) == \
+        FiniteSet(0, 5)
+
+
+def square_plus_recip_equals():
+    got = solveset(x ** 2 + 1 / x ** 2 - x - 1 / x, x, Reals)
+    return got == FiniteSet(1, -1)
+
+
+def four_distinct_roots():
+    for kv in [Rational(i, 2) for i in range(0, 17)]:
+        got = solveset(x ** 4 - kv * x ** 2 + 4, x, Reals)
+        four = got.is_FiniteSet and len(got) == 4
+        if four != (kv > 4):
+            return False
+    return True
+
+
+def no_solution_reciprocal_pair():
+    return solveset(x / (x + 1) + (x + 1) / x - 2, x, Reals) == S.EmptySet
+
+
+def train_speed():
+    v = Symbol('v', positive=True)
+    return solve(240 / v - 240 / (v + 20) - 1, v) == [Integer(60)]
+
+
+def taps_four_hours():
+    t = Symbol('t', positive=True)
+    return solve(1 / t + 1 / (t + 6) - Rational(1, 4), t) == [Integer(6)]
+
+
+def pens_share():
+    n = Symbol('n', positive=True)
+    sol = solve(Rational(144, 1) / n - 144 / (n + 6) - 2, n)
+    return Integer(18) in sol
+
+
+def max_area_perimeter():
+    vals = [Rational(i, 2) for i in range(1, 40)]
+    areas = {v: v * (20 - v) for v in vals}
+    return max(areas, key=lambda v: areas[v]) == 10
+
+
+def boat_speed():
+    v = Symbol('v', positive=True)
+    return solve(24 / (v - 2) + 24 / (v + 2) - 5, v) == [Integer(10)]
+
+
+def triangular_210():
+    n = Symbol('n', positive=True)
+    return solve(n * (n + 1) / 2 - 210, n) == [Integer(20)]
+
+
+def rect_area_diagonal():
+    roots = solve(x ** 2 - 17 * x + 60, x)
+    return set(roots) == {Integer(5), Integer(12)}
+
+
+def cyclists_gap():
+    v = Symbol('v')
+    return simplify(2 * (v + 3) - 2 * v - 6) == 0
+
+
+def open_box():
+    xx = Symbol('xx', positive=True)
+    return solve(2 * (xx - 4) ** 2 - 128, xx) == [Integer(12)]
+
+
+def chairs_cost():
+    n = Symbol('n', positive=True)
+    return Integer(30) in solve((720 / n - 4) * (n + 6) - 720, n)
+
+
+def sum_product_real():
+    sv, pv = Symbol('sv', real=True), Symbol('pv', real=True)
+    return simplify((sv ** 2 - 4 * pv) - (sv ** 2 - 4 * pv)) == 0
+
+
+def max_area_general():
+    pv = Symbol('pv', positive=True)
+    return simplify(x * (pv / 2 - x) - (pv ** 2 / 16 - (x - pv / 4) ** 2)) == 0
+
+
+def fence_cost():
+    xx = Symbol('xx', positive=True)
+    return solve(5 * (4 * xx + 20) - 600, xx) == [Integer(25)]
+
+
+def _solve2(eqs, want):
+    sol = solve(eqs, [x, y], dict=True)
+    return any(all(simplify(s[v] - w) == 0 for v, w in zip((x, y), want))
+               for s in sol)
+
+
+def sim_sum_diff():
+    return _solve2([x + y - 7, x - y - 1], (4, 3))
+
+
+def sim_simple():
+    return _solve2([2 * x + y - 8, y - 2], (3, 2))
+
+
+def sim_three_two():
+    return _solve2([3 * x + 2 * y - 12, x - y - 1],
+                   (Rational(14, 5), Rational(9, 5)))
+
+
+def sim_two_four():
+    return _solve2([x + 2 * y - 10, 3 * x - y - 2], (2, 4))
+
+
+def sim_two_four_b():
+    return _solve2([2 * x + 3 * y - 16, 3 * x - y - 2], (2, 4))
+
+
+def sim_one_minus_two():
+    return _solve2([5 * x + 2 * y - 1, 2 * x + 3 * y + 4], (1, -2))
+
+
+def table_parabola():
+    return [v ** 2 - 2 * v for v in (0, 1, 2, 3)] == [0, -1, 0, 3]
+
+
+def population_growth():
+    return round(float(5000 * Rational(103, 100) ** 3)) == 5464
+
+
+def car_depreciation():
+    n = 0
+    value = Rational(12000)
+    while value >= 6000:
+        value *= Rational(8, 10)
+        n += 1
+    return n == 4
+
+
+def doubling_ten_percent():
+    n = 0
+    value = Rational(1)
+    while value <= 2:
+        value *= Rational(11, 10)
+        n += 1
+    return n == 8
+
+
+def rise_fall_loss():
+    xx = Symbol('xx')
+    return simplify((1 + xx / 100) * (1 - xx / 100) - (1 - xx ** 2 / 10000)) == 0
+
+
+def sim_quadratic():
+    sol = solve([x + y - 5, x ** 2 + y ** 2 - 13], [x, y], dict=True)
+    pairs = {(s[x], s[y]) for s in sol}
+    return pairs == {(2, 3), (3, 2)}
+
+
+def sim_sum_product():
+    sol = solve([x + y - 6, x * y - 8], [x, y], dict=True)
+    return {(s[x], s[y]) for s in sol} == {(2, 4), (4, 2)}
+
+
+def parabola_from_vertex():
+    av = Symbol('av')
+    aval = solve(av * (0 - 2) ** 2 - 1 - 3, av)[0]
+    return aval == 1 and expand(1 * (x - 2) ** 2 - 1) == x ** 2 - 4 * x + 3
+
+
+def vertex_formula():
+    av, bv, cv = Symbol('av', nonzero=True), Symbol('bv'), Symbol('cv')
+    expr = av * x ** 2 + bv * x + cv
+    completed = av * (x + bv / (2 * av)) ** 2 + (cv - bv ** 2 / (4 * av))
+    return simplify(expr - completed) == 0
+
+
+def touch_once_k():
+    good = set()
+    for kv in range(-8, 9):
+        got = solveset(x ** 2 + kv * x + 4, x, Reals)
+        if got.is_FiniteSet and len(got) == 1:
+            good.add(kv)
+    return good == {4, -4}
+
+
+def dependent_system():
+    return solve([2 * x + y - 7, 4 * x + 2 * y - 14], [x, y]) != []
+
+
+def inconsistent_system():
+    return solve([x + y - 3, 2 * x + 2 * y - 8], [x, y]) == []
+
+
+def halving_rate():
+    p = 100 * (1 - 0.5 ** 0.1)
+    return abs(p - 6.7) < 0.1
+
+
+def sum_and_square_difference():
+    return _solve2([x + y - 10, x ** 2 - y ** 2 - 20], (6, 4))
+
+
+def parabola_symmetry():
+    bv, cv, t = Symbol('bv'), Symbol('cv'), Symbol('t')
+    expr = x ** 2 + bv * x + cv
+    left = expr.subs(x, -bv / 2 + t)
+    right = expr.subs(x, -bv / 2 - t)
+    return simplify(left - right) == 0
+
+
+def repeated_k_one():
+    kk = Symbol('kk')
+    return set(solve(kk ** 2 - 4, kk)) == {Integer(2), Integer(-2)}
+
+
+def sum_sq_six_four():
+    r = solve(x ** 2 - 6 * x + 4, x)
+    return simplify(r[0] ** 2 + r[1] ** 2 - 28) == 0
+
+
+def roots_differ_two():
+    kk = Symbol('kk')
+    return solve(64 - 4 * kk - 4, kk) == [Integer(15)]
+
+
+def boat_36():
+    v = Symbol('v', positive=True)
+    return solve(36 / (v - 3) + 36 / (v + 3) - 5, v) == [Integer(15)]
+
+
+def param_quadratic():
+    av = Symbol('av')
+    got = solve(x ** 2 - 2 * (av + 1) * x + av ** 2 + 2 * av, x)
+    return set(got) == {av, av + 2}
+
+
+def shared_root_k():
+    good = set()
+    for kv in range(-10, 11):
+        from sympy import Intersection
+        r1 = solveset(x ** 2 - 3 * x + kv, x, Reals)
+        r2 = solveset(x ** 2 - kv * x + 3, x, Reals)
+        if Intersection(r1, r2) != S.EmptySet:
+            good.add(kv)
+    return good == {-4}
+
+
+def opposite_sign_roots():
+    for cv in range(-6, 7):
+        if cv == 0:
+            continue
+        roots = solve(x ** 2 + 0 * x + cv, x)
+        real = [r for r in roots if r.is_real]
+        opposite = len(real) == 2 and real[0] * real[1] < 0
+        if opposite != (cv < 0):
+            return False
+    return True
+
+
+def share_180():
+    n = Symbol('n', positive=True)
+    return solve(180 / (n - 3) - 180 / n - 3, n) == [Integer(15)]
+
+
+def one_root_a():
+    good = set()
+    for av in range(-6, 7):
+        got = solveset(av * x ** 2 - 4 * x + 1, x, Reals)
+        if got.is_FiniteSet and len(got) == 1:
+            good.add(av)
+    return good == {0, 4}
+
+
+def square_plus_recip_three():
+    got = solveset(x ** 2 + 1 / x ** 2 - 3, x, Reals)
+    return got.is_FiniteSet and len(got) == 4
+
+
+def odd_no_integer_root():
+    for bv in range(-9, 10, 2):
+        for cv in range(-9, 10, 2):
+            for xv in range(-40, 41):
+                if xv ** 2 + bv * xv + cv == 0:
+                    return False
+    return True
+
+
+def integer_roots_36():
+    good = set()
+    for kv in range(-60, 61):
+        roots = solve(x ** 2 + kv * x + 36, x)
+        if all(r.is_integer for r in roots) and len(roots) >= 1:
+            good.add(kv)
+    return good == {12, -12, 13, -13, 15, -15, 20, -20, 37, -37}
+
+
+def check_solveset(relation, expected, var=None):
+    """The real solution set of an equation or inequality.
+
+    The stated answer is always verified by membership sampling, and solveset is
+    used only as a second opinion. That order matters: sympy returns EmptySet for
+    Eq(Abs(Abs(x)-1), 2), which plainly has the solutions ±3, so a check that
+    simply compared against solveset would reject a correct answer. A solveset
+    result that fails the same sampling is discarded; one that passes must agree.
+    """
+    from sympy import And, ConditionSet, Intersection
+    v = sympify(var, SYMS) if var else x
+    rel = sympify(relation, SYMS)
+    want = sympify(expected, SYMS)
+
+    probes = {Rational(i, 4) for i in range(-80, 81)}
+    probes |= {Rational(i, 3) for i in range(-30, 31)}
+    for boundary in list(want.boundary) if hasattr(want, 'boundary') else []:
+        if boundary.is_number and boundary.is_finite:
+            probes |= {boundary, boundary + Rational(1, 1000),
+                       boundary - Rational(1, 1000)}
+
+    # points where some denominator vanishes: the relation says nothing there, and
+    # sympy can turn Eq(zoo, zoo) into True, which would look like a solution
+    undefined = set()
+    for sub in preorder_traversal(rel):
+        if sub.is_Pow and sub.exp.is_negative:
+            undefined |= {r for r in solveset(sub.base, v, Reals)
+                          if r.is_number}
+
+    def agrees(candidate):
+        for t in sorted(probes):
+            if t in undefined:
+                continue
+            try:
+                truth = bool(rel.subs(v, t))
+                inside = bool(candidate.contains(t))
+            except TypeError:
+                continue            # not comparable here
+            if truth != inside:
+                return False
+        return True
+
+    if not agrees(want):
+        return False
+
+    if isinstance(rel, And):
+        got = Intersection(*[solveset(part, v, Reals) for part in rel.args])
+    else:
+        got = solveset(rel, v, Reals)
+    if got.has(ConditionSet):
+        return True
+    if got == want:
+        return True
+    # sympy often leaves surd roots un-denested — √(5−2√6) is √3−√2 — so two
+    # equal sets can differ structurally. Compare them numerically first.
+    if (got.is_FiniteSet and want.is_FiniteSet
+            and all(e.is_number for e in got) and all(e.is_number for e in want)):
+        gv = sorted(float(e) for e in got)
+        wv = sorted(float(e) for e in want)
+        if len(gv) == len(wv) and all(abs(g - w) < 1e-9 for g, w in zip(gv, wv)):
+            return True
+    try:
+        return not agrees(got)
+    except TypeError:
+        return True
+
+
 def check_bool(statement):
     """A comparison that must come out true, e.g. sqrt(7)+sqrt(5) > sqrt(10)+sqrt(2)."""
     return bool(sympify(statement, SYMS)) is True
@@ -1124,6 +2044,121 @@ def sum_k_squared_minus_one():
 
 
 CUSTOM = {
+    'repeated_k_one': repeated_k_one, 'sum_sq_six_four': sum_sq_six_four,
+    'roots_differ_two': roots_differ_two, 'boat_36': boat_36,
+    'param_quadratic': param_quadratic, 'shared_root_k': shared_root_k,
+    'opposite_sign_roots': opposite_sign_roots, 'share_180': share_180,
+    'one_root_a': one_root_a,
+    'square_plus_recip_three': square_plus_recip_three,
+    'odd_no_integer_root': odd_no_integer_root,
+    'integer_roots_36': integer_roots_36,
+    'sim_sum_diff': sim_sum_diff, 'sim_simple': sim_simple,
+    'sim_three_two': sim_three_two, 'sim_two_four': sim_two_four,
+    'sim_two_four_b': sim_two_four_b, 'sim_one_minus_two': sim_one_minus_two,
+    'table_parabola': table_parabola, 'population_growth': population_growth,
+    'car_depreciation': car_depreciation,
+    'doubling_ten_percent': doubling_ten_percent, 'rise_fall_loss': rise_fall_loss,
+    'sim_quadratic': sim_quadratic, 'sim_sum_product': sim_sum_product,
+    'parabola_from_vertex': parabola_from_vertex, 'vertex_formula': vertex_formula,
+    'touch_once_k': touch_once_k, 'dependent_system': dependent_system,
+    'inconsistent_system': inconsistent_system, 'halving_rate': halving_rate,
+    'sum_and_square_difference': sum_and_square_difference,
+    'parabola_symmetry': parabola_symmetry,
+    'train_speed': train_speed, 'taps_four_hours': taps_four_hours,
+    'pens_share': pens_share, 'max_area_perimeter': max_area_perimeter,
+    'boat_speed': boat_speed, 'triangular_210': triangular_210,
+    'rect_area_diagonal': rect_area_diagonal, 'cyclists_gap': cyclists_gap,
+    'open_box': open_box, 'chairs_cost': chairs_cost,
+    'sum_product_real': sum_product_real, 'max_area_general': max_area_general,
+    'fence_cost': fence_cost,
+    'biquadratic_root_counts': biquadratic_root_counts,
+    'biquadratic_general': biquadratic_general,
+    'four_factor_product': four_factor_product,
+    'square_plus_recip_equals': square_plus_recip_equals,
+    'four_distinct_roots': four_distinct_roots,
+    'no_solution_reciprocal_pair': no_solution_reciprocal_pair,
+    'vieta_k_minus_seven': vieta_k_minus_seven, 'other_root_four': other_root_four,
+    'vieta_five_three': vieta_five_three,
+    'alpha_sq_plus_beta_sq': alpha_sq_plus_beta_sq,
+    'reciprocal_sum_roots': reciprocal_sum_roots,
+    'root_difference_squared': root_difference_squared,
+    'alpha_cubed_sum': alpha_cubed_sum, 'sum_squares_pq': sum_squares_pq,
+    'doubled_roots': doubled_roots, 'shifted_roots': shifted_roots,
+    'k_root_two': k_root_two,
+    'reciprocal_roots_equation': reciprocal_roots_equation,
+    'golden_power': golden_power, 'fourth_power_sum': fourth_power_sum,
+    'roots_differ_one': roots_differ_one,
+    'squared_roots_equation': squared_roots_equation,
+    'monic_integer_roots': monic_integer_roots,
+    'consecutive_roots': consecutive_roots,
+    'b_c_two_minus_three': b_c_two_minus_three,
+    'ratio_sum_roots': ratio_sum_roots,
+    'general_squared_roots': general_squared_roots,
+    'reciprocal_roots_condition': reciprocal_roots_condition,
+    'opposite_roots_condition': opposite_roots_condition,
+    'ratio_two_one': ratio_two_one, 'least_sum_squares': least_sum_squares,
+    'repeated_root_m': repeated_root_m,
+    'perfect_square_discriminant': perfect_square_discriminant,
+    'derive_formula': derive_formula,
+    'exactly_one_root_k': exactly_one_root_k,
+    'rational_roots_square': rational_roots_square,
+    'solve_a_b_square': solve_a_b_square,
+    'sum_of_roots': sum_of_roots,
+    'product_of_roots': product_of_roots,
+    'root_twice_other': root_twice_other,
+    'repeated_root_value': repeated_root_value,
+    'roots_differ_by_four': roots_differ_by_four,
+    'common_root_minus_five': common_root_minus_five,
+    'common_root_minus_three': common_root_minus_three,
+    'square_equals_a': square_equals_a,
+    'always_root_zero': always_root_zero,
+    'find_a_roots_two': find_a_roots_two,
+    'find_k_roots_four': find_k_roots_four,
+    'solve_shifted_square': solve_shifted_square,
+    'no_root_positive_c': no_root_positive_c,
+    'c_root_one': c_root_one,
+    'at_most_two_roots': at_most_two_roots,
+    'repeated_root_k': repeated_root_k,
+    'roots_three_minus_three': roots_three_minus_three,
+    'roots_a_b': roots_a_b,
+    'sum_coeffs_root_one': sum_coeffs_root_one,
+    'alt_coeffs_root_minus_one': alt_coeffs_root_minus_one,
+    'family_roots_zero_four': family_roots_zero_four,
+    'count_integers_mod_four': count_integers_mod_four,
+    'modulus_no_solution': modulus_no_solution,
+    'integers_band_modulus': integers_band_modulus,
+    'area_vs_perimeter_spread': area_vs_perimeter_spread,
+    'square_relative': square_relative,
+    'sum_span_two': sum_span_two,
+    'sig_figs_three': sig_figs_three,
+    'relative_error_728': relative_error_728,
+    'bounds_24': bounds_24, 'bounds_42': bounds_42, 'bounds_70': bounds_70,
+    'bounds_500': bounds_500, 'bounds_36': bounds_36,
+    'round_half_up': round_half_up,
+    'relative_error_product': relative_error_product,
+    'double_rounding': double_rounding,
+    'pi_approximation': pi_approximation,
+    'sig_fig_relative': sig_fig_relative,
+    'sqrt_50_bound': sqrt_50_bound,
+    'three_percent': three_percent,
+    'abs_negative_branch': abs_negative_branch,
+    'abs_branch_ge': abs_branch_ge,
+    'abs_branch_lt': abs_branch_lt,
+    'abs_product': abs_product,
+    'min_two_distances': min_two_distances,
+    'reverse_triangle': reverse_triangle,
+    'one_solution_modulus': one_solution_modulus,
+    'integers_minus_two_three': integers_minus_two_three,
+    'count_integers_3x': count_integers_3x,
+    'system_a_two_a': system_a_two_a,
+    'count_integers_modulus': count_integers_modulus,
+    'no_solution_square': no_solution_square,
+    'linear_ineq_cases': linear_ineq_cases,
+    'k_positive_only': k_positive_only,
+    'smallest_integer_solution': smallest_integer_solution,
+    'count_integer_solutions': count_integer_solutions,
+    'always_true_linear': always_true_linear,
+    'equivalent_linear': equivalent_linear,
     'sum_six_product': sum_six_product,
     'square_range_minus_one_two': square_range_minus_one_two,
     'x_plus_inverse_third': x_plus_inverse_third,
@@ -1303,6 +2338,10 @@ def main():
                     elif check[0] == 'lcm':
                         if not check_lcm(check[1], check[2]):
                             failures.append(f'{where}: lcm{check[1]} != {check[2]}')
+                    elif check[0] == 'solveset':
+                        if not check_solveset(*check[1:]):
+                            failures.append(f'{where}: solution set of {check[1]} '
+                                            f'is not {check[2]}')
                     elif check[0] == 'nonneg':
                         if not check_nonneg(*check[1:]):
                             failures.append(f'{where}: {check[1]} goes negative')

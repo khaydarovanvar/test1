@@ -421,4 +421,244 @@ NOTES = {
    M('|a + b| ≤ |a| + |b|') + ', proved by squaring both sides and using '
    + M('ab ≤ |ab|') + '. Equality when the two have the same sign.'),
  ],
+'alg-21': [
+  ('Only one rule differs from equations',
+   'Every step that solves an equation is allowed, except that multiplying or dividing '
+   'by a negative <b>reverses</b> the sign. Test one value from your answer to catch it.'),
+  ('Never multiply by an unknown sign',
+   'From ' + M(F(1, 'x') + ' &gt; 2') + ' you may not multiply by ' + M('x') + ': it could '
+   'be negative. Split into cases, or move everything to one side.'),
+  ('Critical values and regions',
+   'For a product or a fraction, mark where each factor is zero or undefined, then test '
+   'one point in each region. The sign alternates between consecutive critical values.'),
+  ('When the unknown cancels',
+   'A true statement left behind means every number works; a false one means none do. '
+   + M('3x + 1 &gt; 3x') + ' is the first, ' + M('2x + 5 &lt; 2x + 3') + ' the second.'),
+  ('Counting integer solutions',
+   'Solve first, then count. Watch which ends are included: '
+   + M('−2 ≤ x &lt; 4') + ' holds for six integers, not seven or five.'),
+ ],
+ 'alg-22': [
+  ('Overlap, not union',
+   'A system asks for both conditions at once, so the answer is the <b>intersection</b>. '
+   'Draw both on one number line and read off where they overlap.'),
+  ('Interval notation',
+   M('[a, b]') + ' includes its ends, ' + M('(a, b)') + ' excludes them. '
+   'A square bracket pairs with ' + M('≤') + ', a round one with ' + M('&lt;') + '.'),
+  ('Double inequalities',
+   M('1 ≤ 2x + 3 ≤ 9') + ' is one system: do the same thing to all three parts, and '
+   'reverse all of it if you multiply by a negative.'),
+  ('Quadratic inequalities',
+   'Factorise, find the roots, then decide between or outside: a positive-leading '
+   'quadratic is below the axis <b>between</b> its roots.'),
+  ('Empty is an answer',
+   'If the two sets do not overlap, say so. ' + M('x &gt; 3') + ' with ' + M('x &lt; 1')
+   + ' has no solution, and writing nothing is not the same as writing that.'),
+ ],
+ 'alg-23': [
+  ('Modulus is distance',
+   M('|x − a|') + ' is the distance from ' + M('x') + ' to ' + M('a') + '. '
+   'Read every modulus question that way and most of them stop needing algebra.'),
+  ('Less gives one interval, greater gives two',
+   M('|x| &lt; a') + ' is ' + M('−a &lt; x &lt; a') + '; ' + M('|x| &gt; a')
+   + ' is two rays. Mixing these up is the commonest error in the topic.'),
+  ('Two cases, or square',
+   'With a modulus on one side, split into the two cases and check each answer. '
+   'With a modulus on <b>both</b> sides, squaring is safe — both sides are non-negative.'),
+  ('Sums of distances',
+   M('|x − 1| + |x − 3|') + ' is the total distance to 1 and 3. It equals the gap '
+   'between them on the whole segment, and exceeds it outside.'),
+  ('The right side must be non-negative',
+   'In ' + M('|x − 2| = 2x') + ' the right side forces ' + M('x ≥ 0') + ' before any '
+   'case work begins — that is what rejects the spurious root.'),
+ ],
+ 'alg-24': [
+  ('Half a unit',
+   'Rounding to the nearest unit gives an absolute error of at most half a unit. '
+   'That single sentence generates every bound in this topic.'),
+  ('Absolute against relative',
+   'Absolute error is a size; relative error is that divided by the value. '
+   'An error of 1 is nothing in 500 and ruinous in 5.'),
+  ('Round once',
+   'Rounding to 2 d.p. and then to 1 can lift a value over the halfway line. '
+   + M('2.449 → 2.45 → 2.5') + ', but directly it is ' + M('2.4') + '.'),
+  ('Errors add for products',
+   'Relative errors add when quantities multiply, so three measurements each good to '
+   + M('1%') + ' give a product good to about ' + M('3%') + '.'),
+  ('Powers multiply the error',
+   'Squaring doubles the relative error, cubing triples it. A side known to '
+   + M('1%') + ' gives an area known to about ' + M('2%') + '.'),
+ ],
+ 'alg-25': [
+  ('A measurement is an interval',
+   M('8') + ' to the nearest whole means ' + M('7.5 ≤ x &lt; 8.5') + '. '
+   'Write both bounds before calculating anything.'),
+  ('Which end for which answer',
+   'Sum: low with low. Difference: <b>low minus high</b>. Product: low times low. '
+   'Quotient: low over <b>high</b>. Pairing the wrong ends is the usual slip.'),
+  ('Check the denominator',
+   'Before trusting a corner of a range for a fraction, make sure no point of the box '
+   'makes the denominator zero.'),
+  ('Subtracting near-equal numbers',
+   'Two masses of ' + M('1.0') + ' kg each to 1 d.p. have a difference somewhere in '
+   + M('(−0.1, 0.1)') + ' — as wide as the whole uncertainty. Precision is destroyed.'),
+  ('Keep bounds unrounded',
+   'Round only the final answer. Rounding a bound first both shifts and shrinks the '
+   'interval, so it may no longer contain the true value.'),
+ ],
+ 'alg-26': [
+  ('The four costly errors',
+   'Keeping the direction after multiplying by a negative; writing one interval for '
+   + M('|x| &gt; a') + '; pairing the wrong ends for a difference of bounds; rounding twice.'),
+  ('Test one value',
+   'Put a number from your answer back into the original. A reversed sign shows '
+   'immediately, and it costs five seconds.'),
+  ('Distance reading',
+   'Modulus questions are about distance. Sketching a number line answers most of them '
+   'faster than algebra.'),
+  ('Squaring loses information',
+   M('{sq("x")} &lt; 4') + ' is not ' + M('x &lt; 2') + ': it is ' + M('−2 &lt; x &lt; 2') + '. '
+   'Take the modulus, not just the positive root.'),
+  ('State the set',
+   'An answer to an inequality is a set. Write it as an interval or an inequality, and '
+   'say when it is empty.'),
+ ],
+ 'alg-27': [
+  ('Standard form first',
+   'Everything to one side, zero on the other. The zero product rule needs the zero: '
+   + M('AB = 0') + ' tells you something, ' + M('AB = 6') + ' does not.'),
+  ('Never divide by x',
+   M(sq('x') + ' = 5x') + ' has roots 0 and 5. Dividing by ' + M('x') + ' throws the '
+   'first away — factorise instead.'),
+  ('At most two roots',
+   'Two different roots already fix the factorisation ' + M('a(x − p)(x − q)') + ', '
+   'so a third is impossible. A repeated root counts once.'),
+  ('Build from roots',
+   'Roots ' + M('p') + ' and ' + M('q') + ' give ' + M('(x − p)(x − q) = 0') + ' — '
+   'and any non-zero multiple of it, so the equation is not unique.'),
+  ('Coefficients that give a root free',
+   'If ' + M('a + b + c = 0') + ' then ' + M('x = 1') + ' is a root; if '
+   + M('a − b + c = 0') + ' then ' + M('x = −1') + ' is. Check both by eye first.'),
+ ],
+ 'alg-28': [
+  ('Three short methods',
+   'No ' + M('x') + ' term: make ' + M(sq('x')) + ' the subject. No constant: take out '
+   + M('x') + '. Both: the root is 0.'),
+  ('Both signs',
+   M(sq('x') + ' = a') + ' gives ' + M('±' + rt('a')) + '. Writing only the positive '
+   'root loses half the answer.'),
+  ('A perfect square on one side',
+   M('(x − 1)<sup>2</sup> = 9') + ' gives ' + M('x − 1 = ±3') + ' directly — no '
+   'expanding and no formula.'),
+  ('Negative is impossible',
+   M(sq('x') + ' + 4 = 0') + ' has no real root, because no real square is negative.'),
+  ('The same trick at higher powers',
+   M(sq('x', 3) + ' = 4x') + ' and ' + M(sq('x', 6) + ' = ' + sq('x', 4))
+   + ' factorise the same way — and lose the root 0 the same way if you divide.'),
+ ],
+ 'alg-29': [
+  ('Work out D first',
+   'The discriminant says how many roots to expect and checks the arithmetic before '
+   'you commit to the formula.'),
+  ('√D, not D',
+   'The formula is ' + M('x = ' + F('−b ± ' + rt(sq('b') + ' − 4ac'), '2a'))
+   + '. Forgetting the root sign is the single commonest slip.'),
+  ('Watch the signs',
+   M('−4ac') + ' is <b>positive</b> when ' + M('c') + ' is negative, so a negative '
+   'constant always gives two real roots.'),
+  ('Conditions on a parameter',
+   'Two distinct roots means ' + M('D &gt; 0') + ', a repeated root ' + M('D = 0')
+   + ', none ' + M('D &lt; 0') + '. Each is an inequality in the parameter.'),
+  ('Substitute to simplify',
+   'An equation in ' + M('(x − 1)') + ' or ' + M(sq('x')) + ' is a quadratic in '
+   'disguise. Name the block ' + M('t') + ' before reaching for the formula.'),
+ ],
+ 'alg-30': [
+  ('Read the roots off the coefficients',
+   M('α + β = −' + F('b', 'a')) + ' and ' + M('αβ = ' + F('c', 'a')) + '. '
+   'For a monic equation that is simply ' + M('−b') + ' and ' + M('c') + '.'),
+  ('Symmetric expressions',
+   'Anything symmetric in the roots reduces to the sum and the product: '
+   + M(sq('α') + ' + ' + sq('β') + ' = (α+β)<sup>2</sup> − 2αβ') + ', and cubes '
+   'follow the same way.'),
+  ('Build a new equation',
+   'For roots ' + M('2α, 2β') + ' or ' + M('α+1, β+1') + ', work out the new sum and '
+   'product and write ' + M(f'{sq("x")} − (sum)x + (product) = 0') + '.'),
+  ('Use it as a check',
+   'After solving, add and multiply your roots. If they do not match the coefficients, '
+   'something is wrong — and you know it before the marker does.'),
+  ('Conditions on the roots',
+   'Reciprocal roots mean ' + M('c = a') + '; opposite roots mean ' + M('b = 0') + '; '
+   'a given ratio or difference turns into two equations in the roots.'),
+ ],
+ 'alg-31': [
+  ('Name the repeated block',
+   'If the same expression appears squared and plain, call it ' + M('t') + '. '
+   + M(sq('x')) + ', ' + M('|x|') + ', ' + M(sq('x', 3)) + ' and ' + M('x + ' + F(1, 'x'))
+   + ' all work.'),
+  ('Reject impossible values',
+   'With ' + M('t = ' + sq('x')) + ', a negative ' + M('t') + ' gives nothing. '
+   'Each positive ' + M('t') + ' gives two roots, ' + M('t = 0') + ' gives one.'),
+  ('Return to x',
+   'The commonest lost mark is answering in ' + M('t') + '. The question asked for '
+   + M('x') + '.'),
+  ('Clear denominators, then check',
+   'Multiplying by a denominator can invent roots. Every candidate must be tested '
+   'against the original denominators before it is kept.'),
+  ('Pair the factors cleverly',
+   'In ' + M('(x−1)(x−2)(x−3)(x−4) = 24') + ', pairing outer with inner gives two '
+   'expressions differing by a constant — and one substitution finishes it.'),
+ ],
+ 'alg-32': [
+  ('Say what x is',
+   'Name the unknown with its unit before writing an equation. Half the marks in a word '
+   'problem are for setting it up.'),
+  ('Standard shapes',
+   'Consecutive: ' + M('x, x+1') + '. Consecutive even or odd: ' + M('x, x+2') + '. '
+   'Rate problems: ' + M('t = ' + F('d', 'v')) + ' and work adds as ' + M(F(1, 't')) + '.'),
+  ('Reject by meaning',
+   'The algebra gives both roots; the words reject one. A length, a time and a count '
+   'cannot be negative.'),
+  ('Sum and product shortcuts',
+   'Two numbers with known sum and product are the roots of '
+   + M(sq('t') + ' − (sum)t + (product) = 0') + ' — no substitution needed.'),
+  ('Check against the words',
+   'Put the answer back into the <b>problem</b>, not into your own equation. '
+   'That catches a mis-set-up as well as an arithmetic slip.'),
+ ],
+ 'alg-33': [
+  ('Multipliers, not additions',
+   'A rise of ' + M('r%') + ' multiplies by ' + M('1 + ' + F('r', 100)) + '. '
+   'Repeating it ' + M('n') + ' times raises that factor to the ' + M('n') + 'th power.'),
+  ('A rise then an equal fall loses',
+   M('(1 + ' + F('x', 100) + ')(1 − ' + F('x', 100) + ') = 1 − ' + F(sq('x'), 10000))
+   + ', always below 1. The order makes no difference.'),
+  ('Choose the method',
+   'Two linear equations: eliminate or substitute. One linear and one quadratic: always '
+   'substitute. Symmetric sum-and-product: use Vieta.'),
+  ('The vertex',
+   'The axis of symmetry is ' + M('x = −' + F('b', '2a')) + '. Substitute it back for '
+   'the vertex, and complete the square to see why.'),
+  ('What the discriminant says about the graph',
+   M('D &gt; 0') + ' cuts the axis twice, ' + M('D = 0') + ' touches it once, '
+   + M('D &lt; 0') + ' misses it — so a tangent line means a repeated root.'),
+ ],
+ 'alg-34': [
+  ('The four costly errors',
+   'Dividing by ' + M('x') + '; writing ' + M(rt('a')) + ' instead of ' + M('±' + rt('a'))
+   + '; using ' + M('D') + ' where ' + M(rt('D')) + ' belongs; keeping a root that a '
+   'denominator or the words forbid.'),
+  ('Look before you formula',
+   'A common factor, a difference of squares or an obvious pair of factors is faster '
+   'and safer than the formula.'),
+  ('Vieta as a check',
+   'Add and multiply your roots and compare with the coefficients. It takes seconds and '
+   'catches a sign error reliably.'),
+  ('Parameters need cases',
+   'With a letter as the leading coefficient, treat ' + M('a = 0') + ' separately: '
+   'the equation is then linear and the discriminant does not apply.'),
+  ('Integer-root questions are divisor questions',
+   'If the roots are integers, their product is the constant term. List the factor '
+   'pairs and read off the possible sums.'),
+ ],
 }
