@@ -130,6 +130,10 @@ h2 { font-size:13pt; margin:0; }
 .contents .tles { width:28mm; color:var(--soft); font-size:9pt; white-space:nowrap; }
 .contents .tq { width:26mm; color:var(--soft); font-size:9pt; text-align:right;
   white-space:nowrap; }
+.data { border-collapse:collapse; margin:1.2mm 0 1.6mm; font-size:8.4pt; }
+.data th, .data td { border:1px solid var(--rule); padding:0.5mm 1.3mm;
+  text-align:center; }
+.data th { background:#F4F6F8; font-weight:700; text-align:left; white-space:nowrap; }
 .footnote { color:var(--soft); font-size:8.6pt; margin-top:4mm;
   border-top:1px solid var(--rule); padding-top:2mm; }
 """
@@ -145,7 +149,9 @@ def render_questions(section, items):
            f'<span class="name">{section}</span>'
            f'<span class="tier">{TIER[section]}</span>'
            f'<span class="count">{len(items)} questions</span>'
-           f'<span class="blurb">{bank.SECTION_BLURB[section]}</span></div>']
+           f'<span class="blurb">'
+           f'{topic.get("blurb", {}).get(section, bank.SECTION_BLURB[section])}'
+           f'</span></div>']
     klass = ' beyond' if section == 'Beyond' else ''
     if section == 'Focus':
         out.append('<div class="twocol">')

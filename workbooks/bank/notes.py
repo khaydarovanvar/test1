@@ -661,4 +661,226 @@ NOTES = {
    'If the roots are integers, their product is the constant term. List the factor '
    'pairs and read off the possible sums.'),
  ],
+ 'alg-35': [
+  ('One degree is a number of people',
+   'Going from a pie chart to a count, work out what ' + M('1°') + ' is worth: '
+   + M('total ÷ 360') + ' people. Every other sector is then one multiplication, and '
+   'an awkward angle like ' + M('86.4°') + ' stops being awkward.'),
+  ('Sectors are a sharing problem',
+   'Angles in the ratio ' + M('p : q : r') + ' are a share of ' + M('360')
+   + ' in that ratio. A ratio question and a pie-chart question are the same question '
+   'wearing different clothes.'),
+  ('Integer angles are a divisor question',
+   M('n') + ' equal sectors have whole-number angles exactly when ' + M('n')
+   + ' divides ' + M('360') + '. That is why ' + M('7') + ' and ' + M('11')
+   + ' sectors never come out whole, and why ' + M('360 = 2<sup>3</sup> · 3<sup>2</sup> · 5')
+   + ' is worth knowing.'),
+  ('Extremal counting with distinct parts',
+   'To make the largest of several distinct whole numbers as small as possible, push '
+   'them together at the top: ' + M('m, m−1, m−2, …') + ' sums to '
+   + M('km − ' + F('k(k−1)', 2)) + '. Set that at least the total and solve for '
+   + M('m') + '.'),
+  ('Pigeonhole, in the language of data',
+   'With ' + M('N') + ' pieces of data in ' + M('k') + ' categories some category '
+   'holds at least ' + M('N ÷ k') + ', rounded up, of them. To show the bound cannot be improved, '
+   'build the split that reaches it.'),
+ ],
+ 'alg-36': [
+  ('The total is the real unknown',
+   'Nearly every mean question is a question about ' + M('Σx = n × mean') + '. Write '
+   'that line first and the rest is arithmetic — a number removed, a number added, a '
+   'number replaced.'),
+  ('Combining two groups',
+   M('(n₁m₁ + n₂m₂) ÷ (n₁ + n₂)') + ' — never the average of the two means. Reading '
+   'the question as the mean of means is the single most common error in the paper.'),
+  ('A linear change to every value',
+   'Replace every ' + M('x') + ' by ' + M('ax + b') + ' and the mean becomes '
+   + M('a·mean + b') + ', the range becomes ' + M('|a|·range') + ' and the median '
+   'follows the mean. Nothing has to be recomputed from scratch.'),
+  ('Building a set to order',
+   'When mean, median, mode and range are all prescribed, place the median first, then '
+   'the repeated value the mode forces, then use the total for what is left. Check all '
+   'four conditions at the end — a set that satisfies three is usually not the answer.'),
+  ('Extremes with distinct values',
+   'To make one value as large as possible with a fixed total, make the others as small '
+   'as the conditions allow: ' + M('1, 2, 3, …') + ' when they must differ. That turns '
+   'the problem into ' + M('total − ' + F('k(k+1)', 2)) + '.'),
+ ],
+ 'alg-37': [
+  ('List in a system, not at random',
+   'Fix the first thing, list the rest, then move the first thing on. Nothing is '
+   'repeated and nothing is lost, and the pattern in what you wrote usually suggests '
+   'the formula.'),
+  ('Two questions before any formula',
+   'Does order matter? Are repeats allowed? The four answers give the four formulas: '
+   + M('n<sup>r</sup>') + ', ' + M('n(n−1)…') + ', ' + M('C(n, r)') + ' and '
+   + M('C(n + r − 1, r)') + '.'),
+  ('Identical items divide out',
+   'Arrangements of ' + M('n') + ' things with repeats divide by the factorial of each '
+   'repeat: ' + M('BOOK') + ' gives ' + M(F('4!', '2!') + ' = 12')
+   + '. The repeats you cannot tell apart were counted twice.'),
+  ('Grid paths are a choice of steps',
+   'A path with ' + M('r') + ' rights and ' + M('u') + ' ups is a word in two letters, '
+   'so there are ' + M('C(r + u, r)') + ' of them. The same count answers '
+   '&ldquo;how many ways to split identical sweets&rdquo;.'),
+  ('Stars and bars',
+   M('n') + ' identical things into ' + M('k') + ' boxes: ' + M('C(n + k − 1, k − 1)')
+   + ' with empty boxes allowed, ' + M('C(n − 1, k − 1)') + ' without. Draw the bars '
+   'between the stars and the formula is obvious.'),
+ ],
+ 'alg-38': [
+  ('Multiply the stages, add the alternatives',
+   'Stages that follow one another multiply; cases that replace one another add. Say '
+   'out loud which you have before writing anything.'),
+  ('Count the opposite',
+   '&ldquo;At least one&rdquo; is ' + M('total − none') + '. Four-digit codes with a '
+   'repeat: ' + M('10<sup>4</sup> − 10·9·8·7') + '. Doing it directly needs four '
+   'cases and usually goes wrong.'),
+  ('Treat a block as one object',
+   'Two people who must sit together are one object, so arrange '
+   + M('n − 1') + ' objects and then the ' + M('2') + ' inside: '
+   + M('2 · (n−1)!') + '. Must <em>not</em> sit together is the complement.'),
+  ('Inclusion and exclusion',
+   M('|A ∪ B| = |A| + |B| − |A ∩ B|') + ' — and with three sets add the triple back. '
+   'Multiples of ' + M('3') + ' or ' + M('5') + ' up to ' + M('1000') + ' is '
+   + M('333 + 200 − 66') + '.'),
+  ('Round tables and derangements',
+   'Seating ' + M('n') + ' people in a circle gives ' + M('(n − 1)!')
+   + ' because rotations repeat. Letters in wrong envelopes give '
+   + M('D₃ = 2, D₄ = 9, D₅ = 44') + ' — count the opposite, case by case.'),
+ ],
+ 'alg-39': [
+  ('Which average does the question want?',
+   'Mean for a total shared out, median for a middle that outliers must not move, mode '
+   'for the most common. The paper asks for the one you did not compute.'),
+  ('Find the position before the value',
+   'For the median of a frequency table, work out which position you want — '
+   + M('(n + 1) ÷ 2') + ' — then run the cumulative frequencies until you reach it.'),
+  ('Estimated means need midpoints',
+   'Grouped data has lost the raw values, so use the class midpoint '
+   + M('(a + b) ÷ 2') + ' and call the answer an estimate. The range can only be '
+   'bounded, never found.'),
+  ('Counting checks itself',
+   'A count is a whole number, a probability lies in '
+   + M('[0, 1]') + ' and pie-chart angles add to ' + M('360°')
+   + '. One of those three catches most slips before the paper is handed in.'),
+  ('Pigeonhole in one line',
+   'If ' + M('N') + ' items sit in ' + M('k') + ' boxes and every box held at most '
+   + M('t') + ', there would be at most ' + M('kt') + ' items. Choose '
+   + M('t') + ' so that ' + M('kt < N') + ' and the contradiction writes itself.'),
+ ],
+ 'alg-40': [
+  ('From the differences to the rule',
+   'Constant first differences mean ' + M('dn + c') + '. Constant second differences '
+   'mean a quadratic whose ' + M('n<sup>2</sup>') + ' coefficient is half the second '
+   'difference. Subtract that part off and what is left is linear.'),
+  ('A term from a sum',
+   M('uₙ = Sₙ − Sₙ₋₁') + '. One subtraction turns a formula for the sum of the first '
+   + M('n') + ' terms into a formula for the terms, and it is a line of algebra, not '
+   'a search.'),
+  ('Telescoping a recurrence',
+   'If ' + M('uₙ₊₁ − uₙ = f(n)') + ', add the differences: '
+   + M('uₙ = u₁ + f(1) + f(2) + … + f(n−1)') + '. With '
+   + M('f(n) = 2n') + ' that gives ' + M('n<sup>2</sup> − n + 1') + '.'),
+  ('Divisibility of a term is a remainder question',
+   'Test ' + M('n = 0, 1, 2, …') + ' up to the modulus and the pattern repeats for '
+   'ever. That is the whole proof that ' + M('n<sup>2</sup> + n') + ' is always even '
+   'and that ' + M('x<sup>2</sup> + x + 1') + ' is never a multiple of ' + M('5') + '.'),
+  ('Functional equations by substitution',
+   'Given a relation in ' + M('f(x)') + ' and ' + M('f(1 − x)') + ', write it again '
+   'with ' + M('x') + ' replaced by ' + M('1 − x') + '. Two equations, two unknowns — '
+   'eliminate the one you do not want.'),
+ ],
+ 'alg-41': [
+  ('Gradient first, then a point',
+   'Find ' + M('m') + ' from two points, then push it through one of them: '
+   + M('y − y₁ = m(x − x₁)') + '. Expanding at the end is safer than guessing '
+   + M('c') + '.'),
+  ('Intercept form makes areas easy',
+   'A line crossing at ' + M('(p, 0)') + ' and ' + M('(0, q)') + ' is '
+   + M(F('x', 'p') + ' + ' + F('y', 'q') + ' = 1') + ' and the triangle with the axes '
+   'has area ' + M(F('|pq|', 2)) + '. Area questions become one equation in '
+   + M('pq') + '.'),
+  ('Perpendicular means product ' + M('−1'),
+   'Turning a line through ' + M('90°') + ' swaps rise and run and flips the sign, so '
+   + M('m₁m₂ = −1') + '. That one fact answers distance-to-a-line and '
+   + M('OA × OB') + ' questions alike.'),
+  ('A parameter that cancels',
+   'When a question says &ldquo;for every ' + M('m') + '&rdquo;, write the meeting '
+   'point and watch the parameter leave: ' + M('kx + 2 = (k+1)x − 3')
+   + ' collapses to ' + M('x = 5') + '. Nothing needs to be solved case by case.'),
+  ('Lattice points on a segment',
+   'The segment from the origin to ' + M('(a, b)') + ' carries '
+   + M('gcd(a, b) + 1') + ' points with whole-number coordinates, because the step '
+   'that repeats is ' + M('(a, b) ÷ gcd(a, b)') + '.'),
+ ],
+ 'alg-42': [
+  ('One multiplier, not two steps',
+   'Up ' + M('15%') + ' is ' + M('× 1.15') + ', down ' + M('12%') + ' is '
+   + M('× 0.88') + ', and two changes multiply. Up then down by the same percentage '
+   'always loses: ' + M('(1 + p)(1 − p) = 1 − p<sup>2</sup>') + '.'),
+  ('Reverse percentages divide',
+   'A price after a ' + M('15%') + ' fall is ' + M('0.85 ×') + ' the original, so '
+   'the original is the new price ' + M('÷ 0.85') + '. Taking ' + M('15%')
+   + ' off again is the classic wrong answer.'),
+  ('Rates add, times do not',
+   'Pipes, workers and candles are all rates: ' + M('1/a + 1/b') + ' of the job per '
+   'hour. A drain subtracts. Average speed is '
+   + M('total distance ÷ total time') + ', which for equal distances is '
+   + M(F('2uv', 'u + v')) + '.'),
+  ('A ratio is one unknown',
+   'Write ' + M('5k') + ' and ' + M('8k') + ' rather than two letters. A second '
+   'condition then gives one equation in ' + M('k') + ' — and that is why '
+   '&ldquo;add ' + M('6') + ' to each&rdquo; problems are quick.'),
+  ('Mixtures count the substance',
+   'Follow the pure quantity, not the volume: '
+   + M('0.3x + 0.6(50 − x) = 0.4 · 50') + '. Alloys, acid and alcohol are all the '
+   'same equation.'),
+ ],
+ 'alg-43': [
+  ('The complement is usually shorter',
+   M('P(at least one) = 1 − P(none)') + '. Three coins, at least one head: '
+   + M('1 − ' + F(1, 8)) + ' instead of three cases.'),
+  ('Multiply along, add between',
+   'On a tree diagram the branches multiply and the routes add. Without replacement '
+   'both the numerator and the denominator fall, and forgetting the numerator is the '
+   'commonest slip.'),
+  ('Count the sample space instead',
+   'For two dice draw the ' + M('6 × 6') + ' table; for two balls use '
+   + M('C(n, 2)') + '. A probability is then one count over another, and the '
+   'symmetry is visible: ' + M('P(second > first) = ') + ' half of what is left '
+   'after the ' + M('6') + ' draws.'),
+  ('Conditional probability narrows the world',
+   '&ldquo;Given that…&rdquo; throws away every outcome that fails the condition, so '
+   'both parts of the fraction change: '
+   + M('P(A | B) = ' + F('P(A and B)', 'P(B)')) + '.'),
+  ('A repeating game sums a series',
+   'If the first player wins outright with probability ' + M('p') + ' and otherwise '
+   'the position repeats after two turns, then '
+   + M('P = ' + F('p', '1 − (1 − p)<sup>2</sup>')) + ' — for a six, '
+   + M(F(6, 11)) + '.'),
+ ],
+ 'alg-44': [
+  ('Read the instruction word',
+   '<em>Simplify</em>, <em>expand</em>, <em>factorise</em> and <em>solve</em> are four '
+   'different tasks. An answer to the wrong one scores nothing however correct it is.'),
+  ('Symmetric expressions collapse',
+   M('x + ' + F(1, 'x')) + ' is the whole of an equation in '
+   + M('x<sup>2</sup> + ' + F(1, 'x<sup>2</sup>')) + ': square it. Likewise '
+   + M('(a+b+c)<sup>2</sup> = a<sup>2</sup>+b<sup>2</sup>+c<sup>2</sup> + 2(ab+bc+ca)')
+   + ' turns two given sums into the third.'),
+  ('Factor an equation into a product',
+   M('xy = x + y + 3') + ' is ' + M('(x − 1)(y − 1) = 4') + ', and then whole-number '
+   'solutions are just the factor pairs of ' + M('4') + '. Every Diophantine question '
+   'in the paper yields to this.'),
+  ('Three consecutive numbers',
+   M('(x−1)x(x+1)') + ' contains an even number and a multiple of '
+   + M('3') + ', so it is always a multiple of ' + M('6') + '. That is the proof that '
+   + M('x<sup>3</sup> − x') + ' is divisible by ' + M('6') + '.'),
+  ('The minimum of ' + M('x + ' + F('k', 'x')),
+   'For ' + M('x > 0') + ', ' + M('x + ' + F('k', 'x') + ' ≥ 2' + rt('k'))
+   + ', with equality at ' + M('x = ' + rt('k'))
+   + '; it follows from ' + M('(' + rt('x') + ' − ' + rt(F('k', 'x'))
+                              + ')<sup>2</sup> ≥ 0') + '.'),
+ ],
 }

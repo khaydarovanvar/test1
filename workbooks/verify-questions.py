@@ -10,7 +10,8 @@ numbers are checked by their own routine below.
 import sys
 import os
 
-from sympy import (Abs, FiniteSet, Integer, Interval, Rational, Reals, S, Symbol,
+from sympy import (Abs, EmptySet, Eq, FiniteSet, Integer, Interval, Rational,
+                   Reals, S, Symbol,
                    Union, binomial, cancel, expand, factorial, lambdify, lcm,
                    floor, nsimplify, oo, solveset,
                    pi, preorder_traversal, radsimp, sign, simplify, solve, sqrt,
@@ -2043,7 +2044,633 @@ def sum_k_squared_minus_one():
                for N in range(2, 40))
 
 
+def divisors_360():
+    """How many whole numbers divide 360."""
+    return len([d for d in range(1, 361) if 360 % d == 0]) == 24
+
+
+def non_divisors_2_12():
+    """Which n in 2..12 fail to divide 360."""
+    return [n for n in range(2, 13) if 360 % n] == [7, 11]
+
+
+def five_ten_set():
+    """Five whole numbers: mean 10, median 10, unique mode 10, range 10."""
+    from itertools import combinations_with_replacement as cwr
+    from collections import Counter
+    found = []
+    for t in cwr(range(0, 41), 5):
+        if sum(t) != 50 or t[2] != 10 or t[4] - t[0] != 10:
+            continue
+        c = Counter(t)
+        top = max(c.values())
+        if c[10] == top and list(c.values()).count(top) == 1 and top > 1:
+            found.append(t)
+    return found == [(4, 10, 10, 12, 14), (5, 10, 10, 10, 15),
+                     (6, 8, 10, 10, 16)]
+
+
+def mean_n_shift():
+    """n numbers of mean n, plus the number n+1: the mean is never n+1."""
+    nn = Symbol('nn', positive=True, integer=True)
+    return solveset(Eq((nn**2 + nn + 1) / (nn + 1), nn + 1), nn,
+                    domain=S.Reals) == EmptySet
+
+
+def median_nine_mean_ten():
+    """Nine different positive whole numbers of mean 10: the median at most 14."""
+    best = max(m for m in range(1, 90)
+               if 1 + 2 + 3 + 4 + m + (m + 1) + (m + 2) + (m + 3) + (m + 4) <= 90)
+    return best == 14 and sum((1, 2, 3, 4, 14, 15, 16, 17, 18)) == 90
+
+
+def distinct_mean_six():
+    """Distinct positive whole numbers of mean 6: at most eleven of them."""
+    return max(n for n in range(1, 50) if n * (n + 1) // 2 <= 6 * n) == 11
+
+
+def erase_mean_61():
+    """1..n with one number erased leaves mean 6.1 only for n = 11, k = 5."""
+    out = [(n, k) for n in range(2, 200) for k in range(1, n + 1)
+           if Rational(n * (n + 1) // 2 - k, n - 1) == Rational(61, 10)]
+    return out == [(11, 5)]
+
+
+def digit_sum_nine():
+    return len([n for n in range(10, 100) if sum(map(int, str(n))) == 9]) == 9
+
+
+def contains_seven_100():
+    return len([n for n in range(1, 101) if '7' in str(n)]) == 19
+
+
+def three_dice_six():
+    return len([1 for i in range(1, 7) for j in range(1, 7) for k in range(1, 7)
+                if i + j + k == 6]) == 10
+
+
+def no_seven_1000():
+    return len([n for n in range(1, 1001) if '7' not in str(n)]) == 729
+
+
+def nondecreasing_four():
+    return len([n for n in range(1000, 10000)
+                if list(str(n)) == sorted(str(n))]) == 495
+
+
+def digits_sum_43():
+    return len([n for n in range(10000, 100000)
+                if sum(map(int, str(n))) == 43]) == 15
+
+
+def even_parity_grid():
+    from itertools import product
+    good = 0
+    for g in product([0, 1], repeat=9):
+        rows = [g[0:3], g[3:6], g[6:9]]
+        cols = [g[i::3] for i in range(3)]
+        if all(sum(r) % 2 == 0 for r in rows) and all(sum(c) % 2 == 0 for c in cols):
+            good += 1
+    return good == 16
+
+
+def coprime_to_30():
+    return len([k for k in range(1, 1001) if k % 2 and k % 3 and k % 5]) == 266
+
+
+def perm12345_div4():
+    from itertools import permutations
+    return sum(1 for q in permutations('12345') if int(''.join(q)) % 4 == 0) == 24
+
+
+def _derangements(n):
+    from itertools import permutations
+    return sum(1 for q in permutations(range(n))
+               if all(q[i] != i for i in range(n)))
+
+
+def derangement_three():
+    return _derangements(3) == 2
+
+
+def derangement_four():
+    return _derangements(4) == 9
+
+
+def domino_strip_ten():
+    """Tilings of a 2 x n strip by dominoes follow the Fibonacci numbers."""
+    f = [1, 1]
+    while len(f) <= 10:
+        f.append(f[-1] + f[-2])
+    return f[10] == 89
+
+
+def no_two_consecutive():
+    from itertools import combinations
+    good = 0
+    for r in range(0, 6):
+        for comb in combinations(range(1, 11), r):
+            if all(comb[i + 1] - comb[i] > 1 for i in range(len(comb) - 1)):
+                good += 1
+    return good == 144
+
+
+def onto_five_three():
+    from itertools import product
+    return sum(1 for g in product(range(3), repeat=5)
+               if len(set(g)) == 3) == 150
+
+
+def palindrome_four_eleven():
+    pal = [n for n in range(1000, 10000) if str(n) == str(n)[::-1]]
+    return len(pal) == 90 and all(n % 11 == 0 for n in pal)
+
+
+def four_digit_odd_distinct():
+    return len([n for n in range(1000, 10000)
+                if n % 2 and len(set(str(n))) == 4]) == 2240
+
+
+def three_digit_has_five():
+    return len([n for n in range(100, 1000) if '5' in str(n)]) == 252
+
+
+def two_dice_at_least_ten():
+    return len([1 for i in range(1, 7) for j in range(1, 7) if i + j >= 10]) == 6
+
+
+def five_mean_seven():
+    """Five whole numbers: mean 7, median 7, unique mode 9, range 5."""
+    from itertools import combinations_with_replacement as cwr
+    from collections import Counter
+    found = []
+    for t in cwr(range(0, 40), 5):
+        if sum(t) != 35 or t[2] != 7 or t[4] - t[0] != 5:
+            continue
+        cnt = Counter(t)
+        top = max(cnt.values())
+        if cnt[9] == top and list(cnt.values()).count(top) == 1 and top > 1:
+            found.append(t)
+    return found == [(4, 6, 7, 9, 9)]
+
+
+def three_digit_sum_six():
+    return len([q for q in range(100, 1000) if sum(map(int, str(q))) == 6]) == 21
+
+
+def div4_not6_500():
+    return len([q for q in range(1, 501) if q % 4 == 0 and q % 6]) == 84
+
+
+def three_digit_div5_from_six():
+    from itertools import permutations
+    good = [q for q in permutations('012345', 3)
+            if q[0] != '0' and int(''.join(q)) % 5 == 0]
+    return len(good) == 36
+
+
+def consecutive_mean_30():
+    """n consecutive whole numbers of mean 30 with largest 38."""
+    return [q for q in range(1, 200)
+            if Rational(2 * 38 - q + 1, 2) == 30] == [17]
+
+
+def percent_whole_angle():
+    """A whole percentage gives a whole angle exactly when it is a multiple of 5."""
+    return [q for q in range(1, 101) if (q * 18) % 5 == 0] == list(range(5, 101, 5))
+
+
+def four_dice_eight():
+    return len([1 for i in range(1, 7) for j in range(1, 7) for q in range(1, 7)
+                for w in range(1, 7) if i + j + q + w == 8]) == 35
+
+
+def ap_4_9():
+    """a + 3d = 17 and a + 8d = 42."""
+    sol = solve([Eq(a + 3 * d, 17), Eq(a + 8 * d, 42)], [a, d], dict=True)
+    return sol == [{a: 2, d: 5}]
+
+
+def recurrence_double_minus_one():
+    u = 3
+    for _ in range(3):
+        u = 2 * u - 1
+    return u == 17
+
+
+def three_n_plus_two_mult5():
+    return [q for q in range(1, 15) if (3 * q + 2) % 5 == 0] == [1, 6, 11]
+
+
+def sum_odd_squares():
+    return all(sum(2 * k - 1 for k in range(1, q + 1)) == q * q
+               for q in range(1, 30))
+
+
+def recurrence_plus_2n():
+    u, seen = 1, []
+    for q in range(1, 12):
+        seen.append(u == q * q - q + 1)
+        u = u + 2 * q
+    return all(seen)
+
+
+def fib_partial_sums():
+    f = [1, 1]
+    while len(f) < 15:
+        f.append(f[-1] + f[-2])
+    return all(sum(f[:q]) == f[q + 1] - 1 for q in range(1, 11))
+
+
+def n_sq_plus_n_div3():
+    """n^2 + n is a multiple of 3 exactly when n is not 1 more than a multiple of 3."""
+    return all(((q * q + q) % 3 == 0) == (q % 3 != 1) for q in range(1, 60))
+
+
+def digit_square_chain():
+    u = 5
+    for _ in range(6):
+        u = sum(int(ch) ** 2 for ch in str(u))
+    return u == 42
+
+
+def ap_contains_11_23_not17():
+    good = [dd for dd in range(1, 40)
+            if (23 - 11) % dd == 0 and (17 - 11) % dd != 0]
+    return good == [4, 12]
+
+
+def thrice_x_over_x_plus_one():
+    f = x / (x + 1)
+    f2 = f / (f + 1)
+    f3 = f2 / (f2 + 1)
+    return simplify(f3 - x / (3 * x + 1)) == 0
+
+
+def n_sq_plus_n_even():
+    return all((q * q + q) % 2 == 0 for q in range(1, 100))
+
+
+def double_plus_one():
+    u, seen = 1, []
+    for q in range(1, 11):
+        seen.append(u == 2 ** q - 1)
+        u = 2 * u + 1
+    return all(seen) and 2 ** 10 - 1 == 1023
+
+
+def n_sq_plus_one_over_n_plus_one():
+    return [q for q in range(1, 101) if (q * q + 1) % (q + 1) == 0] == [1]
+
+
+def functional_two_minus_x():
+    """f(x) + 2f(1-x) = 3x is satisfied by f(x) = 2 - 3x and by nothing else linear."""
+    e = (2 - 3 * x) + 2 * (2 - 3 * (1 - x)) - 3 * x
+    return simplify(e) == 0
+
+
+def ap_sum36_prod1536():
+    sol = solve(Eq((12 - d) * 12 * (12 + d), 1536), d)
+    return set(sol) == {-4, 4}
+
+
+def line_2_5_6_17():
+    """The line through (2, 5) and (6, 17) is y = 3x - 1."""
+    mm = Rational(17 - 5, 6 - 2)
+    return mm == 3 and 5 - mm * 2 == -1
+
+
+def meet_2x3y_xy():
+    sol = solve([Eq(2 * x - 3 * y, 12), Eq(x + y, 1)], [x, y], dict=True)
+    return sol == [{x: 3, y: -2}]
+
+
+def line_meets_x_plus_y_10():
+    """y = mx + 1 meets x + y = 10 at x = 9/(m+1)."""
+    return [q for q in range(1, 40) if 9 % (q + 1) == 0] == [2, 8]
+
+
+def intercept_form_12():
+    sol = solve([Eq(3 * a, 12), Eq(4 * b, 12)], [a, b], dict=True)
+    return sol == [{a: 4, b: 3}]
+
+
+def lattice_on_segment():
+    """Whole-number points on the segment from (0,0) to (12,18)."""
+    pts = [(12 * t / 6, 18 * t / 6) for t in range(0, 7)]
+    return len(pts) == 7 and all(float(u).is_integer() and float(w).is_integer()
+                                 for u, w in pts)
+
+
+def line_meets_circle_five():
+    """y = 2x + c cuts x^2 + y^2 = 25 twice exactly when |c| < 5*sqrt(5)."""
+    disc = simplify((2 * 2 * Symbol('cc')) ** 2
+                    - 4 * 5 * (Symbol('cc') ** 2 - 25))
+    return solveset(disc > 0, Symbol('cc'), Reals) == Interval.open(
+        -5 * sqrt(5), 5 * sqrt(5))
+
+
+def axis_triangle_area_six():
+    pairs = [(pp, 12 // pp) for pp in range(1, 13) if 12 % pp == 0]
+    return pairs == [(1, 12), (2, 6), (3, 4), (4, 3), (6, 2), (12, 1)]
+
+
+def three_lines_concurrent():
+    """y = 2x - 1, y = 5 - x and y = x/2 + 2 all pass through (2, 3)."""
+    return (2 * 2 - 1 == 3 and 5 - 2 == 3
+            and Rational(2, 2) + 2 == 3)
+
+
+def points_root_ten_away():
+    """On y - 1 = 3(x - 2), the points sqrt(10) from (2, 1)."""
+    got = solveset(Eq((x - 2) ** 2 + (3 * (x - 2)) ** 2, 10), x, Reals)
+    return got == FiniteSet(1, 3)
+
+
+def meet_at_x_five():
+    """kx + 2 = (k+1)x - 3 gives x = 5 whatever k is."""
+    return all(solveset(Eq(kv * x + 2, (kv + 1) * x - 3), x, Reals)
+               == FiniteSet(5) for kv in (-3, -1, 0, 2, 7))
+
+
+def intercept_through_4_3():
+    """(4, 3) on x/p + y/q = 1 means 4/p + 3/q = 1."""
+    pp, qq = Symbol('pp', positive=True), Symbol('qq', positive=True)
+    return simplify(4 / pp + 3 / qq - 1) == simplify((4 * qq + 3 * pp - pp * qq)
+                                                     / (pp * qq))
+
+
+def area24_gradient_minus3():
+    """y = -3x + c makes a triangle of area c^2/6 with the axes."""
+    cc = Symbol('cc')
+    return solveset(Eq(cc ** 2 / 6, 24), cc, Reals) == FiniteSet(-12, 12)
+
+
+def ratio_boys_girls():
+    """3k : 4k becomes 3 : 5 after four more girls."""
+    return solveset(Eq(Rational(3, 1) * k / (4 * k + 4), Rational(3, 5)),
+                    k, Reals) == FiniteSet(4)
+
+
+def up_down_96():
+    """Up x% then down x% leaves 96%."""
+    return solveset(Eq((1 + x / 100) * (1 - x / 100), Rational(96, 100)),
+                    x, Reals) == FiniteSet(-20, 20)
+
+
+def train_platform():
+    """8v is the train, 8v + 240 = 20v."""
+    return solve(Eq(8 * x + 240, 20 * x), x) == [20] and 8 * 20 == 160
+
+
+def ratio_add_six():
+    """5k : 8k becomes 2 : 3 after adding 6 to each."""
+    return (solveset(Eq((5 * k + 6) / (8 * k + 6), Rational(2, 3)), k, Reals)
+            == FiniteSet(6)) and (5 * 6, 8 * 6) == (30, 48)
+
+
+def three_pipes():
+    """Three pipes for two hours, then two of them."""
+    done = 2 * (Rational(1, 10) + Rational(1, 15) + Rational(1, 30))
+    rest = (1 - done) / (Rational(1, 10) + Rational(1, 15))
+    return 2 + rest == Rational(28, 5)
+
+
+def ratio_addendo():
+    """a/b = c/d gives (a+b)/b = (c+d)/d."""
+    return simplify(((a + b) / b).subs(a, b * c / d) - (c + d) / d) == 0
+
+
+def fraction_two_fifths():
+    """2k/5k becomes 1/2 after +4 on top and +1 below."""
+    return solveset(Eq((2 * k + 4) / (5 * k + 1), Rational(1, 2)),
+                    k, Reals) == FiniteSet(7)
+
+
+def coin_mix():
+    """a + 2b = 100 coins worth 20000 so'm with equal 200s and 500s."""
+    return solve([Eq(a + 2 * b, 100), Eq(100 * a + 700 * b, 20000)],
+                 [a, b], dict=True) == [{a: 60, b: 20}]
+
+
+_DIE = range(1, 7)
+
+
+def _frac(good, total):
+    return Rational(good, total)
+
+
+def p_total_over_nine():
+    good = len([1 for i in _DIE for j in _DIE if i + j > 9])
+    return _frac(good, 36) == Rational(1, 6)
+
+
+def p_more_heads():
+    from itertools import product
+    good = len([1 for t in product([0, 1], repeat=3) if sum(t) >= 2])
+    return _frac(good, 8) == Rational(1, 2)
+
+
+def p_product_even():
+    good = len([1 for i in _DIE for j in _DIE if (i * j) % 2 == 0])
+    return _frac(good, 36) == Rational(3, 4)
+
+
+def p_second_bigger():
+    good = len([1 for i in _DIE for j in _DIE if j > i])
+    return _frac(good, 36) == Rational(5, 12)
+
+
+def p_sum_even_nine():
+    from itertools import combinations
+    pairs = list(combinations(range(1, 10), 2))
+    good = len([1 for cc in pairs if sum(cc) % 2 == 0])
+    return _frac(good, len(pairs)) == Rational(4, 9)
+
+
+def bag_add_red():
+    """4 red out of n with P(red) = 1/4 gives n = 16; one more red gives 5/17."""
+    nn = solveset(Eq(Rational(4, 1) / n, Rational(1, 4)), n, Reals)
+    return nn == FiniteSet(16) and Rational(5, 17) == Rational(5, 17)
+
+
+def p_larger_is_five():
+    good = len([1 for i in _DIE for j in _DIE if max(i, j) == 5])
+    return _frac(good, 36) == Rational(1, 4)
+
+
+def p_differ_by_one():
+    good = len([1 for i in range(1, 6) for j in range(1, 6) if abs(i - j) <= 1])
+    return _frac(good, 25) == Rational(13, 25)
+
+
+def p_odd_one_out():
+    from itertools import product
+    good = len([1 for t in product([0, 1], repeat=4) if sum(t) in (1, 3)])
+    return _frac(good, 16) == Rational(1, 2)
+
+
+def p_both_even_given_even():
+    cond = [(i, j) for i in _DIE for j in _DIE if (i + j) % 2 == 0]
+    good = [1 for i, j in cond if i % 2 == 0 and j % 2 == 0]
+    return _frac(len(good), len(cond)) == Rational(1, 2)
+
+
+def p_both_red_given_one():
+    from itertools import combinations
+    colour = {0: 'R', 1: 'R', 2: 'B', 3: 'B'}
+    cond = [cc for cc in combinations(range(4), 2)
+            if 'R' in (colour[cc[0]], colour[cc[1]])]
+    good = [cc for cc in cond if colour[cc[0]] == 'R' and colour[cc[1]] == 'R']
+    return _frac(len(good), len(cond)) == Rational(1, 5)
+
+
+def first_player_six():
+    """p = (1/6) / (1 - (5/6)^2)."""
+    return Rational(1, 6) / (1 - Rational(5, 6) ** 2) == Rational(6, 11)
+
+
+def p_triangle_dice():
+    good = len([1 for i in _DIE for j in _DIE for q in _DIE
+                if i + j > q and i + q > j and j + q > i])
+    return _frac(good, 216) == Rational(111, 216)
+
+
+def pair_9_1():
+    return solve([Eq(x + y, 9), Eq(x - y, 1)], [x, y], dict=True) == [{x: 5, y: 4}]
+
+
+def line_1_1_4_10():
+    mm = Rational(10 - 1, 4 - 1)
+    return mm == 3 and 1 - mm * 1 == -2
+
+
+def x_sq_plus_inv_seven():
+    """x^2 + 1/x^2 = 7 through u = x + 1/x with u^2 = 9."""
+    got = solveset(Eq(x ** 2 + 1 / x ** 2, 7), x, Reals)
+    want = FiniteSet(Rational(3, 2) + sqrt(5) / 2, Rational(3, 2) - sqrt(5) / 2,
+                     Rational(-3, 2) + sqrt(5) / 2, Rational(-3, 2) - sqrt(5) / 2)
+    return simplify(got) == simplify(want)
+
+
+def cube_minus_n_six():
+    return all((q ** 3 - q) % 6 == 0 for q in range(-30, 31))
+
+
+def three_consecutive_even_quarter():
+    """(n-2) + n + (n+2) = (n-2)n(n+2)/4 for even n."""
+    got = [q for q in range(2, 200, 2) if 3 * q * 4 == (q - 2) * q * (q + 2)]
+    return got == [4]
+
+
+def xy_equals_sum_three():
+    """xy = x + y + 3 is (x-1)(y-1) = 4."""
+    got = sorted((u, w) for u in range(-20, 21) for w in range(-20, 21)
+                 if u * w == u + w + 3)
+    return got == [(-3, 0), (-1, -1), (0, -3), (2, 5), (3, 3), (5, 2)]
+
+
+def telescope_fifty():
+    return sum(Rational(1, q * (q + 1)) for q in range(1, 50)) == Rational(49, 50)
+
+
+def line_meets_parabola_once():
+    """y = mx + 2 always cuts y = x^2 twice: the discriminant m^2 + 8 is positive."""
+    return solveset(Eq(m ** 2 + 8, 0), m, Reals) == EmptySet
+
+
+def eight_distinct_mean_ten():
+    return 8 * 10 - sum(range(1, 8)) == 52
+
+
+def p_sum_div4_twenty():
+    from itertools import combinations
+    pairs = list(combinations(range(1, 21), 2))
+    good = len([1 for cc in pairs if sum(cc) % 4 == 0])
+    return Rational(good, len(pairs)) == Rational(9, 38)
+
+
+def two_pow_plus_one_div3():
+    return [q for q in range(1, 51) if (2 ** q + 1) % 3 == 0] == list(range(1, 51, 2))
+
+
+def rectangle_diagonal_13():
+    """a + b = 17 and ab = 60 give a^2 + b^2 = 169."""
+    return 17 ** 2 - 2 * 60 == 169
+
+
+def x_sq_x_one_mod5():
+    return all((q * q + q + 1) % 5 != 0 for q in range(0, 200))
+
+
 CUSTOM = {
+    'pair_9_1': pair_9_1, 'line_1_1_4_10': line_1_1_4_10,
+    'x_sq_plus_inv_seven': x_sq_plus_inv_seven,
+    'cube_minus_n_six': cube_minus_n_six,
+    'three_consecutive_even_quarter': three_consecutive_even_quarter,
+    'xy_equals_sum_three': xy_equals_sum_three,
+    'telescope_fifty': telescope_fifty,
+    'line_meets_parabola_once': line_meets_parabola_once,
+    'eight_distinct_mean_ten': eight_distinct_mean_ten,
+    'p_sum_div4_twenty': p_sum_div4_twenty,
+    'two_pow_plus_one_div3': two_pow_plus_one_div3,
+    'rectangle_diagonal_13': rectangle_diagonal_13,
+    'x_sq_x_one_mod5': x_sq_x_one_mod5,
+    'p_total_over_nine': p_total_over_nine, 'p_more_heads': p_more_heads,
+    'p_product_even': p_product_even, 'p_second_bigger': p_second_bigger,
+    'p_sum_even_nine': p_sum_even_nine, 'bag_add_red': bag_add_red,
+    'p_larger_is_five': p_larger_is_five, 'p_differ_by_one': p_differ_by_one,
+    'p_odd_one_out': p_odd_one_out,
+    'p_both_even_given_even': p_both_even_given_even,
+    'p_both_red_given_one': p_both_red_given_one,
+    'first_player_six': first_player_six, 'p_triangle_dice': p_triangle_dice,
+    'ratio_boys_girls': ratio_boys_girls, 'up_down_96': up_down_96,
+    'train_platform': train_platform, 'ratio_add_six': ratio_add_six,
+    'three_pipes': three_pipes, 'ratio_addendo': ratio_addendo,
+    'fraction_two_fifths': fraction_two_fifths, 'coin_mix': coin_mix,
+    'line_2_5_6_17': line_2_5_6_17, 'meet_2x3y_xy': meet_2x3y_xy,
+    'line_meets_x_plus_y_10': line_meets_x_plus_y_10,
+    'intercept_form_12': intercept_form_12,
+    'lattice_on_segment': lattice_on_segment,
+    'line_meets_circle_five': line_meets_circle_five,
+    'axis_triangle_area_six': axis_triangle_area_six,
+    'three_lines_concurrent': three_lines_concurrent,
+    'points_root_ten_away': points_root_ten_away,
+    'meet_at_x_five': meet_at_x_five,
+    'intercept_through_4_3': intercept_through_4_3,
+    'area24_gradient_minus3': area24_gradient_minus3,
+    'ap_4_9': ap_4_9, 'recurrence_double_minus_one': recurrence_double_minus_one,
+    'three_n_plus_two_mult5': three_n_plus_two_mult5,
+    'sum_odd_squares': sum_odd_squares, 'recurrence_plus_2n': recurrence_plus_2n,
+    'fib_partial_sums': fib_partial_sums, 'n_sq_plus_n_div3': n_sq_plus_n_div3,
+    'digit_square_chain': digit_square_chain,
+    'ap_contains_11_23_not17': ap_contains_11_23_not17,
+    'thrice_x_over_x_plus_one': thrice_x_over_x_plus_one,
+    'n_sq_plus_n_even': n_sq_plus_n_even, 'double_plus_one': double_plus_one,
+    'n_sq_plus_one_over_n_plus_one': n_sq_plus_one_over_n_plus_one,
+    'functional_two_minus_x': functional_two_minus_x,
+    'ap_sum36_prod1536': ap_sum36_prod1536,
+    'two_dice_at_least_ten': two_dice_at_least_ten,
+    'five_mean_seven': five_mean_seven,
+    'three_digit_sum_six': three_digit_sum_six, 'div4_not6_500': div4_not6_500,
+    'three_digit_div5_from_six': three_digit_div5_from_six,
+    'consecutive_mean_30': consecutive_mean_30,
+    'percent_whole_angle': percent_whole_angle, 'four_dice_eight': four_dice_eight,
+    'four_digit_odd_distinct': four_digit_odd_distinct,
+    'three_digit_has_five': three_digit_has_five,
+    'coprime_to_30': coprime_to_30, 'perm12345_div4': perm12345_div4,
+    'derangement_three': derangement_three, 'derangement_four': derangement_four,
+    'domino_strip_ten': domino_strip_ten,
+    'no_two_consecutive': no_two_consecutive, 'onto_five_three': onto_five_three,
+    'palindrome_four_eleven': palindrome_four_eleven,
+    'digit_sum_nine': digit_sum_nine, 'contains_seven_100': contains_seven_100,
+    'three_dice_six': three_dice_six, 'no_seven_1000': no_seven_1000,
+    'nondecreasing_four': nondecreasing_four, 'digits_sum_43': digits_sum_43,
+    'even_parity_grid': even_parity_grid,
+    'five_ten_set': five_ten_set, 'mean_n_shift': mean_n_shift,
+    'median_nine_mean_ten': median_nine_mean_ten,
+    'distinct_mean_six': distinct_mean_six, 'erase_mean_61': erase_mean_61,
+    'divisors_360': divisors_360, 'non_divisors_2_12': non_divisors_2_12,
     'repeated_k_one': repeated_k_one, 'sum_sq_six_four': sum_sq_six_four,
     'roots_differ_two': roots_differ_two, 'boat_36': boat_36,
     'param_quadratic': param_quadratic, 'shared_root_k': shared_root_k,
@@ -2322,8 +2949,11 @@ CUSTOM = {
 
 
 def main():
+    wanted = set(sys.argv[1:])
     failures, unchecked, total = [], [], 0
     for topic in bank.TOPICS:
+        if wanted and topic['key'] not in wanted:
+            continue
         for section, items in topic['sections']:
             for i, item in enumerate(items, start=1):
                 total += 1

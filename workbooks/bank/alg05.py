@@ -181,7 +181,7 @@ Q_BEYOND = [
              '= 3/4 − 1/(2n) − 1/(2(n+1)).'),
 ]
 
-TOPIC = dict(key='alg-05', number=5, lessons='12–14',
+TOPIC = dict(key='alg-05', unit='Unit 1 · Algebraic fractions', number=5, lessons='12–14',
          title='Addition and subtraction of algebraic fractions',
          subtitle='Same denominator — add the numerators. Different denominators — build first.',
          uz='Algebra 8, §4, pp. 22–26', cam='Cambridge Stage 9 · 2.5',

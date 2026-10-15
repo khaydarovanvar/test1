@@ -182,7 +182,7 @@ Q_BEYOND = [
              'so d = 1. With no shared factor the LCD is the product n(n + 1).'),
 ]
 
-TOPIC = dict(key='alg-04', number=4, lessons='9–11',
+TOPIC = dict(key='alg-04', unit='Unit 1 · Algebraic fractions', number=4, lessons='9–11',
          title='Reducing fractions to a common denominator',
          subtitle='Building fractions up instead of cutting them down.',
          uz='Algebra 8, §3, pp. 18–21', cam='Cambridge Stage 9 · 2.5',

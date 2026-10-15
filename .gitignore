@@ -23,9 +23,10 @@ __pycache__/
 
 # The workbook build output. The question bank and the builders are tracked;
 # the rendered book is generated:
-#   python3 workbooks/build-workbook.py && node workbooks/render-workbook.mjs
-workbooks/workbook-*.html
+#   cd workbooks && ./build-all.sh
+workbooks/*.html
 workbooks/*.pdf
+workbooks/out/
 
 # The title sidecar the workbook builder writes for the PDF footer.
 workbooks/*.title

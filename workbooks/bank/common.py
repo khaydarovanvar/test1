@@ -28,8 +28,8 @@ def sq(base, power=2):
 
 SECTION_BLURB = {
     'Focus': 'The basic skill, one step at a time.',
-    'Practice': 'The same skill where a denominator has to be factorised first.',
-    'Challenge': 'Several factors, higher powers and reversed brackets.',
+    'Practice': 'The same skill with a step of setting-up in front of it.',
+    'Challenge': 'Longer chains of reasoning, and the awkward cases.',
     'Beyond': 'Olympiad work. Expect to spend real time on these — '
               'some need an idea, not just a method.',
 }
