@@ -18,17 +18,21 @@ const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromi
 const page = await browser.newPage();
 await page.route('**/*', r => (r.request().url().startsWith('file:') ? r.continue() : r.abort()));
 await page.goto(src, { waitUntil: 'load' });
+/* The front matter carries no running footer: a title page with "Page 1 of 312"
+   stamped on it is the mark of a printout, not a book. */
+const foot = !process.argv.includes('--no-footer');
+
 await page.pdf({
   path: out,
   format: 'A4',
   printBackground: true,
-  margin: { top: '11mm', bottom: '12mm', left: '12mm', right: '12mm' },
-  displayHeaderFooter: true,
+  margin: { top: '12mm', bottom: foot ? '13mm' : '12mm', left: '13mm', right: '13mm' },
+  displayHeaderFooter: foot,
   headerTemplate: '<div></div>',
-  footerTemplate:
+  footerTemplate: !foot ? '<div></div>' :
     '<div style="font:8pt -apple-system,sans-serif;color:#7A8792;width:100%;padding:0 14mm;">' +
-    '<span style="float:left">Grade 8 Algebra · ' + title + ' · workbook</span>' +
-    '<span style="float:right">Page <span class="pageNumber"></span> of <span class="totalPages"></span></span>' +
+    '<span style="float:left">' + title + ' · Anvarbek Khaydarov</span>' +
+    '<span style="float:right"><span class="pageNumber"></span></span>' +
     '</div>'
 });
 await browser.close();

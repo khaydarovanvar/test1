@@ -28,5 +28,9 @@ workbooks/*.html
 workbooks/*.pdf
 workbooks/out/
 
-# The title sidecar the workbook builder writes for the PDF footer.
+# The title sidecar the workbook builder writes for the PDF footer, the page
+# map pagemap.py reads back out of the first render to number the contents,
+# and the part PDFs that pdfunite binds into each finished book.
 workbooks/*.title
+workbooks/*.pages.json
+workbooks/tmp/
