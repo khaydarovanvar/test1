@@ -4,6 +4,9 @@
 plot.py draws graphs; this draws the non-graph pictures the Advanced Math
 booklet needs — the ones that make an algebraic step visible.
 """
+import math
+import re
+
 from svgbase import (AMBER, FAINT, FILLB, FILLG, FILLR, GREEN, GREY, INK, RED,
                      arrow, circ, dot, fmt, line, path, poly, svg, txt, val)
 
@@ -219,7 +222,8 @@ def diff_ratio_table(xs=(0, 1, 2, 3), ys=(5, 8, 11, 14), kind='linear', w=330, h
         mx = ox + i * cw + cw
         d = ys[i + 1] - ys[i]
         r = ys[i + 1] / float(ys[i])
-        body += val(mx, 86, '+%g' % d, color=GREEN if kind == 'linear' else FAINT, size=9.5)
+        body += val(mx, 86, '%s%g' % ('+' if d >= 0 else '−', abs(d)),
+                    color=GREEN if kind == 'linear' else FAINT, size=9.5)
         body += val(mx, 106, '×%g' % round(r, 2),
                     color=GREEN if kind == 'exponential' else FAINT, size=9.5)
     body += val(22, 86, 'differences', color=GREEN if kind == 'linear' else FAINT,
@@ -238,7 +242,9 @@ def flow(steps=('step', 'step'), note=None, colours=None, w=340, h=None, wide=No
     """A left-to-right chain of boxes, one per step."""
     n = len(steps)
     if wide is None:                      # size each box to the text it holds
-        want = [max(len(s) * 5.6 + 18, 54) for s in steps]
+        # a very long step is capped: it wraps onto two lines rather than
+        # taking the width every other box needs
+        want = [max(min(len(s), 20) * 6.0 + 18, 54) for s in steps]
         room = w - 40 - 22 * (n - 1)
         scale = min(1.0, room / float(sum(want)))
         wide = [x * scale for x in want]
@@ -250,8 +256,21 @@ def flow(steps=('step', 'step'), note=None, colours=None, w=340, h=None, wide=No
         c = colours[i]
         body += poly([(x, 34), (x + wide[i], 34), (x + wide[i], 74), (x, 74)],
                      fill=FILLG if c == RED else FILLB, stroke=c, w=1.4)
-        body += val(x + wide[i] / 2, 54, s, color=c,
-                    size=min(10.0, wide[i] / (len(s) * 0.52 + 0.1)))
+        lines, size = [s], min(10.0, (wide[i] - 8) / (len(s) * 0.58 + 0.1))
+        if size < 8.0 and ' ' in s:       # too tight on one line: break it
+            # never break inside a grouped number such as '$5 000'
+            words = re.sub(r'(?<=\d) (?=\d)', '\u00a0', s).split(' ')
+            cut = min(range(1, len(words)),
+                      key=lambda k: abs(len(' '.join(words[:k]))
+                                        - len(' '.join(words[k:]))))
+            lines = [' '.join(words[:cut]), ' '.join(words[cut:])]
+            size = min(10.0, (wide[i] - 8)
+                       / (max(len(ln) for ln in lines) * 0.58 + 0.1))
+        if len(lines) == 1:
+            body += val(x + wide[i] / 2, 54, lines[0], color=c, size=size)
+        else:
+            body += val(x + wide[i] / 2, 47, lines[0], color=c, size=size)
+            body += val(x + wide[i] / 2, 62, lines[1], color=c, size=size)
         if i < n - 1:
             body += arrow((x + wide[i] + 3, 54), (x + wide[i] + 19, 54), stroke=GREY)
         x += wide[i] + 22
@@ -262,26 +281,41 @@ def flow(steps=('step', 'step'), note=None, colours=None, w=340, h=None, wide=No
 
 def check_table(rows=(('x = 1', '√9 = 3 against 1 − 4 = −3', False),
                       ('x = 9', '√25 = 5 against 9 − 4 = 5', True)),
-                title='substitute each candidate back into the original', w=340, h=None):
+                title='substitute each candidate back into the original', w=340, h=None,
+                yes='✓ keep', no='✗ reject'):
     """Candidate solutions, each checked and kept or thrown out."""
     h = h or (46 + len(rows) * 34)
     body = val(w / 2, 20, title, color=FAINT)
+    # three columns sized to the longest text in each, so nothing collides
+    vw = max(len(yes), len(no)) * 6.0 + 14
+    avail = (w - 70) - vw
+    lc = max(len(r[0]) for r in rows)
+    mc = max(len(r[1]) for r in rows)
+    lw = avail * lc / float(lc + mc)
+    mw = avail - lw
+    sl = min(10.0, lw / (lc * 0.58))
+    sm = min(9.5, mw / (mc * 0.58))
     y = 44
     for (cand, test, keep) in rows:
         colour = GREEN if keep else RED
         body += poly([(18, y), (w - 18, y), (w - 18, y + 28), (18, y + 28)],
                      fill=FILLG if keep else FILLR, stroke=colour, w=1.3)
-        body += val(32, y + 14, cand, color=colour, anchor='start')
-        body += val(w / 2 + 14, y + 14, test, color=GREY, size=9.5)
-        body += val(w - 32, y + 14, '✓ keep' if keep else '✗ reject',
+        body += val(30, y + 14, cand, color=colour, anchor='start', size=sl)
+        body += val(30 + lw + 12, y + 14, test, color=GREY, anchor='start', size=sm)
+        body += val(w - 28, y + 14, yes if keep else no,
                     color=colour, anchor='end', size=9.5)
         y += 34
     return svg(w, h, body)
 
 
 def number_line(excluded=(1,), ray=None, xmin=-4, xmax=8, label=None, w=330, h=92,
-                mark=()):
-    """Allowed and forbidden values of x."""
+                mark=(), band=None, rays=()):
+    """Allowed and forbidden values of x.
+
+    ray   — (a, closed) or (a, closed, 'right'|'left'): a single ray
+    rays  — several of those, for an 'or' solution
+    band  — (lo, hi, lo_closed, hi_closed): one interval, for an 'and' solution
+    """
     y = 44
     x0, x1 = 26, 304
     sc = (x1 - x0) / float(xmax - xmin)
@@ -290,16 +324,32 @@ def number_line(excluded=(1,), ray=None, xmin=-4, xmax=8, label=None, w=330, h=9
         return x0 + (v - xmin) * sc
 
     body = line((x0, y), (x1, y), stroke='#6b7884', w=1.4)
-    for v in range(xmin, xmax + 1):
-        big = v % 2 == 0
+    # label at most nine values, whatever the span: 0 to 8 and 560 to 640 both
+    # have to stay readable
+    step = xmax - xmin
+    for cand in (1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000, 2000, 5000):
+        if (xmax - xmin) / float(cand) <= 9:
+            step = cand
+            break
+    minor = step / 2.0
+    v = math.ceil(xmin / minor) * minor
+    while v <= xmax + 1e-9:
+        big = abs(v / float(step) - round(v / float(step))) < 1e-9
         body += line((X(v), y - (5 if big else 3)), (X(v), y + (5 if big else 3)),
                      stroke='#6b7884', w=1.1)
         if big:
-            body += txt(X(v), y + 16, str(v), size=8.5, color=FAINT)
-    if ray:
-        a, closed = ray
-        body += line((X(a), y), (x1, y), stroke=GREEN, w=4)
+            body += txt(X(v), y + 16, fmt(v), size=8.5, color=FAINT)
+        v += minor
+    for r in (list(rays) + ([ray] if ray else [])):
+        a, closed = r[0], r[1]
+        to_right = (len(r) < 3 or r[2] == 'right')
+        body += line((X(a), y), (x1 if to_right else x0, y), stroke=GREEN, w=4)
         body += circ((X(a), y), 4.6, fill=GREEN if closed else '#fff', stroke=GREEN, w=2)
+    if band:
+        lo, hi, lc, hc = band
+        body += line((X(lo), y), (X(hi), y), stroke=GREEN, w=4)
+        body += circ((X(lo), y), 4.6, fill=GREEN if lc else '#fff', stroke=GREEN, w=2)
+        body += circ((X(hi), y), 4.6, fill=GREEN if hc else '#fff', stroke=GREEN, w=2)
     for e in excluded:
         body += circ((X(e), y), 4.8, fill='#fff', stroke=RED, w=2.2)
         body += line((X(e) - 4, y - 4), (X(e) + 4, y + 4), stroke=RED, w=1.6)
@@ -382,4 +432,38 @@ def cancel_fraction(num=('(x − 3)', '(x + 3)'), den=('(x + 3)',), keep='x − 
         x2 += 66
     body += val(238, y + 20, '= %s' % keep, color=RED, anchor='start', size=11)
     body += val(238, y + 42, note, color=FAINT, anchor='start', size=9)
+    return svg(w, h, body)
+
+
+def elimination(e1='2x + y = 11', e2='x − y = 4', op='add',
+                result='3x = 15', then='x = 5, then y = 1', w=330, h=165):
+    """Two equations stacked, with the variable that cancels struck out."""
+    body = val(w / 2, 18, 'line them up, then %s to kill one variable' % op, color=FAINT,
+               size=9.5)
+    body += val(w / 2, 46, e1, color=INK, size=11)
+    body += val(w / 2, 70, e2, color=INK, size=11)
+    body += val(60, 70, '+' if op == 'add' else '−', color=GREEN, size=12)
+    body += line((60, 84), (w - 60, 84), stroke=INK, w=1.6)
+    body += val(w / 2, 102, result, color=GREEN, size=11)
+    body += val(w / 2, 134, then, color=RED, size=11)
+    return svg(w, h, body)
+
+
+def abs_distance(c=9, w=330, h=110):
+    """|x| = c as two points the same distance from zero."""
+    y = 62
+    x0, x1 = 30, w - 30
+    mid = (x0 + x1) / 2.0
+    sc = (mid - x0) / float(c + 2)
+    body = val(w / 2, 18, 'absolute value is distance from zero, so it is never negative',
+               color=FAINT, size=9.5)
+    body += line((x0, y), (x1, y), stroke='#6b7884', w=1.4)
+    body += dot((mid, y), 3.4, INK)
+    body += val(mid, y + 18, '0', color=FAINT, size=9)
+    for s in (-1, 1):
+        px = mid + s * c * sc
+        body += dot((px, y), 4.6, RED)
+        body += val(px, y + 18, fmt(s * c), color=RED, size=9.5)
+        body += arrow((mid, y - 14), (px, y - 14), stroke=GREY, w=1.2)
+    body += val(mid, y - 26, 'distance %s each way' % fmt(c), color=GREY, size=9.5)
     return svg(w, h, body)

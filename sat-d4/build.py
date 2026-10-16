@@ -112,13 +112,13 @@ def desmos_html(lesson):
         rows += ('<tr><td class="id">D%d</td><td>%s</td><td class="code">%s</td>'
                  '<td>%s</td><td class="ans">%s</td></tr>'
                  % (i, md(q), typ, md(then), ans))
+    sub = lesson.get('desmos_sub', 'every one is faster on the graph')
     return ('<section class="part first"><h3>Part 1 — With Desmos '
-            '<span class="sub">(10 questions · draw the figure; the picture is faster '
-            'than the algebra)</span></h3>'
+            '<span class="sub">(10 questions · %s)</span></h3>' % sub + (
             '<p class="lead">%s</p>'
             '<table class="desmos"><thead><tr><th>#</th><th>Question</th>'
             '<th>Type into Desmos</th><th>Then</th><th>Answer</th></tr></thead>'
-            '<tbody>%s</tbody></table></section>' % (md(lesson['desmos_intro']), rows))
+            '<tbody>%s</tbody></table></section>' % (md(lesson['desmos_intro']), rows)))
 
 
 def part2_html(lesson):
@@ -228,7 +228,8 @@ def build_all(path='SAT_Math_ALL_DOMAINS_teacher.html', books=ORDER):
 
 def build(path='SAT_D4_GEOMETRY_TRIGONOMETRY_teacher.html', lessons=None, book='d4'):
     css = open('booklet.css').read()
-    checker = 'verify2.py' if book == 'd2' else 'verify.py'
+    checker = {'d2': 'verify2.py', 'd1': 'verify13.py',
+               'd3': 'verify13.py'}.get(book, 'verify.py')
     body = ''.join(lesson_html(l, checker)
                    for l in (lessons if lessons is not None else load(book)))
     html = ('<!doctype html><html lang="en"><head><meta charset="utf-8">'

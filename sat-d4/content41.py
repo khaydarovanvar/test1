@@ -165,6 +165,7 @@ LESSON = {
             ],
         },
     ],
+    'desmos_sub': 'draw the figure; the picture is faster than the algebra',
     'desmos_intro': 'The SAT gives you Desmos on every maths question. For angle work it is '
                     '**an equation solver**. Write the angle relationship as an equation and '
                     'let Desmos finish it — the thinking is choosing which relationship '

@@ -158,6 +158,7 @@ LESSON = {
             ],
         },
     ],
+    'desmos_sub': 'draw the figure; the picture is faster than the algebra',
     'desmos_intro': 'The SAT gives you Desmos on every maths question. Here it is **a circle '
                     'grapher**. Type the equation in any form and Desmos draws it, centre and '
                     'radius included — a fast check on your completing the square.',

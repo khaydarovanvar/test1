@@ -15,6 +15,11 @@ AMBER = '#b9770e'
 GREY  = '#5d6b78'   # ordinary labels
 FAINT = '#9aa7b4'   # construction lines
 
+# Categorical series colours for the data charts, in fixed order. Validated
+# with the dataviz skill's checker (light surface): lightness band, chroma
+# floor, CVD separation, normal-vision floor and contrast all pass.
+SERIES = ('#3b7bbf', '#2f9e63', '#c0392b')
+
 
 def fmt(v):
     """A number with a real minus sign, not a hyphen."""

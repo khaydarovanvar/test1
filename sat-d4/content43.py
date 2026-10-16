@@ -163,6 +163,7 @@ LESSON = {
             ],
         },
     ],
+    'desmos_sub': 'draw the figure; the picture is faster than the algebra',
     'desmos_intro': 'The SAT gives you Desmos on every maths question. Here it is **a trig '
                     'calculator**. Use arcsin, arccos and arctan for angles, and check the '
                     'setting is **degrees** before you trust anything.',

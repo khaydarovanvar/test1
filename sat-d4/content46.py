@@ -167,6 +167,7 @@ LESSON = {
             ],
         },
     ],
+    'desmos_sub': 'draw the figure; the picture is faster than the algebra',
     'desmos_intro': 'The SAT gives you Desmos on every maths question. Here it is **a plotter**. '
                     'Enter the points and the line; seeing the picture settles slope signs and '
                     'perpendicularity faster than any rule.',

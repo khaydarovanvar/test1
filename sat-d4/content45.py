@@ -153,6 +153,7 @@ LESSON = {
             ],
         },
     ],
+    'desmos_sub': 'draw the figure; the picture is faster than the algebra',
     'desmos_intro': 'The SAT gives you Desmos on every maths question. Here it is **an arithmetic '
                     'engine for formulas**. Type the whole formula with its numbers in one line '
                     'so the 1/3 or the ½ cannot go missing.',

@@ -7,6 +7,7 @@ numbers from the question.
 """
 from math import floor, hypot, isfinite, log10, sqrt
 
+from shapes import coord_lines  # the grid-with-lines figure, shared with D4
 from svgbase import (AMBER, FAINT, FILLB, FILLG, FILLR, GREEN, GREY, INK, RED,
                      Axes, arrow, circ, dot, fmt, line, path, poly, svg, txt,
                      val)
@@ -296,4 +297,100 @@ def function_machine(expr='f(x) = 2x + 1', ins=(1, 2, 3), outs=(3, 5, 7), w=None
                     anchor='start')
     body += val(bx + bw / 2, top + bh + 16, 'put the number in, read the number out',
                 color=FAINT, size=9)
+    return svg(w, h, body)
+
+
+# ---------------------------------------------------------------- lines & systems
+
+def system_cases(w=345, h=165):
+    """One solution, none, infinitely many — the three pictures."""
+    sets = (((1.0, -1.0), (-1.0, 3.0), 'one solution', GREEN),
+            ((0.8, 0.5), (0.8, 2.4), 'no solution', RED),
+            ((0.8, 1.0), (0.8, 1.0), 'infinitely many', AMBER))
+    body = val(172, 18, 'compare the slopes first, then the intercepts', color=FAINT)
+    for i, ((m1, c1), (m2, c2), name, colour) in enumerate(sets):
+        ox, oy, s = 14 + i * 112, 34, 92.0
+        ax = Axes(ox, oy, s, s, -2, 2, -2, 2, step=1, labels=False)
+        body += ax.draw()
+        body += line(ax.P(-2, m1 * -2 + c1), ax.P(2, m1 * 2 + c1), stroke=INK, w=2.2)
+        body += line(ax.P(-2, m2 * -2 + c2), ax.P(2, m2 * 2 + c2), stroke=GREEN, w=2.2,
+                     dash='6 4' if (m1, c1) == (m2, c2) else None)
+        body += val(ox + s / 2, oy + s + 16, name, color=colour, size=9.5)
+    return svg(w, h, body)
+
+
+def half_plane(m=-1, c=4, op='<=', points=(), w=300, h=210, xmin=-1, xmax=6,
+               ymin=-1, ymax=6, label=None):
+    """A linear inequality: boundary line plus the shaded side."""
+    solid = op in ('<=', '>=')
+    below = op in ('<', '<=')
+    ax = Axes(40, 34, w - 62, h - 66, xmin, xmax, ymin, ymax, xstep=1, ystep=1,
+              xtick_every=2, ytick_every=2)
+    body = ax.draw()
+    corners = []
+    for x in (xmin, xmax):
+        y = m * x + c
+        corners.append((x, max(ymin, min(ymax, y))))
+    edge = [ax.P(*corners[0]), ax.P(*corners[1])]
+    cap = ymin if below else ymax
+    body += poly(edge + [ax.P(xmax, cap), ax.P(xmin, cap)],
+                 fill='rgba(59,123,191,0.18)', stroke='none', w=0)
+    body += line(edge[0], edge[1], stroke=INK, w=2.4, dash=None if solid else '7 5')
+    for (px, py, ok) in points:
+        body += dot(ax.P(px, py), 4.4, GREEN if ok else RED)
+        body += val(ax.P(px, py)[0] + 7, ax.P(px, py)[1] - 11,
+                    '(%s, %s) %s' % (fmt(px), fmt(py), 'works' if ok else 'fails'),
+                    color=GREEN if ok else RED, anchor='start', size=9)
+    body += val(w / 2, 16, label or ('solid line for ≤ or ≥, dashed for < or >'),
+                color=INK if label else FAINT, size=10.5 if label else 9.5)
+    return svg(w, h, body)
+
+
+def absolute_v(h_=1, k=0, line_y=None, w=310, h=205, xmin=-4, xmax=6, ymin=-1, ymax=6,
+               label=None):
+    """y = |x − h| + k, with an optional horizontal line counting solutions."""
+    f = lambda x: abs(x - h_) + k
+    pts = [(h_, k, None, RED)]
+    notes = [(h_, k - (ymax - ymin) * 0.09, 'vertex (%s, %s)' % (fmt(h_), fmt(k)), RED)]
+    hl = ()
+    if line_y is not None:
+        hl = ((line_y, GREEN, 'y = %s' % fmt(line_y)),)
+        if line_y > k:
+            d = line_y - k
+            for xx in (h_ - d, h_ + d):
+                pts.append((xx, line_y, None, GREEN))
+                notes.append((xx, line_y + (ymax - ymin) * 0.08, 'x = %s' % fmt(xx),
+                              GREEN))
+    return graph([(f, INK, None)], w=w, h=h, xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax,
+                 xstep=1, ystep=1, xtick_every=2, ytick_every=2, points=pts,
+                 notes=notes, hlines=hl, label=label)
+
+
+def context_line(b=15, m=5, xmax=8, xlabel='hours', ylabel='cost', w=320, h=195,
+                 label=None):
+    """y = mx + b in a real context: the intercept is the fixed part."""
+    ends = (b, b + m * xmax)
+    ytop = max(ends) * 1.08 + (1 if max(ends) == 0 else 0)
+    ybot = min(0, min(ends) * 1.08)
+    span = ytop - ybot
+    ax = Axes(44, 36, w - 66, h - 68, 0, xmax, ybot, ytop, xstep=1,
+              ystep=max(1, round(span / 8.0)), xtick_every=max(1, round(xmax / 5.0)),
+              ytick_every=max(2, round(span / 4.0)))
+    body = ax.draw()
+    body += line(ax.P(0, b), ax.P(xmax, b + m * xmax), stroke=INK, w=2.4)
+    body += dot(ax.P(0, b), 4.4, RED)
+    body += val(ax.P(0, b)[0] + 10, ax.P(0, b)[1] - 12, 'start %s' % fmt(b), color=RED,
+                anchor='start', size=9.5)
+    x1 = max(1, xmax // 2)
+    body += line(ax.P(x1, b + m * x1), ax.P(x1 + 1, b + m * x1), stroke=GREY, w=1.4,
+                 dash='4 3')
+    body += line(ax.P(x1 + 1, b + m * x1), ax.P(x1 + 1, b + m * (x1 + 1)), stroke=GREEN,
+                 w=2)
+    body += val(ax.P(x1 + 1, b + m * (x1 + 0.5))[0] + 12,
+                ax.P(x1 + 1, b + m * (x1 + 0.5))[1],
+                '%s%s each %s' % ('+' if m >= 0 else '', fmt(m), xlabel.rstrip('s')),
+                color=GREEN, anchor='start', size=9.5)
+    body += val(w / 2, 16, label or 'b is where it starts, m is the rate', color=INK,
+                size=10.5)
+    body += txt(w / 2, h - 8, xlabel, size=9, color=FAINT)
     return svg(w, h, body)
