@@ -23,9 +23,14 @@ for _name in _MODULES:
 
 from .notes import NOTES                                # noqa: E402
 
+from .milliy import MILLIY                             # noqa: E402
+
 for _topic in TOPICS:
     # the methods briefing that prints in front of the Beyond section
     _topic.setdefault('notes', NOTES.get(_topic['key'], []))
+    # the Milliy sertifikat set, which only the olympiad volume prints
+    if MILLIY.get(_topic['key']):
+        _topic.setdefault('milliy', MILLIY[_topic['key']])
 
 BY_KEY = {t['key']: t for t in TOPICS}
 

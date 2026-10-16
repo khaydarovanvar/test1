@@ -2948,56 +2948,79 @@ CUSTOM = {
 }
 
 
+def check_one(where, check, failures, unchecked):
+    """Run one check tuple, recording what it says. Shared by the workbook
+    sections and the Milliy sertifikat items."""
+    try:
+        if check is None:
+            unchecked.append(where)
+        elif check[0] == 'simp':
+            if not same(check[1], check[2]):
+                failures.append(f'{where}: {check[1]} != {check[2]}')
+        elif check[0] == 'lcm':
+            if not check_lcm(check[1], check[2]):
+                failures.append(f'{where}: lcm{check[1]} != {check[2]}')
+        elif check[0] == 'solveset':
+            if not check_solveset(*check[1:]):
+                failures.append(f'{where}: solution set of {check[1]} '
+                                f'is not {check[2]}')
+        elif check[0] == 'nonneg':
+            if not check_nonneg(*check[1:]):
+                failures.append(f'{where}: {check[1]} goes negative')
+        elif check[0] == 'bound':
+            if not check_bound(*check[1:]):
+                failures.append(f'{where}: {check[1]} is not bounded by '
+                                f'{check[3]} and {check[4]}')
+        elif check[0] == 'bool':
+            if not check_bool(check[1]):
+                failures.append(f'{where}: {check[1]} is not true')
+        elif check[0] == 'domain':
+            if not check_domain(*check[1:]):
+                failures.append(f'{where}: undefined-at set of {check[1]} '
+                                f'!= {check[2]}')
+        elif check[0] == 'solve':
+            if not check_solve(check[1], check[2]):
+                failures.append(f'{where}: solutions of {check[1]} != {check[2]}')
+        elif check[0] == 'custom':
+            if not CUSTOM[check[1]]():
+                failures.append(f'{where}: custom check {check[1]} failed')
+        else:
+            failures.append(f'{where}: unknown check {check[0]}')
+    except Exception as exc:                          # a bad expression string
+        failures.append(f'{where}: {type(exc).__name__}: {exc}')
+
+
 def main():
     wanted = set(sys.argv[1:])
-    failures, unchecked, total = [], [], 0
+    failures, unchecked, total, ms_total = [], [], 0, 0
     for topic in bank.TOPICS:
         if wanted and topic['key'] not in wanted:
             continue
         for section, items in topic['sections']:
             for i, item in enumerate(items, start=1):
                 total += 1
-                where = f'{topic["key"]} {section} Q{i}'
-                check = item.get('check')
-                try:
-                    if check is None:
-                        unchecked.append(where)
-                    elif check[0] == 'simp':
-                        if not same(check[1], check[2]):
-                            failures.append(f'{where}: {check[1]} != {check[2]}')
-                    elif check[0] == 'lcm':
-                        if not check_lcm(check[1], check[2]):
-                            failures.append(f'{where}: lcm{check[1]} != {check[2]}')
-                    elif check[0] == 'solveset':
-                        if not check_solveset(*check[1:]):
-                            failures.append(f'{where}: solution set of {check[1]} '
-                                            f'is not {check[2]}')
-                    elif check[0] == 'nonneg':
-                        if not check_nonneg(*check[1:]):
-                            failures.append(f'{where}: {check[1]} goes negative')
-                    elif check[0] == 'bound':
-                        if not check_bound(*check[1:]):
-                            failures.append(f'{where}: {check[1]} is not bounded by '
-                                            f'{check[3]} and {check[4]}')
-                    elif check[0] == 'bool':
-                        if not check_bool(check[1]):
-                            failures.append(f'{where}: {check[1]} is not true')
-                    elif check[0] == 'domain':
-                        if not check_domain(*check[1:]):
-                            failures.append(f'{where}: undefined-at set of {check[1]} '
-                                            f'!= {check[2]}')
-                    elif check[0] == 'solve':
-                        if not check_solve(check[1], check[2]):
-                            failures.append(f'{where}: solutions of {check[1]} != {check[2]}')
-                    elif check[0] == 'custom':
-                        if not CUSTOM[check[1]]():
-                            failures.append(f'{where}: custom check {check[1]} failed')
-                    else:
-                        failures.append(f'{where}: unknown check {check[0]}')
-                except Exception as exc:                      # a bad expression string
-                    failures.append(f'{where}: {type(exc).__name__}: {exc}')
+                check_one(f'{topic["key"]} {section} Q{i}', item.get('check'),
+                          failures, unchecked)
 
-    print(f'{total} questions checked')
+        # the Milliy sertifikat items: every one of them carries its own checks,
+        # and a keyed option that is not the true answer is the worst kind of
+        # mistake a practice paper can make
+        ms = topic.get('milliy')
+        if not ms:
+            continue
+        for i, item in enumerate(ms['items'], start=1):
+            ms_total += 1
+            where = f'{topic["key"]} Milliy Q{i} ({item["kind"]})'
+            checks = item.get('checks') or ([item['check']] if item.get('check')
+                                            else [None])
+            for j, check in enumerate(checks, start=1):
+                check_one(where + (f' [{j}]' if len(checks) > 1 else ''), check,
+                          failures, unchecked)
+            if item['kind'] == 'Y-1' and len(set(item['opts'])) != len(item['opts']):
+                failures.append(f'{where}: two options are the same')
+
+    print(f'{total} questions checked'
+          + (f', {ms_total} Milliy sertifikat items' if ms_total else ''))
     if unchecked:
         print(f'{len(unchecked)} with no machine check (discussion/proof in words): '
               + ', '.join(unchecked))

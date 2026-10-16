@@ -18,9 +18,9 @@ import bank
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 AUTHOR = 'Anvarbek Khaydarov'
-ROLE = 'Mathematics teacher'
-SCHOOL = 'Ellipse International School'
+ROLE = 'Mathematics teacher and olympiad trainer'
 COUNTRY = 'Uzbekistan'
+FOOT = 'Grade 8 Algebra · Olympiad and exam preparation'
 YEAR = 'Academic year 2026–2027'
 EDITION = 'First edition'
 SERIES = 'The Grade 8 Algebra Series'
@@ -172,9 +172,9 @@ def front(opt):
   <div class="foot">
     <div class="byline">Written and verified by</div>
     <div class="aname">{AUTHOR}</div>
-    <div class="arole">{ROLE} · {SCHOOL}, {COUNTRY}</div>
+    <div class="arole">{opt.role} · {COUNTRY}</div>
   </div>
-  <div class="band"><span>{SCHOOL} · Mathematics</span>
+  <div class="band"><span>{FOOT}</span>
     <span class="right">{EDITION} · {YEAR}</span></div>
 </div></body></html>"""
 
@@ -204,6 +204,10 @@ def inside_facts(opt):
                 facts.append((f'{name} \u00b7 {TIERS[name]}', f'{n} per topic'))
         facts.append(('Methods briefings',
                       str(sum(1 for t in topics if t.get('notes')))))
+        if opt.milliy:
+            facts.append(('Milliy sertifikat items',
+                          str(sum(len(t['milliy']['items']) for t in topics
+                                  if t.get('milliy')))))
     if opt.pages:
         facts.append(('Pages', str(opt.pages)))
     return facts
@@ -233,13 +237,13 @@ def back(opt):
   </div>
   <div class="motifwrap">{curves()}</div>
   <div class="legal">
-    <strong>{AUTHOR}</strong> · {ROLE}, {SCHOOL}, {COUNTRY}<br>
+    <strong>{AUTHOR}</strong> · {opt.role}, {COUNTRY}<br>
     © {AUTHOR}, 2026. {EDITION} · {YEAR}. Teachers may print this book for their
     own classes and copy single pages for their pupils; it may not be sold.<br>
     Follows the Uzbek national curriculum for Grade 8 algebra, lessons 1–102,
     read alongside Cambridge Lower Secondary Mathematics Stage 9.
   </div>
-  <div class="band"><span>{SCHOOL} · Mathematics</span>
+  <div class="band"><span>{FOOT}</span>
     <span class="right">Not for sale</span></div>
 </div></body></html>"""
 
@@ -252,11 +256,13 @@ def main():
     ap.add_argument('--sub', required=True)
     ap.add_argument('--volume', required=True)
     ap.add_argument('--accent', default='#E0B457')
+    ap.add_argument('--role', default=ROLE)
     ap.add_argument('--lead', required=True, help='the big line on the back cover')
     ap.add_argument('--blurb', required=True)
     ap.add_argument('--topics', nargs='*', help='topic keys, for the facts panel')
     ap.add_argument('--sections', nargs='*', help='sections this volume keeps')
     ap.add_argument('--notes-only', action='store_true')
+    ap.add_argument('--milliy', action='store_true')
     ap.add_argument('--pages', help='final page count, printed on the back cover')
     opt = ap.parse_args()
     for name, html in ((opt.out + '-cover', front(opt)), (opt.out + '-back', back(opt))):

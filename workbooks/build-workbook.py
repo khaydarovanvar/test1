@@ -18,6 +18,7 @@ with solutions for the hard ones, are at the back.
 import json
 import os
 import sys
+import zlib
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import bank
@@ -25,8 +26,8 @@ import bank
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 AUTHOR = 'Anvarbek Khaydarov'
-ROLE = 'Mathematics teacher'
-SCHOOL = 'Ellipse International School, Uzbekistan'
+ROLE = 'Mathematics teacher and olympiad trainer'
+PLACE = 'Uzbekistan'
 YEAR = 'Academic year 2026–2027'
 EDITION = 'First edition'
 SERIES = 'The Grade 8 Algebra Series'
@@ -36,12 +37,20 @@ SECTION_COLOUR = {
     'Practice': ('#8A5A00', '#FBF2E2'),
     'Challenge': ('#6B3FA0', '#F2EDF9'),
     'Beyond': ('#9B2C2C', '#FBEDED'),
+    'Milliy sertifikat': ('#1B6B3A', '#E9F4EC'),
 }
 # how much blank space a question of each kind needs
 LINES = {'Focus': 1, 'Practice': 2, 'Challenge': 3, 'Beyond': 4}
 # the Cambridge section names, against the plain difficulty they stand for
 TIER = {'Focus': 'easy', 'Practice': 'medium', 'Challenge': 'hard',
-        'Beyond': 'very hard'}
+        'Beyond': 'very hard', 'Milliy sertifikat': 'exam format'}
+# the three item types of the Milliy sertifikat mathematics paper, with what
+# each is worth. Items 1–32 are Y-1, 33–35 are Y-2 and 36–45 are open.
+MS_KIND = {
+    'Y-1': ('Y-1', 'closed · four options, one correct'),
+    'Y-2': ('Y-2', 'closed · matching'),
+    'O': ('O', 'open · short answer, parts a and b'),
+}
 ASKS = {
     'Focus': 'One step, with the method in front of you.',
     'Practice': 'The same skill, with a step of setting-up first.',
@@ -210,6 +219,35 @@ h2 { font-size:13pt; margin:0; }
 .notesonly .notes { margin-top:2mm; }
 .notesonly .topichead { border-top-width:1.6px; }
 
+/* ---------- Milliy sertifikat items ---------- */
+.ms .mstag { float:right; margin:0 0 1mm 3mm; font-size:7.8pt; font-weight:700;
+  letter-spacing:.06em; color:#1B6B3A; background:#E9F4EC; border-radius:1mm;
+  padding:.3mm 1.6mm; white-space:nowrap; }
+.ms .opts { display:grid; grid-template-columns:repeat(auto-fit, minmax(34mm, 1fr));
+  gap:.6mm 4mm; margin:1.2mm 0 .6mm; }
+.ms .opts span { white-space:nowrap; }
+.ms .opts .ol { color:var(--soft); font-weight:700; margin-right:1.2mm; }
+.ms .match { display:flex; gap:6mm; margin:1.2mm 0 1mm; }
+.ms .match div { flex:1; }
+.ms .match p { margin:.5mm 0; }
+.ms .match .ml { color:var(--soft); font-weight:700; margin-right:1.4mm; }
+.ms .mansw { font-size:9pt; color:var(--soft); margin-top:1mm;
+  border-top:1px dotted #AEB9C4; padding-top:1.2mm; letter-spacing:.04em; }
+.ms .part { margin:1.2mm 0 0; }
+.ms .part .pl { font-weight:700; color:#1B6B3A; margin-right:1.2mm; }
+.notes.msnotes { border-left-color:#1B6B3A; background:#FAFDFB; }
+.notes.msnotes .nhead { color:#1B6B3A; }
+.exambox { border:1px solid var(--rule); border-radius:1.5mm; padding:2mm 2.6mm;
+  margin:1mm 0 4mm; background:#FAFDFB; font-size:9.2pt; }
+.exambox .ehead { font-size:8.4pt; letter-spacing:.14em; text-transform:uppercase;
+  color:#1B6B3A; font-weight:700; margin-bottom:1.6mm; }
+.exambox table { width:100%; border-collapse:collapse; font-size:9.2pt; }
+.exambox td { padding:.9mm 2mm .9mm 0; border-bottom:1px solid var(--rule);
+  vertical-align:top; }
+.exambox tr:last-child td { border-bottom:0; }
+.exambox .ek { font-weight:700; white-space:nowrap; color:#1B6B3A; }
+.exambox .em { white-space:nowrap; text-align:right; color:var(--soft); }
+
 .data { border-collapse:collapse; margin:1mm 0 1.4mm; font-size:8.4pt; }
 .data th, .data td { border:1px solid var(--rule); padding:0.5mm 1.3mm;
   text-align:center; }
@@ -268,7 +306,96 @@ def render_notes(topic, standalone=False):
     return (f'<div class="notes"><div class="nhead">{label}</div>{items}</div>')
 
 
-def render_topic(topic, boxes=True):
+def ms_options(item):
+    """The four options in print order, and the letter of the right one.
+
+    The bank is written with the correct option first, which is how a teacher
+    writes one; a paper where the answer is always A teaches the wrong reflex,
+    so the options are rotated by a number fixed by the question's own text —
+    stable from build to build, but spread evenly across A, B, C and D.
+    """
+    opts = list(item['opts'])
+    r = zlib.crc32(item['q'].encode('utf-8')) % len(opts)
+    letter = chr(65 + (item.get('key', 0) - r) % len(opts))
+    return opts[r:] + opts[:r], letter
+
+
+def ms_answer(item):
+    """What prints in the answers at the back."""
+    if item['kind'] != 'Y-1':
+        return item['a']
+    return f'{ms_options(item)[1]} · {item["a"]}'
+
+
+def render_ms_item(item, i):
+    """One Milliy sertifikat item, set the way the paper sets it."""
+    kind = item['kind']
+    tag = (f'<span class="mstag">{MS_KIND[kind][0]} · {item["mark"]} ball</span>')
+    out = [f'<div class="q ms"><div class="qn">{i}</div><div class="qbody">',
+           tag, f'<div class="qtext">{item["q"]}</div>']
+    if kind == 'Y-1':
+        opts = ''.join(f'<span><span class="ol">{chr(65 + j)})</span>{o}</span>'
+                       for j, o in enumerate(ms_options(item)[0]))
+        out.append(f'<div class="opts">{opts}</div>')
+        out.append(lines(1))
+    elif kind == 'Y-2':
+        left = ''.join(f'<p><span class="ml">{j + 1})</span>{o}</p>'
+                       for j, o in enumerate(item['left']))
+        right = ''.join(f'<p><span class="ml">{chr(65 + j)})</span>{o}</p>'
+                        for j, o in enumerate(item['right']))
+        out.append(f'<div class="match"><div>{left}</div><div>{right}</div></div>')
+        strip = ' &nbsp; '.join(f'{j + 1} — ……' for j in range(len(item['left'])))
+        out.append(f'<div class="mansw">{strip}</div>')
+    else:                                                   # O — open, parts a, b
+        for label, text in zip('ab', item['parts']):
+            out.append(f'<div class="part"><span class="pl">{label})</span>{text}</div>')
+            out.append(lines(2))
+    out.append('</div></div>')
+    return '\n'.join(out)
+
+
+def render_milliy(topic):
+    """The exam-format set: its briefing, then the items."""
+    ms = topic.get('milliy')
+    if not ms:
+        return ''
+    items = ms['items']
+    ink, tint = SECTION_COLOUR['Milliy sertifikat']
+    brief = ''.join(f'<div class="note"><div class="nname">{name}</div>'
+                    f'<div class="nbody">{body}</div></div>' for name, body in ms['brief'])
+    out = [f'<div class="notes msnotes"><div class="nhead">'
+           f'Before you start — what the Milliy sertifikat asks on this topic</div>'
+           f'{brief}</div>',
+           f'<div class="sechead" style="background:{tint};color:{ink}">'
+           f'<span class="name">Milliy sertifikat</span>'
+           f'<span class="tier">exam format</span>'
+           f'<span class="count">{len(items)} items</span>'
+           f'<span class="blurb">The national certificate paper, on this topic.</span>'
+           f'</div>']
+    out += [render_ms_item(item, i) for i, item in enumerate(items, start=1)]
+    return '\n'.join(out)
+
+
+def render_exam_box():
+    """What the paper is, once, in the front of the book."""
+    rows = ''.join(
+        f'<tr><td class="ek">{k}</td><td>{d}</td><td class="em">{m}</td></tr>'
+        for k, d, m in (
+            ('Y-1', 'Closed. Four options, one correct. Items 1–32 of the paper.',
+             '1,3 or 2,2 ball'),
+            ('Y-2', 'Closed matching: pair each item on the left with one on the '
+                    'right. Items 33–35.', '2,2 ball'),
+            ('O', 'Open, short answer, in two parts a) and b). Items 36–45. Only '
+                  'the final answer is marked, not the working.',
+             'a 1,5 · b 1,7 · both 3,2')))
+    return (f'<div class="exambox"><div class="ehead">The Milliy sertifikat '
+            f'mathematics paper</div>'
+            f'<p style="margin:0 0 1.6mm">45 items in 150 minutes, marked out of 75; '
+            f'the certificate starts at 46 points. Three item types:</p>'
+            f'<table>{rows}</table></div>')
+
+
+def render_topic(topic, boxes=True, milliy=False):
     kw = ''.join(f'<li>{w}</li>' for w in topic['keywords'])
     rem = ''.join(f'<li>{r}</li>' for r in topic['remember'])
     pieces = []
@@ -276,8 +403,12 @@ def render_topic(topic, boxes=True):
         if name == 'Beyond':
             pieces.append(render_notes(topic))
         pieces.append(render_questions(topic, name, items))
+    if milliy:
+        pieces.append(render_milliy(topic))
     body = '\n'.join(pieces)
     total = sum(len(items) for _, items in topic['sections'])
+    if milliy and topic.get('milliy'):
+        total += len(topic['milliy']['items'])
     boxes_html = ('<div class="boxes">'
                   f'<div class="box keywords"><div class="blabel">Key words</div>'
                   f'<ul>{kw}</ul></div>'
@@ -312,7 +443,7 @@ def render_topic_notes(topic):
 </section>"""
 
 
-def render_answers(topics):
+def render_answers(topics, milliy=False):
     out = [f'<section class="answers">'
            f'<div class="pagehead">{mark("answers")}<h2>Answers</h2>'
            f'<div class="ph-alt">Javoblar · Ответы</div></div>']
@@ -332,6 +463,17 @@ def render_answers(topics):
                            + (f'<div class="sol">{sol}</div>' if sol else '')
                            + '</div>')
             out.append('</div>')
+        ms = topic.get('milliy') if milliy else None
+        if ms:
+            out.append(f'<div class="ah" style="border:0;font-size:9.2pt;'
+                       f'color:{SECTION_COLOUR["Milliy sertifikat"][0]}">'
+                       f'Milliy sertifikat <span style="font-weight:400;opacity:.7">'
+                       f'· exam format</span></div>')
+            out.append('<div class="alist">')
+            for i, item in enumerate(ms['items'], start=1):
+                out.append(f'<div class="a"><span class="n">{i}</span> '
+                           f'<span>{ms_answer(item)}</span></div>')
+            out.append('</div>')
         out.append('</div>')
     out.append('<p class="footnote">Every algebraic, combinatorial and probabilistic '
                'answer in this book was checked symbolically — or by exhaustive '
@@ -342,7 +484,7 @@ def render_answers(topics):
 
 # ------------------------------------------------------------------ front matter
 
-def render_title_page(title, subtitle, eyebrow):
+def render_title_page(title, subtitle, eyebrow, role=ROLE):
     return f"""
 <section class="front titlepage">
   <div>
@@ -355,13 +497,13 @@ def render_title_page(title, subtitle, eyebrow):
   </div>
   <div class="author">
     <div class="aname">{AUTHOR}</div>
-    <div class="arole">{ROLE} · {SCHOOL}</div>
+    <div class="arole">{role} · {PLACE}</div>
     <div class="tp-foot"><span>{EDITION}</span><span>{YEAR}</span></div>
   </div>
 </section>"""
 
 
-def render_imprint(title, topics, counts):
+def render_imprint(title, topics, counts, role=ROLE):
     made = ' · '.join(counts)
     return f"""
 <section class="front imprint">
@@ -369,10 +511,9 @@ def render_imprint(title, topics, counts):
     <div class="ip-title">{title}</div>
     <div>{SERIES} · {EDITION}</div>
     <div class="ip-rule"></div>
-    <p>Written, typeset and verified by {AUTHOR}, {ROLE.lower()} at {SCHOOL}.</p>
-    <p>© {AUTHOR}, 2026. Prepared for the mathematics classes of the author's own
-       school. Teachers are welcome to print this book for their own classes and to
-       copy single pages for their pupils; it may not be sold.</p>
+    <p>Written, typeset and verified by {AUTHOR}, {role.lower()}, {PLACE}.</p>
+    <p>© {AUTHOR}, 2026. Teachers are welcome to print this book for their own
+       classes and to copy single pages for their pupils; it may not be sold.</p>
     <p>The course follows the Uzbek national curriculum for Grade 8 algebra,
        lessons 1–102, read alongside Cambridge Lower Secondary Mathematics
        Stage 9. The four-tier structure — Focus, Practice, Challenge, Beyond —
@@ -427,7 +568,7 @@ def row_plain(label, n):
             f'<span class="cpage">{n if n else "&nbsp;"}</span></div>')
 
 
-def render_howto(kind, topics):
+def render_howto(kind, topics, milliy=False):
     counts = {}
     for t in topics:
         for name, items in t['sections']:
@@ -504,6 +645,8 @@ def render_howto(kind, topics):
         ]
     body = ''.join(f'<div class="hblock"><span class="hh">{h}</span> {t}</div>'
                    for h, t in blocks)
+    if milliy:
+        body += render_exam_box()
     return f"""
 <section class="front howto">
   <div class="pagehead">{mark('howto')}<h2>How to use this book</h2>
@@ -514,16 +657,16 @@ def render_howto(kind, topics):
 </section>"""
 
 
-def render_colophon(topics, counts):
+def render_colophon(topics, counts, role=ROLE):
     return f"""
 <section class="colophon">
   <div class="co-body">
     <div class="co-label">About the author</div>
     <div class="co-name">{AUTHOR}</div>
-    <p>{ROLE} at {SCHOOL}, and the author of this series. The Grade 8 algebra
-       course has been taught here in Uzbek, in Russian and in English for long
-       enough to show which of its questions do the teaching and which only fill
-       a lesson; this book keeps the first kind.</p>
+    <p>{role}, {PLACE}, and the author of this series. The Grade 8 algebra course
+       has been taught in Uzbek, in Russian and in English for long enough to show
+       which of its questions do the teaching and which only fill a lesson; this
+       book keeps the first kind.</p>
     <p>This book began as a set of photocopies and grew into a question bank that
        checks itself: {counts[0]}, every machine-checkable answer re-derived by a
        computer algebra system each time the book is built, so that a sign lost in
@@ -532,7 +675,7 @@ def render_colophon(topics, counts):
        complete year, the methods volume and the olympiad volume are the same
        questions seen through different filters.</p>
     <div class="ip-rule"></div>
-    <p style="color:var(--soft)">{EDITION} · {YEAR} · {SCHOOL}<br>
+    <p style="color:var(--soft)">{EDITION} · {YEAR} · {PLACE}<br>
        Corrections and better problems are welcome.</p>
   </div>
 </section>"""
@@ -558,6 +701,9 @@ def main():
                     help='the small line above the title on the title page')
     ap.add_argument('--pagemap', help='JSON of marker → page, from pagemap.py; '
                                       'fills in the contents page numbers')
+    ap.add_argument('--milliy', action='store_true',
+                    help='add the Milliy sertifikat exam-format set to each topic')
+    ap.add_argument('--role', default=ROLE, help="the author's line on the title page")
     ap.add_argument('--no-front', action='store_true',
                     help='no title page, contents or preface')
     ap.add_argument('--part', choices=['front', 'body', 'all'], default='all',
@@ -600,6 +746,9 @@ def main():
     subtitle = opt.subtitle or subtitle
 
     nq = bank.count(chosen)
+    nms = sum(len(t['milliy']['items']) for t in chosen if t.get('milliy'))
+    if opt.milliy:
+        nq += nms
     counts = [f'{len(chosen)} topics']
     if opt.notes_only:
         counts.append(f'{sum(len(t["notes"]) for t in chosen)} methods')
@@ -613,28 +762,29 @@ def main():
             sys.exit('no methods briefing for ' + ', '.join(t['key'] for t in bare))
         topics = '\n'.join(render_topic_notes(t) for t in chosen)
     else:
-        topics = '\n'.join(render_topic(t, boxes=not opt.no_boxes) for t in chosen)
+        topics = '\n'.join(render_topic(t, boxes=not opt.no_boxes, milliy=opt.milliy)
+                            for t in chosen)
 
-    answers = '' if opt.notes_only else render_answers(chosen)
+    answers = '' if opt.notes_only else render_answers(chosen, milliy=opt.milliy)
     if opt.no_front or len(chosen) < 3:
         front = body = ''
     else:
         front = '\n'.join([
-            render_title_page(opt.title, subtitle, opt.eyebrow),
-            render_imprint(opt.title, chosen, counts),
+            render_title_page(opt.title, subtitle, opt.eyebrow, opt.role),
+            render_imprint(opt.title, chosen, counts, opt.role),
             render_contents(chosen, pm,
                             ([('How to use this book', 'howto')],
                              [('Answers', 'answers')] if answers else []))])
-        body = render_howto(kind, chosen)
+        body = render_howto(kind, chosen, milliy=opt.milliy)
 
     if opt.part == 'front':
         doc = front
     elif opt.part == 'body':
         doc = '\n'.join([body, topics, answers,
-                          render_colophon(chosen, counts) if front else ''])
+                          render_colophon(chosen, counts, opt.role) if front else ''])
     else:
         doc = '\n'.join([front, body, topics, answers,
-                          render_colophon(chosen, counts) if front else ''])
+                          render_colophon(chosen, counts, opt.role) if front else ''])
 
     html = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
