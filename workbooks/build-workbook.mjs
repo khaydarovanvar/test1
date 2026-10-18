@@ -19,9 +19,14 @@ const pw = await import('playwright')
 const chromium = pw.chromium ?? pw.default?.chromium;
 if (!chromium) throw new Error('playwright is not installed');
 
-const SRC = path.resolve(process.argv[2] || 'g11-alg-q1.mjs');
+const args = process.argv.slice(2);
+const flags = new Set(args.filter(a => a.startsWith('--')));
+const SRC = path.resolve(args.find(a => !a.startsWith('--')) || 'g11-alg-q1.mjs');
 const { meta, topics } = await import(SRC);
-const OUT = path.resolve(meta.out || SRC.replace(/\.mjs$/, '.pdf'));
+/* A paper may be issued in two editions from one set of questions. */
+const edition = flags.has('--student') ? 'student' : flags.has('--teacher') ? 'teacher' : null;
+const label = edition ? ` · ${edition} copy` : '';
+const OUT = path.resolve(meta.out || SRC.replace(/\.mjs$/, (edition ? `-${edition}` : '') + '.pdf'));
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
@@ -177,7 +182,7 @@ const answers = `
 
 /* ---- page ------------------------------------------------------------- */
 const html = `<!doctype html><html lang="en"><head><meta charset="utf-8">
-<title>${esc(meta.title)}</title>
+<title>${esc(meta.title + label)}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   @page { size: A4; margin: 16mm 14mm 18mm; }
@@ -312,7 +317,7 @@ const html = `<!doctype html><html lang="en"><head><meta charset="utf-8">
   @media print { .bar { display: none; } }
 </style></head><body>
 <div class="bar">
-  <b>${esc(meta.eyebrow)}</b>
+  <b>${esc(meta.eyebrow + label.toUpperCase())}</b>
   <select id="jump" aria-label="Go to a topic">
     <option value="#contents">Contents</option>
     ${topics.map(t => `<option value="#t${t.n}">Topic ${t.n} — ${esc(t.title)}</option>`).join('')}
@@ -322,7 +327,7 @@ const html = `<!doctype html><html lang="en"><head><meta charset="utf-8">
   <button id="toggle" type="button" aria-pressed="false">Hide answers</button>
   <a href="#contents">Top</a>
 </div>
-${contents}${topicPages}${answers}
+${contents}${topicPages}${edition === 'student' ? '' : answers}
 <script>
   var jump = document.getElementById('jump');
   jump.addEventListener('change', function () { location.hash = this.value; });
@@ -353,11 +358,11 @@ await page.pdf({
   margin: { top: '16mm', bottom: '18mm', left: '14mm', right: '14mm' },
   headerTemplate: '<div></div>',
   footerTemplate: `<div style="width:100%;padding:0 14mm;font:7.5pt 'DejaVu Sans',sans-serif;color:#8b949e;
-    display:flex;justify-content:space-between;"><span>${esc(meta.footer)}</span>
+    display:flex;justify-content:space-between;"><span>${esc(meta.footer + label)}</span>
     <span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span></div>`
 });
 await browser.close();
 const solved = topics.length * TIERS.filter(t => t.solutions).reduce((a, t) => a + t.count, 0);
 console.log(`${topics.length} topic${topics.length > 1 ? 's' : ''} · ${total} questions · ` +
-  `${solved} worked solutions -> ` +
+  (edition === 'student' ? 'answers withheld' : `${solved} worked solutions`) + ' -> ' +
   `${path.basename(HTML_OUT)}, ${path.basename(OUT)}`);

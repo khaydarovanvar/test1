@@ -17,6 +17,9 @@ worked solution for every Beyond question.
 | `g11-alg-h1.pdf` / `.html` | the same, rendered |
 | `trig-exp-log-derivatives.mjs` | Differentiating sin, cos, tan, eˣ and ln x — explanations and 30 questions |
 | `trig-exp-log-derivatives.pdf` / `.html` | the same, rendered |
+| `trig-derivatives-test.mjs` | the same material as a 30-question paper, easy / medium / hard |
+| `trig-derivatives-test-student.pdf` / `.html` | the paper to hand out — questions and ruled space, no answers |
+| `trig-derivatives-test-teacher.pdf` / `.html` | the same paper with a worked solution for all 30 |
 | `build-workbook.mjs` | the renderer |
 
 ## Building
@@ -45,6 +48,21 @@ styling all sits inside `@media screen`, so print media sees only the A4 rules.
 The builder refuses to print a workbook whose tiers do not hold 10 / 10 / 10 / 15
 questions, whose questions lack answers, or whose Beyond questions lack solutions —
 and it counts the questions it parsed against the ones that reached the page.
+
+## Two editions of one paper
+
+`--student` drops the answers section; `--teacher` keeps it. Each names its own
+file, and both print from the same questions with the same ruled lines, so the
+two copies paginate identically — page 4 of the student copy is page 4 of the
+teacher copy. The edition is printed in the footer of every page.
+
+```sh
+node build-workbook.mjs trig-derivatives-test.mjs --student
+node build-workbook.mjs trig-derivatives-test.mjs --teacher
+```
+
+Set `solutions: true` on every tier so the teacher copy is complete; the builder
+refuses to print if any question lacks one, whichever edition is being built.
 
 ## Tiers
 

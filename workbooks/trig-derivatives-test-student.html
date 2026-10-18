@@ -1,0 +1,318 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>Differentiating sin, cos, tan, eˣ and ln x — 30 questions · student copy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  @page { size: A4; margin: 16mm 14mm 18mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; font-family: "DejaVu Sans", sans-serif; color: #1f2933;
+         font-size: 10pt; line-height: 1.5; }
+  .m { font-family: "DejaVu Serif", serif; }
+  sup, sub { font-size: 0.72em; line-height: 0; }
+  .fr { display: inline-block; vertical-align: -0.55em; text-align: center; margin: 0 .18em; }
+  .fr .nu { display: block; padding: 0 .3em; border-bottom: 0.6pt solid currentColor; }
+  .fr .de { display: block; padding: 0 .3em; }
+  .rc { border-top: 0.6pt solid currentColor; padding: 0 .12em; }
+
+  .sheet { break-after: page; }
+  .sheet:last-child { break-after: auto; }
+  .eyebrow { font-size: 7.6pt; letter-spacing: 1.6pt; color: #7b8794; text-transform: uppercase; }
+  h1 { font-size: 20pt; line-height: 1.16; margin: 2mm 0 0; color: #16202b; font-weight: 700; }
+  h1.big { font-size: 24pt; }
+  .lead, .sub { color: #52606d; margin: 3mm 0 0; max-width: 165mm; }
+  .meta { color: #7b8794; font-size: 8.6pt; margin: 1.5mm 0 0; }
+  .rule { border-top: 2.4pt solid #16202b; margin-bottom: 4mm; }
+
+  /* contents */
+  .toc { width: 100%; border-collapse: collapse; margin-top: 7mm; }
+  .toc td { padding: 3.1mm 0; border-bottom: 0.5pt solid #e4e7eb; vertical-align: middle; }
+  .toc .tn { width: 26mm; font-weight: 700; color: #2a4365; }
+  .toc .tl { width: 26mm; font-size: 8.4pt; color: #7b8794; text-align: right; }
+  .toc .tq { width: 28mm; font-size: 8.4pt; color: #7b8794; text-align: right; }
+  .tally { margin-top: 4mm; font-size: 8.6pt; color: #7b8794; }
+  /* The contents rows are anchors for the browser build; without this they
+     would print as blue underlined links. */
+  .toc a { color: inherit; text-decoration: none; }
+
+  /* boxes */
+  .boxes { display: flex; gap: 5mm; margin: 6mm 0 7mm; break-inside: avoid; }
+  .box { flex: 1; border: 0.6pt solid #d9dee3; border-radius: 2.2mm; padding: 4mm 4.5mm; }
+  .box.kw { background: #f7f9fa; flex: 0 0 44%; }
+  .bt { font-size: 7.6pt; letter-spacing: 1.3pt; color: #7b8794; text-transform: uppercase; margin-bottom: 2.5mm; }
+  .box ul, .box ol { margin: 0; padding-left: 5mm; }
+  .box li { margin-bottom: 1.3mm; }
+  .box.kw li { list-style: disc; }
+
+  /* lesson blocks */
+  .lb { margin: 0 0 5mm; }
+  .lb h3 { font-size: 10.4pt; margin: 0 0 1.6mm; color: #16202b; break-after: avoid; }
+  .lb p { margin: 0 0 1.8mm; }
+  /* Long tables may split across a page; the header row repeats, so the
+     halves stay readable, and a heading is never stranded alone at the foot. */
+  table.dt { width: 100%; border-collapse: collapse; margin: 2mm 0 0; }
+  table.dt thead { display: table-header-group; }
+  table.dt tr { break-inside: avoid; }
+  table.dt th { text-align: left; font-size: 8pt; letter-spacing: 0.6pt; text-transform: uppercase;
+                color: #7b8794; padding: 1.4mm 3mm 1.4mm 0; border-bottom: 0.6pt solid #cbd2d9; }
+  table.dt td { padding: 1.3mm 3mm 1.3mm 0; border-bottom: 0.5pt solid #e4e7eb; vertical-align: top; }
+  ol.st { margin: 1mm 0 0; padding-left: 5.5mm; }
+  ol.st li { margin-bottom: 1.4mm; }
+  .sa { display: inline-block; margin-right: 3mm; }
+  .sw { color: #7b8794; font-size: 8.8pt; }
+
+  /* bands */
+  .band { border-radius: 2mm; padding: 2.6mm 4mm; margin: 6mm 0 3mm; break-after: avoid;
+          display: flex; align-items: baseline; gap: 3mm; }
+  .bn { font-size: 12pt; font-weight: 700; }
+  .pill { font-size: 7pt; letter-spacing: 1pt; border: 0.6pt solid currentColor;
+          border-radius: 1mm; padding: 0.5mm 1.6mm; }
+  .cnt { font-size: 8.4pt; }
+  .desc { margin-left: auto; text-align: right; font-size: 8.8pt; max-width: 86mm; }
+  .focus     { background: #eef5fb; color: #1b6ca8; }
+  .practice  { background: #fdf6e8; color: #96661a; }
+  .challenge { background: #f5f1fb; color: #6a4ea0; }
+  .beyond    { background: #fdeef1; color: #b03a52; }
+
+  /* questions */
+  .q { display: flex; flex-wrap: wrap; gap: 3.4mm; margin: 0 0 2mm; break-inside: avoid; }
+  .num { flex: 0 0 6.2mm; height: 6.2mm; border: 0.6pt solid #c3cbd4; border-radius: 50%;
+         font-size: 7.6pt; color: #52606d; text-align: center; line-height: 6mm; margin-top: 0.6mm; }
+  .qt { flex: 1; }
+  /* The writing lines sit on their own row under the question, indented to
+     clear the number. They must keep full width: a flex-basis of 0 squeezes
+     them to nothing and the dotted rule then has no width to draw along. */
+  .lines { flex: 1 0 100%; padding-left: 9.6mm; }
+  .ln { border-bottom: 1px dotted #aab3bd; height: 6.4mm; }
+
+  /* answers */
+  .answers h1 { margin-bottom: 4mm; }
+  .atopic { break-inside: auto; margin-bottom: 7mm; }
+  .atopic h2 { font-size: 11.5pt; margin: 5mm 0 0; padding-bottom: 1.6mm;
+               border-bottom: 0.6pt solid #cbd2d9; break-after: avoid; }
+  .ah { font-size: 10pt; font-weight: 700; margin: 3.4mm 0 1.6mm; break-after: avoid; }
+  .ah.focus, .ah.practice, .ah.challenge, .ah.beyond { background: none; padding: 0; }
+  .aw { font-weight: 400; font-size: 8.6pt; opacity: .8; }
+  .agrid { display: flex; gap: 8mm; }
+  .acol { flex: 1; }
+  .a { display: flex; gap: 2.6mm; align-items: baseline; margin-bottom: 0.9mm; break-inside: avoid; }
+  .an { flex: 0 0 5mm; font-weight: 700; font-size: 8.6pt; color: #3e4c59; }
+  .av { flex: 1; }
+  .sol { margin-bottom: 2.2mm; break-inside: avoid; }
+  .sh { margin: 0; }
+  .sb { margin: 0; color: #3e4c59; font-size: 9.2pt; }
+
+  /* The PDF is rendered with print media, so everything below shapes only the
+     browser view; Ctrl+P still produces exactly the pages of the PDF. */
+  @media screen {
+    body { background: #eef1f4; padding: 0 0 18mm; }
+    .bar { position: sticky; top: 0; z-index: 9; display: flex; align-items: center; gap: 4mm;
+           padding: 3mm 5mm; background: #16202b; color: #e8edf2; font-size: 9pt; }
+    /* A select sizes itself to its longest option — here a full topic title —
+       so it must be told it may shrink, or it pushes the bar off a phone. */
+    .bar select { flex: 0 1 auto; min-width: 0; max-width: 46vw; }
+    .bar b { font-weight: 700; }
+    .bar .sp { margin-left: auto; }
+    .bar a { color: #9fc4e8; text-decoration: none; }
+    .bar a:hover { text-decoration: underline; }
+    .bar select, .bar button { font: inherit; font-size: 8.6pt; color: #16202b; background: #e8edf2;
+      border: 0; border-radius: 1.4mm; padding: 1.2mm 2.4mm; cursor: pointer; }
+    .bar button[aria-pressed="true"] { background: #9fc4e8; }
+    .sheet { background: #fff; max-width: 190mm; margin: 7mm auto; padding: 14mm 13mm;
+             border-radius: 1.5mm; box-shadow: 0 1px 3px rgba(22,32,43,.14); }
+    .toc tr:hover .tt a { text-decoration: underline; }
+    body.hide-answers .answers { display: none; }
+    @media (max-width: 760px) {
+      .bar > b { display: none; }
+      .sheet { padding: 8mm 6mm; margin: 4mm; }
+      .boxes { display: block; }
+      .box.kw { margin-bottom: 4mm; }
+      .band { flex-wrap: wrap; }
+      .desc { margin-left: 0; text-align: left; max-width: none; }
+      .agrid { display: block; }
+    }
+  }
+  @media print { .bar { display: none; } }
+</style></head><body>
+<div class="bar">
+  <b>GRADE 11 · ALGEBRA AND CALCULUS · STUDENT COPY</b>
+  <select id="jump" aria-label="Go to a topic">
+    <option value="#contents">Contents</option>
+    <option value="#t1">Topic 1 — Differentiating sin, cos, tan, $e^{x}$ and $ln x$</option>
+    <option value="#answers">Answers</option>
+  </select>
+  <span class="sp"></span>
+  <button id="toggle" type="button" aria-pressed="false">Hide answers</button>
+  <a href="#contents">Top</a>
+</div>
+
+<section class="sheet topic" id="t1">
+  <div class="rule"></div>
+  <div class="eyebrow">THE DERIVATIVE · TOPIC 1</div>
+  <h1>Differentiating sin, cos, tan, <span class="m">e<sup>x</sup></span> and <span class="m">ln x</span></h1>
+  <p class="sub">Thirty questions on the trigonometric, exponential and logarithmic derivatives, in three tiers of ten.</p>
+  <p class="meta">Pure Mathematics 1, 7.3–7.4 · Pure Mathematics 2, 4.1–4.4 · 30 questions · 60 marks</p>
+
+  <div class="boxes">
+    <div class="box kw">
+      <div class="bt">KEY WORDS</div>
+      <ul><li>radian</li><li>chain rule</li><li>product rule</li><li>quotient rule</li><li>natural logarithm</li><li>exponential function</li><li>logarithmic differentiation</li><li>stationary point</li><li>second derivative</li></ul>
+    </div>
+    <div class="box rm">
+      <div class="bt">REMEMBER</div>
+      <ol><li><span class="m">(sin x)′ = cos x</span>, <span class="m">(cos x)′ = −sin x</span>, <span class="m">(tan x)′ = sec<sup>2</sup>x</span>.</li><li><span class="m">(e<sup>x</sup>)′ = e<sup>x</sup></span> and <span class="m">(ln x)′ = <span class="fr"><span class="nu">1</span><span class="de">x</span></span></span>.</li><li>Chain rule: differentiate the outside, then multiply by the derivative of the inside.</li><li><span class="m"><span class="fr"><span class="nu">d</span><span class="de">dx</span></span>ln f(x) = <span class="fr"><span class="nu">f′(x)</span><span class="de">f(x)</span></span></span>.</li><li>Radians throughout. Show the rule you are using — method carries marks even when the answer slips.</li></ol>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="band focus">
+    <span class="bn">Easy</span><span class="pill">EASY</span>
+    <span class="cnt">10 questions</span>
+    <span class="desc">One line from the table. 1 mark each.</span>
+  </div>
+  <div class="q">
+    <span class="num">1</span>
+    <div class="qt">Differentiate <span class="m">y = 5 sin x</span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">2</span>
+    <div class="qt">Differentiate <span class="m">y = cos 2x</span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">3</span>
+    <div class="qt">Differentiate <span class="m">y = e<sup>5x</sup></span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">4</span>
+    <div class="qt">Differentiate <span class="m">y = ln 3x</span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">5</span>
+    <div class="qt">Differentiate <span class="m">y = tan 4x</span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">6</span>
+    <div class="qt">Differentiate <span class="m">y = x + sin x</span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">7</span>
+    <div class="qt">Differentiate <span class="m">y = 3e<sup>x</sup> − 2 ln x</span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">8</span>
+    <div class="qt">Differentiate <span class="m">y = sin(x + 2)</span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">9</span>
+    <div class="qt">Differentiate <span class="m">y = e<sup>−x</sup></span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">10</span>
+    <div class="qt">Differentiate <span class="m">y = 4cos x + tan x</span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+  </div>
+  <div class="band practice">
+    <span class="bn">Medium</span><span class="pill">MEDIUM</span>
+    <span class="cnt">10 questions</span>
+    <span class="desc">A chain, a product or a quotient. 2 marks each.</span>
+  </div>
+  <div class="q">
+    <span class="num">1</span>
+    <div class="qt">Differentiate <span class="m">y = cos<sup>3</sup>x</span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">2</span>
+    <div class="qt">Differentiate <span class="m">y = x<sup>2</sup>e<sup>x</sup></span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">3</span>
+    <div class="qt">Differentiate <span class="m">y = ln(sin x)</span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">4</span>
+    <div class="qt">Differentiate <span class="m">y = e<sup>x<sup>2</sup></sup></span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">5</span>
+    <div class="qt">Differentiate <span class="m">y = <span class="rt">√</span><span class="rc">sin x</span></span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">6</span>
+    <div class="qt">Differentiate <span class="m">y = sin x · cos x</span> and simplify.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">7</span>
+    <div class="qt">Differentiate <span class="m">y = <span class="fr"><span class="nu">e<sup>x</sup></span><span class="de">x</span></span></span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">8</span>
+    <div class="qt">Differentiate <span class="m">y = x ln x − x</span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">9</span>
+    <div class="qt">Differentiate <span class="m">y = tan<sup>2</sup>x</span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">10</span>
+    <div class="qt">Differentiate <span class="m">y = (ln x)<sup>3</sup></span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div>
+  <div class="band challenge">
+    <span class="bn">Hard</span><span class="pill">HARD</span>
+    <span class="cnt">10 questions</span>
+    <span class="desc">Several steps, or an idea. 3 marks each.</span>
+  </div>
+  <div class="q">
+    <span class="num">1</span>
+    <div class="qt"><span class="m">y = e<sup>x</sup>cos x</span>. Find <span class="m"><span class="fr"><span class="nu">d<sup>2</sup>y</span><span class="de">dx<sup>2</sup></span></span></span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">2</span>
+    <div class="qt">Differentiate <span class="m">y = ln<span class="fr"><span class="nu">1 + x</span><span class="de">1 − x</span></span></span> and simplify.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">3</span>
+    <div class="qt">Differentiate <span class="m">y = x<sup>ln x</sup></span> for <span class="m">x &gt; 0</span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">4</span>
+    <div class="qt">Find the tangent to <span class="m">y = e<sup>x</sup></span> that passes through the origin.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">5</span>
+    <div class="qt">Find and classify the stationary point of <span class="m">y = xe<sup>−x</sup></span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">6</span>
+    <div class="qt">Show that <span class="m">y = e<sup>2x</sup>sin 3x</span> satisfies <span class="m">y″ − 4y′ + 13y = 0</span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">7</span>
+    <div class="qt">Differentiate <span class="m">y = ln(x + <span class="rt">√</span><span class="rc">x<sup>2</sup> + 1</span>)</span> and simplify.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">8</span>
+    <div class="qt">Find the least value of <span class="m">y = e<sup>x</sup> + e<sup>−x</sup></span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">9</span>
+    <div class="qt">Differentiate <span class="m">y = <span class="fr"><span class="nu">1 + tan x</span><span class="de">1 − tan x</span></span></span> and simplify.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div><div class="q">
+    <span class="num">10</span>
+    <div class="qt">Prove that <span class="m">(sec x)′ = sec x · tan x</span>, starting from <span class="m">sec x = <span class="fr"><span class="nu">1</span><span class="de">cos x</span></span></span>.</div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div>
+</section>
+<script>
+  var jump = document.getElementById('jump');
+  jump.addEventListener('change', function () { location.hash = this.value; });
+  var btn = document.getElementById('toggle');
+  btn.addEventListener('click', function () {
+    var hidden = document.body.classList.toggle('hide-answers');
+    this.setAttribute('aria-pressed', String(hidden));
+    this.textContent = hidden ? 'Show answers' : 'Hide answers';
+  });
+</script>
+</body></html>
