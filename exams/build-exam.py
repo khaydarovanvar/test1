@@ -69,8 +69,9 @@ PAPER = [
      ('alg-08', 'Challenge', 3, None, None)],
 ]
 
-# how many ruled lines of answer space each section gets
-SPACE = [2, 5, 8]
+# how many ruled lines of answer space each section gets — the most
+# the paper takes while the whole exam, cover included, stays on 4 pages
+SPACE = [2, 4, 8]
 
 
 def question(spec):
@@ -92,31 +93,31 @@ def para(runs, spacing=True, align='left', after=0, keep=False):
     return '<w:p>' + ''.join(ppr) + runs + '</w:p>'
 
 
-def ruled(n):
-    """Blank ruled lines for the pupil's working."""
-    # pBdr comes before spacing: w:pPr's children are in a schema-fixed order
-    line = ('<w:p><w:pPr>'
-            # Word merges adjacent paragraphs that carry the same border and
-            # draws only the outer edge, so the ruled lines need w:between too
-            '<w:pBdr>'
-            '<w:bottom w:val="dotted" w:sz="4" w:space="1" w:color="999999"/>'
-            '<w:between w:val="dotted" w:sz="4" w:space="1" w:color="999999"/>'
-            '</w:pBdr>'
-            '<w:spacing w:line="360" w:lineRule="auto" w:after="0"/>'
-            '<w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/>'
-            '<w:sz w:val="24"/></w:rPr></w:pPr></w:p>')
-    return line * n + para('', after=60)
+def ruled(n, after=160):
+    """Blank ruled lines for the pupil's working.
+
+    The gap below the block is spacing on the last line, not an empty
+    paragraph: fifteen stray empty paragraphs cost most of a page.
+    """
+    def line(sp):
+        # pBdr's children are in a fixed order, and w:between is what makes
+        # adjacent ruled paragraphs show a line each instead of merging
+        return ('<w:p><w:pPr>'
+                '<w:pBdr>'
+                '<w:bottom w:val="dotted" w:sz="4" w:space="1" w:color="999999"/>'
+                '<w:between w:val="dotted" w:sz="4" w:space="1" w:color="999999"/>'
+                '</w:pBdr>'
+                f'<w:spacing w:line="360" w:lineRule="auto" w:after="{sp}"/>'
+                '<w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/>'
+                '<w:sz w:val="24"/></w:rPr></w:pPr></w:p>')
+    return line(0) * (n - 1) + line(after)
 
 
 def exam_body(group):
-    out = [para(omml.run(f'{SUBJECT.upper()} — {EXAM[0].upper()}{EXAM[1].upper()}',
-                         bold=True), align='center', after=60, keep=True),
-           para(omml.run(f'Grade {group}   ·   {MINUTES} minutes   ·   100 marks',
-                         bold=True), align='center', after=60, keep=True),
-           para(omml.run('Topics: algebraic fractions and rational expressions '
-                         '(lessons 1–22).'), after=40),
-           para(omml.run('Answer every question in the space provided. Write in '
-                         'blue pen. Calculators are not allowed.'), after=180)]
+    # No title block: the cover page already carries the subject, the grade,
+    # the duration, the total and the instructions, and repeating them here
+    # cost a page.
+    out = []
     n = 0
     for (title, marks, intro), specs, space in zip(SECTIONS, PAPER, SPACE):
         total = marks * len(specs)
