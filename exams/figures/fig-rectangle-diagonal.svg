@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 184 116" width="184" height="116"><style>
+.o { fill:none; stroke:#1A1A1A; stroke-width:2.2; stroke-linejoin:round; }
+.d { fill:none; stroke:#1A1A1A; stroke-width:1.6; stroke-dasharray:5 3; }
+.h { fill:none; stroke:#1A1A1A; stroke-width:1.6; }
+.a { fill:none; stroke:#1A1A1A; stroke-width:1.5; }
+/* the figures print at about 70 % of the drawn width, so the lettering is
+   set large here to come out readable on paper */
+.t { font-family:Georgia,'Times New Roman',serif; font-size:18px; fill:#1A1A1A; }
+.ti { font-family:Georgia,'Times New Roman',serif; font-size:16px;
+      font-style:italic; fill:#1A1A1A; }
+.tk { stroke:#1A1A1A; stroke-width:1.6; }
+</style><polygon class="o" points="56.0,94.0 56.0,28.0 144.0,28.0 144.0,94.0"/><line class="d" x1="56.0" y1="94.0" x2="144.0" y2="28.0"/><polyline class="a" points="56.0,83.0 67.0,83.0 67.0,94.0"/><text class="t" x="43.0" y="102.0" text-anchor="middle">A</text><text class="t" x="43.0" y="23.0" text-anchor="middle">B</text><text class="t" x="157.0" y="23.0" text-anchor="middle">C</text><text class="t" x="157.0" y="102.0" text-anchor="middle">D</text><text class="ti" x="32.0" y="65.0" text-anchor="middle">6 cm</text><text class="ti" x="100.0" y="112.0" text-anchor="middle">8 cm</text></svg>

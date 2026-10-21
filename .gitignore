@@ -39,3 +39,7 @@ workbooks/tmp/
 # They carry the cover's embedded fonts and the school logo, and they are
 # generated:  cd exams && python3 build-exam.py
 exams/out/
+
+# The rendered geometry figures. The SVG and the generator are tracked; the
+# PNGs are built:  cd exams && python3 figures.py && node render-figures.mjs
+exams/figures/*.png

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 162 112" width="162" height="112"><style>
+.o { fill:none; stroke:#1A1A1A; stroke-width:2.2; stroke-linejoin:round; }
+.d { fill:none; stroke:#1A1A1A; stroke-width:1.6; stroke-dasharray:5 3; }
+.h { fill:none; stroke:#1A1A1A; stroke-width:1.6; }
+.a { fill:none; stroke:#1A1A1A; stroke-width:1.5; }
+/* the figures print at about 70 % of the drawn width, so the lettering is
+   set large here to come out readable on paper */
+.t { font-family:Georgia,'Times New Roman',serif; font-size:18px; fill:#1A1A1A; }
+.ti { font-family:Georgia,'Times New Roman',serif; font-size:16px;
+      font-style:italic; fill:#1A1A1A; }
+.tk { stroke:#1A1A1A; stroke-width:1.6; }
+</style><polygon class="o" points="22.0,92.0 52.0,26.0 140.0,26.0 110.0,92.0"/><path class="a" d="M 31.9 70.2 A 24 24 0 0 1 46.0 92.0"/><text class="t" x="56.3" y="73.9" text-anchor="middle">68°</text><text class="t" x="9.0" y="100.0" text-anchor="middle">A</text><text class="t" x="39.0" y="21.0" text-anchor="middle">B</text><text class="t" x="153.0" y="21.0" text-anchor="middle">C</text><text class="t" x="123.0" y="100.0" text-anchor="middle">D</text></svg>

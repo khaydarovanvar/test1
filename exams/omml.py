@@ -38,8 +38,24 @@ def run(text, bold=False, italic=False):
 
 # ------------------------------------------------------------------ OMML ----
 
-def _m_run(text):
-    return f'<m:r><m:t xml:space="preserve">{esc(text)}</m:t></m:r>'
+def _m_run(text, upright=False):
+    pr = '<m:rPr><m:nor/></m:rPr>' if upright else ''
+    return f'<m:r>{pr}<m:t xml:space="preserve">{esc(text)}</m:t></m:r>'
+
+
+def _text_runs(text):
+    """Maths text, with the degree sign kept tight against its number.
+
+    Word lays ° out as an operator and opens a gap in front of it, so 40°
+    prints as 40 °. Marked as normal text it stays where it was written.
+    """
+    out = []
+    for part in re.split(r'(\u00b0)', text):
+        if part == '\u00b0':
+            out.append(_m_run(part, upright=True))
+        elif part:
+            out.append(_m_run(part))
+    return out
 
 
 def _take_span(s, i):
@@ -125,7 +141,7 @@ def _math(s):
                     out.append('<m:d><m:dPr><m:ctrlPr/></m:dPr>'
                                f'<m:e>{"".join(inner)}</m:e></m:d>')
                 elif part:
-                    out.append(_m_run(part))
+                    out.extend(_text_runs(part))
             i = j
     while stack:                                  # an unmatched '(' — keep it
         inner, out = out, stack.pop()
@@ -136,13 +152,28 @@ def _math(s):
 
 def to_runs(html, bold=False):
     """Word runs for a question or an answer: prose as text, maths as OMML."""
-    html = html.replace('<span class="m">', '\x00<span class="m">')
+    # a fraction written outside a maths span is still mathematics: mark it
+    # too, or its structure is dropped and the numerator and denominator run
+    # together on one line
+    html = re.sub(r'<span class="(m|frac)">', lambda m: '\x00' + m.group(0), html)
     html = html.replace('</span>\x00', '</span>')
     out, i = [], 0
     while i < len(html):
         if html.startswith('\x00<span', i):
             frag, i = _take_span(html, i + 1)
-            out.append(f'<m:oMath>{"".join(_math(_inner(frag)))}</m:oMath>')
+            frag = frag.replace('\x00', '')      # markers on nested spans
+            if 'class="frac"' in frag[:frag.index('>')]:
+                out.append(f'<m:oMath>{"".join(_math(frag))}</m:oMath>')
+                continue
+            # Word lays the degree sign out as an operator and opens a gap in
+            # front of it, so 40° prints as 40 °. Set it as ordinary text,
+            # outside the equation, and it sits where it was written.
+            parts = _inner(frag).split('\u00b0')
+            for k, part in enumerate(parts):
+                if part:
+                    out.append(f'<m:oMath>{"".join(_math(part))}</m:oMath>')
+                if k < len(parts) - 1:
+                    out.append(run('\u00b0', bold=bold))
         elif html.startswith('<em>', i):
             j = html.index('</em>', i)
             out.append(run(unescape(re.sub(r'<[^>]+>', '', html[i + 4:j])),

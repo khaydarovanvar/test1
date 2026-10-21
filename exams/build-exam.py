@@ -1,92 +1,52 @@
 #!/usr/bin/env python3
-"""Build the Grade 8 first-quarter mathematics exam from the question bank.
+"""Build a Grade 8 exam paper on the school's cover page.
 
-The school's cover page is used exactly as it was supplied: the same table,
-the same instructions, the same page setup and the same header. Only the
-values inside its fields are set — subject, grade, teacher, date, exam name.
-The exam itself is a second section with Normal margins (2.54 cm), Calibri 12
-and 1.15 line spacing, as the school's exam rules require.
+The cover is used exactly as supplied: the same table, the same instructions,
+the same page setup and the same header. Only the values in its fields are
+set — subject, grade, teacher, date, exam name. The questions follow in a
+second section with Normal margins (2.54 cm), Calibri 12 and 1.15 line
+spacing, as the school's exam rules require.
 
-    python3 build-exam.py            # writes one .docx per group into ./out
+    python3 build-exam.py                  # both papers, every group
+    python3 build-exam.py --paper geometry
 """
 
+import argparse
+import math
 import os
 import re
-import shutil
-import subprocess
 import sys
 import zipfile
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, '/home/user/test1/workbooks')
-import bank                                                   # noqa: E402
 import omml                                                   # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 COVER = '/home/user/mathematics/Exam Cover Page (2).docx'
 OUT = os.path.join(HERE, 'out')
+FIGDIR = os.path.join(HERE, 'figures')
 
 TEACHER = ('Anvarbek', ' Khaydarov')
-SUBJECT = 'Mathematics'
 EXAM = ('Final', ' Exam')
-EXAM_CODE = 'FINAL'          # the exam type in the file name
+EXAM_CODE = 'FINAL'
 DATE = '26/10/2026'
 GROUPS = ('8A', '8G', '8P')
 MINUTES = 40
-
-# marks per question, by section — 40 % easy, 40 % medium, 20 % hard
-SECTIONS = [
-    ('Section A — Easy', 5, 'Answer all eight questions.'),
-    ('Section B — Medium', 8, 'Answer all five questions. Show your working.'),
-    ('Section C — Hard', 10, 'Answer both questions. Show every step of your working.'),
-]
-
-# (topic key, bank section, 1-based number in that section, optional lead-in,
-#  optional extra part b as (text, marks, answer))
-PAPER = [
-    # ---- A, easy: one question from each of the eight topics taught ---------
-    [('alg-01', 'Focus', 10, None, None),
-     ('alg-02', 'Focus', 4, None, None),
-     ('alg-03', 'Focus', 7, None, None),
-     ('alg-04', 'Focus', 9, None, None),
-     ('alg-05', 'Focus', 5, 'Write as a single fraction: ', None),
-     ('alg-06', 'Focus', 5, None, None),
-     ('alg-07', 'Focus', 4, None, None),
-     ('alg-08', 'Focus', 4, None, None)],
-    # ---- B, medium ---------------------------------------------------------
-    [('alg-01', 'Challenge', 1, None, None),
-     ('alg-03', 'Practice', 5, None, None),
-     ('alg-05', 'Practice', 1, 'Write as a single fraction in its simplest form: ',
-      None),
-     ('alg-07', 'Practice', 4, None, None),
-     ('alg-08', 'Practice', 1, None, None)],
-    # ---- C, hard -----------------------------------------------------------
-    [('alg-05', 'Challenge', 6,
-      'Write as a single fraction in its simplest form: ',
-      ('State the values of <span class="m">x</span> for which the original '
-       'expression is not defined.', 3,
-       '<span class="m">x ≠ 1</span> and <span class="m">x ≠ −1</span>')),
-     ('alg-08', 'Challenge', 3, None, None)],
-]
-
-# how many ruled lines of answer space each section gets — the most
-# the paper takes while the whole exam, cover included, stays on 4 pages
-SPACE = [2, 4, 8]
+EMU_PER_MM = 36000
+# the figures are drawn at the size they read best; 0.7 is what lets the
+# geometry paper, cover included, stay on four pages
+FIG_SCALE = float(os.environ.get('FIG_SCALE', '0.7'))
 
 
-def question(spec):
-    key, sec, num, lead, extra = spec
-    topic = bank.BY_KEY[key]
-    items = dict(topic['sections'])[sec]
-    item = items[num - 1]
-    return topic, item, lead, extra
+# ------------------------------------------------------------- paragraphs ---
 
-
-def para(runs, spacing=True, align='left', after=0, keep=False):
+def para(runs, align='left', after=0, keep=False, indent=0):
     ppr = ['<w:pPr>']
     if keep:
         ppr.append('<w:keepNext/>')
     ppr.append(f'<w:spacing w:line="276" w:lineRule="auto" w:after="{after}"/>')
+    if indent:
+        ppr.append(f'<w:ind w:left="{indent}"/>')
     ppr.append(f'<w:jc w:val="{align}"/>')
     ppr.append('<w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:cs="Calibri"/>'
                '<w:sz w:val="24"/><w:szCs w:val="24"/></w:rPr></w:pPr>')
@@ -100,7 +60,7 @@ def ruled(n, after=160):
     paragraph: fifteen stray empty paragraphs cost most of a page.
     """
     def line(sp):
-        # pBdr's children are in a fixed order, and w:between is what makes
+        # pBdr's children come in a fixed order, and w:between is what makes
         # adjacent ruled paragraphs show a line each instead of merging
         return ('<w:p><w:pPr>'
                 '<w:pBdr>'
@@ -113,65 +73,133 @@ def ruled(n, after=160):
     return line(0) * (n - 1) + line(after)
 
 
-def exam_body(group):
-    # No title block: the cover page already carries the subject, the grade,
-    # the duration, the total and the instructions, and repeating them here
-    # cost a page.
-    out = []
-    n = 0
-    for (title, marks, intro), specs, space in zip(SECTIONS, PAPER, SPACE):
-        total = marks * len(specs)
-        out.append(para(omml.run(f'{title} ({len(specs)} questions × {marks} marks '
+def figure_height_mm(name, mm):
+    from PIL import Image
+    with Image.open(os.path.join(FIGDIR, name + '.png')) as im:
+        return mm * FIG_SCALE * im.height / im.width
+
+
+def lines_beside(name, mm, least):
+    """Enough ruled lines to reach past the floated figure.
+
+    A right-floated figure is laid out with allowOverlap off, so if the block
+    below it is shorter than the figure the next figure cannot take its place
+    on the right and is shunted into the middle of the page. Giving the
+    question as many lines as the figure is tall keeps every figure flush
+    right — and the lines beside it are working space the pupil can use.
+    """
+    return max(least, math.ceil(figure_height_mm(name, mm) / 7.0))
+
+
+def figure_run(name, rid, cid, mm):
+    """The picture, floated to the right with the working space beside it.
+
+    An inline figure takes a full-width band of its own and the answer lines
+    start below it, which costs a page over fifteen questions. Anchored to the
+    right of the question with square wrapping, the ruled lines run alongside.
+    """
+    from PIL import Image
+    mm *= FIG_SCALE
+    with Image.open(os.path.join(FIGDIR, name + '.png')) as im:
+        ratio = im.height / im.width
+    cx, cy = int(mm * EMU_PER_MM), int(mm * ratio * EMU_PER_MM)
+    a = 'http://schemas.openxmlformats.org/drawingml/2006/main'
+    pic = 'http://schemas.openxmlformats.org/drawingml/2006/picture'
+    return (f'<w:r><w:drawing>'
+            f'<wp:anchor distT="0" distB="0" distL="114300" distR="0" '
+            f'simplePos="0" relativeHeight="{251658240 + cid}" behindDoc="0" '
+            f'locked="0" layoutInCell="1" allowOverlap="0">'
+            f'<wp:simplePos x="0" y="0"/>'
+            f'<wp:positionH relativeFrom="column"><wp:align>right</wp:align>'
+            f'</wp:positionH>'
+            f'<wp:positionV relativeFrom="paragraph"><wp:posOffset>0'
+            f'</wp:posOffset></wp:positionV>'
+            f'<wp:extent cx="{cx}" cy="{cy}"/>'
+            f'<wp:effectExtent l="0" t="0" r="0" b="0"/>'
+            f'<wp:wrapSquare wrapText="left"/>'
+            f'<wp:docPr id="{cid}" name="Figure {cid}"/>'
+            f'<wp:cNvGraphicFramePr><a:graphicFrameLocks xmlns:a="{a}" '
+            f'noChangeAspect="1"/></wp:cNvGraphicFramePr>'
+            f'<a:graphic xmlns:a="{a}"><a:graphicData uri="{pic}">'
+            f'<pic:pic xmlns:pic="{pic}"><pic:nvPicPr>'
+            f'<pic:cNvPr id="{cid}" name="{name}.png"/><pic:cNvPicPr/>'
+            f'</pic:nvPicPr><pic:blipFill><a:blip r:embed="{rid}"/>'
+            f'<a:stretch><a:fillRect/></a:stretch></pic:blipFill>'
+            f'<pic:spPr><a:xfrm><a:off x="0" y="0"/>'
+            f'<a:ext cx="{cx}" cy="{cy}"/></a:xfrm>'
+            f'<a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr>'
+            f'</pic:pic></a:graphicData></a:graphic></wp:anchor>'
+            f'</w:drawing></w:r>')
+
+
+# ------------------------------------------------------------------ bodies ---
+
+def exam_body(paper, figs):
+    """The question pages. No title block: the cover already carries all of it."""
+    out, n = [], 0
+    for (title, marks, intro), items, space in zip(paper.SECTIONS, paper.PAPER,
+                                                   paper.SPACE):
+        total = marks * len(items)
+        out.append(para(omml.run(f'{title} ({len(items)} questions × {marks} marks '
                                  f'= {total} marks)', bold=True),
                         after=40, keep=True))
         out.append(para(omml.run(intro, italic=True), after=120, keep=True))
-        for spec in specs:
+        for item in items:
             n += 1
-            topic, item, lead, extra = question(spec)
+            extra = item.get('extra')
             runs = omml.run(f'{n}.   ', bold=True)
-            if extra:                                  # the part label goes first
-                runs += omml.run('(a)  ', bold=True)
-            if lead:
-                runs += omml.to_runs(lead)
-            runs += omml.to_runs(item['q'])
-            part_marks = marks - (extra[1] if extra else 0)
-            runs += omml.run(f'   ({part_marks} marks)')
-            out.append(para(runs, after=40, keep=True))
-            out.append(ruled(space if not extra else space - 2))
             if extra:
-                runs = omml.run('       (b)  ', bold=True) + omml.to_runs(extra[0])
-                runs += omml.run(f'   ({extra[1]} marks)')
+                runs += omml.run('(a)  ', bold=True)
+            runs += omml.to_runs(item['q'])
+            if item.get('fig'):
+                runs += figure_run(item['fig'], *figs[item['fig']])
+            # a non-breaking space so "(5 marks)" never splits across lines
+            runs += omml.run('   (%d\u00a0marks)'
+                             % (marks - (extra['marks'] if extra else 0)))
+            out.append(para(runs, after=40, keep=True))
+            want = space if not extra else max(space - 2, 2)
+            if item.get('fig'):
+                want = lines_beside(item['fig'], figs[item['fig']][2], want)
+            out.append(ruled(want))
+            if extra:
+                runs = (omml.run('       (b)  ', bold=True)
+                        + omml.to_runs(extra['q'])
+                        + omml.run('   (%d\u00a0marks)' % extra['marks']))
                 out.append(para(runs, after=40, keep=True))
                 out.append(ruled(2))
     out.append(para(omml.run('— End of the exam —', bold=True), align='center'))
     return ''.join(out)
 
 
-def key_body():
-    out = [para(omml.run(f'{SUBJECT.upper()} — {EXAM[0].upper()}{EXAM[1].upper()}'
-                         ' — MARKING KEY', bold=True), align='center', after=60),
-           para(omml.run(f'Grade 8 · {", ".join(GROUPS)} · {DATE} · teacher copy',
-                         bold=True), align='center', after=180)]
+def key_body(paper):
+    out = [para(omml.run(f'{paper.SUBJECT.upper()} — {EXAM[0].upper()}'
+                         f'{EXAM[1].upper()} — MARKING KEY', bold=True),
+                align='center', after=60),
+           para(omml.run(f'Grade 8 · {", ".join(GROUPS)} · {DATE} · '
+                         f'{paper.SUBTITLE} · teacher copy', bold=True),
+                align='center', after=180)]
     n = 0
-    for (title, marks, _), specs in zip(SECTIONS, PAPER):
+    for (title, marks, _), items in zip(paper.SECTIONS, paper.PAPER):
         out.append(para(omml.run(f'{title} — {marks} marks each', bold=True),
                         after=60, keep=True))
-        for spec in specs:
+        for item in items:
             n += 1
-            topic, item, lead, extra = question(spec)
             runs = omml.run(f'{n}.   ', bold=True) + omml.to_runs(item['a'])
-            runs += omml.run(f'      [{topic["title"]}, lessons {topic["lessons"]}]')
+            where = item['topic'] + (f', lessons {item["lessons"]}'
+                                     if item.get('lessons') else '')
+            runs += omml.run(f'      [{where}]')
             out.append(para(runs, after=40))
-            if extra:
+            if item.get('extra'):
                 out.append(para(omml.run('        (b)  ', bold=True)
-                                + omml.to_runs(extra[2]), after=40))
-    out.append(para(omml.run('Every answer in this key was re-derived '
-                             'symbolically by computer algebra before printing.',
-                             italic=True), after=0))
+                                + omml.to_runs(item['extra']['a']), after=40))
+    out.append(para(omml.run('Every numerical answer in this key was checked by '
+                             'computer algebra before printing.', italic=True)))
     return ''.join(out)
 
 
-def set_cover_fields(xml, group):
+# ------------------------------------------------------------------- cover ---
+
+def set_cover_fields(xml, group, subject):
     """Fill the school's cover template in place: values only, layout untouched."""
     def one(pattern, repl, label):
         new, k = re.subn(pattern, repl, xml, count=1, flags=re.S)
@@ -179,7 +207,7 @@ def set_cover_fields(xml, group):
             sys.exit(f'cover: could not set {label}')
         return new
 
-    xml = one(r'(<w:t[^>]*>)English(</w:t>)', r'\g<1>' + SUBJECT + r'\g<2>',
+    xml = one(r'(<w:t[^>]*>)English(</w:t>)', r'\g<1>' + subject + r'\g<2>',
               'subject')
     xml = one(r'(<w:t[^>]*>)10(</w:t>)(.*?)(<w:t[^>]*>)A(</w:t>)',
               r'\g<1>' + group[0] + r'\g<2>\g<3>\g<4>' + group[1] + r'\g<5>',
@@ -194,8 +222,7 @@ def set_cover_fields(xml, group):
     return xml
 
 
-def build(path, body, group=None, keep_cover=True):
-    """Splice a body into a copy of the school's cover document."""
+def build(path, body, figs, group=None, subject=None, keep_cover=True):
     with zipfile.ZipFile(COVER) as z:
         names = z.namelist()
         files = {n: z.read(n) for n in names}
@@ -203,14 +230,14 @@ def build(path, body, group=None, keep_cover=True):
     # fill the fields first: it changes the length of the document, and every
     # offset below is taken from the text as it then stands
     if keep_cover:
-        xml = set_cover_fields(xml, group)
+        xml = set_cover_fields(xml, group, subject)
 
     start = xml.index('<w:body>') + len('<w:body>')
     last = xml.rindex('<w:sectPr')
     end = xml.index('</w:sectPr>', last) + len('</w:sectPr>')
     cover_body, cover_sect = xml[start:last], xml[last:end]
 
-    # the exam pages: Normal margins, 2.54 cm every side (1440 twips)
+    # the question pages: Normal margins, 2.54 cm every side (1440 twips)
     exam_sect = re.sub(r'<w:pgMar[^/]*/>',
                        '<w:pgMar w:top="1440" w:right="1440" w:bottom="1440" '
                        'w:left="1440" w:header="708" w:footer="708" w:gutter="0"/>',
@@ -231,22 +258,66 @@ def build(path, body, group=None, keep_cover=True):
 
     files['word/document.xml'] = (xml[:start] + cover_body + body
                                   + exam_sect + xml[end:]).encode('utf-8')
+
+    if figs:
+        rels = files['word/_rels/document.xml.rels'].decode('utf-8')
+        add = ''.join(
+            f'<Relationship Id="{rid}" Type="http://schemas.openxmlformats.org/'
+            f'officeDocument/2006/relationships/image" Target="media/{name}.png"/>'
+            for name, (rid, _, _) in figs.items())
+        files['word/_rels/document.xml.rels'] = \
+            rels.replace('</Relationships>', add + '</Relationships>').encode('utf-8')
+        ct = files['[Content_Types].xml'].decode('utf-8')
+        if 'Extension="png"' not in ct:
+            ct = ct.replace('<Types ', '<Types ', 1).replace(
+                '</Types>', '<Default Extension="png" ContentType="image/png"/>'
+                            '</Types>')
+            files['[Content_Types].xml'] = ct.encode('utf-8')
+        for name in figs:
+            with open(os.path.join(FIGDIR, name + '.png'), 'rb') as fh:
+                files[f'word/media/{name}.png'] = fh.read()
+            names.append(f'word/media/{name}.png')
+
     with zipfile.ZipFile(path, 'w', zipfile.ZIP_DEFLATED) as z:
         for n in names:
             z.writestr(n, files[n])
     return path
 
 
+def figures_for(paper):
+    """{figure name: (relationship id, drawing id, width in mm)}"""
+    import json
+    path = os.path.join(FIGDIR, 'index.json')
+    widths = json.load(open(path)) if os.path.exists(path) else {}
+    used, out = [], {}
+    for items in paper.PAPER:
+        for item in items:
+            if item.get('fig') and item['fig'] not in used:
+                used.append(item['fig'])
+    for i, name in enumerate(used, start=1):
+        if name not in widths:
+            sys.exit(f'no figure called {name} — run figures.py')
+        out[name] = (f'rIdFig{i}', 100 + i, widths[name])
+    return out
+
+
 def main():
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument('--paper', nargs='*', default=['algebra', 'geometry'],
+                    choices=['algebra', 'geometry'])
+    opt = ap.parse_args()
     os.makedirs(OUT, exist_ok=True)
-    made = []
-    for g in GROUPS:
-        made.append(build(os.path.join(OUT, f'{g}-MATH-{EXAM_CODE}.docx'),
-                          exam_body(g), group=g))
-    made.append(build(os.path.join(OUT, f'8-MATH-{EXAM_CODE}-ANSWER-KEY.docx'),
-                      key_body(), keep_cover=False))
-    for p in made:
-        print('wrote', p)
+    for which in opt.paper:
+        paper = __import__('paper_' + which)
+        figs = figures_for(paper)
+        body = exam_body(paper, figs)
+        for g in GROUPS:
+            print('wrote', build(os.path.join(OUT, f'{g}-{paper.CODE}-{EXAM_CODE}.docx'),
+                                 body, figs, group=g, subject=paper.SUBJECT))
+        print('wrote', build(os.path.join(
+            OUT, f'8-{paper.CODE}-{EXAM_CODE}-ANSWER-KEY.docx'),
+            key_body(paper), {}, keep_cover=False))
 
 
 if __name__ == '__main__':

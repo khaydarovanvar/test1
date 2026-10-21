@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 234 120" width="234" height="120"><style>
+.o { fill:none; stroke:#1A1A1A; stroke-width:2.2; stroke-linejoin:round; }
+.d { fill:none; stroke:#1A1A1A; stroke-width:1.6; stroke-dasharray:5 3; }
+.h { fill:none; stroke:#1A1A1A; stroke-width:1.6; }
+.a { fill:none; stroke:#1A1A1A; stroke-width:1.5; }
+/* the figures print at about 70 % of the drawn width, so the lettering is
+   set large here to come out readable on paper */
+.t { font-family:Georgia,'Times New Roman',serif; font-size:18px; fill:#1A1A1A; }
+.ti { font-family:Georgia,'Times New Roman',serif; font-size:16px;
+      font-style:italic; fill:#1A1A1A; }
+.tk { stroke:#1A1A1A; stroke-width:1.6; }
+</style><polygon class="o" points="54.0,96.0 90.0,32.0 174.0,32.0 210.0,96.0"/><line class="d" x1="90.0" y1="32.0" x2="90.0" y2="96.0"/><polyline class="a" points="90.0,87.0 99.0,87.0 99.0,96.0"/><line class="tk" x1="74.6" y1="65.5" x2="69.4" y2="62.5"/><line class="tk" x1="189.4" y1="65.5" x2="194.6" y2="62.5"/><text class="t" x="41.0" y="104.0" text-anchor="middle">A</text><text class="t" x="82.0" y="26.0" text-anchor="middle">B</text><text class="t" x="182.0" y="26.0" text-anchor="middle">C</text><text class="t" x="223.0" y="104.0" text-anchor="middle">D</text><text class="ti" x="132.0" y="24.0" text-anchor="middle">10 cm</text><text class="ti" x="132.0" y="114.0" text-anchor="middle">22 cm</text><text class="ti" x="46.0" y="64.0" text-anchor="middle">10 cm</text></svg>

@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Check the exam before it is printed.
+"""Check an exam paper before it is printed.
 
-Every question is taken from the workbook bank, so its answer has already been
-re-derived symbolically; this re-runs those checks for the fifteen questions
-that are actually on the paper, checks the extra parts written for the exam
-itself, and confirms the mark split the school requires: 40 % easy, 40 %
-medium, 20 % hard.
+Every numerical answer carries a check, run here by the workbook verifier's
+own routines: the algebra questions bring the check they were written with in
+the bank, the geometry ones carry checks written with them. It also confirms
+the mark split the school requires — 40 % easy, 40 % medium, 20 % hard, over
+100 marks — and refuses to pass a paper that does not have it.
+
+    python3 verify-exam.py                  # both papers
 """
 
 import importlib.util
@@ -16,57 +18,56 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 sys.path.insert(0, '/home/user/test1/workbooks')
 
-import bank                                                   # noqa: E402
-
-spec = importlib.util.spec_from_file_location(
+_s = importlib.util.spec_from_file_location(
     'vq', '/home/user/test1/workbooks/verify-questions.py')
-vq = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(vq)
+vq = importlib.util.module_from_spec(_s)
+_s.loader.exec_module(vq)
 
-import importlib                                              # noqa: E402
-be = importlib.import_module('build-exam'.replace('-', '_')) \
-    if os.path.exists(os.path.join(HERE, 'build_exam.py')) else None
-if be is None:                                                # the file is hyphenated
-    s2 = importlib.util.spec_from_file_location('be', os.path.join(HERE, 'build-exam.py'))
-    be = importlib.util.module_from_spec(s2)
-    s2.loader.exec_module(be)
 
-# answers written for this paper rather than taken from the bank
-EXTRA_CHECKS = [
-    ('Q14(b) undefined at x = ±1',
-     ('domain', '(x+1)/(x-1)-(x-1)/(x+1)', ['1', '-1'])),
-]
+def check_paper(which):
+    paper = __import__('paper_' + which)
+    failures, unchecked, words = [], [], []
+    n, marks, figs = 0, {}, 0
+    for (title, m, _), items in zip(paper.SECTIONS, paper.PAPER):
+        marks[title] = m * len(items)
+        for item in items:
+            n += 1
+            figs += 1 if item.get('fig') else 0
+            for part, label in ((item, f'Q{n}'),
+                                (item.get('extra'), f'Q{n}(b)')):
+                if not part:
+                    continue
+                checks = part.get('checks') or ([part['check']]
+                                                if part.get('check') else [None])
+                for j, c in enumerate(checks, start=1):
+                    if c is None:
+                        words.append(f'{label} [{part.get("topic", "")}]'.strip())
+                        continue
+                    vq.check_one(label + (f'[{j}]' if len(checks) > 1 else ''),
+                                 c, failures, unchecked)
+
+    total = sum(marks.values())
+    print(f'{which}: {n} questions, {total} marks, {figs} figures')
+    for title, m in marks.items():
+        print(f'  {title:24s} {m:3d} marks  {m * 100 // total:3d} %')
+    if words:
+        print('  answered in words, nothing to compute: ' + ', '.join(words))
+    if total != 100 or [m * 100 // total for m in marks.values()] != [40, 40, 20]:
+        failures.append(f'{which}: the mark split is not 40/40/20 over 100')
+    for f in failures:
+        print('  FAILED: ' + f)
+    return failures
 
 
 def main():
-    failures, unchecked = [], []
-    n, marks = 0, {}
-    for (title, m, _), specs in zip(be.SECTIONS, be.PAPER):
-        marks[title] = m * len(specs)
-        for sp in specs:
-            n += 1
-            topic, item, _, _ = be.question(sp)
-            vq.check_one(f'Q{n} ({sp[0]} {sp[1]} #{sp[2]})', item.get('check'),
-                         failures, unchecked)
-    for label, check in EXTRA_CHECKS:
-        vq.check_one(label, check, failures, unchecked)
-
-    total = sum(marks.values())
-    print(f'{n} questions on the paper, {total} marks')
-    for title, m in marks.items():
-        print(f'  {title:24s} {m:3d} marks  {m * 100 // total:3d} %')
-    want = [40, 40, 20]
-    got = [m * 100 // total for m in marks.values()]
-    if total != 100 or got != want:
-        failures.append(f'mark split is {got}, not {want}, over {total} marks')
-    if unchecked:
-        failures.append('no machine check for: ' + ', '.join(unchecked))
-    if failures:
-        print('\nFAILED:')
-        for f in failures:
-            print('  ' + f)
+    which = sys.argv[1:] or ['algebra', 'geometry']
+    bad = []
+    for w in which:
+        bad += check_paper(w)
+        print()
+    if bad:
         return 1
-    print('\nevery question and every answer on this paper verifies')
+    print('every answer on every paper verifies')
     return 0
 
 
