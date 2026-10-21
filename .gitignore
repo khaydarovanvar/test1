@@ -34,3 +34,8 @@ workbooks/out/
 workbooks/*.title
 workbooks/*.pages.json
 workbooks/tmp/
+
+# The exam papers build-exam.py writes from the school's cover template.
+# They carry the cover's embedded fonts and the school logo, and they are
+# generated:  cd exams && python3 build-exam.py
+exams/out/
