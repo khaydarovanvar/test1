@@ -24,10 +24,14 @@ against the original confirms no other part of the file differs.
 
 | Section | Questions | Marks each | Marks | Share of questions |
 |---|---:|---:|---:|---:|
-| A — short answers | 8 | 3 | 24 | 40 % |
-| B — show your working | 8 | 5 | 40 | 40 % |
-| C — extended, in parts | 4 | 9 | 36 | 20 % |
-| **Total** | **20** | | **100** | |
+| A — short answers | 6 | 4 | 24 | 40 % |
+| B — show your working | 6 | 6 | 36 | 40 % |
+| C — in parts | 3 | 13, 13, 14 | 40 | 20 % |
+| **Total** | **15** | | **100** | |
+
+Four pages including the cover, with ruled space under every question. The paper
+opens straight at Section A — the subject, grade, date, duration, total and the
+instructions are all on the cover already, so repeating them was dead weight.
 
 Topics: the limit of a function, limits at infinity, the rules of
 differentiation, the derivative of a composite function, and the derivatives of
