@@ -28,7 +28,8 @@ OUT = os.path.join(HERE, 'out')
 
 TEACHER = ('Anvarbek', ' Khaydarov')
 SUBJECT = 'Mathematics'
-EXAM = ('1st Quarter', ' Exam')
+EXAM = ('Final', ' Exam')
+EXAM_CODE = 'FINAL'          # the exam type in the file name
 DATE = '26/10/2026'
 GROUPS = ('8A', '8G', '8P')
 MINUTES = 40
@@ -97,10 +98,10 @@ def ruled(n):
     line = ('<w:p><w:pPr>'
             # Word merges adjacent paragraphs that carry the same border and
             # draws only the outer edge, so the ruled lines need w:between too
-            '<w:pBdr><w:between w:val="dotted" w:sz="4" w:space="1" '
-            'w:color="999999"/>'
-            '<w:bottom w:val="dotted" w:sz="4" w:space="1" '
-            'w:color="999999"/></w:pBdr>'
+            '<w:pBdr>'
+            '<w:bottom w:val="dotted" w:sz="4" w:space="1" w:color="999999"/>'
+            '<w:between w:val="dotted" w:sz="4" w:space="1" w:color="999999"/>'
+            '</w:pBdr>'
             '<w:spacing w:line="360" w:lineRule="auto" w:after="0"/>'
             '<w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/>'
             '<w:sz w:val="24"/></w:rPr></w:pPr></w:p>')
@@ -239,9 +240,9 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     made = []
     for g in GROUPS:
-        made.append(build(os.path.join(OUT, f'{g}-MATH-MIDTERM.docx'),
+        made.append(build(os.path.join(OUT, f'{g}-MATH-{EXAM_CODE}.docx'),
                           exam_body(g), group=g))
-    made.append(build(os.path.join(OUT, '8-MATH-MIDTERM-ANSWER-KEY.docx'),
+    made.append(build(os.path.join(OUT, f'8-MATH-{EXAM_CODE}-ANSWER-KEY.docx'),
                       key_body(), keep_cover=False))
     for p in made:
         print('wrote', p)
