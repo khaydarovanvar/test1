@@ -13,6 +13,7 @@ from bankfmt import M                                         # noqa: E402
 
 SUBJECT = 'Mathematics'
 CODE = 'MATH'
+DATE = '26/10/2026'
 SUBTITLE = 'Algebraic fractions · lessons 1–22'
 
 SECTIONS = [

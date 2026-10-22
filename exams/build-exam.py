@@ -29,7 +29,8 @@ FIGDIR = os.path.join(HERE, 'figures')
 TEACHER = ('Anvarbek', ' Khaydarov')
 EXAM = ('Final', ' Exam')
 EXAM_CODE = 'FINAL'
-DATE = '26/10/2026'
+DATE = '26/10/2026'          # a paper may set its own; the two sit on
+                             # different days
 GROUPS = ('8A', '8G', '8P')
 MINUTES = 40
 EMU_PER_MM = 36000
@@ -175,7 +176,8 @@ def key_body(paper):
     out = [para(omml.run(f'{paper.SUBJECT.upper()} — {EXAM[0].upper()}'
                          f'{EXAM[1].upper()} — MARKING KEY', bold=True),
                 align='center', after=60),
-           para(omml.run(f'Grade 8 · {", ".join(GROUPS)} · {DATE} · '
+           para(omml.run(f'Grade 8 · {", ".join(GROUPS)} · '
+                         f'{getattr(paper, "DATE", DATE)} · '
                          f'{paper.SUBTITLE} · teacher copy', bold=True),
                 align='center', after=180)]
     n = 0
@@ -199,7 +201,7 @@ def key_body(paper):
 
 # ------------------------------------------------------------------- cover ---
 
-def set_cover_fields(xml, group, subject):
+def set_cover_fields(xml, group, subject, date):
     """Fill the school's cover template in place: values only, layout untouched."""
     def one(pattern, repl, label):
         new, k = re.subn(pattern, repl, xml, count=1, flags=re.S)
@@ -216,13 +218,14 @@ def set_cover_fields(xml, group, subject):
               'teacher first name')
     xml = one(r'(<w:t[^>]*>) Botiraliev(</w:t>)', r'\g<1>' + TEACHER[1] + r'\g<2>',
               'teacher surname')
-    xml = one(r'(<w:t[^>]*>)dd/mm/2026(</w:t>)', r'\g<1>' + DATE + r'\g<2>', 'date')
+    xml = one(r'(<w:t[^>]*>)dd/mm/2026(</w:t>)', r'\g<1>' + date + r'\g<2>', 'date')
     xml = one(r'(<w:t[^>]*>)Final(</w:t>)', r'\g<1>' + EXAM[0] + r'\g<2>',
               'exam name')
     return xml
 
 
-def build(path, body, figs, group=None, subject=None, keep_cover=True):
+def build(path, body, figs, group=None, subject=None, date=DATE,
+          keep_cover=True):
     with zipfile.ZipFile(COVER) as z:
         names = z.namelist()
         files = {n: z.read(n) for n in names}
@@ -230,7 +233,7 @@ def build(path, body, figs, group=None, subject=None, keep_cover=True):
     # fill the fields first: it changes the length of the document, and every
     # offset below is taken from the text as it then stands
     if keep_cover:
-        xml = set_cover_fields(xml, group, subject)
+        xml = set_cover_fields(xml, group, subject, date)
 
     start = xml.index('<w:body>') + len('<w:body>')
     last = xml.rindex('<w:sectPr')
@@ -314,7 +317,8 @@ def main():
         body = exam_body(paper, figs)
         for g in GROUPS:
             print('wrote', build(os.path.join(OUT, f'{g}-{paper.CODE}-{EXAM_CODE}.docx'),
-                                 body, figs, group=g, subject=paper.SUBJECT))
+                                 body, figs, group=g, subject=paper.SUBJECT,
+                                 date=getattr(paper, 'DATE', DATE)))
         print('wrote', build(os.path.join(
             OUT, f'8-{paper.CODE}-{EXAM_CODE}-ANSWER-KEY.docx'),
             key_body(paper), {}, keep_cover=False))

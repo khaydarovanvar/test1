@@ -8,6 +8,7 @@ trapezium. Every numerical answer carries a check the verifier runs.
 
 SUBJECT = 'Geometry'
 CODE = 'GEO'
+DATE = '27/10/2026'      # the geometry paper sits the day after the algebra one
 
 from bankfmt import F, M
 
