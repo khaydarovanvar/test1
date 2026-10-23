@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Тема — Олимпиадная математика, 8 класс</title>
+<meta name="description" content="Подробная тема олимпиадной математики для 8 класса: теория с полными доказательствами и задачи уровня AMC 8 и «Кенгуру» с решениями. Русский и английский.">
+<meta name="theme-color" content="#0F1B2A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/lesson.css">
+<style>.no-js .preloader{display:none}</style>
+</head>
+<body>
+<script>document.documentElement.classList.remove('no-js');</script>
+
+<header class="nav stuck">
+  <div class="container">
+    <a class="brand" href="index.html" aria-label="MathLab">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="21" fill="none" stroke="var(--gold)" stroke-width="2.4"/>
+        <path d="M14 15h20v4H21l8.6 8.4L21 36h13v4H14v-3.8l10.3-8.7L14 18.6z" fill="currentColor"/>
+      </svg>
+      <span><b>MathLab</b><small data-i18n="brandSub">AMC 8 · «Кенгуру» · 8 класс</small></span>
+    </a>
+    <div class="nav-mid" aria-hidden="true"><span class="hand" data-i18n="slogan">От первой задачи — до пьедестала</span></div>
+    <div class="nav-right">
+      <nav class="nav-links" aria-label="Main">
+        <a href="index.html" data-i18n="home">Topics</a>
+        
+      </nav>
+      <div class="langsw" aria-label="Language"></div>
+      <button class="burger" data-i18n-attr="aria-label:menuOpen" aria-label="Открыть меню" aria-expanded="false">
+        <span class="burger-label" data-i18n="menu">Меню</span>
+        <span class="burger-lines"><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu-overlay" aria-hidden="true">
+  <div class="menu-inner">
+    <nav class="menu-list" aria-label="Menu">
+      <div class="m-item"><a class="m-link" href="index.html" style="--i:0"><span class="m-num">01</span><span data-i18n="topics">Topics</span></a></div>
+    </nav>
+    <div class="menu-meta">
+      <div><h5 data-i18n="metaLevel">Уровень</h5><p data-i18n-html="metaLevelVal">8 класс<br>AMC 8, «Кенгуру», AoPS</p></div>
+      <div><h5 data-i18n="metaCovers">Разделы</h5><p data-i18n-html="metaCoversVal">Числа · Алгебра · Геометрия<br>Комбинаторика · Логика</p></div>
+      <div class="menu-slogan hand" data-i18n="slogan">От первой задачи — до пьедестала</div>
+    </div>
+  </div>
+</div>
+
+<section class="lhead" id="lhead"></section>
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="lgrid">
+      <div id="lbody"></div>
+      <aside class="ltoc" id="ltoc" aria-label="Contents"></aside>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="container">
+    <div class="foot-bot">
+      <span data-i18n="footBot">8 класс · подготовка к AMC 8 и «Кенгуру»</span>
+      <span class="hand" style="font-size:1.15rem;color:var(--gold)" data-i18n="slogan">От первой задачи — до пьедестала</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/vendor/katex/katex.min.js"></script>
+<script src="assets/vendor/katex/auto-render.min.js"></script>
+<script src="assets/data/topics.js"></script>
+<script src="assets/data/lessons/index.js"></script>
+<script src="assets/data/strings.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/lesson.js"></script>
+<script>
+/* Only the requested lesson is fetched — sixteen data files would be a slow
+   page for the sake of one. */
+(function () {
+  var n = parseInt((location.search.match(/[?&]t=(\d+)/) || [])[1], 10) || 1;
+  var has = (window.LESSON_INDEX || []).some(function (e) { return e.n === n; });
+  function go() { window.MLLESSON.start(); }
+  if (!has) { go(); return; }
+  var s = document.createElement('script');
+  s.src = 'assets/data/lessons/l' + (n < 10 ? '0' : '') + n + '.js';
+  s.onload = go;
+  s.onerror = go;
+  document.head.appendChild(s);
+})();
+</script>
+<script>ML.apply(STRINGS, ML.lang());</script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

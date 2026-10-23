@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Темы — Олимпиадная математика, 8 класс</title>
+<meta name="description" content="Разбор олимпиадной математики для 8 класса под AMC 8, «Кенгуру» и AoPS: девятнадцать тем, теория с доказательствами и задачи с решениями. На русском и английском.">
+<meta name="theme-color" content="#0F1B2A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/lesson.css">
+<style>
+  .no-js [data-reveal]{opacity:1;transform:none}
+  .lx-head{padding:calc(var(--nav-h) + 3rem) 0 2rem}
+  .lx-card{position:relative}
+  .lx-card .soon{opacity:.55;pointer-events:none}
+  .lx-stat{display:flex;gap:.7rem;flex-wrap:wrap;font-family:var(--font-mono);font-size:.7rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.remove('no-js');</script>
+
+<header class="nav stuck">
+  <div class="container">
+    <a class="brand" href="index.html" aria-label="MathLab">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="21" fill="none" stroke="var(--gold)" stroke-width="2.4"/>
+        <path d="M14 15h20v4H21l8.6 8.4L21 36h13v4H14v-3.8l10.3-8.7L14 18.6z" fill="currentColor"/>
+      </svg>
+      <span><b>MathLab</b><small data-i18n="brandSub">AMC 8 · «Кенгуру» · 8 класс</small></span>
+    </a>
+    <div class="nav-mid" aria-hidden="true"><span class="hand" data-i18n="slogan">От первой задачи — до пьедестала</span></div>
+    <div class="nav-right">
+      <nav class="nav-links" aria-label="Main">
+        <a href="index.html" class="on" data-t="topics">Topics</a>
+      </nav>
+      <div class="langsw" aria-label="Language"></div>
+      <button class="burger" data-i18n-attr="aria-label:menuOpen" aria-label="Открыть меню" aria-expanded="false">
+        <span class="burger-label" data-i18n="menu">Меню</span>
+        <span class="burger-lines"><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu-overlay" aria-hidden="true">
+  <div class="menu-inner">
+    <nav class="menu-list" aria-label="Menu">
+      <div class="m-item"><a class="m-link" href="index.html" style="--i:0"><span class="m-num">01</span><span data-t="topics">Topics</span></a></div>
+    </nav>
+    <div class="menu-meta">
+      <div><h5 data-i18n="metaLevel">Уровень</h5><p data-i18n-html="metaLevelVal">8 класс<br>AMC 8, «Кенгуру», AoPS</p></div>
+      <div class="menu-slogan hand" data-i18n="slogan">От первой задачи — до пьедестала</div>
+    </div>
+  </div>
+</div>
+
+<section class="lx-head">
+  <div class="container">
+    <span class="eyebrow" id="eyebrow">Lessons</span>
+    <h1 class="display-lg" id="lxTitle"></h1>
+    <p class="lead" style="margin-top:1.1rem" id="lxLede"></p>
+  </div>
+</section>
+
+<div class="marquee marquee--flat marquee--slow" aria-hidden="true">
+  <div class="marquee-track"><span id="lxMarquee"></span></div>
+</div>
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="topic-grid" id="lxGrid"></div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="container">
+    <div class="foot-bot">
+      <span data-i18n="footBot">8 класс · подготовка к AMC 8 и «Кенгуру»</span>
+      <span class="hand" style="font-size:1.15rem;color:var(--gold)" data-i18n="slogan">От первой задачи — до пьедестала</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/data/topics.js"></script>
+<script src="assets/data/lessons/index.js"></script>
+<script src="assets/data/strings.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/lesson.js"></script>
+<script>
+(function () {
+  var lang = window.MLLESSON.lang();
+  window.MLLESSON.mountSwitch(lang);
+  document.documentElement.lang = lang;
+
+  var T = {
+    ru: { home:'Главная', topics:'Темы',
+          eyebrow:'8 класс',
+          title:'Девятнадцать тем под AMC 8 и «Кенгуру»',
+          lede:'Каждая тема — это полная теория с доказательствами, ' +
+               'разобранные примеры и задачи с решениями: от разминки до ' +
+               'уровня последних задач AMC 8. Русский и английский, одна ' +
+               'кнопка.',
+          soon:'Скоро', open:'Открыть тему', res:'Ресурсы',
+          probs:['задача','задачи','задач'], secs:['раздел','раздела','разделов'] },
+    en: { home:'Home', topics:'Topics',
+          eyebrow:'Grade 8',
+          title:'Nineteen topics for AMC 8 and Kangaroo',
+          lede:'Every topic is the full theory with proofs, worked examples ' +
+               'and problems with solutions — from a warm-up to the level of ' +
+               'the last questions on AMC 8. Russian and English, one ' +
+               'button.',
+          soon:'Soon', open:'Open the topic', res:'Resources',
+          probs:['problem','problems'], secs:['section','sections'] }
+  }[lang];
+
+  function plural(n, forms) {
+    if (lang !== 'ru') return n + ' ' + forms[n === 1 ? 0 : 1];
+    var a = n % 10, b = n % 100;
+    var f = (a === 1 && b !== 11) ? 0 : (a >= 2 && a <= 4 && (b < 12 || b > 14)) ? 1 : 2;
+    return n + ' ' + forms[f];
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c];
+    });
+  }
+
+  document.title = T.topics + ' — MathLab · ' + T.eyebrow;
+  document.getElementById('eyebrow').textContent = T.eyebrow;
+  document.getElementById('lxTitle').textContent = T.title;
+  document.getElementById('lxLede').textContent = T.lede;
+  Array.prototype.forEach.call(document.querySelectorAll('[data-t]'), function (el) {
+    el.textContent = T[el.getAttribute('data-t')] || el.textContent;
+  });
+
+  var have = {};
+  (window.LESSON_INDEX || []).forEach(function (e) { have[e.n] = e; });
+
+  function pick(v) {
+    if (v && typeof v === 'object' && !Array.isArray(v)) {
+      return v[lang] != null ? v[lang] : v.en;
+    }
+    return v;
+  }
+
+  document.getElementById('lxMarquee').innerHTML = TOPICS.map(function (t) {
+    return esc(have[t.n] ? pick(have[t.n].title) : pick(t.title));
+  }).join(' <em>✦</em> ') + ' <em>✦</em> ';
+
+  document.getElementById('lxGrid').innerHTML = TOPICS.map(function (t, i) {
+    var L = have[t.n];
+    var title = pick(L ? L.title : t.title);
+    var href = L ? ('lesson.html?t=' + t.n + '&lang=' + lang) : 'index.html';
+    return '<a class="tcard lx-card' + (L ? '' : ' soon') + '" data-cat="' + t.catKey +
+      '" data-reveal data-reveal-delay="' + (i % 4) + '" href="' + href + '">' +
+      '<span class="tnum">' + (t.n < 10 ? '0' : '') + t.n + '</span>' +
+      '<h3>' + esc(title) + '</h3>' +
+      '<p>' + esc(pick(L && L.sub ? L.sub : t.tip)) + '</p>' +
+      '<span class="tfoot">' +
+        (L ? '<span class="lx-stat"><span>' + esc(plural(L.sections, T.secs)) + '</span>' +
+             '<span>' + esc(plural(L.problems, T.probs)) + '</span></span>'
+           : '<span class="tcat">' + esc(T.soon) + '</span>') +
+      '<span class="tgo">' + esc(L ? T.open : T.res) + ' →</span></span></a>';
+  }).join('');
+})();
+</script>
+<script>ML.apply(STRINGS, ML.lang());</script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

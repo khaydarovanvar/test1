@@ -1,0 +1,200 @@
+/* ==========================================================================
+   Lesson pages — theory blocks, worked examples and the problem set.
+   Loaded after main.css; it reuses every token defined there.
+   ========================================================================== */
+
+/* ---------- lesson head ---------- */
+.lhead{padding:calc(var(--nav-h) + 3rem) 0 2.2rem;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,var(--t) 0%,transparent 100%)}
+.lhead .crumb{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);margin-bottom:1rem}
+.lhead .crumb a:hover{color:var(--c)}
+.lhead h1{font-size:clamp(2rem,4.6vw,3.4rem);letter-spacing:-.025em;max-width:22ch}
+.lhead .lsub{margin-top:1rem;font-size:clamp(1rem,1.3vw,1.14rem);color:var(--muted);max-width:62ch}
+.lhead .lmeta{display:flex;gap:1.3rem;flex-wrap:wrap;margin-top:1.5rem;
+  font-family:var(--font-mono);font-size:.76rem;color:var(--muted)}
+.lhead .lmeta b{color:var(--c);font-weight:500}
+.lhead .lbig{position:absolute;right:2vw;top:50%;transform:translateY(-44%);
+  font-family:var(--font-display);font-weight:700;font-size:clamp(7rem,17vw,14rem);
+  color:var(--c);opacity:.08;line-height:.8;pointer-events:none;user-select:none}
+
+/* ---------- goals ---------- */
+.goals{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:1.5rem 1.6rem;margin-bottom:2.6rem}
+.goals h2{font-size:1.02rem;margin-bottom:.9rem;display:flex;align-items:center;gap:.6rem}
+.goals h2::before{content:"";width:18px;height:2px;background:var(--c);display:block}
+.goals li{position:relative;padding-left:1.5rem;margin-bottom:.5rem;font-size:.94rem}
+.goals li::before{content:"→";position:absolute;left:0;color:var(--c);font-weight:700}
+
+/* ---------- lesson layout ---------- */
+.lgrid{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:3rem;align-items:start}
+.lgrid>#lbody{min-width:0}
+.ltoc{position:sticky;top:calc(var(--nav-h) + 1rem);font-size:.86rem}
+.ltoc h3{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.8rem;font-weight:500}
+.ltoc a{display:block;padding:.34rem 0 .34rem .8rem;border-left:2px solid var(--line);
+  color:var(--muted);transition:color .25s,border-color .25s}
+.ltoc a:hover,.ltoc a.on{color:var(--c);border-color:var(--c)}
+
+/* ---------- section ---------- */
+.lsec{margin-bottom:3.4rem;scroll-margin-top:calc(var(--nav-h) + 1rem)}
+.lsec>h2{font-size:clamp(1.35rem,2.4vw,1.85rem);letter-spacing:-.015em;margin-bottom:1.2rem;
+  display:flex;align-items:baseline;gap:.8rem}
+.lsec>h2 .sn{font-family:var(--font-mono);font-size:.72rem;color:var(--c);font-weight:500;flex:none}
+.lsec p{margin-bottom:1rem;line-height:1.72}
+.lsec p:last-child{margin-bottom:0}
+.lsec b,.lsec strong{font-weight:600;color:var(--ink)}
+.lsec em{font-style:italic;color:var(--muted)}
+
+/* ---------- theory blocks ---------- */
+.blk{border-radius:var(--radius-sm);padding:1.1rem 1.3rem;margin-bottom:1.3rem;line-height:1.7}
+.blk .bt{display:block;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:.5rem;font-weight:500}
+
+.blk--def{background:var(--t);border-left:3px solid var(--c)}
+.blk--def .bt{color:var(--c)}
+.blk--thm,.blk--lemma{background:var(--gold-soft);border-left:3px solid var(--gold)}
+.blk--thm .bt,.blk--lemma .bt{color:#8A6D1F}
+.blk--proof{background:transparent;border:1px dashed var(--line);color:var(--muted);font-size:.94rem}
+.blk--proof .bt{color:var(--muted)}
+.blk--note{background:var(--line-soft)}
+.blk--note .bt{color:var(--muted)}
+.blk--warn{background:#FBEDE6;border-left:3px solid var(--geo)}
+.blk--warn .bt{color:var(--geo)}
+.blk--idea{background:#EDECFD;border-left:3px solid var(--comb)}
+.blk--idea .bt{color:var(--comb)}
+
+.blk ul,.blk ol,.lsec>ul,.lsec>ol{margin:.2rem 0 0;padding-left:0}
+.lsec>ul,.lsec>ol{margin-bottom:1.3rem}
+.lsec li{position:relative;padding-left:1.7rem;margin-bottom:.7rem;line-height:1.68}
+.lsec ul>li::before{content:"•";position:absolute;left:.45rem;color:var(--c);font-weight:700}
+.lsec ol{counter-reset:li}
+.lsec ol>li{counter-increment:li}
+.lsec ol>li::before{content:counter(li);position:absolute;left:0;top:.15rem;
+  font-family:var(--font-mono);font-size:.7rem;color:var(--c);font-weight:500;
+  width:1.15rem;height:1.15rem;display:grid;place-items:center;background:var(--t);border-radius:5px}
+
+/* ---------- worked example ---------- */
+.ex{border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:1.4rem;
+  background:var(--paper)}
+.ex-q{padding:.95rem 1.2rem;background:var(--line-soft);font-weight:600;
+  display:flex;gap:.7rem;align-items:baseline}
+.ex-q .tag{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--c);flex:none;padding-top:.2rem}
+.ex-steps{padding:.4rem 1.2rem}
+.ex-steps li{position:relative;padding:.7rem 0 .7rem 2rem;border-bottom:1px dashed var(--line-soft);
+  line-height:1.65}
+.ex-steps li:last-child{border-bottom:0}
+.ex-steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:.78rem;
+  width:1.3rem;height:1.3rem;display:grid;place-items:center;border-radius:50%;
+  background:var(--t);color:var(--c);font-family:var(--font-mono);font-size:.66rem;font-weight:500}
+.ex-steps{counter-reset:st}
+.ex-ans{padding:.85rem 1.2rem;background:var(--t);font-weight:600;
+  display:flex;gap:.6rem;align-items:baseline;flex-wrap:wrap}
+.ex-ans .tag{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--c)}
+
+/* ---------- tables ---------- */
+.ltable{overflow-x:auto;margin-bottom:1.4rem;border:1px solid var(--line);border-radius:var(--radius-sm)}
+.ltable table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:min(100%,420px)}
+.ltable th{text-align:left;padding:.7rem .95rem;background:var(--line-soft);
+  font-family:var(--font-mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;white-space:nowrap}
+.ltable td{padding:.7rem .95rem;border-top:1px solid var(--line-soft);vertical-align:top}
+
+/* ---------- problems ---------- */
+.psec{margin-top:1rem}
+.pbar{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-bottom:1.6rem}
+.pbar .sp{margin-left:auto;font-family:var(--font-mono);font-size:.74rem;color:var(--muted)}
+.prob{border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--paper);
+  margin-bottom:1rem;overflow:hidden}
+.prob-top{display:flex;gap:.7rem;align-items:center;flex-wrap:wrap;
+  padding:.85rem 1.1rem .1rem}
+.prob-n{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--c)}
+.prob-src{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;color:var(--muted)}
+.lvl{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.2rem .5rem;border-radius:5px;font-weight:500;margin-left:auto}
+.lvl-1{background:#E3F5EE;color:#0F6E56}
+.lvl-2{background:#FBF0DC;color:#8A6D1F}
+.lvl-3{background:#FBEDE6;color:#B0451F}
+.prob-q{padding:.7rem 1.1rem 1rem;line-height:1.7}
+.prob-acts{display:flex;gap:.5rem;flex-wrap:wrap;padding:0 1.1rem 1rem}
+.pbtn{padding:.42rem .9rem;border-radius:999px;font-size:.8rem;font-weight:600;
+  border:1px solid var(--line);transition:all .25s var(--ease-out)}
+.pbtn:hover{border-color:var(--c);color:var(--c)}
+.pbtn.on{background:var(--t);border-color:var(--c);color:var(--c)}
+.reveal{display:none;padding:1rem 1.1rem;border-top:1px solid var(--line-soft);line-height:1.72}
+.reveal.on{display:block}
+.reveal--hint{background:var(--gold-soft)}
+.reveal--sol{background:var(--line-soft)}
+.reveal .bt{display:block;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+
+/* ---------- prev / next ---------- */
+.lnav{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  padding-top:2rem;margin-top:3rem;border-top:1px solid var(--line)}
+.lnav a{display:flex;flex-direction:column;gap:.2rem;font-size:.95rem;font-weight:600;max-width:44%}
+.lnav small{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);font-weight:400}
+.lnav a:hover{color:var(--c)}
+.lnav .next{text-align:right;margin-left:auto}
+
+/* a blank line inside a block: a block-level span keeps the markup valid */
+.vsp{display:block;height:.85em}
+
+/* ---------- figures ---------- */
+/* The SVG carries a viewBox but no width/height, so it takes the column width
+   and keeps its ratio; the max-width stops a small diagram being blown up. */
+.lfig{margin:1.5rem 0;text-align:center}
+.lfig svg{width:100%;max-width:var(--fw,420px);height:auto;display:inline-block;
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-sm);padding:.6rem}
+.lfig svg .ln{stroke:var(--ink);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.lfig svg .lnc{stroke:var(--c);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.lfig svg .dsh{stroke:var(--muted);stroke-width:1.2;fill:none;stroke-dasharray:5 4}
+.lfig svg .fil{fill:var(--t);stroke:none}
+.lfig svg .pt{fill:var(--ink);stroke:var(--paper);stroke-width:1.5}
+.lfig svg .ptc{fill:var(--c);stroke:var(--paper);stroke-width:1.5}
+.lfig svg text{fill:var(--ink);font-family:var(--font-mono);font-size:13px;
+  font-style:italic;dominant-baseline:middle}
+.lfig svg text.sm{font-size:11px;fill:var(--muted);font-style:normal}
+.lfig svg text.acc{fill:var(--c);font-style:normal;font-size:11px}
+.lfig--prob{margin:.2rem 0 1rem;padding-inline:1.15rem}
+.lfig figcaption{margin-top:.6rem;font-size:.82rem;color:var(--muted);
+  max-width:52ch;margin-inline:auto;line-height:1.5}
+
+/* ---------- KaTeX fitting ---------- */
+.katex{font-size:1.045em}
+.katex-display{margin:1.1rem 0;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+.katex-display>.katex{white-space:nowrap}
+.blk .katex-display{margin:.8rem 0}
+
+/* ---------- responsive ---------- */
+@media (max-width:1000px){
+  /* minmax(0,…) — a plain 1fr refuses to shrink below the widest formula,
+     and the page then clips instead of wrapping */
+  .lgrid{grid-template-columns:minmax(0,1fr);gap:1.6rem}
+  .ltoc{position:static;order:-1;border:1px solid var(--line);border-radius:var(--radius-sm);
+    padding:.9rem 1rem;background:var(--paper)}
+  .ltoc a{display:inline-block;border-left:0;border-bottom:2px solid transparent;padding:.25rem .5rem}
+  .ltoc a:hover,.ltoc a.on{border-color:transparent;background:var(--t);border-radius:6px}
+}
+@media (max-width:640px){
+  .lhead{padding-top:calc(var(--nav-h) + 1.8rem)}
+  .lhead .lbig{display:none}
+  .blk{padding:.95rem 1rem}
+  .ex-steps{padding:.3rem .9rem}
+  .ex-q,.ex-ans{padding-inline:1rem}
+  .prob-top,.prob-q,.prob-acts,.reveal{padding-inline:.95rem}
+  .lvl{margin-left:0}
+  .katex{font-size:1em}
+  /* long display formulas scroll rather than overflow the phone */
+  .katex-display{margin-inline:-.95rem;padding-inline:.95rem}
+}
+@media (max-width:640px){
+  .lfig{margin:1.2rem 0}
+  .lfig svg text{font-size:15px}
+  .lfig svg text.sm,.lfig svg text.acc{font-size:13px}
+}
+
+/* a fourth difficulty band, for international-level problems */
+.lvl-4{background:#EDE9FE;color:#5B21B6}
+.psrc-note{font-size:.8rem;color:var(--muted);margin:-.4rem 0 1.4rem;max-width:70ch;line-height:1.55}
