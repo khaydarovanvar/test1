@@ -225,7 +225,7 @@ def set_cover_fields(xml, group, subject, date):
 
 
 def build(path, body, figs, group=None, subject=None, date=DATE,
-          keep_cover=True):
+          keep_cover=True, cols=1):
     with zipfile.ZipFile(COVER) as z:
         names = z.namelist()
         files = {n: z.read(n) for n in names}
@@ -245,6 +245,9 @@ def build(path, body, figs, group=None, subject=None, date=DATE,
                        '<w:pgMar w:top="1440" w:right="1440" w:bottom="1440" '
                        'w:left="1440" w:header="708" w:footer="708" w:gutter="0"/>',
                        cover_sect)
+    if cols > 1:
+        exam_sect = re.sub(r'<w:cols[^/]*/>',
+                           f'<w:cols w:num="{cols}" w:space="397"/>', exam_sect)
 
     if keep_cover:
         # the cover keeps its own page setup: its section ends on its last

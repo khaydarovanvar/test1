@@ -24,6 +24,23 @@ vq = importlib.util.module_from_spec(_s)
 _s.loader.exec_module(vq)
 
 
+def check_prep(which):
+    """The revision sheets: a flat list of questions, no marks to split."""
+    paper = __import__(f'paper_{which}_prep')
+    failures, unchecked, words = [], [], []
+    for i, item in enumerate(paper.QUESTIONS, start=1):
+        if not item.get('check'):
+            words.append(f'Q{i}')
+            continue
+        vq.check_one(f'{which} prep Q{i}', item['check'], failures, unchecked)
+    print(f'{which} preparation: {len(paper.QUESTIONS)} questions')
+    if words:
+        print('  stated from a property, nothing to compute: ' + ', '.join(words))
+    for f in failures:
+        print('  FAILED: ' + f)
+    return failures
+
+
 def check_paper(which):
     paper = __import__('paper_' + which)
     failures, unchecked, words = [], [], []
@@ -64,10 +81,11 @@ def main():
     bad = []
     for w in which:
         bad += check_paper(w)
+        bad += check_prep(w)
         print()
     if bad:
         return 1
-    print('every answer on every paper verifies')
+    print('every answer on every paper and every revision sheet verifies')
     return 0
 
 
