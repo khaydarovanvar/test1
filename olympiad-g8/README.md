@@ -19,12 +19,25 @@ Then open <http://localhost:8000/>. Two pages:
 
 Russian is the default; `?lang=en` switches, and the choice sticks.
 
+`standalone.html` is the whole track in one self-contained file — every
+stylesheet, script, lesson and KaTeX font inlined, with hash routing (`#/` for
+the hub, `#/t9` for a topic). It opens straight from the filesystem with no
+server, which is what to send someone who just wants to read it. Only the web
+fonts stay remote, so the display face falls back to a system serif offline.
+Rebuild it after any change:
+
+```
+python3 olympiad-g8/build-standalone.py
+```
+
 ## Structure
 
 ```
 olympiad-g8/
   index.html              the topic hub
   lesson.html             one topic, rendered from data
+  standalone.html         generated: the whole track in one file
+  build-standalone.py     builds standalone.html
   TOPIC-PLAN.md           the nineteen-topic breakdown, in prose
   assets/
     css/main.css          design tokens, typography, components

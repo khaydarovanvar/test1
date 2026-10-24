@@ -366,6 +366,9 @@
         return '<button data-lang="' + l + '"' + (l === lang ? ' class="on"' : '') + '>' +
           (l === 'ru' ? 'РУС' : 'ENG') + '</button>';
       }).join('');
+      /* One listener per switch, however often the buttons are redrawn. */
+      if (sw.getAttribute('data-bound')) return;
+      sw.setAttribute('data-bound', '1');
       sw.addEventListener('click', function (e) {
         var b = e.target.closest('[data-lang]');
         if (b) setLang(b.getAttribute('data-lang'));
