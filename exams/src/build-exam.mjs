@@ -41,11 +41,13 @@ if (ANSWERS) body += `<div class="title">${esc(meta.file)} — MARKING SCHEME</d
 
 for (const s of sections) {
   body += `<div class="sec">${esc(s.head)}</div><div class="ins">${esc(s.instruction)}</div>`;
-  for (const [q, marks, ans] of s.questions) {
+  for (const [q, marks, ans, sol] of s.questions) {
     n += 1;
     body += `<div class="q"><span class="num">${n}.</span>` +
             `<span class="txt">${tx(q)}<span class="mk">(${marks} marks)</span></span></div>`;
-    body += ANSWERS ? `<div class="ans">Answer: ${tx(ans)}</div>` : rules(s.lines);
+    body += ANSWERS
+      ? `<div class="ans"><b>Answer:</b> ${tx(ans)}</div><div class="sol">${tx(sol)}</div>`
+      : rules(s.lines);
   }
 }
 
@@ -55,13 +57,15 @@ for (const [stem, parts] of sectionC.questions) {
   const total = parts.reduce((a, p) => a + p[1], 0);
   body += `<div class="q"><span class="num">${n}.</span>` +
           `<span class="txt">${tx(stem)}<span class="mk">(${total} marks)</span></span></div>`;
-  parts.forEach(([ptext, pm, pans], i) => {
+  parts.forEach(([ptext, pm, pans, psol], i) => {
     body += `<div class="q part"><span class="num">(${'ab'[i]})</span>` +
             `<span class="txt">${tx(ptext)}<span class="mk">(${pm} marks)</span></span></div>`;
-    body += ANSWERS ? `<div class="ans part">Answer: ${tx(pans)}</div>` : rules(sectionC.lines);
+    body += ANSWERS
+      ? `<div class="ans part"><b>Answer:</b> ${tx(pans)}</div><div class="sol part">${tx(psol)}</div>`
+      : rules(sectionC.lines);
   });
 }
-body += `<div class="end">${esc(meta.endLine)}</div>`;
+body += `<div class="end">${esc(ANSWERS ? '— End of the marking scheme —' : meta.endLine)}</div>`;
 
 const html = `<!doctype html><html><head><meta charset="utf-8">
 <link rel="stylesheet" href="katex.min.css">
@@ -78,8 +82,10 @@ const html = `<!doctype html><html><head><meta charset="utf-8">
   .mk { white-space: nowrap; margin-left: 8pt; }
   .lines { margin: 0 0 11pt; }
   .ln { border-bottom: 1px dotted #777; height: 15pt; }
-  .ans { margin: 0 0 7pt 26pt; }
+  .ans { margin: 0 0 1pt 26pt; }
   .ans.part { margin-left: 44pt; }
+  .sol { margin: 0 0 9pt 26pt; color: #333; break-inside: avoid; }
+  .sol.part { margin-left: 44pt; }
   .end { text-align: center; font-weight: bold; margin-top: 16pt; }
   .title { text-align: center; font-weight: bold; margin-bottom: 2pt; }
   .sub { text-align: center; font-style: italic; margin-bottom: 10pt; }
