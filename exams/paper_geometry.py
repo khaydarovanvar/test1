@@ -133,3 +133,68 @@ C = [
 ]
 
 PAPER = [A, B, C]
+
+# The worked solutions for the marking key, by question number. Kept apart
+# from the questions so the key can be rewritten without disturbing the paper.
+SOLUTIONS = {
+    1: 'The three angles of a triangle add to 180°, so the third is '
+       + M('180° − 40° − 75°') + '.',
+    2: 'The interior angles of an ' + M('n') + '-sided polygon add to '
+       + M('180°(n − 2)') + '; with ' + M('n = 7') + ' that is ' + M('180° · 5')
+       + '.',
+    3: 'The exterior angles of a convex polygon add to 360°, and in a regular '
+       'one they are all equal, so there are ' + M('360° ÷ 24°') + ' of them.',
+    4: M('AD ∥ BC') + ', so ' + M('∠A') + ' and ' + M('∠B') + ' are co-interior '
+       'angles and add to 180°: ' + M('180° − 68°') + '.',
+    5: 'A rectangle has right angles, so triangle ' + M('ABC') + ' is '
+       'right-angled at ' + M('B') + ', and ' + M('BC = AD = 8') + ' cm. By '
+       'Pythagoras ' + M('AC² = 6² + 8² = 100') + '.',
+    6: 'The diagonals of a rhombus are perpendicular, so the area is half their '
+       'product: ' + M('½ · 6 · 8') + '.',
+    7: M('BC ∥ AD') + ', and the leg ' + M('AB') + ' crosses both, so '
+       + M('∠A') + ' and ' + M('∠B') + ' are co-interior: ' + M('∠A + ∠B = 180°')
+       + '.',
+    8: 'Draw ' + M('AC') + '. The alternate angles at ' + M('A') + ' and '
+       + M('C') + ' are equal and ' + M('AB = CD') + ', so the two triangles are '
+       'congruent (SAS) and the other pair of sides is equal and parallel too.',
+    9: 'The angles of a pentagon add to ' + M('180°(5 − 2) = 540°') + '. The '
+       'three given ones make 330°, so ' + M('x + (x + 30°) = 210°') + ', giving '
+       + M('2x = 180°') + '.',
+    10: 'Opposite sides are equal, so the perimeter is ' + M('2(AB + BC) = 46')
+        + ' and ' + M('AB + BC = 23') + '. With ' + M('AB = BC + 5') + ' that is '
+        + M('2·BC + 5 = 23') + '.',
+    11: 'The diagonals bisect each other at right angles, so half of '
+        + M('AC') + ' is 6 cm and half of ' + M('BD') + ' is '
+        + M('√(10² − 6²) = 8') + ' cm. So ' + M('BD = 16') + ' cm and the area '
+        'is ' + M('½ · 12 · 16') + '.',
+    12: 'The perpendiculars from ' + M('B') + ' and ' + M('C') + ' cut equal '
+        'pieces off ' + M('AD') + ', each ' + M('(22 − 10) ÷ 2 = 6') + ' cm. '
+        'Pythagoras in that right triangle gives ' + M('√(10² − 6²)') + '.',
+    13: 'The diagonals of a rectangle are equal and bisect each other, so '
+        + M('OA = OB') + ' and triangle ' + M('AOB') + ' is isosceles. Its base '
+        'angles are ' + M('(180° − 130°) ÷ 2') + '.',
+    14: 'Two equal angles in a triangle face two equal sides, which is what makes '
+        + M('ABK') + ' isosceles and gives ' + M('BK = AB') + '. Note it is the '
+        'parallel ' + M('AD ∥ BC') + ' that turns the bisected angle into '
+        + M('∠AKB') + '.',
+    15: 'Interior and exterior angles at a vertex are supplementary, so the '
+        'exterior angle is ' + M('180° − 156° = 24°') + ', and a convex polygon '
+        'has ' + M('360° ÷ 24° = 15') + ' of them.',
+}
+
+EXTRA_SOLUTIONS = {
+    14: M('BK = AB = 7') + ' cm from part (a), and ' + M('K') + ' lies on '
+        + M('BC') + ', so ' + M('KC = BC − BK = 11 − 7') + '.',
+    15: 'Each vertex joins to all but itself and its two neighbours, so there are '
+        + M('n(n − 3)') + ' such joins, each counted twice: '
+        + M('15 · 12 ÷ 2') + '.',
+}
+
+_n = 0
+for _section in PAPER:
+    for _item in _section:
+        _n += 1
+        if _n in SOLUTIONS:
+            _item['sol'] = SOLUTIONS[_n]
+        if _item.get('extra') and _n in EXTRA_SOLUTIONS:
+            _item['extra']['sol'] = EXTRA_SOLUTIONS[_n]

@@ -138,7 +138,10 @@ def _math(s):
                     out = []
                 elif part == ')' and stack:
                     inner, out = out, stack.pop()
-                    out.append('<m:d><m:dPr><m:ctrlPr/></m:dPr>'
+                    # the brackets must be named: an m:d with no begChr/endChr
+                    # is drawn as a pair of vertical bars by LibreOffice
+                    out.append('<m:d><m:dPr><m:begChr m:val="("/>'
+                               '<m:endChr m:val=")"/><m:ctrlPr/></m:dPr>'
                                f'<m:e>{"".join(inner)}</m:e></m:d>')
                 elif part:
                     out.extend(_text_runs(part))
@@ -156,7 +159,6 @@ def to_runs(html, bold=False):
     # too, or its structure is dropped and the numerator and denominator run
     # together on one line
     html = re.sub(r'<span class="(m|frac)">', lambda m: '\x00' + m.group(0), html)
-    html = html.replace('</span>\x00', '</span>')
     out, i = [], 0
     while i < len(html):
         if html.startswith('\x00<span', i):
@@ -186,4 +188,6 @@ def to_runs(html, bold=False):
                      if p >= 0] or [len(html)])
             out.append(run(unescape(html[i:j]), bold=bold))
             i = j
-    return ''.join(out)
+    # Two equations side by side with nothing between them render with a
+    # placeholder glyph in the gap, so adjacent ones are joined into one.
+    return ''.join(out).replace('</m:oMath><m:oMath>', '')

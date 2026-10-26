@@ -179,6 +179,10 @@ def key_body(paper):
            para(omml.run(f'Grade 8 · {", ".join(GROUPS)} · '
                          f'{getattr(paper, "DATE", DATE)} · '
                          f'{paper.SUBTITLE} · teacher copy', bold=True),
+                align='center', after=60),
+           para(omml.run('Each answer is followed by the working it should come '
+                         'from. Award the marks for a sound method even where '
+                         'the arithmetic slips.', italic=True),
                 align='center', after=180)]
     n = 0
     for (title, marks, _), items in zip(paper.SECTIONS, paper.PAPER):
@@ -190,12 +194,21 @@ def key_body(paper):
             where = item['topic'] + (f', lessons {item["lessons"]}'
                                      if item.get('lessons') else '')
             runs += omml.run(f'      [{where}]')
-            out.append(para(runs, after=40))
+            out.append(para(runs, after=20, keep=True))
+            if item.get('sol'):
+                out.append(para(omml.run('→  ') + omml.to_runs(item['sol']),
+                                after=60, indent=397))
             if item.get('extra'):
-                out.append(para(omml.run('        (b)  ', bold=True)
-                                + omml.to_runs(item['extra']['a']), after=40))
+                out.append(para(omml.run('(b)  ', bold=True)
+                                + omml.to_runs(item['extra']['a']),
+                                after=20, indent=397, keep=True))
+                if item['extra'].get('sol'):
+                    out.append(para(omml.run('→  ')
+                                    + omml.to_runs(item['extra']['sol']),
+                                    after=60, indent=794))
     out.append(para(omml.run('Every numerical answer in this key was checked by '
-                             'computer algebra before printing.', italic=True)))
+                             'computer algebra before printing.', italic=True),
+                    after=0))
     return ''.join(out)
 
 
