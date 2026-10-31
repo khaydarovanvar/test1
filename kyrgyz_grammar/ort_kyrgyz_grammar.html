@@ -1,0 +1,929 @@
+<title>ОРТ Кыргыз тили грамматикасы</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --bg: #fafaf7;
+  --fg: #1a1a1a;
+  --fg-muted: #5c5c5c;
+  --accent: #2d5a9e;
+  --accent-light: #e8f0fb;
+  --card-bg: #ffffff;
+  --card-border: #e0ddd6;
+  --correct: #1a7a3a;
+  --correct-bg: #e6f5eb;
+  --warn: #b45309;
+  --warn-bg: #fff7ed;
+  --rule-bg: #f0edff;
+  --rule-border: #6b5ce7;
+  --chapter-num: #9b8ec4;
+  --code-bg: #f3f1ea;
+  --divider: #d4d0c8;
+  --font-display: 'Literata', 'Georgia', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141418; --fg: #e4e2dc; --fg-muted: #9a9890;
+    --accent: #6ea2e8; --accent-light: #1c2a3e;
+    --card-bg: #1e1e24; --card-border: #2e2e36;
+    --correct: #4cc76e; --correct-bg: #112218;
+    --warn: #e89b3e; --warn-bg: #241c0e;
+    --rule-bg: #1e1a2e; --rule-border: #8b7ef0;
+    --chapter-num: #a89ad4; --code-bg: #1a1a20;
+    --divider: #333338; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141418; --fg: #e4e2dc; --fg-muted: #9a9890;
+  --accent: #6ea2e8; --accent-light: #1c2a3e;
+  --card-bg: #1e1e24; --card-border: #2e2e36;
+  --correct: #4cc76e; --correct-bg: #112218;
+  --warn: #e89b3e; --warn-bg: #241c0e;
+  --rule-bg: #1e1a2e; --rule-border: #8b7ef0;
+  --chapter-num: #a89ad4; --code-bg: #1a1a20;
+  --divider: #333338; color-scheme: dark;
+}
+body { background:var(--bg); color:var(--fg); font-family:var(--font-body); font-size:15px; line-height:1.7; padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px)); max-width:760px; margin:0 auto; }
+h1,h2,h3 { font-family:var(--font-display); text-wrap:balance; }
+h1 { font-size:1.8em; margin-top:2em; }
+h2 { font-size:1.35em; margin-top:2.5em; border-top:2px solid var(--divider); padding-top:1em; }
+h3 { font-size:1.1em; margin-top:1.5em; }
+.chapter-num { color:var(--chapter-num); font-size:.85em; letter-spacing:.05em; text-transform:uppercase; display:block; margin-bottom:.15em; }
+.rule-box { background:var(--rule-bg); border-left:4px solid var(--rule-border); padding:1em 1.2em; margin:1em 0; border-radius:0 8px 8px 0; }
+.rule-box p { margin:.4em 0; }
+.example-box { background:var(--card-bg); border:1px solid var(--card-border); padding:.8em 1em; margin:.8em 0; border-radius:8px; }
+.example-box .label { font-weight:600; color:var(--accent); font-size:.82em; letter-spacing:.04em; text-transform:uppercase; margin-bottom:.3em; }
+.warn-box { background:var(--warn-bg); border-left:4px solid var(--warn); padding:.8em 1em; margin:.8em 0; border-radius:0 6px 6px 0; }
+.quiz-section { margin-top:1.5em; padding-top:1em; border-top:1px dashed var(--divider); }
+.quiz-section h3 { margin-top:.5em; }
+.q-block { background:var(--card-bg); border:1px solid var(--card-border); border-radius:10px; padding:1em 1.2em; margin:1em 0; }
+.q-block p.q-text { font-weight:500; margin:0 0 .6em; }
+.q-block label { display:block; padding:.35em .5em; margin:.2em 0; border-radius:6px; cursor:pointer; transition:background .15s; }
+.q-block label:hover { background:var(--accent-light); }
+.q-block input[type=radio] { margin-right:.5em; accent-color:var(--accent); }
+.q-block .feedback { margin-top:.6em; padding:.6em .8em; border-radius:6px; font-size:.92em; display:none; }
+.q-block .feedback.correct { background:var(--correct-bg); color:var(--correct); display:block; }
+.q-block .feedback.wrong { background:var(--warn-bg); color:var(--warn); display:block; }
+.toc { background:var(--card-bg); border:1px solid var(--card-border); border-radius:10px; padding:1.2em 1.5em; margin:1.5em 0; }
+.toc ol { padding-left:1.2em; }
+.toc li { margin:.3em 0; }
+.toc a { color:var(--accent); text-decoration:none; }
+.toc a:hover { text-decoration:underline; }
+table { width:100%; border-collapse:collapse; margin:.8em 0; font-size:.93em; }
+th,td { border:1px solid var(--card-border); padding:.45em .6em; text-align:left; }
+th { background:var(--rule-bg); font-weight:600; }
+.highlight { background:var(--accent-light); padding:.1em .3em; border-radius:3px; font-weight:500; }
+hr { border:none; border-top:2px solid var(--divider); margin:2em 0; }
+@media print { body { font-size:11pt; max-width:none; } .quiz-section { page-break-inside:avoid; } .q-block label:hover { background:transparent; } }
+</style>
+
+<h1>ОРТ: Кыргыз тилинин практикалык грамматикасы</h1>
+<p style="color:var(--fg-muted)">Жалпы республикалык тестке даярдануу боюнча толук колдонмо<br>Раздел 4 &mdash; 30 суроо, 35 мүнөт</p>
+
+<div class="toc">
+<strong>Мазмуну</strong>
+<ol>
+<li><a href="#ch1">Фонетика (Тыбыш илими)</a></li>
+<li><a href="#ch2">Лексика (Сөз байлыгы)</a></li>
+<li><a href="#ch3">Сөз курамы жана сөз жасоо</a></li>
+<li><a href="#ch4">Зат атооч (Существительное)</a></li>
+<li><a href="#ch5">Сын атооч (Прилагательное)</a></li>
+<li><a href="#ch6">Сан атооч (Числительное)</a></li>
+<li><a href="#ch7">Ат атооч (Местоимение)</a></li>
+<li><a href="#ch8">Этиш (Глагол)</a></li>
+<li><a href="#ch9">Тактооч, Жандооч, Байламта (Наречие, послелог, союз)</a></li>
+<li><a href="#ch10">Синтаксис (Сүйлөм мүчөлөрү)</a></li>
+<li><a href="#ch11">Пунктуация (Тыныш белгилери)</a></li>
+<li><a href="#ch12">Орфография (Жазуу эрежелери)</a></li>
+</ol>
+</div>
+
+<!-- ============ ГЛАВА 1: ФОНЕТИКА ============ -->
+<h2 id="ch1"><span class="chapter-num">Глава 1</span>Фонетика (Тыбыш илими)</h2>
+
+<p>Фонетика &mdash; тыбыштарды (звуктарды) изилдеген тил илиминин бөлүмү. Кыргыз тилинде 33 тамга (буква) бар жана алар тамга менен белгиленет.</p>
+
+<div class="rule-box">
+<p><strong>Үндүү тыбыштар (Гласные):</strong> а, э, о, ө, у, ү, ы, и &mdash; 8 үндүү</p>
+<p><strong>Үнсүз тыбыштар (Согласные):</strong> б, в, г, д, ж, з, й, к, л, м, н, ң, п, р, с, т, ф, х, ц, ч, ш, щ &mdash; 22 үнсүз</p>
+<p><strong>Белги тыбыштар:</strong> ъ, ь &mdash; тыбышты билдирбейт, 3 тамга (е, ю, я) эки тыбышты билдирет</p>
+</div>
+
+<h3>Үндүүлөрдүн классификациясы</h3>
+
+<table>
+<tr><th></th><th>Жоон (твёрдые)</th><th>Ичке (мягкие)</th></tr>
+<tr><td><strong>Эриндүү (губные)</strong></td><td>о, у</td><td>ө, ү</td></tr>
+<tr><td><strong>Эринсиз (негубные)</strong></td><td>а, ы</td><td>э, и</td></tr>
+</table>
+
+<h3>Сингармонизм мыйзамы (Закон гармонии гласных)</h3>
+
+<div class="rule-box">
+<p><strong>Негизги эреже:</strong> Кыргыз тилинде сөздүн биринчи муунундагы үндүү жоон болсо, кийинки муундар да жоон, ичке болсо &mdash; ичке болот.</p>
+<p>Жоон сөздөр: <strong>бала-лар-га</strong>, <strong>жол-до-гу</strong></p>
+<p>Ичке сөздөр: <strong>келе-лер-ге</strong>, <strong>үй-дө-гү</strong></p>
+</div>
+
+<div class="example-box">
+<div class="label">Мисал</div>
+<p><strong>бала</strong> + -лар + -дын = <strong>балалардын</strong> (жоон)</p>
+<p><strong>үй</strong> + -лөр + -дүн = <strong>үйлөрдүн</strong> (ичке)</p>
+<p><strong>тоо</strong> + -лор + -дун = <strong>тоолордун</strong> (жоон, эриндүү)</p>
+</div>
+
+<h3>Үнсүз тыбыштардын классификациясы</h3>
+
+<table>
+<tr><th></th><th>Жумшак (звонкие)</th><th>Каткалаң (глухие)</th></tr>
+<tr><td>Жуп</td><td>б, г, д, ж, з</td><td>п, к, т, ш, с</td></tr>
+<tr><td>Жупсуз</td><td>й, л, м, н, ң, р</td><td>ч, х, ц, ф, щ</td></tr>
+</table>
+
+<h3>Муун (Слог)</h3>
+<div class="rule-box">
+<p>Сөздө канча үндүү болсо, ошончо муун болот.</p>
+<p><strong>ба-ла</strong> = 2 муун, <strong>ки-теп</strong> = 2 муун, <strong>мек-теп</strong> = 2 муун</p>
+<p><strong>Ачык муун:</strong> үндүүгө бүткөн: ба-ла</p>
+<p><strong>Жабык муун:</strong> үнсүзгө бүткөн: бал-дар</p>
+</div>
+
+<div class="quiz-section">
+<h3>Тест суроолору: Фонетика</h3>
+
+<div class="q-block" data-correct="b">
+<p class="q-text">1. «Мектептеги» деген сөздө канча муун бар?</p>
+<label><input type="radio" name="q1" value="a"> А) 2</label>
+<label><input type="radio" name="q1" value="b"> Б) 3</label>
+<label><input type="radio" name="q1" value="c"> В) 4</label>
+<label><input type="radio" name="q1" value="d"> Г) 5</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="c">
+<p class="q-text">2. Кайсы сөздө сингармонизм мыйзамы бузулган?</p>
+<label><input type="radio" name="q2" value="a"> А) балдар</label>
+<label><input type="radio" name="q2" value="b"> Б) үйлөр</label>
+<label><input type="radio" name="q2" value="c"> В) китеп</label>
+<label><input type="radio" name="q2" value="d"> Г) жолдор</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="b">
+<p class="q-text">3. Жоон эриндүү үндүүлөрдүн тобун аныктагыла:</p>
+<label><input type="radio" name="q3" value="a"> А) а, ы</label>
+<label><input type="radio" name="q3" value="b"> Б) о, у</label>
+<label><input type="radio" name="q3" value="c"> В) ө, ү</label>
+<label><input type="radio" name="q3" value="d"> Г) э, и</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="a">
+<p class="q-text">4. «Жүрөгүм» сөзүндө канча ичке үндүү бар?</p>
+<label><input type="radio" name="q4" value="a"> А) 3</label>
+<label><input type="radio" name="q4" value="b"> Б) 2</label>
+<label><input type="radio" name="q4" value="c"> В) 4</label>
+<label><input type="radio" name="q4" value="d"> Г) 1</label>
+<div class="feedback"></div>
+</div>
+</div>
+
+<!-- ============ ГЛАВА 2: ЛЕКСИКА ============ -->
+<h2 id="ch2"><span class="chapter-num">Глава 2</span>Лексика (Сөз байлыгы)</h2>
+
+<p>Лексика &mdash; тилдин сөз байлыгын изилдейт. ОРТда синонимдер, антонимдер, омонимдер жана фразеологизмдер суралат.</p>
+
+<h3>Синонимдер (Синонимы)</h3>
+<div class="rule-box">
+<p>Синонимдер &mdash; жазылышы жана айтылышы ар башка, бирок мааниси бирдей же жакын сөздөр.</p>
+</div>
+<div class="example-box">
+<div class="label">Мисалдар</div>
+<p><strong>жакшы</strong> = сонун = мыкты = эң сөз</p>
+<p><strong>каттуу</strong> = бекем = катуу = чыңалуу</p>
+<p><strong>сүйлөө</strong> = айтуу = кеп кылуу = баян кылуу</p>
+</div>
+
+<h3>Антонимдер (Антонимы)</h3>
+<div class="rule-box">
+<p>Антонимдер &mdash; маанилери карама-каршы болгон сөздөр.</p>
+</div>
+<div class="example-box">
+<div class="label">Мисалдар</div>
+<p><strong>жакшы &mdash; жаман</strong>, <strong>чоң &mdash; кичине</strong>, <strong>узун &mdash; кыска</strong></p>
+<p><strong>ысык &mdash; суук</strong>, <strong>жаңы &mdash; эски</strong>, <strong>жарык &mdash; караңгы</strong></p>
+</div>
+
+<h3>Омонимдер (Омонимы)</h3>
+<div class="rule-box">
+<p>Омонимдер &mdash; жазылышы жана айтылышы бирдей, бирок мааниси ар башка сөздөр.</p>
+</div>
+<div class="example-box">
+<div class="label">Мисалдар</div>
+<p><strong>бор</strong> &mdash; 1) тактага жазуучу мел; 2) карыздык бор</p>
+<p><strong>жат</strong> &mdash; 1) жатуу этиши; 2) бөтөн, тааныш эмес</p>
+<p><strong>ат</strong> &mdash; 1) жаныбар; 2) ысым, наам</p>
+</div>
+
+<h3>Фразеологизмдер</h3>
+<div class="rule-box">
+<p>Фразеологизмдер &mdash; туруктуу сөз айкаштары. Алардын мааниси сөздөрдүн жеке мааниси менен түшүндүрүлбөйт.</p>
+</div>
+<div class="example-box">
+<div class="label">Мисалдар</div>
+<p><strong>көз салуу</strong> &mdash; карап туруу, кам көрүү</p>
+<p><strong>тил табышуу</strong> &mdash; ынтымакташуу, макулдашуу</p>
+<p><strong>кулак төшөө</strong> &mdash; кунт коюп угуу</p>
+<p><strong>баш кошуу</strong> &mdash; үйлөнүү</p>
+<p><strong>жүрөгү түшүү</strong> &mdash; коркуу, чочуу</p>
+<p><strong>кол кабыш кылуу</strong> &mdash; жардам берүү</p>
+</div>
+
+<h3>Кыргыз жана кирме сөздөр</h3>
+<div class="rule-box">
+<p><strong>Төл сөздөр:</strong> кыргыз тилинин өзүнө таандык сөздөр (бала, жер, суу, тоо, ата, эне)</p>
+<p><strong>Кирме сөздөр:</strong> башка тилдерден кирген сөздөр:</p>
+<p>&bull; Араб-фарсы тилдеринен: китеп, калем, мектеп, сабак, дүйнө</p>
+<p>&bull; Орус тилинен: завод, машина, телефон, трактор</p>
+</div>
+
+<div class="quiz-section">
+<h3>Тест суроолору: Лексика</h3>
+
+<div class="q-block" data-correct="c">
+<p class="q-text">5. «Көз салуу» фразеологизминин мааниси:</p>
+<label><input type="radio" name="q5" value="a"> А) көрүү</label>
+<label><input type="radio" name="q5" value="b"> Б) көзүн жоготуу</label>
+<label><input type="radio" name="q5" value="c"> В) кам көрүү, карап туруу</label>
+<label><input type="radio" name="q5" value="d"> Г) унутуу</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="d">
+<p class="q-text">6. «Узун» сөзүнүн антоними:</p>
+<label><input type="radio" name="q6" value="a"> А) кең</label>
+<label><input type="radio" name="q6" value="b"> Б) чоң</label>
+<label><input type="radio" name="q6" value="c"> В) ичке</label>
+<label><input type="radio" name="q6" value="d"> Г) кыска</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="b">
+<p class="q-text">7. Омоним сөздөрдүн катарын аныктагыла:</p>
+<label><input type="radio" name="q7" value="a"> А) жакшы &mdash; сонун</label>
+<label><input type="radio" name="q7" value="b"> Б) бор (мел) &mdash; бор (карыз)</label>
+<label><input type="radio" name="q7" value="c"> В) ысык &mdash; суук</label>
+<label><input type="radio" name="q7" value="d"> Г) чоң &mdash; кичине</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="a">
+<p class="q-text">8. Кайсы сөз кирме сөз?</p>
+<label><input type="radio" name="q8" value="a"> А) мектеп</label>
+<label><input type="radio" name="q8" value="b"> Б) бала</label>
+<label><input type="radio" name="q8" value="c"> В) суу</label>
+<label><input type="radio" name="q8" value="d"> Г) тоо</label>
+<div class="feedback"></div>
+</div>
+</div>
+
+<!-- ============ ГЛАВА 3: СӨЗ КУРАМЫ ============ -->
+<h2 id="ch3"><span class="chapter-num">Глава 3</span>Сөз курамы жана сөз жасоо</h2>
+
+<h3>Сөздүн курамдык бөлүктөрү</h3>
+<div class="rule-box">
+<p><strong>Уңгу (корень)</strong> &mdash; сөздүн негизги мааниси камтылган бөлүгү: <em>бала, жаз, ок</em></p>
+<p><strong>Мүчө (аффикс)</strong> &mdash; уңгуга кошулуп, жаңы маани же грамматикалык форма берген бөлүк</p>
+</div>
+
+<h3>Мүчөлөрдүн түрлөрү</h3>
+<div class="rule-box">
+<p><strong>Сөз жасоочу мүчөлөр</strong> &mdash; жаңы сөз жасайт:</p>
+<p>&bull; -чы/-чи: <strong>жаз</strong> + чы = <strong>жазуучу</strong></p>
+<p>&bull; -лык/-лик: <strong>жакшы</strong> + лык = <strong>жакшылык</strong></p>
+<p>&bull; -даш/-деш: <strong>курс</strong> + даш = <strong>курсдаш</strong></p>
+<p>&bull; -гыч/-гич: <strong>өчүр</strong> + гүч = <strong>өчүргүч</strong></p>
+</div>
+
+<div class="rule-box">
+<p><strong>Сөз өзгөртүүчү мүчөлөр</strong> &mdash; сөздүн грамматикалык формасын өзгөртөт:</p>
+<p>&bull; Көптүк мүчөсү: -лар/-лер/-лор/-лөр, -дар/-дер/-дор/-дөр, -тар/-тер/-тор/-төр</p>
+<p>&bull; Жөндөмө мүчөлөрү: -нын, -га, -ны, -да, -дан</p>
+<p>&bull; Жак мүчөлөрү: -м, -ң, -быз, -сыңар, -шат</p>
+</div>
+
+<h3>Татаал сөздөр (Сложные слова)</h3>
+<div class="example-box">
+<div class="label">Мисалдар</div>
+<p><strong>ата-эне</strong> (кошмок сөз), <strong>көк жашыл</strong> (кош сөз)</p>
+<p><strong>жер жүзү</strong>, <strong>кол жазма</strong>, <strong>баш кийим</strong></p>
+</div>
+
+<h3>Кыскартылган сөздөр</h3>
+<div class="example-box">
+<div class="label">Мисалдар</div>
+<p><strong>КР</strong> &mdash; Кыргыз Республикасы</p>
+<p><strong>БУУ</strong> &mdash; Бириккен Улуттар Уюму</p>
+</div>
+
+<div class="quiz-section">
+<h3>Тест суроолору: Сөз курамы</h3>
+
+<div class="q-block" data-correct="c">
+<p class="q-text">9. «Жазуучу» сөзүнүн уңгусун аныктагыла:</p>
+<label><input type="radio" name="q9" value="a"> А) жазуу</label>
+<label><input type="radio" name="q9" value="b"> Б) жазууч</label>
+<label><input type="radio" name="q9" value="c"> В) жаз</label>
+<label><input type="radio" name="q9" value="d"> Г) жа</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="b">
+<p class="q-text">10. Сөз жасоочу мүчөнү тапкыла:</p>
+<label><input type="radio" name="q10" value="a"> А) -лар (көптүк)</label>
+<label><input type="radio" name="q10" value="b"> Б) -чы (жазуучу)</label>
+<label><input type="radio" name="q10" value="c"> В) -нын (жөндөмө)</label>
+<label><input type="radio" name="q10" value="d"> Г) -м (жак мүчө)</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="a">
+<p class="q-text">11. Кайсы сөз кошмок сөз?</p>
+<label><input type="radio" name="q11" value="a"> А) ата-эне</label>
+<label><input type="radio" name="q11" value="b"> Б) балдар</label>
+<label><input type="radio" name="q11" value="c"> В) мектеп</label>
+<label><input type="radio" name="q11" value="d"> Г) жакшылык</label>
+<div class="feedback"></div>
+</div>
+</div>
+
+<!-- ============ ГЛАВА 4: ЗАТ АТООЧ ============ -->
+<h2 id="ch4"><span class="chapter-num">Глава 4</span>Зат атооч (Существительное)</h2>
+
+<p>Зат атооч &mdash; заттын атын билдирип, <strong>ким? эмне?</strong> деген суроолорго жооп берет.</p>
+
+<h3>Жөндөмөлөр (Падежи)</h3>
+<div class="rule-box">
+<p>Кыргыз тилинде <strong>6 жөндөмө</strong> бар:</p>
+</div>
+
+<table>
+<tr><th>Жөндөмө</th><th>Суроо</th><th>Мүчө</th><th>Мисал</th></tr>
+<tr><td><strong>Атооч</strong> (Именительный)</td><td>ким? эмне?</td><td>&mdash;</td><td>бала</td></tr>
+<tr><td><strong>Илик</strong> (Родительный)</td><td>кимдин? эмненин?</td><td>-нын/-нин/-нун/-нүн</td><td>баланын</td></tr>
+<tr><td><strong>Барыш</strong> (Дательный)</td><td>кимге? эмнеге?</td><td>-га/-ге/-го/-гө, -ка/-ке/-ко/-кө</td><td>балага</td></tr>
+<tr><td><strong>Табыш</strong> (Винительный)</td><td>кимди? эмнени?</td><td>-ны/-ни/-ну/-нү</td><td>баланы</td></tr>
+<tr><td><strong>Жатыш</strong> (Местный)</td><td>кимде? эмнеде? кайда?</td><td>-да/-де/-до/-дө, -та/-те/-то/-тө</td><td>балада</td></tr>
+<tr><td><strong>Чыгыш</strong> (Исходный)</td><td>кимден? эмнеден? кайдан?</td><td>-дан/-ден/-дон/-дөн, -тан/-тен/-тон/-төн</td><td>баладан</td></tr>
+</table>
+
+<div class="warn-box">
+<p><strong>Эске алыңыз:</strong> Мүчөнүн жоон/ичке, эриндүү варианты сөздүн акыркы үндүүсүнө жараша тандалат (сингармонизм мыйзамы боюнча).</p>
+</div>
+
+<h3>Таандык мүчөлөр (Притяжательные аффиксы)</h3>
+<table>
+<tr><th>Жак</th><th>Жекелик</th><th>Мисал</th><th>Көптүк</th><th>Мисал</th></tr>
+<tr><td>1-жак</td><td>-м/-ым/-им</td><td>китебим</td><td>-быз/-биз</td><td>китебибиз</td></tr>
+<tr><td>2-жак</td><td>-ң/-ың/-иң</td><td>китебиң</td><td>-ңар/-ңер</td><td>китебиңер</td></tr>
+<tr><td>2-жак сыйл.</td><td>-ңыз/-ңиз</td><td>китебиңиз</td><td>-ңыздар</td><td>китебиңиздер</td></tr>
+<tr><td>3-жак</td><td>-ы/-и/-сы/-си</td><td>китеби</td><td>-ы/-и/-сы/-си</td><td>китеби</td></tr>
+</table>
+
+<h3>Көптүк сан (Множественное число)</h3>
+<div class="rule-box">
+<p>Көптүк мүчөлөр: <strong>-лар/-лер/-лор/-лөр, -дар/-дер/-дор/-дөр, -тар/-тер/-тор/-төр</strong></p>
+<p>Тандоо эрежеси:</p>
+<p>&bull; Үндүү жана й, р тыбыштарынан кийин: <strong>-лар/-лер/-лор/-лөр</strong> (бала<strong>лар</strong>, үй<strong>лөр</strong>)</p>
+<p>&bull; Жумшак үнсүздөрдөн (ж, з, м, н, ң) кийин: <strong>-дар/-дер/-дор/-дөр</strong> (тоо<strong>лор</strong>, кыз<strong>дар</strong>)</p>
+<p>&bull; Каткалаң үнсүздөрдөн (к, п, с, т, ш, ч) кийин: <strong>-тар/-тер/-тор/-төр</strong> (китеп<strong>тер</strong>)</p>
+</div>
+
+<div class="quiz-section">
+<h3>Тест суроолору: Зат атооч</h3>
+
+<div class="q-block" data-correct="c">
+<p class="q-text">12. «Мектептеги окуучулардын» деген сөз айкашындагы «окуучулардын» сөзү кайсы жөндөмөдө?</p>
+<label><input type="radio" name="q12" value="a"> А) Атооч</label>
+<label><input type="radio" name="q12" value="b"> Б) Барыш</label>
+<label><input type="radio" name="q12" value="c"> В) Илик</label>
+<label><input type="radio" name="q12" value="d"> Г) Табыш</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="b">
+<p class="q-text">13. «Китеп» сөзүнүн барыш жөндөмөсүндөгү формасы:</p>
+<label><input type="radio" name="q13" value="a"> А) китептин</label>
+<label><input type="radio" name="q13" value="b"> Б) китепке</label>
+<label><input type="radio" name="q13" value="c"> В) китепти</label>
+<label><input type="radio" name="q13" value="d"> Г) китептен</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="d">
+<p class="q-text">14. Көптүк мүчө туура кошулган сөздү тапкыла:</p>
+<label><input type="radio" name="q14" value="a"> А) кыз + лар = кызлар</label>
+<label><input type="radio" name="q14" value="b"> Б) китеп + дер = китепдер</label>
+<label><input type="radio" name="q14" value="c"> В) бала + тар = балатар</label>
+<label><input type="radio" name="q14" value="d"> Г) китеп + тер = китептер</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="a">
+<p class="q-text">15. 1-жак жекелик таандык мүчөсү менен сөздүн туура формасы:</p>
+<label><input type="radio" name="q15" value="a"> А) үйүм</label>
+<label><input type="radio" name="q15" value="b"> Б) үйүң</label>
+<label><input type="radio" name="q15" value="c"> В) үйбүз</label>
+<label><input type="radio" name="q15" value="d"> Г) үйү</label>
+<div class="feedback"></div>
+</div>
+</div>
+
+<!-- ============ ГЛАВА 5: СЫН АТООЧ ============ -->
+<h2 id="ch5"><span class="chapter-num">Глава 5</span>Сын атооч (Прилагательное)</h2>
+
+<p>Сын атооч &mdash; заттын сынын, сапатын билдирип, <strong>кандай? кайсы?</strong> деген суроолорго жооп берет.</p>
+
+<h3>Сын атоочтун түрлөрү</h3>
+<div class="rule-box">
+<p><strong>1. Сапаттык сын атооч:</strong> заттын өзүнө таандык сынын билдирет</p>
+<p>&bull; кызыл, ак, чоң, кичине, жакшы, жаман, узун, кыска</p>
+<p><strong>2. Катыштык сын атооч:</strong> башка сөз түркүмдөрүнөн жасалган</p>
+<p>&bull; таш + тай = <strong>таштай</strong> (катуу), жер + гилик = <strong>жергиликтүү</strong></p>
+</div>
+
+<h3>Салыштыруу даражалары (Степени сравнения)</h3>
+<div class="rule-box">
+<p><strong>Жай даража:</strong> кызыл, чоң, жакшы</p>
+<p><strong>Салыштырма даража:</strong> <em>кызыл<strong>ыраак</strong></em>, <em>чоң<strong>ураак</strong></em>, <em>жакшы<strong>раак</strong></em> (-раак/-реек/-роок/-рөөк)</p>
+<p><strong>Күчөтмө даража:</strong> <em><strong>өтө</strong> кызыл</em>, <em><strong>абдан</strong> чоң</em>, <em><strong>эң</strong> жакшы</em></p>
+<p><strong>Басаңдатма даража:</strong> <em>кызгыл<strong>т</strong></em> (кызгылтым), <em>ак<strong>сур</strong></em> (аксурак)</p>
+</div>
+
+<div class="example-box">
+<div class="label">Мисал - ОРТ тибиндеги суроо</div>
+<p>Сүйлөмдөгү сын атоочту тапкыла: <em>«<strong>Бийик</strong> тоолордун чокусунда <strong>аппак</strong> кар жатат.»</em></p>
+<p>Жооп: <strong>бийик</strong>, <strong>аппак</strong></p>
+</div>
+
+<div class="quiz-section">
+<h3>Тест суроолору: Сын атооч</h3>
+
+<div class="q-block" data-correct="b">
+<p class="q-text">16. «Жакшы» сөзүнүн салыштырма даражасы:</p>
+<label><input type="radio" name="q16" value="a"> А) эң жакшы</label>
+<label><input type="radio" name="q16" value="b"> Б) жакшыраак</label>
+<label><input type="radio" name="q16" value="c"> В) өтө жакшы</label>
+<label><input type="radio" name="q16" value="d"> Г) жакшылык</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="c">
+<p class="q-text">17. Кайсы сөз сын атооч эмес?</p>
+<label><input type="radio" name="q17" value="a"> А) кызыл</label>
+<label><input type="radio" name="q17" value="b"> Б) чоң</label>
+<label><input type="radio" name="q17" value="c"> В) тездик</label>
+<label><input type="radio" name="q17" value="d"> Г) бийик</label>
+<div class="feedback"></div>
+</div>
+</div>
+
+<!-- ============ ГЛАВА 6: САН АТООЧ ============ -->
+<h2 id="ch6"><span class="chapter-num">Глава 6</span>Сан атооч (Числительное)</h2>
+
+<p>Сан атооч &mdash; заттын санын, тартибин, өлчөмүн билдирип, <strong>канча? канчанчы? канчоо?</strong> деген суроолорго жооп берет.</p>
+
+<div class="rule-box">
+<p><strong>Эсептик сан атооч:</strong> бир, эки, үч, төрт, беш, алты, жети, сегиз, тогуз, он...</p>
+<p><strong>Иреттик сан атооч:</strong> биринчи, экинчи, үчүнчү... (-нчы/-нчи/-нчу/-нчү)</p>
+<p><strong>Жамдама сан атооч:</strong> экөө, үчөө, төртөө... (-өө/-оо)</p>
+<p><strong>Топтоо сан атооч:</strong> бирден, экиден, үчтөн... (-дан/-ден/-дон/-дөн)</p>
+<p><strong>Болжолдуу сан атооч:</strong> ондогон, жүздөгөн... (-догон/-дөгөн)</p>
+<p><strong>Бөлчөк сан атооч:</strong> жарым, чейрек, үчтөн бир</p>
+</div>
+
+<div class="quiz-section">
+<h3>Тест суроолору: Сан атооч</h3>
+
+<div class="q-block" data-correct="b">
+<p class="q-text">18. «Экинчи» деген сөз кайсы сан атоочтун түрү?</p>
+<label><input type="radio" name="q18" value="a"> А) эсептик</label>
+<label><input type="radio" name="q18" value="b"> Б) иреттик</label>
+<label><input type="radio" name="q18" value="c"> В) жамдама</label>
+<label><input type="radio" name="q18" value="d"> Г) болжолдуу</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="c">
+<p class="q-text">19. Жамдама сан атоочту тапкыла:</p>
+<label><input type="radio" name="q19" value="a"> А) бешинчи</label>
+<label><input type="radio" name="q19" value="b"> Б) беш</label>
+<label><input type="radio" name="q19" value="c"> В) бешөө</label>
+<label><input type="radio" name="q19" value="d"> Г) бештен</label>
+<div class="feedback"></div>
+</div>
+</div>
+
+<!-- ============ ГЛАВА 7: АТ АТООЧ ============ -->
+<h2 id="ch7"><span class="chapter-num">Глава 7</span>Ат атооч (Местоимение)</h2>
+
+<p>Ат атооч &mdash; затты же заттын белгисин атабай көрсөтүп, заттын ордуна колдонулат.</p>
+
+<div class="rule-box">
+<p><strong>Жактама ат атооч (Личные):</strong></p>
+<table>
+<tr><th></th><th>Жекелик</th><th>Көптүк</th></tr>
+<tr><td>1-жак</td><td>мен</td><td>биз</td></tr>
+<tr><td>2-жак</td><td>сен</td><td>силер</td></tr>
+<tr><td>2-жак сыйл.</td><td>сиз</td><td>сиздер</td></tr>
+<tr><td>3-жак</td><td>ал</td><td>алар</td></tr>
+</table>
+</div>
+
+<div class="rule-box">
+<p><strong>Шилтеме ат атооч (Указательные):</strong> бул, ушул, ошол, тигил</p>
+<p><strong>Суроо ат атооч (Вопросительные):</strong> ким? эмне? кайсы? канча? кандай?</p>
+<p><strong>Аныктоосуз ат атооч (Неопределённые):</strong> кимдир бирөө, бир нерсе, кайсы бир</p>
+<p><strong>Тануу ат атооч (Отрицательные):</strong> эч ким, эч нерсе, эч кайда</p>
+<p><strong>Өздүк ат атооч (Возвратное):</strong> өзүм, өзүң, өзү</p>
+</div>
+
+<div class="quiz-section">
+<h3>Тест суроолору: Ат атооч</h3>
+
+<div class="q-block" data-correct="d">
+<p class="q-text">20. «Эч ким келген жок» сүйлөмүндөгү ат атоочтун түрү:</p>
+<label><input type="radio" name="q20" value="a"> А) жактама</label>
+<label><input type="radio" name="q20" value="b"> Б) шилтеме</label>
+<label><input type="radio" name="q20" value="c"> В) суроо</label>
+<label><input type="radio" name="q20" value="d"> Г) тануу</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="b">
+<p class="q-text">21. 2-жак сыйлык жактама ат атоочту тапкыла:</p>
+<label><input type="radio" name="q21" value="a"> А) сен</label>
+<label><input type="radio" name="q21" value="b"> Б) сиз</label>
+<label><input type="radio" name="q21" value="c"> В) ал</label>
+<label><input type="radio" name="q21" value="d"> Г) мен</label>
+<div class="feedback"></div>
+</div>
+</div>
+
+<!-- ============ ГЛАВА 8: ЭТИШ ============ -->
+<h2 id="ch8"><span class="chapter-num">Глава 8</span>Этиш (Глагол)</h2>
+
+<p>Этиш &mdash; заттын кыймыл-аракетин билдирип, <strong>эмне кылат? эмне болот?</strong> деген суроолорго жооп берет.</p>
+
+<h3>Чак (Время)</h3>
+<div class="rule-box">
+<p><strong>Учур чак (Настоящее время):</strong></p>
+<p>&bull; -а/-е/-й жатат: <em>бара жатат, келе жатат, окуй жатат</em></p>
+<p>&bull; -ат/-ет/-от/-өт (жалпы учур чак): <em>барат, келет</em></p>
+
+<p><strong>Өткөн чак (Прошедшее время):</strong></p>
+<p>&bull; -ды/-ди/-ду/-дү: <em>барды, келди</em> (аныктуу өткөн чак)</p>
+<p>&bull; -ган/-ген/-гон/-гөн: <em>барган, келген</em> (белгисиз өткөн чак)</p>
+<p>&bull; -чу/-чү: <em>барчу, келчү</em> (адаттагы өткөн чак)</p>
+
+<p><strong>Келер чак (Будущее время):</strong></p>
+<p>&bull; -ат/-ет/-от/-өт (жалпы): <em>барат, келет</em></p>
+<p>&bull; -а/-е/-й + -м/-ң/-т (максат): <em>барам, барасың, барат</em></p>
+<p>&bull; -мак/-мек: <em>бармак, келмек</em> (ниеттик келер чак)</p>
+</div>
+
+<h3>Ыңгай (Наклонение)</h3>
+<div class="rule-box">
+<p><strong>Буйрук ыңгай (Повелительное):</strong> бар! кел! оку!</p>
+<p><strong>Шарт ыңгай (Условное):</strong> -са/-се: барса, келсе</p>
+<p><strong>Каалоо ыңгай (Желательное):</strong> -гай/-гей/-гой/-гөй: баргай, келгей</p>
+</div>
+
+<h3>Мамиле (Залог)</h3>
+<div class="rule-box">
+<p><strong>Аракет мамиле (Действительный залог):</strong> мен жаздым</p>
+<p><strong>Туш мамиле (Страдательный залог):</strong> -ыл/-ил: жазылды</p>
+<p><strong>Кош мамиле (Совместный залог):</strong> -ыш/-иш: жазышты</p>
+<p><strong>Өздүк мамиле (Возвратный залог):</strong> -ын/-ин: жазынды</p>
+<p><strong>Аркылуу мамиле (Понудительный залог):</strong> -тыр/-тир/-дыр/-дир/-гыз/-гиз: жаздырды</p>
+</div>
+
+<h3>Этиштин терс формасы</h3>
+<div class="rule-box">
+<p>Этиштин терс формасы <strong>-ба/-бе/-бо/-бө, -ма/-ме/-мо/-мө, -па/-пе/-по/-пө</strong> мүчөлөрү менен жасалат:</p>
+<p><em>бар<strong>ба</strong>дым, кел<strong>бе</strong>дим, оку<strong>ба</strong>дым</em></p>
+</div>
+
+<div class="quiz-section">
+<h3>Тест суроолору: Этиш</h3>
+
+<div class="q-block" data-correct="b">
+<p class="q-text">22. «Окуган» сөзүнүн чагы:</p>
+<label><input type="radio" name="q22" value="a"> А) учур чак</label>
+<label><input type="radio" name="q22" value="b"> Б) белгисиз өткөн чак</label>
+<label><input type="radio" name="q22" value="c"> В) келер чак</label>
+<label><input type="radio" name="q22" value="d"> Г) аныктуу өткөн чак</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="c">
+<p class="q-text">23. «Жазылды» этиши кайсы мамиледе?</p>
+<label><input type="radio" name="q23" value="a"> А) аракет мамиле</label>
+<label><input type="radio" name="q23" value="b"> Б) кош мамиле</label>
+<label><input type="radio" name="q23" value="c"> В) туш мамиле</label>
+<label><input type="radio" name="q23" value="d"> Г) өздүк мамиле</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="a">
+<p class="q-text">24. Шарт ыңгайдагы этишти тапкыла:</p>
+<label><input type="radio" name="q24" value="a"> А) барса</label>
+<label><input type="radio" name="q24" value="b"> Б) барды</label>
+<label><input type="radio" name="q24" value="c"> В) бар!</label>
+<label><input type="radio" name="q24" value="d"> Г) баргай</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="d">
+<p class="q-text">25. Этиштин терс формасы кайсы мүчө менен жасалат?</p>
+<label><input type="radio" name="q25" value="a"> А) -лар</label>
+<label><input type="radio" name="q25" value="b"> Б) -чы</label>
+<label><input type="radio" name="q25" value="c"> В) -нын</label>
+<label><input type="radio" name="q25" value="d"> Г) -ба/-бе</label>
+<div class="feedback"></div>
+</div>
+</div>
+
+<!-- ============ ГЛАВА 9: ТАКТООЧ, ЖАНДООЧ, БАЙЛАМТА ============ -->
+<h2 id="ch9"><span class="chapter-num">Глава 9</span>Тактооч, Жандооч, Байламта</h2>
+
+<h3>Тактооч (Наречие)</h3>
+<div class="rule-box">
+<p>Тактооч &mdash; кыймыл-аракеттин белгисин билдирип, <strong>кантип? качан? кайда? канча?</strong> деген суроолорго жооп берет.</p>
+<p><strong>Түрлөрү:</strong></p>
+<p>&bull; <strong>Ыкма тактооч (образа действия):</strong> тез, акырын, жай, катуу</p>
+<p>&bull; <strong>Мезгил тактооч (времени):</strong> кечээ, бүгүн, эртең, кийин, мурда</p>
+<p>&bull; <strong>Орун тактооч (места):</strong> жогору, ылдый, ары, бери, алыс, жакын</p>
+<p>&bull; <strong>Сан-өлчөм тактооч (меры):</strong> көп, аз, бир аз, бүт</p>
+<p>&bull; <strong>Себеп-максат тактооч (причины и цели):</strong> атайын, билип, жөн эле</p>
+</div>
+
+<h3>Жандооч (Послелог)</h3>
+<div class="rule-box">
+<p>Жандооч &mdash; сөздөрдүн ортосундагы мамилени билдирет. Зат атоочтон кийин келет.</p>
+<p><strong>Мисалдар:</strong> үчүн, менен, тууралуу, аркылуу, жөнүндө, карата, чейин, кийин</p>
+<p><em>Мен <strong>сен үчүн</strong> келдим. Ал <strong>мектеп тууралуу</strong> айтты.</em></p>
+</div>
+
+<h3>Байламта (Союз)</h3>
+<div class="rule-box">
+<p>Байламта &mdash; сөздөрдү же сүйлөмдөрдү бириктирет.</p>
+<p><strong>Тең байламта (сочинительные):</strong> жана, да/де, менен, бирок, же, а, ал</p>
+<p><strong>Багыныңкы байламта (подчинительные):</strong> анткени, себеби, эгер, -са, -гандыктан</p>
+</div>
+
+<h3>Сырдык сөз (Междометие)</h3>
+<div class="rule-box">
+<p>Сырдык сөз &mdash; ар кандай сезимди, эмоцияны билдирет.</p>
+<p><strong>Мисалдар:</strong> ой!, вай!, аттиң!, ура!, апей!, баракелде!</p>
+</div>
+
+<div class="quiz-section">
+<h3>Тест суроолору: Тактооч, Жандооч, Байламта</h3>
+
+<div class="q-block" data-correct="b">
+<p class="q-text">26. «Тез» сөзү кайсы сөз түркүмү?</p>
+<label><input type="radio" name="q26" value="a"> А) сын атооч</label>
+<label><input type="radio" name="q26" value="b"> Б) тактооч</label>
+<label><input type="radio" name="q26" value="c"> В) этиш</label>
+<label><input type="radio" name="q26" value="d"> Г) зат атооч</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="a">
+<p class="q-text">27. Жандоочту тапкыла:</p>
+<label><input type="radio" name="q27" value="a"> А) үчүн</label>
+<label><input type="radio" name="q27" value="b"> Б) бирок</label>
+<label><input type="radio" name="q27" value="c"> В) тез</label>
+<label><input type="radio" name="q27" value="d"> Г) чоң</label>
+<div class="feedback"></div>
+</div>
+</div>
+
+<!-- ============ ГЛАВА 10: СИНТАКСИС ============ -->
+<h2 id="ch10"><span class="chapter-num">Глава 10</span>Синтаксис (Сүйлөм мүчөлөрү)</h2>
+
+<h3>Сүйлөмдүн баш мүчөлөрү</h3>
+<div class="rule-box">
+<p><strong>Ээ (Подлежащее)</strong> &mdash; сүйлөмдөгү иш-аракеттин ээсин билдирет. Суроо: <em>ким? эмне?</em></p>
+<p><strong>Баяндооч (Сказуемое)</strong> &mdash; ээнин кыймыл-аракетин билдирет. Суроо: <em>эмне кылат? кандай?</em></p>
+</div>
+
+<div class="example-box">
+<div class="label">Мисал</div>
+<p><u><strong>Бала</strong></u> <u>китеп <strong>окуйт</strong></u>.</p>
+<p>Бала &mdash; ээ, окуйт &mdash; баяндооч</p>
+</div>
+
+<h3>Сүйлөмдүн айкындоочу мүчөлөрү</h3>
+<div class="rule-box">
+<p><strong>Толуктооч (Дополнение)</strong> &mdash; баяндоочту толуктайт: <em>кимди? эмнени? кимге? эмнеге?</em></p>
+<p><strong>Аныктооч (Определение)</strong> &mdash; ээни же башка мүчөнү аныктайт: <em>кандай? кайсы? канча?</em></p>
+<p><strong>Бышыктооч (Обстоятельство)</strong> &mdash; кыймыл-аракеттин белгисин аныктайт: <em>кантип? качан? кайда?</em></p>
+</div>
+
+<div class="example-box">
+<div class="label">Мисал</div>
+<p><em><strong>Акылдуу</strong> бала <strong>мектепте</strong> <strong>китепти</strong> <strong>кунт менен</strong> окуду.</em></p>
+<p>акылдуу &mdash; аныктооч, бала &mdash; ээ, мектепте &mdash; бышыктооч (орун), китепти &mdash; толуктооч, кунт менен &mdash; бышыктооч (ыкма), окуду &mdash; баяндооч</p>
+</div>
+
+<h3>Сүйлөмдүн түрлөрү</h3>
+<div class="rule-box">
+<p><strong>Жай сүйлөм (Простое):</strong> бир ээ жана бир баяндооч: <em>Бала окуйт.</em></p>
+<p><strong>Татаал сүйлөм (Сложное):</strong> эки же андан көп жай сүйлөмдөн турат:</p>
+<p>&bull; <strong>Тең байланыш (Сложносочинённое):</strong> <em>Күн чыкты, <strong>жана</strong> куштар сайрады.</em></p>
+<p>&bull; <strong>Багыныңкы байланыш (Сложноподчинённое):</strong> <em><strong>Эгер</strong> жамгыр жааса, биз барбайбыз.</em></p>
+</div>
+
+<h3>Сүйлөм максаты боюнча</h3>
+<div class="rule-box">
+<p><strong>Баяндоо сүйлөм (Повествовательное):</strong> <em>Күн жакшы.</em></p>
+<p><strong>Суроо сүйлөм (Вопросительное):</strong> <em>Күн жакшыбы?</em></p>
+<p><strong>Буйрук сүйлөм (Побудительное):</strong> <em>Тез кел!</em></p>
+<p><strong>Илептүү сүйлөм (Восклицательное):</strong> <em>Кандай сонун!</em></p>
+</div>
+
+<div class="quiz-section">
+<h3>Тест суроолору: Синтаксис</h3>
+
+<div class="q-block" data-correct="a">
+<p class="q-text">28. «Бала китеп окуду» сүйлөмүндө «китеп» кайсы мүчө?</p>
+<label><input type="radio" name="q28" value="a"> А) толуктооч</label>
+<label><input type="radio" name="q28" value="b"> Б) ээ</label>
+<label><input type="radio" name="q28" value="c"> В) баяндооч</label>
+<label><input type="radio" name="q28" value="d"> Г) аныктооч</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="c">
+<p class="q-text">29. Татаал сүйлөмдү тапкыла:</p>
+<label><input type="radio" name="q29" value="a"> А) Бала мектепке барды.</label>
+<label><input type="radio" name="q29" value="b"> Б) Акылдуу бала окуйт.</label>
+<label><input type="radio" name="q29" value="c"> В) Күн чыкты жана куштар сайрады.</label>
+<label><input type="radio" name="q29" value="d"> Г) Кел!</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="d">
+<p class="q-text">30. «Акылдуу бала мектепте окуйт» сүйлөмүндөгү аныктоочту тапкыла:</p>
+<label><input type="radio" name="q30" value="a"> А) бала</label>
+<label><input type="radio" name="q30" value="b"> Б) мектепте</label>
+<label><input type="radio" name="q30" value="c"> В) окуйт</label>
+<label><input type="radio" name="q30" value="d"> Г) акылдуу</label>
+<div class="feedback"></div>
+</div>
+</div>
+
+<!-- ============ ГЛАВА 11: ПУНКТУАЦИЯ ============ -->
+<h2 id="ch11"><span class="chapter-num">Глава 11</span>Пунктуация (Тыныш белгилери)</h2>
+
+<div class="rule-box">
+<p><strong>Тыныш белгилери:</strong></p>
+<p>&bull; <strong>Чекит (.)</strong> &mdash; баяндоо сүйлөмдүн аягында</p>
+<p>&bull; <strong>Суроо белгиси (?)</strong> &mdash; суроо сүйлөмдүн аягында</p>
+<p>&bull; <strong>Илеп белгиси (!)</strong> &mdash; илептүү сүйлөмдүн аягында</p>
+<p>&bull; <strong>Үтүр (,)</strong> &mdash; бир өңчөй мүчөлөрдүн, киринди сөздөрдүн, удаалаш сүйлөмдөрдүн ортосунда</p>
+<p>&bull; <strong>Үтүрлүү чекит (;)</strong> &mdash; татаал сүйлөмдүн бөлүктөрүнүн ортосунда</p>
+<p>&bull; <strong>Коштоочу чекит (:)</strong> &mdash; бир өңчөй мүчөлөрдүн алдында жалпылоочу сөздөн кийин</p>
+<p>&bull; <strong>Сызыкча (&mdash;)</strong> &mdash; ээ менен баяндоочтун ортосунда (экөө тең зат атооч болсо), диалогдо</p>
+<p>&bull; <strong>Тырмакча (&laquo; &raquo;)</strong> &mdash; түз кеп, цитата, аталыштар</p>
+</div>
+
+<h3>Үтүр коюлуучу учурлар</h3>
+<div class="rule-box">
+<p>1. <strong>Бир өңчөй мүчөлөрдүн ортосунда:</strong> <em>Алма, алмурут, жүзүм бакта өсөт.</em></p>
+<p>2. <strong>Киринди сөздөн кийин:</strong> <em>Менин оюмча, бул туура.</em></p>
+<p>3. <strong>Каратма сөздөн кийин/алдында:</strong> <em>Балдар, келгиле!</em></p>
+<p>4. <strong>Багыныңкы сүйлөм менен башкы сүйлөмдүн ортосунда:</strong> <em>Жамгыр жааса, биз барбайбыз.</em></p>
+</div>
+
+<h3>Сызыкча коюлуучу учурлар</h3>
+<div class="rule-box">
+<p>1. <strong>Ээ жана баяндооч зат атооч болгондо:</strong> <em>Бишкек &mdash; Кыргызстандын борбору.</em></p>
+<p>2. <strong>Түз кепте:</strong> <em>&mdash; Кайда барасың? &mdash; деп сурады ал.</em></p>
+</div>
+
+<div class="quiz-section">
+<h3>Тест суроолору: Пунктуация</h3>
+
+<div class="q-block" data-correct="b">
+<p class="q-text">31. «Бишкек __ Кыргызстандын борбору» сүйлөмүнө кайсы тыныш белгиси коюлат?</p>
+<label><input type="radio" name="q31" value="a"> А) үтүр</label>
+<label><input type="radio" name="q31" value="b"> Б) сызыкча</label>
+<label><input type="radio" name="q31" value="c"> В) коштоочу чекит</label>
+<label><input type="radio" name="q31" value="d"> Г) үтүрлүү чекит</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="a">
+<p class="q-text">32. Үтүр коюлуучу учурду тапкыла:</p>
+<label><input type="radio" name="q32" value="a"> А) Бир өңчөй мүчөлөрдүн ортосунда</label>
+<label><input type="radio" name="q32" value="b"> Б) Сүйлөмдүн аягында</label>
+<label><input type="radio" name="q32" value="c"> В) Ээ менен баяндоочтун ортосунда</label>
+<label><input type="radio" name="q32" value="d"> Г) Цитатанын ичинде</label>
+<div class="feedback"></div>
+</div>
+</div>
+
+<!-- ============ ГЛАВА 12: ОРФОГРАФИЯ ============ -->
+<h2 id="ch12"><span class="chapter-num">Глава 12</span>Орфография (Жазуу эрежелери)</h2>
+
+<h3>Жоон жана ичке жазуу</h3>
+<div class="rule-box">
+<p>Сөздүн биринчи муунундагы үндүүгө жараша мүчөлөрдүн жоон/ичке варианты тандалат:</p>
+<p>&bull; Жоон сөздөргө жоон мүчө: бала<strong>лар</strong>, жол<strong>дор</strong></p>
+<p>&bull; Ичке сөздөргө ичке мүчө: үй<strong>лөр</strong>, кел<strong>ди</strong></p>
+</div>
+
+<h3>Бирге, бөлөк жана дефис менен жазуу</h3>
+<div class="rule-box">
+<p><strong>Бирге жазылат:</strong></p>
+<p>&bull; Кошмок сөздөр: баштык, кайнене, балмуздак</p>
+<p>&bull; Этиш жардамчылары менен: барып, келип</p>
+
+<p><strong>Дефис менен жазылат:</strong></p>
+<p>&bull; Кош сөздөр: бала-чака, ата-эне, ак-кара</p>
+<p>&bull; Кубултуп айтылган сөздөр: кып-кызыл, тим-тирүү</p>
+
+<p><strong>Бөлөк жазылат:</strong></p>
+<p>&bull; Эки сөздөн турган зат атооч: орто мектеп, жогорку окуу жай</p>
+<p>&bull; Жандооч + зат атооч: мектеп тууралуу</p>
+</div>
+
+<h3>Баш тамга менен жазуу</h3>
+<div class="rule-box">
+<p>&bull; Сүйлөмдүн башы</p>
+<p>&bull; Жалкы аттар: <em>Бишкек, Ала-Тоо, Манас, Айтматов</em></p>
+<p>&bull; Мекеме аталыштарынын биринчи сөзү</p>
+</div>
+
+<div class="quiz-section">
+<h3>Тест суроолору: Орфография</h3>
+
+<div class="q-block" data-correct="c">
+<p class="q-text">33. Кайсы сөз дефис менен жазылат?</p>
+<label><input type="radio" name="q33" value="a"> А) баштык</label>
+<label><input type="radio" name="q33" value="b"> Б) балмуздак</label>
+<label><input type="radio" name="q33" value="c"> В) ата-эне</label>
+<label><input type="radio" name="q33" value="d"> Г) мектеп</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="d">
+<p class="q-text">34. Баш тамга менен жазылуучу сөздү тапкыла:</p>
+<label><input type="radio" name="q34" value="a"> А) бала</label>
+<label><input type="radio" name="q34" value="b"> Б) мектеп</label>
+<label><input type="radio" name="q34" value="c"> В) жакшы</label>
+<label><input type="radio" name="q34" value="d"> Г) бишкек (Бишкек)</label>
+<div class="feedback"></div>
+</div>
+
+<div class="q-block" data-correct="b">
+<p class="q-text">35. «Кып-кызыл» сөзү кантип жазылат?</p>
+<label><input type="radio" name="q35" value="a"> А) бирге: кыпкызыл</label>
+<label><input type="radio" name="q35" value="b"> Б) дефис менен: кып-кызыл</label>
+<label><input type="radio" name="q35" value="c"> В) бөлөк: кып кызыл</label>
+<label><input type="radio" name="q35" value="d"> Г) баары туура</label>
+<div class="feedback"></div>
+</div>
+</div>
+
+<hr>
+<p style="text-align:center; color:var(--fg-muted); font-size:.9em;">ОРТга ийгилик каалайбыз! Бул колдонмону жакшылап үйрөнгүлө.<br>&copy; 2026 &mdash; ОРТга даярдануу колдонмосу</p>
+
+<script>
+document.querySelectorAll('.q-block').forEach(block => {
+  const correct = block.dataset.correct;
+  const fb = block.querySelector('.feedback');
+  block.querySelectorAll('input[type=radio]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      fb.className = 'feedback';
+      if (radio.value === correct) {
+        fb.textContent = 'Туура! Жооп туура.';
+        fb.classList.add('correct');
+      } else {
+        const labels = block.querySelectorAll('label');
+        let correctText = '';
+        labels.forEach(l => {
+          const r = l.querySelector('input');
+          if (r.value === correct) correctText = l.textContent.trim();
+        });
+        fb.textContent = 'Туура эмес. Туура жооп: ' + correctText;
+        fb.classList.add('wrong');
+      }
+    });
+  });
+});
+</script>
