@@ -1,0 +1,1527 @@
+<title>ОРТ Грамматика Русского</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: single-column textbook with chapter sections, side-gutter for phone */
+:root {
+  --bg: #fafaf7;
+  --fg: #1a1a1a;
+  --fg-muted: #5c5c5c;
+  --accent: #2d5a9e;
+  --accent-light: #e8f0fb;
+  --card-bg: #ffffff;
+  --card-border: #e0ddd6;
+  --correct: #1a7a3a;
+  --correct-bg: #e6f5eb;
+  --warn: #b45309;
+  --warn-bg: #fff7ed;
+  --rule-bg: #f0edff;
+  --rule-border: #6b5ce7;
+  --chapter-num: #9b8ec4;
+  --code-bg: #f3f1ea;
+  --divider: #d4d0c8;
+  --font-display: 'Literata', 'Georgia', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141418;
+    --fg: #e4e2dc;
+    --fg-muted: #9a9890;
+    --accent: #6ea2e8;
+    --accent-light: #1c2a3e;
+    --card-bg: #1e1e24;
+    --card-border: #2e2e36;
+    --correct: #4cc76e;
+    --correct-bg: #112218;
+    --warn: #e89b3e;
+    --warn-bg: #241c0e;
+    --rule-bg: #1e1a2e;
+    --rule-border: #8b7ef0;
+    --chapter-num: #a89ad4;
+    --code-bg: #1a1a20;
+    --divider: #333338;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141418;
+  --fg: #e4e2dc;
+  --fg-muted: #9a9890;
+  --accent: #6ea2e8;
+  --accent-light: #1c2a3e;
+  --card-bg: #1e1e24;
+  --card-border: #2e2e36;
+  --correct: #4cc76e;
+  --correct-bg: #112218;
+  --warn: #e89b3e;
+  --warn-bg: #241c0e;
+  --rule-bg: #1e1a2e;
+  --rule-border: #8b7ef0;
+  --chapter-num: #a89ad4;
+  --code-bg: #1a1a20;
+  --divider: #333338;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+  max-width: 760px;
+  margin: 0 auto;
+}
+h1, h2, h3 {
+  font-family: var(--font-display);
+  text-wrap: balance;
+}
+h1 {
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 2rem 0 0.5rem;
+  color: var(--fg);
+}
+.subtitle {
+  font-size: 1.05rem;
+  color: var(--fg-muted);
+  margin-bottom: 2rem;
+  font-family: var(--font-display);
+  font-style: italic;
+}
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 3rem 0 0.5rem;
+  color: var(--fg);
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--divider);
+}
+h2 .chapter-num {
+  color: var(--chapter-num);
+  font-weight: 600;
+  margin-right: 0.3rem;
+}
+h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 2rem 0 0.5rem;
+  color: var(--accent);
+}
+.toc {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0 2.5rem;
+}
+.toc-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+}
+.toc ol {
+  margin: 0;
+  padding-left: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.toc a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.toc a:hover { text-decoration: underline; }
+
+.rule-box {
+  background: var(--rule-bg);
+  border-left: 4px solid var(--rule-border);
+  border-radius: 0 6px 6px 0;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
+}
+.rule-box .rule-label {
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--rule-border);
+  margin-bottom: 0.3rem;
+}
+.example-box {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  margin: 0.8rem 0;
+  font-size: 0.95rem;
+}
+.example-box .ex-label {
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.2rem;
+}
+.highlight {
+  color: var(--accent);
+  font-weight: 600;
+}
+.correct {
+  color: var(--correct);
+  font-weight: 600;
+}
+.wrong {
+  color: var(--warn);
+  text-decoration: line-through;
+  font-weight: 500;
+}
+.table-wrap {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+th, td {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--card-border);
+  text-align: left;
+}
+th {
+  background: var(--accent-light);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+td { background: var(--card-bg); }
+
+.quiz-section {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+}
+.quiz-section .quiz-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.quiz-q {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--divider);
+}
+.quiz-q:last-child { border-bottom: none; padding-bottom: 0; }
+.quiz-q p { margin: 0 0 0.4rem; font-weight: 500; }
+.quiz-q .options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin: 0.3rem 0 0.4rem;
+}
+.quiz-q label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.25rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.93rem;
+  transition: background 0.15s;
+}
+.quiz-q label:hover { background: var(--accent-light); }
+.quiz-q input[type="radio"] { accent-color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+.answer-reveal {
+  display: none;
+  padding: 0.5rem 0.7rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+.answer-reveal.correct-answer { background: var(--correct-bg); color: var(--correct); display: block; }
+.answer-reveal.wrong-answer { background: var(--warn-bg); color: var(--warn); display: block; }
+
+.back-to-top {
+  display: block;
+  text-align: center;
+  color: var(--accent);
+  font-size: 0.85rem;
+  margin: 2rem 0 1rem;
+  text-decoration: none;
+}
+.back-to-top:hover { text-decoration: underline; }
+
+.tip-box {
+  background: var(--correct-bg);
+  border-left: 4px solid var(--correct);
+  border-radius: 0 6px 6px 0;
+  padding: 0.8rem 1rem;
+  margin: 1rem 0;
+  font-size: 0.93rem;
+}
+.tip-box .tip-label {
+  font-weight: 700;
+  color: var(--correct);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.2rem;
+}
+
+footer {
+  border-top: 1px solid var(--divider);
+  padding: 1.5rem 0 2rem;
+  margin-top: 3rem;
+  text-align: center;
+  color: var(--fg-muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 500px) {
+  body { font-size: 14px; }
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.25rem; }
+  .toc, .quiz-section { padding: 1rem; }
+  .rule-box, .example-box { padding: 0.7rem 0.9rem; }
+}
+</style>
+
+<div id="top"></div>
+<h1>Практическая грамматика русского языка</h1>
+<p class="subtitle">Полное руководство для подготовки к ОРТ — Раздел 4</p>
+
+<nav class="toc">
+  <div class="toc-title">Содержание</div>
+  <ol>
+    <li><a href="#ch1">Орфография: безударные гласные в корне</a></li>
+    <li><a href="#ch2">Правописание приставок</a></li>
+    <li><a href="#ch3">Н и НН в суффиксах</a></li>
+    <li><a href="#ch4">Слитное, раздельное и дефисное написание</a></li>
+    <li><a href="#ch5">НЕ с разными частями речи</a></li>
+    <li><a href="#ch6">Пунктуация: запятые в предложении</a></li>
+    <li><a href="#ch7">Причастия и деепричастия</a></li>
+    <li><a href="#ch8">Глагол: спряжение, наклонение, время</a></li>
+    <li><a href="#ch9">Части речи и их формы</a></li>
+    <li><a href="#ch10">Синтаксис и типы предложений</a></li>
+    <li><a href="#ch11">Лексика: синонимы, антонимы, паронимы</a></li>
+    <li><a href="#ch12">Стили и типы речи</a></li>
+  </ol>
+</nav>
+
+<!-- ═══════════════════════════════ CHAPTER 1 ═══════════════════════════════ -->
+<h2 id="ch1"><span class="chapter-num">01</span> Орфография: безударные гласные в корне</h2>
+
+<p>На ОРТ вам встретятся задания вида: <em>«Буква Е пишется в слове…»</em> или <em>«Буква О пишется в одном слове ряда…»</em>. Для их решения нужно различать три типа безударных гласных в корне.</p>
+
+<h3>Проверяемые безударные гласные</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Правило</div>
+  Безударную гласную в корне проверяют подбором однокоренного слова, в котором эта гласная стоит под ударением.
+</div>
+
+<div class="example-box">
+  <div class="ex-label">Примеры</div>
+  <strong>Зал…зать</strong> на крышу → зал<span class="highlight">е</span>зть (значит пишем <span class="correct">Е</span>)<br>
+  <strong>Зал…зать</strong> рану → зал<span class="highlight">и</span>жет (значит пишем <span class="correct">И</span>)<br>
+  <strong>Отч…тать</strong> ленивого → отч<span class="highlight">и</span>тывать (значит <span class="correct">И</span>)<br>
+  <strong>Удерж…ливый</strong> → уд<span class="highlight">е</span>ржит (<span class="correct">Е</span>)
+</div>
+
+<h3>Непроверяемые безударные гласные</h3>
+<p>Их нужно запоминать — проверочного слова нет. Часто встречаются на ОРТ:</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Слово</th><th>Как запомнить</th></tr>
+  <tr><td>к<span class="highlight">а</span>лендарь</td><td>Латинское calendae</td></tr>
+  <tr><td>в<span class="highlight">и</span>негрет</td><td>Французское vinaigre</td></tr>
+  <tr><td>прив<span class="highlight">и</span>легия</td><td>Латинское privilegium</td></tr>
+  <tr><td>п<span class="highlight">а</span>лисадник</td><td>Французское palissade</td></tr>
+  <tr><td>к<span class="highlight">о</span>мпромисс</td><td>Латинское compromissum</td></tr>
+</table>
+</div>
+
+<h3>Чередующиеся гласные в корне</h3>
+
+<p>Это самый «опасный» тип — проверочное слово подбирать <strong>нельзя!</strong> Нужно знать правило для каждого корня.</p>
+
+<div class="rule-box">
+  <div class="rule-label">Правило: -лаг- / -лож-</div>
+  Перед <strong>Г</strong> пишется <strong>А</strong>: пол<span class="correct">а</span>гать, сл<span class="correct">а</span>гаемое<br>
+  Перед <strong>Ж</strong> пишется <strong>О</strong>: пол<span class="correct">о</span>жить, сл<span class="correct">о</span>жение<br>
+  <em>Исключение: полог</em>
+</div>
+
+<div class="rule-box">
+  <div class="rule-label">Правило: -раст- / -ращ- / -рос-</div>
+  Перед <strong>СТ</strong> и <strong>Щ</strong> пишется <strong>А</strong>: р<span class="correct">а</span>стение, выр<span class="correct">а</span>щивать<br>
+  Перед <strong>С</strong> пишется <strong>О</strong>: выр<span class="correct">о</span>сли, зар<span class="correct">о</span>сли<br>
+  <em>Исключения: росток, Ростов, Ростислав, ростовщик, отрасль</em>
+</div>
+
+<div class="rule-box">
+  <div class="rule-label">Правило: -кас- / -кос-</div>
+  Если после корня стоит суффикс <strong>-а-</strong>, пишем <strong>А</strong>: к<span class="correct">а</span>саться, к<span class="correct">а</span>сание<br>
+  Если нет суффикса -а-, пишем <strong>О</strong>: к<span class="correct">о</span>снуться, прик<span class="correct">о</span>сновение
+</div>
+
+<div class="rule-box">
+  <div class="rule-label">Правило: -бер-/-бир-, -тер-/-тир-, -мер-/-мир- и др.</div>
+  Если после корня суффикс <strong>-а-</strong>, пишем <strong>И</strong>: соб<span class="correct">и</span>рать, зам<span class="correct">и</span>рать, выт<span class="correct">и</span>рать<br>
+  Если нет — пишем <strong>Е</strong>: соб<span class="correct">е</span>ру, зам<span class="correct">е</span>реть, выт<span class="correct">е</span>реть
+</div>
+
+<div class="tip-box">
+  <div class="tip-label">Совет для ОРТ</div>
+  В заданиях типа «Буква О пишется в слове» сначала определите тип: чередование или проверяемая? Если корень из списка чередований — применяйте правило, НЕ подбирайте проверочное слово!
+</div>
+
+<div class="quiz-section">
+  <div class="quiz-title">📝 Практика: Безударные гласные</div>
+
+  <div class="quiz-q" data-correct="b">
+    <p>1. В каком ряду во всех словах пишется буква <strong>Е</strong>?</p>
+    <div class="options">
+      <label><input type="radio" name="q1_1" value="a"> А) Разм…кать в воде, опл…шать</label>
+      <label><input type="radio" name="q1_1" value="b"> Б) Отч…тать, удерж…ливый</label>
+      <label><input type="radio" name="q1_1" value="c"> В) Девч…нка, ш…колад</label>
+      <label><input type="radio" name="q1_1" value="d"> Г) М…линовый, ещ…чение</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="c">
+    <p>2. В каком слове пишется чередующаяся гласная <strong>А</strong>?</p>
+    <div class="options">
+      <label><input type="radio" name="q1_2" value="a"> А) Пол…жить</label>
+      <label><input type="radio" name="q1_2" value="b"> Б) Выр…сли</label>
+      <label><input type="radio" name="q1_2" value="c"> В) К…саться</label>
+      <label><input type="radio" name="q1_2" value="d"> Г) Соб…ру</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="a">
+    <p>3. Укажите слово с проверяемой безударной гласной <strong>И</strong> в корне:</p>
+    <div class="options">
+      <label><input type="radio" name="q1_3" value="a"> А) Зал…зать рану</label>
+      <label><input type="radio" name="q1_3" value="b"> Б) Заб…рать</label>
+      <label><input type="radio" name="q1_3" value="c"> В) В…негрет</label>
+      <label><input type="radio" name="q1_3" value="d"> Г) Р…стение</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="d">
+    <p>4. В каком варианте допущена ошибка?</p>
+    <div class="options">
+      <label><input type="radio" name="q1_4" value="a"> А) Предположить</label>
+      <label><input type="radio" name="q1_4" value="b"> Б) Вырастить</label>
+      <label><input type="radio" name="q1_4" value="c"> В) Прикоснуться</label>
+      <label><input type="radio" name="q1_4" value="d"> Г) Выростить</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="b">
+    <p>5. Укажите слово с непроверяемой гласной:</p>
+    <div class="options">
+      <label><input type="radio" name="q1_5" value="a"> А) Уд…вление (дивный)</label>
+      <label><input type="radio" name="q1_5" value="b"> Б) Пр…вилегия</label>
+      <label><input type="radio" name="q1_5" value="c"> В) Пол…гать</label>
+      <label><input type="radio" name="q1_5" value="d"> Г) Зам…реть</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+</div>
+
+<a href="#top" class="back-to-top">↑ К содержанию</a>
+
+<!-- ═══════════════════════════════ CHAPTER 2 ═══════════════════════════════ -->
+<h2 id="ch2"><span class="chapter-num">02</span> Правописание приставок</h2>
+
+<p>На ОРТ часто встречается: <em>«В каком слове правописание приставки зависит от глухости/звонкости звука после неё?»</em> Нужно знать три группы приставок.</p>
+
+<h3>Неизменяемые приставки</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Правило</div>
+  Приставки <strong>с-, об-, от-, над-, под-, пред-, в-, на-, за-, до-, по-</strong> пишутся одинаково всегда, независимо от произношения.
+</div>
+
+<div class="example-box">
+  <div class="ex-label">Примеры</div>
+  <span class="correct">С</span>делать (не «зделать»), <span class="correct">от</span>дать (не «оддать»), <span class="correct">над</span>писать
+</div>
+
+<h3>Приставки на -з / -с</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Правило</div>
+  Приставки <strong>без-/бес-, воз-/вос-, из-/ис-, раз-/рас-, через-/черес-, низ-/нис-</strong>:<br>
+  Перед <strong>звонкой</strong> согласной → пишем <strong>З</strong>: ра<span class="correct">з</span>бежались, бе<span class="correct">з</span>думный<br>
+  Перед <strong>глухой</strong> согласной → пишем <strong>С</strong>: ра<span class="correct">с</span>сказать, бе<span class="correct">с</span>покойный<br>
+  <em>Запомните: приставки З- не существует! Здесь, здание, здоровье — корень начинается на З.</em>
+</div>
+
+<div class="example-box">
+  <div class="ex-label">Из тестов ОРТ</div>
+  <strong>«В каком слове правописание приставки зависит от глухости/звонкости звука?»</strong><br>
+  А) <span class="wrong">Надписать</span> — неизменяемая, не подходит<br>
+  Б) <span class="correct">Разойтись</span> — раз-/рас-, зависит от звонкости ✓<br>
+  В) <span class="wrong">Сделать</span> — неизменяемая С-<br>
+  Г) <span class="wrong">Разбежались</span> — тоже подходит, но если в ответе одно — выбираем Б
+</div>
+
+<h3>Приставки ПРЕ- и ПРИ-</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Правило</div>
+  <strong>ПРИ-</strong> пишется, если значение:<br>
+  1) Приближение: <span class="correct">при</span>ехать, <span class="correct">при</span>бежать<br>
+  2) Присоединение: <span class="correct">при</span>клеить, <span class="correct">при</span>шить<br>
+  3) Неполнота действия: <span class="correct">при</span>открыть, <span class="correct">при</span>сесть<br>
+  4) Близость: <span class="correct">при</span>морский, <span class="correct">при</span>школьный<br><br>
+
+  <strong>ПРЕ-</strong> пишется, если значение:<br>
+  1) = «очень»: <span class="correct">пре</span>красный (= очень красивый), <span class="correct">пре</span>мудрый<br>
+  2) = приставка ПЕРЕ-: <span class="correct">пре</span>градить (= перегородить), <span class="correct">пре</span>рвать
+</div>
+
+<div class="table-wrap">
+<table>
+  <tr><th>ПРИ- (запомнить)</th><th>ПРЕ- (запомнить)</th></tr>
+  <tr><td>привилегия</td><td>президент</td></tr>
+  <tr><td>приключение</td><td>преследовать</td></tr>
+  <tr><td>причудливый</td><td>пренебрегать</td></tr>
+  <tr><td>приоритет</td><td>препятствие</td></tr>
+  <tr><td>примитивный</td><td>прецедент</td></tr>
+</table>
+</div>
+
+<div class="quiz-section">
+  <div class="quiz-title">📝 Практика: Приставки</div>
+
+  <div class="quiz-q" data-correct="b">
+    <p>1. В каком варианте во всех словах пишется буква Е в приставке?</p>
+    <div class="options">
+      <label><input type="radio" name="q2_1" value="a"> А) Пр…ключение, пр…оритет</label>
+      <label><input type="radio" name="q2_1" value="b"> Б) Пр…красный, пр…рвать</label>
+      <label><input type="radio" name="q2_1" value="c"> В) Пр…ехать, пр…мудрый</label>
+      <label><input type="radio" name="q2_1" value="d"> Г) Пр…бежище, пр…зрение</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="c">
+    <p>2. В каком слове правописание приставки зависит от глухости/звонкости следующей буквы?</p>
+    <div class="options">
+      <label><input type="radio" name="q2_2" value="a"> А) Надписать</label>
+      <label><input type="radio" name="q2_2" value="b"> Б) Сделать</label>
+      <label><input type="radio" name="q2_2" value="c"> В) Разбежались</label>
+      <label><input type="radio" name="q2_2" value="d"> Г) Подходить</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="a">
+    <p>3. Укажите верный вариант: <em>Пр…граждать, пр…небрегать, пр…ключение, пр…рвать</em></p>
+    <div class="options">
+      <label><input type="radio" name="q2_3" value="a"> А) Е, Е, И, Е</label>
+      <label><input type="radio" name="q2_3" value="b"> Б) Е, И, Е, И</label>
+      <label><input type="radio" name="q2_3" value="c"> В) И, Е, И, Е</label>
+      <label><input type="radio" name="q2_3" value="d"> Г) Е, Е, Е, Е</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="d">
+    <p>4. В каком варианте все приставки пишутся с буквой С?</p>
+    <div class="options">
+      <label><input type="radio" name="q2_4" value="a"> А) Ра…бить, и…дать</label>
+      <label><input type="radio" name="q2_4" value="b"> Б) Во…ход, бе…дарный</label>
+      <label><input type="radio" name="q2_4" value="c"> В) Ни…падать, ра…гром</label>
+      <label><input type="radio" name="q2_4" value="d"> Г) Ра…сказать, бе…покойный</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+</div>
+
+<a href="#top" class="back-to-top">↑ К содержанию</a>
+
+<!-- ═══════════════════════════════ CHAPTER 3 ═══════════════════════════════ -->
+<h2 id="ch3"><span class="chapter-num">03</span> Н и НН в суффиксах</h2>
+
+<p>Один из самых частых вопросов на ОРТ: <em>«На месте каких цифр пишется НН?»</em></p>
+
+<h3>Н и НН в прилагательных</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Одна Н</div>
+  1) В суффиксах <strong>-ан-, -ян-, -ин-</strong>: кож<span class="correct">а</span>н<span class="correct">ый</span>, серебр<span class="correct">ян</span>ый, гус<span class="correct">ин</span>ый<br>
+  <em>Исключения: стекля<span class="highlight">нн</span>ый, оловя<span class="highlight">нн</span>ый, деревя<span class="highlight">нн</span>ый</em>
+</div>
+
+<div class="rule-box">
+  <div class="rule-label">Две НН</div>
+  1) В суффиксах <strong>-онн-, -енн-</strong>: революци<span class="highlight">онн</span>ый, торжеств<span class="highlight">енн</span>ый<br>
+  <em>Исключение: ветр<span class="correct">ен</span>ый (но безветр<span class="highlight">енн</span>ый!)</em><br>
+  2) Корень на Н + суффикс Н: сон + н = со<span class="highlight">нн</span>ый, весна + н = весе<span class="highlight">нн</span>ий
+</div>
+
+<h3>Н и НН в причастиях и отглагольных прилагательных</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Пишем НН, если есть хотя бы одно условие:</div>
+  1) Есть <strong>приставка</strong> (кроме НЕ-): <span class="highlight">за</span>мороже<span class="highlight">нн</span>ый, <span class="highlight">вы</span>краше<span class="highlight">нн</span>ый<br>
+  2) Есть <strong>зависимое слово</strong>: мороже<span class="highlight">нн</span>ая <em>в холодильнике</em> рыба<br>
+  3) Образовано от глагола <strong>совершенного вида</strong>: реши<span class="highlight">нн</span>ый (от «решить» — сов. вид)<br>
+  4) Суффикс <strong>-ова-/-ева-</strong>: маринов<span class="highlight">а</span><span class="highlight">нн</span>ый, балов<span class="highlight">а</span><span class="highlight">нн</span>ый
+</div>
+
+<div class="rule-box">
+  <div class="rule-label">Пишем Н (нет ни одного из условий выше)</div>
+  Мороже<span class="correct">н</span>ая рыба (нет приставки, нет зависимого слова, несов. вид)
+</div>
+
+<div class="example-box">
+  <div class="ex-label">Типичное задание ОРТ</div>
+  <em>Может быть, коньки назва(1)ы коньками именно потому, что в старину делали деревя(2)ые коньки, украше(3)ые заплётом в виде лошади(4)ой головы.</em><br><br>
+  (1) назва<span class="highlight">нн</span>ы — приставка НА + совершенный вид → <strong>НН</strong><br>
+  (2) деревя<span class="highlight">нн</span>ые — исключение! → <strong>НН</strong><br>
+  (3) украше<span class="highlight">нн</span>ые — приставка У + совершенный вид → <strong>НН</strong><br>
+  (4) лошади<span class="correct">н</span>ой — суффикс -ИН- → <strong>Н</strong><br>
+  <strong>Ответ: НН на месте цифр 1, 2, 3</strong>
+</div>
+
+<div class="quiz-section">
+  <div class="quiz-title">📝 Практика: Н и НН</div>
+
+  <div class="quiz-q" data-correct="c">
+    <p>1. На месте каких цифр пишется НН?<br><em>Стены выбеле(1)ы из известки, снизу выкраше(2)ы коричневой масля(3)ой краской.</em></p>
+    <div class="options">
+      <label><input type="radio" name="q3_1" value="a"> А) 1, 2</label>
+      <label><input type="radio" name="q3_1" value="b"> Б) 2, 3</label>
+      <label><input type="radio" name="q3_1" value="c"> В) 1, 2, 3</label>
+      <label><input type="radio" name="q3_1" value="d"> Г) 3, 4</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="b">
+    <p>2. -Н- пропущена в суффиксах в строчке:</p>
+    <div class="options">
+      <label><input type="radio" name="q3_2" value="a"> А) Революцио…ый, торжестве…ый</label>
+      <label><input type="radio" name="q3_2" value="b"> Б) Кожа…ый, серебря…ый</label>
+      <label><input type="radio" name="q3_2" value="c"> В) Стекля…ый, оловя…ый</label>
+      <label><input type="radio" name="q3_2" value="d"> Г) Замороже…ый, выкраше…ый</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="a">
+    <p>3. В каком слове пишется Н?</p>
+    <div class="options">
+      <label><input type="radio" name="q3_3" value="a"> А) Мороже…ая рыба</label>
+      <label><input type="radio" name="q3_3" value="b"> Б) Замороже…ая рыба</label>
+      <label><input type="radio" name="q3_3" value="c"> В) Мороже…ая в холодильнике</label>
+      <label><input type="radio" name="q3_3" value="d"> Г) Реше…ая задача</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="d">
+    <p>4. Какое прилагательное является исключением (пишется НН)?</p>
+    <div class="options">
+      <label><input type="radio" name="q3_4" value="a"> А) Кожаный</label>
+      <label><input type="radio" name="q3_4" value="b"> Б) Гусиный</label>
+      <label><input type="radio" name="q3_4" value="c"> В) Серебряный</label>
+      <label><input type="radio" name="q3_4" value="d"> Г) Стеклянный</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+</div>
+
+<a href="#top" class="back-to-top">↑ К содержанию</a>
+
+<!-- ═══════════════════════════════ CHAPTER 4 ═══════════════════════════════ -->
+<h2 id="ch4"><span class="chapter-num">04</span> Слитное, раздельное и дефисное написание</h2>
+
+<p>На ОРТ: <em>«Слитно, раздельно или через дефис нужно написать слова: кое(у)кого, (ни)куда?»</em></p>
+
+<h3>Сложные прилагательные</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Через дефис</div>
+  1) Образованы от равноправных слов (можно поставить И): <span class="highlight">русско-английский</span> (русский И английский)<br>
+  2) Обозначают оттенки цвета: <span class="highlight">тёмно-синий</span>, <span class="highlight">ярко-красный</span><br>
+  3) Образованы от существительных, которые пишутся через дефис: <span class="highlight">юго-западный</span> (юго-запад)
+</div>
+
+<div class="rule-box">
+  <div class="rule-label">Слитно</div>
+  Образованы от подчинительного сочетания: <span class="highlight">железнодорожный</span> (железная дорога), <span class="highlight">левобережный</span> (левый берег)
+</div>
+
+<h3>Наречия</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Через дефис</div>
+  С приставкой <strong>по-</strong> и суффиксами <strong>-ому/-ему/-и</strong>: <span class="highlight">по-новому</span>, <span class="highlight">по-русски</span><br>
+  С приставкой <strong>во-/в-</strong> и суффиксами <strong>-ых/-их</strong>: <span class="highlight">во-первых</span>, <span class="highlight">в-третьих</span><br>
+  С частицами <strong>кое-, -то, -либо, -нибудь</strong>: <span class="highlight">кое-как</span>, <span class="highlight">где-нибудь</span>
+</div>
+
+<h3>Числительные</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Правило</div>
+  <strong>Слитно</strong>: сложные количественные и порядковые → <span class="highlight">пятимиллионов</span>, <span class="highlight">двухтысячный</span><br>
+  <strong>Раздельно</strong>: составные → <span class="highlight">пяти миллионов</span>, <span class="highlight">к двум тысячам</span><br>
+  С предлогами всегда раздельно: <span class="highlight">к двум</span> (тысячами), <span class="highlight">тремя</span> (тысячами)
+</div>
+
+<div class="example-box">
+  <div class="ex-label">Задание ОРТ</div>
+  <em>Слитно, раздельно или через дефис нужно написать слова: кое(у)кого, (ни)куда?</em><br>
+  • кое(у)кого → кое у кого — <span class="correct">раздельно</span> (предлог разделяет кое- и местоимение)<br>
+  • (ни)куда → никуда — <span class="correct">слитно</span> (нет предлога между НИ и словом)
+</div>
+
+<div class="quiz-section">
+  <div class="quiz-title">📝 Практика: Слитно/раздельно/дефис</div>
+
+  <div class="quiz-q" data-correct="a">
+    <p>1. Определите правильный вариант написания: <em>кое(у)кого, (ни)куда</em></p>
+    <div class="options">
+      <label><input type="radio" name="q4_1" value="a"> А) Раздельно / слитно / слитно</label>
+      <label><input type="radio" name="q4_1" value="b"> Б) Через дефис / слитно / слитно</label>
+      <label><input type="radio" name="q4_1" value="c"> В) Слитно / раздельно / раздельно</label>
+      <label><input type="radio" name="q4_1" value="d"> Г) Через дефис / раздельно / раздельно</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="c">
+    <p>2. Какое слово пишется через дефис?</p>
+    <div class="options">
+      <label><input type="radio" name="q4_2" value="a"> А) (Железно)дорожный</label>
+      <label><input type="radio" name="q4_2" value="b"> Б) (Лево)бережный</label>
+      <label><input type="radio" name="q4_2" value="c"> В) (Тёмно)синий</label>
+      <label><input type="radio" name="q4_2" value="d"> Г) (Древне)русский</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="b">
+    <p>3. В каком предложении ЦЕ словом пишется слитно?</p>
+    <div class="options">
+      <label><input type="radio" name="q4_3" value="a"> А) Рекомендованная книга (не)дочитана</label>
+      <label><input type="radio" name="q4_3" value="b"> Б) Герой оказывается орудием (не)понятой им силы</label>
+      <label><input type="radio" name="q4_3" value="c"> В) Клементьев ушёл, (не)ответив на вопросы</label>
+      <label><input type="radio" name="q4_3" value="d"> Г) (Не)высказанный укрек светился в глазах</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+</div>
+
+<a href="#top" class="back-to-top">↑ К содержанию</a>
+
+<!-- ═══════════════════════════════ CHAPTER 5 ═══════════════════════════════ -->
+<h2 id="ch5"><span class="chapter-num">05</span> НЕ с разными частями речи</h2>
+
+<p>Одна из ключевых тем ОРТ: <em>«В каком предложении НЕ пишется раздельно?»</em></p>
+
+<h3>НЕ с глаголами и деепричастиями</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Правило</div>
+  С глаголами и деепричастиями НЕ пишется <strong>раздельно</strong> всегда.<br>
+  <span class="correct">Не</span> знал, <span class="correct">не</span> ответив, <span class="correct">не</span> делая<br>
+  <em>Исключение: без НЕ не употребляется → ненавидеть, негодуя, недоумевая</em>
+</div>
+
+<h3>НЕ с существительными, прилагательными и наречиями на -о</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Слитно</div>
+  1) Без НЕ не употребляется: <span class="highlight">невежда</span>, <span class="highlight">нелепый</span><br>
+  2) Можно заменить синонимом без НЕ: <span class="highlight">нехороший</span> = плохой, <span class="highlight">невесело</span> = грустно
+</div>
+
+<div class="rule-box">
+  <div class="rule-label">Раздельно</div>
+  1) Есть противопоставление с <strong>А</strong>: <span class="correct">не</span> большой, <span class="correct">а</span> маленький<br>
+  2) Есть слова <strong>далеко не, вовсе не, отнюдь не, ничуть не, нисколько не</strong>: <span class="correct">вовсе не</span> интересный
+</div>
+
+<h3>НЕ с причастиями</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Раздельно</div>
+  1) Есть зависимое слово: <span class="correct">не</span> прочитанная <em>учеником</em> книга<br>
+  2) Краткая форма: книга <span class="correct">не</span> прочитана<br>
+  3) Противопоставление с А: <span class="correct">не</span> законченная, <span class="correct">а</span> начатая работа
+</div>
+
+<div class="rule-box">
+  <div class="rule-label">Слитно</div>
+  1) Без НЕ не употребляется: <span class="highlight">ненавидящий</span><br>
+  2) Нет зависимых слов и противопоставления: <span class="highlight">непрочитанная</span> книга
+</div>
+
+<div class="example-box">
+  <div class="ex-label">Задание ОРТ</div>
+  <em>В каком предложении НЕ пишется раздельно?</em><br>
+  А) Мы опоздали на обед и торопиться было (не)зачем ← <span class="correct">слитно: незачем</span> = нет смысла<br>
+  Б) Солнце жгло по-вечернему, воздух был (не)подвижен и уныл ← <span class="correct">раздельно</span>: краткое причастие!<br>
+  В) В (не)освещённый пыльной просекой дорогу ← <span class="correct">раздельно</span>: есть зависимое слово
+</div>
+
+<div class="quiz-section">
+  <div class="quiz-title">📝 Практика: НЕ с частями речи</div>
+
+  <div class="quiz-q" data-correct="c">
+    <p>1. В каком предложении НЕ пишется раздельно?</p>
+    <div class="options">
+      <label><input type="radio" name="q5_1" value="a"> А) Это было (не)забываемое путешествие</label>
+      <label><input type="radio" name="q5_1" value="b"> Б) Он говорил (не)громко</label>
+      <label><input type="radio" name="q5_1" value="c"> В) Это (не)решённая учеником задача</label>
+      <label><input type="radio" name="q5_1" value="d"> Г) (Не)вежливый поступок</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="b">
+    <p>2. В каком варианте НЕ пишется слитно?</p>
+    <div class="options">
+      <label><input type="radio" name="q5_2" value="a"> А) Далеко (не)простая задача</label>
+      <label><input type="radio" name="q5_2" value="b"> Б) (Не)ожиданное решение</label>
+      <label><input type="radio" name="q5_2" value="c"> В) (Не)красивый, а уродливый</label>
+      <label><input type="radio" name="q5_2" value="d"> Г) Книга (не)прочитана</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="a">
+    <p>3. В каком деепричастии НЕ пишется слитно?</p>
+    <div class="options">
+      <label><input type="radio" name="q5_3" value="a"> А) (Не)доумевая</label>
+      <label><input type="radio" name="q5_3" value="b"> Б) (Не)ответив</label>
+      <label><input type="radio" name="q5_3" value="c"> В) (Не)думая</label>
+      <label><input type="radio" name="q5_3" value="d"> Г) (Не)закрыв</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+</div>
+
+<a href="#top" class="back-to-top">↑ К содержанию</a>
+
+<!-- ═══════════════════════════════ CHAPTER 6 ═══════════════════════════════ -->
+<h2 id="ch6"><span class="chapter-num">06</span> Пунктуация: запятые в предложении</h2>
+
+<p>На ОРТ целый блок заданий по пунктуации: <em>«Укажите количество пропущенных запятых»</em>, <em>«Где надо поставить запятые?»</em></p>
+
+<h3>Запятые при однородных членах</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Правило</div>
+  Однородные члены разделяются запятыми, если:<br>
+  1) Соединены без союзов: <em>Он читал книги<span class="highlight">,</span> газеты<span class="highlight">,</span> журналы.</em><br>
+  2) Соединены повторяющимися союзами: <em>И книги<span class="highlight">,</span> и газеты<span class="highlight">,</span> и журналы.</em><br>
+  3) Соединены противительным союзом (а, но, да=но): <em>Не книги<span class="highlight">,</span> а газеты.</em><br><br>
+  <strong>Запятая НЕ ставится</strong> при одиночном союзе И: <em>Книги и газеты.</em>
+</div>
+
+<h3>Запятые в сложном предложении</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Сложносочинённое (ССП)</div>
+  Части соединены союзами И, А, НО, ИЛИ — ставим запятую перед союзом:<br>
+  <em>Солнце село<span class="highlight">,</span> и на небе зажглись звёзды.</em>
+</div>
+
+<div class="rule-box">
+  <div class="rule-label">Сложноподчинённое (СПП)</div>
+  Придаточная часть отделяется запятой от главной:<br>
+  <em>Я знаю<span class="highlight">,</span> что ты придёшь.</em><br>
+  <em>Когда пойдёт дождь<span class="highlight">,</span> мы вернёмся домой.</em>
+</div>
+
+<h3>Запятые при обособленных членах</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Причастный оборот</div>
+  Обособляется, если стоит <strong>после</strong> определяемого слова:<br>
+  <em>Книга<span class="highlight">,</span> написанная другом<span class="highlight">,</span> лежала на столе.</em><br>
+  Не обособляется перед определяемым словом:<br>
+  <em>Написанная другом книга лежала на столе.</em>
+</div>
+
+<div class="rule-box">
+  <div class="rule-label">Деепричастный оборот</div>
+  Обособляется <strong>всегда</strong>:<br>
+  <em><span class="highlight">Выйдя за ворота,</span> мы повернули направо.</em><br>
+  <em>Мы шли<span class="highlight">,</span> разговаривая о планах<span class="highlight">,</span> по улице.</em>
+</div>
+
+<div class="example-box">
+  <div class="ex-label">Задание ОРТ</div>
+  <em>«Укажите количество пропущенных запятых: Сад все больше редел переходя в настоящий луг служил реке.»</em><br><br>
+  Сад все больше редел<span class="highlight">,</span> переходя в настоящий луг<span class="highlight">,</span> служил реке.<br>
+  Деепричастный оборот «переходя в настоящий луг» → <strong>2 запятые</strong>
+</div>
+
+<div class="quiz-section">
+  <div class="quiz-title">📝 Практика: Пунктуация</div>
+
+  <div class="quiz-q" data-correct="c">
+    <p>1. Укажите количество пропущенных запятых:<br>
+    <em>Восстань (1) пророк (2) и виждь (3) и внемли (4) исполнись волею моей (5) и (6) обходя моря и земли (7) глаголом жги сердца людей.</em></p>
+    <div class="options">
+      <label><input type="radio" name="q6_1" value="a"> А) 1, 2, 3, 6, 7</label>
+      <label><input type="radio" name="q6_1" value="b"> Б) 1, 3, 4, 6, 7</label>
+      <label><input type="radio" name="q6_1" value="c"> В) 1, 2, 3, 4, 6, 7</label>
+      <label><input type="radio" name="q6_1" value="d"> Г) 1, 2, 3, 4, 5, 6, 7</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="b">
+    <p>2. В каком предложении причастный оборот выделяется запятыми?</p>
+    <div class="options">
+      <label><input type="radio" name="q6_2" value="a"> А) Написанная другом книга лежала на столе.</label>
+      <label><input type="radio" name="q6_2" value="b"> Б) Человек услышавший шорох насторожился.</label>
+      <label><input type="radio" name="q6_2" value="c"> В) Бегущий по дорожке мальчик упал.</label>
+      <label><input type="radio" name="q6_2" value="d"> Г) Прочитанная книга стояла на полке.</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="d">
+    <p>3. В каком предложении нет пропущенных запятых?</p>
+    <div class="options">
+      <label><input type="radio" name="q6_3" value="a"> А) Грема кастрюли полетели в разные стороны.</label>
+      <label><input type="radio" name="q6_3" value="b"> Б) Клубясь ниже опускались ровные тучи.</label>
+      <label><input type="radio" name="q6_3" value="c"> В) Он быстро оглянулся вокруг и робко моргая тоже вскочил.</label>
+      <label><input type="radio" name="q6_3" value="d"> Г) Он шёл не торопясь.</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+</div>
+
+<a href="#top" class="back-to-top">↑ К содержанию</a>
+
+<!-- ═══════════════════════════════ CHAPTER 7 ═══════════════════════════════ -->
+<h2 id="ch7"><span class="chapter-num">07</span> Причастия и деепричастия</h2>
+
+<p>На ОРТ тестируют умение определять вид, находить обороты и правильно их использовать.</p>
+
+<h3>Причастие</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Определение</div>
+  Причастие — форма глагола, обозначающая <strong>признак по действию</strong>. Отвечает на вопросы: какой? какая? какое? (что делающий? что сделавший?)
+</div>
+
+<div class="table-wrap">
+<table>
+  <tr><th></th><th>Действительное</th><th>Страдательное</th></tr>
+  <tr><td><strong>Наст. вр.</strong></td><td>чита<span class="highlight">ющ</span>ий, нес<span class="highlight">ущ</span>ий</td><td>чита<span class="highlight">ем</span>ый, нес<span class="highlight">ом</span>ый</td></tr>
+  <tr><td><strong>Прош. вр.</strong></td><td>прочита<span class="highlight">вш</span>ий, нёс<span class="highlight">ш</span>ий</td><td>прочита<span class="highlight">нн</span>ый, принес<span class="highlight">ённ</span>ый</td></tr>
+</table>
+</div>
+
+<h3>Деепричастие</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Определение</div>
+  Деепричастие — форма глагола, обозначающая <strong>добавочное действие</strong>. Отвечает на вопросы: что делая? что сделав?
+</div>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Несовершенного вида</th><th>Совершенного вида</th></tr>
+  <tr><td>чита<span class="highlight">я</span>, дела<span class="highlight">я</span>, разговарива<span class="highlight">я</span></td><td>прочита<span class="highlight">в</span>, сдела<span class="highlight">в</span>, увиде<span class="highlight">в</span></td></tr>
+  <tr><td>Суффиксы: <strong>-а/-я</strong></td><td>Суффиксы: <strong>-в, -вши, -ши</strong></td></tr>
+</table>
+</div>
+
+<h3>Типичные ошибки (задания ОРТ)</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Ошибка: неправильное употребление деепричастия</div>
+  Деепричастие и глагол-сказуемое должны относиться к <strong>одному подлежащему</strong>:<br>
+  <span class="wrong">Выезжая за город, вы получаете удовольствие.</span> — ✓ правильно (вы выезжаете и получаете)<br>
+  <span class="wrong">Выезжая за город, мне стало хорошо.</span> — ✗ ошибка! (мне — не подлежащее)
+</div>
+
+<div class="example-box">
+  <div class="ex-label">Задание ОРТ: «Найдите непереходное деепричастие»</div>
+  А) Зная язык → переходное (зная что? язык)<br>
+  Б) <span class="correct">Разучив вальс</span> → переходное (разучив что? вальс)<br>
+  В) <span class="correct">Знаяязык</span> → переходное<br>
+  Г) Увлёкшись спортом → <span class="correct">непереходное</span> (увлёкшись чем? — творительный падеж, не винительный)
+</div>
+
+<div class="quiz-section">
+  <div class="quiz-title">📝 Практика: Причастия и деепричастия</div>
+
+  <div class="quiz-q" data-correct="c">
+    <p>1. Укажите предложение с деепричастным оборотом несовершенного вида:</p>
+    <div class="options">
+      <label><input type="radio" name="q7_1" value="a"> А) Отступив, замолчала листва.</label>
+      <label><input type="radio" name="q7_1" value="b"> Б) Нагнувшись, Василий уселся.</label>
+      <label><input type="radio" name="q7_1" value="c"> В) Лиственницы смиренно сторонились, давая дорогу.</label>
+      <label><input type="radio" name="q7_1" value="d"> Г) Прочитав книгу, он задумался.</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="b">
+    <p>2. В каком варианте деепричастие употреблено неправильно?</p>
+    <div class="options">
+      <label><input type="radio" name="q7_2" value="a"> А) Выезжая за город, вы получаете удовольствие.</label>
+      <label><input type="radio" name="q7_2" value="b"> Б) Пользуясь калькулятором, у быстро получается результат.</label>
+      <label><input type="radio" name="q7_2" value="c"> В) Убирая в квартире, мама нашла старые фото.</label>
+      <label><input type="radio" name="q7_2" value="d"> Г) Отправляясь в поход, берите необходимое.</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="d">
+    <p>3. Найдите словосочетание с главным словом — существительным:</p>
+    <div class="options">
+      <label><input type="radio" name="q7_3" value="a"> А) Напугавшая стуком</label>
+      <label><input type="radio" name="q7_3" value="b"> Б) Свявшие смуту</label>
+      <label><input type="radio" name="q7_3" value="c"> В) Освещавшая комнату</label>
+      <label><input type="radio" name="q7_3" value="d"> Г) Стоящей лампы</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+</div>
+
+<a href="#top" class="back-to-top">↑ К содержанию</a>
+
+<!-- ═══════════════════════════════ CHAPTER 8 ═══════════════════════════════ -->
+<h2 id="ch8"><span class="chapter-num">08</span> Глагол: спряжение, наклонение, время</h2>
+
+<p>Ключевая тема для ОРТ: <em>«Укажите глагол 2-го спряжения»</em>, <em>«Определите наклонение глаголов»</em>.</p>
+
+<h3>Спряжение глаголов</h3>
+
+<div class="rule-box">
+  <div class="rule-label">I спряжение</div>
+  Все глаголы на <strong>-ать, -ять, -еть, -уть, -оть, -ыть</strong> (кроме исключений):<br>
+  пис<span class="highlight">а</span>ть → пиш<span class="highlight">е</span>шь, пиш<span class="highlight">е</span>т, пиш<span class="highlight">у</span>т<br>
+  Окончания: <strong>-ешь, -ет, -ем, -ете, -ут/-ют</strong>
+</div>
+
+<div class="rule-box">
+  <div class="rule-label">II спряжение</div>
+  1) Все глаголы на <strong>-ить</strong> (кроме брить, стелить):<br>
+  стро<span class="highlight">и</span>ть → стро<span class="highlight">и</span>шь, стро<span class="highlight">и</span>т, стро<span class="highlight">я</span>т<br>
+  2) <strong>4 глагола на -ать</strong>: гнать, дышать, держать, слышать<br>
+  3) <strong>7 глаголов на -еть</strong>: видеть, ненавидеть, зависеть, терпеть, обидеть, смотреть, вертеть<br>
+  Окончания: <strong>-ишь, -ит, -им, -ите, -ат/-ят</strong>
+</div>
+
+<div class="tip-box">
+  <div class="tip-label">Запоминалка: 11 глаголов-исключений II спряжения</div>
+  Гнать, дышать, держать, слышать,<br>
+  Видеть, ненавидеть, зависеть,<br>
+  Терпеть, обидеть, смотреть, вертеть.
+</div>
+
+<h3>Наклонения глагола</h3>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Наклонение</th><th>Значение</th><th>Примеры</th></tr>
+  <tr><td><strong>Изъявительное</strong></td><td>Реальное действие (прош./наст./буд.)</td><td>Я читаю. Он прочитал.</td></tr>
+  <tr><td><strong>Условное (сослагательное)</strong></td><td>Возможное действие (глагол + <strong>бы</strong>)</td><td>Я прочитал <span class="highlight">бы</span>.</td></tr>
+  <tr><td><strong>Повелительное</strong></td><td>Приказ, просьба</td><td><span class="highlight">Читай!</span> <span class="highlight">Напишите!</span></td></tr>
+</table>
+</div>
+
+<div class="example-box">
+  <div class="ex-label">Задание ОРТ</div>
+  <em>Определите наклонение глаголов: сройте, сходи, бы, напишу.</em><br>
+  • спойте — <span class="correct">повелительное</span><br>
+  • сходил бы — <span class="correct">условное</span><br>
+  • напишу — <span class="correct">изъявительное</span>
+</div>
+
+<h3>Разноспрягаемые глаголы</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Правило</div>
+  Глаголы <strong>хотеть, бежать</strong> — разноспрягаемые: имеют окончания и I, и II спряжения.<br>
+  <em>хочу, хочешь, хочет</em> (I спр.) — <em>хотим, хотите, хотят</em> (II спр.)
+</div>
+
+<div class="quiz-section">
+  <div class="quiz-title">📝 Практика: Глагол</div>
+
+  <div class="quiz-q" data-correct="a">
+    <p>1. Укажите глагол 2-го спряжения:</p>
+    <div class="options">
+      <label><input type="radio" name="q8_1" value="a"> А) Дышать</label>
+      <label><input type="radio" name="q8_1" value="b"> Б) Думать</label>
+      <label><input type="radio" name="q8_1" value="c"> В) Скакать</label>
+      <label><input type="radio" name="q8_1" value="d"> Г) Шагать</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="c">
+    <p>2. Какие глаголы относятся к разноспрягаемым?</p>
+    <div class="options">
+      <label><input type="radio" name="q8_2" value="a"> А) Гнать, дышать, держать, слышать</label>
+      <label><input type="radio" name="q8_2" value="b"> Б) Брить, стелить</label>
+      <label><input type="radio" name="q8_2" value="c"> В) Хотеть, бежать</label>
+      <label><input type="radio" name="q8_2" value="d"> Г) Видеть, ненавидеть</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="b">
+    <p>3. Укажите предложение с составным глагольным сказуемым:</p>
+    <div class="options">
+      <label><input type="radio" name="q8_3" value="a"> А) Подходы к заграждениям минированы.</label>
+      <label><input type="radio" name="q8_3" value="b"> Б) Крутиков разгорячённо принялся объяснять.</label>
+      <label><input type="radio" name="q8_3" value="c"> В) Предположения оказались правильными.</label>
+      <label><input type="radio" name="q8_3" value="d"> Г) В воздухе густо пахло смолой.</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="d">
+    <p>4. Определите наклонения: <em>Повелительное, условное, изъявительное, повелительное:</em></p>
+    <div class="options">
+      <label><input type="radio" name="q8_4" value="a"> А) Условное, повелительное, изъявительное</label>
+      <label><input type="radio" name="q8_4" value="b"> Б) Повелительное, условное, условное</label>
+      <label><input type="radio" name="q8_4" value="c"> В) Изъявительное, повелительное, условное</label>
+      <label><input type="radio" name="q8_4" value="d"> Г) Изъявительное, условное, повелительное</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+</div>
+
+<a href="#top" class="back-to-top">↑ К содержанию</a>
+
+<!-- ═══════════════════════════════ CHAPTER 9 ═══════════════════════════════ -->
+<h2 id="ch9"><span class="chapter-num">09</span> Части речи и их формы</h2>
+
+<p>На ОРТ: <em>«Определите синтаксическую роль местоимения»</em>, <em>«Какое прилагательное не имеет степеней сравнения?»</em></p>
+
+<h3>Местоимение: синтаксическая роль</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Роли местоимения в предложении</div>
+  <strong>Подлежащее:</strong> <span class="highlight">Он</span> пришёл.<br>
+  <strong>Дополнение:</strong> Я вижу <span class="highlight">его</span>.<br>
+  <strong>Определение:</strong> <span class="highlight">Его</span> письмо долго хранилось. (чьё?)<br>
+  <strong>Обстоятельство:</strong> Я <span class="highlight">по-своему</span> решил задачу. (как?)
+</div>
+
+<div class="example-box">
+  <div class="ex-label">Задание ОРТ</div>
+  <em>«Определите синтаксическую роль местоимения в предложении: Его письма долго хранились.»</em><br>
+  Его (чьи?) письма → <span class="correct">определение</span>
+</div>
+
+<h3>Прилагательное: степени сравнения</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Не имеют степеней сравнения</div>
+  <strong>Относительные</strong> прилагательные: деревянный, железный, городской<br>
+  <strong>Притяжательные</strong>: мамин, лисий, отцов<br>
+  Только <strong>качественные</strong> имеют степени сравнения: красивый → красивее → красивейший
+</div>
+
+<div class="example-box">
+  <div class="ex-label">Задание ОРТ</div>
+  <em>«Какое прилагательное не имеет степеней сравнения?»</em><br>
+  А) Снежный → относительное, <span class="correct">не имеет</span> ✓<br>
+  Б) Хороший → качественное, имеет<br>
+  В) Плохой → качественное, имеет<br>
+  Г) Маленький → качественное, имеет
+</div>
+
+<h3>Состав слова</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Части слова</div>
+  <strong>Приставка</strong> (перед корнем) + <strong>Корень</strong> + <strong>Суффикс</strong> (после корня) + <strong>Флексия/Окончание</strong><br><br>
+  <em>Пример: при-мир-яющ-ий</em> → приставка ПРИ, корень МИР, суффикс -ЯЮЩ, окончание -ИЙ
+</div>
+
+<div class="example-box">
+  <div class="ex-label">Задание ОРТ</div>
+  <em>«Какое слово состоит из приставки, корня, суффикса и флексии?»</em><br>
+  А) Примиряющий → при + мир + яющ + ий → <span class="correct">верно</span> ✓<br>
+  Б) Разобщение → раз + общ + ени + е → верно (тоже подходит)<br>
+  В) Сторожка → сторож + к + а → нет приставки<br>
+  Г) Засекречивая → за + секреч + ива + я → деепричастие (нет окончания)
+</div>
+
+<div class="quiz-section">
+  <div class="quiz-title">📝 Практика: Части речи</div>
+
+  <div class="quiz-q" data-correct="a">
+    <p>1. Какое прилагательное не имеет степеней сравнения?</p>
+    <div class="options">
+      <label><input type="radio" name="q9_1" value="a"> А) Снежный</label>
+      <label><input type="radio" name="q9_1" value="b"> Б) Хороший</label>
+      <label><input type="radio" name="q9_1" value="c"> В) Плохой</label>
+      <label><input type="radio" name="q9_1" value="d"> Г) Маленький</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="c">
+    <p>2. Определите синтаксическую роль местоимения: <em>«Его письма долго хранились.»</em></p>
+    <div class="options">
+      <label><input type="radio" name="q9_2" value="a"> А) Подлежащее</label>
+      <label><input type="radio" name="q9_2" value="b"> Б) Дополнение</label>
+      <label><input type="radio" name="q9_2" value="c"> В) Определение</label>
+      <label><input type="radio" name="q9_2" value="d"> Г) Обстоятельство</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="d">
+    <p>3. В каком предложении вместо слова ЕДИНЫЙ нужно употребить ЕДИНИЧНЫЙ?</p>
+    <div class="options">
+      <label><input type="radio" name="q9_3" value="a"> А) На Учёном совете была сформулирована ЕДИНАЯ позиция.</label>
+      <label><input type="radio" name="q9_3" value="b"> Б) Вокруг — голубовато-белая пустыня без ЕДИНОЙ складочки.</label>
+      <label><input type="radio" name="q9_3" value="c"> В) М. Горький советовал обращать внимание на литературу в целом, а не на ЕДИНЫЕ её единицы.</label>
+      <label><input type="radio" name="q9_3" value="d"> Г) Почему-то ночью кажется, будто ёлки держат ЕДИНУЮ правильную форму.</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+</div>
+
+<a href="#top" class="back-to-top">↑ К содержанию</a>
+
+<!-- ═══════════════════════════════ CHAPTER 10 ═══════════════════════════════ -->
+<h2 id="ch10"><span class="chapter-num">10</span> Синтаксис и типы предложений</h2>
+
+<p>На ОРТ: <em>«Какая схема соответствует предложению?»</em>, <em>«Определите тип предложения»</em>.</p>
+
+<h3>По цели высказывания</h3>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Тип</th><th>Назначение</th><th>Пример</th></tr>
+  <tr><td>Повествовательное</td><td>Сообщение</td><td>Солнце взошло.</td></tr>
+  <tr><td>Вопросительное</td><td>Вопрос</td><td>Который час?</td></tr>
+  <tr><td>Побудительное</td><td>Приказ, просьба</td><td>Идите сюда!</td></tr>
+</table>
+</div>
+
+<h3>По наличию грамматической основы</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Двусоставное vs Односоставное</div>
+  <strong>Двусоставное:</strong> есть и подлежащее, и сказуемое → <em>Мальчик читает.</em><br>
+  <strong>Односоставное:</strong> только один главный член:<br>
+  • <strong>Определённо-личное:</strong> <em>Иду домой.</em> (я — подразумевается)<br>
+  • <strong>Неопределённо-личное:</strong> <em>Звонят в дверь.</em> (кто-то)<br>
+  • <strong>Безличное:</strong> <em>Светает. Морозит. Хорошо в лесу!</em><br>
+  • <strong>Назывное:</strong> <em>Зима. Ночь.</em>
+</div>
+
+<div class="example-box">
+  <div class="ex-label">Задание ОРТ</div>
+  <em>«Определите тип предложения: Тропинки в лесу замело снегом.»</em><br>
+  Нет подлежащего, сказуемое «замело» — нельзя подставить лицо → <span class="correct">безличное</span>
+</div>
+
+<h3>Способы связи слов в словосочетании</h3>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Способ</th><th>Определение</th><th>Примеры</th></tr>
+  <tr><td><strong>Согласование</strong></td><td>Зависимое слово согласуется в роде, числе, падеже</td><td>красивая девушка, этот дом</td></tr>
+  <tr><td><strong>Управление</strong></td><td>Зависимое слово стоит в определённом падеже</td><td>читать книгу, верить другу</td></tr>
+  <tr><td><strong>Примыкание</strong></td><td>Зависимое неизменяемое слово (наречие, инфинитив)</td><td>быстро бежать, очень интересный</td></tr>
+</table>
+</div>
+
+<div class="example-box">
+  <div class="ex-label">Задание ОРТ</div>
+  <em>«Какой способ связи в словосочетании ЧЕРЕЗ ПОСТОРОННЕГО?»</em><br>
+  через (предлог) + постороннего (Р.п.) → зависимое слово стоит в определённом падеже → <span class="correct">управление</span>
+</div>
+
+<div class="quiz-section">
+  <div class="quiz-title">📝 Практика: Синтаксис</div>
+
+  <div class="quiz-q" data-correct="b">
+    <p>1. Найдите безличное предложение:</p>
+    <div class="options">
+      <label><input type="radio" name="q10_1" value="a"> А) Газеты обычно приносят утром.</label>
+      <label><input type="radio" name="q10_1" value="b"> Б) Хорошо в зимнем лесу!</label>
+      <label><input type="radio" name="q10_1" value="c"> В) Ещё не успевшая остыть земля.</label>
+      <label><input type="radio" name="q10_1" value="d"> Г) Мальчик пришёл домой.</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="c">
+    <p>2. Какой способ связи слов в словосочетании <em>«очень интересный»</em>?</p>
+    <div class="options">
+      <label><input type="radio" name="q10_2" value="a"> А) Согласование</label>
+      <label><input type="radio" name="q10_2" value="b"> Б) Управление</label>
+      <label><input type="radio" name="q10_2" value="c"> В) Примыкание</label>
+      <label><input type="radio" name="q10_2" value="d"> Г) Не является словосочетанием</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="a">
+    <p>3. Какое предложение является двусоставным?</p>
+    <div class="options">
+      <label><input type="radio" name="q10_3" value="a"> А) Какая чепуха!</label>
+      <label><input type="radio" name="q10_3" value="b"> Б) Проклятый сон.</label>
+      <label><input type="radio" name="q10_3" value="c"> В) Пойдём бумаги разбирать.</label>
+      <label><input type="radio" name="q10_3" value="d"> Г) Счастливые часов не наблюдают.</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+</div>
+
+<a href="#top" class="back-to-top">↑ К содержанию</a>
+
+<!-- ═══════════════════════════════ CHAPTER 11 ═══════════════════════════════ -->
+<h2 id="ch11"><span class="chapter-num">11</span> Лексика: синонимы, антонимы, паронимы</h2>
+
+<p>На ОРТ: <em>«Подберите синоним к слову»</em>, <em>«Какое слово не имеет синонимов?»</em>, <em>«Лексическое значение какого слова определено неверно?»</em></p>
+
+<h3>Синонимы</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Определение</div>
+  Синонимы — слова одной части речи, близкие по значению, но различные по звучанию:<br>
+  храбрый = смелый = отважный = мужественный
+</div>
+
+<h3>Антонимы</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Определение</div>
+  Антонимы — слова с противоположным значением:<br>
+  горячо ↔ холодно, север ↔ юг, день ↔ ночь
+</div>
+
+<h3>Паронимы</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Определение</div>
+  Паронимы — похожие по звучанию, но различные по значению слова. Их путают на ОРТ!
+</div>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Пароним 1</th><th>Пароним 2</th><th>Разница</th></tr>
+  <tr><td><strong>Единый</strong> = один общий</td><td><strong>Единичный</strong> = отдельный, редкий</td><td>Единая система ≠ единичный случай</td></tr>
+  <tr><td><strong>Тактичный</strong> = вежливый</td><td><strong>Тактический</strong> = военная тактика</td><td>Тактичный человек ≠ тактический ход</td></tr>
+  <tr><td><strong>Колоритный</strong> = яркий, выразительный</td><td><strong>Калорийный</strong> = много калорий</td><td>Колоритная фигура ≠ калорийная еда</td></tr>
+  <tr><td><strong>Масштаб</strong> (карта)</td><td><strong>Масштаб</strong> (размах)</td><td>В разных значениях!</td></tr>
+</table>
+</div>
+
+<h3>Фразеологизмы</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Определение</div>
+  Фразеологизмы — устойчивые сочетания слов, значение которых нельзя понять из значений отдельных слов.
+</div>
+
+<div class="example-box">
+  <div class="ex-label">Частые фразеологизмы на ОРТ</div>
+  <strong>Бить баклуши</strong> = бездельничать<br>
+  <strong>Водить за нос</strong> = обманывать<br>
+  <strong>Держать камень за пазухой</strong> = затаить обиду<br>
+  <strong>Спустя рукава</strong> = небрежно<br>
+  <strong>Засучив рукава</strong> = усердно
+</div>
+
+<div class="quiz-section">
+  <div class="quiz-title">📝 Практика: Лексика</div>
+
+  <div class="quiz-q" data-correct="c">
+    <p>1. Какое слово не имеет синонимов?</p>
+    <div class="options">
+      <label><input type="radio" name="q11_1" value="a"> А) Языкознание</label>
+      <label><input type="radio" name="q11_1" value="b"> Б) Обескуражить</label>
+      <label><input type="radio" name="q11_1" value="c"> В) Катет</label>
+      <label><input type="radio" name="q11_1" value="d"> Г) Список</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="b">
+    <p>2. Лексическое значение какого слова определено неверно?</p>
+    <div class="options">
+      <label><input type="radio" name="q11_2" value="a"> А) Тактичный — деликатный, вежливый</label>
+      <label><input type="radio" name="q11_2" value="b"> Б) Колоритный — сытный, содержащий много калорий</label>
+      <label><input type="radio" name="q11_2" value="c"> В) Стабильный — постоянный, устойчивый</label>
+      <label><input type="radio" name="q11_2" value="d"> Г) Приватизация — передача собственности в частные руки</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="a">
+    <p>3. В каком варианте(-ах) нарушена норма сочетания слов?</p>
+    <div class="options">
+      <label><input type="radio" name="q11_3" value="a"> А) Красный тюль (тюль — муж. род!)</label>
+      <label><input type="radio" name="q11_3" value="b"> Б) По выздоровлении сына</label>
+      <label><input type="radio" name="q11_3" value="c"> В) Разочароваться спектаклем</label>
+      <label><input type="radio" name="q11_3" value="d"> Г) Ласковый шимпанзе</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+</div>
+
+<a href="#top" class="back-to-top">↑ К содержанию</a>
+
+<!-- ═══════════════════════════════ CHAPTER 12 ═══════════════════════════════ -->
+<h2 id="ch12"><span class="chapter-num">12</span> Стили и типы речи</h2>
+
+<p>На ОРТ в разделе «Чтение и понимание»: <em>«Определите тип речи текста»</em>, <em>«К какому стилю относится текст?»</em></p>
+
+<h3>Стили речи</h3>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Стиль</th><th>Где используется</th><th>Признаки</th></tr>
+  <tr><td><strong>Научный</strong></td><td>Учебники, статьи, диссертации</td><td>Термины, точность, логичность, безличность</td></tr>
+  <tr><td><strong>Публицистический</strong></td><td>Газеты, ТВ, речи</td><td>Призывность, оценочность, риторические вопросы</td></tr>
+  <tr><td><strong>Художественный</strong></td><td>Литература</td><td>Образность, эпитеты, метафоры, олицетворения</td></tr>
+  <tr><td><strong>Официально-деловой</strong></td><td>Документы, законы, приказы</td><td>Канцеляризмы, штампы, строгая форма</td></tr>
+  <tr><td><strong>Разговорный</strong></td><td>Бытовое общение</td><td>Просторечия, эмоциональность, неполные предложения</td></tr>
+</table>
+</div>
+
+<h3>Типы речи</h3>
+
+<div class="rule-box">
+  <div class="rule-label">Три типа</div>
+  <strong>Повествование</strong> — рассказ о событиях, действиях (что произошло?). Много глаголов.<br>
+  <strong>Описание</strong> — изображение признаков (какой?). Много прилагательных.<br>
+  <strong>Рассуждение</strong> — доказательство мысли (почему?). Тезис → аргументы → вывод.
+</div>
+
+<h3>Средства выразительности</h3>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Средство</th><th>Определение</th><th>Пример</th></tr>
+  <tr><td><strong>Эпитет</strong></td><td>Образное определение</td><td><em>золотая</em> осень</td></tr>
+  <tr><td><strong>Метафора</strong></td><td>Скрытое сравнение</td><td><em>море</em> цветов</td></tr>
+  <tr><td><strong>Олицетворение</strong></td><td>Неживое как живое</td><td>Ветер <em>воет</em></td></tr>
+  <tr><td><strong>Сравнение</strong></td><td>Сопоставление с «как», «словно»</td><td>Глаза <em>как</em> звёзды</td></tr>
+  <tr><td><strong>Градация</strong></td><td>Нарастание/убывание</td><td>Пришёл, увидел, победил</td></tr>
+  <tr><td><strong>Оксюморон</strong></td><td>Соединение противоположностей</td><td>Живой труп, горячий снег</td></tr>
+  <tr><td><strong>Риторический вопрос</strong></td><td>Вопрос без ожидания ответа</td><td>Кто не хочет быть счастливым?</td></tr>
+  <tr><td><strong>Анафора</strong></td><td>Повтор в начале строк</td><td>Клянусь... Клянусь...</td></tr>
+</table>
+</div>
+
+<div class="quiz-section">
+  <div class="quiz-title">📝 Практика: Стили и типы речи</div>
+
+  <div class="quiz-q" data-correct="b">
+    <p>1. К какому стилю относится текст о научном открытии с терминами и ссылками на исследования?</p>
+    <div class="options">
+      <label><input type="radio" name="q12_1" value="a"> А) Публицистический</label>
+      <label><input type="radio" name="q12_1" value="b"> Б) Научный</label>
+      <label><input type="radio" name="q12_1" value="c"> В) Художественный</label>
+      <label><input type="radio" name="q12_1" value="d"> Г) Официально-деловой</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="a">
+    <p>2. Определите тип речи: <em>«Казалось бы: красота — понятие широкое, и не всегда ясно, что именно оно означает. Когда великий Достоевский говорит о красоте мира... Речь шла о красоте поступка, мужества и честности.»</em></p>
+    <div class="options">
+      <label><input type="radio" name="q12_2" value="a"> А) Рассуждение</label>
+      <label><input type="radio" name="q12_2" value="b"> Б) Повествование</label>
+      <label><input type="radio" name="q12_2" value="c"> В) Описание</label>
+      <label><input type="radio" name="q12_2" value="d"> Г) Повествование с элементами описания</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="c">
+    <p>3. Какое средство выразительности использовано: <em>«Море цветов раскинулось перед нами»</em>?</p>
+    <div class="options">
+      <label><input type="radio" name="q12_3" value="a"> А) Эпитет</label>
+      <label><input type="radio" name="q12_3" value="b"> Б) Сравнение</label>
+      <label><input type="radio" name="q12_3" value="c"> В) Метафора</label>
+      <label><input type="radio" name="q12_3" value="d"> Г) Олицетворение</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+
+  <div class="quiz-q" data-correct="d">
+    <p>4. Определите средство выразительности: <em>«живой труп»</em></p>
+    <div class="options">
+      <label><input type="radio" name="q12_4" value="a"> А) Метафора</label>
+      <label><input type="radio" name="q12_4" value="b"> Б) Сравнение</label>
+      <label><input type="radio" name="q12_4" value="c"> В) Градация</label>
+      <label><input type="radio" name="q12_4" value="d"> Г) Оксюморон</label>
+    </div>
+    <div class="answer-reveal"></div>
+  </div>
+</div>
+
+<a href="#top" class="back-to-top">↑ К содержанию</a>
+
+<footer>
+  Подготовлено на основе сборников тестов ОРТ (ЦООМО)<br>
+  Практическая грамматика русского языка — Раздел 4
+</footer>
+
+<script>
+document.querySelectorAll('.quiz-q').forEach(q => {
+  const correct = q.dataset.correct;
+  const reveal = q.querySelector('.answer-reveal');
+  q.querySelectorAll('input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      if (radio.value === correct) {
+        reveal.className = 'answer-reveal correct-answer';
+        reveal.textContent = '✓ Правильно!';
+      } else {
+        reveal.className = 'answer-reveal wrong-answer';
+        const labels = q.querySelectorAll('label');
+        let correctText = '';
+        labels.forEach(l => {
+          const inp = l.querySelector('input');
+          if (inp.value === correct) correctText = l.textContent.trim();
+        });
+        reveal.textContent = '✗ Неправильно. Верный ответ: ' + correctText;
+      }
+    });
+  });
+});
+</script>
