@@ -2,7 +2,7 @@
    Chapter 1 — the limit, the derivative and its applications. */
 var G11_ALG = [];
 
-/* ============================== 1 ============================== */
+/* ======================== 1 ======================== */
 G11_ALG.push({
   id: 'a11-01', stream: 'alg', grade: 11, quarter: 1, lessons: '1–2', hours: 2,
   title: 'Increments, and the problem of the tangent',
@@ -165,7 +165,7 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 2 ============================== */
+/* ======================== 2 ======================== */
 G11_ALG.push({
   id: 'a11-02', stream: 'alg', grade: 11, quarter: 1, lessons: '3–4', hours: 2,
   title: 'The limit of a function',
@@ -320,9 +320,166 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 3 ============================== */
+/* ======================== 3 ======================== */
 G11_ALG.push({
   id: 'a11-03', stream: 'alg', grade: 11, quarter: 1, lessons: '5–6', hours: 2,
+  title: 'Infinite limits, and the behaviour of a function at infinity',
+  subtitle: 'Two lessons beyond the Ministry calendar: what it means for a limit itself to be infinite, and the one trick — divide by the highest power — that settles almost every limit as x runs away to infinity.',
+  uz: 'Beyond the Ministry calendar', uzPage: '—',
+  cam: 'AS · P1 8.2', camPage: 'Pure Mathematics 1, pp. 126–129', wb: 'P1 Exercise 8A',
+  objectives: [
+    'Evaluate lim x→±∞ of rational and other standard functions.',
+    'Distinguish an infinite limit from a limit that does not exist at all.',
+    'Read off horizontal and vertical asymptotes from a limit statement.',
+    'Decide the limit at infinity of a rational function by comparing the degrees of its numerator and denominator.'
+  ],
+  terms: [
+    ['Limit at infinity', 'Cheksizlikdagi limit', 'Предел на бесконечности'],
+    ['Infinite limit', 'Cheksiz limit', 'Бесконечный предел'],
+    ['Horizontal asymptote', 'Gorizontal asimptota', 'Горизонтальная асимптота'],
+    ['Vertical asymptote', 'Vertikal asimptota', 'Вертикальная асимптота'],
+    ['Unbounded', 'Chegaralanmagan', 'Неограниченный'],
+    ['Dominant term', 'Yetakchi had', 'Старший член'],
+    ['Degree of a polynomial', 'Ko‘phad darajasi', 'Степень многочлена'],
+    ['End behaviour', 'Chetki xulq-atvor', 'Поведение на бесконечности']
+  ],
+  timing: [[8, 'Three ways a limit can fail to exist'], [16, 'Dividing by the highest power'], [14, 'Horizontal asymptotes'], [14, 'Vertical asymptotes'], [20, 'Practice'], [8, 'Homework']],
+  sections: [
+    {
+      h: 'Three ways a limit can fail to exist',
+      html: `<p>So far every limit has settled on a single finite number. Three other things can
+      happen instead, and it matters which:</p>
+      <div class="tablewrap"><table>
+      <thead><tr><th>What happens</th><th>Notation</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>the output grows without bound</td><td class="m">lim<sub class="m">x→∞</sub> f(x) = ∞</td><td class="m">lim<sub class="m">x→∞</sub> x² = ∞</td></tr>
+        <tr><td>one side of a point blows up</td><td class="m">lim<sub class="m">x→a⁺</sub> f(x) = ±∞</td><td class="m">lim<sub class="m">x→0⁺</sub> ${f('1', 'x')} = ∞</td></tr>
+        <tr><td>the function oscillates forever</td><td>no limit at all</td><td class="m">lim<sub class="m">x→0</sub> sin${f('1', 'x')}</td></tr>
+      </tbody></table></div>
+      <div class="warn"><span class="wl">${m('∞')} is not a number</span>
+      Writing ${m('lim f(x) = ∞')} is a description of behaviour, not a value the limit equals. The
+      algebra-of-limits rules from two lessons ago do not apply once either side is infinite.</div>`
+    },
+    {
+      h: 'Dividing by the highest power',
+      html: `<p>For a rational function as ${m('x → ±∞')}, divide every term — top and bottom — by the
+      highest power of ${m('x')} that appears in the denominator. Every term with ${m('x')} left in the
+      denominator then tends to ${m('0')}:</p>
+      ${eq(m('lim') + '<sub class="m">x→∞</sub> ' + m(f('2x² + 3x', 'x² − 1')) + ' = lim<sub class="m">x→∞</sub> ' + m(f('2 + ' + f('3', 'x'), '1 − ' + f('1', 'x²'))) + ' = ' + f('2', '1') + ' = 2', true)}
+      <p>Only the ratio of the <b>dominant terms</b> — the highest powers on each side — survives;
+      everything else is a correction that vanishes at infinity.</p>
+      <div class="keybox"><div class="klabel">The three cases</div>
+      Comparing the degree of the numerator (${m('p')}) and the denominator (${m('q')}):
+      ${m('p < q')} gives limit ${m('0')}; ${m('p = q')} gives the ratio of the leading coefficients;
+      ${m('p > q')} gives an infinite limit.</div>`
+    },
+    {
+      h: 'Horizontal asymptotes',
+      html: `<p>A line ${m('y = L')} is a <b>horizontal asymptote</b> of the graph of ${m('f')} exactly
+      when ${m('lim')}<sub class="m">x→∞</sub> ${m('f(x) = L')} or ${m('lim')}<sub class="m">x→−∞</sub>
+      ${m('f(x) = L')} — the graph approaches the line without ever needing to reach it.</p>
+      ${eq(m('lim') + '<sub class="m">x→∞</sub> ' + m(f('3x + 1', 'x² + 4')) + ' = 0', false)}
+      <p>Here the degree of the top is less than the degree of the bottom, so the limit is ${m('0')}:
+      the graph of ${m(f('3x + 1', 'x² + 4'))} has the ${m('x')}-axis as a horizontal asymptote.</p>`
+    },
+    {
+      h: 'Vertical asymptotes and infinite limits',
+      html: `<p>A <b>vertical asymptote</b> appears where the denominator tends to ${m('0')} while the
+      numerator does not — the function is forced to blow up, in one direction or the other on each
+      side:</p>
+      ${eq(m('lim') + '<sub class="m">x→2⁺</sub> ' + m(f('1', 'x − 2')) + ' = +∞     lim<sub class="m">x→2⁻</sub> ' + m(f('1', 'x − 2')) + ' = −∞', true)}
+      <p>The two one-sided limits disagree, so the two-sided limit at ${m('x = 2')} does not exist —
+      but the line ${m('x = 2')} is still a vertical asymptote of the graph.</p>
+      <div class="warn"><span class="wl">Check the numerator too</span>
+      ${m(f('x − 3', 'x − 3'))} has the same ${m('0')} in its denominator at ${m('x = 3')}, but it
+      cancels: the limit there is ${m('1')}, not infinite. A vertical asymptote needs the numerator to
+      stay away from ${m('0')} at that point.</div>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Find ' + m('lim') + '<sub class="m">x→∞</sub> ' + m(f('2x² + 3x', 'x² − 5')) + '.',
+      steps: [
+        ['Same degree top and bottom.', 'Divide by ' + m('x²') + '.'],
+        [m('lim') + '<sub class="m">x→∞</sub> ' + m(f('2 + ' + f('3', 'x'), '1 − ' + f('5', 'x²'))), ''],
+        [m('→ ' + f('2', '1')), '']
+      ],
+      ans: m('2')
+    },
+    {
+      q: 'Find ' + m('lim') + '<sub class="m">x→∞</sub> ' + m(f('3x + 1', 'x² + 4')) + '.',
+      steps: [
+        ['Top degree ' + m('1') + ', bottom degree ' + m('2') + '.', 'Divide by ' + m('x²') + '.'],
+        [m('lim') + '<sub class="m">x→∞</sub> ' + m(f(f('3', 'x') + ' + ' + f('1', 'x²'), '1 + ' + f('4', 'x²'))), '']
+      ],
+      ans: m('0')
+    },
+    {
+      q: 'Find the vertical asymptotes of ' + m(f('x + 1', 'x² − 4')) + ' and the limit at ' + m('x → ∞') + '.',
+      steps: [
+        [m('x² − 4 = (x − 2)(x + 2)'), 'Zero at ' + m('x = 2, −2') + '; numerator is nonzero there.'],
+        ['Degree ' + m('1') + ' over degree ' + m('2') + '.', '']
+      ],
+      ans: 'Vertical asymptotes ' + m('x = 2') + ' and ' + m('x = −2') + '; ' + m('lim') + '<sub class="m">x→∞</sub> = 0'
+    }
+  ],
+  modelNote: 'Stretch, shift and raise the grey curve, and watch where the coloured one still cannot cross.',
+  interactive: {
+    type: 'graphTransform',
+    title: 'Horizontal and vertical asymptotes',
+    hint: 'Move a, b and c, and watch the asymptotes of y = 1/x move with the graph.',
+    f: function (x) { return 1 / x; }
+  },
+  quiz: [
+    { q: m('lim') + '<sub class="m">x→∞</sub> ' + m(f('5x³', 'x³ + 1')) + ' is:', a: [m('0'), m('1'), m('5'), m('∞')], c: 2, why: 'Same degree: ratio of leading coefficients.' },
+    { q: 'A horizontal asymptote ' + m('y = L') + ' means that as ' + m('x → ∞') + ':', a: [m('f(x) → L'), m('f(x) = L') + ' always', 'f is undefined at L', 'f has a hole at L'], c: 0, why: 'Approach, not equality.' },
+    { q: m('lim') + '<sub class="m">x→3</sub> ' + m(f('1', 'x − 3')) + ':', a: ['equals 0', 'equals ∞', 'does not exist', 'equals 1'], c: 2, why: 'The one-sided limits disagree in sign.' },
+    { q: 'If the numerator has smaller degree than the denominator, the limit at infinity is:', a: [m('0'), m('∞'), m('1'), 'undefined'], c: 0, why: 'The bottom dominates.' },
+    { q: 'A vertical asymptote at ' + m('x = a') + ' needs:', a: ['denominator → 0, numerator ≠ 0', 'numerator → 0, denominator ≠ 0', 'both → 0', 'neither'], c: 0, why: 'That forces an infinite limit.' }
+  ],
+  practice: {
+    easy: [
+      [m('lim') + '<sub class="m">x→∞</sub> ' + m(f('x', 'x + 1')), m('1')],
+      [m('lim') + '<sub class="m">x→∞</sub> ' + m(f('1', 'x')), m('0')],
+      [m('lim') + '<sub class="m">x→∞</sub> ' + m(f('3x', 'x')), m('3')],
+      [m('lim') + '<sub class="m">x→∞</sub> ' + m(f('1', 'x²')), m('0')],
+      [m('lim') + '<sub class="m">x→∞</sub> ' + m(f('x²', 'x')), m('∞')],
+      [m('lim') + '<sub class="m">x→0⁺</sub> ' + m(f('1', 'x')), m('∞')],
+      ['Find the vertical asymptote of ' + m(f('1', 'x − 5')), m('x = 5')]
+    ],
+    med: [
+      [m('lim') + '<sub class="m">x→∞</sub> ' + m(f('4x² − 1', '2x² + 3')), m('2')],
+      [m('lim') + '<sub class="m">x→∞</sub> ' + m(f('x + 7', 'x² − 1')), m('0')],
+      [m('lim') + '<sub class="m">x→∞</sub> ' + m(f('x³', 'x² + 1')), m('∞')],
+      [m('lim') + '<sub class="m">x→−2⁺</sub> ' + m(f('1', 'x + 2')), m('∞')],
+      [m('lim') + '<sub class="m">x→−2⁻</sub> ' + m(f('1', 'x + 2')), m('−∞')],
+      ['Find the horizontal asymptote of ' + m(f('5x + 2', '3x − 1')), m('y = ' + f('5', '3'))],
+      ['Find all vertical asymptotes of ' + m(f('2', 'x² − 9')), m('x = 3, −3')]
+    ],
+    hard: [
+      [m('lim') + '<sub class="m">x→∞</sub> ' + m(f('3x² + x − 1', '6x² − 5')), m(f('1', '2'))],
+      [m('lim') + '<sub class="m">x→∞</sub> ' + m(f('x² + 1', 'x + 1')), m('∞')],
+      ['Find ' + m('k') + ' so that ' + m(f('kx² + 1', '2x² − 3')) + ' has limit ' + m('3') + ' at infinity', m('k = 6')],
+      ['Explain why ' + m(f('x − 2', 'x² − 4')) + ' has no vertical asymptote at ' + m('x = 2'), 'The factor cancels'],
+      ['Find the horizontal and vertical asymptotes of ' + m(f('x', 'x² − 1')), m('y = 0; x = 1, −1')],
+      ['Does ' + m(f('sin x', 'x')) + ' have a limit as ' + m('x → ∞') + '?', m('yes, 0 — squeezed between ±1/x')],
+      ['Give a function with an infinite limit at ' + m('x → ∞') + ' but no vertical asymptote', m('f(x) = x²')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'State whether each limit is finite, infinite, or does not exist, before computing it.',
+  homework: [
+    'Evaluate ' + m('lim') + '<sub class="m">x→∞</sub> ' + m(f('7x² − 2x', '3x² + 1')) + '.',
+    'Evaluate ' + m('lim') + '<sub class="m">x→∞</sub> ' + m(f('x + 4', 'x² + 1')) + '.',
+    'Find the vertical asymptotes of ' + m(f('3', 'x² − x − 6')) + '.',
+    'Find the horizontal asymptote of ' + m(f('2x − 1', '5x + 3')) + '.',
+    'Explain, with a sketch, the difference between a limit that is infinite and a limit that does not exist.'
+  ]
+});
+
+/* ======================== 4 ======================== */
+G11_ALG.push({
+  id: 'a11-04', stream: 'alg', grade: 11, quarter: 1, lessons: '7–8', hours: 2,
   title: 'The derivative of a function',
   subtitle: 'The definition, the notation, and what the number actually measures in geometry and in physics.',
   uz: 'Algebra 11, §1.3', uzPage: 'pp. 27–38',
@@ -478,9 +635,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 4 ============================== */
+/* ======================== 5 ======================== */
 G11_ALG.push({
-  id: 'a11-04', stream: 'alg', grade: 11, quarter: 1, lessons: '7–9', hours: 3,
+  id: 'a11-05', stream: 'alg', grade: 11, quarter: 1, lessons: '9–11', hours: 3,
   title: 'The rules of differentiation',
   subtitle: 'Power, constant multiple, sum, product and quotient — five rules that replace first principles for good.',
   uz: 'Algebra 11, §1.4', uzPage: 'pp. 39–54',
@@ -646,9 +803,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 5 ============================== */
+/* ======================== 6 ======================== */
 G11_ALG.push({
-  id: 'a11-05', stream: 'alg', grade: 11, quarter: 1, lessons: '10–12', hours: 3,
+  id: 'a11-06', stream: 'alg', grade: 11, quarter: 1, lessons: '12–14', hours: 3,
   title: 'The derivative of a composite function',
   subtitle: 'The chain rule — the one rule that makes everything else in calculus usable.',
   uz: 'Algebra 11, §1.5', uzPage: 'pp. 55–70',
@@ -814,11 +971,300 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 6 ============================== */
+/* ======================== 7 ======================== */
 G11_ALG.push({
-  id: 'a11-06', stream: 'alg', grade: 11, quarter: 1, lessons: '13–14', hours: 2,
+  id: 'a11-07', stream: 'alg', grade: 11, quarter: 1, lessons: '15–16', hours: 2,
+  title: 'Derivatives of the trigonometric functions',
+  subtitle: 'Two lessons beyond the Ministry calendar: sin x, cos x and tan x differentiated — in radians only — and combined with the chain rule you already have.',
+  uz: 'Beyond the Ministry calendar', uzPage: '—',
+  cam: 'A Level · P2 3.1–3.4', camPage: 'Pure Mathematics 2 & 3, pp. 50–66', wb: 'P2 Exercise 3A–3C',
+  objectives: [
+    'State and use d/dx(sin x) = cos x, d/dx(cos x) = −sin x and d/dx(tan x) = sec²x.',
+    'Explain why these rules hold only when x is measured in radians.',
+    'Differentiate sums and chain-rule combinations built from sin, cos and tan.',
+    'Find gradients, tangents and stationary points of trigonometric graphs.'
+  ],
+  terms: [
+    ['Radian measure', 'Radian o‘lchovi', 'Радианная мера'],
+    ['Derivative of sine', 'Sinusning hosilasi', 'Производная синуса'],
+    ['Derivative of cosine', 'Kosinusning hosilasi', 'Производная косинуса'],
+    ['Derivative of tangent', 'Tangensning hosilasi', 'Производная тангенса'],
+    ['Secant (1/cos x)', 'Sekans', 'Секанс'],
+    ['Periodic function', 'Davriy funksiya', 'Периодическая функция'],
+    ['Stationary point', 'Statsionar nuqta', 'Стационарная точка'],
+    ['Chain rule', 'Zanjir qoidasi', 'Правило цепи']
+  ],
+  timing: [[8, 'Why this needs radians'], [18, 'The derivative of sin x and cos x'], [16, 'The derivative of tan x'], [16, 'Combining with the chain rule'], [16, 'Practice'], [6, 'Homework']],
+  sections: [
+    {
+      h: 'Why this needs radians',
+      html: `<p>The rate-of-change definition of the derivative only matches the geometric slope of the
+      sine and cosine curves when the angle is measured in <b>radians</b>. In degrees a hidden factor
+      of ${m(f('π', '180'))} would appear in every derivative below — so from this lesson on, every
+      angle in a derivative or an integral is in radians, with no degree sign in sight.</p>
+      <div class="warn"><span class="wl">Calculators default to degrees</span>
+      Set the mode to radians before touching a derivative of ${m('sin')}, ${m('cos')} or ${m('tan')}.
+      A correct method in the wrong mode still gives a wrong number.</div>`
+    },
+    {
+      h: 'The derivative of sin x and cos x',
+      html: `<p>Two results, to be quoted exactly as the power rule is:</p>
+      ${eq(m('d/dx(sin x) = cos x') + '     ' + m('d/dx(cos x) = −sin x'), true)}
+      <div class="keybox"><div class="klabel">Where the minus sign comes from</div>
+      Sketch ${m('y = sin x')}: it rises fastest at ${m('x = 0')} (gradient ${m('1 = cos 0')}), is
+      momentarily flat at the peak ${m('x = ' + f('π', '2'))} (gradient ${m('0 = cos' + f('π', '2'))}),
+      and falls fastest at ${m('x = π')} (gradient ${m('−1 = cos π')}). The gradient of sine traces out
+      cosine itself.</div>
+      <p>Differentiating again: ${m("(sin x)″ = (cos x)′ = −sin x")} — sine is one of the few functions
+      that returns to itself, with a sign change, after two derivatives.</p>`
+    },
+    {
+      h: 'The derivative of tan x',
+      html: `<p>Write ${m('tan x = ' + f('sin x', 'cos x'))} and apply the quotient rule:</p>
+      ${eq(m(f('cos x · cos x − sin x · (−sin x)', 'cos²x') + ' = ' + f('cos²x + sin²x', 'cos²x') + ' = ' + f('1', 'cos²x')), false)}
+      <p>Using the Pythagorean identity in the numerator collapses it to ${m('1')}, giving the standard
+      result in its usual notation, ${m('sec x = ' + f('1', 'cos x'))}:</p>
+      ${eq(m('d/dx(tan x) = sec²x'), true)}`
+    },
+    {
+      h: 'Combining with the chain rule',
+      html: `<p>The chain rule from two lessons ago attaches directly: differentiate the trig function,
+      then multiply by the derivative of what is inside it.</p>
+      ${eq(m('d/dx[sin(ax + b)] = a cos(ax + b)') + '     ' + m('d/dx[cos(ax + b)] = −a sin(ax + b)'), true)}
+      <p>A product or a power of a trig function uses the ordinary rules, with the trig derivative
+      slotted in: ${m('d/dx(sin²x) = 2 sin x cos x = sin 2x')}, by the chain rule with ${m('u = sin x')}.</p>`
+    }
+  ],
+  examples: [
+    {
+      q: 'Differentiate ' + m('y = sin(2x) − 3cos x') + '.',
+      steps: [
+        ['Chain rule on the first term; direct on the second.', ''],
+        [m('2cos(2x) − 3(−sin x)'), '']
+      ],
+      ans: m('2cos(2x) + 3sin x')
+    },
+    {
+      q: 'Differentiate ' + m('y = tan(3x)') + '.',
+      steps: [
+        ['Chain rule: differentiate tan, multiply by the inside’s derivative.', ''],
+        [m('sec²(3x) · 3'), '']
+      ],
+      ans: m('3sec²(3x)')
+    },
+    {
+      q: 'Find the gradient of ' + m('y = sin x cos x') + ' at ' + m('x = ' + f('π', '4')) + '.',
+      steps: [
+        ['Product rule, or rewrite as ' + m(f('1', '2') + 'sin 2x') + '.', ''],
+        [m('dy/dx = cos²x − sin²x = cos 2x'), ''],
+        [m('At x = ' + f('π', '4') + ': cos' + f('π', '2') + ' = 0'), '']
+      ],
+      ans: m('0')
+    }
+  ],
+  modelNote: 'Keep the calculator in radians for every worked example and every check.',
+  interactive: {
+    type: 'derivative',
+    title: 'The secant becomes the tangent — for sin x',
+    hint: 'Slide h towards 0 and watch the gradient settle on cos x.',
+    f: function (x) { return Math.sin(x); },
+    df: function (x) { return Math.cos(x); }
+  },
+  quiz: [
+    { q: m('d/dx(sin x)') + ' is:', a: [m('cos x'), m('−cos x'), m('−sin x'), m('sin x')], c: 0, why: 'The basic result.' },
+    { q: m('d/dx(cos 3x)') + ' is:', a: [m('−3sin 3x'), m('3sin 3x'), m('−sin 3x'), m('cos 3x')], c: 0, why: 'Chain rule brings down the ' + m('3') + '.' },
+    { q: m('d/dx(tan x)') + ' is:', a: [m('sec²x'), m('cos²x'), m('−sec²x'), m('csc x')], c: 0, why: 'From the quotient rule on ' + m('sin x / cos x') + '.' },
+    { q: 'The rules here require ' + m('x') + ' to be measured in:', a: ['degrees', 'radians', 'gradians', 'either'], c: 1, why: 'Otherwise a hidden constant appears.' },
+    { q: m('d/dx(sin²x)') + ' is:', a: [m('sin 2x'), m('2sin x'), m('cos 2x'), m('2cos x')], c: 0, why: m('2sin x cos x = sin 2x') + '.' }
+  ],
+  practice: {
+    easy: [
+      [m('(sin x)′'), m('cos x')],
+      [m('(cos x)′'), m('−sin x')],
+      [m('(tan x)′'), m('sec²x')],
+      [m('(3sin x)′'), m('3cos x')],
+      [m('(sin x + cos x)′'), m('cos x − sin x')],
+      [m('(sin(2x))′'), m('2cos(2x)')],
+      [m('(cos(3x))′'), m('−3sin(3x)')]
+    ],
+    med: [
+      [m('(tan(4x))′'), m('4sec²(4x)')],
+      [m('(2sin x − 5cos x)′'), m('2cos x + 5sin x')],
+      [m('(sin(x) + x²)′'), m('cos x + 2x')],
+      [m('(cos(2x + 1))′'), m('−2sin(2x + 1)')],
+      [m('(x sin x)′'), m('sin x + x cos x')],
+      [m('(sin²x)′'), m('sin 2x')],
+      ['Find the gradient of ' + m('y = cos x') + ' at ' + m('x = π'), m('0')]
+    ],
+    hard: [
+      [m('(sin x cos x)′'), m('cos 2x')],
+      [m('(' + f('sin x', 'x') + ')′'), m(f('x cos x − sin x', 'x²'))],
+      [m('(tan²x)′'), m('2tan x sec²x')],
+      ['Find where ' + m('y = sin x + cos x') + ' has a horizontal tangent, ' + m('0 ≤ x ≤ 2π'), m('x = ' + f('π', '4') + ', ' + f('5π', '4'))],
+      ['Find ' + m("y″") + ' for ' + m('y = sin(2x)'), m('−4sin(2x)')],
+      ['Differentiate ' + m('y = sin(cos x)'), m('−sin x cos(cos x)')],
+      ['Show that ' + m('y = sin x') + ' satisfies ' + m("y″ + y = 0"), m("y″ = −sin x = −y")]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Keep every angle in radians, and quote the rule you used.',
+  homework: [
+    'Differentiate ' + m('y = 4sin x − 2tan x') + '.',
+    'Differentiate ' + m('y = cos(5x)') + '.',
+    'Differentiate ' + m('y = x² sin x') + '.',
+    'Find the gradient of ' + m('y = tan x') + ' at ' + m('x = ' + f('π', '4')) + '.',
+    'Explain, with a sketch, why the derivative of sine traces out cosine.'
+  ]
+});
+
+/* ======================== 8 ======================== */
+G11_ALG.push({
+  id: 'a11-08', stream: 'alg', grade: 11, quarter: 1, lessons: '17–18', hours: 2,
+  title: 'Derivatives of the exponential and logarithmic functions',
+  subtitle: 'Two lessons beyond the Ministry calendar: the function that is its own derivative, the logarithm that undoes it, and the chain-rule combinations built from both.',
+  uz: 'Beyond the Ministry calendar', uzPage: '—',
+  cam: 'A Level · P2 2.1, 4.1–4.2', camPage: 'Pure Mathematics 2 & 3, pp. 20–34, 70–78', wb: 'P2 Exercise 4A, 4B',
+  objectives: [
+    'State and use d/dx(eˣ) = eˣ and d/dx(ln x) = 1/x.',
+    'Differentiate chain-rule combinations e^(f(x)) and ln(f(x)).',
+    'Explain why e is the unique base whose exponential equals its own derivative.',
+    'Apply these derivatives to growth, decay and tangent problems.'
+  ],
+  terms: [
+    ['Natural exponential', 'Natural eksponensial', 'Натуральная экспонента'],
+    ['Natural logarithm', 'Natural logarifm', 'Натуральный логарифм'],
+    ['The number e', 'e soni', 'Число e'],
+    ['Exponential growth', 'Eksponensial o‘sish', 'Экспоненциальный рост'],
+    ['Exponential decay', 'Eksponensial kamayish', 'Экспоненциальное убывание'],
+    ['Chain rule', 'Zanjir qoidasi', 'Правило цепи'],
+    ['Domain restriction', 'Aniqlanish sohasi cheklovi', 'Ограничение области определения']
+  ],
+  timing: [[10, 'The number that is its own derivative'], [16, 'The derivative of eˣ'], [16, 'The derivative of ln x'], [18, 'Chain-rule combinations'], [16, 'Practice'], [4, 'Homework']],
+  sections: [
+    {
+      h: 'The number that is its own derivative',
+      html: `<p>Among all the exponential functions ${m('aˣ')}, exactly one base makes the graph's
+      gradient at every point equal to its own height. That base is called ${m('e ≈ 2.71828')}, defined
+      by the condition:</p>
+      ${eq(m('lim') + '<sub class="m">h→0</sub> ' + m(f('eʰ − 1', 'h') + ' = 1'), true)}
+      <div class="keybox"><div class="klabel">Why that gives a self-derivative</div>
+      ${m(f('e^(x+h) − eˣ', 'h') + ' = eˣ · ' + f('eʰ − 1', 'h'))}, and the defining condition sends the
+      second factor to ${m('1')} as ${m('h → 0')}, leaving ${m('eˣ')} itself.</div>
+      ${eq(m('d/dx(eˣ) = eˣ'), true)}`
+    },
+    {
+      h: 'The derivative of ln x',
+      html: `<p>${m('ln x')} is the inverse of ${m('eˣ')}: if ${m('y = ln x')} then ${m('eʸ = x')}.
+      Differentiating both sides with respect to ${m('x')} (the chain rule applied to the left side):</p>
+      ${eq(m('eʸ · ' + f('dy', 'dx') + ' = 1   ⟹   ' + f('dy', 'dx') + ' = ' + f('1', 'eʸ') + ' = ' + f('1', 'x')), true)}
+      ${eq(m('d/dx(ln x) = ' + f('1', 'x')), false)}
+      <div class="warn"><span class="wl">Only for ${m('x > 0')}</span>
+      ${m('ln x')} is undefined for ${m('x ≤ 0')}, so this derivative, and every chain-rule use of it,
+      carries the same restriction on its domain.</div>`
+    },
+    {
+      h: 'Chain-rule combinations',
+      html: `<p>Attach the chain rule exactly as before: differentiate the outer function, multiply by
+      the derivative of what is inside.</p>
+      ${eq(m('d/dx[e^(kx)] = k e^(kx)') + '     ' + m('d/dx[ln(f(x))] = ' + f('f′(x)', 'f(x)')), true)}
+      <p>A constant inside a logarithm contributes nothing to the derivative — ${m('ln(5x) = ln 5 + ln x')},
+      and ${m('ln 5')} is just a number:</p>
+      ${eq(m('d/dx[ln(5x)] = ' + f('1', 'x')), false)}`
+    },
+    {
+      h: 'Growth, decay, and tangents',
+      html: `<p>A quantity growing or decaying at a rate proportional to itself is modelled by
+      ${m('y = Ae^(kx)')}, and its rate of change is exactly ${m('ky')} — the defining property of
+      exponential growth (${m('k > 0')}) or decay (${m('k < 0')}).</p>
+      {{fig:expGraph:The curve y = eˣ. At every point its gradient equals its own height.}}`
+    }
+  ],
+  examples: [
+    {
+      q: 'Differentiate ' + m('y = e^(3x)') + '.',
+      steps: [
+        ['Chain rule: outer is ' + m('eᵘ') + ', inner is ' + m('3x') + '.', ''],
+        [m('3e^(3x)'), '']
+      ],
+      ans: m('3e^(3x)')
+    },
+    {
+      q: 'Differentiate ' + m('y = ln(5x)') + '.',
+      steps: [
+        ['Split the log, or use the chain rule directly.', m("f(x) = 5x, f′(x) = 5")],
+        [m(f('5', '5x')), '']
+      ],
+      ans: m(f('1', 'x'))
+    },
+    {
+      q: 'Differentiate ' + m('y = ln(x² + 1)') + '.',
+      steps: [
+        [m("f(x) = x² + 1, f′(x) = 2x"), ''],
+        [m(f('f′(x)', 'f(x)')), '']
+      ],
+      ans: m(f('2x', 'x² + 1'))
+    }
+  ],
+  modelNote: 'Check every exponential or logarithmic derivative against the chain rule, out loud.',
+  interactive: {
+    type: 'derivative',
+    title: 'The secant becomes the tangent — for eˣ',
+    hint: 'Slide h towards 0 and watch the gradient settle on eˣ itself — the height and the slope agree.',
+    f: function (x) { return Math.exp(x); },
+    df: function (x) { return Math.exp(x); }
+  },
+  quiz: [
+    { q: m('d/dx(eˣ)') + ' is:', a: [m('eˣ'), m('xe^(x−1)'), m('1'), m('e^(x−1)')], c: 0, why: 'The defining property.' },
+    { q: m('d/dx(ln x)') + ' is:', a: [m('1/x'), m('x'), m('ln x'), m('eˣ')], c: 0, why: 'From differentiating ' + m('eʸ = x') + '.' },
+    { q: m('d/dx(e^(2x))') + ' is:', a: [m('2e^(2x)'), m('e^(2x)'), m('2eˣ'), m('e^(2x)/2')], c: 0, why: 'Chain rule brings down the ' + m('2') + '.' },
+    { q: m('d/dx(ln(3x))') + ' is:', a: [m('1/x'), m('3/x'), m('ln 3 / x'), m('1/(3x)')], c: 0, why: 'The constant ' + m('3') + ' contributes nothing.' },
+    { q: 'The domain of ' + m('ln x') + ' requires:', a: [m('x > 0'), m('x ≠ 0'), m('x ≥ 0'), 'all real x'], c: 0, why: 'A logarithm of a non-positive number is undefined.' }
+  ],
+  practice: {
+    easy: [
+      [m('(eˣ)′'), m('eˣ')],
+      [m('(ln x)′'), m('1/x')],
+      [m('(3eˣ)′'), m('3eˣ')],
+      [m('(eˣ + x²)′'), m('eˣ + 2x')],
+      [m('(e^(2x))′'), m('2e^(2x)')],
+      [m('(ln(4x))′'), m('1/x')],
+      [m('(e^(x) − ln x)′'), m('eˣ − 1/x')]
+    ],
+    med: [
+      [m('(e^(5x))′'), m('5e^(5x)')],
+      [m('(ln(x²))′'), m('2/x')],
+      [m('(x eˣ)′'), m('eˣ(x + 1)')],
+      [m('(ln(x + 1))′'), m('1/(x + 1)')],
+      [m('(e^(−x))′'), m('−e^(−x)')],
+      [m('(ln(x² + 4))′'), m('2x/(x² + 4)')],
+      ['Find the gradient of ' + m('y = eˣ') + ' at ' + m('x = 0'), m('1')]
+    ],
+    hard: [
+      [m('(x² ln x)′'), m('2x ln x + x')],
+      [m('(' + f('eˣ', 'x') + ')′'), m(f('eˣ(x − 1)', 'x²'))],
+      [m('(ln(sin x))′'), m('cos x / sin x')],
+      ['Find where ' + m('y = xe^(−x)') + ' has a horizontal tangent', m('x = 1')],
+      ['Show ' + m('y = Ae^(kx)') + ' satisfies ' + m("y′ = ky"), m("y′ = Ake^(kx) = ky")],
+      ['Differentiate ' + m('y = e^(sin x)'), m('cos x · e^(sin x)')],
+      ['Find ' + m("y″") + ' for ' + m('y = e^(2x)'), m('4e^(2x)')]
+    ]
+  },
+  hwTitle: 'Homework — 5 tasks',
+  hwNote: 'Quote the self-derivative property of eˣ wherever you use it.',
+  homework: [
+    'Differentiate ' + m('y = 4eˣ − 3ln x') + '.',
+    'Differentiate ' + m('y = e^(4x)') + '.',
+    'Differentiate ' + m('y = ln(x³ + 1)') + '.',
+    'Find the gradient of ' + m('y = ln x') + ' at ' + m('x = e') + '.',
+    'Explain in three sentences why ' + m('e') + ' is the only base with ' + m('d/dx(aˣ) = aˣ') + '.'
+  ]
+});
+
+/* ======================== 9 ======================== */
+G11_ALG.push({
+  id: 'a11-09', stream: 'alg', grade: 11, quarter: 1, lessons: '19–20', hours: 2,
   title: 'Control work 1, and work on the mistakes',
-  subtitle: 'Limits, first principles and the five rules, in one paper — then an hour repairing what it finds.',
+  subtitle: 'Limits (including at infinity), first principles, the five rules, and the derivatives of sin x, cos x, eˣ and ln x, in one paper — then an hour repairing what it finds.',
   uz: 'Algebra 11, Nazorat ishi 1', uzPage: 'pp. 71–74',
   cam: 'AS · P1 Chapter 8 review', camPage: 'Pure Mathematics 1, pp. 156–158', wb: 'Control paper A',
   objectives: [
@@ -840,7 +1286,7 @@ G11_ALG.push({
   timing: [[3, 'Instructions'], [35, 'The paper'], [9, 'Self-mark'], [22, 'Rewrite and classify'], [11, 'Rule-selection drill']],
   sections: [
     {
-      h: 'The paper — 25 marks, 40 minutes',
+      h: 'The paper — 29 marks, 40 minutes',
       html: `<div class="tablewrap"><table>
       <thead><tr><th>Q</th><th>Task</th><th>Marks</th><th>From</th></tr></thead>
       <tbody>
@@ -851,6 +1297,7 @@ G11_ALG.push({
         <tr><td>5</td><td>Differentiate ${m('y = ' + f('x', 'x² + 1'))}</td><td class="m">3</td><td>L7–9</td></tr>
         <tr><td>6</td><td>Differentiate ${m('y = (3x² − 1)⁵')} and ${m('y = ' + sr('x² + 4'))}</td><td class="m">4</td><td>L10–12</td></tr>
         <tr><td>7</td><td>A cube’s side grows at ${m('0.2')} cm/s. Find ${m(f('dV', 'dt'))} when the side is 5 cm</td><td class="m">3</td><td>L10–12</td></tr>
+        <tr><td>8</td><td>Differentiate ${m('y = sin(2x) + e^(3x) − ln x')}, and evaluate ${m('lim')}<sub class="m">x→∞</sub> ${m(f('5x² + 1', 'x² − 4'))}</td><td class="m">4</td><td>L5–6, 15–18</td></tr>
       </tbody></table></div>
       <div class="keybox"><div class="klabel">Q2 is marked on the definition</div>
       A correct answer obtained from the power rule scores <b>one</b> mark out of four. “From first
@@ -967,19 +1414,20 @@ G11_ALG.push({
       ['Find ' + m("y″") + ' for ' + m('y = (2x + 1)⁴'), m('48(2x + 1)²')]
     ]
   },
-  hwTitle: 'Homework — 4 tasks',
+  hwTitle: 'Homework — 5 tasks',
   hwNote: 'Task 1 is the rewrite. It is not optional.',
   homework: [
     'Rewrite in full every control-work question that lost a mark, with the “I lost this because …” sentence.',
     'Five problems from the section your knowledge column was heaviest in.',
     'Differentiate ' + m('y = x²' + sr('2x + 1')) + ' and factorise the answer.',
-    'Learn the six standard derivatives and write them from memory.'
+    'Learn the six standard derivatives and write them from memory.',
+    'Differentiate ' + m('y = cos(4x) − ln(2x) + e^(x) + x³') + ' and evaluate ' + m('lim') + '<sub class="m">x→∞</sub> ' + m(f('x', 'x² + 1')) + '.'
   ]
 });
 
-/* ============================== 7 ============================== */
+/* ======================== 10 ======================== */
 G11_ALG.push({
-  id: 'a11-07', stream: 'alg', grade: 11, quarter: 1, lessons: '15–16', hours: 2,
+  id: 'a11-10', stream: 'alg', grade: 11, quarter: 1, lessons: '21–22', hours: 2,
   title: 'The modulus function',
   subtitle: 'Cambridge insert: |x| as a graph, as an equation, as an inequality — and the reason it has no derivative at the corner.',
   uz: 'Algebra 11, §1.5 (extension)', uzPage: 'pp. 75–80',
@@ -1139,9 +1587,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 8 ============================== */
+/* ======================== 11 ======================== */
 G11_ALG.push({
-  id: 'a11-08', stream: 'alg', grade: 11, quarter: 1, lessons: '17–18', hours: 2,
+  id: 'a11-11', stream: 'alg', grade: 11, quarter: 1, lessons: '23–24', hours: 2,
   title: 'The equations of the tangent and the normal',
   subtitle: 'Two lines at one point of a curve, from one derivative and one gradient relation.',
   uz: 'Algebra 11, §1.6', uzPage: 'pp. 81–90',
@@ -1295,9 +1743,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 9 ============================== */
+/* ======================== 12 ======================== */
 G11_ALG.push({
-  id: 'a11-09', stream: 'alg', grade: 11, quarter: 1, lessons: '19–22', hours: 4,
+  id: 'a11-12', stream: 'alg', grade: 11, quarter: 1, lessons: '25–28', hours: 4,
   title: 'Investigating a function with the derivative',
   subtitle: 'Four lessons on the full procedure — sign of the derivative, stationary points, their nature, and the sketch that results.',
   uz: 'Algebra 11, §1.7', uzPage: 'pp. 91–110',
@@ -1462,9 +1910,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 10 ============================== */
+/* ======================== 13 ======================== */
 G11_ALG.push({
-  id: 'a11-10', stream: 'alg', grade: 11, quarter: 1, lessons: '23–25', hours: 3,
+  id: 'a11-13', stream: 'alg', grade: 11, quarter: 1, lessons: '29–31', hours: 3,
   title: 'Extremum problems',
   subtitle: 'The largest volume, the least cost, the shortest path — modelling first, then one derivative.',
   uz: 'Algebra 11, §1.8', uzPage: 'pp. 111–126',
@@ -1623,9 +2071,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 11 ============================== */
+/* ======================== 14 ======================== */
 G11_ALG.push({
-  id: 'a11-11', stream: 'alg', grade: 11, quarter: 1, lessons: '26–27', hours: 2,
+  id: 'a11-14', stream: 'alg', grade: 11, quarter: 1, lessons: '32–33', hours: 2,
   title: 'Control work 2, and the quarter review',
   subtitle: 'The whole derivative block in one paper, then the map that connects a sign chart to a sketch to an optimum.',
   uz: 'Algebra 11, Nazorat ishi 2', uzPage: 'pp. 127–130',
@@ -1784,9 +2232,9 @@ G11_ALG.push({
 
 /* ===================== QUARTER II (21 hours) ===================== */
 
-/* ============================== 12 ============================== */
+/* ======================== 15 ======================== */
 G11_ALG.push({
-  id: 'a11-12', stream: 'alg', grade: 11, quarter: 2, lessons: '28–30', hours: 3,
+  id: 'a11-15', stream: 'alg', grade: 11, quarter: 2, lessons: '34–36', hours: 3,
   title: 'Approximate calculations with the derivative',
   subtitle: 'Near one point a curve is a straight line — which is enough to compute √4.02 in your head.',
   uz: 'Algebra 11, §2.1', uzPage: 'pp. 131–146',
@@ -1946,9 +2394,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 13 ============================== */
+/* ======================== 16 ======================== */
 G11_ALG.push({
-  id: 'a11-13', stream: 'alg', grade: 11, quarter: 2, lessons: '31–34', hours: 4,
+  id: 'a11-16', stream: 'alg', grade: 11, quarter: 2, lessons: '37–40', hours: 4,
   title: 'Modelling with the derivative',
   subtitle: 'Four lessons of real situations — motion, growth, cost, flow — in which the derivative is the quantity the question is really about.',
   uz: 'Algebra 11, §2.2', uzPage: 'pp. 147–168',
@@ -2113,9 +2561,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 14 ============================== */
+/* ======================== 17 ======================== */
 G11_ALG.push({
-  id: 'a11-14', stream: 'alg', grade: 11, quarter: 2, lessons: '35–36', hours: 2,
+  id: 'a11-17', stream: 'alg', grade: 11, quarter: 2, lessons: '41–42', hours: 2,
   title: 'Control work 3, and work on the mistakes',
   subtitle: 'Approximation and modelling in one paper — the two topics where a missing unit costs a mark.',
   uz: 'Algebra 11, Nazorat ishi 3', uzPage: 'pp. 169–172',
@@ -2272,9 +2720,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 15 ============================== */
+/* ======================== 18 ======================== */
 G11_ALG.push({
-  id: 'a11-15', stream: 'alg', grade: 11, quarter: 2, lessons: '37–40', hours: 4,
+  id: 'a11-18', stream: 'alg', grade: 11, quarter: 2, lessons: '43–46', hours: 4,
   title: 'The antiderivative and the indefinite integral',
   subtitle: 'Differentiation run backwards — and the constant that makes the answer a whole family of curves.',
   uz: 'Algebra 11, §2.3', uzPage: 'pp. 173–192',
@@ -2437,18 +2885,20 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 16 ============================== */
+/* ======================== 19 ======================== */
 G11_ALG.push({
-  id: 'a11-16', stream: 'alg', grade: 11, quarter: 2, lessons: '41–46', hours: 6,
-  title: 'The table of integrals and the rules of integration',
-  subtitle: 'Six lessons on the standard integrals, the two linearity rules, and the one substitution that handles every bracket you will meet this year.',
+  id: 'a11-19', stream: 'alg', grade: 11, quarter: 2, lessons: '47–55', hours: 9,
+  title: 'The table of integrals, and the integrals of sin x, cos x, eˣ and 1/x',
+  subtitle: 'The standard integrals and the two linearity rules, the one substitution that handles every linear bracket — and, three lessons beyond the Ministry calendar, the reverses of the three derivatives from two lessons ago.',
   uz: 'Algebra 11, §2.4', uzPage: 'pp. 193–220',
-  cam: 'AS · P1 10.2–10.3', camPage: 'Pure Mathematics 1, pp. 203–212', wb: 'P1 Exercise 10B, 10C',
+  cam: 'AS · P1 10.2–10.3 · A Level · P2 5.1–5.4', camPage: 'Pure Mathematics 1, pp. 203–212 · Pure Mathematics 2 & 3, pp. 90–104', wb: 'P1 Exercise 10B, 10C · P2 Exercise 5A, 5B',
   objectives: [
     'Use the power rule for integration, including negative and fractional indices.',
     'Apply the constant-multiple and sum rules.',
     'Integrate (ax + b)ⁿ.',
-    'Rewrite a quotient or a product into integrable form before integrating.'
+    'Rewrite a quotient or a product into integrable form before integrating.',
+    'Quote and use ∫ sin x dx = −cos x + C and ∫ cos x dx = sin x + C.',
+    'Quote and use ∫ eˣ dx = eˣ + C, and recognise ∫ 1/x dx = ln|x| + C as the reverse of the derivative of ln x.'
   ],
   terms: [
     ['Table of integrals', 'Integrallar jadvali', 'Таблица интегралов'],
@@ -2459,9 +2909,12 @@ G11_ALG.push({
     ['Integrable form', 'Integrallanuvchi shakl', 'Интегрируемый вид'],
     ['Reciprocal function', 'Teskari funksiya (1/x)', 'Обратная величина'],
     ['Exceptional case', 'Istisno hol', 'Особый случай'],
-    ['Term by term', 'Hadma-had', 'Почленно']
+    ['Term by term', 'Hadma-had', 'Почленно'],
+    ['Integral of sine', 'Sinusning integrali', 'Интеграл синуса'],
+    ['Integral of cosine', 'Kosinusning integrali', 'Интеграл косинуса'],
+    ['Integral of the exponential', 'Eksponensialning integrali', 'Интеграл экспоненты']
   ],
-  timing: [[18, 'The power rule'], [18, 'The exceptional case'], [27, 'Linearity'], [36, 'Rewriting first'], [36, 'The linear bracket'], [57, 'Practice and homework'], [48, 'Consolidation']],
+  timing: [[18, 'The power rule'], [18, 'The exceptional case'], [27, 'Linearity'], [36, 'Rewriting first'], [36, 'The linear bracket'], [20, '∫ sin x and ∫ cos x'], [20, '∫ eˣ and ∫ 1/x'], [30, 'Reversing the chain rule on a linear inside'], [57, 'Practice and homework'], [48, 'Consolidation'], [50, 'Extra practice: the new integrals']],
   sections: [
     {
       h: 'The power rule',
@@ -2524,6 +2977,25 @@ G11_ALG.push({
       <div class="warn"><span class="wl">Only when the inside is linear</span>
       ${m('∫ (x² + 1)⁴ dx')} cannot be done this way — the correction factor would have to be
       ${m('2x')}, which is not a constant. Expand it, or leave it for the next course.</div>`
+    },
+    {
+      h: 'The integrals of sin x, cos x, eˣ and 1/x',
+      html: `<p>Three lessons ago you found the derivatives of the trigonometric, exponential and
+      logarithmic functions. Running each one backwards gives four more standard results, to be
+      quoted exactly as the power rule is:</p>
+      ${eq(m('∫ sin x dx = −cos x + C') + '     ' + m('∫ cos x dx = sin x + C'), true)}
+      ${eq(m('∫ eˣ dx = eˣ + C') + '     ' + m('∫ ' + f('1', 'x') + ' dx = ln|x| + C'), true)}
+      <div class="keybox"><div class="klabel">Where each one comes from</div>
+      ${m('d/dx(−cos x) = sin x')}, so ${m('∫ sin x dx')} undoes it; ${m('d/dx(sin x) = cos x')} gives
+      the second; ${m('eˣ')} is its own derivative, so also its own integral; and ${m('d/dx(ln x) = ' + f('1', 'x'))}
+      is exactly the exceptional case the power rule could not reach.</div>
+      <p>The linear-bracket rule carries across unchanged — the extra factor of ${m('a')} appears in
+      the same place it did for ${m('(ax + b)ⁿ')}:</p>
+      ${eq(m('∫ sin(ax + b) dx = −' + f('cos(ax + b)', 'a') + ' + C') + '     ' + m('∫ cos(ax + b) dx = ' + f('sin(ax + b)', 'a') + ' + C'), true)}
+      ${eq(m('∫ e^(ax + b) dx = ' + f('e^(ax + b)', 'a') + ' + C') + '     ' + m('∫ ' + f('1', 'ax + b') + ' dx = ' + f('1', 'a') + 'ln|ax + b| + C'), true)}
+      <div class="warn"><span class="wl">Divide by ${m('a')}, not by anything else</span>
+      ${m('∫ cos(5x) dx')} is ${m(f('sin(5x)', '5') + ' + C')}, not ${m('sin(5x) + C')}. Check by
+      differentiating: the chain rule brings the ${m('5')} back down, and the division cancels it.</div>`
     }
   ],
   examples: [
@@ -2553,9 +3025,27 @@ G11_ALG.push({
         [m('= ' + f('(2x + 5)⁴', '8') + ' + C'), 'Check by differentiating.']
       ],
       ans: m(f('(2x + 5)⁴', '8') + ' + C')
+    },
+    {
+      q: 'Find ' + m('∫ (3 sin x − 2eˣ) dx') + '.',
+      steps: [
+        ['Term by term, reversing each derivative.', ''],
+        [m('∫ 3 sin x dx = −3cos x'), ''],
+        [m('∫ 2eˣ dx = 2eˣ'), '']
+      ],
+      ans: m('−3cos x − 2eˣ + C')
+    },
+    {
+      q: 'Find ' + m('∫ (cos(4x) + ' + f('1', '2x − 1') + ') dx') + '.',
+      steps: [
+        ['Both brackets are linear; divide by ' + m('a') + ' in each.', ''],
+        [m('∫ cos(4x) dx = ' + f('sin(4x)', '4')), m('a = 4') + '.'],
+        [m('∫ ' + f('1', '2x − 1') + ' dx = ' + f('1', '2') + 'ln|2x − 1|'), m('a = 2') + '.']
+      ],
+      ans: m(f('sin(4x)', '4') + ' + ' + f('1', '2') + 'ln|2x − 1| + C')
     }
   ],
-  modelNote: 'Differentiate every answer aloud before writing the next question.',
+  modelNote: 'Differentiate every answer aloud before writing the next question — sin, cos, eˣ and ln included.',
   interactive: {
     type: 'quiz',
     title: 'Which rule, and what is the answer?',
@@ -2566,7 +3056,9 @@ G11_ALG.push({
       { q: m('∫ ' + f('1', 'x') + ' dx') + ':', a: [m(f('x⁰', '0')), m('ln|x| + C'), m('0'), 'undefined'], c: 1, why: 'The exceptional case.' },
       { q: m('∫ (3x + 1)⁴ dx') + ':', a: [m(f('(3x+1)⁵', '5') + ' + C'), m(f('(3x+1)⁵', '15') + ' + C'), m('3(3x+1)⁵ + C'), m('(3x+1)⁵ + C')], c: 1, why: 'Divide by ' + m('a(n+1) = 15') + '.' },
       { q: m('∫ x · x dx') + ':', a: [m(f('x⁴', '4') + ' + C'), m(f('x³', '3') + ' + C'), m('x² + C'), m(f('x²', '2') + ' + C')], c: 1, why: 'Multiply first; there is no product rule.' },
-      { q: m('∫ ' + sr('x') + ' dx') + ':', a: [m(f('2', '3') + 'x^(3/2) + C'), m(f('1', '2' + sr('x')) + ' + C'), m(f('3', '2') + 'x^(1/2) + C'), m('x^(3/2) + C')], c: 0, why: m('x^(1/2) → ' + f('x^(3/2)', '3/2')) + '.' }
+      { q: m('∫ ' + sr('x') + ' dx') + ':', a: [m(f('2', '3') + 'x^(3/2) + C'), m(f('1', '2' + sr('x')) + ' + C'), m(f('3', '2') + 'x^(1/2) + C'), m('x^(3/2) + C')], c: 0, why: m('x^(1/2) → ' + f('x^(3/2)', '3/2')) + '.' },
+      { q: m('∫ cos x dx') + ':', a: [m('−sin x + C'), m('sin x + C'), m('cos x + C'), m('−cos x + C')], c: 1, why: 'The reverse of the derivative of sin x.' },
+      { q: m('∫ ' + f('1', 'x') + ' dx') + ':', a: [m('ln|x| + C'), m(f('x⁰', '0')), m('0'), m('−' + f('1', 'x²') + ' + C')], c: 0, why: 'The case the power rule cannot reach.' }
     ]
   },
   quiz: [
@@ -2574,7 +3066,9 @@ G11_ALG.push({
     { q: m('∫ ' + f('1', 'x') + ' dx') + ' is:', a: [m('ln|x| + C'), m('−x⁻² + C'), m('0'), m('x + C')], c: 0, why: 'The logarithm.' },
     { q: 'Is there a product rule for integration?', a: ['yes', 'no', 'only for polynomials', 'only for powers'], c: 1, why: 'Rewrite instead.' },
     { q: m('∫ (ax + b)ⁿ dx') + ' divides by:', a: [m('n + 1'), m('a'), m('a(n + 1)'), m('an')], c: 2, why: 'Both corrections.' },
-    { q: 'Before integrating ' + m(f('x³ + x', 'x')) + ' you should:', a: ['use a quotient rule', 'divide through', 'square it', 'nothing'], c: 1, why: 'It becomes ' + m('x² + 1') + '.' }
+    { q: 'Before integrating ' + m(f('x³ + x', 'x')) + ' you should:', a: ['use a quotient rule', 'divide through', 'square it', 'nothing'], c: 1, why: 'It becomes ' + m('x² + 1') + '.' },
+    { q: m('∫ sin x dx') + ' is:', a: [m('cos x + C'), m('−cos x + C'), m('sin x + C'), m('−sin x + C')], c: 1, why: 'The reverse of the derivative of cos x.' },
+    { q: m('∫ eˣ dx') + ' is:', a: [m('eˣ + C'), m('xe^(x−1) + C'), m('e^(x+1) + C'), m('1')], c: 0, why: m('eˣ') + ' is its own derivative, so also its own integral.' }
   ],
   practice: {
     easy: [
@@ -2583,8 +3077,8 @@ G11_ALG.push({
       [m('∫ 5 dx'), m('5x + C')],
       [m('∫ 2x dx'), m('x² + C')],
       [m('∫ (x + 1) dx'), m(f('x²', '2') + ' + x + C')],
-      [m('∫ x⁻² dx'), m('−' + f('1', 'x') + ' + C')],
-      [m('∫ ' + sr('x') + ' dx'), m(f('2', '3') + 'x^(3/2) + C')]
+      [m('∫ sin x dx'), m('−cos x + C')],
+      [m('∫ eˣ dx'), m('eˣ + C')]
     ],
     med: [
       [m('∫ (3x² − 4x + 1) dx'), m('x³ − 2x² + x + C')],
@@ -2592,8 +3086,8 @@ G11_ALG.push({
       [m('∫ ' + f('1', sr('x')) + ' dx'), m('2' + sr('x') + ' + C')],
       [m('∫ x(x + 2) dx'), m(f('x³', '3') + ' + x² + C')],
       [m('∫ ' + f('x³ + 2x', 'x') + ' dx'), m(f('x³', '3') + ' + 2x + C')],
-      [m('∫ (2x + 5)³ dx'), m(f('(2x+5)⁴', '8') + ' + C')],
-      [m('∫ (1 − x)⁵ dx'), m('−' + f('(1−x)⁶', '6') + ' + C')]
+      [m('∫ sin(2x) dx'), m('−' + f('1', '2') + 'cos(2x) + C')],
+      [m('∫ e^(3x) dx'), m(f('1', '3') + 'e^(3x) + C')]
     ],
     hard: [
       [m('∫ (2x − 1)² dx'), m(f('4x³', '3') + ' − 2x² + x + C')],
@@ -2601,11 +3095,11 @@ G11_ALG.push({
       [m('∫ (x + ' + f('1', 'x') + ')² dx'), m(f('x³', '3') + ' + 2x − ' + f('1', 'x') + ' + C')],
       [m('∫ ' + f('(x + 1)²', 'x²') + ' dx'), m('x + 2ln|x| − ' + f('1', 'x') + ' + C')],
       [m('∫ ' + f('1', '(3x − 2)²') + ' dx'), m('−' + f('1', '3(3x − 2)') + ' + C')],
-      [m('∫ ' + sr('4x + 1') + ' dx'), m(f('(4x+1)^(3/2)', '6') + ' + C')],
-      ['Why can ' + m('∫ (x² + 1)⁴ dx') + ' not use the bracket rule?', 'The inside is not linear']
+      [m('∫ ' + f('1', '2x + 1') + ' dx'), m(f('1', '2') + 'ln|2x + 1| + C')],
+      [m('∫ (cos x − sin x + eˣ) dx'), m('sin x + cos x + eˣ + C')]
     ]
   },
-  hwTitle: 'Homework — 7 tasks',
+  hwTitle: 'Homework — 9 tasks',
   hwNote: 'Every answer differentiated back, and ' + m('+ C') + ' on every line.',
   homework: [
     'Find ' + m('∫ (5x⁴ − 3x² + 2) dx') + '.',
@@ -2614,13 +3108,15 @@ G11_ALG.push({
     'Find ' + m('∫ (3x − 4)⁵ dx') + '.',
     'Find ' + m('∫ (x + 2)(x − 3) dx') + '.',
     'Find ' + m('∫ ' + f('1', sr('2x + 1')) + ' dx') + '.',
+    'Find ' + m('∫ (4 sin x + eˣ) dx') + '.',
+    'Find ' + m('∫ (cos(3x) + ' + f('1', 'x + 2') + ') dx') + '.',
     'Explain in three sentences why there is no product rule for integration, with an example.'
   ]
 });
 
-/* ============================== 17 ============================== */
+/* ======================== 20 ======================== */
 G11_ALG.push({
-  id: 'a11-17', stream: 'alg', grade: 11, quarter: 2, lessons: '47–48', hours: 2,
+  id: 'a11-20', stream: 'alg', grade: 11, quarter: 2, lessons: '56–57', hours: 2,
   title: 'Control work 4, and the quarter review',
   subtitle: 'The indefinite integral in one paper, and the map that joins approximation, modelling and integration.',
   uz: 'Algebra 11, Nazorat ishi 4', uzPage: 'pp. 221–224',
@@ -2778,9 +3274,9 @@ G11_ALG.push({
 
 /* ===================== QUARTER III (30 hours) ===================== */
 
-/* ============================== 18 ============================== */
+/* ======================== 21 ======================== */
 G11_ALG.push({
-  id: 'a11-18', stream: 'alg', grade: 11, quarter: 3, lessons: '49–51', hours: 3,
+  id: 'a11-21', stream: 'alg', grade: 11, quarter: 3, lessons: '58–60', hours: 3,
   title: 'The definite integral and the Newton–Leibniz formula',
   subtitle: 'Two limits on the integral sign, one subtraction — and the theorem that makes area computable.',
   uz: 'Algebra 11, §3.1', uzPage: 'pp. 225–242',
@@ -2940,9 +3436,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 19 ============================== */
+/* ======================== 22 ======================== */
 G11_ALG.push({
-  id: 'a11-19', stream: 'alg', grade: 11, quarter: 3, lessons: '52–54', hours: 3,
+  id: 'a11-22', stream: 'alg', grade: 11, quarter: 3, lessons: '61–63', hours: 3,
   title: 'Applications of the definite integral',
   subtitle: 'Areas between curves, volumes of revolution, distance from velocity — one integral, four questions.',
   uz: 'Algebra 11, §3.2', uzPage: 'pp. 243–260',
@@ -3102,9 +3598,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 20 ============================== */
+/* ======================== 23 ======================== */
 G11_ALG.push({
-  id: 'a11-20', stream: 'alg', grade: 11, quarter: 3, lessons: '55–57', hours: 3,
+  id: 'a11-23', stream: 'alg', grade: 11, quarter: 3, lessons: '64–66', hours: 3,
   title: 'The trapezium rule',
   subtitle: 'Cambridge insert: what to do when the antiderivative does not exist — and how to judge the error.',
   uz: 'Algebra 11, §3.2 (extension)', uzPage: 'pp. 261–268',
@@ -3273,9 +3769,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 21 ============================== */
+/* ======================== 24 ======================== */
 G11_ALG.push({
-  id: 'a11-21', stream: 'alg', grade: 11, quarter: 3, lessons: '58–59', hours: 2,
+  id: 'a11-24', stream: 'alg', grade: 11, quarter: 3, lessons: '67–68', hours: 2,
   title: 'Control work 5, and work on the mistakes',
   subtitle: 'The definite integral in one paper — where the limits and the sketch carry the marks.',
   uz: 'Algebra 11, Nazorat ishi 5', uzPage: 'pp. 269–272',
@@ -3434,9 +3930,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 22 ============================== */
+/* ======================== 25 ======================== */
 G11_ALG.push({
-  id: 'a11-22', stream: 'alg', grade: 11, quarter: 3, lessons: '60–62', hours: 3,
+  id: 'a11-25', stream: 'alg', grade: 11, quarter: 3, lessons: '69–71', hours: 3,
   title: 'Problems in combinatorics',
   subtitle: 'Counting without listing — the two rules, and the three formulas that come from them.',
   uz: 'Algebra 11, §4.1', uzPage: 'pp. 273–290',
@@ -3611,9 +4107,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 23 ============================== */
+/* ======================== 26 ======================== */
 G11_ALG.push({
-  id: 'a11-23', stream: 'alg', grade: 11, quarter: 3, lessons: '63–64', hours: 2,
+  id: 'a11-26', stream: 'alg', grade: 11, quarter: 3, lessons: '72–73', hours: 2,
   title: 'The binomial theorem',
   subtitle: 'Pascal’s triangle, the general term, and expanding a bracket to any power without multiplying it out.',
   uz: 'Algebra 11, §4.2', uzPage: 'pp. 291–302',
@@ -3781,9 +4277,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 24 ============================== */
+/* ======================== 27 ======================== */
 G11_ALG.push({
-  id: 'a11-24', stream: 'alg', grade: 11, quarter: 3, lessons: '65–67', hours: 3,
+  id: 'a11-27', stream: 'alg', grade: 11, quarter: 3, lessons: '74–76', hours: 3,
   title: 'Statistical data and its types',
   subtitle: 'Where data comes from, how it is grouped, and the four pictures that make it readable.',
   uz: 'Algebra 11, §4.3', uzPage: 'pp. 303–320',
@@ -3954,9 +4450,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 25 ============================== */
+/* ======================== 28 ======================== */
 G11_ALG.push({
-  id: 'a11-25', stream: 'alg', grade: 11, quarter: 3, lessons: '68–70', hours: 3,
+  id: 'a11-28', stream: 'alg', grade: 11, quarter: 3, lessons: '77–79', hours: 3,
   title: 'Mean, median and mode; deviation and standard deviation',
   subtitle: 'One number for the centre, one for the spread — and knowing which pair to use.',
   uz: 'Algebra 11, §4.4', uzPage: 'pp. 321–338',
@@ -4127,9 +4623,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 26 ============================== */
+/* ======================== 29 ======================== */
 G11_ALG.push({
-  id: 'a11-26', stream: 'alg', grade: 11, quarter: 3, lessons: '71–73', hours: 3,
+  id: 'a11-29', stream: 'alg', grade: 11, quarter: 3, lessons: '80–82', hours: 3,
   title: 'Studying the relationship between two sets of data',
   subtitle: 'Scatter diagrams, correlation, the line of best fit — and the one warning that must accompany all of it.',
   uz: 'Algebra 11, §4.5', uzPage: 'pp. 339–356',
@@ -4293,9 +4789,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 27 ============================== */
+/* ======================== 30 ======================== */
 G11_ALG.push({
-  id: 'a11-27', stream: 'alg', grade: 11, quarter: 3, lessons: '74–76', hours: 3,
+  id: 'a11-30', stream: 'alg', grade: 11, quarter: 3, lessons: '83–85', hours: 3,
   title: 'Integration by partial fractions and by parts',
   subtitle: 'Cambridge insert: two techniques that turn an impossible integral into two easy ones.',
   uz: 'Algebra 11, §3.2 (extension)', uzPage: 'pp. 357–364',
@@ -4481,9 +4977,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 28 ============================== */
+/* ======================== 31 ======================== */
 G11_ALG.push({
-  id: 'a11-28', stream: 'alg', grade: 11, quarter: 3, lessons: '77–78', hours: 2,
+  id: 'a11-31', stream: 'alg', grade: 11, quarter: 3, lessons: '86–87', hours: 2,
   title: 'Control work 6, and the quarter review',
   subtitle: 'Combinatorics, the binomial theorem and statistics in one paper, then the map of the whole quarter.',
   uz: 'Algebra 11, Nazorat ishi 6', uzPage: 'pp. 365–368',
@@ -4640,9 +5136,9 @@ G11_ALG.push({
 
 /* ===================== QUARTER IV (24 hours) ===================== */
 
-/* ============================== 29 ============================== */
+/* ======================== 32 ======================== */
 G11_ALG.push({
-  id: 'a11-29', stream: 'alg', grade: 11, quarter: 4, lessons: '79–80', hours: 2,
+  id: 'a11-32', stream: 'alg', grade: 11, quarter: 4, lessons: '88–89', hours: 2,
   title: 'Random events and their probabilities',
   subtitle: 'Count the outcomes, count the favourable ones, and divide — but only when they are equally likely.',
   uz: 'Algebra 11, §29', uzPage: 'pp. 342–352',
@@ -4838,9 +5334,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 30 ============================== */
+/* ======================== 33 ======================== */
 G11_ALG.push({
-  id: 'a11-30', stream: 'alg', grade: 11, quarter: 4, lessons: '81–82', hours: 2,
+  id: 'a11-33', stream: 'alg', grade: 11, quarter: 4, lessons: '90–91', hours: 2,
   title: 'Complementary events, operations on events and Euler–Venn diagrams',
   subtitle: 'Events are sets; the diagram does the bookkeeping the algebra would otherwise have to.',
   uz: 'Algebra 11, §30', uzPage: 'pp. 353–364',
@@ -5040,9 +5536,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 31 ============================== */
+/* ======================== 34 ======================== */
 G11_ALG.push({
-  id: 'a11-31', stream: 'alg', grade: 11, quarter: 4, lessons: '83–85', hours: 3,
+  id: 'a11-34', stream: 'alg', grade: 11, quarter: 4, lessons: '92–94', hours: 3,
   title: 'Addition and multiplication of probabilities',
   subtitle: 'Two rules, one tree, and one question to ask first: does the second event depend on the first?',
   uz: 'Algebra 11, §31', uzPage: 'pp. 365–382',
@@ -5254,9 +5750,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 32 ============================== */
+/* ======================== 35 ======================== */
 G11_ALG.push({
-  id: 'a11-32', stream: 'alg', grade: 11, quarter: 4, lessons: '86–89', hours: 4,
+  id: 'a11-35', stream: 'alg', grade: 11, quarter: 4, lessons: '95–98', hours: 4,
   title: 'The binomial and normal distributions',
   subtitle: 'Counting successes in n trials, and the bell curve that takes over when n is large.',
   uz: 'Algebra 11, §32', uzPage: 'pp. 383–406',
@@ -5476,9 +5972,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 33 ============================== */
+/* ======================== 36 ======================== */
 G11_ALG.push({
-  id: 'a11-33', stream: 'alg', grade: 11, quarter: 4, lessons: '90–91', hours: 2,
+  id: 'a11-36', stream: 'alg', grade: 11, quarter: 4, lessons: '99–100', hours: 2,
   title: 'Control work 7, and work on the mistakes',
   subtitle: 'Probability and distributions in one paper, then the block drawn as a decision tree.',
   uz: 'Algebra 11, Nazorat ishi 7', uzPage: 'pp. 407–410',
@@ -5648,9 +6144,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 34 ============================== */
+/* ======================== 37 ======================== */
 G11_ALG.push({
-  id: 'a11-34', stream: 'alg', grade: 11, quarter: 4, lessons: '92–94', hours: 3,
+  id: 'a11-37', stream: 'alg', grade: 11, quarter: 4, lessons: '101–103', hours: 3,
   title: 'Complex numbers — arithmetic, conjugates and the Argand diagram [Cambridge revision]',
   subtitle: 'One new symbol, i² = −1, and every quadratic finally has two roots.',
   uz: 'Algebra 11, qo‘shimcha bo‘lim', uzPage: 'pp. 411–428',
@@ -5873,9 +6369,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 35 ============================== */
+/* ======================== 38 ======================== */
 G11_ALG.push({
-  id: 'a11-35', stream: 'alg', grade: 11, quarter: 4, lessons: '95–96', hours: 2,
+  id: 'a11-38', stream: 'alg', grade: 11, quarter: 4, lessons: '104–105', hours: 2,
   title: 'Complex numbers geometrically, and loci in the complex plane [Cambridge revision]',
   subtitle: 'Modulus is distance, argument is direction — and every locus becomes a picture.',
   uz: 'Algebra 11, qo‘shimcha bo‘lim', uzPage: 'pp. 429–440',
@@ -6072,9 +6568,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 36 ============================== */
+/* ======================== 39 ======================== */
 G11_ALG.push({
-  id: 'a11-36', stream: 'alg', grade: 11, quarter: 4, lessons: '97–100', hours: 4,
+  id: 'a11-39', stream: 'alg', grade: 11, quarter: 4, lessons: '106–109', hours: 4,
   title: 'Forming and solving differential equations [Cambridge revision]',
   subtitle: 'An equation about a rate — and the whole of the derivative and the integral put to work.',
   uz: 'Algebra 11, qo‘shimcha bo‘lim', uzPage: 'pp. 441–460',
@@ -6295,9 +6791,9 @@ G11_ALG.push({
   ]
 });
 
-/* ============================== 37 ============================== */
+/* ======================== 40 ======================== */
 G11_ALG.push({
-  id: 'a11-37', stream: 'alg', grade: 11, quarter: 4, lessons: '101–102', hours: 2,
+  id: 'a11-40', stream: 'alg', grade: 11, quarter: 4, lessons: '110–111', hours: 2,
   title: 'Annual control work, and preparation for the entrance paper',
   subtitle: 'Two years of calculus in one paper, then what the university examination actually asks.',
   uz: 'Algebra 11, Yillik nazorat ishi', uzPage: 'pp. 461–464',

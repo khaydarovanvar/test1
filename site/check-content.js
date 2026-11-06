@@ -34,14 +34,18 @@ const HOURS = {
   alg: { 1: 27, 2: 21, 3: 30, 4: 24 },
   geo: { 1: 18, 2: 14, 3: 20, 4: 16 },
   mat6: { 1: 54, 2: 42, 3: 60, 4: 48 },
-  mat7: { 1: 45, 2: 35, 3: 50, 4: 40 }
+  mat7: { 1: 45, 2: 35, 3: 50, 4: 40 },
+  /* Grade 11 algebra alone carries three lessons beyond the Ministry calendar in each of
+     Quarters I and II — infinite limits, the trigonometric/exponential/logarithmic derivatives,
+     and their integrals — so its quarters run 6h and 3h over the otherwise-fixed 27/21 totals. */
+  alg11: { 1: 33, 2: 24, 3: 30, 4: 24 }
 };
 const STREAMS = [
   ['G6_MAT', 6, 'mat', 'mat6'], ['G7_MAT', 7, 'mat', 'mat7'],
   ['G8_ALG', 8, 'alg'], ['G8_GEO', 8, 'geo'],
   ['G9_ALG', 9, 'alg'], ['G9_GEO', 9, 'geo'],
   ['G10_ALG', 10, 'alg'], ['G10_GEO', 10, 'geo'],
-  ['G11_ALG', 11, 'alg'], ['G11_GEO', 11, 'geo']
+  ['G11_ALG', 11, 'alg', 'alg11'], ['G11_GEO', 11, 'geo']
 ];
 const issues = [];
 const progress = [];

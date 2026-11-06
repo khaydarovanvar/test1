@@ -52,7 +52,7 @@ site/
     g9-geo.js        Grade 9 Geometry — 44 topics, 68 hours
     g10-alg.js       Grade 10 Algebra — 46 topics, 102 hours
     g10-geo.js       Grade 10 Geometry — 34 topics, 68 hours
-    g11-alg.js       Grade 11 Algebra — 37 topics, 102 hours
+    g11-alg.js       Grade 11 Algebra — 40 topics, 111 hours (9 beyond the Ministry calendar)
     g11-geo.js       Grade 11 Geometry — 39 topics, 68 hours
     glossary.js      the terminology index
   downloads/         the annual plans as Excel workbooks, one per grade
@@ -72,12 +72,15 @@ Cambridge layer mapped onto it.
 | Grade 8 | Algebra + Geometry (Stage 9) | 95 | 170 | 1995 |
 | Grade 9 | Algebra + Geometry (IGCSE) | 95 | 170 | 1995 |
 | Grade 10 | Algebra + Geometry (IGCSE · Pure 1) | 80 | 170 | 1680 |
-| Grade 11 | Algebra + Geometry (Pure 1–3) | 76 | 170 | 1596 |
-| **Total** | | **528** | **1054** | **11 088** |
+| Grade 11 | Algebra + Geometry (Pure 1–3) | 79 | 179 | 1659 |
+| **Total** | | **531** | **1063** | **11 151** |
 
 Quarters follow the national calendar throughout: 9, 7, 10 and 8 weeks. Grades 6 and 7 are taught
 as one subject at six and five hours a week; grades 8 to 11 run algebra at three hours a week and
-geometry at two.
+geometry at two. The one exception is Grade 11 algebra, Quarters I and II, where six and three
+lessons respectively go beyond that calendar — the derivatives of the trigonometric, exponential
+and logarithmic functions, infinite limits, and their integrals, none of which the national
+programme teaches at this grade, but all of which Cambridge Pure Mathematics 2 and 3 expect.
 
 Every topic page contains: a 40-minute lesson clock, learning objectives, an explanation with drawn
 figures, worked examples with reasoned steps, one interactive model, an English / Uzbek / Russian
@@ -93,7 +96,7 @@ previous, all topics and next.
 ## The header
 
 - **Grades** opens a drop-down, so any year is one click from any page.
-- **Search** (the magnifier, or press `/`) matches all 528 topics on title,
+- **Search** (the magnifier, or press `/`) matches all 531 topics on title,
   subtitle, textbook reference and the terminology in all three languages — so
   `chord`, `vatar` and `хорда` all find the same lesson. Arrow keys move,
   Enter opens, Esc closes. Title matches rank above passing mentions.

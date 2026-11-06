@@ -3,7 +3,7 @@
    'live' when at least one topic exists for it in the data files. */
 /* Written topics per grade. The homepage and the grade page read these instead of
    loading every data file; check-content.js verifies them against the data. */
-var TOPIC_COUNTS = { 6: 92, 7: 90, 8: 95, 9: 95, 10: 80, 11: 76 };
+var TOPIC_COUNTS = { 6: 92, 7: 90, 8: 95, 9: 95, 10: 80, 11: 79 };
 
 var GRADES = [
   { g: 5,  name: 'Mathematics',        meta: 'Natural numbers · fractions · geometry of the plane', status: 'soon' },
@@ -127,19 +127,19 @@ var GRADE_INFO = {
   },
   11: {
     title: 'Grade 11 · Algebra and Geometry',
-    lede: 'All four quarters are written — 76 lessons across algebra and geometry. Pick a quarter, then a topic.',
+    lede: 'All four quarters are written — 79 lessons across algebra and geometry, including 6 lessons in algebra beyond the Ministry calendar. Pick a quarter, then a topic.',
     streams: [
-      ['uz',  'Special class', 'Algebra · 3 h a week',  '102 hours. Quarters 27 · 21 · 30 · 24.', '<em>Algebra and Calculus 11</em>'],
+      ['uz',  'Special class', 'Algebra · 3 h a week',  '111 hours. Quarters 33 · 24 · 30 · 24 — 9 hours beyond the calendar’s 102.', '<em>Algebra and Calculus 11</em>'],
       ['uz',  'Special class', 'Geometry · 2 h a week', '68 hours. Quarters 18 · 14 · 20 · 16.',  '<em>Geometry 11</em>'],
       ['cam', 'Cambridge layer', 'AS &amp; A Level Pure 1–3', 'Mapped lesson by lesson, with 17 + 16 inserts.', 'Pure Mathematics 1 · Pure Mathematics 2 &amp; 3'],
       ['cam', 'Cambridge layer', 'IGCSE Extended · P&amp;S 1', 'Where Pure 1–3 has no syllabus of its own: 3-D mensuration from IGCSE Extended, statistics and probability from Probability &amp; Statistics 1.', 'IGCSE Mathematics Core &amp; Extended · Probability &amp; Statistics 1']
     ],
     quarters: [
       { q: 1, label: 'Quarter I',
-        alg: 'Chapter 1 — the limit, the derivative, the rules of differentiation and the applications of the derivative.',
+        alg: 'Chapter 1 — the limit, infinite limits, the derivative, the rules of differentiation and its applications, then — 6 lessons beyond the Ministry calendar — the derivatives of the trigonometric, exponential and logarithmic functions.',
         geo: 'Chapter 1 — the coordinate system in space, vectors, the scalar product and transformations.' },
       { q: 2, label: 'Quarter II',
-        alg: 'Approximation, modelling with the derivative, and the indefinite integral.',
+        alg: 'Approximation, modelling with the derivative, and the indefinite integral, including — 3 lessons beyond the Ministry calendar — the integrals of sin x, cos x, eˣ and 1/x.',
         geo: 'Polyhedra, prisms and cylinders — surface area and volume.' },
       { q: 3, label: 'Quarter III',
         alg: 'The definite integral, then combinatorics and statistics from the Probability &amp; Statistics 1 syllabus.',
