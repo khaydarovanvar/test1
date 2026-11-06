@@ -8,7 +8,7 @@ G11_ALG.push({
   title: 'Increments, and the problem of the tangent',
   subtitle: 'Two questions from opposite ends of science — the speed of a falling stone and the slope of a curve — that turn out to be the same question.',
   uz: 'Algebra 11, §1.1', uzPage: 'pp. 5–14',
-  cam: 'P1 · 7.1', camPage: 'Pure Mathematics 1, pp. 122–126', wb: 'P1 Exercise 7A',
+  cam: 'AS · P1 8.1', camPage: 'Pure Mathematics 1, pp. 122–126', wb: 'P1 Exercise 8A',
   objectives: [
     'Define the increment of the argument and the increment of the function.',
     'Compute Δy for a given function and Δx.',
@@ -171,7 +171,7 @@ G11_ALG.push({
   title: 'The limit of a function',
   subtitle: 'Making “approaches without reaching” precise, and the four techniques that evaluate almost every limit you will meet.',
   uz: 'Algebra 11, §1.2', uzPage: 'pp. 15–26',
-  cam: 'P1 · 7.1', camPage: 'Pure Mathematics 1, pp. 126–129', wb: 'P1 Exercise 7A',
+  cam: 'AS · P1 8.2', camPage: 'Pure Mathematics 1, pp. 126–129', wb: 'P1 Exercise 8A',
   objectives: [
     'State informally what lim f(x) = L means.',
     'Evaluate limits by substitution where the function is continuous.',
@@ -326,7 +326,7 @@ G11_ALG.push({
   title: 'The derivative of a function',
   subtitle: 'The definition, the notation, and what the number actually measures in geometry and in physics.',
   uz: 'Algebra 11, §1.3', uzPage: 'pp. 27–38',
-  cam: 'P1 · 7.1–7.2', camPage: 'Pure Mathematics 1, pp. 122–133', wb: 'P1 Exercise 7A, 7B',
+  cam: 'AS · P1 8.1–8.2', camPage: 'Pure Mathematics 1, pp. 122–133', wb: 'P1 Exercise 8A, 8B',
   objectives: [
     'State the definition of the derivative as a limit of the difference quotient.',
     'Differentiate from first principles for a polynomial and a simple root.',
@@ -484,7 +484,7 @@ G11_ALG.push({
   title: 'The rules of differentiation',
   subtitle: 'Power, constant multiple, sum, product and quotient — five rules that replace first principles for good.',
   uz: 'Algebra 11, §1.4', uzPage: 'pp. 39–54',
-  cam: 'P1 · 7.2–7.4', camPage: 'Pure Mathematics 1, pp. 130–145', wb: 'P1 Exercise 7B–7D',
+  cam: 'AS · P1 8.3', camPage: 'Pure Mathematics 1, pp. 130–145', wb: 'P1 Exercise 8C',
   objectives: [
     'Apply the power rule to positive, negative and fractional indices.',
     'Differentiate sums and constant multiples.',
@@ -652,7 +652,7 @@ G11_ALG.push({
   title: 'The derivative of a composite function',
   subtitle: 'The chain rule — the one rule that makes everything else in calculus usable.',
   uz: 'Algebra 11, §1.5', uzPage: 'pp. 55–70',
-  cam: 'P1 · 7.5', camPage: 'Pure Mathematics 1, pp. 146–155', wb: 'P1 Exercise 7E',
+  cam: 'AS · P1 8.4 · A Level · P2 4.4', camPage: 'Pure Mathematics 1, pp. 146–155', wb: 'P1 Exercise 8D · P2 Exercise 4D',
   objectives: [
     'Identify the inner and outer function of a composite expression.',
     'Apply the chain rule in both notations.',
@@ -820,7 +820,7 @@ G11_ALG.push({
   title: 'Control work 1, and work on the mistakes',
   subtitle: 'Limits, first principles and the five rules, in one paper — then an hour repairing what it finds.',
   uz: 'Algebra 11, Nazorat ishi 1', uzPage: 'pp. 71–74',
-  cam: 'P1 · Chapter 7 review', camPage: 'Pure Mathematics 1, pp. 156–158', wb: 'Control paper A',
+  cam: 'AS · P1 Chapter 8 review', camPage: 'Pure Mathematics 1, pp. 156–158', wb: 'Control paper A',
   objectives: [
     'Differentiate accurately under time.',
     'Choose the correct rule without being told which.',
@@ -983,7 +983,7 @@ G11_ALG.push({
   title: 'The modulus function',
   subtitle: 'Cambridge insert: |x| as a graph, as an equation, as an inequality — and the reason it has no derivative at the corner.',
   uz: 'Algebra 11, §1.5 (extension)', uzPage: 'pp. 75–80',
-  cam: 'P1 · 1.6 · P2 · 1.1–1.3', camPage: 'Pure Mathematics 2 & 3, pp. 2–14', wb: 'P2 Exercise 1A–1C',
+  cam: 'A Level · P2 1.1–1.3', camPage: 'Pure Mathematics 2 & 3, pp. 2–14', wb: 'P2 Exercise 1A–1C',
   objectives: [
     'Define |x| piecewise and sketch y = |f(x)| and y = f(|x|).',
     'Solve equations containing a modulus, checking for false roots.',
@@ -1145,7 +1145,7 @@ G11_ALG.push({
   title: 'The equations of the tangent and the normal',
   subtitle: 'Two lines at one point of a curve, from one derivative and one gradient relation.',
   uz: 'Algebra 11, §1.6', uzPage: 'pp. 81–90',
-  cam: 'P1 · 7.6', camPage: 'Pure Mathematics 1, pp. 159–167', wb: 'P1 Exercise 7F',
+  cam: 'AS · P1 8.8', camPage: 'Pure Mathematics 1, pp. 159–167', wb: 'P1 Exercise 8E',
   objectives: [
     'Write the equation of the tangent at a given point of a curve.',
     'Write the equation of the normal at that point.',
@@ -1301,7 +1301,7 @@ G11_ALG.push({
   title: 'Investigating a function with the derivative',
   subtitle: 'Four lessons on the full procedure — sign of the derivative, stationary points, their nature, and the sketch that results.',
   uz: 'Algebra 11, §1.7', uzPage: 'pp. 91–110',
-  cam: 'P1 · 7.7–7.8', camPage: 'Pure Mathematics 1, pp. 168–185', wb: 'P1 Exercise 7G, 7H',
+  cam: 'AS · P1 9.1–9.2', camPage: 'Pure Mathematics 1, pp. 168–185', wb: 'P1 Exercise 9A',
   objectives: [
     'Use the sign of f′ to find intervals of increase and decrease.',
     'Find stationary points by solving f′(x) = 0.',
@@ -1468,7 +1468,7 @@ G11_ALG.push({
   title: 'Extremum problems',
   subtitle: 'The largest volume, the least cost, the shortest path — modelling first, then one derivative.',
   uz: 'Algebra 11, §1.8', uzPage: 'pp. 111–126',
-  cam: 'P1 · 7.8', camPage: 'Pure Mathematics 1, pp. 178–190', wb: 'P1 Exercise 7H',
+  cam: 'AS · P1 9.3', camPage: 'Pure Mathematics 1, pp. 178–190', wb: 'P1 Exercise 9B',
   objectives: [
     'Express the quantity to be optimised as a function of one variable.',
     'Use a constraint to eliminate the second variable.',
@@ -1629,7 +1629,7 @@ G11_ALG.push({
   title: 'Control work 2, and the quarter review',
   subtitle: 'The whole derivative block in one paper, then the map that connects a sign chart to a sketch to an optimum.',
   uz: 'Algebra 11, Nazorat ishi 2', uzPage: 'pp. 127–130',
-  cam: 'P1 · Chapter 7 review', camPage: 'Pure Mathematics 1, pp. 191–194', wb: 'Control paper B',
+  cam: 'AS · P1 9.1–9.3 review', camPage: 'Pure Mathematics 1, pp. 191–194', wb: 'Control paper B',
   objectives: [
     'Apply the whole quarter in one assessment.',
     'Choose the correct rule and the correct test without prompting.',
@@ -1790,7 +1790,7 @@ G11_ALG.push({
   title: 'Approximate calculations with the derivative',
   subtitle: 'Near one point a curve is a straight line — which is enough to compute √4.02 in your head.',
   uz: 'Algebra 11, §2.1', uzPage: 'pp. 131–146',
-  cam: 'P1 · 9.4 · P2 · numerical methods', camPage: 'Pure Mathematics 1, pp. 186–190', wb: 'P1 Exercise 9C',
+  cam: 'AS · P1 9.4 · A Level · P2 6.x', camPage: 'Pure Mathematics 1, pp. 186–190', wb: 'P1 Exercise 9C',
   objectives: [
     'Derive and use the linear approximation f(a + h) ≈ f(a) + h·f′(a).',
     'Estimate a root or a power without a calculator.',
@@ -1952,7 +1952,7 @@ G11_ALG.push({
   title: 'Modelling with the derivative',
   subtitle: 'Four lessons of real situations — motion, growth, cost, flow — in which the derivative is the quantity the question is really about.',
   uz: 'Algebra 11, §2.2', uzPage: 'pp. 147–168',
-  cam: 'P1 · 9.4', camPage: 'Pure Mathematics 1, pp. 186–190', wb: 'P1 Exercise 9C',
+  cam: 'AS · P1 9.4', camPage: 'Pure Mathematics 1, pp. 186–190', wb: 'P1 Exercise 9C',
   objectives: [
     'Interpret a derivative as a rate of change in a stated context, with units.',
     'Model motion with displacement, velocity and acceleration.',
@@ -2119,7 +2119,7 @@ G11_ALG.push({
   title: 'Control work 3, and work on the mistakes',
   subtitle: 'Approximation and modelling in one paper — the two topics where a missing unit costs a mark.',
   uz: 'Algebra 11, Nazorat ishi 3', uzPage: 'pp. 169–172',
-  cam: 'P1 · Chapter 9 review', camPage: 'Pure Mathematics 1, pp. 191–194', wb: 'Control paper C',
+  cam: 'AS · P1 Chapter 9 review', camPage: 'Pure Mathematics 1, pp. 191–194', wb: 'Control paper C',
   objectives: [
     'Apply linear approximation and connected rates under time.',
     'Give every answer with its units and in context.',
@@ -2278,7 +2278,7 @@ G11_ALG.push({
   title: 'The antiderivative and the indefinite integral',
   subtitle: 'Differentiation run backwards — and the constant that makes the answer a whole family of curves.',
   uz: 'Algebra 11, §2.3', uzPage: 'pp. 173–192',
-  cam: 'P1 · 10.1', camPage: 'Pure Mathematics 1, pp. 196–202', wb: 'P1 Exercise 10A',
+  cam: 'AS · P1 10.1', camPage: 'Pure Mathematics 1, pp. 196–202', wb: 'P1 Exercise 10A',
   objectives: [
     'State the definition of an antiderivative and verify one by differentiating.',
     'Explain why the antiderivative is determined only up to a constant.',
@@ -2443,7 +2443,7 @@ G11_ALG.push({
   title: 'The table of integrals and the rules of integration',
   subtitle: 'Six lessons on the standard integrals, the two linearity rules, and the one substitution that handles every bracket you will meet this year.',
   uz: 'Algebra 11, §2.4', uzPage: 'pp. 193–220',
-  cam: 'P1 · 10.2–10.3', camPage: 'Pure Mathematics 1, pp. 203–212', wb: 'P1 Exercise 10B, 10C',
+  cam: 'AS · P1 10.2–10.3', camPage: 'Pure Mathematics 1, pp. 203–212', wb: 'P1 Exercise 10B, 10C',
   objectives: [
     'Use the power rule for integration, including negative and fractional indices.',
     'Apply the constant-multiple and sum rules.',
@@ -2624,7 +2624,7 @@ G11_ALG.push({
   title: 'Control work 4, and the quarter review',
   subtitle: 'The indefinite integral in one paper, and the map that joins approximation, modelling and integration.',
   uz: 'Algebra 11, Nazorat ishi 4', uzPage: 'pp. 221–224',
-  cam: 'P1 · Chapter 10 review', camPage: 'Pure Mathematics 1, pp. 213–216', wb: 'Control paper D',
+  cam: 'AS · P1 10.1–10.3 review', camPage: 'Pure Mathematics 1, pp. 213–216', wb: 'Control paper D',
   objectives: [
     'Apply every technique of Quarter II in one assessment.',
     'Rewrite an integrand into integrable form without prompting.',
@@ -2784,7 +2784,7 @@ G11_ALG.push({
   title: 'The definite integral and the Newton–Leibniz formula',
   subtitle: 'Two limits on the integral sign, one subtraction — and the theorem that makes area computable.',
   uz: 'Algebra 11, §3.1', uzPage: 'pp. 225–242',
-  cam: 'P1 · 10.4', camPage: 'Pure Mathematics 1, pp. 217–226', wb: 'P1 Exercise 10D',
+  cam: 'AS · P1 10.4', camPage: 'Pure Mathematics 1, pp. 217–226', wb: 'P1 Exercise 10D',
   objectives: [
     'Interpret the definite integral as a limit of a sum of rectangles.',
     'State and apply the Newton–Leibniz formula.',
@@ -2946,7 +2946,7 @@ G11_ALG.push({
   title: 'Applications of the definite integral',
   subtitle: 'Areas between curves, volumes of revolution, distance from velocity — one integral, four questions.',
   uz: 'Algebra 11, §3.2', uzPage: 'pp. 243–260',
-  cam: 'P1 · 10.5–10.7', camPage: 'Pure Mathematics 1, pp. 227–240', wb: 'P1 Exercise 10E, 10F',
+  cam: 'AS · P1 10.5–10.7', camPage: 'Pure Mathematics 1, pp. 227–240', wb: 'P1 Exercise 10E, 10F',
   objectives: [
     'Find the area between a curve and the x-axis, taking sign into account.',
     'Find the area between two curves.',
@@ -3108,7 +3108,7 @@ G11_ALG.push({
   title: 'The trapezium rule',
   subtitle: 'Cambridge insert: what to do when the antiderivative does not exist — and how to judge the error.',
   uz: 'Algebra 11, §3.2 (extension)', uzPage: 'pp. 261–268',
-  cam: 'P2 · 5.7', camPage: 'Pure Mathematics 2 & 3, pp. 108–116', wb: 'P2 Exercise 5E',
+  cam: 'A Level · P2 5.7', camPage: 'Pure Mathematics 2 & 3, pp. 108–116', wb: 'P2 Exercise 5E',
   objectives: [
     'State and apply the trapezium rule with n strips.',
     'Decide whether the estimate is an over- or an under-estimate.',
@@ -3279,7 +3279,7 @@ G11_ALG.push({
   title: 'Control work 5, and work on the mistakes',
   subtitle: 'The definite integral in one paper — where the limits and the sketch carry the marks.',
   uz: 'Algebra 11, Nazorat ishi 5', uzPage: 'pp. 269–272',
-  cam: 'P1 · Chapter 10 review', camPage: 'Pure Mathematics 1, pp. 241–244', wb: 'Control paper E',
+  cam: 'AS · P1 10.4–10.7 review', camPage: 'Pure Mathematics 1, pp. 241–244', wb: 'Control paper E',
   objectives: [
     'Apply the definite-integral methods under time.',
     'Find the limits of integration from the geometry, unprompted.',
@@ -3440,7 +3440,7 @@ G11_ALG.push({
   title: 'Problems in combinatorics',
   subtitle: 'Counting without listing — the two rules, and the three formulas that come from them.',
   uz: 'Algebra 11, §4.1', uzPage: 'pp. 273–290',
-  cam: 'Extension (P&S 1)', camPage: 'Probability & Statistics 1, pp. 82–96', wb: 'Combinatorics sheet C1',
+  cam: 'P&S 1 · 5.1–5.3', camPage: 'Probability & Statistics 1, pp. 82–96', wb: 'P&S 1 Exercise 5A–5C',
   objectives: [
     'Apply the addition and multiplication rules of counting.',
     'Compute permutations, with and without repetition.',
@@ -3617,7 +3617,7 @@ G11_ALG.push({
   title: 'The binomial theorem',
   subtitle: 'Pascal’s triangle, the general term, and expanding a bracket to any power without multiplying it out.',
   uz: 'Algebra 11, §4.2', uzPage: 'pp. 291–302',
-  cam: 'P1 · 6.1–6.4', camPage: 'Pure Mathematics 1, pp. 111–121', wb: 'P1 Exercise 6A–6C',
+  cam: 'AS · P1 6.1–6.4', camPage: 'Pure Mathematics 1, pp. 111–121', wb: 'P1 Exercise 6A–6C',
   objectives: [
     'Generate Pascal’s triangle and relate it to combinations.',
     'Expand (a + b)ⁿ for a positive integer n.',
@@ -3787,7 +3787,7 @@ G11_ALG.push({
   title: 'Statistical data and its types',
   subtitle: 'Where data comes from, how it is grouped, and the four pictures that make it readable.',
   uz: 'Algebra 11, §4.3', uzPage: 'pp. 303–320',
-  cam: 'IGCSE E20.1–20.2', camPage: 'Core & Extended, pp. 380–396', wb: 'IGCSE Exercise 20.1',
+  cam: 'P&S 1 · 1.1–1.2', camPage: 'Probability & Statistics 1, pp. 1–14', wb: 'P&S 1 Exercise 1A, 1B',
   objectives: [
     'Classify data as qualitative or quantitative, discrete or continuous.',
     'Build a grouped frequency table with sensible classes.',
@@ -3960,7 +3960,7 @@ G11_ALG.push({
   title: 'Mean, median and mode; deviation and standard deviation',
   subtitle: 'One number for the centre, one for the spread — and knowing which pair to use.',
   uz: 'Algebra 11, §4.4', uzPage: 'pp. 321–338',
-  cam: 'IGCSE E20.x', camPage: 'Core & Extended, pp. 397–412', wb: 'IGCSE Exercise 20.2',
+  cam: 'P&S 1 · 2.1–3.2', camPage: 'Probability & Statistics 1, pp. 15–34', wb: 'P&S 1 Exercise 2A–3B',
   objectives: [
     'Compute the mean, median and mode of raw and of grouped data.',
     'Choose the appropriate average for a given distribution.',
@@ -4299,7 +4299,7 @@ G11_ALG.push({
   title: 'Integration by partial fractions and by parts',
   subtitle: 'Cambridge insert: two techniques that turn an impossible integral into two easy ones.',
   uz: 'Algebra 11, §3.2 (extension)', uzPage: 'pp. 357–364',
-  cam: 'P2 · 8.1–8.3', camPage: 'Pure Mathematics 2 & 3, pp. 160–178', wb: 'P2 Exercise 8A–8C',
+  cam: 'A Level · P2 8.1–8.3', camPage: 'Pure Mathematics 2 & 3, pp. 160–178', wb: 'P2 Exercise 8A–8C',
   objectives: [
     'Split a proper rational function into partial fractions.',
     'Integrate using partial fractions.',
@@ -4487,7 +4487,7 @@ G11_ALG.push({
   title: 'Control work 6, and the quarter review',
   subtitle: 'Combinatorics, the binomial theorem and statistics in one paper, then the map of the whole quarter.',
   uz: 'Algebra 11, Nazorat ishi 6', uzPage: 'pp. 365–368',
-  cam: 'IGCSE E20 review', camPage: 'Core & Extended, pp. 425–428', wb: 'Control paper F',
+  cam: 'P&S 1 review · IGCSE E16.1', camPage: 'Probability & Statistics 1, pp. 1–34 · Core & Extended, pp. 413–424', wb: 'Control paper F',
   objectives: [
     'Apply the combinatorial and statistical methods under time.',
     'Decide whether order matters, unprompted.',
@@ -4646,7 +4646,7 @@ G11_ALG.push({
   title: 'Random events and their probabilities',
   subtitle: 'Count the outcomes, count the favourable ones, and divide — but only when they are equally likely.',
   uz: 'Algebra 11, §29', uzPage: 'pp. 342–352',
-  cam: 'IGX 24.2', camPage: 'Core & Extended, pp. 629–634', wb: 'Exercise 24.2',
+  cam: 'P&S 1 · 4.1', camPage: 'Probability & Statistics 1, pp. 35–48', wb: 'P&S 1 Exercise 4A',
   objectives: [
     'Describe a trial by its sample space.',
     'Compute a probability from equally likely outcomes.',
@@ -4844,7 +4844,7 @@ G11_ALG.push({
   title: 'Complementary events, operations on events and Euler–Venn diagrams',
   subtitle: 'Events are sets; the diagram does the bookkeeping the algebra would otherwise have to.',
   uz: 'Algebra 11, §30', uzPage: 'pp. 353–364',
-  cam: 'IGX 24.3', camPage: 'Core & Extended, pp. 635–638', wb: 'Exercise 24.3',
+  cam: 'P&S 1 · 4.2', camPage: 'Probability & Statistics 1, pp. 49–54', wb: 'P&S 1 Exercise 4B',
   objectives: [
     'Form the union, intersection and complement of events.',
     'Read and fill an Euler–Venn diagram from given totals.',
@@ -5046,7 +5046,7 @@ G11_ALG.push({
   title: 'Addition and multiplication of probabilities',
   subtitle: 'Two rules, one tree, and one question to ask first: does the second event depend on the first?',
   uz: 'Algebra 11, §31', uzPage: 'pp. 365–382',
-  cam: 'IGX 24.1, 24.4', camPage: 'Core & Extended, pp. 620–628, 639–642', wb: 'Exercise 24.4',
+  cam: 'P&S 1 · 4.3–4.4', camPage: 'Probability & Statistics 1, pp. 55–68', wb: 'P&S 1 Exercise 4C, 4D',
   objectives: [
     'Use the multiplication rule for independent and for dependent events.',
     'Compute a conditional probability from data, a table or a tree.',
@@ -5260,7 +5260,7 @@ G11_ALG.push({
   title: 'The binomial and normal distributions',
   subtitle: 'Counting successes in n trials, and the bell curve that takes over when n is large.',
   uz: 'Algebra 11, §32', uzPage: 'pp. 383–406',
-  cam: 'Probability & Statistics 1', camPage: 'P&S 1, pp. 108–150', wb: 'Exercise S1–S3',
+  cam: 'P&S 1 · 7.1–8.2', camPage: 'Probability & Statistics 1, pp. 108–150', wb: 'P&S 1 Exercise 7A–8B',
   objectives: [
     'Recognise a binomial situation and state its two parameters.',
     'Compute P(X = k), the mean and the variance of a binomial distribution.',
@@ -5482,7 +5482,7 @@ G11_ALG.push({
   title: 'Control work 7, and work on the mistakes',
   subtitle: 'Probability and distributions in one paper, then the block drawn as a decision tree.',
   uz: 'Algebra 11, Nazorat ishi 7', uzPage: 'pp. 407–410',
-  cam: 'P&S 1 review', camPage: 'P&S 1, pp. 151–154', wb: 'Control paper A7',
+  cam: 'P&S 1 · Chapters 4–8 review', camPage: 'Probability & Statistics 1, pp. 151–154', wb: 'Control paper A7',
   objectives: [
     'Apply the counting, addition and multiplication rules under time.',
     'Compute a conditional probability with the right denominator.',
@@ -5654,7 +5654,7 @@ G11_ALG.push({
   title: 'Complex numbers — arithmetic, conjugates and the Argand diagram [Cambridge revision]',
   subtitle: 'One new symbol, i² = −1, and every quadratic finally has two roots.',
   uz: 'Algebra 11, qo‘shimcha bo‘lim', uzPage: 'pp. 411–428',
-  cam: 'P2/P3 11.1–11.4', camPage: 'Pure Mathematics 2 & 3, pp. 246–262', wb: 'Exercise 11A–11D',
+  cam: 'A Level · P3 11.1–11.4', camPage: 'Pure Mathematics 2 & 3, pp. 246–262', wb: 'Exercise 11A–11D',
   objectives: [
     'Add, subtract, multiply and divide complex numbers in the form a + bi.',
     'Use the conjugate to divide, and to state the roots of a real quadratic.',
@@ -5879,7 +5879,7 @@ G11_ALG.push({
   title: 'Complex numbers geometrically, and loci in the complex plane [Cambridge revision]',
   subtitle: 'Modulus is distance, argument is direction — and every locus becomes a picture.',
   uz: 'Algebra 11, qo‘shimcha bo‘lim', uzPage: 'pp. 429–440',
-  cam: 'P2/P3 11.5–11.6', camPage: 'Pure Mathematics 2 & 3, pp. 263–276', wb: 'Exercise 11E–11F',
+  cam: 'A Level · P3 11.5–11.6', camPage: 'Pure Mathematics 2 & 3, pp. 263–276', wb: 'Exercise 11E–11F',
   objectives: [
     'Interpret |z − a| as the distance from z to a.',
     'Recognise the circle, the perpendicular bisector and the half-line as loci.',
@@ -6078,7 +6078,7 @@ G11_ALG.push({
   title: 'Forming and solving differential equations [Cambridge revision]',
   subtitle: 'An equation about a rate — and the whole of the derivative and the integral put to work.',
   uz: 'Algebra 11, qo‘shimcha bo‘lim', uzPage: 'pp. 441–460',
-  cam: 'P2/P3 10.1–10.4', camPage: 'Pure Mathematics 2 & 3, pp. 224–245', wb: 'Exercise 10A–10D',
+  cam: 'A Level · P3 10.1–10.4', camPage: 'Pure Mathematics 2 & 3, pp. 224–245', wb: 'Exercise 10A–10D',
   objectives: [
     'Form a differential equation from a statement about a rate of change.',
     'Solve a separable equation, and find the general solution.',

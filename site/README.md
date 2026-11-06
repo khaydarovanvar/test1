@@ -186,6 +186,9 @@ Figures are referenced as `{{fig:parallelogram:caption text}}` and resolved from
 - *Cambridge Lower Secondary Mathematics 7, 8 and 9* — Learner's Books and Workbooks.
 - *IGCSE Mathematics Core and Extended* — Morrison & Hamshaw.
 - *Pure Mathematics 1* and *Pure Mathematics 2 & 3* — Cambridge International AS & A Level.
+- *Probability & Statistics 1* — Cambridge International AS & A Level; Pure Mathematics 1–3 has no
+  statistics or probability component, so Grade 11's data-handling and probability lessons cite this
+  book instead, by chapter.
 
 Page references point to these editions. All problems on the site are written for the course and are
 not reproduced from the textbooks.

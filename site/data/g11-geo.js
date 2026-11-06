@@ -8,7 +8,7 @@ G11_GEO.push({
   title: 'The rectangular coordinate system in space',
   subtitle: 'A third axis, and the two formulas — distance and midpoint — that everything else in the chapter is built on.',
   uz: 'Geometry 11, §1', uzPage: 'pp. 3–16',
-  cam: 'P1 · 3-D coordinates', camPage: 'Core & Extended, pp. 318–324', wb: 'Exercise 1.1',
+  cam: 'A Level · P3 9.1', camPage: 'Pure Mathematics 2 & 3, pp. 190–192', wb: 'P3 Exercise 9A',
   objectives: [
     'Plot a point from its three coordinates and read coordinates from a diagram.',
     'Use the distance formula in space.',
@@ -167,7 +167,7 @@ G11_GEO.push({
   title: 'Vectors in space and operations on them',
   subtitle: 'The same three operations as in the plane, with one extra component — and the position vector that makes coordinates and vectors the same thing.',
   uz: 'Geometry 11, §2', uzPage: 'pp. 17–28',
-  cam: 'P1 · vectors', camPage: 'Core & Extended, pp. 325–334', wb: 'Exercise 2.1',
+  cam: 'A Level · P3 9.1, 9.3', camPage: 'Pure Mathematics 2 & 3, pp. 190–196', wb: 'P3 Exercise 9A, 9C',
   objectives: [
     'Write a vector in component and in unit-vector form.',
     'Add, subtract and multiply a vector by a scalar.',
@@ -326,7 +326,7 @@ G11_GEO.push({
   title: 'Collinear and coplanar vectors',
   subtitle: 'Two tests, both from the definition: one scalar for collinearity, two for coplanarity.',
   uz: 'Geometry 11, §3', uzPage: 'pp. 29–34',
-  cam: 'P1 · vectors', camPage: 'Core & Extended, pp. 335–338', wb: 'Exercise 3.1',
+  cam: 'A Level · P3 9.3–9.4', camPage: 'Pure Mathematics 2 & 3, pp. 194–202', wb: 'P3 Exercise 9C, 9D',
   objectives: [
     'Test two vectors for parallelism.',
     'Prove three points are collinear using vectors.',
@@ -464,7 +464,7 @@ G11_GEO.push({
   title: 'The scalar product, magnitude and the angle between vectors',
   subtitle: 'One multiplication that returns a number instead of a vector — and answers every angle question in space.',
   uz: 'Geometry 11, §4', uzPage: 'pp. 35–46',
-  cam: 'P1 · scalar product', camPage: 'Core & Extended, pp. 339–348', wb: 'Exercise 4.1',
+  cam: 'A Level · P3 9.2, 9.7', camPage: 'Pure Mathematics 2 & 3, pp. 192–193, 206–208', wb: 'P3 Exercise 9B, 9G',
   objectives: [
     'Compute the scalar product from components and from magnitudes and the angle.',
     'Find the angle between two vectors.',
@@ -1231,7 +1231,7 @@ G11_GEO.push({
   title: 'The vector equation of a line',
   subtitle: 'Cambridge insert: a point and a direction give every point of a line — and intersection, parallelism and skewness all become arithmetic.',
   uz: 'Geometry 11, §8 (extension)', uzPage: 'pp. 77–84',
-  cam: 'P3 · 9.1–9.3', camPage: 'Pure Mathematics 2 & 3, pp. 190–208', wb: 'P3 Exercise 9A–9C',
+  cam: 'A Level · P3 9.1–9.3', camPage: 'Pure Mathematics 2 & 3, pp. 190–208', wb: 'P3 Exercise 9A–9C',
   objectives: [
     'Write the vector equation of a line from a point and a direction.',
     'Write it from two points, and convert to parametric form.',
@@ -1396,7 +1396,7 @@ G11_GEO.push({
   title: 'Control work, and the quarter review',
   subtitle: 'Coordinates, vectors, the scalar product, symmetry and the vector line — one paper, then the map.',
   uz: 'Geometry 11, Nazorat ishi 1', uzPage: 'pp. 85–88',
-  cam: 'P3 · Chapter 9 review', camPage: 'Pure Mathematics 2 & 3, pp. 209–212', wb: 'Control paper G1',
+  cam: 'A Level · P3 Chapter 9 review', camPage: 'Pure Mathematics 2 & 3, pp. 209–212', wb: 'Control paper G1',
   objectives: [
     'Apply the whole quarter in one assessment.',
     'Choose between the coordinate and the vector method.',
@@ -3409,7 +3409,7 @@ G11_GEO.push({
   title: 'Arc, sector and the net of a cone',
   subtitle: 'Cambridge insert: the radian formulas of Grade 10, used to build a cone from a flat sheet.',
   uz: 'Geometry 11, §17 (extension)', uzPage: 'pp. 191–194',
-  cam: 'P1 · 4.2–4.3', camPage: 'Pure Mathematics 1, pp. 86–95', wb: 'P1 Exercise 4B',
+  cam: 'AS · P1 4.2–4.3', camPage: 'Pure Mathematics 1, pp. 86–95', wb: 'P1 Exercise 4B',
   objectives: [
     'Use s = rθ and A = ½r²θ in a practical construction.',
     'Find the sector angle needed to build a cone of given dimensions.',
@@ -5138,7 +5138,7 @@ G11_GEO.push({
   title: 'Optimisation of a container [Cambridge insert]',
   subtitle: 'One constraint, one variable, one derivative — and the cheapest tin in the shop.',
   uz: 'Geometry 11, amaliy masalalar', uzPage: 'pp. 291–300',
-  cam: 'P1 9.3', camPage: 'Pure Mathematics 1, pp. 196–204', wb: 'Exercise 9C',
+  cam: 'AS · P1 9.3', camPage: 'Pure Mathematics 1, pp. 196–204', wb: 'Exercise 9C',
   objectives: [
     'Form an expression for the quantity to be optimised.',
     'Use the constraint to reduce it to one variable.',
@@ -5756,7 +5756,7 @@ G11_GEO.push({
   title: 'Revision — coordinates and vectors in space [Cambridge revision]',
   subtitle: 'Three numbers for a point, one product for every angle.',
   uz: 'Geometry 11, Chapter I review', uzPage: 'pp. 315–324',
-  cam: 'P2/P3 9.1–9.7', camPage: 'Pure Mathematics 2 & 3, pp. 190–223', wb: 'Exercise 9A–9G',
+  cam: 'A Level · P3 9.1–9.7', camPage: 'Pure Mathematics 2 & 3, pp. 190–223', wb: 'P3 Exercise 9A–9G',
   objectives: [
     'Compute distances, midpoints and vectors in three dimensions.',
     'Use the scalar product to find an angle and to test perpendicularity.',

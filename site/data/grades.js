@@ -131,7 +131,8 @@ var GRADE_INFO = {
     streams: [
       ['uz',  'Special class', 'Algebra · 3 h a week',  '102 hours. Quarters 27 · 21 · 30 · 24.', '<em>Algebra and Calculus 11</em>'],
       ['uz',  'Special class', 'Geometry · 2 h a week', '68 hours. Quarters 18 · 14 · 20 · 16.',  '<em>Geometry 11</em>'],
-      ['cam', 'Cambridge layer', 'AS &amp; A Level Pure 1–2', 'Mapped lesson by lesson, with 17 + 16 inserts.', 'Pure Mathematics 1 · Pure Mathematics 2 &amp; 3']
+      ['cam', 'Cambridge layer', 'AS &amp; A Level Pure 1–3', 'Mapped lesson by lesson, with 17 + 16 inserts.', 'Pure Mathematics 1 · Pure Mathematics 2 &amp; 3'],
+      ['cam', 'Cambridge layer', 'IGCSE Extended · P&amp;S 1', 'Where Pure 1–3 has no syllabus of its own: 3-D mensuration from IGCSE Extended, statistics and probability from Probability &amp; Statistics 1.', 'IGCSE Mathematics Core &amp; Extended · Probability &amp; Statistics 1']
     ],
     quarters: [
       { q: 1, label: 'Quarter I',
@@ -141,10 +142,10 @@ var GRADE_INFO = {
         alg: 'Approximation, modelling with the derivative, and the indefinite integral.',
         geo: 'Polyhedra, prisms and cylinders — surface area and volume.' },
       { q: 3, label: 'Quarter III',
-        alg: 'The definite integral, combinatorics and statistics.',
+        alg: 'The definite integral, then combinatorics and statistics from the Probability &amp; Statistics 1 syllabus.',
         geo: 'Pyramids, cones and the sphere.' },
       { q: 4, label: 'Quarter IV',
-        alg: 'Probability and distributions, then complex numbers and differential equations, and the annual paper.',
+        alg: 'Probability and distributions (Probability &amp; Statistics 1), then complex numbers and differential equations from Pure 3, and the annual paper.',
         geo: 'Mensuration in context, optimisation, test practice and the final revision.' }
     ]
   }
