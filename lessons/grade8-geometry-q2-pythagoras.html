@@ -1,0 +1,817 @@
+<title>Pythagoras' Theorem</title>
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap">
+<style>
+/* ============================================================
+   DESIGN PLAN
+   Layout: full-height "blueprint sheets" the teacher pages through
+   live, numbered like engineering drawings (01–05), because the
+   lesson genuinely is that sequence: see it, prove it, extend it
+   into 3D, use it.
+   Deliberately single dark theme — a lit blueprint/chalkboard,
+   which only reads correctly dark.
+   ============================================================ */
+:root{
+  --bg:#0b1130;
+  --bg-2:#0e1638;
+  --panel:#141c44;
+  --panel-2:#1a2352;
+  --ink:#eef0fb;
+  --ink-dim:#9aa3d6;
+  --ink-faint:#6672a8;
+  --line:rgba(170,182,255,.16);
+  --line-soft:rgba(170,182,255,.08);
+  --amber:#f2b544;
+  --amber-ink:#241a04;
+  --teal:#56e3c4;
+  --coral:#ff7d6b;
+  --font-display:'Space Grotesk',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+  overflow:hidden;
+}
+img{max-width:100%}
+[hidden]{display:none!important}
+::selection{background:var(--amber);color:var(--amber-ink)}
+
+/* blueprint grid texture, used on every sheet */
+.grid-bg{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(var(--line-soft) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+  background-size:40px 40px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 35%,#000 55%,transparent 95%);
+          mask-image:radial-gradient(ellipse at 50% 35%,#000 55%,transparent 95%);
+}
+
+h1,h2,h3{font-family:var(--font-display);margin:0;text-wrap:balance;letter-spacing:-.01em}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.eyebrow{
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--amber);font-weight:600;
+}
+
+/* ---------------- deck / paging ---------------- */
+.deck{
+  height:100vh;height:100dvh;
+  overflow-y:auto;overflow-x:hidden;
+  scroll-snap-type:y mandatory;
+  scroll-behavior:smooth;
+}
+.sheet{
+  position:relative;
+  min-height:100vh;min-height:100dvh;
+  scroll-snap-align:start;scroll-snap-stop:always;
+  display:flex;flex-direction:column;
+  padding:clamp(20px,4vw,56px) max(16px,4vw);
+  padding-top:max(20px,env(safe-area-inset-top,0px));
+  padding-bottom:max(20px,env(safe-area-inset-bottom,0px));
+}
+.sheet-head{
+  position:relative;z-index:2;
+  display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:clamp(14px,3vw,28px);
+  flex-wrap:wrap;
+}
+.sheet-head .tag{font-family:var(--font-mono);font-size:12px;color:var(--ink-faint);letter-spacing:.08em}
+.sheet-body{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;min-height:0}
+
+/* fixed chrome */
+.nav-dots{
+  position:fixed;right:max(14px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);
+  z-index:20;display:flex;flex-direction:column;gap:10px;
+}
+.nav-dots button{
+  width:9px;height:9px;border-radius:50%;border:1px solid var(--ink-faint);
+  background:transparent;padding:0;cursor:pointer;transition:background .2s,border-color .2s,transform .2s;
+}
+.nav-dots button[aria-current="true"]{background:var(--amber);border-color:var(--amber);transform:scale(1.3)}
+.progress{
+  position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:max(14px,env(safe-area-inset-bottom,0px));
+  z-index:20;font-family:var(--font-mono);font-size:12px;color:var(--ink-faint);letter-spacing:.08em;
+}
+.progress b{color:var(--ink)}
+.arrows{
+  position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:max(14px,env(safe-area-inset-bottom,0px));
+  z-index:20;display:flex;gap:8px;
+}
+.arrow-btn{
+  width:38px;height:38px;border-radius:50%;border:1px solid var(--line);
+  background:var(--panel);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .15s,border-color .15s;
+}
+.arrow-btn:hover{border-color:var(--amber)}
+.arrow-btn:disabled{opacity:.3;cursor:default}
+.arrow-btn svg{width:16px;height:16px}
+
+/* ---------------- shared bits ---------------- */
+.title-xl{font-size:clamp(34px,7vw,74px);line-height:.98;font-weight:700}
+.lede{font-family:var(--font-body);color:var(--ink-dim);font-size:clamp(14px,1.6vw,18px);max-width:62ch;line-height:1.5}
+.eq-hero{
+  font-family:var(--font-mono);font-weight:700;font-size:clamp(28px,5vw,46px);
+  color:var(--amber);letter-spacing:.01em;
+}
+.btn{
+  font-family:var(--font-mono);font-size:13px;font-weight:600;letter-spacing:.04em;
+  text-transform:uppercase;border-radius:999px;border:1px solid var(--line);
+  background:var(--panel);color:var(--ink);padding:11px 20px;cursor:pointer;
+  transition:border-color .15s,background .15s,transform .1s;
+}
+.btn:hover{border-color:var(--amber)}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--amber);color:var(--amber-ink);border-color:var(--amber)}
+.btn.primary:hover{filter:brightness(1.07)}
+.hint{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);letter-spacing:.04em}
+
+.control-row{display:flex;flex-wrap:wrap;gap:clamp(16px,3vw,36px);align-items:flex-end}
+.slider-field{display:flex;flex-direction:column;gap:6px;min-width:150px}
+.slider-field label{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;display:flex;gap:8px;align-items:center}
+.swatch{width:10px;height:10px;border-radius:3px;display:inline-block}
+.slider-field output{font-weight:700}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:3px;
+  background:var(--line);outline:none;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:18px;height:18px;border-radius:50%;
+  background:var(--amber);border:3px solid var(--bg);cursor:pointer;box-shadow:0 0 0 1px var(--amber);
+}
+input[type=range]::-moz-range-thumb{
+  width:18px;height:18px;border-radius:50%;background:var(--amber);border:3px solid var(--bg);cursor:pointer;
+}
+
+.stage-wrap{
+  flex:1;min-height:0;display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(14px,3vw,36px);
+  align-items:stretch;
+}
+@media (max-width:860px){.stage-wrap{grid-template-columns:1fr}}
+
+.panel{
+  background:var(--panel);border:1px solid var(--line);border-radius:18px;
+  padding:clamp(14px,2.4vw,22px);display:flex;flex-direction:column;gap:14px;min-width:0;
+}
+.readout-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.readout{
+  background:var(--panel-2);border-radius:12px;padding:10px 12px;border:1px solid var(--line-soft);
+}
+.readout .k{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);letter-spacing:.06em}
+.readout .v{font-family:var(--font-mono);font-weight:700;font-size:clamp(17px,2.4vw,24px);font-variant-numeric:tabular-nums}
+
+svg text{font-family:var(--font-mono)}
+.svg-box{flex:1;min-height:220px;display:flex}
+.svg-box svg{width:100%;height:100%}
+
+/* balance bars, sheet 02 */
+.bars{display:flex;align-items:flex-end;gap:18px;height:120px;padding:0 6px}
+.bar-col{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1}
+.bar-stack{width:100%;max-width:64px;height:92px;display:flex;flex-direction:column-reverse;border-radius:6px;overflow:hidden;background:var(--panel-2)}
+.bar-seg{width:100%;transition:height .5s cubic-bezier(.4,0,.2,1)}
+.bar-label{font-family:var(--font-mono);font-size:11px;color:var(--ink-dim);text-align:center}
+
+/* sheet 03 proof stage */
+.tri{fill:rgba(238,240,251,.14);stroke:var(--ink);stroke-width:1.5;vector-effect:non-scaling-stroke;transition:transform 1.15s cubic-bezier(.65,0,.35,1)}
+.tri.t0{fill:rgba(242,181,68,.3)}
+.tri.t1{fill:rgba(86,227,196,.3)}
+.tri.t2{fill:rgba(255,125,107,.3)}
+.tri.t3{fill:rgba(238,240,251,.2)}
+.sqC{fill:var(--coral);fill-opacity:.5;stroke:var(--coral);stroke-width:1.5;vector-effect:non-scaling-stroke;transition:opacity .8s ease}
+.sqAB{fill-opacity:.45;stroke-width:1.5;vector-effect:non-scaling-stroke;transition:opacity .8s ease .25s;opacity:0}
+.sqA{fill:var(--amber);stroke:var(--amber)}
+.sqB{fill:var(--teal);stroke:var(--teal)}
+.stage.proved .sqC{opacity:0}
+.stage.proved .sqAB{opacity:.45}
+.outline{fill:none;stroke:var(--line);stroke-width:1.5;vector-effect:non-scaling-stroke;stroke-dasharray:4 4}
+.steps{display:flex;flex-direction:column;gap:10px;font-family:var(--font-mono);font-size:clamp(14px,1.8vw,19px)}
+.step{opacity:0;transform:translateY(6px);transition:opacity .5s ease,transform .5s ease;color:var(--ink-dim)}
+.step.show{opacity:1;transform:none;color:var(--ink)}
+.step.final{color:var(--amber);font-weight:700}
+
+/* sheet 04 cube */
+.scene{perspective:1100px;flex:1;display:flex;align-items:center;justify-content:center;min-height:260px;touch-action:none;cursor:grab}
+.scene:active{cursor:grabbing}
+.cube{position:relative;transform-style:preserve-3d;will-change:transform}
+.face{
+  position:absolute;top:50%;left:50%;border:1px solid rgba(238,240,251,.5);
+  background:rgba(86,227,196,.10);
+}
+.face.top,.face.bottom{background:rgba(242,181,68,.14)}
+.face.front,.face.back{background:rgba(255,125,107,.10)}
+.edge3d{position:absolute;top:50%;left:50%;border-radius:2px;transform-origin:center;pointer-events:none}
+.edge3d.base{background:var(--amber);box-shadow:0 0 10px rgba(242,181,68,.6)}
+.edge3d.body{background:var(--coral);box-shadow:0 0 10px rgba(255,125,107,.7)}
+.inset-figure{width:100%;max-width:280px}
+
+/* sheet 05 ladder */
+.ladder-wrap{position:relative;flex:1;min-height:240px;display:flex}
+.triples{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{
+  font-family:var(--font-mono);font-size:12px;border:1px solid var(--line);border-radius:999px;
+  padding:6px 12px;color:var(--ink-dim);transition:border-color .5s,color .5s,background .5s;
+}
+.chip.pulse{border-color:var(--amber);color:var(--amber-ink);background:var(--amber)}
+
+.foot-credit{font-family:var(--font-mono);font-size:12px;color:var(--ink-faint);letter-spacing:.04em}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+@media (max-width:640px){
+  .nav-dots{display:none}
+  .readout-grid{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+
+<div class="deck" id="deck">
+
+  <!-- ============ SHEET 01 — COVER ============ -->
+  <section class="sheet" id="s1" style="justify-content:center">
+    <div class="grid-bg"></div>
+    <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:18px;max-width:900px">
+      <span class="eyebrow">Grade 8 · Geometry · Quarter 2 · Lessons 20–21</span>
+      <h1 class="title-xl">Pythagoras'<br>Theorem</h1>
+      <div class="eq-hero">a&sup2; + b&sup2; = c&sup2;</div>
+      <p class="lede">The most famous relation in mathematics — and three ways of seeing why it has to be true: built from squares, proved by rearranging them, and carried into three dimensions.</p>
+      <div style="display:flex;align-items:center;gap:14px;margin-top:8px">
+        <svg width="88" height="64" viewBox="0 0 88 64" aria-hidden="true">
+          <polygon points="6,58 70,58 6,10" fill="none" stroke="#f2b544" stroke-width="2"/>
+          <rect x="6" y="10" width="10" height="10" fill="none" stroke="#eef0fb" stroke-width="1.4"/>
+        </svg>
+        <span class="foot-credit">Anvarbek&nbsp;Khaydarov · Mathematics teacher</span>
+      </div>
+      <div class="hint" style="margin-top:12px">↓ scroll, swipe, or press the arrow keys</div>
+    </div>
+  </section>
+
+  <!-- ============ SHEET 02 — SEE IT ============ -->
+  <section class="sheet" id="s2">
+    <div class="grid-bg"></div>
+    <div class="sheet-head">
+      <h2 style="font-size:clamp(20px,3.4vw,32px)">See it</h2>
+      <span class="tag">01 · SQUARES ON EACH SIDE</span>
+    </div>
+    <div class="sheet-body">
+      <div class="control-row" style="margin-bottom:16px">
+        <div class="slider-field">
+          <label><span class="swatch" style="background:var(--amber)"></span> leg a <output id="aVal">6</output></label>
+          <input type="range" id="aSlide" min="3" max="10" value="6" aria-label="Length of leg a">
+        </div>
+        <div class="slider-field">
+          <label><span class="swatch" style="background:var(--teal)"></span> leg b <output id="bVal">8</output></label>
+          <input type="range" id="bSlide" min="3" max="10" value="8" aria-label="Length of leg b">
+        </div>
+        <span class="hint">or drag the two handles on the triangle below</span>
+      </div>
+      <div class="stage-wrap">
+        <div class="panel"><div class="svg-box"><svg id="svgSquares" viewBox="0 0 100 100"></svg></div></div>
+        <div class="panel" style="justify-content:flex-start;gap:28px">
+          <div class="readout-grid">
+            <div class="readout"><div class="k">a&sup2;</div><div class="v mono" id="outA2" style="color:var(--amber)">—</div></div>
+            <div class="readout"><div class="k">b&sup2;</div><div class="v mono" id="outB2" style="color:var(--teal)">—</div></div>
+            <div class="readout"><div class="k">c&sup2;</div><div class="v mono" id="outC2" style="color:var(--coral)">—</div></div>
+          </div>
+          <div class="readout"><div class="k">hypotenuse c</div><div class="v mono" id="outC" style="color:var(--ink);font-size:clamp(24px,3.4vw,34px)">—</div></div>
+          <div>
+            <div class="bar-label" style="margin-bottom:8px">a² + b² always equals c²</div>
+            <div class="bars">
+              <div class="bar-col">
+                <div class="bar-stack"><div class="bar-seg" id="barA" style="background:var(--amber)"></div><div class="bar-seg" id="barB" style="background:var(--teal)"></div></div>
+                <div class="bar-label">a² + b²</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-stack"><div class="bar-seg" id="barC" style="background:var(--coral)"></div></div>
+                <div class="bar-label">c²</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHEET 03 — PROVE IT ============ -->
+  <section class="sheet" id="s3">
+    <div class="grid-bg"></div>
+    <div class="sheet-head">
+      <h2 style="font-size:clamp(20px,3.4vw,32px)">Prove it</h2>
+      <span class="tag">02 · THE REARRANGEMENT</span>
+    </div>
+    <div class="sheet-body">
+      <div class="control-row" style="margin-bottom:16px;justify-content:space-between">
+        <p class="lede" style="margin:0">Four copies of the same triangle, inside a square of side a + b. Watch where the leftover area goes.</p>
+        <button class="btn primary" id="proveBtn">Rearrange →</button>
+      </div>
+      <div class="stage-wrap">
+        <div class="panel"><div class="svg-box"><svg id="svgProof" class="stage" viewBox="0 0 100 100"></svg></div></div>
+        <div class="panel" style="justify-content:center">
+          <div class="steps">
+            <div class="step" id="st1">(a + b)² &nbsp;=&nbsp; 4 · <span class="mono">½</span>ab &nbsp;+&nbsp; c²</div>
+            <div class="step" id="st2">a² + 2ab + b² &nbsp;=&nbsp; 2ab + c²</div>
+            <div class="step final" id="st3">a² + b² &nbsp;=&nbsp; c²</div>
+          </div>
+          <div class="hint" style="margin-top:18px">left over in the tilted square: c² &nbsp;·&nbsp; left over in the two corners: a² + b²</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHEET 04 — INTO 3D ============ -->
+  <section class="sheet" id="s4">
+    <div class="grid-bg"></div>
+    <div class="sheet-head">
+      <h2 style="font-size:clamp(20px,3.4vw,32px)">Into 3D</h2>
+      <span class="tag">03 · THE SPACE DIAGONAL</span>
+    </div>
+    <div class="sheet-body">
+      <div class="control-row" style="margin-bottom:12px">
+        <div class="slider-field"><label>length l <output id="lVal">5</output></label><input type="range" id="lSlide" min="2" max="9" value="5"></div>
+        <div class="slider-field"><label>width w <output id="wVal">4</output></label><input type="range" id="wSlide" min="2" max="9" value="4"></div>
+        <div class="slider-field"><label>height h <output id="hVal">3</output></label><input type="range" id="hSlide" min="2" max="9" value="3"></div>
+        <span class="hint">drag the box to turn it</span>
+      </div>
+      <div class="stage-wrap">
+        <div class="panel"><div class="scene" id="scene"><div class="cube" id="cube"></div></div></div>
+        <div class="panel" style="justify-content:flex-start;gap:28px">
+          <svg class="inset-figure" viewBox="0 0 220 150" aria-hidden="true">
+            <polygon points="10,120 150,120 190,70 50,70" fill="none" stroke="#6672a8" stroke-width="1.2" stroke-dasharray="3 3"/>
+            <line x1="10" y1="120" x2="150" y2="120" stroke="#f2b544" stroke-width="2"/>
+            <line x1="150" y1="120" x2="190" y2="70" stroke="#56e3c4" stroke-width="2"/>
+            <line x1="10" y1="120" x2="190" y2="70" stroke="#eef0fb" stroke-width="1.6" stroke-dasharray="2 3"/>
+            <text x="78" y="134" fill="#f2b544" font-size="10">l</text>
+            <text x="176" y="98" fill="#56e3c4" font-size="10">w</text>
+            <text x="90" y="86" fill="#eef0fb" font-size="10">d&#8321; = &radic;(l&sup2;+w&sup2;)</text>
+            <line x1="190" y1="70" x2="190" y2="15" stroke="#eef0fb" stroke-width="1.2" stroke-dasharray="3 3"/>
+            <line x1="10" y1="120" x2="190" y2="15" stroke="#ff7d6b" stroke-width="2.2"/>
+            <text x="194" y="45" fill="#eef0fb" font-size="10">h</text>
+            <text x="30" y="60" fill="#ff7d6b" font-size="10">d = &radic;(d&#8321;&sup2;+h&sup2;) = &radic;(l&sup2;+w&sup2;+h&sup2;)</text>
+          </svg>
+          <div class="readout-grid" style="margin-top:10px">
+            <div class="readout"><div class="k">base diagonal d₁</div><div class="v mono" id="outD1" style="color:var(--amber)">—</div></div>
+            <div class="readout"><div class="k">space diagonal d</div><div class="v mono" id="outD" style="color:var(--coral)">—</div></div>
+            <div class="readout"><div class="k">d² = l²+w²+h²</div><div class="v mono" id="outD2" style="color:var(--ink)">—</div></div>
+          </div>
+          <span class="hint" style="margin-top:auto">the base diagonal and a vertical edge make one more right triangle</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHEET 05 — TRY IT ============ -->
+  <section class="sheet" id="s5">
+    <div class="grid-bg"></div>
+    <div class="sheet-head">
+      <h2 style="font-size:clamp(20px,3.4vw,32px)">Try it</h2>
+      <span class="tag">04 · THE LADDER PROBLEM</span>
+    </div>
+    <div class="sheet-body">
+      <div class="control-row" style="margin-bottom:10px">
+        <div class="slider-field"><label>ladder length <output id="lenVal">10</output> m</label><input type="range" id="lenSlide" min="6" max="15" value="10"></div>
+        <div class="slider-field"><label>foot from wall <output id="footVal">6</output> m</label><input type="range" id="footSlide" min="2" max="14" value="6"></div>
+      </div>
+      <div class="stage-wrap" style="grid-template-columns:1.1fr 1fr">
+        <div class="panel"><div class="ladder-wrap"><svg id="svgLadder" viewBox="0 0 160 120" style="width:100%;height:100%"></svg></div></div>
+        <div class="panel" style="justify-content:flex-start;gap:28px">
+          <div class="readout-grid" style="grid-template-columns:1fr">
+            <div class="readout"><div class="k">how high up the wall</div><div class="v mono" id="outHeight" style="color:var(--amber);font-size:clamp(28px,4vw,40px)">—</div></div>
+          </div>
+          <div>
+            <div class="hint" style="margin-bottom:10px">spot the triple — these come up again and again</div>
+            <div class="triples" id="triples">
+              <span class="chip" data-t="3,4,5">3 · 4 · 5</span>
+              <span class="chip" data-t="5,12,13">5 · 12 · 13</span>
+              <span class="chip" data-t="8,15,17">8 · 15 · 17</span>
+              <span class="chip" data-t="7,24,25">7 · 24 · 25</span>
+              <span class="chip" data-t="20,21,29">20 · 21 · 29</span>
+            </div>
+          </div>
+          <div class="eq-hero" style="font-size:clamp(22px,3.4vw,34px)">a² + b² = c²</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="nav-dots" id="navDots"></div>
+<div class="progress"><b id="progNum">01</b> / 05</div>
+<div class="arrows">
+  <button class="arrow-btn" id="prevBtn" aria-label="Previous sheet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+  <button class="arrow-btn" id="nextBtn" aria-label="Next sheet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></button>
+</div>
+
+<script>
+(function(){
+"use strict";
+var SVGNS = "http://www.w3.org/2000/svg";
+function el(tag, attrs){
+  var n = document.createElementNS(SVGNS, tag);
+  for (var k in attrs) n.setAttribute(k, attrs[k]);
+  return n;
+}
+function pathFrom(pts, close){
+  var d = "M " + pts.map(function(p){return p[0]+" "+p[1]}).join(" L ");
+  if (close !== false) d += " Z";
+  return d;
+}
+
+/* ---------------- paging ---------------- */
+var deck = document.getElementById("deck");
+var sheets = Array.prototype.slice.call(document.querySelectorAll(".sheet"));
+var dotsWrap = document.getElementById("navDots");
+var progNum = document.getElementById("progNum");
+var prevBtn = document.getElementById("prevBtn");
+var nextBtn = document.getElementById("nextBtn");
+var current = 0;
+
+sheets.forEach(function(s, i){
+  var b = document.createElement("button");
+  b.setAttribute("aria-label", "Go to sheet " + (i + 1));
+  b.addEventListener("click", function(){ goTo(i); });
+  dotsWrap.appendChild(b);
+});
+var dotEls = Array.prototype.slice.call(dotsWrap.children);
+
+function goTo(i){
+  i = Math.max(0, Math.min(sheets.length - 1, i));
+  sheets[i].scrollIntoView({ behavior: "smooth", block: "start" });
+}
+function setActive(i){
+  current = i;
+  dotEls.forEach(function(d, j){ d.setAttribute("aria-current", j === i ? "true" : "false"); });
+  progNum.textContent = String(i + 1).padStart(2, "0");
+  prevBtn.disabled = i === 0;
+  nextBtn.disabled = i === sheets.length - 1;
+}
+setActive(0);
+
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if (e.isIntersecting && e.intersectionRatio > 0.55){
+      setActive(sheets.indexOf(e.target));
+    }
+  });
+}, { root: deck, threshold: [0, .55, 1] });
+sheets.forEach(function(s){ io.observe(s); });
+
+prevBtn.addEventListener("click", function(){ goTo(current - 1); });
+nextBtn.addEventListener("click", function(){ goTo(current + 1); });
+window.addEventListener("keydown", function(e){
+  var tag = (document.activeElement && document.activeElement.tagName) || "";
+  if (tag === "INPUT") return;
+  if (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " "){ e.preventDefault(); goTo(current + 1); }
+  if (e.key === "ArrowUp" || e.key === "PageUp"){ e.preventDefault(); goTo(current - 1); }
+});
+
+/* =================================================================
+   SHEET 02 — squares built on each side of the triangle
+   Right angle at the origin: P0=(0,0), P1=(a,0), P2=(0,b)
+   ================================================================= */
+var aSlide = document.getElementById("aSlide"), bSlide = document.getElementById("bSlide");
+var aVal = document.getElementById("aVal"), bVal = document.getElementById("bVal");
+var svgSquares = document.getElementById("svgSquares");
+var outA2 = document.getElementById("outA2"), outB2 = document.getElementById("outB2"),
+    outC2 = document.getElementById("outC2"), outC = document.getElementById("outC");
+var barA = document.getElementById("barA"), barB = document.getElementById("barB"), barC = document.getElementById("barC");
+
+var state = { a: 6, b: 8 };
+
+function squareFigure(a, b){
+  var c = Math.sqrt(a*a + b*b);
+  var P0 = [0,0], P1 = [a,0], P2 = [0,b];
+  var sqA = [P0, P1, [a,-a], [0,-a]];               // below the base leg
+  var sqB = [P0, P2, [-b,b], [-b,0]];                // left of the vertical leg
+  var sqC = [P1, P2, [b, a+b], [a+b, a]];            // outward from the hypotenuse
+  return { P0: P0, P1: P1, P2: P2, sqA: sqA, sqB: sqB, sqC: sqC, c: c };
+}
+
+/* The whole figure is built directly in "svg-y-is-flipped" coordinates
+   (Y(y) = -y) rather than through a nested transform group: the group-based
+   flip needed a second, compensating flip on every label, which is exactly
+   the kind of thing that's easy to get wrong twice over. This way there is
+   only one flip, applied once, to every point. */
+function Y(p){ return [p[0], -p[1]]; }
+function pts(arr){ return arr.map(Y).map(function(p){ return p.join(","); }).join(" "); }
+
+function renderSquares(){
+  var a = state.a, b = state.b;
+  var fig = squareFigure(a, b);
+  var pad = Math.max(a, b) * 0.35 + 1.8;
+  var minX = -b - pad, maxX = a + b + pad, minY = -a - pad, maxY = a + b + pad;
+  var w = maxX - minX, h = maxY - minY;
+  svgSquares.setAttribute("viewBox", minX + " " + (-maxY) + " " + w + " " + h);
+  svgSquares.innerHTML = "";
+
+  function square(p, fill){
+    return el("polygon", { points: pts(p), fill: fill, "fill-opacity": .5,
+      stroke: fill, "stroke-width": 1.6, "vector-effect": "non-scaling-stroke" });
+  }
+  svgSquares.appendChild(square(fig.sqA, "var(--amber)"));
+  svgSquares.appendChild(square(fig.sqB, "var(--teal)"));
+  svgSquares.appendChild(square(fig.sqC, "var(--coral)"));
+  svgSquares.appendChild(el("polygon", { points: pts([fig.P0, fig.P1, fig.P2]),
+    fill: "rgba(238,240,251,.92)", stroke: "var(--ink)", "stroke-width": 1.2,
+    "vector-effect": "non-scaling-stroke" }));
+
+  function centerLabel(p, text){
+    var cx = p.reduce(function(s,q){return s+q[0];},0) / p.length;
+    var cy = p.reduce(function(s,q){return s+q[1];},0) / p.length;
+    var sp = Y([cx, cy]);
+    var t = el("text", { x: sp[0], y: sp[1], fill: "var(--ink)",
+      "font-size": Math.max(a,b)*.22 + 1.8, "font-weight": 700,
+      "text-anchor": "middle", "dominant-baseline": "central" });
+    t.textContent = text;
+    return t;
+  }
+  svgSquares.appendChild(centerLabel(fig.sqA, a*a));
+  svgSquares.appendChild(centerLabel(fig.sqB, b*b));
+  svgSquares.appendChild(centerLabel(fig.sqC, a*a+b*b));
+
+  var r = Math.max(a,b)*.09 + 2.2;
+  var hP1 = Y(fig.P1), hP2 = Y(fig.P2);
+  var hA = el("circle", { cx: hP1[0], cy: hP1[1], r: r, fill: "var(--amber)",
+    stroke: "var(--bg)", "stroke-width": 2, "vector-effect": "non-scaling-stroke",
+    style: "cursor:ew-resize" });
+  var hB = el("circle", { cx: hP2[0], cy: hP2[1], r: r, fill: "var(--teal)",
+    stroke: "var(--bg)", "stroke-width": 2, "vector-effect": "non-scaling-stroke",
+    style: "cursor:ns-resize" });
+  svgSquares.appendChild(hA); svgSquares.appendChild(hB);
+  makeDraggable(hA, function(pt){ state.a = clamp(Math.round(pt.x), 3, 10); syncA(); renderAll2and3(); });
+  makeDraggable(hB, function(pt){ state.b = clamp(Math.round(pt.y), 3, 10); syncB(); renderAll2and3(); });
+
+  outA2.textContent = a*a; outB2.textContent = b*b; outC2.textContent = a*a+b*b;
+  outC.textContent = fig.c.toFixed(2);
+  var maxBar = 200;
+  barA.style.height = (a*a/maxBar*92) + "px";
+  barB.style.height = (b*b/maxBar*92) + "px";
+  barC.style.height = ((a*a+b*b)/maxBar*92) + "px";
+}
+function clamp(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
+function makeDraggable(node, onMove){
+  node.addEventListener("pointerdown", function(e){
+    node.setPointerCapture(e.pointerId);
+    function move(ev){
+      var svg = node.ownerSVGElement;
+      var pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY;
+      var loc = pt.matrixTransform(svg.getScreenCTM().inverse());
+      onMove({ x: loc.x, y: -loc.y });
+    }
+    function up(){ window.removeEventListener("pointermove", move); window.removeEventListener("pointerup", up); }
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerup", up);
+  });
+}
+function syncA(){ aSlide.value = state.a; aVal.textContent = state.a; }
+function syncB(){ bSlide.value = state.b; bVal.textContent = state.b; }
+
+aSlide.addEventListener("input", function(){ state.a = +aSlide.value; aVal.textContent = state.a; renderAll2and3(); });
+bSlide.addEventListener("input", function(){ state.b = +bSlide.value; bVal.textContent = state.b; renderAll2and3(); });
+
+/* =================================================================
+   SHEET 03 — the rearrangement proof
+   ================================================================= */
+var svgProof = document.getElementById("svgProof");
+var proveBtn = document.getElementById("proveBtn");
+var proved = false;
+var st1 = document.getElementById("st1"), st2 = document.getElementById("st2"), st3 = document.getElementById("st3");
+
+function fitRigid(src, dst){
+  var p0=src[0],p1=src[1],p2=src[2], q0=dst[0],q1=dst[1],q2=dst[2];
+  var ux=p1[0]-p0[0], uy=p1[1]-p0[1], vx=p2[0]-p0[0], vy=p2[1]-p0[1];
+  var det = ux*vy - uy*vx;
+  var invA=vy/det, invB=-vx/det, invC=-uy/det, invD=ux/det;
+  var sx=q1[0]-q0[0], sy=q1[1]-q0[1], tx2=q2[0]-q0[0], ty2=q2[1]-q0[1];
+  var m11=sx*invA+tx2*invC, m12=sx*invB+tx2*invD;
+  var m21=sy*invA+ty2*invC, m22=sy*invB+ty2*invD;
+  var tx=q0[0]-(m11*p0[0]+m12*p0[1]), ty=q0[1]-(m21*p0[0]+m22*p0[1]);
+  return [m11,m21,m12,m22,tx,ty];
+}
+
+var proofNodes = null;
+function buildProofShapes(a, b){
+  var s = a + b;
+  var A = [
+    [[0,0],[a,0],[0,b]],
+    [[s,0],[s,a],[a,0]],
+    [[s,s],[b,s],[s,a]],
+    [[0,s],[0,b],[b,s]]
+  ];
+  var B = [
+    [[s,b],[s,s],[a,b]],
+    [[a,s],[a,b],[s,s]],
+    [[a,0],[0,0],[a,b]],
+    [[0,b],[a,b],[0,0]]
+  ];
+  var sqC = [[a,0],[s,a],[b,s],[0,b]];
+  var sqA = [[0,b],[a,b],[a,s],[0,s]];
+  var sqB = [[a,0],[s,0],[s,b],[a,b]];
+  return { s: s, A: A, B: B, sqC: sqC, sqA: sqA, sqB: sqB };
+}
+
+function renderProof(){
+  var a = state.a, b = state.b, s = a + b;
+  var fig = buildProofShapes(a, b);
+  var pad = s * 0.08;
+  svgProof.setAttribute("viewBox", (-pad) + " " + (-pad) + " " + (s + 2*pad) + " " + (s + 2*pad));
+  svgProof.innerHTML = "";
+  var g = el("g", { class: "stage" + (proved ? " proved" : ""), transform: "scale(1,-1) translate(0,-" + s + ")" });
+  svgProof.appendChild(g);
+
+  g.appendChild(el("rect", { x:0, y:0, width:s, height:s, class:"outline" }));
+  var sqC = el("polygon", { points: fig.sqC.map(p=>p.join(",")).join(" "), class:"sqC" });
+  var sqA = el("polygon", { points: fig.sqA.map(p=>p.join(",")).join(" "), class:"sqAB sqA" });
+  var sqB = el("polygon", { points: fig.sqB.map(p=>p.join(",")).join(" "), class:"sqAB sqB" });
+  g.appendChild(sqC); g.appendChild(sqA); g.appendChild(sqB);
+
+  var tris = [];
+  for (var i=0;i<4;i++){
+    var tri = el("path", { d: pathFrom(fig.A[i]), class: "tri t"+i });
+    g.appendChild(tri);
+    tris.push(tri);
+  }
+  proofNodes = { tris: tris, A: fig.A, B: fig.B };
+  applyProofState();
+
+  var c2 = a*a+b*b;
+  st1.innerHTML = "(a + b)&sup2; = 4&middot;&frac12;ab + c&sup2; &nbsp;&nbsp;<span class='mono' style='color:var(--ink-faint)'>"+(s*s)+" = "+(2*a*b)+" + "+c2+"</span>";
+  st2.innerHTML = "a&sup2; + 2ab + b&sup2; = 2ab + c&sup2;";
+  st3.innerHTML = "a&sup2; + b&sup2; = c&sup2; &nbsp;&nbsp;<span class='mono'>"+(a*a)+" + "+(b*b)+" = "+c2+"</span>";
+}
+function applyProofState(){
+  if (!proofNodes) return;
+  proofNodes.tris.forEach(function(tri, i){
+    if (proved){
+      var m = fitRigid(proofNodes.A[i], proofNodes.B[i]);
+      tri.style.transform = "matrix(" + m.join(",") + ")";
+    } else {
+      tri.style.transform = "none";
+    }
+  });
+  var stageG = svgProof.querySelector(".stage");
+  if (stageG) stageG.classList.toggle("proved", proved);
+  [st1,st2,st3].forEach(function(node, i){
+    setTimeout(function(){ node.classList.toggle("show", proved); }, proved ? i*260 : 0);
+  });
+}
+proveBtn.addEventListener("click", function(){
+  proved = !proved;
+  proveBtn.textContent = proved ? "← Reset" : "Rearrange →";
+  applyProofState();
+});
+
+function renderAll2and3(){ renderSquares(); renderProof(); }
+
+/* =================================================================
+   SHEET 04 — the 3D cuboid and its space diagonal
+   ================================================================= */
+var lSlide=document.getElementById("lSlide"), wSlide=document.getElementById("wSlide"), hSlide=document.getElementById("hSlide");
+var lVal=document.getElementById("lVal"), wVal=document.getElementById("wVal"), hVal=document.getElementById("hVal");
+var outD1=document.getElementById("outD1"), outD=document.getElementById("outD"), outD2=document.getElementById("outD2");
+var scene = document.getElementById("scene"), cube = document.getElementById("cube");
+var PXU = 27;
+var rot = { x: -24, y: -34 };
+var dims = { l:5, w:4, h:3 };
+
+function buildCube(){
+  cube.innerHTML = "";
+  var L = dims.l*PXU, W = dims.w*PXU, H = dims.h*PXU;
+  cube.style.width = L+"px"; cube.style.height = H+"px";
+
+  function face(cls, fw, fh, tx, ty, tz, extraRot){
+    var f = document.createElement("div");
+    f.className = "face " + cls;
+    f.style.width = fw+"px"; f.style.height = fh+"px";
+    f.style.marginLeft = (-fw/2)+"px"; f.style.marginTop = (-fh/2)+"px";
+    f.style.transform = (extraRot||"") + " translateZ(" + Math.max(tz,0.01) + "px)";
+    cube.appendChild(f);
+  }
+  face("front",  L, H, 0,0, W/2, "");
+  face("back",   L, H, 0,0, W/2, "rotateY(180deg)");
+  face("right",  W, H, 0,0, L/2, "rotateY(90deg)");
+  face("left",   W, H, 0,0, L/2, "rotateY(-90deg)");
+  face("top",    L, W, 0,0, H/2, "rotateX(90deg)");
+  face("bottom", L, W, 0,0, H/2, "rotateX(-90deg)");
+
+  // corners relative to cube center: x right, y down, z toward viewer
+  var A = { x:-L/2, y: H/2, z: W/2 };   // bottom-front-left
+  var Bc= { x: L/2, y: H/2, z: W/2 };   // bottom-front-right
+  var Opp = { x: L/2, y:-H/2, z:-W/2 }; // top-back-right (space diagonal target)
+  var Base= { x: L/2, y: H/2, z:-W/2 }; // bottom-back-right (base-diagonal target)
+
+  addEdge(A, Base, "base");
+  addEdge(A, Opp, "body");
+}
+function addEdge(p1, p2, cls){
+  // Built by its own two angles, a sign slip is nearly invisible to catch by
+  // eye and easy to make. An axis-angle rotation sidesteps that: rotate the
+  // bar's default direction (0,1,0) onto the target direction by the single
+  // rotation the two actually define — the axis is their cross product, the
+  // angle is the arccos of their dot product — so there is only one way to
+  // get it right, not two angles whose signs have to agree.
+  var dx=p2.x-p1.x, dy=p2.y-p1.y, dz=p2.z-p1.z;
+  var length = Math.sqrt(dx*dx+dy*dy+dz*dz);
+  var midX=(p1.x+p2.x)/2, midY=(p1.y+p2.y)/2, midZ=(p1.z+p2.z)/2;
+  var ux=dx/length, uy=dy/length, uz=dz/length;
+  var axx = uz, axy = 0, axz = -ux;                 // (0,1,0) × (ux,uy,uz)
+  var axisLen = Math.sqrt(axx*axx+axy*axy+axz*axz);
+  var angleDeg = Math.acos(Math.max(-1,Math.min(1,uy))) * 180/Math.PI;
+  var e = document.createElement("div");
+  e.className = "edge3d " + cls;
+  var thick = 4;
+  e.style.width = thick+"px";
+  e.style.height = length+"px";
+  e.style.marginLeft = (-thick/2)+"px";
+  e.style.marginTop = (-length/2)+"px";
+  e.style.transform = axisLen < 1e-6
+    ? "translate3d("+midX+"px,"+midY+"px,"+midZ+"px)"
+    : "translate3d("+midX+"px,"+midY+"px,"+midZ+"px) rotate3d("+axx+","+axy+","+axz+","+angleDeg+"deg)";
+  cube.appendChild(e);
+}
+function readoutCube(){
+  var l=dims.l, w=dims.w, h=dims.h;
+  var d1 = Math.sqrt(l*l+w*w), d = Math.sqrt(l*l+w*w+h*h);
+  outD1.textContent = d1.toFixed(2);
+  outD.textContent = d.toFixed(2);
+  outD2.textContent = (l*l)+"+"+(w*w)+"+"+(h*h)+" = "+(l*l+w*w+h*h);
+}
+function renderCube(){ buildCube(); readoutCube(); applySceneTransform(); }
+function applySceneTransform(){ cube.style.transform = "rotateX("+rot.x+"deg) rotateY("+rot.y+"deg)"; }
+
+[["l",lSlide,lVal],["w",wSlide,wVal],["h",hSlide,hVal]].forEach(function(t){
+  t[1].addEventListener("input", function(){ dims[t[0]] = +t[1].value; t[2].textContent = t[1].value; renderCube(); });
+});
+
+(function enableDrag(){
+  var dragging=false, last={x:0,y:0};
+  scene.addEventListener("pointerdown", function(e){ dragging=true; last={x:e.clientX,y:e.clientY}; scene.setPointerCapture(e.pointerId); });
+  scene.addEventListener("pointermove", function(e){
+    if (!dragging) return;
+    rot.y += (e.clientX-last.x)*0.4;
+    rot.x -= (e.clientY-last.y)*0.4;
+    rot.x = clamp(rot.x,-80,80);
+    last={x:e.clientX,y:e.clientY};
+    applySceneTransform();
+  });
+  scene.addEventListener("pointerup", function(){ dragging=false; });
+  scene.addEventListener("pointercancel", function(){ dragging=false; });
+})();
+
+/* =================================================================
+   SHEET 05 — the ladder
+   ================================================================= */
+var lenSlide=document.getElementById("lenSlide"), footSlide=document.getElementById("footSlide");
+var lenVal=document.getElementById("lenVal"), footVal=document.getElementById("footVal");
+var outHeight=document.getElementById("outHeight");
+var svgLadder = document.getElementById("svgLadder");
+
+function renderLadder(){
+  var len = +lenSlide.value;
+  footSlide.max = len - 1;
+  var foot = Math.min(+footSlide.value, len-1);
+  footSlide.value = foot;
+  lenVal.textContent = len; footVal.textContent = foot;
+  var height = Math.sqrt(len*len - foot*foot);
+  outHeight.textContent = height.toFixed(2) + " m";
+
+  var scale = 95 / len;
+  var fx = 14 + foot*scale, gy = 108;
+  var topY = gy - height*scale;
+  var wallTop = Math.max(10, topY - 10);
+  svgLadder.innerHTML =
+    '<line x1="8" y1="'+gy+'" x2="156" y2="'+gy+'" stroke="var(--ink-faint)" stroke-width="1.5"/>' +
+    '<line x1="14" y1="'+wallTop+'" x2="14" y2="'+gy+'" stroke="var(--ink-faint)" stroke-width="1.5"/>' +
+    '<line x1="14" y1="'+topY+'" x2="'+fx+'" y2="'+gy+'" stroke="var(--coral)" stroke-width="3" stroke-linecap="round"/>' +
+    '<line x1="14" y1="'+gy+'" x2="'+fx+'" y2="'+gy+'" stroke="var(--amber)" stroke-width="2" stroke-dasharray="3 3"/>' +
+    '<line x1="14" y1="'+topY+'" x2="14" y2="'+gy+'" stroke="var(--teal)" stroke-width="2" stroke-dasharray="3 3"/>' +
+    '<text x="'+(14+(fx-14)/2)+'" y="'+(gy+16)+'" fill="var(--amber)" font-size="8" text-anchor="middle">'+foot+' m</text>' +
+    '<text x="20" y="'+(topY+6)+'" fill="var(--teal)" font-size="8">'+height.toFixed(1)+' m</text>' +
+    '<text x="'+(14+(fx-14)/2-6)+'" y="'+((topY+gy)/2-6)+'" fill="var(--coral)" font-size="8">'+len+' m</text>';
+}
+lenSlide.addEventListener("input", renderLadder);
+footSlide.addEventListener("input", renderLadder);
+
+/* triples strip — a slow cycling highlight */
+var chips = Array.prototype.slice.call(document.querySelectorAll("#triples .chip"));
+var chipI = 0;
+setInterval(function(){
+  chips.forEach(c=>c.classList.remove("pulse"));
+  chips[chipI % chips.length].classList.add("pulse");
+  chipI++;
+}, 1600);
+
+/* ---------------- boot ---------------- */
+syncA(); syncB();
+renderAll2and3();
+renderCube();
+renderLadder();
+})();
+</script>
