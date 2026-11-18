@@ -43,3 +43,4 @@ exams/out/
 # The rendered geometry figures. The SVG and the generator are tracked; the
 # PNGs are built:  cd exams && python3 figures.py && node render-figures.mjs
 exams/figures/*.png
+lessons/*.zip
