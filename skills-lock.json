@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "skills": {
+    "clone-website": {
+      "source": "jcodesmore/ai-website-cloner-template",
+      "commit": "5426e0e2ec35dbc173a7a18f47a3dfe2a765313e",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/clone-website/SKILL.md",
+      "computedHash": "431913d2eba334d958f5f31c156de325e596bf60b4a40093beab97f01e34d47a"
+    }
+  }
+}
