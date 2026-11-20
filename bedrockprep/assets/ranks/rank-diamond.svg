@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none" role="img" aria-label="diamond rank">
+<g stroke="#141414" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M74 35 L79 58 L65 82 L31 83 L43 51 Z" fill="#6527C0" stroke-width="3.5"></path>
+  <path d="M18 37 L43 51 L31 83 L13 60 Z" fill="#A65EF6" stroke-width="3.5"></path>
+  <path d="M18 37 L34 22 L54 19 L74 35 L43 51 Z" fill="#EBDCFF" stroke-width="3.5"></path>
+  <path d="M34 22 L54 19 L74 35 L79 58 L65 82 L31 83 L13 60 L18 37 Z" fill="none" stroke-width="4.5"></path>
+  <path d="M84 2 L87.3 9.7 L95 13 L87.3 16.3 L84 24 L80.7 16.3 L73 13 L80.7 9.7 Z" fill="#FFFFFF" stroke-width="3"></path>
+  <path d="M10 69 L12.1 73.9 L17 76 L12.1 78.1 L10 83 L7.9 78.1 L3 76 L7.9 73.9 Z" fill="#FFFFFF" stroke-width="3"></path>
+</g>
+</svg>

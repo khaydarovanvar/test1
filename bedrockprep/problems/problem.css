@@ -1,0 +1,149 @@
+.problem-main {
+  padding: 2rem 0 3rem;
+  max-width: 44rem;
+}
+
+.breadcrumb {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #6b6b6b;
+  margin-bottom: 1rem;
+}
+
+.breadcrumb a {
+  color: var(--coral);
+}
+
+.breadcrumb span {
+  margin-left: 0.4rem;
+}
+
+.breadcrumb span::before {
+  content: "/";
+  margin-right: 0.4rem;
+  color: #c7c7c7;
+}
+
+.problem-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.problem-number {
+  font-weight: 800;
+  color: var(--coral);
+  margin: 0 0 0.15rem;
+}
+
+.problem-head h1 {
+  font-size: 1.75rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.problem-card {
+  border: 2px solid var(--ink);
+  border-radius: 0.75rem;
+  background: #fff;
+  padding: 1.5rem;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.problem-demo-note {
+  font-size: 0.8rem;
+  color: #6b6b6b;
+  background: var(--chalk);
+  border: 1px dashed #c7c7c7;
+  border-radius: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0 0 1.25rem;
+}
+
+.problem-prompt {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border: 2px solid var(--ink);
+  border-radius: 0.5rem;
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  background: #fff;
+  font-weight: 600;
+}
+
+.choice:hover {
+  background: var(--chalk);
+}
+
+.choice.selected {
+  background: var(--sand);
+}
+
+.choice.correct {
+  background: var(--green-pale);
+  border-color: var(--green-dark);
+}
+
+.choice.incorrect {
+  background: #ffe2e2;
+  border-color: var(--coral-dark);
+}
+
+.choice input {
+  accent-color: var(--ink);
+}
+
+.problem-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.feedback {
+  margin-top: 1rem;
+  font-weight: 800;
+}
+
+.solution {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px dashed #d1d5dc;
+}
+
+.solution h2 {
+  font-size: 1.1rem;
+  font-weight: 900;
+  margin: 0 0 0.5rem;
+}
+
+.solution p {
+  line-height: 1.6;
+  margin: 0;
+}
+
+.live-link {
+  margin-top: 1.25rem;
+  font-weight: 700;
+  color: #6b6b6b;
+}
+
+.live-link a {
+  color: var(--coral);
+}

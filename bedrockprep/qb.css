@@ -1,0 +1,136 @@
+.qb-main {
+  padding: 2.5rem 0 3rem;
+}
+
+.qb-hero {
+  text-align: center;
+  max-width: 42rem;
+  margin: 0 auto 2rem;
+}
+
+.qb-hero h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+}
+
+.qb-hero .lede {
+  color: #4b4b4b;
+  line-height: 1.6;
+}
+
+.qb-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.qb-filters {
+  width: 15rem;
+  flex-shrink: 0;
+  position: sticky;
+  top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.qb-filter-group h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 800;
+  margin: 0 0 0.5rem;
+  color: #6b6b6b;
+}
+
+.qb-filter-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  padding: 0.2rem 0;
+  font-size: 0.95rem;
+}
+
+.qb-reset {
+  align-self: flex-start;
+}
+
+.qb-results {
+  flex: 1;
+  min-width: 0;
+}
+
+.qb-count {
+  font-weight: 700;
+  color: #6b6b6b;
+  margin: 0 0 1rem;
+}
+
+.qb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 0.9rem;
+}
+
+.qb-card {
+  display: block;
+  border: 2px solid var(--ink);
+  border-radius: 0.6rem;
+  background: #fff;
+  padding: 0.9rem 1rem;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.qb-card:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.qb-card .qb-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.qb-card .num {
+  font-weight: 900;
+  color: var(--coral);
+  font-size: 0.9rem;
+}
+
+.qb-card .name {
+  font-weight: 800;
+  margin: 0.35rem 0 0.5rem;
+  line-height: 1.3;
+}
+
+.qb-card .topic {
+  font-size: 0.78rem;
+  color: #6b6b6b;
+  font-weight: 600;
+}
+
+.qb-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.badge-easy { background: var(--green-pale); color: var(--green-dark); }
+.badge-medium { background: #fef3c6; color: #b75000; }
+.badge-hard { background: #ffe2e2; color: #bf000f; }
+
+@media (max-width: 800px) {
+  .qb-layout { flex-direction: column; }
+  .qb-filters { width: 100%; position: static; flex-direction: row; flex-wrap: wrap; gap: 1.5rem; }
+}

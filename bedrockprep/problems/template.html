@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Problem - Bedrock</title>
+<link rel="stylesheet" href="../styles.css" />
+<link rel="stylesheet" href="problem.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-row wrap">
+    <a class="logo" href="../index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+        <g stroke="#141414" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M80 30 L86 56 L70 82 L32 84 L46 48 Z" fill="#C63C1E" stroke-width="4"></path>
+          <path d="M18 32 L46 48 L32 84 L12 58 Z" fill="#EE4E29" stroke-width="4"></path>
+          <path d="M18 32 L36 16 L58 12 L80 30 L46 48 Z" fill="#FFE0CB" stroke-width="4"></path>
+          <path d="M36 16 L58 12 L80 30 L86 56 L70 82 L32 84 L12 58 L18 32 Z" fill="none" stroke-width="5"></path>
+        </g>
+      </svg>
+      Bedrock
+    </a>
+    <nav class="main-nav" aria-label="Sections">
+      <a href="/videos">Videos</a>
+      <a href="../question-bank.html" aria-current="page" class="active">Question Bank</a>
+      <a href="/practice-tests">Exams</a>
+      <a href="/course">Course</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-ghost" href="/login">Get started</a>
+      <a class="btn btn-primary" href="/pro">Get Pro</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap problem-main">
+  <p class="breadcrumb">
+    <a href="../question-bank.html">Question Bank</a>
+    <span id="bc-domain"></span>
+    <span id="bc-topic"></span>
+  </p>
+
+  <div class="problem-head">
+    <div>
+      <p class="problem-number" id="p-number"></p>
+      <h1 id="p-name"></h1>
+    </div>
+    <span class="qb-badge" id="p-badge"></span>
+  </div>
+
+  <div class="problem-card">
+    <p class="problem-demo-note">
+      This is an interactive sample in the style of this problem type &mdash; a stand-in
+      template, not the live site's actual problem content.
+    </p>
+    <p class="problem-prompt" id="p-prompt"></p>
+
+    <form id="choices" class="choices"></form>
+
+    <div class="problem-actions">
+      <button type="button" class="btn btn-primary" id="submit-btn">Submit</button>
+      <button type="button" class="btn btn-ghost" id="solution-btn">Show solution</button>
+    </div>
+
+    <p class="feedback" id="feedback" hidden></p>
+
+    <div class="solution" id="solution" hidden>
+      <h2>Solution</h2>
+      <p id="solution-text"></p>
+    </div>
+  </div>
+
+  <p class="live-link">
+    Looking for the real problem bank entry?
+    <a id="live-site-link" href="#" target="_blank" rel="noopener">See it on the live site &rarr;</a>
+  </p>
+</main>
+
+<footer class="site-footer wrap">
+  <div class="footer-row">
+    <div class="footer-links">
+      <a href="/videos">Videos</a>
+      <a href="../question-bank.html">Question Bank</a>
+      <a href="/practice-tests">Exams</a>
+      <a href="/course">Course</a>
+      <a href="/privacy">Privacy</a>
+    </div>
+    <p class="footer-note">&copy; Bedrock, by LearnSATMath</p>
+  </div>
+</footer>
+
+<script src="problem.js"></script>
+</body>
+</html>
