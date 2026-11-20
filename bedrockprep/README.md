@@ -36,12 +36,34 @@ covers the **homepage** as static HTML/CSS:
 - `/course`, `/problems`, `/practice-tests`, `/videos`, `/pro`, `/login`, `/privacy` link back
   to the real site's paths (not yet built as local routes).
 
+## Question bank (`/problems`)
+
+- `question-bank.html` — the "Bedrock 125" browse page: a sidebar with difficulty and domain
+  filters, and a grid of all 125 problem-type cards (number, name, topic, difficulty badge).
+  The taxonomy (names, topics, domains, difficulty) is the real one from the live site —
+  it's catalog metadata, not problem content — stored in `assets/bedrock125.json` /
+  `assets/bedrock125.js` and rendered client-side by `qb.js`.
+- `problems/template.html` — opening any card routes here with the problem's id/name/topic/
+  difficulty as query params. It renders a real interactive problem UI (multiple-choice
+  answers, instant right/wrong highlighting, a "Show solution" toggle) but with an **original
+  placeholder problem** (one each for easy/medium/hard, written for this clone) rather than
+  the live site's actual problem text and worked solutions — the real question bank has
+  hundreds of problems with full written/Desmos solutions, which is substantially more
+  content than a page-structure clone should pull in one pass. Each template page links back
+  to the matching real problem on bedrockprep.com.
+
+To wire in real problems later: replace the `SAMPLES` object in `problems/problem.js` (or
+extend it, keyed by problem `id` instead of difficulty) with your actual question data —
+happy to help build that data pipeline if you want to export it from the live site.
+
 ## Route map
 
 | Source | Local |
 |---|---|
 | `https://www.bedrockprep.com/` | `bedrockprep/index.html` |
+| `https://www.bedrockprep.com/problems` | `bedrockprep/question-bank.html` |
+| `https://www.bedrockprep.com/problems/<id>` | `bedrockprep/problems/template.html?id=...` |
 
-Let me know if you'd like any of the linked subpages (course, question bank, exams, pro)
-built out next, and at what fidelity — a static marketing-style page vs. the real interactive
+Let me know if you'd like the remaining linked subpages (course, exams, videos, pro) built
+out next, and at what fidelity — a static marketing-style page vs. the real interactive
 functionality are very different amounts of work.
